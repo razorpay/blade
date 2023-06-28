@@ -131,10 +131,11 @@ exports[`<Switch /> should render switch 1`] = `
 <div>
   <div
     class="c0"
-    data-blade-component="Switch"
+    data-blade-component="switch"
   >
     <label
       class="c1"
+      data-blade-component="switch-label"
       style="cursor: pointer;"
     >
       <input
@@ -151,12 +152,15 @@ exports[`<Switch /> should render switch 1`] = `
       <div
         aria-hidden="true"
         class=" c3"
+        data-blade-component="base-box"
       >
         <div
           class=" c4"
+          data-blade-component="base-box"
         >
           <div
             class=" c5"
+            data-blade-component="base-box"
           >
             <svg
               aria-hidden="true"
@@ -170,6 +174,7 @@ exports[`<Switch /> should render switch 1`] = `
               <path
                 clip-rule="evenodd"
                 d="M8.81891 0.546661C9.12722 0.238352 9.62709 0.238353 9.9354 0.546661C10.2437 0.85497 10.2437 1.35484 9.9354 1.66315L4.14592 7.45262C3.83761 7.76093 3.33775 7.76093 3.02944 7.45262L0.397858 4.82104C0.0895488 4.51273 0.0895488 4.01286 0.397857 3.70456C0.706166 3.39625 1.20603 3.39625 1.51434 3.70456L3.58768 5.77789L8.81891 0.546661Z"
+                data-blade-component="svg-path"
                 fill="hsla(216, 33%, 29%, 1)"
                 fill-rule="evenodd"
               />
@@ -304,10 +309,11 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
 <div>
   <div
     class="c0"
-    data-blade-component="Switch"
+    data-blade-component="switch"
   >
     <label
       class="c1"
+      data-blade-component="switch-label"
       style="cursor: pointer;"
     >
       <input
@@ -325,12 +331,15 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
       <div
         aria-hidden="true"
         class=" c3"
+        data-blade-component="base-box"
       >
         <div
           class=" c4"
+          data-blade-component="base-box"
         >
           <div
             class=" c5"
+            data-blade-component="base-box"
           >
             <svg
               aria-hidden="true"
@@ -344,6 +353,7 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
               <path
                 clip-rule="evenodd"
                 d="M8.81891 0.546661C9.12722 0.238352 9.62709 0.238353 9.9354 0.546661C10.2437 0.85497 10.2437 1.35484 9.9354 1.66315L4.14592 7.45262C3.83761 7.76093 3.33775 7.76093 3.02944 7.45262L0.397858 4.82104C0.0895488 4.51273 0.0895488 4.01286 0.397857 3.70456C0.706166 3.39625 1.20603 3.39625 1.51434 3.70456L3.58768 5.77789L8.81891 0.546661Z"
+                data-blade-component="svg-path"
                 fill="hsla(214, 18%, 69%, 1)"
                 fill-rule="evenodd"
               />

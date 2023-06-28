@@ -5,7 +5,7 @@ import { useBottomSheetContext } from './BottomSheetContext';
 import type { BottomSheetHeaderProps } from './types';
 import { BottomSheetEmptyHeader } from './BottomSheetCommon';
 import BaseBox from '~components/Box/BaseBox';
-import { assignWithoutSideEffects, metaAttribute } from '~utils';
+import { assignWithoutSideEffects, metaAttribute, MetaConstants } from '~utils';
 import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect';
 import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
 
@@ -18,7 +18,14 @@ const _BottomSheetHeader = ({
   showBackButton = false,
   onBackButtonClick,
 }: BottomSheetHeaderProps): React.ReactElement => {
-  const { setHeaderHeight, isOpen, close, bind, defaultInitialFocusRef } = useBottomSheetContext();
+  const {
+    setHeaderHeight,
+    isOpen,
+    close,
+    bind,
+    setIsHeaderEmpty,
+    defaultInitialFocusRef,
+  } = useBottomSheetContext();
   const ref = React.useRef<HTMLDivElement>(null);
 
   useIsomorphicLayoutEffect(() => {
@@ -28,12 +35,17 @@ const _BottomSheetHeader = ({
 
   const isHeaderEmpty = !(title || subtitle || leading || trailing || showBackButton);
 
+  React.useEffect(() => {
+    setIsHeaderEmpty(isHeaderEmpty);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isHeaderEmpty]);
+
   return (
     <BaseBox
       ref={ref}
       overflow={isHeaderEmpty ? 'visible' : 'auto'}
       flexShrink={0}
-      {...metaAttribute({ name: ComponentIds.BottomSheetHeader })}
+      {...metaAttribute({ name: MetaConstants.BottomSheetHeader })}
     >
       {isHeaderEmpty ? (
         <BottomSheetEmptyHeader ref={defaultInitialFocusRef} />

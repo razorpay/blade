@@ -1,17 +1,11 @@
 import React from 'react';
-import { View } from 'react-native';
+import BaseBox from '~components/Box/BaseBox';
 
 const FormHintWrapper = ({ children }: { children: React.ReactNode }): React.ReactElement => {
   return (
-    <View
-      style={{
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-      }}
-    >
+    <BaseBox display="flex" flexDirection="row" alignItems="center">
       {children}
-    </View>
+    </BaseBox>
   );
 };
 

@@ -13,6 +13,7 @@ import { BottomSheetBody } from './BottomSheetBody';
 import type { SnapPoints } from './utils';
 import { computeMaxContent, computeSnapPointBounds } from './utils';
 import { BottomSheetBackdrop } from './BottomSheetBackdrop';
+import type { BottomSheetContextProps } from './BottomSheetContext';
 import { BottomSheetContext, useBottomSheetAndDropdownGlue } from './BottomSheetContext';
 import { ComponentIds } from './componentIds';
 import type { BottomSheetProps } from './types';
@@ -26,6 +27,7 @@ import {
   makeSize,
   makeAccessible,
   metaAttribute,
+  MetaConstants,
 } from '~utils';
 
 import { useScrollLock } from '~src/hooks/useScrollLock';
@@ -82,6 +84,8 @@ const _BottomSheet = ({
   const [headerHeight, setHeaderHeight] = React.useState(0);
   const [footerHeight, setFooterHeight] = React.useState(0);
   const [grabHandleHeight, setGrabHandleHeight] = React.useState(0);
+  const [hasBodyPadding, setHasBodyPadding] = React.useState(true);
+  const [isHeaderEmpty, setIsHeaderEmpty] = React.useState(false);
 
   const bottomSheetAndDropdownGlue = useBottomSheetAndDropdownGlue();
   const [positionY, _setPositionY] = React.useState(0);
@@ -362,7 +366,8 @@ const _BottomSheet = ({
     transitionDuration: theme.motion.duration.moderate,
   });
 
-  const contextValue = React.useMemo(
+  const isHeaderFloating = !hasBodyPadding && isHeaderEmpty;
+  const contextValue: BottomSheetContextProps = React.useMemo(
     () => ({
       isInBottomSheet: true,
       isOpen: Boolean(isVisible),
@@ -374,9 +379,12 @@ const _BottomSheet = ({
       setContentHeight,
       setFooterHeight,
       setHeaderHeight,
+      setHasBodyPadding,
+      setIsHeaderEmpty,
       scrollRef,
       bind,
       defaultInitialFocusRef,
+      isHeaderFloating,
     }),
     [
       isVisible,
@@ -388,9 +396,12 @@ const _BottomSheet = ({
       setContentHeight,
       setFooterHeight,
       setHeaderHeight,
+      setHasBodyPadding,
+      setIsHeaderEmpty,
       scrollRef,
       bind,
       defaultInitialFocusRef,
+      isHeaderFloating,
     ],
   );
 
@@ -429,7 +440,7 @@ const _BottomSheet = ({
     <BottomSheetContext.Provider value={contextValue}>
       <BottomSheetBackdrop zIndex={zIndex} />
       <BottomSheetSurface
-        {...metaAttribute({ name: ComponentIds.BottomSheet })}
+        {...metaAttribute({ name: MetaConstants.BottomSheet })}
         {...makeAccessible({ modal: true, role: 'dialog' })}
         windowHeight={dimensions.height}
         isDragging={isDragging}
@@ -445,6 +456,7 @@ const _BottomSheet = ({
         <BaseBox height="100%" display="flex" flexDirection="column">
           <BottomSheetGrabHandle
             ref={grabHandleRef}
+            isHeaderFloating={isHeaderFloating}
             {...metaAttribute({ name: ComponentIds.BottomSheetGrabHandle })}
             {...bind()}
           />

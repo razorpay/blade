@@ -338,6 +338,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
 }
 
 .c4 {
+  position: relative;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -360,6 +361,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  z-index: 100;
 }
 
 .c4:after {
@@ -505,18 +507,20 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
 <div>
   <div
     class="c0 c1"
+    data-blade-component="base-box"
     data-testid="bottomsheet-backdrop"
     opacity="1"
   />
   <div
     aria-modal="true"
     class="c2"
-    data-blade-component="BottomSheet"
+    data-blade-component="bottom-sheet"
     role="dialog"
     style="opacity: 1; pointer-events: all; height: 0px; bottom: 0px; z-index: 100;"
   >
     <div
       class="c3"
+      data-blade-component="base-box"
     >
       <div
         class="c4"
@@ -524,25 +528,31 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
       />
       <div
         class="c5"
-        data-blade-component="BottomSheetHeader"
+        data-blade-component="bottom-sheet-header"
       >
         <div
           class=""
+          data-blade-component="base-box"
         >
           <div
             class="c6"
+            data-blade-component="base-box"
           >
             <div
               class="c7"
+              data-blade-component="base-box"
             >
               <div
                 class="c8"
+                data-blade-component="base-box"
               >
                 <div
                   class=""
+                  data-blade-component="base-box"
                 >
                   <div
                     class="c9"
+                    data-blade-component="base-box"
                   >
                     <h6
                       class="c10"
@@ -552,9 +562,11 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                     </h6>
                     <div
                       class="c11"
+                      data-blade-component="base-box"
                     >
                       <div
                         class="c12 c13"
+                        data-blade-component="base-box"
                       >
                         <div
                           class="c14"
@@ -580,6 +592,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
               </div>
               <div
                 class="c17"
+                data-blade-component="base-box"
               >
                 <div
                   class="c18 c19"
@@ -587,6 +600,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                 >
                   <div
                     class="c14"
+                    data-blade-component="base-box"
                   >
                     <p
                       class="c20"
@@ -614,6 +628,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                 >
                   <path
                     d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
+                    data-blade-component="svg-path"
                     fill="currentColor"
                   />
                 </svg>
@@ -629,12 +644,13 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
       </div>
       <div
         class="c23"
-        data-blade-component="BottomSheetBody"
+        data-blade-component="bottom-sheet-body"
         data-testid="bottomsheet-body"
         style="user-select: auto; overflow: auto;"
       >
         <div
           class="c24"
+          data-blade-component="base-box"
         >
           <p
             class="c25"
@@ -646,7 +662,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
       </div>
       <div
         class="c26"
-        data-blade-component="BottomSheetFooter"
+        data-blade-component="bottom-sheet-footer"
       >
         <div
           class="c22"
@@ -655,6 +671,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
         />
         <div
           class="c27"
+          data-blade-component="base-box"
         >
           <button
             class="c28"
@@ -664,14 +681,314 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
           >
             <div
               class="c29 c30"
+              data-blade-component="base-box"
             >
               <div
                 class="c31"
+                data-blade-component="base-text"
               >
                 Remove address
               </div>
             </div>
           </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 100%;
+}
+
+.c5 {
+  overflow: visible;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c9 {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 1;
+  -ms-flex-negative: 1;
+  flex-shrink: 1;
+}
+
+.c10 {
+  overflow: auto;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+.c0 {
+  position: fixed;
+  z-index: 100;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-color: hsla(214,15%,18%,0.64);
+  opacity: 1;
+}
+
+.c6 {
+  position: absolute;
+  height: 8px;
+  top: 16px;
+  right: 0px;
+  touch-action: none;
+}
+
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  position: absolute;
+  z-index: 100;
+  height: 28px;
+  width: 28px;
+  top: 0px;
+  right: 16px;
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 9999px;
+}
+
+.c8 {
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 2px;
+  background: transparent;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  color: hsla(214,18%,69%,1);
+  -webkit-transition-property: color,box-shadow;
+  transition-property: color,box-shadow;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c8:hover {
+  color: hsla(217,18%,45%,1);
+}
+
+.c8:focus {
+  outline: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  color: hsla(217,18%,45%,1);
+}
+
+.c8:active {
+  color: hsla(217,18%,45%,1);
+}
+
+.c11 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c1 {
+  -webkit-transition-duration: 250ms;
+  transition-duration: 250ms;
+  -webkit-transition-timing-function: cubic-bezier(0,0,0,1);
+  transition-timing-function: cubic-bezier(0,0,0,1);
+  pointer-events: all;
+  -webkit-transition-property: opacity;
+  transition-property: opacity;
+}
+
+.c4 {
+  position: absolute;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  padding-top: 12px;
+  margin-bottom: 4px;
+  touch-action: none;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.c4:after {
+  margin: auto;
+  content: '';
+  width: 56px;
+  height: 4px;
+  background-color: hsla(216,15%,54%,0.18);
+  border-radius: 16px;
+}
+
+.c2 {
+  background: hsla(0,0%,100%,1);
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  border-color: hsla(216,15%,54%,0.18);
+  box-shadow: 0px -24px 48px -12px hsla(217,56%,17%,0.18);
+  opacity: 0;
+  pointer-events: none;
+  -webkit-transition-duration: 250ms;
+  transition-duration: 250ms;
+  -webkit-transition-timing-function: cubic-bezier(.15,0,.24,.97);
+  transition-timing-function: cubic-bezier(.15,0,.24,.97);
+  will-change: transform,opacity,height;
+  -webkit-transition-property: -webkit-transform,opacity,height;
+  -webkit-transition-property: transform,opacity,height;
+  transition-property: transform,opacity,height;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 768px;
+  background-color: hsla(0,0%,100%,1);
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  touch-action: none;
+  overflow: hidden;
+}
+
+<div>
+  <div
+    class="c0 c1"
+    data-blade-component="base-box"
+    data-testid="bottomsheet-backdrop"
+    opacity="1"
+  />
+  <div
+    aria-modal="true"
+    class="c2"
+    data-blade-component="bottom-sheet"
+    role="dialog"
+    style="opacity: 1; pointer-events: all; height: 0px; bottom: 0px; z-index: 100;"
+  >
+    <div
+      class="c3"
+      data-blade-component="base-box"
+    >
+      <div
+        class="c4"
+        data-blade-component="BottomSheetGrabHandle"
+      />
+      <div
+        class="c5"
+        data-blade-component="bottom-sheet-header"
+      >
+        <div
+          class="c6"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c7"
+            data-blade-component="base-box"
+          >
+            <button
+              aria-label="Close"
+              class="c8"
+              data-blade-component="icon-button"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                class="Svgweb__StyledSvg-vcmjs8-0"
+                data-blade-component="icon"
+                fill="none"
+                height="20px"
+                viewBox="0 0 24 24"
+                width="20px"
+              >
+                <path
+                  d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
+                  data-blade-component="svg-path"
+                  fill="currentColor"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="c9"
+        data-blade-component="bottom-sheet-body"
+        data-testid="bottomsheet-body"
+        style="user-select: auto; overflow: auto;"
+      >
+        <div
+          class="c10"
+          data-blade-component="base-box"
+        >
+          <p
+            class="c11"
+            data-blade-component="text"
+          >
+            BottomSheet body
+          </p>
         </div>
       </div>
     </div>

@@ -13,6 +13,7 @@ exports[`<ClipPath /> should render react-native-svg ClipPath component 1`] = `
     align="xMidYMid"
     bbHeight="40px"
     bbWidth="40px"
+    data-blade-component="icon"
     fill="none"
     focusable={false}
     height="40px"

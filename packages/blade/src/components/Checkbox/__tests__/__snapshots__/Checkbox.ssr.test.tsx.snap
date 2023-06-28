@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Checkbox /> should render checkbox with error validationState 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div data-blade-component=\\"checkbox\\" class=\\"BaseBox-bmPWx\\"><label class=\\"SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 bgSmPY\\"><div class=\\"BaseBox-bmPWx xrMLB\\"><div class=\\"BaseBox-bmPWx fSbYvl\\"><input type=\\"checkbox\\" checked=\\"\\" role=\\"checkbox\\" aria-required=\\"false\\" aria-invalid=\\"true\\" aria-disabled=\\"false\\" aria-checked=\\"true\\" aria-errormessage=\\"checkbox-undefined-errortext-undefined\\" class=\\"SelectorInputweb__StyledInput-sc-1bnkrae-0 hJscHc\\"/><div class=\\"CheckboxIconWrapperweb__CheckboxIconWrapper-sc-3hpze0-0 gSkEBL\\"><div style=\\"opacity:0;position:absolute;display:flex\\" class=\\"Fadeweb__AnimatedFade-sc-1h424tv-0\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"12px\\" viewBox=\\"0 0 8 8\\" width=\\"12px\\" fill=\\"none\\" class=\\"Svgweb__StyledSvg-vcmjs8-0\\"><path d=\\"M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z\\" clip-rule=\\"evenodd\\" fill=\\"hsla(220, 27%, 98%, 1)\\" fill-rule=\\"evenodd\\" stroke=\\"white\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" stroke-width=\\"0.5\\"></path></svg></div><div style=\\"opacity:1;position:absolute;display:flex\\" class=\\"Fadeweb__AnimatedFade-sc-1h424tv-0 jkxAgI\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"12px\\" viewBox=\\"0 0 8 8\\" width=\\"12px\\" fill=\\"none\\" class=\\"Svgweb__StyledSvg-vcmjs8-0\\"><path d=\\"M6.90237 1.76413C7.03254 1.89431 7.03254 2.10536 6.90237 2.23554L3.2357 5.90221C3.10553 6.03238 2.89447 6.03238 2.7643 5.90221L1.09763 4.23554C0.967456 4.10536 0.967456 3.89431 1.09763 3.76414C1.22781 3.63396 1.43886 3.63396 1.56904 3.76414L3 5.1951L6.43096 1.76413C6.56114 1.63396 6.77219 1.63396 6.90237 1.76413Z\\" clip-rule=\\"evenodd\\" fill=\\"hsla(220, 27%, 98%, 1)\\" fill-rule=\\"evenodd\\" stroke=\\"white\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" stroke-width=\\"0.5\\"></path></svg></div></div><div class=\\"BaseBox-bmPWx bigiAM\\"></div><div class=\\"StyledBaseText-dVBfTO ktUwvA\\">Remember password</div></div><div class=\\"BaseBox-bmPWx cCkEge\\"></div></div></label><div class=\\"BaseBox-bmPWx gnjvtY\\"><span style=\\"display:flex;flex-direction:row;align-items:center;word-break:break-all\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"12px\\" viewBox=\\"0 0 24 24\\" width=\\"12px\\" fill=\\"none\\" class=\\"Svgweb__StyledSvg-vcmjs8-0\\"><path d=\\"M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z\\" fill=\\"hsla(8, 73%, 47%, 1)\\"></path><path d=\\"M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z\\" fill=\\"hsla(8, 73%, 47%, 1)\\"></path><path d=\\"M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z\\" clip-rule=\\"evenodd\\" fill=\\"hsla(8, 73%, 47%, 1)\\" fill-rule=\\"evenodd\\"></path></svg><div class=\\"BaseBox-bmPWx joUrH\\"></div><span class=\\"StyledBaseText-dVBfTO fRqtgA\\" id=\\"checkbox-undefined-errortext-undefined\\">This has to be checked</span></span></div></div></div>"`;
+exports[`<Checkbox /> should render checkbox with error validationState 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div data-blade-component=\\"checkbox\\" class=\\"BaseBox-bmPWx\\"><label data-blade-component=\\"checkbox-label\\" class=\\"SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 bgSmPY\\"><div data-blade-component=\\"base-box\\" class=\\"BaseBox-bmPWx xrMLB\\"><div data-blade-component=\\"base-box\\" class=\\"BaseBox-bmPWx fSbYvl\\"><input type=\\"checkbox\\" checked=\\"\\" role=\\"checkbox\\" aria-required=\\"false\\" aria-invalid=\\"true\\" aria-disabled=\\"false\\" aria-checked=\\"true\\" aria-errormessage=\\"checkbox-undefined-errortext-undefined\\" class=\\"SelectorInputweb__StyledInput-sc-1bnkrae-0 hJscHc\\"/><div data-blade-component=\\"checkbox-icon-wrapper\\" class=\\"CheckboxIconWrapperweb__CheckboxIconWrapper-sc-3hpze0-0 gSkEBL\\"><div style=\\"opacity:0;position:absolute;display:flex\\" class=\\"Fadeweb__AnimatedFade-sc-1h424tv-0\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"12px\\" viewBox=\\"0 0 8 8\\" width=\\"12px\\" fill=\\"none\\" class=\\"Svgweb__StyledSvg-vcmjs8-0\\"><path d=\\"M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z\\" clip-rule=\\"evenodd\\" fill=\\"hsla(220, 27%, 98%, 1)\\" fill-rule=\\"evenodd\\" stroke=\\"white\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" stroke-width=\\"0.5\\" data-blade-component=\\"svg-path\\"></path></svg></div><div style=\\"opacity:1;position:absolute;display:flex\\" class=\\"Fadeweb__AnimatedFade-sc-1h424tv-0 jkxAgI\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"12px\\" viewBox=\\"0 0 8 8\\" width=\\"12px\\" fill=\\"none\\" class=\\"Svgweb__StyledSvg-vcmjs8-0\\"><path d=\\"M6.90237 1.76413C7.03254 1.89431 7.03254 2.10536 6.90237 2.23554L3.2357 5.90221C3.10553 6.03238 2.89447 6.03238 2.7643 5.90221L1.09763 4.23554C0.967456 4.10536 0.967456 3.89431 1.09763 3.76414C1.22781 3.63396 1.43886 3.63396 1.56904 3.76414L3 5.1951L6.43096 1.76413C6.56114 1.63396 6.77219 1.63396 6.90237 1.76413Z\\" clip-rule=\\"evenodd\\" fill=\\"hsla(220, 27%, 98%, 1)\\" fill-rule=\\"evenodd\\" stroke=\\"white\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" stroke-width=\\"0.5\\" data-blade-component=\\"svg-path\\"></path></svg></div></div><div data-blade-component=\\"base-box\\" class=\\"BaseBox-bmPWx bigiAM\\"></div><div class=\\"StyledBaseText-dVBfTO ktUwvA\\" data-blade-component=\\"base-text\\">Remember password</div></div><div data-blade-component=\\"base-box\\" class=\\"BaseBox-bmPWx cCkEge\\"></div></div></label><div data-blade-component=\\"base-box\\" class=\\"BaseBox-bmPWx gnjvtY\\"><span style=\\"word-break:break-all\\" data-blade-component=\\"base-box\\" class=\\"BaseBox-bmPWx fSbYvl\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"12px\\" viewBox=\\"0 0 24 24\\" width=\\"12px\\" fill=\\"none\\" class=\\"Svgweb__StyledSvg-vcmjs8-0\\"><path d=\\"M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z\\" fill=\\"hsla(8, 73%, 47%, 1)\\" data-blade-component=\\"svg-path\\"></path><path d=\\"M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z\\" fill=\\"hsla(8, 73%, 47%, 1)\\" data-blade-component=\\"svg-path\\"></path><path d=\\"M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z\\" clip-rule=\\"evenodd\\" fill=\\"hsla(8, 73%, 47%, 1)\\" fill-rule=\\"evenodd\\" data-blade-component=\\"svg-path\\"></path></svg><div data-blade-component=\\"base-box\\" class=\\"BaseBox-bmPWx joUrH\\"></div><span class=\\"StyledBaseText-dVBfTO fRqtgA\\" id=\\"checkbox-undefined-errortext-undefined\\" data-blade-component=\\"base-text\\">This has to be checked</span></span></div></div></div>"`;
 
 exports[`<Checkbox /> should render checkbox with error validationState 2`] = `
 <div
@@ -13,12 +13,15 @@ exports[`<Checkbox /> should render checkbox with error validationState 2`] = `
   >
     <label
       class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 bgSmPY"
+      data-blade-component="checkbox-label"
     >
       <div
         class="BaseBox-bmPWx xrMLB"
+        data-blade-component="base-box"
       >
         <div
           class="BaseBox-bmPWx fSbYvl"
+          data-blade-component="base-box"
         >
           <input
             aria-checked="true"
@@ -34,6 +37,7 @@ exports[`<Checkbox /> should render checkbox with error validationState 2`] = `
           />
           <div
             class="CheckboxIconWrapperweb__CheckboxIconWrapper-sc-3hpze0-0 gSkEBL"
+            data-blade-component="checkbox-icon-wrapper"
           >
             <div
               class="Fadeweb__AnimatedFade-sc-1h424tv-0"
@@ -51,6 +55,7 @@ exports[`<Checkbox /> should render checkbox with error validationState 2`] = `
                 <path
                   clip-rule="evenodd"
                   d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
+                  data-blade-component="svg-path"
                   fill="hsla(220, 27%, 98%, 1)"
                   fill-rule="evenodd"
                   stroke="white"
@@ -76,6 +81,7 @@ exports[`<Checkbox /> should render checkbox with error validationState 2`] = `
                 <path
                   clip-rule="evenodd"
                   d="M6.90237 1.76413C7.03254 1.89431 7.03254 2.10536 6.90237 2.23554L3.2357 5.90221C3.10553 6.03238 2.89447 6.03238 2.7643 5.90221L1.09763 4.23554C0.967456 4.10536 0.967456 3.89431 1.09763 3.76414C1.22781 3.63396 1.43886 3.63396 1.56904 3.76414L3 5.1951L6.43096 1.76413C6.56114 1.63396 6.77219 1.63396 6.90237 1.76413Z"
+                  data-blade-component="svg-path"
                   fill="hsla(220, 27%, 98%, 1)"
                   fill-rule="evenodd"
                   stroke="white"
@@ -88,23 +94,29 @@ exports[`<Checkbox /> should render checkbox with error validationState 2`] = `
           </div>
           <div
             class="BaseBox-bmPWx bigiAM"
+            data-blade-component="base-box"
           />
           <div
             class="StyledBaseText-dVBfTO ktUwvA"
+            data-blade-component="base-text"
           >
             Remember password
           </div>
         </div>
         <div
           class="BaseBox-bmPWx cCkEge"
+          data-blade-component="base-box"
         />
       </div>
     </label>
     <div
       class="BaseBox-bmPWx gnjvtY"
+      data-blade-component="base-box"
     >
       <span
-        style="display:flex;flex-direction:row;align-items:center;word-break:break-all"
+        class="BaseBox-bmPWx fSbYvl"
+        data-blade-component="base-box"
+        style="word-break:break-all"
       >
         <svg
           aria-hidden="true"
@@ -117,24 +129,29 @@ exports[`<Checkbox /> should render checkbox with error validationState 2`] = `
         >
           <path
             d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
+            data-blade-component="svg-path"
             fill="hsla(8, 73%, 47%, 1)"
           />
           <path
             d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
+            data-blade-component="svg-path"
             fill="hsla(8, 73%, 47%, 1)"
           />
           <path
             clip-rule="evenodd"
             d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
+            data-blade-component="svg-path"
             fill="hsla(8, 73%, 47%, 1)"
             fill-rule="evenodd"
           />
         </svg>
         <div
           class="BaseBox-bmPWx joUrH"
+          data-blade-component="base-box"
         />
         <span
           class="StyledBaseText-dVBfTO fRqtgA"
+          data-blade-component="base-text"
           id="checkbox-1-errortext-3"
         >
           This has to be checked

@@ -13,6 +13,7 @@ exports[`<SkipBackIcon /> should render SkipBackIcon 1`] = `
     align="xMidYMid"
     bbHeight="20px"
     bbWidth="20px"
+    data-blade-component="icon"
     fill="none"
     focusable={false}
     height="20px"

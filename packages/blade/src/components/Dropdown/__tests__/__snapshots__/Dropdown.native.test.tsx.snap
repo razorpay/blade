@@ -9,6 +9,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
   }
 >
   <View
+    data-blade-component="base-box"
     position="relative"
     style={
       Array [
@@ -21,6 +22,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
     textAlign="left"
   >
     <View
+      data-blade-component="base-box"
       position="relative"
       style={
         Array [
@@ -39,6 +41,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
         }
       >
         <View
+          data-blade-component="base-box"
           display="flex"
           flexDirection="column"
           position="relative"
@@ -53,6 +56,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
           }
         >
           <View
+            data-blade-component="base-box"
             display="flex"
             flexDirection="row"
             justifyContent="space-between"
@@ -69,6 +73,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
             }
           >
             <View
+              data-blade-component="base-box"
               style={
                 Array [
                   Object {
@@ -80,6 +85,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
             >
               <View
                 alignItems="center"
+                data-blade-component="base-box"
                 display="flex"
                 flexDirection="row"
                 flexWrap="wrap"
@@ -193,6 +199,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
           </View>
           <View
             currentInteraction="default"
+            data-blade-component="base-box"
             display="flex"
             flexDirection="row"
             position="relative"
@@ -293,6 +300,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
             </View>
             <View
               alignItems="center"
+              data-blade-component="base-box"
               display="flex"
               flexDirection="row"
               style={
@@ -306,6 +314,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
               }
             >
               <View
+                data-blade-component="base-box"
                 display="flex"
                 style={
                   Array [
@@ -340,6 +349,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                     align="xMidYMid"
                     bbHeight="16px"
                     bbWidth="16px"
+                    data-blade-component="icon"
                     fill="none"
                     focusable={false}
                     height="16px"
@@ -414,6 +424,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
           </View>
         </View>
         <View
+          data-blade-component="base-box"
           style={
             Array [
               Object {
@@ -423,6 +434,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
           }
         >
           <View
+            data-blade-component="base-box"
             display="flex"
             flexDirection="row"
             justifyContent="flex-end"
@@ -440,6 +452,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
       </View>
     </View>
     <View
+      data-blade-component="base-box"
       position="relative"
       style={
         Array [
@@ -543,6 +556,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
               }
             >
               <View
+                data-blade-component="base-box"
                 style={
                   Array [
                     Object {},
@@ -554,6 +568,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                   align="xMidYMid"
                   bbHeight="12px"
                   bbWidth="12px"
+                  data-blade-component="icon"
                   fill="none"
                   focusable={false}
                   height="12px"
@@ -605,6 +620,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                 </RNSVGSvgView>
               </View>
               <View
+                data-blade-component="base-box"
                 style={
                   Array [
                     Object {
@@ -745,6 +761,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                   >
                     <View
                       alignItems="center"
+                      data-blade-component="base-box"
                       display="flex"
                       flexDirection="row"
                       justifyContent="center"
@@ -761,6 +778,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                     >
                       <View
                         alignItems="center"
+                        data-blade-component="base-box"
                         display="flex"
                         justifyContent="center"
                         style={
@@ -774,6 +792,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                         }
                       />
                       <View
+                        data-blade-component="base-box"
                         style={
                           Array [
                             Object {
@@ -818,6 +837,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                         </Text>
                       </View>
                       <View
+                        data-blade-component="base-box"
                         style={
                           Array [
                             Object {
@@ -828,6 +848,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                       />
                     </View>
                     <View
+                      data-blade-component="base-box"
                       style={
                         Array [
                           Object {},
@@ -878,6 +899,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                   >
                     <View
                       alignItems="center"
+                      data-blade-component="base-box"
                       display="flex"
                       flexDirection="row"
                       justifyContent="center"
@@ -894,6 +916,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                     >
                       <View
                         alignItems="center"
+                        data-blade-component="base-box"
                         display="flex"
                         justifyContent="center"
                         style={
@@ -907,6 +930,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                         }
                       />
                       <View
+                        data-blade-component="base-box"
                         style={
                           Array [
                             Object {
@@ -951,6 +975,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                         </Text>
                       </View>
                       <View
+                        data-blade-component="base-box"
                         style={
                           Array [
                             Object {
@@ -961,6 +986,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                       />
                     </View>
                     <View
+                      data-blade-component="base-box"
                       style={
                         Array [
                           Object {},
@@ -997,6 +1023,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
               }
             >
               <View
+                data-blade-component="base-box"
                 style={
                   Array [
                     Object {},
@@ -1008,6 +1035,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                   align="xMidYMid"
                   bbHeight="12px"
                   bbWidth="12px"
+                  data-blade-component="icon"
                   fill="none"
                   focusable={false}
                   height="12px"
@@ -1059,6 +1087,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                 </RNSVGSvgView>
               </View>
               <View
+                data-blade-component="base-box"
                 style={
                   Array [
                     Object {
@@ -1106,6 +1135,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
               </View>
               <View
                 alignItems="center"
+                data-blade-component="base-box"
                 display="flex"
                 style={
                   Array [
@@ -1190,6 +1220,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                 >
                   <View
                     alignItems="center"
+                    data-blade-component="base-box"
                     display="flex"
                     flexDirection="row"
                     isHidden={false}
@@ -1211,6 +1242,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                   >
                     <Text
                       color="action.text.primary.default"
+                      data-blade-component="base-text"
                       fontSize={100}
                       fontWeight="bold"
                       lineHeight={100}

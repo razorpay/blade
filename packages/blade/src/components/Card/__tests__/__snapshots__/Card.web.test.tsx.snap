@@ -324,6 +324,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
     >
       <div
         class="c4"
+        data-blade-component="base-box"
       />
       <div
         class="c5"
@@ -332,9 +333,11 @@ exports[`<Card /> should render a Card with Footer 1`] = `
       />
       <div
         class="c6"
+        data-blade-component="base-box"
       >
         <div
           class="c7"
+          data-blade-component="base-box"
         >
           <p
             class="c8"
@@ -351,9 +354,11 @@ exports[`<Card /> should render a Card with Footer 1`] = `
         </div>
         <div
           class="c10"
+          data-blade-component="base-box"
         >
           <div
             class="c11"
+            data-blade-component="base-box"
           >
             <button
               class="c12"
@@ -363,9 +368,11 @@ exports[`<Card /> should render a Card with Footer 1`] = `
             >
               <div
                 class="c13 c14"
+                data-blade-component="base-box"
               >
                 <div
                   class="c15"
+                  data-blade-component="base-text"
                 >
                   Delete
                 </div>
@@ -374,9 +381,11 @@ exports[`<Card /> should render a Card with Footer 1`] = `
           </div>
           <div
             class="c16"
+            data-blade-component="base-box"
           />
           <div
             class="c11"
+            data-blade-component="base-box"
           >
             <button
               class="c17"
@@ -386,9 +395,11 @@ exports[`<Card /> should render a Card with Footer 1`] = `
             >
               <div
                 class="c13 c14"
+                data-blade-component="base-box"
               >
                 <div
                   class="c18"
+                  data-blade-component="base-text"
                 >
                   Save
                 </div>
@@ -652,12 +663,15 @@ exports[`<Card /> should render a Card with Header 1`] = `
     >
       <div
         class="c3"
+        data-blade-component="base-box"
       >
         <div
           class="c4"
+          data-blade-component="base-box"
         >
           <div
             class="c5"
+            data-blade-component="base-box"
           >
             <svg
               aria-hidden="true"
@@ -670,15 +684,18 @@ exports[`<Card /> should render a Card with Header 1`] = `
             >
               <path
                 d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
+                data-blade-component="svg-path"
                 fill="hsla(217, 56%, 17%, 1)"
               />
               <path
                 d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
+                data-blade-component="svg-path"
                 fill="hsla(217, 56%, 17%, 1)"
               />
               <path
                 clip-rule="evenodd"
                 d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
+                data-blade-component="svg-path"
                 fill="hsla(217, 56%, 17%, 1)"
                 fill-rule="evenodd"
               />
@@ -686,9 +703,11 @@ exports[`<Card /> should render a Card with Header 1`] = `
           </div>
           <div
             class=""
+            data-blade-component="base-box"
           >
             <div
               class="c6"
+              data-blade-component="base-box"
             >
               <h6
                 class="c7"
@@ -698,9 +717,11 @@ exports[`<Card /> should render a Card with Header 1`] = `
               </h6>
               <div
                 class="c8"
+                data-blade-component="base-box"
               >
                 <div
                   class="c9 c10"
+                  data-blade-component="base-box"
                 >
                   <div
                     class="c11"
@@ -726,6 +747,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
         </div>
         <div
           class="c14"
+          data-blade-component="base-box"
         >
           <div
             class="c15 c16"
@@ -733,6 +755,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
           >
             <div
               class="c11"
+              data-blade-component="base-box"
             >
               <p
                 class="c17"

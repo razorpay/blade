@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<TextArea /> should render TextArea on server and have autofocus on client 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div data-blade-component=\\"textarea\\" class=\\"BaseBox-bmPWx\\"><div class=\\"BaseBox-bmPWx etNGXF\\"><div class=\\"BaseBox-bmPWx grflbK\\"><label for=\\"textarea-undefined-input-undefined\\" style=\\"width:auto;flex-shrink:0;margin-right:16px\\"><div class=\\"BaseBox-bmPWx bqWBik\\"><div class=\\"BaseBox-bmPWx loAJRp\\"><p class=\\"StyledBaseText-dVBfTO hcIYgT\\" data-blade-component=\\"text\\">Enter name</p><div data-blade-component=\\"visually-hidden\\" class=\\"VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 ijVANw\\"><p class=\\"StyledBaseText-dVBfTO eIdQFo\\" data-blade-component=\\"text\\"></p></div></div></div></label></div><div class=\\"BaseBox-bmPWx BaseInputWrapper__StyledBaseInputWrapper-sc-27jk75-0 bsJDmb iWQtne\\"><textarea type=\\"text\\" rows=\\"2\\" id=\\"textarea-undefined-input-undefined\\" autofocus=\\"\\" aria-required=\\"false\\" aria-disabled=\\"false\\" aria-invalid=\\"false\\" aria-describedby=\\"\\" class=\\"StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 jQfoEc\\"></textarea><div class=\\"BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  dGtNgo\\"></div></div></div><div class=\\"BaseBox-bmPWx jgxKDg\\"><div class=\\"BaseBox-bmPWx ctznZr\\"></div></div></div></div>"`;
+exports[`<TextArea /> should render TextArea on server and have autofocus on client 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div data-blade-component=\\"textarea\\" class=\\"BaseBox-bmPWx\\"><div data-blade-component=\\"base-box\\" class=\\"BaseBox-bmPWx etNGXF\\"><div data-blade-component=\\"base-box\\" class=\\"BaseBox-bmPWx grflbK\\"><label for=\\"textarea-undefined-input-undefined\\" style=\\"width:auto;flex-shrink:0;margin-right:16px\\" data-blade-component=\\"form-label\\"><div data-blade-component=\\"base-box\\" class=\\"BaseBox-bmPWx bqWBik\\"><div data-blade-component=\\"base-box\\" class=\\"BaseBox-bmPWx loAJRp\\"><p class=\\"StyledBaseText-dVBfTO hcIYgT\\" data-blade-component=\\"text\\">Enter name</p><div data-blade-component=\\"visually-hidden\\" class=\\"VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 ijVANw\\"><p class=\\"StyledBaseText-dVBfTO eIdQFo\\" data-blade-component=\\"text\\"></p></div></div></div></label></div><div data-blade-component=\\"base-box\\" class=\\"BaseBox-bmPWx BaseInputWrapper__StyledBaseInputWrapper-sc-27jk75-0 bsJDmb iWQtne\\"><textarea type=\\"text\\" rows=\\"2\\" id=\\"textarea-undefined-input-undefined\\" autofocus=\\"\\" data-blade-component=\\"styled-base-input\\" aria-required=\\"false\\" aria-disabled=\\"false\\" aria-invalid=\\"false\\" aria-describedby=\\"\\" class=\\"StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 jQfoEc\\"></textarea><div data-blade-component=\\"base-box\\" class=\\"BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  dGtNgo\\"></div></div></div><div data-blade-component=\\"base-box\\" class=\\"BaseBox-bmPWx jgxKDg\\"><div data-blade-component=\\"base-box\\" class=\\"BaseBox-bmPWx ctznZr\\"></div></div></div></div>"`;
 
 exports[`<TextArea /> should render TextArea on server and have autofocus on client 2`] = `
 <div
@@ -13,19 +13,24 @@ exports[`<TextArea /> should render TextArea on server and have autofocus on cli
   >
     <div
       class="BaseBox-bmPWx etNGXF"
+      data-blade-component="base-box"
     >
       <div
         class="BaseBox-bmPWx grflbK"
+        data-blade-component="base-box"
       >
         <label
+          data-blade-component="form-label"
           for="textarea-1-input-2"
           style="width:auto;flex-shrink:0;margin-right:16px"
         >
           <div
             class="BaseBox-bmPWx bqWBik"
+            data-blade-component="base-box"
           >
             <div
               class="BaseBox-bmPWx loAJRp"
+              data-blade-component="base-box"
             >
               <p
                 class="StyledBaseText-dVBfTO hcIYgT"
@@ -48,6 +53,7 @@ exports[`<TextArea /> should render TextArea on server and have autofocus on cli
       </div>
       <div
         class="BaseBox-bmPWx BaseInputWrapper__StyledBaseInputWrapper-sc-27jk75-0 bsJDmb iWQtne"
+        data-blade-component="base-box"
       >
         <textarea
           aria-describedby=""
@@ -56,20 +62,24 @@ exports[`<TextArea /> should render TextArea on server and have autofocus on cli
           aria-required="false"
           autofocus=""
           class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 jQfoEc"
+          data-blade-component="styled-base-input"
           id="textarea-1-input-2"
           rows="2"
           type="text"
         />
         <div
           class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  dGtNgo"
+          data-blade-component="base-box"
         />
       </div>
     </div>
     <div
       class="BaseBox-bmPWx jgxKDg"
+      data-blade-component="base-box"
     >
       <div
         class="BaseBox-bmPWx ctznZr"
+        data-blade-component="base-box"
       />
     </div>
   </div>

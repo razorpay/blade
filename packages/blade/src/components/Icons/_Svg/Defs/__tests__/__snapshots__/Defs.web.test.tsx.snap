@@ -11,9 +11,12 @@ exports[`<Defs /> should render html defs component 1`] = `
     viewBox="0 0 6 6"
     width="40px"
   >
-    <defs>
+    <defs
+      data-blade-component="svg-defs"
+    >
       <path
         d="M2 2h2v2H2V2"
+        data-blade-component="svg-path"
         fill="#000"
       />
     </defs>

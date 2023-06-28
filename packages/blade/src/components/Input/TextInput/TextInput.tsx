@@ -7,7 +7,7 @@ import type { IconComponent } from '~components/Icons';
 import { CloseIcon } from '~components/Icons';
 import { IconButton } from '~components/Button/IconButton';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import { getPlatformType, isEmpty } from '~utils';
+import { getPlatformType, isEmpty, MetaConstants } from '~utils';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
 import BaseBox from '~components/Box/BaseBox';
 import { Spinner } from '~components/Spinner';
@@ -257,7 +257,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
   return (
     <BaseInput
       id="textinput"
-      componentName="textinput"
+      componentName={MetaConstants.TextInput}
       ref={textInputRef as React.Ref<HTMLInputElement>}
       label={label}
       labelPosition={labelPosition}

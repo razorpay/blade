@@ -263,19 +263,24 @@ exports[`<TextArea /> should render 1`] = `
   >
     <div
       class="c0"
+      data-blade-component="base-box"
     >
       <div
         class="c1"
+        data-blade-component="base-box"
       >
         <label
+          data-blade-component="form-label"
           for="textarea-1-input-2"
           style="width: auto; flex-shrink: 0; margin-right: 16px;"
         >
           <div
             class="c2"
+            data-blade-component="base-box"
           >
             <div
               class="c3"
+              data-blade-component="base-box"
             >
               <p
                 class="c4"
@@ -298,6 +303,7 @@ exports[`<TextArea /> should render 1`] = `
       </div>
       <div
         class="c7 c8"
+        data-blade-component="base-box"
       >
         <textarea
           aria-describedby=""
@@ -305,20 +311,24 @@ exports[`<TextArea /> should render 1`] = `
           aria-invalid="false"
           aria-required="false"
           class="c9"
+          data-blade-component="styled-base-input"
           id="textarea-1-input-2"
           rows="2"
           type="text"
         />
         <div
           class=" c10"
+          data-blade-component="base-box"
         />
       </div>
     </div>
     <div
       class="c11"
+      data-blade-component="base-box"
     >
       <div
         class="c12"
+        data-blade-component="base-box"
       />
     </div>
   </div>
@@ -588,19 +598,24 @@ exports[`<TextArea /> should set number of lines 1`] = `
   >
     <div
       class="c0"
+      data-blade-component="base-box"
     >
       <div
         class="c1"
+        data-blade-component="base-box"
       >
         <label
+          data-blade-component="form-label"
           for="textarea-91-input-92"
           style="width: auto; flex-shrink: 0; margin-right: 16px;"
         >
           <div
             class="c2"
+            data-blade-component="base-box"
           >
             <div
               class="c3"
+              data-blade-component="base-box"
             >
               <p
                 class="c4"
@@ -623,6 +638,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
       </div>
       <div
         class="c7 c8"
+        data-blade-component="base-box"
       >
         <textarea
           aria-describedby=""
@@ -630,20 +646,24 @@ exports[`<TextArea /> should set number of lines 1`] = `
           aria-invalid="false"
           aria-required="false"
           class="c9"
+          data-blade-component="styled-base-input"
           id="textarea-91-input-92"
           rows="3"
           type="text"
         />
         <div
           class=" c10"
+          data-blade-component="base-box"
         />
       </div>
     </div>
     <div
       class="c11"
+      data-blade-component="base-box"
     >
       <div
         class="c12"
+        data-blade-component="base-box"
       />
     </div>
   </div>
