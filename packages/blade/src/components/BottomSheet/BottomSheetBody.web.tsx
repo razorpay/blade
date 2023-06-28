@@ -3,11 +3,12 @@ import React from 'react';
 import { ComponentIds } from './componentIds';
 import { useBottomSheetContext } from './BottomSheetContext';
 import type { BottomSheetBodyProps } from './types';
-import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect';
+import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import BaseBox from '~components/Box/BaseBox';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
-import { isValidAllowedChildren, metaAttribute, MetaConstants } from '~utils';
 import { componentIds } from '~components/ActionList/componentIds';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 
 const bodyStyles: React.CSSProperties = {
   WebkitTapHighlightColor: 'revert',

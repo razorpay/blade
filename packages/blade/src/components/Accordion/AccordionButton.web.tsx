@@ -3,10 +3,12 @@ import { StyledAccordionButton } from './StyledAccordionButton';
 import type { AccordionButtonProps } from './types';
 import { useAccordion } from './AccordionContext';
 import { BaseBox } from '~components/Box/BaseBox';
-import { MetaConstants, assignWithoutSideEffects, makeAccessible, metaAttribute } from '~utils';
+import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import { Heading } from '~components/Typography';
 import { useCollapsible } from '~components/Collapsible/CollapsibleContext';
 import { CollapsibleChevronIcon } from '~components/Collapsible/CollapsibleChevronIcon';
+import { makeAccessible } from '~utils/makeAccessible';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 const _AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps): ReactElement => {
   const { onExpandChange, isExpanded, collapsibleBodyId } = useCollapsible();

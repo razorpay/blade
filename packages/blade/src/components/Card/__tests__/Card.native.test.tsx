@@ -13,7 +13,7 @@ import {
   CardHeaderCounter,
   CardHeaderBadge,
 } from '../';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 import { InfoIcon } from '~components/Icons';
 import { Text } from '~components/Typography';
 import { Counter } from '~components/Counter';

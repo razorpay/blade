@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { makeSize } from '~utils';
+import { makeSize } from '~utils/makeSize';
 
 const Divider = styled.div(({ theme }) => {
   return {

@@ -3,7 +3,7 @@ import userEvents from '@testing-library/user-event';
 import { fireEvent, waitForElementToBeRemoved } from '@testing-library/react';
 import React from 'react';
 import { Modal, ModalBody, ModalFooter, ModalHeader } from '../Modal';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { Badge } from '~components/Badge';
 import { Counter } from '~components/Counter';
 import { Button } from '~components/Button';

@@ -1,5 +1,5 @@
 import FileMinusIcon from './';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<FileMinusIcon />', () => {
   it('should render FileMinusIcon', () => {

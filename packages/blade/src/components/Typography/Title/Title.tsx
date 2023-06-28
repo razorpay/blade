@@ -3,10 +3,10 @@ import { BaseText } from '../BaseText';
 import type { BaseTextProps } from '../BaseText/types';
 import { useValidateAsProp } from '../utils';
 import type { ColorContrast, ColorContrastTypes, TextTypes } from '~tokens/theme/theme';
-import { getPlatformType } from '~utils';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import type { TestID } from '~src/_helpers/types';
+import type { TestID } from '~utils/types';
+import { getPlatformType } from '~utils';
 
 const validAsValues = ['span', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const;
 export type TitleProps = {

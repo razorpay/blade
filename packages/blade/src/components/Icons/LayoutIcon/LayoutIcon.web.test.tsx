@@ -1,5 +1,5 @@
 import LayoutIcon from './';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<LayoutIcon />', () => {
   it('should render LayoutIcon', () => {

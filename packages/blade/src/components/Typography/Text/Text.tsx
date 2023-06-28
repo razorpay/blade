@@ -7,10 +7,9 @@ import { useValidateAsProp } from '../utils';
 import type { Theme } from '~components/BladeProvider';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import { assignWithoutSideEffects } from '~utils';
-
 import type { ColorContrast, ColorContrastTypes, TextTypes } from '~tokens/theme/theme';
-import type { TestID } from '~src/_helpers/types';
+import type { TestID } from '~utils/types';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 const validAsValues = ['p', 'span', 'div', 'abbr', 'figcaption', 'cite', 'q'] as const;
 type TextCommonProps = {

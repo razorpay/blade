@@ -1,5 +1,5 @@
 import { Box } from '../Box';
-import renderWithSSR from '~src/_helpers/testing/renderWithSSR.web';
+import renderWithSSR from '~utils/testing/renderWithSSR.web';
 import { castWebType } from '~utils';
 
 describe('<Box />', () => {

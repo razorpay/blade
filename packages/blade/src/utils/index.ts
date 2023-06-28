@@ -1,26 +1,17 @@
-export * from './cloneDeep';
-export * from './metaAttribute';
 export * from './getColorScheme';
-export * from './getIn';
 export * from './getMediaQuery';
 export * from './getPlatformType';
-export * from './isEmpty';
-export * from './isEqual';
-export * from './isValidAllowedChildren';
-export * from './isPartialMatchObjectKeys';
-export * from './makeAccessible';
-export * from './makeBezier';
-export * from './makeBorderSize';
-export * from './makeMotionTime';
-export * from './makeSize';
-export * from './makeSpace';
-export * from './makeTypographySize';
-export * from './merge';
-export * from './mocks';
-export * from './toTitleCase';
 export * from './useBreakpoint';
 export * from './useColorScheme';
-export * from './usePrevious';
 export * from './platform';
-export * from './assignWithoutSideEffects';
-export * from './omitPropsFromHTML';
+
+// https://github.com/razorpay/blade/pull/1193#discussion_r1212616031
+export * from './makeBorderSize';
+export * from './makeMotionTime';
+export * from './makeSpace';
+export * from './makeTypographySize';
+export * from './makeSize';
+
+// https://github.com/razorpay/blade/pull/1193#issuecomment-1609122359
+export * from './toTitleCase';
+export * from './usePrevious';

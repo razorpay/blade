@@ -1,5 +1,5 @@
 import CloudRainIcon from './';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<CloudRainIcon />', () => {
   it('should render CloudRainIcon', () => {

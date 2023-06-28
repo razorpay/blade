@@ -1,8 +1,8 @@
 import userEvent from '@testing-library/user-event';
 
 import { Alert } from '..';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
-import assertAccessible from '~src/_helpers/testing/assertAccessible.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
+import assertAccessible from '~utils/testing/assertAccessible.web';
 
 describe('<Alert />', () => {
   it('should render', () => {

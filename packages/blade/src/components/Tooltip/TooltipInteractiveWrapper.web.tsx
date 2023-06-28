@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useTooltipContext } from './TooltipContext';
 import BaseBox from '~components/Box/BaseBox';
-import { metaAttribute, MetaConstants } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
 const TooltipInteractiveWrapper = styled(BaseBox).attrs(() => {
   return {

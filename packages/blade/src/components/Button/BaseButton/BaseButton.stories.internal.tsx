@@ -2,7 +2,7 @@ import type { ComponentStory, Meta } from '@storybook/react';
 import type { BaseButtonProps } from './BaseButton';
 import BaseButtonComponent from './BaseButton';
 import iconMap from '~components/Icons/iconMap';
-import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 export default {

@@ -1,5 +1,5 @@
 import MinimizeIcon from './';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<MinimizeIcon />', () => {
   it('should render MinimizeIcon', () => {

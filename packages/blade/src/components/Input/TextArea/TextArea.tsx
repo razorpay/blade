@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/no-autofocus */
 import React from 'react';
+import isEmpty from 'lodash/isEmpty';
 import type { TextInput as TextInputReactNative } from 'react-native';
 import { CloseIcon } from '../../Icons';
 import type { BaseInputProps } from '../BaseInput';
@@ -7,11 +8,12 @@ import { BaseInput } from '../BaseInput';
 import { IconButton } from '~components/Button/IconButton';
 import BaseBox from '~components/Box/BaseBox';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import { getPlatformType, isEmpty, MetaConstants } from '~utils';
+import { MetaConstants } from '~utils/metaAttribute';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
-import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
-import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import type { BladeElementRef } from '~utils/useBladeInnerRef';
+import { useBladeInnerRef } from '~utils/useBladeInnerRef';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { getPlatformType } from '~utils';
 
 type TextAreaProps = Pick<
   BaseInputProps,

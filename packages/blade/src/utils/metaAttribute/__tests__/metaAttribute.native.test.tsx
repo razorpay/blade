@@ -1,6 +1,6 @@
 import { metaAttribute } from '..';
 import { Button } from '~components/Button';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('metaAttribute', () => {
   it('add the correct meta attributes', () => {

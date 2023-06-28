@@ -1,5 +1,5 @@
 import BoldIcon from './';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<BoldIcon />', () => {
   it('should render BoldIcon', () => {

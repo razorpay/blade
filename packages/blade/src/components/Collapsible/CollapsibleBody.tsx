@@ -3,8 +3,10 @@ import { CollapsibleBodyContent } from './CollapsibleBodyContent';
 import { useCollapsible } from './CollapsibleContext';
 import type { BaseBoxProps } from '~components/Box/BaseBox';
 import BaseBox from '~components/Box/BaseBox';
-import { MetaConstants, assignWithoutSideEffects, makeAccessible, metaAttribute } from '~utils';
-import type { TestID } from '~src/_helpers/types';
+import type { TestID } from '~utils/types';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { makeAccessible } from '~utils/makeAccessible';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 type CollapsibleBodyProps = {
   children: ReactNode;

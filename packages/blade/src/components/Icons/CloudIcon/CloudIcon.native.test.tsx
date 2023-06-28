@@ -1,5 +1,5 @@
 import CloudIcon from './';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<CloudIcon />', () => {
   it('should render CloudIcon', () => {

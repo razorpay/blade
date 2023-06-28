@@ -17,13 +17,16 @@ import type { IconComponent } from '~components/Icons';
 import { useDropdown } from '~components/Dropdown/useDropdown';
 import type { Feedback } from '~tokens/theme/theme';
 import { Text } from '~components/Typography';
-import { isReactNative, makeAccessible, makeSize, metaAttribute, MetaConstants } from '~utils';
+import { isReactNative } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { Checkbox } from '~components/Checkbox';
 import { size } from '~tokens/global';
 import type { DropdownProps } from '~components/Dropdown';
-import type { StringChildrenType, TestID } from '~src/_helpers/types';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import type { StringChildrenType, TestID } from '~utils/types';
 import { useTheme } from '~components/BladeProvider';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { makeSize } from '~utils/makeSize';
+import { makeAccessible } from '~utils/makeAccessible';
 
 type ActionListItemProps = {
   title: string;

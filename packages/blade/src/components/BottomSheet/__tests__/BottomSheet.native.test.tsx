@@ -3,7 +3,7 @@
 import React from 'react';
 import { BottomSheet, BottomSheetHeader, BottomSheetFooter } from '../BottomSheet';
 import { Counter } from '../../Counter';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 import { Button } from '~components/Button';
 import { Badge } from '~components/Badge';
 

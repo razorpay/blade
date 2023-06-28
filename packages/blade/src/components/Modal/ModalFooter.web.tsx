@@ -2,7 +2,8 @@ import React from 'react';
 import { BaseFooter } from '../BaseHeaderFooter/BaseFooter';
 import type { BaseFooterProps } from '../BaseHeaderFooter/BaseFooter';
 import { Box } from '~components/Box';
-import { MetaConstants, assignWithoutSideEffects } from '~utils';
+import { MetaConstants } from '~utils/metaAttribute';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 type ModalFooterProps = Pick<BaseFooterProps, 'children'>;
 

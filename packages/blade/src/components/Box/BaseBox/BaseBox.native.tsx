@@ -2,7 +2,7 @@ import { View } from 'react-native';
 import styled from 'styled-components/native';
 import { getBaseBoxStyles } from './baseBoxStyles';
 import type { BaseBoxProps } from './types';
-import { metaAttribute, MetaConstants } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
 /**
  * Some prop go to React Native DOM and fail with type errors.
