@@ -10,8 +10,6 @@ import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { metaAttribute, getPlatformType, MetaConstants, isEmpty, makeSize } from '~utils';
-import { useTheme } from '~components/BladeProvider';
-import { size } from '~tokens/global';
 
 type FormInputOnEventWithIndex = ({
   name,
@@ -131,7 +129,6 @@ const OTPInput = ({
   const [inputType, setInputType] = useState<('password' | undefined)[]>([]);
   const isLabelLeftPositioned = labelPosition === 'left';
   const { inputId, helpTextId, errorTextId, successTextId } = useFormId('otp');
-  const { platform } = useTheme();
 
   useEffect(() => {
     // Effect for calling `onOTPFilled` callback
