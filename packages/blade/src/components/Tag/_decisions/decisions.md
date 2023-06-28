@@ -35,8 +35,10 @@ type TagProps = {
 
   /**
    * Callback when close icon on Tag is clicked
+   *
+   * Gives a `value` argument which has same text as `children`
    */
-  onDismiss?: () => void;
+  onDismiss?: ({ value }: { value: TagProps['children'] }) => void;
 
   /**
    * Text that renders inside Tag
@@ -124,7 +126,7 @@ function App() {
   return (
     <TextInput
       tagsSlot={tags.map((tagName, index) => (
-        <Tag onDismiss={() => removeTag(tagName)}>{tagName}</Tag>
+        <Tag onDismiss={({ value }) => removeTag(value)}>{tagName}</Tag>
       ))}
       value={inputValue}
       onChange={({ value }) => setInputValue(value)}
