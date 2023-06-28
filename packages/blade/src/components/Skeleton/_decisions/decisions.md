@@ -192,10 +192,20 @@ Check the motion [here](https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade
 
 https://github.com/razorpay/blade/assets/35374649/8298efde-f977-4aa3-bc2d-92fb50a8c830
 
+
+## Accessibility
+
+- All Skeleton nodes will have aria-hidden to hide them from screen readers
+- All Skeleton nodes will have `cursor: progress`
+- Consumers will have to add aria-busy in the respective container which is being rendered
+  - We cannot automatically added this because we will end up adding multiple aria-busy atts to all the <Skeleton \/> nodes.
+- Or: consumers can also use the <VisuallyHidden \/> element to add hidden `loading...` text in DOM.
+
+> Reference: https://adrianroselli.com/2020/11/more-accessible-skeletons.html
+
 ## Open Questions
 
 - How will Skeleton loader work with existing components like ModalHeader/Footer etc?
-- 
 
 ## References
 
