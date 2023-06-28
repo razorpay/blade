@@ -10,7 +10,7 @@ export type DividerProps = {
    *
    * @default 'solid'
    */
-  type?: 'solid' | 'dashed';
+  style?: 'solid' | 'dashed';
   /**
    * Sets the variant of divider
    *
@@ -29,4 +29,8 @@ export type DividerProps = {
    * @default 'low'
    */
   contrast?: 'low' | 'high';
+};
+
+export type StyledDividerProps = Required<Omit<DividerProps, 'style'>> & {
+  type: 'solid' | 'dashed';
 };
