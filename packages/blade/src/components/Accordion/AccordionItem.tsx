@@ -1,7 +1,7 @@
 import type { ReactElement, ReactNode } from 'react';
-import { Divider } from '../Divider';
 import { AccordionButton } from './AccordionButton';
 import { useAccordion } from './AccordionContext';
+import { Divider } from '~components/Divider';
 import { BaseBox } from '~components/Box/BaseBox';
 import type { IconComponent } from '~components/Icons';
 import { Text } from '~components/Typography';

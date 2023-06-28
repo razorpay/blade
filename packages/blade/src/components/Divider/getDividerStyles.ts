@@ -1,7 +1,7 @@
 import type { CSSObject } from 'styled-components';
-import { makeSize } from '../../utils/makeSize';
-import type { ColorContrast } from '../../tokens/theme/theme';
 import type { DividerProps, StyledDividerProps } from './types';
+import { makeSize } from '~utils/makeSize';
+import type { ColorContrast } from '~tokens/theme/theme';
 import type { Theme } from '~components/BladeProvider';
 
 const makeStyledDividerProps = ({

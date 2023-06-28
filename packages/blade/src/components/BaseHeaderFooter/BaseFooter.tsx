@@ -1,5 +1,5 @@
 import React from 'react';
-import { Divider } from '../Divider';
+import { Divider } from '~components/Divider';
 import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { metaAttribute } from '~utils/metaAttribute';

@@ -2,9 +2,9 @@
 import React from 'react';
 import type { ButtonProps } from '../Button';
 import { Button } from '../Button';
-import { Divider } from '../Divider';
 import { useVerifyInsideCard, useVerifyAllowedComponents } from './CardContext';
 import { ComponentIds } from './Card';
+import { Divider } from '~components/Divider';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import { useBreakpoint } from '~utils';
