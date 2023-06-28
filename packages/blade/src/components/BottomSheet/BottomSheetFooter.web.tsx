@@ -1,11 +1,11 @@
 import React from 'react';
 import { useBottomSheetContext } from './BottomSheetContext';
 import BaseBox from '~components/Box/BaseBox';
-import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect';
+import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { useTheme } from '~components/BladeProvider';
 import type { BaseFooterProps } from '~components/BaseHeaderFooter/BaseFooter';
 import { BaseFooter } from '~components/BaseHeaderFooter/BaseFooter';
-import { metaAttribute, MetaConstants } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
 const BottomSheetFooter = ({ children }: BaseFooterProps): React.ReactElement => {
   const { theme } = useTheme();

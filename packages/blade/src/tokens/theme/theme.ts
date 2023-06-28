@@ -1,4 +1,4 @@
-import type { StringWithAutocomplete } from '~src/_helpers/types';
+import type { StringWithAutocomplete } from '~utils/types';
 import type {
   Border,
   Breakpoints,

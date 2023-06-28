@@ -3,8 +3,8 @@ import { fireEvent } from '@testing-library/react';
 import userEvents from '@testing-library/user-event';
 import React from 'react';
 import BaseButton from '../BaseButton';
-import assertAccessible from '~src/_helpers/testing/assertAccessible.web';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import assertAccessible from '~utils/testing/assertAccessible.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { CloseIcon, CreditCardIcon } from '~components/Icons';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());

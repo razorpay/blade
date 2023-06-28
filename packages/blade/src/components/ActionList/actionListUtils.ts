@@ -2,8 +2,9 @@ import React from 'react';
 import { componentIds } from './componentIds';
 import type { ActionListItemProps } from './ActionListItem';
 import type { OptionsType } from '~components/Dropdown/useDropdown';
-import { getComponentId, isReactNative, isValidAllowedChildren } from '~utils';
+import { isReactNative } from '~utils';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
+import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 
 /**
  * Returns if there is ActionListItem after ActionListSection

@@ -1,5 +1,5 @@
 import TrendingDownIcon from '.';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<TrendingDownIcon />', () => {
   it('should render TrendingDownIcon', () => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Checkbox } from '../Checkbox';
-import renderWithSSR from '~src/_helpers/testing/renderWithSSR.web';
+import renderWithSSR from '~utils/testing/renderWithSSR.web';
 
 describe('<Checkbox />', () => {
   it('should render checkbox with error validationState', () => {

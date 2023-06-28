@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getPlatformType } from '~utils';
+import { getPlatformType } from './getPlatformType';
 
 const isBrowser = getPlatformType() == 'browser';
 

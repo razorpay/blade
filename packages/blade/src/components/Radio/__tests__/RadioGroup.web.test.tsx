@@ -2,9 +2,9 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import userEvents from '@testing-library/user-event';
 import React from 'react';
-import renderWithTheme from '../../../_helpers/testing/renderWithTheme.web';
 import { Radio } from '../Radio';
 import { RadioGroup } from '../RadioGroup/RadioGroup';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());

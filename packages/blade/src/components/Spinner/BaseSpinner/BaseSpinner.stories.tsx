@@ -4,7 +4,7 @@ import { Link } from '@storybook/design-system';
 import type { ReactElement } from 'react';
 import type { BaseSpinnerProps } from './BaseSpinner';
 import { BaseSpinner as BaseSpinnerComponent } from './BaseSpinner';
-import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
+import useMakeFigmaURL from '~utils/storybook/useMakeFigmaURL';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const Page = (): ReactElement => {

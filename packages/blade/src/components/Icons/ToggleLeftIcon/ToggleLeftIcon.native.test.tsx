@@ -1,5 +1,5 @@
 import ToggleLeftIcon from './';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<ToggleLeftIcon />', () => {
   it('should render ToggleLeftIcon', () => {

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import BaseBox from '../BaseBox';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { useStyledProps, getStyledProps } from '~components/Box/styledProps';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 type MyComponentWithStyledProps = {
   test: 'working???';

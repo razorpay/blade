@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react';
 import type { CircleProps } from './types';
-import { metaAttribute } from '~utils';
+import { metaAttribute } from '~utils/metaAttribute';
 
 const Circle = ({ cx, cy, x, y, r, fill, stroke, strokeWidth }: CircleProps): ReactElement => {
   return (

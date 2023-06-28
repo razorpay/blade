@@ -1,5 +1,5 @@
 import RotateCounterClockWiseIcon from '.';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<RotateCounterClockWiseIcon />', () => {
   it('should render RotateCounterClockWiseIcon', () => {

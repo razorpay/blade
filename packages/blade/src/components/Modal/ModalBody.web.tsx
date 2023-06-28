@@ -2,7 +2,7 @@
 import React from 'react';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 import BaseBox from '~components/Box/BaseBox';
-import { MetaConstants, metaAttribute } from '~utils';
+import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import type { SpacingValueType } from '~components/Box/BaseBox';
 
 type ModalBodyProps = {

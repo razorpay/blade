@@ -1,5 +1,5 @@
 import WindIcon from './';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<WindIcon />', () => {
   it('should render WindIcon', () => {

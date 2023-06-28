@@ -3,7 +3,7 @@
 import { SectionList } from 'react-native';
 import styled from 'styled-components/native';
 import { getBaseListBoxWrapperStyles } from './getBaseListBoxWrapperStyles';
-import { makeSize } from '~utils';
+import { makeSize } from '~utils/makeSize';
 
 // It's not really styled here but have to keep name same since we have to style this with overflowY and maxWidth in web
 const StyledListBoxWrapper = styled(SectionList)<{

@@ -1,7 +1,7 @@
 import type { LinkProps } from '../Link';
 import { Link } from '../Link';
 import { useListContext } from './ListContext';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 type ListItemLinkProps = Exclude<LinkProps, 'size' | 'variant' | 'isDisabled'>;
 

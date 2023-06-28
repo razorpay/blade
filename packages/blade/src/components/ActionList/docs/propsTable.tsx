@@ -1,7 +1,7 @@
 import type { ActionListItemProps, ActionListSectionProps } from '../ActionListItem';
 import type { ActionListProps } from '../ActionList';
 import { Code } from '~components/Typography';
-import { ScrollLink } from '~src/_helpers/storybook/ScrollLink';
+import { ScrollLink } from '~utils/storybook/ScrollLink';
 
 type PropsTableType<T> = Record<
   keyof Omit<T, 'testID' | '_hideDivider' | '_index'>,

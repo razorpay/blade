@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 import type { ReactElement } from 'react';
 import type { SvgProps } from './types';
-import { metaAttribute, makeAccessible, MetaConstants } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useStyledProps } from '~components/Box/styledProps';
+import { makeAccessible } from '~utils/makeAccessible';
 
 const StyledSvg = styled.svg<SvgProps>((props) => {
   const styledPropsCSSObject = useStyledProps(props);

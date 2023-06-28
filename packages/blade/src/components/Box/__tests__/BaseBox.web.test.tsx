@@ -1,6 +1,6 @@
 import BaseBox from '../BaseBox';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
-import { metaAttribute, MetaConstants } from '~utils';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
 describe('<BaseBox />', () => {
   it('should render BaseBox component with the correct styles', () => {
