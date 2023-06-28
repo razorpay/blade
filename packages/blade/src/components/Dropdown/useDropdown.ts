@@ -175,6 +175,11 @@ type UseDropdownReturnValue = DropdownContextType & {
   ) => void;
 
   /**
+   * Removes the option with given optionsIndex
+   */
+  removeOption: (index: number) => void;
+
+  /**
    * value that is used during form submissions
    */
   value: string;
@@ -227,6 +232,16 @@ const useDropdown = (): UseDropdownReturnValue => {
       setSelectedIndices(indices);
     }
   };
+
+  const removeOption = (index: number): void => {
+    // remove existing item
+    const existingItemIndex = selectedIndices.indexOf(index);
+    setIndices([
+      ...selectedIndices.slice(0, existingItemIndex),
+      ...selectedIndices.slice(existingItemIndex + 1),
+    ]);
+  };
+
   /**
    * Marks the given index as selected.
    *
@@ -247,12 +262,7 @@ const useDropdown = (): UseDropdownReturnValue => {
 
     if (selectionType === 'multiple') {
       if (selectedIndices.includes(index)) {
-        // remove existing item
-        const existingItemIndex = selectedIndices.indexOf(index);
-        setIndices([
-          ...selectedIndices.slice(0, existingItemIndex),
-          ...selectedIndices.slice(existingItemIndex + 1),
-        ]);
+        removeOption(index);
         isSelected = false;
       } else {
         setIndices([...selectedIndices, index]);
@@ -434,6 +444,7 @@ const useDropdown = (): UseDropdownReturnValue => {
     close,
     selectedIndices,
     setSelectedIndices,
+    removeOption,
     setControlledValueIndices,
     onTriggerClick,
     onTriggerKeydown,

@@ -13,6 +13,7 @@ import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
 import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 import { componentIds } from '~components/Dropdown/dropdownUtils';
+import { Tag } from '~components/Tag';
 
 type SelectInputProps = Pick<
   BaseInputProps,
@@ -75,6 +76,7 @@ const _SelectInput = (
     setIsControlled,
     selectionType,
     selectedIndices,
+    removeOption,
   } = useDropdown();
 
   const inputRef = useBladeInnerRef(ref, {
@@ -173,6 +175,21 @@ const _SelectInput = (
     setHasLabelOnLeft(props.labelPosition === 'left');
   }, [props.labelPosition, setHasLabelOnLeft]);
 
+  const getTags = (): React.ReactElement[] => {
+    return selectedIndices.map((selectedIndex) => (
+      <Tag
+        key={selectedIndex}
+        onDismiss={() => {
+          // @TOOD
+          // - Handle blur close of tags
+          removeOption(selectedIndex);
+        }}
+      >
+        {options[selectedIndex].title}
+      </Tag>
+    ));
+  };
+
   return (
     <BaseBox position="relative">
       {!isReactNative() ? (
@@ -194,11 +211,12 @@ const _SelectInput = (
       <BaseInput
         {...baseInputProps}
         as="button"
+        tagsSlot={getTags()}
+        value={selectionType === 'multiple' ? undefined : displayValue}
         hideLabelText={props.label?.length === 0}
         componentName={MetaConstants.SelectInput}
         ref={!isReactNative() ? (triggererRef as React.MutableRefObject<HTMLInputElement>) : null}
         textAlign="left"
-        value={displayValue}
         placeholder={placeholder}
         id={`${dropdownBaseId}-trigger`}
         labelId={`${dropdownBaseId}-label`}

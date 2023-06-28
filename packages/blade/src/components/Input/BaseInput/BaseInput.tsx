@@ -235,6 +235,10 @@ export type BaseInputProps = FormInputLabelProps &
      * sets the autocapitalize behavior for the input
      */
     autoCapitalize?: 'none' | 'sentences' | 'words' | 'characters';
+    /**
+     * A slot for adding tags to input
+     */
+    tagsSlot?: React.ReactElement | React.ReactElement[];
   } & TestID &
   Platform.Select<{
     native: {
@@ -535,6 +539,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
       placeholder,
       type = 'text',
       defaultValue,
+      tagsSlot,
       name,
       value,
       onFocus,
@@ -682,6 +687,16 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
             isLabelLeftPositioned={isLabelLeftPositioned}
           >
             <BaseInputVisuals leadingIcon={leadingIcon} prefix={prefix} isDisabled={isDisabled} />
+            <BaseBox
+              paddingLeft="spacing.3"
+              alignSelf="center"
+              justifyContent="center"
+              display="flex"
+              flexDirection="row"
+              gap="spacing.2"
+            >
+              {tagsSlot}
+            </BaseBox>
             <StyledBaseInput
               as={isReactNative ? undefined : as}
               id={inputId}
