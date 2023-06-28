@@ -155,7 +155,7 @@ Similar to Amount component we can expose a `type` prop which will have predefin
 
 A real world usecase might look something like:
 
-<img src="./real-usage-demo-before.png" alt="Card example without skeleton" width="70%" />
+<img src="./real-usage-demo-before.png" alt="Card example without skeleton" width="50%" />
 
 ```jsx
 <Box
@@ -176,7 +176,7 @@ A real world usecase might look something like:
 </Box>
 ```
 
-<img src="./real-usage-demo-after.png" alt="Card example with Skeleton" width="70%" />
+<img src="./real-usage-demo-after.png" alt="Card example with Skeleton" width="50%" />
 
 **Block components:**
 
@@ -185,6 +185,12 @@ And for block components we won't give any predefined sizes instead consumers ca
 ```jsx
 <Skeleton width="100px" height="100px" borderRadius="medium" />
 ```
+
+## Motion
+
+Check the motion [here](https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?type=design&node-id=16502-258345&scaling=min-zoom&page-id=16498%3A256331):
+
+![](./skeleton-motion.mov)
 
 ## Open Questions
 
