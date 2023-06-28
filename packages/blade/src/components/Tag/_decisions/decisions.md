@@ -14,8 +14,8 @@ These are set of interactive keywords that help organise & categorise objects. T
 ```jsx
 <Tag
   size="medium"
-  onDismiss={() => {
-    console.log('Close Icon Clicked');
+  onDismiss={({ value }) => {
+    console.log('Close Icon Clicked', value);
   }}
 >
   Unpaid
