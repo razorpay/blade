@@ -7,9 +7,11 @@ import { getActionListProperties } from './actionListUtils';
 import { StyledActionList } from './styles/StyledActionList';
 import { ActionListBox } from './ActionListBox';
 import { componentIds } from './componentIds';
-import { assignWithoutSideEffects, makeAccessible, metaAttribute, MetaConstants } from '~utils';
-import type { TestID } from '~src/_helpers/types';
+import { makeAccessible } from '~utils/makeAccessible';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import type { TestID } from '~utils/types';
 import type { SurfaceLevels } from '~tokens/theme/theme';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
 type ActionListContextProp = Pick<ActionListProps, 'surfaceLevel'>;
 const ActionListContext = React.createContext<ActionListContextProp>({ surfaceLevel: 2 });

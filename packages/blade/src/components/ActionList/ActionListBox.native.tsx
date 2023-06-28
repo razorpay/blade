@@ -6,9 +6,9 @@ import { SectionList } from 'react-native';
 import { StyledListBoxWrapper } from './styles/StyledListBoxWrapper';
 import { ActionListItem, ActionListSection, ActionListSectionDivider } from './ActionListItem';
 import type { SectionData } from './actionListUtils';
-import { makeAccessible } from '~utils';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 import { useBottomSheetContext } from '~components/BottomSheet/BottomSheetContext';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { makeAccessible } from '~utils/makeAccessible';
 
 type ActionListBoxProps = {
   childrenWithId?: React.ReactNode[] | null;

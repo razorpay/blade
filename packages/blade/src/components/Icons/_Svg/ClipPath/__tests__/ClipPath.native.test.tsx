@@ -1,7 +1,7 @@
 import ClipPath from '..';
 import Path from '../../Path';
 import Svg from '../../Svg';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<ClipPath />', () => {
   it('should render react-native-svg ClipPath component', () => {

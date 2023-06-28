@@ -1,5 +1,5 @@
 import { Spinner } from '../Spinner';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<Spinner />', () => {
   it('should render Spinner with default props', () => {

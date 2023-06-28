@@ -12,11 +12,11 @@ import {
 
 import { LinkToStorybook } from './LinkToStorybook';
 import { Heading, Text } from '~components/Typography';
-import { makeSpace } from '~utils';
 import BaseBox from '~components/Box/BaseBox';
 import type { BadgeProps } from '~components/Badge';
 import { Badge } from '~components/Badge';
 import { Link } from '~components/Link';
+import { makeSpace } from '~utils/makeSpace';
 import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
 
 type ComponentStatuses =

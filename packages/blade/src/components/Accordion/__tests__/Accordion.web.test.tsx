@@ -3,8 +3,8 @@ import { useState } from 'react';
 import { waitFor } from '@testing-library/react';
 import { AccordionItem } from '../AccordionItem';
 import { Accordion } from '../Accordion';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
-import assertAccessible from '~src/_helpers/testing/assertAccessible.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
+import assertAccessible from '~utils/testing/assertAccessible.web';
 import { Button } from '~components/Button';
 
 describe('<Accordion />', () => {

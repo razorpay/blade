@@ -1,3 +1,6 @@
+/**
+ * @deprecated This utility will be deprecated in subsequent version.
+ */
 export const toTitleCase = (inputString: string): string =>
   inputString
     .toLowerCase()

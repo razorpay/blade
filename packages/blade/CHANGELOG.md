@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 8.12.1
+
+### Patch Changes
+
+- fa8b2361: feat(blade): add and update data attributes in child components
+
 ## 8.12.0
 
 ### Minor Changes

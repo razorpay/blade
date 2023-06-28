@@ -1,7 +1,8 @@
 import React from 'react';
 import { Divider } from '../Divider';
 import BaseBox from '~components/Box/BaseBox';
-import { assignWithoutSideEffects, metaAttribute } from '~utils';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { metaAttribute } from '~utils/metaAttribute';
 
 type BaseFooterProps = {
   children: React.ReactNode;

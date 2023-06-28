@@ -6,9 +6,6 @@ import React from 'react';
 import { Text } from '../Typography';
 import type { SwitchProps } from './';
 import { Switch as SwitchComponent } from './';
-import { Sandbox } from '~src/_helpers/storybook/Sandbox';
-import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
-import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { BaseBox } from '~components/Box/BaseBox';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
@@ -16,6 +13,9 @@ import { GlobeIcon, MapPinIcon, WifiIcon } from '~components/Icons';
 import { Card, CardBody } from '~components/Card';
 import { Alert } from '~components/Alert';
 import { Link } from '~components/Link';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
+import { Sandbox } from '~utils/storybook/Sandbox';
+import type { BladeElementRef } from '~utils/types';
 
 const Page = (): React.ReactElement => {
   return (

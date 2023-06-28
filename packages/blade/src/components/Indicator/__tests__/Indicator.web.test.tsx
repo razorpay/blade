@@ -1,6 +1,6 @@
 import { Indicator } from '..';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
-import assertAccessible from '~src/_helpers/testing/assertAccessible.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
+import assertAccessible from '~utils/testing/assertAccessible.web';
 
 describe('<Indicator />', () => {
   it('should render', () => {

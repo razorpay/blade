@@ -3,7 +3,7 @@ import type { ReactElement } from 'react';
 import { useState } from 'react';
 
 import { BaseInput } from '..';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 import { CloseIcon, EyeIcon } from '~components/Icons';
 
 describe('<BaseInput />', () => {

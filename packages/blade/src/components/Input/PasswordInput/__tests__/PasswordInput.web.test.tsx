@@ -2,8 +2,8 @@ import userEvent from '@testing-library/user-event';
 import type { ReactElement } from 'react';
 import { useRef, useState } from 'react';
 import { PasswordInput } from '..';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
-import assertAccessible from '~src/_helpers/testing/assertAccessible.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
+import assertAccessible from '~utils/testing/assertAccessible.web';
 import { Button } from '~components/Button';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());

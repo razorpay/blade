@@ -1,12 +1,12 @@
 import React from 'react';
 import { ActionList, ActionListItem, ActionListSection, Playground } from './stories';
 import { actionListPropsTables } from './propsTable';
-import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Code, Title } from '~components/Typography';
-import { Sandbox, VerticalSandbox } from '~src/_helpers/storybook/Sandbox';
+import { Sandbox, VerticalSandbox } from '~utils/storybook/Sandbox';
 import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
-import { ArgsTable } from '~src/_helpers/storybook/ArgsTable';
+import { ArgsTable } from '~utils/storybook/ArgsTable';
 
 const ActionListDocs = (): JSX.Element => {
   return (

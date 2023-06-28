@@ -5,8 +5,8 @@ import type { CounterProps } from './Counter';
 import { Counter as CounterComponent } from './Counter';
 import BaseBox from '~components/Box/BaseBox';
 import { Text as BladeText } from '~components/Typography';
-import { Sandbox } from '~src/_helpers/storybook/Sandbox';
-import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import { Sandbox } from '~utils/storybook/Sandbox';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const Page = (): ReactElement => {

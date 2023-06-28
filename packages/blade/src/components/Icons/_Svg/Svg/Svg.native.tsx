@@ -4,8 +4,9 @@ import type { ReactElement } from 'react';
 import { Svg as SvgNative } from 'react-native-svg';
 import React from 'react';
 import type { SvgProps } from './types';
-import { makeAccessible, metaAttribute, MetaConstants } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useStyledProps } from '~components/Box/styledProps';
+import { makeAccessible } from '~utils/makeAccessible';
 
 const StyledSvg = styled(SvgNative)((props) => {
   const styledPropsCSSObject = useStyledProps(props);

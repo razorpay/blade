@@ -1,7 +1,7 @@
 import type { CSSObject } from 'styled-components';
 import type { Theme } from '~components/BladeProvider';
+import { makeSize } from '~utils/makeSize';
 import { size } from '~tokens/global';
-import { makeSize } from '~utils';
 
 const getBaseListBoxWrapperStyles = (props: {
   theme: Theme;

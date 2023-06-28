@@ -4,11 +4,13 @@ import { AccordionButton } from './AccordionButton';
 import { useAccordion } from './AccordionContext';
 import { BaseBox } from '~components/Box/BaseBox';
 import type { IconComponent } from '~components/Icons';
-import type { TestID } from '~src/_helpers/types';
 import { Text } from '~components/Typography';
-import { MetaConstants, isReactNative, makeAccessible, metaAttribute } from '~utils';
+import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
+import { isReactNative } from '~utils';
 import { Collapsible } from '~components/Collapsible/Collapsible';
 import { CollapsibleBody } from '~components/Collapsible';
+import type { TestID } from '~utils/types';
+import { makeAccessible } from '~utils/makeAccessible';
 
 type AccordionItemProps = {
   /**

@@ -1,7 +1,8 @@
+import getIn from 'lodash/get';
 import styled, { css, keyframes } from 'styled-components';
 import { motion as spinnerMotion } from './spinnerTokens';
 import BaseBox from '~components/Box/BaseBox';
-import { getIn, makeMotionTime } from '~utils';
+import { makeMotionTime } from '~utils/makeMotionTime';
 
 const rotate = keyframes`
   from {

@@ -1,5 +1,5 @@
 import InvoicesIcon from './';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<InvoicesIcon />', () => {
   it('should render InvoicesIcon', () => {

@@ -1,6 +1,6 @@
+import cloneDeep from 'lodash/cloneDeep';
 import overrideTheme from '../overrideTheme';
 import { paymentTheme, bankingTheme } from '../';
-import { cloneDeep } from '../../../utils';
 import type { ThemeTokens } from '../../theme';
 
 const invalidOverridesObjectError =

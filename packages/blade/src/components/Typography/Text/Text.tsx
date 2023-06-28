@@ -7,10 +7,9 @@ import { useValidateAsProp } from '../utils';
 import type { Theme } from '~components/BladeProvider';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import { assignWithoutSideEffects } from '~utils';
-
 import type { ColorContrast, ColorContrastTypes, TextTypes } from '~tokens/theme/theme';
-import type { TestID } from '~src/_helpers/types';
+import type { TestID } from '~utils/types';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 const validAsValues = ['p', 'span', 'div', 'abbr', 'figcaption', 'cite', 'q'] as const;
 type TextCommonProps = {
@@ -27,6 +26,7 @@ type TextCommonProps = {
    */
   color?: BaseTextProps['color'];
   textAlign?: BaseTextProps['textAlign'];
+  textDecorationLine?: BaseTextProps['textDecorationLine'];
 } & TestID &
   StyledPropsBlade;
 
@@ -59,7 +59,15 @@ export type TextProps<T> = T extends {
 type GetTextPropsReturn = Omit<BaseTextProps, 'children'>;
 type GetTextProps<T extends { variant: TextVariant }> = Pick<
   TextProps<T>,
-  'type' | 'variant' | 'weight' | 'size' | 'contrast' | 'color' | 'testID' | 'textAlign'
+  | 'type'
+  | 'variant'
+  | 'weight'
+  | 'size'
+  | 'contrast'
+  | 'color'
+  | 'testID'
+  | 'textAlign'
+  | 'textDecorationLine'
 >;
 const getTextProps = <T extends { variant: TextVariant }>({
   variant,
@@ -70,6 +78,7 @@ const getTextProps = <T extends { variant: TextVariant }>({
   contrast,
   testID,
   textAlign,
+  textDecorationLine,
 }: GetTextProps<T>): GetTextPropsReturn => {
   const colorContrast: keyof ColorContrast = contrast ? `${contrast!}Contrast` : 'lowContrast';
   const props: GetTextPropsReturn = {
@@ -82,6 +91,7 @@ const getTextProps = <T extends { variant: TextVariant }>({
     componentName: 'text',
     testID,
     textAlign,
+    textDecorationLine,
   };
 
   if (variant === 'body') {
@@ -127,6 +137,7 @@ const _Text = <T extends { variant: TextVariant }>({
   color,
   testID,
   textAlign,
+  textDecorationLine,
   ...styledProps
 }: TextProps<T>): ReactElement => {
   const props: Omit<BaseTextProps, 'children'> = {
@@ -141,6 +152,7 @@ const _Text = <T extends { variant: TextVariant }>({
       contrast,
       testID,
       textAlign,
+      textDecorationLine,
     }),
   };
 

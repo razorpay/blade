@@ -4,7 +4,7 @@ import { Collapsible } from '../Collapsible';
 import { CollapsibleBody } from '../CollapsibleBody';
 import { CollapsibleButton } from '../CollapsibleButton';
 import { CollapsibleLink } from '../CollapsibleLink';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 import { Amount } from '~components/Amount';
 import { Box } from '~components/Box';
 import { Text } from '~components/Typography';

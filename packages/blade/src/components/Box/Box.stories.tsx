@@ -5,8 +5,8 @@ import type { BoxRefType } from './BaseBox/types';
 import type { BoxProps } from '.';
 import { Box } from '.';
 import { Text, Title } from '~components/Typography';
-import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
-import { LinkToStorybook } from '~src/_helpers/storybook/LinkToStorybook';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
+import { LinkToStorybook } from '~utils/storybook/LinkToStorybook';
 import { castWebType, isReactNative } from '~utils';
 import { Button } from '~components/Button';
 

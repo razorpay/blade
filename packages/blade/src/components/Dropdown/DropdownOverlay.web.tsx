@@ -7,13 +7,14 @@ import type { DropdownPosition } from './dropdownUtils';
 import { componentIds, getDropdownOverflowMiddleware } from './dropdownUtils';
 import { useDropdown } from './useDropdown';
 import BaseBox from '~components/Box/BaseBox';
-import { makeMotionTime, makeSize, metaAttribute, MetaConstants } from '~utils';
 import { useTheme } from '~components/BladeProvider';
 // Reading directly because its not possible to get theme object on top level to be used in keyframes
 import { spacing, size } from '~tokens/global';
 import type { SpacingValueType } from '~components/Box/BaseBox';
-import type { TestID } from '~src/_helpers/types';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import { makeMotionTime, makeSize } from '~utils';
+import type { TestID } from '~utils/types';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 const dropdownFadeIn = keyframes`
 from {

@@ -1,12 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/prefer-ts-expect-error */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
+import getIn from 'lodash/get';
 import type { SyntheticEvent } from 'react';
 import React, { useState } from 'react';
 import type { CSSObject } from 'styled-components';
 import type { GestureResponderEvent } from 'react-native';
 import StyledBaseLink from './StyledBaseLink';
-import useInteraction from '~src/hooks/useInteraction';
+import useInteraction from '~utils/useInteraction';
 import type { IconComponent, IconProps } from '~components/Icons';
 import type { Theme } from '~components/BladeProvider';
 import { useTheme } from '~components/BladeProvider';
@@ -16,23 +17,19 @@ import type {
   DotNotationSpacingStringToken,
   StringChildrenType,
   TestID,
-} from '~src/_helpers/types';
+  BladeElementRef,
+} from '~utils/types';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { Platform } from '~utils';
-import {
-  isReactNative,
-  assignWithoutSideEffects,
-  makeAccessible,
-  getIn,
-  metaAttribute,
-  MetaConstants,
-} from '~utils';
+import { isReactNative } from '~utils';
 import type { LinkActionStates } from '~tokens/theme/theme';
 import type { DurationString, EasingString, FontSize, Typography } from '~tokens/global';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
+import { makeAccessible } from '~utils/makeAccessible';
 import type { BladeCommonEvents } from '~components/types';
-import type { BladeElementRef } from '~src/hooks/types';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 type BaseLinkCommonProps = {
   intent?: 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
