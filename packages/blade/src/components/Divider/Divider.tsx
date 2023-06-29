@@ -16,7 +16,6 @@ const Divider = ({
 
   const isDividerHorizontal = orientation === 'horizontal';
   const borderPosition = isDividerHorizontal ? 'borderBottom' : 'borderLeft';
-  const size = isDividerHorizontal ? { width: '100%' } : { height: '100%' };
 
   const borderWidth =
     thickness === 'thinner' ? makeSize(0.5) : makeSize(theme.border.width[thickness]);
@@ -24,14 +23,17 @@ const Divider = ({
   const colorContrast: keyof ColorContrast = `${contrast}Contrast`;
   const borderColor = theme.colors.surface.border[variant][colorContrast];
 
-  console.log(size, style);
+  const baseBoxStyle = {
+    [`${borderPosition}Style`]: style,
+    [`${borderPosition}Width`]: borderWidth,
+  };
 
   return (
     <BaseBox
-      border="0"
-      {...size}
+      borderWidth="none"
+      {...(isDividerHorizontal ? { width: '100%' } : { alignSelf: 'stretch' })}
       {...{ [`${borderPosition}Color`]: borderColor }}
-      style={{ [`${borderPosition}Style`]: style, [`${borderPosition}Width`]: borderWidth }}
+      style={baseBoxStyle}
     />
   );
 };

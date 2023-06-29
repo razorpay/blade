@@ -30,7 +30,3 @@ export type DividerProps = {
    */
   contrast?: 'low' | 'high';
 };
-
-export type StyledDividerProps = Required<Omit<DividerProps, 'style'>> & {
-  type: 'solid' | 'dashed';
-};

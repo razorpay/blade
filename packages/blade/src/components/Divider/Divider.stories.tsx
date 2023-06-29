@@ -2,9 +2,18 @@ import type { ComponentStory, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import { Divider as DividerComponent } from './Divider';
 import type { DividerProps } from './types';
+import { Heading } from '~components/Typography/Heading';
 import BaseBox from '~components/Box/BaseBox';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
+import { Text } from '~components/Typography/Text';
+
+const paragraph = (
+  <Text margin="spacing.4">
+    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+    Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur cursus
+  </Text>
+);
 
 const Page = (): React.ReactElement => {
   return (
@@ -45,19 +54,18 @@ export default {
 
 const DividerDefaultTemplate: ComponentStory<typeof DividerComponent> = (args) => {
   return (
-    <BaseBox height="100px" display="flex" alignItems="center" justifyContent="center">
+    <BaseBox height="100px" display="flex">
       <DividerComponent {...args} />
     </BaseBox>
   );
 };
 
 export const Divider = DividerDefaultTemplate.bind({});
-
 Divider.storyName = 'Default';
 
 const DividerHorizontalTemplate: ComponentStory<typeof DividerComponent> = () => {
   return (
-    <BaseBox>
+    <BaseBox display="flex">
       <DividerComponent />
     </BaseBox>
   );
@@ -80,3 +88,24 @@ export const DividerVertical: ComponentStory<
   typeof DividerComponent
 > = DividerVerticalTemplate.bind({});
 DividerVertical.storyName = 'Vertical';
+
+const DividerWithTextTemplate: ComponentStory<typeof DividerComponent> = () => {
+  return (
+    <BaseBox display="flex" flexDirection="column">
+      <Heading marginBottom="spacing.4">Lorem Epsum</Heading>
+      <DividerComponent />
+      <BaseBox display="flex" gap="spacing.6">
+        {paragraph}
+        <DividerComponent orientation="vertical" />
+        {paragraph}
+        <DividerComponent orientation="vertical" />
+        {paragraph}
+      </BaseBox>
+    </BaseBox>
+  );
+};
+
+export const DividerWithText: ComponentStory<
+  typeof DividerComponent
+> = DividerWithTextTemplate.bind({});
+DividerWithText.storyName = 'Divider with Text columns';
