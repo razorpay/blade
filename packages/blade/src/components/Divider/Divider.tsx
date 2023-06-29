@@ -21,9 +21,9 @@ const Divider = ({
     thickness === 'thinner' ? makeSize(0.5) : makeSize(theme.border.width[thickness]);
 
   const colorContrast: keyof ColorContrast = `${contrast}Contrast`;
-  const borderColor = theme.colors.surface.border[variant][colorContrast];
+  const borderColor = { [`${borderPosition}Color`]: `surface.border.${variant}.${colorContrast}` };
 
-  const baseBoxStyle = {
+  const borderStyle = {
     [`${borderPosition}Style`]: style,
     [`${borderPosition}Width`]: borderWidth,
   };
@@ -31,9 +31,9 @@ const Divider = ({
   return (
     <BaseBox
       borderWidth="none"
-      {...(isDividerHorizontal ? { width: '100%' } : { alignSelf: 'stretch' })}
-      {...{ [`${borderPosition}Color`]: borderColor }}
-      style={baseBoxStyle}
+      {...(isDividerHorizontal ? { flexGrow: 1 } : { alignSelf: 'stretch' })}
+      {...borderColor}
+      style={borderStyle}
     />
   );
 };
