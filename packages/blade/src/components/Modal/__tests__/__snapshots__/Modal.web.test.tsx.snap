@@ -1,13 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Modal renders a Modal with Header and Footer 1`] = `
-.c20 {
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-color: hsla(216,15%,54%,0.18);
-  width: 100%;
-}
-
 .c0 {
   position: fixed;
   z-index: 1000;
@@ -123,6 +116,13 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   padding-bottom: 2px;
   padding-right: 8px;
   padding-left: 8px;
+}
+
+.c20 {
+  width: 100%;
+  border-width: 0px;
+  border-bottom-color: hsla(216,15%,54%,0.18);
+  border-style: solid;
 }
 
 .c21 {
@@ -418,6 +418,36 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   opacity: 1;
 }
 
+@media screen and (min-width:320px) {
+  .c20 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:480px) {
+  .c20 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c20 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .c20 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c20 {
+    border-style: solid;
+  }
+}
+
 <div
   class="c0"
   data-blade-component="box"
@@ -546,8 +576,8 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
       </div>
       <div
         class="c20"
-        orientation="horizontal"
-        type="solid"
+        data-blade-component="base-box"
+        style="border-bottom-style: solid; border-bottom-width: 1px;"
       />
     </div>
     <div
@@ -567,8 +597,8 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
     >
       <div
         class="c20"
-        orientation="horizontal"
-        type="solid"
+        data-blade-component="base-box"
+        style="border-bottom-style: solid; border-bottom-width: 1px;"
       />
       <div
         class="c23"

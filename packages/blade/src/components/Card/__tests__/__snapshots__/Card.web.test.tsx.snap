@@ -15,6 +15,13 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   margin-top: 24px;
 }
 
+.c5 {
+  width: 100%;
+  border-width: 0px;
+  border-bottom-color: hsla(216,15%,54%,0.18);
+  border-style: solid;
+}
+
 .c6 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -294,11 +301,34 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   opacity: 1;
 }
 
-.c5 {
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-color: hsla(216,15%,54%,0.18);
-  width: 100%;
+@media screen and (min-width:320px) {
+  .c5 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:480px) {
+  .c5 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c5 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .c5 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c5 {
+    border-style: solid;
+  }
 }
 
 <div>
@@ -328,8 +358,8 @@ exports[`<Card /> should render a Card with Footer 1`] = `
       />
       <div
         class="c5"
-        orientation="horizontal"
-        type="solid"
+        data-blade-component="base-box"
+        style="border-bottom-style: solid; border-bottom-width: 1px;"
       />
       <div
         class="c6"
@@ -522,6 +552,13 @@ exports[`<Card /> should render a Card with Header 1`] = `
   background-color: hsla(216,15%,54%,0.09);
 }
 
+.c18 {
+  width: 100%;
+  border-width: 0px;
+  border-bottom-color: hsla(216,15%,54%,0.18);
+  border-style: solid;
+}
+
 .c1 {
   width: 100%;
   display: -webkit-box;
@@ -644,11 +681,34 @@ exports[`<Card /> should render a Card with Header 1`] = `
   width: fit-content;
 }
 
-.c18 {
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-color: hsla(216,15%,54%,0.18);
-  width: 100%;
+@media screen and (min-width:320px) {
+  .c18 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:480px) {
+  .c18 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c18 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .c18 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c18 {
+    border-style: solid;
+  }
 }
 
 <div>
@@ -769,8 +829,8 @@ exports[`<Card /> should render a Card with Header 1`] = `
       </div>
       <div
         class="c18"
-        orientation="horizontal"
-        type="solid"
+        data-blade-component="base-box"
+        style="border-bottom-style: solid; border-bottom-width: 1px;"
       />
     </div>
     <div

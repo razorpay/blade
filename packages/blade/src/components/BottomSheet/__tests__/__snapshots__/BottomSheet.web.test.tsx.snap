@@ -112,6 +112,13 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   padding-left: 8px;
 }
 
+.c22 {
+  width: 100%;
+  border-width: 0px;
+  border-bottom-color: hsla(216,15%,54%,0.18);
+  border-style: solid;
+}
+
 .c23 {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
@@ -228,13 +235,6 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
 
 .c21:active {
   color: hsla(217,18%,45%,1);
-}
-
-.c22 {
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-color: hsla(216,15%,54%,0.18);
-  width: 100%;
 }
 
 .c10 {
@@ -504,6 +504,36 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   width: fit-content;
 }
 
+@media screen and (min-width:320px) {
+  .c22 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:480px) {
+  .c22 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c22 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .c22 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c22 {
+    border-style: solid;
+  }
+}
+
 <div>
   <div
     class="c0 c1"
@@ -637,8 +667,8 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
           </div>
           <div
             class="c22"
-            orientation="horizontal"
-            type="solid"
+            data-blade-component="base-box"
+            style="border-bottom-style: solid; border-bottom-width: 1px;"
           />
         </div>
       </div>
@@ -666,8 +696,8 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
       >
         <div
           class="c22"
-          orientation="horizontal"
-          type="solid"
+          data-blade-component="base-box"
+          style="border-bottom-style: solid; border-bottom-width: 1px;"
         />
         <div
           class="c27"

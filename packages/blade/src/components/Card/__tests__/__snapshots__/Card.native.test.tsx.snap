@@ -103,21 +103,24 @@ exports[`<Card /> should render a Card with Footer 1`] = `
         }
       />
       <View
-        contrast="low"
-        orientation="horizontal"
+        borderBottomColor="hsla(216, 15%, 54%, 0.18)"
+        borderWidth="none"
+        data-blade-component="base-box"
         style={
           Array [
             Object {
-              "borderBottomStyle": "solid",
-              "borderBottomWidth": 1,
-              "borderColor": "hsla(216, 15%, 54%, 0.18)",
+              "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
+              "borderStyle": "solid",
+              "borderWidth": 0,
               "width": "100%",
+            },
+            Object {
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "1px",
             },
           ]
         }
-        thickness="thin"
-        type="solid"
-        variant="normal"
+        width="100%"
       />
       <View
         alignItems="stretch"
@@ -972,21 +975,24 @@ exports[`<Card /> should render a Card with Header 1`] = `
         </View>
       </View>
       <View
-        contrast="low"
-        orientation="horizontal"
+        borderBottomColor="hsla(216, 15%, 54%, 0.18)"
+        borderWidth="none"
+        data-blade-component="base-box"
         style={
           Array [
             Object {
-              "borderBottomStyle": "solid",
-              "borderBottomWidth": 1,
-              "borderColor": "hsla(216, 15%, 54%, 0.18)",
+              "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
+              "borderStyle": "solid",
+              "borderWidth": 0,
               "width": "100%",
+            },
+            Object {
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": "1px",
             },
           ]
         }
-        thickness="thin"
-        type="solid"
-        variant="normal"
+        width="100%"
       />
     </View>
     <View
