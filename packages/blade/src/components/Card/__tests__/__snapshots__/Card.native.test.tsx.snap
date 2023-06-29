@@ -103,16 +103,17 @@ exports[`<Card /> should render a Card with Footer 1`] = `
         }
       />
       <View
-        borderBottomColor="hsla(216, 15%, 54%, 0.18)"
+        borderBottomColor="surface.border.normal.lowContrast"
         borderWidth="none"
         data-blade-component="base-box"
+        flexGrow={1}
         style={
           Array [
             Object {
               "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
               "borderStyle": "solid",
               "borderWidth": 0,
-              "width": "100%",
+              "flexGrow": 1,
             },
             Object {
               "borderBottomStyle": "solid",
@@ -120,7 +121,6 @@ exports[`<Card /> should render a Card with Footer 1`] = `
             },
           ]
         }
-        width="100%"
       />
       <View
         alignItems="stretch"
@@ -975,16 +975,17 @@ exports[`<Card /> should render a Card with Header 1`] = `
         </View>
       </View>
       <View
-        borderBottomColor="hsla(216, 15%, 54%, 0.18)"
+        borderBottomColor="surface.border.normal.lowContrast"
         borderWidth="none"
         data-blade-component="base-box"
+        flexGrow={1}
         style={
           Array [
             Object {
               "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
               "borderStyle": "solid",
               "borderWidth": 0,
-              "width": "100%",
+              "flexGrow": 1,
             },
             Object {
               "borderBottomStyle": "solid",
@@ -992,7 +993,6 @@ exports[`<Card /> should render a Card with Header 1`] = `
             },
           ]
         }
-        width="100%"
       />
     </View>
     <View

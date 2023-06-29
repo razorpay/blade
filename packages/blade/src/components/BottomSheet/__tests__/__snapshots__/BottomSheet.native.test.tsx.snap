@@ -206,16 +206,17 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                 zIndex={2}
               >
                 <View
-                  borderBottomColor="hsla(216, 15%, 54%, 0.18)"
+                  borderBottomColor="surface.border.normal.lowContrast"
                   borderWidth="none"
                   data-blade-component="base-box"
+                  flexGrow={1}
                   style={
                     Array [
                       Object {
                         "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
                         "borderStyle": "solid",
                         "borderWidth": 0,
-                        "width": "100%",
+                        "flexGrow": 1,
                       },
                       Object {
                         "borderBottomStyle": "solid",
@@ -223,7 +224,6 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                       },
                     ]
                   }
-                  width="100%"
                 />
                 <View
                   data-blade-component="base-box"
@@ -874,16 +874,17 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                 </View>
               </View>
               <View
-                borderBottomColor="hsla(216, 15%, 54%, 0.18)"
+                borderBottomColor="surface.border.normal.lowContrast"
                 borderWidth="none"
                 data-blade-component="base-box"
+                flexGrow={1}
                 style={
                   Array [
                     Object {
                       "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
                       "borderStyle": "solid",
                       "borderWidth": 0,
-                      "width": "100%",
+                      "flexGrow": 1,
                     },
                     Object {
                       "borderBottomStyle": "solid",
@@ -891,7 +892,6 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                     },
                   ]
                 }
-                width="100%"
               />
             </View>
           </View>
@@ -1108,16 +1108,17 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                 zIndex={2}
               >
                 <View
-                  borderBottomColor="hsla(216, 15%, 54%, 0.18)"
+                  borderBottomColor="surface.border.normal.lowContrast"
                   borderWidth="none"
                   data-blade-component="base-box"
+                  flexGrow={1}
                   style={
                     Array [
                       Object {
                         "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
                         "borderStyle": "solid",
                         "borderWidth": 0,
-                        "width": "100%",
+                        "flexGrow": 1,
                       },
                       Object {
                         "borderBottomStyle": "solid",
@@ -1125,7 +1126,6 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                       },
                     ]
                   }
-                  width="100%"
                 />
                 <View
                   data-blade-component="base-box"
