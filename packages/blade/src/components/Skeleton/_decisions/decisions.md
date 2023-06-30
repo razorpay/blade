@@ -16,10 +16,24 @@ Each of these shapes can be achieved by adjusting the width, height and border r
 
 ## API
 
-| Prop     | Type     | Default     | Description | Required |
-| -------- | -------- | ----------- | ----------- | -------- |
-| children | `string` | `undefined` |             | ✅        |
-| type     | `TBD`    | `undefined` |             |          |
+| Prop          | Type        | Default     | Description                                                                                                                                             | Required |
+| ------------- | ----------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| type          | `TextTypes` | `undefined` | Predefined variants for Skeleton's dimensions when working with Typography components. (if width/height layout props are set they will take precedence) |          |
+| numberOfLines | `number`    | `1`         | When paired with `type` prop consumers can define this prop to repeat the typography block over multiple lines                                          |          |
+
+```ts
+type TextTypes = 
+  | 'body-small'
+  | 'body-medium'
+  | 'body-large'
+  | 'heading-small'
+  | 'heading-medium'
+  | 'heading-large'
+  | 'title-small'
+  | 'title-medium'
+  | 'title-large'
+  | 'title-xlarge'
+```
 
 Skeleton will also have subset of Box props to help users layout the Skeleton blocks accordingly. 
 
@@ -96,7 +110,9 @@ Complex usage:
 <img src="./skeleton-usage-demo-2.png" alt="Skeleton complex usage" width="50%" />
 
 
-### Should we inferring dimensions?
+### Should we inferring dimensions or provide predefined variants?
+
+#### Inferring Dimensions
 
 Providing width, height works well when consumers want to have control over the layout of the Skeleton, but it also requires bit of manual tweaking and effort. 
 
@@ -130,11 +146,14 @@ Libraries like ChakraUI / MUI provides a way for consumers to infer dimensions b
 </Skeleton>
 ```
 
-### Or provide predefined dimensions 
+#### Predefined dimensions 
 
 **Typography components:**
 
 Similar to Amount component we can expose a `type` prop which will have predefined sizes & we also expose `numberOfLines` prop which will dictate how many skeletons it will map to.
+
+> numberOfLines prop can also be used to add a trailing effect to the last line of the skeleton
+> Say we have `numberOfLines={5}` then we can render the 5th Skeleton a bit shorter than the others to convey the text is trailing.
 
 ```jsx
 <Skeleton 
@@ -150,7 +169,8 @@ Similar to Amount component we can expose a `type` prop which will have predefin
     | title-large
     | title-xlarge
   " 
-  numberOfLines={5} />
+  numberOfLines={5} 
+/>
 ```
 
 A real world usecase might look something like:
@@ -185,6 +205,10 @@ And for block components we won't give any predefined sizes instead consumers ca
 ```jsx
 <Skeleton width="100px" height="100px" borderRadius="medium" />
 ```
+
+#### Conclusion
+
+Given the complexity of inferring the dimensions and how it differs from component to component, where for Typography components we need to render the skeleton inside and for block level components we need to wrap it with Skeleton, Plus the complexities that might arise with react-native implementation. It's better to go with predefined dimensions for typography components and for block level components let consumers handle it manually via width/height prop. 
 
 ## Motion
 
