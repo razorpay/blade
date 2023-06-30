@@ -107,6 +107,9 @@ exports[`<Accordion /> should render 1`] = `
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
   flex-grow: 1;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
   border-width: 0px;
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-style: solid;
@@ -160,6 +163,11 @@ exports[`<Accordion /> should render 1`] = `
   -webkit-transition-property: -webkit-transform;
   -webkit-transition-property: transform;
   transition-property: transform;
+}
+
+.c12 {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
 }
 
 .c7 {
@@ -318,9 +326,8 @@ exports[`<Accordion /> should render 1`] = `
         </div>
       </div>
       <div
-        class="c11"
+        class="c11 c12"
         data-blade-component="base-box"
-        style="border-bottom-style: solid; border-bottom-width: 1px;"
       />
     </div>
     <div
@@ -410,9 +417,8 @@ exports[`<Accordion /> should render 1`] = `
         </div>
       </div>
       <div
-        class="c11"
+        class="c11 c12"
         data-blade-component="base-box"
-        style="border-bottom-style: solid; border-bottom-width: 1px;"
       />
     </div>
     <div
@@ -502,9 +508,8 @@ exports[`<Accordion /> should render 1`] = `
         </div>
       </div>
       <div
-        class="c11"
+        class="c11 c12"
         data-blade-component="base-box"
-        style="border-bottom-style: solid; border-bottom-width: 1px;"
       />
     </div>
   </div>

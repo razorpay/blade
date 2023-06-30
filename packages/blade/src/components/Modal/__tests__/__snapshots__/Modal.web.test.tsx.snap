@@ -123,25 +123,28 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
   flex-grow: 1;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
   border-width: 0px;
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-style: solid;
 }
 
-.c21 {
+.c22 {
   overflow-x: hidden;
   overflow-y: auto;
   padding: 20px;
 }
 
-.c23 {
+.c24 {
   padding-top: 16px;
   padding-bottom: 16px;
   padding-right: 20px;
   padding-left: 20px;
 }
 
-.c25 {
+.c26 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -169,6 +172,11 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 .c16 {
   text-align: left;
   background-color: hsla(36,100%,44%,0.09);
+}
+
+.c21 {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
 }
 
 .c8 {
@@ -216,7 +224,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   padding: 0;
 }
 
-.c22 {
+.c23 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -229,7 +237,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   padding: 0;
 }
 
-.c27 {
+.c28 {
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -355,7 +363,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   width: fit-content;
 }
 
-.c24 {
+.c25 {
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -391,24 +399,24 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   position: relative;
 }
 
-.c24:hover {
+.c25:hover {
   background-color: hsla(223,95%,48%,1);
   border-color: hsla(223,95%,48%,1);
 }
 
-.c24:active {
+.c25:active {
   background-color: hsla(230,100%,42%,1);
   border-color: hsla(230,100%,42%,1);
 }
 
-.c24:focus {
+.c25:focus {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
 
-.c24 * {
+.c25 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -417,7 +425,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c26 {
+.c27 {
   opacity: 1;
 }
 
@@ -578,17 +586,16 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
         </div>
       </div>
       <div
-        class="c20"
+        class="c20 c21"
         data-blade-component="base-box"
-        style="border-bottom-style: solid; border-bottom-width: 1px;"
       />
     </div>
     <div
-      class="c21"
+      class="c22"
       data-blade-component="modal-body"
     >
       <p
-        class="c22"
+        class="c23"
         data-blade-component="text"
       >
         Test Content
@@ -599,26 +606,25 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
       data-blade-component="box"
     >
       <div
-        class="c20"
+        class="c20 c21"
         data-blade-component="base-box"
-        style="border-bottom-style: solid; border-bottom-width: 1px;"
       />
       <div
-        class="c23"
+        class="c24"
         data-blade-component="modal-footer"
       >
         <button
-          class="c24"
+          class="c25"
           data-blade-component="button"
           role="button"
           type="button"
         >
           <div
-            class="c25 c26"
+            class="c26 c27"
             data-blade-component="base-box"
           >
             <div
-              class="c27"
+              class="c28"
               data-blade-component="base-text"
             >
               Save

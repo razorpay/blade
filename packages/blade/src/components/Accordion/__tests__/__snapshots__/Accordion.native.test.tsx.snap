@@ -402,24 +402,27 @@ exports[`<Accordion /> should render 1`] = `
         </View>
       </View>
       <View
+        alignSelf="stretch"
         borderBottomColor="surface.border.normal.lowContrast"
+        borderPosition="borderBottom"
         borderWidth="none"
         data-blade-component="base-box"
+        dividerStyle="solid"
         flexGrow={1}
         style={
           Array [
             Object {
+              "alignSelf": "stretch",
               "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": 1,
               "borderStyle": "solid",
               "borderWidth": 0,
               "flexGrow": 1,
             },
-            Object {
-              "borderBottomStyle": "solid",
-              "borderBottomWidth": "1px",
-            },
           ]
         }
+        thickness="thin"
       />
     </View>
     <View
@@ -791,24 +794,27 @@ exports[`<Accordion /> should render 1`] = `
         </View>
       </View>
       <View
+        alignSelf="stretch"
         borderBottomColor="surface.border.normal.lowContrast"
+        borderPosition="borderBottom"
         borderWidth="none"
         data-blade-component="base-box"
+        dividerStyle="solid"
         flexGrow={1}
         style={
           Array [
             Object {
+              "alignSelf": "stretch",
               "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": 1,
               "borderStyle": "solid",
               "borderWidth": 0,
               "flexGrow": 1,
             },
-            Object {
-              "borderBottomStyle": "solid",
-              "borderBottomWidth": "1px",
-            },
           ]
         }
+        thickness="thin"
       />
     </View>
     <View
@@ -1180,24 +1186,27 @@ exports[`<Accordion /> should render 1`] = `
         </View>
       </View>
       <View
+        alignSelf="stretch"
         borderBottomColor="surface.border.normal.lowContrast"
+        borderPosition="borderBottom"
         borderWidth="none"
         data-blade-component="base-box"
+        dividerStyle="solid"
         flexGrow={1}
         style={
           Array [
             Object {
+              "alignSelf": "stretch",
               "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": 1,
               "borderStyle": "solid",
               "borderWidth": 0,
               "flexGrow": 1,
             },
-            Object {
-              "borderBottomStyle": "solid",
-              "borderBottomWidth": "1px",
-            },
           ]
         }
+        thickness="thin"
       />
     </View>
   </View>
