@@ -40,6 +40,7 @@ export const border: Border = {
   },
   width: {
     none: 0,
+    thinner: 0.5,
     thin: 1,
     thick: 1.5,
   },
