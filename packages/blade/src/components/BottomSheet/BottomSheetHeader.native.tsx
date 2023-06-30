@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 import React from 'react';
+import { BaseHeader } from '../BaseHeaderFooter/BaseHeader';
 import { ComponentIds } from './componentIds';
 import { useBottomSheetContext } from './BottomSheetContext';
 import type { BottomSheetHeaderProps } from './types';
 import { BottomSheetEmptyHeader } from './BottomSheetCommon';
 import BaseBox from '~components/Box/BaseBox';
-import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 const _BottomSheetHeader = ({
