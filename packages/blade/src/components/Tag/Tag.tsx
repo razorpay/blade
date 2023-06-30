@@ -55,6 +55,10 @@ const Tag = ({
     return null;
   }
 
+  const textColor = isDisabled
+    ? 'surface.text.placeholder.lowContrast'
+    : 'surface.text.subtle.lowContrast';
+
   return (
     <StyledTag
       backgroundColor="brand.gray.a100.lowContrast"
@@ -69,16 +73,15 @@ const Tag = ({
       {...metaAttribute({ name: MetaConstants.Tag, testID })}
     >
       <Box display="flex" flexDirection="row" flexWrap="nowrap" alignItems="center">
-        {Icon ? (
-          <Icon color="surface.text.subtle.lowContrast" size="small" marginRight="spacing.2" />
-        ) : null}
-        <Text marginRight="spacing.2" color="surface.text.subtle.lowContrast" size="small">
+        {Icon ? <Icon color={textColor} size="small" marginRight="spacing.2" /> : null}
+        <Text marginRight="spacing.2" color={textColor} size="small">
           {children}
         </Text>
         <IconButton
           size="small"
           icon={CloseIcon}
           accessibilityLabel={`Close ${children} tag`}
+          isDisabled={isDisabled}
           onClick={() => {
             setIsVisible(false);
             onDismiss?.({ value: children });

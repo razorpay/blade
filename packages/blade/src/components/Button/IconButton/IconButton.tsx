@@ -31,6 +31,11 @@ type IconButtonProps = {
    * Sets aria-label to help users know what the action does, eg 'Dismiss alert'
    */
   accessibilityLabel: string;
+
+  /**
+   * Disabled state for IconButton
+   */
+  isDisabled?: boolean;
 } & BladeCommonEvents;
 
 /**
@@ -44,6 +49,7 @@ const _IconButton: React.ForwardRefRenderFunction<BladeElementRef, IconButtonPro
     size = 'medium',
     contrast = 'low',
     accessibilityLabel,
+    isDisabled,
     onBlur,
     onFocus,
     onMouseLeave,
@@ -63,6 +69,7 @@ const _IconButton: React.ForwardRefRenderFunction<BladeElementRef, IconButtonPro
       size={size}
       icon={icon}
       accessibilityLabel={accessibilityLabel}
+      isDisabled={isDisabled}
       onBlur={onBlur}
       onFocus={onFocus}
       onMouseLeave={onMouseLeave}
