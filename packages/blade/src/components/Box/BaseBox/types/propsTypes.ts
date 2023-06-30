@@ -266,4 +266,4 @@ type BoxRefType = Platform.Select<{
   native: View;
 }>;
 
-export { BaseBoxProps, BoxProps, BoxRefType, StyledPropsBlade, validBoxAsValues };
+export { BaseBoxProps, BoxProps, BoxRefType, StyledPropsBlade, FlexboxProps, validBoxAsValues };

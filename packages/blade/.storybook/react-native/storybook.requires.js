@@ -54,6 +54,7 @@ const getStories = () => {
     require('../../src/components/Modal/docs/SimpleModal.stories.tsx'),
     require('../../src/components/ProgressBar/ProgressBar.stories.tsx'),
     require('../../src/components/Radio/Radio.stories.tsx'),
+    require('../../src/components/Skeleton/Skeleton.stories.tsx'),
     require('../../src/components/SkipNav/SkipNav.stories.tsx'),
     require('../../src/components/Spinner/BaseSpinner/BaseSpinner.stories.tsx'),
     require('../../src/components/Spinner/Spinner/Spinner.stories.tsx'),
