@@ -6,7 +6,8 @@ import { useDropdown } from './useDropdown';
 import { StyledDropdownOverlay } from './StyledDropdownOverlay';
 import type { DropdownOverlayProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
-import { makeSize, metaAttribute, MetaConstants } from '~utils';
+import { makeSize } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { useBottomSheetAndDropdownGlue } from '~components/BottomSheet/BottomSheetContext';
 

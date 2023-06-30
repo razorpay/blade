@@ -6,7 +6,10 @@ import type { BaseHeaderProps } from '../BaseHeaderFooter/BaseHeader';
 import type { BaseFooterProps } from '../BaseHeaderFooter/BaseFooter';
 import { useDropdown } from './useDropdown';
 import BaseBox from '~components/Box/BaseBox';
-import { assignWithoutSideEffects, isReactNative, makeAccessible, MetaConstants } from '~utils';
+import { isReactNative } from '~utils';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { makeAccessible } from '~utils/makeAccessible';
+import { MetaConstants } from '~utils/metaAttribute/metaConstants';
 import { useBottomSheetAndDropdownGlue } from '~components/BottomSheet/BottomSheetContext';
 
 type DropdownHeaderProps = Pick<

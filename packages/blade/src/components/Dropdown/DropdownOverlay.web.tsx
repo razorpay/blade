@@ -16,6 +16,7 @@ import type { SpacingValueType } from '~components/Box/BaseBox';
 import { makeMotionTime, makeSize } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { useBottomSheetAndDropdownGlue } from '~components/BottomSheet/BottomSheetContext';
 
 const dropdownFadeIn = keyframes`
 from {
