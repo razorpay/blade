@@ -13,6 +13,7 @@ These are set of interactive keywords that help organise & categorise objects. T
 
 ```jsx
 <Tag
+  icon={CheckIcon}
   size="medium"
   onDismiss={({ value }) => {
     console.log('Close Icon Clicked', value);
@@ -34,11 +35,16 @@ type TagProps = {
   size?: 'medium' | 'large';
 
   /**
+   * Any icon from Blade
+   */
+  icon?: IconComponent;
+
+  /**
    * Callback when close icon on Tag is clicked
    *
    * Gives a `value` argument which has same text as `children`
    */
-  onDismiss?: ({ value }: { value: TagProps['children'] }) => void;
+  onDismiss?: ({ value }: { value: ReactText }) => void;
 
   /**
    * Text that renders inside Tag
@@ -196,3 +202,7 @@ Refer to Keyboard Interactions of [react-select](https://react-select.com/home#g
   - We can discuss here
 - ~`<Tag />` or `<Tags />` 😅~ `<Tag />`
 - [`tagsSlot` vs `tagSlot` vs `valuePrefix` vs `leading` on Input components](#alternate-prop-name)
+- Should we support `value` prop that allows us to set unique identifier value for Tag?
+  ```jsx
+  <Tag value="red">Red</Tag>
+  ```
