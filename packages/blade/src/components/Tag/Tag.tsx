@@ -4,6 +4,7 @@ import { Box } from '~components/Box';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getStyledProps } from '~components/Box/styledProps';
 import { IconButton } from '~components/Button/IconButton';
+import type { IconComponent } from '~components/Icons';
 import { CloseIcon } from '~components/Icons';
 import { Text } from '~components/Typography';
 import type { StringChildrenType, TestID } from '~src/_helpers/types';
@@ -16,6 +17,11 @@ type TagProps = {
    * @default medium
    */
   size?: 'medium' | 'large';
+
+  /**
+   * Leading icon for your Tag
+   */
+  icon?: IconComponent;
 
   /**
    * Callback when close icon on Tag is clicked
@@ -36,6 +42,7 @@ type TagProps = {
 
 const Tag = ({
   size = 'medium',
+  icon: Icon,
   onDismiss,
   children,
   isDisabled,
@@ -61,8 +68,11 @@ const Tag = ({
       {...getStyledProps(styledProps)}
       {...metaAttribute({ name: MetaConstants.Tag, testID })}
     >
-      <Box display="flex" flexDirection="row" flexWrap="nowrap">
-        <Text marginRight="spacing.2" type="subtle" contrast="low" size="small">
+      <Box display="flex" flexDirection="row" flexWrap="nowrap" alignItems="center">
+        {Icon ? (
+          <Icon color="surface.text.subtle.lowContrast" size="small" marginRight="spacing.2" />
+        ) : null}
+        <Text marginRight="spacing.2" color="surface.text.subtle.lowContrast" size="small">
           {children}
         </Text>
         <IconButton

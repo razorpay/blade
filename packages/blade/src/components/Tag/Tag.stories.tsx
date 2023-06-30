@@ -12,6 +12,7 @@ import { Button } from '~components/Button';
 import { TextInput } from '~components/Input/TextInput';
 import { isReactNative } from '~utils';
 import { PlusIcon } from '~components/Icons';
+import iconMap from '~components/Icons/iconMap';
 
 const Page = (): React.ReactElement => {
   return (
@@ -50,6 +51,12 @@ export default {
   component: Tag,
   argTypes: {
     ...getStyledPropsArgTypes(),
+    icon: {
+      name: 'icon',
+      type: 'select',
+      options: Object.keys(iconMap),
+      mapping: iconMap,
+    },
   },
   parameters: {
     docs: {
@@ -63,7 +70,8 @@ export const Default = (props: TagProps): React.ReactElement => <Tag {...props} 
 Default.args = {
   children: 'Unpaid',
   onDismiss: ({ value }) => console.log('dismiss tag', value),
-} as TagProps;
+  icon: 'FileTextIcon',
+} as TagProps & { icon: string };
 
 const CrossPlatformForm = ({
   children,
@@ -100,7 +108,7 @@ export const ControlledTags = (props: TagProps): React.ReactElement => {
           <Tag
             key={tagName}
             {...props}
-            marginLeft="spacing.2"
+            marginRight="spacing.2"
             onDismiss={({ value }) => removeTag(value)}
           >
             {tagName}
