@@ -1,5 +1,32 @@
 # @razorpay/blade
 
+## 8.13.0
+
+### Minor Changes
+
+- 865cd411: refactor: remove internal utilities from index re-exports
+
+  > **Warning**
+  >
+  > We have removed some of the undocumented internal utilites from re-export of `@razorpay/blade/utils`.
+  > We went through the imports usage of Razorpay and made sure to keep exporting the utilities that are currently being used to avoid breaking changes.
+
+  You can take a look at re-exports of [utils/index.ts](https://github.com/razorpay/blade/blob/master/packages/blade/src/utils/index.ts) to know which are the public utilities that we support. This is part of the larger effort in exporting and documenting useful utilities from blade and avoid exporting internal utilities which might break during internal refactors.
+
+  We have marked 2 utilities as `@deprecated` as they are expected to be internal utilities but currently being used in Razorpay. These will be removed in future major versions and won't be documented.
+
+  - `toTitleCase`
+  - `usePrevious`
+
+  We would recommend moving these 2 utilities to your local repo utilities.
+
+### Patch Changes
+
+- f4c2afb5: feat: add background-image, size, position, origin, repeat props
+- 610422ab: feat: add text decoration support for typography
+
+  Thanks [@archie252000](https://github.com/archie252000) for the contribution!
+
 ## 8.12.1
 
 ### Patch Changes
