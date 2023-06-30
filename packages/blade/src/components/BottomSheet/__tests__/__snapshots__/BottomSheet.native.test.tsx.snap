@@ -470,7 +470,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                   Array [
                     Object {
                       "marginBottom": 16,
-                      "marginTop": 12,
+                      "marginTop": 16,
                       "paddingLeft": 16,
                       "paddingRight": 16,
                       "touchAction": "none",
@@ -480,11 +480,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                 touchAction="none"
               >
                 <View
-<<<<<<< HEAD
-=======
-                  alignItems="center"
                   data-blade-component="base-box"
->>>>>>> 610422ab8ed649a8ea287d5e701e81793077df6a
                   display="flex"
                   flexDirection="row"
                   style={
@@ -499,12 +495,8 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                   userSelect="none"
                 >
                   <View
-<<<<<<< HEAD
                     alignItems="flex-start"
-=======
-                    alignItems="center"
                     data-blade-component="base-box"
->>>>>>> 610422ab8ed649a8ea287d5e701e81793077df6a
                     display="flex"
                     flexDirection="row"
                     style={
@@ -535,11 +527,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                       }
                     >
                       <View
-<<<<<<< HEAD
-=======
-                        alignItems="center"
                         data-blade-component="base-box"
->>>>>>> 610422ab8ed649a8ea287d5e701e81793077df6a
                         display="flex"
                         flexDirection="row"
                         flexShrink={0}
@@ -597,18 +585,11 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                           }
                         >
                           <View
-<<<<<<< HEAD
                             alignItems="center"
                             data-blade-component="box"
                             display="flex"
                             height="28px"
                             justifyContent="center"
-=======
-                            backgroundColor="feedback.background.positive.lowContrast"
-                            data-blade-component="base-box"
-                            platform="onMobile"
-                            size="medium"
->>>>>>> 610422ab8ed649a8ea287d5e701e81793077df6a
                             style={
                               Array [
                                 Object {
@@ -622,6 +603,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                           >
                             <View
                               backgroundColor="feedback.background.positive.lowContrast"
+                              data-blade-component="base-box"
                               platform="onMobile"
                               size="medium"
                               style={
@@ -762,18 +744,9 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                       }
                     >
                       <View
-<<<<<<< HEAD
                         backgroundColor="feedback.background.positive.lowContrast"
                         data-blade-component="badge"
                         size="medium"
-=======
-                        alignItems="center"
-                        data-blade-component="base-box"
-                        display="flex"
-                        flexDirection="row"
-                        justifyContent="center"
-                        overflow="hidden"
->>>>>>> 610422ab8ed649a8ea287d5e701e81793077df6a
                         style={
                           Array [
                             Object {
@@ -790,6 +763,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                       >
                         <View
                           alignItems="center"
+                          data-blade-component="base-box"
                           display="flex"
                           flexDirection="row"
                           justifyContent="center"
@@ -864,7 +838,6 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                       ]
                     }
                   >
-<<<<<<< HEAD
                     <View
                       accessibilityLabel="Close"
                       accessibilityRole="button"
@@ -881,21 +854,6 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                       onResponderTerminate={[Function]}
                       onResponderTerminationRequest={[Function]}
                       onStartShouldSetResponder={[Function]}
-=======
-                    <RNSVGSvgView
-                      accessibilityElementsHidden={true}
-                      align="xMidYMid"
-                      bbHeight="20px"
-                      bbWidth="20px"
-                      data-blade-component="icon"
-                      fill="none"
-                      focusable={false}
-                      height="20px"
-                      importantForAccessibility="no-hide-descendants"
-                      meetOrSlice={0}
-                      minX={0}
-                      minY={0}
->>>>>>> 610422ab8ed649a8ea287d5e701e81793077df6a
                       style={
                         Array [
                           Object {
@@ -909,6 +867,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                         align="xMidYMid"
                         bbHeight="20px"
                         bbWidth="20px"
+                        data-blade-component="icon"
                         fill="none"
                         focusable={false}
                         height="20px"
@@ -1201,8 +1160,8 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                     Array [
                       Object {
                         "paddingBottom": 16,
-                        "paddingLeft": 20,
-                        "paddingRight": 20,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
                         "paddingTop": 16,
                       },
                     ]

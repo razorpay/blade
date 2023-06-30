@@ -516,6 +516,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
           width="100%"
         >
           <View
+            data-blade-component="base-box"
             flexShrink={0}
             overflow="auto"
             style={
@@ -541,7 +542,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                   Array [
                     Object {
                       "marginBottom": 16,
-                      "marginTop": 12,
+                      "marginTop": 16,
                       "paddingLeft": 16,
                       "paddingRight": 16,
                       "touchAction": "none",
@@ -550,25 +551,10 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                 }
                 touchAction="none"
               >
-<<<<<<< HEAD
                 <View
+                  data-blade-component="base-box"
                   display="flex"
                   flexDirection="row"
-=======
-                <RNSVGSvgView
-                  accessibilityElementsHidden={true}
-                  align="xMidYMid"
-                  bbHeight="12px"
-                  bbWidth="12px"
-                  data-blade-component="icon"
-                  fill="none"
-                  focusable={false}
-                  height="12px"
-                  importantForAccessibility="no-hide-descendants"
-                  meetOrSlice={0}
-                  minX={0}
-                  minY={0}
->>>>>>> 610422ab8ed649a8ea287d5e701e81793077df6a
                   style={
                     Array [
                       Object {
@@ -582,6 +568,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                 >
                   <View
                     alignItems="flex-start"
+                    data-blade-component="base-box"
                     display="flex"
                     flexDirection="row"
                     style={
@@ -600,6 +587,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                     }
                   >
                     <View
+                      data-blade-component="base-box"
                       style={
                         Array [
                           Object {
@@ -611,6 +599,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                       }
                     >
                       <View
+                        data-blade-component="base-box"
                         display="flex"
                         flexDirection="row"
                         flexShrink={0}
@@ -663,7 +652,6 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                 </View>
               </View>
               <View
-                data-blade-component="base-box"
                 style={
                   Array [
                     Object {
@@ -1025,6 +1013,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
             </RCTScrollView>
           </View>
           <View
+            data-blade-component="base-box"
             style={
               Array [
                 Object {},
@@ -1056,7 +1045,6 @@ exports[`<Dropdown /> should render dropdown 1`] = `
               }
             >
               <View
-<<<<<<< HEAD
                 accessibilityRole="button"
                 accessibilityState={
                   Object {
@@ -1096,122 +1084,6 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                 onResponderTerminate={[Function]}
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
-=======
-                data-blade-component="base-box"
-                style={
-                  Array [
-                    Object {},
-                  ]
-                }
-              >
-                <RNSVGSvgView
-                  accessibilityElementsHidden={true}
-                  align="xMidYMid"
-                  bbHeight="12px"
-                  bbWidth="12px"
-                  data-blade-component="icon"
-                  fill="none"
-                  focusable={false}
-                  height="12px"
-                  importantForAccessibility="no-hide-descendants"
-                  meetOrSlice={0}
-                  minX={0}
-                  minY={0}
-                  style={
-                    Array [
-                      Object {
-                        "backgroundColor": "transparent",
-                        "borderWidth": 0,
-                      },
-                      Array [
-                        Object {},
-                      ],
-                      Object {
-                        "flex": 0,
-                        "height": 12,
-                        "width": 12,
-                      },
-                    ]
-                  }
-                  vbHeight={24}
-                  vbWidth={24}
-                  width="12px"
-                >
-                  <RNSVGGroup
-                    fill={null}
-                    propList={
-                      Array [
-                        "fill",
-                      ]
-                    }
-                  >
-                    <RNSVGPath
-                      clipRule={0}
-                      d="M16.618 18.032a9 9 0 1 1 1.414-1.414l3.675 3.675a1 1 0 0 1-1.414 1.414l-3.675-3.675ZM4 11a7 7 0 1 1 12.041 4.857 1.009 1.009 0 0 0-.185.184A7 7 0 0 1 4 11Z"
-                      fill={4287207081}
-                      fillRule={0}
-                      propList={
-                        Array [
-                          "fill",
-                          "fillRule",
-                        ]
-                      }
-                    />
-                  </RNSVGGroup>
-                </RNSVGSvgView>
-              </View>
-              <View
-                data-blade-component="base-box"
-                style={
-                  Array [
-                    Object {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "paddingLeft": 8,
-                      "paddingRight": 8,
-                    },
-                  ]
-                }
-              >
-                <Text
-                  color="surface.text.subdued.lowContrast"
-                  data-blade-component="text"
-                  fontFamily="text"
-                  fontSize={50}
-                  fontStyle="italic"
-                  fontWeight="regular"
-                  lineHeight={50}
-                  style={
-                    Array [
-                      Object {
-                        "color": "hsla(217, 18%, 45%, 1)",
-                        "fontFamily": "Lato",
-                        "fontSize": 11,
-                        "fontStyle": "italic",
-                        "fontWeight": "400",
-                        "lineHeight": 16,
-                        "marginBottom": 0,
-                        "marginLeft": 0,
-                        "marginRight": 0,
-                        "marginTop": 0,
-                        "paddingBottom": 0,
-                        "paddingLeft": 0,
-                        "paddingRight": 0,
-                        "paddingTop": 0,
-                        "textDecorationLine": "none",
-                      },
-                    ]
-                  }
-                >
-                  Search Tips
-                </Text>
-              </View>
-              <View
-                alignItems="center"
-                data-blade-component="base-box"
-                display="flex"
->>>>>>> 610422ab8ed649a8ea287d5e701e81793077df6a
                 style={
                   Array [
                     Object {
@@ -1245,6 +1117,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
               >
                 <View
                   alignItems="center"
+                  data-blade-component="base-box"
                   display="flex"
                   flexDirection="row"
                   isHidden={false}
@@ -1264,21 +1137,12 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                     ]
                   }
                 >
-<<<<<<< HEAD
                   <Text
                     color="action.text.primary.default"
+                    data-blade-component="base-text"
                     fontSize={100}
                     fontWeight="bold"
                     lineHeight={100}
-=======
-                  <View
-                    alignItems="center"
-                    data-blade-component="base-box"
-                    display="flex"
-                    flexDirection="row"
-                    isHidden={false}
-                    justifyContent="center"
->>>>>>> 610422ab8ed649a8ea287d5e701e81793077df6a
                     style={
                       Array [
                         Object {
@@ -1303,44 +1167,8 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                     }
                     textAlign="center"
                   >
-<<<<<<< HEAD
                     Apply
                   </Text>
-=======
-                    <Text
-                      color="action.text.primary.default"
-                      data-blade-component="base-text"
-                      fontSize={100}
-                      fontWeight="bold"
-                      lineHeight={100}
-                      style={
-                        Array [
-                          Object {
-                            "color": "hsla(0, 0%, 100%, 1)",
-                            "fontFamily": "Lato",
-                            "fontSize": 14,
-                            "fontStyle": "normal",
-                            "fontWeight": "700",
-                            "lineHeight": 20,
-                            "marginBottom": 0,
-                            "marginLeft": 0,
-                            "marginRight": 0,
-                            "marginTop": 0,
-                            "paddingBottom": 0,
-                            "paddingLeft": 0,
-                            "paddingRight": 0,
-                            "paddingTop": 0,
-                            "textAlign": "center",
-                            "textDecorationLine": "none",
-                          },
-                        ]
-                      }
-                      textAlign="center"
-                    >
-                      Apply
-                    </Text>
-                  </View>
->>>>>>> 610422ab8ed649a8ea287d5e701e81793077df6a
                 </View>
               </View>
             </View>

@@ -1,6 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
+.c24 {
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-color: hsla(216,15%,54%,0.18);
+}
+
 .c3 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -23,7 +29,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   padding-right: 16px;
   padding-left: 16px;
   margin-bottom: 16px;
-  margin-top: 12px;
+  margin-top: 16px;
   touch-action: none;
 }
 
@@ -200,53 +206,6 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   opacity: 1;
 }
 
-.c23 {
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  border-radius: 2px;
-  background: transparent;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  color: hsla(214,18%,69%,1);
-  -webkit-transition-property: color,box-shadow;
-  transition-property: color,box-shadow;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c23:hover {
-  color: hsla(217,18%,45%,1);
-}
-
-.c23:focus {
-  outline: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-  color: hsla(217,18%,45%,1);
-}
-
-.c23:active {
-  color: hsla(217,18%,45%,1);
-}
-
-.c24 {
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-color: hsla(216,15%,54%,0.18);
-}
-
 .c11 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
@@ -335,6 +294,47 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+}
+
+.c23 {
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 2px;
+  background: transparent;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  color: hsla(214,18%,69%,1);
+  -webkit-transition-property: color,box-shadow;
+  transition-property: color,box-shadow;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c23:hover {
+  color: hsla(217,18%,45%,1);
+}
+
+.c23:focus {
+  outline: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  color: hsla(217,18%,45%,1);
+}
+
+.c23:active {
+  color: hsla(217,18%,45%,1);
 }
 
 .c1 {
@@ -514,6 +514,21 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   width: fit-content;
 }
 
+@media screen and (min-width:768px) {
+  .c6 {
+    padding-right: 20px;
+    padding-left: 20px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c29 {
+    padding: 20px;
+  }
+}
+
 <div>
   <div
     class="c0 c1"
@@ -557,19 +572,12 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                 data-blade-component="base-box"
               >
                 <div
-<<<<<<< HEAD
                   class="c9"
-                >
-                  <div
-                    class="c10"
-=======
-                  class=""
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c9"
+                    class="c10"
                     data-blade-component="base-box"
->>>>>>> 610422ab8ed649a8ea287d5e701e81793077df6a
                   >
                     <h6
                       class="c11"
@@ -578,23 +586,16 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                       Address Details
                     </h6>
                     <div
-<<<<<<< HEAD
                       class="c12"
+                      data-blade-component="base-box"
                     >
                       <div
                         class="c13"
                         data-blade-component="box"
-=======
-                      class="c11"
-                      data-blade-component="base-box"
-                    >
-                      <div
-                        class="c12 c13"
-                        data-blade-component="base-box"
->>>>>>> 610422ab8ed649a8ea287d5e701e81793077df6a
                       >
                         <div
                           class="c14 c15"
+                          data-blade-component="base-box"
                         >
                           <div
                             class="c16"
@@ -620,28 +621,20 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                 </div>
               </div>
               <div
-<<<<<<< HEAD
                 class="c19"
-=======
-                class="c17"
                 data-blade-component="base-box"
->>>>>>> 610422ab8ed649a8ea287d5e701e81793077df6a
               >
                 <div
                   class="c13"
                   data-blade-component="box"
                 >
                   <div
-<<<<<<< HEAD
                     class="c20 c21"
                     data-blade-component="badge"
-=======
-                    class="c14"
-                    data-blade-component="base-box"
->>>>>>> 610422ab8ed649a8ea287d5e701e81793077df6a
                   >
                     <div
                       class="c16"
+                      data-blade-component="base-box"
                     >
                       <p
                         class="c22"
@@ -663,7 +656,6 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                   data-blade-component="icon-button"
                   type="button"
                 >
-<<<<<<< HEAD
                   <svg
                     aria-hidden="true"
                     class="Svgweb__StyledSvg-vcmjs8-0"
@@ -675,20 +667,12 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                   >
                     <path
                       d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
+                      data-blade-component="svg-path"
                       fill="currentColor"
                     />
                   </svg>
                 </button>
               </div>
-=======
-                  <path
-                    d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
-                    data-blade-component="svg-path"
-                    fill="currentColor"
-                  />
-                </svg>
-              </button>
->>>>>>> 610422ab8ed649a8ea287d5e701e81793077df6a
             </div>
           </div>
           <div
@@ -697,23 +681,14 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
         </div>
       </div>
       <div
-<<<<<<< HEAD
         class="c25"
-        data-blade-component="BottomSheetBody"
-=======
-        class="c23"
         data-blade-component="bottom-sheet-body"
->>>>>>> 610422ab8ed649a8ea287d5e701e81793077df6a
         data-testid="bottomsheet-body"
         style="user-select: auto; overflow: auto;"
       >
         <div
-<<<<<<< HEAD
           class="c26"
-=======
-          class="c24"
           data-blade-component="base-box"
->>>>>>> 610422ab8ed649a8ea287d5e701e81793077df6a
         >
           <p
             class="c27"
@@ -724,24 +699,15 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
         </div>
       </div>
       <div
-<<<<<<< HEAD
         class="c28"
-        data-blade-component="BottomSheetFooter"
-=======
-        class="c26"
         data-blade-component="bottom-sheet-footer"
->>>>>>> 610422ab8ed649a8ea287d5e701e81793077df6a
       >
         <div
           class="c24"
         />
         <div
-<<<<<<< HEAD
           class="c29"
-=======
-          class="c27"
           data-blade-component="base-box"
->>>>>>> 610422ab8ed649a8ea287d5e701e81793077df6a
         >
           <button
             class="c30"
@@ -750,19 +716,12 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
             type="button"
           >
             <div
-<<<<<<< HEAD
               class="c31 c32"
-            >
-              <div
-                class="c33"
-=======
-              class="c29 c30"
               data-blade-component="base-box"
             >
               <div
-                class="c31"
+                class="c33"
                 data-blade-component="base-text"
->>>>>>> 610422ab8ed649a8ea287d5e701e81793077df6a
               >
                 Remove address
               </div>
@@ -857,6 +816,19 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
   border-radius: 9999px;
 }
 
+.c11 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+}
+
 .c8 {
   border: none;
   cursor: pointer;
@@ -896,19 +868,6 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
 
 .c8:active {
   color: hsla(217,18%,45%,1);
-}
-
-.c11 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
 }
 
 .c1 {

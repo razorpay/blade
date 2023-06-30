@@ -133,7 +133,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   padding-right: 16px;
   padding-left: 16px;
   margin-bottom: 16px;
-  margin-top: 12px;
+  margin-top: 16px;
   touch-action: none;
 }
 
@@ -618,6 +618,21 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   background-color: hsla(218,89%,51%,0.09);
 }
 
+@media screen and (min-width:768px) {
+  .c23 {
+    padding-right: 20px;
+    padding-left: 20px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c37 {
+    padding: 20px;
+  }
+}
+
 <div>
   <div
     class="c0"
@@ -759,6 +774,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
     >
       <div
         class="c18"
+        data-blade-component="base-box"
       />
       <div
         class="c19 c20 c21"
@@ -767,6 +783,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
       >
         <div
           class="c22"
+          data-blade-component="base-box"
         >
           <div
             class=""
@@ -774,18 +791,23 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
           >
             <div
               class="c23"
+              data-blade-component="base-box"
             >
               <div
                 class="c24"
+                data-blade-component="base-box"
               >
                 <div
                   class="c25"
+                  data-blade-component="base-box"
                 >
                   <div
                     class="c26"
+                    data-blade-component="base-box"
                   >
                     <div
                       class="c27"
+                      data-blade-component="base-box"
                     >
                       <h6
                         class="c28"
@@ -811,52 +833,9 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
           role="dialog"
         >
           <div
-<<<<<<< HEAD
             aria-multiselectable="false"
             class=" c30"
-=======
-            class=" c21"
-            data-blade-component="action-list-header"
-          >
-            <div
-              class=""
-              data-blade-component="base-box"
-            >
-              <svg
-                aria-hidden="true"
-                class="Svgweb__StyledSvg-vcmjs8-0"
-                data-blade-component="icon"
-                fill="none"
-                height="12px"
-                viewBox="0 0 24 24"
-                width="12px"
-              >
-                <path
-                  clip-rule="evenodd"
-                  d="M5.944 4.921a10 10 0 1 1-2.377 10.411 1 1 0 1 1 1.886-.664 8 8 0 1 0 1.872-8.3L4.475 9H8a1 1 0 1 1 0 2H2a1 1 0 0 1-1-1V4a1 1 0 1 1 2 0v3.64L5.944 4.92ZM12 6a1 1 0 0 1 1 1v5.586l2.707 2.707a1 1 0 0 1-1.414 1.414l-3-3A1 1 0 0 1 11 13V7a1 1 0 0 1 1-1Z"
-                  data-blade-component="svg-path"
-                  fill="hsla(216, 16%, 60%, 1)"
-                  fill-rule="evenodd"
-                />
-              </svg>
-            </div>
-            <div
-              class="c22"
-              data-blade-component="base-box"
-            >
-              <p
-                class="c23"
-                data-blade-component="text"
-              >
-                Recent Searches
-              </p>
-            </div>
-          </div>
-          <div
-            aria-multiselectable="false"
-            class=" c24"
             data-blade-component="base-box"
->>>>>>> 610422ab8ed649a8ea287d5e701e81793077df6a
             role="listbox"
           >
             <button
@@ -871,26 +850,16 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
               type="button"
             >
               <div
-<<<<<<< HEAD
                 class="c32"
-              >
-                <div
-                  class="c33"
-                />
-                <div
-                  class="c34"
-=======
-                class="c26"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c27"
+                  class="c33"
                   data-blade-component="base-box"
                 />
                 <div
-                  class="c28"
+                  class="c34"
                   data-blade-component="base-box"
->>>>>>> 610422ab8ed649a8ea287d5e701e81793077df6a
                 >
                   <p
                     class="c35"
@@ -900,12 +869,8 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
                   </p>
                 </div>
                 <div
-<<<<<<< HEAD
                   class="c36"
-=======
-                  class="c30"
                   data-blade-component="base-box"
->>>>>>> 610422ab8ed649a8ea287d5e701e81793077df6a
                 />
               </div>
               <div
@@ -925,26 +890,16 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
               type="button"
             >
               <div
-<<<<<<< HEAD
                 class="c32"
-              >
-                <div
-                  class="c33"
-                />
-                <div
-                  class="c34"
-=======
-                class="c26"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c27"
+                  class="c33"
                   data-blade-component="base-box"
                 />
                 <div
-                  class="c28"
+                  class="c34"
                   data-blade-component="base-box"
->>>>>>> 610422ab8ed649a8ea287d5e701e81793077df6a
                 >
                   <p
                     class="c35"
@@ -954,12 +909,8 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
                   </p>
                 </div>
                 <div
-<<<<<<< HEAD
                   class="c36"
-=======
-                  class="c30"
                   data-blade-component="base-box"
->>>>>>> 610422ab8ed649a8ea287d5e701e81793077df6a
                 />
               </div>
               <div
@@ -971,6 +922,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
         </div>
         <div
           class=""
+          data-blade-component="base-box"
           role="group"
         >
           <div
@@ -982,44 +934,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
           >
             <div
               class=""
-<<<<<<< HEAD
               data-blade-component="box"
-=======
-              data-blade-component="base-box"
-            >
-              <svg
-                aria-hidden="true"
-                class="Svgweb__StyledSvg-vcmjs8-0"
-                data-blade-component="icon"
-                fill="none"
-                height="12px"
-                viewBox="0 0 24 24"
-                width="12px"
-              >
-                <path
-                  clip-rule="evenodd"
-                  d="M16.618 18.032a9 9 0 1 1 1.414-1.414l3.675 3.675a1 1 0 0 1-1.414 1.414l-3.675-3.675ZM4 11a7 7 0 1 1 12.041 4.857 1.009 1.009 0 0 0-.185.184A7 7 0 0 1 4 11Z"
-                  data-blade-component="svg-path"
-                  fill="hsla(216, 16%, 60%, 1)"
-                  fill-rule="evenodd"
-                />
-              </svg>
-            </div>
-            <div
-              class="c32"
-              data-blade-component="base-box"
-            >
-              <p
-                class="c23"
-                data-blade-component="text"
-              >
-                Search Tips
-              </p>
-            </div>
-            <div
-              class="c33"
-              data-blade-component="base-box"
->>>>>>> 610422ab8ed649a8ea287d5e701e81793077df6a
             >
               <button
                 class="c38"
@@ -1028,19 +943,12 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
                 type="button"
               >
                 <div
-<<<<<<< HEAD
                   class="c39 c40"
-                >
-                  <div
-                    class="c41"
-=======
-                  class="c35 c36"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c37"
+                    class="c41"
                     data-blade-component="base-text"
->>>>>>> 610422ab8ed649a8ea287d5e701e81793077df6a
                   >
                     Apply
                   </div>

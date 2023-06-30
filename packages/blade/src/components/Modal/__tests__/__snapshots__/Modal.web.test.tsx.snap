@@ -35,7 +35,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   padding-right: 16px;
   padding-left: 16px;
   margin-bottom: 16px;
-  margin-top: 12px;
+  margin-top: 16px;
   touch-action: none;
 }
 
@@ -428,6 +428,21 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   opacity: 1;
 }
 
+@media screen and (min-width:768px) {
+  .c4 {
+    padding-right: 20px;
+    padding-left: 20px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c25 {
+    padding: 20px;
+  }
+}
+
 <div
   class="c0"
   data-blade-component="box"
@@ -466,19 +481,12 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
             data-blade-component="base-box"
           >
             <div
-<<<<<<< HEAD
               class="c7"
-            >
-              <div
-                class="c8"
-=======
-              class=""
               data-blade-component="base-box"
             >
               <div
-                class="c7"
+                class="c8"
                 data-blade-component="base-box"
->>>>>>> 610422ab8ed649a8ea287d5e701e81793077df6a
               >
                 <h6
                   class="c9"
@@ -487,23 +495,16 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
                   Address Details
                 </h6>
                 <div
-<<<<<<< HEAD
                   class="c10"
+                  data-blade-component="base-box"
                 >
                   <div
                     class="c11"
                     data-blade-component="box"
-=======
-                  class="c9"
-                  data-blade-component="base-box"
-                >
-                  <div
-                    class="c10 c11"
-                    data-blade-component="base-box"
->>>>>>> 610422ab8ed649a8ea287d5e701e81793077df6a
                   >
                     <div
                       class="c12 c13"
+                      data-blade-component="base-box"
                     >
                       <div
                         class="c14"
@@ -529,28 +530,20 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
             </div>
           </div>
           <div
-<<<<<<< HEAD
             class="c17"
-=======
-            class="c15"
             data-blade-component="base-box"
->>>>>>> 610422ab8ed649a8ea287d5e701e81793077df6a
           >
             <div
               class="c11"
               data-blade-component="box"
             >
               <div
-<<<<<<< HEAD
                 class="c18 c19"
                 data-blade-component="badge"
-=======
-                class="c12"
-                data-blade-component="base-box"
->>>>>>> 610422ab8ed649a8ea287d5e701e81793077df6a
               >
                 <div
                   class="c14"
+                  data-blade-component="base-box"
                 >
                   <p
                     class="c20"
@@ -572,7 +565,6 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
               data-blade-component="icon-button"
               type="button"
             >
-<<<<<<< HEAD
               <svg
                 aria-hidden="true"
                 class="Svgweb__StyledSvg-vcmjs8-0"
@@ -584,20 +576,12 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
               >
                 <path
                   d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
+                  data-blade-component="svg-path"
                   fill="currentColor"
                 />
               </svg>
             </button>
           </div>
-=======
-              <path
-                d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
-                data-blade-component="svg-path"
-                fill="currentColor"
-              />
-            </svg>
-          </button>
->>>>>>> 610422ab8ed649a8ea287d5e701e81793077df6a
         </div>
       </div>
       <div
@@ -633,19 +617,12 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
           type="button"
         >
           <div
-<<<<<<< HEAD
             class="c27 c28"
-          >
-            <div
-              class="c29"
-=======
-            class="c25 c26"
             data-blade-component="base-box"
           >
             <div
-              class="c27"
+              class="c29"
               data-blade-component="base-text"
->>>>>>> 610422ab8ed649a8ea287d5e701e81793077df6a
             >
               Save
             </div>
