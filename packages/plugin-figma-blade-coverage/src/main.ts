@@ -8231,286 +8231,298 @@ type CoverageMetrics = {
 };
 
 const main = async (): Promise<void> => {
-  // once<InsertCodeHandler>('INSERT_CODE', async (code: string) => {
-  //   const text = figma.createText();
-  //   await loadFontsAsync([text]);
-  //   text.characters = code;
-  //   figma.currentPage.selection = [text];
-  //   figma.viewport.scrollAndZoomIntoView([text]);
-  //   figma.closePlugin();
-  // });
-  // const colorStyles = {};
-  // for (const paintStyle of figma.getLocalPaintStyles()) {
-  //   colorStyles[paintStyle.name] = {
-  //     id: paintStyle.id,
-  //     key: paintStyle.key,
-  //   };
-  // }
-  // console.log(colorStyles);
-  // return;
-  figma.skipInvisibleInstanceChildren = true;
+  try {
+    // once<InsertCodeHandler>('INSERT_CODE', async (code: string) => {
+    //   const text = figma.createText();
+    //   await loadFontsAsync([text]);
+    //   text.characters = code;
+    //   figma.currentPage.selection = [text];
+    //   figma.viewport.scrollAndZoomIntoView([text]);
+    //   figma.closePlugin();
+    // });
+    // const colorStyles = {};
+    // for (const paintStyle of figma.getLocalPaintStyles()) {
+    //   colorStyles[paintStyle.name] = {
+    //     id: paintStyle.id,
+    //     key: paintStyle.key,
+    //   };
+    // }
+    // console.log(colorStyles);
+    // return;
+    figma.skipInvisibleInstanceChildren = true;
 
-  const bladeComponentIds = [
-    ...Object.values(paymentLightThemeData.components).map((component) => component.key),
-    ...Object.values(bankingDarkThemeData.components).map((component) => component.key),
-  ];
-  const bladeTextStyleIds = [
-    ...Object.values(paymentLightThemeData.textStyles).map(
-      (textStyle) => textStyle.id.split(',')[0],
-    ),
-    ...Object.values(bankingDarkThemeData.textStyles).map(
-      (textStyle) => textStyle.id.split(',')[0],
-    ),
-  ];
+    const bladeComponentIds = [
+      ...Object.values(paymentLightThemeData.components).map((component) => component.key),
+      ...Object.values(bankingDarkThemeData.components).map((component) => component.key),
+    ];
+    const bladeTextStyleIds = [
+      ...Object.values(paymentLightThemeData.textStyles).map(
+        (textStyle) => textStyle.id.split(',')[0],
+      ),
+      ...Object.values(bankingDarkThemeData.textStyles).map(
+        (textStyle) => textStyle.id.split(',')[0],
+      ),
+    ];
 
-  const bladeColorStyleIds = [
-    ...Object.values(paymentLightThemeData.colorStyles).map(
-      (colorStyle) => colorStyle.id.split(',')[0],
-    ),
-    ...Object.values(bankingDarkThemeData.colorStyles).map(
-      (colorStyle) => colorStyle.id.split(',')[0],
-    ),
-  ];
+    const bladeColorStyleIds = [
+      ...Object.values(paymentLightThemeData.colorStyles).map(
+        (colorStyle) => colorStyle.id.split(',')[0],
+      ),
+      ...Object.values(bankingDarkThemeData.colorStyles).map(
+        (colorStyle) => colorStyle.id.split(',')[0],
+      ),
+    ];
 
-  const traverseUpTillMainFrame = (node: BaseNode): BaseNode => {
-    if (node !== null) {
-      if (getParentNode(node)?.type === 'PAGE') {
-        return node;
-      } else if (node.parent) {
-        return traverseUpTillMainFrame(node.parent);
+    const traverseUpTillMainFrame = (node: BaseNode): BaseNode => {
+      if (node !== null) {
+        if (getParentNode(node)?.type === 'PAGE') {
+          return node;
+        } else if (node.parent) {
+          return traverseUpTillMainFrame(node.parent);
+        }
       }
-    }
-    return node;
-  };
-
-  const renderCoverageCard = async ({
-    mainFrameNode,
-    bladeComponents,
-    nonBladeComponents,
-    nonBladeColorStyles,
-    nonBladeTextStyles,
-    totalLayers,
-  }: {
-    mainFrameNode: SceneNode;
-  } & CoverageMetrics): Promise<void> => {
-    // these are from payment light theme but it should work as far as the plugin is being run from Razorpay org
-    const COVERAGE_CARD_COMPONENT_KEY = 'c5744871a8db11b02c65b4843d68779f2ff99ed3';
-    const BLADE_INTENT_COLOR_KEYS = {
-      positive: {
-        id: '',
-        key: 'c61aca5db3a21aead10da4889ad2b31c74d93529',
-      },
-      negative: {
-        id: '',
-        key: 'cccac5aac53e828b3be3e8617e462f8ee1a058dd',
-      },
-      notice: {
-        id: '',
-        key: '707d5fdfc748a5fc4777d212ee247bc40a86fe85',
-      },
+      return node;
     };
 
-    const coverageCardComponent = await figma.importComponentByKeyAsync(
-      COVERAGE_CARD_COMPONENT_KEY,
-    );
-    const coverageCardInstance = coverageCardComponent.createInstance();
-    coverageCardInstance.x = mainFrameNode.x + 150; // 150 because we want to prevent conflict with the frame name
-    coverageCardInstance.y = mainFrameNode.y - 178; // 178 is the height of rectangle, can replace with the bounding rect height
+    const renderCoverageCard = async ({
+      mainFrameNode,
+      bladeComponents,
+      nonBladeComponents,
+      nonBladeColorStyles,
+      nonBladeTextStyles,
+      totalLayers,
+    }: {
+      mainFrameNode: SceneNode;
+    } & CoverageMetrics): Promise<void> => {
+      // these are from payment light theme but it should work as far as the plugin is being run from Razorpay org
+      const COVERAGE_CARD_COMPONENT_KEY = 'c5744871a8db11b02c65b4843d68779f2ff99ed3';
+      const BLADE_INTENT_COLOR_KEYS = {
+        positive: {
+          id: '',
+          key: 'c61aca5db3a21aead10da4889ad2b31c74d93529',
+        },
+        negative: {
+          id: '',
+          key: 'cccac5aac53e828b3be3e8617e462f8ee1a058dd',
+        },
+        notice: {
+          id: '',
+          key: '707d5fdfc748a5fc4777d212ee247bc40a86fe85',
+        },
+      };
 
-    // import styles for popsitive, negative and notice colors and set their id in BLADE_INTENT_COLOR_KEYS
-    for await (const [intent, intentObject] of Object.entries(BLADE_INTENT_COLOR_KEYS)) {
-      const colorStyle = await figma.importStyleByKeyAsync(intentObject.key);
-      BLADE_INTENT_COLOR_KEYS[intent as 'positive' | 'negative' | 'notice'].id = colorStyle.id;
-    }
+      const coverageCardComponent = await figma.importComponentByKeyAsync(
+        COVERAGE_CARD_COMPONENT_KEY,
+      );
+      const coverageCardInstance = coverageCardComponent.createInstance();
+      coverageCardInstance.x = mainFrameNode.x + 150; // 150 because we want to prevent conflict with the frame name
+      coverageCardInstance.y = mainFrameNode.y - 178; // 178 is the height of rectangle, can replace with the bounding rect height
 
-    const bladeCoverage = Number((bladeComponents / totalLayers) * 100);
-    let coverageColorIntent = BLADE_INTENT_COLOR_KEYS.negative.id;
-    let bladeCoverageType = 'Very Low 😭';
-    const PROGRESS_BAR_MAX_WIDTH = 254;
-    const bladeCoverageProgress = (bladeCoverage / 100) * PROGRESS_BAR_MAX_WIDTH;
-
-    // calculate coverage type and intent colors for coverage
-    if (bladeCoverage > 70) {
-      bladeCoverageType = 'Good 😊';
-      coverageColorIntent = BLADE_INTENT_COLOR_KEYS.positive.id;
-    } else if (bladeCoverage > 50 && bladeCoverage < 70) {
-      bladeCoverageType = 'Low 😥';
-      coverageColorIntent = BLADE_INTENT_COLOR_KEYS.notice.id;
-    }
-
-    coverageCardInstance.setProperties({
-      'bladeCoverageType#45789:0': bladeCoverageType,
-      'bladeCoverage#45789:1': `${bladeCoverage.toFixed(2)}%`,
-      'totalLayers#45789:2': totalLayers.toString().padStart(2, '0'),
-      'bladeComponents#45789:3': bladeComponents.toString().padStart(2, '0'),
-      'nonBladeComponents#45789:4': nonBladeComponents.toString().padStart(2, '0'),
-      'nonBladeTextStyles#45789:5': nonBladeTextStyles.toString().padStart(2, '0'),
-      'nonBladeColorStyles#45789:6': nonBladeColorStyles.toString().padStart(2, '0'),
-    });
-
-    const detachedCard = coverageCardInstance.detachInstance();
-    traverseNode(detachedCard, (traversedNode) => {
-      if (traversedNode.type === 'TEXT') {
-        if (traversedNode.name === 'bladeCoverageType') {
-          traversedNode.setRangeFillStyleId(
-            0,
-            traversedNode.characters.length,
-            coverageColorIntent,
-          );
-        } else if (traversedNode?.name === 'bladeCoverage') {
-          traversedNode.setRangeFillStyleId(
-            0,
-            traversedNode.characters.length,
-            coverageColorIntent,
-          );
-        }
-      } else if (traversedNode.type === 'RECTANGLE' && traversedNode.name === 'Progress') {
-        traversedNode.resizeWithoutConstraints(bladeCoverageProgress, 4);
-        traversedNode.fillStyleId = coverageColorIntent;
+      // import styles for popsitive, negative and notice colors and set their id in BLADE_INTENT_COLOR_KEYS
+      for await (const [intent, intentObject] of Object.entries(BLADE_INTENT_COLOR_KEYS)) {
+        const colorStyle = await figma.importStyleByKeyAsync(intentObject.key);
+        BLADE_INTENT_COLOR_KEYS[intent as 'positive' | 'negative' | 'notice'].id = colorStyle.id;
       }
-    });
-  };
 
-  const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
-    let bladeComponents = 0;
-    let bladeTextStyles = 0;
-    let bladeColorStyles = 0;
-    let nonBladeComponents = 0;
-    let nonBladeTextStyles = 0;
-    let nonBladeColorStyles = 0;
-    let totalLayers = 0;
+      const bladeCoverage = Number((bladeComponents / totalLayers) * 100);
+      let coverageColorIntent = BLADE_INTENT_COLOR_KEYS.negative.id;
+      let bladeCoverageType = 'Very Low 😭';
+      const PROGRESS_BAR_MAX_WIDTH = 254;
+      const bladeCoverageProgress = (bladeCoverage / 100) * PROGRESS_BAR_MAX_WIDTH;
 
-    if (getParentNode(node)?.type === 'PAGE' && node.type !== 'FRAME') {
-      // if there are non-frame nodes as direct children of a page, ignore them
-      return null;
-    }
+      // calculate coverage type and intent colors for coverage
+      if (bladeCoverage > 70) {
+        bladeCoverageType = 'Good 😊';
+        coverageColorIntent = BLADE_INTENT_COLOR_KEYS.positive.id;
+      } else if (bladeCoverage > 50 && bladeCoverage < 70) {
+        bladeCoverageType = 'Low 😥';
+        coverageColorIntent = BLADE_INTENT_COLOR_KEYS.notice.id;
+      }
 
-    traverseNode(
-      node,
-      (traversedNode) => {
-        if (
-          traversedNode.type === 'INSTANCE' &&
-          (bladeComponentIds.includes(
-            (traversedNode.mainComponent?.parent as ComponentSetNode)?.key ?? '',
-          ) ||
-            bladeComponentIds.includes(traversedNode.mainComponent?.key ?? ''))
-        ) {
-          bladeComponents++;
-        } else if (traversedNode.type === 'INSTANCE') {
-          nonBladeComponents++;
-        } else if (traversedNode.type === 'TEXT') {
-          // check if the text is using Blade's text styles
-          const traversedNodeTextStyleId = (traversedNode?.textStyleId as string).split(',')[0];
-          const traversedNodeColorStyleId = (traversedNode?.fillStyleId as string).split(',')[0];
+      coverageCardInstance.setProperties({
+        'bladeCoverageType#45789:0': bladeCoverageType,
+        'bladeCoverage#45789:1': `${bladeCoverage.toFixed(2)}%`,
+        'totalLayers#45789:2': totalLayers.toString().padStart(2, '0'),
+        'bladeComponents#45789:3': bladeComponents.toString().padStart(2, '0'),
+        'nonBladeComponents#45789:4': nonBladeComponents.toString().padStart(2, '0'),
+        'nonBladeTextStyles#45789:5': nonBladeTextStyles.toString().padStart(2, '0'),
+        'nonBladeColorStyles#45789:6': nonBladeColorStyles.toString().padStart(2, '0'),
+      });
 
-          if (bladeTextStyleIds.includes(traversedNodeTextStyleId ?? '')) {
-            bladeTextStyles++;
-          } else {
-            nonBladeTextStyles++;
+      const detachedCard = coverageCardInstance.detachInstance();
+      traverseNode(detachedCard, (traversedNode) => {
+        if (traversedNode.type === 'TEXT') {
+          if (traversedNode.name === 'bladeCoverageType') {
+            traversedNode.setRangeFillStyleId(
+              0,
+              traversedNode.characters.length,
+              coverageColorIntent,
+            );
+          } else if (traversedNode?.name === 'bladeCoverage') {
+            traversedNode.setRangeFillStyleId(
+              0,
+              traversedNode.characters.length,
+              coverageColorIntent,
+            );
           }
-          // check if the text is using Blade's color styles
-          if (bladeColorStyleIds.includes(traversedNodeColorStyleId ?? '')) {
-            bladeColorStyles++;
-          } else {
-            nonBladeColorStyles++;
-          }
+        } else if (traversedNode.type === 'RECTANGLE' && traversedNode.name === 'Progress') {
+          traversedNode.resizeWithoutConstraints(bladeCoverageProgress, 4);
+          traversedNode.fillStyleId = coverageColorIntent;
+        }
+      });
+    };
 
+    const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
+      let bladeComponents = 0;
+      let bladeTextStyles = 0;
+      let bladeColorStyles = 0;
+      let nonBladeComponents = 0;
+      let nonBladeTextStyles = 0;
+      let nonBladeColorStyles = 0;
+      let totalLayers = 0;
+
+      if (getParentNode(node)?.type === 'PAGE' && !['FRAME', 'SECTION'].includes(node.type)) {
+        // if there are non-frame nodes as direct children of a page, ignore them
+        return null;
+      }
+
+      traverseNode(
+        node,
+        (traversedNode) => {
           if (
-            bladeTextStyleIds.includes(traversedNodeTextStyleId ?? '') &&
-            bladeColorStyleIds.includes(traversedNodeColorStyleId ?? '')
+            traversedNode.type === 'INSTANCE' &&
+            (bladeComponentIds.includes(
+              (traversedNode.mainComponent?.parent as ComponentSetNode)?.key ?? '',
+            ) ||
+              bladeComponentIds.includes(traversedNode.mainComponent?.key ?? ''))
           ) {
             bladeComponents++;
-          }
-        } else if (traversedNode.type === 'LINE') {
-          // check if the line is using Blade's color styles
-          const traversedNodeColorStyleId = (traversedNode?.fillStyleId as string).split(',')[0];
+          } else if (traversedNode.type === 'INSTANCE') {
+            nonBladeComponents++;
+          } else if (traversedNode.type === 'TEXT') {
+            // check if the text is using Blade's text styles
+            const traversedNodeTextStyleId =
+              traversedNode?.textStyleId !== figma.mixed
+                ? traversedNode?.textStyleId?.split(',')[0]
+                : '';
+            const traversedNodeColorStyleId =
+              traversedNode?.fillStyleId !== figma.mixed
+                ? traversedNode?.fillStyleId?.split(',')[0]
+                : '';
+            /** the fillstyleId can have figma.mixed. so in that case we need to go character by character
+             * and do getRangeFillStyleId(4,5) instead of fillStyleId
+             * */
+            if (bladeTextStyleIds.includes(traversedNodeTextStyleId ?? '')) {
+              bladeTextStyles++;
+            } else {
+              nonBladeTextStyles++;
+            }
+            // check if the text is using Blade's color styles
+            if (bladeColorStyleIds.includes(traversedNodeColorStyleId ?? '')) {
+              bladeColorStyles++;
+            } else {
+              nonBladeColorStyles++;
+            }
 
-          if (bladeColorStyleIds.includes(traversedNodeColorStyleId ?? '')) {
-            bladeColorStyles++;
-          } else {
-            nonBladeColorStyles++;
-          }
-        }
-        if (getParentNode(traversedNode)?.type !== 'PAGE') {
-          // exclude the main frame itself from the count to remove false negatives
-          totalLayers++;
-        }
-      },
-      (traversedNode) => {
-        // callback to stopTraversal for children of a node
-        // true: we shall stop
-        // false: we shall keep traversing children
-        if (
-          traversedNode.type === 'INSTANCE' &&
-          (bladeComponentIds.includes(
-            (traversedNode.mainComponent?.parent as ComponentSetNode)?.key ?? '',
-          ) ||
-            bladeComponentIds.includes(traversedNode.mainComponent?.key ?? ''))
-        ) {
-          // we shall stop traversal further if we have found that an instance is Blade instance
-          // if we keep traversing then chances are the metrics will be skewed because Blade components are composed of non-blade themselves
-          // in code analytics we can add "data-*" to all the children till leaf nodes but over here we can't hence we stop
-          return true;
-        }
-        return false;
-      },
-    );
+            if (
+              bladeTextStyleIds.includes(traversedNodeTextStyleId ?? '') &&
+              bladeColorStyleIds.includes(traversedNodeColorStyleId ?? '')
+            ) {
+              bladeComponents++;
+            }
+          } else if (traversedNode.type === 'LINE') {
+            // check if the line is using Blade's color styles
+            const traversedNodeColorStyleId = (traversedNode?.fillStyleId as string).split(',')[0];
 
-    return {
-      bladeComponents,
-      bladeTextStyles,
-      bladeColorStyles,
-      nonBladeComponents,
-      nonBladeTextStyles,
-      nonBladeColorStyles,
-      totalLayers,
+            if (bladeColorStyleIds.includes(traversedNodeColorStyleId ?? '')) {
+              bladeColorStyles++;
+            } else {
+              nonBladeColorStyles++;
+            }
+          }
+          if (getParentNode(traversedNode)?.type !== 'PAGE') {
+            // exclude the main frame itself from the count to remove false negatives
+            totalLayers++;
+          }
+        },
+        (traversedNode) => {
+          // callback to stopTraversal for children of a node
+          // true: we shall stop
+          // false: we shall keep traversing children
+          if (
+            traversedNode.type === 'INSTANCE' &&
+            (bladeComponentIds.includes(
+              (traversedNode.mainComponent?.parent as ComponentSetNode)?.key ?? '',
+            ) ||
+              bladeComponentIds.includes(traversedNode.mainComponent?.key ?? ''))
+          ) {
+            // we shall stop traversal further if we have found that an instance is Blade instance
+            // if we keep traversing then chances are the metrics will be skewed because Blade components are composed of non-blade themselves
+            // in code analytics we can add "data-*" to all the children till leaf nodes but over here we can't hence we stop
+            return true;
+          }
+          return false;
+        },
+      );
+
+      return {
+        bladeComponents,
+        bladeTextStyles,
+        bladeColorStyles,
+        nonBladeComponents,
+        nonBladeTextStyles,
+        nonBladeColorStyles,
+        totalLayers,
+      };
     };
-  };
 
-  const getPageMainFrameNodes = (nodes: SceneNode[]): SceneNode[] => {
-    const mainFrameNodes: SceneNode[] = [];
-    for (const node of nodes) {
-      if (getParentNode(node)?.type === 'PAGE') {
-        // if selection is top level frame then start the coverage count
-        // await calculateCoverage(node);
-        mainFrameNodes.push(node);
-      } else {
-        // if the selection is not the top level frame then traverse up till we find the frame and then start the coverage count
-        // await calculateCoverage(mainFrameNode);
-        mainFrameNodes.push(traverseUpTillMainFrame(node) as SceneNode);
+    const getPageMainFrameNodes = (nodes: SceneNode[]): SceneNode[] => {
+      const mainFrameNodes: SceneNode[] = [];
+      for (const node of nodes) {
+        if (getParentNode(node)?.type === 'PAGE') {
+          // if selection is top level frame then start the coverage count
+          // await calculateCoverage(node);
+          mainFrameNodes.push(node);
+        } else {
+          // if the selection is not the top level frame then traverse up till we find the frame and then start the coverage count
+          // await calculateCoverage(mainFrameNode);
+          mainFrameNodes.push(traverseUpTillMainFrame(node) as SceneNode);
+        }
+      }
+      return mainFrameNodes;
+    };
+
+    let nodes: SceneNode[] = [];
+    figma.notify('Calculating Coverage', { timeout: Infinity });
+    if (figma.currentPage.selection.length > 0) {
+      // you already have the selection, run the plugin
+      //@ts-expect-error type 'readonly SceneNode[]' is 'readonly' and cannot be assigned to the mutable type 'SceneNode[]'
+      nodes = figma.currentPage.selection;
+    } else if (figma.currentPage.type === 'PAGE') {
+      // plugin is run from page scope but has no selection, so traverse all the nodes and then measure coverage
+      nodes = getSelectedNodesOrAllNodes();
+    } else {
+      // the plugin is not run from a page scope, throw error
+      console.error('Please run the plugin by opening a Page or selecting a layer inside a Page');
+    }
+
+    if (nodes.length) {
+      // 1. get the main frame nodes of the current page(ignoring non-frame nodes)
+      const mainFrameNodes = getPageMainFrameNodes(nodes);
+      for await (const mainFrameNode of mainFrameNodes) {
+        // 2. calculate the coverage
+        const coverageMetrics = calculateCoverage(mainFrameNode);
+        if (coverageMetrics) {
+          // 3. render the coverage card. fin.
+          await renderCoverageCard({ mainFrameNode, ...coverageMetrics });
+        }
       }
     }
-    return mainFrameNodes;
-  };
-
-  let nodes: SceneNode[] = [];
-  figma.notify('Calculating Coverage', { timeout: Infinity });
-  if (figma.currentPage.selection.length > 0) {
-    // you already have the selection, run the plugin
-    //@ts-expect-error type 'readonly SceneNode[]' is 'readonly' and cannot be assigned to the mutable type 'SceneNode[]'
-    nodes = figma.currentPage.selection;
-  } else if (figma.currentPage.type === 'PAGE') {
-    // plugin is run from page scope but has no selection, so traverse all the nodes and then measure coverage
-    nodes = getSelectedNodesOrAllNodes();
-  } else {
-    // the plugin is not run from a page scope, throw error
-    console.error('Please run the plugin by opening a Page or selecting a layer inside a Page');
+  } catch (error: unknown) {
+    console.log({ error });
+  } finally {
+    figma.closePlugin();
   }
-
-  if (nodes.length) {
-    // 1. get the main frame nodes of the current page(ignoring non-frame nodes)
-    const mainFrameNodes = getPageMainFrameNodes(nodes);
-    for await (const mainFrameNode of mainFrameNodes) {
-      // 2. calculate the coverage
-      const coverageMetrics = calculateCoverage(mainFrameNode);
-      if (coverageMetrics) {
-        // 3. render the coverage card. fin.
-        await renderCoverageCard({ mainFrameNode, ...coverageMetrics });
-      }
-    }
-  }
-
-  figma.closePlugin();
 };
 
 export default main;
