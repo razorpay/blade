@@ -9,6 +9,7 @@ import { useId } from '~utils/useId';
 type UseRadioGroupProps = Pick<
   RadioGroupProps,
   | 'isDisabled'
+  | 'isRequired'
   | 'labelPosition'
   | 'validationState'
   | 'name'
@@ -36,6 +37,7 @@ const useRadioGroup = ({
   value,
   defaultValue,
   isDisabled,
+  isRequired,
   labelPosition,
   onChange,
   validationState,
@@ -82,6 +84,7 @@ const useRadioGroup = ({
       necessityIndicator,
       validationState,
       isDisabled,
+      isRequired,
       labelPosition: platform === 'onMobile' ? 'top' : labelPosition,
       name: fallbackName,
       state,
@@ -90,6 +93,7 @@ const useRadioGroup = ({
   }, [
     validationState,
     isDisabled,
+    isRequired,
     platform,
     labelPosition,
     state,
