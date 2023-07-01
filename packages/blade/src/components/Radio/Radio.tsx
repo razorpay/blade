@@ -39,6 +39,7 @@ type RadioProps = {
    * @default false
    */
   isDisabled?: boolean;
+  isRequired?: boolean;
   /**
    * Size of the radios
    *
@@ -49,7 +50,7 @@ type RadioProps = {
   StyledPropsBlade;
 
 const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
-  { value, children, helpText, isDisabled, size = 'medium', testID, ...styledProps },
+  { value, children, helpText, isDisabled, isRequired, size = 'medium', testID, ...styledProps },
   ref,
 ) => {
   const groupProps = useRadioGroupContext();
@@ -65,6 +66,7 @@ const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
   const validationState = groupProps?.validationState;
   const hasError = validationState === 'error';
   const _isDisabled = isDisabled ?? groupProps?.isDisabled;
+  const _isRequired = isRequired ?? groupProps?.isRequired;
   const name = groupProps?.name;
   const showHelpText = !hasError && helpText;
   const isReactNative = getPlatformType() === 'react-native';
@@ -84,7 +86,7 @@ const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
     isChecked,
     hasError,
     isDisabled: _isDisabled,
-    isRequired: groupProps.necessityIndicator === 'required',
+    isRequired: _isRequired,
     name,
     value,
     onChange: handleChange,
