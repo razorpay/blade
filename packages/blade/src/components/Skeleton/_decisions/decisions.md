@@ -110,6 +110,93 @@ Complex usage:
 <img src="./skeleton-usage-demo-2.png" alt="Skeleton complex usage" width="50%" />
 
 
+### Working with existing components. 
+
+To use Skeleton loader with existing blade components like Card, consumers can create custom skeleton templates as per their needs and usecases. 
+
+**Example:** 
+
+If the whole card needs to be loadable: 
+
+```jsx
+const App = () => {
+  const { data, isLoading } = useQuery();
+
+  return (
+    <>
+      {isLoading ? (
+        <Box>
+          <Box display="flex">
+            <Box>
+              <Skeleton width="40%" height="30px" />
+              <Skeleton width="30%" height="20px" />
+            </Box>
+            <Skeleton width="30px" height="50px" />
+          </Box>
+          <Skeleton width="100%" height="100px" />
+        </Box>
+      ) : (
+        <Card>
+          <CardHeader>
+            <CardHeaderLeading title={data.title} subtitle={data.subtitle} />
+            <CardHeaderTrailing
+              visual={<CardHeaderBadge variant="neutral">{data.badge}</CardHeaderBadge>}
+            />
+          </CardHeader>
+          <CardBody>
+            <Text>{data.content}</Text>
+          </CardBody>
+        </Card>
+      )}
+    </>
+  );
+};
+```
+
+If only body of the card needs to be lodable consumers can put the skeleton on the CardBody:
+
+```jsx
+const App = () => {
+  const { data, isLoading } = useQuery();
+
+  return (
+    <Card>
+      <CardHeader>
+        <CardHeaderLeading title="Payment options" subtitle="Secured by Razorpay" />
+        <CardHeaderTrailing visual={<CardHeaderBadge variant="neutral">PENDING</CardHeaderBadge>} />
+      </CardHeader>
+      <CardBody>
+        {isLoading ? <Skeleton width="100%" height="100px" /> : <Text>{data.content}</Text>}
+      </CardBody>
+    </Card>
+  );
+};
+
+```
+
+A question that might arise is "Why not just give isLoading prop in the Card?"
+
+Like: 
+
+```jsx
+<Card isLoading={isLoading}>
+  <CardHeader>
+    <CardHeaderLeading title={data.title} subtitle={data.subtitle} />
+    <CardHeaderTrailing visual={<CardHeaderBadge variant="neutral">{data.badge}</CardHeaderBadge>} />
+  </CardHeader>
+  <CardBody>
+    <Text>{data.content}</Text>
+  </CardBody>
+</Card>
+```
+
+We discussed this, while it might look simple this approach also has few downsides: 
+
+- if we provide `isLoading` prop it might cause a lot of jumps and shifts on the page because we won't know until API responds if the CardHeader has title/prefix or subtitle set or not and it could be removed after the API is done loading.
+- Providing `isLoading` prop for all Blade components (where applicable) might not be the most flexible approach.
+- With `isLoading` prop consumers will anyways have to opt of out it and use custom Skeleton templates for the CardBody content so there's not much benefit to providing it out of the box.
+
+
 ### Should we inferring dimensions or provide predefined variants?
 
 #### Inferring Dimensions
@@ -230,6 +317,7 @@ https://github.com/razorpay/blade/assets/35374649/8298efde-f977-4aa3-bc2d-92fb50
 ## Open Questions
 
 - How will Skeleton loader work with existing components like ModalHeader/Footer etc?
+  - Ans: we will let the consumer handle the skeleton loading for Card components
 
 ## References
 
