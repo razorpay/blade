@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 8.14.0
+
+### Minor Changes
+
+- e1f37f69: feat: add `Divider` component
+
 ## 8.13.0
 
 ### Minor Changes
