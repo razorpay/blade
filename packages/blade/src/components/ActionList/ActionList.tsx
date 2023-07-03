@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
+import { useDropdown } from '../Dropdown/useDropdown';
+import { useBottomSheetContext } from '../BottomSheet/BottomSheetContext';
 import { getActionListContainerRole, getActionListItemWrapperRole } from './getA11yRoles';
 import { getActionListProperties } from './actionListUtils';
 import { StyledActionList } from './styles/StyledActionList';
 import { ActionListBox } from './ActionListBox';
 import { componentIds } from './componentIds';
-import { useDropdown } from '~components/Dropdown/useDropdown';
 import { makeAccessible } from '~utils/makeAccessible';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import { useBottomSheetContext } from '~components/BottomSheet/BottomSheetContext';
 import type { TestID } from '~utils/types';
 import type { SurfaceLevels } from '~tokens/theme/theme';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';

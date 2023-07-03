@@ -15,7 +15,13 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   margin-top: 24px;
 }
 
-.c6 {
+.c5 {
+  border-width: 0px;
+  border-bottom-color: hsla(216,15%,54%,0.18);
+  border-style: solid;
+}
+
+.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -34,11 +40,11 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   margin-top: 24px;
 }
 
-.c7 {
+.c8 {
   text-align: left;
 }
 
-.c10 {
+.c11 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -53,14 +59,14 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   margin-left: 16px;
 }
 
-.c11 {
+.c12 {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
   flex-grow: 1;
 }
 
-.c13 {
+.c14 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -81,7 +87,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   justify-content: center;
 }
 
-.c16 {
+.c17 {
   margin-left: 16px;
 }
 
@@ -112,7 +118,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   padding: 0;
 }
 
-.c8 {
+.c9 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -125,7 +131,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   padding: 0;
 }
 
-.c9 {
+.c10 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -138,7 +144,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   padding: 0;
 }
 
-.c15 {
+.c16 {
   color: hsla(218,89%,51%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -152,7 +158,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   padding: 0;
 }
 
-.c18 {
+.c19 {
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -166,7 +172,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   padding: 0;
 }
 
-.c12 {
+.c13 {
   min-height: 36px;
   width: 100%;
   cursor: pointer;
@@ -202,24 +208,24 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   position: relative;
 }
 
-.c12:hover {
+.c13:hover {
   background-color: hsla(218,89%,51%,0.09);
   border-color: hsla(218,89%,51%,1);
 }
 
-.c12:active {
+.c13:active {
   background-color: hsla(218,89%,51%,0.32);
   border-color: hsla(218,89%,51%,1);
 }
 
-.c12:focus {
+.c13:focus {
   background-color: hsla(218,89%,51%,0.18);
   border-color: hsla(218,89%,51%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
 
-.c12 * {
+.c13 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -228,7 +234,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c17 {
+.c18 {
   min-height: 36px;
   width: 100%;
   cursor: pointer;
@@ -264,24 +270,24 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   position: relative;
 }
 
-.c17:hover {
+.c18:hover {
   background-color: hsla(223,95%,48%,1);
   border-color: hsla(223,95%,48%,1);
 }
 
-.c17:active {
+.c18:active {
   background-color: hsla(230,100%,42%,1);
   border-color: hsla(230,100%,42%,1);
 }
 
-.c17:focus {
+.c18:focus {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
 
-.c17 * {
+.c18 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -290,14 +296,47 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c14 {
+.c15 {
   opacity: 1;
 }
 
-.c5 {
-  border-bottom-width: 1px;
+.c6 {
   border-bottom-style: solid;
-  border-color: hsla(216,15%,54%,0.18);
+  border-bottom-width: 1px;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+
+@media screen and (min-width:320px) {
+  .c5 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:480px) {
+  .c5 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c5 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .c5 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c5 {
+    border-style: solid;
+  }
 }
 
 <div>
@@ -326,49 +365,50 @@ exports[`<Card /> should render a Card with Footer 1`] = `
         data-blade-component="base-box"
       />
       <div
-        class="c5"
+        class="c5 c6"
+        data-blade-component="base-box"
       />
       <div
-        class="c6"
+        class="c7"
         data-blade-component="base-box"
       >
         <div
-          class="c7"
+          class="c8"
           data-blade-component="base-box"
         >
           <p
-            class="c8"
+            class="c9"
             data-blade-component="text"
           >
             Card Footer
           </p>
           <p
-            class="c9"
+            class="c10"
             data-blade-component="text"
           >
             Card footer subtitle
           </p>
         </div>
         <div
-          class="c10"
+          class="c11"
           data-blade-component="base-box"
         >
           <div
-            class="c11"
+            class="c12"
             data-blade-component="base-box"
           >
             <button
-              class="c12"
+              class="c13"
               data-blade-component="button"
               role="button"
               type="button"
             >
               <div
-                class="c13 c14"
+                class="c14 c15"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c15"
+                  class="c16"
                   data-blade-component="base-text"
                 >
                   Delete
@@ -377,25 +417,25 @@ exports[`<Card /> should render a Card with Footer 1`] = `
             </button>
           </div>
           <div
-            class="c16"
+            class="c17"
             data-blade-component="base-box"
           />
           <div
-            class="c11"
+            class="c12"
             data-blade-component="base-box"
           >
             <button
-              class="c17"
+              class="c18"
               data-blade-component="button"
               role="button"
               type="button"
             >
               <div
-                class="c13 c14"
+                class="c14 c15"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c18"
+                  class="c19"
                   data-blade-component="base-text"
                 >
                   Save
@@ -519,6 +559,12 @@ exports[`<Card /> should render a Card with Header 1`] = `
   background-color: hsla(216,15%,54%,0.09);
 }
 
+.c18 {
+  border-width: 0px;
+  border-bottom-color: hsla(216,15%,54%,0.18);
+  border-style: solid;
+}
+
 .c1 {
   width: 100%;
   display: -webkit-box;
@@ -612,7 +658,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
   -webkit-box-orient: vertical;
 }
 
-.c19 {
+.c20 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -641,10 +687,43 @@ exports[`<Card /> should render a Card with Header 1`] = `
   width: fit-content;
 }
 
-.c18 {
-  border-bottom-width: 1px;
+.c19 {
   border-bottom-style: solid;
-  border-color: hsla(216,15%,54%,0.18);
+  border-bottom-width: 1px;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+
+@media screen and (min-width:320px) {
+  .c18 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:480px) {
+  .c18 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c18 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .c18 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c18 {
+    border-style: solid;
+  }
 }
 
 <div>
@@ -764,7 +843,8 @@ exports[`<Card /> should render a Card with Header 1`] = `
         </div>
       </div>
       <div
-        class="c18"
+        class="c18 c19"
+        data-blade-component="base-box"
       />
     </div>
     <div
@@ -772,7 +852,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
       data-blade-component="card-body"
     >
       <p
-        class="c19"
+        class="c20"
         data-blade-component="text"
       >
         Plain Card
