@@ -13,6 +13,7 @@ import { useFormId } from '~components/Form/useFormId';
 type UseCheckboxGroupProps = Pick<
   CheckboxGroupProps,
   | 'isDisabled'
+  | 'isRequired'
   | 'labelPosition'
   | 'validationState'
   | 'name'
@@ -34,6 +35,7 @@ const useCheckboxGroup = ({
   value,
   defaultValue,
   isDisabled,
+  isRequired,
   labelPosition,
   onChange,
   validationState,
@@ -85,12 +87,13 @@ const useCheckboxGroup = ({
     return {
       validationState,
       isDisabled,
+      isRequired,
       labelPosition: platform === 'onMobile' ? 'top' : labelPosition,
       name,
       state,
       size,
     };
-  }, [validationState, isDisabled, platform, labelPosition, name, state, size]);
+  }, [validationState, isDisabled, isRequired, platform, labelPosition, name, state, size]);
 
   return { state, contextValue, ids: { labelId } };
 };

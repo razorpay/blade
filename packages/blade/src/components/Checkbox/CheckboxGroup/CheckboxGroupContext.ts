@@ -8,6 +8,7 @@ export type CheckboxGroupContextType = Pick<
   CheckboxGroupProps,
   | 'validationState'
   | 'isDisabled'
+  | 'isRequired'
   | 'labelPosition'
   | 'name'
   | 'defaultValue'
