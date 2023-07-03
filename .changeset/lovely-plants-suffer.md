@@ -2,4 +2,4 @@
 '@razorpay/blade': minor
 ---
 
-added and refactored divider component
+feat: add `Divider` component
