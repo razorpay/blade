@@ -30,10 +30,14 @@ const Page = (): React.ReactElement => {
       <Title>Usage</Title>
       <Sandbox>
         {`
-        import { Divider } from '@razorpay/blade/components';
+        import { Divider, Box } from '@razorpay/blade/components';
         
         function App(): JSX.Element {
-          return <Divider />;
+          return (
+            <Box display="flex">
+              <Divider />
+            </Box>
+          );
         }
         export default App;
         `}

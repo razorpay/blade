@@ -41,9 +41,11 @@ const StyledDivider = styled(BaseBox)<{
   borderPosition: 'borderBottom' | 'borderLeft';
   dividerStyle: NonNullable<DividerProps['dividerStyle']>;
   thickness: NonNullable<DividerProps['thickness']>;
-}>(({ theme, borderPosition, dividerStyle, thickness }) => ({
+  isDividerHorizontal: boolean;
+}>(({ theme, borderPosition, dividerStyle, thickness, isDividerHorizontal }) => ({
   [`${borderPosition}Style`]: dividerStyle,
   [`${borderPosition}Width`]: makeBorderSize(theme.border.width[thickness]),
+  ...(isDividerHorizontal ? { flexGrow: 1 } : { alignSelf: 'stretch', minHeight: '100%' }),
 }));
 
 const Divider = ({
@@ -62,10 +64,9 @@ const Divider = ({
     <StyledDivider
       borderWidth="none"
       borderPosition={borderPosition}
+      isDividerHorizontal={isDividerHorizontal}
       dividerStyle={dividerStyle}
       thickness={thickness}
-      flexGrow={1}
-      alignSelf="stretch"
       {...borderColor}
     />
   );

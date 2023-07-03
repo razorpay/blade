@@ -113,13 +113,6 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
 }
 
 .c22 {
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  -webkit-align-self: stretch;
-  -ms-flex-item-align: stretch;
-  align-self: stretch;
   border-width: 0px;
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-style: solid;
@@ -246,6 +239,10 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
 .c23 {
   border-bottom-style: solid;
   border-bottom-width: 1px;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
 }
 
 .c10 {

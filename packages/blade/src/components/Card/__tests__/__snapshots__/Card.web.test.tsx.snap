@@ -16,13 +16,6 @@ exports[`<Card /> should render a Card with Footer 1`] = `
 }
 
 .c5 {
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  -webkit-align-self: stretch;
-  -ms-flex-item-align: stretch;
-  align-self: stretch;
   border-width: 0px;
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-style: solid;
@@ -310,6 +303,10 @@ exports[`<Card /> should render a Card with Footer 1`] = `
 .c6 {
   border-bottom-style: solid;
   border-bottom-width: 1px;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
 }
 
 @media screen and (min-width:320px) {
@@ -563,13 +560,6 @@ exports[`<Card /> should render a Card with Header 1`] = `
 }
 
 .c18 {
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  -webkit-align-self: stretch;
-  -ms-flex-item-align: stretch;
-  align-self: stretch;
   border-width: 0px;
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-style: solid;
@@ -700,6 +690,10 @@ exports[`<Card /> should render a Card with Header 1`] = `
 .c19 {
   border-bottom-style: solid;
   border-bottom-width: 1px;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
 }
 
 @media screen and (min-width:320px) {

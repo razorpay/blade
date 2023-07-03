@@ -206,17 +206,15 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                 zIndex={2}
               >
                 <View
-                  alignSelf="stretch"
                   borderBottomColor="surface.border.normal.lowContrast"
                   borderPosition="borderBottom"
                   borderWidth="none"
                   data-blade-component="base-box"
                   dividerStyle="solid"
-                  flexGrow={1}
+                  isDividerHorizontal={true}
                   style={
                     Array [
                       Object {
-                        "alignSelf": "stretch",
                         "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
                         "borderBottomStyle": "solid",
                         "borderBottomWidth": 1,
@@ -877,17 +875,15 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                 </View>
               </View>
               <View
-                alignSelf="stretch"
                 borderBottomColor="surface.border.normal.lowContrast"
                 borderPosition="borderBottom"
                 borderWidth="none"
                 data-blade-component="base-box"
                 dividerStyle="solid"
-                flexGrow={1}
+                isDividerHorizontal={true}
                 style={
                   Array [
                     Object {
-                      "alignSelf": "stretch",
                       "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
                       "borderBottomStyle": "solid",
                       "borderBottomWidth": 1,
@@ -1114,17 +1110,15 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                 zIndex={2}
               >
                 <View
-                  alignSelf="stretch"
                   borderBottomColor="surface.border.normal.lowContrast"
                   borderPosition="borderBottom"
                   borderWidth="none"
                   data-blade-component="base-box"
                   dividerStyle="solid"
-                  flexGrow={1}
+                  isDividerHorizontal={true}
                   style={
                     Array [
                       Object {
-                        "alignSelf": "stretch",
                         "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
                         "borderBottomStyle": "solid",
                         "borderBottomWidth": 1,

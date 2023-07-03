@@ -119,13 +119,6 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 }
 
 .c20 {
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  -webkit-align-self: stretch;
-  -ms-flex-item-align: stretch;
-  align-self: stretch;
   border-width: 0px;
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-style: solid;
@@ -177,6 +170,10 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 .c21 {
   border-bottom-style: solid;
   border-bottom-width: 1px;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
 }
 
 .c8 {
