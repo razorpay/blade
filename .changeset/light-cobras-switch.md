@@ -1,11 +1,11 @@
 ---
-"@razorpay/blade": major
+"@razorpay/blade": patch
 ---
 
 feat: add blue variant to Counter component & change intent to variant
 
-## ⚠️ Breaking change for Counter component
-Changes the `intent` prop to `variant` since we support more than Feedback colors with the addition of `blue` color for Counter.
+## ⚠️ Changes for Counter component with backward compatibility
+Changes the `intent` prop to `variant` since we support more than Feedback colors with the addition of `blue` color for Counter. We will continue to support `intent` prop for backward compatibility but it will be deprecated in an upcoming major release.
 
 ### Migration guide
 1. Replace all instances of Counter's `intent` prop with `variant
