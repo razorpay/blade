@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { CSSObject } from 'styled-components';
 import BaseBox from '~components/Box/BaseBox';
 import type { ColorContrast } from '~tokens/theme/theme';
 import { makeBorderSize } from '~utils';
@@ -35,17 +35,29 @@ type DividerProps = {
    * @default 'low'
    */
   contrast?: 'low' | 'high';
+  /**
+   * Sets the height of divider. Divider uses Flex by default, use height only when parent is not flex.
+   *
+   */
+  height?: CSSObject['height'];
+  /**
+   * Sets the width of divider. Divider uses Flex by default, use width only when parent is not flex.
+   *
+   */
+  width?: CSSObject['width'];
 };
 
 const StyledDivider = styled(BaseBox)<{
   borderPosition: 'borderBottom' | 'borderLeft';
   dividerStyle: NonNullable<DividerProps['dividerStyle']>;
   thickness: NonNullable<DividerProps['thickness']>;
+  height: DividerProps['height'];
+  width: DividerProps['width'];
   isDividerHorizontal: boolean;
-}>(({ theme, borderPosition, dividerStyle, thickness, isDividerHorizontal }) => ({
+}>(({ theme, borderPosition, dividerStyle, thickness, isDividerHorizontal, width, height }) => ({
   [`${borderPosition}Style`]: dividerStyle,
   [`${borderPosition}Width`]: makeBorderSize(theme.border.width[thickness]),
-  ...(isDividerHorizontal ? { flexGrow: 1 } : { alignSelf: 'stretch', minHeight: '100%' }),
+  ...(isDividerHorizontal ? { flexGrow: 1, width } : { alignSelf: 'stretch', height }),
 }));
 
 const Divider = ({
@@ -54,6 +66,8 @@ const Divider = ({
   variant = 'normal',
   thickness = 'thin',
   contrast = 'low',
+  height,
+  width,
 }: DividerProps): React.ReactElement => {
   const isDividerHorizontal = orientation === 'horizontal';
   const borderPosition = isDividerHorizontal ? 'borderBottom' : 'borderLeft';
@@ -67,6 +81,8 @@ const Divider = ({
       isDividerHorizontal={isDividerHorizontal}
       dividerStyle={dividerStyle}
       thickness={thickness}
+      height={height}
+      width={width}
       {...borderColor}
     />
   );
