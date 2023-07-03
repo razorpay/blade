@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Divider /> should render Divider 1`] = `
+exports[`<Divider /> should render Divider using height 1`] = `
 <View
   style={
     Object {
@@ -9,25 +9,85 @@ exports[`<Divider /> should render Divider 1`] = `
   }
 >
   <View
-    borderBottomColor="surface.border.normal.lowContrast"
-    borderPosition="borderBottom"
-    borderWidth="none"
-    data-blade-component="base-box"
-    dividerStyle="solid"
-    isDividerHorizontal={true}
+    data-blade-component="box"
+    display="flex"
+    height="100px"
     style={
       Array [
         Object {
-          "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
-          "borderBottomStyle": "solid",
-          "borderBottomWidth": 1,
-          "borderStyle": "solid",
-          "borderWidth": 0,
-          "flexGrow": 1,
+          "display": "flex",
+          "height": 100,
         },
       ]
     }
-    thickness="thin"
-  />
+  >
+    <View
+      borderLeftColor="surface.border.normal.lowContrast"
+      borderPosition="borderLeft"
+      borderWidth="none"
+      data-blade-component="base-box"
+      dividerStyle="solid"
+      height="100%"
+      isDividerHorizontal={false}
+      style={
+        Array [
+          Object {
+            "alignSelf": "stretch",
+            "borderLeftColor": "hsla(216, 15%, 54%, 0.18)",
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": 1,
+            "borderStyle": "solid",
+            "borderWidth": 0,
+            "height": "100%",
+          },
+        ]
+      }
+      thickness="thin"
+    />
+  </View>
+</View>
+`;
+
+exports[`<Divider /> should render Divider within flex container 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="box"
+    display="flex"
+    style={
+      Array [
+        Object {
+          "display": "flex",
+        },
+      ]
+    }
+  >
+    <View
+      borderBottomColor="surface.border.normal.lowContrast"
+      borderPosition="borderBottom"
+      borderWidth="none"
+      data-blade-component="base-box"
+      dividerStyle="solid"
+      isDividerHorizontal={true}
+      style={
+        Array [
+          Object {
+            "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": 1,
+            "borderStyle": "solid",
+            "borderWidth": 0,
+            "flexGrow": 1,
+          },
+        ]
+      }
+      thickness="thin"
+    />
+  </View>
 </View>
 `;

@@ -1,5 +1,6 @@
 import React from 'react';
-import styled, { CSSObject } from 'styled-components';
+import type { CSSObject } from 'styled-components';
+import styled from 'styled-components';
 import BaseBox from '~components/Box/BaseBox';
 import type { ColorContrast } from '~tokens/theme/theme';
 import { makeBorderSize } from '~utils';
