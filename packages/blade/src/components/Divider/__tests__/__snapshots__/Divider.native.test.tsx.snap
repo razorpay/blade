@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Divider /> should render Divider 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    alignSelf="stretch"
+    borderBottomColor="surface.border.normal.lowContrast"
+    borderPosition="borderBottom"
+    borderWidth="none"
+    data-blade-component="base-box"
+    dividerStyle="solid"
+    flexGrow={1}
+    style={
+      Array [
+        Object {
+          "alignSelf": "stretch",
+          "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
+          "borderBottomStyle": "solid",
+          "borderBottomWidth": 1,
+          "borderStyle": "solid",
+          "borderWidth": 0,
+          "flexGrow": 1,
+        },
+      ]
+    }
+    thickness="thin"
+  />
+</View>
+`;
