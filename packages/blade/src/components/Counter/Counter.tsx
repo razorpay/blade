@@ -22,6 +22,13 @@ export type CounterProps = {
    */
   max?: number;
   /**
+   * Sets the intent of the counter.
+   *
+   * @default 'neutral'
+   * @deprecated Use `variant` instead
+   */
+  intent?: Feedback;
+  /**
    * Sets the variant of the counter.
    *
    * @default 'neutral'
@@ -76,6 +83,7 @@ const getColorProps = ({
 const Counter = ({
   value,
   max,
+  intent,
   variant = 'neutral',
   contrast = 'low',
   size = 'medium',
@@ -89,9 +97,15 @@ const Counter = ({
 
   const { platform } = useTheme();
   const { backgroundColor, textColor } = getColorProps({
-    variant,
+    variant: intent ?? variant,
     contrast,
   });
+
+  if (intent) {
+    console.warn(
+      '[Blade: Counter] The prop `intent` is deprecated and will be removed in a future release. Please use `variant` instead.',
+    );
+  }
 
   const counterTextSizes = {
     small: {
