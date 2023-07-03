@@ -9,10 +9,12 @@ import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Text } from '~components/Typography/Text';
 
 const paragraph = (
-  <Text margin="spacing.4">
-    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-    Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur cursus
-  </Text>
+  <BaseBox width="32%">
+    <Text margin="spacing.4">
+      Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+      Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur cursus
+    </Text>
+  </BaseBox>
 );
 
 const Page = (): React.ReactElement => {
@@ -82,7 +84,13 @@ DividerHorizontal.storyName = 'Horizontal';
 
 const DividerVerticalTemplate: ComponentStory<typeof DividerComponent> = () => {
   return (
-    <BaseBox height="100px" display="flex" alignItems="center" justifyContent="center">
+    <BaseBox
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+      flexDirection="row"
+      height="100px"
+    >
       <DividerComponent orientation="vertical" />
     </BaseBox>
   );
@@ -98,7 +106,7 @@ const DividerWithTextTemplate: ComponentStory<typeof DividerComponent> = () => {
     <BaseBox display="flex" flexDirection="column">
       <Heading marginBottom="spacing.4">Lorem Epsum</Heading>
       <DividerComponent />
-      <BaseBox display="flex" gap="spacing.6">
+      <BaseBox display="flex" gap="spacing.6" flexDirection="row">
         {paragraph}
         <DividerComponent orientation="vertical" />
         {paragraph}
