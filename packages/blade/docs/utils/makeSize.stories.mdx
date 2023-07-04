@@ -1,0 +1,26 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Utils/makeSize" />
+
+## `makeSize`
+
+`makeSize` converts any numerical unit into `px` units for both web and react native.
+This was created with the purpose of having a utility that appends units to our size values.
+
+For example `makeSize(10)` will return `10px` for web as well as react native.
+
+```tsx
+const makeSize = (size: number) => string;
+```
+
+### Example
+
+```tsx
+import { makeSize } from '@razorpay/blade/utils';
+import styled from 'styled-components';
+
+const CustomComponent = styled.div`
+  height: ${makeSize(512)};
+  width: ${makeSize(256)};
+`;
+```
