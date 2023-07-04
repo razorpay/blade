@@ -1,0 +1,26 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Utils/makeTypographySize" />
+
+## `makeTypographySize`
+
+Fonts in our theme are stored as plain numbers but they need to be converted into platform specific units before we can use them.
+`makeTypographySize` converts font sizes into `rem` units for web and `px` units for react native.
+For example, `makeTypographySize(16)` returns `'1rem'` for web and `'16px'` for react native.
+
+> You can read more about why Blade uses `rem` for web & `px` for react native on our [Units for typography and layout RFC](https://github.com/razorpay/blade/blob/master/rfcs/2021-02-19-units-for-typography-and-layout.md).
+
+```tsx
+const makeTypographySize = (size: number) => string;
+```
+
+### Example
+
+```tsx
+import { makeTypographySize } from '@razorpay/blade/utils';
+import styled from 'styled-components';
+
+const CustomComponent = styled.div`
+  font-size: ${({ theme }) => makeTypographySize(theme.typography.fonts.size[100])};
+`;
+```
