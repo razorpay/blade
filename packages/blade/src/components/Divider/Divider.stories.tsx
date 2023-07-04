@@ -9,15 +9,8 @@ import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Text } from '~components/Typography/Text';
 import { Card, CardBody } from '~components/Card';
 import { Button } from '~components/Button';
-
-const paragraph = (
-  <BaseBox width="32%">
-    <Text margin="spacing.4">
-      Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-      Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur cursus
-    </Text>
-  </BaseBox>
-);
+import { Box } from '~components/Box';
+import { List, ListItem } from '~components/List';
 
 const Page = (): React.ReactElement => {
   return (
@@ -44,24 +37,24 @@ const Page = (): React.ReactElement => {
           } from "@razorpay/blade/components";
           
           function App(): JSX.Element {
-            const paragraph = (
-              <Text marginTop="spacing.2">
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-              </Text>
-            );
-          
             return (
               <Card>
                 <CardBody>
                   <Box display="flex" flexDirection="column">
-                    <Heading marginBottom="spacing.2">Lorem Epsum</Heading>
+                    <Heading marginBottom="spacing.2">Explore multiple payment options</Heading>
                     <Divider />
                     <Box display="flex" gap="spacing.4" flexDirection="row">
-                      {paragraph}
+                      <Text marginTop="spacing.2">
+                      Accept payments with a custom-branded online store using Payment Pages.
+                      </Text>
+                    <Divider orientation="vertical" />
+                      <Text marginTop="spacing.2">
+                      Create payment links which can be shared via an email, SMS, messenger, chatbot etc.
+                      </Text>
                       <Divider orientation="vertical" />
-                      {paragraph}
-                      <Divider orientation="vertical" />
-                      {paragraph}
+                      <Text marginTop="spacing.2">
+                      Accept one time and subscription payments using payment button on your website in less than 5 minutes.
+                      </Text>
                     </Box>
                   </Box>
                 </CardBody>
@@ -90,15 +83,16 @@ const DividerDefaultTemplate: ComponentStory<typeof DividerComponent> = (args) =
     <Card>
       <CardBody>
         <BaseBox display="flex" flexDirection={args.orientation == 'vertical' ? 'row' : 'column'}>
-          <Text margin="spacing.4">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur fringilla lacus a
-            neque placerat ullamcorper
-          </Text>
+          <Heading margin="spacing.4">Payment Links</Heading>
           <DividerComponent {...args} />
-          <Text margin="spacing.4">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur fringilla lacus a
-            neque placerat ullamcorper
-          </Text>
+          <Box margin="spacing.4">
+            <Text>Share payment link via:</Text>
+            <List>
+              <ListItem>Email</ListItem>
+              <ListItem>SMS</ListItem>
+              <ListItem>Messenger</ListItem>
+            </List>
+          </Box>
         </BaseBox>
       </CardBody>
     </Card>
@@ -162,14 +156,31 @@ const DividerWithTextTemplate: ComponentStory<typeof DividerComponent> = () => {
     <Card>
       <CardBody>
         <BaseBox display="flex" flexDirection="column">
-          <Heading marginBottom="spacing.4">Lorem Epsum</Heading>
+          <Heading marginBottom="spacing.4">Explore multiple payment options</Heading>
           <DividerComponent />
           <BaseBox display="flex" gap="spacing.6" flexDirection="row">
-            {paragraph}
+            <BaseBox width="30%">
+              <Text margin="spacing.4">
+                Accept payments with a custom-branded online store using Payment Pages. Accept
+                international and domestic payments with automated payment receipts. Take your store
+                online instantly with zero coding.
+              </Text>
+            </BaseBox>
             <DividerComponent orientation="vertical" />
-            {paragraph}
+            <BaseBox width="30%">
+              <Text margin="spacing.4">
+                Create payment links which can be shared via an email, SMS, messenger, chatbot etc.
+                and get paid immediately. Accepting payments from customers is now just a link away.
+              </Text>
+            </BaseBox>
             <DividerComponent orientation="vertical" />
-            {paragraph}
+            <BaseBox width="30%">
+              <Text margin="spacing.4">
+                Accept one time and subscription payments on your website in less than 5 minutes.
+                Thousands of NGOs, SMEs, and freelancers are collecting payments by adding a payment
+                button to their website on their own.
+              </Text>
+            </BaseBox>
           </BaseBox>
         </BaseBox>
       </CardBody>
