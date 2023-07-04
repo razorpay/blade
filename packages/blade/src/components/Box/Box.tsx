@@ -115,6 +115,8 @@ const makeBoxProps = (props: BoxProps): KeysRequired<Omit<BoxProps, 'testID' | '
     backgroundPosition: props.backgroundPosition,
     backgroundOrigin: props.backgroundOrigin,
     backgroundRepeat: props.backgroundRepeat,
+    elevation: props.elevation,
+
     // Border
     borderWidth: props.borderWidth,
     borderColor: props.borderColor,
@@ -206,6 +208,7 @@ const _Box: React.ForwardRefRenderFunction<BoxRefType, BoxProps> = (props, ref) 
       ref={ref as any}
       {...metaAttribute({ name: MetaConstants.Box, testID: props.testID })}
       {...makeBoxProps(props)}
+      elevation={props.elevation}
     />
   );
 };

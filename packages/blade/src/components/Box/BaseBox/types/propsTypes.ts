@@ -3,7 +3,7 @@ import type { CSSObject } from 'styled-components';
 import type { MarginProps, PaddingProps, SpacingValueType } from './spacingTypes';
 import type { MakeObjectResponsive } from './responsiveTypes';
 import type { Theme } from '~components/BladeProvider';
-import type { Border } from '~tokens/global';
+import type { Border, Elevation } from '~tokens/global';
 import type { DotNotationColorStringToken, PickCSSByPlatform, TestID } from '~utils/types';
 import type { Platform } from '~utils';
 import type { BladeCommonEvents } from '~components/types';
@@ -141,7 +141,19 @@ type CommonBoxVisualProps = MakeObjectResponsive<
     | 'backgroundPosition'
     | 'backgroundOrigin'
     | 'backgroundRepeat'
-  >
+  > & {
+      /**
+       * Sets the elevation for Box
+       *
+       * eg: `theme.elevation.midRaised`
+       *
+       * @default `theme.elevation.lowRaised`
+       *
+       * **Links:**
+       * - Docs: https://blade.razorpay.com/?path=/docs/tokens-elevation--page
+       */
+      elevation?: keyof Elevation;
+    }
 >;
 
 // Visual props that are specific BaseBox

@@ -27,7 +27,6 @@ type SkeletonProps = StyledPropsBlade &
   Partial<FlexboxProps> & {
     type?: TextTypes;
     contrast?: 'low' | 'high';
-    numberOfLines?: number;
   };
 
 const Skeleton = ({

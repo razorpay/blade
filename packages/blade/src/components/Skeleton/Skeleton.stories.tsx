@@ -11,46 +11,123 @@ import {
   CardHeaderTrailing,
 } from '~components/Card';
 import { Box } from '~components/Box';
-import { Divider } from '~components/BaseHeaderFooter/Divider.web';
-import { Heading, Text } from '~components/Typography';
+import { Divider } from '~components/BaseHeaderFooter/Divider';
+import { Heading, Text, Title } from '~components/Typography';
 import { Amount } from '~components/Amount';
 import { Button } from '~components/Button';
 import { Alert } from '~components/Alert';
+import { getBoxArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
+import { Sandbox } from '~utils/storybook/Sandbox';
+
+const Page = (): React.ReactElement => {
+  return (
+    <StoryPageWrapper
+      figmaURL={{
+        paymentTheme:
+          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=16508%3A258522',
+        bankingTheme:
+          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=16508%3A258522',
+      }}
+      componentName="Skeleton"
+      componentDescription="Skeleton Loader is a static / animated placeholder for the information that is still loading. It mimic the structure and look of the entire view."
+    >
+      <Title>Usage</Title>
+      <Sandbox>
+        {`
+        import { Skeleton } from '@razorpay/blade/components';
+        
+        function App(): JSX.Element {
+          return (
+            <Skeleton width="100%" height="50px" margin="spacing.4" />
+          )
+        }
+
+        export default App;
+        `}
+      </Sandbox>
+    </StoryPageWrapper>
+  );
+};
+
+const argTypes = getBoxArgTypes();
+const filteredArgs = Object.fromEntries(
+  Object.entries(argTypes)
+    .filter(
+      ([key]) =>
+        !key.includes('border') &&
+        !key.includes('background') &&
+        !key.includes('overflow') &&
+        !['as', 'textAlign', 'tabIndex', '__brand__'].includes(key),
+    )
+    .map(([key, _value]) => {
+      return [key, _value];
+    }),
+);
 
 export default {
   title: 'Components/Skeleton',
   component: SkeletonComponent,
-  argTypes: {},
+  argTypes: filteredArgs,
+  args: {
+    width: '100%',
+    height: '50px',
+    borderRadius: 'medium',
+  },
+  parameters: {
+    docs: {
+      page: Page,
+    },
+  },
 } as Meta<SkeletonProps>;
 
-const SkeletonTemplate: ComponentStory<typeof SkeletonComponent> = () => {
+const SkeletonTemplate: ComponentStory<typeof SkeletonComponent> = (args) => {
   return (
-    <Card>
-      <CardBody>
-        <SkeletonComponent
-          marginBottom="spacing.3"
-          borderRadius="medium"
-          width="100%"
-          height="30px"
-        />
-        <SkeletonComponent
-          marginBottom="spacing.3"
-          borderRadius="medium"
-          width="100%"
-          height="30px"
-        />
-        <SkeletonComponent
-          marginBottom="spacing.3"
-          borderRadius="medium"
-          width="100%"
-          height="30px"
-        />
-      </CardBody>
-    </Card>
+    <Box padding="spacing.3" display="flex" gap="spacing.3" flexWrap="wrap">
+      <Skeleton width="50%" height="50px" borderRadius="medium" {...args} />
+    </Box>
   );
 };
 
 export const Default = SkeletonTemplate.bind({});
+
+const BasicSkeleton = (): React.ReactElement => {
+  return (
+    <Box
+      flex={1}
+      width="100%"
+      padding="spacing.5"
+      borderRadius="medium"
+      backgroundColor="surface.background.level2.lowContrast"
+    >
+      <Box display="flex" gap="spacing.3" alignItems="center">
+        <SkeletonComponent width="60px" height="60px" borderRadius="max" flexShrink={0} />
+        <Box width="100%" display="flex" flexDirection="column" gap="spacing.3">
+          <SkeletonComponent borderRadius="medium" width="50%" height="30px" />
+          <SkeletonComponent borderRadius="medium" width="70%" height="20px" />
+        </Box>
+      </Box>
+
+      <Box marginTop="spacing.4" display="flex" flexDirection="column" gap="spacing.3">
+        <SkeletonComponent borderRadius="medium" width="100%" height="20px" />
+        <SkeletonComponent borderRadius="medium" width="100%" height="20px" />
+        <SkeletonComponent borderRadius="medium" width="90%" height="20px" />
+      </Box>
+    </Box>
+  );
+};
+
+const BasicTemplate: ComponentStory<typeof SkeletonComponent> = () => {
+  return (
+    <Box padding="spacing.3" display="flex" gap="spacing.3" flexWrap="wrap">
+      <BasicSkeleton />
+      <BasicSkeleton />
+      <BasicSkeleton />
+    </Box>
+  );
+};
+
+export const Basic = BasicTemplate.bind({});
 
 const LoadableCard = ({ isLoading }: { isLoading: boolean }): React.ReactElement => {
   return (
@@ -72,8 +149,8 @@ const LoadableCard = ({ isLoading }: { isLoading: boolean }): React.ReactElement
             <Box marginTop="spacing.3" />
             <Divider />
             <Box marginBottom="spacing.3" />
-            <Skeleton type="body-medium" height="20px" numberOfLines={2} borderRadius="medium" />
-            <Skeleton type="body-medium" height="20px" numberOfLines={2} borderRadius="medium" />
+            <Skeleton type="body-medium" height="20px" borderRadius="medium" />
+            <Skeleton type="body-medium" height="20px" borderRadius="medium" />
           </Box>
         ) : (
           <Box
@@ -121,9 +198,18 @@ const SkeletonComplexTemplate: ComponentStory<typeof SkeletonComponent> = () => 
   return (
     <>
       <Button onClick={() => setIsLoading((prev) => !prev)}>Toggle Loading</Button>
-      <Box marginY="spacing.4" display="flex" flexDirection="row" gap="spacing.4">
-        <LoadableCard isLoading={isLoading} />
-        <LoadableCard isLoading={isLoading} />
+
+      <Text marginY="spacing.4">
+        Skeleton supports subset of Box properties like margin, padding, flex to help you position
+        it as per your needs to compose more complex skeleton layouts.
+      </Text>
+      <Box marginY="spacing.4" display="flex" flexWrap="wrap" flexDirection="row" gap="spacing.4">
+        <Box flex={1}>
+          <LoadableCard isLoading={isLoading} />
+        </Box>
+        <Box flex={1}>
+          <LoadableCard isLoading={isLoading} />
+        </Box>
       </Box>
     </>
   );
@@ -134,7 +220,6 @@ export const Complex = SkeletonComplexTemplate.bind({});
 const SkeletonCardTemplate: ComponentStory<typeof SkeletonComponent> = () => {
   const [isLoading, setIsLoading] = React.useState(true);
 
-  // Expose elevation prop on Box
   return (
     <>
       <Button
@@ -142,39 +227,42 @@ const SkeletonCardTemplate: ComponentStory<typeof SkeletonComponent> = () => {
           setIsLoading((prev) => !prev);
         }}
       >
-        Toggle
+        Toggle Loading
       </Button>
-      <Box width="300px" margin="spacing.4">
+      <Text marginY="spacing.4">
+        You can also use Skeleton to show loading states for existing blade components by composing
+        multiple Skeletons and laying them out via layout props.
+      </Text>
+      <Box width="400px" marginTop="spacing.4">
         {isLoading ? (
-          <Box>
-            <Box
-              padding="spacing.5"
-              display="flex"
-              gap="spacing.2"
-              flexDirection="column"
-              backgroundColor="surface.background.level2.lowContrast"
-            >
-              <Box marginBottom="spacing.5" display="flex" flexDirection="column" gap="spacing.2">
-                <Skeleton width="100%" height="30px" />
-                <Skeleton width="100%" height="20px" />
-              </Box>
-              <Divider />
-              <Skeleton marginTop="spacing.5" width="100%" height="100px" />
+          <Box
+            padding="spacing.7"
+            display="flex"
+            gap="spacing.2"
+            flexDirection="column"
+            backgroundColor="surface.background.level2.lowContrast"
+            elevation="lowRaised"
+          >
+            <Box marginBottom="spacing.4" display="flex" flexDirection="column" gap="spacing.2">
+              <Skeleton width="100%" height="24px" />
+              <Skeleton width="50%" height="20px" />
             </Box>
+            <Divider />
+            <Skeleton marginTop="spacing.5" width="100%" height="100px" />
           </Box>
         ) : (
           <Card>
             <CardHeader>
-              <CardHeaderLeading title="Payment options" subtitle="2% additional expense" />
+              <CardHeaderLeading title="Payment Pages" subtitle="Automated Receipts Enabled" />
               <CardHeaderTrailing
-                visual={<CardHeaderBadge variant="neutral">NEW</CardHeaderBadge>}
+                visual={<CardHeaderBadge variant="neutral">UPI</CardHeaderBadge>}
               />
             </CardHeader>
             <CardBody>
               <Text>
-                Similar to Amount component we can expose a type prop which will have predefined
-                sizes & we also expose numberOfLines prop which will dictate how many skeletons it
-                will map to.
+                Razorpay Payment Pages is the easiest way to accept payments with a custom-branded
+                online store. Accept international and domestic payments with automated payment
+                receipts. Take your store online instantly with zero coding.
               </Text>
             </CardBody>
           </Card>
