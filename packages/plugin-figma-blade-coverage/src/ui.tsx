@@ -3,6 +3,7 @@ import { Button, Container, render, VerticalSpace } from '@create-figma-plugin/u
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { h } from 'preact';
 // import { Button } from '@razorpay/blade';
+import { Button as BladeButton } from '@razorpay/blade/components';
 
 const Plugin = (): JSX.Element => {
   return (
@@ -11,6 +12,7 @@ const Plugin = (): JSX.Element => {
         <VerticalSpace space="small" />
         Hello, Worldddd!
         <VerticalSpace space="large" />
+        <BladeButton variant="secondary">Click</BladeButton>
         <Button fullWidth>Insert Code</Button>
         <VerticalSpace space="small" />
       </Container>

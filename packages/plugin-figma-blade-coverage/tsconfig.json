@@ -1,6 +1,7 @@
 {
   "extends": "@create-figma-plugin/tsconfig",
   "compilerOptions": {
+    "skipLibCheck": true,
     "typeRoots": ["node_modules/@figma", "node_modules/@types"],
     "target": "ESNext"
   },

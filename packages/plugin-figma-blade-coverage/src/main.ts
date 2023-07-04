@@ -8,7 +8,9 @@
  * [x] count text nodes to be blade if they use styles from blade because they don't use typo component
  * [x] fix the use case of figma.mixed
  * [x] exclude section as well and count that in top level main frame
- * [] cleanup
+ * [x] cleanup
+ * [x] skip hidden layers from being traversed
+ * [] number of times plugin is run metric
  * --release v1--
  * [] highlight the non blade nodes
  * [] show plugin ui config
@@ -17,13 +19,14 @@
  *    - highlight the non blade components?
  *    - highlight non blade styles?
  * [] send analytics randomly once or twice a day
- *
  */
 import {
   getParentNode,
   traverseNode,
   getSelectedNodesOrAllNodes,
+  incrementTotalUseCountAsync,
 } from '@create-figma-plugin/utilities';
+// import { AnalyticsBrowser } from '@segment/analytics-next';
 import {
   BLADE_COLOR_STYLE_IDS,
   BLADE_COMPONENT_IDS,
@@ -41,6 +44,22 @@ type CoverageMetrics = {
 };
 
 const MAIN_FRAME_NODES = ['FRAME', 'SECTION'];
+const NODES_SKIP_FROM_COVERAGE = ['GROUP', 'SECTION'];
+const nonBladeHighlighterNodes: BaseNode[] = [];
+
+const highlightNonBladeNode = (node: SceneNode): void => {
+  const highlighterBox = figma.createRectangle();
+  const nodeType =
+    node.type.toUpperCase().charAt(0).toUpperCase() + node.type.toLowerCase().slice(1);
+  highlighterBox.name = `Type: ${nodeType}, Name: ${node.name}`;
+  // selection node just gives the x and y relative to the frame we need WRT canvas hence, we need to use absoluteTransform prop
+  highlighterBox.x = node.absoluteTransform[0][2] - 1;
+  highlighterBox.y = node.absoluteTransform[1][2] - 1;
+  highlighterBox.resize(node.width + 2, node.height + 2);
+  highlighterBox.fills = [{ type: 'SOLID', color: { r: 0, g: 0, b: 0 }, opacity: 0 }];
+  highlighterBox.strokes = [{ type: 'SOLID', color: { r: 0.7, g: 0, b: 0 } }];
+  nonBladeHighlighterNodes.push(highlighterBox);
+};
 
 const traverseUpTillMainFrame = (node: BaseNode): BaseNode => {
   try {
@@ -166,6 +185,10 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
     traverseNode(
       node,
       (traversedNode) => {
+        if (!traversedNode.visible) {
+          return;
+        }
+
         if (
           traversedNode.type === 'INSTANCE' &&
           (BLADE_COMPONENT_IDS.includes(
@@ -176,6 +199,7 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
           bladeComponents++;
         } else if (traversedNode.type === 'INSTANCE') {
           nonBladeComponents++;
+          highlightNonBladeNode(traversedNode);
         } else if (traversedNode.type === 'TEXT') {
           // check if the text is using Blade's text styles
           let isMixedTextStyleOfBlade = false;
@@ -202,6 +226,7 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
               bladeTextStyles++;
             } else {
               nonBladeTextStyles++;
+              highlightNonBladeNode(traversedNode);
             }
           } else {
             traversedNodeTextStyleId = traversedNode?.textStyleId?.split(',')[0];
@@ -210,6 +235,7 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
               bladeTextStyles++;
             } else {
               nonBladeTextStyles++;
+              highlightNonBladeNode(traversedNode);
             }
           }
 
@@ -233,6 +259,7 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
               bladeColorStyles++;
             } else {
               nonBladeColorStyles++;
+              highlightNonBladeNode(traversedNode);
             }
           } else {
             traversedNodeColorStyleId = traversedNode?.fillStyleId?.split(',')[0];
@@ -241,6 +268,7 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
               bladeColorStyles++;
             } else {
               nonBladeColorStyles++;
+              highlightNonBladeNode(traversedNode);
             }
           }
 
@@ -261,9 +289,19 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
             bladeColorStyles++;
           } else {
             nonBladeColorStyles++;
+            highlightNonBladeNode(traversedNode);
           }
         }
-        if (getParentNode(traversedNode)?.type !== 'PAGE') {
+        if (
+          ![...NODES_SKIP_FROM_COVERAGE, 'INSTANCE', 'TEXT', 'LINE'].includes(traversedNode.type) &&
+          getParentNode(traversedNode)?.type !== 'PAGE'
+        ) {
+          highlightNonBladeNode(traversedNode);
+        }
+        if (
+          getParentNode(traversedNode)?.type !== 'PAGE' &&
+          !NODES_SKIP_FROM_COVERAGE.includes(traversedNode.type)
+        ) {
           // exclude the main frame itself from the count to remove false negatives
           totalLayers++;
         }
@@ -272,6 +310,10 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
         // callback to stopTraversal for children of a node
         // true: we shall stop
         // false: we shall keep traversing children
+        if (!traversedNode.visible) {
+          return true;
+        }
+
         if (
           traversedNode.type === 'INSTANCE' &&
           (BLADE_COMPONENT_IDS.includes(
@@ -328,6 +370,14 @@ const getPageMainFrameNodes = (nodes: SceneNode[]): SceneNode[] => {
 };
 
 const main = async (): Promise<void> => {
+  // plugin used
+  // const pluginUsageCount = await incrementTotalUseCountAsync();
+  // const analytics = AnalyticsBrowser.load({ writeKey: '6lpfX5loXnTbBFVo2FbJHpjins0hGaC4' });
+  // await analytics.track('Blade Coverage Plugin Used', {
+  //   pluginUsageCount,
+  //   fileName: figma.currentPage.parent?.name,
+  //   pageName: figma.currentPage.name,
+  // });
   figma.skipInvisibleInstanceChildren = true;
   figma.notify('Calculating Coverage', { timeout: Infinity });
 
@@ -358,8 +408,25 @@ const main = async (): Promise<void> => {
         await renderCoverageCard({ mainFrameNode, ...coverageMetrics });
       }
     }
+    const groupNode = figma.group(nonBladeHighlighterNodes, figma.currentPage);
+    groupNode.name = 'Non Blade Items';
   }
   figma.closePlugin();
 };
 
 export default main;
+
+/**
+ * {
+  "messageId": "segment-test-message-bzca8",
+  "timestamp": "2023-07-04T07:52:15.869Z",
+  "type": "track",
+  "email": "test@example.org",
+  "projectId": "exj6QozECuYXSgsrGfGYjH",
+  "properties": {
+    "count": 1
+  },
+  "userId": "test-user-9689q",
+  "event": "Blade Coverage Plugin Used"
+}
+ */
