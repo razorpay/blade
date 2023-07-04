@@ -24,6 +24,9 @@ import { makeTypographySize } from '@razorpay/blade/utils';
 import styled from 'styled-components';
 
 const CustomComponent = styled.div`
-  font-size: ${({ theme }) => makeTypographySize(theme.typography.fonts.size[100])};
+  font-size: ${({ theme }) =>
+    makeTypographySize(
+      theme.typography.fonts.size[200],
+    )}; // '1rem' for web & '16px' for react native
 `;
 ```
