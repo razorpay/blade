@@ -2,7 +2,14 @@ import type { ComponentStory, Meta } from '@storybook/react';
 import React from 'react';
 import { Skeleton, Skeleton as SkeletonComponent } from './Skeleton';
 import type { SkeletonProps } from './Skeleton';
-import { Card, CardBody } from '~components/Card';
+import {
+  Card,
+  CardBody,
+  CardHeader,
+  CardHeaderBadge,
+  CardHeaderLeading,
+  CardHeaderTrailing,
+} from '~components/Card';
 import { Box } from '~components/Box';
 import { Divider } from '~components/BaseHeaderFooter/Divider.web';
 import { Heading, Text } from '~components/Typography';
@@ -107,6 +114,7 @@ const LoadableCard = ({ isLoading }: { isLoading: boolean }): React.ReactElement
     </Card>
   );
 };
+
 const SkeletonComplexTemplate: ComponentStory<typeof SkeletonComponent> = () => {
   const [isLoading, setIsLoading] = React.useState(true);
 
@@ -122,3 +130,58 @@ const SkeletonComplexTemplate: ComponentStory<typeof SkeletonComponent> = () => 
 };
 
 export const Complex = SkeletonComplexTemplate.bind({});
+
+const SkeletonCardTemplate: ComponentStory<typeof SkeletonComponent> = () => {
+  const [isLoading, setIsLoading] = React.useState(true);
+
+  // Expose elevation prop on Box
+  return (
+    <>
+      <Button
+        onClick={() => {
+          setIsLoading((prev) => !prev);
+        }}
+      >
+        Toggle
+      </Button>
+      <Box width="300px" margin="spacing.4">
+        {isLoading ? (
+          <Box>
+            <Box
+              padding="spacing.5"
+              display="flex"
+              gap="spacing.2"
+              flexDirection="column"
+              backgroundColor="surface.background.level2.lowContrast"
+            >
+              <Box marginBottom="spacing.5" display="flex" flexDirection="column" gap="spacing.2">
+                <Skeleton width="100%" height="30px" />
+                <Skeleton width="100%" height="20px" />
+              </Box>
+              <Divider />
+              <Skeleton marginTop="spacing.5" width="100%" height="100px" />
+            </Box>
+          </Box>
+        ) : (
+          <Card>
+            <CardHeader>
+              <CardHeaderLeading title="Payment options" subtitle="2% additional expense" />
+              <CardHeaderTrailing
+                visual={<CardHeaderBadge variant="neutral">NEW</CardHeaderBadge>}
+              />
+            </CardHeader>
+            <CardBody>
+              <Text>
+                Similar to Amount component we can expose a type prop which will have predefined
+                sizes & we also expose numberOfLines prop which will dictate how many skeletons it
+                will map to.
+              </Text>
+            </CardBody>
+          </Card>
+        )}
+      </Box>
+    </>
+  );
+};
+
+export const CardExample = SkeletonCardTemplate.bind({});
