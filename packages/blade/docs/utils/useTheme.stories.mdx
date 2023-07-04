@@ -1,0 +1,108 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Utils/useTheme" />
+
+## useTheme <!-- omit in TOC -->
+
+- [Overview](#overview)
+- [Usage](#usage)
+- [Types](#types)
+  - [`Theme`](#theme)
+  - [`ColorScheme`](#colorscheme)
+  - [`Platform`](#platform)
+  - [`ColorSchemeInput`](#colorschemeinput)
+
+### Overview
+
+`useTheme` is a custom React hook provided by the `@razorpay/blade/components`  that allows you to access the current theme and color scheme of your application.
+
+The `useTheme` hook returns a `ThemeContext` object that contains the following properties:
+
+| Property         | Type                                                               | Description                                                                                                            |
+| ---------------- | ------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------- |
+| `theme`          | [`Theme`](#theme)                                                  | The current theme object, which contains the values for various design tokens such as colors, typography, and spacing. |
+| `colorScheme`    | [`ColorScheme`](#colorscheme)                                      | The current color scheme of the application, which can be either 'light' or 'dark'.                                    |
+| `platform`       | [`Platform`](#platform)                                            | The current platform of the application, which can be either 'onDesktop' or 'onMobile'.                                |
+| `setColorScheme` | `(colorScheme: `[`ColorSchemeInput`](#colorschemeinput)`) => void` | A function that allows you to set the color scheme of the application.                                                 |
+
+### Usage
+
+To use the `useTheme` hook, you must first wrap your application with a `BladeProvider` component, which provides the theme context to all child components. Here's an example of how to use the `useTheme` hook in a React component:
+
+```tsx
+import React from 'react';
+import { useTheme, Heading, Text, Button } from '@razorpay/blade/components';
+
+const MyComponent = () => {
+  const { theme, colorScheme, platform, setColorScheme } = useTheme();
+
+  return (
+    <>
+      <Heading>Hello, world!</Heading>
+      <Text>The current color scheme is: {colorScheme}</Text>
+      <Text>The current platform is: {platform}</Text>
+      <Button onClick={() => setColorScheme(colorScheme === 'light' ? 'dark' : 'light')}>
+        Toggle color scheme
+      </Button>
+    </>
+  );
+};
+
+export default MyComponent;
+```
+
+### Types
+
+#### `Theme`
+
+```tsx
+type Theme = {
+  name: 'paymentTheme' | 'bankingTheme';
+  border: Border;
+  breakpoints: Breakpoints;
+  colors: Colors;
+  spacing: Spacing;
+  motion: Motion;
+  elevation: Elevation;
+  typography: Typography;
+};
+```
+
+To further explore the tokens in Theme, you can navigate to their respective documentations:
+
+- [Border](?path=/story/tokens-border--page)
+- [Breakpoints](?path=/story/tokens-breakpoints--page)
+- [Colors](?path=/story/tokens-colors--page)
+- [Spacing](?path=/story/tokens-spacing--page)
+- [Motion](?path=/story/tokens-motion--page)
+- [Elevation](?path=/story/tokens-elevation--page)
+- [Typography](?path=/story/tokens-typography--page)
+
+#### `ColorScheme`
+
+The current color scheme of the application. Can be either `'dark'` or `'light'`.
+If color scheme is set to 'system' using `setColorScheme`, the colorScheme property will return `'dark'` or `'light'` based on the user's system preferences.
+
+```tsx
+type ColorScheme = 'dark' | 'light';
+```
+
+#### `Platform`
+
+The current platform of the application. Can be either `'onDesktop'` or `'onMobile'`.
+Platform will be set to `'onDesktop'` or `'onMobile'` based on the [breakpoints](?path=/story/tokens-breakpoints--page&globals=measureEnabled:false) defined in the theme.
+
+> Note: Platform will always be `'onMobile'` for React Native
+
+```tsx
+type Platform = 'onDesktop' | 'onMobile';
+```
+
+#### `ColorSchemeInput`
+
+You can set the color scheme of your application to either `'dark'`, `'light'` or `'system'` using `setColorScheme`.
+Selecting `system` will set the color scheme of your application based on the user's system preferences.
+
+```tsx
+type ColorSchemeInput = 'dark' | 'light' | 'system';
+```
