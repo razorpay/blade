@@ -2,16 +2,20 @@ import React from 'react';
 import { Pressable } from 'react-native';
 import styled from 'styled-components/native';
 import { componentIds } from './dropdownUtils';
-import type { DropdownOverlayProps } from './DropdownOverlay.web';
 import { useDropdown } from './useDropdown';
+import { StyledDropdownOverlay } from './StyledDropdownOverlay';
+import type { DropdownOverlayProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
+import { makeSize } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import { makeSize } from '~utils/makeSize';
+import { useBottomSheetAndDropdownGlue } from '~components/BottomSheet/BottomSheetContext';
 
-const StyledDropdownOverlay = styled(BaseBox)<{ testID: 'dropdown-overlay' }>((props) => ({
-  transform: `translateY(${makeSize(props.theme.spacing[3])})`,
-}));
+const AnimatedDropdownOverlay = styled(StyledDropdownOverlay)<{ testID: 'dropdown-overlay' }>(
+  (props) => ({
+    transform: `translateY(${makeSize(props.theme.spacing[3])})`,
+  }),
+);
 
 const StyledCloseableArea = styled(Pressable)<{ display: 'flex' | 'none' }>((props) => ({
   position: 'static',
@@ -27,6 +31,7 @@ const StyledCloseableArea = styled(Pressable)<{ display: 'flex' | 'none' }>((pro
  */
 const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Element => {
   const { isOpen, close } = useDropdown();
+  const bottomSheetAndDropdownGlue = useBottomSheetAndDropdownGlue();
 
   return (
     <BaseBox position="relative">
@@ -37,7 +42,8 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
         }}
         testID="closeable-area"
       >
-        <StyledDropdownOverlay
+        <AnimatedDropdownOverlay
+          isInBottomSheet={bottomSheetAndDropdownGlue?.dropdownHasBottomSheet}
           display={isOpen ? 'flex' : 'none'}
           position="absolute"
           width="100%"
@@ -45,7 +51,7 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
           {...metaAttribute({ name: MetaConstants.DropdownOverlay, testID })}
         >
           {children}
-        </StyledDropdownOverlay>
+        </AnimatedDropdownOverlay>
       </StyledCloseableArea>
     </BaseBox>
   );
@@ -55,4 +61,4 @@ const DropdownOverlay = assignWithoutSideEffects(_DropdownOverlay, {
   componentId: componentIds.DropdownOverlay,
 });
 
-export { DropdownOverlay, DropdownOverlayProps };
+export { DropdownOverlay };
