@@ -1,12 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Modal renders a Modal with Header and Footer 1`] = `
-.c22 {
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-color: hsla(216,15%,54%,0.18);
-}
-
 .c0 {
   position: fixed;
   z-index: 1000;
@@ -138,17 +132,23 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   padding-left: 8px;
 }
 
-.c23 {
+.c22 {
+  border-width: 0px;
+  border-bottom-color: hsla(216,15%,54%,0.18);
+  border-style: solid;
+}
+
+.c24 {
   overflow-x: hidden;
   overflow-y: auto;
   padding: 20px;
 }
 
-.c25 {
+.c26 {
   padding: 16px;
 }
 
-.c27 {
+.c28 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -176,6 +176,15 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 .c18 {
   text-align: left;
   background-color: hsla(36,100%,44%,0.09);
+}
+
+.c23 {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
 }
 
 .c9 {
@@ -223,7 +232,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   padding: 0;
 }
 
-.c24 {
+.c25 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -236,7 +245,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   padding: 0;
 }
 
-.c29 {
+.c30 {
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -362,7 +371,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   width: fit-content;
 }
 
-.c26 {
+.c27 {
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -398,24 +407,24 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   position: relative;
 }
 
-.c26:hover {
+.c27:hover {
   background-color: hsla(223,95%,48%,1);
   border-color: hsla(223,95%,48%,1);
 }
 
-.c26:active {
+.c27:active {
   background-color: hsla(230,100%,42%,1);
   border-color: hsla(230,100%,42%,1);
 }
 
-.c26:focus {
+.c27:focus {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
 
-.c26 * {
+.c27 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -424,7 +433,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c28 {
+.c29 {
   opacity: 1;
 }
 
@@ -437,8 +446,38 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   }
 }
 
+@media screen and (min-width:320px) {
+  .c22 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:480px) {
+  .c22 {
+    border-style: solid;
+  }
+}
+
 @media screen and (min-width:768px) {
-  .c25 {
+  .c22 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .c22 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c22 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c26 {
     padding: 20px;
   }
 }
@@ -585,15 +624,16 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
         </div>
       </div>
       <div
-        class="c22"
+        class="c22 c23"
+        data-blade-component="base-box"
       />
     </div>
     <div
-      class="c23"
+      class="c24"
       data-blade-component="modal-body"
     >
       <p
-        class="c24"
+        class="c25"
         data-blade-component="text"
       >
         Test Content
@@ -604,24 +644,25 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
       data-blade-component="box"
     >
       <div
-        class="c22"
+        class="c22 c23"
+        data-blade-component="base-box"
       />
       <div
-        class="c25"
+        class="c26"
         data-blade-component="modal-footer"
       >
         <button
-          class="c26"
+          class="c27"
           data-blade-component="button"
           role="button"
           type="button"
         >
           <div
-            class="c27 c28"
+            class="c28 c29"
             data-blade-component="base-box"
           >
             <div
-              class="c29"
+              class="c30"
               data-blade-component="base-text"
             >
               Save

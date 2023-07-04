@@ -1,9 +1,9 @@
 import type { ReactElement, ReactNode } from 'react';
 import { AccordionButton } from './AccordionButton';
 import { useAccordion } from './AccordionContext';
+import { Divider } from '~components/Divider';
 import { BaseBox } from '~components/Box/BaseBox';
 import type { IconComponent } from '~components/Icons';
-import { Divider } from '~components/BaseHeaderFooter/Divider';
 import { Text } from '~components/Typography';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import { isReactNative } from '~utils';

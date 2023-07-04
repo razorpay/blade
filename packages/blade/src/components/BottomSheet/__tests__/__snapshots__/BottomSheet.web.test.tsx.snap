@@ -1,12 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
-.c24 {
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-color: hsla(216,15%,54%,0.18);
-}
-
 .c3 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -132,7 +126,13 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   padding-left: 8px;
 }
 
-.c25 {
+.c24 {
+  border-width: 0px;
+  border-bottom-color: hsla(216,15%,54%,0.18);
+  border-style: solid;
+}
+
+.c26 {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -142,7 +142,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   flex-shrink: 1;
 }
 
-.c26 {
+.c27 {
   overflow: auto;
   padding-top: 16px;
   padding-bottom: 16px;
@@ -150,7 +150,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   padding-left: 16px;
 }
 
-.c28 {
+.c29 {
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -161,11 +161,11 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   touch-action: none;
 }
 
-.c29 {
+.c30 {
   padding: 16px;
 }
 
-.c31 {
+.c32 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -204,6 +204,15 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   left: 0px;
   background-color: hsla(214,15%,18%,0.64);
   opacity: 1;
+}
+
+.c25 {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
 }
 
 .c11 {
@@ -251,7 +260,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   padding: 0;
 }
 
-.c27 {
+.c28 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -264,7 +273,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   padding: 0;
 }
 
-.c33 {
+.c34 {
   color: hsla(218,89%,51%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -433,7 +442,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   width: fit-content;
 }
 
-.c30 {
+.c31 {
   min-height: 36px;
   width: 100%;
   cursor: pointer;
@@ -469,24 +478,24 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   position: relative;
 }
 
-.c30:hover {
+.c31:hover {
   background-color: hsla(218,89%,51%,0.09);
   border-color: hsla(218,89%,51%,1);
 }
 
-.c30:active {
+.c31:active {
   background-color: hsla(218,89%,51%,0.32);
   border-color: hsla(218,89%,51%,1);
 }
 
-.c30:focus {
+.c31:focus {
   background-color: hsla(218,89%,51%,0.18);
   border-color: hsla(218,89%,51%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
 
-.c30 * {
+.c31 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -495,7 +504,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c32 {
+.c33 {
   opacity: 1;
 }
 
@@ -523,8 +532,38 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   }
 }
 
+@media screen and (min-width:320px) {
+  .c24 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:480px) {
+  .c24 {
+    border-style: solid;
+  }
+}
+
 @media screen and (min-width:768px) {
-  .c29 {
+  .c24 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .c24 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c24 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c30 {
     padding: 20px;
   }
 }
@@ -676,22 +715,23 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
             </div>
           </div>
           <div
-            class="c24"
+            class="c24 c25"
+            data-blade-component="base-box"
           />
         </div>
       </div>
       <div
-        class="c25"
+        class="c26"
         data-blade-component="bottom-sheet-body"
         data-testid="bottomsheet-body"
         style="user-select: auto; overflow: auto;"
       >
         <div
-          class="c26"
+          class="c27"
           data-blade-component="base-box"
         >
           <p
-            class="c27"
+            class="c28"
             data-blade-component="text"
           >
             BottomSheet body
@@ -699,28 +739,29 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
         </div>
       </div>
       <div
-        class="c28"
+        class="c29"
         data-blade-component="bottom-sheet-footer"
       >
         <div
-          class="c24"
+          class="c24 c25"
+          data-blade-component="base-box"
         />
         <div
-          class="c29"
+          class="c30"
           data-blade-component="base-box"
         >
           <button
-            class="c30"
+            class="c31"
             data-blade-component="button"
             role="button"
             type="button"
           >
             <div
-              class="c31 c32"
+              class="c32 c33"
               data-blade-component="base-box"
             >
               <div
-                class="c33"
+                class="c34"
                 data-blade-component="base-text"
               >
                 Remove address

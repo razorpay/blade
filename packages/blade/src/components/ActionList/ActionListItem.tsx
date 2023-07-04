@@ -12,6 +12,8 @@ import {
   isRoleMenu,
 } from './getA11yRoles';
 import { useActionListContext } from './ActionList';
+import { Box } from '~components/Box';
+import { Divider } from '~components/Divider';
 import BaseBox from '~components/Box/BaseBox';
 import type { IconComponent } from '~components/Icons';
 import { useDropdown } from '~components/Dropdown/useDropdown';
@@ -79,14 +81,8 @@ const ActionListItemContext = React.createContext<{
   isDisabled?: ActionListItemProps['isDisabled'];
 }>({});
 
-const StyledSectionDivider = styled(BaseBox)((props) => ({
-  height: makeSize(size[1]),
-  backgroundColor: props.theme.colors.surface.border.normal.lowContrast,
-  margin: `${makeSize(props.theme.spacing[1])} ${makeSize(props.theme.spacing[3])}`,
-}));
-
 const ActionListSectionDivider = (): JSX.Element => (
-  <StyledSectionDivider
+  <Divider
     {...makeAccessible({
       role: getSeparatorRole(),
     })}
@@ -142,7 +138,11 @@ const _ActionListSection = ({
       >
         {children}
       </BaseBox>
-      {_hideDivider && isReactNative() ? null : <ActionListSectionDivider />}
+      {_hideDivider && isReactNative() ? null : (
+        <Box marginX="spacing.3" marginY="spacing.1">
+          <ActionListSectionDivider />
+        </Box>
+      )}
     </BaseBox>
   );
 };

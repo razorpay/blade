@@ -8,6 +8,7 @@ export * from './Button';
 export * from './Button/IconButton';
 export * from './Counter';
 export * from './Checkbox';
+export * from './Divider';
 export * from './Dropdown';
 export * from './Icons';
 export * from './Input/TextInput';

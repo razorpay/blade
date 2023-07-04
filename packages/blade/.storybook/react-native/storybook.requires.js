@@ -37,6 +37,7 @@ const getStories = () => {
     require('../../src/components/Checkbox/CheckboxGroup.stories.tsx'),
     require('../../src/components/Collapsible/Collapsible.stories.tsx'),
     require('../../src/components/Counter/Counter.stories.tsx'),
+    require('../../src/components/Divider/Divider.stories.tsx'),
     require('../../src/components/Dropdown/docs/DropdownWithButton.stories.tsx'),
     require('../../src/components/Dropdown/docs/DropdownWithSelect.stories.tsx'),
     require('../../src/components/Icons/Icons.stories.tsx'),
