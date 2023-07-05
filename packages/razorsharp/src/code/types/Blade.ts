@@ -74,7 +74,7 @@ export interface BladeRectangleNode extends BaseNode {
   fills: RectangleNode['fills'];
 }
 
-type JSXType = 'string' | 'boolean' | 'number' | 'instance';
+type JSXType = 'string' | 'boolean' | 'number' | 'instance' | 'array';
 
 export type JSXValue = {
   type: JSXType;

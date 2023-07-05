@@ -81,7 +81,7 @@ export const transformFrameOrGroup = async (
         paddingValue.length > 1
           ? `[${paddingValue.map((value) => `"${value}"`).join(', ')}]`
           : paddingValue[0],
-      type: paddingValue.length > 1 ? 'instance' : 'string',
+      type: paddingValue.length > 1 ? 'array' : 'string',
     };
 
     if (bladeFrame.primaryAxisSizingMode === 'FIXED') {
