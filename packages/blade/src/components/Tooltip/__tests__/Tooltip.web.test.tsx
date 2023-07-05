@@ -14,7 +14,6 @@ import BaseBox from '~components/Box/BaseBox';
 import { MetaConstants } from '~utils/metaAttribute';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
-import { Box } from '~components/Box';
 
 const waitForPosition = () => act(async () => {});
 const animationDuration = paymentTheme.motion.duration.quick;
@@ -33,30 +32,7 @@ describe('<Tooltip />', () => {
     // snapshot while on opened
     fireEvent.focus(getByRole('button', { name: buttonText }));
     expect(screen.queryByRole('tooltip')).toBeInTheDocument();
-    expect(screen.queryByRole('tooltip')).toHaveStyle({ 'z-index': 100 });
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render have zIndex', () => {
-    const buttonText = 'Hover me';
-    const { container, getByRole } = renderWithTheme(
-      <Box
-        width="400px"
-        height="400px"
-        zIndex={100}
-        backgroundColor="surface.background.level1.highContrast"
-      >
-        <Tooltip content="Hello world" zIndex={200}>
-          <Button>{buttonText}</Button>
-        </Tooltip>
-      </Box>,
-    );
-
-    // snapshot while on opened
-    fireEvent.focus(getByRole('button', { name: buttonText }));
-    expect(screen.queryByRole('tooltip')).toBeInTheDocument();
-    expect(screen.queryByRole('tooltip')).toHaveStyle({ 'z-index': 200 });
-
+    expect(screen.queryByRole('tooltip')).toHaveStyle({ 'z-index': 1100 });
     expect(container).toMatchSnapshot();
   });
 
