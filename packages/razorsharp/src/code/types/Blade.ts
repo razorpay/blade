@@ -71,6 +71,7 @@ export interface BladeVectorNode extends BaseNode {
 
 export interface BladeRectangleNode extends BaseNode {
   type: RectangleNode['type'];
+  fills: RectangleNode['fills'];
 }
 
 type JSXType = 'string' | 'boolean' | 'number' | 'instance';

@@ -8,9 +8,9 @@ import { getFlexAlignmentFromAxisAlignment } from './utils';
 import type { ServerFunctionReturnType } from '~/code/types/TransformFunction';
 import type { BladeFrameNode, BladeGroupNode, BladeProps } from '~/code/types/Blade';
 
-export const transformFrameOrGroup = (
+export const transformFrameOrGroup = async (
   bladeFrame: BladeFrameNode | BladeGroupNode,
-): ServerFunctionReturnType => {
+): Promise<ServerFunctionReturnType> => {
   const props: BladeProps = {};
 
   // TODO groups can have item spacing as well
@@ -20,7 +20,7 @@ export const transformFrameOrGroup = (
   if (bladeFrame.type === 'GROUP') {
     let children: ServerFunctionReturnType[] = [];
     if (bladeFrame.children && bladeFrame.children.length > 0) {
-      children = generateServerCode({
+      children = await generateServerCode({
         bladeNodes: bladeFrame.children,
       });
     }
@@ -125,7 +125,7 @@ export const transformFrameOrGroup = (
 
   let children: ServerFunctionReturnType[] = [];
   if (bladeFrame.children && bladeFrame.children.length > 0) {
-    children = generateServerCode({
+    children = await generateServerCode({
       bladeNodes: bladeFrame.children,
     });
   }

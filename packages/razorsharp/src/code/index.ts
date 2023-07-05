@@ -4,10 +4,10 @@ import type { BladeNode } from './types/Blade';
 
 if (figma.editorType === 'dev' && figma.mode === 'codegen') {
   // Register a callback to the "generate" event
-  figma.codegen.on('generate', ({ node }) => {
+  figma.codegen.on('generate', async ({ node }) => {
     const convertedSelection: BladeNode[] = convertIntoBladeNodes([node], null);
 
-    const code = generateServerCode({
+    const code = await generateServerCode({
       bladeNodes: convertedSelection,
     });
 

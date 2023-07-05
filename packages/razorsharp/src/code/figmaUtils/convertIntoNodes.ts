@@ -3,6 +3,7 @@ import type {
   BladeFrameNode,
   BladeGroupNode,
   BladeNode,
+  BladeRectangleNode,
   BladeTextNode,
   BladeVectorNode,
 } from '../types/Blade';
@@ -125,6 +126,20 @@ const convertVectorToNode = (
   return bladeVectorNode;
 };
 
+const convertRectangleToNode = (
+  figmaNode: Readonly<RectangleNode>,
+  bladeNode: BladeNode,
+): BladeRectangleNode => {
+  const bladeVectorNode: BladeRectangleNode = {
+    ...bladeNode,
+    type: 'RECTANGLE',
+    fills: Array.isArray(figmaNode.fills)
+      ? figmaNode.fills.filter((fill) => fill.visible)
+      : figmaNode.fills,
+  };
+  return bladeVectorNode;
+};
+
 export const convertIntoBladeNodes = (
   figmaNodes: ReadonlyArray<SceneNode>,
   bladeParent: BladeNode | null,
@@ -152,6 +167,9 @@ export const convertIntoBladeNodes = (
         break;
       case 'VECTOR':
         bladeNode = convertVectorToNode(figmaNode, bladeNode);
+        break;
+      case 'RECTANGLE':
+        bladeNode = convertRectangleToNode(figmaNode, bladeNode);
         break;
       default:
         break;

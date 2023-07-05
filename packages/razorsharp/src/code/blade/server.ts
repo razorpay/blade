@@ -1,8 +1,10 @@
+/* eslint-disable no-await-in-loop */
 import type {
   BladeNode,
   BladeComponentInstanceNode,
   BladeFrameNode,
   BladeGroupNode,
+  BladeRectangleNode,
 } from '../types/Blade';
 import type { ServerFunctionReturnType } from '../types/TransformFunction';
 // eslint-disable-next-line import/no-cycle
@@ -10,16 +12,17 @@ import {
   generateBladeFrameCode,
   generateGroupNodeCode,
   generateBladeComponentInstanceCodeForServer,
+  generateRectangleNodeCode,
 } from './components/server';
 
-export const generateServerCode = ({
+export const generateServerCode = async ({
   bladeNodes,
 }: {
   bladeNodes: BladeNode[];
-}): ServerFunctionReturnType[] => {
+}): Promise<ServerFunctionReturnType[]> => {
   const componentSchema: ServerFunctionReturnType[] = [];
 
-  bladeNodes.forEach((bladeNode) => {
+  for (const bladeNode of bladeNodes) {
     switch (bladeNode.type) {
       case 'INSTANCE': {
         const json = generateBladeComponentInstanceCodeForServer(
@@ -29,14 +32,20 @@ export const generateServerCode = ({
         break;
       }
       case 'FRAME': {
-        const json = generateBladeFrameCode(bladeNode as BladeFrameNode);
+        const json = await generateBladeFrameCode(bladeNode as BladeFrameNode);
         componentSchema.push(json);
 
         break;
       }
 
       case 'GROUP': {
-        const json = generateGroupNodeCode(bladeNode as BladeGroupNode);
+        const json = await generateGroupNodeCode(bladeNode as BladeGroupNode);
+        componentSchema.push(json);
+        break;
+      }
+
+      case 'RECTANGLE': {
+        const json = await generateRectangleNodeCode(bladeNode as BladeRectangleNode);
         componentSchema.push(json);
         break;
       }
@@ -44,7 +53,7 @@ export const generateServerCode = ({
       default:
         break;
     }
-  });
+  }
 
   return componentSchema;
 };
