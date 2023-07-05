@@ -1,8 +1,10 @@
 import styled, { css } from 'styled-components';
+import getIn from 'lodash/get';
 import { switchColors, switchMotion } from './switchTokens';
 import type { AnimatedThumbProps } from './types';
 import { BaseBox } from '~components/Box/BaseBox';
-import { makeMotionTime, makeBorderSize, getIn } from '~utils';
+import { makeMotionTime } from '~utils/makeMotionTime';
+import { makeBorderSize } from '~utils/makeBorderSize';
 
 const AnimatedThumb = styled(BaseBox)<AnimatedThumbProps>(
   ({ theme, isChecked, isDisabled, isPressed }) => {

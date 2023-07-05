@@ -2,8 +2,9 @@ import type { ReactElement } from 'react';
 import styled from 'styled-components/native';
 import getBaseTextStyles from './getBaseTextStyles';
 import type { BaseTextProps, StyledBaseTextProps } from './types';
-import { metaAttribute, makeAccessible } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useStyledProps } from '~components/Box/styledProps';
+import { makeAccessible } from '~utils/makeAccessible';
 
 const StyledBaseText = styled.Text<StyledBaseTextProps>(
   ({
@@ -13,30 +14,29 @@ const StyledBaseText = styled.Text<StyledBaseTextProps>(
     fontWeight,
     fontStyle,
     textDecorationLine,
+    numberOfLines,
     lineHeight,
     textAlign,
     as,
     ...props
   }) => {
     const styledPropsCSSObject = useStyledProps(props);
-    if (as) {
-      throw new Error(`[Blade: BaseText]: "as" prop is not supported for BaseText on React Native`);
-    } else {
-      return {
-        ...getBaseTextStyles({
-          color,
-          fontFamily,
-          fontSize,
-          fontWeight,
-          fontStyle,
-          textDecorationLine,
-          lineHeight,
-          textAlign,
-          theme: props.theme,
-        }),
-        ...styledPropsCSSObject,
-      };
-    }
+
+    return {
+      ...getBaseTextStyles({
+        color,
+        fontFamily,
+        fontSize,
+        fontWeight,
+        fontStyle,
+        textDecorationLine,
+        numberOfLines,
+        lineHeight,
+        textAlign,
+        theme: props.theme,
+      }),
+      ...styledPropsCSSObject,
+    };
   },
 );
 
@@ -49,14 +49,13 @@ export const BaseText = ({
   fontStyle,
   textDecorationLine,
   lineHeight,
-  as,
   textAlign,
   children,
   truncateAfterLines,
   className,
   style,
   accessibilityProps = {},
-  componentName,
+  componentName = MetaConstants.BaseText,
   testID,
   ...styledProps
 }: BaseTextProps): ReactElement => {
@@ -70,7 +69,7 @@ export const BaseText = ({
       fontStyle={fontStyle}
       textDecorationLine={textDecorationLine}
       lineHeight={lineHeight}
-      as={as}
+      as={undefined}
       textAlign={textAlign}
       numberOfLines={truncateAfterLines}
       className={className}

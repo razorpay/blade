@@ -7,12 +7,13 @@ import Circle from '~components/Icons/_Svg/Circle';
 import { Text } from '~components/Typography';
 import { size as sizeToken } from '~tokens/global';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
-import type { StringChildrenType, TestID } from '~src/_helpers/types';
-
+import type { StringChildrenType, TestID } from '~utils/types';
 import type { Feedback } from '~tokens/theme/theme';
-import { metaAttribute, getPlatformType, makeAccessible, MetaConstants } from '~utils';
+import { getPlatformType } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
+import { makeAccessible } from '~utils/makeAccessible';
 
 type IndicatorCommonProps = {
   /**

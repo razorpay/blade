@@ -1,18 +1,16 @@
-import type { DropdownProps } from '../Dropdown';
+import type { DropdownProps } from '../types';
 
 const Playground = `
   import { 
     Dropdown, 
     DropdownOverlay,
+    DropdownHeader,
+    DropdownFooter,
     SelectInput,
     ActionList,
-    ActionListHeader,
-    ActionListHeaderIcon,
     ActionListItem,
     ActionListItemIcon,
     ActionListSection,
-    ActionListFooter,
-    ActionListFooterIcon,
     HistoryIcon,
     HomeIcon,
     ArrowRightIcon,
@@ -38,11 +36,11 @@ const Playground = `
           }}
         />
         <DropdownOverlay>
+          <DropdownHeader
+            title="Header Title"
+            subtitle="Header Subtitle"
+          />
           <ActionList>
-            <ActionListHeader
-              title="Recent Searches"
-              leading={<ActionListHeaderIcon icon={HistoryIcon} />}
-            />
             <ActionListItem
               leading={<ActionListItemIcon icon={HomeIcon} />}
               trailing={<ActionListItemIcon icon={ArrowRightIcon} />}
@@ -62,18 +60,10 @@ const Playground = `
                 value="download"
               />
             </ActionListSection>
-            <ActionListFooter
-              title="Footer Tips"
-              leading={<ActionListFooterIcon icon={FileTextIcon} />}
-              trailing={
-                <Button onClick={() => {
-                  console.log('Apply button clicked')
-                }}>
-                  Apply
-                </Button>
-              }
-            />
           </ActionList>
+          <DropdownFooter>
+            <Button isFullWidth onClick={console.log}>Apply</Button>
+          </DropdownFooter>
         </DropdownOverlay>
       </Dropdown>
     )
@@ -123,16 +113,14 @@ const WithHeaderFooterScroll = `
   import { 
     Dropdown, 
     DropdownOverlay,
+    DropdownHeader,
+    DropdownFooter,
     SelectInput,
     ActionList,
-    ActionListHeader,
-    ActionListHeaderIcon,
     ActionListItem,
     ActionListItemAsset,
     ActionListItemIcon,
     ActionListSection,
-    ActionListFooter,
-    ActionListFooterIcon,
     HistoryIcon,
     HomeIcon,
     ArrowRightIcon,
@@ -153,11 +141,10 @@ const WithHeaderFooterScroll = `
           }}
         />
         <DropdownOverlay>
+          <DropdownHeader
+            title="Header Title"
+          />
           <ActionList>
-            <ActionListHeader
-              title="Recent Searches"
-              leading={<ActionListHeaderIcon icon={HistoryIcon} />}
-            />
             <ActionListItem
               leading={<ActionListItemIcon icon={HomeIcon} />}
               trailing={<ActionListItemIcon icon={ArrowRightIcon} />}
@@ -216,12 +203,10 @@ const WithHeaderFooterScroll = `
               title="Pricing"
               value="pricing"
             />
-            <ActionListFooter
-              title="Footer Tips"
-              leading={<ActionListFooterIcon icon={FileTextIcon} />}
-              trailing={<Button onClick={console.log}>Apply</Button>}
-            />
           </ActionList>
+          <DropdownFooter>
+            <Button isFullWidth onClick={console.log}>Apply</Button>
+          </DropdownFooter>
         </DropdownOverlay>
       </Dropdown>
     )
@@ -539,8 +524,6 @@ const WithControlledSelectStory = `
             <ActionList>
               <ActionListItem title="Mumbai" value="mumbai" />
               <ActionListItem title="Bangalore" value="bangalore" />
-              <ActionListItem title="Pune" value="pune" />
-              <ActionListItem title="Chennai" value="chennai" />
             </ActionList>
           </DropdownOverlay>
         </Dropdown>
@@ -600,6 +583,46 @@ const WithControlledMultiSelectStory = `
       </>
     );
   };
+
+  export default App;
+`;
+
+const WithBottomAlignedSelectStory = `
+  import { 
+    Dropdown, 
+    DropdownOverlay,
+    SelectInput,
+    ActionList,
+    ActionListItem,
+    Box,
+  } from '@razorpay/blade/components';
+
+  function App(): JSX.Element {
+    return (
+      <Box minHeight="95vh" display="flex" alignItems="flex-end">
+        <Box flex="1">
+          <Dropdown>
+            <SelectInput
+              label="City"
+              placeholder="Select your City"
+              name="action"
+              onChange={({ name, values }) => {
+                console.log({ name, values });
+              }}
+            />
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem title="Mumbai" value="mumbai" />
+                <ActionListItem title="Pune" value="pune" />
+                <ActionListItem title="Bangalore" value="bangalore" />
+                <ActionListItem title="Mysore" value="mysore" />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        </Box>
+      </Box>
+    )
+  }
 
   export default App;
 `;
@@ -879,6 +902,64 @@ const WithControlledMultiSelectMenuStory = `
   export default App;
 `;
 
+const WithRightAlignedMenuStory = `
+  import {
+    Dropdown,
+    DropdownOverlay,
+    DropdownButton,
+    ActionList,
+    ActionListItem,
+    ActionListSection,
+    MyAccountIcon,
+    Box,
+  } from '@razorpay/blade/components';
+
+  function App (): JSX.Element {
+    return (
+      <Box minHeight="200px" width="100%" display="flex" justifyContent="flex-end">
+        <Dropdown>
+          <DropdownButton icon={MyAccountIcon} variant="secondary">
+            My Account
+          </DropdownButton>
+          <DropdownOverlay>
+            <ActionList>
+              <ActionListSection title="Account @saurabh">
+                <ActionListItem
+                  title="My Profile"
+                  value="profile"
+                  href="https://youtu.be/4qRZmFYdozY?t=33"
+                  target="_blank"
+                />
+                <ActionListItem
+                  title="Dashboard"
+                  value="dashboard"
+                  href="https://dashboard.razorpay.com/"
+                />
+                <ActionListItem
+                  title="Settings"
+                  value="settings"
+                  href="https://memezila.com/Me-changing-the-phone-language-just-for-fun-Couldnt-find-language-setting-now-meme-5150"
+                />
+              </ActionListSection>
+              <ActionListItem
+                intent="negative"
+                title="Log Out"
+                value="logout"
+                onClick={() => {
+                  // eslint-disable-next-line no-alert
+                  alert('Logging out');
+                }}
+              />
+            </ActionList>
+          </DropdownOverlay>
+        </Dropdown>
+      </Box>
+    );
+  };
+
+  export default App;
+`;
+
 export {
   Playground,
   getSimpleSelectCode,
@@ -894,4 +975,6 @@ export {
   WithLinkStory,
   WithControlledMenuStory,
   WithControlledMultiSelectMenuStory,
+  WithBottomAlignedSelectStory,
+  WithRightAlignedMenuStory,
 };

@@ -1,5 +1,157 @@
 # @razorpay/blade
 
+## 8.15.0
+
+### Minor Changes
+
+- bd5ededd: feat(DropdownHeaderFooter): add DropdownHeader DropdownFooter components
+
+  We have standardised the Header and Footer between Dropdown, BottomSheet, Modal, and any future components.
+
+  > **Warning**
+  >
+  > **Breaking Change :** For consumers who use - `ActionListHeader` or `ActionListFooter`.
+  >
+  > Through our code search we found there weren't any instances of these component in Razorpay code yet thus this is released under minor version
+
+  ## Migration Guide
+
+  > **Note**
+  >
+  > The Header and Footer are redesigned so it might not be possible to have 1:1 designs. The new header and footer will look different.
+
+  1. Remove `ActionListHeader` and `ActionListFooter` from the inside of the `ActionList`
+  2. Add `DropdownHeader` and `DropdownFooter` outside of the `ActionList`, inside `DropdownOverlay`.
+
+  ```diff
+  import {
+    Dropdown,
+    DropdownOverlay,
+    SelectInput,
+    ActionListHeader,
+    ActionListFooter,
+    ActionList,
+    ActionListItem
+  } from '@razorpay/blade/components';
+
+  function App() {
+    return (
+      <Dropdown>
+        <SelectInput label="Select City" />
+        <DropdownOverlay>
+  +       <DropdownHeader title="Title" />
+          <ActionList>
+  -          <ActionListHeader title="Title" />
+              <ActionListItem />
+              <ActionListItem />
+  -          <ActionListFooter trailing={<Button>Apply</Button>} />
+          </ActionList>
+  +       <DropdownFooter>
+  +         <Box><Button>Apply</Button></Box>
+  +       </DropdownFooter>
+        </DropdownOverlay>
+      </Dropdown>
+    )
+  }
+
+  export { App };
+  ```
+
+  Checkout [Dropdown Docs](https://blade.razorpay.com/?path=/story/components-dropdown-dropdown--page&globals=showInternalComponents:true;measureEnabled:false) for more details
+
+## 8.14.0
+
+### Minor Changes
+
+- e1f37f69: feat: add `Divider` component
+
+## 8.13.0
+
+### Minor Changes
+
+- 865cd411: refactor: remove internal utilities from index re-exports
+
+  > **Warning**
+  >
+  > We have removed some of the undocumented internal utilites from re-export of `@razorpay/blade/utils`.
+  > We went through the imports usage of Razorpay and made sure to keep exporting the utilities that are currently being used to avoid breaking changes.
+
+  You can take a look at re-exports of [utils/index.ts](https://github.com/razorpay/blade/blob/master/packages/blade/src/utils/index.ts) to know which are the public utilities that we support. This is part of the larger effort in exporting and documenting useful utilities from blade and avoid exporting internal utilities which might break during internal refactors.
+
+  We have marked 2 utilities as `@deprecated` as they are expected to be internal utilities but currently being used in Razorpay. These will be removed in future major versions and won't be documented.
+
+  - `toTitleCase`
+  - `usePrevious`
+
+  We would recommend moving these 2 utilities to your local repo utilities.
+
+### Patch Changes
+
+- f4c2afb5: feat: add background-image, size, position, origin, repeat props
+- 610422ab: feat: add text decoration support for typography
+
+  Thanks [@archie252000](https://github.com/archie252000) for the contribution!
+
+## 8.12.1
+
+### Patch Changes
+
+- fa8b2361: feat(blade): add and update data attributes in child components
+
+## 8.12.0
+
+### Minor Changes
+
+- 0478669a: feat: add `Accordion` and `Collapsible` components
+
+  > **Note**
+  >
+  > If you're upgrading from earlier PRE_RELEASE, there are no breaking changes in the API, however there are some changes in the rendered markup which may require updating any snapshots (if any) at your end
+
+- dd0695d7: feat(blade): added bottomsheet body zero padding option
+
+## 8.11.3
+
+### Patch Changes
+
+- e62244f8: fix: Dropdown opening up when clicked on ChevronDownIcon in disabled state
+
+## 8.11.2
+
+### Patch Changes
+
+- f828bc94: fix: react native display style bug
+
+## 8.11.1
+
+### Patch Changes
+
+- 3f72c0df: fix: dynamic positioning of dropdown overlay
+
+## 8.11.0
+
+### Minor Changes
+
+- acc35a2e: fix: support `min-content`, `none`, `fit-content` in SpacingValueType of Box and styled-props
+
+### Patch Changes
+
+- 9fc66217: feat(blade): added support for React.ReactNode on Title & Heading component
+- b08d09d8: fix(blade): fix modal portal ssr
+
+## 8.10.3
+
+### Patch Changes
+
+- 62522f3e: fix(dropdown): dropdown overlay positioning
+
+## 8.10.2
+
+### Patch Changes
+
+- 99016aff: feat(blade): add support for as prop for typography components
+- f08e6d4f: fix(blade): remove unnecessary attributes from dom
+
 ## 8.10.1
 
 ### Patch Changes

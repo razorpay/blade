@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Switch /> should render switch ssr 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div data-blade-component=\\"Switch\\" display=\\"inline-block\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 dVAmvZ\\"><label style=\\"cursor:pointer\\" class=\\"SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 bgSmPY\\"><input type=\\"checkbox\\" role=\\"switch\\" aria-required=\\"false\\" aria-invalid=\\"false\\" aria-disabled=\\"false\\" aria-checked=\\"false\\" aria-label=\\"Toggle Darkmode\\" class=\\"SelectorInputweb__StyledInput-sc-1bnkrae-0 jHlQyY\\"/><div aria-hidden=\\"true\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 SwitchTrackweb__SwitchTrack-t4l0ax-0  cwBdxr\\"><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 Thumb-jf4wbz-0  gYYaLo\\"><div class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 AnimatedThumbweb__AnimatedThumb-i5qu0o-0  cZLYHA\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"8px\\" viewBox=\\"0 0 11 8\\" width=\\"8px\\" fill=\\"none\\" class=\\"Svgweb__StyledSvg-vcmjs8-0 AnimatedThumbIconweb__AnimatedThumbIcon-sc-3hk5w7-0 ezMhSy\\"><path d=\\"M8.81891 0.546661C9.12722 0.238352 9.62709 0.238353 9.9354 0.546661C10.2437 0.85497 10.2437 1.35484 9.9354 1.66315L4.14592 7.45262C3.83761 7.76093 3.33775 7.76093 3.02944 7.45262L0.397858 4.82104C0.0895488 4.51273 0.0895488 4.01286 0.397857 3.70456C0.706166 3.39625 1.20603 3.39625 1.51434 3.70456L3.58768 5.77789L8.81891 0.546661Z\\" clip-rule=\\"evenodd\\" fill=\\"hsla(216, 33%, 29%, 1)\\" fill-rule=\\"evenodd\\"></path></svg></div></div></div></label></div></div>"`;
+exports[`<Switch /> should render switch ssr 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div data-blade-component=\\"switch\\" class=\\"BaseBox-bmPWx dhmCzz\\"><label style=\\"cursor:pointer\\" data-blade-component=\\"switch-label\\" class=\\"SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 bgSmPY\\"><input type=\\"checkbox\\" role=\\"switch\\" aria-required=\\"false\\" aria-invalid=\\"false\\" aria-disabled=\\"false\\" aria-checked=\\"false\\" aria-label=\\"Toggle Darkmode\\" class=\\"SelectorInputweb__StyledInput-sc-1bnkrae-0 jHlQyY\\"/><div aria-hidden=\\"true\\" data-blade-component=\\"base-box\\" class=\\"BaseBox-bmPWx SwitchTrackweb__SwitchTrack-t4l0ax-0  cwBdxr\\"><div data-blade-component=\\"base-box\\" class=\\"BaseBox-bmPWx Thumb-jf4wbz-0  gYYaLo\\"><div data-blade-component=\\"base-box\\" class=\\"BaseBox-bmPWx AnimatedThumbweb__AnimatedThumb-i5qu0o-0  cZLYHA\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"8px\\" viewBox=\\"0 0 11 8\\" width=\\"8px\\" fill=\\"none\\" class=\\"Svgweb__StyledSvg-vcmjs8-0 AnimatedThumbIconweb__AnimatedThumbIcon-sc-3hk5w7-0 ezMhSy\\"><path d=\\"M8.81891 0.546661C9.12722 0.238352 9.62709 0.238353 9.9354 0.546661C10.2437 0.85497 10.2437 1.35484 9.9354 1.66315L4.14592 7.45262C3.83761 7.76093 3.33775 7.76093 3.02944 7.45262L0.397858 4.82104C0.0895488 4.51273 0.0895488 4.01286 0.397857 3.70456C0.706166 3.39625 1.20603 3.39625 1.51434 3.70456L3.58768 5.77789L8.81891 0.546661Z\\" clip-rule=\\"evenodd\\" fill=\\"hsla(216, 33%, 29%, 1)\\" fill-rule=\\"evenodd\\" data-blade-component=\\"svg-path\\"></path></svg></div></div></div></label></div></div>"`;
 
 exports[`<Switch /> should render switch ssr 2`] = `
 <div
@@ -8,12 +8,12 @@ exports[`<Switch /> should render switch ssr 2`] = `
   id="root"
 >
   <div
-    class="BaseBoxweb__BaseBox-sc-1icfu8j-0 dVAmvZ"
-    data-blade-component="Switch"
-    display="inline-block"
+    class="BaseBox-bmPWx dhmCzz"
+    data-blade-component="switch"
   >
     <label
       class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 bgSmPY"
+      data-blade-component="switch-label"
       style="cursor:pointer"
     >
       <input
@@ -29,13 +29,16 @@ exports[`<Switch /> should render switch ssr 2`] = `
       />
       <div
         aria-hidden="true"
-        class="BaseBoxweb__BaseBox-sc-1icfu8j-0 SwitchTrackweb__SwitchTrack-t4l0ax-0  cwBdxr"
+        class="BaseBox-bmPWx SwitchTrackweb__SwitchTrack-t4l0ax-0  cwBdxr"
+        data-blade-component="base-box"
       >
         <div
-          class="BaseBoxweb__BaseBox-sc-1icfu8j-0 Thumb-jf4wbz-0  gYYaLo"
+          class="BaseBox-bmPWx Thumb-jf4wbz-0  gYYaLo"
+          data-blade-component="base-box"
         >
           <div
-            class="BaseBoxweb__BaseBox-sc-1icfu8j-0 AnimatedThumbweb__AnimatedThumb-i5qu0o-0  cZLYHA"
+            class="BaseBox-bmPWx AnimatedThumbweb__AnimatedThumb-i5qu0o-0  cZLYHA"
+            data-blade-component="base-box"
           >
             <svg
               aria-hidden="true"
@@ -49,6 +52,7 @@ exports[`<Switch /> should render switch ssr 2`] = `
               <path
                 clip-rule="evenodd"
                 d="M8.81891 0.546661C9.12722 0.238352 9.62709 0.238353 9.9354 0.546661C10.2437 0.85497 10.2437 1.35484 9.9354 1.66315L4.14592 7.45262C3.83761 7.76093 3.33775 7.76093 3.02944 7.45262L0.397858 4.82104C0.0895488 4.51273 0.0895488 4.01286 0.397857 3.70456C0.706166 3.39625 1.20603 3.39625 1.51434 3.70456L3.58768 5.77789L8.81891 0.546661Z"
+                data-blade-component="svg-path"
                 fill="hsla(216, 33%, 29%, 1)"
                 fill-rule="evenodd"
               />

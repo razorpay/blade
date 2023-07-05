@@ -2,8 +2,10 @@ import React from 'react';
 import BaseBox from './BaseBox';
 import type { BoxProps, BoxRefType, MakeValueResponsive } from './BaseBox/types';
 import { validBoxAsValues } from './BaseBox/types/propsTypes';
-import type { KeysRequired } from '~src/_helpers/types';
-import { assignWithoutSideEffects, isReactNative, metaAttribute, MetaConstants } from '~utils';
+import type { KeysRequired } from '~utils/types';
+import { isReactNative } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 const validateBackgroundString = (stringBackgroundColorValue: string): void => {
   if (!stringBackgroundColorValue.startsWith('surface.background')) {
@@ -108,6 +110,11 @@ const makeBoxProps = (props: BoxProps): KeysRequired<Omit<BoxProps, 'testID' | '
 
     // Visual
     backgroundColor: props.backgroundColor,
+    backgroundImage: props.backgroundImage,
+    backgroundSize: props.backgroundSize,
+    backgroundPosition: props.backgroundPosition,
+    backgroundOrigin: props.backgroundOrigin,
+    backgroundRepeat: props.backgroundRepeat,
     // Border
     borderWidth: props.borderWidth,
     borderColor: props.borderColor,

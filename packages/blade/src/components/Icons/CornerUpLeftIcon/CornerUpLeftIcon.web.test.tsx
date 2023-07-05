@@ -1,5 +1,5 @@
 import CornerUpLeftIcon from './';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<CornerUpLeftIcon />', () => {
   it('should render CornerUpLeftIcon', () => {

@@ -6,11 +6,11 @@ import {
   WithControlledSelectStory,
   WithSimpleMenuStory,
 } from './stories';
-import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Code, Heading, Text, Title } from '~components/Typography';
-import { Sandbox, VerticalSandbox } from '~src/_helpers/storybook/Sandbox';
+import { Sandbox, VerticalSandbox } from '~utils/storybook/Sandbox';
 import { Box } from '~components/Box';
-import { ArgsTable } from '~src/_helpers/storybook/ArgsTable';
+import { ArgsTable } from '~utils/storybook/ArgsTable';
 import { List, ListItem, ListItemLink } from '~components/List';
 import BaseBox from '~components/Box/BaseBox';
 import { Link } from '~components/Link';
@@ -100,6 +100,26 @@ const DropdownDocs = (): JSX.Element => {
           </ListItem>
         </List>
       </BaseBox>
+      <BaseBox as="section" id="dropdownheader">
+        <Title size="medium">DropdownHeader</Title>
+        <ArgsTable
+          data={{
+            title: 'string',
+            subtitle: 'string',
+            leading: 'ReactNode',
+            titleSuffix: 'ReactNode',
+            trailing: 'ReactNode',
+          }}
+        />
+      </BaseBox>
+      <BaseBox as="section" id="dropdownfooter">
+        <Title size="medium">DropdownFooter</Title>
+        <ArgsTable
+          data={{
+            children: 'ReactNode',
+          }}
+        />
+      </BaseBox>
       <BaseBox as="section">
         <Title size="small">With SelectInput</Title>
         <Text marginY="spacing.3">
@@ -123,7 +143,7 @@ const DropdownDocs = (): JSX.Element => {
         </Title>
         <Text marginY="spacing.3">
           Check out more Menu examples at{' '}
-          <Link href="/?path=/docs/components-dropdown-with-button--default">
+          <Link href="/?path=/docs/components-dropdown-with-button-and-link--default">
             Dropdown with Button Stories
           </Link>
         </Text>

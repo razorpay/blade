@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import isEmpty from 'lodash/isEmpty';
 import type { BaseInputProps } from '../BaseInput';
 import { BaseInput } from '../BaseInput';
 import { getHintType } from '../BaseInput/BaseInput';
@@ -9,8 +10,10 @@ import type { FormInputOnKeyDownEvent } from '../../Form/FormTypes';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import { metaAttribute, getPlatformType, MetaConstants, isEmpty, makeSize } from '~utils';
+import { getPlatformType } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useTheme } from '~components/BladeProvider';
+import { makeSize } from '~utils/makeSize';
 import { size } from '~tokens/global';
 
 type FormInputOnEventWithIndex = ({

@@ -1,12 +1,18 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import type { ReactDOMAttributes } from '@use-gesture/react/dist/declarations/src/types';
-import { Divider } from './Divider';
+import { Divider } from '~components/Divider';
 import BaseBox from '~components/Box/BaseBox';
 import { Heading, Text } from '~components/Typography';
-import { assignWithoutSideEffects, getComponentId, isReactNative, metaAttribute } from '~utils';
 import { IconButton } from '~components/Button/IconButton';
 import { ChevronLeftIcon, CloseIcon } from '~components/Icons';
+import type { TestID } from '~utils/types';
+import type { BoxProps } from '~components/Box';
+import { Box } from '~components/Box';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { getComponentId } from '~utils/isValidAllowedChildren';
+import { isReactNative } from '~utils';
+import { metaAttribute } from '~utils/metaAttribute';
 
 type BaseHeaderProps = {
   title?: string;
@@ -37,7 +43,7 @@ type BaseHeaderProps = {
   showCloseButton?: boolean;
   onCloseButtonClick?: () => void;
   onBackButtonClick?: () => void;
-  closeButtonRef: React.MutableRefObject<any>;
+  closeButtonRef?: React.MutableRefObject<any>;
   metaComponentName?: string;
 } & Pick<
   ReactDOMAttributes,
@@ -49,9 +55,21 @@ type BaseHeaderProps = {
   | 'onPointerDown'
   | 'onPointerMove'
   | 'onPointerUp'
->;
+> &
+  TestID;
 
-type TrailingComponents = 'Button' | 'Badge' | 'Link' | 'Text';
+type TrailingComponents = 'Button' | 'Badge' | 'Link' | 'Text' | 'Amount';
+
+const centerBoxProps: BoxProps = {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  // We want to align title, icon, titleSuffix, trailing, closeButton to baseline
+  // But we also want to keep them center aligned to each other
+  // So we add a virtual Box around these slots with 28px and center align them to that box
+  // We have done similar thing in figma as well (which is where this 28px comes from)
+  height: '28px',
+};
 
 // prop restriction map for corresponding sub components
 const propRestrictionMap = {
@@ -68,6 +86,9 @@ const propRestrictionMap = {
   Text: {
     size: 'medium',
     variant: 'body',
+  },
+  Amount: {
+    size: 'body-medium',
   },
 } as const;
 
@@ -120,6 +141,7 @@ const _BaseHeader = ({
   onBackButtonClick,
   onCloseButtonClick,
   closeButtonRef,
+  testID,
   onClickCapture,
   onKeyDown,
   onKeyUp,
@@ -131,6 +153,7 @@ const _BaseHeader = ({
   metaComponentName,
 }: BaseHeaderProps): React.ReactElement => {
   const validatedTrailingComponent = useTrailingRestriction(trailing);
+  const shouldWrapTitle = titleSuffix && trailing && showBackButton && showCloseButton;
 
   const webOnlyEventHandlers: Record<string, any> = isReactNative()
     ? {}
@@ -146,24 +169,24 @@ const _BaseHeader = ({
       };
 
   return (
-    <BaseBox {...metaAttribute({ name: metaComponentName })}>
+    <BaseBox {...metaAttribute({ name: metaComponentName, testID })}>
       <BaseBox
-        marginTop="spacing.4"
-        marginBottom="spacing.5"
-        paddingLeft="spacing.5"
-        paddingRight="spacing.5"
+        marginY={{ base: 'spacing.5', m: 'spacing.6' }}
+        paddingX={{ base: 'spacing.5', m: 'spacing.6' }}
         touchAction="none"
         {...webOnlyEventHandlers}
       >
-        <BaseBox display="flex" flexDirection="row" alignItems="center" userSelect="none">
+        <BaseBox display="flex" flexDirection="row" userSelect="none">
           {showBackButton ? (
             <BaseBox overflow="visible" marginRight="spacing.5">
-              <IconButton
-                size="large"
-                icon={ChevronLeftIcon}
-                onClick={() => onBackButtonClick?.()}
-                accessibilityLabel="Back"
-              />
+              <Box {...centerBoxProps}>
+                <IconButton
+                  size="large"
+                  icon={ChevronLeftIcon}
+                  onClick={() => onBackButtonClick?.()}
+                  accessibilityLabel="Back"
+                />
+              </Box>
             </BaseBox>
           ) : null}
           <BaseBox
@@ -172,48 +195,61 @@ const _BaseHeader = ({
             flex="auto"
             display="flex"
             flexDirection="row"
-            alignItems="center"
+            alignItems="flex-start"
           >
             {leading ? (
               <BaseBox
                 width="spacing.8"
                 height="spacing.8"
-                flexShrink={0}
                 marginRight="spacing.3"
-                justifyContent="center"
-                alignItems="center"
-                display="flex"
+                {...centerBoxProps}
               >
                 {leading}
               </BaseBox>
             ) : null}
-            <BaseBox>
-              <BaseBox flexShrink={0} display="flex" flexDirection="row" alignItems="center">
+            <BaseBox flex="auto">
+              <BaseBox
+                // Explicitly setting maxWidth in React Native because text is not being wrapped properly when multiple fix width components are rendered in header
+                // In web, flex containers seem to work a expected
+                // @todo: resolve this if we figure out some better solution later
+                maxWidth={isReactNative() && shouldWrapTitle ? '100px' : undefined}
+                flexShrink={0}
+                display="flex"
+                flexDirection="row"
+              >
                 {title ? (
                   <Heading size="small" variant="regular" type="normal">
                     {title}
                   </Heading>
                 ) : null}
-                {titleSuffix && <BaseBox marginLeft="spacing.3">{titleSuffix}</BaseBox>}
+                {titleSuffix && (
+                  <BaseBox marginLeft="spacing.3">
+                    <Box {...centerBoxProps}>{titleSuffix}</Box>
+                  </BaseBox>
+                )}
               </BaseBox>
               {subtitle ? (
-                <Text variant="body" size="small" weight="regular">
+                <Text variant="body" size="small" weight="regular" type="muted">
                   {subtitle}
                 </Text>
               ) : null}
             </BaseBox>
           </BaseBox>
           {validatedTrailingComponent ? (
-            <BaseBox marginRight="spacing.5">{validatedTrailingComponent}</BaseBox>
+            <BaseBox marginRight="spacing.5">
+              <Box {...centerBoxProps}>{validatedTrailingComponent}</Box>
+            </BaseBox>
           ) : null}
           {showCloseButton ? (
-            <IconButton
-              ref={closeButtonRef}
-              size="large"
-              icon={CloseIcon}
-              accessibilityLabel="Close"
-              onClick={() => onCloseButtonClick?.()}
-            />
+            <Box {...centerBoxProps}>
+              <IconButton
+                ref={closeButtonRef}
+                size="large"
+                icon={CloseIcon}
+                accessibilityLabel="Close"
+                onClick={() => onCloseButtonClick?.()}
+              />
+            </Box>
           ) : null}
         </BaseBox>
       </BaseBox>

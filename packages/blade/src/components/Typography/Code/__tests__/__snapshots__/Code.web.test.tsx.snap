@@ -24,15 +24,12 @@ exports[`<Code /> should render Code with color 1`] = `
 
 <div>
   <span
-    class=" c0"
+    class="BaseBox-bmPWx  c0"
     data-blade-component="code"
   >
     <code
       class="c1"
-      color="action.text.link.disabled"
-      font-family="code"
-      font-size="25"
-      font-weight="regular"
+      data-blade-component="base-text"
     >
       TEST_TOKEN
     </code>
@@ -65,15 +62,12 @@ exports[`<Code /> should render Code with default properties 1`] = `
 
 <div>
   <span
-    class=" c0"
+    class="BaseBox-bmPWx  c0"
     data-blade-component="code"
   >
     <code
       class="c1"
-      color="surface.text.subtle.lowContrast"
-      font-family="code"
-      font-size="25"
-      font-weight="regular"
+      data-blade-component="base-text"
     >
       TEST_TOKEN
     </code>
@@ -105,15 +99,12 @@ exports[`<Code /> should render isHighlighted false Code 1`] = `
 
 <div>
   <span
-    class=" c0"
+    class="BaseBox-bmPWx  c0"
     data-blade-component="code"
   >
     <code
       class="c1"
-      color="surface.text.normal.lowContrast"
-      font-family="code"
-      font-size="25"
-      font-weight="regular"
+      data-blade-component="base-text"
     >
       NON-HIGHLIGHTED
     </code>
@@ -146,15 +137,12 @@ exports[`<Code /> should render medium Code 1`] = `
 
 <div>
   <span
-    class=" c0"
+    class="BaseBox-bmPWx  c0"
     data-blade-component="code"
   >
     <code
       class="c1"
-      color="surface.text.subtle.lowContrast"
-      font-family="code"
-      font-size="75"
-      font-weight="regular"
+      data-blade-component="base-text"
     >
       MEDIUM
     </code>
@@ -187,15 +175,12 @@ exports[`<Code /> should render small Code 1`] = `
 
 <div>
   <span
-    class=" c0"
+    class="BaseBox-bmPWx  c0"
     data-blade-component="code"
   >
     <code
       class="c1"
-      color="surface.text.subtle.lowContrast"
-      font-family="code"
-      font-size="25"
-      font-weight="regular"
+      data-blade-component="base-text"
     >
       SMALL
     </code>

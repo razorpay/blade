@@ -17,6 +17,7 @@ exports[`<TextInput /> should render 1`] = `
     }
   >
     <View
+      data-blade-component="base-box"
       display="flex"
       flexDirection="column"
       position="relative"
@@ -31,6 +32,7 @@ exports[`<TextInput /> should render 1`] = `
       }
     >
       <View
+        data-blade-component="base-box"
         display="flex"
         flexDirection="row"
         justifyContent="space-between"
@@ -47,6 +49,7 @@ exports[`<TextInput /> should render 1`] = `
         }
       >
         <View
+          data-blade-component="base-box"
           style={
             Array [
               Object {
@@ -58,6 +61,7 @@ exports[`<TextInput /> should render 1`] = `
         >
           <View
             alignItems="center"
+            data-blade-component="base-box"
             display="flex"
             flexDirection="row"
             flexWrap="wrap"
@@ -101,7 +105,6 @@ exports[`<TextInput /> should render 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -163,7 +166,6 @@ exports[`<TextInput /> should render 1`] = `
                       "paddingTop": 0,
                       "textDecorationLine": "none",
                     },
-                    Object {},
                   ]
                 }
               />
@@ -173,6 +175,7 @@ exports[`<TextInput /> should render 1`] = `
       </View>
       <View
         currentInteraction="default"
+        data-blade-component="base-box"
         display="flex"
         flexDirection="row"
         position="relative"
@@ -205,6 +208,7 @@ exports[`<TextInput /> should render 1`] = `
             }
           }
           autoCompleteType="off"
+          data-blade-component="styled-base-input"
           editable={true}
           id="textinput-1-input-2"
           interactionElement={null}
@@ -271,6 +275,7 @@ exports[`<TextInput /> should render 1`] = `
       </View>
     </View>
     <View
+      data-blade-component="base-box"
       style={
         Array [
           Object {
@@ -280,6 +285,7 @@ exports[`<TextInput /> should render 1`] = `
       }
     >
       <View
+        data-blade-component="base-box"
         display="flex"
         flexDirection="row"
         justifyContent="flex-end"
@@ -315,6 +321,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
     }
   >
     <View
+      data-blade-component="base-box"
       display="flex"
       flexDirection="column"
       position="relative"
@@ -329,6 +336,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
       }
     >
       <View
+        data-blade-component="base-box"
         display="flex"
         flexDirection="row"
         justifyContent="space-between"
@@ -345,6 +353,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
         }
       >
         <View
+          data-blade-component="base-box"
           style={
             Array [
               Object {
@@ -356,6 +365,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
         >
           <View
             alignItems="center"
+            data-blade-component="base-box"
             display="flex"
             flexDirection="row"
             flexWrap="wrap"
@@ -399,7 +409,6 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -461,7 +470,6 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
                       "paddingTop": 0,
                       "textDecorationLine": "none",
                     },
-                    Object {},
                   ]
                 }
               />
@@ -471,6 +479,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
       </View>
       <View
         currentInteraction="default"
+        data-blade-component="base-box"
         display="flex"
         flexDirection="row"
         position="relative"
@@ -494,6 +503,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
       >
         <View
           alignItems="center"
+          data-blade-component="base-box"
           display="flex"
           flexDirection="row"
           style={
@@ -507,6 +517,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
           }
         >
           <View
+            data-blade-component="base-box"
             display="flex"
             style={
               Array [
@@ -522,6 +533,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
               align="xMidYMid"
               bbHeight="16px"
               bbWidth="16px"
+              data-blade-component="icon"
               fill="none"
               focusable={false}
               height="16px"
@@ -591,6 +603,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
             </RNSVGSvgView>
           </View>
           <View
+            data-blade-component="base-box"
             style={
               Array [
                 Object {
@@ -626,7 +639,6 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -646,6 +658,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
           }
           autoCapitalize="none"
           autoCompleteType="off"
+          data-blade-component="styled-base-input"
           editable={true}
           id="textinput-31-input-32"
           interactionElement={null}
@@ -696,6 +709,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
         />
         <View
           alignItems="center"
+          data-blade-component="base-box"
           display="flex"
           flexDirection="row"
           style={
@@ -709,6 +723,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
           }
         >
           <View
+            data-blade-component="base-box"
             style={
               Array [
                 Object {
@@ -744,7 +759,6 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -774,6 +788,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
       </View>
     </View>
     <View
+      data-blade-component="base-box"
       style={
         Array [
           Object {
@@ -783,6 +798,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
       }
     >
       <View
+        data-blade-component="base-box"
         display="flex"
         flexDirection="row"
         justifyContent="flex-end"

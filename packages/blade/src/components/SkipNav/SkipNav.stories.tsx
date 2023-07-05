@@ -6,8 +6,8 @@ import { Link } from '~components/Link';
 import { SkipNavContent, SkipNavLink } from '~components/SkipNav';
 import { Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
-import { Sandbox } from '~src/_helpers/storybook/Sandbox';
-import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import { Sandbox } from '~utils/storybook/Sandbox';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 
 const Page = (): ReactElement => {
   return (

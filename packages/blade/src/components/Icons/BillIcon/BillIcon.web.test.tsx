@@ -1,5 +1,5 @@
 import BillIcon from './';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<BillIcon />', () => {
   it('should render BillIcon', () => {

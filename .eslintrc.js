@@ -190,4 +190,5 @@ module.exports = {
       },
     },
   ],
+  ignorePatterns: ['packages/blade-coverage-extension'],
 };

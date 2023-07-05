@@ -1,5 +1,5 @@
 import type { MakeObjectResponsive } from './responsiveTypes';
-import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
+import type { DotNotationSpacingStringToken } from '~utils/types';
 
 type ArrayOfMaxLength4<T> = readonly [T?, T?, T?, T?];
 type SpaceUnits = 'px' | '%' | 'fr' | 'rem' | 'em' | 'vh' | 'vw';
@@ -8,10 +8,14 @@ type SpacingValueType =
   | DotNotationSpacingStringToken
   | `${string}${SpaceUnits}`
   | `calc(${string})`
+  | 'auto'
   | `min(${string})`
   | `max(${string})`
-  | 'auto'
-  | 'none';
+  | 'none'
+  | 'initial'
+  | 'fit-content'
+  | 'max-content'
+  | 'min-content';
 
 /**
  * @IMPORTANT

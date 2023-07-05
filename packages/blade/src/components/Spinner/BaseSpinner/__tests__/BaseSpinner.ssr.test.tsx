@@ -1,5 +1,5 @@
 import { BaseSpinner } from '../BaseSpinner';
-import renderWithSSR from '~src/_helpers/testing/renderWithSSR.web';
+import renderWithSSR from '~utils/testing/renderWithSSR.web';
 
 describe('<BaseSpinner />', () => {
   it('should render low contrast BaseSpinner with right label', () => {

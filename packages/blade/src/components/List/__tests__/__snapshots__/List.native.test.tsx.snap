@@ -9,6 +9,7 @@ exports[`<List /> should render List with default properties 1`] = `
   }
 >
   <View
+    data-blade-component="base-box"
     style={
       Array [
         Object {},
@@ -42,6 +43,7 @@ exports[`<List /> should render List with default properties 1`] = `
       >
         <View
           alignItems="center"
+          data-blade-component="base-box"
           display="flex"
           flexDirection="row"
           style={
@@ -57,6 +59,7 @@ exports[`<List /> should render List with default properties 1`] = `
         >
           <View
             alignSelf="flex-start"
+            data-blade-component="base-box"
             display="flex"
             style={
               Array [
@@ -74,6 +77,7 @@ exports[`<List /> should render List with default properties 1`] = `
               align="xMidYMid"
               bbHeight="6px"
               bbWidth="6px"
+              data-blade-component="icon"
               fill="none"
               focusable={false}
               height="6px"
@@ -124,6 +128,7 @@ exports[`<List /> should render List with default properties 1`] = `
             </RNSVGSvgView>
           </View>
           <View
+            data-blade-component="base-box"
             display="flex"
             flexDirection="row"
             flexWrap="wrap"
@@ -164,7 +169,6 @@ exports[`<List /> should render List with default properties 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -173,6 +177,7 @@ exports[`<List /> should render List with default properties 1`] = `
           </View>
         </View>
         <View
+          data-blade-component="base-box"
           style={
             Array [
               Object {},
@@ -203,6 +208,7 @@ exports[`<List /> should render List with default properties 1`] = `
             >
               <View
                 alignItems="center"
+                data-blade-component="base-box"
                 display="flex"
                 flexDirection="row"
                 style={
@@ -218,6 +224,7 @@ exports[`<List /> should render List with default properties 1`] = `
               >
                 <View
                   alignSelf="flex-start"
+                  data-blade-component="base-box"
                   display="flex"
                   style={
                     Array [
@@ -235,6 +242,7 @@ exports[`<List /> should render List with default properties 1`] = `
                     align="xMidYMid"
                     bbHeight="6px"
                     bbWidth="6px"
+                    data-blade-component="icon"
                     fill="none"
                     focusable={false}
                     height="6px"
@@ -285,6 +293,7 @@ exports[`<List /> should render List with default properties 1`] = `
                   </RNSVGSvgView>
                 </View>
                 <View
+                  data-blade-component="base-box"
                   display="flex"
                   flexDirection="row"
                   flexWrap="wrap"
@@ -325,7 +334,6 @@ exports[`<List /> should render List with default properties 1`] = `
                           "paddingTop": 0,
                           "textDecorationLine": "none",
                         },
-                        Object {},
                       ]
                     }
                   >
@@ -334,6 +342,7 @@ exports[`<List /> should render List with default properties 1`] = `
                 </View>
               </View>
               <View
+                data-blade-component="base-box"
                 style={
                   Array [
                     Object {},
@@ -364,6 +373,7 @@ exports[`<List /> should render List with default properties 1`] = `
                   >
                     <View
                       alignItems="center"
+                      data-blade-component="base-box"
                       display="flex"
                       flexDirection="row"
                       style={
@@ -379,6 +389,7 @@ exports[`<List /> should render List with default properties 1`] = `
                     >
                       <View
                         alignSelf="flex-start"
+                        data-blade-component="base-box"
                         display="flex"
                         style={
                           Array [
@@ -396,6 +407,7 @@ exports[`<List /> should render List with default properties 1`] = `
                           align="xMidYMid"
                           bbHeight="6px"
                           bbWidth="6px"
+                          data-blade-component="icon"
                           fill="none"
                           focusable={false}
                           height="6px"
@@ -448,6 +460,7 @@ exports[`<List /> should render List with default properties 1`] = `
                         </RNSVGSvgView>
                       </View>
                       <View
+                        data-blade-component="base-box"
                         display="flex"
                         flexDirection="row"
                         flexWrap="wrap"
@@ -488,7 +501,6 @@ exports[`<List /> should render List with default properties 1`] = `
                                 "paddingTop": 0,
                                 "textDecorationLine": "none",
                               },
-                              Object {},
                             ]
                           }
                         >
@@ -517,6 +529,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
   }
 >
   <View
+    data-blade-component="base-box"
     style={
       Array [
         Object {},
@@ -550,6 +563,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
       >
         <View
           alignItems="center"
+          data-blade-component="base-box"
           display="flex"
           flexDirection="row"
           style={
@@ -565,6 +579,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
         >
           <View
             alignSelf="flex-start"
+            data-blade-component="base-box"
             display="flex"
             style={
               Array [
@@ -582,6 +597,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
               align="xMidYMid"
               bbHeight="6px"
               bbWidth="6px"
+              data-blade-component="icon"
               fill="none"
               focusable={false}
               height="6px"
@@ -632,6 +648,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
             </RNSVGSvgView>
           </View>
           <View
+            data-blade-component="base-box"
             display="flex"
             flexDirection="row"
             flexWrap="wrap"
@@ -672,7 +689,6 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -701,6 +717,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
             >
               <Text
                 color="surface.text.subtle.lowContrast"
+                data-blade-component="base-text"
                 fontFamily="code"
                 fontSize={25}
                 fontWeight="regular"
@@ -748,6 +765,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
       >
         <View
           alignItems="center"
+          data-blade-component="base-box"
           display="flex"
           flexDirection="row"
           style={
@@ -763,6 +781,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
         >
           <View
             alignSelf="flex-start"
+            data-blade-component="base-box"
             display="flex"
             style={
               Array [
@@ -780,6 +799,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
               align="xMidYMid"
               bbHeight="6px"
               bbWidth="6px"
+              data-blade-component="icon"
               fill="none"
               focusable={false}
               height="6px"
@@ -830,6 +850,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
             </RNSVGSvgView>
           </View>
           <View
+            data-blade-component="base-box"
             display="flex"
             flexDirection="row"
             flexWrap="wrap"
@@ -870,7 +891,6 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -893,6 +913,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
   }
 >
   <View
+    data-blade-component="base-box"
     style={
       Array [
         Object {},
@@ -926,6 +947,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
       >
         <View
           alignItems="center"
+          data-blade-component="base-box"
           display="flex"
           flexDirection="row"
           style={
@@ -941,6 +963,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
         >
           <View
             alignSelf="flex-start"
+            data-blade-component="base-box"
             display="flex"
             style={
               Array [
@@ -958,6 +981,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
               align="xMidYMid"
               bbHeight="6px"
               bbWidth="6px"
+              data-blade-component="icon"
               fill="none"
               focusable={false}
               height="6px"
@@ -1008,6 +1032,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
             </RNSVGSvgView>
           </View>
           <View
+            data-blade-component="base-box"
             display="flex"
             flexDirection="row"
             flexWrap="wrap"
@@ -1048,7 +1073,6 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -1096,6 +1120,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
               <View
                 alignItems="center"
                 className="content-container"
+                data-blade-component="base-box"
                 display="flex"
                 flexDirection="row"
                 style={
@@ -1110,6 +1135,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
               >
                 <Text
                   color="action.text.link.default"
+                  data-blade-component="base-text"
                   fontSize={100}
                   fontWeight="bold"
                   lineHeight={100}
@@ -1160,6 +1186,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
       >
         <View
           alignItems="center"
+          data-blade-component="base-box"
           display="flex"
           flexDirection="row"
           style={
@@ -1175,6 +1202,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
         >
           <View
             alignSelf="flex-start"
+            data-blade-component="base-box"
             display="flex"
             style={
               Array [
@@ -1192,6 +1220,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
               align="xMidYMid"
               bbHeight="6px"
               bbWidth="6px"
+              data-blade-component="icon"
               fill="none"
               focusable={false}
               height="6px"
@@ -1242,6 +1271,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
             </RNSVGSvgView>
           </View>
           <View
+            data-blade-component="base-box"
             display="flex"
             flexDirection="row"
             flexWrap="wrap"
@@ -1282,7 +1312,6 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -1305,6 +1334,7 @@ exports[`<List /> should render medium ordered List 1`] = `
   }
 >
   <View
+    data-blade-component="base-box"
     style={
       Array [
         Object {},
@@ -1338,6 +1368,7 @@ exports[`<List /> should render medium ordered List 1`] = `
       >
         <View
           alignItems="center"
+          data-blade-component="base-box"
           display="flex"
           flexDirection="row"
           style={
@@ -1354,6 +1385,7 @@ exports[`<List /> should render medium ordered List 1`] = `
           <View
             alignItems="center"
             alignSelf="flex-start"
+            data-blade-component="base-box"
             display="flex"
             flexShrink={0}
             height="24px"
@@ -1402,7 +1434,6 @@ exports[`<List /> should render medium ordered List 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -1410,6 +1441,7 @@ exports[`<List /> should render medium ordered List 1`] = `
             </Text>
           </View>
           <View
+            data-blade-component="base-box"
             display="flex"
             flexDirection="row"
             flexWrap="wrap"
@@ -1450,7 +1482,6 @@ exports[`<List /> should render medium ordered List 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -1459,6 +1490,7 @@ exports[`<List /> should render medium ordered List 1`] = `
           </View>
         </View>
         <View
+          data-blade-component="base-box"
           style={
             Array [
               Object {},
@@ -1489,6 +1521,7 @@ exports[`<List /> should render medium ordered List 1`] = `
             >
               <View
                 alignItems="center"
+                data-blade-component="base-box"
                 display="flex"
                 flexDirection="row"
                 style={
@@ -1504,6 +1537,7 @@ exports[`<List /> should render medium ordered List 1`] = `
               >
                 <View
                   alignSelf="flex-start"
+                  data-blade-component="base-box"
                   display="flex"
                   style={
                     Array [
@@ -1521,6 +1555,7 @@ exports[`<List /> should render medium ordered List 1`] = `
                     align="xMidYMid"
                     bbHeight="6px"
                     bbWidth="6px"
+                    data-blade-component="icon"
                     fill="none"
                     focusable={false}
                     height="6px"
@@ -1571,6 +1606,7 @@ exports[`<List /> should render medium ordered List 1`] = `
                   </RNSVGSvgView>
                 </View>
                 <View
+                  data-blade-component="base-box"
                   display="flex"
                   flexDirection="row"
                   flexWrap="wrap"
@@ -1611,7 +1647,6 @@ exports[`<List /> should render medium ordered List 1`] = `
                           "paddingTop": 0,
                           "textDecorationLine": "none",
                         },
-                        Object {},
                       ]
                     }
                   >
@@ -1620,6 +1655,7 @@ exports[`<List /> should render medium ordered List 1`] = `
                 </View>
               </View>
               <View
+                data-blade-component="base-box"
                 style={
                   Array [
                     Object {},
@@ -1650,6 +1686,7 @@ exports[`<List /> should render medium ordered List 1`] = `
                   >
                     <View
                       alignItems="center"
+                      data-blade-component="base-box"
                       display="flex"
                       flexDirection="row"
                       style={
@@ -1665,6 +1702,7 @@ exports[`<List /> should render medium ordered List 1`] = `
                     >
                       <View
                         alignSelf="flex-start"
+                        data-blade-component="base-box"
                         display="flex"
                         style={
                           Array [
@@ -1682,6 +1720,7 @@ exports[`<List /> should render medium ordered List 1`] = `
                           align="xMidYMid"
                           bbHeight="6px"
                           bbWidth="6px"
+                          data-blade-component="icon"
                           fill="none"
                           focusable={false}
                           height="6px"
@@ -1734,6 +1773,7 @@ exports[`<List /> should render medium ordered List 1`] = `
                         </RNSVGSvgView>
                       </View>
                       <View
+                        data-blade-component="base-box"
                         display="flex"
                         flexDirection="row"
                         flexWrap="wrap"
@@ -1774,7 +1814,6 @@ exports[`<List /> should render medium ordered List 1`] = `
                                 "paddingTop": 0,
                                 "textDecorationLine": "none",
                               },
-                              Object {},
                             ]
                           }
                         >
@@ -1803,6 +1842,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
   }
 >
   <View
+    data-blade-component="base-box"
     style={
       Array [
         Object {},
@@ -1836,6 +1876,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
       >
         <View
           alignItems="center"
+          data-blade-component="base-box"
           display="flex"
           flexDirection="row"
           style={
@@ -1854,6 +1895,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
             alignSelf="flex-start"
             backgroundColor="hsla(216, 15%, 54%, 0.18)"
             borderRadius="max"
+            data-blade-component="base-box"
             display="flex"
             flexShrink={0}
             height="20px"
@@ -1904,7 +1946,6 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -1912,6 +1953,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
             </Text>
           </View>
           <View
+            data-blade-component="base-box"
             display="flex"
             flexDirection="row"
             flexWrap="wrap"
@@ -1952,7 +1994,6 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -1976,6 +2017,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
       >
         <View
           alignItems="center"
+          data-blade-component="base-box"
           display="flex"
           flexDirection="row"
           style={
@@ -1994,6 +2036,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
             alignSelf="flex-start"
             backgroundColor="hsla(216, 15%, 54%, 0.18)"
             borderRadius="max"
+            data-blade-component="base-box"
             display="flex"
             flexShrink={0}
             height="20px"
@@ -2044,7 +2087,6 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -2052,6 +2094,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
             </Text>
           </View>
           <View
+            data-blade-component="base-box"
             display="flex"
             flexDirection="row"
             flexWrap="wrap"
@@ -2092,7 +2135,6 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -2116,6 +2158,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
       >
         <View
           alignItems="center"
+          data-blade-component="base-box"
           display="flex"
           flexDirection="row"
           style={
@@ -2134,6 +2177,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
             alignSelf="flex-start"
             backgroundColor="hsla(216, 15%, 54%, 0.18)"
             borderRadius="max"
+            data-blade-component="base-box"
             display="flex"
             flexShrink={0}
             height="20px"
@@ -2184,7 +2228,6 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -2192,6 +2235,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
             </Text>
           </View>
           <View
+            data-blade-component="base-box"
             display="flex"
             flexDirection="row"
             flexWrap="wrap"
@@ -2232,7 +2276,6 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -2255,6 +2298,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
   }
 >
   <View
+    data-blade-component="base-box"
     style={
       Array [
         Object {},
@@ -2288,6 +2332,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
       >
         <View
           alignItems="center"
+          data-blade-component="base-box"
           display="flex"
           flexDirection="row"
           style={
@@ -2303,6 +2348,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
         >
           <View
             alignSelf="flex-start"
+            data-blade-component="base-box"
             display="flex"
             style={
               Array [
@@ -2320,6 +2366,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
               align="xMidYMid"
               bbHeight="16px"
               bbWidth="16px"
+              data-blade-component="icon"
               fill="none"
               focusable={false}
               height="16px"
@@ -2368,6 +2415,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
             </RNSVGSvgView>
           </View>
           <View
+            data-blade-component="base-box"
             display="flex"
             flexDirection="row"
             flexWrap="wrap"
@@ -2408,7 +2456,6 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -2417,6 +2464,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
           </View>
         </View>
         <View
+          data-blade-component="base-box"
           style={
             Array [
               Object {},
@@ -2447,6 +2495,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
             >
               <View
                 alignItems="center"
+                data-blade-component="base-box"
                 display="flex"
                 flexDirection="row"
                 style={
@@ -2462,6 +2511,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
               >
                 <View
                   alignSelf="flex-start"
+                  data-blade-component="base-box"
                   display="flex"
                   style={
                     Array [
@@ -2479,6 +2529,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                     align="xMidYMid"
                     bbHeight="16px"
                     bbWidth="16px"
+                    data-blade-component="icon"
                     fill="none"
                     focusable={false}
                     height="16px"
@@ -2527,6 +2578,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                   </RNSVGSvgView>
                 </View>
                 <View
+                  data-blade-component="base-box"
                   display="flex"
                   flexDirection="row"
                   flexWrap="wrap"
@@ -2567,7 +2619,6 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                           "paddingTop": 0,
                           "textDecorationLine": "none",
                         },
-                        Object {},
                       ]
                     }
                   >
@@ -2576,6 +2627,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                 </View>
               </View>
               <View
+                data-blade-component="base-box"
                 style={
                   Array [
                     Object {},
@@ -2606,6 +2658,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                   >
                     <View
                       alignItems="center"
+                      data-blade-component="base-box"
                       display="flex"
                       flexDirection="row"
                       style={
@@ -2621,6 +2674,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                     >
                       <View
                         alignSelf="flex-start"
+                        data-blade-component="base-box"
                         display="flex"
                         style={
                           Array [
@@ -2638,6 +2692,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                           align="xMidYMid"
                           bbHeight="6px"
                           bbWidth="6px"
+                          data-blade-component="icon"
                           fill="none"
                           focusable={false}
                           height="6px"
@@ -2690,6 +2745,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                         </RNSVGSvgView>
                       </View>
                       <View
+                        data-blade-component="base-box"
                         display="flex"
                         flexDirection="row"
                         flexWrap="wrap"
@@ -2730,7 +2786,6 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                                 "paddingTop": 0,
                                 "textDecorationLine": "none",
                               },
-                              Object {},
                             ]
                           }
                         >
@@ -2759,6 +2814,7 @@ exports[`<List /> should render small ordered List 1`] = `
   }
 >
   <View
+    data-blade-component="base-box"
     style={
       Array [
         Object {},
@@ -2792,6 +2848,7 @@ exports[`<List /> should render small ordered List 1`] = `
       >
         <View
           alignItems="center"
+          data-blade-component="base-box"
           display="flex"
           flexDirection="row"
           style={
@@ -2808,6 +2865,7 @@ exports[`<List /> should render small ordered List 1`] = `
           <View
             alignItems="center"
             alignSelf="flex-start"
+            data-blade-component="base-box"
             display="flex"
             flexShrink={0}
             height="16px"
@@ -2856,7 +2914,6 @@ exports[`<List /> should render small ordered List 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -2864,6 +2921,7 @@ exports[`<List /> should render small ordered List 1`] = `
             </Text>
           </View>
           <View
+            data-blade-component="base-box"
             display="flex"
             flexDirection="row"
             flexWrap="wrap"
@@ -2904,7 +2962,6 @@ exports[`<List /> should render small ordered List 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -2913,6 +2970,7 @@ exports[`<List /> should render small ordered List 1`] = `
           </View>
         </View>
         <View
+          data-blade-component="base-box"
           style={
             Array [
               Object {},
@@ -2943,6 +3001,7 @@ exports[`<List /> should render small ordered List 1`] = `
             >
               <View
                 alignItems="center"
+                data-blade-component="base-box"
                 display="flex"
                 flexDirection="row"
                 style={
@@ -2958,6 +3017,7 @@ exports[`<List /> should render small ordered List 1`] = `
               >
                 <View
                   alignSelf="flex-start"
+                  data-blade-component="base-box"
                   display="flex"
                   style={
                     Array [
@@ -2975,6 +3035,7 @@ exports[`<List /> should render small ordered List 1`] = `
                     align="xMidYMid"
                     bbHeight="5px"
                     bbWidth="5px"
+                    data-blade-component="icon"
                     fill="none"
                     focusable={false}
                     height="5px"
@@ -3025,6 +3086,7 @@ exports[`<List /> should render small ordered List 1`] = `
                   </RNSVGSvgView>
                 </View>
                 <View
+                  data-blade-component="base-box"
                   display="flex"
                   flexDirection="row"
                   flexWrap="wrap"
@@ -3065,7 +3127,6 @@ exports[`<List /> should render small ordered List 1`] = `
                           "paddingTop": 0,
                           "textDecorationLine": "none",
                         },
-                        Object {},
                       ]
                     }
                   >
@@ -3074,6 +3135,7 @@ exports[`<List /> should render small ordered List 1`] = `
                 </View>
               </View>
               <View
+                data-blade-component="base-box"
                 style={
                   Array [
                     Object {},
@@ -3104,6 +3166,7 @@ exports[`<List /> should render small ordered List 1`] = `
                   >
                     <View
                       alignItems="center"
+                      data-blade-component="base-box"
                       display="flex"
                       flexDirection="row"
                       style={
@@ -3119,6 +3182,7 @@ exports[`<List /> should render small ordered List 1`] = `
                     >
                       <View
                         alignSelf="flex-start"
+                        data-blade-component="base-box"
                         display="flex"
                         style={
                           Array [
@@ -3136,6 +3200,7 @@ exports[`<List /> should render small ordered List 1`] = `
                           align="xMidYMid"
                           bbHeight="5px"
                           bbWidth="5px"
+                          data-blade-component="icon"
                           fill="none"
                           focusable={false}
                           height="5px"
@@ -3188,6 +3253,7 @@ exports[`<List /> should render small ordered List 1`] = `
                         </RNSVGSvgView>
                       </View>
                       <View
+                        data-blade-component="base-box"
                         display="flex"
                         flexDirection="row"
                         flexWrap="wrap"
@@ -3228,7 +3294,6 @@ exports[`<List /> should render small ordered List 1`] = `
                                 "paddingTop": 0,
                                 "textDecorationLine": "none",
                               },
-                              Object {},
                             ]
                           }
                         >
@@ -3257,6 +3322,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
   }
 >
   <View
+    data-blade-component="base-box"
     style={
       Array [
         Object {},
@@ -3290,6 +3356,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
       >
         <View
           alignItems="center"
+          data-blade-component="base-box"
           display="flex"
           flexDirection="row"
           style={
@@ -3308,6 +3375,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
             alignSelf="flex-start"
             backgroundColor="hsla(216, 15%, 54%, 0.18)"
             borderRadius="max"
+            data-blade-component="base-box"
             display="flex"
             flexShrink={0}
             height="16px"
@@ -3358,7 +3426,6 @@ exports[`<List /> should render small ordered-filled List 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -3366,6 +3433,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
             </Text>
           </View>
           <View
+            data-blade-component="base-box"
             display="flex"
             flexDirection="row"
             flexWrap="wrap"
@@ -3406,7 +3474,6 @@ exports[`<List /> should render small ordered-filled List 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -3430,6 +3497,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
       >
         <View
           alignItems="center"
+          data-blade-component="base-box"
           display="flex"
           flexDirection="row"
           style={
@@ -3448,6 +3516,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
             alignSelf="flex-start"
             backgroundColor="hsla(216, 15%, 54%, 0.18)"
             borderRadius="max"
+            data-blade-component="base-box"
             display="flex"
             flexShrink={0}
             height="16px"
@@ -3498,7 +3567,6 @@ exports[`<List /> should render small ordered-filled List 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -3506,6 +3574,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
             </Text>
           </View>
           <View
+            data-blade-component="base-box"
             display="flex"
             flexDirection="row"
             flexWrap="wrap"
@@ -3546,7 +3615,6 @@ exports[`<List /> should render small ordered-filled List 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -3570,6 +3638,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
       >
         <View
           alignItems="center"
+          data-blade-component="base-box"
           display="flex"
           flexDirection="row"
           style={
@@ -3588,6 +3657,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
             alignSelf="flex-start"
             backgroundColor="hsla(216, 15%, 54%, 0.18)"
             borderRadius="max"
+            data-blade-component="base-box"
             display="flex"
             flexShrink={0}
             height="16px"
@@ -3638,7 +3708,6 @@ exports[`<List /> should render small ordered-filled List 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -3646,6 +3715,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
             </Text>
           </View>
           <View
+            data-blade-component="base-box"
             display="flex"
             flexDirection="row"
             flexWrap="wrap"
@@ -3686,7 +3756,6 @@ exports[`<List /> should render small ordered-filled List 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -3709,6 +3778,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
   }
 >
   <View
+    data-blade-component="base-box"
     style={
       Array [
         Object {},
@@ -3742,6 +3812,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
       >
         <View
           alignItems="center"
+          data-blade-component="base-box"
           display="flex"
           flexDirection="row"
           style={
@@ -3757,6 +3828,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
         >
           <View
             alignSelf="flex-start"
+            data-blade-component="base-box"
             display="flex"
             style={
               Array [
@@ -3774,6 +3846,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
               align="xMidYMid"
               bbHeight="12px"
               bbWidth="12px"
+              data-blade-component="icon"
               fill="none"
               focusable={false}
               height="12px"
@@ -3822,6 +3895,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
             </RNSVGSvgView>
           </View>
           <View
+            data-blade-component="base-box"
             display="flex"
             flexDirection="row"
             flexWrap="wrap"
@@ -3862,7 +3936,6 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -3871,6 +3944,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
           </View>
         </View>
         <View
+          data-blade-component="base-box"
           style={
             Array [
               Object {},
@@ -3901,6 +3975,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
             >
               <View
                 alignItems="center"
+                data-blade-component="base-box"
                 display="flex"
                 flexDirection="row"
                 style={
@@ -3916,6 +3991,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
               >
                 <View
                   alignSelf="flex-start"
+                  data-blade-component="base-box"
                   display="flex"
                   style={
                     Array [
@@ -3933,6 +4009,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                     align="xMidYMid"
                     bbHeight="12px"
                     bbWidth="12px"
+                    data-blade-component="icon"
                     fill="none"
                     focusable={false}
                     height="12px"
@@ -3981,6 +4058,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                   </RNSVGSvgView>
                 </View>
                 <View
+                  data-blade-component="base-box"
                   display="flex"
                   flexDirection="row"
                   flexWrap="wrap"
@@ -4021,7 +4099,6 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                           "paddingTop": 0,
                           "textDecorationLine": "none",
                         },
-                        Object {},
                       ]
                     }
                   >
@@ -4030,6 +4107,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                 </View>
               </View>
               <View
+                data-blade-component="base-box"
                 style={
                   Array [
                     Object {},
@@ -4060,6 +4138,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                   >
                     <View
                       alignItems="center"
+                      data-blade-component="base-box"
                       display="flex"
                       flexDirection="row"
                       style={
@@ -4075,6 +4154,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                     >
                       <View
                         alignSelf="flex-start"
+                        data-blade-component="base-box"
                         display="flex"
                         style={
                           Array [
@@ -4092,6 +4172,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                           align="xMidYMid"
                           bbHeight="5px"
                           bbWidth="5px"
+                          data-blade-component="icon"
                           fill="none"
                           focusable={false}
                           height="5px"
@@ -4144,6 +4225,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                         </RNSVGSvgView>
                       </View>
                       <View
+                        data-blade-component="base-box"
                         display="flex"
                         flexDirection="row"
                         flexWrap="wrap"
@@ -4184,7 +4266,6 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                                 "paddingTop": 0,
                                 "textDecorationLine": "none",
                               },
-                              Object {},
                             ]
                           }
                         >
@@ -4213,6 +4294,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
   }
 >
   <View
+    data-blade-component="base-box"
     style={
       Array [
         Object {},
@@ -4246,6 +4328,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
       >
         <View
           alignItems="center"
+          data-blade-component="base-box"
           display="flex"
           flexDirection="row"
           style={
@@ -4261,6 +4344,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
         >
           <View
             alignSelf="flex-start"
+            data-blade-component="base-box"
             display="flex"
             style={
               Array [
@@ -4278,6 +4362,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
               align="xMidYMid"
               bbHeight="5px"
               bbWidth="5px"
+              data-blade-component="icon"
               fill="none"
               focusable={false}
               height="5px"
@@ -4328,6 +4413,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
             </RNSVGSvgView>
           </View>
           <View
+            data-blade-component="base-box"
             display="flex"
             flexDirection="row"
             flexWrap="wrap"
@@ -4368,7 +4454,6 @@ exports[`<List /> should render unordered List of small size 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -4377,6 +4462,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
           </View>
         </View>
         <View
+          data-blade-component="base-box"
           style={
             Array [
               Object {},
@@ -4407,6 +4493,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
             >
               <View
                 alignItems="center"
+                data-blade-component="base-box"
                 display="flex"
                 flexDirection="row"
                 style={
@@ -4422,6 +4509,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
               >
                 <View
                   alignSelf="flex-start"
+                  data-blade-component="base-box"
                   display="flex"
                   style={
                     Array [
@@ -4439,6 +4527,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
                     align="xMidYMid"
                     bbHeight="5px"
                     bbWidth="5px"
+                    data-blade-component="icon"
                     fill="none"
                     focusable={false}
                     height="5px"
@@ -4489,6 +4578,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
                   </RNSVGSvgView>
                 </View>
                 <View
+                  data-blade-component="base-box"
                   display="flex"
                   flexDirection="row"
                   flexWrap="wrap"
@@ -4529,7 +4619,6 @@ exports[`<List /> should render unordered List of small size 1`] = `
                           "paddingTop": 0,
                           "textDecorationLine": "none",
                         },
-                        Object {},
                       ]
                     }
                   >
@@ -4538,6 +4627,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
                 </View>
               </View>
               <View
+                data-blade-component="base-box"
                 style={
                   Array [
                     Object {},
@@ -4568,6 +4658,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
                   >
                     <View
                       alignItems="center"
+                      data-blade-component="base-box"
                       display="flex"
                       flexDirection="row"
                       style={
@@ -4583,6 +4674,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
                     >
                       <View
                         alignSelf="flex-start"
+                        data-blade-component="base-box"
                         display="flex"
                         style={
                           Array [
@@ -4600,6 +4692,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
                           align="xMidYMid"
                           bbHeight="5px"
                           bbWidth="5px"
+                          data-blade-component="icon"
                           fill="none"
                           focusable={false}
                           height="5px"
@@ -4652,6 +4745,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
                         </RNSVGSvgView>
                       </View>
                       <View
+                        data-blade-component="base-box"
                         display="flex"
                         flexDirection="row"
                         flexWrap="wrap"
@@ -4692,7 +4786,6 @@ exports[`<List /> should render unordered List of small size 1`] = `
                                 "paddingTop": 0,
                                 "textDecorationLine": "none",
                               },
-                              Object {},
                             ]
                           }
                         >

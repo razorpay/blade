@@ -1,7 +1,7 @@
 import type { CounterProps } from './Counter';
 import type { Theme } from '~components/BladeProvider';
 import type { TypographyPlatforms } from '~tokens/global';
-import type { DotNotationColorStringToken } from '~src/_helpers/types';
+import type { DotNotationColorStringToken } from '~utils/types';
 
 type FeedbackBackgroundColors = `feedback.background.${DotNotationColorStringToken<
   Theme['colors']['feedback']['background']

@@ -1,7 +1,7 @@
 import { fireEvent } from '@testing-library/react';
 import BaseLink from '../BaseLink';
-import assertAccessible from '~src/_helpers/testing/assertAccessible.web';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import assertAccessible from '~utils/testing/assertAccessible.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { InfoIcon } from '~components/Icons';
 import { paymentTheme } from '~tokens/theme';
 

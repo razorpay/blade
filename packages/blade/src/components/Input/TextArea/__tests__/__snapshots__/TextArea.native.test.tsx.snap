@@ -17,6 +17,7 @@ exports[`<TextArea /> should render 1`] = `
     }
   >
     <View
+      data-blade-component="base-box"
       display="flex"
       flexDirection="column"
       position="relative"
@@ -32,6 +33,7 @@ exports[`<TextArea /> should render 1`] = `
     >
       <View
         alignSelf="flex-start"
+        data-blade-component="base-box"
         display="flex"
         flexDirection="row"
         justifyContent="space-between"
@@ -49,6 +51,7 @@ exports[`<TextArea /> should render 1`] = `
         }
       >
         <View
+          data-blade-component="base-box"
           style={
             Array [
               Object {
@@ -60,6 +63,7 @@ exports[`<TextArea /> should render 1`] = `
         >
           <View
             alignItems="center"
+            data-blade-component="base-box"
             display="flex"
             flexDirection="row"
             flexWrap="wrap"
@@ -103,7 +107,6 @@ exports[`<TextArea /> should render 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             >
@@ -165,7 +168,6 @@ exports[`<TextArea /> should render 1`] = `
                       "paddingTop": 0,
                       "textDecorationLine": "none",
                     },
-                    Object {},
                   ]
                 }
               />
@@ -176,6 +178,7 @@ exports[`<TextArea /> should render 1`] = `
       <View
         alignItems="flex-start"
         currentInteraction="default"
+        data-blade-component="base-box"
         display="flex"
         flexDirection="row"
         position="relative"
@@ -208,6 +211,7 @@ exports[`<TextArea /> should render 1`] = `
               "expanded": undefined,
             }
           }
+          data-blade-component="styled-base-input"
           editable={true}
           id="textarea-1-input-2"
           interactionElement={null}
@@ -273,6 +277,7 @@ exports[`<TextArea /> should render 1`] = `
       </View>
     </View>
     <View
+      data-blade-component="base-box"
       style={
         Array [
           Object {
@@ -282,6 +287,7 @@ exports[`<TextArea /> should render 1`] = `
       }
     >
       <View
+        data-blade-component="base-box"
         display="flex"
         flexDirection="row"
         justifyContent="flex-end"

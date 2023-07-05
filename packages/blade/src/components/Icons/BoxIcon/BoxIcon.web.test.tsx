@@ -1,5 +1,5 @@
 import BoxIcon from './';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<BoxIcon />', () => {
   it('should render BoxIcon', () => {

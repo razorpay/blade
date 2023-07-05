@@ -1,7 +1,9 @@
 import type { CSSObject } from 'styled-components';
 import type { Theme } from '~components/BladeProvider';
+import { isReactNative } from '~utils';
+import { makeSize } from '~utils/makeSize';
+import { makeSpace } from '~utils/makeSpace';
 import { size } from '~tokens/global';
-import { isReactNative, makeSize, makeSpace } from '~utils';
 
 const getHandlePartStyles = ({ theme }: { theme: Theme }): CSSObject => {
   return {
@@ -14,8 +16,15 @@ const getHandlePartStyles = ({ theme }: { theme: Theme }): CSSObject => {
     borderRadius: makeSpace(theme.spacing[5]),
   };
 };
-const getBottomSheetGrabHandleStyles = ({ theme }: { theme: Theme }): CSSObject => {
+const getBottomSheetGrabHandleStyles = ({
+  theme,
+  isHeaderFloating,
+}: {
+  theme: Theme;
+  isHeaderFloating?: boolean;
+}): CSSObject => {
   return {
+    position: isHeaderFloating ? 'absolute' : 'relative',
     flexShrink: 0,
     paddingTop: makeSpace(theme.spacing[4]),
     marginBottom: makeSpace(theme.spacing[2]),
@@ -25,6 +34,7 @@ const getBottomSheetGrabHandleStyles = ({ theme }: { theme: Theme }): CSSObject 
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
+    zIndex: 100,
     ...(isReactNative() ? undefined : { ':after': getHandlePartStyles({ theme }) }),
   };
 };

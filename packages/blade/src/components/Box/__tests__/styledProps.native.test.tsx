@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import BaseBox from '../BaseBox';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { useStyledProps, getStyledProps } from '~components/Box/styledProps';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 type MyComponentWithStyledProps = {
   test: 'working???';
@@ -37,6 +37,7 @@ describe('styledProps with getStyledProps', () => {
         }
       >
         <View
+          data-blade-component="base-box"
           style={
             Array [
               Object {

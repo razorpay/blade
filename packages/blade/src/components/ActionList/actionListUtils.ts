@@ -2,8 +2,9 @@ import React from 'react';
 import { componentIds } from './componentIds';
 import type { ActionListItemProps } from './ActionListItem';
 import type { OptionsType } from '~components/Dropdown/useDropdown';
-import { getComponentId, isReactNative, isValidAllowedChildren } from '~utils';
+import { isReactNative } from '~utils';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
+import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 
 /**
  * Returns if there is ActionListItem after ActionListSection
@@ -38,12 +39,7 @@ const getActionListSectionPosition = (
   };
 };
 
-const actionListAllowedChildren = [
-  componentIds.ActionListFooter,
-  componentIds.ActionListHeader,
-  componentIds.ActionListItem,
-  componentIds.ActionListSection,
-];
+const actionListAllowedChildren = [componentIds.ActionListItem, componentIds.ActionListSection];
 
 export type SectionData = {
   title: string;
@@ -60,14 +56,10 @@ const getActionListProperties = (
   sectionData: SectionData;
   childrenWithId?: React.ReactNode[] | null;
   actionListOptions: OptionsType;
-  actionListHeaderChild: React.ReactElement | null;
-  actionListFooterChild: React.ReactElement | null;
 } => {
   const sectionData: SectionData = [];
   let currentSection: string | null = null;
   const actionListOptions: OptionsType = [];
-  let actionListHeaderChild: React.ReactElement | null = null;
-  let actionListFooterChild: React.ReactElement | null = null;
 
   const getActionListItemWithId = (
     child: React.ReactNode,
@@ -144,16 +136,6 @@ const getActionListProperties = (
   // Looping through ActionListItems to add index to them and get an options array for moving focus between items
   const childrenWithId = React.Children.map(children, (child, index) => {
     if (React.isValidElement(child)) {
-      if (isValidAllowedChildren(child, componentIds.ActionListHeader)) {
-        actionListHeaderChild = child;
-        return null;
-      }
-
-      if (isValidAllowedChildren(child, componentIds.ActionListFooter)) {
-        actionListFooterChild = child;
-        return null;
-      }
-
       if (isValidAllowedChildren(child, componentIds.ActionListSection)) {
         const shouldHideDivider =
           index === lastActionListSectionIndex && !isActionListItemPresentAfterSection;
@@ -186,8 +168,6 @@ const getActionListProperties = (
   return {
     sectionData,
     childrenWithId,
-    actionListFooterChild,
-    actionListHeaderChild,
     actionListOptions,
   };
 };

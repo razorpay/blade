@@ -16,6 +16,8 @@ type BorderRadius = Readonly<{
 type BorderWidth = Readonly<{
   /** none: 0(px/rem/pt) */
   none: 0;
+  /** thinner: 0.5(px/rem/pt) */
+  thinner: 0.5;
   /** thin: 1(px/rem/pt) */
   thin: 1;
   /** thick: 1.5(px/rem/pt) */
@@ -38,6 +40,7 @@ export const border: Border = {
   },
   width: {
     none: 0,
+    thinner: 0.5,
     thin: 1,
     thick: 1.5,
   },

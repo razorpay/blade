@@ -1,5 +1,5 @@
 import ScissorsIcon from './';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<ScissorsIcon />', () => {
   it('should render ScissorsIcon', () => {

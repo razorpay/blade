@@ -187,33 +187,30 @@ exports[`<Radio /> should render radio with label 1`] = `
 <div>
   <div
     class=""
+    data-blade-component="base-box"
   >
     <div
       aria-labelledby="radio-group-3-label"
       class="c0"
       data-blade-component="radio-group"
-      display="flex"
       role="group"
     >
       <span
+        data-blade-component="form-label"
         id="radio-group-3-label"
         style="width: auto; flex-shrink: 0; margin-right: 16px;"
       >
         <div
           class="c1"
+          data-blade-component="base-box"
         >
           <div
             class="c2"
-            display="flex"
+            data-blade-component="base-box"
           >
             <p
-              class="c3 Text__StyledText-wkh56f-0"
-              color="surface.text.subdued.lowContrast"
+              class="c3"
               data-blade-component="text"
-              font-family="text"
-              font-size="75"
-              font-style="normal"
-              font-weight="bold"
             >
               Select fruit
             </p>
@@ -222,13 +219,8 @@ exports[`<Radio /> should render radio with label 1`] = `
               data-blade-component="visually-hidden"
             >
               <p
-                class="c5 Text__StyledText-wkh56f-0"
-                color="surface.text.normal.lowContrast"
+                class="c5"
                 data-blade-component="text"
-                font-family="text"
-                font-size="100"
-                font-style="normal"
-                font-weight="regular"
               />
             </div>
           </div>
@@ -236,27 +228,31 @@ exports[`<Radio /> should render radio with label 1`] = `
       </span>
       <div
         class=""
+        data-blade-component="base-box"
       >
         <div
           class="c0"
-          display="flex"
+          data-blade-component="base-box"
         >
           <div
             class="c6"
+            data-blade-component="base-box"
           >
             <div
               class=""
+              data-blade-component="base-box"
             >
               <label
                 class="c7"
+                data-blade-component="radio-label"
               >
                 <div
                   class="c0"
-                  display="flex"
+                  data-blade-component="base-box"
                 >
                   <div
                     class="c8"
-                    display="flex"
+                    data-blade-component="base-box"
                   >
                     <input
                       aria-checked="false"
@@ -272,22 +268,22 @@ exports[`<Radio /> should render radio with label 1`] = `
                     />
                     <div
                       class="c10"
+                      data-blade-component="radio-icon-wrapper"
                     />
                     <div
                       class="c11"
+                      data-blade-component="base-box"
                     />
                     <div
                       class="c12"
-                      color="surface.text.subtle.lowContrast"
-                      font-family="text"
-                      font-size="100"
-                      font-weight="regular"
+                      data-blade-component="base-text"
                     >
                       Apple
                     </div>
                   </div>
                   <div
                     class="c13"
+                    data-blade-component="base-box"
                   />
                 </div>
               </label>
@@ -477,33 +473,30 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
 <div>
   <div
     class=""
+    data-blade-component="base-box"
   >
     <div
       aria-labelledby="radio-group-10-label"
       class="c0"
       data-blade-component="radio-group"
-      display="flex"
       role="group"
     >
       <span
+        data-blade-component="form-label"
         id="radio-group-10-label"
         style="width: auto; flex-shrink: 0; margin-right: 16px;"
       >
         <div
           class="c1"
+          data-blade-component="base-box"
         >
           <div
             class="c2"
-            display="flex"
+            data-blade-component="base-box"
           >
             <p
-              class="c3 Text__StyledText-wkh56f-0"
-              color="surface.text.subdued.lowContrast"
+              class="c3"
               data-blade-component="text"
-              font-family="text"
-              font-size="75"
-              font-style="normal"
-              font-weight="bold"
             >
               Select fruit
             </p>
@@ -512,13 +505,8 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
               data-blade-component="visually-hidden"
             >
               <p
-                class="c5 Text__StyledText-wkh56f-0"
-                color="surface.text.normal.lowContrast"
+                class="c5"
                 data-blade-component="text"
-                font-family="text"
-                font-size="100"
-                font-style="normal"
-                font-weight="regular"
               />
             </div>
           </div>
@@ -526,27 +514,31 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
       </span>
       <div
         class=""
+        data-blade-component="base-box"
       >
         <div
           class="c0"
-          display="flex"
+          data-blade-component="base-box"
         >
           <div
             class="c6"
+            data-blade-component="base-box"
           >
             <div
               class=""
+              data-blade-component="base-box"
             >
               <label
                 class="c7"
+                data-blade-component="radio-label"
               >
                 <div
                   class="c0"
-                  display="flex"
+                  data-blade-component="base-box"
                 >
                   <div
                     class="c8"
-                    display="flex"
+                    data-blade-component="base-box"
                   >
                     <input
                       aria-checked="false"
@@ -563,22 +555,22 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
                     />
                     <div
                       class="c10"
+                      data-blade-component="radio-icon-wrapper"
                     />
                     <div
                       class="c11"
+                      data-blade-component="base-box"
                     />
                     <div
                       class="c12"
-                      color="surface.text.placeholder.lowContrast"
-                      font-family="text"
-                      font-size="100"
-                      font-weight="regular"
+                      data-blade-component="base-text"
                     >
                       Apple
                     </div>
                   </div>
                   <div
                     class="c13"
+                    data-blade-component="base-box"
                   />
                 </div>
               </label>

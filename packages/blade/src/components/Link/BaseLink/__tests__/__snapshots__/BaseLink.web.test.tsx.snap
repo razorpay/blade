@@ -71,7 +71,6 @@ exports[`<BaseLink /> should change the link to a visited state after click 1`] 
   <a
     aria-disabled="false"
     class="c0"
-    cursor="pointer"
     data-blade-component="link"
     href="https://github.com/razorpay/blade"
     rel="noreferrer noopener"
@@ -80,13 +79,11 @@ exports[`<BaseLink /> should change the link to a visited state after click 1`] 
   >
     <span
       class="c1 content-container"
-      display="flex"
+      data-blade-component="base-box"
     >
       <span
         class="c2"
-        color="action.text.link.visited"
-        font-size="100"
-        font-weight="bold"
+        data-blade-component="base-text"
       >
         Learn More
       </span>
@@ -166,20 +163,17 @@ exports[`<BaseLink /> should not change the button to a visited state after clic
   <button
     aria-disabled="false"
     class="c0"
-    cursor="pointer"
     data-blade-component="link"
     role="button"
     type="button"
   >
     <span
       class="c1 content-container"
-      display="flex"
+      data-blade-component="base-box"
     >
       <span
         class="c2"
-        color="action.text.link.default"
-        font-size="100"
-        font-weight="bold"
+        data-blade-component="base-text"
       >
         Learn More
       </span>
@@ -259,20 +253,17 @@ exports[`<BaseLink /> should render button variant of link 1`] = `
   <button
     aria-disabled="false"
     class="c0"
-    cursor="pointer"
     data-blade-component="link"
     role="button"
     type="button"
   >
     <span
       class="c1 content-container"
-      display="flex"
+      data-blade-component="base-box"
     >
       <span
         class="c2"
-        color="action.text.link.default"
-        font-size="100"
-        font-weight="bold"
+        data-blade-component="base-text"
       >
         Learn More
       </span>
@@ -352,7 +343,6 @@ exports[`<BaseLink /> should render disabled button variant of link 1`] = `
   <button
     aria-disabled="true"
     class="c0"
-    cursor="not-allowed"
     data-blade-component="link"
     disabled=""
     role="button"
@@ -360,13 +350,11 @@ exports[`<BaseLink /> should render disabled button variant of link 1`] = `
   >
     <span
       class="c1 content-container"
-      display="flex"
+      data-blade-component="base-box"
     >
       <span
         class="c2"
-        color="action.text.link.disabled"
-        font-size="100"
-        font-weight="bold"
+        data-blade-component="base-text"
       >
         Learn More
       </span>
@@ -446,19 +434,16 @@ exports[`<BaseLink /> should render disabled information intent high contrast li
   <a
     aria-disabled="false"
     class="c0"
-    cursor="pointer"
     data-blade-component="link"
     role="link"
   >
     <span
       class="c1 content-container"
-      display="flex"
+      data-blade-component="base-box"
     >
       <span
         class="c2"
-        color="feedback.information.action.text.link.default.highContrast"
-        font-size="100"
-        font-weight="bold"
+        data-blade-component="base-text"
       >
         Learn More
       </span>
@@ -538,19 +523,16 @@ exports[`<BaseLink /> should render disabled information intent low contrast lin
   <a
     aria-disabled="false"
     class="c0"
-    cursor="pointer"
     data-blade-component="link"
     role="link"
   >
     <span
       class="c1 content-container"
-      display="flex"
+      data-blade-component="base-box"
     >
       <span
         class="c2"
-        color="feedback.information.action.text.link.default.lowContrast"
-        font-size="100"
-        font-weight="bold"
+        data-blade-component="base-text"
       >
         Learn More
       </span>
@@ -630,19 +612,16 @@ exports[`<BaseLink /> should render disabled negative intent high contrast link 
   <a
     aria-disabled="false"
     class="c0"
-    cursor="pointer"
     data-blade-component="link"
     role="link"
   >
     <span
       class="c1 content-container"
-      display="flex"
+      data-blade-component="base-box"
     >
       <span
         class="c2"
-        color="feedback.negative.action.text.link.default.highContrast"
-        font-size="100"
-        font-weight="bold"
+        data-blade-component="base-text"
       >
         Learn More
       </span>
@@ -722,19 +701,16 @@ exports[`<BaseLink /> should render disabled negative intent low contrast link 1
   <a
     aria-disabled="false"
     class="c0"
-    cursor="pointer"
     data-blade-component="link"
     role="link"
   >
     <span
       class="c1 content-container"
-      display="flex"
+      data-blade-component="base-box"
     >
       <span
         class="c2"
-        color="feedback.negative.action.text.link.default.lowContrast"
-        font-size="100"
-        font-weight="bold"
+        data-blade-component="base-text"
       >
         Learn More
       </span>
@@ -814,19 +790,16 @@ exports[`<BaseLink /> should render disabled neutral intent high contrast link 1
   <a
     aria-disabled="false"
     class="c0"
-    cursor="pointer"
     data-blade-component="link"
     role="link"
   >
     <span
       class="c1 content-container"
-      display="flex"
+      data-blade-component="base-box"
     >
       <span
         class="c2"
-        color="feedback.neutral.action.text.link.default.highContrast"
-        font-size="100"
-        font-weight="bold"
+        data-blade-component="base-text"
       >
         Learn More
       </span>
@@ -906,19 +879,16 @@ exports[`<BaseLink /> should render disabled neutral intent low contrast link 1`
   <a
     aria-disabled="false"
     class="c0"
-    cursor="pointer"
     data-blade-component="link"
     role="link"
   >
     <span
       class="c1 content-container"
-      display="flex"
+      data-blade-component="base-box"
     >
       <span
         class="c2"
-        color="feedback.neutral.action.text.link.default.lowContrast"
-        font-size="100"
-        font-weight="bold"
+        data-blade-component="base-text"
       >
         Learn More
       </span>
@@ -998,19 +968,16 @@ exports[`<BaseLink /> should render disabled notice intent high contrast link 1`
   <a
     aria-disabled="false"
     class="c0"
-    cursor="pointer"
     data-blade-component="link"
     role="link"
   >
     <span
       class="c1 content-container"
-      display="flex"
+      data-blade-component="base-box"
     >
       <span
         class="c2"
-        color="feedback.notice.action.text.link.default.highContrast"
-        font-size="100"
-        font-weight="bold"
+        data-blade-component="base-text"
       >
         Learn More
       </span>
@@ -1090,19 +1057,16 @@ exports[`<BaseLink /> should render disabled notice intent low contrast link 1`]
   <a
     aria-disabled="false"
     class="c0"
-    cursor="pointer"
     data-blade-component="link"
     role="link"
   >
     <span
       class="c1 content-container"
-      display="flex"
+      data-blade-component="base-box"
     >
       <span
         class="c2"
-        color="feedback.notice.action.text.link.default.lowContrast"
-        font-size="100"
-        font-weight="bold"
+        data-blade-component="base-text"
       >
         Learn More
       </span>
@@ -1182,19 +1146,16 @@ exports[`<BaseLink /> should render disabled positive intent high contrast link 
   <a
     aria-disabled="false"
     class="c0"
-    cursor="pointer"
     data-blade-component="link"
     role="link"
   >
     <span
       class="c1 content-container"
-      display="flex"
+      data-blade-component="base-box"
     >
       <span
         class="c2"
-        color="feedback.positive.action.text.link.default.highContrast"
-        font-size="100"
-        font-weight="bold"
+        data-blade-component="base-text"
       >
         Learn More
       </span>
@@ -1274,19 +1235,16 @@ exports[`<BaseLink /> should render disabled positive intent low contrast link 1
   <a
     aria-disabled="false"
     class="c0"
-    cursor="pointer"
     data-blade-component="link"
     role="link"
   >
     <span
       class="c1 content-container"
-      display="flex"
+      data-blade-component="base-box"
     >
       <span
         class="c2"
-        color="feedback.positive.action.text.link.default.lowContrast"
-        font-size="100"
-        font-weight="bold"
+        data-blade-component="base-text"
       >
         Learn More
       </span>
@@ -1378,17 +1336,16 @@ exports[`<BaseLink /> should render icon only link 1`] = `
   <a
     aria-disabled="false"
     class="c0"
-    cursor="pointer"
     data-blade-component="link"
     role="link"
   >
     <span
       class="c1 content-container"
-      display="flex"
+      data-blade-component="base-box"
     >
       <span
         class="c2"
-        display="flex"
+        data-blade-component="base-box"
       >
         <svg
           aria-hidden="true"
@@ -1401,15 +1358,18 @@ exports[`<BaseLink /> should render icon only link 1`] = `
         >
           <path
             d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
+            data-blade-component="svg-path"
             fill="hsla(218, 89%, 51%, 1)"
           />
           <path
             d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
+            data-blade-component="svg-path"
             fill="hsla(218, 89%, 51%, 1)"
           />
           <path
             clip-rule="evenodd"
             d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
+            data-blade-component="svg-path"
             fill="hsla(218, 89%, 51%, 1)"
             fill-rule="evenodd"
           />
@@ -1417,9 +1377,7 @@ exports[`<BaseLink /> should render icon only link 1`] = `
       </span>
       <span
         class="c3"
-        color="action.text.link.default"
-        font-size="100"
-        font-weight="bold"
+        data-blade-component="base-text"
       />
     </span>
   </a>
@@ -1497,19 +1455,16 @@ exports[`<BaseLink /> should render information intent high contrast link 1`] = 
   <a
     aria-disabled="false"
     class="c0"
-    cursor="pointer"
     data-blade-component="link"
     role="link"
   >
     <span
       class="c1 content-container"
-      display="flex"
+      data-blade-component="base-box"
     >
       <span
         class="c2"
-        color="feedback.information.action.text.link.default.highContrast"
-        font-size="100"
-        font-weight="bold"
+        data-blade-component="base-text"
       >
         Learn More
       </span>
@@ -1589,19 +1544,16 @@ exports[`<BaseLink /> should render information intent low contrast link 1`] = `
   <a
     aria-disabled="false"
     class="c0"
-    cursor="pointer"
     data-blade-component="link"
     role="link"
   >
     <span
       class="c1 content-container"
-      display="flex"
+      data-blade-component="base-box"
     >
       <span
         class="c2"
-        color="feedback.information.action.text.link.default.lowContrast"
-        font-size="100"
-        font-weight="bold"
+        data-blade-component="base-text"
       >
         Learn More
       </span>
@@ -1681,19 +1633,16 @@ exports[`<BaseLink /> should render link with default properties 1`] = `
   <a
     aria-disabled="false"
     class="c0"
-    cursor="pointer"
     data-blade-component="link"
     role="link"
   >
     <span
       class="c1 content-container"
-      display="flex"
+      data-blade-component="base-box"
     >
       <span
         class="c2"
-        color="action.text.link.default"
-        font-size="100"
-        font-weight="bold"
+        data-blade-component="base-text"
       >
         Learn More
       </span>
@@ -1785,17 +1734,16 @@ exports[`<BaseLink /> should render link with icon with default iconPosition 1`]
   <a
     aria-disabled="false"
     class="c0"
-    cursor="pointer"
     data-blade-component="link"
     role="link"
   >
     <span
       class="c1 content-container"
-      display="flex"
+      data-blade-component="base-box"
     >
       <span
         class="c2"
-        display="flex"
+        data-blade-component="base-box"
       >
         <svg
           aria-hidden="true"
@@ -1808,15 +1756,18 @@ exports[`<BaseLink /> should render link with icon with default iconPosition 1`]
         >
           <path
             d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
+            data-blade-component="svg-path"
             fill="hsla(218, 89%, 51%, 1)"
           />
           <path
             d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
+            data-blade-component="svg-path"
             fill="hsla(218, 89%, 51%, 1)"
           />
           <path
             clip-rule="evenodd"
             d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
+            data-blade-component="svg-path"
             fill="hsla(218, 89%, 51%, 1)"
             fill-rule="evenodd"
           />
@@ -1824,9 +1775,7 @@ exports[`<BaseLink /> should render link with icon with default iconPosition 1`]
       </span>
       <span
         class="c3"
-        color="action.text.link.default"
-        font-size="100"
-        font-weight="bold"
+        data-blade-component="base-text"
       >
         Learn More
       </span>
@@ -1918,17 +1867,16 @@ exports[`<BaseLink /> should render link with icon with left iconPosition 1`] = 
   <a
     aria-disabled="false"
     class="c0"
-    cursor="pointer"
     data-blade-component="link"
     role="link"
   >
     <span
       class="c1 content-container"
-      display="flex"
+      data-blade-component="base-box"
     >
       <span
         class="c2"
-        display="flex"
+        data-blade-component="base-box"
       >
         <svg
           aria-hidden="true"
@@ -1941,15 +1889,18 @@ exports[`<BaseLink /> should render link with icon with left iconPosition 1`] = 
         >
           <path
             d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
+            data-blade-component="svg-path"
             fill="hsla(218, 89%, 51%, 1)"
           />
           <path
             d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
+            data-blade-component="svg-path"
             fill="hsla(218, 89%, 51%, 1)"
           />
           <path
             clip-rule="evenodd"
             d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
+            data-blade-component="svg-path"
             fill="hsla(218, 89%, 51%, 1)"
             fill-rule="evenodd"
           />
@@ -1957,9 +1908,7 @@ exports[`<BaseLink /> should render link with icon with left iconPosition 1`] = 
       </span>
       <span
         class="c3"
-        color="action.text.link.default"
-        font-size="100"
-        font-weight="bold"
+        data-blade-component="base-text"
       >
         Learn More
       </span>
@@ -2051,25 +2000,22 @@ exports[`<BaseLink /> should render link with icon with right iconPosition 1`] =
   <a
     aria-disabled="false"
     class="c0"
-    cursor="pointer"
     data-blade-component="link"
     role="link"
   >
     <span
       class="c1 content-container"
-      display="flex"
+      data-blade-component="base-box"
     >
       <span
         class="c2"
-        color="action.text.link.default"
-        font-size="100"
-        font-weight="bold"
+        data-blade-component="base-text"
       >
         Learn More
       </span>
       <span
         class="c3"
-        display="flex"
+        data-blade-component="base-box"
       >
         <svg
           aria-hidden="true"
@@ -2082,15 +2028,18 @@ exports[`<BaseLink /> should render link with icon with right iconPosition 1`] =
         >
           <path
             d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
+            data-blade-component="svg-path"
             fill="hsla(218, 89%, 51%, 1)"
           />
           <path
             d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
+            data-blade-component="svg-path"
             fill="hsla(218, 89%, 51%, 1)"
           />
           <path
             clip-rule="evenodd"
             d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
+            data-blade-component="svg-path"
             fill="hsla(218, 89%, 51%, 1)"
             fill-rule="evenodd"
           />
@@ -2172,19 +2121,16 @@ exports[`<BaseLink /> should render negative intent high contrast link 1`] = `
   <a
     aria-disabled="false"
     class="c0"
-    cursor="pointer"
     data-blade-component="link"
     role="link"
   >
     <span
       class="c1 content-container"
-      display="flex"
+      data-blade-component="base-box"
     >
       <span
         class="c2"
-        color="feedback.negative.action.text.link.default.highContrast"
-        font-size="100"
-        font-weight="bold"
+        data-blade-component="base-text"
       >
         Learn More
       </span>
@@ -2264,19 +2210,16 @@ exports[`<BaseLink /> should render negative intent low contrast link 1`] = `
   <a
     aria-disabled="false"
     class="c0"
-    cursor="pointer"
     data-blade-component="link"
     role="link"
   >
     <span
       class="c1 content-container"
-      display="flex"
+      data-blade-component="base-box"
     >
       <span
         class="c2"
-        color="feedback.negative.action.text.link.default.lowContrast"
-        font-size="100"
-        font-weight="bold"
+        data-blade-component="base-text"
       >
         Learn More
       </span>
@@ -2356,19 +2299,16 @@ exports[`<BaseLink /> should render neutral intent high contrast link 1`] = `
   <a
     aria-disabled="false"
     class="c0"
-    cursor="pointer"
     data-blade-component="link"
     role="link"
   >
     <span
       class="c1 content-container"
-      display="flex"
+      data-blade-component="base-box"
     >
       <span
         class="c2"
-        color="feedback.neutral.action.text.link.default.highContrast"
-        font-size="100"
-        font-weight="bold"
+        data-blade-component="base-text"
       >
         Learn More
       </span>
@@ -2448,19 +2388,16 @@ exports[`<BaseLink /> should render neutral intent low contrast link 1`] = `
   <a
     aria-disabled="false"
     class="c0"
-    cursor="pointer"
     data-blade-component="link"
     role="link"
   >
     <span
       class="c1 content-container"
-      display="flex"
+      data-blade-component="base-box"
     >
       <span
         class="c2"
-        color="feedback.neutral.action.text.link.default.lowContrast"
-        font-size="100"
-        font-weight="bold"
+        data-blade-component="base-text"
       >
         Learn More
       </span>
@@ -2540,19 +2477,16 @@ exports[`<BaseLink /> should render notice intent high contrast link 1`] = `
   <a
     aria-disabled="false"
     class="c0"
-    cursor="pointer"
     data-blade-component="link"
     role="link"
   >
     <span
       class="c1 content-container"
-      display="flex"
+      data-blade-component="base-box"
     >
       <span
         class="c2"
-        color="feedback.notice.action.text.link.default.highContrast"
-        font-size="100"
-        font-weight="bold"
+        data-blade-component="base-text"
       >
         Learn More
       </span>
@@ -2632,19 +2566,16 @@ exports[`<BaseLink /> should render notice intent low contrast link 1`] = `
   <a
     aria-disabled="false"
     class="c0"
-    cursor="pointer"
     data-blade-component="link"
     role="link"
   >
     <span
       class="c1 content-container"
-      display="flex"
+      data-blade-component="base-box"
     >
       <span
         class="c2"
-        color="feedback.notice.action.text.link.default.lowContrast"
-        font-size="100"
-        font-weight="bold"
+        data-blade-component="base-text"
       >
         Learn More
       </span>
@@ -2724,19 +2655,16 @@ exports[`<BaseLink /> should render positive intent high contrast link 1`] = `
   <a
     aria-disabled="false"
     class="c0"
-    cursor="pointer"
     data-blade-component="link"
     role="link"
   >
     <span
       class="c1 content-container"
-      display="flex"
+      data-blade-component="base-box"
     >
       <span
         class="c2"
-        color="feedback.positive.action.text.link.default.highContrast"
-        font-size="100"
-        font-weight="bold"
+        data-blade-component="base-text"
       >
         Learn More
       </span>
@@ -2816,19 +2744,16 @@ exports[`<BaseLink /> should render positive intent low contrast link 1`] = `
   <a
     aria-disabled="false"
     class="c0"
-    cursor="pointer"
     data-blade-component="link"
     role="link"
   >
     <span
       class="c1 content-container"
-      display="flex"
+      data-blade-component="base-box"
     >
       <span
         class="c2"
-        color="feedback.positive.action.text.link.default.lowContrast"
-        font-size="100"
-        font-weight="bold"
+        data-blade-component="base-text"
       >
         Learn More
       </span>

@@ -1,5 +1,5 @@
 import UserMinusIcon from './';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<UserMinusIcon />', () => {
   it('should render UserMinusIcon', () => {

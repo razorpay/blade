@@ -1,3 +1,4 @@
+import getIn from 'lodash/get';
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import Animated, {
@@ -13,7 +14,8 @@ import Animated, {
 import { useTheme } from '../BladeProvider';
 import type { ProgressBarFilledProps } from './types';
 import { indeterminateAnimation, pulseAnimation } from './progressBarTokens';
-import { castNativeType, getIn, makeMotionTime } from '~utils';
+import { castNativeType } from '~utils';
+import { makeMotionTime } from '~utils/makeMotionTime';
 
 const ProgressBarIndeterminateFilledContainer = styled(Animated.View)<
   Pick<ProgressBarFilledProps, 'backgroundColor' | 'progress'>

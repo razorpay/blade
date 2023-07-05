@@ -3,6 +3,7 @@ import type { ComponentStory, Meta } from '@storybook/react';
 import { Dropdown, DropdownOverlay } from '..';
 import {
   getSimpleSelectCode,
+  WithBottomAlignedSelectStory,
   WithControlledMultiSelectStory,
   WithControlledSelectStory,
   WithHeaderFooterScroll,
@@ -13,7 +14,7 @@ import {
   WithValueDisplayStory,
 } from './stories';
 
-import { Sandbox } from '~src/_helpers/storybook/Sandbox';
+import { Sandbox } from '~utils/storybook/Sandbox';
 import { SelectInput } from '~components/Input/SelectInput';
 import {
   ActionList,
@@ -100,6 +101,14 @@ export const WithRefUsage = (): JSX.Element => {
   return (
     <Sandbox padding="spacing.0" editorHeight="100vh">
       {WithRefUsageStory}
+    </Sandbox>
+  );
+};
+
+export const WithBottomAlignedSelect = (): JSX.Element => {
+  return (
+    <Sandbox padding="spacing.0" editorHeight="100vh">
+      {WithBottomAlignedSelectStory}
     </Sandbox>
   );
 };

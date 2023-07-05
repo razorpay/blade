@@ -1,6 +1,6 @@
 import React from 'react';
 import { BaseText } from '../';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
@@ -63,6 +63,36 @@ describe('<BaseText />', () => {
       </BaseText>,
     );
     expect(container).toMatchSnapshot();
+  });
+
+  it('should not contain any unnecessary html attributes', () => {
+    const displayText = 'Displaying some text';
+    const { getByText } = renderWithTheme(
+      <BaseText
+        zIndex={1}
+        position="relative"
+        placeSelf="auto"
+        top="auto"
+        alignSelf="auto"
+        margin="spacing.10"
+        order="inherit"
+        marginBottom="spacing.1"
+      >
+        {displayText}
+      </BaseText>,
+    );
+    expect(getByText(displayText)).not.toHaveAttribute('font-family');
+    expect(getByText(displayText)).not.toHaveAttribute('font-size');
+    expect(getByText(displayText)).not.toHaveAttribute('line-height');
+    expect(getByText(displayText)).not.toHaveAttribute('font-style');
+    expect(getByText(displayText)).not.toHaveAttribute('order');
+    expect(getByText(displayText)).not.toHaveAttribute('margin');
+    expect(getByText(displayText)).not.toHaveAttribute('z-index');
+    expect(getByText(displayText)).not.toHaveAttribute('position');
+    expect(getByText(displayText)).not.toHaveAttribute('margin-bottom');
+    expect(getByText(displayText)).not.toHaveAttribute('top');
+    expect(getByText(displayText)).not.toHaveAttribute('align-self');
+    expect(getByText(displayText)).not.toHaveAttribute('overflow');
   });
 
   it('should accept testID', () => {

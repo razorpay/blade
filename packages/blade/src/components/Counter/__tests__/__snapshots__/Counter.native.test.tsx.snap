@@ -10,6 +10,7 @@ exports[`<Counter /> should render Counter with default props 1`] = `
 >
   <View
     backgroundColor="feedback.background.neutral.lowContrast"
+    data-blade-component="base-box"
     platform="onMobile"
     size="medium"
     style={
@@ -77,7 +78,6 @@ exports[`<Counter /> should render Counter with default props 1`] = `
               "textAlign": "center",
               "textDecorationLine": "none",
             },
-            Object {},
           ]
         }
         textAlign="center"
@@ -99,6 +99,7 @@ exports[`<Counter /> should render high contrast information intent Counter 1`] 
 >
   <View
     backgroundColor="feedback.background.information.highContrast"
+    data-blade-component="base-box"
     platform="onMobile"
     size="medium"
     style={
@@ -166,7 +167,6 @@ exports[`<Counter /> should render high contrast information intent Counter 1`] 
               "textAlign": "center",
               "textDecorationLine": "none",
             },
-            Object {},
           ]
         }
         textAlign="center"
@@ -188,6 +188,7 @@ exports[`<Counter /> should render high contrast negative intent Counter 1`] = `
 >
   <View
     backgroundColor="feedback.background.negative.highContrast"
+    data-blade-component="base-box"
     platform="onMobile"
     size="medium"
     style={
@@ -255,7 +256,6 @@ exports[`<Counter /> should render high contrast negative intent Counter 1`] = `
               "textAlign": "center",
               "textDecorationLine": "none",
             },
-            Object {},
           ]
         }
         textAlign="center"
@@ -277,6 +277,7 @@ exports[`<Counter /> should render high contrast neutral intent Counter 1`] = `
 >
   <View
     backgroundColor="feedback.background.neutral.highContrast"
+    data-blade-component="base-box"
     platform="onMobile"
     size="medium"
     style={
@@ -344,7 +345,6 @@ exports[`<Counter /> should render high contrast neutral intent Counter 1`] = `
               "textAlign": "center",
               "textDecorationLine": "none",
             },
-            Object {},
           ]
         }
         textAlign="center"
@@ -366,6 +366,7 @@ exports[`<Counter /> should render high contrast notice intent Counter 1`] = `
 >
   <View
     backgroundColor="feedback.background.notice.highContrast"
+    data-blade-component="base-box"
     platform="onMobile"
     size="medium"
     style={
@@ -433,7 +434,6 @@ exports[`<Counter /> should render high contrast notice intent Counter 1`] = `
               "textAlign": "center",
               "textDecorationLine": "none",
             },
-            Object {},
           ]
         }
         textAlign="center"
@@ -455,6 +455,7 @@ exports[`<Counter /> should render high contrast positive intent Counter 1`] = `
 >
   <View
     backgroundColor="feedback.background.positive.highContrast"
+    data-blade-component="base-box"
     platform="onMobile"
     size="medium"
     style={
@@ -522,7 +523,6 @@ exports[`<Counter /> should render high contrast positive intent Counter 1`] = `
               "textAlign": "center",
               "textDecorationLine": "none",
             },
-            Object {},
           ]
         }
         textAlign="center"
@@ -544,6 +544,7 @@ exports[`<Counter /> should render large size Counter 1`] = `
 >
   <View
     backgroundColor="feedback.background.neutral.lowContrast"
+    data-blade-component="base-box"
     platform="onMobile"
     size="large"
     style={
@@ -611,7 +612,6 @@ exports[`<Counter /> should render large size Counter 1`] = `
               "textAlign": "center",
               "textDecorationLine": "none",
             },
-            Object {},
           ]
         }
         textAlign="center"
@@ -633,6 +633,7 @@ exports[`<Counter /> should render low contrast information intent Counter 1`] =
 >
   <View
     backgroundColor="feedback.background.information.lowContrast"
+    data-blade-component="base-box"
     platform="onMobile"
     size="medium"
     style={
@@ -700,7 +701,6 @@ exports[`<Counter /> should render low contrast information intent Counter 1`] =
               "textAlign": "center",
               "textDecorationLine": "none",
             },
-            Object {},
           ]
         }
         textAlign="center"
@@ -722,6 +722,7 @@ exports[`<Counter /> should render low contrast negative intent Counter 1`] = `
 >
   <View
     backgroundColor="feedback.background.negative.lowContrast"
+    data-blade-component="base-box"
     platform="onMobile"
     size="medium"
     style={
@@ -789,7 +790,6 @@ exports[`<Counter /> should render low contrast negative intent Counter 1`] = `
               "textAlign": "center",
               "textDecorationLine": "none",
             },
-            Object {},
           ]
         }
         textAlign="center"
@@ -811,6 +811,7 @@ exports[`<Counter /> should render low contrast neutral intent Counter 1`] = `
 >
   <View
     backgroundColor="feedback.background.neutral.lowContrast"
+    data-blade-component="base-box"
     platform="onMobile"
     size="medium"
     style={
@@ -878,7 +879,6 @@ exports[`<Counter /> should render low contrast neutral intent Counter 1`] = `
               "textAlign": "center",
               "textDecorationLine": "none",
             },
-            Object {},
           ]
         }
         textAlign="center"
@@ -900,6 +900,7 @@ exports[`<Counter /> should render low contrast notice intent Counter 1`] = `
 >
   <View
     backgroundColor="feedback.background.notice.lowContrast"
+    data-blade-component="base-box"
     platform="onMobile"
     size="medium"
     style={
@@ -967,7 +968,6 @@ exports[`<Counter /> should render low contrast notice intent Counter 1`] = `
               "textAlign": "center",
               "textDecorationLine": "none",
             },
-            Object {},
           ]
         }
         textAlign="center"
@@ -989,6 +989,7 @@ exports[`<Counter /> should render low contrast positive intent Counter 1`] = `
 >
   <View
     backgroundColor="feedback.background.positive.lowContrast"
+    data-blade-component="base-box"
     platform="onMobile"
     size="medium"
     style={
@@ -1056,7 +1057,6 @@ exports[`<Counter /> should render low contrast positive intent Counter 1`] = `
               "textAlign": "center",
               "textDecorationLine": "none",
             },
-            Object {},
           ]
         }
         textAlign="center"
@@ -1078,6 +1078,7 @@ exports[`<Counter /> should render medium size Counter 1`] = `
 >
   <View
     backgroundColor="feedback.background.neutral.lowContrast"
+    data-blade-component="base-box"
     platform="onMobile"
     size="medium"
     style={
@@ -1145,7 +1146,6 @@ exports[`<Counter /> should render medium size Counter 1`] = `
               "textAlign": "center",
               "textDecorationLine": "none",
             },
-            Object {},
           ]
         }
         textAlign="center"
@@ -1167,6 +1167,7 @@ exports[`<Counter /> should render small size Counter 1`] = `
 >
   <View
     backgroundColor="feedback.background.neutral.lowContrast"
+    data-blade-component="base-box"
     platform="onMobile"
     size="small"
     style={
@@ -1234,7 +1235,6 @@ exports[`<Counter /> should render small size Counter 1`] = `
               "textAlign": "center",
               "textDecorationLine": "none",
             },
-            Object {},
           ]
         }
         textAlign="center"

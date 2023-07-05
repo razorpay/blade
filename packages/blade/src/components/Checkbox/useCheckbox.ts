@@ -2,10 +2,11 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import React from 'react';
 import type { GestureResponderEvent } from 'react-native';
-import { useControllableState } from '../../hooks/useControllable';
-import { getPlatformType, makeAccessible } from '../../utils';
 import type { CheckboxProps } from './Checkbox';
 import { useFormId } from '~components/Form/useFormId';
+import { makeAccessible } from '~utils/makeAccessible';
+import { getPlatformType } from '~utils';
+import { useControllableState } from '~utils/useControllable';
 
 type UseCheckboxProps = Pick<
   CheckboxProps,

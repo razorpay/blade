@@ -1,17 +1,19 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 import type { ReactElement } from 'react';
-import styled from 'styled-components';
+import React from 'react';
 import { BaseText } from '../BaseText';
 import type { BaseTextProps } from '../BaseText/types';
+import { useValidateAsProp } from '../utils';
 import type { Theme } from '~components/BladeProvider';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import { assignWithoutSideEffects, getPlatformType } from '~utils';
-
 import type { ColorContrast, ColorContrastTypes, TextTypes } from '~tokens/theme/theme';
-import type { TestID } from '~src/_helpers/types';
+import type { TestID } from '~utils/types';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
+const validAsValues = ['p', 'span', 'div', 'abbr', 'figcaption', 'cite', 'q'] as const;
 type TextCommonProps = {
+  as?: typeof validAsValues[number];
   type?: TextTypes;
   contrast?: ColorContrastTypes;
   truncateAfterLines?: number;
@@ -24,6 +26,7 @@ type TextCommonProps = {
    */
   color?: BaseTextProps['color'];
   textAlign?: BaseTextProps['textAlign'];
+  textDecorationLine?: BaseTextProps['textDecorationLine'];
 } & TestID &
   StyledPropsBlade;
 
@@ -53,14 +56,18 @@ export type TextProps<T> = T extends {
     : T
   : T;
 
-type TextForwardedAs = {
-  forwardedAs?: BaseTextProps['as'];
-};
-
-type GetTextPropsReturn = Omit<BaseTextProps, 'children'> & TextForwardedAs;
+type GetTextPropsReturn = Omit<BaseTextProps, 'children'>;
 type GetTextProps<T extends { variant: TextVariant }> = Pick<
   TextProps<T>,
-  'type' | 'variant' | 'weight' | 'size' | 'contrast' | 'color' | 'testID' | 'textAlign'
+  | 'type'
+  | 'variant'
+  | 'weight'
+  | 'size'
+  | 'contrast'
+  | 'color'
+  | 'testID'
+  | 'textAlign'
+  | 'textDecorationLine'
 >;
 const getTextProps = <T extends { variant: TextVariant }>({
   variant,
@@ -71,8 +78,8 @@ const getTextProps = <T extends { variant: TextVariant }>({
   contrast,
   testID,
   textAlign,
+  textDecorationLine,
 }: GetTextProps<T>): GetTextPropsReturn => {
-  const isPlatformWeb = getPlatformType() === 'browser' || getPlatformType() === 'node';
   const colorContrast: keyof ColorContrast = contrast ? `${contrast!}Contrast` : 'lowContrast';
   const props: GetTextPropsReturn = {
     color: color ?? `surface.text.${type ?? 'normal'}.${colorContrast}`,
@@ -81,10 +88,10 @@ const getTextProps = <T extends { variant: TextVariant }>({
     fontStyle: 'normal',
     lineHeight: 100,
     fontFamily: 'text',
-    forwardedAs: isPlatformWeb ? 'p' : undefined,
     componentName: 'text',
     testID,
     textAlign,
+    textDecorationLine,
   };
 
   if (variant === 'body') {
@@ -118,23 +125,8 @@ const getTextProps = <T extends { variant: TextVariant }>({
   return props;
 };
 
-const StyledText = styled(BaseText)(({ truncateAfterLines }) => {
-  if (truncateAfterLines) {
-    if (getPlatformType() === 'react-native') {
-      return null;
-    }
-    return {
-      overflow: 'hidden',
-      display: '-webkit-box',
-      'line-clamp': `${truncateAfterLines}`,
-      '-webkit-line-clamp': `${truncateAfterLines}`,
-      '-webkit-box-orient': 'vertical',
-    };
-  }
-  return {};
-});
-
 const _Text = <T extends { variant: TextVariant }>({
+  as = 'p',
   variant = 'body',
   weight = 'regular',
   size = 'medium',
@@ -145,9 +137,11 @@ const _Text = <T extends { variant: TextVariant }>({
   color,
   testID,
   textAlign,
+  textDecorationLine,
   ...styledProps
 }: TextProps<T>): ReactElement => {
-  const props: Omit<BaseTextProps, 'children'> & TextForwardedAs = {
+  const props: Omit<BaseTextProps, 'children'> = {
+    as,
     truncateAfterLines,
     ...getTextProps({
       variant,
@@ -158,12 +152,16 @@ const _Text = <T extends { variant: TextVariant }>({
       contrast,
       testID,
       textAlign,
+      textDecorationLine,
     }),
   };
+
+  useValidateAsProp({ componentName: 'Text', as, validAsValues });
+
   return (
-    <StyledText {...props} {...getStyledProps(styledProps)}>
+    <BaseText {...props} {...getStyledProps(styledProps)}>
       {children}
-    </StyledText>
+    </BaseText>
   );
 };
 

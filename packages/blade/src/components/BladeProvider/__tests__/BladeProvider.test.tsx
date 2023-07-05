@@ -5,7 +5,7 @@ import { paymentTheme } from '~tokens/theme';
 import { colorSchemeNamesInput } from '~tokens/theme/theme';
 import type { BladeProviderProps } from '~components/BladeProvider';
 import { BladeProvider, useTheme } from '~components/BladeProvider';
-import { setupMatchMediaMock } from '~utils';
+import { setupMatchMediaMock } from '~utils/mocks';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());

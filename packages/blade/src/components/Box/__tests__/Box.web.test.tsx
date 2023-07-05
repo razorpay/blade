@@ -1,7 +1,7 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
 import { Box } from '../Box';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { Text } from '~components/Typography';
 
 describe('<Box />', () => {
@@ -29,7 +29,6 @@ describe('<Box />', () => {
         <div
           class="c0"
           data-blade-component="box"
-          display="flex"
         >
           children test!
         </div>
@@ -52,7 +51,6 @@ describe('<Box />', () => {
         <footer
           class="c0"
           data-blade-component="box"
-          display="block"
         >
           Footer test!
         </footer>

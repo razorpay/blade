@@ -1,6 +1,6 @@
 import { fireEvent } from '@testing-library/react-native';
 import { Alert } from '..';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<Alert />', () => {
   it('should render', () => {

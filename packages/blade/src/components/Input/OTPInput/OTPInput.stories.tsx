@@ -3,8 +3,8 @@ import { Title } from '@storybook/addon-docs';
 import React from 'react';
 import type { OTPInputProps } from './OTPInput';
 import { OTPInput as OTPInputComponent } from './OTPInput';
-import { Sandbox } from '~src/_helpers/storybook/Sandbox';
-import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import { Sandbox } from '~utils/storybook/Sandbox';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const propsCategory = {

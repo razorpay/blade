@@ -30,6 +30,7 @@ exports[`<Code /> should render Code with color 1`] = `
   >
     <Text
       color="action.text.link.disabled"
+      data-blade-component="base-text"
       fontFamily="code"
       fontSize={25}
       fontWeight="regular"
@@ -93,6 +94,7 @@ exports[`<Code /> should render Code with default properties 1`] = `
   >
     <Text
       color="surface.text.subtle.lowContrast"
+      data-blade-component="base-text"
       fontFamily="code"
       fontSize={25}
       fontWeight="regular"
@@ -155,6 +157,7 @@ exports[`<Code /> should render isHighlighted false Code 1`] = `
   >
     <Text
       color="surface.text.normal.lowContrast"
+      data-blade-component="base-text"
       fontFamily="code"
       fontSize={25}
       fontWeight="regular"
@@ -218,6 +221,7 @@ exports[`<Code /> should render medium Code 1`] = `
   >
     <Text
       color="surface.text.subtle.lowContrast"
+      data-blade-component="base-text"
       fontFamily="code"
       fontSize={75}
       fontWeight="regular"
@@ -281,6 +285,7 @@ exports[`<Code /> should render small Code 1`] = `
   >
     <Text
       color="surface.text.subtle.lowContrast"
+      data-blade-component="base-text"
       fontFamily="code"
       fontSize={25}
       fontWeight="regular"

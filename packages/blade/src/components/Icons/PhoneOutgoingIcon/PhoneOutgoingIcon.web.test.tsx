@@ -1,5 +1,5 @@
 import PhoneOutgoingIcon from './';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<PhoneOutgoingIcon />', () => {
   it('should render PhoneOutgoingIcon', () => {

@@ -5,8 +5,8 @@ import type { ReactElement } from 'react';
 import type { IconButtonProps } from './IconButton';
 import { IconButton as IconButtonComponent } from './IconButton';
 import iconMap from '~components/Icons/iconMap';
-import { Sandbox } from '~src/_helpers/storybook/Sandbox';
-import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import { Sandbox } from '~utils/storybook/Sandbox';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getBladeCommonEventArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const Page = (): ReactElement => {

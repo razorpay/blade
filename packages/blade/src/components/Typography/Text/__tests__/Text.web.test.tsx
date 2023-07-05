@@ -1,11 +1,12 @@
 import React from 'react';
 import { Text } from '../';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<Text />', () => {
   it('should render Text with default properties', () => {
     const displayText = 'Displaying some text';
-    const { container } = renderWithTheme(<Text>{displayText}</Text>);
+    const { container, getByText } = renderWithTheme(<Text>{displayText}</Text>);
+    expect(getByText(displayText).tagName).toBe('P');
     expect(container).toMatchSnapshot();
   });
 
@@ -75,6 +76,24 @@ describe('<Text />', () => {
       ),
     ).toThrow(`[Blade: Text]: size cannot be 'small' when variant is 'caption'`);
     mockConsoleError.mockRestore();
+  });
+
+  it('should accept as prop and render appropriate HTML tag', () => {
+    const displayText = 'Displaying some text';
+    const { getByText } = renderWithTheme(<Text as="span">{displayText}</Text>);
+    expect(getByText(displayText).tagName).toBe('SPAN');
+  });
+
+  it('should throw error on invalid as prop', () => {
+    const displayText = 'Displaying some text';
+    expect(() =>
+      renderWithTheme(
+        // @ts-expect-error testing failure case as prop is invalid
+        <Text as="button">{displayText}</Text>,
+      ),
+    ).toThrow(
+      '[Blade Text]: Invalid `as` prop value - button. Only p, span, div, abbr, figcaption, cite, q are accepted',
+    );
   });
 
   it('should accept testID', () => {

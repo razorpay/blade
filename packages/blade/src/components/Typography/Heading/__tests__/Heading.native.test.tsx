@@ -1,6 +1,6 @@
 import React from 'react';
 import { Heading } from '../';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
@@ -19,6 +19,18 @@ describe('<Heading />', () => {
       <Heading color="surface.text.placeholder.lowContrast">{displayText}</Heading>,
     );
     expect(getByText(displayText)).toBeTruthy();
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should render Heading with mixed color', () => {
+    const { toJSON } = renderWithTheme(
+      <Heading>
+        Supercharge your business with the all‑powerful{' '}
+        <Heading as="span" color="feedback.information.action.text.primary.default.lowContrast">
+          Payment Gateway
+        </Heading>
+      </Heading>,
+    );
     expect(toJSON()).toMatchSnapshot();
   });
 
@@ -111,6 +123,16 @@ describe('<Heading />', () => {
         );
       }
     }
+  });
+
+  it('should render with as prop without errors', () => {
+    const displayText = 'Displaying Landing Screen Heading';
+    const { getByText } = renderWithTheme(
+      <Heading as="span" type="subdued" size="large">
+        {displayText}
+      </Heading>,
+    );
+    expect(getByText(displayText)).toBeTruthy();
   });
 
   it('should accept testID', () => {

@@ -3,10 +3,6 @@ const Playground = `
     Box, 
     ActionList, 
     ActionListItem,
-    ActionListHeader,
-    ActionListHeaderIcon,
-    ActionListFooter,
-    ActionListFooterIcon,
     ActionListSection,
     ActionListItemIcon,
     ActionListItemAsset,
@@ -25,10 +21,6 @@ const Playground = `
     return (
     <Box>
       <ActionList surfaceLevel={2}>
-        <ActionListHeader
-          title="Your Account"
-          leading={<ActionListHeaderIcon icon={MyAccountIcon} />}
-        />
         <ActionListItem
           leading={<ActionListItemIcon icon={UserIcon} />}
           title="Profile"
@@ -58,11 +50,6 @@ const Playground = `
           title="Log Out"
           value="logout"
           intent="negative"
-        />
-        <ActionListFooter
-          title="Footer Tips"
-          leading={<ActionListFooterIcon icon={FileTextIcon} />}
-          trailing={<Button onClick={console.log}>Apply</Button>}
         />
       </ActionList>
     </Box>

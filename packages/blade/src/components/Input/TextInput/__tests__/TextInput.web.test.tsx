@@ -5,8 +5,8 @@ import type { ReactElement } from 'react';
 import React, { useState } from 'react';
 import { TextInput } from '../';
 import { InfoIcon } from '~components/Icons';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
-import assertAccessible from '~src/_helpers/testing/assertAccessible.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
+import assertAccessible from '~utils/testing/assertAccessible.web';
 import { Button } from '~components/Button';
 
 describe('<TextInput />', () => {

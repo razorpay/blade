@@ -1,10 +1,10 @@
 import React from 'react';
+import { BaseFooter } from '../BaseHeaderFooter/BaseFooter';
 import type { BottomSheetFooterProps } from './types';
 import { ComponentIds } from './componentIds';
 import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
-import { BaseFooter } from '~components/BaseHeaderFooter/BaseFooter';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 const _BottomSheetFooter = ({ children }: BottomSheetFooterProps): React.ReactElement => {
   const { theme } = useTheme();

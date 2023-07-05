@@ -39,6 +39,7 @@ exports[`<Alert /> should render 1`] = `
     textAlign="left"
   >
     <View
+      data-blade-component="base-box"
       display="flex"
       style={
         Array [
@@ -54,6 +55,7 @@ exports[`<Alert /> should render 1`] = `
         align="xMidYMid"
         bbHeight="16px"
         bbWidth="16px"
+        data-blade-component="icon"
         fill="none"
         focusable={false}
         height="16px"
@@ -123,6 +125,7 @@ exports[`<Alert /> should render 1`] = `
       </RNSVGSvgView>
     </View>
     <View
+      data-blade-component="base-box"
       style={
         Array [
           Object {
@@ -136,6 +139,7 @@ exports[`<Alert /> should render 1`] = `
       }
     >
       <View
+        data-blade-component="base-box"
         style={
           Array [
             Object {
@@ -171,7 +175,6 @@ exports[`<Alert /> should render 1`] = `
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
-              Object {},
             ]
           }
         >
@@ -180,6 +183,7 @@ exports[`<Alert /> should render 1`] = `
       </View>
     </View>
     <View
+      data-blade-component="base-box"
       style={
         Array [
           Object {},
@@ -215,6 +219,7 @@ exports[`<Alert /> should render 1`] = `
           align="xMidYMid"
           bbHeight="16px"
           bbWidth="16px"
+          data-blade-component="icon"
           fill="none"
           focusable={false}
           height="16px"
@@ -307,6 +312,7 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
     textAlign="left"
   >
     <View
+      data-blade-component="base-box"
       display="flex"
       style={
         Array [
@@ -322,6 +328,7 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
         align="xMidYMid"
         bbHeight="20px"
         bbWidth="20px"
+        data-blade-component="icon"
         fill="none"
         focusable={false}
         height="20px"
@@ -401,6 +408,7 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
       </RNSVGSvgView>
     </View>
     <View
+      data-blade-component="base-box"
       style={
         Array [
           Object {
@@ -414,6 +422,7 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
       }
     >
       <View
+        data-blade-component="base-box"
         style={
           Array [
             Object {
@@ -449,7 +458,6 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
                 "paddingTop": 0,
                 "textDecorationLine": "none",
               },
-              Object {},
             ]
           }
         >
@@ -458,6 +466,7 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
       </View>
     </View>
     <View
+      data-blade-component="base-box"
       style={
         Array [
           Object {},
@@ -493,6 +502,7 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
           align="xMidYMid"
           bbHeight="20px"
           bbWidth="20px"
+          data-blade-component="icon"
           fill="none"
           focusable={false}
           height="20px"

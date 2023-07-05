@@ -1,5 +1,5 @@
 import { Box } from '../Box';
-import renderWithSSR from '~src/_helpers/testing/renderWithSSR.web';
+import renderWithSSR from '~utils/testing/renderWithSSR.web';
 import { castWebType } from '~utils';
 
 describe('<Box />', () => {
@@ -20,9 +20,8 @@ describe('<Box />', () => {
         id="root"
       >
         <div
-          class="BaseBoxweb__BaseBox-sc-1icfu8j-0 cVhZTX"
+          class="BaseBox-bmPWx jBndhd"
           data-blade-component="box"
-          display="flex"
         >
           children test!
         </div>
@@ -42,9 +41,8 @@ describe('<Box />', () => {
         id="root"
       >
         <footer
-          class="BaseBoxweb__BaseBox-sc-1icfu8j-0 gxRbfF"
+          class="BaseBox-bmPWx zgBJD"
           data-blade-component="box"
-          display="block"
         >
           Footer test!
         </footer>

@@ -108,6 +108,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
             "value": 1334,
           }
         }
+        data-blade-component="base-box"
         pointerEvents="none"
         style={
           Array [
@@ -186,6 +187,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
             >
               <View
                 backgroundColor="hsla(0, 0%, 100%, 1)"
+                data-blade-component="base-box"
                 flexShrink={0}
                 style={
                   Array [
@@ -204,23 +206,34 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                 zIndex={2}
               >
                 <View
+                  borderBottomColor="surface.border.normal.lowContrast"
+                  borderPosition="borderBottom"
+                  borderWidth="none"
+                  data-blade-component="base-box"
+                  dividerStyle="solid"
+                  isDividerHorizontal={true}
                   style={
                     Array [
                       Object {
+                        "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
                         "borderBottomStyle": "solid",
                         "borderBottomWidth": 1,
-                        "borderColor": "hsla(216, 15%, 54%, 0.18)",
+                        "borderStyle": "solid",
+                        "borderWidth": 0,
+                        "flexGrow": 1,
                       },
                     ]
                   }
+                  thickness="thin"
                 />
                 <View
+                  data-blade-component="base-box"
                   style={
                     Array [
                       Object {
                         "paddingBottom": 16,
-                        "paddingLeft": 20,
-                        "paddingRight": 20,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
                         "paddingTop": 16,
                       },
                     ]
@@ -299,6 +312,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                   >
                     <View
                       alignItems="center"
+                      data-blade-component="base-box"
                       display="flex"
                       flexDirection="row"
                       isHidden={false}
@@ -320,6 +334,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                     >
                       <Text
                         color="action.text.secondary.default"
+                        data-blade-component="base-text"
                         fontSize={100}
                         fontWeight="bold"
                         lineHeight={100}
@@ -370,14 +385,25 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
         onLayout={[Function]}
       >
         <View
+          data-blade-component="base-box"
+          left="spacing.0"
           onLayout={[Function]}
+          position="relative"
+          right="spacing.0"
           style={
             Array [
-              Object {},
+              Object {
+                "left": 0,
+                "position": "relative",
+                "right": 0,
+                "top": 0,
+              },
             ]
           }
+          top="spacing.0"
         >
           <View
+            data-blade-component="base-box"
             style={
               Array [
                 Object {
@@ -388,6 +414,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
             zIndex={100}
           >
             <View
+              data-blade-component="base-box"
               style={
                 Array [
                   Object {
@@ -398,13 +425,16 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                     "justifyContent": "center",
                     "marginBottom": 4,
                     "paddingTop": 12,
+                    "position": "relative",
                     "touchAction": "none",
                     "width": "100%",
+                    "zIndex": 100,
                   },
                 ]
               }
             >
               <View
+                data-blade-component="base-box"
                 style={
                   Array [
                     Object {
@@ -424,13 +454,12 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
             </View>
           </View>
           <View
-            backgroundColor="white"
+            data-blade-component="base-box"
             flexShrink={0}
             overflow="visible"
             style={
               Array [
                 Object {
-                  "backgroundColor": "white",
                   "flexShrink": 0,
                   "overflow": "visible",
                 },
@@ -438,6 +467,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
             }
           >
             <View
+              data-blade-component="base-box"
               style={
                 Array [
                   Object {},
@@ -445,11 +475,12 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
               }
             >
               <View
+                data-blade-component="base-box"
                 style={
                   Array [
                     Object {
                       "marginBottom": 16,
-                      "marginTop": 12,
+                      "marginTop": 16,
                       "paddingLeft": 16,
                       "paddingRight": 16,
                       "touchAction": "none",
@@ -459,13 +490,12 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                 touchAction="none"
               >
                 <View
-                  alignItems="center"
+                  data-blade-component="base-box"
                   display="flex"
                   flexDirection="row"
                   style={
                     Array [
                       Object {
-                        "alignItems": "center",
                         "display": "flex",
                         "flexDirection": "row",
                         "userSelect": "none",
@@ -475,13 +505,14 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                   userSelect="none"
                 >
                   <View
-                    alignItems="center"
+                    alignItems="flex-start"
+                    data-blade-component="base-box"
                     display="flex"
                     flexDirection="row"
                     style={
                       Array [
                         Object {
-                          "alignItems": "center",
+                          "alignItems": "flex-start",
                           "display": "flex",
                           "flexBasis": "auto",
                           "flexDirection": "row",
@@ -494,21 +525,25 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                     }
                   >
                     <View
+                      data-blade-component="base-box"
                       style={
                         Array [
-                          Object {},
+                          Object {
+                            "flexBasis": "auto",
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                          },
                         ]
                       }
                     >
                       <View
-                        alignItems="center"
+                        data-blade-component="base-box"
                         display="flex"
                         flexDirection="row"
                         flexShrink={0}
                         style={
                           Array [
                             Object {
-                              "alignItems": "center",
                               "display": "flex",
                               "flexDirection": "row",
                               "flexShrink": 0,
@@ -550,6 +585,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                           Address Details
                         </Text>
                         <View
+                          data-blade-component="base-box"
                           style={
                             Array [
                               Object {
@@ -559,87 +595,105 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                           }
                         >
                           <View
-                            backgroundColor="feedback.background.positive.lowContrast"
-                            platform="onMobile"
-                            size="medium"
+                            alignItems="center"
+                            data-blade-component="box"
+                            display="flex"
+                            height="28px"
+                            justifyContent="center"
                             style={
                               Array [
                                 Object {
-                                  "alignSelf": "center",
-                                  "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
-                                  "borderRadius": 9999,
+                                  "alignItems": "center",
                                   "display": "flex",
-                                  "flexWrap": "nowrap",
-                                  "maxWidth": 100,
+                                  "height": 28,
+                                  "justifyContent": "center",
                                 },
                               ]
                             }
                           >
                             <View
-                              alignItems="center"
-                              data-blade-component="counter"
-                              display="flex"
-                              flexDirection="row"
-                              justifyContent="center"
-                              overflow="hidden"
+                              backgroundColor="feedback.background.positive.lowContrast"
+                              data-blade-component="base-box"
+                              platform="onMobile"
+                              size="medium"
                               style={
                                 Array [
                                   Object {
-                                    "alignItems": "center",
+                                    "alignSelf": "center",
+                                    "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
+                                    "borderRadius": 9999,
                                     "display": "flex",
-                                    "flexDirection": "row",
-                                    "justifyContent": "center",
-                                    "overflow": "hidden",
-                                    "paddingBottom": 2,
-                                    "paddingLeft": 8,
-                                    "paddingRight": 8,
-                                    "paddingTop": 2,
+                                    "flexWrap": "nowrap",
+                                    "maxWidth": 100,
                                   },
                                 ]
                               }
                             >
-                              <Text
-                                color="feedback.text.positive.lowContrast"
-                                data-blade-component="text"
-                                fontFamily="text"
-                                fontSize={75}
-                                fontStyle="normal"
-                                fontWeight="regular"
-                                lineHeight={50}
-                                numberOfLines={1}
+                              <View
+                                alignItems="center"
+                                data-blade-component="counter"
+                                display="flex"
+                                flexDirection="row"
+                                justifyContent="center"
+                                overflow="hidden"
                                 style={
                                   Array [
                                     Object {
-                                      "color": "hsla(160, 100%, 26%, 1)",
-                                      "fontFamily": "Lato",
-                                      "fontSize": 12,
-                                      "fontStyle": "normal",
-                                      "fontWeight": "400",
-                                      "lineHeight": 16,
-                                      "marginBottom": 0,
-                                      "marginLeft": 0,
-                                      "marginRight": 0,
-                                      "marginTop": 0,
-                                      "paddingBottom": 0,
-                                      "paddingLeft": 0,
-                                      "paddingRight": 0,
-                                      "paddingTop": 0,
-                                      "textAlign": "center",
-                                      "textDecorationLine": "none",
+                                      "alignItems": "center",
+                                      "display": "flex",
+                                      "flexDirection": "row",
+                                      "justifyContent": "center",
+                                      "overflow": "hidden",
+                                      "paddingBottom": 2,
+                                      "paddingLeft": 8,
+                                      "paddingRight": 8,
+                                      "paddingTop": 2,
                                     },
-                                    Object {},
                                   ]
                                 }
-                                textAlign="center"
                               >
-                                2
-                              </Text>
+                                <Text
+                                  color="feedback.text.positive.lowContrast"
+                                  data-blade-component="text"
+                                  fontFamily="text"
+                                  fontSize={75}
+                                  fontStyle="normal"
+                                  fontWeight="regular"
+                                  lineHeight={50}
+                                  numberOfLines={1}
+                                  style={
+                                    Array [
+                                      Object {
+                                        "color": "hsla(160, 100%, 26%, 1)",
+                                        "fontFamily": "Lato",
+                                        "fontSize": 12,
+                                        "fontStyle": "normal",
+                                        "fontWeight": "400",
+                                        "lineHeight": 16,
+                                        "marginBottom": 0,
+                                        "marginLeft": 0,
+                                        "marginRight": 0,
+                                        "marginTop": 0,
+                                        "paddingBottom": 0,
+                                        "paddingLeft": 0,
+                                        "paddingRight": 0,
+                                        "paddingTop": 0,
+                                        "textAlign": "center",
+                                        "textDecorationLine": "none",
+                                      },
+                                    ]
+                                  }
+                                  textAlign="center"
+                                >
+                                  2
+                                </Text>
+                              </View>
                             </View>
                           </View>
                         </View>
                       </View>
                       <Text
-                        color="surface.text.normal.lowContrast"
+                        color="surface.text.muted.lowContrast"
                         data-blade-component="text"
                         fontFamily="text"
                         fontSize={75}
@@ -649,7 +703,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                         style={
                           Array [
                             Object {
-                              "color": "hsla(217, 56%, 17%, 1)",
+                              "color": "hsla(216, 16%, 60%, 1)",
                               "fontFamily": "Lato",
                               "fontSize": 12,
                               "fontStyle": "normal",
@@ -665,7 +719,6 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                               "paddingTop": 0,
                               "textDecorationLine": "none",
                             },
-                            Object {},
                           ]
                         }
                       >
@@ -674,6 +727,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                     </View>
                   </View>
                   <View
+                    data-blade-component="base-box"
                     style={
                       Array [
                         Object {
@@ -683,89 +737,497 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                     }
                   >
                     <View
-                      backgroundColor="feedback.background.positive.lowContrast"
-                      data-blade-component="badge"
-                      size="medium"
+                      alignItems="center"
+                      data-blade-component="box"
+                      display="flex"
+                      height="28px"
+                      justifyContent="center"
                       style={
                         Array [
                           Object {
-                            "alignSelf": "center",
-                            "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
-                            "borderRadius": 9999,
+                            "alignItems": "center",
                             "display": "flex",
-                            "flexWrap": "nowrap",
-                            "textAlign": "left",
+                            "height": 28,
+                            "justifyContent": "center",
                           },
                         ]
                       }
-                      textAlign="left"
                     >
                       <View
-                        alignItems="center"
-                        display="flex"
-                        flexDirection="row"
-                        justifyContent="center"
-                        overflow="hidden"
+                        backgroundColor="feedback.background.positive.lowContrast"
+                        data-blade-component="badge"
+                        size="medium"
                         style={
                           Array [
                             Object {
-                              "alignItems": "center",
+                              "alignSelf": "center",
+                              "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
+                              "borderRadius": 9999,
                               "display": "flex",
-                              "flexDirection": "row",
-                              "justifyContent": "center",
-                              "overflow": "hidden",
-                              "paddingBottom": 2,
-                              "paddingLeft": 8,
-                              "paddingRight": 8,
-                              "paddingTop": 2,
+                              "flexWrap": "nowrap",
+                              "textAlign": "left",
                             },
                           ]
                         }
+                        textAlign="left"
                       >
-                        <Text
-                          color="feedback.text.positive.lowContrast"
-                          data-blade-component="text"
-                          fontFamily="text"
-                          fontSize={75}
-                          fontStyle="normal"
-                          fontWeight="regular"
-                          lineHeight={50}
-                          numberOfLines={1}
+                        <View
+                          alignItems="center"
+                          data-blade-component="base-box"
+                          display="flex"
+                          flexDirection="row"
+                          justifyContent="center"
+                          overflow="hidden"
                           style={
                             Array [
                               Object {
-                                "color": "hsla(160, 100%, 26%, 1)",
-                                "fontFamily": "Lato",
-                                "fontSize": 12,
-                                "fontStyle": "normal",
-                                "fontWeight": "400",
-                                "lineHeight": 16,
-                                "marginBottom": 0,
-                                "marginLeft": 0,
-                                "marginRight": 0,
-                                "marginTop": 0,
-                                "paddingBottom": 0,
-                                "paddingLeft": 0,
-                                "paddingRight": 0,
-                                "paddingTop": 0,
-                                "textDecorationLine": "none",
+                                "alignItems": "center",
+                                "display": "flex",
+                                "flexDirection": "row",
+                                "justifyContent": "center",
+                                "overflow": "hidden",
+                                "paddingBottom": 2,
+                                "paddingLeft": 8,
+                                "paddingRight": 8,
+                                "paddingTop": 2,
                               },
-                              Object {},
                             ]
                           }
                         >
-                          Action Needed
-                        </Text>
+                          <Text
+                            color="feedback.text.positive.lowContrast"
+                            data-blade-component="text"
+                            fontFamily="text"
+                            fontSize={75}
+                            fontStyle="normal"
+                            fontWeight="regular"
+                            lineHeight={50}
+                            numberOfLines={1}
+                            style={
+                              Array [
+                                Object {
+                                  "color": "hsla(160, 100%, 26%, 1)",
+                                  "fontFamily": "Lato",
+                                  "fontSize": 12,
+                                  "fontStyle": "normal",
+                                  "fontWeight": "400",
+                                  "lineHeight": 16,
+                                  "marginBottom": 0,
+                                  "marginLeft": 0,
+                                  "marginRight": 0,
+                                  "marginTop": 0,
+                                  "paddingBottom": 0,
+                                  "paddingLeft": 0,
+                                  "paddingRight": 0,
+                                  "paddingTop": 0,
+                                  "textDecorationLine": "none",
+                                },
+                              ]
+                            }
+                          >
+                            Action Needed
+                          </Text>
+                        </View>
                       </View>
                     </View>
                   </View>
                   <View
-                    accessibilityLabel="Close"
+                    alignItems="center"
+                    data-blade-component="box"
+                    display="flex"
+                    height="28px"
+                    justifyContent="center"
+                    style={
+                      Array [
+                        Object {
+                          "alignItems": "center",
+                          "display": "flex",
+                          "height": 28,
+                          "justifyContent": "center",
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      accessibilityLabel="Close"
+                      accessibilityRole="button"
+                      accessible={true}
+                      collapsable={false}
+                      contrast="low"
+                      focusable={true}
+                      onBlur={[Function]}
+                      onClick={[Function]}
+                      onFocus={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        Array [
+                          Object {
+                            "alignSelf": "center",
+                          },
+                        ]
+                      }
+                    >
+                      <RNSVGSvgView
+                        accessibilityElementsHidden={true}
+                        align="xMidYMid"
+                        bbHeight="20px"
+                        bbWidth="20px"
+                        data-blade-component="icon"
+                        fill="none"
+                        focusable={false}
+                        height="20px"
+                        importantForAccessibility="no-hide-descendants"
+                        meetOrSlice={0}
+                        minX={0}
+                        minY={0}
+                        style={
+                          Array [
+                            Object {
+                              "backgroundColor": "transparent",
+                              "borderWidth": 0,
+                            },
+                            Array [
+                              Object {},
+                            ],
+                            Object {
+                              "flex": 0,
+                              "height": 20,
+                              "width": 20,
+                            },
+                          ]
+                        }
+                        vbHeight={24}
+                        vbWidth={24}
+                        width="20px"
+                      >
+                        <RNSVGGroup
+                          fill={null}
+                          propList={
+                            Array [
+                              "fill",
+                            ]
+                          }
+                        >
+                          <RNSVGPath
+                            d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
+                            fill={4288851646}
+                            propList={
+                              Array [
+                                "fill",
+                              ]
+                            }
+                          />
+                        </RNSVGGroup>
+                      </RNSVGSvgView>
+                    </View>
+                  </View>
+                </View>
+              </View>
+              <View
+                borderBottomColor="surface.border.normal.lowContrast"
+                borderPosition="borderBottom"
+                borderWidth="none"
+                data-blade-component="base-box"
+                dividerStyle="solid"
+                isDividerHorizontal={true}
+                style={
+                  Array [
+                    Object {
+                      "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
+                      "borderBottomStyle": "solid",
+                      "borderBottomWidth": 1,
+                      "borderStyle": "solid",
+                      "borderWidth": 0,
+                      "flexGrow": 1,
+                    },
+                  ]
+                }
+                thickness="thin"
+              />
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<BottomSheet /> should render empty header 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    accessibilityHint="Tap to close the Bottom Sheet"
+    accessibilityLabel="Bottom Sheet backdrop"
+    accessibilityRole="button"
+    accessible={true}
+    collapsable={false}
+    handlerTag={8}
+    handlerType="TapGestureHandler"
+    onGestureHandlerEvent={[Function]}
+    onGestureHandlerStateChange={[Function]}
+    pointerEvents="auto"
+    style={
+      Array [
+        Object {
+          "backgroundColor": "black",
+        },
+        Array [
+          Object {
+            "bottom": 0,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          },
+          Object {
+            "backgroundColor": "hsla(214, 15%, 18%, 0.64)",
+            "zIndex": 100,
+          },
+        ],
+        Object {
+          "flex": 1,
+          "opacity": undefined,
+        },
+      ]
+    }
+  />
+  <View
+    onLayout={[Function]}
+    pointerEvents="box-none"
+    style={
+      Array [
+        Object {
+          "zIndex": 100,
+        },
+        Object {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        },
+        Object {
+          "bottom": 0,
+          "overflow": "hidden",
+          "top": 0,
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "shadowColor": "hsla(217,56%,17%,0.64)",
+            "shadowOffset": Object {
+              "height": -18,
+              "width": 0,
+            },
+            "shadowOpacity": 0.2,
+            "shadowRadius": 12,
+          },
+          Object {
+            "flexDirection": "column-reverse",
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          },
+          Object {
+            "opacity": 1,
+            "transform": Array [
+              Object {
+                "translateY": 1334,
+              },
+            ],
+          },
+        ]
+      }
+    >
+      <View
+        animatedIndex={
+          Object {
+            "value": -1,
+          }
+        }
+        animatedPosition={
+          Object {
+            "value": 1334,
+          }
+        }
+        data-blade-component="base-box"
+        pointerEvents="none"
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "hsla(0, 0%, 100%, 1)",
+              "borderTopLeftRadius": 16,
+              "borderTopRightRadius": 16,
+              "justifyContent": "center",
+              "pointerEvents": "none",
+              "position": "relative",
+            },
+            Object {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+          ]
+        }
+      />
+      <View
+        pointerEvents="box-none"
+        style={
+          Array [
+            Object {
+              "overflow": "hidden",
+            },
+            Object {
+              "paddingBottom": -999,
+            },
+          ]
+        }
+      >
+        <View
+          collapsable={false}
+          handlerTag={6}
+          handlerType="PanGestureHandler"
+          onGestureHandlerEvent={[Function]}
+          onGestureHandlerStateChange={[Function]}
+          style={
+            Array [
+              Object {},
+              Object {
+                "height": 0,
+              },
+            ]
+          }
+        >
+          <View
+            onLayout={[Function]}
+            pointerEvents="box-none"
+            style={
+              Array [
+                Object {
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                  "zIndex": 9999,
+                },
+                undefined,
+                Object {
+                  "transform": Array [
+                    Object {
+                      "translateY": 999,
+                    },
+                  ],
+                },
+              ]
+            }
+          >
+            <View
+              onLayout={[Function]}
+            >
+              <View
+                backgroundColor="hsla(0, 0%, 100%, 1)"
+                data-blade-component="base-box"
+                flexShrink={0}
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                      "flexShrink": 0,
+                      "marginTop": "auto",
+                      "touchAction": "none",
+                      "width": "100%",
+                      "zIndex": 2,
+                    },
+                  ]
+                }
+                touchAction="none"
+                width="100%"
+                zIndex={2}
+              >
+                <View
+                  borderBottomColor="surface.border.normal.lowContrast"
+                  borderPosition="borderBottom"
+                  borderWidth="none"
+                  data-blade-component="base-box"
+                  dividerStyle="solid"
+                  isDividerHorizontal={true}
+                  style={
+                    Array [
+                      Object {
+                        "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
+                        "borderBottomStyle": "solid",
+                        "borderBottomWidth": 1,
+                        "borderStyle": "solid",
+                        "borderWidth": 0,
+                        "flexGrow": 1,
+                      },
+                    ]
+                  }
+                  thickness="thin"
+                />
+                <View
+                  data-blade-component="base-box"
+                  style={
+                    Array [
+                      Object {
+                        "paddingBottom": 16,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 16,
+                      },
+                    ]
+                  }
+                >
+                  <View
                     accessibilityRole="button"
+                    accessibilityState={
+                      Object {
+                        "disabled": false,
+                      }
+                    }
                     accessible={true}
+                    activeBackgroundColor="hsla(218, 89%, 51%, 0.32)"
+                    activeBorderColor="hsla(218, 89%, 51%, 1)"
+                    borderRadius="2px"
+                    borderWidth="1px"
+                    buttonPaddingBottom="0px"
+                    buttonPaddingLeft="20px"
+                    buttonPaddingRight="20px"
+                    buttonPaddingTop="0px"
                     collapsable={false}
-                    contrast="low"
+                    data-blade-component="button"
+                    defaultBackgroundColor="hsla(218, 89%, 51%, 0)"
+                    defaultBorderColor="hsla(218, 89%, 51%, 1)"
+                    focusBackgroundColor="hsla(218, 89%, 51%, 0.18)"
+                    focusBorderColor="hsla(218, 89%, 51%, 1)"
+                    focusRingColor="hsla(218, 89%, 51%, 0.18)"
                     focusable={true}
+                    hoverBackgroundColor="hsla(218, 89%, 51%, 0.09)"
+                    hoverBorderColor="hsla(218, 89%, 51%, 1)"
+                    isFullWidth={true}
+                    isLoading={false}
+                    minHeight="36px"
+                    motionDuration="duration.xquick"
+                    motionEasing="easing.standard.effective"
                     onBlur={[Function]}
                     onClick={[Function]}
                     onFocus={[Function]}
@@ -778,76 +1240,320 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                     style={
                       Array [
                         Object {
+                          "alignItems": "center",
                           "alignSelf": "center",
+                          "backgroundColor": "hsla(218, 89%, 51%, 0)",
+                          "borderColor": "hsla(218, 89%, 51%, 1)",
+                          "borderRadius": 2,
+                          "borderStyle": "solid",
+                          "borderWidth": 1,
+                          "cursor": "pointer",
+                          "display": "flex",
+                          "justifyContent": "center",
+                          "minHeight": 36,
+                          "paddingBottom": 0,
+                          "paddingLeft": 20,
+                          "paddingRight": 20,
+                          "paddingTop": 0,
+                          "textDecorationColor": "black",
+                          "textDecorationLine": "none",
+                          "textDecorationStyle": "solid",
+                          "width": "100%",
+                        },
+                        Object {
+                          "backgroundColor": "hsla(218, 89%, 51%, 0)",
+                          "borderColor": "hsla(218, 89%, 51%, 1)",
                         },
                       ]
                     }
+                    type="button"
                   >
-                    <RNSVGSvgView
-                      accessibilityElementsHidden={true}
-                      align="xMidYMid"
-                      bbHeight="20px"
-                      bbWidth="20px"
-                      fill="none"
-                      focusable={false}
-                      height="20px"
-                      importantForAccessibility="no-hide-descendants"
-                      meetOrSlice={0}
-                      minX={0}
-                      minY={0}
+                    <View
+                      alignItems="center"
+                      data-blade-component="base-box"
+                      display="flex"
+                      flexDirection="row"
+                      isHidden={false}
+                      justifyContent="center"
                       style={
                         Array [
                           Object {
-                            "backgroundColor": "transparent",
-                            "borderWidth": 0,
-                          },
-                          Array [
-                            Object {},
-                          ],
-                          Object {
-                            "flex": 0,
-                            "height": 20,
-                            "width": 20,
+                            "alignItems": "center",
+                            "display": "flex",
+                            "flexBasis": 0,
+                            "flexDirection": "row",
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "justifyContent": "center",
+                            "opacity": 1,
                           },
                         ]
                       }
-                      vbHeight={24}
-                      vbWidth={24}
-                      width="20px"
                     >
-                      <RNSVGGroup
-                        fill={null}
+                      <Text
+                        color="action.text.secondary.default"
+                        data-blade-component="base-text"
+                        fontSize={100}
+                        fontWeight="bold"
+                        lineHeight={100}
+                        style={
+                          Array [
+                            Object {
+                              "color": "hsla(218, 89%, 51%, 1)",
+                              "fontFamily": "Lato",
+                              "fontSize": 14,
+                              "fontStyle": "normal",
+                              "fontWeight": "700",
+                              "lineHeight": 20,
+                              "marginBottom": 0,
+                              "marginLeft": 0,
+                              "marginRight": 0,
+                              "marginTop": 0,
+                              "paddingBottom": 0,
+                              "paddingLeft": 0,
+                              "paddingRight": 0,
+                              "paddingTop": 0,
+                              "textAlign": "center",
+                              "textDecorationLine": "none",
+                            },
+                          ]
+                        }
+                        textAlign="center"
+                      >
+                        Remove address
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        accessibilityHint="Drag up or down to extend or minimize the Bottom Sheet"
+        accessibilityLabel="Bottom Sheet handle"
+        accessibilityRole="adjustable"
+        accessible={true}
+        collapsable={false}
+        handlerTag={7}
+        handlerType="PanGestureHandler"
+        onGestureHandlerEvent={[Function]}
+        onGestureHandlerStateChange={[Function]}
+        onLayout={[Function]}
+      >
+        <View
+          data-blade-component="base-box"
+          left="spacing.0"
+          onLayout={[Function]}
+          position="absolute"
+          right="spacing.0"
+          style={
+            Array [
+              Object {
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": 0,
+              },
+            ]
+          }
+          top="spacing.0"
+        >
+          <View
+            data-blade-component="base-box"
+            style={
+              Array [
+                Object {
+                  "zIndex": 100,
+                },
+              ]
+            }
+            zIndex={100}
+          >
+            <View
+              data-blade-component="base-box"
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "flexShrink": 0,
+                    "justifyContent": "center",
+                    "marginBottom": 4,
+                    "paddingTop": 12,
+                    "position": "relative",
+                    "touchAction": "none",
+                    "width": "100%",
+                    "zIndex": 100,
+                  },
+                ]
+              }
+            >
+              <View
+                data-blade-component="base-box"
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
+                      "borderRadius": 16,
+                      "content": "''",
+                      "height": 4,
+                      "marginBottom": "auto",
+                      "marginLeft": "auto",
+                      "marginRight": "auto",
+                      "marginTop": "auto",
+                      "width": 56,
+                    },
+                  ]
+                }
+              />
+            </View>
+          </View>
+          <View
+            data-blade-component="base-box"
+            flexShrink={0}
+            overflow="visible"
+            style={
+              Array [
+                Object {
+                  "flexShrink": 0,
+                  "overflow": "visible",
+                },
+              ]
+            }
+          >
+            <View
+              data-blade-component="base-box"
+              height="8px"
+              position="relative"
+              right="spacing.0"
+              style={
+                Array [
+                  Object {
+                    "height": 8,
+                    "position": "relative",
+                    "right": 0,
+                    "top": 0,
+                    "touchAction": "none",
+                  },
+                ]
+              }
+              top="spacing.0"
+              touchAction="none"
+            >
+              <View
+                alignItems="center"
+                backgroundColor="hsla(0, 0%, 100%, 1)"
+                borderRadius="max"
+                data-blade-component="base-box"
+                display="flex"
+                flexShrink={0}
+                height="28px"
+                justifyContent="center"
+                position="absolute"
+                right="spacing.5"
+                style={
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                      "borderRadius": 9999,
+                      "display": "flex",
+                      "flexShrink": 0,
+                      "height": 28,
+                      "justifyContent": "center",
+                      "position": "absolute",
+                      "right": 16,
+                      "top": -4,
+                      "width": 28,
+                      "zIndex": 100,
+                    },
+                  ]
+                }
+                top="-4px"
+                width="28px"
+                zIndex={100}
+              >
+                <View
+                  accessibilityLabel="Close"
+                  accessibilityRole="button"
+                  accessible={true}
+                  collapsable={false}
+                  contrast="low"
+                  focusable={true}
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    Array [
+                      Object {
+                        "alignSelf": "center",
+                      },
+                    ]
+                  }
+                >
+                  <RNSVGSvgView
+                    accessibilityElementsHidden={true}
+                    align="xMidYMid"
+                    bbHeight="20px"
+                    bbWidth="20px"
+                    data-blade-component="icon"
+                    fill="none"
+                    focusable={false}
+                    height="20px"
+                    importantForAccessibility="no-hide-descendants"
+                    meetOrSlice={0}
+                    minX={0}
+                    minY={0}
+                    style={
+                      Array [
+                        Object {
+                          "backgroundColor": "transparent",
+                          "borderWidth": 0,
+                        },
+                        Array [
+                          Object {},
+                        ],
+                        Object {
+                          "flex": 0,
+                          "height": 20,
+                          "width": 20,
+                        },
+                      ]
+                    }
+                    vbHeight={24}
+                    vbWidth={24}
+                    width="20px"
+                  >
+                    <RNSVGGroup
+                      fill={null}
+                      propList={
+                        Array [
+                          "fill",
+                        ]
+                      }
+                    >
+                      <RNSVGPath
+                        d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
+                        fill={4288851646}
                         propList={
                           Array [
                             "fill",
                           ]
                         }
-                      >
-                        <RNSVGPath
-                          d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
-                          fill={4288851646}
-                          propList={
-                            Array [
-                              "fill",
-                            ]
-                          }
-                        />
-                      </RNSVGGroup>
-                    </RNSVGSvgView>
-                  </View>
+                      />
+                    </RNSVGGroup>
+                  </RNSVGSvgView>
                 </View>
               </View>
-              <View
-                style={
-                  Array [
-                    Object {
-                      "borderBottomStyle": "solid",
-                      "borderBottomWidth": 1,
-                      "borderColor": "hsla(216, 15%, 54%, 0.18)",
-                    },
-                  ]
-                }
-              />
             </View>
           </View>
         </View>

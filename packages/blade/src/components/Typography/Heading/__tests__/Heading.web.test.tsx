@@ -1,7 +1,7 @@
 import React from 'react';
 import { Heading } from '../';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
-import assertAccessible from '~src/_helpers/testing/assertAccessible.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
+import assertAccessible from '~utils/testing/assertAccessible.web';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
@@ -31,6 +31,18 @@ describe('<Heading />', () => {
     const displayText = 'Get Started With Payment Gateway';
     const { container } = renderWithTheme(
       <Heading color="surface.text.placeholder.lowContrast">{displayText}</Heading>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render Heading with mixed color', () => {
+    const { container } = renderWithTheme(
+      <Heading>
+        Supercharge your business with the all‑powerful{' '}
+        <Heading as="span" color="feedback.information.action.text.primary.default.lowContrast">
+          Payment Gateway
+        </Heading>
+      </Heading>,
     );
     expect(container).toMatchSnapshot();
   });
@@ -73,13 +85,13 @@ describe('<Heading />', () => {
 
   it('should render Heading with variant "subheading" and weight "bold"', () => {
     const displayText = 'Get Started With Payment Gateway';
-    const { container, getByRole, getByText } = renderWithTheme(
+    const { container, getByText } = renderWithTheme(
       <Heading type="subdued" variant="subheading" weight="bold">
         {displayText}
       </Heading>,
     );
-    expect(getByRole('heading', { level: 6 })).toBeInTheDocument();
-    expect(getByText('Get Started With Payment Gateway')).toBeInTheDocument();
+    expect(getByText(displayText)).toBeInTheDocument();
+    expect(getByText(displayText).tagName).toBe('P');
     expect(container).toMatchSnapshot();
   });
 
@@ -117,6 +129,24 @@ describe('<Heading />', () => {
         );
       }
     }
+  });
+
+  it('should accept as prop and render appropriate HTML tag', () => {
+    const displayText = 'Displaying some text';
+    const { getByText } = renderWithTheme(<Heading as="span">{displayText}</Heading>);
+    expect(getByText(displayText).tagName).toBe('SPAN');
+  });
+
+  it('should throw error on invalid as prop', () => {
+    const displayText = 'Displaying some text';
+    expect(() =>
+      renderWithTheme(
+        // @ts-expect-error testing failure case as prop is invalid
+        <Heading as="button">{displayText}</Heading>,
+      ),
+    ).toThrow(
+      '[Blade Heading]: Invalid `as` prop value - button. Only span, h1, h2, h3, h4, h5, h6 are accepted',
+    );
   });
 
   it('should be accessible', async () => {

@@ -14,6 +14,7 @@ exports[`<PauseIcon /> should render PauseIcon 1`] = `
     <path
       clip-rule="evenodd"
       d="M6 3a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H6Zm1 16V5h2v14H7ZM14 3a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1h-4Zm1 16V5h2v14h-2Z"
+      data-blade-component="svg-path"
       fill="hsla(216, 27%, 36%, 1)"
       fill-rule="evenodd"
     />

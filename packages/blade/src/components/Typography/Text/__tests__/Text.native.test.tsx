@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text } from '../';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<Text />', () => {
   it('should render Text with default properties', () => {
@@ -82,6 +82,16 @@ describe('<Text />', () => {
       ),
     ).toThrow(`[Blade: Text]: size cannot be 'small' when variant is 'caption'`);
     mockConsoleError.mockRestore();
+  });
+
+  it('should render with as prop without errors', () => {
+    const displayText = 'Displaying Text Screen';
+    const { getByText } = renderWithTheme(
+      <Text as="figcaption" type="subdued" size="large">
+        {displayText}
+      </Text>,
+    );
+    expect(getByText(displayText)).toBeTruthy();
   });
 
   it('should accept testID', () => {

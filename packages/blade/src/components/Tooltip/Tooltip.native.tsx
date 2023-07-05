@@ -9,7 +9,7 @@ import { ARROW_HEIGHT, ARROW_WIDTH } from './constants';
 import { getPlacementParts, mergeProps } from './utils';
 import { TooltipContext } from './TooltipContext';
 import { useTheme } from '~components/BladeProvider';
-import { metaAttribute, MetaConstants } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
 const Tooltip = ({
   content,

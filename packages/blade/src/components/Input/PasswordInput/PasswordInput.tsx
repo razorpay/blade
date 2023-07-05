@@ -5,10 +5,11 @@ import { EyeIcon, EyeOffIcon } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
 import { IconButton } from '~components/Button/IconButton';
-import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
-import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import type { BladeElementRef } from '~utils/useBladeInnerRef';
+import { useBladeInnerRef } from '~utils/useBladeInnerRef';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { MetaConstants } from '~utils/metaAttribute';
 
 type PasswordInputExtraProps = {
   /**
@@ -134,7 +135,7 @@ const _PasswordInput: React.ForwardRefRenderFunction<BladeElementRef, PasswordIn
   return (
     <BaseInput
       ref={inputRef as React.Ref<HTMLInputElement>}
-      componentName="password-input"
+      componentName={MetaConstants.PasswordInput}
       id="password-field"
       label={label}
       labelPosition={labelPosition}

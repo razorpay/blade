@@ -1,13 +1,16 @@
 import type { ReactElement } from 'react';
 import { BaseText } from '../BaseText';
 import type { BaseTextProps } from '../BaseText/types';
+import { useValidateAsProp } from '../utils';
 import type { ColorContrast, ColorContrastTypes, TextTypes } from '~tokens/theme/theme';
-import { getPlatformType } from '~utils';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import type { StringChildrenType, TestID } from '~src/_helpers/types';
+import type { TestID } from '~utils/types';
+import { getPlatformType } from '~utils';
 
+const validAsValues = ['span', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const;
 export type TitleProps = {
+  as?: typeof validAsValues[number];
   /**
    * Overrides the color of the Title component.
    *
@@ -17,17 +20,20 @@ export type TitleProps = {
   size?: 'small' | 'medium' | 'large' | 'xlarge';
   contrast?: ColorContrastTypes;
   type?: TextTypes;
-  children: StringChildrenType;
+  children: React.ReactNode;
+  textAlign?: BaseTextProps['textAlign'];
+  textDecorationLine?: BaseTextProps['textDecorationLine'];
 } & TestID &
   StyledPropsBlade;
 
 const getProps = ({
+  as,
   size,
   type,
   contrast,
   color,
   testID,
-}: Pick<TitleProps, 'size' | 'type' | 'color' | 'contrast' | 'testID'>): Omit<
+}: Pick<TitleProps, 'as' | 'size' | 'type' | 'color' | 'contrast' | 'testID'>): Omit<
   BaseTextProps,
   'children'
 > => {
@@ -63,21 +69,34 @@ const getProps = ({
     props.as = isPlatformWeb ? 'h1' : undefined;
   }
 
+  // override the computed `as` prop if user passed an `as` prop
+  props.as = as || props.as;
   return props;
 };
 
 export const Title = ({
+  as,
   size = 'small',
   type = 'normal',
   contrast = 'low',
   color,
   children,
   testID,
+  textAlign,
+  textDecorationLine,
   ...styledProps
 }: TitleProps): ReactElement => {
-  const props = getProps({ size, type, contrast, color, testID });
+  useValidateAsProp({ componentName: 'Title', as, validAsValues });
+
+  const props = getProps({ as, size, type, contrast, color, testID });
+
   return (
-    <BaseText {...props} {...getStyledProps(styledProps)}>
+    <BaseText
+      {...props}
+      textAlign={textAlign}
+      textDecorationLine={textDecorationLine}
+      {...getStyledProps(styledProps)}
+    >
       {children}
     </BaseText>
   );

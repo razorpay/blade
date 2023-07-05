@@ -1,54 +1,31 @@
-import { PLUGIN_CONFIG } from './blade/config/config';
 import { generateBladeCode } from './blade/main';
 import { generateImportsCode } from './blade/utils/imports';
 import { convertIntoBladeNodes } from './figmaUtils/convertIntoNodes';
 import type { BladeNode } from './types/Blade';
 
-// TODO
-// Optimise for case when input hasnt changed
+if (figma.editorType === 'dev' && figma.mode === 'codegen') {
+  // Register a callback to the "generate" event
+  figma.codegen.on('generate', ({ node }) => {
+    const convertedSelection: BladeNode[] = convertIntoBladeNodes([node], null);
 
-// This shows the HTML page in "ui.html".
-figma.showUI(__html__, { width: 450, height: 600 });
-
-const run = (): void => {
-  if (figma.currentPage.selection.length === 0) {
-    figma.ui.postMessage({
-      type: 'empty',
+    const { component, imports } = generateBladeCode({
+      bladeNodes: convertedSelection,
     });
-    return;
-  }
 
-  const convertedSelection: BladeNode[] = convertIntoBladeNodes(figma.currentPage.selection, null);
-
-  const { component, imports } = generateBladeCode({
-    bladeNodes: convertedSelection,
+    return [
+      {
+        title: 'Imports',
+        language: 'TYPESCRIPT',
+        code: generateImportsCode(imports ?? {}).trim(),
+      },
+      {
+        title: 'Code',
+        language: 'TYPESCRIPT',
+        code: component.trim(),
+      },
+    ];
   });
-
-  figma.ui.postMessage({
-    type: 'result',
-    component: component.trim(),
-    imports: generateImportsCode(imports ?? {}).trim(),
-  });
-};
-
-figma.on('selectionchange', () => {
-  run();
-});
-
-figma.on('documentchange', () => {
-  run();
-});
-
-figma.ui.onmessage = (msg) => {
-  if (msg.type === 'preference') {
-    const key = msg.key;
-    switch (key) {
-      case 'helpers':
-        PLUGIN_CONFIG.generateHelperCode = msg.value;
-        break;
-      default:
-        break;
-    }
-    run();
-  }
-};
+} else {
+  figma.notify('Razorsharp can only be run in Dev mode.');
+  figma.closePlugin();
+}

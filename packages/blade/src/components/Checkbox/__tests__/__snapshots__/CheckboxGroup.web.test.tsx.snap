@@ -205,33 +205,30 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
 <div>
   <div
     class=""
+    data-blade-component="base-box"
   >
     <div
       aria-labelledby="checkbox-group-49-label-54"
       class="c0"
       data-blade-component="checkbox-group"
-      display="flex"
       role="group"
     >
       <span
+        data-blade-component="form-label"
         id="checkbox-group-49-label-54"
         style="width: auto; flex-shrink: 0; margin-right: 16px;"
       >
         <div
           class="c1"
+          data-blade-component="base-box"
         >
           <div
             class="c2"
-            display="flex"
+            data-blade-component="base-box"
           >
             <p
-              class="c3 Text__StyledText-wkh56f-0"
-              color="surface.text.subdued.lowContrast"
+              class="c3"
               data-blade-component="text"
-              font-family="text"
-              font-size="75"
-              font-style="normal"
-              font-weight="bold"
             >
               Select fruits
             </p>
@@ -240,13 +237,8 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
               data-blade-component="visually-hidden"
             >
               <p
-                class="c5 Text__StyledText-wkh56f-0"
-                color="surface.text.normal.lowContrast"
+                class="c5"
                 data-blade-component="text"
-                font-family="text"
-                font-size="100"
-                font-style="normal"
-                font-weight="regular"
               >
                 , Select one
               </p>
@@ -256,13 +248,15 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
       </span>
       <div
         class=""
+        data-blade-component="base-box"
       >
         <div
           class="c0"
-          display="flex"
+          data-blade-component="base-box"
         >
           <div
             class="c1"
+            data-blade-component="base-box"
           >
             <div
               class=""
@@ -270,14 +264,15 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
             >
               <label
                 class="c6"
+                data-blade-component="checkbox-label"
               >
                 <div
                   class="c0"
-                  display="flex"
+                  data-blade-component="base-box"
                 >
                   <div
                     class="c7"
-                    display="flex"
+                    data-blade-component="base-box"
                   >
                     <input
                       aria-checked="false"
@@ -291,6 +286,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                     />
                     <div
                       class="c9"
+                      data-blade-component="checkbox-icon-wrapper"
                     >
                       <div
                         class=""
@@ -308,6 +304,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                           <path
                             clip-rule="evenodd"
                             d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
+                            data-blade-component="svg-path"
                             fill="hsla(220, 27%, 98%, 1)"
                             fill-rule="evenodd"
                             stroke="white"
@@ -324,19 +321,18 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                     </div>
                     <div
                       class="c11"
+                      data-blade-component="base-box"
                     />
                     <div
                       class="c12"
-                      color="surface.text.subtle.lowContrast"
-                      font-family="text"
-                      font-size="100"
-                      font-weight="regular"
+                      data-blade-component="base-text"
                     >
                       Apple
                     </div>
                   </div>
                   <div
                     class="c13"
+                    data-blade-component="base-box"
                   />
                 </div>
               </label>
@@ -344,6 +340,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
           </div>
           <div
             class="c1"
+            data-blade-component="base-box"
           >
             <div
               class=""
@@ -351,14 +348,15 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
             >
               <label
                 class="c6"
+                data-blade-component="checkbox-label"
               >
                 <div
                   class="c0"
-                  display="flex"
+                  data-blade-component="base-box"
                 >
                   <div
                     class="c7"
-                    display="flex"
+                    data-blade-component="base-box"
                   >
                     <input
                       aria-checked="false"
@@ -372,6 +370,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                     />
                     <div
                       class="c9"
+                      data-blade-component="checkbox-icon-wrapper"
                     >
                       <div
                         class=""
@@ -389,6 +388,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                           <path
                             clip-rule="evenodd"
                             d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
+                            data-blade-component="svg-path"
                             fill="hsla(220, 27%, 98%, 1)"
                             fill-rule="evenodd"
                             stroke="white"
@@ -405,19 +405,18 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                     </div>
                     <div
                       class="c11"
+                      data-blade-component="base-box"
                     />
                     <div
                       class="c12"
-                      color="surface.text.subtle.lowContrast"
-                      font-family="text"
-                      font-size="100"
-                      font-weight="regular"
+                      data-blade-component="base-text"
                     >
                       Mango
                     </div>
                   </div>
                   <div
                     class="c13"
+                    data-blade-component="base-box"
                   />
                 </div>
               </label>
@@ -425,6 +424,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
           </div>
           <div
             class="c14"
+            data-blade-component="base-box"
           >
             <div
               class=""
@@ -432,14 +432,15 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
             >
               <label
                 class="c6"
+                data-blade-component="checkbox-label"
               >
                 <div
                   class="c0"
-                  display="flex"
+                  data-blade-component="base-box"
                 >
                   <div
                     class="c7"
-                    display="flex"
+                    data-blade-component="base-box"
                   >
                     <input
                       aria-checked="false"
@@ -453,6 +454,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                     />
                     <div
                       class="c9"
+                      data-blade-component="checkbox-icon-wrapper"
                     >
                       <div
                         class=""
@@ -470,6 +472,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                           <path
                             clip-rule="evenodd"
                             d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
+                            data-blade-component="svg-path"
                             fill="hsla(220, 27%, 98%, 1)"
                             fill-rule="evenodd"
                             stroke="white"
@@ -486,19 +489,18 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                     </div>
                     <div
                       class="c11"
+                      data-blade-component="base-box"
                     />
                     <div
                       class="c12"
-                      color="surface.text.subtle.lowContrast"
-                      font-family="text"
-                      font-size="100"
-                      font-weight="regular"
+                      data-blade-component="base-text"
                     >
                       Orange
                     </div>
                   </div>
                   <div
                     class="c13"
+                    data-blade-component="base-box"
                   />
                 </div>
               </label>
@@ -507,16 +509,16 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
         </div>
         <div
           class="c15"
+          data-blade-component="base-box"
         >
           <span
-            style="display: flex; flex-direction: row; align-items: center; word-break: break-all;"
+            class="c7"
+            data-blade-component="base-box"
+            style="word-break: break-all;"
           >
             <span
               class="c16"
-              color="surface.text.muted.lowContrast"
-              font-family="text"
-              font-size="50"
-              font-style="italic"
+              data-blade-component="base-text"
             >
               Select one
             </span>
@@ -716,33 +718,30 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
 <div>
   <div
     class=""
+    data-blade-component="base-box"
   >
     <div
       aria-labelledby="checkbox-group-19-label-24"
       class="c0"
       data-blade-component="checkbox-group"
-      display="flex"
       role="group"
     >
       <span
+        data-blade-component="form-label"
         id="checkbox-group-19-label-24"
         style="width: auto; flex-shrink: 0; margin-right: 16px;"
       >
         <div
           class="c1"
+          data-blade-component="base-box"
         >
           <div
             class="c2"
-            display="flex"
+            data-blade-component="base-box"
           >
             <p
-              class="c3 Text__StyledText-wkh56f-0"
-              color="surface.text.subdued.lowContrast"
+              class="c3"
               data-blade-component="text"
-              font-family="text"
-              font-size="75"
-              font-style="normal"
-              font-weight="bold"
             >
               Select fruits
             </p>
@@ -751,13 +750,8 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
               data-blade-component="visually-hidden"
             >
               <p
-                class="c5 Text__StyledText-wkh56f-0"
-                color="surface.text.normal.lowContrast"
+                class="c5"
                 data-blade-component="text"
-                font-family="text"
-                font-size="100"
-                font-style="normal"
-                font-weight="regular"
               >
                 , 
               </p>
@@ -767,13 +761,15 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
       </span>
       <div
         class=""
+        data-blade-component="base-box"
       >
         <div
           class="c0"
-          display="flex"
+          data-blade-component="base-box"
         >
           <div
             class="c1"
+            data-blade-component="base-box"
           >
             <div
               class=""
@@ -781,14 +777,15 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
             >
               <label
                 class="c6"
+                data-blade-component="checkbox-label"
               >
                 <div
                   class="c0"
-                  display="flex"
+                  data-blade-component="base-box"
                 >
                   <div
                     class="c7"
-                    display="flex"
+                    data-blade-component="base-box"
                   >
                     <input
                       aria-checked="false"
@@ -802,6 +799,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                     />
                     <div
                       class="c9"
+                      data-blade-component="checkbox-icon-wrapper"
                     >
                       <div
                         class=""
@@ -819,6 +817,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                           <path
                             clip-rule="evenodd"
                             d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
+                            data-blade-component="svg-path"
                             fill="hsla(220, 27%, 98%, 1)"
                             fill-rule="evenodd"
                             stroke="white"
@@ -835,19 +834,18 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                     </div>
                     <div
                       class="c11"
+                      data-blade-component="base-box"
                     />
                     <div
                       class="c12"
-                      color="surface.text.subtle.lowContrast"
-                      font-family="text"
-                      font-size="100"
-                      font-weight="regular"
+                      data-blade-component="base-text"
                     >
                       Apple
                     </div>
                   </div>
                   <div
                     class="c13"
+                    data-blade-component="base-box"
                   />
                 </div>
               </label>
@@ -855,6 +853,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
           </div>
           <div
             class="c1"
+            data-blade-component="base-box"
           >
             <div
               class=""
@@ -862,14 +861,15 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
             >
               <label
                 class="c6"
+                data-blade-component="checkbox-label"
               >
                 <div
                   class="c0"
-                  display="flex"
+                  data-blade-component="base-box"
                 >
                   <div
                     class="c7"
-                    display="flex"
+                    data-blade-component="base-box"
                   >
                     <input
                       aria-checked="false"
@@ -883,6 +883,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                     />
                     <div
                       class="c9"
+                      data-blade-component="checkbox-icon-wrapper"
                     >
                       <div
                         class=""
@@ -900,6 +901,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                           <path
                             clip-rule="evenodd"
                             d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
+                            data-blade-component="svg-path"
                             fill="hsla(220, 27%, 98%, 1)"
                             fill-rule="evenodd"
                             stroke="white"
@@ -916,19 +918,18 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                     </div>
                     <div
                       class="c11"
+                      data-blade-component="base-box"
                     />
                     <div
                       class="c12"
-                      color="surface.text.subtle.lowContrast"
-                      font-family="text"
-                      font-size="100"
-                      font-weight="regular"
+                      data-blade-component="base-text"
                     >
                       Mango
                     </div>
                   </div>
                   <div
                     class="c13"
+                    data-blade-component="base-box"
                   />
                 </div>
               </label>
@@ -936,6 +937,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
           </div>
           <div
             class="c14"
+            data-blade-component="base-box"
           >
             <div
               class=""
@@ -943,14 +945,15 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
             >
               <label
                 class="c6"
+                data-blade-component="checkbox-label"
               >
                 <div
                   class="c0"
-                  display="flex"
+                  data-blade-component="base-box"
                 >
                   <div
                     class="c7"
-                    display="flex"
+                    data-blade-component="base-box"
                   >
                     <input
                       aria-checked="false"
@@ -964,6 +967,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                     />
                     <div
                       class="c9"
+                      data-blade-component="checkbox-icon-wrapper"
                     >
                       <div
                         class=""
@@ -981,6 +985,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                           <path
                             clip-rule="evenodd"
                             d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
+                            data-blade-component="svg-path"
                             fill="hsla(220, 27%, 98%, 1)"
                             fill-rule="evenodd"
                             stroke="white"
@@ -997,19 +1002,18 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                     </div>
                     <div
                       class="c11"
+                      data-blade-component="base-box"
                     />
                     <div
                       class="c12"
-                      color="surface.text.subtle.lowContrast"
-                      font-family="text"
-                      font-size="100"
-                      font-weight="regular"
+                      data-blade-component="base-text"
                     >
                       Orange
                     </div>
                   </div>
                   <div
                     class="c13"
+                    data-blade-component="base-box"
                   />
                 </div>
               </label>

@@ -38,7 +38,6 @@ exports[`<Indicator /> should render 1`] = `
     aria-label="Success"
     class="c0"
     data-blade-component="indicator"
-    display="flex"
     role="status"
   >
     <svg
@@ -53,12 +52,14 @@ exports[`<Indicator /> should render 1`] = `
       <circle
         cx="5"
         cy="5"
+        data-blade-component="svg-circle"
         fill="hsla(216, 33%, 29%, 1)"
         r="5"
       />
       <circle
         cx="5"
         cy="5"
+        data-blade-component="svg-circle"
         r="4.75"
         stroke="hsla(214, 21%, 94%, 0.18)"
         stroke-width="0.5"
@@ -66,15 +67,11 @@ exports[`<Indicator /> should render 1`] = `
     </svg>
     <div
       class="c1"
+      data-blade-component="base-box"
     >
       <p
-        class="c2 Text__StyledText-wkh56f-0"
-        color="surface.text.subtle.lowContrast"
+        class="c2"
         data-blade-component="text"
-        font-family="text"
-        font-size="100"
-        font-style="normal"
-        font-weight="regular"
       />
     </div>
   </div>
@@ -133,7 +130,6 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
     aria-label="Warning"
     class="c0"
     data-blade-component="indicator"
-    display="flex"
     role="status"
   >
     <svg
@@ -148,12 +144,14 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
       <circle
         cx="5"
         cy="5"
+        data-blade-component="svg-circle"
         fill="hsla(38, 97%, 38%, 1)"
         r="5"
       />
       <circle
         cx="5"
         cy="5"
+        data-blade-component="svg-circle"
         r="4.75"
         stroke="hsla(214, 21%, 94%, 0.18)"
         stroke-width="0.5"
@@ -161,15 +159,11 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
     </svg>
     <div
       class="c1"
+      data-blade-component="base-box"
     >
       <p
-        class="c2 Text__StyledText-wkh56f-0"
-        color="surface.text.subtle.lowContrast"
+        class="c2"
         data-blade-component="text"
-        font-family="text"
-        font-size="75"
-        font-style="normal"
-        font-weight="regular"
       />
     </div>
   </div>
@@ -177,7 +171,6 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
     aria-label="Success"
     class="c0"
     data-blade-component="indicator"
-    display="flex"
     role="status"
   >
     <svg
@@ -192,12 +185,14 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
       <circle
         cx="5"
         cy="5"
+        data-blade-component="svg-circle"
         fill="hsla(160, 100%, 26%, 1)"
         r="5"
       />
       <circle
         cx="5"
         cy="5"
+        data-blade-component="svg-circle"
         r="4.75"
         stroke="hsla(214, 21%, 94%, 0.18)"
         stroke-width="0.5"
@@ -205,15 +200,11 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
     </svg>
     <div
       class="c1"
+      data-blade-component="base-box"
     >
       <p
-        class="c3 Text__StyledText-wkh56f-0"
-        color="surface.text.subtle.lowContrast"
+        class="c3"
         data-blade-component="text"
-        font-family="text"
-        font-size="100"
-        font-style="normal"
-        font-weight="regular"
       />
     </div>
   </div>
@@ -221,7 +212,6 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
     aria-label="Error"
     class="c0"
     data-blade-component="indicator"
-    display="flex"
     role="status"
   >
     <svg
@@ -236,12 +226,14 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
       <circle
         cx="5"
         cy="5"
+        data-blade-component="svg-circle"
         fill="hsla(8, 73%, 47%, 1)"
         r="5"
       />
       <circle
         cx="5"
         cy="5"
+        data-blade-component="svg-circle"
         r="4.75"
         stroke="hsla(214, 21%, 94%, 0.18)"
         stroke-width="0.5"
@@ -249,15 +241,11 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
     </svg>
     <div
       class="c1"
+      data-blade-component="base-box"
     >
       <p
-        class="c3 Text__StyledText-wkh56f-0"
-        color="surface.text.subtle.lowContrast"
+        class="c3"
         data-blade-component="text"
-        font-family="text"
-        font-size="100"
-        font-style="normal"
-        font-weight="regular"
       />
     </div>
   </div>
@@ -265,7 +253,6 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
     aria-label="Info"
     class="c0"
     data-blade-component="indicator"
-    display="flex"
     role="status"
   >
     <svg
@@ -280,12 +267,14 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
       <circle
         cx="5"
         cy="5"
+        data-blade-component="svg-circle"
         fill="hsla(193, 100%, 35%, 1)"
         r="5"
       />
       <circle
         cx="5"
         cy="5"
+        data-blade-component="svg-circle"
         r="4.75"
         stroke="hsla(214, 21%, 94%, 0.18)"
         stroke-width="0.5"
@@ -293,15 +282,11 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
     </svg>
     <div
       class="c1"
+      data-blade-component="base-box"
     >
       <p
-        class="c3 Text__StyledText-wkh56f-0"
-        color="surface.text.subtle.lowContrast"
+        class="c3"
         data-blade-component="text"
-        font-family="text"
-        font-size="100"
-        font-style="normal"
-        font-weight="regular"
       />
     </div>
   </div>

@@ -6,7 +6,7 @@ import type { LinkButtonVariantProps } from '../Link';
 import { useDropdown } from './useDropdown';
 import { componentIds } from './dropdownUtils';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
-import { makeAccessible } from '~utils';
+import { makeAccessible } from '~utils/makeAccessible';
 
 type DropdownLinkProps = LinkButtonVariantProps & {
   onBlur?: BaseLinkProps['onBlur'];

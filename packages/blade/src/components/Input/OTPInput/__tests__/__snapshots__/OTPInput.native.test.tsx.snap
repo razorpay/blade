@@ -17,6 +17,7 @@ exports[`<OTPInput /> should render 1`] = `
     }
   >
     <View
+      data-blade-component="base-box"
       display="flex"
       flexDirection="column"
       position="relative"
@@ -31,6 +32,7 @@ exports[`<OTPInput /> should render 1`] = `
       }
     >
       <View
+        data-blade-component="base-box"
         style={
           Array [
             Object {
@@ -42,6 +44,7 @@ exports[`<OTPInput /> should render 1`] = `
       >
         <View
           alignItems="center"
+          data-blade-component="base-box"
           display="flex"
           flexDirection="row"
           flexWrap="wrap"
@@ -85,7 +88,6 @@ exports[`<OTPInput /> should render 1`] = `
                   "paddingTop": 0,
                   "textDecorationLine": "none",
                 },
-                Object {},
               ]
             }
           >
@@ -147,7 +149,6 @@ exports[`<OTPInput /> should render 1`] = `
                     "paddingTop": 0,
                     "textDecorationLine": "none",
                   },
-                  Object {},
                 ]
               }
             />
@@ -155,6 +156,7 @@ exports[`<OTPInput /> should render 1`] = `
         </View>
       </View>
       <View
+        data-blade-component="base-box"
         display="flex"
         flexDirection="row"
         style={
@@ -167,6 +169,7 @@ exports[`<OTPInput /> should render 1`] = `
         }
       >
         <View
+          data-blade-component="base-box"
           maxWidth="40px"
           style={
             Array [
@@ -181,6 +184,7 @@ exports[`<OTPInput /> should render 1`] = `
           }
         >
           <View
+            data-blade-component="base-box"
             style={
               Array [
                 Object {},
@@ -188,6 +192,7 @@ exports[`<OTPInput /> should render 1`] = `
             }
           >
             <View
+              data-blade-component="base-box"
               display="flex"
               flexDirection="column"
               position="relative"
@@ -203,6 +208,7 @@ exports[`<OTPInput /> should render 1`] = `
             >
               <View
                 currentInteraction="default"
+                data-blade-component="base-box"
                 display="flex"
                 flexDirection="row"
                 position="relative"
@@ -236,6 +242,7 @@ exports[`<OTPInput /> should render 1`] = `
                     }
                   }
                   autoCompleteType="sms-otp"
+                  data-blade-component="styled-base-input"
                   editable={true}
                   id="otp-37-input-38-0-49-input-50"
                   isFocused={false}
@@ -305,6 +312,7 @@ exports[`<OTPInput /> should render 1`] = `
           </View>
         </View>
         <View
+          data-blade-component="base-box"
           maxWidth="40px"
           style={
             Array [
@@ -319,6 +327,7 @@ exports[`<OTPInput /> should render 1`] = `
           }
         >
           <View
+            data-blade-component="base-box"
             style={
               Array [
                 Object {},
@@ -326,6 +335,7 @@ exports[`<OTPInput /> should render 1`] = `
             }
           >
             <View
+              data-blade-component="base-box"
               display="flex"
               flexDirection="column"
               position="relative"
@@ -341,6 +351,7 @@ exports[`<OTPInput /> should render 1`] = `
             >
               <View
                 currentInteraction="default"
+                data-blade-component="base-box"
                 display="flex"
                 flexDirection="row"
                 position="relative"
@@ -374,6 +385,7 @@ exports[`<OTPInput /> should render 1`] = `
                     }
                   }
                   autoCompleteType="sms-otp"
+                  data-blade-component="styled-base-input"
                   editable={true}
                   id="otp-37-input-38-1-55-input-56"
                   isFocused={false}
@@ -443,6 +455,7 @@ exports[`<OTPInput /> should render 1`] = `
           </View>
         </View>
         <View
+          data-blade-component="base-box"
           maxWidth="40px"
           style={
             Array [
@@ -457,6 +470,7 @@ exports[`<OTPInput /> should render 1`] = `
           }
         >
           <View
+            data-blade-component="base-box"
             style={
               Array [
                 Object {},
@@ -464,6 +478,7 @@ exports[`<OTPInput /> should render 1`] = `
             }
           >
             <View
+              data-blade-component="base-box"
               display="flex"
               flexDirection="column"
               position="relative"
@@ -479,6 +494,7 @@ exports[`<OTPInput /> should render 1`] = `
             >
               <View
                 currentInteraction="default"
+                data-blade-component="base-box"
                 display="flex"
                 flexDirection="row"
                 position="relative"
@@ -512,6 +528,7 @@ exports[`<OTPInput /> should render 1`] = `
                     }
                   }
                   autoCompleteType="sms-otp"
+                  data-blade-component="styled-base-input"
                   editable={true}
                   id="otp-37-input-38-2-61-input-62"
                   isFocused={false}
@@ -581,6 +598,7 @@ exports[`<OTPInput /> should render 1`] = `
           </View>
         </View>
         <View
+          data-blade-component="base-box"
           maxWidth="40px"
           style={
             Array [
@@ -595,6 +613,7 @@ exports[`<OTPInput /> should render 1`] = `
           }
         >
           <View
+            data-blade-component="base-box"
             style={
               Array [
                 Object {},
@@ -602,6 +621,7 @@ exports[`<OTPInput /> should render 1`] = `
             }
           >
             <View
+              data-blade-component="base-box"
               display="flex"
               flexDirection="column"
               position="relative"
@@ -617,6 +637,7 @@ exports[`<OTPInput /> should render 1`] = `
             >
               <View
                 currentInteraction="default"
+                data-blade-component="base-box"
                 display="flex"
                 flexDirection="row"
                 position="relative"
@@ -650,6 +671,7 @@ exports[`<OTPInput /> should render 1`] = `
                     }
                   }
                   autoCompleteType="sms-otp"
+                  data-blade-component="styled-base-input"
                   editable={true}
                   id="otp-37-input-38-3-67-input-68"
                   isFocused={false}
@@ -719,6 +741,7 @@ exports[`<OTPInput /> should render 1`] = `
           </View>
         </View>
         <View
+          data-blade-component="base-box"
           maxWidth="40px"
           style={
             Array [
@@ -733,6 +756,7 @@ exports[`<OTPInput /> should render 1`] = `
           }
         >
           <View
+            data-blade-component="base-box"
             style={
               Array [
                 Object {},
@@ -740,6 +764,7 @@ exports[`<OTPInput /> should render 1`] = `
             }
           >
             <View
+              data-blade-component="base-box"
               display="flex"
               flexDirection="column"
               position="relative"
@@ -755,6 +780,7 @@ exports[`<OTPInput /> should render 1`] = `
             >
               <View
                 currentInteraction="default"
+                data-blade-component="base-box"
                 display="flex"
                 flexDirection="row"
                 position="relative"
@@ -788,6 +814,7 @@ exports[`<OTPInput /> should render 1`] = `
                     }
                   }
                   autoCompleteType="sms-otp"
+                  data-blade-component="styled-base-input"
                   editable={true}
                   id="otp-37-input-38-4-73-input-74"
                   isFocused={false}
@@ -857,6 +884,7 @@ exports[`<OTPInput /> should render 1`] = `
           </View>
         </View>
         <View
+          data-blade-component="base-box"
           maxWidth="40px"
           style={
             Array [
@@ -871,6 +899,7 @@ exports[`<OTPInput /> should render 1`] = `
           }
         >
           <View
+            data-blade-component="base-box"
             style={
               Array [
                 Object {},
@@ -878,6 +907,7 @@ exports[`<OTPInput /> should render 1`] = `
             }
           >
             <View
+              data-blade-component="base-box"
               display="flex"
               flexDirection="column"
               position="relative"
@@ -893,6 +923,7 @@ exports[`<OTPInput /> should render 1`] = `
             >
               <View
                 currentInteraction="default"
+                data-blade-component="base-box"
                 display="flex"
                 flexDirection="row"
                 position="relative"
@@ -926,6 +957,7 @@ exports[`<OTPInput /> should render 1`] = `
                     }
                   }
                   autoCompleteType="sms-otp"
+                  data-blade-component="styled-base-input"
                   editable={true}
                   id="otp-37-input-38-5-79-input-80"
                   isFocused={false}
@@ -997,6 +1029,7 @@ exports[`<OTPInput /> should render 1`] = `
       </View>
     </View>
     <View
+      data-blade-component="base-box"
       style={
         Array [
           Object {

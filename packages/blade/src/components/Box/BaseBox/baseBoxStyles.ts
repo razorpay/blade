@@ -1,4 +1,6 @@
 import type { CSSObject } from 'styled-components';
+import getIn from 'lodash/get';
+import isEmpty from 'lodash/isEmpty';
 import type {
   BaseBoxProps,
   MakeValueResponsive,
@@ -7,9 +9,10 @@ import type {
 } from './types';
 import type { Breakpoints } from '~tokens/global';
 import { breakpoints } from '~tokens/global';
-import { getMediaQuery } from '~src/utils/getMediaQuery';
-import { isReactNative, isEmpty, getIn, makeSpace, makeBorderSize } from '~utils';
+import { isReactNative, getMediaQuery } from '~utils';
 import type { Theme } from '~components/BladeProvider';
+import { makeSpace } from '~utils/makeSpace';
+import { makeBorderSize } from '~utils/makeBorderSize';
 
 /**
  * A helper function that returns the exact value for that breakpoint on passing the prop and breakpoint
@@ -239,6 +242,11 @@ const getAllProps = (
 
     // Visual props
     backgroundColor: getColorValue(props.backgroundColor, props.theme, breakpoint),
+    backgroundImage: getResponsiveValue(props.backgroundImage, breakpoint),
+    backgroundSize: getResponsiveValue(props.backgroundSize, breakpoint),
+    backgroundPosition: getResponsiveValue(props.backgroundPosition, breakpoint),
+    backgroundOrigin: getResponsiveValue(props.backgroundOrigin, breakpoint),
+    backgroundRepeat: getResponsiveValue(props.backgroundRepeat, breakpoint),
     borderRadius: getBorderRadiusValue(props.borderRadius, props.theme, breakpoint),
     lineHeight: getSpacingValue(props.lineHeight, props.theme, breakpoint),
     border: getResponsiveValue(props.border, breakpoint),
