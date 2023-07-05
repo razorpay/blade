@@ -50,27 +50,23 @@ Currently, whenever we're applying color related properties on components (eg. `
 
 ```tsx
 // StyledAccordionButton.web.tsx
-{
-  // ...
-  color: theme.colors.surface.action.icon.hover.lowContrast;
-  // ...
-}
+// ...
+color: theme.colors.surface.action.icon.hover.lowContrast;
+// ...
 ```
 
 Such occurrences lead to FoUC because `theme` is updated only after hydration. Now consider using [CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) here:
 
 ```tsx
 // StyledAccordionButton.web.tsx
-{
-  // ...
-  color: var(--colors-surface-action-icon-hover-lowContrast);
-  // ...
-}
+// ...
+color: var(--colors-surface-action-icon-hover-lowContrast);
+// ...
 ```
 
 Anytime we change this variable `--colors-surface-action-icon-hover-lowContrast` in CSS _(even before hydration)_, it would reflect the changes on the UI immediately. Even if React fails to hydrate, the color changes will get reflected.
 
-This is approach and the bulk of change that would be required on Blade side, following sub-sections cover details on achieving the same.
+This approach is the bulk of changes that would be required on Blade side, following sub-sections cover details on achieving the same.
 
 ### Generate CSS variables
 
@@ -83,11 +79,9 @@ Since most users don't need to include the CSS theme files, we can populate thes
 Writing `var(--colors-surface-action-icon-hover-lowContrast)` like syntax every time is cumbersome and error prone. Instead we can add a utility that reads color tokens from CSS variables:
 
 ```tsx
-{
-  //...
-  // returns the CSS variable: var(--colors-surface-action-icon-hover-lowContrast)
-  color: getColorFromCSSVariables('surface.action.icon.hover.lowContrast');
-}
+//...
+// returns the CSS variable: var(--colors-surface-action-icon-hover-lowContrast)
+color: getColorFromCSSVariables('surface.action.icon.hover.lowContrast');
 ```
 
 To keep parity with native, the `.native` version of this utility would operate on `theme` so `.native` modules will continue to work as it is.
