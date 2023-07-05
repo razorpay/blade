@@ -54,16 +54,8 @@ export const transformFrameOrGroup = async (
       type: 'string',
     };
 
-    const justifyContent = getFlexAlignmentFromAxisAlignment(
-      bladeFrame.layoutMode === LAYOUT_MODES.HORIZONTAL
-        ? bladeFrame.primaryAxisAlignItems
-        : bladeFrame.counterAxisAlignItems,
-    );
-    const alignItems = getFlexAlignmentFromAxisAlignment(
-      bladeFrame.layoutMode === LAYOUT_MODES.HORIZONTAL
-        ? bladeFrame.counterAxisAlignItems
-        : bladeFrame.primaryAxisAlignItems,
-    );
+    const justifyContent = getFlexAlignmentFromAxisAlignment(bladeFrame.primaryAxisAlignItems);
+    const alignItems = getFlexAlignmentFromAxisAlignment(bladeFrame.counterAxisAlignItems);
 
     props.justifyContent = { value: justifyContent, type: 'string' };
     props.alignItems = { value: alignItems, type: 'string' };
@@ -84,18 +76,30 @@ export const transformFrameOrGroup = async (
       type: paddingValue.length > 1 ? 'array' : 'string',
     };
 
-    if (bladeFrame.primaryAxisSizingMode === 'FIXED') {
-      const isFixedHeight = bladeFrame.layoutMode === 'VERTICAL';
-      props[isFixedHeight ? 'height' : 'width'] = {
-        value: `${isFixedHeight ? bladeFrame.height : bladeFrame.width}px`,
+    if (bladeFrame.layoutSizingVertical === 'FIXED') {
+      props.height = {
+        value: `${bladeFrame.height}px`,
         type: 'string',
       };
     }
 
-    if (bladeFrame.counterAxisSizingMode === 'FIXED') {
-      const isFixedHeight = bladeFrame.layoutMode === 'HORIZONTAL';
-      props[isFixedHeight ? 'height' : 'width'] = {
-        value: `${isFixedHeight ? bladeFrame.height : bladeFrame.width}px`,
+    if (bladeFrame.layoutSizingHorizontal === 'FIXED') {
+      props.width = {
+        value: `${bladeFrame.width}px`,
+        type: 'string',
+      };
+    }
+
+    if (bladeFrame.layoutSizingVertical === 'FILL') {
+      props.flex = {
+        value: '1 0',
+        type: 'string',
+      };
+    }
+
+    if (bladeFrame.layoutSizingHorizontal === 'FILL') {
+      props.flex = {
+        value: '1 0',
         type: 'string',
       };
     }

@@ -90,6 +90,8 @@ const convertFrameToNode = (
       ? figmaNode.fills.filter((fill) => fill.visible)
       : figmaNode.fills,
     fillStyleId: figmaNode.fillStyleId,
+    layoutSizingHorizontal: figmaNode.layoutSizingHorizontal,
+    layoutSizingVertical: figmaNode.layoutSizingVertical,
   };
   return bladeFrame;
 };
