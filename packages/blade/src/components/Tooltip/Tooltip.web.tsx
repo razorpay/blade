@@ -32,6 +32,7 @@ import { makeAccessible } from '~utils/makeAccessible';
 const Tooltip = ({
   content,
   children,
+  zIndex,
   placement = 'top',
   onOpenChange,
 }: TooltipProps): React.ReactElement => {
@@ -103,6 +104,7 @@ const Tooltip = ({
             ref={refs.setFloating}
             style={floatingStyles}
             pointerEvents="none"
+            zIndex={zIndex ?? 100}
             {...getFloatingProps()}
             {...metaAttribute({ name: MetaConstants.Tooltip })}
           >
