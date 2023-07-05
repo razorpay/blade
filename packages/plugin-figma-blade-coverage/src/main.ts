@@ -1,30 +1,3 @@
-/**
- * TODO
- * [x] count if the components are blade/local components
- * [x] tiny ui to display the information
- * [x] Bug with the component ids changing from file to file
- * [x] consider the top level nodes as root only if they are frame nodes else ignore
- * [x] change the colors of coverage based on the %
- * [x] count text nodes to be blade if they use styles from blade because they don't use typo component
- * [x] fix the use case of figma.mixed
- * [x] exclude section as well and count that in top level main frame
- * [x] cleanup
- * [x] skip hidden layers from being traversed
- * [x] group all blade cards
- * [x] vectors ignore
- * [] number of times plugin is run metric
- * [] background color in non blade - frame, rectangles, etc
- *  - can't because it'll create too much noise esp for landing pages
- * [] prototype use cases for custom components
- * --release v1--
- * [] highlight the non blade nodes
- * [] show plugin ui config
- *    - what position to show the coverage report
- *    - highlight the non blade textstyles?
- *    - highlight the non blade components?
- *    - highlight non blade styles?
- * [] send analytics randomly once or twice a day
- */
 import {
   getParentNode,
   traverseNode,
@@ -49,7 +22,7 @@ type CoverageMetrics = {
 };
 
 const MAIN_FRAME_NODES = ['FRAME', 'SECTION'];
-const NODES_SKIP_FROM_COVERAGE = ['GROUP', 'SECTION', 'VECTOR'];
+const NODES_SKIP_FROM_COVERAGE = ['GROUP', 'SECTION', 'VECTOR', 'FRAME'];
 const nonBladeHighlighterNodes: BaseNode[] = [];
 const bladeCoverageCards: BaseNode[] = [];
 
@@ -117,6 +90,7 @@ const renderCoverageCard = async ({
       COVERAGE_CARD_COMPONENT_KEY,
     );
     const coverageCardInstance = coverageCardComponent.createInstance();
+    coverageCardInstance.visible = false;
     coverageCardInstance.x = mainFrameNode.x + 150; // 150 because we want to prevent conflict with the frame name
     coverageCardInstance.y = mainFrameNode.y - coverageCardComponent.height;
 
@@ -166,6 +140,7 @@ const renderCoverageCard = async ({
         traversedNode.fillStyleId = coverageColorIntent;
       }
     });
+    detachedCoverageCard.visible = true;
     bladeCoverageCards.push(detachedCoverageCard);
   } catch (error: unknown) {
     console.error(error);
@@ -281,19 +256,18 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
 
           // this check is for typography components, if the typography uses color and text both from blade styles then they are typography blade components
           if (
-            BLADE_TEXT_STYLE_IDS.includes(traversedNodeTextStyleId) &&
-            BLADE_COLOR_STYLE_IDS.includes(traversedNodeColorStyleId)
+            (isMixedTextStyleOfBlade || BLADE_TEXT_STYLE_IDS.includes(traversedNodeTextStyleId)) &&
+            (isMixedColorStyleOfBlade || BLADE_COLOR_STYLE_IDS.includes(traversedNodeColorStyleId))
           ) {
-            bladeComponents++;
-          } else if (isMixedColorStyleOfBlade && isMixedTextStyleOfBlade) {
             bladeComponents++;
           }
         } else if (traversedNode.type === 'LINE') {
           // check if the line is using Blade's color styles
           const traversedNodeColorStyleId = traversedNode.strokeStyleId.split(',')[0];
-
           if (BLADE_COLOR_STYLE_IDS.includes(traversedNodeColorStyleId ?? '')) {
             bladeColorStyles++;
+            // even though the color matches blade, we want to encourage people to use Divider component instead
+            highlightNonBladeNode(traversedNode);
           } else {
             nonBladeColorStyles++;
             highlightNonBladeNode(traversedNode);
@@ -448,5 +422,4 @@ export default main;
   },
   "userId": "test-user-9689q",
   "event": "Blade Coverage Plugin Used"
-}
- */
+} */

@@ -14,8 +14,6 @@ packages/blade/tokens.d.ts
 packages/blade/utils.js
 packages/blade/utils.d.ts
 
-#temporary ignore
-packages/plugin-figma-blade-coverage/*
 
 # misc
 .DS_Store
