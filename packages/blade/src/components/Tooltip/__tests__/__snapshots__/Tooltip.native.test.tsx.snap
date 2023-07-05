@@ -196,6 +196,7 @@ exports[`<Tooltip /> should render 1`] = `
                 "paddingTop": 8,
                 "position": "absolute",
                 "top": -200,
+                "zIndex": 100,
               },
               Object {
                 "elevation": 4,
@@ -214,6 +215,7 @@ exports[`<Tooltip /> should render 1`] = `
               "left": -200,
               "position": "absolute",
               "top": -200,
+              "zIndex": 100,
             }
           }
         >
