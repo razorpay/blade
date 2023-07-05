@@ -46,6 +46,9 @@ It excludes the following nodes from coverage calculation:
 
 [![Watch the video]](https://github.com/razorpay/blade/assets/11384858/79a9f5e9-42fe-48f8-b011-38d45d22140a)
 
+<br/>
+<br/>
+
 ## Reading the Coverage Card
 
 ![Sample Coverage Card](./assets/blade-coverage-card-sample.png)
@@ -60,20 +63,23 @@ It excludes the following nodes from coverage calculation:
   - If the coverage is **>50% and <70%** we display a message saying its "Low" and you shall improve to reach at least 70%
   - If the coverage is **>70%** we display a message saying its "Good" and the design is acceptable but there's still room for improvement
 
+<br/>
+<br/>
+
 ### Non Blade Items
 
 - **Components:** Number of components which are **not** used from Blade but used from other libraries or they are local components.
 - **Text Styles:** Number of typography styles not used from Blade.
 - **Color Styles:** Number of color styles not used from Blade.
 
-### TODO
+## TODO
 
 - [ ] number of times plugin is run - send to segment
 - [ ] background color in non blade - frame, rectangles, etc
 
   - can't because it'll create too much noise esp for landing pages
 
-#### post v1 release
+### post v1 release
 
 - [ ] show plugin ui config
 - [ ] send analytics randomly once or twice a day
@@ -81,7 +87,7 @@ It excludes the following nodes from coverage calculation:
 - [ ] identify how to differentiate between a layout node and custom component node(right now all the frame nodes are ignored from coverage, only children are counted)
 - [ ] audit other styles - border-radius, space, etc.
 
-#### Known Issues:
+### Known Issues:
 
 - If you create a component-set with blade components for prototype purpose then the plugin will highlight the component set(parent) as non-blade because its a local instance.
 - Can't identify things like Amount component if they don't use amount component but it passes since it uses typography tokens
