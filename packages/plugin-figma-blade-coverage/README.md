@@ -6,6 +6,8 @@ It calculates the coverage and puts a tiny coverage card on top of each frame wi
 
 [![Watch the video]](https://github.com/razorpay/blade/assets/11384858/23db53e8-4aa9-40e0-ac38-faa8f0c91b9b)
 
+<br/>
+
 ## The Why?
 
 > _Design system adoption really begins in the design phase. If designers don’t know that components exist, we shouldn’t expect our engineers to know either. For our designers, the design phase happens in Figma.
@@ -47,7 +49,6 @@ It excludes the following nodes from coverage calculation:
 [![Watch the video]](https://github.com/razorpay/blade/assets/11384858/79a9f5e9-42fe-48f8-b011-38d45d22140a)
 
 <br/>
-<br/>
 
 ## Reading the Coverage Card
 
@@ -63,14 +64,13 @@ It excludes the following nodes from coverage calculation:
   - If the coverage is **>50% and <70%** we display a message saying its "Low" and you shall improve to reach at least 70%
   - If the coverage is **>70%** we display a message saying its "Good" and the design is acceptable but there's still room for improvement
 
-<br/>
-<br/>
-
 ### Non Blade Items
 
 - **Components:** Number of components which are **not** used from Blade but used from other libraries or they are local components.
 - **Text Styles:** Number of typography styles not used from Blade.
 - **Color Styles:** Number of color styles not used from Blade.
+
+<br/>
 
 ## TODO
 
