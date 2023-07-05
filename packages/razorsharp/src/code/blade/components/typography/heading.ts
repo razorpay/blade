@@ -1,14 +1,11 @@
 import { jsxValue } from '../../utils/attributes';
-import { component } from '../../utils/component';
 import { findTextByLayerName } from '../../utils/findTextByLayerName';
-import { bladeImports } from '../../utils/imports';
-import { headingDefaultValues } from './constants';
-import type { TransformFunctionReturnType } from '~/code/types/TransformFunction';
+import type { ServerFunctionReturnType } from '~/code/types/TransformFunction';
 import type { BladeComponentInstanceNode, BladeProps } from '~/code/types/Blade';
 
 export const transformHeading = (
   bladeInstance: BladeComponentInstanceNode,
-): TransformFunctionReturnType => {
+): ServerFunctionReturnType => {
   const props: BladeProps = {};
 
   const componentProperties = bladeInstance.componentProperties;
@@ -36,11 +33,8 @@ export const transformHeading = (
   const children = findTextByLayerName(bladeInstance, 'Text') ?? '';
 
   return {
-    component: component('Heading', {
-      props,
-      defaultValues: headingDefaultValues,
-      children,
-    }),
-    imports: bladeImports(['Heading']),
+    componentName: 'Heading',
+    props,
+    children: [children],
   };
 };

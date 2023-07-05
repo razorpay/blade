@@ -4,7 +4,7 @@ import { findNode } from '../../utils/findNode';
 import { convertFigmaIconNameToBladeIconName } from '../../utils/iconUtils';
 import { bladeImports } from '../../utils/imports';
 import { defaultValues } from './constants';
-import type { TransformFunctionReturnType } from '~/code/types/TransformFunction';
+import type { ServerFunctionReturnType } from '~/code/types/TransformFunction';
 import type {
   BladeComponentInstanceNode,
   BladeNode,
@@ -18,7 +18,7 @@ const isBladeVectorNode = (node: BladeNode): node is BladeVectorNode => {
 
 export const transformIcon = (
   bladeInstance: BladeComponentInstanceNode,
-): TransformFunctionReturnType => {
+): ServerFunctionReturnType => {
   const props: BladeProps = {};
 
   const bladeIconName = convertFigmaIconNameToBladeIconName(

@@ -1,17 +1,14 @@
 import { jsxValue } from '../../utils/attributes';
-import { component } from '../../utils/component';
 import { findNode } from '../../utils/findNode';
 import { findTextByLayerName } from '../../utils/findTextByLayerName';
 import { findIconByLayerName } from '../../utils/findIconByLayerName';
-import { bladeImports } from '../../utils/imports';
 import { transformButtonVariant } from './utils';
-import { defaultValues } from './constants';
-import type { TransformFunctionReturnType } from '~/code/types/TransformFunction';
+import type { ServerFunctionReturnType } from '~/code/types/TransformFunction';
 import type { BladeComponentInstanceNode, BladeProps } from '~/code/types/Blade';
 
 export const transformButton = (
   bladeComponentInstance: BladeComponentInstanceNode,
-): TransformFunctionReturnType => {
+): ServerFunctionReturnType => {
   const componentProperties = bladeComponentInstance.componentProperties;
 
   const size = componentProperties.size?.value;
@@ -62,11 +59,8 @@ export const transformButton = (
   };
 
   return {
-    component: component('Button', {
-      props,
-      defaultValues,
-      children,
-    }),
-    imports: bladeImports(['Button', icon]),
+    componentName: 'Button',
+    props,
+    children: [children],
   };
 };

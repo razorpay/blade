@@ -1,17 +1,16 @@
 // eslint-disable-next-line import/no-cycle
-import { generateBladeCode } from '../../main';
 import { convertStyleNameToBladeName, isBackgroundColorToken } from '../../utils/color';
-import { component } from '../../utils/component';
-import { bladeImports, mergeImports } from '../../utils/imports';
 import { getPaddingValue, getTokenFromSpacingValue } from '../../utils/spacing';
-import { defaultValues, LAYOUT_MODES } from './constants';
+// eslint-disable-next-line import/no-cycle
+import { generateServerCode } from '../../server';
+import { LAYOUT_MODES } from './constants';
 import { getFlexAlignmentFromAxisAlignment } from './utils';
-import type { TransformFunctionReturnType } from '~/code/types/TransformFunction';
+import type { ServerFunctionReturnType } from '~/code/types/TransformFunction';
 import type { BladeFrameNode, BladeGroupNode, BladeProps } from '~/code/types/Blade';
 
 export const transformFrameOrGroup = (
   bladeFrame: BladeFrameNode | BladeGroupNode,
-): TransformFunctionReturnType => {
+): ServerFunctionReturnType => {
   const props: BladeProps = {};
 
   // TODO groups can have item spacing as well
@@ -19,20 +18,17 @@ export const transformFrameOrGroup = (
   // for groups, use relative transform matrix to find the
   // distances between elements in a group
   if (bladeFrame.type === 'GROUP') {
-    let children: TransformFunctionReturnType = { component: '', imports: {} };
+    let children: ServerFunctionReturnType[] = [];
     if (bladeFrame.children && bladeFrame.children.length > 0) {
-      children = generateBladeCode({
+      children = generateServerCode({
         bladeNodes: bladeFrame.children,
       });
     }
 
     return {
-      component: component('Box', {
-        props,
-        defaultValues,
-        children: children.component,
-      }),
-      imports: mergeImports(children.imports ?? {}, bladeImports(['Box'])),
+      componentName: 'Box',
+      props,
+      children: children ?? [],
     };
   }
 
@@ -127,19 +123,12 @@ export const transformFrameOrGroup = (
     }
   }
 
-  let children: TransformFunctionReturnType = { component: '', imports: {} };
+  let children: ServerFunctionReturnType[] = [];
   if (bladeFrame.children && bladeFrame.children.length > 0) {
-    children = generateBladeCode({
+    children = generateServerCode({
       bladeNodes: bladeFrame.children,
     });
   }
 
-  return {
-    component: component('Box', {
-      props,
-      defaultValues,
-      children: children.component,
-    }),
-    imports: mergeImports(children.imports ?? {}, bladeImports(['Box'])),
-  };
+  return { componentName: 'Box', props, children: children ?? [] };
 };

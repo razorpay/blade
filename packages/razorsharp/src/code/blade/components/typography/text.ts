@@ -1,14 +1,11 @@
 import { jsxValue } from '../../utils/attributes';
-import { component } from '../../utils/component';
 import { findTextByLayerName } from '../../utils/findTextByLayerName';
-import { bladeImports } from '../../utils/imports';
-import { textDefaultValues } from './constants';
-import type { TransformFunctionReturnType } from '~/code/types/TransformFunction';
+import type { ServerFunctionReturnType } from '~/code/types/TransformFunction';
 import type { BladeComponentInstanceNode, BladeProps } from '~/code/types/Blade';
 
 export const transformText = (
   bladeInstance: BladeComponentInstanceNode,
-): TransformFunctionReturnType => {
+): ServerFunctionReturnType => {
   const props: BladeProps = {};
 
   const componentProperties = bladeInstance.componentProperties;
@@ -41,11 +38,8 @@ export const transformText = (
   const children = findTextByLayerName(bladeInstance, 'Text') ?? '';
 
   return {
-    component: component('Text', {
-      props,
-      defaultValues: textDefaultValues,
-      children,
-    }),
-    imports: bladeImports(['Text']),
+    componentName: 'Text',
+    props,
+    children: [children],
   };
 };
