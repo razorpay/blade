@@ -10,6 +10,8 @@ type TooltipProps = {
   content: string;
   /**
    * Sets the zIndex of tooltip content
+   *
+   * @default 100
    */
   zIndex?: number;
   /**
