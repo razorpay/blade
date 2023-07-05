@@ -15,7 +15,7 @@ packages/blade/utils.js
 packages/blade/utils.d.ts
 
 #temporary ignore
-packages/tools/figma-plugin-version-history
+packages/plugin-figma-blade-coverage
 
 # misc
 .DS_Store

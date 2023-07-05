@@ -10,7 +10,12 @@
  * [x] exclude section as well and count that in top level main frame
  * [x] cleanup
  * [x] skip hidden layers from being traversed
+ * [x] group all blade cards
+ * [x] vectors ignore
  * [] number of times plugin is run metric
+ * [] background color in non blade - frame, rectangles, etc
+ *  - can't because it'll create too much noise esp for landing pages
+ * [] prototype use cases for custom components
  * --release v1--
  * [] highlight the non blade nodes
  * [] show plugin ui config
@@ -44,8 +49,9 @@ type CoverageMetrics = {
 };
 
 const MAIN_FRAME_NODES = ['FRAME', 'SECTION'];
-const NODES_SKIP_FROM_COVERAGE = ['GROUP', 'SECTION'];
+const NODES_SKIP_FROM_COVERAGE = ['GROUP', 'SECTION', 'VECTOR'];
 const nonBladeHighlighterNodes: BaseNode[] = [];
+const bladeCoverageCards: BaseNode[] = [];
 
 const highlightNonBladeNode = (node: SceneNode): void => {
   const highlighterBox = figma.createRectangle();
@@ -71,7 +77,7 @@ const traverseUpTillMainFrame = (node: BaseNode): BaseNode => {
       }
     }
   } catch (error: unknown) {
-    console.error({ error });
+    console.error(error);
     figma.notify('⚠️ Error in traversing main frame node. Please try again', { error: true });
     figma.closePlugin();
   }
@@ -145,8 +151,8 @@ const renderCoverageCard = async ({
       'nonBladeColorStyles#45789:6': nonBladeColorStyles.toString().padStart(2, '0'),
     });
 
-    const detachedCard = coverageCardInstance.detachInstance();
-    traverseNode(detachedCard, (traversedNode) => {
+    const detachedCoverageCard = coverageCardInstance.detachInstance();
+    traverseNode(detachedCoverageCard, (traversedNode) => {
       if (traversedNode.type === 'TEXT') {
         if (['bladeCoverageType', 'bladeCoverage'].includes(traversedNode.name)) {
           traversedNode.setRangeFillStyleId(
@@ -160,8 +166,9 @@ const renderCoverageCard = async ({
         traversedNode.fillStyleId = coverageColorIntent;
       }
     });
+    bladeCoverageCards.push(detachedCoverageCard);
   } catch (error: unknown) {
-    console.error({ error });
+    console.error(error);
     figma.notify('⚠️ Error in rendering coverage card. Please try again', { error: true });
     figma.closePlugin();
   }
@@ -292,12 +299,14 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
             highlightNonBladeNode(traversedNode);
           }
         }
+
         if (
           ![...NODES_SKIP_FROM_COVERAGE, 'INSTANCE', 'TEXT', 'LINE'].includes(traversedNode.type) &&
           getParentNode(traversedNode)?.type !== 'PAGE'
         ) {
           highlightNonBladeNode(traversedNode);
         }
+
         if (
           getParentNode(traversedNode)?.type !== 'PAGE' &&
           !NODES_SKIP_FROM_COVERAGE.includes(traversedNode.type)
@@ -330,7 +339,7 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
       },
     );
   } catch (error: unknown) {
-    console.error({ error });
+    console.error(error);
     figma.notify('⚠️ Error in rendering coverage card. Please try again', { error: true });
     figma.closePlugin();
   }
@@ -361,7 +370,7 @@ const getPageMainFrameNodes = (nodes: SceneNode[]): SceneNode[] => {
       }
     }
   } catch (error: unknown) {
-    console.error({ error });
+    console.error(error);
     figma.notify('⚠️ Error in identifying main frame node. Please try again', { error: true });
     figma.closePlugin();
   }
@@ -371,7 +380,8 @@ const getPageMainFrameNodes = (nodes: SceneNode[]): SceneNode[] => {
 
 const main = async (): Promise<void> => {
   // plugin used
-  // const pluginUsageCount = await incrementTotalUseCountAsync();
+  const pluginUsageCount = await incrementTotalUseCountAsync();
+  console.log({ pluginUsageCount });
   // const analytics = AnalyticsBrowser.load({ writeKey: '6lpfX5loXnTbBFVo2FbJHpjins0hGaC4' });
   // await analytics.track('Blade Coverage Plugin Used', {
   //   pluginUsageCount,
@@ -408,8 +418,18 @@ const main = async (): Promise<void> => {
         await renderCoverageCard({ mainFrameNode, ...coverageMetrics });
       }
     }
-    const groupNode = figma.group(nonBladeHighlighterNodes, figma.currentPage);
-    groupNode.name = 'Non Blade Items';
+
+    if (nonBladeHighlighterNodes.length) {
+      const nonBladeHighterNodesGroup = figma.group(nonBladeHighlighterNodes, figma.currentPage);
+      nonBladeHighterNodesGroup.name = 'Non Blade Items';
+      nonBladeHighterNodesGroup.expanded = false;
+    }
+
+    if (bladeCoverageCards.length) {
+      const bladeCoverageCardsGroup = figma.group(bladeCoverageCards, figma.currentPage);
+      bladeCoverageCardsGroup.name = 'Blade Coverage Cards';
+      bladeCoverageCardsGroup.expanded = false;
+    }
   }
   figma.closePlugin();
 };
