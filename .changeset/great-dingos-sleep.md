@@ -2,7 +2,7 @@
 "@razorpay/blade": major
 ---
 
-chore: make OTPInput fluid width (#104)
+fix: make OTPInput fluid width
 
 ## ⚠️ Breaking change for OTPInput component
 Changes the OTPInput to have a fluid width compared to a fixed width of 36px per field earlier
