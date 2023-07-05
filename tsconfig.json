@@ -1,8 +1,5 @@
 {
-  "exclude": [
-    "node_modules",
-    "packages/plugin-figma-blade-coverage"
-  ] /* Enable incremental compilation */,
+  "exclude": ["node_modules"] /* Enable incremental compilation */,
   "include": ["packages"],
   "compilerOptions": {
     "skipLibCheck": true,
