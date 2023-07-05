@@ -1,7 +1,7 @@
 {
-  "api": "1.0.0",
+  "api": "1.0.1",
   "editorType": ["figma"],
-  "id": "1257996034575607686",
+  "id": "plugin-figma-blade-coverage",
   "name": "Blade Coverage",
   "main": "build/main.js",
   "ui": "build/ui.js"

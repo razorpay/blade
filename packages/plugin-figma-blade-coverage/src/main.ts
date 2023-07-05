@@ -1,10 +1,12 @@
+/* eslint-disable @typescript-eslint/restrict-plus-operands */
 import {
   getParentNode,
   traverseNode,
   getSelectedNodesOrAllNodes,
-  incrementTotalUseCountAsync,
+  // incrementTotalUseCountAsync,
 } from '@create-figma-plugin/utilities';
-// import { AnalyticsBrowser } from '@segment/analytics-next';
+// import { Analytics } from '@segment/analytics-node';
+
 import {
   BLADE_COLOR_STYLE_IDS,
   BLADE_COMPONENT_IDS,
@@ -28,8 +30,10 @@ const bladeCoverageCards: BaseNode[] = [];
 
 const highlightNonBladeNode = (node: SceneNode): void => {
   const highlighterBox = figma.createRectangle();
-  const nodeType =
-    node.type.toUpperCase().charAt(0).toUpperCase() + node.type.toLowerCase().slice(1);
+  const nodeType = `${node.type
+    .toUpperCase()
+    .charAt(0)
+    .toUpperCase()}${node.type.toLowerCase().slice(1)}`;
   highlighterBox.name = `Type: ${nodeType}, Name: ${node.name}`;
   // selection node just gives the x and y relative to the frame we need WRT canvas hence, we need to use absoluteTransform prop
   highlighterBox.x = node.absoluteTransform[0][2] - 1;
@@ -354,8 +358,8 @@ const getPageMainFrameNodes = (nodes: SceneNode[]): SceneNode[] => {
 
 const main = async (): Promise<void> => {
   // plugin used
-  const pluginUsageCount = await incrementTotalUseCountAsync();
-  console.log({ pluginUsageCount });
+  // const pluginUsageCount = await incrementTotalUseCountAsync();
+
   // const analytics = AnalyticsBrowser.load({ writeKey: '6lpfX5loXnTbBFVo2FbJHpjins0hGaC4' });
   // await analytics.track('Blade Coverage Plugin Used', {
   //   pluginUsageCount,
