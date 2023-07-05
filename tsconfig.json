@@ -1,7 +1,7 @@
 {
   "exclude": [
     "node_modules",
-    "packages/tools/figma-plugin-version-history/**"
+    "packages/plugin-figma-blade-coverage"
   ] /* Enable incremental compilation */,
   "include": ["packages"],
   "compilerOptions": {
