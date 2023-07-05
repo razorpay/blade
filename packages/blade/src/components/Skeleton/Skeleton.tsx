@@ -7,6 +7,8 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getStyledProps } from '~components/Box/styledProps';
 import { makeTypographySize } from '~utils';
 import { useTheme } from '~components/BladeProvider';
+import { makeAccessible } from '~utils/makeAccessible';
+
 type TextTypes =
   | 'body-small'
   | 'body-medium'
@@ -82,6 +84,7 @@ const Skeleton = ({
       placeSelf={placeSelf}
       order={order}
       contrast={contrast}
+      {...makeAccessible({ hidden: true })}
       {...getStyledProps(props)}
     />
   );

@@ -5,6 +5,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   text-align: left;
   padding: 24px;
   border-radius: 4px;
+  box-shadow: 0 4px 8px -2px hsla(217,56%,17%,0.1),0 2px 4px -2px hsla(217,56%,17%,0.06);
 }
 
 .c3 {
@@ -415,6 +416,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
   text-align: left;
   padding: 24px;
   border-radius: 4px;
+  box-shadow: 0 4px 8px -2px hsla(217,56%,17%,0.1),0 2px 4px -2px hsla(217,56%,17%,0.06);
 }
 
 .c2 {
@@ -787,6 +789,7 @@ exports[`<Card /> should render a Card without 0 padding 1`] = `
   text-align: left;
   padding: 0px;
   border-radius: 4px;
+  box-shadow: 0 4px 8px -2px hsla(217,56%,17%,0.1),0 2px 4px -2px hsla(217,56%,17%,0.06);
 }
 
 .c1 {
@@ -824,6 +827,7 @@ exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
   text-align: left;
   padding: 24px;
   border-radius: 4px;
+  box-shadow: none;
 }
 
 .c1 {
@@ -864,6 +868,7 @@ exports[`<Card /> should render a plain Card 1`] = `
   text-align: left;
   padding: 24px;
   border-radius: 4px;
+  box-shadow: 0 24px 48px -12px hsla(217,56%,17%,0.18);
 }
 
 .c1 {

@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Skeleton /> should render skeleton 1`] = `
+.c0 {
+  height: 50px;
+  width: 100%;
+}
+
+.c1 {
+  background-color: hsla(220,30%,96%,1);
+  -webkit-animation: iEdboC 900ms cubic-bezier(0.5,0,0,1) infinite alternate;
+  animation: iEdboC 900ms cubic-bezier(0.5,0,0,1) infinite alternate;
+}
+
+<div>
+  <div
+    aria-hidden="true"
+    class="c0 c1"
+    data-blade-component="base-box"
+  />
+</div>
+`;
+
+exports[`<Skeleton /> should support margin and other layout props 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 {
+  margin: 4px;
+  height: 50px;
+  width: 100%;
+}
+
+.c2 {
+  background-color: hsla(220,30%,96%,1);
+  -webkit-animation: iEdboC 900ms cubic-bezier(0.5,0,0,1) infinite alternate;
+  animation: iEdboC 900ms cubic-bezier(0.5,0,0,1) infinite alternate;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="box"
+  >
+    <div
+      aria-hidden="true"
+      class="c1 c2"
+      data-blade-component="base-box"
+    />
+    ,
+    <div
+      aria-hidden="true"
+      class="c1 c2"
+      data-blade-component="base-box"
+    />
+    ,
+  </div>
+</div>
+`;

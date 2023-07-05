@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Skeleton /> should render 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div aria-hidden=\\"true\\" data-blade-component=\\"base-box\\" class=\\"BaseBox-bmPWx PulseAnimationweb__PulseAnimation-sc-184soy3-0 hdzzwq cJgboE\\"></div></div>"`;
+
+exports[`<Skeleton /> should render 2`] = `
+<div
+  data-reactroot=""
+  id="root"
+>
+  <div
+    aria-hidden="true"
+    class="BaseBox-bmPWx PulseAnimationweb__PulseAnimation-sc-184soy3-0 hdzzwq cJgboE"
+    data-blade-component="base-box"
+  />
+</div>
+`;
