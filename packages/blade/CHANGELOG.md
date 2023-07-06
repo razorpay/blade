@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 8.15.2
+
+### Patch Changes
+
+- b2f55b7a: fix(blade): tooltip zIndex issue
+
 ## 8.15.1
 
 ### Patch Changes
