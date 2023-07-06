@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import type { CodeViewerProps } from '@codesandbox/sandpack-react';
-import {
-  Sandpack,
-  SandpackCodeViewer,
-  SandpackProvider,
-  SandpackCodeEditor,
-  SandpackPreview,
-} from '@codesandbox/sandpack-react';
+// import {
+//   Sandpack,
+//   SandpackCodeViewer,
+//   SandpackProvider,
+//   SandpackCodeEditor,
+//   SandpackPreview,
+// } from '@codesandbox/sandpack-react';
 import { DocsContext } from '@storybook/addon-docs';
 import dedent from 'dedent';
 // @ts-expect-error We don't resolve JSON files right now. didn't want to change TS config for single JSON
@@ -17,6 +17,12 @@ import BaseBox from '~components/Box/BaseBox';
 import { castWebType } from '~utils';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
+
+const Sandpack = React.Fragment;
+const SandpackCodeViewer = React.Fragment;
+const SandpackProvider = React.Fragment;
+const SandpackCodeEditor = React.Fragment;
+const SandpackPreview = React.Fragment;
 
 type SandboxProps = {
   children: string;

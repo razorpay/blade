@@ -1,4 +1,4 @@
-import { SandpackCodeEditor, SandpackLayout, SandpackPreview } from '@codesandbox/sandpack-react';
+// import { SandpackCodeEditor, SandpackLayout, SandpackPreview } from '@codesandbox/sandpack-react';
 import type { BaseBoxProps } from './BaseBox';
 import BaseBox from './BaseBox';
 import { Box } from '.';
@@ -13,6 +13,10 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 if (window.top) {
   document.getElementById(window.top.location.hash)?.scrollIntoView();
 }
+
+const SandpackCodeEditor = BaseBox;
+const SandpackLayout = BaseBox;
+const SandpackPreview = BaseBox;
 
 // Storybook's docs page is under iframe so just href="#target" doesn't work (it tries to scroll on parent of iframe)
 // This function uses scrollIntoView instead to scroll then
