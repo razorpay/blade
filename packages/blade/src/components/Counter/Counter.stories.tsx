@@ -73,7 +73,7 @@ Max.args = {
 Max.storyName = 'Max';
 
 const CountersWithVariantTemplate: ComponentStory<typeof CounterComponent> = ({ ...args }) => {
-  const variants = ['positive', 'negative', 'notice', 'information', 'neutral'] as const;
+  const variants = ['positive', 'negative', 'notice', 'information', 'neutral', 'blue'] as const;
 
   return (
     <BaseBox display="flex" flexDirection="column">
