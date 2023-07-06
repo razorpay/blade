@@ -93,6 +93,8 @@ const convertFrameToNode = (
     layoutSizingHorizontal: figmaNode.layoutSizingHorizontal,
     layoutSizingVertical: figmaNode.layoutSizingVertical,
     inferredAutoLayout: figmaNode.inferredAutoLayout,
+    maxHeight: figmaNode.maxHeight,
+    maxWidth: figmaNode.maxWidth,
   };
   return bladeFrame;
 };

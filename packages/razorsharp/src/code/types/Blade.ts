@@ -49,6 +49,8 @@ export interface BladeFrameNode extends BaseNode {
   layoutSizingVertical: FrameNode['layoutSizingVertical'];
   layoutSizingHorizontal: FrameNode['layoutSizingHorizontal'];
   inferredAutoLayout: FrameNode['inferredAutoLayout'];
+  maxWidth: FrameNode['maxWidth'];
+  maxHeight: FrameNode['maxHeight'];
 }
 
 export interface BladeTextNode extends BaseNode {

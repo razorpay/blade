@@ -76,6 +76,20 @@ export const transformFrameOrGroup = async (
       type: paddingValue.length > 1 ? 'array' : 'string',
     };
 
+    if (bladeFrame.maxHeight) {
+      props.maxHeight = {
+        value: `${bladeFrame.maxHeight}px`,
+        type: 'string',
+      };
+    }
+
+    if (bladeFrame.maxWidth) {
+      props.maxWidth = {
+        value: `${bladeFrame.maxWidth}px`,
+        type: 'string',
+      };
+    }
+
     if (bladeFrame.layoutSizingVertical === 'FIXED') {
       props.height = {
         value: `${bladeFrame.height}px`,
