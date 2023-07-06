@@ -193,9 +193,10 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
           let isMixedColorStyleOfBlade = false;
           let traversedNodeColorStyleId = '';
 
-          /** the textSyleId can have figma.mixed. so in that case we need to go character by character
+          /**
+           * The textSyleId can have figma.mixed. so in that case we need to go character by character
            * and do getRangeTextStyleId(charIndex,charIndex+1) instead of textStyleId
-           * */
+           */
           if (traversedNode?.textStyleId === figma.mixed) {
             isMixedTextStyleOfBlade = traversedNode.characters
               .split('')
@@ -333,7 +334,7 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
   };
 };
 
-const getPageMainFrameNodes = (nodes: SceneNode[]): SceneNode[] => {
+const getPageMainFrameNodes = (nodes: readonly SceneNode[]): SceneNode[] => {
   const mainFrameNodes: SceneNode[] = [];
   try {
     for (const node of nodes) {
@@ -369,10 +370,9 @@ const main = async (): Promise<void> => {
   figma.skipInvisibleInstanceChildren = true;
   figma.notify('Calculating Coverage', { timeout: Infinity });
 
-  let nodes: SceneNode[] = [];
+  let nodes: readonly SceneNode[] = [];
   if (figma.currentPage.selection.length > 0) {
     // you already have the selection, run the plugin
-    //@ts-expect-error type 'readonly SceneNode[]' is 'readonly' and cannot be assigned to the mutable type 'SceneNode[]'
     nodes = figma.currentPage.selection;
   } else if (figma.currentPage.type === 'PAGE') {
     // plugin is run from page scope but has no selection, so traverse all the nodes and then measure coverage
