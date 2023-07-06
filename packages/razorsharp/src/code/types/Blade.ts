@@ -48,6 +48,7 @@ export interface BladeFrameNode extends BaseNode {
   fillStyleId: FrameNode['fillStyleId'];
   layoutSizingVertical: FrameNode['layoutSizingVertical'];
   layoutSizingHorizontal: FrameNode['layoutSizingHorizontal'];
+  inferredAutoLayout: FrameNode['inferredAutoLayout'];
 }
 
 export interface BladeTextNode extends BaseNode {
@@ -74,6 +75,8 @@ export interface BladeVectorNode extends BaseNode {
 export interface BladeRectangleNode extends BaseNode {
   type: RectangleNode['type'];
   fills: RectangleNode['fills'];
+  height: RectangleNode['height'];
+  width: RectangleNode['width'];
 }
 
 type JSXType = 'string' | 'boolean' | 'number' | 'instance' | 'array';

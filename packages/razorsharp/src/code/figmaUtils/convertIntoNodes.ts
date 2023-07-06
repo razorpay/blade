@@ -92,6 +92,7 @@ const convertFrameToNode = (
     fillStyleId: figmaNode.fillStyleId,
     layoutSizingHorizontal: figmaNode.layoutSizingHorizontal,
     layoutSizingVertical: figmaNode.layoutSizingVertical,
+    inferredAutoLayout: figmaNode.inferredAutoLayout,
   };
   return bladeFrame;
 };
@@ -138,6 +139,8 @@ const convertRectangleToNode = (
     fills: Array.isArray(figmaNode.fills)
       ? figmaNode.fills.filter((fill) => fill.visible)
       : figmaNode.fills,
+    height: figmaNode.height,
+    width: figmaNode.width,
   };
   return bladeVectorNode;
 };

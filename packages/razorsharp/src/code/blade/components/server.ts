@@ -51,7 +51,12 @@ export const generateRectangleNodeCode = async (
     for (const paint of bladeNode.fills) {
       if (paint.type === 'IMAGE' && paint.imageHash) {
         const image = figma.getImageByHash(paint.imageHash);
-        const bytes = await image?.getBytesAsync();
+        if (image === null) {
+          continue;
+        }
+        const bytes = await image.getBytesAsync();
+        const height = bladeNode.height.toFixed(0);
+        const width = bladeNode.width.toFixed(0);
 
         if (bytes) {
           const base64String = btoa(String.fromCharCode(...bytes));
@@ -62,6 +67,14 @@ export const generateRectangleNodeCode = async (
             props: {
               src: {
                 value: src,
+                type: 'string',
+              },
+              width: {
+                value: width,
+                type: 'string',
+              },
+              height: {
+                value: height,
                 type: 'string',
               },
             },
