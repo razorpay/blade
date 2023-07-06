@@ -103,6 +103,8 @@ const Tooltip = ({
             ref={refs.setFloating}
             style={floatingStyles}
             pointerEvents="none"
+            // TODO: Tokenize zIndex values
+            zIndex={1100}
             {...getFloatingProps()}
             {...metaAttribute({ name: MetaConstants.Tooltip })}
           >
