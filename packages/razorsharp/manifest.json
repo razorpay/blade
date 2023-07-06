@@ -1,8 +1,9 @@
 {
-  "name": "Razorsharp",
-  "id": "1200806396995792369",
+  "name": "RazorsharpHackon",
+  "id": "1258776338297948329",
   "api": "1.0.0",
   "main": "dist/code.js",
+  "ui": "src/ui/index.html",
   "editorType": ["dev"],
   "capabilities": ["codegen"],
   "codegenLanguages": [{ "label": "React", "value": "react" }],
@@ -25,6 +26,12 @@
         { "label": "No", "value": "no", "isDefault": true },
         { "label": "Yes", "value": "yes" }
       ],
+      "includedLanguages": ["react"]
+    },
+    {
+      "itemType": "action",
+      "propertyName": "publish",
+      "label": "Publish page",
       "includedLanguages": ["react"]
     }
   ]

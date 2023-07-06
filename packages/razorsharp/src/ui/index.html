@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hi</title>
+    <style>
+      body {
+        font-family: sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <fieldset>
+        <legend>Select device type</legend>
+        <div>
+          <input type="radio" id="mobile" name="device" value="mobile" />
+          <label for="mobile">Mobile</label>
+          <input type="radio" id="desktop" name="device" value="desktop" />
+          <label for="desktop">Desktop</label>
+        </div>
+        <div>
+          <button type="submit">Submit</button>
+        </div>
+      </fieldset>
+    </form>
+    <script>
+      // Get the form
+      let form = document.querySelector('form');
+      let data;
+      form.addEventListener('submit', handleSubmit);
+
+      function handleSubmit(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const device = document.querySelector('input[name="device"]:checked').value;
+        console.log(device);
+
+        const headers = new Headers();
+        headers.set('Content-Type', 'application/json');
+
+        const payload = {
+          data: data,
+        };
+
+        fetch('http://localhost:5000', {
+          method: 'POST',
+          headers: headers,
+          body: JSON.stringify(payload),
+        })
+          .then((response) => {
+            console.log('🚀 ~ file: index.html:55 ~ response:', response);
+          })
+          .catch((error) => {
+            console.log('🚀 ~ file: index.html:55 ~ error:', error);
+          });
+      }
+
+      onmessage = (event) => {
+        if (!event.data.pluginMessage) {
+          return;
+        }
+
+        if (event.data.pluginMessage.type === 'result') {
+          const { code } = event.data.pluginMessage;
+          data = JSON.stringify(JSON.stringify(code));
+          console.log('🚀 ~ file: index.html:44 ~ code:', data);
+
+          try {
+          } catch (error) {
+            console.log('🚀 ~ file: index.html:55 ~ error: neeche wala', error);
+          }
+        }
+      };
+    </script>
+  </body>
+</html>
