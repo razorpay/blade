@@ -27,57 +27,71 @@ describe('<Counter />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should render low contrast positive intent Counter', () => {
-    const { container } = renderWithTheme(<Counter intent="positive" contrast="low" value={20} />);
+  it('should render low contrast positive variant Counter', () => {
+    const { container } = renderWithTheme(<Counter variant="positive" contrast="low" value={20} />);
     expect(container).toMatchSnapshot();
   });
 
-  it('should render high contrast positive intent Counter', () => {
-    const { container } = renderWithTheme(<Counter intent="positive" contrast="high" value={20} />);
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render low contrast negative intent Counter', () => {
-    const { container } = renderWithTheme(<Counter intent="negative" contrast="low" value={20} />);
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render high contrast negative intent Counter', () => {
-    const { container } = renderWithTheme(<Counter intent="negative" contrast="high" value={20} />);
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render low contrast notice intent Counter', () => {
-    const { container } = renderWithTheme(<Counter intent="notice" contrast="low" value={20} />);
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render high contrast notice intent Counter', () => {
-    const { container } = renderWithTheme(<Counter intent="notice" contrast="high" value={20} />);
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render low contrast information intent Counter', () => {
+  it('should render high contrast positive variant Counter', () => {
     const { container } = renderWithTheme(
-      <Counter intent="information" contrast="low" value={20} />,
+      <Counter variant="positive" contrast="high" value={20} />,
     );
     expect(container).toMatchSnapshot();
   });
 
-  it('should render high contrast information intent Counter', () => {
+  it('should render low contrast negative variant Counter', () => {
+    const { container } = renderWithTheme(<Counter variant="negative" contrast="low" value={20} />);
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render high contrast negative variant Counter', () => {
     const { container } = renderWithTheme(
-      <Counter intent="information" contrast="high" value={20} />,
+      <Counter variant="negative" contrast="high" value={20} />,
     );
     expect(container).toMatchSnapshot();
   });
 
-  it('should render low contrast neutral intent Counter', () => {
-    const { container } = renderWithTheme(<Counter intent="neutral" contrast="low" value={20} />);
+  it('should render low contrast notice variant Counter', () => {
+    const { container } = renderWithTheme(<Counter variant="notice" contrast="low" value={20} />);
     expect(container).toMatchSnapshot();
   });
 
-  it('should render high contrast neutral intent Counter', () => {
-    const { container } = renderWithTheme(<Counter intent="neutral" contrast="high" value={20} />);
+  it('should render high contrast notice variant Counter', () => {
+    const { container } = renderWithTheme(<Counter variant="notice" contrast="high" value={20} />);
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render low contrast information variant Counter', () => {
+    const { container } = renderWithTheme(
+      <Counter variant="information" contrast="low" value={20} />,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render high contrast information variant Counter', () => {
+    const { container } = renderWithTheme(
+      <Counter variant="information" contrast="high" value={20} />,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render low contrast neutral variant Counter', () => {
+    const { container } = renderWithTheme(<Counter variant="neutral" contrast="low" value={20} />);
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render high contrast neutral variant Counter', () => {
+    const { container } = renderWithTheme(<Counter variant="neutral" contrast="high" value={20} />);
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render low contrast blue variant Counter', () => {
+    const { container } = renderWithTheme(<Counter variant="blue" contrast="low" value={20} />);
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render high contrast blue variant Counter', () => {
+    const { container } = renderWithTheme(<Counter variant="blue" contrast="high" value={20} />);
     expect(container).toMatchSnapshot();
   });
 
