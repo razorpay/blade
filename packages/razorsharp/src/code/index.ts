@@ -11,11 +11,13 @@ if (figma.editorType === 'dev' && figma.mode === 'codegen') {
       bladeNodes: convertedSelection,
     });
 
+    const minify = figma.codegen.preferences.customSettings.minifyOutput === 'yes';
+
     return [
       {
         title: 'Code',
         language: 'TYPESCRIPT',
-        code: JSON.stringify(code, null, 2),
+        code: minify ? JSON.stringify(code) : JSON.stringify(code, null, 2),
       },
     ];
   });

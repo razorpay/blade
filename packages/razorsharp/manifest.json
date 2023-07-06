@@ -16,6 +16,16 @@
         { "label": "Yes", "value": "yes" }
       ],
       "includedLanguages": ["react"]
+    },
+    {
+      "itemType": "select",
+      "propertyName": "minifyOutput",
+      "label": "Minifiy Output",
+      "options": [
+        { "label": "No", "value": "no", "isDefault": true },
+        { "label": "Yes", "value": "yes" }
+      ],
+      "includedLanguages": ["react"]
     }
   ]
 }
