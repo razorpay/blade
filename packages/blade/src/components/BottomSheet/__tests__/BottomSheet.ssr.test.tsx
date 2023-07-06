@@ -1,11 +1,6 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import {
-  BottomSheet,
-  BottomSheetBody,
-  BottomSheetFooter,
-  BottomSheetHeader,
-} from '../BottomSheet.web';
+import { BottomSheet, BottomSheetBody, BottomSheetFooter, BottomSheetHeader } from '../BottomSheet';
 import renderWithSSR from '~utils/testing/renderWithSSR.web';
 import { Text } from '~components/Typography';
 import { Badge } from '~components/Badge';
