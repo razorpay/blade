@@ -8,28 +8,70 @@
       body {
         font-family: sans-serif;
       }
+
+      button {
+        padding: 0.5rem 1rem;
+        border-radius: 0.25rem;
+        border: 1px solid #ccc;
+        background-color: #fff;
+        cursor: pointer;
+      }
+
+      input[type='radio'] {
+        margin-right: 0.5rem;
+      }
+
+      fieldset {
+        border: none;
+      }
+
+      .button-container {
+        margin-top: 1rem;
+        display: flex;
+        justify-content: center;
+      }
+
+      .options-container {
+        display: flex;
+        flex-direction: column;
+      }
+
+      button:hover {
+        background-color: #eee;
+      }
+
+      #result {
+        margin-top: 1rem;
+        text-align: center;
+      }
     </style>
   </head>
   <body>
     <form>
       <fieldset>
         <legend>Select device type</legend>
-        <div>
-          <input type="radio" id="mobile" name="device" value="mobile" />
-          <label for="mobile">Mobile</label>
-          <input type="radio" id="desktop" name="device" value="desktop" />
-          <label for="desktop">Desktop</label>
+        <div class="options-container">
+          <div>
+            <input type="radio" id="mobile" name="device" value="mobile" />
+            <label for="mobile">Mobile</label>
+          </div>
+          <div>
+            <input type="radio" id="desktop" name="device" value="desktop" />
+            <label for="desktop">Desktop</label>
+          </div>
         </div>
-        <div>
+        <div class="button-container">
           <button type="submit">Submit</button>
         </div>
       </fieldset>
     </form>
+    <div id="result"></div>
     <script>
       // Get the form
       let form = document.querySelector('form');
       let data;
       form.addEventListener('submit', handleSubmit);
+      const result = document.getElementById('result');
 
       function handleSubmit(e) {
         e.preventDefault();
@@ -44,6 +86,9 @@
           data: data,
         };
 
+        result.innerHTML = 'Updating schema...';
+        result.style.color = 'black';
+
         fetch('http://localhost:5000', {
           method: 'POST',
           headers: headers,
@@ -51,9 +96,18 @@
         })
           .then((response) => {
             console.log('🚀 ~ file: index.html:55 ~ response:', response);
+            result.innerHTML = 'Schema updated successfully';
+            result.style.color = 'green';
           })
           .catch((error) => {
             console.log('🚀 ~ file: index.html:55 ~ error:', error);
+            result.innerHTML = 'Error updating schema';
+            result.style.color = 'red';
+          })
+          .finally(() => {
+            setTimeout(() => {
+              result.innerHTML = '';
+            }, 2000);
           });
       }
 
