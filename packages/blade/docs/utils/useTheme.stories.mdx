@@ -14,7 +14,7 @@ import { Meta } from '@storybook/addon-docs';
 
 ### Overview
 
-`useTheme` is a custom React hook provided by the `@razorpay/blade/components`  that allows you to access the current theme and color scheme of your application.
+`useTheme` is a custom React hook provided by the `@razorpay/blade/utils`  that allows you to access the current theme and color scheme of your application.
 
 The `useTheme` hook returns a `ThemeContext` object that contains the following properties:
 
@@ -31,7 +31,7 @@ To use the `useTheme` hook, you must first wrap your application with a `Blad
 
 ```tsx
 import React from 'react';
-import { useTheme, Heading, Text, Button } from '@razorpay/blade/components';
+import { useTheme, Heading, Text, Button } from '@razorpay/blade/utis';
 
 const MyComponent = () => {
   const { theme, colorScheme, platform, setColorScheme } = useTheme();
