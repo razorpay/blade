@@ -114,6 +114,7 @@ const RadioGroup = ({
     isRequired,
     labelPosition,
     name,
+    necessityIndicator,
     onChange,
     validationState,
     value,

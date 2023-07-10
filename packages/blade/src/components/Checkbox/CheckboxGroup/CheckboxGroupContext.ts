@@ -11,6 +11,7 @@ export type CheckboxGroupContextType = Pick<
   | 'isRequired'
   | 'labelPosition'
   | 'name'
+  | 'necessityIndicator'
   | 'defaultValue'
   | 'value'
   | 'onChange'

@@ -17,6 +17,7 @@ type UseCheckboxGroupProps = Pick<
   | 'labelPosition'
   | 'validationState'
   | 'name'
+  | 'necessityIndicator'
   | 'value'
   | 'defaultValue'
   | 'onChange'
@@ -40,6 +41,7 @@ const useCheckboxGroup = ({
   onChange,
   validationState,
   name,
+  necessityIndicator,
   size,
 }: UseCheckboxGroupProps) => {
   const { platform } = useTheme();
@@ -90,10 +92,21 @@ const useCheckboxGroup = ({
       isRequired,
       labelPosition: platform === 'onMobile' ? 'top' : labelPosition,
       name,
+      necessityIndicator,
       state,
       size,
     };
-  }, [validationState, isDisabled, isRequired, platform, labelPosition, name, state, size]);
+  }, [
+    validationState,
+    isDisabled,
+    isRequired,
+    platform,
+    labelPosition,
+    name,
+    necessityIndicator,
+    state,
+    size,
+  ]);
 
   return { state, contextValue, ids: { labelId } };
 };
