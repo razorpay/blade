@@ -1,0 +1,38 @@
+{
+  "name": "plugin-figma-blade-coverage",
+  "private": "true",
+  "author": "kamleshchandnani",
+  "version": "0.0.1",
+  "license": "MIT",
+  "dependencies": {
+    "@create-figma-plugin/ui": "2.5.0",
+    "@create-figma-plugin/utilities": "2.5.0",
+    "@floating-ui/react": "0.24.4",
+    "@razorpay/blade": "8.14.0",
+    "@segment/analytics-next": "1.53.0",
+    "preact": "10.15.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "styled-components": "6.0.2"
+  },
+  "devDependencies": {
+    "@create-figma-plugin/build": "2.5.0",
+    "@create-figma-plugin/tsconfig": "2.5.0",
+    "@figma/plugin-typings": "1.64.0",
+    "@types/react": "18.2.0",
+    "typescript": "4.9.5"
+  },
+  "scripts": {
+    "build": "build-figma-plugin --typecheck --minify",
+    "watch": "build-figma-plugin --typecheck --watch"
+  },
+  "figma-plugin": {
+    "editorType": [
+      "figma"
+    ],
+    "id": "plugin-figma-blade-coverage",
+    "name": "Blade Coverage",
+    "main": "src/main.ts",
+    "ui": "src/ui.tsx"
+  }
+}
