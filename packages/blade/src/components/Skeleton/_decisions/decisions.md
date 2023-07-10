@@ -219,7 +219,7 @@ https://github.com/razorpay/blade/assets/35374649/8298efde-f977-4aa3-bc2d-92fb50
   
   Although we are not doing this right now, We will consider this `type` prop as an enhancement later on depending on usage patterns and pain points of how Skeleton components get used.
 
-  
+
   #### Inferring Dimensions
 
   Providing width, height works well when consumers want to have control over the layout of the Skeleton, but it also requires bit of manual tweaking and effort. 
