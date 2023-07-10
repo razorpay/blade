@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 8.15.3
+
+### Patch Changes
+
+- 4dd62afd: fix(blade): bottomsheet ssr fix
+
 ## 8.15.2
 
 ### Patch Changes
