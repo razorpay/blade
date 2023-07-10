@@ -4,7 +4,16 @@ This is a figma plugin that will give us Blade coverage for a particular design 
 
 It calculates the coverage and puts a tiny coverage card on top of each frame with following metrics.
 
-[![Watch the video]](https://github.com/razorpay/blade/assets/11384858/23db53e8-4aa9-40e0-ac38-faa8f0c91b9b)
+![blade-coverage-cover](https://github.com/razorpay/blade/assets/11384858/2e89d51f-a5f9-4733-ac15-006656336741)
+
+
+
+## The Intro
+[![Watch the video]](https://github.com/razorpay/blade/assets/11384858/5fe0f3de-37c4-4967-9024-e798ea8ff0f0)
+
+
+
+
 
 <br/>
 
