@@ -16,26 +16,7 @@ Each of these shapes can be achieved by adjusting the width, height and border r
 
 ## API
 
-| Prop          | Type        | Default     | Description                                                                                                                                             | Required |
-| ------------- | ----------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| type          | `TextTypes` | `undefined` | Predefined variants for Skeleton's dimensions when working with Typography components. (if width/height layout props are set they will take precedence) |          |
-| numberOfLines | `number`    | `1`         | When paired with `type` prop consumers can define this prop to repeat the typography block over multiple lines                                          |          |
-
-```ts
-type TextTypes = 
-  | 'body-small'
-  | 'body-medium'
-  | 'body-large'
-  | 'heading-small'
-  | 'heading-medium'
-  | 'heading-large'
-  | 'title-small'
-  | 'title-medium'
-  | 'title-large'
-  | 'title-xlarge'
-```
-
-Skeleton will also have subset of Box props to help users layout the Skeleton blocks accordingly. 
+Skeleton will have subset of Box props to help users layout the Skeleton blocks accordingly. 
 
 Layout: 
 
@@ -194,108 +175,8 @@ We discussed this, while it might look simple this approach also has few downsid
 
 - if we provide `isLoading` prop it might cause a lot of jumps and shifts on the page because we won't know until API responds if the CardHeader has title/prefix or subtitle set or not and it could be removed after the API is done loading.
 - Providing `isLoading` prop for all Blade components (where applicable) might not be the most flexible approach.
-- With `isLoading` prop consumers will anyways have to opt of out it and use custom Skeleton templates for the CardBody content so there's not much benefit to providing it out of the box.
+- With `isLoading` prop consumers will anyways have to opt out and use custom Skeleton templates for the CardBody content so there's not much benefit to providing it out of the box.
 
-
-### Should we inferring dimensions or provide predefined variants?
-
-#### Inferring Dimensions
-
-Providing width, height works well when consumers want to have control over the layout of the Skeleton, but it also requires bit of manual tweaking and effort. 
-
-Libraries like ChakraUI / MUI provides a way for consumers to infer dimensions based on exisiting components: 
-
-<img src="./mui-skeleton-dim-inference.png" alt="MUI Skeleton Inferring text height" width="70%" />
-
-**Inferring Typography components:**
-
-```jsx
-<Heading size="large">
-  {isLoading ? <Skeleton /> : "Hello world this is blade"}
-</Heading>
-```
-
-[Demo Codesandbox](https://codesandbox.io/s/blade-skeleton-text-infer-dim-tmm6dn?file=/App.tsx)
-
-**Inferring block components:**
-
-```jsx
-<Skeleton isLoading={data.isLoading}>
-  <Box
-    display="flex"
-    alignItems="center"
-    justifyContent="center"
-    width="200px"
-    height="200px"
-  >
-    {data.title}
-  </Box>
-</Skeleton>
-```
-
-#### Predefined dimensions 
-
-**Typography components:**
-
-Similar to Amount component we can expose a `type` prop which will have predefined sizes & we also expose `numberOfLines` prop which will dictate how many skeletons it will map to.
-
-> numberOfLines prop can also be used to add a trailing effect to the last line of the skeleton
-> Say we have `numberOfLines={5}` then we can render the 5th Skeleton a bit shorter than the others to convey the text is trailing.
-
-```jsx
-<Skeleton 
-  type="
-    | body-small
-    | body-medium
-    | body-large
-    | heading-small
-    | heading-medium
-    | heading-large
-    | title-small
-    | title-medium
-    | title-large
-    | title-xlarge
-  " 
-  numberOfLines={5} 
-/>
-```
-
-A real world usecase might look something like:
-
-<img src="./real-usage-demo-before.png" alt="Card example without skeleton" width="50%" />
-
-```jsx
-<Box
-  padding="spacing.5"
-  display="flex"
-  flexDirection="column"
-  gap="spacing.2"
-  backgroundColor="surface.background.level2.lowContrast"
->
-  <Box display="flex" flexDirection="column" gap="spacing.3">
-    <Skeleton type="heading-medium" width="70%" borderRadius="max" />
-    <Skeleton type="title-large" width="50%" />
-    <Skeleton type="body-medium" width="70%" />
-  </Box>
-  <Skeleton marginTop="10px" height="50px" borderRadius="4px" />
-  <Divider />
-  <Skeleton type="body-medium" numberOfLines={2} />
-</Box>
-```
-
-<img src="./real-usage-demo-after.png" alt="Card example with Skeleton" width="50%" />
-
-**Block components:**
-
-And for block components we won't give any predefined sizes instead consumers can compose via width, height, borderRadius: 
-
-```jsx
-<Skeleton width="100px" height="100px" borderRadius="medium" />
-```
-
-#### Conclusion
-
-Given the complexity of inferring the dimensions and how it differs from component to component, where for Typography components we need to render the skeleton inside and for block level components we need to wrap it with Skeleton, Plus the complexities that might arise with react-native implementation. It's better to go with predefined dimensions for typography components and for block level components let consumers handle it manually via width/height prop. 
 
 ## Motion
 
@@ -318,6 +199,122 @@ https://github.com/razorpay/blade/assets/35374649/8298efde-f977-4aa3-bc2d-92fb50
 
 - How will Skeleton loader work with existing components like ModalHeader/Footer etc?
   - Ans: we will let the consumer handle the skeleton loading for Card components
+
+
+<details>
+
+  <summary>
+    Should we infer dimensions or provide predefined variants?
+  </summary>
+
+
+  #### Conclusion
+
+  Given the complexity of inferring the dimensions and how it differs from component to component, where for Typography components we need to render the skeleton inside and for block level components we need to wrap it with Skeleton, Plus the complexities that might arise with react-native implementation, we won't be automatically inferring the dimensions. 
+
+  For providing predefined `type` prop, we discussed this internally and decided not to do this for now because: 
+
+  - On design side there is no 1:1 api for the type prop so even if we provide this prop designers might not use it and just use the Skeleton's width/height.
+  - There is a increased maintaince overhead in maintaining a map of lineHeight for all the typography components in Skeleton.
+  
+  Although we are not doing this right now, We will consider this `type` prop as an enhancement later on depending on usage patterns and pain points of how Skeleton components get used.
+
+  
+  #### Inferring Dimensions
+
+  Providing width, height works well when consumers want to have control over the layout of the Skeleton, but it also requires bit of manual tweaking and effort. 
+
+  Libraries like ChakraUI / MUI provides a way for consumers to infer dimensions based on exisiting components: 
+
+  <img src="./mui-skeleton-dim-inference.png" alt="MUI Skeleton Inferring text height" width="70%" />
+
+  **Inferring Typography components:**
+
+  ```jsx
+  <Heading size="large">
+    {isLoading ? <Skeleton /> : "Hello world this is blade"}
+  </Heading>
+  ```
+
+  [Demo Codesandbox](https://codesandbox.io/s/blade-skeleton-text-infer-dim-tmm6dn?file=/App.tsx)
+
+  **Inferring block components:**
+
+  ```jsx
+  <Skeleton isLoading={data.isLoading}>
+    <Box
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+      width="200px"
+      height="200px"
+    >
+      {data.title}
+    </Box>
+  </Skeleton>
+  ```
+
+  #### Predefined dimensions 
+
+  **Typography components:**
+
+  Similar to Amount component we can expose a `type` prop which will have predefined sizes & we also expose `numberOfLines` prop which will dictate how many skeletons it will map to.
+
+  > numberOfLines prop can also be used to add a trailing effect to the last line of the skeleton
+  > Say we have `numberOfLines={5}` then we can render the 5th Skeleton a bit shorter than the others to convey the text is trailing.
+
+  ```jsx
+  <Skeleton 
+    type="
+      | body-small
+      | body-medium
+      | body-large
+      | heading-small
+      | heading-medium
+      | heading-large
+      | title-small
+      | title-medium
+      | title-large
+      | title-xlarge
+    " 
+    numberOfLines={5} 
+  />
+  ```
+
+  A real world usecase might look something like:
+
+  <img src="./real-usage-demo-before.png" alt="Card example without skeleton" width="50%" />
+
+  ```jsx
+  <Box
+    padding="spacing.5"
+    display="flex"
+    flexDirection="column"
+    gap="spacing.2"
+    backgroundColor="surface.background.level2.lowContrast"
+  >
+    <Box display="flex" flexDirection="column" gap="spacing.3">
+      <Skeleton type="heading-medium" width="70%" borderRadius="max" />
+      <Skeleton type="title-large" width="50%" />
+      <Skeleton type="body-medium" width="70%" />
+    </Box>
+    <Skeleton marginTop="10px" height="50px" borderRadius="4px" />
+    <Divider />
+    <Skeleton type="body-medium" numberOfLines={2} />
+  </Box>
+  ```
+
+  <img src="./real-usage-demo-after.png" alt="Card example with Skeleton" width="50%" />
+
+  **Block components:**
+
+  And for block components we won't give any predefined sizes instead consumers can compose via width, height, borderRadius: 
+
+  ```jsx
+  <Skeleton width="100px" height="100px" borderRadius="medium" />
+  ```
+
+</details>
 
 ## References
 
