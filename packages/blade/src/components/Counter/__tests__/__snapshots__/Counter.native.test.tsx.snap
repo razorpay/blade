@@ -89,7 +89,96 @@ exports[`<Counter /> should render Counter with default props 1`] = `
 </View>
 `;
 
-exports[`<Counter /> should render high contrast information intent Counter 1`] = `
+exports[`<Counter /> should render high contrast blue variant Counter 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    backgroundColor="badge.background.blue.highContrast"
+    data-blade-component="base-box"
+    platform="onMobile"
+    size="medium"
+    style={
+      Array [
+        Object {
+          "alignSelf": "center",
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderRadius": 9999,
+          "display": "flex",
+          "flexWrap": "nowrap",
+          "maxWidth": 100,
+        },
+      ]
+    }
+  >
+    <View
+      alignItems="center"
+      data-blade-component="counter"
+      display="flex"
+      flexDirection="row"
+      justifyContent="center"
+      overflow="hidden"
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "overflow": "hidden",
+            "paddingBottom": 2,
+            "paddingLeft": 8,
+            "paddingRight": 8,
+            "paddingTop": 2,
+          },
+        ]
+      }
+    >
+      <Text
+        color="badge.text.blue.highContrast"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={75}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={50}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "hsla(0, 0%, 100%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 16,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textAlign": "center",
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+        textAlign="center"
+      >
+        20
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<Counter /> should render high contrast information variant Counter 1`] = `
 <View
   style={
     Object {
@@ -178,7 +267,7 @@ exports[`<Counter /> should render high contrast information intent Counter 1`] 
 </View>
 `;
 
-exports[`<Counter /> should render high contrast negative intent Counter 1`] = `
+exports[`<Counter /> should render high contrast negative variant Counter 1`] = `
 <View
   style={
     Object {
@@ -267,7 +356,7 @@ exports[`<Counter /> should render high contrast negative intent Counter 1`] = `
 </View>
 `;
 
-exports[`<Counter /> should render high contrast neutral intent Counter 1`] = `
+exports[`<Counter /> should render high contrast neutral variant Counter 1`] = `
 <View
   style={
     Object {
@@ -356,7 +445,7 @@ exports[`<Counter /> should render high contrast neutral intent Counter 1`] = `
 </View>
 `;
 
-exports[`<Counter /> should render high contrast notice intent Counter 1`] = `
+exports[`<Counter /> should render high contrast notice variant Counter 1`] = `
 <View
   style={
     Object {
@@ -445,7 +534,7 @@ exports[`<Counter /> should render high contrast notice intent Counter 1`] = `
 </View>
 `;
 
-exports[`<Counter /> should render high contrast positive intent Counter 1`] = `
+exports[`<Counter /> should render high contrast positive variant Counter 1`] = `
 <View
   style={
     Object {
@@ -623,7 +712,96 @@ exports[`<Counter /> should render large size Counter 1`] = `
 </View>
 `;
 
-exports[`<Counter /> should render low contrast information intent Counter 1`] = `
+exports[`<Counter /> should render low contrast blue variant Counter 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    backgroundColor="badge.background.blue.lowContrast"
+    data-blade-component="base-box"
+    platform="onMobile"
+    size="medium"
+    style={
+      Array [
+        Object {
+          "alignSelf": "center",
+          "backgroundColor": "hsla(218, 89%, 51%, 0.09)",
+          "borderRadius": 9999,
+          "display": "flex",
+          "flexWrap": "nowrap",
+          "maxWidth": 100,
+        },
+      ]
+    }
+  >
+    <View
+      alignItems="center"
+      data-blade-component="counter"
+      display="flex"
+      flexDirection="row"
+      justifyContent="center"
+      overflow="hidden"
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "overflow": "hidden",
+            "paddingBottom": 2,
+            "paddingLeft": 8,
+            "paddingRight": 8,
+            "paddingTop": 2,
+          },
+        ]
+      }
+    >
+      <Text
+        color="badge.text.blue.lowContrast"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={75}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={50}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "hsla(218, 89%, 51%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 16,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textAlign": "center",
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+        textAlign="center"
+      >
+        20
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<Counter /> should render low contrast information variant Counter 1`] = `
 <View
   style={
     Object {
@@ -712,7 +890,7 @@ exports[`<Counter /> should render low contrast information intent Counter 1`] =
 </View>
 `;
 
-exports[`<Counter /> should render low contrast negative intent Counter 1`] = `
+exports[`<Counter /> should render low contrast negative variant Counter 1`] = `
 <View
   style={
     Object {
@@ -801,7 +979,7 @@ exports[`<Counter /> should render low contrast negative intent Counter 1`] = `
 </View>
 `;
 
-exports[`<Counter /> should render low contrast neutral intent Counter 1`] = `
+exports[`<Counter /> should render low contrast neutral variant Counter 1`] = `
 <View
   style={
     Object {
@@ -890,7 +1068,7 @@ exports[`<Counter /> should render low contrast neutral intent Counter 1`] = `
 </View>
 `;
 
-exports[`<Counter /> should render low contrast notice intent Counter 1`] = `
+exports[`<Counter /> should render low contrast notice variant Counter 1`] = `
 <View
   style={
     Object {
@@ -979,7 +1157,7 @@ exports[`<Counter /> should render low contrast notice intent Counter 1`] = `
 </View>
 `;
 
-exports[`<Counter /> should render low contrast positive intent Counter 1`] = `
+exports[`<Counter /> should render low contrast positive variant Counter 1`] = `
 <View
   style={
     Object {

@@ -1,5 +1,126 @@
 # @razorpay/blade
 
+## 8.15.2
+
+### Patch Changes
+
+- b2f55b7a: fix(blade): tooltip zIndex issue
+
+## 8.15.1
+
+### Patch Changes
+
+- c802e72f: feat: add blue variant to Counter component & change intent to variant
+
+  ## ⚠️ Changes for Counter component with backward compatibility
+
+  Changes the `intent` prop to `variant` since we support more than Feedback colors with the addition of `blue` color for Counter. We will continue to support `intent` prop for backward compatibility but it will be deprecated in an upcoming major release.
+
+  ### Migration guide
+
+  1. Replace all instances of Counter's `intent` prop with `variant
+     > The change is only in the naming of the prop, the value will remain unchanged.
+
+  ```diff
+   <Counter
+  -  intent='positive'
+  +  variant='positive'
+     value={42}
+   />
+  ```
+
+## 8.15.0
+
+### Minor Changes
+
+- bd5ededd: feat(DropdownHeaderFooter): add DropdownHeader DropdownFooter components
+
+  We have standardised the Header and Footer between Dropdown, BottomSheet, Modal, and any future components.
+
+  > **Warning**
+  >
+  > **Breaking Change :** For consumers who use - `ActionListHeader` or `ActionListFooter`.
+  >
+  > Through our code search we found there weren't any instances of these component in Razorpay code yet thus this is released under minor version
+
+  ## Migration Guide
+
+  > **Note**
+  >
+  > The Header and Footer are redesigned so it might not be possible to have 1:1 designs. The new header and footer will look different.
+
+  1. Remove `ActionListHeader` and `ActionListFooter` from the inside of the `ActionList`
+  2. Add `DropdownHeader` and `DropdownFooter` outside of the `ActionList`, inside `DropdownOverlay`.
+
+  ```diff
+  import {
+    Dropdown,
+    DropdownOverlay,
+    SelectInput,
+    ActionListHeader,
+    ActionListFooter,
+    ActionList,
+    ActionListItem
+  } from '@razorpay/blade/components';
+
+  function App() {
+    return (
+      <Dropdown>
+        <SelectInput label="Select City" />
+        <DropdownOverlay>
+  +       <DropdownHeader title="Title" />
+          <ActionList>
+  -          <ActionListHeader title="Title" />
+              <ActionListItem />
+              <ActionListItem />
+  -          <ActionListFooter trailing={<Button>Apply</Button>} />
+          </ActionList>
+  +       <DropdownFooter>
+  +         <Box><Button>Apply</Button></Box>
+  +       </DropdownFooter>
+        </DropdownOverlay>
+      </Dropdown>
+    )
+  }
+
+  export { App };
+  ```
+
+  Checkout [Dropdown Docs](https://blade.razorpay.com/?path=/story/components-dropdown-dropdown--page&globals=showInternalComponents:true;measureEnabled:false) for more details
+
+## 8.14.0
+
+### Minor Changes
+
+- e1f37f69: feat: add `Divider` component
+
+## 8.13.0
+
+### Minor Changes
+
+- 865cd411: refactor: remove internal utilities from index re-exports
+
+  > **Warning**
+  >
+  > We have removed some of the undocumented internal utilites from re-export of `@razorpay/blade/utils`.
+  > We went through the imports usage of Razorpay and made sure to keep exporting the utilities that are currently being used to avoid breaking changes.
+
+  You can take a look at re-exports of [utils/index.ts](https://github.com/razorpay/blade/blob/master/packages/blade/src/utils/index.ts) to know which are the public utilities that we support. This is part of the larger effort in exporting and documenting useful utilities from blade and avoid exporting internal utilities which might break during internal refactors.
+
+  We have marked 2 utilities as `@deprecated` as they are expected to be internal utilities but currently being used in Razorpay. These will be removed in future major versions and won't be documented.
+
+  - `toTitleCase`
+  - `usePrevious`
+
+  We would recommend moving these 2 utilities to your local repo utilities.
+
+### Patch Changes
+
+- f4c2afb5: feat: add background-image, size, position, origin, repeat props
+- 610422ab: feat: add text decoration support for typography
+
+  Thanks [@archie252000](https://github.com/archie252000) for the contribution!
+
 ## 8.12.1
 
 ### Patch Changes

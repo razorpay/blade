@@ -26,8 +26,15 @@ export type CounterProps = {
    * Sets the intent of the counter.
    *
    * @default 'neutral'
+   * @deprecated Use `variant` instead
    */
   intent?: Feedback;
+  /**
+   * Sets the variant of the counter.
+   *
+   * @default 'neutral'
+   */
+  variant?: Feedback | 'blue';
   /**
    * Sets the contrast of the counter.
    *
@@ -48,24 +55,37 @@ type ColorProps = {
   backgroundColor: StyledCounterProps['backgroundColor'];
 };
 
+const isFeedbackVariant = (variant: string): variant is Feedback => {
+  const feedbackVariants = ['information', 'negative', 'neutral', 'notice', 'positive'];
+  return feedbackVariants.includes(variant);
+};
+
 const getColorProps = ({
-  intent = 'neutral',
+  variant = 'neutral',
   contrast = 'low',
 }: {
-  intent: NonNullable<CounterProps['intent']>;
+  variant: NonNullable<CounterProps['variant']>;
   contrast: NonNullable<CounterProps['contrast']>;
 }): ColorProps => {
   const props: ColorProps = {
-    textColor: `feedback.text.${intent}.${contrast}Contrast`,
-    backgroundColor: `feedback.background.${intent}.${contrast}Contrast`,
+    textColor: 'feedback.text.neutral.lowContrast',
+    backgroundColor: 'feedback.background.neutral.lowContrast',
   };
+  if (isFeedbackVariant(variant)) {
+    props.textColor = `feedback.text.${variant}.${contrast}Contrast`;
+    props.backgroundColor = `feedback.background.${variant}.${contrast}Contrast`;
+  } else {
+    props.textColor = `badge.text.${variant}.${contrast}Contrast`;
+    props.backgroundColor = `badge.background.${variant}.${contrast}Contrast`;
+  }
   return props;
 };
 
 const Counter = ({
   value,
   max,
-  intent = 'neutral',
+  intent,
+  variant = 'neutral',
   contrast = 'low',
   size = 'medium',
   testID,
@@ -78,9 +98,15 @@ const Counter = ({
 
   const { platform } = useTheme();
   const { backgroundColor, textColor } = getColorProps({
-    intent,
+    variant: intent ?? variant,
     contrast,
   });
+
+  if (intent) {
+    console.warn(
+      '[Blade: Counter] The prop `intent` is deprecated and will be removed in a future release. Please use `variant` instead.',
+    );
+  }
 
   const counterTextSizes = {
     small: {
