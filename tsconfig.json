@@ -1,8 +1,5 @@
 {
-  "exclude": [
-    "node_modules",
-    "packages/tools/figma-plugin-version-history/**"
-  ] /* Enable incremental compilation */,
+  "exclude": ["node_modules"] /* Enable incremental compilation */,
   "include": ["packages"],
   "compilerOptions": {
     "skipLibCheck": true,
