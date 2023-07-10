@@ -49,9 +49,9 @@ type CheckboxGroupProps = {
    */
   isDisabled?: boolean;
   /**
-  * Sets the required state of the CheckboxGroup
-  * @default false
-  */
+   * Sets the required state of the CheckboxGroup
+   * @default false
+   */
   isRequired?: boolean;
   /**
    * Renders the label of the checkbox group
@@ -114,6 +114,7 @@ const CheckboxGroup = ({
     onChange,
     value,
     isDisabled,
+    necessityIndicator,
     isRequired,
     name,
     labelPosition,
