@@ -2,8 +2,8 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 import React from 'react';
 import { Skeleton } from '../Skeleton';
-import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { Box } from '~components/Box';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
 
 describe('<Skeleton />', () => {

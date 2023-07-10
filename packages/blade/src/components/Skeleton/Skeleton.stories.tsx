@@ -141,16 +141,16 @@ const LoadableCard = ({ isLoading }: { isLoading: boolean }): React.ReactElement
             backgroundColor="surface.background.level2.lowContrast"
           >
             <Box display="flex" flexDirection="column" gap="spacing.3">
-              <Skeleton type="heading-medium" width="50%" borderRadius="medium" />
-              <Skeleton type="title-medium" width="30%" borderRadius="medium" />
-              <Skeleton type="body-medium" width="50%" borderRadius="medium" />
+              <Skeleton height="24px" width="50%" borderRadius="medium" />
+              <Skeleton height="40px" width="30%" borderRadius="medium" />
+              <Skeleton height="20px" width="50%" borderRadius="medium" />
             </Box>
             <Skeleton height="60px" borderRadius="medium" />
             <Box marginTop="spacing.3" />
             <Divider />
             <Box marginBottom="spacing.3" />
-            <Skeleton type="body-medium" height="20px" borderRadius="medium" />
-            <Skeleton type="body-medium" height="20px" borderRadius="medium" />
+            <Skeleton height="20px" width="100%" borderRadius="medium" />
+            <Skeleton height="20px" width="100%" borderRadius="medium" />
           </Box>
         ) : (
           <Box
