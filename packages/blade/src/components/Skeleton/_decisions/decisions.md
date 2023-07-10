@@ -16,6 +16,10 @@ Each of these shapes can be achieved by adjusting the width, height and border r
 
 ## API
 
+| Prop     | Type        | Default | Description                                  | Required |
+| -------- | ----------- | ------- | -------------------------------------------- | -------- |
+| contrast | `low, high` | `low`   | The contrast of the Skeleton to be rendered. |          |
+
 Skeleton will have subset of Box props to help users layout the Skeleton blocks accordingly. 
 
 Layout: 
