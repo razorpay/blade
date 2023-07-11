@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 9.0.2
+
+### Patch Changes
+
+- 8f4bc791: fix: CollapsibleLink arrow orientation when `direction` is top
+
 ## 9.0.1
 
 ### Patch Changes
