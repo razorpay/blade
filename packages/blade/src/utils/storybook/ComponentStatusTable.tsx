@@ -329,6 +329,13 @@ const componentData: ComponentStatusData = [
     storybookLink: 'Components/Modal/SimpleModal',
   },
   {
+    name: 'Divider',
+    status: 'released',
+    description: 'Dividers are used to visually separate content in a list or group.',
+    releasedIn: '8.14.0',
+    storybookLink: 'Components/Divider',
+  },
+  {
     name: 'Pill',
     status: 'planned-Q2-dev',
     description: '',
@@ -372,11 +379,6 @@ const componentData: ComponentStatusData = [
     status: 'planned-Q2-dev',
     description:
       'Tabs is a component which will allow you to show multiple clickable tabs in your UI',
-  },
-  {
-    name: 'Divider',
-    status: 'planned-Q2-dev',
-    description: 'Dividers are used to visually separate content in a list or group.',
   },
   {
     name: 'Data Table',

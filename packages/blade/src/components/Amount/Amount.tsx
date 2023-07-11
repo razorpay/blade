@@ -17,6 +17,7 @@ import { castNativeType, castWebType, getPlatformType } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 type Currency = 'INR' | 'MYR';
 
@@ -218,7 +219,7 @@ const getCurrencyWeight = (
   return 'regular';
 };
 
-const Amount = ({
+const _Amount = ({
   value,
   suffix = 'decimals',
   size = 'body-medium',
@@ -279,5 +280,10 @@ const Amount = ({
     </BaseBox>
   );
 };
+
+const Amount = assignWithoutSideEffects(_Amount, {
+  displayName: 'Amount',
+  componentId: 'Amount',
+});
 
 export { Amount, AmountProps };

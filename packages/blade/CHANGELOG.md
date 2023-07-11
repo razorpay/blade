@@ -1,5 +1,99 @@
 # @razorpay/blade
 
+## 8.15.3
+
+### Patch Changes
+
+- 4dd62afd: fix(blade): bottomsheet ssr fix
+
+## 8.15.2
+
+### Patch Changes
+
+- b2f55b7a: fix(blade): tooltip zIndex issue
+
+## 8.15.1
+
+### Patch Changes
+
+- c802e72f: feat: add blue variant to Counter component & change intent to variant
+
+  ## ⚠️ Changes for Counter component with backward compatibility
+
+  Changes the `intent` prop to `variant` since we support more than Feedback colors with the addition of `blue` color for Counter. We will continue to support `intent` prop for backward compatibility but it will be deprecated in an upcoming major release.
+
+  ### Migration guide
+
+  1. Replace all instances of Counter's `intent` prop with `variant
+     > The change is only in the naming of the prop, the value will remain unchanged.
+
+  ```diff
+   <Counter
+  -  intent='positive'
+  +  variant='positive'
+     value={42}
+   />
+  ```
+
+## 8.15.0
+
+### Minor Changes
+
+- bd5ededd: feat(DropdownHeaderFooter): add DropdownHeader DropdownFooter components
+
+  We have standardised the Header and Footer between Dropdown, BottomSheet, Modal, and any future components.
+
+  > **Warning**
+  >
+  > **Breaking Change :** For consumers who use - `ActionListHeader` or `ActionListFooter`.
+  >
+  > Through our code search we found there weren't any instances of these component in Razorpay code yet thus this is released under minor version
+
+  ## Migration Guide
+
+  > **Note**
+  >
+  > The Header and Footer are redesigned so it might not be possible to have 1:1 designs. The new header and footer will look different.
+
+  1. Remove `ActionListHeader` and `ActionListFooter` from the inside of the `ActionList`
+  2. Add `DropdownHeader` and `DropdownFooter` outside of the `ActionList`, inside `DropdownOverlay`.
+
+  ```diff
+  import {
+    Dropdown,
+    DropdownOverlay,
+    SelectInput,
+    ActionListHeader,
+    ActionListFooter,
+    ActionList,
+    ActionListItem
+  } from '@razorpay/blade/components';
+
+  function App() {
+    return (
+      <Dropdown>
+        <SelectInput label="Select City" />
+        <DropdownOverlay>
+  +       <DropdownHeader title="Title" />
+          <ActionList>
+  -          <ActionListHeader title="Title" />
+              <ActionListItem />
+              <ActionListItem />
+  -          <ActionListFooter trailing={<Button>Apply</Button>} />
+          </ActionList>
+  +       <DropdownFooter>
+  +         <Box><Button>Apply</Button></Box>
+  +       </DropdownFooter>
+        </DropdownOverlay>
+      </Dropdown>
+    )
+  }
+
+  export { App };
+  ```
+
+  Checkout [Dropdown Docs](https://blade.razorpay.com/?path=/story/components-dropdown-dropdown--page&globals=showInternalComponents:true;measureEnabled:false) for more details
+
 ## 8.14.0
 
 ### Minor Changes

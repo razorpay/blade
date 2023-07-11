@@ -1,6 +1,7 @@
 import React from 'react';
 import { DropdownButton } from '../DropdownButton';
 import { Dropdown, DropdownLink, DropdownOverlay } from '..';
+import { DropdownFooter, DropdownHeader } from '../DropdownHeaderFooter';
 import {
   WithControlledMenuStory,
   WithControlledMultiSelectMenuStory,
@@ -11,8 +12,19 @@ import {
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { Box } from '~components/Box';
 import { ActionList, ActionListItem, ActionListItemIcon } from '~components/ActionList';
-import { CheckIcon, ChevronDownIcon, ChevronUpIcon, ClockIcon, CloseIcon } from '~components/Icons';
+import {
+  CheckIcon,
+  ChevronDownIcon,
+  ChevronUpIcon,
+  ClockIcon,
+  CloseIcon,
+  StarIcon,
+} from '~components/Icons';
 import { Text } from '~components/Typography';
+import { Checkbox } from '~components/Checkbox';
+import { Button } from '~components/Button';
+import { Badge } from '~components/Badge';
+import { Amount } from '~components/Amount';
 
 const DropdownStoryMeta = {
   title: 'Components/Dropdown/With Button and Link',
@@ -86,6 +98,13 @@ export const InternalMenu = (): JSX.Element => {
       <Dropdown>
         <DropdownButton variant="tertiary">Status: {status ?? ''}</DropdownButton>
         <DropdownOverlay>
+          <DropdownHeader
+            leading={<StarIcon color="surface.text.normal.lowContrast" size="large" />}
+            title="Header Title Header Title Header Title Header Title Header Title"
+            subtitle="Header Subtitle"
+            titleSuffix={<Badge variant="positive">New</Badge>}
+            trailing={<Amount value={1000} />}
+          />
           <ActionList>
             <ActionListItem
               onClick={({ name, value }) => {
@@ -120,6 +139,16 @@ export const InternalMenu = (): JSX.Element => {
               intent="negative"
             />
           </ActionList>
+          <DropdownFooter>
+            <Box display="flex" alignItems="center" justifyContent="center" minWidth="300px">
+              <Box flex="5" display="flex">
+                <Checkbox>I agree terms and conditions</Checkbox>
+              </Box>
+              <Box flex="2">
+                <Button isFullWidth>Apply</Button>
+              </Box>
+            </Box>
+          </DropdownFooter>
         </DropdownOverlay>
       </Dropdown>
     </Box>

@@ -3,17 +3,10 @@ import React from 'react';
 import { fireEvent } from '@testing-library/react-native';
 import { DropdownButton } from '../DropdownButton';
 import { Dropdown, DropdownLink, DropdownOverlay } from '../index';
+import { DropdownFooter, DropdownHeader } from '../DropdownHeaderFooter';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 import { SelectInput } from '~components/Input/SelectInput';
-import {
-  ActionList,
-  ActionListItem,
-  ActionListHeader,
-  ActionListFooter,
-  ActionListHeaderIcon,
-  ActionListFooterIcon,
-} from '~components/ActionList';
-import { SearchIcon, HistoryIcon } from '~components/Icons';
+import { ActionList, ActionListItem } from '~components/ActionList';
 import { Button } from '~components/Button';
 import { Text } from '~components/Typography';
 
@@ -23,19 +16,14 @@ describe('<Dropdown />', () => {
       <Dropdown>
         <SelectInput label="Fruits" />
         <DropdownOverlay>
+          <DropdownHeader title="Recent Searches" />
           <ActionList>
-            <ActionListHeader
-              title="Recent Searches"
-              leading={<ActionListHeaderIcon icon={HistoryIcon} />}
-            />
             <ActionListItem title="Apple" value="apple" />
             <ActionListItem title="Mango" value="mango" />
-            <ActionListFooter
-              title="Search Tips"
-              leading={<ActionListFooterIcon icon={SearchIcon} />}
-              trailing={<Button>Apply</Button>}
-            />
           </ActionList>
+          <DropdownFooter>
+            <Button>Apply</Button>
+          </DropdownFooter>
         </DropdownOverlay>
       </Dropdown>,
     );
@@ -103,12 +91,10 @@ describe('<Dropdown />', () => {
             <ActionListItem title="Mango" value="mango" />
             <ActionListItem title="Apple" value="apple" />
             <ActionListItem title="Banana" value="banana" />
-            <ActionListFooter
-              title="Search Tips"
-              leading={<ActionListFooterIcon icon={SearchIcon} />}
-              trailing={<Button onClick={applyClickHandler}>Apply</Button>}
-            />
           </ActionList>
+          <DropdownFooter>
+            <Button onClick={applyClickHandler}>Apply</Button>
+          </DropdownFooter>
         </DropdownOverlay>
       </Dropdown>,
     );
@@ -147,21 +133,14 @@ describe('<Dropdown />', () => {
       <Dropdown>
         <SelectInput label="Fruits" testID="select-test" />
         <DropdownOverlay testID="dropdown-overlay-test">
+          <DropdownHeader title="Recent Searches" testID="action-list-header-test" />
           <ActionList testID="action-list-test">
-            <ActionListHeader
-              title="Recent Searches"
-              leading={<ActionListHeaderIcon icon={HistoryIcon} />}
-              testID="action-list-header-test"
-            />
             <ActionListItem title="Apple" value="apple" testID="action-list-item-test" />
             <ActionListItem title="Mango" value="mango" />
-            <ActionListFooter
-              title="Search Tips"
-              leading={<ActionListFooterIcon icon={SearchIcon} />}
-              trailing={<Button>Apply</Button>}
-              testID="action-list-footer-test"
-            />
           </ActionList>
+          <DropdownFooter testID="action-list-footer-test">
+            <Button>Apply</Button>
+          </DropdownFooter>
         </DropdownOverlay>
       </Dropdown>,
     );
