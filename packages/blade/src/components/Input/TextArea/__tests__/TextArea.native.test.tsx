@@ -4,7 +4,7 @@ import type { ReactElement } from 'react';
 import React from 'react';
 
 import { TextArea } from '..';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<TextArea />', () => {
   it('should render', () => {

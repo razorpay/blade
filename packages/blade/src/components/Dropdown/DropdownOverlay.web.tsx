@@ -6,14 +6,17 @@ import { autoUpdate, useFloating } from '@floating-ui/react';
 import type { DropdownPosition } from './dropdownUtils';
 import { componentIds, getDropdownOverflowMiddleware } from './dropdownUtils';
 import { useDropdown } from './useDropdown';
+import { StyledDropdownOverlay } from './StyledDropdownOverlay';
+import type { DropdownOverlayProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
-import { makeMotionTime, makeSize, metaAttribute, MetaConstants } from '~utils';
 import { useTheme } from '~components/BladeProvider';
 // Reading directly because its not possible to get theme object on top level to be used in keyframes
 import { spacing, size } from '~tokens/global';
 import type { SpacingValueType } from '~components/Box/BaseBox';
-import type { TestID } from '~src/_helpers/types';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import { makeMotionTime, makeSize } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { useBottomSheetAndDropdownGlue } from '~components/BottomSheet/BottomSheetContext';
 
 const dropdownFadeIn = keyframes`
 from {
@@ -39,9 +42,10 @@ to {
 }
 `;
 
-const StyledDropdownOverlay = styled(BaseBox)<{
+const AnimatedOverlay = styled(StyledDropdownOverlay)<{
   transition: FlattenSimpleInterpolation;
   onAnimationEnd: () => void;
+  isInBottomSheet?: boolean;
   isOpen: boolean;
 }>(
   (props) =>
@@ -53,10 +57,6 @@ const StyledDropdownOverlay = styled(BaseBox)<{
       pointer-events: ${props.isOpen ? 'all' : 'none'};
     `,
 );
-
-type DropdownOverlayProps = {
-  children: React.ReactElement;
-} & TestID;
 
 /**
  * Overlay of dropdown
@@ -73,6 +73,7 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
     actionListItemRef,
   } = useDropdown();
   const { theme } = useTheme();
+  const bottomSheetAndDropdownGlue = useBottomSheetAndDropdownGlue();
   const [showFadeOutAnimation, setShowFadeOutAnimation] = React.useState(false);
   const [width, setWidth] = React.useState<SpacingValueType>('100%');
   const [dropdownPosition, setDropdownPosition] = React.useState<DropdownPosition>({});
@@ -163,7 +164,18 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
   return (
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     <BaseBox position="relative" ref={refs.setFloating as any}>
-      <StyledDropdownOverlay
+      {isOpen ? (
+        <BaseBox
+          position={'fixed' as never}
+          top="spacing.0"
+          left="spacing.0"
+          height="100%"
+          width="100%"
+          onClick={() => setIsOpen(false)}
+        />
+      ) : null}
+      <AnimatedOverlay
+        isInBottomSheet={bottomSheetAndDropdownGlue?.dropdownHasBottomSheet}
         width={isMenu ? 'max-content' : width}
         // In SelectInput, Overlay should always take width of Input
         minWidth={isMenu ? '240px' : undefined}
@@ -180,7 +192,7 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
         {...metaAttribute({ name: MetaConstants.DropdownOverlay, testID })}
       >
         {children}
-      </StyledDropdownOverlay>
+      </AnimatedOverlay>
     </BaseBox>
   );
 };
@@ -189,4 +201,4 @@ const DropdownOverlay = assignWithoutSideEffects(_DropdownOverlay, {
   componentId: componentIds.DropdownOverlay,
 });
 
-export { DropdownOverlay, DropdownOverlayProps };
+export { DropdownOverlay };

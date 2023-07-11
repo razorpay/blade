@@ -5,8 +5,8 @@ import iconMap from './iconMap';
 import type { IconProps } from '.';
 import { CreditCardIcon } from '.';
 import BaseBox from '~components/Box/BaseBox';
-import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
-import { Sandbox } from '~src/_helpers/storybook/Sandbox';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
+import { Sandbox } from '~utils/storybook/Sandbox';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const Page = (): ReactElement => {

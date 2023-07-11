@@ -13,7 +13,7 @@ import {
   CardHeaderCounter,
   CardHeaderBadge,
 } from '../';
-import renderWithSSR from '~src/_helpers/testing/renderWithSSR.web';
+import renderWithSSR from '~utils/testing/renderWithSSR.web';
 import { InfoIcon } from '~components/Icons';
 import { Text } from '~components/Typography';
 

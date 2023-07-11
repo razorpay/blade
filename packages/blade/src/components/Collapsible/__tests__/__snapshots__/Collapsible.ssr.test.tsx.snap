@@ -1,0 +1,128 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Collapsible /> should render Collapsible on server 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div data-blade-component=\\"collapsible\\" class=\\"BaseBox-bmPWx iBXzln\\"><button type=\\"button\\" data-blade-component=\\"button\\" aria-controls=\\"collapsible-body-undefined\\" aria-expanded=\\"true\\" role=\\"button\\" class=\\"StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 dOlUqh\\"><div data-blade-component=\\"base-box\\" class=\\"BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 kkGTK NIPoA\\"><div class=\\"StyledBaseText-dVBfTO brGLEM\\" data-blade-component=\\"base-text\\">View Price Breakdown</div></div></button><div id=\\"collapsible-body-undefined\\" role=\\"region\\" aria-hidden=\\"false\\" data-blade-component=\\"collapsible-body\\" class=\\"BaseBox-bmPWx\\"><div class=\\"CollapsibleBodyContentweb__StyledCollapsibleBodyContent-sc-1oi3ngc-0 gxKLCW\\"><div data-blade-component=\\"box\\" class=\\"BaseBox-bmPWx hgWdUa\\"><div data-blade-component=\\"box\\" class=\\"BaseBox-bmPWx lmtAaL\\"><div data-blade-component=\\"box\\" class=\\"BaseBox-bmPWx hfsNNB\\"><p class=\\"StyledBaseText-dVBfTO eIdQFo\\" data-blade-component=\\"text\\">Actual amount</p><div data-blade-component=\\"amount\\" class=\\"BaseBox-bmPWx iaZUuq\\"><span class=\\"StyledBaseText-dVBfTO jKuOWA\\" data-blade-component=\\"base-text\\">₹</span><span class=\\"StyledBaseText-dVBfTO chIjgb\\" data-blade-component=\\"base-text\\">1,000<!-- -->.</span><span class=\\"StyledBaseText-dVBfTO eDQkPo\\" data-blade-component=\\"base-text\\">00</span></div></div><div data-blade-component=\\"box\\" class=\\"BaseBox-bmPWx hfsNNB\\"><p class=\\"StyledBaseText-dVBfTO ljwJlt\\" data-blade-component=\\"text\\">Razorpay Platform Fees</p><p class=\\"StyledBaseText-dVBfTO eIdQFo\\" data-blade-component=\\"text\\">2%</p></div><div data-blade-component=\\"box\\" class=\\"BaseBox-bmPWx hfsNNB\\"><p class=\\"StyledBaseText-dVBfTO ljwJlt\\" data-blade-component=\\"text\\">GST</p><p class=\\"StyledBaseText-dVBfTO eIdQFo\\" data-blade-component=\\"text\\">18%</p></div></div></div></div></div></div></div>"`;
+
+exports[`<Collapsible /> should render Collapsible on server 2`] = `
+<div
+  data-reactroot=""
+  id="root"
+>
+  <div
+    class="BaseBox-bmPWx iBXzln"
+    data-blade-component="collapsible"
+  >
+    <button
+      aria-controls="collapsible-body-1"
+      aria-expanded="true"
+      class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 dOlUqh"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 kkGTK NIPoA"
+        data-blade-component="base-box"
+      >
+        <div
+          class="StyledBaseText-dVBfTO brGLEM"
+          data-blade-component="base-text"
+        >
+          View Price Breakdown
+        </div>
+      </div>
+    </button>
+    <div
+      aria-hidden="false"
+      class="BaseBox-bmPWx"
+      data-blade-component="collapsible-body"
+      id="collapsible-body-1"
+      role="region"
+    >
+      <div
+        class="CollapsibleBodyContentweb__StyledCollapsibleBodyContent-sc-1oi3ngc-0 gxKLCW"
+      >
+        <div
+          class="BaseBox-bmPWx hgWdUa"
+          data-blade-component="box"
+        >
+          <div
+            class="BaseBox-bmPWx lmtAaL"
+            data-blade-component="box"
+          >
+            <div
+              class="BaseBox-bmPWx hfsNNB"
+              data-blade-component="box"
+            >
+              <p
+                class="StyledBaseText-dVBfTO eIdQFo"
+                data-blade-component="text"
+              >
+                Actual amount
+              </p>
+              <div
+                class="BaseBox-bmPWx iaZUuq"
+                data-blade-component="amount"
+              >
+                <span
+                  class="StyledBaseText-dVBfTO jKuOWA"
+                  data-blade-component="base-text"
+                >
+                  ₹
+                </span>
+                <span
+                  class="StyledBaseText-dVBfTO chIjgb"
+                  data-blade-component="base-text"
+                >
+                  1,000
+                  <!-- -->
+                  .
+                </span>
+                <span
+                  class="StyledBaseText-dVBfTO eDQkPo"
+                  data-blade-component="base-text"
+                >
+                  00
+                </span>
+              </div>
+            </div>
+            <div
+              class="BaseBox-bmPWx hfsNNB"
+              data-blade-component="box"
+            >
+              <p
+                class="StyledBaseText-dVBfTO ljwJlt"
+                data-blade-component="text"
+              >
+                Razorpay Platform Fees
+              </p>
+              <p
+                class="StyledBaseText-dVBfTO eIdQFo"
+                data-blade-component="text"
+              >
+                2%
+              </p>
+            </div>
+            <div
+              class="BaseBox-bmPWx hfsNNB"
+              data-blade-component="box"
+            >
+              <p
+                class="StyledBaseText-dVBfTO ljwJlt"
+                data-blade-component="text"
+              >
+                GST
+              </p>
+              <p
+                class="StyledBaseText-dVBfTO eIdQFo"
+                data-blade-component="text"
+              >
+                18%
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

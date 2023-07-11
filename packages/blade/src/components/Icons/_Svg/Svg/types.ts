@@ -1,5 +1,5 @@
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import type { TestID } from '~src/_helpers/types';
+import type { TestID } from '~utils/types';
 
 export type SvgProps = {
   children: React.ReactNode;

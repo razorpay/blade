@@ -9,7 +9,7 @@ import { ARROW_HEIGHT, ARROW_WIDTH } from './constants';
 import { getPlacementParts, mergeProps } from './utils';
 import { TooltipContext } from './TooltipContext';
 import { useTheme } from '~components/BladeProvider';
-import { metaAttribute, MetaConstants } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
 const Tooltip = ({
   content,
@@ -99,6 +99,8 @@ const Tooltip = ({
               // this happens because measure is async and it takes few miliseconds to calculate the positions.
               left: floatingStyles.left || -200,
               top: floatingStyles.top || -200,
+              // TODO: Tokenize zIndex values
+              zIndex: 1100,
             }}
             arrow={<TooltipArrow context={context} ref={arrowRef as never} />}
           >

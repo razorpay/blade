@@ -1,17 +1,18 @@
 import React from 'react';
 import type { DOMAttributes } from 'react';
-import type { Meta } from '@storybook/react';
+import type { Meta, ComponentStory } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import type { TagProps } from './Tag';
 import { Tag } from './Tag';
-import { Sandbox } from '~src/_helpers/storybook/Sandbox';
-import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import { Sandbox } from '~utils/storybook/Sandbox';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import { TextInput } from '~components/Input/TextInput';
 import { isReactNative } from '~utils';
 import { PlusIcon } from '~components/Icons';
+import iconMap from '~components/Icons/iconMap';
 
 const Page = (): React.ReactElement => {
   return (
@@ -22,17 +23,20 @@ const Page = (): React.ReactElement => {
         bankingTheme:
           'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=15234%3A480939',
       }}
-      componentName="Tags"
+      componentName="Tag"
       componentDescription="These are set of interactive keywords that help organise & categorise objects. Tags can be added or removed from an object by the users."
     >
       <Title>Usage</Title>
       <Sandbox>
         {`
-        import { Tag } from '@razorpay/blade/components';
+        import { Tag, FileTextIcon } from '@razorpay/blade/components';
         
         function App(): JSX.Element {
           return (
-            <Tag onDismiss={({ value }) => console.log('Tag dismissed', value)}>
+            <Tag
+              icon={FileTextIcon}
+              onDismiss={({ value }) => console.log('Tag dismissed', value)}
+            >
               Unpaid
             </Tag>
           )
@@ -50,6 +54,12 @@ export default {
   component: Tag,
   argTypes: {
     ...getStyledPropsArgTypes(),
+    icon: {
+      name: 'icon',
+      type: 'select',
+      options: Object.keys(iconMap),
+      mapping: iconMap,
+    },
   },
   parameters: {
     docs: {
@@ -58,12 +68,24 @@ export default {
   },
 } as Meta<TagProps>;
 
-export const Default = (props: TagProps): React.ReactElement => <Tag {...props} />;
+const TagTemplate: ComponentStory<typeof Tag> = ({ children, ...args }) => {
+  return <Tag {...args}>{children}</Tag>;
+};
 
+export const Default = TagTemplate.bind({});
 Default.args = {
   children: 'Unpaid',
   onDismiss: ({ value }) => console.log('dismiss tag', value),
-} as TagProps;
+  icon: 'FileTextIcon',
+} as TagProps & { icon: string };
+
+export const Disabled = TagTemplate.bind({});
+Disabled.args = {
+  children: 'Disabled Tag',
+  onDismiss: ({ value }) => console.log('dismiss tag', value),
+  icon: 'FileTextIcon',
+  isDisabled: true,
+} as TagProps & { icon: string };
 
 const CrossPlatformForm = ({
   children,
@@ -100,7 +122,7 @@ export const ControlledTags = (props: TagProps): React.ReactElement => {
           <Tag
             key={tagName}
             {...props}
-            marginLeft="spacing.2"
+            marginRight="spacing.2"
             onDismiss={({ value }) => removeTag(value)}
           >
             {tagName}
@@ -126,6 +148,7 @@ export const ControlledTags = (props: TagProps): React.ReactElement => {
             variant="secondary"
             marginTop="spacing.2"
             type="submit"
+            {...{ onClick: isReactNative() ? () => addTag() : undefined }}
           >
             Create Tag
           </Button>

@@ -1,8 +1,11 @@
+import getIn from 'lodash/get';
 import type { CSSObject } from 'styled-components';
 import { checkboxIconColors, checkboxSizes } from '../checkboxTokens';
 import type { CheckboxIconProps } from './CheckboxIcon';
 import type { Theme } from '~components/BladeProvider';
-import { getIn, makeBorderSize, makeSize, makeSpace } from '~utils';
+import { makeSpace } from '~utils/makeSpace';
+import { makeSize } from '~utils/makeSize';
+import { makeBorderSize } from '~utils/makeBorderSize';
 
 export type CheckboxRectProps = Omit<CheckboxIconProps, 'state'> & {
   isChecked: boolean;

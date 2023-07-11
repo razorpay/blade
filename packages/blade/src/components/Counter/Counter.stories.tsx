@@ -5,8 +5,8 @@ import type { CounterProps } from './Counter';
 import { Counter as CounterComponent } from './Counter';
 import BaseBox from '~components/Box/BaseBox';
 import { Text as BladeText } from '~components/Typography';
-import { Sandbox } from '~src/_helpers/storybook/Sandbox';
-import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import { Sandbox } from '~utils/storybook/Sandbox';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const Page = (): ReactElement => {
@@ -58,7 +58,7 @@ const CounterTemplate: ComponentStory<typeof CounterComponent> = ({ ...args }) =
 export const Counter = CounterTemplate.bind({});
 Counter.args = {
   value: 20,
-  intent: 'neutral',
+  variant: 'neutral',
   contrast: 'low',
 };
 Counter.storyName = 'Default';
@@ -67,13 +67,13 @@ export const Max = CounterTemplate.bind({});
 Max.args = {
   value: 120,
   max: 99,
-  intent: 'neutral',
+  variant: 'neutral',
   contrast: 'high',
 };
 Max.storyName = 'Max';
 
 const CountersWithVariantTemplate: ComponentStory<typeof CounterComponent> = ({ ...args }) => {
-  const intents = ['positive', 'negative', 'notice', 'information', 'neutral'] as const;
+  const variants = ['positive', 'negative', 'notice', 'information', 'neutral', 'blue'] as const;
 
   return (
     <BaseBox display="flex" flexDirection="column">
@@ -85,13 +85,13 @@ const CountersWithVariantTemplate: ComponentStory<typeof CounterComponent> = ({ 
         paddingBottom="spacing.5"
         flexWrap="wrap"
       >
-        {intents.map((intent) => (
+        {variants.map((variant) => (
           <CounterComponent
             {...args}
-            key={intent}
+            key={variant}
             marginRight="spacing.3"
             marginTop="spacing.2"
-            intent={intent}
+            variant={variant}
             contrast="low"
           />
         ))}
@@ -104,13 +104,13 @@ const CountersWithVariantTemplate: ComponentStory<typeof CounterComponent> = ({ 
         paddingBottom="spacing.5"
         flexWrap="wrap"
       >
-        {intents.map((intent) => (
+        {variants.map((variant) => (
           <CounterComponent
             {...args}
-            key={intent}
+            key={variant}
             marginRight="spacing.3"
             marginTop="spacing.2"
-            intent={intent}
+            variant={variant}
             contrast="high"
           />
         ))}

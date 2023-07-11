@@ -4,7 +4,15 @@ import type { CSSProperties } from 'react';
 import type { BaseBoxProps } from '~components/Box/BaseBox';
 
 type TooltipProps = {
+  /**
+   * Tooltip content
+   */
   content: string;
+  /**
+   * Placement of tooltip
+   *
+   * @default "top"
+   */
   placement?: Exclude<
     UseFloatingOptions['placement'],
     'left-end' | 'left-start' | 'right-end' | 'right-start'

@@ -5,10 +5,11 @@ import {
   getTransitionDuration,
   getTransitionEasing,
 } from './commonStyles';
-import { castNativeType, makeAccessible } from '~utils';
+import { castNativeType } from '~utils';
 import type { IconComponent } from '~components/Icons';
 import { ChevronDownIcon } from '~components/Icons';
 import { useTheme } from '~components/BladeProvider';
+import { makeAccessible } from '~utils/makeAccessible';
 
 // Not really an IconComponent, a wrapper is needed for animating the icon inside
 const CollapsibleChevronIcon: IconComponent = (props) => {
@@ -25,7 +26,6 @@ const CollapsibleChevronIcon: IconComponent = (props) => {
     withTiming(isExpanded ? transformExpanded : transformCollapsed, { duration, easing }),
   );
   const animatedStyles = useAnimatedStyle(() => ({
-    // Interpolated string has to be passed, to make it work for both android and ios
     transform: [{ rotateZ: `${rotateZ.value}deg` }],
   }));
 

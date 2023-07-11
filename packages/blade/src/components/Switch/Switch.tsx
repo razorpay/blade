@@ -11,9 +11,12 @@ import { useTheme } from '~components/BladeProvider';
 import { BaseBox } from '~components/Box/BaseBox';
 import { useCheckbox } from '~components/Checkbox/useCheckbox';
 import { SelectorInput } from '~components/Form/Selector/SelectorInput';
-import { assignWithoutSideEffects, makeAccessible, metaAttribute, useBreakpoint } from '~utils';
-import type { BladeElementRef } from '~src/hooks/types';
+import { useBreakpoint } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { SelectorLabel } from '~components/Form/Selector/SelectorLabel';
+import type { BladeElementRef } from '~utils/types';
+import { makeAccessible } from '~utils/makeAccessible';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 const _Switch: React.ForwardRefRenderFunction<BladeElementRef, SwitchProps> = (
   {
@@ -78,11 +81,12 @@ const _Switch: React.ForwardRefRenderFunction<BladeElementRef, SwitchProps> = (
 
   return (
     <BaseBox
-      {...metaAttribute({ testID, name: 'Switch' })}
+      {...metaAttribute({ testID, name: MetaConstants.Switch })}
       // @ts-ignore on rn inline-block is not valid but type here will be `flex | inline-block`
       display={state.isReactNative ? 'flex' : 'inline-block'}
     >
       <SelectorLabel
+        componentName={MetaConstants.SwitchLabel}
         onTouchStart={handlePointerPressedIn}
         onTouchEnd={handlePointerPressedOut}
         onMouseDown={handlePointerPressedIn}

@@ -1,0 +1,166 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Tag /> should render tag 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    alignSelf="center"
+    backgroundColor="brand.gray.a100.lowContrast"
+    borderRadius="max"
+    data-blade-component="tag"
+    display="flex"
+    flexDirection="row"
+    flexWrap="nowrap"
+    style={
+      Array [
+        Object {
+          "alignSelf": "center",
+          "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
+          "borderRadius": 9999,
+          "display": "flex",
+          "flexDirection": "row",
+          "flexWrap": "nowrap",
+          "paddingBottom": 2,
+          "paddingLeft": 8,
+          "paddingRight": 4,
+          "paddingTop": 2,
+        },
+      ]
+    }
+  >
+    <View
+      alignItems="center"
+      data-blade-component="box"
+      display="flex"
+      flexDirection="row"
+      flexWrap="nowrap"
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "flexWrap": "nowrap",
+          },
+        ]
+      }
+    >
+      <Text
+        color="surface.text.subtle.lowContrast"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={75}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={50}
+        marginRight="spacing.2"
+        style={
+          Array [
+            Object {
+              "color": "hsla(216, 27%, 36%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 16,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 4,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+      >
+        in:User
+      </Text>
+      <View
+        accessibilityLabel="Close in:User tag"
+        accessibilityRole="button"
+        accessible={true}
+        collapsable={false}
+        contrast="low"
+        focusable={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Array [
+            Object {
+              "alignSelf": "center",
+            },
+          ]
+        }
+      >
+        <RNSVGSvgView
+          accessibilityElementsHidden={true}
+          align="xMidYMid"
+          bbHeight="12px"
+          bbWidth="12px"
+          data-blade-component="icon"
+          fill="none"
+          focusable={false}
+          height="12px"
+          importantForAccessibility="no-hide-descendants"
+          meetOrSlice={0}
+          minX={0}
+          minY={0}
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderWidth": 0,
+              },
+              Array [
+                Object {},
+              ],
+              Object {
+                "flex": 0,
+                "height": 12,
+                "width": 12,
+              },
+            ]
+          }
+          vbHeight={24}
+          vbWidth={24}
+          width="12px"
+        >
+          <RNSVGGroup
+            fill={null}
+            propList={
+              Array [
+                "fill",
+              ]
+            }
+          >
+            <RNSVGPath
+              d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
+              fill={4288851646}
+              propList={
+                Array [
+                  "fill",
+                ]
+              }
+            />
+          </RNSVGGroup>
+        </RNSVGSvgView>
+      </View>
+    </View>
+  </View>
+</View>
+`;

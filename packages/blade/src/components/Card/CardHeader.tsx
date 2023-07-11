@@ -8,23 +8,19 @@ import type { ButtonProps } from '../Button';
 import { Button } from '../Button';
 import { Counter } from '../Counter';
 import type { CounterProps } from '../Counter';
-import { Divider } from './Divider';
 import { useVerifyInsideCard, useVerifyAllowedComponents } from './CardContext';
 import { ComponentIds } from './Card';
+import { Divider } from '~components/Divider';
 import BaseBox from '~components/Box/BaseBox';
 import type { TextProps, TextVariant } from '~components/Typography';
 import { Heading, Text } from '~components/Typography';
 import type { IconComponent } from '~components/Icons';
 import { minHeight } from '~components/Button/BaseButton/buttonTokens';
-import {
-  metaAttribute,
-  MetaConstants,
-  getComponentId,
-  isValidAllowedChildren,
-  makeSpace,
-} from '~utils';
-import type { TestID } from '~src/_helpers/types';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import type { TestID } from '~utils/types';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { makeSpace } from '~utils/makeSpace';
+import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 
 const _CardHeaderIcon = ({ icon: Icon }: { icon: IconComponent }): React.ReactElement => {
   useVerifyInsideCard('CardHeaderIcon');

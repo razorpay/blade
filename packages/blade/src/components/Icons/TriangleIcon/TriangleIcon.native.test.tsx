@@ -1,5 +1,5 @@
 import TriangleIcon from './';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<TriangleIcon />', () => {
   it('should render TriangleIcon', () => {

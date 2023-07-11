@@ -1,3 +1,4 @@
+import getIn from 'lodash/get';
 import React from 'react';
 import type { EasingFunctionFactory } from 'react-native-reanimated';
 import Animated, {
@@ -9,8 +10,9 @@ import Animated, {
 } from 'react-native-reanimated';
 import { motion as spinnerMotion } from './spinnerTokens';
 import { useTheme } from '~components/BladeProvider';
-import { castNativeType, getIn, makeMotionTime } from '~utils';
+import { castNativeType } from '~utils';
 import BaseBox from '~components/Box/BaseBox';
+import { makeMotionTime } from '~utils/makeMotionTime';
 
 const SpinningBox = ({ children }: { children: React.ReactNode }): React.ReactElement => {
   const { theme } = useTheme();

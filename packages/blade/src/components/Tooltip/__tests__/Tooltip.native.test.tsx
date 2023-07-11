@@ -5,10 +5,10 @@
 import { act, fireEvent } from '@testing-library/react-native';
 import React from 'react';
 import { Tooltip, TooltipInteractiveWrapper } from '..';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
 import { Button } from '~components/Button';
 import { Text } from '~components/Typography';
 import { paymentTheme } from '~tokens/theme';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 const triggerId = 'tooltip-interactive-wrapper';
 const modalBackdropId = 'tooltip-modal-backdrop';
 

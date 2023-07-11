@@ -1,10 +1,10 @@
 import React from 'react';
 import { Playground } from './stories';
-import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Code, Heading, Text, Title } from '~components/Typography';
-import { Sandbox } from '~src/_helpers/storybook/Sandbox';
+import { Sandbox } from '~utils/storybook/Sandbox';
 import { Box } from '~components/Box';
-import { ArgsTable } from '~src/_helpers/storybook/ArgsTable';
+import { ArgsTable } from '~utils/storybook/ArgsTable';
 import { List, ListItem } from '~components/List';
 import BaseBox from '~components/Box/BaseBox';
 import { Link } from '~components/Link';
@@ -134,7 +134,7 @@ const ModalDocs = (): JSX.Element => {
               Title of the Header
             </Text>
           ),
-          subTitle: (
+          subtitle: (
             <Text size="small" type="subdued">
               <Text size="small" type="subdued">
                 <Code size="medium">string</Code>

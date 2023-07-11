@@ -4,8 +4,10 @@ import { useCallback } from 'react';
 import type { LinkProps } from '../Link';
 import { useCollapsible } from './CollapsibleContext';
 import { CollapsibleChevronIcon } from './CollapsibleChevronIcon';
-import { MetaConstants, assignWithoutSideEffects, makeAccessible } from '~utils';
+import { MetaConstants } from '~utils/metaAttribute';
 import { BaseLink } from '~components/Link/BaseLink';
+import { makeAccessible } from '~utils/makeAccessible';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 type CollapsibleLinkProps = Pick<
   LinkProps,

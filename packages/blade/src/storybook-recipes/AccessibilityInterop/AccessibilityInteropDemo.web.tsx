@@ -2,10 +2,10 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import React from 'react';
 import { getCheckboxAccessibilityProps } from './getCheckboxA11yProps';
-import { makeAccessible } from '~utils';
 import { CloseIcon, EyeIcon } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
+import { makeAccessible } from '~utils/makeAccessible';
 
 const Checkbox: React.FC<{ label: string; checked?: boolean; disabled?: boolean }> = ({
   label,

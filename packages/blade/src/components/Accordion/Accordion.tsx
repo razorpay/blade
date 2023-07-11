@@ -6,10 +6,11 @@ import { MAX_WIDTH } from './styles';
 import { BaseBox } from '~components/Box/BaseBox';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getStyledProps } from '~components/Box/styledProps';
-import type { TestID } from '~src/_helpers/types';
 import type { BoxProps } from '~components/Box';
 import { size } from '~tokens/global';
-import { MetaConstants, makeSize, metaAttribute } from '~utils';
+import type { TestID } from '~utils/types';
+import { makeSize } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
 type AccordionProps = {
   /**

@@ -10,7 +10,7 @@ import {
   performAction,
 } from './dropdownUtils';
 import type { SelectActionsType } from './dropdownUtils';
-import type { DropdownProps } from './Dropdown';
+import type { DropdownProps } from './types';
 
 import type { FormInputHandleOnKeyDownEvent } from '~components/Form/FormTypes';
 import { isReactNative } from '~utils';

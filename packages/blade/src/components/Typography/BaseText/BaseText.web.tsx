@@ -3,8 +3,10 @@ import type { ReactElement } from 'react';
 import styled from 'styled-components';
 import getBaseTextStyles from './getBaseTextStyles';
 import type { BaseTextProps, StyledBaseTextProps } from './types';
-import { metaAttribute, makeAccessible, omitPropsFromHTML } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useStyledProps } from '~components/Box/styledProps';
+import { makeAccessible } from '~utils/makeAccessible';
+import { omitPropsFromHTML } from '~utils/omitPropsFromHTML';
 
 const StyledBaseText = styled.div.withConfig({
   shouldForwardProp: omitPropsFromHTML,
@@ -57,7 +59,7 @@ export const BaseText = ({
   className,
   style,
   accessibilityProps = {},
-  componentName,
+  componentName = MetaConstants.BaseText,
   testID,
   ...styledProps
 }: BaseTextProps): ReactElement => {

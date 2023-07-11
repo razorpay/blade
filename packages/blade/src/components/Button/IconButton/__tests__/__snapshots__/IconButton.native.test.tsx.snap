@@ -37,6 +37,7 @@ exports[`<IconButton /> should render 1`] = `
       align="xMidYMid"
       bbHeight="16px"
       bbWidth="16px"
+      data-blade-component="icon"
       fill="none"
       focusable={false}
       height="16px"

@@ -43,14 +43,6 @@ export const getActionListSectionRole = (): 'group' | undefined => {
   return 'group';
 };
 
-export const getActionListFooterRole = (): 'group' | undefined => {
-  if (isReactNative()) {
-    return undefined;
-  }
-
-  return 'group';
-};
-
 export const getSeparatorRole = (): 'separator' | undefined => {
   if (isReactNative()) {
     // Its not really announced so ignoring it in native.

@@ -1,11 +1,13 @@
 /* eslint-disable react/display-name */
 import styled from 'styled-components';
-
 import type { ReactElement } from 'react';
 import React from 'react';
 import type { StyledIconButtonProps } from './types';
-import { castWebType, metaAttribute, makeAccessible, makeMotionTime, MetaConstants } from '~utils';
+import { castWebType } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { ColorContrastTypes } from '~tokens/theme/theme';
+import { makeAccessible } from '~utils/makeAccessible';
+import { makeMotionTime } from '~utils/makeMotionTime';
 
 type StyledButtonProps = {
   contrast: ColorContrastTypes;
@@ -55,6 +57,7 @@ const StyledIconButton = React.forwardRef<HTMLButtonElement, StyledIconButtonPro
       size,
       contrast,
       accessibilityLabel,
+      isDisabled,
       testID,
       onBlur,
       onFocus,
@@ -80,10 +83,14 @@ const StyledIconButton = React.forwardRef<HTMLButtonElement, StyledIconButtonPro
       onPointerEnter={onPointerEnter}
       onTouchEnd={onTouchEnd}
       onTouchStart={onTouchStart}
+      disabled={isDisabled}
       {...makeAccessible({ label: accessibilityLabel })}
       {...metaAttribute({ name: MetaConstants.IconButton, testID })}
     >
-      <Icon size={size} color="currentColor" />
+      <Icon
+        size={size}
+        color={isDisabled ? 'surface.action.icon.disabled.lowContrast' : 'currentColor'}
+      />
     </StyledButton>
   ),
 );

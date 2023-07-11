@@ -3,7 +3,7 @@
 import userEvents from '@testing-library/user-event';
 import React from 'react';
 import { Tag } from '../Tag';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<Tag />', () => {
   it('should render tag', () => {
@@ -21,5 +21,19 @@ describe('<Tag />', () => {
     await user.click(getByRole('button', { name: 'Close in:User tag' }));
     expect(queryByText('in:User')).not.toBeInTheDocument();
     expect(dismissHandler).toBeCalledWith({ value: 'in:User' });
+  });
+
+  it('should NOT remove tag or call onDismiss on disabled Tag', async () => {
+    const user = userEvents.setup();
+    const dismissHandler = jest.fn();
+    const { getByRole, queryByText } = renderWithTheme(
+      <Tag onDismiss={dismissHandler} isDisabled={true}>
+        in:User
+      </Tag>,
+    );
+    expect(queryByText('in:User')).toBeInTheDocument();
+    await user.click(getByRole('button', { name: 'Close in:User tag' }));
+    expect(queryByText('in:User')).toBeInTheDocument();
+    expect(dismissHandler).not.toBeCalled();
   });
 });

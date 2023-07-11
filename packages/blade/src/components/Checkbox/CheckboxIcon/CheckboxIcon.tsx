@@ -1,12 +1,14 @@
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+import getIn from 'lodash/get';
 import React from 'react';
 import { CheckboxIconWrapper } from './CheckboxIconWrapper';
 import { Fade } from './Fade';
 import { useTheme } from '~components/BladeProvider';
 import Svg, { Path } from '~components/Icons/_Svg';
-import { getIn, makeSpace } from '~utils';
+import { makeSpace } from '~utils/makeSpace';
+import { metaAttribute } from '~utils/metaAttribute';
 import { size } from '~tokens/global';
 
 const svgSize = {
@@ -87,6 +89,7 @@ const CheckboxIcon = ({
       isDisabled={isDisabled}
       isNegative={isNegative}
       isChecked={!!(isChecked || isIndeterminate)}
+      {...metaAttribute({ name: 'checkbox-icon-wrapper' })}
     >
       <Fade show={isIndeterminate} styles={{ position: 'absolute', display: 'flex' }}>
         <IndeterminateIcon size={size} color={iconColor} />

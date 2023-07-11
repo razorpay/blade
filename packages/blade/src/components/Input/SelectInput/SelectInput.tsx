@@ -1,4 +1,5 @@
 import React from 'react';
+import isEmpty from 'lodash/isEmpty';
 import { BaseInput } from '../BaseInput';
 import type { BaseInputProps } from '../BaseInput';
 import { SelectChevronIcon } from './SelectChevronIcon';
@@ -7,13 +8,14 @@ import { useDropdown } from '~components/Dropdown/useDropdown';
 import type { IconComponent } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
 import { VisuallyHidden } from '~components/VisuallyHidden';
-import { isEmpty, isReactNative, MetaConstants } from '~utils';
-import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
-import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
+import { isReactNative } from '~utils';
 import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 import { componentIds } from '~components/Dropdown/dropdownUtils';
 import { Tag } from '~components/Tag';
+import type { BladeElementRef } from '~utils/types';
+import { useBladeInnerRef } from '~utils/useBladeInnerRef';
+import { MetaConstants } from '~utils/metaAttribute';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 type SelectInputProps = Pick<
   BaseInputProps,
@@ -237,11 +239,13 @@ const _SelectInput = (
         interactionElement={
           <SelectChevronIcon
             onClick={() => {
-              // Icon onClicks to the SelectInput itself
-              if (!isReactNative()) {
-                triggererRef.current?.focus();
+              if (!props.isDisabled) {
+                // Icon onClicks to the SelectInput itself
+                if (!isReactNative()) {
+                  triggererRef.current?.focus();
+                }
+                onTriggerClick();
               }
-              onTriggerClick();
             }}
             icon={isOpen ? ChevronUpIcon : ChevronDownIcon}
           />

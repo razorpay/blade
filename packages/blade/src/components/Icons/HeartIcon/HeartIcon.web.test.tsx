@@ -1,5 +1,5 @@
 import HeartIcon from './';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<HeartIcon />', () => {
   it('should render HeartIcon', () => {

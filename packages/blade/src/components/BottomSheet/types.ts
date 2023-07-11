@@ -2,6 +2,7 @@
 import type { BaseHeaderProps } from '../BaseHeaderFooter/BaseHeader';
 import type { BaseFooterProps } from '../BaseHeaderFooter/BaseFooter';
 import type { SnapPoints } from './utils';
+import type { SpacingValueType } from '~components/Box/BaseBox';
 
 type BottomSheetProps = {
   /**
@@ -52,4 +53,16 @@ type BottomSheetHeaderProps = Pick<
 
 type BottomSheetFooterProps = Pick<BaseFooterProps, 'children'>;
 
-export { BottomSheetProps, BottomSheetHeaderProps, BottomSheetFooterProps };
+type BottomSheetBodyProps = {
+  children: React.ReactNode;
+  /**
+   * Sets the padding equally on all sides. Only few `spacing` tokens are allowed deliberately
+   * @default `spacing.5`
+   *
+   * **Links:**
+   * - Docs: https://blade.razorpay.com/?path=/docs/tokens-spacing--page
+   */
+  padding?: Extract<SpacingValueType, 'spacing.0' | 'spacing.5'>;
+};
+
+export { BottomSheetProps, BottomSheetHeaderProps, BottomSheetFooterProps, BottomSheetBodyProps };

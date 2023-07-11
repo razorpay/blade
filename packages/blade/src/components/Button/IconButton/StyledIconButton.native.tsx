@@ -5,8 +5,8 @@ import styled from 'styled-components/native';
 
 import type { View } from 'react-native';
 import type { StyledIconButtonProps } from './types';
-import { makeAccessible } from '~utils';
 import type { ColorContrastTypes } from '~tokens/theme/theme';
+import { makeAccessible } from '~utils/makeAccessible';
 import type { BladeCommonEvents } from '~components/types';
 
 type State = 'active' | 'default';
@@ -24,6 +24,7 @@ const StyledIconButton = React.forwardRef<View, StyledIconButtonProps>(
   (
     {
       icon: Icon,
+      isDisabled,
       onClick,
       onBlur,
       onFocus,
@@ -53,6 +54,7 @@ const StyledIconButton = React.forwardRef<View, StyledIconButtonProps>(
         ref={ref as any}
         contrast={contrast}
         onPress={onClick}
+        disabled={isDisabled}
         onPressIn={() => setIsPressed(true)}
         onPressOut={() => setIsPressed(false)}
         onBlur={onBlur}

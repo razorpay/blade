@@ -2,13 +2,15 @@
 import type { BaseHeaderProps } from '../BaseHeaderFooter/BaseHeader';
 import { useModalContext } from './ModalContext';
 import { modalHighestZIndex } from './modalTokens';
-import { MetaConstants, assignWithoutSideEffects, makeSize } from '~utils';
+import { makeSize } from '~utils';
 import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
 import { BaseBox } from '~components/Box/BaseBox';
 import { size } from '~tokens/global';
 import { useTheme } from '~components/BladeProvider';
 import { IconButton } from '~components/Button/IconButton';
 import { CloseIcon } from '~components/Icons';
+import { MetaConstants } from '~utils/metaAttribute';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 type ModalHeaderProps = Pick<
   BaseHeaderProps,

@@ -10,6 +10,7 @@ exports[`<BaseText /> should render regular text 1`] = `
 >
   <Text
     color="surface.text.normal.highContrast"
+    data-blade-component="base-text"
     fontFamily="text"
     fontSize={25}
     fontWeight="regular"
@@ -51,6 +52,7 @@ exports[`<BaseText /> should render text in italics style with line-through 1`] 
 >
   <Text
     color="surface.text.normal.highContrast"
+    data-blade-component="base-text"
     fontFamily="text"
     fontSize={25}
     fontStyle="italic"
@@ -93,6 +95,7 @@ exports[`<BaseText /> should render text with default properties 1`] = `
   }
 >
   <Text
+    data-blade-component="base-text"
     style={
       Array [
         Object {

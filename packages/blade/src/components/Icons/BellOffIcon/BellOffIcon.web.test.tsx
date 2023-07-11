@@ -1,5 +1,5 @@
 import BellOffIcon from './';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<BellOffIcon />', () => {
   it('should render BellOffIcon', () => {
