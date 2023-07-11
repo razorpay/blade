@@ -112,6 +112,7 @@ exports[`<Tag /> should render tag 1`] = `
           align="xMidYMid"
           bbHeight="12px"
           bbWidth="12px"
+          data-blade-component="icon"
           fill="none"
           focusable={false}
           height="12px"

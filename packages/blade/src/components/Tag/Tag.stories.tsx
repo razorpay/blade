@@ -148,6 +148,7 @@ export const ControlledTags = (props: TagProps): React.ReactElement => {
             variant="secondary"
             marginTop="spacing.2"
             type="submit"
+            {...{ onClick: isReactNative() ? () => addTag() : undefined }}
           >
             Create Tag
           </Button>

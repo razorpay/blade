@@ -62,7 +62,10 @@ const Tag = ({
 
   return (
     <BaseBox
-      display={isReactNative() ? 'flex' : 'inline-flex'}
+      display={(isReactNative() ? 'flex' : 'inline-flex') as never}
+      alignSelf={isReactNative() ? 'center' : undefined}
+      flexDirection="row"
+      flexWrap="nowrap"
       backgroundColor="brand.gray.a100.lowContrast"
       borderRadius="max"
       padding={
@@ -70,9 +73,6 @@ const Tag = ({
           ? ['spacing.1', 'spacing.2', 'spacing.1', 'spacing.3']
           : ['spacing.2', 'spacing.3', 'spacing.2', 'spacing.4']
       }
-      flexDirection="row"
-      flexWrap="nowrap"
-      alignSelf="center"
       {...getStyledProps(styledProps)}
       {...metaAttribute({ name: MetaConstants.Tag, testID })}
     >
