@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 9.0.1
+
+### Patch Changes
+
+- dfea4962: fix(DropdownOverlay): position of Overlay with label on left
+
 ## 9.0.0
 
 ### Major Changes
