@@ -1,13 +1,6 @@
 # Skeleton <!-- omit in toc -->
 Skeleton Loader is a static / animated placeholder for the information that is still loading. It mimic the structure and look of the entire view. 
 
-The skeleton blocks can have 3 types of shape
-- circle 
-- rectangle
-- pill
-
-Each of these shapes can be achieved by adjusting the width, height and border radius of the blocks. Properties of skeleton loaders.
-
 <img src="./skeleton-thumbnail.png" width="380" />
 
 ## Design
@@ -159,7 +152,7 @@ const App = () => {
 
 ```
 
-A question that might arise is "Why not just give isLoading prop in the Card?"
+**Q. A question that might arise is "Why not just give isLoading prop for Card?"**
 
 Like: 
 
@@ -177,9 +170,9 @@ Like:
 
 We discussed this, while it might look simple this approach also has few downsides: 
 
-- if we provide `isLoading` prop it might cause a lot of jumps and shifts on the page because we won't know until API responds if the CardHeader has title/prefix or subtitle set or not and it could be removed after the API is done loading.
-- Providing `isLoading` prop for all Blade components (where applicable) might not be the most flexible approach.
-- With `isLoading` prop consumers will anyways have to opt out and use custom Skeleton templates for the CardBody content so there's not much benefit to providing it out of the box.
+- if we provide `isLoading` prop in Card it might cause a lot of jumps and shifts on the page because we won't know until API responds if the CardHeader has title/prefix or subtitle set or not and it could be removed after the API is done loading.
+- Providing `isLoading` prop in Card or for all Blade components (where applicable) might not be the most flexible approach.
+- Providing `isLoading` prop in Card consumers will anyways have to opt out and use custom Skeleton templates for the CardBody content so there's not much benefit to providing it out of the box.
 
 
 ## Motion
