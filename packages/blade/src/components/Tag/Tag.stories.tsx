@@ -1,6 +1,6 @@
 import React from 'react';
 import type { DOMAttributes } from 'react';
-import type { Meta } from '@storybook/react';
+import type { Meta, ComponentStory } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import type { TagProps } from './Tag';
 import { Tag } from './Tag';
@@ -23,17 +23,20 @@ const Page = (): React.ReactElement => {
         bankingTheme:
           'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=15234%3A480939',
       }}
-      componentName="Tags"
+      componentName="Tag"
       componentDescription="These are set of interactive keywords that help organise & categorise objects. Tags can be added or removed from an object by the users."
     >
       <Title>Usage</Title>
       <Sandbox>
         {`
-        import { Tag } from '@razorpay/blade/components';
+        import { Tag, FileTextIcon } from '@razorpay/blade/components';
         
         function App(): JSX.Element {
           return (
-            <Tag onDismiss={({ value }) => console.log('Tag dismissed', value)}>
+            <Tag
+              icon={FileTextIcon}
+              onDismiss={({ value }) => console.log('Tag dismissed', value)}
+            >
               Unpaid
             </Tag>
           )
@@ -65,12 +68,23 @@ export default {
   },
 } as Meta<TagProps>;
 
-export const Default = (props: TagProps): React.ReactElement => <Tag {...props} />;
+const TagTemplate: ComponentStory<typeof Tag> = ({ children, ...args }) => {
+  return <Tag {...args}>{children}</Tag>;
+};
 
+export const Default = TagTemplate.bind({});
 Default.args = {
   children: 'Unpaid',
   onDismiss: ({ value }) => console.log('dismiss tag', value),
   icon: 'FileTextIcon',
+} as TagProps & { icon: string };
+
+export const Disabled = TagTemplate.bind({});
+Disabled.args = {
+  children: 'Disabled Tag',
+  onDismiss: ({ value }) => console.log('dismiss tag', value),
+  icon: 'FileTextIcon',
+  isDisabled: true,
 } as TagProps & { icon: string };
 
 const CrossPlatformForm = ({

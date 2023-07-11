@@ -63,7 +63,6 @@ const Tag = ({
     <StyledTag
       backgroundColor="brand.gray.a100.lowContrast"
       borderRadius="max"
-      borderWidth="none"
       padding={
         size === 'medium'
           ? ['spacing.1', 'spacing.2', 'spacing.1', 'spacing.3']

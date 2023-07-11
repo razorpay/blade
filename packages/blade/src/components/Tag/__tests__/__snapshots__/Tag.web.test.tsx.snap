@@ -6,7 +6,6 @@ exports[`<Tag /> should render tag 1`] = `
   padding: 2px 4px 2px 8px;
   background-color: hsla(216,15%,54%,0.18);
   border-radius: 9999px;
-  border-width: 0px;
 }
 
 .c1 {
@@ -20,6 +19,10 @@ exports[`<Tag /> should render tag 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c3 {
