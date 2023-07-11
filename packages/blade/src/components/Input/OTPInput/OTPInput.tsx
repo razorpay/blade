@@ -12,9 +12,7 @@ import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getPlatformType } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import { useTheme } from '~components/BladeProvider';
 import { makeSize } from '~utils/makeSize';
-import { size } from '~tokens/global';
 
 type FormInputOnEventWithIndex = ({
   name,
@@ -134,7 +132,6 @@ const OTPInput = ({
   const [inputType, setInputType] = useState<('password' | undefined)[]>([]);
   const isLabelLeftPositioned = labelPosition === 'left';
   const { inputId, helpTextId, errorTextId, successTextId } = useFormId('otp');
-  const { platform } = useTheme();
 
   useEffect(() => {
     // Effect for calling `onOTPFilled` callback
@@ -294,7 +291,6 @@ const OTPInput = ({
           flex={1}
           marginLeft={index == 0 ? 'spacing.0' : 'spacing.3'}
           key={`${inputId}-${index}`}
-          maxWidth={platform === 'onDesktop' ? makeSize(size[36]) : makeSize(size[40])}
         >
           <BaseInput
             // eslint-disable-next-line jsx-a11y/no-autofocus

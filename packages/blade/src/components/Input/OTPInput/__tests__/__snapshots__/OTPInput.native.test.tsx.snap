@@ -170,7 +170,6 @@ exports[`<OTPInput /> should render 1`] = `
       >
         <View
           data-blade-component="base-box"
-          maxWidth="40px"
           style={
             Array [
               Object {
@@ -178,7 +177,6 @@ exports[`<OTPInput /> should render 1`] = `
                 "flexGrow": 1,
                 "flexShrink": 1,
                 "marginLeft": 0,
-                "maxWidth": 40,
               },
             ]
           }
@@ -313,7 +311,6 @@ exports[`<OTPInput /> should render 1`] = `
         </View>
         <View
           data-blade-component="base-box"
-          maxWidth="40px"
           style={
             Array [
               Object {
@@ -321,7 +318,6 @@ exports[`<OTPInput /> should render 1`] = `
                 "flexGrow": 1,
                 "flexShrink": 1,
                 "marginLeft": 8,
-                "maxWidth": 40,
               },
             ]
           }
@@ -456,7 +452,6 @@ exports[`<OTPInput /> should render 1`] = `
         </View>
         <View
           data-blade-component="base-box"
-          maxWidth="40px"
           style={
             Array [
               Object {
@@ -464,7 +459,6 @@ exports[`<OTPInput /> should render 1`] = `
                 "flexGrow": 1,
                 "flexShrink": 1,
                 "marginLeft": 8,
-                "maxWidth": 40,
               },
             ]
           }
@@ -599,7 +593,6 @@ exports[`<OTPInput /> should render 1`] = `
         </View>
         <View
           data-blade-component="base-box"
-          maxWidth="40px"
           style={
             Array [
               Object {
@@ -607,7 +600,6 @@ exports[`<OTPInput /> should render 1`] = `
                 "flexGrow": 1,
                 "flexShrink": 1,
                 "marginLeft": 8,
-                "maxWidth": 40,
               },
             ]
           }
@@ -742,7 +734,6 @@ exports[`<OTPInput /> should render 1`] = `
         </View>
         <View
           data-blade-component="base-box"
-          maxWidth="40px"
           style={
             Array [
               Object {
@@ -750,7 +741,6 @@ exports[`<OTPInput /> should render 1`] = `
                 "flexGrow": 1,
                 "flexShrink": 1,
                 "marginLeft": 8,
-                "maxWidth": 40,
               },
             ]
           }
@@ -885,7 +875,6 @@ exports[`<OTPInput /> should render 1`] = `
         </View>
         <View
           data-blade-component="base-box"
-          maxWidth="40px"
           style={
             Array [
               Object {
@@ -893,7 +882,6 @@ exports[`<OTPInput /> should render 1`] = `
                 "flexGrow": 1,
                 "flexShrink": 1,
                 "marginLeft": 8,
-                "maxWidth": 40,
               },
             ]
           }
