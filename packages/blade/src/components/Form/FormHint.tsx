@@ -3,10 +3,10 @@ import type { ReactElement } from 'react';
 import React from 'react';
 import { FormHintWrapper } from './FormHintWrapper';
 import { BaseText } from '~components/Typography/BaseText';
-import { getPlatformType } from '~utils';
 import BaseBox from '~components/Box/BaseBox';
 import { CheckIcon, InfoIcon } from '~components/Icons';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
+import { getPlatformType } from '~utils/getPlatformType';
 
 type HintTextProps = {
   icon?: React.ElementType;

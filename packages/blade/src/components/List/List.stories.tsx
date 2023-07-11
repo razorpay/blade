@@ -9,8 +9,8 @@ import { ListItem } from './ListItem';
 import { ListItemLink } from './ListItemLink';
 import { ListItemCode } from './ListItemCode';
 import iconMap from '~components/Icons/iconMap';
-import { Sandbox } from '~src/_helpers/storybook/Sandbox';
-import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import { Sandbox } from '~utils/storybook/Sandbox';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 

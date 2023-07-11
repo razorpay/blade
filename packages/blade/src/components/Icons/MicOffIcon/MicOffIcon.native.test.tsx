@@ -1,5 +1,5 @@
 import MicOffIcon from './';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<MicOffIcon />', () => {
   it('should render MicOffIcon', () => {

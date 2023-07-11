@@ -9,15 +9,8 @@ import {
   CloseIcon,
   InfoIcon,
 } from '~components/Icons';
-import {
-  castNativeType,
-  castWebType,
-  getPlatformType,
-  makeAccessible,
-  metaAttribute,
-  MetaConstants,
-  useBreakpoint,
-} from '~utils';
+import { castNativeType, castWebType, useBreakpoint, getPlatformType } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { IconButton } from '~components/Button/IconButton';
@@ -27,7 +20,8 @@ import BaseButton from '~components/Button/BaseButton';
 import { BaseLink } from '~components/Link/BaseLink';
 import type { ColorContrastTypes, Feedback } from '~tokens/theme/theme';
 import { useTheme } from '~components/BladeProvider';
-import type { DotNotationSpacingStringToken, TestID } from '~src/_helpers/types';
+import type { DotNotationSpacingStringToken, TestID } from '~utils/types';
+import { makeAccessible } from '~utils/makeAccessible';
 
 type Nullable<Type> = Type | null;
 

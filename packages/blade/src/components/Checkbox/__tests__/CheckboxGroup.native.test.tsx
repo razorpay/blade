@@ -7,7 +7,7 @@ import React from 'react';
 import { Text } from 'react-native';
 import { Checkbox } from '../Checkbox';
 import { CheckboxGroup } from '../CheckboxGroup';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 beforeAll(() => {
   jest.spyOn(console, 'error').mockImplementation();

@@ -5,8 +5,8 @@ import styled from 'styled-components/native';
 
 import type { View } from 'react-native';
 import type { StyledIconButtonProps } from './types';
-import { makeAccessible } from '~utils';
 import type { ColorContrastTypes } from '~tokens/theme/theme';
+import { makeAccessible } from '~utils/makeAccessible';
 import type { BladeCommonEvents } from '~components/types';
 
 type State = 'active' | 'default';

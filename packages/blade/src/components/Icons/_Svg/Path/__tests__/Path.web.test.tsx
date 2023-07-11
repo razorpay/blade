@@ -1,6 +1,6 @@
 import Path from '..';
 import Svg from '../../Svg';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<Path />', () => {
   it('should render html path component', () => {

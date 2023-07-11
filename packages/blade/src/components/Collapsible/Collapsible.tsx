@@ -5,13 +5,15 @@ import type { CollapsibleContextState } from './CollapsibleContext';
 import { CollapsibleContext } from './CollapsibleContext';
 import { MAX_WIDTH, MAX_WIDTH_NO_RESTRICTIONS } from './styles';
 import BaseBox from '~components/Box/BaseBox';
-import type { TestID } from '~src/_helpers/types';
+import type { TestID } from '~utils/types';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { BoxProps } from '~components/Box';
-import { MetaConstants, isValidAllowedChildren, makeSize, metaAttribute } from '~utils';
+import { makeSize } from '~utils';
 import { size } from '~tokens/global';
-import { useId } from '~src/hooks/useId';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { useId } from '~utils/useId';
+import { isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 
 type CollapsibleProps = {
   /**

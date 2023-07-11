@@ -82,6 +82,7 @@ exports[`<Tooltip /> should render 1`] = `
   >
     <View
       alignItems="center"
+      data-blade-component="base-box"
       display="flex"
       flexDirection="row"
       isHidden={false}
@@ -103,6 +104,7 @@ exports[`<Tooltip /> should render 1`] = `
     >
       <Text
         color="action.text.primary.default"
+        data-blade-component="base-text"
         fontSize={100}
         fontWeight="bold"
         lineHeight={100}
@@ -174,6 +176,7 @@ exports[`<Tooltip /> should render 1`] = `
       >
         <View
           collapse={false}
+          data-blade-component="base-box"
           elevation={20}
           maxWidth="200px"
           position="absolute"
@@ -193,6 +196,7 @@ exports[`<Tooltip /> should render 1`] = `
                 "paddingTop": 8,
                 "position": "absolute",
                 "top": -200,
+                "zIndex": 1100,
               },
               Object {
                 "elevation": 4,
@@ -211,6 +215,7 @@ exports[`<Tooltip /> should render 1`] = `
               "left": -200,
               "position": "absolute",
               "top": -200,
+              "zIndex": 1100,
             }
           }
         >
@@ -263,6 +268,7 @@ exports[`<Tooltip /> should render 1`] = `
               align="xMidYMid"
               bbHeight="14px"
               bbWidth="14px"
+              data-blade-component="icon"
               focusable={false}
               height="14px"
               importantForAccessibility="no-hide-descendants"

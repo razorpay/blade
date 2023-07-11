@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/media-has-caption */
 /* eslint-disable jsx-a11y/no-autofocus */
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -21,7 +22,6 @@ import {
 } from '~components/Icons';
 import {
   ActionList,
-  ActionListFooter,
   ActionListItem,
   ActionListItemIcon,
   ActionListSection,
@@ -40,8 +40,9 @@ import { Box } from '~components/Box';
 import { Checkbox } from '~components/Checkbox';
 import { OTPInput } from '~components/Input/OTPInput';
 import { Link } from '~components/Link';
-import { Sandbox } from '~src/_helpers/storybook/Sandbox';
-import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import { Sandbox } from '~utils/storybook/Sandbox';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
+import { isReactNative } from '~utils';
 
 const Page = (): React.ReactElement => {
   return (
@@ -546,7 +547,6 @@ const BottomSheetStackingTemplate: ComponentStory<typeof BottomSheetComponent> =
             <ActionListItem title="Cuban" value="Cuban" />
             <ActionListItem title="German" value="German" />
             <ActionListItem title="Nigerian" value="Nigerian" />
-            <ActionListFooter />
           </ActionList>
         </BottomSheetBody>
         <BottomSheetFooter>
@@ -670,6 +670,85 @@ const InitialFocusTemplate: ComponentStory<typeof BottomSheetComponent> = () => 
 };
 
 export const InitialFocus = InitialFocusTemplate.bind({});
+
+const HeadingBanner = (): React.ReactElement => {
+  if (isReactNative()) {
+    return (
+      <Box position="relative" height="250px" overflow="hidden">
+        <Box
+          position="absolute"
+          top="spacing.0"
+          left="spacing.0"
+          width="100%"
+          height="100%"
+          backgroundColor="surface.background.level1.highContrast"
+        />
+        <Box position="absolute" bottom="spacing.4" left="spacing.5">
+          <Heading color="surface.text.normal.highContrast">
+            All-in-one Escrow management platform
+          </Heading>
+        </Box>
+      </Box>
+    );
+  }
+
+  return (
+    <Box position="relative" height="250px" overflow="hidden">
+      <Box position="absolute" top="-150px" left="spacing.0">
+        <video
+          autoPlay
+          style={{ objectFit: 'cover' }}
+          width="100%"
+          height="100%"
+          src="https://cdn.razorpay.com/static/assets/razorpay.com/x/escrow-accounts/hero-illustration.mp4"
+        />
+      </Box>
+      <Box position="absolute" bottom="spacing.4" left="spacing.5">
+        <Heading color="surface.text.normal.highContrast">
+          All-in-one Escrow management platform
+        </Heading>
+      </Box>
+    </Box>
+  );
+};
+
+const ZeroPaddingTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  return (
+    <BaseBox>
+      <Button onClick={() => setIsOpen(true)}>Open</Button>
+      <BottomSheetComponent
+        isOpen={isOpen}
+        onDismiss={() => {
+          setIsOpen(false);
+        }}
+      >
+        <BottomSheetHeader />
+        <BottomSheetBody padding="spacing.0">
+          <Box display="flex" flexDirection="column">
+            <HeadingBanner />
+            <Box padding="spacing.5" display="flex" flexDirection="column">
+              <Text>
+                We bring together Escrow account, Banks, Trusteeship services & Automation - all in
+                ONE place to deliver a seamless user experience for you. Work with our experts to
+                ensure your escrow money transfers are always compliant, safe & effortless.
+              </Text>
+              <Text marginTop="spacing.3" type="muted">
+                100% secure | Instant payouts | Unbeatable pricing
+              </Text>
+            </Box>
+          </Box>
+        </BottomSheetBody>
+        <BottomSheetFooter>
+          <Button isFullWidth>Talk To Our Escrow Experts</Button>
+        </BottomSheetFooter>
+      </BottomSheetComponent>
+    </BaseBox>
+  );
+};
+
+export const ZeroPadding = ZeroPaddingTemplate.bind({});
 
 const SnapPointsTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
   const fruites = [

@@ -2,7 +2,7 @@ import { List } from '../List';
 import { ListItem } from '../ListItem';
 import { ListItemLink } from '../ListItemLink';
 import { ListItemCode } from '../ListItemCode';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 import { ArrowRightIcon, ArrowUpIcon } from '~components/Icons';
 import { Heading } from '~components/Typography';
 

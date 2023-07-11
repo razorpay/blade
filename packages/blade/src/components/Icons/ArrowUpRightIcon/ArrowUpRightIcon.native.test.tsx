@@ -1,5 +1,5 @@
 import ArrowUpRightIcon from '.';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<ArrowUpRightIcon />', () => {
   it('should render ArrowUpRightIcon', () => {

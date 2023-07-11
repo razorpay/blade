@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch } from '../Switch';
-import renderWithSSR from '~src/_helpers/testing/renderWithSSR.web';
+import renderWithSSR from '~utils/testing/renderWithSSR.web';
 
 describe('<Switch />', () => {
   it('should render switch ssr', () => {

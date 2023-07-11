@@ -1,6 +1,6 @@
 import React from 'react';
 import { Code } from '../Code';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 import { typography } from '~tokens/global';
 
 describe('<Code />', () => {

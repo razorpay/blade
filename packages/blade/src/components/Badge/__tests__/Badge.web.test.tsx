@@ -1,5 +1,5 @@
 import { Badge } from '../Badge';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { InfoIcon } from '~components/Icons';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());

@@ -111,9 +111,11 @@ exports[`<Button /> should render button with default properties 1`] = `
   >
     <div
       class="c1 c2"
+      data-blade-component="base-box"
     >
       <div
         class="c3"
+        data-blade-component="base-text"
       >
         Pay Now
       </div>
@@ -233,9 +235,11 @@ exports[`<Button /> should render button with full width 1`] = `
   >
     <div
       class="c1 c2"
+      data-blade-component="base-box"
     >
       <div
         class="c3"
+        data-blade-component="base-text"
       >
         Pay Now
       </div>
@@ -371,9 +375,11 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
   >
     <div
       class="c1 c2"
+      data-blade-component="base-box"
     >
       <div
         class="c3"
+        data-blade-component="base-box"
       >
         <svg
           aria-hidden="true"
@@ -387,6 +393,7 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
           <path
             clip-rule="evenodd"
             d="M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z"
+            data-blade-component="svg-path"
             fill="hsla(0, 0%, 100%, 1)"
             fill-rule="evenodd"
           />
@@ -394,6 +401,7 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
       </div>
       <div
         class="c4"
+        data-blade-component="base-text"
       >
         Pay Now
       </div>
@@ -529,14 +537,17 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
   >
     <div
       class="c1 c2"
+      data-blade-component="base-box"
     >
       <div
         class="c3"
+        data-blade-component="base-text"
       >
         Pay Now
       </div>
       <div
         class="c4"
+        data-blade-component="base-box"
       >
         <svg
           aria-hidden="true"
@@ -550,6 +561,7 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
           <path
             clip-rule="evenodd"
             d="M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z"
+            data-blade-component="svg-path"
             fill="hsla(0, 0%, 100%, 1)"
             fill-rule="evenodd"
           />
@@ -672,9 +684,11 @@ exports[`<Button /> should render disabled button 1`] = `
   >
     <div
       class="c1 c2"
+      data-blade-component="base-box"
     >
       <div
         class="c3"
+        data-blade-component="base-text"
       >
         Pay Now
       </div>
@@ -795,9 +809,11 @@ exports[`<Button /> should render disabled secondary variant button 1`] = `
   >
     <div
       class="c1 c2"
+      data-blade-component="base-box"
     >
       <div
         class="c3"
+        data-blade-component="base-text"
       >
         Pay Now
       </div>
@@ -918,9 +934,11 @@ exports[`<Button /> should render disabled tertiary variant button 1`] = `
   >
     <div
       class="c1 c2"
+      data-blade-component="base-box"
     >
       <div
         class="c3"
+        data-blade-component="base-text"
       >
         Pay Now
       </div>
@@ -1040,9 +1058,11 @@ exports[`<Button /> should render large size button 1`] = `
   >
     <div
       class="c1 c2"
+      data-blade-component="base-box"
     >
       <div
         class="c3"
+        data-blade-component="base-text"
       >
         Pay Now
       </div>
@@ -1162,9 +1182,11 @@ exports[`<Button /> should render medium size button 1`] = `
   >
     <div
       class="c1 c2"
+      data-blade-component="base-box"
     >
       <div
         class="c3"
+        data-blade-component="base-text"
       >
         Pay Now
       </div>
@@ -1284,9 +1306,11 @@ exports[`<Button /> should render secondary variant button 1`] = `
   >
     <div
       class="c1 c2"
+      data-blade-component="base-box"
     >
       <div
         class="c3"
+        data-blade-component="base-text"
       >
         Pay Now
       </div>
@@ -1406,9 +1430,11 @@ exports[`<Button /> should render small size button 1`] = `
   >
     <div
       class="c1 c2"
+      data-blade-component="base-box"
     >
       <div
         class="c3"
+        data-blade-component="base-text"
       >
         Pay Now
       </div>
@@ -1528,9 +1554,11 @@ exports[`<Button /> should render tertiary variant button 1`] = `
   >
     <div
       class="c1 c2"
+      data-blade-component="base-box"
     >
       <div
         class="c3"
+        data-blade-component="base-text"
       >
         Pay Now
       </div>
@@ -1650,9 +1678,11 @@ exports[`<Button /> should render xsmall size button 1`] = `
   >
     <div
       class="c1 c2"
+      data-blade-component="base-box"
     >
       <div
         class="c3"
+        data-blade-component="base-text"
       >
         PAY NOW
       </div>

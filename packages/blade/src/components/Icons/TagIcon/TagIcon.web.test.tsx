@@ -1,5 +1,5 @@
 import TagIcon from '.';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<TagIcon />', () => {
   it('should render TagIcon', () => {

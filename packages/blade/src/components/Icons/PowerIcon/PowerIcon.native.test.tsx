@@ -1,5 +1,5 @@
 import PowerIcon from './';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<PowerIcon />', () => {
   it('should render PowerIcon', () => {

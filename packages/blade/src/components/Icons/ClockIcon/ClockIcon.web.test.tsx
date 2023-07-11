@@ -1,5 +1,5 @@
 import ClockIcon from './ClockIcon';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<ClockIcon />', () => {
   it('should render ClockIcon', () => {

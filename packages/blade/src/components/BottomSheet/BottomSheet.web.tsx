@@ -13,27 +13,24 @@ import { BottomSheetBody } from './BottomSheetBody';
 import type { SnapPoints } from './utils';
 import { computeMaxContent, computeSnapPointBounds } from './utils';
 import { BottomSheetBackdrop } from './BottomSheetBackdrop';
+import type { BottomSheetContextProps } from './BottomSheetContext';
 import { BottomSheetContext, useBottomSheetAndDropdownGlue } from './BottomSheetContext';
 import { ComponentIds } from './componentIds';
 import type { BottomSheetProps } from './types';
 import { BottomSheetGrabHandle } from './BottomSheetGrabHandle';
 import { useBottomSheetStack } from './BottomSheetStack';
-
 import BaseBox from '~components/Box/BaseBox';
-import {
-  makeMotionTime,
-  assignWithoutSideEffects,
-  makeSize,
-  makeAccessible,
-  metaAttribute,
-} from '~utils';
-
-import { useScrollLock } from '~src/hooks/useScrollLock';
-import { useWindowSize } from '~src/hooks/useWindowSize';
-import { useIsomorphicLayoutEffect } from '~src/hooks/useIsomorphicLayoutEffect';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { useScrollLock } from '~utils/useScrollLock';
+import { useWindowSize } from '~utils/useWindowSize';
+import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { useTheme } from '~components/BladeProvider';
-import { useId } from '~src/hooks/useId';
+import { useId } from '~utils/useId';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { makeSize } from '~utils/makeSize';
+import { makeAccessible } from '~utils/makeAccessible';
 import { size } from '~tokens/global';
+import { makeMotionTime } from '~utils/makeMotionTime';
 
 export const BOTTOM_SHEET_EASING = 'cubic-bezier(.15,0,.24,.97)';
 
@@ -82,6 +79,8 @@ const _BottomSheet = ({
   const [headerHeight, setHeaderHeight] = React.useState(0);
   const [footerHeight, setFooterHeight] = React.useState(0);
   const [grabHandleHeight, setGrabHandleHeight] = React.useState(0);
+  const [hasBodyPadding, setHasBodyPadding] = React.useState(true);
+  const [isHeaderEmpty, setIsHeaderEmpty] = React.useState(false);
 
   const bottomSheetAndDropdownGlue = useBottomSheetAndDropdownGlue();
   const [positionY, _setPositionY] = React.useState(0);
@@ -362,7 +361,8 @@ const _BottomSheet = ({
     transitionDuration: theme.motion.duration.moderate,
   });
 
-  const contextValue = React.useMemo(
+  const isHeaderFloating = !hasBodyPadding && isHeaderEmpty;
+  const contextValue: BottomSheetContextProps = React.useMemo(
     () => ({
       isInBottomSheet: true,
       isOpen: Boolean(isVisible),
@@ -374,9 +374,12 @@ const _BottomSheet = ({
       setContentHeight,
       setFooterHeight,
       setHeaderHeight,
+      setHasBodyPadding,
+      setIsHeaderEmpty,
       scrollRef,
       bind,
       defaultInitialFocusRef,
+      isHeaderFloating,
     }),
     [
       isVisible,
@@ -388,9 +391,12 @@ const _BottomSheet = ({
       setContentHeight,
       setFooterHeight,
       setHeaderHeight,
+      setHasBodyPadding,
+      setIsHeaderEmpty,
       scrollRef,
       bind,
       defaultInitialFocusRef,
+      isHeaderFloating,
     ],
   );
 
@@ -429,7 +435,7 @@ const _BottomSheet = ({
     <BottomSheetContext.Provider value={contextValue}>
       <BottomSheetBackdrop zIndex={zIndex} />
       <BottomSheetSurface
-        {...metaAttribute({ name: ComponentIds.BottomSheet })}
+        {...metaAttribute({ name: MetaConstants.BottomSheet })}
         {...makeAccessible({ modal: true, role: 'dialog' })}
         windowHeight={dimensions.height}
         isDragging={isDragging}
@@ -445,6 +451,7 @@ const _BottomSheet = ({
         <BaseBox height="100%" display="flex" flexDirection="column">
           <BottomSheetGrabHandle
             ref={grabHandleRef}
+            isHeaderFloating={isHeaderFloating}
             {...metaAttribute({ name: ComponentIds.BottomSheetGrabHandle })}
             {...bind()}
           />

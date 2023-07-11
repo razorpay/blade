@@ -6,14 +6,14 @@ import { act, fireEvent, screen } from '@testing-library/react';
 import React from 'react';
 import { Tooltip, TooltipInteractiveWrapper } from '..';
 import type { BladeCommonEvents } from '~components/types';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
 import { Button } from '~components/Button';
 import { paymentTheme } from '~tokens/theme';
-import assertAccessible from '~src/_helpers/testing/assertAccessible.web';
 import { InfoIcon } from '~components/Icons';
 import { Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
-import { MetaConstants } from '~utils';
+import { MetaConstants } from '~utils/metaAttribute';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
+import assertAccessible from '~utils/testing/assertAccessible.web';
 
 const waitForPosition = () => act(async () => {});
 const animationDuration = paymentTheme.motion.duration.quick;
@@ -32,6 +32,7 @@ describe('<Tooltip />', () => {
     // snapshot while on opened
     fireEvent.focus(getByRole('button', { name: buttonText }));
     expect(screen.queryByRole('tooltip')).toBeInTheDocument();
+    expect(screen.queryByRole('tooltip')).toHaveStyle({ 'z-index': 1100 });
     expect(container).toMatchSnapshot();
   });
 

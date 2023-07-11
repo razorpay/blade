@@ -3,7 +3,7 @@ import { Title } from '@storybook/addon-docs';
 import { Highlight } from '@storybook/design-system';
 import { BaseText as BaseTextComponent } from './BaseText';
 import type { BaseTextProps } from './types';
-import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 export default {

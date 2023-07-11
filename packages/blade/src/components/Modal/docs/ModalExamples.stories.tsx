@@ -9,7 +9,7 @@ import {
   ModalWithScrollableBackgroundStory,
   ModalWithScrollableContentStory,
 } from './stories';
-import { Sandbox } from '~src/_helpers/storybook/Sandbox';
+import { Sandbox } from '~utils/storybook/Sandbox';
 
 const ModalMeta: Meta = {
   title: 'Components/Modal/Examples',

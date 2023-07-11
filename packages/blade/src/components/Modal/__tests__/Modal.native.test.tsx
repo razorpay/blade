@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import React from 'react';
 import { Modal, ModalBody } from '../Modal';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 import { Text } from '~components/Typography';
 
 describe('Modal', () => {

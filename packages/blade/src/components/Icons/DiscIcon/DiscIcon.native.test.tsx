@@ -1,5 +1,5 @@
 import DiscIcon from './';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<DiscIcon />', () => {
   it('should render DiscIcon', () => {

@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import getIn from 'lodash/get';
 import React from 'react';
 import styled from 'styled-components';
 import type { GestureResponderEvent } from 'react-native';
@@ -20,35 +21,25 @@ import type { IconComponent, IconProps, IconSize } from '~components/Icons';
 import type { DurationString, EasingString } from '~tokens/global';
 import type { BorderRadiusValues, BorderWidthValues, SpacingValues } from '~tokens/theme/theme';
 import type { Platform } from '~utils';
+import { isReactNative } from '~utils';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-
-import {
-  MetaConstants,
-  metaAttribute,
-  makeAccessible,
-  usePrevious,
-  makeSize,
-  makeSpace,
-  makeBorderSize,
-  getIn,
-  isReactNative,
-} from '~utils';
-
 import { BaseText } from '~components/Typography/BaseText';
 import { useTheme } from '~components/BladeProvider';
 import { announce } from '~components/LiveAnnouncer';
 import type { BaseSpinnerProps } from '~components/Spinner/BaseSpinner';
 import { BaseSpinner } from '~components/Spinner/BaseSpinner';
 import BaseBox from '~components/Box/BaseBox';
-import type {
-  DotNotationSpacingStringToken,
-  StringChildrenType,
-  TestID,
-} from '~src/_helpers/types';
+import type { DotNotationSpacingStringToken, StringChildrenType, TestID } from '~utils/types';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
-import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
+import type { BladeElementRef } from '~utils/useBladeInnerRef';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { usePrevious } from '~utils/usePrevious';
+import { makeSize } from '~utils/makeSize';
+import { makeBorderSize } from '~utils/makeBorderSize';
+import { makeAccessible } from '~utils/makeAccessible';
+import { makeSpace } from '~utils/makeSpace';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 import type { BladeCommonEvents } from '~components/types';
 
 type BaseButtonCommonProps = {

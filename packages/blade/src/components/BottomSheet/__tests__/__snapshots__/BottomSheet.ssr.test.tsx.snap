@@ -1,0 +1,214 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<BottomSheet /> should render a BottomSheet ssr 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div data-testid=\\"bottomsheet-backdrop\\" opacity=\\"1\\" data-blade-component=\\"base-box\\" class=\\"BaseBox-bmPWx BottomSheetBackdropweb__StyledBottomSheetBackdrop-sc-198k9f6-0 ginxff gQNTBU\\"></div><div data-blade-component=\\"bottom-sheet\\" aria-modal=\\"true\\" role=\\"dialog\\" style=\\"opacity:1;pointer-events:all;height:0;bottom:0;top:auto;z-index:101\\" class=\\"BottomSheetweb__BottomSheetSurface-qlloie-0 gtDWSk\\"><div data-blade-component=\\"base-box\\" class=\\"BaseBox-bmPWx gWGQoD\\"><div data-blade-component=\\"BottomSheetGrabHandle\\" class=\\"BottomSheetGrabHandleweb__BottomSheetGrabHandle-mo12ak-0 jpGBjs\\"></div><div data-blade-component=\\"bottom-sheet-header\\" class=\\"BaseBox-bmPWx cImMcF\\"><div data-blade-component=\\"base-box\\" class=\\"BaseBox-bmPWx\\"><div data-blade-component=\\"base-box\\" class=\\"BaseBox-bmPWx HnFxS\\"><div data-blade-component=\\"base-box\\" class=\\"BaseBox-bmPWx isYLKC\\"><div data-blade-component=\\"base-box\\" class=\\"BaseBox-bmPWx jPnCFC\\"><div data-blade-component=\\"base-box\\" class=\\"BaseBox-bmPWx lhloZM\\"><div data-blade-component=\\"base-box\\" class=\\"BaseBox-bmPWx kGcQUv\\"><h6 class=\\"StyledBaseText-dVBfTO dFejDk\\" data-blade-component=\\"heading\\">Address Details</h6><div data-blade-component=\\"base-box\\" class=\\"BaseBox-bmPWx ktWMhw\\"><div data-blade-component=\\"box\\" class=\\"BaseBox-bmPWx bhAnXJ\\"><div data-blade-component=\\"base-box\\" class=\\"BaseBox-bmPWx StyledCounterweb__StyledCounter-sc-1itt9w6-0 bEaUIc hNXeTn\\"><div data-blade-component=\\"counter\\" class=\\"BaseBox-bmPWx KJLNh\\"><p class=\\"StyledBaseText-dVBfTO kHUjbS\\" data-blade-component=\\"text\\">2</p></div></div></div></div></div><p class=\\"StyledBaseText-dVBfTO cGMqFI\\" data-blade-component=\\"text\\">Saving addresses will improve your checkout experience</p></div></div><div data-blade-component=\\"box\\" class=\\"BaseBox-bmPWx bhAnXJ\\"><button type=\\"button\\" aria-label=\\"Close\\" data-blade-component=\\"icon-button\\" class=\\"StyledIconButtonweb__StyledButton-sc-1f4cg7d-0 gvuEeM\\"><svg aria-hidden=\\"true\\" data-blade-component=\\"icon\\" height=\\"20px\\" viewBox=\\"0 0 24 24\\" width=\\"20px\\" fill=\\"none\\" class=\\"Svgweb__StyledSvg-vcmjs8-0\\"><path d=\\"M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z\\" fill=\\"currentColor\\" data-blade-component=\\"svg-path\\"></path></svg></button></div></div></div><div data-blade-component=\\"base-box\\" class=\\"BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 jfizlv jvaPlR\\"></div></div></div><div data-blade-component=\\"bottom-sheet-body\\" data-testid=\\"bottomsheet-body\\" style=\\"-webkit-tap-highlight-color:revert;-webkit-touch-callout:revert;-webkit-user-select:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;user-select:auto;overflow:auto;touch-action:none\\" class=\\"BaseBox-bmPWx jiLTJh\\"><div data-blade-component=\\"base-box\\" class=\\"BaseBox-bmPWx lhcKjI\\"><p class=\\"StyledBaseText-dVBfTO eIdQFo\\" data-blade-component=\\"text\\">BottomSheet body</p></div></div><div data-blade-component=\\"bottom-sheet-footer\\" class=\\"BaseBox-bmPWx dazEdx\\"><div data-blade-component=\\"base-box\\" class=\\"BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 jfizlv jvaPlR\\"></div><div data-blade-component=\\"base-box\\" class=\\"BaseBox-bmPWx kGtVIy\\"><button type=\\"button\\" data-blade-component=\\"button\\" role=\\"button\\" class=\\"StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 hDfvuZ\\"><div data-blade-component=\\"base-box\\" class=\\"BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 kkGTK NIPoA\\"><div class=\\"StyledBaseText-dVBfTO jSaisz\\" data-blade-component=\\"base-text\\">Remove address</div></div></button></div></div></div></div></div>"`;
+
+exports[`<BottomSheet /> should render a BottomSheet ssr 2`] = `
+<div
+  data-reactroot=""
+  id="root"
+>
+  <div
+    class="BaseBox-bmPWx BottomSheetBackdropweb__StyledBottomSheetBackdrop-sc-198k9f6-0 kpjFgW gQNTBU"
+    data-blade-component="base-box"
+    data-testid="bottomsheet-backdrop"
+    opacity="1"
+  />
+  <div
+    aria-modal="true"
+    class="BottomSheetweb__BottomSheetSurface-qlloie-0 djockt"
+    data-blade-component="bottom-sheet"
+    role="dialog"
+    style="opacity: 1; pointer-events: all; height: 0px; bottom: 0px; z-index: 100;"
+  >
+    <div
+      class="BaseBox-bmPWx gWGQoD"
+      data-blade-component="base-box"
+    >
+      <div
+        class="BottomSheetGrabHandleweb__BottomSheetGrabHandle-mo12ak-0 jpGBjs"
+        data-blade-component="BottomSheetGrabHandle"
+      />
+      <div
+        class="BaseBox-bmPWx cImMcF"
+        data-blade-component="bottom-sheet-header"
+      >
+        <div
+          class="BaseBox-bmPWx"
+          data-blade-component="base-box"
+        >
+          <div
+            class="BaseBox-bmPWx HnFxS"
+            data-blade-component="base-box"
+          >
+            <div
+              class="BaseBox-bmPWx isYLKC"
+              data-blade-component="base-box"
+            >
+              <div
+                class="BaseBox-bmPWx jPnCFC"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="BaseBox-bmPWx lhloZM"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="BaseBox-bmPWx kGcQUv"
+                    data-blade-component="base-box"
+                  >
+                    <h6
+                      class="StyledBaseText-dVBfTO dFejDk"
+                      data-blade-component="heading"
+                    >
+                      Address Details
+                    </h6>
+                    <div
+                      class="BaseBox-bmPWx ktWMhw"
+                      data-blade-component="base-box"
+                    >
+                      <div
+                        class="BaseBox-bmPWx bhAnXJ"
+                        data-blade-component="box"
+                      >
+                        <div
+                          class="BaseBox-bmPWx StyledCounterweb__StyledCounter-sc-1itt9w6-0 bEaUIc hNXeTn"
+                          data-blade-component="base-box"
+                        >
+                          <div
+                            class="BaseBox-bmPWx KJLNh"
+                            data-blade-component="counter"
+                          >
+                            <p
+                              class="StyledBaseText-dVBfTO kHUjbS"
+                              data-blade-component="text"
+                            >
+                              2
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <p
+                    class="StyledBaseText-dVBfTO cGMqFI"
+                    data-blade-component="text"
+                  >
+                    Saving addresses will improve your checkout experience
+                  </p>
+                </div>
+              </div>
+              <div
+                class="BaseBox-bmPWx kFTMWM"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="BaseBox-bmPWx bhAnXJ"
+                  data-blade-component="box"
+                >
+                  <div
+                    class="BaseBox-bmPWx StyledBadgeweb__StyledBadge-sc-1svn4tv-0 dLUnUf iPenii"
+                    data-blade-component="badge"
+                  >
+                    <div
+                      class="BaseBox-bmPWx KJLNh"
+                      data-blade-component="base-box"
+                    >
+                      <p
+                        class="StyledBaseText-dVBfTO cunbeN"
+                        data-blade-component="text"
+                      >
+                        Action Needed
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="BaseBox-bmPWx bhAnXJ"
+                data-blade-component="box"
+              >
+                <button
+                  aria-label="Close"
+                  class="StyledIconButtonweb__StyledButton-sc-1f4cg7d-0 gvuEeM"
+                  data-blade-component="icon-button"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="Svgweb__StyledSvg-vcmjs8-0"
+                    data-blade-component="icon"
+                    fill="none"
+                    height="20px"
+                    viewBox="0 0 24 24"
+                    width="20px"
+                  >
+                    <path
+                      d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
+                      data-blade-component="svg-path"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div
+            class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 jfizlv jvaPlR"
+            data-blade-component="base-box"
+          />
+        </div>
+      </div>
+      <div
+        class="BaseBox-bmPWx jiLTJh"
+        data-blade-component="bottom-sheet-body"
+        data-testid="bottomsheet-body"
+        style="-webkit-tap-highlight-color:revert;-webkit-touch-callout:revert;-webkit-user-select:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;user-select:auto;overflow:auto;touch-action:none"
+      >
+        <div
+          class="BaseBox-bmPWx lhcKjI"
+          data-blade-component="base-box"
+        >
+          <p
+            class="StyledBaseText-dVBfTO eIdQFo"
+            data-blade-component="text"
+          >
+            BottomSheet body
+          </p>
+        </div>
+      </div>
+      <div
+        class="BaseBox-bmPWx dazEdx"
+        data-blade-component="bottom-sheet-footer"
+      >
+        <div
+          class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 jfizlv jvaPlR"
+          data-blade-component="base-box"
+        />
+        <div
+          class="BaseBox-bmPWx kGtVIy"
+          data-blade-component="base-box"
+        >
+          <button
+            class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 hDfvuZ"
+            data-blade-component="button"
+            role="button"
+            type="button"
+          >
+            <div
+              class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 kkGTK NIPoA"
+              data-blade-component="base-box"
+            >
+              <div
+                class="StyledBaseText-dVBfTO jSaisz"
+                data-blade-component="base-text"
+              >
+                Remove address
+              </div>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

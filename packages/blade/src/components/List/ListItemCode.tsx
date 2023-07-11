@@ -2,7 +2,7 @@ import type { CodeProps } from '../Typography';
 import { Code } from '../Typography';
 import { useListContext } from './ListContext';
 import { listItemCodeSize } from './listTokens';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 type ListItemCodeProps = Exclude<CodeProps, 'size'>;
 

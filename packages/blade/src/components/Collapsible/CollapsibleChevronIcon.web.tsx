@@ -6,10 +6,11 @@ import {
   getTransitionDuration,
   getTransitionEasing,
 } from './commonStyles';
-import { castWebType, makeAccessible } from '~utils';
+import { castWebType } from '~utils';
 import type { IconComponent } from '~components/Icons';
 import { ChevronDownIcon } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
+import { makeAccessible } from '~utils/makeAccessible';
 
 type StyledCollapsibleChevronIconProps = {
   isExpanded: boolean;

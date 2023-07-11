@@ -1,8 +1,6 @@
 import type { DependencyList, EffectCallback } from 'react';
 import { useEffect, useRef } from 'react';
 
-// TODO: add tests
-
 /**
  * Hook to run an effect on dependencies change after the component has *mounted*.
  * Core difference from `useEffect` is this will trigger effects after the very first render.

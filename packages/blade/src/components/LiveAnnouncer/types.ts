@@ -1,2 +1,2 @@
-import type { AriaAttributes } from '~src/utils/makeAccessible/types';
+import type { AriaAttributes } from '~utils/makeAccessible/types';
 export type Assertiveness = AriaAttributes['liveRegion'];

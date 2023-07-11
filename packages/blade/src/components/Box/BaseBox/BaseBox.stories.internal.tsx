@@ -2,7 +2,7 @@ import type { Meta } from '@storybook/react';
 import type { BaseBoxProps } from './types';
 import { getBaseBoxArgTypes } from './storybookArgTypes';
 import { BaseBox } from '.';
-import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Text } from '~components/Typography';
 
 const BoxStoryMeta = {
