@@ -25,6 +25,7 @@ import {
 } from '~components/ActionList';
 import { HomeIcon } from '~components/Icons';
 import { Button } from '~components/Button';
+import { Box } from '~components/Box';
 
 const DropdownStoryMeta: Meta = {
   title: 'Components/Dropdown/With Select',
@@ -174,6 +175,38 @@ export const InternalControlledSelect = (): JSX.Element => {
         </DropdownOverlay>
       </Dropdown>
     </>
+  );
+};
+
+InternalControlledSelect.parameters = {
+  chromatic: {
+    disableSnapshot: false,
+  },
+};
+
+// For chromatic and internal react native testing
+export const InternalMultiSelect = (): JSX.Element => {
+  return (
+    <Box padding="spacing.5">
+      <Dropdown selectionType="multiple">
+        <SelectInput
+          label="Select City"
+          onChange={(args) => {
+            if (args) {
+              console.log('onChange triggered');
+            }
+          }}
+        />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Mumbai" value="mumbai" />
+            <ActionListItem title="Bangalore" value="bangalore" />
+            <ActionListItem title="Pune" value="pune" />
+            <ActionListItem title="Chennai" value="chennai" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+    </Box>
   );
 };
 

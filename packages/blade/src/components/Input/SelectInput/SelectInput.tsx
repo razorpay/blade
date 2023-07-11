@@ -74,6 +74,7 @@ const _SelectInput = (
     controlledValueIndices,
     options,
     changeCallbackTriggerer,
+    setChangeCallbackTriggerer,
     isControlled,
     setIsControlled,
     selectionType,
@@ -185,6 +186,7 @@ const _SelectInput = (
           // @TOOD
           // - Handle blur close of tags
           removeOption(selectedIndex);
+          setChangeCallbackTriggerer(Number(changeCallbackTriggerer) + 1);
         }}
       >
         {options[selectedIndex].title}
