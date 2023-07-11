@@ -48,6 +48,11 @@ type RadioGroupProps = {
    */
   isDisabled?: boolean;
   /**
+   * Sets the required state of the radioGroup
+   * @default false
+   */
+  isRequired?: boolean;
+  /**
    * Renders the label of the radio group
    */
   label: string;
@@ -90,6 +95,7 @@ const RadioGroup = ({
   label,
   helpText,
   isDisabled = false,
+  isRequired = false,
   necessityIndicator = 'none',
   labelPosition = 'top',
   validationState = 'none',
@@ -105,8 +111,10 @@ const RadioGroup = ({
   const { contextValue, ids } = useRadioGroup({
     defaultValue,
     isDisabled,
+    isRequired,
     labelPosition,
     name,
+    necessityIndicator,
     onChange,
     validationState,
     value,
