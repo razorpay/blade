@@ -1,5 +1,4 @@
 import React from 'react';
-import { StyledTag } from './StyledTag';
 import { Box } from '~components/Box';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getStyledProps } from '~components/Box/styledProps';
@@ -7,8 +6,10 @@ import { IconButton } from '~components/Button/IconButton';
 import type { IconComponent } from '~components/Icons';
 import { CloseIcon } from '~components/Icons';
 import { Text } from '~components/Typography';
-import type { StringChildrenType, TestID } from '~src/_helpers/types';
-import { metaAttribute, MetaConstants } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import type { StringChildrenType, TestID } from '~utils/types';
+import { isReactNative } from '~utils';
+import BaseBox from '~components/Box/BaseBox';
 
 type TagProps = {
   /**
@@ -60,7 +61,8 @@ const Tag = ({
     : 'surface.text.subtle.lowContrast';
 
   return (
-    <StyledTag
+    <BaseBox
+      display={isReactNative() ? 'flex' : 'inline-flex'}
       backgroundColor="brand.gray.a100.lowContrast"
       borderRadius="max"
       padding={
@@ -68,6 +70,9 @@ const Tag = ({
           ? ['spacing.1', 'spacing.2', 'spacing.1', 'spacing.3']
           : ['spacing.2', 'spacing.3', 'spacing.2', 'spacing.4']
       }
+      flexDirection="row"
+      flexWrap="nowrap"
+      alignSelf="center"
       {...getStyledProps(styledProps)}
       {...metaAttribute({ name: MetaConstants.Tag, testID })}
     >
@@ -87,7 +92,7 @@ const Tag = ({
           }}
         />
       </Box>
-    </StyledTag>
+    </BaseBox>
   );
 };
 

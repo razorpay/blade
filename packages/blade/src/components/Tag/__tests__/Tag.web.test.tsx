@@ -3,7 +3,7 @@
 import userEvents from '@testing-library/user-event';
 import React from 'react';
 import { Tag } from '../Tag';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<Tag />', () => {
   it('should render tag', () => {
