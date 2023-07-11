@@ -18,11 +18,9 @@ type StyledCollapsibleChevronIconProps = {
 };
 
 const StyledCollapsibleChevronIcon = styled(BaseBox)<StyledCollapsibleChevronIconProps>((props) => {
-  const { isExpanded, direction, theme } = props;
+  const { isExpanded, theme } = props;
 
-  const { transformExpanded, transformCollapsed } = getCollapsibleChevronIconTransforms({
-    direction,
-  });
+  const { transformExpanded, transformCollapsed } = getCollapsibleChevronIconTransforms();
   const transitionDuration = castWebType(getTransitionDuration(theme));
   const transitionTimingFunction = castWebType(getTransitionEasing(theme));
 
