@@ -15,3 +15,5 @@ export * from './makeSize';
 // https://github.com/razorpay/blade/pull/1193#issuecomment-1609122359
 export * from './toTitleCase';
 export * from './usePrevious';
+
+export { default as useTheme, ThemeContext } from '~components/BladeProvider/useTheme';

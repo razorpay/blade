@@ -34,6 +34,7 @@ export const parameters = {
           'Motion',
           'CSS Variables',
         ],
+        'Utils',
         'Components',
         'Recipes',
       ],
