@@ -161,8 +161,6 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
 
   const styles = React.useMemo(() => ({ opacity: isOpen ? 1 : 0 }), [isOpen]);
 
-  console.log({ dropdownPosition });
-
   return (
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     <BaseBox position="relative" ref={refs.setFloating as any}>
