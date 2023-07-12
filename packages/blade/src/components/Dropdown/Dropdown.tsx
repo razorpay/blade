@@ -188,7 +188,7 @@ const _Dropdown = ({
           {...metaAttribute({ name: MetaConstants.Dropdown, testID })}
           {...getStyledProps(styledProps)}
         >
-          <BaseBox position="relative" textAlign={'left' as never} display="block">
+          <BaseBox position="relative" textAlign={'left' as never}>
             {children}
           </BaseBox>
         </BaseBox>
