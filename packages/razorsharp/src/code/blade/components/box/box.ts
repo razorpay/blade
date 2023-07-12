@@ -109,8 +109,10 @@ export const transformFrameOrGroup = (
     }
 
     if (
-      bladeFrame.layoutSizingVertical === 'FILL' ||
-      bladeFrame.layoutSizingHorizontal === 'FILL'
+      (bladeFrame.layoutSizingVertical === 'FILL' &&
+        bladeFrame.layoutMode === LAYOUT_MODES.VERTICAL) ||
+      (bladeFrame.layoutSizingHorizontal === 'FILL' &&
+        bladeFrame.layoutMode === LAYOUT_MODES.HORIZONTAL)
     ) {
       props.flex = {
         value: '1 0',
