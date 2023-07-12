@@ -208,7 +208,6 @@ const _Box: React.ForwardRefRenderFunction<BoxRefType, BoxProps> = (props, ref) 
       ref={ref as any}
       {...metaAttribute({ name: MetaConstants.Box, testID: props.testID })}
       {...makeBoxProps(props)}
-      {...props}
       elevation={props.elevation}
     />
   );
