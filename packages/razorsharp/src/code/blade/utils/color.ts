@@ -18,7 +18,7 @@ export const convertRGBDecimalToHex = (rgb: RGB): string => {
 export const convertStyleNameToBladeName = (styleName: string): string => {
   return styleName
     .split('/')
-    .map((tokenPart) => tokenPart.toLowerCase())
+    .map((tokenPart) => tokenPart.charAt(0).toLocaleLowerCase() + tokenPart.slice(1))
     .join('.');
 };
 
