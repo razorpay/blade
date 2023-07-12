@@ -80,18 +80,40 @@ export const transformFrameOrGroup = (
       type: paddingValue.length > 1 ? 'instance' : 'string',
     };
 
-    if (bladeFrame.primaryAxisSizingMode === 'FIXED') {
-      const isFixedHeight = bladeFrame.layoutMode === 'VERTICAL';
-      props[isFixedHeight ? 'height' : 'width'] = {
-        value: `${isFixedHeight ? bladeFrame.height : bladeFrame.width}px`,
+    if (bladeFrame.maxHeight) {
+      props.maxHeight = {
+        value: `${bladeFrame.maxHeight}px`,
         type: 'string',
       };
     }
 
-    if (bladeFrame.counterAxisSizingMode === 'FIXED') {
-      const isFixedHeight = bladeFrame.layoutMode === 'HORIZONTAL';
-      props[isFixedHeight ? 'height' : 'width'] = {
-        value: `${isFixedHeight ? bladeFrame.height : bladeFrame.width}px`,
+    if (bladeFrame.maxWidth) {
+      props.maxWidth = {
+        value: `${bladeFrame.maxWidth}px`,
+        type: 'string',
+      };
+    }
+
+    if (bladeFrame.layoutSizingVertical === 'FIXED') {
+      props.height = {
+        value: `${bladeFrame.height}px`,
+        type: 'string',
+      };
+    }
+
+    if (bladeFrame.layoutSizingHorizontal === 'FIXED') {
+      props.width = {
+        value: `${bladeFrame.width}px`,
+        type: 'string',
+      };
+    }
+
+    if (
+      bladeFrame.layoutSizingVertical === 'FILL' ||
+      bladeFrame.layoutSizingHorizontal === 'FILL'
+    ) {
+      props.flex = {
+        value: '1 0',
         type: 'string',
       };
     }
