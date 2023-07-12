@@ -11,6 +11,7 @@ import { Card, CardBody } from '~components/Card';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
 import { List, ListItem } from '~components/List';
+import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const Page = (): React.ReactElement => {
   return (
@@ -71,6 +72,7 @@ const Page = (): React.ReactElement => {
 export default {
   title: 'Components/Divider',
   component: DividerComponent,
+  argTypes: getStyledPropsArgTypes(),
   parameters: {
     docs: {
       page: Page,
