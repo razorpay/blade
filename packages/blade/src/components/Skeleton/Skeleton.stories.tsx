@@ -223,7 +223,7 @@ const SkeletonComplexTemplate: ComponentStory<typeof SkeletonComponent> = () => 
         flexWrap="wrap"
         flexDirection={{ s: 'row', base: 'column' }}
       >
-        <Box flex={1} marginBottom="spacing.4">
+        <Box flex={1} marginBottom="spacing.4" marginRight="spacing.4">
           <LoadableCard isLoading={isLoading} />
         </Box>
         <Box flex={1}>
