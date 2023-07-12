@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/restrict-plus-operands */
 import Animated, {
   cancelAnimation,
   interpolateColor,
@@ -20,11 +21,13 @@ const PulseAnimation = ({
   ...props
 }: { contrast: 'low' | 'high' } & SkeletonProps): React.ReactElement => {
   const { theme } = useTheme();
-  const duration = castNativeType(makeMotionTime(theme.motion.duration['2xgentle']));
+  // TODO: no token for 300ms delay
+  const delay = castNativeType(makeMotionTime(300));
+  const duration = castNativeType(makeMotionTime(theme.motion.duration['2xgentle'] + delay));
   const easing = castNativeType(theme.motion.easing.standard.revealing);
   const progress = useSharedValue(0);
 
-  //Trigger pulsating animation
+  // Trigger pulsating animation
   React.useEffect(() => {
     const pulsatingAnimationTimingConfig = {
       duration,
@@ -50,8 +53,8 @@ const PulseAnimation = ({
         progress.value,
         [1, 0],
         [
-          theme.colors.brand.gray[300][`${contrast}Contrast`],
-          theme.colors.brand.gray[400][`${contrast}Contrast`],
+          theme.colors.brand.gray.a50[`${contrast}Contrast`],
+          theme.colors.brand.gray.a100[`${contrast}Contrast`],
         ],
       ),
     };

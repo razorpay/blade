@@ -137,19 +137,28 @@ const LoadableCard = ({ isLoading }: { isLoading: boolean }): React.ReactElement
           <Box
             display="flex"
             flexDirection="column"
-            gap="spacing.3"
             backgroundColor="surface.background.level2.lowContrast"
           >
-            <Box display="flex" flexDirection="column" gap="spacing.3">
-              <Skeleton height="24px" width="50%" borderRadius="medium" />
-              <Skeleton height="40px" width="30%" borderRadius="medium" />
-              <Skeleton height="20px" width="50%" borderRadius="medium" />
+            <Box display="flex" flexDirection="column" marginBottom="spacing.3">
+              <Skeleton
+                height="24px"
+                width={{ s: '80%', base: '50%' }}
+                borderRadius="medium"
+                marginBottom="spacing.3"
+              />
+              <Skeleton
+                height="40px"
+                width={{ s: '60%', base: '30%' }}
+                borderRadius="medium"
+                marginBottom="spacing.3"
+              />
+              <Skeleton height="20px" width={{ s: '80%', base: '50%' }} borderRadius="medium" />
             </Box>
             <Skeleton height="60px" borderRadius="medium" />
             <Box marginTop="spacing.3" />
             <Divider />
             <Box marginBottom="spacing.3" />
-            <Skeleton height="20px" width="100%" borderRadius="medium" />
+            <Skeleton height="20px" width="100%" borderRadius="medium" marginBottom="spacing.2" />
             <Skeleton height="20px" width="100%" borderRadius="medium" />
           </Box>
         ) : (
@@ -203,11 +212,14 @@ const SkeletonComplexTemplate: ComponentStory<typeof SkeletonComponent> = () => 
         Skeleton supports subset of Box properties like margin, padding, flex to help you position
         it as per your needs to compose more complex skeleton layouts.
       </Text>
-      <Box marginY="spacing.4" display="flex" flexWrap="wrap" flexDirection="row" gap="spacing.4">
-        <Box flex={1}>
-          <LoadableCard isLoading={isLoading} />
-        </Box>
-        <Box flex={1}>
+      <Box
+        marginY="spacing.4"
+        display="flex"
+        flexWrap="wrap"
+        flexDirection={{ s: 'row', base: 'column' }}
+        gap="spacing.4"
+      >
+        <Box flex={1} marginBottom="spacing.4">
           <LoadableCard isLoading={isLoading} />
         </Box>
       </Box>
