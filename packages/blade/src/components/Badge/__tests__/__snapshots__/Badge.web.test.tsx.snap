@@ -72,51 +72,56 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
 
 <div>
   <div
-    class="c0 c1"
+    class=""
     data-blade-component="badge"
   >
     <div
-      class="c2"
+      class="c0 c1"
       data-blade-component="base-box"
     >
       <div
-        class="c3"
+        class="c2"
         data-blade-component="base-box"
       >
-        <svg
-          aria-hidden="true"
-          class="Svgweb__StyledSvg-vcmjs8-0"
-          data-blade-component="icon"
-          fill="none"
-          height="12px"
-          viewBox="0 0 24 24"
-          width="12px"
+        <div
+          class="c3"
+          data-blade-component="base-box"
         >
-          <path
-            d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
-            data-blade-component="svg-path"
-            fill="hsla(216, 27%, 36%, 1)"
-          />
-          <path
-            d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
-            data-blade-component="svg-path"
-            fill="hsla(216, 27%, 36%, 1)"
-          />
-          <path
-            clip-rule="evenodd"
-            d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
-            data-blade-component="svg-path"
-            fill="hsla(216, 27%, 36%, 1)"
-            fill-rule="evenodd"
-          />
-        </svg>
+          <svg
+            aria-hidden="true"
+            class="Svgweb__StyledSvg-vcmjs8-0"
+            data-blade-component="icon"
+            fill="none"
+            height="12px"
+            viewBox="0 0 24 24"
+            width="12px"
+          >
+            <path
+              d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
+              data-blade-component="svg-path"
+              fill="hsla(216, 27%, 36%, 1)"
+            />
+            <path
+              d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
+              data-blade-component="svg-path"
+              fill="hsla(216, 27%, 36%, 1)"
+            />
+            <path
+              clip-rule="evenodd"
+              d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
+              data-blade-component="svg-path"
+              fill="hsla(216, 27%, 36%, 1)"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </div>
+        <p
+          class="c4"
+          data-blade-component="text"
+        >
+          Label
+        </p>
       </div>
-      <p
-        class="c4"
-        data-blade-component="text"
-      >
-        Label
-      </p>
     </div>
   </div>
 </div>
@@ -186,19 +191,24 @@ exports[`<Badge /> should render Badge with bold font 1`] = `
 
 <div>
   <div
-    class="c0 c1"
+    class=""
     data-blade-component="badge"
   >
     <div
-      class="c2"
+      class="c0 c1"
       data-blade-component="base-box"
     >
-      <p
-        class="c3"
-        data-blade-component="text"
+      <div
+        class="c2"
+        data-blade-component="base-box"
       >
-        LABEL
-      </p>
+        <p
+          class="c3"
+          data-blade-component="text"
+        >
+          LABEL
+        </p>
+      </div>
     </div>
   </div>
 </div>
@@ -268,19 +278,24 @@ exports[`<Badge /> should render Badge with default props 1`] = `
 
 <div>
   <div
-    class="c0 c1"
+    class=""
     data-blade-component="badge"
   >
     <div
-      class="c2"
+      class="c0 c1"
       data-blade-component="base-box"
     >
-      <p
-        class="c3"
-        data-blade-component="text"
+      <div
+        class="c2"
+        data-blade-component="base-box"
       >
-        Label
-      </p>
+        <p
+          class="c3"
+          data-blade-component="text"
+        >
+          Label
+        </p>
+      </div>
     </div>
   </div>
 </div>
@@ -350,19 +365,24 @@ exports[`<Badge /> should render high contrast blue variant Badge 1`] = `
 
 <div>
   <div
-    class="c0 c1"
+    class=""
     data-blade-component="badge"
   >
     <div
-      class="c2"
+      class="c0 c1"
       data-blade-component="base-box"
     >
-      <p
-        class="c3"
-        data-blade-component="text"
+      <div
+        class="c2"
+        data-blade-component="base-box"
       >
-        Label
-      </p>
+        <p
+          class="c3"
+          data-blade-component="text"
+        >
+          Label
+        </p>
+      </div>
     </div>
   </div>
 </div>
@@ -432,19 +452,24 @@ exports[`<Badge /> should render high contrast information variant Badge 1`] = `
 
 <div>
   <div
-    class="c0 c1"
+    class=""
     data-blade-component="badge"
   >
     <div
-      class="c2"
+      class="c0 c1"
       data-blade-component="base-box"
     >
-      <p
-        class="c3"
-        data-blade-component="text"
+      <div
+        class="c2"
+        data-blade-component="base-box"
       >
-        Label
-      </p>
+        <p
+          class="c3"
+          data-blade-component="text"
+        >
+          Label
+        </p>
+      </div>
     </div>
   </div>
 </div>
@@ -514,19 +539,24 @@ exports[`<Badge /> should render high contrast negative variant Badge 1`] = `
 
 <div>
   <div
-    class="c0 c1"
+    class=""
     data-blade-component="badge"
   >
     <div
-      class="c2"
+      class="c0 c1"
       data-blade-component="base-box"
     >
-      <p
-        class="c3"
-        data-blade-component="text"
+      <div
+        class="c2"
+        data-blade-component="base-box"
       >
-        Label
-      </p>
+        <p
+          class="c3"
+          data-blade-component="text"
+        >
+          Label
+        </p>
+      </div>
     </div>
   </div>
 </div>
@@ -596,19 +626,24 @@ exports[`<Badge /> should render high contrast neutral variant Badge 1`] = `
 
 <div>
   <div
-    class="c0 c1"
+    class=""
     data-blade-component="badge"
   >
     <div
-      class="c2"
+      class="c0 c1"
       data-blade-component="base-box"
     >
-      <p
-        class="c3"
-        data-blade-component="text"
+      <div
+        class="c2"
+        data-blade-component="base-box"
       >
-        Label
-      </p>
+        <p
+          class="c3"
+          data-blade-component="text"
+        >
+          Label
+        </p>
+      </div>
     </div>
   </div>
 </div>
@@ -678,19 +713,24 @@ exports[`<Badge /> should render high contrast notice variant Badge 1`] = `
 
 <div>
   <div
-    class="c0 c1"
+    class=""
     data-blade-component="badge"
   >
     <div
-      class="c2"
+      class="c0 c1"
       data-blade-component="base-box"
     >
-      <p
-        class="c3"
-        data-blade-component="text"
+      <div
+        class="c2"
+        data-blade-component="base-box"
       >
-        Label
-      </p>
+        <p
+          class="c3"
+          data-blade-component="text"
+        >
+          Label
+        </p>
+      </div>
     </div>
   </div>
 </div>
@@ -760,19 +800,24 @@ exports[`<Badge /> should render high contrast positive variant Badge 1`] = `
 
 <div>
   <div
-    class="c0 c1"
+    class=""
     data-blade-component="badge"
   >
     <div
-      class="c2"
+      class="c0 c1"
       data-blade-component="base-box"
     >
-      <p
-        class="c3"
-        data-blade-component="text"
+      <div
+        class="c2"
+        data-blade-component="base-box"
       >
-        Label
-      </p>
+        <p
+          class="c3"
+          data-blade-component="text"
+        >
+          Label
+        </p>
+      </div>
     </div>
   </div>
 </div>
@@ -842,19 +887,24 @@ exports[`<Badge /> should render large size Badge 1`] = `
 
 <div>
   <div
-    class="c0 c1"
+    class=""
     data-blade-component="badge"
   >
     <div
-      class="c2"
+      class="c0 c1"
       data-blade-component="base-box"
     >
-      <p
-        class="c3"
-        data-blade-component="text"
+      <div
+        class="c2"
+        data-blade-component="base-box"
       >
-        Label
-      </p>
+        <p
+          class="c3"
+          data-blade-component="text"
+        >
+          Label
+        </p>
+      </div>
     </div>
   </div>
 </div>
@@ -924,19 +974,24 @@ exports[`<Badge /> should render low contrast blue variant Badge 1`] = `
 
 <div>
   <div
-    class="c0 c1"
+    class=""
     data-blade-component="badge"
   >
     <div
-      class="c2"
+      class="c0 c1"
       data-blade-component="base-box"
     >
-      <p
-        class="c3"
-        data-blade-component="text"
+      <div
+        class="c2"
+        data-blade-component="base-box"
       >
-        Label
-      </p>
+        <p
+          class="c3"
+          data-blade-component="text"
+        >
+          Label
+        </p>
+      </div>
     </div>
   </div>
 </div>
@@ -1006,19 +1061,24 @@ exports[`<Badge /> should render low contrast information variant Badge 1`] = `
 
 <div>
   <div
-    class="c0 c1"
+    class=""
     data-blade-component="badge"
   >
     <div
-      class="c2"
+      class="c0 c1"
       data-blade-component="base-box"
     >
-      <p
-        class="c3"
-        data-blade-component="text"
+      <div
+        class="c2"
+        data-blade-component="base-box"
       >
-        Label
-      </p>
+        <p
+          class="c3"
+          data-blade-component="text"
+        >
+          Label
+        </p>
+      </div>
     </div>
   </div>
 </div>
@@ -1088,19 +1148,24 @@ exports[`<Badge /> should render low contrast negative variant Badge 1`] = `
 
 <div>
   <div
-    class="c0 c1"
+    class=""
     data-blade-component="badge"
   >
     <div
-      class="c2"
+      class="c0 c1"
       data-blade-component="base-box"
     >
-      <p
-        class="c3"
-        data-blade-component="text"
+      <div
+        class="c2"
+        data-blade-component="base-box"
       >
-        Label
-      </p>
+        <p
+          class="c3"
+          data-blade-component="text"
+        >
+          Label
+        </p>
+      </div>
     </div>
   </div>
 </div>
@@ -1170,19 +1235,24 @@ exports[`<Badge /> should render low contrast neutral variant Badge 1`] = `
 
 <div>
   <div
-    class="c0 c1"
+    class=""
     data-blade-component="badge"
   >
     <div
-      class="c2"
+      class="c0 c1"
       data-blade-component="base-box"
     >
-      <p
-        class="c3"
-        data-blade-component="text"
+      <div
+        class="c2"
+        data-blade-component="base-box"
       >
-        Label
-      </p>
+        <p
+          class="c3"
+          data-blade-component="text"
+        >
+          Label
+        </p>
+      </div>
     </div>
   </div>
 </div>
@@ -1252,19 +1322,24 @@ exports[`<Badge /> should render low contrast notice variant Badge 1`] = `
 
 <div>
   <div
-    class="c0 c1"
+    class=""
     data-blade-component="badge"
   >
     <div
-      class="c2"
+      class="c0 c1"
       data-blade-component="base-box"
     >
-      <p
-        class="c3"
-        data-blade-component="text"
+      <div
+        class="c2"
+        data-blade-component="base-box"
       >
-        Label
-      </p>
+        <p
+          class="c3"
+          data-blade-component="text"
+        >
+          Label
+        </p>
+      </div>
     </div>
   </div>
 </div>
@@ -1334,19 +1409,24 @@ exports[`<Badge /> should render low contrast positive variant Badge 1`] = `
 
 <div>
   <div
-    class="c0 c1"
+    class=""
     data-blade-component="badge"
   >
     <div
-      class="c2"
+      class="c0 c1"
       data-blade-component="base-box"
     >
-      <p
-        class="c3"
-        data-blade-component="text"
+      <div
+        class="c2"
+        data-blade-component="base-box"
       >
-        Label
-      </p>
+        <p
+          class="c3"
+          data-blade-component="text"
+        >
+          Label
+        </p>
+      </div>
     </div>
   </div>
 </div>
@@ -1416,19 +1496,24 @@ exports[`<Badge /> should render medium size Badge 1`] = `
 
 <div>
   <div
-    class="c0 c1"
+    class=""
     data-blade-component="badge"
   >
     <div
-      class="c2"
+      class="c0 c1"
       data-blade-component="base-box"
     >
-      <p
-        class="c3"
-        data-blade-component="text"
+      <div
+        class="c2"
+        data-blade-component="base-box"
       >
-        Label
-      </p>
+        <p
+          class="c3"
+          data-blade-component="text"
+        >
+          Label
+        </p>
+      </div>
     </div>
   </div>
 </div>
@@ -1498,19 +1583,24 @@ exports[`<Badge /> should render small size Badge 1`] = `
 
 <div>
   <div
-    class="c0 c1"
+    class=""
     data-blade-component="badge"
   >
     <div
-      class="c2"
+      class="c0 c1"
       data-blade-component="base-box"
     >
-      <p
-        class="c3"
-        data-blade-component="text"
+      <div
+        class="c2"
+        data-blade-component="base-box"
       >
-        Label
-      </p>
+        <p
+          class="c3"
+          data-blade-component="text"
+        >
+          Label
+        </p>
+      </div>
     </div>
   </div>
 </div>

@@ -124,40 +124,39 @@ const _Badge = ({
   } as const;
 
   return (
-    <StyledBadge
-      backgroundColor={backgroundColor}
-      size={size}
-      textAlign={'left' as never}
+    <BaseBox
       {...metaAttribute({ name: MetaConstants.Badge, testID })}
       {...getStyledProps(styledProps)}
     >
-      <BaseBox
-        paddingRight={horizontalPadding[size]}
-        paddingLeft={horizontalPadding[size]}
-        paddingTop={verticalPadding[size]}
-        paddingBottom={verticalPadding[size]}
-        display={(isReactNative() ? 'flex' : 'inline-flex') as never}
-        flexDirection="row"
-        justifyContent="center"
-        alignItems="center"
-        overflow="hidden"
-      >
-        {Icon ? (
-          <BaseBox paddingRight={Boolean(Icon) ? iconPadding[size] : 'spacing.0'} display="flex">
-            <Icon color={iconColor} size={iconSize[size]} />
-          </BaseBox>
-        ) : null}
-        <Text
-          {...badgeTextSizes[size]}
-          type="normal"
-          weight={fontWeight}
-          truncateAfterLines={1}
-          color={textColor}
+      <StyledBadge backgroundColor={backgroundColor} size={size} textAlign={'left' as never}>
+        <BaseBox
+          paddingRight={horizontalPadding[size]}
+          paddingLeft={horizontalPadding[size]}
+          paddingTop={verticalPadding[size]}
+          paddingBottom={verticalPadding[size]}
+          display={(isReactNative() ? 'flex' : 'inline-flex') as never}
+          flexDirection="row"
+          justifyContent="center"
+          alignItems="center"
+          overflow="hidden"
         >
-          {children}
-        </Text>
-      </BaseBox>
-    </StyledBadge>
+          {Icon ? (
+            <BaseBox paddingRight={Boolean(Icon) ? iconPadding[size] : 'spacing.0'} display="flex">
+              <Icon color={iconColor} size={iconSize[size]} />
+            </BaseBox>
+          ) : null}
+          <Text
+            {...badgeTextSizes[size]}
+            type="normal"
+            weight={fontWeight}
+            truncateAfterLines={1}
+            color={textColor}
+          >
+            {children}
+          </Text>
+        </BaseBox>
+      </StyledBadge>
+    </BaseBox>
   );
 };
 
