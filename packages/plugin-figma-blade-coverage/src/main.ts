@@ -3,15 +3,15 @@ import {
   getParentNode,
   traverseNode,
   getSelectedNodesOrAllNodes,
-  // incrementTotalUseCountAsync,
+  incrementTotalUseCountAsync,
 } from '@create-figma-plugin/utilities';
-// import { Analytics } from '@segment/analytics-node';
 
 import {
   BLADE_COLOR_STYLE_IDS,
   BLADE_COMPONENT_IDS,
   BLADE_TEXT_STYLE_IDS,
 } from './bladeLibraryConstants';
+import { sendAnalytics } from './utils/sendAnalytics';
 
 type CoverageMetrics = {
   bladeComponents: number;
@@ -140,7 +140,7 @@ const renderCoverageCard = async ({
           );
         }
       } else if (traversedNode.type === 'RECTANGLE' && traversedNode.name === 'Progress') {
-        traversedNode.resizeWithoutConstraints(bladeCoverageProgress, 4);
+        traversedNode.resizeWithoutConstraints(bladeCoverageProgress || 0.1, 4);
         traversedNode.fillStyleId = coverageColorIntent;
       }
     });
@@ -358,72 +358,67 @@ const getPageMainFrameNodes = (nodes: readonly SceneNode[]): SceneNode[] => {
 };
 
 const main = async (): Promise<void> => {
-  // plugin used
-  // const pluginUsageCount = await incrementTotalUseCountAsync();
+  try {
+    figma.skipInvisibleInstanceChildren = true;
+    figma.notify('Calculating Coverage', { timeout: Infinity });
 
-  // const analytics = AnalyticsBrowser.load({ writeKey: '6lpfX5loXnTbBFVo2FbJHpjins0hGaC4' });
-  // await analytics.track('Blade Coverage Plugin Used', {
-  //   pluginUsageCount,
-  //   fileName: figma.currentPage.parent?.name,
-  //   pageName: figma.currentPage.name,
-  // });
-  figma.skipInvisibleInstanceChildren = true;
-  figma.notify('Calculating Coverage', { timeout: Infinity });
+    let nodes: readonly SceneNode[] = [];
+    if (figma.currentPage.selection.length > 0) {
+      // you already have the selection, run the plugin
+      nodes = figma.currentPage.selection;
+    } else if (figma.currentPage.type === 'PAGE') {
+      // plugin is run from page scope but has no selection, so traverse all the nodes and then measure coverage
+      nodes = getSelectedNodesOrAllNodes();
+    } else {
+      // the plugin is not run from a page scope, throw error
+      figma.notify(
+        '⚠️ Please run the plugin by opening a Page or selecting a layer inside a Page',
+        {
+          error: true,
+        },
+      );
+      figma.closePlugin();
+    }
 
-  let nodes: readonly SceneNode[] = [];
-  if (figma.currentPage.selection.length > 0) {
-    // you already have the selection, run the plugin
-    nodes = figma.currentPage.selection;
-  } else if (figma.currentPage.type === 'PAGE') {
-    // plugin is run from page scope but has no selection, so traverse all the nodes and then measure coverage
-    nodes = getSelectedNodesOrAllNodes();
-  } else {
-    // the plugin is not run from a page scope, throw error
-    figma.notify('⚠️ Please run the plugin by opening a Page or selecting a layer inside a Page', {
-      error: true,
-    });
+    if (nodes.length) {
+      // 1. get the main frame nodes of the current page(ignoring non-frame nodes)
+      const mainFrameNodes = getPageMainFrameNodes(nodes);
+      for await (const mainFrameNode of mainFrameNodes) {
+        // 2. calculate the coverage
+        const coverageMetrics = calculateCoverage(mainFrameNode);
+        if (coverageMetrics) {
+          // 3. render the coverage card. fin.
+          await renderCoverageCard({ mainFrameNode, ...coverageMetrics });
+        }
+      }
+
+      if (nonBladeHighlighterNodes.length) {
+        const nonBladeHighterNodesGroup = figma.group(nonBladeHighlighterNodes, figma.currentPage);
+        nonBladeHighterNodesGroup.name = 'Non Blade Items';
+        nonBladeHighterNodesGroup.expanded = false;
+      }
+
+      if (bladeCoverageCards.length) {
+        const bladeCoverageCardsGroup = figma.group(bladeCoverageCards, figma.currentPage);
+        bladeCoverageCardsGroup.name = 'Blade Coverage Cards';
+        bladeCoverageCardsGroup.expanded = false;
+      }
+
+      // send analytics data with the usage count
+      const pluginUsageCount = await incrementTotalUseCountAsync();
+      await sendAnalytics({
+        eventName: 'Blade Coverage Plugin Used',
+        properties: {
+          pluginUsageCount,
+        },
+      });
+    }
+  } catch (error: unknown) {
+    console.error(error);
+    figma.notify('⚠️ Something went wrong. Please try re-running the plugin', { error: true });
+  } finally {
     figma.closePlugin();
   }
-
-  if (nodes.length) {
-    // 1. get the main frame nodes of the current page(ignoring non-frame nodes)
-    const mainFrameNodes = getPageMainFrameNodes(nodes);
-    for await (const mainFrameNode of mainFrameNodes) {
-      // 2. calculate the coverage
-      const coverageMetrics = calculateCoverage(mainFrameNode);
-      if (coverageMetrics) {
-        // 3. render the coverage card. fin.
-        await renderCoverageCard({ mainFrameNode, ...coverageMetrics });
-      }
-    }
-
-    if (nonBladeHighlighterNodes.length) {
-      const nonBladeHighterNodesGroup = figma.group(nonBladeHighlighterNodes, figma.currentPage);
-      nonBladeHighterNodesGroup.name = 'Non Blade Items';
-      nonBladeHighterNodesGroup.expanded = false;
-    }
-
-    if (bladeCoverageCards.length) {
-      const bladeCoverageCardsGroup = figma.group(bladeCoverageCards, figma.currentPage);
-      bladeCoverageCardsGroup.name = 'Blade Coverage Cards';
-      bladeCoverageCardsGroup.expanded = false;
-    }
-  }
-  figma.closePlugin();
 };
 
 export default main;
-
-/**
- * {
-  "messageId": "segment-test-message-bzca8",
-  "timestamp": "2023-07-04T07:52:15.869Z",
-  "type": "track",
-  "email": "test@example.org",
-  "projectId": "exj6QozECuYXSgsrGfGYjH",
-  "properties": {
-    "count": 1
-  },
-  "userId": "test-user-9689q",
-  "event": "Blade Coverage Plugin Used"
-} */
