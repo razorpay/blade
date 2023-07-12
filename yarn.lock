@@ -2379,10 +2379,10 @@
   resolved "https://registry.yarnpkg.com/@figma/plugin-typings/-/plugin-typings-1.19.0.tgz#9eec4e6750c53a7ca5464b57d77db7be84143a4a"
   integrity sha512-CioK7sIBXrpgbYsbzTS6clGwuO+97DjM16PqDmXKtcTBJhg8AjTiZ7XIDeJ078Kpwh0QiLDuG+D2ukKbFpBw7g==
 
-"@figma/plugin-typings@1.68.0":
-  version "1.68.0"
-  resolved "https://registry.yarnpkg.com/@figma/plugin-typings/-/plugin-typings-1.68.0.tgz#3f1edd60d37473aa1596cd4b300eeb9ee01cdaa2"
-  integrity sha512-hT+iqf5CRRqKI7NmPdwml+Ld/mG1QM8VcZZURV2AowIy6vC3VQ2iIIT5d7ulDnQU+WzQDvaGaDAw/J5X6tQ2Ww==
+"@figma/plugin-typings@1.69.0":
+  version "1.69.0"
+  resolved "https://registry.yarnpkg.com/@figma/plugin-typings/-/plugin-typings-1.69.0.tgz#1f3b26712af90d14175f580c794f7ebac739e48e"
+  integrity sha512-DAGuGGxM1saT8OVm7gqAldQCyRswRDWeHL/oodDQbus6jK3ypYMl722ItFxc/yWr5HDJbC3FO0u/bvxw2/xqGA==
 
 "@floating-ui/core@^1.2.6":
   version "1.2.6"
