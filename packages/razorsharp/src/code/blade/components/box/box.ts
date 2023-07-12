@@ -82,28 +82,28 @@ export const transformFrameOrGroup = (
 
     if (bladeFrame.maxHeight) {
       props.maxHeight = {
-        value: `${bladeFrame.maxHeight}px`,
+        value: getTokenFromSpacingValue(bladeFrame.maxHeight),
         type: 'string',
       };
     }
 
     if (bladeFrame.maxWidth) {
       props.maxWidth = {
-        value: `${bladeFrame.maxWidth}px`,
+        value: getTokenFromSpacingValue(bladeFrame.maxWidth),
         type: 'string',
       };
     }
 
     if (bladeFrame.layoutSizingVertical === 'FIXED') {
       props.height = {
-        value: `${bladeFrame.height}px`,
+        value: getTokenFromSpacingValue(bladeFrame.height),
         type: 'string',
       };
     }
 
     if (bladeFrame.layoutSizingHorizontal === 'FIXED') {
       props.width = {
-        value: `${bladeFrame.width}px`,
+        value: getTokenFromSpacingValue(bladeFrame.width),
         type: 'string',
       };
     }
@@ -115,7 +115,7 @@ export const transformFrameOrGroup = (
         bladeFrame.layoutMode === LAYOUT_MODES.HORIZONTAL)
     ) {
       props.flex = {
-        value: '1 0',
+        value: '1',
         type: 'string',
       };
     }
