@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
 import Animated, {
   cancelAnimation,
@@ -23,14 +24,28 @@ const PulseAnimation = ({
   const { theme } = useTheme();
   // TODO: no token for 300ms delay
   const delay = castNativeType(makeMotionTime(300));
-  const duration = castNativeType(makeMotionTime(theme.motion.duration['2xgentle'] + delay));
+  const duration = castNativeType(makeMotionTime(theme.motion.duration['2xgentle']));
   const easing = castNativeType(theme.motion.easing.standard.revealing);
   const progress = useSharedValue(0);
+
+  const fadeIn = () => {
+    'worklet';
+    const animations = {
+      opacity: withTiming(1, { duration, easing }),
+    };
+    const initialValues = {
+      opacity: 0,
+    };
+    return {
+      initialValues,
+      animations,
+    };
+  };
 
   // Trigger pulsating animation
   React.useEffect(() => {
     const pulsatingAnimationTimingConfig = {
-      duration,
+      duration: duration + delay,
       easing,
     };
     progress.value = withRepeat(
@@ -45,7 +60,7 @@ const PulseAnimation = ({
     return () => {
       cancelAnimation(progress);
     };
-  }, [progress, duration, easing, theme]);
+  }, [progress, duration, easing, theme, delay]);
 
   const pulseAnimatedStyle = useAnimatedStyle(() => {
     return {
@@ -60,7 +75,7 @@ const PulseAnimation = ({
     };
   });
 
-  return <AnimatedBox style={pulseAnimatedStyle} {...props} />;
+  return <AnimatedBox entering={fadeIn} style={pulseAnimatedStyle} {...props} />;
 };
 
 export { PulseAnimation };
