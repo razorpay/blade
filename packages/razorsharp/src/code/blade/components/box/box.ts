@@ -58,16 +58,8 @@ export const transformFrameOrGroup = (
       type: 'string',
     };
 
-    const justifyContent = getFlexAlignmentFromAxisAlignment(
-      bladeFrame.layoutMode === LAYOUT_MODES.HORIZONTAL
-        ? bladeFrame.primaryAxisAlignItems
-        : bladeFrame.counterAxisAlignItems,
-    );
-    const alignItems = getFlexAlignmentFromAxisAlignment(
-      bladeFrame.layoutMode === LAYOUT_MODES.HORIZONTAL
-        ? bladeFrame.counterAxisAlignItems
-        : bladeFrame.primaryAxisAlignItems,
-    );
+    const justifyContent = getFlexAlignmentFromAxisAlignment(bladeFrame.primaryAxisAlignItems);
+    const alignItems = getFlexAlignmentFromAxisAlignment(bladeFrame.counterAxisAlignItems);
 
     props.justifyContent = { value: justifyContent, type: 'string' };
     props.alignItems = { value: alignItems, type: 'string' };
