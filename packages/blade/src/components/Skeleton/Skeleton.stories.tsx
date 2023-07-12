@@ -11,7 +11,6 @@ import {
   CardHeaderTrailing,
 } from '~components/Card';
 import { Box } from '~components/Box';
-import { Divider } from '~components/BaseHeaderFooter/Divider';
 import { Heading, Text, Title } from '~components/Typography';
 import { Amount } from '~components/Amount';
 import { Button } from '~components/Button';
@@ -19,6 +18,7 @@ import { Alert } from '~components/Alert';
 import { getBoxArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
+import { Divider } from '~components/Divider';
 
 const Page = (): React.ReactElement => {
   return (
