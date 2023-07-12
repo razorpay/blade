@@ -95,25 +95,48 @@ const SkeletonTemplate: ComponentStory<typeof SkeletonComponent> = (args) => {
 export const Default = SkeletonTemplate.bind({});
 
 const BasicSkeleton = (): React.ReactElement => {
+  // Not using gaps because RN
   return (
     <Box
-      flex={1}
+      flex={isReactNative() ? undefined : 1}
+      flexDirection="column"
       width="100%"
       padding="spacing.5"
       borderRadius="medium"
       backgroundColor="surface.background.level2.lowContrast"
     >
-      <Box display="flex" gap="spacing.3" alignItems="center">
-        <SkeletonComponent width="60px" height="60px" borderRadius="max" flexShrink={0} />
-        <Box width="100%" display="flex" flexDirection="column" gap="spacing.3">
-          <SkeletonComponent borderRadius="medium" width="50%" height="30px" />
+      <Box display="flex" flexDirection="row" alignItems="center">
+        <SkeletonComponent
+          width="60px"
+          height="60px"
+          borderRadius="max"
+          flexShrink={0}
+          marginRight="spacing.3"
+        />
+        <Box width="100%" display="flex" flexDirection="column">
+          <SkeletonComponent
+            borderRadius="medium"
+            width="50%"
+            height="30px"
+            marginBottom="spacing.3"
+          />
           <SkeletonComponent borderRadius="medium" width="70%" height="20px" />
         </Box>
       </Box>
 
-      <Box marginTop="spacing.4" display="flex" flexDirection="column" gap="spacing.3">
-        <SkeletonComponent borderRadius="medium" width="100%" height="20px" />
-        <SkeletonComponent borderRadius="medium" width="100%" height="20px" />
+      <Box marginTop="spacing.4" display="flex" flexDirection="column">
+        <SkeletonComponent
+          borderRadius="medium"
+          width="100%"
+          height="20px"
+          marginBottom="spacing.3"
+        />
+        <SkeletonComponent
+          borderRadius="medium"
+          width="100%"
+          height="20px"
+          marginBottom="spacing.3"
+        />
         <SkeletonComponent borderRadius="medium" width="90%" height="20px" />
       </Box>
     </Box>
@@ -223,12 +246,18 @@ const SkeletonComplexTemplate: ComponentStory<typeof SkeletonComponent> = () => 
         flexWrap="wrap"
         flexDirection={{ s: 'row', base: 'column' }}
       >
-        <Box flex={1} marginBottom="spacing.4" marginRight="spacing.4">
+        {isReactNative() ? (
           <LoadableCard isLoading={isLoading} />
-        </Box>
-        <Box flex={1}>
-          <LoadableCard isLoading={isLoading} />
-        </Box>
+        ) : (
+          <>
+            <Box flex={1} marginBottom="spacing.4" marginRight="spacing.4">
+              <LoadableCard isLoading={isLoading} />
+            </Box>
+            <Box flex={1}>
+              <LoadableCard isLoading={isLoading} />
+            </Box>
+          </>
+        )}
       </Box>
     </>
   );
@@ -252,7 +281,7 @@ const SkeletonCardTemplate: ComponentStory<typeof SkeletonComponent> = () => {
         You can also use Skeleton to show loading states for existing blade components by composing
         multiple Skeletons and laying them out via layout props.
       </Text>
-      <Box width="400px" marginTop="spacing.4">
+      <Box width={{ xs: '100%', m: '400px' }} marginTop="spacing.4">
         {isLoading ? (
           <Box
             padding="spacing.7"
