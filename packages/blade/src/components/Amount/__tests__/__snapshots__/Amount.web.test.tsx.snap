@@ -60,28 +60,33 @@ exports[`<Amount /> should render Amount with default props 1`] = `
 
 <div>
   <div
-    class="c0"
+    class=""
     data-blade-component="amount"
   >
-    <span
-      class="c1"
-      data-blade-component="base-text"
+    <div
+      class="c0"
+      data-blade-component="base-box"
     >
-      ₹
-    </span>
-    <span
-      class="c2"
-      data-blade-component="base-text"
-    >
-      1,000
-      .
-    </span>
-    <span
-      class="c3"
-      data-blade-component="base-text"
-    >
-      00
-    </span>
+      <span
+        class="c1"
+        data-blade-component="base-text"
+      >
+        ₹
+      </span>
+      <span
+        class="c2"
+        data-blade-component="base-text"
+      >
+        1,000
+        .
+      </span>
+      <span
+        class="c3"
+        data-blade-component="base-text"
+      >
+        00
+      </span>
+    </div>
   </div>
 </div>
 `;
@@ -146,28 +151,33 @@ exports[`<Amount /> should render MYR currency Amount  1`] = `
 
 <div>
   <div
-    class="c0"
+    class=""
     data-blade-component="amount"
   >
-    <span
-      class="c1"
-      data-blade-component="base-text"
+    <div
+      class="c0"
+      data-blade-component="base-box"
     >
-      RM
-    </span>
-    <span
-      class="c2"
-      data-blade-component="base-text"
-    >
-      1,000
-      .
-    </span>
-    <span
-      class="c3"
-      data-blade-component="base-text"
-    >
-      00
-    </span>
+      <span
+        class="c1"
+        data-blade-component="base-text"
+      >
+        RM
+      </span>
+      <span
+        class="c2"
+        data-blade-component="base-text"
+      >
+        1,000
+        .
+      </span>
+      <span
+        class="c3"
+        data-blade-component="base-text"
+      >
+        00
+      </span>
+    </div>
   </div>
 </div>
 `;
@@ -218,20 +228,25 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
 
 <div>
   <div
-    class="c0"
+    class=""
     data-blade-component="amount"
   >
-    <span
-      class="c1"
-      data-blade-component="base-text"
-    >
-      ₹
-    </span>
     <div
-      class="c2"
-      data-blade-component="base-text"
+      class="c0"
+      data-blade-component="base-box"
     >
-      1k
+      <span
+        class="c1"
+        data-blade-component="base-text"
+      >
+        ₹
+      </span>
+      <div
+        class="c2"
+        data-blade-component="base-text"
+      >
+        1k
+      </div>
     </div>
   </div>
 </div>
@@ -297,28 +312,33 @@ exports[`<Amount /> should render body-medium size Amount 1`] = `
 
 <div>
   <div
-    class="c0"
+    class=""
     data-blade-component="amount"
   >
-    <span
-      class="c1"
-      data-blade-component="base-text"
+    <div
+      class="c0"
+      data-blade-component="base-box"
     >
-      ₹
-    </span>
-    <span
-      class="c2"
-      data-blade-component="base-text"
-    >
-      1,000
-      .
-    </span>
-    <span
-      class="c3"
-      data-blade-component="base-text"
-    >
-      00
-    </span>
+      <span
+        class="c1"
+        data-blade-component="base-text"
+      >
+        ₹
+      </span>
+      <span
+        class="c2"
+        data-blade-component="base-text"
+      >
+        1,000
+        .
+      </span>
+      <span
+        class="c3"
+        data-blade-component="base-text"
+      >
+        00
+      </span>
+    </div>
   </div>
 </div>
 `;
@@ -543,220 +563,265 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 
 <div>
   <div
-    class="c0"
+    class=""
     data-blade-component="amount"
   >
-    <span
-      class="c1"
-      data-blade-component="base-text"
+    <div
+      class="c0"
+      data-blade-component="base-box"
     >
-      ₹
-    </span>
-    <span
-      class="c2"
-      data-blade-component="base-text"
-    >
-      1,000
-      .
-    </span>
-    <span
-      class="c3"
-      data-blade-component="base-text"
-    >
-      00
-    </span>
+      <span
+        class="c1"
+        data-blade-component="base-text"
+      >
+        ₹
+      </span>
+      <span
+        class="c2"
+        data-blade-component="base-text"
+      >
+        1,000
+        .
+      </span>
+      <span
+        class="c3"
+        data-blade-component="base-text"
+      >
+        00
+      </span>
+    </div>
   </div>
   <div
-    class="c0"
+    class=""
     data-blade-component="amount"
   >
-    <span
-      class="c1"
-      data-blade-component="base-text"
+    <div
+      class="c0"
+      data-blade-component="base-box"
     >
-      ₹
-    </span>
-    <span
-      class="c4"
-      data-blade-component="base-text"
-    >
-      1,000
-      .
-    </span>
-    <span
-      class="c3"
-      data-blade-component="base-text"
-    >
-      00
-    </span>
+      <span
+        class="c1"
+        data-blade-component="base-text"
+      >
+        ₹
+      </span>
+      <span
+        class="c4"
+        data-blade-component="base-text"
+      >
+        1,000
+        .
+      </span>
+      <span
+        class="c3"
+        data-blade-component="base-text"
+      >
+        00
+      </span>
+    </div>
   </div>
   <div
-    class="c0"
+    class=""
     data-blade-component="amount"
   >
-    <span
-      class="c1"
-      data-blade-component="base-text"
+    <div
+      class="c0"
+      data-blade-component="base-box"
     >
-      ₹
-    </span>
-    <span
-      class="c5"
-      data-blade-component="base-text"
-    >
-      1,000
-      .
-    </span>
-    <span
-      class="c3"
-      data-blade-component="base-text"
-    >
-      00
-    </span>
+      <span
+        class="c1"
+        data-blade-component="base-text"
+      >
+        ₹
+      </span>
+      <span
+        class="c5"
+        data-blade-component="base-text"
+      >
+        1,000
+        .
+      </span>
+      <span
+        class="c3"
+        data-blade-component="base-text"
+      >
+        00
+      </span>
+    </div>
   </div>
   <div
-    class="c0"
+    class=""
     data-blade-component="amount"
   >
-    <span
-      class="c1"
-      data-blade-component="base-text"
+    <div
+      class="c0"
+      data-blade-component="base-box"
     >
-      ₹
-    </span>
-    <span
-      class="c6"
-      data-blade-component="base-text"
-    >
-      1,000
-      .
-    </span>
-    <span
-      class="c3"
-      data-blade-component="base-text"
-    >
-      00
-    </span>
+      <span
+        class="c1"
+        data-blade-component="base-text"
+      >
+        ₹
+      </span>
+      <span
+        class="c6"
+        data-blade-component="base-text"
+      >
+        1,000
+        .
+      </span>
+      <span
+        class="c3"
+        data-blade-component="base-text"
+      >
+        00
+      </span>
+    </div>
   </div>
   <div
-    class="c0"
+    class=""
     data-blade-component="amount"
   >
-    <span
-      class="c7"
-      data-blade-component="base-text"
+    <div
+      class="c0"
+      data-blade-component="base-box"
     >
-      ₹
-    </span>
-    <span
-      class="c8"
-      data-blade-component="base-text"
-    >
-      1,000
-      .
-    </span>
-    <span
-      class="c9"
-      data-blade-component="base-text"
-    >
-      00
-    </span>
+      <span
+        class="c7"
+        data-blade-component="base-text"
+      >
+        ₹
+      </span>
+      <span
+        class="c8"
+        data-blade-component="base-text"
+      >
+        1,000
+        .
+      </span>
+      <span
+        class="c9"
+        data-blade-component="base-text"
+      >
+        00
+      </span>
+    </div>
   </div>
   <div
-    class="c0"
+    class=""
     data-blade-component="amount"
   >
-    <span
-      class="c7"
-      data-blade-component="base-text"
+    <div
+      class="c0"
+      data-blade-component="base-box"
     >
-      ₹
-    </span>
-    <span
-      class="c10"
-      data-blade-component="base-text"
-    >
-      1,000
-      .
-    </span>
-    <span
-      class="c9"
-      data-blade-component="base-text"
-    >
-      00
-    </span>
+      <span
+        class="c7"
+        data-blade-component="base-text"
+      >
+        ₹
+      </span>
+      <span
+        class="c10"
+        data-blade-component="base-text"
+      >
+        1,000
+        .
+      </span>
+      <span
+        class="c9"
+        data-blade-component="base-text"
+      >
+        00
+      </span>
+    </div>
   </div>
   <div
-    class="c0"
+    class=""
     data-blade-component="amount"
   >
-    <span
-      class="c1"
-      data-blade-component="base-text"
+    <div
+      class="c0"
+      data-blade-component="base-box"
     >
-      ₹
-    </span>
-    <span
-      class="c11"
-      data-blade-component="base-text"
-    >
-      1,000
-      .
-    </span>
-    <span
-      class="c3"
-      data-blade-component="base-text"
-    >
-      00
-    </span>
+      <span
+        class="c1"
+        data-blade-component="base-text"
+      >
+        ₹
+      </span>
+      <span
+        class="c11"
+        data-blade-component="base-text"
+      >
+        1,000
+        .
+      </span>
+      <span
+        class="c3"
+        data-blade-component="base-text"
+      >
+        00
+      </span>
+    </div>
   </div>
   <div
-    class="c0"
+    class=""
     data-blade-component="amount"
   >
-    <span
-      class="c1"
-      data-blade-component="base-text"
+    <div
+      class="c0"
+      data-blade-component="base-box"
     >
-      ₹
-    </span>
-    <span
-      class="c12"
-      data-blade-component="base-text"
-    >
-      1,000
-      .
-    </span>
-    <span
-      class="c3"
-      data-blade-component="base-text"
-    >
-      00
-    </span>
+      <span
+        class="c1"
+        data-blade-component="base-text"
+      >
+        ₹
+      </span>
+      <span
+        class="c12"
+        data-blade-component="base-text"
+      >
+        1,000
+        .
+      </span>
+      <span
+        class="c3"
+        data-blade-component="base-text"
+      >
+        00
+      </span>
+    </div>
   </div>
   <div
-    class="c0"
+    class=""
     data-blade-component="amount"
   >
-    <span
-      class="c13"
-      data-blade-component="base-text"
+    <div
+      class="c0"
+      data-blade-component="base-box"
     >
-      ₹
-    </span>
-    <span
-      class="c14"
-      data-blade-component="base-text"
-    >
-      1,000
-      .
-    </span>
-    <span
-      class="c15"
-      data-blade-component="base-text"
-    >
-      00
-    </span>
+      <span
+        class="c13"
+        data-blade-component="base-text"
+      >
+        ₹
+      </span>
+      <span
+        class="c14"
+        data-blade-component="base-text"
+      >
+        1,000
+        .
+      </span>
+      <span
+        class="c15"
+        data-blade-component="base-text"
+      >
+        00
+      </span>
+    </div>
   </div>
 </div>
 `;
@@ -821,28 +886,33 @@ exports[`<Amount /> should render body-small size Amount 1`] = `
 
 <div>
   <div
-    class="c0"
+    class=""
     data-blade-component="amount"
   >
-    <span
-      class="c1"
-      data-blade-component="base-text"
+    <div
+      class="c0"
+      data-blade-component="base-box"
     >
-      ₹
-    </span>
-    <span
-      class="c2"
-      data-blade-component="base-text"
-    >
-      1,000
-      .
-    </span>
-    <span
-      class="c3"
-      data-blade-component="base-text"
-    >
-      00
-    </span>
+      <span
+        class="c1"
+        data-blade-component="base-text"
+      >
+        ₹
+      </span>
+      <span
+        class="c2"
+        data-blade-component="base-text"
+      >
+        1,000
+        .
+      </span>
+      <span
+        class="c3"
+        data-blade-component="base-text"
+      >
+        00
+      </span>
+    </div>
   </div>
 </div>
 `;
@@ -907,28 +977,33 @@ exports[`<Amount /> should render body-small-bold size Amount 1`] = `
 
 <div>
   <div
-    class="c0"
+    class=""
     data-blade-component="amount"
   >
-    <span
-      class="c1"
-      data-blade-component="base-text"
+    <div
+      class="c0"
+      data-blade-component="base-box"
     >
-      ₹
-    </span>
-    <span
-      class="c2"
-      data-blade-component="base-text"
-    >
-      1,000
-      .
-    </span>
-    <span
-      class="c3"
-      data-blade-component="base-text"
-    >
-      00
-    </span>
+      <span
+        class="c1"
+        data-blade-component="base-text"
+      >
+        ₹
+      </span>
+      <span
+        class="c2"
+        data-blade-component="base-text"
+      >
+        1,000
+        .
+      </span>
+      <span
+        class="c3"
+        data-blade-component="base-text"
+      >
+        00
+      </span>
+    </div>
   </div>
 </div>
 `;
@@ -979,20 +1054,25 @@ exports[`<Amount /> should render negative intent Amount  1`] = `
 
 <div>
   <div
-    class="c0"
+    class=""
     data-blade-component="amount"
   >
-    <span
-      class="c1"
-      data-blade-component="base-text"
-    >
-      ₹
-    </span>
     <div
-      class="c2"
-      data-blade-component="base-text"
+      class="c0"
+      data-blade-component="base-box"
     >
-      1,000.00
+      <span
+        class="c1"
+        data-blade-component="base-text"
+      >
+        ₹
+      </span>
+      <div
+        class="c2"
+        data-blade-component="base-text"
+      >
+        1,000.00
+      </div>
     </div>
   </div>
 </div>
@@ -1058,28 +1138,33 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
 
 <div>
   <div
-    class="c0"
+    class=""
     data-blade-component="amount"
   >
-    <span
-      class="c1"
-      data-blade-component="base-text"
+    <div
+      class="c0"
+      data-blade-component="base-box"
     >
-      ₹
-    </span>
-    <span
-      class="c2"
-      data-blade-component="base-text"
-    >
-      1,000
-      .
-    </span>
-    <span
-      class="c3"
-      data-blade-component="base-text"
-    >
-      00
-    </span>
+      <span
+        class="c1"
+        data-blade-component="base-text"
+      >
+        ₹
+      </span>
+      <span
+        class="c2"
+        data-blade-component="base-text"
+      >
+        1,000
+        .
+      </span>
+      <span
+        class="c3"
+        data-blade-component="base-text"
+      >
+        00
+      </span>
+    </div>
   </div>
 </div>
 `;

@@ -251,32 +251,35 @@ const _Amount = ({
 
   return (
     <BaseBox
-      paddingLeft="spacing.2"
-      paddingRight="spacing.2"
-      // @TODO: fix casting of platform types. currently they all become `never` type
-      display={isReactNative ? castNativeType('flex') : castWebType('inline-flex')}
-      alignItems="baseline"
-      flexDirection="row"
       {...metaAttribute({ name: MetaConstants.Amount, testID })}
       {...getStyledProps(styledProps)}
     >
-      <BaseText
-        marginRight="spacing.1"
-        fontWeight={currencyWeight}
-        fontSize={currencyFontSize}
-        color={currencyColor}
-        as={isReactNative ? undefined : 'span'}
+      <BaseBox
+        paddingLeft="spacing.2"
+        paddingRight="spacing.2"
+        // @TODO: fix casting of platform types. currently they all become `never` type
+        display={isReactNative ? castNativeType('flex') : castWebType('inline-flex')}
+        alignItems="baseline"
+        flexDirection="row"
       >
-        {currencyPrefix}
-      </BaseText>
-      <AmountValue
-        value={renderedValue}
-        amountValueColor={amountValueColor}
-        size={size}
-        isAffixSubtle={isAffixSubtle}
-        suffix={suffix}
-        affixColor={affixColor}
-      />
+        <BaseText
+          marginRight="spacing.1"
+          fontWeight={currencyWeight}
+          fontSize={currencyFontSize}
+          color={currencyColor}
+          as={isReactNative ? undefined : 'span'}
+        >
+          {currencyPrefix}
+        </BaseText>
+        <AmountValue
+          value={renderedValue}
+          amountValueColor={amountValueColor}
+          size={size}
+          isAffixSubtle={isAffixSubtle}
+          suffix={suffix}
+          affixColor={affixColor}
+        />
+      </BaseBox>
     </BaseBox>
   );
 };
