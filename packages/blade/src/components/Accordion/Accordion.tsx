@@ -9,7 +9,7 @@ import { getStyledProps } from '~components/Box/styledProps';
 import type { BoxProps } from '~components/Box';
 import { size } from '~tokens/global';
 import type { TestID } from '~utils/types';
-import { makeSize } from '~utils';
+import { isReactNative, makeSize } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
 type AccordionProps = {
@@ -95,14 +95,19 @@ const Accordion = ({
   return (
     <AccordionContext.Provider value={accordionContext}>
       <BaseBox
-        minWidth={MIN_WIDTH}
-        maxWidth={MAX_WIDTH}
         {...metaAttribute({ name: MetaConstants.Accordion, testID })}
         {...getStyledProps(styledProps)}
       >
-        {Children.map(children, (child, index) =>
-          cloneElement(child, { _index: index, key: index }),
-        )}
+        <BaseBox
+          minWidth={MIN_WIDTH}
+          maxWidth={MAX_WIDTH}
+          width="100%"
+          {...(isReactNative() ? null : { display: 'block' })}
+        >
+          {Children.map(children, (child, index) =>
+            cloneElement(child, { _index: index, key: index }),
+          )}
+        </BaseBox>
       </BaseBox>
     </AccordionContext.Provider>
   );
