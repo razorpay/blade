@@ -130,6 +130,8 @@ const BasicTemplate: ComponentStory<typeof SkeletonComponent> = () => {
 export const Basic = BasicTemplate.bind({});
 
 const LoadableCard = ({ isLoading }: { isLoading: boolean }): React.ReactElement => {
+  // Not using gap="" because RN
+  // TODO change to gap since we upgrade RN
   return (
     <Card padding="spacing.7">
       <CardBody>
@@ -154,10 +156,10 @@ const LoadableCard = ({ isLoading }: { isLoading: boolean }): React.ReactElement
               />
               <Skeleton height="20px" width={{ s: '80%', base: '50%' }} borderRadius="medium" />
             </Box>
-            <Skeleton height="60px" borderRadius="medium" />
+            <Skeleton height="60px" borderRadius="medium" marginBottom="spacing.3" />
             <Box marginTop="spacing.3" />
             <Divider />
-            <Box marginBottom="spacing.3" />
+            <Box marginBottom="spacing.3" marginTop="spacing.3" />
             <Skeleton height="20px" width="100%" borderRadius="medium" marginBottom="spacing.2" />
             <Skeleton height="20px" width="100%" borderRadius="medium" />
           </Box>
@@ -217,9 +219,11 @@ const SkeletonComplexTemplate: ComponentStory<typeof SkeletonComponent> = () => 
         display="flex"
         flexWrap="wrap"
         flexDirection={{ s: 'row', base: 'column' }}
-        gap="spacing.4"
       >
         <Box flex={1} marginBottom="spacing.4">
+          <LoadableCard isLoading={isLoading} />
+        </Box>
+        <Box flex={1}>
           <LoadableCard isLoading={isLoading} />
         </Box>
       </Box>
@@ -254,13 +258,14 @@ const SkeletonCardTemplate: ComponentStory<typeof SkeletonComponent> = () => {
             flexDirection="column"
             backgroundColor="surface.background.level2.lowContrast"
             elevation="lowRaised"
+            borderRadius="medium"
           >
             <Box marginBottom="spacing.4" display="flex" flexDirection="column" gap="spacing.2">
-              <Skeleton width="100%" height="24px" />
-              <Skeleton width="50%" height="20px" />
+              <Skeleton width="100%" height="24px" borderRadius="medium" />
+              <Skeleton width="50%" height="20px" borderRadius="medium" />
             </Box>
             <Divider />
-            <Skeleton marginTop="spacing.5" width="100%" height="100px" />
+            <Skeleton marginTop="spacing.5" width="100%" height="100px" borderRadius="medium" />
           </Box>
         ) : (
           <Card>
