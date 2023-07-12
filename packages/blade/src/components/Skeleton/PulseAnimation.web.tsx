@@ -23,6 +23,10 @@ const pulseKeyframes = ({
 `;
 
 const PulseAnimation = styled(BaseBox)<{ contrast: 'low' | 'high' }>(({ theme, contrast }) => {
+  // We need to delay the animation in between keyframes
+  // Since we also offset the animation to have 300ms delay in 25% keyframe
+  // We add 600ms to the total duration (see the motion spec for the timeline)
+  // https://css-tricks.com/css-keyframe-animation-delay-iterations/
   const delay = 600;
   const duration = castWebType(makeMotionTime(theme.motion.duration['2xgentle'] + delay));
   const easing = castWebType(theme.motion.easing.standard.effective);
