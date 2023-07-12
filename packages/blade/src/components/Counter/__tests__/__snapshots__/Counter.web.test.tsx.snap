@@ -65,19 +65,24 @@ exports[`<Counter /> should render Counter with default props 1`] = `
 
 <div>
   <div
-    class="c0 c1"
-    data-blade-component="base-box"
+    class=""
+    data-blade-component="counter"
   >
     <div
-      class="c2"
-      data-blade-component="counter"
+      class="c0 c1"
+      data-blade-component="base-box"
     >
-      <p
-        class="c3"
-        data-blade-component="text"
+      <div
+        class="c2"
+        data-blade-component="base-box"
       >
-        20
-      </p>
+        <p
+          class="c3"
+          data-blade-component="text"
+        >
+          20
+        </p>
+      </div>
     </div>
   </div>
 </div>
@@ -148,19 +153,24 @@ exports[`<Counter /> should render high contrast blue variant Counter 1`] = `
 
 <div>
   <div
-    class="c0 c1"
-    data-blade-component="base-box"
+    class=""
+    data-blade-component="counter"
   >
     <div
-      class="c2"
-      data-blade-component="counter"
+      class="c0 c1"
+      data-blade-component="base-box"
     >
-      <p
-        class="c3"
-        data-blade-component="text"
+      <div
+        class="c2"
+        data-blade-component="base-box"
       >
-        20
-      </p>
+        <p
+          class="c3"
+          data-blade-component="text"
+        >
+          20
+        </p>
+      </div>
     </div>
   </div>
 </div>
@@ -231,19 +241,24 @@ exports[`<Counter /> should render high contrast information variant Counter 1`]
 
 <div>
   <div
-    class="c0 c1"
-    data-blade-component="base-box"
+    class=""
+    data-blade-component="counter"
   >
     <div
-      class="c2"
-      data-blade-component="counter"
+      class="c0 c1"
+      data-blade-component="base-box"
     >
-      <p
-        class="c3"
-        data-blade-component="text"
+      <div
+        class="c2"
+        data-blade-component="base-box"
       >
-        20
-      </p>
+        <p
+          class="c3"
+          data-blade-component="text"
+        >
+          20
+        </p>
+      </div>
     </div>
   </div>
 </div>
@@ -314,19 +329,24 @@ exports[`<Counter /> should render high contrast negative variant Counter 1`] = 
 
 <div>
   <div
-    class="c0 c1"
-    data-blade-component="base-box"
+    class=""
+    data-blade-component="counter"
   >
     <div
-      class="c2"
-      data-blade-component="counter"
+      class="c0 c1"
+      data-blade-component="base-box"
     >
-      <p
-        class="c3"
-        data-blade-component="text"
+      <div
+        class="c2"
+        data-blade-component="base-box"
       >
-        20
-      </p>
+        <p
+          class="c3"
+          data-blade-component="text"
+        >
+          20
+        </p>
+      </div>
     </div>
   </div>
 </div>
@@ -397,19 +417,24 @@ exports[`<Counter /> should render high contrast neutral variant Counter 1`] = `
 
 <div>
   <div
-    class="c0 c1"
-    data-blade-component="base-box"
+    class=""
+    data-blade-component="counter"
   >
     <div
-      class="c2"
-      data-blade-component="counter"
+      class="c0 c1"
+      data-blade-component="base-box"
     >
-      <p
-        class="c3"
-        data-blade-component="text"
+      <div
+        class="c2"
+        data-blade-component="base-box"
       >
-        20
-      </p>
+        <p
+          class="c3"
+          data-blade-component="text"
+        >
+          20
+        </p>
+      </div>
     </div>
   </div>
 </div>
@@ -480,19 +505,24 @@ exports[`<Counter /> should render high contrast notice variant Counter 1`] = `
 
 <div>
   <div
-    class="c0 c1"
-    data-blade-component="base-box"
+    class=""
+    data-blade-component="counter"
   >
     <div
-      class="c2"
-      data-blade-component="counter"
+      class="c0 c1"
+      data-blade-component="base-box"
     >
-      <p
-        class="c3"
-        data-blade-component="text"
+      <div
+        class="c2"
+        data-blade-component="base-box"
       >
-        20
-      </p>
+        <p
+          class="c3"
+          data-blade-component="text"
+        >
+          20
+        </p>
+      </div>
     </div>
   </div>
 </div>
@@ -563,19 +593,24 @@ exports[`<Counter /> should render high contrast positive variant Counter 1`] = 
 
 <div>
   <div
-    class="c0 c1"
-    data-blade-component="base-box"
+    class=""
+    data-blade-component="counter"
   >
     <div
-      class="c2"
-      data-blade-component="counter"
+      class="c0 c1"
+      data-blade-component="base-box"
     >
-      <p
-        class="c3"
-        data-blade-component="text"
+      <div
+        class="c2"
+        data-blade-component="base-box"
       >
-        20
-      </p>
+        <p
+          class="c3"
+          data-blade-component="text"
+        >
+          20
+        </p>
+      </div>
     </div>
   </div>
 </div>
@@ -646,19 +681,24 @@ exports[`<Counter /> should render large size Counter 1`] = `
 
 <div>
   <div
-    class="c0 c1"
-    data-blade-component="base-box"
+    class=""
+    data-blade-component="counter"
   >
     <div
-      class="c2"
-      data-blade-component="counter"
+      class="c0 c1"
+      data-blade-component="base-box"
     >
-      <p
-        class="c3"
-        data-blade-component="text"
+      <div
+        class="c2"
+        data-blade-component="base-box"
       >
-        20
-      </p>
+        <p
+          class="c3"
+          data-blade-component="text"
+        >
+          20
+        </p>
+      </div>
     </div>
   </div>
 </div>
@@ -729,19 +769,24 @@ exports[`<Counter /> should render low contrast blue variant Counter 1`] = `
 
 <div>
   <div
-    class="c0 c1"
-    data-blade-component="base-box"
+    class=""
+    data-blade-component="counter"
   >
     <div
-      class="c2"
-      data-blade-component="counter"
+      class="c0 c1"
+      data-blade-component="base-box"
     >
-      <p
-        class="c3"
-        data-blade-component="text"
+      <div
+        class="c2"
+        data-blade-component="base-box"
       >
-        20
-      </p>
+        <p
+          class="c3"
+          data-blade-component="text"
+        >
+          20
+        </p>
+      </div>
     </div>
   </div>
 </div>
@@ -812,19 +857,24 @@ exports[`<Counter /> should render low contrast information variant Counter 1`] 
 
 <div>
   <div
-    class="c0 c1"
-    data-blade-component="base-box"
+    class=""
+    data-blade-component="counter"
   >
     <div
-      class="c2"
-      data-blade-component="counter"
+      class="c0 c1"
+      data-blade-component="base-box"
     >
-      <p
-        class="c3"
-        data-blade-component="text"
+      <div
+        class="c2"
+        data-blade-component="base-box"
       >
-        20
-      </p>
+        <p
+          class="c3"
+          data-blade-component="text"
+        >
+          20
+        </p>
+      </div>
     </div>
   </div>
 </div>
@@ -895,19 +945,24 @@ exports[`<Counter /> should render low contrast negative variant Counter 1`] = `
 
 <div>
   <div
-    class="c0 c1"
-    data-blade-component="base-box"
+    class=""
+    data-blade-component="counter"
   >
     <div
-      class="c2"
-      data-blade-component="counter"
+      class="c0 c1"
+      data-blade-component="base-box"
     >
-      <p
-        class="c3"
-        data-blade-component="text"
+      <div
+        class="c2"
+        data-blade-component="base-box"
       >
-        20
-      </p>
+        <p
+          class="c3"
+          data-blade-component="text"
+        >
+          20
+        </p>
+      </div>
     </div>
   </div>
 </div>
@@ -978,19 +1033,24 @@ exports[`<Counter /> should render low contrast neutral variant Counter 1`] = `
 
 <div>
   <div
-    class="c0 c1"
-    data-blade-component="base-box"
+    class=""
+    data-blade-component="counter"
   >
     <div
-      class="c2"
-      data-blade-component="counter"
+      class="c0 c1"
+      data-blade-component="base-box"
     >
-      <p
-        class="c3"
-        data-blade-component="text"
+      <div
+        class="c2"
+        data-blade-component="base-box"
       >
-        20
-      </p>
+        <p
+          class="c3"
+          data-blade-component="text"
+        >
+          20
+        </p>
+      </div>
     </div>
   </div>
 </div>
@@ -1061,19 +1121,24 @@ exports[`<Counter /> should render low contrast notice variant Counter 1`] = `
 
 <div>
   <div
-    class="c0 c1"
-    data-blade-component="base-box"
+    class=""
+    data-blade-component="counter"
   >
     <div
-      class="c2"
-      data-blade-component="counter"
+      class="c0 c1"
+      data-blade-component="base-box"
     >
-      <p
-        class="c3"
-        data-blade-component="text"
+      <div
+        class="c2"
+        data-blade-component="base-box"
       >
-        20
-      </p>
+        <p
+          class="c3"
+          data-blade-component="text"
+        >
+          20
+        </p>
+      </div>
     </div>
   </div>
 </div>
@@ -1144,19 +1209,24 @@ exports[`<Counter /> should render low contrast positive variant Counter 1`] = `
 
 <div>
   <div
-    class="c0 c1"
-    data-blade-component="base-box"
+    class=""
+    data-blade-component="counter"
   >
     <div
-      class="c2"
-      data-blade-component="counter"
+      class="c0 c1"
+      data-blade-component="base-box"
     >
-      <p
-        class="c3"
-        data-blade-component="text"
+      <div
+        class="c2"
+        data-blade-component="base-box"
       >
-        20
-      </p>
+        <p
+          class="c3"
+          data-blade-component="text"
+        >
+          20
+        </p>
+      </div>
     </div>
   </div>
 </div>
@@ -1227,19 +1297,24 @@ exports[`<Counter /> should render medium size Counter 1`] = `
 
 <div>
   <div
-    class="c0 c1"
-    data-blade-component="base-box"
+    class=""
+    data-blade-component="counter"
   >
     <div
-      class="c2"
-      data-blade-component="counter"
+      class="c0 c1"
+      data-blade-component="base-box"
     >
-      <p
-        class="c3"
-        data-blade-component="text"
+      <div
+        class="c2"
+        data-blade-component="base-box"
       >
-        20
-      </p>
+        <p
+          class="c3"
+          data-blade-component="text"
+        >
+          20
+        </p>
+      </div>
     </div>
   </div>
 </div>
@@ -1310,19 +1385,24 @@ exports[`<Counter /> should render small size Counter 1`] = `
 
 <div>
   <div
-    class="c0 c1"
-    data-blade-component="base-box"
+    class=""
+    data-blade-component="counter"
   >
     <div
-      class="c2"
-      data-blade-component="counter"
+      class="c0 c1"
+      data-blade-component="base-box"
     >
-      <p
-        class="c3"
-        data-blade-component="text"
+      <div
+        class="c2"
+        data-blade-component="base-box"
       >
-        20
-      </p>
+        <p
+          class="c3"
+          data-blade-component="text"
+        >
+          20
+        </p>
+      </div>
     </div>
   </div>
 </div>
