@@ -17,6 +17,7 @@ const Svg = ({
   width,
   fill,
   testID,
+  display, // TODO: remove this
   ...styledProps
 }: SvgProps): ReactElement => {
   return (
