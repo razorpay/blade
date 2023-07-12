@@ -28,7 +28,7 @@ type CardSurfaceProps = {
   children: React.ReactNode;
   surfaceLevel: Exclude<SurfaceLevels, 1>;
   elevation: keyof Elevation;
-} & BaseBoxProps;
+} & Omit<BaseBoxProps, 'elevation'>;
 
 const CardSurface = ({
   children,
