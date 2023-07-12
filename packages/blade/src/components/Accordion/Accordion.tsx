@@ -9,7 +9,7 @@ import { getStyledProps } from '~components/Box/styledProps';
 import type { BoxProps } from '~components/Box';
 import { size } from '~tokens/global';
 import type { TestID } from '~utils/types';
-import { isReactNative, makeSize } from '~utils';
+import { makeSize } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
 type AccordionProps = {
