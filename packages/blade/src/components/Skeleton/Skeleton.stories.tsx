@@ -11,7 +11,7 @@ import {
   CardHeaderTrailing,
 } from '~components/Card';
 import { Box } from '~components/Box';
-import { Heading, Text, Title } from '~components/Typography';
+import { Code, Heading, Text, Title } from '~components/Typography';
 import { Amount } from '~components/Amount';
 import { Button } from '~components/Button';
 import { Alert } from '~components/Alert';
@@ -19,6 +19,9 @@ import { getBoxArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { Divider } from '~components/Divider';
+import { announce } from '~components/LiveAnnouncer';
+import { List, ListItem, ListItemCode } from '~components/List';
+import { isReactNative } from '~utils';
 
 const Page = (): React.ReactElement => {
   return (
@@ -290,3 +293,103 @@ const SkeletonCardTemplate: ComponentStory<typeof SkeletonComponent> = () => {
 };
 
 export const CardExample = SkeletonCardTemplate.bind({});
+
+const SkeletonAccessibilityTemplate: ComponentStory<typeof SkeletonComponent> = () => {
+  const [isLoading, setIsLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    announce(isLoading ? 'Usage with announce loading' : 'Usage with announce finished loading');
+  }, [isLoading]);
+
+  if (isReactNative()) return <Text>Story not available on ReactNative</Text>;
+
+  return (
+    <>
+      <Text marginBottom="spacing.4">
+        To make Skeleton loader accessible and let consumers know that some content on the page is
+        loading there are few options:
+      </Text>
+      <List>
+        <ListItem>
+          If you have a section of the page which is loading you can wrap the whole section in a div
+          and set <ListItemCode>aria-busy</ListItemCode> to indicate the content is loading
+        </ListItem>
+        <ListItem>
+          If you are using a button which triggers a loading state and you've set{' '}
+          <ListItemCode>&lt;Button isLoading /&gt;</ListItemCode>, you do not need to do anything
+          because button already announces the loading state
+        </ListItem>
+        <ListItem>
+          Finally, if you want to announce a page level loading state you can utilize the{' '}
+          <ListItemCode>announce()</ListItemCode> method exposed by blade to convey the loading
+          state to the user.
+        </ListItem>
+      </List>
+
+      <Heading marginY="spacing.5">
+        Example 1: <Code size="medium">announce()</Code> method
+      </Heading>
+      <Button
+        onClick={() => {
+          setIsLoading((prev) => !prev);
+        }}
+      >
+        Toggle Loading
+      </Button>
+      <Box width="400px" marginTop="spacing.4">
+        {isLoading ? (
+          <Box
+            padding="spacing.7"
+            display="flex"
+            gap="spacing.2"
+            flexDirection="column"
+            backgroundColor="surface.background.level2.lowContrast"
+            elevation="lowRaised"
+            borderRadius="medium"
+          >
+            <Box marginBottom="spacing.4" display="flex" flexDirection="column" gap="spacing.2">
+              <Skeleton width="100%" height="24px" borderRadius="medium" />
+              <Skeleton width="50%" height="20px" borderRadius="medium" />
+            </Box>
+            <Divider />
+            <Skeleton marginTop="spacing.5" width="100%" height="100px" borderRadius="medium" />
+          </Box>
+        ) : (
+          <Card>
+            <CardHeader>
+              <CardHeaderLeading title="Payment Pages" subtitle="Automated Receipts Enabled" />
+              <CardHeaderTrailing
+                visual={<CardHeaderBadge variant="neutral">UPI</CardHeaderBadge>}
+              />
+            </CardHeader>
+            <CardBody>
+              <Text>
+                Razorpay Payment Pages is the easiest way to accept payments with a custom-branded
+                online store. Accept international and domestic payments with automated payment
+                receipts. Take your store online instantly with zero coding.
+              </Text>
+            </CardBody>
+          </Card>
+        )}
+      </Box>
+
+      <Heading marginY="spacing.5">Example 2: aria-busy method</Heading>
+
+      <section aria-busy={isLoading}>
+        <Box width="50%" display="flex" gap="spacing.3" flexWrap="wrap">
+          {isLoading ? (
+            <>
+              <BasicSkeleton />
+              <BasicSkeleton />
+              <BasicSkeleton />
+            </>
+          ) : (
+            <Text>Content loaded</Text>
+          )}
+        </Box>
+      </section>
+    </>
+  );
+};
+
+export const SkeletonAccessibility = SkeletonAccessibilityTemplate.bind({});
