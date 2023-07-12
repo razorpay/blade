@@ -98,12 +98,7 @@ const Accordion = ({
         {...metaAttribute({ name: MetaConstants.Accordion, testID })}
         {...getStyledProps(styledProps)}
       >
-        <BaseBox
-          minWidth={MIN_WIDTH}
-          maxWidth={MAX_WIDTH}
-          width="100%"
-          {...(isReactNative() ? null : { display: 'block' })}
-        >
+        <BaseBox minWidth={MIN_WIDTH} maxWidth={MAX_WIDTH} width="100%">
           {Children.map(children, (child, index) =>
             cloneElement(child, { _index: index, key: index }),
           )}
