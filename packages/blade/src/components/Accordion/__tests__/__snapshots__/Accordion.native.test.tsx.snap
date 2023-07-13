@@ -52,328 +52,284 @@ exports[`<Accordion /> should render 1`] = `
         }
       >
         <View
-          alignItems="flex-start"
           data-blade-component="collapsible"
-          display="flex"
-          flexDirection="column"
-          minWidth="0px"
           style={
             Array [
-              Object {
-                "alignItems": "flex-start",
-                "display": "flex",
-                "flexDirection": "column",
-                "minWidth": 0,
-              },
+              Object {},
             ]
           }
         >
           <View
-            accessibilityControls="collapsible-body-1"
-            accessibilityLabel="How can I setup Route?"
-            accessibilityRole="button"
-            accessibilityState={
-              Object {
-                "expanded": false,
-              }
-            }
-            accessible={true}
-            collapsable={false}
-            data-blade-component="accordion-button"
-            focusable={true}
-            isExpanded={false}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
+            alignItems="flex-start"
+            data-blade-component="base-box"
+            display="flex"
+            flexDirection="column"
+            minWidth="0px"
             style={
               Array [
                 Object {
-                  "alignItems": "center",
+                  "alignItems": "flex-start",
                   "display": "flex",
-                  "flexDirection": "row",
-                  "justifyContent": "space-between",
-                  "paddingBottom": 16,
-                  "paddingLeft": 16,
-                  "paddingRight": 16,
-                  "paddingTop": 16,
-                },
-                Object {
-                  "backgroundColor": "hsla(0, 0%, 100%, 0)",
+                  "flexDirection": "column",
+                  "minWidth": 0,
                 },
               ]
             }
           >
             <View
-              alignItems="center"
-              data-blade-component="base-box"
-              display="flex"
-              flexDirection="row"
-              justifyContent="space-between"
+              accessibilityControls="collapsible-body-1"
+              accessibilityLabel="How can I setup Route?"
+              accessibilityRole="button"
+              accessibilityState={
+                Object {
+                  "expanded": false,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              data-blade-component="accordion-button"
+              focusable={true}
+              isExpanded={false}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
               style={
                 Array [
                   Object {
                     "alignItems": "center",
                     "display": "flex",
-                    "flexBasis": 0,
                     "flexDirection": "row",
-                    "flexGrow": 1,
-                    "flexShrink": 1,
                     "justifyContent": "space-between",
+                    "paddingBottom": 16,
+                    "paddingLeft": 16,
+                    "paddingRight": 16,
+                    "paddingTop": 16,
+                  },
+                  Object {
+                    "backgroundColor": "hsla(0, 0%, 100%, 0)",
                   },
                 ]
               }
             >
               <View
-                alignItems="flex-start"
+                alignItems="center"
                 data-blade-component="base-box"
                 display="flex"
                 flexDirection="row"
-                flexShrink={1}
+                justifyContent="space-between"
                 style={
                   Array [
                     Object {
-                      "alignItems": "flex-start",
+                      "alignItems": "center",
                       "display": "flex",
+                      "flexBasis": 0,
                       "flexDirection": "row",
+                      "flexGrow": 1,
                       "flexShrink": 1,
-                      "marginRight": 16,
+                      "justifyContent": "space-between",
                     },
                   ]
                 }
               >
-                <Text
-                  accessibilityRole="header"
-                  color="surface.text.normal.lowContrast"
-                  data-blade-component="heading"
-                  fontFamily="text"
-                  fontSize={200}
-                  fontStyle="normal"
-                  fontWeight="bold"
-                  lineHeight={300}
+                <View
+                  alignItems="flex-start"
+                  data-blade-component="base-box"
+                  display="flex"
+                  flexDirection="row"
+                  flexShrink={1}
                   style={
                     Array [
                       Object {
-                        "color": "hsla(217, 56%, 17%, 1)",
-                        "fontFamily": "Lato",
-                        "fontSize": 16,
-                        "fontStyle": "normal",
-                        "fontWeight": "700",
-                        "lineHeight": 24,
-                        "marginBottom": 0,
-                        "marginLeft": 0,
-                        "marginRight": 0,
-                        "marginTop": 0,
-                        "paddingBottom": 0,
-                        "paddingLeft": 0,
-                        "paddingRight": 0,
-                        "paddingTop": 0,
-                        "textDecorationLine": "none",
+                        "alignItems": "flex-start",
+                        "display": "flex",
+                        "flexDirection": "row",
+                        "flexShrink": 1,
+                        "marginRight": 16,
                       },
                     ]
                   }
                 >
-                  How can I setup Route?
-                </Text>
-              </View>
-              <View
-                data-blade-component="base-box"
-                style={
-                  Array [
-                    Object {},
-                  ]
-                }
-              >
-                <View
-                  accessibilityElementsHidden={true}
-                  importantForAccessibility="no-hide-descendants"
-                  style={
-                    Object {
-                      "transform": Array [
-                        Object {
-                          "rotateZ": "0deg",
-                        },
-                      ],
-                    }
-                  }
-                >
-                  <RNSVGSvgView
-                    accessibilityElementsHidden={true}
-                    align="xMidYMid"
-                    bbHeight="20px"
-                    bbWidth="20px"
-                    data-blade-component="icon"
-                    fill="none"
-                    focusable={false}
-                    height="20px"
-                    importantForAccessibility="no-hide-descendants"
-                    meetOrSlice={0}
-                    minX={0}
-                    minY={0}
+                  <Text
+                    accessibilityRole="header"
+                    color="surface.text.normal.lowContrast"
+                    data-blade-component="heading"
+                    fontFamily="text"
+                    fontSize={200}
+                    fontStyle="normal"
+                    fontWeight="bold"
+                    lineHeight={300}
                     style={
                       Array [
                         Object {
-                          "backgroundColor": "transparent",
-                          "borderWidth": 0,
-                        },
-                        Array [
-                          Object {},
-                        ],
-                        Object {
-                          "flex": 0,
-                          "height": 20,
-                          "width": 20,
+                          "color": "hsla(217, 56%, 17%, 1)",
+                          "fontFamily": "Lato",
+                          "fontSize": 16,
+                          "fontStyle": "normal",
+                          "fontWeight": "700",
+                          "lineHeight": 24,
+                          "marginBottom": 0,
+                          "marginLeft": 0,
+                          "marginRight": 0,
+                          "marginTop": 0,
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                          "textDecorationLine": "none",
                         },
                       ]
                     }
-                    vbHeight={24}
-                    vbWidth={24}
-                    width="20px"
                   >
-                    <RNSVGGroup
-                      fill={null}
-                      propList={
-                        Array [
-                          "fill",
-                        ]
-                      }
-                    >
-                      <RNSVGPath
-                        clipRule={0}
-                        d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
-                        fill={4288851646}
-                        fillRule={0}
-                        propList={
-                          Array [
-                            "fill",
-                            "fillRule",
-                          ]
-                        }
-                      />
-                    </RNSVGGroup>
-                  </RNSVGSvgView>
+                    How can I setup Route?
+                  </Text>
                 </View>
-              </View>
-            </View>
-          </View>
-          <View
-            accessibilityElementsHidden={true}
-            accessibilityRole="summary"
-            data-blade-component="collapsible-body"
-            id="collapsible-body-1"
-            importantForAccessibility="no-hide-descendants"
-            style={
-              Array [
-                Object {
-                  "width": "100%",
-                },
-              ]
-            }
-            width="100%"
-          >
-            <View
-              isExpanded={false}
-              style={
-                Array [
-                  Object {
-                    "overflow": "hidden",
-                  },
-                  Object {
-                    "height": 0,
-                    "opacity": 0.8,
-                  },
-                ]
-              }
-            >
-              <View
-                onLayout={[Function]}
-                style={
-                  Object {
-                    "position": "relative",
-                  }
-                }
-              >
                 <View
-                  data-blade-component="box"
+                  data-blade-component="base-box"
                   style={
                     Array [
-                      Object {
-                        "marginBottom": 0,
-                        "marginTop": 16,
-                      },
+                      Object {},
                     ]
                   }
                 >
                   <View
-                    data-blade-component="base-box"
+                    accessibilityElementsHidden={true}
+                    importantForAccessibility="no-hide-descendants"
+                    style={
+                      Object {
+                        "transform": Array [
+                          Object {
+                            "rotateZ": "0deg",
+                          },
+                        ],
+                      }
+                    }
+                  >
+                    <RNSVGSvgView
+                      accessibilityElementsHidden={true}
+                      align="xMidYMid"
+                      bbHeight="20px"
+                      bbWidth="20px"
+                      data-blade-component="icon"
+                      fill="none"
+                      focusable={false}
+                      height="20px"
+                      importantForAccessibility="no-hide-descendants"
+                      meetOrSlice={0}
+                      minX={0}
+                      minY={0}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "transparent",
+                            "borderWidth": 0,
+                          },
+                          Array [
+                            Object {},
+                          ],
+                          Object {
+                            "flex": 0,
+                            "height": 20,
+                            "width": 20,
+                          },
+                        ]
+                      }
+                      vbHeight={24}
+                      vbWidth={24}
+                      width="20px"
+                    >
+                      <RNSVGGroup
+                        fill={null}
+                        propList={
+                          Array [
+                            "fill",
+                          ]
+                        }
+                      >
+                        <RNSVGPath
+                          clipRule={0}
+                          d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                          fill={4288851646}
+                          fillRule={0}
+                          propList={
+                            Array [
+                              "fill",
+                              "fillRule",
+                            ]
+                          }
+                        />
+                      </RNSVGGroup>
+                    </RNSVGSvgView>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <View
+              accessibilityElementsHidden={true}
+              accessibilityRole="summary"
+              data-blade-component="collapsible-body"
+              id="collapsible-body-1"
+              importantForAccessibility="no-hide-descendants"
+              style={
+                Array [
+                  Object {
+                    "width": "100%",
+                  },
+                ]
+              }
+              width="100%"
+            >
+              <View
+                isExpanded={false}
+                style={
+                  Array [
+                    Object {
+                      "overflow": "hidden",
+                    },
+                    Object {
+                      "height": 0,
+                      "opacity": 0.8,
+                    },
+                  ]
+                }
+              >
+                <View
+                  onLayout={[Function]}
+                  style={
+                    Object {
+                      "position": "relative",
+                    }
+                  }
+                >
+                  <View
+                    data-blade-component="box"
                     style={
                       Array [
                         Object {
-                          "marginLeft": 16,
-                          "marginRight": 16,
+                          "marginBottom": 0,
+                          "marginTop": 16,
                         },
                       ]
                     }
                   >
-                    <Text
-                      color="surface.text.subtle.lowContrast"
-                      data-blade-component="text"
-                      fontFamily="text"
-                      fontSize={100}
-                      fontStyle="normal"
-                      fontWeight="regular"
-                      lineHeight={100}
-                      style={
-                        Array [
-                          Object {
-                            "color": "hsla(216, 27%, 36%, 1)",
-                            "fontFamily": "Lato",
-                            "fontSize": 14,
-                            "fontStyle": "normal",
-                            "fontWeight": "400",
-                            "lineHeight": 20,
-                            "marginBottom": 0,
-                            "marginLeft": 0,
-                            "marginRight": 0,
-                            "marginTop": 0,
-                            "paddingBottom": 0,
-                            "paddingLeft": 0,
-                            "paddingRight": 0,
-                            "paddingTop": 0,
-                            "textDecorationLine": "none",
-                          },
-                        ]
-                      }
-                    >
-                      You can use Razorpay Route from the Dashboard or using APIs to transfer money to customers. You may also check our docs for detailed instructions.
-                    </Text>
                     <View
                       data-blade-component="base-box"
                       style={
                         Array [
                           Object {
-                            "marginTop": 0,
+                            "marginLeft": 16,
+                            "marginRight": 16,
                           },
-                        ]
-                      }
-                    />
-                    <View
-                      accessibilityElementsHidden={true}
-                      data-blade-component="base-box"
-                      importantForAccessibility="no-hide-descendants"
-                      style={
-                        Array [
-                          Object {},
                         ]
                       }
                     >
                       <Text
-                        color="surface.text.normal.lowContrast"
+                        color="surface.text.subtle.lowContrast"
                         data-blade-component="text"
                         fontFamily="text"
                         fontSize={100}
@@ -383,7 +339,7 @@ exports[`<Accordion /> should render 1`] = `
                         style={
                           Array [
                             Object {
-                              "color": "hsla(217, 56%, 17%, 1)",
+                              "color": "hsla(216, 27%, 36%, 1)",
                               "fontFamily": "Lato",
                               "fontSize": 14,
                               "fontStyle": "normal",
@@ -402,8 +358,61 @@ exports[`<Accordion /> should render 1`] = `
                           ]
                         }
                       >
-                         
+                        You can use Razorpay Route from the Dashboard or using APIs to transfer money to customers. You may also check our docs for detailed instructions.
                       </Text>
+                      <View
+                        data-blade-component="base-box"
+                        style={
+                          Array [
+                            Object {
+                              "marginTop": 0,
+                            },
+                          ]
+                        }
+                      />
+                      <View
+                        accessibilityElementsHidden={true}
+                        data-blade-component="base-box"
+                        importantForAccessibility="no-hide-descendants"
+                        style={
+                          Array [
+                            Object {},
+                          ]
+                        }
+                      >
+                        <Text
+                          color="surface.text.normal.lowContrast"
+                          data-blade-component="text"
+                          fontFamily="text"
+                          fontSize={100}
+                          fontStyle="normal"
+                          fontWeight="regular"
+                          lineHeight={100}
+                          style={
+                            Array [
+                              Object {
+                                "color": "hsla(217, 56%, 17%, 1)",
+                                "fontFamily": "Lato",
+                                "fontSize": 14,
+                                "fontStyle": "normal",
+                                "fontWeight": "400",
+                                "lineHeight": 20,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "paddingBottom": 0,
+                                "paddingLeft": 0,
+                                "paddingRight": 0,
+                                "paddingTop": 0,
+                                "textDecorationLine": "none",
+                              },
+                            ]
+                          }
+                        >
+                           
+                        </Text>
+                      </View>
                     </View>
                   </View>
                 </View>
@@ -415,7 +424,7 @@ exports[`<Accordion /> should render 1`] = `
           borderBottomColor="surface.border.normal.lowContrast"
           borderPosition="borderBottom"
           borderWidth="none"
-          data-blade-component="base-box"
+          data-blade-component="divider"
           dividerStyle="solid"
           isDividerHorizontal={true}
           style={
@@ -442,328 +451,284 @@ exports[`<Accordion /> should render 1`] = `
         }
       >
         <View
-          alignItems="flex-start"
           data-blade-component="collapsible"
-          display="flex"
-          flexDirection="column"
-          minWidth="0px"
           style={
             Array [
-              Object {
-                "alignItems": "flex-start",
-                "display": "flex",
-                "flexDirection": "column",
-                "minWidth": 0,
-              },
+              Object {},
             ]
           }
         >
           <View
-            accessibilityControls="collapsible-body-2"
-            accessibilityLabel="How can I setup QR Codes?"
-            accessibilityRole="button"
-            accessibilityState={
-              Object {
-                "expanded": false,
-              }
-            }
-            accessible={true}
-            collapsable={false}
-            data-blade-component="accordion-button"
-            focusable={true}
-            isExpanded={false}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
+            alignItems="flex-start"
+            data-blade-component="base-box"
+            display="flex"
+            flexDirection="column"
+            minWidth="0px"
             style={
               Array [
                 Object {
-                  "alignItems": "center",
+                  "alignItems": "flex-start",
                   "display": "flex",
-                  "flexDirection": "row",
-                  "justifyContent": "space-between",
-                  "paddingBottom": 16,
-                  "paddingLeft": 16,
-                  "paddingRight": 16,
-                  "paddingTop": 16,
-                },
-                Object {
-                  "backgroundColor": "hsla(0, 0%, 100%, 0)",
+                  "flexDirection": "column",
+                  "minWidth": 0,
                 },
               ]
             }
           >
             <View
-              alignItems="center"
-              data-blade-component="base-box"
-              display="flex"
-              flexDirection="row"
-              justifyContent="space-between"
+              accessibilityControls="collapsible-body-2"
+              accessibilityLabel="How can I setup QR Codes?"
+              accessibilityRole="button"
+              accessibilityState={
+                Object {
+                  "expanded": false,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              data-blade-component="accordion-button"
+              focusable={true}
+              isExpanded={false}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
               style={
                 Array [
                   Object {
                     "alignItems": "center",
                     "display": "flex",
-                    "flexBasis": 0,
                     "flexDirection": "row",
-                    "flexGrow": 1,
-                    "flexShrink": 1,
                     "justifyContent": "space-between",
+                    "paddingBottom": 16,
+                    "paddingLeft": 16,
+                    "paddingRight": 16,
+                    "paddingTop": 16,
+                  },
+                  Object {
+                    "backgroundColor": "hsla(0, 0%, 100%, 0)",
                   },
                 ]
               }
             >
               <View
-                alignItems="flex-start"
+                alignItems="center"
                 data-blade-component="base-box"
                 display="flex"
                 flexDirection="row"
-                flexShrink={1}
+                justifyContent="space-between"
                 style={
                   Array [
                     Object {
-                      "alignItems": "flex-start",
+                      "alignItems": "center",
                       "display": "flex",
+                      "flexBasis": 0,
                       "flexDirection": "row",
+                      "flexGrow": 1,
                       "flexShrink": 1,
-                      "marginRight": 16,
+                      "justifyContent": "space-between",
                     },
                   ]
                 }
               >
-                <Text
-                  accessibilityRole="header"
-                  color="surface.text.normal.lowContrast"
-                  data-blade-component="heading"
-                  fontFamily="text"
-                  fontSize={200}
-                  fontStyle="normal"
-                  fontWeight="bold"
-                  lineHeight={300}
+                <View
+                  alignItems="flex-start"
+                  data-blade-component="base-box"
+                  display="flex"
+                  flexDirection="row"
+                  flexShrink={1}
                   style={
                     Array [
                       Object {
-                        "color": "hsla(217, 56%, 17%, 1)",
-                        "fontFamily": "Lato",
-                        "fontSize": 16,
-                        "fontStyle": "normal",
-                        "fontWeight": "700",
-                        "lineHeight": 24,
-                        "marginBottom": 0,
-                        "marginLeft": 0,
-                        "marginRight": 0,
-                        "marginTop": 0,
-                        "paddingBottom": 0,
-                        "paddingLeft": 0,
-                        "paddingRight": 0,
-                        "paddingTop": 0,
-                        "textDecorationLine": "none",
+                        "alignItems": "flex-start",
+                        "display": "flex",
+                        "flexDirection": "row",
+                        "flexShrink": 1,
+                        "marginRight": 16,
                       },
                     ]
                   }
                 >
-                  How can I setup QR Codes?
-                </Text>
-              </View>
-              <View
-                data-blade-component="base-box"
-                style={
-                  Array [
-                    Object {},
-                  ]
-                }
-              >
-                <View
-                  accessibilityElementsHidden={true}
-                  importantForAccessibility="no-hide-descendants"
-                  style={
-                    Object {
-                      "transform": Array [
-                        Object {
-                          "rotateZ": "0deg",
-                        },
-                      ],
-                    }
-                  }
-                >
-                  <RNSVGSvgView
-                    accessibilityElementsHidden={true}
-                    align="xMidYMid"
-                    bbHeight="20px"
-                    bbWidth="20px"
-                    data-blade-component="icon"
-                    fill="none"
-                    focusable={false}
-                    height="20px"
-                    importantForAccessibility="no-hide-descendants"
-                    meetOrSlice={0}
-                    minX={0}
-                    minY={0}
+                  <Text
+                    accessibilityRole="header"
+                    color="surface.text.normal.lowContrast"
+                    data-blade-component="heading"
+                    fontFamily="text"
+                    fontSize={200}
+                    fontStyle="normal"
+                    fontWeight="bold"
+                    lineHeight={300}
                     style={
                       Array [
                         Object {
-                          "backgroundColor": "transparent",
-                          "borderWidth": 0,
-                        },
-                        Array [
-                          Object {},
-                        ],
-                        Object {
-                          "flex": 0,
-                          "height": 20,
-                          "width": 20,
+                          "color": "hsla(217, 56%, 17%, 1)",
+                          "fontFamily": "Lato",
+                          "fontSize": 16,
+                          "fontStyle": "normal",
+                          "fontWeight": "700",
+                          "lineHeight": 24,
+                          "marginBottom": 0,
+                          "marginLeft": 0,
+                          "marginRight": 0,
+                          "marginTop": 0,
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                          "textDecorationLine": "none",
                         },
                       ]
                     }
-                    vbHeight={24}
-                    vbWidth={24}
-                    width="20px"
                   >
-                    <RNSVGGroup
-                      fill={null}
-                      propList={
-                        Array [
-                          "fill",
-                        ]
-                      }
-                    >
-                      <RNSVGPath
-                        clipRule={0}
-                        d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
-                        fill={4288851646}
-                        fillRule={0}
-                        propList={
-                          Array [
-                            "fill",
-                            "fillRule",
-                          ]
-                        }
-                      />
-                    </RNSVGGroup>
-                  </RNSVGSvgView>
+                    How can I setup QR Codes?
+                  </Text>
                 </View>
-              </View>
-            </View>
-          </View>
-          <View
-            accessibilityElementsHidden={true}
-            accessibilityRole="summary"
-            data-blade-component="collapsible-body"
-            id="collapsible-body-2"
-            importantForAccessibility="no-hide-descendants"
-            style={
-              Array [
-                Object {
-                  "width": "100%",
-                },
-              ]
-            }
-            width="100%"
-          >
-            <View
-              isExpanded={false}
-              style={
-                Array [
-                  Object {
-                    "overflow": "hidden",
-                  },
-                  Object {
-                    "height": 0,
-                    "opacity": 0.8,
-                  },
-                ]
-              }
-            >
-              <View
-                onLayout={[Function]}
-                style={
-                  Object {
-                    "position": "relative",
-                  }
-                }
-              >
                 <View
-                  data-blade-component="box"
+                  data-blade-component="base-box"
                   style={
                     Array [
-                      Object {
-                        "marginBottom": 0,
-                        "marginTop": 16,
-                      },
+                      Object {},
                     ]
                   }
                 >
                   <View
-                    data-blade-component="base-box"
+                    accessibilityElementsHidden={true}
+                    importantForAccessibility="no-hide-descendants"
+                    style={
+                      Object {
+                        "transform": Array [
+                          Object {
+                            "rotateZ": "0deg",
+                          },
+                        ],
+                      }
+                    }
+                  >
+                    <RNSVGSvgView
+                      accessibilityElementsHidden={true}
+                      align="xMidYMid"
+                      bbHeight="20px"
+                      bbWidth="20px"
+                      data-blade-component="icon"
+                      fill="none"
+                      focusable={false}
+                      height="20px"
+                      importantForAccessibility="no-hide-descendants"
+                      meetOrSlice={0}
+                      minX={0}
+                      minY={0}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "transparent",
+                            "borderWidth": 0,
+                          },
+                          Array [
+                            Object {},
+                          ],
+                          Object {
+                            "flex": 0,
+                            "height": 20,
+                            "width": 20,
+                          },
+                        ]
+                      }
+                      vbHeight={24}
+                      vbWidth={24}
+                      width="20px"
+                    >
+                      <RNSVGGroup
+                        fill={null}
+                        propList={
+                          Array [
+                            "fill",
+                          ]
+                        }
+                      >
+                        <RNSVGPath
+                          clipRule={0}
+                          d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                          fill={4288851646}
+                          fillRule={0}
+                          propList={
+                            Array [
+                              "fill",
+                              "fillRule",
+                            ]
+                          }
+                        />
+                      </RNSVGGroup>
+                    </RNSVGSvgView>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <View
+              accessibilityElementsHidden={true}
+              accessibilityRole="summary"
+              data-blade-component="collapsible-body"
+              id="collapsible-body-2"
+              importantForAccessibility="no-hide-descendants"
+              style={
+                Array [
+                  Object {
+                    "width": "100%",
+                  },
+                ]
+              }
+              width="100%"
+            >
+              <View
+                isExpanded={false}
+                style={
+                  Array [
+                    Object {
+                      "overflow": "hidden",
+                    },
+                    Object {
+                      "height": 0,
+                      "opacity": 0.8,
+                    },
+                  ]
+                }
+              >
+                <View
+                  onLayout={[Function]}
+                  style={
+                    Object {
+                      "position": "relative",
+                    }
+                  }
+                >
+                  <View
+                    data-blade-component="box"
                     style={
                       Array [
                         Object {
-                          "marginLeft": 16,
-                          "marginRight": 16,
+                          "marginBottom": 0,
+                          "marginTop": 16,
                         },
                       ]
                     }
                   >
-                    <Text
-                      color="surface.text.subtle.lowContrast"
-                      data-blade-component="text"
-                      fontFamily="text"
-                      fontSize={100}
-                      fontStyle="normal"
-                      fontWeight="regular"
-                      lineHeight={100}
-                      style={
-                        Array [
-                          Object {
-                            "color": "hsla(216, 27%, 36%, 1)",
-                            "fontFamily": "Lato",
-                            "fontSize": 14,
-                            "fontStyle": "normal",
-                            "fontWeight": "400",
-                            "lineHeight": 20,
-                            "marginBottom": 0,
-                            "marginLeft": 0,
-                            "marginRight": 0,
-                            "marginTop": 0,
-                            "paddingBottom": 0,
-                            "paddingLeft": 0,
-                            "paddingRight": 0,
-                            "paddingTop": 0,
-                            "textDecorationLine": "none",
-                          },
-                        ]
-                      }
-                    >
-                      Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries.
-                    </Text>
                     <View
                       data-blade-component="base-box"
                       style={
                         Array [
                           Object {
-                            "marginTop": 0,
+                            "marginLeft": 16,
+                            "marginRight": 16,
                           },
-                        ]
-                      }
-                    />
-                    <View
-                      accessibilityElementsHidden={true}
-                      data-blade-component="base-box"
-                      importantForAccessibility="no-hide-descendants"
-                      style={
-                        Array [
-                          Object {},
                         ]
                       }
                     >
                       <Text
-                        color="surface.text.normal.lowContrast"
+                        color="surface.text.subtle.lowContrast"
                         data-blade-component="text"
                         fontFamily="text"
                         fontSize={100}
@@ -773,7 +738,7 @@ exports[`<Accordion /> should render 1`] = `
                         style={
                           Array [
                             Object {
-                              "color": "hsla(217, 56%, 17%, 1)",
+                              "color": "hsla(216, 27%, 36%, 1)",
                               "fontFamily": "Lato",
                               "fontSize": 14,
                               "fontStyle": "normal",
@@ -792,8 +757,61 @@ exports[`<Accordion /> should render 1`] = `
                           ]
                         }
                       >
-                         
+                        Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries.
                       </Text>
+                      <View
+                        data-blade-component="base-box"
+                        style={
+                          Array [
+                            Object {
+                              "marginTop": 0,
+                            },
+                          ]
+                        }
+                      />
+                      <View
+                        accessibilityElementsHidden={true}
+                        data-blade-component="base-box"
+                        importantForAccessibility="no-hide-descendants"
+                        style={
+                          Array [
+                            Object {},
+                          ]
+                        }
+                      >
+                        <Text
+                          color="surface.text.normal.lowContrast"
+                          data-blade-component="text"
+                          fontFamily="text"
+                          fontSize={100}
+                          fontStyle="normal"
+                          fontWeight="regular"
+                          lineHeight={100}
+                          style={
+                            Array [
+                              Object {
+                                "color": "hsla(217, 56%, 17%, 1)",
+                                "fontFamily": "Lato",
+                                "fontSize": 14,
+                                "fontStyle": "normal",
+                                "fontWeight": "400",
+                                "lineHeight": 20,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "paddingBottom": 0,
+                                "paddingLeft": 0,
+                                "paddingRight": 0,
+                                "paddingTop": 0,
+                                "textDecorationLine": "none",
+                              },
+                            ]
+                          }
+                        >
+                           
+                        </Text>
+                      </View>
                     </View>
                   </View>
                 </View>
@@ -805,7 +823,7 @@ exports[`<Accordion /> should render 1`] = `
           borderBottomColor="surface.border.normal.lowContrast"
           borderPosition="borderBottom"
           borderWidth="none"
-          data-blade-component="base-box"
+          data-blade-component="divider"
           dividerStyle="solid"
           isDividerHorizontal={true}
           style={
@@ -832,328 +850,284 @@ exports[`<Accordion /> should render 1`] = `
         }
       >
         <View
-          alignItems="flex-start"
           data-blade-component="collapsible"
-          display="flex"
-          flexDirection="column"
-          minWidth="0px"
           style={
             Array [
-              Object {
-                "alignItems": "flex-start",
-                "display": "flex",
-                "flexDirection": "column",
-                "minWidth": 0,
-              },
+              Object {},
             ]
           }
         >
           <View
-            accessibilityControls="collapsible-body-3"
-            accessibilityLabel="How can I setup Subscriptions?"
-            accessibilityRole="button"
-            accessibilityState={
-              Object {
-                "expanded": false,
-              }
-            }
-            accessible={true}
-            collapsable={false}
-            data-blade-component="accordion-button"
-            focusable={true}
-            isExpanded={false}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
+            alignItems="flex-start"
+            data-blade-component="base-box"
+            display="flex"
+            flexDirection="column"
+            minWidth="0px"
             style={
               Array [
                 Object {
-                  "alignItems": "center",
+                  "alignItems": "flex-start",
                   "display": "flex",
-                  "flexDirection": "row",
-                  "justifyContent": "space-between",
-                  "paddingBottom": 16,
-                  "paddingLeft": 16,
-                  "paddingRight": 16,
-                  "paddingTop": 16,
-                },
-                Object {
-                  "backgroundColor": "hsla(0, 0%, 100%, 0)",
+                  "flexDirection": "column",
+                  "minWidth": 0,
                 },
               ]
             }
           >
             <View
-              alignItems="center"
-              data-blade-component="base-box"
-              display="flex"
-              flexDirection="row"
-              justifyContent="space-between"
+              accessibilityControls="collapsible-body-3"
+              accessibilityLabel="How can I setup Subscriptions?"
+              accessibilityRole="button"
+              accessibilityState={
+                Object {
+                  "expanded": false,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              data-blade-component="accordion-button"
+              focusable={true}
+              isExpanded={false}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
               style={
                 Array [
                   Object {
                     "alignItems": "center",
                     "display": "flex",
-                    "flexBasis": 0,
                     "flexDirection": "row",
-                    "flexGrow": 1,
-                    "flexShrink": 1,
                     "justifyContent": "space-between",
+                    "paddingBottom": 16,
+                    "paddingLeft": 16,
+                    "paddingRight": 16,
+                    "paddingTop": 16,
+                  },
+                  Object {
+                    "backgroundColor": "hsla(0, 0%, 100%, 0)",
                   },
                 ]
               }
             >
               <View
-                alignItems="flex-start"
+                alignItems="center"
                 data-blade-component="base-box"
                 display="flex"
                 flexDirection="row"
-                flexShrink={1}
+                justifyContent="space-between"
                 style={
                   Array [
                     Object {
-                      "alignItems": "flex-start",
+                      "alignItems": "center",
                       "display": "flex",
+                      "flexBasis": 0,
                       "flexDirection": "row",
+                      "flexGrow": 1,
                       "flexShrink": 1,
-                      "marginRight": 16,
+                      "justifyContent": "space-between",
                     },
                   ]
                 }
               >
-                <Text
-                  accessibilityRole="header"
-                  color="surface.text.normal.lowContrast"
-                  data-blade-component="heading"
-                  fontFamily="text"
-                  fontSize={200}
-                  fontStyle="normal"
-                  fontWeight="bold"
-                  lineHeight={300}
+                <View
+                  alignItems="flex-start"
+                  data-blade-component="base-box"
+                  display="flex"
+                  flexDirection="row"
+                  flexShrink={1}
                   style={
                     Array [
                       Object {
-                        "color": "hsla(217, 56%, 17%, 1)",
-                        "fontFamily": "Lato",
-                        "fontSize": 16,
-                        "fontStyle": "normal",
-                        "fontWeight": "700",
-                        "lineHeight": 24,
-                        "marginBottom": 0,
-                        "marginLeft": 0,
-                        "marginRight": 0,
-                        "marginTop": 0,
-                        "paddingBottom": 0,
-                        "paddingLeft": 0,
-                        "paddingRight": 0,
-                        "paddingTop": 0,
-                        "textDecorationLine": "none",
+                        "alignItems": "flex-start",
+                        "display": "flex",
+                        "flexDirection": "row",
+                        "flexShrink": 1,
+                        "marginRight": 16,
                       },
                     ]
                   }
                 >
-                  How can I setup Subscriptions?
-                </Text>
-              </View>
-              <View
-                data-blade-component="base-box"
-                style={
-                  Array [
-                    Object {},
-                  ]
-                }
-              >
-                <View
-                  accessibilityElementsHidden={true}
-                  importantForAccessibility="no-hide-descendants"
-                  style={
-                    Object {
-                      "transform": Array [
-                        Object {
-                          "rotateZ": "0deg",
-                        },
-                      ],
-                    }
-                  }
-                >
-                  <RNSVGSvgView
-                    accessibilityElementsHidden={true}
-                    align="xMidYMid"
-                    bbHeight="20px"
-                    bbWidth="20px"
-                    data-blade-component="icon"
-                    fill="none"
-                    focusable={false}
-                    height="20px"
-                    importantForAccessibility="no-hide-descendants"
-                    meetOrSlice={0}
-                    minX={0}
-                    minY={0}
+                  <Text
+                    accessibilityRole="header"
+                    color="surface.text.normal.lowContrast"
+                    data-blade-component="heading"
+                    fontFamily="text"
+                    fontSize={200}
+                    fontStyle="normal"
+                    fontWeight="bold"
+                    lineHeight={300}
                     style={
                       Array [
                         Object {
-                          "backgroundColor": "transparent",
-                          "borderWidth": 0,
-                        },
-                        Array [
-                          Object {},
-                        ],
-                        Object {
-                          "flex": 0,
-                          "height": 20,
-                          "width": 20,
+                          "color": "hsla(217, 56%, 17%, 1)",
+                          "fontFamily": "Lato",
+                          "fontSize": 16,
+                          "fontStyle": "normal",
+                          "fontWeight": "700",
+                          "lineHeight": 24,
+                          "marginBottom": 0,
+                          "marginLeft": 0,
+                          "marginRight": 0,
+                          "marginTop": 0,
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                          "textDecorationLine": "none",
                         },
                       ]
                     }
-                    vbHeight={24}
-                    vbWidth={24}
-                    width="20px"
                   >
-                    <RNSVGGroup
-                      fill={null}
-                      propList={
-                        Array [
-                          "fill",
-                        ]
-                      }
-                    >
-                      <RNSVGPath
-                        clipRule={0}
-                        d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
-                        fill={4288851646}
-                        fillRule={0}
-                        propList={
-                          Array [
-                            "fill",
-                            "fillRule",
-                          ]
-                        }
-                      />
-                    </RNSVGGroup>
-                  </RNSVGSvgView>
+                    How can I setup Subscriptions?
+                  </Text>
                 </View>
-              </View>
-            </View>
-          </View>
-          <View
-            accessibilityElementsHidden={true}
-            accessibilityRole="summary"
-            data-blade-component="collapsible-body"
-            id="collapsible-body-3"
-            importantForAccessibility="no-hide-descendants"
-            style={
-              Array [
-                Object {
-                  "width": "100%",
-                },
-              ]
-            }
-            width="100%"
-          >
-            <View
-              isExpanded={false}
-              style={
-                Array [
-                  Object {
-                    "overflow": "hidden",
-                  },
-                  Object {
-                    "height": 0,
-                    "opacity": 0.8,
-                  },
-                ]
-              }
-            >
-              <View
-                onLayout={[Function]}
-                style={
-                  Object {
-                    "position": "relative",
-                  }
-                }
-              >
                 <View
-                  data-blade-component="box"
+                  data-blade-component="base-box"
                   style={
                     Array [
-                      Object {
-                        "marginBottom": 0,
-                        "marginTop": 16,
-                      },
+                      Object {},
                     ]
                   }
                 >
                   <View
-                    data-blade-component="base-box"
+                    accessibilityElementsHidden={true}
+                    importantForAccessibility="no-hide-descendants"
+                    style={
+                      Object {
+                        "transform": Array [
+                          Object {
+                            "rotateZ": "0deg",
+                          },
+                        ],
+                      }
+                    }
+                  >
+                    <RNSVGSvgView
+                      accessibilityElementsHidden={true}
+                      align="xMidYMid"
+                      bbHeight="20px"
+                      bbWidth="20px"
+                      data-blade-component="icon"
+                      fill="none"
+                      focusable={false}
+                      height="20px"
+                      importantForAccessibility="no-hide-descendants"
+                      meetOrSlice={0}
+                      minX={0}
+                      minY={0}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "transparent",
+                            "borderWidth": 0,
+                          },
+                          Array [
+                            Object {},
+                          ],
+                          Object {
+                            "flex": 0,
+                            "height": 20,
+                            "width": 20,
+                          },
+                        ]
+                      }
+                      vbHeight={24}
+                      vbWidth={24}
+                      width="20px"
+                    >
+                      <RNSVGGroup
+                        fill={null}
+                        propList={
+                          Array [
+                            "fill",
+                          ]
+                        }
+                      >
+                        <RNSVGPath
+                          clipRule={0}
+                          d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                          fill={4288851646}
+                          fillRule={0}
+                          propList={
+                            Array [
+                              "fill",
+                              "fillRule",
+                            ]
+                          }
+                        />
+                      </RNSVGGroup>
+                    </RNSVGSvgView>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <View
+              accessibilityElementsHidden={true}
+              accessibilityRole="summary"
+              data-blade-component="collapsible-body"
+              id="collapsible-body-3"
+              importantForAccessibility="no-hide-descendants"
+              style={
+                Array [
+                  Object {
+                    "width": "100%",
+                  },
+                ]
+              }
+              width="100%"
+            >
+              <View
+                isExpanded={false}
+                style={
+                  Array [
+                    Object {
+                      "overflow": "hidden",
+                    },
+                    Object {
+                      "height": 0,
+                      "opacity": 0.8,
+                    },
+                  ]
+                }
+              >
+                <View
+                  onLayout={[Function]}
+                  style={
+                    Object {
+                      "position": "relative",
+                    }
+                  }
+                >
+                  <View
+                    data-blade-component="box"
                     style={
                       Array [
                         Object {
-                          "marginLeft": 16,
-                          "marginRight": 16,
+                          "marginBottom": 0,
+                          "marginTop": 16,
                         },
                       ]
                     }
                   >
-                    <Text
-                      color="surface.text.subtle.lowContrast"
-                      data-blade-component="text"
-                      fontFamily="text"
-                      fontSize={100}
-                      fontStyle="normal"
-                      fontWeight="regular"
-                      lineHeight={100}
-                      style={
-                        Array [
-                          Object {
-                            "color": "hsla(216, 27%, 36%, 1)",
-                            "fontFamily": "Lato",
-                            "fontSize": 14,
-                            "fontStyle": "normal",
-                            "fontWeight": "400",
-                            "lineHeight": 20,
-                            "marginBottom": 0,
-                            "marginLeft": 0,
-                            "marginRight": 0,
-                            "marginTop": 0,
-                            "paddingBottom": 0,
-                            "paddingLeft": 0,
-                            "paddingRight": 0,
-                            "paddingTop": 0,
-                            "textDecorationLine": "none",
-                          },
-                        ]
-                      }
-                    >
-                      Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries.
-                    </Text>
                     <View
                       data-blade-component="base-box"
                       style={
                         Array [
                           Object {
-                            "marginTop": 0,
+                            "marginLeft": 16,
+                            "marginRight": 16,
                           },
-                        ]
-                      }
-                    />
-                    <View
-                      accessibilityElementsHidden={true}
-                      data-blade-component="base-box"
-                      importantForAccessibility="no-hide-descendants"
-                      style={
-                        Array [
-                          Object {},
                         ]
                       }
                     >
                       <Text
-                        color="surface.text.normal.lowContrast"
+                        color="surface.text.subtle.lowContrast"
                         data-blade-component="text"
                         fontFamily="text"
                         fontSize={100}
@@ -1163,7 +1137,7 @@ exports[`<Accordion /> should render 1`] = `
                         style={
                           Array [
                             Object {
-                              "color": "hsla(217, 56%, 17%, 1)",
+                              "color": "hsla(216, 27%, 36%, 1)",
                               "fontFamily": "Lato",
                               "fontSize": 14,
                               "fontStyle": "normal",
@@ -1182,8 +1156,61 @@ exports[`<Accordion /> should render 1`] = `
                           ]
                         }
                       >
-                         
+                        Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries.
                       </Text>
+                      <View
+                        data-blade-component="base-box"
+                        style={
+                          Array [
+                            Object {
+                              "marginTop": 0,
+                            },
+                          ]
+                        }
+                      />
+                      <View
+                        accessibilityElementsHidden={true}
+                        data-blade-component="base-box"
+                        importantForAccessibility="no-hide-descendants"
+                        style={
+                          Array [
+                            Object {},
+                          ]
+                        }
+                      >
+                        <Text
+                          color="surface.text.normal.lowContrast"
+                          data-blade-component="text"
+                          fontFamily="text"
+                          fontSize={100}
+                          fontStyle="normal"
+                          fontWeight="regular"
+                          lineHeight={100}
+                          style={
+                            Array [
+                              Object {
+                                "color": "hsla(217, 56%, 17%, 1)",
+                                "fontFamily": "Lato",
+                                "fontSize": 14,
+                                "fontStyle": "normal",
+                                "fontWeight": "400",
+                                "lineHeight": 20,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "paddingBottom": 0,
+                                "paddingLeft": 0,
+                                "paddingRight": 0,
+                                "paddingTop": 0,
+                                "textDecorationLine": "none",
+                              },
+                            ]
+                          }
+                        >
+                           
+                        </Text>
+                      </View>
                     </View>
                   </View>
                 </View>
@@ -1195,7 +1222,7 @@ exports[`<Accordion /> should render 1`] = `
           borderBottomColor="surface.border.normal.lowContrast"
           borderPosition="borderBottom"
           borderWidth="none"
-          data-blade-component="base-box"
+          data-blade-component="divider"
           dividerStyle="solid"
           isDividerHorizontal={true}
           style={

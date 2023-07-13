@@ -114,7 +114,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
           borderBottomColor="surface.border.normal.lowContrast"
           borderPosition="borderBottom"
           borderWidth="none"
-          data-blade-component="base-box"
+          data-blade-component="divider"
           dividerStyle="solid"
           isDividerHorizontal={true}
           style={
@@ -788,81 +788,90 @@ exports[`<Card /> should render a Card with Header 1`] = `
                   }
                 >
                   <View
-                    backgroundColor="feedback.background.neutral.lowContrast"
-                    data-blade-component="base-box"
-                    platform="onMobile"
-                    size="medium"
+                    data-blade-component="counter"
                     style={
                       Array [
-                        Object {
-                          "alignSelf": "center",
-                          "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
-                          "borderRadius": 9999,
-                          "display": "flex",
-                          "flexWrap": "nowrap",
-                          "maxWidth": 100,
-                        },
+                        Object {},
                       ]
                     }
                   >
                     <View
-                      alignItems="center"
-                      data-blade-component="counter"
-                      display="flex"
-                      flexDirection="row"
-                      justifyContent="center"
-                      overflow="hidden"
+                      backgroundColor="feedback.background.neutral.lowContrast"
+                      data-blade-component="base-box"
+                      platform="onMobile"
+                      size="medium"
                       style={
                         Array [
                           Object {
-                            "alignItems": "center",
+                            "alignSelf": "center",
+                            "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+                            "borderRadius": 9999,
                             "display": "flex",
-                            "flexDirection": "row",
-                            "justifyContent": "center",
-                            "overflow": "hidden",
-                            "paddingBottom": 2,
-                            "paddingLeft": 8,
-                            "paddingRight": 8,
-                            "paddingTop": 2,
+                            "flexWrap": "nowrap",
+                            "maxWidth": 100,
                           },
                         ]
                       }
                     >
-                      <Text
-                        color="feedback.text.neutral.lowContrast"
-                        data-blade-component="text"
-                        fontFamily="text"
-                        fontSize={75}
-                        fontStyle="normal"
-                        fontWeight="regular"
-                        lineHeight={50}
-                        numberOfLines={1}
+                      <View
+                        alignItems="center"
+                        data-blade-component="base-box"
+                        display="flex"
+                        flexDirection="row"
+                        justifyContent="center"
+                        overflow="hidden"
                         style={
                           Array [
                             Object {
-                              "color": "hsla(216, 27%, 36%, 1)",
-                              "fontFamily": "Lato",
-                              "fontSize": 12,
-                              "fontStyle": "normal",
-                              "fontWeight": "400",
-                              "lineHeight": 16,
-                              "marginBottom": 0,
-                              "marginLeft": 0,
-                              "marginRight": 0,
-                              "marginTop": 0,
-                              "paddingBottom": 0,
-                              "paddingLeft": 0,
-                              "paddingRight": 0,
-                              "paddingTop": 0,
-                              "textAlign": "center",
-                              "textDecorationLine": "none",
+                              "alignItems": "center",
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "justifyContent": "center",
+                              "overflow": "hidden",
+                              "paddingBottom": 2,
+                              "paddingLeft": 8,
+                              "paddingRight": 8,
+                              "paddingTop": 2,
                             },
                           ]
                         }
-                        textAlign="center"
                       >
-                        12
-                      </Text>
+                        <Text
+                          color="feedback.text.neutral.lowContrast"
+                          data-blade-component="text"
+                          fontFamily="text"
+                          fontSize={75}
+                          fontStyle="normal"
+                          fontWeight="regular"
+                          lineHeight={50}
+                          numberOfLines={1}
+                          style={
+                            Array [
+                              Object {
+                                "color": "hsla(216, 27%, 36%, 1)",
+                                "fontFamily": "Lato",
+                                "fontSize": 12,
+                                "fontStyle": "normal",
+                                "fontWeight": "400",
+                                "lineHeight": 16,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "paddingBottom": 0,
+                                "paddingLeft": 0,
+                                "paddingRight": 0,
+                                "paddingTop": 0,
+                                "textAlign": "center",
+                                "textDecorationLine": "none",
+                              },
+                            ]
+                          }
+                          textAlign="center"
+                        >
+                          12
+                        </Text>
+                      </View>
                     </View>
                   </View>
                 </View>
@@ -1005,7 +1014,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
           borderBottomColor="surface.border.normal.lowContrast"
           borderPosition="borderBottom"
           borderWidth="none"
-          data-blade-component="base-box"
+          data-blade-component="divider"
           dividerStyle="solid"
           isDividerHorizontal={true}
           style={

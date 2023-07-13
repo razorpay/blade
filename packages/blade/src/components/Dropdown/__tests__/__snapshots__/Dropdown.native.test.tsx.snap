@@ -18,12 +18,10 @@ exports[`<Dropdown /> should render dropdown 1`] = `
   >
     <View
       data-blade-component="base-box"
-      display="block"
       position="relative"
       style={
         Array [
           Object {
-            "display": "block",
             "position": "relative",
             "textAlign": "left",
           },
@@ -61,9 +59,11 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                   "display": "flex",
                   "flexDirection": "column",
                   "position": "relative",
+                  "width": "100%",
                 },
               ]
             }
+            width="100%"
           >
             <View
               data-blade-component="base-box"
