@@ -586,7 +586,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
         data-blade-component="base-box"
         display="flex"
         flexDirection="row"
-        justifyContent="space-evenly"
+        justifyContent="space-between"
         style={
           Array [
             Object {

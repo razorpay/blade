@@ -107,7 +107,7 @@ const _CardHeader = ({ children, testID }: CardHeaderProps): React.ReactElement 
         marginBottom="spacing.7"
         display="flex"
         flexDirection="row"
-        justifyContent="space-evenly"
+        justifyContent="space-between"
       >
         {children}
       </BaseBox>
