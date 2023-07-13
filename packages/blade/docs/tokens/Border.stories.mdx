@@ -1,5 +1,6 @@
 import { Meta, DocsContainer } from '@storybook/addon-docs';
 import { useTheme, BladeProvider } from '../../src/components';
+import { makeBorderSize } from '../../src/utils';
 import { paymentTheme, bankingTheme } from '../../src/tokens';
 
 <Meta
@@ -34,6 +35,8 @@ import { paymentTheme, bankingTheme } from '../../src/tokens';
 
 # ─ Border
 
+> These tokens should be used along with the [makeBorderSize util](?path=/story/utils-makebordersize--page).
+
 export const Border = () => {
   const { theme } = useTheme();
   return (
@@ -52,7 +55,7 @@ export const Border = () => {
                       width: '64px',
                       height: '64px',
                       backgroundColor: 'hsla(220, 30%, 96%, 1)',
-                      borderRadius: `${value}`,
+                      borderRadius: `${makeBorderSize(value)}`,
                       border: '1px solid hsla(216, 15%, 54%, 0.18)',
                     }}
                   />
@@ -62,7 +65,7 @@ export const Border = () => {
                       width: '96px',
                       height: '64px',
                       backgroundColor: 'hsla(220, 30%, 96%, 1)',
-                      borderRadius: `${value}px`,
+                      borderRadius: `${makeBorderSize(value)}`,
                       border: '1px solid hsla(216, 15%, 54%, 0.18)',
                     }}
                   />
@@ -85,7 +88,7 @@ export const Border = () => {
                     width: '64px',
                     height: '64px',
                     backgroundColor: 'hsla(220, 30%, 96%, 1)',
-                    borderRadius: `4px`,
+                    borderRadius: `${makeBorderSize(theme.border.radius.medium)}`,
                     border: `${value}px solid hsla(216, 15%, 54%, 0.18)`,
                   }}
                 />
