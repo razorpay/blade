@@ -16,6 +16,7 @@ import { Link } from '~components/Link';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import type { BladeElementRef } from '~utils/types';
+import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const Page = (): React.ReactElement => {
   return (
@@ -61,6 +62,7 @@ export default {
     size: 'medium',
     accessibilityLabel: 'Toggle DarkMode',
   },
+  argTypes: getStyledPropsArgTypes(),
   parameters: {
     docs: {
       page: Page,
