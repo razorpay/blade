@@ -49,7 +49,6 @@ exports[`<Accordion /> should render 1`] = `
 }
 
 .c0 {
-  display: block;
   width: 100%;
 }
 
@@ -250,82 +249,87 @@ exports[`<Accordion /> should render 1`] = `
         data-blade-component="accordion-item"
       >
         <div
-          class="c1"
+          class=""
           data-blade-component="collapsible"
         >
           <div
-            aria-level="3"
-            class="c2"
+            class="c1"
             data-blade-component="base-box"
-            role="heading"
-          >
-            <button
-              aria-controls="collapsible-body-1"
-              aria-expanded="false"
-              class="c3"
-              data-blade-component="accordion-button"
-            >
-              <div
-                class="c4"
-                data-blade-component="base-box"
-              >
-                <span
-                  class="c5"
-                  data-blade-component="heading"
-                >
-                  How can I setup Route?
-                </span>
-              </div>
-              <div
-                aria-hidden="true"
-                class=" c6"
-                data-blade-component="base-box"
-                direction="bottom"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="Svgweb__StyledSvg-vcmjs8-0"
-                  data-blade-component="icon"
-                  fill="none"
-                  height="20px"
-                  viewBox="0 0 24 24"
-                  width="20px"
-                >
-                  <path
-                    clip-rule="evenodd"
-                    d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
-                    data-blade-component="svg-path"
-                    fill="currentColor"
-                    fill-rule="evenodd"
-                  />
-                </svg>
-              </div>
-            </button>
-          </div>
-          <div
-            aria-hidden="true"
-            class=""
-            data-blade-component="collapsible-body"
-            id="collapsible-body-1"
-            role="region"
           >
             <div
-              class="c7"
+              aria-level="3"
+              class="c2"
+              data-blade-component="base-box"
+              role="heading"
             >
-              <div
-                class="c8"
-                data-blade-component="box"
+              <button
+                aria-controls="collapsible-body-1"
+                aria-expanded="false"
+                class="c3"
+                data-blade-component="accordion-button"
               >
                 <div
-                  class="c9"
+                  class="c4"
                   data-blade-component="base-box"
                 >
-                  <p
-                    class="c10"
-                    data-blade-component="text"
+                  <span
+                    class="c5"
+                    data-blade-component="heading"
                   >
-                    You can use Razorpay Route from the Dashboard or using APIs to transfer money to customers. You may also check our docs for detailed instructions.
-                  </p>
+                    How can I setup Route?
+                  </span>
+                </div>
+                <div
+                  aria-hidden="true"
+                  class=" c6"
+                  data-blade-component="base-box"
+                  direction="bottom"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="Svgweb__StyledSvg-vcmjs8-0"
+                    data-blade-component="icon"
+                    fill="none"
+                    height="20px"
+                    viewBox="0 0 24 24"
+                    width="20px"
+                  >
+                    <path
+                      clip-rule="evenodd"
+                      d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                      data-blade-component="svg-path"
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                    />
+                  </svg>
+                </div>
+              </button>
+            </div>
+            <div
+              aria-hidden="true"
+              class=""
+              data-blade-component="collapsible-body"
+              id="collapsible-body-1"
+              role="region"
+            >
+              <div
+                class="c7"
+              >
+                <div
+                  class="c8"
+                  data-blade-component="box"
+                >
+                  <div
+                    class="c9"
+                    data-blade-component="base-box"
+                  >
+                    <p
+                      class="c10"
+                      data-blade-component="text"
+                    >
+                      You can use Razorpay Route from the Dashboard or using APIs to transfer money to customers. You may also check our docs for detailed instructions.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -333,7 +337,7 @@ exports[`<Accordion /> should render 1`] = `
         </div>
         <div
           class="c11 c12"
-          data-blade-component="base-box"
+          data-blade-component="divider"
         />
       </div>
       <div
@@ -341,82 +345,87 @@ exports[`<Accordion /> should render 1`] = `
         data-blade-component="accordion-item"
       >
         <div
-          class="c1"
+          class=""
           data-blade-component="collapsible"
         >
           <div
-            aria-level="3"
-            class="c2"
+            class="c1"
             data-blade-component="base-box"
-            role="heading"
-          >
-            <button
-              aria-controls="collapsible-body-2"
-              aria-expanded="false"
-              class="c3"
-              data-blade-component="accordion-button"
-            >
-              <div
-                class="c4"
-                data-blade-component="base-box"
-              >
-                <span
-                  class="c5"
-                  data-blade-component="heading"
-                >
-                  How can I setup QR Codes?
-                </span>
-              </div>
-              <div
-                aria-hidden="true"
-                class=" c6"
-                data-blade-component="base-box"
-                direction="bottom"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="Svgweb__StyledSvg-vcmjs8-0"
-                  data-blade-component="icon"
-                  fill="none"
-                  height="20px"
-                  viewBox="0 0 24 24"
-                  width="20px"
-                >
-                  <path
-                    clip-rule="evenodd"
-                    d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
-                    data-blade-component="svg-path"
-                    fill="currentColor"
-                    fill-rule="evenodd"
-                  />
-                </svg>
-              </div>
-            </button>
-          </div>
-          <div
-            aria-hidden="true"
-            class=""
-            data-blade-component="collapsible-body"
-            id="collapsible-body-2"
-            role="region"
           >
             <div
-              class="c7"
+              aria-level="3"
+              class="c2"
+              data-blade-component="base-box"
+              role="heading"
             >
-              <div
-                class="c8"
-                data-blade-component="box"
+              <button
+                aria-controls="collapsible-body-2"
+                aria-expanded="false"
+                class="c3"
+                data-blade-component="accordion-button"
               >
                 <div
-                  class="c9"
+                  class="c4"
                   data-blade-component="base-box"
                 >
-                  <p
-                    class="c10"
-                    data-blade-component="text"
+                  <span
+                    class="c5"
+                    data-blade-component="heading"
                   >
-                    Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries.
-                  </p>
+                    How can I setup QR Codes?
+                  </span>
+                </div>
+                <div
+                  aria-hidden="true"
+                  class=" c6"
+                  data-blade-component="base-box"
+                  direction="bottom"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="Svgweb__StyledSvg-vcmjs8-0"
+                    data-blade-component="icon"
+                    fill="none"
+                    height="20px"
+                    viewBox="0 0 24 24"
+                    width="20px"
+                  >
+                    <path
+                      clip-rule="evenodd"
+                      d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                      data-blade-component="svg-path"
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                    />
+                  </svg>
+                </div>
+              </button>
+            </div>
+            <div
+              aria-hidden="true"
+              class=""
+              data-blade-component="collapsible-body"
+              id="collapsible-body-2"
+              role="region"
+            >
+              <div
+                class="c7"
+              >
+                <div
+                  class="c8"
+                  data-blade-component="box"
+                >
+                  <div
+                    class="c9"
+                    data-blade-component="base-box"
+                  >
+                    <p
+                      class="c10"
+                      data-blade-component="text"
+                    >
+                      Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -424,7 +433,7 @@ exports[`<Accordion /> should render 1`] = `
         </div>
         <div
           class="c11 c12"
-          data-blade-component="base-box"
+          data-blade-component="divider"
         />
       </div>
       <div
@@ -432,82 +441,87 @@ exports[`<Accordion /> should render 1`] = `
         data-blade-component="accordion-item"
       >
         <div
-          class="c1"
+          class=""
           data-blade-component="collapsible"
         >
           <div
-            aria-level="3"
-            class="c2"
+            class="c1"
             data-blade-component="base-box"
-            role="heading"
-          >
-            <button
-              aria-controls="collapsible-body-3"
-              aria-expanded="false"
-              class="c3"
-              data-blade-component="accordion-button"
-            >
-              <div
-                class="c4"
-                data-blade-component="base-box"
-              >
-                <span
-                  class="c5"
-                  data-blade-component="heading"
-                >
-                  How can I setup Subscriptions?
-                </span>
-              </div>
-              <div
-                aria-hidden="true"
-                class=" c6"
-                data-blade-component="base-box"
-                direction="bottom"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="Svgweb__StyledSvg-vcmjs8-0"
-                  data-blade-component="icon"
-                  fill="none"
-                  height="20px"
-                  viewBox="0 0 24 24"
-                  width="20px"
-                >
-                  <path
-                    clip-rule="evenodd"
-                    d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
-                    data-blade-component="svg-path"
-                    fill="currentColor"
-                    fill-rule="evenodd"
-                  />
-                </svg>
-              </div>
-            </button>
-          </div>
-          <div
-            aria-hidden="true"
-            class=""
-            data-blade-component="collapsible-body"
-            id="collapsible-body-3"
-            role="region"
           >
             <div
-              class="c7"
+              aria-level="3"
+              class="c2"
+              data-blade-component="base-box"
+              role="heading"
             >
-              <div
-                class="c8"
-                data-blade-component="box"
+              <button
+                aria-controls="collapsible-body-3"
+                aria-expanded="false"
+                class="c3"
+                data-blade-component="accordion-button"
               >
                 <div
-                  class="c9"
+                  class="c4"
                   data-blade-component="base-box"
                 >
-                  <p
-                    class="c10"
-                    data-blade-component="text"
+                  <span
+                    class="c5"
+                    data-blade-component="heading"
                   >
-                    Just use Razorpay.
-                  </p>
+                    How can I setup Subscriptions?
+                  </span>
+                </div>
+                <div
+                  aria-hidden="true"
+                  class=" c6"
+                  data-blade-component="base-box"
+                  direction="bottom"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="Svgweb__StyledSvg-vcmjs8-0"
+                    data-blade-component="icon"
+                    fill="none"
+                    height="20px"
+                    viewBox="0 0 24 24"
+                    width="20px"
+                  >
+                    <path
+                      clip-rule="evenodd"
+                      d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                      data-blade-component="svg-path"
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                    />
+                  </svg>
+                </div>
+              </button>
+            </div>
+            <div
+              aria-hidden="true"
+              class=""
+              data-blade-component="collapsible-body"
+              id="collapsible-body-3"
+              role="region"
+            >
+              <div
+                class="c7"
+              >
+                <div
+                  class="c8"
+                  data-blade-component="box"
+                >
+                  <div
+                    class="c9"
+                    data-blade-component="base-box"
+                  >
+                    <p
+                      class="c10"
+                      data-blade-component="text"
+                    >
+                      Just use Razorpay.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -515,7 +529,7 @@ exports[`<Accordion /> should render 1`] = `
         </div>
         <div
           class="c11 c12"
-          data-blade-component="base-box"
+          data-blade-component="divider"
         />
       </div>
     </div>

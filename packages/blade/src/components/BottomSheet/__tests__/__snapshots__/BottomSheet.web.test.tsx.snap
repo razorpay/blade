@@ -633,19 +633,24 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                         data-blade-component="box"
                       >
                         <div
-                          class="c14 c15"
-                          data-blade-component="base-box"
+                          class=""
+                          data-blade-component="counter"
                         >
                           <div
-                            class="c16"
-                            data-blade-component="counter"
+                            class="c14 c15"
+                            data-blade-component="base-box"
                           >
-                            <p
-                              class="c17"
-                              data-blade-component="text"
+                            <div
+                              class="c16"
+                              data-blade-component="base-box"
                             >
-                              2
-                            </p>
+                              <p
+                                class="c17"
+                                data-blade-component="text"
+                              >
+                                2
+                              </p>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -668,19 +673,24 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                   data-blade-component="box"
                 >
                   <div
-                    class="c20 c21"
+                    class=""
                     data-blade-component="badge"
                   >
                     <div
-                      class="c16"
+                      class="c20 c21"
                       data-blade-component="base-box"
                     >
-                      <p
-                        class="c22"
-                        data-blade-component="text"
+                      <div
+                        class="c16"
+                        data-blade-component="base-box"
                       >
-                        Action Needed
-                      </p>
+                        <p
+                          class="c22"
+                          data-blade-component="text"
+                        >
+                          Action Needed
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -716,7 +726,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
           </div>
           <div
             class="c24 c25"
-            data-blade-component="base-box"
+            data-blade-component="divider"
           />
         </div>
       </div>
@@ -744,7 +754,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
       >
         <div
           class="c24 c25"
-          data-blade-component="base-box"
+          data-blade-component="divider"
         />
         <div
           class="c30"

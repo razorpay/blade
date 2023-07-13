@@ -370,7 +370,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
         />
         <div
           class="c5 c6"
-          data-blade-component="base-box"
+          data-blade-component="divider"
         />
         <div
           class="c7"
@@ -804,19 +804,24 @@ exports[`<Card /> should render a Card with Header 1`] = `
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c9 c10"
-                    data-blade-component="base-box"
+                    class=""
+                    data-blade-component="counter"
                   >
                     <div
-                      class="c11"
-                      data-blade-component="counter"
+                      class="c9 c10"
+                      data-blade-component="base-box"
                     >
-                      <p
-                        class="c12"
-                        data-blade-component="text"
+                      <div
+                        class="c11"
+                        data-blade-component="base-box"
                       >
-                        12
-                      </p>
+                        <p
+                          class="c12"
+                          data-blade-component="text"
+                        >
+                          12
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -858,7 +863,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
         </div>
         <div
           class="c18 c19"
-          data-blade-component="base-box"
+          data-blade-component="divider"
         />
       </div>
       <div

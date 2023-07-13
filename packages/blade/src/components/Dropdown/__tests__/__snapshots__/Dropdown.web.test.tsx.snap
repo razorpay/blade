@@ -2,7 +2,6 @@
 
 exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = `
 .c0 {
-  display: block;
   text-align: left;
   position: relative;
 }
@@ -20,6 +19,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   -ms-flex-direction: column;
   flex-direction: column;
   position: relative;
+  width: 100%;
 }
 
 .c4 {
@@ -1012,7 +1012,6 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
 
 exports[`<Dropdown /> with <DropdownButton /> should render menu and make items clickable 1`] = `
 .c0 {
-  display: block;
   text-align: left;
   position: relative;
 }
