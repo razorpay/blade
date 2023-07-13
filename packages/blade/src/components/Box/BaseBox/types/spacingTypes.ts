@@ -7,6 +7,7 @@ type SpaceUnits = 'px' | '%' | 'fr' | 'rem' | 'em' | 'vh' | 'vw';
 type SpacingValueType =
   | DotNotationSpacingStringToken
   | `${string}${SpaceUnits}`
+  | `-${string}${SpaceUnits}`
   | `calc(${string})`
   | 'auto'
   | `min(${string})`
@@ -44,18 +45,29 @@ type PaddingProps = MakeObjectResponsive<{
    * ---
    * #### Spacing to Pixel values
    *
-   * - `spacing.0` - 0px
-   * - `spacing.1` - 2px
-   * - `spacing.2` - 4px
-   * - `spacing.3` - 8px
-   * - `spacing.4` - 12px
-   * - `spacing.5` - 16px
-   * - `spacing.6` - 20px
-   * - `spacing.7` - 24px
-   * - `spacing.8` - 32px
-   * - `spacing.9` - 40px
-   * - `spacing.10` - 48px
-   * - `spacing.11` - 56px
+   * - `spacing.-11`    - -56px
+   * - `spacing.-10`    - -48px
+   * - `spacing.-9`     - -40px
+   * - `spacing.-8`     - -32px
+   * - `spacing.-7`     - -24px
+   * - `spacing.-6`     - -20px
+   * - `spacing.-5`     - -16px
+   * - `spacing.-4`     - -12px
+   * - `spacing.-3`     - -8px
+   * - `spacing.-2`     - -4px
+   * - `spacing.-1`     - -2px
+   * - `spacing.0`      - 0px
+   * - `spacing.1`      - 2px
+   * - `spacing.2`      - 4px
+   * - `spacing.3`      - 8px
+   * - `spacing.4`      - 12px
+   * - `spacing.5`      - 16px
+   * - `spacing.6`      - 20px
+   * - `spacing.7`      - 24px
+   * - `spacing.8`      - 32px
+   * - `spacing.9`      - 40px
+   * - `spacing.10`     - 48px
+   * - `spacing.11`     - 56px
    *
    * {@linkcode https://blade.razorpay.com/?path=/story/tokens-spacing--page&globals=measureEnabled:false Spacing Token Ref}
    *
@@ -74,18 +86,29 @@ type PaddingProps = MakeObjectResponsive<{
    * ---
    * #### Spacing to Pixel values
    *
-   * - `spacing.0` - 0px
-   * - `spacing.1` - 2px
-   * - `spacing.2` - 4px
-   * - `spacing.3` - 8px
-   * - `spacing.4` - 12px
-   * - `spacing.5` - 16px
-   * - `spacing.6` - 20px
-   * - `spacing.7` - 24px
-   * - `spacing.8` - 32px
-   * - `spacing.9` - 40px
-   * - `spacing.10` - 48px
-   * - `spacing.11` - 56px
+   * - `spacing.-11`    - -56px
+   * - `spacing.-10`    - -48px
+   * - `spacing.-9`     - -40px
+   * - `spacing.-8`     - -32px
+   * - `spacing.-7`     - -24px
+   * - `spacing.-6`     - -20px
+   * - `spacing.-5`     - -16px
+   * - `spacing.-4`     - -12px
+   * - `spacing.-3`     - -8px
+   * - `spacing.-2`     - -4px
+   * - `spacing.-1`     - -2px
+   * - `spacing.0`      - 0px
+   * - `spacing.1`      - 2px
+   * - `spacing.2`      - 4px
+   * - `spacing.3`      - 8px
+   * - `spacing.4`      - 12px
+   * - `spacing.5`      - 16px
+   * - `spacing.6`      - 20px
+   * - `spacing.7`      - 24px
+   * - `spacing.8`      - 32px
+   * - `spacing.9`      - 40px
+   * - `spacing.10`     - 48px
+   * - `spacing.11`     - 56px
    *
    * {@linkcode https://blade.razorpay.com/?path=/story/tokens-spacing--page&globals=measureEnabled:false Spacing Token Ref}
    *
@@ -104,18 +127,29 @@ type PaddingProps = MakeObjectResponsive<{
    * ---
    * #### Spacing to Pixel values
    *
-   * - `spacing.0` - 0px
-   * - `spacing.1` - 2px
-   * - `spacing.2` - 4px
-   * - `spacing.3` - 8px
-   * - `spacing.4` - 12px
-   * - `spacing.5` - 16px
-   * - `spacing.6` - 20px
-   * - `spacing.7` - 24px
-   * - `spacing.8` - 32px
-   * - `spacing.9` - 40px
-   * - `spacing.10` - 48px
-   * - `spacing.11` - 56px
+   * - `spacing.-11`    - -56px
+   * - `spacing.-10`    - -48px
+   * - `spacing.-9`     - -40px
+   * - `spacing.-8`     - -32px
+   * - `spacing.-7`     - -24px
+   * - `spacing.-6`     - -20px
+   * - `spacing.-5`     - -16px
+   * - `spacing.-4`     - -12px
+   * - `spacing.-3`     - -8px
+   * - `spacing.-2`     - -4px
+   * - `spacing.-1`     - -2px
+   * - `spacing.0`      - 0px
+   * - `spacing.1`      - 2px
+   * - `spacing.2`      - 4px
+   * - `spacing.3`      - 8px
+   * - `spacing.4`      - 12px
+   * - `spacing.5`      - 16px
+   * - `spacing.6`      - 20px
+   * - `spacing.7`      - 24px
+   * - `spacing.8`      - 32px
+   * - `spacing.9`      - 40px
+   * - `spacing.10`     - 48px
+   * - `spacing.11`     - 56px
    *
    * {@linkcode https://blade.razorpay.com/?path=/story/tokens-spacing--page&globals=measureEnabled:false Spacing Token Ref}
    *
@@ -134,18 +168,29 @@ type PaddingProps = MakeObjectResponsive<{
    * ---
    * #### Spacing to Pixel values
    *
-   * - `spacing.0` - 0px
-   * - `spacing.1` - 2px
-   * - `spacing.2` - 4px
-   * - `spacing.3` - 8px
-   * - `spacing.4` - 12px
-   * - `spacing.5` - 16px
-   * - `spacing.6` - 20px
-   * - `spacing.7` - 24px
-   * - `spacing.8` - 32px
-   * - `spacing.9` - 40px
-   * - `spacing.10` - 48px
-   * - `spacing.11` - 56px
+   * - `spacing.-11`    - -56px
+   * - `spacing.-10`    - -48px
+   * - `spacing.-9`     - -40px
+   * - `spacing.-8`     - -32px
+   * - `spacing.-7`     - -24px
+   * - `spacing.-6`     - -20px
+   * - `spacing.-5`     - -16px
+   * - `spacing.-4`     - -12px
+   * - `spacing.-3`     - -8px
+   * - `spacing.-2`     - -4px
+   * - `spacing.-1`     - -2px
+   * - `spacing.0`      - 0px
+   * - `spacing.1`      - 2px
+   * - `spacing.2`      - 4px
+   * - `spacing.3`      - 8px
+   * - `spacing.4`      - 12px
+   * - `spacing.5`      - 16px
+   * - `spacing.6`      - 20px
+   * - `spacing.7`      - 24px
+   * - `spacing.8`      - 32px
+   * - `spacing.9`      - 40px
+   * - `spacing.10`     - 48px
+   * - `spacing.11`     - 56px
    *
    * {@linkcode https://blade.razorpay.com/?path=/story/tokens-spacing--page&globals=measureEnabled:false Spacing Token Ref}
    */
@@ -163,18 +208,29 @@ type PaddingProps = MakeObjectResponsive<{
    * ---
    * #### Spacing to Pixel values
    *
-   * - `spacing.0` - 0px
-   * - `spacing.1` - 2px
-   * - `spacing.2` - 4px
-   * - `spacing.3` - 8px
-   * - `spacing.4` - 12px
-   * - `spacing.5` - 16px
-   * - `spacing.6` - 20px
-   * - `spacing.7` - 24px
-   * - `spacing.8` - 32px
-   * - `spacing.9` - 40px
-   * - `spacing.10` - 48px
-   * - `spacing.11` - 56px
+   * - `spacing.-11`    - -56px
+   * - `spacing.-10`    - -48px
+   * - `spacing.-9`     - -40px
+   * - `spacing.-8`     - -32px
+   * - `spacing.-7`     - -24px
+   * - `spacing.-6`     - -20px
+   * - `spacing.-5`     - -16px
+   * - `spacing.-4`     - -12px
+   * - `spacing.-3`     - -8px
+   * - `spacing.-2`     - -4px
+   * - `spacing.-1`     - -2px
+   * - `spacing.0`      - 0px
+   * - `spacing.1`      - 2px
+   * - `spacing.2`      - 4px
+   * - `spacing.3`      - 8px
+   * - `spacing.4`      - 12px
+   * - `spacing.5`      - 16px
+   * - `spacing.6`      - 20px
+   * - `spacing.7`      - 24px
+   * - `spacing.8`      - 32px
+   * - `spacing.9`      - 40px
+   * - `spacing.10`     - 48px
+   * - `spacing.11`     - 56px
    *
    * {@linkcode https://blade.razorpay.com/?path=/story/tokens-spacing--page&globals=measureEnabled:false Spacing Token Ref}
    */
@@ -192,18 +248,29 @@ type PaddingProps = MakeObjectResponsive<{
    * ---
    * #### Spacing to Pixel values
    *
-   * - `spacing.0` - 0px
-   * - `spacing.1` - 2px
-   * - `spacing.2` - 4px
-   * - `spacing.3` - 8px
-   * - `spacing.4` - 12px
-   * - `spacing.5` - 16px
-   * - `spacing.6` - 20px
-   * - `spacing.7` - 24px
-   * - `spacing.8` - 32px
-   * - `spacing.9` - 40px
-   * - `spacing.10` - 48px
-   * - `spacing.11` - 56px
+   * - `spacing.-11`    - -56px
+   * - `spacing.-10`    - -48px
+   * - `spacing.-9`     - -40px
+   * - `spacing.-8`     - -32px
+   * - `spacing.-7`     - -24px
+   * - `spacing.-6`     - -20px
+   * - `spacing.-5`     - -16px
+   * - `spacing.-4`     - -12px
+   * - `spacing.-3`     - -8px
+   * - `spacing.-2`     - -4px
+   * - `spacing.-1`     - -2px
+   * - `spacing.0`      - 0px
+   * - `spacing.1`      - 2px
+   * - `spacing.2`      - 4px
+   * - `spacing.3`      - 8px
+   * - `spacing.4`      - 12px
+   * - `spacing.5`      - 16px
+   * - `spacing.6`      - 20px
+   * - `spacing.7`      - 24px
+   * - `spacing.8`      - 32px
+   * - `spacing.9`      - 40px
+   * - `spacing.10`     - 48px
+   * - `spacing.11`     - 56px
    *
    * {@linkcode https://blade.razorpay.com/?path=/story/tokens-spacing--page&globals=measureEnabled:false Spacing Token Ref}
    */
@@ -221,18 +288,29 @@ type PaddingProps = MakeObjectResponsive<{
    * ---
    * #### Spacing to Pixel values
    *
-   * - `spacing.0` - 0px
-   * - `spacing.1` - 2px
-   * - `spacing.2` - 4px
-   * - `spacing.3` - 8px
-   * - `spacing.4` - 12px
-   * - `spacing.5` - 16px
-   * - `spacing.6` - 20px
-   * - `spacing.7` - 24px
-   * - `spacing.8` - 32px
-   * - `spacing.9` - 40px
-   * - `spacing.10` - 48px
-   * - `spacing.11` - 56px
+   * - `spacing.-11`    - -56px
+   * - `spacing.-10`    - -48px
+   * - `spacing.-9`     - -40px
+   * - `spacing.-8`     - -32px
+   * - `spacing.-7`     - -24px
+   * - `spacing.-6`     - -20px
+   * - `spacing.-5`     - -16px
+   * - `spacing.-4`     - -12px
+   * - `spacing.-3`     - -8px
+   * - `spacing.-2`     - -4px
+   * - `spacing.-1`     - -2px
+   * - `spacing.0`      - 0px
+   * - `spacing.1`      - 2px
+   * - `spacing.2`      - 4px
+   * - `spacing.3`      - 8px
+   * - `spacing.4`      - 12px
+   * - `spacing.5`      - 16px
+   * - `spacing.6`      - 20px
+   * - `spacing.7`      - 24px
+   * - `spacing.8`      - 32px
+   * - `spacing.9`      - 40px
+   * - `spacing.10`     - 48px
+   * - `spacing.11`     - 56px
    *
    * {@linkcode https://blade.razorpay.com/?path=/story/tokens-spacing--page&globals=measureEnabled:false Spacing Token Ref}
    */
@@ -254,18 +332,29 @@ type MarginProps = MakeObjectResponsive<{
    * ---
    * #### Spacing to Pixel values
    *
-   * - `spacing.0` - 0px
-   * - `spacing.1` - 2px
-   * - `spacing.2` - 4px
-   * - `spacing.3` - 8px
-   * - `spacing.4` - 12px
-   * - `spacing.5` - 16px
-   * - `spacing.6` - 20px
-   * - `spacing.7` - 24px
-   * - `spacing.8` - 32px
-   * - `spacing.9` - 40px
-   * - `spacing.10` - 48px
-   * - `spacing.11` - 56px
+   * - `spacing.-11`    - -56px
+   * - `spacing.-10`    - -48px
+   * - `spacing.-9`     - -40px
+   * - `spacing.-8`     - -32px
+   * - `spacing.-7`     - -24px
+   * - `spacing.-6`     - -20px
+   * - `spacing.-5`     - -16px
+   * - `spacing.-4`     - -12px
+   * - `spacing.-3`     - -8px
+   * - `spacing.-2`     - -4px
+   * - `spacing.-1`     - -2px
+   * - `spacing.0`      - 0px
+   * - `spacing.1`      - 2px
+   * - `spacing.2`      - 4px
+   * - `spacing.3`      - 8px
+   * - `spacing.4`      - 12px
+   * - `spacing.5`      - 16px
+   * - `spacing.6`      - 20px
+   * - `spacing.7`      - 24px
+   * - `spacing.8`      - 32px
+   * - `spacing.9`      - 40px
+   * - `spacing.10`     - 48px
+   * - `spacing.11`     - 56px
    *
    * {@linkcode https://blade.razorpay.com/?path=/story/tokens-spacing--page&globals=measureEnabled:false Spacing Token Ref}
    *
@@ -284,18 +373,29 @@ type MarginProps = MakeObjectResponsive<{
    * ---
    * #### Spacing to Pixel values
    *
-   * - `spacing.0` - 0px
-   * - `spacing.1` - 2px
-   * - `spacing.2` - 4px
-   * - `spacing.3` - 8px
-   * - `spacing.4` - 12px
-   * - `spacing.5` - 16px
-   * - `spacing.6` - 20px
-   * - `spacing.7` - 24px
-   * - `spacing.8` - 32px
-   * - `spacing.9` - 40px
-   * - `spacing.10` - 48px
-   * - `spacing.11` - 56px
+   * - `spacing.-11`    - -56px
+   * - `spacing.-10`    - -48px
+   * - `spacing.-9`     - -40px
+   * - `spacing.-8`     - -32px
+   * - `spacing.-7`     - -24px
+   * - `spacing.-6`     - -20px
+   * - `spacing.-5`     - -16px
+   * - `spacing.-4`     - -12px
+   * - `spacing.-3`     - -8px
+   * - `spacing.-2`     - -4px
+   * - `spacing.-1`     - -2px
+   * - `spacing.0`      - 0px
+   * - `spacing.1`      - 2px
+   * - `spacing.2`      - 4px
+   * - `spacing.3`      - 8px
+   * - `spacing.4`      - 12px
+   * - `spacing.5`      - 16px
+   * - `spacing.6`      - 20px
+   * - `spacing.7`      - 24px
+   * - `spacing.8`      - 32px
+   * - `spacing.9`      - 40px
+   * - `spacing.10`     - 48px
+   * - `spacing.11`     - 56px
    *
    * {@linkcode https://blade.razorpay.com/?path=/story/tokens-spacing--page&globals=measureEnabled:false Spacing Token Ref}
    *
@@ -314,18 +414,29 @@ type MarginProps = MakeObjectResponsive<{
    * ---
    * #### Spacing to Pixel values
    *
-   * - `spacing.0` - 0px
-   * - `spacing.1` - 2px
-   * - `spacing.2` - 4px
-   * - `spacing.3` - 8px
-   * - `spacing.4` - 12px
-   * - `spacing.5` - 16px
-   * - `spacing.6` - 20px
-   * - `spacing.7` - 24px
-   * - `spacing.8` - 32px
-   * - `spacing.9` - 40px
-   * - `spacing.10` - 48px
-   * - `spacing.11` - 56px
+   * - `spacing.-11`    - -56px
+   * - `spacing.-10`    - -48px
+   * - `spacing.-9`     - -40px
+   * - `spacing.-8`     - -32px
+   * - `spacing.-7`     - -24px
+   * - `spacing.-6`     - -20px
+   * - `spacing.-5`     - -16px
+   * - `spacing.-4`     - -12px
+   * - `spacing.-3`     - -8px
+   * - `spacing.-2`     - -4px
+   * - `spacing.-1`     - -2px
+   * - `spacing.0`      - 0px
+   * - `spacing.1`      - 2px
+   * - `spacing.2`      - 4px
+   * - `spacing.3`      - 8px
+   * - `spacing.4`      - 12px
+   * - `spacing.5`      - 16px
+   * - `spacing.6`      - 20px
+   * - `spacing.7`      - 24px
+   * - `spacing.8`      - 32px
+   * - `spacing.9`      - 40px
+   * - `spacing.10`     - 48px
+   * - `spacing.11`     - 56px
    *
    * {@linkcode https://blade.razorpay.com/?path=/story/tokens-spacing--page&globals=measureEnabled:false Spacing Token Ref}
    *
@@ -344,18 +455,29 @@ type MarginProps = MakeObjectResponsive<{
    * ---
    * #### Spacing to Pixel values
    *
-   * - `spacing.0` - 0px
-   * - `spacing.1` - 2px
-   * - `spacing.2` - 4px
-   * - `spacing.3` - 8px
-   * - `spacing.4` - 12px
-   * - `spacing.5` - 16px
-   * - `spacing.6` - 20px
-   * - `spacing.7` - 24px
-   * - `spacing.8` - 32px
-   * - `spacing.9` - 40px
-   * - `spacing.10` - 48px
-   * - `spacing.11` - 56px
+   * - `spacing.-11`    - -56px
+   * - `spacing.-10`    - -48px
+   * - `spacing.-9`     - -40px
+   * - `spacing.-8`     - -32px
+   * - `spacing.-7`     - -24px
+   * - `spacing.-6`     - -20px
+   * - `spacing.-5`     - -16px
+   * - `spacing.-4`     - -12px
+   * - `spacing.-3`     - -8px
+   * - `spacing.-2`     - -4px
+   * - `spacing.-1`     - -2px
+   * - `spacing.0`      - 0px
+   * - `spacing.1`      - 2px
+   * - `spacing.2`      - 4px
+   * - `spacing.3`      - 8px
+   * - `spacing.4`      - 12px
+   * - `spacing.5`      - 16px
+   * - `spacing.6`      - 20px
+   * - `spacing.7`      - 24px
+   * - `spacing.8`      - 32px
+   * - `spacing.9`      - 40px
+   * - `spacing.10`     - 48px
+   * - `spacing.11`     - 56px
    *
    * {@linkcode https://blade.razorpay.com/?path=/story/tokens-spacing--page&globals=measureEnabled:false Spacing Token Ref}
    */
@@ -373,18 +495,29 @@ type MarginProps = MakeObjectResponsive<{
    * ---
    * #### Spacing to Pixel values
    *
-   * - `spacing.0` - 0px
-   * - `spacing.1` - 2px
-   * - `spacing.2` - 4px
-   * - `spacing.3` - 8px
-   * - `spacing.4` - 12px
-   * - `spacing.5` - 16px
-   * - `spacing.6` - 20px
-   * - `spacing.7` - 24px
-   * - `spacing.8` - 32px
-   * - `spacing.9` - 40px
-   * - `spacing.10` - 48px
-   * - `spacing.11` - 56px
+   * - `spacing.-11`    - -56px
+   * - `spacing.-10`    - -48px
+   * - `spacing.-9`     - -40px
+   * - `spacing.-8`     - -32px
+   * - `spacing.-7`     - -24px
+   * - `spacing.-6`     - -20px
+   * - `spacing.-5`     - -16px
+   * - `spacing.-4`     - -12px
+   * - `spacing.-3`     - -8px
+   * - `spacing.-2`     - -4px
+   * - `spacing.-1`     - -2px
+   * - `spacing.0`      - 0px
+   * - `spacing.1`      - 2px
+   * - `spacing.2`      - 4px
+   * - `spacing.3`      - 8px
+   * - `spacing.4`      - 12px
+   * - `spacing.5`      - 16px
+   * - `spacing.6`      - 20px
+   * - `spacing.7`      - 24px
+   * - `spacing.8`      - 32px
+   * - `spacing.9`      - 40px
+   * - `spacing.10`     - 48px
+   * - `spacing.11`     - 56px
    *
    * {@linkcode https://blade.razorpay.com/?path=/story/tokens-spacing--page&globals=measureEnabled:false Spacing Token Ref}
    */
@@ -402,18 +535,29 @@ type MarginProps = MakeObjectResponsive<{
    * ---
    * #### Spacing to Pixel values
    *
-   * - `spacing.0` - 0px
-   * - `spacing.1` - 2px
-   * - `spacing.2` - 4px
-   * - `spacing.3` - 8px
-   * - `spacing.4` - 12px
-   * - `spacing.5` - 16px
-   * - `spacing.6` - 20px
-   * - `spacing.7` - 24px
-   * - `spacing.8` - 32px
-   * - `spacing.9` - 40px
-   * - `spacing.10` - 48px
-   * - `spacing.11` - 56px
+   * - `spacing.-11`    - -56px
+   * - `spacing.-10`    - -48px
+   * - `spacing.-9`     - -40px
+   * - `spacing.-8`     - -32px
+   * - `spacing.-7`     - -24px
+   * - `spacing.-6`     - -20px
+   * - `spacing.-5`     - -16px
+   * - `spacing.-4`     - -12px
+   * - `spacing.-3`     - -8px
+   * - `spacing.-2`     - -4px
+   * - `spacing.-1`     - -2px
+   * - `spacing.0`      - 0px
+   * - `spacing.1`      - 2px
+   * - `spacing.2`      - 4px
+   * - `spacing.3`      - 8px
+   * - `spacing.4`      - 12px
+   * - `spacing.5`      - 16px
+   * - `spacing.6`      - 20px
+   * - `spacing.7`      - 24px
+   * - `spacing.8`      - 32px
+   * - `spacing.9`      - 40px
+   * - `spacing.10`     - 48px
+   * - `spacing.11`     - 56px
    *
    * {@linkcode https://blade.razorpay.com/?path=/story/tokens-spacing--page&globals=measureEnabled:false Spacing Token Ref}
    */
@@ -431,18 +575,29 @@ type MarginProps = MakeObjectResponsive<{
    * ---
    * #### Spacing to Pixel values
    *
-   * - `spacing.0` - 0px
-   * - `spacing.1` - 2px
-   * - `spacing.2` - 4px
-   * - `spacing.3` - 8px
-   * - `spacing.4` - 12px
-   * - `spacing.5` - 16px
-   * - `spacing.6` - 20px
-   * - `spacing.7` - 24px
-   * - `spacing.8` - 32px
-   * - `spacing.9` - 40px
-   * - `spacing.10` - 48px
-   * - `spacing.11` - 56px
+   * - `spacing.-11`    - -56px
+   * - `spacing.-10`    - -48px
+   * - `spacing.-9`     - -40px
+   * - `spacing.-8`     - -32px
+   * - `spacing.-7`     - -24px
+   * - `spacing.-6`     - -20px
+   * - `spacing.-5`     - -16px
+   * - `spacing.-4`     - -12px
+   * - `spacing.-3`     - -8px
+   * - `spacing.-2`     - -4px
+   * - `spacing.-1`     - -2px
+   * - `spacing.0`      - 0px
+   * - `spacing.1`      - 2px
+   * - `spacing.2`      - 4px
+   * - `spacing.3`      - 8px
+   * - `spacing.4`      - 12px
+   * - `spacing.5`      - 16px
+   * - `spacing.6`      - 20px
+   * - `spacing.7`      - 24px
+   * - `spacing.8`      - 32px
+   * - `spacing.9`      - 40px
+   * - `spacing.10`     - 48px
+   * - `spacing.11`     - 56px
    *
    * {@linkcode https://blade.razorpay.com/?path=/story/tokens-spacing--page&globals=measureEnabled:false Spacing Token Ref}
    */

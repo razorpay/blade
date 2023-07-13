@@ -15,8 +15,8 @@ type DotNotationColorStringToken<TokenType> = {
     string,
     string
   >
-    ? Extract<keyof TokenType[K], number | string>
-    : DotNotationColorStringToken<TokenType[K]>}`;
+  ? Extract<keyof TokenType[K], number | string>
+  : DotNotationColorStringToken<TokenType[K]>}`;
 }[keyof TokenType];
 
 type DotNotationMotionStringToken<TokenType> = {
@@ -24,11 +24,12 @@ type DotNotationMotionStringToken<TokenType> = {
     string,
     string | EasingFunctionFactory
   >
-    ? Extract<keyof TokenType[K], string | EasingFunctionFactory>
-    : DotNotationMotionStringToken<TokenType[K]>}`;
+  ? Extract<keyof TokenType[K], string | EasingFunctionFactory>
+  : DotNotationMotionStringToken<TokenType[K]>}`;
 }[keyof TokenType];
 
-type DotNotationSpacingStringToken = `spacing.${keyof Spacing}`;
+type DotNotationSpacingStringToken =
+  | `spacing.${keyof Spacing}`;
 
 /**
  * Similar to Partial except it keeps key as required and only supports undefined as explicit value
@@ -121,8 +122,8 @@ type PickCSSByPlatform<T extends keyof React.CSSProperties | keyof ViewStyle> = 
 
 type BladeElementRef = Platform.Select<{
   web:
-    | Pick<HTMLElement, 'focus' | 'scrollIntoView' | 'getBoundingClientRect' | 'clientHeight'>
-    | Pick<View, 'focus'>;
+  | Pick<HTMLElement, 'focus' | 'scrollIntoView' | 'getBoundingClientRect' | 'clientHeight'>
+  | Pick<View, 'focus'>;
   native: React.MutableRefObject<any>;
 }>;
 
