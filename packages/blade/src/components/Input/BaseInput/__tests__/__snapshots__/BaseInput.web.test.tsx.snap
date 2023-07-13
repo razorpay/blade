@@ -10,6 +10,7 @@ exports[`<BaseInput /> should render 1`] = `
   -ms-flex-direction: column;
   flex-direction: column;
   position: relative;
+  width: 100%;
 }
 
 .c1 {
@@ -339,6 +340,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
   -ms-flex-direction: column;
   flex-direction: column;
   position: relative;
+  width: 100%;
 }
 
 .c1 {

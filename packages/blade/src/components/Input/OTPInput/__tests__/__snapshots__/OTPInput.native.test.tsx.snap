@@ -200,9 +200,11 @@ exports[`<OTPInput /> should render 1`] = `
                     "display": "flex",
                     "flexDirection": "column",
                     "position": "relative",
+                    "width": "100%",
                   },
                 ]
               }
+              width="100%"
             >
               <View
                 currentInteraction="default"
@@ -341,9 +343,11 @@ exports[`<OTPInput /> should render 1`] = `
                     "display": "flex",
                     "flexDirection": "column",
                     "position": "relative",
+                    "width": "100%",
                   },
                 ]
               }
+              width="100%"
             >
               <View
                 currentInteraction="default"
@@ -482,9 +486,11 @@ exports[`<OTPInput /> should render 1`] = `
                     "display": "flex",
                     "flexDirection": "column",
                     "position": "relative",
+                    "width": "100%",
                   },
                 ]
               }
+              width="100%"
             >
               <View
                 currentInteraction="default"
@@ -623,9 +629,11 @@ exports[`<OTPInput /> should render 1`] = `
                     "display": "flex",
                     "flexDirection": "column",
                     "position": "relative",
+                    "width": "100%",
                   },
                 ]
               }
+              width="100%"
             >
               <View
                 currentInteraction="default"
@@ -764,9 +772,11 @@ exports[`<OTPInput /> should render 1`] = `
                     "display": "flex",
                     "flexDirection": "column",
                     "position": "relative",
+                    "width": "100%",
                   },
                 ]
               }
+              width="100%"
             >
               <View
                 currentInteraction="default"
@@ -905,9 +915,11 @@ exports[`<OTPInput /> should render 1`] = `
                     "display": "flex",
                     "flexDirection": "column",
                     "position": "relative",
+                    "width": "100%",
                   },
                 ]
               }
+              width="100%"
             >
               <View
                 currentInteraction="default"

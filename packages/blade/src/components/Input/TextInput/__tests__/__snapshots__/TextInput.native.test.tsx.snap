@@ -27,9 +27,11 @@ exports[`<TextInput /> should render 1`] = `
             "display": "flex",
             "flexDirection": "column",
             "position": "relative",
+            "width": "100%",
           },
         ]
       }
+      width="100%"
     >
       <View
         data-blade-component="base-box"
@@ -331,9 +333,11 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
             "display": "flex",
             "flexDirection": "column",
             "position": "relative",
+            "width": "100%",
           },
         ]
       }
+      width="100%"
     >
       <View
         data-blade-component="base-box"

@@ -10,6 +10,7 @@ exports[`<TextArea /> should render 1`] = `
   -ms-flex-direction: column;
   flex-direction: column;
   position: relative;
+  width: 100%;
 }
 
 .c1 {
@@ -345,6 +346,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
   -ms-flex-direction: column;
   flex-direction: column;
   position: relative;
+  width: 100%;
 }
 
 .c1 {

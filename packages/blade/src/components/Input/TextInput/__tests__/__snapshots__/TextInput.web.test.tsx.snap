@@ -10,6 +10,7 @@ exports[`<TextInput /> should render 1`] = `
   -ms-flex-direction: column;
   flex-direction: column;
   position: relative;
+  width: 100%;
 }
 
 .c1 {
@@ -342,6 +343,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   -ms-flex-direction: column;
   flex-direction: column;
   position: relative;
+  width: 100%;
 }
 
 .c1 {
