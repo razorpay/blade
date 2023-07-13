@@ -66,6 +66,7 @@ type DropdownContextType = {
   /** ref of triggerer. Used to call focus in certain places */
   triggererRef: React.RefObject<HTMLButtonElement | null>;
   actionListItemRef: React.RefObject<HTMLDivElement | null>;
+  isTagDismissedRef: React.RefObject<{ value: boolean } | null>;
   selectionType?: DropdownProps['selectionType'];
   /** whether footer has an action item.
    * certain a11y behaviour changes happen here
@@ -131,6 +132,9 @@ const DropdownContext = React.createContext<DropdownContextType>({
     current: null,
   },
   triggererRef: {
+    current: null,
+  },
+  isTagDismissedRef: {
     current: null,
   },
 });
@@ -292,7 +296,7 @@ const useDropdown = (): UseDropdownReturnValue => {
    */
   const onTriggerClick = (): void => {
     if (isOpen) {
-      close();
+      // close();
     } else {
       setIsOpen(true);
     }
@@ -302,32 +306,26 @@ const useDropdown = (): UseDropdownReturnValue => {
    * Blur handler on combobox. Also handles the selection logic when user moves focus
    */
   const onTriggerBlur: OnTriggerBlurEvent = ({ name, value, onBlurCallback }) => {
-    if (rest.hasFooterAction) {
-      // When Footer has action buttons, we ignore the blur (by setting shouldIgnoreBlur to true in onTriggerKeyDown)
-      // And we remove the active item (by setting it to -1) so that we can shift focus on action buttons
-      setActiveIndex(-1);
-    }
-
-    if (bottomSheetAndDropdownGlue?.dropdownHasBottomSheet) {
-      setShouldIgnoreBlur(true);
-      return;
-    }
-
-    if (shouldIgnoreBlur) {
-      setShouldIgnoreBlur(false);
-      return;
-    }
-
-    onBlurCallback?.({ name, value });
-
-    if (isOpen) {
-      if (selectionType !== 'multiple') {
-        selectOption(activeIndex);
-      }
-      if (!bottomSheetAndDropdownGlue?.dropdownHasBottomSheet) {
-        close();
-      }
-    }
+    // const hasFocusInsideDropdown = !!document.querySelector('#blade-dropdown-123:focus-within');
+    // console.log('Blur of SelectInput which is ok');
+    // if (rest.hasFooterAction) {
+    //   // When Footer has action buttons, we ignore the blur (by setting shouldIgnoreBlur to true in onTriggerKeyDown)
+    //   // And we remove the active item (by setting it to -1) so that we can shift focus on action buttons
+    //   setActiveIndex(-1);
+    // }
+    // if (shouldIgnoreBlur) {
+    //   setShouldIgnoreBlur(false);
+    //   return;
+    // }
+    // onBlurCallback?.({ name, value });
+    // if (isOpen) {
+    //   if (selectionType !== 'multiple') {
+    //     selectOption(activeIndex);
+    //   }
+    //   if (!bottomSheetAndDropdownGlue?.dropdownHasBottomSheet) {
+    //     close();
+    //   }
+    // }
   };
 
   /**

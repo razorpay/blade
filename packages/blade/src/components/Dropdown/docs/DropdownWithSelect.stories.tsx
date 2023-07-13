@@ -1,6 +1,6 @@
 import React from 'react';
 import type { ComponentStory, Meta } from '@storybook/react';
-import { Dropdown, DropdownOverlay } from '..';
+import { Dropdown, DropdownFooter, DropdownHeader, DropdownOverlay } from '..';
 import {
   getSimpleSelectCode,
   WithBottomAlignedSelectStory,
@@ -189,23 +189,23 @@ export const InternalMultiSelect = (): JSX.Element => {
   return (
     <Box padding="spacing.5">
       <Dropdown selectionType="multiple">
-        <SelectInput
-          label="Select City"
-          onChange={(args) => {
-            if (args) {
-              console.log('onChange triggered');
-            }
-          }}
-        />
+        <SelectInput label="Select City" />
         <DropdownOverlay>
+          <DropdownHeader title="Header Title" subtitle="Header subtitle" />
           <ActionList>
             <ActionListItem title="Mumbai" value="mumbai" />
             <ActionListItem title="Bangalore" value="bangalore" />
             <ActionListItem title="Pune" value="pune" />
             <ActionListItem title="Chennai" value="chennai" />
           </ActionList>
+          <DropdownFooter>
+            <Button isFullWidth onClick={() => console.log('Footer Clicked')}>
+              Apply
+            </Button>
+          </DropdownFooter>
         </DropdownOverlay>
       </Dropdown>
+      <Button marginTop="spacing.4">Outer Button</Button>
     </Box>
   );
 };

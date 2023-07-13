@@ -80,6 +80,7 @@ const _SelectInput = (
     selectionType,
     selectedIndices,
     removeOption,
+    isTagDismissedRef,
   } = useDropdown();
 
   const inputRef = useBladeInnerRef(ref, {
@@ -182,9 +183,14 @@ const _SelectInput = (
     return selectedIndices.map((selectedIndex) => (
       <Tag
         key={selectedIndex}
+        marginRight="spacing.2"
         onDismiss={() => {
           // @TOOD
           // - Handle blur close of tags
+          console.log('onDismiss called');
+          if (isTagDismissedRef.current) {
+            isTagDismissedRef.current.value = true;
+          }
           removeOption(selectedIndex);
           setChangeCallbackTriggerer(Number(changeCallbackTriggerer) + 1);
         }}
@@ -215,7 +221,7 @@ const _SelectInput = (
       <BaseInput
         {...baseInputProps}
         as="button"
-        tagsSlot={getTags()}
+        tagsSlot={<BaseBox id="tags-slot">{getTags()}</BaseBox>}
         value={selectionType === 'multiple' ? undefined : displayValue}
         hideLabelText={props.label?.length === 0}
         componentName={MetaConstants.SelectInput}
@@ -228,6 +234,7 @@ const _SelectInput = (
         hasPopup={getActionListContainerRole(hasFooterAction, dropdownTriggerer)}
         isPopupExpanded={isOpen}
         onClick={(e) => {
+          console.log('select input click');
           onTriggerClick();
           props?.onClick?.(e);
         }}

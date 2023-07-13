@@ -10,7 +10,6 @@ import { isReactNative } from '~utils';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeAccessible } from '~utils/makeAccessible';
 import { MetaConstants } from '~utils/metaAttribute/metaConstants';
-import { useBottomSheetAndDropdownGlue } from '~components/BottomSheet/BottomSheetContext';
 
 type DropdownHeaderProps = Pick<
   BaseHeaderProps,
@@ -27,6 +26,7 @@ const _DropdownHeader = ({
 }: DropdownHeaderProps): React.ReactElement => {
   return (
     <BaseBox
+      className="blade-dropdown-header-123"
       overflow={'auto' as never}
       flexShrink={0}
       {...(isReactNative()
@@ -63,16 +63,8 @@ const DropdownHeader = assignWithoutSideEffects(_DropdownHeader, {
 type DropdownFooter = Pick<BaseFooterProps, 'children' | 'testID'>;
 
 const _DropdownFooter = ({ children, testID }: DropdownFooter): React.ReactElement => {
-  const {
-    setHasFooterAction,
-    setShouldIgnoreBlur,
-    activeIndex,
-    onTriggerKeydown,
-    close,
-  } = useDropdown();
-  const bottomSheetAndDropdownGlue = useBottomSheetAndDropdownGlue();
+  const { setHasFooterAction, activeIndex, onTriggerKeydown } = useDropdown();
   const footerRef = React.useRef<HTMLDivElement>(null);
-  const [isClickedInsideFooter, setIsClickedInsideFooter] = React.useState(false);
 
   React.useEffect(() => {
     setHasFooterAction(true);
@@ -86,13 +78,6 @@ const _DropdownFooter = ({ children, testID }: DropdownFooter): React.ReactEleme
       {...(isReactNative()
         ? {}
         : {
-            onMouseDown: () => {
-              setShouldIgnoreBlur(true);
-              setIsClickedInsideFooter(true);
-            },
-            onMouseUp: () => {
-              setIsClickedInsideFooter(false);
-            },
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             onKeyDown: (e: any) => {
               const nativeEvent = e.nativeEvent;
@@ -102,11 +87,6 @@ const _DropdownFooter = ({ children, testID }: DropdownFooter): React.ReactEleme
               if (!shouldIgnoreDropdownKeydown) {
                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 onTriggerKeydown?.({ event: e.nativeEvent } as any);
-              }
-            },
-            onBlur: () => {
-              if (!isClickedInsideFooter && !bottomSheetAndDropdownGlue?.dropdownHasBottomSheet) {
-                close();
               }
             },
           })}

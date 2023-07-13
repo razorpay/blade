@@ -86,6 +86,7 @@ const Tag = ({
           icon={CloseIcon}
           accessibilityLabel={`Close ${children} tag`}
           isDisabled={isDisabled}
+          data-tagremove="true"
           onClick={() => {
             setIsVisible(false);
             onDismiss?.({ value: children });
