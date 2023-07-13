@@ -586,13 +586,13 @@ exports[`<Card /> should render a Card with Header 1`] = `
         data-blade-component="base-box"
         display="flex"
         flexDirection="row"
-        justifyContent="space-between"
+        justifyContent="space-evenly"
         style={
           Array [
             Object {
               "display": "flex",
               "flexDirection": "row",
-              "justifyContent": "space-between",
+              "justifyContent": "space-evenly",
               "marginBottom": 24,
             },
           ]
@@ -706,7 +706,9 @@ exports[`<Card /> should render a Card with Header 1`] = `
             data-blade-component="base-box"
             style={
               Array [
-                Object {},
+                Object {
+                  "marginRight": 16,
+                },
               ]
             }
           >
