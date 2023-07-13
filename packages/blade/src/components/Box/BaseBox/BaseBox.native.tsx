@@ -5,9 +5,8 @@ import React from 'react';
 import { getBaseBoxStyles, getElevationValue } from './baseBoxStyles';
 import type { BaseBoxProps } from './types';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import type { Theme } from '~components/BladeProvider';
 import { useTheme } from '~components/BladeProvider';
-import type { Platform } from '~utils';
+import type { ElevationStyles } from '~tokens/global/elevation';
 
 /**
  * Some prop go to React Native DOM and fail with type errors.
@@ -28,10 +27,15 @@ const BaseBoxWithShadow = React.forwardRef<
   Pick<BaseBoxProps, 'elevation'> & { style: StyleProp<ViewStyle> }
 >((props, ref) => {
   const { theme } = useTheme();
-  const shadow = getElevationValue(props.elevation, theme) as Platform.CastNative<
-    Theme['elevation']
-  >;
-  return <View ref={ref} {...props} style={[props.style, shadow]} />;
+  const shadow = (getElevationValue(props.elevation, theme) as unknown) as ElevationStyles;
+  return (
+    <View
+      ref={ref}
+      {...props}
+      // if we don't have shadow don't merge
+      style={shadow ? [props.style, shadow] : props.style}
+    />
+  );
 });
 
 const BaseBox = styled(BaseBoxWithShadow)

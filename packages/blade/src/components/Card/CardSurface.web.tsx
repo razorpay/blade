@@ -9,7 +9,6 @@ const CardSurface = styled(BaseBox)<{ surfaceLevel: 2 | 3 }>(
       width: '100%',
       display: 'flex',
       flexDirection: 'column',
-      // boxShadow: castWebType(theme.elevation[elevation]),
       borderWidth: elevation === 'none' ? `${theme.border.width.thin}` : undefined,
       borderStyle: elevation === 'none' ? 'solid' : undefined,
       borderColor:

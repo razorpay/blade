@@ -98,31 +98,28 @@ exports[`<BaseBox /> should render BaseBox component with the correct styles 1`]
     right="0px"
     style={
       Array [
-        Array [
-          Object {
-            "alignItems": "center",
-            "alignSelf": "center",
-            "bottom": 0,
-            "display": "flex",
-            "height": "auto",
-            "justifyContent": "center",
-            "left": 0,
-            "maxHeight": 56,
-            "maxWidth": 56,
-            "minHeight": 48,
-            "minWidth": 48,
-            "overflow": "hidden",
-            "paddingBottom": 12,
-            "paddingLeft": 16,
-            "paddingRight": 20,
-            "paddingTop": 8,
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-            "width": "auto",
-          },
-        ],
-        undefined,
+        Object {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "bottom": 0,
+          "display": "flex",
+          "height": "auto",
+          "justifyContent": "center",
+          "left": 0,
+          "maxHeight": 56,
+          "maxWidth": 56,
+          "minHeight": 48,
+          "minWidth": 48,
+          "overflow": "hidden",
+          "paddingBottom": 12,
+          "paddingLeft": 16,
+          "paddingRight": 20,
+          "paddingTop": 8,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+          "width": "auto",
+        },
       ]
     }
     top="0px"
