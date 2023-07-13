@@ -1,6 +1,7 @@
 import BaseBox from '../BaseBox';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { Text } from '~components/Typography';
 
 describe('<BaseBox />', () => {
   it('should render BaseBox component with the correct styles', () => {
@@ -27,6 +28,20 @@ describe('<BaseBox />', () => {
         height="auto"
         width="auto"
       />,
+    ).toJSON();
+    expect(renderTree).toMatchSnapshot();
+  });
+
+  it('should render BaseBox component with elevation', () => {
+    const renderTree = renderWithTheme(
+      <BaseBox
+        width="200px"
+        height="200px"
+        backgroundColor="surface.background.level1.lowContrast"
+        elevation="highRaised"
+      >
+        <Text>Should only have 1 View wrapper</Text>
+      </BaseBox>,
     ).toJSON();
     expect(renderTree).toMatchSnapshot();
   });

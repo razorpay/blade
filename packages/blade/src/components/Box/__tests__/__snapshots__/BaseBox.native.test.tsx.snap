@@ -1,5 +1,77 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<BaseBox /> should render BaseBox component with elevation 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    backgroundColor="surface.background.level1.lowContrast"
+    data-blade-component="base-box"
+    elevation="highRaised"
+    height="200px"
+    style={
+      Array [
+        Array [
+          Object {
+            "backgroundColor": "hsla(220, 30%, 96%, 1)",
+            "height": 200,
+            "width": 200,
+          },
+        ],
+        Object {
+          "elevation": 26,
+          "shadowColor": "hsla(217, 56%, 17%, 0.64)",
+          "shadowOffset": Object {
+            "height": 18,
+            "width": 0,
+          },
+          "shadowOpacity": 0.2,
+          "shadowRadius": 12,
+        },
+      ]
+    }
+    width="200px"
+  >
+    <Text
+      color="surface.text.normal.lowContrast"
+      data-blade-component="text"
+      fontFamily="text"
+      fontSize={100}
+      fontStyle="normal"
+      fontWeight="regular"
+      lineHeight={100}
+      style={
+        Array [
+          Object {
+            "color": "hsla(217, 56%, 17%, 1)",
+            "fontFamily": "Lato",
+            "fontSize": 14,
+            "fontStyle": "normal",
+            "fontWeight": "400",
+            "lineHeight": 20,
+            "marginBottom": 0,
+            "marginLeft": 0,
+            "marginRight": 0,
+            "marginTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+    >
+      Should only have 1 View wrapper
+    </Text>
+  </View>
+</View>
+`;
+
 exports[`<BaseBox /> should render BaseBox component with the correct styles 1`] = `
 <View
   style={
@@ -26,28 +98,31 @@ exports[`<BaseBox /> should render BaseBox component with the correct styles 1`]
     right="0px"
     style={
       Array [
-        Object {
-          "alignItems": "center",
-          "alignSelf": "center",
-          "bottom": 0,
-          "display": "flex",
-          "height": "auto",
-          "justifyContent": "center",
-          "left": 0,
-          "maxHeight": 56,
-          "maxWidth": 56,
-          "minHeight": 48,
-          "minWidth": 48,
-          "overflow": "hidden",
-          "paddingBottom": 12,
-          "paddingLeft": 16,
-          "paddingRight": 20,
-          "paddingTop": 8,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-          "width": "auto",
-        },
+        Array [
+          Object {
+            "alignItems": "center",
+            "alignSelf": "center",
+            "bottom": 0,
+            "display": "flex",
+            "height": "auto",
+            "justifyContent": "center",
+            "left": 0,
+            "maxHeight": 56,
+            "maxWidth": 56,
+            "minHeight": 48,
+            "minWidth": 48,
+            "overflow": "hidden",
+            "paddingBottom": 12,
+            "paddingLeft": 16,
+            "paddingRight": 20,
+            "paddingTop": 8,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+            "width": "auto",
+          },
+        ],
+        undefined,
       ]
     }
     top="0px"
