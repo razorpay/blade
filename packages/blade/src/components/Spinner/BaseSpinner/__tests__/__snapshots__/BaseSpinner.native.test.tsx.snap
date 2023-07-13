@@ -10,12 +10,9 @@ exports[`<BaseSpinner /> should render BaseSpinner with default props 1`] = `
 >
   <View
     data-blade-component="spinner"
-    display="flex"
     style={
       Array [
-        Object {
-          "display": "flex",
-        },
+        Object {},
       ]
     }
   >
@@ -147,12 +144,9 @@ exports[`<BaseSpinner /> should render high contrast BaseSpinner 1`] = `
 >
   <View
     data-blade-component="spinner"
-    display="flex"
     style={
       Array [
-        Object {
-          "display": "flex",
-        },
+        Object {},
       ]
     }
   >
@@ -284,12 +278,9 @@ exports[`<BaseSpinner /> should render high contrast BaseSpinner with bottom lab
 >
   <View
     data-blade-component="spinner"
-    display="flex"
     style={
       Array [
-        Object {
-          "display": "flex",
-        },
+        Object {},
       ]
     }
   >
@@ -465,12 +456,9 @@ exports[`<BaseSpinner /> should render high contrast information intent BaseSpin
 >
   <View
     data-blade-component="spinner"
-    display="flex"
     style={
       Array [
-        Object {
-          "display": "flex",
-        },
+        Object {},
       ]
     }
   >
@@ -602,12 +590,9 @@ exports[`<BaseSpinner /> should render high contrast negative intent BaseSpinner
 >
   <View
     data-blade-component="spinner"
-    display="flex"
     style={
       Array [
-        Object {
-          "display": "flex",
-        },
+        Object {},
       ]
     }
   >
@@ -739,12 +724,9 @@ exports[`<BaseSpinner /> should render high contrast neutral intent BaseSpinner 
 >
   <View
     data-blade-component="spinner"
-    display="flex"
     style={
       Array [
-        Object {
-          "display": "flex",
-        },
+        Object {},
       ]
     }
   >
@@ -876,12 +858,9 @@ exports[`<BaseSpinner /> should render high contrast notice intent BaseSpinner 1
 >
   <View
     data-blade-component="spinner"
-    display="flex"
     style={
       Array [
-        Object {
-          "display": "flex",
-        },
+        Object {},
       ]
     }
   >
@@ -1013,12 +992,9 @@ exports[`<BaseSpinner /> should render high contrast positive intent BaseSpinner
 >
   <View
     data-blade-component="spinner"
-    display="flex"
     style={
       Array [
-        Object {
-          "display": "flex",
-        },
+        Object {},
       ]
     }
   >
@@ -1150,12 +1126,9 @@ exports[`<BaseSpinner /> should render large size BaseSpinner 1`] = `
 >
   <View
     data-blade-component="spinner"
-    display="flex"
     style={
       Array [
-        Object {
-          "display": "flex",
-        },
+        Object {},
       ]
     }
   >
@@ -1287,12 +1260,9 @@ exports[`<BaseSpinner /> should render low contrast BaseSpinner 1`] = `
 >
   <View
     data-blade-component="spinner"
-    display="flex"
     style={
       Array [
-        Object {
-          "display": "flex",
-        },
+        Object {},
       ]
     }
   >
@@ -1424,12 +1394,9 @@ exports[`<BaseSpinner /> should render low contrast BaseSpinner with right label
 >
   <View
     data-blade-component="spinner"
-    display="flex"
     style={
       Array [
-        Object {
-          "display": "flex",
-        },
+        Object {},
       ]
     }
   >
@@ -1605,12 +1572,9 @@ exports[`<BaseSpinner /> should render low contrast information intent BaseSpinn
 >
   <View
     data-blade-component="spinner"
-    display="flex"
     style={
       Array [
-        Object {
-          "display": "flex",
-        },
+        Object {},
       ]
     }
   >
@@ -1742,12 +1706,9 @@ exports[`<BaseSpinner /> should render low contrast negative intent BaseSpinner 
 >
   <View
     data-blade-component="spinner"
-    display="flex"
     style={
       Array [
-        Object {
-          "display": "flex",
-        },
+        Object {},
       ]
     }
   >
@@ -1879,12 +1840,9 @@ exports[`<BaseSpinner /> should render low contrast neutral intent BaseSpinner 1
 >
   <View
     data-blade-component="spinner"
-    display="flex"
     style={
       Array [
-        Object {
-          "display": "flex",
-        },
+        Object {},
       ]
     }
   >
@@ -2016,12 +1974,9 @@ exports[`<BaseSpinner /> should render low contrast notice intent BaseSpinner 1`
 >
   <View
     data-blade-component="spinner"
-    display="flex"
     style={
       Array [
-        Object {
-          "display": "flex",
-        },
+        Object {},
       ]
     }
   >
@@ -2153,12 +2108,9 @@ exports[`<BaseSpinner /> should render low contrast positive intent BaseSpinner 
 >
   <View
     data-blade-component="spinner"
-    display="flex"
     style={
       Array [
-        Object {
-          "display": "flex",
-        },
+        Object {},
       ]
     }
   >
@@ -2290,12 +2242,9 @@ exports[`<BaseSpinner /> should render medium size BaseSpinner 1`] = `
 >
   <View
     data-blade-component="spinner"
-    display="flex"
     style={
       Array [
-        Object {
-          "display": "flex",
-        },
+        Object {},
       ]
     }
   >
@@ -2427,12 +2376,9 @@ exports[`<BaseSpinner /> should render xlarge size BaseSpinner 1`] = `
 >
   <View
     data-blade-component="spinner"
-    display="flex"
     style={
       Array [
-        Object {
-          "display": "flex",
-        },
+        Object {},
       ]
     }
   >
