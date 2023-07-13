@@ -1,3 +1,5 @@
+import { incrementTotalUseCountAsync } from '@create-figma-plugin/utilities';
+
 export const sendAnalytics = async ({
   eventName,
   properties,
@@ -5,6 +7,7 @@ export const sendAnalytics = async ({
   eventName: string;
   properties: object;
 }): Promise<void> => {
+  const pluginUsageCount = await incrementTotalUseCountAsync();
   await fetch('https://api.segment.io/v1/track', {
     method: 'POST',
     headers: {
@@ -18,6 +21,7 @@ export const sendAnalytics = async ({
         userName: figma.currentUser?.name,
         fileName: figma.currentPage.parent?.name,
         pageName: figma.currentPage.name,
+        pluginUsageCount,
         ...properties,
       },
     }),

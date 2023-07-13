@@ -19,7 +19,7 @@
   "devDependencies": {
     "@create-figma-plugin/build": "2.5.0",
     "@create-figma-plugin/tsconfig": "2.5.0",
-    "@figma/plugin-typings": "1.64.0",
+    "@figma/plugin-typings": "1.70.0",
     "@types/node": "20.4.1",
     "@types/react": "18.2.0",
     "typescript": "4.9.5"

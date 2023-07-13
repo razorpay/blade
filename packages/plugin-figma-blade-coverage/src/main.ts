@@ -3,7 +3,6 @@ import {
   getParentNode,
   traverseNode,
   getSelectedNodesOrAllNodes,
-  incrementTotalUseCountAsync,
 } from '@create-figma-plugin/utilities';
 
 import {
@@ -21,6 +20,7 @@ type CoverageMetrics = {
   nonBladeColorStyles: number;
   nonBladeComponents: number; // rename to non-blade components
   totalLayers: number; // rename to total layers
+  bladeCoverage: number;
 };
 
 const MAIN_FRAME_NODES = ['FRAME', 'SECTION'];
@@ -163,8 +163,8 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
   let totalLayers = 0;
 
   try {
+    // if there are non-frame nodes as direct children of a page, ignore them
     if (getParentNode(node)?.type === 'PAGE' && !MAIN_FRAME_NODES.includes(node.type)) {
-      // if there are non-frame nodes as direct children of a page, ignore them
       return null;
     }
 
@@ -331,6 +331,7 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
     nonBladeTextStyles,
     nonBladeColorStyles,
     totalLayers,
+    bladeCoverage: Number((bladeComponents / totalLayers) * 100),
   };
 };
 
@@ -389,6 +390,26 @@ const main = async (): Promise<void> => {
         if (coverageMetrics) {
           // 3. render the coverage card. fin.
           await renderCoverageCard({ mainFrameNode, ...coverageMetrics });
+          // 4. send data to analytics service
+          await sendAnalytics({
+            eventName: 'Blade Coverage Plugin Used',
+            properties: {
+              fileName: figma.root.name,
+              pageName: mainFrameNode.parent?.name,
+              nodeName: mainFrameNode.name,
+              nodePath: `https://www.figma.com/file/${figma.fileKey}/${
+                figma.root.name
+              }?node-id=${encodeURIComponent(mainFrameNode.id)}`,
+              nodetype: mainFrameNode.type,
+              isMarkedReadyForDev:
+                mainFrameNode.type === 'SECTION'
+                  ? mainFrameNode.devStatus?.type === 'READY_FOR_DEV'
+                  : 'not-a-section-node',
+              nodeWidth: mainFrameNode.width,
+              nodeHeight: mainFrameNode.height,
+              ...coverageMetrics,
+            },
+          });
         }
       }
 
@@ -403,15 +424,6 @@ const main = async (): Promise<void> => {
         bladeCoverageCardsGroup.name = 'Blade Coverage Cards';
         bladeCoverageCardsGroup.expanded = false;
       }
-
-      // send analytics data with the usage count
-      const pluginUsageCount = await incrementTotalUseCountAsync();
-      await sendAnalytics({
-        eventName: 'Blade Coverage Plugin Used',
-        properties: {
-          pluginUsageCount,
-        },
-      });
     }
   } catch (error: unknown) {
     console.error(error);
