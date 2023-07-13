@@ -397,7 +397,8 @@ const main = async (): Promise<void> => {
               fileName: figma.root.name,
               pageName: mainFrameNode.parent?.name,
               nodeName: mainFrameNode.name,
-              nodePath: `https://www.figma.com/file/${figma.fileKey}/${
+              nodePath: `${figma.root.name}/${mainFrameNode.parent?.name}/${mainFrameNode.name}`,
+              nodeUrlPath: `https://www.figma.com/file/${figma.fileKey}/${
                 figma.root.name
               }?node-id=${encodeURIComponent(mainFrameNode.id)}`,
               nodetype: mainFrameNode.type,
