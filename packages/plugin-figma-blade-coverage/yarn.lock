@@ -1261,10 +1261,10 @@
   resolved "https://registry.yarnpkg.com/@esbuild/win32-x64/-/win32-x64-0.17.19.tgz#8cfaf2ff603e9aabb910e9c0558c26cf32744061"
   integrity sha512-lAhycmKnVOuRYNtRtatQR1LPQf2oYCkRGkSFnseDAKPl8lu5SOsK/e1sXe5a0Pc5kHIHe6P2I/ilntNv2xf3cA==
 
-"@figma/plugin-typings@1.64.0":
-  version "1.64.0"
-  resolved "https://registry.yarnpkg.com/@figma/plugin-typings/-/plugin-typings-1.64.0.tgz#521f2399dd6d570f047e323dab2abd27ee6a869d"
-  integrity sha512-oQUqYh790cXBP3x9Ejq0Wyp/AJZzYfjlB3Od8xuljL/lJFUsP+z4BSshB6nipYmQb6iih1+9d1PhgE9qxzuQQg==
+"@figma/plugin-typings@1.70.0":
+  version "1.70.0"
+  resolved "https://registry.yarnpkg.com/@figma/plugin-typings/-/plugin-typings-1.70.0.tgz#0e11bc4c5d90c4e37b0bbb99fabe60fa46906169"
+  integrity sha512-dN/ehVt40WDSjuf6+vICw1Btq8yKNvKSo5xl1qk8jfRaOdaN88QOYgODEVUGp9gSzlyUEhUKng0YMKg/doBpEg==
 
 "@floating-ui/core@^1.2.6", "@floating-ui/core@^1.3.1":
   version "1.3.1"
@@ -2349,6 +2349,11 @@
   dependencies:
     postcss "7.x.x"
 
+"@types/node@20.4.1":
+  version "20.4.1"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.4.1.tgz#a6033a8718653c50ac4962977e14d0f984d9527d"
+  integrity sha512-JIzsAvJeA/5iY6Y/OxZbv1lUcc8dNSE77lb2gnBH+/PJ3lFR1Ccvgwl5JWnHAkNHcRsT0TbpVOsiMKZ1F/yyJg==
+
 "@types/prop-types@*":
   version "15.7.5"
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.5.tgz#5f19d2b85a98e9558036f6a3cacc8819420f05cf"
@@ -2868,6 +2873,11 @@ domutils@^3.0.1:
     dom-serializer "^2.0.0"
     domelementtype "^2.3.0"
     domhandler "^5.0.3"
+
+dotenv@16.3.1:
+  version "16.3.1"
+  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-16.3.1.tgz#369034de7d7e5b120972693352a3bf112172cc3e"
+  integrity sha512-IPzF4w4/Rd94bA9imS68tZBaYyBWSCE47V1RGuMrB94iyTOIEwRmVL2x/4An+6mETpLrKJ5hQkB8W4kFAadeIQ==
 
 dset@^3.1.1, dset@^3.1.2:
   version "3.1.2"
