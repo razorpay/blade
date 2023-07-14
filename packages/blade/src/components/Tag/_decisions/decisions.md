@@ -15,8 +15,8 @@ These are set of interactive keywords that help organise & categorise objects. T
 <Tag
   icon={CheckIcon}
   size="medium"
-  onDismiss={({ value }) => {
-    console.log('Close Icon Clicked', value);
+  onDismiss={() => {
+    console.log('Close Icon Clicked');
   }}
 >
   Unpaid
@@ -42,9 +42,8 @@ type TagProps = {
   /**
    * Callback when close icon on Tag is clicked
    *
-   * Gives a `value` argument which has same text as `children`
    */
-  onDismiss?: ({ value }: { value: ReactText }) => void;
+  onDismiss?: () => void;
 
   /**
    * Text that renders inside Tag
@@ -96,14 +95,14 @@ SelectInput and AutoComplete are not expected to have any changes in consumer AP
 
 On consumer end, the APIs would look like -
 
-#### New `tagsSlot` prop on `TextInput` and `TextArea`
+#### New `tags` prop on `TextInput` and `TextArea`
 
 - Can only be used in Controlled Input
   - Why?
     - This is comparitively a rare usecase so don't see any need of having another `hasTags` props that handles adding tags internally.
 
 ```jsx
-<TextInput tagsSlot={} value="" onChange={} />
+<TextInput tags={} value="" onChange={} />
 ```
 
 ##### Alternate Prop Name
@@ -131,8 +130,8 @@ function App() {
 
   return (
     <TextInput
-      tagsSlot={tags.map((tagName, index) => (
-        <Tag onDismiss={({ value }) => removeTag(value)}>{tagName}</Tag>
+      tags={tags.map((tagName, index) => (
+        <Tag onDismiss={() => removeTag(tagName)}>{tagName}</Tag>
       ))}
       value={inputValue}
       onChange={({ value }) => setInputValue(value)}
@@ -201,8 +200,14 @@ Refer to Keyboard Interactions of [react-select](https://react-select.com/home#g
 - Do we want to discuss Tag's integration with TextInput and TextArea? or should I remove it from API decision altogether?
   - We can discuss here
 - ~`<Tag />` or `<Tags />` 😅~ `<Tag />`
-- [`tagsSlot` vs `tagSlot` vs `valuePrefix` vs `leading` on Input components](#alternate-prop-name)
+  - We went with `<Tag />`
+- [`tagsSlot` vs `tagSlot` vs `valuePrefix` vs `leading` vs `tags` on Input components](#alternate-prop-name)
+  - We went with `tags`
 - Should we support `value` prop that allows us to set unique identifier value for Tag?
   ```jsx
   <Tag value="red">Red</Tag>
+  ```
+  - We decided not to support it right now as it can be statically handled by passing any id you like from `onDismiss`. Can be evaluated in future if required.
+  ```jsx
+  onDismiss={() => removeTag('red')}
   ```
