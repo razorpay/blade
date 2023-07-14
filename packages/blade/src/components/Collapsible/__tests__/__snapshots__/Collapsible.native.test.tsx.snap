@@ -265,9 +265,12 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                 </Text>
                 <View
                   data-blade-component="amount"
+                  display="flex"
                   style={
                     Array [
-                      Object {},
+                      Object {
+                        "display": "flex",
+                      },
                     ]
                   }
                 >
@@ -725,9 +728,12 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                 </Text>
                 <View
                   data-blade-component="amount"
+                  display="flex"
                   style={
                     Array [
-                      Object {},
+                      Object {
+                        "display": "flex",
+                      },
                     ]
                   }
                 >

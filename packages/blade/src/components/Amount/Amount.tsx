@@ -251,6 +251,7 @@ const _Amount = ({
 
   return (
     <BaseBox
+      display={isReactNative ? castNativeType('flex') : castWebType('inline-flex')}
       {...metaAttribute({ name: MetaConstants.Amount, testID })}
       {...getStyledProps(styledProps)}
     >

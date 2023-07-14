@@ -10,9 +10,12 @@ exports[`<Amount /> should render Amount with default props 1`] = `
 >
   <View
     data-blade-component="amount"
+    display="flex"
     style={
       Array [
-        Object {},
+        Object {
+          "display": "flex",
+        },
       ]
     }
   >
@@ -164,9 +167,12 @@ exports[`<Amount /> should render MYR currency Amount  1`] = `
 >
   <View
     data-blade-component="amount"
+    display="flex"
     style={
       Array [
-        Object {},
+        Object {
+          "display": "flex",
+        },
       ]
     }
   >
@@ -318,9 +324,12 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
 >
   <View
     data-blade-component="amount"
+    display="flex"
     style={
       Array [
-        Object {},
+        Object {
+          "display": "flex",
+        },
       ]
     }
   >
@@ -461,9 +470,12 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
   </View>
   <View
     data-blade-component="amount"
+    display="flex"
     style={
       Array [
-        Object {},
+        Object {
+          "display": "flex",
+        },
       ]
     }
   >
@@ -604,9 +616,12 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
   </View>
   <View
     data-blade-component="amount"
+    display="flex"
     style={
       Array [
-        Object {},
+        Object {
+          "display": "flex",
+        },
       ]
     }
   >
@@ -747,9 +762,12 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
   </View>
   <View
     data-blade-component="amount"
+    display="flex"
     style={
       Array [
-        Object {},
+        Object {
+          "display": "flex",
+        },
       ]
     }
   >
@@ -890,9 +908,12 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
   </View>
   <View
     data-blade-component="amount"
+    display="flex"
     style={
       Array [
-        Object {},
+        Object {
+          "display": "flex",
+        },
       ]
     }
   >
@@ -1033,9 +1054,12 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
   </View>
   <View
     data-blade-component="amount"
+    display="flex"
     style={
       Array [
-        Object {},
+        Object {
+          "display": "flex",
+        },
       ]
     }
   >
@@ -1176,9 +1200,12 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
   </View>
   <View
     data-blade-component="amount"
+    display="flex"
     style={
       Array [
-        Object {},
+        Object {
+          "display": "flex",
+        },
       ]
     }
   >
@@ -1319,9 +1346,12 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
   </View>
   <View
     data-blade-component="amount"
+    display="flex"
     style={
       Array [
-        Object {},
+        Object {
+          "display": "flex",
+        },
       ]
     }
   >
@@ -1462,9 +1492,12 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
   </View>
   <View
     data-blade-component="amount"
+    display="flex"
     style={
       Array [
-        Object {},
+        Object {
+          "display": "flex",
+        },
       ]
     }
   >
@@ -1616,9 +1649,12 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
 >
   <View
     data-blade-component="amount"
+    display="flex"
     style={
       Array [
-        Object {},
+        Object {
+          "display": "flex",
+        },
       ]
     }
   >
@@ -1770,9 +1806,12 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
 >
   <View
     data-blade-component="amount"
+    display="flex"
     style={
       Array [
-        Object {},
+        Object {
+          "display": "flex",
+        },
       ]
     }
   >
@@ -1868,9 +1907,12 @@ exports[`<Amount /> should render information intent Amount  1`] = `
 >
   <View
     data-blade-component="amount"
+    display="flex"
     style={
       Array [
-        Object {},
+        Object {
+          "display": "flex",
+        },
       ]
     }
   >
@@ -1966,9 +2008,12 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
 >
   <View
     data-blade-component="amount"
+    display="flex"
     style={
       Array [
-        Object {},
+        Object {
+          "display": "flex",
+        },
       ]
     }
   >
