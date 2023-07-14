@@ -592,7 +592,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
             Object {
               "display": "flex",
               "flexDirection": "row",
-              "justifyContent": "space-evenly",
+              "justifyContent": space-between",
               "marginBottom": 24,
             },
           ]
