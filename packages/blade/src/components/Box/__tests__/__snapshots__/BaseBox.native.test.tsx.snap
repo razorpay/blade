@@ -15,13 +15,11 @@ exports[`<BaseBox /> should render BaseBox component with elevation 1`] = `
     height="200px"
     style={
       Array [
-        Array [
-          Object {
-            "backgroundColor": "hsla(220, 30%, 96%, 1)",
-            "height": 200,
-            "width": 200,
-          },
-        ],
+        Object {
+          "backgroundColor": "hsla(220, 30%, 96%, 1)",
+          "height": 200,
+          "width": 200,
+        },
         Object {
           "elevation": 26,
           "shadowColor": "hsla(217, 56%, 17%, 0.64)",
@@ -32,6 +30,7 @@ exports[`<BaseBox /> should render BaseBox component with elevation 1`] = `
           "shadowOpacity": 0.2,
           "shadowRadius": 12,
         },
+        undefined,
       ]
     }
     width="200px"

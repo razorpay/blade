@@ -94,6 +94,7 @@ exports[`<Switch /> should render switch with label 1`] = `
           size="medium"
           style={
             Array [
+              Object {},
               Object {
                 "alignItems": "center",
                 "display": "flex",
@@ -301,6 +302,7 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
           size="medium"
           style={
             Array [
+              Object {},
               Object {
                 "alignItems": "center",
                 "display": "flex",

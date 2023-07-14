@@ -96,6 +96,8 @@ exports[`<Button /> should render button with default properties 1`] = `
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+          },
+          Object {
             "opacity": 1,
           },
         ]
@@ -234,6 +236,8 @@ exports[`<Button /> should render button with full width 1`] = `
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+          },
+          Object {
             "opacity": 1,
           },
         ]
@@ -372,6 +376,8 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+          },
+          Object {
             "opacity": 1,
           },
         ]
@@ -582,6 +588,8 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+          },
+          Object {
             "opacity": 1,
           },
         ]
@@ -792,6 +800,8 @@ exports[`<Button /> should render disabled button 1`] = `
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+          },
+          Object {
             "opacity": 1,
           },
         ]
@@ -930,6 +940,8 @@ exports[`<Button /> should render disabled secondary variant button 1`] = `
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+          },
+          Object {
             "opacity": 1,
           },
         ]
@@ -1068,6 +1080,8 @@ exports[`<Button /> should render disabled tertiary variant button 1`] = `
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+          },
+          Object {
             "opacity": 1,
           },
         ]
@@ -1206,6 +1220,8 @@ exports[`<Button /> should render large size button 1`] = `
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+          },
+          Object {
             "opacity": 1,
           },
         ]
@@ -1344,6 +1360,8 @@ exports[`<Button /> should render medium size button 1`] = `
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+          },
+          Object {
             "opacity": 1,
           },
         ]
@@ -1482,6 +1500,8 @@ exports[`<Button /> should render secondary variant button 1`] = `
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+          },
+          Object {
             "opacity": 1,
           },
         ]
@@ -1620,6 +1640,8 @@ exports[`<Button /> should render small size button 1`] = `
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+          },
+          Object {
             "opacity": 1,
           },
         ]
@@ -1758,6 +1780,8 @@ exports[`<Button /> should render tertiary variant button 1`] = `
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+          },
+          Object {
             "opacity": 1,
           },
         ]
@@ -1896,6 +1920,8 @@ exports[`<Button /> should render xsmall size button 1`] = `
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+          },
+          Object {
             "opacity": 1,
           },
         ]
