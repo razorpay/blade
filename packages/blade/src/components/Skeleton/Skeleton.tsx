@@ -4,6 +4,7 @@ import type { BaseBoxProps } from '~components/Box/BaseBox';
 import type { FlexboxProps } from '~components/Box/BaseBox/types/propsTypes';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getStyledProps } from '~components/Box/styledProps';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
 type SkeletonProps = StyledPropsBlade &
   Pick<
@@ -12,6 +13,7 @@ type SkeletonProps = StyledPropsBlade &
   > &
   Partial<FlexboxProps> & {
     contrast?: 'low' | 'high';
+    testID?: string;
   };
 
 const Skeleton = ({
@@ -36,6 +38,7 @@ const Skeleton = ({
   justifySelf,
   placeSelf,
   order,
+  testID,
   ...props
 }: SkeletonProps): React.ReactElement => {
   return (
@@ -59,7 +62,9 @@ const Skeleton = ({
       placeSelf={placeSelf}
       order={order}
       contrast={contrast}
+      testID={testID}
       {...getStyledProps(props)}
+      {...metaAttribute({ name: MetaConstants.Skeleton })}
     />
   );
 };

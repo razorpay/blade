@@ -182,10 +182,10 @@ const LoadableCard = ({ isLoading }: { isLoading: boolean }): React.ReactElement
               />
               <Skeleton height="20px" width={{ s: '80%', base: '50%' }} borderRadius="medium" />
             </Box>
-            <Skeleton height="60px" borderRadius="medium" marginBottom="spacing.3" />
-            <Box marginTop="spacing.3" />
+            <Skeleton height="65px" borderRadius="medium" marginBottom="spacing.3" />
+            <Box marginY="spacing.3" />
             <Divider />
-            <Box marginBottom="spacing.3" marginTop="spacing.3" />
+            <Box marginBottom="spacing.4" marginTop="spacing.3" />
             <Skeleton height="20px" width="100%" borderRadius="medium" marginBottom="spacing.2" />
             <Skeleton height="20px" width="100%" borderRadius="medium" />
           </Box>
