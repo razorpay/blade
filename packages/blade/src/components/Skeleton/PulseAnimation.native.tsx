@@ -22,8 +22,7 @@ const PulseAnimation = ({
   ...props
 }: { contrast: 'low' | 'high' } & SkeletonProps): React.ReactElement => {
   const { theme } = useTheme();
-  // TODO: no token for 300ms delay
-  const delay = castNativeType(makeMotionTime(300));
+  const durationDelay = theme.motion.duration.xmoderate;
   const duration = castNativeType(makeMotionTime(theme.motion.duration['2xgentle']));
   const easing = castNativeType(theme.motion.easing.standard.revealing);
   const progress = useSharedValue(0);
@@ -45,7 +44,7 @@ const PulseAnimation = ({
   // Trigger pulsating animation
   React.useEffect(() => {
     const pulsatingAnimationTimingConfig = {
-      duration: duration + delay,
+      duration: duration + durationDelay,
       easing,
     };
     progress.value = withRepeat(
@@ -60,7 +59,7 @@ const PulseAnimation = ({
     return () => {
       cancelAnimation(progress);
     };
-  }, [progress, duration, easing, theme, delay]);
+  }, [progress, duration, easing, theme, durationDelay]);
 
   const pulseAnimatedStyle = useAnimatedStyle(() => {
     return {
