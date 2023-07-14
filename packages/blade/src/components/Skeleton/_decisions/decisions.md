@@ -103,7 +103,7 @@ const App = () => {
   return (
     <>
       {isLoading ? (
-        <Box>
+        <Box elevation="lowRaised" borderRadius="medium">
           <Box display="flex">
             <Box>
               <Skeleton width="40%" height="30px" />
@@ -152,29 +152,6 @@ const App = () => {
 
 ```
 
-**Q. A question that might arise is "Why not just give isLoading prop for Card?"**
-
-Like: 
-
-```jsx
-<Card isLoading={isLoading}>
-  <CardHeader>
-    <CardHeaderLeading title={data.title} subtitle={data.subtitle} />
-    <CardHeaderTrailing visual={<CardHeaderBadge variant="neutral">{data.badge}</CardHeaderBadge>} />
-  </CardHeader>
-  <CardBody>
-    <Text>{data.content}</Text>
-  </CardBody>
-</Card>
-```
-
-We discussed this, while it might look simple this approach also has few downsides: 
-
-- if we provide `isLoading` prop in Card it might cause a lot of jumps and shifts on the page because we won't know until API responds if the CardHeader has title/prefix or subtitle set or not and it could be removed after the API is done loading.
-- Providing `isLoading` prop in Card or for all Blade components (where applicable) might not be the most flexible approach.
-- Providing `isLoading` prop in Card consumers will anyways have to opt out and use custom Skeleton templates for the CardBody content so there's not much benefit to providing it out of the box.
-
-
 ## Motion
 
 Check the motion [here](https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?type=design&node-id=16502-258345&scaling=min-zoom&page-id=16498%3A256331):
@@ -194,14 +171,49 @@ https://github.com/razorpay/blade/assets/35374649/8298efde-f977-4aa3-bc2d-92fb50
 
 ## Open Questions
 
-- How will Skeleton loader work with existing components like ModalHeader/Footer etc?
-  - Ans: we will let the consumer handle the skeleton loading for Card components
+<details>
 
+  <summary>
+    Q. Why not just give isLoading prop for Card?
+  </summary>
+
+  We will let the consumer handle the skeleton loading for Card components
+
+</details>
 
 <details>
 
   <summary>
-    Should we infer dimensions or provide predefined variants?
+    Q. Why not just give isLoading prop for Card?
+  </summary>
+
+  Like: 
+
+  ```jsx
+  <Card isLoading={isLoading}>
+    <CardHeader>
+      <CardHeaderLeading title={data.title} subtitle={data.subtitle} />
+      <CardHeaderTrailing visual={<CardHeaderBadge variant="neutral">{data.badge}</CardHeaderBadge>} />
+    </CardHeader>
+    <CardBody>
+      <Text>{data.content}</Text>
+    </CardBody>
+  </Card>
+  ```
+
+  We discussed this, while it might look simple this approach also has few downsides: 
+
+  - if we provide `isLoading` prop in Card it might cause a lot of jumps and shifts on the page because we won't know until API responds if the CardHeader has title/prefix or subtitle set or not and it could be removed after the API is done loading.
+  - Providing `isLoading` prop in Card or for all Blade components (where applicable) might not be the most flexible approach.
+  - With `isLoading` prop consumers will anyways have to opt out and use custom Skeleton templates for the `CardBody` because `CardBody` accepts any JSX, so there's not much benefit to providing it out of the box because people will need to tweak it for different use cases.
+
+
+</details>
+
+<details>
+
+  <summary>
+    Q. Should we infer dimensions or provide predefined variants?
   </summary>
 
 
