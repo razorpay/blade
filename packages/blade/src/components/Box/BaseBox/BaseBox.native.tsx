@@ -1,11 +1,14 @@
 import { View } from 'react-native';
+import type { DefaultTheme } from 'styled-components/native';
 import styled from 'styled-components/native';
 import React from 'react';
+import type { StyledComponent } from 'styled-components';
 import { getBaseBoxStyles, getElevationValue } from './baseBoxStyles';
 import type { BaseBoxProps } from './types';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useTheme } from '~components/BladeProvider';
 import type { ElevationStyles } from '~tokens/global/elevation';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 /**
  * Some prop go to React Native DOM and fail with type errors.
@@ -32,14 +35,17 @@ const StyledBaseBox = styled(View)
   return cssObject;
 });
 
-const BaseBox = React.forwardRef<View, BaseBoxProps>(
-  (props, ref): React.ReactElement => {
-    const { theme } = useTheme();
-    const shadow = (getElevationValue(props.elevation, theme) as unknown) as ElevationStyles;
+// we have to use `as StyledComponent<>` to type this otherwise `as` prop's types break
+// since we loose the generic nature of the component
+const _BaseBox = React.forwardRef((props, ref) => {
+  const { theme } = useTheme();
+  const shadow = (getElevationValue(props.elevation, theme) as unknown) as ElevationStyles;
 
-    // @ts-expect-error TODO fix: weird styled component error
-    return <StyledBaseBox ref={ref} style={shadow} {...props} />;
-  },
-);
+  return (
+    <StyledBaseBox ref={ref} {...props} style={shadow ? [shadow, props.style] : props.style} />
+  );
+}) as StyledComponent<typeof View, DefaultTheme, BaseBoxProps>;
+
+const BaseBox = assignWithoutSideEffects(_BaseBox, { displayName: 'BaseBox' });
 
 export { BaseBox };
