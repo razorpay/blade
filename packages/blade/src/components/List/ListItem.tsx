@@ -111,12 +111,13 @@ const _ListItem = ({
     if (
       typeof child === 'string' ||
       isValidAllowedChildren(child, 'ListItemLink') ||
+      isValidAllowedChildren(child, 'ListItemText') ||
       isValidAllowedChildren(child, 'ListItemCode')
     ) {
       return child;
     } else {
       throw new Error(
-        '[Blade List]: You can only pass a List, ListItemLink, ListItemCode or a string as a child to ListItem.',
+        '[Blade List]: You can only pass a List, ListItemLink, ListItemCode, ListItemText or a string as a child to ListItem.',
       );
     }
   });
