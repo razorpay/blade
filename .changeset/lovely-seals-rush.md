@@ -1,5 +1,5 @@
 ---
-"@razorpay/blade": minor
+"@razorpay/blade": patch
 ---
 
 feat(Box, Typography): expose brand colors
