@@ -1,4 +1,3 @@
-import type { StyleProp, ViewStyle } from 'react-native';
 import { View } from 'react-native';
 import styled from 'styled-components/native';
 import React from 'react';
@@ -17,28 +16,7 @@ const isSupportedOnReactNativeElement = (prop: string): boolean => {
   return !prop.startsWith('padding') && !prop.startsWith('margin') && prop !== 'flex';
 };
 
-/*
-  An intermidiate wrapper in Box to apply elevation styles to BaseBox.
-  Because just passing elevation to styled-component as is doesn't work
-  We need to pass elevation as a prop to style `style={...elevation}`
-*/
-const BaseBoxWithShadow = React.forwardRef<
-  View,
-  Pick<BaseBoxProps, 'elevation'> & { style: StyleProp<ViewStyle> }
->((props, ref) => {
-  const { theme } = useTheme();
-  const shadow = (getElevationValue(props.elevation, theme) as unknown) as ElevationStyles;
-  return (
-    <View
-      ref={ref}
-      {...props}
-      // if we don't have shadow don't merge
-      style={shadow ? [props.style, shadow] : props.style}
-    />
-  );
-});
-
-const BaseBox = styled(BaseBoxWithShadow)
+const StyledBaseBox = styled(View)
   .attrs<BaseBoxProps>((props) => {
     return {
       ...metaAttribute({
@@ -53,5 +31,15 @@ const BaseBox = styled(BaseBoxWithShadow)
   const cssObject = getBaseBoxStyles(props);
   return cssObject;
 });
+
+const BaseBox = React.forwardRef<View, BaseBoxProps>(
+  (props, ref): React.ReactElement => {
+    const { theme } = useTheme();
+    const shadow = (getElevationValue(props.elevation, theme) as unknown) as ElevationStyles;
+
+    // @ts-expect-error TODO fix: weird styled component error
+    return <StyledBaseBox ref={ref} style={shadow} {...props} />;
+  },
+);
 
 export { BaseBox };
