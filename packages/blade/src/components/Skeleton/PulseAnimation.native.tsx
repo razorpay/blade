@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+/* eslint-disable @typescript-eslint/restrict-plus-operands */
 import Animated, {
   cancelAnimation,
   interpolateColor,
@@ -20,14 +22,29 @@ const PulseAnimation = ({
   ...props
 }: { contrast: 'low' | 'high' } & SkeletonProps): React.ReactElement => {
   const { theme } = useTheme();
+  const durationDelay = theme.motion.duration.xmoderate;
   const duration = castNativeType(makeMotionTime(theme.motion.duration['2xgentle']));
   const easing = castNativeType(theme.motion.easing.standard.revealing);
   const progress = useSharedValue(0);
 
-  //Trigger pulsating animation
+  const fadeIn = () => {
+    'worklet';
+    const animations = {
+      opacity: withTiming(1, { duration, easing }),
+    };
+    const initialValues = {
+      opacity: 0,
+    };
+    return {
+      initialValues,
+      animations,
+    };
+  };
+
+  // Trigger pulsating animation
   React.useEffect(() => {
     const pulsatingAnimationTimingConfig = {
-      duration,
+      duration: duration + durationDelay,
       easing,
     };
     progress.value = withRepeat(
@@ -42,7 +59,7 @@ const PulseAnimation = ({
     return () => {
       cancelAnimation(progress);
     };
-  }, [progress, duration, easing, theme]);
+  }, [progress, duration, easing, theme, durationDelay]);
 
   const pulseAnimatedStyle = useAnimatedStyle(() => {
     return {
@@ -50,14 +67,14 @@ const PulseAnimation = ({
         progress.value,
         [1, 0],
         [
-          theme.colors.brand.gray[300][`${contrast}Contrast`],
-          theme.colors.brand.gray[400][`${contrast}Contrast`],
+          theme.colors.brand.gray.a50[`${contrast}Contrast`],
+          theme.colors.brand.gray.a100[`${contrast}Contrast`],
         ],
       ),
     };
   });
 
-  return <AnimatedBox style={pulseAnimatedStyle} {...props} />;
+  return <AnimatedBox entering={fadeIn} style={pulseAnimatedStyle} {...props} />;
 };
 
 export { PulseAnimation };

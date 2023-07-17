@@ -7,16 +7,29 @@ exports[`<Skeleton /> should render skeleton 1`] = `
 }
 
 .c1 {
-  background-color: hsla(220,30%,96%,1);
-  -webkit-animation: iEdboC 900ms cubic-bezier(0.5,0,0,1) infinite alternate;
-  animation: iEdboC 900ms cubic-bezier(0.5,0,0,1) infinite alternate;
+  opacity: 0;
+  background-color: hsla(216,15%,54%,0.18);
+  -webkit-animation-name: lbWRkT,fZZrNN;
+  animation-name: lbWRkT,fZZrNN;
+  -webkit-animation-duration: 900ms,1200ms;
+  animation-duration: 900ms,1200ms;
+  -webkit-animation-delay: 0ms,900ms;
+  animation-delay: 0ms,900ms;
+  -webkit-animation-timing-function: cubic-bezier(0.3,0,0.2,1),cubic-bezier(0.3,0,0.2,1);
+  animation-timing-function: cubic-bezier(0.3,0,0.2,1),cubic-bezier(0.3,0,0.2,1);
+  -webkit-animation-iteration-count: 1,infinite;
+  animation-iteration-count: 1,infinite;
+  -webkit-animation-direction: normal,alternate;
+  animation-direction: normal,alternate;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
 }
 
 <div>
   <div
     aria-hidden="true"
     class="c0 c1"
-    data-blade-component="base-box"
+    data-blade-component="skeleton"
   />
 </div>
 `;
@@ -36,9 +49,22 @@ exports[`<Skeleton /> should support margin and other layout props 1`] = `
 }
 
 .c2 {
-  background-color: hsla(220,30%,96%,1);
-  -webkit-animation: iEdboC 900ms cubic-bezier(0.5,0,0,1) infinite alternate;
-  animation: iEdboC 900ms cubic-bezier(0.5,0,0,1) infinite alternate;
+  opacity: 0;
+  background-color: hsla(216,15%,54%,0.18);
+  -webkit-animation-name: lbWRkT,fZZrNN;
+  animation-name: lbWRkT,fZZrNN;
+  -webkit-animation-duration: 900ms,1200ms;
+  animation-duration: 900ms,1200ms;
+  -webkit-animation-delay: 0ms,900ms;
+  animation-delay: 0ms,900ms;
+  -webkit-animation-timing-function: cubic-bezier(0.3,0,0.2,1),cubic-bezier(0.3,0,0.2,1);
+  animation-timing-function: cubic-bezier(0.3,0,0.2,1),cubic-bezier(0.3,0,0.2,1);
+  -webkit-animation-iteration-count: 1,infinite;
+  animation-iteration-count: 1,infinite;
+  -webkit-animation-direction: normal,alternate;
+  animation-direction: normal,alternate;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
 }
 
 <div>
@@ -49,13 +75,13 @@ exports[`<Skeleton /> should support margin and other layout props 1`] = `
     <div
       aria-hidden="true"
       class="c1 c2"
-      data-blade-component="base-box"
+      data-blade-component="skeleton"
     />
     ,
     <div
       aria-hidden="true"
       class="c1 c2"
-      data-blade-component="base-box"
+      data-blade-component="skeleton"
     />
     ,
   </div>

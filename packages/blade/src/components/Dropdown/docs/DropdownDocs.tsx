@@ -100,6 +100,26 @@ const DropdownDocs = (): JSX.Element => {
           </ListItem>
         </List>
       </BaseBox>
+      <BaseBox as="section" id="dropdownheader">
+        <Title size="medium">DropdownHeader</Title>
+        <ArgsTable
+          data={{
+            title: 'string',
+            subtitle: 'string',
+            leading: 'ReactNode',
+            titleSuffix: 'ReactNode',
+            trailing: 'ReactNode',
+          }}
+        />
+      </BaseBox>
+      <BaseBox as="section" id="dropdownfooter">
+        <Title size="medium">DropdownFooter</Title>
+        <ArgsTable
+          data={{
+            children: 'ReactNode',
+          }}
+        />
+      </BaseBox>
       <BaseBox as="section">
         <Title size="small">With SelectInput</Title>
         <Text marginY="spacing.3">

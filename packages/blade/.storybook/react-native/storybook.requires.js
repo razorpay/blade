@@ -37,6 +37,7 @@ const getStories = () => {
     require('../../src/components/Checkbox/CheckboxGroup.stories.tsx'),
     require('../../src/components/Collapsible/Collapsible.stories.tsx'),
     require('../../src/components/Counter/Counter.stories.tsx'),
+    require('../../src/components/Divider/Divider.stories.tsx'),
     require('../../src/components/Dropdown/docs/DropdownWithButton.stories.tsx'),
     require('../../src/components/Dropdown/docs/DropdownWithSelect.stories.tsx'),
     require('../../src/components/Icons/Icons.stories.tsx'),
@@ -70,6 +71,7 @@ const getStories = () => {
     require('../../src/storybook-recipes/SimpleDashboard.stories.tsx'),
     require('../../src/storybook-recipes/SimpleForm.stories.tsx'),
     require('../../src/tokens/theme/overrideTheme.stories.tsx'),
+    require('../../src/components/BaseHeaderFooter/BaseHeaderFooter.stories.internal.tsx'),
     require('../../src/components/Box/BaseBox/BaseBox.stories.internal.tsx'),
     require('../../src/components/Button/BaseButton/BaseButton.stories.internal.tsx'),
   ];

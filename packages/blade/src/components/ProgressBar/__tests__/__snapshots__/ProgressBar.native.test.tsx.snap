@@ -2751,6 +2751,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+          },
+          Object {
             "opacity": 1,
           },
         ]
@@ -3151,6 +3153,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+          },
+          Object {
             "opacity": 1,
           },
         ]

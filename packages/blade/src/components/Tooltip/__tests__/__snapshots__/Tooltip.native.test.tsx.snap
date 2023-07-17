@@ -97,6 +97,8 @@ exports[`<Tooltip /> should render 1`] = `
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+          },
+          Object {
             "opacity": 1,
           },
         ]
@@ -183,19 +185,23 @@ exports[`<Tooltip /> should render 1`] = `
           style={
             Array [
               Object {
-                "backgroundColor": "hsla(216, 33%, 29%, 1)",
-                "borderColor": "hsla(216, 27%, 36%, 1)",
-                "borderRadius": 4,
-                "borderStyle": "solid",
-                "borderWidth": 1,
-                "left": -200,
                 "maxWidth": 200,
                 "paddingBottom": 8,
                 "paddingLeft": 12,
                 "paddingRight": 12,
                 "paddingTop": 8,
                 "position": "absolute",
+              },
+              Object {
+                "backgroundColor": "hsla(216, 33%, 29%, 1)",
+                "borderColor": "hsla(216, 27%, 36%, 1)",
+                "borderRadius": 4,
+                "borderStyle": "solid",
+                "borderWidth": 1,
+                "left": -200,
+                "position": "absolute",
                 "top": -200,
+                "zIndex": 1100,
               },
               Object {
                 "elevation": 4,
@@ -214,6 +220,7 @@ exports[`<Tooltip /> should render 1`] = `
               "left": -200,
               "position": "absolute",
               "top": -200,
+              "zIndex": 1100,
             }
           }
         >

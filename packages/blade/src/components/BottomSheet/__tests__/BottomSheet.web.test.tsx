@@ -67,7 +67,7 @@ describe('<BottomSheet />', () => {
             title="Address Details"
             subtitle="Saving addresses will improve your checkout experience"
             trailing={<Badge variant="positive">Action Needed</Badge>}
-            titleSuffix={<Counter intent="positive" value={2} />}
+            titleSuffix={<Counter variant="positive" value={2} />}
           />
           <BottomSheetBody>
             <Text>BottomSheet body</Text>
@@ -315,7 +315,7 @@ describe('<BottomSheet />', () => {
       );
     };
     expect(() => renderWithTheme(<Example />)).toThrow(
-      '[Blade Header]: Only one of `Button, Badge, Link, Text` component is accepted as trailing',
+      '[Blade Header]: Only one of `Button, Badge, Link, Text, Amount` component is accepted as trailing',
     );
     mockConsoleError.mockRestore();
   });

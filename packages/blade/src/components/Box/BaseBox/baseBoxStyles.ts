@@ -159,7 +159,7 @@ const getBorderWidthValue = (
     : makeBorderSize(getIn(theme, `border.width.${responsiveBorderWidthValue}`));
 };
 
-const getElevationValue = (
+export const getElevationValue = (
   elevation: BaseBoxProps['elevation'],
   theme: Theme,
   breakpoint?: keyof Breakpoints,
@@ -292,12 +292,9 @@ const getAllProps = (
     userSelect: getResponsiveValue(props.userSelect, breakpoint),
     pointerEvents: getResponsiveValue(props.pointerEvents),
     opacity: getResponsiveValue(props.opacity, breakpoint),
-    // @ts-expect-error put shadows on root on RN
-    ...(isReactNative()
-      ? getElevationValue(props.elevation, props.theme, breakpoint)
-      : {
-          boxShadow: getElevationValue(props.elevation, props.theme, breakpoint),
-        }),
+    ...(!isReactNative() && {
+      boxShadow: getElevationValue(props.elevation, props.theme, breakpoint),
+    }),
   };
 };
 

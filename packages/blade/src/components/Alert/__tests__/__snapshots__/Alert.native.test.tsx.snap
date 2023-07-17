@@ -18,6 +18,9 @@ exports[`<Alert /> should render 1`] = `
     style={
       Array [
         Object {
+          "textAlign": "left",
+        },
+        Object {
           "alignItems": "flex-start",
           "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
           "borderColor": "hsla(216, 15%, 54%, 0.32)",
@@ -32,7 +35,6 @@ exports[`<Alert /> should render 1`] = `
           "paddingLeft": 8,
           "paddingRight": 8,
           "paddingTop": 8,
-          "textAlign": "left",
         },
       ]
     }
@@ -290,6 +292,9 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
     style={
       Array [
         Object {
+          "textAlign": "left",
+        },
+        Object {
           "alignItems": "flex-start",
           "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
           "borderColor": "hsla(155, 100%, 31%, 0.32)",
@@ -304,7 +309,6 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
           "paddingLeft": 16,
           "paddingRight": 16,
           "paddingTop": 12,
-          "textAlign": "left",
           "width": "100%",
         },
       ]
