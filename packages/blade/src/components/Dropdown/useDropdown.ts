@@ -395,6 +395,10 @@ const useDropdown = (): UseDropdownReturnValue => {
     }
   };
 
+  const onTagFocusChange = (action: SelectActionsType): void => {
+    console.log({ action });
+  };
+
   /**
    * Keydown event of combobox. Handles most of the keyboard accessibility of dropdown
    */
@@ -424,6 +428,7 @@ const useDropdown = (): UseDropdownReturnValue => {
         close,
         onOptionChange,
         onComboType,
+        onTagFocusChange,
         selectCurrentOption: () => {
           const isSelected = selectOption(activeIndex);
           if (rest.hasFooterAction && !isReactNative()) {

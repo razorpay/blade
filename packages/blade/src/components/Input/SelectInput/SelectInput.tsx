@@ -185,9 +185,6 @@ const _SelectInput = (
         key={selectedIndex}
         marginRight="spacing.2"
         onDismiss={() => {
-          // @TOOD
-          // - Handle blur close of tags
-          console.log('onDismiss called');
           if (isTagDismissedRef.current) {
             isTagDismissedRef.current.value = true;
           }

@@ -24,7 +24,9 @@ export type SelectActionsType =
   | 'PageUp'
   | 'Previous'
   | 'Select'
-  | 'Type';
+  | 'Type'
+  | 'MoveLeftTag'
+  | 'MoveRightTag';
 
 export const componentIds = {
   DropdownOverlay: 'DropdownOverlay',
@@ -40,6 +42,8 @@ export const componentIds = {
 const SelectActions: Record<SelectActionsType, SelectActionsType> = {
   Close: 'Close',
   CloseSelect: 'CloseSelect',
+  MoveLeftTag: 'MoveLeftTag',
+  MoveRightTag: 'MoveRightTag',
   First: 'First',
   Last: 'Last',
   Next: 'Next',
@@ -96,6 +100,14 @@ export function getActionFromKey(
   }
   if (key === 'End') {
     return SelectActions.Last;
+  }
+
+  if (key === 'ArrowRight') {
+    return SelectActions.MoveRightTag;
+  }
+
+  if (key === 'ArrowLeft') {
+    return SelectActions.MoveLeftTag;
   }
 
   // handle typing characters when open or closed
@@ -213,6 +225,7 @@ type ActionsType = {
   selectCurrentOption: () => void;
   onOptionChange: (action: SelectActionsType) => void;
   onComboType: (letter: string, action: SelectActionsType) => void;
+  onTagFocusChange: (action: SelectActionsType) => void;
 };
 /**
  * Performs the action when actionType is passed
@@ -240,6 +253,10 @@ export const performAction = (
     case SelectActions.PageDown:
       event.preventDefault();
       actions.onOptionChange(action);
+      return true;
+    case SelectActions.MoveLeftTag:
+    case SelectActions.MoveRightTag:
+      actions.onTagFocusChange(action);
       return true;
     case SelectActions.CloseSelect:
       event.preventDefault();
