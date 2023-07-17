@@ -106,13 +106,13 @@ const _ListItem = ({
 
   // Get children that are not a List component and are valid allowed children
   const validChildItem = childrenArray.filter((child) => {
-    if (getComponentId(child) === 'List') return null;
+    if (getComponentId(child) === MetaConstants.List) return null;
 
     if (
       typeof child === 'string' ||
-      isValidAllowedChildren(child, 'ListItemLink') ||
-      isValidAllowedChildren(child, 'ListItemText') ||
-      isValidAllowedChildren(child, 'ListItemCode')
+      isValidAllowedChildren(child, MetaConstants.ListItemLink) ||
+      isValidAllowedChildren(child, MetaConstants.ListItemText) ||
+      isValidAllowedChildren(child, MetaConstants.ListItemCode)
     ) {
       return child;
     } else {
@@ -123,7 +123,7 @@ const _ListItem = ({
   });
   // Get child that is a List component
   const childList = childrenArray.filter((child) =>
-    getComponentId(child) === 'List' ? child : null,
+    getComponentId(child) === MetaConstants.List ? child : null,
   );
   const hasIcon = Boolean(ItemIcon);
 
@@ -188,7 +188,7 @@ const _ListItem = ({
   );
 };
 
-const ListItem = assignWithoutSideEffects(_ListItem, { componentId: 'ListItem' });
+const ListItem = assignWithoutSideEffects(_ListItem, { componentId: MetaConstants.ListItem });
 
 export { ListItem };
 export type { ListItemProps };
