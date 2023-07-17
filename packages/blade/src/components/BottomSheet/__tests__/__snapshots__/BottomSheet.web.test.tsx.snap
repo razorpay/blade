@@ -100,10 +100,17 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
 }
 
 .c14 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c15 {
   background-color: hsla(155,100%,31%,0.09);
 }
 
-.c16 {
+.c17 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -126,13 +133,13 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   padding-left: 8px;
 }
 
-.c24 {
+.c25 {
   border-width: 0px;
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-style: solid;
 }
 
-.c26 {
+.c27 {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -142,7 +149,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   flex-shrink: 1;
 }
 
-.c27 {
+.c28 {
   overflow: auto;
   padding-top: 16px;
   padding-bottom: 16px;
@@ -150,7 +157,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   padding-left: 16px;
 }
 
-.c29 {
+.c30 {
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -161,11 +168,11 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   touch-action: none;
 }
 
-.c30 {
+.c31 {
   padding: 16px;
 }
 
-.c32 {
+.c33 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -186,11 +193,11 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   justify-content: center;
 }
 
-.c19 {
+.c20 {
   margin-right: 16px;
 }
 
-.c20 {
+.c21 {
   text-align: left;
   background-color: hsla(155,100%,31%,0.09);
 }
@@ -206,7 +213,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   opacity: 1;
 }
 
-.c25 {
+.c26 {
   border-bottom-style: solid;
   border-bottom-width: 1px;
   -webkit-box-flex: 1;
@@ -228,7 +235,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   padding: 0;
 }
 
-.c17 {
+.c18 {
   color: hsla(160,100%,26%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -247,7 +254,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   -webkit-box-orient: vertical;
 }
 
-.c18 {
+.c19 {
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -260,7 +267,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   padding: 0;
 }
 
-.c28 {
+.c29 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -273,7 +280,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   padding: 0;
 }
 
-.c34 {
+.c35 {
   color: hsla(218,89%,51%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -287,7 +294,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   padding: 0;
 }
 
-.c22 {
+.c23 {
   color: hsla(160,100%,26%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -305,7 +312,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   -webkit-box-orient: vertical;
 }
 
-.c23 {
+.c24 {
   border: none;
   cursor: pointer;
   padding: 0;
@@ -332,17 +339,17 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c23:hover {
+.c24:hover {
   color: hsla(217,18%,45%,1);
 }
 
-.c23:focus {
+.c24:focus {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   color: hsla(217,18%,45%,1);
 }
 
-.c23:active {
+.c24:active {
   color: hsla(217,18%,45%,1);
 }
 
@@ -426,7 +433,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   overflow: hidden;
 }
 
-.c15 {
+.c16 {
   background-color: hsla(155,100%,31%,0.09);
   border-radius: 9999px;
   max-width: 120px;
@@ -442,7 +449,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   width: fit-content;
 }
 
-.c31 {
+.c32 {
   min-height: 36px;
   width: 100%;
   cursor: pointer;
@@ -478,24 +485,24 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   position: relative;
 }
 
-.c31:hover {
+.c32:hover {
   background-color: hsla(218,89%,51%,0.09);
   border-color: hsla(218,89%,51%,1);
 }
 
-.c31:active {
+.c32:active {
   background-color: hsla(218,89%,51%,0.32);
   border-color: hsla(218,89%,51%,1);
 }
 
-.c31:focus {
+.c32:focus {
   background-color: hsla(218,89%,51%,0.18);
   border-color: hsla(218,89%,51%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
 
-.c31 * {
+.c32 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -504,11 +511,11 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c33 {
+.c34 {
   opacity: 1;
 }
 
-.c21 {
+.c22 {
   background-color: hsla(155,100%,31%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
@@ -533,37 +540,37 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
 }
 
 @media screen and (min-width:320px) {
-  .c24 {
+  .c25 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c24 {
+  .c25 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c24 {
+  .c25 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c24 {
+  .c25 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c24 {
+  .c25 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c30 {
+  .c31 {
     padding: 20px;
   }
 }
@@ -633,19 +640,19 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                         data-blade-component="box"
                       >
                         <div
-                          class=""
+                          class="c14"
                           data-blade-component="counter"
                         >
                           <div
-                            class="c14 c15"
+                            class="c15 c16"
                             data-blade-component="base-box"
                           >
                             <div
-                              class="c16"
+                              class="c17"
                               data-blade-component="base-box"
                             >
                               <p
-                                class="c17"
+                                class="c18"
                                 data-blade-component="text"
                               >
                                 2
@@ -657,7 +664,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                     </div>
                   </div>
                   <p
-                    class="c18"
+                    class="c19"
                     data-blade-component="text"
                   >
                     Saving addresses will improve your checkout experience
@@ -665,7 +672,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                 </div>
               </div>
               <div
-                class="c19"
+                class="c20"
                 data-blade-component="base-box"
               >
                 <div
@@ -673,19 +680,19 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                   data-blade-component="box"
                 >
                   <div
-                    class=""
+                    class="c14"
                     data-blade-component="badge"
                   >
                     <div
-                      class="c20 c21"
+                      class="c21 c22"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c16"
+                        class="c17"
                         data-blade-component="base-box"
                       >
                         <p
-                          class="c22"
+                          class="c23"
                           data-blade-component="text"
                         >
                           Action Needed
@@ -701,7 +708,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
               >
                 <button
                   aria-label="Close"
-                  class="c23"
+                  class="c24"
                   data-blade-component="icon-button"
                   type="button"
                 >
@@ -725,23 +732,23 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
             </div>
           </div>
           <div
-            class="c24 c25"
+            class="c25 c26"
             data-blade-component="divider"
           />
         </div>
       </div>
       <div
-        class="c26"
+        class="c27"
         data-blade-component="bottom-sheet-body"
         data-testid="bottomsheet-body"
         style="user-select: auto; overflow: auto;"
       >
         <div
-          class="c27"
+          class="c28"
           data-blade-component="base-box"
         >
           <p
-            class="c28"
+            class="c29"
             data-blade-component="text"
           >
             BottomSheet body
@@ -749,29 +756,29 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
         </div>
       </div>
       <div
-        class="c29"
+        class="c30"
         data-blade-component="bottom-sheet-footer"
       >
         <div
-          class="c24 c25"
+          class="c25 c26"
           data-blade-component="divider"
         />
         <div
-          class="c30"
+          class="c31"
           data-blade-component="base-box"
         >
           <button
-            class="c31"
+            class="c32"
             data-blade-component="button"
             role="button"
             type="button"
           >
             <div
-              class="c32 c33"
+              class="c33 c34"
               data-blade-component="base-box"
             >
               <div
-                class="c34"
+                class="c35"
                 data-blade-component="base-text"
               >
                 Remove address

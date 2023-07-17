@@ -613,9 +613,12 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                           >
                             <View
                               data-blade-component="counter"
+                              display="flex"
                               style={
                                 Array [
-                                  Object {},
+                                  Object {
+                                    "display": "flex",
+                                  },
                                 ]
                               }
                             >
@@ -764,9 +767,12 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                     >
                       <View
                         data-blade-component="badge"
+                        display="flex"
                         style={
                           Array [
-                            Object {},
+                            Object {
+                              "display": "flex",
+                            },
                           ]
                         }
                       >

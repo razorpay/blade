@@ -125,6 +125,7 @@ const _Badge = ({
 
   return (
     <BaseBox
+      display="flex"
       {...metaAttribute({ name: MetaConstants.Badge, testID })}
       {...getStyledProps(styledProps)}
     >

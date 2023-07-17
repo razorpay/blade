@@ -125,6 +125,7 @@ const Counter = ({
 
   return (
     <BaseBox
+      display="flex"
       {...metaAttribute({ name: MetaConstants.Counter, testID })}
       {...getStyledProps(styledProps)}
     >

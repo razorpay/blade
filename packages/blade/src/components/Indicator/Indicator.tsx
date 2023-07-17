@@ -97,6 +97,7 @@ const Indicator = ({
 
   return (
     <BaseBox
+      display="flex"
       {...a11yProps}
       {...metaAttribute({ name: MetaConstants.Indicator, testID })}
       {...getStyledProps(styledProps)}

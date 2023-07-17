@@ -11,9 +11,12 @@ exports[`<Indicator /> should render 1`] = `
   <View
     accessibilityLabel="Success"
     data-blade-component="indicator"
+    display="flex"
     style={
       Array [
-        Object {},
+        Object {
+          "display": "flex",
+        },
       ]
     }
   >
@@ -158,9 +161,12 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
   <View
     accessibilityLabel="Warning"
     data-blade-component="indicator"
+    display="flex"
     style={
       Array [
-        Object {},
+        Object {
+          "display": "flex",
+        },
       ]
     }
   >
@@ -294,9 +300,12 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
   <View
     accessibilityLabel="Success"
     data-blade-component="indicator"
+    display="flex"
     style={
       Array [
-        Object {},
+        Object {
+          "display": "flex",
+        },
       ]
     }
   >
@@ -430,9 +439,12 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
   <View
     accessibilityLabel="Error"
     data-blade-component="indicator"
+    display="flex"
     style={
       Array [
-        Object {},
+        Object {
+          "display": "flex",
+        },
       ]
     }
   >
@@ -566,9 +578,12 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
   <View
     accessibilityLabel="Info"
     data-blade-component="indicator"
+    display="flex"
     style={
       Array [
-        Object {},
+        Object {
+          "display": "flex",
+        },
       ]
     }
   >

@@ -789,9 +789,12 @@ exports[`<Card /> should render a Card with Header 1`] = `
                 >
                   <View
                     data-blade-component="counter"
+                    display="flex"
                     style={
                       Array [
-                        Object {},
+                        Object {
+                          "display": "flex",
+                        },
                       ]
                     }
                   >
@@ -925,9 +928,12 @@ exports[`<Card /> should render a Card with Header 1`] = `
           >
             <View
               data-blade-component="badge"
+              display="flex"
               style={
                 Array [
-                  Object {},
+                  Object {
+                    "display": "flex",
+                  },
                 ]
               }
             >

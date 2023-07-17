@@ -6,6 +6,13 @@ exports[`<Indicator /> should render 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -15,11 +22,11 @@ exports[`<Indicator /> should render 1`] = `
   align-items: center;
 }
 
-.c1 {
+.c2 {
   margin-left: 4px;
 }
 
-.c2 {
+.c3 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -36,12 +43,12 @@ exports[`<Indicator /> should render 1`] = `
 <div>
   <div
     aria-label="Success"
-    class=""
+    class="c0"
     data-blade-component="indicator"
     role="status"
   >
     <div
-      class="c0"
+      class="c1"
       data-blade-component="base-box"
     >
       <svg
@@ -70,11 +77,11 @@ exports[`<Indicator /> should render 1`] = `
         />
       </svg>
       <div
-        class="c1"
+        class="c2"
         data-blade-component="base-box"
       >
         <p
-          class="c2"
+          class="c3"
           data-blade-component="text"
         />
       </div>
@@ -89,6 +96,13 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -98,11 +112,11 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
   align-items: center;
 }
 
-.c1 {
+.c2 {
   margin-left: 4px;
 }
 
-.c2 {
+.c3 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -116,7 +130,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
   padding: 0;
 }
 
-.c3 {
+.c4 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -133,12 +147,12 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
 <div>
   <div
     aria-label="Warning"
-    class=""
+    class="c0"
     data-blade-component="indicator"
     role="status"
   >
     <div
-      class="c0"
+      class="c1"
       data-blade-component="base-box"
     >
       <svg
@@ -167,11 +181,11 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
         />
       </svg>
       <div
-        class="c1"
+        class="c2"
         data-blade-component="base-box"
       >
         <p
-          class="c2"
+          class="c3"
           data-blade-component="text"
         />
       </div>
@@ -179,12 +193,12 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
   </div>
   <div
     aria-label="Success"
-    class=""
+    class="c0"
     data-blade-component="indicator"
     role="status"
   >
     <div
-      class="c0"
+      class="c1"
       data-blade-component="base-box"
     >
       <svg
@@ -213,11 +227,11 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
         />
       </svg>
       <div
-        class="c1"
+        class="c2"
         data-blade-component="base-box"
       >
         <p
-          class="c3"
+          class="c4"
           data-blade-component="text"
         />
       </div>
@@ -225,12 +239,12 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
   </div>
   <div
     aria-label="Error"
-    class=""
+    class="c0"
     data-blade-component="indicator"
     role="status"
   >
     <div
-      class="c0"
+      class="c1"
       data-blade-component="base-box"
     >
       <svg
@@ -259,11 +273,11 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
         />
       </svg>
       <div
-        class="c1"
+        class="c2"
         data-blade-component="base-box"
       >
         <p
-          class="c3"
+          class="c4"
           data-blade-component="text"
         />
       </div>
@@ -271,12 +285,12 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
   </div>
   <div
     aria-label="Info"
-    class=""
+    class="c0"
     data-blade-component="indicator"
     role="status"
   >
     <div
-      class="c0"
+      class="c1"
       data-blade-component="base-box"
     >
       <svg
@@ -305,11 +319,11 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
         />
       </svg>
       <div
-        class="c1"
+        class="c2"
         data-blade-component="base-box"
       >
         <p
-          class="c3"
+          class="c4"
           data-blade-component="text"
         />
       </div>
