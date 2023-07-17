@@ -63,10 +63,9 @@ const Skeleton = ({
       placeSelf={placeSelf}
       order={order}
       contrast={contrast}
-      testID={testID}
       {...getStyledProps(props)}
       {...makeAccessible({ hidden: true })}
-      {...metaAttribute({ name: MetaConstants.Skeleton })}
+      {...metaAttribute({ name: MetaConstants.Skeleton, testID })}
     />
   );
 };

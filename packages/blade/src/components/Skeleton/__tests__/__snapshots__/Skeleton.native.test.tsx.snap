@@ -10,7 +10,8 @@ exports[`<Skeleton /> should render skeleton 1`] = `
 >
   <View
     accessibilityElementsHidden={true}
-    data-blade-component="base-box"
+    data-blade-component="skeleton"
+    entering={[Function]}
     height="50px"
     importantForAccessibility="no-hide-descendants"
     style={

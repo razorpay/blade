@@ -5,6 +5,7 @@ import { Skeleton } from '../Skeleton';
 import { Box } from '~components/Box';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
+import { MetaConstants } from '~utils/metaAttribute';
 
 describe('<Skeleton />', () => {
   it('should render skeleton', () => {
@@ -22,8 +23,21 @@ describe('<Skeleton />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should be hidden', () => {
+    const id = 'skeleton';
+
+    const { getByTestId } = renderWithTheme(<Skeleton testID={id} width="100%" height="50px" />);
+    expect(getByTestId(id)).toHaveAttribute('aria-hidden');
+  });
+
   it('should not have a11y violation', async () => {
     const { container } = renderWithTheme(<Skeleton width="100%" height="50px" />);
     await assertAccessible(container);
+  });
+
+  it('should have proper meta attributes', () => {
+    const id = 'skeleton';
+    const { getByTestId } = renderWithTheme(<Skeleton testID={id} width="100%" height="50px" />);
+    expect(getByTestId(id)).toHaveAttribute('data-blade-component', MetaConstants.Skeleton);
   });
 });

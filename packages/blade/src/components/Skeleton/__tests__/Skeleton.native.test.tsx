@@ -4,6 +4,7 @@ import React from 'react';
 import { Skeleton } from '../Skeleton';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 import { Box } from '~components/Box';
+import { MetaConstants } from '~utils/metaAttribute';
 
 describe('<Skeleton />', () => {
   it('should render skeleton', () => {
@@ -19,5 +20,19 @@ describe('<Skeleton />', () => {
       </Box>,
     );
     expect(toJSON).toMatchSnapshot();
+  });
+
+  it('should be hidden', () => {
+    const id = 'skeleton';
+
+    const { getByTestId } = renderWithTheme(<Skeleton testID={id} width="100%" height="50px" />);
+    expect(getByTestId(id)).toHaveProp('accessibilityElementsHidden');
+    expect(getByTestId(id)).toHaveProp('importantForAccessibility', 'no-hide-descendants');
+  });
+
+  it('should have proper meta attributes', () => {
+    const id = 'skeleton';
+    const { getByTestId } = renderWithTheme(<Skeleton testID={id} width="100%" height="50px" />);
+    expect(getByTestId(id)).toHaveProp('data-blade-component', MetaConstants.Skeleton);
   });
 });
