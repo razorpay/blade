@@ -2,4 +2,4 @@
 "@razorpay/blade": patch
 ---
 
-fix(Card): add margin between `CardHeaderLeading` & `CardHeaderTrailing`
+fix(Card): fix spacing between header & leading on react native
