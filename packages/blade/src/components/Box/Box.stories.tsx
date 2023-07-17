@@ -62,10 +62,10 @@ export const Responsive = (args: BoxProps): JSX.Element => {
     <>
       <Text>Change screen size to see flexDirection switch between row and column</Text>
       <Box {...args}>
-        <Box flex="1" backgroundColor="surface.background.level2.highContrast" padding="spacing.5">
+        <Box flex="1" backgroundColor="brand.primary.500" padding="spacing.5">
           <Text contrast="high">Box1</Text>
         </Box>
-        <Box flex="1" backgroundColor="surface.background.level3.highContrast" padding="spacing.5">
+        <Box flex="1" backgroundColor="surface.background.level2.highContrast" padding="spacing.5">
           <Text contrast="high">Box2</Text>
         </Box>
       </Box>
