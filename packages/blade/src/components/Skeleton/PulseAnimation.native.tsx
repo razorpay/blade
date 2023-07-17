@@ -22,15 +22,16 @@ const PulseAnimation = ({
   ...props
 }: { contrast: 'low' | 'high' } & SkeletonProps): React.ReactElement => {
   const { theme } = useTheme();
-  const durationDelay = theme.motion.duration.xmoderate;
-  const duration = castNativeType(makeMotionTime(theme.motion.duration['2xgentle']));
+  const durationPluseOff = theme.motion.duration.xmoderate;
+  const durationPluseOn = theme.motion.duration['2xgentle'];
+  const totalDuration = castNativeType(makeMotionTime(durationPluseOn + durationPluseOff));
   const easing = castNativeType(theme.motion.easing.standard.revealing);
   const progress = useSharedValue(0);
 
   const fadeIn = () => {
     'worklet';
     const animations = {
-      opacity: withTiming(1, { duration, easing }),
+      opacity: withTiming(1, { duration: totalDuration, easing }),
     };
     const initialValues = {
       opacity: 0,
@@ -44,7 +45,7 @@ const PulseAnimation = ({
   // Trigger pulsating animation
   React.useEffect(() => {
     const pulsatingAnimationTimingConfig = {
-      duration: duration + durationDelay,
+      duration: totalDuration,
       easing,
     };
     progress.value = withRepeat(
@@ -59,7 +60,7 @@ const PulseAnimation = ({
     return () => {
       cancelAnimation(progress);
     };
-  }, [progress, duration, easing, theme, durationDelay]);
+  }, [easing, progress, totalDuration]);
 
   const pulseAnimatedStyle = useAnimatedStyle(() => {
     return {
