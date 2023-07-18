@@ -10,6 +10,7 @@
     "@floating-ui/react": "0.24.4",
     "@razorpay/blade": "8.14.0",
     "@segment/analytics-next": "1.53.0",
+    "dotenv": "16.3.1",
     "preact": "10.15.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -18,7 +19,8 @@
   "devDependencies": {
     "@create-figma-plugin/build": "2.5.0",
     "@create-figma-plugin/tsconfig": "2.5.0",
-    "@figma/plugin-typings": "1.64.0",
+    "@figma/plugin-typings": "1.70.0",
+    "@types/node": "20.4.1",
     "@types/react": "18.2.0",
     "typescript": "4.9.5"
   },

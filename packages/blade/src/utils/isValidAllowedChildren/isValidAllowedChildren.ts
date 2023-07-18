@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-properties */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 
@@ -6,7 +7,11 @@ import React from 'react';
  */
 const getComponentId = (component: React.ReactNode): string | null => {
   if (!React.isValidElement(component)) return null;
-  // eslint-disable-next-line no-restricted-properties
+
+  // Storybook wraps MDX components in a wrapper component, so we need to get componentId from originalType
+  if (component?.props?.mdxType && component?.props?.originalType?.componentId) {
+    return component.props.originalType.componentId;
+  }
   return (component.type as any)?.componentId;
 };
 

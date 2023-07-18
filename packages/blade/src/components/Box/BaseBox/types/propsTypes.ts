@@ -119,6 +119,8 @@ const validBoxAsValues = [
 
 type BoxAsType = typeof validBoxAsValues[number];
 
+type BrandColorString = `brand.${DotNotationColorStringToken<Theme['colors']['brand']>}`;
+
 // Visual props that are common for both Box and BaseBox
 type CommonBoxVisualProps = MakeObjectResponsive<
   {
@@ -172,7 +174,7 @@ type BaseBoxVisualProps = MakeObjectResponsive<
 
 // Visual props that are specific to Box
 type BoxVisualProps = MakeObjectResponsive<{
-  backgroundColor: BackgroundColorString<'surface'>;
+  backgroundColor: BackgroundColorString<'surface'> | BrandColorString;
 }> & {
   // Intentionally keeping this outside of MakeObjectResponsive since we only want as to be string and not responsive object
   // styled-components do not support passing `as` prop as an object

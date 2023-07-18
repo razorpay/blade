@@ -58,16 +58,8 @@ export const transformFrameOrGroup = (
       type: 'string',
     };
 
-    const justifyContent = getFlexAlignmentFromAxisAlignment(
-      bladeFrame.layoutMode === LAYOUT_MODES.HORIZONTAL
-        ? bladeFrame.primaryAxisAlignItems
-        : bladeFrame.counterAxisAlignItems,
-    );
-    const alignItems = getFlexAlignmentFromAxisAlignment(
-      bladeFrame.layoutMode === LAYOUT_MODES.HORIZONTAL
-        ? bladeFrame.counterAxisAlignItems
-        : bladeFrame.primaryAxisAlignItems,
-    );
+    const justifyContent = getFlexAlignmentFromAxisAlignment(bladeFrame.primaryAxisAlignItems);
+    const alignItems = getFlexAlignmentFromAxisAlignment(bladeFrame.counterAxisAlignItems);
 
     props.justifyContent = { value: justifyContent, type: 'string' };
     props.alignItems = { value: alignItems, type: 'string' };
@@ -88,18 +80,42 @@ export const transformFrameOrGroup = (
       type: paddingValue.length > 1 ? 'instance' : 'string',
     };
 
-    if (bladeFrame.primaryAxisSizingMode === 'FIXED') {
-      const isFixedHeight = bladeFrame.layoutMode === 'VERTICAL';
-      props[isFixedHeight ? 'height' : 'width'] = {
-        value: `${isFixedHeight ? bladeFrame.height : bladeFrame.width}px`,
+    if (bladeFrame.maxHeight) {
+      props.maxHeight = {
+        value: getTokenFromSpacingValue(bladeFrame.maxHeight),
         type: 'string',
       };
     }
 
-    if (bladeFrame.counterAxisSizingMode === 'FIXED') {
-      const isFixedHeight = bladeFrame.layoutMode === 'HORIZONTAL';
-      props[isFixedHeight ? 'height' : 'width'] = {
-        value: `${isFixedHeight ? bladeFrame.height : bladeFrame.width}px`,
+    if (bladeFrame.maxWidth) {
+      props.maxWidth = {
+        value: getTokenFromSpacingValue(bladeFrame.maxWidth),
+        type: 'string',
+      };
+    }
+
+    if (bladeFrame.layoutSizingVertical === 'FIXED') {
+      props.height = {
+        value: getTokenFromSpacingValue(bladeFrame.height),
+        type: 'string',
+      };
+    }
+
+    if (bladeFrame.layoutSizingHorizontal === 'FIXED') {
+      props.width = {
+        value: getTokenFromSpacingValue(bladeFrame.width),
+        type: 'string',
+      };
+    }
+
+    if (
+      (bladeFrame.layoutSizingVertical === 'FILL' &&
+        bladeFrame.layoutMode === LAYOUT_MODES.VERTICAL) ||
+      (bladeFrame.layoutSizingHorizontal === 'FILL' &&
+        bladeFrame.layoutMode === LAYOUT_MODES.HORIZONTAL)
+    ) {
+      props.flex = {
+        value: '1',
         type: 'string',
       };
     }

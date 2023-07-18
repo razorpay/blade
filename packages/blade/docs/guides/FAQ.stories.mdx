@@ -1,0 +1,45 @@
+import { Meta } from '@storybook/addon-docs';
+import {
+  Collapsible,
+  CollapsibleLink,
+  CollapsibleBody,
+  Accordion,
+  AccordionItem,
+  Text,
+  Code,
+  Link,
+} from '../../src/components';
+
+<Meta title="Guides/FAQs" />
+
+# Frequently Asked Questions
+
+export const FAQComponent = () => {
+  return (
+    <Accordion marginTop="spacing.4" showNumberPrefix>
+      <AccordionItem
+        title="'ResizeObserver is not defined' error when running Jest"
+        description={
+          <Text>
+            This error is caused because ResizeObserver is used by Blade but has no global
+            definitions for it on your jest setup. To fix this, you can add the following mock to
+            your jest setup file:
+            <Code marginTop="spacing.2" marginBottom="spacing.4">
+              {`global.ResizeObserver = jest.fn().mockImplementation(() => ({
+            observe: jest.fn(),
+            unobserve: jest.fn(),
+            disconnect: jest.fn(),
+            }));`}
+            </Code>
+            You can find the relevant{' '}
+            <Link href="https://github.com/razorpay/blade/issues/1367" target="_blank">
+              GitHub issue here
+            </Link>
+          </Text>
+        }
+      />
+    </Accordion>
+  );
+};
+
+<FAQComponent />

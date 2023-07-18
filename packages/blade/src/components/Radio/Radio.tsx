@@ -65,6 +65,7 @@ const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
   const validationState = groupProps?.validationState;
   const hasError = validationState === 'error';
   const _isDisabled = isDisabled ?? groupProps?.isDisabled;
+  const _isRequired = groupProps?.isRequired || groupProps?.necessityIndicator === 'required';
   const name = groupProps?.name;
   const showHelpText = !hasError && helpText;
   const isReactNative = getPlatformType() === 'react-native';
@@ -84,7 +85,7 @@ const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
     isChecked,
     hasError,
     isDisabled: _isDisabled,
-    isRequired: groupProps.necessityIndicator === 'required',
+    isRequired: _isRequired,
     name,
     value,
     onChange: handleChange,
