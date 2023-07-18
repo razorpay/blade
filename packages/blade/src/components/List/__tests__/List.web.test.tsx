@@ -2,6 +2,7 @@ import { List } from '../List';
 import { ListItem } from '../ListItem';
 import { ListItemLink } from '../ListItemLink';
 import { ListItemCode } from '../ListItemCode';
+import { ListItemText } from '../ListItemText';
 import assertAccessible from '~utils/testing/assertAccessible.web';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { ArrowRightIcon, ArrowUpIcon } from '~components/Icons';
@@ -49,6 +50,19 @@ describe('<List />', () => {
     expect(getByRole('link')).toHaveAttribute('href', 'https://www.google.com/');
     expect(getByRole('link')).toHaveAttribute('target', '_blank');
     expect(getByRole('link')).toHaveAttribute('rel', 'noreferrer noopener');
+  });
+
+  it('should render List with inline ListItemText', () => {
+    const { container } = renderWithTheme(
+      <List>
+        <ListItem>
+          <ListItemText weight="bold" color="action.text.secondary.default">
+            Level 1
+          </ListItemText>
+        </ListItem>
+      </List>,
+    );
+    expect(container).toMatchSnapshot();
   });
 
   it('should render List with inline ListItemCode', () => {
@@ -219,7 +233,7 @@ describe('<List />', () => {
         </List>,
       ),
     ).toThrow(
-      '[Blade List]: You can only pass a List, ListItemLink, ListItemCode or a string as a child to ListItem.',
+      '[Blade List]: You can only pass a List, ListItemLink, ListItemCode, ListItemText or a string as a child to ListItem.',
     );
     mockConsoleError.mockRestore();
   });
