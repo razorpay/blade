@@ -32,12 +32,15 @@ exports[`<Divider /> should render Divider using height 1`] = `
       style={
         Array [
           Object {
-            "alignSelf": "stretch",
             "borderLeftColor": "hsla(216, 15%, 54%, 0.18)",
-            "borderLeftStyle": "solid",
-            "borderLeftWidth": 1,
             "borderStyle": "solid",
             "borderWidth": 0,
+            "height": "100%",
+          },
+          Object {
+            "alignSelf": "stretch",
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": 1,
             "height": "100%",
           },
         ]
@@ -78,10 +81,12 @@ exports[`<Divider /> should render Divider within flex container 1`] = `
         Array [
           Object {
             "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
-            "borderBottomStyle": "solid",
-            "borderBottomWidth": 1,
             "borderStyle": "solid",
             "borderWidth": 0,
+          },
+          Object {
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": 1,
             "flexGrow": 1,
           },
         ]

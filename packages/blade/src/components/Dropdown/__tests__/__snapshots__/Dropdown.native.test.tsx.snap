@@ -206,16 +206,18 @@ exports[`<Dropdown /> should render dropdown 1`] = `
             style={
               Array [
                 Object {
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "position": "relative",
+                  "width": "100%",
+                },
+                Object {
                   "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
                   "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
                   "borderBottomStyle": "solid",
                   "borderBottomWidth": 1,
                   "borderTopLeftRadius": 2,
                   "borderTopRightRadius": 2,
-                  "display": "flex",
-                  "flexDirection": "row",
-                  "position": "relative",
-                  "width": "100%",
                 },
               ]
             }
@@ -496,19 +498,21 @@ exports[`<Dropdown /> should render dropdown 1`] = `
           style={
             Array [
               Object {
+                "display": "none",
+                "position": "absolute",
+                "width": "100%",
+              },
+              Object {
                 "backgroundColor": "hsla(0, 0%, 100%, 1)",
                 "borderColor": "hsla(216, 15%, 54%, 0.18)",
                 "borderRadius": 4,
                 "borderStyle": "solid",
                 "borderWidth": 1,
-                "display": "none",
-                "position": "absolute",
                 "transform": Array [
                   Object {
                     "translateY": 8,
                   },
                 ],
-                "width": "100%",
               },
             ]
           }
@@ -662,10 +666,12 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                   Array [
                     Object {
                       "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
-                      "borderBottomStyle": "solid",
-                      "borderBottomWidth": 1,
                       "borderStyle": "solid",
                       "borderWidth": 0,
+                    },
+                    Object {
+                      "borderBottomStyle": "solid",
+                      "borderBottomWidth": 1,
                       "flexGrow": 1,
                     },
                   ]
@@ -1041,10 +1047,12 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                 Array [
                   Object {
                     "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
-                    "borderBottomStyle": "solid",
-                    "borderBottomWidth": 1,
                     "borderStyle": "solid",
                     "borderWidth": 0,
+                  },
+                  Object {
+                    "borderBottomStyle": "solid",
+                    "borderBottomWidth": 1,
                     "flexGrow": 1,
                   },
                 ]
@@ -1152,6 +1160,8 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                         "flexGrow": 1,
                         "flexShrink": 1,
                         "justifyContent": "center",
+                      },
+                      Object {
                         "opacity": 1,
                       },
                     ]

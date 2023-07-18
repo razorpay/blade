@@ -68,4 +68,5 @@ export const MetaConstants = {
   Switch: 'switch',
   SwitchLabel: 'switch-label',
   StyledBaseInput: 'styled-base-input',
+  Skeleton: 'skeleton',
 } as const;
