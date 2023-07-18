@@ -608,9 +608,10 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
     const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
     const isLabelLeftPositioned = labelPosition === 'left' && matchedDeviceType === 'desktop';
     const { currentInteraction, setCurrentInteraction } = useInteraction();
+    const _isRequired = isRequired || necessityIndicator === 'required';
 
     const accessibilityProps = makeAccessible({
-      required: Boolean(isRequired),
+      required: Boolean(_isRequired),
       disabled: Boolean(isDisabled),
       invalid: Boolean(validationState === 'error'),
       describedBy: getDescribedByElementId({
@@ -704,7 +705,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
               placeholder={placeholder}
               isDisabled={isDisabled}
               validationState={validationState}
-              isRequired={isRequired}
+              isRequired={_isRequired}
               handleOnFocus={handleOnFocus}
               handleOnChange={handleOnChange}
               handleOnBlur={handleOnBlur}

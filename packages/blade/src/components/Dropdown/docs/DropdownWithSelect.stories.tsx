@@ -270,6 +270,22 @@ InternalControlledSingleSelect.parameters = {
   },
 };
 
+export const InternalSelect = (): React.ReactElement => {
+  return (
+    <Box padding="spacing.5">
+      <Dropdown selectionType="multiple">
+        <SelectInput label="Select fruits" labelPosition="left" />
+        <DropdownOverlay>
+          <ActionList surfaceLevel={3}>
+            <ActionListItem title="Apples" value="Apples" />
+            <ActionListItem title="Appricots" value="Appricots" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+    </Box>
+  );
+};
+
 export const InternalSectionListPerformance = (): React.ReactElement => {
   return (
     <Dropdown selectionType="multiple">

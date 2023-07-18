@@ -13,12 +13,10 @@ import { makeAccessible } from '~utils/makeAccessible';
 
 // Not really an IconComponent, a wrapper is needed for animating the icon inside
 const CollapsibleChevronIcon: IconComponent = (props) => {
-  const { isExpanded, direction } = useCollapsible();
+  const { isExpanded } = useCollapsible();
   const { theme } = useTheme();
 
-  const { transformExpanded, transformCollapsed } = getCollapsibleChevronIconTransforms({
-    direction,
-  });
+  const { transformExpanded, transformCollapsed } = getCollapsibleChevronIconTransforms();
   const duration = castNativeType(getTransitionDuration(theme));
   const easing = castNativeType(getTransitionEasing(theme));
 
