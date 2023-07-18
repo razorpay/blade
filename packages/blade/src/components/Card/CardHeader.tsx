@@ -158,7 +158,7 @@ const _CardHeaderLeading = ({
       <BaseBox marginRight="spacing.3" alignSelf="center" display="flex">
         {prefix}
       </BaseBox>
-      <BaseBox>
+      <BaseBox marginRight="spacing.5">
         <BaseBox display="flex" flexDirection="row" alignItems="center" flexWrap="wrap">
           <Heading size="small" variant="regular" type="normal">
             {title}
