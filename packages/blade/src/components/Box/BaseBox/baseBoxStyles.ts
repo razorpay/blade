@@ -186,7 +186,10 @@ const getAllProps = (
     props.borderBottomWidth ||
     props.borderTopWidth ||
     props.borderLeftWidth ||
-    props.borderRightWidth;
+    props.borderRightWidth ||
+    props.borderWidth ||
+    props.borderColor;
+
   return {
     display: getResponsiveValue(props.display, breakpoint),
     overflow: getResponsiveValue(props.overflow, breakpoint),
