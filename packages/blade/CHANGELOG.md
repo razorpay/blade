@@ -1,5 +1,27 @@
 # @razorpay/blade
 
+## 9.1.0
+
+### Minor Changes
+
+- b1a1faef: feat(blade): added Skeleton Component
+
+### Patch Changes
+
+- 199d6f0e: fix(Card): fix spacing between header & leading on react native
+- dd234a65: feat: add support for ListItemText within List
+
+## 9.0.3
+
+### Patch Changes
+
+- 538390be: feat(Box, Typography): expose brand colors
+
+  - On Box, we're exposing all `brand.*` tokens on the background.
+  - On Typography, we're exposing all `brand.primary.*` tokens as color prop
+
+- d880e8e9: fix(Dropdown, BottomSheet): prioritise bottomsheet controlled state over dropdown
+
 ## 9.0.2
 
 ### Patch Changes

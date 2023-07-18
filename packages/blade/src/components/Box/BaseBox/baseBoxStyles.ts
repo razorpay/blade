@@ -159,6 +159,17 @@ const getBorderWidthValue = (
     : makeBorderSize(getIn(theme, `border.width.${responsiveBorderWidthValue}`));
 };
 
+export const getElevationValue = (
+  elevation: BaseBoxProps['elevation'],
+  theme: Theme,
+  breakpoint?: keyof Breakpoints,
+): string | undefined => {
+  const responsiveElevationValue = getResponsiveValue(elevation, breakpoint);
+  return isEmpty(responsiveElevationValue)
+    ? undefined
+    : getIn(theme, `elevation.${responsiveElevationValue}`);
+};
+
 const getAllProps = (
   props: BaseBoxProps & { theme: Theme },
   breakpoint?: keyof Breakpoints,
@@ -175,7 +186,10 @@ const getAllProps = (
     props.borderBottomWidth ||
     props.borderTopWidth ||
     props.borderLeftWidth ||
-    props.borderRightWidth;
+    props.borderRightWidth ||
+    props.borderWidth ||
+    props.borderColor;
+
   return {
     display: getResponsiveValue(props.display, breakpoint),
     overflow: getResponsiveValue(props.overflow, breakpoint),
@@ -281,6 +295,9 @@ const getAllProps = (
     userSelect: getResponsiveValue(props.userSelect, breakpoint),
     pointerEvents: getResponsiveValue(props.pointerEvents),
     opacity: getResponsiveValue(props.opacity, breakpoint),
+    ...(!isReactNative() && {
+      boxShadow: getElevationValue(props.elevation, props.theme, breakpoint),
+    }),
   };
 };
 

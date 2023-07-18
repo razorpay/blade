@@ -29,6 +29,9 @@ export const MetaConstants = {
   Link: 'link',
   List: 'list',
   ListItem: 'list-item',
+  ListItemCode: 'list-item-code',
+  ListItemLink: 'list-item-link',
+  ListItemText: 'list-item-text',
   OTPInput: 'otp-input',
   PasswordInput: 'password-input',
   TextArea: 'textarea',
@@ -66,4 +69,5 @@ export const MetaConstants = {
   Switch: 'switch',
   SwitchLabel: 'switch-label',
   StyledBaseInput: 'styled-base-input',
+  Skeleton: 'skeleton',
 } as const;

@@ -1,6 +1,7 @@
 import { Meta, DocsContainer } from '@storybook/addon-docs';
 import { useTheme, BladeProvider } from '../../src//components';
-import { paymentTheme, bankingTheme } from '../../src//tokens';
+import { paymentTheme, bankingTheme } from '../../src/tokens';
+import { makeTypographySize } from '../../src/utils';
 
 <Meta
   title="Tokens/Typography"
@@ -33,6 +34,8 @@ import { paymentTheme, bankingTheme } from '../../src//tokens';
 />
 
 # 🔡 Typography
+
+> These tokens should be used along with the [makeTypographySize util](?path=/story/utils-maketypographysize--page).
 
 export const Typography = () => {
   const { theme } = useTheme();
@@ -84,7 +87,9 @@ export const Typography = () => {
           {Object.entries(theme.typography.fonts.size).map(([key, value]) => (
             <tr key={key}>
               <td>{`theme.typography.fonts.size.${key}`}</td>
-              <td style={{ fontSize: `${value}px`, padding: '16px' }}>Era of rising Fintech</td>
+              <td style={{ fontSize: makeTypographySize(value), padding: '16px' }}>
+                Era of rising Fintech
+              </td>
             </tr>
           ))}
         </tbody>

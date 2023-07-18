@@ -96,6 +96,8 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+          },
+          Object {
             "opacity": 1,
           },
         ]
@@ -234,6 +236,8 @@ exports[`<BaseButton /> should render button with full width 1`] = `
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+          },
+          Object {
             "opacity": 1,
           },
         ]
@@ -372,6 +376,8 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+          },
+          Object {
             "opacity": 1,
           },
         ]
@@ -582,6 +588,8 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+          },
+          Object {
             "opacity": 1,
           },
         ]
@@ -792,6 +800,8 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+          },
+          Object {
             "opacity": 1,
           },
         ]
@@ -1002,6 +1012,8 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+          },
+          Object {
             "opacity": 1,
           },
         ]
@@ -1179,6 +1191,8 @@ exports[`<BaseButton /> should render disabled button 1`] = `
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+          },
+          Object {
             "opacity": 1,
           },
         ]
@@ -1317,6 +1331,8 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+          },
+          Object {
             "opacity": 1,
           },
         ]
@@ -1455,6 +1471,8 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+          },
+          Object {
             "opacity": 1,
           },
         ]
@@ -1593,6 +1611,8 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+          },
+          Object {
             "opacity": 1,
           },
         ]
@@ -1731,6 +1751,8 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+          },
+          Object {
             "opacity": 1,
           },
         ]
@@ -1869,6 +1891,8 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+          },
+          Object {
             "opacity": 1,
           },
         ]
@@ -2007,6 +2031,8 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+          },
+          Object {
             "opacity": 1,
           },
         ]
@@ -2145,6 +2171,8 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+          },
+          Object {
             "opacity": 1,
           },
         ]
@@ -2283,6 +2311,8 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+          },
+          Object {
             "opacity": 1,
           },
         ]
@@ -2421,6 +2451,8 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+          },
+          Object {
             "opacity": 1,
           },
         ]
@@ -2559,6 +2591,8 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+          },
+          Object {
             "opacity": 1,
           },
         ]
@@ -2697,6 +2731,8 @@ exports[`<BaseButton /> should render disabled secondary variant button 1`] = `
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+          },
+          Object {
             "opacity": 1,
           },
         ]
@@ -2835,6 +2871,8 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+          },
+          Object {
             "opacity": 1,
           },
         ]
@@ -2973,6 +3011,8 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+          },
+          Object {
             "opacity": 1,
           },
         ]
@@ -3111,6 +3151,8 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+          },
+          Object {
             "opacity": 1,
           },
         ]
@@ -3249,6 +3291,8 @@ exports[`<BaseButton /> should render large size button 1`] = `
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+          },
+          Object {
             "opacity": 1,
           },
         ]
@@ -3536,6 +3580,8 @@ exports[`<BaseButton /> should render loading button 1`] = `
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+          },
+          Object {
             "opacity": 0,
           },
         ]
@@ -3674,6 +3720,8 @@ exports[`<BaseButton /> should render medium size button 1`] = `
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+          },
+          Object {
             "opacity": 1,
           },
         ]
@@ -3812,6 +3860,8 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+          },
+          Object {
             "opacity": 1,
           },
         ]
@@ -3950,6 +4000,8 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+          },
+          Object {
             "opacity": 1,
           },
         ]
@@ -4088,6 +4140,8 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+          },
+          Object {
             "opacity": 1,
           },
         ]
@@ -4226,6 +4280,8 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+          },
+          Object {
             "opacity": 1,
           },
         ]
@@ -4364,6 +4420,8 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+          },
+          Object {
             "opacity": 1,
           },
         ]
@@ -4502,6 +4560,8 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+          },
+          Object {
             "opacity": 1,
           },
         ]
@@ -4640,6 +4700,8 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+          },
+          Object {
             "opacity": 1,
           },
         ]
@@ -4778,6 +4840,8 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+          },
+          Object {
             "opacity": 1,
           },
         ]
@@ -4916,6 +4980,8 @@ exports[`<BaseButton /> should render secondary variant button 1`] = `
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+          },
+          Object {
             "opacity": 1,
           },
         ]
@@ -5054,6 +5120,8 @@ exports[`<BaseButton /> should render small size button 1`] = `
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+          },
+          Object {
             "opacity": 1,
           },
         ]
@@ -5192,6 +5260,8 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+          },
+          Object {
             "opacity": 1,
           },
         ]
@@ -5330,6 +5400,8 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+          },
+          Object {
             "opacity": 1,
           },
         ]

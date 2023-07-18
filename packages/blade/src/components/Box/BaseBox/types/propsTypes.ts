@@ -3,7 +3,7 @@ import type { CSSObject } from 'styled-components';
 import type { MarginProps, PaddingProps, SpacingValueType } from './spacingTypes';
 import type { MakeObjectResponsive } from './responsiveTypes';
 import type { Theme } from '~components/BladeProvider';
-import type { Border } from '~tokens/global';
+import type { Border, Elevation } from '~tokens/global';
 import type { DotNotationColorStringToken, PickCSSByPlatform, TestID } from '~utils/types';
 import type { Platform } from '~utils';
 import type { BladeCommonEvents } from '~components/types';
@@ -117,6 +117,8 @@ const validBoxAsValues = [
 
 type BoxAsType = typeof validBoxAsValues[number];
 
+type BrandColorString = `brand.${DotNotationColorStringToken<Theme['colors']['brand']>}`;
+
 // Visual props that are common for both Box and BaseBox
 type CommonBoxVisualProps = MakeObjectResponsive<
   {
@@ -141,7 +143,19 @@ type CommonBoxVisualProps = MakeObjectResponsive<
     | 'backgroundPosition'
     | 'backgroundOrigin'
     | 'backgroundRepeat'
-  >
+  > & {
+      /**
+       * Sets the elevation for Box
+       *
+       * eg: `theme.elevation.midRaised`
+       *
+       * @default `theme.elevation.lowRaised`
+       *
+       * **Links:**
+       * - Docs: https://blade.razorpay.com/?path=/docs/tokens-elevation--page
+       */
+      elevation?: keyof Elevation;
+    }
 >;
 
 // Visual props that are specific BaseBox
@@ -152,6 +166,7 @@ type BaseBoxVisualProps = MakeObjectResponsive<
       | BackgroundColorString<'feedback'>
       | BackgroundColorString<'surface'>
       | BackgroundColorString<'action'>
+      | BrandColorString
       | (string & Record<never, never>);
     lineHeight: SpacingValueType;
     touchAction: CSSObject['touchAction'];
@@ -169,7 +184,7 @@ type BaseBoxVisualProps = MakeObjectResponsive<
 
 // Visual props that are specific to Box
 type BoxVisualProps = MakeObjectResponsive<{
-  backgroundColor: BackgroundColorString<'surface'>;
+  backgroundColor: BackgroundColorString<'surface'> | BrandColorString;
 }> & {
   // Intentionally keeping this outside of MakeObjectResponsive since we only want as to be string and not responsive object
   // styled-components do not support passing `as` prop as an object
@@ -267,4 +282,4 @@ type BoxRefType = Platform.Select<{
   native: View;
 }>;
 
-export { BaseBoxProps, BoxProps, BoxRefType, StyledPropsBlade, validBoxAsValues };
+export { BaseBoxProps, BoxProps, BoxRefType, StyledPropsBlade, FlexboxProps, validBoxAsValues };

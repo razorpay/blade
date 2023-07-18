@@ -8,9 +8,12 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 const validateBackgroundString = (stringBackgroundColorValue: string): void => {
-  if (!stringBackgroundColorValue.startsWith('surface.background')) {
+  if (
+    !stringBackgroundColorValue.startsWith('surface.background') &&
+    !stringBackgroundColorValue.startsWith('brand.')
+  ) {
     throw new Error(
-      `[Blade - Box]: Oops! Currently you can only use \`surface.background.*\` tokens with backgroundColor property but we received \`${stringBackgroundColorValue}\` instead.\n\n Do you have a usecase of using other values? Create an issue on https://github.com/razorpay/blade repo to let us know and we can discuss ✨`,
+      `[Blade - Box]: Oops! Currently you can only use \`surface.background.*\` and \`brand.*\` tokens with backgroundColor property but we received \`${stringBackgroundColorValue}\` instead.\n\n Do you have a usecase of using other values? Create an issue on https://github.com/razorpay/blade repo to let us know and we can discuss ✨`,
     );
   }
 };
@@ -115,6 +118,8 @@ const makeBoxProps = (props: BoxProps): KeysRequired<Omit<BoxProps, 'testID' | '
     backgroundPosition: props.backgroundPosition,
     backgroundOrigin: props.backgroundOrigin,
     backgroundRepeat: props.backgroundRepeat,
+    elevation: props.elevation,
+
     // Border
     borderWidth: props.borderWidth,
     borderColor: props.borderColor,

@@ -184,16 +184,18 @@ exports[`<BaseInput /> should render 1`] = `
         style={
           Array [
             Object {
+              "display": "flex",
+              "flexDirection": "row",
+              "position": "relative",
+              "width": "100%",
+            },
+            Object {
               "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
               "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
               "borderBottomStyle": "solid",
               "borderBottomWidth": 1,
               "borderTopLeftRadius": 2,
               "borderTopRightRadius": 2,
-              "display": "flex",
-              "flexDirection": "row",
-              "position": "relative",
-              "width": "100%",
             },
           ]
         }
@@ -486,16 +488,18 @@ exports[`<BaseInput /> should render with icons 1`] = `
         style={
           Array [
             Object {
+              "display": "flex",
+              "flexDirection": "row",
+              "position": "relative",
+              "width": "100%",
+            },
+            Object {
               "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
               "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
               "borderBottomStyle": "solid",
               "borderBottomWidth": 1,
               "borderTopLeftRadius": 2,
               "borderTopRightRadius": 2,
-              "display": "flex",
-              "flexDirection": "row",
-              "position": "relative",
-              "width": "100%",
             },
           ]
         }
