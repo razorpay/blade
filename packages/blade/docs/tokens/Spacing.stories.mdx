@@ -1,6 +1,7 @@
 import { Meta, DocsContainer } from '@storybook/addon-docs';
 import { useTheme, BladeProvider } from '../../src/components';
 import { paymentTheme, bankingTheme } from '../../src/tokens';
+import { makeSpace } from '../../src/utils';
 
 <Meta
   title="Tokens/Spacing"
@@ -34,6 +35,8 @@ import { paymentTheme, bankingTheme } from '../../src/tokens';
 
 # ↔️ Spacing
 
+> These tokens should be used along with the [makeSpace util](?path=/story/utils-makespace--page).
+
 export const Spacing = () => {
   const { theme } = useTheme();
   return (
@@ -45,8 +48,8 @@ export const Spacing = () => {
             <td>
               <div
                 style={{
-                  height: `${value}px`,
-                  width: `${value}px`,
+                  height: makeSpace(value),
+                  width: makeSpace(value),
                   backgroundColor: 'rgba(223, 135, 0, 0.18)',
                 }}
               />

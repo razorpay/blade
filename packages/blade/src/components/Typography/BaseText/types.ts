@@ -18,6 +18,8 @@ type BadgeTextColors = `badge.text.${DotNotationColorStringToken<
   Theme['colors']['badge']['text']
 >}`;
 
+type BrandPrimaryColors = `brand.primary.${keyof Theme['colors']['brand']['primary']}`;
+
 type As =
   | 'code'
   | 'h1'
@@ -35,7 +37,13 @@ type As =
   | 'div';
 export type BaseTextProps = {
   id?: string;
-  color?: ActionColors | FeedbackColors | SurfaceColors | FeedbackActionColors | BadgeTextColors;
+  color?:
+    | BrandPrimaryColors
+    | ActionColors
+    | FeedbackColors
+    | SurfaceColors
+    | FeedbackActionColors
+    | BadgeTextColors;
   fontFamily?: keyof Theme['typography']['fonts']['family'];
   fontSize?: keyof Theme['typography']['fonts']['size'];
   fontWeight?: keyof Theme['typography']['fonts']['weight'];

@@ -62,6 +62,7 @@ export default {
     label: 'Checkbox Group',
     helpText: undefined,
     isDisabled: false,
+    isRequired: false,
     necessityIndicator: 'none',
     labelPosition: undefined,
     validationState: undefined,

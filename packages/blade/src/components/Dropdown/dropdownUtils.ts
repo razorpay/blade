@@ -389,6 +389,11 @@ export const getDropdownOverlayPosition = ({
   const HEIGHT_THRESHOLD = (Number(actionListItemEl?.clientHeight) + Number(size[16])) * -1;
 
   if (!isMenu) {
+    // In SelectInput, we set position wrt to right so that leftLabel position can be accomodated
+    // without additional offset calculation from left
+    newPosition.left = undefined;
+    newPosition.right = zeroSpacing;
+
     if (bottom > HEIGHT_THRESHOLD) {
       newPosition.bottom = `${Number(triggererEl?.clientHeight) + Number(size[32])}px`;
       newPosition.top = undefined;

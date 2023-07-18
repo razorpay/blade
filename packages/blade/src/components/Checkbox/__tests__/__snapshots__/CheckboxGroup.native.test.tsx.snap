@@ -260,6 +260,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                     <View
                       data-blade-component="checkbox-icon-wrapper"
                       isChecked={false}
+                      isDisabled={false}
                       isNegative={false}
                       size="medium"
                       style={
@@ -423,6 +424,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                     <View
                       data-blade-component="checkbox-icon-wrapper"
                       isChecked={false}
+                      isDisabled={false}
                       isNegative={false}
                       size="medium"
                       style={
@@ -586,6 +588,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                     <View
                       data-blade-component="checkbox-icon-wrapper"
                       isChecked={false}
+                      isDisabled={false}
                       isNegative={false}
                       size="medium"
                       style={
@@ -933,6 +936,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                     <View
                       data-blade-component="checkbox-icon-wrapper"
                       isChecked={false}
+                      isDisabled={false}
                       isNegative={false}
                       size="medium"
                       style={
@@ -1096,6 +1100,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                     <View
                       data-blade-component="checkbox-icon-wrapper"
                       isChecked={false}
+                      isDisabled={false}
                       isNegative={false}
                       size="medium"
                       style={
@@ -1259,6 +1264,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                     <View
                       data-blade-component="checkbox-icon-wrapper"
                       isChecked={false}
+                      isDisabled={false}
                       isNegative={false}
                       size="medium"
                       style={

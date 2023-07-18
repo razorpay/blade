@@ -68,6 +68,7 @@ export default {
     label: 'Radio example',
     helpText: undefined,
     isDisabled: false,
+    isRequired: false,
     necessityIndicator: 'none',
     labelPosition: undefined,
     validationState: undefined,
