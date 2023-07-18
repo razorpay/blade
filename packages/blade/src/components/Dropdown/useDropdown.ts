@@ -361,7 +361,7 @@ const useDropdown = (): UseDropdownReturnValue => {
     e: React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLInputElement>,
     index: number,
   ): void => {
-    const actionType = getActionFromKey(e, isOpen);
+    const actionType = getActionFromKey(e, isOpen, activeTagIndex);
     if (typeof actionType === 'number') {
       onOptionChange(actionType, index);
     }
@@ -405,8 +405,9 @@ const useDropdown = (): UseDropdownReturnValue => {
     }
   };
 
-  const onTagFocusChange = (action: SelectActionsType): void => {
+  const onTagAction = (action: SelectActionsType): void => {
     setActiveIndex(-1);
+    console.log({ action });
     if (action === 'MoveLeftTag') {
       if (activeTagIndex < 0) {
         setActiveTagIndex(selectedIndices.length - 1);
@@ -422,6 +423,18 @@ const useDropdown = (): UseDropdownReturnValue => {
     if (action === 'MoveRightTag') {
       if (activeTagIndex < selectedIndices.length - 1) {
         setActiveTagIndex(activeTagIndex + 1);
+      }
+
+      return;
+    }
+
+    if (action === 'RemoveTag') {
+      const selectedIndex = selectedIndices.find(
+        (_selectedIndex, tagIndex) => tagIndex === activeTagIndex,
+      );
+
+      if (selectedIndex !== undefined) {
+        removeOption(selectedIndex);
       }
     }
   };
@@ -447,7 +460,7 @@ const useDropdown = (): UseDropdownReturnValue => {
       setIsKeydownPressed(true);
     }
 
-    const actionType = getActionFromKey(e.event, isOpen);
+    const actionType = getActionFromKey(e.event, isOpen, activeTagIndex);
 
     if (actionType) {
       performAction(actionType, e, {
@@ -455,7 +468,7 @@ const useDropdown = (): UseDropdownReturnValue => {
         close,
         onOptionChange,
         onComboType,
-        onTagFocusChange,
+        onTagAction,
         selectCurrentOption: () => {
           const isSelected = selectOption(activeIndex);
           if (rest.hasFooterAction && !isReactNative()) {

@@ -26,7 +26,8 @@ export type SelectActionsType =
   | 'Select'
   | 'Type'
   | 'MoveLeftTag'
-  | 'MoveRightTag';
+  | 'MoveRightTag'
+  | 'RemoveTag';
 
 export const componentIds = {
   DropdownOverlay: 'DropdownOverlay',
@@ -44,6 +45,7 @@ const SelectActions: Record<SelectActionsType, SelectActionsType> = {
   CloseSelect: 'CloseSelect',
   MoveLeftTag: 'MoveLeftTag',
   MoveRightTag: 'MoveRightTag',
+  RemoveTag: 'RemoveTag',
   First: 'First',
   Last: 'Last',
   Next: 'Next',
@@ -77,6 +79,7 @@ export function filterOptions(
 export function getActionFromKey(
   e: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
   isOpen: boolean,
+  activeTagIndex: number,
 ): SelectActionsType | undefined {
   if (!e) {
     return undefined;
@@ -108,6 +111,12 @@ export function getActionFromKey(
 
   if (key === 'ArrowLeft') {
     return SelectActions.MoveLeftTag;
+  }
+
+  if (activeTagIndex >= 0) {
+    if (key === 'Backspace') {
+      return SelectActions.RemoveTag;
+    }
   }
 
   // handle typing characters when open or closed
@@ -225,7 +234,7 @@ type ActionsType = {
   selectCurrentOption: () => void;
   onOptionChange: (action: SelectActionsType) => void;
   onComboType: (letter: string, action: SelectActionsType) => void;
-  onTagFocusChange: (action: SelectActionsType) => void;
+  onTagAction: (action: SelectActionsType) => void;
 };
 /**
  * Performs the action when actionType is passed
@@ -256,7 +265,8 @@ export const performAction = (
       return true;
     case SelectActions.MoveLeftTag:
     case SelectActions.MoveRightTag:
-      actions.onTagFocusChange(action);
+    case SelectActions.RemoveTag:
+      actions.onTagAction(action);
       return true;
     case SelectActions.CloseSelect:
       event.preventDefault();
