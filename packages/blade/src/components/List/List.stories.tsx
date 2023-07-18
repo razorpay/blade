@@ -6,6 +6,7 @@ import { Heading } from '../Typography';
 import type { ListProps } from './List';
 import { List } from './List';
 import { ListItem } from './ListItem';
+import { ListItemText } from './ListItemText';
 import { ListItemLink } from './ListItemLink';
 import { ListItemCode } from './ListItemCode';
 import iconMap from '~components/Icons/iconMap';
@@ -319,3 +320,50 @@ const ListWithCodeTemplate: ComponentStory<typeof List> = () => {
 };
 export const ListWithCodeAndIcon = ListWithCodeTemplate.bind({});
 ListWithCodeAndIcon.storyName = 'With Inline Code';
+
+const ListWithListItemTextTemplate: ComponentStory<typeof List> = () => {
+  return (
+    <BaseBox>
+      <Heading>Small Size:</Heading>
+      <List variant="ordered" size="small">
+        <ListItem>
+          <ListItemText>
+            You will receive an invoice after a
+            <ListItemText as="span" weight="bold" color="feedback.text.positive.lowContrast">
+              {' successful '}
+            </ListItemText>
+            payment
+          </ListItemText>
+        </ListItem>
+        <ListItem>
+          You will receive a mail with further instruction after a
+          <ListItemText as="span" weight="bold" color="feedback.text.negative.lowContrast">
+            {' failed '}
+          </ListItemText>{' '}
+          payment
+        </ListItem>
+      </List>
+      <Heading>Medium Size:</Heading>
+      <List variant="ordered" size="medium">
+        <ListItem>
+          <ListItemText>
+            You will receive an invoice after a
+            <ListItemText as="span" weight="bold" color="feedback.text.positive.lowContrast">
+              {' successful '}
+            </ListItemText>
+            payment
+          </ListItemText>
+        </ListItem>
+        <ListItem>
+          You will receive a mail with further instruction after a
+          <ListItemText as="span" weight="bold" color="feedback.text.negative.lowContrast">
+            {' failed '}
+          </ListItemText>
+          payment
+        </ListItem>
+      </List>
+    </BaseBox>
+  );
+};
+export const ListWithListItemText = ListWithListItemTextTemplate.bind({});
+ListWithListItemText.storyName = 'With ListItemText';

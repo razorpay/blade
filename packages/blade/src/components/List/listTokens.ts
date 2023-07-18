@@ -104,11 +104,6 @@ const listItemUnorderedBulletSize: Record<
 
 const listItemMarginBottom: DotNotationSpacingStringToken = 'spacing.3';
 
-const ComponentIds = {
-  List: 'List',
-  ListItem: 'ListItem',
-};
-
 const listItemOrderedBulletBoxSize: Record<
   string,
   Record<TypographyPlatforms, Record<NonNullable<ListProps['size']>, SpacingValueType>>
@@ -143,7 +138,6 @@ const listItemCodeSize: Record<NonNullable<ListProps['size']>, NonNullable<CodeP
 
 export {
   listItemMarginLeft,
-  ComponentIds,
   listItemMarginBottom,
   listItemBulletMarginRight,
   listItemBulletMarginTop,

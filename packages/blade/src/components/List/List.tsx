@@ -5,7 +5,6 @@ import type { IconComponent } from '../Icons';
 import { ListProvider, useListContext } from './ListContext';
 import { UnorderedList } from './UnorderedList';
 import { OrderedList } from './OrderedList';
-import { ComponentIds } from './listTokens';
 import type { ListItemProps } from './ListItem';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { DotNotationSpacingStringToken, TestID } from '~utils/types';
@@ -102,7 +101,7 @@ const _List = ({
 
   const childrenArray = React.Children.toArray(children);
   const childListItems = childrenArray.filter((child) => {
-    if (isValidAllowedChildren(child, 'ListItem')) {
+    if (isValidAllowedChildren(child, MetaConstants.ListItem)) {
       return child;
     } else {
       throw new Error('[Blade List]: You can only pass a ListItem as a child to List.');
@@ -129,7 +128,7 @@ const _List = ({
   );
 };
 
-const List = assignWithoutSideEffects(_List, { componentId: ComponentIds.List });
+const List = assignWithoutSideEffects(_List, { componentId: MetaConstants.List });
 
 export { List };
 export type { ListProps };
