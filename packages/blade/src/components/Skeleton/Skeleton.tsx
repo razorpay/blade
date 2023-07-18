@@ -1,21 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 import { PulseAnimation } from './PulseAnimation';
-import type { BaseBoxProps } from '~components/Box/BaseBox';
-import type { FlexboxProps } from '~components/Box/BaseBox/types/propsTypes';
-import type { StyledPropsBlade } from '~components/Box/styledProps';
+import type { SkeletonProps } from './types';
 import { getStyledProps } from '~components/Box/styledProps';
 import { makeAccessible } from '~utils/makeAccessible';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-
-type SkeletonProps = StyledPropsBlade &
-  Pick<
-    BaseBoxProps,
-    'width' | 'maxWidth' | 'minWidth' | 'height' | 'maxHeight' | 'minHeight' | 'borderRadius'
-  > &
-  Partial<FlexboxProps> & {
-    contrast?: 'low' | 'high';
-    testID?: string;
-  };
 
 const Skeleton = ({
   contrast = 'low',
@@ -70,4 +58,4 @@ const Skeleton = ({
   );
 };
 
-export { Skeleton, SkeletonProps };
+export { Skeleton };

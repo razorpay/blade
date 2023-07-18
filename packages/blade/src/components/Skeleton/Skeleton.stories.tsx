@@ -1,8 +1,8 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import React from 'react';
 import kebabCase from 'lodash/kebabCase';
-import { Skeleton, Skeleton as SkeletonComponent } from './Skeleton';
-import type { SkeletonProps } from './Skeleton';
+import type { SkeletonProps } from './';
+import { Skeleton, Skeleton as SkeletonComponent } from './';
 import {
   Card,
   CardBody,
