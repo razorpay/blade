@@ -102,8 +102,6 @@ type BorderColorString<T extends ColorObjects> = `${T}.border.${DotNotationColor
   Theme['colors'][T]['border']
 >}`;
 
-type BrandColorString = `brand.${DotNotationColorStringToken<Theme['colors']['brand']>}`;
-
 // Created this as an array so I can reuse it for runtime validation
 const validBoxAsValues = [
   'div',
