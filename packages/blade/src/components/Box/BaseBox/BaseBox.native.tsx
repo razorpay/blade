@@ -35,17 +35,18 @@ const StyledBaseBox = styled(View)
   return cssObject;
 });
 
-// we have to use `as StyledComponent<>` to type this otherwise `as` prop's types break
-// since we loose the generic nature of the component
-const _BaseBox = React.forwardRef((props, ref) => {
+// @ts-expect-error we have to use `as StyledComponent<>` to type this otherwise `as` prop's types break
+// Since we loose the generic nature of the component
+const _BaseBox = (props, ref): React.ReactElement => {
   const { theme } = useTheme();
   const shadow = (getElevationValue(props.elevation, theme) as unknown) as ElevationStyles;
-
   return (
     <StyledBaseBox ref={ref} {...props} style={shadow ? [shadow, props.style] : props.style} />
   );
-}) as StyledComponent<typeof View, DefaultTheme, BaseBoxProps>;
+};
 
-const BaseBox = assignWithoutSideEffects(_BaseBox, { displayName: 'BaseBox' });
+const BaseBox = assignWithoutSideEffects(React.forwardRef(_BaseBox), {
+  displayName: 'BaseBox',
+}) as StyledComponent<typeof View, DefaultTheme, BaseBoxProps>;
 
 export { BaseBox };

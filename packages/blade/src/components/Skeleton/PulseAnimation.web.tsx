@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
 import type { DefaultTheme, Keyframes } from 'styled-components';
 import styled, { css, keyframes } from 'styled-components';
-import BaseBox from '~components/Box/BaseBox';
+import BaseBox from '../Box/BaseBox';
 import { castWebType, makeMotionTime } from '~utils';
 
 const pulseKeyframes = ({
