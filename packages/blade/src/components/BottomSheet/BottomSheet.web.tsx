@@ -84,7 +84,7 @@ const _BottomSheet = ({
 
   const bottomSheetAndDropdownGlue = useBottomSheetAndDropdownGlue();
   const [positionY, _setPositionY] = React.useState(0);
-  const _isOpen = bottomSheetAndDropdownGlue?.isOpen ?? isOpen;
+  const _isOpen = isOpen ?? bottomSheetAndDropdownGlue?.isOpen;
   const [isDragging, setIsDragging] = React.useState(false);
 
   const preventScrollingRef = React.useRef(true);

@@ -720,7 +720,9 @@ exports[`<Card /> should render a Card with Header 1`] = `
             data-blade-component="base-box"
             style={
               Array [
-                Object {},
+                Object {
+                  "marginRight": 16,
+                },
               ]
             }
           >

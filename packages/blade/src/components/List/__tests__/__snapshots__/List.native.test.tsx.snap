@@ -1326,6 +1326,188 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
 </View>
 `;
 
+exports[`<List /> should render List with inline ListItemText 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="base-box"
+    style={
+      Array [
+        Object {},
+      ]
+    }
+  >
+    <View
+      accessibilityRole="list"
+      data-blade-component="list"
+      marginTop="spacing.3"
+      style={
+        Array [
+          Object {
+            "marginTop": 8,
+          },
+        ]
+      }
+    >
+      <View
+        data-blade-component="list-item"
+        hasIcon={false}
+        level={1}
+        style={
+          Array [
+            Object {
+              "marginLeft": 4,
+            },
+          ]
+        }
+        variant="unordered"
+      >
+        <View
+          alignItems="center"
+          data-blade-component="base-box"
+          display="flex"
+          flexDirection="row"
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "display": "flex",
+                "flexDirection": "row",
+                "marginBottom": 8,
+              },
+            ]
+          }
+        >
+          <View
+            alignSelf="flex-start"
+            data-blade-component="base-box"
+            display="flex"
+            style={
+              Array [
+                Object {
+                  "alignSelf": "flex-start",
+                  "display": "flex",
+                  "marginRight": 8,
+                  "marginTop": 7,
+                },
+              ]
+            }
+          >
+            <RNSVGSvgView
+              accessibilityElementsHidden={true}
+              align="xMidYMid"
+              bbHeight="6px"
+              bbWidth="6px"
+              data-blade-component="icon"
+              fill="none"
+              focusable={false}
+              height="6px"
+              importantForAccessibility="no-hide-descendants"
+              meetOrSlice={0}
+              minX={0}
+              minY={0}
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "transparent",
+                    "borderWidth": 0,
+                  },
+                  Array [
+                    Object {},
+                  ],
+                  Object {
+                    "flex": 0,
+                    "height": 6,
+                    "width": 6,
+                  },
+                ]
+              }
+              vbHeight={6}
+              vbWidth={6}
+              width="6px"
+            >
+              <RNSVGGroup
+                fill={null}
+                propList={
+                  Array [
+                    "fill",
+                  ]
+                }
+              >
+                <RNSVGCircle
+                  cx="3px"
+                  cy="3px"
+                  fill={4288851646}
+                  propList={
+                    Array [
+                      "fill",
+                    ]
+                  }
+                  r="3px"
+                />
+              </RNSVGGroup>
+            </RNSVGSvgView>
+          </View>
+          <View
+            data-blade-component="base-box"
+            display="flex"
+            flexDirection="row"
+            flexWrap="wrap"
+            style={
+              Array [
+                Object {
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "flexWrap": "wrap",
+                },
+              ]
+            }
+          >
+            <Text
+              color="action.text.secondary.default"
+              data-blade-component="text"
+              fontFamily="text"
+              fontSize={100}
+              fontStyle="normal"
+              fontWeight="bold"
+              lineHeight={100}
+              style={
+                Array [
+                  Object {
+                    "color": "hsla(218, 89%, 51%, 1)",
+                    "fontFamily": "Lato",
+                    "fontSize": 14,
+                    "fontStyle": "normal",
+                    "fontWeight": "700",
+                    "lineHeight": 20,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+            >
+              Level 1
+            </Text>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
 exports[`<List /> should render medium ordered List 1`] = `
 <View
   style={

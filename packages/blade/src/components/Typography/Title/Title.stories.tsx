@@ -68,7 +68,7 @@ export default TitleStoryMeta;
 export const Title = TitleTemplate.bind({});
 export const WithColor = TitleTemplate.bind({});
 WithColor.args = {
-  color: 'feedback.positive.action.text.primary.default.lowContrast',
+  color: 'brand.primary.500',
 };
 
 const Sup = isReactNative() ? TitleComponent : 'sup';
@@ -77,19 +77,13 @@ const WithMixedColorsTemplate: ComponentStory<typeof TitleComponent> = () => {
     <Box>
       <TitleComponent>
         Supercharge your business with the all‑powerful{' '}
-        <TitleComponent
-          as="span"
-          color="feedback.information.action.text.primary.default.lowContrast"
-        >
+        <TitleComponent as="span" color="brand.primary.500">
           Payment Gateway
         </TitleComponent>
       </TitleComponent>
       <TitleComponent marginTop="spacing.5">
         Start accepting{' '}
-        <TitleComponent
-          as="span"
-          color="feedback.information.action.text.primary.default.lowContrast"
-        >
+        <TitleComponent as="span" color="feedback.text.information.lowContrast">
           payments
         </TitleComponent>{' '}
         at just 2% <Sup>*</Sup>

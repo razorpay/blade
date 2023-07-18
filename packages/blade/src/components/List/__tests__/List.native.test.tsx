@@ -2,6 +2,7 @@ import { List } from '../List';
 import { ListItem } from '../ListItem';
 import { ListItemLink } from '../ListItemLink';
 import { ListItemCode } from '../ListItemCode';
+import { ListItemText } from '../ListItemText';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 import { ArrowRightIcon, ArrowUpIcon } from '~components/Icons';
 import { Heading } from '~components/Typography';
@@ -45,6 +46,19 @@ describe('<List />', () => {
     );
     expect(toJSON()).toMatchSnapshot();
     expect(getByText(linkText)).toBeTruthy();
+  });
+
+  it('should render List with inline ListItemText', () => {
+    const { toJSON } = renderWithTheme(
+      <List>
+        <ListItem>
+          <ListItemText weight="bold" color="action.text.secondary.default">
+            Level 1
+          </ListItemText>
+        </ListItem>
+      </List>,
+    );
+    expect(toJSON()).toMatchSnapshot();
   });
 
   it('should render List with inline ListItemCode', () => {
@@ -215,7 +229,7 @@ describe('<List />', () => {
         </List>,
       ),
     ).toThrow(
-      '[Blade List]: You can only pass a List, ListItemLink, ListItemCode or a string as a child to ListItem.',
+      '[Blade List]: You can only pass a List, ListItemLink, ListItemCode, ListItemText or a string as a child to ListItem.',
     );
     mockConsoleError.mockRestore();
   });
