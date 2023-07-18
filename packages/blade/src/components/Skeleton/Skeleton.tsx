@@ -2,6 +2,7 @@
 import { PulseAnimation } from './PulseAnimation';
 import type { SkeletonProps } from './types';
 import { getStyledProps } from '~components/Box/styledProps';
+import { makeAccessible } from '~utils/makeAccessible';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
 const Skeleton = ({
@@ -50,9 +51,9 @@ const Skeleton = ({
       placeSelf={placeSelf}
       order={order}
       contrast={contrast}
-      testID={testID}
       {...getStyledProps(props)}
-      {...metaAttribute({ name: MetaConstants.Skeleton })}
+      {...makeAccessible({ hidden: true })}
+      {...metaAttribute({ name: MetaConstants.Skeleton, testID })}
     />
   );
 };
