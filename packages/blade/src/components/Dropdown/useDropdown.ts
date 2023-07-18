@@ -47,6 +47,11 @@ type DropdownContextType = {
   /** Currently active (focussed) index  */
   activeIndex: number;
   setActiveIndex: (value: number) => void;
+
+  /** Currently active (focussed) tag  */
+  activeTagIndex: number;
+  setActiveTagIndex: (value: number) => void;
+
   /** Used to ignore blur on certains events. E.g. to ignore blur of dropdown when click is inside the dropdown */
   shouldIgnoreBlur: boolean;
   setShouldIgnoreBlur: (value: boolean) => void;
@@ -113,6 +118,8 @@ const DropdownContext = React.createContext<DropdownContextType>({
   setOptions: noop,
   activeIndex: -1,
   setActiveIndex: noop,
+  activeTagIndex: -1,
+  setActiveTagIndex: noop,
   shouldIgnoreBlur: false,
   setShouldIgnoreBlur: noop,
   shouldIgnoreBlurAnimation: false,
@@ -208,6 +215,8 @@ const useDropdown = (): UseDropdownReturnValue => {
     setSelectedIndices,
     activeIndex,
     setActiveIndex,
+    activeTagIndex,
+    setActiveTagIndex,
     shouldIgnoreBlur,
     setShouldIgnoreBlur,
     isKeydownPressed,
@@ -332,6 +341,7 @@ const useDropdown = (): UseDropdownReturnValue => {
    * Function that we call when we want to move focus from one option to other
    */
   const onOptionChange = (actionType: SelectActionsType, index?: number): void => {
+    setActiveTagIndex(-1);
     const max = options.length - 1;
     const newIndex = index ?? activeIndex;
     setActiveIndex(getUpdatedIndex(newIndex, max, actionType));
@@ -396,7 +406,24 @@ const useDropdown = (): UseDropdownReturnValue => {
   };
 
   const onTagFocusChange = (action: SelectActionsType): void => {
-    console.log({ action });
+    setActiveIndex(-1);
+    if (action === 'MoveLeftTag') {
+      if (activeTagIndex < 0) {
+        setActiveTagIndex(selectedIndices.length - 1);
+        return;
+      }
+
+      if (activeTagIndex > 0) {
+        setActiveTagIndex(activeTagIndex - 1);
+        return;
+      }
+    }
+
+    if (action === 'MoveRightTag') {
+      if (activeTagIndex < selectedIndices.length - 1) {
+        setActiveTagIndex(activeTagIndex + 1);
+      }
+    }
   };
 
   /**
@@ -455,6 +482,8 @@ const useDropdown = (): UseDropdownReturnValue => {
     onOptionClick,
     activeIndex,
     setActiveIndex,
+    activeTagIndex,
+    setActiveTagIndex,
     shouldIgnoreBlur,
     setShouldIgnoreBlur,
     isKeydownPressed,

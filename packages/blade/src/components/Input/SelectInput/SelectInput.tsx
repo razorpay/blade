@@ -65,6 +65,7 @@ const _SelectInput = (
     onTriggerBlur,
     dropdownBaseId,
     activeIndex,
+    activeTagIndex,
     triggererRef,
     hasFooterAction,
     dropdownTriggerer,
@@ -179,9 +180,12 @@ const _SelectInput = (
     setHasLabelOnLeft(props.labelPosition === 'left');
   }, [props.labelPosition, setHasLabelOnLeft]);
 
+  console.log({ activeTagIndex });
+
   const getTags = (): React.ReactElement[] => {
-    return selectedIndices.map((selectedIndex) => (
+    return selectedIndices.map((selectedIndex, tagIndex) => (
       <Tag
+        _isTagFocussed={tagIndex === activeTagIndex}
         key={selectedIndex}
         marginRight="spacing.2"
         onDismiss={() => {
