@@ -29,16 +29,24 @@ const Page = (): React.ReactElement => {
       <Title>Usage</Title>
       <Sandbox>
         {`
+        import React from 'react';
         import { Tag, FileTextIcon } from '@razorpay/blade/components';
         
         function App(): JSX.Element {
+          const [isTagVisible, setIsTagVisible] = React.useState(true);
+
           return (
-            <Tag
-              icon={FileTextIcon}
-              onDismiss={({ value }) => console.log('Tag dismissed', value)}
-            >
-              Unpaid
-            </Tag>
+            isTagVisible 
+            ? <Tag
+                icon={FileTextIcon}
+                onDismiss={() => {
+                  console.log('Unpaid Tag dismissed');
+                  setIsTagVisible(false);
+                }}
+              >
+                Unpaid
+              </Tag>
+            : null
           )
         }
 
@@ -69,20 +77,27 @@ export default {
 } as Meta<TagProps>;
 
 const TagTemplate: ComponentStory<typeof Tag> = ({ children, ...args }) => {
-  return <Tag {...args}>{children}</Tag>;
+  const [isTagVisible, setIsTagVisible] = React.useState(true);
+  return (
+    <Box>
+      {isTagVisible ? (
+        <Tag {...args} onDismiss={() => setIsTagVisible(false)}>
+          {children}
+        </Tag>
+      ) : null}
+    </Box>
+  );
 };
 
 export const Default = TagTemplate.bind({});
 Default.args = {
   children: 'Unpaid',
-  onDismiss: ({ value }) => console.log('dismiss tag', value),
   icon: 'FileTextIcon',
 } as TagProps & { icon: string };
 
 export const Disabled = TagTemplate.bind({});
 Disabled.args = {
   children: 'Disabled Tag',
-  onDismiss: ({ value }) => console.log('dismiss tag', value),
   icon: 'FileTextIcon',
   isDisabled: true,
 } as TagProps & { icon: string };
@@ -123,7 +138,7 @@ export const ControlledTags = (props: TagProps): React.ReactElement => {
             key={tagName}
             {...props}
             marginRight="spacing.2"
-            onDismiss={({ value }) => removeTag(value)}
+            onDismiss={() => removeTag(tagName)}
           >
             {tagName}
           </Tag>

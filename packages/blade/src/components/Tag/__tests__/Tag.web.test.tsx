@@ -7,7 +7,15 @@ import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<Tag />', () => {
   it('should render tag', () => {
-    const { container } = renderWithTheme(<Tag>in:User</Tag>);
+    const { container } = renderWithTheme(
+      <Tag
+        onDismiss={() => {
+          console.log('tag dismissed');
+        }}
+      >
+        in:User
+      </Tag>,
+    );
     expect(container).toMatchSnapshot();
   });
 

@@ -5,7 +5,15 @@ import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<Tag />', () => {
   it('should render tag', () => {
-    const { toJSON } = renderWithTheme(<Tag>in:User</Tag>);
+    const { toJSON } = renderWithTheme(
+      <Tag
+        onDismiss={() => {
+          console.log('tag dismissed');
+        }}
+      >
+        in:User
+      </Tag>,
+    );
     expect(toJSON()).toMatchSnapshot();
   });
 

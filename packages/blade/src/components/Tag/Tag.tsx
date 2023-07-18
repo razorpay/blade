@@ -27,7 +27,7 @@ type TagProps = {
   /**
    * Callback when close icon on Tag is clicked
    */
-  onDismiss?: ({ value }: { value: StringChildrenType }) => void;
+  onDismiss: () => void;
 
   /**
    * Text that renders inside Tag
@@ -50,12 +50,6 @@ const Tag = ({
   testID,
   ...styledProps
 }: TagProps): React.ReactElement | null => {
-  const [isVisible, setIsVisible] = React.useState(true);
-
-  if (!isVisible) {
-    return null;
-  }
-
   const textColor = isDisabled
     ? 'surface.text.placeholder.lowContrast'
     : 'surface.text.subtle.lowContrast';
@@ -87,8 +81,7 @@ const Tag = ({
           accessibilityLabel={`Close ${children} tag`}
           isDisabled={isDisabled}
           onClick={() => {
-            setIsVisible(false);
-            onDismiss?.({ value: children });
+            onDismiss();
           }}
         />
       </Box>

@@ -6,7 +6,15 @@ import renderWithSSR from '~utils/testing/renderWithSSR.web';
 
 describe('<Tag />', () => {
   it('should render tag', () => {
-    const { container } = renderWithSSR(<Tag>in:User</Tag>);
+    const { container } = renderWithSSR(
+      <Tag
+        onDismiss={() => {
+          console.log('tag dismissed');
+        }}
+      >
+        in:User
+      </Tag>,
+    );
     expect(container).toMatchSnapshot();
   });
 });

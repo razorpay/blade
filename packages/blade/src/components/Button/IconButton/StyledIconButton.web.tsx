@@ -21,7 +21,7 @@ const StyledButton = styled.button<StyledButtonProps>((props) => {
 
   return {
     border: 'none',
-    cursor: 'pointer',
+    cursor: props.disabled ? 'not-allowed' : 'pointer',
     padding: 0,
     borderRadius: theme.border.radius.small,
     background: 'transparent',
