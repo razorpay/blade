@@ -55,7 +55,7 @@ const Page = (): ReactElement => {
 };
 
 export default {
-  title: 'Utilities/overrideTheme',
+  title: 'Utils/overrideTheme',
   args: {
     hue: 259,
   },

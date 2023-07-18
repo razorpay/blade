@@ -8,6 +8,7 @@ export type RadioGroupContextType = Pick<
   RadioGroupProps,
   | 'validationState'
   | 'isDisabled'
+  | 'isRequired'
   | 'labelPosition'
   | 'name'
   | 'defaultValue'

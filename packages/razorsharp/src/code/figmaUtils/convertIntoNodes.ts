@@ -89,6 +89,11 @@ const convertFrameToNode = (
       ? figmaNode.fills.filter((fill) => fill.visible)
       : figmaNode.fills,
     fillStyleId: figmaNode.fillStyleId,
+    layoutSizingHorizontal: figmaNode.layoutSizingHorizontal,
+    layoutSizingVertical: figmaNode.layoutSizingVertical,
+    inferredAutoLayout: figmaNode.inferredAutoLayout,
+    maxHeight: figmaNode.maxHeight,
+    maxWidth: figmaNode.maxWidth,
   };
   return bladeFrame;
 };
