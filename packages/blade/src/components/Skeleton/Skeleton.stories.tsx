@@ -22,6 +22,7 @@ import { Divider } from '~components/Divider';
 import { announce } from '~components/LiveAnnouncer';
 import { List, ListItem, ListItemCode } from '~components/List';
 import { isReactNative } from '~utils';
+import { motion } from '~tokens/global';
 
 const Page = (): React.ReactElement => {
   return (
@@ -118,6 +119,7 @@ export default {
     borderRadius: 'medium',
   },
   parameters: {
+    chromatic: { delay: motion.duration['2xgentle'] },
     docs: {
       page: Page,
     },
