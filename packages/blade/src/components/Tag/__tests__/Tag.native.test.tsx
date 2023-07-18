@@ -17,18 +17,17 @@ describe('<Tag />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should remove tag and call onDismiss', () => {
+  it('should call onDismiss', () => {
     const dismissHandler = jest.fn();
     const { queryByText, getByLabelText } = renderWithTheme(
       <Tag onDismiss={dismissHandler}>in:User</Tag>,
     );
     expect(queryByText('in:User')).toBeTruthy();
     fireEvent.press(getByLabelText('Close in:User tag'));
-    expect(queryByText('in:User')).not.toBeTruthy();
-    expect(dismissHandler).toBeCalledWith({ value: 'in:User' });
+    expect(dismissHandler).toBeCalledWith();
   });
 
-  it('should NOT remove tag or call onDismiss on disabled Tag', () => {
+  it('should NOT call onDismiss on disabled Tag', () => {
     const dismissHandler = jest.fn();
     const { queryByText, getByLabelText } = renderWithTheme(
       <Tag onDismiss={dismissHandler} isDisabled={true}>
@@ -37,7 +36,6 @@ describe('<Tag />', () => {
     );
     expect(queryByText('in:User')).toBeTruthy();
     fireEvent.press(getByLabelText('Close in:User tag'));
-    expect(queryByText('in:User')).toBeTruthy();
     expect(dismissHandler).not.toBeCalled();
   });
 });

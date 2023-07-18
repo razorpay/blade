@@ -19,7 +19,7 @@ describe('<Tag />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should remove tag and call onDismiss', async () => {
+  it('should call onDismiss', async () => {
     const user = userEvents.setup();
     const dismissHandler = jest.fn();
     const { getByRole, queryByText } = renderWithTheme(
@@ -27,11 +27,10 @@ describe('<Tag />', () => {
     );
     expect(queryByText('in:User')).toBeInTheDocument();
     await user.click(getByRole('button', { name: 'Close in:User tag' }));
-    expect(queryByText('in:User')).not.toBeInTheDocument();
-    expect(dismissHandler).toBeCalledWith({ value: 'in:User' });
+    expect(dismissHandler).toBeCalledWith();
   });
 
-  it('should NOT remove tag or call onDismiss on disabled Tag', async () => {
+  it('should NOT call onDismiss on disabled Tag', async () => {
     const user = userEvents.setup();
     const dismissHandler = jest.fn();
     const { getByRole, queryByText } = renderWithTheme(
@@ -41,7 +40,6 @@ describe('<Tag />', () => {
     );
     expect(queryByText('in:User')).toBeInTheDocument();
     await user.click(getByRole('button', { name: 'Close in:User tag' }));
-    expect(queryByText('in:User')).toBeInTheDocument();
     expect(dismissHandler).not.toBeCalled();
   });
 });
