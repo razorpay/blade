@@ -63,6 +63,7 @@ exports[`<BaseInput /> should render 1`] = `
 }
 
 .c11 {
+  margin-top: 0px;
   margin-left: 0px;
 }
 
@@ -254,6 +255,7 @@ exports[`<BaseInput /> should render 1`] = `
   <div
     class=""
     data-blade-component="base-box"
+    style="border: 1px solid yellow;"
   >
     <div
       class="c0"
@@ -422,6 +424,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
 }
 
 .c14 {
+  margin-top: 0px;
   margin-left: 0px;
 }
 
@@ -613,6 +616,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
   <div
     class=""
     data-blade-component="base-box"
+    style="border: 1px solid yellow;"
   >
     <div
       class="c0"

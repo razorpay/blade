@@ -306,6 +306,7 @@ exports[`<OTPInput /> should render 1`] = `
           <div
             class=""
             data-blade-component="base-box"
+            style="border: 1px solid yellow;"
           >
             <div
               class="c0"
@@ -346,6 +347,7 @@ exports[`<OTPInput /> should render 1`] = `
           <div
             class=""
             data-blade-component="base-box"
+            style="border: 1px solid yellow;"
           >
             <div
               class="c0"
@@ -386,6 +388,7 @@ exports[`<OTPInput /> should render 1`] = `
           <div
             class=""
             data-blade-component="base-box"
+            style="border: 1px solid yellow;"
           >
             <div
               class="c0"
@@ -426,6 +429,7 @@ exports[`<OTPInput /> should render 1`] = `
           <div
             class=""
             data-blade-component="base-box"
+            style="border: 1px solid yellow;"
           >
             <div
               class="c0"
@@ -466,6 +470,7 @@ exports[`<OTPInput /> should render 1`] = `
           <div
             class=""
             data-blade-component="base-box"
+            style="border: 1px solid yellow;"
           >
             <div
               class="c0"
@@ -506,6 +511,7 @@ exports[`<OTPInput /> should render 1`] = `
           <div
             class=""
             data-blade-component="base-box"
+            style="border: 1px solid yellow;"
           >
             <div
               class="c0"

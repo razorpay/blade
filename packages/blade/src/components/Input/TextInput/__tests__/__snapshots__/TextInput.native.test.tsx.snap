@@ -13,6 +13,9 @@ exports[`<TextInput /> should render 1`] = `
     style={
       Array [
         Object {},
+        Object {
+          "border": "1px solid yellow",
+        },
       ]
     }
   >
@@ -282,6 +285,7 @@ exports[`<TextInput /> should render 1`] = `
         Array [
           Object {
             "marginLeft": 0,
+            "marginTop": 0,
           },
         ]
       }
@@ -319,6 +323,9 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
     style={
       Array [
         Object {},
+        Object {
+          "border": "1px solid yellow",
+        },
       ]
     }
   >
@@ -797,6 +804,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
         Array [
           Object {
             "marginLeft": 0,
+            "marginTop": -14,
           },
         ]
       }

@@ -642,7 +642,11 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
     const isTextArea = as === 'textarea';
     const isReactNative = getPlatformType() === 'react-native';
     return (
-      <BaseBox {...metaAttribute({ name: componentName, testID })} {...getStyledProps(styledProps)}>
+      <BaseBox
+        style={{ border: '1px solid yellow' }}
+        {...metaAttribute({ name: componentName, testID })}
+        {...getStyledProps(styledProps)}
+      >
         <BaseBox
           display="flex"
           flexDirection={isLabelLeftPositioned ? 'row' : 'column'}
@@ -730,7 +734,11 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
         </BaseBox>
         {/* the magic number 136 is basically max-width of label i.e 120 and then right margin i.e 16 which is the spacing between label and input field */}
         {!hideFormHint && (
-          <BaseBox marginLeft={makeSize(isLabelLeftPositioned ? 136 : 0)}>
+          <BaseBox
+            marginLeft={makeSize(isLabelLeftPositioned ? 136 : 0)}
+            // Don't ask me why 1.5, it's just a magic number
+            marginTop={makeSize(label.length > 10 ? -(label.length / 1.5) : 0)}
+          >
             <BaseBox
               display="flex"
               flexDirection="row"

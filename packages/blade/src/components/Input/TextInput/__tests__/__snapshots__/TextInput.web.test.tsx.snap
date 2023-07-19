@@ -63,6 +63,7 @@ exports[`<TextInput /> should render 1`] = `
 }
 
 .c11 {
+  margin-top: 0px;
   margin-left: 0px;
 }
 
@@ -254,6 +255,7 @@ exports[`<TextInput /> should render 1`] = `
   <div
     class=""
     data-blade-component="textinput"
+    style="border: 1px solid yellow;"
   >
     <div
       class="c0"
@@ -425,6 +427,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
 }
 
 .c16 {
+  margin-top: -14px;
   margin-left: 0px;
 }
 
@@ -629,6 +632,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   <div
     class=""
     data-blade-component="textinput"
+    style="border: 1px solid yellow;"
   >
     <div
       class="c0"
