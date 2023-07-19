@@ -6,3 +6,5 @@ export { ListItemLink } from './ListItemLink';
 export type { ListItemLinkProps } from './ListItemLink';
 export { ListItemCode } from './ListItemCode';
 export type { ListItemCodeProps } from './ListItemCode';
+export { ListItemText } from './ListItemText';
+export type { ListItemTextProps } from './ListItemText';
