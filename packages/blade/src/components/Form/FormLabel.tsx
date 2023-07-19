@@ -103,12 +103,14 @@ const FormLabel = ({
       flexDirection="row"
       alignItems="center"
       flexWrap="wrap"
+      maxHeight={makeSpace(size[36])}
     >
       <Text
         type="subdued"
         variant="body"
         contrast={contrast}
         size={isLabelLeftPositioned ? 'medium' : 'small'}
+        truncateAfterLines={2}
         weight="bold"
       >
         {children}
