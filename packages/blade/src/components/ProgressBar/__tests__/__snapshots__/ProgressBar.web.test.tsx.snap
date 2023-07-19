@@ -45,6 +45,7 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  max-height: 36px;
   gap: 0px;
 }
 
@@ -103,6 +104,11 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
   line-height: 1rem;
   margin: 0;
   padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .c6 {
@@ -1955,6 +1961,7 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  max-height: 36px;
   gap: 0px;
 }
 
@@ -2013,6 +2020,11 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
   line-height: 1rem;
   margin: 0;
   padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .c6 {
@@ -2292,6 +2304,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  max-height: 36px;
   gap: 0px;
 }
 
@@ -2350,6 +2363,11 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
   line-height: 1rem;
   margin: 0;
   padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .c6 {
@@ -2548,6 +2566,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  max-height: 36px;
   gap: 0px;
 }
 
@@ -2620,6 +2639,11 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   line-height: 1rem;
   margin: 0;
   padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .c10 {
@@ -2902,6 +2926,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  max-height: 36px;
   gap: 0px;
 }
 
@@ -2974,6 +2999,11 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   line-height: 1rem;
   margin: 0;
   padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .c10 {

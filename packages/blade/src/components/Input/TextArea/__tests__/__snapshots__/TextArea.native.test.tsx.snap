@@ -70,6 +70,7 @@ exports[`<TextArea /> should render 1`] = `
             flexDirection="row"
             flexWrap="wrap"
             gap="spacing.0"
+            maxHeight="36px"
             style={
               Array [
                 Object {
@@ -78,6 +79,7 @@ exports[`<TextArea /> should render 1`] = `
                   "flexDirection": "row",
                   "flexWrap": "wrap",
                   "gap": 0,
+                  "maxHeight": 36,
                 },
               ]
             }
@@ -90,6 +92,7 @@ exports[`<TextArea /> should render 1`] = `
               fontStyle="normal"
               fontWeight="bold"
               lineHeight={50}
+              numberOfLines={2}
               style={
                 Array [
                   Object {
