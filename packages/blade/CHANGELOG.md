@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 9.1.1
+
+### Patch Changes
+
+- fe31363e: fix(Input): correct helpText and input box alignment
+- e7317212: fix: add border-style when border width or color is set
+
 ## 9.1.0
 
 ### Minor Changes
