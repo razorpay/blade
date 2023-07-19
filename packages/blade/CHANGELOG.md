@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 9.1.2
+
+### Patch Changes
+
+- 6763f5fa: fix(List): re-export ListItemText
+
 ## 9.1.1
 
 ### Patch Changes
