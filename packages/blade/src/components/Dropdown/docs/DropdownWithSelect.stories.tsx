@@ -187,7 +187,7 @@ InternalControlledSelect.parameters = {
 // For chromatic and internal react native testing
 export const InternalMultiSelect = (): JSX.Element => {
   return (
-    <Box padding="spacing.5">
+    <Box padding="spacing.5" maxWidth="400px">
       <Dropdown selectionType="multiple">
         <SelectInput label="Select City" />
         <DropdownOverlay>

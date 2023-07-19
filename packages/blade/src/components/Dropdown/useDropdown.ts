@@ -470,6 +470,10 @@ const useDropdown = (): UseDropdownReturnValue => {
         onComboType,
         onTagAction,
         selectCurrentOption: () => {
+          if (activeIndex < 0) {
+            return;
+          }
+
           const isSelected = selectOption(activeIndex);
           if (rest.hasFooterAction && !isReactNative()) {
             rest.triggererRef.current?.focus();

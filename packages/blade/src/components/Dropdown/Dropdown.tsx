@@ -95,6 +95,7 @@ const _Dropdown = ({
   }, [isOpen]);
 
   const close = React.useCallback(() => {
+    setActiveTagIndex(-1);
     setIsOpen(false);
     onDismiss?.();
   }, [onDismiss]);

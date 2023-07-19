@@ -180,9 +180,11 @@ const _SelectInput = (
     setHasLabelOnLeft(props.labelPosition === 'left');
   }, [props.labelPosition, setHasLabelOnLeft]);
 
-  console.log({ activeTagIndex });
+  const getTags = (): React.ReactElement[] | null => {
+    if (selectionType === 'single') {
+      return null;
+    }
 
-  const getTags = (): React.ReactElement[] => {
     return selectedIndices.map((selectedIndex, tagIndex) => (
       <Tag
         _isTagFocussed={tagIndex === activeTagIndex}
@@ -228,7 +230,9 @@ const _SelectInput = (
         componentName={MetaConstants.SelectInput}
         ref={!isReactNative() ? (triggererRef as React.MutableRefObject<HTMLInputElement>) : null}
         textAlign="left"
-        placeholder={placeholder}
+        placeholder={
+          selectionType === 'multiple' && selectedIndices.length > 0 ? undefined : placeholder
+        }
         id={`${dropdownBaseId}-trigger`}
         labelId={`${dropdownBaseId}-label`}
         leadingIcon={icon}
