@@ -90,6 +90,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                 flexDirection="row"
                 flexWrap="wrap"
                 gap="spacing.0"
+                maxHeight="36px"
                 style={
                   Array [
                     Object {
@@ -98,6 +99,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                       "flexDirection": "row",
                       "flexWrap": "wrap",
                       "gap": 0,
+                      "maxHeight": 36,
                     },
                   ]
                 }
@@ -110,6 +112,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                   fontStyle="normal"
                   fontWeight="bold"
                   lineHeight={50}
+                  numberOfLines={2}
                   style={
                     Array [
                       Object {
@@ -431,7 +434,6 @@ exports[`<Dropdown /> should render dropdown 1`] = `
             Array [
               Object {
                 "marginLeft": 0,
-                "marginTop": 0,
               },
             ]
           }

@@ -50,6 +50,7 @@ exports[`<TextArea /> should render 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  max-height: 36px;
   gap: 0px;
 }
 
@@ -70,7 +71,6 @@ exports[`<TextArea /> should render 1`] = `
 }
 
 .c11 {
-  margin-top: 0px;
   margin-left: 0px;
 }
 
@@ -99,6 +99,11 @@ exports[`<TextArea /> should render 1`] = `
   line-height: 1rem;
   margin: 0;
   padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .c6 {
@@ -386,6 +391,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  max-height: 36px;
   gap: 0px;
 }
 
@@ -406,7 +412,6 @@ exports[`<TextArea /> should set number of lines 1`] = `
 }
 
 .c11 {
-  margin-top: 0px;
   margin-left: 0px;
 }
 
@@ -435,6 +440,11 @@ exports[`<TextArea /> should set number of lines 1`] = `
   line-height: 1rem;
   margin: 0;
   padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .c6 {

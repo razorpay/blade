@@ -66,6 +66,7 @@ exports[`<TextInput /> should render 1`] = `
             flexDirection="row"
             flexWrap="wrap"
             gap="spacing.0"
+            maxHeight="36px"
             style={
               Array [
                 Object {
@@ -74,6 +75,7 @@ exports[`<TextInput /> should render 1`] = `
                   "flexDirection": "row",
                   "flexWrap": "wrap",
                   "gap": 0,
+                  "maxHeight": 36,
                 },
               ]
             }
@@ -86,6 +88,7 @@ exports[`<TextInput /> should render 1`] = `
               fontStyle="normal"
               fontWeight="bold"
               lineHeight={50}
+              numberOfLines={2}
               style={
                 Array [
                   Object {
@@ -282,7 +285,6 @@ exports[`<TextInput /> should render 1`] = `
         Array [
           Object {
             "marginLeft": 0,
-            "marginTop": 0,
           },
         ]
       }
@@ -373,6 +375,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
             flexDirection="row"
             flexWrap="wrap"
             gap="spacing.0"
+            maxHeight="36px"
             style={
               Array [
                 Object {
@@ -381,6 +384,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
                   "flexDirection": "row",
                   "flexWrap": "wrap",
                   "gap": 0,
+                  "maxHeight": 36,
                 },
               ]
             }
@@ -393,6 +397,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
               fontStyle="normal"
               fontWeight="bold"
               lineHeight={50}
+              numberOfLines={2}
               style={
                 Array [
                   Object {
@@ -798,7 +803,6 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
         Array [
           Object {
             "marginLeft": 0,
-            "marginTop": -14,
           },
         ]
       }

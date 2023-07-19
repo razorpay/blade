@@ -59,6 +59,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  max-height: 36px;
   gap: 0px;
 }
 
@@ -103,6 +104,11 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   line-height: 1rem;
   margin: 0;
   padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .c5 {
@@ -589,6 +595,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  max-height: 36px;
   gap: 0px;
 }
 
@@ -629,6 +636,11 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   line-height: 1rem;
   margin: 0;
   padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .c5 {
