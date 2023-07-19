@@ -1,7 +1,7 @@
 {
   "name": "@razorpay/blade",
   "description": "The Design System that powers Razorpay",
-  "version": "9.1.1",
+  "version": "9.1.2",
   "license": "MIT",
   "engines": {
     "node": ">=18.12.1"
