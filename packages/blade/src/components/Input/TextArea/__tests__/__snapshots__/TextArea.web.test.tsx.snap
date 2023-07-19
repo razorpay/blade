@@ -261,7 +261,6 @@ exports[`<TextArea /> should render 1`] = `
   <div
     class=""
     data-blade-component="textarea"
-    style="border: 1px solid yellow;"
   >
     <div
       class="c0"
@@ -598,7 +597,6 @@ exports[`<TextArea /> should set number of lines 1`] = `
   <div
     class=""
     data-blade-component="textarea"
-    style="border: 1px solid yellow;"
   >
     <div
       class="c0"

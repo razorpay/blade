@@ -186,9 +186,6 @@ exports[`<OTPInput /> should render 1`] = `
             style={
               Array [
                 Object {},
-                Object {
-                  "border": "1px solid yellow",
-                },
               ]
             }
           >
@@ -332,9 +329,6 @@ exports[`<OTPInput /> should render 1`] = `
             style={
               Array [
                 Object {},
-                Object {
-                  "border": "1px solid yellow",
-                },
               ]
             }
           >
@@ -478,9 +472,6 @@ exports[`<OTPInput /> should render 1`] = `
             style={
               Array [
                 Object {},
-                Object {
-                  "border": "1px solid yellow",
-                },
               ]
             }
           >
@@ -624,9 +615,6 @@ exports[`<OTPInput /> should render 1`] = `
             style={
               Array [
                 Object {},
-                Object {
-                  "border": "1px solid yellow",
-                },
               ]
             }
           >
@@ -770,9 +758,6 @@ exports[`<OTPInput /> should render 1`] = `
             style={
               Array [
                 Object {},
-                Object {
-                  "border": "1px solid yellow",
-                },
               ]
             }
           >
@@ -916,9 +901,6 @@ exports[`<OTPInput /> should render 1`] = `
             style={
               Array [
                 Object {},
-                Object {
-                  "border": "1px solid yellow",
-                },
               ]
             }
           >

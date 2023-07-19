@@ -255,7 +255,6 @@ exports[`<TextInput /> should render 1`] = `
   <div
     class=""
     data-blade-component="textinput"
-    style="border: 1px solid yellow;"
   >
     <div
       class="c0"
@@ -632,7 +631,6 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   <div
     class=""
     data-blade-component="textinput"
-    style="border: 1px solid yellow;"
   >
     <div
       class="c0"

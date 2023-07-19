@@ -37,9 +37,6 @@ exports[`<Dropdown /> should render dropdown 1`] = `
         style={
           Array [
             Object {},
-            Object {
-              "border": "1px solid yellow",
-            },
           ]
         }
       >

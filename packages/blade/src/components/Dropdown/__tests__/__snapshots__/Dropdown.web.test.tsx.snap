@@ -695,7 +695,6 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
       <div
         class=""
         data-blade-component="select-input"
-        style="border: 1px solid yellow;"
       >
         <div
           class="c3"

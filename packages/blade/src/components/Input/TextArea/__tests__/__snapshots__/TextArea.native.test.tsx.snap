@@ -13,9 +13,6 @@ exports[`<TextArea /> should render 1`] = `
     style={
       Array [
         Object {},
-        Object {
-          "border": "1px solid yellow",
-        },
       ]
     }
   >

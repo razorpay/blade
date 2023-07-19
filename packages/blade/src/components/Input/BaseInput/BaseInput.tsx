@@ -642,11 +642,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
     const isTextArea = as === 'textarea';
     const isReactNative = getPlatformType() === 'react-native';
     return (
-      <BaseBox
-        style={{ border: '1px solid yellow' }}
-        {...metaAttribute({ name: componentName, testID })}
-        {...getStyledProps(styledProps)}
-      >
+      <BaseBox {...metaAttribute({ name: componentName, testID })} {...getStyledProps(styledProps)}>
         <BaseBox
           display="flex"
           flexDirection={isLabelLeftPositioned ? 'row' : 'column'}

@@ -13,9 +13,6 @@ exports[`<TextInput /> should render 1`] = `
     style={
       Array [
         Object {},
-        Object {
-          "border": "1px solid yellow",
-        },
       ]
     }
   >
@@ -323,9 +320,6 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
     style={
       Array [
         Object {},
-        Object {
-          "border": "1px solid yellow",
-        },
       ]
     }
   >
