@@ -2,14 +2,17 @@ import React from 'react';
 import { Box } from '~components/Box';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getStyledProps } from '~components/Box/styledProps';
+import type { IconButtonProps } from '~components/Button/IconButton';
 import { IconButton } from '~components/Button/IconButton';
-import type { IconComponent } from '~components/Icons';
+import type { IconComponent, IconProps } from '~components/Icons';
 import { CloseIcon } from '~components/Icons';
+import type { TextProps } from '~components/Typography';
 import { Text } from '~components/Typography';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { StringChildrenType, TestID } from '~utils/types';
 import { isReactNative } from '~utils';
 import BaseBox from '~components/Box/BaseBox';
+import type { PaddingProps } from '~components/Box/BaseBox/types/spacingTypes';
 
 type TagProps = {
   /**
@@ -41,6 +44,18 @@ type TagProps = {
 } & StyledPropsBlade &
   TestID;
 
+const Desktop = ({ children }: { children: (React.ReactElement | null)[] }): React.ReactElement => (
+  <Box display={{ base: 'none', m: 'flex' }} alignItems="center">
+    {children}
+  </Box>
+);
+
+const Mobile = ({ children }: { children: (React.ReactElement | null)[] }): React.ReactElement => (
+  <Box display={{ base: 'flex', m: 'none' }} alignItems="center">
+    {children}
+  </Box>
+);
+
 const Tag = ({
   size = 'medium',
   icon: Icon,
@@ -54,6 +69,41 @@ const Tag = ({
     ? 'surface.text.placeholder.lowContrast'
     : 'surface.text.subtle.lowContrast';
 
+  const mediumPadding: PaddingProps['padding'] = {
+    base: ['spacing.2', 'spacing.3', 'spacing.2', 'spacing.4'],
+    m: ['spacing.1', 'spacing.2', 'spacing.1', 'spacing.3'],
+  };
+
+  const largePadding: PaddingProps['padding'] = {
+    base: ['spacing.2', 'spacing.3', 'spacing.2', 'spacing.4'],
+    m: ['spacing.2', 'spacing.3', 'spacing.2', 'spacing.4'],
+  };
+
+  const getLeadingIcon = ({ size }: { size: IconProps['size'] }): React.ReactElement | null =>
+    Icon ? <Icon color={textColor} size={size} marginRight="spacing.2" /> : null;
+
+  const getTagText = ({
+    size,
+  }: {
+    size: TextProps<{ variant: 'body' }>['size'];
+  }): React.ReactElement => (
+    <Text marginRight="spacing.2" color={textColor} size={size}>
+      {children}
+    </Text>
+  );
+
+  const getCloseIcon = ({ size }: { size: IconButtonProps['size'] }): React.ReactElement => (
+    <IconButton
+      size={size}
+      icon={CloseIcon}
+      accessibilityLabel={`Close ${children} tag`}
+      isDisabled={isDisabled}
+      onClick={() => {
+        onDismiss();
+      }}
+    />
+  );
+
   return (
     <BaseBox
       display={(isReactNative() ? 'flex' : 'inline-flex') as never}
@@ -62,28 +112,21 @@ const Tag = ({
       flexWrap="nowrap"
       backgroundColor="brand.gray.a100.lowContrast"
       borderRadius="max"
-      padding={
-        size === 'medium'
-          ? ['spacing.1', 'spacing.2', 'spacing.1', 'spacing.3']
-          : ['spacing.2', 'spacing.3', 'spacing.2', 'spacing.4']
-      }
+      padding={size === 'medium' ? mediumPadding : largePadding}
       {...getStyledProps(styledProps)}
       {...metaAttribute({ name: MetaConstants.Tag, testID })}
     >
       <Box display="flex" flexDirection="row" flexWrap="nowrap" alignItems="center">
-        {Icon ? <Icon color={textColor} size="small" marginRight="spacing.2" /> : null}
-        <Text marginRight="spacing.2" color={textColor} size="small">
-          {children}
-        </Text>
-        <IconButton
-          size="small"
-          icon={CloseIcon}
-          accessibilityLabel={`Close ${children} tag`}
-          isDisabled={isDisabled}
-          onClick={() => {
-            onDismiss();
-          }}
-        />
+        <Desktop>
+          {getLeadingIcon({ size: 'small' })}
+          {getTagText({ size: 'small' })}
+          {getCloseIcon({ size: 'small' })}
+        </Desktop>
+        <Mobile>
+          {getLeadingIcon({ size: size === 'large' ? 'medium' : 'small' })}
+          {getTagText({ size: size === 'large' ? 'medium' : 'small' })}
+          {getCloseIcon({ size: size === 'large' ? 'medium' : 'small' })}
+        </Mobile>
       </Box>
     </BaseBox>
   );
