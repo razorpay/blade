@@ -68,6 +68,7 @@ exports[`<TextArea /> should render 1`] = `
             flexDirection="row"
             flexWrap="wrap"
             gap="spacing.0"
+            maxHeight="36px"
             style={
               Array [
                 Object {
@@ -76,6 +77,7 @@ exports[`<TextArea /> should render 1`] = `
                   "flexDirection": "row",
                   "flexWrap": "wrap",
                   "gap": 0,
+                  "maxHeight": 36,
                 },
               ]
             }
@@ -88,6 +90,7 @@ exports[`<TextArea /> should render 1`] = `
               fontStyle="normal"
               fontWeight="bold"
               lineHeight={50}
+              numberOfLines={2}
               style={
                 Array [
                   Object {
@@ -186,16 +189,18 @@ exports[`<TextArea /> should render 1`] = `
           Array [
             Object {
               "alignItems": "flex-start",
+              "display": "flex",
+              "flexDirection": "row",
+              "position": "relative",
+              "width": "100%",
+            },
+            Object {
               "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
               "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
               "borderBottomStyle": "solid",
               "borderBottomWidth": 1,
               "borderTopLeftRadius": 2,
               "borderTopRightRadius": 2,
-              "display": "flex",
-              "flexDirection": "row",
-              "position": "relative",
-              "width": "100%",
             },
           ]
         }

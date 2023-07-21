@@ -49,6 +49,7 @@ exports[`<Radio /> should render radio with label 1`] = `
           flexDirection="row"
           flexWrap="wrap"
           gap="spacing.0"
+          maxHeight="36px"
           style={
             Array [
               Object {
@@ -57,6 +58,7 @@ exports[`<Radio /> should render radio with label 1`] = `
                 "flexDirection": "row",
                 "flexWrap": "wrap",
                 "gap": 0,
+                "maxHeight": 36,
               },
             ]
           }
@@ -69,6 +71,7 @@ exports[`<Radio /> should render radio with label 1`] = `
             fontStyle="normal"
             fontWeight="bold"
             lineHeight={50}
+            numberOfLines={2}
             style={
               Array [
                 Object {
@@ -400,6 +403,7 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
           flexDirection="row"
           flexWrap="wrap"
           gap="spacing.0"
+          maxHeight="36px"
           style={
             Array [
               Object {
@@ -408,6 +412,7 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
                 "flexDirection": "row",
                 "flexWrap": "wrap",
                 "gap": 0,
+                "maxHeight": 36,
               },
             ]
           }
@@ -420,6 +425,7 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
             fontStyle="normal"
             fontWeight="bold"
             lineHeight={50}
+            numberOfLines={2}
             style={
               Array [
                 Object {

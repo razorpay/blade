@@ -48,6 +48,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
           flexDirection="row"
           flexWrap="wrap"
           gap="spacing.0"
+          maxHeight="36px"
           style={
             Array [
               Object {
@@ -56,6 +57,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                 "flexDirection": "row",
                 "flexWrap": "wrap",
                 "gap": 0,
+                "maxHeight": 36,
               },
             ]
           }
@@ -68,6 +70,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
             fontStyle="normal"
             fontWeight="bold"
             lineHeight={50}
+            numberOfLines={2}
             style={
               Array [
                 Object {
@@ -724,6 +727,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
           flexDirection="row"
           flexWrap="wrap"
           gap="spacing.0"
+          maxHeight="36px"
           style={
             Array [
               Object {
@@ -732,6 +736,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                 "flexDirection": "row",
                 "flexWrap": "wrap",
                 "gap": 0,
+                "maxHeight": 36,
               },
             ]
           }
@@ -744,6 +749,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
             fontStyle="normal"
             fontWeight="bold"
             lineHeight={50}
+            numberOfLines={2}
             style={
               Array [
                 Object {

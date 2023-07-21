@@ -16,6 +16,9 @@ exports[`<Counter /> should render Counter with default props 1`] = `
     style={
       Array [
         Object {
+          "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+        },
+        Object {
           "alignSelf": "center",
           "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
           "borderRadius": 9999,
@@ -104,6 +107,9 @@ exports[`<Counter /> should render high contrast blue variant Counter 1`] = `
     size="medium"
     style={
       Array [
+        Object {
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+        },
         Object {
           "alignSelf": "center",
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
@@ -194,6 +200,9 @@ exports[`<Counter /> should render high contrast information variant Counter 1`]
     style={
       Array [
         Object {
+          "backgroundColor": "hsla(193, 100%, 35%, 1)",
+        },
+        Object {
           "alignSelf": "center",
           "backgroundColor": "hsla(193, 100%, 35%, 1)",
           "borderRadius": 9999,
@@ -282,6 +291,9 @@ exports[`<Counter /> should render high contrast negative variant Counter 1`] = 
     size="medium"
     style={
       Array [
+        Object {
+          "backgroundColor": "hsla(8, 73%, 47%, 1)",
+        },
         Object {
           "alignSelf": "center",
           "backgroundColor": "hsla(8, 73%, 47%, 1)",
@@ -372,6 +384,9 @@ exports[`<Counter /> should render high contrast neutral variant Counter 1`] = `
     style={
       Array [
         Object {
+          "backgroundColor": "hsla(216, 33%, 29%, 1)",
+        },
+        Object {
           "alignSelf": "center",
           "backgroundColor": "hsla(216, 33%, 29%, 1)",
           "borderRadius": 9999,
@@ -460,6 +475,9 @@ exports[`<Counter /> should render high contrast notice variant Counter 1`] = `
     size="medium"
     style={
       Array [
+        Object {
+          "backgroundColor": "hsla(38, 97%, 38%, 1)",
+        },
         Object {
           "alignSelf": "center",
           "backgroundColor": "hsla(38, 97%, 38%, 1)",
@@ -550,6 +568,9 @@ exports[`<Counter /> should render high contrast positive variant Counter 1`] = 
     style={
       Array [
         Object {
+          "backgroundColor": "hsla(160, 100%, 26%, 1)",
+        },
+        Object {
           "alignSelf": "center",
           "backgroundColor": "hsla(160, 100%, 26%, 1)",
           "borderRadius": 9999,
@@ -638,6 +659,9 @@ exports[`<Counter /> should render large size Counter 1`] = `
     size="large"
     style={
       Array [
+        Object {
+          "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+        },
         Object {
           "alignSelf": "center",
           "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
@@ -728,6 +752,9 @@ exports[`<Counter /> should render low contrast blue variant Counter 1`] = `
     style={
       Array [
         Object {
+          "backgroundColor": "hsla(218, 89%, 51%, 0.09)",
+        },
+        Object {
           "alignSelf": "center",
           "backgroundColor": "hsla(218, 89%, 51%, 0.09)",
           "borderRadius": 9999,
@@ -816,6 +843,9 @@ exports[`<Counter /> should render low contrast information variant Counter 1`] 
     size="medium"
     style={
       Array [
+        Object {
+          "backgroundColor": "hsla(193, 100%, 35%, 0.09)",
+        },
         Object {
           "alignSelf": "center",
           "backgroundColor": "hsla(193, 100%, 35%, 0.09)",
@@ -906,6 +936,9 @@ exports[`<Counter /> should render low contrast negative variant Counter 1`] = `
     style={
       Array [
         Object {
+          "backgroundColor": "hsla(9, 91%, 56%, 0.09)",
+        },
+        Object {
           "alignSelf": "center",
           "backgroundColor": "hsla(9, 91%, 56%, 0.09)",
           "borderRadius": 9999,
@@ -994,6 +1027,9 @@ exports[`<Counter /> should render low contrast neutral variant Counter 1`] = `
     size="medium"
     style={
       Array [
+        Object {
+          "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+        },
         Object {
           "alignSelf": "center",
           "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
@@ -1084,6 +1120,9 @@ exports[`<Counter /> should render low contrast notice variant Counter 1`] = `
     style={
       Array [
         Object {
+          "backgroundColor": "hsla(36, 100%, 44%, 0.09)",
+        },
+        Object {
           "alignSelf": "center",
           "backgroundColor": "hsla(36, 100%, 44%, 0.09)",
           "borderRadius": 9999,
@@ -1172,6 +1211,9 @@ exports[`<Counter /> should render low contrast positive variant Counter 1`] = `
     size="medium"
     style={
       Array [
+        Object {
+          "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
+        },
         Object {
           "alignSelf": "center",
           "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
@@ -1262,6 +1304,9 @@ exports[`<Counter /> should render medium size Counter 1`] = `
     style={
       Array [
         Object {
+          "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+        },
+        Object {
           "alignSelf": "center",
           "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
           "borderRadius": 9999,
@@ -1350,6 +1395,9 @@ exports[`<Counter /> should render small size Counter 1`] = `
     size="small"
     style={
       Array [
+        Object {
+          "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+        },
         Object {
           "alignSelf": "center",
           "backgroundColor": "hsla(216, 15%, 54%, 0.09)",

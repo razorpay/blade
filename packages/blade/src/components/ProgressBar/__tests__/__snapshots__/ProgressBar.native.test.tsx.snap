@@ -49,6 +49,7 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
           flexDirection="row"
           flexWrap="wrap"
           gap="spacing.0"
+          maxHeight="36px"
           style={
             Array [
               Object {
@@ -57,6 +58,7 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
                 "flexDirection": "row",
                 "flexWrap": "wrap",
                 "gap": 0,
+                "maxHeight": 36,
               },
             ]
           }
@@ -69,6 +71,7 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
             fontStyle="normal"
             fontWeight="bold"
             lineHeight={50}
+            numberOfLines={2}
             style={
               Array [
                 Object {
@@ -2054,6 +2057,7 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
           flexDirection="row"
           flexWrap="wrap"
           gap="spacing.0"
+          maxHeight="36px"
           style={
             Array [
               Object {
@@ -2062,6 +2066,7 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
                 "flexDirection": "row",
                 "flexWrap": "wrap",
                 "gap": 0,
+                "maxHeight": 36,
               },
             ]
           }
@@ -2074,6 +2079,7 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
             fontStyle="normal"
             fontWeight="bold"
             lineHeight={50}
+            numberOfLines={2}
             style={
               Array [
                 Object {
@@ -2431,6 +2437,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
           flexDirection="row"
           flexWrap="wrap"
           gap="spacing.0"
+          maxHeight="36px"
           style={
             Array [
               Object {
@@ -2439,6 +2446,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
                 "flexDirection": "row",
                 "flexWrap": "wrap",
                 "gap": 0,
+                "maxHeight": 36,
               },
             ]
           }
@@ -2451,6 +2459,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
             fontStyle="normal"
             fontWeight="bold"
             lineHeight={50}
+            numberOfLines={2}
             style={
               Array [
                 Object {
@@ -2751,6 +2760,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+          },
+          Object {
             "opacity": 1,
           },
         ]
@@ -2831,6 +2842,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
           flexDirection="row"
           flexWrap="wrap"
           gap="spacing.0"
+          maxHeight="36px"
           style={
             Array [
               Object {
@@ -2839,6 +2851,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
                 "flexDirection": "row",
                 "flexWrap": "wrap",
                 "gap": 0,
+                "maxHeight": 36,
               },
             ]
           }
@@ -2851,6 +2864,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
             fontStyle="normal"
             fontWeight="bold"
             lineHeight={50}
+            numberOfLines={2}
             style={
               Array [
                 Object {
@@ -3151,6 +3165,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+          },
+          Object {
             "opacity": 1,
           },
         ]
@@ -3231,6 +3247,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
           flexDirection="row"
           flexWrap="wrap"
           gap="spacing.0"
+          maxHeight="36px"
           style={
             Array [
               Object {
@@ -3239,6 +3256,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
                 "flexDirection": "row",
                 "flexWrap": "wrap",
                 "gap": 0,
+                "maxHeight": 36,
               },
             ]
           }
@@ -3251,6 +3269,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
             fontStyle="normal"
             fontWeight="bold"
             lineHeight={50}
+            numberOfLines={2}
             style={
               Array [
                 Object {

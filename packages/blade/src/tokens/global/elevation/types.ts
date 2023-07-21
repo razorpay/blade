@@ -3,7 +3,7 @@ import type { Platform } from '~utils';
 
 export type ElevationLevels = 'none' | 'lowRaised' | 'midRaised' | 'highRaised';
 
-type ElevationStyles = Readonly<{
+export type ElevationStyles = Readonly<{
   elevation: number;
   shadowColor: string;
   shadowOpacity: number;
