@@ -1,3 +1,6 @@
+import type { StyledPropsBlade } from '~components/Box/styledProps';
+import type { TestID } from '~utils/types';
+
 type OnChange = ({
   isChecked,
   value,
@@ -56,8 +59,8 @@ type SwitchProps = {
    * The id of the input field in a switch, useful for associating a label element with the input via htmlFor prop
    */
   id?: string;
-  testID?: string;
-};
+} & TestID &
+  StyledPropsBlade;
 
 type ThumbProps = {
   children: React.ReactNode;

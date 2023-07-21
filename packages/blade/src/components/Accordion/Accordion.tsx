@@ -95,14 +95,14 @@ const Accordion = ({
   return (
     <AccordionContext.Provider value={accordionContext}>
       <BaseBox
-        minWidth={MIN_WIDTH}
-        maxWidth={MAX_WIDTH}
         {...metaAttribute({ name: MetaConstants.Accordion, testID })}
         {...getStyledProps(styledProps)}
       >
-        {Children.map(children, (child, index) =>
-          cloneElement(child, { _index: index, key: index }),
-        )}
+        <BaseBox minWidth={MIN_WIDTH} maxWidth={MAX_WIDTH} width="100%">
+          {Children.map(children, (child, index) =>
+            cloneElement(child, { _index: index, key: index }),
+          )}
+        </BaseBox>
       </BaseBox>
     </AccordionContext.Provider>
   );
