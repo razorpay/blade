@@ -60,6 +60,7 @@ const _Dropdown = ({
     DropdownContextType['selectedIndices']
   >([]);
   const [activeIndex, setActiveIndex] = React.useState(-1);
+  const [activeTagIndex, setActiveTagIndex] = React.useState(-1);
   const [shouldIgnoreBlur, setShouldIgnoreBlur] = React.useState(false);
   const [shouldIgnoreBlurAnimation, setShouldIgnoreBlurAnimation] = React.useState(false);
   const triggererRef = React.useRef<HTMLButtonElement>(null);
@@ -78,6 +79,7 @@ const _Dropdown = ({
 
   const dropdownTriggerer = React.useRef<DropdownContextType['dropdownTriggerer']>();
   const isFirstRenderRef = React.useRef(true);
+  const isTagDismissedRef = React.useRef<{ value: boolean } | null>({ value: shouldIgnoreBlur });
 
   React.useEffect(() => {
     // Ignoring the `onDismiss` call on first render
@@ -93,6 +95,7 @@ const _Dropdown = ({
   }, [isOpen]);
 
   const close = React.useCallback(() => {
+    setActiveTagIndex(-1);
     setIsOpen(false);
     onDismiss?.();
   }, [onDismiss]);
@@ -130,6 +133,8 @@ const _Dropdown = ({
       setOptions,
       activeIndex,
       setActiveIndex,
+      activeTagIndex,
+      setActiveTagIndex,
       shouldIgnoreBlur,
       setShouldIgnoreBlur,
       shouldIgnoreBlurAnimation,
@@ -149,6 +154,7 @@ const _Dropdown = ({
       setChangeCallbackTriggerer,
       isControlled,
       setIsControlled,
+      isTagDismissedRef,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [
@@ -157,6 +163,7 @@ const _Dropdown = ({
       controlledValueIndices,
       options,
       activeIndex,
+      activeTagIndex,
       shouldIgnoreBlur,
       shouldIgnoreBlurAnimation,
       selectionType,
@@ -179,10 +186,36 @@ const _Dropdown = ({
     };
   }, [dropdownHasBottomSheet, isOpen, close]);
 
+  React.useEffect(() => {
+    const dropdown = document.getElementById('blade-dropdown-xyz');
+    // const tagsSlot = document.querySelector('#tags-slot');
+
+    document.addEventListener('click', (e) => {
+      const target = e.target as HTMLDivElement;
+
+      if (!target || !dropdown) {
+        return;
+      }
+
+      if (!dropdown.contains(target) && !isTagDismissedRef.current?.value) {
+        close();
+      }
+
+      if (isTagDismissedRef.current?.value) {
+        isTagDismissedRef.current.value = false;
+      }
+    });
+  }, []);
+
   return (
     <BottomSheetAndDropdownGlueContext.Provider value={BottomSheetAndDropdownGlueContextValue}>
       <DropdownContext.Provider value={contextValue}>
-        <BaseBox position="relative" textAlign={'left' as never} {...getStyledProps(styledProps)}>
+        <BaseBox
+          id="blade-dropdown-xyz"
+          position="relative"
+          textAlign={'left' as never}
+          {...getStyledProps(styledProps)}
+        >
           {children}
         </BaseBox>
       </DropdownContext.Provider>

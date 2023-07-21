@@ -65,6 +65,7 @@ const _SelectInput = (
     onTriggerBlur,
     dropdownBaseId,
     activeIndex,
+    activeTagIndex,
     triggererRef,
     hasFooterAction,
     dropdownTriggerer,
@@ -80,6 +81,7 @@ const _SelectInput = (
     selectionType,
     selectedIndices,
     removeOption,
+    isTagDismissedRef,
   } = useDropdown();
 
   const inputRef = useBladeInnerRef(ref, {
@@ -178,13 +180,20 @@ const _SelectInput = (
     setHasLabelOnLeft(props.labelPosition === 'left');
   }, [props.labelPosition, setHasLabelOnLeft]);
 
-  const getTags = (): React.ReactElement[] => {
-    return selectedIndices.map((selectedIndex) => (
+  const getTags = (): React.ReactElement[] | null => {
+    if (selectionType === 'single') {
+      return null;
+    }
+
+    return selectedIndices.map((selectedIndex, tagIndex) => (
       <Tag
+        _isTagFocussed={tagIndex === activeTagIndex}
         key={selectedIndex}
+        marginRight="spacing.2"
         onDismiss={() => {
-          // @TOOD
-          // - Handle blur close of tags
+          if (isTagDismissedRef.current) {
+            isTagDismissedRef.current.value = true;
+          }
           removeOption(selectedIndex);
           setChangeCallbackTriggerer(Number(changeCallbackTriggerer) + 1);
         }}
@@ -215,19 +224,22 @@ const _SelectInput = (
       <BaseInput
         {...baseInputProps}
         as="button"
-        tagsSlot={getTags()}
+        tagsSlot={<BaseBox id="tags-slot">{getTags()}</BaseBox>}
         value={selectionType === 'multiple' ? undefined : displayValue}
         hideLabelText={props.label?.length === 0}
         componentName={MetaConstants.SelectInput}
         ref={!isReactNative() ? (triggererRef as React.MutableRefObject<HTMLInputElement>) : null}
         textAlign="left"
-        placeholder={placeholder}
+        placeholder={
+          selectionType === 'multiple' && selectedIndices.length > 0 ? undefined : placeholder
+        }
         id={`${dropdownBaseId}-trigger`}
         labelId={`${dropdownBaseId}-label`}
         leadingIcon={icon}
         hasPopup={getActionListContainerRole(hasFooterAction, dropdownTriggerer)}
         isPopupExpanded={isOpen}
         onClick={(e) => {
+          console.log('select input click');
           onTriggerClick();
           props?.onClick?.(e);
         }}

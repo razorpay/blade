@@ -43,6 +43,7 @@ const makeBoxProps = (props: BoxProps): KeysRequired<Omit<BoxProps, 'testID' | '
     overflow: props.overflow,
     overflowX: props.overflowX,
     overflowY: props.overflowY,
+    whiteSpace: props.whiteSpace,
     height: props.height,
     minHeight: props.minHeight,
     maxHeight: props.maxHeight,

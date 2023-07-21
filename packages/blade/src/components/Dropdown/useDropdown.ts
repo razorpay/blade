@@ -47,6 +47,11 @@ type DropdownContextType = {
   /** Currently active (focussed) index  */
   activeIndex: number;
   setActiveIndex: (value: number) => void;
+
+  /** Currently active (focussed) tag  */
+  activeTagIndex: number;
+  setActiveTagIndex: (value: number) => void;
+
   /** Used to ignore blur on certains events. E.g. to ignore blur of dropdown when click is inside the dropdown */
   shouldIgnoreBlur: boolean;
   setShouldIgnoreBlur: (value: boolean) => void;
@@ -66,6 +71,7 @@ type DropdownContextType = {
   /** ref of triggerer. Used to call focus in certain places */
   triggererRef: React.RefObject<HTMLButtonElement | null>;
   actionListItemRef: React.RefObject<HTMLDivElement | null>;
+  isTagDismissedRef: React.RefObject<{ value: boolean } | null>;
   selectionType?: DropdownProps['selectionType'];
   /** whether footer has an action item.
    * certain a11y behaviour changes happen here
@@ -112,6 +118,8 @@ const DropdownContext = React.createContext<DropdownContextType>({
   setOptions: noop,
   activeIndex: -1,
   setActiveIndex: noop,
+  activeTagIndex: -1,
+  setActiveTagIndex: noop,
   shouldIgnoreBlur: false,
   setShouldIgnoreBlur: noop,
   shouldIgnoreBlurAnimation: false,
@@ -131,6 +139,9 @@ const DropdownContext = React.createContext<DropdownContextType>({
     current: null,
   },
   triggererRef: {
+    current: null,
+  },
+  isTagDismissedRef: {
     current: null,
   },
 });
@@ -204,6 +215,8 @@ const useDropdown = (): UseDropdownReturnValue => {
     setSelectedIndices,
     activeIndex,
     setActiveIndex,
+    activeTagIndex,
+    setActiveTagIndex,
     shouldIgnoreBlur,
     setShouldIgnoreBlur,
     isKeydownPressed,
@@ -292,7 +305,7 @@ const useDropdown = (): UseDropdownReturnValue => {
    */
   const onTriggerClick = (): void => {
     if (isOpen) {
-      close();
+      // close();
     } else {
       setIsOpen(true);
     }
@@ -302,38 +315,33 @@ const useDropdown = (): UseDropdownReturnValue => {
    * Blur handler on combobox. Also handles the selection logic when user moves focus
    */
   const onTriggerBlur: OnTriggerBlurEvent = ({ name, value, onBlurCallback }) => {
-    if (rest.hasFooterAction) {
-      // When Footer has action buttons, we ignore the blur (by setting shouldIgnoreBlur to true in onTriggerKeyDown)
-      // And we remove the active item (by setting it to -1) so that we can shift focus on action buttons
-      setActiveIndex(-1);
-    }
-
-    if (bottomSheetAndDropdownGlue?.dropdownHasBottomSheet) {
-      setShouldIgnoreBlur(true);
-      return;
-    }
-
-    if (shouldIgnoreBlur) {
-      setShouldIgnoreBlur(false);
-      return;
-    }
-
-    onBlurCallback?.({ name, value });
-
-    if (isOpen) {
-      if (selectionType !== 'multiple') {
-        selectOption(activeIndex);
-      }
-      if (!bottomSheetAndDropdownGlue?.dropdownHasBottomSheet) {
-        close();
-      }
-    }
+    // const hasFocusInsideDropdown = !!document.querySelector('#blade-dropdown-123:focus-within');
+    // console.log('Blur of SelectInput which is ok');
+    // if (rest.hasFooterAction) {
+    //   // When Footer has action buttons, we ignore the blur (by setting shouldIgnoreBlur to true in onTriggerKeyDown)
+    //   // And we remove the active item (by setting it to -1) so that we can shift focus on action buttons
+    //   setActiveIndex(-1);
+    // }
+    // if (shouldIgnoreBlur) {
+    //   setShouldIgnoreBlur(false);
+    //   return;
+    // }
+    // onBlurCallback?.({ name, value });
+    // if (isOpen) {
+    //   if (selectionType !== 'multiple') {
+    //     selectOption(activeIndex);
+    //   }
+    //   if (!bottomSheetAndDropdownGlue?.dropdownHasBottomSheet) {
+    //     close();
+    //   }
+    // }
   };
 
   /**
    * Function that we call when we want to move focus from one option to other
    */
   const onOptionChange = (actionType: SelectActionsType, index?: number): void => {
+    setActiveTagIndex(-1);
     const max = options.length - 1;
     const newIndex = index ?? activeIndex;
     setActiveIndex(getUpdatedIndex(newIndex, max, actionType));
@@ -353,7 +361,7 @@ const useDropdown = (): UseDropdownReturnValue => {
     e: React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLInputElement>,
     index: number,
   ): void => {
-    const actionType = getActionFromKey(e, isOpen);
+    const actionType = getActionFromKey(e, isOpen, activeTagIndex);
     if (typeof actionType === 'number') {
       onOptionChange(actionType, index);
     }
@@ -397,6 +405,40 @@ const useDropdown = (): UseDropdownReturnValue => {
     }
   };
 
+  const onTagAction = (action: SelectActionsType): void => {
+    setActiveIndex(-1);
+    console.log({ action });
+    if (action === 'MoveLeftTag') {
+      if (activeTagIndex < 0) {
+        setActiveTagIndex(selectedIndices.length - 1);
+        return;
+      }
+
+      if (activeTagIndex > 0) {
+        setActiveTagIndex(activeTagIndex - 1);
+        return;
+      }
+    }
+
+    if (action === 'MoveRightTag') {
+      if (activeTagIndex < selectedIndices.length - 1) {
+        setActiveTagIndex(activeTagIndex + 1);
+      }
+
+      return;
+    }
+
+    if (action === 'RemoveTag') {
+      const selectedIndex = selectedIndices.find(
+        (_selectedIndex, tagIndex) => tagIndex === activeTagIndex,
+      );
+
+      if (selectedIndex !== undefined) {
+        removeOption(selectedIndex);
+      }
+    }
+  };
+
   /**
    * Keydown event of combobox. Handles most of the keyboard accessibility of dropdown
    */
@@ -418,7 +460,7 @@ const useDropdown = (): UseDropdownReturnValue => {
       setIsKeydownPressed(true);
     }
 
-    const actionType = getActionFromKey(e.event, isOpen);
+    const actionType = getActionFromKey(e.event, isOpen, activeTagIndex);
 
     if (actionType) {
       performAction(actionType, e, {
@@ -426,7 +468,12 @@ const useDropdown = (): UseDropdownReturnValue => {
         close,
         onOptionChange,
         onComboType,
+        onTagAction,
         selectCurrentOption: () => {
+          if (activeIndex < 0) {
+            return;
+          }
+
           const isSelected = selectOption(activeIndex);
           if (rest.hasFooterAction && !isReactNative()) {
             rest.triggererRef.current?.focus();
@@ -452,6 +499,8 @@ const useDropdown = (): UseDropdownReturnValue => {
     onOptionClick,
     activeIndex,
     setActiveIndex,
+    activeTagIndex,
+    setActiveTagIndex,
     shouldIgnoreBlur,
     setShouldIgnoreBlur,
     isKeydownPressed,

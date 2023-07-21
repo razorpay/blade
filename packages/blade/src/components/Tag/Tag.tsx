@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import { Box } from '~components/Box';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getStyledProps } from '~components/Box/styledProps';
@@ -41,9 +42,24 @@ type TagProps = {
    * Disable tag
    */
   isDisabled?: boolean;
+
+  /**
+   *
+   */
+  _isTagFocussed?: boolean;
 } & StyledPropsBlade &
   TestID;
 
+const FocussableTag = styled(BaseBox)<{ isTagFocussed: TagProps['_isTagFocussed'] }>((props) => {
+  if (props.isTagFocussed) {
+    return {
+      outline: `1px solid ${props.theme.colors.surface.background.level1.lowContrast}`,
+      boxShadow: `0px 0px 0px 4px ${props.theme.colors.brand.primary[400]}`,
+    };
+  }
+
+  return {};
+});
 const Desktop = ({ children }: { children: (React.ReactElement | null)[] }): React.ReactElement => (
   <Box display={{ base: 'none', m: 'flex' }} alignItems="center">
     {children}
@@ -63,6 +79,7 @@ const Tag = ({
   children,
   isDisabled,
   testID,
+  _isTagFocussed,
   ...styledProps
 }: TagProps): React.ReactElement | null => {
   const textColor = isDisabled
@@ -105,7 +122,7 @@ const Tag = ({
   );
 
   return (
-    <BaseBox
+    <FocussableTag
       display={(isReactNative() ? 'flex' : 'inline-flex') as never}
       alignSelf={isReactNative() ? 'center' : undefined}
       flexDirection="row"
@@ -115,6 +132,7 @@ const Tag = ({
       padding={size === 'medium' ? mediumPadding : largePadding}
       {...getStyledProps(styledProps)}
       {...metaAttribute({ name: MetaConstants.Tag, testID })}
+      isTagFocussed={_isTagFocussed}
     >
       <Box display="flex" flexDirection="row" flexWrap="nowrap" alignItems="center">
         <Desktop>
@@ -128,7 +146,7 @@ const Tag = ({
           {getCloseIcon({ size: size === 'large' ? 'medium' : 'small' })}
         </Mobile>
       </Box>
-    </BaseBox>
+    </FocussableTag>
   );
 };
 

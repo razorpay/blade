@@ -159,22 +159,40 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
     }
   }, [isOpen]);
 
+  // React.useEffect(() => {
+  //   const dropdownContainer = document.getElementById('blade-dropdown-123');
+
+  //   if (!dropdownContainer) {
+  //     return;
+  //   }
+
+  //   let isChildFocused = false;
+
+  //   dropdownContainer.addEventListener('focusin', (event) => {
+  //     console.log('focusin', event.target);
+  //     isChildFocused = true;
+  //   });
+
+  //   dropdownContainer.addEventListener('focusout', () => {
+  //     setTimeout(() => {
+  //       console.log('focusout', { isChildFocused });
+  //       if (!isChildFocused) {
+  //         // Handle the blur event here
+  //         console.log('closing the dropdown!');
+  //         setIsOpen(false);
+  //       }
+  //       isChildFocused = false;
+  //     }, 0);
+  //   });
+  // }, []);
+
   const styles = React.useMemo(() => ({ opacity: isOpen ? 1 : 0 }), [isOpen]);
 
   return (
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     <BaseBox position="relative" ref={refs.setFloating as any}>
-      {isOpen ? (
-        <BaseBox
-          position={'fixed' as never}
-          top="spacing.0"
-          left="spacing.0"
-          height="100%"
-          width="100%"
-          onClick={() => setIsOpen(false)}
-        />
-      ) : null}
       <AnimatedOverlay
+        id="blade-dropdown-123"
         isInBottomSheet={bottomSheetAndDropdownGlue?.dropdownHasBottomSheet}
         width={isMenu ? 'max-content' : width}
         // In SelectInput, Overlay should always take width of Input
