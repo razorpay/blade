@@ -5,8 +5,8 @@
   "description": "A Figma plugin to publish tokens from Figma to GitHub.",
   "license": "ISC",
   "scripts": {
-    "build": "webpack --mode=production",
-    "build:watch": "webpack --mode=development --watch",
+    "build": "NODE_OPTIONS=--openssl-legacy-provider webpack --mode=production",
+    "build:watch": "NODE_OPTIONS=--openssl-legacy-provider webpack --mode=development --watch",
     "prettier:format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,json}' "
   },
   "dependencies": {
