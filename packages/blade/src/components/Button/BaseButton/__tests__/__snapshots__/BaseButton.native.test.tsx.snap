@@ -3441,12 +3441,9 @@ exports[`<BaseButton /> should render loading button 1`] = `
     >
       <View
         data-blade-component="spinner"
-        display="flex"
         style={
           Array [
-            Object {
-              "display": "flex",
-            },
+            Object {},
           ]
         }
       >

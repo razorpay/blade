@@ -87,17 +87,20 @@ const Card = ({
 
   return (
     <CardProvider>
-      <CardSurface
+      <BaseBox
         {...metaAttribute({ name: MetaConstants.Card, testID })}
-        padding={padding}
-        borderRadius="medium"
-        surfaceLevel={surfaceLevel}
-        elevation={elevation}
-        textAlign={'left' as never}
         {...getStyledProps(styledProps)}
       >
-        {children}
-      </CardSurface>
+        <CardSurface
+          padding={padding}
+          borderRadius="medium"
+          surfaceLevel={surfaceLevel}
+          elevation={elevation}
+          textAlign={'left' as never}
+        >
+          {children}
+        </CardSurface>
+      </BaseBox>
     </CardProvider>
   );
 };

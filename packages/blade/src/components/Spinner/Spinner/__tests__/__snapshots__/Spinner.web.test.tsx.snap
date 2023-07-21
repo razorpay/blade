@@ -6,13 +6,6 @@ exports[`<Spinner /> should render Spinner with default props 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -22,7 +15,7 @@ exports[`<Spinner /> should render Spinner with default props 1`] = `
   align-items: center;
 }
 
-.c2 {
+.c1 {
   padding: 1px;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -37,17 +30,17 @@ exports[`<Spinner /> should render Spinner with default props 1`] = `
 
 <div>
   <div
-    class="c0"
+    class=""
     data-blade-component="spinner"
   >
     <div
       aria-label="Loading"
-      class="c1"
+      class="c0"
       data-blade-component="base-box"
       role="progressbar"
     >
       <div
-        class=" c2"
+        class=" c1"
         data-blade-component="base-box"
       >
         <svg
@@ -88,13 +81,6 @@ exports[`<Spinner /> should render high contrast Spinner 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -104,7 +90,7 @@ exports[`<Spinner /> should render high contrast Spinner 1`] = `
   align-items: center;
 }
 
-.c2 {
+.c1 {
   padding: 1px;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -119,17 +105,17 @@ exports[`<Spinner /> should render high contrast Spinner 1`] = `
 
 <div>
   <div
-    class="c0"
+    class=""
     data-blade-component="spinner"
   >
     <div
       aria-label="Loading"
-      class="c1"
+      class="c0"
       data-blade-component="base-box"
       role="progressbar"
     >
       <div
-        class=" c2"
+        class=" c1"
         data-blade-component="base-box"
       >
         <svg
@@ -170,13 +156,6 @@ exports[`<Spinner /> should render large size Spinner 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -186,7 +165,7 @@ exports[`<Spinner /> should render large size Spinner 1`] = `
   align-items: center;
 }
 
-.c2 {
+.c1 {
   padding: 1px;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -201,17 +180,17 @@ exports[`<Spinner /> should render large size Spinner 1`] = `
 
 <div>
   <div
-    class="c0"
+    class=""
     data-blade-component="spinner"
   >
     <div
       aria-label="Loading"
-      class="c1"
+      class="c0"
       data-blade-component="base-box"
       role="progressbar"
     >
       <div
-        class=" c2"
+        class=" c1"
         data-blade-component="base-box"
       >
         <svg
@@ -252,13 +231,6 @@ exports[`<Spinner /> should render low contrast Spinner 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -268,7 +240,7 @@ exports[`<Spinner /> should render low contrast Spinner 1`] = `
   align-items: center;
 }
 
-.c2 {
+.c1 {
   padding: 1px;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -283,17 +255,17 @@ exports[`<Spinner /> should render low contrast Spinner 1`] = `
 
 <div>
   <div
-    class="c0"
+    class=""
     data-blade-component="spinner"
   >
     <div
       aria-label="Loading"
-      class="c1"
+      class="c0"
       data-blade-component="base-box"
       role="progressbar"
     >
       <div
-        class=" c2"
+        class=" c1"
         data-blade-component="base-box"
       >
         <svg
@@ -334,13 +306,6 @@ exports[`<Spinner /> should render medium size Spinner 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -350,7 +315,7 @@ exports[`<Spinner /> should render medium size Spinner 1`] = `
   align-items: center;
 }
 
-.c2 {
+.c1 {
   padding: 1px;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -365,17 +330,17 @@ exports[`<Spinner /> should render medium size Spinner 1`] = `
 
 <div>
   <div
-    class="c0"
+    class=""
     data-blade-component="spinner"
   >
     <div
       aria-label="Loading"
-      class="c1"
+      class="c0"
       data-blade-component="base-box"
       role="progressbar"
     >
       <div
-        class=" c2"
+        class=" c1"
         data-blade-component="base-box"
       >
         <svg
@@ -416,13 +381,6 @@ exports[`<Spinner /> should render xlarge size Spinner 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -432,7 +390,7 @@ exports[`<Spinner /> should render xlarge size Spinner 1`] = `
   align-items: center;
 }
 
-.c2 {
+.c1 {
   padding: 1px;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -447,17 +405,17 @@ exports[`<Spinner /> should render xlarge size Spinner 1`] = `
 
 <div>
   <div
-    class="c0"
+    class=""
     data-blade-component="spinner"
   >
     <div
       aria-label="Loading"
-      class="c1"
+      class="c0"
       data-blade-component="base-box"
       role="progressbar"
     >
       <div
-        class=" c2"
+        class=" c1"
         data-blade-component="base-box"
       >
         <svg

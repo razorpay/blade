@@ -10,6 +10,7 @@ import { getStyledProps } from '~components/Box/styledProps';
 import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
+import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 
 const validDropdownChildren = [
   componentIds.triggers.SelectInput,
@@ -49,6 +50,7 @@ const _Dropdown = ({
   children,
   selectionType = 'single',
   onDismiss,
+  testID,
   ...styledProps
 }: DropdownProps): JSX.Element => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -182,8 +184,13 @@ const _Dropdown = ({
   return (
     <BottomSheetAndDropdownGlueContext.Provider value={BottomSheetAndDropdownGlueContextValue}>
       <DropdownContext.Provider value={contextValue}>
-        <BaseBox position="relative" textAlign={'left' as never} {...getStyledProps(styledProps)}>
-          {children}
+        <BaseBox
+          {...metaAttribute({ name: MetaConstants.Dropdown, testID })}
+          {...getStyledProps(styledProps)}
+        >
+          <BaseBox position="relative" textAlign={'left' as never}>
+            {children}
+          </BaseBox>
         </BaseBox>
       </DropdownContext.Provider>
     </BottomSheetAndDropdownGlueContext.Provider>

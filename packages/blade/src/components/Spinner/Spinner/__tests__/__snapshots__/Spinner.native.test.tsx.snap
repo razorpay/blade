@@ -10,12 +10,9 @@ exports[`<Spinner /> should render Spinner with default props 1`] = `
 >
   <View
     data-blade-component="spinner"
-    display="flex"
     style={
       Array [
-        Object {
-          "display": "flex",
-        },
+        Object {},
       ]
     }
   >
@@ -147,12 +144,9 @@ exports[`<Spinner /> should render high contrast Spinner 1`] = `
 >
   <View
     data-blade-component="spinner"
-    display="flex"
     style={
       Array [
-        Object {
-          "display": "flex",
-        },
+        Object {},
       ]
     }
   >
@@ -284,12 +278,9 @@ exports[`<Spinner /> should render large size Spinner 1`] = `
 >
   <View
     data-blade-component="spinner"
-    display="flex"
     style={
       Array [
-        Object {
-          "display": "flex",
-        },
+        Object {},
       ]
     }
   >
@@ -421,12 +412,9 @@ exports[`<Spinner /> should render low contrast Spinner 1`] = `
 >
   <View
     data-blade-component="spinner"
-    display="flex"
     style={
       Array [
-        Object {
-          "display": "flex",
-        },
+        Object {},
       ]
     }
   >
@@ -558,12 +546,9 @@ exports[`<Spinner /> should render medium size Spinner 1`] = `
 >
   <View
     data-blade-component="spinner"
-    display="flex"
     style={
       Array [
-        Object {
-          "display": "flex",
-        },
+        Object {},
       ]
     }
   >
@@ -695,12 +680,9 @@ exports[`<Spinner /> should render xlarge size Spinner 1`] = `
 >
   <View
     data-blade-component="spinner"
-    display="flex"
     style={
       Array [
-        Object {
-          "display": "flex",
-        },
+        Object {},
       ]
     }
   >

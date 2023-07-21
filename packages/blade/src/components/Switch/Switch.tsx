@@ -17,6 +17,7 @@ import { SelectorLabel } from '~components/Form/Selector/SelectorLabel';
 import type { BladeElementRef } from '~utils/types';
 import { makeAccessible } from '~utils/makeAccessible';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { getStyledProps } from '~components/Box/styledProps';
 
 const _Switch: React.ForwardRefRenderFunction<BladeElementRef, SwitchProps> = (
   {
@@ -29,6 +30,7 @@ const _Switch: React.ForwardRefRenderFunction<BladeElementRef, SwitchProps> = (
     value,
     accessibilityLabel,
     testID,
+    ...styledProps
   },
   ref,
 ): React.ReactElement => {
@@ -84,6 +86,7 @@ const _Switch: React.ForwardRefRenderFunction<BladeElementRef, SwitchProps> = (
       {...metaAttribute({ testID, name: MetaConstants.Switch })}
       // @ts-ignore on rn inline-block is not valid but type here will be `flex | inline-block`
       display={state.isReactNative ? 'flex' : 'inline-block'}
+      {...getStyledProps(styledProps)}
     >
       <SelectorLabel
         componentName={MetaConstants.SwitchLabel}

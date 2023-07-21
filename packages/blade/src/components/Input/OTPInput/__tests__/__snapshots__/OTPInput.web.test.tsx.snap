@@ -57,6 +57,18 @@ exports[`<OTPInput /> should render 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+}
+
+.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -64,14 +76,14 @@ exports[`<OTPInput /> should render 1`] = `
   width: 100%;
 }
 
-.c12 {
+.c13 {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
   margin-left: 8px;
 }
 
-.c13 {
+.c14 {
   margin-left: 0px;
 }
 
@@ -106,7 +118,7 @@ exports[`<OTPInput /> should render 1`] = `
   padding: 0;
 }
 
-.c10 {
+.c11 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -134,7 +146,7 @@ exports[`<OTPInput /> should render 1`] = `
   cursor: auto;
 }
 
-.c10::-webkit-input-placeholder {
+.c11::-webkit-input-placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -148,7 +160,7 @@ exports[`<OTPInput /> should render 1`] = `
   padding: 0;
 }
 
-.c10::-moz-placeholder {
+.c11::-moz-placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -162,7 +174,7 @@ exports[`<OTPInput /> should render 1`] = `
   padding: 0;
 }
 
-.c10:-ms-input-placeholder {
+.c11:-ms-input-placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -176,7 +188,7 @@ exports[`<OTPInput /> should render 1`] = `
   padding: 0;
 }
 
-.c10::placeholder {
+.c11::placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -190,11 +202,11 @@ exports[`<OTPInput /> should render 1`] = `
   padding: 0;
 }
 
-.c10:focus {
+.c11:focus {
   outline: none;
 }
 
-.c11 {
+.c12 {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -205,7 +217,7 @@ exports[`<OTPInput /> should render 1`] = `
   height: 1px;
 }
 
-.c9 {
+.c10 {
   background-color: hsla(216,15%,54%,0.09);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
@@ -214,7 +226,7 @@ exports[`<OTPInput /> should render 1`] = `
   border-bottom-style: solid;
 }
 
-.c9:hover {
+.c10:hover {
   background-color: hsla(216,15%,54%,0.18);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
@@ -229,7 +241,7 @@ exports[`<OTPInput /> should render 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c9:focus-within {
+.c10:focus-within {
   background-color: hsla(216,15%,54%,0.09);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
@@ -314,11 +326,11 @@ exports[`<OTPInput /> should render 1`] = `
             data-blade-component="base-box"
           >
             <div
-              class="c0"
+              class="c8"
               data-blade-component="base-box"
             >
               <div
-                class="c8 c9"
+                class="c9 c10"
                 data-blade-component="base-box"
               >
                 <input
@@ -328,7 +340,7 @@ exports[`<OTPInput /> should render 1`] = `
                   aria-label="Enter OTP character 1"
                   aria-required="true"
                   autocomplete="one-time-code"
-                  class="c10"
+                  class="c11"
                   data-blade-component="styled-base-input"
                   id="otp-37-input-38-0-49-input-50"
                   inputmode="decimal"
@@ -338,7 +350,7 @@ exports[`<OTPInput /> should render 1`] = `
                   value=""
                 />
                 <div
-                  class=" c11"
+                  class=" c12"
                   data-blade-component="base-box"
                 />
               </div>
@@ -346,7 +358,7 @@ exports[`<OTPInput /> should render 1`] = `
           </div>
         </div>
         <div
-          class="c12"
+          class="c13"
           data-blade-component="base-box"
         >
           <div
@@ -354,11 +366,11 @@ exports[`<OTPInput /> should render 1`] = `
             data-blade-component="base-box"
           >
             <div
-              class="c0"
+              class="c8"
               data-blade-component="base-box"
             >
               <div
-                class="c8 c9"
+                class="c9 c10"
                 data-blade-component="base-box"
               >
                 <input
@@ -368,7 +380,7 @@ exports[`<OTPInput /> should render 1`] = `
                   aria-label=" character 2"
                   aria-required="true"
                   autocomplete="one-time-code"
-                  class="c10"
+                  class="c11"
                   data-blade-component="styled-base-input"
                   id="otp-37-input-38-1-55-input-56"
                   inputmode="decimal"
@@ -378,7 +390,7 @@ exports[`<OTPInput /> should render 1`] = `
                   value=""
                 />
                 <div
-                  class=" c11"
+                  class=" c12"
                   data-blade-component="base-box"
                 />
               </div>
@@ -386,7 +398,7 @@ exports[`<OTPInput /> should render 1`] = `
           </div>
         </div>
         <div
-          class="c12"
+          class="c13"
           data-blade-component="base-box"
         >
           <div
@@ -394,11 +406,11 @@ exports[`<OTPInput /> should render 1`] = `
             data-blade-component="base-box"
           >
             <div
-              class="c0"
+              class="c8"
               data-blade-component="base-box"
             >
               <div
-                class="c8 c9"
+                class="c9 c10"
                 data-blade-component="base-box"
               >
                 <input
@@ -408,7 +420,7 @@ exports[`<OTPInput /> should render 1`] = `
                   aria-label=" character 3"
                   aria-required="true"
                   autocomplete="one-time-code"
-                  class="c10"
+                  class="c11"
                   data-blade-component="styled-base-input"
                   id="otp-37-input-38-2-61-input-62"
                   inputmode="decimal"
@@ -418,7 +430,7 @@ exports[`<OTPInput /> should render 1`] = `
                   value=""
                 />
                 <div
-                  class=" c11"
+                  class=" c12"
                   data-blade-component="base-box"
                 />
               </div>
@@ -426,7 +438,7 @@ exports[`<OTPInput /> should render 1`] = `
           </div>
         </div>
         <div
-          class="c12"
+          class="c13"
           data-blade-component="base-box"
         >
           <div
@@ -434,11 +446,11 @@ exports[`<OTPInput /> should render 1`] = `
             data-blade-component="base-box"
           >
             <div
-              class="c0"
+              class="c8"
               data-blade-component="base-box"
             >
               <div
-                class="c8 c9"
+                class="c9 c10"
                 data-blade-component="base-box"
               >
                 <input
@@ -448,7 +460,7 @@ exports[`<OTPInput /> should render 1`] = `
                   aria-label=" character 4"
                   aria-required="true"
                   autocomplete="one-time-code"
-                  class="c10"
+                  class="c11"
                   data-blade-component="styled-base-input"
                   id="otp-37-input-38-3-67-input-68"
                   inputmode="decimal"
@@ -458,7 +470,7 @@ exports[`<OTPInput /> should render 1`] = `
                   value=""
                 />
                 <div
-                  class=" c11"
+                  class=" c12"
                   data-blade-component="base-box"
                 />
               </div>
@@ -466,7 +478,7 @@ exports[`<OTPInput /> should render 1`] = `
           </div>
         </div>
         <div
-          class="c12"
+          class="c13"
           data-blade-component="base-box"
         >
           <div
@@ -474,11 +486,11 @@ exports[`<OTPInput /> should render 1`] = `
             data-blade-component="base-box"
           >
             <div
-              class="c0"
+              class="c8"
               data-blade-component="base-box"
             >
               <div
-                class="c8 c9"
+                class="c9 c10"
                 data-blade-component="base-box"
               >
                 <input
@@ -488,7 +500,7 @@ exports[`<OTPInput /> should render 1`] = `
                   aria-label=" character 5"
                   aria-required="true"
                   autocomplete="one-time-code"
-                  class="c10"
+                  class="c11"
                   data-blade-component="styled-base-input"
                   id="otp-37-input-38-4-73-input-74"
                   inputmode="decimal"
@@ -498,7 +510,7 @@ exports[`<OTPInput /> should render 1`] = `
                   value=""
                 />
                 <div
-                  class=" c11"
+                  class=" c12"
                   data-blade-component="base-box"
                 />
               </div>
@@ -506,7 +518,7 @@ exports[`<OTPInput /> should render 1`] = `
           </div>
         </div>
         <div
-          class="c12"
+          class="c13"
           data-blade-component="base-box"
         >
           <div
@@ -514,11 +526,11 @@ exports[`<OTPInput /> should render 1`] = `
             data-blade-component="base-box"
           >
             <div
-              class="c0"
+              class="c8"
               data-blade-component="base-box"
             >
               <div
-                class="c8 c9"
+                class="c9 c10"
                 data-blade-component="base-box"
               >
                 <input
@@ -528,7 +540,7 @@ exports[`<OTPInput /> should render 1`] = `
                   aria-label=" character 6"
                   aria-required="true"
                   autocomplete="one-time-code"
-                  class="c10"
+                  class="c11"
                   data-blade-component="styled-base-input"
                   id="otp-37-input-38-5-79-input-80"
                   inputmode="decimal"
@@ -538,7 +550,7 @@ exports[`<OTPInput /> should render 1`] = `
                   value=""
                 />
                 <div
-                  class=" c11"
+                  class=" c12"
                   data-blade-component="base-box"
                 />
               </div>
@@ -548,7 +560,7 @@ exports[`<OTPInput /> should render 1`] = `
       </div>
     </div>
     <div
-      class="c13"
+      class="c14"
       data-blade-component="base-box"
     />
   </div>

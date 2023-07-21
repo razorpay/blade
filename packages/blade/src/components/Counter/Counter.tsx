@@ -124,36 +124,36 @@ const Counter = ({
   } as const;
 
   return (
-    <StyledCounter
-      backgroundColor={backgroundColor}
-      size={size}
-      platform={platform}
+    <BaseBox
+      display="flex"
+      {...metaAttribute({ name: MetaConstants.Counter, testID })}
       {...getStyledProps(styledProps)}
     >
-      <BaseBox
-        paddingRight={horizontalPadding[size]}
-        paddingLeft={horizontalPadding[size]}
-        paddingTop={verticalPadding[size]}
-        paddingBottom={verticalPadding[size]}
-        display={(isReactNative() ? 'flex' : 'inline-flex') as never}
-        flexDirection="row"
-        justifyContent="center"
-        alignItems="center"
-        overflow="hidden"
-        {...metaAttribute({ name: MetaConstants.Counter, testID })}
-      >
-        <Text
-          {...counterTextSizes[size]}
-          textAlign="center"
-          type="normal"
-          weight="regular"
-          truncateAfterLines={1}
-          color={textColor}
+      <StyledCounter backgroundColor={backgroundColor} size={size} platform={platform}>
+        <BaseBox
+          paddingRight={horizontalPadding[size]}
+          paddingLeft={horizontalPadding[size]}
+          paddingTop={verticalPadding[size]}
+          paddingBottom={verticalPadding[size]}
+          display={(isReactNative() ? 'flex' : 'inline-flex') as never}
+          flexDirection="row"
+          justifyContent="center"
+          alignItems="center"
+          overflow="hidden"
         >
-          {content}
-        </Text>
-      </BaseBox>
-    </StyledCounter>
+          <Text
+            {...counterTextSizes[size]}
+            textAlign="center"
+            type="normal"
+            weight="regular"
+            truncateAfterLines={1}
+            color={textColor}
+          >
+            {content}
+          </Text>
+        </BaseBox>
+      </StyledCounter>
+    </BaseBox>
   );
 };
 
