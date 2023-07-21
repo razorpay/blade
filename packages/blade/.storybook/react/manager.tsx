@@ -1,11 +1,10 @@
 // .storybook/manager.js
 import React from 'react';
 import { create } from '@storybook/theming';
-import { addons, types } from '@storybook/addons';
 import { useGlobals } from '@storybook/api';
 import { Icons, IconButton } from '@storybook/components';
 import { INTERNAL_STORY_ADDON_PARAM } from './constants';
-
+import { addons, types } from '@storybook/manager-api';
 export const theme = create({
   base: 'light',
 
@@ -69,16 +68,7 @@ const InternalStoryAddon = () => {
     toggleHiddenStoryStyle(!isActive);
   }, [isActive]);
 
-  return (
-    <IconButton
-      key={TOOL_ID}
-      active={isActive}
-      title="Show internal components"
-      onClick={toggleVisibility}
-    >
-      <Icons icon="lock" />
-    </IconButton>
-  );
+  return null;
 };
 
 addons.register(ADDON_ID, () => {
