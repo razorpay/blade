@@ -245,9 +245,7 @@
     "@storybook/**/react": "17.0.2",
     "react-dom": "17.0.2",
     "react": "17.0.2",
-    "styled-components": "^5",
-    "webpack": "5.88.2",
-    "fork-ts-checker-webpack-plugin": "8.0.0"
+    "styled-components": "^5"
   },
   "bundlemon": {
     "files": [
