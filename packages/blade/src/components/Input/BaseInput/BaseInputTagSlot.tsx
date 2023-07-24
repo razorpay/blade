@@ -28,7 +28,8 @@ const BaseInputTagSlot = ({
       justifyContent="center"
       display="flex"
       flexDirection="row"
-      gap="spacing.3"
+      // Move to using gap instead of marginLeft on individual tags after RN upgrade
+      // gap="spacing.3"
       {...(!isReactNative()
         ? {
             onMouseDown: () => {

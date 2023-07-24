@@ -190,6 +190,7 @@ const _SelectInput = (
         _isVirtuallyFocussed={tagIndex === activeTagIndex}
         _isTagInsideInput={true}
         key={selectedIndex}
+        marginRight="spacing.3"
         onDismiss={() => {
           if (isTagDismissedRef.current) {
             isTagDismissedRef.current.value = true;
