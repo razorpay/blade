@@ -72,6 +72,7 @@ const _SelectInput = (
     shouldIgnoreBlurAnimation,
     setHasLabelOnLeft,
     setSelectedIndices,
+    setShouldIgnoreBlurAnimation,
     controlledValueIndices,
     options,
     changeCallbackTriggerer,
@@ -224,7 +225,26 @@ const _SelectInput = (
       <BaseInput
         {...baseInputProps}
         as="button"
-        tagsSlot={<BaseBox id="tags-slot">{getTags()}</BaseBox>}
+        tagsSlot={
+          <BaseBox
+            id="tags-slot"
+            {...(!isReactNative()
+              ? {
+                  onMouseDown: () => {
+                    setShouldIgnoreBlurAnimation(true);
+                  },
+                  onClick: () => {
+                    triggererRef.current?.focus();
+                  },
+                  onMouseUp: () => {
+                    setShouldIgnoreBlurAnimation(false);
+                  },
+                }
+              : {})}
+          >
+            {getTags()}
+          </BaseBox>
+        }
         value={selectionType === 'multiple' ? undefined : displayValue}
         hideLabelText={props.label?.length === 0}
         componentName={MetaConstants.SelectInput}
