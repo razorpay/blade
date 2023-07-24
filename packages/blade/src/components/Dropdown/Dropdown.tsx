@@ -205,6 +205,18 @@ const _Dropdown = ({
         isTagDismissedRef.current.value = false;
       }
     });
+
+    document.addEventListener('focusin', (e) => {
+      const target = e.target as HTMLDivElement;
+
+      if (!target || !dropdown) {
+        return;
+      }
+
+      if (!dropdown.contains(target)) {
+        close();
+      }
+    });
   }, []);
 
   return (
