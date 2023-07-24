@@ -10,6 +10,7 @@ import { getStyledProps } from '~components/Box/styledProps';
 import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
+import { isReactNative } from '~utils';
 
 const validDropdownChildren = [
   componentIds.triggers.SelectInput,
@@ -80,6 +81,7 @@ const _Dropdown = ({
   const dropdownTriggerer = React.useRef<DropdownContextType['dropdownTriggerer']>();
   const isFirstRenderRef = React.useRef(true);
   const isTagDismissedRef = React.useRef<{ value: boolean } | null>({ value: shouldIgnoreBlur });
+  const dropdownContainerRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
     // Ignoring the `onDismiss` call on first render
@@ -187,8 +189,11 @@ const _Dropdown = ({
   }, [dropdownHasBottomSheet, isOpen, close]);
 
   React.useEffect(() => {
-    const dropdown = document.getElementById('blade-dropdown-xyz');
-    // const tagsSlot = document.querySelector('#tags-slot');
+    if (isReactNative()) {
+      return;
+    }
+
+    const dropdown = dropdownContainerRef.current;
 
     document.addEventListener('click', (e) => {
       const target = e.target as HTMLDivElement;
@@ -208,6 +213,7 @@ const _Dropdown = ({
 
     document.addEventListener('focusin', (e) => {
       const target = e.target as HTMLDivElement;
+      setActiveIndex(-1);
 
       if (!target || !dropdown) {
         return;
@@ -217,13 +223,14 @@ const _Dropdown = ({
         close();
       }
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <BottomSheetAndDropdownGlueContext.Provider value={BottomSheetAndDropdownGlueContextValue}>
       <DropdownContext.Provider value={contextValue}>
         <BaseBox
-          id="blade-dropdown-xyz"
+          ref={dropdownContainerRef}
           position="relative"
           textAlign={'left' as never}
           {...getStyledProps(styledProps)}

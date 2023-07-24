@@ -67,6 +67,7 @@ const StyledIconButton = React.forwardRef<HTMLButtonElement, StyledIconButtonPro
       onPointerEnter,
       onTouchEnd,
       onTouchStart,
+      tabIndex,
     },
     ref,
   ): ReactElement => (
@@ -84,6 +85,7 @@ const StyledIconButton = React.forwardRef<HTMLButtonElement, StyledIconButtonPro
       onTouchEnd={onTouchEnd}
       onTouchStart={onTouchStart}
       disabled={isDisabled}
+      tabIndex={tabIndex}
       {...makeAccessible({ label: accessibilityLabel })}
       {...metaAttribute({ name: MetaConstants.IconButton, testID })}
     >

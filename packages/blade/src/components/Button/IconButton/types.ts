@@ -10,5 +10,6 @@ export type StyledIconButtonProps = {
   contrast: 'low' | 'high';
   accessibilityLabel: string;
   isDisabled?: IconButtonProps['isDisabled'];
+  tabIndex?: IconButtonProps['_tabIndex'];
 } & TestID &
   BladeCommonEvents;

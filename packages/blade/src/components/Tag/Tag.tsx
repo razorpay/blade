@@ -44,22 +44,33 @@ type TagProps = {
   isDisabled?: boolean;
 
   /**
+   * Is Tag virtually focussed
    *
+   * @private
    */
-  _isTagFocussed?: boolean;
+  _isVirtuallyFocussed?: boolean;
+
+  /**
+   * Is tag placed inside an input
+   *
+   * @private
+   */
+  _isTagInsideInput?: boolean;
 } & StyledPropsBlade &
   TestID;
 
-const FocussableTag = styled(BaseBox)<{ isTagFocussed: TagProps['_isTagFocussed'] }>((props) => {
-  if (props.isTagFocussed) {
-    return {
-      outline: `1px solid ${props.theme.colors.surface.background.level1.lowContrast}`,
-      boxShadow: `0px 0px 0px 4px ${props.theme.colors.brand.primary[400]}`,
-    };
-  }
+const FocussableTag = styled(BaseBox)<{ isVirtuallyFocussed: TagProps['_isVirtuallyFocussed'] }>(
+  (props) => {
+    if (props.isVirtuallyFocussed) {
+      return {
+        outline: `1px solid ${props.theme.colors.surface.background.level1.lowContrast}`,
+        boxShadow: `0px 0px 0px 4px ${props.theme.colors.brand.primary[400]}`,
+      };
+    }
 
-  return {};
-});
+    return {};
+  },
+);
 const Desktop = ({ children }: { children: (React.ReactElement | null)[] }): React.ReactElement => (
   <Box display={{ base: 'none', m: 'flex' }} alignItems="center">
     {children}
@@ -79,7 +90,8 @@ const Tag = ({
   children,
   isDisabled,
   testID,
-  _isTagFocussed,
+  _isVirtuallyFocussed,
+  _isTagInsideInput,
   ...styledProps
 }: TagProps): React.ReactElement | null => {
   const textColor = isDisabled
@@ -115,6 +127,7 @@ const Tag = ({
       icon={CloseIcon}
       accessibilityLabel={`Close ${children} tag`}
       isDisabled={isDisabled}
+      _tabIndex={_isTagInsideInput ? -1 : undefined}
       onClick={() => {
         onDismiss();
       }}
@@ -132,7 +145,7 @@ const Tag = ({
       padding={size === 'medium' ? mediumPadding : largePadding}
       {...getStyledProps(styledProps)}
       {...metaAttribute({ name: MetaConstants.Tag, testID })}
-      isTagFocussed={_isTagFocussed}
+      isVirtuallyFocussed={_isVirtuallyFocussed}
     >
       <Box display="flex" flexDirection="row" flexWrap="nowrap" alignItems="center">
         <Desktop>

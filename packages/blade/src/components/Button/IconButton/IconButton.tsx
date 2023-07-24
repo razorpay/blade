@@ -36,6 +36,11 @@ type IconButtonProps = {
    * Disabled state for IconButton
    */
   isDisabled?: boolean;
+
+  /**
+   * Sets tabindex property on button element
+   */
+  _tabIndex?: number;
 } & BladeCommonEvents;
 
 /**
@@ -58,6 +63,7 @@ const _IconButton: React.ForwardRefRenderFunction<BladeElementRef, IconButtonPro
     onPointerEnter,
     onTouchEnd,
     onTouchStart,
+    _tabIndex,
   },
   ref,
 ) => {
@@ -68,6 +74,7 @@ const _IconButton: React.ForwardRefRenderFunction<BladeElementRef, IconButtonPro
       contrast={contrast}
       size={size}
       icon={icon}
+      tabIndex={_tabIndex}
       accessibilityLabel={accessibilityLabel}
       isDisabled={isDisabled}
       onBlur={onBlur}

@@ -188,7 +188,8 @@ const _SelectInput = (
 
     return selectedIndices.map((selectedIndex, tagIndex) => (
       <Tag
-        _isTagFocussed={tagIndex === activeTagIndex}
+        _isVirtuallyFocussed={tagIndex === activeTagIndex}
+        _isTagInsideInput={true}
         key={selectedIndex}
         marginRight="spacing.2"
         onDismiss={() => {
