@@ -63,7 +63,7 @@ const DropdownHeader = assignWithoutSideEffects(_DropdownHeader, {
 type DropdownFooter = Pick<BaseFooterProps, 'children' | 'testID'>;
 
 const _DropdownFooter = ({ children, testID }: DropdownFooter): React.ReactElement => {
-  const { setHasFooterAction, activeIndex, onTriggerKeydown } = useDropdown();
+  const { setHasFooterAction, activeIndex, onTriggerKeydown, isOpen } = useDropdown();
   const footerRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
@@ -95,7 +95,8 @@ const _DropdownFooter = ({ children, testID }: DropdownFooter): React.ReactEleme
       })}
     >
       <BaseFooter metaComponentName={MetaConstants.DropdownFooter} testID={testID}>
-        {children}
+        {/* We don't want any of the interactive children to get focussed on TAB when dropdown is closed so we remove them from DOM itself */}
+        {isOpen ? children : null}
       </BaseFooter>
     </BaseBox>
   );

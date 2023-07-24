@@ -305,7 +305,7 @@ const useDropdown = (): UseDropdownReturnValue => {
    */
   const onTriggerClick = (): void => {
     if (isOpen) {
-      // close();
+      close();
     } else {
       setIsOpen(true);
     }
