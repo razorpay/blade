@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import BaseBox from '~components/Box/BaseBox';
-import { castWebType, isReactNative, makeSize } from '~utils';
+import { makeSize } from '~utils';
 
 const StyledDropdownOverlay = styled(BaseBox)<{
   isInBottomSheet?: boolean;
@@ -13,8 +13,6 @@ const StyledDropdownOverlay = styled(BaseBox)<{
     borderColor: theme.colors.surface.border.normal.lowContrast,
     borderStyle: isInBottomSheet ? undefined : 'solid',
     borderRadius: makeSize(theme.border.radius.medium),
-    boxShadow:
-      isInBottomSheet || isReactNative() ? undefined : castWebType(theme.elevation.midRaised),
   };
 });
 

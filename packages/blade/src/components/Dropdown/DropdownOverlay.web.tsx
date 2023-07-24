@@ -166,6 +166,7 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Eleme
     <BaseBox position="relative" ref={refs.setFloating as any}>
       <AnimatedOverlay
         isInBottomSheet={bottomSheetAndDropdownGlue?.dropdownHasBottomSheet}
+        elevation={bottomSheetAndDropdownGlue?.dropdownHasBottomSheet ? undefined : 'midRaised'}
         width={isMenu ? 'max-content' : width}
         // In SelectInput, Overlay should always take width of Input
         minWidth={isMenu ? '240px' : undefined}

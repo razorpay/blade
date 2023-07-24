@@ -26,8 +26,6 @@ const _DropdownHeader = ({
 }: DropdownHeaderProps): React.ReactElement => {
   return (
     <BaseBox
-      className="blade-dropdown-header-123"
-      overflow={'auto' as never}
       flexShrink={0}
       {...(isReactNative()
         ? {}

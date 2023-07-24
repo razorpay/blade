@@ -72,13 +72,13 @@ const FocussableTag = styled(BaseBox)<{ isVirtuallyFocussed: TagProps['_isVirtua
   },
 );
 const Desktop = ({ children }: { children: (React.ReactElement | null)[] }): React.ReactElement => (
-  <Box display={{ base: 'none', m: 'flex' }} alignItems="center">
+  <Box display={{ base: 'none', m: 'flex' }} flexDirection="row" alignItems="center">
     {children}
   </Box>
 );
 
 const Mobile = ({ children }: { children: (React.ReactElement | null)[] }): React.ReactElement => (
-  <Box display={{ base: 'flex', m: 'none' }} alignItems="center">
+  <Box display={{ base: 'flex', m: 'none' }} flexDirection="row" alignItems="center">
     {children}
   </Box>
 );

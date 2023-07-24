@@ -228,7 +228,7 @@ const _SelectInput = (
         as="button"
         tagsSlot={
           <BaseBox
-            id="tags-slot"
+            flexDirection="row"
             {...(!isReactNative()
               ? {
                   onMouseDown: () => {
