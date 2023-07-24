@@ -412,10 +412,12 @@ exports[`<Accordion /> should render 1`] = `
           Array [
             Object {
               "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
-              "borderBottomStyle": "solid",
-              "borderBottomWidth": 1,
               "borderStyle": "solid",
               "borderWidth": 0,
+            },
+            Object {
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": 1,
               "flexGrow": 1,
             },
           ]
@@ -802,10 +804,12 @@ exports[`<Accordion /> should render 1`] = `
           Array [
             Object {
               "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
-              "borderBottomStyle": "solid",
-              "borderBottomWidth": 1,
               "borderStyle": "solid",
               "borderWidth": 0,
+            },
+            Object {
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": 1,
               "flexGrow": 1,
             },
           ]
@@ -1192,10 +1196,12 @@ exports[`<Accordion /> should render 1`] = `
           Array [
             Object {
               "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
-              "borderBottomStyle": "solid",
-              "borderBottomWidth": 1,
               "borderStyle": "solid",
               "borderWidth": 0,
+            },
+            Object {
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": 1,
               "flexGrow": 1,
             },
           ]

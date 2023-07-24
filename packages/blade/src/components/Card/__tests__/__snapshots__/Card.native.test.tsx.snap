@@ -15,16 +15,12 @@ exports[`<Card /> should render a Card with Footer 1`] = `
     style={
       Array [
         Object {
-          "backgroundColor": "hsla(0, 0%, 100%, 1)",
           "borderRadius": 4,
-          "display": "flex",
-          "flexDirection": "column",
           "paddingBottom": 24,
           "paddingLeft": 24,
           "paddingRight": 24,
           "paddingTop": 24,
           "textAlign": "left",
-          "width": "100%",
         },
         Object {
           "elevation": 4,
@@ -36,6 +32,14 @@ exports[`<Card /> should render a Card with Footer 1`] = `
           "shadowOpacity": 0.12,
           "shadowRadius": 2,
         },
+        Array [
+          Object {
+            "backgroundColor": "hsla(0, 0%, 100%, 1)",
+            "display": "flex",
+            "flexDirection": "column",
+            "width": "100%",
+          },
+        ],
       ]
     }
     surfaceLevel={2}
@@ -113,10 +117,12 @@ exports[`<Card /> should render a Card with Footer 1`] = `
           Array [
             Object {
               "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
-              "borderBottomStyle": "solid",
-              "borderBottomWidth": 1,
               "borderStyle": "solid",
               "borderWidth": 0,
+            },
+            Object {
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": 1,
               "flexGrow": 1,
             },
           ]
@@ -334,6 +340,8 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                       "flexGrow": 1,
                       "flexShrink": 1,
                       "justifyContent": "center",
+                    },
+                    Object {
                       "opacity": 1,
                     },
                   ]
@@ -484,6 +492,8 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                       "flexGrow": 1,
                       "flexShrink": 1,
                       "justifyContent": "center",
+                    },
+                    Object {
                       "opacity": 1,
                     },
                   ]
@@ -546,16 +556,12 @@ exports[`<Card /> should render a Card with Header 1`] = `
     style={
       Array [
         Object {
-          "backgroundColor": "hsla(0, 0%, 100%, 1)",
           "borderRadius": 4,
-          "display": "flex",
-          "flexDirection": "column",
           "paddingBottom": 24,
           "paddingLeft": 24,
           "paddingRight": 24,
           "paddingTop": 24,
           "textAlign": "left",
-          "width": "100%",
         },
         Object {
           "elevation": 4,
@@ -567,6 +573,14 @@ exports[`<Card /> should render a Card with Header 1`] = `
           "shadowOpacity": 0.12,
           "shadowRadius": 2,
         },
+        Array [
+          Object {
+            "backgroundColor": "hsla(0, 0%, 100%, 1)",
+            "display": "flex",
+            "flexDirection": "column",
+            "width": "100%",
+          },
+        ],
       ]
     }
     surfaceLevel={2}
@@ -706,7 +720,9 @@ exports[`<Card /> should render a Card with Header 1`] = `
             data-blade-component="base-box"
             style={
               Array [
-                Object {},
+                Object {
+                  "marginRight": 16,
+                },
               ]
             }
           >
@@ -777,6 +793,9 @@ exports[`<Card /> should render a Card with Header 1`] = `
                   size="medium"
                   style={
                     Array [
+                      Object {
+                        "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+                      },
                       Object {
                         "alignSelf": "center",
                         "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
@@ -904,12 +923,15 @@ exports[`<Card /> should render a Card with Header 1`] = `
             style={
               Array [
                 Object {
+                  "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+                  "textAlign": "left",
+                },
+                Object {
                   "alignSelf": "center",
                   "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
                   "borderRadius": 9999,
                   "display": "flex",
                   "flexWrap": "nowrap",
-                  "textAlign": "left",
                 },
               ]
             }
@@ -986,10 +1008,12 @@ exports[`<Card /> should render a Card with Header 1`] = `
           Array [
             Object {
               "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
-              "borderBottomStyle": "solid",
-              "borderBottomWidth": 1,
               "borderStyle": "solid",
               "borderWidth": 0,
+            },
+            Object {
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": 1,
               "flexGrow": 1,
             },
           ]
@@ -1057,16 +1081,12 @@ exports[`<Card /> should render a Card without 0 padding 1`] = `
     style={
       Array [
         Object {
-          "backgroundColor": "hsla(0, 0%, 100%, 1)",
           "borderRadius": 4,
-          "display": "flex",
-          "flexDirection": "column",
           "paddingBottom": 0,
           "paddingLeft": 0,
           "paddingRight": 0,
           "paddingTop": 0,
           "textAlign": "left",
-          "width": "100%",
         },
         Object {
           "elevation": 4,
@@ -1078,6 +1098,14 @@ exports[`<Card /> should render a Card without 0 padding 1`] = `
           "shadowOpacity": 0.12,
           "shadowRadius": 2,
         },
+        Array [
+          Object {
+            "backgroundColor": "hsla(0, 0%, 100%, 1)",
+            "display": "flex",
+            "flexDirection": "column",
+            "width": "100%",
+          },
+        ],
       ]
     }
     surfaceLevel={2}
@@ -1112,19 +1140,12 @@ exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
     style={
       Array [
         Object {
-          "backgroundColor": "hsla(0, 0%, 100%, 1)",
-          "borderColor": "hsla(216, 15%, 54%, 0.18)",
           "borderRadius": 4,
-          "borderStyle": "solid",
-          "borderWidth": 1,
-          "display": "flex",
-          "flexDirection": "column",
           "paddingBottom": 24,
           "paddingLeft": 24,
           "paddingRight": 24,
           "paddingTop": 24,
           "textAlign": "left",
-          "width": "100%",
         },
         Object {
           "elevation": 0,
@@ -1136,6 +1157,17 @@ exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
           "shadowOpacity": 0,
           "shadowRadius": 0,
         },
+        Array [
+          Object {
+            "backgroundColor": "hsla(0, 0%, 100%, 1)",
+            "borderColor": "hsla(216, 15%, 54%, 0.18)",
+            "borderStyle": "solid",
+            "borderWidth": 1,
+            "display": "flex",
+            "flexDirection": "column",
+            "width": "100%",
+          },
+        ],
       ]
     }
     surfaceLevel={2}
@@ -1201,16 +1233,12 @@ exports[`<Card /> should render a plain Card 1`] = `
     style={
       Array [
         Object {
-          "backgroundColor": "hsla(220, 27%, 98%, 1)",
           "borderRadius": 4,
-          "display": "flex",
-          "flexDirection": "column",
           "paddingBottom": 24,
           "paddingLeft": 24,
           "paddingRight": 24,
           "paddingTop": 24,
           "textAlign": "left",
-          "width": "100%",
         },
         Object {
           "elevation": 26,
@@ -1222,6 +1250,14 @@ exports[`<Card /> should render a plain Card 1`] = `
           "shadowOpacity": 0.2,
           "shadowRadius": 12,
         },
+        Array [
+          Object {
+            "backgroundColor": "hsla(220, 27%, 98%, 1)",
+            "display": "flex",
+            "flexDirection": "column",
+            "width": "100%",
+          },
+        ],
       ]
     }
     surfaceLevel={3}

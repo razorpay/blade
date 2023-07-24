@@ -700,6 +700,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
               size="small"
               style={
                 Array [
+                  Object {},
                   Object {
                     "alignSelf": "center",
                     "backgroundColor": "hsla(216, 15%, 54%, 0.18)",

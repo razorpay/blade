@@ -1,5 +1,29 @@
 # @razorpay/blade
 
+## 9.1.2
+
+### Patch Changes
+
+- 6763f5fa: fix(List): re-export ListItemText
+
+## 9.1.1
+
+### Patch Changes
+
+- fe31363e: fix(Input): correct helpText and input box alignment
+- e7317212: fix: add border-style when border width or color is set
+
+## 9.1.0
+
+### Minor Changes
+
+- b1a1faef: feat(blade): added Skeleton Component
+
+### Patch Changes
+
+- 199d6f0e: fix(Card): fix spacing between header & leading on react native
+- dd234a65: feat: add support for ListItemText within List
+
 ## 9.0.3
 
 ### Patch Changes

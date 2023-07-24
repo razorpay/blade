@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 import userEvents from '@testing-library/user-event';
@@ -22,24 +23,28 @@ describe('<Tag />', () => {
   it('should call onDismiss', async () => {
     const user = userEvents.setup();
     const dismissHandler = jest.fn();
-    const { getByRole, queryByText } = renderWithTheme(
+    const { getByRole, queryAllByText } = renderWithTheme(
       <Tag onDismiss={dismissHandler}>in:User</Tag>,
     );
-    expect(queryByText('in:User')).toBeInTheDocument();
-    await user.click(getByRole('button', { name: 'Close in:User tag' }));
+
+    const [_desktopTagText, mobileTagText] = queryAllByText('in:User');
+    expect(mobileTagText).toBeVisible();
+    await user.click(getByRole('button', { name: 'Close in:User tag', hidden: false }));
     expect(dismissHandler).toBeCalledWith();
   });
 
   it('should NOT call onDismiss on disabled Tag', async () => {
     const user = userEvents.setup();
     const dismissHandler = jest.fn();
-    const { getByRole, queryByText } = renderWithTheme(
+    const { getByRole, queryAllByText } = renderWithTheme(
       <Tag onDismiss={dismissHandler} isDisabled={true}>
         in:User
       </Tag>,
     );
-    expect(queryByText('in:User')).toBeInTheDocument();
-    await user.click(getByRole('button', { name: 'Close in:User tag' }));
+
+    const [_desktopTagText, mobileTagText] = queryAllByText('in:User');
+    expect(mobileTagText).toBeVisible();
+    await user.click(getByRole('button', { name: 'Close in:User tag', hidden: false }));
     expect(dismissHandler).not.toBeCalled();
   });
 });
