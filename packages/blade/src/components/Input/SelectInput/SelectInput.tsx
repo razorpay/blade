@@ -190,7 +190,6 @@ const _SelectInput = (
         _isVirtuallyFocussed={tagIndex === activeTagIndex}
         _isTagInsideInput={true}
         key={selectedIndex}
-        marginRight="spacing.2"
         onDismiss={() => {
           if (isTagDismissedRef.current) {
             isTagDismissedRef.current.value = true;
@@ -225,26 +224,7 @@ const _SelectInput = (
       <BaseInput
         {...baseInputProps}
         as="button"
-        tagsSlot={
-          <BaseBox
-            flexDirection="row"
-            {...(!isReactNative()
-              ? {
-                  onMouseDown: () => {
-                    setShouldIgnoreBlurAnimation(true);
-                  },
-                  onClick: () => {
-                    triggererRef.current?.focus();
-                  },
-                  onMouseUp: () => {
-                    setShouldIgnoreBlurAnimation(false);
-                  },
-                }
-              : {})}
-          >
-            {getTags()}
-          </BaseBox>
-        }
+        tags={getTags()}
         value={selectionType === 'multiple' ? undefined : displayValue}
         hideLabelText={props.label?.length === 0}
         componentName={MetaConstants.SelectInput}
@@ -266,6 +246,7 @@ const _SelectInput = (
         activeDescendant={activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined}
         popupId={`${dropdownBaseId}-actionlist`}
         shouldIgnoreBlurAnimation={shouldIgnoreBlurAnimation}
+        setShouldIgnoreBlurAnimation={setShouldIgnoreBlurAnimation}
         interactionElement={
           <SelectChevronIcon
             onClick={() => {

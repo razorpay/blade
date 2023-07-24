@@ -11,6 +11,7 @@ import type {
 import { StyledBaseInput } from './StyledBaseInput';
 import { BaseInputVisuals } from './BaseInputVisuals';
 import { BaseInputWrapper } from './BaseInputWrapper';
+import { BaseInputTagSlot } from './BaseInputTagSlot';
 import { FormHint, FormLabel } from '~components/Form';
 import type { IconComponent } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
@@ -110,6 +111,10 @@ export type BaseInputProps = FormInputLabelProps &
      * Ignores the blur event animation (Used in Select to ignore blur animation when item in option is clicked)
      */
     shouldIgnoreBlurAnimation?: boolean;
+    /**
+     * sets boolean that ignores the blur animations on baseinput
+     */
+    setShouldIgnoreBlurAnimation?: (shouldIgnoreBlurAnimation: boolean) => void;
     /**
      * Used to turn the input field to controlled so user can control the value
      */
@@ -234,7 +239,7 @@ export type BaseInputProps = FormInputLabelProps &
     /**
      * A slot for adding tags to input
      */
-    tagsSlot?: React.ReactElement | React.ReactElement[];
+    tags?: React.ReactElement[] | null;
   } & TestID &
   Platform.Select<{
     native: {
@@ -535,7 +540,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
       placeholder,
       type = 'text',
       defaultValue,
-      tagsSlot,
+      tags,
       name,
       value,
       onFocus,
@@ -577,6 +582,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
       popupId,
       isPopupExpanded,
       shouldIgnoreBlurAnimation,
+      setShouldIgnoreBlurAnimation,
       autoCapitalize,
       testID,
       ...styledProps
@@ -684,16 +690,15 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
             isLabelLeftPositioned={isLabelLeftPositioned}
           >
             <BaseInputVisuals leadingIcon={leadingIcon} prefix={prefix} isDisabled={isDisabled} />
-            <BaseBox
-              paddingLeft="spacing.3"
-              alignSelf="center"
-              justifyContent="center"
-              display="flex"
-              flexDirection="row"
-              gap="spacing.2"
-            >
-              {tagsSlot}
-            </BaseBox>
+            <BaseInputTagSlot
+              tags={tags}
+              setFocusOnInput={() => {
+                if (ref && 'current' in ref) {
+                  ref.current?.focus();
+                }
+              }}
+              setShouldIgnoreBlurAnimation={setShouldIgnoreBlurAnimation}
+            />
             <StyledBaseInput
               as={isReactNative ? undefined : as}
               id={inputId}

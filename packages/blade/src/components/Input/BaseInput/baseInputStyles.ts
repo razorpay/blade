@@ -116,8 +116,7 @@ export const getBaseInputStyles = ({
     paddingTop: makeSpace(theme.spacing[3]),
     paddingBottom: makeSpace(theme.spacing[3]),
     paddingLeft:
-      // some space on left is taken by tagsSlot so this ignores that space
-      hasLeadingIcon || hasPrefix ? makeSpace(theme.spacing[0]) : makeSpace(theme.spacing[2]),
+      hasLeadingIcon || hasPrefix ? makeSpace(theme.spacing[3]) : makeSpace(theme.spacing[4]),
     paddingRight:
       hasInteractionElement || hasSuffix || hasTrailingIcon
         ? makeSpace(theme.spacing[3])
