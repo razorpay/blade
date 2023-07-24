@@ -188,41 +188,49 @@ const _Dropdown = ({
     };
   }, [dropdownHasBottomSheet, isOpen, close]);
 
-  React.useEffect(() => {
-    if (isReactNative()) {
-      return;
+  React.useEffect((): (() => void) | undefined => {
+    if (!isReactNative()) {
+      const dropdown = dropdownContainerRef.current;
+
+      const documentClickHandler = (e: MouseEvent): void => {
+        const target = e.target as HTMLDivElement;
+
+        if (!target || !dropdown) {
+          return;
+        }
+
+        if (!dropdown.contains(target) && !isTagDismissedRef.current?.value) {
+          close();
+        }
+
+        if (isTagDismissedRef.current?.value) {
+          isTagDismissedRef.current.value = false;
+        }
+      };
+
+      const documentFocusHandler = (e: FocusEvent): void => {
+        const target = e.target as HTMLDivElement;
+        setActiveIndex(-1);
+
+        if (!target || !dropdown) {
+          return;
+        }
+
+        if (!dropdown.contains(target)) {
+          close();
+        }
+      };
+
+      document.addEventListener('click', documentClickHandler);
+      document.addEventListener('focusin', documentFocusHandler);
+
+      return (): void => {
+        document.removeEventListener('click', documentClickHandler);
+        document.removeEventListener('focusin', documentFocusHandler);
+      };
     }
 
-    const dropdown = dropdownContainerRef.current;
-
-    document.addEventListener('click', (e) => {
-      const target = e.target as HTMLDivElement;
-
-      if (!target || !dropdown) {
-        return;
-      }
-
-      if (!dropdown.contains(target) && !isTagDismissedRef.current?.value) {
-        close();
-      }
-
-      if (isTagDismissedRef.current?.value) {
-        isTagDismissedRef.current.value = false;
-      }
-    });
-
-    document.addEventListener('focusin', (e) => {
-      const target = e.target as HTMLDivElement;
-      setActiveIndex(-1);
-
-      if (!target || !dropdown) {
-        return;
-      }
-
-      if (!dropdown.contains(target)) {
-        close();
-      }
-    });
+    return undefined;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -230,7 +238,8 @@ const _Dropdown = ({
     <BottomSheetAndDropdownGlueContext.Provider value={BottomSheetAndDropdownGlueContextValue}>
       <DropdownContext.Provider value={contextValue}>
         <BaseBox
-          ref={dropdownContainerRef}
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          ref={dropdownContainerRef as any}
           position="relative"
           textAlign={'left' as never}
           {...getStyledProps(styledProps)}
