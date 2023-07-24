@@ -209,10 +209,15 @@ const _Dropdown = ({
       };
 
       const documentFocusHandler = (e: FocusEvent): void => {
-        const target = e.target as HTMLDivElement;
+        const target = e.relatedTarget as HTMLDivElement;
         setActiveIndex(-1);
 
-        if (!target || !dropdown) {
+        if (!dropdown) {
+          return;
+        }
+
+        if (target === null) {
+          close();
           return;
         }
 
@@ -222,11 +227,11 @@ const _Dropdown = ({
       };
 
       document.addEventListener('click', documentClickHandler);
-      document.addEventListener('focusin', documentFocusHandler);
+      document.addEventListener('focusout', documentFocusHandler);
 
       return (): void => {
         document.removeEventListener('click', documentClickHandler);
-        document.removeEventListener('focusin', documentFocusHandler);
+        document.removeEventListener('focusout', documentFocusHandler);
       };
     }
 

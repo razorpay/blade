@@ -62,7 +62,6 @@ const _SelectInput = (
     displayValue,
     onTriggerClick,
     onTriggerKeydown,
-    onTriggerBlur,
     dropdownBaseId,
     activeIndex,
     activeTagIndex,
@@ -260,14 +259,10 @@ const _SelectInput = (
         hasPopup={getActionListContainerRole(hasFooterAction, dropdownTriggerer)}
         isPopupExpanded={isOpen}
         onClick={(e) => {
-          console.log('select input click');
           onTriggerClick();
           props?.onClick?.(e);
         }}
         onKeyDown={onTriggerKeydown}
-        onBlur={({ name }) => {
-          onTriggerBlur?.({ name, value, onBlurCallback: onBlur });
-        }}
         activeDescendant={activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined}
         popupId={`${dropdownBaseId}-actionlist`}
         shouldIgnoreBlurAnimation={shouldIgnoreBlurAnimation}

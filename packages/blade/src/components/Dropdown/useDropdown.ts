@@ -149,12 +149,6 @@ const DropdownContext = React.createContext<DropdownContextType>({
 let searchTimeout: number;
 let searchString = '';
 
-type OnTriggerBlurEvent = (options: {
-  name?: string;
-  value?: string;
-  onBlurCallback?: (callbackArgs: { name?: string; value?: string }) => void;
-}) => void;
-
 type UseDropdownReturnValue = DropdownContextType & {
   /**
    * Click event on combobox. Toggles the dropdown
@@ -165,15 +159,6 @@ type UseDropdownReturnValue = DropdownContextType & {
    * Keydown event of combobox. Handles most of the keyboard accessibility of dropdown
    */
   onTriggerKeydown: FormInputHandleOnKeyDownEvent | undefined;
-
-  /**
-   * Handles blur events like
-   * - closing the navbar when someone clicks outside
-   * - ignoring the blur for certain cases like clicks on footer
-   * - selecting the option before closing if Tab is pressed
-   * - ..etc
-   */
-  onTriggerBlur: OnTriggerBlurEvent | undefined;
 
   /**
    * Handles the click even on option.
@@ -309,32 +294,6 @@ const useDropdown = (): UseDropdownReturnValue => {
     } else {
       setIsOpen(true);
     }
-  };
-
-  /**
-   * Blur handler on combobox. Also handles the selection logic when user moves focus
-   */
-  const onTriggerBlur: OnTriggerBlurEvent = ({ name, value, onBlurCallback }) => {
-    // const hasFocusInsideDropdown = !!document.querySelector('#blade-dropdown-123:focus-within');
-    // console.log('Blur of SelectInput which is ok');
-    // if (rest.hasFooterAction) {
-    //   // When Footer has action buttons, we ignore the blur (by setting shouldIgnoreBlur to true in onTriggerKeyDown)
-    //   // And we remove the active item (by setting it to -1) so that we can shift focus on action buttons
-    //   setActiveIndex(-1);
-    // }
-    // if (shouldIgnoreBlur) {
-    //   setShouldIgnoreBlur(false);
-    //   return;
-    // }
-    // onBlurCallback?.({ name, value });
-    // if (isOpen) {
-    //   if (selectionType !== 'multiple') {
-    //     selectOption(activeIndex);
-    //   }
-    //   if (!bottomSheetAndDropdownGlue?.dropdownHasBottomSheet) {
-    //     close();
-    //   }
-    // }
   };
 
   /**
@@ -495,7 +454,6 @@ const useDropdown = (): UseDropdownReturnValue => {
     setControlledValueIndices,
     onTriggerClick,
     onTriggerKeydown,
-    onTriggerBlur,
     onOptionClick,
     activeIndex,
     setActiveIndex,

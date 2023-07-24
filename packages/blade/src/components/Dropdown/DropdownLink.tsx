@@ -33,7 +33,6 @@ const _DropdownLink = ({
 }: DropdownLinkProps): JSX.Element => {
   const {
     onTriggerClick,
-    onTriggerBlur,
     onTriggerKeydown,
     dropdownBaseId,
     isOpen,
@@ -72,8 +71,6 @@ const _DropdownLink = ({
         onClick?.(e as any);
       }}
       onBlur={(e) => {
-        // With button trigger, there is no "value" as such. It's just clickable items
-        onTriggerBlur?.({ name: undefined, value: undefined });
         // Setting it for web fails it on native typecheck and vice versa
         // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion, @typescript-eslint/no-explicit-any
         onBlur?.(e as any);
