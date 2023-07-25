@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 /*!
  * slight modified version of set-value <https://github.com/jonschlinkert/set-value>
  * The reason for this modification was needed because given the key
@@ -42,15 +43,6 @@ const createMemoKey = (input, options) => {
   return key;
 };
 
-const memoize = (input, options, fn) => {
-  const key = toStringKey(options ? createMemoKey(input, options) : input);
-  validateKey(key);
-
-  const value = setValue.cache.get(key) || fn();
-  setValue.cache.set(key, value);
-  return value;
-};
-
 const splitString = (input, options = {}) => {
   const sep = options.separator || '.';
   const preserve = sep === '/' ? false : options.preservePaths;
@@ -62,6 +54,7 @@ const splitString = (input, options = {}) => {
   const parts = [];
   let part = '';
 
+  // eslint-disable-next-line no-shadow
   const push = (part) => {
     let number;
     if (part.trim() !== '' && Number.isInteger((number = Number(part)))) {
@@ -141,11 +134,13 @@ const setValue = (target, path, value, options) => {
       break;
     }
 
+    // this is the only change that i've added referencing this PR - https://github.com/jonschlinkert/set-value/pull/45
     if (
       typeof next === 'number' &&
       typeof obj[key] !== 'undefined' &&
       (typeof obj[key] !== 'object' || obj[key] === null)
     ) {
+      // eslint-disable-next-line no-multi-assign
       obj = obj[key] = [];
       continue;
     }
@@ -164,6 +159,15 @@ setValue.split = split;
 setValue.cache = new Map();
 setValue.clear = () => {
   setValue.cache = new Map();
+};
+
+const memoize = (input, options, fn) => {
+  const key = toStringKey(options ? createMemoKey(input, options) : input);
+  validateKey(key);
+
+  const value = setValue.cache.get(key) || fn();
+  setValue.cache.set(key, value);
+  return value;
 };
 
 export default setValue;
