@@ -19,7 +19,6 @@ import {
   getStyledPropsArgTypes,
 } from '~components/Box/BaseBox/storybookArgTypes';
 import { castWebType } from '~utils';
-import { Box } from '~components/Box';
 
 const Page = (): ReactElement => {
   return (
