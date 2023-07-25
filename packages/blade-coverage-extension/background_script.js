@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-const calculateBladeCoverage = () => {
+const calculateBladeCoverage = (shouldHighlightNodes) => {
   /**
    * Checks if DOM node is hidden or not
    */
@@ -31,6 +31,7 @@ const calculateBladeCoverage = () => {
   const allDomElements = document.querySelectorAll('body *');
   const bladeNodeElements = [];
   const totalNodeElements = [];
+  const nonBladeNodeElements = [];
 
   allDomElements.forEach((elm) => {
     if (isElementHidden(elm)) return;
@@ -40,16 +41,24 @@ const calculateBladeCoverage = () => {
     // If element has data-blade-component add it
     if (elm.hasAttribute('data-blade-component')) {
       bladeNodeElements.push(elm);
-      // If element has a parent node which has `data-blade-component` attribute
-      // Then count this node too.
-    } else if (elm.closest('[data-blade-component]')) {
-      bladeNodeElements.push(elm);
+    } else {
+      nonBladeNodeElements.push(elm);
     }
   });
 
   const totalNodes = totalNodeElements.length;
   const bladeNodes = bladeNodeElements.length;
   const bladeCoverage = Number(((bladeNodes / totalNodes) * 100).toFixed(2));
+
+  if (shouldHighlightNodes) {
+    nonBladeNodeElements.forEach((node) => {
+      node.style.outline = '1px solid rgba(255, 0, 0, 0.5)';
+    });
+  } else {
+    nonBladeNodeElements.forEach((node) => {
+      node.style.outline = 'initial';
+    });
+  }
 
   return {
     bladeCoverage,
@@ -64,6 +73,7 @@ chrome.runtime.onMessage.addListener(async (message) => {
       const response = await chrome.scripting.executeScript({
         target: { tabId: tabs[0].id },
         func: calculateBladeCoverage,
+        args: [message.shouldHighlightNodes],
       });
       console.log('response', response);
       chrome.runtime.sendMessage({ action: 'blade-coverage', coverage: response[0].result });
