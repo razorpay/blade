@@ -19,6 +19,7 @@ import {
   getStyledPropsArgTypes,
 } from '~components/Box/BaseBox/storybookArgTypes';
 import { castWebType } from '~utils';
+import { Box } from '~components/Box';
 
 const Page = (): ReactElement => {
   return (
@@ -154,6 +155,44 @@ const ButtonWithVariantTemplate: ComponentStory<typeof ButtonComponent> = ({
   );
 };
 
+const ButtonWithIntentTemplate: ComponentStory<typeof ButtonComponent> = ({
+  children = 'Button',
+  ...args
+}) => {
+  return (
+    <>
+      <StyledBaseText fontWeight="bold">Low Contrast</StyledBaseText>
+      <ButtonComponent {...args} marginX="spacing.1" size="xsmall" contrast="low">
+        {children}
+      </ButtonComponent>
+      <ButtonComponent {...args} marginX="spacing.1" size="small" contrast="low">
+        {children}
+      </ButtonComponent>
+      <ButtonComponent {...args} marginX="spacing.1" size="medium" contrast="low">
+        {children}
+      </ButtonComponent>
+      <ButtonComponent {...args} marginX="spacing.1" size="large" contrast="low">
+        {children}
+      </ButtonComponent>
+
+      <StyledBaseText fontWeight="bold">High Contrast</StyledBaseText>
+
+      <ButtonComponent {...args} marginX="spacing.1" size="xsmall" contrast="high">
+        {children}
+      </ButtonComponent>
+      <ButtonComponent {...args} marginX="spacing.1" size="small" contrast="high">
+        {children}
+      </ButtonComponent>
+      <ButtonComponent {...args} marginX="spacing.1" size="medium" contrast="high">
+        {children}
+      </ButtonComponent>
+      <ButtonComponent {...args} marginX="spacing.1" size="large" contrast="high">
+        {children}
+      </ButtonComponent>
+    </>
+  );
+};
+
 export const Default = ButtonTemplate.bind({});
 // Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
 Default.storyName = 'Default';
@@ -193,6 +232,45 @@ TertiaryButton.parameters = {
   docs: {
     description: {
       story: 'Tertiary Button in different sizes',
+    },
+  },
+};
+
+export const PositiveButton = ButtonWithIntentTemplate.bind({});
+PositiveButton.storyName = 'Positive';
+PositiveButton.args = {
+  intent: 'positive',
+};
+PositiveButton.parameters = {
+  docs: {
+    description: {
+      story: 'Positive Button in different contrast',
+    },
+  },
+};
+
+export const NegativeButton = ButtonWithIntentTemplate.bind({});
+NegativeButton.storyName = 'Negative';
+NegativeButton.args = {
+  intent: 'negative',
+};
+NegativeButton.parameters = {
+  docs: {
+    description: {
+      story: 'Negative Button in different contrast',
+    },
+  },
+};
+
+export const NoticeButton = ButtonWithIntentTemplate.bind({});
+NoticeButton.storyName = 'Notice';
+NoticeButton.args = {
+  intent: 'notice',
+};
+NoticeButton.parameters = {
+  docs: {
+    description: {
+      story: 'Notice Button in different contrast',
     },
   },
 };
