@@ -102,7 +102,7 @@ const App = (): ReactElement => {
                   setShouldHighlightNodes(e.isChecked);
                 }}
               >
-                Highlight Nodes
+                Highlight Non Blade Nodes
               </Checkbox>
             </Box>
           </CardBody>
