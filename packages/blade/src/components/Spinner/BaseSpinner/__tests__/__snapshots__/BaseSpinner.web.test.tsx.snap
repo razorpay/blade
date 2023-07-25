@@ -6,13 +6,6 @@ exports[`<BaseSpinner /> should render BaseSpinner with default props 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -22,7 +15,7 @@ exports[`<BaseSpinner /> should render BaseSpinner with default props 1`] = `
   align-items: center;
 }
 
-.c2 {
+.c1 {
   padding: 1px;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -37,17 +30,17 @@ exports[`<BaseSpinner /> should render BaseSpinner with default props 1`] = `
 
 <div>
   <div
-    class="c0"
+    class=""
     data-blade-component="spinner"
   >
     <div
       aria-label="Loading"
-      class="c1"
+      class="c0"
       data-blade-component="base-box"
       role="progressbar"
     >
       <div
-        class=" c2"
+        class=" c1"
         data-blade-component="base-box"
       >
         <svg
@@ -88,13 +81,6 @@ exports[`<BaseSpinner /> should render high contrast BaseSpinner 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -104,7 +90,7 @@ exports[`<BaseSpinner /> should render high contrast BaseSpinner 1`] = `
   align-items: center;
 }
 
-.c2 {
+.c1 {
   padding: 1px;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -119,17 +105,17 @@ exports[`<BaseSpinner /> should render high contrast BaseSpinner 1`] = `
 
 <div>
   <div
-    class="c0"
+    class=""
     data-blade-component="spinner"
   >
     <div
       aria-label="Loading"
-      class="c1"
+      class="c0"
       data-blade-component="base-box"
       role="progressbar"
     >
       <div
-        class=" c2"
+        class=" c1"
         data-blade-component="base-box"
       >
         <svg
@@ -170,13 +156,6 @@ exports[`<BaseSpinner /> should render high contrast BaseSpinner with bottom lab
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -186,12 +165,12 @@ exports[`<BaseSpinner /> should render high contrast BaseSpinner with bottom lab
   align-items: center;
 }
 
-.c3 {
+.c2 {
   margin-top: 8px;
   margin-left: 0px;
 }
 
-.c2 {
+.c1 {
   padding: 1px;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -204,7 +183,7 @@ exports[`<BaseSpinner /> should render high contrast BaseSpinner with bottom lab
   animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
 }
 
-.c4 {
+.c3 {
   color: hsla(216,19%,89%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -219,17 +198,17 @@ exports[`<BaseSpinner /> should render high contrast BaseSpinner with bottom lab
 
 <div>
   <div
-    class="c0"
+    class=""
     data-blade-component="spinner"
   >
     <div
       aria-label="Loading"
-      class="c1"
+      class="c0"
       data-blade-component="base-box"
       role="progressbar"
     >
       <div
-        class=" c2"
+        class=" c1"
         data-blade-component="base-box"
       >
         <svg
@@ -260,11 +239,11 @@ exports[`<BaseSpinner /> should render high contrast BaseSpinner with bottom lab
         </svg>
       </div>
       <div
-        class="c3"
+        class="c2"
         data-blade-component="base-box"
       >
         <p
-          class="c4"
+          class="c3"
           data-blade-component="text"
         >
           Loading
@@ -281,13 +260,6 @@ exports[`<BaseSpinner /> should render high contrast information intent BaseSpin
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -297,7 +269,7 @@ exports[`<BaseSpinner /> should render high contrast information intent BaseSpin
   align-items: center;
 }
 
-.c2 {
+.c1 {
   padding: 1px;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -312,17 +284,17 @@ exports[`<BaseSpinner /> should render high contrast information intent BaseSpin
 
 <div>
   <div
-    class="c0"
+    class=""
     data-blade-component="spinner"
   >
     <div
       aria-label="Loading"
-      class="c1"
+      class="c0"
       data-blade-component="base-box"
       role="progressbar"
     >
       <div
-        class=" c2"
+        class=" c1"
         data-blade-component="base-box"
       >
         <svg
@@ -363,13 +335,6 @@ exports[`<BaseSpinner /> should render high contrast negative intent BaseSpinner
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -379,7 +344,7 @@ exports[`<BaseSpinner /> should render high contrast negative intent BaseSpinner
   align-items: center;
 }
 
-.c2 {
+.c1 {
   padding: 1px;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -394,17 +359,17 @@ exports[`<BaseSpinner /> should render high contrast negative intent BaseSpinner
 
 <div>
   <div
-    class="c0"
+    class=""
     data-blade-component="spinner"
   >
     <div
       aria-label="Loading"
-      class="c1"
+      class="c0"
       data-blade-component="base-box"
       role="progressbar"
     >
       <div
-        class=" c2"
+        class=" c1"
         data-blade-component="base-box"
       >
         <svg
@@ -445,13 +410,6 @@ exports[`<BaseSpinner /> should render high contrast neutral intent BaseSpinner 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -461,7 +419,7 @@ exports[`<BaseSpinner /> should render high contrast neutral intent BaseSpinner 
   align-items: center;
 }
 
-.c2 {
+.c1 {
   padding: 1px;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -476,17 +434,17 @@ exports[`<BaseSpinner /> should render high contrast neutral intent BaseSpinner 
 
 <div>
   <div
-    class="c0"
+    class=""
     data-blade-component="spinner"
   >
     <div
       aria-label="Loading"
-      class="c1"
+      class="c0"
       data-blade-component="base-box"
       role="progressbar"
     >
       <div
-        class=" c2"
+        class=" c1"
         data-blade-component="base-box"
       >
         <svg
@@ -527,13 +485,6 @@ exports[`<BaseSpinner /> should render high contrast notice intent BaseSpinner 1
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -543,7 +494,7 @@ exports[`<BaseSpinner /> should render high contrast notice intent BaseSpinner 1
   align-items: center;
 }
 
-.c2 {
+.c1 {
   padding: 1px;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -558,17 +509,17 @@ exports[`<BaseSpinner /> should render high contrast notice intent BaseSpinner 1
 
 <div>
   <div
-    class="c0"
+    class=""
     data-blade-component="spinner"
   >
     <div
       aria-label="Loading"
-      class="c1"
+      class="c0"
       data-blade-component="base-box"
       role="progressbar"
     >
       <div
-        class=" c2"
+        class=" c1"
         data-blade-component="base-box"
       >
         <svg
@@ -609,13 +560,6 @@ exports[`<BaseSpinner /> should render high contrast positive intent BaseSpinner
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -625,7 +569,7 @@ exports[`<BaseSpinner /> should render high contrast positive intent BaseSpinner
   align-items: center;
 }
 
-.c2 {
+.c1 {
   padding: 1px;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -640,17 +584,17 @@ exports[`<BaseSpinner /> should render high contrast positive intent BaseSpinner
 
 <div>
   <div
-    class="c0"
+    class=""
     data-blade-component="spinner"
   >
     <div
       aria-label="Loading"
-      class="c1"
+      class="c0"
       data-blade-component="base-box"
       role="progressbar"
     >
       <div
-        class=" c2"
+        class=" c1"
         data-blade-component="base-box"
       >
         <svg
@@ -691,13 +635,6 @@ exports[`<BaseSpinner /> should render large size BaseSpinner 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -707,7 +644,7 @@ exports[`<BaseSpinner /> should render large size BaseSpinner 1`] = `
   align-items: center;
 }
 
-.c2 {
+.c1 {
   padding: 1px;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -722,17 +659,17 @@ exports[`<BaseSpinner /> should render large size BaseSpinner 1`] = `
 
 <div>
   <div
-    class="c0"
+    class=""
     data-blade-component="spinner"
   >
     <div
       aria-label="Loading"
-      class="c1"
+      class="c0"
       data-blade-component="base-box"
       role="progressbar"
     >
       <div
-        class=" c2"
+        class=" c1"
         data-blade-component="base-box"
       >
         <svg
@@ -773,13 +710,6 @@ exports[`<BaseSpinner /> should render low contrast BaseSpinner 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -789,7 +719,7 @@ exports[`<BaseSpinner /> should render low contrast BaseSpinner 1`] = `
   align-items: center;
 }
 
-.c2 {
+.c1 {
   padding: 1px;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -804,17 +734,17 @@ exports[`<BaseSpinner /> should render low contrast BaseSpinner 1`] = `
 
 <div>
   <div
-    class="c0"
+    class=""
     data-blade-component="spinner"
   >
     <div
       aria-label="Loading"
-      class="c1"
+      class="c0"
       data-blade-component="base-box"
       role="progressbar"
     >
       <div
-        class=" c2"
+        class=" c1"
         data-blade-component="base-box"
       >
         <svg
@@ -855,13 +785,6 @@ exports[`<BaseSpinner /> should render low contrast BaseSpinner with right label
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -871,12 +794,12 @@ exports[`<BaseSpinner /> should render low contrast BaseSpinner with right label
   align-items: center;
 }
 
-.c3 {
+.c2 {
   margin-top: 0px;
   margin-left: 8px;
 }
 
-.c2 {
+.c1 {
   padding: 1px;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -889,7 +812,7 @@ exports[`<BaseSpinner /> should render low contrast BaseSpinner with right label
   animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
 }
 
-.c4 {
+.c3 {
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -904,17 +827,17 @@ exports[`<BaseSpinner /> should render low contrast BaseSpinner with right label
 
 <div>
   <div
-    class="c0"
+    class=""
     data-blade-component="spinner"
   >
     <div
       aria-label="Loading"
-      class="c1"
+      class="c0"
       data-blade-component="base-box"
       role="progressbar"
     >
       <div
-        class=" c2"
+        class=" c1"
         data-blade-component="base-box"
       >
         <svg
@@ -945,11 +868,11 @@ exports[`<BaseSpinner /> should render low contrast BaseSpinner with right label
         </svg>
       </div>
       <div
-        class="c3"
+        class="c2"
         data-blade-component="base-box"
       >
         <p
-          class="c4"
+          class="c3"
           data-blade-component="text"
         >
           Loading
@@ -966,13 +889,6 @@ exports[`<BaseSpinner /> should render low contrast information intent BaseSpinn
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -982,7 +898,7 @@ exports[`<BaseSpinner /> should render low contrast information intent BaseSpinn
   align-items: center;
 }
 
-.c2 {
+.c1 {
   padding: 1px;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -997,17 +913,17 @@ exports[`<BaseSpinner /> should render low contrast information intent BaseSpinn
 
 <div>
   <div
-    class="c0"
+    class=""
     data-blade-component="spinner"
   >
     <div
       aria-label="Loading"
-      class="c1"
+      class="c0"
       data-blade-component="base-box"
       role="progressbar"
     >
       <div
-        class=" c2"
+        class=" c1"
         data-blade-component="base-box"
       >
         <svg
@@ -1048,13 +964,6 @@ exports[`<BaseSpinner /> should render low contrast negative intent BaseSpinner 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -1064,7 +973,7 @@ exports[`<BaseSpinner /> should render low contrast negative intent BaseSpinner 
   align-items: center;
 }
 
-.c2 {
+.c1 {
   padding: 1px;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -1079,17 +988,17 @@ exports[`<BaseSpinner /> should render low contrast negative intent BaseSpinner 
 
 <div>
   <div
-    class="c0"
+    class=""
     data-blade-component="spinner"
   >
     <div
       aria-label="Loading"
-      class="c1"
+      class="c0"
       data-blade-component="base-box"
       role="progressbar"
     >
       <div
-        class=" c2"
+        class=" c1"
         data-blade-component="base-box"
       >
         <svg
@@ -1130,13 +1039,6 @@ exports[`<BaseSpinner /> should render low contrast neutral intent BaseSpinner 1
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -1146,7 +1048,7 @@ exports[`<BaseSpinner /> should render low contrast neutral intent BaseSpinner 1
   align-items: center;
 }
 
-.c2 {
+.c1 {
   padding: 1px;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -1161,17 +1063,17 @@ exports[`<BaseSpinner /> should render low contrast neutral intent BaseSpinner 1
 
 <div>
   <div
-    class="c0"
+    class=""
     data-blade-component="spinner"
   >
     <div
       aria-label="Loading"
-      class="c1"
+      class="c0"
       data-blade-component="base-box"
       role="progressbar"
     >
       <div
-        class=" c2"
+        class=" c1"
         data-blade-component="base-box"
       >
         <svg
@@ -1212,13 +1114,6 @@ exports[`<BaseSpinner /> should render low contrast notice intent BaseSpinner 1`
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -1228,7 +1123,7 @@ exports[`<BaseSpinner /> should render low contrast notice intent BaseSpinner 1`
   align-items: center;
 }
 
-.c2 {
+.c1 {
   padding: 1px;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -1243,17 +1138,17 @@ exports[`<BaseSpinner /> should render low contrast notice intent BaseSpinner 1`
 
 <div>
   <div
-    class="c0"
+    class=""
     data-blade-component="spinner"
   >
     <div
       aria-label="Loading"
-      class="c1"
+      class="c0"
       data-blade-component="base-box"
       role="progressbar"
     >
       <div
-        class=" c2"
+        class=" c1"
         data-blade-component="base-box"
       >
         <svg
@@ -1294,13 +1189,6 @@ exports[`<BaseSpinner /> should render low contrast positive intent BaseSpinner 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -1310,7 +1198,7 @@ exports[`<BaseSpinner /> should render low contrast positive intent BaseSpinner 
   align-items: center;
 }
 
-.c2 {
+.c1 {
   padding: 1px;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -1325,17 +1213,17 @@ exports[`<BaseSpinner /> should render low contrast positive intent BaseSpinner 
 
 <div>
   <div
-    class="c0"
+    class=""
     data-blade-component="spinner"
   >
     <div
       aria-label="Loading"
-      class="c1"
+      class="c0"
       data-blade-component="base-box"
       role="progressbar"
     >
       <div
-        class=" c2"
+        class=" c1"
         data-blade-component="base-box"
       >
         <svg
@@ -1376,13 +1264,6 @@ exports[`<BaseSpinner /> should render medium size BaseSpinner 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -1392,7 +1273,7 @@ exports[`<BaseSpinner /> should render medium size BaseSpinner 1`] = `
   align-items: center;
 }
 
-.c2 {
+.c1 {
   padding: 1px;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -1407,17 +1288,17 @@ exports[`<BaseSpinner /> should render medium size BaseSpinner 1`] = `
 
 <div>
   <div
-    class="c0"
+    class=""
     data-blade-component="spinner"
   >
     <div
       aria-label="Loading"
-      class="c1"
+      class="c0"
       data-blade-component="base-box"
       role="progressbar"
     >
       <div
-        class=" c2"
+        class=" c1"
         data-blade-component="base-box"
       >
         <svg
@@ -1458,13 +1339,6 @@ exports[`<BaseSpinner /> should render xlarge size BaseSpinner 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -1474,7 +1348,7 @@ exports[`<BaseSpinner /> should render xlarge size BaseSpinner 1`] = `
   align-items: center;
 }
 
-.c2 {
+.c1 {
   padding: 1px;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -1489,17 +1363,17 @@ exports[`<BaseSpinner /> should render xlarge size BaseSpinner 1`] = `
 
 <div>
   <div
-    class="c0"
+    class=""
     data-blade-component="spinner"
   >
     <div
       aria-label="Loading"
-      class="c1"
+      class="c0"
       data-blade-component="base-box"
       role="progressbar"
     >
       <div
-        class=" c2"
+        class=" c1"
         data-blade-component="base-box"
       >
         <svg

@@ -293,29 +293,32 @@ const Alert = ({
   }
 
   return (
-    <StyledAlert
-      intent={intent}
-      contrastType={contrastType}
-      isFullWidth={isFullWidth}
-      isDesktop={isDesktop}
-      textAlign={'left' as never}
+    <BaseBox
       {...a11yProps}
       {...metaAttribute({ name: MetaConstants.Alert, testID })}
       {...getStyledProps(styledProps)}
     >
-      {icon}
-      <BaseBox
-        flex={1}
-        paddingLeft={isFullWidth ? 'spacing.4' : 'spacing.3'}
-        paddingRight={showActionsHorizontal ? 'spacing.4' : 'spacing.2'}
+      <StyledAlert
+        intent={intent}
+        contrastType={contrastType}
+        isFullWidth={isFullWidth}
+        isDesktop={isDesktop}
+        textAlign={'left' as never}
       >
-        {_title}
-        {_description}
-        {actionsVertical}
-      </BaseBox>
-      {actionsHorizontal}
-      {closeButton}
-    </StyledAlert>
+        {icon}
+        <BaseBox
+          flex={1}
+          paddingLeft={isFullWidth ? 'spacing.4' : 'spacing.3'}
+          paddingRight={showActionsHorizontal ? 'spacing.4' : 'spacing.2'}
+        >
+          {_title}
+          {_description}
+          {actionsVertical}
+        </BaseBox>
+        {actionsHorizontal}
+        {closeButton}
+      </StyledAlert>
+    </BaseBox>
   );
 };
 

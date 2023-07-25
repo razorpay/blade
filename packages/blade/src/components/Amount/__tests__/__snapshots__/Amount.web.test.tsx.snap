@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Amount /> should render Amount with default props 1`] = `
-.c1 {
+.c2 {
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -15,7 +15,7 @@ exports[`<Amount /> should render Amount with default props 1`] = `
   margin-right: 2px;
 }
 
-.c2 {
+.c3 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -28,7 +28,7 @@ exports[`<Amount /> should render Amount with default props 1`] = `
   padding: 0;
 }
 
-.c3 {
+.c4 {
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -43,6 +43,13 @@ exports[`<Amount /> should render Amount with default props 1`] = `
 }
 
 .c0 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c1 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -63,31 +70,36 @@ exports[`<Amount /> should render Amount with default props 1`] = `
     class="c0"
     data-blade-component="amount"
   >
-    <span
+    <div
       class="c1"
-      data-blade-component="base-text"
+      data-blade-component="base-box"
     >
-      ₹
-    </span>
-    <span
-      class="c2"
-      data-blade-component="base-text"
-    >
-      1,000
-      .
-    </span>
-    <span
-      class="c3"
-      data-blade-component="base-text"
-    >
-      00
-    </span>
+      <span
+        class="c2"
+        data-blade-component="base-text"
+      >
+        ₹
+      </span>
+      <span
+        class="c3"
+        data-blade-component="base-text"
+      >
+        1,000
+        .
+      </span>
+      <span
+        class="c4"
+        data-blade-component="base-text"
+      >
+        00
+      </span>
+    </div>
   </div>
 </div>
 `;
 
 exports[`<Amount /> should render MYR currency Amount  1`] = `
-.c1 {
+.c2 {
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -101,7 +113,7 @@ exports[`<Amount /> should render MYR currency Amount  1`] = `
   margin-right: 2px;
 }
 
-.c2 {
+.c3 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -114,7 +126,7 @@ exports[`<Amount /> should render MYR currency Amount  1`] = `
   padding: 0;
 }
 
-.c3 {
+.c4 {
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -129,6 +141,13 @@ exports[`<Amount /> should render MYR currency Amount  1`] = `
 }
 
 .c0 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c1 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -149,31 +168,36 @@ exports[`<Amount /> should render MYR currency Amount  1`] = `
     class="c0"
     data-blade-component="amount"
   >
-    <span
+    <div
       class="c1"
-      data-blade-component="base-text"
+      data-blade-component="base-box"
     >
-      RM
-    </span>
-    <span
-      class="c2"
-      data-blade-component="base-text"
-    >
-      1,000
-      .
-    </span>
-    <span
-      class="c3"
-      data-blade-component="base-text"
-    >
-      00
-    </span>
+      <span
+        class="c2"
+        data-blade-component="base-text"
+      >
+        RM
+      </span>
+      <span
+        class="c3"
+        data-blade-component="base-text"
+      >
+        1,000
+        .
+      </span>
+      <span
+        class="c4"
+        data-blade-component="base-text"
+      >
+        00
+      </span>
+    </div>
   </div>
 </div>
 `;
 
 exports[`<Amount /> should render amount with Humanize value 1`] = `
-.c1 {
+.c2 {
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1.25rem;
@@ -187,7 +211,7 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
   margin-right: 2px;
 }
 
-.c2 {
+.c3 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1.75rem;
@@ -205,81 +229,9 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: baseline;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
-  padding-right: 4px;
-  padding-left: 4px;
 }
 
-<div>
-  <div
-    class="c0"
-    data-blade-component="amount"
-  >
-    <span
-      class="c1"
-      data-blade-component="base-text"
-    >
-      ₹
-    </span>
-    <div
-      class="c2"
-      data-blade-component="base-text"
-    >
-      1k
-    </div>
-  </div>
-</div>
-`;
-
-exports[`<Amount /> should render body-medium size Amount 1`] = `
 .c1 {
-  color: hsla(216,16%,60%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.75rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
-  margin-right: 2px;
-}
-
-.c2 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c3 {
-  color: hsla(216,16%,60%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.75rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
-  margin-left: 2px;
-}
-
-.c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -300,31 +252,29 @@ exports[`<Amount /> should render body-medium size Amount 1`] = `
     class="c0"
     data-blade-component="amount"
   >
-    <span
+    <div
       class="c1"
-      data-blade-component="base-text"
+      data-blade-component="base-box"
     >
-      ₹
-    </span>
-    <span
-      class="c2"
-      data-blade-component="base-text"
-    >
-      1,000
-      .
-    </span>
-    <span
-      class="c3"
-      data-blade-component="base-text"
-    >
-      00
-    </span>
+      <span
+        class="c2"
+        data-blade-component="base-text"
+      >
+        ₹
+      </span>
+      <div
+        class="c3"
+        data-blade-component="base-text"
+      >
+        1k
+      </div>
+    </div>
   </div>
 </div>
 `;
 
-exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
-.c1 {
+exports[`<Amount /> should render body-medium size Amount 1`] = `
+.c2 {
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -338,7 +288,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   margin-right: 2px;
 }
 
-.c2 {
+.c3 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -351,7 +301,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   padding: 0;
 }
 
-.c3 {
+.c4 {
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -365,7 +315,105 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   margin-left: 2px;
 }
 
+.c0 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c1 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+  padding-right: 4px;
+  padding-left: 4px;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="amount"
+  >
+    <div
+      class="c1"
+      data-blade-component="base-box"
+    >
+      <span
+        class="c2"
+        data-blade-component="base-text"
+      >
+        ₹
+      </span>
+      <span
+        class="c3"
+        data-blade-component="base-text"
+      >
+        1,000
+        .
+      </span>
+      <span
+        class="c4"
+        data-blade-component="base-text"
+      >
+        00
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
+.c2 {
+  color: hsla(216,16%,60%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+  margin-right: 2px;
+}
+
+.c3 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+}
+
 .c4 {
+  color: hsla(216,16%,60%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+  margin-left: 2px;
+}
+
+.c5 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -378,24 +426,11 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   padding: 0;
 }
 
-.c5 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.75rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  margin: 0;
-  padding: 0;
-}
-
 .c6 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -405,6 +440,19 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 }
 
 .c7 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c8 {
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -418,7 +466,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   margin-right: 2px;
 }
 
-.c8 {
+.c9 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1.25rem;
@@ -431,7 +479,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   padding: 0;
 }
 
-.c9 {
+.c10 {
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -445,7 +493,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   margin-left: 2px;
 }
 
-.c10 {
+.c11 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1.25rem;
@@ -458,7 +506,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   padding: 0;
 }
 
-.c11 {
+.c12 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1rem;
@@ -471,7 +519,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   padding: 0;
 }
 
-.c12 {
+.c13 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1rem;
@@ -484,7 +532,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   padding: 0;
 }
 
-.c13 {
+.c14 {
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1.25rem;
@@ -498,7 +546,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   margin-right: 2px;
 }
 
-.c14 {
+.c15 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1.75rem;
@@ -511,7 +559,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   padding: 0;
 }
 
-.c15 {
+.c16 {
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1.25rem;
@@ -530,6 +578,13 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+}
+
+.c1 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -546,223 +601,268 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
     class="c0"
     data-blade-component="amount"
   >
-    <span
+    <div
       class="c1"
-      data-blade-component="base-text"
+      data-blade-component="base-box"
     >
-      ₹
-    </span>
-    <span
-      class="c2"
-      data-blade-component="base-text"
-    >
-      1,000
-      .
-    </span>
-    <span
-      class="c3"
-      data-blade-component="base-text"
-    >
-      00
-    </span>
+      <span
+        class="c2"
+        data-blade-component="base-text"
+      >
+        ₹
+      </span>
+      <span
+        class="c3"
+        data-blade-component="base-text"
+      >
+        1,000
+        .
+      </span>
+      <span
+        class="c4"
+        data-blade-component="base-text"
+      >
+        00
+      </span>
+    </div>
   </div>
   <div
     class="c0"
     data-blade-component="amount"
   >
-    <span
+    <div
       class="c1"
-      data-blade-component="base-text"
+      data-blade-component="base-box"
     >
-      ₹
-    </span>
-    <span
-      class="c4"
-      data-blade-component="base-text"
-    >
-      1,000
-      .
-    </span>
-    <span
-      class="c3"
-      data-blade-component="base-text"
-    >
-      00
-    </span>
+      <span
+        class="c2"
+        data-blade-component="base-text"
+      >
+        ₹
+      </span>
+      <span
+        class="c5"
+        data-blade-component="base-text"
+      >
+        1,000
+        .
+      </span>
+      <span
+        class="c4"
+        data-blade-component="base-text"
+      >
+        00
+      </span>
+    </div>
   </div>
   <div
     class="c0"
     data-blade-component="amount"
   >
-    <span
+    <div
       class="c1"
-      data-blade-component="base-text"
+      data-blade-component="base-box"
     >
-      ₹
-    </span>
-    <span
-      class="c5"
-      data-blade-component="base-text"
-    >
-      1,000
-      .
-    </span>
-    <span
-      class="c3"
-      data-blade-component="base-text"
-    >
-      00
-    </span>
+      <span
+        class="c2"
+        data-blade-component="base-text"
+      >
+        ₹
+      </span>
+      <span
+        class="c6"
+        data-blade-component="base-text"
+      >
+        1,000
+        .
+      </span>
+      <span
+        class="c4"
+        data-blade-component="base-text"
+      >
+        00
+      </span>
+    </div>
   </div>
   <div
     class="c0"
     data-blade-component="amount"
   >
-    <span
+    <div
       class="c1"
-      data-blade-component="base-text"
+      data-blade-component="base-box"
     >
-      ₹
-    </span>
-    <span
-      class="c6"
-      data-blade-component="base-text"
-    >
-      1,000
-      .
-    </span>
-    <span
-      class="c3"
-      data-blade-component="base-text"
-    >
-      00
-    </span>
+      <span
+        class="c2"
+        data-blade-component="base-text"
+      >
+        ₹
+      </span>
+      <span
+        class="c7"
+        data-blade-component="base-text"
+      >
+        1,000
+        .
+      </span>
+      <span
+        class="c4"
+        data-blade-component="base-text"
+      >
+        00
+      </span>
+    </div>
   </div>
   <div
     class="c0"
     data-blade-component="amount"
   >
-    <span
-      class="c7"
-      data-blade-component="base-text"
-    >
-      ₹
-    </span>
-    <span
-      class="c8"
-      data-blade-component="base-text"
-    >
-      1,000
-      .
-    </span>
-    <span
-      class="c9"
-      data-blade-component="base-text"
-    >
-      00
-    </span>
-  </div>
-  <div
-    class="c0"
-    data-blade-component="amount"
-  >
-    <span
-      class="c7"
-      data-blade-component="base-text"
-    >
-      ₹
-    </span>
-    <span
-      class="c10"
-      data-blade-component="base-text"
-    >
-      1,000
-      .
-    </span>
-    <span
-      class="c9"
-      data-blade-component="base-text"
-    >
-      00
-    </span>
-  </div>
-  <div
-    class="c0"
-    data-blade-component="amount"
-  >
-    <span
+    <div
       class="c1"
-      data-blade-component="base-text"
+      data-blade-component="base-box"
     >
-      ₹
-    </span>
-    <span
-      class="c11"
-      data-blade-component="base-text"
-    >
-      1,000
-      .
-    </span>
-    <span
-      class="c3"
-      data-blade-component="base-text"
-    >
-      00
-    </span>
+      <span
+        class="c8"
+        data-blade-component="base-text"
+      >
+        ₹
+      </span>
+      <span
+        class="c9"
+        data-blade-component="base-text"
+      >
+        1,000
+        .
+      </span>
+      <span
+        class="c10"
+        data-blade-component="base-text"
+      >
+        00
+      </span>
+    </div>
   </div>
   <div
     class="c0"
     data-blade-component="amount"
   >
-    <span
+    <div
       class="c1"
-      data-blade-component="base-text"
+      data-blade-component="base-box"
     >
-      ₹
-    </span>
-    <span
-      class="c12"
-      data-blade-component="base-text"
-    >
-      1,000
-      .
-    </span>
-    <span
-      class="c3"
-      data-blade-component="base-text"
-    >
-      00
-    </span>
+      <span
+        class="c8"
+        data-blade-component="base-text"
+      >
+        ₹
+      </span>
+      <span
+        class="c11"
+        data-blade-component="base-text"
+      >
+        1,000
+        .
+      </span>
+      <span
+        class="c10"
+        data-blade-component="base-text"
+      >
+        00
+      </span>
+    </div>
   </div>
   <div
     class="c0"
     data-blade-component="amount"
   >
-    <span
-      class="c13"
-      data-blade-component="base-text"
+    <div
+      class="c1"
+      data-blade-component="base-box"
     >
-      ₹
-    </span>
-    <span
-      class="c14"
-      data-blade-component="base-text"
+      <span
+        class="c2"
+        data-blade-component="base-text"
+      >
+        ₹
+      </span>
+      <span
+        class="c12"
+        data-blade-component="base-text"
+      >
+        1,000
+        .
+      </span>
+      <span
+        class="c4"
+        data-blade-component="base-text"
+      >
+        00
+      </span>
+    </div>
+  </div>
+  <div
+    class="c0"
+    data-blade-component="amount"
+  >
+    <div
+      class="c1"
+      data-blade-component="base-box"
     >
-      1,000
-      .
-    </span>
-    <span
-      class="c15"
-      data-blade-component="base-text"
+      <span
+        class="c2"
+        data-blade-component="base-text"
+      >
+        ₹
+      </span>
+      <span
+        class="c13"
+        data-blade-component="base-text"
+      >
+        1,000
+        .
+      </span>
+      <span
+        class="c4"
+        data-blade-component="base-text"
+      >
+        00
+      </span>
+    </div>
+  </div>
+  <div
+    class="c0"
+    data-blade-component="amount"
+  >
+    <div
+      class="c1"
+      data-blade-component="base-box"
     >
-      00
-    </span>
+      <span
+        class="c14"
+        data-blade-component="base-text"
+      >
+        ₹
+      </span>
+      <span
+        class="c15"
+        data-blade-component="base-text"
+      >
+        1,000
+        .
+      </span>
+      <span
+        class="c16"
+        data-blade-component="base-text"
+      >
+        00
+      </span>
+    </div>
   </div>
 </div>
 `;
 
 exports[`<Amount /> should render body-small size Amount 1`] = `
-.c1 {
+.c2 {
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -776,7 +876,7 @@ exports[`<Amount /> should render body-small size Amount 1`] = `
   margin-right: 2px;
 }
 
-.c2 {
+.c3 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -789,7 +889,7 @@ exports[`<Amount /> should render body-small size Amount 1`] = `
   padding: 0;
 }
 
-.c3 {
+.c4 {
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -804,6 +904,13 @@ exports[`<Amount /> should render body-small size Amount 1`] = `
 }
 
 .c0 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c1 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -824,31 +931,36 @@ exports[`<Amount /> should render body-small size Amount 1`] = `
     class="c0"
     data-blade-component="amount"
   >
-    <span
+    <div
       class="c1"
-      data-blade-component="base-text"
+      data-blade-component="base-box"
     >
-      ₹
-    </span>
-    <span
-      class="c2"
-      data-blade-component="base-text"
-    >
-      1,000
-      .
-    </span>
-    <span
-      class="c3"
-      data-blade-component="base-text"
-    >
-      00
-    </span>
+      <span
+        class="c2"
+        data-blade-component="base-text"
+      >
+        ₹
+      </span>
+      <span
+        class="c3"
+        data-blade-component="base-text"
+      >
+        1,000
+        .
+      </span>
+      <span
+        class="c4"
+        data-blade-component="base-text"
+      >
+        00
+      </span>
+    </div>
   </div>
 </div>
 `;
 
 exports[`<Amount /> should render body-small-bold size Amount 1`] = `
-.c1 {
+.c2 {
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -862,7 +974,7 @@ exports[`<Amount /> should render body-small-bold size Amount 1`] = `
   margin-right: 2px;
 }
 
-.c2 {
+.c3 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -875,7 +987,7 @@ exports[`<Amount /> should render body-small-bold size Amount 1`] = `
   padding: 0;
 }
 
-.c3 {
+.c4 {
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -894,74 +1006,9 @@ exports[`<Amount /> should render body-small-bold size Amount 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: baseline;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
-  padding-right: 4px;
-  padding-left: 4px;
 }
 
-<div>
-  <div
-    class="c0"
-    data-blade-component="amount"
-  >
-    <span
-      class="c1"
-      data-blade-component="base-text"
-    >
-      ₹
-    </span>
-    <span
-      class="c2"
-      data-blade-component="base-text"
-    >
-      1,000
-      .
-    </span>
-    <span
-      class="c3"
-      data-blade-component="base-text"
-    >
-      00
-    </span>
-  </div>
-</div>
-`;
-
-exports[`<Amount /> should render negative intent Amount  1`] = `
 .c1 {
-  color: hsla(8,73%,47%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
-  margin-right: 2px;
-}
-
-.c2 {
-  color: hsla(8,73%,47%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -982,24 +1029,113 @@ exports[`<Amount /> should render negative intent Amount  1`] = `
     class="c0"
     data-blade-component="amount"
   >
-    <span
-      class="c1"
-      data-blade-component="base-text"
-    >
-      ₹
-    </span>
     <div
-      class="c2"
-      data-blade-component="base-text"
+      class="c1"
+      data-blade-component="base-box"
     >
-      1,000.00
+      <span
+        class="c2"
+        data-blade-component="base-text"
+      >
+        ₹
+      </span>
+      <span
+        class="c3"
+        data-blade-component="base-text"
+      >
+        1,000
+        .
+      </span>
+      <span
+        class="c4"
+        data-blade-component="base-text"
+      >
+        00
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Amount /> should render negative intent Amount  1`] = `
+.c2 {
+  color: hsla(8,73%,47%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+  margin-right: 2px;
+}
+
+.c3 {
+  color: hsla(8,73%,47%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c0 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c1 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+  padding-right: 4px;
+  padding-left: 4px;
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="amount"
+  >
+    <div
+      class="c1"
+      data-blade-component="base-box"
+    >
+      <span
+        class="c2"
+        data-blade-component="base-text"
+      >
+        ₹
+      </span>
+      <div
+        class="c3"
+        data-blade-component="base-text"
+      >
+        1,000.00
+      </div>
     </div>
   </div>
 </div>
 `;
 
 exports[`<Amount /> should render positive intent Amount  1`] = `
-.c1 {
+.c2 {
   color: hsla(160,100%,26%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -1013,7 +1149,7 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
   margin-right: 2px;
 }
 
-.c2 {
+.c3 {
   color: hsla(160,100%,26%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -1026,7 +1162,7 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
   padding: 0;
 }
 
-.c3 {
+.c4 {
   color: hsla(160,100%,26%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -1041,6 +1177,13 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
 }
 
 .c0 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c1 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1061,25 +1204,30 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
     class="c0"
     data-blade-component="amount"
   >
-    <span
+    <div
       class="c1"
-      data-blade-component="base-text"
+      data-blade-component="base-box"
     >
-      ₹
-    </span>
-    <span
-      class="c2"
-      data-blade-component="base-text"
-    >
-      1,000
-      .
-    </span>
-    <span
-      class="c3"
-      data-blade-component="base-text"
-    >
-      00
-    </span>
+      <span
+        class="c2"
+        data-blade-component="base-text"
+      >
+        ₹
+      </span>
+      <span
+        class="c3"
+        data-blade-component="base-text"
+      >
+        1,000
+        .
+      </span>
+      <span
+        class="c4"
+        data-blade-component="base-text"
+      >
+        00
+      </span>
+    </div>
   </div>
 </div>
 `;

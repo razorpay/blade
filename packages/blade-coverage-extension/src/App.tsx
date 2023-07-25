@@ -11,6 +11,7 @@ import {
   CardBody,
   Heading,
   Text,
+  Checkbox,
 } from '@razorpay/blade/components';
 import { paymentTheme } from '@razorpay/blade/tokens';
 import styled from 'styled-components';
@@ -36,12 +37,14 @@ type BladeCoverage = {
 
 const App = (): ReactElement => {
   const [coverage, setCoverage] = useState<BladeCoverage | undefined>(undefined);
+  const [shouldHighlightNodes, setShouldHighlightNodes] = useState(false);
   const isDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
-  console.log('Is dark mode in app', isDarkMode);
+
   const getBladeCoverage = (): void => {
     // @ts-expect-error
-    chrome.runtime.sendMessage({ action: 'executeScript' });
+    chrome.runtime.sendMessage({ action: 'executeScript', shouldHighlightNodes });
   };
+
   // @ts-expect-error
   chrome.runtime.onMessage.addListener(
     (message: { action: string; coverage: BladeCoverage }, sender: unknown) => {
@@ -90,10 +93,17 @@ const App = (): ReactElement => {
               )}
               <StyledImg src={BarChartImg} alt="bar-chart" />
             </Box>
-            <Box display="flex" justifyContent="center">
+            <Box display="flex" alignItems="center" flexDirection="column" gap="spacing.3">
               <Button icon={ActivityIcon} iconPosition="left" onClick={getBladeCoverage}>
                 Calculate Blade Coverage
               </Button>
+              <Checkbox
+                onChange={(e) => {
+                  setShouldHighlightNodes(e.isChecked);
+                }}
+              >
+                Highlight Non Blade Nodes
+              </Checkbox>
             </Box>
           </CardBody>
         </Card>

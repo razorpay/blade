@@ -56,7 +56,6 @@ const HeadingStoryMeta: Meta<HeadingProps<{ variant: 'regular' | 'subheading' }>
   component: HeadingComponent,
   args: {
     variant: 'regular',
-    size: 'large',
     type: 'normal',
     children: 'Get Started With Payment Gateway',
     weight: 'bold',

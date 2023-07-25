@@ -5,7 +5,8 @@ type DropdownProps = {
   selectionType?: 'single' | 'multiple';
   onDismiss?: () => void;
   children: React.ReactNode[];
-} & StyledPropsBlade;
+} & TestID &
+  StyledPropsBlade;
 
 type DropdownOverlayProps = {
   children: React.ReactElement[] | React.ReactElement;

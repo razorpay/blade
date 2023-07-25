@@ -121,15 +121,18 @@ const Collapsible = ({
   return (
     <CollapsibleContext.Provider value={contextValue}>
       <BaseBox
-        display="flex"
-        flexDirection={direction === 'bottom' ? 'column' : 'column-reverse'}
-        alignItems="flex-start"
-        minWidth={_shouldApplyWidthRestrictions ? MIN_WIDTH : makeSize(size[0])}
-        maxWidth={_shouldApplyWidthRestrictions ? MAX_WIDTH : MAX_WIDTH_NO_RESTRICTIONS}
         {...metaAttribute({ name: MetaConstants.Collapsible, testID })}
         {...getStyledProps(styledProps)}
       >
-        {children}
+        <BaseBox
+          display="flex"
+          flexDirection={direction === 'bottom' ? 'column' : 'column-reverse'}
+          alignItems="flex-start"
+          minWidth={_shouldApplyWidthRestrictions ? MIN_WIDTH : makeSize(size[0])}
+          maxWidth={_shouldApplyWidthRestrictions ? MAX_WIDTH : MAX_WIDTH_NO_RESTRICTIONS}
+        >
+          {children}
+        </BaseBox>
       </BaseBox>
     </CollapsibleContext.Provider>
   );
