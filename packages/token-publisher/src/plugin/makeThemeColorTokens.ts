@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-implicit-any-catch */
-import setValue from 'set-value';
+import setValue from '../utils/setValue';
 import showNotification from './showNotification';
 /**
  * @TODO:
