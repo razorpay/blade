@@ -16,6 +16,7 @@ import type { BladeElementRef } from '~utils/types';
 import { useBladeInnerRef } from '~utils/useBladeInnerRef';
 import { MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { Text } from '~components/Typography';
 
 type SelectInputProps = Pick<
   BaseInputProps,
@@ -111,6 +112,7 @@ const _SelectInput = (
   };
 
   const isFirstRenderRef = React.useRef(true);
+  const selectInputContainerRef = React.useRef<HTMLDivElement>(null);
 
   const selectValues = (valuesToSelect: string | string[]): void => {
     if (options.length > 0) {
@@ -185,7 +187,19 @@ const _SelectInput = (
       return null;
     }
 
-    return selectedIndices.map((selectedIndex, tagIndex) => (
+    let stripAfter = 0;
+
+    if (selectInputContainerRef.current?.clientWidth) {
+      const leadingTrailingBoxWidth = 72; // 36px + 36px;
+      const maxWidthTag = 140 + 8; // 140px width + 8px gap between tags
+      const spaceForTags = selectInputContainerRef.current?.clientWidth - leadingTrailingBoxWidth;
+      const tagsCanFit = spaceForTags / maxWidthTag;
+      stripAfter = Math.floor(tagsCanFit);
+    } else {
+      stripAfter = 2; // defaulting to strip after 2 tags if clientWidth is not present for some reason
+    }
+
+    const tags = selectedIndices.slice(0, stripAfter).map((selectedIndex, tagIndex) => (
       <Tag
         _isVirtuallyFocussed={tagIndex === activeTagIndex}
         _isTagInsideInput={true}
@@ -202,10 +216,22 @@ const _SelectInput = (
         {options[selectedIndex].title}
       </Tag>
     ));
+
+    const plusMoreText =
+      selectedIndices.length > stripAfter ? (
+        <Text key="plus">+{selectedIndices.length - stripAfter} More</Text>
+      ) : null;
+
+    if (plusMoreText) {
+      return [...tags, plusMoreText];
+    }
+
+    return tags;
   };
 
   return (
-    <BaseBox position="relative">
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    <BaseBox position="relative" ref={selectInputContainerRef as any}>
       {!isReactNative() ? (
         <VisuallyHidden>
           <input
