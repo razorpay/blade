@@ -28,6 +28,6 @@ jobs:
         uses: ./.github/actions/install-dependencies
       - name: Upload Tokens
         working-directory: packages/blade
-        run: node ./scripts/uploadTokens.js \"${{ env.TOKENS_DATA }}\"
+        run: node ./scripts/uploadTokens.js ${{ env.TOKENS_DATA }}
         env: 
           GITHUB_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
