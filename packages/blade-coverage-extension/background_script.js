@@ -31,6 +31,7 @@ const calculateBladeCoverage = (shouldHighlightNodes) => {
   const allDomElements = document.querySelectorAll('body *');
   const bladeNodeElements = [];
   const totalNodeElements = [];
+  const nonBladeNodeElements = [];
 
   allDomElements.forEach((elm) => {
     if (isElementHidden(elm)) return;
@@ -40,6 +41,8 @@ const calculateBladeCoverage = (shouldHighlightNodes) => {
     // If element has data-blade-component add it
     if (elm.hasAttribute('data-blade-component')) {
       bladeNodeElements.push(elm);
+    } else {
+      nonBladeNodeElements.push(elm);
     }
   });
 
@@ -48,15 +51,11 @@ const calculateBladeCoverage = (shouldHighlightNodes) => {
   const bladeCoverage = Number(((bladeNodes / totalNodes) * 100).toFixed(2));
 
   if (shouldHighlightNodes) {
-    totalNodeElements.forEach((node) => {
+    nonBladeNodeElements.forEach((node) => {
       node.style.outline = '1px solid rgba(255, 0, 0, 0.5)';
     });
-
-    bladeNodeElements.forEach((node) => {
-      node.style.outline = '1px solid green';
-    });
   } else {
-    totalNodeElements.forEach((node) => {
+    nonBladeNodeElements.forEach((node) => {
       node.style.outline = 'initial';
     });
   }
