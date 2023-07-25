@@ -45,7 +45,11 @@ type TagProps = {
   isDisabled?: boolean;
 
   /**
-   * Is Tag virtually focussed
+   * Private property for Blade.
+   *
+   * Should not be used by consumers.
+   *
+   * Used for adding virtual focus on tag.
    *
    * @private
    */
@@ -72,18 +76,63 @@ const FocussableTag = styled(BaseBox)<{ isVirtuallyFocussed: TagProps['_isVirtua
     return {};
   },
 );
-const Desktop = ({ children }: { children: (React.ReactElement | null)[] }): React.ReactElement => (
-  <Box display={{ base: 'none', m: 'flex' }} alignItems="center" flexDirection="row">
+const ShowOnDesktop = ({
+  children,
+}: {
+  children: (React.ReactElement | null)[];
+}): React.ReactElement => (
+  <Box
+    display={{ base: 'none', m: 'flex' }}
+    alignItems="center"
+    flexDirection="row"
+    flexWrap="nowrap"
+  >
     {children}
   </Box>
 );
 
-const Mobile = ({ children }: { children: (React.ReactElement | null)[] }): React.ReactElement => (
-  <Box display={{ base: 'flex', m: 'none' }} alignItems="center" flexDirection="row">
+const ShowOnMobile = ({
+  children,
+}: {
+  children: (React.ReactElement | null)[];
+}): React.ReactElement => (
+  <Box
+    display={{ base: 'flex', m: 'none' }}
+    alignItems="center"
+    flexDirection="row"
+    flexWrap="nowrap"
+  >
     {children}
   </Box>
 );
 
+/**
+ * ## Tags
+ *
+ * Tag component can be used to display selected items on UI.
+ *
+ * ### Usage
+ *
+ * ***Note:*** _Make sure to handle state when using Tag_
+ *
+ * ```jsx
+ * const [showTag, setShowTag] = React.useState(true);
+ *
+ * // ...
+ *
+ * {showTag && (
+ *  <Tag
+ *    icon={CheckIcon}
+ *    onDismiss={() => setShowTag(false)}
+ *  >
+ *    Transactions
+ *  </Tag>
+ * )}
+ * ```
+ *
+ * Checkout [Tags Documentation](https://blade.razorpay.com/?path=/story/components-tag--default) for more info.
+ *
+ */
 const Tag = ({
   size = 'medium',
   icon: Icon,
@@ -111,7 +160,7 @@ const Tag = ({
 
   const getLeadingIcon = ({ size }: { size: IconProps['size'] }): React.ReactElement | null =>
     Icon ? (
-      <Box>
+      <Box display="flex" flexDirection="row" alignItems="center">
         <Icon color={textColor} size={size} marginRight="spacing.2" />
       </Box>
     ) : null;
@@ -121,7 +170,12 @@ const Tag = ({
   }: {
     size: TextProps<{ variant: 'body' }>['size'];
   }): React.ReactElement => (
-    <Box maxWidth={makeSize(globalSizeTokens['100'])}>
+    <Box
+      display="flex"
+      flexDirection="row"
+      alignItems="center"
+      maxWidth={makeSize(globalSizeTokens['100'])}
+    >
       <Text truncateAfterLines={1} marginRight="spacing.2" color={textColor} size={size}>
         {children}
       </Text>
@@ -129,44 +183,48 @@ const Tag = ({
   );
 
   const getCloseIcon = ({ size }: { size: IconButtonProps['size'] }): React.ReactElement => (
-    <IconButton
-      size={size}
-      icon={CloseIcon}
-      accessibilityLabel={`Close ${children} tag`}
-      isDisabled={isDisabled}
-      _tabIndex={_isTagInsideInput ? -1 : undefined}
-      onClick={() => {
-        onDismiss();
-      }}
-    />
+    <Box display="flex" flexDirection="row" alignItems="center" justifyContent="center">
+      <IconButton
+        size={size}
+        icon={CloseIcon}
+        accessibilityLabel={`Close ${children} tag`}
+        isDisabled={isDisabled}
+        _tabIndex={_isTagInsideInput ? -1 : undefined}
+        onClick={() => {
+          onDismiss();
+        }}
+      />
+    </Box>
   );
 
   return (
-    <FocussableTag
+    <BaseBox
       display={(isReactNative() ? 'flex' : 'inline-flex') as never}
-      alignSelf={isReactNative() ? 'center' : undefined}
-      flexDirection="row"
-      flexWrap="nowrap"
-      backgroundColor="brand.gray.a100.lowContrast"
-      borderRadius="max"
-      padding={size === 'medium' ? mediumPadding : largePadding}
       {...getStyledProps(styledProps)}
       {...metaAttribute({ name: MetaConstants.Tag, testID })}
-      isVirtuallyFocussed={_isVirtuallyFocussed}
     >
-      <Box display="flex" flexDirection="row" flexWrap="nowrap" alignItems="center">
-        <Desktop>
+      <FocussableTag
+        display={(isReactNative() ? 'flex' : 'inline-flex') as never}
+        alignSelf={isReactNative() ? 'center' : undefined}
+        flexDirection="row"
+        flexWrap="nowrap"
+        backgroundColor="brand.gray.a100.lowContrast"
+        borderRadius="max"
+        padding={size === 'medium' ? mediumPadding : largePadding}
+        isVirtuallyFocussed={_isVirtuallyFocussed}
+      >
+        <ShowOnDesktop>
           {getLeadingIcon({ size: 'small' })}
           {getTagText({ size: 'small' })}
           {getCloseIcon({ size: 'small' })}
-        </Desktop>
-        <Mobile>
+        </ShowOnDesktop>
+        <ShowOnMobile>
           {getLeadingIcon({ size: size === 'large' ? 'medium' : 'small' })}
           {getTagText({ size: size === 'large' ? 'medium' : 'small' })}
           {getCloseIcon({ size: size === 'large' ? 'medium' : 'small' })}
-        </Mobile>
-      </Box>
-    </FocussableTag>
+        </ShowOnMobile>
+      </FocussableTag>
+    </BaseBox>
   );
 };
 

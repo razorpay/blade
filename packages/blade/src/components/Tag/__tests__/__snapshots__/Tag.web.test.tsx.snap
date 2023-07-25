@@ -6,6 +6,13 @@ exports[`<Tag /> should render tag 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+}
+
+.c1 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
@@ -17,7 +24,54 @@ exports[`<Tag /> should render tag 1`] = `
   border-radius: 9999px;
 }
 
-.c1 {
+.c2 {
+  display: none;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  max-width: 100px;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -34,36 +88,7 @@ exports[`<Tag /> should render tag 1`] = `
   align-items: center;
 }
 
-.c2 {
-  display: none;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c3 {
-  max-width: 100px;
-}
-
 .c6 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c5 {
   border: none;
   cursor: pointer;
   padding: 0;
@@ -90,17 +115,17 @@ exports[`<Tag /> should render tag 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c5:hover {
+.c6:hover {
   color: hsla(217,18%,45%,1);
 }
 
-.c5:focus {
+.c6:focus {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   color: hsla(217,18%,45%,1);
 }
 
-.c5:active {
+.c6:active {
   color: hsla(217,18%,45%,1);
 }
 
@@ -124,7 +149,7 @@ exports[`<Tag /> should render tag 1`] = `
 }
 
 @media screen and (min-width:768px) {
-  .c0 {
+  .c1 {
     padding: 2px 4px 2px 8px;
   }
 }
@@ -139,19 +164,19 @@ exports[`<Tag /> should render tag 1`] = `
 }
 
 @media screen and (min-width:768px) {
-  .c6 {
+  .c7 {
     display: none;
   }
 }
 
 <div>
   <div
-    class="Tag__FocussableTag-jmwb4r-0 c0"
+    class="c0"
     data-blade-component="tag"
   >
     <div
-      class="c1"
-      data-blade-component="box"
+      class="Tag__FocussableTag-jmwb4r-0 c1"
+      data-blade-component="base-box"
     >
       <div
         class="c2"
@@ -168,31 +193,36 @@ exports[`<Tag /> should render tag 1`] = `
             in:User
           </p>
         </div>
-        <button
-          aria-label="Close in:User tag"
+        <div
           class="c5"
-          data-blade-component="icon-button"
-          type="button"
+          data-blade-component="box"
         >
-          <svg
-            aria-hidden="true"
-            class="Svgweb__StyledSvg-vcmjs8-0"
-            data-blade-component="icon"
-            fill="none"
-            height="12px"
-            viewBox="0 0 24 24"
-            width="12px"
+          <button
+            aria-label="Close in:User tag"
+            class="c6"
+            data-blade-component="icon-button"
+            type="button"
           >
-            <path
-              d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
-              data-blade-component="svg-path"
-              fill="currentColor"
-            />
-          </svg>
-        </button>
+            <svg
+              aria-hidden="true"
+              class="Svgweb__StyledSvg-vcmjs8-0"
+              data-blade-component="icon"
+              fill="none"
+              height="12px"
+              viewBox="0 0 24 24"
+              width="12px"
+            >
+              <path
+                d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
+                data-blade-component="svg-path"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
       <div
-        class="c6"
+        class="c7"
         data-blade-component="box"
       >
         <div
@@ -206,28 +236,33 @@ exports[`<Tag /> should render tag 1`] = `
             in:User
           </p>
         </div>
-        <button
-          aria-label="Close in:User tag"
+        <div
           class="c5"
-          data-blade-component="icon-button"
-          type="button"
+          data-blade-component="box"
         >
-          <svg
-            aria-hidden="true"
-            class="Svgweb__StyledSvg-vcmjs8-0"
-            data-blade-component="icon"
-            fill="none"
-            height="12px"
-            viewBox="0 0 24 24"
-            width="12px"
+          <button
+            aria-label="Close in:User tag"
+            class="c6"
+            data-blade-component="icon-button"
+            type="button"
           >
-            <path
-              d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
-              data-blade-component="svg-path"
-              fill="currentColor"
-            />
-          </svg>
-        </button>
+            <svg
+              aria-hidden="true"
+              class="Svgweb__StyledSvg-vcmjs8-0"
+              data-blade-component="icon"
+              fill="none"
+              height="12px"
+              viewBox="0 0 24 24"
+              width="12px"
+            >
+              <path
+                d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
+                data-blade-component="svg-path"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
   </div>
