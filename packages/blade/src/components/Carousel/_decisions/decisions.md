@@ -63,9 +63,11 @@ const Testimonial = () => {
 </Carousel>
 ```
 
+<img src="./example-usage-1.png" width="70%" />
+
 ## Accessibility
 
-- TBD
+We need to follow the APG Pattern For [Carousel](https://www.w3.org/WAI/ARIA/apg/patterns/carousel/examples/carousel-2-tablist/)
 
 ## Motion
 
