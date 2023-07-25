@@ -10,7 +10,7 @@ const uploadColorTokens = async () => {
   try {
     // 1. read the tokens object
     const tokens = JSON.parse(process.argv[2]);
-
+    console.log({ tokens });
     const colorRegex = /const colors: ColorsWithModes = {(.|\n)+?};/gm;
 
     if (tokens.paymentThemeColors) {
