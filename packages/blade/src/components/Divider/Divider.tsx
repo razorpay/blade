@@ -2,8 +2,12 @@ import React from 'react';
 import type { CSSObject } from 'styled-components';
 import styled from 'styled-components';
 import BaseBox from '~components/Box/BaseBox';
+import { getStyledProps } from '~components/Box/styledProps';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { ColorContrast } from '~tokens/theme/theme';
 import { makeBorderSize } from '~utils';
+import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
+import type { TestID } from '~utils/types';
 
 type DividerProps = {
   /**
@@ -46,7 +50,8 @@ type DividerProps = {
    *
    */
   width?: CSSObject['width'];
-};
+} & TestID &
+  StyledPropsBlade;
 
 const StyledDivider = styled(BaseBox)<{
   borderPosition: 'borderBottom' | 'borderLeft';
@@ -69,6 +74,8 @@ const Divider = ({
   contrast = 'low',
   height,
   width,
+  testID,
+  ...styledProps
 }: DividerProps): React.ReactElement => {
   const isDividerHorizontal = orientation === 'horizontal';
   const borderPosition = isDividerHorizontal ? 'borderBottom' : 'borderLeft';
@@ -85,6 +92,8 @@ const Divider = ({
       height={height}
       width={width}
       {...borderColor}
+      {...metaAttribute({ name: MetaConstants.Divider, testID })}
+      {...getStyledProps(styledProps)}
     />
   );
 };

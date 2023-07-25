@@ -122,8 +122,10 @@ export const ControlledTags = (props: TagProps): React.ReactElement => {
 
   const addTag = (): void => {
     // Add input value to tags and clear the input value
-    setTags([...tags, inputValue]);
-    setInputValue('');
+    if (inputValue) {
+      setTags([...tags, inputValue]);
+      setInputValue('');
+    }
   };
 
   const removeTag = (tagName: TagProps['children']): void => {

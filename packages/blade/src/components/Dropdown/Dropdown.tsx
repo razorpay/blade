@@ -11,6 +11,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { isReactNative } from '~utils';
+import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 
 const validDropdownChildren = [
   componentIds.triggers.SelectInput,
@@ -50,6 +51,7 @@ const _Dropdown = ({
   children,
   selectionType = 'single',
   onDismiss,
+  testID,
   ...styledProps
 }: DropdownProps): JSX.Element => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -241,11 +243,12 @@ const _Dropdown = ({
         <BaseBox
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           ref={dropdownContainerRef as any}
-          position="relative"
-          textAlign={'left' as never}
+          {...metaAttribute({ name: MetaConstants.Dropdown, testID })}
           {...getStyledProps(styledProps)}
         >
-          {children}
+          <BaseBox position="relative" textAlign={'left' as never}>
+            {children}
+          </BaseBox>
         </BaseBox>
       </DropdownContext.Provider>
     </BottomSheetAndDropdownGlueContext.Provider>

@@ -19,6 +19,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   -ms-flex-direction: column;
   flex-direction: column;
   position: relative;
+  width: 100%;
 }
 
 .c4 {
@@ -680,327 +681,332 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
 
 <div>
   <div
-    class="c0"
-    data-blade-component="base-box"
+    class=""
+    data-blade-component="dropdown"
   >
     <div
-      class="c1"
+      class="c0"
       data-blade-component="base-box"
     >
       <div
-        class="c2"
-        data-blade-component="visually-hidden"
-      >
-        <input
-          aria-hidden="true"
-          tabindex="-1"
-          value=""
-        />
-      </div>
-      <div
-        class=""
-        data-blade-component="select-input"
+        class="c1"
+        data-blade-component="base-box"
       >
         <div
-          class="c3"
-          data-blade-component="base-box"
+          class="c2"
+          data-blade-component="visually-hidden"
+        >
+          <input
+            aria-hidden="true"
+            tabindex="-1"
+            value=""
+          />
+        </div>
+        <div
+          class=""
+          data-blade-component="select-input"
         >
           <div
-            class="c4"
+            class="c3"
             data-blade-component="base-box"
           >
-            <label
-              data-blade-component="form-label"
-              for="dropdown-7-trigger-1-input-2"
-              id="dropdown-7-label"
-              style="width: auto; flex-shrink: 0; margin-right: 16px;"
+            <div
+              class="c4"
+              data-blade-component="base-box"
             >
+              <label
+                data-blade-component="form-label"
+                for="dropdown-7-trigger-1-input-2"
+                id="dropdown-7-label"
+                style="width: auto; flex-shrink: 0; margin-right: 16px;"
+              >
+                <div
+                  class="c5"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="c6"
+                    data-blade-component="base-box"
+                  >
+                    <p
+                      class="c7"
+                      data-blade-component="text"
+                    >
+                      Fruits
+                    </p>
+                    <div
+                      class="c2"
+                      data-blade-component="visually-hidden"
+                    >
+                      <p
+                        class="c8"
+                        data-blade-component="text"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </label>
+            </div>
+            <div
+              class="c9 c10"
+              data-blade-component="base-box"
+            >
+              <button
+                aria-controls="dropdown-7-actionlist"
+                aria-describedby=""
+                aria-disabled="false"
+                aria-expanded="true"
+                aria-haspopup="dialog"
+                aria-invalid="false"
+                aria-required="false"
+                class="c11"
+                data-blade-component="styled-base-input"
+                id="dropdown-7-trigger-1-input-2"
+                placeholder="Select Option"
+                role="combobox"
+                type="button"
+                value=""
+              >
+                Select Option
+              </button>
               <div
-                class="c5"
+                class="c12"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c6"
+                  class="c13"
                   data-blade-component="base-box"
                 >
-                  <p
-                    class="c7"
-                    data-blade-component="text"
-                  >
-                    Fruits
-                  </p>
                   <div
-                    class="c2"
-                    data-blade-component="visually-hidden"
+                    class="c14"
+                    data-blade-component="base-box"
                   >
-                    <p
-                      class="c8"
-                      data-blade-component="text"
-                    />
+                    <svg
+                      aria-hidden="true"
+                      class="Svgweb__StyledSvg-vcmjs8-0"
+                      data-blade-component="icon"
+                      fill="none"
+                      height="16px"
+                      viewBox="0 0 24 24"
+                      width="16px"
+                    >
+                      <path
+                        clip-rule="evenodd"
+                        d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z"
+                        data-blade-component="svg-path"
+                        fill="hsla(217, 56%, 17%, 1)"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
                   </div>
                 </div>
               </div>
-            </label>
+              <div
+                class=" c15"
+                data-blade-component="base-box"
+              />
+            </div>
           </div>
           <div
-            class="c9 c10"
+            class="c16"
             data-blade-component="base-box"
           >
-            <button
-              aria-controls="dropdown-7-actionlist"
-              aria-describedby=""
-              aria-disabled="false"
-              aria-expanded="true"
-              aria-haspopup="dialog"
-              aria-invalid="false"
-              aria-required="false"
-              class="c11"
-              data-blade-component="styled-base-input"
-              id="dropdown-7-trigger-1-input-2"
-              placeholder="Select Option"
-              role="combobox"
-              type="button"
-              value=""
-            >
-              Select Option
-            </button>
             <div
-              class="c12"
-              data-blade-component="base-box"
-            >
-              <div
-                class="c13"
-                data-blade-component="base-box"
-              >
-                <div
-                  class="c14"
-                  data-blade-component="base-box"
-                >
-                  <svg
-                    aria-hidden="true"
-                    class="Svgweb__StyledSvg-vcmjs8-0"
-                    data-blade-component="icon"
-                    fill="none"
-                    height="16px"
-                    viewBox="0 0 24 24"
-                    width="16px"
-                  >
-                    <path
-                      clip-rule="evenodd"
-                      d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z"
-                      data-blade-component="svg-path"
-                      fill="hsla(217, 56%, 17%, 1)"
-                      fill-rule="evenodd"
-                    />
-                  </svg>
-                </div>
-              </div>
-            </div>
-            <div
-              class=" c15"
+              class="c17"
               data-blade-component="base-box"
             />
           </div>
         </div>
-        <div
-          class="c16"
-          data-blade-component="base-box"
-        >
-          <div
-            class="c17"
-            data-blade-component="base-box"
-          />
-        </div>
       </div>
-    </div>
-    <div
-      class="c1"
-      data-blade-component="base-box"
-    >
       <div
-        class="c18"
+        class="c1"
         data-blade-component="base-box"
-      />
-      <div
-        class="c19 c20 c21"
-        data-blade-component="dropdown-overlay"
-        style="opacity: 1;"
       >
         <div
-          class="c22"
+          class="c18"
           data-blade-component="base-box"
+        />
+        <div
+          class="c19 c20 c21"
+          data-blade-component="dropdown-overlay"
+          style="opacity: 1;"
         >
           <div
-            class=""
-            data-blade-component="dropdown-header"
+            class="c22"
+            data-blade-component="base-box"
           >
             <div
-              class="c23"
-              data-blade-component="base-box"
+              class=""
+              data-blade-component="dropdown-header"
             >
               <div
-                class="c24"
+                class="c23"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c25"
+                  class="c24"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c26"
+                    class="c25"
                     data-blade-component="base-box"
                   >
                     <div
-                      class="c27"
+                      class="c26"
                       data-blade-component="base-box"
                     >
-                      <h6
-                        class="c28"
-                        data-blade-component="heading"
+                      <div
+                        class="c27"
+                        data-blade-component="base-box"
                       >
-                        Recent Searches
-                      </h6>
+                        <h6
+                          class="c28"
+                          data-blade-component="heading"
+                        >
+                          Recent Searches
+                        </h6>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
+              <div
+                class="c29 c30"
+                data-blade-component="divider"
+              />
             </div>
+          </div>
+          <div
+            aria-labelledby="dropdown-7-label"
+            class=""
+            data-blade-component="action-list"
+            id="dropdown-7-actionlist"
+            role="dialog"
+          >
             <div
-              class="c29 c30"
+              aria-multiselectable="false"
+              class=" c31"
               data-blade-component="base-box"
-            />
-          </div>
-        </div>
-        <div
-          aria-labelledby="dropdown-7-label"
-          class=""
-          data-blade-component="action-list"
-          id="dropdown-7-actionlist"
-          role="dialog"
-        >
-          <div
-            aria-multiselectable="false"
-            class=" c31"
-            data-blade-component="base-box"
-            role="listbox"
-          >
-            <button
-              aria-selected="false"
-              class=" c32"
-              data-blade-component="action-list-item"
-              data-index="0"
-              data-value="apple"
-              id="dropdown-7-0"
-              role="option"
-              tabindex="-1"
-              type="button"
-            >
-              <div
-                class="c33"
-                data-blade-component="base-box"
-              >
-                <div
-                  class="c34"
-                  data-blade-component="base-box"
-                />
-                <div
-                  class="c35"
-                  data-blade-component="base-box"
-                >
-                  <p
-                    class="c36"
-                    data-blade-component="text"
-                  >
-                    Apple
-                  </p>
-                </div>
-                <div
-                  class="c37"
-                  data-blade-component="base-box"
-                />
-              </div>
-              <div
-                class=""
-                data-blade-component="base-box"
-              />
-            </button>
-            <button
-              aria-selected="false"
-              class=" c32"
-              data-blade-component="action-list-item"
-              data-index="1"
-              data-value="mango"
-              id="dropdown-7-1"
-              role="option"
-              tabindex="-1"
-              type="button"
-            >
-              <div
-                class="c33"
-                data-blade-component="base-box"
-              >
-                <div
-                  class="c34"
-                  data-blade-component="base-box"
-                />
-                <div
-                  class="c35"
-                  data-blade-component="base-box"
-                >
-                  <p
-                    class="c36"
-                    data-blade-component="text"
-                  >
-                    Mango
-                  </p>
-                </div>
-                <div
-                  class="c37"
-                  data-blade-component="base-box"
-                />
-              </div>
-              <div
-                class=""
-                data-blade-component="base-box"
-              />
-            </button>
-          </div>
-        </div>
-        <div
-          class=""
-          data-blade-component="base-box"
-          role="group"
-        >
-          <div
-            class="c29 c30"
-            data-blade-component="base-box"
-          />
-          <div
-            class="c38"
-            data-blade-component="dropdown-footer"
-          >
-            <div
-              class=""
-              data-blade-component="box"
+              role="listbox"
             >
               <button
-                class="c39"
-                data-blade-component="button"
-                role="button"
+                aria-selected="false"
+                class=" c32"
+                data-blade-component="action-list-item"
+                data-index="0"
+                data-value="apple"
+                id="dropdown-7-0"
+                role="option"
+                tabindex="-1"
                 type="button"
               >
                 <div
-                  class="c40 c41"
+                  class="c33"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c42"
-                    data-blade-component="base-text"
+                    class="c34"
+                    data-blade-component="base-box"
+                  />
+                  <div
+                    class="c35"
+                    data-blade-component="base-box"
                   >
-                    Apply
+                    <p
+                      class="c36"
+                      data-blade-component="text"
+                    >
+                      Apple
+                    </p>
                   </div>
+                  <div
+                    class="c37"
+                    data-blade-component="base-box"
+                  />
                 </div>
+                <div
+                  class=""
+                  data-blade-component="base-box"
+                />
               </button>
+              <button
+                aria-selected="false"
+                class=" c32"
+                data-blade-component="action-list-item"
+                data-index="1"
+                data-value="mango"
+                id="dropdown-7-1"
+                role="option"
+                tabindex="-1"
+                type="button"
+              >
+                <div
+                  class="c33"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="c34"
+                    data-blade-component="base-box"
+                  />
+                  <div
+                    class="c35"
+                    data-blade-component="base-box"
+                  >
+                    <p
+                      class="c36"
+                      data-blade-component="text"
+                    >
+                      Mango
+                    </p>
+                  </div>
+                  <div
+                    class="c37"
+                    data-blade-component="base-box"
+                  />
+                </div>
+                <div
+                  class=""
+                  data-blade-component="base-box"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class=""
+            data-blade-component="base-box"
+            role="group"
+          >
+            <div
+              class="c29 c30"
+              data-blade-component="divider"
+            />
+            <div
+              class="c38"
+              data-blade-component="dropdown-footer"
+            >
+              <div
+                class=""
+                data-blade-component="box"
+              >
+                <button
+                  class="c39"
+                  data-blade-component="button"
+                  role="button"
+                  type="button"
+                >
+                  <div
+                    class="c40 c41"
+                    data-blade-component="base-box"
+                  >
+                    <div
+                      class="c42"
+                      data-blade-component="base-text"
+                    >
+                      Apply
+                    </div>
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -1247,130 +1253,135 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
 
 <div>
   <div
-    class="c0"
-    data-blade-component="base-box"
+    class=""
+    data-blade-component="dropdown"
   >
-    <button
-      aria-activedescendant="dropdown-891-0"
-      aria-controls="dropdown-891-actionlist"
-      aria-expanded="false"
-      aria-haspopup="menu"
-      class="c1"
-      data-blade-component="button"
-      role="button"
-      type="button"
+    <div
+      class="c0"
+      data-blade-component="base-box"
     >
+      <button
+        aria-activedescendant="dropdown-891-0"
+        aria-controls="dropdown-891-actionlist"
+        aria-expanded="false"
+        aria-haspopup="menu"
+        class="c1"
+        data-blade-component="button"
+        role="button"
+        type="button"
+      >
+        <div
+          class="c2 c3"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c4"
+            data-blade-component="base-text"
+          >
+            My Account
+          </div>
+        </div>
+      </button>
       <div
-        class="c2 c3"
+        class="c5"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-text"
-        >
-          My Account
-        </div>
-      </div>
-    </button>
-    <div
-      class="c5"
-      data-blade-component="base-box"
-    >
-      <div
-        class="c6 c7 c8"
-        data-blade-component="dropdown-overlay"
-        style="opacity: 0;"
-      >
-        <div
-          aria-labelledby="dropdown-891-label"
-          class=""
-          data-blade-component="action-list"
-          id="dropdown-891-actionlist"
-          role="menu"
+          class="c6 c7 c8"
+          data-blade-component="dropdown-overlay"
+          style="opacity: 0;"
         >
           <div
-            class=" c9"
-            data-blade-component="base-box"
+            aria-labelledby="dropdown-891-label"
+            class=""
+            data-blade-component="action-list"
+            id="dropdown-891-actionlist"
+            role="menu"
           >
-            <button
-              class=" c10 active-focus"
-              data-blade-component="action-list-item"
-              data-index="0"
-              data-value="profile"
-              id="dropdown-891-0"
-              role="menuitem"
-              tabindex="-1"
-              type="button"
+            <div
+              class=" c9"
+              data-blade-component="base-box"
             >
-              <div
-                class="c11"
-                data-blade-component="base-box"
+              <button
+                class=" c10 active-focus"
+                data-blade-component="action-list-item"
+                data-index="0"
+                data-value="profile"
+                id="dropdown-891-0"
+                role="menuitem"
+                tabindex="-1"
+                type="button"
               >
                 <div
-                  class="c12"
-                  data-blade-component="base-box"
-                />
-                <div
-                  class="c13"
+                  class="c11"
                   data-blade-component="base-box"
                 >
-                  <p
-                    class="c14"
-                    data-blade-component="text"
+                  <div
+                    class="c12"
+                    data-blade-component="base-box"
+                  />
+                  <div
+                    class="c13"
+                    data-blade-component="base-box"
                   >
-                    Profile
-                  </p>
+                    <p
+                      class="c14"
+                      data-blade-component="text"
+                    >
+                      Profile
+                    </p>
+                  </div>
+                  <div
+                    class="c15"
+                    data-blade-component="base-box"
+                  />
                 </div>
                 <div
-                  class="c15"
+                  class=""
                   data-blade-component="base-box"
                 />
-              </div>
-              <div
-                class=""
-                data-blade-component="base-box"
-              />
-            </button>
-            <a
-              class=" c10"
-              data-blade-component="action-list-item"
-              data-index="1"
-              data-value="settings"
-              href="/settings"
-              id="dropdown-891-1"
-              role="link"
-              tabindex="-1"
-              type="button"
-            >
-              <div
-                class="c11"
-                data-blade-component="base-box"
+              </button>
+              <a
+                class=" c10"
+                data-blade-component="action-list-item"
+                data-index="1"
+                data-value="settings"
+                href="/settings"
+                id="dropdown-891-1"
+                role="link"
+                tabindex="-1"
+                type="button"
               >
                 <div
-                  class="c12"
-                  data-blade-component="base-box"
-                />
-                <div
-                  class="c13"
+                  class="c11"
                   data-blade-component="base-box"
                 >
-                  <p
-                    class="c14"
-                    data-blade-component="text"
+                  <div
+                    class="c12"
+                    data-blade-component="base-box"
+                  />
+                  <div
+                    class="c13"
+                    data-blade-component="base-box"
                   >
-                    Settings
-                  </p>
+                    <p
+                      class="c14"
+                      data-blade-component="text"
+                    >
+                      Settings
+                    </p>
+                  </div>
+                  <div
+                    class="c15"
+                    data-blade-component="base-box"
+                  />
                 </div>
                 <div
-                  class="c15"
+                  class=""
                   data-blade-component="base-box"
                 />
-              </div>
-              <div
-                class=""
-                data-blade-component="base-box"
-              />
-            </a>
+              </a>
+            </div>
           </div>
         </div>
       </div>

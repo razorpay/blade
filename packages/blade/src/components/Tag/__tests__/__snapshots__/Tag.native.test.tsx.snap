@@ -60,48 +60,63 @@ exports[`<Tag /> should render tag 1`] = `
             "m": "flex",
           }
         }
+        flexDirection="row"
         style={
           Array [
             Object {
               "alignItems": "center",
               "display": "none",
+              "flexDirection": "row",
             },
           ]
         }
       >
-        <Text
-          color="surface.text.subtle.lowContrast"
-          data-blade-component="text"
-          fontFamily="text"
-          fontSize={75}
-          fontStyle="normal"
-          fontWeight="regular"
-          lineHeight={50}
-          marginRight="spacing.2"
+        <View
+          data-blade-component="box"
+          maxWidth="100px"
           style={
             Array [
               Object {
-                "color": "hsla(216, 27%, 36%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 12,
-                "fontStyle": "normal",
-                "fontWeight": "400",
-                "lineHeight": 16,
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 4,
-                "marginTop": 0,
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "textDecorationLine": "none",
+                "maxWidth": 100,
               },
             ]
           }
         >
-          in:User
-        </Text>
+          <Text
+            color="surface.text.subtle.lowContrast"
+            data-blade-component="text"
+            fontFamily="text"
+            fontSize={75}
+            fontStyle="normal"
+            fontWeight="regular"
+            lineHeight={50}
+            marginRight="spacing.2"
+            numberOfLines={1}
+            style={
+              Array [
+                Object {
+                  "color": "hsla(216, 27%, 36%, 1)",
+                  "fontFamily": "Lato",
+                  "fontSize": 12,
+                  "fontStyle": "normal",
+                  "fontWeight": "400",
+                  "lineHeight": 16,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 4,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+          >
+            in:User
+          </Text>
+        </View>
         <View
           accessibilityLabel="Close in:User tag"
           accessibilityRole="button"
@@ -189,48 +204,63 @@ exports[`<Tag /> should render tag 1`] = `
             "m": "none",
           }
         }
+        flexDirection="row"
         style={
           Array [
             Object {
               "alignItems": "center",
               "display": "flex",
+              "flexDirection": "row",
             },
           ]
         }
       >
-        <Text
-          color="surface.text.subtle.lowContrast"
-          data-blade-component="text"
-          fontFamily="text"
-          fontSize={75}
-          fontStyle="normal"
-          fontWeight="regular"
-          lineHeight={50}
-          marginRight="spacing.2"
+        <View
+          data-blade-component="box"
+          maxWidth="100px"
           style={
             Array [
               Object {
-                "color": "hsla(216, 27%, 36%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 12,
-                "fontStyle": "normal",
-                "fontWeight": "400",
-                "lineHeight": 16,
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 4,
-                "marginTop": 0,
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "textDecorationLine": "none",
+                "maxWidth": 100,
               },
             ]
           }
         >
-          in:User
-        </Text>
+          <Text
+            color="surface.text.subtle.lowContrast"
+            data-blade-component="text"
+            fontFamily="text"
+            fontSize={75}
+            fontStyle="normal"
+            fontWeight="regular"
+            lineHeight={50}
+            marginRight="spacing.2"
+            numberOfLines={1}
+            style={
+              Array [
+                Object {
+                  "color": "hsla(216, 27%, 36%, 1)",
+                  "fontFamily": "Lato",
+                  "fontSize": 12,
+                  "fontStyle": "normal",
+                  "fontWeight": "400",
+                  "lineHeight": 16,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 4,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+          >
+            in:User
+          </Text>
+        </View>
         <View
           accessibilityLabel="Close in:User tag"
           accessibilityRole="button"

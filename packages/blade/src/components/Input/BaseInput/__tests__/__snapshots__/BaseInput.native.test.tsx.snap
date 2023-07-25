@@ -27,9 +27,11 @@ exports[`<BaseInput /> should render 1`] = `
             "display": "flex",
             "flexDirection": "column",
             "position": "relative",
+            "width": "100%",
           },
         ]
       }
+      width="100%"
     >
       <View
         data-blade-component="base-box"
@@ -332,9 +334,11 @@ exports[`<BaseInput /> should render with icons 1`] = `
             "display": "flex",
             "flexDirection": "column",
             "position": "relative",
+            "width": "100%",
           },
         ]
       }
+      width="100%"
     >
       <View
         data-blade-component="base-box"

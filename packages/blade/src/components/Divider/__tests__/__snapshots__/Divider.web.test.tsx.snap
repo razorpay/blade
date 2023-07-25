@@ -60,7 +60,7 @@ exports[`<Divider /> should render Divider within flex container 1`] = `
   >
     <div
       class="c1 c2"
-      data-blade-component="base-box"
+      data-blade-component="divider"
     />
   </div>
 </div>
@@ -126,7 +126,7 @@ exports[`<Divider /> should render horizontal Divider using width 1`] = `
   >
     <div
       class="c1 c2"
-      data-blade-component="base-box"
+      data-blade-component="divider"
     />
   </div>
 </div>
@@ -191,7 +191,7 @@ exports[`<Divider /> should render vertical Divider using height 1`] = `
   >
     <div
       class="c1 c2"
-      data-blade-component="base-box"
+      data-blade-component="divider"
     />
   </div>
 </div>

@@ -660,6 +660,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
           justifyContent={isLabelLeftPositioned ? 'center' : undefined}
           alignItems={isLabelLeftPositioned ? 'center' : undefined}
           position="relative"
+          width="100%"
         >
           {!hideLabelText && (
             <BaseBox

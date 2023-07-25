@@ -82,7 +82,6 @@ const BaseSpinner = ({
   const { theme } = useTheme();
   return (
     <BaseBox
-      display="flex"
       {...metaAttribute({ name: MetaConstants.Spinner, testID })}
       {...getStyledProps(styledProps)}
     >

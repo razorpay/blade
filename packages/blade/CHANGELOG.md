@@ -1,5 +1,13 @@
 # @razorpay/blade
 
+## 9.2.0
+
+### Minor Changes
+
+- 37d84ce7: feat: support `display` prop for all components with styled props
+
+  Restructures few components to ensure adding a display prop doesn't break the components
+
 ## 9.1.2
 
 ### Patch Changes
