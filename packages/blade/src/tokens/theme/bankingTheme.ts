@@ -1152,7 +1152,7 @@ const colors: ColorsWithModes = {
       },
     },
     overlay: {
-      background: globalColors.neutral.ashGrayLight.a1100,
+      background: globalColors.neutral.ashGrayDark.a1100,
     },
     brand: {
       primary: {
