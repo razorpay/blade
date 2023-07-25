@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
-import React, { ReactElement } from 'react';
+import type { ReactElement } from 'react';
+import React from 'react';
 import type { ButtonProps } from '../Button';
 import { Button } from '../Button';
 import { useVerifyInsideCard, useVerifyAllowedComponents } from './CardContext';
