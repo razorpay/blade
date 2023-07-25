@@ -29,11 +29,11 @@ const colors: ColorsWithModes = {
       border: {
         normal: {
           lowContrast: globalColors.neutral.blueGrayLight.a100,
-          highContrast: globalColors.neutral.blueGrayLight.a400,
+          highContrast: globalColors.neutral.blueGrayLight.a100,
         },
         subtle: {
           lowContrast: globalColors.neutral.blueGrayLight.a50,
-          highContrast: globalColors.neutral.blueGrayLight.a300,
+          highContrast: globalColors.neutral.blueGrayLight.a50,
         },
       },
       text: {
@@ -77,17 +77,14 @@ const colors: ColorsWithModes = {
             highContrast: globalColors.neutral.blueGrayLight[0],
           },
           disabled: {
-            lowContrast: globalColors.neutral.blueGrayLight.a100,
+            lowContrast: globalColors.neutral.blueGrayLight[300],
             highContrast: globalColors.neutral.blueGrayLight.a100,
           },
         },
       },
     },
     overlay: {
-      background: {
-        dark: globalColors.neutral.ashGrayLight.a1100,
-        light: globalColors.neutral.blueGrayLight.a1100,
-      },
+      background: globalColors.neutral.ashGrayLight.a1100,
     },
     brand: {
       primary: {
@@ -1100,11 +1097,11 @@ const colors: ColorsWithModes = {
       border: {
         normal: {
           lowContrast: globalColors.neutral.blueGrayDark.a100,
-          highContrast: globalColors.neutral.blueGrayDark.a400,
+          highContrast: globalColors.neutral.blueGrayDark.a100,
         },
         subtle: {
           lowContrast: globalColors.neutral.blueGrayDark.a50,
-          highContrast: globalColors.neutral.blueGrayDark.a300,
+          highContrast: globalColors.neutral.blueGrayDark.a50,
         },
       },
       text: {
@@ -1148,17 +1145,14 @@ const colors: ColorsWithModes = {
             highContrast: globalColors.neutral.blueGrayDark[0],
           },
           disabled: {
-            lowContrast: globalColors.neutral.blueGrayDark.a100,
+            lowContrast: globalColors.neutral.blueGrayDark[600],
             highContrast: globalColors.neutral.blueGrayDark.a100,
           },
         },
       },
     },
     overlay: {
-      background: {
-        dark: globalColors.neutral.ashGrayDark.a1100,
-        light: globalColors.neutral.blueGrayDark.a1100,
-      },
+      background: globalColors.neutral.ashGrayDark.a1100,
     },
     brand: {
       primary: {
