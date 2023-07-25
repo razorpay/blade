@@ -320,10 +320,12 @@ const useInput = ({
   handleOnKeyDown: FormInputHandleOnKeyDownEvent;
   inputValue?: string;
 } => {
-  if (value && defaultValue) {
-    throw new Error(
-      `[Blade: Input]: Either 'value' or 'defaultValue' shall be passed. This decides if the input field is controlled or uncontrolled`,
-    );
+  if (__DEV__) {
+    if (value && defaultValue) {
+      throw new Error(
+        `[Blade: Input]: Either 'value' or 'defaultValue' shall be passed. This decides if the input field is controlled or uncontrolled`,
+      );
+    }
   }
 
   const [inputValue, setInputValue] = React.useState(defaultValue ?? value);
@@ -628,15 +630,17 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
 
     const willRenderHintText = Boolean(helpText) || Boolean(successText) || Boolean(errorText);
 
-    if (
-      autoCompleteSuggestionType &&
-      !autoCompleteSuggestionTypeValues.includes(autoCompleteSuggestionType)
-    ) {
-      throw new Error(
-        `[Blade: Input]: Expected autoCompleteSuggestionType to be one of ${autoCompleteSuggestionTypeValues.join(
-          ', ',
-        )} but received ${autoCompleteSuggestionType}`,
-      );
+    if (__DEV__) {
+      if (
+        autoCompleteSuggestionType &&
+        !autoCompleteSuggestionTypeValues.includes(autoCompleteSuggestionType)
+      ) {
+        throw new Error(
+          `[Blade: Input]: Expected autoCompleteSuggestionType to be one of ${autoCompleteSuggestionTypeValues.join(
+            ', ',
+          )} but received ${autoCompleteSuggestionType}`,
+        );
+      }
     }
 
     const isTextArea = as === 'textarea';

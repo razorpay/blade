@@ -18,10 +18,12 @@ const ActionListContext = React.createContext<ActionListContextProp>({ surfaceLe
 const useActionListContext = (): ActionListContextProp => {
   const context = React.useContext(ActionListContext);
 
-  if (!context) {
-    throw new Error(
-      '[Blade ActionList]: useActionListContext has to be called inside ActionListContext.Provider',
-    );
+  if (__DEV__) {
+    if (!context) {
+      throw new Error(
+        '[Blade ActionList]: useActionListContext has to be called inside ActionListContext.Provider',
+      );
+    }
   }
   return context;
 };

@@ -147,11 +147,12 @@ const Modal = ({
       isValidAllowedChildren(child, MetaConstants.ModalFooter)
     ) {
       return child;
-    } else {
+    } else if (__DEV__) {
       throw new Error(
         '[Blade Modal] Modal only accepts ModalHeader, ModalBody and ModalFooter as children',
       );
     }
+    return null;
   });
 
   return (

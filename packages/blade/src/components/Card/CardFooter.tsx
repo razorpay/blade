@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
-import React from 'react';
+import React, { ReactElement } from 'react';
 import type { ButtonProps } from '../Button';
 import { Button } from '../Button';
 import { useVerifyInsideCard, useVerifyAllowedComponents } from './CardContext';
@@ -41,8 +41,10 @@ const _CardFooter = ({ children, testID }: CardFooterProps): React.ReactElement 
   ]);
 
   const footerChildrensArray = React.Children.toArray(children);
-  if (!React.isValidElement(footerChildrensArray[0])) {
-    throw new Error(`Invalid React Element ${footerChildrensArray}`);
+  if (__DEV__) {
+    if (!React.isValidElement(footerChildrensArray[0])) {
+      throw new Error(`Invalid React Element ${footerChildrensArray}`);
+    }
   }
 
   // the reason why we are checking for actions here is, because we want the footerTrailing
@@ -50,7 +52,7 @@ const _CardFooter = ({ children, testID }: CardFooterProps): React.ReactElement 
   // if we don't check for action here, and if we do not have footerTrailing and only footerLeading
   // then the content of footerLeading will be justified to the end.
   const baseBoxJustifyContent =
-    footerChildrensArray.length === 2 || !footerChildrensArray[0]?.props?.actions
+    footerChildrensArray.length === 2 || !(footerChildrensArray[0] as ReactElement)?.props?.actions
       ? 'space-between'
       : 'flex-end';
 
