@@ -11,7 +11,8 @@ import type { TextProps } from '~components/Typography';
 import { Text } from '~components/Typography';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { StringChildrenType, TestID } from '~utils/types';
-import { isReactNative } from '~utils';
+import { isReactNative, makeSize } from '~utils';
+import { size as globalSizeTokens } from '~tokens/global';
 import BaseBox from '~components/Box/BaseBox';
 import type { PaddingProps } from '~components/Box/BaseBox/types/spacingTypes';
 
@@ -61,13 +62,13 @@ const FocussableTag = styled(BaseBox)<{ isTagFocussed: TagProps['_isTagFocussed'
   return {};
 });
 const Desktop = ({ children }: { children: (React.ReactElement | null)[] }): React.ReactElement => (
-  <Box display={{ base: 'none', m: 'flex' }} alignItems="center">
+  <Box display={{ base: 'none', m: 'flex' }} alignItems="center" flexDirection="row">
     {children}
   </Box>
 );
 
 const Mobile = ({ children }: { children: (React.ReactElement | null)[] }): React.ReactElement => (
-  <Box display={{ base: 'flex', m: 'none' }} alignItems="center">
+  <Box display={{ base: 'flex', m: 'none' }} alignItems="center" flexDirection="row">
     {children}
   </Box>
 );
@@ -97,16 +98,22 @@ const Tag = ({
   };
 
   const getLeadingIcon = ({ size }: { size: IconProps['size'] }): React.ReactElement | null =>
-    Icon ? <Icon color={textColor} size={size} marginRight="spacing.2" /> : null;
+    Icon ? (
+      <Box>
+        <Icon color={textColor} size={size} marginRight="spacing.2" />
+      </Box>
+    ) : null;
 
   const getTagText = ({
     size,
   }: {
     size: TextProps<{ variant: 'body' }>['size'];
   }): React.ReactElement => (
-    <Text marginRight="spacing.2" color={textColor} size={size}>
-      {children}
-    </Text>
+    <Box maxWidth={makeSize(globalSizeTokens['100'])}>
+      <Text truncateAfterLines={1} marginRight="spacing.2" color={textColor} size={size}>
+        {children}
+      </Text>
+    </Box>
   );
 
   const getCloseIcon = ({ size }: { size: IconButtonProps['size'] }): React.ReactElement => (

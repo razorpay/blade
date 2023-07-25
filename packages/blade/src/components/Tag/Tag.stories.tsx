@@ -91,7 +91,7 @@ const TagTemplate: ComponentStory<typeof Tag> = ({ children, ...args }) => {
 
 export const Default = TagTemplate.bind({});
 Default.args = {
-  children: 'Unpaid',
+  children: 'UnpaidUnpaidUnpaidUnpaidUnpaidUnpaidUnpaidUnpaid UnpaidUnpaid',
   icon: 'FileTextIcon',
 } as TagProps & { icon: string };
 

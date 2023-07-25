@@ -36,6 +36,27 @@ exports[`<Tag /> should render tag 1`] = `
 
 .c2 {
   display: none;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c3 {
+  max-width: 100px;
+}
+
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -43,17 +64,6 @@ exports[`<Tag /> should render tag 1`] = `
 }
 
 .c5 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c4 {
   border: none;
   cursor: pointer;
   padding: 0;
@@ -80,21 +90,21 @@ exports[`<Tag /> should render tag 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c4:hover {
+.c5:hover {
   color: hsla(217,18%,45%,1);
 }
 
-.c4:focus {
+.c5:focus {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   color: hsla(217,18%,45%,1);
 }
 
-.c4:active {
+.c5:active {
   color: hsla(217,18%,45%,1);
 }
 
-.c3 {
+.c4 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -105,6 +115,11 @@ exports[`<Tag /> should render tag 1`] = `
   line-height: 1rem;
   margin: 0;
   padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
   margin-right: 4px;
 }
 
@@ -124,7 +139,7 @@ exports[`<Tag /> should render tag 1`] = `
 }
 
 @media screen and (min-width:768px) {
-  .c5 {
+  .c6 {
     display: none;
   }
 }
@@ -142,15 +157,20 @@ exports[`<Tag /> should render tag 1`] = `
         class="c2"
         data-blade-component="box"
       >
-        <p
+        <div
           class="c3"
-          data-blade-component="text"
+          data-blade-component="box"
         >
-          in:User
-        </p>
+          <p
+            class="c4"
+            data-blade-component="text"
+          >
+            in:User
+          </p>
+        </div>
         <button
           aria-label="Close in:User tag"
-          class="c4"
+          class="c5"
           data-blade-component="icon-button"
           type="button"
         >
@@ -172,18 +192,23 @@ exports[`<Tag /> should render tag 1`] = `
         </button>
       </div>
       <div
-        class="c5"
+        class="c6"
         data-blade-component="box"
       >
-        <p
+        <div
           class="c3"
-          data-blade-component="text"
+          data-blade-component="box"
         >
-          in:User
-        </p>
+          <p
+            class="c4"
+            data-blade-component="text"
+          >
+            in:User
+          </p>
+        </div>
         <button
           aria-label="Close in:User tag"
-          class="c4"
+          class="c5"
           data-blade-component="icon-button"
           type="button"
         >
