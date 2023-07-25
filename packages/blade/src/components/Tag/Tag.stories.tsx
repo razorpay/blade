@@ -91,7 +91,7 @@ const TagTemplate: ComponentStory<typeof Tag> = ({ children, ...args }) => {
 
 export const Default = TagTemplate.bind({});
 Default.args = {
-  children: 'UnpaidUnpaidUnpaidUnpaidUnpaidUnpaidUnpaidUnpaid UnpaidUnpaid',
+  children: 'Unpaid',
   icon: 'FileTextIcon',
 } as TagProps & { icon: string };
 
@@ -122,8 +122,10 @@ export const ControlledTags = (props: TagProps): React.ReactElement => {
 
   const addTag = (): void => {
     // Add input value to tags and clear the input value
-    setTags([...tags, inputValue]);
-    setInputValue('');
+    if (inputValue) {
+      setTags([...tags, inputValue]);
+      setInputValue('');
+    }
   };
 
   const removeTag = (tagName: TagProps['children']): void => {
