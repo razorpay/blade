@@ -84,10 +84,7 @@ const colors: ColorsWithModes = {
       },
     },
     overlay: {
-      background: {
-        dark: globalColors.neutral.ashGrayLight.a1100,
-        light: globalColors.neutral.navyGrayLight.a1100,
-      },
+      background: globalColors.neutral.navyGrayLight.a1100,
     },
     brand: {
       primary: {
@@ -1155,10 +1152,7 @@ const colors: ColorsWithModes = {
       },
     },
     overlay: {
-      background: {
-        dark: globalColors.neutral.ashGrayDark.a1100,
-        light: globalColors.neutral.navyGrayDark.a1100,
-      },
+      background: globalColors.neutral.navyGrayDark.a1100,
     },
     brand: {
       primary: {
