@@ -15,22 +15,20 @@
   },
   "devDependencies": {
     "@figma/plugin-typings": "1.19.0",
-    "@types/react-dom": "17.0.0",
     "@types/react": "17.0.0",
     "@types/set-value": "4.0.1",
+    "@types/react-dom": "17.0.0",
     "css-loader": "5.0.1",
     "figma-plugin-ds": "0.1.8",
     "html-webpack-inline-source-plugin": "0.0.10",
     "html-webpack-plugin": "3.2.0",
-    "is-plain-object": "5.0.0",
-    "is-primitive": "3.0.1",
     "js-string-compression": "1.0.1",
     "set-value": "4.1.0",
     "style-loader": "2.0.0",
     "ts-loader": "8.0.11",
     "typescript": "4.1.2",
     "url-loader": "4.1.1",
-    "webpack-cli": "3.3.6",
-    "webpack": "4.41.4"
+    "webpack": "4.41.4",
+    "webpack-cli": "3.3.6"
   }
 }
