@@ -19,6 +19,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 type SelectInputProps = Pick<
   BaseInputProps,
   | 'label'
+  | 'accessibilityLabel'
   | 'labelPosition'
   | 'necessityIndicator'
   | 'validationState'

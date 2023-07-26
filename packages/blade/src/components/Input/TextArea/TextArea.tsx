@@ -18,6 +18,7 @@ import { getPlatformType } from '~utils';
 type TextAreaProps = Pick<
   BaseInputProps,
   | 'label'
+  | 'accessibilityLabel'
   | 'labelPosition'
   | 'necessityIndicator'
   | 'validationState'
@@ -58,6 +59,7 @@ const isReactNative = (_textInputRef: any): _textInputRef is TextInputReactNativ
 const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> = (
   {
     label,
+    accessibilityLabel,
     labelPosition,
     necessityIndicator,
     errorText,
@@ -130,6 +132,8 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
       autoFocus={autoFocus}
       ref={inputRef as React.Ref<HTMLInputElement>}
       label={label}
+      accessibilityLabel={accessibilityLabel}
+      hideLabelText={!Boolean(label)}
       labelPosition={labelPosition}
       necessityIndicator={necessityIndicator}
       errorText={errorText}

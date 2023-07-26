@@ -27,6 +27,7 @@ type FormInputOnEventWithIndex = ({
 export type OTPInputProps = Pick<
   BaseInputProps,
   | 'label'
+  | 'accessibilityLabel'
   | 'labelPosition'
   | 'validationState'
   | 'helpText'
@@ -111,6 +112,7 @@ const OTPInput = ({
   keyboardReturnKeyType,
   keyboardType = 'decimal',
   label,
+  accessibilityLabel,
   labelPosition,
   name,
   onChange,
@@ -295,7 +297,9 @@ const OTPInput = ({
           <BaseInput
             // eslint-disable-next-line jsx-a11y/no-autofocus
             autoFocus={autoFocus && index === 0}
-            accessibilityLabel={`${index === 0 ? label : ''} character ${index + 1}`}
+            accessibilityLabel={`${index === 0 ? label || accessibilityLabel : ''} character ${
+              index + 1
+            }`}
             label={label}
             hideLabelText={true}
             id={`${inputId}-${index}`}
@@ -341,9 +345,11 @@ const OTPInput = ({
         alignItems={isLabelLeftPositioned ? 'center' : undefined}
         position="relative"
       >
-        <FormLabel as="label" position={labelPosition} htmlFor={inputId}>
-          {label}
-        </FormLabel>
+        {Boolean(label) && (
+          <FormLabel as="label" position={labelPosition} htmlFor={inputId}>
+            {label as string}
+          </FormLabel>
+        )}
         <BaseBox display="flex" flexDirection="row">
           {getHiddenInput()}
           {getOTPInputFields()}

@@ -22,6 +22,7 @@ type Type = Exclude<BaseInputProps['type'], 'password'>;
 
 type TextInputProps = Pick<
   BaseInputProps,
+  | 'label'
   | 'accessibilityLabel'
   | 'labelPosition'
   | 'necessityIndicator'
@@ -48,10 +49,6 @@ type TextInputProps = Pick<
   | 'autoCapitalize'
   | 'testID'
 > & {
-  /**
-   * Label to be shown for the input field
-   */
-  label?: string;
   /**
    * Decides whether to render a clear icon button
    */
@@ -222,13 +219,6 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
 ): ReactElement => {
   const textInputRef = useBladeInnerRef(ref);
   const [shouldShowClearButton, setShouldShowClearButton] = useState(false);
-  const isLabelDefined = typeof label === 'string' && label.length > 0;
-  const isAccessibilityLabelDefined =
-    typeof accessibilityLabel === 'string' && accessibilityLabel.length > 0;
-
-  if (!(isLabelDefined || isAccessibilityLabelDefined)) {
-    throw new Error('[Blade TextInput]: Either label or accessibilityLabel is required');
-  }
 
   React.useEffect(() => {
     setShouldShowClearButton(Boolean(showClearButton && (defaultValue ?? value)));
@@ -275,7 +265,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       ref={textInputRef as React.Ref<HTMLInputElement>}
       label={label as string}
       accessibilityLabel={accessibilityLabel}
-      hideLabelText={!isLabelDefined}
+      hideLabelText={!Boolean(label)}
       labelPosition={labelPosition}
       placeholder={placeholder}
       defaultValue={defaultValue}

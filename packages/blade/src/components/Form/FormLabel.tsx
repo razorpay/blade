@@ -37,7 +37,7 @@ export type FormInputLabelProps = {
   /**
    * Label to be shown for the input field
    */
-  label: string;
+  label?: string;
   /**
    * Desktop only prop. Default value on mobile will be `top`
    */
