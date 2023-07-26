@@ -8,7 +8,9 @@ import { Button } from '~components/Button';
 describe('<Accordion />', () => {
   // Accordion uses Collapsible which uses animations and requestAnimationFrame which makes RN tests throw warnings
   beforeEach(() => {
-    jest.useFakeTimers();
+    jest.useFakeTimers({
+      legacyFakeTimers: true,
+    });
   });
   afterEach(() => {
     jest.useRealTimers();
