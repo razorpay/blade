@@ -1,84 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<List /> should render List with default properties 1`] = `
-.c0 {
-  list-style-type: none;
-  padding: 0px;
-  margin: 0px;
-}
-
-.c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  margin-bottom: 8px;
-}
-
-.c4 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-self: flex-start;
-  -ms-flex-item-align: start;
-  align-self: flex-start;
-  margin-top: 7px;
-  margin-right: 8px;
-}
-
-.c1 {
-  margin-top: 8px;
-}
-
-.c5 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c2 {
-  margin-left: 4px;
-}
-
-.c6 {
-  margin-left: 16px;
-}
-
 <div>
   <div
-    class=""
+    class="BaseBox-bmPWx"
     data-blade-component="base-box"
   >
     <ul
-      class="c0 c1"
+      class="UnorderedListweb__UnorderedList-sc-1tb6ajo-0 List__StyledUnorderedList-bqf6r7-1 dbSpGu erLmOF"
       data-blade-component="list"
       role="list"
     >
       <li
-        class=" c2"
+        class="ListItemElementweb__ListItemElement-sc-2pr284-0 ListItem__StyledListItem-sc-6bxu4b-0  bALAZM"
         data-blade-component="list-item"
       >
         <div
-          class="c3"
+          class="BaseBox-bmPWx dKbTtw"
           data-blade-component="base-box"
         >
           <div
-            class="c4"
+            class="BaseBox-bmPWx gXoKZy"
             data-blade-component="base-box"
           >
             <svg
@@ -100,31 +42,31 @@ exports[`<List /> should render List with default properties 1`] = `
             </svg>
           </div>
           <p
-            class="c5"
+            class="StyledBaseText-dVBfTO eIdQFo"
             data-blade-component="text"
           >
             Level 1
           </p>
         </div>
         <div
-          class=""
+          class="BaseBox-bmPWx"
           data-blade-component="base-box"
         >
           <ul
-            class="c0"
+            class="UnorderedListweb__UnorderedList-sc-1tb6ajo-0 List__StyledUnorderedList-bqf6r7-1 dbSpGu"
             data-blade-component="list"
             role="list"
           >
             <li
-              class=" c6"
+              class="ListItemElementweb__ListItemElement-sc-2pr284-0 ListItem__StyledListItem-sc-6bxu4b-0  hWTYHD"
               data-blade-component="list-item"
             >
               <div
-                class="c3"
+                class="BaseBox-bmPWx dKbTtw"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c4"
+                  class="BaseBox-bmPWx gXoKZy"
                   data-blade-component="base-box"
                 >
                   <svg
@@ -146,31 +88,31 @@ exports[`<List /> should render List with default properties 1`] = `
                   </svg>
                 </div>
                 <p
-                  class="c5"
+                  class="StyledBaseText-dVBfTO eIdQFo"
                   data-blade-component="text"
                 >
                   Level 2
                 </p>
               </div>
               <div
-                class=""
+                class="BaseBox-bmPWx"
                 data-blade-component="base-box"
               >
                 <ul
-                  class="c0"
+                  class="UnorderedListweb__UnorderedList-sc-1tb6ajo-0 List__StyledUnorderedList-bqf6r7-1 dbSpGu"
                   data-blade-component="list"
                   role="list"
                 >
                   <li
-                    class=" c6"
+                    class="ListItemElementweb__ListItemElement-sc-2pr284-0 ListItem__StyledListItem-sc-6bxu4b-0  hWTYHD"
                     data-blade-component="list-item"
                   >
                     <div
-                      class="c3"
+                      class="BaseBox-bmPWx dKbTtw"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c4"
+                        class="BaseBox-bmPWx gXoKZy"
                         data-blade-component="base-box"
                       >
                         <svg
@@ -192,7 +134,7 @@ exports[`<List /> should render List with default properties 1`] = `
                         </svg>
                       </div>
                       <p
-                        class="c5"
+                        class="StyledBaseText-dVBfTO eIdQFo"
                         data-blade-component="text"
                       >
                         Level 3
@@ -211,102 +153,26 @@ exports[`<List /> should render List with default properties 1`] = `
 `;
 
 exports[`<List /> should render List with inline ListItemCode 1`] = `
-.c0 {
-  list-style-type: none;
-  padding: 0px;
-  margin: 0px;
-}
-
-.c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  margin-bottom: 8px;
-}
-
-.c4 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-self: flex-start;
-  -ms-flex-item-align: start;
-  align-self: flex-start;
-  margin-top: 7px;
-  margin-right: 8px;
-}
-
-.c1 {
-  margin-top: 8px;
-}
-
-.c5 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c7 {
-  color: hsla(216,27%,36%,1);
-  font-family: monospace;
-  font-size: 0.625rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 0.875rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c6 {
-  padding: 0px 4px;
-  background-color: hsla(216,15%,54%,0.18);
-  border-radius: 4px;
-  display: inline-block;
-  vertical-align: middle;
-  line-height: 0rem;
-}
-
-.c2 {
-  margin-left: 4px;
-}
-
 <div>
   <div
-    class=""
+    class="BaseBox-bmPWx"
     data-blade-component="base-box"
   >
     <ul
-      class="c0 c1"
+      class="UnorderedListweb__UnorderedList-sc-1tb6ajo-0 List__StyledUnorderedList-bqf6r7-1 dbSpGu erLmOF"
       data-blade-component="list"
       role="list"
     >
       <li
-        class=" c2"
+        class="ListItemElementweb__ListItemElement-sc-2pr284-0 ListItem__StyledListItem-sc-6bxu4b-0  bALAZM"
         data-blade-component="list-item"
       >
         <div
-          class="c3"
+          class="BaseBox-bmPWx dKbTtw"
           data-blade-component="base-box"
         >
           <div
-            class="c4"
+            class="BaseBox-bmPWx gXoKZy"
             data-blade-component="base-box"
           >
             <svg
@@ -328,16 +194,16 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
             </svg>
           </div>
           <p
-            class="c5"
+            class="StyledBaseText-dVBfTO eIdQFo"
             data-blade-component="text"
           >
             Level 1 
             <span
-              class=" c6"
+              class="BaseBox-bmPWx Code__CodeContainer-l9m17z-0  gxbKGz"
               data-blade-component="code"
             >
               <code
-                class="c7"
+                class="StyledBaseText-dVBfTO edQJln"
                 data-blade-component="base-text"
               >
                 Google
@@ -347,15 +213,15 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
         </div>
       </li>
       <li
-        class=" c2"
+        class="ListItemElementweb__ListItemElement-sc-2pr284-0 ListItem__StyledListItem-sc-6bxu4b-0  bALAZM"
         data-blade-component="list-item"
       >
         <div
-          class="c3"
+          class="BaseBox-bmPWx dKbTtw"
           data-blade-component="base-box"
         >
           <div
-            class="c4"
+            class="BaseBox-bmPWx gXoKZy"
             data-blade-component="base-box"
           >
             <svg
@@ -377,7 +243,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
             </svg>
           </div>
           <p
-            class="c5"
+            class="StyledBaseText-dVBfTO eIdQFo"
             data-blade-component="text"
           >
             Level 2
@@ -390,93 +256,26 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
 `;
 
 exports[`<List /> should render List with inline ListItemText 1`] = `
-.c0 {
-  list-style-type: none;
-  padding: 0px;
-  margin: 0px;
-}
-
-.c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  margin-bottom: 8px;
-}
-
-.c4 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-self: flex-start;
-  -ms-flex-item-align: start;
-  align-self: flex-start;
-  margin-top: 7px;
-  margin-right: 8px;
-}
-
-.c1 {
-  margin-top: 8px;
-}
-
-.c5 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c6 {
-  color: hsla(218,89%,51%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c2 {
-  margin-left: 4px;
-}
-
 <div>
   <div
-    class=""
+    class="BaseBox-bmPWx"
     data-blade-component="base-box"
   >
     <ul
-      class="c0 c1"
+      class="UnorderedListweb__UnorderedList-sc-1tb6ajo-0 List__StyledUnorderedList-bqf6r7-1 dbSpGu erLmOF"
       data-blade-component="list"
       role="list"
     >
       <li
-        class=" c2"
+        class="ListItemElementweb__ListItemElement-sc-2pr284-0 ListItem__StyledListItem-sc-6bxu4b-0  bALAZM"
         data-blade-component="list-item"
       >
         <div
-          class="c3"
+          class="BaseBox-bmPWx dKbTtw"
           data-blade-component="base-box"
         >
           <div
-            class="c4"
+            class="BaseBox-bmPWx gXoKZy"
             data-blade-component="base-box"
           >
             <svg
@@ -498,11 +297,11 @@ exports[`<List /> should render List with inline ListItemText 1`] = `
             </svg>
           </div>
           <p
-            class="c5"
+            class="StyledBaseText-dVBfTO eIdQFo"
             data-blade-component="text"
           >
             <p
-              class="c6"
+              class="StyledBaseText-dVBfTO gplEcU"
               data-blade-component="text"
             >
               Level 1
@@ -516,163 +315,61 @@ exports[`<List /> should render List with inline ListItemText 1`] = `
 `;
 
 exports[`<List /> should render medium ordered List 1`] = `
-.c7 {
-  list-style-type: none;
-  padding: 0px;
-  margin: 0px;
-}
-
-.c0 {
-  list-style-type: none;
-  padding: 0px;
-  margin: 0px;
-}
-
-.c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  margin-bottom: 8px;
-}
-
-.c4 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-align-self: flex-start;
-  -ms-flex-item-align: start;
-  align-self: flex-start;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  margin-top: 0px;
-  margin-right: 4px;
-  height: 20px;
-  width: 20px;
-}
-
-.c9 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-self: flex-start;
-  -ms-flex-item-align: start;
-  align-self: flex-start;
-  margin-top: 7px;
-  margin-right: 8px;
-}
-
-.c1 {
-  margin-top: 8px;
-}
-
-.c5 {
-  color: hsla(216,27%,36%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c6 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c2 {
-  margin-left: 0;
-}
-
-.c8 {
-  margin-left: 16px;
-}
-
 <div>
   <div
-    class=""
+    class="BaseBox-bmPWx"
     data-blade-component="base-box"
   >
     <ol
-      class="c0 c1"
+      class="OrderedListweb__OrderedList-sc-1edjn7i-0 List__StyledOrderedList-bqf6r7-0 bAfLWR fvrmRj"
       data-blade-component="list"
       role="list"
     >
       <li
-        class=" c2"
+        class="ListItemElementweb__ListItemElement-sc-2pr284-0 ListItem__StyledListItem-sc-6bxu4b-0  dWYlpY"
         data-blade-component="list-item"
       >
         <div
-          class="c3"
+          class="BaseBox-bmPWx dKbTtw"
           data-blade-component="base-box"
         >
           <div
-            class="c4"
+            class="BaseBox-bmPWx iZdzKK"
             data-blade-component="base-box"
           >
             <p
-              class="c5"
+              class="StyledBaseText-dVBfTO ktUwvA"
               data-blade-component="text"
             >
               1.
             </p>
           </div>
           <p
-            class="c6"
+            class="StyledBaseText-dVBfTO eIdQFo"
             data-blade-component="text"
           >
             Level 1
           </p>
         </div>
         <div
-          class=""
+          class="BaseBox-bmPWx"
           data-blade-component="base-box"
         >
           <ul
-            class="List__StyledUnorderedList-bqf6r7-1 c7"
+            class="UnorderedListweb__UnorderedList-sc-1tb6ajo-0 List__StyledUnorderedList-bqf6r7-1 dbSpGu"
             data-blade-component="list"
             role="list"
           >
             <li
-              class=" c8"
+              class="ListItemElementweb__ListItemElement-sc-2pr284-0 ListItem__StyledListItem-sc-6bxu4b-0  hWTYHD"
               data-blade-component="list-item"
             >
               <div
-                class="c3"
+                class="BaseBox-bmPWx dKbTtw"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c9"
+                  class="BaseBox-bmPWx gXoKZy"
                   data-blade-component="base-box"
                 >
                   <svg
@@ -694,31 +391,31 @@ exports[`<List /> should render medium ordered List 1`] = `
                   </svg>
                 </div>
                 <p
-                  class="c6"
+                  class="StyledBaseText-dVBfTO eIdQFo"
                   data-blade-component="text"
                 >
                   Level 2
                 </p>
               </div>
               <div
-                class=""
+                class="BaseBox-bmPWx"
                 data-blade-component="base-box"
               >
                 <ul
-                  class="List__StyledUnorderedList-bqf6r7-1 c7"
+                  class="UnorderedListweb__UnorderedList-sc-1tb6ajo-0 List__StyledUnorderedList-bqf6r7-1 dbSpGu"
                   data-blade-component="list"
                   role="list"
                 >
                   <li
-                    class=" c8"
+                    class="ListItemElementweb__ListItemElement-sc-2pr284-0 ListItem__StyledListItem-sc-6bxu4b-0  hWTYHD"
                     data-blade-component="list-item"
                   >
                     <div
-                      class="c3"
+                      class="BaseBox-bmPWx dKbTtw"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c9"
+                        class="BaseBox-bmPWx gXoKZy"
                         data-blade-component="base-box"
                       >
                         <svg
@@ -740,7 +437,7 @@ exports[`<List /> should render medium ordered List 1`] = `
                         </svg>
                       </div>
                       <p
-                        class="c6"
+                        class="StyledBaseText-dVBfTO eIdQFo"
                         data-blade-component="text"
                       >
                         Level 3
@@ -759,119 +456,37 @@ exports[`<List /> should render medium ordered List 1`] = `
 `;
 
 exports[`<List /> should render medium ordered-filled List 1`] = `
-.c0 {
-  list-style-type: none;
-  padding: 0px;
-  margin: 0px;
-}
-
-.c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  margin-bottom: 8px;
-}
-
-.c4 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-align-self: flex-start;
-  -ms-flex-item-align: start;
-  align-self: flex-start;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  margin-top: 0px;
-  margin-right: 8px;
-  height: 20px;
-  width: 20px;
-  background-color: hsla(216,15%,54%,0.18);
-  border-radius: 9999px;
-}
-
-.c1 {
-  margin-top: 8px;
-}
-
-.c5 {
-  color: hsla(216,27%,36%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.625rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c6 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c2 {
-  margin-left: 0;
-}
-
 <div>
   <div
-    class=""
+    class="BaseBox-bmPWx"
     data-blade-component="base-box"
   >
     <ol
-      class="c0 c1"
+      class="OrderedListweb__OrderedList-sc-1edjn7i-0 List__StyledOrderedList-bqf6r7-0 bAfLWR fvrmRj"
       data-blade-component="list"
       role="list"
     >
       <li
-        class=" c2"
+        class="ListItemElementweb__ListItemElement-sc-2pr284-0 ListItem__StyledListItem-sc-6bxu4b-0  dWYlpY"
         data-blade-component="list-item"
       >
         <div
-          class="c3"
+          class="BaseBox-bmPWx dKbTtw"
           data-blade-component="base-box"
         >
           <div
-            class="c4"
+            class="BaseBox-bmPWx bquAKR"
             data-blade-component="base-box"
           >
             <p
-              class="c5"
+              class="StyledBaseText-dVBfTO jVmQdG"
               data-blade-component="text"
             >
               1
             </p>
           </div>
           <p
-            class="c6"
+            class="StyledBaseText-dVBfTO eIdQFo"
             data-blade-component="text"
           >
             Level 1
@@ -879,26 +494,26 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
         </div>
       </li>
       <li
-        class=" c2"
+        class="ListItemElementweb__ListItemElement-sc-2pr284-0 ListItem__StyledListItem-sc-6bxu4b-0  dWYlpY"
         data-blade-component="list-item"
       >
         <div
-          class="c3"
+          class="BaseBox-bmPWx dKbTtw"
           data-blade-component="base-box"
         >
           <div
-            class="c4"
+            class="BaseBox-bmPWx bquAKR"
             data-blade-component="base-box"
           >
             <p
-              class="c5"
+              class="StyledBaseText-dVBfTO jVmQdG"
               data-blade-component="text"
             >
               2
             </p>
           </div>
           <p
-            class="c6"
+            class="StyledBaseText-dVBfTO eIdQFo"
             data-blade-component="text"
           >
             Level 2
@@ -906,26 +521,26 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
         </div>
       </li>
       <li
-        class=" c2"
+        class="ListItemElementweb__ListItemElement-sc-2pr284-0 ListItem__StyledListItem-sc-6bxu4b-0  dWYlpY"
         data-blade-component="list-item"
       >
         <div
-          class="c3"
+          class="BaseBox-bmPWx dKbTtw"
           data-blade-component="base-box"
         >
           <div
-            class="c4"
+            class="BaseBox-bmPWx bquAKR"
             data-blade-component="base-box"
           >
             <p
-              class="c5"
+              class="StyledBaseText-dVBfTO jVmQdG"
               data-blade-component="text"
             >
               3
             </p>
           </div>
           <p
-            class="c6"
+            class="StyledBaseText-dVBfTO eIdQFo"
             data-blade-component="text"
           >
             Level 3
@@ -938,96 +553,26 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
 `;
 
 exports[`<List /> should render medium unordered List with icon 1`] = `
-.c0 {
-  list-style-type: none;
-  padding: 0px;
-  margin: 0px;
-}
-
-.c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  margin-bottom: 8px;
-}
-
-.c4 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-self: flex-start;
-  -ms-flex-item-align: start;
-  align-self: flex-start;
-  margin-top: 2px;
-  margin-right: 8px;
-}
-
-.c7 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-self: flex-start;
-  -ms-flex-item-align: start;
-  align-self: flex-start;
-  margin-top: 7px;
-  margin-right: 8px;
-}
-
-.c1 {
-  margin-top: 8px;
-}
-
-.c5 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c2 {
-  margin-left: 0;
-}
-
-.c6 {
-  margin-left: 16px;
-}
-
 <div>
   <div
-    class=""
+    class="BaseBox-bmPWx"
     data-blade-component="base-box"
   >
     <ul
-      class="c0 c1"
+      class="UnorderedListweb__UnorderedList-sc-1tb6ajo-0 List__StyledUnorderedList-bqf6r7-1 dbSpGu erLmOF"
       data-blade-component="list"
       role="list"
     >
       <li
-        class=" c2"
+        class="ListItemElementweb__ListItemElement-sc-2pr284-0 ListItem__StyledListItem-sc-6bxu4b-0  dWYlpY"
         data-blade-component="list-item"
       >
         <div
-          class="c3"
+          class="BaseBox-bmPWx dKbTtw"
           data-blade-component="base-box"
         >
           <div
-            class="c4"
+            class="BaseBox-bmPWx joTyKb"
             data-blade-component="base-box"
           >
             <svg
@@ -1047,31 +592,31 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
             </svg>
           </div>
           <p
-            class="c5"
+            class="StyledBaseText-dVBfTO eIdQFo"
             data-blade-component="text"
           >
             Level 1
           </p>
         </div>
         <div
-          class=""
+          class="BaseBox-bmPWx"
           data-blade-component="base-box"
         >
           <ul
-            class="c0"
+            class="UnorderedListweb__UnorderedList-sc-1tb6ajo-0 List__StyledUnorderedList-bqf6r7-1 dbSpGu"
             data-blade-component="list"
             role="list"
           >
             <li
-              class=" c6"
+              class="ListItemElementweb__ListItemElement-sc-2pr284-0 ListItem__StyledListItem-sc-6bxu4b-0  hWTYHD"
               data-blade-component="list-item"
             >
               <div
-                class="c3"
+                class="BaseBox-bmPWx dKbTtw"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c4"
+                  class="BaseBox-bmPWx joTyKb"
                   data-blade-component="base-box"
                 >
                   <svg
@@ -1091,31 +636,31 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                   </svg>
                 </div>
                 <p
-                  class="c5"
+                  class="StyledBaseText-dVBfTO eIdQFo"
                   data-blade-component="text"
                 >
                   Level 2
                 </p>
               </div>
               <div
-                class=""
+                class="BaseBox-bmPWx"
                 data-blade-component="base-box"
               >
                 <ul
-                  class="c0"
+                  class="UnorderedListweb__UnorderedList-sc-1tb6ajo-0 List__StyledUnorderedList-bqf6r7-1 dbSpGu"
                   data-blade-component="list"
                   role="list"
                 >
                   <li
-                    class=" c6"
+                    class="ListItemElementweb__ListItemElement-sc-2pr284-0 ListItem__StyledListItem-sc-6bxu4b-0  hWTYHD"
                     data-blade-component="list-item"
                   >
                     <div
-                      class="c3"
+                      class="BaseBox-bmPWx dKbTtw"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c7"
+                        class="BaseBox-bmPWx gXoKZy"
                         data-blade-component="base-box"
                       >
                         <svg
@@ -1137,7 +682,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                         </svg>
                       </div>
                       <p
-                        class="c5"
+                        class="StyledBaseText-dVBfTO eIdQFo"
                         data-blade-component="text"
                       >
                         Level 3
@@ -1156,163 +701,61 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
 `;
 
 exports[`<List /> should render small ordered List 1`] = `
-.c7 {
-  list-style-type: none;
-  padding: 0px;
-  margin: 0px;
-}
-
-.c0 {
-  list-style-type: none;
-  padding: 0px;
-  margin: 0px;
-}
-
-.c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  margin-bottom: 8px;
-}
-
-.c4 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-align-self: flex-start;
-  -ms-flex-item-align: start;
-  align-self: flex-start;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  margin-top: 0px;
-  margin-right: 4px;
-  height: 16px;
-  width: 16px;
-}
-
-.c9 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-self: flex-start;
-  -ms-flex-item-align: start;
-  align-self: flex-start;
-  margin-top: 6px;
-  margin-right: 8px;
-}
-
-.c1 {
-  margin-top: 8px;
-}
-
-.c5 {
-  color: hsla(216,27%,36%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.75rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c6 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.75rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c2 {
-  margin-left: 0;
-}
-
-.c8 {
-  margin-left: 16px;
-}
-
 <div>
   <div
-    class=""
+    class="BaseBox-bmPWx"
     data-blade-component="base-box"
   >
     <ol
-      class="c0 c1"
+      class="OrderedListweb__OrderedList-sc-1edjn7i-0 List__StyledOrderedList-bqf6r7-0 bAfLWR fvrmRj"
       data-blade-component="list"
       role="list"
     >
       <li
-        class=" c2"
+        class="ListItemElementweb__ListItemElement-sc-2pr284-0 ListItem__StyledListItem-sc-6bxu4b-0  dWYlpY"
         data-blade-component="list-item"
       >
         <div
-          class="c3"
+          class="BaseBox-bmPWx dKbTtw"
           data-blade-component="base-box"
         >
           <div
-            class="c4"
+            class="BaseBox-bmPWx dtecFy"
             data-blade-component="base-box"
           >
             <p
-              class="c5"
+              class="StyledBaseText-dVBfTO gOAMqV"
               data-blade-component="text"
             >
               1.
             </p>
           </div>
           <p
-            class="c6"
+            class="StyledBaseText-dVBfTO fedBF"
             data-blade-component="text"
           >
             Level 1
           </p>
         </div>
         <div
-          class=""
+          class="BaseBox-bmPWx"
           data-blade-component="base-box"
         >
           <ul
-            class="List__StyledUnorderedList-bqf6r7-1 c7"
+            class="UnorderedListweb__UnorderedList-sc-1tb6ajo-0 List__StyledUnorderedList-bqf6r7-1 dbSpGu"
             data-blade-component="list"
             role="list"
           >
             <li
-              class=" c8"
+              class="ListItemElementweb__ListItemElement-sc-2pr284-0 ListItem__StyledListItem-sc-6bxu4b-0  hWTYHD"
               data-blade-component="list-item"
             >
               <div
-                class="c3"
+                class="BaseBox-bmPWx dKbTtw"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c9"
+                  class="BaseBox-bmPWx cfjjOL"
                   data-blade-component="base-box"
                 >
                   <svg
@@ -1334,31 +777,31 @@ exports[`<List /> should render small ordered List 1`] = `
                   </svg>
                 </div>
                 <p
-                  class="c6"
+                  class="StyledBaseText-dVBfTO fedBF"
                   data-blade-component="text"
                 >
                   Level 2
                 </p>
               </div>
               <div
-                class=""
+                class="BaseBox-bmPWx"
                 data-blade-component="base-box"
               >
                 <ul
-                  class="List__StyledUnorderedList-bqf6r7-1 c7"
+                  class="UnorderedListweb__UnorderedList-sc-1tb6ajo-0 List__StyledUnorderedList-bqf6r7-1 dbSpGu"
                   data-blade-component="list"
                   role="list"
                 >
                   <li
-                    class=" c8"
+                    class="ListItemElementweb__ListItemElement-sc-2pr284-0 ListItem__StyledListItem-sc-6bxu4b-0  hWTYHD"
                     data-blade-component="list-item"
                   >
                     <div
-                      class="c3"
+                      class="BaseBox-bmPWx dKbTtw"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c9"
+                        class="BaseBox-bmPWx cfjjOL"
                         data-blade-component="base-box"
                       >
                         <svg
@@ -1380,7 +823,7 @@ exports[`<List /> should render small ordered List 1`] = `
                         </svg>
                       </div>
                       <p
-                        class="c6"
+                        class="StyledBaseText-dVBfTO fedBF"
                         data-blade-component="text"
                       >
                         Level 3
@@ -1399,119 +842,37 @@ exports[`<List /> should render small ordered List 1`] = `
 `;
 
 exports[`<List /> should render small ordered-filled List 1`] = `
-.c0 {
-  list-style-type: none;
-  padding: 0px;
-  margin: 0px;
-}
-
-.c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  margin-bottom: 8px;
-}
-
-.c4 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-align-self: flex-start;
-  -ms-flex-item-align: start;
-  align-self: flex-start;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  margin-top: 0px;
-  margin-right: 8px;
-  height: 18px;
-  width: 18px;
-  background-color: hsla(216,15%,54%,0.18);
-  border-radius: 9999px;
-}
-
-.c1 {
-  margin-top: 8px;
-}
-
-.c5 {
-  color: hsla(216,27%,36%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.625rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c6 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.75rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c2 {
-  margin-left: 0;
-}
-
 <div>
   <div
-    class=""
+    class="BaseBox-bmPWx"
     data-blade-component="base-box"
   >
     <ol
-      class="c0 c1"
+      class="OrderedListweb__OrderedList-sc-1edjn7i-0 List__StyledOrderedList-bqf6r7-0 bAfLWR fvrmRj"
       data-blade-component="list"
       role="list"
     >
       <li
-        class=" c2"
+        class="ListItemElementweb__ListItemElement-sc-2pr284-0 ListItem__StyledListItem-sc-6bxu4b-0  dWYlpY"
         data-blade-component="list-item"
       >
         <div
-          class="c3"
+          class="BaseBox-bmPWx dKbTtw"
           data-blade-component="base-box"
         >
           <div
-            class="c4"
+            class="BaseBox-bmPWx iHTRtp"
             data-blade-component="base-box"
           >
             <p
-              class="c5"
+              class="StyledBaseText-dVBfTO jVmQdG"
               data-blade-component="text"
             >
               1
             </p>
           </div>
           <p
-            class="c6"
+            class="StyledBaseText-dVBfTO fedBF"
             data-blade-component="text"
           >
             Level 1
@@ -1519,26 +880,26 @@ exports[`<List /> should render small ordered-filled List 1`] = `
         </div>
       </li>
       <li
-        class=" c2"
+        class="ListItemElementweb__ListItemElement-sc-2pr284-0 ListItem__StyledListItem-sc-6bxu4b-0  dWYlpY"
         data-blade-component="list-item"
       >
         <div
-          class="c3"
+          class="BaseBox-bmPWx dKbTtw"
           data-blade-component="base-box"
         >
           <div
-            class="c4"
+            class="BaseBox-bmPWx iHTRtp"
             data-blade-component="base-box"
           >
             <p
-              class="c5"
+              class="StyledBaseText-dVBfTO jVmQdG"
               data-blade-component="text"
             >
               2
             </p>
           </div>
           <p
-            class="c6"
+            class="StyledBaseText-dVBfTO fedBF"
             data-blade-component="text"
           >
             Level 2
@@ -1546,26 +907,26 @@ exports[`<List /> should render small ordered-filled List 1`] = `
         </div>
       </li>
       <li
-        class=" c2"
+        class="ListItemElementweb__ListItemElement-sc-2pr284-0 ListItem__StyledListItem-sc-6bxu4b-0  dWYlpY"
         data-blade-component="list-item"
       >
         <div
-          class="c3"
+          class="BaseBox-bmPWx dKbTtw"
           data-blade-component="base-box"
         >
           <div
-            class="c4"
+            class="BaseBox-bmPWx iHTRtp"
             data-blade-component="base-box"
           >
             <p
-              class="c5"
+              class="StyledBaseText-dVBfTO jVmQdG"
               data-blade-component="text"
             >
               3
             </p>
           </div>
           <p
-            class="c6"
+            class="StyledBaseText-dVBfTO fedBF"
             data-blade-component="text"
           >
             Level 3
@@ -1578,96 +939,26 @@ exports[`<List /> should render small ordered-filled List 1`] = `
 `;
 
 exports[`<List /> should render small unordered List with icon 1`] = `
-.c0 {
-  list-style-type: none;
-  padding: 0px;
-  margin: 0px;
-}
-
-.c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  margin-bottom: 8px;
-}
-
-.c4 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-self: flex-start;
-  -ms-flex-item-align: start;
-  align-self: flex-start;
-  margin-top: 4px;
-  margin-right: 8px;
-}
-
-.c7 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-self: flex-start;
-  -ms-flex-item-align: start;
-  align-self: flex-start;
-  margin-top: 6px;
-  margin-right: 8px;
-}
-
-.c1 {
-  margin-top: 8px;
-}
-
-.c5 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.75rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c2 {
-  margin-left: 0;
-}
-
-.c6 {
-  margin-left: 16px;
-}
-
 <div>
   <div
-    class=""
+    class="BaseBox-bmPWx"
     data-blade-component="base-box"
   >
     <ul
-      class="c0 c1"
+      class="UnorderedListweb__UnorderedList-sc-1tb6ajo-0 List__StyledUnorderedList-bqf6r7-1 dbSpGu erLmOF"
       data-blade-component="list"
       role="list"
     >
       <li
-        class=" c2"
+        class="ListItemElementweb__ListItemElement-sc-2pr284-0 ListItem__StyledListItem-sc-6bxu4b-0  dWYlpY"
         data-blade-component="list-item"
       >
         <div
-          class="c3"
+          class="BaseBox-bmPWx dKbTtw"
           data-blade-component="base-box"
         >
           <div
-            class="c4"
+            class="BaseBox-bmPWx lkpHah"
             data-blade-component="base-box"
           >
             <svg
@@ -1687,31 +978,31 @@ exports[`<List /> should render small unordered List with icon 1`] = `
             </svg>
           </div>
           <p
-            class="c5"
+            class="StyledBaseText-dVBfTO fedBF"
             data-blade-component="text"
           >
             Level 1
           </p>
         </div>
         <div
-          class=""
+          class="BaseBox-bmPWx"
           data-blade-component="base-box"
         >
           <ul
-            class="c0"
+            class="UnorderedListweb__UnorderedList-sc-1tb6ajo-0 List__StyledUnorderedList-bqf6r7-1 dbSpGu"
             data-blade-component="list"
             role="list"
           >
             <li
-              class=" c6"
+              class="ListItemElementweb__ListItemElement-sc-2pr284-0 ListItem__StyledListItem-sc-6bxu4b-0  hWTYHD"
               data-blade-component="list-item"
             >
               <div
-                class="c3"
+                class="BaseBox-bmPWx dKbTtw"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c4"
+                  class="BaseBox-bmPWx lkpHah"
                   data-blade-component="base-box"
                 >
                   <svg
@@ -1731,31 +1022,31 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                   </svg>
                 </div>
                 <p
-                  class="c5"
+                  class="StyledBaseText-dVBfTO fedBF"
                   data-blade-component="text"
                 >
                   Level 2
                 </p>
               </div>
               <div
-                class=""
+                class="BaseBox-bmPWx"
                 data-blade-component="base-box"
               >
                 <ul
-                  class="c0"
+                  class="UnorderedListweb__UnorderedList-sc-1tb6ajo-0 List__StyledUnorderedList-bqf6r7-1 dbSpGu"
                   data-blade-component="list"
                   role="list"
                 >
                   <li
-                    class=" c6"
+                    class="ListItemElementweb__ListItemElement-sc-2pr284-0 ListItem__StyledListItem-sc-6bxu4b-0  hWTYHD"
                     data-blade-component="list-item"
                   >
                     <div
-                      class="c3"
+                      class="BaseBox-bmPWx dKbTtw"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c7"
+                        class="BaseBox-bmPWx cfjjOL"
                         data-blade-component="base-box"
                       >
                         <svg
@@ -1777,7 +1068,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                         </svg>
                       </div>
                       <p
-                        class="c5"
+                        class="StyledBaseText-dVBfTO fedBF"
                         data-blade-component="text"
                       >
                         Level 3
@@ -1796,84 +1087,26 @@ exports[`<List /> should render small unordered List with icon 1`] = `
 `;
 
 exports[`<List /> should render unordered List of small size 1`] = `
-.c0 {
-  list-style-type: none;
-  padding: 0px;
-  margin: 0px;
-}
-
-.c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  margin-bottom: 8px;
-}
-
-.c4 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-self: flex-start;
-  -ms-flex-item-align: start;
-  align-self: flex-start;
-  margin-top: 6px;
-  margin-right: 8px;
-}
-
-.c1 {
-  margin-top: 8px;
-}
-
-.c5 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.75rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c2 {
-  margin-left: 4px;
-}
-
-.c6 {
-  margin-left: 16px;
-}
-
 <div>
   <div
-    class=""
+    class="BaseBox-bmPWx"
     data-blade-component="base-box"
   >
     <ul
-      class="c0 c1"
+      class="UnorderedListweb__UnorderedList-sc-1tb6ajo-0 List__StyledUnorderedList-bqf6r7-1 dbSpGu erLmOF"
       data-blade-component="list"
       role="list"
     >
       <li
-        class=" c2"
+        class="ListItemElementweb__ListItemElement-sc-2pr284-0 ListItem__StyledListItem-sc-6bxu4b-0  bALAZM"
         data-blade-component="list-item"
       >
         <div
-          class="c3"
+          class="BaseBox-bmPWx dKbTtw"
           data-blade-component="base-box"
         >
           <div
-            class="c4"
+            class="BaseBox-bmPWx cfjjOL"
             data-blade-component="base-box"
           >
             <svg
@@ -1895,31 +1128,31 @@ exports[`<List /> should render unordered List of small size 1`] = `
             </svg>
           </div>
           <p
-            class="c5"
+            class="StyledBaseText-dVBfTO fedBF"
             data-blade-component="text"
           >
             Level 1
           </p>
         </div>
         <div
-          class=""
+          class="BaseBox-bmPWx"
           data-blade-component="base-box"
         >
           <ul
-            class="c0"
+            class="UnorderedListweb__UnorderedList-sc-1tb6ajo-0 List__StyledUnorderedList-bqf6r7-1 dbSpGu"
             data-blade-component="list"
             role="list"
           >
             <li
-              class=" c6"
+              class="ListItemElementweb__ListItemElement-sc-2pr284-0 ListItem__StyledListItem-sc-6bxu4b-0  hWTYHD"
               data-blade-component="list-item"
             >
               <div
-                class="c3"
+                class="BaseBox-bmPWx dKbTtw"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c4"
+                  class="BaseBox-bmPWx cfjjOL"
                   data-blade-component="base-box"
                 >
                   <svg
@@ -1941,31 +1174,31 @@ exports[`<List /> should render unordered List of small size 1`] = `
                   </svg>
                 </div>
                 <p
-                  class="c5"
+                  class="StyledBaseText-dVBfTO fedBF"
                   data-blade-component="text"
                 >
                   Level 2
                 </p>
               </div>
               <div
-                class=""
+                class="BaseBox-bmPWx"
                 data-blade-component="base-box"
               >
                 <ul
-                  class="c0"
+                  class="UnorderedListweb__UnorderedList-sc-1tb6ajo-0 List__StyledUnorderedList-bqf6r7-1 dbSpGu"
                   data-blade-component="list"
                   role="list"
                 >
                   <li
-                    class=" c6"
+                    class="ListItemElementweb__ListItemElement-sc-2pr284-0 ListItem__StyledListItem-sc-6bxu4b-0  hWTYHD"
                     data-blade-component="list-item"
                   >
                     <div
-                      class="c3"
+                      class="BaseBox-bmPWx dKbTtw"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c4"
+                        class="BaseBox-bmPWx cfjjOL"
                         data-blade-component="base-box"
                       >
                         <svg
@@ -1987,7 +1220,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
                         </svg>
                       </div>
                       <p
-                        class="c5"
+                        class="StyledBaseText-dVBfTO fedBF"
                         data-blade-component="text"
                       >
                         Level 3

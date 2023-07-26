@@ -1,273 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<TextInput /> should render 1`] = `
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  position: relative;
-  width: 100%;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  margin-bottom: 0px;
-  margin-top: 0px;
-}
-
-.c2 {
-  margin-bottom: 4px;
-}
-
-.c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  max-height: 36px;
-  gap: 0px;
-}
-
-.c7 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  position: relative;
-  width: 100%;
-}
-
-.c11 {
-  margin-left: 0px;
-}
-
-.c12 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-}
-
-.c4 {
-  color: hsla(217,18%,45%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.75rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  display: -webkit-box;
-  line-clamp: 2;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-}
-
-.c6 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c9 {
-  color: hsla(216,27%,36%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  background-color: transparent;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 12px;
-  padding-right: 12px;
-  width: 100%;
-  height: 36px;
-  resize: none;
-  outline: none;
-  border: none;
-  cursor: auto;
-}
-
-.c9::-webkit-input-placeholder {
-  color: hsla(214,18%,69%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c9::-moz-placeholder {
-  color: hsla(214,18%,69%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c9:-ms-input-placeholder {
-  color: hsla(214,18%,69%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c9::placeholder {
-  color: hsla(214,18%,69%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c9:focus {
-  outline: none;
-}
-
-.c10 {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  opacity: 0;
-  background-color: hsla(218,89%,51%,1);
-  border-width: 1px;
-  height: 1px;
-}
-
-.c8 {
-  background-color: hsla(216,15%,54%,0.09);
-  border-bottom-color: hsla(216,15%,54%,0.18);
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-}
-
-.c8:hover {
-  background-color: hsla(216,15%,54%,0.18);
-  border-bottom-color: hsla(216,15%,54%,0.18);
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  -webkit-transition-property: background-color;
-  transition-property: background-color;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c8:focus-within {
-  background-color: hsla(216,15%,54%,0.09);
-  border-bottom-color: hsla(216,15%,54%,0.18);
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-}
-
-.c5 {
-  border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
-  height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-  left: -10000px;
-  white-space: nowrap;
-  word-wrap: normal;
-}
-
 <div>
   <div
-    class=""
+    class="BaseBox-bmPWx"
     data-blade-component="textinput"
   >
     <div
-      class="c0"
+      class="BaseBox-bmPWx edjBu"
       data-blade-component="base-box"
     >
       <div
-        class="c1"
+        class="BaseBox-bmPWx fJyvvB"
         data-blade-component="base-box"
       >
         <label
@@ -276,25 +20,25 @@ exports[`<TextInput /> should render 1`] = `
           style="width: auto; flex-shrink: 0; margin-right: 16px;"
         >
           <div
-            class="c2"
+            class="BaseBox-bmPWx bqWBik"
             data-blade-component="base-box"
           >
             <div
-              class="c3"
+              class="BaseBox-bmPWx eeqPab"
               data-blade-component="base-box"
             >
               <p
-                class="c4"
+                class="StyledBaseText-dVBfTO gaMIEc"
                 data-blade-component="text"
               >
                 Enter name
               </p>
               <div
-                class="c5"
+                class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 ijVANw"
                 data-blade-component="visually-hidden"
               >
                 <p
-                  class="c6"
+                  class="StyledBaseText-dVBfTO eIdQFo"
                   data-blade-component="text"
                 />
               </div>
@@ -303,7 +47,7 @@ exports[`<TextInput /> should render 1`] = `
         </label>
       </div>
       <div
-        class="c7 c8"
+        class="BaseBox-bmPWx BaseInputWrapper__StyledBaseInputWrapper-sc-27jk75-0 kRxJZq iWQtne"
         data-blade-component="base-box"
       >
         <input
@@ -312,7 +56,7 @@ exports[`<TextInput /> should render 1`] = `
           aria-invalid="false"
           aria-required="false"
           autocomplete="off"
-          class="c9"
+          class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 jxivIr"
           data-blade-component="styled-base-input"
           enterkeyhint="enter"
           id="textinput-1-input-2"
@@ -321,17 +65,17 @@ exports[`<TextInput /> should render 1`] = `
           value=""
         />
         <div
-          class=" c10"
+          class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  dGtNgo"
           data-blade-component="base-box"
         />
       </div>
     </div>
     <div
-      class="c11"
+      class="BaseBox-bmPWx jgxKDg"
       data-blade-component="base-box"
     >
       <div
-        class="c12"
+        class="BaseBox-bmPWx ctznZr"
         data-blade-component="base-box"
       />
     </div>
@@ -340,316 +84,17 @@ exports[`<TextInput /> should render 1`] = `
 `;
 
 exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  position: relative;
-  width: 100%;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  margin-bottom: 0px;
-  margin-top: 0px;
-}
-
-.c2 {
-  margin-bottom: 4px;
-}
-
-.c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  max-height: 36px;
-  gap: 0px;
-}
-
-.c7 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  position: relative;
-  width: 100%;
-}
-
-.c9 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c10 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  padding-left: 12px;
-}
-
-.c11 {
-  padding-left: 4px;
-}
-
-.c14 {
-  padding-right: 12px;
-}
-
-.c16 {
-  margin-left: 0px;
-}
-
-.c17 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-}
-
-.c4 {
-  color: hsla(217,18%,45%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.75rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  display: -webkit-box;
-  line-clamp: 2;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-}
-
-.c6 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c12 {
-  color: hsla(216,27%,36%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c13 {
-  color: hsla(216,27%,36%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  background-color: transparent;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 8px;
-  padding-right: 8px;
-  width: 100%;
-  height: 36px;
-  resize: none;
-  outline: none;
-  border: none;
-  cursor: auto;
-}
-
-.c13::-webkit-input-placeholder {
-  color: hsla(214,18%,69%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c13::-moz-placeholder {
-  color: hsla(214,18%,69%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c13:-ms-input-placeholder {
-  color: hsla(214,18%,69%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c13::placeholder {
-  color: hsla(214,18%,69%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c13:focus {
-  outline: none;
-}
-
-.c15 {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  opacity: 0;
-  background-color: hsla(218,89%,51%,1);
-  border-width: 1px;
-  height: 1px;
-}
-
-.c8 {
-  background-color: hsla(216,15%,54%,0.09);
-  border-bottom-color: hsla(216,15%,54%,0.18);
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-}
-
-.c8:hover {
-  background-color: hsla(216,15%,54%,0.18);
-  border-bottom-color: hsla(216,15%,54%,0.18);
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  -webkit-transition-property: background-color;
-  transition-property: background-color;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c8:focus-within {
-  background-color: hsla(216,15%,54%,0.09);
-  border-bottom-color: hsla(216,15%,54%,0.18);
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-}
-
-.c5 {
-  border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
-  height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-  left: -10000px;
-  white-space: nowrap;
-  word-wrap: normal;
-}
-
 <div>
   <div
-    class=""
+    class="BaseBox-bmPWx"
     data-blade-component="textinput"
   >
     <div
-      class="c0"
+      class="BaseBox-bmPWx edjBu"
       data-blade-component="base-box"
     >
       <div
-        class="c1"
+        class="BaseBox-bmPWx fJyvvB"
         data-blade-component="base-box"
       >
         <label
@@ -658,25 +103,25 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
           style="width: auto; flex-shrink: 0; margin-right: 16px;"
         >
           <div
-            class="c2"
+            class="BaseBox-bmPWx bqWBik"
             data-blade-component="base-box"
           >
             <div
-              class="c3"
+              class="BaseBox-bmPWx eeqPab"
               data-blade-component="base-box"
             >
               <p
-                class="c4"
+                class="StyledBaseText-dVBfTO gaMIEc"
                 data-blade-component="text"
               >
                 Enter company website
               </p>
               <div
-                class="c5"
+                class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 ijVANw"
                 data-blade-component="visually-hidden"
               >
                 <p
-                  class="c6"
+                  class="StyledBaseText-dVBfTO eIdQFo"
                   data-blade-component="text"
                 />
               </div>
@@ -685,15 +130,15 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
         </label>
       </div>
       <div
-        class="c7 c8"
+        class="BaseBox-bmPWx BaseInputWrapper__StyledBaseInputWrapper-sc-27jk75-0 kRxJZq iWQtne"
         data-blade-component="base-box"
       >
         <div
-          class="c9"
+          class="BaseBox-bmPWx fSbYvl"
           data-blade-component="base-box"
         >
           <div
-            class="c10"
+            class="BaseBox-bmPWx eCxLQc"
             data-blade-component="base-box"
           >
             <svg
@@ -725,11 +170,11 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
             </svg>
           </div>
           <div
-            class="c11"
+            class="BaseBox-bmPWx iAPQgj"
             data-blade-component="base-box"
           >
             <p
-              class="c12"
+              class="StyledBaseText-dVBfTO ktUwvA"
               data-blade-component="text"
             >
               https://
@@ -743,7 +188,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
           aria-required="false"
           autocapitalize="none"
           autocomplete="off"
-          class="c13"
+          class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 ihQHHL"
           data-blade-component="styled-base-input"
           enterkeyhint="go"
           id="textinput-31-input-32"
@@ -754,15 +199,15 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
           value=""
         />
         <div
-          class="c9"
+          class="BaseBox-bmPWx fSbYvl"
           data-blade-component="base-box"
         >
           <div
-            class="c14"
+            class="BaseBox-bmPWx kZoXjP"
             data-blade-component="base-box"
           >
             <p
-              class="c12"
+              class="StyledBaseText-dVBfTO ktUwvA"
               data-blade-component="text"
             >
               .com
@@ -770,17 +215,17 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
           </div>
         </div>
         <div
-          class=" c15"
+          class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  dGtNgo"
           data-blade-component="base-box"
         />
       </div>
     </div>
     <div
-      class="c16"
+      class="BaseBox-bmPWx jgxKDg"
       data-blade-component="base-box"
     >
       <div
-        class="c17"
+        class="BaseBox-bmPWx ctznZr"
         data-blade-component="base-box"
       />
     </div>

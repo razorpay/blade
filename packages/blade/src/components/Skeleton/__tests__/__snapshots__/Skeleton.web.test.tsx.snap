@@ -1,86 +1,30 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Skeleton /> should render skeleton 1`] = `
-.c0 {
-  height: 50px;
-  width: 100%;
-}
-
-.c1 {
-  opacity: 0;
-  background-color: hsla(216,15%,54%,0.18);
-  -webkit-animation-name: lbWRkT,fZZrNN;
-  animation-name: lbWRkT,fZZrNN;
-  -webkit-animation-duration: 900ms,1200ms;
-  animation-duration: 900ms,1200ms;
-  -webkit-animation-delay: 0ms,900ms;
-  animation-delay: 0ms,900ms;
-  -webkit-animation-timing-function: cubic-bezier(0.3,0,0.2,1),cubic-bezier(0.3,0,0.2,1);
-  animation-timing-function: cubic-bezier(0.3,0,0.2,1),cubic-bezier(0.3,0,0.2,1);
-  -webkit-animation-iteration-count: 1,infinite;
-  animation-iteration-count: 1,infinite;
-  -webkit-animation-direction: normal,alternate;
-  animation-direction: normal,alternate;
-  -webkit-animation-fill-mode: forwards;
-  animation-fill-mode: forwards;
-}
-
 <div>
   <div
     aria-hidden="true"
-    class="c0 c1"
+    class="BaseBox-bmPWx PulseAnimationweb__PulseAnimation-sc-184soy3-0 eegMrN jvGWrK"
     data-blade-component="skeleton"
   />
 </div>
 `;
 
 exports[`<Skeleton /> should support margin and other layout props 1`] = `
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c1 {
-  margin: 4px;
-  height: 50px;
-  width: 100%;
-}
-
-.c2 {
-  opacity: 0;
-  background-color: hsla(216,15%,54%,0.18);
-  -webkit-animation-name: lbWRkT,fZZrNN;
-  animation-name: lbWRkT,fZZrNN;
-  -webkit-animation-duration: 900ms,1200ms;
-  animation-duration: 900ms,1200ms;
-  -webkit-animation-delay: 0ms,900ms;
-  animation-delay: 0ms,900ms;
-  -webkit-animation-timing-function: cubic-bezier(0.3,0,0.2,1),cubic-bezier(0.3,0,0.2,1);
-  animation-timing-function: cubic-bezier(0.3,0,0.2,1),cubic-bezier(0.3,0,0.2,1);
-  -webkit-animation-iteration-count: 1,infinite;
-  animation-iteration-count: 1,infinite;
-  -webkit-animation-direction: normal,alternate;
-  animation-direction: normal,alternate;
-  -webkit-animation-fill-mode: forwards;
-  animation-fill-mode: forwards;
-}
-
 <div>
   <div
-    class="c0"
+    class="BaseBox-bmPWx jLCxzZ"
     data-blade-component="box"
   >
     <div
       aria-hidden="true"
-      class="c1 c2"
+      class="BaseBox-bmPWx PulseAnimationweb__PulseAnimation-sc-184soy3-0 hdzzwq jvGWrK"
       data-blade-component="skeleton"
     />
     ,
     <div
       aria-hidden="true"
-      class="c1 c2"
+      class="BaseBox-bmPWx PulseAnimationweb__PulseAnimation-sc-184soy3-0 hdzzwq jvGWrK"
       data-blade-component="skeleton"
     />
     ,

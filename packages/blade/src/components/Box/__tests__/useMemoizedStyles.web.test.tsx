@@ -25,9 +25,7 @@ describe('getDependencyProp', () => {
         theme: { name: 'paymentTheme', something: 'something' },
         colorScheme: 'light',
       }),
-    ).toMatchInlineSnapshot(
-      `"{\\"paddingLeft\\":\\"12px\\",\\"display\\":\\"block\\"}-paymentTheme-light"`,
-    );
+    ).toMatchInlineSnapshot(`"{"paddingLeft":"12px","display":"block"}-paymentTheme-light"`);
   });
 });
 
