@@ -23,6 +23,7 @@ Carousel is a UI component that allows the display and navigation of a set of co
 | navigationButtonStyle    | `filled,stroke`                | `filled`    | Styles to be used depending on the emphasis you want to give to the navigation buttons                                          |          |
 | indicatorVariant         | `gray,white,blue`              | `gray`      | Variants to be used depending on the background and the emphasis you want to give to the indicator.                             |          |
 | onChange                 | `(slideIndex: number) => void` | `undefined` | Callback which gets fired everytime a slide changes, useful for analytic events (only runs on user interaction not on autoPlay) |          |
+| children                 | `CarouselItem`                 | `undefined` | Carousel slides                                                                                                                 | ✅        |
 
 ### CarouselItem
 
@@ -43,8 +44,8 @@ const Testimonial = () => {
   )
 };
 
-<Carousel 
-  autoPlay 
+<Carousel
+  autoPlay
   visibleItems={2}
   navigationButtonPosition="side"
   bleed="right"
