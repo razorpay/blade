@@ -21,6 +21,7 @@ Carousel is a UI component that allows the display and navigation of a set of co
 | showOverlay              | `boolean`                      | `false`     | Toggles the visibility of overlay                                                                                               |          |
 | navigationButtonPosition | `bottom,side`                  | `bottom`    | Sets the position of navigation button                                                                                          |          |
 | navigationButtonStyle    | `filled,stroke`                | `filled`    | Styles to be used depending on the emphasis you want to give to the navigation buttons                                          |          |
+| navigationButtonPadding  | `SpacingTokens`                | `spacing.4` | Padding between navigation button and slides when bleed is set to none                                                          |          |
 | indicatorVariant         | `gray,white,blue`              | `gray`      | Variants to be used depending on the background and the emphasis you want to give to the indicator.                             |          |
 | onChange                 | `(slideIndex: number) => void` | `undefined` | Callback which gets fired everytime a slide changes, useful for analytic events (only runs on user interaction not on autoPlay) |          |
 | children                 | `CarouselItem`                 | `undefined` | Carousel slides                                                                                                                 | ✅        |
@@ -76,6 +77,7 @@ We need to follow the APG Pattern For [Carousel](https://www.w3.org/WAI/ARIA/apg
 
 ## Open Questions
 
+- Should we call it `navigationButtonStyle` or `navigationButtonVariant`? 
 
 ## Libraries
 
