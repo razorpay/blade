@@ -131,7 +131,7 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
       componentName={MetaConstants.TextArea}
       autoFocus={autoFocus}
       ref={inputRef as React.Ref<HTMLInputElement>}
-      label={label}
+      label={label as string}
       accessibilityLabel={accessibilityLabel}
       hideLabelText={!Boolean(label)}
       labelPosition={labelPosition}

@@ -139,7 +139,7 @@ const _PasswordInput: React.ForwardRefRenderFunction<BladeElementRef, PasswordIn
       ref={inputRef as React.Ref<HTMLInputElement>}
       componentName={MetaConstants.PasswordInput}
       id="password-field"
-      label={label}
+      label={label as string}
       accessibilityLabel={accessibilityLabel}
       hideLabelText={!Boolean(label)}
       labelPosition={labelPosition}
