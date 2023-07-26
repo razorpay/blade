@@ -126,6 +126,11 @@ export default {
         category: propsCategory.LABEL_PROPS,
       },
     },
+    accessibilityLabel: {
+      table: {
+        category: propsCategory.LABEL_PROPS,
+      },
+    },
     labelPosition: {
       table: {
         category: propsCategory.LABEL_PROPS,
