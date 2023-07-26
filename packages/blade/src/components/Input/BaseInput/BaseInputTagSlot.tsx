@@ -35,7 +35,12 @@ const BaseInputTagSlot = ({
       justifyContent="flex-start"
       display="flex"
       flexDirection="row"
-      flexWrap="wrap"
+      // switch to these on `props.rows` value
+      flexWrap="nowrap"
+      whiteSpace="nowrap"
+      overflow="auto"
+      // @todo fix this to use token
+      maxHeight="108px"
       // Move to using gap instead of marginLeft on individual tags after RN upgrade
       // gap="spacing.3"
       {...(!isReactNative()

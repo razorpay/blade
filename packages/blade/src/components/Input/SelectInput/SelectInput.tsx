@@ -51,6 +51,14 @@ type SelectInputProps = Pick<
    */
   defaultValue?: string | string[];
   onChange?: ({ name, values }: { name?: string; values: string[] }) => void;
+  /**
+   * constraints the height of input to given number rows
+   *
+   * When set to expandable, input takes 1 row in the begining and expands to take 3 when active
+   *
+   * @default 1
+   */
+  rows?: '1' | '3' | 'expandable';
 };
 
 const _SelectInput = (
@@ -189,25 +197,24 @@ const _SelectInput = (
     }
 
     let stripAfter = 0;
-    const isMultiline = true;
 
-    // if (isMultiline) {
-    //   stripAfter = selectedIndices.length;
-    // } else {
-    if (selectInputContainerRef.current?.clientWidth) {
-      const leadingTrailingBoxWidth = 72; // 36px + 36px;
-      const maxWidthTag = 140 + 8; // 140px width + 8px gap between tags
-      const spaceForTags = selectInputContainerRef.current?.clientWidth - leadingTrailingBoxWidth;
-      const tagsCanFit = spaceForTags / maxWidthTag;
-      stripAfter = Math.floor(tagsCanFit);
+    if (isOpen) {
+      stripAfter = selectedIndices.length;
     } else {
-      stripAfter = 2; // defaulting to strip after 2 tags if clientWidth is not present for some reason
-    }
+      if (selectInputContainerRef.current?.clientWidth) {
+        const leadingTrailingBoxWidth = 72; // 36px + 36px;
+        const maxWidthTag = 140 + 8; // 140px width + 8px gap between tags
+        const spaceForTags = selectInputContainerRef.current?.clientWidth - leadingTrailingBoxWidth;
+        const tagsCanFit = spaceForTags / maxWidthTag;
+        stripAfter = Math.floor(tagsCanFit);
+      } else {
+        stripAfter = 2; // defaulting to strip after 2 tags if clientWidth is not present for some reason
+      }
 
-    if (isMultiline) {
-      stripAfter = stripAfter * 4; // In multiline, tags can take upto 3 rows
+      if (props.rows === '3') {
+        stripAfter = stripAfter * 3; // In multiline, tags can take upto 3 rows
+      }
     }
-    // }
 
     if (typeof visibleTagsCountRef.current?.value === 'number') {
       visibleTagsCountRef.current.value = Math.min(stripAfter, selectedIndices.length);
@@ -268,7 +275,7 @@ const _SelectInput = (
       <BaseInput
         {...baseInputProps}
         as="button"
-        isMultiline
+        isMultiline={props.rows === '3' || props.rows === 'expandable'}
         tags={getTags()}
         value={selectionType === 'multiple' ? undefined : displayValue}
         hideLabelText={props.label?.length === 0}
