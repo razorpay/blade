@@ -11,7 +11,7 @@ const meta: Meta<CarouselProps> = {
 
 const CarouselTemplate: ComponentStory<typeof CarouselComponent> = () => {
   return (
-    <Box padding="spacing.11" backgroundColor="brand.primary.500">
+    <Box padding="spacing.11" backgroundColor="surface.background.level1.lowContrast">
       <CarouselComponent variant="stroked" />
     </Box>
   );
