@@ -3,7 +3,7 @@
 exports[`<Dropdown /> should render dropdown 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -11,8 +11,8 @@ exports[`<Dropdown /> should render dropdown 1`] = `
   <View
     data-blade-component="dropdown"
     style={
-      Array [
-        Object {},
+      [
+        {},
       ]
     }
   >
@@ -20,8 +20,8 @@ exports[`<Dropdown /> should render dropdown 1`] = `
       data-blade-component="base-box"
       position="relative"
       style={
-        Array [
-          Object {
+        [
+          {
             "position": "relative",
             "textAlign": "left",
           },
@@ -33,8 +33,8 @@ exports[`<Dropdown /> should render dropdown 1`] = `
         data-blade-component="base-box"
         position="relative"
         style={
-          Array [
-            Object {
+          [
+            {
               "position": "relative",
             },
           ]
@@ -43,8 +43,8 @@ exports[`<Dropdown /> should render dropdown 1`] = `
         <View
           data-blade-component="select-input"
           style={
-            Array [
-              Object {},
+            [
+              {},
             ]
           }
         >
@@ -54,8 +54,8 @@ exports[`<Dropdown /> should render dropdown 1`] = `
             flexDirection="column"
             position="relative"
             style={
-              Array [
-                Object {
+              [
+                {
                   "display": "flex",
                   "flexDirection": "column",
                   "position": "relative",
@@ -71,8 +71,8 @@ exports[`<Dropdown /> should render dropdown 1`] = `
               flexDirection="row"
               justifyContent="space-between"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "display": "flex",
                     "flexDirection": "row",
                     "justifyContent": "space-between",
@@ -85,8 +85,8 @@ exports[`<Dropdown /> should render dropdown 1`] = `
               <View
                 data-blade-component="base-box"
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "marginBottom": 4,
                       "marginRight": 16,
                     },
@@ -102,8 +102,8 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                   gap="spacing.0"
                   maxHeight="36px"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignItems": "center",
                         "display": "flex",
                         "flexDirection": "row",
@@ -124,8 +124,8 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                     lineHeight={50}
                     numberOfLines={2}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "hsla(217, 18%, 45%, 1)",
                           "fontFamily": "Lato",
                           "fontSize": 12,
@@ -150,8 +150,8 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                   <View
                     data-blade-component="visually-hidden"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "borderColor": "black",
                           "borderStyle": "solid",
                           "borderWidth": 0,
@@ -185,8 +185,8 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                       fontWeight="regular"
                       lineHeight={100}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "color": "hsla(217, 56%, 17%, 1)",
                             "fontFamily": "Lato",
                             "fontSize": 14,
@@ -217,14 +217,14 @@ exports[`<Dropdown /> should render dropdown 1`] = `
               flexDirection="row"
               position="relative"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "display": "flex",
                     "flexDirection": "row",
                     "position": "relative",
                     "width": "100%",
                   },
-                  Object {
+                  {
                     "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
                     "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
                     "borderBottomStyle": "solid",
@@ -239,7 +239,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
               <View
                 accessibilityRole="combobox"
                 accessibilityState={
-                  Object {
+                  {
                     "disabled": false,
                     "expanded": false,
                   }
@@ -254,7 +254,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Object {
+                  {
                     "backgroundColor": "transparent",
                     "color": "hsla(214, 18%, 69%, 1)",
                     "flexBasis": 0,
@@ -289,8 +289,8 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                   fontWeight="regular"
                   lineHeight={100}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "hsla(214, 18%, 69%, 1)",
                         "fontFamily": "Lato",
                         "fontSize": 14,
@@ -319,8 +319,8 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                 display="flex"
                 flexDirection="row"
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "alignItems": "center",
                       "display": "flex",
                       "flexDirection": "row",
@@ -332,8 +332,8 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                   data-blade-component="base-box"
                   display="flex"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "display": "flex",
                         "paddingRight": 12,
                       },
@@ -352,7 +352,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      Object {
+                      {
                         "display": "flex",
                         "justifyContent": "center",
                         "opacity": 1,
@@ -373,15 +373,15 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                       minX={0}
                       minY={0}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "backgroundColor": "transparent",
                             "borderWidth": 0,
                           },
-                          Array [
-                            Object {},
+                          [
+                            {},
                           ],
-                          Object {
+                          {
                             "flex": 0,
                             "height": 16,
                             "width": 16,
@@ -395,7 +395,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                       <RNSVGGroup
                         fill={null}
                         propList={
-                          Array [
+                          [
                             "fill",
                           ]
                         }
@@ -406,7 +406,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                           fill={4279445060}
                           fillRule={0}
                           propList={
-                            Array [
+                            [
                               "fill",
                               "fillRule",
                             ]
@@ -419,8 +419,8 @@ exports[`<Dropdown /> should render dropdown 1`] = `
               </View>
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "hsla(218, 89%, 51%, 1)",
                       "bottom": 0,
                       "height": 1,
@@ -429,7 +429,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                       "position": "absolute",
                       "right": 0,
                     },
-                    Object {
+                    {
                       "opacity": undefined,
                       "width": "undefined%",
                     },
@@ -441,8 +441,8 @@ exports[`<Dropdown /> should render dropdown 1`] = `
           <View
             data-blade-component="base-box"
             style={
-              Array [
-                Object {
+              [
+                {
                   "marginLeft": 0,
                 },
               ]
@@ -454,8 +454,8 @@ exports[`<Dropdown /> should render dropdown 1`] = `
               flexDirection="row"
               justifyContent="flex-end"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "display": "flex",
                     "flexDirection": "row",
                     "justifyContent": "flex-end",
@@ -470,8 +470,8 @@ exports[`<Dropdown /> should render dropdown 1`] = `
         data-blade-component="base-box"
         position="relative"
         style={
-          Array [
-            Object {
+          [
+            {
               "position": "relative",
             },
           ]
@@ -492,8 +492,8 @@ exports[`<Dropdown /> should render dropdown 1`] = `
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            Array [
-              Object {
+            [
+              {
                 "display": "none",
                 "height": "100%",
                 "position": "static",
@@ -509,20 +509,20 @@ exports[`<Dropdown /> should render dropdown 1`] = `
             isInBottomSheet={false}
             position="absolute"
             style={
-              Array [
-                Object {
+              [
+                {
                   "display": "none",
                   "position": "absolute",
                   "width": "100%",
                 },
-                Object {
+                {
                   "backgroundColor": "hsla(0, 0%, 100%, 1)",
                   "borderColor": "hsla(216, 15%, 54%, 0.18)",
                   "borderRadius": 4,
                   "borderStyle": "solid",
                   "borderWidth": 1,
-                  "transform": Array [
-                    Object {
+                  "transform": [
+                    {
                       "translateY": 8,
                     },
                   ],
@@ -537,8 +537,8 @@ exports[`<Dropdown /> should render dropdown 1`] = `
               flexShrink={0}
               overflow="auto"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "flexShrink": 0,
                     "overflow": "auto",
                   },
@@ -548,16 +548,16 @@ exports[`<Dropdown /> should render dropdown 1`] = `
               <View
                 data-blade-component="dropdown-header"
                 style={
-                  Array [
-                    Object {},
+                  [
+                    {},
                   ]
                 }
               >
                 <View
                   data-blade-component="base-box"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "marginBottom": 16,
                         "marginTop": 16,
                         "paddingLeft": 16,
@@ -573,8 +573,8 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                     display="flex"
                     flexDirection="row"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "display": "flex",
                           "flexDirection": "row",
                           "userSelect": "none",
@@ -589,8 +589,8 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                       display="flex"
                       flexDirection="row"
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "alignItems": "flex-start",
                             "display": "flex",
                             "flexBasis": "auto",
@@ -606,8 +606,8 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                       <View
                         data-blade-component="base-box"
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "flexBasis": "auto",
                               "flexGrow": 1,
                               "flexShrink": 1,
@@ -621,8 +621,8 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                           flexDirection="row"
                           flexShrink={0}
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "display": "flex",
                                 "flexDirection": "row",
                                 "flexShrink": 0,
@@ -640,8 +640,8 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                             fontWeight="bold"
                             lineHeight={300}
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "color": "hsla(217, 56%, 17%, 1)",
                                   "fontFamily": "Lato",
                                   "fontSize": 16,
@@ -676,13 +676,13 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                   dividerStyle="solid"
                   isDividerHorizontal={true}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
                         "borderStyle": "solid",
                         "borderWidth": 0,
                       },
-                      Object {
+                      {
                         "borderBottomStyle": "solid",
                         "borderBottomWidth": 1,
                         "flexGrow": 1,
@@ -698,22 +698,22 @@ exports[`<Dropdown /> should render dropdown 1`] = `
               data-blade-component="action-list"
               id="dropdown-7-actionlist"
               style={
-                Array [
-                  Object {},
+                [
+                  {},
                 ]
               }
             >
               <RCTScrollView
                 data={
-                  Array [
-                    Object {
-                      "data": Array [
-                        Object {
+                  [
+                    {
+                      "data": [
+                        {
                           "_index": 0,
                           "title": "Apple",
                           "value": "apple",
                         },
-                        Object {
+                        {
                           "_index": 1,
                           "title": "Mango",
                           "value": "mango",
@@ -738,10 +738,10 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                 onScrollEndDrag={[Function]}
                 renderItem={[Function]}
                 scrollEventThrottle={50}
-                stickyHeaderIndices={Array []}
+                stickyHeaderIndices={[]}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "marginBottom": 0,
                       "maxHeight": 300,
                       "paddingBottom": 8,
@@ -765,7 +765,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                     <View
                       accessibilityRole="menuitem"
                       accessibilityState={
-                        Object {
+                        {
                           "disabled": undefined,
                           "selected": false,
                         }
@@ -780,7 +780,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                       onResponderTerminationRequest={[Function]}
                       onStartShouldSetResponder={[Function]}
                       style={
-                        Object {
+                        {
                           "borderColor": "transparent",
                           "borderRadius": 4,
                           "borderStyle": "solid",
@@ -805,8 +805,8 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                         flexDirection="row"
                         justifyContent="center"
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "alignItems": "center",
                               "display": "flex",
                               "flexDirection": "row",
@@ -821,8 +821,8 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                           display="flex"
                           justifyContent="center"
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "alignItems": "center",
                                 "display": "flex",
                                 "justifyContent": "center",
@@ -833,8 +833,8 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                         <View
                           data-blade-component="base-box"
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "paddingLeft": 0,
                                 "paddingRight": 8,
                               },
@@ -851,8 +851,8 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                             lineHeight={100}
                             numberOfLines={1}
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "color": "hsla(217, 56%, 17%, 1)",
                                   "fontFamily": "Lato",
                                   "fontSize": 14,
@@ -878,8 +878,8 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                         <View
                           data-blade-component="base-box"
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "marginLeft": "auto",
                               },
                             ]
@@ -889,8 +889,8 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                       <View
                         data-blade-component="base-box"
                         style={
-                          Array [
-                            Object {},
+                          [
+                            {},
                           ]
                         }
                       />
@@ -903,7 +903,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                     <View
                       accessibilityRole="menuitem"
                       accessibilityState={
-                        Object {
+                        {
                           "disabled": undefined,
                           "selected": false,
                         }
@@ -918,7 +918,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                       onResponderTerminationRequest={[Function]}
                       onStartShouldSetResponder={[Function]}
                       style={
-                        Object {
+                        {
                           "borderColor": "transparent",
                           "borderRadius": 4,
                           "borderStyle": "solid",
@@ -943,8 +943,8 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                         flexDirection="row"
                         justifyContent="center"
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "alignItems": "center",
                               "display": "flex",
                               "flexDirection": "row",
@@ -959,8 +959,8 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                           display="flex"
                           justifyContent="center"
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "alignItems": "center",
                                 "display": "flex",
                                 "justifyContent": "center",
@@ -971,8 +971,8 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                         <View
                           data-blade-component="base-box"
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "paddingLeft": 0,
                                 "paddingRight": 8,
                               },
@@ -989,8 +989,8 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                             lineHeight={100}
                             numberOfLines={1}
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "color": "hsla(217, 56%, 17%, 1)",
                                   "fontFamily": "Lato",
                                   "fontSize": 14,
@@ -1016,8 +1016,8 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                         <View
                           data-blade-component="base-box"
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "marginLeft": "auto",
                               },
                             ]
@@ -1027,8 +1027,8 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                       <View
                         data-blade-component="base-box"
                         style={
-                          Array [
-                            Object {},
+                          [
+                            {},
                           ]
                         }
                       />
@@ -1044,8 +1044,8 @@ exports[`<Dropdown /> should render dropdown 1`] = `
             <View
               data-blade-component="base-box"
               style={
-                Array [
-                  Object {},
+                [
+                  {},
                 ]
               }
             >
@@ -1057,13 +1057,13 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                 dividerStyle="solid"
                 isDividerHorizontal={true}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
                       "borderStyle": "solid",
                       "borderWidth": 0,
                     },
-                    Object {
+                    {
                       "borderBottomStyle": "solid",
                       "borderBottomWidth": 1,
                       "flexGrow": 1,
@@ -1075,8 +1075,8 @@ exports[`<Dropdown /> should render dropdown 1`] = `
               <View
                 data-blade-component="dropdown-footer"
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "paddingBottom": 16,
                       "paddingLeft": 16,
                       "paddingRight": 16,
@@ -1088,7 +1088,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                 <View
                   accessibilityRole="button"
                   accessibilityState={
-                    Object {
+                    {
                       "disabled": false,
                     }
                   }
@@ -1126,8 +1126,8 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignItems": "center",
                         "alignSelf": "center",
                         "backgroundColor": "hsla(218, 89%, 51%, 1)",
@@ -1148,7 +1148,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                         "textDecorationStyle": "solid",
                         "width": "auto",
                       },
-                      Object {
+                      {
                         "backgroundColor": "hsla(218, 89%, 51%, 1)",
                         "borderColor": "hsla(218, 89%, 51%, 1)",
                       },
@@ -1164,8 +1164,8 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                     isHidden={false}
                     justifyContent="center"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "alignItems": "center",
                           "display": "flex",
                           "flexBasis": 0,
@@ -1174,7 +1174,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                           "flexShrink": 1,
                           "justifyContent": "center",
                         },
-                        Object {
+                        {
                           "opacity": 1,
                         },
                       ]
@@ -1187,8 +1187,8 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                       fontWeight="bold"
                       lineHeight={100}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "color": "hsla(0, 0%, 100%, 1)",
                             "fontFamily": "Lato",
                             "fontSize": 14,

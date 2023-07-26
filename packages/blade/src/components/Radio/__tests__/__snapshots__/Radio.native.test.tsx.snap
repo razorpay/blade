@@ -3,7 +3,7 @@
 exports[`<Radio /> should render radio with label 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -11,8 +11,8 @@ exports[`<Radio /> should render radio with label 1`] = `
   <View
     data-blade-component="base-box"
     style={
-      Array [
-        Object {},
+      [
+        {},
       ]
     }
   >
@@ -23,8 +23,8 @@ exports[`<Radio /> should render radio with label 1`] = `
       display="flex"
       flexDirection="column"
       style={
-        Array [
-          Object {
+        [
+          {
             "display": "flex",
             "flexDirection": "column",
           },
@@ -34,8 +34,8 @@ exports[`<Radio /> should render radio with label 1`] = `
       <View
         data-blade-component="base-box"
         style={
-          Array [
-            Object {
+          [
+            {
               "marginBottom": 4,
               "marginRight": 16,
             },
@@ -51,8 +51,8 @@ exports[`<Radio /> should render radio with label 1`] = `
           gap="spacing.0"
           maxHeight="36px"
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "display": "flex",
                 "flexDirection": "row",
@@ -73,8 +73,8 @@ exports[`<Radio /> should render radio with label 1`] = `
             lineHeight={50}
             numberOfLines={2}
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "hsla(217, 18%, 45%, 1)",
                   "fontFamily": "Lato",
                   "fontSize": 12,
@@ -99,8 +99,8 @@ exports[`<Radio /> should render radio with label 1`] = `
           <View
             data-blade-component="visually-hidden"
             style={
-              Array [
-                Object {
+              [
+                {
                   "borderColor": "black",
                   "borderStyle": "solid",
                   "borderWidth": 0,
@@ -134,8 +134,8 @@ exports[`<Radio /> should render radio with label 1`] = `
               fontWeight="regular"
               lineHeight={100}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "hsla(217, 56%, 17%, 1)",
                     "fontFamily": "Lato",
                     "fontSize": 14,
@@ -163,8 +163,8 @@ exports[`<Radio /> should render radio with label 1`] = `
       <View
         data-blade-component="base-box"
         style={
-          Array [
-            Object {},
+          [
+            {},
           ]
         }
       >
@@ -173,8 +173,8 @@ exports[`<Radio /> should render radio with label 1`] = `
           display="flex"
           flexDirection="column"
           style={
-            Array [
-              Object {
+            [
+              {
                 "display": "flex",
                 "flexDirection": "column",
               },
@@ -184,8 +184,8 @@ exports[`<Radio /> should render radio with label 1`] = `
           <View
             data-blade-component="base-box"
             style={
-              Array [
-                Object {
+              [
+                {
                   "marginBottom": 0,
                 },
               ]
@@ -194,8 +194,8 @@ exports[`<Radio /> should render radio with label 1`] = `
             <View
               data-blade-component="base-box"
               style={
-                Array [
-                  Object {},
+                [
+                  {},
                 ]
               }
             >
@@ -205,7 +205,7 @@ exports[`<Radio /> should render radio with label 1`] = `
                 accessibilityRequired={false}
                 accessibilityRole="radio"
                 accessibilityState={
-                  Object {
+                  {
                     "checked": false,
                     "disabled": false,
                   }
@@ -224,8 +224,8 @@ exports[`<Radio /> should render radio with label 1`] = `
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "display": "flex",
                       "flexDirection": "row",
                       "marginBottom": 2,
@@ -240,8 +240,8 @@ exports[`<Radio /> should render radio with label 1`] = `
                   display="flex"
                   flexDirection="column"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "display": "flex",
                         "flexDirection": "column",
                       },
@@ -254,8 +254,8 @@ exports[`<Radio /> should render radio with label 1`] = `
                     display="flex"
                     flexDirection="row"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "alignItems": "center",
                           "display": "flex",
                           "flexDirection": "row",
@@ -270,8 +270,8 @@ exports[`<Radio /> should render radio with label 1`] = `
                       isNegative={false}
                       size="medium"
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "alignItems": "center",
                             "backgroundColor": "transparent",
                             "borderColor": "hsla(214, 18%, 69%, 1)",
@@ -294,8 +294,8 @@ exports[`<Radio /> should render radio with label 1`] = `
                     <View
                       data-blade-component="base-box"
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "marginLeft": 4,
                           },
                         ]
@@ -309,8 +309,8 @@ exports[`<Radio /> should render radio with label 1`] = `
                       fontWeight="regular"
                       lineHeight={100}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "color": "hsla(216, 27%, 36%, 1)",
                             "fontFamily": "Lato",
                             "fontSize": 14,
@@ -336,8 +336,8 @@ exports[`<Radio /> should render radio with label 1`] = `
                   <View
                     data-blade-component="base-box"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "marginLeft": 24,
                         },
                       ]
@@ -357,7 +357,7 @@ exports[`<Radio /> should render radio with label 1`] = `
 exports[`<Radio /> should set disabled state with isDisabled 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -365,8 +365,8 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
   <View
     data-blade-component="base-box"
     style={
-      Array [
-        Object {},
+      [
+        {},
       ]
     }
   >
@@ -377,8 +377,8 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
       display="flex"
       flexDirection="column"
       style={
-        Array [
-          Object {
+        [
+          {
             "display": "flex",
             "flexDirection": "column",
           },
@@ -388,8 +388,8 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
       <View
         data-blade-component="base-box"
         style={
-          Array [
-            Object {
+          [
+            {
               "marginBottom": 4,
               "marginRight": 16,
             },
@@ -405,8 +405,8 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
           gap="spacing.0"
           maxHeight="36px"
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "display": "flex",
                 "flexDirection": "row",
@@ -427,8 +427,8 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
             lineHeight={50}
             numberOfLines={2}
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "hsla(217, 18%, 45%, 1)",
                   "fontFamily": "Lato",
                   "fontSize": 12,
@@ -453,8 +453,8 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
           <View
             data-blade-component="visually-hidden"
             style={
-              Array [
-                Object {
+              [
+                {
                   "borderColor": "black",
                   "borderStyle": "solid",
                   "borderWidth": 0,
@@ -488,8 +488,8 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
               fontWeight="regular"
               lineHeight={100}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "hsla(217, 56%, 17%, 1)",
                     "fontFamily": "Lato",
                     "fontSize": 14,
@@ -517,8 +517,8 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
       <View
         data-blade-component="base-box"
         style={
-          Array [
-            Object {},
+          [
+            {},
           ]
         }
       >
@@ -527,8 +527,8 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
           display="flex"
           flexDirection="column"
           style={
-            Array [
-              Object {
+            [
+              {
                 "display": "flex",
                 "flexDirection": "column",
               },
@@ -538,8 +538,8 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
           <View
             data-blade-component="base-box"
             style={
-              Array [
-                Object {
+              [
+                {
                   "marginBottom": 0,
                 },
               ]
@@ -548,8 +548,8 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
             <View
               data-blade-component="base-box"
               style={
-                Array [
-                  Object {},
+                [
+                  {},
                 ]
               }
             >
@@ -559,7 +559,7 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
                 accessibilityRequired={false}
                 accessibilityRole="radio"
                 accessibilityState={
-                  Object {
+                  {
                     "checked": false,
                     "disabled": true,
                   }
@@ -578,8 +578,8 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "display": "flex",
                       "flexDirection": "row",
                       "marginBottom": 2,
@@ -594,8 +594,8 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
                   display="flex"
                   flexDirection="column"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "display": "flex",
                         "flexDirection": "column",
                       },
@@ -608,8 +608,8 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
                     display="flex"
                     flexDirection="row"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "alignItems": "center",
                           "display": "flex",
                           "flexDirection": "row",
@@ -624,8 +624,8 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
                       isNegative={false}
                       size="medium"
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "alignItems": "center",
                             "backgroundColor": "transparent",
                             "borderColor": "hsla(216, 15%, 54%, 0.18)",
@@ -648,8 +648,8 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
                     <View
                       data-blade-component="base-box"
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "marginLeft": 4,
                           },
                         ]
@@ -663,8 +663,8 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
                       fontWeight="regular"
                       lineHeight={100}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "color": "hsla(214, 18%, 69%, 1)",
                             "fontFamily": "Lato",
                             "fontSize": 14,
@@ -690,8 +690,8 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
                   <View
                     data-blade-component="base-box"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "marginLeft": 24,
                         },
                       ]

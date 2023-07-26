@@ -3,7 +3,7 @@
 exports[`<BaseInput /> should render 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -11,8 +11,8 @@ exports[`<BaseInput /> should render 1`] = `
   <View
     data-blade-component="base-box"
     style={
-      Array [
-        Object {},
+      [
+        {},
       ]
     }
   >
@@ -22,8 +22,8 @@ exports[`<BaseInput /> should render 1`] = `
       flexDirection="column"
       position="relative"
       style={
-        Array [
-          Object {
+        [
+          {
             "display": "flex",
             "flexDirection": "column",
             "position": "relative",
@@ -39,8 +39,8 @@ exports[`<BaseInput /> should render 1`] = `
         flexDirection="row"
         justifyContent="space-between"
         style={
-          Array [
-            Object {
+          [
+            {
               "display": "flex",
               "flexDirection": "row",
               "justifyContent": "space-between",
@@ -53,8 +53,8 @@ exports[`<BaseInput /> should render 1`] = `
         <View
           data-blade-component="base-box"
           style={
-            Array [
-              Object {
+            [
+              {
                 "marginBottom": 4,
                 "marginRight": 16,
               },
@@ -70,8 +70,8 @@ exports[`<BaseInput /> should render 1`] = `
             gap="spacing.0"
             maxHeight="36px"
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignItems": "center",
                   "display": "flex",
                   "flexDirection": "row",
@@ -92,8 +92,8 @@ exports[`<BaseInput /> should render 1`] = `
               lineHeight={50}
               numberOfLines={2}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "hsla(217, 18%, 45%, 1)",
                     "fontFamily": "Lato",
                     "fontSize": 12,
@@ -118,8 +118,8 @@ exports[`<BaseInput /> should render 1`] = `
             <View
               data-blade-component="visually-hidden"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "borderColor": "black",
                     "borderStyle": "solid",
                     "borderWidth": 0,
@@ -153,8 +153,8 @@ exports[`<BaseInput /> should render 1`] = `
                 fontWeight="regular"
                 lineHeight={100}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "color": "hsla(217, 56%, 17%, 1)",
                       "fontFamily": "Lato",
                       "fontSize": 14,
@@ -185,14 +185,14 @@ exports[`<BaseInput /> should render 1`] = `
         flexDirection="row"
         position="relative"
         style={
-          Array [
-            Object {
+          [
+            {
               "display": "flex",
               "flexDirection": "row",
               "position": "relative",
               "width": "100%",
             },
-            Object {
+            {
               "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
               "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
               "borderBottomStyle": "solid",
@@ -209,7 +209,7 @@ exports[`<BaseInput /> should render 1`] = `
           accessibilityInvalid={false}
           accessibilityRequired={false}
           accessibilityState={
-            Object {
+            {
               "disabled": false,
               "expanded": undefined,
             }
@@ -229,8 +229,8 @@ exports[`<BaseInput /> should render 1`] = `
           onSubmitEditing={[Function]}
           secureTextEntry={false}
           style={
-            Array [
-              Object {
+            [
+              {
                 "backgroundColor": "transparent",
                 "color": "hsla(216, 27%, 36%, 1)",
                 "flexBasis": 0,
@@ -258,8 +258,8 @@ exports[`<BaseInput /> should render 1`] = `
         />
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "backgroundColor": "hsla(218, 89%, 51%, 1)",
                 "bottom": 0,
                 "height": 1,
@@ -268,7 +268,7 @@ exports[`<BaseInput /> should render 1`] = `
                 "position": "absolute",
                 "right": 0,
               },
-              Object {
+              {
                 "opacity": undefined,
                 "width": "undefined%",
               },
@@ -280,8 +280,8 @@ exports[`<BaseInput /> should render 1`] = `
     <View
       data-blade-component="base-box"
       style={
-        Array [
-          Object {
+        [
+          {
             "marginLeft": 0,
           },
         ]
@@ -293,8 +293,8 @@ exports[`<BaseInput /> should render 1`] = `
         flexDirection="row"
         justifyContent="flex-end"
         style={
-          Array [
-            Object {
+          [
+            {
               "display": "flex",
               "flexDirection": "row",
               "justifyContent": "flex-end",
@@ -310,7 +310,7 @@ exports[`<BaseInput /> should render 1`] = `
 exports[`<BaseInput /> should render with icons 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -318,8 +318,8 @@ exports[`<BaseInput /> should render with icons 1`] = `
   <View
     data-blade-component="base-box"
     style={
-      Array [
-        Object {},
+      [
+        {},
       ]
     }
   >
@@ -329,8 +329,8 @@ exports[`<BaseInput /> should render with icons 1`] = `
       flexDirection="column"
       position="relative"
       style={
-        Array [
-          Object {
+        [
+          {
             "display": "flex",
             "flexDirection": "column",
             "position": "relative",
@@ -346,8 +346,8 @@ exports[`<BaseInput /> should render with icons 1`] = `
         flexDirection="row"
         justifyContent="space-between"
         style={
-          Array [
-            Object {
+          [
+            {
               "display": "flex",
               "flexDirection": "row",
               "justifyContent": "space-between",
@@ -360,8 +360,8 @@ exports[`<BaseInput /> should render with icons 1`] = `
         <View
           data-blade-component="base-box"
           style={
-            Array [
-              Object {
+            [
+              {
                 "marginBottom": 4,
                 "marginRight": 16,
               },
@@ -377,8 +377,8 @@ exports[`<BaseInput /> should render with icons 1`] = `
             gap="spacing.0"
             maxHeight="36px"
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignItems": "center",
                   "display": "flex",
                   "flexDirection": "row",
@@ -399,8 +399,8 @@ exports[`<BaseInput /> should render with icons 1`] = `
               lineHeight={50}
               numberOfLines={2}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "hsla(217, 18%, 45%, 1)",
                     "fontFamily": "Lato",
                     "fontSize": 12,
@@ -425,8 +425,8 @@ exports[`<BaseInput /> should render with icons 1`] = `
             <View
               data-blade-component="visually-hidden"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "borderColor": "black",
                     "borderStyle": "solid",
                     "borderWidth": 0,
@@ -460,8 +460,8 @@ exports[`<BaseInput /> should render with icons 1`] = `
                 fontWeight="regular"
                 lineHeight={100}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "color": "hsla(217, 56%, 17%, 1)",
                       "fontFamily": "Lato",
                       "fontSize": 14,
@@ -492,14 +492,14 @@ exports[`<BaseInput /> should render with icons 1`] = `
         flexDirection="row"
         position="relative"
         style={
-          Array [
-            Object {
+          [
+            {
               "display": "flex",
               "flexDirection": "row",
               "position": "relative",
               "width": "100%",
             },
-            Object {
+            {
               "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
               "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
               "borderBottomStyle": "solid",
@@ -517,8 +517,8 @@ exports[`<BaseInput /> should render with icons 1`] = `
           display="flex"
           flexDirection="row"
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "display": "flex",
                 "flexDirection": "row",
@@ -530,8 +530,8 @@ exports[`<BaseInput /> should render with icons 1`] = `
             data-blade-component="base-box"
             display="flex"
             style={
-              Array [
-                Object {
+              [
+                {
                   "display": "flex",
                   "paddingLeft": 12,
                 },
@@ -552,15 +552,15 @@ exports[`<BaseInput /> should render with icons 1`] = `
               minX={0}
               minY={0}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "backgroundColor": "transparent",
                     "borderWidth": 0,
                   },
-                  Array [
-                    Object {},
+                  [
+                    {},
                   ],
-                  Object {
+                  {
                     "flex": 0,
                     "height": 16,
                     "width": 16,
@@ -574,7 +574,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
               <RNSVGGroup
                 fill={null}
                 propList={
-                  Array [
+                  [
                     "fill",
                   ]
                 }
@@ -585,7 +585,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
                   fill={4282603381}
                   fillRule={0}
                   propList={
-                    Array [
+                    [
                       "fill",
                       "fillRule",
                     ]
@@ -597,7 +597,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
                   fill={4282603381}
                   fillRule={0}
                   propList={
-                    Array [
+                    [
                       "fill",
                       "fillRule",
                     ]
@@ -612,7 +612,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
           accessibilityInvalid={false}
           accessibilityRequired={false}
           accessibilityState={
-            Object {
+            {
               "disabled": false,
               "expanded": undefined,
             }
@@ -634,8 +634,8 @@ exports[`<BaseInput /> should render with icons 1`] = `
           placeholder="First Last"
           secureTextEntry={false}
           style={
-            Array [
-              Object {
+            [
+              {
                 "backgroundColor": "transparent",
                 "color": "hsla(216, 27%, 36%, 1)",
                 "flexBasis": 0,
@@ -668,8 +668,8 @@ exports[`<BaseInput /> should render with icons 1`] = `
           display="flex"
           flexDirection="row"
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "display": "flex",
                 "flexDirection": "row",
@@ -681,8 +681,8 @@ exports[`<BaseInput /> should render with icons 1`] = `
             data-blade-component="base-box"
             display="flex"
             style={
-              Array [
-                Object {
+              [
+                {
                   "display": "flex",
                   "paddingRight": 12,
                 },
@@ -703,15 +703,15 @@ exports[`<BaseInput /> should render with icons 1`] = `
               minX={0}
               minY={0}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "backgroundColor": "transparent",
                     "borderWidth": 0,
                   },
-                  Array [
-                    Object {},
+                  [
+                    {},
                   ],
-                  Object {
+                  {
                     "flex": 0,
                     "height": 16,
                     "width": 16,
@@ -725,7 +725,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
               <RNSVGGroup
                 fill={null}
                 propList={
-                  Array [
+                  [
                     "fill",
                   ]
                 }
@@ -734,7 +734,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
                   d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
                   fill={4282603381}
                   propList={
-                    Array [
+                    [
                       "fill",
                     ]
                   }
@@ -745,8 +745,8 @@ exports[`<BaseInput /> should render with icons 1`] = `
         </View>
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "backgroundColor": "hsla(218, 89%, 51%, 1)",
                 "bottom": 0,
                 "height": 1,
@@ -755,7 +755,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
                 "position": "absolute",
                 "right": 0,
               },
-              Object {
+              {
                 "opacity": undefined,
                 "width": "undefined%",
               },
@@ -767,8 +767,8 @@ exports[`<BaseInput /> should render with icons 1`] = `
     <View
       data-blade-component="base-box"
       style={
-        Array [
-          Object {
+        [
+          {
             "marginLeft": 0,
           },
         ]
@@ -780,8 +780,8 @@ exports[`<BaseInput /> should render with icons 1`] = `
         flexDirection="row"
         justifyContent="flex-end"
         style={
-          Array [
-            Object {
+          [
+            {
               "display": "flex",
               "flexDirection": "row",
               "justifyContent": "flex-end",

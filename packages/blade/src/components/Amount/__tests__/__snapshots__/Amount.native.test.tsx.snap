@@ -3,7 +3,7 @@
 exports[`<Amount /> should render Amount with default props 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -12,8 +12,8 @@ exports[`<Amount /> should render Amount with default props 1`] = `
     data-blade-component="amount"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -25,8 +25,8 @@ exports[`<Amount /> should render Amount with default props 1`] = `
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "baseline",
             "display": "flex",
             "flexDirection": "row",
@@ -43,8 +43,8 @@ exports[`<Amount /> should render Amount with default props 1`] = `
         fontWeight="bold"
         marginRight="spacing.1"
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(216, 16%, 60%, 1)",
               "fontFamily": "Lato",
               "fontSize": 12,
@@ -69,8 +69,8 @@ exports[`<Amount /> should render Amount with default props 1`] = `
       <Text
         data-blade-component="base-text"
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(217, 56%, 17%, 1)",
               "fontFamily": "Lato",
               "fontSize": 16,
@@ -97,8 +97,8 @@ exports[`<Amount /> should render Amount with default props 1`] = `
           fontWeight="regular"
           lineHeight={100}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(217, 56%, 17%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 14,
@@ -128,8 +128,8 @@ exports[`<Amount /> should render Amount with default props 1`] = `
           fontWeight="regular"
           marginLeft="spacing.1"
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(216, 16%, 60%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 12,
@@ -160,7 +160,7 @@ exports[`<Amount /> should render Amount with default props 1`] = `
 exports[`<Amount /> should render MYR currency Amount  1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -169,8 +169,8 @@ exports[`<Amount /> should render MYR currency Amount  1`] = `
     data-blade-component="amount"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -182,8 +182,8 @@ exports[`<Amount /> should render MYR currency Amount  1`] = `
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "baseline",
             "display": "flex",
             "flexDirection": "row",
@@ -200,8 +200,8 @@ exports[`<Amount /> should render MYR currency Amount  1`] = `
         fontWeight="bold"
         marginRight="spacing.1"
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(216, 16%, 60%, 1)",
               "fontFamily": "Lato",
               "fontSize": 12,
@@ -226,8 +226,8 @@ exports[`<Amount /> should render MYR currency Amount  1`] = `
       <Text
         data-blade-component="base-text"
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(217, 56%, 17%, 1)",
               "fontFamily": "Lato",
               "fontSize": 16,
@@ -254,8 +254,8 @@ exports[`<Amount /> should render MYR currency Amount  1`] = `
           fontWeight="regular"
           lineHeight={100}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(217, 56%, 17%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 14,
@@ -285,8 +285,8 @@ exports[`<Amount /> should render MYR currency Amount  1`] = `
           fontWeight="regular"
           marginLeft="spacing.1"
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(216, 16%, 60%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 12,
@@ -317,7 +317,7 @@ exports[`<Amount /> should render MYR currency Amount  1`] = `
 exports[`<Amount /> should render all sizes of Amount 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -326,8 +326,8 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
     data-blade-component="amount"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -339,8 +339,8 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "baseline",
             "display": "flex",
             "flexDirection": "row",
@@ -357,8 +357,8 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
         fontWeight="bold"
         marginRight="spacing.1"
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(216, 16%, 60%, 1)",
               "fontFamily": "Lato",
               "fontSize": 12,
@@ -383,8 +383,8 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       <Text
         data-blade-component="base-text"
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(217, 56%, 17%, 1)",
               "fontFamily": "Lato",
               "fontSize": 16,
@@ -411,8 +411,8 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           fontWeight="regular"
           lineHeight={100}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(217, 56%, 17%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 14,
@@ -442,8 +442,8 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           fontWeight="regular"
           marginLeft="spacing.1"
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(216, 16%, 60%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 12,
@@ -472,8 +472,8 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
     data-blade-component="amount"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -485,8 +485,8 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "baseline",
             "display": "flex",
             "flexDirection": "row",
@@ -503,8 +503,8 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
         fontWeight="bold"
         marginRight="spacing.1"
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(216, 16%, 60%, 1)",
               "fontFamily": "Lato",
               "fontSize": 12,
@@ -529,8 +529,8 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       <Text
         data-blade-component="base-text"
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(217, 56%, 17%, 1)",
               "fontFamily": "Lato",
               "fontSize": 16,
@@ -557,8 +557,8 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           fontWeight="bold"
           lineHeight={100}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(217, 56%, 17%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 14,
@@ -588,8 +588,8 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           fontWeight="regular"
           marginLeft="spacing.1"
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(216, 16%, 60%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 12,
@@ -618,8 +618,8 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
     data-blade-component="amount"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -631,8 +631,8 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "baseline",
             "display": "flex",
             "flexDirection": "row",
@@ -649,8 +649,8 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
         fontWeight="bold"
         marginRight="spacing.1"
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(216, 16%, 60%, 1)",
               "fontFamily": "Lato",
               "fontSize": 12,
@@ -675,8 +675,8 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       <Text
         data-blade-component="base-text"
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(217, 56%, 17%, 1)",
               "fontFamily": "Lato",
               "fontSize": 16,
@@ -703,8 +703,8 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           fontWeight="regular"
           lineHeight={50}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(217, 56%, 17%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 12,
@@ -734,8 +734,8 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           fontWeight="regular"
           marginLeft="spacing.1"
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(216, 16%, 60%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 12,
@@ -764,8 +764,8 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
     data-blade-component="amount"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -777,8 +777,8 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "baseline",
             "display": "flex",
             "flexDirection": "row",
@@ -795,8 +795,8 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
         fontWeight="bold"
         marginRight="spacing.1"
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(216, 16%, 60%, 1)",
               "fontFamily": "Lato",
               "fontSize": 12,
@@ -821,8 +821,8 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       <Text
         data-blade-component="base-text"
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(217, 56%, 17%, 1)",
               "fontFamily": "Lato",
               "fontSize": 16,
@@ -849,8 +849,8 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           fontWeight="bold"
           lineHeight={50}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(217, 56%, 17%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 12,
@@ -880,8 +880,8 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           fontWeight="regular"
           marginLeft="spacing.1"
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(216, 16%, 60%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 12,
@@ -910,8 +910,8 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
     data-blade-component="amount"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -923,8 +923,8 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "baseline",
             "display": "flex",
             "flexDirection": "row",
@@ -941,8 +941,8 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
         fontWeight="bold"
         marginRight="spacing.1"
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(216, 16%, 60%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -967,8 +967,8 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       <Text
         data-blade-component="base-text"
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(217, 56%, 17%, 1)",
               "fontFamily": "Lato",
               "fontSize": 16,
@@ -995,8 +995,8 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           fontWeight="regular"
           lineHeight={400}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(217, 56%, 17%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 18,
@@ -1026,8 +1026,8 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           fontWeight="regular"
           marginLeft="spacing.1"
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(216, 16%, 60%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 14,
@@ -1056,8 +1056,8 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
     data-blade-component="amount"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -1069,8 +1069,8 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "baseline",
             "display": "flex",
             "flexDirection": "row",
@@ -1087,8 +1087,8 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
         fontWeight="bold"
         marginRight="spacing.1"
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(216, 16%, 60%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -1113,8 +1113,8 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       <Text
         data-blade-component="base-text"
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(217, 56%, 17%, 1)",
               "fontFamily": "Lato",
               "fontSize": 16,
@@ -1141,8 +1141,8 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           fontWeight="bold"
           lineHeight={400}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(217, 56%, 17%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 18,
@@ -1172,8 +1172,8 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           fontWeight="regular"
           marginLeft="spacing.1"
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(216, 16%, 60%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 14,
@@ -1202,8 +1202,8 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
     data-blade-component="amount"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -1215,8 +1215,8 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "baseline",
             "display": "flex",
             "flexDirection": "row",
@@ -1233,8 +1233,8 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
         fontWeight="bold"
         marginRight="spacing.1"
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(216, 16%, 60%, 1)",
               "fontFamily": "Lato",
               "fontSize": 12,
@@ -1259,8 +1259,8 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       <Text
         data-blade-component="base-text"
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(217, 56%, 17%, 1)",
               "fontFamily": "Lato",
               "fontSize": 16,
@@ -1287,8 +1287,8 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           fontWeight="regular"
           lineHeight={300}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(217, 56%, 17%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 16,
@@ -1318,8 +1318,8 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           fontWeight="regular"
           marginLeft="spacing.1"
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(216, 16%, 60%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 12,
@@ -1348,8 +1348,8 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
     data-blade-component="amount"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -1361,8 +1361,8 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "baseline",
             "display": "flex",
             "flexDirection": "row",
@@ -1379,8 +1379,8 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
         fontWeight="bold"
         marginRight="spacing.1"
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(216, 16%, 60%, 1)",
               "fontFamily": "Lato",
               "fontSize": 12,
@@ -1405,8 +1405,8 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       <Text
         data-blade-component="base-text"
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(217, 56%, 17%, 1)",
               "fontFamily": "Lato",
               "fontSize": 16,
@@ -1433,8 +1433,8 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           fontWeight="bold"
           lineHeight={300}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(217, 56%, 17%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 16,
@@ -1464,8 +1464,8 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           fontWeight="regular"
           marginLeft="spacing.1"
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(216, 16%, 60%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 12,
@@ -1494,8 +1494,8 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
     data-blade-component="amount"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -1507,8 +1507,8 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "baseline",
             "display": "flex",
             "flexDirection": "row",
@@ -1525,8 +1525,8 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
         fontWeight="bold"
         marginRight="spacing.1"
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(216, 16%, 60%, 1)",
               "fontFamily": "Lato",
               "fontSize": 18,
@@ -1551,8 +1551,8 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       <Text
         data-blade-component="base-text"
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(217, 56%, 17%, 1)",
               "fontFamily": "Lato",
               "fontSize": 16,
@@ -1579,8 +1579,8 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           fontWeight="bold"
           lineHeight={600}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(217, 56%, 17%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 24,
@@ -1610,8 +1610,8 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           fontWeight="regular"
           marginLeft="spacing.1"
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(216, 16%, 60%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 18,
@@ -1642,7 +1642,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
 exports[`<Amount /> should render amount with Decimal value 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -1651,8 +1651,8 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
     data-blade-component="amount"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -1664,8 +1664,8 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "baseline",
             "display": "flex",
             "flexDirection": "row",
@@ -1682,8 +1682,8 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
         fontWeight="bold"
         marginRight="spacing.1"
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(216, 16%, 60%, 1)",
               "fontFamily": "Lato",
               "fontSize": 12,
@@ -1708,8 +1708,8 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
       <Text
         data-blade-component="base-text"
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(217, 56%, 17%, 1)",
               "fontFamily": "Lato",
               "fontSize": 16,
@@ -1736,8 +1736,8 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
           fontWeight="regular"
           lineHeight={300}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(217, 56%, 17%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 16,
@@ -1767,8 +1767,8 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
           fontWeight="regular"
           marginLeft="spacing.1"
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(216, 16%, 60%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 12,
@@ -1799,7 +1799,7 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
 exports[`<Amount /> should render amount with Humanize value 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -1808,8 +1808,8 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
     data-blade-component="amount"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -1821,8 +1821,8 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "baseline",
             "display": "flex",
             "flexDirection": "row",
@@ -1839,8 +1839,8 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
         fontWeight="bold"
         marginRight="spacing.1"
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(216, 16%, 60%, 1)",
               "fontFamily": "Lato",
               "fontSize": 12,
@@ -1869,8 +1869,8 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
         fontWeight="regular"
         lineHeight={300}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(217, 56%, 17%, 1)",
               "fontFamily": "Lato",
               "fontSize": 16,
@@ -1900,7 +1900,7 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
 exports[`<Amount /> should render information intent Amount  1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -1909,8 +1909,8 @@ exports[`<Amount /> should render information intent Amount  1`] = `
     data-blade-component="amount"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -1922,8 +1922,8 @@ exports[`<Amount /> should render information intent Amount  1`] = `
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "baseline",
             "display": "flex",
             "flexDirection": "row",
@@ -1940,8 +1940,8 @@ exports[`<Amount /> should render information intent Amount  1`] = `
         fontWeight="regular"
         marginRight="spacing.1"
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(193, 100%, 35%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -1970,8 +1970,8 @@ exports[`<Amount /> should render information intent Amount  1`] = `
         fontWeight="regular"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(193, 100%, 35%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -2001,7 +2001,7 @@ exports[`<Amount /> should render information intent Amount  1`] = `
 exports[`<Amount /> should render positive intent Amount  1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -2010,8 +2010,8 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
     data-blade-component="amount"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -2023,8 +2023,8 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "baseline",
             "display": "flex",
             "flexDirection": "row",
@@ -2041,8 +2041,8 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
         fontWeight="bold"
         marginRight="spacing.1"
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(160, 100%, 26%, 1)",
               "fontFamily": "Lato",
               "fontSize": 12,
@@ -2067,8 +2067,8 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
       <Text
         data-blade-component="base-text"
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(217, 56%, 17%, 1)",
               "fontFamily": "Lato",
               "fontSize": 16,
@@ -2095,8 +2095,8 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
           fontWeight="regular"
           lineHeight={100}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(160, 100%, 26%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 14,
@@ -2126,8 +2126,8 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
           fontWeight="regular"
           marginLeft="spacing.1"
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(160, 100%, 26%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 12,

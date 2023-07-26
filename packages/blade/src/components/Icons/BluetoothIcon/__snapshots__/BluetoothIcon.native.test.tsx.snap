@@ -3,7 +3,7 @@
 exports[`<BluetoothIcon /> should render BluetoothIcon 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -22,15 +22,15 @@ exports[`<BluetoothIcon /> should render BluetoothIcon 1`] = `
     minX={0}
     minY={0}
     style={
-      Array [
-        Object {
+      [
+        {
           "backgroundColor": "transparent",
           "borderWidth": 0,
         },
-        Array [
-          Object {},
+        [
+          {},
         ],
-        Object {
+        {
           "flex": 0,
           "height": 20,
           "width": 20,
@@ -44,7 +44,7 @@ exports[`<BluetoothIcon /> should render BluetoothIcon 1`] = `
     <RNSVGGroup
       fill={null}
       propList={
-        Array [
+        [
           "fill",
         ]
       }
@@ -55,7 +55,7 @@ exports[`<BluetoothIcon /> should render BluetoothIcon 1`] = `
         <RNSVGPath
           d="M6.5 6.5L17.5 17.5L12 23V1L17.5 6.5L6.5 17.5"
           propList={
-            Array [
+            [
               "stroke",
               "strokeWidth",
               "strokeLinecap",
@@ -76,7 +76,7 @@ exports[`<BluetoothIcon /> should render BluetoothIcon 1`] = `
             fill={4282603381}
             height="24"
             propList={
-              Array [
+              [
                 "fill",
               ]
             }

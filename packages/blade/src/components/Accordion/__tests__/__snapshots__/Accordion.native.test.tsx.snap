@@ -3,7 +3,7 @@
 exports[`<Accordion /> should render 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -11,30 +11,30 @@ exports[`<Accordion /> should render 1`] = `
   <View
     data-blade-component="accordion"
     style={
-      Array [
-        Object {},
+      [
+        {},
       ]
     }
   >
     <View
       data-blade-component="base-box"
       maxWidth={
-        Object {
+        {
           "l": "800px",
           "m": "640px",
           "s": "710px",
         }
       }
       minWidth={
-        Object {
+        {
           "l": "400px",
           "m": "360px",
           "s": "200px",
         }
       }
       style={
-        Array [
-          Object {
+        [
+          {
             "maxWidth": 710,
             "minWidth": 200,
             "width": "100%",
@@ -46,16 +46,16 @@ exports[`<Accordion /> should render 1`] = `
       <View
         data-blade-component="accordion-item"
         style={
-          Array [
-            Object {},
+          [
+            {},
           ]
         }
       >
         <View
           data-blade-component="collapsible"
           style={
-            Array [
-              Object {},
+            [
+              {},
             ]
           }
         >
@@ -66,8 +66,8 @@ exports[`<Accordion /> should render 1`] = `
             flexDirection="column"
             minWidth="0px"
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignItems": "flex-start",
                   "display": "flex",
                   "flexDirection": "column",
@@ -81,7 +81,7 @@ exports[`<Accordion /> should render 1`] = `
               accessibilityLabel="How can I setup Route?"
               accessibilityRole="button"
               accessibilityState={
-                Object {
+                {
                   "expanded": false,
                 }
               }
@@ -100,8 +100,8 @@ exports[`<Accordion /> should render 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "display": "flex",
                     "flexDirection": "row",
@@ -111,7 +111,7 @@ exports[`<Accordion /> should render 1`] = `
                     "paddingRight": 16,
                     "paddingTop": 16,
                   },
-                  Object {
+                  {
                     "backgroundColor": "hsla(0, 0%, 100%, 0)",
                   },
                 ]
@@ -124,8 +124,8 @@ exports[`<Accordion /> should render 1`] = `
                 flexDirection="row"
                 justifyContent="space-between"
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "alignItems": "center",
                       "display": "flex",
                       "flexBasis": 0,
@@ -144,8 +144,8 @@ exports[`<Accordion /> should render 1`] = `
                   flexDirection="row"
                   flexShrink={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignItems": "flex-start",
                         "display": "flex",
                         "flexDirection": "row",
@@ -165,8 +165,8 @@ exports[`<Accordion /> should render 1`] = `
                     fontWeight="bold"
                     lineHeight={300}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "hsla(217, 56%, 17%, 1)",
                           "fontFamily": "Lato",
                           "fontSize": 16,
@@ -192,8 +192,8 @@ exports[`<Accordion /> should render 1`] = `
                 <View
                   data-blade-component="base-box"
                   style={
-                    Array [
-                      Object {},
+                    [
+                      {},
                     ]
                   }
                 >
@@ -201,9 +201,9 @@ exports[`<Accordion /> should render 1`] = `
                     accessibilityElementsHidden={true}
                     importantForAccessibility="no-hide-descendants"
                     style={
-                      Object {
-                        "transform": Array [
-                          Object {
+                      {
+                        "transform": [
+                          {
                             "rotateZ": "0deg",
                           },
                         ],
@@ -224,15 +224,15 @@ exports[`<Accordion /> should render 1`] = `
                       minX={0}
                       minY={0}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "backgroundColor": "transparent",
                             "borderWidth": 0,
                           },
-                          Array [
-                            Object {},
+                          [
+                            {},
                           ],
-                          Object {
+                          {
                             "flex": 0,
                             "height": 20,
                             "width": 20,
@@ -246,7 +246,7 @@ exports[`<Accordion /> should render 1`] = `
                       <RNSVGGroup
                         fill={null}
                         propList={
-                          Array [
+                          [
                             "fill",
                           ]
                         }
@@ -257,7 +257,7 @@ exports[`<Accordion /> should render 1`] = `
                           fill={4288851646}
                           fillRule={0}
                           propList={
-                            Array [
+                            [
                               "fill",
                               "fillRule",
                             ]
@@ -276,8 +276,8 @@ exports[`<Accordion /> should render 1`] = `
               id="collapsible-body-1"
               importantForAccessibility="no-hide-descendants"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "width": "100%",
                   },
                 ]
@@ -287,11 +287,11 @@ exports[`<Accordion /> should render 1`] = `
               <View
                 isExpanded={false}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "overflow": "hidden",
                     },
-                    Object {
+                    {
                       "height": 0,
                       "opacity": 0.8,
                     },
@@ -301,7 +301,7 @@ exports[`<Accordion /> should render 1`] = `
                 <View
                   onLayout={[Function]}
                   style={
-                    Object {
+                    {
                       "position": "relative",
                     }
                   }
@@ -309,8 +309,8 @@ exports[`<Accordion /> should render 1`] = `
                   <View
                     data-blade-component="box"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "marginBottom": 0,
                           "marginTop": 16,
                         },
@@ -320,8 +320,8 @@ exports[`<Accordion /> should render 1`] = `
                     <View
                       data-blade-component="base-box"
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "marginLeft": 16,
                             "marginRight": 16,
                           },
@@ -337,8 +337,8 @@ exports[`<Accordion /> should render 1`] = `
                         fontWeight="regular"
                         lineHeight={100}
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "color": "hsla(216, 27%, 36%, 1)",
                               "fontFamily": "Lato",
                               "fontSize": 14,
@@ -363,8 +363,8 @@ exports[`<Accordion /> should render 1`] = `
                       <View
                         data-blade-component="base-box"
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "marginTop": 0,
                             },
                           ]
@@ -375,8 +375,8 @@ exports[`<Accordion /> should render 1`] = `
                         data-blade-component="base-box"
                         importantForAccessibility="no-hide-descendants"
                         style={
-                          Array [
-                            Object {},
+                          [
+                            {},
                           ]
                         }
                       >
@@ -389,8 +389,8 @@ exports[`<Accordion /> should render 1`] = `
                           fontWeight="regular"
                           lineHeight={100}
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "color": "hsla(217, 56%, 17%, 1)",
                                 "fontFamily": "Lato",
                                 "fontSize": 14,
@@ -428,13 +428,13 @@ exports[`<Accordion /> should render 1`] = `
           dividerStyle="solid"
           isDividerHorizontal={true}
           style={
-            Array [
-              Object {
+            [
+              {
                 "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
                 "borderStyle": "solid",
                 "borderWidth": 0,
               },
-              Object {
+              {
                 "borderBottomStyle": "solid",
                 "borderBottomWidth": 1,
                 "flexGrow": 1,
@@ -447,16 +447,16 @@ exports[`<Accordion /> should render 1`] = `
       <View
         data-blade-component="accordion-item"
         style={
-          Array [
-            Object {},
+          [
+            {},
           ]
         }
       >
         <View
           data-blade-component="collapsible"
           style={
-            Array [
-              Object {},
+            [
+              {},
             ]
           }
         >
@@ -467,8 +467,8 @@ exports[`<Accordion /> should render 1`] = `
             flexDirection="column"
             minWidth="0px"
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignItems": "flex-start",
                   "display": "flex",
                   "flexDirection": "column",
@@ -482,7 +482,7 @@ exports[`<Accordion /> should render 1`] = `
               accessibilityLabel="How can I setup QR Codes?"
               accessibilityRole="button"
               accessibilityState={
-                Object {
+                {
                   "expanded": false,
                 }
               }
@@ -501,8 +501,8 @@ exports[`<Accordion /> should render 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "display": "flex",
                     "flexDirection": "row",
@@ -512,7 +512,7 @@ exports[`<Accordion /> should render 1`] = `
                     "paddingRight": 16,
                     "paddingTop": 16,
                   },
-                  Object {
+                  {
                     "backgroundColor": "hsla(0, 0%, 100%, 0)",
                   },
                 ]
@@ -525,8 +525,8 @@ exports[`<Accordion /> should render 1`] = `
                 flexDirection="row"
                 justifyContent="space-between"
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "alignItems": "center",
                       "display": "flex",
                       "flexBasis": 0,
@@ -545,8 +545,8 @@ exports[`<Accordion /> should render 1`] = `
                   flexDirection="row"
                   flexShrink={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignItems": "flex-start",
                         "display": "flex",
                         "flexDirection": "row",
@@ -566,8 +566,8 @@ exports[`<Accordion /> should render 1`] = `
                     fontWeight="bold"
                     lineHeight={300}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "hsla(217, 56%, 17%, 1)",
                           "fontFamily": "Lato",
                           "fontSize": 16,
@@ -593,8 +593,8 @@ exports[`<Accordion /> should render 1`] = `
                 <View
                   data-blade-component="base-box"
                   style={
-                    Array [
-                      Object {},
+                    [
+                      {},
                     ]
                   }
                 >
@@ -602,9 +602,9 @@ exports[`<Accordion /> should render 1`] = `
                     accessibilityElementsHidden={true}
                     importantForAccessibility="no-hide-descendants"
                     style={
-                      Object {
-                        "transform": Array [
-                          Object {
+                      {
+                        "transform": [
+                          {
                             "rotateZ": "0deg",
                           },
                         ],
@@ -625,15 +625,15 @@ exports[`<Accordion /> should render 1`] = `
                       minX={0}
                       minY={0}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "backgroundColor": "transparent",
                             "borderWidth": 0,
                           },
-                          Array [
-                            Object {},
+                          [
+                            {},
                           ],
-                          Object {
+                          {
                             "flex": 0,
                             "height": 20,
                             "width": 20,
@@ -647,7 +647,7 @@ exports[`<Accordion /> should render 1`] = `
                       <RNSVGGroup
                         fill={null}
                         propList={
-                          Array [
+                          [
                             "fill",
                           ]
                         }
@@ -658,7 +658,7 @@ exports[`<Accordion /> should render 1`] = `
                           fill={4288851646}
                           fillRule={0}
                           propList={
-                            Array [
+                            [
                               "fill",
                               "fillRule",
                             ]
@@ -677,8 +677,8 @@ exports[`<Accordion /> should render 1`] = `
               id="collapsible-body-2"
               importantForAccessibility="no-hide-descendants"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "width": "100%",
                   },
                 ]
@@ -688,11 +688,11 @@ exports[`<Accordion /> should render 1`] = `
               <View
                 isExpanded={false}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "overflow": "hidden",
                     },
-                    Object {
+                    {
                       "height": 0,
                       "opacity": 0.8,
                     },
@@ -702,7 +702,7 @@ exports[`<Accordion /> should render 1`] = `
                 <View
                   onLayout={[Function]}
                   style={
-                    Object {
+                    {
                       "position": "relative",
                     }
                   }
@@ -710,8 +710,8 @@ exports[`<Accordion /> should render 1`] = `
                   <View
                     data-blade-component="box"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "marginBottom": 0,
                           "marginTop": 16,
                         },
@@ -721,8 +721,8 @@ exports[`<Accordion /> should render 1`] = `
                     <View
                       data-blade-component="base-box"
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "marginLeft": 16,
                             "marginRight": 16,
                           },
@@ -738,8 +738,8 @@ exports[`<Accordion /> should render 1`] = `
                         fontWeight="regular"
                         lineHeight={100}
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "color": "hsla(216, 27%, 36%, 1)",
                               "fontFamily": "Lato",
                               "fontSize": 14,
@@ -764,8 +764,8 @@ exports[`<Accordion /> should render 1`] = `
                       <View
                         data-blade-component="base-box"
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "marginTop": 0,
                             },
                           ]
@@ -776,8 +776,8 @@ exports[`<Accordion /> should render 1`] = `
                         data-blade-component="base-box"
                         importantForAccessibility="no-hide-descendants"
                         style={
-                          Array [
-                            Object {},
+                          [
+                            {},
                           ]
                         }
                       >
@@ -790,8 +790,8 @@ exports[`<Accordion /> should render 1`] = `
                           fontWeight="regular"
                           lineHeight={100}
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "color": "hsla(217, 56%, 17%, 1)",
                                 "fontFamily": "Lato",
                                 "fontSize": 14,
@@ -829,13 +829,13 @@ exports[`<Accordion /> should render 1`] = `
           dividerStyle="solid"
           isDividerHorizontal={true}
           style={
-            Array [
-              Object {
+            [
+              {
                 "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
                 "borderStyle": "solid",
                 "borderWidth": 0,
               },
-              Object {
+              {
                 "borderBottomStyle": "solid",
                 "borderBottomWidth": 1,
                 "flexGrow": 1,
@@ -848,16 +848,16 @@ exports[`<Accordion /> should render 1`] = `
       <View
         data-blade-component="accordion-item"
         style={
-          Array [
-            Object {},
+          [
+            {},
           ]
         }
       >
         <View
           data-blade-component="collapsible"
           style={
-            Array [
-              Object {},
+            [
+              {},
             ]
           }
         >
@@ -868,8 +868,8 @@ exports[`<Accordion /> should render 1`] = `
             flexDirection="column"
             minWidth="0px"
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignItems": "flex-start",
                   "display": "flex",
                   "flexDirection": "column",
@@ -883,7 +883,7 @@ exports[`<Accordion /> should render 1`] = `
               accessibilityLabel="How can I setup Subscriptions?"
               accessibilityRole="button"
               accessibilityState={
-                Object {
+                {
                   "expanded": false,
                 }
               }
@@ -902,8 +902,8 @@ exports[`<Accordion /> should render 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "display": "flex",
                     "flexDirection": "row",
@@ -913,7 +913,7 @@ exports[`<Accordion /> should render 1`] = `
                     "paddingRight": 16,
                     "paddingTop": 16,
                   },
-                  Object {
+                  {
                     "backgroundColor": "hsla(0, 0%, 100%, 0)",
                   },
                 ]
@@ -926,8 +926,8 @@ exports[`<Accordion /> should render 1`] = `
                 flexDirection="row"
                 justifyContent="space-between"
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "alignItems": "center",
                       "display": "flex",
                       "flexBasis": 0,
@@ -946,8 +946,8 @@ exports[`<Accordion /> should render 1`] = `
                   flexDirection="row"
                   flexShrink={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignItems": "flex-start",
                         "display": "flex",
                         "flexDirection": "row",
@@ -967,8 +967,8 @@ exports[`<Accordion /> should render 1`] = `
                     fontWeight="bold"
                     lineHeight={300}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "hsla(217, 56%, 17%, 1)",
                           "fontFamily": "Lato",
                           "fontSize": 16,
@@ -994,8 +994,8 @@ exports[`<Accordion /> should render 1`] = `
                 <View
                   data-blade-component="base-box"
                   style={
-                    Array [
-                      Object {},
+                    [
+                      {},
                     ]
                   }
                 >
@@ -1003,9 +1003,9 @@ exports[`<Accordion /> should render 1`] = `
                     accessibilityElementsHidden={true}
                     importantForAccessibility="no-hide-descendants"
                     style={
-                      Object {
-                        "transform": Array [
-                          Object {
+                      {
+                        "transform": [
+                          {
                             "rotateZ": "0deg",
                           },
                         ],
@@ -1026,15 +1026,15 @@ exports[`<Accordion /> should render 1`] = `
                       minX={0}
                       minY={0}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "backgroundColor": "transparent",
                             "borderWidth": 0,
                           },
-                          Array [
-                            Object {},
+                          [
+                            {},
                           ],
-                          Object {
+                          {
                             "flex": 0,
                             "height": 20,
                             "width": 20,
@@ -1048,7 +1048,7 @@ exports[`<Accordion /> should render 1`] = `
                       <RNSVGGroup
                         fill={null}
                         propList={
-                          Array [
+                          [
                             "fill",
                           ]
                         }
@@ -1059,7 +1059,7 @@ exports[`<Accordion /> should render 1`] = `
                           fill={4288851646}
                           fillRule={0}
                           propList={
-                            Array [
+                            [
                               "fill",
                               "fillRule",
                             ]
@@ -1078,8 +1078,8 @@ exports[`<Accordion /> should render 1`] = `
               id="collapsible-body-3"
               importantForAccessibility="no-hide-descendants"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "width": "100%",
                   },
                 ]
@@ -1089,11 +1089,11 @@ exports[`<Accordion /> should render 1`] = `
               <View
                 isExpanded={false}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "overflow": "hidden",
                     },
-                    Object {
+                    {
                       "height": 0,
                       "opacity": 0.8,
                     },
@@ -1103,7 +1103,7 @@ exports[`<Accordion /> should render 1`] = `
                 <View
                   onLayout={[Function]}
                   style={
-                    Object {
+                    {
                       "position": "relative",
                     }
                   }
@@ -1111,8 +1111,8 @@ exports[`<Accordion /> should render 1`] = `
                   <View
                     data-blade-component="box"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "marginBottom": 0,
                           "marginTop": 16,
                         },
@@ -1122,8 +1122,8 @@ exports[`<Accordion /> should render 1`] = `
                     <View
                       data-blade-component="base-box"
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "marginLeft": 16,
                             "marginRight": 16,
                           },
@@ -1139,8 +1139,8 @@ exports[`<Accordion /> should render 1`] = `
                         fontWeight="regular"
                         lineHeight={100}
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "color": "hsla(216, 27%, 36%, 1)",
                               "fontFamily": "Lato",
                               "fontSize": 14,
@@ -1165,8 +1165,8 @@ exports[`<Accordion /> should render 1`] = `
                       <View
                         data-blade-component="base-box"
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "marginTop": 0,
                             },
                           ]
@@ -1177,8 +1177,8 @@ exports[`<Accordion /> should render 1`] = `
                         data-blade-component="base-box"
                         importantForAccessibility="no-hide-descendants"
                         style={
-                          Array [
-                            Object {},
+                          [
+                            {},
                           ]
                         }
                       >
@@ -1191,8 +1191,8 @@ exports[`<Accordion /> should render 1`] = `
                           fontWeight="regular"
                           lineHeight={100}
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "color": "hsla(217, 56%, 17%, 1)",
                                 "fontFamily": "Lato",
                                 "fontSize": 14,
@@ -1230,13 +1230,13 @@ exports[`<Accordion /> should render 1`] = `
           dividerStyle="solid"
           isDividerHorizontal={true}
           style={
-            Array [
-              Object {
+            [
+              {
                 "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
                 "borderStyle": "solid",
                 "borderWidth": 0,
               },
-              Object {
+              {
                 "borderBottomStyle": "solid",
                 "borderBottomWidth": 1,
                 "flexGrow": 1,

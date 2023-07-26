@@ -3,7 +3,7 @@
 exports[`<Heading /> should render Heading with color 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -18,8 +18,8 @@ exports[`<Heading /> should render Heading with color 1`] = `
     fontWeight="bold"
     lineHeight={300}
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "hsla(214, 18%, 69%, 1)",
           "fontFamily": "Lato",
           "fontSize": 16,
@@ -47,7 +47,7 @@ exports[`<Heading /> should render Heading with color 1`] = `
 exports[`<Heading /> should render Heading with default properties 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -62,8 +62,8 @@ exports[`<Heading /> should render Heading with default properties 1`] = `
     fontWeight="bold"
     lineHeight={300}
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "hsla(217, 56%, 17%, 1)",
           "fontFamily": "Lato",
           "fontSize": 16,
@@ -91,7 +91,7 @@ exports[`<Heading /> should render Heading with default properties 1`] = `
 exports[`<Heading /> should render Heading with mixed color 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -106,8 +106,8 @@ exports[`<Heading /> should render Heading with mixed color 1`] = `
     fontWeight="bold"
     lineHeight={300}
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "hsla(217, 56%, 17%, 1)",
           "fontFamily": "Lato",
           "fontSize": 16,
@@ -139,8 +139,8 @@ exports[`<Heading /> should render Heading with mixed color 1`] = `
       fontWeight="bold"
       lineHeight={300}
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "hsla(195, 100%, 31%, 1)",
             "fontFamily": "Lato",
             "fontSize": 16,
@@ -169,7 +169,7 @@ exports[`<Heading /> should render Heading with mixed color 1`] = `
 exports[`<Heading /> should render Heading with size "large" 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -184,8 +184,8 @@ exports[`<Heading /> should render Heading with size "large" 1`] = `
     fontWeight="regular"
     lineHeight={400}
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "hsla(217, 18%, 45%, 1)",
           "fontFamily": "Lato",
           "fontSize": 18,
@@ -213,7 +213,7 @@ exports[`<Heading /> should render Heading with size "large" 1`] = `
 exports[`<Heading /> should render Heading with size "medium" 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -228,8 +228,8 @@ exports[`<Heading /> should render Heading with size "medium" 1`] = `
     fontWeight="regular"
     lineHeight={200}
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "hsla(216, 16%, 60%, 1)",
           "fontFamily": "Lato",
           "fontSize": 16,
@@ -257,7 +257,7 @@ exports[`<Heading /> should render Heading with size "medium" 1`] = `
 exports[`<Heading /> should render Heading with size "small" 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -272,8 +272,8 @@ exports[`<Heading /> should render Heading with size "small" 1`] = `
     fontWeight="regular"
     lineHeight={300}
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "hsla(217, 56%, 17%, 1)",
           "fontFamily": "Lato",
           "fontSize": 16,
@@ -301,7 +301,7 @@ exports[`<Heading /> should render Heading with size "small" 1`] = `
 exports[`<Heading /> should render Heading with size "small" and contrast "high" 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -316,8 +316,8 @@ exports[`<Heading /> should render Heading with size "small" and contrast "high"
     fontWeight="regular"
     lineHeight={300}
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "hsla(0, 0%, 100%, 1)",
           "fontFamily": "Lato",
           "fontSize": 16,
@@ -345,7 +345,7 @@ exports[`<Heading /> should render Heading with size "small" and contrast "high"
 exports[`<Heading /> should render Heading with variant "subheading" and weight "bold" 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -360,8 +360,8 @@ exports[`<Heading /> should render Heading with variant "subheading" and weight 
     fontWeight="bold"
     lineHeight={50}
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "hsla(217, 18%, 45%, 1)",
           "fontFamily": "Lato",
           "fontSize": 12,
