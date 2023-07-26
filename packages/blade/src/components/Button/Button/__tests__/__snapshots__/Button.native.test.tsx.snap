@@ -3,7 +3,7 @@
 exports[`<Button /> should render button with default properties 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -11,7 +11,7 @@ exports[`<Button /> should render button with default properties 1`] = `
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -49,8 +49,8 @@ exports[`<Button /> should render button with default properties 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
@@ -71,7 +71,7 @@ exports[`<Button /> should render button with default properties 1`] = `
           "textDecorationStyle": "solid",
           "width": "auto",
         },
-        Object {
+        {
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
           "borderColor": "hsla(218, 89%, 51%, 1)",
         },
@@ -87,8 +87,8 @@ exports[`<Button /> should render button with default properties 1`] = `
       isHidden={false}
       justifyContent="center"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexBasis": 0,
@@ -97,7 +97,7 @@ exports[`<Button /> should render button with default properties 1`] = `
             "flexShrink": 1,
             "justifyContent": "center",
           },
-          Object {
+          {
             "opacity": 1,
           },
         ]
@@ -110,8 +110,8 @@ exports[`<Button /> should render button with default properties 1`] = `
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(0, 0%, 100%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -143,7 +143,7 @@ exports[`<Button /> should render button with default properties 1`] = `
 exports[`<Button /> should render button with full width 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -151,7 +151,7 @@ exports[`<Button /> should render button with full width 1`] = `
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -189,8 +189,8 @@ exports[`<Button /> should render button with full width 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
@@ -211,7 +211,7 @@ exports[`<Button /> should render button with full width 1`] = `
           "textDecorationStyle": "solid",
           "width": "100%",
         },
-        Object {
+        {
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
           "borderColor": "hsla(218, 89%, 51%, 1)",
         },
@@ -227,8 +227,8 @@ exports[`<Button /> should render button with full width 1`] = `
       isHidden={false}
       justifyContent="center"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexBasis": 0,
@@ -237,7 +237,7 @@ exports[`<Button /> should render button with full width 1`] = `
             "flexShrink": 1,
             "justifyContent": "center",
           },
-          Object {
+          {
             "opacity": 1,
           },
         ]
@@ -250,8 +250,8 @@ exports[`<Button /> should render button with full width 1`] = `
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(0, 0%, 100%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -283,7 +283,7 @@ exports[`<Button /> should render button with full width 1`] = `
 exports[`<Button /> should render button with icon with default iconPosition 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -291,7 +291,7 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -329,8 +329,8 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
@@ -351,7 +351,7 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
           "textDecorationStyle": "solid",
           "width": "auto",
         },
-        Object {
+        {
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
           "borderColor": "hsla(218, 89%, 51%, 1)",
         },
@@ -367,8 +367,8 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
       isHidden={false}
       justifyContent="center"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexBasis": 0,
@@ -377,7 +377,7 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
             "flexShrink": 1,
             "justifyContent": "center",
           },
-          Object {
+          {
             "opacity": 1,
           },
         ]
@@ -389,8 +389,8 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
         display="flex"
         justifyContent="center"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "display": "flex",
               "justifyContent": "center",
@@ -413,15 +413,15 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
           minX={0}
           minY={0}
           style={
-            Array [
-              Object {
+            [
+              {
                 "backgroundColor": "transparent",
                 "borderWidth": 0,
               },
-              Array [
-                Object {},
+              [
+                {},
               ],
-              Object {
+              {
                 "flex": 0,
                 "height": 16,
                 "width": 16,
@@ -435,7 +435,7 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
           <RNSVGGroup
             fill={null}
             propList={
-              Array [
+              [
                 "fill",
               ]
             }
@@ -446,7 +446,7 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
               fill={4294967295}
               fillRule={0}
               propList={
-                Array [
+                [
                   "fill",
                   "fillRule",
                 ]
@@ -462,8 +462,8 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(0, 0%, 100%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -495,7 +495,7 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
 exports[`<Button /> should render button with icon with right iconPosition 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -503,7 +503,7 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -541,8 +541,8 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
@@ -563,7 +563,7 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
           "textDecorationStyle": "solid",
           "width": "auto",
         },
-        Object {
+        {
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
           "borderColor": "hsla(218, 89%, 51%, 1)",
         },
@@ -579,8 +579,8 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
       isHidden={false}
       justifyContent="center"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexBasis": 0,
@@ -589,7 +589,7 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
             "flexShrink": 1,
             "justifyContent": "center",
           },
-          Object {
+          {
             "opacity": 1,
           },
         ]
@@ -602,8 +602,8 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(0, 0%, 100%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -633,8 +633,8 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
         display="flex"
         justifyContent="center"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "display": "flex",
               "justifyContent": "center",
@@ -657,15 +657,15 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
           minX={0}
           minY={0}
           style={
-            Array [
-              Object {
+            [
+              {
                 "backgroundColor": "transparent",
                 "borderWidth": 0,
               },
-              Array [
-                Object {},
+              [
+                {},
               ],
-              Object {
+              {
                 "flex": 0,
                 "height": 16,
                 "width": 16,
@@ -679,7 +679,7 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
           <RNSVGGroup
             fill={null}
             propList={
-              Array [
+              [
                 "fill",
               ]
             }
@@ -690,7 +690,7 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
               fill={4294967295}
               fillRule={0}
               propList={
-                Array [
+                [
                   "fill",
                   "fillRule",
                 ]
@@ -707,7 +707,7 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
 exports[`<Button /> should render disabled button 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -715,7 +715,7 @@ exports[`<Button /> should render disabled button 1`] = `
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": true,
       }
     }
@@ -753,8 +753,8 @@ exports[`<Button /> should render disabled button 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(216, 19%, 89%, 1)",
@@ -775,7 +775,7 @@ exports[`<Button /> should render disabled button 1`] = `
           "textDecorationStyle": "solid",
           "width": "auto",
         },
-        Object {
+        {
           "backgroundColor": "hsla(216, 19%, 89%, 1)",
           "borderColor": "hsla(216, 19%, 89%, 1)",
         },
@@ -791,8 +791,8 @@ exports[`<Button /> should render disabled button 1`] = `
       isHidden={false}
       justifyContent="center"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexBasis": 0,
@@ -801,7 +801,7 @@ exports[`<Button /> should render disabled button 1`] = `
             "flexShrink": 1,
             "justifyContent": "center",
           },
-          Object {
+          {
             "opacity": 1,
           },
         ]
@@ -814,8 +814,8 @@ exports[`<Button /> should render disabled button 1`] = `
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(216, 16%, 60%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -847,7 +847,7 @@ exports[`<Button /> should render disabled button 1`] = `
 exports[`<Button /> should render disabled secondary variant button 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -855,7 +855,7 @@ exports[`<Button /> should render disabled secondary variant button 1`] = `
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": true,
       }
     }
@@ -893,8 +893,8 @@ exports[`<Button /> should render disabled secondary variant button 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(216, 44%, 23%, 0)",
@@ -915,7 +915,7 @@ exports[`<Button /> should render disabled secondary variant button 1`] = `
           "textDecorationStyle": "solid",
           "width": "auto",
         },
-        Object {
+        {
           "backgroundColor": "hsla(216, 44%, 23%, 0)",
           "borderColor": "hsla(218, 19%, 81%, 1)",
         },
@@ -931,8 +931,8 @@ exports[`<Button /> should render disabled secondary variant button 1`] = `
       isHidden={false}
       justifyContent="center"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexBasis": 0,
@@ -941,7 +941,7 @@ exports[`<Button /> should render disabled secondary variant button 1`] = `
             "flexShrink": 1,
             "justifyContent": "center",
           },
-          Object {
+          {
             "opacity": 1,
           },
         ]
@@ -954,8 +954,8 @@ exports[`<Button /> should render disabled secondary variant button 1`] = `
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(218, 19%, 81%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -987,7 +987,7 @@ exports[`<Button /> should render disabled secondary variant button 1`] = `
 exports[`<Button /> should render disabled tertiary variant button 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -995,7 +995,7 @@ exports[`<Button /> should render disabled tertiary variant button 1`] = `
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": true,
       }
     }
@@ -1033,8 +1033,8 @@ exports[`<Button /> should render disabled tertiary variant button 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(0, 0%, 100%, 1)",
@@ -1055,7 +1055,7 @@ exports[`<Button /> should render disabled tertiary variant button 1`] = `
           "textDecorationStyle": "solid",
           "width": "auto",
         },
-        Object {
+        {
           "backgroundColor": "hsla(0, 0%, 100%, 1)",
           "borderColor": "hsla(216, 19%, 89%, 1)",
         },
@@ -1071,8 +1071,8 @@ exports[`<Button /> should render disabled tertiary variant button 1`] = `
       isHidden={false}
       justifyContent="center"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexBasis": 0,
@@ -1081,7 +1081,7 @@ exports[`<Button /> should render disabled tertiary variant button 1`] = `
             "flexShrink": 1,
             "justifyContent": "center",
           },
-          Object {
+          {
             "opacity": 1,
           },
         ]
@@ -1094,8 +1094,8 @@ exports[`<Button /> should render disabled tertiary variant button 1`] = `
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(218, 19%, 81%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -1127,7 +1127,7 @@ exports[`<Button /> should render disabled tertiary variant button 1`] = `
 exports[`<Button /> should render large size button 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -1135,7 +1135,7 @@ exports[`<Button /> should render large size button 1`] = `
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -1173,8 +1173,8 @@ exports[`<Button /> should render large size button 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
@@ -1195,7 +1195,7 @@ exports[`<Button /> should render large size button 1`] = `
           "textDecorationStyle": "solid",
           "width": "auto",
         },
-        Object {
+        {
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
           "borderColor": "hsla(218, 89%, 51%, 1)",
         },
@@ -1211,8 +1211,8 @@ exports[`<Button /> should render large size button 1`] = `
       isHidden={false}
       justifyContent="center"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexBasis": 0,
@@ -1221,7 +1221,7 @@ exports[`<Button /> should render large size button 1`] = `
             "flexShrink": 1,
             "justifyContent": "center",
           },
-          Object {
+          {
             "opacity": 1,
           },
         ]
@@ -1234,8 +1234,8 @@ exports[`<Button /> should render large size button 1`] = `
         fontWeight="bold"
         lineHeight={300}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(0, 0%, 100%, 1)",
               "fontFamily": "Lato",
               "fontSize": 16,
@@ -1267,7 +1267,7 @@ exports[`<Button /> should render large size button 1`] = `
 exports[`<Button /> should render medium size button 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -1275,7 +1275,7 @@ exports[`<Button /> should render medium size button 1`] = `
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -1313,8 +1313,8 @@ exports[`<Button /> should render medium size button 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
@@ -1335,7 +1335,7 @@ exports[`<Button /> should render medium size button 1`] = `
           "textDecorationStyle": "solid",
           "width": "auto",
         },
-        Object {
+        {
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
           "borderColor": "hsla(218, 89%, 51%, 1)",
         },
@@ -1351,8 +1351,8 @@ exports[`<Button /> should render medium size button 1`] = `
       isHidden={false}
       justifyContent="center"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexBasis": 0,
@@ -1361,7 +1361,7 @@ exports[`<Button /> should render medium size button 1`] = `
             "flexShrink": 1,
             "justifyContent": "center",
           },
-          Object {
+          {
             "opacity": 1,
           },
         ]
@@ -1374,8 +1374,8 @@ exports[`<Button /> should render medium size button 1`] = `
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(0, 0%, 100%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -1407,7 +1407,7 @@ exports[`<Button /> should render medium size button 1`] = `
 exports[`<Button /> should render secondary variant button 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -1415,7 +1415,7 @@ exports[`<Button /> should render secondary variant button 1`] = `
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -1453,8 +1453,8 @@ exports[`<Button /> should render secondary variant button 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(218, 89%, 51%, 0)",
@@ -1475,7 +1475,7 @@ exports[`<Button /> should render secondary variant button 1`] = `
           "textDecorationStyle": "solid",
           "width": "auto",
         },
-        Object {
+        {
           "backgroundColor": "hsla(218, 89%, 51%, 0)",
           "borderColor": "hsla(218, 89%, 51%, 1)",
         },
@@ -1491,8 +1491,8 @@ exports[`<Button /> should render secondary variant button 1`] = `
       isHidden={false}
       justifyContent="center"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexBasis": 0,
@@ -1501,7 +1501,7 @@ exports[`<Button /> should render secondary variant button 1`] = `
             "flexShrink": 1,
             "justifyContent": "center",
           },
-          Object {
+          {
             "opacity": 1,
           },
         ]
@@ -1514,8 +1514,8 @@ exports[`<Button /> should render secondary variant button 1`] = `
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(218, 89%, 51%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -1547,7 +1547,7 @@ exports[`<Button /> should render secondary variant button 1`] = `
 exports[`<Button /> should render small size button 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -1555,7 +1555,7 @@ exports[`<Button /> should render small size button 1`] = `
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -1593,8 +1593,8 @@ exports[`<Button /> should render small size button 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
@@ -1615,7 +1615,7 @@ exports[`<Button /> should render small size button 1`] = `
           "textDecorationStyle": "solid",
           "width": "auto",
         },
-        Object {
+        {
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
           "borderColor": "hsla(218, 89%, 51%, 1)",
         },
@@ -1631,8 +1631,8 @@ exports[`<Button /> should render small size button 1`] = `
       isHidden={false}
       justifyContent="center"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexBasis": 0,
@@ -1641,7 +1641,7 @@ exports[`<Button /> should render small size button 1`] = `
             "flexShrink": 1,
             "justifyContent": "center",
           },
-          Object {
+          {
             "opacity": 1,
           },
         ]
@@ -1654,8 +1654,8 @@ exports[`<Button /> should render small size button 1`] = `
         fontWeight="bold"
         lineHeight={50}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(0, 0%, 100%, 1)",
               "fontFamily": "Lato",
               "fontSize": 12,
@@ -1687,7 +1687,7 @@ exports[`<Button /> should render small size button 1`] = `
 exports[`<Button /> should render tertiary variant button 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -1695,7 +1695,7 @@ exports[`<Button /> should render tertiary variant button 1`] = `
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -1733,8 +1733,8 @@ exports[`<Button /> should render tertiary variant button 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(0, 0%, 100%, 1)",
@@ -1755,7 +1755,7 @@ exports[`<Button /> should render tertiary variant button 1`] = `
           "textDecorationStyle": "solid",
           "width": "auto",
         },
-        Object {
+        {
           "backgroundColor": "hsla(0, 0%, 100%, 1)",
           "borderColor": "hsla(216, 19%, 89%, 1)",
         },
@@ -1771,8 +1771,8 @@ exports[`<Button /> should render tertiary variant button 1`] = `
       isHidden={false}
       justifyContent="center"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexBasis": 0,
@@ -1781,7 +1781,7 @@ exports[`<Button /> should render tertiary variant button 1`] = `
             "flexShrink": 1,
             "justifyContent": "center",
           },
-          Object {
+          {
             "opacity": 1,
           },
         ]
@@ -1794,8 +1794,8 @@ exports[`<Button /> should render tertiary variant button 1`] = `
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(216, 33%, 29%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -1827,7 +1827,7 @@ exports[`<Button /> should render tertiary variant button 1`] = `
 exports[`<Button /> should render xsmall size button 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -1835,7 +1835,7 @@ exports[`<Button /> should render xsmall size button 1`] = `
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -1873,8 +1873,8 @@ exports[`<Button /> should render xsmall size button 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
@@ -1895,7 +1895,7 @@ exports[`<Button /> should render xsmall size button 1`] = `
           "textDecorationStyle": "solid",
           "width": "auto",
         },
-        Object {
+        {
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
           "borderColor": "hsla(218, 89%, 51%, 1)",
         },
@@ -1911,8 +1911,8 @@ exports[`<Button /> should render xsmall size button 1`] = `
       isHidden={false}
       justifyContent="center"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexBasis": 0,
@@ -1921,7 +1921,7 @@ exports[`<Button /> should render xsmall size button 1`] = `
             "flexShrink": 1,
             "justifyContent": "center",
           },
-          Object {
+          {
             "opacity": 1,
           },
         ]
@@ -1934,8 +1934,8 @@ exports[`<Button /> should render xsmall size button 1`] = `
         fontWeight="bold"
         lineHeight={50}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(0, 0%, 100%, 1)",
               "fontFamily": "Lato",
               "fontSize": 12,

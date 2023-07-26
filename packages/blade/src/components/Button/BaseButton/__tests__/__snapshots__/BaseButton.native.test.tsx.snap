@@ -3,7 +3,7 @@
 exports[`<BaseButton /> should render button with default properties 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -11,7 +11,7 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -49,8 +49,8 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
@@ -71,7 +71,7 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
           "textDecorationStyle": "solid",
           "width": "auto",
         },
-        Object {
+        {
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
           "borderColor": "hsla(218, 89%, 51%, 1)",
         },
@@ -87,8 +87,8 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
       isHidden={false}
       justifyContent="center"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexBasis": 0,
@@ -97,7 +97,7 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
             "flexShrink": 1,
             "justifyContent": "center",
           },
-          Object {
+          {
             "opacity": 1,
           },
         ]
@@ -110,8 +110,8 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(0, 0%, 100%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -143,7 +143,7 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
 exports[`<BaseButton /> should render button with full width 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -151,7 +151,7 @@ exports[`<BaseButton /> should render button with full width 1`] = `
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -189,8 +189,8 @@ exports[`<BaseButton /> should render button with full width 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
@@ -211,7 +211,7 @@ exports[`<BaseButton /> should render button with full width 1`] = `
           "textDecorationStyle": "solid",
           "width": "100%",
         },
-        Object {
+        {
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
           "borderColor": "hsla(218, 89%, 51%, 1)",
         },
@@ -227,8 +227,8 @@ exports[`<BaseButton /> should render button with full width 1`] = `
       isHidden={false}
       justifyContent="center"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexBasis": 0,
@@ -237,7 +237,7 @@ exports[`<BaseButton /> should render button with full width 1`] = `
             "flexShrink": 1,
             "justifyContent": "center",
           },
-          Object {
+          {
             "opacity": 1,
           },
         ]
@@ -250,8 +250,8 @@ exports[`<BaseButton /> should render button with full width 1`] = `
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(0, 0%, 100%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -283,7 +283,7 @@ exports[`<BaseButton /> should render button with full width 1`] = `
 exports[`<BaseButton /> should render button with icon with default iconPosition 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -291,7 +291,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -329,8 +329,8 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
@@ -351,7 +351,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
           "textDecorationStyle": "solid",
           "width": "auto",
         },
-        Object {
+        {
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
           "borderColor": "hsla(218, 89%, 51%, 1)",
         },
@@ -367,8 +367,8 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
       isHidden={false}
       justifyContent="center"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexBasis": 0,
@@ -377,7 +377,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
             "flexShrink": 1,
             "justifyContent": "center",
           },
-          Object {
+          {
             "opacity": 1,
           },
         ]
@@ -389,8 +389,8 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
         display="flex"
         justifyContent="center"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "display": "flex",
               "justifyContent": "center",
@@ -413,15 +413,15 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
           minX={0}
           minY={0}
           style={
-            Array [
-              Object {
+            [
+              {
                 "backgroundColor": "transparent",
                 "borderWidth": 0,
               },
-              Array [
-                Object {},
+              [
+                {},
               ],
-              Object {
+              {
                 "flex": 0,
                 "height": 16,
                 "width": 16,
@@ -435,7 +435,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
           <RNSVGGroup
             fill={null}
             propList={
-              Array [
+              [
                 "fill",
               ]
             }
@@ -446,7 +446,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
               fill={4294967295}
               fillRule={0}
               propList={
-                Array [
+                [
                   "fill",
                   "fillRule",
                 ]
@@ -462,8 +462,8 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(0, 0%, 100%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -495,7 +495,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
 exports[`<BaseButton /> should render button with icon with left iconPosition 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -503,7 +503,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -541,8 +541,8 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
@@ -563,7 +563,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
           "textDecorationStyle": "solid",
           "width": "auto",
         },
-        Object {
+        {
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
           "borderColor": "hsla(218, 89%, 51%, 1)",
         },
@@ -579,8 +579,8 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
       isHidden={false}
       justifyContent="center"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexBasis": 0,
@@ -589,7 +589,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
             "flexShrink": 1,
             "justifyContent": "center",
           },
-          Object {
+          {
             "opacity": 1,
           },
         ]
@@ -601,8 +601,8 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
         display="flex"
         justifyContent="center"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "display": "flex",
               "justifyContent": "center",
@@ -625,15 +625,15 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
           minX={0}
           minY={0}
           style={
-            Array [
-              Object {
+            [
+              {
                 "backgroundColor": "transparent",
                 "borderWidth": 0,
               },
-              Array [
-                Object {},
+              [
+                {},
               ],
-              Object {
+              {
                 "flex": 0,
                 "height": 16,
                 "width": 16,
@@ -647,7 +647,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
           <RNSVGGroup
             fill={null}
             propList={
-              Array [
+              [
                 "fill",
               ]
             }
@@ -658,7 +658,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
               fill={4294967295}
               fillRule={0}
               propList={
-                Array [
+                [
                   "fill",
                   "fillRule",
                 ]
@@ -674,8 +674,8 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(0, 0%, 100%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -707,7 +707,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
 exports[`<BaseButton /> should render button with icon with right iconPosition 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -715,7 +715,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -753,8 +753,8 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
@@ -775,7 +775,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
           "textDecorationStyle": "solid",
           "width": "auto",
         },
-        Object {
+        {
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
           "borderColor": "hsla(218, 89%, 51%, 1)",
         },
@@ -791,8 +791,8 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
       isHidden={false}
       justifyContent="center"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexBasis": 0,
@@ -801,7 +801,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
             "flexShrink": 1,
             "justifyContent": "center",
           },
-          Object {
+          {
             "opacity": 1,
           },
         ]
@@ -814,8 +814,8 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(0, 0%, 100%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -845,8 +845,8 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
         display="flex"
         justifyContent="center"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "display": "flex",
               "justifyContent": "center",
@@ -869,15 +869,15 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
           minX={0}
           minY={0}
           style={
-            Array [
-              Object {
+            [
+              {
                 "backgroundColor": "transparent",
                 "borderWidth": 0,
               },
-              Array [
-                Object {},
+              [
+                {},
               ],
-              Object {
+              {
                 "flex": 0,
                 "height": 16,
                 "width": 16,
@@ -891,7 +891,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
           <RNSVGGroup
             fill={null}
             propList={
-              Array [
+              [
                 "fill",
               ]
             }
@@ -902,7 +902,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
               fill={4294967295}
               fillRule={0}
               propList={
-                Array [
+                [
                   "fill",
                   "fillRule",
                 ]
@@ -919,7 +919,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
 exports[`<BaseButton /> should render button with icon without text 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -927,7 +927,7 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -965,8 +965,8 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
@@ -987,7 +987,7 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
           "textDecorationStyle": "solid",
           "width": "auto",
         },
-        Object {
+        {
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
           "borderColor": "hsla(218, 89%, 51%, 1)",
         },
@@ -1003,8 +1003,8 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
       isHidden={false}
       justifyContent="center"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexBasis": 0,
@@ -1013,7 +1013,7 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
             "flexShrink": 1,
             "justifyContent": "center",
           },
-          Object {
+          {
             "opacity": 1,
           },
         ]
@@ -1025,8 +1025,8 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
         display="flex"
         justifyContent="center"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "display": "flex",
               "justifyContent": "center",
@@ -1048,15 +1048,15 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
           minX={0}
           minY={0}
           style={
-            Array [
-              Object {
+            [
+              {
                 "backgroundColor": "transparent",
                 "borderWidth": 0,
               },
-              Array [
-                Object {},
+              [
+                {},
               ],
-              Object {
+              {
                 "flex": 0,
                 "height": 20,
                 "width": 20,
@@ -1070,7 +1070,7 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
           <RNSVGGroup
             fill={null}
             propList={
-              Array [
+              [
                 "fill",
               ]
             }
@@ -1081,7 +1081,7 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
               fill={4294967295}
               fillRule={0}
               propList={
-                Array [
+                [
                   "fill",
                   "fillRule",
                 ]
@@ -1098,7 +1098,7 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
 exports[`<BaseButton /> should render disabled button 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -1106,7 +1106,7 @@ exports[`<BaseButton /> should render disabled button 1`] = `
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": true,
       }
     }
@@ -1144,8 +1144,8 @@ exports[`<BaseButton /> should render disabled button 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(216, 19%, 89%, 1)",
@@ -1166,7 +1166,7 @@ exports[`<BaseButton /> should render disabled button 1`] = `
           "textDecorationStyle": "solid",
           "width": "auto",
         },
-        Object {
+        {
           "backgroundColor": "hsla(216, 19%, 89%, 1)",
           "borderColor": "hsla(216, 19%, 89%, 1)",
         },
@@ -1182,8 +1182,8 @@ exports[`<BaseButton /> should render disabled button 1`] = `
       isHidden={false}
       justifyContent="center"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexBasis": 0,
@@ -1192,7 +1192,7 @@ exports[`<BaseButton /> should render disabled button 1`] = `
             "flexShrink": 1,
             "justifyContent": "center",
           },
-          Object {
+          {
             "opacity": 1,
           },
         ]
@@ -1205,8 +1205,8 @@ exports[`<BaseButton /> should render disabled button 1`] = `
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(216, 16%, 60%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -1238,7 +1238,7 @@ exports[`<BaseButton /> should render disabled button 1`] = `
 exports[`<BaseButton /> should render disabled information intent high contrast button 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -1246,7 +1246,7 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": true,
       }
     }
@@ -1284,8 +1284,8 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(193, 100%, 35%, 1)",
@@ -1306,7 +1306,7 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
           "textDecorationStyle": "solid",
           "width": "auto",
         },
-        Object {
+        {
           "backgroundColor": "hsla(193, 100%, 35%, 1)",
           "borderColor": "hsla(187, 68%, 52%, 1)",
         },
@@ -1322,8 +1322,8 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
       isHidden={false}
       justifyContent="center"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexBasis": 0,
@@ -1332,7 +1332,7 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
             "flexShrink": 1,
             "justifyContent": "center",
           },
-          Object {
+          {
             "opacity": 1,
           },
         ]
@@ -1345,8 +1345,8 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(187, 68%, 52%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -1378,7 +1378,7 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
 exports[`<BaseButton /> should render disabled information intent low contrast button 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -1386,7 +1386,7 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": true,
       }
     }
@@ -1424,8 +1424,8 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(193, 100%, 35%, 0.09)",
@@ -1446,7 +1446,7 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
           "textDecorationStyle": "solid",
           "width": "auto",
         },
-        Object {
+        {
           "backgroundColor": "hsla(193, 100%, 35%, 0.09)",
           "borderColor": "hsla(193, 100%, 35%, 0.32)",
         },
@@ -1462,8 +1462,8 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
       isHidden={false}
       justifyContent="center"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexBasis": 0,
@@ -1472,7 +1472,7 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
             "flexShrink": 1,
             "justifyContent": "center",
           },
-          Object {
+          {
             "opacity": 1,
           },
         ]
@@ -1485,8 +1485,8 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(193, 100%, 35%, 0.32)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -1518,7 +1518,7 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
 exports[`<BaseButton /> should render disabled negative intent high contrast button 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -1526,7 +1526,7 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": true,
       }
     }
@@ -1564,8 +1564,8 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(8, 73%, 47%, 1)",
@@ -1586,7 +1586,7 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
           "textDecorationStyle": "solid",
           "width": "auto",
         },
-        Object {
+        {
           "backgroundColor": "hsla(8, 73%, 47%, 1)",
           "borderColor": "hsla(8, 99%, 65%, 1)",
         },
@@ -1602,8 +1602,8 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
       isHidden={false}
       justifyContent="center"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexBasis": 0,
@@ -1612,7 +1612,7 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
             "flexShrink": 1,
             "justifyContent": "center",
           },
-          Object {
+          {
             "opacity": 1,
           },
         ]
@@ -1625,8 +1625,8 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(8, 99%, 65%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -1658,7 +1658,7 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
 exports[`<BaseButton /> should render disabled negative intent low contrast button 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -1666,7 +1666,7 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": true,
       }
     }
@@ -1704,8 +1704,8 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(9, 91%, 56%, 0.09)",
@@ -1726,7 +1726,7 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
           "textDecorationStyle": "solid",
           "width": "auto",
         },
-        Object {
+        {
           "backgroundColor": "hsla(9, 91%, 56%, 0.09)",
           "borderColor": "hsla(9, 91%, 56%, 0.32)",
         },
@@ -1742,8 +1742,8 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
       isHidden={false}
       justifyContent="center"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexBasis": 0,
@@ -1752,7 +1752,7 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
             "flexShrink": 1,
             "justifyContent": "center",
           },
-          Object {
+          {
             "opacity": 1,
           },
         ]
@@ -1765,8 +1765,8 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(9, 91%, 56%, 0.32)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -1798,7 +1798,7 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
 exports[`<BaseButton /> should render disabled neutral intent high contrast button 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -1806,7 +1806,7 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": true,
       }
     }
@@ -1844,8 +1844,8 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(216, 33%, 29%, 1)",
@@ -1866,7 +1866,7 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
           "textDecorationStyle": "solid",
           "width": "auto",
         },
-        Object {
+        {
           "backgroundColor": "hsla(216, 33%, 29%, 1)",
           "borderColor": "hsla(216, 15%, 54%, 1)",
         },
@@ -1882,8 +1882,8 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
       isHidden={false}
       justifyContent="center"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexBasis": 0,
@@ -1892,7 +1892,7 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
             "flexShrink": 1,
             "justifyContent": "center",
           },
-          Object {
+          {
             "opacity": 1,
           },
         ]
@@ -1905,8 +1905,8 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(216, 15%, 54%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -1938,7 +1938,7 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
 exports[`<BaseButton /> should render disabled neutral intent low contrast button 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -1946,7 +1946,7 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": true,
       }
     }
@@ -1984,8 +1984,8 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
@@ -2006,7 +2006,7 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
           "textDecorationStyle": "solid",
           "width": "auto",
         },
-        Object {
+        {
           "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
           "borderColor": "hsla(216, 15%, 54%, 0.32)",
         },
@@ -2022,8 +2022,8 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
       isHidden={false}
       justifyContent="center"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexBasis": 0,
@@ -2032,7 +2032,7 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
             "flexShrink": 1,
             "justifyContent": "center",
           },
-          Object {
+          {
             "opacity": 1,
           },
         ]
@@ -2045,8 +2045,8 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(216, 15%, 54%, 0.32)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -2078,7 +2078,7 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
 exports[`<BaseButton /> should render disabled notice intent high contrast button 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -2086,7 +2086,7 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": true,
       }
     }
@@ -2124,8 +2124,8 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(38, 97%, 38%, 1)",
@@ -2146,7 +2146,7 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
           "textDecorationStyle": "solid",
           "width": "auto",
         },
-        Object {
+        {
           "backgroundColor": "hsla(38, 97%, 38%, 1)",
           "borderColor": "hsla(35, 84%, 54%, 1)",
         },
@@ -2162,8 +2162,8 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
       isHidden={false}
       justifyContent="center"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexBasis": 0,
@@ -2172,7 +2172,7 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
             "flexShrink": 1,
             "justifyContent": "center",
           },
-          Object {
+          {
             "opacity": 1,
           },
         ]
@@ -2185,8 +2185,8 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(35, 84%, 54%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -2218,7 +2218,7 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
 exports[`<BaseButton /> should render disabled notice intent low contrast button 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -2226,7 +2226,7 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": true,
       }
     }
@@ -2264,8 +2264,8 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(36, 100%, 44%, 0.09)",
@@ -2286,7 +2286,7 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
           "textDecorationStyle": "solid",
           "width": "auto",
         },
-        Object {
+        {
           "backgroundColor": "hsla(36, 100%, 44%, 0.09)",
           "borderColor": "hsla(36, 100%, 44%, 0.32)",
         },
@@ -2302,8 +2302,8 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
       isHidden={false}
       justifyContent="center"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexBasis": 0,
@@ -2312,7 +2312,7 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
             "flexShrink": 1,
             "justifyContent": "center",
           },
-          Object {
+          {
             "opacity": 1,
           },
         ]
@@ -2325,8 +2325,8 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(36, 100%, 44%, 0.32)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -2358,7 +2358,7 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
 exports[`<BaseButton /> should render disabled positive intent high contrast button 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -2366,7 +2366,7 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": true,
       }
     }
@@ -2404,8 +2404,8 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(160, 100%, 26%, 1)",
@@ -2426,7 +2426,7 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
           "textDecorationStyle": "solid",
           "width": "auto",
         },
-        Object {
+        {
           "backgroundColor": "hsla(160, 100%, 26%, 1)",
           "borderColor": "hsla(149, 99%, 35%, 1)",
         },
@@ -2442,8 +2442,8 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
       isHidden={false}
       justifyContent="center"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexBasis": 0,
@@ -2452,7 +2452,7 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
             "flexShrink": 1,
             "justifyContent": "center",
           },
-          Object {
+          {
             "opacity": 1,
           },
         ]
@@ -2465,8 +2465,8 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(149, 99%, 35%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -2498,7 +2498,7 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
 exports[`<BaseButton /> should render disabled positive intent low contrast button 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -2506,7 +2506,7 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": true,
       }
     }
@@ -2544,8 +2544,8 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
@@ -2566,7 +2566,7 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
           "textDecorationStyle": "solid",
           "width": "auto",
         },
-        Object {
+        {
           "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
           "borderColor": "hsla(155, 100%, 31%, 0.32)",
         },
@@ -2582,8 +2582,8 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
       isHidden={false}
       justifyContent="center"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexBasis": 0,
@@ -2592,7 +2592,7 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
             "flexShrink": 1,
             "justifyContent": "center",
           },
-          Object {
+          {
             "opacity": 1,
           },
         ]
@@ -2605,8 +2605,8 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(155, 100%, 31%, 0.32)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -2638,7 +2638,7 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
 exports[`<BaseButton /> should render disabled secondary variant button 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -2646,7 +2646,7 @@ exports[`<BaseButton /> should render disabled secondary variant button 1`] = `
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": true,
       }
     }
@@ -2684,8 +2684,8 @@ exports[`<BaseButton /> should render disabled secondary variant button 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(216, 44%, 23%, 0)",
@@ -2706,7 +2706,7 @@ exports[`<BaseButton /> should render disabled secondary variant button 1`] = `
           "textDecorationStyle": "solid",
           "width": "auto",
         },
-        Object {
+        {
           "backgroundColor": "hsla(216, 44%, 23%, 0)",
           "borderColor": "hsla(218, 19%, 81%, 1)",
         },
@@ -2722,8 +2722,8 @@ exports[`<BaseButton /> should render disabled secondary variant button 1`] = `
       isHidden={false}
       justifyContent="center"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexBasis": 0,
@@ -2732,7 +2732,7 @@ exports[`<BaseButton /> should render disabled secondary variant button 1`] = `
             "flexShrink": 1,
             "justifyContent": "center",
           },
-          Object {
+          {
             "opacity": 1,
           },
         ]
@@ -2745,8 +2745,8 @@ exports[`<BaseButton /> should render disabled secondary variant button 1`] = `
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(218, 19%, 81%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -2778,7 +2778,7 @@ exports[`<BaseButton /> should render disabled secondary variant button 1`] = `
 exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -2786,7 +2786,7 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": true,
       }
     }
@@ -2824,8 +2824,8 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(0, 0%, 100%, 1)",
@@ -2846,7 +2846,7 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
           "textDecorationStyle": "solid",
           "width": "auto",
         },
-        Object {
+        {
           "backgroundColor": "hsla(0, 0%, 100%, 1)",
           "borderColor": "hsla(216, 19%, 89%, 1)",
         },
@@ -2862,8 +2862,8 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
       isHidden={false}
       justifyContent="center"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexBasis": 0,
@@ -2872,7 +2872,7 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
             "flexShrink": 1,
             "justifyContent": "center",
           },
-          Object {
+          {
             "opacity": 1,
           },
         ]
@@ -2885,8 +2885,8 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(218, 19%, 81%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -2918,7 +2918,7 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
 exports[`<BaseButton /> should render information intent high contrast button 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -2926,7 +2926,7 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -2964,8 +2964,8 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(193, 100%, 35%, 1)",
@@ -2986,7 +2986,7 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
           "textDecorationStyle": "solid",
           "width": "auto",
         },
-        Object {
+        {
           "backgroundColor": "hsla(193, 100%, 35%, 1)",
           "borderColor": "hsla(180, 100%, 97%, 1)",
         },
@@ -3002,8 +3002,8 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
       isHidden={false}
       justifyContent="center"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexBasis": 0,
@@ -3012,7 +3012,7 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
             "flexShrink": 1,
             "justifyContent": "center",
           },
-          Object {
+          {
             "opacity": 1,
           },
         ]
@@ -3025,8 +3025,8 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(180, 100%, 97%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -3058,7 +3058,7 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
 exports[`<BaseButton /> should render information intent low contrast button 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -3066,7 +3066,7 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -3104,8 +3104,8 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(193, 100%, 35%, 0.09)",
@@ -3126,7 +3126,7 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
           "textDecorationStyle": "solid",
           "width": "auto",
         },
-        Object {
+        {
           "backgroundColor": "hsla(193, 100%, 35%, 0.09)",
           "borderColor": "hsla(193, 100%, 35%, 0.32)",
         },
@@ -3142,8 +3142,8 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
       isHidden={false}
       justifyContent="center"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexBasis": 0,
@@ -3152,7 +3152,7 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
             "flexShrink": 1,
             "justifyContent": "center",
           },
-          Object {
+          {
             "opacity": 1,
           },
         ]
@@ -3165,8 +3165,8 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(195, 100%, 31%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -3198,7 +3198,7 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
 exports[`<BaseButton /> should render large size button 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -3206,7 +3206,7 @@ exports[`<BaseButton /> should render large size button 1`] = `
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -3244,8 +3244,8 @@ exports[`<BaseButton /> should render large size button 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
@@ -3266,7 +3266,7 @@ exports[`<BaseButton /> should render large size button 1`] = `
           "textDecorationStyle": "solid",
           "width": "auto",
         },
-        Object {
+        {
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
           "borderColor": "hsla(218, 89%, 51%, 1)",
         },
@@ -3282,8 +3282,8 @@ exports[`<BaseButton /> should render large size button 1`] = `
       isHidden={false}
       justifyContent="center"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexBasis": 0,
@@ -3292,7 +3292,7 @@ exports[`<BaseButton /> should render large size button 1`] = `
             "flexShrink": 1,
             "justifyContent": "center",
           },
-          Object {
+          {
             "opacity": 1,
           },
         ]
@@ -3305,8 +3305,8 @@ exports[`<BaseButton /> should render large size button 1`] = `
         fontWeight="bold"
         lineHeight={300}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(0, 0%, 100%, 1)",
               "fontFamily": "Lato",
               "fontSize": 16,
@@ -3338,7 +3338,7 @@ exports[`<BaseButton /> should render large size button 1`] = `
 exports[`<BaseButton /> should render loading button 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -3346,7 +3346,7 @@ exports[`<BaseButton /> should render loading button 1`] = `
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": true,
       }
     }
@@ -3384,8 +3384,8 @@ exports[`<BaseButton /> should render loading button 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(216, 19%, 89%, 1)",
@@ -3406,7 +3406,7 @@ exports[`<BaseButton /> should render loading button 1`] = `
           "textDecorationStyle": "solid",
           "width": "auto",
         },
-        Object {
+        {
           "backgroundColor": "hsla(216, 19%, 89%, 1)",
           "borderColor": "hsla(216, 19%, 89%, 1)",
         },
@@ -3424,8 +3424,8 @@ exports[`<BaseButton /> should render loading button 1`] = `
       position="absolute"
       right="0px"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "bottom": 0,
             "display": "flex",
@@ -3442,8 +3442,8 @@ exports[`<BaseButton /> should render loading button 1`] = `
       <View
         data-blade-component="spinner"
         style={
-          Array [
-            Object {},
+          [
+            {},
           ]
         }
       >
@@ -3455,8 +3455,8 @@ exports[`<BaseButton /> should render loading button 1`] = `
           display="flex"
           flexDirection="row"
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "display": "flex",
                 "flexDirection": "row",
@@ -3468,8 +3468,8 @@ exports[`<BaseButton /> should render loading button 1`] = `
             alignSelf="center"
             data-blade-component="base-box"
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignSelf": "center",
                 },
               ]
@@ -3477,9 +3477,9 @@ exports[`<BaseButton /> should render loading button 1`] = `
           >
             <View
               style={
-                Object {
-                  "transform": Array [
-                    Object {
+                {
+                  "transform": [
+                    {
                       "rotateZ": "0deg",
                     },
                   ],
@@ -3500,15 +3500,15 @@ exports[`<BaseButton /> should render loading button 1`] = `
                 minX={0}
                 minY={0}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "transparent",
                       "borderWidth": 0,
                     },
-                    Array [
-                      Object {},
+                    [
+                      {},
                     ],
-                    Object {
+                    {
                       "flex": 0,
                       "height": 20,
                       "width": 20,
@@ -3522,7 +3522,7 @@ exports[`<BaseButton /> should render loading button 1`] = `
                 <RNSVGGroup
                   fill={null}
                   propList={
-                    Array [
+                    [
                       "fill",
                     ]
                   }
@@ -3532,7 +3532,7 @@ exports[`<BaseButton /> should render loading button 1`] = `
                     fill={4284378759}
                     fillOpacity={0.2}
                     propList={
-                      Array [
+                      [
                         "fill",
                         "fillOpacity",
                       ]
@@ -3542,7 +3542,7 @@ exports[`<BaseButton /> should render loading button 1`] = `
                     d="M24 12C24 13.8937 23.5518 15.7606 22.6921 17.4479C21.8324 19.1352 20.5855 20.5951 19.0534 21.7082C17.5214 22.8213 15.7476 23.556 13.8772 23.8523C12.0068 24.1485 10.0928 23.9979 8.29181 23.4127L9.21886 20.5595C10.5696 20.9984 12.0051 21.1114 13.4079 20.8892C14.8107 20.667 16.141 20.116 17.2901 19.2812C18.4391 18.4463 19.3743 17.3514 20.0191 16.0859C20.6639 14.8204 21 13.4203 21 12H24Z"
                     fill={4284378759}
                     propList={
-                      Array [
+                      [
                         "fill",
                       ]
                     }
@@ -3551,7 +3551,7 @@ exports[`<BaseButton /> should render loading button 1`] = `
                     d="M-1.33514e-05 12C-1.33514e-05 10.1063 0.448176 8.23944 1.30791 6.55211C2.16764 4.86479 3.41451 3.4049 4.94656 2.2918C6.47862 1.17869 8.25236 0.443983 10.1228 0.147739C11.9932 -0.148504 13.9072 0.00212896 15.7082 0.587322L14.7811 3.44049C13.4304 3.0016 11.9949 2.88862 10.5921 3.11081C9.18927 3.33299 7.85896 3.88402 6.70992 4.71885C5.56088 5.55367 4.62573 6.64859 3.98093 7.91409C3.33613 9.17958 2.99999 10.5797 2.99999 12H-1.33514e-05Z"
                     fill={4284378759}
                     propList={
-                      Array [
+                      [
                         "fill",
                       ]
                     }
@@ -3571,8 +3571,8 @@ exports[`<BaseButton /> should render loading button 1`] = `
       isHidden={true}
       justifyContent="center"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexBasis": 0,
@@ -3581,7 +3581,7 @@ exports[`<BaseButton /> should render loading button 1`] = `
             "flexShrink": 1,
             "justifyContent": "center",
           },
-          Object {
+          {
             "opacity": 0,
           },
         ]
@@ -3594,8 +3594,8 @@ exports[`<BaseButton /> should render loading button 1`] = `
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(216, 16%, 60%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -3627,7 +3627,7 @@ exports[`<BaseButton /> should render loading button 1`] = `
 exports[`<BaseButton /> should render medium size button 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -3635,7 +3635,7 @@ exports[`<BaseButton /> should render medium size button 1`] = `
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -3673,8 +3673,8 @@ exports[`<BaseButton /> should render medium size button 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
@@ -3695,7 +3695,7 @@ exports[`<BaseButton /> should render medium size button 1`] = `
           "textDecorationStyle": "solid",
           "width": "auto",
         },
-        Object {
+        {
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
           "borderColor": "hsla(218, 89%, 51%, 1)",
         },
@@ -3711,8 +3711,8 @@ exports[`<BaseButton /> should render medium size button 1`] = `
       isHidden={false}
       justifyContent="center"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexBasis": 0,
@@ -3721,7 +3721,7 @@ exports[`<BaseButton /> should render medium size button 1`] = `
             "flexShrink": 1,
             "justifyContent": "center",
           },
-          Object {
+          {
             "opacity": 1,
           },
         ]
@@ -3734,8 +3734,8 @@ exports[`<BaseButton /> should render medium size button 1`] = `
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(0, 0%, 100%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -3767,7 +3767,7 @@ exports[`<BaseButton /> should render medium size button 1`] = `
 exports[`<BaseButton /> should render negative intent high contrast button 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -3775,7 +3775,7 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -3813,8 +3813,8 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(8, 73%, 47%, 1)",
@@ -3835,7 +3835,7 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
           "textDecorationStyle": "solid",
           "width": "auto",
         },
-        Object {
+        {
           "backgroundColor": "hsla(8, 73%, 47%, 1)",
           "borderColor": "hsla(0, 100%, 97%, 1)",
         },
@@ -3851,8 +3851,8 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
       isHidden={false}
       justifyContent="center"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexBasis": 0,
@@ -3861,7 +3861,7 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
             "flexShrink": 1,
             "justifyContent": "center",
           },
-          Object {
+          {
             "opacity": 1,
           },
         ]
@@ -3874,8 +3874,8 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(0, 100%, 97%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -3907,7 +3907,7 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
 exports[`<BaseButton /> should render negative intent low contrast button 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -3915,7 +3915,7 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -3953,8 +3953,8 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(9, 91%, 56%, 0.09)",
@@ -3975,7 +3975,7 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
           "textDecorationStyle": "solid",
           "width": "auto",
         },
-        Object {
+        {
           "backgroundColor": "hsla(9, 91%, 56%, 0.09)",
           "borderColor": "hsla(9, 91%, 56%, 0.32)",
         },
@@ -3991,8 +3991,8 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
       isHidden={false}
       justifyContent="center"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexBasis": 0,
@@ -4001,7 +4001,7 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
             "flexShrink": 1,
             "justifyContent": "center",
           },
-          Object {
+          {
             "opacity": 1,
           },
         ]
@@ -4014,8 +4014,8 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(8, 73%, 47%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -4047,7 +4047,7 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
 exports[`<BaseButton /> should render neutral intent high contrast button 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -4055,7 +4055,7 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -4093,8 +4093,8 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(216, 33%, 29%, 1)",
@@ -4115,7 +4115,7 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
           "textDecorationStyle": "solid",
           "width": "auto",
         },
-        Object {
+        {
           "backgroundColor": "hsla(216, 33%, 29%, 1)",
           "borderColor": "hsla(214, 18%, 69%, 1)",
         },
@@ -4131,8 +4131,8 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
       isHidden={false}
       justifyContent="center"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexBasis": 0,
@@ -4141,7 +4141,7 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
             "flexShrink": 1,
             "justifyContent": "center",
           },
-          Object {
+          {
             "opacity": 1,
           },
         ]
@@ -4154,8 +4154,8 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(220, 27%, 98%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -4187,7 +4187,7 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
 exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -4195,7 +4195,7 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -4233,8 +4233,8 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
@@ -4255,7 +4255,7 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
           "textDecorationStyle": "solid",
           "width": "auto",
         },
-        Object {
+        {
           "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
           "borderColor": "hsla(216, 15%, 54%, 0.32)",
         },
@@ -4271,8 +4271,8 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
       isHidden={false}
       justifyContent="center"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexBasis": 0,
@@ -4281,7 +4281,7 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
             "flexShrink": 1,
             "justifyContent": "center",
           },
-          Object {
+          {
             "opacity": 1,
           },
         ]
@@ -4294,8 +4294,8 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(216, 27%, 36%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -4327,7 +4327,7 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
 exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -4335,7 +4335,7 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -4373,8 +4373,8 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(38, 97%, 38%, 1)",
@@ -4395,7 +4395,7 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
           "textDecorationStyle": "solid",
           "width": "auto",
         },
-        Object {
+        {
           "backgroundColor": "hsla(38, 97%, 38%, 1)",
           "borderColor": "hsla(32, 100%, 94%, 1)",
         },
@@ -4411,8 +4411,8 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
       isHidden={false}
       justifyContent="center"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexBasis": 0,
@@ -4421,7 +4421,7 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
             "flexShrink": 1,
             "justifyContent": "center",
           },
-          Object {
+          {
             "opacity": 1,
           },
         ]
@@ -4434,8 +4434,8 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(32, 100%, 94%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -4467,7 +4467,7 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
 exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -4475,7 +4475,7 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -4513,8 +4513,8 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(36, 100%, 44%, 0.09)",
@@ -4535,7 +4535,7 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
           "textDecorationStyle": "solid",
           "width": "auto",
         },
-        Object {
+        {
           "backgroundColor": "hsla(36, 100%, 44%, 0.09)",
           "borderColor": "hsla(36, 100%, 44%, 0.32)",
         },
@@ -4551,8 +4551,8 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
       isHidden={false}
       justifyContent="center"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexBasis": 0,
@@ -4561,7 +4561,7 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
             "flexShrink": 1,
             "justifyContent": "center",
           },
-          Object {
+          {
             "opacity": 1,
           },
         ]
@@ -4574,8 +4574,8 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(38, 97%, 38%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -4607,7 +4607,7 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
 exports[`<BaseButton /> should render positive intent high contrast button 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -4615,7 +4615,7 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -4653,8 +4653,8 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(160, 100%, 26%, 1)",
@@ -4675,7 +4675,7 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
           "textDecorationStyle": "solid",
           "width": "auto",
         },
-        Object {
+        {
           "backgroundColor": "hsla(160, 100%, 26%, 1)",
           "borderColor": "hsla(107, 100%, 96%, 1)",
         },
@@ -4691,8 +4691,8 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
       isHidden={false}
       justifyContent="center"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexBasis": 0,
@@ -4701,7 +4701,7 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
             "flexShrink": 1,
             "justifyContent": "center",
           },
-          Object {
+          {
             "opacity": 1,
           },
         ]
@@ -4714,8 +4714,8 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(107, 100%, 96%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -4747,7 +4747,7 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
 exports[`<BaseButton /> should render positive intent low contrast button 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -4755,7 +4755,7 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -4793,8 +4793,8 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
@@ -4815,7 +4815,7 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
           "textDecorationStyle": "solid",
           "width": "auto",
         },
-        Object {
+        {
           "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
           "borderColor": "hsla(155, 100%, 31%, 0.32)",
         },
@@ -4831,8 +4831,8 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
       isHidden={false}
       justifyContent="center"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexBasis": 0,
@@ -4841,7 +4841,7 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
             "flexShrink": 1,
             "justifyContent": "center",
           },
-          Object {
+          {
             "opacity": 1,
           },
         ]
@@ -4854,8 +4854,8 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(160, 100%, 26%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -4887,7 +4887,7 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
 exports[`<BaseButton /> should render secondary variant button 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -4895,7 +4895,7 @@ exports[`<BaseButton /> should render secondary variant button 1`] = `
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -4933,8 +4933,8 @@ exports[`<BaseButton /> should render secondary variant button 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(218, 89%, 51%, 0)",
@@ -4955,7 +4955,7 @@ exports[`<BaseButton /> should render secondary variant button 1`] = `
           "textDecorationStyle": "solid",
           "width": "auto",
         },
-        Object {
+        {
           "backgroundColor": "hsla(218, 89%, 51%, 0)",
           "borderColor": "hsla(218, 89%, 51%, 1)",
         },
@@ -4971,8 +4971,8 @@ exports[`<BaseButton /> should render secondary variant button 1`] = `
       isHidden={false}
       justifyContent="center"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexBasis": 0,
@@ -4981,7 +4981,7 @@ exports[`<BaseButton /> should render secondary variant button 1`] = `
             "flexShrink": 1,
             "justifyContent": "center",
           },
-          Object {
+          {
             "opacity": 1,
           },
         ]
@@ -4994,8 +4994,8 @@ exports[`<BaseButton /> should render secondary variant button 1`] = `
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(218, 89%, 51%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -5027,7 +5027,7 @@ exports[`<BaseButton /> should render secondary variant button 1`] = `
 exports[`<BaseButton /> should render small size button 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -5035,7 +5035,7 @@ exports[`<BaseButton /> should render small size button 1`] = `
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -5073,8 +5073,8 @@ exports[`<BaseButton /> should render small size button 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
@@ -5095,7 +5095,7 @@ exports[`<BaseButton /> should render small size button 1`] = `
           "textDecorationStyle": "solid",
           "width": "auto",
         },
-        Object {
+        {
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
           "borderColor": "hsla(218, 89%, 51%, 1)",
         },
@@ -5111,8 +5111,8 @@ exports[`<BaseButton /> should render small size button 1`] = `
       isHidden={false}
       justifyContent="center"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexBasis": 0,
@@ -5121,7 +5121,7 @@ exports[`<BaseButton /> should render small size button 1`] = `
             "flexShrink": 1,
             "justifyContent": "center",
           },
-          Object {
+          {
             "opacity": 1,
           },
         ]
@@ -5134,8 +5134,8 @@ exports[`<BaseButton /> should render small size button 1`] = `
         fontWeight="bold"
         lineHeight={50}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(0, 0%, 100%, 1)",
               "fontFamily": "Lato",
               "fontSize": 12,
@@ -5167,7 +5167,7 @@ exports[`<BaseButton /> should render small size button 1`] = `
 exports[`<BaseButton /> should render tertiary variant button 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -5175,7 +5175,7 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -5213,8 +5213,8 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(0, 0%, 100%, 1)",
@@ -5235,7 +5235,7 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
           "textDecorationStyle": "solid",
           "width": "auto",
         },
-        Object {
+        {
           "backgroundColor": "hsla(0, 0%, 100%, 1)",
           "borderColor": "hsla(216, 19%, 89%, 1)",
         },
@@ -5251,8 +5251,8 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
       isHidden={false}
       justifyContent="center"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexBasis": 0,
@@ -5261,7 +5261,7 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
             "flexShrink": 1,
             "justifyContent": "center",
           },
-          Object {
+          {
             "opacity": 1,
           },
         ]
@@ -5274,8 +5274,8 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(216, 33%, 29%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -5307,7 +5307,7 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
 exports[`<BaseButton /> should render xsmall size button 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -5315,7 +5315,7 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -5353,8 +5353,8 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
@@ -5375,7 +5375,7 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
           "textDecorationStyle": "solid",
           "width": "auto",
         },
-        Object {
+        {
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
           "borderColor": "hsla(218, 89%, 51%, 1)",
         },
@@ -5391,8 +5391,8 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
       isHidden={false}
       justifyContent="center"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexBasis": 0,
@@ -5401,7 +5401,7 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
             "flexShrink": 1,
             "justifyContent": "center",
           },
-          Object {
+          {
             "opacity": 1,
           },
         ]
@@ -5414,8 +5414,8 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
         fontWeight="bold"
         lineHeight={50}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(0, 0%, 100%, 1)",
               "fontFamily": "Lato",
               "fontSize": 12,

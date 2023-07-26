@@ -3,7 +3,7 @@
 exports[`<UserMinusIcon /> should render UserMinusIcon 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -22,15 +22,15 @@ exports[`<UserMinusIcon /> should render UserMinusIcon 1`] = `
     minX={0}
     minY={0}
     style={
-      Array [
-        Object {
+      [
+        {
           "backgroundColor": "transparent",
           "borderWidth": 0,
         },
-        Array [
-          Object {},
+        [
+          {},
         ],
-        Object {
+        {
           "flex": 0,
           "height": 20,
           "width": 20,
@@ -44,7 +44,7 @@ exports[`<UserMinusIcon /> should render UserMinusIcon 1`] = `
     <RNSVGGroup
       fill={null}
       propList={
-        Array [
+        [
           "fill",
         ]
       }
@@ -55,7 +55,7 @@ exports[`<UserMinusIcon /> should render UserMinusIcon 1`] = `
         fill={4282603381}
         fillRule={0}
         propList={
-          Array [
+          [
             "fill",
             "fillRule",
           ]
@@ -65,7 +65,7 @@ exports[`<UserMinusIcon /> should render UserMinusIcon 1`] = `
         d="M0 19C0 16.2386 2.23858 14 5 14H12C14.7614 14 17 16.2386 17 19V21C17 21.5523 16.5523 22 16 22C15.4477 22 15 21.5523 15 21V19C15 17.3431 13.6569 16 12 16H5C3.34315 16 2 17.3431 2 19V21C2 21.5523 1.55228 22 1 22C0.447715 22 0 21.5523 0 21V19Z"
         fill={4282603381}
         propList={
-          Array [
+          [
             "fill",
           ]
         }
@@ -74,7 +74,7 @@ exports[`<UserMinusIcon /> should render UserMinusIcon 1`] = `
         d="M17 10C16.4477 10 16 10.4477 16 11C16 11.5523 16.4477 12 17 12H23C23.5523 12 24 11.5523 24 11C24 10.4477 23.5523 10 23 10H17Z"
         fill={4282603381}
         propList={
-          Array [
+          [
             "fill",
           ]
         }

@@ -3,7 +3,7 @@
 exports[`<WatchIcon /> should render WatchIcon 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -22,15 +22,15 @@ exports[`<WatchIcon /> should render WatchIcon 1`] = `
     minX={0}
     minY={0}
     style={
-      Array [
-        Object {
+      [
+        {
           "backgroundColor": "transparent",
           "borderWidth": 0,
         },
-        Array [
-          Object {},
+        [
+          {},
         ],
-        Object {
+        {
           "flex": 0,
           "height": 20,
           "width": 20,
@@ -44,7 +44,7 @@ exports[`<WatchIcon /> should render WatchIcon 1`] = `
     <RNSVGGroup
       fill={null}
       propList={
-        Array [
+        [
           "fill",
         ]
       }
@@ -56,7 +56,7 @@ exports[`<WatchIcon /> should render WatchIcon 1`] = `
           d="M13 9C13 8.44771 12.5523 8 12 8C11.4477 8 11 8.44771 11 9V12C11 12.2652 11.1054 12.5196 11.2929 12.7071L12.7929 14.2071C13.1834 14.5976 13.8166 14.5976 14.2071 14.2071C14.5976 13.8166 14.5976 13.1834 14.2071 12.7929L13 11.5858V9Z"
           fill={4282603381}
           propList={
-            Array [
+            [
               "fill",
             ]
           }
@@ -67,7 +67,7 @@ exports[`<WatchIcon /> should render WatchIcon 1`] = `
           fill={4282603381}
           fillRule={0}
           propList={
-            Array [
+            [
               "fill",
               "fillRule",
             ]
@@ -82,7 +82,7 @@ exports[`<WatchIcon /> should render WatchIcon 1`] = `
             fill={4282603381}
             height="24"
             propList={
-              Array [
+              [
                 "fill",
               ]
             }

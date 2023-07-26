@@ -3,7 +3,7 @@
 exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -20,24 +20,24 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
     onGestureHandlerStateChange={[Function]}
     pointerEvents="auto"
     style={
-      Array [
-        Object {
+      [
+        {
           "backgroundColor": "black",
         },
-        Array [
-          Object {
+        [
+          {
             "bottom": 0,
             "left": 0,
             "position": "absolute",
             "right": 0,
             "top": 0,
           },
-          Object {
+          {
             "backgroundColor": "hsla(214, 15%, 18%, 0.64)",
             "zIndex": 100,
           },
         ],
-        Object {
+        {
           "flex": 1,
           "opacity": undefined,
         },
@@ -48,18 +48,18 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
     onLayout={[Function]}
     pointerEvents="box-none"
     style={
-      Array [
-        Object {
+      [
+        {
           "zIndex": 100,
         },
-        Object {
+        {
           "bottom": 0,
           "left": 0,
           "position": "absolute",
           "right": 0,
           "top": 0,
         },
-        Object {
+        {
           "bottom": 0,
           "overflow": "hidden",
           "top": 0,
@@ -69,27 +69,27 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   >
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "shadowColor": "hsla(217,56%,17%,0.64)",
-            "shadowOffset": Object {
+            "shadowOffset": {
               "height": -18,
               "width": 0,
             },
             "shadowOpacity": 0.2,
             "shadowRadius": 12,
           },
-          Object {
+          {
             "flexDirection": "column-reverse",
             "left": 0,
             "position": "absolute",
             "right": 0,
             "top": 0,
           },
-          Object {
+          {
             "opacity": 1,
-            "transform": Array [
-              Object {
+            "transform": [
+              {
                 "translateY": 1334,
               },
             ],
@@ -99,23 +99,23 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
     >
       <View
         animatedIndex={
-          Object {
+          {
             "value": -1,
           }
         }
         animatedPosition={
-          Object {
+          {
             "value": 1334,
           }
         }
         data-blade-component="base-box"
         pointerEvents="none"
         style={
-          Array [
-            Object {
+          [
+            {
               "pointerEvents": "none",
             },
-            Object {
+            {
               "alignItems": "center",
               "backgroundColor": "hsla(0, 0%, 100%, 1)",
               "borderTopLeftRadius": 16,
@@ -123,7 +123,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
               "justifyContent": "center",
               "position": "relative",
             },
-            Object {
+            {
               "bottom": 0,
               "left": 0,
               "position": "absolute",
@@ -136,11 +136,11 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
       <View
         pointerEvents="box-none"
         style={
-          Array [
-            Object {
+          [
+            {
               "overflow": "hidden",
             },
-            Object {
+            {
               "paddingBottom": -999,
             },
           ]
@@ -153,9 +153,9 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
           onGestureHandlerEvent={[Function]}
           onGestureHandlerStateChange={[Function]}
           style={
-            Array [
-              Object {},
-              Object {
+            [
+              {},
+              {
                 "height": 0,
               },
             ]
@@ -165,8 +165,8 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
             onLayout={[Function]}
             pointerEvents="box-none"
             style={
-              Array [
-                Object {
+              [
+                {
                   "left": 0,
                   "position": "absolute",
                   "right": 0,
@@ -174,9 +174,9 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                   "zIndex": 9999,
                 },
                 undefined,
-                Object {
-                  "transform": Array [
-                    Object {
+                {
+                  "transform": [
+                    {
                       "translateY": 999,
                     },
                   ],
@@ -192,8 +192,8 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                 data-blade-component="base-box"
                 flexShrink={0}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "hsla(0, 0%, 100%, 1)",
                       "flexShrink": 0,
                       "marginTop": "auto",
@@ -215,13 +215,13 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                   dividerStyle="solid"
                   isDividerHorizontal={true}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
                         "borderStyle": "solid",
                         "borderWidth": 0,
                       },
-                      Object {
+                      {
                         "borderBottomStyle": "solid",
                         "borderBottomWidth": 1,
                         "flexGrow": 1,
@@ -233,8 +233,8 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                 <View
                   data-blade-component="base-box"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "paddingBottom": 16,
                         "paddingLeft": 16,
                         "paddingRight": 16,
@@ -246,7 +246,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                   <View
                     accessibilityRole="button"
                     accessibilityState={
-                      Object {
+                      {
                         "disabled": false,
                       }
                     }
@@ -284,8 +284,8 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "alignItems": "center",
                           "alignSelf": "center",
                           "backgroundColor": "hsla(218, 89%, 51%, 0)",
@@ -306,7 +306,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                           "textDecorationStyle": "solid",
                           "width": "100%",
                         },
-                        Object {
+                        {
                           "backgroundColor": "hsla(218, 89%, 51%, 0)",
                           "borderColor": "hsla(218, 89%, 51%, 1)",
                         },
@@ -322,8 +322,8 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                       isHidden={false}
                       justifyContent="center"
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "alignItems": "center",
                             "display": "flex",
                             "flexBasis": 0,
@@ -332,7 +332,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                             "flexShrink": 1,
                             "justifyContent": "center",
                           },
-                          Object {
+                          {
                             "opacity": 1,
                           },
                         ]
@@ -345,8 +345,8 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                         fontWeight="bold"
                         lineHeight={100}
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "color": "hsla(218, 89%, 51%, 1)",
                               "fontFamily": "Lato",
                               "fontSize": 14,
@@ -397,8 +397,8 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
           position="relative"
           right="spacing.0"
           style={
-            Array [
-              Object {
+            [
+              {
                 "left": 0,
                 "position": "relative",
                 "right": 0,
@@ -411,8 +411,8 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
           <View
             data-blade-component="base-box"
             style={
-              Array [
-                Object {
+              [
+                {
                   "zIndex": 100,
                 },
               ]
@@ -422,9 +422,9 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
             <View
               data-blade-component="base-box"
               style={
-                Array [
-                  Object {},
-                  Object {
+                [
+                  {},
+                  {
                     "alignItems": "center",
                     "display": "flex",
                     "flexDirection": "column",
@@ -443,9 +443,9 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
               <View
                 data-blade-component="base-box"
                 style={
-                  Array [
-                    Object {},
-                    Object {
+                  [
+                    {},
+                    {
                       "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
                       "borderRadius": 16,
                       "content": "''",
@@ -466,8 +466,8 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
             flexShrink={0}
             overflow="visible"
             style={
-              Array [
-                Object {
+              [
+                {
                   "flexShrink": 0,
                   "overflow": "visible",
                 },
@@ -477,16 +477,16 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
             <View
               data-blade-component="base-box"
               style={
-                Array [
-                  Object {},
+                [
+                  {},
                 ]
               }
             >
               <View
                 data-blade-component="base-box"
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "marginBottom": 16,
                       "marginTop": 16,
                       "paddingLeft": 16,
@@ -502,8 +502,8 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                   display="flex"
                   flexDirection="row"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "display": "flex",
                         "flexDirection": "row",
                         "userSelect": "none",
@@ -518,8 +518,8 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                     display="flex"
                     flexDirection="row"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "alignItems": "flex-start",
                           "display": "flex",
                           "flexBasis": "auto",
@@ -535,8 +535,8 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                     <View
                       data-blade-component="base-box"
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "flexBasis": "auto",
                             "flexGrow": 1,
                             "flexShrink": 1,
@@ -550,8 +550,8 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                         flexDirection="row"
                         flexShrink={0}
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "display": "flex",
                               "flexDirection": "row",
                               "flexShrink": 0,
@@ -569,8 +569,8 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                           fontWeight="bold"
                           lineHeight={300}
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "color": "hsla(217, 56%, 17%, 1)",
                                 "fontFamily": "Lato",
                                 "fontSize": 16,
@@ -595,8 +595,8 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                         <View
                           data-blade-component="base-box"
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "marginLeft": 8,
                               },
                             ]
@@ -609,8 +609,8 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                             height="28px"
                             justifyContent="center"
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "alignItems": "center",
                                   "display": "flex",
                                   "height": 28,
@@ -623,8 +623,8 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                               data-blade-component="counter"
                               display="flex"
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "display": "flex",
                                   },
                                 ]
@@ -636,11 +636,11 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                                 platform="onMobile"
                                 size="medium"
                                 style={
-                                  Array [
-                                    Object {
+                                  [
+                                    {
                                       "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
                                     },
-                                    Object {
+                                    {
                                       "alignSelf": "center",
                                       "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
                                       "borderRadius": 9999,
@@ -659,8 +659,8 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                                   justifyContent="center"
                                   overflow="hidden"
                                   style={
-                                    Array [
-                                      Object {
+                                    [
+                                      {
                                         "alignItems": "center",
                                         "display": "flex",
                                         "flexDirection": "row",
@@ -684,8 +684,8 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                                     lineHeight={50}
                                     numberOfLines={1}
                                     style={
-                                      Array [
-                                        Object {
+                                      [
+                                        {
                                           "color": "hsla(160, 100%, 26%, 1)",
                                           "fontFamily": "Lato",
                                           "fontSize": 12,
@@ -724,8 +724,8 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                         fontWeight="regular"
                         lineHeight={50}
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "color": "hsla(216, 16%, 60%, 1)",
                               "fontFamily": "Lato",
                               "fontSize": 12,
@@ -752,8 +752,8 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                   <View
                     data-blade-component="base-box"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "marginRight": 16,
                         },
                       ]
@@ -766,8 +766,8 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                       height="28px"
                       justifyContent="center"
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "alignItems": "center",
                             "display": "flex",
                             "height": 28,
@@ -780,8 +780,8 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                         data-blade-component="badge"
                         display="flex"
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "display": "flex",
                             },
                           ]
@@ -792,12 +792,12 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                           data-blade-component="base-box"
                           size="medium"
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
                                 "textAlign": "left",
                               },
-                              Object {
+                              {
                                 "alignSelf": "center",
                                 "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
                                 "borderRadius": 9999,
@@ -816,8 +816,8 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                             justifyContent="center"
                             overflow="hidden"
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "alignItems": "center",
                                   "display": "flex",
                                   "flexDirection": "row",
@@ -841,8 +841,8 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                               lineHeight={50}
                               numberOfLines={1}
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "color": "hsla(160, 100%, 26%, 1)",
                                     "fontFamily": "Lato",
                                     "fontSize": 12,
@@ -876,8 +876,8 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                     height="28px"
                     justifyContent="center"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "alignItems": "center",
                           "display": "flex",
                           "height": 28,
@@ -903,8 +903,8 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                       onResponderTerminationRequest={[Function]}
                       onStartShouldSetResponder={[Function]}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "alignSelf": "center",
                           },
                         ]
@@ -924,15 +924,15 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                         minX={0}
                         minY={0}
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "backgroundColor": "transparent",
                               "borderWidth": 0,
                             },
-                            Array [
-                              Object {},
+                            [
+                              {},
                             ],
-                            Object {
+                            {
                               "flex": 0,
                               "height": 20,
                               "width": 20,
@@ -946,7 +946,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                         <RNSVGGroup
                           fill={null}
                           propList={
-                            Array [
+                            [
                               "fill",
                             ]
                           }
@@ -955,7 +955,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                             d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
                             fill={4288851646}
                             propList={
-                              Array [
+                              [
                                 "fill",
                               ]
                             }
@@ -974,13 +974,13 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                 dividerStyle="solid"
                 isDividerHorizontal={true}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
                       "borderStyle": "solid",
                       "borderWidth": 0,
                     },
-                    Object {
+                    {
                       "borderBottomStyle": "solid",
                       "borderBottomWidth": 1,
                       "flexGrow": 1,
@@ -1001,7 +1001,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
 exports[`<BottomSheet /> should render empty header 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -1018,24 +1018,24 @@ exports[`<BottomSheet /> should render empty header 1`] = `
     onGestureHandlerStateChange={[Function]}
     pointerEvents="auto"
     style={
-      Array [
-        Object {
+      [
+        {
           "backgroundColor": "black",
         },
-        Array [
-          Object {
+        [
+          {
             "bottom": 0,
             "left": 0,
             "position": "absolute",
             "right": 0,
             "top": 0,
           },
-          Object {
+          {
             "backgroundColor": "hsla(214, 15%, 18%, 0.64)",
             "zIndex": 100,
           },
         ],
-        Object {
+        {
           "flex": 1,
           "opacity": undefined,
         },
@@ -1046,18 +1046,18 @@ exports[`<BottomSheet /> should render empty header 1`] = `
     onLayout={[Function]}
     pointerEvents="box-none"
     style={
-      Array [
-        Object {
+      [
+        {
           "zIndex": 100,
         },
-        Object {
+        {
           "bottom": 0,
           "left": 0,
           "position": "absolute",
           "right": 0,
           "top": 0,
         },
-        Object {
+        {
           "bottom": 0,
           "overflow": "hidden",
           "top": 0,
@@ -1067,27 +1067,27 @@ exports[`<BottomSheet /> should render empty header 1`] = `
   >
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "shadowColor": "hsla(217,56%,17%,0.64)",
-            "shadowOffset": Object {
+            "shadowOffset": {
               "height": -18,
               "width": 0,
             },
             "shadowOpacity": 0.2,
             "shadowRadius": 12,
           },
-          Object {
+          {
             "flexDirection": "column-reverse",
             "left": 0,
             "position": "absolute",
             "right": 0,
             "top": 0,
           },
-          Object {
+          {
             "opacity": 1,
-            "transform": Array [
-              Object {
+            "transform": [
+              {
                 "translateY": 1334,
               },
             ],
@@ -1097,23 +1097,23 @@ exports[`<BottomSheet /> should render empty header 1`] = `
     >
       <View
         animatedIndex={
-          Object {
+          {
             "value": -1,
           }
         }
         animatedPosition={
-          Object {
+          {
             "value": 1334,
           }
         }
         data-blade-component="base-box"
         pointerEvents="none"
         style={
-          Array [
-            Object {
+          [
+            {
               "pointerEvents": "none",
             },
-            Object {
+            {
               "alignItems": "center",
               "backgroundColor": "hsla(0, 0%, 100%, 1)",
               "borderTopLeftRadius": 16,
@@ -1121,7 +1121,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
               "justifyContent": "center",
               "position": "relative",
             },
-            Object {
+            {
               "bottom": 0,
               "left": 0,
               "position": "absolute",
@@ -1134,11 +1134,11 @@ exports[`<BottomSheet /> should render empty header 1`] = `
       <View
         pointerEvents="box-none"
         style={
-          Array [
-            Object {
+          [
+            {
               "overflow": "hidden",
             },
-            Object {
+            {
               "paddingBottom": -999,
             },
           ]
@@ -1151,9 +1151,9 @@ exports[`<BottomSheet /> should render empty header 1`] = `
           onGestureHandlerEvent={[Function]}
           onGestureHandlerStateChange={[Function]}
           style={
-            Array [
-              Object {},
-              Object {
+            [
+              {},
+              {
                 "height": 0,
               },
             ]
@@ -1163,8 +1163,8 @@ exports[`<BottomSheet /> should render empty header 1`] = `
             onLayout={[Function]}
             pointerEvents="box-none"
             style={
-              Array [
-                Object {
+              [
+                {
                   "left": 0,
                   "position": "absolute",
                   "right": 0,
@@ -1172,9 +1172,9 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                   "zIndex": 9999,
                 },
                 undefined,
-                Object {
-                  "transform": Array [
-                    Object {
+                {
+                  "transform": [
+                    {
                       "translateY": 999,
                     },
                   ],
@@ -1190,8 +1190,8 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                 data-blade-component="base-box"
                 flexShrink={0}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "hsla(0, 0%, 100%, 1)",
                       "flexShrink": 0,
                       "marginTop": "auto",
@@ -1213,13 +1213,13 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                   dividerStyle="solid"
                   isDividerHorizontal={true}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
                         "borderStyle": "solid",
                         "borderWidth": 0,
                       },
-                      Object {
+                      {
                         "borderBottomStyle": "solid",
                         "borderBottomWidth": 1,
                         "flexGrow": 1,
@@ -1231,8 +1231,8 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                 <View
                   data-blade-component="base-box"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "paddingBottom": 16,
                         "paddingLeft": 16,
                         "paddingRight": 16,
@@ -1244,7 +1244,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                   <View
                     accessibilityRole="button"
                     accessibilityState={
-                      Object {
+                      {
                         "disabled": false,
                       }
                     }
@@ -1282,8 +1282,8 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "alignItems": "center",
                           "alignSelf": "center",
                           "backgroundColor": "hsla(218, 89%, 51%, 0)",
@@ -1304,7 +1304,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                           "textDecorationStyle": "solid",
                           "width": "100%",
                         },
-                        Object {
+                        {
                           "backgroundColor": "hsla(218, 89%, 51%, 0)",
                           "borderColor": "hsla(218, 89%, 51%, 1)",
                         },
@@ -1320,8 +1320,8 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                       isHidden={false}
                       justifyContent="center"
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "alignItems": "center",
                             "display": "flex",
                             "flexBasis": 0,
@@ -1330,7 +1330,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                             "flexShrink": 1,
                             "justifyContent": "center",
                           },
-                          Object {
+                          {
                             "opacity": 1,
                           },
                         ]
@@ -1343,8 +1343,8 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                         fontWeight="bold"
                         lineHeight={100}
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "color": "hsla(218, 89%, 51%, 1)",
                               "fontFamily": "Lato",
                               "fontSize": 14,
@@ -1395,8 +1395,8 @@ exports[`<BottomSheet /> should render empty header 1`] = `
           position="absolute"
           right="spacing.0"
           style={
-            Array [
-              Object {
+            [
+              {
                 "left": 0,
                 "position": "absolute",
                 "right": 0,
@@ -1409,8 +1409,8 @@ exports[`<BottomSheet /> should render empty header 1`] = `
           <View
             data-blade-component="base-box"
             style={
-              Array [
-                Object {
+              [
+                {
                   "zIndex": 100,
                 },
               ]
@@ -1420,9 +1420,9 @@ exports[`<BottomSheet /> should render empty header 1`] = `
             <View
               data-blade-component="base-box"
               style={
-                Array [
-                  Object {},
-                  Object {
+                [
+                  {},
+                  {
                     "alignItems": "center",
                     "display": "flex",
                     "flexDirection": "column",
@@ -1441,9 +1441,9 @@ exports[`<BottomSheet /> should render empty header 1`] = `
               <View
                 data-blade-component="base-box"
                 style={
-                  Array [
-                    Object {},
-                    Object {
+                  [
+                    {},
+                    {
                       "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
                       "borderRadius": 16,
                       "content": "''",
@@ -1464,8 +1464,8 @@ exports[`<BottomSheet /> should render empty header 1`] = `
             flexShrink={0}
             overflow="visible"
             style={
-              Array [
-                Object {
+              [
+                {
                   "flexShrink": 0,
                   "overflow": "visible",
                 },
@@ -1478,8 +1478,8 @@ exports[`<BottomSheet /> should render empty header 1`] = `
               position="relative"
               right="spacing.0"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "height": 8,
                     "position": "relative",
                     "right": 0,
@@ -1503,8 +1503,8 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                 position="absolute"
                 right="spacing.5"
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "alignItems": "center",
                       "backgroundColor": "hsla(0, 0%, 100%, 1)",
                       "borderRadius": 9999,
@@ -1541,8 +1541,8 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignSelf": "center",
                       },
                     ]
@@ -1562,15 +1562,15 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                     minX={0}
                     minY={0}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "backgroundColor": "transparent",
                           "borderWidth": 0,
                         },
-                        Array [
-                          Object {},
+                        [
+                          {},
                         ],
-                        Object {
+                        {
                           "flex": 0,
                           "height": 20,
                           "width": 20,
@@ -1584,7 +1584,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                     <RNSVGGroup
                       fill={null}
                       propList={
-                        Array [
+                        [
                           "fill",
                         ]
                       }
@@ -1593,7 +1593,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                         d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
                         fill={4288851646}
                         propList={
-                          Array [
+                          [
                             "fill",
                           ]
                         }

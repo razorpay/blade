@@ -3,7 +3,7 @@
 exports[`<BaseLink /> should change the link to a visited state after click 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -11,7 +11,7 @@ exports[`<BaseLink /> should change the link to a visited state after click 1`] 
   <View
     accessibilityRole="link"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -28,8 +28,8 @@ exports[`<BaseLink /> should change the link to a visited state after click 1`] 
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignSelf": "flex-start",
           "backgroundColor": "transparent",
           "borderColor": "black",
@@ -54,8 +54,8 @@ exports[`<BaseLink /> should change the link to a visited state after click 1`] 
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
@@ -70,8 +70,8 @@ exports[`<BaseLink /> should change the link to a visited state after click 1`] 
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(268, 100%, 79%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -104,7 +104,7 @@ exports[`<BaseLink /> should change the link to a visited state after click 1`] 
 exports[`<BaseLink /> should not change the button to a visited state after click 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -112,7 +112,7 @@ exports[`<BaseLink /> should not change the button to a visited state after clic
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -129,8 +129,8 @@ exports[`<BaseLink /> should not change the button to a visited state after clic
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignSelf": "flex-start",
           "backgroundColor": "transparent",
           "borderColor": "black",
@@ -155,8 +155,8 @@ exports[`<BaseLink /> should not change the button to a visited state after clic
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
@@ -171,8 +171,8 @@ exports[`<BaseLink /> should not change the button to a visited state after clic
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(218, 89%, 51%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -205,7 +205,7 @@ exports[`<BaseLink /> should not change the button to a visited state after clic
 exports[`<BaseLink /> should render button variant of link 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -213,7 +213,7 @@ exports[`<BaseLink /> should render button variant of link 1`] = `
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -230,8 +230,8 @@ exports[`<BaseLink /> should render button variant of link 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignSelf": "flex-start",
           "backgroundColor": "transparent",
           "borderColor": "black",
@@ -256,8 +256,8 @@ exports[`<BaseLink /> should render button variant of link 1`] = `
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
@@ -272,8 +272,8 @@ exports[`<BaseLink /> should render button variant of link 1`] = `
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(218, 89%, 51%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -306,7 +306,7 @@ exports[`<BaseLink /> should render button variant of link 1`] = `
 exports[`<BaseLink /> should render disabled button variant of link 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -314,7 +314,7 @@ exports[`<BaseLink /> should render disabled button variant of link 1`] = `
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": true,
       }
     }
@@ -331,8 +331,8 @@ exports[`<BaseLink /> should render disabled button variant of link 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignSelf": "flex-start",
           "backgroundColor": "transparent",
           "borderColor": "black",
@@ -357,8 +357,8 @@ exports[`<BaseLink /> should render disabled button variant of link 1`] = `
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
@@ -373,8 +373,8 @@ exports[`<BaseLink /> should render disabled button variant of link 1`] = `
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(218, 19%, 81%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -407,7 +407,7 @@ exports[`<BaseLink /> should render disabled button variant of link 1`] = `
 exports[`<BaseLink /> should render disabled information intent high contrast link 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -415,7 +415,7 @@ exports[`<BaseLink /> should render disabled information intent high contrast li
   <View
     accessibilityRole="link"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -432,8 +432,8 @@ exports[`<BaseLink /> should render disabled information intent high contrast li
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignSelf": "flex-start",
           "backgroundColor": "transparent",
           "borderColor": "black",
@@ -458,8 +458,8 @@ exports[`<BaseLink /> should render disabled information intent high contrast li
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
@@ -474,8 +474,8 @@ exports[`<BaseLink /> should render disabled information intent high contrast li
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(180, 100%, 97%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -508,7 +508,7 @@ exports[`<BaseLink /> should render disabled information intent high contrast li
 exports[`<BaseLink /> should render disabled information intent low contrast link 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -516,7 +516,7 @@ exports[`<BaseLink /> should render disabled information intent low contrast lin
   <View
     accessibilityRole="link"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -533,8 +533,8 @@ exports[`<BaseLink /> should render disabled information intent low contrast lin
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignSelf": "flex-start",
           "backgroundColor": "transparent",
           "borderColor": "black",
@@ -559,8 +559,8 @@ exports[`<BaseLink /> should render disabled information intent low contrast lin
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
@@ -575,8 +575,8 @@ exports[`<BaseLink /> should render disabled information intent low contrast lin
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(195, 100%, 31%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -609,7 +609,7 @@ exports[`<BaseLink /> should render disabled information intent low contrast lin
 exports[`<BaseLink /> should render disabled negative intent high contrast link 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -617,7 +617,7 @@ exports[`<BaseLink /> should render disabled negative intent high contrast link 
   <View
     accessibilityRole="link"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -634,8 +634,8 @@ exports[`<BaseLink /> should render disabled negative intent high contrast link 
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignSelf": "flex-start",
           "backgroundColor": "transparent",
           "borderColor": "black",
@@ -660,8 +660,8 @@ exports[`<BaseLink /> should render disabled negative intent high contrast link 
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
@@ -676,8 +676,8 @@ exports[`<BaseLink /> should render disabled negative intent high contrast link 
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(0, 100%, 97%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -710,7 +710,7 @@ exports[`<BaseLink /> should render disabled negative intent high contrast link 
 exports[`<BaseLink /> should render disabled negative intent low contrast link 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -718,7 +718,7 @@ exports[`<BaseLink /> should render disabled negative intent low contrast link 1
   <View
     accessibilityRole="link"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -735,8 +735,8 @@ exports[`<BaseLink /> should render disabled negative intent low contrast link 1
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignSelf": "flex-start",
           "backgroundColor": "transparent",
           "borderColor": "black",
@@ -761,8 +761,8 @@ exports[`<BaseLink /> should render disabled negative intent low contrast link 1
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
@@ -777,8 +777,8 @@ exports[`<BaseLink /> should render disabled negative intent low contrast link 1
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(8, 73%, 47%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -811,7 +811,7 @@ exports[`<BaseLink /> should render disabled negative intent low contrast link 1
 exports[`<BaseLink /> should render disabled neutral intent high contrast link 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -819,7 +819,7 @@ exports[`<BaseLink /> should render disabled neutral intent high contrast link 1
   <View
     accessibilityRole="link"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -836,8 +836,8 @@ exports[`<BaseLink /> should render disabled neutral intent high contrast link 1
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignSelf": "flex-start",
           "backgroundColor": "transparent",
           "borderColor": "black",
@@ -862,8 +862,8 @@ exports[`<BaseLink /> should render disabled neutral intent high contrast link 1
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
@@ -878,8 +878,8 @@ exports[`<BaseLink /> should render disabled neutral intent high contrast link 1
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(220, 27%, 98%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -912,7 +912,7 @@ exports[`<BaseLink /> should render disabled neutral intent high contrast link 1
 exports[`<BaseLink /> should render disabled neutral intent low contrast link 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -920,7 +920,7 @@ exports[`<BaseLink /> should render disabled neutral intent low contrast link 1`
   <View
     accessibilityRole="link"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -937,8 +937,8 @@ exports[`<BaseLink /> should render disabled neutral intent low contrast link 1`
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignSelf": "flex-start",
           "backgroundColor": "transparent",
           "borderColor": "black",
@@ -963,8 +963,8 @@ exports[`<BaseLink /> should render disabled neutral intent low contrast link 1`
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
@@ -979,8 +979,8 @@ exports[`<BaseLink /> should render disabled neutral intent low contrast link 1`
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(216, 27%, 36%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -1013,7 +1013,7 @@ exports[`<BaseLink /> should render disabled neutral intent low contrast link 1`
 exports[`<BaseLink /> should render disabled notice intent high contrast link 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -1021,7 +1021,7 @@ exports[`<BaseLink /> should render disabled notice intent high contrast link 1`
   <View
     accessibilityRole="link"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -1038,8 +1038,8 @@ exports[`<BaseLink /> should render disabled notice intent high contrast link 1`
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignSelf": "flex-start",
           "backgroundColor": "transparent",
           "borderColor": "black",
@@ -1064,8 +1064,8 @@ exports[`<BaseLink /> should render disabled notice intent high contrast link 1`
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
@@ -1080,8 +1080,8 @@ exports[`<BaseLink /> should render disabled notice intent high contrast link 1`
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(32, 100%, 94%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -1114,7 +1114,7 @@ exports[`<BaseLink /> should render disabled notice intent high contrast link 1`
 exports[`<BaseLink /> should render disabled notice intent low contrast link 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -1122,7 +1122,7 @@ exports[`<BaseLink /> should render disabled notice intent low contrast link 1`]
   <View
     accessibilityRole="link"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -1139,8 +1139,8 @@ exports[`<BaseLink /> should render disabled notice intent low contrast link 1`]
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignSelf": "flex-start",
           "backgroundColor": "transparent",
           "borderColor": "black",
@@ -1165,8 +1165,8 @@ exports[`<BaseLink /> should render disabled notice intent low contrast link 1`]
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
@@ -1181,8 +1181,8 @@ exports[`<BaseLink /> should render disabled notice intent low contrast link 1`]
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(38, 97%, 38%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -1215,7 +1215,7 @@ exports[`<BaseLink /> should render disabled notice intent low contrast link 1`]
 exports[`<BaseLink /> should render disabled positive intent high contrast link 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -1223,7 +1223,7 @@ exports[`<BaseLink /> should render disabled positive intent high contrast link 
   <View
     accessibilityRole="link"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -1240,8 +1240,8 @@ exports[`<BaseLink /> should render disabled positive intent high contrast link 
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignSelf": "flex-start",
           "backgroundColor": "transparent",
           "borderColor": "black",
@@ -1266,8 +1266,8 @@ exports[`<BaseLink /> should render disabled positive intent high contrast link 
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
@@ -1282,8 +1282,8 @@ exports[`<BaseLink /> should render disabled positive intent high contrast link 
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(107, 100%, 96%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -1316,7 +1316,7 @@ exports[`<BaseLink /> should render disabled positive intent high contrast link 
 exports[`<BaseLink /> should render disabled positive intent low contrast link 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -1324,7 +1324,7 @@ exports[`<BaseLink /> should render disabled positive intent low contrast link 1
   <View
     accessibilityRole="link"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -1341,8 +1341,8 @@ exports[`<BaseLink /> should render disabled positive intent low contrast link 1
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignSelf": "flex-start",
           "backgroundColor": "transparent",
           "borderColor": "black",
@@ -1367,8 +1367,8 @@ exports[`<BaseLink /> should render disabled positive intent low contrast link 1
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
@@ -1383,8 +1383,8 @@ exports[`<BaseLink /> should render disabled positive intent low contrast link 1
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(160, 100%, 26%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -1417,7 +1417,7 @@ exports[`<BaseLink /> should render disabled positive intent low contrast link 1
 exports[`<BaseLink /> should render icon only link 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -1425,7 +1425,7 @@ exports[`<BaseLink /> should render icon only link 1`] = `
   <View
     accessibilityRole="link"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -1442,8 +1442,8 @@ exports[`<BaseLink /> should render icon only link 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignSelf": "flex-start",
           "backgroundColor": "transparent",
           "borderColor": "black",
@@ -1468,8 +1468,8 @@ exports[`<BaseLink /> should render icon only link 1`] = `
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
@@ -1482,8 +1482,8 @@ exports[`<BaseLink /> should render icon only link 1`] = `
         data-blade-component="base-box"
         display="flex"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "display": "flex",
               "paddingRight": 0,
@@ -1505,15 +1505,15 @@ exports[`<BaseLink /> should render icon only link 1`] = `
           minX={0}
           minY={0}
           style={
-            Array [
-              Object {
+            [
+              {
                 "backgroundColor": "transparent",
                 "borderWidth": 0,
               },
-              Array [
-                Object {},
+              [
+                {},
               ],
-              Object {
+              {
                 "flex": 0,
                 "height": 16,
                 "width": 16,
@@ -1527,7 +1527,7 @@ exports[`<BaseLink /> should render icon only link 1`] = `
           <RNSVGGroup
             fill={null}
             propList={
-              Array [
+              [
                 "fill",
               ]
             }
@@ -1536,7 +1536,7 @@ exports[`<BaseLink /> should render icon only link 1`] = `
               d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
               fill={4279461105}
               propList={
-                Array [
+                [
                   "fill",
                 ]
               }
@@ -1545,7 +1545,7 @@ exports[`<BaseLink /> should render icon only link 1`] = `
               d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
               fill={4279461105}
               propList={
-                Array [
+                [
                   "fill",
                 ]
               }
@@ -1556,7 +1556,7 @@ exports[`<BaseLink /> should render icon only link 1`] = `
               fill={4279461105}
               fillRule={0}
               propList={
-                Array [
+                [
                   "fill",
                   "fillRule",
                 ]
@@ -1572,8 +1572,8 @@ exports[`<BaseLink /> should render icon only link 1`] = `
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(218, 89%, 51%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -1604,7 +1604,7 @@ exports[`<BaseLink /> should render icon only link 1`] = `
 exports[`<BaseLink /> should render information intent high contrast link 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -1612,7 +1612,7 @@ exports[`<BaseLink /> should render information intent high contrast link 1`] = 
   <View
     accessibilityRole="link"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -1629,8 +1629,8 @@ exports[`<BaseLink /> should render information intent high contrast link 1`] = 
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignSelf": "flex-start",
           "backgroundColor": "transparent",
           "borderColor": "black",
@@ -1655,8 +1655,8 @@ exports[`<BaseLink /> should render information intent high contrast link 1`] = 
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
@@ -1671,8 +1671,8 @@ exports[`<BaseLink /> should render information intent high contrast link 1`] = 
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(180, 100%, 97%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -1705,7 +1705,7 @@ exports[`<BaseLink /> should render information intent high contrast link 1`] = 
 exports[`<BaseLink /> should render information intent low contrast link 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -1713,7 +1713,7 @@ exports[`<BaseLink /> should render information intent low contrast link 1`] = `
   <View
     accessibilityRole="link"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -1730,8 +1730,8 @@ exports[`<BaseLink /> should render information intent low contrast link 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignSelf": "flex-start",
           "backgroundColor": "transparent",
           "borderColor": "black",
@@ -1756,8 +1756,8 @@ exports[`<BaseLink /> should render information intent low contrast link 1`] = `
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
@@ -1772,8 +1772,8 @@ exports[`<BaseLink /> should render information intent low contrast link 1`] = `
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(195, 100%, 31%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -1806,7 +1806,7 @@ exports[`<BaseLink /> should render information intent low contrast link 1`] = `
 exports[`<BaseLink /> should render link with default properties 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -1814,7 +1814,7 @@ exports[`<BaseLink /> should render link with default properties 1`] = `
   <View
     accessibilityRole="link"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -1831,8 +1831,8 @@ exports[`<BaseLink /> should render link with default properties 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignSelf": "flex-start",
           "backgroundColor": "transparent",
           "borderColor": "black",
@@ -1857,8 +1857,8 @@ exports[`<BaseLink /> should render link with default properties 1`] = `
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
@@ -1873,8 +1873,8 @@ exports[`<BaseLink /> should render link with default properties 1`] = `
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(218, 89%, 51%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -1907,7 +1907,7 @@ exports[`<BaseLink /> should render link with default properties 1`] = `
 exports[`<BaseLink /> should render link with icon with default iconPosition 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -1915,7 +1915,7 @@ exports[`<BaseLink /> should render link with icon with default iconPosition 1`]
   <View
     accessibilityRole="link"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -1932,8 +1932,8 @@ exports[`<BaseLink /> should render link with icon with default iconPosition 1`]
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignSelf": "flex-start",
           "backgroundColor": "transparent",
           "borderColor": "black",
@@ -1958,8 +1958,8 @@ exports[`<BaseLink /> should render link with icon with default iconPosition 1`]
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
@@ -1972,8 +1972,8 @@ exports[`<BaseLink /> should render link with icon with default iconPosition 1`]
         data-blade-component="base-box"
         display="flex"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "display": "flex",
               "paddingRight": 4,
@@ -1995,15 +1995,15 @@ exports[`<BaseLink /> should render link with icon with default iconPosition 1`]
           minX={0}
           minY={0}
           style={
-            Array [
-              Object {
+            [
+              {
                 "backgroundColor": "transparent",
                 "borderWidth": 0,
               },
-              Array [
-                Object {},
+              [
+                {},
               ],
-              Object {
+              {
                 "flex": 0,
                 "height": 16,
                 "width": 16,
@@ -2017,7 +2017,7 @@ exports[`<BaseLink /> should render link with icon with default iconPosition 1`]
           <RNSVGGroup
             fill={null}
             propList={
-              Array [
+              [
                 "fill",
               ]
             }
@@ -2026,7 +2026,7 @@ exports[`<BaseLink /> should render link with icon with default iconPosition 1`]
               d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
               fill={4279461105}
               propList={
-                Array [
+                [
                   "fill",
                 ]
               }
@@ -2035,7 +2035,7 @@ exports[`<BaseLink /> should render link with icon with default iconPosition 1`]
               d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
               fill={4279461105}
               propList={
-                Array [
+                [
                   "fill",
                 ]
               }
@@ -2046,7 +2046,7 @@ exports[`<BaseLink /> should render link with icon with default iconPosition 1`]
               fill={4279461105}
               fillRule={0}
               propList={
-                Array [
+                [
                   "fill",
                   "fillRule",
                 ]
@@ -2062,8 +2062,8 @@ exports[`<BaseLink /> should render link with icon with default iconPosition 1`]
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(218, 89%, 51%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -2096,7 +2096,7 @@ exports[`<BaseLink /> should render link with icon with default iconPosition 1`]
 exports[`<BaseLink /> should render link with icon with left iconPosition 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -2104,7 +2104,7 @@ exports[`<BaseLink /> should render link with icon with left iconPosition 1`] = 
   <View
     accessibilityRole="link"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -2121,8 +2121,8 @@ exports[`<BaseLink /> should render link with icon with left iconPosition 1`] = 
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignSelf": "flex-start",
           "backgroundColor": "transparent",
           "borderColor": "black",
@@ -2147,8 +2147,8 @@ exports[`<BaseLink /> should render link with icon with left iconPosition 1`] = 
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
@@ -2161,8 +2161,8 @@ exports[`<BaseLink /> should render link with icon with left iconPosition 1`] = 
         data-blade-component="base-box"
         display="flex"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "display": "flex",
               "paddingRight": 4,
@@ -2184,15 +2184,15 @@ exports[`<BaseLink /> should render link with icon with left iconPosition 1`] = 
           minX={0}
           minY={0}
           style={
-            Array [
-              Object {
+            [
+              {
                 "backgroundColor": "transparent",
                 "borderWidth": 0,
               },
-              Array [
-                Object {},
+              [
+                {},
               ],
-              Object {
+              {
                 "flex": 0,
                 "height": 16,
                 "width": 16,
@@ -2206,7 +2206,7 @@ exports[`<BaseLink /> should render link with icon with left iconPosition 1`] = 
           <RNSVGGroup
             fill={null}
             propList={
-              Array [
+              [
                 "fill",
               ]
             }
@@ -2215,7 +2215,7 @@ exports[`<BaseLink /> should render link with icon with left iconPosition 1`] = 
               d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
               fill={4279461105}
               propList={
-                Array [
+                [
                   "fill",
                 ]
               }
@@ -2224,7 +2224,7 @@ exports[`<BaseLink /> should render link with icon with left iconPosition 1`] = 
               d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
               fill={4279461105}
               propList={
-                Array [
+                [
                   "fill",
                 ]
               }
@@ -2235,7 +2235,7 @@ exports[`<BaseLink /> should render link with icon with left iconPosition 1`] = 
               fill={4279461105}
               fillRule={0}
               propList={
-                Array [
+                [
                   "fill",
                   "fillRule",
                 ]
@@ -2251,8 +2251,8 @@ exports[`<BaseLink /> should render link with icon with left iconPosition 1`] = 
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(218, 89%, 51%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -2285,7 +2285,7 @@ exports[`<BaseLink /> should render link with icon with left iconPosition 1`] = 
 exports[`<BaseLink /> should render link with icon with right iconPosition 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -2293,7 +2293,7 @@ exports[`<BaseLink /> should render link with icon with right iconPosition 1`] =
   <View
     accessibilityRole="link"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -2310,8 +2310,8 @@ exports[`<BaseLink /> should render link with icon with right iconPosition 1`] =
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignSelf": "flex-start",
           "backgroundColor": "transparent",
           "borderColor": "black",
@@ -2336,8 +2336,8 @@ exports[`<BaseLink /> should render link with icon with right iconPosition 1`] =
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
@@ -2352,8 +2352,8 @@ exports[`<BaseLink /> should render link with icon with right iconPosition 1`] =
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(218, 89%, 51%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -2383,8 +2383,8 @@ exports[`<BaseLink /> should render link with icon with right iconPosition 1`] =
         data-blade-component="base-box"
         display="flex"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "display": "flex",
               "paddingLeft": 4,
@@ -2406,15 +2406,15 @@ exports[`<BaseLink /> should render link with icon with right iconPosition 1`] =
           minX={0}
           minY={0}
           style={
-            Array [
-              Object {
+            [
+              {
                 "backgroundColor": "transparent",
                 "borderWidth": 0,
               },
-              Array [
-                Object {},
+              [
+                {},
               ],
-              Object {
+              {
                 "flex": 0,
                 "height": 16,
                 "width": 16,
@@ -2428,7 +2428,7 @@ exports[`<BaseLink /> should render link with icon with right iconPosition 1`] =
           <RNSVGGroup
             fill={null}
             propList={
-              Array [
+              [
                 "fill",
               ]
             }
@@ -2437,7 +2437,7 @@ exports[`<BaseLink /> should render link with icon with right iconPosition 1`] =
               d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
               fill={4279461105}
               propList={
-                Array [
+                [
                   "fill",
                 ]
               }
@@ -2446,7 +2446,7 @@ exports[`<BaseLink /> should render link with icon with right iconPosition 1`] =
               d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
               fill={4279461105}
               propList={
-                Array [
+                [
                   "fill",
                 ]
               }
@@ -2457,7 +2457,7 @@ exports[`<BaseLink /> should render link with icon with right iconPosition 1`] =
               fill={4279461105}
               fillRule={0}
               propList={
-                Array [
+                [
                   "fill",
                   "fillRule",
                 ]
@@ -2474,7 +2474,7 @@ exports[`<BaseLink /> should render link with icon with right iconPosition 1`] =
 exports[`<BaseLink /> should render negative intent high contrast link 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -2482,7 +2482,7 @@ exports[`<BaseLink /> should render negative intent high contrast link 1`] = `
   <View
     accessibilityRole="link"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -2499,8 +2499,8 @@ exports[`<BaseLink /> should render negative intent high contrast link 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignSelf": "flex-start",
           "backgroundColor": "transparent",
           "borderColor": "black",
@@ -2525,8 +2525,8 @@ exports[`<BaseLink /> should render negative intent high contrast link 1`] = `
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
@@ -2541,8 +2541,8 @@ exports[`<BaseLink /> should render negative intent high contrast link 1`] = `
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(0, 100%, 97%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -2575,7 +2575,7 @@ exports[`<BaseLink /> should render negative intent high contrast link 1`] = `
 exports[`<BaseLink /> should render negative intent low contrast link 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -2583,7 +2583,7 @@ exports[`<BaseLink /> should render negative intent low contrast link 1`] = `
   <View
     accessibilityRole="link"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -2600,8 +2600,8 @@ exports[`<BaseLink /> should render negative intent low contrast link 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignSelf": "flex-start",
           "backgroundColor": "transparent",
           "borderColor": "black",
@@ -2626,8 +2626,8 @@ exports[`<BaseLink /> should render negative intent low contrast link 1`] = `
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
@@ -2642,8 +2642,8 @@ exports[`<BaseLink /> should render negative intent low contrast link 1`] = `
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(8, 73%, 47%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -2676,7 +2676,7 @@ exports[`<BaseLink /> should render negative intent low contrast link 1`] = `
 exports[`<BaseLink /> should render neutral intent high contrast link 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -2684,7 +2684,7 @@ exports[`<BaseLink /> should render neutral intent high contrast link 1`] = `
   <View
     accessibilityRole="link"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -2701,8 +2701,8 @@ exports[`<BaseLink /> should render neutral intent high contrast link 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignSelf": "flex-start",
           "backgroundColor": "transparent",
           "borderColor": "black",
@@ -2727,8 +2727,8 @@ exports[`<BaseLink /> should render neutral intent high contrast link 1`] = `
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
@@ -2743,8 +2743,8 @@ exports[`<BaseLink /> should render neutral intent high contrast link 1`] = `
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(220, 27%, 98%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -2777,7 +2777,7 @@ exports[`<BaseLink /> should render neutral intent high contrast link 1`] = `
 exports[`<BaseLink /> should render neutral intent low contrast link 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -2785,7 +2785,7 @@ exports[`<BaseLink /> should render neutral intent low contrast link 1`] = `
   <View
     accessibilityRole="link"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -2802,8 +2802,8 @@ exports[`<BaseLink /> should render neutral intent low contrast link 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignSelf": "flex-start",
           "backgroundColor": "transparent",
           "borderColor": "black",
@@ -2828,8 +2828,8 @@ exports[`<BaseLink /> should render neutral intent low contrast link 1`] = `
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
@@ -2844,8 +2844,8 @@ exports[`<BaseLink /> should render neutral intent low contrast link 1`] = `
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(216, 27%, 36%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -2878,7 +2878,7 @@ exports[`<BaseLink /> should render neutral intent low contrast link 1`] = `
 exports[`<BaseLink /> should render notice intent high contrast link 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -2886,7 +2886,7 @@ exports[`<BaseLink /> should render notice intent high contrast link 1`] = `
   <View
     accessibilityRole="link"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -2903,8 +2903,8 @@ exports[`<BaseLink /> should render notice intent high contrast link 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignSelf": "flex-start",
           "backgroundColor": "transparent",
           "borderColor": "black",
@@ -2929,8 +2929,8 @@ exports[`<BaseLink /> should render notice intent high contrast link 1`] = `
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
@@ -2945,8 +2945,8 @@ exports[`<BaseLink /> should render notice intent high contrast link 1`] = `
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(32, 100%, 94%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -2979,7 +2979,7 @@ exports[`<BaseLink /> should render notice intent high contrast link 1`] = `
 exports[`<BaseLink /> should render notice intent low contrast link 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -2987,7 +2987,7 @@ exports[`<BaseLink /> should render notice intent low contrast link 1`] = `
   <View
     accessibilityRole="link"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -3004,8 +3004,8 @@ exports[`<BaseLink /> should render notice intent low contrast link 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignSelf": "flex-start",
           "backgroundColor": "transparent",
           "borderColor": "black",
@@ -3030,8 +3030,8 @@ exports[`<BaseLink /> should render notice intent low contrast link 1`] = `
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
@@ -3046,8 +3046,8 @@ exports[`<BaseLink /> should render notice intent low contrast link 1`] = `
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(38, 97%, 38%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -3080,7 +3080,7 @@ exports[`<BaseLink /> should render notice intent low contrast link 1`] = `
 exports[`<BaseLink /> should render positive intent high contrast link 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -3088,7 +3088,7 @@ exports[`<BaseLink /> should render positive intent high contrast link 1`] = `
   <View
     accessibilityRole="link"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -3105,8 +3105,8 @@ exports[`<BaseLink /> should render positive intent high contrast link 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignSelf": "flex-start",
           "backgroundColor": "transparent",
           "borderColor": "black",
@@ -3131,8 +3131,8 @@ exports[`<BaseLink /> should render positive intent high contrast link 1`] = `
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
@@ -3147,8 +3147,8 @@ exports[`<BaseLink /> should render positive intent high contrast link 1`] = `
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(107, 100%, 96%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -3181,7 +3181,7 @@ exports[`<BaseLink /> should render positive intent high contrast link 1`] = `
 exports[`<BaseLink /> should render positive intent low contrast link 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -3189,7 +3189,7 @@ exports[`<BaseLink /> should render positive intent low contrast link 1`] = `
   <View
     accessibilityRole="link"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -3206,8 +3206,8 @@ exports[`<BaseLink /> should render positive intent low contrast link 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignSelf": "flex-start",
           "backgroundColor": "transparent",
           "borderColor": "black",
@@ -3232,8 +3232,8 @@ exports[`<BaseLink /> should render positive intent low contrast link 1`] = `
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
@@ -3248,8 +3248,8 @@ exports[`<BaseLink /> should render positive intent low contrast link 1`] = `
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(160, 100%, 26%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
