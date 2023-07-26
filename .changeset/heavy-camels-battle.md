@@ -1,5 +1,5 @@
 ---
-"@razorpay/blade": minor
+'@razorpay/blade': minor
 ---
 
-feat(Button): expose `intent` and `contrast` props
+feat(Button): expose `intent` prop
