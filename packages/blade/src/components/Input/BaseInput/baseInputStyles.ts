@@ -124,6 +124,7 @@ export const getBaseInputStyles = ({
     textAlign,
     width: '100%',
     height: isTextArea ? undefined : makeSpace(size[36]),
+    minHeight: makeSpace(size[36]),
     ...(isReactNative ? {} : { resize: 'none' }),
   };
 };

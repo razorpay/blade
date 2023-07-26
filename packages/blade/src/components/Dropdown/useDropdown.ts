@@ -68,6 +68,8 @@ type DropdownContextType = {
   triggererRef: React.RefObject<HTMLButtonElement | null>;
   actionListItemRef: React.RefObject<HTMLDivElement | null>;
   isTagDismissedRef: React.RefObject<{ value: boolean } | null>;
+  visibleTagsCountRef: React.RefObject<{ value: number } | null>;
+
   selectionType?: DropdownProps['selectionType'];
   /** whether footer has an action item.
    * certain a11y behaviour changes happen here
@@ -115,6 +117,7 @@ const DropdownContext = React.createContext<DropdownContextType>({
   activeIndex: -1,
   setActiveIndex: noop,
   activeTagIndex: -1,
+
   setActiveTagIndex: noop,
   shouldIgnoreBlurAnimation: false,
   setShouldIgnoreBlurAnimation: noop,
@@ -136,6 +139,9 @@ const DropdownContext = React.createContext<DropdownContextType>({
     current: null,
   },
   isTagDismissedRef: {
+    current: null,
+  },
+  visibleTagsCountRef: {
     current: null,
   },
 });
@@ -196,6 +202,7 @@ const useDropdown = (): UseDropdownReturnValue => {
     setActiveIndex,
     activeTagIndex,
     setActiveTagIndex,
+    visibleTagsCountRef,
     isKeydownPressed,
     setIsKeydownPressed,
     options,
@@ -356,11 +363,14 @@ const useDropdown = (): UseDropdownReturnValue => {
   };
 
   const onTagAction = (action: SelectActionsType): void => {
+    if (!visibleTagsCountRef.current?.value) {
+      return;
+    }
     setActiveIndex(-1);
-    console.log({ action });
+
     if (action === 'MoveLeftTag') {
       if (activeTagIndex < 0) {
-        setActiveTagIndex(selectedIndices.length - 1);
+        setActiveTagIndex(visibleTagsCountRef.current?.value - 1);
         return;
       }
 
@@ -371,7 +381,7 @@ const useDropdown = (): UseDropdownReturnValue => {
     }
 
     if (action === 'MoveRightTag') {
-      if (activeTagIndex < selectedIndices.length - 1) {
+      if (activeTagIndex < visibleTagsCountRef.current?.value - 1) {
         setActiveTagIndex(activeTagIndex + 1);
       }
 
@@ -440,6 +450,7 @@ const useDropdown = (): UseDropdownReturnValue => {
     setActiveIndex,
     activeTagIndex,
     setActiveTagIndex,
+    visibleTagsCountRef,
     isKeydownPressed,
     setIsKeydownPressed,
     changeCallbackTriggerer,

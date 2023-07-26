@@ -66,6 +66,7 @@ const _SelectInput = (
     dropdownBaseId,
     activeIndex,
     activeTagIndex,
+    visibleTagsCountRef,
     triggererRef,
     hasFooterAction,
     dropdownTriggerer,
@@ -188,7 +189,11 @@ const _SelectInput = (
     }
 
     let stripAfter = 0;
+    const isMultiline = true;
 
+    // if (isMultiline) {
+    //   stripAfter = selectedIndices.length;
+    // } else {
     if (selectInputContainerRef.current?.clientWidth) {
       const leadingTrailingBoxWidth = 72; // 36px + 36px;
       const maxWidthTag = 140 + 8; // 140px width + 8px gap between tags
@@ -199,12 +204,22 @@ const _SelectInput = (
       stripAfter = 2; // defaulting to strip after 2 tags if clientWidth is not present for some reason
     }
 
+    if (isMultiline) {
+      stripAfter = stripAfter * 4; // In multiline, tags can take upto 3 rows
+    }
+    // }
+
+    if (typeof visibleTagsCountRef.current?.value === 'number') {
+      visibleTagsCountRef.current.value = Math.min(stripAfter, selectedIndices.length);
+    }
+
     const tags = selectedIndices.slice(0, stripAfter).map((selectedIndex, tagIndex) => (
       <Tag
         _isVirtuallyFocussed={tagIndex === activeTagIndex}
         _isTagInsideInput={true}
         key={selectedIndex}
         marginRight="spacing.3"
+        marginY="spacing.2"
         onDismiss={() => {
           if (isTagDismissedRef.current) {
             isTagDismissedRef.current.value = true;
@@ -219,7 +234,9 @@ const _SelectInput = (
 
     const plusMoreText =
       selectedIndices.length > stripAfter ? (
-        <Text key="plus">+{selectedIndices.length - stripAfter} More</Text>
+        <Text key="plus" alignSelf="center">
+          +{selectedIndices.length - stripAfter} More
+        </Text>
       ) : null;
 
     if (plusMoreText) {
@@ -251,6 +268,7 @@ const _SelectInput = (
       <BaseInput
         {...baseInputProps}
         as="button"
+        isMultiline
         tags={getTags()}
         value={selectionType === 'multiple' ? undefined : displayValue}
         hideLabelText={props.label?.length === 0}

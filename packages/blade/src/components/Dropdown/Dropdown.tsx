@@ -65,8 +65,6 @@ const _Dropdown = ({
   const [activeIndex, setActiveIndex] = React.useState(-1);
   const [activeTagIndex, setActiveTagIndex] = React.useState(-1);
   const [shouldIgnoreBlurAnimation, setShouldIgnoreBlurAnimation] = React.useState(false);
-  const triggererRef = React.useRef<HTMLButtonElement>(null);
-  const actionListItemRef = React.useRef<HTMLDivElement>(null);
   const [hasFooterAction, setHasFooterAction] = React.useState(false);
   const [hasLabelOnLeft, setHasLabelOnLeft] = React.useState(false);
   const [isKeydownPressed, setIsKeydownPressed] = React.useState(false);
@@ -77,12 +75,15 @@ const _Dropdown = ({
   // keep track if dropdown contains bottomsheet
   const [dropdownHasBottomSheet, setDropdownHasBottomSheet] = React.useState(false);
 
-  const dropdownBaseId = useId('dropdown');
-
+  const triggererRef = React.useRef<HTMLButtonElement>(null);
+  const actionListItemRef = React.useRef<HTMLDivElement>(null);
   const dropdownTriggerer = React.useRef<DropdownContextType['dropdownTriggerer']>();
   const isFirstRenderRef = React.useRef(true);
   const isTagDismissedRef = React.useRef<{ value: boolean } | null>({ value: false });
+  const visibleTagsCountRef = React.useRef<{ value: number }>({ value: 0 });
   const dropdownContainerRef = React.useRef<HTMLDivElement>(null);
+
+  const dropdownBaseId = useId('dropdown');
 
   React.useEffect(() => {
     // Ignoring the `onDismiss` call on first render
@@ -138,6 +139,7 @@ const _Dropdown = ({
       setActiveIndex,
       activeTagIndex,
       setActiveTagIndex,
+      visibleTagsCountRef,
       shouldIgnoreBlurAnimation,
       setShouldIgnoreBlurAnimation,
       isKeydownPressed,
@@ -210,12 +212,7 @@ const _Dropdown = ({
         const target = e.relatedTarget as HTMLDivElement;
         setActiveIndex(-1);
 
-        if (!dropdown) {
-          return;
-        }
-
-        if (target === null) {
-          close();
+        if (!dropdown || !target) {
           return;
         }
 

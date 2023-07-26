@@ -236,6 +236,12 @@ export type BaseInputProps = FormInputLabelProps &
      * sets the autocapitalize behavior for the input
      */
     autoCapitalize?: 'none' | 'sentences' | 'words' | 'characters';
+
+    /**
+     * Removes the height restriction from input.
+     * Unlike as="textarea" prop, this does not make input render as textarea element while increasing height.
+     */
+    isMultiline?: boolean;
     /**
      * A slot for adding tags to input
      */
@@ -581,6 +587,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
       hasPopup,
       popupId,
       isPopupExpanded,
+      isMultiline,
       shouldIgnoreBlurAnimation,
       setShouldIgnoreBlurAnimation,
       autoCapitalize,
@@ -668,8 +675,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
               flexDirection={isLabelLeftPositioned ? 'column' : 'row'}
               justifyContent="space-between"
               alignSelf={isTextArea ? 'flex-start' : undefined}
-              marginTop={isTextArea && isLabelLeftPositioned ? 'spacing.3' : 'spacing.0'}
-              marginBottom={isTextArea && isLabelLeftPositioned ? 'spacing.3' : 'spacing.0'}
+              marginY={isTextArea && isLabelLeftPositioned ? 'spacing.3' : 'spacing.0'}
             >
               <FormLabel
                 as="label"
@@ -698,6 +704,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
                   ref.current?.focus();
                 }
               }}
+              handleOnClick={handleOnClick}
               setShouldIgnoreBlurAnimation={setShouldIgnoreBlurAnimation}
             />
             <StyledBaseInput
@@ -735,7 +742,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
               currentInteraction={currentInteraction}
               setCurrentInteraction={setCurrentInteraction}
               numberOfLines={numberOfLines}
-              isTextArea={isTextArea}
+              isTextArea={isTextArea || isMultiline}
               hasPopup={hasPopup}
               shouldIgnoreBlurAnimation={shouldIgnoreBlurAnimation}
               autoCapitalize={autoCapitalize}

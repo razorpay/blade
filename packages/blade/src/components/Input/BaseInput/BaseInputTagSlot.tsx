@@ -1,4 +1,6 @@
+import React from 'react';
 import type { BaseInputProps } from './BaseInput';
+import type { StyledBaseInputProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
 import { isReactNative } from '~utils';
 
@@ -6,13 +8,17 @@ type BaseInputTagSlotProps = {
   tags?: BaseInputProps['tags'];
   setFocusOnInput: () => void;
   setShouldIgnoreBlurAnimation: BaseInputProps['setShouldIgnoreBlurAnimation'];
+  handleOnClick: StyledBaseInputProps['handleOnClick'];
 };
 
 const BaseInputTagSlot = ({
   tags,
   setShouldIgnoreBlurAnimation,
   setFocusOnInput,
+  handleOnClick,
 }: BaseInputTagSlotProps): React.ReactElement | null => {
+  const tagContainerRef = React.useRef<HTMLDivElement>(null);
+
   if (!tags) {
     return null;
   }
@@ -23,11 +29,13 @@ const BaseInputTagSlot = ({
 
   return (
     <BaseBox
+      ref={tagContainerRef}
       paddingLeft="spacing.4"
-      alignSelf="center"
-      justifyContent="center"
+      marginY="spacing.2"
+      justifyContent="flex-start"
       display="flex"
       flexDirection="row"
+      flexWrap="wrap"
       // Move to using gap instead of marginLeft on individual tags after RN upgrade
       // gap="spacing.3"
       {...(!isReactNative()
@@ -35,7 +43,10 @@ const BaseInputTagSlot = ({
             onMouseDown: () => {
               setShouldIgnoreBlurAnimation?.(true);
             },
-            onClick: () => {
+            onClick: (e) => {
+              if (tagContainerRef.current === e.target) {
+                handleOnClick?.({ name: '', value: e as React.MouseEvent<HTMLInputElement> });
+              }
               setFocusOnInput();
             },
             onMouseUp: () => {
