@@ -1,65 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Divider /> should render Divider within flex container 1`] = `
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c1 {
-  border-width: 0px;
-  border-bottom-color: hsla(216,15%,54%,0.18);
-  border-style: solid;
-}
-
-.c2 {
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-}
-
-@media screen and (min-width:320px) {
-  .c1 {
-    border-style: solid;
-  }
-}
-
-@media screen and (min-width:480px) {
-  .c1 {
-    border-style: solid;
-  }
-}
-
-@media screen and (min-width:768px) {
-  .c1 {
-    border-style: solid;
-  }
-}
-
-@media screen and (min-width:1024px) {
-  .c1 {
-    border-style: solid;
-  }
-}
-
-@media screen and (min-width:1200px) {
-  .c1 {
-    border-style: solid;
-  }
-}
-
 <div>
   <div
-    class="c0"
+    class="BaseBox-bmPWx jLCxzZ"
     data-blade-component="box"
   >
     <div
-      class="c1 c2"
+      class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 jfizlv jvaPlR"
       data-blade-component="divider"
     />
   </div>
@@ -67,65 +15,13 @@ exports[`<Divider /> should render Divider within flex container 1`] = `
 `;
 
 exports[`<Divider /> should render horizontal Divider using width 1`] = `
-.c0 {
-  display: block;
-  width: 100px;
-}
-
-.c1 {
-  width: 100%;
-  border-width: 0px;
-  border-bottom-color: hsla(216,15%,54%,0.18);
-  border-style: solid;
-}
-
-.c2 {
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  width: 100%;
-}
-
-@media screen and (min-width:320px) {
-  .c1 {
-    border-style: solid;
-  }
-}
-
-@media screen and (min-width:480px) {
-  .c1 {
-    border-style: solid;
-  }
-}
-
-@media screen and (min-width:768px) {
-  .c1 {
-    border-style: solid;
-  }
-}
-
-@media screen and (min-width:1024px) {
-  .c1 {
-    border-style: solid;
-  }
-}
-
-@media screen and (min-width:1200px) {
-  .c1 {
-    border-style: solid;
-  }
-}
-
 <div>
   <div
-    class="c0"
+    class="BaseBox-bmPWx hzdKuN"
     data-blade-component="box"
   >
     <div
-      class="c1 c2"
+      class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 gOvuTU eDIlme"
       data-blade-component="divider"
     />
   </div>
@@ -133,64 +29,13 @@ exports[`<Divider /> should render horizontal Divider using width 1`] = `
 `;
 
 exports[`<Divider /> should render vertical Divider using height 1`] = `
-.c0 {
-  display: block;
-  height: 100px;
-}
-
-.c1 {
-  height: 100%;
-  border-width: 0px;
-  border-left-color: hsla(216,15%,54%,0.18);
-  border-style: solid;
-}
-
-.c2 {
-  border-left-style: solid;
-  border-left-width: 1px;
-  -webkit-align-self: stretch;
-  -ms-flex-item-align: stretch;
-  align-self: stretch;
-  height: 100%;
-}
-
-@media screen and (min-width:320px) {
-  .c1 {
-    border-style: solid;
-  }
-}
-
-@media screen and (min-width:480px) {
-  .c1 {
-    border-style: solid;
-  }
-}
-
-@media screen and (min-width:768px) {
-  .c1 {
-    border-style: solid;
-  }
-}
-
-@media screen and (min-width:1024px) {
-  .c1 {
-    border-style: solid;
-  }
-}
-
-@media screen and (min-width:1200px) {
-  .c1 {
-    border-style: solid;
-  }
-}
-
 <div>
   <div
-    class="c0"
+    class="BaseBox-bmPWx fQoxyE"
     data-blade-component="box"
   >
     <div
-      class="c1 c2"
+      class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 bixfEx jYGBuO"
       data-blade-component="divider"
     />
   </div>

@@ -1,140 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Switch /> should render switch 1`] = `
-.c6 {
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-delay: 0ms;
-  transition-delay: 0ms;
-  opacity: 0;
-}
-
-.c0 {
-  display: inline-block;
-}
-
-.c4 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  width: 16px;
-  height: 16px;
-  position: relative;
-}
-
-.c5 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  height: 100%;
-  position: relative;
-  will-change: transform,left;
-  width: 100%;
-  left: 0%;
-  -webkit-transform: translateX(0%);
-  -ms-transform: translateX(0%);
-  transform: translateX(0%);
-  -webkit-transition: 150ms;
-  transition: 150ms;
-  border-radius: 9999px;
-  -webkit-animation-duration: 150ms;
-  animation-duration: 150ms;
-  background-color: hsla(220,30%,96%,1);
-}
-
-.c3 {
-  pointer-events: none;
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  margin: 2px;
-  padding: 2px;
-  width: 36px;
-  height: 20px;
-  border-radius: 9999px;
-  background-color: hsla(214,18%,69%,1);
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
-}
-
-.c2 {
-  border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
-  height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-  left: -10000px;
-  white-space: nowrap;
-  word-wrap: normal;
-}
-
-.c2:focus + div {
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-}
-
-.c2:hover + div,
-.c2:focus + div {
-  background-color: hsla(216,16%,60%,1);
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin-top: 2px;
-  margin-bottom: 2px;
-}
-
 <div>
   <div
-    class="c0"
+    class="BaseBox-bmPWx dhmCzz"
     data-blade-component="switch"
   >
     <label
-      class="c1"
+      class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 bgSmPY"
       data-blade-component="switch-label"
       style="cursor: pointer;"
     >
@@ -144,27 +17,27 @@ exports[`<Switch /> should render switch 1`] = `
         aria-invalid="false"
         aria-label="Toggle Darkmode"
         aria-required="false"
-        class="c2"
+        class="SelectorInputweb__StyledInput-sc-1bnkrae-0 jHlQyY"
         role="switch"
         type="checkbox"
         value=""
       />
       <div
         aria-hidden="true"
-        class=" c3"
+        class="BaseBox-bmPWx SwitchTrackweb__SwitchTrack-t4l0ax-0  cwBdxr"
         data-blade-component="base-box"
       >
         <div
-          class=" c4"
+          class="BaseBox-bmPWx Thumb-jf4wbz-0  gYYaLo"
           data-blade-component="base-box"
         >
           <div
-            class=" c5"
+            class="BaseBox-bmPWx AnimatedThumbweb__AnimatedThumb-i5qu0o-0  cZLYHA"
             data-blade-component="base-box"
           >
             <svg
               aria-hidden="true"
-              class="Svgweb__StyledSvg-vcmjs8-0 c6"
+              class="Svgweb__StyledSvg-vcmjs8-0 AnimatedThumbIconweb__AnimatedThumbIcon-sc-3hk5w7-0 ezMhSy"
               data-blade-component="icon"
               fill="none"
               height="8px"
@@ -188,131 +61,13 @@ exports[`<Switch /> should render switch 1`] = `
 `;
 
 exports[`<Switch /> should set disabled state with isDisabled 1`] = `
-.c6 {
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-delay: 0ms;
-  transition-delay: 0ms;
-  opacity: 0;
-}
-
-.c0 {
-  display: inline-block;
-}
-
-.c4 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  width: 16px;
-  height: 16px;
-  position: relative;
-}
-
-.c5 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  height: 100%;
-  position: relative;
-  will-change: transform,left;
-  width: 100%;
-  left: 0%;
-  -webkit-transform: translateX(0%);
-  -ms-transform: translateX(0%);
-  transform: translateX(0%);
-  -webkit-transition: 150ms;
-  transition: 150ms;
-  border-radius: 9999px;
-  -webkit-animation-duration: 150ms;
-  animation-duration: 150ms;
-  background-color: hsla(220,27%,98%,1);
-}
-
-.c3 {
-  pointer-events: none;
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  margin: 2px;
-  padding: 2px;
-  width: 36px;
-  height: 20px;
-  border-radius: 9999px;
-  background-color: hsla(216,15%,54%,0.18);
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
-}
-
-.c2 {
-  border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
-  height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-  left: -10000px;
-  white-space: nowrap;
-  word-wrap: normal;
-}
-
-.c2:focus + div {
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin-top: 2px;
-  margin-bottom: 2px;
-}
-
 <div>
   <div
-    class="c0"
+    class="BaseBox-bmPWx dhmCzz"
     data-blade-component="switch"
   >
     <label
-      class="c1"
+      class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 bgSmPY"
       data-blade-component="switch-label"
       style="cursor: pointer;"
     >
@@ -322,7 +77,7 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
         aria-invalid="false"
         aria-label="Toggle Darkmode"
         aria-required="false"
-        class="c2"
+        class="SelectorInputweb__StyledInput-sc-1bnkrae-0 hJscHc"
         disabled=""
         role="switch"
         type="checkbox"
@@ -330,20 +85,20 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
       />
       <div
         aria-hidden="true"
-        class=" c3"
+        class="BaseBox-bmPWx SwitchTrackweb__SwitchTrack-t4l0ax-0  jiufoI"
         data-blade-component="base-box"
       >
         <div
-          class=" c4"
+          class="BaseBox-bmPWx Thumb-jf4wbz-0  gYYaLo"
           data-blade-component="base-box"
         >
           <div
-            class=" c5"
+            class="BaseBox-bmPWx AnimatedThumbweb__AnimatedThumb-i5qu0o-0  cdGcGM"
             data-blade-component="base-box"
           >
             <svg
               aria-hidden="true"
-              class="Svgweb__StyledSvg-vcmjs8-0 c6"
+              class="Svgweb__StyledSvg-vcmjs8-0 AnimatedThumbIconweb__AnimatedThumbIcon-sc-3hk5w7-0 ezMhSy"
               data-blade-component="icon"
               fill="none"
               height="8px"

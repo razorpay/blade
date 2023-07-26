@@ -1,54 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Indicator /> should render 1`] = `
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c2 {
-  margin-left: 4px;
-}
-
-.c3 {
-  color: hsla(216,27%,36%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: left;
-  margin: 0;
-  padding: 0;
-}
-
 <div>
   <div
     aria-label="Success"
-    class="c0"
+    class="BaseBox-bmPWx jLCxzZ"
     data-blade-component="indicator"
     role="status"
   >
     <div
-      class="c1"
+      class="BaseBox-bmPWx fSbYvl"
       data-blade-component="base-box"
     >
       <svg
@@ -77,11 +38,11 @@ exports[`<Indicator /> should render 1`] = `
         />
       </svg>
       <div
-        class="c2"
+        class="BaseBox-bmPWx bigiAM"
         data-blade-component="base-box"
       >
         <p
-          class="c3"
+          class="StyledBaseText-dVBfTO dJlkAX"
           data-blade-component="text"
         />
       </div>
@@ -91,68 +52,15 @@ exports[`<Indicator /> should render 1`] = `
 `;
 
 exports[`<Indicator /> should render different variants for size and intent 1`] = `
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c2 {
-  margin-left: 4px;
-}
-
-.c3 {
-  color: hsla(216,27%,36%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.75rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  text-align: left;
-  margin: 0;
-  padding: 0;
-}
-
-.c4 {
-  color: hsla(216,27%,36%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: left;
-  margin: 0;
-  padding: 0;
-}
-
 <div>
   <div
     aria-label="Warning"
-    class="c0"
+    class="BaseBox-bmPWx jLCxzZ"
     data-blade-component="indicator"
     role="status"
   >
     <div
-      class="c1"
+      class="BaseBox-bmPWx fSbYvl"
       data-blade-component="base-box"
     >
       <svg
@@ -181,11 +89,11 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
         />
       </svg>
       <div
-        class="c2"
+        class="BaseBox-bmPWx bigiAM"
         data-blade-component="base-box"
       >
         <p
-          class="c3"
+          class="StyledBaseText-dVBfTO kRbeVC"
           data-blade-component="text"
         />
       </div>
@@ -193,12 +101,12 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
   </div>
   <div
     aria-label="Success"
-    class="c0"
+    class="BaseBox-bmPWx jLCxzZ"
     data-blade-component="indicator"
     role="status"
   >
     <div
-      class="c1"
+      class="BaseBox-bmPWx fSbYvl"
       data-blade-component="base-box"
     >
       <svg
@@ -227,11 +135,11 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
         />
       </svg>
       <div
-        class="c2"
+        class="BaseBox-bmPWx bigiAM"
         data-blade-component="base-box"
       >
         <p
-          class="c4"
+          class="StyledBaseText-dVBfTO dJlkAX"
           data-blade-component="text"
         />
       </div>
@@ -239,12 +147,12 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
   </div>
   <div
     aria-label="Error"
-    class="c0"
+    class="BaseBox-bmPWx jLCxzZ"
     data-blade-component="indicator"
     role="status"
   >
     <div
-      class="c1"
+      class="BaseBox-bmPWx fSbYvl"
       data-blade-component="base-box"
     >
       <svg
@@ -273,11 +181,11 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
         />
       </svg>
       <div
-        class="c2"
+        class="BaseBox-bmPWx bigiAM"
         data-blade-component="base-box"
       >
         <p
-          class="c4"
+          class="StyledBaseText-dVBfTO dJlkAX"
           data-blade-component="text"
         />
       </div>
@@ -285,12 +193,12 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
   </div>
   <div
     aria-label="Info"
-    class="c0"
+    class="BaseBox-bmPWx jLCxzZ"
     data-blade-component="indicator"
     role="status"
   >
     <div
-      class="c1"
+      class="BaseBox-bmPWx fSbYvl"
       data-blade-component="base-box"
     >
       <svg
@@ -319,11 +227,11 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
         />
       </svg>
       <div
-        class="c2"
+        class="BaseBox-bmPWx bigiAM"
         data-blade-component="base-box"
       >
         <p
-          class="c4"
+          class="StyledBaseText-dVBfTO dJlkAX"
           data-blade-component="text"
         />
       </div>

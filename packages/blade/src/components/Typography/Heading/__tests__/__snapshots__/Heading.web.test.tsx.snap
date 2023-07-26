@@ -1,22 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Heading /> should render Heading with color 1`] = `
-.c0 {
-  color: hsla(214,18%,69%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 1rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.5rem;
-  margin: 0;
-  padding: 0;
-}
-
 <div>
   <h6
-    class="c0"
+    class="StyledBaseText-dVBfTO wmaOE"
     data-blade-component="heading"
   >
     Get Started With Payment Gateway
@@ -25,22 +12,9 @@ exports[`<Heading /> should render Heading with color 1`] = `
 `;
 
 exports[`<Heading /> should render Heading with default properties 1`] = `
-.c0 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 1rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.5rem;
-  margin: 0;
-  padding: 0;
-}
-
 <div>
   <h6
-    class="c0"
+    class="StyledBaseText-dVBfTO dFejDk"
     data-blade-component="heading"
   >
     Get Started With Payment Gateway
@@ -49,41 +23,15 @@ exports[`<Heading /> should render Heading with default properties 1`] = `
 `;
 
 exports[`<Heading /> should render Heading with mixed color 1`] = `
-.c0 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 1rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.5rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c1 {
-  color: hsla(195,100%,31%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 1rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.5rem;
-  margin: 0;
-  padding: 0;
-}
-
 <div>
   <h6
-    class="c0"
+    class="StyledBaseText-dVBfTO dFejDk"
     data-blade-component="heading"
   >
     Supercharge your business with the all‑powerful
      
     <span
-      class="c1"
+      class="StyledBaseText-dVBfTO cBILfT"
       data-blade-component="heading"
     >
       Payment Gateway
@@ -93,22 +41,9 @@ exports[`<Heading /> should render Heading with mixed color 1`] = `
 `;
 
 exports[`<Heading /> should render Heading with size "large" 1`] = `
-.c0 {
-  color: hsla(217,18%,45%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 1.25rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.75rem;
-  margin: 0;
-  padding: 0;
-}
-
 <div>
   <h4
-    class="c0"
+    class="StyledBaseText-dVBfTO eesmDk"
     data-blade-component="heading"
   >
     Get Started With Payment Gateway
@@ -117,22 +52,9 @@ exports[`<Heading /> should render Heading with size "large" 1`] = `
 `;
 
 exports[`<Heading /> should render Heading with size "medium" 1`] = `
-.c0 {
-  color: hsla(216,16%,60%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 1.125rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.5rem;
-  margin: 0;
-  padding: 0;
-}
-
 <div>
   <h5
-    class="c0"
+    class="StyledBaseText-dVBfTO ljSxma"
     data-blade-component="heading"
   >
     Get Started With Payment Gateway
@@ -141,22 +63,9 @@ exports[`<Heading /> should render Heading with size "medium" 1`] = `
 `;
 
 exports[`<Heading /> should render Heading with size "small" 1`] = `
-.c0 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 1rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.5rem;
-  margin: 0;
-  padding: 0;
-}
-
 <div>
   <h6
-    class="c0"
+    class="StyledBaseText-dVBfTO bsgrdX"
     data-blade-component="heading"
   >
     Get Started With Payment Gateway
@@ -165,22 +74,9 @@ exports[`<Heading /> should render Heading with size "small" 1`] = `
 `;
 
 exports[`<Heading /> should render Heading with size "small" and contrast "high" 1`] = `
-.c0 {
-  color: hsla(0,0%,100%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 1rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.5rem;
-  margin: 0;
-  padding: 0;
-}
-
 <div>
   <h6
-    class="c0"
+    class="StyledBaseText-dVBfTO HcDBX"
     data-blade-component="heading"
   >
     Get Started With Payment Gateway
@@ -189,22 +85,9 @@ exports[`<Heading /> should render Heading with size "small" and contrast "high"
 `;
 
 exports[`<Heading /> should render Heading with variant "subheading" and weight "bold" 1`] = `
-.c0 {
-  color: hsla(217,18%,45%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.75rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  margin: 0;
-  padding: 0;
-}
-
 <div>
   <p
-    class="c0"
+    class="StyledBaseText-dVBfTO hcIYgT"
     data-blade-component="heading"
   >
     Get Started With Payment Gateway

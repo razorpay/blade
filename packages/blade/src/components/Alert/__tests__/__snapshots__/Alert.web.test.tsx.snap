@@ -1,118 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Alert /> should render 1`] = `
-.c0 {
-  text-align: left;
-}
-
-.c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin-top: 2px;
-}
-
-.c3 {
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  padding-right: 4px;
-  padding-left: 8px;
-}
-
-.c4 {
-  margin-top: 2px;
-}
-
-.c1 {
-  background: hsla(216,15%,54%,0.09);
-  padding: 8px 8px 12px 8px;
-  border-radius: 4px;
-  border-color: hsla(216,15%,54%,0.32);
-  border-width: 1px;
-  border-style: solid;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  max-width: 584px;
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
-  align-items: flex-start;
-  box-sizing: border-box;
-}
-
-.c6 {
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  border-radius: 2px;
-  background: transparent;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  color: hsla(214,18%,69%,1);
-  -webkit-transition-property: color,box-shadow;
-  transition-property: color,box-shadow;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c6:hover {
-  color: hsla(217,18%,45%,1);
-}
-
-.c6:focus {
-  outline: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-  color: hsla(217,18%,45%,1);
-}
-
-.c6:active {
-  color: hsla(217,18%,45%,1);
-}
-
-.c5 {
-  color: hsla(216,27%,36%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.75rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  margin: 0;
-  padding: 0;
-}
-
 <div>
   <div
-    class=""
+    class="BaseBox-bmPWx"
     data-blade-component="alert"
     role="status"
   >
     <div
-      class="c0 c1"
+      class="BaseBox-bmPWx StyledAlert-sc-1dcpe4h-0 dUEwku eXdJcw"
       data-blade-component="base-box"
     >
       <div
-        class="c2"
+        class="BaseBox-bmPWx jrjaVi"
         data-blade-component="base-box"
       >
         <svg
@@ -144,15 +44,15 @@ exports[`<Alert /> should render 1`] = `
         </svg>
       </div>
       <div
-        class="c3"
+        class="BaseBox-bmPWx SQWdp"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
+          class="BaseBox-bmPWx bSlxMW"
           data-blade-component="base-box"
         >
           <p
-            class="c5"
+            class="StyledBaseText-dVBfTO gOAMqV"
             data-blade-component="text"
           >
             Currently you can only accept payments in international currencies using PayPal.
@@ -161,7 +61,7 @@ exports[`<Alert /> should render 1`] = `
       </div>
       <button
         aria-label="Dismiss alert"
-        class="c6"
+        class="StyledIconButtonweb__StyledButton-sc-1f4cg7d-0 gvuEeM"
         data-blade-component="icon-button"
         type="button"
       >
@@ -187,119 +87,18 @@ exports[`<Alert /> should render 1`] = `
 `;
 
 exports[`<Alert /> should render positive intent and full width 1`] = `
-.c0 {
-  text-align: left;
-}
-
-.c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin-top: 0px;
-}
-
-.c3 {
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  padding-right: 12px;
-  padding-left: 12px;
-}
-
-.c4 {
-  margin-top: 2px;
-}
-
-.c1 {
-  background: hsla(155,100%,31%,0.09);
-  padding: 12px 16px;
-  border-radius: 0px;
-  border-color: hsla(155,100%,31%,0.32);
-  border-width: 0px;
-  border-style: solid;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  max-width: auto;
-  width: 100%;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  box-sizing: border-box;
-}
-
-.c6 {
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  border-radius: 2px;
-  background: transparent;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  color: hsla(214,18%,69%,1);
-  -webkit-transition-property: color,box-shadow;
-  transition-property: color,box-shadow;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c6:hover {
-  color: hsla(217,18%,45%,1);
-}
-
-.c6:focus {
-  outline: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-  color: hsla(217,18%,45%,1);
-}
-
-.c6:active {
-  color: hsla(217,18%,45%,1);
-}
-
-.c5 {
-  color: hsla(216,27%,36%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
-}
-
 <div>
   <div
-    class=""
+    class="BaseBox-bmPWx"
     data-blade-component="alert"
     role="status"
   >
     <div
-      class="c0 c1"
+      class="BaseBox-bmPWx StyledAlert-sc-1dcpe4h-0 dUEwku cyXZKi"
       data-blade-component="base-box"
     >
       <div
-        class="c2"
+        class="BaseBox-bmPWx cNbpzs"
         data-blade-component="base-box"
       >
         <svg
@@ -344,15 +143,15 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
         </svg>
       </div>
       <div
-        class="c3"
+        class="BaseBox-bmPWx cOMqiN"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
+          class="BaseBox-bmPWx bSlxMW"
           data-blade-component="base-box"
         >
           <p
-            class="c5"
+            class="StyledBaseText-dVBfTO ktUwvA"
             data-blade-component="text"
           >
             Currently you can only accept payments in international currencies using PayPal.
@@ -361,7 +160,7 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
       </div>
       <button
         aria-label="Dismiss alert"
-        class="c6"
+        class="StyledIconButtonweb__StyledButton-sc-1f4cg7d-0 gvuEeM"
         data-blade-component="icon-button"
         type="button"
       >

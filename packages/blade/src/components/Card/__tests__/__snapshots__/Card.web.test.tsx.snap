@@ -1,418 +1,80 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Card /> should render a Card with Footer 1`] = `
-.c0 {
-  text-align: left;
-  padding: 24px;
-  border-radius: 4px;
-  box-shadow: 0 4px 8px -2px hsla(217,56%,17%,0.1),0 2px 4px -2px hsla(217,56%,17%,0.06);
-}
-
-.c3 {
-  margin-top: auto;
-}
-
-.c4 {
-  margin-top: 24px;
-}
-
-.c5 {
-  border-width: 0px;
-  border-bottom-color: hsla(216,15%,54%,0.18);
-  border-style: solid;
-}
-
-.c7 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  margin-top: 24px;
-}
-
-.c8 {
-  text-align: left;
-}
-
-.c11 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
-  margin-top: 0px;
-  margin-left: 16px;
-}
-
-.c12 {
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-}
-
-.c14 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-}
-
-.c17 {
-  margin-left: 16px;
-}
-
-.c1 {
-  width: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  background-color: hsla(0,0%,100%,1);
-  box-sizing: border-box;
-}
-
-.c2 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c9 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c10 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.75rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c16 {
-  color: hsla(218,89%,51%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.c19 {
-  color: hsla(0,0%,100%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.c13 {
-  min-height: 36px;
-  width: 100%;
-  cursor: pointer;
-  background-color: hsla(218,89%,51%,0);
-  border-color: hsla(218,89%,51%,1);
-  border-width: 1px;
-  border-radius: 2px;
-  border-style: solid;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  position: relative;
-}
-
-.c13:hover {
-  background-color: hsla(218,89%,51%,0.09);
-  border-color: hsla(218,89%,51%,1);
-}
-
-.c13:active {
-  background-color: hsla(218,89%,51%,0.32);
-  border-color: hsla(218,89%,51%,1);
-}
-
-.c13:focus {
-  background-color: hsla(218,89%,51%,0.18);
-  border-color: hsla(218,89%,51%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-  outline: none;
-}
-
-.c13 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c18 {
-  min-height: 36px;
-  width: 100%;
-  cursor: pointer;
-  background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
-  border-width: 1px;
-  border-radius: 2px;
-  border-style: solid;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  position: relative;
-}
-
-.c18:hover {
-  background-color: hsla(223,95%,48%,1);
-  border-color: hsla(223,95%,48%,1);
-}
-
-.c18:active {
-  background-color: hsla(230,100%,42%,1);
-  border-color: hsla(230,100%,42%,1);
-}
-
-.c18:focus {
-  background-color: hsla(227,100%,45%,1);
-  border-color: hsla(227,100%,45%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-  outline: none;
-}
-
-.c18 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c15 {
-  opacity: 1;
-}
-
-.c6 {
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-}
-
-@media screen and (min-width:320px) {
-  .c5 {
-    border-style: solid;
-  }
-}
-
-@media screen and (min-width:480px) {
-  .c5 {
-    border-style: solid;
-  }
-}
-
-@media screen and (min-width:768px) {
-  .c5 {
-    border-style: solid;
-  }
-}
-
-@media screen and (min-width:1024px) {
-  .c5 {
-    border-style: solid;
-  }
-}
-
-@media screen and (min-width:1200px) {
-  .c5 {
-    border-style: solid;
-  }
-}
-
 <div>
   <div
-    class=""
+    class="BaseBox-bmPWx"
     data-blade-component="card"
   >
     <div
-      class="c0 c1"
+      class="BaseBox-bmPWx CardSurfaceweb__CardSurface-sc-1pgxikk-0 dXrkKy htwYNg"
       data-blade-component="base-box"
       elevation="lowRaised"
     >
       <div
-        class=""
+        class="BaseBox-bmPWx"
         data-blade-component="card-body"
       >
         <p
-          class="c2"
+          class="StyledBaseText-dVBfTO eIdQFo"
           data-blade-component="text"
         >
           Plain Card
         </p>
       </div>
       <div
-        class="c3"
+        class="BaseBox-bmPWx jWqAWn"
         data-blade-component="card-footer"
       >
         <div
-          class="c4"
+          class="BaseBox-bmPWx ekWGYe"
           data-blade-component="base-box"
         />
         <div
-          class="c5 c6"
+          class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 jfizlv jvaPlR"
           data-blade-component="divider"
         />
         <div
-          class="c7"
+          class="BaseBox-bmPWx beNNrm"
           data-blade-component="base-box"
         >
           <div
-            class="c8"
+            class="BaseBox-bmPWx dUEwku"
             data-blade-component="base-box"
           >
             <p
-              class="c9"
+              class="StyledBaseText-dVBfTO ldPEnv"
               data-blade-component="text"
             >
               Card Footer
             </p>
             <p
-              class="c10"
+              class="StyledBaseText-dVBfTO fedBF"
               data-blade-component="text"
             >
               Card footer subtitle
             </p>
           </div>
           <div
-            class="c11"
+            class="BaseBox-bmPWx cgOfrU"
             data-blade-component="base-box"
           >
             <div
-              class="c12"
+              class="BaseBox-bmPWx lawERa"
               data-blade-component="base-box"
             >
               <button
-                class="c13"
+                class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 hDfvuZ"
                 data-blade-component="button"
                 role="button"
                 type="button"
               >
                 <div
-                  class="c14 c15"
+                  class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 kkGTK NIPoA"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c16"
+                    class="StyledBaseText-dVBfTO jSaisz"
                     data-blade-component="base-text"
                   >
                     Delete
@@ -421,25 +83,25 @@ exports[`<Card /> should render a Card with Footer 1`] = `
               </button>
             </div>
             <div
-              class="c17"
+              class="BaseBox-bmPWx hFfAen"
               data-blade-component="base-box"
             />
             <div
-              class="c12"
+              class="BaseBox-bmPWx lawERa"
               data-blade-component="base-box"
             >
               <button
-                class="c18"
+                class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 fcmfVa"
                 data-blade-component="button"
                 role="button"
                 type="button"
               >
                 <div
-                  class="c14 c15"
+                  class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 kkGTK NIPoA"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c19"
+                    class="StyledBaseText-dVBfTO brGLEM"
                     data-blade-component="base-text"
                   >
                     Save
@@ -456,316 +118,30 @@ exports[`<Card /> should render a Card with Footer 1`] = `
 `;
 
 exports[`<Card /> should render a Card with Header 1`] = `
-.c0 {
-  text-align: left;
-  padding: 24px;
-  border-radius: 4px;
-  box-shadow: 0 4px 8px -2px hsla(217,56%,17%,0.1),0 2px 4px -2px hsla(217,56%,17%,0.06);
-}
-
-.c2 {
-  margin-bottom: 24px;
-}
-
-.c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  margin-bottom: 24px;
-}
-
-.c4 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-}
-
-.c5 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
-  margin-right: 8px;
-}
-
-.c6 {
-  margin-right: 16px;
-}
-
-.c7 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c9 {
-  margin-left: 8px;
-}
-
-.c10 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c11 {
-  background-color: hsla(216,15%,54%,0.09);
-}
-
-.c13 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  overflow: hidden;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  padding-right: 8px;
-  padding-left: 8px;
-}
-
-.c16 {
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
-}
-
-.c17 {
-  text-align: left;
-  background-color: hsla(216,15%,54%,0.09);
-}
-
-.c20 {
-  border-width: 0px;
-  border-bottom-color: hsla(216,15%,54%,0.18);
-  border-style: solid;
-}
-
-.c1 {
-  width: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  background-color: hsla(0,0%,100%,1);
-  box-sizing: border-box;
-}
-
-.c18 {
-  background-color: hsla(216,15%,54%,0.09);
-  border-radius: 9999px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-
-.c8 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 1rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.5rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c14 {
-  color: hsla(216,27%,36%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.75rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  display: -webkit-box;
-  line-clamp: 1;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-}
-
-.c15 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.75rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  text-align: left;
-  margin: 0;
-  padding: 0;
-}
-
-.c19 {
-  color: hsla(216,27%,36%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.75rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  display: -webkit-box;
-  line-clamp: 1;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-}
-
-.c22 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c12 {
-  background-color: hsla(216,15%,54%,0.09);
-  border-radius: 9999px;
-  max-width: 120px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-
-.c21 {
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-}
-
-@media screen and (min-width:320px) {
-  .c20 {
-    border-style: solid;
-  }
-}
-
-@media screen and (min-width:480px) {
-  .c20 {
-    border-style: solid;
-  }
-}
-
-@media screen and (min-width:768px) {
-  .c20 {
-    border-style: solid;
-  }
-}
-
-@media screen and (min-width:1024px) {
-  .c20 {
-    border-style: solid;
-  }
-}
-
-@media screen and (min-width:1200px) {
-  .c20 {
-    border-style: solid;
-  }
-}
-
 <div>
   <div
-    class=""
+    class="BaseBox-bmPWx"
     data-blade-component="card"
   >
     <div
-      class="c0 c1"
+      class="BaseBox-bmPWx CardSurfaceweb__CardSurface-sc-1pgxikk-0 dXrkKy htwYNg"
       data-blade-component="base-box"
       elevation="lowRaised"
     >
       <div
-        class="c2"
+        class="BaseBox-bmPWx gvTYQa"
         data-blade-component="card-header"
       >
         <div
-          class="c3"
+          class="BaseBox-bmPWx cEYTaO"
           data-blade-component="base-box"
         >
           <div
-            class="c4"
+            class="BaseBox-bmPWx iOdcTa"
             data-blade-component="base-box"
           >
             <div
-              class="c5"
+              class="BaseBox-bmPWx eFvDfp"
               data-blade-component="base-box"
             >
               <svg
@@ -797,37 +173,37 @@ exports[`<Card /> should render a Card with Header 1`] = `
               </svg>
             </div>
             <div
-              class="c6"
+              class="BaseBox-bmPWx kFTMWM"
               data-blade-component="base-box"
             >
               <div
-                class="c7"
+                class="BaseBox-bmPWx bdZEQS"
                 data-blade-component="base-box"
               >
                 <h6
-                  class="c8"
+                  class="StyledBaseText-dVBfTO dFejDk"
                   data-blade-component="heading"
                 >
                   Card Header
                 </h6>
                 <div
-                  class="c9"
+                  class="BaseBox-bmPWx ktWMhw"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c10"
+                    class="BaseBox-bmPWx jLCxzZ"
                     data-blade-component="counter"
                   >
                     <div
-                      class="c11 c12"
+                      class="BaseBox-bmPWx StyledCounterweb__StyledCounter-sc-1itt9w6-0 lldTHu dTYmGd"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c13"
+                        class="BaseBox-bmPWx KJLNh"
                         data-blade-component="base-box"
                       >
                         <p
-                          class="c14"
+                          class="StyledBaseText-dVBfTO hlMkHt"
                           data-blade-component="text"
                         >
                           12
@@ -838,7 +214,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
                 </div>
               </div>
               <p
-                class="c15"
+                class="StyledBaseText-dVBfTO eCIRwe"
                 data-blade-component="text"
               >
                 Card subtitle
@@ -846,23 +222,23 @@ exports[`<Card /> should render a Card with Header 1`] = `
             </div>
           </div>
           <div
-            class="c16"
+            class="BaseBox-bmPWx cxaWQL"
             data-blade-component="base-box"
           >
             <div
-              class="c10"
+              class="BaseBox-bmPWx jLCxzZ"
               data-blade-component="badge"
             >
               <div
-                class="c17 c18"
+                class="BaseBox-bmPWx StyledBadgeweb__StyledBadge-sc-1svn4tv-0 cRtrfR dnvyGQ"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c13"
+                  class="BaseBox-bmPWx KJLNh"
                   data-blade-component="base-box"
                 >
                   <p
-                    class="c19"
+                    class="StyledBaseText-dVBfTO fuxoMy"
                     data-blade-component="text"
                   >
                     NEW
@@ -873,16 +249,16 @@ exports[`<Card /> should render a Card with Header 1`] = `
           </div>
         </div>
         <div
-          class="c20 c21"
+          class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 jfizlv jvaPlR"
           data-blade-component="divider"
         />
       </div>
       <div
-        class=""
+        class="BaseBox-bmPWx"
         data-blade-component="card-body"
       >
         <p
-          class="c22"
+          class="StyledBaseText-dVBfTO eIdQFo"
           data-blade-component="text"
         >
           Plain Card
@@ -894,38 +270,18 @@ exports[`<Card /> should render a Card with Header 1`] = `
 `;
 
 exports[`<Card /> should render a Card without 0 padding 1`] = `
-.c0 {
-  text-align: left;
-  padding: 0px;
-  border-radius: 4px;
-  box-shadow: 0 4px 8px -2px hsla(217,56%,17%,0.1),0 2px 4px -2px hsla(217,56%,17%,0.06);
-}
-
-.c1 {
-  width: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  background-color: hsla(0,0%,100%,1);
-  box-sizing: border-box;
-}
-
 <div>
   <div
-    class=""
+    class="BaseBox-bmPWx"
     data-blade-component="card"
   >
     <div
-      class="c0 c1"
+      class="BaseBox-bmPWx CardSurfaceweb__CardSurface-sc-1pgxikk-0 hbQMWE htwYNg"
       data-blade-component="base-box"
       elevation="lowRaised"
     >
       <div
-        class=""
+        class="BaseBox-bmPWx"
         data-blade-component="card-body"
       >
         Plain Card
@@ -936,41 +292,18 @@ exports[`<Card /> should render a Card without 0 padding 1`] = `
 `;
 
 exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
-.c0 {
-  text-align: left;
-  padding: 24px;
-  border-radius: 4px;
-  box-shadow: none;
-}
-
-.c1 {
-  width: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  border-width: 1;
-  border-style: solid;
-  border-color: hsla(216,15%,54%,0.18);
-  background-color: hsla(0,0%,100%,1);
-  box-sizing: border-box;
-}
-
 <div>
   <div
-    class=""
+    class="BaseBox-bmPWx"
     data-blade-component="card"
   >
     <div
-      class="c0 c1"
+      class="BaseBox-bmPWx CardSurfaceweb__CardSurface-sc-1pgxikk-0 cxGVol hPOrZI"
       data-blade-component="base-box"
       elevation="none"
     >
       <div
-        class=""
+        class="BaseBox-bmPWx"
         data-blade-component="card-body"
       >
         Plain Card
@@ -981,38 +314,18 @@ exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
 `;
 
 exports[`<Card /> should render a plain Card 1`] = `
-.c0 {
-  text-align: left;
-  padding: 24px;
-  border-radius: 4px;
-  box-shadow: 0 24px 48px -12px hsla(217,56%,17%,0.18);
-}
-
-.c1 {
-  width: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  background-color: hsla(220,27%,98%,1);
-  box-sizing: border-box;
-}
-
 <div>
   <div
-    class=""
+    class="BaseBox-bmPWx"
     data-blade-component="card"
   >
     <div
-      class="c0 c1"
+      class="BaseBox-bmPWx CardSurfaceweb__CardSurface-sc-1pgxikk-0 kgulgq fiQyzd"
       data-blade-component="base-box"
       elevation="highRaised"
     >
       <div
-        class=""
+        class="BaseBox-bmPWx"
         data-blade-component="card-body"
       >
         Plain Card
