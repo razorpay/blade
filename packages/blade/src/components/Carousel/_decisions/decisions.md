@@ -79,7 +79,7 @@ We need to follow the APG Pattern For [Carousel](https://www.w3.org/WAI/ARIA/apg
 
 ## Libraries
 
-- On mobile device we need to have swipable UX, we can use [react-swipeable (2kb)](https://github.com/FormidableLabs/react-swipeable) library for that
+- On mobile device we need to have swipable UX, we can either use [react-swipeable (2kb)](https://github.com/FormidableLabs/react-swipeable) or use [CSS scroll snap](https://ishadeed.com/article/css-scroll-snap/) feature.
 
 - https://github.com/akiran/react-slick
 
