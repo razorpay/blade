@@ -86,9 +86,9 @@
     "types:copy-declarations:native": "copyfiles -u 1 \"src/**/*.d.ts\" build/types/native",
     "build:generate-root-imports": "rollup -c && node ./scripts/generateRootImports.js",
     "build:clean-declarations": "rm -rf build/types",
-    "build:react-dev": "FRAMEWORK=REACT NODE_ENV=development rollup -c && node ./scripts/generateRootImports.js",
-    "build:react-prod": "FRAMEWORK=REACT NODE_ENV=production rollup -c && node ./scripts/generateRootImports.js",
-    "build:react-native": "FRAMEWORK=REACT_NATIVE rollup -c && node ./scripts/generateRootImports.js",
+    "build:react-dev": "FRAMEWORK=REACT NODE_ENV=development rollup -c",
+    "build:react-prod": "FRAMEWORK=REACT NODE_ENV=production rollup -c",
+    "build:react-native": "FRAMEWORK=REACT_NATIVE rollup -c",
     "build:generate-css-variables": "GENERATE_CSS_VARIABLES=true FRAMEWORK=REACT rollup -c && node ./scripts/generateCssThemeVariables.js",
     "build:clean-theme-bundle": "rm -rf build/js-bundle-for-css",
     "react-native:get-stories": "sb-rn-get-stories --config-path=./.storybook/react-native && yarn prettier --write ./.storybook/react-native/storybook.requires.js",
@@ -254,11 +254,7 @@
   "bundlemon": {
     "files": [
       {
-        "friendlyName": "Development Web Components",
-        "path": "./build/components/index.development.web.js"
-      },
-      {
-        "friendlyName": "Production Web Components",
+        "friendlyName": "Web Components",
         "path": "./build/components/index.production.web.js"
       },
       {
@@ -278,11 +274,7 @@
         "path": "./build/css/*.css"
       },
       {
-        "friendlyName": "Development Web Utils",
-        "path": "./build/utils/index.development.web.js"
-      },
-      {
-        "friendlyName": "Production Web Utils",
+        "friendlyName": "Web Utils",
         "path": "./build/utils/index.production.web.js"
       },
       {

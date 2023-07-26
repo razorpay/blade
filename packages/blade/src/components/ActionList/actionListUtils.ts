@@ -181,8 +181,8 @@ const validateActionListItemProps = ({
   leading: ActionListItemProps['leading'];
   trailing: ActionListItemProps['trailing'];
 }): void => {
-  React.Children.map(trailing, (child) => {
-    if (__DEV__) {
+  if (__DEV__) {
+    React.Children.map(trailing, (child) => {
       if (
         !isValidAllowedChildren(child, componentIds.ActionListItemIcon) &&
         !isValidAllowedChildren(child, componentIds.ActionListItemText)
@@ -191,11 +191,9 @@ const validateActionListItemProps = ({
           `[ActionListItem]: Only ${componentIds.ActionListItemIcon} and ${componentIds.ActionListItemText} are allowed in trailing prop`,
         );
       }
-    }
-  });
+    });
 
-  React.Children.map(leading, (child) => {
-    if (__DEV__) {
+    React.Children.map(leading, (child) => {
       if (
         !isValidAllowedChildren(child, componentIds.ActionListItemIcon) &&
         !isValidAllowedChildren(child, componentIds.ActionListItemText) &&
@@ -205,8 +203,8 @@ const validateActionListItemProps = ({
           `[ActionListItem]: Only ${componentIds.ActionListItemIcon}, ${componentIds.ActionListItemAsset}, and ${componentIds.ActionListItemText} are allowed in leading prop`,
         );
       }
-    }
-  });
+    });
+  }
 };
 
 const getNormalTextColor = (
