@@ -33,6 +33,7 @@ const getStories = () => {
     require('../../src/components/Button/Button/Button.stories.tsx'),
     require('../../src/components/Button/IconButton/IconButton.stories.tsx'),
     require('../../src/components/Card/Card.stories.tsx'),
+    require('../../src/components/Carousel/Carousel.stories.tsx'),
     require('../../src/components/Checkbox/Checkbox.stories.tsx'),
     require('../../src/components/Checkbox/CheckboxGroup.stories.tsx'),
     require('../../src/components/Collapsible/Collapsible.stories.tsx'),
