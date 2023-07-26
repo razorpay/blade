@@ -30,7 +30,6 @@ type ButtonCommonProps = {
   variant?: 'primary' | 'secondary' | 'tertiary';
   size?: 'xsmall' | 'small' | 'medium' | 'large';
   intent?: 'positive' | 'negative' | 'notice';
-  contrast?: 'low' | 'high';
   iconPosition?: 'left' | 'right';
   isDisabled?: boolean;
   isFullWidth?: boolean;
@@ -80,7 +79,6 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
     type = 'button',
     variant = 'primary',
     intent,
-    contrast,
     accessibilityLabel,
     testID,
     onBlur,
@@ -113,7 +111,6 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
       type={type}
       variant={variant}
       intent={isAllowedIntent ? intent : undefined}
-      contrast={contrast}
       isLoading={isLoading}
       testID={testID}
       onBlur={onBlur}

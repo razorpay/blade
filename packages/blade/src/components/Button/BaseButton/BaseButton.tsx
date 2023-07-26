@@ -305,7 +305,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     rel,
     variant = 'primary',
     intent,
-    contrast = 'low',
+    contrast = 'high',
     size = 'medium',
     icon: Icon,
     iconPosition = 'left',

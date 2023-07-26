@@ -154,38 +154,53 @@ const ButtonWithVariantTemplate: ComponentStory<typeof ButtonComponent> = ({
   );
 };
 
-const ButtonWithIntentTemplate: ComponentStory<typeof ButtonComponent> = ({
+const ButtonWithIntent: ComponentStory<typeof ButtonComponent> = ({
   children = 'Button',
   ...args
 }) => {
   return (
     <>
-      <StyledBaseText fontWeight="bold">Low Contrast</StyledBaseText>
-      <ButtonComponent {...args} marginX="spacing.1" size="xsmall" contrast="low">
+      <StyledBaseText fontWeight="bold">Positive</StyledBaseText>
+      <ButtonComponent {...args} intent="positive" marginX="spacing.1" size="xsmall">
         {children}
       </ButtonComponent>
-      <ButtonComponent {...args} marginX="spacing.1" size="small" contrast="low">
+      <ButtonComponent {...args} intent="positive" marginX="spacing.1" size="small">
         {children}
       </ButtonComponent>
-      <ButtonComponent {...args} marginX="spacing.1" size="medium" contrast="low">
+      <ButtonComponent {...args} intent="positive" marginX="spacing.1" size="medium">
         {children}
       </ButtonComponent>
-      <ButtonComponent {...args} marginX="spacing.1" size="large" contrast="low">
+      <ButtonComponent {...args} intent="positive" marginX="spacing.1" size="large">
         {children}
       </ButtonComponent>
 
-      <StyledBaseText fontWeight="bold">High Contrast</StyledBaseText>
+      <StyledBaseText fontWeight="bold">Negative</StyledBaseText>
 
-      <ButtonComponent {...args} marginX="spacing.1" size="xsmall" contrast="high">
+      <ButtonComponent {...args} intent="negative" marginX="spacing.1" size="xsmall">
         {children}
       </ButtonComponent>
-      <ButtonComponent {...args} marginX="spacing.1" size="small" contrast="high">
+      <ButtonComponent {...args} intent="negative" marginX="spacing.1" size="small">
         {children}
       </ButtonComponent>
-      <ButtonComponent {...args} marginX="spacing.1" size="medium" contrast="high">
+      <ButtonComponent {...args} intent="negative" marginX="spacing.1" size="medium">
         {children}
       </ButtonComponent>
-      <ButtonComponent {...args} marginX="spacing.1" size="large" contrast="high">
+      <ButtonComponent {...args} intent="negative" marginX="spacing.1" size="large">
+        {children}
+      </ButtonComponent>
+
+      <StyledBaseText fontWeight="bold">Notice</StyledBaseText>
+
+      <ButtonComponent {...args} intent="notice" marginX="spacing.1" size="xsmall">
+        {children}
+      </ButtonComponent>
+      <ButtonComponent {...args} intent="notice" marginX="spacing.1" size="small">
+        {children}
+      </ButtonComponent>
+      <ButtonComponent {...args} intent="notice" marginX="spacing.1" size="medium">
+        {children}
+      </ButtonComponent>
+      <ButtonComponent {...args} intent="notice" marginX="spacing.1" size="large">
         {children}
       </ButtonComponent>
     </>
@@ -235,41 +250,15 @@ TertiaryButton.parameters = {
   },
 };
 
-export const PositiveButton = ButtonWithIntentTemplate.bind({});
-PositiveButton.storyName = 'Positive';
-PositiveButton.args = {
+export const ButtonIntent = ButtonWithIntent.bind({});
+ButtonIntent.storyName = 'Intent';
+ButtonIntent.args = {
   intent: 'positive',
 };
-PositiveButton.parameters = {
+ButtonIntent.parameters = {
   docs: {
     description: {
-      story: 'Positive Button in different contrast',
-    },
-  },
-};
-
-export const NegativeButton = ButtonWithIntentTemplate.bind({});
-NegativeButton.storyName = 'Negative';
-NegativeButton.args = {
-  intent: 'negative',
-};
-NegativeButton.parameters = {
-  docs: {
-    description: {
-      story: 'Negative Button in different contrast',
-    },
-  },
-};
-
-export const NoticeButton = ButtonWithIntentTemplate.bind({});
-NoticeButton.storyName = 'Notice';
-NoticeButton.args = {
-  intent: 'notice',
-};
-NoticeButton.parameters = {
-  docs: {
-    description: {
-      story: 'Notice Button in different contrast',
+      story: 'Button with different intent props',
     },
   },
 };
