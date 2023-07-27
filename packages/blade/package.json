@@ -263,7 +263,7 @@
       },
       {
         "friendlyName": "Web Tokens",
-        "path": "./build/tokens/index.development.web.js"
+        "path": "./build/tokens/index.production.web.js"
       },
       {
         "friendlyName": "React Native Tokens",

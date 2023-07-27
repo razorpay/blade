@@ -62,7 +62,7 @@ const getWebConfig = ({ exportCategory }) => ({
   input: `${inputRootDirectory}/${exportCategory}/index.ts`,
   output: [
     {
-      file: `${outputRootDirectory}/${exportCategory}/index.${process.env.NODE_ENV}.web.js`,
+      file: `${outputRootDirectory}/${exportCategory}/index.${process.env.NODE_ENV || 'development'}.web.js`,
       format: 'esm',
       sourcemap: true,
     },
