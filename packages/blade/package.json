@@ -107,7 +107,7 @@
     "postinstall": "patch-package"
   },
   "dependencies": {
-    "@babel/runtime": "7.16.5",
+    "@babel/runtime": "7.20.0",
     "@types/body-scroll-lock": "3.1.0",
     "@use-gesture/react": "10.2.24",
     "body-scroll-lock": "4.0.0-beta.0",
@@ -117,10 +117,10 @@
     "patch-package": "7.0.0"
   },
   "devDependencies": {
-    "@babel/core": "7.16.5",
+    "@babel/core": "7.20.0",
     "@babel/plugin-transform-react-jsx": "7.16.5",
     "@babel/plugin-transform-runtime": "7.16.5",
-    "@babel/preset-env": "7.16.5",
+    "@babel/preset-env": "7.20.0",
     "@babel/preset-react": "7.16.5",
     "@babel/preset-typescript": "7.16.5",
     "@codesandbox/sandpack-react": "1.16.0",
@@ -190,13 +190,13 @@
     "jscodeshift": "0.13.1",
     "jsdom": "20.0.2",
     "lodash": "4.17.21",
-    "metro-react-native-babel-preset": "0.66.2",
+    "metro-react-native-babel-preset": "0.73.10",
     "moniker": "0.1.2",
     "npm-run-all": "4.1.5",
     "outdent": "0.8.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-native": "0.66.5",
+    "react-native": "0.71.12",
     "react-native-gesture-handler": "2.9.0",
     "react-native-reanimated": "2.12.0",
     "react-native-svg": "12.3.0",
