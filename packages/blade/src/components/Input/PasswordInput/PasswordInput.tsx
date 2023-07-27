@@ -78,7 +78,7 @@ type PasswordInputCommonProps = Pick<
 /*
   Mandatory accessibilityLabel prop when label is not provided
 */
-type PasswordInputPropsWithLabel = {
+type PasswordInputPropsWithA11yLabel = {
   /**
    * Label to be shown for the input field
    */
@@ -92,7 +92,7 @@ type PasswordInputPropsWithLabel = {
 /*
   Optional accessibilityLabel prop when label is provided
 */
-type PasswordInputPropsWithA11yLabel = {
+type PasswordInputPropsWithLabel = {
   /**
    * Label to be shown for the input field
    */

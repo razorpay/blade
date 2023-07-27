@@ -86,7 +86,7 @@ export type OTPInputCommonProps = Pick<
 /*
   Mandatory accessibilityLabel prop when label is not provided
 */
-type OTPInputPropsWithLabel = {
+type OTPInputPropsWithA11yLabel = {
   /**
    * Label to be shown for the input field
    */
@@ -100,7 +100,7 @@ type OTPInputPropsWithLabel = {
 /*
   Optional accessibilityLabel prop when label is provided
 */
-type OTPInputPropsWithA11yLabel = {
+type OTPInputPropsWithLabel = {
   /**
    * Label to be shown for the input field
    */

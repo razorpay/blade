@@ -273,7 +273,7 @@ type BaseInputCommonProps = FormInputLabelProps &
 /*
   Mandatory accessibilityLabel prop when label is not provided
 */
-type BaseInputPropsWithLabel = {
+type BaseInputPropsWithA11yLabel = {
   /**
    * Label to be shown for the input field
    */
@@ -287,7 +287,7 @@ type BaseInputPropsWithLabel = {
 /*
   Optional accessibilityLabel prop when label is provided
 */
-type BaseInputPropsWithA11yLabel = {
+type BaseInputPropsWithLabel = {
   /**
    * Label to be shown for the input field
    */

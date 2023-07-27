@@ -53,7 +53,7 @@ type TextAreaCommonProps = Pick<
 /*
   Mandatory accessibilityLabel prop when label is not provided
 */
-type TextAreaPropsWithLabel = {
+type TextAreaPropsWithA11yLabel = {
   /**
    * Label to be shown for the input field
    */
@@ -67,7 +67,7 @@ type TextAreaPropsWithLabel = {
 /*
   Optional accessibilityLabel prop when label is provided
 */
-type TextAreaPropsWithA11yLabel = {
+type TextAreaPropsWithLabel = {
   /**
    * Label to be shown for the input field
    */

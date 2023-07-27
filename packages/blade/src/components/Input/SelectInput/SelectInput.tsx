@@ -55,7 +55,7 @@ type SelectInputCommonProps = Pick<
 /*
   Mandatory accessibilityLabel prop when label is not provided
 */
-type SelectInputPropsWithLabel = {
+type SelectInputPropsWithA11yLabel = {
   /**
    * Label to be shown for the input field
    */
@@ -69,7 +69,7 @@ type SelectInputPropsWithLabel = {
 /*
   Optional accessibilityLabel prop when label is provided
 */
-type SelectInputPropsWithA11yLabel = {
+type SelectInputPropsWithLabel = {
   /**
    * Label to be shown for the input field
    */

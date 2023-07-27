@@ -95,7 +95,7 @@ type TextInputKeyboardAndAutoComplete = Pick<
 /*
   Mandatory accessibilityLabel prop when label is not provided
 */
-type TextInputPropsWithLabel = {
+type TextInputPropsWithA11yLabel = {
   /**
    * Label to be shown for the input field
    */
@@ -109,7 +109,7 @@ type TextInputPropsWithLabel = {
 /*
   Optional accessibilityLabel prop when label is provided
 */
-type TextInputPropsWithA11yLabel = {
+type TextInputPropsWithLabel = {
   /**
    * Label to be shown for the input field
    */
