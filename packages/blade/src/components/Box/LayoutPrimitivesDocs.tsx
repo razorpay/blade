@@ -9,6 +9,7 @@ import { List, ListItem, ListItemCode, ListItemLink } from '~components/List';
 import { Link } from '~components/Link';
 import { castWebType } from '~utils';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { MetaConstants } from '~utils/metaAttribute';
 
 if (window.top) {
   document.getElementById(window.top.location.hash)?.scrollIntoView();
@@ -35,7 +36,7 @@ const _ScrollIntoViewLink = ({
 
 // lmao. sorry
 const ScrollIntoViewLink = assignWithoutSideEffects(_ScrollIntoViewLink, {
-  componentId: 'ListItemLink',
+  componentId: MetaConstants.ListItemLink,
 });
 
 const Section = (props: BaseBoxProps): JSX.Element => {
