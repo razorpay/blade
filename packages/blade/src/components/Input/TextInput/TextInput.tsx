@@ -20,7 +20,7 @@ import { getPlatformType } from '~utils';
 // Users should use PasswordInput for input type password
 type Type = Exclude<BaseInputProps['type'], 'password'>;
 
-type TextInputProps = Pick<
+type TextInputCommonProps = Pick<
   BaseInputProps,
   | 'label'
   | 'accessibilityLabel'
@@ -91,6 +91,37 @@ type TextInputKeyboardAndAutoComplete = Pick<
 > & {
   type: Type;
 };
+
+/*
+  Mandatory accessibilityLabel prop when label is not provided
+*/
+type TextInputPropsWithLabel = {
+  /**
+   * Label to be shown for the input field
+   */
+  label?: undefined;
+  /**
+   * Accessibility label for the input
+   */
+  accessibilityLabel: string;
+};
+
+/*
+  Optional accessibilityLabel prop when label is provided
+*/
+type TextInputPropsWithA11yLabel = {
+  /**
+   * Label to be shown for the input field
+   */
+  label: string;
+  /**
+   * Accessibility label for the input
+   */
+  accessibilityLabel?: string;
+};
+
+type TextInputProps = (TextInputPropsWithA11yLabel | TextInputPropsWithLabel) &
+  TextInputCommonProps;
 
 const getKeyboardAndAutocompleteProps = ({
   type = 'text',

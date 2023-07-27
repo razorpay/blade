@@ -47,7 +47,7 @@ type PasswordInputExtraProps = {
   >;
 };
 
-type PasswordInputProps = Pick<
+type PasswordInputCommonProps = Pick<
   BaseInputProps,
   | 'label'
   | 'accessibilityLabel'
@@ -74,6 +74,37 @@ type PasswordInputProps = Pick<
 > &
   PasswordInputExtraProps &
   StyledPropsBlade;
+
+/*
+  Mandatory accessibilityLabel prop when label is not provided
+*/
+type PasswordInputPropsWithLabel = {
+  /**
+   * Label to be shown for the input field
+   */
+  label?: undefined;
+  /**
+   * Accessibility label for the input
+   */
+  accessibilityLabel: string;
+};
+
+/*
+  Optional accessibilityLabel prop when label is provided
+*/
+type PasswordInputPropsWithA11yLabel = {
+  /**
+   * Label to be shown for the input field
+   */
+  label: string;
+  /**
+   * Accessibility label for the input
+   */
+  accessibilityLabel?: string;
+};
+
+type PasswordInputProps = (PasswordInputPropsWithA11yLabel | PasswordInputPropsWithLabel) &
+  PasswordInputCommonProps;
 
 const _PasswordInput: React.ForwardRefRenderFunction<BladeElementRef, PasswordInputProps> = (
   {

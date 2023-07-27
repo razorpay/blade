@@ -24,7 +24,7 @@ type FormInputOnEventWithIndex = ({
   inputIndex: number;
 }) => void;
 
-export type OTPInputProps = Pick<
+export type OTPInputCommonProps = Pick<
   BaseInputProps,
   | 'label'
   | 'accessibilityLabel'
@@ -82,6 +82,36 @@ export type OTPInputProps = Pick<
    */
   onBlur?: FormInputOnEventWithIndex;
 } & StyledPropsBlade;
+
+/*
+  Mandatory accessibilityLabel prop when label is not provided
+*/
+type OTPInputPropsWithLabel = {
+  /**
+   * Label to be shown for the input field
+   */
+  label?: undefined;
+  /**
+   * Accessibility label for the input
+   */
+  accessibilityLabel: string;
+};
+
+/*
+  Optional accessibilityLabel prop when label is provided
+*/
+type OTPInputPropsWithA11yLabel = {
+  /**
+   * Label to be shown for the input field
+   */
+  label: string;
+  /**
+   * Accessibility label for the input
+   */
+  accessibilityLabel?: string;
+};
+
+type OTPInputProps = (OTPInputPropsWithA11yLabel | OTPInputPropsWithLabel) & OTPInputCommonProps;
 
 const isReactNative = getPlatformType() === 'react-native';
 

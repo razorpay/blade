@@ -15,7 +15,7 @@ import { useBladeInnerRef } from '~utils/useBladeInnerRef';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getPlatformType } from '~utils';
 
-type TextAreaProps = Pick<
+type TextAreaCommonProps = Pick<
   BaseInputProps,
   | 'label'
   | 'accessibilityLabel'
@@ -49,6 +49,36 @@ type TextAreaProps = Pick<
    */
   onClearButtonClick?: () => void;
 } & StyledPropsBlade;
+
+/*
+  Mandatory accessibilityLabel prop when label is not provided
+*/
+type TextAreaPropsWithLabel = {
+  /**
+   * Label to be shown for the input field
+   */
+  label?: undefined;
+  /**
+   * Accessibility label for the input
+   */
+  accessibilityLabel: string;
+};
+
+/*
+  Optional accessibilityLabel prop when label is provided
+*/
+type TextAreaPropsWithA11yLabel = {
+  /**
+   * Label to be shown for the input field
+   */
+  label: string;
+  /**
+   * Accessibility label for the input
+   */
+  accessibilityLabel?: string;
+};
+
+type TextAreaProps = (TextAreaPropsWithA11yLabel | TextAreaPropsWithLabel) & TextAreaCommonProps;
 
 // need to do this to tell TS to infer type as TextInput of React Native and make it believe that `ref.current.clear()` exists
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

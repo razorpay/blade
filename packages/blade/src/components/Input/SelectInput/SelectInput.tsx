@@ -16,7 +16,7 @@ import { useBladeInnerRef } from '~utils/useBladeInnerRef';
 import { MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-type SelectInputProps = Pick<
+type SelectInputCommonProps = Pick<
   BaseInputProps,
   | 'label'
   | 'accessibilityLabel'
@@ -51,6 +51,37 @@ type SelectInputProps = Pick<
   defaultValue?: string | string[];
   onChange?: ({ name, values }: { name?: string; values: string[] }) => void;
 };
+
+/*
+  Mandatory accessibilityLabel prop when label is not provided
+*/
+type SelectInputPropsWithLabel = {
+  /**
+   * Label to be shown for the input field
+   */
+  label?: undefined;
+  /**
+   * Accessibility label for the input
+   */
+  accessibilityLabel: string;
+};
+
+/*
+  Optional accessibilityLabel prop when label is provided
+*/
+type SelectInputPropsWithA11yLabel = {
+  /**
+   * Label to be shown for the input field
+   */
+  label: string;
+  /**
+   * Accessibility label for the input
+   */
+  accessibilityLabel?: string;
+};
+
+type SelectInputProps = (SelectInputPropsWithA11yLabel | SelectInputPropsWithLabel) &
+  SelectInputCommonProps;
 
 const _SelectInput = (
   props: SelectInputProps,
