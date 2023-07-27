@@ -68,6 +68,11 @@ export default {
       options: Object.keys(iconMap),
       mapping: iconMap,
     },
+    _isTagFocussed: {
+      table: {
+        disable: true,
+      },
+    },
   },
   parameters: {
     docs: {

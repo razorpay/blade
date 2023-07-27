@@ -37,6 +37,8 @@ type AllowUndefinedValue<T> = {
   [P in keyof T]: T[P] | undefined;
 };
 
+type RemoveUndefinedFromUnion<T> = T extends undefined ? never : T;
+
 /**
  * Similar to `Required` except it allows undefined as value.
  * So all keys have to be explicitly defined, but they can have undefined as value
@@ -137,4 +139,5 @@ export {
   PickIfExist,
   PickCSSByPlatform,
   BladeElementRef,
+  RemoveUndefinedFromUnion,
 };

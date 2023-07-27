@@ -836,13 +836,13 @@ const WithControlledMultiSelectMenuStory = `
     ActionListItemIcon,
     ActionListSection,
     Box,
-    Badge,
+    Tag,
   } from '@razorpay/blade/components';
 
   function App(): JSX.Element {
     const [filters, setFilters] = React.useState<string[]>([]);
 
-    const selectItem = ({ name, value }: { name: string; value?: boolean }): void => {
+    const toggleSelection = ({ name, value }: { name: string; value?: boolean }): void => {
       if (value) {
         // Value is true which means it is selected. Then we deselect it.
         const existingItemIndex = filters.indexOf(name);
@@ -856,9 +856,15 @@ const WithControlledMultiSelectMenuStory = `
       <Box minHeight="200px">
         <Box display="flex" paddingBottom="spacing.5" minHeight="spacing.10">
           {filters.map((filter) => (
-            <Badge marginRight="spacing.3" variant="information" key={filter}>
+            <Tag 
+              key={filter} 
+              marginRight="spacing.3" 
+              onDismiss={() => {
+                toggleSelection({ name: filter, value: true });
+              }}
+            >
               {filter}
-            </Badge>
+            </Tag>
           ))}
         </Box>
         <Dropdown selectionType="multiple">
@@ -868,7 +874,7 @@ const WithControlledMultiSelectMenuStory = `
               <ActionListItem
                 onClick={({ name, value }) => {
                   console.log({ name, value });
-                  selectItem({ name, value });
+                  toggleSelection({ name, value });
                 }}
                 isSelected={filters.includes('< 3 months')}
                 title="Last 3 months"
@@ -877,7 +883,7 @@ const WithControlledMultiSelectMenuStory = `
               <ActionListItem
                 onClick={({ name, value }) => {
                   console.log({ name, value });
-                  selectItem({ name, value });
+                  toggleSelection({ name, value });
                 }}
                 isSelected={filters.includes('> 1000rs')}
                 title="More than 1000rs"
@@ -886,7 +892,7 @@ const WithControlledMultiSelectMenuStory = `
               <ActionListItem
                 onClick={({ name, value }) => {
                   console.log({ name, value });
-                  selectItem({ name, value });
+                  toggleSelection({ name, value });
                 }}
                 isSelected={filters.includes('failed')}
                 title="Failed Transactions"
