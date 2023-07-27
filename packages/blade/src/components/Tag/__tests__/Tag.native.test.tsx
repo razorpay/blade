@@ -19,23 +19,23 @@ describe('<Tag />', () => {
 
   it('should call onDismiss', () => {
     const dismissHandler = jest.fn();
-    const { queryAllByText, getAllByLabelText } = renderWithTheme(
+    const { queryByText, getByLabelText } = renderWithTheme(
       <Tag onDismiss={dismissHandler}>in:User</Tag>,
     );
-    expect(queryAllByText('in:User')[1]).toBeTruthy();
-    fireEvent.press(getAllByLabelText('Close in:User tag')[1]);
+    expect(queryByText('in:User')).toBeTruthy();
+    fireEvent.press(getByLabelText('Close in:User tag'));
     expect(dismissHandler).toBeCalledWith();
   });
 
   it('should NOT call onDismiss on disabled Tag', () => {
     const dismissHandler = jest.fn();
-    const { queryAllByText, getAllByLabelText } = renderWithTheme(
+    const { queryByText, getByLabelText } = renderWithTheme(
       <Tag onDismiss={dismissHandler} isDisabled={true}>
         in:User
       </Tag>,
     );
-    expect(queryAllByText('in:User')[1]).toBeTruthy();
-    fireEvent.press(getAllByLabelText('Close in:User tag')[1]);
+    expect(queryByText('in:User')).toBeTruthy();
+    fireEvent.press(getByLabelText('Close in:User tag'));
     expect(dismissHandler).not.toBeCalled();
   });
 });

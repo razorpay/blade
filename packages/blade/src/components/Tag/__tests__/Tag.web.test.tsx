@@ -23,12 +23,12 @@ describe('<Tag />', () => {
   it('should call onDismiss', async () => {
     const user = userEvents.setup();
     const dismissHandler = jest.fn();
-    const { getByRole, queryAllByText } = renderWithTheme(
+
+    const { getByRole, queryByText } = renderWithTheme(
       <Tag onDismiss={dismissHandler}>in:User</Tag>,
     );
 
-    const [_desktopTagText, mobileTagText] = queryAllByText('in:User');
-    expect(mobileTagText).toBeVisible();
+    expect(queryByText('in:User')).toBeVisible();
     await user.click(getByRole('button', { name: 'Close in:User tag', hidden: false }));
     expect(dismissHandler).toBeCalledWith();
   });
@@ -36,14 +36,13 @@ describe('<Tag />', () => {
   it('should NOT call onDismiss on disabled Tag', async () => {
     const user = userEvents.setup();
     const dismissHandler = jest.fn();
-    const { getByRole, queryAllByText } = renderWithTheme(
+    const { getByRole, queryByText } = renderWithTheme(
       <Tag onDismiss={dismissHandler} isDisabled={true}>
         in:User
       </Tag>,
     );
 
-    const [_desktopTagText, mobileTagText] = queryAllByText('in:User');
-    expect(mobileTagText).toBeVisible();
+    expect(queryByText('in:User')).toBeVisible();
     await user.click(getByRole('button', { name: 'Close in:User tag', hidden: false }));
     expect(dismissHandler).not.toBeCalled();
   });
