@@ -130,7 +130,7 @@ https://github.com/razorpay/blade/assets/35374649/6876f348-1b0a-4e9a-800a-300025
 
 **web**
 
-- On mweb & dweb we can use [CSS scroll snap](https://ishadeed.com/article/css-scroll-snap/) feature, this covers all our common usecase with bleed smooth scrolling etc.
+On mweb & dweb we can use [CSS scroll snap](https://ishadeed.com/article/css-scroll-snap/) feature, this covers all our common usecase with bleed smooth scrolling etc.
 
 **react-native**
 
