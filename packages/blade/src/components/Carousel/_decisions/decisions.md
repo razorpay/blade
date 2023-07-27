@@ -128,9 +128,21 @@ https://github.com/razorpay/blade/assets/35374649/6876f348-1b0a-4e9a-800a-300025
 
 ## Libraries
 
-- On mobile device we need to have swipable UX, we can either use [react-swipeable (2kb)](https://github.com/FormidableLabs/react-swipeable) or use [CSS scroll snap](https://ishadeed.com/article/css-scroll-snap/) feature.
+**web**
 
-- https://github.com/akiran/react-slick
+- On mweb & dweb we can use [CSS scroll snap](https://ishadeed.com/article/css-scroll-snap/) feature, this covers all our common usecase with bleed smooth scrolling etc.
+
+**react-native**
+
+on rnweb, we cannot use CSS scroll snap so might might need to opt for a library.
+But further exploration lead me to this [SO question](https://stackoverflow.com/questions/39849648/horizontal-scrollview-snapping-react-native) and [this expo example](https://snack.expo.io/H1CnjIeDb), turns our that ScrollView does support scroll snapping so if this works for our usecase it will be helpful.
+
+But we might need to see if this might cause an performance issue since we won't be using FlatList.
+
+Further resources
+- https://blog.logicwind.com/implement-carousel-using-react-native-scrollview/
+- https://medium.com/nerd-for-tech/react-native-create-a-horizontal-snap-scrollview-e1d01ac3ba09
+- https://github.com/meliorence/react-native-snap-carousel
 
 ## References
 
