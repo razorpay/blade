@@ -12,19 +12,20 @@ Carousel is a UI component that allows the display and navigation of a set of co
 
 ### Carousel
 
-| Prop                     | Type                           | Default     | Description                                                                                                                     | Required |
-| ------------------------ | ------------------------------ | ----------- | ------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| autoPlay                 | `boolean`                      | `false`     | If true, the carousel will autoplay                                                                                             |          |
-| visibleItems             | `1,2,3,auto`                   | `1`         | Total number of carousel items to show at once, if set to `auto` the carousel items will take up space responsively             |          |
-| bleed                    | `none,right,left,both`         | `none`      | Sets the carousel items to bleed on either side button                                                                          |          |
-| showIndicators           | `boolean`                      | `true`      | Toggles the visibility of indicators                                                                                            |          |
-| showOverlay              | `boolean`                      | `false`     | Toggles the visibility of overlay                                                                                               |          |
-| navigationButtonPosition | `bottom,side`                  | `bottom`    | Sets the position of navigation button                                                                                          |          |
-| navigationButtonStyle    | `filled,stroke`                | `filled`    | Styles to be used depending on the emphasis you want to give to the navigation buttons                                          |          |
-| navigationButtonPadding  | `SpacingTokens`                | `spacing.4` | Padding between navigation button and slides when bleed is set to none                                                          |          |
-| indicatorVariant         | `gray,white,blue`              | `gray`      | Variants to be used depending on the background and the emphasis you want to give to the indicator.                             |          |
-| onChange                 | `(slideIndex: number) => void` | `undefined` | Callback which gets fired everytime a slide changes, useful for analytic events (only runs on user interaction not on autoPlay) |          |
-| children                 | `CarouselItem`                 | `undefined` | Carousel slides                                                                                                                 | ✅        |
+| Prop                     | Type                                   | Default                                  | Description                                                                                                                     | Required |
+| ------------------------ | -------------------------------------- | ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| autoPlay                 | `boolean`                              | `false`                                  | If true, the carousel will autoplay                                                                                             |          |
+| visibleItems             | `1,2,3,auto`                           | `1`                                      | Total number of carousel items to show at once, if set to `auto` the carousel items will take up space responsively             |          |
+| bleed                    | `none,right,left,both`                 | `none`                                   | Sets the carousel items to bleed on either side button                                                                          |          |
+| showIndicators           | `boolean`                              | `true`                                   | Toggles the visibility of indicators                                                                                            |          |
+| showOverlay              | `boolean`                              | `false`                                  | Toggles the visibility of overlay                                                                                               |          |
+| overlayColor             | `BrandColorTokens, SurfaceColorTokens` | `surface.background.level1.highContrast` | Changes the color of the overlay, so that consumers can blend the overlay with the background color                             |          |
+| navigationButtonPosition | `bottom,side`                          | `bottom`                                 | Sets the position of navigation button                                                                                          |          |
+| navigationButtonSpacing  | `SpacingTokens`                        | `spacing.4`                              | Spacing between navigation button and slides when bleed is set to none                                                          |          |
+| navigationButtonStyle    | `filled,stroke`                        | `filled`                                 | Styles to be used depending on the emphasis you want to give to the navigation buttons                                          |          |
+| indicatorVariant         | `gray,white,blue`                      | `gray`                                   | Variants to be used depending on the background and the emphasis you want to give to the indicator.                             |          |
+| onChange                 | `(slideIndex: number) => void`         | `undefined`                              | Callback which gets fired everytime a slide changes, useful for analytic events (only runs on user interaction not on autoPlay) |          |
+| children                 | `CarouselItem`                         | `undefined`                              | Carousel slides                                                                                                                 | ✅        |
 
 ### CarouselItem
 
@@ -73,7 +74,7 @@ We need to follow the APG Pattern For [Carousel](https://www.w3.org/WAI/ARIA/apg
 
 ## Motion
 
-- TBD
+<video src="./carousel-motion.mov"></video>
 
 ## Open Questions
 
