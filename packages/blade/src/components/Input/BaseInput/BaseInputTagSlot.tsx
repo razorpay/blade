@@ -9,6 +9,7 @@ type BaseInputTagSlotProps = {
   setFocusOnInput: () => void;
   setShouldIgnoreBlurAnimation: BaseInputProps['setShouldIgnoreBlurAnimation'];
   handleOnClick: StyledBaseInputProps['handleOnClick'];
+  isMultiline: BaseInputProps['isMultiline'];
 };
 
 const BaseInputTagSlot = ({
@@ -16,8 +17,13 @@ const BaseInputTagSlot = ({
   setShouldIgnoreBlurAnimation,
   setFocusOnInput,
   handleOnClick,
+  isMultiline,
 }: BaseInputTagSlotProps): React.ReactElement | null => {
   const tagContainerRef = React.useRef<HTMLDivElement>(null);
+
+  // React.useEffect(() => {
+  //   console.log(tagContainerRef.current?.clientWidth, tagContainerRef.current?.clientHeight);
+  // }, [tags]);
 
   if (!tags) {
     return null;
@@ -36,11 +42,11 @@ const BaseInputTagSlot = ({
       display="flex"
       flexDirection="row"
       // switch to these on `props.rows` value
-      flexWrap="nowrap"
-      whiteSpace="nowrap"
+      flexWrap={isMultiline ? 'wrap' : 'nowrap'}
+      whiteSpace={isMultiline ? undefined : 'nowrap'}
       overflow="auto"
       // @todo fix this to use token
-      maxHeight="108px"
+      maxHeight="100px"
       // Move to using gap instead of marginLeft on individual tags after RN upgrade
       // gap="spacing.3"
       {...(!isReactNative()

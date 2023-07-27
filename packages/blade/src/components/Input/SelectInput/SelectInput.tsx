@@ -211,8 +211,10 @@ const _SelectInput = (
         stripAfter = 2; // defaulting to strip after 2 tags if clientWidth is not present for some reason
       }
 
+      // console.log(selectInputContainerRef.current?.clientHeight);
+
       if (props.rows === '3') {
-        stripAfter = stripAfter * 3; // In multiline, tags can take upto 3 rows
+        stripAfter = stripAfter * 4; // In multiline, tags can take upto 3 rows
       }
     }
 
