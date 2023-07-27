@@ -68,6 +68,52 @@ const Testimonial = () => {
 
 <img src="./example-usage-1.png" width="70%" />
 
+### Usage with Card
+
+
+```jsx
+const TestimonialCard = () => {
+  return (
+   <Card elevation="highRaised" padding="spacing.0">
+      <CardBody>
+        <Box display="flex" flexDirection="row">
+          <img
+            width="300"
+            height="auto"
+          />
+          <Box padding="spacing.7" display="flex" flexDirection="column">
+            <Heading size="large">Subham Kumar</Heading>
+            <Text marginTop="spacing.5">
+            Acquire Customers From New Customer Segments
+            </Text>
+            <Link href="#">Learn More</Link>
+          </Box>
+        </Box>
+      </CardBody>
+    </Card>
+  )
+};
+
+<Carousel
+  autoPlay
+  visibleItems={2}
+  navigationButtonPosition="side"
+  bleed="right"
+>
+  <CarouselItem>
+    <TestimonialCard />
+  </CarouselItem>
+
+  <CarouselItem>
+    <TestimonialCard />
+  </CarouselItem>
+
+  <CarouselItem>
+    <TestimonialCard />
+  </CarouselItem>
+</Carousel>
+```
+
 ## Accessibility
 
 We need to follow the APG Pattern For [Carousel](https://www.w3.org/WAI/ARIA/apg/patterns/carousel/examples/carousel-2-tablist/)
