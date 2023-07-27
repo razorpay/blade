@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import type { ReactElement } from 'react';
 import type { SvgProps } from './types';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import { getStyledProps, useStyledProps } from '~components/Box/styledProps';
+import { useStyledProps } from '~components/Box/styledProps';
 import { makeAccessible } from '~utils/makeAccessible';
 
 const StyledSvg = styled.svg<SvgProps & { styledDisplay: SvgProps['display'] }>(
@@ -22,9 +22,6 @@ const Svg = ({
   display,
   ...styledProps
 }: SvgProps): ReactElement => {
-  // order and display are existing props on svg component so we ignore them
-  const { order, display: displayStyledProp, ...fiteredStyledProps } = getStyledProps(styledProps);
-
   return (
     <StyledSvg
       {...makeAccessible({ hidden: true })}
@@ -35,7 +32,7 @@ const Svg = ({
       fill={fill}
       // svg has its own display prop, which conflicts with our styled display prop
       styledDisplay={display}
-      {...fiteredStyledProps}
+      {...styledProps}
     >
       {children}
     </StyledSvg>
