@@ -74,7 +74,7 @@ We need to follow the APG Pattern For [Carousel](https://www.w3.org/WAI/ARIA/apg
 
 ## Motion
 
-<video src="./carousel-motion.mov"></video>
+https://github.com/razorpay/blade/assets/35374649/6876f348-1b0a-4e9a-800a-300025f54b5c
 
 ## Open Questions
 
