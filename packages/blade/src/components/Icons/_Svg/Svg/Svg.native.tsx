@@ -5,7 +5,7 @@ import { Svg as SvgNative } from 'react-native-svg';
 import React from 'react';
 import type { SvgProps } from './types';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import { useStyledProps } from '~components/Box/styledProps';
+import { getStyledProps, useStyledProps } from '~components/Box/styledProps';
 import { makeAccessible } from '~utils/makeAccessible';
 
 const StyledSvg = styled(SvgNative)((props) => {
@@ -17,6 +17,8 @@ const _Svg: React.ForwardRefRenderFunction<any, SvgProps> = (
   { children, height, viewBox, width, fill, ...styledProps },
   ref,
 ): ReactElement => {
+  const { order, ...fiteredStyledProps } = getStyledProps(styledProps);
+
   return (
     <StyledSvg
       {...makeAccessible({ hidden: true })}
@@ -26,7 +28,7 @@ const _Svg: React.ForwardRefRenderFunction<any, SvgProps> = (
       width={width}
       fill={fill}
       ref={ref}
-      {...styledProps}
+      {...fiteredStyledProps}
     >
       {children}
     </StyledSvg>

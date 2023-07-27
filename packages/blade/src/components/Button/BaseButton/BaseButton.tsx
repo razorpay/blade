@@ -23,6 +23,7 @@ import type { BorderRadiusValues, BorderWidthValues, SpacingValues } from '~toke
 import type { Platform } from '~utils';
 import { isReactNative } from '~utils';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
+import { getStyledProps } from '~components/Box/styledProps';
 import { BaseText } from '~components/Typography/BaseText';
 import { useTheme } from '~components/BladeProvider';
 import { announce } from '~components/LiveAnnouncer';
@@ -435,7 +436,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       motionDuration={motionDuration}
       motionEasing={motionEasing}
       {...metaAttribute({ name: MetaConstants.Button, testID })}
-      {...styledProps}
+      {...getStyledProps(styledProps)}
     >
       {isLoading ? (
         <BaseBox
