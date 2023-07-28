@@ -163,6 +163,12 @@ LabelAtLeft.parameters = {
   },
 };
 
+export const PasswordInputWithoutLabel = PasswordInputTemplate.bind({});
+PasswordInputWithoutLabel.args = {
+  label: undefined,
+  accessibilityLabel: 'Password',
+};
+
 export const Disabled = PasswordInputTemplate.bind({});
 Disabled.args = {
   isDisabled: true,
