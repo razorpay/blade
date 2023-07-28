@@ -275,4 +275,17 @@ describe('<Tooltip />', () => {
       MetaConstants.Tooltip,
     );
   });
+
+  it('should render tooltip with custom zIndex', () => {
+    const buttonText = 'Hover me';
+    const { getByRole } = renderWithTheme(
+      <Tooltip content="Hello world" zIndex={9999}>
+        <Button>{buttonText}</Button>
+      </Tooltip>,
+    );
+
+    // snapshot while on opened
+    fireEvent.focus(getByRole('button', { name: buttonText }));
+    expect(screen.queryByRole('tooltip')).toHaveStyle({ 'z-index': 9999 });
+  });
 });
