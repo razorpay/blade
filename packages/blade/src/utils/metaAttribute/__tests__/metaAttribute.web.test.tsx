@@ -7,7 +7,7 @@ describe('metaAttribute', () => {
     const { getByRole } = renderWithTheme(
       <Button {...metaAttribute({ name: 'Button', testID: 'button-test' })}>{'Click'}</Button>,
     );
-    expect(getByRole('button')).toHaveAttribute('data-blade-component', 'Button');
+    expect(getByRole('button')).toHaveAttribute('data-blade-component', 'button');
     expect(getByRole('button')).toHaveAttribute('data-testid', 'button-test');
   });
 });
