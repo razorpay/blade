@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 9.3.0
+
+### Minor Changes
+
+- d28d8a72: feat(Tag): add Tag component
+
 ## 9.2.0
 
 ### Minor Changes
