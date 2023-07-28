@@ -19,6 +19,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
     <View
       accessibilityLabelledBy="radio-group-15-label"
       accessibilityRole="radiogroup"
+      accessible={true}
       data-blade-component="radio-group"
       display="flex"
       flexDirection="column"
@@ -64,6 +65,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
           }
         >
           <Text
+            accessible={true}
             color="surface.text.subdued.lowContrast"
             data-blade-component="text"
             fontFamily="text"
@@ -126,6 +128,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.normal.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -302,6 +305,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                       }
                     />
                     <Text
+                      accessible={true}
                       color="surface.text.subtle.lowContrast"
                       data-blade-component="base-text"
                       fontFamily="text"
@@ -468,6 +472,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                       }
                     />
                     <Text
+                      accessible={true}
                       color="surface.text.subtle.lowContrast"
                       data-blade-component="base-text"
                       fontFamily="text"
@@ -634,6 +639,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                       }
                     />
                     <Text
+                      accessible={true}
                       color="surface.text.subtle.lowContrast"
                       data-blade-component="base-text"
                       fontFamily="text"
@@ -706,6 +712,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.muted.lowContrast"
               data-blade-component="base-text"
               fontFamily="text"
@@ -763,6 +770,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
     <View
       accessibilityLabelledBy="radio-group-7-label"
       accessibilityRole="radiogroup"
+      accessible={true}
       data-blade-component="radio-group"
       display="flex"
       flexDirection="column"
@@ -808,6 +816,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
           }
         >
           <Text
+            accessible={true}
             color="surface.text.subdued.lowContrast"
             data-blade-component="text"
             fontFamily="text"
@@ -870,6 +879,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.normal.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -1046,6 +1056,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
                       }
                     />
                     <Text
+                      accessible={true}
                       color="surface.text.subtle.lowContrast"
                       data-blade-component="base-text"
                       fontFamily="text"
@@ -1212,6 +1223,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
                       }
                     />
                     <Text
+                      accessible={true}
                       color="surface.text.subtle.lowContrast"
                       data-blade-component="base-text"
                       fontFamily="text"
@@ -1378,6 +1390,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
                       }
                     />
                     <Text
+                      accessible={true}
                       color="surface.text.subtle.lowContrast"
                       data-blade-component="base-text"
                       fontFamily="text"

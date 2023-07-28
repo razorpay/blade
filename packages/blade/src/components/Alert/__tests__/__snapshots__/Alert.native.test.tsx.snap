@@ -10,6 +10,7 @@ exports[`<Alert /> should render 1`] = `
 >
   <View
     accessibilityRole="alert"
+    accessible={true}
     data-blade-component="alert"
     style={
       [
@@ -62,6 +63,7 @@ exports[`<Alert /> should render 1`] = `
       >
         <RNSVGSvgView
           accessibilityElementsHidden={true}
+          accessible={false}
           align="xMidYMid"
           bbHeight="16px"
           bbWidth="16px"
@@ -159,6 +161,7 @@ exports[`<Alert /> should render 1`] = `
           }
         >
           <Text
+            accessible={true}
             color="surface.text.subtle.lowContrast"
             data-blade-component="text"
             fontFamily="text"
@@ -226,6 +229,7 @@ exports[`<Alert /> should render 1`] = `
         >
           <RNSVGSvgView
             accessibilityElementsHidden={true}
+            accessible={false}
             align="xMidYMid"
             bbHeight="16px"
             bbWidth="16px"
@@ -293,6 +297,7 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
 >
   <View
     accessibilityRole="alert"
+    accessible={true}
     data-blade-component="alert"
     style={
       [
@@ -346,6 +351,7 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
       >
         <RNSVGSvgView
           accessibilityElementsHidden={true}
+          accessible={false}
           align="xMidYMid"
           bbHeight="20px"
           bbWidth="20px"
@@ -453,6 +459,7 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
           }
         >
           <Text
+            accessible={true}
             color="surface.text.subtle.lowContrast"
             data-blade-component="text"
             fontFamily="text"
@@ -520,6 +527,7 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
         >
           <RNSVGSvgView
             accessibilityElementsHidden={true}
+            accessible={false}
             align="xMidYMid"
             bbHeight="20px"
             bbWidth="20px"

@@ -30,6 +30,7 @@ exports[`<Code /> should render Code with color 1`] = `
     }
   >
     <Text
+      accessible={true}
       color="action.text.link.disabled"
       data-blade-component="base-text"
       fontFamily="code"
@@ -95,6 +96,7 @@ exports[`<Code /> should render Code with default properties 1`] = `
     }
   >
     <Text
+      accessible={true}
       color="surface.text.subtle.lowContrast"
       data-blade-component="base-text"
       fontFamily="code"
@@ -159,6 +161,7 @@ exports[`<Code /> should render isHighlighted false Code 1`] = `
     }
   >
     <Text
+      accessible={true}
       color="surface.text.normal.lowContrast"
       data-blade-component="base-text"
       fontFamily="code"
@@ -224,6 +227,7 @@ exports[`<Code /> should render medium Code 1`] = `
     }
   >
     <Text
+      accessible={true}
       color="surface.text.subtle.lowContrast"
       data-blade-component="base-text"
       fontFamily="code"
@@ -289,6 +293,7 @@ exports[`<Code /> should render small Code 1`] = `
     }
   >
     <Text
+      accessible={true}
       color="surface.text.subtle.lowContrast"
       data-blade-component="base-text"
       fontFamily="code"

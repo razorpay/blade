@@ -19,6 +19,7 @@ exports[`<Radio /> should render radio with label 1`] = `
     <View
       accessibilityLabelledBy="radio-group-3-label"
       accessibilityRole="radiogroup"
+      accessible={true}
       data-blade-component="radio-group"
       display="flex"
       flexDirection="column"
@@ -64,6 +65,7 @@ exports[`<Radio /> should render radio with label 1`] = `
           }
         >
           <Text
+            accessible={true}
             color="surface.text.subdued.lowContrast"
             data-blade-component="text"
             fontFamily="text"
@@ -126,6 +128,7 @@ exports[`<Radio /> should render radio with label 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.normal.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -302,6 +305,7 @@ exports[`<Radio /> should render radio with label 1`] = `
                       }
                     />
                     <Text
+                      accessible={true}
                       color="surface.text.subtle.lowContrast"
                       data-blade-component="base-text"
                       fontFamily="text"
@@ -373,6 +377,7 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
     <View
       accessibilityLabelledBy="radio-group-10-label"
       accessibilityRole="radiogroup"
+      accessible={true}
       data-blade-component="radio-group"
       display="flex"
       flexDirection="column"
@@ -418,6 +423,7 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
           }
         >
           <Text
+            accessible={true}
             color="surface.text.subdued.lowContrast"
             data-blade-component="text"
             fontFamily="text"
@@ -480,6 +486,7 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.normal.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -656,6 +663,7 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
                       }
                     />
                     <Text
+                      accessible={true}
                       color="surface.text.placeholder.lowContrast"
                       data-blade-component="base-text"
                       fontFamily="text"

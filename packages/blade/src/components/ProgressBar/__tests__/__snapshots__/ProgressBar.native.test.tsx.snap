@@ -79,6 +79,7 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.subdued.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -141,6 +142,7 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
               }
             >
               <Text
+                accessible={true}
                 color="surface.text.normal.lowContrast"
                 data-blade-component="text"
                 fontFamily="text"
@@ -184,6 +186,7 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
           }
         >
           <Text
+            accessible={true}
             color="surface.text.subdued.lowContrast"
             data-blade-component="text"
             fontFamily="text"
@@ -228,6 +231,7 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
             "text": "20%",
           }
         }
+        accessible={true}
         data-blade-component="base-box"
         id="progress-1"
         style={
@@ -348,6 +352,7 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
             "text": "50%",
           }
         }
+        accessible={true}
         data-blade-component="base-box"
         id="progress-7"
         style={
@@ -469,6 +474,7 @@ exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
           }
         >
           <Text
+            accessible={true}
             color="surface.text.subdued.highContrast"
             data-blade-component="text"
             fontFamily="text"
@@ -512,6 +518,7 @@ exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
             "text": "20%",
           }
         }
+        accessible={true}
         data-blade-component="base-box"
         id="progress-9"
         style={
@@ -633,6 +640,7 @@ exports[`<ProgressBar /> should render high contrast information intent Progress
           }
         >
           <Text
+            accessible={true}
             color="surface.text.subdued.highContrast"
             data-blade-component="text"
             fontFamily="text"
@@ -676,6 +684,7 @@ exports[`<ProgressBar /> should render high contrast information intent Progress
             "text": "20%",
           }
         }
+        accessible={true}
         data-blade-component="base-box"
         id="progress-17"
         style={
@@ -797,6 +806,7 @@ exports[`<ProgressBar /> should render high contrast negative intent ProgressBar
           }
         >
           <Text
+            accessible={true}
             color="surface.text.subdued.highContrast"
             data-blade-component="text"
             fontFamily="text"
@@ -840,6 +850,7 @@ exports[`<ProgressBar /> should render high contrast negative intent ProgressBar
             "text": "20%",
           }
         }
+        accessible={true}
         data-blade-component="base-box"
         id="progress-13"
         style={
@@ -961,6 +972,7 @@ exports[`<ProgressBar /> should render high contrast neutral intent ProgressBar 
           }
         >
           <Text
+            accessible={true}
             color="surface.text.subdued.highContrast"
             data-blade-component="text"
             fontFamily="text"
@@ -1004,6 +1016,7 @@ exports[`<ProgressBar /> should render high contrast neutral intent ProgressBar 
             "text": "20%",
           }
         }
+        accessible={true}
         data-blade-component="base-box"
         id="progress-19"
         style={
@@ -1125,6 +1138,7 @@ exports[`<ProgressBar /> should render high contrast notice intent ProgressBar 1
           }
         >
           <Text
+            accessible={true}
             color="surface.text.subdued.highContrast"
             data-blade-component="text"
             fontFamily="text"
@@ -1168,6 +1182,7 @@ exports[`<ProgressBar /> should render high contrast notice intent ProgressBar 1
             "text": "20%",
           }
         }
+        accessible={true}
         data-blade-component="base-box"
         id="progress-15"
         style={
@@ -1289,6 +1304,7 @@ exports[`<ProgressBar /> should render high contrast positive intent ProgressBar
           }
         >
           <Text
+            accessible={true}
             color="surface.text.subdued.highContrast"
             data-blade-component="text"
             fontFamily="text"
@@ -1332,6 +1348,7 @@ exports[`<ProgressBar /> should render high contrast positive intent ProgressBar
             "text": "20%",
           }
         }
+        accessible={true}
         data-blade-component="base-box"
         id="progress-11"
         style={
@@ -1453,6 +1470,7 @@ exports[`<ProgressBar /> should render low contrast information intent ProgressB
           }
         >
           <Text
+            accessible={true}
             color="surface.text.subdued.lowContrast"
             data-blade-component="text"
             fontFamily="text"
@@ -1496,6 +1514,7 @@ exports[`<ProgressBar /> should render low contrast information intent ProgressB
             "text": "20%",
           }
         }
+        accessible={true}
         data-blade-component="base-box"
         id="progress-16"
         style={
@@ -1617,6 +1636,7 @@ exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 
           }
         >
           <Text
+            accessible={true}
             color="surface.text.subdued.lowContrast"
             data-blade-component="text"
             fontFamily="text"
@@ -1660,6 +1680,7 @@ exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 
             "text": "20%",
           }
         }
+        accessible={true}
         data-blade-component="base-box"
         id="progress-12"
         style={
@@ -1781,6 +1802,7 @@ exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1
           }
         >
           <Text
+            accessible={true}
             color="surface.text.subdued.lowContrast"
             data-blade-component="text"
             fontFamily="text"
@@ -1824,6 +1846,7 @@ exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1
             "text": "20%",
           }
         }
+        accessible={true}
         data-blade-component="base-box"
         id="progress-18"
         style={
@@ -1945,6 +1968,7 @@ exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`
           }
         >
           <Text
+            accessible={true}
             color="surface.text.subdued.lowContrast"
             data-blade-component="text"
             fontFamily="text"
@@ -1988,6 +2012,7 @@ exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`
             "text": "20%",
           }
         }
+        accessible={true}
         data-blade-component="base-box"
         id="progress-14"
         style={
@@ -2109,6 +2134,7 @@ exports[`<ProgressBar /> should render low contrast positive intent ProgressBar 
           }
         >
           <Text
+            accessible={true}
             color="surface.text.subdued.lowContrast"
             data-blade-component="text"
             fontFamily="text"
@@ -2152,6 +2178,7 @@ exports[`<ProgressBar /> should render low contrast positive intent ProgressBar 
             "text": "20%",
           }
         }
+        accessible={true}
         data-blade-component="base-box"
         id="progress-10"
         style={
@@ -2295,6 +2322,7 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.subdued.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -2357,6 +2385,7 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
               }
             >
               <Text
+                accessible={true}
                 color="surface.text.normal.lowContrast"
                 data-blade-component="text"
                 fontFamily="text"
@@ -2400,6 +2429,7 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
           }
         >
           <Text
+            accessible={true}
             color="surface.text.subdued.lowContrast"
             data-blade-component="text"
             fontFamily="text"
@@ -2444,6 +2474,7 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
             "text": "20%",
           }
         }
+        accessible={true}
         data-blade-component="base-box"
         id="progress-6"
         style={
@@ -2564,6 +2595,7 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
             "text": "70",
           }
         }
+        accessible={true}
         data-blade-component="base-box"
         id="meter-8"
         style={
@@ -2707,6 +2739,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.subdued.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -2769,6 +2802,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
               }
             >
               <Text
+                accessible={true}
                 color="surface.text.normal.lowContrast"
                 data-blade-component="text"
                 fontFamily="text"
@@ -2812,6 +2846,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
           }
         >
           <Text
+            accessible={true}
             color="surface.text.subdued.lowContrast"
             data-blade-component="text"
             fontFamily="text"
@@ -2856,6 +2891,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
             "text": "20%",
           }
         }
+        accessible={true}
         data-blade-component="base-box"
         id="progress-5"
         style={
@@ -3024,6 +3060,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
       }
     >
       <Text
+        accessible={true}
         color="action.text.primary.default"
         data-blade-component="base-text"
         fontSize={100}
@@ -3128,6 +3165,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.subdued.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -3190,6 +3228,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
               }
             >
               <Text
+                accessible={true}
                 color="surface.text.normal.lowContrast"
                 data-blade-component="text"
                 fontFamily="text"
@@ -3233,6 +3272,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
           }
         >
           <Text
+            accessible={true}
             color="surface.text.subdued.lowContrast"
             data-blade-component="text"
             fontFamily="text"
@@ -3277,6 +3317,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
             "text": "0%",
           }
         }
+        accessible={true}
         data-blade-component="base-box"
         id="progress-3"
         style={
@@ -3445,6 +3486,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
       }
     >
       <Text
+        accessible={true}
         color="action.text.primary.default"
         data-blade-component="base-text"
         fontSize={100}
@@ -3549,6 +3591,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.subdued.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -3611,6 +3654,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
               }
             >
               <Text
+                accessible={true}
                 color="surface.text.normal.lowContrast"
                 data-blade-component="text"
                 fontFamily="text"
@@ -3654,6 +3698,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
           }
         >
           <Text
+            accessible={true}
             color="surface.text.subdued.lowContrast"
             data-blade-component="text"
             fontFamily="text"
@@ -3698,6 +3743,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
             "text": "60%",
           }
         }
+        accessible={true}
         data-blade-component="base-box"
         id="progress-3"
         style={

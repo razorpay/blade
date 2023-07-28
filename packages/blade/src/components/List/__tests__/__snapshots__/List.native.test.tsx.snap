@@ -18,6 +18,7 @@ exports[`<List /> should render List with default properties 1`] = `
   >
     <View
       accessibilityRole="list"
+      accessible={true}
       data-blade-component="list"
       marginTop="spacing.3"
       style={
@@ -74,6 +75,7 @@ exports[`<List /> should render List with default properties 1`] = `
           >
             <RNSVGSvgView
               accessibilityElementsHidden={true}
+              accessible={false}
               align="xMidYMid"
               bbHeight="6px"
               bbWidth="6px"
@@ -143,6 +145,7 @@ exports[`<List /> should render List with default properties 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.normal.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -186,6 +189,7 @@ exports[`<List /> should render List with default properties 1`] = `
         >
           <View
             accessibilityRole="list"
+            accessible={true}
             data-blade-component="list"
             style={
               [
@@ -239,6 +243,7 @@ exports[`<List /> should render List with default properties 1`] = `
                 >
                   <RNSVGSvgView
                     accessibilityElementsHidden={true}
+                    accessible={false}
                     align="xMidYMid"
                     bbHeight="6px"
                     bbWidth="6px"
@@ -308,6 +313,7 @@ exports[`<List /> should render List with default properties 1`] = `
                   }
                 >
                   <Text
+                    accessible={true}
                     color="surface.text.normal.lowContrast"
                     data-blade-component="text"
                     fontFamily="text"
@@ -351,6 +357,7 @@ exports[`<List /> should render List with default properties 1`] = `
               >
                 <View
                   accessibilityRole="list"
+                  accessible={true}
                   data-blade-component="list"
                   style={
                     [
@@ -404,6 +411,7 @@ exports[`<List /> should render List with default properties 1`] = `
                       >
                         <RNSVGSvgView
                           accessibilityElementsHidden={true}
+                          accessible={false}
                           align="xMidYMid"
                           bbHeight="6px"
                           bbWidth="6px"
@@ -475,6 +483,7 @@ exports[`<List /> should render List with default properties 1`] = `
                         }
                       >
                         <Text
+                          accessible={true}
                           color="surface.text.normal.lowContrast"
                           data-blade-component="text"
                           fontFamily="text"
@@ -538,6 +547,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
   >
     <View
       accessibilityRole="list"
+      accessible={true}
       data-blade-component="list"
       marginTop="spacing.3"
       style={
@@ -594,6 +604,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
           >
             <RNSVGSvgView
               accessibilityElementsHidden={true}
+              accessible={false}
               align="xMidYMid"
               bbHeight="6px"
               bbWidth="6px"
@@ -663,6 +674,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.normal.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -717,6 +729,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
               }
             >
               <Text
+                accessible={true}
                 color="surface.text.subtle.lowContrast"
                 data-blade-component="base-text"
                 fontFamily="code"
@@ -797,6 +810,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
           >
             <RNSVGSvgView
               accessibilityElementsHidden={true}
+              accessible={false}
               align="xMidYMid"
               bbHeight="6px"
               bbWidth="6px"
@@ -866,6 +880,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.normal.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -923,6 +938,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
   >
     <View
       accessibilityRole="list"
+      accessible={true}
       data-blade-component="list"
       marginTop="spacing.3"
       style={
@@ -979,6 +995,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
           >
             <RNSVGSvgView
               accessibilityElementsHidden={true}
+              accessible={false}
               align="xMidYMid"
               bbHeight="6px"
               bbWidth="6px"
@@ -1048,6 +1065,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.normal.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -1135,6 +1153,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
                 }
               >
                 <Text
+                  accessible={true}
                   color="action.text.link.default"
                   data-blade-component="base-text"
                   fontSize={100}
@@ -1218,6 +1237,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
           >
             <RNSVGSvgView
               accessibilityElementsHidden={true}
+              accessible={false}
               align="xMidYMid"
               bbHeight="6px"
               bbWidth="6px"
@@ -1287,6 +1307,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.normal.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -1344,6 +1365,7 @@ exports[`<List /> should render List with inline ListItemText 1`] = `
   >
     <View
       accessibilityRole="list"
+      accessible={true}
       data-blade-component="list"
       marginTop="spacing.3"
       style={
@@ -1400,6 +1422,7 @@ exports[`<List /> should render List with inline ListItemText 1`] = `
           >
             <RNSVGSvgView
               accessibilityElementsHidden={true}
+              accessible={false}
               align="xMidYMid"
               bbHeight="6px"
               bbWidth="6px"
@@ -1469,6 +1492,7 @@ exports[`<List /> should render List with inline ListItemText 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="action.text.secondary.default"
               data-blade-component="text"
               fontFamily="text"
@@ -1526,6 +1550,7 @@ exports[`<List /> should render medium ordered List 1`] = `
   >
     <View
       accessibilityRole="list"
+      accessible={true}
       data-blade-component="list"
       marginTop="spacing.3"
       style={
@@ -1591,6 +1616,7 @@ exports[`<List /> should render medium ordered List 1`] = `
             width="24px"
           >
             <Text
+              accessible={true}
               color="surface.text.subtle.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -1639,6 +1665,7 @@ exports[`<List /> should render medium ordered List 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.normal.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -1682,6 +1709,7 @@ exports[`<List /> should render medium ordered List 1`] = `
         >
           <View
             accessibilityRole="list"
+            accessible={true}
             data-blade-component="list"
             style={
               [
@@ -1735,6 +1763,7 @@ exports[`<List /> should render medium ordered List 1`] = `
                 >
                   <RNSVGSvgView
                     accessibilityElementsHidden={true}
+                    accessible={false}
                     align="xMidYMid"
                     bbHeight="6px"
                     bbWidth="6px"
@@ -1804,6 +1833,7 @@ exports[`<List /> should render medium ordered List 1`] = `
                   }
                 >
                   <Text
+                    accessible={true}
                     color="surface.text.normal.lowContrast"
                     data-blade-component="text"
                     fontFamily="text"
@@ -1847,6 +1877,7 @@ exports[`<List /> should render medium ordered List 1`] = `
               >
                 <View
                   accessibilityRole="list"
+                  accessible={true}
                   data-blade-component="list"
                   style={
                     [
@@ -1900,6 +1931,7 @@ exports[`<List /> should render medium ordered List 1`] = `
                       >
                         <RNSVGSvgView
                           accessibilityElementsHidden={true}
+                          accessible={false}
                           align="xMidYMid"
                           bbHeight="6px"
                           bbWidth="6px"
@@ -1971,6 +2003,7 @@ exports[`<List /> should render medium ordered List 1`] = `
                         }
                       >
                         <Text
+                          accessible={true}
                           color="surface.text.normal.lowContrast"
                           data-blade-component="text"
                           fontFamily="text"
@@ -2034,6 +2067,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
   >
     <View
       accessibilityRole="list"
+      accessible={true}
       data-blade-component="list"
       marginTop="spacing.3"
       style={
@@ -2103,6 +2137,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
             width="20px"
           >
             <Text
+              accessible={true}
               color="surface.text.subtle.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -2151,6 +2186,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.normal.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -2244,6 +2280,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
             width="20px"
           >
             <Text
+              accessible={true}
               color="surface.text.subtle.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -2292,6 +2329,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.normal.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -2385,6 +2423,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
             width="20px"
           >
             <Text
+              accessible={true}
               color="surface.text.subtle.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -2433,6 +2472,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.normal.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -2490,6 +2530,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
   >
     <View
       accessibilityRole="list"
+      accessible={true}
       data-blade-component="list"
       marginTop="spacing.3"
       style={
@@ -2546,6 +2587,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
           >
             <RNSVGSvgView
               accessibilityElementsHidden={true}
+              accessible={false}
               align="xMidYMid"
               bbHeight="16px"
               bbWidth="16px"
@@ -2613,6 +2655,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.normal.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -2656,6 +2699,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
         >
           <View
             accessibilityRole="list"
+            accessible={true}
             data-blade-component="list"
             style={
               [
@@ -2709,6 +2753,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                 >
                   <RNSVGSvgView
                     accessibilityElementsHidden={true}
+                    accessible={false}
                     align="xMidYMid"
                     bbHeight="16px"
                     bbWidth="16px"
@@ -2776,6 +2821,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                   }
                 >
                   <Text
+                    accessible={true}
                     color="surface.text.normal.lowContrast"
                     data-blade-component="text"
                     fontFamily="text"
@@ -2819,6 +2865,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
               >
                 <View
                   accessibilityRole="list"
+                  accessible={true}
                   data-blade-component="list"
                   style={
                     [
@@ -2872,6 +2919,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                       >
                         <RNSVGSvgView
                           accessibilityElementsHidden={true}
+                          accessible={false}
                           align="xMidYMid"
                           bbHeight="6px"
                           bbWidth="6px"
@@ -2943,6 +2991,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                         }
                       >
                         <Text
+                          accessible={true}
                           color="surface.text.normal.lowContrast"
                           data-blade-component="text"
                           fontFamily="text"
@@ -3006,6 +3055,7 @@ exports[`<List /> should render small ordered List 1`] = `
   >
     <View
       accessibilityRole="list"
+      accessible={true}
       data-blade-component="list"
       marginTop="spacing.3"
       style={
@@ -3071,6 +3121,7 @@ exports[`<List /> should render small ordered List 1`] = `
             width="16px"
           >
             <Text
+              accessible={true}
               color="surface.text.subtle.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -3119,6 +3170,7 @@ exports[`<List /> should render small ordered List 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.normal.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -3162,6 +3214,7 @@ exports[`<List /> should render small ordered List 1`] = `
         >
           <View
             accessibilityRole="list"
+            accessible={true}
             data-blade-component="list"
             style={
               [
@@ -3215,6 +3268,7 @@ exports[`<List /> should render small ordered List 1`] = `
                 >
                   <RNSVGSvgView
                     accessibilityElementsHidden={true}
+                    accessible={false}
                     align="xMidYMid"
                     bbHeight="5px"
                     bbWidth="5px"
@@ -3284,6 +3338,7 @@ exports[`<List /> should render small ordered List 1`] = `
                   }
                 >
                   <Text
+                    accessible={true}
                     color="surface.text.normal.lowContrast"
                     data-blade-component="text"
                     fontFamily="text"
@@ -3327,6 +3382,7 @@ exports[`<List /> should render small ordered List 1`] = `
               >
                 <View
                   accessibilityRole="list"
+                  accessible={true}
                   data-blade-component="list"
                   style={
                     [
@@ -3380,6 +3436,7 @@ exports[`<List /> should render small ordered List 1`] = `
                       >
                         <RNSVGSvgView
                           accessibilityElementsHidden={true}
+                          accessible={false}
                           align="xMidYMid"
                           bbHeight="5px"
                           bbWidth="5px"
@@ -3451,6 +3508,7 @@ exports[`<List /> should render small ordered List 1`] = `
                         }
                       >
                         <Text
+                          accessible={true}
                           color="surface.text.normal.lowContrast"
                           data-blade-component="text"
                           fontFamily="text"
@@ -3514,6 +3572,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
   >
     <View
       accessibilityRole="list"
+      accessible={true}
       data-blade-component="list"
       marginTop="spacing.3"
       style={
@@ -3583,6 +3642,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
             width="16px"
           >
             <Text
+              accessible={true}
               color="surface.text.subtle.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -3631,6 +3691,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.normal.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -3724,6 +3785,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
             width="16px"
           >
             <Text
+              accessible={true}
               color="surface.text.subtle.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -3772,6 +3834,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.normal.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -3865,6 +3928,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
             width="16px"
           >
             <Text
+              accessible={true}
               color="surface.text.subtle.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -3913,6 +3977,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.normal.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -3970,6 +4035,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
   >
     <View
       accessibilityRole="list"
+      accessible={true}
       data-blade-component="list"
       marginTop="spacing.3"
       style={
@@ -4026,6 +4092,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
           >
             <RNSVGSvgView
               accessibilityElementsHidden={true}
+              accessible={false}
               align="xMidYMid"
               bbHeight="12px"
               bbWidth="12px"
@@ -4093,6 +4160,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.normal.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -4136,6 +4204,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
         >
           <View
             accessibilityRole="list"
+            accessible={true}
             data-blade-component="list"
             style={
               [
@@ -4189,6 +4258,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                 >
                   <RNSVGSvgView
                     accessibilityElementsHidden={true}
+                    accessible={false}
                     align="xMidYMid"
                     bbHeight="12px"
                     bbWidth="12px"
@@ -4256,6 +4326,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                   }
                 >
                   <Text
+                    accessible={true}
                     color="surface.text.normal.lowContrast"
                     data-blade-component="text"
                     fontFamily="text"
@@ -4299,6 +4370,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
               >
                 <View
                   accessibilityRole="list"
+                  accessible={true}
                   data-blade-component="list"
                   style={
                     [
@@ -4352,6 +4424,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                       >
                         <RNSVGSvgView
                           accessibilityElementsHidden={true}
+                          accessible={false}
                           align="xMidYMid"
                           bbHeight="5px"
                           bbWidth="5px"
@@ -4423,6 +4496,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                         }
                       >
                         <Text
+                          accessible={true}
                           color="surface.text.normal.lowContrast"
                           data-blade-component="text"
                           fontFamily="text"
@@ -4486,6 +4560,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
   >
     <View
       accessibilityRole="list"
+      accessible={true}
       data-blade-component="list"
       marginTop="spacing.3"
       style={
@@ -4542,6 +4617,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
           >
             <RNSVGSvgView
               accessibilityElementsHidden={true}
+              accessible={false}
               align="xMidYMid"
               bbHeight="5px"
               bbWidth="5px"
@@ -4611,6 +4687,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.normal.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -4654,6 +4731,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
         >
           <View
             accessibilityRole="list"
+            accessible={true}
             data-blade-component="list"
             style={
               [
@@ -4707,6 +4785,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
                 >
                   <RNSVGSvgView
                     accessibilityElementsHidden={true}
+                    accessible={false}
                     align="xMidYMid"
                     bbHeight="5px"
                     bbWidth="5px"
@@ -4776,6 +4855,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
                   }
                 >
                   <Text
+                    accessible={true}
                     color="surface.text.normal.lowContrast"
                     data-blade-component="text"
                     fontFamily="text"
@@ -4819,6 +4899,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
               >
                 <View
                   accessibilityRole="list"
+                  accessible={true}
                   data-blade-component="list"
                   style={
                     [
@@ -4872,6 +4953,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
                       >
                         <RNSVGSvgView
                           accessibilityElementsHidden={true}
+                          accessible={false}
                           align="xMidYMid"
                           bbHeight="5px"
                           bbWidth="5px"
@@ -4943,6 +5025,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
                         }
                       >
                         <Text
+                          accessible={true}
                           color="surface.text.normal.lowContrast"
                           data-blade-component="text"
                           fontFamily="text"

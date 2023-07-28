@@ -83,6 +83,7 @@ exports[`<TextInput /> should render 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.subdued.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -145,6 +146,7 @@ exports[`<TextInput /> should render 1`] = `
               }
             >
               <Text
+                accessible={true}
                 color="surface.text.normal.lowContrast"
                 data-blade-component="text"
                 fontFamily="text"
@@ -214,6 +216,7 @@ exports[`<TextInput /> should render 1`] = `
               "expanded": undefined,
             }
           }
+          accessible={true}
           autoCompleteType="off"
           data-blade-component="styled-base-input"
           editable={true}
@@ -394,6 +397,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.subdued.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -456,6 +460,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
               }
             >
               <Text
+                accessible={true}
                 color="surface.text.normal.lowContrast"
                 data-blade-component="text"
                 fontFamily="text"
@@ -544,6 +549,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
           >
             <RNSVGSvgView
               accessibilityElementsHidden={true}
+              accessible={false}
               align="xMidYMid"
               bbHeight="16px"
               bbWidth="16px"
@@ -627,6 +633,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.subtle.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -670,6 +677,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
               "expanded": undefined,
             }
           }
+          accessible={true}
           autoCapitalize="none"
           autoCompleteType="off"
           data-blade-component="styled-base-input"
@@ -747,6 +755,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.subtle.lowContrast"
               data-blade-component="text"
               fontFamily="text"

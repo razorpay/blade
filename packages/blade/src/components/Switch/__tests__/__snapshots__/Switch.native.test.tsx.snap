@@ -55,6 +55,7 @@ exports[`<Switch /> should render switch with label 1`] = `
     >
       <View
         accessibilityElementsHidden={true}
+        accessible={false}
         deviceType="mobile"
         importantForAccessibility="no-hide-descendants"
         isChecked={false}
@@ -146,6 +147,7 @@ exports[`<Switch /> should render switch with label 1`] = `
             >
               <RNSVGSvgView
                 accessibilityElementsHidden={true}
+                accessible={false}
                 align="xMidYMid"
                 bbHeight="10px"
                 bbWidth="10px"
@@ -263,6 +265,7 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
     >
       <View
         accessibilityElementsHidden={true}
+        accessible={false}
         deviceType="mobile"
         importantForAccessibility="no-hide-descendants"
         isChecked={false}
@@ -355,6 +358,7 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
             >
               <RNSVGSvgView
                 accessibilityElementsHidden={true}
+                accessible={false}
                 align="xMidYMid"
                 bbHeight="10px"
                 bbWidth="10px"

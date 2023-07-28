@@ -44,7 +44,7 @@ describe('useMemoizedStyles', () => {
     );
 
     expect(JSON.stringify(result.current)).toMatchInlineSnapshot(
-      `"{\\"padding\\":\\"48px\\",\\"margin\\":\\"2px 4px\\"}"`,
+      `"{"padding":"48px","margin":"2px 4px"}"`,
     );
   });
 });

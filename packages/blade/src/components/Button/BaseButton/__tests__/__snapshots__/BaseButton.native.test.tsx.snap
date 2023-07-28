@@ -104,6 +104,7 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
       }
     >
       <Text
+        accessible={true}
         color="action.text.primary.default"
         data-blade-component="base-text"
         fontSize={100}
@@ -244,6 +245,7 @@ exports[`<BaseButton /> should render button with full width 1`] = `
       }
     >
       <Text
+        accessible={true}
         color="action.text.primary.default"
         data-blade-component="base-text"
         fontSize={100}
@@ -401,6 +403,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
       >
         <RNSVGSvgView
           accessibilityElementsHidden={true}
+          accessible={false}
           align="xMidYMid"
           bbHeight="16px"
           bbWidth="16px"
@@ -456,6 +459,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
         </RNSVGSvgView>
       </View>
       <Text
+        accessible={true}
         color="action.text.primary.default"
         data-blade-component="base-text"
         fontSize={100}
@@ -613,6 +617,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
       >
         <RNSVGSvgView
           accessibilityElementsHidden={true}
+          accessible={false}
           align="xMidYMid"
           bbHeight="16px"
           bbWidth="16px"
@@ -668,6 +673,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
         </RNSVGSvgView>
       </View>
       <Text
+        accessible={true}
         color="action.text.primary.default"
         data-blade-component="base-text"
         fontSize={100}
@@ -808,6 +814,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
       }
     >
       <Text
+        accessible={true}
         color="action.text.primary.default"
         data-blade-component="base-text"
         fontSize={100}
@@ -857,6 +864,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
       >
         <RNSVGSvgView
           accessibilityElementsHidden={true}
+          accessible={false}
           align="xMidYMid"
           bbHeight="16px"
           bbWidth="16px"
@@ -1036,6 +1044,7 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
       >
         <RNSVGSvgView
           accessibilityElementsHidden={true}
+          accessible={false}
           align="xMidYMid"
           bbHeight="20px"
           bbWidth="20px"
@@ -1199,6 +1208,7 @@ exports[`<BaseButton /> should render disabled button 1`] = `
       }
     >
       <Text
+        accessible={true}
         color="action.text.primary.disabled"
         data-blade-component="base-text"
         fontSize={100}
@@ -1339,6 +1349,7 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
       }
     >
       <Text
+        accessible={true}
         color="feedback.information.action.text.primary.disabled.highContrast"
         data-blade-component="base-text"
         fontSize={100}
@@ -1479,6 +1490,7 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
       }
     >
       <Text
+        accessible={true}
         color="feedback.information.action.text.primary.disabled.lowContrast"
         data-blade-component="base-text"
         fontSize={100}
@@ -1619,6 +1631,7 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
       }
     >
       <Text
+        accessible={true}
         color="feedback.negative.action.text.primary.disabled.highContrast"
         data-blade-component="base-text"
         fontSize={100}
@@ -1759,6 +1772,7 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
       }
     >
       <Text
+        accessible={true}
         color="feedback.negative.action.text.primary.disabled.lowContrast"
         data-blade-component="base-text"
         fontSize={100}
@@ -1899,6 +1913,7 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
       }
     >
       <Text
+        accessible={true}
         color="feedback.neutral.action.text.primary.disabled.highContrast"
         data-blade-component="base-text"
         fontSize={100}
@@ -2039,6 +2054,7 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
       }
     >
       <Text
+        accessible={true}
         color="feedback.neutral.action.text.primary.disabled.lowContrast"
         data-blade-component="base-text"
         fontSize={100}
@@ -2179,6 +2195,7 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
       }
     >
       <Text
+        accessible={true}
         color="feedback.notice.action.text.primary.disabled.highContrast"
         data-blade-component="base-text"
         fontSize={100}
@@ -2319,6 +2336,7 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
       }
     >
       <Text
+        accessible={true}
         color="feedback.notice.action.text.primary.disabled.lowContrast"
         data-blade-component="base-text"
         fontSize={100}
@@ -2459,6 +2477,7 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
       }
     >
       <Text
+        accessible={true}
         color="feedback.positive.action.text.primary.disabled.highContrast"
         data-blade-component="base-text"
         fontSize={100}
@@ -2599,6 +2618,7 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
       }
     >
       <Text
+        accessible={true}
         color="feedback.positive.action.text.primary.disabled.lowContrast"
         data-blade-component="base-text"
         fontSize={100}
@@ -2739,6 +2759,7 @@ exports[`<BaseButton /> should render disabled secondary variant button 1`] = `
       }
     >
       <Text
+        accessible={true}
         color="action.text.secondary.disabled"
         data-blade-component="base-text"
         fontSize={100}
@@ -2879,6 +2900,7 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
       }
     >
       <Text
+        accessible={true}
         color="action.text.tertiary.disabled"
         data-blade-component="base-text"
         fontSize={100}
@@ -3019,6 +3041,7 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
       }
     >
       <Text
+        accessible={true}
         color="feedback.information.action.text.primary.default.highContrast"
         data-blade-component="base-text"
         fontSize={100}
@@ -3159,6 +3182,7 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
       }
     >
       <Text
+        accessible={true}
         color="feedback.information.action.text.primary.default.lowContrast"
         data-blade-component="base-text"
         fontSize={100}
@@ -3299,6 +3323,7 @@ exports[`<BaseButton /> should render large size button 1`] = `
       }
     >
       <Text
+        accessible={true}
         color="action.text.primary.default"
         data-blade-component="base-text"
         fontSize={200}
@@ -3450,6 +3475,7 @@ exports[`<BaseButton /> should render loading button 1`] = `
         <View
           accessibilityLabel="Loading"
           accessibilityRole="progressbar"
+          accessible={true}
           alignItems="center"
           data-blade-component="base-box"
           display="flex"
@@ -3488,6 +3514,7 @@ exports[`<BaseButton /> should render loading button 1`] = `
             >
               <RNSVGSvgView
                 accessibilityElementsHidden={true}
+                accessible={false}
                 align="xMidYMid"
                 bbHeight="20px"
                 bbWidth="20px"
@@ -3588,6 +3615,7 @@ exports[`<BaseButton /> should render loading button 1`] = `
       }
     >
       <Text
+        accessible={true}
         color="action.text.primary.disabled"
         data-blade-component="base-text"
         fontSize={100}
@@ -3728,6 +3756,7 @@ exports[`<BaseButton /> should render medium size button 1`] = `
       }
     >
       <Text
+        accessible={true}
         color="action.text.primary.default"
         data-blade-component="base-text"
         fontSize={100}
@@ -3868,6 +3897,7 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
       }
     >
       <Text
+        accessible={true}
         color="feedback.negative.action.text.primary.default.highContrast"
         data-blade-component="base-text"
         fontSize={100}
@@ -4008,6 +4038,7 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
       }
     >
       <Text
+        accessible={true}
         color="feedback.negative.action.text.primary.default.lowContrast"
         data-blade-component="base-text"
         fontSize={100}
@@ -4148,6 +4179,7 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
       }
     >
       <Text
+        accessible={true}
         color="feedback.neutral.action.text.primary.default.highContrast"
         data-blade-component="base-text"
         fontSize={100}
@@ -4288,6 +4320,7 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
       }
     >
       <Text
+        accessible={true}
         color="feedback.neutral.action.text.primary.default.lowContrast"
         data-blade-component="base-text"
         fontSize={100}
@@ -4428,6 +4461,7 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
       }
     >
       <Text
+        accessible={true}
         color="feedback.notice.action.text.primary.default.highContrast"
         data-blade-component="base-text"
         fontSize={100}
@@ -4568,6 +4602,7 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
       }
     >
       <Text
+        accessible={true}
         color="feedback.notice.action.text.primary.default.lowContrast"
         data-blade-component="base-text"
         fontSize={100}
@@ -4708,6 +4743,7 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
       }
     >
       <Text
+        accessible={true}
         color="feedback.positive.action.text.primary.default.highContrast"
         data-blade-component="base-text"
         fontSize={100}
@@ -4848,6 +4884,7 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
       }
     >
       <Text
+        accessible={true}
         color="feedback.positive.action.text.primary.default.lowContrast"
         data-blade-component="base-text"
         fontSize={100}
@@ -4988,6 +5025,7 @@ exports[`<BaseButton /> should render secondary variant button 1`] = `
       }
     >
       <Text
+        accessible={true}
         color="action.text.secondary.default"
         data-blade-component="base-text"
         fontSize={100}
@@ -5128,6 +5166,7 @@ exports[`<BaseButton /> should render small size button 1`] = `
       }
     >
       <Text
+        accessible={true}
         color="action.text.primary.default"
         data-blade-component="base-text"
         fontSize={75}
@@ -5268,6 +5307,7 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
       }
     >
       <Text
+        accessible={true}
         color="action.text.tertiary.default"
         data-blade-component="base-text"
         fontSize={100}
@@ -5408,6 +5448,7 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
       }
     >
       <Text
+        accessible={true}
         color="action.text.primary.default"
         data-blade-component="base-text"
         fontSize={75}

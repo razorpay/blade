@@ -12,6 +12,7 @@ describe('makeAccessible', () => {
       accessibilityLabel: 'hello world',
       accessibilityLabelledBy: 'id1',
       accessibilityRole: 'button',
+      accessible: true,
     });
   });
 
@@ -22,6 +23,7 @@ describe('makeAccessible', () => {
       }),
     ).toStrictEqual({
       accessibilityRole: 'adjustable',
+      accessible: true,
     });
 
     // native specific roles
@@ -31,25 +33,27 @@ describe('makeAccessible', () => {
       }),
     ).toStrictEqual({
       accessibilityRole: 'text',
+      accessible: true,
     });
 
     expect(
       makeAccessible({
         role: 'feed',
       }),
-    ).toStrictEqual({});
+    ).toStrictEqual({ accessible: true });
   });
 
   it('should return correct accessibility attributes for live region', () => {
     expect(makeAccessible({ liveRegion: 'polite' })).toStrictEqual({
       accessibilityLiveRegion: 'polite',
+      accessible: true,
     });
   });
 
   it('should ignore invalid roles in native', () => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-expect-error
-    expect(makeAccessible({ role: 'invalid' })).toStrictEqual({});
+    expect(makeAccessible({ role: 'invalid' })).toStrictEqual({ accessible: true });
   });
 
   it('should return correct attributes for accessibilityState', () => {
@@ -69,6 +73,7 @@ describe('makeAccessible', () => {
         expanded: false,
         busy: false,
       },
+      accessible: true,
     });
   });
 
@@ -87,6 +92,7 @@ describe('makeAccessible', () => {
         now: 2,
         text: 'text',
       },
+      accessible: true,
     });
 
     expect(
@@ -96,6 +102,7 @@ describe('makeAccessible', () => {
     ).toStrictEqual({
       accessibilityElementsHidden: true,
       importantForAccessibility: 'no-hide-descendants',
+      accessible: false,
     });
   });
 });

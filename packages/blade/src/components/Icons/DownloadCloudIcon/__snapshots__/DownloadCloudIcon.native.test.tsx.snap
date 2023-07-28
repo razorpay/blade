@@ -10,6 +10,7 @@ exports[`<DownloadCloudIcon /> should render DownloadCloudIcon 1`] = `
 >
   <RNSVGSvgView
     accessibilityElementsHidden={true}
+    accessible={false}
     align="xMidYMid"
     bbHeight="20px"
     bbWidth="20px"

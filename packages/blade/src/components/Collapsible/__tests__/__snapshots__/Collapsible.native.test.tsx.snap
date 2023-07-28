@@ -140,6 +140,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
           }
         >
           <Text
+            accessible={true}
             color="action.text.primary.default"
             data-blade-component="base-text"
             fontSize={100}
@@ -176,6 +177,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
       <View
         accessibilityElementsHidden={true}
         accessibilityRole="summary"
+        accessible={false}
         data-blade-component="collapsible-body"
         id="collapsible-body-1"
         importantForAccessibility="no-hide-descendants"
@@ -234,6 +236,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                 }
               >
                 <Text
+                  accessible={true}
                   color="surface.text.normal.lowContrast"
                   data-blade-component="text"
                   fontFamily="text"
@@ -294,6 +297,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                     }
                   >
                     <Text
+                      accessible={true}
                       color="feedback.text.positive.lowContrast"
                       data-blade-component="base-text"
                       fontSize={75}
@@ -324,6 +328,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                       ₹
                     </Text>
                     <Text
+                      accessible={true}
                       data-blade-component="base-text"
                       style={
                         [
@@ -348,6 +353,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                       }
                     >
                       <Text
+                        accessible={true}
                         color="feedback.text.positive.lowContrast"
                         data-blade-component="base-text"
                         fontSize={100}
@@ -379,6 +385,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                         .
                       </Text>
                       <Text
+                        accessible={true}
                         color="feedback.text.positive.lowContrast"
                         data-blade-component="base-text"
                         fontSize={75}
@@ -518,6 +525,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
           }
         >
           <Text
+            accessible={true}
             color="action.text.link.default"
             data-blade-component="base-text"
             fontSize={100}
@@ -566,6 +574,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
           >
             <View
               accessibilityElementsHidden={true}
+              accessible={false}
               importantForAccessibility="no-hide-descendants"
               style={
                 {
@@ -579,6 +588,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
             >
               <RNSVGSvgView
                 accessibilityElementsHidden={true}
+                accessible={false}
                 align="xMidYMid"
                 bbHeight="16px"
                 bbWidth="16px"
@@ -639,6 +649,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
       <View
         accessibilityElementsHidden={true}
         accessibilityRole="summary"
+        accessible={false}
         data-blade-component="collapsible-body"
         id="collapsible-body-3"
         importantForAccessibility="no-hide-descendants"
@@ -697,6 +708,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                 }
               >
                 <Text
+                  accessible={true}
                   color="surface.text.normal.lowContrast"
                   data-blade-component="text"
                   fontFamily="text"
@@ -757,6 +769,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                     }
                   >
                     <Text
+                      accessible={true}
                       color="feedback.text.positive.lowContrast"
                       data-blade-component="base-text"
                       fontSize={75}
@@ -787,6 +800,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                       ₹
                     </Text>
                     <Text
+                      accessible={true}
                       data-blade-component="base-text"
                       style={
                         [
@@ -811,6 +825,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                       }
                     >
                       <Text
+                        accessible={true}
                         color="feedback.text.positive.lowContrast"
                         data-blade-component="base-text"
                         fontSize={100}
@@ -842,6 +857,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                         .
                       </Text>
                       <Text
+                        accessible={true}
                         color="feedback.text.positive.lowContrast"
                         data-blade-component="base-text"
                         fontSize={75}

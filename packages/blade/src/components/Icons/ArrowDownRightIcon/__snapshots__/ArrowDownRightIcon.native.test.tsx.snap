@@ -10,6 +10,7 @@ exports[`<ArrowDownRightIcon /> should render ArrowDownRightIcon 1`] = `
 >
   <RNSVGSvgView
     accessibilityElementsHidden={true}
+    accessible={false}
     align="xMidYMid"
     bbHeight="20px"
     bbWidth="20px"

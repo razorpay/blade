@@ -10,6 +10,7 @@ exports[`<ShuffleIcon /> should render ShuffleIcon 1`] = `
 >
   <RNSVGSvgView
     accessibilityElementsHidden={true}
+    accessible={false}
     align="xMidYMid"
     bbHeight="20px"
     bbWidth="20px"

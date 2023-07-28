@@ -105,6 +105,7 @@ exports[`<Tooltip /> should render 1`] = `
       }
     >
       <Text
+        accessible={true}
         color="action.text.primary.default"
         data-blade-component="base-text"
         fontSize={100}
@@ -225,6 +226,7 @@ exports[`<Tooltip /> should render 1`] = `
           }
         >
           <Text
+            accessible={true}
             color="feedback.text.neutral.highContrast"
             data-blade-component="text"
             fontFamily="text"
@@ -270,6 +272,7 @@ exports[`<Tooltip /> should render 1`] = `
           >
             <RNSVGSvgView
               accessibilityElementsHidden={true}
+              accessible={false}
               align="xMidYMid"
               bbHeight="14px"
               bbWidth="14px"
