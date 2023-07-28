@@ -7,11 +7,10 @@ import { ComponentIds } from './Card';
 import { Divider } from '~components/Divider';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
-import { useBreakpoint } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import { useTheme } from '~components/BladeProvider';
 import type { TestID } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { useIsMobile } from '~utils/useIsMobile';
 
 export type CardFooterAction = Pick<
   ButtonProps,
@@ -23,14 +22,6 @@ export type CardFooterAction = Pick<
 type CardFooterProps = {
   children?: React.ReactNode;
 } & TestID;
-
-const useIsMobile = (): boolean => {
-  const { theme } = useTheme();
-  const { matchedDeviceType } = useBreakpoint({
-    breakpoints: theme.breakpoints,
-  });
-  return matchedDeviceType === 'mobile';
-};
 
 const _CardFooter = ({ children, testID }: CardFooterProps): React.ReactElement => {
   const isMobile = useIsMobile();
