@@ -698,7 +698,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
                 id={labelId}
                 htmlFor={inputId}
               >
-                {label as string}
+                {label}
               </FormLabel>
               {trailingHeaderSlot?.(inputValue)}
             </BaseBox>

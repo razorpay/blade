@@ -377,7 +377,7 @@ const OTPInput = ({
       >
         {Boolean(label) && (
           <FormLabel as="label" position={labelPosition} htmlFor={inputId}>
-            {label as string}
+            {label}
           </FormLabel>
         )}
         <BaseBox display="flex" flexDirection="row">

@@ -16,7 +16,7 @@ type CommonProps = {
   position?: 'top' | 'left';
   necessityIndicator?: 'required' | 'optional' | 'none';
   accessibilityText?: string;
-  children: string;
+  children: string | undefined;
   id?: string;
   contrast?: ColorContrastTypes;
 };
