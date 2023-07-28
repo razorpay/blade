@@ -61,7 +61,6 @@ const _DropdownButton = ({
         hasPopup: getActionListContainerRole(hasFooterAction, 'DropdownButton'),
         expanded: isOpen,
         controls: `${dropdownBaseId}-actionlist`,
-        role: 'combobox',
         activeDescendant: activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined,
       }}
       onClick={(e) => {
