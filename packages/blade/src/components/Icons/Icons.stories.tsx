@@ -1,8 +1,9 @@
 import type { ComponentType, ReactElement } from 'react';
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title, Description } from '@storybook/addon-docs';
+import isChromatic from 'chromatic/isChromatic';
 import iconMap from './iconMap';
-import type { IconProps } from '.';
+import type { IconComponent, IconProps } from '.';
 import { CreditCardIcon } from '.';
 import BaseBox from '~components/Box/BaseBox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
@@ -114,36 +115,50 @@ Icon.args = {
   icon: 'CreditCardIcon',
 };
 
+const IconList = ({
+  IconComponent,
+  iconName,
+  ...args
+}: {
+  IconComponent: IconComponent;
+  iconName: keyof typeof iconMap;
+} & IconProps): JSX.Element => {
+  return (
+    <BaseBox
+      height="95px"
+      width="125px"
+      display="inline-flex"
+      flexDirection="column"
+      alignItems="center"
+      gap="spacing.6"
+    >
+      <IconComponent {...args} />
+      <BaseBox
+        style={{
+          fontSize: 12,
+          width: '90%',
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
+          textAlign: 'center',
+        }}
+      >
+        {iconName}
+      </BaseBox>
+    </BaseBox>
+  );
+};
+
 export const AllIcons: ComponentStory<ComponentType<IconProps>> = ({ ...args }) => {
   return (
     <BaseBox>
-      {Object.keys(iconMap).map((icon, key) => {
-        const IconComponent = iconMap[icon];
-        return (
-          <BaseBox
-            height="95px"
-            width="125px"
-            display="inline-flex"
-            flexDirection="column"
-            alignItems="center"
-            gap="spacing.6"
-            key={key}
-          >
-            <IconComponent {...args} />
-            <BaseBox
-              style={{
-                fontSize: 12,
-                width: '90%',
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-                textAlign: 'center',
-              }}
-            >
-              {icon}
-            </BaseBox>
-          </BaseBox>
-        );
-      })}
+      {isChromatic() ? (
+        <IconList iconName="ArrowLeftIcon" IconComponent={iconMap.ArrowLeftIcon} {...args} />
+      ) : (
+        Object.keys(iconMap).map((icon, key) => {
+          const IconComponent = iconMap[icon];
+          return <IconList key={key} iconName={icon} IconComponent={IconComponent} {...args} />;
+        })
+      )}
     </BaseBox>
   );
 };

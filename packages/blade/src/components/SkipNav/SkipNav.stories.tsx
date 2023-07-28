@@ -56,7 +56,7 @@ const Page = (): ReactElement => {
 };
 
 const SkipNavStoryMeta: Meta = {
-  title: 'Components/Accessibility/SkipNav',
+  title: 'Utils/Accessibility/SkipNav',
   component: SkipNavLink,
   args: {},
   parameters: {

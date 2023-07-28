@@ -48,7 +48,7 @@ const Page = (): ReactElement => {
 };
 
 const VisuallyHiddenStoryMeta: Meta<VisuallyHiddenProps> = {
-  title: 'Components/Accessibility/VisuallyHidden',
+  title: 'Utils/Accessibility/VisuallyHidden',
   component: VisuallyHiddenComponent,
   args: { children: 'Toggle dark mode' },
   parameters: {

@@ -43,12 +43,50 @@ export const parameters = {
           'makeTypographySize',
           'useTheme',
           'overrideTheme',
+          'Accessibility',
         ],
         'Components',
+        [
+          'Typography',
+          'Amount',
+          'Icons',
+          'Button',
+          'IconButton',
+          'Link',
+          // Input group
+          'Input',
+          'Dropdown',
+          'Checkbox',
+          'Radio & RadioGroup',
+          'Switch',
+          // Layout and complex interactive elements group
+          'Layout Primitives (Box)',
+          'Card',
+          'Modal',
+          'BottomSheet',
+          'Divider',
+          'List',
+          'Accordion',
+          'Collapsible',
+          // feedback group
+          'Indicator',
+          'Badge',
+          'Counter',
+          'Tag',
+          'Alert',
+          'Spinner',
+          'Skeleton',
+          'ProgressBar',
+          'Tooltip',
+          // others
+          'BaseHeaderFooter',
+        ],
         'Recipes',
       ],
     },
   },
+  // Notifies Chromatic to pause the animations when they finish for all stories.
+  chromatic: { pauseAnimationAtEnd: true },
   docs: {
     container: ({ children, context }) => {
       const getThemeTokens = () => {
@@ -98,6 +136,8 @@ export const parameters = {
       `,
     },
   },
+  // Notifies Chromatic to pause the animations when they finish for all stories.
+  chromatic: { pauseAnimationAtEnd: true },
 };
 
 const StoryCanvas = styled.div(

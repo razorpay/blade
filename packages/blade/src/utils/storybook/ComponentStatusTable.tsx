@@ -232,7 +232,7 @@ const componentData: ComponentStatusData = [
     name: 'SkipNav',
     status: 'released',
     releasedIn: '0.9.0',
-    storybookLink: 'Components/Accessibility/SkipNav',
+    storybookLink: 'Utils/Accessibility/SkipNav',
     description:
       'SkipNav component lets users skip the navigation and jump to the main content of the page. Useful when you have navbars at the top and the user wants to jump directly to the main content.',
   },
@@ -240,7 +240,7 @@ const componentData: ComponentStatusData = [
     name: 'VisuallyHidden',
     status: 'released',
     releasedIn: '0.9.0',
-    storybookLink: 'Components/Accessibility/VisuallyHidden',
+    storybookLink: 'Utils/Accessibility/VisuallyHidden',
     description:
       'VisuallyHidden component makes content hidden from sighted users but available for screen reader users.',
   },
