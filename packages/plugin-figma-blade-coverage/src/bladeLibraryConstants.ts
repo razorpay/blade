@@ -8228,7 +8228,12 @@ export const BLADE_COLOR_STYLE_IDS = [
   ),
 ];
 
-const allowedBackgroundColorTokenNames = ['Brand/Primary', 'Brand/Gray', 'Surface/Background'];
+const allowedBackgroundColorTokenNames = [
+  'Brand/Primary',
+  'Brand/Secondary',
+  'Brand/Gray',
+  'Surface/Background',
+];
 export const BLADE_BOX_BACKGROUND_COLOR_STYLE_IDS = [
   ...Object.entries(paymentLightThemeData.colorStyles)
     .map(([colorStyleKey, colorStyleObj]) => {
