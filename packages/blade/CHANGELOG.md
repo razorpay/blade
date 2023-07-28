@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 9.4.1
+
+### Patch Changes
+
+- ebd3cbda: feat: add zIndex prop for Modal
+
 ## 9.4.0
 
 ### Minor Changes
