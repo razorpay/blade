@@ -55,6 +55,11 @@ type ModalProps = {
    *  Accessibility label for the modal
    */
   accessibilityLabel?: string;
+  /**
+   * Sets the z-index of the modal
+   * @default 1000
+   */
+  zIndex?: number;
 };
 
 const entry = keyframes`
@@ -100,6 +105,7 @@ const Modal = ({
   initialFocusRef,
   size = 'small',
   accessibilityLabel,
+  zIndex = modalHighestZIndex,
 }: ModalProps): React.ReactElement => {
   const { theme, platform } = useTheme();
   const { isMounted, isVisible } = usePresence(isOpen, {
@@ -164,7 +170,7 @@ const Modal = ({
             context={context}
             modal={true}
           >
-            <Box zIndex={modalHighestZIndex} position="fixed" testID="modal-wrapper">
+            <Box zIndex={zIndex} position="fixed" testID="modal-wrapper">
               <ModalBackdrop />
               <ModalContent
                 {...metaAttribute({

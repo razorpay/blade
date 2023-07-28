@@ -120,6 +120,14 @@ const ModalDocs = (): JSX.Element => {
               <Code>{'<ModalHeader />'}</Code>]
             </Text>
           ),
+          zIndex: (
+            <Text size="small" type="subdued">
+              <Text size="small" type="subdued">
+                <Code size="medium">number</Code>
+              </Text>
+              Sets the z-index of the modal
+            </Text>
+          ),
         }}
       />
       <Heading size="medium">ModalHeader Props</Heading>
