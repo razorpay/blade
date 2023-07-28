@@ -10,6 +10,7 @@ exports[`<Title /> should render Title with color 1`] = `
 >
   <Text
     accessibilityRole="header"
+    accessible={true}
     color="surface.text.subtle.highContrast"
     data-blade-component="title"
     fontFamily="text"
@@ -54,6 +55,7 @@ exports[`<Title /> should render Title with default properties 1`] = `
 >
   <Text
     accessibilityRole="header"
+    accessible={true}
     color="surface.text.normal.lowContrast"
     data-blade-component="title"
     fontFamily="text"
@@ -98,6 +100,7 @@ exports[`<Title /> should render Title with mixed color 1`] = `
 >
   <Text
     accessibilityRole="header"
+    accessible={true}
     color="surface.text.normal.lowContrast"
     data-blade-component="title"
     fontFamily="text"
@@ -131,6 +134,7 @@ exports[`<Title /> should render Title with mixed color 1`] = `
      
     <Text
       accessibilityRole="header"
+      accessible={true}
       color="feedback.information.action.text.primary.default.lowContrast"
       data-blade-component="title"
       fontFamily="text"
@@ -176,6 +180,7 @@ exports[`<Title /> should render Title with variant "large" 1`] = `
 >
   <Text
     accessibilityRole="header"
+    accessible={true}
     color="surface.text.subdued.lowContrast"
     data-blade-component="title"
     fontFamily="text"
@@ -220,6 +225,7 @@ exports[`<Title /> should render Title with variant "medium" 1`] = `
 >
   <Text
     accessibilityRole="header"
+    accessible={true}
     color="surface.text.muted.lowContrast"
     data-blade-component="title"
     fontFamily="text"
@@ -264,6 +270,7 @@ exports[`<Title /> should render Title with variant "small" 1`] = `
 >
   <Text
     accessibilityRole="header"
+    accessible={true}
     color="surface.text.normal.lowContrast"
     data-blade-component="title"
     fontFamily="text"
@@ -308,6 +315,7 @@ exports[`<Title /> should render Title with variant "small" and contrast "high" 
 >
   <Text
     accessibilityRole="header"
+    accessible={true}
     color="surface.text.normal.highContrast"
     data-blade-component="title"
     fontFamily="text"

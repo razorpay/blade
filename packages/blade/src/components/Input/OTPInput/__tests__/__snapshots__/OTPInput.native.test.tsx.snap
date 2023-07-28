@@ -64,6 +64,7 @@ exports[`<OTPInput /> should render 1`] = `
           }
         >
           <Text
+            accessible={true}
             color="surface.text.subdued.lowContrast"
             data-blade-component="text"
             fontFamily="text"
@@ -126,6 +127,7 @@ exports[`<OTPInput /> should render 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.normal.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -246,6 +248,7 @@ exports[`<OTPInput /> should render 1`] = `
                       "expanded": undefined,
                     }
                   }
+                  accessible={true}
                   autoCompleteType="sms-otp"
                   data-blade-component="styled-base-input"
                   editable={true}
@@ -391,6 +394,7 @@ exports[`<OTPInput /> should render 1`] = `
                       "expanded": undefined,
                     }
                   }
+                  accessible={true}
                   autoCompleteType="sms-otp"
                   data-blade-component="styled-base-input"
                   editable={true}
@@ -536,6 +540,7 @@ exports[`<OTPInput /> should render 1`] = `
                       "expanded": undefined,
                     }
                   }
+                  accessible={true}
                   autoCompleteType="sms-otp"
                   data-blade-component="styled-base-input"
                   editable={true}
@@ -681,6 +686,7 @@ exports[`<OTPInput /> should render 1`] = `
                       "expanded": undefined,
                     }
                   }
+                  accessible={true}
                   autoCompleteType="sms-otp"
                   data-blade-component="styled-base-input"
                   editable={true}
@@ -826,6 +832,7 @@ exports[`<OTPInput /> should render 1`] = `
                       "expanded": undefined,
                     }
                   }
+                  accessible={true}
                   autoCompleteType="sms-otp"
                   data-blade-component="styled-base-input"
                   editable={true}
@@ -971,6 +978,7 @@ exports[`<OTPInput /> should render 1`] = `
                       "expanded": undefined,
                     }
                   }
+                  accessible={true}
                   autoCompleteType="sms-otp"
                   data-blade-component="styled-base-input"
                   editable={true}

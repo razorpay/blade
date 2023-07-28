@@ -339,6 +339,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                       }
                     >
                       <Text
+                        accessible={true}
                         color="action.text.secondary.default"
                         data-blade-component="base-text"
                         fontSize={100}
@@ -561,6 +562,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                       >
                         <Text
                           accessibilityRole="header"
+                          accessible={true}
                           color="surface.text.normal.lowContrast"
                           data-blade-component="heading"
                           fontFamily="text"
@@ -675,6 +677,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                                   }
                                 >
                                   <Text
+                                    accessible={true}
                                     color="feedback.text.positive.lowContrast"
                                     data-blade-component="text"
                                     fontFamily="text"
@@ -716,6 +719,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                         </View>
                       </View>
                       <Text
+                        accessible={true}
                         color="surface.text.muted.lowContrast"
                         data-blade-component="text"
                         fontFamily="text"
@@ -832,6 +836,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                             }
                           >
                             <Text
+                              accessible={true}
                               color="feedback.text.positive.lowContrast"
                               data-blade-component="text"
                               fontFamily="text"
@@ -912,6 +917,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                     >
                       <RNSVGSvgView
                         accessibilityElementsHidden={true}
+                        accessible={false}
                         align="xMidYMid"
                         bbHeight="20px"
                         bbWidth="20px"
@@ -1337,6 +1343,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                       }
                     >
                       <Text
+                        accessible={true}
                         color="action.text.secondary.default"
                         data-blade-component="base-text"
                         fontSize={100}
@@ -1550,6 +1557,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                 >
                   <RNSVGSvgView
                     accessibilityElementsHidden={true}
+                    accessible={false}
                     align="xMidYMid"
                     bbHeight="20px"
                     bbWidth="20px"

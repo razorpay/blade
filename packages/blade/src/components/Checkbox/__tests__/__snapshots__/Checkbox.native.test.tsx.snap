@@ -115,6 +115,7 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
             }
           />
           <Text
+            accessible={true}
             color="surface.text.subtle.lowContrast"
             data-blade-component="base-text"
             fontFamily="text"
@@ -278,6 +279,7 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
             }
           />
           <Text
+            accessible={true}
             color="surface.text.placeholder.lowContrast"
             data-blade-component="base-text"
             fontFamily="text"
@@ -441,6 +443,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
             }
           />
           <Text
+            accessible={true}
             color="surface.text.subtle.lowContrast"
             data-blade-component="base-text"
             fontFamily="text"
@@ -511,6 +514,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
       >
         <RNSVGSvgView
           accessibilityElementsHidden={true}
+          accessible={false}
           align="xMidYMid"
           bbHeight="12px"
           bbWidth="12px"
@@ -593,6 +597,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
           }
         />
         <Text
+          accessible={true}
           color="feedback.text.negative.lowContrast"
           data-blade-component="base-text"
           fontFamily="text"

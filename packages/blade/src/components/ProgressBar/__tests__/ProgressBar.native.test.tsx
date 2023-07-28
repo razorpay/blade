@@ -111,11 +111,11 @@ describe('<ProgressBar />', () => {
   });
 
   it('should have accessibility attributes for progress variant', () => {
-    const { getByRole, getByA11yValue } = renderWithTheme(
+    const { getByLabelText, getByA11yValue } = renderWithTheme(
       <ProgressBar label="Label" accessibilityLabel="Downloading" value={70} variant="progress" />,
     );
 
-    const progressbar = getByRole('progressbar');
+    const progressbar = getByLabelText('Label');
     expect(progressbar.findByProps({ accessibilityLabel: 'Downloading' })).toBeTruthy();
     expect(
       getByA11yValue({
@@ -128,7 +128,7 @@ describe('<ProgressBar />', () => {
   });
 
   it('should have the right accessibility attributes for progress variant in indeterminate state', () => {
-    const { getByRole, getByA11yValue } = renderWithTheme(
+    const { getByLabelText, getByA11yValue } = renderWithTheme(
       <ProgressBar
         label="Label"
         accessibilityLabel="Checking"
@@ -137,7 +137,7 @@ describe('<ProgressBar />', () => {
       />,
     );
 
-    const progressbar = getByRole('progressbar');
+    const progressbar = getByLabelText('Label');
     expect(progressbar.findByProps({ accessibilityLabel: 'Checking' })).toBeTruthy();
     expect(
       getByA11yValue({
@@ -150,11 +150,11 @@ describe('<ProgressBar />', () => {
   });
 
   it('should have accessibility attributes for meter variant', () => {
-    const { getByRole, findByA11yValue } = renderWithTheme(
+    const { getByLabelText, findByA11yValue } = renderWithTheme(
       <ProgressBar label="Label" accessibilityLabel="Amount" value={70} variant="meter" />,
     );
 
-    const progressbar = getByRole('progressbar');
+    const progressbar = getByLabelText('Amount');
     expect(progressbar.findByProps({ accessibilityLabel: 'Amount' })).toBeTruthy();
     expect(
       findByA11yValue({

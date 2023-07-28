@@ -64,6 +64,7 @@ exports[`<Counter /> should render Counter with default props 1`] = `
         }
       >
         <Text
+          accessible={true}
           color="feedback.text.neutral.lowContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -168,6 +169,7 @@ exports[`<Counter /> should render high contrast blue variant Counter 1`] = `
         }
       >
         <Text
+          accessible={true}
           color="badge.text.blue.highContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -272,6 +274,7 @@ exports[`<Counter /> should render high contrast information variant Counter 1`]
         }
       >
         <Text
+          accessible={true}
           color="feedback.text.information.highContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -376,6 +379,7 @@ exports[`<Counter /> should render high contrast negative variant Counter 1`] = 
         }
       >
         <Text
+          accessible={true}
           color="feedback.text.negative.highContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -480,6 +484,7 @@ exports[`<Counter /> should render high contrast neutral variant Counter 1`] = `
         }
       >
         <Text
+          accessible={true}
           color="feedback.text.neutral.highContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -584,6 +589,7 @@ exports[`<Counter /> should render high contrast notice variant Counter 1`] = `
         }
       >
         <Text
+          accessible={true}
           color="feedback.text.notice.highContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -688,6 +694,7 @@ exports[`<Counter /> should render high contrast positive variant Counter 1`] = 
         }
       >
         <Text
+          accessible={true}
           color="feedback.text.positive.highContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -792,6 +799,7 @@ exports[`<Counter /> should render large size Counter 1`] = `
         }
       >
         <Text
+          accessible={true}
           color="feedback.text.neutral.lowContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -896,6 +904,7 @@ exports[`<Counter /> should render low contrast blue variant Counter 1`] = `
         }
       >
         <Text
+          accessible={true}
           color="badge.text.blue.lowContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -1000,6 +1009,7 @@ exports[`<Counter /> should render low contrast information variant Counter 1`] 
         }
       >
         <Text
+          accessible={true}
           color="feedback.text.information.lowContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -1104,6 +1114,7 @@ exports[`<Counter /> should render low contrast negative variant Counter 1`] = `
         }
       >
         <Text
+          accessible={true}
           color="feedback.text.negative.lowContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -1208,6 +1219,7 @@ exports[`<Counter /> should render low contrast neutral variant Counter 1`] = `
         }
       >
         <Text
+          accessible={true}
           color="feedback.text.neutral.lowContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -1312,6 +1324,7 @@ exports[`<Counter /> should render low contrast notice variant Counter 1`] = `
         }
       >
         <Text
+          accessible={true}
           color="feedback.text.notice.lowContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -1416,6 +1429,7 @@ exports[`<Counter /> should render low contrast positive variant Counter 1`] = `
         }
       >
         <Text
+          accessible={true}
           color="feedback.text.positive.lowContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -1520,6 +1534,7 @@ exports[`<Counter /> should render medium size Counter 1`] = `
         }
       >
         <Text
+          accessible={true}
           color="feedback.text.neutral.lowContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -1624,6 +1639,7 @@ exports[`<Counter /> should render small size Counter 1`] = `
         }
       >
         <Text
+          accessible={true}
           color="feedback.text.neutral.lowContrast"
           data-blade-component="text"
           fontFamily="text"

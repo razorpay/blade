@@ -85,6 +85,7 @@ exports[`<TextArea /> should render 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.subdued.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -147,6 +148,7 @@ exports[`<TextArea /> should render 1`] = `
               }
             >
               <Text
+                accessible={true}
                 color="surface.text.normal.lowContrast"
                 data-blade-component="text"
                 fontFamily="text"
@@ -218,6 +220,7 @@ exports[`<TextArea /> should render 1`] = `
               "expanded": undefined,
             }
           }
+          accessible={true}
           data-blade-component="styled-base-input"
           editable={true}
           id="textarea-1-input-2"

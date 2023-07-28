@@ -9,6 +9,7 @@ exports[`<Text /> should render Text with center textAlign 1`] = `
   }
 >
   <Text
+    accessible={true}
     color="surface.text.normal.lowContrast"
     data-blade-component="text"
     fontFamily="text"
@@ -54,6 +55,7 @@ exports[`<Text /> should render Text with color 1`] = `
   }
 >
   <Text
+    accessible={true}
     color="surface.text.muted.lowContrast"
     data-blade-component="text"
     fontFamily="text"
@@ -97,6 +99,7 @@ exports[`<Text /> should render Text with default properties 1`] = `
   }
 >
   <Text
+    accessible={true}
     color="surface.text.normal.lowContrast"
     data-blade-component="text"
     fontFamily="text"
@@ -140,6 +143,7 @@ exports[`<Text /> should render Text with variant "body" 1`] = `
   }
 >
   <Text
+    accessible={true}
     color="surface.text.normal.lowContrast"
     data-blade-component="text"
     fontFamily="text"
@@ -184,6 +188,7 @@ exports[`<Text /> should render Text with variant "body" and contrast "high" 1`]
   }
 >
   <Text
+    accessible={true}
     color="surface.text.normal.highContrast"
     data-blade-component="text"
     fontFamily="text"
@@ -228,6 +233,7 @@ exports[`<Text /> should render Text with variant "body" and size "small" 1`] = 
   }
 >
   <Text
+    accessible={true}
     color="surface.text.normal.lowContrast"
     data-blade-component="text"
     fontFamily="text"
@@ -272,6 +278,7 @@ exports[`<Text /> should render Text with variant "caption" 1`] = `
   }
 >
   <Text
+    accessible={true}
     color="surface.text.normal.lowContrast"
     data-blade-component="text"
     fontFamily="text"

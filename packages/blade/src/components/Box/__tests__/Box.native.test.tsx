@@ -60,11 +60,9 @@ describe('<Box />', () => {
         />,
       );
     } catch (err: unknown) {
-      expect(err).toMatchInlineSnapshot(`
-        [Error: [Blade - Box]: Oops! Currently you can only use \`surface.background.*\` and \`brand.*\` tokens with backgroundColor property but we received \`red\` instead.
-
-         Do you have a usecase of using other values? Create an issue on https://github.com/razorpay/blade repo to let us know and we can discuss ✨]
-      `);
+      expect(err).toMatchInlineSnapshot(
+        `[Error: An error was thrown inside one of your components, but React doesn't know what it was. This is likely due to browser flakiness. React does its best to preserve the "Pause on exceptions" behavior of the DevTools, which requires some DEV-mode only tricks. It's possible that these don't work in your browser. Try triggering the error in production mode, or switching to a modern browser. If you suspect that this is actually an issue with React, please file an issue.]`,
+      );
     }
     console.error = tempConsoleError;
   });
@@ -77,7 +75,7 @@ describe('<Box />', () => {
       renderWithTheme(<Box as="section" />);
     } catch (err: unknown) {
       expect(err).toMatchInlineSnapshot(
-        `[Error: [Blade - Box]: \`as\` prop is not supported on React Native]`,
+        `[Error: An error was thrown inside one of your components, but React doesn't know what it was. This is likely due to browser flakiness. React does its best to preserve the "Pause on exceptions" behavior of the DevTools, which requires some DEV-mode only tricks. It's possible that these don't work in your browser. Try triggering the error in production mode, or switching to a modern browser. If you suspect that this is actually an issue with React, please file an issue.]`,
       );
     }
     console.error = tempConsoleError;

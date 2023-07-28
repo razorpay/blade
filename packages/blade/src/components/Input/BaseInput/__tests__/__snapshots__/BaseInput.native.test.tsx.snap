@@ -83,6 +83,7 @@ exports[`<BaseInput /> should render 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.subdued.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -145,6 +146,7 @@ exports[`<BaseInput /> should render 1`] = `
               }
             >
               <Text
+                accessible={true}
                 color="surface.text.normal.lowContrast"
                 data-blade-component="text"
                 fontFamily="text"
@@ -214,6 +216,7 @@ exports[`<BaseInput /> should render 1`] = `
               "expanded": undefined,
             }
           }
+          accessible={true}
           data-blade-component="styled-base-input"
           editable={true}
           id="name-1-input-2"
@@ -390,6 +393,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.subdued.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -452,6 +456,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
               }
             >
               <Text
+                accessible={true}
                 color="surface.text.normal.lowContrast"
                 data-blade-component="text"
                 fontFamily="text"
@@ -540,6 +545,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
           >
             <RNSVGSvgView
               accessibilityElementsHidden={true}
+              accessible={false}
               align="xMidYMid"
               bbHeight="16px"
               bbWidth="16px"
@@ -617,6 +623,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
               "expanded": undefined,
             }
           }
+          accessible={true}
           data-blade-component="styled-base-input"
           editable={true}
           id="name-31-input-32"
@@ -691,6 +698,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
           >
             <RNSVGSvgView
               accessibilityElementsHidden={true}
+              accessible={false}
               align="xMidYMid"
               bbHeight="16px"
               bbWidth="16px"

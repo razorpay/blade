@@ -10,6 +10,7 @@ exports[`<ScissorsIcon /> should render ScissorsIcon 1`] = `
 >
   <RNSVGSvgView
     accessibilityElementsHidden={true}
+    accessible={false}
     align="xMidYMid"
     bbHeight="20px"
     bbWidth="20px"

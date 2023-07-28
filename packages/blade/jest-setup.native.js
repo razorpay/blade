@@ -1,6 +1,14 @@
 /** Setup the React Native globals to differentiate between a web and react native app.
  * For browser we have `window`, for node we have `process` as globals, for React Native it's `global.navigator.product: ReactNative`
  **/
+import { configure } from '@testing-library/react-native';
+
+configure({
+  defaultIncludeHiddenElements: true,
+});
+
+window.addEventListener = jest.fn();
+window.removeEventListener = jest.fn();
 
 Object.defineProperty(global.navigator, 'product', {
   value: 'ReactNative',

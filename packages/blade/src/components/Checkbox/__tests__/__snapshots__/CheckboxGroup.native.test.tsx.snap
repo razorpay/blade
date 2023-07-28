@@ -18,6 +18,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   >
     <View
       accessibilityLabelledBy="checkbox-group-19-label-24"
+      accessible={true}
       data-blade-component="checkbox-group"
       display="flex"
       flexDirection="column"
@@ -63,6 +64,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
           }
         >
           <Text
+            accessible={true}
             color="surface.text.subdued.lowContrast"
             data-blade-component="text"
             fontFamily="text"
@@ -125,6 +127,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.normal.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -299,6 +302,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                       }
                     />
                     <Text
+                      accessible={true}
                       color="surface.text.subtle.lowContrast"
                       data-blade-component="base-text"
                       fontFamily="text"
@@ -463,6 +467,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                       }
                     />
                     <Text
+                      accessible={true}
                       color="surface.text.subtle.lowContrast"
                       data-blade-component="base-text"
                       fontFamily="text"
@@ -627,6 +632,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                       }
                     />
                     <Text
+                      accessible={true}
                       color="surface.text.subtle.lowContrast"
                       data-blade-component="base-text"
                       fontFamily="text"
@@ -697,6 +703,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
   >
     <View
       accessibilityLabelledBy="checkbox-group-49-label-54"
+      accessible={true}
       data-blade-component="checkbox-group"
       display="flex"
       flexDirection="column"
@@ -742,6 +749,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
           }
         >
           <Text
+            accessible={true}
             color="surface.text.subdued.lowContrast"
             data-blade-component="text"
             fontFamily="text"
@@ -804,6 +812,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.normal.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -978,6 +987,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                       }
                     />
                     <Text
+                      accessible={true}
                       color="surface.text.subtle.lowContrast"
                       data-blade-component="base-text"
                       fontFamily="text"
@@ -1142,6 +1152,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                       }
                     />
                     <Text
+                      accessible={true}
                       color="surface.text.subtle.lowContrast"
                       data-blade-component="base-text"
                       fontFamily="text"
@@ -1306,6 +1317,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                       }
                     />
                     <Text
+                      accessible={true}
                       color="surface.text.subtle.lowContrast"
                       data-blade-component="base-text"
                       fontFamily="text"
@@ -1378,6 +1390,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.muted.lowContrast"
               data-blade-component="base-text"
               fontFamily="text"

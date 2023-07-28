@@ -10,6 +10,7 @@ exports[`<SunriseIcon /> should render SunriseIcon 1`] = `
 >
   <RNSVGSvgView
     accessibilityElementsHidden={true}
+    accessible={false}
     align="xMidYMid"
     bbHeight="20px"
     bbWidth="20px"

@@ -10,6 +10,7 @@ exports[`<Indicator /> should render 1`] = `
 >
   <View
     accessibilityLabel="Success"
+    accessible={true}
     data-blade-component="indicator"
     display="flex"
     style={
@@ -37,6 +38,7 @@ exports[`<Indicator /> should render 1`] = `
     >
       <RNSVGSvgView
         accessibilityElementsHidden={true}
+        accessible={false}
         align="xMidYMid"
         bbHeight="8"
         bbWidth="8"
@@ -113,6 +115,7 @@ exports[`<Indicator /> should render 1`] = `
         }
       >
         <Text
+          accessible={true}
           color="surface.text.subtle.lowContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -160,6 +163,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
 >
   <View
     accessibilityLabel="Warning"
+    accessible={true}
     data-blade-component="indicator"
     display="flex"
     style={
@@ -187,6 +191,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
     >
       <RNSVGSvgView
         accessibilityElementsHidden={true}
+        accessible={false}
         align="xMidYMid"
         bbHeight="6"
         bbWidth="6"
@@ -263,6 +268,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
         }
       >
         <Text
+          accessible={true}
           color="surface.text.subtle.lowContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -299,6 +305,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
   </View>
   <View
     accessibilityLabel="Success"
+    accessible={true}
     data-blade-component="indicator"
     display="flex"
     style={
@@ -326,6 +333,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
     >
       <RNSVGSvgView
         accessibilityElementsHidden={true}
+        accessible={false}
         align="xMidYMid"
         bbHeight="8"
         bbWidth="8"
@@ -402,6 +410,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
         }
       >
         <Text
+          accessible={true}
           color="surface.text.subtle.lowContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -438,6 +447,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
   </View>
   <View
     accessibilityLabel="Error"
+    accessible={true}
     data-blade-component="indicator"
     display="flex"
     style={
@@ -465,6 +475,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
     >
       <RNSVGSvgView
         accessibilityElementsHidden={true}
+        accessible={false}
         align="xMidYMid"
         bbHeight="10"
         bbWidth="10"
@@ -541,6 +552,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
         }
       >
         <Text
+          accessible={true}
           color="surface.text.subtle.lowContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -577,6 +589,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
   </View>
   <View
     accessibilityLabel="Info"
+    accessible={true}
     data-blade-component="indicator"
     display="flex"
     style={
@@ -604,6 +617,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
     >
       <RNSVGSvgView
         accessibilityElementsHidden={true}
+        accessible={false}
         align="xMidYMid"
         bbHeight="8"
         bbWidth="8"
@@ -680,6 +694,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
         }
       >
         <Text
+          accessible={true}
           color="surface.text.subtle.lowContrast"
           data-blade-component="text"
           fontFamily="text"

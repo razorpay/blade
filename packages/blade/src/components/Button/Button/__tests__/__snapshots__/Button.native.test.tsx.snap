@@ -104,6 +104,7 @@ exports[`<Button /> should render button with default properties 1`] = `
       }
     >
       <Text
+        accessible={true}
         color="action.text.primary.default"
         data-blade-component="base-text"
         fontSize={100}
@@ -244,6 +245,7 @@ exports[`<Button /> should render button with full width 1`] = `
       }
     >
       <Text
+        accessible={true}
         color="action.text.primary.default"
         data-blade-component="base-text"
         fontSize={100}
@@ -401,6 +403,7 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
       >
         <RNSVGSvgView
           accessibilityElementsHidden={true}
+          accessible={false}
           align="xMidYMid"
           bbHeight="16px"
           bbWidth="16px"
@@ -456,6 +459,7 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
         </RNSVGSvgView>
       </View>
       <Text
+        accessible={true}
         color="action.text.primary.default"
         data-blade-component="base-text"
         fontSize={100}
@@ -596,6 +600,7 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
       }
     >
       <Text
+        accessible={true}
         color="action.text.primary.default"
         data-blade-component="base-text"
         fontSize={100}
@@ -645,6 +650,7 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
       >
         <RNSVGSvgView
           accessibilityElementsHidden={true}
+          accessible={false}
           align="xMidYMid"
           bbHeight="16px"
           bbWidth="16px"
@@ -808,6 +814,7 @@ exports[`<Button /> should render disabled button 1`] = `
       }
     >
       <Text
+        accessible={true}
         color="action.text.primary.disabled"
         data-blade-component="base-text"
         fontSize={100}
@@ -948,6 +955,7 @@ exports[`<Button /> should render disabled secondary variant button 1`] = `
       }
     >
       <Text
+        accessible={true}
         color="action.text.secondary.disabled"
         data-blade-component="base-text"
         fontSize={100}
@@ -1088,6 +1096,7 @@ exports[`<Button /> should render disabled tertiary variant button 1`] = `
       }
     >
       <Text
+        accessible={true}
         color="action.text.tertiary.disabled"
         data-blade-component="base-text"
         fontSize={100}
@@ -1228,6 +1237,7 @@ exports[`<Button /> should render large size button 1`] = `
       }
     >
       <Text
+        accessible={true}
         color="action.text.primary.default"
         data-blade-component="base-text"
         fontSize={200}
@@ -1368,6 +1378,7 @@ exports[`<Button /> should render medium size button 1`] = `
       }
     >
       <Text
+        accessible={true}
         color="action.text.primary.default"
         data-blade-component="base-text"
         fontSize={100}
@@ -1508,6 +1519,7 @@ exports[`<Button /> should render secondary variant button 1`] = `
       }
     >
       <Text
+        accessible={true}
         color="action.text.secondary.default"
         data-blade-component="base-text"
         fontSize={100}
@@ -1648,6 +1660,7 @@ exports[`<Button /> should render small size button 1`] = `
       }
     >
       <Text
+        accessible={true}
         color="action.text.primary.default"
         data-blade-component="base-text"
         fontSize={75}
@@ -1788,6 +1801,7 @@ exports[`<Button /> should render tertiary variant button 1`] = `
       }
     >
       <Text
+        accessible={true}
         color="action.text.tertiary.default"
         data-blade-component="base-text"
         fontSize={100}
@@ -1928,6 +1942,7 @@ exports[`<Button /> should render xsmall size button 1`] = `
       }
     >
       <Text
+        accessible={true}
         color="action.text.primary.default"
         data-blade-component="base-text"
         fontSize={75}

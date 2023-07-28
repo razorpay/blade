@@ -115,6 +115,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                   }
                 >
                   <Text
+                    accessible={true}
                     color="surface.text.subdued.lowContrast"
                     data-blade-component="text"
                     fontFamily="text"
@@ -177,6 +178,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                     }
                   >
                     <Text
+                      accessible={true}
                       color="surface.text.normal.lowContrast"
                       data-blade-component="text"
                       fontFamily="text"
@@ -281,6 +283,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                 }
               >
                 <Text
+                  accessible={true}
                   color="surface.text.placeholder.lowContrast"
                   data-blade-component="text"
                   fontFamily="text"
@@ -361,6 +364,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                   >
                     <RNSVGSvgView
                       accessibilityElementsHidden={true}
+                      accessible={false}
                       align="xMidYMid"
                       bbHeight="16px"
                       bbWidth="16px"
@@ -632,6 +636,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                         >
                           <Text
                             accessibilityRole="header"
+                            accessible={true}
                             color="surface.text.normal.lowContrast"
                             data-blade-component="heading"
                             fontFamily="text"
@@ -695,6 +700,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
             </View>
             <View
               accessibilityLabelledBy="dropdown-7-label"
+              accessible={true}
               data-blade-component="action-list"
               id="dropdown-7-actionlist"
               style={
@@ -704,6 +710,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
               }
             >
               <RCTScrollView
+                accessible={true}
                 data={
                   [
                     {
@@ -842,6 +849,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                           }
                         >
                           <Text
+                            accessible={true}
                             color="surface.text.normal.lowContrast"
                             data-blade-component="text"
                             fontFamily="text"
@@ -980,6 +988,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                           }
                         >
                           <Text
+                            accessible={true}
                             color="surface.text.normal.lowContrast"
                             data-blade-component="text"
                             fontFamily="text"
@@ -1042,6 +1051,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
               </RCTScrollView>
             </View>
             <View
+              accessible={true}
               data-blade-component="base-box"
               style={
                 [
@@ -1181,6 +1191,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                     }
                   >
                     <Text
+                      accessible={true}
                       color="action.text.primary.default"
                       data-blade-component="base-text"
                       fontSize={100}
