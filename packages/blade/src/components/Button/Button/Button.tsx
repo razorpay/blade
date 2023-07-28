@@ -97,7 +97,9 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
       href={href}
       target={target}
       rel={rel}
-      accessibilityLabel={accessibilityLabel}
+      accessibilityProps={{
+        label: accessibilityLabel,
+      }}
       iconPosition={iconPosition}
       isDisabled={isDisabled}
       isFullWidth={isFullWidth}

@@ -37,6 +37,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { usePrevious } from '~utils/usePrevious';
 import { makeSize } from '~utils/makeSize';
 import { makeBorderSize } from '~utils/makeBorderSize';
+import type { AccessibilityProps } from '~utils/makeAccessible';
 import { makeAccessible } from '~utils/makeAccessible';
 import { makeSpace } from '~utils/makeSpace';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
@@ -61,7 +62,7 @@ type BaseButtonCommonProps = {
   }>;
   type?: 'button' | 'reset' | 'submit';
   isLoading?: boolean;
-  accessibilityLabel?: string;
+  accessibilityProps?: Partial<AccessibilityProps>;
   variant?: 'primary' | 'secondary' | 'tertiary';
   contrast?: 'low' | 'high';
   intent?: 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
@@ -318,13 +319,13 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     onKeyDown,
     type = 'button',
     children,
-    accessibilityLabel,
     testID,
     onFocus,
     onMouseLeave,
     onMouseMove,
     onPointerDown,
     onPointerEnter,
+    accessibilityProps,
     ...styledProps
   },
   ref,
@@ -402,7 +403,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       accessibilityProps={{
         ...makeAccessible({
           role: isLink ? 'link' : 'button',
-          label: accessibilityLabel,
+          ...accessibilityProps,
         }),
       }}
       isLoading={isLoading}
