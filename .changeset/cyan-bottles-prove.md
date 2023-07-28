@@ -2,4 +2,4 @@
 "@razorpay/blade": patch
 ---
 
-feat: expose zIndex prop for Modal
+feat: add zIndex prop for Modal
