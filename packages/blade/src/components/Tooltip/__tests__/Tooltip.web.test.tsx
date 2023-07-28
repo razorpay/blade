@@ -18,7 +18,7 @@ import assertAccessible from '~utils/testing/assertAccessible.web';
 const waitForPosition = () => act(async () => {});
 const animationDuration = paymentTheme.motion.duration.quick;
 
-describe('<Tooltip />', () => {
+describe('<Tooltip />', async () => {
   jest.useFakeTimers();
 
   it('should render', () => {
@@ -33,6 +33,21 @@ describe('<Tooltip />', () => {
     fireEvent.focus(getByRole('button', { name: buttonText }));
     expect(screen.queryByRole('tooltip')).toBeInTheDocument();
     expect(screen.queryByRole('tooltip')).toHaveStyle({ 'z-index': 1100 });
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render tooltip with custom zIndex', () => {
+    const buttonText = 'Hover me';
+    const { container, getByRole } = renderWithTheme(
+      <Tooltip content="Hello world" zIndex={9999}>
+        <Button>{buttonText}</Button>
+      </Tooltip>,
+    );
+
+    // snapshot while on opened
+    fireEvent.focus(getByRole('button', { name: buttonText }));
+    expect(screen.queryByRole('tooltip')).toBeInTheDocument();
+    expect(screen.queryByRole('tooltip')).toHaveStyle({ 'z-index': 9999 });
     expect(container).toMatchSnapshot();
   });
 
@@ -274,18 +289,5 @@ describe('<Tooltip />', () => {
       'data-blade-component',
       MetaConstants.Tooltip,
     );
-  });
-
-  it('should render tooltip with custom zIndex', () => {
-    const buttonText = 'Hover me';
-    const { getByRole } = renderWithTheme(
-      <Tooltip content="Hello world" zIndex={9999}>
-        <Button>{buttonText}</Button>
-      </Tooltip>,
-    );
-
-    // snapshot while on opened
-    fireEvent.focus(getByRole('button', { name: buttonText }));
-    expect(screen.queryByRole('tooltip')).toHaveStyle({ 'z-index': 9999 });
   });
 });
