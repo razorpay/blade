@@ -20,9 +20,10 @@ import { getPlatformType } from '~utils';
 // Users should use PasswordInput for input type password
 type Type = Exclude<BaseInputProps['type'], 'password'>;
 
-type TextInputProps = Pick<
+type TextInputCommonProps = Pick<
   BaseInputProps,
   | 'label'
+  | 'accessibilityLabel'
   | 'labelPosition'
   | 'necessityIndicator'
   | 'validationState'
@@ -90,6 +91,37 @@ type TextInputKeyboardAndAutoComplete = Pick<
 > & {
   type: Type;
 };
+
+/*
+  Mandatory accessibilityLabel prop when label is not provided
+*/
+type TextInputPropsWithA11yLabel = {
+  /**
+   * Label to be shown for the input field
+   */
+  label?: undefined;
+  /**
+   * Accessibility label for the input
+   */
+  accessibilityLabel: string;
+};
+
+/*
+  Optional accessibilityLabel prop when label is provided
+*/
+type TextInputPropsWithLabel = {
+  /**
+   * Label to be shown for the input field
+   */
+  label: string;
+  /**
+   * Accessibility label for the input
+   */
+  accessibilityLabel?: string;
+};
+
+type TextInputProps = (TextInputPropsWithA11yLabel | TextInputPropsWithLabel) &
+  TextInputCommonProps;
 
 const getKeyboardAndAutocompleteProps = ({
   type = 'text',
@@ -182,6 +214,7 @@ const isReactNative = (_textInputRef: any): _textInputRef is TextInputReactNativ
 const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps> = (
   {
     label,
+    accessibilityLabel,
     labelPosition = 'top',
     placeholder,
     type = 'text',
@@ -261,7 +294,9 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       id="textinput"
       componentName={MetaConstants.TextInput}
       ref={textInputRef as React.Ref<HTMLInputElement>}
-      label={label}
+      label={label as string}
+      accessibilityLabel={accessibilityLabel}
+      hideLabelText={!Boolean(label)}
       labelPosition={labelPosition}
       placeholder={placeholder}
       defaultValue={defaultValue}

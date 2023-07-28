@@ -50,7 +50,7 @@ type CommonAutoCompleteSuggestionTypes =
 
 type WebAutoCompleteSuggestionType = CommonAutoCompleteSuggestionTypes | 'on';
 
-export type BaseInputProps = FormInputLabelProps &
+type BaseInputCommonProps = FormInputLabelProps &
   FormInputValidationProps & {
     /**
      * Determines if it needs to be rendered as input, textarea or button
@@ -269,6 +269,37 @@ export type BaseInputProps = FormInputLabelProps &
     };
   }> &
   StyledPropsBlade;
+
+/*
+  Mandatory accessibilityLabel prop when label is not provided
+*/
+type BaseInputPropsWithA11yLabel = {
+  /**
+   * Label to be shown for the input field
+   */
+  label?: undefined;
+  /**
+   * Accessibility label for the input
+   */
+  accessibilityLabel: string;
+};
+
+/*
+  Optional accessibilityLabel prop when label is provided
+*/
+type BaseInputPropsWithLabel = {
+  /**
+   * Label to be shown for the input field
+   */
+  label: string;
+  /**
+   * Accessibility label for the input
+   */
+  accessibilityLabel?: string;
+};
+
+export type BaseInputProps = (BaseInputPropsWithA11yLabel | BaseInputPropsWithLabel) &
+  BaseInputCommonProps;
 
 const autoCompleteSuggestionTypeValues = [
   'none',
@@ -731,7 +762,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
         </BaseBox>
         {/* the magic number 136 is basically max-width of label i.e 120 and then right margin i.e 16 which is the spacing between label and input field */}
         {!hideFormHint && (
-          <BaseBox marginLeft={makeSize(isLabelLeftPositioned ? 136 : 0)}>
+          <BaseBox marginLeft={makeSize(isLabelLeftPositioned && !hideLabelText ? 136 : 0)}>
             <BaseBox
               display="flex"
               flexDirection="row"
