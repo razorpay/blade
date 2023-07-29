@@ -403,7 +403,6 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
       >
         <RNSVGSvgView
           accessibilityElementsHidden={true}
-          accessible={false}
           align="xMidYMid"
           bbHeight="16px"
           bbWidth="16px"
@@ -617,7 +616,6 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
       >
         <RNSVGSvgView
           accessibilityElementsHidden={true}
-          accessible={false}
           align="xMidYMid"
           bbHeight="16px"
           bbWidth="16px"
@@ -864,7 +862,6 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
       >
         <RNSVGSvgView
           accessibilityElementsHidden={true}
-          accessible={false}
           align="xMidYMid"
           bbHeight="16px"
           bbWidth="16px"
@@ -1044,7 +1041,6 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
       >
         <RNSVGSvgView
           accessibilityElementsHidden={true}
-          accessible={false}
           align="xMidYMid"
           bbHeight="20px"
           bbWidth="20px"
@@ -3514,7 +3510,6 @@ exports[`<BaseButton /> should render loading button 1`] = `
             >
               <RNSVGSvgView
                 accessibilityElementsHidden={true}
-                accessible={false}
                 align="xMidYMid"
                 bbHeight="20px"
                 bbWidth="20px"

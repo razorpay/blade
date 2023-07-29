@@ -403,7 +403,6 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
       >
         <RNSVGSvgView
           accessibilityElementsHidden={true}
-          accessible={false}
           align="xMidYMid"
           bbHeight="16px"
           bbWidth="16px"
@@ -650,7 +649,6 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
       >
         <RNSVGSvgView
           accessibilityElementsHidden={true}
-          accessible={false}
           align="xMidYMid"
           bbHeight="16px"
           bbWidth="16px"

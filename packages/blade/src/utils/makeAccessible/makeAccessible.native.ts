@@ -43,9 +43,9 @@ export const makeAccessible = (props: Partial<AccessibilityProps>): Record<strin
       if (propValue === true) {
         newProps.accessibilityElementsHidden = true;
         newProps.importantForAccessibility = 'no-hide-descendants';
-        newProps.accessible = false;
       }
 
+      delete newProps.accessible;
       delete newProps.accessibilityHidden;
       continue;
     }

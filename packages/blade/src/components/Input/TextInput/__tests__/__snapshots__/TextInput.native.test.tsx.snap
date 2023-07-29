@@ -549,7 +549,6 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
           >
             <RNSVGSvgView
               accessibilityElementsHidden={true}
-              accessible={false}
               align="xMidYMid"
               bbHeight="16px"
               bbWidth="16px"

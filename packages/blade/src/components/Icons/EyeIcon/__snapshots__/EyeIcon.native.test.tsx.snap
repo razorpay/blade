@@ -10,7 +10,6 @@ exports[`<EyeIcon /> should render EyeIcon 1`] = `
 >
   <RNSVGSvgView
     accessibilityElementsHidden={true}
-    accessible={false}
     align="xMidYMid"
     bbHeight="20px"
     bbWidth="20px"

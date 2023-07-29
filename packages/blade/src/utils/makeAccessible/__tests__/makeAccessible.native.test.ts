@@ -102,7 +102,6 @@ describe('makeAccessible', () => {
     ).toStrictEqual({
       accessibilityElementsHidden: true,
       importantForAccessibility: 'no-hide-descendants',
-      accessible: false,
     });
   });
 });

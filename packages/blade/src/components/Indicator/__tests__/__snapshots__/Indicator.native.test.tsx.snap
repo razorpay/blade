@@ -38,7 +38,6 @@ exports[`<Indicator /> should render 1`] = `
     >
       <RNSVGSvgView
         accessibilityElementsHidden={true}
-        accessible={false}
         align="xMidYMid"
         bbHeight="8"
         bbWidth="8"
@@ -191,7 +190,6 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
     >
       <RNSVGSvgView
         accessibilityElementsHidden={true}
-        accessible={false}
         align="xMidYMid"
         bbHeight="6"
         bbWidth="6"
@@ -333,7 +331,6 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
     >
       <RNSVGSvgView
         accessibilityElementsHidden={true}
-        accessible={false}
         align="xMidYMid"
         bbHeight="8"
         bbWidth="8"
@@ -475,7 +472,6 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
     >
       <RNSVGSvgView
         accessibilityElementsHidden={true}
-        accessible={false}
         align="xMidYMid"
         bbHeight="10"
         bbWidth="10"
@@ -617,7 +613,6 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
     >
       <RNSVGSvgView
         accessibilityElementsHidden={true}
-        accessible={false}
         align="xMidYMid"
         bbHeight="8"
         bbWidth="8"

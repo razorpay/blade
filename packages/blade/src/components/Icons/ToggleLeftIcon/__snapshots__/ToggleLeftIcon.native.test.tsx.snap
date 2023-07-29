@@ -10,7 +10,6 @@ exports[`<ToggleLeftIcon /> should render ToggleLeftIcon 1`] = `
 >
   <RNSVGSvgView
     accessibilityElementsHidden={true}
-    accessible={false}
     align="xMidYMid"
     bbHeight="20px"
     bbWidth="20px"

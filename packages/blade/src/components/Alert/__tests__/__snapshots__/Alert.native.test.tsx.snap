@@ -63,7 +63,6 @@ exports[`<Alert /> should render 1`] = `
       >
         <RNSVGSvgView
           accessibilityElementsHidden={true}
-          accessible={false}
           align="xMidYMid"
           bbHeight="16px"
           bbWidth="16px"
@@ -229,7 +228,6 @@ exports[`<Alert /> should render 1`] = `
         >
           <RNSVGSvgView
             accessibilityElementsHidden={true}
-            accessible={false}
             align="xMidYMid"
             bbHeight="16px"
             bbWidth="16px"
@@ -351,7 +349,6 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
       >
         <RNSVGSvgView
           accessibilityElementsHidden={true}
-          accessible={false}
           align="xMidYMid"
           bbHeight="20px"
           bbWidth="20px"
@@ -527,7 +524,6 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
         >
           <RNSVGSvgView
             accessibilityElementsHidden={true}
-            accessible={false}
             align="xMidYMid"
             bbHeight="20px"
             bbWidth="20px"

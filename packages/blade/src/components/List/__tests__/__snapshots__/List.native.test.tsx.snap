@@ -75,7 +75,6 @@ exports[`<List /> should render List with default properties 1`] = `
           >
             <RNSVGSvgView
               accessibilityElementsHidden={true}
-              accessible={false}
               align="xMidYMid"
               bbHeight="6px"
               bbWidth="6px"
@@ -243,7 +242,6 @@ exports[`<List /> should render List with default properties 1`] = `
                 >
                   <RNSVGSvgView
                     accessibilityElementsHidden={true}
-                    accessible={false}
                     align="xMidYMid"
                     bbHeight="6px"
                     bbWidth="6px"
@@ -411,7 +409,6 @@ exports[`<List /> should render List with default properties 1`] = `
                       >
                         <RNSVGSvgView
                           accessibilityElementsHidden={true}
-                          accessible={false}
                           align="xMidYMid"
                           bbHeight="6px"
                           bbWidth="6px"
@@ -604,7 +601,6 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
           >
             <RNSVGSvgView
               accessibilityElementsHidden={true}
-              accessible={false}
               align="xMidYMid"
               bbHeight="6px"
               bbWidth="6px"
@@ -810,7 +806,6 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
           >
             <RNSVGSvgView
               accessibilityElementsHidden={true}
-              accessible={false}
               align="xMidYMid"
               bbHeight="6px"
               bbWidth="6px"
@@ -995,7 +990,6 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
           >
             <RNSVGSvgView
               accessibilityElementsHidden={true}
-              accessible={false}
               align="xMidYMid"
               bbHeight="6px"
               bbWidth="6px"
@@ -1237,7 +1231,6 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
           >
             <RNSVGSvgView
               accessibilityElementsHidden={true}
-              accessible={false}
               align="xMidYMid"
               bbHeight="6px"
               bbWidth="6px"
@@ -1422,7 +1415,6 @@ exports[`<List /> should render List with inline ListItemText 1`] = `
           >
             <RNSVGSvgView
               accessibilityElementsHidden={true}
-              accessible={false}
               align="xMidYMid"
               bbHeight="6px"
               bbWidth="6px"
@@ -1763,7 +1755,6 @@ exports[`<List /> should render medium ordered List 1`] = `
                 >
                   <RNSVGSvgView
                     accessibilityElementsHidden={true}
-                    accessible={false}
                     align="xMidYMid"
                     bbHeight="6px"
                     bbWidth="6px"
@@ -1931,7 +1922,6 @@ exports[`<List /> should render medium ordered List 1`] = `
                       >
                         <RNSVGSvgView
                           accessibilityElementsHidden={true}
-                          accessible={false}
                           align="xMidYMid"
                           bbHeight="6px"
                           bbWidth="6px"
@@ -2587,7 +2577,6 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
           >
             <RNSVGSvgView
               accessibilityElementsHidden={true}
-              accessible={false}
               align="xMidYMid"
               bbHeight="16px"
               bbWidth="16px"
@@ -2753,7 +2742,6 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                 >
                   <RNSVGSvgView
                     accessibilityElementsHidden={true}
-                    accessible={false}
                     align="xMidYMid"
                     bbHeight="16px"
                     bbWidth="16px"
@@ -2919,7 +2907,6 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                       >
                         <RNSVGSvgView
                           accessibilityElementsHidden={true}
-                          accessible={false}
                           align="xMidYMid"
                           bbHeight="6px"
                           bbWidth="6px"
@@ -3268,7 +3255,6 @@ exports[`<List /> should render small ordered List 1`] = `
                 >
                   <RNSVGSvgView
                     accessibilityElementsHidden={true}
-                    accessible={false}
                     align="xMidYMid"
                     bbHeight="5px"
                     bbWidth="5px"
@@ -3436,7 +3422,6 @@ exports[`<List /> should render small ordered List 1`] = `
                       >
                         <RNSVGSvgView
                           accessibilityElementsHidden={true}
-                          accessible={false}
                           align="xMidYMid"
                           bbHeight="5px"
                           bbWidth="5px"
@@ -4092,7 +4077,6 @@ exports[`<List /> should render small unordered List with icon 1`] = `
           >
             <RNSVGSvgView
               accessibilityElementsHidden={true}
-              accessible={false}
               align="xMidYMid"
               bbHeight="12px"
               bbWidth="12px"
@@ -4258,7 +4242,6 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                 >
                   <RNSVGSvgView
                     accessibilityElementsHidden={true}
-                    accessible={false}
                     align="xMidYMid"
                     bbHeight="12px"
                     bbWidth="12px"
@@ -4424,7 +4407,6 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                       >
                         <RNSVGSvgView
                           accessibilityElementsHidden={true}
-                          accessible={false}
                           align="xMidYMid"
                           bbHeight="5px"
                           bbWidth="5px"
@@ -4617,7 +4599,6 @@ exports[`<List /> should render unordered List of small size 1`] = `
           >
             <RNSVGSvgView
               accessibilityElementsHidden={true}
-              accessible={false}
               align="xMidYMid"
               bbHeight="5px"
               bbWidth="5px"
@@ -4785,7 +4766,6 @@ exports[`<List /> should render unordered List of small size 1`] = `
                 >
                   <RNSVGSvgView
                     accessibilityElementsHidden={true}
-                    accessible={false}
                     align="xMidYMid"
                     bbHeight="5px"
                     bbWidth="5px"
@@ -4953,7 +4933,6 @@ exports[`<List /> should render unordered List of small size 1`] = `
                       >
                         <RNSVGSvgView
                           accessibilityElementsHidden={true}
-                          accessible={false}
                           align="xMidYMid"
                           bbHeight="5px"
                           bbWidth="5px"

@@ -10,7 +10,6 @@ exports[`<MyAccountIcon /> should render MyAccountIcon 1`] = `
 >
   <RNSVGSvgView
     accessibilityElementsHidden={true}
-    accessible={false}
     align="xMidYMid"
     bbHeight="20px"
     bbWidth="20px"
