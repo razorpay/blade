@@ -272,7 +272,6 @@ exports[`<Tooltip /> should render 1`] = `
           >
             <RNSVGSvgView
               accessibilityElementsHidden={true}
-              accessible={false}
               align="xMidYMid"
               bbHeight="14px"
               bbWidth="14px"

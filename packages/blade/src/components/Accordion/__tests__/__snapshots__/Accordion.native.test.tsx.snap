@@ -200,7 +200,6 @@ exports[`<Accordion /> should render 1`] = `
                 >
                   <View
                     accessibilityElementsHidden={true}
-                    accessible={false}
                     importantForAccessibility="no-hide-descendants"
                     style={
                       {
@@ -214,7 +213,6 @@ exports[`<Accordion /> should render 1`] = `
                   >
                     <RNSVGSvgView
                       accessibilityElementsHidden={true}
-                      accessible={false}
                       align="xMidYMid"
                       bbHeight="20px"
                       bbWidth="20px"
@@ -275,7 +273,6 @@ exports[`<Accordion /> should render 1`] = `
             <View
               accessibilityElementsHidden={true}
               accessibilityRole="summary"
-              accessible={false}
               data-blade-component="collapsible-body"
               id="collapsible-body-1"
               importantForAccessibility="no-hide-descendants"
@@ -377,7 +374,6 @@ exports[`<Accordion /> should render 1`] = `
                       />
                       <View
                         accessibilityElementsHidden={true}
-                        accessible={false}
                         data-blade-component="base-box"
                         importantForAccessibility="no-hide-descendants"
                         style={
@@ -608,7 +604,6 @@ exports[`<Accordion /> should render 1`] = `
                 >
                   <View
                     accessibilityElementsHidden={true}
-                    accessible={false}
                     importantForAccessibility="no-hide-descendants"
                     style={
                       {
@@ -622,7 +617,6 @@ exports[`<Accordion /> should render 1`] = `
                   >
                     <RNSVGSvgView
                       accessibilityElementsHidden={true}
-                      accessible={false}
                       align="xMidYMid"
                       bbHeight="20px"
                       bbWidth="20px"
@@ -683,7 +677,6 @@ exports[`<Accordion /> should render 1`] = `
             <View
               accessibilityElementsHidden={true}
               accessibilityRole="summary"
-              accessible={false}
               data-blade-component="collapsible-body"
               id="collapsible-body-2"
               importantForAccessibility="no-hide-descendants"
@@ -785,7 +778,6 @@ exports[`<Accordion /> should render 1`] = `
                       />
                       <View
                         accessibilityElementsHidden={true}
-                        accessible={false}
                         data-blade-component="base-box"
                         importantForAccessibility="no-hide-descendants"
                         style={
@@ -1016,7 +1008,6 @@ exports[`<Accordion /> should render 1`] = `
                 >
                   <View
                     accessibilityElementsHidden={true}
-                    accessible={false}
                     importantForAccessibility="no-hide-descendants"
                     style={
                       {
@@ -1030,7 +1021,6 @@ exports[`<Accordion /> should render 1`] = `
                   >
                     <RNSVGSvgView
                       accessibilityElementsHidden={true}
-                      accessible={false}
                       align="xMidYMid"
                       bbHeight="20px"
                       bbWidth="20px"
@@ -1091,7 +1081,6 @@ exports[`<Accordion /> should render 1`] = `
             <View
               accessibilityElementsHidden={true}
               accessibilityRole="summary"
-              accessible={false}
               data-blade-component="collapsible-body"
               id="collapsible-body-3"
               importantForAccessibility="no-hide-descendants"
@@ -1193,7 +1182,6 @@ exports[`<Accordion /> should render 1`] = `
                       />
                       <View
                         accessibilityElementsHidden={true}
-                        accessible={false}
                         data-blade-component="base-box"
                         importantForAccessibility="no-hide-descendants"
                         style={

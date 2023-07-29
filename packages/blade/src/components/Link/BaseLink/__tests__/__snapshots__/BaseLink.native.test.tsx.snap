@@ -1507,7 +1507,6 @@ exports[`<BaseLink /> should render icon only link 1`] = `
       >
         <RNSVGSvgView
           accessibilityElementsHidden={true}
-          accessible={false}
           align="xMidYMid"
           bbHeight="16px"
           bbWidth="16px"
@@ -2002,7 +2001,6 @@ exports[`<BaseLink /> should render link with icon with default iconPosition 1`]
       >
         <RNSVGSvgView
           accessibilityElementsHidden={true}
-          accessible={false}
           align="xMidYMid"
           bbHeight="16px"
           bbWidth="16px"
@@ -2193,7 +2191,6 @@ exports[`<BaseLink /> should render link with icon with left iconPosition 1`] = 
       >
         <RNSVGSvgView
           accessibilityElementsHidden={true}
-          accessible={false}
           align="xMidYMid"
           bbHeight="16px"
           bbWidth="16px"
@@ -2418,7 +2415,6 @@ exports[`<BaseLink /> should render link with icon with right iconPosition 1`] =
       >
         <RNSVGSvgView
           accessibilityElementsHidden={true}
-          accessible={false}
           align="xMidYMid"
           bbHeight="16px"
           bbWidth="16px"

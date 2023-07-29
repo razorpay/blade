@@ -364,7 +364,6 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                   >
                     <RNSVGSvgView
                       accessibilityElementsHidden={true}
-                      accessible={false}
                       align="xMidYMid"
                       bbHeight="16px"
                       bbWidth="16px"

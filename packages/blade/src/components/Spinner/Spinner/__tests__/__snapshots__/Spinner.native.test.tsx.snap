@@ -58,7 +58,6 @@ exports[`<Spinner /> should render Spinner with default props 1`] = `
         >
           <RNSVGSvgView
             accessibilityElementsHidden={true}
-            accessible={false}
             align="xMidYMid"
             bbHeight="16px"
             bbWidth="16px"
@@ -194,7 +193,6 @@ exports[`<Spinner /> should render high contrast Spinner 1`] = `
         >
           <RNSVGSvgView
             accessibilityElementsHidden={true}
-            accessible={false}
             align="xMidYMid"
             bbHeight="16px"
             bbWidth="16px"
@@ -330,7 +328,6 @@ exports[`<Spinner /> should render large size Spinner 1`] = `
         >
           <RNSVGSvgView
             accessibilityElementsHidden={true}
-            accessible={false}
             align="xMidYMid"
             bbHeight="20px"
             bbWidth="20px"
@@ -466,7 +463,6 @@ exports[`<Spinner /> should render low contrast Spinner 1`] = `
         >
           <RNSVGSvgView
             accessibilityElementsHidden={true}
-            accessible={false}
             align="xMidYMid"
             bbHeight="16px"
             bbWidth="16px"
@@ -602,7 +598,6 @@ exports[`<Spinner /> should render medium size Spinner 1`] = `
         >
           <RNSVGSvgView
             accessibilityElementsHidden={true}
-            accessible={false}
             align="xMidYMid"
             bbHeight="16px"
             bbWidth="16px"
@@ -738,7 +733,6 @@ exports[`<Spinner /> should render xlarge size Spinner 1`] = `
         >
           <RNSVGSvgView
             accessibilityElementsHidden={true}
-            accessible={false}
             align="xMidYMid"
             bbHeight="24px"
             bbWidth="24px"

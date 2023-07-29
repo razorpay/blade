@@ -545,7 +545,6 @@ exports[`<BaseInput /> should render with icons 1`] = `
           >
             <RNSVGSvgView
               accessibilityElementsHidden={true}
-              accessible={false}
               align="xMidYMid"
               bbHeight="16px"
               bbWidth="16px"
@@ -698,7 +697,6 @@ exports[`<BaseInput /> should render with icons 1`] = `
           >
             <RNSVGSvgView
               accessibilityElementsHidden={true}
-              accessible={false}
               align="xMidYMid"
               bbHeight="16px"
               bbWidth="16px"

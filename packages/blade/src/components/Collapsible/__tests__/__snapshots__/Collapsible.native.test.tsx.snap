@@ -177,7 +177,6 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
       <View
         accessibilityElementsHidden={true}
         accessibilityRole="summary"
-        accessible={false}
         data-blade-component="collapsible-body"
         id="collapsible-body-1"
         importantForAccessibility="no-hide-descendants"
@@ -574,7 +573,6 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
           >
             <View
               accessibilityElementsHidden={true}
-              accessible={false}
               importantForAccessibility="no-hide-descendants"
               style={
                 {
@@ -588,7 +586,6 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
             >
               <RNSVGSvgView
                 accessibilityElementsHidden={true}
-                accessible={false}
                 align="xMidYMid"
                 bbHeight="16px"
                 bbWidth="16px"
@@ -649,7 +646,6 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
       <View
         accessibilityElementsHidden={true}
         accessibilityRole="summary"
-        accessible={false}
         data-blade-component="collapsible-body"
         id="collapsible-body-3"
         importantForAccessibility="no-hide-descendants"

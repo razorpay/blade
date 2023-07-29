@@ -10,7 +10,6 @@ exports[`<Circle /> should render react-native-svg Circle component 1`] = `
 >
   <RNSVGSvgView
     accessibilityElementsHidden={true}
-    accessible={false}
     align="xMidYMid"
     bbHeight="110"
     bbWidth="400"

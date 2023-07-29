@@ -666,7 +666,6 @@ exports[`<Card /> should render a Card with Header 1`] = `
             >
               <RNSVGSvgView
                 accessibilityElementsHidden={true}
-                accessible={false}
                 align="xMidYMid"
                 bbHeight="24px"
                 bbWidth="24px"

@@ -10,7 +10,6 @@ exports[`<Rect /> should render react-native-svg Rect component 1`] = `
 >
   <RNSVGSvgView
     accessibilityElementsHidden={true}
-    accessible={false}
     align="xMidYMid"
     bbHeight="110"
     bbWidth="400"
