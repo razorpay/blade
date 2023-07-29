@@ -13,7 +13,9 @@ const triggerId = 'tooltip-interactive-wrapper';
 const modalBackdropId = 'tooltip-modal-backdrop';
 
 describe('<Tooltip />', () => {
-  jest.useFakeTimers();
+  jest.useFakeTimers({
+    legacyFakeTimers: true,
+  });
 
   it('should render', () => {
     const tooltipContent = 'Hello world';
