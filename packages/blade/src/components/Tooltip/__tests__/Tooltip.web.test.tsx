@@ -19,7 +19,9 @@ const waitForPosition = () => act(async () => {});
 const animationDuration = paymentTheme.motion.duration.quick;
 
 describe('<Tooltip />', () => {
-  jest.useFakeTimers();
+  jest.useFakeTimers({
+    legacyFakeTimers: true,
+  });
 
   it('should render', () => {
     const buttonText = 'Hover me';
