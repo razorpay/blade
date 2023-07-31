@@ -8,7 +8,6 @@ import type { StyledIconButtonProps } from './types';
 import type { ColorContrastTypes } from '~tokens/theme/theme';
 import { makeAccessible } from '~utils/makeAccessible';
 import type { BladeCommonEvents } from '~components/types';
-import { castNativeType } from '~utils';
 
 type State = 'active' | 'default';
 type IconColorToken = `surface.action.icon.${State}.${ColorContrastTypes}Contrast`;
