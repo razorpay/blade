@@ -198,9 +198,10 @@ const _SelectInput = (
 
     let stripAfter = 0;
 
-    if (isOpen) {
+    if (isOpen || props.rows === '3') {
       stripAfter = selectedIndices.length;
     } else {
+      // eslint-disable-next-line no-lonely-if
       if (selectInputContainerRef.current?.clientWidth) {
         const leadingTrailingBoxWidth = 72; // 36px + 36px;
         const maxWidthTag = 140 + 8; // 140px width + 8px gap between tags
@@ -213,9 +214,9 @@ const _SelectInput = (
 
       // console.log(selectInputContainerRef.current?.clientHeight);
 
-      if (props.rows === '3') {
-        stripAfter = stripAfter * 4; // In multiline, tags can take upto 3 rows
-      }
+      // if (props.rows === '3') {
+      //   stripAfter = stripAfter * 4; // In multiline, tags can take upto 3 rows
+      // }
     }
 
     if (typeof visibleTagsCountRef.current?.value === 'number') {
