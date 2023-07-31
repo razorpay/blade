@@ -6,7 +6,6 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
 const BaseBox = styled.div
   .attrs<BaseBoxProps>((props) => {
-    console.log((props as never)['data-testid']);
     return {
       ...metaAttribute({
         name: (props as never)['data-blade-component'] || MetaConstants.BaseBox,
