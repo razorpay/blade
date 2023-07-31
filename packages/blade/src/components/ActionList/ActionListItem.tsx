@@ -348,10 +348,12 @@ const _ActionListItem = (props: ActionListItemProps): JSX.Element => {
   }, [props.leading, props.trailing]);
 
   React.useEffect(() => {
-    if (dropdownTriggerer === 'SelectInput' && props.intent === 'negative') {
-      throw new Error(
-        '[ActionListItem]: negative intent ActionListItem cannot be used inside Dropdown with SelectInput trigger',
-      );
+    if (__DEV__) {
+      if (dropdownTriggerer === 'SelectInput' && props.intent === 'negative') {
+        throw new Error(
+          '[ActionListItem]: negative intent ActionListItem cannot be used inside Dropdown with SelectInput trigger',
+        );
+      }
     }
   }, [props.intent, dropdownTriggerer]);
 

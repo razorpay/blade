@@ -17,10 +17,12 @@ export const useColorScheme = (
   );
 
   const setColorScheme = useCallback(function setThemeMode(colorScheme: ColorSchemeNamesInput) {
-    if (!colorSchemeNamesInput.includes(colorScheme)) {
-      throw new Error(
-        `[useColorScheme]: Expected color scheme to be one of [${colorSchemeNamesInput.toString()}] but received ${colorScheme}`,
-      );
+    if (__DEV__) {
+      if (!colorSchemeNamesInput.includes(colorScheme)) {
+        throw new Error(
+          `[useColorScheme]: Expected color scheme to be one of [${colorSchemeNamesInput.toString()}] but received ${colorScheme}`,
+        );
+      }
     }
     setColorSchemeState(getColorScheme(colorScheme));
   }, []);

@@ -18,11 +18,15 @@ export const ThemeContext = createContext<ThemeContext>({
 
 const useTheme = (): ThemeContext => {
   const themeContext = useContext<ThemeContext>(ThemeContext);
-  if (!themeContext.theme) {
-    throw new Error(`[@razorpay/blade:BladeProvider]: BladeProvider is missing theme`);
-  }
-  if (themeContext === undefined) {
-    throw new Error(`[@razorpay/blade:BladeProvider]: useTheme must be used within BladeProvider`);
+  if (__DEV__) {
+    if (!themeContext.theme) {
+      throw new Error(`[@razorpay/blade:BladeProvider]: BladeProvider is missing theme`);
+    }
+    if (themeContext === undefined) {
+      throw new Error(
+        `[@razorpay/blade:BladeProvider]: useTheme must be used within BladeProvider`,
+      );
+    }
   }
   return themeContext;
 };
