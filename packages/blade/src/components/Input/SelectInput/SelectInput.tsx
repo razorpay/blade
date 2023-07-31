@@ -16,7 +16,6 @@ import type { BladeElementRef } from '~utils/types';
 import { useBladeInnerRef } from '~utils/useBladeInnerRef';
 import { MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import { Text } from '~components/Typography';
 
 type SelectInputProps = Pick<
   BaseInputProps,
@@ -74,7 +73,6 @@ const _SelectInput = (
     dropdownBaseId,
     activeIndex,
     activeTagIndex,
-    visibleTagsCountRef,
     triggererRef,
     hasFooterAction,
     dropdownTriggerer,
@@ -196,34 +194,7 @@ const _SelectInput = (
       return null;
     }
 
-    let stripAfter = 0;
-
-    if (isOpen || props.rows === '3') {
-      stripAfter = selectedIndices.length;
-    } else {
-      // eslint-disable-next-line no-lonely-if
-      if (selectInputContainerRef.current?.clientWidth) {
-        const leadingTrailingBoxWidth = 72; // 36px + 36px;
-        const maxWidthTag = 140 + 8; // 140px width + 8px gap between tags
-        const spaceForTags = selectInputContainerRef.current?.clientWidth - leadingTrailingBoxWidth;
-        const tagsCanFit = spaceForTags / maxWidthTag;
-        stripAfter = Math.floor(tagsCanFit);
-      } else {
-        stripAfter = 2; // defaulting to strip after 2 tags if clientWidth is not present for some reason
-      }
-
-      // console.log(selectInputContainerRef.current?.clientHeight);
-
-      // if (props.rows === '3') {
-      //   stripAfter = stripAfter * 4; // In multiline, tags can take upto 3 rows
-      // }
-    }
-
-    if (typeof visibleTagsCountRef.current?.value === 'number') {
-      visibleTagsCountRef.current.value = Math.min(stripAfter, selectedIndices.length);
-    }
-
-    const tags = selectedIndices.slice(0, stripAfter).map((selectedIndex, tagIndex) => (
+    const tags = selectedIndices.map((selectedIndex, tagIndex) => (
       <Tag
         _isVirtuallyFocussed={tagIndex === activeTagIndex}
         _isTagInsideInput={true}
@@ -241,17 +212,6 @@ const _SelectInput = (
         {options[selectedIndex].title}
       </Tag>
     ));
-
-    const plusMoreText =
-      selectedIndices.length > stripAfter ? (
-        <Text key="plus" alignSelf="center">
-          +{selectedIndices.length - stripAfter} More
-        </Text>
-      ) : null;
-
-    if (plusMoreText) {
-      return [...tags, plusMoreText];
-    }
 
     return tags;
   };
@@ -280,6 +240,7 @@ const _SelectInput = (
         as="button"
         isMultiline={props.rows === '3' || props.rows === 'expandable'}
         tags={getTags()}
+        showAllTags={isOpen}
         value={selectionType === 'multiple' ? undefined : displayValue}
         hideLabelText={props.label?.length === 0}
         componentName={MetaConstants.SelectInput}

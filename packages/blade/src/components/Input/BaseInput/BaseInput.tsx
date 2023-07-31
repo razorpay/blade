@@ -246,6 +246,11 @@ export type BaseInputProps = FormInputLabelProps &
      * A slot for adding tags to input
      */
     tags?: React.ReactElement[] | null;
+
+    /**
+     * Disables stripping of tags and shows all tags
+     */
+    showAllTags?: boolean;
   } & TestID &
   Platform.Select<{
     native: {
@@ -547,6 +552,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
       type = 'text',
       defaultValue,
       tags,
+      showAllTags = false,
       name,
       value,
       onFocus,
@@ -699,6 +705,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
             <BaseInputVisuals leadingIcon={leadingIcon} prefix={prefix} isDisabled={isDisabled} />
             <BaseInputTagSlot
               tags={tags}
+              showAllTags={showAllTags}
               setFocusOnInput={() => {
                 if (ref && 'current' in ref) {
                   ref.current?.focus();
