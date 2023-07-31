@@ -6,7 +6,7 @@ env:
   GITHUB_ACCESS_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
 
 jobs:
-  validate:
+  lint:
     name: Validate Source Code
     runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
     steps:
@@ -37,3 +37,26 @@ jobs:
       - name: Check Tree Shaking
         run: yarn size-limit
         working-directory: packages/blade
+
+  test:
+    name: Run Tests (${{ matrix.shard }})
+    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
+    strategy:
+      matrix:
+        shard: [1/4, 2/4, 3/4, 4/4]
+    steps:
+      - name: Checkout Codebase
+        uses: actions/checkout@v3
+      - name: Use Node v18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.12.1
+      - name: Setup Cache & Install Dependencies
+        uses: ./.github/actions/install-dependencies
+      - name: Build Blade
+        run: yarn build
+        working-directory: packages/blade
+      - name: Run React Tests
+        run: yarn test:react --ci --shard=${{ matrix.shard }}
+      - name: Run React Native Tests
+        run: yarn test:react --ci --shard=${{ matrix.shard }}
