@@ -26,9 +26,6 @@ jobs:
       - name: Run TypeScript Checks
         run: yarn typecheck
         working-directory: packages/blade
-      - name: Run Web & Native Tests
-        run: yarn test
-        working-directory: packages/blade
       - name: Check Bundle Size
         run: yarn bundlemon
         working-directory: packages/blade
@@ -58,5 +55,7 @@ jobs:
         working-directory: packages/blade
       - name: Run React Tests
         run: yarn test:react --ci --shard=${{ matrix.shard }}
+        working-directory: packages/blade
       - name: Run React Native Tests
         run: yarn test:react --ci --shard=${{ matrix.shard }}
+        working-directory: packages/blade
