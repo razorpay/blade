@@ -75,4 +75,17 @@ describe('<Tooltip />', () => {
     });
     expect(getByA11yLabel(tooltipContent)).toHaveProp('visible', false);
   });
+
+  it('should render tooltip with custom zIndex', () => {
+    const tooltipContent = 'Hello world';
+    const buttonText = 'Hover me';
+    const { toJSON, getByRole } = renderWithTheme(
+      <Tooltip content={tooltipContent} zIndex={9999}>
+        <Button>{buttonText}</Button>
+      </Tooltip>,
+    );
+
+    fireEvent(getByRole('button'), 'touchEnd');
+    expect(toJSON()).toMatchSnapshot();
+  });
 });
