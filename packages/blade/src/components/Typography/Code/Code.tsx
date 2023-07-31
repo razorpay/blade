@@ -67,14 +67,17 @@ const isPlatformWeb = platformType === 'browser' || platformType === 'node';
 
 const getCodeFontSizeAndLineHeight = (
   size: CodeProps['size'],
-): { fontSize: keyof FontSize; lineHeight: keyof Typography['lineHeights'] } => {
+): { fontSize: keyof FontSize; lineHeight: keyof Typography['lineHeights'] } | undefined => {
   switch (size) {
     case 'medium':
       return { fontSize: 75, lineHeight: 75 };
     case 'small':
       return { fontSize: 25, lineHeight: 25 };
     default:
-      throw new Error(`[Blade Code]: Unexpected size: ${size}`);
+      if (__DEV__) {
+        throw new Error(`[Blade Code]: Unexpected size: ${size}`);
+      }
+      return undefined;
   }
 };
 
@@ -98,8 +101,12 @@ const getCodeColor = ({
   color,
 }: Pick<CodeProps, 'isHighlighted' | 'color'>): CodeProps['color'] => {
   if (isHighlighted) {
-    if (color) {
-      throw new Error('[Blade: Code]: `color` prop cannot be used without `isHighlighted={false}`');
+    if (__DEV__) {
+      if (color) {
+        throw new Error(
+          '[Blade: Code]: `color` prop cannot be used without `isHighlighted={false}`',
+        );
+      }
     }
 
     return 'surface.text.subtle.lowContrast';
@@ -146,7 +153,7 @@ const Code = ({
   testID,
   ...styledProps
 }: CodeProps): JSX.Element => {
-  const { fontSize, lineHeight } = getCodeFontSizeAndLineHeight(size);
+  const { fontSize, lineHeight } = getCodeFontSizeAndLineHeight(size)!;
   const codeTextColor = React.useMemo<CodeProps['color']>(
     () => getCodeColor({ isHighlighted, color }),
     [isHighlighted, color],
