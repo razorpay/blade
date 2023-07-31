@@ -1,5 +1,15 @@
 # @razorpay/blade
 
+## 9.5.0
+
+### Minor Changes
+
+- cbed430f: feat: strip off logs & errors in production builds
+
+### Patch Changes
+
+- 2be798d9: feat: add zIndex prop to Tooltip
+
 ## 9.4.1
 
 ### Patch Changes
