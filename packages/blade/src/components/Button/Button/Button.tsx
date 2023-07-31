@@ -5,6 +5,7 @@ import type { BaseButtonProps } from '../BaseButton/BaseButton';
 import type { IconComponent } from '~components/Icons';
 import type { Platform } from '~utils';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
+import { getStyledProps } from '~components/Box/styledProps';
 import type { BladeElementRef } from '~utils/useBladeInnerRef';
 import type { StringChildrenType, TestID } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
@@ -35,6 +36,13 @@ type ButtonCommonProps = {
   isLoading?: boolean;
   accessibilityLabel?: string;
   type?: 'button' | 'reset' | 'submit';
+
+  /**
+   * It is exposed for internal usage with tooltip.
+   *
+   * @private
+   */
+  'aria-describedby'?: string;
   onClick?: Platform.Select<{
     native: (event: GestureResponderEvent) => void;
     web: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -85,20 +93,23 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
     onMouseMove,
     onPointerDown,
     onPointerEnter,
-    ...styledProps
+    onTouchStart,
+    onTouchEnd,
+    ...rest
   },
   ref,
 ) => {
   return (
     <BaseButton
       {...(icon ? { icon, children } : { children })}
-      {...styledProps}
+      {...getStyledProps(rest)}
       ref={ref}
       href={href}
       target={target}
       rel={rel}
       accessibilityProps={{
         label: accessibilityLabel,
+        describedBy: rest['aria-describedby'],
       }}
       iconPosition={iconPosition}
       isDisabled={isDisabled}
@@ -115,6 +126,8 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
       onMouseMove={onMouseMove}
       onPointerDown={onPointerDown}
       onPointerEnter={onPointerEnter}
+      onTouchStart={onTouchStart}
+      onTouchEnd={onTouchEnd}
     />
   );
 };

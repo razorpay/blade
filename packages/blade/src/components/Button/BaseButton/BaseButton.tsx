@@ -326,7 +326,9 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     onPointerDown,
     onPointerEnter,
     accessibilityProps,
-    ...styledProps
+    onTouchEnd,
+    onTouchStart,
+    ...rest
   },
   ref,
 ) => {
@@ -431,13 +433,15 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       onPointerDown={onPointerDown}
       onPointerEnter={onPointerEnter}
       onKeyDown={onKeyDown}
+      onTouchStart={onTouchStart}
+      onTouchEnd={onTouchEnd}
       type={type}
       borderWidth={borderWidth}
       borderRadius={borderRadius}
       motionDuration={motionDuration}
       motionEasing={motionEasing}
       {...metaAttribute({ name: MetaConstants.Button, testID })}
-      {...getStyledProps(styledProps)}
+      {...getStyledProps(rest)}
     >
       {isLoading ? (
         <BaseBox

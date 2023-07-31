@@ -21,6 +21,13 @@ type LinkCommonProps = {
   accessibilityLabel?: string;
 
   /**
+   * It is exposed for internal usage with tooltip.
+   *
+   * @private
+   */
+  'aria-describedby'?: string;
+
+  /**
    * Sets the size of the link
    *
    * @default medium
@@ -131,7 +138,7 @@ const _Link: React.ForwardRefRenderFunction<BladeElementRef, LinkProps> = (
     onPointerEnter,
     onTouchStart,
     onTouchEnd,
-    ...styledProps
+    ...rest
   },
   ref,
 ): ReactElement => {
@@ -142,7 +149,7 @@ const _Link: React.ForwardRefRenderFunction<BladeElementRef, LinkProps> = (
       ref={ref as never}
       iconPosition={iconPosition}
       onClick={onClick}
-      accessibilityProps={{ label: accessibilityLabel }}
+      accessibilityProps={{ label: accessibilityLabel, describedBy: rest['aria-describedby'] }}
       size={size}
       testID={testID}
       hitSlop={hitSlop}
@@ -155,7 +162,7 @@ const _Link: React.ForwardRefRenderFunction<BladeElementRef, LinkProps> = (
       onPointerEnter={onPointerEnter}
       onTouchStart={onTouchStart}
       onTouchEnd={onTouchEnd}
-      {...getStyledProps(styledProps)}
+      {...getStyledProps(rest)}
     />
   );
 };
