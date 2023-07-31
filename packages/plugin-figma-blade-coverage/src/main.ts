@@ -281,10 +281,16 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
           }
         } else if (traversedNode.type === 'RECTANGLE') {
           let isImage = false;
+
           if (traversedNode.fills !== figma.mixed) {
             // figma considers images as rectangles with fille type as IMAGE
             isImage = Boolean(traversedNode.fills.find((fill) => fill.type === 'IMAGE'));
           }
+
+          if (isImage) {
+            NODES_SKIP_FROM_COVERAGE.push('RECTANGLE');
+          }
+
           if (!isImage && (traversedNode.strokeStyleId || traversedNode.fillStyleId)) {
             // check if rectangle uses blade surface.border.* colors for border
             if (traversedNode.strokeStyleId) {
@@ -324,6 +330,14 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
         ) {
           // exclude the main frame itself from the count to remove false negatives
           totalLayers++;
+        }
+
+        // remove rectangle node index for next iteration because we don't want to remove all the rectangle nodes, only the image ones
+        const rectangleImageNodeIndex = NODES_SKIP_FROM_COVERAGE.findIndex(
+          (nodeName) => nodeName === 'RECTANGLE',
+        );
+        if (rectangleImageNodeIndex !== -1) {
+          NODES_SKIP_FROM_COVERAGE.splice(rectangleImageNodeIndex, 1);
         }
       },
       (traversedNode) => {
