@@ -88,6 +88,7 @@ const Card = ({
   return (
     <CardProvider>
       <BaseBox
+        width="100%"
         {...metaAttribute({ name: MetaConstants.Card, testID })}
         {...getStyledProps(styledProps)}
       >
