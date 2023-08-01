@@ -9,7 +9,7 @@ import { List, ListItem } from '~components/List';
 import BaseBox from '~components/Box/BaseBox';
 import { Link } from '~components/Link';
 
-const ModalDocs = (): JSX.Element => {
+const ModalDocs = (): React.ReactElement => {
   return (
     <StoryPageWrapper
       componentName="Modal"
@@ -120,6 +120,14 @@ const ModalDocs = (): JSX.Element => {
               <Code>{'<ModalHeader />'}</Code>]
             </Text>
           ),
+          zIndex: (
+            <Text size="small" type="subdued">
+              <Text size="small" type="subdued">
+                <Code size="medium">number</Code>
+              </Text>
+              Sets the z-index of the modal
+            </Text>
+          ),
         }}
       />
       <Heading size="medium">ModalHeader Props</Heading>
@@ -198,7 +206,7 @@ const ModalDocs = (): JSX.Element => {
         data={{
           children: (
             <Text>
-              <Code>{'JSX.Element'}</Code>
+              <Code>{'React.ReactElement'}</Code>
               <Text size="small" type="subdued">
                 (required)
               </Text>

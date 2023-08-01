@@ -112,6 +112,11 @@ export default {
         category: propsCategory.LABEL_PROPS,
       },
     },
+    accessibilityLabel: {
+      table: {
+        category: propsCategory.LABEL_PROPS,
+      },
+    },
     labelPosition: {
       table: {
         category: propsCategory.LABEL_PROPS,
@@ -185,7 +190,7 @@ export default {
             {`
               import { SelectInput, Dropdown, DropdownOverlay, ActionList, ActionListItem } from '@razorpay/blade/components';
 
-              function App(): JSX.Element {
+              function App(): React.ReactElement {
                 return (
                   // Only works inside Dropdown component
                   <Dropdown>
@@ -233,3 +238,10 @@ const SelectInputTemplate: ComponentStory<typeof SelectInput> = ({ icon, ...args
 export const Default = SelectInputTemplate.bind({});
 // Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
 Default.storyName = 'SelectInput';
+
+export const SelectInputWithoutLabel = SelectInputTemplate.bind({});
+SelectInputWithoutLabel.args = {
+  label: undefined,
+  accessibilityLabel: 'City',
+};
+SelectInputWithoutLabel.storyName = 'SelectInput without Label';

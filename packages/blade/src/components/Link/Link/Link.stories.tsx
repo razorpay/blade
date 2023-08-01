@@ -32,7 +32,7 @@ const Page = (): ReactElement => {
         {`
           import { Link } from '@razorpay/blade/components';
 
-          function App(): JSX.Element {
+          function App(): React.ReactElement {
             return (
               <Link 
                 href="https://razorpay.com" 

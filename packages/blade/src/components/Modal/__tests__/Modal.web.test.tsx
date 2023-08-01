@@ -237,4 +237,18 @@ describe('Modal', () => {
     );
     mockConsoleError.mockRestore();
   });
+
+  it('renders a Modal with custom zIndex', () => {
+    const { getByTestId } = renderWithTheme(
+      <Modal isOpen={true} onDismiss={() => {}} accessibilityLabel="Test Modal" zIndex={9999}>
+        <ModalBody>
+          <Text>Test Content</Text>
+        </ModalBody>
+      </Modal>,
+    );
+    const container = getByTestId('modal-wrapper');
+    expect(container).toHaveStyle({
+      zIndex: 9999,
+    });
+  });
 });
