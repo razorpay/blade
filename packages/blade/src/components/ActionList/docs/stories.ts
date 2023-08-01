@@ -17,7 +17,7 @@ const Playground = `
     Button 
   } from '@razorpay/blade/components';
 
-  function App(): JSX.Element {
+  function App(): React.ReactElement {
     return (
     <Box>
       <ActionList surfaceLevel={2}>
@@ -62,7 +62,7 @@ const Playground = `
 const ActionList = `
   import { Box, ActionList, ActionListItem } from '@razorpay/blade/components';
 
-  function App(): JSX.Element {
+  function App(): React.ReactElement {
     return (
     <Box>
       <ActionList surfaceLevel={2}>
@@ -86,7 +86,7 @@ const ActionListItem = `
     HomeIcon 
   } from '@razorpay/blade/components';
 
-  function App(): JSX.Element {
+  function App(): React.ReactElement {
     return (
     <Box>
       <ActionList>
@@ -113,7 +113,7 @@ const ActionListSection = `
     ActionListSection,
   } from '@razorpay/blade/components';
 
-  function App(): JSX.Element {
+  function App(): React.ReactElement {
     return (
     <Box>
       <ActionList>

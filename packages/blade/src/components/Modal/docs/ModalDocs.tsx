@@ -9,7 +9,7 @@ import { List, ListItem } from '~components/List';
 import BaseBox from '~components/Box/BaseBox';
 import { Link } from '~components/Link';
 
-const ModalDocs = (): JSX.Element => {
+const ModalDocs = (): React.ReactElement => {
   return (
     <StoryPageWrapper
       componentName="Modal"
@@ -206,7 +206,7 @@ const ModalDocs = (): JSX.Element => {
         data={{
           children: (
             <Text>
-              <Code>{'JSX.Element'}</Code>
+              <Code>{'React.ReactElement'}</Code>
               <Text size="small" type="subdued">
                 (required)
               </Text>
