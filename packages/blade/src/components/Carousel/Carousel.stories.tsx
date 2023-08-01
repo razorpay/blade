@@ -89,9 +89,11 @@ const CarouselTemplate: ComponentStory<typeof CarouselComponent> = () => {
       backgroundColor="surface.background.level1.lowContrast"
     >
       <Text>v1: Responsive: N/A + auto bleed + shouldAddStartEndPadding</Text>
-      <CarouselExample navigationButtonPosition="side" bleed="right" />
+      <CarouselExample shouldAddStartEndSpacing navigationButtonPosition="side" bleed="right" />
       <Text>v2: Responsive: 1|2|3</Text>
-      <CarouselExample visibleItems={2} navigationButtonPosition="side" bleed="both" />
+      <CarouselExample visibleItems={1} navigationButtonPosition="bottom" bleed="none" />
+      <CarouselExample visibleItems={2} navigationButtonPosition="bottom" bleed="right" />
+      <CarouselExample visibleItems={3} navigationButtonPosition="bottom" bleed="right" />
 
       {/* 
       <Text>Bleed: none</Text>

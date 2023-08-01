@@ -11,6 +11,7 @@ import { CarouselContext } from './CarouselContext';
 import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~utils';
+import { useId } from '~utils/useId';
 
 type ControlsProp = {
   showIndicators?: boolean;
@@ -74,6 +75,7 @@ const CarouselContainer = styled(BaseBox)(() => {
     width: '100%',
     overflowX: 'scroll',
     display: 'flex',
+    flexWrap: 'nowrap',
     scrollSnapType: 'x mandatory',
     scrollSnapPointsY: `repeat(100%)`,
     scrollBehavior: 'smooth',
@@ -95,14 +97,15 @@ type CarouselBodyProps = {
   children: React.ReactNode;
   totalSlides: number;
   shouldAddStartEndSpacing?: boolean;
+  idPrefix: string;
 };
 const CarouselBody = React.forwardRef<HTMLDivElement, CarouselBodyProps>(
-  ({ children, totalSlides, shouldAddStartEndSpacing }, ref) => {
+  ({ children, totalSlides, shouldAddStartEndSpacing, idPrefix }, ref) => {
     return (
-      <CarouselContainer ref={ref}>
+      <CarouselContainer ref={ref} gap={{ base: 'spacing.4', m: 'spacing.5' }}>
         {React.Children.map(children, (child, index) => {
           return React.cloneElement(child as React.ReactElement, {
-            id: `carousel-item-${index}`,
+            id: `${idPrefix}-carousel-item-${index}`,
             shouldHaveStartSpacing: shouldAddStartEndSpacing && index === 0,
             shouldHaveEndSpacing: shouldAddStartEndSpacing && index === totalSlides - 1,
           });
@@ -123,6 +126,7 @@ const Carousel = ({
   const { platform } = useTheme();
   const [activeSlide, setActiveSlide] = React.useState(0);
   const containerRef = React.useRef<HTMLDivElement>(null);
+  const id = useId('carousel');
 
   const isMobile = platform === 'onMobile';
   let _visibleItems = visibleItems;
@@ -137,10 +141,13 @@ const Carousel = ({
   const totalNumberOfSlides = React.Children.count(children);
   const numberOfIndicators = Math.ceil(totalNumberOfSlides / (visibleItems ?? 1));
 
+  // TODO: make indicator calculation dynamic based on isMobile prop
+  // TODO: sync active slide indicator with scroll
+
   const goToSlideIndex = (slideIndex: number) => {
     if (!containerRef.current) return;
 
-    const carouselItemId = `#carousel-item-${slideIndex}`;
+    const carouselItemId = `#${id}-carousel-item-${slideIndex * (visibleItems ?? 1)}`;
     const carouselItem = containerRef.current.querySelector(carouselItemId);
     carouselItem?.scrollIntoView({
       behavior: 'smooth',
@@ -152,7 +159,7 @@ const Carousel = ({
 
   const goToNextSlide = () => {
     let slideIndex = activeSlide + 1;
-    if (slideIndex >= totalNumberOfSlides) {
+    if (slideIndex >= numberOfIndicators) {
       slideIndex = 0;
     }
     goToSlideIndex(slideIndex);
@@ -161,7 +168,7 @@ const Carousel = ({
   const goToPreviousSlide = () => {
     let slideIndex = activeSlide - 1;
     if (activeSlide <= 0) {
-      slideIndex = totalNumberOfSlides - 1;
+      slideIndex = numberOfIndicators - 1;
     }
     goToSlideIndex(slideIndex);
   };
@@ -186,6 +193,7 @@ const Carousel = ({
             <NavigationButton type="previous" variant="filled" onClick={goToPreviousSlide} />
           ) : null}
           <CarouselBody
+            idPrefix={id}
             totalSlides={totalNumberOfSlides}
             shouldAddStartEndSpacing={shouldAddStartEndSpacing}
             ref={containerRef}
