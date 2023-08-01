@@ -230,12 +230,14 @@ const _Amount = ({
   currency = 'INR',
   ...styledProps
 }: AmountProps): ReactElement => {
-  if (typeof value !== 'number') {
-    throw new Error('[Blade: Amount]: `value` prop must be of type `number` for Amount.');
-  }
-  // @ts-expect-error neutral intent should throw error
-  if (intent === 'neutral') {
-    throw new Error('[Blade Amount]: `neutral` intent is not supported.');
+  if (__DEV__) {
+    if (typeof value !== 'number') {
+      throw new Error('[Blade: Amount]: `value` prop must be of type `number` for Amount.');
+    }
+    // @ts-expect-error neutral intent should throw error
+    if (intent === 'neutral') {
+      throw new Error('[Blade Amount]: `neutral` intent is not supported.');
+    }
   }
 
   const currencyPrefix = currencyPrefixMapping[currency][prefix];

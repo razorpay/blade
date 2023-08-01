@@ -24,9 +24,10 @@ type FormInputOnEventWithIndex = ({
   inputIndex: number;
 }) => void;
 
-export type OTPInputProps = Pick<
+export type OTPInputCommonProps = Pick<
   BaseInputProps,
   | 'label'
+  | 'accessibilityLabel'
   | 'labelPosition'
   | 'validationState'
   | 'helpText'
@@ -82,6 +83,36 @@ export type OTPInputProps = Pick<
   onBlur?: FormInputOnEventWithIndex;
 } & StyledPropsBlade;
 
+/*
+  Mandatory accessibilityLabel prop when label is not provided
+*/
+type OTPInputPropsWithA11yLabel = {
+  /**
+   * Label to be shown for the input field
+   */
+  label?: undefined;
+  /**
+   * Accessibility label for the input
+   */
+  accessibilityLabel: string;
+};
+
+/*
+  Optional accessibilityLabel prop when label is provided
+*/
+type OTPInputPropsWithLabel = {
+  /**
+   * Label to be shown for the input field
+   */
+  label: string;
+  /**
+   * Accessibility label for the input
+   */
+  accessibilityLabel?: string;
+};
+
+type OTPInputProps = (OTPInputPropsWithA11yLabel | OTPInputPropsWithLabel) & OTPInputCommonProps;
+
 const isReactNative = getPlatformType() === 'react-native';
 
 /**
@@ -111,6 +142,7 @@ const OTPInput = ({
   keyboardReturnKeyType,
   keyboardType = 'decimal',
   label,
+  accessibilityLabel,
   labelPosition,
   name,
   onChange,
@@ -295,7 +327,9 @@ const OTPInput = ({
           <BaseInput
             // eslint-disable-next-line jsx-a11y/no-autofocus
             autoFocus={autoFocus && index === 0}
-            accessibilityLabel={`${index === 0 ? label : ''} character ${index + 1}`}
+            accessibilityLabel={`${index === 0 ? label || accessibilityLabel : ''} character ${
+              index + 1
+            }`}
             label={label}
             hideLabelText={true}
             id={`${inputId}-${index}`}
@@ -341,9 +375,11 @@ const OTPInput = ({
         alignItems={isLabelLeftPositioned ? 'center' : undefined}
         position="relative"
       >
-        <FormLabel as="label" position={labelPosition} htmlFor={inputId}>
-          {label}
-        </FormLabel>
+        {Boolean(label) && (
+          <FormLabel as="label" position={labelPosition} htmlFor={inputId}>
+            {label}
+          </FormLabel>
+        )}
         <BaseBox display="flex" flexDirection="row">
           {getHiddenInput()}
           {getOTPInputFields()}

@@ -6,6 +6,7 @@ import pluginResolve from '@rollup/plugin-node-resolve';
 import pluginCommonjs from '@rollup/plugin-commonjs';
 import pluginDeclarations from 'rollup-plugin-dts';
 import pluginAlias from '@rollup/plugin-alias';
+import pluginReplace from '@rollup/plugin-replace';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import ts from 'typescript';
 
@@ -61,13 +62,19 @@ const getWebConfig = ({ exportCategory }) => ({
   input: `${inputRootDirectory}/${exportCategory}/index.ts`,
   output: [
     {
-      file: `${outputRootDirectory}/${exportCategory}/index.web.js`,
+      file: `${outputRootDirectory}/${exportCategory}/index.${
+        process.env.NODE_ENV || 'development'
+      }.web.js`,
       format: 'esm',
       sourcemap: true,
     },
   ],
   external: (id) => id.includes('@babel/runtime'),
   plugins: [
+    pluginReplace({
+      __DEV__: process.env.NODE_ENV !== 'production',
+      preventAssignment: true,
+    }),
     pluginPeerDepsExternal(),
     pluginResolve({ extensions: webExtensions }),
     pluginCommonjs(),

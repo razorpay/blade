@@ -63,7 +63,7 @@ const AnimatedOverlay = styled(StyledDropdownOverlay)<{
  *
  * Wrap your ActionList within this component
  */
-const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Element => {
+const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): React.ReactElement => {
   const {
     isOpen,
     triggererRef,

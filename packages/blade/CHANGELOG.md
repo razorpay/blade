@@ -1,5 +1,41 @@
 # @razorpay/blade
 
+## 9.5.0
+
+### Minor Changes
+
+- cbed430f: feat: strip off logs & errors in production builds
+
+### Patch Changes
+
+- 2be798d9: feat: add zIndex prop to Tooltip
+
+## 9.4.1
+
+### Patch Changes
+
+- ebd3cbda: feat: add zIndex prop for Modal
+
+## 9.4.0
+
+### Minor Changes
+
+- 5bddbe08: feat(Input): make `label` prop optional & add `accessibilityLabel` prop to `TextInput`, `TextArea`, `PasswordInput`, `SelectInput`, and `OTPInput` components
+
+  #### Key Updates
+
+  - **Optional `label` Prop**: We understand that not all use cases require a label for the Input components. Therefore, we have made the label prop optional, providing you with the freedom to choose whether to display a label or not, depending on your specific application requirements.
+
+  - **Introducing `accessibilityLabel`:** Recognizing the significance of accessibility in modern applications, we have added the `accessibilityLabel` prop to the Input components. This prop enables developers to assign a descriptive label for the input field, making it more user-friendly for individuals using assistive technologies or screen readers.
+
+  - **Enhanced User Guidance:** To maintain usability, we have implemented a requirement that either the `label` or `accessibilityLabel` prop must be provided. This ensures that users will always have clear guidance when interacting with Inputs, promoting a seamless user experience.
+
+## 9.3.0
+
+### Minor Changes
+
+- d28d8a72: feat(Tag): add Tag component
+
 ## 9.2.0
 
 ### Minor Changes
