@@ -99,7 +99,7 @@ describe('<Accordion />', () => {
     const description2 =
       'Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries.';
 
-    const ControlledAccordionExample = (): JSX.Element => {
+    const ControlledAccordionExample = (): React.ReactElement => {
       const [expandedIndex, setExpandedIndex] = useState(-1);
 
       return (

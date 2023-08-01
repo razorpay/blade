@@ -52,7 +52,7 @@ const _Dropdown = ({
   onDismiss,
   testID,
   ...styledProps
-}: DropdownProps): JSX.Element => {
+}: DropdownProps): React.ReactElement => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [options, setOptions] = React.useState<DropdownContextType['options']>([]);
   const [selectedIndices, setSelectedIndices] = React.useState<
