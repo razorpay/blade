@@ -101,7 +101,7 @@ const makeStyledProps = (props: StyledPropsInputType): KeysRequired<StyledPropsB
  *   // ... Your Props
  * } & StyledPropsBlade;
  *
- * const MyComponent = (props: MyComponentProps): JSX.Element => {
+ * const MyComponent = (props: MyComponentProps): React.ReactElement => {
  *  return (
  *    // Make sure styledProps come last so they take priority in stylings in-case of overrides
  *    <BaseBox someOtherProp={someValue} {...getStyledProps(props)}>

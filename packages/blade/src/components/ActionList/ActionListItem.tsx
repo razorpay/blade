@@ -82,7 +82,7 @@ const ActionListItemContext = React.createContext<{
   isDisabled?: ActionListItemProps['isDisabled'];
 }>({});
 
-const ActionListSectionDivider = (): JSX.Element => (
+const ActionListSectionDivider = (): React.ReactElement => (
   <Divider
     {...makeAccessible({
       role: getSeparatorRole(),
@@ -112,7 +112,7 @@ const _ActionListSection = ({
   children,
   testID,
   _hideDivider,
-}: ActionListSectionProps): JSX.Element => {
+}: ActionListSectionProps): React.ReactElement => {
   const { surfaceLevel } = useActionListContext();
 
   return (
@@ -152,7 +152,7 @@ const ActionListSection = assignWithoutSideEffects(_ActionListSection, {
   componentId: componentIds.ActionListSection,
 });
 
-const _ActionListItemIcon = ({ icon }: { icon: IconComponent }): JSX.Element => {
+const _ActionListItemIcon = ({ icon }: { icon: IconComponent }): React.ReactElement => {
   const Icon = icon;
   const { intent, isDisabled } = React.useContext(ActionListItemContext);
   return (
@@ -303,7 +303,7 @@ const ActionListItemBody = React.memo(_ActionListItemBody);
  * </ActionList>
  * ```
  */
-const _ActionListItem = (props: ActionListItemProps): JSX.Element => {
+const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
   const {
     activeIndex,
     dropdownBaseId,

@@ -86,7 +86,7 @@ type SelectInputProps = (SelectInputPropsWithA11yLabel | SelectInputPropsWithLab
 const _SelectInput = (
   props: SelectInputProps,
   ref: React.ForwardedRef<BladeElementRef>,
-): JSX.Element => {
+): React.ReactElement => {
   const {
     isOpen,
     value,

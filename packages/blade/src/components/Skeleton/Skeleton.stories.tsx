@@ -41,7 +41,7 @@ const Page = (): React.ReactElement => {
         {`
         import { Skeleton } from '@razorpay/blade/components';
         
-        function App(): JSX.Element {
+        function App(): React.ReactElement {
           return (
             <Skeleton width="100%" height="50px" margin="spacing.4" />
           )

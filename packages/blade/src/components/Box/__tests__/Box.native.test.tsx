@@ -86,7 +86,7 @@ describe('<Box />', () => {
   it('should support ref on Box', () => {
     const refHasFocusProp = jest.fn();
 
-    const BoxWithRef = (): JSX.Element => {
+    const BoxWithRef = (): React.ReactElement => {
       const ref = React.useRef<BoxRefType>(null);
 
       React.useEffect(() => {

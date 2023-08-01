@@ -157,7 +157,7 @@ const Code = ({
   color,
   testID,
   ...styledProps
-}: CodeProps): JSX.Element => {
+}: CodeProps): React.ReactElement => {
   const { fontSize, lineHeight } = getCodeFontSizeAndLineHeight(size)!;
   const codeTextColor = React.useMemo<CodeProps['color']>(
     () => getCodeColor({ isHighlighted, color }),

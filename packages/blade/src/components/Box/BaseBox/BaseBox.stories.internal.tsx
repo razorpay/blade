@@ -22,7 +22,7 @@ const BoxStoryMeta = {
   },
 } as Meta<BaseBoxProps>;
 
-export const Default = (args: BaseBoxProps): JSX.Element => {
+export const Default = (args: BaseBoxProps): React.ReactElement => {
   return (
     <BaseBox {...args}>
       <Text>Change controls to see the parameters change for the container</Text>
@@ -30,7 +30,7 @@ export const Default = (args: BaseBoxProps): JSX.Element => {
   );
 };
 
-export const Responsive = (args: BaseBoxProps): JSX.Element => {
+export const Responsive = (args: BaseBoxProps): React.ReactElement => {
   return (
     <BaseBox {...args}>
       <BaseBox flex="1" backgroundColor="yellow" minHeight="spacing.10" minWidth="spacing.10" />

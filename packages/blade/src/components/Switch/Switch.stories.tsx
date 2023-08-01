@@ -35,7 +35,7 @@ const Page = (): React.ReactElement => {
         {`
         import { Switch } from '@razorpay/blade/components'
         
-        function App(): JSX.Element {
+        function App(): React.ReactElement {
           return (
             // Check console
             <Switch onChange={(e) => console.log(e.isChecked)} accessibilityLabel="Toggle DarkMode" />

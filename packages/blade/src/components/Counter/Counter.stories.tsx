@@ -26,7 +26,7 @@ const Page = (): ReactElement => {
         {`
           import { Counter } from '@razorpay/blade/components';
 
-          function App(): JSX.Element {
+          function App(): React.ReactElement {
             return (
               // Change values to anything less than 99 to see change
               <Counter max={99} value={140} />

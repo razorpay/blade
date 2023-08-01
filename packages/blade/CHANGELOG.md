@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 9.5.1
+
+### Patch Changes
+
+- 14271605: refactor: move to `React.ReactElement` type
+
 ## 9.5.0
 
 ### Minor Changes
