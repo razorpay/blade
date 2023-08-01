@@ -187,6 +187,24 @@ describe('<BottomSheet />', () => {
     mockConsoleError.mockRestore();
   });
 
+  it('should render bottom sheet with custom zIndex', () => {
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
+
+    const Example = (): React.ReactElement => {
+      return (
+        <BottomSheet isOpen={true} zIndex={425}>
+          <BottomSheetBody>
+            <Text>BottomSheet body</Text>
+          </BottomSheetBody>
+        </BottomSheet>
+      );
+    };
+    const { queryByText, queryByTestId } = renderWithTheme(<Example />);
+    expect(queryByText('BottomSheet body')).toBeInTheDocument();
+    expect(queryByTestId('bottomsheet-surface')).toHaveStyle({ 'z-index': 425 });
+    mockConsoleError.mockRestore();
+  });
+
   it('should compose with Dropdown single select', async () => {
     const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
 

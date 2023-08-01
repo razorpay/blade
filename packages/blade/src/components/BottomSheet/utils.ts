@@ -54,4 +54,12 @@ function computeMaxContent(
   );
 }
 
-export { SnapPoints, computeMaxContent, computeMinContent, computeSnapPointBounds };
+const bottomSheetZIndex = 100;
+
+export {
+  SnapPoints,
+  computeMaxContent,
+  computeMinContent,
+  computeSnapPointBounds,
+  bottomSheetZIndex,
+};

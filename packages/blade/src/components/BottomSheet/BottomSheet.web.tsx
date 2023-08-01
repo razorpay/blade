@@ -73,6 +73,7 @@ const _BottomSheet = ({
   children,
   initialFocusRef,
   snapPoints = [0.35, 0.5, 0.85],
+  zIndex = 100,
 }: BottomSheetProps): React.ReactElement => {
   const { theme } = useTheme();
   const dimensions = useWindowSize();
@@ -107,7 +108,7 @@ const _BottomSheet = ({
   } = useBottomSheetStack();
   const currentStackIndex = getCurrentStackIndexById(id);
   const isOnTopOfStack = getTopOfTheStack() === id;
-  const zIndex = 100 - currentStackIndex;
+  const bottomSheetZIndex = zIndex - currentStackIndex;
 
   const setPositionY = React.useCallback(
     (value: number, limit = true) => {
@@ -420,9 +421,12 @@ const _BottomSheet = ({
           modal={true}
         >
           <>
-            <BottomSheetBackdrop zIndex={zIndex} />
+            <BottomSheetBackdrop zIndex={bottomSheetZIndex} />
             <BottomSheetSurface
-              {...metaAttribute({ name: MetaConstants.BottomSheet })}
+              {...metaAttribute({
+                name: MetaConstants.BottomSheet,
+                testID: 'bottomsheet-surface',
+              })}
               {...makeAccessible({ modal: true, role: 'dialog' })}
               windowHeight={dimensions.height}
               isDragging={isDragging}
@@ -432,7 +436,7 @@ const _BottomSheet = ({
                 height: positionY,
                 bottom: 0,
                 top: 'auto',
-                zIndex,
+                zIndex: bottomSheetZIndex,
               }}
               ref={refs.setFloating}
             >

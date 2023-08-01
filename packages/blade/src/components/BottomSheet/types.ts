@@ -31,6 +31,11 @@ type BottomSheetProps = {
    * By default the initial focus will go to the close button
    */
   initialFocusRef?: React.MutableRefObject<any>;
+  /**
+   * Sets the z-index of the bottom sheet
+   * @default 100
+   */
+  zIndex?: number;
 };
 
 type BottomSheetHeaderProps = Pick<
