@@ -25,7 +25,7 @@ const Page = (): React.ReactElement => {
         {`
         import { Amount } from '@razorpay/blade/components';
         
-        function App(): JSX.Element {
+        function App(): React.ReactElement {
           return <Amount value={10000} />;
         }
         export default App;

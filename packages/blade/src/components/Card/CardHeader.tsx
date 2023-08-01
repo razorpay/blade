@@ -141,16 +141,18 @@ const _CardHeaderLeading = ({
 }: CardHeaderLeadingProps): React.ReactElement => {
   useVerifyInsideCard('CardHeaderLeading');
 
-  if (prefix && !isValidAllowedChildren(prefix, ComponentIds.CardHeaderIcon)) {
-    throw new Error(
-      `[Blade CardHeaderLeading]: Only \`${ComponentIds.CardHeaderIcon}\` component is accepted in prefix`,
-    );
-  }
+  if (__DEV__) {
+    if (prefix && !isValidAllowedChildren(prefix, ComponentIds.CardHeaderIcon)) {
+      throw new Error(
+        `[Blade CardHeaderLeading]: Only \`${ComponentIds.CardHeaderIcon}\` component is accepted in prefix`,
+      );
+    }
 
-  if (suffix && !isValidAllowedChildren(suffix, ComponentIds.CardHeaderCounter)) {
-    throw new Error(
-      `[Blade CardHeaderLeading]: Only \`${ComponentIds.CardHeaderCounter}\` component is accepted in prefix`,
-    );
+    if (suffix && !isValidAllowedChildren(suffix, ComponentIds.CardHeaderCounter)) {
+      throw new Error(
+        `[Blade CardHeaderLeading]: Only \`${ComponentIds.CardHeaderCounter}\` component is accepted in prefix`,
+      );
+    }
   }
 
   return (
@@ -197,12 +199,14 @@ const headerTrailingAllowedComponents = [
 const _CardHeaderTrailing = ({ visual }: CardHeaderTrailingProps): React.ReactElement => {
   useVerifyInsideCard('CardHeaderTrailing');
 
-  if (visual && !headerTrailingAllowedComponents.includes(getComponentId(visual)!)) {
-    throw new Error(
-      `[Blade CardHeaderTrailing]: Only one of \`${headerTrailingAllowedComponents.join(
-        ', ',
-      )}\` component is accepted in visual`,
-    );
+  if (__DEV__) {
+    if (visual && !headerTrailingAllowedComponents.includes(getComponentId(visual)!)) {
+      throw new Error(
+        `[Blade CardHeaderTrailing]: Only one of \`${headerTrailingAllowedComponents.join(
+          ', ',
+        )}\` component is accepted in visual`,
+      );
+    }
   }
 
   return <BaseBox alignSelf="center">{visual}</BaseBox>;

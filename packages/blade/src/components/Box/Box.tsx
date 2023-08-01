@@ -8,28 +8,32 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 const validateBackgroundString = (stringBackgroundColorValue: string): void => {
-  if (
-    !stringBackgroundColorValue.startsWith('surface.background') &&
-    !stringBackgroundColorValue.startsWith('brand.')
-  ) {
-    throw new Error(
-      `[Blade - Box]: Oops! Currently you can only use \`surface.background.*\` and \`brand.*\` tokens with backgroundColor property but we received \`${stringBackgroundColorValue}\` instead.\n\n Do you have a usecase of using other values? Create an issue on https://github.com/razorpay/blade repo to let us know and we can discuss ✨`,
-    );
+  if (__DEV__) {
+    if (
+      !stringBackgroundColorValue.startsWith('surface.background') &&
+      !stringBackgroundColorValue.startsWith('brand.')
+    ) {
+      throw new Error(
+        `[Blade - Box]: Oops! Currently you can only use \`surface.background.*\` and \`brand.*\` tokens with backgroundColor property but we received \`${stringBackgroundColorValue}\` instead.\n\n Do you have a usecase of using other values? Create an issue on https://github.com/razorpay/blade repo to let us know and we can discuss ✨`,
+      );
+    }
   }
 };
 
 const validateBackgroundProp = (
   responsiveBackgroundColor: MakeValueResponsive<string | undefined>,
 ): void => {
-  if (responsiveBackgroundColor) {
-    if (typeof responsiveBackgroundColor === 'string') {
-      validateBackgroundString(responsiveBackgroundColor);
-      return;
-    }
+  if (__DEV__) {
+    if (responsiveBackgroundColor) {
+      if (typeof responsiveBackgroundColor === 'string') {
+        validateBackgroundString(responsiveBackgroundColor);
+        return;
+      }
 
-    Object.values(responsiveBackgroundColor).forEach((backgroundColor) => {
-      validateBackgroundString(backgroundColor);
-    });
+      Object.values(responsiveBackgroundColor).forEach((backgroundColor) => {
+        validateBackgroundString(backgroundColor);
+      });
+    }
   }
 };
 
@@ -186,21 +190,25 @@ const makeBoxProps = (props: BoxProps): KeysRequired<Omit<BoxProps, 'testID' | '
  */
 const _Box: React.ForwardRefRenderFunction<BoxRefType, BoxProps> = (props, ref) => {
   React.useEffect(() => {
-    validateBackgroundProp(props.backgroundColor);
+    if (__DEV__) {
+      validateBackgroundProp(props.backgroundColor);
+    }
   }, [props.backgroundColor]);
 
   React.useEffect(() => {
-    if (props.as) {
-      if (isReactNative()) {
-        throw new Error('[Blade - Box]: `as` prop is not supported on React Native');
-      }
+    if (__DEV__) {
+      if (props.as) {
+        if (isReactNative()) {
+          throw new Error('[Blade - Box]: `as` prop is not supported on React Native');
+        }
 
-      if (!validBoxAsValues.includes(props.as)) {
-        throw new Error(
-          `[Blade - Box]: Invalid \`as\` prop value - ${props.as}. Only ${validBoxAsValues.join(
-            ', ',
-          )} are valid values`,
-        );
+        if (!validBoxAsValues.includes(props.as)) {
+          throw new Error(
+            `[Blade - Box]: Invalid \`as\` prop value - ${props.as}. Only ${validBoxAsValues.join(
+              ', ',
+            )} are valid values`,
+          );
+        }
       }
     }
   }, [props.as]);

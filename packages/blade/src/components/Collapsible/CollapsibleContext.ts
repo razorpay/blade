@@ -13,12 +13,14 @@ const CollapsibleContext = createContext<CollapsibleContextState | null>(null);
 
 const useCollapsible = (): CollapsibleContextState => {
   const collapsibleContext = useContext(CollapsibleContext);
-  if (!collapsibleContext) {
-    throw new Error(
-      `[Blade: CollapsibleContext]: You're trying to use Collapsible sub-components without Collapsible. useCollapsible should only be used within CollapsibleContext`,
-    );
+  if (__DEV__) {
+    if (!collapsibleContext) {
+      throw new Error(
+        `[Blade: CollapsibleContext]: You're trying to use Collapsible sub-components without Collapsible. useCollapsible should only be used within CollapsibleContext`,
+      );
+    }
   }
-  return collapsibleContext;
+  return collapsibleContext!;
 };
 
 export { CollapsibleContext, useCollapsible, CollapsibleContextState };

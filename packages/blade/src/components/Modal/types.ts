@@ -16,6 +16,7 @@ export type ModalProps = {
   /**
    *  Ref to the element to be focused on opening the modal.
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   initialFocusRef?: React.MutableRefObject<any>;
   /**
    *  Size of the modal
@@ -26,4 +27,9 @@ export type ModalProps = {
    *  Accessibility label for the modal
    */
   accessibilityLabel?: string;
+  /**
+   * Sets the z-index of the modal
+   * @default 1000
+   */
+  zIndex?: number;
 };
