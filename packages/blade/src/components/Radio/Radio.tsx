@@ -55,8 +55,10 @@ const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
   const groupProps = useRadioGroupContext();
   const isInsideGroup = !isEmpty(groupProps);
 
-  if (!isInsideGroup) {
-    throw new Error('[Blade Radio]: Cannot use <Radio /> outside of <RadioGroup />');
+  if (__DEV__) {
+    if (!isInsideGroup) {
+      throw new Error('[Blade Radio]: Cannot use <Radio /> outside of <RadioGroup />');
+    }
   }
 
   const isChecked = groupProps?.state?.isChecked(value);

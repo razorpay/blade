@@ -6,8 +6,10 @@ const CardContext = React.createContext<CardContextType>(null);
 
 const useVerifyInsideCard = (componentName: string): CardContextType => {
   const context = React.useContext(CardContext);
-  if (!context) {
-    throw new Error(`[Blade Card]: ${componentName} cannot be used outside of Card component`);
+  if (__DEV__) {
+    if (!context) {
+      throw new Error(`[Blade Card]: ${componentName} cannot be used outside of Card component`);
+    }
   }
   return true;
 };
@@ -22,12 +24,14 @@ const useVerifyAllowedComponents = (
 ): void => {
   React.Children.forEach(children, (child) => {
     const isValidChild = child && allowedComponents.includes(getComponentId(child)!);
-    if (!isValidChild) {
-      throw new Error(
-        `[Blade Card]: Only one of \`${allowedComponents.join(
-          ', ',
-        )}\` component is accepted as ${componentName} children`,
-      );
+    if (__DEV__) {
+      if (!isValidChild) {
+        throw new Error(
+          `[Blade Card]: Only one of \`${allowedComponents.join(
+            ', ',
+          )}\` component is accepted as ${componentName} children`,
+        );
+      }
     }
   });
 };

@@ -9,7 +9,7 @@ type MyComponentWithStyledProps = {
   test: 'working???';
 } & StyledPropsBlade;
 
-const ComponentWithGetStyledProps = (props: MyComponentWithStyledProps): JSX.Element => {
+const ComponentWithGetStyledProps = (props: MyComponentWithStyledProps): React.ReactElement => {
   return <BaseBox {...getStyledProps(props)} />;
 };
 

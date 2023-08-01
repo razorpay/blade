@@ -35,7 +35,7 @@ const Page = (): React.ReactElement => {
         {`
         import { Tooltip, Button } from '@razorpay/blade/components'
         
-        function App(): JSX.Element {
+        function App(): React.ReactElement {
           return (
             <Tooltip content="Hello world" placement="bottom">
               <Button>Hover over me</Button>

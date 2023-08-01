@@ -103,9 +103,11 @@ const _List = ({
   const childListItems = childrenArray.filter((child) => {
     if (isValidAllowedChildren(child, MetaConstants.ListItem)) {
       return child;
-    } else {
+    }
+    if (__DEV__) {
       throw new Error('[Blade List]: You can only pass a ListItem as a child to List.');
     }
+    return null;
   });
 
   return (

@@ -139,35 +139,38 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
   const hasDefaultChecked = !isUndefined(defaultChecked);
   const hasIsChecked = !isUndefined(isChecked);
   const hasOnChange = !isUndefined(onChange);
-  if (
-    (hasValidationState || hasName || hasDefaultChecked || hasIsChecked || hasOnChange) &&
-    !isEmpty(groupProps)
-  ) {
-    const props = [
-      hasValidationState ? 'validationState' : undefined,
-      hasName ? 'name' : undefined,
-      hasDefaultChecked ? 'defaultChecked' : undefined,
-      hasIsChecked ? 'isChecked' : undefined,
-      hasOnChange ? 'onChange' : undefined,
-    ]
-      .filter(Boolean)
-      .join(',');
 
-    throw new Error(
-      `[Blade Checkbox]: Cannot set \`${props}\` on <Checkbox /> when it's inside <CheckboxGroup />, Please set it on the <CheckboxGroup /> itself`,
-    );
-  }
+  if (__DEV__) {
+    if (
+      (hasValidationState || hasName || hasDefaultChecked || hasIsChecked || hasOnChange) &&
+      !isEmpty(groupProps)
+    ) {
+      const props = [
+        hasValidationState ? 'validationState' : undefined,
+        hasName ? 'name' : undefined,
+        hasDefaultChecked ? 'defaultChecked' : undefined,
+        hasIsChecked ? 'isChecked' : undefined,
+        hasOnChange ? 'onChange' : undefined,
+      ]
+        .filter(Boolean)
+        .join(',');
 
-  // mandate value prop when using inside group
-  if (!value && !isEmpty(groupProps)) {
-    throw new Error(
-      `[Blade Checkbox]: <CheckboxGroup /> requires that you pass unique "value" prop to each <Checkbox />
+      throw new Error(
+        `[Blade Checkbox]: Cannot set \`${props}\` on <Checkbox /> when it's inside <CheckboxGroup />, Please set it on the <CheckboxGroup /> itself`,
+      );
+    }
+
+    // mandate value prop when using inside group
+    if (!value && !isEmpty(groupProps)) {
+      throw new Error(
+        `[Blade Checkbox]: <CheckboxGroup /> requires that you pass unique "value" prop to each <Checkbox />
       <CheckboxGroup>
         <Checkbox value="apple">Apple</Checkbox>
         <Checkbox value="mango">Mango</Checkbox>
       </CheckboxGroup>
       `,
-    );
+      );
+    }
   }
 
   const _validationState = validationState ?? groupProps?.validationState;
