@@ -23,6 +23,7 @@ const getIndicatorButtonStyles = ({
     backgroundColor: isActive ? backgroundColor[variant] : theme.colors.overlay.background,
     width: isActive ? makeSize(size[18]) : makeSize(size[6]),
     height: makeSize(size[6]),
+    transition: '300ms width',
 
     ...(!isReactNative() && {
       '&:focus': {

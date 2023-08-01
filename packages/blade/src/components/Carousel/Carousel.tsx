@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 /* eslint-disable consistent-return */
@@ -5,21 +6,31 @@ import styled from 'styled-components';
 import React from 'react';
 import { Indicators } from './Indicators/Indicators';
 import { NavigationButton } from './NavigationButton';
-import { CarouselItem } from './CarouselItem';
 import type { CarouselProps } from './types';
+import { CarouselContext } from './CarouselContext';
 import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
-import { makeSpace, useTheme } from '~utils';
-import { Card, CardBody } from '~components/Card';
-import { Heading, Text } from '~components/Typography';
+import { useTheme } from '~utils';
+
+type ControlsProp = {
+  showIndicators?: boolean;
+  navigationButtonPosition?: 'bottom' | 'side';
+  activeSlide: number;
+  totalSlides: number;
+  onIndicatorButtonClick: (index: number) => void;
+  onNextButtonClick: () => void;
+  onPreviousButtonClick: () => void;
+};
 
 const Controls = ({
   showIndicators,
   navigationButtonPosition,
   activeSlide,
   totalSlides,
-  setActiveSlide,
-}) => {
+  onIndicatorButtonClick,
+  onNextButtonClick,
+  onPreviousButtonClick,
+}: ControlsProp): React.ReactElement => {
   // 1. buttons or indicators side by side on bottom
   // 3. only indicators on bottom and buttons will be on side
   const isNavButtonsOnBottom = navigationButtonPosition === 'bottom';
@@ -28,30 +39,16 @@ const Controls = ({
   if (isNavButtonsOnBottom) {
     return (
       <Box marginTop="spacing.7" display="flex" alignItems="center" gap="spacing.4">
-        <NavigationButton
-          type="previous"
-          variant="filled"
-          onClick={() => {
-            console.log('prev');
-          }}
-        />
+        <NavigationButton type="previous" variant="filled" onClick={onPreviousButtonClick} />
         {showIndicators ? (
           <Indicators
-            onIndicatorButtonClick={(index) => {
-              console.log(index);
-            }}
+            onIndicatorButtonClick={onIndicatorButtonClick}
             activeIndex={activeSlide}
-            totalItems={7}
+            totalItems={totalSlides}
             variant="blue"
           />
         ) : null}
-        <NavigationButton
-          onClick={() => {
-            console.log('next');
-          }}
-          type="next"
-          variant="filled"
-        />
+        <NavigationButton onClick={onNextButtonClick} type="next" variant="filled" />
       </Box>
     );
   }
@@ -60,18 +57,16 @@ const Controls = ({
     return (
       <Box marginTop="spacing.7">
         <Indicators
-          onIndicatorButtonClick={(index) => {
-            console.log(index);
-          }}
+          onIndicatorButtonClick={onIndicatorButtonClick}
           activeIndex={activeSlide}
-          totalItems={7}
+          totalItems={totalSlides}
           variant="blue"
         />
       </Box>
     );
   }
 
-  return null;
+  return <></>;
 };
 
 const CarouselContainer = styled(BaseBox)(() => {
@@ -96,157 +91,127 @@ const CarouselContainer = styled(BaseBox)(() => {
   };
 });
 
-const TestimonialCard = (): React.ReactElement => {
-  return (
-    <Card>
-      <CardBody>
-        <Box display="flex" gap="spacing.4" flexDirection="column">
-          <Box>
-            <Heading>I can now collect payments from my clients instantly</Heading>
-            <Text>
-              The thing that I love about Razorpay is how it helps me accept payments directly via
-              WhatsApp, Instagram & Facebook. Before Razorpay, I would primarily accept payments via
-              bank transfer and cheques which would cost me payment delays all the time. Not to
-              mention the long and tedious process that it involves. But Razorpay has been a
-              saviour!
-            </Text>
-          </Box>
-          <Box>
-            <Text weight="bold">Nidhi Mulay</Text>
-            <Text>
-              Founder,{' '}
-              <Text as="span" weight="bold">
-                Hair By Nidhi
-              </Text>
-            </Text>
-          </Box>
-        </Box>
-      </CardBody>
-    </Card>
-  );
+type CarouselBodyProps = {
+  children: React.ReactNode;
+  totalSlides: number;
+  shouldAddStartEndSpacing?: boolean;
 };
-
-const CarouselBody = ({ isMobile, bleed, visibleItems }) => {
-  return (
-    <CarouselContainer>
-      <CarouselItem isMobile={isMobile} bleed={bleed} visibleItems={visibleItems} id="slide1">
-        <TestimonialCard />
-      </CarouselItem>
-      <CarouselItem isMobile={isMobile} bleed={bleed} visibleItems={visibleItems} id="slide2">
-        <TestimonialCard />
-      </CarouselItem>
-      <CarouselItem isMobile={isMobile} bleed={bleed} visibleItems={visibleItems} id="slide3">
-        <TestimonialCard />
-      </CarouselItem>
-      <CarouselItem isMobile={isMobile} bleed={bleed} visibleItems={visibleItems} id="slide4">
-        <TestimonialCard />
-      </CarouselItem>
-      <CarouselItem isMobile={isMobile} bleed={bleed} visibleItems={visibleItems} id="slide5">
-        <TestimonialCard />
-      </CarouselItem>
-      <CarouselItem isMobile={isMobile} bleed={bleed} visibleItems={visibleItems} id="slide6">
-        <TestimonialCard />
-      </CarouselItem>
-      <CarouselItem isMobile={isMobile} bleed={bleed} visibleItems={visibleItems} id="slide7">
-        <TestimonialCard />
-      </CarouselItem>
-
-      <CarouselItem isMobile={isMobile} bleed={bleed} visibleItems={visibleItems} id="slide7">
-        <TestimonialCard />
-      </CarouselItem>
-
-      <CarouselItem isMobile={isMobile} bleed={bleed} visibleItems={visibleItems} id="slide7">
-        <TestimonialCard />
-      </CarouselItem>
-
-      <CarouselItem isMobile={isMobile} bleed={bleed} visibleItems={visibleItems} id="slide7">
-        <TestimonialCard />
-      </CarouselItem>
-    </CarouselContainer>
-  );
-};
+const CarouselBody = React.forwardRef<HTMLDivElement, CarouselBodyProps>(
+  ({ children, totalSlides, shouldAddStartEndSpacing }, ref) => {
+    return (
+      <CarouselContainer ref={ref}>
+        {React.Children.map(children, (child, index) => {
+          return React.cloneElement(child as React.ReactElement, {
+            id: `carousel-item-${index}`,
+            shouldHaveStartSpacing: shouldAddStartEndSpacing && index === 0,
+            shouldHaveEndSpacing: shouldAddStartEndSpacing && index === totalSlides - 1,
+          });
+        })}
+      </CarouselContainer>
+    );
+  },
+);
 
 const Carousel = ({
-  visibleItems = 1,
+  visibleItems,
   bleed = 'none',
   showIndicators = true,
   navigationButtonPosition = 'bottom',
   children,
+  shouldAddStartEndSpacing,
 }: CarouselProps): React.ReactElement => {
   const { platform } = useTheme();
   const [activeSlide, setActiveSlide] = React.useState(0);
+  const containerRef = React.useRef<HTMLDivElement>(null);
 
   const isMobile = platform === 'onMobile';
   let _visibleItems = visibleItems;
 
   if (isMobile) {
-    _visibleItems = 1;
+    _visibleItems = visibleItems === undefined ? undefined : 1;
     navigationButtonPosition = 'bottom';
   }
 
   const isNavButtonsOnSide = bleed === 'none' && navigationButtonPosition === 'side';
   const shouldNavButtonsFloat = bleed !== 'none' && navigationButtonPosition === 'side';
-  const numberOfIndicators = Math.ceil(_visibleItems / React.Children.count(children));
+  const totalNumberOfSlides = React.Children.count(children);
+  const numberOfIndicators = Math.ceil(totalNumberOfSlides / (visibleItems ?? 1));
+
+  const goToSlideIndex = (slideIndex: number) => {
+    if (!containerRef.current) return;
+
+    const carouselItemId = `#carousel-item-${slideIndex}`;
+    const carouselItem = containerRef.current.querySelector(carouselItemId);
+    carouselItem?.scrollIntoView({
+      behavior: 'smooth',
+      inline: 'center',
+      block: 'center',
+    });
+    setActiveSlide(slideIndex);
+  };
+
+  const goToNextSlide = () => {
+    let slideIndex = activeSlide + 1;
+    if (slideIndex >= totalNumberOfSlides) {
+      slideIndex = 0;
+    }
+    goToSlideIndex(slideIndex);
+  };
+
+  const goToPreviousSlide = () => {
+    let slideIndex = activeSlide - 1;
+    if (activeSlide <= 0) {
+      slideIndex = totalNumberOfSlides - 1;
+    }
+    goToSlideIndex(slideIndex);
+  };
 
   return (
-    <BaseBox display="flex" alignItems="center" flexDirection="column">
-      <BaseBox
-        width="100%"
-        position="relative"
-        display="flex"
-        alignItems="center"
-        gap="spacing.4"
-        flexDirection="row"
-      >
-        {shouldNavButtonsFloat ? (
-          <BaseBox position="absolute" left="spacing.11">
-            <NavigationButton
-              type="previous"
-              variant="filled"
-              onClick={() => {
-                console.log('prev');
-              }}
-            />
-          </BaseBox>
-        ) : null}
-        {isNavButtonsOnSide ? (
-          <NavigationButton
-            type="previous"
-            variant="filled"
-            onClick={() => {
-              console.log('prev');
-            }}
-          />
-        ) : null}
-        <CarouselBody isMobile={isMobile} visibleItems={_visibleItems} bleed={bleed} />
-        {shouldNavButtonsFloat ? (
-          <BaseBox position="absolute" right="spacing.11">
-            <NavigationButton
-              onClick={() => {
-                console.log('next');
-              }}
-              type="next"
-              variant="filled"
-            />
-          </BaseBox>
-        ) : null}
-        {isNavButtonsOnSide ? (
-          <NavigationButton
-            onClick={() => {
-              console.log('next');
-            }}
-            type="next"
-            variant="filled"
-          />
-        ) : null}
+    <CarouselContext.Provider value={{ visibleItems: _visibleItems, bleed }}>
+      <BaseBox display="flex" alignItems="center" flexDirection="column">
+        <BaseBox
+          width="100%"
+          position="relative"
+          display="flex"
+          alignItems="center"
+          gap="spacing.4"
+          flexDirection="row"
+        >
+          {shouldNavButtonsFloat ? (
+            <BaseBox position="absolute" left="spacing.11">
+              <NavigationButton type="previous" variant="filled" onClick={goToPreviousSlide} />
+            </BaseBox>
+          ) : null}
+          {isNavButtonsOnSide ? (
+            <NavigationButton type="previous" variant="filled" onClick={goToPreviousSlide} />
+          ) : null}
+          <CarouselBody
+            totalSlides={totalNumberOfSlides}
+            shouldAddStartEndSpacing={shouldAddStartEndSpacing}
+            ref={containerRef}
+          >
+            {children}
+          </CarouselBody>
+          {shouldNavButtonsFloat ? (
+            <BaseBox position="absolute" right="spacing.11">
+              <NavigationButton onClick={goToNextSlide} type="next" variant="filled" />
+            </BaseBox>
+          ) : null}
+          {isNavButtonsOnSide ? (
+            <NavigationButton onClick={goToNextSlide} type="next" variant="filled" />
+          ) : null}
+        </BaseBox>
+        <Controls
+          totalSlides={numberOfIndicators}
+          activeSlide={activeSlide}
+          showIndicators={showIndicators}
+          navigationButtonPosition={navigationButtonPosition}
+          onIndicatorButtonClick={goToSlideIndex}
+          onNextButtonClick={goToNextSlide}
+          onPreviousButtonClick={goToPreviousSlide}
+        />
       </BaseBox>
-      <Controls
-        totalSlides={numberOfIndicators}
-        activeSlide={activeSlide}
-        showIndicators={showIndicators}
-        navigationButtonPosition={navigationButtonPosition}
-      />
-    </BaseBox>
+    </CarouselContext.Provider>
   );
 };
 

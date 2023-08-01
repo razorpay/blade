@@ -1,13 +1,81 @@
 import type { ComponentStory, Meta } from '@storybook/react';
-
-import type { CarouselProps } from './Carousel';
+import type { CarouselProps } from './types';
 import { Carousel as CarouselComponent } from './Carousel';
+import { CarouselItem } from './CarouselItem';
 import { Box } from '~components/Box';
-import { Text } from '~components/Typography';
+import { Heading, Text } from '~components/Typography';
+import { Card, CardBody } from '~components/Card';
 
 const meta: Meta<CarouselProps> = {
   title: 'Components/Carousel',
   component: CarouselComponent,
+};
+
+const TestimonialCard = (): React.ReactElement => {
+  return (
+    <Card>
+      <CardBody>
+        <Box display="flex" gap="spacing.4" flexDirection="column">
+          <Box>
+            <Heading>I can now collect payments from my clients instantly</Heading>
+            <Text>
+              The thing that I love about Razorpay is how it helps me accept payments directly via
+              WhatsApp, Instagram & Facebook. Before Razorpay, I would primarily accept payments via
+              bank transfer and cheques which would cost me payment delays all the time. Not to
+              mention the long and tedious process that it involves. But Razorpay has been a
+              saviour!
+            </Text>
+          </Box>
+          <Box>
+            <Text weight="bold">Nidhi Mulay</Text>
+            <Text>
+              Founder,{' '}
+              <Text as="span" weight="bold">
+                Hair By Nidhi
+              </Text>
+            </Text>
+          </Box>
+        </Box>
+      </CardBody>
+    </Card>
+  );
+};
+
+const CarouselExample = (props: CarouselProps): React.ReactElement => {
+  return (
+    <CarouselComponent {...props} itemAlignment>
+      <CarouselItem>
+        <TestimonialCard />
+      </CarouselItem>
+      <CarouselItem>
+        <TestimonialCard />
+      </CarouselItem>
+      <CarouselItem>
+        <TestimonialCard />
+      </CarouselItem>
+      <CarouselItem>
+        <TestimonialCard />
+      </CarouselItem>
+      <CarouselItem>
+        <TestimonialCard />
+      </CarouselItem>
+      <CarouselItem>
+        <TestimonialCard />
+      </CarouselItem>
+      <CarouselItem>
+        <TestimonialCard />
+      </CarouselItem>
+      <CarouselItem>
+        <TestimonialCard />
+      </CarouselItem>
+      <CarouselItem>
+        <TestimonialCard />
+      </CarouselItem>
+      <CarouselItem>
+        <TestimonialCard />
+      </CarouselItem>
+    </CarouselComponent>
+  );
 };
 
 const CarouselTemplate: ComponentStory<typeof CarouselComponent> = () => {
@@ -20,39 +88,43 @@ const CarouselTemplate: ComponentStory<typeof CarouselComponent> = () => {
       gap="spacing.8"
       backgroundColor="surface.background.level1.lowContrast"
     >
-      <CarouselComponent visibleItems={2} navigationButtonPosition="side" bleed="right" />
+      <Text>v1: Responsive: N/A + auto bleed + shouldAddStartEndPadding</Text>
+      <CarouselExample navigationButtonPosition="side" bleed="right" />
+      <Text>v2: Responsive: 1|2|3</Text>
+      <CarouselExample visibleItems={2} navigationButtonPosition="side" bleed="both" />
 
+      {/* 
       <Text>Bleed: none</Text>
-      <CarouselComponent visibleItems={1} navigationButtonPosition="bottom" bleed="none" />
-      <CarouselComponent visibleItems={2} navigationButtonPosition="side" bleed="none" />
-      <CarouselComponent
+      <CarouselExample visibleItems={1} navigationButtonPosition="bottom" bleed="none" />
+      <CarouselExample visibleItems={2} navigationButtonPosition="side" bleed="none" />
+      <CarouselExample
         visibleItems={2}
         showIndicators={false}
         navigationButtonPosition="bottom"
         bleed="none"
       />
-      <CarouselComponent
+      <CarouselExample
         visibleItems={2}
         showIndicators={false}
         navigationButtonPosition="side"
         bleed="none"
       />
       <Text>bleed nav: side</Text>
-      <CarouselComponent visibleItems={2} navigationButtonPosition="side" bleed="none" />
-      <CarouselComponent visibleItems={2} bleed="none" variant="stroked" />
-      <CarouselComponent visibleItems={3} bleed="none" variant="stroked" />
+      <CarouselExample visibleItems={2} navigationButtonPosition="side" bleed="none" />
+      <CarouselExample visibleItems={2} bleed="none" variant="stroked" />
+      <CarouselExample visibleItems={3} bleed="none" variant="stroked" />
       <Text>Bleed: right</Text>
-      <CarouselComponent visibleItems={1} bleed="right" variant="stroked" />
-      <CarouselComponent visibleItems={2} bleed="right" variant="stroked" />
-      <CarouselComponent visibleItems={3} bleed="right" variant="stroked" />
+      <CarouselExample visibleItems={1} bleed="right" variant="stroked" />
+      <CarouselExample visibleItems={2} bleed="right" variant="stroked" />
+      <CarouselExample visibleItems={3} bleed="right" variant="stroked" />
       <Text>Bleed: left</Text>
-      <CarouselComponent visibleItems={1} bleed="left" variant="stroked" />
-      <CarouselComponent visibleItems={2} bleed="left" variant="stroked" />
-      <CarouselComponent visibleItems={3} bleed="left" variant="stroked" />
+      <CarouselExample visibleItems={1} bleed="left" variant="stroked" />
+      <CarouselExample visibleItems={2} bleed="left" variant="stroked" />
+      <CarouselExample visibleItems={3} bleed="left" variant="stroked" />
       <Text>Bleed: both</Text>
-      <CarouselComponent visibleItems={1} bleed="both" variant="stroked" />
-      <CarouselComponent visibleItems={2} bleed="both" variant="stroked" />
-      <CarouselComponent visibleItems={3} bleed="both" variant="stroked" />
+      <CarouselExample visibleItems={1} bleed="both" variant="stroked" />
+      <CarouselExample visibleItems={2} bleed="both" variant="stroked" />
+      <CarouselExample visibleItems={3} bleed="both" variant="stroked" /> */}
     </Box>
   );
 };
