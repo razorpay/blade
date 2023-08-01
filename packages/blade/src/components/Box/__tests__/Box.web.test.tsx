@@ -102,7 +102,7 @@ describe('<Box />', () => {
     const user = userEvent.setup();
     const boxClickHandler = jest.fn();
 
-    const BoxWithRef = (): JSX.Element => {
+    const BoxWithRef = (): React.ReactElement => {
       const ref = React.useRef<HTMLDivElement>(null);
 
       React.useEffect(() => {

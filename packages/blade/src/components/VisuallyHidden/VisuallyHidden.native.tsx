@@ -6,7 +6,7 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
 const StyledVisuallyHidden = styled.View(screenReaderStyles);
 
-export const VisuallyHidden = ({ children, testID }: VisuallyHiddenProps): JSX.Element => {
+export const VisuallyHidden = ({ children, testID }: VisuallyHiddenProps): React.ReactElement => {
   return (
     <StyledVisuallyHidden {...metaAttribute({ name: MetaConstants.VisuallyHidden, testID })}>
       {children}
