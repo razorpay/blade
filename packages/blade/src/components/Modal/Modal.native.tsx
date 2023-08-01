@@ -7,18 +7,8 @@ import { ModalFooter } from './ModalFooter';
 import type { ModalFooterProps } from './ModalFooter';
 import { ModalBody } from './ModalBody';
 import type { ModalBodyProps } from './ModalBody';
+import type { ModalProps } from './types';
 import { Text } from '~components/Typography';
-
-// Dummy type to avoid build time errors for native. This type is not used anywhere for native.
-type ModalProps = {
-  children: React.ReactNode;
-  isOpen: boolean;
-  onDismiss: () => void;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  initialFocusRef?: React.MutableRefObject<any>;
-  size?: 'small' | 'medium' | 'large';
-  accessibilityLabel?: string;
-};
 
 const Modal = (props: ModalProps): React.ReactElement => {
   console.warn(
