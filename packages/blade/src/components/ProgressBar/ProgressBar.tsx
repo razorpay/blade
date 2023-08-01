@@ -15,6 +15,7 @@ import type { TestID } from '~utils/types';
 import { makeSize } from '~utils/makeSize';
 import type { AccessibilityProps } from '~utils/makeAccessible';
 import { makeAccessible } from '~utils/makeAccessible';
+import { throwBladeError } from '~utils/logger';
 
 type ProgressBarCommonProps = {
   /**
@@ -122,9 +123,10 @@ const ProgressBar = ({
 
   if (__DEV__) {
     if (variant === 'meter' && isIndeterminate) {
-      throw new Error(
-        `[Blade: ProgressBar]: Cannot set 'isIndeterminate' when 'variant' is 'meter'.`,
-      );
+      throwBladeError({
+        moduleName: 'ProgressBar',
+        message: `Cannot set 'isIndeterminate' when 'variant' is 'meter'.`,
+      });
     }
   }
 

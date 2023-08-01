@@ -6,6 +6,7 @@ import bankingTheme from './bankingTheme';
 import type { ThemeTokens } from './theme';
 import { isPartialMatchObjectKeys } from '~utils/isPartialMatchObjectKeys';
 import type { DeepPartial } from '~utils/isPartialMatchObjectKeys';
+import { throwBladeError } from '~utils/logger';
 
 type OverrideTheme = {
   /**
@@ -47,9 +48,10 @@ type OverrideTheme = {
 const overrideTheme = ({ baseThemeTokens, overrides }: OverrideTheme): ThemeTokens => {
   if (__DEV__) {
     if (!isEqual(baseThemeTokens, paymentTheme) && !isEqual(baseThemeTokens, bankingTheme)) {
-      throw new Error(
-        '[@razorpay/blade:overrideTheme]: The base theme provided is not a valid Blade theme',
-      );
+      throwBladeError({
+        message: 'The base theme provided is not a valid Blade theme',
+        moduleName: 'overrideTheme',
+      });
     }
 
     if (
@@ -58,7 +60,10 @@ const overrideTheme = ({ baseThemeTokens, overrides }: OverrideTheme): ThemeToke
         objectToInspect: baseThemeTokens,
       })
     ) {
-      throw new Error('[@razorpay/blade:overrideTheme]: The overrides object is not valid');
+      throwBladeError({
+        message: 'The overrides object is not valid',
+        moduleName: 'overrideTheme',
+      });
     }
   }
 

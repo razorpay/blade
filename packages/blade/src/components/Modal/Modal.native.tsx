@@ -8,6 +8,7 @@ import type { ModalFooterProps } from './ModalFooter';
 import { ModalBody } from './ModalBody';
 import type { ModalBodyProps } from './ModalBody';
 import { Text } from '~components/Typography';
+import { logger } from '~utils/logger';
 
 // Dummy type to avoid build time errors for native. This type is not used anywhere for native.
 type ModalProps = {
@@ -21,9 +22,14 @@ type ModalProps = {
 };
 
 const Modal = (props: ModalProps): React.ReactElement => {
-  console.warn(
-    '[Blade Modal] Modal is not supported on mobile devices. Please use BottomSheet instead.',
-  );
+  if (__DEV__) {
+    logger({
+      type: 'warn',
+      moduleName: 'Modal',
+      message: 'Modal is not supported on mobile devices. Please use BottomSheet instead.',
+    });
+  }
+
   return (
     <Text>
       Modal Component is not available for Native mobile apps and we should use BottomSheet

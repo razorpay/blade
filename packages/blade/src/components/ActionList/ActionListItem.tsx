@@ -29,6 +29,7 @@ import { useTheme } from '~components/BladeProvider';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeSize } from '~utils/makeSize';
 import { makeAccessible } from '~utils/makeAccessible';
+import { throwBladeError } from '~utils/logger';
 
 type ActionListItemProps = {
   title: string;
@@ -350,9 +351,11 @@ const _ActionListItem = (props: ActionListItemProps): JSX.Element => {
   React.useEffect(() => {
     if (__DEV__) {
       if (dropdownTriggerer === 'SelectInput' && props.intent === 'negative') {
-        throw new Error(
-          '[ActionListItem]: negative intent ActionListItem cannot be used inside Dropdown with SelectInput trigger',
-        );
+        throwBladeError({
+          message:
+            'negative intent ActionListItem cannot be used inside Dropdown with SelectInput trigger',
+          moduleName: 'ActionListItem',
+        });
       }
     }
   }, [props.intent, dropdownTriggerer]);

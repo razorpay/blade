@@ -11,6 +11,7 @@ import type { FontSize, Typography } from '~tokens/global';
 import type { StringChildrenType, TestID } from '~utils/types';
 import { makeSpace } from '~utils/makeSpace';
 import { makeTypographySize } from '~utils/makeTypographySize';
+import { throwBladeError } from '~utils/logger';
 
 type CodeCommonProps = {
   /**
@@ -75,7 +76,10 @@ const getCodeFontSizeAndLineHeight = (
       return { fontSize: 25, lineHeight: 25 };
     default:
       if (__DEV__) {
-        throw new Error(`[Blade Code]: Unexpected size: ${size}`);
+        throwBladeError({
+          moduleName: 'Code',
+          message: `Unexpected size: ${size}`,
+        });
       }
       return undefined;
   }
@@ -103,9 +107,10 @@ const getCodeColor = ({
   if (isHighlighted) {
     if (__DEV__) {
       if (color) {
-        throw new Error(
-          '[Blade: Code]: `color` prop cannot be used without `isHighlighted={false}`',
-        );
+        throwBladeError({
+          moduleName: 'Code',
+          message: '`color` prop cannot be used without `isHighlighted={false}`',
+        });
       }
     }
 

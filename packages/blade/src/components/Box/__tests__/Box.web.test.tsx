@@ -71,7 +71,7 @@ describe('<Box />', () => {
       );
     } catch (err: unknown) {
       expect(err).toMatchInlineSnapshot(`
-        [Error: [Blade - Box]: Oops! Currently you can only use \`surface.background.*\` and \`brand.*\` tokens with backgroundColor property but we received \`red\` instead.
+        [Error: [Blade: Box]: Oops! Currently you can only use \`surface.background.*\` and \`brand.*\` tokens with backgroundColor property but we received \`red\` instead.
 
          Do you have a usecase of using other values? Create an issue on https://github.com/razorpay/blade repo to let us know and we can discuss ✨]
       `);
@@ -92,7 +92,7 @@ describe('<Box />', () => {
       );
     } catch (err: unknown) {
       expect(err).toMatchInlineSnapshot(
-        `[Error: [Blade - Box]: Invalid \`as\` prop value - button. Only div, section, footer, header, main, aside, nav, span, label are valid values]`,
+        `[Error: [Blade: Box]: Invalid \`as\` prop value - button. Only div, section, footer, header, main, aside, nav, span, label are valid values]`,
       );
     }
     console.error = tempConsoleError;

@@ -26,6 +26,7 @@ import { Box } from '~components/Box';
 import { isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import { makeAccessible } from '~utils/makeAccessible';
+import { logger, throwBladeError } from '~utils/logger';
 
 type ModalProps = {
   /**
@@ -115,10 +116,14 @@ const Modal = ({
 
   // Warn consumer if modal is opened on mobile
   useEffect(() => {
-    if (platform === 'onMobile') {
-      console.warn(
-        '[Blade Modal] Modal is not supported on mobile devices. Please use BottomSheet instead.',
-      );
+    if (__DEV__) {
+      if (platform === 'onMobile') {
+        logger({
+          message: 'Modal is not supported on mobile devices. Please use BottomSheet instead.',
+          moduleName: 'Modal',
+          type: 'warn',
+        });
+      }
     }
   }, [platform]);
 
@@ -154,9 +159,10 @@ const Modal = ({
     ) {
       return child;
     } else if (__DEV__) {
-      throw new Error(
-        '[Blade Modal] Modal only accepts ModalHeader, ModalBody and ModalFooter as children',
-      );
+      throwBladeError({
+        message: 'Modal only accepts ModalHeader, ModalBody and ModalFooter as children',
+        moduleName: 'Modal',
+      });
     }
     return null;
   });

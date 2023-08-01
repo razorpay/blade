@@ -18,6 +18,7 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { throwBladeError } from '~utils/logger';
 
 type Currency = 'INR' | 'MYR';
 
@@ -232,11 +233,18 @@ const _Amount = ({
 }: AmountProps): ReactElement => {
   if (__DEV__) {
     if (typeof value !== 'number') {
-      throw new Error('[Blade: Amount]: `value` prop must be of type `number` for Amount.');
+      throwBladeError({
+        message: '`value` prop must be of type `number` for Amount.',
+        moduleName: 'Amount',
+      });
     }
     // @ts-expect-error neutral intent should throw error
     if (intent === 'neutral') {
-      throw new Error('[Blade Amount]: `neutral` intent is not supported.');
+      throwBladeError({
+        message: '`neutral` intent is not supported.',
+        moduleName: 'Amount',
+      });
+      throw new Error('[Blade Amount]: ');
     }
   }
 
