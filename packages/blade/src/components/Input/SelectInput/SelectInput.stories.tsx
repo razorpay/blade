@@ -190,7 +190,7 @@ export default {
             {`
               import { SelectInput, Dropdown, DropdownOverlay, ActionList, ActionListItem } from '@razorpay/blade/components';
 
-              function App(): JSX.Element {
+              function App(): React.ReactElement {
                 return (
                   // Only works inside Dropdown component
                   <Dropdown>

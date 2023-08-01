@@ -67,7 +67,11 @@ type ActionListProps = {
  * ```
  *
  */
-const _ActionList = ({ children, surfaceLevel = 2, testID }: ActionListProps): JSX.Element => {
+const _ActionList = ({
+  children,
+  surfaceLevel = 2,
+  testID,
+}: ActionListProps): React.ReactElement => {
   const {
     setOptions,
     actionListItemRef,

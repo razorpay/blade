@@ -181,7 +181,7 @@ export default {
             {`
               import { TextArea } from '@razorpay/blade/components';
 
-              function App(): JSX.Element {
+              function App(): React.ReactElement {
                 return (
                   <TextArea 
                     label="Description" 
