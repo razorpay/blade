@@ -1,7 +1,7 @@
 {
   "name": "@razorpay/blade",
   "description": "The Design System that powers Razorpay",
-  "version": "9.4.0",
+  "version": "9.5.0",
   "license": "MIT",
   "engines": {
     "node": ">=18.12.1"
@@ -39,7 +39,9 @@
       },
       "default": {
         "types": "./build/components/index.d.ts",
-        "default": "./build/components/index.web.js"
+        "development": "./build/components/index.development.web.js",
+        "production": "./build/components/index.production.web.js",
+        "default": "./build/components/index.development.web.js"
       }
     },
     "./tokens": {
@@ -49,7 +51,9 @@
       },
       "default": {
         "types": "./build/tokens/index.d.ts",
-        "default": "./build/tokens/index.web.js"
+        "development": "./build/tokens/index.development.web.js",
+        "production": "./build/tokens/index.production.web.js",
+        "default": "./build/tokens/index.development.web.js"
       }
     },
     "./utils": {
@@ -59,7 +63,9 @@
       },
       "default": {
         "types": "./build/utils/index.d.ts",
-        "default": "./build/utils/index.web.js"
+        "development": "./build/utils/index.development.web.js",
+        "production": "./build/utils/index.production.web.js",
+        "default": "./build/utils/index.development.web.js"
       }
     }
   },
@@ -80,8 +86,9 @@
     "types:copy-declarations:native": "copyfiles -u 1 \"src/**/*.d.ts\" build/types/native",
     "build:generate-root-imports": "rollup -c && node ./scripts/generateRootImports.js",
     "build:clean-declarations": "rm -rf build/types",
-    "build:react": "FRAMEWORK=REACT rollup -c && node ./scripts/generateRootImports.js",
-    "build:react-native": "FRAMEWORK=REACT_NATIVE rollup -c && node ./scripts/generateRootImports.js",
+    "build:react-dev": "FRAMEWORK=REACT NODE_ENV=development rollup -c",
+    "build:react-prod": "FRAMEWORK=REACT NODE_ENV=production rollup -c",
+    "build:react-native": "FRAMEWORK=REACT_NATIVE rollup -c",
     "build:generate-css-variables": "GENERATE_CSS_VARIABLES=true FRAMEWORK=REACT rollup -c && node ./scripts/generateCssThemeVariables.js",
     "build:clean-theme-bundle": "rm -rf build/js-bundle-for-css",
     "react-native:get-stories": "sb-rn-get-stories --config-path=./.storybook/react-native && yarn prettier --write ./.storybook/react-native/storybook.requires.js",
@@ -133,6 +140,7 @@
     "@rollup/plugin-babel": "5.3.1",
     "@rollup/plugin-commonjs": "21.1.0",
     "@rollup/plugin-node-resolve": "13.1.1",
+    "@rollup/plugin-replace": "5.0.2",
     "@size-limit/preset-big-lib": "8.2.4",
     "@storybook/addon-a11y": "6.3.0",
     "@storybook/addon-actions": "6.3.0",
@@ -247,7 +255,7 @@
     "files": [
       {
         "friendlyName": "Web Components",
-        "path": "./build/components/index.web.js"
+        "path": "./build/components/index.production.web.js"
       },
       {
         "friendlyName": "React Native Components",
@@ -255,7 +263,7 @@
       },
       {
         "friendlyName": "Web Tokens",
-        "path": "./build/tokens/index.web.js"
+        "path": "./build/tokens/index.production.web.js"
       },
       {
         "friendlyName": "React Native Tokens",
@@ -267,7 +275,7 @@
       },
       {
         "friendlyName": "Web Utils",
-        "path": "./build/utils/index.web.js"
+        "path": "./build/utils/index.production.web.js"
       },
       {
         "friendlyName": "React Native Utils",
@@ -281,14 +289,14 @@
   "size-limit": [
     {
       "name": "Import Button only",
-      "path": "./build/components/index.web.js",
+      "path": "./build/components/index.production.web.js",
       "import": "{ Button }",
       "limit": "20 kb",
       "running": false
     },
     {
       "name": "Import Text only",
-      "path": "./build/components/index.web.js",
+      "path": "./build/components/index.production.web.js",
       "import": "{ Text }",
       "limit": "15 kb",
       "running": false

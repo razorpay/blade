@@ -19,6 +19,11 @@ type TooltipProps = {
   >;
   children: React.ReactElement;
   onOpenChange?: ({ isOpen }: { isOpen: boolean }) => void;
+  /**
+   * Sets the z-index of the modal
+   * @default 1100
+   */
+  zIndex?: number;
 };
 
 type TooltipContentProps = {
