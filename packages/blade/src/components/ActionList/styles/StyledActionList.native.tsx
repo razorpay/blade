@@ -16,7 +16,7 @@ const BaseStyledActionList = styled(BaseBox)<StyledActionListProps>((props) => {
 const StyledActionList = ({
   children,
   ...props
-}: { children: React.ReactNode } & BaseBoxProps & StyledActionListProps): JSX.Element => {
+}: { children: React.ReactNode } & BaseBoxProps & StyledActionListProps): React.ReactElement => {
   const { theme } = useTheme();
 
   return (

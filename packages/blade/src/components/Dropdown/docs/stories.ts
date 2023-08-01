@@ -21,7 +21,7 @@ const Playground = `
     Button
   } from '@razorpay/blade/components';
 
-  function App(): JSX.Element {
+  function App(): React.ReactElement {
     return (
       <Dropdown 
         // Uncomment next line to make it multiselectable
@@ -81,7 +81,7 @@ const getSimpleSelectCode = (selectionType: DropdownProps['selectionType']): str
     ActionListItem,
   } from '@razorpay/blade/components';
 
-  function App(): JSX.Element {
+  function App(): React.ReactElement {
     return (
       <Dropdown 
         selectionType="${selectionType}"
@@ -131,7 +131,7 @@ const WithHeaderFooterScroll = `
     Button
   } from '@razorpay/blade/components';
 
-  function App(): JSX.Element {
+  function App(): React.ReactElement {
     return (
       <Dropdown>
         <SelectInput
@@ -227,7 +227,7 @@ const WithValueDisplayStory = `
     Box,
   } from '@razorpay/blade/components';
 
-  function App(): JSX.Element {
+  function App(): React.ReactElement {
     const [currentSelections, setCurrentSelections] = React.useState([]);
     
     console.log({currentSelections});
@@ -281,7 +281,7 @@ const WithHTMLFormSubmissionStory = `
     Text,
   } from '@razorpay/blade/components';
 
-  function App(): JSX.Element {
+  function App(): React.ReactElement {
     const [submissionValues, setSubmissionValues] = React.useState('');
     
     return (
@@ -341,7 +341,7 @@ const WithValidationStateStory = `
   } from '@razorpay/blade/components';
   import type { SelectInputProps } from '@razorpay/blade/components';
 
-  function App(): JSX.Element {
+  function App(): React.ReactElement {
     const [validationState, setValidationState] = React.useState<SelectInputProps['validationState']>('none');
 
     return (
@@ -403,7 +403,7 @@ const WithRefUsageStory = `
     Text
   } from '@razorpay/blade/components';
 
-  function App(): JSX.Element {
+  function App(): React.ReactElement {
     const selectRef = React.useRef<HTMLElement>(null);
 
 
@@ -457,7 +457,7 @@ const WithMultipleDropdownsStory = `
   } from '@razorpay/blade/components';
 
 
-  function App(): JSX.Element {  
+  function App(): React.ReactElement {  
     return (
       <Box display="flex" flexDirection="row" minHeight="300px" gap="spacing.2">
         <Box flex={1}>
@@ -502,7 +502,7 @@ const WithControlledSelectStory = `
     Button,
   } from '@razorpay/blade/components';
 
-  function App(args): JSX.Element {
+  function App(args): React.ReactElement {
     const [currentSelection, setCurrentSelection] = React.useState<undefined | string>();
   
     return (
@@ -545,7 +545,7 @@ const WithControlledMultiSelectStory = `
     Button,
   } from '@razorpay/blade/components';
 
-  function App(args): JSX.Element {
+  function App(args): React.ReactElement {
     const [currentSelection, setCurrentSelection] = React.useState<string[]>([]);  
 
     return (
@@ -597,7 +597,7 @@ const WithBottomAlignedSelectStory = `
     Box,
   } from '@razorpay/blade/components';
 
-  function App(): JSX.Element {
+  function App(): React.ReactElement {
     return (
       <Box minHeight="95vh" display="flex" alignItems="flex-end">
         <Box flex="1">
@@ -641,7 +641,7 @@ const WithSimpleMenuStory = `
     Box,
   } from '@razorpay/blade/components';
 
-  function App (): JSX.Element {
+  function App (): React.ReactElement {
     return (
       <Box minHeight="200px" width={{ base: '100%', m: '500px' }}>
         <Dropdown>
@@ -701,7 +701,7 @@ const WithLinkStory = `
     Text,
   } from '@razorpay/blade/components';
 
-  function App (): JSX.Element {
+  function App (): React.ReactElement {
     const [status, setStatus] = React.useState<string | undefined>('latest-added');
     const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
   
@@ -774,7 +774,7 @@ const WithControlledMenuStory = `
     CloseIcon
   } from '@razorpay/blade/components';
 
-  function App(): JSX.Element {
+  function App(): React.ReactElement {
     const [status, setStatus] = React.useState<string | undefined>();
 
     return (
@@ -839,7 +839,7 @@ const WithControlledMultiSelectMenuStory = `
     Tag,
   } from '@razorpay/blade/components';
 
-  function App(): JSX.Element {
+  function App(): React.ReactElement {
     const [filters, setFilters] = React.useState<string[]>([]);
 
     const toggleSelection = ({ name, value }: { name: string; value?: boolean }): void => {
@@ -920,7 +920,7 @@ const WithRightAlignedMenuStory = `
     Box,
   } from '@razorpay/blade/components';
 
-  function App (): JSX.Element {
+  function App (): React.ReactElement {
     return (
       <Box minHeight="200px" width="100%" display="flex" justifyContent="flex-end">
         <Dropdown>
