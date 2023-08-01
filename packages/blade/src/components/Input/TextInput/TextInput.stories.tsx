@@ -126,6 +126,11 @@ export default {
         category: propsCategory.LABEL_PROPS,
       },
     },
+    accessibilityLabel: {
+      table: {
+        category: propsCategory.LABEL_PROPS,
+      },
+    },
     labelPosition: {
       table: {
         category: propsCategory.LABEL_PROPS,
@@ -229,7 +234,7 @@ export default {
             {`
               import { TextInput } from '@razorpay/blade/components';
 
-              function App(): JSX.Element {
+              function App(): React.ReactElement {
                 return (
                   <TextInput 
                     label="Name" 
@@ -292,6 +297,14 @@ TextInputSuccess.args = {
   defaultValue: 'John Ives',
   validationState: 'success',
   successText: 'Name validated',
+};
+
+export const TextInputWithoutLabel = TextInputTemplate.bind({});
+TextInputWithoutLabel.storyName = 'TextInput without label';
+TextInputWithoutLabel.args = {
+  defaultValue: 'John Ives',
+  label: undefined,
+  accessibilityLabel: 'Enter your name',
 };
 
 const TextInputMaxCharactersTemplate: ComponentStory<typeof TextInputComponent> = () => {
@@ -414,6 +427,17 @@ const TextInputKitchenSinkTemplate: ComponentStory<typeof TextInputComponent> = 
         <TextInput
           necessityIndicator="required"
           label="Enter Your Residential Address"
+          placeholder="Enter your address"
+          name="fullName"
+          labelPosition="left"
+          maxCharacters={100}
+          validationState="none"
+          helpText="Write your message"
+        />
+
+        <TextInput
+          accessibilityLabel="Enter Your Residential Address"
+          necessityIndicator="required"
           placeholder="Enter your address"
           name="fullName"
           labelPosition="left"

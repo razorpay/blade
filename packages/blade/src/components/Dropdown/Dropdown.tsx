@@ -52,7 +52,7 @@ const _Dropdown = ({
   onDismiss,
   testID,
   ...styledProps
-}: DropdownProps): JSX.Element => {
+}: DropdownProps): React.ReactElement => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [options, setOptions] = React.useState<DropdownContextType['options']>([]);
   const [selectedIndices, setSelectedIndices] = React.useState<
@@ -101,12 +101,14 @@ const _Dropdown = ({
 
   React.Children.map(children, (child) => {
     if (React.isValidElement(child)) {
-      if (!validDropdownChildren.includes(getComponentId(child) ?? '')) {
-        throw new Error(
-          `[Dropdown]: Dropdown can only have one of following elements as children - \n\n ${validDropdownChildren.join(
-            ', ',
-          )} \n\n Check out: https://blade.razorpay.com/?path=/story/components-dropdown`,
-        );
+      if (__DEV__) {
+        if (!validDropdownChildren.includes(getComponentId(child) ?? '')) {
+          throw new Error(
+            `[Dropdown]: Dropdown can only have one of following elements as children - \n\n ${validDropdownChildren.join(
+              ', ',
+            )} \n\n Check out: https://blade.razorpay.com/?path=/story/components-dropdown`,
+          );
+        }
       }
 
       if (isValidAllowedChildren(child, componentIds.triggers.SelectInput)) {

@@ -28,7 +28,7 @@ const _DropdownButton = ({
   accessibilityLabel,
   testID,
   ...styledProps
-}: DropdownButtonProps): JSX.Element => {
+}: DropdownButtonProps): React.ReactElement => {
   const {
     onTriggerClick,
     onTriggerBlur,

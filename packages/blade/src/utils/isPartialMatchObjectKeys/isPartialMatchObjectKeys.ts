@@ -33,12 +33,14 @@ export const isPartialMatchObjectKeys = <ActualObject>({
           // the condition checks if the "valueToMatch" is not of type object then "valueToMatch" type should be same as type of "valueToInspect"
           (!(valueToMatch instanceof Object) && typeof valueToMatch !== typeof valueToInspect)
         ) {
-          // this is an invalid case, so we log error
-          console.error(
-            `[isPartialMatchObjectKeys]: Unexpected value: ${JSON.stringify(
-              valueToMatch,
-            )} of type ${typeof valueToMatch} for key: ${key}`,
-          );
+          if (__DEV__) {
+            // this is an invalid case, so we log error
+            console.error(
+              `[isPartialMatchObjectKeys]: Unexpected value: ${JSON.stringify(
+                valueToMatch,
+              )} of type ${typeof valueToMatch} for key: ${key}`,
+            );
+          }
           matchResponses.push(false);
         }
 
@@ -55,14 +57,16 @@ export const isPartialMatchObjectKeys = <ActualObject>({
           });
         }
       } else {
-        // the key doesn't exist in the innerObjectToMatch, so we log error
-        console.error(
-          `[isPartialMatchObjectKeys]: ${key} doesn't exist in ${JSON.stringify(
-            innerObjectToInspect,
-            null,
-            2,
-          )}`,
-        );
+        if (__DEV__) {
+          // the key doesn't exist in the innerObjectToMatch, so we log error
+          console.error(
+            `[isPartialMatchObjectKeys]: ${key} doesn't exist in ${JSON.stringify(
+              innerObjectToInspect,
+              null,
+              2,
+            )}`,
+          );
+        }
         matchResponses.push(false);
       }
     }

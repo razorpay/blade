@@ -79,8 +79,10 @@ const _AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps)
       <Icon size="medium" color={iconColor} marginRight="spacing.3" marginY="spacing.2" />
     );
 
-    if (_index && _icon) {
-      throw new Error(`[Blade: Accordion]: showNumberPrefix and icon shouldn't be used together`);
+    if (__DEV__) {
+      if (_index && _icon) {
+        throw new Error(`[Blade: Accordion]: showNumberPrefix and icon shouldn't be used together`);
+      }
     }
 
     return (
