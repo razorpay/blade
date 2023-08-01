@@ -24,6 +24,7 @@ const StyledIconButton = React.forwardRef<View, StyledIconButtonProps>(
   (
     {
       icon: Icon,
+      isDisabled,
       onClick,
       onBlur,
       onFocus,
@@ -53,6 +54,7 @@ const StyledIconButton = React.forwardRef<View, StyledIconButtonProps>(
         ref={ref as any}
         contrast={contrast}
         onPress={onClick}
+        disabled={isDisabled}
         onPressIn={() => setIsPressed(true)}
         onPressOut={() => setIsPressed(false)}
         onBlur={onBlur}

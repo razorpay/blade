@@ -89,6 +89,11 @@ export default {
         category: propsCategory.LABEL_PROPS,
       },
     },
+    accessibilityLabel: {
+      table: {
+        category: propsCategory.LABEL_PROPS,
+      },
+    },
     labelPosition: {
       table: {
         category: propsCategory.LABEL_PROPS,
@@ -154,7 +159,7 @@ export default {
             {`
               import { OTPInput } from '@razorpay/blade/components';
 
-              function App(): JSX.Element {
+              function App(): React.ReactElement {
                 return (
                   // Fill OTP and check console
                   <OTPInput 
@@ -190,6 +195,14 @@ OTPInput4Fields.args = {
 export const OTPInputHelpText = OTPInputTemplate.bind({});
 OTPInputHelpText.storyName = 'OTPInput with Help Text';
 OTPInputHelpText.args = {
+  helpText: 'Add a message here',
+};
+
+export const OTPInputWithoutLabel = OTPInputTemplate.bind({});
+OTPInputWithoutLabel.storyName = 'OTPInput without Label';
+OTPInputWithoutLabel.args = {
+  label: undefined,
+  accessibilityLabel: 'Enter OTP',
   helpText: 'Add a message here',
 };
 

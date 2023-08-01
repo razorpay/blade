@@ -333,10 +333,13 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   // Button cannot be disabled when its rendered as Link
   const disabled = isLoading || (isDisabled && !isLink);
   const { theme } = useTheme();
-  if (!Icon && !childrenString?.trim()) {
-    throw new Error(
-      `[Blade: BaseButton]: At least one of icon or text is required to render a button.`,
-    );
+
+  if (__DEV__) {
+    if (!Icon && !childrenString?.trim()) {
+      throw new Error(
+        `[Blade: BaseButton]: At least one of icon or text is required to render a button.`,
+      );
+    }
   }
 
   const prevLoading = usePrevious(isLoading);

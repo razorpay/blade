@@ -24,7 +24,7 @@ const Page = (): ReactElement => {
         {`
           import { Text } from '@razorpay/blade/components';
 
-          function App(): JSX.Element {
+          function App(): React.ReactElement {
             return (
               <Text>Lorem Ipsum</Text>
             )
