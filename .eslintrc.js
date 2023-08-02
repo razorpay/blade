@@ -1,11 +1,8 @@
-const eslintPluginExample = require('./packages/eslint-plugin-blade/build');
-
 /**
  * @type {import("eslint").Linter.Config}
  */
 module.exports = {
   parser: '@babel/eslint-parser',
-  root: true,
   parserOptions: {
     requireConfigFile: false,
   },
