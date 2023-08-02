@@ -176,7 +176,7 @@ const Carousel = ({
   showIndicators = true,
   navigationButtonPosition = 'bottom',
   children,
-  shouldAddStartEndSpacing,
+  shouldAddStartEndSpacing = false,
   carouselItemWidth,
   overlayColor,
 }: CarouselProps): React.ReactElement => {
@@ -184,14 +184,16 @@ const Carousel = ({
   const [activeSlide, setActiveSlide] = React.useState(0);
   const [activeIndicator, setActiveIndicator] = React.useState(0);
   const containerRef = React.useRef<HTMLDivElement>(null);
+  const isMobile = platform === 'onMobile';
   const id = useId('carousel');
 
-  const [isScrollAtStart, setScrollStart] = React.useState(!shouldAddStartEndSpacing);
-  const [isScrollAtEnd, setScrollEnd] = React.useState(false);
+  const [isScrollAtStart, setScrollStart] = React.useState(
+    // on mobile we do not want to render the overlay
+    isMobile ? true : !shouldAddStartEndSpacing,
+  );
+  const [isScrollAtEnd, setScrollEnd] = React.useState(isMobile);
 
-  const isMobile = platform === 'onMobile';
   let _visibleItems = visibleItems;
-
   if (isMobile) {
     _visibleItems = visibleItems === undefined ? undefined : 1;
     navigationButtonPosition = 'bottom';
@@ -205,7 +207,6 @@ const Carousel = ({
 
   // TODO: sync active slide indicator with scroll
   // Add autoplay - stop when hovering - remove auto play on mobile
-  // Add overlay
   // Add accessibility
 
   // Sync the active slide state with indicator state
