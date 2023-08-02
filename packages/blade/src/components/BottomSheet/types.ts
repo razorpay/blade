@@ -33,6 +33,7 @@ type BottomSheetProps = {
   initialFocusRef?: React.MutableRefObject<any>;
   /**
    * Sets the z-index of the bottom sheet
+   * Note: when using stacked bottom sheet make sure all the bottom sheets have the same zIndex
    * @default 100
    */
   zIndex?: number;
