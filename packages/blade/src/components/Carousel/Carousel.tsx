@@ -1,7 +1,6 @@
+/* eslint-disable @typescript-eslint/restrict-plus-operands */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable react/jsx-no-useless-fragment */
-/* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
-/* eslint-disable consistent-return */
 import styled from 'styled-components';
 import React from 'react';
 import { Indicators } from './Indicators/Indicators';
@@ -11,7 +10,7 @@ import type { CarouselContextProps } from './CarouselContext';
 import { CarouselContext } from './CarouselContext';
 import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
-import { useTheme } from '~utils';
+import { useInterval, useTheme } from '~utils';
 import { useId } from '~utils/useId';
 
 type ControlsProp = {
@@ -118,6 +117,7 @@ const CarouselBody = React.forwardRef<HTMLDivElement, CarouselBodyProps>(
 );
 
 const Carousel = ({
+  autoPlay,
   visibleItems,
   showIndicators = true,
   navigationButtonPosition = 'bottom',
@@ -147,6 +147,7 @@ const Carousel = ({
 
   // TODO: sync active slide indicator with scroll
   // Add autoplay
+  // Add overlay
   // Add accessibility
 
   // Sync the active slide state with indicator state
@@ -158,12 +159,16 @@ const Carousel = ({
 
   const goToSlideIndex = (slideIndex: number) => {
     if (!containerRef.current) return;
+
     const carouselItemId = `#${id}-carousel-item-${slideIndex * (_visibleItems ?? 1)}`;
     const carouselItem = containerRef.current.querySelector(carouselItemId);
-    carouselItem?.scrollIntoView({
+    if (!carouselItem) return;
+
+    const carouselItemLeft = carouselItem.getBoundingClientRect().left ?? 0;
+    const left = containerRef.current.scrollLeft + carouselItemLeft;
+    containerRef.current.scroll({
+      left,
       behavior: 'smooth',
-      inline: isResponsive ? 'center' : 'start',
-      block: 'center',
     });
     setActiveSlide(slideIndex);
   };
@@ -183,6 +188,13 @@ const Carousel = ({
     }
     goToSlideIndex(slideIndex);
   };
+
+  useInterval(
+    () => {
+      goToNextSlide();
+    },
+    { delay: 5000, enable: autoPlay },
+  );
 
   const carouselContext = React.useMemo<CarouselContextProps>(() => {
     return {
