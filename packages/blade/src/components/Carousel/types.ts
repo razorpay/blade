@@ -1,5 +1,8 @@
+import type { BoxProps } from '~components/Box';
 import type { SpacingValueType } from '~components/Box/BaseBox';
 import type { DotNotationSpacingStringToken } from '~utils/types';
+
+type OverlayColor = BoxProps['backgroundColor'];
 
 type CarouselProps = {
   children: React.ReactNode;
@@ -8,7 +11,7 @@ type CarouselProps = {
   autoPlay?: boolean;
   showIndicators?: boolean;
   showOverlay?: boolean;
-  overlayColor?: string;
+  overlayColor?: OverlayColor;
   navigationButtonPosition?: 'bottom' | 'side';
   navigationButtonSpacing?: DotNotationSpacingStringToken;
   navigationButtonVariant?: 'filled' | 'stroke';

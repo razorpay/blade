@@ -1,8 +1,11 @@
+/* eslint-disable consistent-return */
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable react/jsx-no-useless-fragment */
 import styled from 'styled-components';
 import React from 'react';
+import getIn from 'lodash/get';
+import throttle from 'lodash/throttle';
 import { Indicators } from './Indicators/Indicators';
 import { NavigationButton } from './NavigationButton';
 import type { CarouselProps } from './types';
@@ -70,7 +73,14 @@ const Controls = ({
   return <></>;
 };
 
-const CarouselContainer = styled(BaseBox)(() => {
+const CarouselContainer = styled(BaseBox)<{
+  overlayColor: CarouselProps['overlayColor'];
+  isScrollAtStart: boolean;
+  isScrollAtEnd: boolean;
+}>(({ theme, overlayColor, isScrollAtStart, isScrollAtEnd }) => {
+  const gradientStop1 = getIn(theme.colors, overlayColor as string);
+  const gradientStop2 = 'hsla(0, 0%, 100%, 0)';
+
   return {
     width: '100%',
     overflowX: 'scroll',
@@ -90,6 +100,30 @@ const CarouselContainer = styled(BaseBox)(() => {
     '&::-webkit-scrollbar': {
       display: 'none',
     },
+    '&::before': {
+      content: "''",
+      position: 'absolute',
+      top: 0,
+      left: -1,
+      width: '100px',
+      height: '100%',
+      background: `linear-gradient(to right, ${gradientStop1}, ${gradientStop2})`,
+      transition: '400ms ease',
+      transitionProperty: 'opacity',
+      opacity: isScrollAtStart ? 0 : 1,
+    },
+    '&::after': {
+      content: "''",
+      position: 'absolute',
+      top: 0,
+      right: -1,
+      width: '100px',
+      height: '100%',
+      background: `linear-gradient(to left, ${gradientStop1}, ${gradientStop2})`,
+      transition: '400ms ease',
+      transitionProperty: 'opacity',
+      opacity: isScrollAtEnd ? 0 : 1,
+    },
   };
 });
 
@@ -98,11 +132,31 @@ type CarouselBodyProps = {
   totalSlides: number;
   shouldAddStartEndSpacing?: boolean;
   idPrefix: string;
+  overlayColor: CarouselProps['overlayColor'];
+  isScrollAtStart: boolean;
+  isScrollAtEnd: boolean;
 };
 const CarouselBody = React.forwardRef<HTMLDivElement, CarouselBodyProps>(
-  ({ children, totalSlides, shouldAddStartEndSpacing, idPrefix }, ref) => {
+  (
+    {
+      children,
+      totalSlides,
+      shouldAddStartEndSpacing,
+      idPrefix,
+      overlayColor,
+      isScrollAtStart,
+      isScrollAtEnd,
+    },
+    ref,
+  ) => {
     return (
-      <CarouselContainer ref={ref} gap={{ base: 'spacing.4', m: 'spacing.5' }}>
+      <CarouselContainer
+        overlayColor={overlayColor}
+        ref={ref}
+        gap={{ base: 'spacing.4', m: 'spacing.5' }}
+        isScrollAtStart={isScrollAtStart}
+        isScrollAtEnd={isScrollAtEnd}
+      >
         {React.Children.map(children, (child, index) => {
           return React.cloneElement(child as React.ReactElement, {
             index,
@@ -124,12 +178,16 @@ const Carousel = ({
   children,
   shouldAddStartEndSpacing,
   carouselItemWidth,
+  overlayColor,
 }: CarouselProps): React.ReactElement => {
   const { platform } = useTheme();
   const [activeSlide, setActiveSlide] = React.useState(0);
   const [activeIndicator, setActiveIndicator] = React.useState(0);
   const containerRef = React.useRef<HTMLDivElement>(null);
   const id = useId('carousel');
+
+  const [isScrollAtStart, setScrollStart] = React.useState(!shouldAddStartEndSpacing);
+  const [isScrollAtEnd, setScrollEnd] = React.useState(false);
 
   const isMobile = platform === 'onMobile';
   let _visibleItems = visibleItems;
@@ -146,7 +204,7 @@ const Carousel = ({
   const numberOfIndicators = Math.ceil(totalNumberOfSlides / (_visibleItems ?? 1));
 
   // TODO: sync active slide indicator with scroll
-  // Add autoplay
+  // Add autoplay - stop when hovering - remove auto play on mobile
   // Add overlay
   // Add accessibility
 
@@ -189,6 +247,28 @@ const Carousel = ({
     goToSlideIndex(slideIndex);
   };
 
+  // Scroll overlay gradient show/hide based on if scrolled to start or end
+  React.useEffect(() => {
+    // if shouldAddStartEndSpacing is true, we don't need to hide/show the overlay based on the scroll position
+    // because the gap is there so it won't overlap with the card anyway
+    if (shouldAddStartEndSpacing) return;
+    const carouselContainer = containerRef.current;
+    if (!carouselContainer) return;
+
+    const handleScroll = throttle(() => {
+      const scrollWidth = carouselContainer?.scrollWidth - carouselContainer.offsetWidth;
+      setScrollStart(carouselContainer?.scrollLeft === 0);
+      setScrollEnd(carouselContainer?.scrollLeft === scrollWidth);
+    }, 500);
+
+    carouselContainer.addEventListener('scroll', handleScroll);
+
+    return () => {
+      carouselContainer?.removeEventListener('scroll', handleScroll);
+    };
+  }, [shouldAddStartEndSpacing]);
+
+  // auto play
   useInterval(
     () => {
       goToNextSlide();
@@ -217,7 +297,7 @@ const Carousel = ({
           flexDirection="row"
         >
           {shouldNavButtonsFloat ? (
-            <BaseBox position="absolute" left="spacing.11">
+            <BaseBox zIndex={2} position="absolute" left="spacing.11">
               <NavigationButton type="previous" variant="filled" onClick={goToPreviousSlide} />
             </BaseBox>
           ) : null}
@@ -228,12 +308,15 @@ const Carousel = ({
             idPrefix={id}
             totalSlides={totalNumberOfSlides}
             shouldAddStartEndSpacing={shouldAddStartEndSpacing}
+            overlayColor={overlayColor}
+            isScrollAtStart={isScrollAtStart}
+            isScrollAtEnd={isScrollAtEnd}
             ref={containerRef}
           >
             {children}
           </CarouselBody>
           {shouldNavButtonsFloat ? (
-            <BaseBox position="absolute" right="spacing.11">
+            <BaseBox zIndex={2} position="absolute" right="spacing.11">
               <NavigationButton onClick={goToNextSlide} type="next" variant="filled" />
             </BaseBox>
           ) : null}
