@@ -11883,6 +11883,9 @@ eslint-plugin-babel@5.3.1, eslint-plugin-babel@^5.3.1:
   dependencies:
     eslint-rule-composer "^0.3.0"
 
+"eslint-plugin-blade@file:packages/eslint-plugin-blade":
+  version "1.0.0"
+
 eslint-plugin-flowtype@^5.2.0:
   version "5.10.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-flowtype/-/eslint-plugin-flowtype-5.10.0.tgz#7764cc63940f215bf3f0bd2d9a1293b2b9b2b4bb"

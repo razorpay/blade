@@ -1,8 +1,11 @@
+const eslintPluginExample = require('./packages/eslint-plugin-blade/build');
+
 /**
  * @type {import("eslint").Linter.Config}
  */
 module.exports = {
   parser: '@babel/eslint-parser',
+  root: true,
   parserOptions: {
     requireConfigFile: false,
   },
@@ -129,8 +132,9 @@ module.exports = {
         'plugin:@typescript-eslint/recommended-requiring-type-checking',
         'plugin:prettier/recommended',
       ],
-      plugins: ['@typescript-eslint', 'jsx-a11y', 'no-only-tests'],
+      plugins: ['@typescript-eslint', 'jsx-a11y', 'no-only-tests', 'blade'],
       rules: {
+        'blade/no-cross-platform-imports': 'error',
         'import/no-cycle': ['error', { maxDepth: '∞' }],
         'react/jsx-uses-react': 'off',
         'react/react-in-jsx-scope': 'off',
