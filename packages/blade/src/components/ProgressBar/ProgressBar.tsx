@@ -120,10 +120,12 @@ const ProgressBar = ({
   const { theme } = useTheme();
   const id = useId(variant);
 
-  if (variant === 'meter' && isIndeterminate) {
-    throw new Error(
-      `[Blade: ProgressBar]: Cannot set 'isIndeterminate' when 'variant' is 'meter'.`,
-    );
+  if (__DEV__) {
+    if (variant === 'meter' && isIndeterminate) {
+      throw new Error(
+        `[Blade: ProgressBar]: Cannot set 'isIndeterminate' when 'variant' is 'meter'.`,
+      );
+    }
   }
 
   const unfilledBackgroundColor = theme.colors.brand.gray.a100[`${contrast}Contrast`];

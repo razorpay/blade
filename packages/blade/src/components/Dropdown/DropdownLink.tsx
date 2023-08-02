@@ -29,7 +29,7 @@ const _DropdownLink = ({
   hitSlop,
   htmlTitle,
   ...styledProps
-}: DropdownLinkProps): JSX.Element => {
+}: DropdownLinkProps): React.ReactElement => {
   const {
     onTriggerClick,
     onTriggerBlur,

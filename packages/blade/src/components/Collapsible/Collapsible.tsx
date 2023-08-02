@@ -103,20 +103,22 @@ const Collapsible = ({
     [isBodyExpanded, direction, handleExpandChange, isExpanded, collapsibleBodyId],
   );
 
-  Children.forEach(children, (child) => {
-    if (
-      !(
-        isValidAllowedChildren(child, MetaConstants.CollapsibleBody) ||
-        isValidAllowedChildren(child, MetaConstants.CollapsibleButton) ||
-        isValidAllowedChildren(child, MetaConstants.CollapsibleLink) ||
-        isValidAllowedChildren(child, MetaConstants.AccordionButton)
-      )
-    ) {
-      throw new Error(
-        `[Blade: Collapsible]: only the following are supported as valid children: CollapsibleBody, CollapsibleButton, CollapsibleLink`,
-      );
-    }
-  });
+  if (__DEV__) {
+    Children.forEach(children, (child) => {
+      if (
+        !(
+          isValidAllowedChildren(child, MetaConstants.CollapsibleBody) ||
+          isValidAllowedChildren(child, MetaConstants.CollapsibleButton) ||
+          isValidAllowedChildren(child, MetaConstants.CollapsibleLink) ||
+          isValidAllowedChildren(child, MetaConstants.AccordionButton)
+        )
+      ) {
+        throw new Error(
+          `[Blade: Collapsible]: only the following are supported as valid children: CollapsibleBody, CollapsibleButton, CollapsibleLink`,
+        );
+      }
+    });
+  }
 
   return (
     <CollapsibleContext.Provider value={contextValue}>

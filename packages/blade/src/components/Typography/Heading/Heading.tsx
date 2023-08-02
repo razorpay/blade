@@ -104,13 +104,17 @@ const getProps = <T extends { variant: HeadingVariant }>({
       props.as = 'h4';
     }
   } else if (variant === 'subheading') {
-    if (weight === 'regular') {
-      throw new Error(`[Blade: Heading]: weight cannot be 'regular' when variant is 'subheading'`);
-    }
-    if (size) {
-      throw new Error(
-        `[Blade: Heading]: size prop cannot be added when variant is 'subheading'. Use variant 'regular' or remove size prop`,
-      );
+    if (__DEV__) {
+      if (weight === 'regular') {
+        throw new Error(
+          `[Blade: Heading]: weight cannot be 'regular' when variant is 'subheading'`,
+        );
+      }
+      if (size) {
+        throw new Error(
+          `[Blade: Heading]: size prop cannot be added when variant is 'subheading'. Use variant 'regular' or remove size prop`,
+        );
+      }
     }
     props.fontSize = 75;
     props.lineHeight = 50;

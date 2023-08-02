@@ -296,10 +296,12 @@ const _BaseLink: React.ForwardRefRenderFunction<BladeElementRef, BaseLinkProps> 
   const childrenString = getStringFromReactText(children);
   const { currentInteraction, setCurrentInteraction, ...syntheticEvents } = useInteraction();
   const { theme } = useTheme();
-  if (!Icon && !childrenString?.trim()) {
-    throw new Error(
-      `[Blade: BaseLink]: At least one of icon or text is required to render a link.`,
-    );
+  if (__DEV__) {
+    if (!Icon && !childrenString?.trim()) {
+      throw new Error(
+        `[Blade: BaseLink]: At least one of icon or text is required to render a link.`,
+      );
+    }
   }
   const {
     as,
