@@ -11,13 +11,13 @@ const meta: Meta<CarouselProps> = {
   component: CarouselComponent,
 };
 
-const TestimonialCard = (): React.ReactElement => {
+const TestimonialCard = ({ index }): React.ReactElement => {
   return (
     <Card>
       <CardBody>
         <Box display="flex" gap="spacing.4" flexDirection="column">
           <Box>
-            <Heading>I can now collect payments from my clients instantly</Heading>
+            <Heading>{index} - I can now collect payments from my clients instantly</Heading>
             <Text>
               The thing that I love about Razorpay is how it helps me accept payments directly via
               WhatsApp, Instagram & Facebook. Before Razorpay, I would primarily accept payments via
@@ -45,34 +45,34 @@ const CarouselExample = (props: CarouselProps): React.ReactElement => {
   return (
     <CarouselComponent {...props}>
       <CarouselItem>
-        <TestimonialCard />
+        <TestimonialCard index={0} />
       </CarouselItem>
       <CarouselItem>
-        <TestimonialCard />
+        <TestimonialCard index={1} />
       </CarouselItem>
       <CarouselItem>
-        <TestimonialCard />
+        <TestimonialCard index={2} />
       </CarouselItem>
       <CarouselItem>
-        <TestimonialCard />
+        <TestimonialCard index={3} />
       </CarouselItem>
       <CarouselItem>
-        <TestimonialCard />
+        <TestimonialCard index={4} />
       </CarouselItem>
       <CarouselItem>
-        <TestimonialCard />
+        <TestimonialCard index={5} />
       </CarouselItem>
       <CarouselItem>
-        <TestimonialCard />
+        <TestimonialCard index={6} />
       </CarouselItem>
       <CarouselItem>
-        <TestimonialCard />
+        <TestimonialCard index={7} />
       </CarouselItem>
       <CarouselItem>
-        <TestimonialCard />
+        <TestimonialCard index={8} />
       </CarouselItem>
       <CarouselItem>
-        <TestimonialCard />
+        <TestimonialCard index={9} />
       </CarouselItem>
     </CarouselComponent>
   );
@@ -94,12 +94,14 @@ const CarouselTemplate: ComponentStory<typeof CarouselComponent> = () => {
         shouldAddStartEndSpacing
         navigationButtonPosition="side"
       />
-      <Text>v2: Responsive: 1|2|3</Text>
-      <CarouselExample visibleItems={1} navigationButtonPosition="side" />
+      <Text>v2: Responsive: 1|2|3, navButtons: side</Text>
+      <CarouselExample visibleItems={2} navigationButtonPosition="side" />
+      {/* <CarouselExample visibleItems={2} navigationButtonPosition="side" />
+      <CarouselExample visibleItems={3} navigationButtonPosition="side" />
+      <Text>v2: Responsive: 1|2|3, navButtons: bottom</Text>
+      <CarouselExample visibleItems={1} navigationButtonPosition="bottom" />
       <CarouselExample visibleItems={2} navigationButtonPosition="bottom" />
-      <CarouselExample visibleItems={3} navigationButtonPosition="bottom" />
-      <CarouselExample visibleItems={3} showIndicators={false} navigationButtonPosition="bottom" />
-      <CarouselExample visibleItems={3} navigationButtonPosition="bottom" />
+      <CarouselExample visibleItems={3} navigationButtonPosition="bottom" /> */}
 
       {/* 
       <Text>Bleed: none</Text>

@@ -7,6 +7,7 @@ import React from 'react';
 import { Indicators } from './Indicators/Indicators';
 import { NavigationButton } from './NavigationButton';
 import type { CarouselProps } from './types';
+import type { CarouselContextProps } from './CarouselContext';
 import { CarouselContext } from './CarouselContext';
 import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
@@ -16,7 +17,7 @@ import { useId } from '~utils/useId';
 type ControlsProp = {
   showIndicators?: boolean;
   navigationButtonPosition?: 'bottom' | 'side';
-  activeSlide: number;
+  activeIndicator: number;
   totalSlides: number;
   onIndicatorButtonClick: (index: number) => void;
   onNextButtonClick: () => void;
@@ -26,7 +27,7 @@ type ControlsProp = {
 const Controls = ({
   showIndicators,
   navigationButtonPosition,
-  activeSlide,
+  activeIndicator,
   totalSlides,
   onIndicatorButtonClick,
   onNextButtonClick,
@@ -44,7 +45,7 @@ const Controls = ({
         {showIndicators ? (
           <Indicators
             onIndicatorButtonClick={onIndicatorButtonClick}
-            activeIndex={activeSlide}
+            activeIndex={activeIndicator}
             totalItems={totalSlides}
             variant="blue"
           />
@@ -59,7 +60,7 @@ const Controls = ({
       <Box marginTop="spacing.7">
         <Indicators
           onIndicatorButtonClick={onIndicatorButtonClick}
-          activeIndex={activeSlide}
+          activeIndex={activeIndicator}
           totalItems={totalSlides}
           variant="blue"
         />
@@ -105,6 +106,7 @@ const CarouselBody = React.forwardRef<HTMLDivElement, CarouselBodyProps>(
       <CarouselContainer ref={ref} gap={{ base: 'spacing.4', m: 'spacing.5' }}>
         {React.Children.map(children, (child, index) => {
           return React.cloneElement(child as React.ReactElement, {
+            index,
             id: `${idPrefix}-carousel-item-${index}`,
             shouldHaveStartSpacing: shouldAddStartEndSpacing && index === 0,
             shouldHaveEndSpacing: shouldAddStartEndSpacing && index === totalSlides - 1,
@@ -125,6 +127,7 @@ const Carousel = ({
 }: CarouselProps): React.ReactElement => {
   const { platform } = useTheme();
   const [activeSlide, setActiveSlide] = React.useState(0);
+  const [activeIndicator, setActiveIndicator] = React.useState(0);
   const containerRef = React.useRef<HTMLDivElement>(null);
   const id = useId('carousel');
 
@@ -140,19 +143,26 @@ const Carousel = ({
   const isNavButtonsOnSide = !isResponsive && navigationButtonPosition === 'side';
   const shouldNavButtonsFloat = isResponsive && navigationButtonPosition === 'side';
   const totalNumberOfSlides = React.Children.count(children);
-  const numberOfIndicators = Math.ceil(totalNumberOfSlides / (visibleItems ?? 1));
+  const numberOfIndicators = Math.ceil(totalNumberOfSlides / (_visibleItems ?? 1));
 
-  // TODO: make indicator calculation dynamic based on isMobile prop
   // TODO: sync active slide indicator with scroll
+  // Add autoplay
+  // Add accessibility
+
+  // Sync the active slide state with indicator state
+  // Because when user scrolls the carousel via touch-and-drag
+  // We need to keep the activeSlide state updated
+  React.useEffect(() => {
+    setActiveSlide(activeIndicator);
+  }, [activeIndicator]);
 
   const goToSlideIndex = (slideIndex: number) => {
     if (!containerRef.current) return;
-
-    const carouselItemId = `#${id}-carousel-item-${slideIndex * (visibleItems ?? 1)}`;
+    const carouselItemId = `#${id}-carousel-item-${slideIndex * (_visibleItems ?? 1)}`;
     const carouselItem = containerRef.current.querySelector(carouselItemId);
     carouselItem?.scrollIntoView({
       behavior: 'smooth',
-      inline: 'center',
+      inline: isResponsive ? 'center' : 'start',
       block: 'center',
     });
     setActiveSlide(slideIndex);
@@ -174,8 +184,17 @@ const Carousel = ({
     goToSlideIndex(slideIndex);
   };
 
+  const carouselContext = React.useMemo<CarouselContextProps>(() => {
+    return {
+      visibleItems: _visibleItems,
+      carouselItemWidth,
+      carouselContainerRef: containerRef,
+      setActiveIndicator,
+    };
+  }, [_visibleItems, carouselItemWidth]);
+
   return (
-    <CarouselContext.Provider value={{ visibleItems: _visibleItems, carouselItemWidth }}>
+    <CarouselContext.Provider value={carouselContext}>
       <BaseBox display="flex" alignItems="center" flexDirection="column">
         <BaseBox
           width="100%"
@@ -212,7 +231,7 @@ const Carousel = ({
         </BaseBox>
         <Controls
           totalSlides={numberOfIndicators}
-          activeSlide={activeSlide}
+          activeIndicator={activeIndicator}
           showIndicators={showIndicators}
           navigationButtonPosition={navigationButtonPosition}
           onIndicatorButtonClick={goToSlideIndex}
