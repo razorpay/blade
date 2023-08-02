@@ -1,7 +1,10 @@
 import React from 'react';
 import type { CarouselProps } from './types';
+import type { SpacingValueType } from '~components/Box/BaseBox';
 
-type CarouselContextProps = Pick<CarouselProps, 'visibleItems' | 'bleed'> | null;
+type CarouselContextProps =
+  | (Pick<CarouselProps, 'visibleItems'> & { carouselItemWidth?: SpacingValueType })
+  | null;
 const CarouselContext = React.createContext<CarouselContextProps>(null);
 
 const useCarouselContext = (): CarouselContextProps => {

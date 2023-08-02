@@ -117,11 +117,11 @@ const CarouselBody = React.forwardRef<HTMLDivElement, CarouselBodyProps>(
 
 const Carousel = ({
   visibleItems,
-  bleed = 'none',
   showIndicators = true,
   navigationButtonPosition = 'bottom',
   children,
   shouldAddStartEndSpacing,
+  carouselItemWidth,
 }: CarouselProps): React.ReactElement => {
   const { platform } = useTheme();
   const [activeSlide, setActiveSlide] = React.useState(0);
@@ -136,8 +136,9 @@ const Carousel = ({
     navigationButtonPosition = 'bottom';
   }
 
-  const isNavButtonsOnSide = bleed === 'none' && navigationButtonPosition === 'side';
-  const shouldNavButtonsFloat = bleed !== 'none' && navigationButtonPosition === 'side';
+  const isResponsive = visibleItems === undefined;
+  const isNavButtonsOnSide = !isResponsive && navigationButtonPosition === 'side';
+  const shouldNavButtonsFloat = isResponsive && navigationButtonPosition === 'side';
   const totalNumberOfSlides = React.Children.count(children);
   const numberOfIndicators = Math.ceil(totalNumberOfSlides / (visibleItems ?? 1));
 
@@ -174,7 +175,7 @@ const Carousel = ({
   };
 
   return (
-    <CarouselContext.Provider value={{ visibleItems: _visibleItems, bleed }}>
+    <CarouselContext.Provider value={{ visibleItems: _visibleItems, carouselItemWidth }}>
       <BaseBox display="flex" alignItems="center" flexDirection="column">
         <BaseBox
           width="100%"

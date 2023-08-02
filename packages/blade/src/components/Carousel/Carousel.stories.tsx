@@ -43,7 +43,7 @@ const TestimonialCard = (): React.ReactElement => {
 
 const CarouselExample = (props: CarouselProps): React.ReactElement => {
   return (
-    <CarouselComponent {...props} itemAlignment>
+    <CarouselComponent {...props}>
       <CarouselItem>
         <TestimonialCard />
       </CarouselItem>
@@ -89,11 +89,17 @@ const CarouselTemplate: ComponentStory<typeof CarouselComponent> = () => {
       backgroundColor="surface.background.level1.lowContrast"
     >
       <Text>v1: Responsive: N/A + auto bleed + shouldAddStartEndPadding</Text>
-      <CarouselExample shouldAddStartEndSpacing navigationButtonPosition="side" bleed="right" />
+      <CarouselExample
+        carouselItemWidth="500px"
+        shouldAddStartEndSpacing
+        navigationButtonPosition="side"
+      />
       <Text>v2: Responsive: 1|2|3</Text>
-      <CarouselExample visibleItems={1} navigationButtonPosition="bottom" bleed="none" />
-      <CarouselExample visibleItems={2} navigationButtonPosition="bottom" bleed="right" />
-      <CarouselExample visibleItems={3} navigationButtonPosition="bottom" bleed="right" />
+      <CarouselExample visibleItems={1} navigationButtonPosition="side" />
+      <CarouselExample visibleItems={2} navigationButtonPosition="bottom" />
+      <CarouselExample visibleItems={3} navigationButtonPosition="bottom" />
+      <CarouselExample visibleItems={3} showIndicators={false} navigationButtonPosition="bottom" />
+      <CarouselExample visibleItems={3} navigationButtonPosition="bottom" />
 
       {/* 
       <Text>Bleed: none</Text>
