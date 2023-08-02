@@ -9,6 +9,7 @@ import iconMap from '~components/Icons/iconMap';
 import BaseBox from '~components/Box/BaseBox';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+import { Tag } from '~components/Tag';
 
 const propsCategory = {
   BASE_PROPS: 'Base Input Props',
@@ -349,4 +350,60 @@ const BaseInputControlledTemplate: ComponentStory<typeof BaseInputComponent> = (
     />
   );
 };
+
 export const BaseInputControlled = BaseInputControlledTemplate.bind({});
+
+const BaseInputControlledWithTagsTemplate: ComponentStory<typeof BaseInputComponent> = () => {
+  const [inputValue, setInputValue] = React.useState('');
+  const [activeTagIndex, setActiveTagIndex] = React.useState(-1);
+  const [currentTags, setCurrentTags] = React.useState<string[]>([]);
+
+  const getTags = (): React.ReactElement[] => {
+    return currentTags.map((currentTag, tagIndex) => {
+      return (
+        <Tag
+          _isVirtuallyFocussed={tagIndex === activeTagIndex}
+          _isTagInsideInput={true}
+          key={tagIndex}
+          marginRight="spacing.3"
+          marginY="spacing.2"
+          onDismiss={() => {
+            setCurrentTags([...currentTags.slice(0, tagIndex), ...currentTags.slice(tagIndex + 1)]);
+          }}
+        >
+          {currentTag}
+        </Tag>
+      );
+    });
+  };
+
+  return (
+    <BaseInput
+      id="base-input"
+      label="First Name"
+      value={inputValue}
+      autoCompleteSuggestionType="none"
+      tags={getTags()}
+      activeTagIndex={activeTagIndex}
+      setActiveTagIndex={setActiveTagIndex}
+      name="fullName"
+      onChange={({ name, value }): void => {
+        console.log(`sending ${name}:${value} to analytics service`);
+        setInputValue(value ?? '');
+      }}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter') {
+          setCurrentTags([...currentTags, inputValue]);
+          setInputValue('');
+          setActiveTagIndex(-1);
+        }
+
+        if (e.key === 'Backspace') {
+          setCurrentTags(currentTags.slice(0, -1));
+        }
+      }}
+    />
+  );
+};
+
+export const BaseInputControlledWithTags = BaseInputControlledWithTagsTemplate.bind({});
