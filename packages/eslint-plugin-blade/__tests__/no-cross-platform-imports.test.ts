@@ -1,7 +1,7 @@
 import path from 'path';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ESLintUtils } from '@typescript-eslint/utils';
-import noCrossPlatformImportsRule from '../no-cross-platform-imports';
+import noCrossPlatformImportsRule from '../src/rules/no-cross-platform-imports';
 
 const ruleTester = new ESLintUtils.RuleTester({
   parser: '@typescript-eslint/parser',
