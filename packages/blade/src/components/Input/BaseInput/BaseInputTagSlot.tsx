@@ -12,6 +12,7 @@ type BaseInputTagSlotProps = {
   setShouldIgnoreBlurAnimation: BaseInputProps['setShouldIgnoreBlurAnimation'];
   handleOnClick: StyledBaseInputProps['handleOnClick'];
   isMultiline: BaseInputProps['isMultiline'];
+  visibleTagsCountRef: React.MutableRefObject<number>;
 };
 
 function isElementVisibleInContainer(element: Element, container: HTMLDivElement): boolean {
@@ -28,12 +29,15 @@ function isElementVisibleInContainer(element: Element, container: HTMLDivElement
 
 const useTagsDisplay = (
   tags: BaseInputTagSlotProps['tags'],
+  visibleTagsCountRef: BaseInputTagSlotProps['visibleTagsCountRef'],
 ): {
   invisibleTagsCount: number;
   tagsContainerRef: React.MutableRefObject<HTMLDivElement | null>;
+  showTagsWithPlusMore: boolean;
 } => {
   const tagsContainerRef = React.useRef<HTMLDivElement | null>(null);
   const [invisibleTagsCount, setInvisibleTagsCount] = React.useState(0);
+  const [showTagsWithPlusMore, setShowTagsWithPlusMore] = React.useState(false);
 
   React.useLayoutEffect(() => {
     if (!tags) return;
@@ -43,21 +47,23 @@ const useTagsDisplay = (
 
     let visibleTagsCount = 0;
     for (const tagElement of tagElements) {
-      if (
-        tagsContainerRef.current &&
-        isElementVisibleInContainer(tagElement, tagsContainerRef.current)
-      ) {
+      if (isElementVisibleInContainer(tagElement, tagsContainerRef.current)) {
         visibleTagsCount++;
       } else {
         break;
       }
     }
 
+    if (visibleTagsCount < tags.length) {
+      setShowTagsWithPlusMore(true);
+    }
+
+    visibleTagsCountRef.current = visibleTagsCount;
     setInvisibleTagsCount(tags.length - visibleTagsCount);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tags?.length]);
 
-  return { invisibleTagsCount, tagsContainerRef };
+  return { invisibleTagsCount, tagsContainerRef, showTagsWithPlusMore };
 };
 
 const BaseInputTagSlot = ({
@@ -67,8 +73,9 @@ const BaseInputTagSlot = ({
   handleOnClick,
   isMultiline,
   showAllTags,
+  visibleTagsCountRef,
 }: BaseInputTagSlotProps): React.ReactElement | null => {
-  const { invisibleTagsCount, tagsContainerRef } = useTagsDisplay(tags);
+  const { invisibleTagsCount, tagsContainerRef } = useTagsDisplay(tags, visibleTagsCountRef);
 
   if (!tags) {
     return null;
@@ -85,6 +92,7 @@ const BaseInputTagSlot = ({
       justifyContent="flex-start"
       display="flex"
       flexDirection="column"
+      maxHeight="100px"
       // Move to using gap instead of marginLeft on individual tags after RN upgrade
       // gap="spacing.3"
       {...(!isReactNative()
@@ -110,13 +118,15 @@ const BaseInputTagSlot = ({
         flexWrap={isMultiline ? 'wrap' : 'nowrap'}
         whiteSpace={isMultiline ? undefined : 'nowrap'}
         overflow={showAllTags ? 'auto' : 'hidden'}
-        maxHeight={showAllTags ? '100px' : '80px'}
+        maxHeight={showAllTags && invisibleTagsCount ? '100%' : '84px'}
       >
         {tags}
       </BaseBox>
-      <BaseBox minHeight="20px" display={showAllTags ? 'none' : 'flex'} alignItems="center">
-        {invisibleTagsCount ? <Text>+{invisibleTagsCount} More</Text> : null}
-      </BaseBox>
+      {!showAllTags && invisibleTagsCount ? (
+        <BaseBox flex="1" alignItems="center">
+          <Text>+{invisibleTagsCount} More</Text>
+        </BaseBox>
+      ) : null}
     </BaseBox>
   );
 };
