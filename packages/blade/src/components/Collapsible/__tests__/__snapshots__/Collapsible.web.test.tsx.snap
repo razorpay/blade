@@ -1,29 +1,269 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  min-width: 200px;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c6 {
+  margin-bottom: 0px;
+  margin-top: 16px;
+}
+
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 200px;
+}
+
+.c9 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c10 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+  padding-right: 4px;
+  padding-left: 4px;
+}
+
+.c5 {
+  -webkit-transition-duration: 300ms;
+  transition-duration: 300ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-property: height,opacity;
+  transition-property: height,opacity;
+  opacity: 0.8;
+  height: 0px;
+  display: none;
+  overflow-y: hidden;
+}
+
+.c1 {
+  min-height: 36px;
+  width: auto;
+  cursor: pointer;
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
+  border-width: 1px;
+  border-radius: 2px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c1:hover {
+  background-color: hsla(223,95%,48%,1);
+  border-color: hsla(223,95%,48%,1);
+}
+
+.c1:active {
+  background-color: hsla(230,100%,42%,1);
+  border-color: hsla(230,100%,42%,1);
+}
+
+.c1:focus {
+  background-color: hsla(227,100%,45%,1);
+  border-color: hsla(227,100%,45%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: none;
+}
+
+.c1 * {
+  -webkit-transition-property: color,fill;
+  transition-property: color,fill;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c4 {
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c8 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c11 {
+  color: hsla(160,100%,26%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+  margin-right: 2px;
+}
+
+.c12 {
+  color: hsla(160,100%,26%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c13 {
+  color: hsla(160,100%,26%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+  margin-left: 2px;
+}
+
+.c3 {
+  opacity: 1;
+}
+
+@media screen and (min-width:480px) {
+  .c0 {
+    max-width: calc(100vw - 40px);
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c0 {
+    max-width: 640px;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .c0 {
+    max-width: 1136px;
+  }
+}
+
 <div>
   <div
-    class="BaseBox-bmPWx"
+    class=""
     data-blade-component="collapsible"
   >
     <div
-      class="BaseBox-bmPWx iBXzln"
+      class="c0"
       data-blade-component="base-box"
     >
       <button
         aria-controls="collapsible-body-1"
         aria-expanded="false"
-        class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 dOlUqh"
+        class="c1"
         data-blade-component="button"
         role="button"
         type="button"
       >
         <div
-          class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 kkGTK NIPoA"
+          class="c2 c3"
           data-blade-component="base-box"
         >
           <div
-            class="StyledBaseText-dVBfTO brGLEM"
+            class="c4"
             data-blade-component="base-text"
           >
             View Price Breakdown
@@ -32,51 +272,51 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
       </button>
       <div
         aria-hidden="true"
-        class="BaseBox-bmPWx"
+        class=""
         data-blade-component="collapsible-body"
         id="collapsible-body-1"
         role="region"
       >
         <div
-          class="CollapsibleBodyContentweb__StyledCollapsibleBodyContent-sc-1oi3ngc-0 zckFh"
+          class="c5"
         >
           <div
-            class="BaseBox-bmPWx hgWdUa"
+            class="c6"
             data-blade-component="box"
           >
             <div
-              class="BaseBox-bmPWx lmtAaL"
+              class="c7"
               data-blade-component="box"
             >
               <p
-                class="StyledBaseText-dVBfTO eIdQFo"
+                class="c8"
                 data-blade-component="text"
               >
                 Actual amount
               </p>
               <div
-                class="BaseBox-bmPWx bcSLaJ"
+                class="c9"
                 data-blade-component="amount"
               >
                 <div
-                  class="BaseBox-bmPWx iaZUuq"
+                  class="c10"
                   data-blade-component="base-box"
                 >
                   <span
-                    class="StyledBaseText-dVBfTO jKuOWA"
+                    class="c11"
                     data-blade-component="base-text"
                   >
                     ₹
                   </span>
                   <span
-                    class="StyledBaseText-dVBfTO chIjgb"
+                    class="c12"
                     data-blade-component="base-text"
                   >
                     1,000
                     .
                   </span>
                   <span
-                    class="StyledBaseText-dVBfTO eDQkPo"
+                    class="c13"
                     data-blade-component="base-text"
                   >
                     00
@@ -93,41 +333,282 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
 `;
 
 exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  min-width: 200px;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-left: 4px;
+}
+
+.c7 {
+  margin-bottom: 0px;
+  margin-top: 16px;
+}
+
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 200px;
+}
+
+.c10 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c11 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+  padding-right: 4px;
+  padding-left: 4px;
+}
+
+.c6 {
+  -webkit-transition-duration: 300ms;
+  transition-duration: 300ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-property: height,opacity;
+  transition-property: height,opacity;
+  opacity: 0.8;
+  height: 0px;
+  display: none;
+  overflow-y: hidden;
+}
+
+.c3 {
+  color: hsla(218,89%,51%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c9 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c12 {
+  color: hsla(160,100%,26%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+  margin-right: 2px;
+}
+
+.c13 {
+  color: hsla(160,100%,26%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c14 {
+  color: hsla(160,100%,26%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+  margin-left: 2px;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transform-origin: center center;
+  -ms-transform-origin: center center;
+  transform-origin: center center;
+  -webkit-transition-duration: 300ms;
+  transition-duration: 300ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+
+.c1 {
+  padding: 0;
+  background-color: transparent;
+  outline: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 2px;
+  -webkit-transition-property: box-shadow;
+  transition-property: box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+}
+
+.c1 .content-container {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  border-radius: 2px;
+}
+
+.c1:focus .content-container {
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+}
+
+.c1 * {
+  -webkit-transition-property: color,fill;
+  transition-property: color,fill;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+}
+
+@media screen and (min-width:480px) {
+  .c0 {
+    max-width: calc(100vw - 40px);
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c0 {
+    max-width: 640px;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .c0 {
+    max-width: 1136px;
+  }
+}
+
 <div>
   <div
-    class="BaseBox-bmPWx"
+    class=""
     data-blade-component="collapsible"
   >
     <div
-      class="BaseBox-bmPWx iBXzln"
+      class="c0"
       data-blade-component="base-box"
     >
       <button
         aria-controls="collapsible-body-3"
         aria-disabled="false"
         aria-expanded="false"
-        class="StyledBaseLinkweb__StyledLink-sc-1yj1z8h-0 kzvYbf"
+        class="c1"
         data-blade-component="link"
         role="button"
         type="button"
       >
         <span
-          class="BaseBox-bmPWx fSbYvl content-container"
+          class="c2 content-container"
           data-blade-component="base-box"
         >
           <span
-            class="StyledBaseText-dVBfTO jSaisz"
+            class="c3"
             data-blade-component="base-text"
           >
             View Price Breakdown
           </span>
           <span
-            class="BaseBox-bmPWx dPeROr"
+            class="c4"
             data-blade-component="base-box"
           >
             <div
               aria-hidden="true"
-              class="BaseBox-bmPWx CollapsibleChevronIconweb__StyledCollapsibleChevronIcon-sc-1kwlg5h-0  huMgvz"
+              class=" c5"
               data-blade-component="base-box"
               direction="bottom"
             >
@@ -154,51 +635,51 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
       </button>
       <div
         aria-hidden="true"
-        class="BaseBox-bmPWx"
+        class=""
         data-blade-component="collapsible-body"
         id="collapsible-body-3"
         role="region"
       >
         <div
-          class="CollapsibleBodyContentweb__StyledCollapsibleBodyContent-sc-1oi3ngc-0 zckFh"
+          class="c6"
         >
           <div
-            class="BaseBox-bmPWx hgWdUa"
+            class="c7"
             data-blade-component="box"
           >
             <div
-              class="BaseBox-bmPWx lmtAaL"
+              class="c8"
               data-blade-component="box"
             >
               <p
-                class="StyledBaseText-dVBfTO eIdQFo"
+                class="c9"
                 data-blade-component="text"
               >
                 Actual amount
               </p>
               <div
-                class="BaseBox-bmPWx bcSLaJ"
+                class="c10"
                 data-blade-component="amount"
               >
                 <div
-                  class="BaseBox-bmPWx iaZUuq"
+                  class="c11"
                   data-blade-component="base-box"
                 >
                   <span
-                    class="StyledBaseText-dVBfTO jKuOWA"
+                    class="c12"
                     data-blade-component="base-text"
                   >
                     ₹
                   </span>
                   <span
-                    class="StyledBaseText-dVBfTO chIjgb"
+                    class="c13"
                     data-blade-component="base-text"
                   >
                     1,000
                     .
                   </span>
                   <span
-                    class="StyledBaseText-dVBfTO eDQkPo"
+                    class="c14"
                     data-blade-component="base-text"
                   >
                     00

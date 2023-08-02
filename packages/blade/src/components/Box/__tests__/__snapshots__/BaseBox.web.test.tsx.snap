@@ -1,9 +1,43 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<BaseBox /> should render BaseBox component with the correct styles 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  position: absolute;
+  padding-top: 8px;
+  padding-bottom: 12px;
+  padding-right: 20px;
+  padding-left: 16px;
+  height: auto;
+  min-height: 48px;
+  max-height: 56px;
+  width: auto;
+  min-width: 48px;
+  max-width: 56px;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+}
+
 <div>
   <div
-    class="BaseBox-bmPWx fZuncA"
+    class="c0"
     data-blade-component="base-box"
   />
 </div>

@@ -1,13 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Code /> should render Code with color 1`] = `
+.c1 {
+  color: hsla(218,19%,81%,1);
+  font-family: monospace;
+  font-size: 0.625rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 0.875rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c0 {
+  padding: 0px 4px;
+  border-radius: 4px;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 0rem;
+}
+
 <div>
   <span
-    class="BaseBox-bmPWx Code__CodeContainer-l9m17z-0  iIqNrw"
+    class="BaseBox-bmPWx  c0"
     data-blade-component="code"
   >
     <code
-      class="StyledBaseText-dVBfTO esiDFA"
+      class="c1"
       data-blade-component="base-text"
     >
       TEST_TOKEN
@@ -17,13 +38,35 @@ exports[`<Code /> should render Code with color 1`] = `
 `;
 
 exports[`<Code /> should render Code with default properties 1`] = `
+.c1 {
+  color: hsla(216,27%,36%,1);
+  font-family: monospace;
+  font-size: 0.625rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 0.875rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c0 {
+  padding: 0px 4px;
+  background-color: hsla(216,15%,54%,0.18);
+  border-radius: 4px;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 0rem;
+}
+
 <div>
   <span
-    class="BaseBox-bmPWx Code__CodeContainer-l9m17z-0  gxbKGz"
+    class="BaseBox-bmPWx  c0"
     data-blade-component="code"
   >
     <code
-      class="StyledBaseText-dVBfTO edQJln"
+      class="c1"
       data-blade-component="base-text"
     >
       TEST_TOKEN
@@ -33,13 +76,34 @@ exports[`<Code /> should render Code with default properties 1`] = `
 `;
 
 exports[`<Code /> should render isHighlighted false Code 1`] = `
+.c1 {
+  color: hsla(217,56%,17%,1);
+  font-family: monospace;
+  font-size: 0.625rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 0.875rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c0 {
+  padding: 0px 4px;
+  border-radius: 4px;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 0rem;
+}
+
 <div>
   <span
-    class="BaseBox-bmPWx Code__CodeContainer-l9m17z-0  iIqNrw"
+    class="BaseBox-bmPWx  c0"
     data-blade-component="code"
   >
     <code
-      class="StyledBaseText-dVBfTO hAeQjj"
+      class="c1"
       data-blade-component="base-text"
     >
       NON-HIGHLIGHTED
@@ -49,13 +113,35 @@ exports[`<Code /> should render isHighlighted false Code 1`] = `
 `;
 
 exports[`<Code /> should render medium Code 1`] = `
+.c1 {
+  color: hsla(216,27%,36%,1);
+  font-family: monospace;
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.125rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c0 {
+  padding: 0px 4px;
+  background-color: hsla(216,15%,54%,0.18);
+  border-radius: 4px;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 0rem;
+}
+
 <div>
   <span
-    class="BaseBox-bmPWx Code__CodeContainer-l9m17z-0  gxbKGz"
+    class="BaseBox-bmPWx  c0"
     data-blade-component="code"
   >
     <code
-      class="StyledBaseText-dVBfTO xrkaN"
+      class="c1"
       data-blade-component="base-text"
     >
       MEDIUM
@@ -65,13 +151,35 @@ exports[`<Code /> should render medium Code 1`] = `
 `;
 
 exports[`<Code /> should render small Code 1`] = `
+.c1 {
+  color: hsla(216,27%,36%,1);
+  font-family: monospace;
+  font-size: 0.625rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 0.875rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c0 {
+  padding: 0px 4px;
+  background-color: hsla(216,15%,54%,0.18);
+  border-radius: 4px;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 0rem;
+}
+
 <div>
   <span
-    class="BaseBox-bmPWx Code__CodeContainer-l9m17z-0  gxbKGz"
+    class="BaseBox-bmPWx  c0"
     data-blade-component="code"
   >
     <code
-      class="StyledBaseText-dVBfTO edQJln"
+      class="c1"
       data-blade-component="base-text"
     >
       SMALL

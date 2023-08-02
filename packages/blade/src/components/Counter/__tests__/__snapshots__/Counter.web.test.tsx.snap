@@ -1,21 +1,90 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Counter /> should render Counter with default props 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 {
+  background-color: hsla(216,15%,54%,0.09);
+}
+
+.c3 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  overflow: hidden;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.c2 {
+  background-color: hsla(216,15%,54%,0.09);
+  border-radius: 9999px;
+  max-width: 120px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c4 {
+  color: hsla(216,27%,36%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 <div>
   <div
-    class="BaseBox-bmPWx jLCxzZ"
+    class="c0"
     data-blade-component="counter"
   >
     <div
-      class="BaseBox-bmPWx StyledCounterweb__StyledCounter-sc-1itt9w6-0 lldTHu dTYmGd"
+      class="c1 c2"
       data-blade-component="base-box"
     >
       <div
-        class="BaseBox-bmPWx KJLNh"
+        class="c3"
         data-blade-component="base-box"
       >
         <p
-          class="StyledBaseText-dVBfTO hlMkHt"
+          class="c4"
           data-blade-component="text"
         >
           20
@@ -27,21 +96,90 @@ exports[`<Counter /> should render Counter with default props 1`] = `
 `;
 
 exports[`<Counter /> should render high contrast blue variant Counter 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 {
+  background-color: hsla(218,89%,51%,1);
+}
+
+.c3 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  overflow: hidden;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.c2 {
+  background-color: hsla(218,89%,51%,1);
+  border-radius: 9999px;
+  max-width: 120px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c4 {
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 <div>
   <div
-    class="BaseBox-bmPWx jLCxzZ"
+    class="c0"
     data-blade-component="counter"
   >
     <div
-      class="BaseBox-bmPWx StyledCounterweb__StyledCounter-sc-1itt9w6-0 fNXoki dttayR"
+      class="c1 c2"
       data-blade-component="base-box"
     >
       <div
-        class="BaseBox-bmPWx KJLNh"
+        class="c3"
         data-blade-component="base-box"
       >
         <p
-          class="StyledBaseText-dVBfTO cEvTNh"
+          class="c4"
           data-blade-component="text"
         >
           20
@@ -53,21 +191,90 @@ exports[`<Counter /> should render high contrast blue variant Counter 1`] = `
 `;
 
 exports[`<Counter /> should render high contrast information variant Counter 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 {
+  background-color: hsla(193,100%,35%,1);
+}
+
+.c3 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  overflow: hidden;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.c2 {
+  background-color: hsla(193,100%,35%,1);
+  border-radius: 9999px;
+  max-width: 120px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c4 {
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 <div>
   <div
-    class="BaseBox-bmPWx jLCxzZ"
+    class="c0"
     data-blade-component="counter"
   >
     <div
-      class="BaseBox-bmPWx StyledCounterweb__StyledCounter-sc-1itt9w6-0 cgqMEQ gwViQX"
+      class="c1 c2"
       data-blade-component="base-box"
     >
       <div
-        class="BaseBox-bmPWx KJLNh"
+        class="c3"
         data-blade-component="base-box"
       >
         <p
-          class="StyledBaseText-dVBfTO cEvTNh"
+          class="c4"
           data-blade-component="text"
         >
           20
@@ -79,21 +286,90 @@ exports[`<Counter /> should render high contrast information variant Counter 1`]
 `;
 
 exports[`<Counter /> should render high contrast negative variant Counter 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 {
+  background-color: hsla(8,73%,47%,1);
+}
+
+.c3 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  overflow: hidden;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.c2 {
+  background-color: hsla(8,73%,47%,1);
+  border-radius: 9999px;
+  max-width: 120px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c4 {
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 <div>
   <div
-    class="BaseBox-bmPWx jLCxzZ"
+    class="c0"
     data-blade-component="counter"
   >
     <div
-      class="BaseBox-bmPWx StyledCounterweb__StyledCounter-sc-1itt9w6-0 dkjEtv liqHWA"
+      class="c1 c2"
       data-blade-component="base-box"
     >
       <div
-        class="BaseBox-bmPWx KJLNh"
+        class="c3"
         data-blade-component="base-box"
       >
         <p
-          class="StyledBaseText-dVBfTO cEvTNh"
+          class="c4"
           data-blade-component="text"
         >
           20
@@ -105,21 +381,90 @@ exports[`<Counter /> should render high contrast negative variant Counter 1`] = 
 `;
 
 exports[`<Counter /> should render high contrast neutral variant Counter 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 {
+  background-color: hsla(216,33%,29%,1);
+}
+
+.c3 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  overflow: hidden;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.c2 {
+  background-color: hsla(216,33%,29%,1);
+  border-radius: 9999px;
+  max-width: 120px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c4 {
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 <div>
   <div
-    class="BaseBox-bmPWx jLCxzZ"
+    class="c0"
     data-blade-component="counter"
   >
     <div
-      class="BaseBox-bmPWx StyledCounterweb__StyledCounter-sc-1itt9w6-0 jjdQUy kCRITN"
+      class="c1 c2"
       data-blade-component="base-box"
     >
       <div
-        class="BaseBox-bmPWx KJLNh"
+        class="c3"
         data-blade-component="base-box"
       >
         <p
-          class="StyledBaseText-dVBfTO cEvTNh"
+          class="c4"
           data-blade-component="text"
         >
           20
@@ -131,21 +476,90 @@ exports[`<Counter /> should render high contrast neutral variant Counter 1`] = `
 `;
 
 exports[`<Counter /> should render high contrast notice variant Counter 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 {
+  background-color: hsla(38,97%,38%,1);
+}
+
+.c3 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  overflow: hidden;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.c2 {
+  background-color: hsla(38,97%,38%,1);
+  border-radius: 9999px;
+  max-width: 120px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c4 {
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 <div>
   <div
-    class="BaseBox-bmPWx jLCxzZ"
+    class="c0"
     data-blade-component="counter"
   >
     <div
-      class="BaseBox-bmPWx StyledCounterweb__StyledCounter-sc-1itt9w6-0 cQZTS elVTwt"
+      class="c1 c2"
       data-blade-component="base-box"
     >
       <div
-        class="BaseBox-bmPWx KJLNh"
+        class="c3"
         data-blade-component="base-box"
       >
         <p
-          class="StyledBaseText-dVBfTO cEvTNh"
+          class="c4"
           data-blade-component="text"
         >
           20
@@ -157,21 +571,90 @@ exports[`<Counter /> should render high contrast notice variant Counter 1`] = `
 `;
 
 exports[`<Counter /> should render high contrast positive variant Counter 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 {
+  background-color: hsla(160,100%,26%,1);
+}
+
+.c3 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  overflow: hidden;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.c2 {
+  background-color: hsla(160,100%,26%,1);
+  border-radius: 9999px;
+  max-width: 120px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c4 {
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 <div>
   <div
-    class="BaseBox-bmPWx jLCxzZ"
+    class="c0"
     data-blade-component="counter"
   >
     <div
-      class="BaseBox-bmPWx StyledCounterweb__StyledCounter-sc-1itt9w6-0 bRAiRW CffaN"
+      class="c1 c2"
       data-blade-component="base-box"
     >
       <div
-        class="BaseBox-bmPWx KJLNh"
+        class="c3"
         data-blade-component="base-box"
       >
         <p
-          class="StyledBaseText-dVBfTO cEvTNh"
+          class="c4"
           data-blade-component="text"
         >
           20
@@ -183,21 +666,90 @@ exports[`<Counter /> should render high contrast positive variant Counter 1`] = 
 `;
 
 exports[`<Counter /> should render large size Counter 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 {
+  background-color: hsla(216,15%,54%,0.09);
+}
+
+.c3 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  overflow: hidden;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.c2 {
+  background-color: hsla(216,15%,54%,0.09);
+  border-radius: 9999px;
+  max-width: 120px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c4 {
+  color: hsla(216,27%,36%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 <div>
   <div
-    class="BaseBox-bmPWx jLCxzZ"
+    class="c0"
     data-blade-component="counter"
   >
     <div
-      class="BaseBox-bmPWx StyledCounterweb__StyledCounter-sc-1itt9w6-0 lldTHu dTYmGd"
+      class="c1 c2"
       data-blade-component="base-box"
     >
       <div
-        class="BaseBox-bmPWx KJLNh"
+        class="c3"
         data-blade-component="base-box"
       >
         <p
-          class="StyledBaseText-dVBfTO hUyOYU"
+          class="c4"
           data-blade-component="text"
         >
           20
@@ -209,21 +761,90 @@ exports[`<Counter /> should render large size Counter 1`] = `
 `;
 
 exports[`<Counter /> should render low contrast blue variant Counter 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 {
+  background-color: hsla(218,89%,51%,0.09);
+}
+
+.c3 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  overflow: hidden;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.c2 {
+  background-color: hsla(218,89%,51%,0.09);
+  border-radius: 9999px;
+  max-width: 120px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c4 {
+  color: hsla(218,89%,51%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 <div>
   <div
-    class="BaseBox-bmPWx jLCxzZ"
+    class="c0"
     data-blade-component="counter"
   >
     <div
-      class="BaseBox-bmPWx StyledCounterweb__StyledCounter-sc-1itt9w6-0 bwrZaM goERCT"
+      class="c1 c2"
       data-blade-component="base-box"
     >
       <div
-        class="BaseBox-bmPWx KJLNh"
+        class="c3"
         data-blade-component="base-box"
       >
         <p
-          class="StyledBaseText-dVBfTO bFfhku"
+          class="c4"
           data-blade-component="text"
         >
           20
@@ -235,21 +856,90 @@ exports[`<Counter /> should render low contrast blue variant Counter 1`] = `
 `;
 
 exports[`<Counter /> should render low contrast information variant Counter 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 {
+  background-color: hsla(193,100%,35%,0.09);
+}
+
+.c3 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  overflow: hidden;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.c2 {
+  background-color: hsla(193,100%,35%,0.09);
+  border-radius: 9999px;
+  max-width: 120px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c4 {
+  color: hsla(193,100%,35%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 <div>
   <div
-    class="BaseBox-bmPWx jLCxzZ"
+    class="c0"
     data-blade-component="counter"
   >
     <div
-      class="BaseBox-bmPWx StyledCounterweb__StyledCounter-sc-1itt9w6-0 kYPtza gilcwN"
+      class="c1 c2"
       data-blade-component="base-box"
     >
       <div
-        class="BaseBox-bmPWx KJLNh"
+        class="c3"
         data-blade-component="base-box"
       >
         <p
-          class="StyledBaseText-dVBfTO ifitbA"
+          class="c4"
           data-blade-component="text"
         >
           20
@@ -261,21 +951,90 @@ exports[`<Counter /> should render low contrast information variant Counter 1`] 
 `;
 
 exports[`<Counter /> should render low contrast negative variant Counter 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 {
+  background-color: hsla(9,91%,56%,0.09);
+}
+
+.c3 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  overflow: hidden;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.c2 {
+  background-color: hsla(9,91%,56%,0.09);
+  border-radius: 9999px;
+  max-width: 120px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c4 {
+  color: hsla(8,73%,47%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 <div>
   <div
-    class="BaseBox-bmPWx jLCxzZ"
+    class="c0"
     data-blade-component="counter"
   >
     <div
-      class="BaseBox-bmPWx StyledCounterweb__StyledCounter-sc-1itt9w6-0 kScMfw kSQvbD"
+      class="c1 c2"
       data-blade-component="base-box"
     >
       <div
-        class="BaseBox-bmPWx KJLNh"
+        class="c3"
         data-blade-component="base-box"
       >
         <p
-          class="StyledBaseText-dVBfTO cAjFun"
+          class="c4"
           data-blade-component="text"
         >
           20
@@ -287,21 +1046,90 @@ exports[`<Counter /> should render low contrast negative variant Counter 1`] = `
 `;
 
 exports[`<Counter /> should render low contrast neutral variant Counter 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 {
+  background-color: hsla(216,15%,54%,0.09);
+}
+
+.c3 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  overflow: hidden;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.c2 {
+  background-color: hsla(216,15%,54%,0.09);
+  border-radius: 9999px;
+  max-width: 120px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c4 {
+  color: hsla(216,27%,36%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 <div>
   <div
-    class="BaseBox-bmPWx jLCxzZ"
+    class="c0"
     data-blade-component="counter"
   >
     <div
-      class="BaseBox-bmPWx StyledCounterweb__StyledCounter-sc-1itt9w6-0 lldTHu dTYmGd"
+      class="c1 c2"
       data-blade-component="base-box"
     >
       <div
-        class="BaseBox-bmPWx KJLNh"
+        class="c3"
         data-blade-component="base-box"
       >
         <p
-          class="StyledBaseText-dVBfTO hlMkHt"
+          class="c4"
           data-blade-component="text"
         >
           20
@@ -313,21 +1141,90 @@ exports[`<Counter /> should render low contrast neutral variant Counter 1`] = `
 `;
 
 exports[`<Counter /> should render low contrast notice variant Counter 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 {
+  background-color: hsla(36,100%,44%,0.09);
+}
+
+.c3 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  overflow: hidden;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.c2 {
+  background-color: hsla(36,100%,44%,0.09);
+  border-radius: 9999px;
+  max-width: 120px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c4 {
+  color: hsla(38,97%,38%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 <div>
   <div
-    class="BaseBox-bmPWx jLCxzZ"
+    class="c0"
     data-blade-component="counter"
   >
     <div
-      class="BaseBox-bmPWx StyledCounterweb__StyledCounter-sc-1itt9w6-0 jfbcDy jZEMqN"
+      class="c1 c2"
       data-blade-component="base-box"
     >
       <div
-        class="BaseBox-bmPWx KJLNh"
+        class="c3"
         data-blade-component="base-box"
       >
         <p
-          class="StyledBaseText-dVBfTO bSgISm"
+          class="c4"
           data-blade-component="text"
         >
           20
@@ -339,21 +1236,90 @@ exports[`<Counter /> should render low contrast notice variant Counter 1`] = `
 `;
 
 exports[`<Counter /> should render low contrast positive variant Counter 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 {
+  background-color: hsla(155,100%,31%,0.09);
+}
+
+.c3 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  overflow: hidden;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.c2 {
+  background-color: hsla(155,100%,31%,0.09);
+  border-radius: 9999px;
+  max-width: 120px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c4 {
+  color: hsla(160,100%,26%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 <div>
   <div
-    class="BaseBox-bmPWx jLCxzZ"
+    class="c0"
     data-blade-component="counter"
   >
     <div
-      class="BaseBox-bmPWx StyledCounterweb__StyledCounter-sc-1itt9w6-0 bEaUIc hNXeTn"
+      class="c1 c2"
       data-blade-component="base-box"
     >
       <div
-        class="BaseBox-bmPWx KJLNh"
+        class="c3"
         data-blade-component="base-box"
       >
         <p
-          class="StyledBaseText-dVBfTO kHUjbS"
+          class="c4"
           data-blade-component="text"
         >
           20
@@ -365,21 +1331,90 @@ exports[`<Counter /> should render low contrast positive variant Counter 1`] = `
 `;
 
 exports[`<Counter /> should render medium size Counter 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 {
+  background-color: hsla(216,15%,54%,0.09);
+}
+
+.c3 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  overflow: hidden;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.c2 {
+  background-color: hsla(216,15%,54%,0.09);
+  border-radius: 9999px;
+  max-width: 120px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c4 {
+  color: hsla(216,27%,36%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 <div>
   <div
-    class="BaseBox-bmPWx jLCxzZ"
+    class="c0"
     data-blade-component="counter"
   >
     <div
-      class="BaseBox-bmPWx StyledCounterweb__StyledCounter-sc-1itt9w6-0 lldTHu dTYmGd"
+      class="c1 c2"
       data-blade-component="base-box"
     >
       <div
-        class="BaseBox-bmPWx KJLNh"
+        class="c3"
         data-blade-component="base-box"
       >
         <p
-          class="StyledBaseText-dVBfTO hlMkHt"
+          class="c4"
           data-blade-component="text"
         >
           20
@@ -391,21 +1426,90 @@ exports[`<Counter /> should render medium size Counter 1`] = `
 `;
 
 exports[`<Counter /> should render small size Counter 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 {
+  background-color: hsla(216,15%,54%,0.09);
+}
+
+.c3 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  overflow: hidden;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-right: 4px;
+  padding-left: 4px;
+}
+
+.c2 {
+  background-color: hsla(216,15%,54%,0.09);
+  border-radius: 9999px;
+  max-width: 120px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c4 {
+  color: hsla(216,27%,36%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.625rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 <div>
   <div
-    class="BaseBox-bmPWx jLCxzZ"
+    class="c0"
     data-blade-component="counter"
   >
     <div
-      class="BaseBox-bmPWx StyledCounterweb__StyledCounter-sc-1itt9w6-0 lldTHu dTYmGd"
+      class="c1 c2"
       data-blade-component="base-box"
     >
       <div
-        class="BaseBox-bmPWx NPGgl"
+        class="c3"
         data-blade-component="base-box"
       >
         <p
-          class="StyledBaseText-dVBfTO hRojGK"
+          class="c4"
           data-blade-component="text"
         >
           20

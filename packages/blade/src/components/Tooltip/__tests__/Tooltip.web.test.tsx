@@ -18,7 +18,7 @@ import assertAccessible from '~utils/testing/assertAccessible.web';
 const waitForPosition = () => act(async () => {});
 const animationDuration = paymentTheme.motion.duration.quick;
 
-describe('<Tooltip />', async () => {
+describe('<Tooltip />', () => {
   jest.useFakeTimers({
     legacyFakeTimers: true,
   });

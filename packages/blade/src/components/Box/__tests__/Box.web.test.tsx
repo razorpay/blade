@@ -17,9 +17,17 @@ describe('<Box />', () => {
       </Box>,
     );
     expect(container).toMatchInlineSnapshot(`
+      .c0 {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        padding: 0px;
+      }
+
       <div>
         <div
-          class="BaseBox-bmPWx jBndhd"
+          class="c0"
           data-blade-component="box"
         >
           children test!
@@ -35,9 +43,13 @@ describe('<Box />', () => {
       </Box>,
     );
     expect(container).toMatchInlineSnapshot(`
+      .c0 {
+        display: block;
+      }
+
       <div>
         <footer
-          class="BaseBox-bmPWx zgBJD"
+          class="c0"
           data-blade-component="box"
         >
           Footer test!

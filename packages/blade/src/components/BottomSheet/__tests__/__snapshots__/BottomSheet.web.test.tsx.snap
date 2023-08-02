@@ -1,84 +1,658 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 100%;
+}
+
+.c5 {
+  overflow: auto;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c6 {
+  padding-right: 16px;
+  padding-left: 16px;
+  margin-bottom: 16px;
+  margin-top: 16px;
+  touch-action: none;
+}
+
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  padding-right: 16px;
+  margin-right: auto;
+}
+
+.c9 {
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+}
+
+.c10 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c12 {
+  margin-left: 8px;
+}
+
+.c13 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: 28px;
+}
+
+.c14 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c15 {
+  background-color: hsla(155,100%,31%,0.09);
+}
+
+.c17 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  overflow: hidden;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.c25 {
+  border-width: 0px;
+  border-bottom-color: hsla(216,15%,54%,0.18);
+  border-style: solid;
+}
+
+.c27 {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 1;
+  -ms-flex-negative: 1;
+  flex-shrink: 1;
+}
+
+.c28 {
+  overflow: auto;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-right: 16px;
+  padding-left: 16px;
+}
+
+.c30 {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  z-index: 2;
+  margin-top: auto;
+  width: 100%;
+  background-color: hsla(0,0%,100%,1);
+  touch-action: none;
+}
+
+.c31 {
+  padding: 16px;
+}
+
+.c33 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c20 {
+  margin-right: 16px;
+}
+
+.c21 {
+  text-align: left;
+  background-color: hsla(155,100%,31%,0.09);
+}
+
+.c0 {
+  position: fixed;
+  z-index: 100;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-color: hsla(214,15%,18%,0.64);
+  opacity: 1;
+}
+
+.c26 {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+
+.c11 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 1rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c18 {
+  color: hsla(160,100%,26%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.c19 {
+  color: hsla(216,16%,60%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c29 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c35 {
+  color: hsla(218,89%,51%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c23 {
+  color: hsla(160,100%,26%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.c24 {
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 2px;
+  background: transparent;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  color: hsla(214,18%,69%,1);
+  -webkit-transition-property: color,box-shadow;
+  transition-property: color,box-shadow;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c24:hover {
+  color: hsla(217,18%,45%,1);
+}
+
+.c24:focus {
+  outline: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  color: hsla(217,18%,45%,1);
+}
+
+.c24:active {
+  color: hsla(217,18%,45%,1);
+}
+
+.c1 {
+  -webkit-transition-duration: 250ms;
+  transition-duration: 250ms;
+  -webkit-transition-timing-function: cubic-bezier(0,0,0,1);
+  transition-timing-function: cubic-bezier(0,0,0,1);
+  pointer-events: all;
+  -webkit-transition-property: opacity;
+  transition-property: opacity;
+}
+
+.c4 {
+  position: relative;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  padding-top: 12px;
+  margin-bottom: 4px;
+  touch-action: none;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.c4:after {
+  margin: auto;
+  content: '';
+  width: 56px;
+  height: 4px;
+  background-color: hsla(216,15%,54%,0.18);
+  border-radius: 16px;
+}
+
+.c2 {
+  background: hsla(0,0%,100%,1);
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  border-color: hsla(216,15%,54%,0.18);
+  box-shadow: 0px -24px 48px -12px hsla(217,56%,17%,0.18);
+  opacity: 0;
+  pointer-events: none;
+  -webkit-transition-duration: 250ms;
+  transition-duration: 250ms;
+  -webkit-transition-timing-function: cubic-bezier(.15,0,.24,.97);
+  transition-timing-function: cubic-bezier(.15,0,.24,.97);
+  will-change: transform,opacity,height;
+  -webkit-transition-property: -webkit-transform,opacity,height;
+  -webkit-transition-property: transform,opacity,height;
+  transition-property: transform,opacity,height;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 768px;
+  background-color: hsla(0,0%,100%,1);
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  touch-action: none;
+  overflow: hidden;
+}
+
+.c16 {
+  background-color: hsla(155,100%,31%,0.09);
+  border-radius: 9999px;
+  max-width: 120px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c32 {
+  min-height: 36px;
+  width: 100%;
+  cursor: pointer;
+  background-color: hsla(218,89%,51%,0);
+  border-color: hsla(218,89%,51%,1);
+  border-width: 1px;
+  border-radius: 2px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c32:hover {
+  background-color: hsla(218,89%,51%,0.09);
+  border-color: hsla(218,89%,51%,1);
+}
+
+.c32:active {
+  background-color: hsla(218,89%,51%,0.32);
+  border-color: hsla(218,89%,51%,1);
+}
+
+.c32:focus {
+  background-color: hsla(218,89%,51%,0.18);
+  border-color: hsla(218,89%,51%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: none;
+}
+
+.c32 * {
+  -webkit-transition-property: color,fill;
+  transition-property: color,fill;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c34 {
+  opacity: 1;
+}
+
+.c22 {
+  background-color: hsla(155,100%,31%,0.09);
+  border-radius: 9999px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+@media screen and (min-width:768px) {
+  .c6 {
+    padding-right: 20px;
+    padding-left: 20px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+}
+
+@media screen and (min-width:320px) {
+  .c25 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:480px) {
+  .c25 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c25 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .c25 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c25 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c31 {
+    padding: 20px;
+  }
+}
+
 <div>
   <div
-    class="BaseBox-bmPWx BottomSheetBackdropweb__StyledBottomSheetBackdrop-sc-198k9f6-0 kpjFgW gQNTBU"
+    class="c0 c1"
     data-blade-component="base-box"
     data-testid="bottomsheet-backdrop"
     opacity="1"
   />
   <div
     aria-modal="true"
-    class="BottomSheetweb__BottomSheetSurface-qlloie-0 djockt"
+    class="c2"
     data-blade-component="bottom-sheet"
     role="dialog"
     style="opacity: 1; pointer-events: all; height: 0px; bottom: 0px; z-index: 100;"
   >
     <div
-      class="BaseBox-bmPWx gWGQoD"
+      class="c3"
       data-blade-component="base-box"
     >
       <div
-        class="BottomSheetGrabHandleweb__BottomSheetGrabHandle-mo12ak-0 jpGBjs"
+        class="c4"
         data-blade-component="BottomSheetGrabHandle"
       />
       <div
-        class="BaseBox-bmPWx cImMcF"
+        class="c5"
         data-blade-component="bottom-sheet-header"
       >
         <div
-          class="BaseBox-bmPWx"
+          class=""
           data-blade-component="base-box"
         >
           <div
-            class="BaseBox-bmPWx HnFxS"
+            class="c6"
             data-blade-component="base-box"
           >
             <div
-              class="BaseBox-bmPWx isYLKC"
+              class="c7"
               data-blade-component="base-box"
             >
               <div
-                class="BaseBox-bmPWx jPnCFC"
+                class="c8"
                 data-blade-component="base-box"
               >
                 <div
-                  class="BaseBox-bmPWx lhloZM"
+                  class="c9"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="BaseBox-bmPWx kGcQUv"
+                    class="c10"
                     data-blade-component="base-box"
                   >
                     <h6
-                      class="StyledBaseText-dVBfTO dFejDk"
+                      class="c11"
                       data-blade-component="heading"
                     >
                       Address Details
                     </h6>
                     <div
-                      class="BaseBox-bmPWx ktWMhw"
+                      class="c12"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="BaseBox-bmPWx bhAnXJ"
+                        class="c13"
                         data-blade-component="box"
                       >
                         <div
-                          class="BaseBox-bmPWx jLCxzZ"
+                          class="c14"
                           data-blade-component="counter"
                         >
                           <div
-                            class="BaseBox-bmPWx StyledCounterweb__StyledCounter-sc-1itt9w6-0 bEaUIc hNXeTn"
+                            class="c15 c16"
                             data-blade-component="base-box"
                           >
                             <div
-                              class="BaseBox-bmPWx KJLNh"
+                              class="c17"
                               data-blade-component="base-box"
                             >
                               <p
-                                class="StyledBaseText-dVBfTO kHUjbS"
+                                class="c18"
                                 data-blade-component="text"
                               >
                                 2
@@ -90,7 +664,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                     </div>
                   </div>
                   <p
-                    class="StyledBaseText-dVBfTO cGMqFI"
+                    class="c19"
                     data-blade-component="text"
                   >
                     Saving addresses will improve your checkout experience
@@ -98,27 +672,27 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                 </div>
               </div>
               <div
-                class="BaseBox-bmPWx kFTMWM"
+                class="c20"
                 data-blade-component="base-box"
               >
                 <div
-                  class="BaseBox-bmPWx bhAnXJ"
+                  class="c13"
                   data-blade-component="box"
                 >
                   <div
-                    class="BaseBox-bmPWx jLCxzZ"
+                    class="c14"
                     data-blade-component="badge"
                   >
                     <div
-                      class="BaseBox-bmPWx StyledBadgeweb__StyledBadge-sc-1svn4tv-0 dLUnUf iPenii"
+                      class="c21 c22"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="BaseBox-bmPWx KJLNh"
+                        class="c17"
                         data-blade-component="base-box"
                       >
                         <p
-                          class="StyledBaseText-dVBfTO cunbeN"
+                          class="c23"
                           data-blade-component="text"
                         >
                           Action Needed
@@ -129,12 +703,12 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                 </div>
               </div>
               <div
-                class="BaseBox-bmPWx bhAnXJ"
+                class="c13"
                 data-blade-component="box"
               >
                 <button
                   aria-label="Close"
-                  class="StyledIconButtonweb__StyledButton-sc-1f4cg7d-0 gvuEeM"
+                  class="c24"
                   data-blade-component="icon-button"
                   type="button"
                 >
@@ -158,23 +732,23 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
             </div>
           </div>
           <div
-            class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 jfizlv jvaPlR"
+            class="c25 c26"
             data-blade-component="divider"
           />
         </div>
       </div>
       <div
-        class="BaseBox-bmPWx jiLTJh"
+        class="c27"
         data-blade-component="bottom-sheet-body"
         data-testid="bottomsheet-body"
         style="user-select: auto; overflow: auto;"
       >
         <div
-          class="BaseBox-bmPWx lhcKjI"
+          class="c28"
           data-blade-component="base-box"
         >
           <p
-            class="StyledBaseText-dVBfTO eIdQFo"
+            class="c29"
             data-blade-component="text"
           >
             BottomSheet body
@@ -182,29 +756,29 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
         </div>
       </div>
       <div
-        class="BaseBox-bmPWx dazEdx"
+        class="c30"
         data-blade-component="bottom-sheet-footer"
       >
         <div
-          class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 jfizlv jvaPlR"
+          class="c25 c26"
           data-blade-component="divider"
         />
         <div
-          class="BaseBox-bmPWx kGtVIy"
+          class="c31"
           data-blade-component="base-box"
         >
           <button
-            class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 hDfvuZ"
+            class="c32"
             data-blade-component="button"
             role="button"
             type="button"
           >
             <div
-              class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 kkGTK NIPoA"
+              class="c33 c34"
               data-blade-component="base-box"
             >
               <div
-                class="StyledBaseText-dVBfTO jSaisz"
+                class="c35"
                 data-blade-component="base-text"
               >
                 Remove address
@@ -219,43 +793,258 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
 `;
 
 exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 100%;
+}
+
+.c5 {
+  overflow: visible;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c9 {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 1;
+  -ms-flex-negative: 1;
+  flex-shrink: 1;
+}
+
+.c10 {
+  overflow: auto;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+.c0 {
+  position: fixed;
+  z-index: 100;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-color: hsla(214,15%,18%,0.64);
+  opacity: 1;
+}
+
+.c6 {
+  position: absolute;
+  height: 8px;
+  top: 16px;
+  right: 0px;
+  touch-action: none;
+}
+
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  position: absolute;
+  z-index: 100;
+  height: 28px;
+  width: 28px;
+  top: 0px;
+  right: 16px;
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 9999px;
+}
+
+.c11 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c8 {
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 2px;
+  background: transparent;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  color: hsla(214,18%,69%,1);
+  -webkit-transition-property: color,box-shadow;
+  transition-property: color,box-shadow;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c8:hover {
+  color: hsla(217,18%,45%,1);
+}
+
+.c8:focus {
+  outline: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  color: hsla(217,18%,45%,1);
+}
+
+.c8:active {
+  color: hsla(217,18%,45%,1);
+}
+
+.c1 {
+  -webkit-transition-duration: 250ms;
+  transition-duration: 250ms;
+  -webkit-transition-timing-function: cubic-bezier(0,0,0,1);
+  transition-timing-function: cubic-bezier(0,0,0,1);
+  pointer-events: all;
+  -webkit-transition-property: opacity;
+  transition-property: opacity;
+}
+
+.c4 {
+  position: absolute;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  padding-top: 12px;
+  margin-bottom: 4px;
+  touch-action: none;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.c4:after {
+  margin: auto;
+  content: '';
+  width: 56px;
+  height: 4px;
+  background-color: hsla(216,15%,54%,0.18);
+  border-radius: 16px;
+}
+
+.c2 {
+  background: hsla(0,0%,100%,1);
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  border-color: hsla(216,15%,54%,0.18);
+  box-shadow: 0px -24px 48px -12px hsla(217,56%,17%,0.18);
+  opacity: 0;
+  pointer-events: none;
+  -webkit-transition-duration: 250ms;
+  transition-duration: 250ms;
+  -webkit-transition-timing-function: cubic-bezier(.15,0,.24,.97);
+  transition-timing-function: cubic-bezier(.15,0,.24,.97);
+  will-change: transform,opacity,height;
+  -webkit-transition-property: -webkit-transform,opacity,height;
+  -webkit-transition-property: transform,opacity,height;
+  transition-property: transform,opacity,height;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 768px;
+  background-color: hsla(0,0%,100%,1);
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  touch-action: none;
+  overflow: hidden;
+}
+
 <div>
   <div
-    class="BaseBox-bmPWx BottomSheetBackdropweb__StyledBottomSheetBackdrop-sc-198k9f6-0 kpjFgW gQNTBU"
+    class="c0 c1"
     data-blade-component="base-box"
     data-testid="bottomsheet-backdrop"
     opacity="1"
   />
   <div
     aria-modal="true"
-    class="BottomSheetweb__BottomSheetSurface-qlloie-0 djockt"
+    class="c2"
     data-blade-component="bottom-sheet"
     role="dialog"
     style="opacity: 1; pointer-events: all; height: 0px; bottom: 0px; z-index: 100;"
   >
     <div
-      class="BaseBox-bmPWx gWGQoD"
+      class="c3"
       data-blade-component="base-box"
     >
       <div
-        class="BottomSheetGrabHandleweb__BottomSheetGrabHandle-mo12ak-0 bPMZxz"
+        class="c4"
         data-blade-component="BottomSheetGrabHandle"
       />
       <div
-        class="BaseBox-bmPWx QrTns"
+        class="c5"
         data-blade-component="bottom-sheet-header"
       >
         <div
-          class="BaseBox-bmPWx ihzyIt"
+          class="c6"
           data-blade-component="base-box"
         >
           <div
-            class="BaseBox-bmPWx kSTpWI"
+            class="c7"
             data-blade-component="base-box"
           >
             <button
               aria-label="Close"
-              class="StyledIconButtonweb__StyledButton-sc-1f4cg7d-0 gvuEeM"
+              class="c8"
               data-blade-component="icon-button"
               type="button"
             >
@@ -279,17 +1068,17 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
         </div>
       </div>
       <div
-        class="BaseBox-bmPWx jiLTJh"
+        class="c9"
         data-blade-component="bottom-sheet-body"
         data-testid="bottomsheet-body"
         style="user-select: auto; overflow: auto;"
       >
         <div
-          class="BaseBox-bmPWx jriGvY"
+          class="c10"
           data-blade-component="base-box"
         >
           <p
-            class="StyledBaseText-dVBfTO eIdQFo"
+            class="c11"
             data-blade-component="text"
           >
             BottomSheet body

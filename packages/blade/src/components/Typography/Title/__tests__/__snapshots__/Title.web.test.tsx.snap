@@ -1,9 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Title /> should render Title with color 1`] = `
+.c0 {
+  color: hsla(220,30%,96%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
 <div>
   <h3
-    class="StyledBaseText-dVBfTO dizdMO"
+    class="c0"
     data-blade-component="title"
   >
     Displaying Landing Page Title
@@ -12,9 +25,22 @@ exports[`<Title /> should render Title with color 1`] = `
 `;
 
 exports[`<Title /> should render Title with default properties 1`] = `
+.c0 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
 <div>
   <h3
-    class="StyledBaseText-dVBfTO dajMpX"
+    class="c0"
     data-blade-component="title"
   >
     Displaying Landing Page Title
@@ -23,15 +49,41 @@ exports[`<Title /> should render Title with default properties 1`] = `
 `;
 
 exports[`<Title /> should render Title with mixed color 1`] = `
+.c0 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c1 {
+  color: hsla(195,100%,31%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
 <div>
   <h3
-    class="StyledBaseText-dVBfTO dajMpX"
+    class="c0"
     data-blade-component="title"
   >
     Supercharge your business with the all‑powerful
      
     <span
-      class="StyledBaseText-dVBfTO jJlHWY"
+      class="c1"
       data-blade-component="title"
     >
       Payment Gateway
@@ -41,9 +93,22 @@ exports[`<Title /> should render Title with mixed color 1`] = `
 `;
 
 exports[`<Title /> should render Title with variant "large" 1`] = `
+.c0 {
+  color: hsla(217,18%,45%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 2rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 2.5rem;
+  margin: 0;
+  padding: 0;
+}
+
 <div>
   <h1
-    class="StyledBaseText-dVBfTO dcWlx"
+    class="c0"
     data-blade-component="title"
   >
     Displaying Landing Page Title
@@ -52,9 +117,22 @@ exports[`<Title /> should render Title with variant "large" 1`] = `
 `;
 
 exports[`<Title /> should render Title with variant "medium" 1`] = `
+.c0 {
+  color: hsla(216,16%,60%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 1.75rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 2.5rem;
+  margin: 0;
+  padding: 0;
+}
+
 <div>
   <h2
-    class="StyledBaseText-dVBfTO epiXPW"
+    class="c0"
     data-blade-component="title"
   >
     Displaying Landing Page Title
@@ -63,9 +141,22 @@ exports[`<Title /> should render Title with variant "medium" 1`] = `
 `;
 
 exports[`<Title /> should render Title with variant "small" 1`] = `
+.c0 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
 <div>
   <h3
-    class="StyledBaseText-dVBfTO dajMpX"
+    class="c0"
     data-blade-component="title"
   >
     Displaying Landing Page Title
@@ -74,9 +165,22 @@ exports[`<Title /> should render Title with variant "small" 1`] = `
 `;
 
 exports[`<Title /> should render Title with variant "small" and contrast "high" 1`] = `
+.c0 {
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
 <div>
   <h3
-    class="StyledBaseText-dVBfTO ixRRZX"
+    class="c0"
     data-blade-component="title"
   >
     Displaying Landing Page Title

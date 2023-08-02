@@ -1,21 +1,188 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Checkbox /> should render checkbox with label 1`] = `
+.c4 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-width: 1.5px;
+  border-style: solid;
+  margin: 2px;
+  border-radius: 2px;
+  background-color: transparent;
+  border-color: hsla(214,18%,69%,1);
+}
+
+.c5 {
+  -webkit-animation: gYwSSW 150ms cubic-bezier(0.17,0,1,1);
+  animation: gYwSSW 150ms cubic-bezier(0.17,0,1,1);
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c6 {
+  margin-left: 4px;
+}
+
+.c10 {
+  margin-left: 24px;
+}
+
+.c7 {
+  color: hsla(216,27%,36%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c9 {
+  color: hsla(218,89%,51%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.c3 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: 0 -1px -1px 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  left: -10000px;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.c3:focus + div {
+  outline: 1px solid hsla(220,30%,96%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+}
+
+.c3:hover + div,
+.c3:focus + div {
+  border-color: hsla(214,18%,69%,1);
+  background-color: hsla(216,15%,54%,0.09);
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+}
+
+.c8 {
+  padding: 0;
+  background-color: transparent;
+  outline: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 2px;
+  -webkit-transition-property: box-shadow;
+  transition-property: box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+}
+
+.c8 .content-container {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  border-radius: 2px;
+}
+
+.c8:focus .content-container {
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+}
+
+.c8 * {
+  -webkit-transition-property: color,fill;
+  transition-property: color,fill;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+}
+
 <div>
   <div
-    class="BaseBox-bmPWx"
+    class=""
     data-blade-component="checkbox"
   >
     <label
-      class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 bgSmPY"
+      class="c0"
       data-blade-component="checkbox-label"
     >
       <div
-        class="BaseBox-bmPWx xrMLB"
+        class="c1"
         data-blade-component="base-box"
       >
         <div
-          class="BaseBox-bmPWx fSbYvl"
+          class="c2"
           data-blade-component="base-box"
         >
           <input
@@ -23,17 +190,17 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
             aria-disabled="false"
             aria-invalid="false"
             aria-required="false"
-            class="SelectorInputweb__StyledInput-sc-1bnkrae-0 eWXntk"
+            class="c3"
             role="checkbox"
             type="checkbox"
             value=""
           />
           <div
-            class="CheckboxIconWrapperweb__CheckboxIconWrapper-sc-3hpze0-0 hMvCxW"
+            class="c4"
             data-blade-component="checkbox-icon-wrapper"
           >
             <div
-              class="Fadeweb__AnimatedFade-sc-1h424tv-0"
+              class=""
               style="opacity: 0; position: absolute; display: flex;"
             >
               <svg
@@ -59,32 +226,32 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
               </svg>
             </div>
             <div
-              class="Fadeweb__AnimatedFade-sc-1h424tv-0 fqlNJV"
+              class="c5"
               style="opacity: 0; position: absolute; display: flex;"
             />
           </div>
           <div
-            class="BaseBox-bmPWx bigiAM"
+            class="c6"
             data-blade-component="base-box"
           />
           <div
-            class="StyledBaseText-dVBfTO ktUwvA"
+            class="c7"
             data-blade-component="base-text"
           >
             I accept 
             <a
               aria-disabled="false"
-              class="StyledBaseLinkweb__StyledLink-sc-1yj1z8h-0 kzvYbf"
+              class="c8"
               data-blade-component="link"
               href="#"
               role="link"
             >
               <span
-                class="BaseBox-bmPWx fSbYvl content-container"
+                class="c2 content-container"
                 data-blade-component="base-box"
               >
                 <span
-                  class="StyledBaseText-dVBfTO jSaisz"
+                  class="c9"
                   data-blade-component="base-text"
                 >
                   Terms and Conditions
@@ -94,7 +261,7 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
           </div>
         </div>
         <div
-          class="BaseBox-bmPWx cCkEge"
+          class="c10"
           data-blade-component="base-box"
         />
       </div>
@@ -104,21 +271,126 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
 `;
 
 exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
+.c4 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-width: 1.5px;
+  border-style: solid;
+  margin: 2px;
+  border-radius: 2px;
+  background-color: transparent;
+  border-color: hsla(216,15%,54%,0.18);
+}
+
+.c5 {
+  -webkit-animation: gYwSSW 150ms cubic-bezier(0.17,0,1,1);
+  animation: gYwSSW 150ms cubic-bezier(0.17,0,1,1);
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c6 {
+  margin-left: 4px;
+}
+
+.c8 {
+  margin-left: 24px;
+}
+
+.c7 {
+  color: hsla(214,18%,69%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.c3 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: 0 -1px -1px 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  left: -10000px;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.c3:focus + div {
+  outline: 1px solid hsla(220,30%,96%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+}
+
 <div>
   <div
-    class="BaseBox-bmPWx"
+    class=""
     data-blade-component="checkbox"
   >
     <label
-      class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 bgSmPY"
+      class="c0"
       data-blade-component="checkbox-label"
     >
       <div
-        class="BaseBox-bmPWx xrMLB"
+        class="c1"
         data-blade-component="base-box"
       >
         <div
-          class="BaseBox-bmPWx fSbYvl"
+          class="c2"
           data-blade-component="base-box"
         >
           <input
@@ -126,18 +398,18 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
             aria-disabled="true"
             aria-invalid="false"
             aria-required="false"
-            class="SelectorInputweb__StyledInput-sc-1bnkrae-0 hJscHc"
+            class="c3"
             disabled=""
             role="checkbox"
             type="checkbox"
             value=""
           />
           <div
-            class="CheckboxIconWrapperweb__CheckboxIconWrapper-sc-3hpze0-0 jKdJtV"
+            class="c4"
             data-blade-component="checkbox-icon-wrapper"
           >
             <div
-              class="Fadeweb__AnimatedFade-sc-1h424tv-0"
+              class=""
               style="opacity: 0; position: absolute; display: flex;"
             >
               <svg
@@ -163,23 +435,23 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
               </svg>
             </div>
             <div
-              class="Fadeweb__AnimatedFade-sc-1h424tv-0 fqlNJV"
+              class="c5"
               style="opacity: 0; position: absolute; display: flex;"
             />
           </div>
           <div
-            class="BaseBox-bmPWx bigiAM"
+            class="c6"
             data-blade-component="base-box"
           />
           <div
-            class="StyledBaseText-dVBfTO cchetE"
+            class="c7"
             data-blade-component="base-text"
           >
             Remember password
           </div>
         </div>
         <div
-          class="BaseBox-bmPWx cCkEge"
+          class="c8"
           data-blade-component="base-box"
         />
       </div>
@@ -189,21 +461,147 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
 `;
 
 exports[`<Checkbox /> should set error state with validationState 1`] = `
+.c4 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-width: 1.5px;
+  border-style: solid;
+  margin: 2px;
+  border-radius: 2px;
+  background-color: hsla(9,91%,56%,0.09);
+  border-color: hsla(8,73%,47%,1);
+}
+
+.c5 {
+  -webkit-animation: gYwSSW 150ms cubic-bezier(0.17,0,1,1);
+  animation: gYwSSW 150ms cubic-bezier(0.17,0,1,1);
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c6 {
+  margin-left: 4px;
+}
+
+.c8 {
+  margin-left: 24px;
+}
+
+.c9 {
+  margin-top: 4px;
+}
+
+.c10 {
+  margin-right: 4px;
+}
+
+.c7 {
+  color: hsla(216,27%,36%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c11 {
+  color: hsla(8,73%,47%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.6875rem;
+  font-weight: 400;
+  font-style: italic;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.c3 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: 0 -1px -1px 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  left: -10000px;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.c3:focus + div {
+  outline: 1px solid hsla(220,30%,96%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+}
+
 <div>
   <div
-    class="BaseBox-bmPWx"
+    class=""
     data-blade-component="checkbox"
   >
     <label
-      class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 bgSmPY"
+      class="c0"
       data-blade-component="checkbox-label"
     >
       <div
-        class="BaseBox-bmPWx xrMLB"
+        class="c1"
         data-blade-component="base-box"
       >
         <div
-          class="BaseBox-bmPWx fSbYvl"
+          class="c2"
           data-blade-component="base-box"
         >
           <input
@@ -212,17 +610,17 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
             aria-errormessage="checkbox-19-errortext-21"
             aria-invalid="true"
             aria-required="false"
-            class="SelectorInputweb__StyledInput-sc-1bnkrae-0 hJscHc"
+            class="c3"
             role="checkbox"
             type="checkbox"
             value=""
           />
           <div
-            class="CheckboxIconWrapperweb__CheckboxIconWrapper-sc-3hpze0-0 iCAuYI"
+            class="c4"
             data-blade-component="checkbox-icon-wrapper"
           >
             <div
-              class="Fadeweb__AnimatedFade-sc-1h424tv-0"
+              class=""
               style="opacity: 0; position: absolute; display: flex;"
             >
               <svg
@@ -248,33 +646,33 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
               </svg>
             </div>
             <div
-              class="Fadeweb__AnimatedFade-sc-1h424tv-0 fqlNJV"
+              class="c5"
               style="opacity: 0; position: absolute; display: flex;"
             />
           </div>
           <div
-            class="BaseBox-bmPWx bigiAM"
+            class="c6"
             data-blade-component="base-box"
           />
           <div
-            class="StyledBaseText-dVBfTO ktUwvA"
+            class="c7"
             data-blade-component="base-text"
           >
             Remember password
           </div>
         </div>
         <div
-          class="BaseBox-bmPWx cCkEge"
+          class="c8"
           data-blade-component="base-box"
         />
       </div>
     </label>
     <div
-      class="BaseBox-bmPWx gnjvtY"
+      class="c9"
       data-blade-component="base-box"
     >
       <span
-        class="BaseBox-bmPWx fSbYvl"
+        class="c2"
         data-blade-component="base-box"
         style="word-break: break-all;"
       >
@@ -306,11 +704,11 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
           />
         </svg>
         <div
-          class="BaseBox-bmPWx joUrH"
+          class="c10"
           data-blade-component="base-box"
         />
         <span
-          class="StyledBaseText-dVBfTO fRqtgA"
+          class="c11"
           data-blade-component="base-text"
           id="checkbox-19-errortext-21"
         >
@@ -323,21 +721,141 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
 `;
 
 exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
+.c4 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-width: 1.5px;
+  border-style: solid;
+  margin: 2px;
+  border-radius: 2px;
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
+}
+
+.c5 {
+  -webkit-animation: byNIqG 150ms cubic-bezier(0,0,0.2,1);
+  animation: byNIqG 150ms cubic-bezier(0,0,0.2,1);
+}
+
+.c6 {
+  -webkit-animation: gYwSSW 150ms cubic-bezier(0.17,0,1,1);
+  animation: gYwSSW 150ms cubic-bezier(0.17,0,1,1);
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c7 {
+  margin-left: 4px;
+}
+
+.c9 {
+  margin-left: 24px;
+}
+
+.c8 {
+  color: hsla(216,27%,36%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.c3 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: 0 -1px -1px 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  left: -10000px;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.c3:focus + div {
+  outline: 1px solid hsla(220,30%,96%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+}
+
+.c3:hover + div,
+.c3:focus + div {
+  border-color: hsla(223,95%,48%,1);
+  background-color: hsla(223,95%,48%,1);
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+}
+
 <div>
   <div
-    class="BaseBox-bmPWx"
+    class=""
     data-blade-component="checkbox"
   >
     <label
-      class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 bgSmPY"
+      class="c0"
       data-blade-component="checkbox-label"
     >
       <div
-        class="BaseBox-bmPWx xrMLB"
+        class="c1"
         data-blade-component="base-box"
       >
         <div
-          class="BaseBox-bmPWx fSbYvl"
+          class="c2"
           data-blade-component="base-box"
         >
           <input
@@ -346,17 +864,17 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
             aria-invalid="false"
             aria-required="false"
             checked=""
-            class="SelectorInputweb__StyledInput-sc-1bnkrae-0 geOoLT"
+            class="c3"
             role="checkbox"
             type="checkbox"
             value=""
           />
           <div
-            class="CheckboxIconWrapperweb__CheckboxIconWrapper-sc-3hpze0-0 dOibFf"
+            class="c4"
             data-blade-component="checkbox-icon-wrapper"
           >
             <div
-              class="Fadeweb__AnimatedFade-sc-1h424tv-0 jkxAgI"
+              class="c5"
               style="opacity: 1; position: absolute; display: flex;"
             >
               <svg
@@ -382,7 +900,7 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
               </svg>
             </div>
             <div
-              class="Fadeweb__AnimatedFade-sc-1h424tv-0 fqlNJV"
+              class="c6"
               style="opacity: 0; position: absolute; display: flex;"
             >
               <svg
@@ -409,18 +927,18 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
             </div>
           </div>
           <div
-            class="BaseBox-bmPWx bigiAM"
+            class="c7"
             data-blade-component="base-box"
           />
           <div
-            class="StyledBaseText-dVBfTO ktUwvA"
+            class="c8"
             data-blade-component="base-text"
           >
             Remember password
           </div>
         </div>
         <div
-          class="BaseBox-bmPWx cCkEge"
+          class="c9"
           data-blade-component="base-box"
         />
       </div>

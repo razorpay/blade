@@ -1,9 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Text /> should render Text with center textAlign 1`] = `
+.c0 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
 <div>
   <p
-    class="StyledBaseText-dVBfTO hQzXeT"
+    class="c0"
     data-blade-component="text"
   >
     Displaying some text
@@ -12,9 +26,22 @@ exports[`<Text /> should render Text with center textAlign 1`] = `
 `;
 
 exports[`<Text /> should render Text with color 1`] = `
+.c0 {
+  color: hsla(218,89%,51%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+}
+
 <div>
   <p
-    class="StyledBaseText-dVBfTO bAbRyf"
+    class="c0"
     data-blade-component="text"
   >
     Displaying some text
@@ -23,9 +50,22 @@ exports[`<Text /> should render Text with color 1`] = `
 `;
 
 exports[`<Text /> should render Text with default properties 1`] = `
+.c0 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+}
+
 <div>
   <p
-    class="StyledBaseText-dVBfTO eIdQFo"
+    class="c0"
     data-blade-component="text"
   >
     Displaying some text
@@ -34,9 +74,27 @@ exports[`<Text /> should render Text with default properties 1`] = `
 `;
 
 exports[`<Text /> should render Text with variant "body" 1`] = `
+.c0 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 3;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
 <div>
   <p
-    class="StyledBaseText-dVBfTO hlGhIo"
+    class="c0"
     data-blade-component="text"
   >
     Displaying some text
@@ -45,9 +103,27 @@ exports[`<Text /> should render Text with variant "body" 1`] = `
 `;
 
 exports[`<Text /> should render Text with variant "body" and contrast "high" 1`] = `
+.c0 {
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 3;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
 <div>
   <p
-    class="StyledBaseText-dVBfTO yEaxA"
+    class="c0"
     data-blade-component="text"
   >
     Displaying some text
@@ -56,9 +132,27 @@ exports[`<Text /> should render Text with variant "body" and contrast "high" 1`]
 `;
 
 exports[`<Text /> should render Text with variant "body" and size "small" 1`] = `
+.c0 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 3;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
 <div>
   <p
-    class="StyledBaseText-dVBfTO dXvpmx"
+    class="c0"
     data-blade-component="text"
   >
     Displaying some text
@@ -67,9 +161,22 @@ exports[`<Text /> should render Text with variant "body" and size "small" 1`] = 
 `;
 
 exports[`<Text /> should render Text with variant "caption" 1`] = `
+.c0 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+}
+
 <div>
   <p
-    class="StyledBaseText-dVBfTO ldPEnv"
+    class="c0"
     data-blade-component="text"
   >
     Displaying some text

@@ -1,21 +1,97 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Badge /> should render Badge with Icon 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 {
+  text-align: left;
+  background-color: hsla(216,15%,54%,0.09);
+}
+
+.c3 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  overflow: hidden;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding-right: 4px;
+}
+
+.c2 {
+  background-color: hsla(216,15%,54%,0.09);
+  border-radius: 9999px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c5 {
+  color: hsla(216,27%,36%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 <div>
   <div
-    class="BaseBox-bmPWx jLCxzZ"
+    class="c0"
     data-blade-component="badge"
   >
     <div
-      class="BaseBox-bmPWx StyledBadgeweb__StyledBadge-sc-1svn4tv-0 cRtrfR dnvyGQ"
+      class="c1 c2"
       data-blade-component="base-box"
     >
       <div
-        class="BaseBox-bmPWx KJLNh"
+        class="c3"
         data-blade-component="base-box"
       >
         <div
-          class="BaseBox-bmPWx gOCFFA"
+          class="c4"
           data-blade-component="base-box"
         >
           <svg
@@ -47,7 +123,7 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
           </svg>
         </div>
         <p
-          class="StyledBaseText-dVBfTO fuxoMy"
+          class="c5"
           data-blade-component="text"
         >
           Label
@@ -59,21 +135,89 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
 `;
 
 exports[`<Badge /> should render Badge with bold font 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 {
+  text-align: left;
+  background-color: hsla(216,15%,54%,0.09);
+}
+
+.c3 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  overflow: hidden;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.c2 {
+  background-color: hsla(216,15%,54%,0.09);
+  border-radius: 9999px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c4 {
+  color: hsla(216,27%,36%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 <div>
   <div
-    class="BaseBox-bmPWx jLCxzZ"
+    class="c0"
     data-blade-component="badge"
   >
     <div
-      class="BaseBox-bmPWx StyledBadgeweb__StyledBadge-sc-1svn4tv-0 cRtrfR dnvyGQ"
+      class="c1 c2"
       data-blade-component="base-box"
     >
       <div
-        class="BaseBox-bmPWx KJLNh"
+        class="c3"
         data-blade-component="base-box"
       >
         <p
-          class="StyledBaseText-dVBfTO eIOpN"
+          class="c4"
           data-blade-component="text"
         >
           LABEL
@@ -85,21 +229,89 @@ exports[`<Badge /> should render Badge with bold font 1`] = `
 `;
 
 exports[`<Badge /> should render Badge with default props 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 {
+  text-align: left;
+  background-color: hsla(216,15%,54%,0.09);
+}
+
+.c3 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  overflow: hidden;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.c2 {
+  background-color: hsla(216,15%,54%,0.09);
+  border-radius: 9999px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c4 {
+  color: hsla(216,27%,36%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 <div>
   <div
-    class="BaseBox-bmPWx jLCxzZ"
+    class="c0"
     data-blade-component="badge"
   >
     <div
-      class="BaseBox-bmPWx StyledBadgeweb__StyledBadge-sc-1svn4tv-0 cRtrfR dnvyGQ"
+      class="c1 c2"
       data-blade-component="base-box"
     >
       <div
-        class="BaseBox-bmPWx KJLNh"
+        class="c3"
         data-blade-component="base-box"
       >
         <p
-          class="StyledBaseText-dVBfTO fuxoMy"
+          class="c4"
           data-blade-component="text"
         >
           Label
@@ -111,21 +323,89 @@ exports[`<Badge /> should render Badge with default props 1`] = `
 `;
 
 exports[`<Badge /> should render high contrast blue variant Badge 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 {
+  text-align: left;
+  background-color: hsla(218,89%,51%,1);
+}
+
+.c3 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  overflow: hidden;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.c2 {
+  background-color: hsla(218,89%,51%,1);
+  border-radius: 9999px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c4 {
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 <div>
   <div
-    class="BaseBox-bmPWx jLCxzZ"
+    class="c0"
     data-blade-component="badge"
   >
     <div
-      class="BaseBox-bmPWx StyledBadgeweb__StyledBadge-sc-1svn4tv-0 hBRPnJ bhXUJg"
+      class="c1 c2"
       data-blade-component="base-box"
     >
       <div
-        class="BaseBox-bmPWx KJLNh"
+        class="c3"
         data-blade-component="base-box"
       >
         <p
-          class="StyledBaseText-dVBfTO eFCkkS"
+          class="c4"
           data-blade-component="text"
         >
           Label
@@ -137,21 +417,89 @@ exports[`<Badge /> should render high contrast blue variant Badge 1`] = `
 `;
 
 exports[`<Badge /> should render high contrast information variant Badge 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 {
+  text-align: left;
+  background-color: hsla(193,100%,35%,1);
+}
+
+.c3 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  overflow: hidden;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.c2 {
+  background-color: hsla(193,100%,35%,1);
+  border-radius: 9999px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c4 {
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 <div>
   <div
-    class="BaseBox-bmPWx jLCxzZ"
+    class="c0"
     data-blade-component="badge"
   >
     <div
-      class="BaseBox-bmPWx StyledBadgeweb__StyledBadge-sc-1svn4tv-0 bpAnDr fnJRya"
+      class="c1 c2"
       data-blade-component="base-box"
     >
       <div
-        class="BaseBox-bmPWx KJLNh"
+        class="c3"
         data-blade-component="base-box"
       >
         <p
-          class="StyledBaseText-dVBfTO eFCkkS"
+          class="c4"
           data-blade-component="text"
         >
           Label
@@ -163,21 +511,89 @@ exports[`<Badge /> should render high contrast information variant Badge 1`] = `
 `;
 
 exports[`<Badge /> should render high contrast negative variant Badge 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 {
+  text-align: left;
+  background-color: hsla(8,73%,47%,1);
+}
+
+.c3 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  overflow: hidden;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.c2 {
+  background-color: hsla(8,73%,47%,1);
+  border-radius: 9999px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c4 {
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 <div>
   <div
-    class="BaseBox-bmPWx jLCxzZ"
+    class="c0"
     data-blade-component="badge"
   >
     <div
-      class="BaseBox-bmPWx StyledBadgeweb__StyledBadge-sc-1svn4tv-0 iRwYNk doEbud"
+      class="c1 c2"
       data-blade-component="base-box"
     >
       <div
-        class="BaseBox-bmPWx KJLNh"
+        class="c3"
         data-blade-component="base-box"
       >
         <p
-          class="StyledBaseText-dVBfTO eFCkkS"
+          class="c4"
           data-blade-component="text"
         >
           Label
@@ -189,21 +605,89 @@ exports[`<Badge /> should render high contrast negative variant Badge 1`] = `
 `;
 
 exports[`<Badge /> should render high contrast neutral variant Badge 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 {
+  text-align: left;
+  background-color: hsla(216,33%,29%,1);
+}
+
+.c3 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  overflow: hidden;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.c2 {
+  background-color: hsla(216,33%,29%,1);
+  border-radius: 9999px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c4 {
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 <div>
   <div
-    class="BaseBox-bmPWx jLCxzZ"
+    class="c0"
     data-blade-component="badge"
   >
     <div
-      class="BaseBox-bmPWx StyledBadgeweb__StyledBadge-sc-1svn4tv-0 bisMLt kihkXo"
+      class="c1 c2"
       data-blade-component="base-box"
     >
       <div
-        class="BaseBox-bmPWx KJLNh"
+        class="c3"
         data-blade-component="base-box"
       >
         <p
-          class="StyledBaseText-dVBfTO eFCkkS"
+          class="c4"
           data-blade-component="text"
         >
           Label
@@ -215,21 +699,89 @@ exports[`<Badge /> should render high contrast neutral variant Badge 1`] = `
 `;
 
 exports[`<Badge /> should render high contrast notice variant Badge 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 {
+  text-align: left;
+  background-color: hsla(38,97%,38%,1);
+}
+
+.c3 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  overflow: hidden;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.c2 {
+  background-color: hsla(38,97%,38%,1);
+  border-radius: 9999px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c4 {
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 <div>
   <div
-    class="BaseBox-bmPWx jLCxzZ"
+    class="c0"
     data-blade-component="badge"
   >
     <div
-      class="BaseBox-bmPWx StyledBadgeweb__StyledBadge-sc-1svn4tv-0 GENOx dWmuUA"
+      class="c1 c2"
       data-blade-component="base-box"
     >
       <div
-        class="BaseBox-bmPWx KJLNh"
+        class="c3"
         data-blade-component="base-box"
       >
         <p
-          class="StyledBaseText-dVBfTO eFCkkS"
+          class="c4"
           data-blade-component="text"
         >
           Label
@@ -241,21 +793,89 @@ exports[`<Badge /> should render high contrast notice variant Badge 1`] = `
 `;
 
 exports[`<Badge /> should render high contrast positive variant Badge 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 {
+  text-align: left;
+  background-color: hsla(160,100%,26%,1);
+}
+
+.c3 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  overflow: hidden;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.c2 {
+  background-color: hsla(160,100%,26%,1);
+  border-radius: 9999px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c4 {
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 <div>
   <div
-    class="BaseBox-bmPWx jLCxzZ"
+    class="c0"
     data-blade-component="badge"
   >
     <div
-      class="BaseBox-bmPWx StyledBadgeweb__StyledBadge-sc-1svn4tv-0 cbzpVp JUizk"
+      class="c1 c2"
       data-blade-component="base-box"
     >
       <div
-        class="BaseBox-bmPWx KJLNh"
+        class="c3"
         data-blade-component="base-box"
       >
         <p
-          class="StyledBaseText-dVBfTO eFCkkS"
+          class="c4"
           data-blade-component="text"
         >
           Label
@@ -267,21 +887,89 @@ exports[`<Badge /> should render high contrast positive variant Badge 1`] = `
 `;
 
 exports[`<Badge /> should render large size Badge 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 {
+  text-align: left;
+  background-color: hsla(216,15%,54%,0.09);
+}
+
+.c3 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  overflow: hidden;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-right: 12px;
+  padding-left: 12px;
+}
+
+.c2 {
+  background-color: hsla(216,15%,54%,0.09);
+  border-radius: 9999px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c4 {
+  color: hsla(216,27%,36%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 <div>
   <div
-    class="BaseBox-bmPWx jLCxzZ"
+    class="c0"
     data-blade-component="badge"
   >
     <div
-      class="BaseBox-bmPWx StyledBadgeweb__StyledBadge-sc-1svn4tv-0 cRtrfR dnvyGQ"
+      class="c1 c2"
       data-blade-component="base-box"
     >
       <div
-        class="BaseBox-bmPWx iRrOid"
+        class="c3"
         data-blade-component="base-box"
       >
         <p
-          class="StyledBaseText-dVBfTO fuxoMy"
+          class="c4"
           data-blade-component="text"
         >
           Label
@@ -293,21 +981,89 @@ exports[`<Badge /> should render large size Badge 1`] = `
 `;
 
 exports[`<Badge /> should render low contrast blue variant Badge 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 {
+  text-align: left;
+  background-color: hsla(218,89%,51%,0.09);
+}
+
+.c3 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  overflow: hidden;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.c2 {
+  background-color: hsla(218,89%,51%,0.09);
+  border-radius: 9999px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c4 {
+  color: hsla(218,89%,51%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 <div>
   <div
-    class="BaseBox-bmPWx jLCxzZ"
+    class="c0"
     data-blade-component="badge"
   >
     <div
-      class="BaseBox-bmPWx StyledBadgeweb__StyledBadge-sc-1svn4tv-0 hLGNrn dzMQGe"
+      class="c1 c2"
       data-blade-component="base-box"
     >
       <div
-        class="BaseBox-bmPWx KJLNh"
+        class="c3"
         data-blade-component="base-box"
       >
         <p
-          class="StyledBaseText-dVBfTO bPLORF"
+          class="c4"
           data-blade-component="text"
         >
           Label
@@ -319,21 +1075,89 @@ exports[`<Badge /> should render low contrast blue variant Badge 1`] = `
 `;
 
 exports[`<Badge /> should render low contrast information variant Badge 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 {
+  text-align: left;
+  background-color: hsla(193,100%,35%,0.09);
+}
+
+.c3 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  overflow: hidden;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.c2 {
+  background-color: hsla(193,100%,35%,0.09);
+  border-radius: 9999px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c4 {
+  color: hsla(193,100%,35%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 <div>
   <div
-    class="BaseBox-bmPWx jLCxzZ"
+    class="c0"
     data-blade-component="badge"
   >
     <div
-      class="BaseBox-bmPWx StyledBadgeweb__StyledBadge-sc-1svn4tv-0 bWpuVx hzlpBk"
+      class="c1 c2"
       data-blade-component="base-box"
     >
       <div
-        class="BaseBox-bmPWx KJLNh"
+        class="c3"
         data-blade-component="base-box"
       >
         <p
-          class="StyledBaseText-dVBfTO iHoEDf"
+          class="c4"
           data-blade-component="text"
         >
           Label
@@ -345,21 +1169,89 @@ exports[`<Badge /> should render low contrast information variant Badge 1`] = `
 `;
 
 exports[`<Badge /> should render low contrast negative variant Badge 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 {
+  text-align: left;
+  background-color: hsla(9,91%,56%,0.09);
+}
+
+.c3 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  overflow: hidden;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.c2 {
+  background-color: hsla(9,91%,56%,0.09);
+  border-radius: 9999px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c4 {
+  color: hsla(8,73%,47%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 <div>
   <div
-    class="BaseBox-bmPWx jLCxzZ"
+    class="c0"
     data-blade-component="badge"
   >
     <div
-      class="BaseBox-bmPWx StyledBadgeweb__StyledBadge-sc-1svn4tv-0 Kcrj gqXJpm"
+      class="c1 c2"
       data-blade-component="base-box"
     >
       <div
-        class="BaseBox-bmPWx KJLNh"
+        class="c3"
         data-blade-component="base-box"
       >
         <p
-          class="StyledBaseText-dVBfTO vmbSA"
+          class="c4"
           data-blade-component="text"
         >
           Label
@@ -371,21 +1263,89 @@ exports[`<Badge /> should render low contrast negative variant Badge 1`] = `
 `;
 
 exports[`<Badge /> should render low contrast neutral variant Badge 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 {
+  text-align: left;
+  background-color: hsla(216,15%,54%,0.09);
+}
+
+.c3 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  overflow: hidden;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.c2 {
+  background-color: hsla(216,15%,54%,0.09);
+  border-radius: 9999px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c4 {
+  color: hsla(216,27%,36%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 <div>
   <div
-    class="BaseBox-bmPWx jLCxzZ"
+    class="c0"
     data-blade-component="badge"
   >
     <div
-      class="BaseBox-bmPWx StyledBadgeweb__StyledBadge-sc-1svn4tv-0 cRtrfR dnvyGQ"
+      class="c1 c2"
       data-blade-component="base-box"
     >
       <div
-        class="BaseBox-bmPWx KJLNh"
+        class="c3"
         data-blade-component="base-box"
       >
         <p
-          class="StyledBaseText-dVBfTO fuxoMy"
+          class="c4"
           data-blade-component="text"
         >
           Label
@@ -397,21 +1357,89 @@ exports[`<Badge /> should render low contrast neutral variant Badge 1`] = `
 `;
 
 exports[`<Badge /> should render low contrast notice variant Badge 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 {
+  text-align: left;
+  background-color: hsla(36,100%,44%,0.09);
+}
+
+.c3 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  overflow: hidden;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.c2 {
+  background-color: hsla(36,100%,44%,0.09);
+  border-radius: 9999px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c4 {
+  color: hsla(38,97%,38%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 <div>
   <div
-    class="BaseBox-bmPWx jLCxzZ"
+    class="c0"
     data-blade-component="badge"
   >
     <div
-      class="BaseBox-bmPWx StyledBadgeweb__StyledBadge-sc-1svn4tv-0 dGcjMZ jquvLA"
+      class="c1 c2"
       data-blade-component="base-box"
     >
       <div
-        class="BaseBox-bmPWx KJLNh"
+        class="c3"
         data-blade-component="base-box"
       >
         <p
-          class="StyledBaseText-dVBfTO guYcJ"
+          class="c4"
           data-blade-component="text"
         >
           Label
@@ -423,21 +1451,89 @@ exports[`<Badge /> should render low contrast notice variant Badge 1`] = `
 `;
 
 exports[`<Badge /> should render low contrast positive variant Badge 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 {
+  text-align: left;
+  background-color: hsla(155,100%,31%,0.09);
+}
+
+.c3 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  overflow: hidden;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.c2 {
+  background-color: hsla(155,100%,31%,0.09);
+  border-radius: 9999px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c4 {
+  color: hsla(160,100%,26%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 <div>
   <div
-    class="BaseBox-bmPWx jLCxzZ"
+    class="c0"
     data-blade-component="badge"
   >
     <div
-      class="BaseBox-bmPWx StyledBadgeweb__StyledBadge-sc-1svn4tv-0 dLUnUf iPenii"
+      class="c1 c2"
       data-blade-component="base-box"
     >
       <div
-        class="BaseBox-bmPWx KJLNh"
+        class="c3"
         data-blade-component="base-box"
       >
         <p
-          class="StyledBaseText-dVBfTO cunbeN"
+          class="c4"
           data-blade-component="text"
         >
           Label
@@ -449,21 +1545,89 @@ exports[`<Badge /> should render low contrast positive variant Badge 1`] = `
 `;
 
 exports[`<Badge /> should render medium size Badge 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 {
+  text-align: left;
+  background-color: hsla(216,15%,54%,0.09);
+}
+
+.c3 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  overflow: hidden;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.c2 {
+  background-color: hsla(216,15%,54%,0.09);
+  border-radius: 9999px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c4 {
+  color: hsla(216,27%,36%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 <div>
   <div
-    class="BaseBox-bmPWx jLCxzZ"
+    class="c0"
     data-blade-component="badge"
   >
     <div
-      class="BaseBox-bmPWx StyledBadgeweb__StyledBadge-sc-1svn4tv-0 cRtrfR dnvyGQ"
+      class="c1 c2"
       data-blade-component="base-box"
     >
       <div
-        class="BaseBox-bmPWx KJLNh"
+        class="c3"
         data-blade-component="base-box"
       >
         <p
-          class="StyledBaseText-dVBfTO fuxoMy"
+          class="c4"
           data-blade-component="text"
         >
           Label
@@ -475,21 +1639,89 @@ exports[`<Badge /> should render medium size Badge 1`] = `
 `;
 
 exports[`<Badge /> should render small size Badge 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 {
+  text-align: left;
+  background-color: hsla(216,15%,54%,0.09);
+}
+
+.c3 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  overflow: hidden;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.c2 {
+  background-color: hsla(216,15%,54%,0.09);
+  border-radius: 9999px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c4 {
+  color: hsla(216,27%,36%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.625rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 <div>
   <div
-    class="BaseBox-bmPWx jLCxzZ"
+    class="c0"
     data-blade-component="badge"
   >
     <div
-      class="BaseBox-bmPWx StyledBadgeweb__StyledBadge-sc-1svn4tv-0 cRtrfR dnvyGQ"
+      class="c1 c2"
       data-blade-component="base-box"
     >
       <div
-        class="BaseBox-bmPWx fRlyzV"
+        class="c3"
         data-blade-component="base-box"
       >
         <p
-          class="StyledBaseText-dVBfTO dLineJ"
+          class="c4"
           data-blade-component="text"
         >
           Label

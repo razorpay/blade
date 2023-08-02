@@ -1,14 +1,221 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<CheckboxGroup /> should render with help text 1`] = `
+.c9 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-width: 1.5px;
+  border-style: solid;
+  margin: 2px;
+  border-radius: 2px;
+  background-color: transparent;
+  border-color: hsla(214,18%,69%,1);
+}
+
+.c10 {
+  -webkit-animation: gYwSSW 150ms cubic-bezier(0.17,0,1,1);
+  animation: gYwSSW 150ms cubic-bezier(0.17,0,1,1);
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c1 {
+  margin-bottom: 4px;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  max-height: 36px;
+  gap: 0px;
+}
+
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c11 {
+  margin-left: 4px;
+}
+
+.c13 {
+  margin-left: 24px;
+}
+
+.c14 {
+  margin-bottom: 0px;
+}
+
+.c15 {
+  margin-top: 4px;
+}
+
+.c3 {
+  color: hsla(217,18%,45%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.c5 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c12 {
+  color: hsla(216,27%,36%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c16 {
+  color: hsla(216,16%,60%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.6875rem;
+  font-weight: 400;
+  font-style: italic;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c4 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: 0 -1px -1px 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  left: -10000px;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.c8 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: 0 -1px -1px 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  left: -10000px;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.c8:focus + div {
+  outline: 1px solid hsla(220,30%,96%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+}
+
+.c8:hover + div,
+.c8:focus + div {
+  border-color: hsla(214,18%,69%,1);
+  background-color: hsla(216,15%,54%,0.09);
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+}
+
 <div>
   <div
-    class="BaseBox-bmPWx"
+    class=""
     data-blade-component="base-box"
   >
     <div
       aria-labelledby="checkbox-group-49-label-54"
-      class="BaseBox-bmPWx xrMLB"
+      class="c0"
       data-blade-component="checkbox-group"
       role="group"
     >
@@ -18,25 +225,25 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
         style="width: auto; flex-shrink: 0; margin-right: 16px;"
       >
         <div
-          class="BaseBox-bmPWx bqWBik"
+          class="c1"
           data-blade-component="base-box"
         >
           <div
-            class="BaseBox-bmPWx eeqPab"
+            class="c2"
             data-blade-component="base-box"
           >
             <p
-              class="StyledBaseText-dVBfTO gaMIEc"
+              class="c3"
               data-blade-component="text"
             >
               Select fruits
             </p>
             <div
-              class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 ijVANw"
+              class="c4"
               data-blade-component="visually-hidden"
             >
               <p
-                class="StyledBaseText-dVBfTO eIdQFo"
+                class="c5"
                 data-blade-component="text"
               >
                 , Select one
@@ -46,31 +253,31 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
         </div>
       </span>
       <div
-        class="BaseBox-bmPWx"
+        class=""
         data-blade-component="base-box"
       >
         <div
-          class="BaseBox-bmPWx xrMLB"
+          class="c0"
           data-blade-component="base-box"
         >
           <div
-            class="BaseBox-bmPWx bqWBik"
+            class="c1"
             data-blade-component="base-box"
           >
             <div
-              class="BaseBox-bmPWx"
+              class=""
               data-blade-component="checkbox"
             >
               <label
-                class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 bgSmPY"
+                class="c6"
                 data-blade-component="checkbox-label"
               >
                 <div
-                  class="BaseBox-bmPWx xrMLB"
+                  class="c0"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="BaseBox-bmPWx fSbYvl"
+                    class="c7"
                     data-blade-component="base-box"
                   >
                     <input
@@ -78,17 +285,17 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                       aria-disabled="false"
                       aria-invalid="false"
                       aria-required="false"
-                      class="SelectorInputweb__StyledInput-sc-1bnkrae-0 eWXntk"
+                      class="c8"
                       role="checkbox"
                       type="checkbox"
                       value="apple"
                     />
                     <div
-                      class="CheckboxIconWrapperweb__CheckboxIconWrapper-sc-3hpze0-0 hMvCxW"
+                      class="c9"
                       data-blade-component="checkbox-icon-wrapper"
                     >
                       <div
-                        class="Fadeweb__AnimatedFade-sc-1h424tv-0"
+                        class=""
                         style="opacity: 0; position: absolute; display: flex;"
                       >
                         <svg
@@ -114,23 +321,23 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                         </svg>
                       </div>
                       <div
-                        class="Fadeweb__AnimatedFade-sc-1h424tv-0 fqlNJV"
+                        class="c10"
                         style="opacity: 0; position: absolute; display: flex;"
                       />
                     </div>
                     <div
-                      class="BaseBox-bmPWx bigiAM"
+                      class="c11"
                       data-blade-component="base-box"
                     />
                     <div
-                      class="StyledBaseText-dVBfTO ktUwvA"
+                      class="c12"
                       data-blade-component="base-text"
                     >
                       Apple
                     </div>
                   </div>
                   <div
-                    class="BaseBox-bmPWx cCkEge"
+                    class="c13"
                     data-blade-component="base-box"
                   />
                 </div>
@@ -138,23 +345,23 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
             </div>
           </div>
           <div
-            class="BaseBox-bmPWx bqWBik"
+            class="c1"
             data-blade-component="base-box"
           >
             <div
-              class="BaseBox-bmPWx"
+              class=""
               data-blade-component="checkbox"
             >
               <label
-                class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 bgSmPY"
+                class="c6"
                 data-blade-component="checkbox-label"
               >
                 <div
-                  class="BaseBox-bmPWx xrMLB"
+                  class="c0"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="BaseBox-bmPWx fSbYvl"
+                    class="c7"
                     data-blade-component="base-box"
                   >
                     <input
@@ -162,17 +369,17 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                       aria-disabled="false"
                       aria-invalid="false"
                       aria-required="false"
-                      class="SelectorInputweb__StyledInput-sc-1bnkrae-0 eWXntk"
+                      class="c8"
                       role="checkbox"
                       type="checkbox"
                       value="mango"
                     />
                     <div
-                      class="CheckboxIconWrapperweb__CheckboxIconWrapper-sc-3hpze0-0 hMvCxW"
+                      class="c9"
                       data-blade-component="checkbox-icon-wrapper"
                     >
                       <div
-                        class="Fadeweb__AnimatedFade-sc-1h424tv-0"
+                        class=""
                         style="opacity: 0; position: absolute; display: flex;"
                       >
                         <svg
@@ -198,23 +405,23 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                         </svg>
                       </div>
                       <div
-                        class="Fadeweb__AnimatedFade-sc-1h424tv-0 fqlNJV"
+                        class="c10"
                         style="opacity: 0; position: absolute; display: flex;"
                       />
                     </div>
                     <div
-                      class="BaseBox-bmPWx bigiAM"
+                      class="c11"
                       data-blade-component="base-box"
                     />
                     <div
-                      class="StyledBaseText-dVBfTO ktUwvA"
+                      class="c12"
                       data-blade-component="base-text"
                     >
                       Mango
                     </div>
                   </div>
                   <div
-                    class="BaseBox-bmPWx cCkEge"
+                    class="c13"
                     data-blade-component="base-box"
                   />
                 </div>
@@ -222,23 +429,23 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
             </div>
           </div>
           <div
-            class="BaseBox-bmPWx cCNoRc"
+            class="c14"
             data-blade-component="base-box"
           >
             <div
-              class="BaseBox-bmPWx"
+              class=""
               data-blade-component="checkbox"
             >
               <label
-                class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 bgSmPY"
+                class="c6"
                 data-blade-component="checkbox-label"
               >
                 <div
-                  class="BaseBox-bmPWx xrMLB"
+                  class="c0"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="BaseBox-bmPWx fSbYvl"
+                    class="c7"
                     data-blade-component="base-box"
                   >
                     <input
@@ -246,17 +453,17 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                       aria-disabled="false"
                       aria-invalid="false"
                       aria-required="false"
-                      class="SelectorInputweb__StyledInput-sc-1bnkrae-0 eWXntk"
+                      class="c8"
                       role="checkbox"
                       type="checkbox"
                       value="orange"
                     />
                     <div
-                      class="CheckboxIconWrapperweb__CheckboxIconWrapper-sc-3hpze0-0 hMvCxW"
+                      class="c9"
                       data-blade-component="checkbox-icon-wrapper"
                     >
                       <div
-                        class="Fadeweb__AnimatedFade-sc-1h424tv-0"
+                        class=""
                         style="opacity: 0; position: absolute; display: flex;"
                       >
                         <svg
@@ -282,23 +489,23 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                         </svg>
                       </div>
                       <div
-                        class="Fadeweb__AnimatedFade-sc-1h424tv-0 fqlNJV"
+                        class="c10"
                         style="opacity: 0; position: absolute; display: flex;"
                       />
                     </div>
                     <div
-                      class="BaseBox-bmPWx bigiAM"
+                      class="c11"
                       data-blade-component="base-box"
                     />
                     <div
-                      class="StyledBaseText-dVBfTO ktUwvA"
+                      class="c12"
                       data-blade-component="base-text"
                     >
                       Orange
                     </div>
                   </div>
                   <div
-                    class="BaseBox-bmPWx cCkEge"
+                    class="c13"
                     data-blade-component="base-box"
                   />
                 </div>
@@ -307,16 +514,16 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
           </div>
         </div>
         <div
-          class="BaseBox-bmPWx gnjvtY"
+          class="c15"
           data-blade-component="base-box"
         >
           <span
-            class="BaseBox-bmPWx fSbYvl"
+            class="c7"
             data-blade-component="base-box"
             style="word-break: break-all;"
           >
             <span
-              class="StyledBaseText-dVBfTO eZXGXv"
+              class="c16"
               data-blade-component="base-text"
             >
               Select one
@@ -330,14 +537,204 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
 `;
 
 exports[`<CheckboxGroup /> should render with label 1`] = `
+.c9 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-width: 1.5px;
+  border-style: solid;
+  margin: 2px;
+  border-radius: 2px;
+  background-color: transparent;
+  border-color: hsla(214,18%,69%,1);
+}
+
+.c10 {
+  -webkit-animation: gYwSSW 150ms cubic-bezier(0.17,0,1,1);
+  animation: gYwSSW 150ms cubic-bezier(0.17,0,1,1);
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c1 {
+  margin-bottom: 4px;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  max-height: 36px;
+  gap: 0px;
+}
+
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c11 {
+  margin-left: 4px;
+}
+
+.c13 {
+  margin-left: 24px;
+}
+
+.c14 {
+  margin-bottom: 0px;
+}
+
+.c3 {
+  color: hsla(217,18%,45%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.c5 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c12 {
+  color: hsla(216,27%,36%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c4 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: 0 -1px -1px 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  left: -10000px;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.c8 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: 0 -1px -1px 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  left: -10000px;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.c8:focus + div {
+  outline: 1px solid hsla(220,30%,96%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+}
+
+.c8:hover + div,
+.c8:focus + div {
+  border-color: hsla(214,18%,69%,1);
+  background-color: hsla(216,15%,54%,0.09);
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+}
+
 <div>
   <div
-    class="BaseBox-bmPWx"
+    class=""
     data-blade-component="base-box"
   >
     <div
       aria-labelledby="checkbox-group-19-label-24"
-      class="BaseBox-bmPWx xrMLB"
+      class="c0"
       data-blade-component="checkbox-group"
       role="group"
     >
@@ -347,25 +744,25 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
         style="width: auto; flex-shrink: 0; margin-right: 16px;"
       >
         <div
-          class="BaseBox-bmPWx bqWBik"
+          class="c1"
           data-blade-component="base-box"
         >
           <div
-            class="BaseBox-bmPWx eeqPab"
+            class="c2"
             data-blade-component="base-box"
           >
             <p
-              class="StyledBaseText-dVBfTO gaMIEc"
+              class="c3"
               data-blade-component="text"
             >
               Select fruits
             </p>
             <div
-              class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 ijVANw"
+              class="c4"
               data-blade-component="visually-hidden"
             >
               <p
-                class="StyledBaseText-dVBfTO eIdQFo"
+                class="c5"
                 data-blade-component="text"
               >
                 , 
@@ -375,31 +772,31 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
         </div>
       </span>
       <div
-        class="BaseBox-bmPWx"
+        class=""
         data-blade-component="base-box"
       >
         <div
-          class="BaseBox-bmPWx xrMLB"
+          class="c0"
           data-blade-component="base-box"
         >
           <div
-            class="BaseBox-bmPWx bqWBik"
+            class="c1"
             data-blade-component="base-box"
           >
             <div
-              class="BaseBox-bmPWx"
+              class=""
               data-blade-component="checkbox"
             >
               <label
-                class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 bgSmPY"
+                class="c6"
                 data-blade-component="checkbox-label"
               >
                 <div
-                  class="BaseBox-bmPWx xrMLB"
+                  class="c0"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="BaseBox-bmPWx fSbYvl"
+                    class="c7"
                     data-blade-component="base-box"
                   >
                     <input
@@ -407,17 +804,17 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                       aria-disabled="false"
                       aria-invalid="false"
                       aria-required="false"
-                      class="SelectorInputweb__StyledInput-sc-1bnkrae-0 eWXntk"
+                      class="c8"
                       role="checkbox"
                       type="checkbox"
                       value="apple"
                     />
                     <div
-                      class="CheckboxIconWrapperweb__CheckboxIconWrapper-sc-3hpze0-0 hMvCxW"
+                      class="c9"
                       data-blade-component="checkbox-icon-wrapper"
                     >
                       <div
-                        class="Fadeweb__AnimatedFade-sc-1h424tv-0"
+                        class=""
                         style="opacity: 0; position: absolute; display: flex;"
                       >
                         <svg
@@ -443,23 +840,23 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                         </svg>
                       </div>
                       <div
-                        class="Fadeweb__AnimatedFade-sc-1h424tv-0 fqlNJV"
+                        class="c10"
                         style="opacity: 0; position: absolute; display: flex;"
                       />
                     </div>
                     <div
-                      class="BaseBox-bmPWx bigiAM"
+                      class="c11"
                       data-blade-component="base-box"
                     />
                     <div
-                      class="StyledBaseText-dVBfTO ktUwvA"
+                      class="c12"
                       data-blade-component="base-text"
                     >
                       Apple
                     </div>
                   </div>
                   <div
-                    class="BaseBox-bmPWx cCkEge"
+                    class="c13"
                     data-blade-component="base-box"
                   />
                 </div>
@@ -467,23 +864,23 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
             </div>
           </div>
           <div
-            class="BaseBox-bmPWx bqWBik"
+            class="c1"
             data-blade-component="base-box"
           >
             <div
-              class="BaseBox-bmPWx"
+              class=""
               data-blade-component="checkbox"
             >
               <label
-                class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 bgSmPY"
+                class="c6"
                 data-blade-component="checkbox-label"
               >
                 <div
-                  class="BaseBox-bmPWx xrMLB"
+                  class="c0"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="BaseBox-bmPWx fSbYvl"
+                    class="c7"
                     data-blade-component="base-box"
                   >
                     <input
@@ -491,17 +888,17 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                       aria-disabled="false"
                       aria-invalid="false"
                       aria-required="false"
-                      class="SelectorInputweb__StyledInput-sc-1bnkrae-0 eWXntk"
+                      class="c8"
                       role="checkbox"
                       type="checkbox"
                       value="mango"
                     />
                     <div
-                      class="CheckboxIconWrapperweb__CheckboxIconWrapper-sc-3hpze0-0 hMvCxW"
+                      class="c9"
                       data-blade-component="checkbox-icon-wrapper"
                     >
                       <div
-                        class="Fadeweb__AnimatedFade-sc-1h424tv-0"
+                        class=""
                         style="opacity: 0; position: absolute; display: flex;"
                       >
                         <svg
@@ -527,23 +924,23 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                         </svg>
                       </div>
                       <div
-                        class="Fadeweb__AnimatedFade-sc-1h424tv-0 fqlNJV"
+                        class="c10"
                         style="opacity: 0; position: absolute; display: flex;"
                       />
                     </div>
                     <div
-                      class="BaseBox-bmPWx bigiAM"
+                      class="c11"
                       data-blade-component="base-box"
                     />
                     <div
-                      class="StyledBaseText-dVBfTO ktUwvA"
+                      class="c12"
                       data-blade-component="base-text"
                     >
                       Mango
                     </div>
                   </div>
                   <div
-                    class="BaseBox-bmPWx cCkEge"
+                    class="c13"
                     data-blade-component="base-box"
                   />
                 </div>
@@ -551,23 +948,23 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
             </div>
           </div>
           <div
-            class="BaseBox-bmPWx cCNoRc"
+            class="c14"
             data-blade-component="base-box"
           >
             <div
-              class="BaseBox-bmPWx"
+              class=""
               data-blade-component="checkbox"
             >
               <label
-                class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 bgSmPY"
+                class="c6"
                 data-blade-component="checkbox-label"
               >
                 <div
-                  class="BaseBox-bmPWx xrMLB"
+                  class="c0"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="BaseBox-bmPWx fSbYvl"
+                    class="c7"
                     data-blade-component="base-box"
                   >
                     <input
@@ -575,17 +972,17 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                       aria-disabled="false"
                       aria-invalid="false"
                       aria-required="false"
-                      class="SelectorInputweb__StyledInput-sc-1bnkrae-0 eWXntk"
+                      class="c8"
                       role="checkbox"
                       type="checkbox"
                       value="orange"
                     />
                     <div
-                      class="CheckboxIconWrapperweb__CheckboxIconWrapper-sc-3hpze0-0 hMvCxW"
+                      class="c9"
                       data-blade-component="checkbox-icon-wrapper"
                     >
                       <div
-                        class="Fadeweb__AnimatedFade-sc-1h424tv-0"
+                        class=""
                         style="opacity: 0; position: absolute; display: flex;"
                       >
                         <svg
@@ -611,23 +1008,23 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                         </svg>
                       </div>
                       <div
-                        class="Fadeweb__AnimatedFade-sc-1h424tv-0 fqlNJV"
+                        class="c10"
                         style="opacity: 0; position: absolute; display: flex;"
                       />
                     </div>
                     <div
-                      class="BaseBox-bmPWx bigiAM"
+                      class="c11"
                       data-blade-component="base-box"
                     />
                     <div
-                      class="StyledBaseText-dVBfTO ktUwvA"
+                      class="c12"
                       data-blade-component="base-text"
                     >
                       Orange
                     </div>
                   </div>
                   <div
-                    class="BaseBox-bmPWx cCkEge"
+                    class="c13"
                     data-blade-component="base-box"
                   />
                 </div>

@@ -29,9 +29,13 @@ describe('styledProps with getStyledProps', () => {
     );
 
     expect(container).toMatchInlineSnapshot(`
+      .c0 {
+        margin: 0px 48px;
+      }
+
       <div>
         <div
-          class="BaseBox-bmPWx bDVTMW"
+          class="c0"
           data-blade-component="base-box"
         >
           Hello!
@@ -50,9 +54,14 @@ describe('styledProps with useStyledProps', () => {
     );
 
     expect(container).toMatchInlineSnapshot(`
+      .c0 {
+        margin: 0px 48px;
+        display: inline-block;
+      }
+
       <div>
         <button
-          class="styledPropswebtest__ComponentWithUseStyledProps-sc-1cp73qj-0 cGFUkd"
+          class="c0"
         >
           hi
         </button>
