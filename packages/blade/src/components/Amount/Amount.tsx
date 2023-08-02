@@ -244,7 +244,6 @@ const _Amount = ({
         message: '`neutral` intent is not supported.',
         moduleName: 'Amount',
       });
-      throw new Error('[Blade Amount]: ');
     }
   }
 
