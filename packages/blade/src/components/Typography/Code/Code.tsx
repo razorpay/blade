@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { BaseText } from '../BaseText';
-import type { BaseTextProps } from '../BaseText/types';
+import type { BaseTextProps, BaseTextSizes } from '../BaseText/types';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
@@ -22,7 +22,7 @@ type CodeCommonProps = {
    *
    * @default small
    */
-  size?: 'small' | 'medium';
+  size?: Extract<BaseTextSizes, 'small' | 'medium'>;
   weight?: 'regular' | 'bold';
   isHighlighted?: boolean;
   color?: BaseTextProps['color'];
