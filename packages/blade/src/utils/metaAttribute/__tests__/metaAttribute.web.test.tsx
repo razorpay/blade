@@ -4,10 +4,9 @@ import BaseBox from '~components/Box/BaseBox';
 
 describe('metaAttribute', () => {
   it('add the correct meta attributes', () => {
-    const { getByText } = renderWithTheme(
-      <BaseBox {...metaAttribute({ name: 'new-box', testID: 'box-test' })}>{'Click'}</BaseBox>,
+    const { getByTestId } = renderWithTheme(
+      <BaseBox {...metaAttribute({ name: 'new-box', testID: 'box-test' })} />,
     );
-    expect(getByText('Click')).toHaveAttribute('data-blade-component', 'new-box');
-    expect(getByText('Click')).toHaveAttribute('data-testid', 'box-test');
+    expect(getByTestId('box-test')).toHaveAttribute('data-blade-component', 'new-box');
   });
 });
