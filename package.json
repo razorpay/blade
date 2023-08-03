@@ -18,12 +18,12 @@
     ]
   },
   "scripts": {
-    "tsc:blade": "yarn workspace @razorpay/blade typecheck",
+    "tsc:blade": "lerna run --scope @razorpay/blade typecheck",
     "lint": "eslint --ext js,jsx,ts,tsx packages && stylelint '**/*.{js,jsx,ts,tsx}'",
     "publish-npm": "lerna run --scope @razorpay/blade publish-npm",
     "release": "lerna run --scope @razorpay/blade generate-github-npmrc && changeset publish",
     "build": "lerna run --scope @razorpay/blade build",
-    "postinstall": "yarn workspace eslint-plugin-blade build"
+    "postinstall": "lerna run --scope eslint-plugin-blade build"
   },
   "dependencies": {},
   "devDependencies": {
