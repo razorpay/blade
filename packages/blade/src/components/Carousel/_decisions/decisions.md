@@ -17,7 +17,8 @@ Carousel is a UI component that allows the display and navigation of a set of co
 | children                 | `CarouselItem`                         | `undefined`                              | Carousel slides                                                                                                                                                                              | ✅        |
 | autoPlay                 | `boolean`                              | `false`                                  | If true, the carousel will autoplay                                                                                                                                                          |          |
 | visibleItems             | `1,2,3,auto`                           | `1`                                      | Total number of carousel items to show at once, if set to 1,2 or 3 all the CarouselItem's width will remain the same but if set to `auto` the carousel items will take up space responsively |          |
-| bleed                    | `none,right,left,both`                 | `none`                                   | Sets the carousel items to bleed on either side button                                                                                                                                       |          |
+| carouselItemWidth             | `number,string`                           | `undefined`                                      | Sets the width of the carousel items, this can be used with visibleItems: auto to achive automatic bleed |          |
+| shouldAddStartEndMargin             | `boolean`                           | `false`                                      | If true, adds extra margin before and after the first/last slides so that they align in center, this prop can be used to achive carousel which is in [GST page](https://razorpay.com/gst-number-search/pan/)  |          |
 | showIndicators           | `boolean`                              | `true`                                   | Toggles the visibility of indicators                                                                                                                                                         |          |
 | showOverlay              | `boolean`                              | `false`                                  | Toggles the visibility of overlay                                                                                                                                                            |          |
 | overlayColor             | `BrandColorTokens, SurfaceColorTokens` | `surface.background.level1.highContrast` | Changes the color of the overlay, so that consumers can blend the overlay with the background color                                                                                          |          |
@@ -31,7 +32,7 @@ Carousel is a UI component that allows the display and navigation of a set of co
 
 - N/A - CarouselItem will just be a wrapper and have internal styling
 
-## Usage Example
+## Basic Usage Example
 
 ```jsx
 const Testimonial = () => {
@@ -49,17 +50,14 @@ const Testimonial = () => {
 <Carousel
   autoPlay
   visibleItems={2}
-  navigationButtonPosition="side"
-  bleed="right"
+  navigationButtonPosition="bottom"
 >
   <CarouselItem>
     <Testimonial />
   </CarouselItem>
-
   <CarouselItem>
     <Testimonial />
   </CarouselItem>
-
   <CarouselItem>
     <Testimonial />
   </CarouselItem>
@@ -68,51 +66,59 @@ const Testimonial = () => {
 
 <img src="./example-usage-1.png" width="70%" />
 
-### Usage with Card
 
 
-```jsx
-const TestimonialCard = () => {
-  return (
-   <Card elevation="highRaised" padding="spacing.0">
-      <CardBody>
-        <Box display="flex" flexDirection="row">
-          <img
-            width="300"
-            height="auto"
-          />
-          <Box padding="spacing.7" display="flex" flexDirection="column">
-            <Heading size="large">Subham Kumar</Heading>
-            <Text marginTop="spacing.5">
-            Acquire Customers From New Customer Segments
-            </Text>
-            <Link href="#">Learn More</Link>
-          </Box>
-        </Box>
-      </CardBody>
-    </Card>
-  )
-};
+## Variants
 
-<Carousel
-  autoPlay
-  visibleItems={2}
-  navigationButtonPosition="side"
-  bleed="right"
->
-  <CarouselItem>
-    <TestimonialCard />
-  </CarouselItem>
+Carousel has two variants which can solve most of the general & landing page usecases: 
 
-  <CarouselItem>
-    <TestimonialCard />
-  </CarouselItem>
+- Variant 1: Without visibleItems
+- Variant 2: With visibleItems.
 
-  <CarouselItem>
-    <TestimonialCard />
-  </CarouselItem>
-</Carousel>
-```
+### **Variant 1: Without visibleItems:**
+
+When the `visibleItems` are not defined (or set to undefined) carousel becomes variant 1, which can have: 
+
+- Automatic bleed support 
+- Scroll Overlay support
+- Have `shouldAddStartEndMargin` prop which can be used to replicate [these](https://razorpay.com/gst-number-search/pan/) kind of carousels 
+  - <img src="./gst-page-carousel.png" width="50%" />
+
+
+> NOTE: To ensure bleed happens you need to specify a fixed amount of carousel item's width via the `carouselItemWidth` prop. Otherwise the carousel item will take up the 100% of the container width and won't bleed
+
+
+v1: visibleItems: undefined + auto bleed + shouldAddStartEndPadding
+
+<img src="./example-visibleitems-undefined-with-margin.png" width="70%" />
+
+v1: visibleItems: undefined + auto bleed
+
+<img src="./example-visibleitems-undefined-without-margin.png" width="70%" />
+
+### **Variant 2: With visibleItems:**
+
+This variant is a basic variant which can have: 
+
+- visibleItems: 1 | 2 | 3
+- The carouselItems are inside doesn't have a fixed amount of width means they are fluid by default
+- Cannot bleed
+- Cannot have scroll overlay
+- Cannot have start/end margin
+
+
+v2: visibleItems: 1 
+
+<img src="./example-visibleitems-1.png" width="70%" />
+
+v2: visibleItems: 2 
+
+<img src="./example-visibleitems-2.png" width="70%" />
+
+v2: visibleItems: 3
+
+<img src="./example-visibleitems-3.png" width="70%" />
+
 
 ## Accessibility
 
@@ -125,6 +131,7 @@ https://github.com/razorpay/blade/assets/35374649/6876f348-1b0a-4e9a-800a-300025
 ## Open Questions
 
 - Should we call it `navigationButtonStyle` or `navigationButtonVariant`? 
+- Should we make visibleItems: 'auto' or 'undefined'?
 
 ## Libraries
 
