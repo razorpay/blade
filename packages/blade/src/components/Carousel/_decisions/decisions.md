@@ -82,7 +82,7 @@ When the `visibleItems` are not defined (or set to undefined) carousel becomes v
 - Automatic bleed support 
 - Scroll Overlay support
 - Have `shouldAddStartEndMargin` prop which can be used to replicate [these](https://razorpay.com/gst-number-search/pan/) kind of carousels 
-  - <img src="./gst-page-carousel.png" width="50%" />
+  <img src="./gst-page-carousel.png" width="50%" />
 
 
 > NOTE: To ensure bleed happens you need to specify a fixed amount of carousel item's width via the `carouselItemWidth` prop. Otherwise the carousel item will take up the 100% of the container width and won't bleed
@@ -101,7 +101,7 @@ v1: visibleItems: undefined + auto bleed
 This variant is a basic variant which can have: 
 
 - visibleItems: 1 | 2 | 3
-- The carouselItems are inside doesn't have a fixed amount of width means they are fluid by default
+- The carouselItems inside doesn't have a fixed amount of width means they are fluid by default
 - Cannot bleed
 - Cannot have scroll overlay
 - Cannot have start/end margin
