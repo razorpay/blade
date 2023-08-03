@@ -5,6 +5,7 @@ import { CarouselItem } from './CarouselItem';
 import { Box } from '~components/Box';
 import { Heading, Text } from '~components/Typography';
 import { Card, CardBody } from '~components/Card';
+import { Button } from '~components/Button';
 
 const meta: Meta<CarouselProps> = {
   title: 'Components/Carousel',
@@ -33,8 +34,10 @@ const TestimonialCard = ({ index }): React.ReactElement => {
               <Text as="span" weight="bold">
                 Hair By Nidhi
               </Text>
+              <Button>in</Button>
             </Text>
           </Box>
+          <Button>Hello world</Button>
         </Box>
       </CardBody>
     </Card>
@@ -59,7 +62,7 @@ const CarouselExample = (props: CarouselProps): React.ReactElement => {
       <CarouselItem>
         <TestimonialCard index={4} />
       </CarouselItem>
-      {/* <CarouselItem>
+      <CarouselItem>
         <TestimonialCard index={5} />
       </CarouselItem>
       <CarouselItem>
@@ -73,7 +76,7 @@ const CarouselExample = (props: CarouselProps): React.ReactElement => {
       </CarouselItem>
       <CarouselItem>
         <TestimonialCard index={9} />
-      </CarouselItem> */}
+      </CarouselItem>
     </CarouselComponent>
   );
 };
@@ -95,14 +98,16 @@ const CarouselTemplate: ComponentStory<typeof CarouselComponent> = () => {
         navigationButtonPosition="side"
         overlayColor="surface.background.level1.lowContrast"
       />
-      <CarouselExample
+      <Text>v1: Responsive: N/A + auto bleed + shouldAddStartEndPadding</Text>
+      {/* <CarouselExample
+        autoPlay
         carouselItemWidth="500px"
         navigationButtonPosition="bottom"
         overlayColor="surface.background.level1.lowContrast"
-      />
+      /> */}
       <Text>v2: Responsive: 1|2|3, navButtons: side</Text>
-      <CarouselExample visibleItems={1} navigationButtonPosition="side" />
-      <CarouselExample visibleItems={2} navigationButtonPosition="side" />
+      <CarouselExample autoPlay visibleItems={2} navigationButtonPosition="side" />
+      {/* <CarouselExample autoPlay visibleItems={2} navigationButtonPosition="side" /> */}
       {/* <CarouselExample visibleItems={2} navigationButtonPosition="side" />
       <CarouselExample visibleItems={3} navigationButtonPosition="side" />
       <Text>v2: Responsive: 1|2|3, navButtons: bottom</Text>

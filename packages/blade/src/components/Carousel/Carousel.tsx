@@ -111,6 +111,7 @@ const CarouselContainer = styled(BaseBox)<{
       transition: '400ms ease',
       transitionProperty: 'opacity',
       opacity: isScrollAtStart ? 0 : 1,
+      pointerEvents: 'none',
     },
     '&::after': {
       content: "''",
@@ -123,6 +124,7 @@ const CarouselContainer = styled(BaseBox)<{
       transition: '400ms ease',
       transitionProperty: 'opacity',
       opacity: isScrollAtEnd ? 0 : 1,
+      pointerEvents: 'none',
     },
   };
 });
@@ -151,8 +153,8 @@ const CarouselBody = React.forwardRef<HTMLDivElement, CarouselBodyProps>(
   ) => {
     return (
       <CarouselContainer
-        overlayColor={overlayColor}
         ref={ref}
+        overlayColor={overlayColor}
         gap={{ base: 'spacing.4', m: 'spacing.5' }}
         isScrollAtStart={isScrollAtStart}
         isScrollAtEnd={isScrollAtEnd}
@@ -183,6 +185,7 @@ const Carousel = ({
   const { platform } = useTheme();
   const [activeSlide, setActiveSlide] = React.useState(0);
   const [activeIndicator, setActiveIndicator] = React.useState(0);
+  const [shouldPauseAutoplay, setShouldPauseAutoplay] = React.useState(false);
   const containerRef = React.useRef<HTMLDivElement>(null);
   const isMobile = platform === 'onMobile';
   const id = useId('carousel');
@@ -275,7 +278,11 @@ const Carousel = ({
     () => {
       goToNextSlide();
     },
-    { delay: 5000, enable: autoPlay },
+    {
+      delay: 5000,
+      // only enable if autoplay is true & user's intent isn't to interact with carousel
+      enable: autoPlay && !shouldPauseAutoplay,
+    },
   );
 
   const carouselContext = React.useMemo<CarouselContextProps>(() => {
@@ -289,7 +296,29 @@ const Carousel = ({
 
   return (
     <CarouselContext.Provider value={carouselContext}>
-      <BaseBox display="flex" alignItems="center" flexDirection="column">
+      <BaseBox
+        // stop autoplaying when any elements in carousel is in focus
+        onFocus={(e: React.FocusEvent) => {
+          if (!e.currentTarget.contains(e.relatedTarget)) {
+            setShouldPauseAutoplay(true);
+          }
+        }}
+        onBlur={(e: React.FocusEvent) => {
+          if (!e.currentTarget.contains(e.relatedTarget)) {
+            setShouldPauseAutoplay(false);
+          }
+        }}
+        // stop autplay when user hover overs the carousel
+        onMouseEnter={() => {
+          setShouldPauseAutoplay(true);
+        }}
+        onMouseLeave={() => {
+          setShouldPauseAutoplay(false);
+        }}
+        display="flex"
+        alignItems="center"
+        flexDirection="column"
+      >
         <BaseBox
           width="100%"
           position="relative"
