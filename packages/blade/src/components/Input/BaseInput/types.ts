@@ -7,6 +7,16 @@ import type {
   FormInputHandleOnKeyDownEvent,
 } from '~components/Form/FormTypes';
 
+export type BaseInputTagSlotProps = {
+  tags?: BaseInputProps['tags'];
+  showAllTags: BaseInputProps['showAllTags'];
+  setFocusOnInput: () => void;
+  setShouldIgnoreBlurAnimation: BaseInputProps['setShouldIgnoreBlurAnimation'];
+  handleOnClick: StyledBaseInputProps['handleOnClick'];
+  isMultiline: BaseInputProps['isMultiline'];
+  visibleTagsCountRef: React.MutableRefObject<number>;
+};
+
 export type StyledBaseInputProps = {
   handleOnFocus?: FormInputHandleOnEvent;
   handleOnChange?: FormInputHandleOnEvent;

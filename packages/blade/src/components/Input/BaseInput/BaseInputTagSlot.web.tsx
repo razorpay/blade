@@ -1,19 +1,7 @@
 import React from 'react';
-import type { BaseInputProps } from './BaseInput';
-import type { StyledBaseInputProps } from './types';
+import type { BaseInputTagSlotProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
-import { isReactNative } from '~utils';
 import { Text } from '~components/Typography';
-
-type BaseInputTagSlotProps = {
-  tags?: BaseInputProps['tags'];
-  showAllTags: BaseInputProps['showAllTags'];
-  setFocusOnInput: () => void;
-  setShouldIgnoreBlurAnimation: BaseInputProps['setShouldIgnoreBlurAnimation'];
-  handleOnClick: StyledBaseInputProps['handleOnClick'];
-  isMultiline: BaseInputProps['isMultiline'];
-  visibleTagsCountRef: React.MutableRefObject<number>;
-};
 
 function isElementVisibleInContainer(element: Element, container: HTMLDivElement): boolean {
   const elementRect = element.getBoundingClientRect();
@@ -95,25 +83,22 @@ const BaseInputTagSlot = ({
       maxHeight="100px"
       // Move to using gap instead of marginLeft on individual tags after RN upgrade
       // gap="spacing.3"
-      {...(!isReactNative()
-        ? {
-            onMouseDown: () => {
-              setShouldIgnoreBlurAnimation?.(true);
-            },
-            onClick: (e) => {
-              if (tagsContainerRef.current === e.target) {
-                handleOnClick?.({ name: '', value: e as React.MouseEvent<HTMLInputElement> });
-              }
-              setFocusOnInput();
-            },
-            onMouseUp: () => {
-              setShouldIgnoreBlurAnimation?.(false);
-            },
-          }
-        : {})}
+      onMouseDown={() => {
+        setShouldIgnoreBlurAnimation?.(true);
+      }}
+      onClick={(e) => {
+        if (tagsContainerRef.current === e.target) {
+          handleOnClick?.({ name: '', value: e as React.MouseEvent<HTMLInputElement> });
+        }
+        setFocusOnInput();
+      }}
+      onMouseUp={() => {
+        setShouldIgnoreBlurAnimation?.(false);
+      }}
     >
       <BaseBox
-        ref={tagsContainerRef}
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        ref={tagsContainerRef as any}
         // switch to these on `props.rows` value
         flexWrap={isMultiline ? 'wrap' : 'nowrap'}
         whiteSpace={isMultiline ? undefined : 'nowrap'}
