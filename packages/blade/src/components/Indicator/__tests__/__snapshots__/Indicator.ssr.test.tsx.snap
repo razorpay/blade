@@ -9,12 +9,12 @@ exports[`<Indicator /> should have role and a11y label when text label is passed
 >
   <div
     aria-label="Active"
-    class="BaseBox-bmPWx jLCxzZ"
+    class="BaseBox-bmPWx bcSLaJ"
     data-blade-component="indicator"
     role="status"
   >
     <div
-      class="BaseBox-bmPWx fSbYvl"
+      class="BaseBox-bmPWx hcNgbx"
       data-blade-component="base-box"
     >
       <svg

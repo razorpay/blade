@@ -2,10 +2,10 @@
 
 exports[`<Badge /> should render Badge with Icon 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
 }
 
 .c1 {
@@ -136,10 +136,10 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
 
 exports[`<Badge /> should render Badge with bold font 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
 }
 
 .c1 {
@@ -230,10 +230,10 @@ exports[`<Badge /> should render Badge with bold font 1`] = `
 
 exports[`<Badge /> should render Badge with default props 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
 }
 
 .c1 {
@@ -324,10 +324,10 @@ exports[`<Badge /> should render Badge with default props 1`] = `
 
 exports[`<Badge /> should render high contrast blue variant Badge 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
 }
 
 .c1 {
@@ -418,10 +418,10 @@ exports[`<Badge /> should render high contrast blue variant Badge 1`] = `
 
 exports[`<Badge /> should render high contrast information variant Badge 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
 }
 
 .c1 {
@@ -512,10 +512,10 @@ exports[`<Badge /> should render high contrast information variant Badge 1`] = `
 
 exports[`<Badge /> should render high contrast negative variant Badge 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
 }
 
 .c1 {
@@ -606,10 +606,10 @@ exports[`<Badge /> should render high contrast negative variant Badge 1`] = `
 
 exports[`<Badge /> should render high contrast neutral variant Badge 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
 }
 
 .c1 {
@@ -700,10 +700,10 @@ exports[`<Badge /> should render high contrast neutral variant Badge 1`] = `
 
 exports[`<Badge /> should render high contrast notice variant Badge 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
 }
 
 .c1 {
@@ -794,10 +794,10 @@ exports[`<Badge /> should render high contrast notice variant Badge 1`] = `
 
 exports[`<Badge /> should render high contrast positive variant Badge 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
 }
 
 .c1 {
@@ -888,10 +888,10 @@ exports[`<Badge /> should render high contrast positive variant Badge 1`] = `
 
 exports[`<Badge /> should render large size Badge 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
 }
 
 .c1 {
@@ -982,10 +982,10 @@ exports[`<Badge /> should render large size Badge 1`] = `
 
 exports[`<Badge /> should render low contrast blue variant Badge 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
 }
 
 .c1 {
@@ -1076,10 +1076,10 @@ exports[`<Badge /> should render low contrast blue variant Badge 1`] = `
 
 exports[`<Badge /> should render low contrast information variant Badge 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
 }
 
 .c1 {
@@ -1170,10 +1170,10 @@ exports[`<Badge /> should render low contrast information variant Badge 1`] = `
 
 exports[`<Badge /> should render low contrast negative variant Badge 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
 }
 
 .c1 {
@@ -1264,10 +1264,10 @@ exports[`<Badge /> should render low contrast negative variant Badge 1`] = `
 
 exports[`<Badge /> should render low contrast neutral variant Badge 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
 }
 
 .c1 {
@@ -1358,10 +1358,10 @@ exports[`<Badge /> should render low contrast neutral variant Badge 1`] = `
 
 exports[`<Badge /> should render low contrast notice variant Badge 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
 }
 
 .c1 {
@@ -1452,10 +1452,10 @@ exports[`<Badge /> should render low contrast notice variant Badge 1`] = `
 
 exports[`<Badge /> should render low contrast positive variant Badge 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
 }
 
 .c1 {
@@ -1546,10 +1546,10 @@ exports[`<Badge /> should render low contrast positive variant Badge 1`] = `
 
 exports[`<Badge /> should render medium size Badge 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
 }
 
 .c1 {
@@ -1640,10 +1640,10 @@ exports[`<Badge /> should render medium size Badge 1`] = `
 
 exports[`<Badge /> should render small size Badge 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
 }
 
 .c1 {

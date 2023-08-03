@@ -9,7 +9,7 @@ import { size as sizeToken } from '~tokens/global';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
 import type { StringChildrenType, TestID } from '~utils/types';
 import type { Feedback } from '~tokens/theme/theme';
-import { getPlatformType } from '~utils';
+import { isReactNative } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
@@ -88,8 +88,7 @@ const Indicator = ({
   }, [size]);
   const dimensions = getDimension();
 
-  const isReactNative = getPlatformType() === 'react-native';
-  const isWeb = !isReactNative;
+  const isWeb = !isReactNative();
   const a11yProps = makeAccessible({
     label: accessibilityLabel ?? childrenString,
     ...(isWeb && { role: 'status' }),
@@ -97,12 +96,16 @@ const Indicator = ({
 
   return (
     <BaseBox
-      display="flex"
+      display={(isWeb ? 'inline-flex' : 'flex') as never}
       {...a11yProps}
       {...metaAttribute({ name: MetaConstants.Indicator, testID })}
       {...getStyledProps(styledProps)}
     >
-      <BaseBox display="flex" flexDirection="row" alignItems="center">
+      <BaseBox
+        display={(isWeb ? 'inline-flex' : 'flex') as never}
+        flexDirection="row"
+        alignItems="center"
+      >
         <Svg
           width={String(dimensions.svgSize)}
           height={String(dimensions.svgSize)}

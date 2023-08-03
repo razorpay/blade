@@ -8,7 +8,7 @@ exports[`<Badge /> should render Badge on server 2`] = `
   id="root"
 >
   <div
-    class="BaseBox-bmPWx jLCxzZ"
+    class="BaseBox-bmPWx bcSLaJ"
     data-blade-component="badge"
   >
     <div

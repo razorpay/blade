@@ -131,7 +131,7 @@ const Counter = ({
 
   return (
     <BaseBox
-      display="flex"
+      display={(isReactNative() ? 'flex' : 'inline-flex') as never}
       {...metaAttribute({ name: MetaConstants.Counter, testID })}
       {...getStyledProps(styledProps)}
     >
