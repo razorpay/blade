@@ -246,10 +246,10 @@
     }
   },
   "resolutions": {
-    "@storybook/**/react-dom": "^18",
-    "@storybook/**/react": "^18",
-    "react-dom": "^18",
-    "react": "^18",
+    "@storybook/**/react-dom": "18.2.0",
+    "@storybook/**/react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react": "18.2.0",
     "styled-components": "^5"
   },
   "bundlemon": {
