@@ -73,6 +73,7 @@ const _SelectInput = (
     dropdownBaseId,
     activeIndex,
     activeTagIndex,
+    setActiveTagIndex,
     triggererRef,
     hasFooterAction,
     dropdownTriggerer,
@@ -205,6 +206,7 @@ const _SelectInput = (
           if (isTagDismissedRef.current) {
             isTagDismissedRef.current.value = true;
           }
+
           removeOption(selectedIndex);
           setChangeCallbackTriggerer(Number(changeCallbackTriggerer) + 1);
         }}
@@ -241,6 +243,8 @@ const _SelectInput = (
         isMultiline={props.rows === '3' || props.rows === 'expandable'}
         tags={getTags()}
         showAllTags={isOpen}
+        activeTagIndex={activeTagIndex}
+        setActiveTagIndex={setActiveTagIndex}
         value={selectionType === 'multiple' ? undefined : displayValue}
         hideLabelText={props.label?.length === 0}
         componentName={MetaConstants.SelectInput}

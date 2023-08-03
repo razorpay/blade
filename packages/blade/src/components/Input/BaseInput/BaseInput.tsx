@@ -251,6 +251,16 @@ export type BaseInputProps = FormInputLabelProps &
      * Disables stripping of tags and shows all tags
      */
     showAllTags?: boolean;
+
+    /**
+     * State variable of active tag index
+     */
+    activeTagIndex?: number;
+
+    /**
+     * State setter for active tag index
+     */
+    setActiveTagIndex?: (activeTagIndex: number) => void;
   } & TestID &
   Platform.Select<{
     native: {
@@ -309,6 +319,63 @@ const autoCompleteSuggestionTypeValues = [
   'creditCardExpiryYear',
 ];
 
+type OnInputKeydownTagHandlerType = (key: string | undefined) => void;
+const useTags = (
+  tags: BaseInputProps['tags'],
+  activeTagIndex: number,
+  setActiveTagIndex?: (activeTagIndex: number) => void,
+): {
+  onInputKeydownTagHandler: OnInputKeydownTagHandlerType;
+  visibleTagsCountRef: React.MutableRefObject<number>;
+} => {
+  const visibleTagsCountRef = React.useRef<number>(0);
+
+  const onTagLeft = (): void => {
+    if (activeTagIndex < 0) {
+      console.log('setting based on visible tags count', { visibleTagsCountRef, activeTagIndex });
+      setActiveTagIndex?.(visibleTagsCountRef.current - 1);
+    }
+
+    if (activeTagIndex > 0) {
+      setActiveTagIndex?.(activeTagIndex - 1);
+      console.log('setting based on active tags index');
+    }
+  };
+
+  const onTagRight = (): void => {
+    if (activeTagIndex < visibleTagsCountRef.current - 1) {
+      setActiveTagIndex?.(activeTagIndex + 1);
+    }
+  };
+
+  const onTagRemove = (): void => {
+    if (activeTagIndex >= 0 && activeTagIndex < visibleTagsCountRef.current && tags) {
+      tags[activeTagIndex].props.onDismiss();
+    }
+  };
+
+  const onInputKeydownTagHandler: OnInputKeydownTagHandlerType = (key) => {
+    if (tags && tags.length > 0) {
+      if (key === 'ArrowRight') {
+        onTagRight();
+      }
+
+      if (key === 'ArrowLeft') {
+        onTagLeft();
+      }
+
+      if (key === 'Backspace') {
+        onTagRemove();
+      }
+    }
+  };
+
+  return {
+    onInputKeydownTagHandler,
+    visibleTagsCountRef,
+  };
+};
+
 const useInput = ({
   value,
   defaultValue,
@@ -319,6 +386,7 @@ const useInput = ({
   onSubmit,
   onInput,
   onKeyDown,
+  onInputKeydownTagHandler,
 }: Pick<
   BaseInputProps,
   | 'value'
@@ -330,7 +398,9 @@ const useInput = ({
   | 'onKeyDown'
   | 'onClick'
   | 'onSubmit'
->): {
+> & {
+  onInputKeydownTagHandler: OnInputKeydownTagHandlerType;
+}): {
   handleOnFocus: FormInputHandleOnEvent;
   handleOnClick: FormInputHandleOnClickEvent;
   handleOnChange: FormInputHandleOnEvent;
@@ -466,6 +536,7 @@ const useInput = ({
 
   const handleOnKeyDown: FormInputHandleOnKeyDownEvent = React.useCallback(
     ({ name, key, code, event }) => {
+      onInputKeydownTagHandler(key);
       onKeyDown?.({
         name,
         key,
@@ -473,6 +544,7 @@ const useInput = ({
         event,
       });
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [onKeyDown],
   );
 
@@ -553,6 +625,8 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
       defaultValue,
       tags,
       showAllTags = false,
+      activeTagIndex = -1,
+      setActiveTagIndex,
       name,
       value,
       onFocus,
@@ -603,6 +677,11 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
     ref,
   ) => {
     const { theme } = useTheme();
+    const { onInputKeydownTagHandler, visibleTagsCountRef } = useTags(
+      tags,
+      activeTagIndex,
+      setActiveTagIndex,
+    );
     const {
       handleOnFocus,
       handleOnChange,
@@ -622,6 +701,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
       onSubmit,
       onInput,
       onKeyDown,
+      onInputKeydownTagHandler,
     });
     const { inputId, helpTextId, errorTextId, successTextId } = useFormId(id);
     const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
@@ -711,6 +791,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
                   ref.current?.focus();
                 }
               }}
+              visibleTagsCountRef={visibleTagsCountRef}
               handleOnClick={handleOnClick}
               setShouldIgnoreBlurAnimation={setShouldIgnoreBlurAnimation}
               isMultiline={isMultiline}

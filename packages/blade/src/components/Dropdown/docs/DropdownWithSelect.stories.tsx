@@ -200,6 +200,10 @@ export const InternalMultiSelect = (): JSX.Element => {
             <ActionListItem title="Hyderabad" value="hyderabad" />
             <ActionListItem title="Varanasi" value="varanasi" />
             <ActionListItem title="Mysore" value="mysore" />
+            <ActionListItem title="New York" value="new-york" />
+            <ActionListItem title="Indore" value="indore" />
+            <ActionListItem title="Kolhapur" value="kolhapur" />
+            <ActionListItem title="Ooty" value="ooty" />
           </ActionList>
           <DropdownFooter>
             <Button isFullWidth onClick={() => console.log('Footer Clicked')}>

@@ -318,7 +318,7 @@ const useDropdown = (): UseDropdownReturnValue => {
     e: React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLInputElement>,
     index: number,
   ): void => {
-    const actionType = getActionFromKey(e, isOpen, activeTagIndex);
+    const actionType = getActionFromKey(e, isOpen);
     if (typeof actionType === 'number') {
       onOptionChange(actionType, index);
     }
@@ -362,43 +362,6 @@ const useDropdown = (): UseDropdownReturnValue => {
     }
   };
 
-  const onTagAction = (action: SelectActionsType): void => {
-    if (!visibleTagsCountRef.current?.value) {
-      return;
-    }
-    setActiveIndex(-1);
-
-    if (action === 'MoveLeftTag') {
-      if (activeTagIndex < 0) {
-        setActiveTagIndex(visibleTagsCountRef.current?.value - 1);
-        return;
-      }
-
-      if (activeTagIndex > 0) {
-        setActiveTagIndex(activeTagIndex - 1);
-        return;
-      }
-    }
-
-    if (action === 'MoveRightTag') {
-      if (activeTagIndex < visibleTagsCountRef.current?.value - 1) {
-        setActiveTagIndex(activeTagIndex + 1);
-      }
-
-      return;
-    }
-
-    if (action === 'RemoveTag') {
-      const selectedIndex = selectedIndices.find(
-        (_selectedIndex, tagIndex) => tagIndex === activeTagIndex,
-      );
-
-      if (selectedIndex !== undefined) {
-        removeOption(selectedIndex);
-      }
-    }
-  };
-
   /**
    * Keydown event of combobox. Handles most of the keyboard accessibility of dropdown
    */
@@ -410,7 +373,7 @@ const useDropdown = (): UseDropdownReturnValue => {
       setIsKeydownPressed(true);
     }
 
-    const actionType = getActionFromKey(e.event, isOpen, activeTagIndex);
+    const actionType = getActionFromKey(e.event, isOpen);
 
     if (actionType) {
       performAction(actionType, e, {
@@ -418,7 +381,6 @@ const useDropdown = (): UseDropdownReturnValue => {
         close,
         onOptionChange,
         onComboType,
-        onTagAction,
         selectCurrentOption: () => {
           if (activeIndex < 0) {
             return;
