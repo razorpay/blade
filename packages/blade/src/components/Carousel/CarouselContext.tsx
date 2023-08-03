@@ -7,6 +7,8 @@ type CarouselContextProps =
       carouselItemWidth?: SpacingValueType;
       carouselContainerRef: React.RefObject<HTMLDivElement>;
       setActiveIndicator: (value: React.SetStateAction<number>) => void;
+      carouselId: string | null;
+      totalNumberOfSlides: number;
     })
   | null;
 const CarouselContext = React.createContext<CarouselContextProps>(null);

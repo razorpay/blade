@@ -18,6 +18,7 @@ const getIndicatorButtonStyles = ({
 
   return {
     border: 'none',
+    cursor: 'pointer',
     padding: makeSpace(theme.spacing[0]),
     borderRadius: theme.border.radius.max,
     backgroundColor: isActive ? backgroundColor[variant] : theme.colors.overlay.background,
@@ -26,6 +27,12 @@ const getIndicatorButtonStyles = ({
     transition: '300ms width',
 
     ...(!isReactNative() && {
+      '&:before': {
+        content: `""`,
+        // increasing the hit area, just random numbers
+        padding: makeSize(size[10]),
+        paddingTop: makeSize(size[20]),
+      },
       '&:focus': {
         // TODO: refactor to use focus ring token
         outline: 'none',

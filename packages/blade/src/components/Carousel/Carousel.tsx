@@ -15,6 +15,7 @@ import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
 import { useInterval, useTheme } from '~utils';
 import { useId } from '~utils/useId';
+import { makeAccessible } from '~utils/makeAccessible';
 
 type ControlsProp = {
   showIndicators?: boolean;
@@ -158,6 +159,7 @@ const CarouselBody = React.forwardRef<HTMLDivElement, CarouselBodyProps>(
         gap={{ base: 'spacing.4', m: 'spacing.5' }}
         isScrollAtStart={isScrollAtStart}
         isScrollAtEnd={isScrollAtEnd}
+        {...makeAccessible({ liveRegion: 'polite' })}
       >
         {React.Children.map(children, (child, index) => {
           return React.cloneElement(child as React.ReactElement, {
@@ -181,6 +183,7 @@ const Carousel = ({
   shouldAddStartEndSpacing = false,
   carouselItemWidth,
   overlayColor,
+  accessibilityLabel,
 }: CarouselProps): React.ReactElement => {
   const { platform } = useTheme();
   const [activeSlide, setActiveSlide] = React.useState(0);
@@ -291,12 +294,15 @@ const Carousel = ({
       carouselItemWidth,
       carouselContainerRef: containerRef,
       setActiveIndicator,
+      carouselId: id,
+      totalNumberOfSlides,
     };
-  }, [_visibleItems, carouselItemWidth]);
+  }, [_visibleItems, carouselItemWidth, id, totalNumberOfSlides]);
 
   return (
     <CarouselContext.Provider value={carouselContext}>
       <BaseBox
+        {...makeAccessible({ roleDescription: 'carousel', label: accessibilityLabel })}
         // stop autoplaying when any elements in carousel is in focus
         onFocus={(e: React.FocusEvent) => {
           if (!e.currentTarget.contains(e.relatedTarget)) {

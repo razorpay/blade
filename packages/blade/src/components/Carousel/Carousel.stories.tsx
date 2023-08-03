@@ -92,13 +92,13 @@ const CarouselTemplate: ComponentStory<typeof CarouselComponent> = () => {
       backgroundColor="surface.background.level1.lowContrast"
     >
       <Text>v1: Responsive: N/A + auto bleed + shouldAddStartEndPadding</Text>
-      <CarouselExample
+      {/* <CarouselExample
         carouselItemWidth="500px"
         shouldAddStartEndSpacing
         navigationButtonPosition="side"
         overlayColor="surface.background.level1.lowContrast"
       />
-      <Text>v1: Responsive: N/A + auto bleed + shouldAddStartEndPadding</Text>
+      <Text>v1: Responsive: N/A + auto bleed + shouldAddStartEndPadding</Text> */}
       {/* <CarouselExample
         autoPlay
         carouselItemWidth="500px"
@@ -106,7 +106,7 @@ const CarouselTemplate: ComponentStory<typeof CarouselComponent> = () => {
         overlayColor="surface.background.level1.lowContrast"
       /> */}
       <Text>v2: Responsive: 1|2|3, navButtons: side</Text>
-      <CarouselExample autoPlay visibleItems={2} navigationButtonPosition="side" />
+      <CarouselExample visibleItems={2} navigationButtonPosition="side" />
       {/* <CarouselExample autoPlay visibleItems={2} navigationButtonPosition="side" /> */}
       {/* <CarouselExample visibleItems={2} navigationButtonPosition="side" />
       <CarouselExample visibleItems={3} navigationButtonPosition="side" />

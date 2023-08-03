@@ -18,6 +18,7 @@ type CarouselProps = {
   indicatorVariant?: 'gray' | 'white' | 'blue';
   carouselItemWidth?: SpacingValueType;
   onChange: (slideIndex: number) => void;
+  accessibilityLabel?: string;
 };
 
 export type { CarouselProps };

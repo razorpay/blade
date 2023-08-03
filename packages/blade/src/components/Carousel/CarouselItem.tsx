@@ -6,6 +6,7 @@ import type { CarouselProps } from './types';
 import { useCarouselContext } from './CarouselContext';
 import BaseBox from '~components/Box/BaseBox';
 import { useBreakpoint, useTheme } from '~utils';
+import { makeAccessible } from '~utils/makeAccessible';
 
 // 1 slide
 // start - scrollSnapAlign:start & double padding
@@ -101,6 +102,7 @@ const CarouselItem = ({
 }: CarouselItemProps): React.ReactElement => {
   const itemRef = React.useRef<HTMLDivElement>(null);
   const {
+    totalNumberOfSlides,
     visibleItems,
     carouselItemWidth,
     carouselContainerRef,
@@ -123,6 +125,11 @@ const CarouselItem = ({
 
   return (
     <StyledCarouselItem
+      {...makeAccessible({
+        role: 'tabpanel',
+        roleDescription: 'slide',
+        label: `${index} of ${totalNumberOfSlides}`,
+      })}
       ref={itemRef}
       id={id}
       isMobile={isMobile}

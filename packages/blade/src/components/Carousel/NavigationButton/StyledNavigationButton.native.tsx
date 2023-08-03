@@ -14,8 +14,10 @@ const StyledNavigationButton = ({
   children,
   onClick,
   variant,
+  accessibilityLabel,
 }: Pick<NavigationButtonProps, 'variant' | 'onClick'> & {
   children: React.ReactNode;
+  accessibilityLabel: string;
 }): React.ReactElement => {
   const [isPressed, setIsPressed] = React.useState(false);
 
@@ -26,7 +28,7 @@ const StyledNavigationButton = ({
       onPress={onClick}
       onPressIn={() => setIsPressed(true)}
       onPressOut={() => setIsPressed(false)}
-      {...makeAccessible({ role: 'button' })}
+      {...makeAccessible({ role: 'button', label: accessibilityLabel })}
     >
       {children}
     </StyledPressable>
