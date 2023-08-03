@@ -61,6 +61,7 @@ type FlexboxProps = MakeObjectResponsive<
     | 'justifyContent'
     | 'justifySelf'
     | 'placeSelf'
+    | 'placeItems'
     | 'order'
   >
 >;
@@ -143,6 +144,7 @@ type CommonBoxVisualProps = MakeObjectResponsive<
     | 'backgroundPosition'
     | 'backgroundOrigin'
     | 'backgroundRepeat'
+    | 'pointerEvents'
   > & {
       /**
        * Sets the elevation for Box
@@ -195,7 +197,7 @@ type BoxVisualProps = MakeObjectResponsive<{
 type StyledPropsBlade = Partial<
   Omit<
     MarginProps &
-      Pick<FlexboxProps, 'alignSelf' | 'justifySelf' | 'placeSelf' | 'order'> &
+      Pick<FlexboxProps, 'alignSelf' | 'justifySelf' | 'placeSelf' | 'placeItems' | 'order'> &
       PositionProps &
       Pick<
         GridProps,
@@ -207,7 +209,8 @@ type StyledPropsBlade = Partial<
         | 'gridColumnEnd'
         | 'gridArea'
       > &
-      Pick<LayoutProps, 'display'>,
+      Pick<LayoutProps, 'display'> &
+      PickCSSByPlatform<'pointerEvents'>,
     '__brand__'
   >
 >;
@@ -249,6 +252,31 @@ type BoxCallbackProps = Omit<
   '__brand__'
 >;
 
+type BoxDragAndDropProps = Omit<
+  Platform.Select<{
+    web: {
+      draggable: boolean;
+      onDragStart: React.DragEventHandler<HTMLElement>;
+      onDragEnter: React.DragEventHandler<HTMLElement>;
+      onDragLeave: React.DragEventHandler<HTMLElement>;
+      onDragOver: React.DragEventHandler<HTMLElement>;
+      onDragEnd: React.DragEventHandler<HTMLElement>;
+      onDrop: React.DragEventHandler<HTMLElement>;
+    };
+    native: Record<
+      | 'draggable'
+      | 'onDragStart'
+      | 'onDragEnter'
+      | 'onDragLeave'
+      | 'onDragOver'
+      | 'onDragEnd'
+      | 'onDrop',
+      undefined
+    >;
+  }>,
+  '__brand__'
+>;
+
 type BoxProps = Partial<
   PaddingProps &
     MarginProps &
@@ -257,6 +285,7 @@ type BoxProps = Partial<
     PositionProps &
     GridProps &
     BoxCallbackProps &
+    BoxDragAndDropProps &
     CommonBoxVisualProps &
     BoxVisualProps & {
       children?: React.ReactNode | React.ReactNode[];

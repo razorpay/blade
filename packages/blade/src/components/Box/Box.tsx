@@ -74,6 +74,7 @@ const makeBoxProps = (props: BoxProps): KeysRequired<Omit<BoxProps, 'testID' | '
     justifyContent: props.justifyContent,
     justifySelf: props.justifySelf,
     placeSelf: props.placeSelf,
+    placeItems: props.placeItems,
     order: props.order,
 
     // Grid
@@ -152,6 +153,16 @@ const makeBoxProps = (props: BoxProps): KeysRequired<Omit<BoxProps, 'testID' | '
     onMouseOver: props.onMouseOver,
     onScroll: props.onScroll,
 
+    // Drag and Drop
+    draggable: props.draggable,
+    onDragStart: props.onDragStart,
+    onDragEnd: props.onDragEnd,
+    onDragEnter: props.onDragEnter,
+    onDragLeave: props.onDragLeave,
+    onDragOver: props.onDragOver,
+    onDrop: props.onDrop,
+
+    pointerEvents: props.pointerEvents,
     children: props.children,
     tabIndex: props.tabIndex,
     as: isReactNative() ? undefined : props.as, // as is not supported on react-native
