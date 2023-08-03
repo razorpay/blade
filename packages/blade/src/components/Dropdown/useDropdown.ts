@@ -287,6 +287,7 @@ const useDropdown = (): UseDropdownReturnValue => {
    * Click listener for combobox (or any triggerer of the dropdown)
    */
   const onTriggerClick = (): void => {
+    console.log('onTriggerClick');
     if (isOpen) {
       close();
     } else {

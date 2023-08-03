@@ -1,16 +1,32 @@
 import BaseBox from '~components/Box/BaseBox';
-import type { IconComponent } from '~components/Icons';
+import { ChevronDownIcon, ChevronUpIcon } from '~components/Icons';
+// import { size } from '~tokens/global';
+// import { makeSize } from '~utils';
 
 export type SelectChevronIconProps = {
   onClick: () => void;
-  icon: IconComponent;
+  isOpen?: boolean;
 };
 
 const SelectChevronIcon = (props: SelectChevronIconProps): React.ReactElement => {
-  const Icon = props.icon;
   return (
-    <BaseBox as="div" display="flex" justifyContent="center" onClick={props.onClick}>
-      <Icon color="surface.text.normal.lowContrast" size="medium" />
+    <BaseBox
+      display="flex"
+      height="100%"
+      justifyContent="center"
+      alignItems="center"
+      onClick={props.onClick}
+    >
+      <ChevronDownIcon
+        display={props.isOpen ? 'none' : 'flex'}
+        color="surface.text.normal.lowContrast"
+        size="medium"
+      />
+      <ChevronUpIcon
+        display={props.isOpen ? 'flex' : 'none'}
+        color="surface.text.normal.lowContrast"
+        size="medium"
+      />
     </BaseBox>
   );
 };

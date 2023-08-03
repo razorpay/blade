@@ -201,7 +201,10 @@ const _Dropdown = ({
           return;
         }
 
+        console.log({ dropdown, target, isInside: dropdown.contains(target) });
+
         if (!dropdown.contains(target) && !isTagDismissedRef.current?.value) {
+          console.log('this close?');
           close();
         }
 

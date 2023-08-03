@@ -58,6 +58,7 @@ const getInteractionElementStyles = ({
   if (hasInteractionElement && !hasSuffix && !hasTrailingIcon) {
     return {
       paddingRight: 'spacing.4',
+      height: '100%',
     };
   }
 

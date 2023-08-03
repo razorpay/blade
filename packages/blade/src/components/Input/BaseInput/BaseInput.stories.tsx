@@ -398,7 +398,7 @@ const BaseInputControlledWithTagsTemplate: ComponentStory<typeof BaseInputCompon
           setActiveTagIndex(-1);
         }
 
-        if (e.key === 'Backspace') {
+        if (e.key === 'Backspace' && !inputValue && activeTagIndex < 0) {
           setCurrentTags(currentTags.slice(0, -1));
         }
       }}

@@ -3,7 +3,6 @@ import isEmpty from 'lodash/isEmpty';
 import { BaseInput } from '../BaseInput';
 import type { BaseInputProps } from '../BaseInput';
 import { SelectChevronIcon } from './SelectChevronIcon';
-import { ChevronDownIcon, ChevronUpIcon } from '~components/Icons';
 import { useDropdown } from '~components/Dropdown/useDropdown';
 import type { IconComponent } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
@@ -311,7 +310,7 @@ const _SelectInput = (
                 onTriggerClick();
               }
             }}
-            icon={isOpen ? ChevronUpIcon : ChevronDownIcon}
+            isOpen={isOpen}
           />
         }
         testID={props.testID}
