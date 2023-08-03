@@ -27,16 +27,18 @@ const useBladeProvider = ({
   themeTokens: ThemeTokens;
   initialColorScheme?: ColorSchemeNamesInput;
 }): { theme: Theme; themeContextValue: ThemeContextValue } => {
-  if (!themeTokens) {
-    throw new Error(
-      `[BladeProvider]: Expected valid themeTokens of type ThemeTokens to be passed but found ${typeof themeTokens}`,
-    );
-  }
+  if (__DEV__) {
+    if (!themeTokens) {
+      throw new Error(
+        `[BladeProvider]: Expected valid themeTokens of type ThemeTokens to be passed but found ${typeof themeTokens}`,
+      );
+    }
 
-  if (initialColorScheme && !colorSchemeNamesInput.includes(initialColorScheme)) {
-    throw new Error(
-      `[BladeProvider]: Expected color scheme to be one of [${colorSchemeNamesInput.toString()}] but received ${initialColorScheme}`,
-    );
+    if (initialColorScheme && !colorSchemeNamesInput.includes(initialColorScheme)) {
+      throw new Error(
+        `[BladeProvider]: Expected color scheme to be one of [${colorSchemeNamesInput.toString()}] but received ${initialColorScheme}`,
+      );
+    }
   }
 
   const { colorScheme, setColorScheme } = useColorScheme(initialColorScheme);

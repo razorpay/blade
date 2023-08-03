@@ -32,7 +32,7 @@ const Page = (): React.ReactElement => {
         import React from 'react';
         import { Tag, FileTextIcon } from '@razorpay/blade/components';
         
-        function App(): JSX.Element {
+        function App(): React.ReactElement {
           const [isTagVisible, setIsTagVisible] = React.useState(true);
 
           return (
@@ -67,6 +67,11 @@ export default {
       type: 'select',
       options: Object.keys(iconMap),
       mapping: iconMap,
+    },
+    _isVirtuallyFocussed: {
+      table: {
+        disable: true,
+      },
     },
   },
   parameters: {

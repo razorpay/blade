@@ -24,7 +24,7 @@ import type { Platform } from '~utils';
 import { isReactNative } from '~utils';
 import type { LinkActionStates } from '~tokens/theme/theme';
 import type { DurationString, EasingString, FontSize, Typography } from '~tokens/global';
-import type { BaseTextProps } from '~components/Typography/BaseText/types';
+import type { BaseTextProps, BaseTextSizes } from '~components/Typography/BaseText/types';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { makeAccessible } from '~utils/makeAccessible';
@@ -56,7 +56,7 @@ type BaseLinkCommonProps = {
    *
    * @default medium
    */
-  size?: 'xsmall' | 'small' | 'medium' | 'large';
+  size?: Extract<BaseTextSizes, 'xsmall' | 'small' | 'medium' | 'large'>;
   /**
    * Defines how far your touch can start away from the link. This is a react-native only prop and has no effect on web.
    */
@@ -294,10 +294,12 @@ const _BaseLink: React.ForwardRefRenderFunction<BladeElementRef, BaseLinkProps> 
   const childrenString = getStringFromReactText(children);
   const { currentInteraction, setCurrentInteraction, ...syntheticEvents } = useInteraction();
   const { theme } = useTheme();
-  if (!Icon && !childrenString?.trim()) {
-    throw new Error(
-      `[Blade: BaseLink]: At least one of icon or text is required to render a link.`,
-    );
+  if (__DEV__) {
+    if (!Icon && !childrenString?.trim()) {
+      throw new Error(
+        `[Blade: BaseLink]: At least one of icon or text is required to render a link.`,
+      );
+    }
   }
   const {
     as,

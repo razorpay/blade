@@ -19,6 +19,7 @@ import {
   modalMinWidth,
   modalResponsiveScreenGap,
 } from './modalTokens';
+import type { ModalProps } from './types';
 import { castWebType, makeMotionTime, makeSize } from '~utils';
 import { BaseBox } from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
@@ -26,36 +27,6 @@ import { Box } from '~components/Box';
 import { isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import { makeAccessible } from '~utils/makeAccessible';
-
-type ModalProps = {
-  /**
-   *  Children of Modal
-   * Only ModalHeader, ModalBody and ModalFooter are allowed as children
-   */
-  children: React.ReactNode;
-  /**
-   Sets the modal to open or close
-   * @default false
-   */
-  isOpen: boolean;
-  /**
-   *  Callback function when user clicks on close button or outside the modal or on pressing escape key.
-   */
-  onDismiss: () => void;
-  /**
-   *  Ref to the element to be focused on opening the modal.
-   */
-  initialFocusRef?: React.MutableRefObject<any>;
-  /**
-   *  Size of the modal
-   * @default 'small'
-   */
-  size?: 'small' | 'medium' | 'large';
-  /**
-   *  Accessibility label for the modal
-   */
-  accessibilityLabel?: string;
-};
 
 const entry = keyframes`
   from {
@@ -100,6 +71,7 @@ const Modal = ({
   initialFocusRef,
   size = 'small',
   accessibilityLabel,
+  zIndex = modalHighestZIndex,
 }: ModalProps): React.ReactElement => {
   const { theme, platform } = useTheme();
   const { isMounted, isVisible } = usePresence(isOpen, {
@@ -147,11 +119,12 @@ const Modal = ({
       isValidAllowedChildren(child, MetaConstants.ModalFooter)
     ) {
       return child;
-    } else {
+    } else if (__DEV__) {
       throw new Error(
         '[Blade Modal] Modal only accepts ModalHeader, ModalBody and ModalFooter as children',
       );
     }
+    return null;
   });
 
   return (
@@ -164,7 +137,7 @@ const Modal = ({
             context={context}
             modal={true}
           >
-            <Box zIndex={modalHighestZIndex} position="fixed" testID="modal-wrapper">
+            <Box zIndex={zIndex} position="fixed" testID="modal-wrapper">
               <ModalBackdrop />
               <ModalContent
                 {...metaAttribute({

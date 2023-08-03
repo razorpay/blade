@@ -66,7 +66,7 @@ WithMultiSelect.parameters = {
   },
 };
 
-export const WithHeaderFooterScrollbar = (): JSX.Element => {
+export const WithHeaderFooterScrollbar = (): React.ReactElement => {
   return (
     <Sandbox padding="spacing.0" editorHeight="100vh">
       {WithHeaderFooterScroll}
@@ -74,7 +74,7 @@ export const WithHeaderFooterScrollbar = (): JSX.Element => {
   );
 };
 
-export const WithValueDisplay = (): JSX.Element => {
+export const WithValueDisplay = (): React.ReactElement => {
   return (
     <Sandbox padding="spacing.0" editorHeight="100vh">
       {WithValueDisplayStory}
@@ -82,7 +82,7 @@ export const WithValueDisplay = (): JSX.Element => {
   );
 };
 
-export const WithHTMLFormSubmission = (): JSX.Element => {
+export const WithHTMLFormSubmission = (): React.ReactElement => {
   return (
     <Sandbox padding="spacing.0" editorHeight="100vh">
       {WithHTMLFormSubmissionStory}
@@ -90,7 +90,7 @@ export const WithHTMLFormSubmission = (): JSX.Element => {
   );
 };
 
-export const WithValidationState = (): JSX.Element => {
+export const WithValidationState = (): React.ReactElement => {
   return (
     <Sandbox padding="spacing.0" editorHeight="100vh">
       {WithValidationStateStory}
@@ -98,7 +98,7 @@ export const WithValidationState = (): JSX.Element => {
   );
 };
 
-export const WithRefUsage = (): JSX.Element => {
+export const WithRefUsage = (): React.ReactElement => {
   return (
     <Sandbox padding="spacing.0" editorHeight="100vh">
       {WithRefUsageStory}
@@ -106,7 +106,7 @@ export const WithRefUsage = (): JSX.Element => {
   );
 };
 
-export const WithBottomAlignedSelect = (): JSX.Element => {
+export const WithBottomAlignedSelect = (): React.ReactElement => {
   return (
     <Sandbox padding="spacing.0" editorHeight="100vh">
       {WithBottomAlignedSelectStory}
@@ -114,7 +114,7 @@ export const WithBottomAlignedSelect = (): JSX.Element => {
   );
 };
 
-export const WithMultipleDropdowns = (): JSX.Element => {
+export const WithMultipleDropdowns = (): React.ReactElement => {
   return (
     <Sandbox padding="spacing.0" editorHeight="100vh">
       {WithMultipleDropdownsStory}
@@ -122,7 +122,7 @@ export const WithMultipleDropdowns = (): JSX.Element => {
   );
 };
 
-export const WithControlledSelect = (): JSX.Element => {
+export const WithControlledSelect = (): React.ReactElement => {
   return (
     <Sandbox padding="spacing.0" editorHeight="100vh">
       {WithControlledSelectStory}
@@ -130,7 +130,7 @@ export const WithControlledSelect = (): JSX.Element => {
   );
 };
 
-export const WithControlledMultiSelect = (): JSX.Element => {
+export const WithControlledMultiSelect = (): React.ReactElement => {
   return (
     <Sandbox padding="spacing.0" editorHeight="100vh">
       {WithControlledMultiSelectStory}
@@ -139,7 +139,7 @@ export const WithControlledMultiSelect = (): JSX.Element => {
 };
 
 // For chromatic and internal react native testing
-export const InternalControlledSelect = (): JSX.Element => {
+export const InternalControlledSelect = (): React.ReactElement => {
   const [currentSelection, setCurrentSelection] = React.useState<string[]>([]);
 
   return (
@@ -185,7 +185,7 @@ InternalControlledSelect.parameters = {
 };
 
 // For chromatic and internal react native testing
-export const InternalMultiSelect = (): JSX.Element => {
+export const InternalMultiSelect = (): React.ReactElement => {
   return (
     <Box padding="spacing.5" maxWidth="300px">
       <Dropdown selectionType="multiple">
@@ -224,7 +224,7 @@ InternalControlledSelect.parameters = {
 };
 
 // For chromatic and internal react native testing
-export const InternalControlledSingleSelect = (): JSX.Element => {
+export const InternalControlledSingleSelect = (): React.ReactElement => {
   const [currentSelection, setCurrentSelection] = React.useState<string>('');
 
   return (

@@ -44,7 +44,7 @@ const BoxStoryMeta = {
   },
 } as Meta<BoxProps>;
 
-export const Default = (args: BoxProps): JSX.Element => {
+export const Default = (args: BoxProps): React.ReactElement => {
   return (
     <Box {...args}>
       <Text>Change controls to see the parameters change for the container</Text>
@@ -57,7 +57,7 @@ Default.args = {
   backgroundColor: 'surface.background.level1.lowContrast',
 } as BoxProps;
 
-export const Responsive = (args: BoxProps): JSX.Element => {
+export const Responsive = (args: BoxProps): React.ReactElement => {
   return (
     <>
       <Text>Change screen size to see flexDirection switch between row and column</Text>
@@ -79,7 +79,7 @@ Responsive.args = {
   flexDirection: { base: 'column', m: 'row' },
 } as BoxProps;
 
-export const AsSection = (args: BoxProps): JSX.Element => {
+export const AsSection = (args: BoxProps): React.ReactElement => {
   if (isReactNative()) {
     return (
       <Box>
@@ -99,7 +99,7 @@ AsSection.args = {
   as: 'section',
 } as BoxProps;
 
-export const WithRef = (args: BoxProps): JSX.Element => {
+export const WithRef = (args: BoxProps): React.ReactElement => {
   const ref = React.useRef<BoxRefType>(null);
 
   return (
@@ -124,7 +124,7 @@ WithRef.args = {
   marginTop: '800px',
 } as BoxProps;
 
-export const WithMouseEvents = (args: BoxProps): JSX.Element => {
+export const WithMouseEvents = (args: BoxProps): React.ReactElement => {
   return (
     <Box
       {...args}

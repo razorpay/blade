@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 import type { ReactElement } from 'react';
 import { BaseText } from '../BaseText';
-import type { BaseTextProps } from '../BaseText/types';
+import type { BaseTextProps, BaseTextSizes } from '../BaseText/types';
 import { useValidateAsProp } from '../utils';
 import type { ColorContrast, ColorContrastTypes, TextTypes } from '~tokens/theme/theme';
 import { getStyledProps } from '~components/Box/styledProps';
@@ -11,7 +11,6 @@ import { isReactNative } from '~utils';
 import type { TestID } from '~utils/types';
 
 type HeadingVariant = 'regular' | 'subheading';
-type HeadingSize = 'small' | 'medium' | 'large';
 
 const validAsValues = ['span', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const;
 type HeadingCommonProps = {
@@ -36,7 +35,7 @@ type HeadingNormalVariant = HeadingCommonProps & {
    *
    * @default small
    */
-  size?: HeadingSize;
+  size?: Extract<BaseTextSizes, 'small' | 'medium' | 'large'>;
   weight?: keyof Theme['typography']['fonts']['weight'];
 };
 
@@ -104,13 +103,17 @@ const getProps = <T extends { variant: HeadingVariant }>({
       props.as = 'h4';
     }
   } else if (variant === 'subheading') {
-    if (weight === 'regular') {
-      throw new Error(`[Blade: Heading]: weight cannot be 'regular' when variant is 'subheading'`);
-    }
-    if (size) {
-      throw new Error(
-        `[Blade: Heading]: size prop cannot be added when variant is 'subheading'. Use variant 'regular' or remove size prop`,
-      );
+    if (__DEV__) {
+      if (weight === 'regular') {
+        throw new Error(
+          `[Blade: Heading]: weight cannot be 'regular' when variant is 'subheading'`,
+        );
+      }
+      if (size) {
+        throw new Error(
+          `[Blade: Heading]: size prop cannot be added when variant is 'subheading'. Use variant 'regular' or remove size prop`,
+        );
+      }
     }
     props.fontSize = 75;
     props.lineHeight = 50;

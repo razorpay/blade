@@ -51,7 +51,7 @@ type CommonAutoCompleteSuggestionTypes =
 
 type WebAutoCompleteSuggestionType = CommonAutoCompleteSuggestionTypes | 'on';
 
-export type BaseInputProps = FormInputLabelProps &
+type BaseInputCommonProps = FormInputLabelProps &
   FormInputValidationProps & {
     /**
      * Determines if it needs to be rendered as input, textarea or button
@@ -300,6 +300,37 @@ export type BaseInputProps = FormInputLabelProps &
   }> &
   StyledPropsBlade;
 
+/*
+  Mandatory accessibilityLabel prop when label is not provided
+*/
+type BaseInputPropsWithA11yLabel = {
+  /**
+   * Label to be shown for the input field
+   */
+  label?: undefined;
+  /**
+   * Accessibility label for the input
+   */
+  accessibilityLabel: string;
+};
+
+/*
+  Optional accessibilityLabel prop when label is provided
+*/
+type BaseInputPropsWithLabel = {
+  /**
+   * Label to be shown for the input field
+   */
+  label: string;
+  /**
+   * Accessibility label for the input
+   */
+  accessibilityLabel?: string;
+};
+
+export type BaseInputProps = (BaseInputPropsWithA11yLabel | BaseInputPropsWithLabel) &
+  BaseInputCommonProps;
+
 const autoCompleteSuggestionTypeValues = [
   'none',
   'on',
@@ -410,10 +441,12 @@ const useInput = ({
   handleOnKeyDown: FormInputHandleOnKeyDownEvent;
   inputValue?: string;
 } => {
-  if (value && defaultValue) {
-    throw new Error(
-      `[Blade: Input]: Either 'value' or 'defaultValue' shall be passed. This decides if the input field is controlled or uncontrolled`,
-    );
+  if (__DEV__) {
+    if (value && defaultValue) {
+      throw new Error(
+        `[Blade: Input]: Either 'value' or 'defaultValue' shall be passed. This decides if the input field is controlled or uncontrolled`,
+      );
+    }
   }
 
   const [inputValue, setInputValue] = React.useState(defaultValue ?? value);
@@ -732,15 +765,17 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
 
     const willRenderHintText = Boolean(helpText) || Boolean(successText) || Boolean(errorText);
 
-    if (
-      autoCompleteSuggestionType &&
-      !autoCompleteSuggestionTypeValues.includes(autoCompleteSuggestionType)
-    ) {
-      throw new Error(
-        `[Blade: Input]: Expected autoCompleteSuggestionType to be one of ${autoCompleteSuggestionTypeValues.join(
-          ', ',
-        )} but received ${autoCompleteSuggestionType}`,
-      );
+    if (__DEV__) {
+      if (
+        autoCompleteSuggestionType &&
+        !autoCompleteSuggestionTypeValues.includes(autoCompleteSuggestionType)
+      ) {
+        throw new Error(
+          `[Blade: Input]: Expected autoCompleteSuggestionType to be one of ${autoCompleteSuggestionTypeValues.join(
+            ', ',
+          )} but received ${autoCompleteSuggestionType}`,
+        );
+      }
     }
 
     const isTextArea = as === 'textarea';
@@ -847,7 +882,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
         </BaseBox>
         {/* the magic number 136 is basically max-width of label i.e 120 and then right margin i.e 16 which is the spacing between label and input field */}
         {!hideFormHint && (
-          <BaseBox marginLeft={makeSize(isLabelLeftPositioned ? 136 : 0)}>
+          <BaseBox marginLeft={makeSize(isLabelLeftPositioned && !hideLabelText ? 136 : 0)}>
             <BaseBox
               display="flex"
               flexDirection="row"

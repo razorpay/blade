@@ -2,7 +2,7 @@
 import type { ReactElement } from 'react';
 import React from 'react';
 import { BaseText } from '../BaseText';
-import type { BaseTextProps } from '../BaseText/types';
+import type { BaseTextProps, BaseTextSizes } from '../BaseText/types';
 import { useValidateAsProp } from '../utils';
 import type { Theme } from '~components/BladeProvider';
 import { getStyledProps } from '~components/Box/styledProps';
@@ -34,12 +34,12 @@ export type TextVariant = 'body' | 'caption';
 
 type TextBodyVariant = TextCommonProps & {
   variant?: Extract<TextVariant, 'body'>;
-  size?: 'xsmall' | 'small' | 'medium' | 'large';
+  size?: Extract<BaseTextSizes, 'xsmall' | 'small' | 'medium' | 'large'>;
 };
 
 type TextCaptionVariant = TextCommonProps & {
   variant?: Extract<TextVariant, 'caption'>;
-  size?: 'medium';
+  size?: Extract<BaseTextSizes, 'medium'>;
 };
 
 /**
@@ -116,7 +116,7 @@ const getTextProps = <T extends { variant: TextVariant }>({
     if (size === 'medium') {
       props.fontSize = 50;
       props.lineHeight = 50;
-    } else {
+    } else if (__DEV__) {
       throw new Error(`[Blade: Text]: size cannot be '${size}' when variant is 'caption'`);
     }
     props.fontStyle = 'italic';

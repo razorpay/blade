@@ -17,9 +17,10 @@ import { useBladeInnerRef } from '~utils/useBladeInnerRef';
 import { MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-type SelectInputProps = Pick<
+type SelectInputCommonProps = Pick<
   BaseInputProps,
   | 'label'
+  | 'accessibilityLabel'
   | 'labelPosition'
   | 'necessityIndicator'
   | 'validationState'
@@ -60,10 +61,41 @@ type SelectInputProps = Pick<
   rows?: '1' | '3' | 'expandable';
 };
 
+/*
+  Mandatory accessibilityLabel prop when label is not provided
+*/
+type SelectInputPropsWithA11yLabel = {
+  /**
+   * Label to be shown for the input field
+   */
+  label?: undefined;
+  /**
+   * Accessibility label for the input
+   */
+  accessibilityLabel: string;
+};
+
+/*
+  Optional accessibilityLabel prop when label is provided
+*/
+type SelectInputPropsWithLabel = {
+  /**
+   * Label to be shown for the input field
+   */
+  label: string;
+  /**
+   * Accessibility label for the input
+   */
+  accessibilityLabel?: string;
+};
+
+type SelectInputProps = (SelectInputPropsWithA11yLabel | SelectInputPropsWithLabel) &
+  SelectInputCommonProps;
+
 const _SelectInput = (
   props: SelectInputProps,
   ref: React.ForwardedRef<BladeElementRef>,
-): JSX.Element => {
+): React.ReactElement => {
   const {
     isOpen,
     value,
@@ -246,6 +278,7 @@ const _SelectInput = (
         activeTagIndex={activeTagIndex}
         setActiveTagIndex={setActiveTagIndex}
         value={selectionType === 'multiple' ? undefined : displayValue}
+        label={props.label as string}
         hideLabelText={props.label?.length === 0}
         componentName={MetaConstants.SelectInput}
         ref={!isReactNative() ? (triggererRef as React.MutableRefObject<HTMLInputElement>) : null}

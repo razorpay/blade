@@ -82,3 +82,5 @@ export type StyledBaseTextProps = Pick<
   | 'numberOfLines'
   | 'truncateAfterLines'
 > & { theme: Theme };
+
+export type BaseTextSizes = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';

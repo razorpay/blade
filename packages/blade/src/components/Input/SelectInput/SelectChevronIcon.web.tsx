@@ -6,7 +6,7 @@ export type SelectChevronIconProps = {
   icon: IconComponent;
 };
 
-const SelectChevronIcon = (props: SelectChevronIconProps): JSX.Element => {
+const SelectChevronIcon = (props: SelectChevronIconProps): React.ReactElement => {
   const Icon = props.icon;
   return (
     <BaseBox as="div" display="flex" justifyContent="center" onClick={props.onClick}>

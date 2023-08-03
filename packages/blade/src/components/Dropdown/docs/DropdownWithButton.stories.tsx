@@ -45,7 +45,7 @@ const DropdownStoryMeta = {
   },
 };
 
-export const Default = (): JSX.Element => {
+export const Default = (): React.ReactElement => {
   return (
     <Sandbox
       padding="spacing.0"
@@ -57,7 +57,7 @@ export const Default = (): JSX.Element => {
   );
 };
 
-export const WithLink = (): JSX.Element => {
+export const WithLink = (): React.ReactElement => {
   return (
     <Sandbox padding="spacing.0" editorHeight="100vh">
       {WithLinkStory}
@@ -65,7 +65,7 @@ export const WithLink = (): JSX.Element => {
   );
 };
 
-export const WithRightAlignedMenu = (): JSX.Element => {
+export const WithRightAlignedMenu = (): React.ReactElement => {
   return (
     <Sandbox padding="spacing.0" editorHeight="100vh">
       {WithRightAlignedMenuStory}
@@ -73,7 +73,7 @@ export const WithRightAlignedMenu = (): JSX.Element => {
   );
 };
 
-export const WithControlledMenu = (): JSX.Element => {
+export const WithControlledMenu = (): React.ReactElement => {
   return (
     <Sandbox padding="spacing.0" editorHeight="100vh">
       {WithControlledMenuStory}
@@ -81,7 +81,7 @@ export const WithControlledMenu = (): JSX.Element => {
   );
 };
 
-export const WithControlledMultiSelect = (): JSX.Element => {
+export const WithControlledMultiSelect = (): React.ReactElement => {
   return (
     <Sandbox padding="spacing.0" editorHeight="100vh">
       {WithControlledMultiSelectMenuStory}
@@ -90,7 +90,7 @@ export const WithControlledMultiSelect = (): JSX.Element => {
 };
 
 // This is for Chromatic and react native testing
-export const InternalMenu = (): JSX.Element => {
+export const InternalMenu = (): React.ReactElement => {
   const [status, setStatus] = React.useState<string | undefined>();
 
   return (
@@ -161,7 +161,7 @@ InternalMenu.parameters = {
   },
 };
 
-export const InternalLinkDropdown = (): JSX.Element => {
+export const InternalLinkDropdown = (): React.ReactElement => {
   const [status, setStatus] = React.useState<string | undefined>('latest-added');
   const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
 

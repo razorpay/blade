@@ -29,7 +29,7 @@ const Page = (): React.ReactElement => {
         {`
         import { Checkbox } from '@razorpay/blade/components'
         
-        function App(): JSX.Element {
+        function App(): React.ReactElement {
           return (
             // Check console
             <Checkbox onChange={(e) => console.log(e.isChecked)}>

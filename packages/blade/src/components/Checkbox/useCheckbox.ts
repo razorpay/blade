@@ -52,10 +52,12 @@ const useCheckbox = ({
   const inputRef = React.useRef<HTMLInputElement>(null);
 
   const isReactNative = getPlatformType() === 'react-native';
-  if (isChecked && defaultChecked) {
-    throw new Error(
-      `[Blade useCheckbox] Do not provide both 'isChecked' and 'defaultChecked' to useCheckbox. Consider if you want this component to be controlled or uncontrolled.`,
-    );
+  if (__DEV__) {
+    if (isChecked && defaultChecked) {
+      throw new Error(
+        `[Blade useCheckbox] Do not provide both 'isChecked' and 'defaultChecked' to useCheckbox. Consider if you want this component to be controlled or uncontrolled.`,
+      );
+    }
   }
 
   const [checkboxState, setCheckboxStateChange] = useControllableState({
