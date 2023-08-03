@@ -253,6 +253,7 @@ const Carousel = ({
     // if shouldAddStartEndSpacing is true, we don't need to hide/show the overlay based on the scroll position
     // because the gap is there so it won't overlap with the card anyway
     if (shouldAddStartEndSpacing) return;
+    if (isMobile) return;
     const carouselContainer = containerRef.current;
     if (!carouselContainer) return;
 
@@ -267,7 +268,7 @@ const Carousel = ({
     return () => {
       carouselContainer?.removeEventListener('scroll', handleScroll);
     };
-  }, [shouldAddStartEndSpacing]);
+  }, [isMobile, shouldAddStartEndSpacing]);
 
   // auto play
   useInterval(
