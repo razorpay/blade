@@ -66,7 +66,7 @@ const useSandpackSetup = ({
     template: 'react-ts',
     files: {
       '/index.tsx': dedent`import { StrictMode } from "react";
-            import ReactDOM from "react-dom";
+            import { createRoot } from "react-dom/client";
             import { createGlobalStyle } from "styled-components";
   
             import { BladeProvider, Box, Theme } from "@razorpay/blade/components";
@@ -91,8 +91,9 @@ const useSandpackSetup = ({
             if (!rootElement) {
               throw new Error("root is null");
             }
-                        
-            ReactDOM.render(
+            const root = createRoot(rootElement);
+
+            root.render(
               <StrictMode>
                 <BladeProvider themeTokens={${themeTokenName}} colorScheme="${colorScheme}">
                   <GlobalStyles />
@@ -104,8 +105,7 @@ const useSandpackSetup = ({
                     <App />
                   </Box>
                 </BladeProvider>
-              </StrictMode>,
-              rootElement
+              </StrictMode>
             );
 
             console.clear(); // There could be some codesandbox warnings, clearing them here on init
