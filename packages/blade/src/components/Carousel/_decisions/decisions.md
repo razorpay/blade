@@ -28,6 +28,7 @@ Carousel is a UI component that allows the display and navigation of a set of co
 | navigationButtonStyle    | `filled,stroke`                        | `filled`                                 | Styles to be used depending on the emphasis you want to give to the navigation buttons                                                                                                                       |          |
 | indicatorVariant         | `gray,white,blue`                      | `gray`                                   | Variants to be used depending on the background and the emphasis you want to give to the indicator.                                                                                                          |          |
 | onChange                 | `(slideIndex: number) => void`         | `undefined`                              | Callback which gets fired everytime a slide changes, useful for analytic events (only runs on user interaction not on autoPlay)                                                                              |          |
+| accessibilityLabel                 | `string`         | `undefined`                              | Accessibility label for the carousel, this will let screen reader users know what content the carousel holds (eg: "Product carousel")                                                                              |          |
 
 Additionally we will also expose few styled props, namely margin/width etc so that users can add negative margins to create end to end bleed carousel.
 
