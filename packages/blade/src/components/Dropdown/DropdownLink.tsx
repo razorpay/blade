@@ -6,7 +6,6 @@ import type { LinkButtonVariantProps } from '../Link';
 import { useDropdown } from './useDropdown';
 import { componentIds } from './dropdownUtils';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
-import { makeAccessible } from '~utils/makeAccessible';
 
 type DropdownLinkProps = LinkButtonVariantProps & {
   onBlur?: BaseLinkProps['onBlur'];
@@ -49,7 +48,6 @@ const _DropdownLink = ({
       variant="button"
       {...(icon ? { icon, children } : { children })}
       iconPosition={iconPosition}
-      accessibilityLabel={accessibilityLabel}
       size={size}
       testID={testID}
       hitSlop={hitSlop}
@@ -58,13 +56,13 @@ const _DropdownLink = ({
       {...styledProps}
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={triggererRef as any}
-      {...makeAccessible({
+      accessibilityProps={{
+        label: accessibilityLabel,
         hasPopup: getActionListContainerRole(hasFooterAction, 'DropdownButton'),
         expanded: isOpen,
         controls: `${dropdownBaseId}-actionlist`,
-        role: 'combobox',
         activeDescendant: activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined,
-      })}
+      }}
       onClick={(e) => {
         onTriggerClick();
         // Setting it for web fails it on native typecheck and vice versa

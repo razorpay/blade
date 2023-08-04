@@ -366,7 +366,7 @@ describe('<BaseLink />', () => {
   it('should have accessibilityLabel', () => {
     const LinkText = 'Learn More';
     const { getByRole } = renderWithTheme(
-      <BaseLink accessibilityLabel="Info" icon={InfoIcon}>
+      <BaseLink accessibilityProps={{ label: 'Info' }} icon={InfoIcon}>
         {LinkText}
       </BaseLink>,
     );
