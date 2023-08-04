@@ -1,10 +1,8 @@
 import React from 'react';
 import type { CarouselProps } from './types';
-import type { SpacingValueType } from '~components/Box/BaseBox';
 
 type CarouselContextProps =
-  | (Pick<CarouselProps, 'visibleItems'> & {
-      carouselItemWidth?: SpacingValueType;
+  | (Pick<CarouselProps, 'visibleItems' | 'carouselItemWidth'> & {
       carouselContainerRef: React.RefObject<HTMLDivElement>;
       setActiveIndicator: (value: React.SetStateAction<number>) => void;
       carouselId: string | null;

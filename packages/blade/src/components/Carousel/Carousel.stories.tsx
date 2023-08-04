@@ -34,7 +34,6 @@ const TestimonialCard = ({ index }): React.ReactElement => {
               <Text as="span" weight="bold">
                 Hair By Nidhi
               </Text>
-              <Button>in</Button>
             </Text>
           </Box>
           <Button>Hello world</Button>
@@ -92,21 +91,23 @@ const CarouselTemplate: ComponentStory<typeof CarouselComponent> = () => {
       backgroundColor="surface.background.level1.lowContrast"
     >
       <Text>v1: Responsive: N/A + auto bleed + shouldAddStartEndPadding</Text>
-      {/* <CarouselExample
-        carouselItemWidth="500px"
+      <CarouselExample
+        carouselItemWidth={{ base: '90%', m: '500px' }}
         shouldAddStartEndSpacing
         navigationButtonPosition="side"
         overlayColor="surface.background.level1.lowContrast"
+        onChange={(i) => console.log(i)}
+        showOverlay
       />
-      <Text>v1: Responsive: N/A + auto bleed + shouldAddStartEndPadding</Text> */}
+      {/* <Text>v1: Responsive: N/A + auto bleed + shouldAddStartEndPadding</Text> */}
       {/* <CarouselExample
         autoPlay
         carouselItemWidth="500px"
         navigationButtonPosition="bottom"
         overlayColor="surface.background.level1.lowContrast"
       /> */}
-      <Text>v2: Responsive: 1|2|3, navButtons: side</Text>
-      <CarouselExample visibleItems={2} navigationButtonPosition="side" />
+      {/* <Text>v2: Responsive: 1|2|3, navButtons: side</Text> */}
+      {/* <CarouselExample autoPlay visibleItems={2} navigationButtonPosition="side" /> */}
       {/* <CarouselExample autoPlay visibleItems={2} navigationButtonPosition="side" /> */}
       {/* <CarouselExample visibleItems={2} navigationButtonPosition="side" />
       <CarouselExample visibleItems={3} navigationButtonPosition="side" />

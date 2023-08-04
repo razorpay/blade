@@ -8,21 +8,6 @@ import BaseBox from '~components/Box/BaseBox';
 import { useBreakpoint, useTheme } from '~utils';
 import { makeAccessible } from '~utils/makeAccessible';
 
-// 1 slide
-// start - scrollSnapAlign:start & double padding
-// end - scrollSnapAlign:end & double padding
-// center - scrollSnapAlign:center & double padding
-
-// 2 slides
-// start - scrollMarginRight & scrollSnapAlign:start
-// end - scrollMarginLeft & scrollSnapAlign:end
-// center - scrollMargin & scrollSnapAlign:start
-
-// 3 slides
-// start - no scrollMargin & scrollSnapAlign:start & half padding
-// end - no scrollMargin & scrollSnapAlign:start & half padding
-// center - no scrollMargin & scrollSnapAlign:start & half padding
-
 type StyledCarouselItemProps = Pick<CarouselProps, 'visibleItems'> &
   Pick<CarouselItemProps, 'shouldHaveEndSpacing' | 'shouldHaveStartSpacing'> & {
     isMobile?: boolean;
@@ -47,8 +32,7 @@ const StyledCarouselItem = styled(BaseBox)<StyledCarouselItemProps>(
       // Responsive slider styles, a special case
       ...(isResponsive && {
         width: '100%',
-        scrollSnapAlign: 'center',
-        // maxWidth: '500px', // user needs to set this
+        scrollSnapAlign: isMobile ? 'start' : 'center',
         marginLeft: shouldHaveStartSpacing ? '100%' : 0,
         marginRight: shouldHaveEndSpacing ? '100%' : 0,
       }),

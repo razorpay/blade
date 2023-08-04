@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable react/jsx-no-useless-fragment */
+import type { CSSObject } from 'styled-components';
 import styled from 'styled-components';
 import React from 'react';
 import getIn from 'lodash/get';
@@ -17,9 +18,12 @@ import { useInterval, useTheme } from '~utils';
 import { useId } from '~utils/useId';
 import { makeAccessible } from '~utils/makeAccessible';
 
-type ControlsProp = {
-  showIndicators?: boolean;
-  navigationButtonPosition?: 'bottom' | 'side';
+type ControlsProp = Required<
+  Pick<
+    CarouselProps,
+    'indicatorVariant' | 'showIndicators' | 'navigationButtonVariant' | 'navigationButtonPosition'
+  >
+> & {
   activeIndicator: number;
   totalSlides: number;
   onIndicatorButtonClick: (index: number) => void;
@@ -35,6 +39,8 @@ const Controls = ({
   onIndicatorButtonClick,
   onNextButtonClick,
   onPreviousButtonClick,
+  indicatorVariant,
+  navigationButtonVariant,
 }: ControlsProp): React.ReactElement => {
   // 1. buttons or indicators side by side on bottom
   // 3. only indicators on bottom and buttons will be on side
@@ -44,16 +50,24 @@ const Controls = ({
   if (isNavButtonsOnBottom) {
     return (
       <Box marginTop="spacing.7" display="flex" alignItems="center" gap="spacing.4">
-        <NavigationButton type="previous" variant="filled" onClick={onPreviousButtonClick} />
+        <NavigationButton
+          type="previous"
+          variant={navigationButtonVariant}
+          onClick={onPreviousButtonClick}
+        />
         {showIndicators ? (
           <Indicators
             onIndicatorButtonClick={onIndicatorButtonClick}
             activeIndex={activeIndicator}
             totalItems={totalSlides}
-            variant="blue"
+            variant={indicatorVariant}
           />
         ) : null}
-        <NavigationButton onClick={onNextButtonClick} type="next" variant="filled" />
+        <NavigationButton
+          onClick={onNextButtonClick}
+          type="next"
+          variant={navigationButtonVariant}
+        />
       </Box>
     );
   }
@@ -65,7 +79,7 @@ const Controls = ({
           onIndicatorButtonClick={onIndicatorButtonClick}
           activeIndex={activeIndicator}
           totalItems={totalSlides}
-          variant="blue"
+          variant={indicatorVariant}
         />
       </Box>
     );
@@ -75,12 +89,23 @@ const Controls = ({
 };
 
 const CarouselContainer = styled(BaseBox)<{
+  showOverlay?: boolean;
   overlayColor: CarouselProps['overlayColor'];
   isScrollAtStart: boolean;
   isScrollAtEnd: boolean;
-}>(({ theme, overlayColor, isScrollAtStart, isScrollAtEnd }) => {
-  const gradientStop1 = getIn(theme.colors, overlayColor as string);
+}>(({ theme, showOverlay, overlayColor, isScrollAtStart, isScrollAtEnd }) => {
+  const gradientStop1: string = getIn(theme.colors, overlayColor as string);
   const gradientStop2 = 'hsla(0, 0%, 100%, 0)';
+
+  const overlayCommonStyle: CSSObject = {
+    content: "''",
+    position: 'absolute',
+    top: 0,
+    width: '100px',
+    height: '100%',
+    transition: '400ms ease',
+    transitionProperty: 'opacity',
+  };
 
   return {
     width: '100%',
@@ -101,32 +126,22 @@ const CarouselContainer = styled(BaseBox)<{
     '&::-webkit-scrollbar': {
       display: 'none',
     },
-    '&::before': {
-      content: "''",
-      position: 'absolute',
-      top: 0,
-      left: -1,
-      width: '100px',
-      height: '100%',
-      background: `linear-gradient(to right, ${gradientStop1}, ${gradientStop2})`,
-      transition: '400ms ease',
-      transitionProperty: 'opacity',
-      opacity: isScrollAtStart ? 0 : 1,
-      pointerEvents: 'none',
-    },
-    '&::after': {
-      content: "''",
-      position: 'absolute',
-      top: 0,
-      right: -1,
-      width: '100px',
-      height: '100%',
-      background: `linear-gradient(to left, ${gradientStop1}, ${gradientStop2})`,
-      transition: '400ms ease',
-      transitionProperty: 'opacity',
-      opacity: isScrollAtEnd ? 0 : 1,
-      pointerEvents: 'none',
-    },
+    ...(showOverlay && {
+      '&::before': {
+        ...overlayCommonStyle,
+        background: `linear-gradient(to right, ${gradientStop1}, ${gradientStop2})`,
+        left: -1,
+        opacity: isScrollAtStart ? 0 : 1,
+        pointerEvents: 'none',
+      },
+      '&::after': {
+        ...overlayCommonStyle,
+        background: `linear-gradient(to left, ${gradientStop1}, ${gradientStop2})`,
+        right: -1,
+        opacity: isScrollAtEnd ? 0 : 1,
+        pointerEvents: 'none',
+      },
+    }),
   };
 });
 
@@ -136,6 +151,7 @@ type CarouselBodyProps = {
   shouldAddStartEndSpacing?: boolean;
   idPrefix: string;
   overlayColor: CarouselProps['overlayColor'];
+  showOverlay?: boolean;
   isScrollAtStart: boolean;
   isScrollAtEnd: boolean;
 };
@@ -147,6 +163,7 @@ const CarouselBody = React.forwardRef<HTMLDivElement, CarouselBodyProps>(
       shouldAddStartEndSpacing,
       idPrefix,
       overlayColor,
+      showOverlay,
       isScrollAtStart,
       isScrollAtEnd,
     },
@@ -155,6 +172,7 @@ const CarouselBody = React.forwardRef<HTMLDivElement, CarouselBodyProps>(
     return (
       <CarouselContainer
         ref={ref}
+        showOverlay={showOverlay}
         overlayColor={overlayColor}
         gap={{ base: 'spacing.4', m: 'spacing.5' }}
         isScrollAtStart={isScrollAtStart}
@@ -184,6 +202,11 @@ const Carousel = ({
   carouselItemWidth,
   overlayColor,
   accessibilityLabel,
+  navigationButtonSpacing = 'spacing.4',
+  onChange,
+  indicatorVariant = 'gray',
+  navigationButtonVariant = 'filled',
+  showOverlay,
 }: CarouselProps): React.ReactElement => {
   const { platform } = useTheme();
   const [activeSlide, setActiveSlide] = React.useState(0);
@@ -211,9 +234,10 @@ const Carousel = ({
   const totalNumberOfSlides = React.Children.count(children);
   const numberOfIndicators = Math.ceil(totalNumberOfSlides / (_visibleItems ?? 1));
 
-  // TODO: sync active slide indicator with scroll
-  // Add autoplay - stop when hovering - remove auto play on mobile
-  // Add accessibility
+  // hide next/prev button on reaching start/end when carousel is responsive
+  // in non-responsive carousel we always show the next/prev buttons to allow looping
+  const shouldShowPrevButton = isResponsive ? activeSlide !== 0 : true;
+  const shouldShowNextButton = isResponsive ? activeSlide !== totalNumberOfSlides - 1 : true;
 
   // Sync the active slide state with indicator state
   // Because when user scrolls the carousel via touch-and-drag
@@ -282,7 +306,7 @@ const Carousel = ({
       goToNextSlide();
     },
     {
-      delay: 5000,
+      delay: 6000,
       // only enable if autoplay is true & user's intent isn't to interact with carousel
       enable: autoPlay && !shouldPauseAutoplay,
     },
@@ -298,6 +322,10 @@ const Carousel = ({
       totalNumberOfSlides,
     };
   }, [_visibleItems, carouselItemWidth, id, totalNumberOfSlides]);
+
+  React.useEffect(() => {
+    onChange?.(activeSlide);
+  }, [activeSlide, onChange]);
 
   return (
     <CarouselContext.Provider value={carouselContext}>
@@ -321,6 +349,12 @@ const Carousel = ({
         onMouseLeave={() => {
           setShouldPauseAutoplay(false);
         }}
+        onTouchStart={() => {
+          setShouldPauseAutoplay(true);
+        }}
+        onTouchEnd={() => {
+          setShouldPauseAutoplay(false);
+        }}
         display="flex"
         alignItems="center"
         flexDirection="column"
@@ -330,21 +364,30 @@ const Carousel = ({
           position="relative"
           display="flex"
           alignItems="center"
-          gap="spacing.4"
+          gap={navigationButtonSpacing}
           flexDirection="row"
         >
-          {shouldNavButtonsFloat ? (
+          {shouldShowPrevButton && shouldNavButtonsFloat ? (
             <BaseBox zIndex={2} position="absolute" left="spacing.11">
-              <NavigationButton type="previous" variant="filled" onClick={goToPreviousSlide} />
+              <NavigationButton
+                type="previous"
+                variant={navigationButtonVariant}
+                onClick={goToPreviousSlide}
+              />
             </BaseBox>
           ) : null}
           {isNavButtonsOnSide ? (
-            <NavigationButton type="previous" variant="filled" onClick={goToPreviousSlide} />
+            <NavigationButton
+              type="previous"
+              variant={navigationButtonVariant}
+              onClick={goToPreviousSlide}
+            />
           ) : null}
           <CarouselBody
             idPrefix={id}
             totalSlides={totalNumberOfSlides}
             shouldAddStartEndSpacing={shouldAddStartEndSpacing}
+            showOverlay={showOverlay}
             overlayColor={overlayColor}
             isScrollAtStart={isScrollAtStart}
             isScrollAtEnd={isScrollAtEnd}
@@ -352,13 +395,21 @@ const Carousel = ({
           >
             {children}
           </CarouselBody>
-          {shouldNavButtonsFloat ? (
+          {shouldShowNextButton && shouldNavButtonsFloat ? (
             <BaseBox zIndex={2} position="absolute" right="spacing.11">
-              <NavigationButton onClick={goToNextSlide} type="next" variant="filled" />
+              <NavigationButton
+                onClick={goToNextSlide}
+                type="next"
+                variant={navigationButtonVariant}
+              />
             </BaseBox>
           ) : null}
           {isNavButtonsOnSide ? (
-            <NavigationButton onClick={goToNextSlide} type="next" variant="filled" />
+            <NavigationButton
+              onClick={goToNextSlide}
+              type="next"
+              variant={navigationButtonVariant}
+            />
           ) : null}
         </BaseBox>
         <Controls
@@ -369,6 +420,8 @@ const Carousel = ({
           onIndicatorButtonClick={goToSlideIndex}
           onNextButtonClick={goToNextSlide}
           onPreviousButtonClick={goToPreviousSlide}
+          indicatorVariant={indicatorVariant}
+          navigationButtonVariant={navigationButtonVariant}
         />
       </BaseBox>
     </CarouselContext.Provider>

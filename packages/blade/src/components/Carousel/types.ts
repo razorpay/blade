@@ -1,5 +1,4 @@
 import type { BoxProps } from '~components/Box';
-import type { SpacingValueType } from '~components/Box/BaseBox';
 import type { DotNotationSpacingStringToken } from '~utils/types';
 
 type OverlayColor = BoxProps['backgroundColor'];
@@ -16,7 +15,7 @@ type CarouselProps = {
   navigationButtonSpacing?: DotNotationSpacingStringToken;
   navigationButtonVariant?: 'filled' | 'stroke';
   indicatorVariant?: 'gray' | 'white' | 'blue';
-  carouselItemWidth?: SpacingValueType;
+  carouselItemWidth?: BoxProps['width'];
   onChange: (slideIndex: number) => void;
   accessibilityLabel?: string;
 };
