@@ -1,4 +1,5 @@
 import React from 'react';
+import { throwBladeError } from '~utils/logger';
 
 const useValidateAsProp = ({
   as,
@@ -12,11 +13,12 @@ const useValidateAsProp = ({
   React.useEffect(() => {
     if (__DEV__) {
       if (as && !validAsValues.includes(as)) {
-        throw new Error(
-          `[Blade ${componentName}]: Invalid \`as\` prop value - ${as}. Only ${validAsValues.join(
+        throwBladeError({
+          message: `Invalid \`as\` prop value - ${as}. Only ${validAsValues.join(
             ', ',
           )} are accepted`,
-        );
+          moduleName: componentName,
+        });
       }
     }
   }, [as, componentName, validAsValues]);

@@ -2,6 +2,7 @@ import { useContext, createContext } from 'react';
 import type { UseColorScheme } from '../../utils/useColorScheme';
 import type { Theme } from './';
 import type { TypographyPlatforms } from '~tokens/global';
+import { throwBladeError } from '~utils/logger';
 
 export type ThemeContext = UseColorScheme & {
   theme: Theme;
@@ -20,12 +21,16 @@ const useTheme = (): ThemeContext => {
   const themeContext = useContext<ThemeContext>(ThemeContext);
   if (__DEV__) {
     if (!themeContext.theme) {
-      throw new Error(`[@razorpay/blade:BladeProvider]: BladeProvider is missing theme`);
+      throwBladeError({
+        message: 'BladeProvider is missing theme',
+        moduleName: 'BladeProvider',
+      });
     }
     if (themeContext === undefined) {
-      throw new Error(
-        `[@razorpay/blade:BladeProvider]: useTheme must be used within BladeProvider`,
-      );
+      throwBladeError({
+        message: 'useTheme must be used within BladeProvider',
+        moduleName: 'BladeProvider',
+      });
     }
   }
   return themeContext;

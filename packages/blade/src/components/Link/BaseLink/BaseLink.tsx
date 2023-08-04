@@ -30,6 +30,7 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { makeAccessible } from '~utils/makeAccessible';
 import type { BladeCommonEvents } from '~components/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { throwBladeError } from '~utils/logger';
 
 type BaseLinkCommonProps = {
   intent?: 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
@@ -296,9 +297,10 @@ const _BaseLink: React.ForwardRefRenderFunction<BladeElementRef, BaseLinkProps> 
   const { theme } = useTheme();
   if (__DEV__) {
     if (!Icon && !childrenString?.trim()) {
-      throw new Error(
-        `[Blade: BaseLink]: At least one of icon or text is required to render a link.`,
-      );
+      throwBladeError({
+        message: `At least one of icon or text is required to render a link.`,
+        moduleName: 'BaseLink',
+      });
     }
   }
   const {

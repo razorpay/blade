@@ -22,6 +22,7 @@ import type { TestID } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { getPlatformType } from '~utils/getPlatformType';
+import { throwBladeError } from '~utils/logger';
 
 type ListItemProps = {
   /**
@@ -100,7 +101,10 @@ const _ListItem = ({
 
   if (__DEV__) {
     if (level && level > 3) {
-      throw new Error('[Blade List]: List Nesting is allowed only upto 3 levels.');
+      throwBladeError({
+        message: 'List Nesting is allowed only upto 3 levels.',
+        moduleName: 'List',
+      });
     }
   }
 
@@ -118,9 +122,10 @@ const _ListItem = ({
     ) {
       return child;
     } else if (__DEV__) {
-      throw new Error(
-        '[Blade List]: You can only pass a List, ListItemLink, ListItemCode, ListItemText or a string as a child to ListItem.',
-      );
+      throwBladeError({
+        message: `You can only pass a List, ListItemLink, ListItemCode, ListItemText or a string as a child to ListItem.`,
+        moduleName: 'ListItem',
+      });
     }
     return null;
   });

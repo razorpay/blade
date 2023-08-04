@@ -1,4 +1,5 @@
 import { createContext, useContext } from 'react';
+import { throwBladeError } from '~utils/logger';
 
 type AccordionContextState = {
   expandedIndex?: number;
@@ -13,9 +14,10 @@ const useAccordion = (): AccordionContextState => {
   const accordionContext = useContext(AccordionContext);
   if (__DEV__) {
     if (!accordionContext) {
-      throw new Error(
-        `[Blade: AccordionContext]: useAccordion should be only used within AccordionContext`,
-      );
+      throwBladeError({
+        message: 'useAccordion should be only used within AccordionContext',
+        moduleName: 'AccordionContext',
+      });
     }
   }
   return accordionContext!;

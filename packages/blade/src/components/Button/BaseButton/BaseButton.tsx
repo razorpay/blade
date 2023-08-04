@@ -41,6 +41,7 @@ import { makeSpace } from '~utils/makeSpace';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
 import type { BladeCommonEvents } from '~components/types';
+import { throwBladeError } from '~utils/logger';
 
 type BaseButtonCommonProps = {
   href?: BaseLinkProps['href'];
@@ -336,9 +337,10 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
 
   if (__DEV__) {
     if (!Icon && !childrenString?.trim()) {
-      throw new Error(
-        `[Blade: BaseButton]: At least one of icon or text is required to render a button.`,
-      );
+      throwBladeError({
+        message: 'At least one of icon or text is required to render a button.',
+        moduleName: 'BaseButton',
+      });
     }
   }
 

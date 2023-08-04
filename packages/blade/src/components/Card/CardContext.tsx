@@ -1,5 +1,6 @@
 import React from 'react';
 import { getComponentId } from '~utils/isValidAllowedChildren';
+import { throwBladeError } from '~utils/logger';
 
 type CardContextType = true | null;
 const CardContext = React.createContext<CardContextType>(null);
@@ -8,7 +9,10 @@ const useVerifyInsideCard = (componentName: string): CardContextType => {
   const context = React.useContext(CardContext);
   if (__DEV__) {
     if (!context) {
-      throw new Error(`[Blade Card]: ${componentName} cannot be used outside of Card component`);
+      throwBladeError({
+        message: `${componentName} cannot be used outside of Card component`,
+        moduleName: 'Card',
+      });
     }
   }
   return true;
@@ -26,11 +30,12 @@ const useVerifyAllowedComponents = (
     const isValidChild = child && allowedComponents.includes(getComponentId(child)!);
     if (__DEV__) {
       if (!isValidChild) {
-        throw new Error(
-          `[Blade Card]: Only one of \`${allowedComponents.join(
+        throwBladeError({
+          message: `Only one of \`${allowedComponents.join(
             ', ',
           )}\` component is accepted as ${componentName} children`,
-        );
+          moduleName: 'Card',
+        });
       }
     }
   });
