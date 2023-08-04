@@ -5,6 +5,7 @@ import {
   getFlooredFixed,
   getHumanizedAmount,
 } from '../Amount';
+
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<Amount />', () => {

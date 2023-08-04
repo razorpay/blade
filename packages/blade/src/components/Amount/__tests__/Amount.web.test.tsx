@@ -1,3 +1,4 @@
+import type { AmountProps } from '../Amount';
 import {
   addCommas,
   Amount,
@@ -5,6 +6,7 @@ import {
   getFlooredFixed,
   getHumanizedAmount,
 } from '../Amount';
+import { currencyPrefixMapping } from '../amountTokens';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
 
@@ -80,10 +82,14 @@ describe('<Amount />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should render MYR currency Amount ', () => {
-    const { container } = renderWithTheme(<Amount currency="MYR" value={1000} />);
-    expect(container).toMatchSnapshot();
-  });
+  for (const currency of Object.keys(currencyPrefixMapping)) {
+    it(`should render ${currency} currency Amount`, () => {
+      const { container } = renderWithTheme(
+        <Amount currency={currency as AmountProps['currency']} value={1000} />,
+      );
+      expect(container).toMatchSnapshot();
+    });
+  }
 
   it('should not have accessibility violations', async () => {
     const { container } = renderWithTheme(<Amount value={1000} />);

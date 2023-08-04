@@ -3,6 +3,7 @@ import { Title } from '@storybook/addon-docs';
 import { getStyledPropsArgTypes } from '../Box/BaseBox/storybookArgTypes';
 import type { AmountProps } from './Amount';
 import { Amount as AmountComponent } from './Amount';
+import { currencyPrefixMapping } from './amountTokens';
 import BaseBox from '~components/Box/BaseBox';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { Text } from '~components/Typography';
@@ -168,10 +169,10 @@ HumanizeSuffix.args = {
 HumanizeSuffix.storyName = 'Humanize Suffix';
 
 const AmountCurrencyTemplate: ComponentStory<typeof AmountComponent> = (args) => {
-  const values = ['INR', 'MYR'] as const;
+  const values = Object.keys(currencyPrefixMapping);
 
   return (
-    <BaseBox justifyContent="flex-start">
+    <BaseBox justifyContent="flex-start" maxHeight="300px" overflowY="auto">
       {values.map((value) => (
         <BaseBox
           display="flex"
@@ -182,7 +183,7 @@ const AmountCurrencyTemplate: ComponentStory<typeof AmountComponent> = (args) =>
           flexDirection="column"
         >
           <Text marginBottom="spacing.1">{value}</Text>
-          <AmountComponent {...args} currency={value} />
+          <AmountComponent {...args} currency={value as AmountProps['currency']} />
         </BaseBox>
       ))}
     </BaseBox>
