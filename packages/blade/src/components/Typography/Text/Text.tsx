@@ -10,6 +10,7 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { ColorContrast, ColorContrastTypes, TextTypes } from '~tokens/theme/theme';
 import type { TestID } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { throwBladeError } from '~utils/logger';
 
 const validAsValues = ['p', 'span', 'div', 'abbr', 'figcaption', 'cite', 'q'] as const;
 type TextCommonProps = {
@@ -117,7 +118,10 @@ const getTextProps = <T extends { variant: TextVariant }>({
       props.fontSize = 50;
       props.lineHeight = 50;
     } else if (__DEV__) {
-      throw new Error(`[Blade: Text]: size cannot be '${size}' when variant is 'caption'`);
+      throwBladeError({
+        moduleName: 'Text',
+        message: `size cannot be '${size}' when variant is 'caption'`,
+      });
     }
     props.fontStyle = 'italic';
   }

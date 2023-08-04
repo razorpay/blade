@@ -9,11 +9,17 @@ import { ModalBody } from './ModalBody';
 import type { ModalBodyProps } from './ModalBody';
 import type { ModalProps } from './types';
 import { Text } from '~components/Typography';
+import { logger } from '~utils/logger';
 
 const Modal = (props: ModalProps): React.ReactElement => {
-  console.warn(
-    '[Blade Modal] Modal is not supported on mobile devices. Please use BottomSheet instead.',
-  );
+  if (__DEV__) {
+    logger({
+      type: 'warn',
+      moduleName: 'Modal',
+      message: 'Modal is not supported on mobile devices. Please use BottomSheet instead.',
+    });
+  }
+
   return (
     <Text>
       Modal Component is not available for Native mobile apps and we should use BottomSheet

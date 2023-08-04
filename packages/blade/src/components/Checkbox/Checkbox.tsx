@@ -18,6 +18,7 @@ import { SelectorInput } from '~components/Form/Selector/SelectorInput';
 import type { BladeElementRef } from '~utils/useBladeInnerRef';
 import type { TestID } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { throwBladeError } from '~utils/logger';
 
 type OnChange = ({
   isChecked,
@@ -155,9 +156,10 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
         .filter(Boolean)
         .join(',');
 
-      throw new Error(
-        `[Blade Checkbox]: Cannot set \`${props}\` on <Checkbox /> when it's inside <CheckboxGroup />, Please set it on the <CheckboxGroup /> itself`,
-      );
+      throwBladeError({
+        message: `Cannot set \`${props}\` on <Checkbox /> when it's inside <CheckboxGroup />, Please set it on the <CheckboxGroup /> itself`,
+        moduleName: 'Checkbox',
+      });
     }
 
     // mandate value prop when using inside group
