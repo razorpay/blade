@@ -13,7 +13,9 @@ import { Button } from '~components/Button';
 describe('<Collapsible />', () => {
   // Collapsible uses animations and requestAnimationFrame which makes RN tests throw warnings
   beforeEach(() => {
-    jest.useFakeTimers();
+    jest.useFakeTimers({
+      legacyFakeTimers: true,
+    });
   });
   afterEach(() => {
     jest.useRealTimers();

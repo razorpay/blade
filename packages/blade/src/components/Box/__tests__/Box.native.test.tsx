@@ -20,7 +20,7 @@ describe('<Box />', () => {
     expect(toJSON()).toMatchInlineSnapshot(`
       <View
         style={
-          Object {
+          {
             "flex": 1,
           }
         }
@@ -29,8 +29,8 @@ describe('<Box />', () => {
           data-blade-component="box"
           display="flex"
           style={
-            Array [
-              Object {
+            [
+              {
                 "display": "flex",
                 "paddingBottom": 0,
                 "paddingLeft": 0,
