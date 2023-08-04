@@ -8,7 +8,9 @@ import { isReactNative } from '~utils';
 export const isRoleMenu = (
   dropdownTriggerer: DropdownContextType['dropdownTriggerer'],
 ): boolean => {
-  return isReactNative() || dropdownTriggerer !== 'SelectInput';
+  return (
+    isReactNative() || (dropdownTriggerer !== 'SelectInput' && dropdownTriggerer !== 'AutoComplete')
+  );
 };
 
 /**

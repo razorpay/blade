@@ -78,7 +78,8 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): React.Rea
   const [width, setWidth] = React.useState<SpacingValueType>('100%');
   const [dropdownPosition, setDropdownPosition] = React.useState<DropdownPosition>({});
 
-  const isMenu = dropdownTriggerer !== 'SelectInput';
+  console.log({ dropdownTriggerer });
+  const isMenu = dropdownTriggerer !== 'SelectInput' && dropdownTriggerer !== 'AutoComplete';
 
   const { refs } = useFloating({
     open: isOpen,

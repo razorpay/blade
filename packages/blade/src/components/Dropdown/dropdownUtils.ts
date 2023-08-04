@@ -33,6 +33,7 @@ export const componentIds = {
     SelectInput: 'SelectInput',
     DropdownButton: 'DropdownButton',
     DropdownLink: 'DropdownLink',
+    AutoComplete: 'AutoComplete',
   },
 };
 
