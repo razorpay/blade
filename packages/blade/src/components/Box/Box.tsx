@@ -31,7 +31,9 @@ const validateBackgroundProp = (
       }
 
       Object.values(responsiveBackgroundColor).forEach((backgroundColor) => {
-        validateBackgroundString(backgroundColor);
+        if (typeof backgroundColor === 'string') {
+          validateBackgroundString(backgroundColor);
+        }
       });
     }
   }
