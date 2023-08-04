@@ -16,7 +16,6 @@ describe('<Box />', () => {
     );
     expect(container).toMatchInlineSnapshot(`
       <div
-        data-reactroot=""
         id="root"
       >
         <div
@@ -37,7 +36,6 @@ describe('<Box />', () => {
     );
     expect(container).toMatchInlineSnapshot(`
       <div
-        data-reactroot=""
         id="root"
       >
         <footer

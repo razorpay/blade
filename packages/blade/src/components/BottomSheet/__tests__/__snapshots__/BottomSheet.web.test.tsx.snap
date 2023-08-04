@@ -193,15 +193,6 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   justify-content: center;
 }
 
-.c20 {
-  margin-right: 16px;
-}
-
-.c21 {
-  text-align: left;
-  background-color: hsla(155,100%,31%,0.09);
-}
-
 .c0 {
   position: fixed;
   z-index: 100;
@@ -211,6 +202,15 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   left: 0px;
   background-color: hsla(214,15%,18%,0.64);
   opacity: 1;
+}
+
+.c20 {
+  margin-right: 16px;
+}
+
+.c21 {
+  text-align: left;
+  background-color: hsla(155,100%,31%,0.09);
 }
 
 .c26 {

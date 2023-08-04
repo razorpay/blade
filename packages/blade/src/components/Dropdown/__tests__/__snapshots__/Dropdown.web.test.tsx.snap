@@ -1261,8 +1261,8 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
       data-blade-component="base-box"
     >
       <button
-        aria-activedescendant="dropdown-891-0"
-        aria-controls="dropdown-891-actionlist"
+        aria-activedescendant="dropdown-897-0"
+        aria-controls="dropdown-897-actionlist"
         aria-expanded="false"
         aria-haspopup="menu"
         class="c1"
@@ -1292,10 +1292,10 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
           style="opacity: 0;"
         >
           <div
-            aria-labelledby="dropdown-891-label"
+            aria-labelledby="dropdown-897-label"
             class=""
             data-blade-component="action-list"
-            id="dropdown-891-actionlist"
+            id="dropdown-897-actionlist"
             role="menu"
           >
             <div
@@ -1307,7 +1307,7 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
                 data-blade-component="action-list-item"
                 data-index="0"
                 data-value="profile"
-                id="dropdown-891-0"
+                id="dropdown-897-0"
                 role="menuitem"
                 tabindex="-1"
                 type="button"
@@ -1347,7 +1347,7 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
                 data-index="1"
                 data-value="settings"
                 href="/settings"
-                id="dropdown-891-1"
+                id="dropdown-897-1"
                 role="link"
                 tabindex="-1"
                 type="button"
