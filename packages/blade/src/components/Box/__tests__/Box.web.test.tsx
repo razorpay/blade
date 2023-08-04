@@ -98,6 +98,27 @@ describe('<Box />', () => {
     console.error = tempConsoleError;
   });
 
+  // https://github.com/razorpay/blade/issues/1480
+  it('should not throw error and render properly with undefined backgroundColor', () => {
+    const { container } = renderWithTheme(
+      <Box backgroundColor={{ base: 'brand.primary.300', l: undefined }}>I am Visible</Box>,
+    );
+    expect(container).toMatchInlineSnapshot(`
+      .c0 {
+        background-color: hsla(218,89%,51%,0.09);
+      }
+
+      <div>
+        <div
+          class="c0"
+          data-blade-component="box"
+        >
+          I am Visible
+        </div>
+      </div>
+    `);
+  });
+
   it('should support ref on Box', async () => {
     const user = userEvent.setup();
     const boxClickHandler = jest.fn();
