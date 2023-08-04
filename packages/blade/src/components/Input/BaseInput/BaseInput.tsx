@@ -830,6 +830,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
               handleOnClick={handleOnClick}
               setShouldIgnoreBlurAnimation={setShouldIgnoreBlurAnimation}
               isMultiline={isMultiline}
+              inputRef={ref}
             />
             <StyledBaseInput
               as={isReactNative ? undefined : as}

@@ -15,6 +15,7 @@ export type BaseInputTagSlotProps = {
   handleOnClick: StyledBaseInputProps['handleOnClick'];
   isMultiline: BaseInputProps['isMultiline'];
   visibleTagsCountRef: React.MutableRefObject<number>;
+  inputRef: React.ForwardedRef<HTMLInputElement>;
 };
 
 export type StyledBaseInputProps = {
