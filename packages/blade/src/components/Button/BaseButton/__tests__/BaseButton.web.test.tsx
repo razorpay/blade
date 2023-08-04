@@ -379,7 +379,7 @@ describe('<BaseButton />', () => {
   it('should have accessibilityLabel', () => {
     const buttonText = 'Pay Now';
     const { getByRole } = renderWithTheme(
-      <BaseButton accessibilityLabel="Close" icon={CloseIcon}>
+      <BaseButton accessibilityProps={{ label: 'Close' }} icon={CloseIcon}>
         {buttonText}
       </BaseButton>,
     );

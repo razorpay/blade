@@ -27,6 +27,8 @@ import type { DurationString, EasingString, FontSize, Typography } from '~tokens
 import type { BaseTextProps, BaseTextSizes } from '~components/Typography/BaseText/types';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
+import { getStyledProps } from '~components/Box/styledProps';
+import type { AccessibilityProps } from '~utils/makeAccessible';
 import { makeAccessible } from '~utils/makeAccessible';
 import type { BladeCommonEvents } from '~components/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
@@ -50,7 +52,7 @@ type BaseLinkCommonProps = {
     native: (event: GestureResponderEvent) => void;
     web: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
   }>;
-  accessibilityLabel?: string;
+  accessibilityProps?: Partial<AccessibilityProps>;
 
   /**
    * Sets the size of the link
@@ -270,7 +272,7 @@ const _BaseLink: React.ForwardRefRenderFunction<BladeElementRef, BaseLinkProps> 
     rel,
     intent,
     contrast = 'low',
-    accessibilityLabel,
+    accessibilityProps,
     // @ts-expect-error avoiding exposing to public
     className,
     // @ts-expect-error avoiding exposing to public
@@ -352,8 +354,8 @@ const _BaseLink: React.ForwardRefRenderFunction<BladeElementRef, BaseLinkProps> 
       accessibilityProps={{
         ...makeAccessible({
           role,
-          label: accessibilityLabel,
           disabled,
+          ...accessibilityProps,
         }),
       }}
       variant={variant}
@@ -390,7 +392,7 @@ const _BaseLink: React.ForwardRefRenderFunction<BladeElementRef, BaseLinkProps> 
       motionDuration={motionDuration}
       motionEasing={motionEasing}
       setCurrentInteraction={setCurrentInteraction}
-      {...styledProps}
+      {...getStyledProps(styledProps)}
       // @ts-ignore Because we avoided exposing className to public
       className={className}
       style={style}
