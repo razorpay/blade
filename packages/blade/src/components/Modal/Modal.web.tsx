@@ -19,6 +19,7 @@ import {
   modalMinWidth,
   modalResponsiveScreenGap,
 } from './modalTokens';
+import type { ModalProps } from './types';
 import { castWebType, makeMotionTime, makeSize } from '~utils';
 import { BaseBox } from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
@@ -26,41 +27,7 @@ import { Box } from '~components/Box';
 import { isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import { makeAccessible } from '~utils/makeAccessible';
-
-type ModalProps = {
-  /**
-   *  Children of Modal
-   * Only ModalHeader, ModalBody and ModalFooter are allowed as children
-   */
-  children: React.ReactNode;
-  /**
-   Sets the modal to open or close
-   * @default false
-   */
-  isOpen: boolean;
-  /**
-   *  Callback function when user clicks on close button or outside the modal or on pressing escape key.
-   */
-  onDismiss: () => void;
-  /**
-   *  Ref to the element to be focused on opening the modal.
-   */
-  initialFocusRef?: React.MutableRefObject<any>;
-  /**
-   *  Size of the modal
-   * @default 'small'
-   */
-  size?: 'small' | 'medium' | 'large';
-  /**
-   *  Accessibility label for the modal
-   */
-  accessibilityLabel?: string;
-  /**
-   * Sets the z-index of the modal
-   * @default 1000
-   */
-  zIndex?: number;
-};
+import { logger, throwBladeError } from '~utils/logger';
 
 const entry = keyframes`
   from {
@@ -115,10 +82,14 @@ const Modal = ({
 
   // Warn consumer if modal is opened on mobile
   useEffect(() => {
-    if (platform === 'onMobile') {
-      console.warn(
-        '[Blade Modal] Modal is not supported on mobile devices. Please use BottomSheet instead.',
-      );
+    if (__DEV__) {
+      if (platform === 'onMobile') {
+        logger({
+          message: 'Modal is not supported on mobile devices. Please use BottomSheet instead.',
+          moduleName: 'Modal',
+          type: 'warn',
+        });
+      }
     }
   }, [platform]);
 
@@ -154,9 +125,10 @@ const Modal = ({
     ) {
       return child;
     } else if (__DEV__) {
-      throw new Error(
-        '[Blade Modal] Modal only accepts ModalHeader, ModalBody and ModalFooter as children',
-      );
+      throwBladeError({
+        message: 'Modal only accepts ModalHeader, ModalBody and ModalFooter as children',
+        moduleName: 'Modal',
+      });
     }
     return null;
   });

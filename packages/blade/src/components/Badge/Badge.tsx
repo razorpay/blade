@@ -14,6 +14,7 @@ import type { StringChildrenType, TestID } from '~utils/types';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { isReactNative } from '~utils';
+import { throwBladeError } from '~utils/logger';
 
 type BadgeProps = {
   /**
@@ -102,7 +103,10 @@ const _Badge = ({
   const childrenString = getStringFromReactText(children);
   if (__DEV__) {
     if (!childrenString?.trim()) {
-      throw new Error('[Blade: Badge]: Text as children is required for Badge.');
+      throwBladeError({
+        message: 'Text as children is required for Badge.',
+        moduleName: 'Badge',
+      });
     }
   }
   const { backgroundColor, iconColor, textColor } = getColorProps({

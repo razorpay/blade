@@ -21,6 +21,7 @@ import type { TestID } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeSpace } from '~utils/makeSpace';
 import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
+import { throwBladeError } from '~utils/logger';
 
 const _CardHeaderIcon = ({ icon: Icon }: { icon: IconComponent }): React.ReactElement => {
   useVerifyInsideCard('CardHeaderIcon');
@@ -143,15 +144,17 @@ const _CardHeaderLeading = ({
 
   if (__DEV__) {
     if (prefix && !isValidAllowedChildren(prefix, ComponentIds.CardHeaderIcon)) {
-      throw new Error(
-        `[Blade CardHeaderLeading]: Only \`${ComponentIds.CardHeaderIcon}\` component is accepted in prefix`,
-      );
+      throwBladeError({
+        message: `Only \`${ComponentIds.CardHeaderIcon}\` component is accepted in prefix`,
+        moduleName: 'CardHeaderLeading',
+      });
     }
 
     if (suffix && !isValidAllowedChildren(suffix, ComponentIds.CardHeaderCounter)) {
-      throw new Error(
-        `[Blade CardHeaderLeading]: Only \`${ComponentIds.CardHeaderCounter}\` component is accepted in prefix`,
-      );
+      throwBladeError({
+        message: `Only \`${ComponentIds.CardHeaderCounter}\` component is accepted in prefix`,
+        moduleName: 'CardHeaderLeading',
+      });
     }
   }
 
@@ -201,11 +204,12 @@ const _CardHeaderTrailing = ({ visual }: CardHeaderTrailingProps): React.ReactEl
 
   if (__DEV__) {
     if (visual && !headerTrailingAllowedComponents.includes(getComponentId(visual)!)) {
-      throw new Error(
-        `[Blade CardHeaderTrailing]: Only one of \`${headerTrailingAllowedComponents.join(
+      throwBladeError({
+        message: `Only one of \`${headerTrailingAllowedComponents.join(
           ', ',
         )}\` component is accepted in visual`,
-      );
+        moduleName: 'CardHeaderTrailing',
+      });
     }
   }
 

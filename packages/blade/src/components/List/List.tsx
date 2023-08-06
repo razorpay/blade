@@ -15,6 +15,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeSpace } from '~utils/makeSpace';
 import { makeAccessible } from '~utils/makeAccessible';
 import { isValidAllowedChildren } from '~utils/isValidAllowedChildren';
+import { throwBladeError } from '~utils/logger';
 
 type ListCommonProps = {
   /**
@@ -105,7 +106,10 @@ const _List = ({
       return child;
     }
     if (__DEV__) {
-      throw new Error('[Blade List]: You can only pass a ListItem as a child to List.');
+      throwBladeError({
+        message: 'You can only pass a ListItem as a child to List.',
+        moduleName: 'List',
+      });
     }
     return null;
   });

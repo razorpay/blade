@@ -30,6 +30,7 @@ import type { TestID } from '~utils/types';
 import { makeSize } from '~utils/makeSize';
 import type { AriaAttributes } from '~utils/makeAccessible';
 import { makeAccessible } from '~utils/makeAccessible';
+import { throwBladeError } from '~utils/logger';
 
 type CommonAutoCompleteSuggestionTypes =
   | 'none'
@@ -353,9 +354,10 @@ const useInput = ({
 } => {
   if (__DEV__) {
     if (value && defaultValue) {
-      throw new Error(
-        `[Blade: Input]: Either 'value' or 'defaultValue' shall be passed. This decides if the input field is controlled or uncontrolled`,
-      );
+      throwBladeError({
+        message: `Either 'value' or 'defaultValue' shall be passed. This decides if the input field is controlled or uncontrolled`,
+        moduleName: 'Input',
+      });
     }
   }
 
@@ -666,11 +668,12 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
         autoCompleteSuggestionType &&
         !autoCompleteSuggestionTypeValues.includes(autoCompleteSuggestionType)
       ) {
-        throw new Error(
-          `[Blade: Input]: Expected autoCompleteSuggestionType to be one of ${autoCompleteSuggestionTypeValues.join(
+        throwBladeError({
+          message: `Expected autoCompleteSuggestionType to be one of ${autoCompleteSuggestionTypeValues.join(
             ', ',
           )} but received ${autoCompleteSuggestionType}`,
-        );
+          moduleName: 'Input',
+        });
       }
     }
 

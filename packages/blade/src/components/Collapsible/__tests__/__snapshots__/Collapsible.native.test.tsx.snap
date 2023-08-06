@@ -469,10 +469,12 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
       }
     >
       <View
+        accessibilityControls="collapsible-body-3"
         accessibilityRole="button"
         accessibilityState={
           {
             "disabled": false,
+            "expanded": false,
           }
         }
         accessible={true}

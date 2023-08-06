@@ -331,7 +331,6 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                     },
                   ]
                 }
-                text="Delete"
                 type="button"
               >
                 <View
@@ -484,7 +483,6 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                     },
                   ]
                 }
-                text="Save"
                 type="button"
               >
                 <View

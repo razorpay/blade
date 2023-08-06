@@ -61,7 +61,7 @@ describe('<Box />', () => {
       );
     } catch (err: unknown) {
       expect(err).toMatchInlineSnapshot(`
-        [Error: [Blade - Box]: Oops! Currently you can only use \`surface.background.*\` and \`brand.*\` tokens with backgroundColor property but we received \`red\` instead.
+        [Error: [Blade: Box]: Oops! Currently you can only use \`surface.background.*\` and \`brand.*\` tokens with backgroundColor property but we received \`red\` instead.
 
          Do you have a usecase of using other values? Create an issue on https://github.com/razorpay/blade repo to let us know and we can discuss ✨]
       `);
@@ -77,7 +77,7 @@ describe('<Box />', () => {
       renderWithTheme(<Box as="section" />);
     } catch (err: unknown) {
       expect(err).toMatchInlineSnapshot(
-        `[Error: [Blade - Box]: \`as\` prop is not supported on React Native]`,
+        `[Error: [Blade: Box]: \`as\` prop is not supported on React Native]`,
       );
     }
     console.error = tempConsoleError;
