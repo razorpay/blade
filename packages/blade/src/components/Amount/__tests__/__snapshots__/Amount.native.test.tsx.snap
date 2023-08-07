@@ -3,7 +3,7 @@
 exports[`<Amount /> should render AED currency Amount 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -12,8 +12,8 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
     data-blade-component="amount"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -25,8 +25,8 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "baseline",
             "display": "flex",
             "flexDirection": "row",
@@ -37,14 +37,15 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
       }
     >
       <Text
+        accessible={true}
         color="surface.text.muted.lowContrast"
         data-blade-component="base-text"
         fontSize={75}
         fontWeight="bold"
         marginRight="spacing.1"
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(216, 16%, 60%, 1)",
               "fontFamily": "Lato",
               "fontSize": 12,
@@ -67,10 +68,11 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
         د.إ
       </Text>
       <Text
+        accessible={true}
         data-blade-component="base-text"
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(217, 56%, 17%, 1)",
               "fontFamily": "Lato",
               "fontSize": 16,
@@ -91,14 +93,15 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
         }
       >
         <Text
+          accessible={true}
           color="surface.text.normal.lowContrast"
           data-blade-component="base-text"
           fontSize={100}
           fontWeight="regular"
           lineHeight={100}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(217, 56%, 17%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 14,
@@ -122,14 +125,15 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
           .
         </Text>
         <Text
+          accessible={true}
           color="surface.text.muted.lowContrast"
           data-blade-component="base-text"
           fontSize={75}
           fontWeight="regular"
           marginLeft="spacing.1"
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(216, 16%, 60%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 12,
@@ -482,7 +486,7 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
 exports[`<Amount /> should render USD currency Amount 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -491,8 +495,8 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
     data-blade-component="amount"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -504,8 +508,8 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "baseline",
             "display": "flex",
             "flexDirection": "row",
@@ -516,14 +520,15 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
       }
     >
       <Text
+        accessible={true}
         color="surface.text.muted.lowContrast"
         data-blade-component="base-text"
         fontSize={75}
         fontWeight="bold"
         marginRight="spacing.1"
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(216, 16%, 60%, 1)",
               "fontFamily": "Lato",
               "fontSize": 12,
@@ -546,10 +551,11 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
         $
       </Text>
       <Text
+        accessible={true}
         data-blade-component="base-text"
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(217, 56%, 17%, 1)",
               "fontFamily": "Lato",
               "fontSize": 16,
@@ -570,14 +576,15 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
         }
       >
         <Text
+          accessible={true}
           color="surface.text.normal.lowContrast"
           data-blade-component="base-text"
           fontSize={100}
           fontWeight="regular"
           lineHeight={100}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(217, 56%, 17%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 14,
@@ -601,14 +608,15 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
           .
         </Text>
         <Text
+          accessible={true}
           color="surface.text.muted.lowContrast"
           data-blade-component="base-text"
           fontSize={75}
           fontWeight="regular"
           marginLeft="spacing.1"
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(216, 16%, 60%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 12,
