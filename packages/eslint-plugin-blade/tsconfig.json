@@ -6,9 +6,6 @@
     "baseUrl": ".",
     "outDir": "build",
     "module": "commonjs",
-    "noEmit": false,
-    "paths": {
-      "~src/*": ["src/*"]
-    }
+    "noEmit": false
   }
 }
