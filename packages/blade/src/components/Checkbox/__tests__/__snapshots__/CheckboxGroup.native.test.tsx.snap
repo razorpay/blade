@@ -207,7 +207,10 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                 accessibilityRole="checkbox"
                 accessibilityState={
                   {
+<<<<<<< HEAD
                     "busy": undefined,
+=======
+>>>>>>> origin/master
                     "checked": false,
                     "disabled": false,
                     "expanded": undefined,
@@ -383,7 +386,10 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                 accessibilityRole="checkbox"
                 accessibilityState={
                   {
+<<<<<<< HEAD
                     "busy": undefined,
+=======
+>>>>>>> origin/master
                     "checked": false,
                     "disabled": false,
                     "expanded": undefined,
@@ -559,7 +565,10 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                 accessibilityRole="checkbox"
                 accessibilityState={
                   {
+<<<<<<< HEAD
                     "busy": undefined,
+=======
+>>>>>>> origin/master
                     "checked": false,
                     "disabled": false,
                     "expanded": undefined,
@@ -925,7 +934,10 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                 accessibilityRole="checkbox"
                 accessibilityState={
                   {
+<<<<<<< HEAD
                     "busy": undefined,
+=======
+>>>>>>> origin/master
                     "checked": false,
                     "disabled": false,
                     "expanded": undefined,
@@ -1101,7 +1113,10 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                 accessibilityRole="checkbox"
                 accessibilityState={
                   {
+<<<<<<< HEAD
                     "busy": undefined,
+=======
+>>>>>>> origin/master
                     "checked": false,
                     "disabled": false,
                     "expanded": undefined,
@@ -1277,7 +1292,10 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                 accessibilityRole="checkbox"
                 accessibilityState={
                   {
+<<<<<<< HEAD
                     "busy": undefined,
+=======
+>>>>>>> origin/master
                     "checked": false,
                     "disabled": false,
                     "expanded": undefined,

@@ -12,8 +12,11 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
     accessibilityRole="button"
     accessibilityState={
       {
+<<<<<<< HEAD
         "busy": undefined,
         "checked": undefined,
+=======
+>>>>>>> origin/master
         "disabled": false,
         "expanded": undefined,
         "selected": undefined,
@@ -165,8 +168,11 @@ exports[`<BaseButton /> should render button with full width 1`] = `
     accessibilityRole="button"
     accessibilityState={
       {
+<<<<<<< HEAD
         "busy": undefined,
         "checked": undefined,
+=======
+>>>>>>> origin/master
         "disabled": false,
         "expanded": undefined,
         "selected": undefined,
@@ -318,8 +324,11 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
     accessibilityRole="button"
     accessibilityState={
       {
+<<<<<<< HEAD
         "busy": undefined,
         "checked": undefined,
+=======
+>>>>>>> origin/master
         "disabled": false,
         "expanded": undefined,
         "selected": undefined,
@@ -543,8 +552,11 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
     accessibilityRole="button"
     accessibilityState={
       {
+<<<<<<< HEAD
         "busy": undefined,
         "checked": undefined,
+=======
+>>>>>>> origin/master
         "disabled": false,
         "expanded": undefined,
         "selected": undefined,
@@ -768,8 +780,11 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
     accessibilityRole="button"
     accessibilityState={
       {
+<<<<<<< HEAD
         "busy": undefined,
         "checked": undefined,
+=======
+>>>>>>> origin/master
         "disabled": false,
         "expanded": undefined,
         "selected": undefined,
@@ -993,8 +1008,11 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
     accessibilityRole="button"
     accessibilityState={
       {
+<<<<<<< HEAD
         "busy": undefined,
         "checked": undefined,
+=======
+>>>>>>> origin/master
         "disabled": false,
         "expanded": undefined,
         "selected": undefined,
@@ -1184,8 +1202,11 @@ exports[`<BaseButton /> should render disabled button 1`] = `
     accessibilityRole="button"
     accessibilityState={
       {
+<<<<<<< HEAD
         "busy": undefined,
         "checked": undefined,
+=======
+>>>>>>> origin/master
         "disabled": true,
         "expanded": undefined,
         "selected": undefined,
@@ -1337,8 +1358,11 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
     accessibilityRole="button"
     accessibilityState={
       {
+<<<<<<< HEAD
         "busy": undefined,
         "checked": undefined,
+=======
+>>>>>>> origin/master
         "disabled": true,
         "expanded": undefined,
         "selected": undefined,
@@ -1490,8 +1514,11 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
     accessibilityRole="button"
     accessibilityState={
       {
+<<<<<<< HEAD
         "busy": undefined,
         "checked": undefined,
+=======
+>>>>>>> origin/master
         "disabled": true,
         "expanded": undefined,
         "selected": undefined,
@@ -1643,8 +1670,11 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
     accessibilityRole="button"
     accessibilityState={
       {
+<<<<<<< HEAD
         "busy": undefined,
         "checked": undefined,
+=======
+>>>>>>> origin/master
         "disabled": true,
         "expanded": undefined,
         "selected": undefined,
@@ -1796,8 +1826,11 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
     accessibilityRole="button"
     accessibilityState={
       {
+<<<<<<< HEAD
         "busy": undefined,
         "checked": undefined,
+=======
+>>>>>>> origin/master
         "disabled": true,
         "expanded": undefined,
         "selected": undefined,
@@ -1949,8 +1982,11 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
     accessibilityRole="button"
     accessibilityState={
       {
+<<<<<<< HEAD
         "busy": undefined,
         "checked": undefined,
+=======
+>>>>>>> origin/master
         "disabled": true,
         "expanded": undefined,
         "selected": undefined,
@@ -2102,8 +2138,11 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
     accessibilityRole="button"
     accessibilityState={
       {
+<<<<<<< HEAD
         "busy": undefined,
         "checked": undefined,
+=======
+>>>>>>> origin/master
         "disabled": true,
         "expanded": undefined,
         "selected": undefined,
@@ -2255,8 +2294,11 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
     accessibilityRole="button"
     accessibilityState={
       {
+<<<<<<< HEAD
         "busy": undefined,
         "checked": undefined,
+=======
+>>>>>>> origin/master
         "disabled": true,
         "expanded": undefined,
         "selected": undefined,
@@ -2408,8 +2450,11 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
     accessibilityRole="button"
     accessibilityState={
       {
+<<<<<<< HEAD
         "busy": undefined,
         "checked": undefined,
+=======
+>>>>>>> origin/master
         "disabled": true,
         "expanded": undefined,
         "selected": undefined,
@@ -2561,8 +2606,11 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
     accessibilityRole="button"
     accessibilityState={
       {
+<<<<<<< HEAD
         "busy": undefined,
         "checked": undefined,
+=======
+>>>>>>> origin/master
         "disabled": true,
         "expanded": undefined,
         "selected": undefined,
@@ -2714,8 +2762,11 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
     accessibilityRole="button"
     accessibilityState={
       {
+<<<<<<< HEAD
         "busy": undefined,
         "checked": undefined,
+=======
+>>>>>>> origin/master
         "disabled": true,
         "expanded": undefined,
         "selected": undefined,
@@ -2867,8 +2918,11 @@ exports[`<BaseButton /> should render disabled secondary variant button 1`] = `
     accessibilityRole="button"
     accessibilityState={
       {
+<<<<<<< HEAD
         "busy": undefined,
         "checked": undefined,
+=======
+>>>>>>> origin/master
         "disabled": true,
         "expanded": undefined,
         "selected": undefined,
@@ -3020,8 +3074,11 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
     accessibilityRole="button"
     accessibilityState={
       {
+<<<<<<< HEAD
         "busy": undefined,
         "checked": undefined,
+=======
+>>>>>>> origin/master
         "disabled": true,
         "expanded": undefined,
         "selected": undefined,
@@ -3173,8 +3230,11 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
     accessibilityRole="button"
     accessibilityState={
       {
+<<<<<<< HEAD
         "busy": undefined,
         "checked": undefined,
+=======
+>>>>>>> origin/master
         "disabled": false,
         "expanded": undefined,
         "selected": undefined,
@@ -3326,8 +3386,11 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
     accessibilityRole="button"
     accessibilityState={
       {
+<<<<<<< HEAD
         "busy": undefined,
         "checked": undefined,
+=======
+>>>>>>> origin/master
         "disabled": false,
         "expanded": undefined,
         "selected": undefined,
@@ -3479,8 +3542,11 @@ exports[`<BaseButton /> should render large size button 1`] = `
     accessibilityRole="button"
     accessibilityState={
       {
+<<<<<<< HEAD
         "busy": undefined,
         "checked": undefined,
+=======
+>>>>>>> origin/master
         "disabled": false,
         "expanded": undefined,
         "selected": undefined,
@@ -3632,8 +3698,11 @@ exports[`<BaseButton /> should render loading button 1`] = `
     accessibilityRole="button"
     accessibilityState={
       {
+<<<<<<< HEAD
         "busy": undefined,
         "checked": undefined,
+=======
+>>>>>>> origin/master
         "disabled": true,
         "expanded": undefined,
         "selected": undefined,
@@ -3935,8 +4004,11 @@ exports[`<BaseButton /> should render medium size button 1`] = `
     accessibilityRole="button"
     accessibilityState={
       {
+<<<<<<< HEAD
         "busy": undefined,
         "checked": undefined,
+=======
+>>>>>>> origin/master
         "disabled": false,
         "expanded": undefined,
         "selected": undefined,
@@ -4088,8 +4160,11 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
     accessibilityRole="button"
     accessibilityState={
       {
+<<<<<<< HEAD
         "busy": undefined,
         "checked": undefined,
+=======
+>>>>>>> origin/master
         "disabled": false,
         "expanded": undefined,
         "selected": undefined,
@@ -4241,8 +4316,11 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
     accessibilityRole="button"
     accessibilityState={
       {
+<<<<<<< HEAD
         "busy": undefined,
         "checked": undefined,
+=======
+>>>>>>> origin/master
         "disabled": false,
         "expanded": undefined,
         "selected": undefined,
@@ -4394,8 +4472,11 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
     accessibilityRole="button"
     accessibilityState={
       {
+<<<<<<< HEAD
         "busy": undefined,
         "checked": undefined,
+=======
+>>>>>>> origin/master
         "disabled": false,
         "expanded": undefined,
         "selected": undefined,
@@ -4547,8 +4628,11 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
     accessibilityRole="button"
     accessibilityState={
       {
+<<<<<<< HEAD
         "busy": undefined,
         "checked": undefined,
+=======
+>>>>>>> origin/master
         "disabled": false,
         "expanded": undefined,
         "selected": undefined,
@@ -4700,8 +4784,11 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
     accessibilityRole="button"
     accessibilityState={
       {
+<<<<<<< HEAD
         "busy": undefined,
         "checked": undefined,
+=======
+>>>>>>> origin/master
         "disabled": false,
         "expanded": undefined,
         "selected": undefined,
@@ -4853,8 +4940,11 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
     accessibilityRole="button"
     accessibilityState={
       {
+<<<<<<< HEAD
         "busy": undefined,
         "checked": undefined,
+=======
+>>>>>>> origin/master
         "disabled": false,
         "expanded": undefined,
         "selected": undefined,
@@ -5006,8 +5096,11 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
     accessibilityRole="button"
     accessibilityState={
       {
+<<<<<<< HEAD
         "busy": undefined,
         "checked": undefined,
+=======
+>>>>>>> origin/master
         "disabled": false,
         "expanded": undefined,
         "selected": undefined,
@@ -5159,8 +5252,11 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
     accessibilityRole="button"
     accessibilityState={
       {
+<<<<<<< HEAD
         "busy": undefined,
         "checked": undefined,
+=======
+>>>>>>> origin/master
         "disabled": false,
         "expanded": undefined,
         "selected": undefined,
@@ -5312,8 +5408,11 @@ exports[`<BaseButton /> should render secondary variant button 1`] = `
     accessibilityRole="button"
     accessibilityState={
       {
+<<<<<<< HEAD
         "busy": undefined,
         "checked": undefined,
+=======
+>>>>>>> origin/master
         "disabled": false,
         "expanded": undefined,
         "selected": undefined,
@@ -5465,8 +5564,11 @@ exports[`<BaseButton /> should render small size button 1`] = `
     accessibilityRole="button"
     accessibilityState={
       {
+<<<<<<< HEAD
         "busy": undefined,
         "checked": undefined,
+=======
+>>>>>>> origin/master
         "disabled": false,
         "expanded": undefined,
         "selected": undefined,
@@ -5618,8 +5720,11 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
     accessibilityRole="button"
     accessibilityState={
       {
+<<<<<<< HEAD
         "busy": undefined,
         "checked": undefined,
+=======
+>>>>>>> origin/master
         "disabled": false,
         "expanded": undefined,
         "selected": undefined,
@@ -5771,8 +5876,11 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
     accessibilityRole="button"
     accessibilityState={
       {
+<<<<<<< HEAD
         "busy": undefined,
         "checked": undefined,
+=======
+>>>>>>> origin/master
         "disabled": false,
         "expanded": undefined,
         "selected": undefined,

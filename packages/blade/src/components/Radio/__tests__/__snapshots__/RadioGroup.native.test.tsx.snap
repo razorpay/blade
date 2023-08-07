@@ -209,7 +209,10 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                 accessibilityRole="radio"
                 accessibilityState={
                   {
+<<<<<<< HEAD
                     "busy": undefined,
+=======
+>>>>>>> origin/master
                     "checked": false,
                     "disabled": false,
                     "expanded": undefined,
@@ -387,7 +390,10 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                 accessibilityRole="radio"
                 accessibilityState={
                   {
+<<<<<<< HEAD
                     "busy": undefined,
+=======
+>>>>>>> origin/master
                     "checked": false,
                     "disabled": false,
                     "expanded": undefined,
@@ -565,7 +571,10 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                 accessibilityRole="radio"
                 accessibilityState={
                   {
+<<<<<<< HEAD
                     "busy": undefined,
+=======
+>>>>>>> origin/master
                     "checked": false,
                     "disabled": false,
                     "expanded": undefined,
@@ -991,7 +1000,10 @@ exports[`<RadioGroup /> should render with label 1`] = `
                 accessibilityRole="radio"
                 accessibilityState={
                   {
+<<<<<<< HEAD
                     "busy": undefined,
+=======
+>>>>>>> origin/master
                     "checked": false,
                     "disabled": false,
                     "expanded": undefined,
@@ -1169,7 +1181,10 @@ exports[`<RadioGroup /> should render with label 1`] = `
                 accessibilityRole="radio"
                 accessibilityState={
                   {
+<<<<<<< HEAD
                     "busy": undefined,
+=======
+>>>>>>> origin/master
                     "checked": false,
                     "disabled": false,
                     "expanded": undefined,
@@ -1347,7 +1362,10 @@ exports[`<RadioGroup /> should render with label 1`] = `
                 accessibilityRole="radio"
                 accessibilityState={
                   {
+<<<<<<< HEAD
                     "busy": undefined,
+=======
+>>>>>>> origin/master
                     "checked": false,
                     "disabled": false,
                     "expanded": undefined,

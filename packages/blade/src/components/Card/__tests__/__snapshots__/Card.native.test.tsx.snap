@@ -266,8 +266,11 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                 accessibilityRole="button"
                 accessibilityState={
                   {
+<<<<<<< HEAD
                     "busy": undefined,
                     "checked": undefined,
+=======
+>>>>>>> origin/master
                     "disabled": false,
                     "expanded": undefined,
                     "selected": undefined,
@@ -430,8 +433,11 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                 accessibilityRole="button"
                 accessibilityState={
                   {
+<<<<<<< HEAD
                     "busy": undefined,
                     "checked": undefined,
+=======
+>>>>>>> origin/master
                     "disabled": false,
                     "expanded": undefined,
                     "selected": undefined,

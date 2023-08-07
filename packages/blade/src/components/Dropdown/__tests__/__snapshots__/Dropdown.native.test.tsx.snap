@@ -242,8 +242,11 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                 accessibilityRole="combobox"
                 accessibilityState={
                   {
+<<<<<<< HEAD
                     "busy": undefined,
                     "checked": undefined,
+=======
+>>>>>>> origin/master
                     "disabled": false,
                     "expanded": false,
                     "selected": undefined,
@@ -821,8 +824,11 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                       accessibilityRole="menuitem"
                       accessibilityState={
                         {
+<<<<<<< HEAD
                           "busy": undefined,
                           "checked": undefined,
+=======
+>>>>>>> origin/master
                           "disabled": undefined,
                           "expanded": undefined,
                           "selected": false,
@@ -973,8 +979,11 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                       accessibilityRole="menuitem"
                       accessibilityState={
                         {
+<<<<<<< HEAD
                           "busy": undefined,
                           "checked": undefined,
+=======
+>>>>>>> origin/master
                           "disabled": undefined,
                           "expanded": undefined,
                           "selected": false,
@@ -1173,8 +1182,11 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                   accessibilityRole="button"
                   accessibilityState={
                     {
+<<<<<<< HEAD
                       "busy": undefined,
                       "checked": undefined,
+=======
+>>>>>>> origin/master
                       "disabled": false,
                       "expanded": undefined,
                       "selected": undefined,
