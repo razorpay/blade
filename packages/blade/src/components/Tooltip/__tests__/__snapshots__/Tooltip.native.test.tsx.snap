@@ -12,7 +12,19 @@ exports[`<Tooltip /> should render 1`] = `
     accessibilityRole="button"
     accessibilityState={
       {
+        "busy": undefined,
+        "checked": undefined,
         "disabled": false,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
       }
     }
     accessible={true}
@@ -147,7 +159,25 @@ exports[`<Tooltip /> should render 1`] = `
     visible={true}
   >
     <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
       accessible={true}
+      collapsable={false}
       focusable={true}
       onClick={[Function]}
       onResponderGrant={[Function]}
@@ -351,7 +381,19 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
     accessibilityRole="button"
     accessibilityState={
       {
+        "busy": undefined,
+        "checked": undefined,
         "disabled": false,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
       }
     }
     accessible={true}
@@ -486,7 +528,25 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
     visible={true}
   >
     <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
       accessible={true}
+      collapsable={false}
       focusable={true}
       onClick={[Function]}
       onResponderGrant={[Function]}

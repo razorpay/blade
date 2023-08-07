@@ -46,8 +46,19 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
         accessibilityRole="button"
         accessibilityState={
           {
+            "busy": undefined,
+            "checked": undefined,
             "disabled": false,
             "expanded": false,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
           }
         }
         accessible={true}
@@ -472,7 +483,19 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
         accessibilityRole="button"
         accessibilityState={
           {
+            "busy": undefined,
+            "checked": undefined,
             "disabled": false,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
           }
         }
         accessible={true}

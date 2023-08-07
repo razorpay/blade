@@ -12,7 +12,19 @@ exports[`<Button /> should render button with default properties 1`] = `
     accessibilityRole="button"
     accessibilityState={
       {
+        "busy": undefined,
+        "checked": undefined,
         "disabled": false,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
       }
     }
     accessible={true}
@@ -153,7 +165,19 @@ exports[`<Button /> should render button with full width 1`] = `
     accessibilityRole="button"
     accessibilityState={
       {
+        "busy": undefined,
+        "checked": undefined,
         "disabled": false,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
       }
     }
     accessible={true}
@@ -294,7 +318,19 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
     accessibilityRole="button"
     accessibilityState={
       {
+        "busy": undefined,
+        "checked": undefined,
         "disabled": false,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
       }
     }
     accessible={true}
@@ -507,7 +543,19 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
     accessibilityRole="button"
     accessibilityState={
       {
+        "busy": undefined,
+        "checked": undefined,
         "disabled": false,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
       }
     }
     accessible={true}
@@ -720,7 +768,19 @@ exports[`<Button /> should render disabled button 1`] = `
     accessibilityRole="button"
     accessibilityState={
       {
+        "busy": undefined,
+        "checked": undefined,
         "disabled": true,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
       }
     }
     accessible={true}
@@ -861,7 +921,19 @@ exports[`<Button /> should render disabled secondary variant button 1`] = `
     accessibilityRole="button"
     accessibilityState={
       {
+        "busy": undefined,
+        "checked": undefined,
         "disabled": true,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
       }
     }
     accessible={true}
@@ -1002,7 +1074,19 @@ exports[`<Button /> should render disabled tertiary variant button 1`] = `
     accessibilityRole="button"
     accessibilityState={
       {
+        "busy": undefined,
+        "checked": undefined,
         "disabled": true,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
       }
     }
     accessible={true}
@@ -1143,7 +1227,19 @@ exports[`<Button /> should render large size button 1`] = `
     accessibilityRole="button"
     accessibilityState={
       {
+        "busy": undefined,
+        "checked": undefined,
         "disabled": false,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
       }
     }
     accessible={true}
@@ -1284,7 +1380,19 @@ exports[`<Button /> should render medium size button 1`] = `
     accessibilityRole="button"
     accessibilityState={
       {
+        "busy": undefined,
+        "checked": undefined,
         "disabled": false,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
       }
     }
     accessible={true}
@@ -1425,7 +1533,19 @@ exports[`<Button /> should render secondary variant button 1`] = `
     accessibilityRole="button"
     accessibilityState={
       {
+        "busy": undefined,
+        "checked": undefined,
         "disabled": false,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
       }
     }
     accessible={true}
@@ -1566,7 +1686,19 @@ exports[`<Button /> should render small size button 1`] = `
     accessibilityRole="button"
     accessibilityState={
       {
+        "busy": undefined,
+        "checked": undefined,
         "disabled": false,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
       }
     }
     accessible={true}
@@ -1707,7 +1839,19 @@ exports[`<Button /> should render tertiary variant button 1`] = `
     accessibilityRole="button"
     accessibilityState={
       {
+        "busy": undefined,
+        "checked": undefined,
         "disabled": false,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
       }
     }
     accessible={true}
@@ -1848,7 +1992,19 @@ exports[`<Button /> should render xsmall size button 1`] = `
     accessibilityRole="button"
     accessibilityState={
       {
+        "busy": undefined,
+        "checked": undefined,
         "disabled": false,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
       }
     }
     accessible={true}

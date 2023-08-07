@@ -205,6 +205,23 @@ exports[`<Alert /> should render 1`] = `
         <View
           accessibilityLabel="Dismiss alert"
           accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
           accessible={true}
           collapsable={false}
           contrast="low"
@@ -501,6 +518,23 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
         <View
           accessibilityLabel="Dismiss alert"
           accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
           accessible={true}
           collapsable={false}
           contrast="low"

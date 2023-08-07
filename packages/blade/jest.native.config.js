@@ -17,15 +17,15 @@ module.exports = {
   transform: {
     '\\.(js|ts|tsx)?$': './jest-preprocess.js',
   },
-  testEnvironment: 'jsdom',
+  testEnvironment: 'node', // Ref: https://github.com/callstack/react-native-testing-library/issues/896#issuecomment-1190249878
   transformIgnorePatterns: [
     'node_modules/(?!(react-native.*|@react-native.*|@?react-navigation.*|@?react-navigation-stack)/)',
   ],
-  setupFiles: [
-    './node_modules/react-native-gesture-handler/jestSetup.js',
+  setupFilesAfterEnv: [
+    '@testing-library/jest-native/extend-expect',
     './jest-setup.native.js',
+    './node_modules/react-native-gesture-handler/jestSetup.js',
   ],
-  setupFilesAfterEnv: ['@testing-library/jest-native/extend-expect'],
   moduleNameMapper: {
     '^\\~src/(.*)': '<rootDir>/src/$1',
     '^\\~components/(.*)': '<rootDir>/src/components/$1',
@@ -33,4 +33,5 @@ module.exports = {
     '^\\~utils/(.*)': '<rootDir>/src/utils/$1',
     '^\\~tokens/(.*)': '<rootDir>/src/tokens/$1',
   },
+  testTimeout: 10000,
 };
