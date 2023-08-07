@@ -1,5 +1,5 @@
 {
-  "name": "@razorpay-blade/eslint-plugin",
+  "name": "eslint-plugin-razorpay-blade",
   "version": "1.0.0",
   "main": "build/index.js",
   "license": "MIT",
