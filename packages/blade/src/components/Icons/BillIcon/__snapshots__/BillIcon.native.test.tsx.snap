@@ -3,7 +3,7 @@
 exports[`<BillIcon /> should render BillIcon 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -22,15 +22,15 @@ exports[`<BillIcon /> should render BillIcon 1`] = `
     minX={0}
     minY={0}
     style={
-      Array [
-        Object {
+      [
+        {
           "backgroundColor": "transparent",
           "borderWidth": 0,
         },
-        Array [
-          Object {},
+        [
+          {},
         ],
-        Object {
+        {
           "flex": 0,
           "height": 20,
           "width": 20,
@@ -44,7 +44,7 @@ exports[`<BillIcon /> should render BillIcon 1`] = `
     <RNSVGGroup
       fill={null}
       propList={
-        Array [
+        [
           "fill",
         ]
       }
@@ -53,7 +53,7 @@ exports[`<BillIcon /> should render BillIcon 1`] = `
         d="M8.36841 8.13722C7.81612 8.13722 7.36841 8.58786 7.36841 9.14376C7.36841 9.69965 7.81612 10.1503 8.36841 10.1503H14.9579C15.5102 10.1503 15.9579 9.69965 15.9579 9.14376C15.9579 8.58786 15.5102 8.13722 14.9579 8.13722H8.36841Z"
         fill={4282603381}
         propList={
-          Array [
+          [
             "fill",
           ]
         }
@@ -62,7 +62,7 @@ exports[`<BillIcon /> should render BillIcon 1`] = `
         d="M7.36841 6.03268C7.36841 5.47678 7.81612 5.02614 8.36841 5.02614H14.9579C15.5102 5.02614 15.9579 5.47678 15.9579 6.03268C15.9579 6.58857 15.5102 7.03921 14.9579 7.03921H8.36841C7.81612 7.03921 7.36841 6.58857 7.36841 6.03268Z"
         fill={4282603381}
         propList={
-          Array [
+          [
             "fill",
           ]
         }
@@ -71,7 +71,7 @@ exports[`<BillIcon /> should render BillIcon 1`] = `
         d="M8.36841 11.7974C7.81612 11.7974 7.36841 12.248 7.36841 12.8039C7.36841 13.3598 7.81612 13.8105 8.36841 13.8105H10.5789C11.1312 13.8105 11.5789 13.3598 11.5789 12.8039C11.5789 12.248 11.1312 11.7974 10.5789 11.7974H8.36841Z"
         fill={4282603381}
         propList={
-          Array [
+          [
             "fill",
           ]
         }
@@ -82,7 +82,7 @@ exports[`<BillIcon /> should render BillIcon 1`] = `
         fill={4282603381}
         fillRule={0}
         propList={
-          Array [
+          [
             "fill",
             "fillRule",
           ]

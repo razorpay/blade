@@ -3,7 +3,7 @@
 exports[`<Tooltip /> should render 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -11,7 +11,7 @@ exports[`<Tooltip /> should render 1`] = `
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -50,8 +50,8 @@ exports[`<Tooltip /> should render 1`] = `
     onStartShouldSetResponder={[Function]}
     onTouchEnd={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
@@ -72,7 +72,7 @@ exports[`<Tooltip /> should render 1`] = `
           "textDecorationStyle": "solid",
           "width": "auto",
         },
-        Object {
+        {
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
           "borderColor": "hsla(218, 89%, 51%, 1)",
         },
@@ -88,8 +88,8 @@ exports[`<Tooltip /> should render 1`] = `
       isHidden={false}
       justifyContent="center"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexBasis": 0,
@@ -98,21 +98,22 @@ exports[`<Tooltip /> should render 1`] = `
             "flexShrink": 1,
             "justifyContent": "center",
           },
-          Object {
+          {
             "opacity": 1,
           },
         ]
       }
     >
       <Text
+        accessible={true}
         color="action.text.primary.default"
         data-blade-component="base-text"
         fontSize={100}
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(0, 0%, 100%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -156,7 +157,7 @@ exports[`<Tooltip /> should render 1`] = `
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        Object {
+        {
           "flex": 1,
           "flexShrink": 0,
           "opacity": 1,
@@ -166,10 +167,10 @@ exports[`<Tooltip /> should render 1`] = `
     >
       <View
         style={
-          Object {
+          {
             "opacity": 0,
-            "transform": Array [
-              Object {
+            "transform": [
+              {
                 "translateX": 4,
               },
             ],
@@ -183,8 +184,8 @@ exports[`<Tooltip /> should render 1`] = `
           maxWidth="200px"
           position="absolute"
           style={
-            Array [
-              Object {
+            [
+              {
                 "maxWidth": 200,
                 "paddingBottom": 8,
                 "paddingLeft": 12,
@@ -192,7 +193,7 @@ exports[`<Tooltip /> should render 1`] = `
                 "paddingTop": 8,
                 "position": "absolute",
               },
-              Object {
+              {
                 "backgroundColor": "hsla(216, 33%, 29%, 1)",
                 "borderColor": "hsla(216, 27%, 36%, 1)",
                 "borderRadius": 4,
@@ -203,10 +204,10 @@ exports[`<Tooltip /> should render 1`] = `
                 "top": -200,
                 "zIndex": 1100,
               },
-              Object {
+              {
                 "elevation": 4,
                 "shadowColor": "hsla(217, 56%, 17%, 0.64)",
-                "shadowOffset": Object {
+                "shadowOffset": {
                   "height": 3,
                   "width": 0,
                 },
@@ -216,7 +217,7 @@ exports[`<Tooltip /> should render 1`] = `
             ]
           }
           styles={
-            Object {
+            {
               "left": -200,
               "position": "absolute",
               "top": -200,
@@ -225,6 +226,7 @@ exports[`<Tooltip /> should render 1`] = `
           }
         >
           <Text
+            accessible={true}
             color="feedback.text.neutral.highContrast"
             data-blade-component="text"
             fontFamily="text"
@@ -233,8 +235,8 @@ exports[`<Tooltip /> should render 1`] = `
             fontWeight="regular"
             lineHeight={50}
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "hsla(0, 0%, 100%, 1)",
                   "fontFamily": "Lato",
                   "fontSize": 12,
@@ -259,7 +261,7 @@ exports[`<Tooltip /> should render 1`] = `
           <View
             collapsable={false}
             style={
-              Object {
+              {
                 "bottom": 0,
                 "left": 0,
                 "position": "absolute",
@@ -281,23 +283,23 @@ exports[`<Tooltip /> should render 1`] = `
               minX={0}
               minY={0}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "backgroundColor": "transparent",
                     "borderWidth": 0,
                   },
-                  Array [
-                    Object {},
-                    Object {},
+                  [
+                    {},
+                    {},
                   ],
-                  Object {
+                  {
                     "flex": 0,
                     "height": 14,
                     "width": 14,
                   },
                 ]
               }
-              styles={Object {}}
+              styles={{}}
               vbHeight={14}
               vbWidth={14}
               width="14px"
@@ -307,7 +309,7 @@ exports[`<Tooltip /> should render 1`] = `
                   d="M0,0 H14 L7,7 Q7,7 7,7 Z"
                   fill={null}
                   propList={
-                    Array [
+                    [
                       "fill",
                       "stroke",
                       "strokeWidth",
@@ -320,7 +322,7 @@ exports[`<Tooltip /> should render 1`] = `
                   d="M0,0 H14 L7,7 Q7,7 7,7 Z"
                   fill={4281484642}
                   propList={
-                    Array [
+                    [
                       "fill",
                       "stroke",
                     ]
@@ -340,7 +342,7 @@ exports[`<Tooltip /> should render 1`] = `
 exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -348,7 +350,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -387,8 +389,8 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
     onStartShouldSetResponder={[Function]}
     onTouchEnd={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
@@ -409,7 +411,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
           "textDecorationStyle": "solid",
           "width": "auto",
         },
-        Object {
+        {
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
           "borderColor": "hsla(218, 89%, 51%, 1)",
         },
@@ -425,8 +427,8 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
       isHidden={false}
       justifyContent="center"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexBasis": 0,
@@ -435,21 +437,22 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
             "flexShrink": 1,
             "justifyContent": "center",
           },
-          Object {
+          {
             "opacity": 1,
           },
         ]
       }
     >
       <Text
+        accessible={true}
         color="action.text.primary.default"
         data-blade-component="base-text"
         fontSize={100}
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(0, 0%, 100%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -493,7 +496,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        Object {
+        {
           "flex": 1,
           "flexShrink": 0,
           "opacity": 1,
@@ -503,10 +506,10 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
     >
       <View
         style={
-          Object {
+          {
             "opacity": 0,
-            "transform": Array [
-              Object {
+            "transform": [
+              {
                 "translateX": 4,
               },
             ],
@@ -520,8 +523,8 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
           maxWidth="200px"
           position="absolute"
           style={
-            Array [
-              Object {
+            [
+              {
                 "maxWidth": 200,
                 "paddingBottom": 8,
                 "paddingLeft": 12,
@@ -529,7 +532,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
                 "paddingTop": 8,
                 "position": "absolute",
               },
-              Object {
+              {
                 "backgroundColor": "hsla(216, 33%, 29%, 1)",
                 "borderColor": "hsla(216, 27%, 36%, 1)",
                 "borderRadius": 4,
@@ -540,10 +543,10 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
                 "top": -200,
                 "zIndex": 9999,
               },
-              Object {
+              {
                 "elevation": 4,
                 "shadowColor": "hsla(217, 56%, 17%, 0.64)",
-                "shadowOffset": Object {
+                "shadowOffset": {
                   "height": 3,
                   "width": 0,
                 },
@@ -553,7 +556,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
             ]
           }
           styles={
-            Object {
+            {
               "left": -200,
               "position": "absolute",
               "top": -200,
@@ -562,6 +565,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
           }
         >
           <Text
+            accessible={true}
             color="feedback.text.neutral.highContrast"
             data-blade-component="text"
             fontFamily="text"
@@ -570,8 +574,8 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
             fontWeight="regular"
             lineHeight={50}
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "hsla(0, 0%, 100%, 1)",
                   "fontFamily": "Lato",
                   "fontSize": 12,
@@ -596,7 +600,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
           <View
             collapsable={false}
             style={
-              Object {
+              {
                 "bottom": 0,
                 "left": 0,
                 "position": "absolute",
@@ -618,23 +622,23 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
               minX={0}
               minY={0}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "backgroundColor": "transparent",
                     "borderWidth": 0,
                   },
-                  Array [
-                    Object {},
-                    Object {},
+                  [
+                    {},
+                    {},
                   ],
-                  Object {
+                  {
                     "flex": 0,
                     "height": 14,
                     "width": 14,
                   },
                 ]
               }
-              styles={Object {}}
+              styles={{}}
               vbHeight={14}
               vbWidth={14}
               width="14px"
@@ -644,7 +648,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
                   d="M0,0 H14 L7,7 Q7,7 7,7 Z"
                   fill={null}
                   propList={
-                    Array [
+                    [
                       "fill",
                       "stroke",
                       "strokeWidth",
@@ -657,7 +661,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
                   d="M0,0 H14 L7,7 Q7,7 7,7 Z"
                   fill={4281484642}
                   propList={
-                    Array [
+                    [
                       "fill",
                       "stroke",
                     ]

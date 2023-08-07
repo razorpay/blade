@@ -3,7 +3,7 @@
 exports[`<OTPInput /> should render 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -11,8 +11,8 @@ exports[`<OTPInput /> should render 1`] = `
   <View
     data-blade-component="otp-input"
     style={
-      Array [
-        Object {},
+      [
+        {},
       ]
     }
   >
@@ -22,8 +22,8 @@ exports[`<OTPInput /> should render 1`] = `
       flexDirection="column"
       position="relative"
       style={
-        Array [
-          Object {
+        [
+          {
             "display": "flex",
             "flexDirection": "column",
             "position": "relative",
@@ -34,8 +34,8 @@ exports[`<OTPInput /> should render 1`] = `
       <View
         data-blade-component="base-box"
         style={
-          Array [
-            Object {
+          [
+            {
               "marginBottom": 4,
               "marginRight": 16,
             },
@@ -51,8 +51,8 @@ exports[`<OTPInput /> should render 1`] = `
           gap="spacing.0"
           maxHeight="36px"
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "display": "flex",
                 "flexDirection": "row",
@@ -64,6 +64,7 @@ exports[`<OTPInput /> should render 1`] = `
           }
         >
           <Text
+            accessible={true}
             color="surface.text.subdued.lowContrast"
             data-blade-component="text"
             fontFamily="text"
@@ -73,8 +74,8 @@ exports[`<OTPInput /> should render 1`] = `
             lineHeight={50}
             numberOfLines={2}
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "hsla(217, 18%, 45%, 1)",
                   "fontFamily": "Lato",
                   "fontSize": 12,
@@ -99,8 +100,8 @@ exports[`<OTPInput /> should render 1`] = `
           <View
             data-blade-component="visually-hidden"
             style={
-              Array [
-                Object {
+              [
+                {
                   "borderColor": "black",
                   "borderStyle": "solid",
                   "borderWidth": 0,
@@ -126,6 +127,7 @@ exports[`<OTPInput /> should render 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.normal.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -134,8 +136,8 @@ exports[`<OTPInput /> should render 1`] = `
               fontWeight="regular"
               lineHeight={100}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "hsla(217, 56%, 17%, 1)",
                     "fontFamily": "Lato",
                     "fontSize": 14,
@@ -163,8 +165,8 @@ exports[`<OTPInput /> should render 1`] = `
         display="flex"
         flexDirection="row"
         style={
-          Array [
-            Object {
+          [
+            {
               "display": "flex",
               "flexDirection": "row",
             },
@@ -174,8 +176,8 @@ exports[`<OTPInput /> should render 1`] = `
         <View
           data-blade-component="base-box"
           style={
-            Array [
-              Object {
+            [
+              {
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
@@ -187,8 +189,8 @@ exports[`<OTPInput /> should render 1`] = `
           <View
             data-blade-component="base-box"
             style={
-              Array [
-                Object {},
+              [
+                {},
               ]
             }
           >
@@ -198,8 +200,8 @@ exports[`<OTPInput /> should render 1`] = `
               flexDirection="column"
               position="relative"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "display": "flex",
                     "flexDirection": "column",
                     "position": "relative",
@@ -216,14 +218,14 @@ exports[`<OTPInput /> should render 1`] = `
                 flexDirection="row"
                 position="relative"
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "display": "flex",
                       "flexDirection": "row",
                       "position": "relative",
                       "width": "100%",
                     },
-                    Object {
+                    {
                       "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
                       "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
                       "borderBottomStyle": "solid",
@@ -241,11 +243,12 @@ exports[`<OTPInput /> should render 1`] = `
                   accessibilityLabel="Enter OTP character 1"
                   accessibilityRequired={true}
                   accessibilityState={
-                    Object {
+                    {
                       "disabled": false,
                       "expanded": undefined,
                     }
                   }
+                  accessible={true}
                   autoCompleteType="sms-otp"
                   data-blade-component="styled-base-input"
                   editable={true}
@@ -263,8 +266,8 @@ exports[`<OTPInput /> should render 1`] = `
                   placeholder=""
                   secureTextEntry={false}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "transparent",
                         "color": "hsla(216, 27%, 36%, 1)",
                         "flexBasis": 0,
@@ -295,8 +298,8 @@ exports[`<OTPInput /> should render 1`] = `
                 />
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "hsla(218, 89%, 51%, 1)",
                         "bottom": 0,
                         "height": 1,
@@ -305,7 +308,7 @@ exports[`<OTPInput /> should render 1`] = `
                         "position": "absolute",
                         "right": 0,
                       },
-                      Object {
+                      {
                         "opacity": undefined,
                         "width": "undefined%",
                       },
@@ -319,8 +322,8 @@ exports[`<OTPInput /> should render 1`] = `
         <View
           data-blade-component="base-box"
           style={
-            Array [
-              Object {
+            [
+              {
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
@@ -332,8 +335,8 @@ exports[`<OTPInput /> should render 1`] = `
           <View
             data-blade-component="base-box"
             style={
-              Array [
-                Object {},
+              [
+                {},
               ]
             }
           >
@@ -343,8 +346,8 @@ exports[`<OTPInput /> should render 1`] = `
               flexDirection="column"
               position="relative"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "display": "flex",
                     "flexDirection": "column",
                     "position": "relative",
@@ -361,14 +364,14 @@ exports[`<OTPInput /> should render 1`] = `
                 flexDirection="row"
                 position="relative"
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "display": "flex",
                       "flexDirection": "row",
                       "position": "relative",
                       "width": "100%",
                     },
-                    Object {
+                    {
                       "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
                       "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
                       "borderBottomStyle": "solid",
@@ -386,11 +389,12 @@ exports[`<OTPInput /> should render 1`] = `
                   accessibilityLabel=" character 2"
                   accessibilityRequired={true}
                   accessibilityState={
-                    Object {
+                    {
                       "disabled": false,
                       "expanded": undefined,
                     }
                   }
+                  accessible={true}
                   autoCompleteType="sms-otp"
                   data-blade-component="styled-base-input"
                   editable={true}
@@ -408,8 +412,8 @@ exports[`<OTPInput /> should render 1`] = `
                   placeholder=""
                   secureTextEntry={false}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "transparent",
                         "color": "hsla(216, 27%, 36%, 1)",
                         "flexBasis": 0,
@@ -440,8 +444,8 @@ exports[`<OTPInput /> should render 1`] = `
                 />
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "hsla(218, 89%, 51%, 1)",
                         "bottom": 0,
                         "height": 1,
@@ -450,7 +454,7 @@ exports[`<OTPInput /> should render 1`] = `
                         "position": "absolute",
                         "right": 0,
                       },
-                      Object {
+                      {
                         "opacity": undefined,
                         "width": "undefined%",
                       },
@@ -464,8 +468,8 @@ exports[`<OTPInput /> should render 1`] = `
         <View
           data-blade-component="base-box"
           style={
-            Array [
-              Object {
+            [
+              {
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
@@ -477,8 +481,8 @@ exports[`<OTPInput /> should render 1`] = `
           <View
             data-blade-component="base-box"
             style={
-              Array [
-                Object {},
+              [
+                {},
               ]
             }
           >
@@ -488,8 +492,8 @@ exports[`<OTPInput /> should render 1`] = `
               flexDirection="column"
               position="relative"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "display": "flex",
                     "flexDirection": "column",
                     "position": "relative",
@@ -506,14 +510,14 @@ exports[`<OTPInput /> should render 1`] = `
                 flexDirection="row"
                 position="relative"
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "display": "flex",
                       "flexDirection": "row",
                       "position": "relative",
                       "width": "100%",
                     },
-                    Object {
+                    {
                       "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
                       "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
                       "borderBottomStyle": "solid",
@@ -531,11 +535,12 @@ exports[`<OTPInput /> should render 1`] = `
                   accessibilityLabel=" character 3"
                   accessibilityRequired={true}
                   accessibilityState={
-                    Object {
+                    {
                       "disabled": false,
                       "expanded": undefined,
                     }
                   }
+                  accessible={true}
                   autoCompleteType="sms-otp"
                   data-blade-component="styled-base-input"
                   editable={true}
@@ -553,8 +558,8 @@ exports[`<OTPInput /> should render 1`] = `
                   placeholder=""
                   secureTextEntry={false}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "transparent",
                         "color": "hsla(216, 27%, 36%, 1)",
                         "flexBasis": 0,
@@ -585,8 +590,8 @@ exports[`<OTPInput /> should render 1`] = `
                 />
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "hsla(218, 89%, 51%, 1)",
                         "bottom": 0,
                         "height": 1,
@@ -595,7 +600,7 @@ exports[`<OTPInput /> should render 1`] = `
                         "position": "absolute",
                         "right": 0,
                       },
-                      Object {
+                      {
                         "opacity": undefined,
                         "width": "undefined%",
                       },
@@ -609,8 +614,8 @@ exports[`<OTPInput /> should render 1`] = `
         <View
           data-blade-component="base-box"
           style={
-            Array [
-              Object {
+            [
+              {
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
@@ -622,8 +627,8 @@ exports[`<OTPInput /> should render 1`] = `
           <View
             data-blade-component="base-box"
             style={
-              Array [
-                Object {},
+              [
+                {},
               ]
             }
           >
@@ -633,8 +638,8 @@ exports[`<OTPInput /> should render 1`] = `
               flexDirection="column"
               position="relative"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "display": "flex",
                     "flexDirection": "column",
                     "position": "relative",
@@ -651,14 +656,14 @@ exports[`<OTPInput /> should render 1`] = `
                 flexDirection="row"
                 position="relative"
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "display": "flex",
                       "flexDirection": "row",
                       "position": "relative",
                       "width": "100%",
                     },
-                    Object {
+                    {
                       "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
                       "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
                       "borderBottomStyle": "solid",
@@ -676,11 +681,12 @@ exports[`<OTPInput /> should render 1`] = `
                   accessibilityLabel=" character 4"
                   accessibilityRequired={true}
                   accessibilityState={
-                    Object {
+                    {
                       "disabled": false,
                       "expanded": undefined,
                     }
                   }
+                  accessible={true}
                   autoCompleteType="sms-otp"
                   data-blade-component="styled-base-input"
                   editable={true}
@@ -698,8 +704,8 @@ exports[`<OTPInput /> should render 1`] = `
                   placeholder=""
                   secureTextEntry={false}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "transparent",
                         "color": "hsla(216, 27%, 36%, 1)",
                         "flexBasis": 0,
@@ -730,8 +736,8 @@ exports[`<OTPInput /> should render 1`] = `
                 />
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "hsla(218, 89%, 51%, 1)",
                         "bottom": 0,
                         "height": 1,
@@ -740,7 +746,7 @@ exports[`<OTPInput /> should render 1`] = `
                         "position": "absolute",
                         "right": 0,
                       },
-                      Object {
+                      {
                         "opacity": undefined,
                         "width": "undefined%",
                       },
@@ -754,8 +760,8 @@ exports[`<OTPInput /> should render 1`] = `
         <View
           data-blade-component="base-box"
           style={
-            Array [
-              Object {
+            [
+              {
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
@@ -767,8 +773,8 @@ exports[`<OTPInput /> should render 1`] = `
           <View
             data-blade-component="base-box"
             style={
-              Array [
-                Object {},
+              [
+                {},
               ]
             }
           >
@@ -778,8 +784,8 @@ exports[`<OTPInput /> should render 1`] = `
               flexDirection="column"
               position="relative"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "display": "flex",
                     "flexDirection": "column",
                     "position": "relative",
@@ -796,14 +802,14 @@ exports[`<OTPInput /> should render 1`] = `
                 flexDirection="row"
                 position="relative"
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "display": "flex",
                       "flexDirection": "row",
                       "position": "relative",
                       "width": "100%",
                     },
-                    Object {
+                    {
                       "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
                       "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
                       "borderBottomStyle": "solid",
@@ -821,11 +827,12 @@ exports[`<OTPInput /> should render 1`] = `
                   accessibilityLabel=" character 5"
                   accessibilityRequired={true}
                   accessibilityState={
-                    Object {
+                    {
                       "disabled": false,
                       "expanded": undefined,
                     }
                   }
+                  accessible={true}
                   autoCompleteType="sms-otp"
                   data-blade-component="styled-base-input"
                   editable={true}
@@ -843,8 +850,8 @@ exports[`<OTPInput /> should render 1`] = `
                   placeholder=""
                   secureTextEntry={false}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "transparent",
                         "color": "hsla(216, 27%, 36%, 1)",
                         "flexBasis": 0,
@@ -875,8 +882,8 @@ exports[`<OTPInput /> should render 1`] = `
                 />
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "hsla(218, 89%, 51%, 1)",
                         "bottom": 0,
                         "height": 1,
@@ -885,7 +892,7 @@ exports[`<OTPInput /> should render 1`] = `
                         "position": "absolute",
                         "right": 0,
                       },
-                      Object {
+                      {
                         "opacity": undefined,
                         "width": "undefined%",
                       },
@@ -899,8 +906,8 @@ exports[`<OTPInput /> should render 1`] = `
         <View
           data-blade-component="base-box"
           style={
-            Array [
-              Object {
+            [
+              {
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
@@ -912,8 +919,8 @@ exports[`<OTPInput /> should render 1`] = `
           <View
             data-blade-component="base-box"
             style={
-              Array [
-                Object {},
+              [
+                {},
               ]
             }
           >
@@ -923,8 +930,8 @@ exports[`<OTPInput /> should render 1`] = `
               flexDirection="column"
               position="relative"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "display": "flex",
                     "flexDirection": "column",
                     "position": "relative",
@@ -941,14 +948,14 @@ exports[`<OTPInput /> should render 1`] = `
                 flexDirection="row"
                 position="relative"
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "display": "flex",
                       "flexDirection": "row",
                       "position": "relative",
                       "width": "100%",
                     },
-                    Object {
+                    {
                       "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
                       "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
                       "borderBottomStyle": "solid",
@@ -966,11 +973,12 @@ exports[`<OTPInput /> should render 1`] = `
                   accessibilityLabel=" character 6"
                   accessibilityRequired={true}
                   accessibilityState={
-                    Object {
+                    {
                       "disabled": false,
                       "expanded": undefined,
                     }
                   }
+                  accessible={true}
                   autoCompleteType="sms-otp"
                   data-blade-component="styled-base-input"
                   editable={true}
@@ -988,8 +996,8 @@ exports[`<OTPInput /> should render 1`] = `
                   placeholder=""
                   secureTextEntry={false}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "transparent",
                         "color": "hsla(216, 27%, 36%, 1)",
                         "flexBasis": 0,
@@ -1020,8 +1028,8 @@ exports[`<OTPInput /> should render 1`] = `
                 />
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "hsla(218, 89%, 51%, 1)",
                         "bottom": 0,
                         "height": 1,
@@ -1030,7 +1038,7 @@ exports[`<OTPInput /> should render 1`] = `
                         "position": "absolute",
                         "right": 0,
                       },
-                      Object {
+                      {
                         "opacity": undefined,
                         "width": "undefined%",
                       },
@@ -1046,8 +1054,8 @@ exports[`<OTPInput /> should render 1`] = `
     <View
       data-blade-component="base-box"
       style={
-        Array [
-          Object {
+        [
+          {
             "marginLeft": 0,
           },
         ]
