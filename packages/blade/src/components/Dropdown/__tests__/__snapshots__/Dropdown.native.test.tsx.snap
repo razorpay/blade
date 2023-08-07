@@ -291,6 +291,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                   fontStyle="normal"
                   fontWeight="regular"
                   lineHeight={100}
+                  numberOfLines={1}
                   style={
                     [
                       {
@@ -308,10 +309,12 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                         "paddingLeft": 0,
                         "paddingRight": 0,
                         "paddingTop": 0,
+                        "textAlign": "left",
                         "textDecorationLine": "none",
                       },
                     ]
                   }
+                  textAlign="left"
                 >
                   Select Option
                 </Text>
