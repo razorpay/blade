@@ -11,6 +11,8 @@ const nativeTsFile = path.join(__dirname, 'nativeFile.native.ts');
 const nativeTsxFile = path.join(__dirname, 'nativeFile.native.tsx');
 const webTsFile = path.join(__dirname, 'webFile.web.ts');
 const webTsxFile = path.join(__dirname, 'webFile.web.tsx');
+const normalTsFile = path.join(__dirname, 'x.ts');
+const normalTsxFile = path.join(__dirname, 'x.tsx');
 
 ruleTester.run('no-cross-platform-import', noCrossPlatformImportsRule, {
   valid: [
@@ -29,6 +31,14 @@ ruleTester.run('no-cross-platform-import', noCrossPlatformImportsRule, {
     {
       code: `import validImport from './validImport.web';`,
       filename: webTsxFile,
+    },
+    {
+      code: `import validImport from './validImport';`,
+      filename: normalTsFile,
+    },
+    {
+      code: `import validImport from './validImport';`,
+      filename: normalTsxFile,
     },
   ],
   invalid: [
@@ -65,6 +75,24 @@ ruleTester.run('no-cross-platform-import', noCrossPlatformImportsRule, {
       errors: [
         {
           messageId: 'invalidNativeImport',
+        },
+      ],
+    },
+    {
+      code: `import invalidImport from './invalidImport.native';`,
+      filename: normalTsFile,
+      errors: [
+        {
+          messageId: 'invalidWebOrNativeImport',
+        },
+      ],
+    },
+    {
+      code: `import invalidImport from './invalidImport.native';`,
+      filename: normalTsxFile,
+      errors: [
+        {
+          messageId: 'invalidWebOrNativeImport',
         },
       ],
     },
