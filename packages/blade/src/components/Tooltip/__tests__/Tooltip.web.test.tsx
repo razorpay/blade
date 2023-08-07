@@ -18,8 +18,10 @@ import assertAccessible from '~utils/testing/assertAccessible.web';
 const waitForPosition = () => act(async () => {});
 const animationDuration = paymentTheme.motion.duration.quick;
 
-describe('<Tooltip />', async () => {
-  jest.useFakeTimers();
+describe('<Tooltip />', () => {
+  jest.useFakeTimers({
+    legacyFakeTimers: true,
+  });
 
   it('should render', () => {
     const buttonText = 'Hover me';

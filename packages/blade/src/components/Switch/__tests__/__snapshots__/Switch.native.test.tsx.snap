@@ -3,7 +3,7 @@
 exports[`<Switch /> should render switch with label 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -12,8 +12,8 @@ exports[`<Switch /> should render switch with label 1`] = `
     data-blade-component="switch"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -25,7 +25,7 @@ exports[`<Switch /> should render switch with label 1`] = `
       accessibilityRequired={false}
       accessibilityRole="switch"
       accessibilityState={
-        Object {
+        {
           "checked": false,
           "disabled": false,
         }
@@ -43,8 +43,8 @@ exports[`<Switch /> should render switch with label 1`] = `
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        Array [
-          Object {
+        [
+          {
             "display": "flex",
             "flexDirection": "row",
             "marginBottom": 2,
@@ -61,8 +61,8 @@ exports[`<Switch /> should render switch with label 1`] = `
         isDisabled={false}
         size="medium"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "backgroundColor": "hsla(214, 18%, 69%, 1)",
               "borderRadius": 9999,
@@ -81,7 +81,7 @@ exports[`<Switch /> should render switch with label 1`] = `
               "transitionTimingFunction": "0.3 0 0.2 1",
               "width": 44,
             },
-            Object {
+            {
               "backgroundColor": undefined,
             },
           ]
@@ -93,9 +93,9 @@ exports[`<Switch /> should render switch with label 1`] = `
           isChecked={false}
           size="medium"
           style={
-            Array [
-              Object {},
-              Object {
+            [
+              {},
+              {
                 "alignItems": "center",
                 "display": "flex",
                 "height": 20,
@@ -113,8 +113,8 @@ exports[`<Switch /> should render switch with label 1`] = `
         >
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignItems": "center",
                   "backgroundColor": "hsla(220, 30%, 96%, 1)",
                   "borderRadius": 9999,
@@ -125,10 +125,10 @@ exports[`<Switch /> should render switch with label 1`] = `
                   "position": "absolute",
                   "width": "100%",
                 },
-                Object {
+                {
                   "left": 0,
-                  "transform": Array [
-                    Object {
+                  "transform": [
+                    {
                       "translateX": undefined,
                     },
                   ],
@@ -139,7 +139,7 @@ exports[`<Switch /> should render switch with label 1`] = `
           >
             <View
               style={
-                Object {
+                {
                   "opacity": undefined,
                 }
               }
@@ -158,15 +158,15 @@ exports[`<Switch /> should render switch with label 1`] = `
                 minX={0}
                 minY={0}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "transparent",
                       "borderWidth": 0,
                     },
-                    Array [
-                      Object {},
+                    [
+                      {},
                     ],
-                    Object {
+                    {
                       "flex": 0,
                       "height": 10,
                       "width": 10,
@@ -180,7 +180,7 @@ exports[`<Switch /> should render switch with label 1`] = `
                 <RNSVGGroup
                   fill={null}
                   propList={
-                    Array [
+                    [
                       "fill",
                     ]
                   }
@@ -191,7 +191,7 @@ exports[`<Switch /> should render switch with label 1`] = `
                     fill={4281484642}
                     fillRule={0}
                     propList={
-                      Array [
+                      [
                         "fill",
                         "fillRule",
                       ]
@@ -211,7 +211,7 @@ exports[`<Switch /> should render switch with label 1`] = `
 exports[`<Switch /> should set disabled state with isDisabled 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -220,8 +220,8 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
     data-blade-component="switch"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -233,7 +233,7 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
       accessibilityRequired={false}
       accessibilityRole="switch"
       accessibilityState={
-        Object {
+        {
           "checked": false,
           "disabled": true,
         }
@@ -251,8 +251,8 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        Array [
-          Object {
+        [
+          {
             "display": "flex",
             "flexDirection": "row",
             "marginBottom": 2,
@@ -269,8 +269,8 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
         isDisabled={true}
         size="medium"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
               "borderRadius": 9999,
@@ -289,7 +289,7 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
               "transitionTimingFunction": "0.3 0 0.2 1",
               "width": 44,
             },
-            Object {
+            {
               "backgroundColor": undefined,
             },
           ]
@@ -301,9 +301,9 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
           isChecked={false}
           size="medium"
           style={
-            Array [
-              Object {},
-              Object {
+            [
+              {},
+              {
                 "alignItems": "center",
                 "display": "flex",
                 "height": 20,
@@ -322,8 +322,8 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
           <View
             isDisabled={true}
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignItems": "center",
                   "backgroundColor": "hsla(220, 27%, 98%, 1)",
                   "borderRadius": 9999,
@@ -334,10 +334,10 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
                   "position": "absolute",
                   "width": "100%",
                 },
-                Object {
+                {
                   "left": 0,
-                  "transform": Array [
-                    Object {
+                  "transform": [
+                    {
                       "translateX": undefined,
                     },
                   ],
@@ -348,7 +348,7 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
           >
             <View
               style={
-                Object {
+                {
                   "opacity": undefined,
                 }
               }
@@ -367,15 +367,15 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
                 minX={0}
                 minY={0}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "transparent",
                       "borderWidth": 0,
                     },
-                    Array [
-                      Object {},
+                    [
+                      {},
                     ],
-                    Object {
+                    {
                       "flex": 0,
                       "height": 10,
                       "width": 10,
@@ -389,7 +389,7 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
                 <RNSVGGroup
                   fill={null}
                   propList={
-                    Array [
+                    [
                       "fill",
                     ]
                   }
@@ -400,7 +400,7 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
                     fill={4288851646}
                     fillRule={0}
                     propList={
-                      Array [
+                      [
                         "fill",
                         "fillRule",
                       ]

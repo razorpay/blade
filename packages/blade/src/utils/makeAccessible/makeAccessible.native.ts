@@ -12,6 +12,8 @@ import { logger } from '~utils/logger';
 export const makeAccessible = (props: Partial<AccessibilityProps>): Record<string, unknown> => {
   const newProps: Record<string, any> = {};
 
+  newProps.accessible = true;
+
   // loop through all the incoming props and map them
   for (const key in props) {
     const propKey = key as keyof AccessibilityMap;
@@ -44,6 +46,7 @@ export const makeAccessible = (props: Partial<AccessibilityProps>): Record<strin
         newProps.importantForAccessibility = 'no-hide-descendants';
       }
 
+      delete newProps.accessible;
       delete newProps.accessibilityHidden;
       continue;
     }

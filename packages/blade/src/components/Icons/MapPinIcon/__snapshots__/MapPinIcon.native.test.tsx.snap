@@ -3,7 +3,7 @@
 exports[`<MapPinIcon /> should render MapPinIcon 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -22,15 +22,15 @@ exports[`<MapPinIcon /> should render MapPinIcon 1`] = `
     minX={0}
     minY={0}
     style={
-      Array [
-        Object {
+      [
+        {
           "backgroundColor": "transparent",
           "borderWidth": 0,
         },
-        Array [
-          Object {},
+        [
+          {},
         ],
-        Object {
+        {
           "flex": 0,
           "height": 20,
           "width": 20,
@@ -44,7 +44,7 @@ exports[`<MapPinIcon /> should render MapPinIcon 1`] = `
     <RNSVGGroup
       fill={null}
       propList={
-        Array [
+        [
           "fill",
         ]
       }
@@ -53,7 +53,7 @@ exports[`<MapPinIcon /> should render MapPinIcon 1`] = `
         d="M11.4448 23.8317C11.4448 23.8317 11.4453 23.8321 12 23L12.5547 23.8321C12.2188 24.056 11.7807 24.0556 11.4448 23.8317Z"
         fill={4282603381}
         propList={
-          Array [
+          [
             "fill",
           ]
         }
@@ -64,7 +64,7 @@ exports[`<MapPinIcon /> should render MapPinIcon 1`] = `
         fill={4282603381}
         fillRule={0}
         propList={
-          Array [
+          [
             "fill",
             "fillRule",
           ]
@@ -76,7 +76,7 @@ exports[`<MapPinIcon /> should render MapPinIcon 1`] = `
         fill={4282603381}
         fillRule={0}
         propList={
-          Array [
+          [
             "fill",
             "fillRule",
           ]
