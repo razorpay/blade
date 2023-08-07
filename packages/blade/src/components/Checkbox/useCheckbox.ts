@@ -7,6 +7,7 @@ import { useFormId } from '~components/Form/useFormId';
 import { makeAccessible } from '~utils/makeAccessible';
 import { getPlatformType } from '~utils';
 import { useControllableState } from '~utils/useControllable';
+import { throwBladeError } from '~utils/logger';
 
 type UseCheckboxProps = Pick<
   CheckboxProps,
@@ -54,9 +55,10 @@ const useCheckbox = ({
   const isReactNative = getPlatformType() === 'react-native';
   if (__DEV__) {
     if (isChecked && defaultChecked) {
-      throw new Error(
-        `[Blade useCheckbox] Do not provide both 'isChecked' and 'defaultChecked' to useCheckbox. Consider if you want this component to be controlled or uncontrolled.`,
-      );
+      throwBladeError({
+        message: `Do not provide both 'isChecked' and 'defaultChecked' to useCheckbox. Consider if you want this component to be controlled or uncontrolled.`,
+        moduleName: 'useCheckbox',
+      });
     }
   }
 

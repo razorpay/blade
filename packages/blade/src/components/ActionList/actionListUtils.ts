@@ -5,6 +5,7 @@ import type { OptionsType } from '~components/Dropdown/useDropdown';
 import { isReactNative } from '~utils';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
+import { throwBladeError } from '~utils/logger';
 
 /**
  * Returns if there is ActionListItem after ActionListSection
@@ -159,9 +160,10 @@ const getActionListProperties = (
       }
 
       if (__DEV__) {
-        throw new Error(
-          `[ActionList]: Only ${actionListAllowedChildren.join(', ')} supported inside ActionList`,
-        );
+        throwBladeError({
+          message: `Only ${actionListAllowedChildren.join(', ')} supported inside ActionList`,
+          moduleName: 'ActionList',
+        });
       }
     }
     return child;
@@ -187,9 +189,10 @@ const validateActionListItemProps = ({
         !isValidAllowedChildren(child, componentIds.ActionListItemIcon) &&
         !isValidAllowedChildren(child, componentIds.ActionListItemText)
       ) {
-        throw new Error(
-          `[ActionListItem]: Only ${componentIds.ActionListItemIcon} and ${componentIds.ActionListItemText} are allowed in trailing prop`,
-        );
+        throwBladeError({
+          message: `Only ${componentIds.ActionListItemIcon} and ${componentIds.ActionListItemText} are allowed in trailing prop`,
+          moduleName: 'ActionListItem',
+        });
       }
     });
 
@@ -199,9 +202,10 @@ const validateActionListItemProps = ({
         !isValidAllowedChildren(child, componentIds.ActionListItemText) &&
         !isValidAllowedChildren(child, componentIds.ActionListItemAsset)
       ) {
-        throw new Error(
-          `[ActionListItem]: Only ${componentIds.ActionListItemIcon}, ${componentIds.ActionListItemAsset}, and ${componentIds.ActionListItemText} are allowed in leading prop`,
-        );
+        throwBladeError({
+          message: `Only ${componentIds.ActionListItemIcon}, ${componentIds.ActionListItemAsset}, and ${componentIds.ActionListItemText} are allowed in leading prop`,
+          moduleName: 'ActionListItem',
+        });
       }
     });
   }

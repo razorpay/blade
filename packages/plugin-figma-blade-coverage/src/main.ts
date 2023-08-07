@@ -6,6 +6,8 @@ import {
 } from '@create-figma-plugin/utilities';
 
 import {
+  BLADE_BOX_BACKGROUND_COLOR_STYLE_IDS,
+  BLADE_BOX_BORDER_COLOR_STYLE_IDS,
   BLADE_COLOR_STYLE_IDS,
   BLADE_COMPONENT_IDS,
   BLADE_TEXT_STYLE_IDS,
@@ -24,7 +26,7 @@ type CoverageMetrics = {
 };
 
 const MAIN_FRAME_NODES = ['FRAME', 'SECTION'];
-const NODES_SKIP_FROM_COVERAGE = ['GROUP', 'SECTION', 'VECTOR', 'FRAME'];
+const NODES_SKIP_FROM_COVERAGE = ['GROUP', 'SECTION', 'VECTOR', 'FRAME', 'ELLIPSE'];
 const nonBladeHighlighterNodes: BaseNode[] = [];
 const bladeCoverageCards: BaseNode[] = [];
 
@@ -69,6 +71,7 @@ const renderCoverageCard = async ({
   nonBladeColorStyles,
   nonBladeTextStyles,
   totalLayers,
+  bladeCoverage,
 }: {
   mainFrameNode: SceneNode;
 } & CoverageMetrics): Promise<void> => {
@@ -104,7 +107,6 @@ const renderCoverageCard = async ({
       BLADE_INTENT_COLOR_KEYS[intent as 'positive' | 'negative' | 'notice'].id = colorStyle.id;
     }
 
-    const bladeCoverage = Number((bladeComponents / totalLayers) * 100);
     let coverageColorIntent = BLADE_INTENT_COLOR_KEYS.negative.id;
     let bladeCoverageType = 'Very Low 😭';
     const PROGRESS_BAR_MAX_WIDTH = 254;
@@ -277,10 +279,46 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
             nonBladeColorStyles++;
             highlightNonBladeNode(traversedNode);
           }
+        } else if (traversedNode.type === 'RECTANGLE') {
+          let isImage = false;
+
+          if (traversedNode.fills !== figma.mixed) {
+            // figma considers images as rectangles with fille type as IMAGE
+            isImage = Boolean(traversedNode.fills.find((fill) => fill.type === 'IMAGE'));
+          }
+
+          if (isImage) {
+            NODES_SKIP_FROM_COVERAGE.push('RECTANGLE');
+          }
+
+          if (!isImage && (traversedNode.strokeStyleId || traversedNode.fillStyleId)) {
+            // check if rectangle uses blade surface.border.* colors for border
+            if (traversedNode.strokeStyleId) {
+              const traversedNodeColorStyleId = traversedNode.strokeStyleId.split(',')[0];
+              if (BLADE_BOX_BORDER_COLOR_STYLE_IDS.includes(traversedNodeColorStyleId ?? '')) {
+                bladeColorStyles++;
+              } else {
+                nonBladeColorStyles++;
+                highlightNonBladeNode(traversedNode);
+              }
+            }
+            // check if rectangle uses blade brand.* or surface.background.* colors for background
+            if (traversedNode.fillStyleId && traversedNode.fillStyleId !== figma.mixed) {
+              const traversedNodeFillStyleId = traversedNode.fillStyleId.split(',')[0];
+              if (BLADE_BOX_BACKGROUND_COLOR_STYLE_IDS.includes(traversedNodeFillStyleId ?? '')) {
+                bladeColorStyles++;
+              } else {
+                nonBladeColorStyles++;
+                highlightNonBladeNode(traversedNode);
+              }
+            }
+          }
         }
 
         if (
-          ![...NODES_SKIP_FROM_COVERAGE, 'INSTANCE', 'TEXT', 'LINE'].includes(traversedNode.type) &&
+          ![...NODES_SKIP_FROM_COVERAGE, 'INSTANCE', 'TEXT', 'LINE', 'RECTANGLE'].includes(
+            traversedNode.type,
+          ) &&
           getParentNode(traversedNode)?.type !== 'PAGE'
         ) {
           highlightNonBladeNode(traversedNode);
@@ -292,6 +330,14 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
         ) {
           // exclude the main frame itself from the count to remove false negatives
           totalLayers++;
+        }
+
+        // remove rectangle node index for next iteration because we don't want to remove all the rectangle nodes, only the image ones
+        const rectangleImageNodeIndex = NODES_SKIP_FROM_COVERAGE.findIndex(
+          (nodeName) => nodeName === 'RECTANGLE',
+        );
+        if (rectangleImageNodeIndex !== -1) {
+          NODES_SKIP_FROM_COVERAGE.splice(rectangleImageNodeIndex, 1);
         }
       },
       (traversedNode) => {
@@ -331,7 +377,10 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
     nonBladeTextStyles,
     nonBladeColorStyles,
     totalLayers,
-    bladeCoverage: Number((bladeComponents / totalLayers) * 100),
+    bladeCoverage:
+      bladeComponents === 0 && totalLayers === 0
+        ? 0
+        : Number((bladeComponents / totalLayers) * 100),
   };
 };
 
@@ -358,10 +407,27 @@ const getPageMainFrameNodes = (nodes: readonly SceneNode[]): SceneNode[] => {
   return mainFrameNodes;
 };
 
+const removeOldGroupNodes = (): void => {
+  // remove all teh old group nodes
+  const bladeCoverageCardsGroup = figma.currentPage.findOne(
+    (node) => node.name === 'Blade Coverage Cards',
+  );
+  const nonBladeItemsGroup = figma.currentPage.findOne((node) => node.name === 'Non Blade Items');
+
+  if (bladeCoverageCardsGroup) {
+    bladeCoverageCardsGroup.remove();
+  }
+  if (nonBladeItemsGroup) {
+    nonBladeItemsGroup.remove();
+  }
+};
+
 const main = async (): Promise<void> => {
   try {
     figma.skipInvisibleInstanceChildren = true;
     figma.notify('Calculating Coverage', { timeout: Infinity });
+
+    removeOldGroupNodes();
 
     let nodes: readonly SceneNode[] = [];
     if (figma.currentPage.selection.length > 0) {

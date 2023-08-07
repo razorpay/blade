@@ -1,4 +1,5 @@
 import React from 'react';
+import { throwBladeError } from '~utils/logger';
 
 type TooltipContext = true | null;
 const TooltipContext = React.createContext<TooltipContext>(null);
@@ -8,7 +9,10 @@ const useTooltipContext = (): TooltipContext => {
 
   if (__DEV__) {
     if (!context) {
-      throw new Error('[Blade Tooltip]: TooltipInteractiveWrapper must be used within Tooltip');
+      throwBladeError({
+        message: `TooltipInteractiveWrapper must be used within Tooltip`,
+        moduleName: 'Tooltip',
+      });
     }
   }
 
