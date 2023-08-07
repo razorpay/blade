@@ -129,6 +129,9 @@ const makeBoxProps = (props: BoxProps): KeysRequired<Omit<BoxProps, 'testID' | '
     backgroundOrigin: props.backgroundOrigin,
     backgroundRepeat: props.backgroundRepeat,
     elevation: props.elevation,
+    transform: props.transform,
+    transformOrigin: props.transformOrigin,
+    clipPath: props.clipPath,
 
     // Border
     borderWidth: props.borderWidth,

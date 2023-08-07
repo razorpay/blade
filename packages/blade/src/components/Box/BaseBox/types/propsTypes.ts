@@ -145,6 +145,9 @@ type CommonBoxVisualProps = MakeObjectResponsive<
     | 'backgroundOrigin'
     | 'backgroundRepeat'
     | 'pointerEvents'
+    | 'transform'
+    | 'transformOrigin'
+    | 'clipPath'
   > & {
       /**
        * Sets the elevation for Box
