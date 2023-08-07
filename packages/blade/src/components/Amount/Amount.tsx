@@ -4,7 +4,6 @@ import type { Currency } from './amountTokens';
 import {
   amountFontSizes,
   getCurrencyAbbreviations,
-  currencyLocaleMapping,
   currencyPrefixMapping,
   affixFontSizes,
   amountLineHeights,
@@ -164,7 +163,9 @@ export const getFlooredFixed = (value: number, decimalPlaces: number): number =>
 };
 
 export const addCommas = (amountValue: number, currency: Currency, decimalPlaces = 0): string => {
-  const locale = currencyLocaleMapping[currency];
+  // If the currency is 'INR', set the locale to 'en-IN' (Indian English).
+  // Otherwise, set the locale to 'en-US' (U.S. English).
+  const locale = currency === 'INR' ? 'en-IN' : 'en-US';
   return amountValue.toLocaleString(locale, { minimumFractionDigits: decimalPlaces });
 };
 /**
