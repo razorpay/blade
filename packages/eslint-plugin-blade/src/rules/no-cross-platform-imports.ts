@@ -27,7 +27,7 @@ const noCrossPlatformImportsRule: TSESLint.RuleModule<MessageIds> = {
   },
   create: (context: TSESLint.RuleContext<MessageIds, RuleOptions>) => ({
     ImportDeclaration(node) {
-      const ignoreImportsPattern = context.options[0] && context.options[0].ignoreImportsPattern;
+      const ignoreImportsPattern = context.options[0]?.ignoreImportsPattern;
       const sourceValue = node.source.value;
       const isWebImport = sourceValue.endsWith('.web');
       const isNativeImport = sourceValue.endsWith('.native');
