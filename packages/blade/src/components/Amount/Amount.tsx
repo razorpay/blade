@@ -69,7 +69,8 @@ type AmountProps = {
    */
   prefix?: 'currency-symbol' | 'currency-code';
   /**
-   * The currency of the amount.
+   * The currency of the amount.  Note that this component
+   * only displays the provided value in the specified currency, it does not perform any currency conversion.
    *
    * @default 'INR'
    * */
