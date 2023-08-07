@@ -1,5 +1,14 @@
 # @razorpay/blade
 
+## 9.5.3
+
+### Patch Changes
+
+- d7183b49: fix(SelectInput): truncate text in select input
+- 59518acb: feat(BottomSheet): add `zindex` prop & improve focus management logic
+
+  Thanks to @archie252000 for his contribution!
+
 ## 9.5.2
 
 ### Patch Changes
