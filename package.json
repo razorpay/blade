@@ -11,7 +11,7 @@
       "packages/blade",
       "packages/token-publisher",
       "packages/razorsharp",
-      "packages/eslint-plugin-razorpay-blade"
+      "packages/eslint-plugin-blade"
     ],
     "nohoist": [
       "**"
@@ -23,7 +23,7 @@
     "publish-npm": "lerna run --scope @razorpay/blade publish-npm",
     "release": "lerna run --scope @razorpay/blade generate-github-npmrc && changeset publish",
     "build": "lerna run --scope @razorpay/blade build",
-    "postinstall": "lerna run --scope eslint-plugin-razorpay-blade build"
+    "postinstall": "lerna run --scope eslint-plugin-blade build"
   },
   "dependencies": {},
   "devDependencies": {
