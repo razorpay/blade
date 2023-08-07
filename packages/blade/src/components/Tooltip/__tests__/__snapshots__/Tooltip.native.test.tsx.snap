@@ -61,6 +61,7 @@ exports[`<Tooltip /> should render 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     onTouchEnd={[Function]}
+    role="button"
     style={
       [
         {
@@ -430,6 +431,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     onTouchEnd={[Function]}
+    role="button"
     style={
       [
         {

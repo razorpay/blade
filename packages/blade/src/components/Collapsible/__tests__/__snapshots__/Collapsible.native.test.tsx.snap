@@ -95,6 +95,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
         onResponderTerminate={[Function]}
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
+        role="button"
         style={
           [
             {

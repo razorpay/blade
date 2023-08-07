@@ -2968,11 +2968,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
     accessibilityRole="button"
     accessibilityState={
       {
-<<<<<<< HEAD
         "busy": undefined,
         "checked": undefined,
-=======
->>>>>>> origin/master
         "disabled": false,
         "expanded": undefined,
         "selected": undefined,
@@ -3019,6 +3016,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
     onResponderTerminate={[Function]}
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
+    role="button"
     style={
       [
         {
@@ -3409,11 +3407,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
     accessibilityRole="button"
     accessibilityState={
       {
-<<<<<<< HEAD
         "busy": undefined,
         "checked": undefined,
-=======
->>>>>>> origin/master
         "disabled": false,
         "expanded": undefined,
         "selected": undefined,
@@ -3460,6 +3455,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
     onResponderTerminate={[Function]}
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
+    role="button"
     style={
       [
         {

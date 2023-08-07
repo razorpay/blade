@@ -12,11 +12,8 @@ exports[`<Link /> should render button variant of link 1`] = `
     accessibilityRole="button"
     accessibilityState={
       {
-<<<<<<< HEAD
         "busy": undefined,
         "checked": undefined,
-=======
->>>>>>> origin/master
         "disabled": false,
         "expanded": undefined,
         "selected": undefined,
@@ -129,11 +126,8 @@ exports[`<Link /> should render disabled button variant of link 1`] = `
     accessibilityRole="button"
     accessibilityState={
       {
-<<<<<<< HEAD
         "busy": undefined,
         "checked": undefined,
-=======
->>>>>>> origin/master
         "disabled": true,
         "expanded": undefined,
         "selected": undefined,
@@ -246,11 +240,8 @@ exports[`<Link /> should render link with default properties 1`] = `
     accessibilityRole="link"
     accessibilityState={
       {
-<<<<<<< HEAD
         "busy": undefined,
         "checked": undefined,
-=======
->>>>>>> origin/master
         "disabled": false,
         "expanded": undefined,
         "selected": undefined,
@@ -363,11 +354,8 @@ exports[`<Link /> should render link with icon with default iconPosition 1`] = `
     accessibilityRole="link"
     accessibilityState={
       {
-<<<<<<< HEAD
         "busy": undefined,
         "checked": undefined,
-=======
->>>>>>> origin/master
         "disabled": false,
         "expanded": undefined,
         "selected": undefined,
@@ -568,11 +556,8 @@ exports[`<Link /> should render link with icon with left iconPosition 1`] = `
     accessibilityRole="link"
     accessibilityState={
       {
-<<<<<<< HEAD
         "busy": undefined,
         "checked": undefined,
-=======
->>>>>>> origin/master
         "disabled": false,
         "expanded": undefined,
         "selected": undefined,
@@ -773,11 +758,8 @@ exports[`<Link /> should render link with icon with right iconPosition 1`] = `
     accessibilityRole="link"
     accessibilityState={
       {
-<<<<<<< HEAD
         "busy": undefined,
         "checked": undefined,
-=======
->>>>>>> origin/master
         "disabled": false,
         "expanded": undefined,
         "selected": undefined,
@@ -978,11 +960,8 @@ exports[`<Link /> should render link with icon without text 1`] = `
     accessibilityRole="link"
     accessibilityState={
       {
-<<<<<<< HEAD
         "busy": undefined,
         "checked": undefined,
-=======
->>>>>>> origin/master
         "disabled": false,
         "expanded": undefined,
         "selected": undefined,
@@ -1181,11 +1160,8 @@ exports[`<Link /> should render with small size 1`] = `
     accessibilityRole="link"
     accessibilityState={
       {
-<<<<<<< HEAD
         "busy": undefined,
         "checked": undefined,
-=======
->>>>>>> origin/master
         "disabled": false,
         "expanded": undefined,
         "selected": undefined,
