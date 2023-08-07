@@ -11,7 +11,7 @@
       "packages/blade",
       "packages/token-publisher",
       "packages/razorsharp",
-      "packages/eslint-plugin-blade"
+      "packages/eslint-plugin-razorpay-blade"
     ],
     "nohoist": [
       "**"
