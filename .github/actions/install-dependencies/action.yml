@@ -26,5 +26,6 @@ runs:
 
     - name: Run postinstall script
       run: yarn postinstall
+      working-directory: packages/blade
       shell: bash
       if: steps.cache.outputs.cache-hit == 'true'
