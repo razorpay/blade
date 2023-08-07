@@ -3,7 +3,7 @@
 exports[`<RadioGroup /> should render with help text 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -11,20 +11,21 @@ exports[`<RadioGroup /> should render with help text 1`] = `
   <View
     data-blade-component="base-box"
     style={
-      Array [
-        Object {},
+      [
+        {},
       ]
     }
   >
     <View
       accessibilityLabelledBy="radio-group-15-label"
       accessibilityRole="radiogroup"
+      accessible={true}
       data-blade-component="radio-group"
       display="flex"
       flexDirection="column"
       style={
-        Array [
-          Object {
+        [
+          {
             "display": "flex",
             "flexDirection": "column",
           },
@@ -34,8 +35,8 @@ exports[`<RadioGroup /> should render with help text 1`] = `
       <View
         data-blade-component="base-box"
         style={
-          Array [
-            Object {
+          [
+            {
               "marginBottom": 4,
               "marginRight": 16,
             },
@@ -51,8 +52,8 @@ exports[`<RadioGroup /> should render with help text 1`] = `
           gap="spacing.0"
           maxHeight="36px"
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "display": "flex",
                 "flexDirection": "row",
@@ -64,6 +65,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
           }
         >
           <Text
+            accessible={true}
             color="surface.text.subdued.lowContrast"
             data-blade-component="text"
             fontFamily="text"
@@ -73,8 +75,8 @@ exports[`<RadioGroup /> should render with help text 1`] = `
             lineHeight={50}
             numberOfLines={2}
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "hsla(217, 18%, 45%, 1)",
                   "fontFamily": "Lato",
                   "fontSize": 12,
@@ -99,8 +101,8 @@ exports[`<RadioGroup /> should render with help text 1`] = `
           <View
             data-blade-component="visually-hidden"
             style={
-              Array [
-                Object {
+              [
+                {
                   "borderColor": "black",
                   "borderStyle": "solid",
                   "borderWidth": 0,
@@ -126,6 +128,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.normal.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -134,8 +137,8 @@ exports[`<RadioGroup /> should render with help text 1`] = `
               fontWeight="regular"
               lineHeight={100}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "hsla(217, 56%, 17%, 1)",
                     "fontFamily": "Lato",
                     "fontSize": 14,
@@ -163,8 +166,8 @@ exports[`<RadioGroup /> should render with help text 1`] = `
       <View
         data-blade-component="base-box"
         style={
-          Array [
-            Object {},
+          [
+            {},
           ]
         }
       >
@@ -173,8 +176,8 @@ exports[`<RadioGroup /> should render with help text 1`] = `
           display="flex"
           flexDirection="column"
           style={
-            Array [
-              Object {
+            [
+              {
                 "display": "flex",
                 "flexDirection": "column",
               },
@@ -184,8 +187,8 @@ exports[`<RadioGroup /> should render with help text 1`] = `
           <View
             data-blade-component="base-box"
             style={
-              Array [
-                Object {
+              [
+                {
                   "marginBottom": 8,
                 },
               ]
@@ -194,8 +197,8 @@ exports[`<RadioGroup /> should render with help text 1`] = `
             <View
               data-blade-component="base-box"
               style={
-                Array [
-                  Object {},
+                [
+                  {},
                 ]
               }
             >
@@ -205,7 +208,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                 accessibilityRequired={false}
                 accessibilityRole="radio"
                 accessibilityState={
-                  Object {
+                  {
                     "checked": false,
                     "disabled": false,
                   }
@@ -224,8 +227,8 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "display": "flex",
                       "flexDirection": "row",
                       "marginBottom": 2,
@@ -240,8 +243,8 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                   display="flex"
                   flexDirection="column"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "display": "flex",
                         "flexDirection": "column",
                       },
@@ -254,8 +257,8 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                     display="flex"
                     flexDirection="row"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "alignItems": "center",
                           "display": "flex",
                           "flexDirection": "row",
@@ -270,8 +273,8 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                       isNegative={false}
                       size="medium"
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "alignItems": "center",
                             "backgroundColor": "transparent",
                             "borderColor": "hsla(214, 18%, 69%, 1)",
@@ -294,14 +297,15 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                     <View
                       data-blade-component="base-box"
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "marginLeft": 4,
                           },
                         ]
                       }
                     />
                     <Text
+                      accessible={true}
                       color="surface.text.subtle.lowContrast"
                       data-blade-component="base-text"
                       fontFamily="text"
@@ -309,8 +313,8 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                       fontWeight="regular"
                       lineHeight={100}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "color": "hsla(216, 27%, 36%, 1)",
                             "fontFamily": "Lato",
                             "fontSize": 14,
@@ -336,8 +340,8 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                   <View
                     data-blade-component="base-box"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "marginLeft": 24,
                         },
                       ]
@@ -350,8 +354,8 @@ exports[`<RadioGroup /> should render with help text 1`] = `
           <View
             data-blade-component="base-box"
             style={
-              Array [
-                Object {
+              [
+                {
                   "marginBottom": 8,
                 },
               ]
@@ -360,8 +364,8 @@ exports[`<RadioGroup /> should render with help text 1`] = `
             <View
               data-blade-component="base-box"
               style={
-                Array [
-                  Object {},
+                [
+                  {},
                 ]
               }
             >
@@ -371,7 +375,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                 accessibilityRequired={false}
                 accessibilityRole="radio"
                 accessibilityState={
-                  Object {
+                  {
                     "checked": false,
                     "disabled": false,
                   }
@@ -390,8 +394,8 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "display": "flex",
                       "flexDirection": "row",
                       "marginBottom": 2,
@@ -406,8 +410,8 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                   display="flex"
                   flexDirection="column"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "display": "flex",
                         "flexDirection": "column",
                       },
@@ -420,8 +424,8 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                     display="flex"
                     flexDirection="row"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "alignItems": "center",
                           "display": "flex",
                           "flexDirection": "row",
@@ -436,8 +440,8 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                       isNegative={false}
                       size="medium"
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "alignItems": "center",
                             "backgroundColor": "transparent",
                             "borderColor": "hsla(214, 18%, 69%, 1)",
@@ -460,14 +464,15 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                     <View
                       data-blade-component="base-box"
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "marginLeft": 4,
                           },
                         ]
                       }
                     />
                     <Text
+                      accessible={true}
                       color="surface.text.subtle.lowContrast"
                       data-blade-component="base-text"
                       fontFamily="text"
@@ -475,8 +480,8 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                       fontWeight="regular"
                       lineHeight={100}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "color": "hsla(216, 27%, 36%, 1)",
                             "fontFamily": "Lato",
                             "fontSize": 14,
@@ -502,8 +507,8 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                   <View
                     data-blade-component="base-box"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "marginLeft": 24,
                         },
                       ]
@@ -516,8 +521,8 @@ exports[`<RadioGroup /> should render with help text 1`] = `
           <View
             data-blade-component="base-box"
             style={
-              Array [
-                Object {
+              [
+                {
                   "marginBottom": 0,
                 },
               ]
@@ -526,8 +531,8 @@ exports[`<RadioGroup /> should render with help text 1`] = `
             <View
               data-blade-component="base-box"
               style={
-                Array [
-                  Object {},
+                [
+                  {},
                 ]
               }
             >
@@ -537,7 +542,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                 accessibilityRequired={false}
                 accessibilityRole="radio"
                 accessibilityState={
-                  Object {
+                  {
                     "checked": false,
                     "disabled": false,
                   }
@@ -556,8 +561,8 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "display": "flex",
                       "flexDirection": "row",
                       "marginBottom": 2,
@@ -572,8 +577,8 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                   display="flex"
                   flexDirection="column"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "display": "flex",
                         "flexDirection": "column",
                       },
@@ -586,8 +591,8 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                     display="flex"
                     flexDirection="row"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "alignItems": "center",
                           "display": "flex",
                           "flexDirection": "row",
@@ -602,8 +607,8 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                       isNegative={false}
                       size="medium"
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "alignItems": "center",
                             "backgroundColor": "transparent",
                             "borderColor": "hsla(214, 18%, 69%, 1)",
@@ -626,14 +631,15 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                     <View
                       data-blade-component="base-box"
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "marginLeft": 4,
                           },
                         ]
                       }
                     />
                     <Text
+                      accessible={true}
                       color="surface.text.subtle.lowContrast"
                       data-blade-component="base-text"
                       fontFamily="text"
@@ -641,8 +647,8 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                       fontWeight="regular"
                       lineHeight={100}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "color": "hsla(216, 27%, 36%, 1)",
                             "fontFamily": "Lato",
                             "fontSize": 14,
@@ -668,8 +674,8 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                   <View
                     data-blade-component="base-box"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "marginLeft": 24,
                         },
                       ]
@@ -683,8 +689,8 @@ exports[`<RadioGroup /> should render with help text 1`] = `
         <View
           data-blade-component="base-box"
           style={
-            Array [
-              Object {
+            [
+              {
                 "marginTop": 4,
               },
             ]
@@ -696,8 +702,8 @@ exports[`<RadioGroup /> should render with help text 1`] = `
             display="flex"
             flexDirection="row"
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignItems": "center",
                   "display": "flex",
                   "flexDirection": "row",
@@ -706,6 +712,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.muted.lowContrast"
               data-blade-component="base-text"
               fontFamily="text"
@@ -713,8 +720,8 @@ exports[`<RadioGroup /> should render with help text 1`] = `
               fontStyle="italic"
               lineHeight={50}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "hsla(216, 16%, 60%, 1)",
                     "fontFamily": "Lato",
                     "fontSize": 11,
@@ -747,7 +754,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
 exports[`<RadioGroup /> should render with label 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -755,20 +762,21 @@ exports[`<RadioGroup /> should render with label 1`] = `
   <View
     data-blade-component="base-box"
     style={
-      Array [
-        Object {},
+      [
+        {},
       ]
     }
   >
     <View
       accessibilityLabelledBy="radio-group-7-label"
       accessibilityRole="radiogroup"
+      accessible={true}
       data-blade-component="radio-group"
       display="flex"
       flexDirection="column"
       style={
-        Array [
-          Object {
+        [
+          {
             "display": "flex",
             "flexDirection": "column",
           },
@@ -778,8 +786,8 @@ exports[`<RadioGroup /> should render with label 1`] = `
       <View
         data-blade-component="base-box"
         style={
-          Array [
-            Object {
+          [
+            {
               "marginBottom": 4,
               "marginRight": 16,
             },
@@ -795,8 +803,8 @@ exports[`<RadioGroup /> should render with label 1`] = `
           gap="spacing.0"
           maxHeight="36px"
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "display": "flex",
                 "flexDirection": "row",
@@ -808,6 +816,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
           }
         >
           <Text
+            accessible={true}
             color="surface.text.subdued.lowContrast"
             data-blade-component="text"
             fontFamily="text"
@@ -817,8 +826,8 @@ exports[`<RadioGroup /> should render with label 1`] = `
             lineHeight={50}
             numberOfLines={2}
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "hsla(217, 18%, 45%, 1)",
                   "fontFamily": "Lato",
                   "fontSize": 12,
@@ -843,8 +852,8 @@ exports[`<RadioGroup /> should render with label 1`] = `
           <View
             data-blade-component="visually-hidden"
             style={
-              Array [
-                Object {
+              [
+                {
                   "borderColor": "black",
                   "borderStyle": "solid",
                   "borderWidth": 0,
@@ -870,6 +879,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.normal.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -878,8 +888,8 @@ exports[`<RadioGroup /> should render with label 1`] = `
               fontWeight="regular"
               lineHeight={100}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "hsla(217, 56%, 17%, 1)",
                     "fontFamily": "Lato",
                     "fontSize": 14,
@@ -907,8 +917,8 @@ exports[`<RadioGroup /> should render with label 1`] = `
       <View
         data-blade-component="base-box"
         style={
-          Array [
-            Object {},
+          [
+            {},
           ]
         }
       >
@@ -917,8 +927,8 @@ exports[`<RadioGroup /> should render with label 1`] = `
           display="flex"
           flexDirection="column"
           style={
-            Array [
-              Object {
+            [
+              {
                 "display": "flex",
                 "flexDirection": "column",
               },
@@ -928,8 +938,8 @@ exports[`<RadioGroup /> should render with label 1`] = `
           <View
             data-blade-component="base-box"
             style={
-              Array [
-                Object {
+              [
+                {
                   "marginBottom": 8,
                 },
               ]
@@ -938,8 +948,8 @@ exports[`<RadioGroup /> should render with label 1`] = `
             <View
               data-blade-component="base-box"
               style={
-                Array [
-                  Object {},
+                [
+                  {},
                 ]
               }
             >
@@ -949,7 +959,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
                 accessibilityRequired={false}
                 accessibilityRole="radio"
                 accessibilityState={
-                  Object {
+                  {
                     "checked": false,
                     "disabled": false,
                   }
@@ -968,8 +978,8 @@ exports[`<RadioGroup /> should render with label 1`] = `
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "display": "flex",
                       "flexDirection": "row",
                       "marginBottom": 2,
@@ -984,8 +994,8 @@ exports[`<RadioGroup /> should render with label 1`] = `
                   display="flex"
                   flexDirection="column"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "display": "flex",
                         "flexDirection": "column",
                       },
@@ -998,8 +1008,8 @@ exports[`<RadioGroup /> should render with label 1`] = `
                     display="flex"
                     flexDirection="row"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "alignItems": "center",
                           "display": "flex",
                           "flexDirection": "row",
@@ -1014,8 +1024,8 @@ exports[`<RadioGroup /> should render with label 1`] = `
                       isNegative={false}
                       size="medium"
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "alignItems": "center",
                             "backgroundColor": "transparent",
                             "borderColor": "hsla(214, 18%, 69%, 1)",
@@ -1038,14 +1048,15 @@ exports[`<RadioGroup /> should render with label 1`] = `
                     <View
                       data-blade-component="base-box"
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "marginLeft": 4,
                           },
                         ]
                       }
                     />
                     <Text
+                      accessible={true}
                       color="surface.text.subtle.lowContrast"
                       data-blade-component="base-text"
                       fontFamily="text"
@@ -1053,8 +1064,8 @@ exports[`<RadioGroup /> should render with label 1`] = `
                       fontWeight="regular"
                       lineHeight={100}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "color": "hsla(216, 27%, 36%, 1)",
                             "fontFamily": "Lato",
                             "fontSize": 14,
@@ -1080,8 +1091,8 @@ exports[`<RadioGroup /> should render with label 1`] = `
                   <View
                     data-blade-component="base-box"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "marginLeft": 24,
                         },
                       ]
@@ -1094,8 +1105,8 @@ exports[`<RadioGroup /> should render with label 1`] = `
           <View
             data-blade-component="base-box"
             style={
-              Array [
-                Object {
+              [
+                {
                   "marginBottom": 8,
                 },
               ]
@@ -1104,8 +1115,8 @@ exports[`<RadioGroup /> should render with label 1`] = `
             <View
               data-blade-component="base-box"
               style={
-                Array [
-                  Object {},
+                [
+                  {},
                 ]
               }
             >
@@ -1115,7 +1126,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
                 accessibilityRequired={false}
                 accessibilityRole="radio"
                 accessibilityState={
-                  Object {
+                  {
                     "checked": false,
                     "disabled": false,
                   }
@@ -1134,8 +1145,8 @@ exports[`<RadioGroup /> should render with label 1`] = `
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "display": "flex",
                       "flexDirection": "row",
                       "marginBottom": 2,
@@ -1150,8 +1161,8 @@ exports[`<RadioGroup /> should render with label 1`] = `
                   display="flex"
                   flexDirection="column"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "display": "flex",
                         "flexDirection": "column",
                       },
@@ -1164,8 +1175,8 @@ exports[`<RadioGroup /> should render with label 1`] = `
                     display="flex"
                     flexDirection="row"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "alignItems": "center",
                           "display": "flex",
                           "flexDirection": "row",
@@ -1180,8 +1191,8 @@ exports[`<RadioGroup /> should render with label 1`] = `
                       isNegative={false}
                       size="medium"
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "alignItems": "center",
                             "backgroundColor": "transparent",
                             "borderColor": "hsla(214, 18%, 69%, 1)",
@@ -1204,14 +1215,15 @@ exports[`<RadioGroup /> should render with label 1`] = `
                     <View
                       data-blade-component="base-box"
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "marginLeft": 4,
                           },
                         ]
                       }
                     />
                     <Text
+                      accessible={true}
                       color="surface.text.subtle.lowContrast"
                       data-blade-component="base-text"
                       fontFamily="text"
@@ -1219,8 +1231,8 @@ exports[`<RadioGroup /> should render with label 1`] = `
                       fontWeight="regular"
                       lineHeight={100}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "color": "hsla(216, 27%, 36%, 1)",
                             "fontFamily": "Lato",
                             "fontSize": 14,
@@ -1246,8 +1258,8 @@ exports[`<RadioGroup /> should render with label 1`] = `
                   <View
                     data-blade-component="base-box"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "marginLeft": 24,
                         },
                       ]
@@ -1260,8 +1272,8 @@ exports[`<RadioGroup /> should render with label 1`] = `
           <View
             data-blade-component="base-box"
             style={
-              Array [
-                Object {
+              [
+                {
                   "marginBottom": 0,
                 },
               ]
@@ -1270,8 +1282,8 @@ exports[`<RadioGroup /> should render with label 1`] = `
             <View
               data-blade-component="base-box"
               style={
-                Array [
-                  Object {},
+                [
+                  {},
                 ]
               }
             >
@@ -1281,7 +1293,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
                 accessibilityRequired={false}
                 accessibilityRole="radio"
                 accessibilityState={
-                  Object {
+                  {
                     "checked": false,
                     "disabled": false,
                   }
@@ -1300,8 +1312,8 @@ exports[`<RadioGroup /> should render with label 1`] = `
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "display": "flex",
                       "flexDirection": "row",
                       "marginBottom": 2,
@@ -1316,8 +1328,8 @@ exports[`<RadioGroup /> should render with label 1`] = `
                   display="flex"
                   flexDirection="column"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "display": "flex",
                         "flexDirection": "column",
                       },
@@ -1330,8 +1342,8 @@ exports[`<RadioGroup /> should render with label 1`] = `
                     display="flex"
                     flexDirection="row"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "alignItems": "center",
                           "display": "flex",
                           "flexDirection": "row",
@@ -1346,8 +1358,8 @@ exports[`<RadioGroup /> should render with label 1`] = `
                       isNegative={false}
                       size="medium"
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "alignItems": "center",
                             "backgroundColor": "transparent",
                             "borderColor": "hsla(214, 18%, 69%, 1)",
@@ -1370,14 +1382,15 @@ exports[`<RadioGroup /> should render with label 1`] = `
                     <View
                       data-blade-component="base-box"
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "marginLeft": 4,
                           },
                         ]
                       }
                     />
                     <Text
+                      accessible={true}
                       color="surface.text.subtle.lowContrast"
                       data-blade-component="base-text"
                       fontFamily="text"
@@ -1385,8 +1398,8 @@ exports[`<RadioGroup /> should render with label 1`] = `
                       fontWeight="regular"
                       lineHeight={100}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "color": "hsla(216, 27%, 36%, 1)",
                             "fontFamily": "Lato",
                             "fontSize": 14,
@@ -1412,8 +1425,8 @@ exports[`<RadioGroup /> should render with label 1`] = `
                   <View
                     data-blade-component="base-box"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "marginLeft": 24,
                         },
                       ]

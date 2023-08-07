@@ -3,7 +3,7 @@
 exports[`<HeartIcon /> should render HeartIcon 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -22,15 +22,15 @@ exports[`<HeartIcon /> should render HeartIcon 1`] = `
     minX={0}
     minY={0}
     style={
-      Array [
-        Object {
+      [
+        {
           "backgroundColor": "transparent",
           "borderWidth": 0,
         },
-        Array [
-          Object {},
+        [
+          {},
         ],
-        Object {
+        {
           "flex": 0,
           "height": 20,
           "width": 20,
@@ -44,7 +44,7 @@ exports[`<HeartIcon /> should render HeartIcon 1`] = `
     <RNSVGGroup
       fill={null}
       propList={
-        Array [
+        [
           "fill",
         ]
       }
@@ -55,7 +55,7 @@ exports[`<HeartIcon /> should render HeartIcon 1`] = `
         fill={4282603381}
         fillRule={0}
         propList={
-          Array [
+          [
             "fill",
             "fillRule",
           ]
