@@ -178,11 +178,9 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
       {...accessibilityProps}
     >
       <Text
-        size="medium"
-        variant="body"
         type={props.value ? 'subtle' : 'placeholder'}
-        contrast="low"
-        weight="regular"
+        truncateAfterLines={1}
+        textAlign={props.textAlign}
       >
         {buttonValue}
       </Text>
