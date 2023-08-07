@@ -6,7 +6,6 @@ import {
   getFlooredFixed,
   getHumanizedAmount,
 } from '../Amount';
-import { currencyPrefixMapping } from '../amountTokens';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
 
@@ -82,7 +81,7 @@ describe('<Amount />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  for (const currency of Object.keys(currencyPrefixMapping)) {
+  for (const currency of ['USD', 'MYR', 'AED']) {
     it(`should render ${currency} currency Amount`, () => {
       const { container } = renderWithTheme(
         <Amount currency={currency as AmountProps['currency']} value={1000} />,

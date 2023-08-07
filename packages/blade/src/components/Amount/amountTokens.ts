@@ -43,7 +43,7 @@ const amountLineHeights: Record<
   'title-medium': 600,
 } as const;
 
-// All the supported currency codes are taken from https://github.com/razorpay/dashboard/blob/1e64ca67130aa0e9452e5c35111df261706f25b6/web/js/merchant/constants/currency.js#L3
+// All the supported currency codes are taken from Razorpay's Merchant Dashboard codebase
 const currencyPrefixMapping = {
   AED: { 'currency-symbol': 'د.إ', 'currency-code': 'AED' },
   ALL: { 'currency-symbol': 'Lek', 'currency-code': 'ALL' },
@@ -321,5 +321,6 @@ export {
   currencyPrefixMapping,
   currencyLocaleMapping,
   getCurrencyAbbreviations,
-  Currency,
 };
+
+export type { Currency };

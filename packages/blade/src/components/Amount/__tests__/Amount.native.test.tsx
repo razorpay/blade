@@ -1,3 +1,4 @@
+import type { AmountProps } from '../Amount';
 import {
   addCommas,
   Amount,
@@ -69,10 +70,14 @@ describe('<Amount />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should render MYR currency Amount ', () => {
-    const { toJSON } = renderWithTheme(<Amount currency="MYR" value={1000} />);
-    expect(toJSON()).toMatchSnapshot();
-  });
+  for (const currency of ['USD', 'MYR', 'AED']) {
+    it(`should render ${currency} currency Amount`, () => {
+      const { toJSON } = renderWithTheme(
+        <Amount currency={currency as AmountProps['currency']} value={1000} />,
+      );
+      expect(toJSON()).toMatchSnapshot();
+    });
+  }
 
   it('should check if getFlooredFixed is returning the floored value', () => {
     expect(getFlooredFixed(1000.22, 2)).toBe(1000.22);
