@@ -129,9 +129,9 @@ module.exports = {
         'plugin:@typescript-eslint/recommended-requiring-type-checking',
         'plugin:prettier/recommended',
       ],
-      plugins: ['@typescript-eslint', 'jsx-a11y', 'no-only-tests', 'blade'],
+      plugins: ['@typescript-eslint', 'jsx-a11y', 'no-only-tests', '@razorpay-blade'],
       rules: {
-        'blade/no-cross-platform-imports': 'error',
+        '@razorpay-blade/no-cross-platform-imports': 'error',
         'import/no-cycle': ['error', { maxDepth: '∞' }],
         'react/jsx-uses-react': 'off',
         'react/react-in-jsx-scope': 'off',
