@@ -33,5 +33,4 @@ module.exports = {
     '^\\~utils/(.*)': '<rootDir>/src/utils/$1',
     '^\\~tokens/(.*)': '<rootDir>/src/tokens/$1',
   },
-  testTimeout: 10000,
 };
