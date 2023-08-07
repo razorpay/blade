@@ -18,8 +18,13 @@ runs:
         key: ${{ runner.os }}-blade-${{ hashFiles('**/yarn.lock') }}
 
     # cache miss - install packages with `yarn --frozen-lockfile`
-    # cache hit - download packages from the cache
+    # cache hit - download packages from the cache and explicitly run postinstall script
     - name: install packages if cache miss
       run: yarn --frozen-lockfile
       shell: bash
       if: steps.cache.outputs.cache-hit != 'true'
+
+    - name: Run postinstall script
+      run: yarn postinstall
+      shell: bash
+      if: steps.cache.outputs.cache-hit == 'true'
