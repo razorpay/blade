@@ -3,23 +3,23 @@ import styled from 'styled-components/native';
 import { getIndicatorButtonStyles } from './getIndicatorButtonStyles';
 import type { IndicatorButtonProps } from './types';
 import { makeAccessible } from '~utils/makeAccessible';
+import BaseBox from '~components/Box/BaseBox';
 
-const PressableIndicatorButton = styled(Pressable)<IndicatorButtonProps>(
-  ({ theme, isActive, variant }) => {
-    return getIndicatorButtonStyles({ theme, isActive, variant });
-  },
-);
+const PressableIndicatorButton = styled(BaseBox)<
+  Pick<IndicatorButtonProps, 'variant' | 'isActive'>
+>(({ theme, isActive, variant }) => {
+  return getIndicatorButtonStyles({ theme, isActive, variant });
+});
 
 const StyledIndicatorButton = ({
+  onClick,
   accessibilityLabel,
   ...props
 }: IndicatorButtonProps & { accessibilityLabel: string }): React.ReactElement => {
   return (
-    <PressableIndicatorButton
-      {...props}
-      {...makeAccessible({ label: accessibilityLabel })}
-      onPress={props.onClick}
-    />
+    <Pressable onPress={onClick} {...makeAccessible({ label: accessibilityLabel })}>
+      <PressableIndicatorButton {...props} />
+    </Pressable>
   );
 };
 
