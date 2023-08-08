@@ -9,6 +9,8 @@ const { GlobalStyle } = global;
 import { DocsContainer } from '@storybook/addon-docs/blocks';
 
 export const parameters = {
+  // disable snapshot by default and then enable it only for kitchen sink
+  chromatic: { disableSnapshot: true },
   previewTabs: {
     'storybook/docs/panel': { index: 0 },
     canvas: { title: 'Stories', index: 1 },
@@ -45,6 +47,42 @@ export const parameters = {
           'overrideTheme',
         ],
         'Components',
+        [
+          'Button',
+          'IconButton',
+          'Link',
+          'Typography',
+          'Amount',
+          'Icons',
+          // Input group
+          'Input',
+          'Dropdown',
+          'Checkbox',
+          'Radio & RadioGroup',
+          'Switch',
+          // Layout and complex interactive elements group
+          'Layout Primitives (Box)',
+          'Card',
+          'Modal',
+          'BottomSheet',
+          'Divider',
+          'List',
+          'Accordion',
+          'Collapsible',
+          // feedback group
+          'Indicator',
+          'Badge',
+          'Counter',
+          'Tag',
+          'Alert',
+          'Spinner',
+          'Skeleton',
+          'ProgressBar',
+          'Tooltip',
+          // others
+          'BaseHeaderFooter',
+          'KitchenSink'
+        ],
         'Recipes',
       ],
     },
