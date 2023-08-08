@@ -16,7 +16,7 @@ type CarouselProps = {
   navigationButtonVariant?: 'filled' | 'stroke';
   indicatorVariant?: 'gray' | 'white' | 'blue';
   carouselItemWidth?: BoxProps['width'];
-  onChange: (slideIndex: number) => void;
+  onChange?: (slideIndex: number) => void;
   accessibilityLabel?: string;
 };
 
