@@ -135,6 +135,8 @@ const getAllProps = (
     justifyItems: getResponsiveValue(props.justifyItems, breakpoint),
     justifyContent: getResponsiveValue(props.justifyContent, breakpoint),
     justifySelf: getResponsiveValue(props.justifySelf, breakpoint),
+    placeSelf: getResponsiveValue(props.placeSelf, breakpoint),
+    placeItems: getResponsiveValue(props.placeItems),
     order: getResponsiveValue(props.order, breakpoint),
     position: getResponsiveValue(props.position, breakpoint),
     zIndex: getResponsiveValue(props.zIndex, breakpoint),
@@ -223,6 +225,9 @@ const getAllProps = (
     ...(!isReactNative() && {
       boxShadow: getElevationValue(props.elevation, props.theme, breakpoint),
     }),
+    transform: props.transform,
+    transformOrigin: props.transformOrigin,
+    clipPath: props.clipPath,
   };
 };
 

@@ -48,14 +48,14 @@ const removeUndefinedStyledProps = (obj: StyledPropsInputType): StyledPropsInput
  *
  * **Use `getStyledProps` instead if you're using this for adding styledProps!**
  */
-const makeStyledProps = (
-  props: StyledPropsInputType,
-): KeysRequired<Omit<StyledPropsBlade, 'pointerEvents' | 'placeItems'>> => {
+const makeStyledProps = (props: StyledPropsInputType): KeysRequired<StyledPropsBlade> => {
   return {
     alignSelf: props.alignSelf,
     display: props.display,
     justifySelf: props.justifySelf,
     placeSelf: props.placeSelf,
+    placeItems: props.placeItems,
+    pointerEvents: props.pointerEvents,
     order: props.order,
     position: props.position,
     zIndex: props.zIndex,
