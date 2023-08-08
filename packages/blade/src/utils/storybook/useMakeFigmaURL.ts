@@ -10,8 +10,13 @@ const useMakeFigmaURL = (
 ): string => {
   const {
     // @ts-expect-error globals is available but the typings in storybook are properly defined hence, ignoring it
-    globals: { themeTokenName, colorScheme },
+    store: {
+      globals: {
+        globals: { themeTokenName, colorScheme },
+      },
+    },
   } = useContext(DocsContext);
+
   const themeURL = themeURLs.find((url) => url.themeTokenName === themeTokenName);
 
   if (themeTokenName === 'paymentTheme') {
