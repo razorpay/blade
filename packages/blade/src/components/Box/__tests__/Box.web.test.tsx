@@ -119,6 +119,32 @@ describe('<Box />', () => {
     `);
   });
 
+  it('should accept "transparent" value for backgroundColor', () => {
+    const { container } = renderWithTheme(
+      <Box backgroundColor={{ base: 'brand.primary.300', l: 'transparent' }}>I am Visible</Box>,
+    );
+    expect(container).toMatchInlineSnapshot(`
+      .c0 {
+        background-color: hsla(218,89%,51%,0.09);
+      }
+
+      @media screen and (min-width:1024px) {
+        .c0 {
+          background-color: transparent;
+        }
+      }
+
+      <div>
+        <div
+          class="c0"
+          data-blade-component="box"
+        >
+          I am Visible
+        </div>
+      </div>
+    `);
+  });
+
   it('should support ref on Box', async () => {
     const user = userEvent.setup();
     const boxClickHandler = jest.fn();
