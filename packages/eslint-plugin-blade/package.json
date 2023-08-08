@@ -1,6 +1,7 @@
 {
   "name": "eslint-plugin-blade",
   "version": "1.0.0",
+  "private": "true",
   "main": "build/index.js",
   "license": "MIT",
   "engines": {
