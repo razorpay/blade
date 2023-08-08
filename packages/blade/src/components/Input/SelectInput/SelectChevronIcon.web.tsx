@@ -1,10 +1,5 @@
+import type { SelectChevronIconProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
-import type { IconComponent } from '~components/Icons';
-
-export type SelectChevronIconProps = {
-  onClick: () => void;
-  icon: IconComponent;
-};
 
 const SelectChevronIcon = (props: SelectChevronIconProps): React.ReactElement => {
   const Icon = props.icon;
