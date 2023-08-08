@@ -11,6 +11,9 @@ import type { CarouselContextProps } from './CarouselContext';
 import { CarouselContext } from './CarouselContext';
 import BaseBox from '~components/Box/BaseBox';
 import { useInterval } from '~utils/useInterval';
+import { makeAccessible } from '~utils/makeAccessible/makeAccessible.native';
+import { announce } from '~components/LiveAnnouncer/LiveAnnouncer.native';
+import { castNativeType } from '~utils';
 
 const percentageStringToNumber = (percentage: string) => {
   if (!percentage.endsWith('%')) {
@@ -80,15 +83,12 @@ const Carousel = ({
   indicatorVariant = 'gray',
   navigationButtonVariant = 'filled',
 }: CarouselProps): React.ReactElement => {
-  const [activeSlide, setActiveSlide] = React.useState(0);
   const containerRef = React.useRef<ScrollView>(null);
-
-  const _visibleItems = visibleItems === undefined ? undefined : 1;
+  const [activeSlide, setActiveSlide] = React.useState(0);
   const [scrollViewWidth, setScrollViewWidth] = React.useState(0);
 
-  const boxWidth = scrollViewWidth * percentageStringToNumber(carouselItemWidth);
-  const boxDistance = scrollViewWidth - boxWidth;
-  // const halfBoxDistance = boxDistance / 2;
+  const _visibleItems = visibleItems === undefined ? undefined : 1;
+  const boxWidth = scrollViewWidth * percentageStringToNumber(castNativeType(carouselItemWidth));
   const totalNumberOfSlides = React.Children.count(children);
 
   const goToSlideIndex = (slideIndex: number) => {
@@ -143,6 +143,10 @@ const Carousel = ({
     onChange?.(activeSlide);
   }, [activeSlide, onChange]);
 
+  React.useEffect(() => {
+    announce(`Slide ${activeSlide + 1} of ${totalNumberOfSlides}`);
+  }, [activeSlide, totalNumberOfSlides]);
+
   return (
     <CarouselContext.Provider value={carouselContext}>
       <BaseBox display="flex" alignItems="center" flexDirection="column">
@@ -155,14 +159,13 @@ const Carousel = ({
           flexDirection="row"
         >
           <ScrollView
-            ref={(ref) => {
-              containerRef.current = ref;
-            }}
+            {...makeAccessible({ label: accessibilityLabel })}
+            ref={containerRef}
             onLayout={(e) => {
               setScrollViewWidth(e.nativeEvent.layout.width);
             }}
             // Sync active indicator with scroll
-            onScroll={(e) => {
+            onMomentumScrollEnd={(e) => {
               const slideIndex = Math.ceil(e.nativeEvent.contentOffset.x / boxWidth);
               setActiveSlide(slideIndex);
             }}

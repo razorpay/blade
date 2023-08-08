@@ -1,4 +1,5 @@
 import type { BoxProps } from '~components/Box';
+import type { Platform } from '~utils';
 import type { DotNotationSpacingStringToken } from '~utils/types';
 
 type OverlayColor = BoxProps['backgroundColor'];
@@ -15,7 +16,7 @@ type CarouselProps = {
   navigationButtonSpacing?: DotNotationSpacingStringToken;
   navigationButtonVariant?: 'filled' | 'stroke';
   indicatorVariant?: 'gray' | 'white' | 'blue';
-  carouselItemWidth?: BoxProps['width'];
+  carouselItemWidth?: Platform.Select<{ web: BoxProps['width']; native: `${number}%` }>;
   onChange: (slideIndex: number) => void;
   accessibilityLabel?: string;
 };
