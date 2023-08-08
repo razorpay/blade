@@ -16,6 +16,7 @@ import { Link } from '~components/Link';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import type { BladeElementRef } from '~utils/types';
+import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const Page = (): React.ReactElement => {
   return (
@@ -34,7 +35,7 @@ const Page = (): React.ReactElement => {
         {`
         import { Switch } from '@razorpay/blade/components'
         
-        function App(): JSX.Element {
+        function App(): React.ReactElement {
           return (
             // Check console
             <Switch onChange={(e) => console.log(e.isChecked)} accessibilityLabel="Toggle DarkMode" />
@@ -61,6 +62,7 @@ export default {
     size: 'medium',
     accessibilityLabel: 'Toggle DarkMode',
   },
+  argTypes: getStyledPropsArgTypes(),
   parameters: {
     docs: {
       page: Page,

@@ -11,6 +11,7 @@ import { Card, CardBody } from '~components/Card';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
 import { List, ListItem } from '~components/List';
+import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const Page = (): React.ReactElement => {
   return (
@@ -36,7 +37,7 @@ const Page = (): React.ReactElement => {
             CardBody
           } from "@razorpay/blade/components";
           
-          function App(): JSX.Element {
+          function App(): React.ReactElement {
             return (
               <Card>
                 <CardBody>
@@ -71,6 +72,7 @@ const Page = (): React.ReactElement => {
 export default {
   title: 'Components/Divider',
   component: DividerComponent,
+  argTypes: getStyledPropsArgTypes(),
   parameters: {
     docs: {
       page: Page,
@@ -133,13 +135,17 @@ const DividerVerticalTemplate: ComponentStory<typeof DividerComponent> = () => {
           flexDirection="row"
           height="50px"
         >
-          <Button variant="secondary" marginRight="spacing.4" isFullWidth>
-            Sign up
-          </Button>
+          <BaseBox display="flex" flex={1}>
+            <Button variant="secondary" marginRight="spacing.4" isFullWidth>
+              Sign up
+            </Button>
+          </BaseBox>
           <DividerComponent orientation="vertical" />
-          <Button variant="primary" marginLeft="spacing.4" isFullWidth>
-            Login
-          </Button>
+          <BaseBox display="flex" flex={1}>
+            <Button variant="primary" marginLeft="spacing.4" isFullWidth>
+              Login
+            </Button>
+          </BaseBox>
         </BaseBox>
       </CardBody>
     </Card>

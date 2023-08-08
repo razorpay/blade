@@ -3,7 +3,7 @@
 import type React from 'react';
 import type { ViewStyle, View } from 'react-native';
 import type { CSSObject } from 'styled-components';
-import type { Spacing, EasingFunctionFactory } from '~tokens/global';
+import type { Spacing, EasingFactoryFn } from '~tokens/global';
 import type { Platform } from '~utils';
 
 /**
@@ -22,9 +22,9 @@ type DotNotationColorStringToken<TokenType> = {
 type DotNotationMotionStringToken<TokenType> = {
   [K in keyof TokenType]: `${Extract<K, string>}.${TokenType[K] extends Record<
     string,
-    string | EasingFunctionFactory
+    string | EasingFactoryFn
   >
-    ? Extract<keyof TokenType[K], string | EasingFunctionFactory>
+    ? Extract<keyof TokenType[K], string | EasingFactoryFn>
     : DotNotationMotionStringToken<TokenType[K]>}`;
 }[keyof TokenType];
 
@@ -36,6 +36,8 @@ type DotNotationSpacingStringToken = `spacing.${keyof Spacing}`;
 type AllowUndefinedValue<T> = {
   [P in keyof T]: T[P] | undefined;
 };
+
+type RemoveUndefinedFromUnion<T> = T extends undefined ? never : T;
 
 /**
  * Similar to `Required` except it allows undefined as value.
@@ -137,4 +139,5 @@ export {
   PickIfExist,
   PickCSSByPlatform,
   BladeElementRef,
+  RemoveUndefinedFromUnion,
 };

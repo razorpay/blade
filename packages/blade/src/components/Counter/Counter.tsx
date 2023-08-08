@@ -11,6 +11,7 @@ import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { TestID } from '~utils/types';
 import { isReactNative } from '~utils';
+import { logger } from '~utils/logger';
 
 export type CounterProps = {
   /**
@@ -102,10 +103,15 @@ const Counter = ({
     contrast,
   });
 
-  if (intent) {
-    console.warn(
-      '[Blade: Counter] The prop `intent` is deprecated and will be removed in a future release. Please use `variant` instead.',
-    );
+  if (__DEV__) {
+    if (intent) {
+      logger({
+        type: 'warn',
+        message:
+          'The prop `intent` is deprecated and will be removed in a future release. Please use `variant` instead.',
+        moduleName: 'Counter',
+      });
+    }
   }
 
   const counterTextSizes = {
@@ -124,36 +130,36 @@ const Counter = ({
   } as const;
 
   return (
-    <StyledCounter
-      backgroundColor={backgroundColor}
-      size={size}
-      platform={platform}
+    <BaseBox
+      display="flex"
+      {...metaAttribute({ name: MetaConstants.Counter, testID })}
       {...getStyledProps(styledProps)}
     >
-      <BaseBox
-        paddingRight={horizontalPadding[size]}
-        paddingLeft={horizontalPadding[size]}
-        paddingTop={verticalPadding[size]}
-        paddingBottom={verticalPadding[size]}
-        display={(isReactNative() ? 'flex' : 'inline-flex') as never}
-        flexDirection="row"
-        justifyContent="center"
-        alignItems="center"
-        overflow="hidden"
-        {...metaAttribute({ name: MetaConstants.Counter, testID })}
-      >
-        <Text
-          {...counterTextSizes[size]}
-          textAlign="center"
-          type="normal"
-          weight="regular"
-          truncateAfterLines={1}
-          color={textColor}
+      <StyledCounter backgroundColor={backgroundColor} size={size} platform={platform}>
+        <BaseBox
+          paddingRight={horizontalPadding[size]}
+          paddingLeft={horizontalPadding[size]}
+          paddingTop={verticalPadding[size]}
+          paddingBottom={verticalPadding[size]}
+          display={(isReactNative() ? 'flex' : 'inline-flex') as never}
+          flexDirection="row"
+          justifyContent="center"
+          alignItems="center"
+          overflow="hidden"
         >
-          {content}
-        </Text>
-      </BaseBox>
-    </StyledCounter>
+          <Text
+            {...counterTextSizes[size]}
+            textAlign="center"
+            type="normal"
+            weight="regular"
+            truncateAfterLines={1}
+            color={textColor}
+          >
+            {content}
+          </Text>
+        </BaseBox>
+      </StyledCounter>
+    </BaseBox>
   );
 };
 

@@ -18,6 +18,7 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { throwBladeError } from '~utils/logger';
 
 type Currency = 'INR' | 'MYR';
 
@@ -230,12 +231,20 @@ const _Amount = ({
   currency = 'INR',
   ...styledProps
 }: AmountProps): ReactElement => {
-  if (typeof value !== 'number') {
-    throw new Error('[Blade: Amount]: `value` prop must be of type `number` for Amount.');
-  }
-  // @ts-expect-error neutral intent should throw error
-  if (intent === 'neutral') {
-    throw new Error('[Blade Amount]: `neutral` intent is not supported.');
+  if (__DEV__) {
+    if (typeof value !== 'number') {
+      throwBladeError({
+        message: '`value` prop must be of type `number` for Amount.',
+        moduleName: 'Amount',
+      });
+    }
+    // @ts-expect-error neutral intent should throw error
+    if (intent === 'neutral') {
+      throwBladeError({
+        message: '`neutral` intent is not supported.',
+        moduleName: 'Amount',
+      });
+    }
   }
 
   const currencyPrefix = currencyPrefixMapping[currency][prefix];
@@ -251,32 +260,36 @@ const _Amount = ({
 
   return (
     <BaseBox
-      paddingLeft="spacing.2"
-      paddingRight="spacing.2"
-      // @TODO: fix casting of platform types. currently they all become `never` type
       display={isReactNative ? castNativeType('flex') : castWebType('inline-flex')}
-      alignItems="baseline"
-      flexDirection="row"
       {...metaAttribute({ name: MetaConstants.Amount, testID })}
       {...getStyledProps(styledProps)}
     >
-      <BaseText
-        marginRight="spacing.1"
-        fontWeight={currencyWeight}
-        fontSize={currencyFontSize}
-        color={currencyColor}
-        as={isReactNative ? undefined : 'span'}
+      <BaseBox
+        paddingLeft="spacing.2"
+        paddingRight="spacing.2"
+        // @TODO: fix casting of platform types. currently they all become `never` type
+        display={isReactNative ? castNativeType('flex') : castWebType('inline-flex')}
+        alignItems="baseline"
+        flexDirection="row"
       >
-        {currencyPrefix}
-      </BaseText>
-      <AmountValue
-        value={renderedValue}
-        amountValueColor={amountValueColor}
-        size={size}
-        isAffixSubtle={isAffixSubtle}
-        suffix={suffix}
-        affixColor={affixColor}
-      />
+        <BaseText
+          marginRight="spacing.1"
+          fontWeight={currencyWeight}
+          fontSize={currencyFontSize}
+          color={currencyColor}
+          as={isReactNative ? undefined : 'span'}
+        >
+          {currencyPrefix}
+        </BaseText>
+        <AmountValue
+          value={renderedValue}
+          amountValueColor={amountValueColor}
+          size={size}
+          isAffixSubtle={isAffixSubtle}
+          suffix={suffix}
+          affixColor={affixColor}
+        />
+      </BaseBox>
     </BaseBox>
   );
 };

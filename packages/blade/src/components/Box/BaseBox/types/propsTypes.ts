@@ -205,7 +205,8 @@ type StyledPropsBlade = Partial<
         | 'gridColumnStart'
         | 'gridColumnEnd'
         | 'gridArea'
-      >,
+      > &
+      Pick<LayoutProps, 'display'>,
     '__brand__'
   >
 >;

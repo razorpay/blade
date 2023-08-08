@@ -14,6 +14,7 @@ import type { StringChildrenType, TestID } from '~utils/types';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { isReactNative } from '~utils';
+import { throwBladeError } from '~utils/logger';
 
 type BadgeProps = {
   /**
@@ -100,8 +101,13 @@ const _Badge = ({
   ...styledProps
 }: BadgeProps): ReactElement => {
   const childrenString = getStringFromReactText(children);
-  if (!childrenString?.trim()) {
-    throw new Error('[Blade: Badge]: Text as children is required for Badge.');
+  if (__DEV__) {
+    if (!childrenString?.trim()) {
+      throwBladeError({
+        message: 'Text as children is required for Badge.',
+        moduleName: 'Badge',
+      });
+    }
   }
   const { backgroundColor, iconColor, textColor } = getColorProps({
     variant,
@@ -124,40 +130,40 @@ const _Badge = ({
   } as const;
 
   return (
-    <StyledBadge
-      backgroundColor={backgroundColor}
-      size={size}
-      textAlign={'left' as never}
+    <BaseBox
+      display="flex"
       {...metaAttribute({ name: MetaConstants.Badge, testID })}
       {...getStyledProps(styledProps)}
     >
-      <BaseBox
-        paddingRight={horizontalPadding[size]}
-        paddingLeft={horizontalPadding[size]}
-        paddingTop={verticalPadding[size]}
-        paddingBottom={verticalPadding[size]}
-        display={(isReactNative() ? 'flex' : 'inline-flex') as never}
-        flexDirection="row"
-        justifyContent="center"
-        alignItems="center"
-        overflow="hidden"
-      >
-        {Icon ? (
-          <BaseBox paddingRight={Boolean(Icon) ? iconPadding[size] : 'spacing.0'} display="flex">
-            <Icon color={iconColor} size={iconSize[size]} />
-          </BaseBox>
-        ) : null}
-        <Text
-          {...badgeTextSizes[size]}
-          type="normal"
-          weight={fontWeight}
-          truncateAfterLines={1}
-          color={textColor}
+      <StyledBadge backgroundColor={backgroundColor} size={size} textAlign={'left' as never}>
+        <BaseBox
+          paddingRight={horizontalPadding[size]}
+          paddingLeft={horizontalPadding[size]}
+          paddingTop={verticalPadding[size]}
+          paddingBottom={verticalPadding[size]}
+          display={(isReactNative() ? 'flex' : 'inline-flex') as never}
+          flexDirection="row"
+          justifyContent="center"
+          alignItems="center"
+          overflow="hidden"
         >
-          {children}
-        </Text>
-      </BaseBox>
-    </StyledBadge>
+          {Icon ? (
+            <BaseBox paddingRight={Boolean(Icon) ? iconPadding[size] : 'spacing.0'} display="flex">
+              <Icon color={iconColor} size={iconSize[size]} />
+            </BaseBox>
+          ) : null}
+          <Text
+            {...badgeTextSizes[size]}
+            type="normal"
+            weight={fontWeight}
+            truncateAfterLines={1}
+            color={textColor}
+          >
+            {children}
+          </Text>
+        </BaseBox>
+      </StyledBadge>
+    </BaseBox>
   );
 };
 

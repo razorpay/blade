@@ -3,7 +3,7 @@
 exports[`<TextInput /> should render 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -11,8 +11,8 @@ exports[`<TextInput /> should render 1`] = `
   <View
     data-blade-component="textinput"
     style={
-      Array [
-        Object {},
+      [
+        {},
       ]
     }
   >
@@ -22,14 +22,16 @@ exports[`<TextInput /> should render 1`] = `
       flexDirection="column"
       position="relative"
       style={
-        Array [
-          Object {
+        [
+          {
             "display": "flex",
             "flexDirection": "column",
             "position": "relative",
+            "width": "100%",
           },
         ]
       }
+      width="100%"
     >
       <View
         data-blade-component="base-box"
@@ -37,8 +39,8 @@ exports[`<TextInput /> should render 1`] = `
         flexDirection="row"
         justifyContent="space-between"
         style={
-          Array [
-            Object {
+          [
+            {
               "display": "flex",
               "flexDirection": "row",
               "justifyContent": "space-between",
@@ -51,8 +53,8 @@ exports[`<TextInput /> should render 1`] = `
         <View
           data-blade-component="base-box"
           style={
-            Array [
-              Object {
+            [
+              {
                 "marginBottom": 4,
                 "marginRight": 16,
               },
@@ -68,8 +70,8 @@ exports[`<TextInput /> should render 1`] = `
             gap="spacing.0"
             maxHeight="36px"
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignItems": "center",
                   "display": "flex",
                   "flexDirection": "row",
@@ -81,6 +83,7 @@ exports[`<TextInput /> should render 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.subdued.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -90,8 +93,8 @@ exports[`<TextInput /> should render 1`] = `
               lineHeight={50}
               numberOfLines={2}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "hsla(217, 18%, 45%, 1)",
                     "fontFamily": "Lato",
                     "fontSize": 12,
@@ -116,8 +119,8 @@ exports[`<TextInput /> should render 1`] = `
             <View
               data-blade-component="visually-hidden"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "borderColor": "black",
                     "borderStyle": "solid",
                     "borderWidth": 0,
@@ -143,6 +146,7 @@ exports[`<TextInput /> should render 1`] = `
               }
             >
               <Text
+                accessible={true}
                 color="surface.text.normal.lowContrast"
                 data-blade-component="text"
                 fontFamily="text"
@@ -151,8 +155,8 @@ exports[`<TextInput /> should render 1`] = `
                 fontWeight="regular"
                 lineHeight={100}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "color": "hsla(217, 56%, 17%, 1)",
                       "fontFamily": "Lato",
                       "fontSize": 14,
@@ -183,14 +187,14 @@ exports[`<TextInput /> should render 1`] = `
         flexDirection="row"
         position="relative"
         style={
-          Array [
-            Object {
+          [
+            {
               "display": "flex",
               "flexDirection": "row",
               "position": "relative",
               "width": "100%",
             },
-            Object {
+            {
               "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
               "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
               "borderBottomStyle": "solid",
@@ -207,11 +211,12 @@ exports[`<TextInput /> should render 1`] = `
           accessibilityInvalid={false}
           accessibilityRequired={false}
           accessibilityState={
-            Object {
+            {
               "disabled": false,
               "expanded": undefined,
             }
           }
+          accessible={true}
           autoCompleteType="off"
           data-blade-component="styled-base-input"
           editable={true}
@@ -230,8 +235,8 @@ exports[`<TextInput /> should render 1`] = `
           returnKeyType="default"
           secureTextEntry={false}
           style={
-            Array [
-              Object {
+            [
+              {
                 "backgroundColor": "transparent",
                 "color": "hsla(216, 27%, 36%, 1)",
                 "flexBasis": 0,
@@ -260,8 +265,8 @@ exports[`<TextInput /> should render 1`] = `
         />
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "backgroundColor": "hsla(218, 89%, 51%, 1)",
                 "bottom": 0,
                 "height": 1,
@@ -270,7 +275,7 @@ exports[`<TextInput /> should render 1`] = `
                 "position": "absolute",
                 "right": 0,
               },
-              Object {
+              {
                 "opacity": undefined,
                 "width": "undefined%",
               },
@@ -282,8 +287,8 @@ exports[`<TextInput /> should render 1`] = `
     <View
       data-blade-component="base-box"
       style={
-        Array [
-          Object {
+        [
+          {
             "marginLeft": 0,
           },
         ]
@@ -295,8 +300,8 @@ exports[`<TextInput /> should render 1`] = `
         flexDirection="row"
         justifyContent="flex-end"
         style={
-          Array [
-            Object {
+          [
+            {
               "display": "flex",
               "flexDirection": "row",
               "justifyContent": "flex-end",
@@ -312,7 +317,7 @@ exports[`<TextInput /> should render 1`] = `
 exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -320,8 +325,8 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   <View
     data-blade-component="textinput"
     style={
-      Array [
-        Object {},
+      [
+        {},
       ]
     }
   >
@@ -331,14 +336,16 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
       flexDirection="column"
       position="relative"
       style={
-        Array [
-          Object {
+        [
+          {
             "display": "flex",
             "flexDirection": "column",
             "position": "relative",
+            "width": "100%",
           },
         ]
       }
+      width="100%"
     >
       <View
         data-blade-component="base-box"
@@ -346,8 +353,8 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
         flexDirection="row"
         justifyContent="space-between"
         style={
-          Array [
-            Object {
+          [
+            {
               "display": "flex",
               "flexDirection": "row",
               "justifyContent": "space-between",
@@ -360,8 +367,8 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
         <View
           data-blade-component="base-box"
           style={
-            Array [
-              Object {
+            [
+              {
                 "marginBottom": 4,
                 "marginRight": 16,
               },
@@ -377,8 +384,8 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
             gap="spacing.0"
             maxHeight="36px"
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignItems": "center",
                   "display": "flex",
                   "flexDirection": "row",
@@ -390,6 +397,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.subdued.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -399,8 +407,8 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
               lineHeight={50}
               numberOfLines={2}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "hsla(217, 18%, 45%, 1)",
                     "fontFamily": "Lato",
                     "fontSize": 12,
@@ -425,8 +433,8 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
             <View
               data-blade-component="visually-hidden"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "borderColor": "black",
                     "borderStyle": "solid",
                     "borderWidth": 0,
@@ -452,6 +460,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
               }
             >
               <Text
+                accessible={true}
                 color="surface.text.normal.lowContrast"
                 data-blade-component="text"
                 fontFamily="text"
@@ -460,8 +469,8 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
                 fontWeight="regular"
                 lineHeight={100}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "color": "hsla(217, 56%, 17%, 1)",
                       "fontFamily": "Lato",
                       "fontSize": 14,
@@ -492,14 +501,14 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
         flexDirection="row"
         position="relative"
         style={
-          Array [
-            Object {
+          [
+            {
               "display": "flex",
               "flexDirection": "row",
               "position": "relative",
               "width": "100%",
             },
-            Object {
+            {
               "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
               "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
               "borderBottomStyle": "solid",
@@ -517,8 +526,8 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
           display="flex"
           flexDirection="row"
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "display": "flex",
                 "flexDirection": "row",
@@ -530,8 +539,8 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
             data-blade-component="base-box"
             display="flex"
             style={
-              Array [
-                Object {
+              [
+                {
                   "display": "flex",
                   "paddingLeft": 12,
                 },
@@ -552,15 +561,15 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
               minX={0}
               minY={0}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "backgroundColor": "transparent",
                     "borderWidth": 0,
                   },
-                  Array [
-                    Object {},
+                  [
+                    {},
                   ],
-                  Object {
+                  {
                     "flex": 0,
                     "height": 16,
                     "width": 16,
@@ -574,7 +583,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
               <RNSVGGroup
                 fill={null}
                 propList={
-                  Array [
+                  [
                     "fill",
                   ]
                 }
@@ -583,7 +592,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
                   d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
                   fill={4282603381}
                   propList={
-                    Array [
+                    [
                       "fill",
                     ]
                   }
@@ -592,7 +601,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
                   d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
                   fill={4282603381}
                   propList={
-                    Array [
+                    [
                       "fill",
                     ]
                   }
@@ -603,7 +612,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
                   fill={4282603381}
                   fillRule={0}
                   propList={
-                    Array [
+                    [
                       "fill",
                       "fillRule",
                     ]
@@ -615,14 +624,15 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
           <View
             data-blade-component="base-box"
             style={
-              Array [
-                Object {
+              [
+                {
                   "paddingLeft": 4,
                 },
               ]
             }
           >
             <Text
+              accessible={true}
               color="surface.text.subtle.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -631,8 +641,8 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
               fontWeight="regular"
               lineHeight={100}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "hsla(216, 27%, 36%, 1)",
                     "fontFamily": "Lato",
                     "fontSize": 14,
@@ -661,11 +671,12 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
           accessibilityInvalid={false}
           accessibilityRequired={false}
           accessibilityState={
-            Object {
+            {
               "disabled": false,
               "expanded": undefined,
             }
           }
+          accessible={true}
           autoCapitalize="none"
           autoCompleteType="off"
           data-blade-component="styled-base-input"
@@ -688,8 +699,8 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
           returnKeyType="go"
           secureTextEntry={false}
           style={
-            Array [
-              Object {
+            [
+              {
                 "backgroundColor": "transparent",
                 "color": "hsla(216, 27%, 36%, 1)",
                 "flexBasis": 0,
@@ -723,8 +734,8 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
           display="flex"
           flexDirection="row"
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "display": "flex",
                 "flexDirection": "row",
@@ -735,14 +746,15 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
           <View
             data-blade-component="base-box"
             style={
-              Array [
-                Object {
+              [
+                {
                   "paddingRight": 12,
                 },
               ]
             }
           >
             <Text
+              accessible={true}
               color="surface.text.subtle.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -751,8 +763,8 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
               fontWeight="regular"
               lineHeight={100}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "hsla(216, 27%, 36%, 1)",
                     "fontFamily": "Lato",
                     "fontSize": 14,
@@ -778,8 +790,8 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
         </View>
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "backgroundColor": "hsla(218, 89%, 51%, 1)",
                 "bottom": 0,
                 "height": 1,
@@ -788,7 +800,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
                 "position": "absolute",
                 "right": 0,
               },
-              Object {
+              {
                 "opacity": undefined,
                 "width": "undefined%",
               },
@@ -800,8 +812,8 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
     <View
       data-blade-component="base-box"
       style={
-        Array [
-          Object {
+        [
+          {
             "marginLeft": 0,
           },
         ]
@@ -813,8 +825,8 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
         flexDirection="row"
         justifyContent="flex-end"
         style={
-          Array [
-            Object {
+          [
+            {
               "display": "flex",
               "flexDirection": "row",
               "justifyContent": "flex-end",

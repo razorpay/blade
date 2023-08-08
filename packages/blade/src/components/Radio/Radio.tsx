@@ -18,6 +18,7 @@ import type { StringChildrenType, TestID } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getPlatformType } from '~utils';
 import { MetaConstants } from '~utils/metaAttribute';
+import { throwBladeError } from '~utils/logger';
 
 type RadioProps = {
   /**
@@ -55,8 +56,13 @@ const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
   const groupProps = useRadioGroupContext();
   const isInsideGroup = !isEmpty(groupProps);
 
-  if (!isInsideGroup) {
-    throw new Error('[Blade Radio]: Cannot use <Radio /> outside of <RadioGroup />');
+  if (__DEV__) {
+    if (!isInsideGroup) {
+      throwBladeError({
+        moduleName: 'Radio',
+        message: 'Cannot use <Radio /> outside of <RadioGroup />',
+      });
+    }
   }
 
   const isChecked = groupProps?.state?.isChecked(value);

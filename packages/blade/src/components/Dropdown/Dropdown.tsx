@@ -10,6 +10,8 @@ import { getStyledProps } from '~components/Box/styledProps';
 import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
+import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
+import { throwBladeError } from '~utils/logger';
 
 const validDropdownChildren = [
   componentIds.triggers.SelectInput,
@@ -49,8 +51,9 @@ const _Dropdown = ({
   children,
   selectionType = 'single',
   onDismiss,
+  testID,
   ...styledProps
-}: DropdownProps): JSX.Element => {
+}: DropdownProps): React.ReactElement => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [options, setOptions] = React.useState<DropdownContextType['options']>([]);
   const [selectedIndices, setSelectedIndices] = React.useState<
@@ -99,12 +102,15 @@ const _Dropdown = ({
 
   React.Children.map(children, (child) => {
     if (React.isValidElement(child)) {
-      if (!validDropdownChildren.includes(getComponentId(child) ?? '')) {
-        throw new Error(
-          `[Dropdown]: Dropdown can only have one of following elements as children - \n\n ${validDropdownChildren.join(
-            ', ',
-          )} \n\n Check out: https://blade.razorpay.com/?path=/story/components-dropdown`,
-        );
+      if (__DEV__) {
+        if (!validDropdownChildren.includes(getComponentId(child) ?? '')) {
+          throwBladeError({
+            message: `Dropdown can only have one of following elements as children - \n\n ${validDropdownChildren.join(
+              ', ',
+            )} \n\n Check out: https://blade.razorpay.com/?path=/story/components-dropdown`,
+            moduleName: 'Dropdown',
+          });
+        }
       }
 
       if (isValidAllowedChildren(child, componentIds.triggers.SelectInput)) {
@@ -182,8 +188,13 @@ const _Dropdown = ({
   return (
     <BottomSheetAndDropdownGlueContext.Provider value={BottomSheetAndDropdownGlueContextValue}>
       <DropdownContext.Provider value={contextValue}>
-        <BaseBox position="relative" textAlign={'left' as never} {...getStyledProps(styledProps)}>
-          {children}
+        <BaseBox
+          {...metaAttribute({ name: MetaConstants.Dropdown, testID })}
+          {...getStyledProps(styledProps)}
+        >
+          <BaseBox position="relative" textAlign={'left' as never}>
+            {children}
+          </BaseBox>
         </BaseBox>
       </DropdownContext.Provider>
     </BottomSheetAndDropdownGlueContext.Provider>

@@ -113,9 +113,66 @@ const getRNInputStyles = (
       : makeSize(size[36]),
   };
 };
-
-const StyledNativeBaseInput = styled.TextInput<StyledComponentInputProps>(getRNInputStyles);
-const StyledNativeBaseButton = styled.TouchableOpacity<StyledComponentInputProps>(getRNInputStyles);
+const StyledNativeBaseInput = styled.TextInput<StyledComponentInputProps>(
+  ({
+    id,
+    isFocused,
+    theme,
+    editable,
+    validationState,
+    leadingIcon,
+    prefix,
+    interactionElement,
+    suffix,
+    trailingIcon,
+    isTextArea,
+    numberOfLines,
+  }) =>
+    getRNInputStyles({
+      id,
+      isFocused,
+      theme,
+      editable,
+      validationState,
+      leadingIcon,
+      prefix,
+      interactionElement,
+      suffix,
+      trailingIcon,
+      isTextArea,
+      numberOfLines,
+    }),
+);
+const StyledNativeBaseButton = styled.TouchableOpacity<StyledComponentInputProps>(
+  ({
+    id,
+    isFocused,
+    theme,
+    editable,
+    validationState,
+    leadingIcon,
+    prefix,
+    interactionElement,
+    suffix,
+    trailingIcon,
+    isTextArea,
+    numberOfLines,
+  }) =>
+    getRNInputStyles({
+      id,
+      isFocused,
+      theme,
+      editable,
+      validationState,
+      leadingIcon,
+      prefix,
+      interactionElement,
+      suffix,
+      trailingIcon,
+      isTextArea,
+      numberOfLines,
+    }),
+);
 
 const _StyledBaseInput: React.ForwardRefRenderFunction<
   TextInput | TouchableHighlight,
@@ -145,6 +202,7 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
     hasPopup,
     shouldIgnoreBlurAnimation,
     autoCapitalize,
+    as,
     ...props
   },
   ref,
@@ -173,16 +231,15 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
         handleOnFocus?.({ name, value: props.value });
         setCurrentInteraction('active');
       }}
+      as={undefined}
       {...commonProps}
       {...props}
       {...accessibilityProps}
     >
       <Text
-        size="medium"
-        variant="body"
         type={props.value ? 'subtle' : 'placeholder'}
-        contrast="low"
-        weight="regular"
+        truncateAfterLines={1}
+        textAlign={props.textAlign}
       >
         {buttonValue}
       </Text>

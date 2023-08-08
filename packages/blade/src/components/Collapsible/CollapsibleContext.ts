@@ -1,5 +1,6 @@
 import { createContext, useContext } from 'react';
 import type { CollapsibleProps } from './Collapsible';
+import { throwBladeError } from '~utils/logger';
 
 type CollapsibleContextState = {
   isExpanded: boolean;
@@ -13,12 +14,15 @@ const CollapsibleContext = createContext<CollapsibleContextState | null>(null);
 
 const useCollapsible = (): CollapsibleContextState => {
   const collapsibleContext = useContext(CollapsibleContext);
-  if (!collapsibleContext) {
-    throw new Error(
-      `[Blade: CollapsibleContext]: You're trying to use Collapsible sub-components without Collapsible. useCollapsible should only be used within CollapsibleContext`,
-    );
+  if (__DEV__) {
+    if (!collapsibleContext) {
+      throwBladeError({
+        message: `You're trying to use Collapsible sub-components without Collapsible. useCollapsible should only be used within CollapsibleContext`,
+        moduleName: 'CollapsibleContext',
+      });
+    }
   }
-  return collapsibleContext;
+  return collapsibleContext!;
 };
 
 export { CollapsibleContext, useCollapsible, CollapsibleContextState };

@@ -27,7 +27,7 @@ const Page = (): React.ReactElement => {
         {`
           import { CheckboxGroup, Checkbox } from '@razorpay/blade/components';
 
-          function App(): JSX.Element {
+          function App(): React.ReactElement {
             return (
               <CheckboxGroup 
                 label="Where do you want to collect payments?"

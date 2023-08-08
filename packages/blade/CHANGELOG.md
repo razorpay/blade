@@ -1,5 +1,71 @@
 # @razorpay/blade
 
+## 9.5.2
+
+### Patch Changes
+
+- a1e75040: fix: standardize logs & errors
+- 37bdc811: fix(Box): handle `undefined` for `backgroundColor` prop
+- e8a81131: fix: remove className from Button, svg, Link
+
+  > **Note**
+  >
+  > There was an internal bug introduced with styled-props which allowed certain props like className to pass through and get added on DOM. This release fixes that bug.
+
+  This will be non-breaking for most projects (especially if you're using TypeScript).
+
+  If your project happened to use `className` prop on Button, SVG Icons, or Link, it will stop working post this release.
+
+## 9.5.1
+
+### Patch Changes
+
+- 14271605: refactor: move to `React.ReactElement` type
+
+## 9.5.0
+
+### Minor Changes
+
+- cbed430f: feat: strip off logs & errors in production builds
+
+### Patch Changes
+
+- 2be798d9: feat: add zIndex prop to Tooltip
+
+## 9.4.1
+
+### Patch Changes
+
+- ebd3cbda: feat: add zIndex prop for Modal
+
+## 9.4.0
+
+### Minor Changes
+
+- 5bddbe08: feat(Input): make `label` prop optional & add `accessibilityLabel` prop to `TextInput`, `TextArea`, `PasswordInput`, `SelectInput`, and `OTPInput` components
+
+  #### Key Updates
+
+  - **Optional `label` Prop**: We understand that not all use cases require a label for the Input components. Therefore, we have made the label prop optional, providing you with the freedom to choose whether to display a label or not, depending on your specific application requirements.
+
+  - **Introducing `accessibilityLabel`:** Recognizing the significance of accessibility in modern applications, we have added the `accessibilityLabel` prop to the Input components. This prop enables developers to assign a descriptive label for the input field, making it more user-friendly for individuals using assistive technologies or screen readers.
+
+  - **Enhanced User Guidance:** To maintain usability, we have implemented a requirement that either the `label` or `accessibilityLabel` prop must be provided. This ensures that users will always have clear guidance when interacting with Inputs, promoting a seamless user experience.
+
+## 9.3.0
+
+### Minor Changes
+
+- d28d8a72: feat(Tag): add Tag component
+
+## 9.2.0
+
+### Minor Changes
+
+- 37d84ce7: feat: support `display` prop for all components with styled props
+
+  Restructures few components to ensure adding a display prop doesn't break the components
+
 ## 9.1.2
 
 ### Patch Changes

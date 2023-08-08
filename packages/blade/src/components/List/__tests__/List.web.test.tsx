@@ -218,7 +218,7 @@ describe('<List />', () => {
           </ListItem>
         </List>,
       ),
-    ).toThrow('[Blade List]: List Nesting is allowed only upto 3 levels.');
+    ).toThrow('[Blade: List]: List Nesting is allowed only upto 3 levels.');
     mockConsoleError.mockRestore();
   });
 
@@ -233,7 +233,7 @@ describe('<List />', () => {
         </List>,
       ),
     ).toThrow(
-      '[Blade List]: You can only pass a List, ListItemLink, ListItemCode, ListItemText or a string as a child to ListItem.',
+      '[Blade: ListItem]: You can only pass a List, ListItemLink, ListItemCode, ListItemText or a string as a child to ListItem.',
     );
     mockConsoleError.mockRestore();
   });
@@ -246,7 +246,7 @@ describe('<List />', () => {
           <Heading>Incorrect component</Heading>
         </List>,
       ),
-    ).toThrow('[Blade List]: You can only pass a ListItem as a child to List.');
+    ).toThrow('[Blade: List]: You can only pass a ListItem as a child to List.');
     mockConsoleError.mockRestore();
   });
 

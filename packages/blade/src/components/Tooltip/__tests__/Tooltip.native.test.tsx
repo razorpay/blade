@@ -18,7 +18,7 @@ describe('<Tooltip />', () => {
   it('should render', () => {
     const tooltipContent = 'Hello world';
     const buttonText = 'Hover me';
-    const { toJSON, getByRole, getByA11yLabel } = renderWithTheme(
+    const { toJSON, getByRole, getByLabelText } = renderWithTheme(
       <Tooltip content={tooltipContent}>
         <Button>{buttonText}</Button>
       </Tooltip>,
@@ -27,7 +27,7 @@ describe('<Tooltip />', () => {
     expect(getByRole('button')).toBeTruthy();
     fireEvent(getByRole('button'), 'touchEnd');
 
-    expect(getByA11yLabel(tooltipContent)).toHaveProp('visible', true);
+    expect(getByLabelText(tooltipContent)).toHaveProp('visible', true);
 
     expect(toJSON()).toMatchSnapshot();
   });
@@ -35,7 +35,7 @@ describe('<Tooltip />', () => {
   it('should open on pressing trigger', () => {
     const triggerText = 'Press me';
     const tooltipContent = 'hello world';
-    const { getByTestId, getByA11yLabel } = renderWithTheme(
+    const { getByTestId, getByLabelText } = renderWithTheme(
       <Tooltip content={tooltipContent}>
         <TooltipInteractiveWrapper>
           <Text>{triggerText}</Text>
@@ -44,17 +44,17 @@ describe('<Tooltip />', () => {
     );
 
     expect(getByTestId(triggerId)).toBeTruthy();
-    expect(getByA11yLabel(tooltipContent)).toHaveProp('visible', false);
+    expect(getByLabelText(tooltipContent)).toHaveProp('visible', false);
 
     fireEvent(getByTestId(triggerId), 'touchEnd');
 
-    expect(getByA11yLabel(tooltipContent)).toHaveProp('visible', true);
+    expect(getByLabelText(tooltipContent)).toHaveProp('visible', true);
   });
 
   it('should close on pressing outside of trigger', async () => {
     const triggerText = 'Press me';
     const tooltipContent = 'hello world';
-    const { getByTestId, getByA11yLabel } = renderWithTheme(
+    const { getByTestId, getByLabelText } = renderWithTheme(
       <Tooltip content={tooltipContent}>
         <TooltipInteractiveWrapper>
           <Text>{triggerText}</Text>
@@ -64,7 +64,7 @@ describe('<Tooltip />', () => {
 
     expect(getByTestId(triggerId)).toBeTruthy();
     fireEvent(getByTestId(triggerId), 'touchEnd');
-    expect(getByA11yLabel(tooltipContent)).toHaveProp('visible', true);
+    expect(getByLabelText(tooltipContent)).toHaveProp('visible', true);
 
     // close on clicking backdrop
     fireEvent.press(getByTestId(modalBackdropId));
@@ -73,6 +73,19 @@ describe('<Tooltip />', () => {
     await act(async () => {
       jest.advanceTimersByTime(paymentTheme.motion.duration.gentle);
     });
-    expect(getByA11yLabel(tooltipContent)).toHaveProp('visible', false);
+    expect(getByLabelText(tooltipContent)).toHaveProp('visible', false);
+  });
+
+  it('should render tooltip with custom zIndex', () => {
+    const tooltipContent = 'Hello world';
+    const buttonText = 'Hover me';
+    const { toJSON, getByRole } = renderWithTheme(
+      <Tooltip content={tooltipContent} zIndex={9999}>
+        <Button>{buttonText}</Button>
+      </Tooltip>,
+    );
+
+    fireEvent(getByRole('button'), 'touchEnd');
+    expect(toJSON()).toMatchSnapshot();
   });
 });

@@ -11,6 +11,7 @@ import { useTheme } from '~components/BladeProvider';
 import type { SvgProps } from '~components/Icons/_Svg/Svg/types';
 import { makeSize } from '~utils';
 import { size } from '~tokens/global';
+import { logger } from '~utils/logger';
 
 type TooltipArrowProps = {
   context: UseFloatingReturn;
@@ -35,9 +36,16 @@ const TooltipArrow = React.forwardRef<SvgProps, TooltipArrowProps>(
     const height = ARROW_HEIGHT;
     const strokeWidth = theme.border.width.thin * 2;
 
-    if (!ref) {
-      console.warn('Floating UI: The `ref` prop is required for the `FloatingArrow`', 'component.');
+    if (__DEV__) {
+      if (!ref) {
+        logger({
+          type: 'warn',
+          moduleName: 'TooltipArrow',
+          message: 'Floating UI: The `ref` prop is required for the `FloatingArrow` component.',
+        });
+      }
     }
+
     if (!floating) {
       return <></>;
     }

@@ -22,6 +22,7 @@ import type { ColorContrastTypes, Feedback } from '~tokens/theme/theme';
 import { useTheme } from '~components/BladeProvider';
 import type { DotNotationSpacingStringToken, TestID } from '~utils/types';
 import { makeAccessible } from '~utils/makeAccessible';
+import { throwBladeError } from '~utils/logger';
 
 type Nullable<Type> = Type | null;
 
@@ -135,10 +136,13 @@ const Alert = ({
   testID,
   ...styledProps
 }: AlertProps): ReactElement | null => {
-  if (!actions?.primary && actions?.secondary) {
-    throw new Error(
-      '[Blade: Alert]: SecondaryAction is allowed only when PrimaryAction is defined.',
-    );
+  if (__DEV__) {
+    if (!actions?.primary && actions?.secondary) {
+      throwBladeError({
+        message: 'SecondaryAction is allowed only when PrimaryAction is defined.',
+        moduleName: 'Alert',
+      });
+    }
   }
   const { theme } = useTheme();
   const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
@@ -293,29 +297,32 @@ const Alert = ({
   }
 
   return (
-    <StyledAlert
-      intent={intent}
-      contrastType={contrastType}
-      isFullWidth={isFullWidth}
-      isDesktop={isDesktop}
-      textAlign={'left' as never}
+    <BaseBox
       {...a11yProps}
       {...metaAttribute({ name: MetaConstants.Alert, testID })}
       {...getStyledProps(styledProps)}
     >
-      {icon}
-      <BaseBox
-        flex={1}
-        paddingLeft={isFullWidth ? 'spacing.4' : 'spacing.3'}
-        paddingRight={showActionsHorizontal ? 'spacing.4' : 'spacing.2'}
+      <StyledAlert
+        intent={intent}
+        contrastType={contrastType}
+        isFullWidth={isFullWidth}
+        isDesktop={isDesktop}
+        textAlign={'left' as never}
       >
-        {_title}
-        {_description}
-        {actionsVertical}
-      </BaseBox>
-      {actionsHorizontal}
-      {closeButton}
-    </StyledAlert>
+        {icon}
+        <BaseBox
+          flex={1}
+          paddingLeft={isFullWidth ? 'spacing.4' : 'spacing.3'}
+          paddingRight={showActionsHorizontal ? 'spacing.4' : 'spacing.2'}
+        >
+          {_title}
+          {_description}
+          {actionsVertical}
+        </BaseBox>
+        {actionsHorizontal}
+        {closeButton}
+      </StyledAlert>
+    </BaseBox>
   );
 };
 

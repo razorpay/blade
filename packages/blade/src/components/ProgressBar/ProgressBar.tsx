@@ -15,6 +15,7 @@ import type { TestID } from '~utils/types';
 import { makeSize } from '~utils/makeSize';
 import type { AccessibilityProps } from '~utils/makeAccessible';
 import { makeAccessible } from '~utils/makeAccessible';
+import { throwBladeError } from '~utils/logger';
 
 type ProgressBarCommonProps = {
   /**
@@ -120,10 +121,13 @@ const ProgressBar = ({
   const { theme } = useTheme();
   const id = useId(variant);
 
-  if (variant === 'meter' && isIndeterminate) {
-    throw new Error(
-      `[Blade: ProgressBar]: Cannot set 'isIndeterminate' when 'variant' is 'meter'.`,
-    );
+  if (__DEV__) {
+    if (variant === 'meter' && isIndeterminate) {
+      throwBladeError({
+        moduleName: 'ProgressBar',
+        message: `Cannot set 'isIndeterminate' when 'variant' is 'meter'.`,
+      });
+    }
   }
 
   const unfilledBackgroundColor = theme.colors.brand.gray.a100[`${contrast}Contrast`];
@@ -161,57 +165,61 @@ const ProgressBar = ({
   }
 
   return (
-    <BaseBox {...getStyledProps(styledProps)}>
-      <BaseBox
-        display="flex"
-        flexDirection="row"
-        justifyContent={hasLabel ? 'space-between' : 'flex-end'}
-      >
-        {hasLabel ? (
-          <FormLabel as="label" htmlFor={id} contrast={contrast}>
-            {label}
-          </FormLabel>
-        ) : null}
-        {shouldShowPercentage ? (
-          <BaseBox marginBottom="spacing.2">
-            <Text
-              type="subdued"
-              variant="body"
-              contrast={contrast}
-              size="small"
-            >{`${percentageProgressValue}%`}</Text>
-          </BaseBox>
-        ) : null}
-      </BaseBox>
-      <BaseBox
-        id={id}
-        {...metaAttribute({ name: MetaConstants.ProgressBar, testID })}
-        {...makeAccessible({
-          role: accessibilityProps.role,
-          label: accessibilityProps.label,
-          valueNow: accessibilityProps.valueNow,
-          valueText: accessibilityProps.valueText,
-          valueMin: accessibilityProps.valueMin,
-          valueMax: accessibilityProps.valueMax,
-        })}
-      >
+    <BaseBox
+      {...getStyledProps(styledProps)}
+      {...metaAttribute({ name: MetaConstants.ProgressBar, testID })}
+    >
+      <BaseBox display="flex" flexDirection="column" width="100%">
         <BaseBox
-          backgroundColor={unfilledBackgroundColor}
-          height={makeSize(progressBarHeight[size])}
-          overflow="hidden"
-          position="relative"
+          display="flex"
+          flexDirection="row"
+          justifyContent={hasLabel ? 'space-between' : 'flex-end'}
         >
-          <ProgressBarFilled
-            backgroundColor={filledBackgroundColor}
-            progress={percentageProgressValue}
-            fillMotionDuration="duration.2xgentle"
-            pulseMotionDuration="duration.2xgentle"
-            indeterminateMotionDuration="duration.2xgentle"
-            pulseMotionDelay="delay.long"
-            motionEasing="easing.standard.revealing"
-            variant={variant}
-            isIndeterminate={isIndeterminate}
-          />
+          {hasLabel ? (
+            <FormLabel as="label" htmlFor={id} contrast={contrast}>
+              {label}
+            </FormLabel>
+          ) : null}
+          {shouldShowPercentage ? (
+            <BaseBox marginBottom="spacing.2">
+              <Text
+                type="subdued"
+                variant="body"
+                contrast={contrast}
+                size="small"
+              >{`${percentageProgressValue}%`}</Text>
+            </BaseBox>
+          ) : null}
+        </BaseBox>
+        <BaseBox
+          id={id}
+          {...makeAccessible({
+            role: accessibilityProps.role,
+            label: accessibilityProps.label,
+            valueNow: accessibilityProps.valueNow,
+            valueText: accessibilityProps.valueText,
+            valueMin: accessibilityProps.valueMin,
+            valueMax: accessibilityProps.valueMax,
+          })}
+        >
+          <BaseBox
+            backgroundColor={unfilledBackgroundColor}
+            height={makeSize(progressBarHeight[size])}
+            overflow="hidden"
+            position="relative"
+          >
+            <ProgressBarFilled
+              backgroundColor={filledBackgroundColor}
+              progress={percentageProgressValue}
+              fillMotionDuration="duration.2xgentle"
+              pulseMotionDuration="duration.2xgentle"
+              indeterminateMotionDuration="duration.2xgentle"
+              pulseMotionDelay="delay.long"
+              motionEasing="easing.standard.revealing"
+              variant={variant}
+              isIndeterminate={isIndeterminate}
+            />
+          </BaseBox>
         </BaseBox>
       </BaseBox>
     </BaseBox>

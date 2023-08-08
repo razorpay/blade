@@ -14,6 +14,7 @@ import { size } from '~tokens/global';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useId } from '~utils/useId';
 import { isValidAllowedChildren } from '~utils/isValidAllowedChildren';
+import { throwBladeError } from '~utils/logger';
 
 type CollapsibleProps = {
   /**
@@ -103,33 +104,39 @@ const Collapsible = ({
     [isBodyExpanded, direction, handleExpandChange, isExpanded, collapsibleBodyId],
   );
 
-  Children.forEach(children, (child) => {
-    if (
-      !(
-        isValidAllowedChildren(child, MetaConstants.CollapsibleBody) ||
-        isValidAllowedChildren(child, MetaConstants.CollapsibleButton) ||
-        isValidAllowedChildren(child, MetaConstants.CollapsibleLink) ||
-        isValidAllowedChildren(child, MetaConstants.AccordionButton)
-      )
-    ) {
-      throw new Error(
-        `[Blade: Collapsible]: only the following are supported as valid children: CollapsibleBody, CollapsibleButton, CollapsibleLink`,
-      );
-    }
-  });
+  if (__DEV__) {
+    Children.forEach(children, (child) => {
+      if (
+        !(
+          isValidAllowedChildren(child, MetaConstants.CollapsibleBody) ||
+          isValidAllowedChildren(child, MetaConstants.CollapsibleButton) ||
+          isValidAllowedChildren(child, MetaConstants.CollapsibleLink) ||
+          isValidAllowedChildren(child, MetaConstants.AccordionButton)
+        )
+      ) {
+        throwBladeError({
+          message: `only the following are supported as valid children: CollapsibleBody, CollapsibleButton, CollapsibleLink`,
+          moduleName: 'Collapsible',
+        });
+      }
+    });
+  }
 
   return (
     <CollapsibleContext.Provider value={contextValue}>
       <BaseBox
-        display="flex"
-        flexDirection={direction === 'bottom' ? 'column' : 'column-reverse'}
-        alignItems="flex-start"
-        minWidth={_shouldApplyWidthRestrictions ? MIN_WIDTH : makeSize(size[0])}
-        maxWidth={_shouldApplyWidthRestrictions ? MAX_WIDTH : MAX_WIDTH_NO_RESTRICTIONS}
         {...metaAttribute({ name: MetaConstants.Collapsible, testID })}
         {...getStyledProps(styledProps)}
       >
-        {children}
+        <BaseBox
+          display="flex"
+          flexDirection={direction === 'bottom' ? 'column' : 'column-reverse'}
+          alignItems="flex-start"
+          minWidth={_shouldApplyWidthRestrictions ? MIN_WIDTH : makeSize(size[0])}
+          maxWidth={_shouldApplyWidthRestrictions ? MAX_WIDTH : MAX_WIDTH_NO_RESTRICTIONS}
+        >
+          {children}
+        </BaseBox>
       </BaseBox>
     </CollapsibleContext.Provider>
   );

@@ -98,25 +98,25 @@ const Indicator = ({
   return (
     <BaseBox
       display="flex"
-      flexDirection="row"
-      alignItems="center"
       {...a11yProps}
       {...metaAttribute({ name: MetaConstants.Indicator, testID })}
       {...getStyledProps(styledProps)}
     >
-      <Svg
-        width={String(dimensions.svgSize)}
-        height={String(dimensions.svgSize)}
-        viewBox="0 0 10 10"
-        fill="none"
-      >
-        <Circle cx="5" cy="5" r="5" fill={fillColor} />
-        <Circle cx="5" cy="5" r="4.75" stroke={strokeColor} strokeWidth="0.5" />
-      </Svg>
-      <BaseBox marginLeft="spacing.2">
-        <Text textAlign="left" contrast="low" type="subtle" size={dimensions.textSize}>
-          {children}
-        </Text>
+      <BaseBox display="flex" flexDirection="row" alignItems="center">
+        <Svg
+          width={String(dimensions.svgSize)}
+          height={String(dimensions.svgSize)}
+          viewBox="0 0 10 10"
+          fill="none"
+        >
+          <Circle cx="5" cy="5" r="5" fill={fillColor} />
+          <Circle cx="5" cy="5" r="4.75" stroke={strokeColor} strokeWidth="0.5" />
+        </Svg>
+        <BaseBox marginLeft="spacing.2">
+          <Text textAlign="left" contrast="low" type="subtle" size={dimensions.textSize}>
+            {children}
+          </Text>
+        </BaseBox>
       </BaseBox>
     </BaseBox>
   );
