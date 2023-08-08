@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 /* eslint-disable consistent-return */
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
@@ -12,6 +13,7 @@ import { NavigationButton } from './NavigationButton';
 import type { CarouselProps } from './types';
 import type { CarouselContextProps } from './CarouselContext';
 import { CarouselContext } from './CarouselContext';
+import { getCarouselItemId } from './utils';
 import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
 import { useInterval, useTheme } from '~utils';
@@ -155,6 +157,7 @@ type CarouselBodyProps = {
   isScrollAtStart: boolean;
   isScrollAtEnd: boolean;
 };
+
 const CarouselBody = React.forwardRef<HTMLDivElement, CarouselBodyProps>(
   (
     {
@@ -212,6 +215,7 @@ const Carousel = ({
   const [activeSlide, setActiveSlide] = React.useState(0);
   const [activeIndicator, setActiveIndicator] = React.useState(0);
   const [shouldPauseAutoplay, setShouldPauseAutoplay] = React.useState(false);
+  const [startEndMargin, setStartEndMargin] = React.useState(0);
   const containerRef = React.useRef<HTMLDivElement>(null);
   const isMobile = platform === 'onMobile';
   const id = useId('carousel');
@@ -239,24 +243,34 @@ const Carousel = ({
   const shouldShowPrevButton = isResponsive ? activeSlide !== 0 : true;
   const shouldShowNextButton = isResponsive ? activeSlide !== totalNumberOfSlides - 1 : true;
 
-  // Sync the active slide state with indicator state
-  // Because when user scrolls the carousel via touch-and-drag
-  // We need to keep the activeSlide state updated
-  React.useEffect(() => {
-    setActiveSlide(activeIndicator);
-  }, [activeIndicator]);
+  // calculate the start/end margin so that we can
+  // deduct that margin when scrolling to a carousel item with goToSlideIndex
+  React.useLayoutEffect(() => {
+    // Do not calculate if not needed
+    if (!isResponsive && !shouldAddStartEndSpacing) return;
+    if (!containerRef.current) return;
+
+    const carouselItemId = getCarouselItemId(id, 0);
+    const carouselItem = containerRef.current.querySelector(carouselItemId);
+    if (!carouselItem) return;
+
+    const carouselItemLeft = carouselItem.getBoundingClientRect().left ?? 0;
+    const carouselContainerLeft = containerRef.current.getBoundingClientRect().left ?? 0;
+
+    setStartEndMargin(carouselItemLeft - carouselContainerLeft);
+  }, [id, isResponsive, shouldAddStartEndSpacing]);
 
   const goToSlideIndex = (slideIndex: number) => {
     if (!containerRef.current) return;
 
-    const carouselItemId = `#${id}-carousel-item-${slideIndex * (_visibleItems ?? 1)}`;
+    const carouselItemId = getCarouselItemId(id, slideIndex * (_visibleItems ?? 1));
     const carouselItem = containerRef.current.querySelector(carouselItemId);
     if (!carouselItem) return;
 
     const carouselItemLeft = carouselItem.getBoundingClientRect().left ?? 0;
     const left = containerRef.current.scrollLeft + carouselItemLeft;
     containerRef.current.scroll({
-      left,
+      left: left - startEndMargin,
       behavior: 'smooth',
     });
     setActiveSlide(slideIndex);
@@ -267,6 +281,22 @@ const Carousel = ({
     if (slideIndex >= numberOfIndicators) {
       slideIndex = 0;
     }
+
+    // an edge case where if carousel is responsive
+    // and shouldHaveStartEndSpacing is set to false
+    // there can be a case where numberOfIndicators is set to 10 but
+    // visually there is 3 or 4 items, in those cases we want to check if we reached the
+    // end of the scroll container if so we wrap around
+    // TODO: we should probably hide the indicators in this case
+    if (containerRef.current) {
+      const container = containerRef.current;
+      const scrollLeft = container.scrollLeft;
+      const scrollWidth = container.scrollWidth - container.offsetWidth;
+      if (scrollLeft === scrollWidth) {
+        slideIndex = 0;
+      }
+    }
+
     goToSlideIndex(slideIndex);
   };
 
@@ -284,6 +314,7 @@ const Carousel = ({
     // because the gap is there so it won't overlap with the card anyway
     if (shouldAddStartEndSpacing) return;
     if (isMobile) return;
+
     const carouselContainer = containerRef.current;
     if (!carouselContainer) return;
 
@@ -299,6 +330,42 @@ const Carousel = ({
       carouselContainer?.removeEventListener('scroll', handleScroll);
     };
   }, [isMobile, shouldAddStartEndSpacing]);
+
+  // Sync the indicators with scroll
+  React.useEffect(() => {
+    const carouselContainer = containerRef.current;
+    if (!carouselContainer) return;
+
+    const handleScroll = throttle(() => {
+      const carouselBB = carouselContainer.getBoundingClientRect();
+      // By default we check the far left side of the screen
+      let xOffset = 0.1;
+      // when the carousel is responsive & has spacing
+      // we want to check the center of the screen
+      if (isResponsive && shouldAddStartEndSpacing) {
+        xOffset = 0.5;
+      }
+
+      const pointX = carouselBB.left + carouselBB.width * xOffset;
+      const pointY = carouselBB.top + carouselBB.height * 0.5;
+      const element = document.elementFromPoint(pointX, pointY);
+      const carouselItem = element?.closest('[data-slide-index]');
+      if (!carouselItem) {
+        return;
+      }
+
+      const slideIndex = Number(carouselItem?.getAttribute('data-slide-index'));
+      const goTo = Math.ceil(slideIndex / (_visibleItems || 1));
+      setActiveIndicator(goTo);
+      setActiveSlide(goTo);
+    }, 200);
+
+    carouselContainer.addEventListener('scroll', handleScroll);
+
+    return () => {
+      carouselContainer?.removeEventListener('scroll', handleScroll);
+    };
+  }, [_visibleItems, isResponsive, shouldAddStartEndSpacing]);
 
   // auto play
   useInterval(
@@ -320,8 +387,19 @@ const Carousel = ({
       setActiveIndicator,
       carouselId: id,
       totalNumberOfSlides,
+      activeSlide,
+      startEndMargin,
+      shouldAddStartEndSpacing,
     };
-  }, [_visibleItems, carouselItemWidth, id, totalNumberOfSlides]);
+  }, [
+    id,
+    startEndMargin,
+    _visibleItems,
+    carouselItemWidth,
+    totalNumberOfSlides,
+    activeSlide,
+    shouldAddStartEndSpacing,
+  ]);
 
   React.useEffect(() => {
     onChange?.(activeSlide);

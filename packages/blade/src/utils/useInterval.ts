@@ -21,6 +21,9 @@ function useInterval(
       intervalRef.current = window.setInterval(tick, delay);
       return () => window.clearInterval(intervalRef.current!);
     }
+
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    return () => {};
   }, [delay, enable]);
 }
 
