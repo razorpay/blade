@@ -90,64 +90,45 @@ const CarouselTemplate: ComponentStory<typeof CarouselComponent> = () => {
       gap="spacing.8"
       backgroundColor="surface.background.level1.lowContrast"
     >
-      <Text>v1: Responsive: N/A + auto bleed + shouldAddStartEndPadding</Text>
+      <Text>v1: visibleItems: N/A + auto bleed + shouldAddStartEndPadding</Text>
       <CarouselExample
-        carouselItemWidth={{ base: '90%', m: '500px' }}
+        carouselItemWidth={{ base: '90%', m: '300px' }}
         shouldAddStartEndSpacing
         navigationButtonPosition="side"
         overlayColor="surface.background.level1.lowContrast"
-        onChange={(i) => console.log(i)}
         showOverlay
       />
-      {/* <Text>v1: Responsive: N/A + auto bleed + shouldAddStartEndPadding</Text> */}
-      {/* <CarouselExample
-        autoPlay
-        carouselItemWidth="500px"
+
+      <Text>v1: visibleItems: N/A + auto bleed</Text>
+      <CarouselExample
+        carouselItemWidth={{ base: '90%', m: '300px' }}
         navigationButtonPosition="bottom"
         overlayColor="surface.background.level1.lowContrast"
-      /> */}
-      {/* <Text>v2: Responsive: 1|2|3, navButtons: side</Text> */}
-      {/* <CarouselExample autoPlay visibleItems={2} navigationButtonPosition="side" /> */}
-      {/* <CarouselExample autoPlay visibleItems={2} navigationButtonPosition="side" /> */}
-      {/* <CarouselExample visibleItems={2} navigationButtonPosition="side" />
-      <CarouselExample visibleItems={3} navigationButtonPosition="side" />
-      <Text>v2: Responsive: 1|2|3, navButtons: bottom</Text>
-      <CarouselExample visibleItems={1} navigationButtonPosition="bottom" />
-      <CarouselExample visibleItems={2} navigationButtonPosition="bottom" />
-      <CarouselExample visibleItems={3} navigationButtonPosition="bottom" /> */}
+      />
 
-      {/* 
-      <Text>Bleed: none</Text>
-      <CarouselExample visibleItems={1} navigationButtonPosition="bottom" bleed="none" />
-      <CarouselExample visibleItems={2} navigationButtonPosition="side" bleed="none" />
+      <Text>v2: visibleItems: 1</Text>
+
       <CarouselExample
-        visibleItems={2}
-        showIndicators={false}
         navigationButtonPosition="bottom"
-        bleed="none"
+        visibleItems={1}
+        overlayColor="surface.background.level1.lowContrast"
       />
+
+      <Text>v2: visibleItems: 2</Text>
+
       <CarouselExample
-        visibleItems={2}
-        showIndicators={false}
         navigationButtonPosition="side"
-        bleed="none"
+        visibleItems={2}
+        overlayColor="surface.background.level1.lowContrast"
       />
-      <Text>bleed nav: side</Text>
-      <CarouselExample visibleItems={2} navigationButtonPosition="side" bleed="none" />
-      <CarouselExample visibleItems={2} bleed="none" variant="stroked" />
-      <CarouselExample visibleItems={3} bleed="none" variant="stroked" />
-      <Text>Bleed: right</Text>
-      <CarouselExample visibleItems={1} bleed="right" variant="stroked" />
-      <CarouselExample visibleItems={2} bleed="right" variant="stroked" />
-      <CarouselExample visibleItems={3} bleed="right" variant="stroked" />
-      <Text>Bleed: left</Text>
-      <CarouselExample visibleItems={1} bleed="left" variant="stroked" />
-      <CarouselExample visibleItems={2} bleed="left" variant="stroked" />
-      <CarouselExample visibleItems={3} bleed="left" variant="stroked" />
-      <Text>Bleed: both</Text>
-      <CarouselExample visibleItems={1} bleed="both" variant="stroked" />
-      <CarouselExample visibleItems={2} bleed="both" variant="stroked" />
-      <CarouselExample visibleItems={3} bleed="both" variant="stroked" /> */}
+
+      <Text>v2: visibleItems: 3</Text>
+
+      <CarouselExample
+        navigationButtonPosition="bottom"
+        visibleItems={3}
+        overlayColor="surface.background.level1.lowContrast"
+      />
     </Box>
   );
 };

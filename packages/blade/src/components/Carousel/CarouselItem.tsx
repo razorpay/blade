@@ -8,13 +8,19 @@ import BaseBox from '~components/Box/BaseBox';
 import { useBreakpoint, useTheme } from '~utils';
 import { makeAccessible } from '~utils/makeAccessible';
 
-type StyledCarouselItemProps = Pick<CarouselProps, 'visibleItems'> &
+type StyledCarouselItemProps = Pick<CarouselProps, 'visibleItems' | 'shouldAddStartEndSpacing'> &
   Pick<CarouselItemProps, 'shouldHaveEndSpacing' | 'shouldHaveStartSpacing'> & {
     isMobile?: boolean;
   };
 
 const StyledCarouselItem = styled(BaseBox)<StyledCarouselItemProps>(
-  ({ visibleItems, shouldHaveStartSpacing, shouldHaveEndSpacing, theme }) => {
+  ({
+    visibleItems,
+    shouldAddStartEndSpacing,
+    shouldHaveStartSpacing,
+    shouldHaveEndSpacing,
+    theme,
+  }) => {
     const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
     const isMobile = matchedDeviceType === 'mobile';
     const isResponsive = visibleItems === undefined;
@@ -32,7 +38,7 @@ const StyledCarouselItem = styled(BaseBox)<StyledCarouselItemProps>(
       // Responsive slider styles, a special case
       ...(isResponsive && {
         width: '100%',
-        scrollSnapAlign: isMobile ? 'start' : 'center',
+        scrollSnapAlign: isMobile || !shouldAddStartEndSpacing ? 'start' : 'center',
         marginLeft: shouldHaveStartSpacing ? '100%' : 0,
         marginRight: shouldHaveEndSpacing ? '100%' : 0,
       }),
@@ -48,35 +54,6 @@ type CarouselItemProps = {
   shouldHaveEndSpacing?: boolean;
 };
 
-function useIntersectionObserver(
-  elementRef: React.RefObject<Element>,
-  { threshold = 0, root = null, rootMargin = '0%' }: IntersectionObserverInit,
-): IntersectionObserverEntry | undefined {
-  const [entry, setEntry] = React.useState<IntersectionObserverEntry>();
-
-  const updateEntry = ([entry]: IntersectionObserverEntry[]): void => {
-    setEntry(entry);
-  };
-
-  React.useEffect(() => {
-    const node = elementRef?.current;
-    const hasIOSupport = !!window.IntersectionObserver;
-
-    if (!hasIOSupport || !node) return;
-
-    const observerParams = { threshold, root, rootMargin };
-    const observer = new IntersectionObserver(updateEntry, observerParams);
-
-    observer.observe(node);
-
-    return () => observer.disconnect();
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [elementRef?.current, JSON.stringify(threshold), root, rootMargin]);
-
-  return entry;
-}
-
 const CarouselItem = ({
   children,
   shouldHaveStartSpacing,
@@ -89,23 +66,10 @@ const CarouselItem = ({
     totalNumberOfSlides,
     visibleItems,
     carouselItemWidth,
-    carouselContainerRef,
-    setActiveIndicator,
+    shouldAddStartEndSpacing,
   } = useCarouselContext();
   const { platform } = useTheme();
   const isMobile = platform === 'onMobile';
-
-  const entry = useIntersectionObserver(itemRef, {
-    root: carouselContainerRef!.current!,
-    threshold: 0.99,
-  });
-
-  React.useEffect(() => {
-    if (entry?.isIntersecting) {
-      const slideIndex = Number(entry?.target.getAttribute('data-slide-index'));
-      setActiveIndicator(Math.floor((slideIndex ?? 1) / (visibleItems ?? 1)));
-    }
-  }, [entry?.isIntersecting, entry?.target, setActiveIndicator, visibleItems]);
 
   return (
     <StyledCarouselItem
@@ -120,6 +84,7 @@ const CarouselItem = ({
       data-slide-index={index}
       visibleItems={visibleItems}
       maxWidth={carouselItemWidth}
+      shouldAddStartEndSpacing={shouldAddStartEndSpacing}
       shouldHaveStartSpacing={shouldHaveStartSpacing}
       shouldHaveEndSpacing={shouldHaveEndSpacing}
     >
