@@ -1,7 +1,7 @@
 import type { CSSObject, DefaultTheme } from 'styled-components';
 import type { IndicatorButtonProps } from './types';
 import { size } from '~tokens/global';
-import { isReactNative, makeSize, makeSpace } from '~utils';
+import { castWebType, isReactNative, makeMotionTime, makeSize, makeSpace } from '~utils';
 
 const getIndicatorButtonStyles = ({
   theme,
@@ -16,6 +16,9 @@ const getIndicatorButtonStyles = ({
     blue: theme.colors.brand.primary[500],
   };
 
+  const easing = castWebType(theme.motion.easing.standard.effective);
+  const duration = castWebType(makeMotionTime(theme.motion.duration.gentle));
+
   return {
     border: 'none',
     cursor: 'pointer',
@@ -24,7 +27,13 @@ const getIndicatorButtonStyles = ({
     backgroundColor: isActive ? backgroundColor[variant] : theme.colors.overlay.background,
     width: isActive ? makeSize(size[18]) : makeSize(size[6]),
     height: makeSize(size[6]),
-    transition: '300ms width',
+    transitionProperty: 'width',
+    transitionDuration: duration,
+    transitionTimingFunction: easing,
+
+    ...(isReactNative() && {
+      width: undefined,
+    }),
 
     ...(!isReactNative() && {
       '&:before': {

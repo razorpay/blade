@@ -92,8 +92,7 @@ const CarouselTemplate: ComponentStory<typeof CarouselComponent> = () => {
       // backgroundColor="surface.background.level1.lowContrast"
     >
       {/* <Text>v1: Responsive: N/A + auto bleed + shouldAddStartEndPadding</Text> */}
-      {/* <CarouselExample carouselItemWidth="90%" /> */}
-      <CarouselExample carouselItemWidth="100%" />
+      <CarouselExample carouselItemWidth="90%" />
     </Box>
   );
 };

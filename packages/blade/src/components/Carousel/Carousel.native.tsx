@@ -177,13 +177,13 @@ const Carousel = ({
             automaticallyAdjustContentInsets={false}
             showsHorizontalScrollIndicator={false}
             showsVerticalScrollIndicator={false}
-            scrollEventThrottle={1}
             snapToInterval={boxWidth}
             contentInset={{
               left: 0,
               right: 0,
             }}
             contentOffset={{ x: 0, y: 0 }}
+            // adding some padding so that if a card is placed the shadows don't cut off
             contentContainerStyle={{ paddingVertical: 10 }}
           >
             {React.Children.map(children, (child, index) => {

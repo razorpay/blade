@@ -1,9 +1,13 @@
+import React from 'react';
 import { Pressable } from 'react-native';
 import styled from 'styled-components/native';
+import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import { getIndicatorButtonStyles } from './getIndicatorButtonStyles';
 import type { IndicatorButtonProps } from './types';
 import { makeAccessible } from '~utils/makeAccessible';
 import BaseBox from '~components/Box/BaseBox';
+import { castNativeType, makeMotionTime, useTheme } from '~utils';
+import { size } from '~tokens/global';
 
 const PressableIndicatorButton = styled(BaseBox)<
   Pick<IndicatorButtonProps, 'variant' | 'isActive'>
@@ -16,9 +20,24 @@ const StyledIndicatorButton = ({
   accessibilityLabel,
   ...props
 }: IndicatorButtonProps & { accessibilityLabel: string }): React.ReactElement => {
+  const { theme } = useTheme();
+  const easing = castNativeType(theme.motion.easing.standard.effective);
+  const duration = castNativeType(makeMotionTime(theme.motion.duration.gentle));
+
+  const style = useAnimatedStyle(() => {
+    return {
+      width: withTiming(props.isActive ? size[18] : size[6], {
+        duration,
+        easing,
+      }),
+    };
+  }, [props.isActive]);
+
   return (
     <Pressable onPress={onClick} {...makeAccessible({ label: accessibilityLabel })}>
-      <PressableIndicatorButton {...props} />
+      <PressableIndicatorButton {...props}>
+        <Animated.View style={[style]} />
+      </PressableIndicatorButton>
     </Pressable>
   );
 };
