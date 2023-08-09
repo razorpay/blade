@@ -28,7 +28,7 @@ const config = {
   },
   resolver: {
     // resolverMainFields: ['sbmodern', 'browser', 'module', 'main'],
-    resolverMainFields: ['sbmodern', 'browser', 'main'],
+    resolverMainFields: ['browser', 'main'],
   },
 };
 
