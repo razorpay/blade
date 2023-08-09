@@ -2,7 +2,10 @@ import React from 'react';
 import type { CarouselProps } from './types';
 
 type CarouselContextProps =
-  | (Pick<CarouselProps, 'visibleItems' | 'carouselItemWidth' | 'shouldAddStartEndSpacing'> & {
+  | (Pick<
+      CarouselProps,
+      'visibleItems' | 'carouselItemWidth' | 'shouldAddStartEndSpacing' | 'carouselItemAlignment'
+    > & {
       carouselContainerRef: React.RefObject<HTMLDivElement>;
       setActiveIndicator: (value: React.SetStateAction<number>) => void;
       carouselId: string | null;
