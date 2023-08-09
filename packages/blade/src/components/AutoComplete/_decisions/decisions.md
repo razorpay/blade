@@ -170,13 +170,16 @@ When possible selections are more than 11, it is advised to put tags outside of 
 
 We add `showTags={false}` to AutoComplete to remove tags from input. Then we can use Controlled state to show tags outside in the UI.
 
-When the input has `label`, we show number of items selected.
+If not tags, what to show inside AutoComplete :thinking:? Checkout this table to understand -
 
-<img width="250" alt="image" src="https://github.com/razorpay/blade/assets/30949385/c8a30845-812c-493f-a51f-97c233880960">
+| Code                                                            | Output                                                                                                                     |
+| --------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `<AutoComplete label="Status" showTags={false} />`              | <img width="220" alt="image" src="https://github.com/razorpay/blade/assets/30949385/c8a30845-812c-493f-a51f-97c233880960"> |
+| `<AutoComplete accessibilityLabel="Status" showTags={false} />` | <img width="200" alt="image" src="https://github.com/razorpay/blade/assets/30949385/83cf63d5-ccc4-4bb9-bf0d-ce91dc5c1b09"> |
 
-When the input has `accessibilityLabel` and no `label`, we show the accessibilityLabel.
+So when input has label, we show number of selected items.
 
-<img width="200" alt="image" src="https://github.com/razorpay/blade/assets/30949385/83cf63d5-ccc4-4bb9-bf0d-ce91dc5c1b09">
+When input doesn't have a label, we show accessibilityLabel inside the input.
 
 **Code**
 
