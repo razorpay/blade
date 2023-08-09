@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 9.6.0
+
+### Minor Changes
+
+- 50d55a5f: feat(Amount): add support for more currencies
+
 ## 9.5.3
 
 ### Patch Changes
