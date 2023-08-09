@@ -3,6 +3,7 @@ import { Title } from '@storybook/addon-docs';
 import { getStyledPropsArgTypes } from '../Box/BaseBox/storybookArgTypes';
 import type { AmountProps } from './Amount';
 import { Amount as AmountComponent } from './Amount';
+import { currencyPrefixMapping } from './amountTokens';
 import BaseBox from '~components/Box/BaseBox';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { Text } from '~components/Typography';
@@ -19,6 +20,7 @@ const Page = (): React.ReactElement => {
       }}
       componentName="Amount"
       componentDescription="Amounts are used to show small amount of color coded metadata, which are ideal for getting user attention."
+      note="This component only displays the provided value in the specified currency, it does not perform any currency conversion."
     >
       <Title>Usage</Title>
       <Sandbox>
@@ -168,10 +170,10 @@ HumanizeSuffix.args = {
 HumanizeSuffix.storyName = 'Humanize Suffix';
 
 const AmountCurrencyTemplate: ComponentStory<typeof AmountComponent> = (args) => {
-  const values = ['INR', 'MYR'] as const;
+  const values = Object.keys(currencyPrefixMapping);
 
   return (
-    <BaseBox justifyContent="flex-start">
+    <BaseBox justifyContent="flex-start" maxHeight="300px" overflowY="auto">
       {values.map((value) => (
         <BaseBox
           display="flex"
@@ -182,7 +184,7 @@ const AmountCurrencyTemplate: ComponentStory<typeof AmountComponent> = (args) =>
           flexDirection="column"
         >
           <Text marginBottom="spacing.1">{value}</Text>
-          <AmountComponent {...args} currency={value} />
+          <AmountComponent {...args} currency={value as AmountProps['currency']} />
         </BaseBox>
       ))}
     </BaseBox>
