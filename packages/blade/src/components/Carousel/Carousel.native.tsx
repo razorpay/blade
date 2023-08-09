@@ -76,7 +76,7 @@ const Carousel = ({
   visibleItems,
   showIndicators = true,
   children,
-  carouselItemWidth,
+  carouselItemWidth = '100%',
   accessibilityLabel,
   navigationButtonSpacing = 'spacing.4',
   onChange,
@@ -86,6 +86,7 @@ const Carousel = ({
   const containerRef = React.useRef<ScrollView>(null);
   const [activeSlide, setActiveSlide] = React.useState(0);
   const [scrollViewWidth, setScrollViewWidth] = React.useState(0);
+  const [shouldPauseAutoplay, setShouldPauseAutoplay] = React.useState(false);
 
   const _visibleItems = visibleItems === undefined ? undefined : 1;
   const boxWidth = scrollViewWidth * percentageStringToNumber(castNativeType(carouselItemWidth));
@@ -124,8 +125,9 @@ const Carousel = ({
       carouselId: undefined,
       totalNumberOfSlides,
       boxWidth,
+      activeSlide,
     };
-  }, [_visibleItems, boxWidth, carouselItemWidth, totalNumberOfSlides]);
+  }, [_visibleItems, activeSlide, boxWidth, carouselItemWidth, totalNumberOfSlides]);
 
   // auto play
   useInterval(
@@ -135,7 +137,7 @@ const Carousel = ({
     {
       delay: 6000,
       // only enable if autoplay is true & user's intent isn't to interact with carousel
-      enable: autoPlay, // TODO
+      enable: autoPlay && !shouldPauseAutoplay,
     },
   );
 
@@ -159,6 +161,12 @@ const Carousel = ({
           flexDirection="row"
         >
           <ScrollView
+            onScrollBeginDrag={() => {
+              setShouldPauseAutoplay(true);
+            }}
+            onScrollEndDrag={() => {
+              setShouldPauseAutoplay(false);
+            }}
             {...makeAccessible({ label: accessibilityLabel })}
             ref={containerRef}
             onLayout={(e) => {
