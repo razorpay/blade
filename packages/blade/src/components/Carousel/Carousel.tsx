@@ -156,6 +156,7 @@ type CarouselBodyProps = {
   showOverlay?: boolean;
   isScrollAtStart: boolean;
   isScrollAtEnd: boolean;
+  carouselItemAlignment: CarouselProps['carouselItemAlignment'];
 };
 
 const CarouselBody = React.forwardRef<HTMLDivElement, CarouselBodyProps>(
@@ -169,6 +170,7 @@ const CarouselBody = React.forwardRef<HTMLDivElement, CarouselBodyProps>(
       showOverlay,
       isScrollAtStart,
       isScrollAtEnd,
+      carouselItemAlignment,
     },
     ref,
   ) => {
@@ -180,6 +182,7 @@ const CarouselBody = React.forwardRef<HTMLDivElement, CarouselBodyProps>(
         gap={{ base: 'spacing.4', m: 'spacing.5' }}
         isScrollAtStart={isScrollAtStart}
         isScrollAtEnd={isScrollAtEnd}
+        alignItems={carouselItemAlignment}
         {...makeAccessible({ liveRegion: 'polite' })}
       >
         {React.Children.map(children, (child, index) => {
@@ -197,19 +200,20 @@ const CarouselBody = React.forwardRef<HTMLDivElement, CarouselBodyProps>(
 
 const Carousel = ({
   autoPlay,
-  visibleItems,
+  visibleItems = undefined,
   showIndicators = true,
   navigationButtonPosition = 'bottom',
   children,
   shouldAddStartEndSpacing = false,
   carouselItemWidth,
-  overlayColor,
+  overlayColor = 'surface.background.level1.lowContrast',
   accessibilityLabel,
   navigationButtonSpacing = 'spacing.4',
   onChange,
   indicatorVariant = 'gray',
   navigationButtonVariant = 'filled',
   showOverlay,
+  carouselItemAlignment = 'start',
 }: CarouselProps): React.ReactElement => {
   const { platform } = useTheme();
   const [activeSlide, setActiveSlide] = React.useState(0);
@@ -470,6 +474,7 @@ const Carousel = ({
             isScrollAtStart={isScrollAtStart}
             isScrollAtEnd={isScrollAtEnd}
             ref={containerRef}
+            carouselItemAlignment={carouselItemAlignment}
           >
             {children}
           </CarouselBody>
