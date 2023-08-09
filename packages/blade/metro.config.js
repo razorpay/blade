@@ -1,5 +1,11 @@
 const { getDefaultConfig, mergeConfig } = require('@react-native/metro-config');
 
+const defaultConfig = getDefaultConfig(__dirname);
+console.log(
+  '🚀 ~ file: metro.config.js:4 ~ defaultConfig:',
+  defaultConfig.resolver.resolverMainFields,
+);
+
 /**
  * Metro configuration
  * https://facebook.github.io/metro/docs/configuration
@@ -12,6 +18,7 @@ const { getDefaultConfig, mergeConfig } = require('@react-native/metro-config');
 const config = {
   resetCache: true,
   transformer: {
+    unstable_allowRequireContext: true,
     getTransformOptions: async () => ({
       transform: {
         experimentalImportSupport: false,
@@ -20,8 +27,9 @@ const config = {
     }),
   },
   resolver: {
-    resolverMainFields: ['sbmodern', 'browser', 'module', 'main'],
+    // resolverMainFields: ['sbmodern', 'browser', 'module', 'main'],
+    resolverMainFields: ['sbmodern', 'browser', 'main'],
   },
 };
 
-module.exports = mergeConfig(getDefaultConfig(__dirname), config);
+module.exports = mergeConfig(defaultConfig, config);
