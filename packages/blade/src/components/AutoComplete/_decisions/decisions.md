@@ -78,6 +78,8 @@ There are 3 controlled states that are relevant to AutoComplete
 </ActionList>
 ```
 
+Complex flows such as [Adding New Item to ActionList](https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=47091%3A711978&mode=dev) should be handled with Controlled API.
+
 <details>
 <summary>Show Full Code</summary>
 
