@@ -174,7 +174,7 @@ const Carousel = ({
             }}
             // Sync active indicator with scroll
             onMomentumScrollEnd={(e) => {
-              const slideIndex = Math.ceil(e.nativeEvent.contentOffset.x / boxWidth);
+              const slideIndex = Math.round(e.nativeEvent.contentOffset.x / boxWidth);
               setActiveSlide(slideIndex);
             }}
             horizontal
