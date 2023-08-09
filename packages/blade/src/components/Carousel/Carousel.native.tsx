@@ -14,6 +14,7 @@ import { useInterval } from '~utils/useInterval';
 import { makeAccessible } from '~utils/makeAccessible/makeAccessible.native';
 import { announce } from '~components/LiveAnnouncer/LiveAnnouncer.native';
 import { castNativeType } from '~utils';
+import { useId } from '~utils/useId';
 
 const percentageStringToNumber = (percentage: string) => {
   if (!percentage.endsWith('%')) {
@@ -87,6 +88,7 @@ const Carousel = ({
   const [activeSlide, setActiveSlide] = React.useState(0);
   const [scrollViewWidth, setScrollViewWidth] = React.useState(0);
   const [shouldPauseAutoplay, setShouldPauseAutoplay] = React.useState(false);
+  const id = useId();
 
   const _visibleItems = visibleItems === undefined ? undefined : 1;
   const boxWidth = scrollViewWidth * percentageStringToNumber(castNativeType(carouselItemWidth));
@@ -122,12 +124,12 @@ const Carousel = ({
     return {
       visibleItems: _visibleItems,
       carouselItemWidth,
-      carouselId: undefined,
+      carouselId: id,
       totalNumberOfSlides,
       boxWidth,
       activeSlide,
     };
-  }, [_visibleItems, activeSlide, boxWidth, carouselItemWidth, totalNumberOfSlides]);
+  }, [_visibleItems, activeSlide, boxWidth, carouselItemWidth, id, totalNumberOfSlides]);
 
   // auto play
   useInterval(

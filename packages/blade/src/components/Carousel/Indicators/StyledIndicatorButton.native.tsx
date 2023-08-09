@@ -4,7 +4,6 @@ import styled from 'styled-components/native';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import { getIndicatorButtonStyles } from './getIndicatorButtonStyles';
 import type { IndicatorButtonProps } from './types';
-import { makeAccessible } from '~utils/makeAccessible';
 import BaseBox from '~components/Box/BaseBox';
 import { castNativeType, makeMotionTime, useTheme } from '~utils';
 import { size } from '~tokens/global';
@@ -34,7 +33,7 @@ const StyledIndicatorButton = ({
   }, [props.isActive]);
 
   return (
-    <Pressable onPress={onClick} {...makeAccessible({ label: accessibilityLabel })}>
+    <Pressable onPress={onClick} accessibilityLabel={accessibilityLabel}>
       <PressableIndicatorButton {...props}>
         <Animated.View style={[style]} />
       </PressableIndicatorButton>

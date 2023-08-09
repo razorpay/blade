@@ -13,15 +13,17 @@ const Indicators = (props: IndicatorsProps): React.ReactElement => {
       {...makeAccessible({ role: 'tablist', label: 'Slides' })}
     >
       {new Array(props.totalItems).fill(0).map((_, idx) => {
+        const slideIndex = idx * (visibleItems ?? 1);
         return (
           <IndicatorButton
             key={idx}
             {...makeAccessible({
               role: 'tab',
-              label: `Slide ${idx * (visibleItems ?? 1) + 1}`,
+              label: `Slide ${slideIndex + 1}`,
               selected: idx === props.activeIndex,
-              controls: `${carouselId}-carousel-item-${idx * (visibleItems ?? 1)}`,
+              controls: `${carouselId}-carousel-item-${slideIndex}`,
             })}
+            slideIndex={slideIndex}
             marginLeft={idx !== 0 ? 'spacing.2' : 'spacing.0'}
             isActive={idx === props.activeIndex}
             onClick={() => props?.onIndicatorButtonClick?.(idx)}
