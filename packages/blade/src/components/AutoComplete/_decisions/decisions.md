@@ -8,7 +8,24 @@ A SelectInput where you can type inside the input to filter through the items.
 
 - [SelectInput & AutoComplete - Figma Design](<(https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13590%3A171038&mode=dev)>)
 
-## API
+## Props Table
+
+> **Note**
+>
+> Below this section, I have added [examples of common AutoComplete usage](#usage-examples). Check them out to understand usage of these props in details.
+
+| **Props**          | **Description**                                                                                 | **Type**                                                        | **Default Value** |
+| ------------------ | ----------------------------------------------------------------------------------------------- | --------------------------------------------------------------- | ----------------- |
+| label              | label of input                                                                                  | string                                                          |                   |
+| accessibilityLabel | aria-label of input when label is not defined                                                   | string                                                          |                   |
+| rows               | height restrictions of input ([Checkout Inactive - Active States](#inactive---active-states))   | '1' \| '3' \| 'expandable'                                      | '3'               |
+| showTags           | Boolean to show or hide tags inside AutoComplete ([Checkout Outside Tags Usage](#outside-tags)) | boolean                                                         | true              |
+| value              | Controlled state of the value inside input                                                      | string                                                          |                   |
+| onChange           | Callback when input value changes                                                               | (inputValue: string) => void                                    |                   |
+| selected           | Controlled state of the selected items ([Checkout Controlled Usage](#controlled-usage))         | string[]                                                        |                   |
+| onSelectChange     | Callback when selected items change                                                             | ({ name, values }: { name: string; values: string[] } ) => void |                   |
+
+## Usage Examples
 
 AutoComplete will be built as a new trigger for existing Dropdown component.
 
@@ -17,7 +34,8 @@ Depending on where and how AutoComplete is used, the API can differ. Checkout ex
 - [Basic Usage](#basic-usage)
 - [Controlled Usage](#controlled-usage)
 - [Usage in BottomSheet](#usage-in-bottomsheet)
-- [Usage when Tags are Outside]()
+- [Usage when Tags are Outside](#outside-tags)
+- [Inactive - Active States](#inactive---active-states)
 
 ### Basic Usage
 
@@ -158,6 +176,8 @@ When the input has `accessibilityLabel` and no `label`, we show the accessibilit
 
 <img width="200" alt="image" src="https://github.com/razorpay/blade/assets/30949385/83cf63d5-ccc4-4bb9-bf0d-ce91dc5c1b09">
 
+**Code**
+
 ```jsx
 const [selectedItems, setSelectedItems] = React.useState([]);
 
@@ -186,26 +206,14 @@ const [selectedItems, setSelectedItems] = React.useState([]);
 
 ### Inactive - Active States
 
-| Code                                | Inactive                                                                                                                   | Active                                                                                                                     |
-| ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| `<AutoComplete row="1" />`          | <img width="266" alt="image" src="https://github.com/razorpay/blade/assets/30949385/74b849f3-f1b9-4922-b717-70ffc7ffd56e"> | <img width="276" alt="image" src="https://github.com/razorpay/blade/assets/30949385/055bc4f4-fb57-4129-b27a-0f1966c8ad26"> |
-| `<AutoComplete row="3" />`          | <img width="420" alt="image" src="https://github.com/razorpay/blade/assets/30949385/ed71318c-889e-407e-86bf-fe4f5902dedf"> | <img width="416" alt="image" src="https://github.com/razorpay/blade/assets/30949385/8a636a3c-2afe-43a2-b283-c5ef40c14362"> |
-| `<AutoComplete row="expandable" />` | <img width="385" alt="image" src="https://github.com/razorpay/blade/assets/30949385/21b63bc4-804a-4180-953c-119a2b676cd5"> | <img width="394" alt="image" src="https://github.com/razorpay/blade/assets/30949385/1131a1bd-2989-4bfc-b659-207088be3bfb"> |
-
-## AutoComplete Props
-
-| **Props**          | **Description**                                                                                     | **Type**                                                        | **Default Value** |
-| ------------------ | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- | ----------------- |
-| label              | label of input                                                                                      | string                                                          |                   |
-| accessibilityLabel | aria-label of input when label is not defined                                                       | string                                                          |                   |
-| rows               | height restrictions of input ([Checkout Inactive Active States Section](#inactive---active-states)) | '1' \| '3' \| 'expandable'                                      | '3'               |
-| showTags           | Boolean to show or hide tags inside AutoComplete ([Checkout Outside Tags Section](#outside-tags))   | boolean                                                         | true              |
-| value              | Controlled state of the value inside input                                                          | string                                                          |                   |
-| onChange           | Callback when input value changes                                                                   | (inputValue: string) => void                                    |                   |
-| selected           | Controlled state of the selected items                                                              | string[]                                                        |                   |
-| onSelectChange     | Callback when selected items change                                                                 | ({ name, values }: { name: string; values: string[] } ) => void |                   |
+| Code                                 | Inactive                                                                                                                   | Active                                                                                                                     |
+| ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `<AutoComplete rows="1" />`          | <img width="266" alt="image" src="https://github.com/razorpay/blade/assets/30949385/74b849f3-f1b9-4922-b717-70ffc7ffd56e"> | <img width="276" alt="image" src="https://github.com/razorpay/blade/assets/30949385/055bc4f4-fb57-4129-b27a-0f1966c8ad26"> |
+| `<AutoComplete rows="3" />`          | <img width="420" alt="image" src="https://github.com/razorpay/blade/assets/30949385/ed71318c-889e-407e-86bf-fe4f5902dedf"> | <img width="416" alt="image" src="https://github.com/razorpay/blade/assets/30949385/8a636a3c-2afe-43a2-b283-c5ef40c14362"> |
+| `<AutoComplete rows="expandable" />` | <img width="385" alt="image" src="https://github.com/razorpay/blade/assets/30949385/21b63bc4-804a-4180-953c-119a2b676cd5"> | <img width="394" alt="image" src="https://github.com/razorpay/blade/assets/30949385/1131a1bd-2989-4bfc-b659-207088be3bfb"> |
 
 ## Open Questions
 
-- Is everyone sold on `selected` and `onSelectChange` API? It is inconsistent with SelectInput.
-- What to do with BottomSheetHeader (and BaseHeader)? Should we make it slot like Footer?
+- Is everyone sold on `selected` and `onSelectChange` API? It is inconsistent with SelectInput. Might have to change it in SelectInput as well.
+- What to do with BottomSheetHeader (and BaseHeader)? Should we make it slot like Footer? Should we remove title, subtitle, etc?
+- `rows: '1' | '3' | 'expandable'` vs `height: 'single-line' | 'multi-line' | 'expandable'`
