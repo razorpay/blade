@@ -36,21 +36,6 @@ beforeAll(() => {
 });
 
 describe('<Carousel />', () => {
-  it('should render', () => {
-    const { container } = renderWithTheme(
-      <Carousel carouselItemWidth="100px">
-        <CarouselItem>
-          <TestimonialCard index={0} />
-        </CarouselItem>
-        <CarouselItem>
-          <TestimonialCard index={1} />
-        </CarouselItem>
-      </Carousel>,
-    );
-
-    expect(container).toMatchSnapshot();
-  });
-
   it('should go to next/previous slide', () => {
     const onChange = jest.fn();
     const { getByRole, queryAllByRole, queryAllByTestId } = renderWithTheme(
@@ -340,5 +325,91 @@ describe('<Carousel />', () => {
 
     expect(queryByRole('button', { name: 'Next Slide' })).not.toBeInTheDocument();
     expect(queryByRole('button', { name: 'Previous Slide' })).toBeInTheDocument();
+  });
+});
+
+describe('Carousel Snapshots', () => {
+  it('should render', () => {
+    const { container } = renderWithTheme(
+      <Carousel>
+        <CarouselItem>
+          <TestimonialCard index={0} />
+        </CarouselItem>
+        <CarouselItem>
+          <TestimonialCard index={1} />
+        </CarouselItem>
+      </Carousel>,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render with visibleItems', () => {
+    const { container } = renderWithTheme(
+      <Carousel visibleItems={2}>
+        <CarouselItem>
+          <TestimonialCard index={0} />
+        </CarouselItem>
+        <CarouselItem>
+          <TestimonialCard index={1} />
+        </CarouselItem>
+        <CarouselItem>
+          <TestimonialCard index={1} />
+        </CarouselItem>
+      </Carousel>,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render with shouldAddStartEndSpacing', () => {
+    const { container } = renderWithTheme(
+      <Carousel carouselItemWidth={{ base: '90%', m: '300px' }} shouldAddStartEndSpacing>
+        <CarouselItem>
+          <TestimonialCard index={0} />
+        </CarouselItem>
+        <CarouselItem>
+          <TestimonialCard index={1} />
+        </CarouselItem>
+        <CarouselItem>
+          <TestimonialCard index={1} />
+        </CarouselItem>
+      </Carousel>,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render with showOverlay', () => {
+    const { container } = renderWithTheme(
+      <Carousel showOverlay shouldAddStartEndSpacing>
+        <CarouselItem>
+          <TestimonialCard index={0} />
+        </CarouselItem>
+        <CarouselItem>
+          <TestimonialCard index={1} />
+        </CarouselItem>
+        <CarouselItem>
+          <TestimonialCard index={1} />
+        </CarouselItem>
+      </Carousel>,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render with navigationButtonPosition=side', () => {
+    const { container } = renderWithTheme(
+      <Carousel visibleItems={1} navigationButtonPosition="side">
+        <CarouselItem>
+          <TestimonialCard index={0} />
+        </CarouselItem>
+        <CarouselItem>
+          <TestimonialCard index={1} />
+        </CarouselItem>
+      </Carousel>,
+    );
+
+    expect(container).toMatchSnapshot();
   });
 });
