@@ -6,7 +6,7 @@ A SelectInput where you can type inside the input to filter through the items.
 
 ## Design
 
-- [SelectInput & AutoComplete - Figma Design](<(https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13590%3A171038&mode=dev)>)
+- [SelectInput & AutoComplete - Figma Design](https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13590%3A171038&mode=dev)
 
 ## Props Table
 
