@@ -43,6 +43,27 @@ There are 3 controlled states that are relevant to AutoComplete
 3. Controlled state of selected items
 
 ```jsx
+<AutoComplete
+  // For controlling the input value
+  value={}
+  onChange={(inputValue) => {}}
+  // For controlling the selections
+  selected={}
+  onSelectChange={({ name, values }) => {}}
+/>
+
+// ...
+
+// Filtering can be controlled by looping over <ActionListItem />
+<ActionList>
+  {cities.map((city) => <ActionListItem title={city} />)}
+</ActionList>
+```
+
+<details>
+<summary>Show Full Code</summary>
+
+```jsx
 const allCities = ['Mumbai', 'Pune', 'Hyderabad'];
 
 const ControlledAutoComplete = () => {
@@ -91,6 +112,8 @@ const ControlledAutoComplete = () => {
 };
 ```
 
+</details>
+
 ### Usage in BottomSheet
 
 > **Warning**
@@ -125,13 +148,23 @@ When possible selections are more than 11, it is advised to put tags outside of 
 
 <img width="700" alt="image" src="https://github.com/razorpay/blade/assets/30949385/8906eb6c-fae0-4e99-bd3f-d7e0edc60537">
 
+We add `showTags={false}` to AutoComplete to remove tags from input. Then we can use Controlled state to show tags outside in the UI.
+
+When the input has `label`, we show number of items selected.
+
+<img width="250" alt="image" src="https://github.com/razorpay/blade/assets/30949385/c8a30845-812c-493f-a51f-97c233880960">
+
+When the input has `accessibilityLabel` and no `label`, we show the accessibilityLabel.
+
+<img width="200" alt="image" src="https://github.com/razorpay/blade/assets/30949385/83cf63d5-ccc4-4bb9-bf0d-ce91dc5c1b09">
+
 ```jsx
 const [selectedItems, setSelectedItems] = React.useState([]);
 
 // ...
 
 <AutoComplete
-  label="Status"
+  accessibilityLabel="Status"
   rows="1"
   showTags={false} // we don't want to show tags at 2 places
   selected={selectedItems}
@@ -151,28 +184,28 @@ const [selectedItems, setSelectedItems] = React.useState([]);
 </Box>;
 ```
 
-## Props
+### Inactive - Active States
 
-```ts
-type AutoCompleteProps = {
-  label: string;
-  name?: string;
-  row?: '1' | '3' | 'expandable';
-  /**
-   *
-   *
-   * @default true
-   */
-  showTags?: boolean;
-  value?: string;
-  onChange?: (inputValue) => void;
-  selected?: string[];
-  onSelectChange?: ({ name, values }: { name?: string; values?: string[] }) => void;
-  // ... Common input props like `validationState`, `helpText`, etc
-};
-```
+| Code                                | Inactive                                                                                                                   | Active                                                                                                                     |
+| ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `<AutoComplete row="1" />`          | <img width="266" alt="image" src="https://github.com/razorpay/blade/assets/30949385/74b849f3-f1b9-4922-b717-70ffc7ffd56e"> | <img width="276" alt="image" src="https://github.com/razorpay/blade/assets/30949385/055bc4f4-fb57-4129-b27a-0f1966c8ad26"> |
+| `<AutoComplete row="3" />`          | <img width="420" alt="image" src="https://github.com/razorpay/blade/assets/30949385/ed71318c-889e-407e-86bf-fe4f5902dedf"> | <img width="416" alt="image" src="https://github.com/razorpay/blade/assets/30949385/8a636a3c-2afe-43a2-b283-c5ef40c14362"> |
+| `<AutoComplete row="expandable" />` | <img width="385" alt="image" src="https://github.com/razorpay/blade/assets/30949385/21b63bc4-804a-4180-953c-119a2b676cd5"> | <img width="394" alt="image" src="https://github.com/razorpay/blade/assets/30949385/1131a1bd-2989-4bfc-b659-207088be3bfb"> |
+
+## AutoComplete Props
+
+| **Props**          | **Description**                                                                                     | **Type**                                                        | **Default Value** |
+| ------------------ | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- | ----------------- |
+| label              | label of input                                                                                      | string                                                          |                   |
+| accessibilityLabel | aria-label of input when label is not defined                                                       | string                                                          |                   |
+| rows               | height restrictions of input ([Checkout Inactive Active States Section](#inactive---active-states)) | '1' \| '3' \| 'expandable'                                      | '3'               |
+| showTags           | Boolean to show or hide tags inside AutoComplete ([Checkout Outside Tags Section](#outside-tags))   | boolean                                                         | true              |
+| value              | Controlled state of the value inside input                                                          | string                                                          |                   |
+| onChange           | Callback when input value changes                                                                   | (inputValue: string) => void                                    |                   |
+| selected           | Controlled state of the selected items                                                              | string[]                                                        |                   |
+| onSelectChange     | Callback when selected items change                                                                 | ({ name, values }: { name: string; values: string[] } ) => void |                   |
 
 ## Open Questions
 
 - Is everyone sold on `selected` and `onSelectChange` API? It is inconsistent with SelectInput.
-- What to do with BottomSheetHeader (and BaseHeader)
+- What to do with BottomSheetHeader (and BaseHeader)? Should we make it slot like Footer?
