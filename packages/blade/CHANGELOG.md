@@ -43,6 +43,19 @@
 
 - cbed430f: feat: strip off logs & errors in production builds
 
+#### Jest v27 and Custom Resolver Compatibility
+
+For users on Jest v27 or older, or those with custom Jest resolvers (like `jest-directory-named-resolve`) not supporting `package.json` exports, a `moduleNameMapper` update is needed. This ensures compatibility with the `@razorpay/blade` package:
+
+```diff
+  moduleNameMapper: {
+    // ...rest of your config
++   '@razorpay/blade/components': '<rootDir>/node_modules/@razorpay/blade/build/components/index.development.web.js',
++   '@razorpay/blade/utils': '<rootDir>/node_modules/@razorpay/blade/build/utils/index.development.web.js',
++   '@razorpay/blade/tokens': '<rootDir>/node_modules/@razorpay/blade/build/tokens/index.development.web.js',
+  },
+```
+
 ### Patch Changes
 
 - 2be798d9: feat: add zIndex prop to Tooltip
@@ -152,11 +165,13 @@
   + </Box>
   ```
 
-  **Before this change (OTPInput with fixed width):**
+````
+
+**Before this change (OTPInput with fixed width):**
 
   <img width="362" alt="Screenshot 2023-06-28 at 2 50 05 PM" src="https://github.com/razorpay/blade/assets/24487274/6d23c4a8-6c27-44f1-bb47-0d2b61025a06">
 
-  **After making OTPInput fluid width (OTPInput with fluid width):**
+**After making OTPInput fluid width (OTPInput with fluid width):**
 
   <img width="354" alt="Screenshot 2023-06-28 at 2 49 57 PM" src="https://github.com/razorpay/blade/assets/24487274/c3e40176-9f22-451e-a443-1274c4333aec">
 
@@ -2249,3 +2264,4 @@ Shift every spacing token other than the first one (`0th` index) by +1
 ### Patch Changes
 
 - 55ac5d3: feat(blade): add rollup to build blade
+````
