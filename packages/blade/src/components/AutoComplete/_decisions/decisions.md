@@ -6,36 +6,36 @@ A SelectInput where you can type inside the input to filter through the items.
 
 ## Design
 
-- [SelectInput & AutoComplete - Figma Design](https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13590%3A171038&mode=dev)
+- [Figma - SelectInput & AutoComplete](https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13590%3A171038&mode=dev)
 
-## Props Table
+## Props
 
 > **Note**
 >
-> Below this section, I have added [examples of common AutoComplete usage](#usage-examples). Check them out to understand usage of these props in details.
+> Below this section, I have added [examples of common AutoComplete usage](#usage). Check them out to understand usage of these props in details.
 
-| **Props**          | **Description**                                                                                 | **Type**                                                        | **Default Value** |
-| ------------------ | ----------------------------------------------------------------------------------------------- | --------------------------------------------------------------- | ----------------- |
-| label              | label of input                                                                                  | string                                                          |                   |
-| accessibilityLabel | aria-label of input when label is not defined                                                   | string                                                          |                   |
-| rows               | height restrictions of input ([Checkout Inactive - Active States](#inactive---active-states))   | '1' \| '3' \| 'expandable'                                      | '3'               |
-| showTags           | Boolean to show or hide tags inside AutoComplete ([Checkout Outside Tags Usage](#outside-tags)) | boolean                                                         | true              |
-| value              | Controlled state of the value inside input                                                      | string                                                          |                   |
-| onChange           | Callback when input value changes                                                               | (inputValue: string) => void                                    |                   |
-| selected           | Controlled state of the selected items ([Checkout Controlled Usage](#controlled-usage))         | string[]                                                        |                   |
-| onSelectChange     | Callback when selected items change                                                             | ({ name, values }: { name: string; values: string[] } ) => void |                   |
+| **Props**          | **Description**                                                                                                      | **Type**                                                        | **Default Value** |
+| ------------------ | -------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- | ----------------- |
+| label              | label of input                                                                                                       | string                                                          |                   |
+| accessibilityLabel | aria-label of input when label is not defined                                                                        | string                                                          |                   |
+| rows               | height restrictions of input ([Checkout "Inactive - Active States" Usage](#with-different-inactive---active-states)) | '1' \| '3' \| 'expandable'                                      | '3'               |
+| showTags           | Boolean to show or hide tags inside AutoComplete ([Checkout "With Tags Outside" Usage](#with-tags-outside))          | boolean                                                         | true              |
+| value              | Controlled state of the value inside input                                                                           | string                                                          |                   |
+| onChange           | Callback when input value changes                                                                                    | (inputValue: string) => void                                    |                   |
+| selected           | Controlled state of the selected items ([Checkout "Controlled AutoComplete" Usage](#controlled-autocomplete))        | string[]                                                        |                   |
+| onSelectChange     | Callback when selected items change                                                                                  | ({ name, values }: { name: string; values: string[] } ) => void |                   |
 
-## Usage Examples
+## Usage
 
 AutoComplete will be built as a new trigger for existing Dropdown component.
 
 Depending on where and how AutoComplete is used, the API can differ. Checkout examples below on how code will look like for a particular usage.
 
 - [Basic Usage](#basic-usage)
-- [Controlled Usage](#controlled-usage)
-- [Usage in BottomSheet](#usage-in-bottomsheet)
-- [Usage when Tags are Outside](#outside-tags)
-- [Inactive - Active States](#inactive---active-states)
+- [Controlled AutoComplete](#controlled-autocomplete)
+- [In BottomSheet](#in-bottomsheet)
+- [With Tags Outside](#with-tags-outside)
+- [With Different Inactive - Active States](#with-different-inactive---active-statess)
 
 ### Basic Usage
 
@@ -52,7 +52,7 @@ Depending on where and how AutoComplete is used, the API can differ. Checkout ex
 </Dropdown>
 ```
 
-### Controlled Usage
+### Controlled AutoComplete
 
 There are 3 controlled states that are relevant to AutoComplete
 
@@ -132,7 +132,7 @@ const ControlledAutoComplete = () => {
 
 </details>
 
-### Usage in BottomSheet
+### In BottomSheet
 
 > **Warning**
 >
@@ -160,7 +160,7 @@ const ControlledAutoComplete = () => {
 </Dropdown>
 ```
 
-### Outside Tags
+### With Tags Outside
 
 When possible selections are more than 11, it is advised to put tags outside of the Input.
 
@@ -204,7 +204,7 @@ const [selectedItems, setSelectedItems] = React.useState([]);
 </Box>;
 ```
 
-### Inactive - Active States
+### With Different Inactive - Active States
 
 | Code                                 | Inactive                                                                                                                   | Active                                                                                                                     |
 | ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
@@ -212,8 +212,24 @@ const [selectedItems, setSelectedItems] = React.useState([]);
 | `<AutoComplete rows="3" />`          | <img width="420" alt="image" src="https://github.com/razorpay/blade/assets/30949385/ed71318c-889e-407e-86bf-fe4f5902dedf"> | <img width="416" alt="image" src="https://github.com/razorpay/blade/assets/30949385/8a636a3c-2afe-43a2-b283-c5ef40c14362"> |
 | `<AutoComplete rows="expandable" />` | <img width="385" alt="image" src="https://github.com/razorpay/blade/assets/30949385/21b63bc4-804a-4180-953c-119a2b676cd5"> | <img width="394" alt="image" src="https://github.com/razorpay/blade/assets/30949385/1131a1bd-2989-4bfc-b659-207088be3bfb"> |
 
+## Accessibility
+
+AutoComplete will contiue to follow [same keyboard navigations as SelectInput](https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Dropdown/_decisions/decisions.md#accessibility).
+
+## Referrences
+
+- [Material UI - AutoComplete](https://mui.com/material-ui/react-autocomplete/)
+  - Used for Controlled AutoComplete Inspiration
+  - UI / UX Inspirations
+- [Primer - AutoComplete](https://primer.style/react/Autocomplete/)
+  - Usage of Tags inside AutoComplete Inspiration
+- [Ariakit - Combobox Filtering](https://ariakit.org/examples/combobox-filtering)
+  - Used for Controlled Filtering Inspiration
+- [React Select](https://react-select.com/home)
+  - Used for Accessibility and Keyboard Navigations Inspiration
+
 ## Open Questions
 
-- Is everyone sold on `selected` and `onSelectChange` API? It is inconsistent with SelectInput. Might have to change it in SelectInput as well.
-- What to do with BottomSheetHeader (and BaseHeader)? Should we make it slot like Footer? Should we remove title, subtitle, etc?
-- `rows: '1' | '3' | 'expandable'` vs `height: 'single-line' | 'multi-line' | 'expandable'`
+- **Q1:** Is everyone sold on `selected` and `onSelectChange` API? It is inconsistent with SelectInput. Might have to change it in SelectInput as well.
+- **Q2:** What to do with BottomSheetHeader (and BaseHeader)? Should we make it slot like Footer? Should we remove title, subtitle, etc?
+- **Q3:** `rows: '1' | '3' | 'expandable'` vs `height: 'single-line' | 'multi-line' | 'expandable'`
