@@ -271,8 +271,11 @@ const Carousel = ({
     const carouselItem = containerRef.current.querySelector(carouselItemId);
     if (!carouselItem) return;
 
-    const carouselItemLeft = carouselItem.getBoundingClientRect().left ?? 0;
+    const carouselItemLeft =
+      carouselItem.getBoundingClientRect().left -
+        containerRef.current.getBoundingClientRect().left ?? 0;
     const left = containerRef.current.scrollLeft + carouselItemLeft;
+
     containerRef.current.scroll({
       left: left - startEndMargin,
       behavior: 'smooth',
