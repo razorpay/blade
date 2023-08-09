@@ -165,11 +165,11 @@ For users on Jest v27 or older, or those with custom Jest resolvers (like `jest-
   + </Box>
   ```
 
-**Before this change (OTPInput with fixed width):**
+  **Before this change (OTPInput with fixed width):**
 
   <img width="362" alt="Screenshot 2023-06-28 at 2 50 05 PM" src="https://github.com/razorpay/blade/assets/24487274/6d23c4a8-6c27-44f1-bb47-0d2b61025a06">
 
-**After making OTPInput fluid width (OTPInput with fluid width):**
+  **After making OTPInput fluid width (OTPInput with fluid width):**
 
   <img width="354" alt="Screenshot 2023-06-28 at 2 49 57 PM" src="https://github.com/razorpay/blade/assets/24487274/c3e40176-9f22-451e-a443-1274c4333aec">
 
