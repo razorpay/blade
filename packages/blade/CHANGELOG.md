@@ -1,5 +1,42 @@
 # @razorpay/blade
 
+## 9.6.1
+
+### Patch Changes
+
+- 5fb722d8: fix(Switch): correct cursor style in disabled state
+
+## 9.6.0
+
+### Minor Changes
+
+- 50d55a5f: feat(Amount): add support for more currencies
+
+## 9.5.3
+
+### Patch Changes
+
+- d7183b49: fix(SelectInput): truncate text in select input
+- 59518acb: feat(BottomSheet): add `zindex` prop & improve focus management logic
+
+  Thanks to @archie252000 for his contribution!
+
+## 9.5.2
+
+### Patch Changes
+
+- a1e75040: fix: standardize logs & errors
+- 37bdc811: fix(Box): handle `undefined` for `backgroundColor` prop
+- e8a81131: fix: remove className from Button, svg, Link
+
+  > **Note**
+  >
+  > There was an internal bug introduced with styled-props which allowed certain props like className to pass through and get added on DOM. This release fixes that bug.
+
+  This will be non-breaking for most projects (especially if you're using TypeScript).
+
+  If your project happened to use `className` prop on Button, SVG Icons, or Link, it will stop working post this release.
+
 ## 9.5.1
 
 ### Patch Changes
@@ -11,6 +48,19 @@
 ### Minor Changes
 
 - cbed430f: feat: strip off logs & errors in production builds
+
+#### Jest v27 and Custom Resolver Compatibility
+
+For users on Jest v27 or older, or those with custom Jest resolvers (like `jest-directory-named-resolve`) not supporting `package.json` exports, a `moduleNameMapper` update is needed. This ensures compatibility with the `@razorpay/blade` package:
+
+```diff
+  moduleNameMapper: {
+    // ...rest of your config
++   '@razorpay/blade/components': '<rootDir>/node_modules/@razorpay/blade/build/components/index.development.web.js',
++   '@razorpay/blade/utils': '<rootDir>/node_modules/@razorpay/blade/build/utils/index.development.web.js',
++   '@razorpay/blade/tokens': '<rootDir>/node_modules/@razorpay/blade/build/tokens/index.development.web.js',
+  },
+```
 
 ### Patch Changes
 

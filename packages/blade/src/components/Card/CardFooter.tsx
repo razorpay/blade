@@ -12,6 +12,7 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { TestID } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { useIsMobile } from '~utils/useIsMobile';
+import { throwBladeError } from '~utils/logger';
 
 export type CardFooterAction = Pick<
   ButtonProps,
@@ -35,7 +36,10 @@ const _CardFooter = ({ children, testID }: CardFooterProps): React.ReactElement 
   const footerChildrensArray = React.Children.toArray(children);
   if (__DEV__) {
     if (!React.isValidElement(footerChildrensArray[0])) {
-      throw new Error(`Invalid React Element ${footerChildrensArray}`);
+      throwBladeError({
+        message: `Invalid React Element ${footerChildrensArray}`,
+        moduleName: 'CardFooter',
+      });
     }
   }
 

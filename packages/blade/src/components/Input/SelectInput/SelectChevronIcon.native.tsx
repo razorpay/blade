@@ -1,7 +1,7 @@
 import { TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
-import type { SelectChevronIconProps } from './SelectChevronIcon.web';
 import { ChevronDownIcon, ChevronUpIcon } from '~components/Icons';
+import type { SelectChevronIconProps } from './types';
 
 const StyledChevronIconContainer = styled(TouchableOpacity)((_props) => ({
   display: 'flex',

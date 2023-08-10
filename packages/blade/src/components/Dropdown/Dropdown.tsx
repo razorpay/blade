@@ -12,6 +12,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { isReactNative } from '~utils';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
+import { throwBladeError } from '~utils/logger';
 
 const validDropdownChildren = [
   componentIds.triggers.SelectInput,
@@ -108,11 +109,12 @@ const _Dropdown = ({
     if (React.isValidElement(child)) {
       if (__DEV__) {
         if (!validDropdownChildren.includes(getComponentId(child) ?? '')) {
-          throw new Error(
-            `[Dropdown]: Dropdown can only have one of following elements as children - \n\n ${validDropdownChildren.join(
+          throwBladeError({
+            message: `Dropdown can only have one of following elements as children - \n\n ${validDropdownChildren.join(
               ', ',
             )} \n\n Check out: https://blade.razorpay.com/?path=/story/components-dropdown`,
-          );
+            moduleName: 'Dropdown',
+          });
         }
       }
 

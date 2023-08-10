@@ -3,7 +3,7 @@
 exports[`<Checkbox /> should render checkbox with label 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -11,8 +11,8 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
   <View
     data-blade-component="checkbox"
     style={
-      Array [
-        Object {},
+      [
+        {},
       ]
     }
   >
@@ -21,7 +21,7 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
       accessibilityRequired={false}
       accessibilityRole="checkbox"
       accessibilityState={
-        Object {
+        {
           "checked": false,
           "disabled": false,
         }
@@ -39,8 +39,8 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        Array [
-          Object {
+        [
+          {
             "display": "flex",
             "flexDirection": "row",
             "marginBottom": 2,
@@ -54,8 +54,8 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
         display="flex"
         flexDirection="column"
         style={
-          Array [
-            Object {
+          [
+            {
               "display": "flex",
               "flexDirection": "column",
             },
@@ -68,8 +68,8 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
           display="flex"
           flexDirection="row"
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "display": "flex",
                 "flexDirection": "row",
@@ -83,8 +83,8 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
             isNegative={false}
             size="medium"
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "borderColor": "hsla(214, 18%, 69%, 1)",
@@ -107,14 +107,15 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
           <View
             data-blade-component="base-box"
             style={
-              Array [
-                Object {
+              [
+                {
                   "marginLeft": 4,
                 },
               ]
             }
           />
           <Text
+            accessible={true}
             color="surface.text.subtle.lowContrast"
             data-blade-component="base-text"
             fontFamily="text"
@@ -122,8 +123,8 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
             fontWeight="regular"
             lineHeight={100}
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "hsla(216, 27%, 36%, 1)",
                   "fontFamily": "Lato",
                   "fontSize": 14,
@@ -149,8 +150,8 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
         <View
           data-blade-component="base-box"
           style={
-            Array [
-              Object {
+            [
+              {
                 "marginLeft": 24,
               },
             ]
@@ -165,7 +166,7 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
 exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -173,8 +174,8 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
   <View
     data-blade-component="checkbox"
     style={
-      Array [
-        Object {},
+      [
+        {},
       ]
     }
   >
@@ -183,7 +184,7 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
       accessibilityRequired={false}
       accessibilityRole="checkbox"
       accessibilityState={
-        Object {
+        {
           "checked": false,
           "disabled": true,
         }
@@ -201,8 +202,8 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        Array [
-          Object {
+        [
+          {
             "display": "flex",
             "flexDirection": "row",
             "marginBottom": 2,
@@ -216,8 +217,8 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
         display="flex"
         flexDirection="column"
         style={
-          Array [
-            Object {
+          [
+            {
               "display": "flex",
               "flexDirection": "column",
             },
@@ -230,8 +231,8 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
           display="flex"
           flexDirection="row"
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "display": "flex",
                 "flexDirection": "row",
@@ -246,8 +247,8 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
             isNegative={false}
             size="medium"
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "borderColor": "hsla(216, 15%, 54%, 0.18)",
@@ -270,14 +271,15 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
           <View
             data-blade-component="base-box"
             style={
-              Array [
-                Object {
+              [
+                {
                   "marginLeft": 4,
                 },
               ]
             }
           />
           <Text
+            accessible={true}
             color="surface.text.placeholder.lowContrast"
             data-blade-component="base-text"
             fontFamily="text"
@@ -285,8 +287,8 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
             fontWeight="regular"
             lineHeight={100}
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "hsla(214, 18%, 69%, 1)",
                   "fontFamily": "Lato",
                   "fontSize": 14,
@@ -312,8 +314,8 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
         <View
           data-blade-component="base-box"
           style={
-            Array [
-              Object {
+            [
+              {
                 "marginLeft": 24,
               },
             ]
@@ -328,7 +330,7 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
 exports[`<Checkbox /> should set error state with validationState 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -336,8 +338,8 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
   <View
     data-blade-component="checkbox"
     style={
-      Array [
-        Object {},
+      [
+        {},
       ]
     }
   >
@@ -347,7 +349,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
       accessibilityRequired={false}
       accessibilityRole="checkbox"
       accessibilityState={
-        Object {
+        {
           "checked": false,
           "disabled": false,
         }
@@ -365,8 +367,8 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        Array [
-          Object {
+        [
+          {
             "display": "flex",
             "flexDirection": "row",
             "marginBottom": 2,
@@ -380,8 +382,8 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
         display="flex"
         flexDirection="column"
         style={
-          Array [
-            Object {
+          [
+            {
               "display": "flex",
               "flexDirection": "column",
             },
@@ -394,8 +396,8 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
           display="flex"
           flexDirection="row"
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "display": "flex",
                 "flexDirection": "row",
@@ -409,8 +411,8 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
             isNegative={true}
             size="medium"
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignItems": "center",
                   "backgroundColor": "hsla(9, 91%, 56%, 0.09)",
                   "borderColor": "hsla(8, 73%, 47%, 1)",
@@ -433,14 +435,15 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
           <View
             data-blade-component="base-box"
             style={
-              Array [
-                Object {
+              [
+                {
                   "marginLeft": 4,
                 },
               ]
             }
           />
           <Text
+            accessible={true}
             color="surface.text.subtle.lowContrast"
             data-blade-component="base-text"
             fontFamily="text"
@@ -448,8 +451,8 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
             fontWeight="regular"
             lineHeight={100}
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "hsla(216, 27%, 36%, 1)",
                   "fontFamily": "Lato",
                   "fontSize": 14,
@@ -475,8 +478,8 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
         <View
           data-blade-component="base-box"
           style={
-            Array [
-              Object {
+            [
+              {
                 "marginLeft": 24,
               },
             ]
@@ -487,8 +490,8 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
     <View
       data-blade-component="base-box"
       style={
-        Array [
-          Object {
+        [
+          {
             "marginTop": 4,
           },
         ]
@@ -500,8 +503,8 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
         display="flex"
         flexDirection="row"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "display": "flex",
               "flexDirection": "row",
@@ -523,15 +526,15 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
           minX={0}
           minY={0}
           style={
-            Array [
-              Object {
+            [
+              {
                 "backgroundColor": "transparent",
                 "borderWidth": 0,
               },
-              Array [
-                Object {},
+              [
+                {},
               ],
-              Object {
+              {
                 "flex": 0,
                 "height": 12,
                 "width": 12,
@@ -545,7 +548,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
           <RNSVGGroup
             fill={null}
             propList={
-              Array [
+              [
                 "fill",
               ]
             }
@@ -554,7 +557,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
               d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
               fill={4291770400}
               propList={
-                Array [
+                [
                   "fill",
                 ]
               }
@@ -563,7 +566,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
               d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
               fill={4291770400}
               propList={
-                Array [
+                [
                   "fill",
                 ]
               }
@@ -574,7 +577,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
               fill={4291770400}
               fillRule={0}
               propList={
-                Array [
+                [
                   "fill",
                   "fillRule",
                 ]
@@ -585,14 +588,15 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
         <View
           data-blade-component="base-box"
           style={
-            Array [
-              Object {
+            [
+              {
                 "marginRight": 4,
               },
             ]
           }
         />
         <Text
+          accessible={true}
           color="feedback.text.negative.lowContrast"
           data-blade-component="base-text"
           fontFamily="text"
@@ -600,8 +604,8 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
           fontStyle="italic"
           lineHeight={50}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(8, 73%, 47%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 11,

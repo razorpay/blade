@@ -1,12 +1,6 @@
+import type { SelectChevronIconProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
 import { ChevronDownIcon, ChevronUpIcon } from '~components/Icons';
-// import { size } from '~tokens/global';
-// import { makeSize } from '~utils';
-
-export type SelectChevronIconProps = {
-  onClick: () => void;
-  isOpen?: boolean;
-};
 
 const SelectChevronIcon = (props: SelectChevronIconProps): React.ReactElement => {
   return (

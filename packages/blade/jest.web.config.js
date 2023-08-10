@@ -10,6 +10,7 @@ const baseConfig = {
       statements: 75,
     },
   },
+  snapshotSerializers: ['<rootDir>/jestStyledComponentsSerializer.js'],
   moduleFileExtensions: ['web.ts', 'web.tsx', 'ts', 'tsx', 'js', 'json', 'node'],
   testMatch: ['**/*.test.{ts,tsx}'],
   transform: {

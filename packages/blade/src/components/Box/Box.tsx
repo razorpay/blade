@@ -6,6 +6,7 @@ import type { KeysRequired } from '~utils/types';
 import { isReactNative } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { throwBladeError } from '~utils/logger';
 
 const validateBackgroundString = (stringBackgroundColorValue: string): void => {
   if (__DEV__) {
@@ -13,9 +14,10 @@ const validateBackgroundString = (stringBackgroundColorValue: string): void => {
       !stringBackgroundColorValue.startsWith('surface.background') &&
       !stringBackgroundColorValue.startsWith('brand.')
     ) {
-      throw new Error(
-        `[Blade - Box]: Oops! Currently you can only use \`surface.background.*\` and \`brand.*\` tokens with backgroundColor property but we received \`${stringBackgroundColorValue}\` instead.\n\n Do you have a usecase of using other values? Create an issue on https://github.com/razorpay/blade repo to let us know and we can discuss ✨`,
-      );
+      throwBladeError({
+        message: `Oops! Currently you can only use \`surface.background.*\` and \`brand.*\` tokens with backgroundColor property but we received \`${stringBackgroundColorValue}\` instead.\n\n Do you have a usecase of using other values? Create an issue on https://github.com/razorpay/blade repo to let us know and we can discuss ✨`,
+        moduleName: 'Box',
+      });
     }
   }
 };
@@ -31,7 +33,9 @@ const validateBackgroundProp = (
       }
 
       Object.values(responsiveBackgroundColor).forEach((backgroundColor) => {
-        validateBackgroundString(backgroundColor);
+        if (typeof backgroundColor === 'string') {
+          validateBackgroundString(backgroundColor);
+        }
       });
     }
   }
@@ -200,15 +204,19 @@ const _Box: React.ForwardRefRenderFunction<BoxRefType, BoxProps> = (props, ref) 
     if (__DEV__) {
       if (props.as) {
         if (isReactNative()) {
-          throw new Error('[Blade - Box]: `as` prop is not supported on React Native');
+          throwBladeError({
+            message: '`as` prop is not supported on React Native',
+            moduleName: 'Box',
+          });
         }
 
         if (!validBoxAsValues.includes(props.as)) {
-          throw new Error(
-            `[Blade - Box]: Invalid \`as\` prop value - ${props.as}. Only ${validBoxAsValues.join(
+          throwBladeError({
+            message: `Invalid \`as\` prop value - ${props.as}. Only ${validBoxAsValues.join(
               ', ',
             )} are valid values`,
-          );
+            moduleName: 'Box',
+          });
         }
       }
     }

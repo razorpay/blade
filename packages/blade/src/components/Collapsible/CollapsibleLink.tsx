@@ -6,7 +6,6 @@ import { useCollapsible } from './CollapsibleContext';
 import { CollapsibleChevronIcon } from './CollapsibleChevronIcon';
 import { MetaConstants } from '~utils/metaAttribute';
 import { BaseLink } from '~components/Link/BaseLink';
-import { makeAccessible } from '~utils/makeAccessible';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 type CollapsibleLinkProps = Pick<
@@ -36,9 +35,12 @@ const _CollapsibleLink = ({
       iconPosition="right"
       isDisabled={isDisabled}
       testID={testID}
-      accessibilityLabel={accessibilityLabel}
       onClick={toggleIsExpanded}
-      {...makeAccessible({ controls: collapsibleBodyId, expanded: isExpanded })}
+      accessibilityProps={{
+        label: accessibilityLabel,
+        controls: collapsibleBodyId,
+        expanded: isExpanded,
+      }}
     >
       {children}
     </BaseLink>
