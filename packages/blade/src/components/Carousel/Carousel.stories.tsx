@@ -9,6 +9,7 @@ import { Card, CardBody } from '~components/Card';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { Divider } from '~components/Divider';
+import { isReactNative } from '~utils';
 
 const Page = (): React.ReactElement => {
   return (
@@ -135,6 +136,10 @@ const testimonialData: TestimonialData[] = [
 ];
 
 const QuoteSvg = (): React.ReactElement => {
+  if (isReactNative()) {
+    return <></>;
+  }
+
   return (
     <svg width="38" height="31" viewBox="0 0 38 31" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -166,7 +171,7 @@ const TestimonialCard = ({
               {longQuote}
             </Text>
           </Box>
-          <Divider />
+          <Divider marginY="spacing.4" />
           <Box>
             <Text size="large" weight="bold">
               {name}
@@ -186,13 +191,15 @@ const TestimonialCard = ({
 
 const CarouselExample = (props: CarouselProps): React.ReactElement => {
   return (
-    <CarouselComponent {...props} carouselItemAlignment="stretch">
-      {testimonialData.map((testimonial) => (
-        <CarouselItem key={testimonial.name}>
-          <TestimonialCard {...testimonial} />
-        </CarouselItem>
-      ))}
-    </CarouselComponent>
+    <Box height={isReactNative() ? '350px' : 'auto'}>
+      <CarouselComponent {...props} carouselItemAlignment="stretch">
+        {testimonialData.map((testimonial) => (
+          <CarouselItem key={testimonial.name}>
+            <TestimonialCard {...testimonial} />
+          </CarouselItem>
+        ))}
+      </CarouselComponent>
+    </Box>
   );
 };
 
@@ -207,6 +214,15 @@ const CarouselTestimonialTemplate: ComponentStory<typeof CarouselComponent> = (p
 export const Default = CarouselTestimonialTemplate.bind({});
 
 export const VisibleItems: ComponentStory<typeof CarouselComponent> = (props) => {
+  if (isReactNative()) {
+    return (
+      <Box margin="auto" width="100%" padding="spacing.4">
+        <Text marginY="spacing.5">on mobile visibleItems is always 1</Text>
+        <CarouselExample {...props} visibleItems={1} />
+      </Box>
+    );
+  }
+
   return (
     <Box margin="auto" width={{ base: '100%', m: '100%' }} padding="spacing.4">
       <Text marginY="spacing.5">visibleItems: 1</Text>
@@ -220,6 +236,15 @@ export const VisibleItems: ComponentStory<typeof CarouselComponent> = (props) =>
 };
 
 export const AutoBleed: ComponentStory<typeof CarouselComponent> = (props) => {
+  if (isReactNative()) {
+    return (
+      <Box>
+        <Text>You can set carouselItemWidth to 90% to get 10% bleed on mobile</Text>
+        <CarouselExample {...props} carouselItemWidth="90%" />
+      </Box>
+    );
+  }
+
   return (
     <Box margin="auto" padding="spacing.4">
       <Box marginY="spacing.8">
