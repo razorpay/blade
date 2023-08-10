@@ -123,6 +123,20 @@ v2: visibleItems: 3
 
 <img src="./example-visibleitems-3.png" width="70%" />
 
+Mobile variants: 
+
+On mobile screens if `visibleItems` is set to `1, 2 or 3` we automatically change it to `1`
+
+<img src="./example-mobile-visibleitems-1.png" width="70%" />
+
+And if `visibleItems` is set to `autofit` we don't do anything, and by changing the `carouselItemWidth` consumers can even get bleed on mobile: 
+
+```jsx
+// this will give 10% bleed on mobile
+<Carousel carouselItemWidth={{ base: '90%', m: '300px' }} />
+```
+
+<img src="./example-mobile-visibleitems-autofit.png" width="70%" />
 
 ## Accessibility
 
