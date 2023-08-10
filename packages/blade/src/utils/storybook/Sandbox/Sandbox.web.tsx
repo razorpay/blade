@@ -42,9 +42,7 @@ const useSandpackSetup = ({
 }): any => {
   const docsContext = React.useContext(DocsContext);
 
-  // @ts-expect-error: globals in unavailable on TS
   const themeTokenName = docsContext?.globals?.themeTokenName ?? 'paymentTheme';
-  // @ts-expect-error: globals in unavailable on TS
   const colorScheme = docsContext?.globals?.colorScheme ?? 'light';
 
   return {

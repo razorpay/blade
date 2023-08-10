@@ -5,8 +5,6 @@
  * @format
  */
 
-// eslint-disable-next-line import/no-extraneous-dependencies
-
 module.exports = {
   resetCache: true,
   transformer: {
@@ -19,5 +17,7 @@ module.exports = {
   },
   resolver: {
     resolverMainFields: ['sbmodern', 'browser', 'module', 'main'],
+    // TODO: Remove sourceExts array after upgrading to RN 0.72.3
+    sourceExts: ['js', 'jsx', 'json', 'ts', 'tsx', 'mjs', 'cjs'],
   },
 };
