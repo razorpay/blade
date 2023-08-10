@@ -39,7 +39,7 @@ describe('<Carousel />', () => {
   it('should go to next/previous slide', () => {
     const onChange = jest.fn();
     const { getByRole, queryAllByRole, queryAllByTestId } = renderWithTheme(
-      <Carousel visibleItems={1} carouselItemWidth="100px" onChange={onChange}>
+      <Carousel visibleItems={1} onChange={onChange}>
         <CarouselItem>
           <TestimonialCard index={0} />
         </CarouselItem>
@@ -289,10 +289,10 @@ describe('<Carousel />', () => {
     expect(onChange).toHaveBeenLastCalledWith(2);
   });
 
-  test('when visibleItems:undefined & navigationButtonPosition:side then next / previous buttons should be removed on reaching start/end slide', () => {
+  test('when visibleItems:autofit & navigationButtonPosition:side then next / previous buttons should be removed on reaching start/end slide', () => {
     const onChange = jest.fn();
     const { queryByRole, queryAllByTestId } = renderWithTheme(
-      <Carousel onChange={onChange} navigationButtonPosition="side">
+      <Carousel onChange={onChange} visibleItems="autofit" navigationButtonPosition="side">
         <CarouselItem>
           <TestimonialCard index={0} />
         </CarouselItem>
@@ -325,6 +325,28 @@ describe('<Carousel />', () => {
 
     expect(queryByRole('button', { name: 'Next Slide' })).not.toBeInTheDocument();
     expect(queryByRole('button', { name: 'Previous Slide' })).toBeInTheDocument();
+  });
+
+  test('when visibleItems:autofit & shouldAddStartEndSpacing is undefined then we hide the indicators since they are useless', () => {
+    const onChange = jest.fn();
+    const { queryAllByRole } = renderWithTheme(
+      <Carousel onChange={onChange} visibleItems="autofit">
+        <CarouselItem>
+          <TestimonialCard index={0} />
+        </CarouselItem>
+        <CarouselItem>
+          <TestimonialCard index={1} />
+        </CarouselItem>
+        <CarouselItem>
+          <TestimonialCard index={2} />
+        </CarouselItem>
+        <CarouselItem>
+          <TestimonialCard index={3} />
+        </CarouselItem>
+      </Carousel>,
+    );
+
+    expect(queryAllByRole('tab').length).toBe(0);
   });
 });
 
@@ -382,7 +404,7 @@ describe('Carousel Snapshots', () => {
 
   it('should render with showOverlay', () => {
     const { container } = renderWithTheme(
-      <Carousel showOverlay shouldAddStartEndSpacing>
+      <Carousel scrollOverlayColor="surface.background.level1.lowContrast" shouldAddStartEndSpacing>
         <CarouselItem>
           <TestimonialCard index={0} />
         </CarouselItem>
