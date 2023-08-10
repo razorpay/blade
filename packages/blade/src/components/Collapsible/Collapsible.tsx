@@ -14,6 +14,7 @@ import { size } from '~tokens/global';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useId } from '~utils/useId';
 import { isValidAllowedChildren } from '~utils/isValidAllowedChildren';
+import { throwBladeError } from '~utils/logger';
 
 type CollapsibleProps = {
   /**
@@ -103,20 +104,23 @@ const Collapsible = ({
     [isBodyExpanded, direction, handleExpandChange, isExpanded, collapsibleBodyId],
   );
 
-  Children.forEach(children, (child) => {
-    if (
-      !(
-        isValidAllowedChildren(child, MetaConstants.CollapsibleBody) ||
-        isValidAllowedChildren(child, MetaConstants.CollapsibleButton) ||
-        isValidAllowedChildren(child, MetaConstants.CollapsibleLink) ||
-        isValidAllowedChildren(child, MetaConstants.AccordionButton)
-      )
-    ) {
-      throw new Error(
-        `[Blade: Collapsible]: only the following are supported as valid children: CollapsibleBody, CollapsibleButton, CollapsibleLink`,
-      );
-    }
-  });
+  if (__DEV__) {
+    Children.forEach(children, (child) => {
+      if (
+        !(
+          isValidAllowedChildren(child, MetaConstants.CollapsibleBody) ||
+          isValidAllowedChildren(child, MetaConstants.CollapsibleButton) ||
+          isValidAllowedChildren(child, MetaConstants.CollapsibleLink) ||
+          isValidAllowedChildren(child, MetaConstants.AccordionButton)
+        )
+      ) {
+        throwBladeError({
+          message: `only the following are supported as valid children: CollapsibleBody, CollapsibleButton, CollapsibleLink`,
+          moduleName: 'Collapsible',
+        });
+      }
+    });
+  }
 
   return (
     <CollapsibleContext.Provider value={contextValue}>

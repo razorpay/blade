@@ -9,6 +9,7 @@ import type { StyledBaseButtonProps } from './types';
 import { useStyledProps } from '~components/Box/styledProps';
 import { useTheme } from '~components/BladeProvider';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { logger } from '~utils/logger';
 
 const StyledPressable = styled(Animated.createAnimatedComponent(Pressable))<
   Omit<StyledBaseButtonProps, 'accessibilityProps'>
@@ -30,7 +31,13 @@ const openURL = async (href: string): Promise<void> => {
       await Linking.openURL(href);
     }
   } catch {
-    console.warn(`[Blade: BaseButton]: Could not open the link "href=${href}"`);
+    if (__DEV__) {
+      logger({
+        type: 'warn',
+        message: `Could not open the link "href=${href}"`,
+        moduleName: 'BaseButton',
+      });
+    }
   }
 };
 

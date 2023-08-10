@@ -6,7 +6,6 @@ import type { ButtonProps } from '../Button';
 import { useDropdown } from './useDropdown';
 import { componentIds } from './dropdownUtils';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import { makeAccessible } from '~utils/makeAccessible';
 
 type DropdownButtonProps = ButtonProps & {
   onBlur?: BaseButtonProps['onBlur'];
@@ -29,7 +28,7 @@ const _DropdownButton = ({
   accessibilityLabel,
   testID,
   ...styledProps
-}: DropdownButtonProps): JSX.Element => {
+}: DropdownButtonProps): React.ReactElement => {
   const {
     onTriggerClick,
     onTriggerBlur,
@@ -54,17 +53,16 @@ const _DropdownButton = ({
       size={size}
       type={type}
       variant={variant}
-      accessibilityLabel={accessibilityLabel}
       testID={testID}
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={triggererRef as any}
-      {...makeAccessible({
+      accessibilityProps={{
+        label: accessibilityLabel,
         hasPopup: getActionListContainerRole(hasFooterAction, 'DropdownButton'),
         expanded: isOpen,
         controls: `${dropdownBaseId}-actionlist`,
-        role: 'combobox',
         activeDescendant: activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined,
-      })}
+      }}
       onClick={(e) => {
         onTriggerClick();
         // Setting it for web fails it on native typecheck and vice versa

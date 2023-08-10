@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
+import type { ReactElement } from 'react';
 import React from 'react';
 import type { ButtonProps } from '../Button';
 import { Button } from '../Button';
@@ -7,11 +8,11 @@ import { ComponentIds } from './Card';
 import { Divider } from '~components/Divider';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
-import { useBreakpoint } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import { useTheme } from '~components/BladeProvider';
 import type { TestID } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { useIsMobile } from '~utils/useIsMobile';
+import { throwBladeError } from '~utils/logger';
 
 export type CardFooterAction = Pick<
   ButtonProps,
@@ -24,14 +25,6 @@ type CardFooterProps = {
   children?: React.ReactNode;
 } & TestID;
 
-const useIsMobile = (): boolean => {
-  const { theme } = useTheme();
-  const { matchedDeviceType } = useBreakpoint({
-    breakpoints: theme.breakpoints,
-  });
-  return matchedDeviceType === 'mobile';
-};
-
 const _CardFooter = ({ children, testID }: CardFooterProps): React.ReactElement => {
   const isMobile = useIsMobile();
   useVerifyInsideCard('CardFooter');
@@ -41,8 +34,13 @@ const _CardFooter = ({ children, testID }: CardFooterProps): React.ReactElement 
   ]);
 
   const footerChildrensArray = React.Children.toArray(children);
-  if (!React.isValidElement(footerChildrensArray[0])) {
-    throw new Error(`Invalid React Element ${footerChildrensArray}`);
+  if (__DEV__) {
+    if (!React.isValidElement(footerChildrensArray[0])) {
+      throwBladeError({
+        message: `Invalid React Element ${footerChildrensArray}`,
+        moduleName: 'CardFooter',
+      });
+    }
   }
 
   // the reason why we are checking for actions here is, because we want the footerTrailing
@@ -50,7 +48,7 @@ const _CardFooter = ({ children, testID }: CardFooterProps): React.ReactElement 
   // if we don't check for action here, and if we do not have footerTrailing and only footerLeading
   // then the content of footerLeading will be justified to the end.
   const baseBoxJustifyContent =
-    footerChildrensArray.length === 2 || !footerChildrensArray[0]?.props?.actions
+    footerChildrensArray.length === 2 || !(footerChildrensArray[0] as ReactElement)?.props?.actions
       ? 'space-between'
       : 'flex-end';
 

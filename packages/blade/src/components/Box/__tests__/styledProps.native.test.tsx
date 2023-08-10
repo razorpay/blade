@@ -9,7 +9,7 @@ type MyComponentWithStyledProps = {
   test: 'working???';
 } & StyledPropsBlade;
 
-const ComponentWithGetStyledProps = (props: MyComponentWithStyledProps): JSX.Element => {
+const ComponentWithGetStyledProps = (props: MyComponentWithStyledProps): React.ReactElement => {
   return <BaseBox {...getStyledProps(props)} />;
 };
 
@@ -31,7 +31,7 @@ describe('styledProps with getStyledProps', () => {
     expect(toJSON()).toMatchInlineSnapshot(`
       <View
         style={
-          Object {
+          {
             "flex": 1,
           }
         }
@@ -39,8 +39,8 @@ describe('styledProps with getStyledProps', () => {
         <View
           data-blade-component="base-box"
           style={
-            Array [
-              Object {
+            [
+              {
                 "marginBottom": 0,
                 "marginLeft": 48,
                 "marginRight": 48,
@@ -63,21 +63,21 @@ describe('styledProps with useStyledProps', () => {
     expect(toJSON()).toMatchInlineSnapshot(`
       <View
         style={
-          Object {
+          {
             "flex": 1,
           }
         }
       >
         <Text
           margin={
-            Array [
+            [
               "spacing.0",
               "spacing.10",
             ]
           }
           style={
-            Array [
-              Object {
+            [
+              {
                 "display": "flex",
                 "marginBottom": 0,
                 "marginLeft": 48,

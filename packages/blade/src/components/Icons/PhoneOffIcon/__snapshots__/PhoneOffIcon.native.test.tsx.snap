@@ -3,7 +3,7 @@
 exports[`<PhoneOffIcon /> should render PhoneOffIcon 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -22,15 +22,15 @@ exports[`<PhoneOffIcon /> should render PhoneOffIcon 1`] = `
     minX={0}
     minY={0}
     style={
-      Array [
-        Object {
+      [
+        {
           "backgroundColor": "transparent",
           "borderWidth": 0,
         },
-        Array [
-          Object {},
+        [
+          {},
         ],
-        Object {
+        {
           "flex": 0,
           "height": 20,
           "width": 20,
@@ -44,7 +44,7 @@ exports[`<PhoneOffIcon /> should render PhoneOffIcon 1`] = `
     <RNSVGGroup
       fill={null}
       propList={
-        Array [
+        [
           "fill",
         ]
       }
@@ -58,7 +58,7 @@ exports[`<PhoneOffIcon /> should render PhoneOffIcon 1`] = `
           fill={4282603381}
           fillRule={0}
           propList={
-            Array [
+            [
               "fill",
               "fillRule",
             ]
@@ -68,7 +68,7 @@ exports[`<PhoneOffIcon /> should render PhoneOffIcon 1`] = `
           d="M7.11985 2.99996C7.62052 2.99503 8.04746 3.36111 8.11931 3.85623C8.25597 4.88918 8.50883 5.9034 8.87311 6.87961L8.87395 6.88187C9.01105 7.24659 8.92381 7.65765 8.65057 7.93523L7.3829 9.2029C6.99237 9.59343 6.99237 10.2266 7.3829 10.6171C7.77342 11.0076 8.40659 11.0076 8.79711 10.6171L10.0671 9.34713L10.0711 9.34315C10.8943 8.51066 11.158 7.27537 10.7465 6.17936C10.4345 5.34307 10.2182 4.47417 10.1015 3.58924L10.1002 3.58006C9.88967 2.09079 8.60903 0.987878 7.10557 1.00001L4.10906 1.00001C3.26695 1.0008 2.46395 1.35549 1.89621 1.97744C1.32847 2.59939 1.04827 3.43132 1.12406 4.27001L1.12586 4.28803C1.47711 7.52069 2.58174 10.6259 4.35099 13.3541C4.65148 13.8175 5.27073 13.9495 5.73411 13.649C6.19748 13.3485 6.32952 12.7293 6.02902 12.2659C4.43188 9.80307 3.43399 7.00034 3.11529 4.08242C3.09238 3.80543 3.1858 3.53126 3.37333 3.32582C3.56248 3.1186 3.82998 3.00039 4.11053 3.00001L7.11 3.00006L7.11985 2.99996Z"
           fill={4282603381}
           propList={
-            Array [
+            [
               "fill",
             ]
           }
@@ -82,7 +82,7 @@ exports[`<PhoneOffIcon /> should render PhoneOffIcon 1`] = `
             fill={4282603381}
             height="24"
             propList={
-              Array [
+              [
                 "fill",
               ]
             }

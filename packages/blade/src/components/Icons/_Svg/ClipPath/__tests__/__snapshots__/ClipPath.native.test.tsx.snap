@@ -3,7 +3,7 @@
 exports[`<ClipPath /> should render react-native-svg ClipPath component 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -22,15 +22,15 @@ exports[`<ClipPath /> should render react-native-svg ClipPath component 1`] = `
     minX={0}
     minY={0}
     style={
-      Array [
-        Object {
+      [
+        {
           "backgroundColor": "transparent",
           "borderWidth": 0,
         },
-        Array [
-          Object {},
+        [
+          {},
         ],
-        Object {
+        {
           "flex": 0,
           "height": 40,
           "width": 40,
@@ -44,7 +44,7 @@ exports[`<ClipPath /> should render react-native-svg ClipPath component 1`] = `
     <RNSVGGroup
       fill={null}
       propList={
-        Array [
+        [
           "fill",
         ]
       }
@@ -56,7 +56,7 @@ exports[`<ClipPath /> should render react-native-svg ClipPath component 1`] = `
           d="M2 2h2v2H2V2"
           fill={4278190080}
           propList={
-            Array [
+            [
               "fill",
             ]
           }

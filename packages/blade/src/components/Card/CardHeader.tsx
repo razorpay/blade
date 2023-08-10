@@ -21,6 +21,7 @@ import type { TestID } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeSpace } from '~utils/makeSpace';
 import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
+import { throwBladeError } from '~utils/logger';
 
 const _CardHeaderIcon = ({ icon: Icon }: { icon: IconComponent }): React.ReactElement => {
   useVerifyInsideCard('CardHeaderIcon');
@@ -141,16 +142,20 @@ const _CardHeaderLeading = ({
 }: CardHeaderLeadingProps): React.ReactElement => {
   useVerifyInsideCard('CardHeaderLeading');
 
-  if (prefix && !isValidAllowedChildren(prefix, ComponentIds.CardHeaderIcon)) {
-    throw new Error(
-      `[Blade CardHeaderLeading]: Only \`${ComponentIds.CardHeaderIcon}\` component is accepted in prefix`,
-    );
-  }
+  if (__DEV__) {
+    if (prefix && !isValidAllowedChildren(prefix, ComponentIds.CardHeaderIcon)) {
+      throwBladeError({
+        message: `Only \`${ComponentIds.CardHeaderIcon}\` component is accepted in prefix`,
+        moduleName: 'CardHeaderLeading',
+      });
+    }
 
-  if (suffix && !isValidAllowedChildren(suffix, ComponentIds.CardHeaderCounter)) {
-    throw new Error(
-      `[Blade CardHeaderLeading]: Only \`${ComponentIds.CardHeaderCounter}\` component is accepted in prefix`,
-    );
+    if (suffix && !isValidAllowedChildren(suffix, ComponentIds.CardHeaderCounter)) {
+      throwBladeError({
+        message: `Only \`${ComponentIds.CardHeaderCounter}\` component is accepted in prefix`,
+        moduleName: 'CardHeaderLeading',
+      });
+    }
   }
 
   return (
@@ -197,12 +202,15 @@ const headerTrailingAllowedComponents = [
 const _CardHeaderTrailing = ({ visual }: CardHeaderTrailingProps): React.ReactElement => {
   useVerifyInsideCard('CardHeaderTrailing');
 
-  if (visual && !headerTrailingAllowedComponents.includes(getComponentId(visual)!)) {
-    throw new Error(
-      `[Blade CardHeaderTrailing]: Only one of \`${headerTrailingAllowedComponents.join(
-        ', ',
-      )}\` component is accepted in visual`,
-    );
+  if (__DEV__) {
+    if (visual && !headerTrailingAllowedComponents.includes(getComponentId(visual)!)) {
+      throwBladeError({
+        message: `Only one of \`${headerTrailingAllowedComponents.join(
+          ', ',
+        )}\` component is accepted in visual`,
+        moduleName: 'CardHeaderTrailing',
+      });
+    }
   }
 
   return <BaseBox alignSelf="center">{visual}</BaseBox>;

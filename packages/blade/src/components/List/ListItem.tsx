@@ -22,6 +22,7 @@ import type { TestID } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { getPlatformType } from '~utils/getPlatformType';
+import { throwBladeError } from '~utils/logger';
 
 type ListItemProps = {
   /**
@@ -64,7 +65,7 @@ const ListItemContentChildren = ({
 }: {
   children: React.ReactNode[];
   size: NonNullable<ListProps['size']>;
-}): JSX.Element => {
+}): React.ReactElement => {
   /* Having a <View><Text>...</Text><View/> inside <Text /> breaks vertical alignment. Issue: https://github.com/facebook/react-native/issues/31955
     As a workaround, we wrap individual strings in their own <Text /> and handle alignment with a parent <View> (BaseBox).
    */
@@ -98,8 +99,13 @@ const _ListItem = ({
   const { theme, platform } = useTheme();
   const ItemIcon = Icon ?? ListContextIcon;
 
-  if (level && level > 3) {
-    throw new Error('[Blade List]: List Nesting is allowed only upto 3 levels.');
+  if (__DEV__) {
+    if (level && level > 3) {
+      throwBladeError({
+        message: 'List Nesting is allowed only upto 3 levels.',
+        moduleName: 'List',
+      });
+    }
   }
 
   const childrenArray = React.Children.toArray(children);
@@ -115,11 +121,13 @@ const _ListItem = ({
       isValidAllowedChildren(child, MetaConstants.ListItemCode)
     ) {
       return child;
-    } else {
-      throw new Error(
-        '[Blade List]: You can only pass a List, ListItemLink, ListItemCode, ListItemText or a string as a child to ListItem.',
-      );
+    } else if (__DEV__) {
+      throwBladeError({
+        message: `You can only pass a List, ListItemLink, ListItemCode, ListItemText or a string as a child to ListItem.`,
+        moduleName: 'ListItem',
+      });
     }
+    return null;
   });
   // Get child that is a List component
   const childList = childrenArray.filter((child) =>

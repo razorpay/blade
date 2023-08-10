@@ -19,7 +19,9 @@ const waitForPosition = () => act(async () => {});
 const animationDuration = paymentTheme.motion.duration.quick;
 
 describe('<Tooltip />', () => {
-  jest.useFakeTimers();
+  jest.useFakeTimers({
+    legacyFakeTimers: true,
+  });
 
   it('should render', () => {
     const buttonText = 'Hover me';
@@ -33,6 +35,21 @@ describe('<Tooltip />', () => {
     fireEvent.focus(getByRole('button', { name: buttonText }));
     expect(screen.queryByRole('tooltip')).toBeInTheDocument();
     expect(screen.queryByRole('tooltip')).toHaveStyle({ 'z-index': 1100 });
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render tooltip with custom zIndex', () => {
+    const buttonText = 'Hover me';
+    const { container, getByRole } = renderWithTheme(
+      <Tooltip content="Hello world" zIndex={9999}>
+        <Button>{buttonText}</Button>
+      </Tooltip>,
+    );
+
+    // snapshot while on opened
+    fireEvent.focus(getByRole('button', { name: buttonText }));
+    expect(screen.queryByRole('tooltip')).toBeInTheDocument();
+    expect(screen.queryByRole('tooltip')).toHaveStyle({ 'z-index': 9999 });
     expect(container).toMatchSnapshot();
   });
 

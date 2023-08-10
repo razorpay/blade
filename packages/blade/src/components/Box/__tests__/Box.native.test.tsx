@@ -20,7 +20,7 @@ describe('<Box />', () => {
     expect(toJSON()).toMatchInlineSnapshot(`
       <View
         style={
-          Object {
+          {
             "flex": 1,
           }
         }
@@ -29,8 +29,8 @@ describe('<Box />', () => {
           data-blade-component="box"
           display="flex"
           style={
-            Array [
-              Object {
+            [
+              {
                 "display": "flex",
                 "paddingBottom": 0,
                 "paddingLeft": 0,
@@ -61,7 +61,7 @@ describe('<Box />', () => {
       );
     } catch (err: unknown) {
       expect(err).toMatchInlineSnapshot(`
-        [Error: [Blade - Box]: Oops! Currently you can only use \`surface.background.*\` and \`brand.*\` tokens with backgroundColor property but we received \`red\` instead.
+        [Error: [Blade: Box]: Oops! Currently you can only use \`transparent\`, \`surface.background.*\`, and \`brand.*\` tokens with backgroundColor property but we received \`red\` instead.
 
          Do you have a usecase of using other values? Create an issue on https://github.com/razorpay/blade repo to let us know and we can discuss ✨]
       `);
@@ -77,7 +77,7 @@ describe('<Box />', () => {
       renderWithTheme(<Box as="section" />);
     } catch (err: unknown) {
       expect(err).toMatchInlineSnapshot(
-        `[Error: [Blade - Box]: \`as\` prop is not supported on React Native]`,
+        `[Error: [Blade: Box]: \`as\` prop is not supported on React Native]`,
       );
     }
     console.error = tempConsoleError;
@@ -86,7 +86,7 @@ describe('<Box />', () => {
   it('should support ref on Box', () => {
     const refHasFocusProp = jest.fn();
 
-    const BoxWithRef = (): JSX.Element => {
+    const BoxWithRef = (): React.ReactElement => {
       const ref = React.useRef<BoxRefType>(null);
 
       React.useEffect(() => {

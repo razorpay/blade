@@ -7,9 +7,12 @@ import {
   accessibilityValueKeys,
 } from './accessibilityMapNative';
 import type { AccessibilityMap, AccessibilityProps } from './types';
+import { logger } from '~utils/logger';
 
 export const makeAccessible = (props: Partial<AccessibilityProps>): Record<string, unknown> => {
   const newProps: Record<string, any> = {};
+
+  newProps.accessible = true;
 
   // loop through all the incoming props and map them
   for (const key in props) {
@@ -43,16 +46,19 @@ export const makeAccessible = (props: Partial<AccessibilityProps>): Record<strin
         newProps.importantForAccessibility = 'no-hide-descendants';
       }
 
+      delete newProps.accessible;
       delete newProps.accessibilityHidden;
       continue;
     }
 
     if (accessibilityAttribute) {
       newProps[accessibilityAttribute] = propValue;
-    } else {
-      console.warn(
-        `[Blade: makeAccessible]: No mapping found for ${propKey}. Make sure you have entered valid key`,
-      );
+    } else if (__DEV__) {
+      logger({
+        message: `No mapping found for ${propKey}. Make sure you have entered valid key`,
+        moduleName: 'makeAccessible',
+        type: 'warn',
+      });
     }
   }
 

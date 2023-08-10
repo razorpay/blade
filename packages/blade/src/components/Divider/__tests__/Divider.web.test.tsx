@@ -1,6 +1,7 @@
 import { Divider } from '../Divider';
 import { Box } from '~components/Box';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+import 'jest-styled-components';
 
 describe('<Divider />', () => {
   it('should render Divider within flex container', () => {
