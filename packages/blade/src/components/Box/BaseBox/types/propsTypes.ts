@@ -167,6 +167,7 @@ type BaseBoxVisualProps = MakeObjectResponsive<
       | BackgroundColorString<'surface'>
       | BackgroundColorString<'action'>
       | BrandColorString
+      | 'transparent'
       | (string & Record<never, never>);
     lineHeight: SpacingValueType;
     touchAction: CSSObject['touchAction'];
@@ -184,7 +185,7 @@ type BaseBoxVisualProps = MakeObjectResponsive<
 
 // Visual props that are specific to Box
 type BoxVisualProps = MakeObjectResponsive<{
-  backgroundColor: BackgroundColorString<'surface'> | BrandColorString;
+  backgroundColor: BackgroundColorString<'surface'> | BrandColorString | 'transparent';
 }> & {
   // Intentionally keeping this outside of MakeObjectResponsive since we only want as to be string and not responsive object
   // styled-components do not support passing `as` prop as an object

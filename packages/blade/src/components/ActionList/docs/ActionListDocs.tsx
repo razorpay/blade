@@ -8,7 +8,7 @@ import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
 import { ArgsTable } from '~utils/storybook/ArgsTable';
 
-const ActionListDocs = (): JSX.Element => {
+const ActionListDocs = (): React.ReactElement => {
   return (
     <StoryPageWrapper
       componentDescription="A list of action items that can be rendered inside Dropdown. Composite of multiple components like ActionList, ActionListItem, ActionListSection, and more"

@@ -14,6 +14,7 @@ import type { StringChildrenType, TestID } from '~utils/types';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { isReactNative } from '~utils';
+import { throwBladeError } from '~utils/logger';
 
 type BadgeProps = {
   /**
@@ -100,8 +101,13 @@ const _Badge = ({
   ...styledProps
 }: BadgeProps): ReactElement => {
   const childrenString = getStringFromReactText(children);
-  if (!childrenString?.trim()) {
-    throw new Error('[Blade: Badge]: Text as children is required for Badge.');
+  if (__DEV__) {
+    if (!childrenString?.trim()) {
+      throwBladeError({
+        message: 'Text as children is required for Badge.',
+        moduleName: 'Badge',
+      });
+    }
   }
   const { backgroundColor, iconColor, textColor } = getColorProps({
     variant,
@@ -125,7 +131,7 @@ const _Badge = ({
 
   return (
     <BaseBox
-      display="flex"
+      display={(isReactNative() ? 'flex' : 'inline-flex') as never}
       {...metaAttribute({ name: MetaConstants.Badge, testID })}
       {...getStyledProps(styledProps)}
     >
@@ -135,7 +141,7 @@ const _Badge = ({
           paddingLeft={horizontalPadding[size]}
           paddingTop={verticalPadding[size]}
           paddingBottom={verticalPadding[size]}
-          display={(isReactNative() ? 'flex' : 'inline-flex') as never}
+          display="flex"
           flexDirection="row"
           justifyContent="center"
           alignItems="center"

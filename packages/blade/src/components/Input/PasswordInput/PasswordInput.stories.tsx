@@ -29,7 +29,7 @@ const Page = (): ReactElement => {
         {`
           import { PasswordInput } from '@razorpay/blade/components';
 
-          function App(): JSX.Element {
+          function App(): React.ReactElement {
             return (
               <PasswordInput 
                 label="Enter Password" 
@@ -161,6 +161,12 @@ LabelAtLeft.parameters = {
       story: '`labelPosition` can be used to adjust the positioning of input label',
     },
   },
+};
+
+export const PasswordInputWithoutLabel = PasswordInputTemplate.bind({});
+PasswordInputWithoutLabel.args = {
+  label: undefined,
+  accessibilityLabel: 'Password',
 };
 
 export const Disabled = PasswordInputTemplate.bind({});

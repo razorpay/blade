@@ -5,6 +5,7 @@ import type { OptionsType } from '~components/Dropdown/useDropdown';
 import { isReactNative } from '~utils';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
+import { throwBladeError } from '~utils/logger';
 
 /**
  * Returns if there is ActionListItem after ActionListSection
@@ -158,9 +159,12 @@ const getActionListProperties = (
         return getActionListItemWithId(child, true);
       }
 
-      throw new Error(
-        `[ActionList]: Only ${actionListAllowedChildren.join(', ')} supported inside ActionList`,
-      );
+      if (__DEV__) {
+        throwBladeError({
+          message: `Only ${actionListAllowedChildren.join(', ')} supported inside ActionList`,
+          moduleName: 'ActionList',
+        });
+      }
     }
     return child;
   });
@@ -179,28 +183,32 @@ const validateActionListItemProps = ({
   leading: ActionListItemProps['leading'];
   trailing: ActionListItemProps['trailing'];
 }): void => {
-  React.Children.map(trailing, (child) => {
-    if (
-      !isValidAllowedChildren(child, componentIds.ActionListItemIcon) &&
-      !isValidAllowedChildren(child, componentIds.ActionListItemText)
-    ) {
-      throw new Error(
-        `[ActionListItem]: Only ${componentIds.ActionListItemIcon} and ${componentIds.ActionListItemText} are allowed in trailing prop`,
-      );
-    }
-  });
+  if (__DEV__) {
+    React.Children.map(trailing, (child) => {
+      if (
+        !isValidAllowedChildren(child, componentIds.ActionListItemIcon) &&
+        !isValidAllowedChildren(child, componentIds.ActionListItemText)
+      ) {
+        throwBladeError({
+          message: `Only ${componentIds.ActionListItemIcon} and ${componentIds.ActionListItemText} are allowed in trailing prop`,
+          moduleName: 'ActionListItem',
+        });
+      }
+    });
 
-  React.Children.map(leading, (child) => {
-    if (
-      !isValidAllowedChildren(child, componentIds.ActionListItemIcon) &&
-      !isValidAllowedChildren(child, componentIds.ActionListItemText) &&
-      !isValidAllowedChildren(child, componentIds.ActionListItemAsset)
-    ) {
-      throw new Error(
-        `[ActionListItem]: Only ${componentIds.ActionListItemIcon}, ${componentIds.ActionListItemAsset}, and ${componentIds.ActionListItemText} are allowed in leading prop`,
-      );
-    }
-  });
+    React.Children.map(leading, (child) => {
+      if (
+        !isValidAllowedChildren(child, componentIds.ActionListItemIcon) &&
+        !isValidAllowedChildren(child, componentIds.ActionListItemText) &&
+        !isValidAllowedChildren(child, componentIds.ActionListItemAsset)
+      ) {
+        throwBladeError({
+          message: `Only ${componentIds.ActionListItemIcon}, ${componentIds.ActionListItemAsset}, and ${componentIds.ActionListItemText} are allowed in leading prop`,
+          moduleName: 'ActionListItem',
+        });
+      }
+    });
+  }
 };
 
 const getNormalTextColor = (
