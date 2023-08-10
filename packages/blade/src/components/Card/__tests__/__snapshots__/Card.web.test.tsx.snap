@@ -532,10 +532,10 @@ exports[`<Card /> should render a Card with Header 1`] = `
 }
 
 .c10 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
 }
 
 .c11 {
@@ -543,10 +543,10 @@ exports[`<Card /> should render a Card with Header 1`] = `
 }
 
 .c13 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;

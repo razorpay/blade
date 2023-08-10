@@ -71,7 +71,7 @@ exports[`<BottomSheet /> should render a BottomSheet ssr 2`] = `
                         data-blade-component="box"
                       >
                         <div
-                          class="BaseBox-bmPWx jLCxzZ"
+                          class="BaseBox-bmPWx bcSLaJ"
                           data-blade-component="counter"
                         >
                           <div
@@ -111,7 +111,7 @@ exports[`<BottomSheet /> should render a BottomSheet ssr 2`] = `
                   data-blade-component="box"
                 >
                   <div
-                    class="BaseBox-bmPWx jLCxzZ"
+                    class="BaseBox-bmPWx bcSLaJ"
                     data-blade-component="badge"
                   >
                     <div

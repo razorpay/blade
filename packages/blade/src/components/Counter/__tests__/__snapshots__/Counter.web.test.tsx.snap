@@ -2,10 +2,10 @@
 
 exports[`<Counter /> should render Counter with default props 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
 }
 
 .c1 {
@@ -13,10 +13,10 @@ exports[`<Counter /> should render Counter with default props 1`] = `
 }
 
 .c3 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
@@ -97,10 +97,10 @@ exports[`<Counter /> should render Counter with default props 1`] = `
 
 exports[`<Counter /> should render high contrast blue variant Counter 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
 }
 
 .c1 {
@@ -108,10 +108,10 @@ exports[`<Counter /> should render high contrast blue variant Counter 1`] = `
 }
 
 .c3 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
@@ -192,10 +192,10 @@ exports[`<Counter /> should render high contrast blue variant Counter 1`] = `
 
 exports[`<Counter /> should render high contrast information variant Counter 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
 }
 
 .c1 {
@@ -203,10 +203,10 @@ exports[`<Counter /> should render high contrast information variant Counter 1`]
 }
 
 .c3 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
@@ -287,10 +287,10 @@ exports[`<Counter /> should render high contrast information variant Counter 1`]
 
 exports[`<Counter /> should render high contrast negative variant Counter 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
 }
 
 .c1 {
@@ -298,10 +298,10 @@ exports[`<Counter /> should render high contrast negative variant Counter 1`] = 
 }
 
 .c3 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
@@ -382,10 +382,10 @@ exports[`<Counter /> should render high contrast negative variant Counter 1`] = 
 
 exports[`<Counter /> should render high contrast neutral variant Counter 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
 }
 
 .c1 {
@@ -393,10 +393,10 @@ exports[`<Counter /> should render high contrast neutral variant Counter 1`] = `
 }
 
 .c3 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
@@ -477,10 +477,10 @@ exports[`<Counter /> should render high contrast neutral variant Counter 1`] = `
 
 exports[`<Counter /> should render high contrast notice variant Counter 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
 }
 
 .c1 {
@@ -488,10 +488,10 @@ exports[`<Counter /> should render high contrast notice variant Counter 1`] = `
 }
 
 .c3 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
@@ -572,10 +572,10 @@ exports[`<Counter /> should render high contrast notice variant Counter 1`] = `
 
 exports[`<Counter /> should render high contrast positive variant Counter 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
 }
 
 .c1 {
@@ -583,10 +583,10 @@ exports[`<Counter /> should render high contrast positive variant Counter 1`] = 
 }
 
 .c3 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
@@ -667,10 +667,10 @@ exports[`<Counter /> should render high contrast positive variant Counter 1`] = 
 
 exports[`<Counter /> should render large size Counter 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
 }
 
 .c1 {
@@ -678,10 +678,10 @@ exports[`<Counter /> should render large size Counter 1`] = `
 }
 
 .c3 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
@@ -762,10 +762,10 @@ exports[`<Counter /> should render large size Counter 1`] = `
 
 exports[`<Counter /> should render low contrast blue variant Counter 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
 }
 
 .c1 {
@@ -773,10 +773,10 @@ exports[`<Counter /> should render low contrast blue variant Counter 1`] = `
 }
 
 .c3 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
@@ -857,10 +857,10 @@ exports[`<Counter /> should render low contrast blue variant Counter 1`] = `
 
 exports[`<Counter /> should render low contrast information variant Counter 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
 }
 
 .c1 {
@@ -868,10 +868,10 @@ exports[`<Counter /> should render low contrast information variant Counter 1`] 
 }
 
 .c3 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
@@ -952,10 +952,10 @@ exports[`<Counter /> should render low contrast information variant Counter 1`] 
 
 exports[`<Counter /> should render low contrast negative variant Counter 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
 }
 
 .c1 {
@@ -963,10 +963,10 @@ exports[`<Counter /> should render low contrast negative variant Counter 1`] = `
 }
 
 .c3 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
@@ -1047,10 +1047,10 @@ exports[`<Counter /> should render low contrast negative variant Counter 1`] = `
 
 exports[`<Counter /> should render low contrast neutral variant Counter 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
 }
 
 .c1 {
@@ -1058,10 +1058,10 @@ exports[`<Counter /> should render low contrast neutral variant Counter 1`] = `
 }
 
 .c3 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
@@ -1142,10 +1142,10 @@ exports[`<Counter /> should render low contrast neutral variant Counter 1`] = `
 
 exports[`<Counter /> should render low contrast notice variant Counter 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
 }
 
 .c1 {
@@ -1153,10 +1153,10 @@ exports[`<Counter /> should render low contrast notice variant Counter 1`] = `
 }
 
 .c3 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
@@ -1237,10 +1237,10 @@ exports[`<Counter /> should render low contrast notice variant Counter 1`] = `
 
 exports[`<Counter /> should render low contrast positive variant Counter 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
 }
 
 .c1 {
@@ -1248,10 +1248,10 @@ exports[`<Counter /> should render low contrast positive variant Counter 1`] = `
 }
 
 .c3 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
@@ -1332,10 +1332,10 @@ exports[`<Counter /> should render low contrast positive variant Counter 1`] = `
 
 exports[`<Counter /> should render medium size Counter 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
 }
 
 .c1 {
@@ -1343,10 +1343,10 @@ exports[`<Counter /> should render medium size Counter 1`] = `
 }
 
 .c3 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
@@ -1427,10 +1427,10 @@ exports[`<Counter /> should render medium size Counter 1`] = `
 
 exports[`<Counter /> should render small size Counter 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
 }
 
 .c1 {
@@ -1438,10 +1438,10 @@ exports[`<Counter /> should render small size Counter 1`] = `
 }
 
 .c3 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
