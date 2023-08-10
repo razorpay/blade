@@ -3,18 +3,19 @@
 exports[`<Indicator /> should render 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
 >
   <View
     accessibilityLabel="Success"
+    accessible={true}
     data-blade-component="indicator"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -26,8 +27,8 @@ exports[`<Indicator /> should render 1`] = `
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
@@ -49,15 +50,15 @@ exports[`<Indicator /> should render 1`] = `
         minX={0}
         minY={0}
         style={
-          Array [
-            Object {
+          [
+            {
               "backgroundColor": "transparent",
               "borderWidth": 0,
             },
-            Array [
-              Object {},
+            [
+              {},
             ],
-            Object {
+            {
               "flex": 0,
               "height": 8,
               "width": 8,
@@ -71,7 +72,7 @@ exports[`<Indicator /> should render 1`] = `
         <RNSVGGroup
           fill={null}
           propList={
-            Array [
+            [
               "fill",
             ]
           }
@@ -81,7 +82,7 @@ exports[`<Indicator /> should render 1`] = `
             cy="5"
             fill={4281484642}
             propList={
-              Array [
+              [
                 "fill",
               ]
             }
@@ -91,7 +92,7 @@ exports[`<Indicator /> should render 1`] = `
             cx="5"
             cy="5"
             propList={
-              Array [
+              [
                 "stroke",
                 "strokeWidth",
               ]
@@ -105,14 +106,15 @@ exports[`<Indicator /> should render 1`] = `
       <View
         data-blade-component="base-box"
         style={
-          Array [
-            Object {
+          [
+            {
               "marginLeft": 4,
             },
           ]
         }
       >
         <Text
+          accessible={true}
           color="surface.text.subtle.lowContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -121,8 +123,8 @@ exports[`<Indicator /> should render 1`] = `
           fontWeight="regular"
           lineHeight={100}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(216, 27%, 36%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 14,
@@ -153,18 +155,19 @@ exports[`<Indicator /> should render 1`] = `
 exports[`<Indicator /> should render different variants for size and intent 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
 >
   <View
     accessibilityLabel="Warning"
+    accessible={true}
     data-blade-component="indicator"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -176,8 +179,8 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
@@ -199,15 +202,15 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
         minX={0}
         minY={0}
         style={
-          Array [
-            Object {
+          [
+            {
               "backgroundColor": "transparent",
               "borderWidth": 0,
             },
-            Array [
-              Object {},
+            [
+              {},
             ],
-            Object {
+            {
               "flex": 0,
               "height": 6,
               "width": 6,
@@ -221,7 +224,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
         <RNSVGGroup
           fill={null}
           propList={
-            Array [
+            [
               "fill",
             ]
           }
@@ -231,7 +234,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
             cy="5"
             fill={4290738691}
             propList={
-              Array [
+              [
                 "fill",
               ]
             }
@@ -241,7 +244,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
             cx="5"
             cy="5"
             propList={
-              Array [
+              [
                 "stroke",
                 "strokeWidth",
               ]
@@ -255,14 +258,15 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
       <View
         data-blade-component="base-box"
         style={
-          Array [
-            Object {
+          [
+            {
               "marginLeft": 4,
             },
           ]
         }
       >
         <Text
+          accessible={true}
           color="surface.text.subtle.lowContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -271,8 +275,8 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
           fontWeight="regular"
           lineHeight={50}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(216, 27%, 36%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 12,
@@ -299,11 +303,12 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
   </View>
   <View
     accessibilityLabel="Success"
+    accessible={true}
     data-blade-component="indicator"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -315,8 +320,8 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
@@ -338,15 +343,15 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
         minX={0}
         minY={0}
         style={
-          Array [
-            Object {
+          [
+            {
               "backgroundColor": "transparent",
               "borderWidth": 0,
             },
-            Array [
-              Object {},
+            [
+              {},
             ],
-            Object {
+            {
               "flex": 0,
               "height": 8,
               "width": 8,
@@ -360,7 +365,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
         <RNSVGGroup
           fill={null}
           propList={
-            Array [
+            [
               "fill",
             ]
           }
@@ -370,7 +375,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
             cy="5"
             fill={4278224216}
             propList={
-              Array [
+              [
                 "fill",
               ]
             }
@@ -380,7 +385,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
             cx="5"
             cy="5"
             propList={
-              Array [
+              [
                 "stroke",
                 "strokeWidth",
               ]
@@ -394,14 +399,15 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
       <View
         data-blade-component="base-box"
         style={
-          Array [
-            Object {
+          [
+            {
               "marginLeft": 4,
             },
           ]
         }
       >
         <Text
+          accessible={true}
           color="surface.text.subtle.lowContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -410,8 +416,8 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
           fontWeight="regular"
           lineHeight={100}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(216, 27%, 36%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 14,
@@ -438,11 +444,12 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
   </View>
   <View
     accessibilityLabel="Error"
+    accessible={true}
     data-blade-component="indicator"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -454,8 +461,8 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
@@ -477,15 +484,15 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
         minX={0}
         minY={0}
         style={
-          Array [
-            Object {
+          [
+            {
               "backgroundColor": "transparent",
               "borderWidth": 0,
             },
-            Array [
-              Object {},
+            [
+              {},
             ],
-            Object {
+            {
               "flex": 0,
               "height": 10,
               "width": 10,
@@ -499,7 +506,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
         <RNSVGGroup
           fill={null}
           propList={
-            Array [
+            [
               "fill",
             ]
           }
@@ -509,7 +516,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
             cy="5"
             fill={4291770400}
             propList={
-              Array [
+              [
                 "fill",
               ]
             }
@@ -519,7 +526,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
             cx="5"
             cy="5"
             propList={
-              Array [
+              [
                 "stroke",
                 "strokeWidth",
               ]
@@ -533,14 +540,15 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
       <View
         data-blade-component="base-box"
         style={
-          Array [
-            Object {
+          [
+            {
               "marginLeft": 4,
             },
           ]
         }
       >
         <Text
+          accessible={true}
           color="surface.text.subtle.lowContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -549,8 +557,8 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
           fontWeight="regular"
           lineHeight={100}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(216, 27%, 36%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 14,
@@ -577,11 +585,12 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
   </View>
   <View
     accessibilityLabel="Info"
+    accessible={true}
     data-blade-component="indicator"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -593,8 +602,8 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
@@ -616,15 +625,15 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
         minX={0}
         minY={0}
         style={
-          Array [
-            Object {
+          [
+            {
               "backgroundColor": "transparent",
               "borderWidth": 0,
             },
-            Array [
-              Object {},
+            [
+              {},
             ],
-            Object {
+            {
               "flex": 0,
               "height": 8,
               "width": 8,
@@ -638,7 +647,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
         <RNSVGGroup
           fill={null}
           propList={
-            Array [
+            [
               "fill",
             ]
           }
@@ -648,7 +657,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
             cy="5"
             fill={4278226099}
             propList={
-              Array [
+              [
                 "fill",
               ]
             }
@@ -658,7 +667,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
             cx="5"
             cy="5"
             propList={
-              Array [
+              [
                 "stroke",
                 "strokeWidth",
               ]
@@ -672,14 +681,15 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
       <View
         data-blade-component="base-box"
         style={
-          Array [
-            Object {
+          [
+            {
               "marginLeft": 4,
             },
           ]
         }
       >
         <Text
+          accessible={true}
           color="surface.text.subtle.lowContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -688,8 +698,8 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
           fontWeight="regular"
           lineHeight={100}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(216, 27%, 36%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 14,

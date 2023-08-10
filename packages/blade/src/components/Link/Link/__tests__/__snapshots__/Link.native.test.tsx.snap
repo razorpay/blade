@@ -3,7 +3,7 @@
 exports[`<Link /> should render button variant of link 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -11,7 +11,7 @@ exports[`<Link /> should render button variant of link 1`] = `
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -28,8 +28,8 @@ exports[`<Link /> should render button variant of link 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignSelf": "flex-start",
           "backgroundColor": "transparent",
           "borderColor": "black",
@@ -54,8 +54,8 @@ exports[`<Link /> should render button variant of link 1`] = `
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
@@ -64,14 +64,15 @@ exports[`<Link /> should render button variant of link 1`] = `
       }
     >
       <Text
+        accessible={true}
         color="action.text.link.default"
         data-blade-component="base-text"
         fontSize={100}
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(218, 89%, 51%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -104,7 +105,7 @@ exports[`<Link /> should render button variant of link 1`] = `
 exports[`<Link /> should render disabled button variant of link 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -112,7 +113,7 @@ exports[`<Link /> should render disabled button variant of link 1`] = `
   <View
     accessibilityRole="button"
     accessibilityState={
-      Object {
+      {
         "disabled": true,
       }
     }
@@ -129,8 +130,8 @@ exports[`<Link /> should render disabled button variant of link 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignSelf": "flex-start",
           "backgroundColor": "transparent",
           "borderColor": "black",
@@ -155,8 +156,8 @@ exports[`<Link /> should render disabled button variant of link 1`] = `
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
@@ -165,14 +166,15 @@ exports[`<Link /> should render disabled button variant of link 1`] = `
       }
     >
       <Text
+        accessible={true}
         color="action.text.link.disabled"
         data-blade-component="base-text"
         fontSize={100}
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(218, 19%, 81%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -205,7 +207,7 @@ exports[`<Link /> should render disabled button variant of link 1`] = `
 exports[`<Link /> should render link with default properties 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -213,7 +215,7 @@ exports[`<Link /> should render link with default properties 1`] = `
   <View
     accessibilityRole="link"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -230,8 +232,8 @@ exports[`<Link /> should render link with default properties 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignSelf": "flex-start",
           "backgroundColor": "transparent",
           "borderColor": "black",
@@ -256,8 +258,8 @@ exports[`<Link /> should render link with default properties 1`] = `
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
@@ -266,14 +268,15 @@ exports[`<Link /> should render link with default properties 1`] = `
       }
     >
       <Text
+        accessible={true}
         color="action.text.link.default"
         data-blade-component="base-text"
         fontSize={100}
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(218, 89%, 51%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -306,7 +309,7 @@ exports[`<Link /> should render link with default properties 1`] = `
 exports[`<Link /> should render link with icon with default iconPosition 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -314,7 +317,7 @@ exports[`<Link /> should render link with icon with default iconPosition 1`] = `
   <View
     accessibilityRole="link"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -331,8 +334,8 @@ exports[`<Link /> should render link with icon with default iconPosition 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignSelf": "flex-start",
           "backgroundColor": "transparent",
           "borderColor": "black",
@@ -357,8 +360,8 @@ exports[`<Link /> should render link with icon with default iconPosition 1`] = `
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
@@ -371,8 +374,8 @@ exports[`<Link /> should render link with icon with default iconPosition 1`] = `
         data-blade-component="base-box"
         display="flex"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "display": "flex",
               "paddingRight": 4,
@@ -394,15 +397,15 @@ exports[`<Link /> should render link with icon with default iconPosition 1`] = `
           minX={0}
           minY={0}
           style={
-            Array [
-              Object {
+            [
+              {
                 "backgroundColor": "transparent",
                 "borderWidth": 0,
               },
-              Array [
-                Object {},
+              [
+                {},
               ],
-              Object {
+              {
                 "flex": 0,
                 "height": 16,
                 "width": 16,
@@ -416,7 +419,7 @@ exports[`<Link /> should render link with icon with default iconPosition 1`] = `
           <RNSVGGroup
             fill={null}
             propList={
-              Array [
+              [
                 "fill",
               ]
             }
@@ -425,7 +428,7 @@ exports[`<Link /> should render link with icon with default iconPosition 1`] = `
               d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
               fill={4279461105}
               propList={
-                Array [
+                [
                   "fill",
                 ]
               }
@@ -434,7 +437,7 @@ exports[`<Link /> should render link with icon with default iconPosition 1`] = `
               d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
               fill={4279461105}
               propList={
-                Array [
+                [
                   "fill",
                 ]
               }
@@ -445,7 +448,7 @@ exports[`<Link /> should render link with icon with default iconPosition 1`] = `
               fill={4279461105}
               fillRule={0}
               propList={
-                Array [
+                [
                   "fill",
                   "fillRule",
                 ]
@@ -455,14 +458,15 @@ exports[`<Link /> should render link with icon with default iconPosition 1`] = `
         </RNSVGSvgView>
       </View>
       <Text
+        accessible={true}
         color="action.text.link.default"
         data-blade-component="base-text"
         fontSize={100}
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(218, 89%, 51%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -495,7 +499,7 @@ exports[`<Link /> should render link with icon with default iconPosition 1`] = `
 exports[`<Link /> should render link with icon with left iconPosition 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -503,7 +507,7 @@ exports[`<Link /> should render link with icon with left iconPosition 1`] = `
   <View
     accessibilityRole="link"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -520,8 +524,8 @@ exports[`<Link /> should render link with icon with left iconPosition 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignSelf": "flex-start",
           "backgroundColor": "transparent",
           "borderColor": "black",
@@ -546,8 +550,8 @@ exports[`<Link /> should render link with icon with left iconPosition 1`] = `
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
@@ -560,8 +564,8 @@ exports[`<Link /> should render link with icon with left iconPosition 1`] = `
         data-blade-component="base-box"
         display="flex"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "display": "flex",
               "paddingRight": 4,
@@ -583,15 +587,15 @@ exports[`<Link /> should render link with icon with left iconPosition 1`] = `
           minX={0}
           minY={0}
           style={
-            Array [
-              Object {
+            [
+              {
                 "backgroundColor": "transparent",
                 "borderWidth": 0,
               },
-              Array [
-                Object {},
+              [
+                {},
               ],
-              Object {
+              {
                 "flex": 0,
                 "height": 16,
                 "width": 16,
@@ -605,7 +609,7 @@ exports[`<Link /> should render link with icon with left iconPosition 1`] = `
           <RNSVGGroup
             fill={null}
             propList={
-              Array [
+              [
                 "fill",
               ]
             }
@@ -614,7 +618,7 @@ exports[`<Link /> should render link with icon with left iconPosition 1`] = `
               d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
               fill={4279461105}
               propList={
-                Array [
+                [
                   "fill",
                 ]
               }
@@ -623,7 +627,7 @@ exports[`<Link /> should render link with icon with left iconPosition 1`] = `
               d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
               fill={4279461105}
               propList={
-                Array [
+                [
                   "fill",
                 ]
               }
@@ -634,7 +638,7 @@ exports[`<Link /> should render link with icon with left iconPosition 1`] = `
               fill={4279461105}
               fillRule={0}
               propList={
-                Array [
+                [
                   "fill",
                   "fillRule",
                 ]
@@ -644,14 +648,15 @@ exports[`<Link /> should render link with icon with left iconPosition 1`] = `
         </RNSVGSvgView>
       </View>
       <Text
+        accessible={true}
         color="action.text.link.default"
         data-blade-component="base-text"
         fontSize={100}
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(218, 89%, 51%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -684,7 +689,7 @@ exports[`<Link /> should render link with icon with left iconPosition 1`] = `
 exports[`<Link /> should render link with icon with right iconPosition 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -692,7 +697,7 @@ exports[`<Link /> should render link with icon with right iconPosition 1`] = `
   <View
     accessibilityRole="link"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -709,8 +714,8 @@ exports[`<Link /> should render link with icon with right iconPosition 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignSelf": "flex-start",
           "backgroundColor": "transparent",
           "borderColor": "black",
@@ -735,8 +740,8 @@ exports[`<Link /> should render link with icon with right iconPosition 1`] = `
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
@@ -745,14 +750,15 @@ exports[`<Link /> should render link with icon with right iconPosition 1`] = `
       }
     >
       <Text
+        accessible={true}
         color="action.text.link.default"
         data-blade-component="base-text"
         fontSize={100}
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(218, 89%, 51%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -782,8 +788,8 @@ exports[`<Link /> should render link with icon with right iconPosition 1`] = `
         data-blade-component="base-box"
         display="flex"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "display": "flex",
               "paddingLeft": 4,
@@ -805,15 +811,15 @@ exports[`<Link /> should render link with icon with right iconPosition 1`] = `
           minX={0}
           minY={0}
           style={
-            Array [
-              Object {
+            [
+              {
                 "backgroundColor": "transparent",
                 "borderWidth": 0,
               },
-              Array [
-                Object {},
+              [
+                {},
               ],
-              Object {
+              {
                 "flex": 0,
                 "height": 16,
                 "width": 16,
@@ -827,7 +833,7 @@ exports[`<Link /> should render link with icon with right iconPosition 1`] = `
           <RNSVGGroup
             fill={null}
             propList={
-              Array [
+              [
                 "fill",
               ]
             }
@@ -836,7 +842,7 @@ exports[`<Link /> should render link with icon with right iconPosition 1`] = `
               d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
               fill={4279461105}
               propList={
-                Array [
+                [
                   "fill",
                 ]
               }
@@ -845,7 +851,7 @@ exports[`<Link /> should render link with icon with right iconPosition 1`] = `
               d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
               fill={4279461105}
               propList={
-                Array [
+                [
                   "fill",
                 ]
               }
@@ -856,7 +862,7 @@ exports[`<Link /> should render link with icon with right iconPosition 1`] = `
               fill={4279461105}
               fillRule={0}
               propList={
-                Array [
+                [
                   "fill",
                   "fillRule",
                 ]
@@ -873,7 +879,7 @@ exports[`<Link /> should render link with icon with right iconPosition 1`] = `
 exports[`<Link /> should render link with icon without text 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -881,7 +887,7 @@ exports[`<Link /> should render link with icon without text 1`] = `
   <View
     accessibilityRole="link"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -898,8 +904,8 @@ exports[`<Link /> should render link with icon without text 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignSelf": "flex-start",
           "backgroundColor": "transparent",
           "borderColor": "black",
@@ -924,8 +930,8 @@ exports[`<Link /> should render link with icon without text 1`] = `
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
@@ -938,8 +944,8 @@ exports[`<Link /> should render link with icon without text 1`] = `
         data-blade-component="base-box"
         display="flex"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "display": "flex",
               "paddingRight": 0,
@@ -961,15 +967,15 @@ exports[`<Link /> should render link with icon without text 1`] = `
           minX={0}
           minY={0}
           style={
-            Array [
-              Object {
+            [
+              {
                 "backgroundColor": "transparent",
                 "borderWidth": 0,
               },
-              Array [
-                Object {},
+              [
+                {},
               ],
-              Object {
+              {
                 "flex": 0,
                 "height": 16,
                 "width": 16,
@@ -983,7 +989,7 @@ exports[`<Link /> should render link with icon without text 1`] = `
           <RNSVGGroup
             fill={null}
             propList={
-              Array [
+              [
                 "fill",
               ]
             }
@@ -992,7 +998,7 @@ exports[`<Link /> should render link with icon without text 1`] = `
               d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
               fill={4279461105}
               propList={
-                Array [
+                [
                   "fill",
                 ]
               }
@@ -1001,7 +1007,7 @@ exports[`<Link /> should render link with icon without text 1`] = `
               d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
               fill={4279461105}
               propList={
-                Array [
+                [
                   "fill",
                 ]
               }
@@ -1012,7 +1018,7 @@ exports[`<Link /> should render link with icon without text 1`] = `
               fill={4279461105}
               fillRule={0}
               propList={
-                Array [
+                [
                   "fill",
                   "fillRule",
                 ]
@@ -1022,14 +1028,15 @@ exports[`<Link /> should render link with icon without text 1`] = `
         </RNSVGSvgView>
       </View>
       <Text
+        accessible={true}
         color="action.text.link.default"
         data-blade-component="base-text"
         fontSize={100}
         fontWeight="bold"
         lineHeight={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(218, 89%, 51%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
@@ -1060,7 +1067,7 @@ exports[`<Link /> should render link with icon without text 1`] = `
 exports[`<Link /> should render with small size 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -1068,7 +1075,7 @@ exports[`<Link /> should render with small size 1`] = `
   <View
     accessibilityRole="link"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -1085,8 +1092,8 @@ exports[`<Link /> should render with small size 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignSelf": "flex-start",
           "backgroundColor": "transparent",
           "borderColor": "black",
@@ -1111,8 +1118,8 @@ exports[`<Link /> should render with small size 1`] = `
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
@@ -1125,8 +1132,8 @@ exports[`<Link /> should render with small size 1`] = `
         data-blade-component="base-box"
         display="flex"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "display": "flex",
               "paddingRight": 4,
@@ -1148,15 +1155,15 @@ exports[`<Link /> should render with small size 1`] = `
           minX={0}
           minY={0}
           style={
-            Array [
-              Object {
+            [
+              {
                 "backgroundColor": "transparent",
                 "borderWidth": 0,
               },
-              Array [
-                Object {},
+              [
+                {},
               ],
-              Object {
+              {
                 "flex": 0,
                 "height": 12,
                 "width": 12,
@@ -1170,7 +1177,7 @@ exports[`<Link /> should render with small size 1`] = `
           <RNSVGGroup
             fill={null}
             propList={
-              Array [
+              [
                 "fill",
               ]
             }
@@ -1179,7 +1186,7 @@ exports[`<Link /> should render with small size 1`] = `
               d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
               fill={4279461105}
               propList={
-                Array [
+                [
                   "fill",
                 ]
               }
@@ -1188,7 +1195,7 @@ exports[`<Link /> should render with small size 1`] = `
               d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
               fill={4279461105}
               propList={
-                Array [
+                [
                   "fill",
                 ]
               }
@@ -1199,7 +1206,7 @@ exports[`<Link /> should render with small size 1`] = `
               fill={4279461105}
               fillRule={0}
               propList={
-                Array [
+                [
                   "fill",
                   "fillRule",
                 ]
@@ -1209,14 +1216,15 @@ exports[`<Link /> should render with small size 1`] = `
         </RNSVGSvgView>
       </View>
       <Text
+        accessible={true}
         color="action.text.link.default"
         data-blade-component="base-text"
         fontSize={75}
         fontWeight="bold"
         lineHeight={50}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "hsla(218, 89%, 51%, 1)",
               "fontFamily": "Lato",
               "fontSize": 12,

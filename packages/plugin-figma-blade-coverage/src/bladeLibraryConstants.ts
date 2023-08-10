@@ -1,5 +1,8 @@
 export const paymentLightThemeData = {
   components: {
+    Tag: {
+      key: '81164abfd2c6ffeae87ae0719cd52a1ce62d6473',
+    },
     'BottomSheet/Header': {
       key: '03fa4ffc23c92fdf4b0afa2b3d4977d8e0d01323',
     },
@@ -11,6 +14,9 @@ export const paymentLightThemeData = {
     },
     'Bottom Sheet': {
       key: '18c8adc53a8c9c098e19259036c5ddec47debda4',
+    },
+    'Accordion Group': {
+      key: 'a776cbd4cade27a19e056919a098bbe0dc5745f0',
     },
     'ActionListItems Group': {
       key: '1e18a66e07ce9830b6a4e440a9b7c02ae55d069b',
@@ -4095,8 +4101,14 @@ export const paymentLightThemeData = {
 
 export const bankingDarkThemeData = {
   components: {
+    Tag: {
+      key: '2dcc0c0d31f0cc40b5b9c1e8a4b7866270511056',
+    },
     Link: {
       key: '003d08a00aa841104a655caddf61a1651f85ff04',
+    },
+    'Accordion Group': {
+      key: 'd9add274971a2f47efaf48045402c6d010dca28c',
     },
     'ActionListItems Group': {
       key: '0245d993ec15fcebd8259d8bc13053012301e4d2',
@@ -8214,4 +8226,59 @@ export const BLADE_COLOR_STYLE_IDS = [
   ...Object.values(bankingDarkThemeData.colorStyles).map(
     (colorStyle) => colorStyle.id.split(',')[0],
   ),
+];
+
+const allowedBackgroundColorTokenNames = [
+  'Brand/Primary',
+  'Brand/Secondary',
+  'Brand/Gray',
+  'Surface/Background',
+];
+export const BLADE_BOX_BACKGROUND_COLOR_STYLE_IDS = [
+  ...Object.entries(paymentLightThemeData.colorStyles)
+    .map(([colorStyleKey, colorStyleObj]) => {
+      return allowedBackgroundColorTokenNames.reduce<string[]>((acc, backgroundTokenName) => {
+        if (colorStyleKey.includes(backgroundTokenName)) {
+          return [...acc, colorStyleObj.id.split(',')[0]];
+        }
+        return acc;
+      }, []);
+    })
+    .flat()
+    .filter(Boolean),
+  ...Object.entries(bankingDarkThemeData.colorStyles)
+    .map(([colorStyleKey, colorStyleObj]) => {
+      return allowedBackgroundColorTokenNames.reduce<string[]>((acc, backgroundTokenName) => {
+        if (colorStyleKey.includes(backgroundTokenName)) {
+          return [...acc, colorStyleObj.id.split(',')[0]];
+        }
+        return acc;
+      }, []);
+    })
+    .flat()
+    .filter(Boolean),
+];
+
+const allowedBorderColorTokenNames = ['Surface/Border'];
+export const BLADE_BOX_BORDER_COLOR_STYLE_IDS = [
+  ...Object.entries(paymentLightThemeData.colorStyles)
+    .map(([colorStyleKey, colorStyleObj]) => {
+      return allowedBorderColorTokenNames.reduce((_, borderTokenName) => {
+        if (colorStyleKey.includes(borderTokenName)) {
+          return colorStyleObj.id.split(',')[0];
+        }
+        return '';
+      }, '');
+    })
+    .filter(Boolean),
+  ...Object.entries(bankingDarkThemeData.colorStyles)
+    .map(([colorStyleKey, colorStyleObj]) => {
+      return allowedBorderColorTokenNames.reduce((_, borderTokenName) => {
+        if (colorStyleKey.includes(borderTokenName)) {
+          return colorStyleObj.id.split(',')[0];
+        }
+        return '';
+      }, '');
+    })
+    .filter(Boolean),
 ];

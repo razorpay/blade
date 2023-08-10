@@ -8,6 +8,7 @@ import getStyledLinkStyles from './getStyledLinkStyles';
 import { useStyledProps } from '~components/Box/styledProps';
 import type { BladeElementRef } from '~utils/types';
 import { castNativeType } from '~utils';
+import { logger } from '~utils/logger';
 
 const StyledNativeLink = styled.Pressable((props) => {
   const styledPropsCSSObject = useStyledProps(props);
@@ -25,7 +26,13 @@ const openURL = async (href: string): Promise<void> => {
       await Linking.openURL(href);
     }
   } catch {
-    console.warn(`[Blade: BaseLink]: Could not open the link "href=${href}"`);
+    if (__DEV__) {
+      logger({
+        message: `Could not open the link "href=${href}"`,
+        moduleName: 'BaseLink',
+        type: 'warn',
+      });
+    }
   }
 };
 

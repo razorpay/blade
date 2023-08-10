@@ -15,6 +15,7 @@ import type { TestID } from '~utils/types';
 import { makeSize } from '~utils/makeSize';
 import type { AccessibilityProps } from '~utils/makeAccessible';
 import { makeAccessible } from '~utils/makeAccessible';
+import { throwBladeError } from '~utils/logger';
 
 type ProgressBarCommonProps = {
   /**
@@ -120,10 +121,13 @@ const ProgressBar = ({
   const { theme } = useTheme();
   const id = useId(variant);
 
-  if (variant === 'meter' && isIndeterminate) {
-    throw new Error(
-      `[Blade: ProgressBar]: Cannot set 'isIndeterminate' when 'variant' is 'meter'.`,
-    );
+  if (__DEV__) {
+    if (variant === 'meter' && isIndeterminate) {
+      throwBladeError({
+        moduleName: 'ProgressBar',
+        message: `Cannot set 'isIndeterminate' when 'variant' is 'meter'.`,
+      });
+    }
   }
 
   const unfilledBackgroundColor = theme.colors.brand.gray.a100[`${contrast}Contrast`];

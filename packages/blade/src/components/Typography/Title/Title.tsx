@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react';
 import { BaseText } from '../BaseText';
-import type { BaseTextProps } from '../BaseText/types';
+import type { BaseTextProps, BaseTextSizes } from '../BaseText/types';
 import { useValidateAsProp } from '../utils';
 import type { ColorContrast, ColorContrastTypes, TextTypes } from '~tokens/theme/theme';
 import { getStyledProps } from '~components/Box/styledProps';
@@ -17,7 +17,7 @@ export type TitleProps = {
    * **Note** This takes priority over `type` and `constrast` prop to decide color of title
    */
   color?: BaseTextProps['color'];
-  size?: 'small' | 'medium' | 'large' | 'xlarge';
+  size?: Extract<BaseTextSizes, 'small' | 'medium' | 'large' | 'xlarge'>;
   contrast?: ColorContrastTypes;
   type?: TextTypes;
   children: React.ReactNode;

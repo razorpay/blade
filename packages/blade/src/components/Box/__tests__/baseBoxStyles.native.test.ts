@@ -67,7 +67,7 @@ describe('getBaseBoxStyles', () => {
     });
     const boxStylesWithoutUndefined = JSON.parse(JSON.stringify(boxStyles));
     expect(boxStylesWithoutUndefined).toMatchInlineSnapshot(`
-      Object {
+      {
         "margin": "2px 12px 100%",
       }
     `);
@@ -77,7 +77,7 @@ describe('getBaseBoxStyles', () => {
 describe('getAllMediaQueries', () => {
   it('should return empty object', () => {
     expect(getAllMediaQueries({ display: 'flex', theme: paymentLightTheme })).toMatchInlineSnapshot(
-      `Object {}`,
+      `{}`,
     );
   });
 });
@@ -92,7 +92,7 @@ describe('getAllProps', () => {
     };
 
     expect(removeUndefinedValues(getAllProps(baseBoxProps))).toMatchInlineSnapshot(`
-      Object {
+      {
         "display": "flex",
         "padding": "20px",
       }

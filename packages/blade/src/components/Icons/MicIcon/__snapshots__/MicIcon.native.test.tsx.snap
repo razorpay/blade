@@ -3,7 +3,7 @@
 exports[`<MicIcon /> should render MicIcon 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -22,15 +22,15 @@ exports[`<MicIcon /> should render MicIcon 1`] = `
     minX={0}
     minY={0}
     style={
-      Array [
-        Object {
+      [
+        {
           "backgroundColor": "transparent",
           "borderWidth": 0,
         },
-        Array [
-          Object {},
+        [
+          {},
         ],
-        Object {
+        {
           "flex": 0,
           "height": 20,
           "width": 20,
@@ -44,7 +44,7 @@ exports[`<MicIcon /> should render MicIcon 1`] = `
     <RNSVGGroup
       fill={null}
       propList={
-        Array [
+        [
           "fill",
         ]
       }
@@ -55,7 +55,7 @@ exports[`<MicIcon /> should render MicIcon 1`] = `
         fill={4282603381}
         fillRule={0}
         propList={
-          Array [
+          [
             "fill",
             "fillRule",
           ]
@@ -65,7 +65,7 @@ exports[`<MicIcon /> should render MicIcon 1`] = `
         d="M6 10C6 9.44771 5.55228 9 5 9C4.44772 9 4 9.44771 4 10V12C4 16.0796 7.05369 19.446 11 19.9381V22H8C7.44772 22 7 22.4477 7 23C7 23.5523 7.44772 24 8 24H16C16.5523 24 17 23.5523 17 23C17 22.4477 16.5523 22 16 22H13V19.9381C16.9463 19.446 20 16.0796 20 12V10C20 9.44771 19.5523 9 19 9C18.4477 9 18 9.44771 18 10V12C18 15.3137 15.3137 18 12 18C8.68629 18 6 15.3137 6 12V10Z"
         fill={4282603381}
         propList={
-          Array [
+          [
             "fill",
           ]
         }

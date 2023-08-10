@@ -12,16 +12,20 @@ import type { TestID } from '~utils/types';
 import type { SurfaceLevels } from '~tokens/theme/theme';
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { throwBladeError } from '~utils/logger';
 
 type ActionListContextProp = Pick<ActionListProps, 'surfaceLevel'>;
 const ActionListContext = React.createContext<ActionListContextProp>({ surfaceLevel: 2 });
 const useActionListContext = (): ActionListContextProp => {
   const context = React.useContext(ActionListContext);
 
-  if (!context) {
-    throw new Error(
-      '[Blade ActionList]: useActionListContext has to be called inside ActionListContext.Provider',
-    );
+  if (__DEV__) {
+    if (!context) {
+      throwBladeError({
+        message: 'useActionListContext has to be called inside ActionListContext.Provider',
+        moduleName: 'ActionList',
+      });
+    }
   }
   return context;
 };
@@ -65,7 +69,11 @@ type ActionListProps = {
  * ```
  *
  */
-const _ActionList = ({ children, surfaceLevel = 2, testID }: ActionListProps): JSX.Element => {
+const _ActionList = ({
+  children,
+  surfaceLevel = 2,
+  testID,
+}: ActionListProps): React.ReactElement => {
   const {
     setOptions,
     actionListItemRef,

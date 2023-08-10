@@ -7,11 +7,8 @@
  * Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang)
  */
 
-import type { MiddlewareState } from '@floating-ui/react';
-import { detectOverflow } from '@floating-ui/react';
 import type { DropdownContextType, OptionsType } from './useDropdown';
 import type { SpacingValueType } from '~components/Box/BaseBox';
-import { size } from '~tokens/global';
 
 export type SelectActionsType =
   | 'Close'
@@ -329,109 +326,9 @@ export const makeInputDisplayValue = (selectedIndices: number[], options: Option
   return `${selectedIndices.length} items selected`;
 };
 
-type PositionProp = {
-  top: number;
-  left: number;
-  right: number;
-  bottom: number;
-};
-
 export type DropdownPosition = {
   top?: SpacingValueType;
   bottom?: SpacingValueType;
   left?: SpacingValueType;
   right?: SpacingValueType;
-};
-
-/**
- * This function calculates the position of dropdown overlay with respect to dropdown trigger element.
- * For non-menus (e.g SelectInput), position is flipped if overflow is on bottom.
- * For menus (e.g. DropdownButton), position is flipped if overflow is on right or bottom.
- * Additional spacing is added to clientHeight to provide spacing above the dropdown trigger.
- */
-export const getDropdownOverlayPosition = ({
-  overflow: position,
-  isMenu,
-  triggererEl,
-  actionListItemEl,
-}: {
-  overflow: PositionProp;
-  isMenu: boolean;
-  triggererEl: HTMLButtonElement | null;
-  actionListItemEl: HTMLDivElement | null;
-}): DropdownPosition => {
-  const zeroSpacing: SpacingValueType = 'spacing.0';
-  const { top, bottom, right } = position;
-
-  const newPosition: DropdownPosition = { left: zeroSpacing };
-
-  /**
-   * Calculating thresholds using the height & width of action list element with offset of 16px
-   */
-  const WIDTH_THRESHOLD = (Number(actionListItemEl?.clientWidth) + Number(size[16])) * -1;
-  const HEIGHT_THRESHOLD = (Number(actionListItemEl?.clientHeight) + Number(size[16])) * -1;
-
-  if (!isMenu) {
-    // In SelectInput, we set position wrt to right so that leftLabel position can be accomodated
-    // without additional offset calculation from left
-    newPosition.left = undefined;
-    newPosition.right = zeroSpacing;
-
-    if (bottom > HEIGHT_THRESHOLD) {
-      newPosition.bottom = `${Number(triggererEl?.clientHeight) + Number(size[32])}px`;
-      newPosition.top = undefined;
-    }
-
-    if (top > HEIGHT_THRESHOLD) {
-      newPosition.top = zeroSpacing;
-      newPosition.bottom = undefined;
-    }
-    return newPosition;
-  }
-
-  if (right > WIDTH_THRESHOLD) {
-    newPosition.right = zeroSpacing;
-    newPosition.left = undefined;
-  }
-
-  if (bottom > HEIGHT_THRESHOLD) {
-    newPosition.bottom = `${Number(triggererEl?.clientHeight) + Number(size[20])}px`;
-    newPosition.top = undefined;
-  }
-
-  if (top > HEIGHT_THRESHOLD) {
-    newPosition.top = zeroSpacing;
-    newPosition.bottom = undefined;
-  }
-
-  return newPosition;
-};
-
-export const getDropdownOverflowMiddleware = ({
-  isMenu,
-  triggererRef,
-  actionListItemRef,
-  setDropdownPosition,
-}: {
-  setDropdownPosition: React.Dispatch<React.SetStateAction<DropdownPosition>>;
-  isMenu: boolean;
-  triggererRef: React.RefObject<HTMLButtonElement | null>;
-  actionListItemRef: React.RefObject<HTMLDivElement | null>;
-}): { name: string; fn: (state: MiddlewareState) => Promise<object> } => {
-  return {
-    name: 'detectOverflowMiddleware',
-    async fn(state: MiddlewareState) {
-      const overflow = await detectOverflow(state, {
-        elementContext: 'reference',
-      });
-      const position = getDropdownOverlayPosition({
-        overflow,
-        isMenu,
-        triggererEl: triggererRef.current,
-        actionListItemEl: actionListItemRef.current,
-      });
-      setDropdownPosition(position);
-      return {};
-    },
-  };
 };
