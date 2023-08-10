@@ -43,6 +43,19 @@
 
 - cbed430f: feat: strip off logs & errors in production builds
 
+#### Jest v27 and Custom Resolver Compatibility
+
+For users on Jest v27 or older, or those with custom Jest resolvers (like `jest-directory-named-resolve`) not supporting `package.json` exports, a `moduleNameMapper` update is needed. This ensures compatibility with the `@razorpay/blade` package:
+
+```diff
+  moduleNameMapper: {
+    // ...rest of your config
++   '@razorpay/blade/components': '<rootDir>/node_modules/@razorpay/blade/build/components/index.development.web.js',
++   '@razorpay/blade/utils': '<rootDir>/node_modules/@razorpay/blade/build/utils/index.development.web.js',
++   '@razorpay/blade/tokens': '<rootDir>/node_modules/@razorpay/blade/build/tokens/index.development.web.js',
+  },
+```
+
 ### Patch Changes
 
 - 2be798d9: feat: add zIndex prop to Tooltip
