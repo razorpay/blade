@@ -236,6 +236,13 @@ const Carousel = ({
     _visibleItems = 1;
   }
 
+  // A special case where we hide the indicators when the carousel is responsive
+  // Because indicators become useless since it's not aparent which carousel item is active
+  // and how many carousel items are visible at a time
+  if (isResponsive && !shouldAddStartEndSpacing && !isMobile) {
+    showIndicators = false;
+  }
+
   const isNavButtonsOnSide = !isResponsive && navigationButtonPosition === 'side';
   const shouldNavButtonsFloat = isResponsive && navigationButtonPosition === 'side';
   const totalNumberOfSlides = React.Children.count(children);
