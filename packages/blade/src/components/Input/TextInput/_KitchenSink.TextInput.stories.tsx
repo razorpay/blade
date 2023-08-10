@@ -1,17 +1,17 @@
 import { composeStories } from '@storybook/react';
 import * as textInputStories from './TextInput.stories';
 import { Box } from '~components/Box';
-import { Text } from '~components/Typography';
+import { Heading } from '~components/Typography';
 
 const allStories = Object.values(composeStories(textInputStories));
 
-export const AllStories = (): JSX.Element => {
+export const TextInput = (): JSX.Element => {
   return (
     <Box display="flex" flexDirection="column" gap="spacing.4">
       {allStories.map((Story) => {
         return (
           <>
-            <Text>{Story.storyName}</Text>
+            <Heading>{Story.storyName}</Heading>
             <Story />
           </>
         );
@@ -22,7 +22,7 @@ export const AllStories = (): JSX.Element => {
 
 export default {
   title: 'Components/KitchenSink/TextInput',
-  component: AllStories,
+  component: TextInput,
   parameters: {
     // enable Chromatic's snapshotting only for kitchensink
     chromatic: { disableSnapshot: false },

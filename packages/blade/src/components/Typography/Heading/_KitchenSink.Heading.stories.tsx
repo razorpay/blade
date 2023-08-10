@@ -1,17 +1,17 @@
 import { composeStories } from '@storybook/react';
 import * as headingStories from './Heading.stories';
 import { Box } from '~components/Box';
-import { Text } from '~components/Typography';
+import { Heading } from '~components/Typography';
 
 const allStories = Object.values(composeStories(headingStories));
 
-export const AllStories = (): JSX.Element => {
+export const Heading = (): JSX.Element => {
   return (
     <Box display="flex" flexDirection="column" gap="spacing.4">
       {allStories.map((Story) => {
         return (
           <>
-            <Text>{Story.storyName}</Text>
+            <Heading>{Story.storyName}</Heading>
             <Story />
           </>
         );
@@ -22,7 +22,7 @@ export const AllStories = (): JSX.Element => {
 
 export default {
   title: 'Components/KitchenSink/Heading',
-  component: AllStories,
+  component: Heading,
   parameters: {
     // enable Chromatic's snapshotting only for kitchensink
     chromatic: { disableSnapshot: false },
