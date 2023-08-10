@@ -21,7 +21,7 @@ const TestimonialCard = (): React.ReactElement => {
 describe('<Carousel />', () => {
   it('should go to next/previous slide', () => {
     const onChange = jest.fn();
-    const { queryAllByTestId, queryAllByRole, getByA11yState } = renderWithTheme(
+    const { queryAllByTestId, queryAllByRole, getByRole } = renderWithTheme(
       <Carousel onChange={onChange}>
         <CarouselItem>
           <TestimonialCard />
@@ -39,7 +39,7 @@ describe('<Carousel />', () => {
     );
 
     expect(queryAllByTestId('active-slide')[0]).toHaveTextContent('0');
-    expect(getByA11yState({ selected: true })).toHaveProp('slideIndex', 0);
+    expect(getByRole('tab', { selected: true })).toHaveProp('slideIndex', 0);
 
     const [previousButton, nextButton] = queryAllByRole('button');
 
@@ -48,26 +48,26 @@ describe('<Carousel />', () => {
 
     fireEvent.press(nextButton);
     expect(onChange).toHaveBeenLastCalledWith(1);
-    expect(getByA11yState({ selected: true })).toHaveProp('slideIndex', 1);
+    expect(getByRole('tab', { selected: true })).toHaveProp('slideIndex', 1);
 
     fireEvent.press(nextButton);
     expect(onChange).toHaveBeenLastCalledWith(2);
-    expect(getByA11yState({ selected: true })).toHaveProp('slideIndex', 2);
+    expect(getByRole('tab', { selected: true })).toHaveProp('slideIndex', 2);
 
     fireEvent.press(previousButton);
     expect(onChange).toHaveBeenLastCalledWith(1);
-    expect(getByA11yState({ selected: true })).toHaveProp('slideIndex', 1);
+    expect(getByRole('tab', { selected: true })).toHaveProp('slideIndex', 1);
 
     fireEvent.press(previousButton);
     expect(onChange).toHaveBeenLastCalledWith(0);
-    expect(getByA11yState({ selected: true })).toHaveProp('slideIndex', 0);
+    expect(getByRole('tab', { selected: true })).toHaveProp('slideIndex', 0);
 
     expect(queryAllByRole('tab').length).toBe(4);
   });
 
   it('should go to specific slide when clicking on indicator button', () => {
     const onChange = jest.fn();
-    const { queryAllByRole, queryAllByTestId, getByA11yState } = renderWithTheme(
+    const { queryAllByRole, queryAllByTestId, getByRole } = renderWithTheme(
       <Carousel onChange={onChange}>
         <CarouselItem>
           <TestimonialCard />
@@ -84,20 +84,20 @@ describe('<Carousel />', () => {
       </Carousel>,
     );
     expect(queryAllByTestId('active-slide')[0]).toHaveTextContent('0');
-    expect(getByA11yState({ selected: true })).toHaveProp('slideIndex', 0);
+    expect(getByRole('tab', { selected: true })).toHaveProp('slideIndex', 0);
 
     fireEvent.press(queryAllByRole('tab')[2]);
     expect(onChange).toHaveBeenLastCalledWith(2);
-    expect(getByA11yState({ selected: true })).toHaveProp('slideIndex', 2);
+    expect(getByRole('tab', { selected: true })).toHaveProp('slideIndex', 2);
 
     fireEvent.press(queryAllByRole('tab')[0]);
     expect(onChange).toHaveBeenLastCalledWith(0);
-    expect(getByA11yState({ selected: true })).toHaveProp('slideIndex', 0);
+    expect(getByRole('tab', { selected: true })).toHaveProp('slideIndex', 0);
   });
 
   it('should wrap around when reaching start or end slide', () => {
     const onChange = jest.fn();
-    const { queryAllByRole, queryAllByTestId, getByA11yState } = renderWithTheme(
+    const { queryAllByRole, queryAllByTestId, getByRole } = renderWithTheme(
       <Carousel onChange={onChange}>
         <CarouselItem>
           <TestimonialCard />
@@ -114,7 +114,7 @@ describe('<Carousel />', () => {
       </Carousel>,
     );
     expect(queryAllByTestId('active-slide')[0]).toHaveTextContent('0');
-    expect(getByA11yState({ selected: true })).toHaveProp('slideIndex', 0);
+    expect(getByRole('tab', { selected: true })).toHaveProp('slideIndex', 0);
 
     const [previousButton, nextButton] = queryAllByRole('button');
     expect(previousButton.props.accessibilityLabel).toBe('Previous Slide');
@@ -123,17 +123,17 @@ describe('<Carousel />', () => {
     fireEvent.press(previousButton);
 
     expect(onChange).toHaveBeenLastCalledWith(3);
-    expect(getByA11yState({ selected: true })).toHaveProp('slideIndex', 3);
+    expect(getByRole('tab', { selected: true })).toHaveProp('slideIndex', 3);
 
     fireEvent.press(nextButton);
     expect(onChange).toHaveBeenLastCalledWith(0);
-    expect(getByA11yState({ selected: true })).toHaveProp('slideIndex', 0);
+    expect(getByRole('tab', { selected: true })).toHaveProp('slideIndex', 0);
   });
 
   it('should auto play', async () => {
-    jest.useFakeTimers();
+    jest.useFakeTimers({ legacyFakeTimers: true });
     const onChange = jest.fn();
-    const { queryAllByTestId, getByA11yState } = renderWithTheme(
+    const { queryAllByTestId, getByRole } = renderWithTheme(
       <Carousel autoPlay onChange={onChange}>
         <CarouselItem>
           <TestimonialCard />
@@ -147,34 +147,35 @@ describe('<Carousel />', () => {
       </Carousel>,
     );
     expect(queryAllByTestId('active-slide')[0]).toHaveTextContent('0');
-    expect(getByA11yState({ selected: true })).toHaveProp('slideIndex', 0);
+    expect(getByRole('tab', { selected: true })).toHaveProp('slideIndex', 0);
 
     await act(async () => {
       jest.advanceTimersByTime(6000);
     });
 
     expect(onChange).toHaveBeenLastCalledWith(1);
-    expect(getByA11yState({ selected: true })).toHaveProp('slideIndex', 1);
+    expect(getByRole('tab', { selected: true })).toHaveProp('slideIndex', 1);
 
     await act(async () => {
       jest.advanceTimersByTime(6000);
     });
 
     expect(onChange).toHaveBeenLastCalledWith(2);
-    expect(getByA11yState({ selected: true })).toHaveProp('slideIndex', 2);
+    expect(getByRole('tab', { selected: true })).toHaveProp('slideIndex', 2);
 
     await act(async () => {
       jest.advanceTimersByTime(6000);
     });
 
     expect(onChange).toHaveBeenLastCalledWith(0);
-    expect(getByA11yState({ selected: true })).toHaveProp('slideIndex', 0);
+    expect(getByRole('tab', { selected: true })).toHaveProp('slideIndex', 0);
   });
 
   it('should not auto play when user is scrolling', async () => {
-    jest.useFakeTimers();
+    jest.useFakeTimers({ legacyFakeTimers: true });
+
     const onChange = jest.fn();
-    const { getByLabelText, queryAllByTestId, getByA11yState } = renderWithTheme(
+    const { getByLabelText, queryAllByTestId, getByRole } = renderWithTheme(
       <Carousel accessibilityLabel="My Carousel" autoPlay onChange={onChange}>
         <CarouselItem>
           <TestimonialCard />
@@ -187,32 +188,33 @@ describe('<Carousel />', () => {
         </CarouselItem>
       </Carousel>,
     );
-    expect(queryAllByTestId('active-slide')[0]).toHaveTextContent('0');
-    expect(getByA11yState({ selected: true })).toHaveProp('slideIndex', 0);
 
-    await act(async () => {
+    expect(queryAllByTestId('active-slide')[0]).toHaveTextContent('0');
+    expect(getByRole('tab', { selected: true })).toHaveProp('slideIndex', 0);
+
+    await act(() => {
       jest.advanceTimersByTime(6000);
     });
     expect(onChange).toHaveBeenLastCalledWith(1);
-    expect(getByA11yState({ selected: true })).toHaveProp('slideIndex', 1);
+    expect(getByRole('tab', { selected: true })).toHaveProp('slideIndex', 1);
 
     fireEvent(getByLabelText('My Carousel'), 'onScrollBeginDrag');
 
-    await act(async () => {
+    await act(() => {
       jest.advanceTimersByTime(6000);
     });
 
     expect(onChange).toHaveBeenLastCalledWith(1);
-    expect(getByA11yState({ selected: true })).toHaveProp('slideIndex', 1);
+    expect(getByRole('tab', { selected: true })).toHaveProp('slideIndex', 1);
 
     fireEvent(getByLabelText('My Carousel'), 'onScrollEndDrag');
 
-    await act(async () => {
+    await act(() => {
       jest.advanceTimersByTime(6000);
     });
 
     expect(onChange).toHaveBeenLastCalledWith(2);
-    expect(getByA11yState({ selected: true })).toHaveProp('slideIndex', 2);
+    expect(getByRole('tab', { selected: true })).toHaveProp('slideIndex', 2);
   });
 });
 

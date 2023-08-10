@@ -3,7 +3,7 @@
 exports[`Carousel Snapshots should render 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -14,8 +14,8 @@ exports[`Carousel Snapshots should render 1`] = `
     display="flex"
     flexDirection="column"
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "display": "flex",
           "flexDirection": "column",
@@ -31,8 +31,8 @@ exports[`Carousel Snapshots should render 1`] = `
       gap="spacing.4"
       position="relative"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
@@ -45,21 +45,22 @@ exports[`Carousel Snapshots should render 1`] = `
       width="100%"
     >
       <RCTScrollView
+        accessible={true}
         automaticallyAdjustContentInsets={false}
         contentContainerStyle={
-          Object {
+          {
             "paddingVertical": 10,
           }
         }
         contentInset={
-          Object {
+          {
             "left": 0,
             "right": 0,
           }
         }
         contentInsetAdjustmentBehavior="never"
         contentOffset={
-          Object {
+          {
             "x": 0,
             "y": 0,
           }
@@ -80,8 +81,8 @@ exports[`Carousel Snapshots should render 1`] = `
           <View
             data-blade-component="base-box"
             style={
-              Array [
-                Object {
+              [
+                {
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -97,12 +98,13 @@ exports[`Carousel Snapshots should render 1`] = `
             <View
               data-blade-component="box"
               style={
-                Array [
-                  Object {},
+                [
+                  {},
                 ]
               }
             >
               <Text
+                accessible={true}
                 color="surface.text.normal.lowContrast"
                 data-blade-component="text"
                 fontFamily="text"
@@ -111,8 +113,8 @@ exports[`Carousel Snapshots should render 1`] = `
                 fontWeight="regular"
                 lineHeight={100}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "color": "hsla(217, 56%, 17%, 1)",
                       "fontFamily": "Lato",
                       "fontSize": 14,
@@ -140,8 +142,8 @@ exports[`Carousel Snapshots should render 1`] = `
           <View
             data-blade-component="base-box"
             style={
-              Array [
-                Object {
+              [
+                {
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -157,12 +159,13 @@ exports[`Carousel Snapshots should render 1`] = `
             <View
               data-blade-component="box"
               style={
-                Array [
-                  Object {},
+                [
+                  {},
                 ]
               }
             >
               <Text
+                accessible={true}
                 color="surface.text.normal.lowContrast"
                 data-blade-component="text"
                 fontFamily="text"
@@ -171,8 +174,8 @@ exports[`Carousel Snapshots should render 1`] = `
                 fontWeight="regular"
                 lineHeight={100}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "color": "hsla(217, 56%, 17%, 1)",
                       "fontFamily": "Lato",
                       "fontSize": 14,
@@ -206,8 +209,8 @@ exports[`Carousel Snapshots should render 1`] = `
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
@@ -219,8 +222,8 @@ exports[`Carousel Snapshots should render 1`] = `
       <View
         data-blade-component="base-box"
         style={
-          Array [
-            Object {
+          [
+            {
               "marginRight": 12,
             },
           ]
@@ -243,8 +246,8 @@ exports[`Carousel Snapshots should render 1`] = `
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "alignSelf": "center",
                 "backgroundColor": "hsla(0, 0%, 100%, 1)",
@@ -279,15 +282,15 @@ exports[`Carousel Snapshots should render 1`] = `
             minX={0}
             minY={0}
             style={
-              Array [
-                Object {
+              [
+                {
                   "backgroundColor": "transparent",
                   "borderWidth": 0,
                 },
-                Array [
-                  Object {},
+                [
+                  {},
                 ],
-                Object {
+                {
                   "flex": 0,
                   "height": 12,
                   "width": 12,
@@ -301,7 +304,7 @@ exports[`Carousel Snapshots should render 1`] = `
             <RNSVGGroup
               fill={null}
               propList={
-                Array [
+                [
                   "fill",
                 ]
               }
@@ -312,7 +315,7 @@ exports[`Carousel Snapshots should render 1`] = `
                 fill={4281484642}
                 fillRule={0}
                 propList={
-                  Array [
+                  [
                     "fill",
                     "fillRule",
                   ]
@@ -325,12 +328,13 @@ exports[`Carousel Snapshots should render 1`] = `
       <View
         accessibilityLabel="Slides"
         accessibilityRole="tablist"
+        accessible={true}
         data-blade-component="base-box"
         display="flex"
         flexDirection="row"
         style={
-          Array [
-            Object {
+          [
+            {
               "display": "flex",
               "flexDirection": "row",
             },
@@ -353,22 +357,23 @@ exports[`Carousel Snapshots should render 1`] = `
           onStartShouldSetResponder={[Function]}
         >
           <View
-            accessibilityControls="22-carousel-item-0"
+            accessibilityControls="25-carousel-item-0"
             accessibilityRole="tab"
             accessibilityState={
-              Object {
+              {
                 "selected": true,
               }
             }
+            accessible={true}
             data-blade-component="base-box"
             isActive={true}
             slideIndex={0}
             style={
-              Array [
-                Object {
+              [
+                {
                   "marginLeft": 0,
                 },
-                Object {
+                {
                   "backgroundColor": "hsla(214, 18%, 69%, 1)",
                   "borderColor": "black",
                   "borderRadius": 9999,
@@ -390,8 +395,8 @@ exports[`Carousel Snapshots should render 1`] = `
           >
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "width": 18,
                   },
                 ]
@@ -415,22 +420,23 @@ exports[`Carousel Snapshots should render 1`] = `
           onStartShouldSetResponder={[Function]}
         >
           <View
-            accessibilityControls="22-carousel-item-1"
+            accessibilityControls="25-carousel-item-1"
             accessibilityRole="tab"
             accessibilityState={
-              Object {
+              {
                 "selected": false,
               }
             }
+            accessible={true}
             data-blade-component="base-box"
             isActive={false}
             slideIndex={1}
             style={
-              Array [
-                Object {
+              [
+                {
                   "marginLeft": 4,
                 },
-                Object {
+                {
                   "backgroundColor": "hsla(214, 15%, 18%, 0.64)",
                   "borderColor": "black",
                   "borderRadius": 9999,
@@ -452,8 +458,8 @@ exports[`Carousel Snapshots should render 1`] = `
           >
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "width": 6,
                   },
                 ]
@@ -465,8 +471,8 @@ exports[`Carousel Snapshots should render 1`] = `
       <View
         data-blade-component="base-box"
         style={
-          Array [
-            Object {
+          [
+            {
               "marginLeft": 12,
             },
           ]
@@ -489,8 +495,8 @@ exports[`Carousel Snapshots should render 1`] = `
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "alignSelf": "center",
                 "backgroundColor": "hsla(0, 0%, 100%, 1)",
@@ -525,15 +531,15 @@ exports[`Carousel Snapshots should render 1`] = `
             minX={0}
             minY={0}
             style={
-              Array [
-                Object {
+              [
+                {
                   "backgroundColor": "transparent",
                   "borderWidth": 0,
                 },
-                Array [
-                  Object {},
+                [
+                  {},
                 ],
-                Object {
+                {
                   "flex": 0,
                   "height": 12,
                   "width": 12,
@@ -547,7 +553,7 @@ exports[`Carousel Snapshots should render 1`] = `
             <RNSVGGroup
               fill={null}
               propList={
-                Array [
+                [
                   "fill",
                 ]
               }
@@ -558,7 +564,7 @@ exports[`Carousel Snapshots should render 1`] = `
                 fill={4281484642}
                 fillRule={0}
                 propList={
-                  Array [
+                  [
                     "fill",
                     "fillRule",
                   ]
@@ -576,7 +582,7 @@ exports[`Carousel Snapshots should render 1`] = `
 exports[`Carousel Snapshots should render with visibleItems but always renders 1 item only 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -587,8 +593,8 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
     display="flex"
     flexDirection="column"
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "display": "flex",
           "flexDirection": "column",
@@ -604,8 +610,8 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
       gap="spacing.4"
       position="relative"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
@@ -618,21 +624,22 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
       width="100%"
     >
       <RCTScrollView
+        accessible={true}
         automaticallyAdjustContentInsets={false}
         contentContainerStyle={
-          Object {
+          {
             "paddingVertical": 10,
           }
         }
         contentInset={
-          Object {
+          {
             "left": 0,
             "right": 0,
           }
         }
         contentInsetAdjustmentBehavior="never"
         contentOffset={
-          Object {
+          {
             "x": 0,
             "y": 0,
           }
@@ -653,8 +660,8 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
           <View
             data-blade-component="base-box"
             style={
-              Array [
-                Object {
+              [
+                {
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -670,12 +677,13 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
             <View
               data-blade-component="box"
               style={
-                Array [
-                  Object {},
+                [
+                  {},
                 ]
               }
             >
               <Text
+                accessible={true}
                 color="surface.text.normal.lowContrast"
                 data-blade-component="text"
                 fontFamily="text"
@@ -684,8 +692,8 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
                 fontWeight="regular"
                 lineHeight={100}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "color": "hsla(217, 56%, 17%, 1)",
                       "fontFamily": "Lato",
                       "fontSize": 14,
@@ -713,8 +721,8 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
           <View
             data-blade-component="base-box"
             style={
-              Array [
-                Object {
+              [
+                {
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -730,12 +738,13 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
             <View
               data-blade-component="box"
               style={
-                Array [
-                  Object {},
+                [
+                  {},
                 ]
               }
             >
               <Text
+                accessible={true}
                 color="surface.text.normal.lowContrast"
                 data-blade-component="text"
                 fontFamily="text"
@@ -744,8 +753,8 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
                 fontWeight="regular"
                 lineHeight={100}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "color": "hsla(217, 56%, 17%, 1)",
                       "fontFamily": "Lato",
                       "fontSize": 14,
@@ -773,8 +782,8 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
           <View
             data-blade-component="base-box"
             style={
-              Array [
-                Object {
+              [
+                {
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -790,12 +799,13 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
             <View
               data-blade-component="box"
               style={
-                Array [
-                  Object {},
+                [
+                  {},
                 ]
               }
             >
               <Text
+                accessible={true}
                 color="surface.text.normal.lowContrast"
                 data-blade-component="text"
                 fontFamily="text"
@@ -804,8 +814,8 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
                 fontWeight="regular"
                 lineHeight={100}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "color": "hsla(217, 56%, 17%, 1)",
                       "fontFamily": "Lato",
                       "fontSize": 14,
@@ -839,8 +849,8 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
       display="flex"
       flexDirection="row"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
@@ -852,8 +862,8 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
       <View
         data-blade-component="base-box"
         style={
-          Array [
-            Object {
+          [
+            {
               "marginRight": 12,
             },
           ]
@@ -876,8 +886,8 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "alignSelf": "center",
                 "backgroundColor": "hsla(0, 0%, 100%, 1)",
@@ -912,15 +922,15 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
             minX={0}
             minY={0}
             style={
-              Array [
-                Object {
+              [
+                {
                   "backgroundColor": "transparent",
                   "borderWidth": 0,
                 },
-                Array [
-                  Object {},
+                [
+                  {},
                 ],
-                Object {
+                {
                   "flex": 0,
                   "height": 12,
                   "width": 12,
@@ -934,7 +944,7 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
             <RNSVGGroup
               fill={null}
               propList={
-                Array [
+                [
                   "fill",
                 ]
               }
@@ -945,7 +955,7 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
                 fill={4281484642}
                 fillRule={0}
                 propList={
-                  Array [
+                  [
                     "fill",
                     "fillRule",
                   ]
@@ -958,12 +968,13 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
       <View
         accessibilityLabel="Slides"
         accessibilityRole="tablist"
+        accessible={true}
         data-blade-component="base-box"
         display="flex"
         flexDirection="row"
         style={
-          Array [
-            Object {
+          [
+            {
               "display": "flex",
               "flexDirection": "row",
             },
@@ -986,22 +997,23 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
           onStartShouldSetResponder={[Function]}
         >
           <View
-            accessibilityControls="23-carousel-item-0"
+            accessibilityControls="26-carousel-item-0"
             accessibilityRole="tab"
             accessibilityState={
-              Object {
+              {
                 "selected": true,
               }
             }
+            accessible={true}
             data-blade-component="base-box"
             isActive={true}
             slideIndex={0}
             style={
-              Array [
-                Object {
+              [
+                {
                   "marginLeft": 0,
                 },
-                Object {
+                {
                   "backgroundColor": "hsla(214, 18%, 69%, 1)",
                   "borderColor": "black",
                   "borderRadius": 9999,
@@ -1023,8 +1035,8 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
           >
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "width": 18,
                   },
                 ]
@@ -1048,22 +1060,23 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
           onStartShouldSetResponder={[Function]}
         >
           <View
-            accessibilityControls="23-carousel-item-1"
+            accessibilityControls="26-carousel-item-1"
             accessibilityRole="tab"
             accessibilityState={
-              Object {
+              {
                 "selected": false,
               }
             }
+            accessible={true}
             data-blade-component="base-box"
             isActive={false}
             slideIndex={1}
             style={
-              Array [
-                Object {
+              [
+                {
                   "marginLeft": 4,
                 },
-                Object {
+                {
                   "backgroundColor": "hsla(214, 15%, 18%, 0.64)",
                   "borderColor": "black",
                   "borderRadius": 9999,
@@ -1085,8 +1098,8 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
           >
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "width": 6,
                   },
                 ]
@@ -1110,22 +1123,23 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
           onStartShouldSetResponder={[Function]}
         >
           <View
-            accessibilityControls="23-carousel-item-2"
+            accessibilityControls="26-carousel-item-2"
             accessibilityRole="tab"
             accessibilityState={
-              Object {
+              {
                 "selected": false,
               }
             }
+            accessible={true}
             data-blade-component="base-box"
             isActive={false}
             slideIndex={2}
             style={
-              Array [
-                Object {
+              [
+                {
                   "marginLeft": 4,
                 },
-                Object {
+                {
                   "backgroundColor": "hsla(214, 15%, 18%, 0.64)",
                   "borderColor": "black",
                   "borderRadius": 9999,
@@ -1147,8 +1161,8 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
           >
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "width": 6,
                   },
                 ]
@@ -1160,8 +1174,8 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
       <View
         data-blade-component="base-box"
         style={
-          Array [
-            Object {
+          [
+            {
               "marginLeft": 12,
             },
           ]
@@ -1184,8 +1198,8 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "alignSelf": "center",
                 "backgroundColor": "hsla(0, 0%, 100%, 1)",
@@ -1220,15 +1234,15 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
             minX={0}
             minY={0}
             style={
-              Array [
-                Object {
+              [
+                {
                   "backgroundColor": "transparent",
                   "borderWidth": 0,
                 },
-                Array [
-                  Object {},
+                [
+                  {},
                 ],
-                Object {
+                {
                   "flex": 0,
                   "height": 12,
                   "width": 12,
@@ -1242,7 +1256,7 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
             <RNSVGGroup
               fill={null}
               propList={
-                Array [
+                [
                   "fill",
                 ]
               }
@@ -1253,7 +1267,7 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
                 fill={4281484642}
                 fillRule={0}
                 propList={
-                  Array [
+                  [
                     "fill",
                     "fillRule",
                   ]
