@@ -23,7 +23,7 @@ const StyledCarouselItem = styled(BaseBox)<StyledCarouselItemProps>(
   }) => {
     const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
     const isMobile = matchedDeviceType === 'mobile';
-    const isResponsive = visibleItems === undefined;
+    const isResponsive = visibleItems === 'autofit';
 
     const gap = isMobile ? theme.spacing[4] : theme.spacing[5];
     const calculatedWidth = `calc(100% / ${visibleItems!} - ${gap}px * (${visibleItems} - 1) / ${visibleItems})`;
