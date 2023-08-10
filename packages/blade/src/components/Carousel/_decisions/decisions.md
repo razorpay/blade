@@ -16,8 +16,8 @@ Carousel is a UI component that allows the display and navigation of a set of co
 | ------------------------ | -------------------------------------- | ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------- |
 | children                 | `CarouselItem`                         | `undefined`                              | Carousel slides                                                                                                                                                                                              | ✅        |
 | autoPlay                 | `boolean`                              | `false`                                  | If true, the carousel will autoplay                                                                                                                                                                          |          |
-| visibleItems             | `1,2,3,auto`                           | `1`                                      | Total number of carousel items to show at once, if set to 1,2 or 3 all the CarouselItem's width will remain the same but if set to `auto` the carousel items will take up space responsively                 |          |
-| carouselItemWidth        | `ResponsiveProp<width>`                        | `undefined`                              | Sets the width of the carousel items, this can be used with visibleItems: auto to achive automatic bleed                                                                                                     |          |
+| visibleItems             | `1,2,3,autofit`                        | `1`                                      | Total number of carousel items to show at once, if set to 1,2 or 3 all the CarouselItem's width will remain the same but if set to `autofit` the carousel items will take up available space responsively    |          |
+| carouselItemWidth        | `ResponsiveProp<width>`                | `undefined`                              | Sets the width of the carousel items, this can be used with visibleItems: auto to achive automatic bleed                                                                                                     |          |
 | carouselItemAlignment    | `start, end, center`                   | `start`                                  | Sets the align-items CSS property on carousel container which specifies how the carousel items will align if their heights are different                                                                     |          |
 | shouldAddStartEndMargin  | `boolean`                              | `false`                                  | If true, adds extra margin before and after the first/last slides so that they align in center, this prop can be used to achive carousel which is in [GST page](https://razorpay.com/gst-number-search/pan/) |          |
 | showIndicators           | `boolean`                              | `true`                                   | Toggles the visibility of indicators                                                                                                                                                                         |          |
@@ -28,7 +28,7 @@ Carousel is a UI component that allows the display and navigation of a set of co
 | navigationButtonStyle    | `filled,stroke`                        | `filled`                                 | Styles to be used depending on the emphasis you want to give to the navigation buttons                                                                                                                       |          |
 | indicatorVariant         | `gray,white,blue`                      | `gray`                                   | Variants to be used depending on the background and the emphasis you want to give to the indicator.                                                                                                          |          |
 | onChange                 | `(slideIndex: number) => void`         | `undefined`                              | Callback which gets fired everytime a slide changes, useful for analytic events (only runs on user interaction not on autoPlay)                                                                              |          |
-| accessibilityLabel                 | `string`         | `undefined`                              | Accessibility label for the carousel, this will let screen reader users know what content the carousel holds (eg: "Product carousel")                                                                              |          |
+| accessibilityLabel       | `string`                               | `undefined`                              | Accessibility label for the carousel, this will let screen reader users know what content the carousel holds (eg: "Product carousel")                                                                        |          |
 
 Additionally we will also expose few styled props, namely margin/width etc so that users can add negative margins to create end to end bleed carousel.
 
@@ -81,7 +81,7 @@ Carousel has two variants which can solve most of the general & landing page use
 
 ### **Variant 1: Without visibleItems:**
 
-When the `visibleItems` are not defined (or set to undefined) carousel becomes variant 1, which can have: 
+When the `visibleItems` is set to `autofit`, the carousel will automatically adjust and fit however many carouselItems it can in the available space & it can have: 
 
 - Automatic bleed support 
 - Scroll Overlay support
@@ -92,11 +92,11 @@ When the `visibleItems` are not defined (or set to undefined) carousel becomes v
 > NOTE: To ensure bleed happens you need to specify a fixed amount of carousel item's width via the `carouselItemWidth` prop. Otherwise the carousel item will take up the 100% of the container width and won't bleed
 
 
-v1: visibleItems: undefined + auto bleed + shouldAddStartEndMargin
+v1: visibleItems: autofit + auto bleed + shouldAddStartEndMargin
 
 <img src="./example-visibleitems-undefined-with-margin.png" width="70%" />
 
-v1: visibleItems: undefined + auto bleed
+v1: visibleItems: autofit + auto bleed
 
 <img src="./example-visibleitems-undefined-without-margin.png" width="70%" />
 
@@ -136,6 +136,7 @@ https://github.com/razorpay/blade/assets/35374649/6876f348-1b0a-4e9a-800a-300025
 
 - Should we call it `navigationButtonStyle` or `navigationButtonVariant`? 
 - Should we make visibleItems: 'auto' or 'undefined'?
+  - We decided to use `autofit`
 
 ## Libraries
 
