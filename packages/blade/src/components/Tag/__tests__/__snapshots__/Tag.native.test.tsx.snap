@@ -1,0 +1,199 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Tag /> should render tag 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="tag"
+    display="flex"
+    style={
+      [
+        {
+          "display": "flex",
+        },
+      ]
+    }
+  >
+    <View
+      alignSelf="center"
+      backgroundColor="brand.gray.a100.lowContrast"
+      borderRadius="max"
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="row"
+      flexWrap="nowrap"
+      style={
+        [
+          {
+            "alignSelf": "center",
+            "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
+            "borderRadius": 9999,
+            "display": "flex",
+            "flexDirection": "row",
+            "flexWrap": "nowrap",
+            "paddingBottom": 4,
+            "paddingLeft": 12,
+            "paddingRight": 8,
+            "paddingTop": 4,
+          },
+          {},
+        ]
+      }
+    >
+      <View
+        alignItems="center"
+        data-blade-component="box"
+        display="flex"
+        flexDirection="row"
+        maxWidth="100px"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "row",
+              "maxWidth": 100,
+            },
+          ]
+        }
+      >
+        <Text
+          accessible={true}
+          color="surface.text.subtle.lowContrast"
+          data-blade-component="text"
+          fontFamily="text"
+          fontSize={75}
+          fontStyle="normal"
+          fontWeight="regular"
+          lineHeight={50}
+          marginRight="spacing.2"
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "hsla(216, 27%, 36%, 1)",
+                "fontFamily": "Lato",
+                "fontSize": 12,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "lineHeight": 16,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 4,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          in:User
+        </Text>
+      </View>
+      <View
+        alignItems="center"
+        data-blade-component="box"
+        display="flex"
+        flexDirection="row"
+        justifyContent="center"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "row",
+              "justifyContent": "center",
+            },
+          ]
+        }
+      >
+        <View
+          accessibilityLabel="Close in:User tag"
+          accessibilityRole="button"
+          accessible={true}
+          collapsable={false}
+          contrast="low"
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              {
+                "alignSelf": "center",
+              },
+            ]
+          }
+        >
+          <RNSVGSvgView
+            accessibilityElementsHidden={true}
+            align="xMidYMid"
+            bbHeight="12px"
+            bbWidth="12px"
+            data-blade-component="icon"
+            fill="none"
+            focusable={false}
+            height="12px"
+            importantForAccessibility="no-hide-descendants"
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
+              [
+                {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                [
+                  {},
+                ],
+                {
+                  "flex": 0,
+                  "height": 12,
+                  "width": 12,
+                },
+              ]
+            }
+            vbHeight={24}
+            vbWidth={24}
+            width="12px"
+          >
+            <RNSVGGroup
+              fill={null}
+              propList={
+                [
+                  "fill",
+                ]
+              }
+            >
+              <RNSVGPath
+                d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
+                fill={4288851646}
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;

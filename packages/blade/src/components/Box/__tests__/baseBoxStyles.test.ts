@@ -56,7 +56,7 @@ describe('getBaseBoxStyles', () => {
     const boxStyles = getBaseBoxStyles({ backgroundColor: 'red', theme: paymentLightTheme });
     const boxStylesWithoutUndefined = JSON.parse(JSON.stringify(boxStyles));
     expect(boxStylesWithoutUndefined).toMatchInlineSnapshot(`
-      Object {
+      {
         "backgroundColor": "red",
       }
     `);
@@ -67,6 +67,6 @@ describe('getBaseBoxStyles', () => {
       theme: paymentLightTheme,
     });
     const boxStylesWithoutUndefined = JSON.parse(JSON.stringify(boxStyles));
-    expect(boxStylesWithoutUndefined).toMatchInlineSnapshot(`Object {}`);
+    expect(boxStylesWithoutUndefined).toMatchInlineSnapshot(`{}`);
   });
 });

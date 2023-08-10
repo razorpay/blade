@@ -47,9 +47,10 @@ type PasswordInputExtraProps = {
   >;
 };
 
-type PasswordInputProps = Pick<
+type PasswordInputCommonProps = Pick<
   BaseInputProps,
   | 'label'
+  | 'accessibilityLabel'
   | 'labelPosition'
   | 'maxCharacters'
   | 'validationState'
@@ -74,9 +75,41 @@ type PasswordInputProps = Pick<
   PasswordInputExtraProps &
   StyledPropsBlade;
 
+/*
+  Mandatory accessibilityLabel prop when label is not provided
+*/
+type PasswordInputPropsWithA11yLabel = {
+  /**
+   * Label to be shown for the input field
+   */
+  label?: undefined;
+  /**
+   * Accessibility label for the input
+   */
+  accessibilityLabel: string;
+};
+
+/*
+  Optional accessibilityLabel prop when label is provided
+*/
+type PasswordInputPropsWithLabel = {
+  /**
+   * Label to be shown for the input field
+   */
+  label: string;
+  /**
+   * Accessibility label for the input
+   */
+  accessibilityLabel?: string;
+};
+
+type PasswordInputProps = (PasswordInputPropsWithA11yLabel | PasswordInputPropsWithLabel) &
+  PasswordInputCommonProps;
+
 const _PasswordInput: React.ForwardRefRenderFunction<BladeElementRef, PasswordInputProps> = (
   {
     label,
+    accessibilityLabel,
     labelPosition = 'top',
     showRevealButton = true,
     maxCharacters,
@@ -111,7 +144,7 @@ const _PasswordInput: React.ForwardRefRenderFunction<BladeElementRef, PasswordIn
   const isRevealedAndEnabled = isRevealed && isEnabled;
 
   const toggleIsRevealed = (): void => setIsRevealed((revealed) => !revealed);
-  const accessibilityLabel = isRevealedAndEnabled ? 'Hide password' : 'Show password';
+  const iconAccessibilityLabel = isRevealedAndEnabled ? 'Hide password' : 'Show password';
   const type = isRevealedAndEnabled ? 'text' : 'password';
 
   const revealButtonIcon = isRevealedAndEnabled ? EyeOffIcon : EyeIcon;
@@ -121,7 +154,7 @@ const _PasswordInput: React.ForwardRefRenderFunction<BladeElementRef, PasswordIn
         size="medium"
         icon={revealButtonIcon}
         onClick={toggleIsRevealed}
-        accessibilityLabel={accessibilityLabel}
+        accessibilityLabel={iconAccessibilityLabel}
       />
     ) : null;
 
@@ -137,7 +170,9 @@ const _PasswordInput: React.ForwardRefRenderFunction<BladeElementRef, PasswordIn
       ref={inputRef as React.Ref<HTMLInputElement>}
       componentName={MetaConstants.PasswordInput}
       id="password-field"
-      label={label}
+      label={label as string}
+      accessibilityLabel={accessibilityLabel}
+      hideLabelText={!Boolean(label)}
       labelPosition={labelPosition}
       type={type}
       interactionElement={revealButton}

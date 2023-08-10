@@ -9,6 +9,7 @@ const BaseBox = styled.div
     return {
       ...metaAttribute({
         name: (props as never)['data-blade-component'] || MetaConstants.BaseBox,
+        testID: (props as never)['data-testid'] || props.testID,
       }),
     };
   })

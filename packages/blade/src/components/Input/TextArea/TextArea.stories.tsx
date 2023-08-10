@@ -111,6 +111,11 @@ export default {
         category: propsCategory.LABEL_PROPS,
       },
     },
+    accessibilityLabel: {
+      table: {
+        category: propsCategory.LABEL_PROPS,
+      },
+    },
     labelPosition: {
       table: {
         category: propsCategory.LABEL_PROPS,
@@ -176,7 +181,7 @@ export default {
             {`
               import { TextArea } from '@razorpay/blade/components';
 
-              function App(): JSX.Element {
+              function App(): React.ReactElement {
                 return (
                   <TextArea 
                     label="Description" 
@@ -223,6 +228,14 @@ TextAreaSuccess.args = {
   defaultValue: 'TextArea content',
   validationState: 'success',
   successText: 'Validated',
+};
+
+export const TextAreaWithoutLabel = TextAreaTemplate.bind({});
+TextAreaWithoutLabel.storyName = 'TextArea without Label';
+TextAreaWithoutLabel.args = {
+  label: undefined,
+  accessibilityLabel: 'Description',
+  helpText: 'Add a message here',
 };
 
 export const TextAreaNumberOfLines = TextAreaTemplate.bind({});
@@ -345,6 +358,17 @@ const TextAreaKitchenSinkTemplate: ComponentStory<typeof TextAreaComponent> = ()
         <TextArea
           necessityIndicator="required"
           label="Description"
+          placeholder="Enter Description"
+          name="description"
+          labelPosition="left"
+          numberOfLines={3}
+          maxCharacters={100}
+          validationState="none"
+          helpText="Write your message"
+        />
+        <TextArea
+          necessityIndicator="required"
+          accessibilityLabel="Description"
           placeholder="Enter Description"
           name="description"
           labelPosition="left"

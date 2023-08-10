@@ -9,6 +9,7 @@ import { useCollapsible } from '~components/Collapsible/CollapsibleContext';
 import { CollapsibleChevronIcon } from '~components/Collapsible/CollapsibleChevronIcon';
 import { makeAccessible } from '~utils/makeAccessible';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { throwBladeError } from '~utils/logger';
 
 const _AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps): ReactElement => {
   const { onExpandChange, isExpanded, collapsibleBodyId } = useCollapsible();
@@ -28,8 +29,13 @@ const _AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps)
     <Icon size="medium" color="currentColor" marginRight="spacing.3" marginY="spacing.2" />
   );
 
-  if (_index && _icon) {
-    throw new Error(`[Blade: Accordion]: showNumberPrefix and icon shouldn't be used together`);
+  if (__DEV__) {
+    if (_index && _icon) {
+      throwBladeError({
+        message: "showNumberPrefix and icon shouldn't be used together",
+        moduleName: 'Accordion',
+      });
+    }
   }
 
   const isItemExpanded = expandedIndex === index;

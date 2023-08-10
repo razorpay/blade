@@ -2,9 +2,10 @@ import React from 'react';
 import throttle from 'lodash/throttle';
 import styled, { keyframes, css } from 'styled-components';
 import type { FlattenSimpleInterpolation } from 'styled-components';
-import { autoUpdate, useFloating } from '@floating-ui/react';
+import { autoUpdate, detectOverflow, useFloating } from '@floating-ui/react';
+import type { MiddlewareState } from '@floating-ui/react';
 import type { DropdownPosition } from './dropdownUtils';
-import { componentIds, getDropdownOverflowMiddleware } from './dropdownUtils';
+import { componentIds } from './dropdownUtils';
 import { useDropdown } from './useDropdown';
 import { StyledDropdownOverlay } from './StyledDropdownOverlay';
 import type { DropdownOverlayProps } from './types';
@@ -59,11 +60,104 @@ const AnimatedOverlay = styled(StyledDropdownOverlay)<{
 );
 
 /**
+ * This function calculates the position of dropdown overlay with respect to dropdown trigger element.
+ * For non-menus (e.g SelectInput), position is flipped if overflow is on bottom.
+ * For menus (e.g. DropdownButton), position is flipped if overflow is on right or bottom.
+ * Additional spacing is added to clientHeight to provide spacing above the dropdown trigger.
+ */
+const getDropdownOverlayPosition = ({
+  overflow: position,
+  isMenu,
+  triggererEl,
+  actionListItemEl,
+}: {
+  overflow: { top: number; left: number; right: number; bottom: number };
+  isMenu: boolean;
+  triggererEl: HTMLButtonElement | null;
+  actionListItemEl: HTMLDivElement | null;
+}): DropdownPosition => {
+  const zeroSpacing: SpacingValueType = 'spacing.0';
+  const { top, bottom, right } = position;
+
+  const newPosition: DropdownPosition = { left: zeroSpacing };
+
+  /**
+   * Calculating thresholds using the height & width of action list element with offset of 16px
+   */
+  const WIDTH_THRESHOLD = (Number(actionListItemEl?.clientWidth) + Number(size[16])) * -1;
+  const HEIGHT_THRESHOLD = (Number(actionListItemEl?.clientHeight) + Number(size[16])) * -1;
+
+  if (!isMenu) {
+    // In SelectInput, we set position wrt to right so that leftLabel position can be accomodated
+    // without additional offset calculation from left
+    newPosition.left = undefined;
+    newPosition.right = zeroSpacing;
+
+    if (bottom > HEIGHT_THRESHOLD) {
+      newPosition.bottom = `${Number(triggererEl?.clientHeight) + Number(size[32])}px`;
+      newPosition.top = undefined;
+    }
+
+    if (top > HEIGHT_THRESHOLD) {
+      newPosition.top = zeroSpacing;
+      newPosition.bottom = undefined;
+    }
+    return newPosition;
+  }
+
+  if (right > WIDTH_THRESHOLD) {
+    newPosition.right = zeroSpacing;
+    newPosition.left = undefined;
+  }
+
+  if (bottom > HEIGHT_THRESHOLD) {
+    newPosition.bottom = `${Number(triggererEl?.clientHeight) + Number(size[20])}px`;
+    newPosition.top = undefined;
+  }
+
+  if (top > HEIGHT_THRESHOLD) {
+    newPosition.top = zeroSpacing;
+    newPosition.bottom = undefined;
+  }
+
+  return newPosition;
+};
+
+const getDropdownOverflowMiddleware = ({
+  isMenu,
+  triggererRef,
+  actionListItemRef,
+  setDropdownPosition,
+}: {
+  setDropdownPosition: React.Dispatch<React.SetStateAction<DropdownPosition>>;
+  isMenu: boolean;
+  triggererRef: React.RefObject<HTMLButtonElement | null>;
+  actionListItemRef: React.RefObject<HTMLDivElement | null>;
+}): { name: string; fn: (state: MiddlewareState) => Promise<object> } => {
+  return {
+    name: 'detectOverflowMiddleware',
+    async fn(state: MiddlewareState) {
+      const overflow = await detectOverflow(state, {
+        elementContext: 'reference',
+      });
+      const position = getDropdownOverlayPosition({
+        overflow,
+        isMenu,
+        triggererEl: triggererRef.current,
+        actionListItemEl: actionListItemRef.current,
+      });
+      setDropdownPosition(position);
+      return {};
+    },
+  };
+};
+
+/**
  * Overlay of dropdown
  *
  * Wrap your ActionList within this component
  */
-const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Element => {
+const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): React.ReactElement => {
   const {
     isOpen,
     triggererRef,

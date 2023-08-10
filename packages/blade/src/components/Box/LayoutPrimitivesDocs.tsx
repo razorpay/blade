@@ -9,6 +9,7 @@ import { List, ListItem, ListItemCode, ListItemLink } from '~components/List';
 import { Link } from '~components/Link';
 import { castWebType } from '~utils';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { MetaConstants } from '~utils/metaAttribute';
 
 if (window.top) {
   document.getElementById(window.top.location.hash)?.scrollIntoView();
@@ -22,7 +23,7 @@ const _ScrollIntoViewLink = ({
 }: {
   href: string;
   children: string;
-}): JSX.Element => (
+}): React.ReactElement => (
   <ListItemLink
     variant="button"
     onClick={() => {
@@ -35,14 +36,14 @@ const _ScrollIntoViewLink = ({
 
 // lmao. sorry
 const ScrollIntoViewLink = assignWithoutSideEffects(_ScrollIntoViewLink, {
-  componentId: 'ListItemLink',
+  componentId: MetaConstants.ListItemLink,
 });
 
-const Section = (props: BaseBoxProps): JSX.Element => {
+const Section = (props: BaseBoxProps): React.ReactElement => {
   return <BaseBox paddingY="spacing.6" {...props} />;
 };
 
-function LayoutPrimitivesDocs(): JSX.Element {
+function LayoutPrimitivesDocs(): React.ReactElement {
   return (
     <StoryPageWrapper
       componentName="Layout Primitives"
@@ -108,7 +109,7 @@ function LayoutPrimitivesDocs(): JSX.Element {
           {`
             import { Box, Text } from '@razorpay/blade/components'
 
-            function App(): JSX.Element {
+            function App(): React.ReactElement {
               return (
                 <Box 
                   as="section" // renders as <section> tag instead of <div>
@@ -175,7 +176,7 @@ function LayoutPrimitivesDocs(): JSX.Element {
             {`
               import { Box, Text } from '@razorpay/blade/components'
 
-              function App(): JSX.Element {
+              function App(): React.ReactElement {
                 return (
                   <>
                     <Box 
@@ -228,7 +229,7 @@ function LayoutPrimitivesDocs(): JSX.Element {
             code={`
              import { Box, Text } from '@razorpay/blade/components';
 
-             function App(): JSX.Element {
+             function App(): React.ReactElement {
                return (
                 <>
                   <Box display={{ base: 'none', m: 'block' }}><Text>🖥 Desktop View</Text></Box>
@@ -300,7 +301,7 @@ function LayoutPrimitivesDocs(): JSX.Element {
           {`
                 import { Text } from '@razorpay/blade/components'
 
-                function App(): JSX.Element {
+                function App(): React.ReactElement {
                   return (
                     <>
                       {/** ❌ No need of Box wrappers */}
