@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 9.6.1
+
+### Patch Changes
+
+- 5fb722d8: fix(Switch): correct cursor style in disabled state
+
 ## 9.6.0
 
 ### Minor Changes
