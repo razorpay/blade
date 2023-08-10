@@ -151,7 +151,6 @@ const _SelectInput = (
   };
 
   const isFirstRenderRef = React.useRef(true);
-  const selectInputContainerRef = React.useRef<HTMLDivElement>(null);
 
   const selectValues = (valuesToSelect: string | string[]): void => {
     if (options.length > 0) {
@@ -251,7 +250,7 @@ const _SelectInput = (
 
   return (
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    <BaseBox position="relative" ref={selectInputContainerRef as any}>
+    <BaseBox position="relative">
       {!isReactNative() ? (
         <VisuallyHidden>
           <input
