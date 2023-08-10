@@ -238,10 +238,10 @@ type BaseInputCommonProps = FormInputLabelProps &
     autoCapitalize?: 'none' | 'sentences' | 'words' | 'characters';
 
     /**
-     * Removes the height restriction from input.
+     * Sets different height restriction for tag-based inputs
      * Unlike as="textarea" prop, this does not make input render as textarea element while increasing height.
      */
-    isMultiline?: boolean;
+    tagRows?: '1' | '3' | 'expandable';
     /**
      * A slot for adding tags to input
      */
@@ -363,13 +363,11 @@ const useTags = (
 
   const onTagLeft = (): void => {
     if (activeTagIndex < 0) {
-      console.log('setting based on visible tags count', { visibleTagsCountRef, activeTagIndex });
       setActiveTagIndex?.(visibleTagsCountRef.current - 1);
     }
 
     if (activeTagIndex > 0) {
       setActiveTagIndex?.(activeTagIndex - 1);
-      console.log('setting based on active tags index');
     }
   };
 
@@ -700,7 +698,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
       hasPopup,
       popupId,
       isPopupExpanded,
-      isMultiline,
+      tagRows,
       shouldIgnoreBlurAnimation,
       setShouldIgnoreBlurAnimation,
       autoCapitalize,
@@ -710,6 +708,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
     ref,
   ) => {
     const { theme } = useTheme();
+    const inputWrapperRef = React.useRef<HTMLDivElement>(null);
     const { onInputKeydownTagHandler, visibleTagsCountRef } = useTags(
       tags,
       activeTagIndex,
@@ -816,6 +815,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
             validationState={validationState}
             currentInteraction={currentInteraction}
             isLabelLeftPositioned={isLabelLeftPositioned}
+            ref={inputWrapperRef as any}
           >
             <BaseInputVisuals leadingIcon={leadingIcon} prefix={prefix} isDisabled={isDisabled} />
             <BaseInputTagSlot
@@ -829,8 +829,8 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
               visibleTagsCountRef={visibleTagsCountRef}
               handleOnClick={handleOnClick}
               setShouldIgnoreBlurAnimation={setShouldIgnoreBlurAnimation}
-              isMultiline={isMultiline}
-              inputRef={ref}
+              tagRows={tagRows}
+              inputWrapperRef={inputWrapperRef}
             />
             <StyledBaseInput
               as={isReactNative ? undefined : as}
@@ -867,7 +867,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
               currentInteraction={currentInteraction}
               setCurrentInteraction={setCurrentInteraction}
               numberOfLines={numberOfLines}
-              isTextArea={isTextArea || isMultiline}
+              isTextArea={isTextArea || tagRows === '3' || tagRows === 'expandable'}
               hasPopup={hasPopup}
               shouldIgnoreBlurAnimation={shouldIgnoreBlurAnimation}
               autoCapitalize={autoCapitalize}

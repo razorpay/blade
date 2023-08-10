@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import type { ReactElement, ReactNode } from 'react';
+import React from 'react';
 import { getInputBackgroundAndBorderStyles } from './baseInputStyles';
 import type { BaseInputProps } from './BaseInput';
 import { BaseInputAnimatedBorder } from './BaseInputAnimatedBorder';
@@ -50,18 +51,18 @@ const StyledBaseInputWrapper = styled(BaseBox)<BaseInputWrapperProps>((props) =>
         },
 }));
 
-export const BaseInputWrapper = ({
-  children,
-  validationState,
-  currentInteraction,
-  isLabelLeftPositioned,
-  isTextArea,
-  ...props
-}: BaseInputWrapperProps & {
-  children: ReactNode;
-}): ReactElement => {
+const _BaseInputWrapper: React.ForwardRefRenderFunction<
+  HTMLDivElement,
+  BaseInputWrapperProps & {
+    children: ReactNode;
+  }
+> = (
+  { children, validationState, currentInteraction, isLabelLeftPositioned, isTextArea, ...props },
+  ref,
+): ReactElement => {
   return (
     <StyledBaseInputWrapper
+      ref={ref}
       display="flex"
       flexDirection="row"
       width="100%"
@@ -79,3 +80,5 @@ export const BaseInputWrapper = ({
     </StyledBaseInputWrapper>
   );
 };
+
+export const BaseInputWrapper = React.forwardRef(_BaseInputWrapper);

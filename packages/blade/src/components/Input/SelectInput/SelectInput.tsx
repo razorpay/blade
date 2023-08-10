@@ -271,7 +271,7 @@ const _SelectInput = (
       <BaseInput
         {...baseInputProps}
         as="button"
-        isMultiline={props.rows === '3' || props.rows === 'expandable'}
+        tagRows={props.rows}
         tags={getTags()}
         showAllTags={isOpen}
         activeTagIndex={activeTagIndex}

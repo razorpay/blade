@@ -13,9 +13,9 @@ export type BaseInputTagSlotProps = {
   setFocusOnInput: () => void;
   setShouldIgnoreBlurAnimation: BaseInputProps['setShouldIgnoreBlurAnimation'];
   handleOnClick: StyledBaseInputProps['handleOnClick'];
-  isMultiline: BaseInputProps['isMultiline'];
+  tagRows: BaseInputProps['tagRows'];
   visibleTagsCountRef: React.MutableRefObject<number>;
-  inputRef: React.ForwardedRef<HTMLInputElement>;
+  inputWrapperRef: React.RefObject<HTMLDivElement>;
 };
 
 export type StyledBaseInputProps = {

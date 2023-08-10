@@ -2,6 +2,7 @@ import React from 'react';
 import type { CSSObject } from 'styled-components';
 import styled from 'styled-components';
 import type { BaseInputTagSlotProps } from './types';
+import type { SpacingValueType } from '~components/Box/BaseBox';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 
@@ -31,14 +32,12 @@ const InvisibleTagsContainer = styled(BaseBox)(
 const useTagsDisplay = (
   tags: BaseInputTagSlotProps['tags'],
   visibleTagsCountRef: BaseInputTagSlotProps['visibleTagsCountRef'],
-  inputRef: BaseInputTagSlotProps['inputRef'],
 ): {
   invisibleTagsCount: number;
   tagsContainerRef: React.MutableRefObject<HTMLDivElement | null>;
 } => {
   const tagsContainerRef = React.useRef<HTMLDivElement | null>(null);
   const [invisibleTagsCount, setInvisibleTagsCount] = React.useState(0);
-  const [invisibleTagSlotWidth, setInivsibleTagSlotWidth] = React.useState(0);
 
   React.useLayoutEffect(() => {
     if (!tags) return;
@@ -74,16 +73,12 @@ const BaseInputTagSlot = ({
   setShouldIgnoreBlurAnimation,
   setFocusOnInput,
   handleOnClick,
-  isMultiline,
+  tagRows,
   showAllTags,
   visibleTagsCountRef,
-  inputRef,
+  inputWrapperRef,
 }: BaseInputTagSlotProps): React.ReactElement | null => {
-  const { invisibleTagsCount, tagsContainerRef } = useTagsDisplay(
-    tags,
-    visibleTagsCountRef,
-    inputRef,
-  );
+  const { invisibleTagsCount, tagsContainerRef } = useTagsDisplay(tags, visibleTagsCountRef);
 
   if (!tags) {
     return null;
@@ -93,6 +88,13 @@ const BaseInputTagSlot = ({
     return null;
   }
 
+  const isMultiline = tagRows === '3' || tagRows === 'expandable';
+
+  const inputContainerWidth = inputWrapperRef.current?.clientWidth ?? 200;
+  const maxTagContainerWidth: SpacingValueType = isMultiline
+    ? '100%'
+    : `${inputContainerWidth - 100}px`;
+
   return (
     <BaseBox
       paddingLeft="spacing.4"
@@ -101,10 +103,9 @@ const BaseInputTagSlot = ({
       display="flex"
       flexDirection="column"
       maxHeight={`${MAX_TAGSLOT_HEIGHT}px`}
-      // Full width minus the trailing icon space
-      backgroundColor="action.background.secondary.default"
       position="relative"
       maxWidth="100%"
+      overflowX="auto"
       // Move to using gap instead of marginLeft on individual tags after RN upgrade
       // gap="spacing.3"
       onMouseDown={() => {
@@ -124,16 +125,17 @@ const BaseInputTagSlot = ({
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         ref={tagsContainerRef as any}
         // switch to these on `props.rows` value
-        flexWrap={isMultiline ? 'wrap' : 'nowrap'}
-        whiteSpace={isMultiline ? undefined : 'nowrap'}
+        flexWrap={tagRows === '3' ? 'wrap' : 'nowrap'}
+        whiteSpace={tagRows === '3' ? undefined : 'nowrap'}
         overflow={showAllTags ? 'auto' : 'hidden'}
         // We only want the tags to be shown till 75% of maximum height possible for input
         maxHeight={`${(MAX_TAGSLOT_HEIGHT * 75) / 100}px`}
-        maxWidth={inputRef.current.clientWidth - 100 + 'px'}
+        maxWidth={maxTagContainerWidth}
         position="absolute"
         top="spacing.0"
         left="spacing.0"
-        // backgroundColor="action.background.primary.default"
+        paddingLeft="spacing.4"
+        marginY="spacing.2"
       >
         {tags}
       </InvisibleTagsContainer>
@@ -145,13 +147,15 @@ const BaseInputTagSlot = ({
         maxWidth="100%"
         display="flex"
         alignItems="center"
-        flexDirection={isMultiline ? 'column' : 'row'}
+        flexDirection={tagRows === '3' ? 'column' : 'row'}
       >
         <BaseBox>
           {tags.slice(0, showAllTags ? tags.length : tags.length - invisibleTagsCount)}
         </BaseBox>
         {!showAllTags && invisibleTagsCount ? (
-          <Text marginY="spacing.2">+{invisibleTagsCount} More</Text>
+          <Text alignSelf="start" marginY="spacing.2">
+            +{invisibleTagsCount} More
+          </Text>
         ) : null}
       </BaseBox>
     </BaseBox>
