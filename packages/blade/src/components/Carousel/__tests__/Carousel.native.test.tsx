@@ -22,7 +22,7 @@ describe('<Carousel />', () => {
   it('should go to next/previous slide', () => {
     const onChange = jest.fn();
     const { queryAllByTestId, queryAllByRole, getByA11yState } = renderWithTheme(
-      <Carousel visibleItems={1} onChange={onChange}>
+      <Carousel onChange={onChange}>
         <CarouselItem>
           <TestimonialCard />
         </CarouselItem>
@@ -68,7 +68,7 @@ describe('<Carousel />', () => {
   it('should go to specific slide when clicking on indicator button', () => {
     const onChange = jest.fn();
     const { queryAllByRole, queryAllByTestId, getByA11yState } = renderWithTheme(
-      <Carousel visibleItems={1} onChange={onChange}>
+      <Carousel onChange={onChange}>
         <CarouselItem>
           <TestimonialCard />
         </CarouselItem>
@@ -98,7 +98,7 @@ describe('<Carousel />', () => {
   it('should wrap around when reaching start or end slide', () => {
     const onChange = jest.fn();
     const { queryAllByRole, queryAllByTestId, getByA11yState } = renderWithTheme(
-      <Carousel visibleItems={1} onChange={onChange}>
+      <Carousel onChange={onChange}>
         <CarouselItem>
           <TestimonialCard />
         </CarouselItem>
@@ -134,7 +134,7 @@ describe('<Carousel />', () => {
     jest.useFakeTimers();
     const onChange = jest.fn();
     const { queryAllByTestId, getByA11yState } = renderWithTheme(
-      <Carousel autoPlay visibleItems={1} onChange={onChange}>
+      <Carousel autoPlay onChange={onChange}>
         <CarouselItem>
           <TestimonialCard />
         </CarouselItem>
@@ -171,11 +171,11 @@ describe('<Carousel />', () => {
     expect(getByA11yState({ selected: true })).toHaveProp('slideIndex', 0);
   });
 
-  it('should not auto play when mouse is over', async () => {
+  it('should not auto play when user is scrolling', async () => {
     jest.useFakeTimers();
     const onChange = jest.fn();
     const { getByLabelText, queryAllByTestId, getByA11yState } = renderWithTheme(
-      <Carousel accessibilityLabel="My Carousel" autoPlay visibleItems={1} onChange={onChange}>
+      <Carousel accessibilityLabel="My Carousel" autoPlay onChange={onChange}>
         <CarouselItem>
           <TestimonialCard />
         </CarouselItem>
