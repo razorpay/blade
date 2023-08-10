@@ -92,11 +92,11 @@ const Controls = ({
 
 const CarouselContainer = styled(BaseBox)<{
   showOverlay?: boolean;
-  overlayColor: CarouselProps['overlayColor'];
+  scrollOverlayColor: CarouselProps['scrollOverlayColor'];
   isScrollAtStart: boolean;
   isScrollAtEnd: boolean;
-}>(({ theme, showOverlay, overlayColor, isScrollAtStart, isScrollAtEnd }) => {
-  const gradientStop1: string = getIn(theme.colors, overlayColor as string);
+}>(({ theme, showOverlay, scrollOverlayColor, isScrollAtStart, isScrollAtEnd }) => {
+  const gradientStop1: string = getIn(theme.colors, scrollOverlayColor as string);
   const gradientStop2 = 'hsla(0, 0%, 100%, 0)';
 
   const overlayCommonStyle: CSSObject = {
@@ -152,8 +152,7 @@ type CarouselBodyProps = {
   totalSlides: number;
   shouldAddStartEndSpacing?: boolean;
   idPrefix: string;
-  overlayColor: CarouselProps['overlayColor'];
-  showOverlay?: boolean;
+  scrollOverlayColor: CarouselProps['scrollOverlayColor'];
   isScrollAtStart: boolean;
   isScrollAtEnd: boolean;
   carouselItemAlignment: CarouselProps['carouselItemAlignment'];
@@ -166,8 +165,7 @@ const CarouselBody = React.forwardRef<HTMLDivElement, CarouselBodyProps>(
       totalSlides,
       shouldAddStartEndSpacing,
       idPrefix,
-      overlayColor,
-      showOverlay,
+      scrollOverlayColor,
       isScrollAtStart,
       isScrollAtEnd,
       carouselItemAlignment,
@@ -177,8 +175,8 @@ const CarouselBody = React.forwardRef<HTMLDivElement, CarouselBodyProps>(
     return (
       <CarouselContainer
         ref={ref}
-        showOverlay={showOverlay}
-        overlayColor={overlayColor}
+        showOverlay={Boolean(scrollOverlayColor)}
+        scrollOverlayColor={scrollOverlayColor}
         gap={{ base: 'spacing.4', m: 'spacing.5' }}
         isScrollAtStart={isScrollAtStart}
         isScrollAtEnd={isScrollAtEnd}
@@ -200,19 +198,17 @@ const CarouselBody = React.forwardRef<HTMLDivElement, CarouselBodyProps>(
 
 const Carousel = ({
   autoPlay,
-  visibleItems = undefined,
+  visibleItems = 1,
   showIndicators = true,
   navigationButtonPosition = 'bottom',
   children,
   shouldAddStartEndSpacing = false,
   carouselItemWidth,
-  overlayColor = 'surface.background.level1.lowContrast',
+  scrollOverlayColor,
   accessibilityLabel,
-  navigationButtonSpacing = 'spacing.4',
   onChange,
   indicatorVariant = 'gray',
   navigationButtonVariant = 'filled',
-  showOverlay,
   carouselItemAlignment = 'start',
 }: CarouselProps): React.ReactElement => {
   const { platform } = useTheme();
@@ -230,17 +226,27 @@ const Carousel = ({
   );
   const [isScrollAtEnd, setScrollEnd] = React.useState(isMobile);
 
-  let _visibleItems = visibleItems;
+  const isResponsive = visibleItems === 'autofit';
+  let _visibleItems = visibleItems as 1 | 2 | 3;
   if (isMobile) {
-    _visibleItems = visibleItems === undefined ? undefined : 1;
+    _visibleItems = 1;
     navigationButtonPosition = 'bottom';
   }
+  if (isResponsive) {
+    _visibleItems = 1;
+  }
 
-  const isResponsive = visibleItems === undefined;
+  // A special case where we hide the indicators when the carousel is responsive
+  // Because indicators become useless since it's not aparent which carousel item is active
+  // and how many carousel items are visible at a time
+  if (isResponsive && !shouldAddStartEndSpacing && !isMobile) {
+    showIndicators = false;
+  }
+
   const isNavButtonsOnSide = !isResponsive && navigationButtonPosition === 'side';
   const shouldNavButtonsFloat = isResponsive && navigationButtonPosition === 'side';
   const totalNumberOfSlides = React.Children.count(children);
-  const numberOfIndicators = Math.ceil(totalNumberOfSlides / (_visibleItems ?? 1));
+  const numberOfIndicators = Math.ceil(totalNumberOfSlides / _visibleItems);
 
   // hide next/prev button on reaching start/end when carousel is responsive
   // in non-responsive carousel we always show the next/prev buttons to allow looping
@@ -267,12 +273,15 @@ const Carousel = ({
   const goToSlideIndex = (slideIndex: number) => {
     if (!containerRef.current) return;
 
-    const carouselItemId = getCarouselItemId(id, slideIndex * (_visibleItems ?? 1));
+    const carouselItemId = getCarouselItemId(id, slideIndex * _visibleItems);
     const carouselItem = containerRef.current.querySelector(carouselItemId);
     if (!carouselItem) return;
 
-    const carouselItemLeft = carouselItem.getBoundingClientRect().left ?? 0;
+    const carouselItemLeft =
+      carouselItem.getBoundingClientRect().left -
+        containerRef.current.getBoundingClientRect().left ?? 0;
     const left = containerRef.current.scrollLeft + carouselItemLeft;
+
     containerRef.current.scroll({
       left: left - startEndMargin,
       behavior: 'smooth',
@@ -359,7 +368,7 @@ const Carousel = ({
       }
 
       const slideIndex = Number(carouselItem?.getAttribute('data-slide-index'));
-      const goTo = Math.ceil(slideIndex / (_visibleItems || 1));
+      const goTo = Math.ceil(slideIndex / _visibleItems);
       setActiveIndicator(goTo);
       setActiveSlide(goTo);
     }, 200);
@@ -385,7 +394,7 @@ const Carousel = ({
 
   const carouselContext = React.useMemo<CarouselContextProps>(() => {
     return {
-      visibleItems: _visibleItems,
+      visibleItems,
       carouselItemWidth,
       carouselContainerRef: containerRef,
       setActiveIndicator,
@@ -398,7 +407,7 @@ const Carousel = ({
   }, [
     id,
     startEndMargin,
-    _visibleItems,
+    visibleItems,
     carouselItemWidth,
     totalNumberOfSlides,
     activeSlide,
@@ -446,7 +455,7 @@ const Carousel = ({
           position="relative"
           display="flex"
           alignItems="center"
-          gap={navigationButtonSpacing}
+          gap="spacing.4"
           flexDirection="row"
         >
           {shouldShowPrevButton && shouldNavButtonsFloat ? (
@@ -469,8 +478,7 @@ const Carousel = ({
             idPrefix={id}
             totalSlides={totalNumberOfSlides}
             shouldAddStartEndSpacing={shouldAddStartEndSpacing}
-            showOverlay={showOverlay}
-            overlayColor={overlayColor}
+            scrollOverlayColor={scrollOverlayColor}
             isScrollAtStart={isScrollAtStart}
             isScrollAtEnd={isScrollAtEnd}
             ref={containerRef}

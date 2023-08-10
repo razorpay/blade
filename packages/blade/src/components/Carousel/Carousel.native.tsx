@@ -74,12 +74,10 @@ const Controls = ({
 
 const Carousel = ({
   autoPlay,
-  visibleItems,
   showIndicators = true,
   children,
   carouselItemWidth = '100%',
   accessibilityLabel,
-  navigationButtonSpacing = 'spacing.4',
   onChange,
   indicatorVariant = 'gray',
   navigationButtonVariant = 'filled',
@@ -90,7 +88,7 @@ const Carousel = ({
   const [shouldPauseAutoplay, setShouldPauseAutoplay] = React.useState(false);
   const id = useId();
 
-  const _visibleItems = visibleItems === undefined ? undefined : 1;
+  const _visibleItems = 1;
   const boxWidth = scrollViewWidth * percentageStringToNumber(castNativeType(carouselItemWidth));
   const totalNumberOfSlides = React.Children.count(children);
 
@@ -159,7 +157,7 @@ const Carousel = ({
           position="relative"
           display="flex"
           alignItems="center"
-          gap={navigationButtonSpacing}
+          gap="spacing.4"
           flexDirection="row"
         >
           <ScrollView
