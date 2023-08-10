@@ -101,11 +101,7 @@ const Indicator = ({
       {...metaAttribute({ name: MetaConstants.Indicator, testID })}
       {...getStyledProps(styledProps)}
     >
-      <BaseBox
-        display={(isWeb ? 'inline-flex' : 'flex') as never}
-        flexDirection="row"
-        alignItems="center"
-      >
+      <BaseBox display="flex" flexDirection="row" alignItems="center">
         <Svg
           width={String(dimensions.svgSize)}
           height={String(dimensions.svgSize)}

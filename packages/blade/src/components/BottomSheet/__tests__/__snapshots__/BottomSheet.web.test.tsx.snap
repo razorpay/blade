@@ -111,10 +111,10 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
 }
 
 .c17 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
