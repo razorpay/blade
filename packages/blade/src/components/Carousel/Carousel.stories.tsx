@@ -236,7 +236,7 @@ export const AutoBleed: ComponentStory<typeof CarouselComponent> = (props) => {
 
       <CarouselExample
         {...props}
-        visibleItems={undefined}
+        visibleItems="autofit"
         carouselItemWidth={{ base: '90%', m: '300px' }}
       />
 
@@ -248,9 +248,9 @@ export const AutoBleed: ComponentStory<typeof CarouselComponent> = (props) => {
         {...props}
         navigationButtonPosition="side"
         shouldAddStartEndSpacing
-        visibleItems={undefined}
+        visibleItems="autofit"
         carouselItemWidth={{ base: '90%', m: '300px' }}
-        showOverlay
+        scrollOverlayColor="surface.background.level1.lowContrast"
       />
     </Box>
   );
