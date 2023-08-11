@@ -1,5 +1,16 @@
 # @razorpay/blade
 
+## 9.7.0
+
+### Minor Changes
+
+- d5d174fa: feat: make `Badge`, `Counter`, & `Indicator` components `inline-flex` by default
+
+### Patch Changes
+
+- f4624db2: fix: react native errors with floating-ui/react
+- 2e20ce04: feat(Box): add support for the `transparent` background color
+
 ## 9.6.1
 
 ### Patch Changes
