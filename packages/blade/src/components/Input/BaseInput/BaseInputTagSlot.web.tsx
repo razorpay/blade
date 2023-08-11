@@ -32,13 +32,19 @@ const InvisibleTagsContainer = styled(BaseBox)(
 const useTagsDisplay = (
   tags: BaseInputTagSlotProps['tags'],
   visibleTagsCountRef: BaseInputTagSlotProps['visibleTagsCountRef'],
+  tagRows: BaseInputTagSlotProps['tagRows'],
 ): {
   invisibleTagsCount: number;
   tagsContainerRef: React.MutableRefObject<HTMLDivElement | null>;
+  horizontallyScrollableContainerRef: React.MutableRefObject<HTMLDivElement | null>;
+  verticallyScrollableContainerRef: React.MutableRefObject<HTMLDivElement | null>;
 } => {
+  const verticallyScrollableContainerRef = React.useRef<HTMLDivElement | null>(null);
+  const horizontallyScrollableContainerRef = React.useRef<HTMLDivElement | null>(null);
   const tagsContainerRef = React.useRef<HTMLDivElement | null>(null);
   const [invisibleTagsCount, setInvisibleTagsCount] = React.useState(0);
 
+  // @TODO replace with SSR-friendly hook
   React.useLayoutEffect(() => {
     if (!tags) return;
     if (!tagsContainerRef.current) return;
@@ -60,7 +66,30 @@ const useTagsDisplay = (
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tags?.length]);
 
-  return { invisibleTagsCount, tagsContainerRef };
+  React.useEffect(() => {
+    if (horizontallyScrollableContainerRef.current && tagRows === '1') {
+      horizontallyScrollableContainerRef.current.scrollTo({
+        top: 0,
+        left: horizontallyScrollableContainerRef.current.scrollWidth,
+        behavior: 'smooth',
+      });
+    }
+
+    if (verticallyScrollableContainerRef.current && (tagRows === '3' || tagRows === 'expandable')) {
+      verticallyScrollableContainerRef.current.scrollTo({
+        top: verticallyScrollableContainerRef.current.scrollHeight,
+        left: 0,
+        behavior: 'smooth',
+      });
+    }
+  }, [tags?.length]);
+
+  return {
+    invisibleTagsCount,
+    tagsContainerRef,
+    horizontallyScrollableContainerRef,
+    verticallyScrollableContainerRef,
+  };
 };
 
 const TAG_HEIGHT = 20;
@@ -78,7 +107,12 @@ const BaseInputTagSlot = ({
   visibleTagsCountRef,
   inputWrapperRef,
 }: BaseInputTagSlotProps): React.ReactElement | null => {
-  const { invisibleTagsCount, tagsContainerRef } = useTagsDisplay(tags, visibleTagsCountRef);
+  const {
+    invisibleTagsCount,
+    tagsContainerRef,
+    verticallyScrollableContainerRef,
+    horizontallyScrollableContainerRef,
+  } = useTagsDisplay(tags, visibleTagsCountRef, tagRows);
 
   if (!tags) {
     return null;
@@ -97,6 +131,7 @@ const BaseInputTagSlot = ({
 
   return (
     <BaseBox
+      ref={horizontallyScrollableContainerRef}
       paddingLeft="spacing.4"
       marginY="spacing.2"
       justifyContent="flex-start"
@@ -140,6 +175,7 @@ const BaseInputTagSlot = ({
         {tags}
       </InvisibleTagsContainer>
       <BaseBox
+        ref={verticallyScrollableContainerRef}
         flexWrap={isMultiline ? 'wrap' : 'nowrap'}
         whiteSpace={isMultiline ? undefined : 'nowrap'}
         overflow={showAllTags ? 'auto' : 'hidden'}

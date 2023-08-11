@@ -28,6 +28,7 @@ const tagDissappearKeyframe = keyframes`
   100% {
     opacity: 0;
     max-width: 0px;
+    max-height: 0px;
   }
 `;
 
