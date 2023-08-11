@@ -192,7 +192,7 @@ describe('<Carousel />', () => {
     expect(queryAllByTestId('active-slide')[0]).toHaveTextContent('0');
     expect(getByRole('tab', { selected: true })).toHaveProp('slideIndex', 0);
 
-    await act(() => {
+    await act(async () => {
       jest.advanceTimersByTime(6000);
     });
     expect(onChange).toHaveBeenLastCalledWith(1);
@@ -200,7 +200,7 @@ describe('<Carousel />', () => {
 
     fireEvent(getByLabelText('My Carousel'), 'onScrollBeginDrag');
 
-    await act(() => {
+    await act(async () => {
       jest.advanceTimersByTime(6000);
     });
 
@@ -209,7 +209,7 @@ describe('<Carousel />', () => {
 
     fireEvent(getByLabelText('My Carousel'), 'onScrollEndDrag');
 
-    await act(() => {
+    await act(async () => {
       jest.advanceTimersByTime(6000);
     });
 
