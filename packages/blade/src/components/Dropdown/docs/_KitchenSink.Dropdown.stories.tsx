@@ -5,7 +5,7 @@ import { Box } from '~components/Box';
 import { Heading } from '~components/Typography';
 
 const allStories = [
-  // ...Object.values(composeStories(dropddownWithButtonStories)),
+  ...Object.values(composeStories(dropddownWithButtonStories)),
   ...Object.values(composeStories(dropddownWithSelectStories)),
 ];
 
