@@ -9,6 +9,7 @@ import { Card, CardBody } from '~components/Card';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { Divider } from '~components/Divider';
+import { useTheme } from '~utils';
 
 const Page = (): React.ReactElement => {
   return (
@@ -135,12 +136,12 @@ const testimonialData: TestimonialData[] = [
 ];
 
 const QuoteSvg = (): React.ReactElement => {
+  const { theme } = useTheme();
   return (
     <svg width="38" height="31" viewBox="0 0 38 31" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
         d="M8.848 0L14.56 4.48C12.2453 6.944 10.6027 9.25867 9.632 11.424C8.66133 13.5893 8.176 15.8293 8.176 18.144L4.704 14.896H15.792V30.576H0V20.272C0 16.464 0.672 12.9547 2.016 9.744C3.36 6.53334 5.63733 3.28534 8.848 0ZM30.576 0L36.288 4.48C33.9733 6.944 32.3307 9.25867 31.36 11.424C30.3893 13.5893 29.904 15.8293 29.904 18.144L26.432 14.896H37.52V30.576H21.728V20.272C21.728 16.464 22.4 12.9547 23.744 9.744C25.088 6.53334 27.3653 3.28534 30.576 0Z"
-        fill="#1566F1"
-        fillOpacity="0.18"
+        fill={theme.colors.brand.primary[300]}
       />
     </svg>
   );
@@ -159,24 +160,35 @@ const TestimonialCard = ({
         <Box height="100%" display="flex" gap="spacing.4" flexDirection="column">
           <QuoteSvg />
           <Box>
-            <Heading weight="bold" size="large">
+            <Heading type="subtle" weight="bold" size="large">
               {quote}
             </Heading>
-            <Text size="medium" marginTop="spacing.4">
+            <Text size="medium" type="subdued" marginTop="spacing.4">
               {longQuote}
             </Text>
           </Box>
           <Divider />
-          <Box>
-            <Text size="large" weight="bold">
-              {name}
-            </Text>
-            <Text>
-              {role},{' '}
-              <Text as="span" weight="bold" type="subdued">
-                {company}
+          <Box display="flex" alignItems="center" gap="spacing.4">
+            <Box flexShrink={0} width="50px" height="50px" borderRadius="max" overflow="hidden">
+              <img
+                src={`https://api.dicebear.com/6.x/notionists/svg?seed=${name}&backgroundColor=b6e3f4,c0aede,d1d4f9`}
+                alt={name}
+              />
+            </Box>
+            <Box>
+              <Text size="large" weight="bold">
+                {name}
               </Text>
-            </Text>
+              <Text>
+                <Text as="span" weight="bold" type="subdued">
+                  {company}
+                </Text>
+                {', '}
+                <Text as="span" type="muted">
+                  {role}
+                </Text>
+              </Text>
+            </Box>
           </Box>
         </Box>
       </CardBody>
@@ -224,7 +236,7 @@ export const AutoBleed: ComponentStory<typeof CarouselComponent> = (props) => {
     <Box margin="auto" padding="spacing.4">
       <Box marginY="spacing.8">
         <Text>
-          You can achive bleed by setting <Code size="medium">visibleItems</Code> to undefined &
+          You can achive bleed by setting <Code size="medium">visibleItems</Code> to autofit &
           adding <Code size="medium">carouselItemWidth</Code> to be a fixed width (eg: 300px)
         </Text>
         <Text marginTop="spacing.2">
