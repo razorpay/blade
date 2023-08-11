@@ -6,11 +6,10 @@ import { CarouselItem } from '../CarouselItem';
 import { useCarouselContext } from '../CarouselContext';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
-const TestimonialCard = ({ index }: { index: number }): React.ReactElement => {
+const TestimonialCard = (): React.ReactElement => {
   const { activeSlide } = useCarouselContext();
   return (
     <div>
-      <p>{index}</p>
       {/* A hack to get the internal state of the carousel so that i can assert the tests */}
       {/* Users won't be able to do this since useCarouselContext is not gonna be exported */}
       <p data-testid="active-slide">{activeSlide}</p>
@@ -25,13 +24,20 @@ beforeAll(() => {
   });
 
   Object.defineProperty(window.Element.prototype, 'scrollLeft', {
+    writable: false,
+    value: 1,
+  });
+});
+
+afterAll(() => {
+  Object.defineProperty(window.Element.prototype, 'scroll', {
     writable: true,
-    value: jest.fn(),
+    value: undefined,
   });
 
-  Object.defineProperty(window.Element.prototype, 'getBoundingClientRect', {
-    writable: true,
-    value: jest.fn(() => ({ width: 100, left: 0 })),
+  Object.defineProperty(window.Element.prototype, 'scrollLeft', {
+    writable: false,
+    value: 0,
   });
 });
 
@@ -41,16 +47,16 @@ describe('<Carousel />', () => {
     const { getByRole, queryAllByRole, queryAllByTestId } = renderWithTheme(
       <Carousel visibleItems={1} onChange={onChange}>
         <CarouselItem>
-          <TestimonialCard index={0} />
+          <TestimonialCard />
         </CarouselItem>
         <CarouselItem>
-          <TestimonialCard index={1} />
+          <TestimonialCard />
         </CarouselItem>
         <CarouselItem>
-          <TestimonialCard index={1} />
+          <TestimonialCard />
         </CarouselItem>
         <CarouselItem>
-          <TestimonialCard index={1} />
+          <TestimonialCard />
         </CarouselItem>
       </Carousel>,
     );
@@ -79,16 +85,16 @@ describe('<Carousel />', () => {
     const { getByRole, queryAllByTestId } = renderWithTheme(
       <Carousel visibleItems={1} onChange={onChange}>
         <CarouselItem>
-          <TestimonialCard index={0} />
+          <TestimonialCard />
         </CarouselItem>
         <CarouselItem>
-          <TestimonialCard index={1} />
+          <TestimonialCard />
         </CarouselItem>
         <CarouselItem>
-          <TestimonialCard index={1} />
+          <TestimonialCard />
         </CarouselItem>
         <CarouselItem>
-          <TestimonialCard index={1} />
+          <TestimonialCard />
         </CarouselItem>
       </Carousel>,
     );
@@ -105,16 +111,16 @@ describe('<Carousel />', () => {
     const { getByRole, queryAllByTestId } = renderWithTheme(
       <Carousel visibleItems={1} onChange={onChange}>
         <CarouselItem>
-          <TestimonialCard index={0} />
+          <TestimonialCard />
         </CarouselItem>
         <CarouselItem>
-          <TestimonialCard index={1} />
+          <TestimonialCard />
         </CarouselItem>
         <CarouselItem>
-          <TestimonialCard index={1} />
+          <TestimonialCard />
         </CarouselItem>
         <CarouselItem>
-          <TestimonialCard index={1} />
+          <TestimonialCard />
         </CarouselItem>
       </Carousel>,
     );
@@ -135,19 +141,19 @@ describe('<Carousel />', () => {
     const { getByRole, queryAllByRole, queryAllByTestId } = renderWithTheme(
       <Carousel visibleItems={2} onChange={onChange}>
         <CarouselItem>
-          <TestimonialCard index={0} />
+          <TestimonialCard />
         </CarouselItem>
         <CarouselItem>
-          <TestimonialCard index={1} />
+          <TestimonialCard />
         </CarouselItem>
         <CarouselItem>
-          <TestimonialCard index={2} />
+          <TestimonialCard />
         </CarouselItem>
         <CarouselItem>
-          <TestimonialCard index={3} />
+          <TestimonialCard />
         </CarouselItem>
         <CarouselItem>
-          <TestimonialCard index={4} />
+          <TestimonialCard />
         </CarouselItem>
       </Carousel>,
     );
@@ -173,13 +179,13 @@ describe('<Carousel />', () => {
     const { queryAllByTestId } = renderWithTheme(
       <Carousel autoPlay visibleItems={1} onChange={onChange}>
         <CarouselItem>
-          <TestimonialCard index={0} />
+          <TestimonialCard />
         </CarouselItem>
         <CarouselItem>
-          <TestimonialCard index={1} />
+          <TestimonialCard />
         </CarouselItem>
         <CarouselItem>
-          <TestimonialCard index={1} />
+          <TestimonialCard />
         </CarouselItem>
       </Carousel>,
     );
@@ -210,13 +216,13 @@ describe('<Carousel />', () => {
     const { getByLabelText, queryAllByTestId } = renderWithTheme(
       <Carousel accessibilityLabel="My Carousel" autoPlay visibleItems={1} onChange={onChange}>
         <CarouselItem>
-          <TestimonialCard index={0} />
+          <TestimonialCard />
         </CarouselItem>
         <CarouselItem>
-          <TestimonialCard index={1} />
+          <TestimonialCard />
         </CarouselItem>
         <CarouselItem>
-          <TestimonialCard index={1} />
+          <TestimonialCard />
         </CarouselItem>
       </Carousel>,
     );
@@ -294,16 +300,16 @@ describe('<Carousel />', () => {
     const { queryByRole, queryAllByTestId } = renderWithTheme(
       <Carousel onChange={onChange} visibleItems="autofit" navigationButtonPosition="side">
         <CarouselItem>
-          <TestimonialCard index={0} />
+          <TestimonialCard />
         </CarouselItem>
         <CarouselItem>
-          <TestimonialCard index={1} />
+          <TestimonialCard />
         </CarouselItem>
         <CarouselItem>
-          <TestimonialCard index={2} />
+          <TestimonialCard />
         </CarouselItem>
         <CarouselItem>
-          <TestimonialCard index={3} />
+          <TestimonialCard />
         </CarouselItem>
       </Carousel>,
     );
@@ -332,16 +338,16 @@ describe('<Carousel />', () => {
     const { queryAllByRole } = renderWithTheme(
       <Carousel onChange={onChange} visibleItems="autofit">
         <CarouselItem>
-          <TestimonialCard index={0} />
+          <TestimonialCard />
         </CarouselItem>
         <CarouselItem>
-          <TestimonialCard index={1} />
+          <TestimonialCard />
         </CarouselItem>
         <CarouselItem>
-          <TestimonialCard index={2} />
+          <TestimonialCard />
         </CarouselItem>
         <CarouselItem>
-          <TestimonialCard index={3} />
+          <TestimonialCard />
         </CarouselItem>
       </Carousel>,
     );
@@ -355,10 +361,10 @@ describe('Carousel Snapshots', () => {
     const { container } = renderWithTheme(
       <Carousel>
         <CarouselItem>
-          <TestimonialCard index={0} />
+          <TestimonialCard />
         </CarouselItem>
         <CarouselItem>
-          <TestimonialCard index={1} />
+          <TestimonialCard />
         </CarouselItem>
       </Carousel>,
     );
@@ -370,13 +376,13 @@ describe('Carousel Snapshots', () => {
     const { container } = renderWithTheme(
       <Carousel visibleItems={2}>
         <CarouselItem>
-          <TestimonialCard index={0} />
+          <TestimonialCard />
         </CarouselItem>
         <CarouselItem>
-          <TestimonialCard index={1} />
+          <TestimonialCard />
         </CarouselItem>
         <CarouselItem>
-          <TestimonialCard index={1} />
+          <TestimonialCard />
         </CarouselItem>
       </Carousel>,
     );
@@ -388,13 +394,13 @@ describe('Carousel Snapshots', () => {
     const { container } = renderWithTheme(
       <Carousel carouselItemWidth={{ base: '90%', m: '300px' }} shouldAddStartEndSpacing>
         <CarouselItem>
-          <TestimonialCard index={0} />
+          <TestimonialCard />
         </CarouselItem>
         <CarouselItem>
-          <TestimonialCard index={1} />
+          <TestimonialCard />
         </CarouselItem>
         <CarouselItem>
-          <TestimonialCard index={1} />
+          <TestimonialCard />
         </CarouselItem>
       </Carousel>,
     );
@@ -406,13 +412,13 @@ describe('Carousel Snapshots', () => {
     const { container } = renderWithTheme(
       <Carousel scrollOverlayColor="surface.background.level1.lowContrast" shouldAddStartEndSpacing>
         <CarouselItem>
-          <TestimonialCard index={0} />
+          <TestimonialCard />
         </CarouselItem>
         <CarouselItem>
-          <TestimonialCard index={1} />
+          <TestimonialCard />
         </CarouselItem>
         <CarouselItem>
-          <TestimonialCard index={1} />
+          <TestimonialCard />
         </CarouselItem>
       </Carousel>,
     );
@@ -424,10 +430,10 @@ describe('Carousel Snapshots', () => {
     const { container } = renderWithTheme(
       <Carousel visibleItems={1} navigationButtonPosition="side">
         <CarouselItem>
-          <TestimonialCard index={0} />
+          <TestimonialCard />
         </CarouselItem>
         <CarouselItem>
-          <TestimonialCard index={1} />
+          <TestimonialCard />
         </CarouselItem>
       </Carousel>,
     );

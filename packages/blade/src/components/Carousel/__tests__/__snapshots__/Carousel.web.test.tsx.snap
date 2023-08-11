@@ -259,9 +259,6 @@ exports[`Carousel Snapshots should render 1`] = `
           role="tabpanel"
         >
           <div>
-            <p>
-              0
-            </p>
             <p
               data-testid="active-slide"
             >
@@ -279,9 +276,6 @@ exports[`Carousel Snapshots should render 1`] = `
           role="tabpanel"
         >
           <div>
-            <p>
-              1
-            </p>
             <p
               data-testid="active-slide"
             >
@@ -642,9 +636,6 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
           role="tabpanel"
         >
           <div>
-            <p>
-              0
-            </p>
             <p
               data-testid="active-slide"
             >
@@ -662,9 +653,6 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
           role="tabpanel"
         >
           <div>
-            <p>
-              1
-            </p>
             <p
               data-testid="active-slide"
             >
@@ -998,9 +986,6 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
           role="tabpanel"
         >
           <div>
-            <p>
-              0
-            </p>
             <p
               data-testid="active-slide"
             >
@@ -1018,9 +1003,6 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
           role="tabpanel"
         >
           <div>
-            <p>
-              1
-            </p>
             <p
               data-testid="active-slide"
             >
@@ -1038,9 +1020,6 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
           role="tabpanel"
         >
           <div>
-            <p>
-              1
-            </p>
             <p
               data-testid="active-slide"
             >
@@ -1427,9 +1406,6 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
           role="tabpanel"
         >
           <div>
-            <p>
-              0
-            </p>
             <p
               data-testid="active-slide"
             >
@@ -1447,9 +1423,6 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
           role="tabpanel"
         >
           <div>
-            <p>
-              1
-            </p>
             <p
               data-testid="active-slide"
             >
@@ -1467,9 +1440,6 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
           role="tabpanel"
         >
           <div>
-            <p>
-              1
-            </p>
             <p
               data-testid="active-slide"
             >
@@ -1824,9 +1794,6 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
           role="tabpanel"
         >
           <div>
-            <p>
-              0
-            </p>
             <p
               data-testid="active-slide"
             >
@@ -1844,9 +1811,6 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
           role="tabpanel"
         >
           <div>
-            <p>
-              1
-            </p>
             <p
               data-testid="active-slide"
             >
@@ -1864,9 +1828,6 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
           role="tabpanel"
         >
           <div>
-            <p>
-              1
-            </p>
             <p
               data-testid="active-slide"
             >
