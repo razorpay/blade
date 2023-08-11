@@ -207,8 +207,19 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                 accessibilityRole="checkbox"
                 accessibilityState={
                   {
+                    "busy": undefined,
                     "checked": false,
                     "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
                   }
                 }
                 accessible={true}
@@ -372,8 +383,19 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                 accessibilityRole="checkbox"
                 accessibilityState={
                   {
+                    "busy": undefined,
                     "checked": false,
                     "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
                   }
                 }
                 accessible={true}
@@ -537,8 +559,19 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                 accessibilityRole="checkbox"
                 accessibilityState={
                   {
+                    "busy": undefined,
                     "checked": false,
                     "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
                   }
                 }
                 accessible={true}
@@ -892,8 +925,19 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                 accessibilityRole="checkbox"
                 accessibilityState={
                   {
+                    "busy": undefined,
                     "checked": false,
                     "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
                   }
                 }
                 accessible={true}
@@ -1057,8 +1101,19 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                 accessibilityRole="checkbox"
                 accessibilityState={
                   {
+                    "busy": undefined,
                     "checked": false,
                     "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
                   }
                 }
                 accessible={true}
@@ -1222,8 +1277,19 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                 accessibilityRole="checkbox"
                 accessibilityState={
                   {
+                    "busy": undefined,
                     "checked": false,
                     "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
                   }
                 }
                 accessible={true}

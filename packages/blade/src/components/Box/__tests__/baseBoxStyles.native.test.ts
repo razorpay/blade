@@ -1,10 +1,10 @@
 import {
   getBaseBoxStyles,
-  getResponsiveValue,
   getSpacingValue,
   getAllMediaQueries,
   getAllProps,
 } from '../BaseBox/baseBoxStyles';
+import { getResponsiveValue } from '../BaseBox/getResponsiveValue.native';
 import type { BaseBoxProps } from '../BaseBox';
 import { removeUndefinedValues } from './baseBoxStyles.test';
 import paymentLightTheme from '~components/BladeProvider/__tests__/paymentLightTheme/paymentLightTheme';
@@ -18,7 +18,6 @@ describe('getResponsiveValue', () => {
 
   it('should correctly handle falsy values', () => {
     expect(getResponsiveValue(undefined)).toBe(undefined);
-    // @ts-expect-error: intentional null to check the falsy values
     expect(getResponsiveValue(null)).toBe(undefined);
     expect(getResponsiveValue(0)).toBe(0);
     expect(getResponsiveValue('')).toBe('');
