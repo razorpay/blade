@@ -1,5 +1,37 @@
 # @razorpay/blade
 
+## 9.7.0
+
+### Minor Changes
+
+- d5d174fa: feat: make `Badge`, `Counter`, & `Indicator` components `inline-flex` by default
+
+### Patch Changes
+
+- f4624db2: fix: react native errors with floating-ui/react
+- 2e20ce04: feat(Box): add support for the `transparent` background color
+
+## 9.6.1
+
+### Patch Changes
+
+- 5fb722d8: fix(Switch): correct cursor style in disabled state
+
+## 9.6.0
+
+### Minor Changes
+
+- 50d55a5f: feat(Amount): add support for more currencies
+
+## 9.5.3
+
+### Patch Changes
+
+- d7183b49: fix(SelectInput): truncate text in select input
+- 59518acb: feat(BottomSheet): add `zindex` prop & improve focus management logic
+
+  Thanks to @archie252000 for his contribution!
+
 ## 9.5.2
 
 ### Patch Changes
@@ -27,6 +59,19 @@
 ### Minor Changes
 
 - cbed430f: feat: strip off logs & errors in production builds
+
+#### Jest v27 and Custom Resolver Compatibility
+
+For users on Jest v27 or older, or those with custom Jest resolvers (like `jest-directory-named-resolve`) not supporting `package.json` exports, a `moduleNameMapper` update is needed. This ensures compatibility with the `@razorpay/blade` package:
+
+```diff
+  moduleNameMapper: {
+    // ...rest of your config
++   '@razorpay/blade/components': '<rootDir>/node_modules/@razorpay/blade/build/components/index.development.web.js',
++   '@razorpay/blade/utils': '<rootDir>/node_modules/@razorpay/blade/build/utils/index.development.web.js',
++   '@razorpay/blade/tokens': '<rootDir>/node_modules/@razorpay/blade/build/tokens/index.development.web.js',
+  },
+```
 
 ### Patch Changes
 

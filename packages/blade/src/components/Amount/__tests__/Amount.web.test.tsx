@@ -1,3 +1,4 @@
+import type { AmountProps } from '../Amount';
 import {
   addCommas,
   Amount,
@@ -80,10 +81,14 @@ describe('<Amount />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should render MYR currency Amount ', () => {
-    const { container } = renderWithTheme(<Amount currency="MYR" value={1000} />);
-    expect(container).toMatchSnapshot();
-  });
+  for (const currency of ['USD', 'MYR', 'AED']) {
+    it(`should render ${currency} currency Amount`, () => {
+      const { container } = renderWithTheme(
+        <Amount currency={currency as AmountProps['currency']} value={1000} />,
+      );
+      expect(container).toMatchSnapshot();
+    });
+  }
 
   it('should not have accessibility violations', async () => {
     const { container } = renderWithTheme(<Amount value={1000} />);
