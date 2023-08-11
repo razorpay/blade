@@ -288,6 +288,7 @@ const Carousel = ({
       behavior: 'smooth',
     });
     setActiveSlide(slideIndex);
+    setActiveIndicator(slideIndex);
   };
 
   const goToNextSlide = () => {
