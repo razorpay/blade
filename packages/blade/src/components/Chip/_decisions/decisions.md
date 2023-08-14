@@ -8,7 +8,7 @@ This document outlines the API details of the `Chip` and `ChipGroup` components,
 
 - [Design](#design)
 - [`Chip` API](#chip-api)
-- [`CheckboxGroup` API](#chipgroup-api)
+- [`ChipGroup` API](#chipgroup-api)
 - [Examples](#examples)
   - [Basic/Uncontrolled Usage](#basicuncontrolled-usage)
   - [Controlled Usage](#controlled-usage)
