@@ -54,8 +54,6 @@ const makeStyledProps = (props: StyledPropsInputType): KeysRequired<StyledPropsB
     display: props.display,
     justifySelf: props.justifySelf,
     placeSelf: props.placeSelf,
-    placeItems: props.placeItems,
-    pointerEvents: props.pointerEvents,
     order: props.order,
     position: props.position,
     zIndex: props.zIndex,

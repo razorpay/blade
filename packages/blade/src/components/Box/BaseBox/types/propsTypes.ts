@@ -145,9 +145,6 @@ type CommonBoxVisualProps = MakeObjectResponsive<
     | 'backgroundOrigin'
     | 'backgroundRepeat'
     | 'pointerEvents'
-    | 'transform'
-    | 'transformOrigin'
-    | 'clipPath'
   > & {
       /**
        * Sets the elevation for Box
@@ -200,7 +197,7 @@ type BoxVisualProps = MakeObjectResponsive<{
 type StyledPropsBlade = Partial<
   Omit<
     MarginProps &
-      Pick<FlexboxProps, 'alignSelf' | 'justifySelf' | 'placeSelf' | 'placeItems' | 'order'> &
+      Pick<FlexboxProps, 'alignSelf' | 'justifySelf' | 'placeSelf' | 'order'> &
       PositionProps &
       Pick<
         GridProps,
@@ -212,8 +209,7 @@ type StyledPropsBlade = Partial<
         | 'gridColumnEnd'
         | 'gridArea'
       > &
-      Pick<LayoutProps, 'display'> &
-      PickCSSByPlatform<'pointerEvents'>,
+      Pick<LayoutProps, 'display'>,
     '__brand__'
   >
 >;

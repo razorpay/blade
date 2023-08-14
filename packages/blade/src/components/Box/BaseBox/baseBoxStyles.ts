@@ -225,9 +225,6 @@ const getAllProps = (
     ...(!isReactNative() && {
       boxShadow: getElevationValue(props.elevation, props.theme, breakpoint),
     }),
-    transform: props.transform,
-    transformOrigin: props.transformOrigin,
-    clipPath: props.clipPath,
   };
 };
 
