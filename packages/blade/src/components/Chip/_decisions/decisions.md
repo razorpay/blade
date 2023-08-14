@@ -38,13 +38,13 @@ This document outlines the API details of the `Chip` and `ChipGroup` components,
 
 ## `ChipGroup` API
 
-| Prop              | Type                          | Default     | Description                                                      | Required |
-| ----------------- | ----------------------------- | ----------- | ---------------------------------------------------------------- | -------- |
-| **children**      | `React.ReactNode`             | `undefined` | Accepts multiple `Chip` components                               | ✅       |
-| **defaultValue**  | `string \|string[]`           | `undefined` | Sets the initial value of the Chip group                         | ❌       |
-| **value**         | `string \|string[]`           | `undefined` | Acts as a controlled component by specifying the ChipGroup value | ❌       |
-| **onChange**      | `({ value: string }) => void` | `undefined` | Calls a function on any state change within the ChipGroup        | ❌       |
-| **selectionType** | `'single' \| 'multiple'`      | `'single'`  | Allows multiple selections within the ChipGroup                  | ❌       |
+| Prop              | Type                                      | Default     | Description                                                      | Required |
+| ----------------- | ----------------------------------------- | ----------- | ---------------------------------------------------------------- | -------- |
+| **children**      | `React.ReactNode`                         | `undefined` | Accepts multiple `Chip` components                               | ✅       |
+| **defaultValue**  | `string \|string[]`                       | `undefined` | Sets the initial value of the Chip group                         | ❌       |
+| **value**         | `string \|string[]`                       | `undefined` | Acts as a controlled component by specifying the ChipGroup value | ❌       |
+| **onChange**      | `({ value: string \| string[] }) => void` | `undefined` | Calls a function on any state change within the ChipGroup        | ❌       |
+| **selectionType** | `'single' \| 'multiple'`                  | `'single'`  | Allows multiple selections within the ChipGroup                  | ❌       |
 
 ## Examples
 
@@ -77,10 +77,10 @@ Multiple Chip selection:
 ```jsx
 function Single() {
   // string value when selectionType is 'single' (default)
-  const [value, setValue] = useState('react');
+  const [selected, setSelected] = useState('react');
 
   return (
-    <ChipGroup selectionType="single" value={value} onChange={setValue}>
+    <ChipGroup selectionType="single" value={value} onChange={({ value }) => setSelected(value)}>
       <Chip value="react">React</Chip>
       <Chip value="ng">Angular</Chip>
       <Chip value="svelte">Svelte</Chip>
@@ -91,10 +91,10 @@ function Single() {
 
 function Multiple() {
   // array of strings value when selectionType is 'multiple'
-  const [value, setValue] = useState(['react']);
+  const [selected, setSelected] = useState(['react']);
 
   return (
-    <ChipGroup selectionType="multiple" value={value} onChange={setValue}>
+    <ChipGroup selectionType="multiple" value={value} onChange={({ value }) => setSelected(value)}>
       <Chip value="react">React</Chip>
       <Chip value="ng">Angular</Chip>
       <Chip value="svelte">Svelte</Chip>
