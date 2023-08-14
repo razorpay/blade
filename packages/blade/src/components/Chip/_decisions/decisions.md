@@ -32,7 +32,7 @@ This document outlines the API details of the `Chip` and `ChipGroup` components,
 | **icon**           | `Icon`                                                               | `undefined`  | Displays the Blade Icon component within the Chip    | ❌       |
 | **isChecked**      | `boolean`                                                            | `false`      | Controls the Chip's checked state                    | ❌       |
 | **isDisabled**     | `boolean`                                                            | `false`      | Disables or enables the Chip                         | ❌       |
-| **size**           | `'xsmall' \| 'small' \| 'medium' \| 'large'`                         | `'medium'`   | Specifies the size of the rendered Chip              | ❌       |
+| **size**           | `'xsmall' \| 'small' \| 'medium' \| 'large'`                         | `'small'`    | Specifies the size of the rendered Chip              | ❌       |
 | **inputType**      | `'checkbox' \| 'radio'`                                              | `'checkbox'` | Determines the Chip's input type                     | ❌       |
 | **variant**        | `'positive' \| 'negative' \| 'notice' \| 'information' \| 'neutral'` | `'neutral'`  | Sets the Chip's visual variant                       | ❌       |
 
