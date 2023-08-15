@@ -25,27 +25,30 @@ This document outlines the API details of the `Chip` and `ChipGroup` components,
 >
 > The `Chip` component is inherently tied to the `ChipGroup` and cannot be utilized outside its context.
 
-| Prop                    | Type                                                                 | Default      | Description                                                                                                                                        | Required |
-| ----------------------- | -------------------------------------------------------------------- | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| **children**            | `string`                                                             | `undefined`  | Renders the label text for the Chip                                                                                                                | ✅       |
-| **defaultChecked**      | `boolean`                                                            | `false`      | Sets the default value for an uncontrolled component                                                                                               | ❌       |
-| **icon**                | `Icon`                                                               | `undefined`  | Displays the Blade Icon component within the Chip                                                                                                  | ❌       |
-| **isChecked**           | `boolean`                                                            | `false`      | Controls the Chip's checked state                                                                                                                  | ❌       |
-| **isDisabled**          | `boolean`                                                            | `false`      | Disables or enables the Chip                                                                                                                       | ❌       |
-| **size**                | `'xsmall' \| 'small' \| 'medium' \| 'large'`                         | `'small'`    | Specifies the size of the rendered Chip                                                                                                            | ❌       |
-| **inputType**           | `'checkbox' \| 'radio'`                                              | `'checkbox'` | Determines the Chip's input type                                                                                                                   | ❌       |
-| **value (html native)** | `string`                                                             | `undefined`  | The value of the input field in Chip, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#value) | ❌       |
-| **variant**             | `'positive' \| 'negative' \| 'notice' \| 'information' \| 'neutral'` | `'neutral'`  | Sets the Chip's visual variant                                                                                                                     | ❌       |
+| Prop                    | Type                                                                 | Default     | Description                                                                                                                                        | Required |
+| ----------------------- | -------------------------------------------------------------------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| **children**            | `string`                                                             | `undefined` | Renders the label text for the Chip                                                                                                                | ✅       |
+| **defaultChecked**      | `boolean`                                                            | `false`     | Sets the default value for an uncontrolled component                                                                                               | ❌       |
+| **icon**                | `Icon`                                                               | `undefined` | Displays the Blade Icon component within the Chip                                                                                                  | ❌       |
+| **isChecked**           | `boolean`                                                            | `false`     | Controls the Chip's checked state                                                                                                                  | ❌       |
+| **isDisabled**          | `boolean`                                                            | `false`     | Disables or enables the Chip                                                                                                                       | ❌       |
+| **size**                | `'xsmall' \| 'small' \| 'medium' \| 'large'`                         | `'small'`   | Specifies the size of the rendered Chip                                                                                                            | ❌       |
+| **value (html native)** | `string`                                                             | `undefined` | The value of the input field in Chip, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#value) | ❌       |
+| **variant**             | `'positive' \| 'negative' \| 'notice' \| 'information' \| 'neutral'` | `'neutral'` | Sets the Chip's visual variant                                                                                                                     | ❌       |
 
 ## `ChipGroup` API
 
-| Prop              | Type                                      | Default     | Description                                                      | Required |
-| ----------------- | ----------------------------------------- | ----------- | ---------------------------------------------------------------- | -------- |
-| **children**      | `React.ReactNode`                         | `undefined` | Accepts multiple `Chip` components                               | ✅       |
-| **defaultValue**  | `string \|string[]`                       | `undefined` | Sets the initial value of the Chip group                         | ❌       |
-| **value**         | `string \|string[]`                       | `undefined` | Acts as a controlled component by specifying the ChipGroup value | ❌       |
-| **onChange**      | `({ value: string \| string[] }) => void` | `undefined` | Calls a function on any state change within the ChipGroup        | ❌       |
-| **selectionType** | `'single' \| 'multiple'`                  | `'single'`  | Allows multiple selections within the ChipGroup                  | ❌       |
+| Prop              | Type                                                                 | Default     | Description                                                                                                                        | Required |
+| ----------------- | -------------------------------------------------------------------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| **children**      | `React.ReactNode`                                                    | `undefined` | Accepts multiple `Chip` components                                                                                                 | ✅       |
+| **defaultValue**  | `string \|string[]`                                                  | `undefined` | Sets the initial value of the Chip group                                                                                           | ❌       |
+| **isDisabled**    | `boolean`                                                            | `false`     | Disables or enables ChipGroup, it will propagate down to all the Chips                                                             | ❌       |
+| **name**          | `string`                                                             | `undefined` | The name of the checkbox group, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#name) | ❌       |
+| **onChange**      | `({ value: string \| string[] }) => void`                            | `undefined` | Calls a function on any state change within the ChipGroup                                                                          | ❌       |
+| **selectionType** | `'single' \| 'multiple'`                                             | `'single'`  | Allows multiple selections within the ChipGroup                                                                                    | ❌       |
+| **size**          | `'xsmall' \| 'small' \| 'medium' \| 'large'`                         | `'small'`   | Specifies the size of the rendered Chips withing the ChipGroup                                                                     | ❌       |
+| **value**         | `string \|string[]`                                                  | `undefined` | Acts as a controlled component by specifying the ChipGroup value                                                                   | ❌       |
+| **variant**       | `'positive' \| 'negative' \| 'notice' \| 'information' \| 'neutral'` | `'neutral'` | Sets the ChipGroups's visual variant, it will propagate down to all the Chips                                                      | ❌       |
 
 ## Examples
 
@@ -114,8 +117,13 @@ This adherence to established accessibility practices is further substantiated b
 - **Radio Accessibility** - The `Chip` component follows the [W3C ARIA Radio Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/radio/) to ensure that users utilizing assistive technologies can seamlessly interact with and understand the radio selection mechanism.
 - **Checkbox Accessibility** - Similarly, the `Chip` component aligns with the [W3C ARIA Checkbox Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/) to guarantee that users with disabilities can effectively engage with the checkbox selection paradigm.
 
+Utilizing the established `useRadio`, `useCheckbox`, `useRadioGroup`, & `useCheckboxGroup` hooks hooks ensures that the `Chip` and `ChipGroup` components inherently maintain accessibility as a fundamental aspect.
+
 These deliberate design choices manifest in a user experience that respects accessibility guidelines, enabling users of diverse abilities to interact with the components with equal ease.
 
 ## Open Questions
 
-- Should we provide a `name` prop to the `ChipGroup` component, similar to the `RadioGroup` component?
+**Q1.** Should we provide a `name` prop to the `ChipGroup` component, similar to the `RadioGroup` component?
+
+**Ans.** Indeed, including a name prop is advisable, as radios inherently necessitate its presence for proper functionality. While we can internally assign a default random ID to the name prop, exposing it empowers consumers to furnish a more human-readable identifier for the group.
+This enhancement serves form submission purposes cohesively. It's noteworthy that this mechanism is already adeptly managed in the `useRadioGroup` functionality.
