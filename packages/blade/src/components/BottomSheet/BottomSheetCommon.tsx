@@ -8,7 +8,7 @@ import { IconButton } from '~components/Button/IconButton';
 import { CloseIcon } from '~components/Icons';
 import type { BladeElementRef } from '~utils/useBladeInnerRef';
 import { isReactNative } from '~utils';
-import { size } from '~tokens/global';
+import { size, ZIndex } from '~tokens/global';
 import { useTheme } from '~components/BladeProvider';
 import { makeSpace } from '~utils/makeSpace';
 import { makeSize } from '~utils/makeSize';
@@ -88,7 +88,7 @@ const BottomSheetEmptyHeader = React.forwardRef<BladeElementRef, BottomSheetEmpt
           flexShrink={0}
           backgroundColor={theme.colors.surface.background.level2.lowContrast}
           borderRadius="max"
-          zIndex={100}
+          zIndex={ZIndex[100]}
         >
           <IconButton
             ref={ref}

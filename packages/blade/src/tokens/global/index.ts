@@ -20,5 +20,7 @@ export type { Motion, EasingFactoryFn, DurationString, EasingString, DelayString
 export { motion } from './motion';
 export type { Size } from './size';
 export { size } from './size';
+export type { zIndex } from './zIndex';
+export { ZIndex } from './zIndex';
 export type { Elevation, ElevationWithColorModes } from './elevation';
 export { elevation } from './elevation';

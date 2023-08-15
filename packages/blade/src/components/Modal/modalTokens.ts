@@ -1,5 +1,5 @@
 import type { ModalProps } from './Modal';
-import { size } from '~tokens/global';
+import { size, ZIndex } from '~tokens/global';
 import type { Border, Size } from '~tokens/global';
 
 const modalMaxWidth: Record<NonNullable<ModalProps['size']>, Size[keyof Size]> = {
@@ -18,7 +18,7 @@ const modalBorderRadius: keyof Border['radius'] = 'large';
 
 const scrollOverlayHeight: Size[keyof Size] = size[56];
 
-const modalHighestZIndex = 1000;
+const modalHighestZIndex = ZIndex[1000];
 
 export {
   modalMaxWidth,

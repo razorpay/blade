@@ -5,8 +5,9 @@ import { Modal, TouchableOpacity } from 'react-native';
 import { TooltipArrow } from './TooltipArrowNative';
 import { TooltipContent } from './TooltipContent';
 import type { TooltipProps } from './types';
-import { ARROW_HEIGHT, ARROW_WIDTH, tooltipZIndex } from './constants';
+import { ARROW_HEIGHT, ARROW_WIDTH } from './constants';
 import { getPlacementParts, mergeProps } from './utils';
+import { ZIndex } from '~tokens/global';
 import { TooltipContext } from './TooltipContext';
 import { useTheme } from '~components/BladeProvider';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
@@ -16,7 +17,7 @@ const Tooltip = ({
   children,
   placement = 'left',
   onOpenChange,
-  zIndex = tooltipZIndex,
+  zIndex,
 }: TooltipProps): React.ReactElement => {
   const { theme } = useTheme();
   const [isOpen, setIsOpen] = React.useState(false);
@@ -100,8 +101,7 @@ const Tooltip = ({
               // this happens because measure is async and it takes few miliseconds to calculate the positions.
               left: floatingStyles.left || -200,
               top: floatingStyles.top || -200,
-              // TODO: Tokenize zIndex values
-              zIndex,
+              zIndex: ZIndex[1000] + ZIndex[100],
             }}
             arrow={<TooltipArrow context={context} ref={arrowRef as never} />}
           >

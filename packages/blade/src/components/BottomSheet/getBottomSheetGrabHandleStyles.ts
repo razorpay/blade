@@ -3,7 +3,7 @@ import type { Theme } from '~components/BladeProvider';
 import { isReactNative } from '~utils';
 import { makeSize } from '~utils/makeSize';
 import { makeSpace } from '~utils/makeSpace';
-import { size } from '~tokens/global';
+import { size, ZIndex } from '~tokens/global';
 
 const getHandlePartStyles = ({ theme }: { theme: Theme }): CSSObject => {
   return {
@@ -34,7 +34,7 @@ const getBottomSheetGrabHandleStyles = ({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    zIndex: 100,
+    zIndex: ZIndex[100],
     ...(isReactNative() ? undefined : { ':after': getHandlePartStyles({ theme }) }),
   };
 };

@@ -19,13 +19,13 @@ import {
 import React from 'react';
 import type { TooltipProps } from './types';
 import { TooltipContent } from './TooltipContent';
-import { ARROW_HEIGHT, ARROW_WIDTH, tooltipZIndex } from './constants';
+import { ARROW_HEIGHT, ARROW_WIDTH } from './constants';
 import { getPlacementParts, mergeProps } from './utils';
 import { TooltipContext } from './TooltipContext';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import { size } from '~tokens/global';
+import { size, ZIndex } from '~tokens/global';
 import { useId } from '~utils/useId';
 import { makeAccessible } from '~utils/makeAccessible';
 
@@ -34,7 +34,7 @@ const Tooltip = ({
   children,
   placement = 'top',
   onOpenChange,
-  zIndex = tooltipZIndex,
+  zIndex,
 }: TooltipProps): React.ReactElement => {
   const { theme } = useTheme();
   const id = useId();
@@ -104,8 +104,7 @@ const Tooltip = ({
             ref={refs.setFloating}
             style={floatingStyles}
             pointerEvents="none"
-            // TODO: Tokenize zIndex values
-            zIndex={zIndex}
+            zIndex={ZIndex[1000] + ZIndex[100]}
             {...getFloatingProps()}
             {...metaAttribute({ name: MetaConstants.Tooltip })}
           >

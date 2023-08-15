@@ -30,7 +30,7 @@ import { useId } from '~utils/useId';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeSize } from '~utils/makeSize';
 import { makeAccessible } from '~utils/makeAccessible';
-import { size } from '~tokens/global';
+import { size, ZIndex } from '~tokens/global';
 import { makeMotionTime } from '~utils/makeMotionTime';
 
 export const BOTTOM_SHEET_EASING = 'cubic-bezier(.15,0,.24,.97)';
@@ -73,7 +73,7 @@ const _BottomSheet = ({
   children,
   initialFocusRef,
   snapPoints = [0.35, 0.5, 0.85],
-  zIndex = 100,
+  zIndex = ZIndex[100],
 }: BottomSheetProps): React.ReactElement => {
   const { theme } = useTheme();
   const dimensions = useWindowSize();
