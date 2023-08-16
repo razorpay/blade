@@ -80,7 +80,7 @@ const Card = ({
   elevation = 'lowRaised',
   testID,
   padding = 'spacing.7',
-  width = '100%',
+  width,
   height,
   ...styledProps
 }: CardProps): React.ReactElement => {
