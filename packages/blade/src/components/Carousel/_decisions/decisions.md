@@ -93,11 +93,12 @@ When the `visibleItems` is set to `autofit`, the carousel will automatically adj
 
 v1: visibleItems: autofit + auto bleed + shouldAddStartEndMargin
 
-<img src="./example-visibleitems-undefined-with-margin.png" width="70%" />
+<img src="./example-visibleitems-autofit-with-margin.png" width="70%" />
 
 v1: visibleItems: autofit + auto bleed
-
-<img src="./example-visibleitems-undefined-without-margin.png" width="70%" />
+> Note: in this variant, we won't show indicator because indicators won't be able to properly map to the visible slides since there can be any number of slides visible at a time based on the screenshide
+>
+<img src="./example-visibleitems-autofit-without-margin.png" width="70%" />
 
 ### **Variant 2: With visibleItems:**
 
