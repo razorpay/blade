@@ -8,6 +8,7 @@ import styled from 'styled-components';
 import React from 'react';
 import getIn from 'lodash/get';
 import throttle from 'lodash/throttle';
+import debounce from 'lodash/debounce';
 import { Indicators } from './Indicators/Indicators';
 import { NavigationButton } from './NavigationButton';
 import type { CarouselProps } from './types';
@@ -287,6 +288,7 @@ const Carousel = ({
       behavior: 'smooth',
     });
     setActiveSlide(slideIndex);
+    setActiveIndicator(slideIndex);
   };
 
   const goToNextSlide = () => {
@@ -349,7 +351,7 @@ const Carousel = ({
     const carouselContainer = containerRef.current;
     if (!carouselContainer) return;
 
-    const handleScroll = throttle(() => {
+    const handleScroll = debounce(() => {
       const carouselBB = carouselContainer.getBoundingClientRect();
       // By default we check the far left side of the screen
       let xOffset = 0.1;
@@ -371,7 +373,7 @@ const Carousel = ({
       const goTo = Math.ceil(slideIndex / _visibleItems);
       setActiveIndicator(goTo);
       setActiveSlide(goTo);
-    }, 200);
+    }, 50);
 
     carouselContainer.addEventListener('scroll', handleScroll);
 
