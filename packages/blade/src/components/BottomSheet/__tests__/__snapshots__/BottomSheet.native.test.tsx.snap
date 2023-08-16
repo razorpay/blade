@@ -247,7 +247,19 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                     accessibilityRole="button"
                     accessibilityState={
                       {
+                        "busy": undefined,
+                        "checked": undefined,
                         "disabled": false,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
                       }
                     }
                     accessible={true}
@@ -283,6 +295,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                     onResponderTerminate={[Function]}
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
+                    role="button"
                     style={
                       [
                         {
@@ -894,6 +907,23 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                     <View
                       accessibilityLabel="Close"
                       accessibilityRole="button"
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
                       accessible={true}
                       collapsable={false}
                       contrast="low"
@@ -1250,7 +1280,19 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                     accessibilityRole="button"
                     accessibilityState={
                       {
+                        "busy": undefined,
+                        "checked": undefined,
                         "disabled": false,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
                       }
                     }
                     accessible={true}
@@ -1286,6 +1328,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                     onResponderTerminate={[Function]}
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
+                    role="button"
                     style={
                       [
                         {
@@ -1533,6 +1576,23 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                 <View
                   accessibilityLabel="Close"
                   accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
                   accessible={true}
                   collapsable={false}
                   contrast="low"
