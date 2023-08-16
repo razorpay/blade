@@ -131,7 +131,7 @@ const _Badge = ({
 
   return (
     <BaseBox
-      display="flex"
+      display={(isReactNative() ? 'flex' : 'inline-flex') as never}
       {...metaAttribute({ name: MetaConstants.Badge, testID })}
       {...getStyledProps(styledProps)}
     >
@@ -141,7 +141,7 @@ const _Badge = ({
           paddingLeft={horizontalPadding[size]}
           paddingTop={verticalPadding[size]}
           paddingBottom={verticalPadding[size]}
-          display={(isReactNative() ? 'flex' : 'inline-flex') as never}
+          display="flex"
           flexDirection="row"
           justifyContent="center"
           alignItems="center"

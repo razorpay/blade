@@ -71,7 +71,7 @@ describe('<Box />', () => {
       );
     } catch (err: unknown) {
       expect(err).toMatchInlineSnapshot(`
-        [Error: [Blade: Box]: Oops! Currently you can only use \`surface.background.*\` and \`brand.*\` tokens with backgroundColor property but we received \`red\` instead.
+        [Error: [Blade: Box]: Oops! Currently you can only use \`transparent\`, \`surface.background.*\`, and \`brand.*\` tokens with backgroundColor property but we received \`red\` instead.
 
          Do you have a usecase of using other values? Create an issue on https://github.com/razorpay/blade repo to let us know and we can discuss ✨]
       `);
@@ -106,6 +106,32 @@ describe('<Box />', () => {
     expect(container).toMatchInlineSnapshot(`
       .c0 {
         background-color: hsla(218,89%,51%,0.09);
+      }
+
+      <div>
+        <div
+          class="c0"
+          data-blade-component="box"
+        >
+          I am Visible
+        </div>
+      </div>
+    `);
+  });
+
+  it('should accept "transparent" value for backgroundColor', () => {
+    const { container } = renderWithTheme(
+      <Box backgroundColor={{ base: 'brand.primary.300', l: 'transparent' }}>I am Visible</Box>,
+    );
+    expect(container).toMatchInlineSnapshot(`
+      .c0 {
+        background-color: hsla(218,89%,51%,0.09);
+      }
+
+      @media screen and (min-width:1024px) {
+        .c0 {
+          background-color: transparent;
+        }
       }
 
       <div>

@@ -25,7 +25,6 @@ runs:
       if: steps.cache.outputs.cache-hit != 'true'
 
     - name: Run postinstall script
-      run: yarn postinstall
-      working-directory: packages/blade
+      run: yarn postinstall && yarn workspace @razorpay/blade postinstall
       shell: bash
       if: steps.cache.outputs.cache-hit == 'true'
