@@ -24,7 +24,7 @@ const percentageStringToNumber = (percentage: string) => {
   return Number(percentage.substring(0, percentage.length - 1)) / 100;
 };
 
-type ControlsProp = Required<
+type ControlsProps = Required<
   Pick<CarouselProps, 'indicatorVariant' | 'showIndicators' | 'navigationButtonVariant'>
 > & {
   activeIndicator: number;
@@ -43,7 +43,7 @@ const Controls = ({
   onPreviousButtonClick,
   indicatorVariant,
   navigationButtonVariant,
-}: ControlsProp): React.ReactElement => {
+}: ControlsProps): React.ReactElement => {
   return (
     <BaseBox marginTop="spacing.7" display="flex" flexDirection="row" alignItems="center">
       <BaseBox marginRight="spacing.4">
@@ -55,7 +55,7 @@ const Controls = ({
       </BaseBox>
       {showIndicators ? (
         <Indicators
-          onIndicatorButtonClick={onIndicatorButtonClick}
+          onClick={onIndicatorButtonClick}
           activeIndex={activeIndicator}
           totalItems={totalSlides}
           variant={indicatorVariant}
@@ -89,13 +89,13 @@ const Carousel = ({
   const id = useId();
 
   const _visibleItems = 1;
-  const boxWidth = scrollViewWidth * percentageStringToNumber(castNativeType(carouselItemWidth));
+  const slideWidth = scrollViewWidth * percentageStringToNumber(castNativeType(carouselItemWidth));
   const totalNumberOfSlides = React.Children.count(children);
 
   const goToSlideIndex = (slideIndex: number) => {
     if (!containerRef.current) return;
     containerRef.current.scrollTo({
-      x: slideIndex * boxWidth,
+      x: slideIndex * slideWidth,
       y: 0,
       animated: true,
     });
@@ -124,10 +124,10 @@ const Carousel = ({
       carouselItemWidth,
       carouselId: id,
       totalNumberOfSlides,
-      boxWidth,
+      slideWidth,
       activeSlide,
     };
-  }, [_visibleItems, activeSlide, boxWidth, carouselItemWidth, id, totalNumberOfSlides]);
+  }, [carouselItemWidth, id, totalNumberOfSlides, slideWidth, activeSlide]);
 
   // auto play
   useInterval(
@@ -174,9 +174,10 @@ const Carousel = ({
             }}
             // Sync active indicator with scroll
             onMomentumScrollEnd={(e) => {
-              const slideIndex = Math.round(e.nativeEvent.contentOffset.x / boxWidth);
+              const slideIndex = Math.round(e.nativeEvent.contentOffset.x / slideWidth);
               setActiveSlide(slideIndex);
             }}
+            // https://dev.to/reime005/horizontal-card-carousel-in-react-native-303n
             horizontal
             snapToAlignment="start"
             decelerationRate="fast"
@@ -185,7 +186,7 @@ const Carousel = ({
             automaticallyAdjustContentInsets={false}
             showsHorizontalScrollIndicator={false}
             showsVerticalScrollIndicator={false}
-            snapToInterval={boxWidth}
+            snapToInterval={slideWidth}
             contentInset={{
               left: 0,
               right: 0,

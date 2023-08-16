@@ -2,7 +2,7 @@ type IndicatorsProps = {
   activeIndex: number;
   totalItems: number;
   variant: 'gray' | 'white' | 'blue';
-  onIndicatorButtonClick: (index: number) => void;
+  onClick: (index: number) => void;
 };
 
 type IndicatorButtonProps = {

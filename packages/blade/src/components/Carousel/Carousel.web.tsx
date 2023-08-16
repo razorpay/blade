@@ -17,7 +17,7 @@ import { CarouselContext } from './CarouselContext';
 import { getCarouselItemId } from './utils';
 import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
-import { useInterval, useTheme } from '~utils';
+import { castWebType, makeMotionTime, useInterval, useTheme } from '~utils';
 import { useId } from '~utils/useId';
 import { makeAccessible } from '~utils/makeAccessible';
 
@@ -45,10 +45,7 @@ const Controls = ({
   indicatorVariant,
   navigationButtonVariant,
 }: ControlsProp): React.ReactElement => {
-  // 1. buttons or indicators side by side on bottom
-  // 3. only indicators on bottom and buttons will be on side
   const isNavButtonsOnBottom = navigationButtonPosition === 'bottom';
-  const case3 = showIndicators && navigationButtonPosition === 'side';
 
   if (isNavButtonsOnBottom) {
     return (
@@ -75,7 +72,7 @@ const Controls = ({
     );
   }
 
-  if (case3) {
+  if (showIndicators && navigationButtonPosition === 'side') {
     return (
       <Box marginTop="spacing.7">
         <Indicators
@@ -106,7 +103,8 @@ const CarouselContainer = styled(BaseBox)<{
     top: 0,
     width: '100px',
     height: '100%',
-    transition: '400ms ease',
+    transitionDuration: castWebType(makeMotionTime(theme.motion.duration.gentle)),
+    transitionTimingFunction: castWebType(theme.motion.easing.standard.effective),
     transitionProperty: 'opacity',
   };
 
@@ -125,7 +123,6 @@ const CarouselContainer = styled(BaseBox)<{
     msScrollSnapType: 'mandatory',
     scrollSnapPointsX: 'repeat(100%)',
     msScrollSnapPointsX: 'repeat(100%)',
-    // gap: makeSpace(theme.spacing[5]),
     '&::-webkit-scrollbar': {
       display: 'none',
     },
@@ -302,7 +299,6 @@ const Carousel = ({
     // there can be a case where numberOfIndicators is set to 10 but
     // visually there is 3 or 4 items, in those cases we want to check if we reached the
     // end of the scroll container if so we wrap around
-    // TODO: we should probably hide the indicators in this case
     if (containerRef.current) {
       const container = containerRef.current;
       const scrollLeft = container.scrollLeft;
@@ -352,6 +348,7 @@ const Carousel = ({
     if (!carouselContainer) return;
 
     const handleScroll = debounce(() => {
+      // carousel bounding box
       const carouselBB = carouselContainer.getBoundingClientRect();
       // By default we check the far left side of the screen
       let xOffset = 0.1;
