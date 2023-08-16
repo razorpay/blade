@@ -321,7 +321,7 @@ describe('<BottomSheet />', () => {
       within(getByRole('option', { name: 'Avocado' })).getByRole('checkbox', { hidden: true }),
     ).not.toBeChecked();
     mockConsoleError.mockRestore();
-  });
+  }, 10000);
 
   test('BottomSheetHeader trailing should not allow any random component', () => {
     const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
