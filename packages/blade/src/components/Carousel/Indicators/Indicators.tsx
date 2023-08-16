@@ -24,7 +24,7 @@ const Indicators = (props: IndicatorsProps): React.ReactElement => {
             })}
             marginLeft={idx !== 0 ? 'spacing.2' : 'spacing.0'}
             isActive={idx === props.activeIndex}
-            onClick={() => props?.onIndicatorButtonClick?.(idx)}
+            onClick={() => props?.onClick?.(idx)}
             variant={props.variant}
           />
         );

@@ -27,15 +27,15 @@ const getIndicatorButtonStyles = ({
     backgroundColor: isActive ? backgroundColor[variant] : theme.colors.overlay.background,
     width: isActive ? makeSize(size[18]) : makeSize(size[6]),
     height: makeSize(size[6]),
-    transitionProperty: 'width',
-    transitionDuration: duration,
-    transitionTimingFunction: easing,
 
     ...(isReactNative() && {
       width: undefined,
     }),
 
     ...(!isReactNative() && {
+      transitionProperty: 'width',
+      transitionDuration: duration,
+      transitionTimingFunction: easing,
       '&:before': {
         content: `""`,
         // increasing the hit area, just random numbers

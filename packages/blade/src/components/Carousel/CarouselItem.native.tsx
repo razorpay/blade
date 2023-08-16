@@ -9,11 +9,11 @@ type CarouselItemProps = {
 };
 
 const CarouselItem = ({ children }: CarouselItemProps): React.ReactElement => {
-  const { boxWidth } = useCarouselContext();
+  const { slideWidth } = useCarouselContext();
 
   return (
     <BaseBox
-      width={`${boxWidth}px`}
+      width={`${slideWidth}px`}
       margin="spacing.0"
       paddingLeft="spacing.4"
       paddingRight="spacing.4"
