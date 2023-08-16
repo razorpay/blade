@@ -14,6 +14,7 @@ import { useInterval } from '~utils/useInterval';
 import { makeAccessible } from '~utils/makeAccessible/makeAccessible.native';
 import { announce } from '~components/LiveAnnouncer/LiveAnnouncer.native';
 import { castNativeType } from '~utils';
+import { useId } from '~utils/useId';
 
 const percentageStringToNumber = (percentage: string) => {
   if (!percentage.endsWith('%')) {
@@ -84,6 +85,8 @@ const Carousel = ({
   const containerRef = React.useRef<ScrollView>(null);
   const [activeSlide, setActiveSlide] = React.useState(0);
   const [scrollViewWidth, setScrollViewWidth] = React.useState(0);
+  const [shouldPauseAutoplay, setShouldPauseAutoplay] = React.useState(false);
+  const id = useId();
 
   const _visibleItems = 1;
   const slideWidth = scrollViewWidth * percentageStringToNumber(castNativeType(carouselItemWidth));
@@ -119,11 +122,12 @@ const Carousel = ({
     return {
       visibleItems: _visibleItems,
       carouselItemWidth,
-      carouselId: undefined,
+      carouselId: id,
       totalNumberOfSlides,
       slideWidth,
+      activeSlide,
     };
-  }, [_visibleItems, slideWidth, carouselItemWidth, totalNumberOfSlides]);
+  }, [carouselItemWidth, id, totalNumberOfSlides, slideWidth, activeSlide]);
 
   // auto play
   useInterval(
@@ -133,7 +137,7 @@ const Carousel = ({
     {
       delay: 6000,
       // only enable if autoplay is true & user's intent isn't to interact with carousel
-      enable: autoPlay, // TODO
+      enable: autoPlay && !shouldPauseAutoplay,
     },
   );
 
@@ -157,6 +161,12 @@ const Carousel = ({
           flexDirection="row"
         >
           <ScrollView
+            onScrollBeginDrag={() => {
+              setShouldPauseAutoplay(true);
+            }}
+            onScrollEndDrag={() => {
+              setShouldPauseAutoplay(false);
+            }}
             {...makeAccessible({ label: accessibilityLabel })}
             ref={containerRef}
             onLayout={(e) => {

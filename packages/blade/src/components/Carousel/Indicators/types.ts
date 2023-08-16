@@ -9,6 +9,7 @@ type IndicatorButtonProps = {
   variant: IndicatorsProps['variant'];
   onClick: () => void;
   isActive?: boolean;
+  slideIndex?: number;
 };
 
 export type { IndicatorsProps, IndicatorButtonProps };
