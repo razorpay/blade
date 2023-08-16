@@ -8,10 +8,10 @@ configure({
   defaultIncludeHiddenElements: true,
 });
 
-Object.defineProperty(global.navigator, 'product', {
-  value: 'ReactNative',
-});
-require('react-native-reanimated/lib/reanimated2/jestUtils').setUpTests();
+global.navigator = {
+  product: 'ReactNative',
+};
+
 jest.mock('react-native-reanimated', () => ({
   ...require('react-native-reanimated/mock'),
   Easing: {

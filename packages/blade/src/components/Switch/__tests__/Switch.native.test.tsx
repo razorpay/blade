@@ -22,7 +22,7 @@ describe('<Switch />', () => {
     expect(toJSON()).toMatchSnapshot();
     const switchElement = queryByA11yState({ disabled: true });
     expect(switchElement).toBeTruthy();
-    expect(switchElement?.props?.accessibilityState).toStrictEqual({
+    expect(switchElement).toHaveAccessibilityState({
       checked: false,
       disabled: true,
     });
