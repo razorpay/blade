@@ -14,6 +14,7 @@ type CarouselContextProps =
        * React native only
        */
       slideWidth: number;
+      activeSlide: number;
     })
   | null;
 const CarouselContext = React.createContext<CarouselContextProps>(null);
