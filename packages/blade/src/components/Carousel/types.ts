@@ -75,7 +75,7 @@ type CarouselProps = {
    *
    * @default undefined
    */
-  onChange: (slideIndex: number) => void;
+  onChange?: (slideIndex: number) => void;
   /**
    * Accessibility label for the carousel, this will let screen reader users know what content the carousel holds (eg: "Product carousel")
    *
