@@ -6,6 +6,7 @@ import { Text } from '../Typography';
 import type { ChipGroupProps } from './ChipGroup/ChipGroup';
 import { ChipGroup as ChipGroupComponent } from './ChipGroup/ChipGroup';
 import { Chip as ChipComponent } from './Chip';
+import { InfoIcon } from '~components/Icons';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import BaseBox from '~components/Box/BaseBox';
@@ -101,11 +102,11 @@ export default {
 const ChipTemplate: ComponentStory<typeof ChipGroupComponent> = ({ children, ...args }) => {
   return (
     <ChipGroupComponent {...args}>
-      <ChipComponent value="apple">Apple</ChipComponent>
-      <ChipComponent value="mango">Mango</ChipComponent>
-      <ChipComponent variant="negative" value="orange">
-        Orange
+      <ChipComponent value="apple" icon={InfoIcon}>
+        Apple
       </ChipComponent>
+      <ChipComponent value="mango">Mango</ChipComponent>
+      <ChipComponent value="orange">Orange</ChipComponent>
     </ChipGroupComponent>
   );
 };
@@ -123,12 +124,13 @@ export const SingleSelection = ChipTemplate.bind({});
 SingleSelection.storyName = 'Single Selection';
 SingleSelection.args = {
   size: 'small',
+  variant: 'positive',
 };
 
 export const MultiSelection = ChipTemplate.bind({});
 MultiSelection.storyName = 'Multi Selection';
 MultiSelection.args = {
-  size: 'small',
+  size: 'medium',
   selectionType: 'multiple',
   variant: 'negative',
 };

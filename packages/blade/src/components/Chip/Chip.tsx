@@ -4,11 +4,12 @@ import isEmpty from 'lodash/isEmpty';
 import { useChipGroupContext } from './ChipGroup/ChipGroupContext';
 // import { ChipIcon } from './ChipIcon';
 import {
-  chipHoverTokens,
   iconPadding,
   iconSize,
   horizontalPadding,
   verticalPadding,
+  chipColorTokens,
+  getChipHoverTokens,
 } from './chipTokens';
 import { StyledChip } from './StyledChip';
 import { IconComponent, IconProps } from '~components/Icons';
@@ -85,54 +86,10 @@ type ChipProps = {
   /**
    * Sets the Chip's visual variant
    *
-   * @default "neutral"
    */
   variant?: 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
 } & TestID &
   StyledPropsBlade;
-
-// type ColorProps = {
-//   iconColor: IconProps['color'];
-//   textColor: BaseTextProps['color'];
-//   borderColor: StyledChipProps['borderColor'];
-//   backgroundColor?: StyledChipProps['backgroundColor'];
-// };
-
-type ColorProps = Record<string, string>;
-
-const getColorProps = ({
-  variant,
-  isChecked,
-  isDisabled,
-}: {
-  variant: NonNullable<ChipProps['variant']>;
-  isChecked: boolean | undefined;
-  isDisabled: boolean | undefined;
-}): ColorProps => {
-  const props: ColorProps = {
-    iconColor: 'surface.text.subtle.lowContrast',
-    textColor: 'surface.text.subtle.lowContrast',
-    borderColor: 'brand.gray.400.lowContrast',
-  };
-
-  if (isDisabled) {
-    props.textColor = 'surface.text.placeholder.lowContrast';
-    props.iconColor = 'surface.text.placeholder.lowContrast';
-  } else if (isChecked) {
-    if (variant === 'neutral') {
-      props.textColor = 'brand.primary.500';
-      props.iconColor = 'brand.primary.500';
-      props.borderColor = 'brand.primary.500';
-      props.backgroundColor = 'brand.primary.300';
-    }
-    props.textColor = `feedback.text.${variant}.lowContrast`;
-    props.iconColor = `feedback.text.${variant}.lowContrast`;
-    props.borderColor = `feedback.action.primary.border.${variant}.lowContrast.default`;
-    props.backgroundColor = `feedback.action.primary.background.${variant}.lowContrast.default`;
-  }
-
-  return props;
-};
 
 const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
   {
@@ -143,7 +100,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
     children,
     icon: Icon,
     size = 'small',
-    variant = 'neutral',
+    variant,
     testID,
     ...styledProps
   },
@@ -163,25 +120,23 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
       );
     }
   }
-  const { backgroundColor, iconColor, textColor, borderColor } = getColorProps({
-    variant,
-    isChecked,
-    isDisabled,
-  });
-  console.log('🚀 ~ file: Chip.tsx:170 ~ borderColor:', variant, borderColor);
 
   const chipTextSizes = {
+    xsmall: {
+      variant: 'body',
+      size: 'small',
+    },
     small: {
       variant: 'body',
-      size: 'xsmall',
+      size: 'medium',
     },
     medium: {
       variant: 'body',
-      size: 'small',
+      size: 'large',
     },
     large: {
       variant: 'body',
-      size: 'small',
+      size: 'large',
     },
   } as const;
 
@@ -189,9 +144,9 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
   const _name = name ?? groupProps?.name;
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
   const _isChecked = isChecked ?? groupProps?.state?.isChecked(value!);
-  // const ChipIcon = groupProps?.selectionType === 'single' ? RadioIcon : CheckboxIcon;
   const useChip = groupProps?.selectionType === 'single' ? useRadio : useCheckbox;
-  // const _size = groupProps?.size ?? size;
+  const _size = groupProps?.size ?? size;
+  const _variant = variant ?? groupProps?.variant;
 
   const handleChange: OnChange = ({ isChecked, value }) => {
     if (isChecked) {
@@ -214,6 +169,19 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
     onChange: handleChange,
   });
 
+  const chipTextColor =
+    chipColorTokens.text[
+      _isDisabled ? 'disabled' : _isChecked && _variant ? _variant : 'unchecked'
+    ];
+  const chipBackgroundColor =
+    chipColorTokens.background[_isChecked && _variant ? _variant : 'unchecked'][
+      _isDisabled ? 'disabled' : 'default'
+    ];
+  const chipBorderColor =
+    chipColorTokens.border[_isChecked && _variant ? _variant : 'unchecked'][
+      _isDisabled ? 'disabled' : 'default'
+    ];
+
   return (
     <BaseBox
       {...metaAttribute({ name: MetaConstants.Chip, testID })}
@@ -222,23 +190,28 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
       <SelectorLabel
         componentName={MetaConstants.ChipLabel}
         inputProps={isReactNative() ? inputProps : {}}
+        style={{ cursor: _isDisabled ? 'not-allowed' : 'pointer' }}
       >
         <BaseBox display="flex" flexDirection="column">
           <BaseBox display="flex" alignItems="center" flexDirection="row">
             <SelectorInput
-              hoverTokens={chipHoverTokens}
+              hoverTokens={getChipHoverTokens(_variant)}
               isChecked={state.isChecked}
               isDisabled={_isDisabled}
               inputProps={inputProps}
               ref={ref}
             />
-            <StyledChip backgroundColor={backgroundColor} size={size} textAlign={'left' as never}>
+            <StyledChip
+              backgroundColor={chipBackgroundColor as never}
+              borderColor={chipBorderColor as never}
+              size={_size}
+              paddingRight="spacing.4"
+              paddingLeft="spacing.4"
+              textAlign={'left' as never}
+            >
               <BaseBox
                 // paddingRight={Icon ? horizontalPadding.icon[size] : horizontalPadding.default[size]}
                 // paddingLeft={horizontalPadding[Icon ? 'icon' : 'default'][size]}
-                paddingRight="spacing.4"
-                paddingLeft="spacing.4"
-                borderColor={borderColor}
                 display={(isReactNative() ? 'flex' : 'inline-flex') as never}
                 flexDirection="row"
                 justifyContent="center"
@@ -250,24 +223,19 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
                     // paddingRight={Boolean(Icon) ? iconPadding[size] : 'spacing.0'}
                     display="flex"
                   >
-                    <Icon color={iconColor} size={iconSize[size]} />
+                    <Icon color={chipTextColor as never} size={iconSize[size]} />
                   </BaseBox>
                 ) : null}
                 <Text
-                  // {...badgeTextSizes[size]}
+                  {...chipTextSizes[_size]}
                   type="normal"
-                  // weight={fontWeight}
                   truncateAfterLines={1}
-                  // color={textColor}
+                  color={chipTextColor as never}
                 >
                   {children}
                 </Text>
               </BaseBox>
             </StyledChip>
-            {/* <ChipIcon size="small" isChecked={state.isChecked} isDisabled={_isDisabled} />
-            <SelectorTitle size="small" isDisabled={_isDisabled}>
-              {children}
-            </SelectorTitle> */}
           </BaseBox>
         </BaseBox>
       </SelectorLabel>
