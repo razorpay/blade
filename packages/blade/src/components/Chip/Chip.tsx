@@ -6,8 +6,7 @@ import { useChipGroupContext } from './ChipGroup/ChipGroupContext';
 import {
   iconPadding,
   iconSize,
-  horizontalPadding,
-  verticalPadding,
+  chipHorizontalPaddingTokens,
   chipColorTokens,
   getChipHoverTokens,
 } from './chipTokens';
@@ -205,24 +204,24 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
               backgroundColor={chipBackgroundColor as never}
               borderColor={chipBorderColor as never}
               size={_size}
-              paddingRight="spacing.4"
-              paddingLeft="spacing.4"
+              paddingLeft={
+                chipHorizontalPaddingTokens[Icon ? 'icon' : 'default'].left[_size] as never
+              }
+              paddingRight={
+                chipHorizontalPaddingTokens[Icon ? 'icon' : 'default'].right[_size] as never
+              }
               textAlign={'left' as never}
+              display={(isReactNative() ? 'flex' : 'inline-flex') as never}
             >
               <BaseBox
-                // paddingRight={Icon ? horizontalPadding.icon[size] : horizontalPadding.default[size]}
-                // paddingLeft={horizontalPadding[Icon ? 'icon' : 'default'][size]}
-                display={(isReactNative() ? 'flex' : 'inline-flex') as never}
                 flexDirection="row"
                 justifyContent="center"
                 alignItems="center"
                 overflow="hidden"
+                display="flex"
               >
                 {Icon ? (
-                  <BaseBox
-                    // paddingRight={Boolean(Icon) ? iconPadding[size] : 'spacing.0'}
-                    display="flex"
-                  >
+                  <BaseBox paddingRight="spacing.3" display="flex">
                     <Icon color={chipTextColor as never} size={iconSize[size]} />
                   </BaseBox>
                 ) : null}
