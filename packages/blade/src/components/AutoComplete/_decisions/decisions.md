@@ -172,14 +172,14 @@ We add `showTags={false}` to AutoComplete to remove tags from input. Then we can
 
 If not tags, what to show inside AutoComplete :thinking:? Checkout this table to understand -
 
-| Code                                                            | Output                                                                                                                     |
-| --------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| `<AutoComplete label="Status" showTags={false} />`              | <img width="220" alt="image" src="https://github.com/razorpay/blade/assets/30949385/c8a30845-812c-493f-a51f-97c233880960"> |
-| `<AutoComplete accessibilityLabel="Status" showTags={false} />` | <img width="200" alt="image" src="https://github.com/razorpay/blade/assets/30949385/83cf63d5-ccc4-4bb9-bf0d-ce91dc5c1b09"> |
+| Code                                                            | Description                                                                                                  | Output                                                                                                                     |
+| --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------- |
+| `<AutoComplete label="Status" showTags={false} />`              | When input has label, we show number of selected items                                                       | <img width="220" alt="image" src="https://github.com/razorpay/blade/assets/30949385/c8a30845-812c-493f-a51f-97c233880960"> |
+| `<AutoComplete accessibilityLabel="Status" showTags={false} />` | When input doesn't have a label, we show accessibilityLabel inside the input to show what the input is about | <img width="200" alt="image" src="https://github.com/razorpay/blade/assets/30949385/83cf63d5-ccc4-4bb9-bf0d-ce91dc5c1b09"> |
 
-So when input has label, we show number of selected items.
+.
 
-When input doesn't have a label, we show accessibilityLabel inside the input.
+.
 
 **Code**
 
@@ -211,6 +211,10 @@ const [selectedItems, setSelectedItems] = React.useState([]);
 
 ### With Different Inactive - Active States
 
+> **Note**
+>
+> Number of items shown in inactive state is auto-calculated based on height and width of the input.
+
 | Code                                 | Inactive                                                                                                                   | Active                                                                                                                     |
 | ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
 | `<AutoComplete rows="1" />`          | <img width="266" alt="image" src="https://github.com/razorpay/blade/assets/30949385/74b849f3-f1b9-4922-b717-70ffc7ffd56e"> | <img width="276" alt="image" src="https://github.com/razorpay/blade/assets/30949385/055bc4f4-fb57-4129-b27a-0f1966c8ad26"> |
@@ -237,4 +241,5 @@ AutoComplete will contiue to follow [same keyboard navigations as SelectInput](h
 
 - **Q1:** Is everyone sold on `selected` and `onSelectChange` API? It is inconsistent with SelectInput. Might have to change it in SelectInput as well.
 - **Q2:** What to do with BottomSheetHeader (and BaseHeader)? Should we make it slot like Footer? Should we remove title, subtitle, etc?
-- **Q3:** `rows: '1' | '3' | 'expandable'` vs `height: 'single-line' | 'multi-line' | 'expandable'`
+- **Q3:** `rows: '1' | '3' | 'expandable'` vs `numberOfLines: '1' | '3' | 'expandable'`ˀ vs `height: 'single-line' | 'multi-line' | 'expandable'`
+- **Q4:** `onSelectChange` vs `onSelectionChange` vs `onItemSelectionChange`
