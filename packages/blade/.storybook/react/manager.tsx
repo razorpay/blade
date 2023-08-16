@@ -68,7 +68,21 @@ const InternalStoryAddon = () => {
     toggleHiddenStoryStyle(!isActive);
   }, [isActive]);
 
-  return null;
+  return (
+    <IconButton
+      autoFocus={false}
+      content={null}
+      nonce={null}
+      rel={null}
+      rev={null}
+      key={TOOL_ID}
+      active={isActive}
+      title="Show internal components"
+      onClick={toggleVisibility}
+    >
+      <Icons icon="lock" />
+    </IconButton>
+  );
 };
 
 addons.register(ADDON_ID, () => {
