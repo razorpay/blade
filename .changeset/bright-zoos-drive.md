@@ -1,5 +1,5 @@
 ---
-"@razorpay/blade": patch
+'@razorpay/blade': minor
 ---
 
-fix(Switch): correct cursor style in disabled state
+feat: Add new `Chip` and `ChipGroup` components
