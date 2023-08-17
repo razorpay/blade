@@ -232,6 +232,23 @@ exports[`Carousel Snapshots should render 1`] = `
         <View
           accessibilityLabel="Previous Slide"
           accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
           accessible={true}
           collapsable={false}
           focusable={true}
@@ -343,6 +360,23 @@ exports[`Carousel Snapshots should render 1`] = `
       >
         <View
           accessibilityLabel="Slide 1"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
           accessible={true}
           collapsable={false}
           focusable={true}
@@ -357,7 +391,7 @@ exports[`Carousel Snapshots should render 1`] = `
           onStartShouldSetResponder={[Function]}
         >
           <View
-            accessibilityControls="25-carousel-item-0"
+            accessibilityControls="7-carousel-item-0"
             accessibilityRole="tab"
             accessibilityState={
               {
@@ -367,7 +401,7 @@ exports[`Carousel Snapshots should render 1`] = `
             accessible={true}
             data-blade-component="base-box"
             isActive={true}
-            slideIndex={0}
+            slideIndex={1}
             style={
               [
                 {
@@ -385,9 +419,6 @@ exports[`Carousel Snapshots should render 1`] = `
                   "paddingLeft": 0,
                   "paddingRight": 0,
                   "paddingTop": 0,
-                  "transitionDuration": 400,
-                  "transitionProperty": "width",
-                  "transitionTimingFunction": "0.3 0 0.2 1",
                 },
               ]
             }
@@ -406,6 +437,23 @@ exports[`Carousel Snapshots should render 1`] = `
         </View>
         <View
           accessibilityLabel="Slide 2"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
           accessible={true}
           collapsable={false}
           focusable={true}
@@ -420,7 +468,7 @@ exports[`Carousel Snapshots should render 1`] = `
           onStartShouldSetResponder={[Function]}
         >
           <View
-            accessibilityControls="25-carousel-item-1"
+            accessibilityControls="7-carousel-item-1"
             accessibilityRole="tab"
             accessibilityState={
               {
@@ -430,7 +478,7 @@ exports[`Carousel Snapshots should render 1`] = `
             accessible={true}
             data-blade-component="base-box"
             isActive={false}
-            slideIndex={1}
+            slideIndex={2}
             style={
               [
                 {
@@ -448,9 +496,6 @@ exports[`Carousel Snapshots should render 1`] = `
                   "paddingLeft": 0,
                   "paddingRight": 0,
                   "paddingTop": 0,
-                  "transitionDuration": 400,
-                  "transitionProperty": "width",
-                  "transitionTimingFunction": "0.3 0 0.2 1",
                 },
               ]
             }
@@ -481,6 +526,23 @@ exports[`Carousel Snapshots should render 1`] = `
         <View
           accessibilityLabel="Next Slide"
           accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
           accessible={true}
           collapsable={false}
           focusable={true}
@@ -872,6 +934,23 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
         <View
           accessibilityLabel="Previous Slide"
           accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
           accessible={true}
           collapsable={false}
           focusable={true}
@@ -983,6 +1062,23 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
       >
         <View
           accessibilityLabel="Slide 1"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
           accessible={true}
           collapsable={false}
           focusable={true}
@@ -997,7 +1093,7 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
           onStartShouldSetResponder={[Function]}
         >
           <View
-            accessibilityControls="26-carousel-item-0"
+            accessibilityControls="8-carousel-item-0"
             accessibilityRole="tab"
             accessibilityState={
               {
@@ -1007,7 +1103,7 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
             accessible={true}
             data-blade-component="base-box"
             isActive={true}
-            slideIndex={0}
+            slideIndex={1}
             style={
               [
                 {
@@ -1025,9 +1121,6 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
                   "paddingLeft": 0,
                   "paddingRight": 0,
                   "paddingTop": 0,
-                  "transitionDuration": 400,
-                  "transitionProperty": "width",
-                  "transitionTimingFunction": "0.3 0 0.2 1",
                 },
               ]
             }
@@ -1046,6 +1139,23 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
         </View>
         <View
           accessibilityLabel="Slide 2"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
           accessible={true}
           collapsable={false}
           focusable={true}
@@ -1060,70 +1170,7 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
           onStartShouldSetResponder={[Function]}
         >
           <View
-            accessibilityControls="26-carousel-item-1"
-            accessibilityRole="tab"
-            accessibilityState={
-              {
-                "selected": false,
-              }
-            }
-            accessible={true}
-            data-blade-component="base-box"
-            isActive={false}
-            slideIndex={1}
-            style={
-              [
-                {
-                  "marginLeft": 4,
-                },
-                {
-                  "backgroundColor": "hsla(214, 15%, 18%, 0.64)",
-                  "borderColor": "black",
-                  "borderRadius": 9999,
-                  "borderStyle": "solid",
-                  "borderWidth": 0,
-                  "cursor": "pointer",
-                  "height": 6,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "transitionDuration": 400,
-                  "transitionProperty": "width",
-                  "transitionTimingFunction": "0.3 0 0.2 1",
-                },
-              ]
-            }
-            variant="gray"
-          >
-            <View
-              style={
-                [
-                  {
-                    "width": 6,
-                  },
-                ]
-              }
-            />
-          </View>
-        </View>
-        <View
-          accessibilityLabel="Slide 3"
-          accessible={true}
-          collapsable={false}
-          focusable={true}
-          onBlur={[Function]}
-          onClick={[Function]}
-          onFocus={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-        >
-          <View
-            accessibilityControls="26-carousel-item-2"
+            accessibilityControls="8-carousel-item-1"
             accessibilityRole="tab"
             accessibilityState={
               {
@@ -1151,9 +1198,83 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
                   "paddingLeft": 0,
                   "paddingRight": 0,
                   "paddingTop": 0,
-                  "transitionDuration": 400,
-                  "transitionProperty": "width",
-                  "transitionTimingFunction": "0.3 0 0.2 1",
+                },
+              ]
+            }
+            variant="gray"
+          >
+            <View
+              style={
+                [
+                  {
+                    "width": 6,
+                  },
+                ]
+              }
+            />
+          </View>
+        </View>
+        <View
+          accessibilityLabel="Slide 3"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+        >
+          <View
+            accessibilityControls="8-carousel-item-2"
+            accessibilityRole="tab"
+            accessibilityState={
+              {
+                "selected": false,
+              }
+            }
+            accessible={true}
+            data-blade-component="base-box"
+            isActive={false}
+            slideIndex={3}
+            style={
+              [
+                {
+                  "marginLeft": 4,
+                },
+                {
+                  "backgroundColor": "hsla(214, 15%, 18%, 0.64)",
+                  "borderColor": "black",
+                  "borderRadius": 9999,
+                  "borderStyle": "solid",
+                  "borderWidth": 0,
+                  "cursor": "pointer",
+                  "height": 6,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
                 },
               ]
             }
@@ -1184,6 +1305,23 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
         <View
           accessibilityLabel="Next Slide"
           accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
           accessible={true}
           collapsable={false}
           focusable={true}
