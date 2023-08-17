@@ -57,7 +57,7 @@ const Controls = ({
         />
         {showIndicators ? (
           <Indicators
-            onIndicatorButtonClick={onIndicatorButtonClick}
+            onClick={onIndicatorButtonClick}
             activeIndex={activeIndicator}
             totalItems={totalSlides}
             variant={indicatorVariant}
@@ -76,7 +76,7 @@ const Controls = ({
     return (
       <Box marginTop="spacing.7">
         <Indicators
-          onIndicatorButtonClick={onIndicatorButtonClick}
+          onClick={onIndicatorButtonClick}
           activeIndex={activeIndicator}
           totalItems={totalSlides}
           variant={indicatorVariant}

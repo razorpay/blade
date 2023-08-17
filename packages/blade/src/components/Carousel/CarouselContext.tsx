@@ -10,12 +10,11 @@ type CarouselContextProps =
       setActiveIndicator: (value: React.SetStateAction<number>) => void;
       carouselId: string | null;
       totalNumberOfSlides: number;
-      activeSlide: number;
       /**
        * React native only
        */
-      slideWidth: number;
-      activeSlide: number;
+      slideWidth?: number;
+      activeSlide?: number;
     })
   | null;
 const CarouselContext = React.createContext<CarouselContextProps>(null);

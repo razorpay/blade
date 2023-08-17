@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react';
 import React from 'react';
-import { NavigationButtonProps } from './types';
+import type { NavigationButtonProps } from './types';
 import { StyledNavigationButton } from './StyledNavigationButton';
 import { ChevronLeftIcon, ChevronRightIcon } from '~components/Icons';
 import { isReactNative, useTheme } from '~utils';

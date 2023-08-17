@@ -17,7 +17,7 @@ const StyledNavigationButton = ({
   accessibilityLabel,
 }: Pick<NavigationButtonProps, 'variant' | 'onClick'> & {
   children: React.ReactNode;
-  accessibilityLabel: string;
+  accessibilityLabel?: string;
 }): React.ReactElement => {
   const [isPressed, setIsPressed] = React.useState(false);
 

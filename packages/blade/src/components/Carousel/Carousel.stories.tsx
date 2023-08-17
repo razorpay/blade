@@ -1,9 +1,8 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title as AddonTitle } from '@storybook/addon-docs';
-import type { CarouselProps } from './types';
-import { Carousel as CarouselComponent } from './Carousel';
-import { CarouselItem } from './CarouselItem';
+import type { CarouselProps } from './';
+import { Carousel as CarouselComponent, CarouselItem } from './';
 import { Box } from '~components/Box';
 import { Code, Heading, Text } from '~components/Typography';
 import { Card, CardBody } from '~components/Card';

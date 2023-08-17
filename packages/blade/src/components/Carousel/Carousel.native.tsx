@@ -126,6 +126,10 @@ const Carousel = ({
       totalNumberOfSlides,
       slideWidth,
       activeSlide,
+      carouselContainerRef: containerRef as never,
+      setActiveIndicator: setActiveSlide,
+      carouselItemAlignment: undefined,
+      shouldAddStartEndSpacing: false,
     };
   }, [carouselItemWidth, id, totalNumberOfSlides, slideWidth, activeSlide]);
 

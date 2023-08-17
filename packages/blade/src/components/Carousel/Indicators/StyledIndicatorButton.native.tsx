@@ -18,7 +18,7 @@ const StyledIndicatorButton = ({
   onClick,
   accessibilityLabel,
   ...props
-}: IndicatorButtonProps & { accessibilityLabel: string }): React.ReactElement => {
+}: IndicatorButtonProps & { accessibilityLabel?: string; as: never }): React.ReactElement => {
   const { theme } = useTheme();
   const easing = castNativeType(theme.motion.easing.standard.effective);
   const duration = castNativeType(makeMotionTime(theme.motion.duration.gentle));
