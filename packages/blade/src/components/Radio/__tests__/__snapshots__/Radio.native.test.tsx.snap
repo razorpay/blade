@@ -157,9 +157,7 @@ exports[`<Radio /> should render radio with label 1`] = `
                   },
                 ]
               }
-            >
-              
-            </Text>
+            />
           </View>
         </View>
       </View>
@@ -209,8 +207,19 @@ exports[`<Radio /> should render radio with label 1`] = `
                 accessibilityRole="radio"
                 accessibilityState={
                   {
+                    "busy": undefined,
                     "checked": false,
                     "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
                   }
                 }
                 accessible={true}
@@ -515,9 +524,7 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
                   },
                 ]
               }
-            >
-              
-            </Text>
+            />
           </View>
         </View>
       </View>
@@ -567,8 +574,19 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
                 accessibilityRole="radio"
                 accessibilityState={
                   {
+                    "busy": undefined,
                     "checked": false,
                     "disabled": true,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
                   }
                 }
                 accessible={true}
