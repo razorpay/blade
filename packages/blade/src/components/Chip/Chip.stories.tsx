@@ -109,28 +109,28 @@ const ChipTemplate: ComponentStory<typeof ChipGroupComponent> = ({ children, ...
         <ChipComponent value="mango">Mango</ChipComponent>
         <ChipComponent value="orange">Orange</ChipComponent>
       </ChipGroupComponent>
-      <ChipGroupComponent size="small" variant="positive">
+      <ChipGroupComponent {...args} size="small" variant="positive">
         <ChipComponent value="apple" icon={InfoIcon}>
           Apple
         </ChipComponent>
         <ChipComponent value="mango">Mango</ChipComponent>
         <ChipComponent value="orange">Orange</ChipComponent>
       </ChipGroupComponent>
-      <ChipGroupComponent size="medium" variant="negative">
+      <ChipGroupComponent {...args} size="medium" variant="negative">
         <ChipComponent value="apple" icon={InfoIcon}>
           Apple
         </ChipComponent>
         <ChipComponent value="mango">Mango</ChipComponent>
         <ChipComponent value="orange">Orange</ChipComponent>
       </ChipGroupComponent>
-      <ChipGroupComponent size="medium" variant="information">
+      <ChipGroupComponent {...args} size="medium" variant="information">
         <ChipComponent value="apple" icon={InfoIcon}>
           Apple
         </ChipComponent>
         <ChipComponent value="mango">Mango</ChipComponent>
         <ChipComponent value="orange">Orange</ChipComponent>
       </ChipGroupComponent>
-      <ChipGroupComponent size="large" variant="notice">
+      <ChipGroupComponent {...args} size="large" variant="notice">
         <ChipComponent value="apple" icon={InfoIcon}>
           Apple
         </ChipComponent>
@@ -154,7 +154,7 @@ export const SingleSelection = ChipTemplate.bind({});
 SingleSelection.storyName = 'Single Selection';
 SingleSelection.args = {
   size: 'xsmall',
-  variant: 'positive',
+  selectionType: 'single',
 };
 
 export const MultiSelection = ChipTemplate.bind({});

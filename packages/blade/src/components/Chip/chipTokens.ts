@@ -108,26 +108,26 @@ const chipColorTokens = {
     },
     positive: {
       default: 'feedback.positive.action.background.primary.default.lowContrast',
-      hover: 'feedback.positive.action.background.primary.positive.hover.lowContrast',
-      focus: 'feedback.positive.action.background.primary.positive.focus.lowContrast',
+      hover: 'feedback.positive.action.background.primary.hover.lowContrast',
+      focus: 'feedback.positive.action.background.primary.focus.lowContrast',
       disabled: 'brand.gray.a50.lowContrast',
     },
     negative: {
       default: 'feedback.negative.action.background.primary.default.lowContrast',
-      hover: 'feedback.negative.action.background.primary.positive.hover.lowContrast',
-      focus: 'feedback.negative.action.background.primary.positive.focus.lowContrast',
+      hover: 'feedback.negative.action.background.primary.hover.lowContrast',
+      focus: 'feedback.negative.action.background.primary.focus.lowContrast',
       disabled: 'brand.gray.a50.lowContrast',
     },
     notice: {
       default: 'feedback.notice.action.background.primary.default.lowContrast',
-      hover: 'feedback.notice.action.background.primary.positive.hover.lowContrast',
-      focus: 'feedback.notice.action.background.primary.positive.focus.lowContrast',
+      hover: 'feedback.notice.action.background.primary.hover.lowContrast',
+      focus: 'feedback.notice.action.background.primary.focus.lowContrast',
       disabled: 'brand.gray.a50.lowContrast',
     },
     information: {
       default: 'feedback.information.action.background.primary.default.lowContrast',
-      hover: 'feedback.information.action.background.primary.positive.hover.lowContrast',
-      focus: 'feedback.information.action.background.primary.positive.focus.lowContrast',
+      hover: 'feedback.information.action.background.primary.hover.lowContrast',
+      focus: 'feedback.information.action.background.primary.focus.lowContrast',
       disabled: 'brand.gray.a50.lowContrast',
     },
   },
@@ -144,43 +144,46 @@ const chipColorTokens = {
     },
     positive: {
       default: 'feedback.positive.action.border.primary.default.lowContrast',
-      hover: 'feedback.positive.action.border.primary.positive.hover.lowContrast',
-      focus: 'feedback.positive.action.border.primary.positive.focus.lowContrast',
+      hover: 'feedback.positive.action.border.primary.hover.lowContrast',
+      focus: 'feedback.positive.action.border.primary.focus.lowContrast',
       disabled: 'brand.gray.a100.lowContrast',
     },
     negative: {
       default: 'feedback.negative.action.border.primary.default.lowContrast',
-      hover: 'feedback.negative.action.border.primary.positive.hover.lowContrast',
-      focus: 'feedback.negative.action.border.primary.positive.focus.lowContrast',
+      hover: 'feedback.negative.action.border.primary.hover.lowContrast',
+      focus: 'feedback.negative.action.border.primary.focus.lowContrast',
       disabled: 'brand.gray.a50.lowContrast',
     },
     notice: {
       default: 'feedback.notice.action.border.primary.default.lowContrast',
-      hover: 'feedback.notice.action.border.primary.positive.hover.lowContrast',
-      focus: 'feedback.notice.action.border.primary.positive.focus.lowContrast',
+      hover: 'feedback.notice.action.border.primary.hover.lowContrast',
+      focus: 'feedback.notice.action.border.primary.focus.lowContrast',
       disabled: 'brand.gray.a50.lowContrast',
     },
     information: {
       default: 'feedback.information.action.border.primary.default.lowContrast',
-      hover: 'feedback.information.action.border.primary.positive.hover.lowContrast',
-      focus: 'feedback.information.action.border.primary.positive.focus.lowContrast',
+      hover: 'feedback.information.action.border.primary.hover.lowContrast',
+      focus: 'feedback.information.action.border.primary.focus.lowContrast',
       disabled: 'brand.gray.a50.lowContrast',
     },
   },
 };
 
-const getChipHoverTokens = (variant: ChipProps['variant']): SelectorInputHoverTokens => ({
-  default: {
-    background: {
-      checked: chipColorTokens.background[variant || 'neutral'].hover as never,
-      unchecked: 'colors.brand.gray.a50.lowContrast',
+const getChipHoverTokens = (variant: ChipProps['variant']): SelectorInputHoverTokens => {
+  console.log('variant hover', variant);
+  return {
+    default: {
+      background: {
+        checked: `colors.${chipColorTokens.background[variant || 'neutral'].hover}` as never,
+        unchecked: 'colors.brand.gray.a50.lowContrast',
+      },
+      border: {
+        checked: `colors.${chipColorTokens.border[variant || 'neutral'].hover}` as never,
+        unchecked: 'colors.brand.gray.500.lowContrast',
+      },
     },
-    border: {
-      checked: chipColorTokens.border[variant || 'neutral'].hover as never,
-      unchecked: 'colors.brand.gray.500.lowContrast',
-    },
-  },
-});
+  };
+};
 
 const iconPadding: Record<NonNullable<ChipProps['size']>, DotNotationSpacingStringToken> = {
   small: 'spacing.1',

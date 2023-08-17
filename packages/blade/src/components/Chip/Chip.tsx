@@ -50,13 +50,6 @@ type ChipProps = {
    */
   icon?: IconComponent;
   /**
-   * If `true`, The Chip will be checked. This also makes the Chip controlled
-   * Use `onChange` to update its value
-   *
-   * @default false
-   */
-  isChecked?: boolean;
-  /**
    * If `true`, the Chip will be disabled
    *
    * @default false
@@ -83,31 +76,20 @@ type ChipProps = {
   StyledPropsBlade;
 
 const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
-  {
-    isChecked,
-    isDisabled,
-    value,
-    children,
-    icon: Icon,
-    size = 'small',
-    variant,
-    testID,
-    ...styledProps
-  },
+  { isDisabled, value, children, icon: Icon, size = 'small', variant, testID, ...styledProps },
   ref,
 ) => {
   const groupProps = useChipGroupContext();
+  console.log('🚀 ~ file: Chip.tsx:83 ~ groupProps:', groupProps);
+  const isInsideGroup = !isEmpty(groupProps);
+
   if (__DEV__) {
-    // mandate value prop when using inside group
-    if (!value && !isEmpty(groupProps)) {
-      throw new Error(
-        `[Blade Chip]: <ChipGroup /> requires that you pass unique "value" prop to each <Chip />
-      <ChipGroup>
-        <Chip value="apple">Apple</Chip>
-        <Chip value="mango">Mango</Chip>
-      </ChipGroup>
-      `,
-      );
+    if (!isInsideGroup) {
+      throwBladeError({
+        moduleName: 'Chip',
+        message:
+          '<Chip /> component should only be used within the context of a <ChipGroup /> component',
+      });
     }
   }
 
@@ -133,7 +115,14 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
   const _isDisabled = isDisabled ?? groupProps?.isDisabled;
   const _name = groupProps?.name;
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
-  const _isChecked = isChecked ?? groupProps?.state?.isChecked(value!);
+  const _isChecked = groupProps?.state?.isChecked(value!);
+  // Check if the defaultValue property of groupProps is undefined
+  const defaultChecked =
+    typeof groupProps?.defaultValue === 'undefined'
+      ? undefined // If undefined, defaultChecked is also undefined
+      : groupProps?.selectionType === 'single'
+      ? groupProps?.defaultValue === value // If single selection and defaultValue equals value, defaultChecked is true
+      : groupProps?.defaultValue?.includes(value as string); // If multiple selection, check if value is in defaultValue array
   const useChip = groupProps?.selectionType === 'single' ? useRadio : useCheckbox;
   const _size = groupProps?.size ?? size;
   const _variant = variant ?? groupProps?.variant;
@@ -151,6 +140,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
   };
 
   const { state, inputProps } = useChip({
+    defaultChecked,
     isChecked: _isChecked,
     isDisabled: _isDisabled,
     name: _name,
@@ -194,6 +184,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
               backgroundColor={chipBackgroundColor as never}
               borderColor={chipBorderColor as never}
               size={_size}
+              isChecked={state.isChecked}
               paddingLeft={
                 chipHorizontalPaddingTokens[Icon ? 'icon' : 'default'].left[_size] as never
               }

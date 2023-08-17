@@ -10,7 +10,7 @@ const getStyledChipStyles = ({
   size,
   isChecked,
 }: StyledChipProps): CSSObject => {
-  console.log(theme.border);
+  console.log('🚀 ~ file: getStyledChipStyles.ts:13 ~ theme:', theme);
   return {
     backgroundColor: getIn(theme.colors, backgroundColor),
     borderRadius: makeBorderSize(theme.border.radius.max),
