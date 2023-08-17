@@ -143,4 +143,48 @@ WithMouseEvents.args = {
   height: '300px',
 } as BoxProps;
 
+export const WithDragAndDropEvents = (args: BoxProps): React.ReactElement => {
+  return (
+    <Box>
+      <Box
+        draggable
+        maxWidth="fit-content"
+        onDragStart={(e) => {
+          console.log('onDragStart', e);
+        }}
+        onDragEnd={(e) => {
+          console.log('onDragEnd', e);
+        }}
+      >
+        <Button> Drag me into the box below & check console</Button>
+      </Box>
+      <Box
+        {...args}
+        margin="spacing.5"
+        backgroundColor="surface.background.level2.lowContrast"
+        onDragEnter={(e) => {
+          e.preventDefault();
+          console.log('onDragEnter', e);
+        }}
+        onDragOver={(e) => {
+          e.preventDefault();
+          console.log('onDragOver', e);
+        }}
+        onDragLeave={(e) => {
+          console.log('onDragLeave', e);
+        }}
+        onDrop={(e) => {
+          e.preventDefault();
+          console.log('onDrop', e);
+        }}
+      />
+    </Box>
+  );
+};
+
+WithDragAndDropEvents.args = {
+  overflowY: 'auto',
+  height: '300px',
+} as BoxProps;
+
 export default BoxStoryMeta;
