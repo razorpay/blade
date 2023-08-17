@@ -5,28 +5,22 @@ import type { SelectorInputHoverTokens } from '~components/Form/Selector/types';
 import { size } from '~tokens/global';
 import type { IconProps } from '~components/Icons';
 
-const chipSizes = {
-  group: {
-    gap: {
-      small: {
-        mobile: 'spacing.2',
-        desktop: 'spacing.0',
-      },
-      medium: {
-        mobile: 'spacing.3',
-        desktop: 'spacing.2',
-      },
-    },
+const chipGroupGapTokens = {
+  xsmall: {
+    right: 'spacing.3',
+    bottom: 'spacing.3',
   },
-  icon: {
-    small: {
-      width: size[12],
-      height: size[12],
-    },
-    medium: {
-      width: size[16],
-      height: size[16],
-    },
+  small: {
+    right: 'spacing.3',
+    bottom: 'spacing.3',
+  },
+  medium: {
+    right: 'spacing.3',
+    bottom: 'spacing.4',
+  },
+  large: {
+    right: 'spacing.3',
+    bottom: 'spacing.4',
   },
 } as const;
 
@@ -93,7 +87,7 @@ const chipColorTokens = {
   text: {
     unchecked: 'surface.text.subtle.lowContrast',
     disabled: 'surface.text.placeholder.lowContrast',
-    neutral: 'brand.primary.500.lowContrast',
+    neutral: 'brand.primary.500',
     positive: 'feedback.text.positive.lowContrast',
     negative: 'feedback.text.negative.lowContrast',
     notice: 'feedback.text.notice.lowContrast',
@@ -205,7 +199,7 @@ export {
   chipColorTokens,
   chipHeightTokens,
   chipBorderWidthTokens,
-  chipSizes,
+  chipGroupGapTokens,
   getChipHoverTokens,
   chipHorizontalPaddingTokens,
   iconPadding,

@@ -2,9 +2,7 @@
 import React from 'react';
 import isEmpty from 'lodash/isEmpty';
 import { useChipGroupContext } from './ChipGroup/ChipGroupContext';
-// import { ChipIcon } from './ChipIcon';
 import {
-  iconPadding,
   iconSize,
   chipHorizontalPaddingTokens,
   chipColorTokens,
@@ -46,12 +44,6 @@ type ChipProps = {
    */
   children: StringChildrenType;
   /**
-   * If `true`, the Chip will be initially checked. This also makes the Chip uncontrolled
-   *
-   * @default false
-   */
-  defaultChecked?: boolean;
-  /**
    * Displays the Blade Icon component within the Chip
    * Accepts a component of type `IconComponent` from Blade.
    *
@@ -92,7 +84,6 @@ type ChipProps = {
 
 const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
   {
-    defaultChecked,
     isChecked,
     isDisabled,
     value,
@@ -140,7 +131,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
   } as const;
 
   const _isDisabled = isDisabled ?? groupProps?.isDisabled;
-  const _name = name ?? groupProps?.name;
+  const _name = groupProps?.name;
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
   const _isChecked = isChecked ?? groupProps?.state?.isChecked(value!);
   const useChip = groupProps?.selectionType === 'single' ? useRadio : useCheckbox;
@@ -160,7 +151,6 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
   };
 
   const { state, inputProps } = useChip({
-    defaultChecked,
     isChecked: _isChecked,
     isDisabled: _isDisabled,
     name: _name,

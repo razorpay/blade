@@ -30,6 +30,7 @@ type UseControllableStateProps<T> = {
  */
 export function useControllableState<T>(props: UseControllableStateProps<T>) {
   const { value: valueProp, defaultValue, onChange } = props;
+  console.log('🚀 ~ file: useControllable.ts:33 ~ defaultValue:', defaultValue);
 
   const [valueState, setValue] = React.useState(defaultValue as T);
   const { current: isControlled } = React.useRef(valueProp !== undefined);

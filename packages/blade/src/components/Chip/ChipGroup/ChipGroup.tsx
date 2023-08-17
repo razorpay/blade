@@ -1,5 +1,5 @@
 import React from 'react';
-// import { checkboxSizes } from '../checkboxTokens';
+import { chipGroupGapTokens } from '../chipTokens';
 import { ChipGroupProvider } from './ChipGroupContext';
 import { useChipGroup } from './useChipGroup';
 import type { ChipGroupProps } from './types';
@@ -52,7 +52,15 @@ const ChipGroup = ({
           <BaseBox>
             <BaseBox display="flex" flexDirection="row">
               {React.Children.map(children, (child, index) => {
-                return <BaseBox key={index}>{child}</BaseBox>;
+                return (
+                  <BaseBox
+                    key={index}
+                    marginBottom={chipGroupGapTokens[size].bottom}
+                    marginRight={chipGroupGapTokens[size].right}
+                  >
+                    {child}
+                  </BaseBox>
+                );
               })}
             </BaseBox>
           </BaseBox>

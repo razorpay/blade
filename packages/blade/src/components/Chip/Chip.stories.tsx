@@ -101,13 +101,43 @@ export default {
 
 const ChipTemplate: ComponentStory<typeof ChipGroupComponent> = ({ children, ...args }) => {
   return (
-    <ChipGroupComponent {...args}>
-      <ChipComponent value="apple" icon={InfoIcon}>
-        Apple
-      </ChipComponent>
-      <ChipComponent value="mango">Mango</ChipComponent>
-      <ChipComponent value="orange">Orange</ChipComponent>
-    </ChipGroupComponent>
+    <>
+      <ChipGroupComponent {...args}>
+        <ChipComponent value="apple" icon={InfoIcon}>
+          Apple
+        </ChipComponent>
+        <ChipComponent value="mango">Mango</ChipComponent>
+        <ChipComponent value="orange">Orange</ChipComponent>
+      </ChipGroupComponent>
+      <ChipGroupComponent size="small" variant="positive">
+        <ChipComponent value="apple" icon={InfoIcon}>
+          Apple
+        </ChipComponent>
+        <ChipComponent value="mango">Mango</ChipComponent>
+        <ChipComponent value="orange">Orange</ChipComponent>
+      </ChipGroupComponent>
+      <ChipGroupComponent size="medium" variant="negative">
+        <ChipComponent value="apple" icon={InfoIcon}>
+          Apple
+        </ChipComponent>
+        <ChipComponent value="mango">Mango</ChipComponent>
+        <ChipComponent value="orange">Orange</ChipComponent>
+      </ChipGroupComponent>
+      <ChipGroupComponent size="medium" variant="information">
+        <ChipComponent value="apple" icon={InfoIcon}>
+          Apple
+        </ChipComponent>
+        <ChipComponent value="mango">Mango</ChipComponent>
+        <ChipComponent value="orange">Orange</ChipComponent>
+      </ChipGroupComponent>
+      <ChipGroupComponent size="large" variant="notice">
+        <ChipComponent value="apple" icon={InfoIcon}>
+          Apple
+        </ChipComponent>
+        <ChipComponent value="mango">Mango</ChipComponent>
+        <ChipComponent value="orange">Orange</ChipComponent>
+      </ChipGroupComponent>
+    </>
   );
 };
 
@@ -123,16 +153,15 @@ Default.storyName = 'Default';
 export const SingleSelection = ChipTemplate.bind({});
 SingleSelection.storyName = 'Single Selection';
 SingleSelection.args = {
-  size: 'small',
+  size: 'xsmall',
   variant: 'positive',
 };
 
 export const MultiSelection = ChipTemplate.bind({});
 MultiSelection.storyName = 'Multi Selection';
 MultiSelection.args = {
-  size: 'medium',
+  size: 'xsmall',
   selectionType: 'multiple',
-  variant: 'negative',
 };
 
 // export const KitchenSink = (): React.ReactElement => {
