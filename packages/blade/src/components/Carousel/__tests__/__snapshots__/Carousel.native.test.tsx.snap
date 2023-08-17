@@ -391,7 +391,7 @@ exports[`Carousel Snapshots should render 1`] = `
           onStartShouldSetResponder={[Function]}
         >
           <View
-            accessibilityControls="7-carousel-item-0"
+            accessibilityControls="22-carousel-item-0"
             accessibilityRole="tab"
             accessibilityState={
               {
@@ -401,7 +401,7 @@ exports[`Carousel Snapshots should render 1`] = `
             accessible={true}
             data-blade-component="base-box"
             isActive={true}
-            slideIndex={1}
+            slideIndex={0}
             style={
               [
                 {
@@ -468,7 +468,7 @@ exports[`Carousel Snapshots should render 1`] = `
           onStartShouldSetResponder={[Function]}
         >
           <View
-            accessibilityControls="7-carousel-item-1"
+            accessibilityControls="22-carousel-item-1"
             accessibilityRole="tab"
             accessibilityState={
               {
@@ -478,7 +478,7 @@ exports[`Carousel Snapshots should render 1`] = `
             accessible={true}
             data-blade-component="base-box"
             isActive={false}
-            slideIndex={2}
+            slideIndex={1}
             style={
               [
                 {
@@ -1093,7 +1093,7 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
           onStartShouldSetResponder={[Function]}
         >
           <View
-            accessibilityControls="8-carousel-item-0"
+            accessibilityControls="23-carousel-item-0"
             accessibilityRole="tab"
             accessibilityState={
               {
@@ -1103,7 +1103,7 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
             accessible={true}
             data-blade-component="base-box"
             isActive={true}
-            slideIndex={1}
+            slideIndex={0}
             style={
               [
                 {
@@ -1170,7 +1170,7 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
           onStartShouldSetResponder={[Function]}
         >
           <View
-            accessibilityControls="8-carousel-item-1"
+            accessibilityControls="23-carousel-item-1"
             accessibilityRole="tab"
             accessibilityState={
               {
@@ -1180,7 +1180,7 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
             accessible={true}
             data-blade-component="base-box"
             isActive={false}
-            slideIndex={2}
+            slideIndex={1}
             style={
               [
                 {
@@ -1247,7 +1247,7 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
           onStartShouldSetResponder={[Function]}
         >
           <View
-            accessibilityControls="8-carousel-item-2"
+            accessibilityControls="23-carousel-item-2"
             accessibilityRole="tab"
             accessibilityState={
               {
@@ -1257,7 +1257,7 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
             accessible={true}
             data-blade-component="base-box"
             isActive={false}
-            slideIndex={3}
+            slideIndex={2}
             style={
               [
                 {

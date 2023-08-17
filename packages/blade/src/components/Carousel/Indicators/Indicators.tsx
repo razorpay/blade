@@ -19,17 +19,16 @@ const Indicators = (props: IndicatorsProps): React.ReactElement => {
           _visibleItems = 1;
         }
 
-        const slideIndex = idx * _visibleItems + 1;
         return (
           <IndicatorButton
             key={idx}
             {...makeAccessible({
               role: 'tab',
-              label: `Slide ${slideIndex}`,
+              label: `Slide ${idx * _visibleItems + 1}`,
               selected: idx === props.activeIndex,
               controls: `${carouselId}-carousel-item-${idx * _visibleItems}`,
             })}
-            slideIndex={slideIndex}
+            slideIndex={idx * _visibleItems}
             marginLeft={idx !== 0 ? 'spacing.2' : 'spacing.0'}
             isActive={idx === props.activeIndex}
             onClick={() => props?.onClick?.(idx)}
