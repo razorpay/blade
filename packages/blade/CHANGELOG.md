@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 10.1.0
+
+### Minor Changes
+
+- 0e2d5154: feat(Box): add `draggable`, `onDragStart`, `onDragEnd`, `onDragEnter`, `onDragLeave`, `onDragOver`, `onDrop`, `pointerEvents`, & `placeItems` props
+
 ## 10.0.0
 
 ### Major Changes
