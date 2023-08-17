@@ -818,6 +818,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
             validationState={validationState}
             currentInteraction={currentInteraction}
             isLabelLeftPositioned={isLabelLeftPositioned}
+            showAllTags={showAllTags}
             ref={inputWrapperRef as any}
           >
             <BaseInputVisuals leadingIcon={leadingIcon} prefix={prefix} isDisabled={isDisabled} />

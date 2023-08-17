@@ -17,8 +17,6 @@ import { MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import styled, { css, FlattenSimpleInterpolation, keyframes } from 'styled-components';
 
-// https: codesandbox.io/s/kind-cannon-4xg4lt?file=/src/App.js:935-968
-
 const tagDissappearKeyframe = keyframes`
   100% {
     opacity: 1;

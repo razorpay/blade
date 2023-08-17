@@ -124,10 +124,10 @@ const BaseInputTagSlot = ({
 
   const isMultiline = tagRows === '3' || tagRows === 'expandable';
 
+  // taking 200px as default width when we fail to get width from ref (should be rare). 200px is small enough so tags tend to be shown as +x selected
   const inputContainerWidth = inputWrapperRef.current?.clientWidth ?? 200;
-  const maxTagContainerWidth: SpacingValueType = isMultiline
-    ? '100%'
-    : `${inputContainerWidth - 100}px`;
+  const maxTagContainerWidth: SpacingValueType =
+    tagRows === '3' ? '100%' : `${inputContainerWidth - 100}px`;
 
   return (
     <BaseBox
