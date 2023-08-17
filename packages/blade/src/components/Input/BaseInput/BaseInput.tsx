@@ -381,8 +381,7 @@ const useTags = (
 
   const onTagRemove = (): void => {
     if (activeTagIndex >= 0 && activeTagIndex < visibleTagsCountRef.current && tags) {
-      console.log(tags[activeTagIndex]);
-      // tags[activeTagIndex].props.onDismiss();
+      tags[activeTagIndex].props.onDismiss({ tagIndex: activeTagIndex });
     }
   };
 

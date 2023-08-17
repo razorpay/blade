@@ -7,121 +7,14 @@ import { useDropdown } from '~components/Dropdown/useDropdown';
 import type { IconComponent } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
 import { VisuallyHidden } from '~components/VisuallyHidden';
-import { isReactNative, makeMotionTime, useTheme } from '~utils';
+import { isReactNative } from '~utils';
 import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
 import { componentIds } from '~components/Dropdown/dropdownUtils';
-import { Tag } from '~components/Tag';
 import type { BladeElementRef } from '~utils/types';
 import { useBladeInnerRef } from '~utils/useBladeInnerRef';
 import { MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import styled, { css, FlattenSimpleInterpolation, keyframes } from 'styled-components';
-
-const tagDissappearKeyframe = keyframes`
-  100% {
-    opacity: 1;
-    max-width: 140px;
-  }
-
-  100% {
-    opacity: 0;
-    max-width: 0px;
-    max-height: 0px;
-  }
-`;
-
-const tagShowKeyframe = keyframes`
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-`;
-
-const AnimatedTagContainer = styled(BaseBox)<{
-  transition: FlattenSimpleInterpolation;
-}>(
-  (props) => css`
-    ${props.transition};
-    display: inline-block;
-    max-width: 140px;
-  `,
-);
-
-const TagWithAnimation = ({
-  selectedIndex,
-  tagIndex,
-}: {
-  selectedIndex: number;
-  tagIndex: number;
-}) => {
-  const [isTagVisible, setIsTagVisible] = React.useState(true);
-  const {
-    isTagDismissedRef,
-    setChangeCallbackTriggerer,
-    removeOption,
-    options,
-    activeTagIndex,
-    selectedIndices,
-    changeCallbackTriggerer,
-  } = useDropdown();
-  const { theme } = useTheme();
-  const prevSelectionsLength = React.useRef<number>();
-
-  const hideTagTransition = css`
-    animation: ${tagDissappearKeyframe} ${makeMotionTime(theme.motion.duration.xquick)}
-      ${String(theme.motion.easing.exit.effective)};
-  `;
-
-  const showTagTransition = css`
-    animation: ${tagShowKeyframe} ${makeMotionTime(theme.motion.duration.xquick)}
-      ${String(theme.motion.easing.entrance.effective)};
-  `;
-
-  const noTransition = css`
-    animation: none;
-  `;
-
-  const isTagRemoved = prevSelectionsLength.current
-    ? prevSelectionsLength.current > selectedIndices.length
-    : false;
-
-  return (
-    <AnimatedTagContainer
-      style={{ opacity: isTagVisible ? 1 : 0 }}
-      onAnimationEnd={() => {
-        if (!isTagVisible) {
-          if (isTagDismissedRef.current) {
-            isTagDismissedRef.current.value = true;
-          }
-
-          removeOption(selectedIndex);
-          setIsTagVisible(true);
-          setChangeCallbackTriggerer(Number(changeCallbackTriggerer) + 1);
-        }
-      }}
-      transition={
-        isTagRemoved ? noTransition : isTagVisible ? showTagTransition : hideTagTransition
-      }
-    >
-      <Tag
-        _isVirtuallyFocussed={tagIndex === activeTagIndex}
-        _isTagInsideInput={true}
-        key={selectedIndex}
-        marginRight="spacing.3"
-        marginY="spacing.2"
-        onDismiss={() => {
-          prevSelectionsLength.current = selectedIndices.length;
-          setIsTagVisible(false);
-        }}
-      >
-        {options[selectedIndex].title}
-      </Tag>
-    </AnimatedTagContainer>
-  );
-};
+import { getTagsGroup } from '~components/Tag/getTagsGroup';
 
 type SelectInputCommonProps = Pick<
   BaseInputProps,
@@ -221,7 +114,10 @@ const _SelectInput = (
     setShouldIgnoreBlurAnimation,
     controlledValueIndices,
     options,
+    removeOption,
+    isTagDismissedRef,
     changeCallbackTriggerer,
+    setChangeCallbackTriggerer,
     isControlled,
     setIsControlled,
     selectionType,
@@ -324,17 +220,28 @@ const _SelectInput = (
     setHasLabelOnLeft(props.labelPosition === 'left');
   }, [props.labelPosition, setHasLabelOnLeft]);
 
-  const getTags = (): React.ReactElement[] | null => {
-    if (selectionType === 'single') {
-      return null;
-    }
+  const getTags = React.useMemo(
+    () => () => {
+      console.count('getTags');
+      if (selectionType === 'single') {
+        return undefined;
+      }
 
-    const tags = selectedIndices.map((selectedIndex, tagIndex) => (
-      <TagWithAnimation key={selectedIndex} selectedIndex={selectedIndex} tagIndex={tagIndex} />
-    ));
+      return getTagsGroup({
+        tags: selectedIndices.map((selectedIndex) => options[selectedIndex].title),
+        activeTagIndex,
+        onDismiss: ({ tagIndex, tagName }) => {
+          if (isTagDismissedRef.current) {
+            isTagDismissedRef.current.value = true;
+          }
 
-    return tags;
-  };
+          removeOption(selectedIndices[tagIndex]);
+          setChangeCallbackTriggerer(Number(changeCallbackTriggerer) + 1);
+        },
+      });
+    },
+    [selectedIndices, selectionType, activeTagIndex, changeCallbackTriggerer],
+  );
 
   return (
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

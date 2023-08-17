@@ -222,6 +222,7 @@ const useDropdown = (): UseDropdownReturnValue => {
   ) => boolean;
 
   const setIndices = (indices: number[]): void => {
+    console.log('new indices', indices);
     if (isControlled) {
       setControlledValueIndices(indices);
     } else {
@@ -232,6 +233,10 @@ const useDropdown = (): UseDropdownReturnValue => {
   const removeOption = (index: number): void => {
     // remove existing item
     const existingItemIndex = selectedIndices.indexOf(index);
+    if (existingItemIndex < 0) {
+      return;
+    }
+
     setIndices([
       ...selectedIndices.slice(0, existingItemIndex),
       ...selectedIndices.slice(existingItemIndex + 1),

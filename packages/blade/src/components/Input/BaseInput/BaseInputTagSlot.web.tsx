@@ -114,8 +114,6 @@ const BaseInputTagSlot = ({
     horizontallyScrollableContainerRef,
   } = useTagsDisplay(tags, visibleTagsCountRef, tagRows);
 
-  console.log({ showAllTags });
-
   if (!tags) {
     return null;
   }
