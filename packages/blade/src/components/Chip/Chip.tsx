@@ -23,6 +23,7 @@ import { throwBladeError } from '~utils/logger';
 import { useCheckbox } from '~components/Checkbox/useCheckbox';
 import { useRadio } from '~components/Radio/useRadio';
 import { isReactNative } from '~utils';
+import { useTheme } from '~components/BladeProvider';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import { Text } from '~components/Typography';
 import type { Feedback } from '~tokens/theme/theme';
@@ -79,9 +80,10 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
   { isDisabled, value, children, icon: Icon, size = 'small', variant, testID, ...styledProps },
   ref,
 ) => {
+  const theme = useTheme();
   const groupProps = useChipGroupContext();
-  console.log('🚀 ~ file: Chip.tsx:83 ~ groupProps:', groupProps);
   const isInsideGroup = !isEmpty(groupProps);
+  const [isPressed, setIsPressed] = React.useState(false);
 
   if (__DEV__) {
     if (!isInsideGroup) {
@@ -148,6 +150,44 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
     onChange: handleChange,
   });
 
+  // const handleClick = React.useCallback(() => {
+  //   if (_isDisabled || isPressed) return;
+  //   setIsPressed(true);
+  //   setTimeout(() => {
+  //     setIsPressed(false);
+  //   }, 150);
+  // }, [_isDisabled, isPressed]);
+
+  const handlePointerPressedIn = React.useCallback(() => {
+    if (_isDisabled) return;
+    setIsPressed(true);
+  }, [_isDisabled]);
+
+  const handlePointerPressedOut = React.useCallback(() => {
+    if (_isDisabled) return;
+    setIsPressed(false);
+  }, [_isDisabled]);
+
+  const handleKeyboardPressedIn = React.useCallback(
+    (e: React.KeyboardEvent) => {
+      if (_isDisabled) return;
+      if (e.key === ' ') {
+        setIsPressed(true);
+      }
+    },
+    [_isDisabled],
+  );
+
+  const handleKeyboardPressedOut = React.useCallback(
+    (e: React.KeyboardEvent) => {
+      if (_isDisabled) return;
+      if (e.key === ' ') {
+        setIsPressed(false);
+      }
+    },
+    [_isDisabled],
+  );
+
   const chipTextColor =
     chipColorTokens.text[
       _isDisabled ? 'disabled' : _isChecked && _variant ? _variant : 'unchecked'
@@ -168,6 +208,13 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
     >
       <SelectorLabel
         componentName={MetaConstants.ChipLabel}
+        onTouchStart={handlePointerPressedIn}
+        onTouchEnd={handlePointerPressedOut}
+        onMouseDown={handlePointerPressedIn}
+        onMouseUp={handlePointerPressedOut}
+        onMouseOut={handlePointerPressedOut}
+        onKeyDown={handleKeyboardPressedIn}
+        onKeyUp={handleKeyboardPressedOut}
         inputProps={isReactNative() ? inputProps : {}}
         style={{ cursor: _isDisabled ? 'not-allowed' : 'pointer' }}
       >
@@ -185,6 +232,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
               borderColor={chipBorderColor as never}
               size={_size}
               isChecked={state.isChecked}
+              isPressed={isPressed}
               paddingLeft={
                 chipHorizontalPaddingTokens[Icon ? 'icon' : 'default'].left[_size] as never
               }

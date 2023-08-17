@@ -10,6 +10,7 @@ export type StyledChipProps = {
   backgroundColor: FeedbackBackgroundColors;
   size: NonNullable<ChipProps['size']>;
   isChecked?: boolean;
+  isPressed?: boolean;
   borderColor: `colors.${DotNotationColorStringToken<Theme['colors']>}`;
   theme: Theme;
 };

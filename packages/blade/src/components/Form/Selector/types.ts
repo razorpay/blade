@@ -17,6 +17,7 @@ type SelectorLabelProps = {
   onKeyUp?: React.KeyboardEventHandler<HTMLLabelElement>;
   onTouchStart?: React.TouchEventHandler<HTMLLabelElement>;
   onTouchEnd?: React.TouchEventHandler<HTMLLabelElement>;
+  onClick?: React.MouseEventHandler<HTMLLabelElement>;
   style?: React.CSSProperties;
 } & TestID;
 
