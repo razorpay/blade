@@ -1,43 +1,51 @@
-import styled, { css, keyframes } from 'styled-components';
+import styled, { css, FlattenSimpleInterpolation, keyframes } from 'styled-components';
 import type { ReactElement, ReactNode } from 'react';
 import React from 'react';
 import { getInputBackgroundAndBorderStyles } from './baseInputStyles';
 import type { BaseInputProps } from './BaseInput';
 import { BaseInputAnimatedBorder } from './BaseInputAnimatedBorder';
 import BaseBox from '~components/Box/BaseBox';
-import { castWebType, getPlatformType } from '~utils';
+import { castWebType, getPlatformType, makeSize } from '~utils';
 import type { ActionStates } from '~tokens/theme/theme';
 import { makeMotionTime } from '~utils/makeMotionTime';
 import { useTheme } from '~components/BladeProvider';
+import { size } from '~tokens/global';
 
 type BaseInputWrapperProps = Pick<BaseInputProps, 'isDisabled' | 'validationState'> & {
   isFocused?: boolean;
   isLabelLeftPositioned?: boolean;
   currentInteraction: keyof ActionStates;
   isTextArea?: boolean;
+  showAllTags?: boolean;
+  setShowAllTagsWithAnimation?: (showAllTagsWithAnimation: boolean) => void;
 };
+
+const BASEINPUT_MIN_HEIGHT = size['36'];
+const BASEINPUT_BOTTOM_LINE_HEIGHT = size['1'];
+const MAX_ROWS = 4;
+const BASEINPUT_MAX_HEIGHT = size['36'] * MAX_ROWS; // we don't want exact number but rough number to be able to animate correctly in height.
 
 // Define the animation keyframes
 const expandAnimation = keyframes`
   from {
-    max-height: 37px;
+    max-height: ${makeSize(BASEINPUT_MIN_HEIGHT + BASEINPUT_BOTTOM_LINE_HEIGHT)};
   }
   to {
-    max-height: 200px;
+    max-height: ${makeSize(BASEINPUT_MAX_HEIGHT + BASEINPUT_BOTTOM_LINE_HEIGHT)};
   }
 `;
 
 const collapseAnimation = keyframes`
   from {
-    max-height: 200px;
+    max-height: ${makeSize(BASEINPUT_MAX_HEIGHT + BASEINPUT_BOTTOM_LINE_HEIGHT)};
   }
   to {
-    max-height: 37px;
+    max-height: ${makeSize(BASEINPUT_MIN_HEIGHT + BASEINPUT_BOTTOM_LINE_HEIGHT)};
   }
 `;
 
 // Styled component with animation
-const AnimatedContainer = styled(BaseBox)(
+const AnimatedContainer = styled(BaseBox)<{ transition?: FlattenSimpleInterpolation }>(
   (props) => css`
     ${props.transition};
   `,
@@ -91,6 +99,7 @@ const _BaseInputWrapper: React.ForwardRefRenderFunction<
     isLabelLeftPositioned,
     isTextArea,
     showAllTags,
+    setShowAllTagsWithAnimation,
     ...props
   },
   ref,
@@ -118,6 +127,11 @@ const _BaseInputWrapper: React.ForwardRefRenderFunction<
       currentInteraction={currentInteraction}
       position="relative"
       transition={showAllTags ? expandTransition : collapseTransition}
+      onAnimationEnd={(e) => {
+        if (!showAllTags && e.animationName === collapseAnimation.getName()) {
+          setShowAllTagsWithAnimation?.(false);
+        }
+      }}
       {...props}
     >
       {children}

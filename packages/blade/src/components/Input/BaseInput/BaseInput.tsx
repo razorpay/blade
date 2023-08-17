@@ -356,6 +356,7 @@ const useTags = (
   tags: BaseInputProps['tags'],
   activeTagIndex: number,
   setActiveTagIndex?: (activeTagIndex: number) => void,
+  showAllTags?: boolean,
 ): {
   onInputKeydownTagHandler: OnInputKeydownTagHandlerType;
   visibleTagsCountRef: React.MutableRefObject<number>;
@@ -380,7 +381,8 @@ const useTags = (
 
   const onTagRemove = (): void => {
     if (activeTagIndex >= 0 && activeTagIndex < visibleTagsCountRef.current && tags) {
-      tags[activeTagIndex].props.onDismiss();
+      console.log(tags[activeTagIndex]);
+      // tags[activeTagIndex].props.onDismiss();
     }
   };
 
@@ -715,7 +717,16 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
       tags,
       activeTagIndex,
       setActiveTagIndex,
+      showAllTags,
     );
+    const [showAllTagsWithAnimation, setShowAllTagsWithAnimation] = React.useState(false);
+
+    React.useEffect(() => {
+      if (showAllTags) {
+        setShowAllTagsWithAnimation(true);
+      }
+    }, [showAllTags]);
+
     const {
       handleOnFocus,
       handleOnChange,
@@ -819,12 +830,13 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
             currentInteraction={currentInteraction}
             isLabelLeftPositioned={isLabelLeftPositioned}
             showAllTags={showAllTags}
+            setShowAllTagsWithAnimation={setShowAllTagsWithAnimation}
             ref={inputWrapperRef as any}
           >
             <BaseInputVisuals leadingIcon={leadingIcon} prefix={prefix} isDisabled={isDisabled} />
             <BaseInputTagSlot
               tags={tags}
-              showAllTags={showAllTags}
+              showAllTags={showAllTagsWithAnimation}
               setFocusOnInput={() => {
                 if (ref && 'current' in ref) {
                   ref.current?.focus();
