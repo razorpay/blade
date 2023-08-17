@@ -24,7 +24,9 @@ const getIndicatorButtonStyles = ({
     cursor: 'pointer',
     padding: makeSpace(theme.spacing[0]),
     borderRadius: theme.border.radius.max,
-    backgroundColor: isActive ? backgroundColor[variant] : theme.colors.overlay.background,
+    // TODO: Temporary hard coded color,
+    // Replace this with new theme.overlay.background token once it's finalized
+    backgroundColor: isActive ? backgroundColor[variant] : 'hsla(214, 18%, 69%, 0.64)',
     width: isActive ? makeSize(size[18]) : makeSize(size[6]),
     height: makeSize(size[6]),
 

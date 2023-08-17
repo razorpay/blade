@@ -485,7 +485,7 @@ exports[`Carousel Snapshots should render 1`] = `
                   "marginLeft": 4,
                 },
                 {
-                  "backgroundColor": "hsla(214, 15%, 18%, 0.64)",
+                  "backgroundColor": "hsla(214, 18%, 69%, 0.64)",
                   "borderColor": "black",
                   "borderRadius": 9999,
                   "borderStyle": "solid",
@@ -1187,7 +1187,7 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
                   "marginLeft": 4,
                 },
                 {
-                  "backgroundColor": "hsla(214, 15%, 18%, 0.64)",
+                  "backgroundColor": "hsla(214, 18%, 69%, 0.64)",
                   "borderColor": "black",
                   "borderRadius": 9999,
                   "borderStyle": "solid",
@@ -1264,7 +1264,7 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
                   "marginLeft": 4,
                 },
                 {
-                  "backgroundColor": "hsla(214, 15%, 18%, 0.64)",
+                  "backgroundColor": "hsla(214, 18%, 69%, 0.64)",
                   "borderColor": "black",
                   "borderRadius": 9999,
                   "borderStyle": "solid",
