@@ -6,11 +6,14 @@ type FeedbackBackgroundColors = `feedback.background.${DotNotationColorStringTok
   Theme['colors']['feedback']['background']
 >}`;
 
-export type StyledChipProps = {
+export type AnimatedChipProps = {
   backgroundColor: FeedbackBackgroundColors;
   size: NonNullable<ChipProps['size']>;
   isChecked?: boolean;
   isPressed?: boolean;
+  isDisabled?: boolean;
+  withIcon?: boolean;
   borderColor: `colors.${DotNotationColorStringToken<Theme['colors']>}`;
   theme: Theme;
+  children: React.ReactNode;
 };

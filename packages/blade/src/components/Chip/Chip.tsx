@@ -8,7 +8,7 @@ import {
   chipColorTokens,
   getChipHoverTokens,
 } from './chipTokens';
-import { StyledChip } from './StyledChip';
+import { AnimatedChip } from './AnimatedChip';
 import { IconComponent, IconProps } from '~components/Icons';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
@@ -205,6 +205,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
     <BaseBox
       {...metaAttribute({ name: MetaConstants.Chip, testID })}
       {...getStyledProps(styledProps)}
+      display={(isReactNative() ? 'flex' : 'inline-flex') as never}
     >
       <SelectorLabel
         componentName={MetaConstants.ChipLabel}
@@ -227,27 +228,20 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
               inputProps={inputProps}
               ref={ref}
             />
-            <StyledChip
+            <AnimatedChip
               backgroundColor={chipBackgroundColor as never}
               borderColor={chipBorderColor as never}
               size={_size}
               isChecked={state.isChecked}
               isPressed={isPressed}
-              paddingLeft={
-                chipHorizontalPaddingTokens[Icon ? 'icon' : 'default'].left[_size] as never
-              }
-              paddingRight={
-                chipHorizontalPaddingTokens[Icon ? 'icon' : 'default'].right[_size] as never
-              }
-              textAlign={'left' as never}
-              display={(isReactNative() ? 'flex' : 'inline-flex') as never}
+              withIcon={Boolean(Icon)}
             >
               <BaseBox
+                display="flex"
                 flexDirection="row"
                 justifyContent="center"
                 alignItems="center"
                 overflow="hidden"
-                display="flex"
               >
                 {Icon ? (
                   <BaseBox paddingRight="spacing.3" display="flex">
@@ -263,7 +257,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
                   {children}
                 </Text>
               </BaseBox>
-            </StyledChip>
+            </AnimatedChip>
           </BaseBox>
         </BaseBox>
       </SelectorLabel>
