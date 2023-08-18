@@ -170,7 +170,6 @@ const chipColorTokens = {
 };
 
 const getChipHoverTokens = (variant: ChipProps['variant']): SelectorInputHoverTokens => {
-  console.log('variant hover', variant);
   return {
     default: {
       background: {
@@ -183,12 +182,6 @@ const getChipHoverTokens = (variant: ChipProps['variant']): SelectorInputHoverTo
       },
     },
   };
-};
-
-const iconPadding: Record<NonNullable<ChipProps['size']>, DotNotationSpacingStringToken> = {
-  small: 'spacing.1',
-  medium: 'spacing.2',
-  large: 'spacing.2',
 };
 
 const iconSize: Record<NonNullable<ChipProps['size']>, IconProps['size']> = {
@@ -205,6 +198,5 @@ export {
   chipGroupGapTokens,
   getChipHoverTokens,
   chipHorizontalPaddingTokens,
-  iconPadding,
   iconSize,
 };
