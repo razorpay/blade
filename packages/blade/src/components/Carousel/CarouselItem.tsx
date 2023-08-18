@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/restrict-plus-operands */
 /* eslint-disable consistent-return */
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 import styled from 'styled-components';
@@ -76,7 +77,7 @@ const CarouselItem = ({
       {...makeAccessible({
         role: 'tabpanel',
         roleDescription: 'slide',
-        label: `${index} of ${totalNumberOfSlides}`,
+        label: `${index! + 1} of ${totalNumberOfSlides}`,
       })}
       ref={itemRef}
       id={id}

@@ -154,6 +154,7 @@ type CarouselBodyProps = {
   isScrollAtStart: boolean;
   isScrollAtEnd: boolean;
   carouselItemAlignment: CarouselProps['carouselItemAlignment'];
+  accessibilityLabel?: string;
 };
 
 const CarouselBody = React.forwardRef<HTMLDivElement, CarouselBodyProps>(
@@ -167,11 +168,13 @@ const CarouselBody = React.forwardRef<HTMLDivElement, CarouselBodyProps>(
       isScrollAtStart,
       isScrollAtEnd,
       carouselItemAlignment,
+      accessibilityLabel,
     },
     ref,
   ) => {
     return (
       <CarouselContainer
+        tabIndex={0}
         ref={ref}
         showOverlay={Boolean(scrollOverlayColor)}
         scrollOverlayColor={scrollOverlayColor}
@@ -179,7 +182,11 @@ const CarouselBody = React.forwardRef<HTMLDivElement, CarouselBodyProps>(
         isScrollAtStart={isScrollAtStart}
         isScrollAtEnd={isScrollAtEnd}
         alignItems={carouselItemAlignment}
-        {...makeAccessible({ liveRegion: 'polite' })}
+        {...makeAccessible({
+          role: 'group',
+          roleDescription: 'carousel',
+          label: accessibilityLabel,
+        })}
       >
         {React.Children.map(children, (child, index) => {
           return React.cloneElement(child as React.ReactElement, {
@@ -420,7 +427,6 @@ const Carousel = ({
   return (
     <CarouselContext.Provider value={carouselContext}>
       <BaseBox
-        {...makeAccessible({ roleDescription: 'carousel', label: accessibilityLabel })}
         // stop autoplaying when any elements in carousel is in focus
         onFocus={(e: React.FocusEvent) => {
           if (!e.currentTarget.contains(e.relatedTarget)) {
@@ -482,6 +488,7 @@ const Carousel = ({
             isScrollAtEnd={isScrollAtEnd}
             ref={containerRef}
             carouselItemAlignment={carouselItemAlignment}
+            accessibilityLabel={accessibilityLabel}
           >
             {children}
           </CarouselBody>
