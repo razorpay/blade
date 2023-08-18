@@ -48,8 +48,14 @@ const Controls = ({
   navigationButtonVariant,
 }: ControlsProps): React.ReactElement => {
   return (
-    <BaseBox marginTop="spacing.7" display="flex" flexDirection="row" alignItems="center">
-      <BaseBox marginRight="spacing.4">
+    <BaseBox
+      marginTop="spacing.7"
+      display="flex"
+      flexDirection="row"
+      alignItems="center"
+      gap="spacing.4"
+    >
+      <BaseBox>
         <NavigationButton
           type="previous"
           variant={navigationButtonVariant}
@@ -64,7 +70,7 @@ const Controls = ({
           variant={indicatorVariant}
         />
       ) : null}
-      <BaseBox marginLeft="spacing.4">
+      <BaseBox>
         <NavigationButton
           onClick={onNextButtonClick}
           type="next"
