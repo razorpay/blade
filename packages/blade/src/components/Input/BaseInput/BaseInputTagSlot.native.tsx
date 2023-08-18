@@ -5,7 +5,7 @@ import { Text } from '~components/Typography';
 
 const BaseInputTagSlot = ({
   tags,
-  isMultiline,
+  tagRows,
   showAllTags,
 }: BaseInputTagSlotProps): React.ReactElement | null => {
   if (!tags) {
@@ -31,7 +31,7 @@ const BaseInputTagSlot = ({
     >
       <BaseBox
         // switch to these on `props.rows` value
-        flexWrap={isMultiline ? 'wrap' : 'nowrap'}
+        flexWrap={tagRows === '3' || tagRows === 'expandable' ? 'wrap' : 'nowrap'}
         maxHeight={showAllTags && invisibleTagsCount ? '100%' : '84px'}
       >
         {tags}

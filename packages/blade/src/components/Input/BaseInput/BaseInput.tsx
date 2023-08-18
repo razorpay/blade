@@ -356,7 +356,6 @@ const useTags = (
   tags: BaseInputProps['tags'],
   activeTagIndex: number,
   setActiveTagIndex?: (activeTagIndex: number) => void,
-  showAllTags?: boolean,
 ): {
   onInputKeydownTagHandler: OnInputKeydownTagHandlerType;
   visibleTagsCountRef: React.MutableRefObject<number>;
@@ -716,7 +715,6 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
       tags,
       activeTagIndex,
       setActiveTagIndex,
-      showAllTags,
     );
     const [showAllTagsWithAnimation, setShowAllTagsWithAnimation] = React.useState(false);
 
