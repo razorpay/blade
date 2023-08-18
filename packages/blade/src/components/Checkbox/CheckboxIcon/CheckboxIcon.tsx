@@ -25,7 +25,8 @@ const svgSize = {
 const CheckedIcon = ({ color, size }: { color: string; size: 'small' | 'medium' }) => {
   const width = makeSpace(svgSize[size].width);
   const height = makeSpace(svgSize[size].height);
-
+  const { theme } = useTheme();
+  const strokeColor = getIn(theme, 'colors.brand.gray.200.lowContrast');
   return (
     <Svg width={width} height={height} viewBox="0 0 8 8" fill="none">
       <Path
@@ -33,7 +34,7 @@ const CheckedIcon = ({ color, size }: { color: string; size: 'small' | 'medium' 
         clipRule="evenodd"
         d="M6.90237 1.76413C7.03254 1.89431 7.03254 2.10536 6.90237 2.23554L3.2357 5.90221C3.10553 6.03238 2.89447 6.03238 2.7643 5.90221L1.09763 4.23554C0.967456 4.10536 0.967456 3.89431 1.09763 3.76414C1.22781 3.63396 1.43886 3.63396 1.56904 3.76414L3 5.1951L6.43096 1.76413C6.56114 1.63396 6.77219 1.63396 6.90237 1.76413Z"
         fill={color}
-        stroke="white"
+        stroke={strokeColor}
         strokeWidth="0.5"
         strokeLinecap="round"
         strokeLinejoin="round"
