@@ -3,9 +3,6 @@ export const paymentLightThemeData = {
     Tag: {
       key: '81164abfd2c6ffeae87ae0719cd52a1ce62d6473',
     },
-    Carousel: {
-      key: '7e472b0cdda8f1cc8fad4b06d5f584dcde2ffe1e',
-    },
     'BottomSheet/Header': {
       key: '03fa4ffc23c92fdf4b0afa2b3d4977d8e0d01323',
     },
@@ -4106,9 +4103,6 @@ export const bankingDarkThemeData = {
   components: {
     Tag: {
       key: '2dcc0c0d31f0cc40b5b9c1e8a4b7866270511056',
-    },
-    Carousel: {
-      key: '636db3a8eefa4e0793fbc685bc28d5a1f4a5d2d0',
     },
     Link: {
       key: '003d08a00aa841104a655caddf61a1651f85ff04',
