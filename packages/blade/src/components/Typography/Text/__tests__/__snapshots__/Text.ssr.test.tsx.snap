@@ -1,10 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Text /> should render Text on server 1`] = `"<div id="root" data-reactroot=""><p class="StyledBaseText-dVBfTO eIdQFo" data-blade-component="text">Displaying some text</p></div>"`;
+exports[`<Text /> should render Text on server 1`] = `"<div id="root"><p class="StyledBaseText-dVBfTO eIdQFo" data-blade-component="text">Displaying some text</p></div>"`;
 
 exports[`<Text /> should render Text on server 2`] = `
 <div
-  data-reactroot=""
   id="root"
 >
   <p

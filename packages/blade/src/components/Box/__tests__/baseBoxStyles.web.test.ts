@@ -1,11 +1,11 @@
 import {
   getBaseBoxStyles,
-  getResponsiveValue,
   getSpacingValue,
   shouldAddBreakpoint,
   getAllMediaQueries,
   getAllProps,
 } from '../BaseBox/baseBoxStyles';
+import { getResponsiveValue } from '../BaseBox/getResponsiveValue.web';
 import type { BaseBoxProps } from '../BaseBox';
 import { removeUndefinedValues } from './baseBoxStyles.test';
 import paymentLightTheme from '~components/BladeProvider/__tests__/paymentLightTheme/paymentLightTheme';

@@ -3,7 +3,7 @@
 import type React from 'react';
 import type { ViewStyle, View } from 'react-native';
 import type { CSSObject } from 'styled-components';
-import type { Spacing, EasingFunctionFactory } from '~tokens/global';
+import type { Spacing, EasingFactoryFn } from '~tokens/global';
 import type { Platform } from '~utils';
 
 /**
@@ -22,9 +22,9 @@ type DotNotationColorStringToken<TokenType> = {
 type DotNotationMotionStringToken<TokenType> = {
   [K in keyof TokenType]: `${Extract<K, string>}.${TokenType[K] extends Record<
     string,
-    string | EasingFunctionFactory
+    string | EasingFactoryFn
   >
-    ? Extract<keyof TokenType[K], string | EasingFunctionFactory>
+    ? Extract<keyof TokenType[K], string | EasingFactoryFn>
     : DotNotationMotionStringToken<TokenType[K]>}`;
 }[keyof TokenType];
 
