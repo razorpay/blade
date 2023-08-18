@@ -1,7 +1,7 @@
 import { composeStories } from '@storybook/react';
 import * as headingStories from './Heading.stories';
 import { Box } from '~components/Box';
-import { Heading } from '~components/Typography';
+import { Heading as HeadingComponent } from '~components/Typography';
 
 const allStories = Object.values(composeStories(headingStories));
 
@@ -11,7 +11,7 @@ export const Heading = (): JSX.Element => {
       {allStories.map((Story) => {
         return (
           <>
-            <Heading>{Story.storyName}</Heading>
+            <HeadingComponent>{Story.storyName}</HeadingComponent>
             <Story />
           </>
         );
