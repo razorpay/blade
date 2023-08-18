@@ -35,7 +35,7 @@ const StyledIndicatorButton = ({
   return (
     <Pressable onPress={onClick} accessibilityLabel={accessibilityLabel}>
       <PressableIndicatorButton {...props}>
-        <Animated.View style={[style]} />
+        <Animated.View style={style} />
       </PressableIndicatorButton>
     </Pressable>
   );

@@ -1,7 +1,3 @@
-/* eslint-disable consistent-return */
-/* eslint-disable @typescript-eslint/restrict-plus-operands */
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
-/* eslint-disable react/jsx-no-useless-fragment */
 import React from 'react';
 import { ScrollView } from 'react-native';
 import { Indicators } from './Indicators/Indicators';
@@ -9,16 +5,23 @@ import { NavigationButton } from './NavigationButton';
 import type { CarouselProps } from './types';
 import type { CarouselContextProps } from './CarouselContext';
 import { CarouselContext } from './CarouselContext';
+import { CAROUSEL_AUTOPLAY_INTERVAL } from './constants';
 import BaseBox from '~components/Box/BaseBox';
 import { useInterval } from '~utils/useInterval';
 import { makeAccessible } from '~utils/makeAccessible/makeAccessible.native';
 import { announce } from '~components/LiveAnnouncer/LiveAnnouncer.native';
 import { castNativeType } from '~utils';
 import { useId } from '~utils/useId';
+import { logger } from '~utils/logger';
+import { size } from '~tokens/global';
 
-const percentageStringToNumber = (percentage: string) => {
+const percentageStringToNumber = (percentage: string): number => {
   if (!percentage.endsWith('%')) {
-    throw new Error('Only percentage values are allowed');
+    logger({
+      message: 'Only percentage values are allowed',
+      type: 'error',
+      moduleName: 'Carousel',
+    });
   }
 
   return Number(percentage.substring(0, percentage.length - 1)) / 100;
@@ -92,7 +95,7 @@ const Carousel = ({
   const slideWidth = scrollViewWidth * percentageStringToNumber(castNativeType(carouselItemWidth));
   const totalNumberOfSlides = React.Children.count(children);
 
-  const goToSlideIndex = (slideIndex: number) => {
+  const goToSlideIndex = (slideIndex: number): void => {
     if (!containerRef.current) return;
     containerRef.current.scrollTo({
       x: slideIndex * slideWidth,
@@ -102,7 +105,7 @@ const Carousel = ({
     setActiveSlide(slideIndex);
   };
 
-  const goToNextSlide = () => {
+  const goToNextSlide = (): void => {
     let slideIndex = activeSlide + 1;
     if (slideIndex >= totalNumberOfSlides) {
       slideIndex = 0;
@@ -110,7 +113,7 @@ const Carousel = ({
     goToSlideIndex(slideIndex);
   };
 
-  const goToPreviousSlide = () => {
+  const goToPreviousSlide = (): void => {
     let slideIndex = activeSlide - 1;
     if (activeSlide <= 0) {
       slideIndex = totalNumberOfSlides - 1;
@@ -139,7 +142,7 @@ const Carousel = ({
       goToNextSlide();
     },
     {
-      delay: 6000,
+      delay: CAROUSEL_AUTOPLAY_INTERVAL,
       // only enable if autoplay is true & user's intent isn't to interact with carousel
       enable: autoPlay && !shouldPauseAutoplay,
     },
@@ -197,7 +200,7 @@ const Carousel = ({
             }}
             contentOffset={{ x: 0, y: 0 }}
             // adding some padding so that if a card is placed the shadows don't cut off
-            contentContainerStyle={{ paddingVertical: 10 }}
+            contentContainerStyle={{ paddingVertical: size[10] }}
           >
             {React.Children.map(children, (child, index) => {
               return React.cloneElement(child as React.ReactElement, {

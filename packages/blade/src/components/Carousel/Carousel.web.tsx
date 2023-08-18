@@ -15,6 +15,7 @@ import type { CarouselProps } from './types';
 import type { CarouselContextProps } from './CarouselContext';
 import { CarouselContext } from './CarouselContext';
 import { getCarouselItemId } from './utils';
+import { CAROUSEL_AUTOPLAY_INTERVAL } from './constants';
 import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
 import { castWebType, makeMotionTime, useInterval, useTheme } from '~utils';
@@ -385,7 +386,7 @@ const Carousel = ({
       goToNextSlide();
     },
     {
-      delay: 6000,
+      delay: CAROUSEL_AUTOPLAY_INTERVAL,
       // only enable if autoplay is true & user's intent isn't to interact with carousel
       enable: autoPlay && !shouldPauseAutoplay,
     },

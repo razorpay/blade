@@ -93,7 +93,7 @@
     "build:clean-theme-bundle": "rm -rf build/js-bundle-for-css",
     "react-native:get-stories": "sb-rn-get-stories --config-path=./.storybook/react-native && yarn prettier --write ./.storybook/react-native/storybook.requires.js",
     "react-native:storybook:android": "yarn react-native:get-stories && FRAMEWORK=REACT_NATIVE react-native run-android",
-    "react-native:storybook:ios": "yarn react-native:get-stories && FRAMEWORK=REACT_NATIVE react-native run-ios --simulator=\"iPhone 13\"",
+    "react-native:storybook:ios": "yarn react-native:get-stories && FRAMEWORK=REACT_NATIVE react-native run-ios",
     "react-native:storybook:start": "yarn react-native:get-stories && NODE_OPTIONS=--openssl-legacy-provider FRAMEWORK=REACT_NATIVE react-native start --reset-cache",
     "react": "yarn run react:storybook",
     "react:storybook": "NODE_OPTIONS=--openssl-legacy-provider FRAMEWORK=REACT start-storybook -c ./.storybook/react -p 9009",
