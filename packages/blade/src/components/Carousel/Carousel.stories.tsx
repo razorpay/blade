@@ -211,7 +211,7 @@ const CarouselExample = (props: CarouselProps): React.ReactElement => {
 const CarouselTestimonialTemplate: ComponentStory<typeof CarouselComponent> = (props) => {
   return (
     <Box margin="auto" width={{ base: '100%', m: '100%' }} padding="spacing.4">
-      <CarouselExample {...props} />
+      <CarouselExample key={props.visibleItems} {...props} />
     </Box>
   );
 };
