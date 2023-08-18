@@ -30,9 +30,8 @@ This document outlines the API details of the `Chip` and `ChipGroup` components,
 | **children**            | `string`                                                             | `undefined` | Renders the label text for the Chip                                                                                                                | ✅       |
 | **icon**                | `Icon`                                                               | `undefined` | Displays the Blade Icon component within the Chip                                                                                                  | ❌       |
 | **isDisabled**          | `boolean`                                                            | `false`     | Disables or enables the Chip                                                                                                                       | ❌       |
-| **size**                | `'xsmall' \| 'small' \| 'medium' \| 'large'`                         | `'small'`   | Specifies the size of the rendered Chip                                                                                                            | ❌       |
 | **value (html native)** | `string`                                                             | `undefined` | The value of the input field in Chip, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#value) | ❌       |
-| **variant**             | `'positive' \| 'negative' \| 'notice' \| 'information' \| 'neutral'` | `undefined` | Sets the Chip's visual variant                                                                                                                     | ❌       |
+| **intent**              | `'positive' \| 'negative' \| 'notice' \| 'information' \| 'neutral'` | `undefined` | Sets the Chip's visual variant                                                                                                                     | ❌       |
 
 ## `ChipGroup` API
 
@@ -46,7 +45,7 @@ This document outlines the API details of the `Chip` and `ChipGroup` components,
 | **selectionType** | `'single' \| 'multiple'`                                                 | `'single'`  | Defines the selection behavior within the ChipGroup component                                                                  | ❌       |
 | **size**          | `'xsmall' \| 'small' \| 'medium' \| 'large'`                             | `'small'`   | Specifies the size of the rendered Chips withing the ChipGroup                                                                 | ❌       |
 | **value**         | `string \|string[]`                                                      | `undefined` | Acts as a controlled component by specifying the ChipGroup value                                                               | ❌       |
-| **variant**       | `'positive' \| 'negative' \| 'notice' \| 'information' \| 'neutral'`     | `'neutral'` | Sets the ChipGroups's visual variant, it will propagate down to all the Chips                                                  | ❌       |
+| **intent**        | `'positive' \| 'negative' \| 'notice' \| 'information' \| 'neutral'`     | `'neutral'` | Sets the ChipGroups's visual variant, it will propagate down to all the Chips                                                  | ❌       |
 
 ## Examples
 
