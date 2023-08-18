@@ -61,14 +61,34 @@ exports[`Carousel Snapshots should render 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  gap: 4px;
 }
 
 .c8 {
-  margin-left: 0px;
+  border: none;
+  cursor: pointer;
+  padding: 0px;
+  border-radius: 9999px;
+  background-color: hsla(214,18%,69%,1);
+  width: 18px;
+  height: 6px;
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 400ms;
+  transition-duration: 400ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c10 {
-  margin-left: 4px;
+.c8:before {
+  content: "";
+  padding: 10px;
+  padding-top: 20px;
+}
+
+.c8:focus {
+  outline: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c9 {
@@ -76,8 +96,8 @@ exports[`Carousel Snapshots should render 1`] = `
   cursor: pointer;
   padding: 0px;
   border-radius: 9999px;
-  background-color: hsla(214,18%,69%,1);
-  width: 18px;
+  background-color: hsla(214,18%,69%,0.64);
+  width: 6px;
   height: 6px;
   -webkit-transition-property: width;
   transition-property: width;
@@ -94,33 +114,6 @@ exports[`Carousel Snapshots should render 1`] = `
 }
 
 .c9:focus {
-  outline: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-}
-
-.c11 {
-  border: none;
-  cursor: pointer;
-  padding: 0px;
-  border-radius: 9999px;
-  background-color: hsla(214,18%,69%,0.64);
-  width: 6px;
-  height: 6px;
-  -webkit-transition-property: width;
-  transition-property: width;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c11:before {
-  content: "";
-  padding: 10px;
-  padding-top: 20px;
-}
-
-.c11:focus {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
@@ -330,7 +323,7 @@ exports[`Carousel Snapshots should render 1`] = `
           aria-controls="carousel-34-carousel-item-0"
           aria-label="Slide 1"
           aria-selected="true"
-          class="c8 c9"
+          class=" c8"
           data-blade-component="base-box"
           role="tab"
         />
@@ -338,7 +331,7 @@ exports[`Carousel Snapshots should render 1`] = `
           aria-controls="carousel-34-carousel-item-1"
           aria-label="Slide 2"
           aria-selected="false"
-          class="c10 c11"
+          class=" c9"
           data-blade-component="base-box"
           role="tab"
         />
@@ -423,14 +416,34 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  gap: 4px;
 }
 
 .c8 {
-  margin-left: 0px;
+  border: none;
+  cursor: pointer;
+  padding: 0px;
+  border-radius: 9999px;
+  background-color: hsla(214,18%,69%,1);
+  width: 18px;
+  height: 6px;
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 400ms;
+  transition-duration: 400ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c10 {
-  margin-left: 4px;
+.c8:before {
+  content: "";
+  padding: 10px;
+  padding-top: 20px;
+}
+
+.c8:focus {
+  outline: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c9 {
@@ -438,8 +451,8 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
   cursor: pointer;
   padding: 0px;
   border-radius: 9999px;
-  background-color: hsla(214,18%,69%,1);
-  width: 18px;
+  background-color: hsla(214,18%,69%,0.64);
+  width: 6px;
   height: 6px;
   -webkit-transition-property: width;
   transition-property: width;
@@ -456,33 +469,6 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
 }
 
 .c9:focus {
-  outline: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-}
-
-.c11 {
-  border: none;
-  cursor: pointer;
-  padding: 0px;
-  border-radius: 9999px;
-  background-color: hsla(214,18%,69%,0.64);
-  width: 6px;
-  height: 6px;
-  -webkit-transition-property: width;
-  transition-property: width;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c11:before {
-  content: "";
-  padding: 10px;
-  padding-top: 20px;
-}
-
-.c11:focus {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
@@ -715,7 +701,7 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
           aria-controls="carousel-38-carousel-item-0"
           aria-label="Slide 1"
           aria-selected="true"
-          class="c8 c9"
+          class=" c8"
           data-blade-component="base-box"
           role="tab"
         />
@@ -723,7 +709,7 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
           aria-controls="carousel-38-carousel-item-1"
           aria-label="Slide 2"
           aria-selected="false"
-          class="c10 c11"
+          class=" c9"
           data-blade-component="base-box"
           role="tab"
         />
@@ -798,14 +784,34 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  gap: 4px;
 }
 
 .c9 {
-  margin-left: 0px;
+  border: none;
+  cursor: pointer;
+  padding: 0px;
+  border-radius: 9999px;
+  background-color: hsla(214,18%,69%,1);
+  width: 18px;
+  height: 6px;
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 400ms;
+  transition-duration: 400ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c11 {
-  margin-left: 4px;
+.c9:before {
+  content: "";
+  padding: 10px;
+  padding-top: 20px;
+}
+
+.c9:focus {
+  outline: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c10 {
@@ -813,8 +819,8 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
   cursor: pointer;
   padding: 0px;
   border-radius: 9999px;
-  background-color: hsla(214,18%,69%,1);
-  width: 18px;
+  background-color: hsla(214,18%,69%,0.64);
+  width: 6px;
   height: 6px;
   -webkit-transition-property: width;
   transition-property: width;
@@ -831,33 +837,6 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
 }
 
 .c10:focus {
-  outline: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-}
-
-.c12 {
-  border: none;
-  cursor: pointer;
-  padding: 0px;
-  border-radius: 9999px;
-  background-color: hsla(214,18%,69%,0.64);
-  width: 6px;
-  height: 6px;
-  -webkit-transition-property: width;
-  transition-property: width;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c12:before {
-  content: "";
-  padding: 10px;
-  padding-top: 20px;
-}
-
-.c12:focus {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
@@ -1090,7 +1069,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
           aria-controls="carousel-36-carousel-item-0"
           aria-label="Slide 1"
           aria-selected="true"
-          class="c9 c10"
+          class=" c9"
           data-blade-component="base-box"
           role="tab"
         />
@@ -1098,7 +1077,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
           aria-controls="carousel-36-carousel-item-1"
           aria-label="Slide 2"
           aria-selected="false"
-          class="c11 c12"
+          class=" c10"
           data-blade-component="base-box"
           role="tab"
         />
@@ -1106,7 +1085,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
           aria-controls="carousel-36-carousel-item-2"
           aria-label="Slide 3"
           aria-selected="false"
-          class="c11 c12"
+          class=" c10"
           data-blade-component="base-box"
           role="tab"
         />
@@ -1200,14 +1179,34 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  gap: 4px;
 }
 
 .c8 {
-  margin-left: 0px;
+  border: none;
+  cursor: pointer;
+  padding: 0px;
+  border-radius: 9999px;
+  background-color: hsla(214,18%,69%,1);
+  width: 18px;
+  height: 6px;
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 400ms;
+  transition-duration: 400ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c10 {
-  margin-left: 4px;
+.c8:before {
+  content: "";
+  padding: 10px;
+  padding-top: 20px;
+}
+
+.c8:focus {
+  outline: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c9 {
@@ -1215,8 +1214,8 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   cursor: pointer;
   padding: 0px;
   border-radius: 9999px;
-  background-color: hsla(214,18%,69%,1);
-  width: 18px;
+  background-color: hsla(214,18%,69%,0.64);
+  width: 6px;
   height: 6px;
   -webkit-transition-property: width;
   transition-property: width;
@@ -1233,33 +1232,6 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
 }
 
 .c9:focus {
-  outline: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-}
-
-.c11 {
-  border: none;
-  cursor: pointer;
-  padding: 0px;
-  border-radius: 9999px;
-  background-color: hsla(214,18%,69%,0.64);
-  width: 6px;
-  height: 6px;
-  -webkit-transition-property: width;
-  transition-property: width;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c11:before {
-  content: "";
-  padding: 10px;
-  padding-top: 20px;
-}
-
-.c11:focus {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
@@ -1522,7 +1494,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
           aria-controls="carousel-37-carousel-item-0"
           aria-label="Slide 1"
           aria-selected="true"
-          class="c8 c9"
+          class=" c8"
           data-blade-component="base-box"
           role="tab"
         />
@@ -1530,7 +1502,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
           aria-controls="carousel-37-carousel-item-1"
           aria-label="Slide 2"
           aria-selected="false"
-          class="c10 c11"
+          class=" c9"
           data-blade-component="base-box"
           role="tab"
         />
@@ -1538,7 +1510,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
           aria-controls="carousel-37-carousel-item-2"
           aria-label="Slide 3"
           aria-selected="false"
-          class="c10 c11"
+          class=" c9"
           data-blade-component="base-box"
           role="tab"
         />
@@ -1632,14 +1604,34 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  gap: 4px;
 }
 
 .c8 {
-  margin-left: 0px;
+  border: none;
+  cursor: pointer;
+  padding: 0px;
+  border-radius: 9999px;
+  background-color: hsla(214,18%,69%,1);
+  width: 18px;
+  height: 6px;
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 400ms;
+  transition-duration: 400ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c10 {
-  margin-left: 4px;
+.c8:before {
+  content: "";
+  padding: 10px;
+  padding-top: 20px;
+}
+
+.c8:focus {
+  outline: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
 .c9 {
@@ -1647,8 +1639,8 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
   cursor: pointer;
   padding: 0px;
   border-radius: 9999px;
-  background-color: hsla(214,18%,69%,1);
-  width: 18px;
+  background-color: hsla(214,18%,69%,0.64);
+  width: 6px;
   height: 6px;
   -webkit-transition-property: width;
   transition-property: width;
@@ -1665,33 +1657,6 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
 }
 
 .c9:focus {
-  outline: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-}
-
-.c11 {
-  border: none;
-  cursor: pointer;
-  padding: 0px;
-  border-radius: 9999px;
-  background-color: hsla(214,18%,69%,0.64);
-  width: 6px;
-  height: 6px;
-  -webkit-transition-property: width;
-  transition-property: width;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c11:before {
-  content: "";
-  padding: 10px;
-  padding-top: 20px;
-}
-
-.c11:focus {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
@@ -1918,7 +1883,7 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
           aria-controls="carousel-35-carousel-item-0"
           aria-label="Slide 1"
           aria-selected="true"
-          class="c8 c9"
+          class=" c8"
           data-blade-component="base-box"
           role="tab"
         />
@@ -1926,7 +1891,7 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
           aria-controls="carousel-35-carousel-item-2"
           aria-label="Slide 3"
           aria-selected="false"
-          class="c10 c11"
+          class=" c9"
           data-blade-component="base-box"
           role="tab"
         />

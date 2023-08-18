@@ -208,12 +208,14 @@ exports[`Carousel Snapshots should render 1`] = `
       data-blade-component="base-box"
       display="flex"
       flexDirection="row"
+      gap="spacing.4"
       style={
         [
           {
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
+            "gap": 12,
             "marginTop": 24,
           },
         ]
@@ -223,9 +225,7 @@ exports[`Carousel Snapshots should render 1`] = `
         data-blade-component="base-box"
         style={
           [
-            {
-              "marginRight": 12,
-            },
+            {},
           ]
         }
       >
@@ -349,11 +349,13 @@ exports[`Carousel Snapshots should render 1`] = `
         data-blade-component="base-box"
         display="flex"
         flexDirection="row"
+        gap="spacing.2"
         style={
           [
             {
               "display": "flex",
               "flexDirection": "row",
+              "gap": 4,
             },
           ]
         }
@@ -404,9 +406,7 @@ exports[`Carousel Snapshots should render 1`] = `
             slideIndex={0}
             style={
               [
-                {
-                  "marginLeft": 0,
-                },
+                {},
                 {
                   "backgroundColor": "hsla(214, 18%, 69%, 1)",
                   "borderColor": "black",
@@ -426,11 +426,9 @@ exports[`Carousel Snapshots should render 1`] = `
           >
             <View
               style={
-                [
-                  {
-                    "width": 18,
-                  },
-                ]
+                {
+                  "width": 18,
+                }
               }
             />
           </View>
@@ -481,9 +479,7 @@ exports[`Carousel Snapshots should render 1`] = `
             slideIndex={1}
             style={
               [
-                {
-                  "marginLeft": 4,
-                },
+                {},
                 {
                   "backgroundColor": "hsla(214, 18%, 69%, 0.64)",
                   "borderColor": "black",
@@ -503,11 +499,9 @@ exports[`Carousel Snapshots should render 1`] = `
           >
             <View
               style={
-                [
-                  {
-                    "width": 6,
-                  },
-                ]
+                {
+                  "width": 6,
+                }
               }
             />
           </View>
@@ -517,9 +511,7 @@ exports[`Carousel Snapshots should render 1`] = `
         data-blade-component="base-box"
         style={
           [
-            {
-              "marginLeft": 12,
-            },
+            {},
           ]
         }
       >
@@ -910,12 +902,14 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
       data-blade-component="base-box"
       display="flex"
       flexDirection="row"
+      gap="spacing.4"
       style={
         [
           {
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
+            "gap": 12,
             "marginTop": 24,
           },
         ]
@@ -925,9 +919,7 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
         data-blade-component="base-box"
         style={
           [
-            {
-              "marginRight": 12,
-            },
+            {},
           ]
         }
       >
@@ -1051,11 +1043,13 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
         data-blade-component="base-box"
         display="flex"
         flexDirection="row"
+        gap="spacing.2"
         style={
           [
             {
               "display": "flex",
               "flexDirection": "row",
+              "gap": 4,
             },
           ]
         }
@@ -1106,9 +1100,7 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
             slideIndex={0}
             style={
               [
-                {
-                  "marginLeft": 0,
-                },
+                {},
                 {
                   "backgroundColor": "hsla(214, 18%, 69%, 1)",
                   "borderColor": "black",
@@ -1128,11 +1120,9 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
           >
             <View
               style={
-                [
-                  {
-                    "width": 18,
-                  },
-                ]
+                {
+                  "width": 18,
+                }
               }
             />
           </View>
@@ -1183,9 +1173,7 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
             slideIndex={1}
             style={
               [
-                {
-                  "marginLeft": 4,
-                },
+                {},
                 {
                   "backgroundColor": "hsla(214, 18%, 69%, 0.64)",
                   "borderColor": "black",
@@ -1205,11 +1193,9 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
           >
             <View
               style={
-                [
-                  {
-                    "width": 6,
-                  },
-                ]
+                {
+                  "width": 6,
+                }
               }
             />
           </View>
@@ -1260,9 +1246,7 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
             slideIndex={2}
             style={
               [
-                {
-                  "marginLeft": 4,
-                },
+                {},
                 {
                   "backgroundColor": "hsla(214, 18%, 69%, 0.64)",
                   "borderColor": "black",
@@ -1282,11 +1266,9 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
           >
             <View
               style={
-                [
-                  {
-                    "width": 6,
-                  },
-                ]
+                {
+                  "width": 6,
+                }
               }
             />
           </View>
@@ -1296,9 +1278,7 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
         data-blade-component="base-box"
         style={
           [
-            {
-              "marginLeft": 12,
-            },
+            {},
           ]
         }
       >
