@@ -1,2 +1,2 @@
 export * from './Tag';
-export { TagProps } from './types';
+export type { TagProps } from './types';
