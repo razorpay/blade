@@ -21,6 +21,8 @@ const config = {
   },
   resolver: {
     resolverMainFields: ['sbmodern', 'browser', 'module', 'main'],
+    // TODO: Remove sourceExts array after upgrading to RN 0.72.3
+    sourceExts: ['js', 'jsx', 'json', 'ts', 'tsx', 'mjs', 'cjs'],
   },
 };
 
