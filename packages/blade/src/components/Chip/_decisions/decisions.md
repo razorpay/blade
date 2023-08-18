@@ -42,7 +42,7 @@ This document outlines the API details of the `Chip` and `ChipGroup` components,
 | **isDisabled**    | `boolean`                                                                | `false`     | Disables or enables ChipGroup, it will propagate down to all the Chips                                                         | ❌       |
 | **name**          | `string`                                                                 | `undefined` | The name of the chip group, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#name) | ❌       |
 | **onChange**      | `({ name, value }: { name: string; value: string \| string[] }) => void` | `undefined` | Calls a function on any state change within the ChipGroup                                                                      | ❌       |
-| **selectionType** | `'single' \| 'multiple'`                                                 | `'single'`  | Defines the selection behavior within the ChipGroup component                                                                  | ❌       |
+| **selectionType** | `'single' \| 'multiple'`                                                 | `'single'`  | Defines the selection behavior within the ChipGroup component, simulating radio/checkbox like behavior within the group        | ❌       |
 | **size**          | `'xsmall' \| 'small' \| 'medium' \| 'large'`                             | `'small'`   | Specifies the size of the rendered Chips withing the ChipGroup                                                                 | ❌       |
 | **value**         | `string \|string[]`                                                      | `undefined` | Acts as a controlled component by specifying the ChipGroup value                                                               | ❌       |
 | **intent**        | `'positive' \| 'negative' \| 'notice' \| 'information' \| 'neutral'`     | `'neutral'` | Sets the ChipGroups's visual variant, it will propagate down to all the Chips                                                  | ❌       |
@@ -56,21 +56,27 @@ Here are a few illustrative examples showcasing the utilization of the `Chip` an
 Single Chip selection:
 
 ```jsx
-<ChipGroup defaultValue="1">
-  <Chip value="1">Single chip</Chip>
-  <Chip value="2">Can be selected</Chip>
-  <Chip value="3">At a time</Chip>
-</ChipGroup>
+<Box>
+  <Text> Select Business type: </Text>
+  <ChipGroup defaultValue="proprietorship">
+    <Chip value="proprietorship">Proprietorship</Chip>
+    <Chip value="public">Public</Chip>
+    <Chip value="small-business">Small Business</Chip>
+  </ChipGroup>
+</Box>
 ```
 
 Multiple Chip selection:
 
 ```jsx
-<ChipGroup selectionType="multiple" defaultValue={['1', '2']}>
-  <Chip value="1">Multiple chips</Chip>
-  <Chip value="2">Can be selected</Chip>
-  <Chip value="3">At a time</Chip>
-</ChipGroup>
+<Box>
+  <Text> What other capabilities are you looking for? </Text>
+  <ChipGroup selectionType="multiple" defaultValue={['payment-links', 'offers']}>
+    <Chip value="payment-links">Automated Payment Links</Chip>
+    <Chip value="wallet">Wallet on My App</Chip>
+    <Chip value="offers">Offer discounts & EMI options</Chip>
+  </ChipGroup>
+</Box>
 ```
 
 ### Controlled Usage
@@ -78,29 +84,38 @@ Multiple Chip selection:
 ```jsx
 function Single() {
   // string value when selectionType is 'single' (default)
-  const [selected, setSelected] = useState('react');
+  const [selected, setSelected] = useState('proprietorship');
 
   return (
-    <ChipGroup selectionType="single" value={value} onChange={({ value }) => setSelected(value)}>
-      <Chip value="react">React</Chip>
-      <Chip value="ng">Angular</Chip>
-      <Chip value="svelte">Svelte</Chip>
-      <Chip value="vue">Vue</Chip>
-    </ChipGroup>
+    <Box>
+      <Text> Select Business type: </Text>
+      <ChipGroup selectionType="single" value={value} onChange={({ value }) => setSelected(value)}>
+        <Chip value="proprietorship">Proprietorship</Chip>
+        <Chip value="public">Public</Chip>
+        <Chip value="small-business">Small Business</Chip>
+      </ChipGroup>
+    </Box>
   );
 }
 
 function Multiple() {
   // array of strings value when selectionType is 'multiple'
-  const [selected, setSelected] = useState(['react']);
+  const [selected, setSelected] = useState(['in-progress', 'pending']);
 
   return (
-    <ChipGroup selectionType="multiple" value={value} onChange={({ value }) => setSelected(value)}>
-      <Chip value="react">React</Chip>
-      <Chip value="ng">Angular</Chip>
-      <Chip value="svelte">Svelte</Chip>
-      <Chip value="vue">Vue</Chip>
-    </ChipGroup>
+    <Box>
+      <Text> Quick Filters: </Text>
+      <ChipGroup
+        selectionType="multiple"
+        value={value}
+        onChange={({ value }) => setSelected(value)}
+      >
+        <Chip value="refunded">Refunded</Chip>
+        <Chip value="failed">Failed</Chip>
+        <Chip value="pending">Pending</Chip>
+        <Chip value="in-progress">In Progress</Chip>
+      </ChipGroup>
+    </Box>
   );
 }
 ```
@@ -114,7 +129,7 @@ This adherence to established accessibility practices is further substantiated b
 - **Radio Accessibility** - The `Chip` component follows the [W3C ARIA Radio Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/radio/) to ensure that users utilizing assistive technologies can seamlessly interact with and understand the radio selection mechanism.
 - **Checkbox Accessibility** - Similarly, the `Chip` component aligns with the [W3C ARIA Checkbox Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/) to guarantee that users with disabilities can effectively engage with the checkbox selection paradigm.
 
-Utilizing the established `useRadio`, `useCheckbox`, `useRadioGroup`, & `useCheckboxGroup` hooks hooks ensures that the `Chip` and `ChipGroup` components inherently maintain accessibility as a fundamental aspect.
+Utilizing the established `useRadio`, `useCheckbox`, `useRadioGroup`, & `useCheckboxGroup` hooks ensures that the `Chip` and `ChipGroup` components inherently maintain accessibility as a fundamental aspect.
 
 These deliberate design choices manifest in a user experience that respects accessibility guidelines, enabling users of diverse abilities to interact with the components with equal ease.
 
