@@ -55,6 +55,7 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
 > = ({ showAllTags, setShowAllTagsWithAnimation, ...baseBoxProps }, ref): React.ReactElement => {
   return (
     <StyledAnimatedBaseInputWrapper
+      ref={ref as any}
       {...baseBoxProps}
       transition={showAllTags ? expandTransition : collapseTransition}
       onAnimationEnd={(e) => {

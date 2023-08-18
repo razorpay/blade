@@ -222,7 +222,6 @@ const useDropdown = (): UseDropdownReturnValue => {
   ) => boolean;
 
   const setIndices = (indices: number[]): void => {
-    console.log('new indices', indices);
     if (isControlled) {
       setControlledValueIndices(indices);
     } else {
@@ -292,7 +291,6 @@ const useDropdown = (): UseDropdownReturnValue => {
    * Click listener for combobox (or any triggerer of the dropdown)
    */
   const onTriggerClick = (): void => {
-    console.log('onTriggerClick');
     if (isOpen) {
       close();
     } else {

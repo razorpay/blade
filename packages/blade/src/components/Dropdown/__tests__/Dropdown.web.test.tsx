@@ -112,7 +112,7 @@ describe('<Dropdown />', () => {
 
   it('should handle accessibility of multiselect', async () => {
     const user = userEvent.setup();
-    const { container, getByRole } = renderWithTheme(
+    const { container, getByRole, queryAllByLabelText } = renderWithTheme(
       <Dropdown selectionType="multiple">
         <SelectInput label="Fruits" />
         <DropdownOverlay>
@@ -134,11 +134,12 @@ describe('<Dropdown />', () => {
     expect(getByRole('option', { name: 'Apple' }).getAttribute('aria-selected')).toBe('false');
 
     await user.click(getByRole('option', { name: 'Apple' }));
-    expect(selectInput.textContent).toBe('Apple');
+    expect(queryAllByLabelText('Close Apple tag')?.[0]).toBeInTheDocument();
     expect(getByRole('option', { name: 'Apple' }).getAttribute('aria-selected')).toBe('true');
 
     await user.click(getByRole('option', { name: 'Mango' }));
-    expect(selectInput.textContent).toBe('2 items selected');
+    expect(queryAllByLabelText('Close Apple tag')?.[0]).toBeInTheDocument();
+    expect(queryAllByLabelText('Close Mango tag')?.[0]).toBeInTheDocument();
     expect(getByRole('option', { name: 'Mango' }).getAttribute('aria-selected')).toBe('true');
   });
 
@@ -238,7 +239,7 @@ describe('<Dropdown />', () => {
 
   it('should move focus between items with arrow key in multiselect', async () => {
     const user = userEvent.setup();
-    const { container, getByRole } = renderWithTheme(
+    const { container, getByRole, queryAllByLabelText } = renderWithTheme(
       <Dropdown selectionType="multiple">
         <SelectInput label="Fruits" />
         <DropdownOverlay>
@@ -271,7 +272,7 @@ describe('<Dropdown />', () => {
     expect(getActiveDescendant(selectInput, container)).toBe('Mango');
     await user.keyboard('[Space]');
 
-    expect(selectInput.textContent).toBe('Mango');
+    expect(queryAllByLabelText('Close Mango tag')?.[0]).toBeInTheDocument();
 
     // Ensure menu did not close
     expect(getByRole('listbox', { name: 'Fruits' })).toBeVisible();
@@ -281,7 +282,8 @@ describe('<Dropdown />', () => {
     expect(getActiveDescendant(selectInput, container)).toBe('Orange');
     await user.keyboard('[Space]');
 
-    expect(selectInput.textContent).toBe('2 items selected');
+    expect(queryAllByLabelText('Close Mango tag')?.[0]).toBeInTheDocument();
+    expect(queryAllByLabelText('Close Orange tag')?.[0]).toBeInTheDocument();
     expect(getByRole('option', { name: 'Apple' }).getAttribute('aria-selected')).toBe('false');
     expect(getByRole('option', { name: 'Mango' }).getAttribute('aria-selected')).toBe('true');
     expect(getByRole('option', { name: 'Orange' }).getAttribute('aria-selected')).toBe('true');
@@ -479,19 +481,20 @@ describe('<Dropdown />', () => {
     };
 
     const user = userEvent.setup();
-    const { getByRole } = renderWithTheme(<ControlledDropdown />);
+    const { getByRole, queryAllByLabelText } = renderWithTheme(<ControlledDropdown />);
 
     const selectInput = getByRole('combobox', { name: 'Select City' });
     expect(selectInput).toHaveTextContent('Select Option');
+    expect(queryAllByLabelText('Close Bangalore tag')?.[0]).toBeFalsy();
     await user.click(getByRole('button', { name: 'Select Bangalore' }));
-    expect(selectInput).toHaveTextContent('Bangalore');
+    expect(queryAllByLabelText('Close Bangalore tag')?.[0]).toBeInTheDocument();
 
     await user.click(selectInput);
     await user.click(getByRole('option', { name: 'Pune' }));
-    expect(selectInput).toHaveTextContent('2 items selected');
+    expect(queryAllByLabelText('Close Pune tag')?.[0]).toBeInTheDocument();
+    expect(queryAllByLabelText('Close Bangalore tag')?.[0]).toBeInTheDocument();
 
     await user.click(getByRole('button', { name: 'Select Bangalore' }));
-    expect(selectInput).toHaveTextContent('2 items selected');
   });
 
   it('should accept testID', () => {

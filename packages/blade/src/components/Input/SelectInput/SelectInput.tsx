@@ -222,7 +222,6 @@ const _SelectInput = (
 
   const getTags = React.useMemo(
     () => () => {
-      console.count('getTags');
       if (selectionType === 'single') {
         return undefined;
       }
@@ -287,6 +286,9 @@ const _SelectInput = (
         onClick={(e) => {
           onTriggerClick();
           props?.onClick?.(e);
+        }}
+        onBlur={({ name }) => {
+          onBlur?.({ name, value });
         }}
         onKeyDown={onTriggerKeydown}
         activeDescendant={activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined}

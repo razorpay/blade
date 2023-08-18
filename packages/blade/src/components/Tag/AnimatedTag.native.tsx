@@ -8,7 +8,6 @@ const AnimatedTag = ({
   currentTagIndex,
   activeTagIndex,
   onDismiss,
-  tagsLength,
 }: AnimatedTagProps) => {
   return (
     <BaseBox>
