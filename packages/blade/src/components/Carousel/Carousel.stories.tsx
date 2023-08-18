@@ -61,6 +61,19 @@ const Page = (): React.ReactElement => {
 const meta: Meta<CarouselProps> = {
   title: 'Components/Carousel',
   component: CarouselComponent,
+  args: {
+    autoPlay: false,
+    accessibilityLabel: undefined,
+    carouselItemAlignment: 'start',
+    carouselItemWidth: undefined,
+    navigationButtonPosition: 'bottom',
+    indicatorVariant: 'gray',
+    navigationButtonVariant: 'filled',
+    visibleItems: 1,
+    shouldAddStartEndSpacing: false,
+    showIndicators: true,
+    scrollOverlayColor: undefined,
+  },
   parameters: {
     docs: {
       page: Page,
@@ -196,9 +209,10 @@ const TestimonialCard = ({
   );
 };
 
-const CarouselExample = (props: CarouselProps): React.ReactElement => {
+const CarouselExample = (props: Omit<CarouselProps, 'children'>): React.ReactElement => {
+  const key = `${props.visibleItems}-${props.shouldAddStartEndSpacing}`;
   return (
-    <CarouselComponent {...props} carouselItemAlignment="stretch">
+    <CarouselComponent {...props} key={key} carouselItemAlignment="stretch">
       {testimonialData.map((testimonial) => (
         <CarouselItem key={testimonial.name}>
           <TestimonialCard {...testimonial} />
@@ -211,7 +225,7 @@ const CarouselExample = (props: CarouselProps): React.ReactElement => {
 const CarouselTestimonialTemplate: ComponentStory<typeof CarouselComponent> = (props) => {
   return (
     <Box margin="auto" width={{ base: '100%', m: '100%' }} padding="spacing.4">
-      <CarouselExample key={props.visibleItems} {...props} />
+      <CarouselExample {...props} />
     </Box>
   );
 };
@@ -229,6 +243,14 @@ export const VisibleItems: ComponentStory<typeof CarouselComponent> = (props) =>
       <CarouselExample {...props} visibleItems={3} />
     </Box>
   );
+};
+
+VisibleItems.argTypes = {
+  visibleItems: {
+    table: {
+      disable: true,
+    },
+  },
 };
 
 export const AutoBleed: ComponentStory<typeof CarouselComponent> = (props) => {
@@ -267,16 +289,24 @@ export const AutoBleed: ComponentStory<typeof CarouselComponent> = (props) => {
     </Box>
   );
 };
+AutoBleed.args = {
+  visibleItems: 'autofit',
+  carouselItemWidth: { base: '90%', m: '300px' },
+};
 
 export const ButtonPositions: ComponentStory<typeof CarouselComponent> = (props) => {
   return (
     <Box margin="auto" padding="spacing.4">
       <Text marginY="spacing.5">navigationButtonPosition: bottom</Text>
-      <CarouselExample {...props} visibleItems={2} navigationButtonPosition="bottom" />
+      <CarouselExample key={props.visibleItems} {...props} navigationButtonPosition="bottom" />
       <Text marginY="spacing.5">navigationButtonPosition: bottom</Text>
-      <CarouselExample {...props} visibleItems={2} navigationButtonPosition="side" />
+      <CarouselExample key={props.visibleItems} {...props} navigationButtonPosition="side" />
     </Box>
   );
+};
+
+ButtonPositions.args = {
+  visibleItems: 2,
 };
 
 export const AutoPlay: ComponentStory<typeof CarouselComponent> = (props) => {
@@ -286,9 +316,14 @@ export const AutoPlay: ComponentStory<typeof CarouselComponent> = (props) => {
         Setting autoPlay prop will auto scroll the slides every 6s, if you hover or focus inside the
         Carousel it will pause
       </Text>
-      <CarouselExample {...props} autoPlay visibleItems={2} />
+      <CarouselExample key={props.visibleItems} {...props} />
     </Box>
   );
+};
+
+AutoPlay.args = {
+  autoPlay: true,
+  visibleItems: 2,
 };
 
 export default meta;
