@@ -71,11 +71,11 @@ exports[`<TextArea /> should render 1`] = `
   width: 100%;
 }
 
-.c11 {
+.c12 {
   margin-left: 0px;
 }
 
-.c12 {
+.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -120,7 +120,7 @@ exports[`<TextArea /> should render 1`] = `
   padding: 0;
 }
 
-.c9 {
+.c10 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -140,13 +140,14 @@ exports[`<TextArea /> should render 1`] = `
   padding-left: 12px;
   padding-right: 12px;
   width: 100%;
+  min-height: 36px;
   resize: none;
   outline: none;
   border: none;
   cursor: auto;
 }
 
-.c9::-webkit-input-placeholder {
+.c10::-webkit-input-placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -159,7 +160,7 @@ exports[`<TextArea /> should render 1`] = `
   padding: 0;
 }
 
-.c9::-moz-placeholder {
+.c10::-moz-placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -172,7 +173,7 @@ exports[`<TextArea /> should render 1`] = `
   padding: 0;
 }
 
-.c9:-ms-input-placeholder {
+.c10:-ms-input-placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -185,7 +186,7 @@ exports[`<TextArea /> should render 1`] = `
   padding: 0;
 }
 
-.c9::placeholder {
+.c10::placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -198,11 +199,11 @@ exports[`<TextArea /> should render 1`] = `
   padding: 0;
 }
 
-.c9:focus {
+.c10:focus {
   outline: none;
 }
 
-.c10 {
+.c11 {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -214,6 +215,11 @@ exports[`<TextArea /> should render 1`] = `
 }
 
 .c8 {
+  -webkit-animation: iHeBRq 200ms cubic-bezier(0.17,0,1,1);
+  animation: iHeBRq 200ms cubic-bezier(0.17,0,1,1);
+}
+
+.c9 {
   background-color: hsla(216,15%,54%,0.09);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
@@ -222,7 +228,7 @@ exports[`<TextArea /> should render 1`] = `
   border-bottom-style: solid;
 }
 
-.c8:hover {
+.c9:hover {
   background-color: hsla(216,15%,54%,0.18);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
@@ -237,7 +243,7 @@ exports[`<TextArea /> should render 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c8:focus-within {
+.c9:focus-within {
   background-color: hsla(216,15%,54%,0.09);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
@@ -309,7 +315,7 @@ exports[`<TextArea /> should render 1`] = `
         </label>
       </div>
       <div
-        class="c7 c8"
+        class="c7 c8 c9"
         data-blade-component="base-box"
       >
         <textarea
@@ -317,24 +323,24 @@ exports[`<TextArea /> should render 1`] = `
           aria-disabled="false"
           aria-invalid="false"
           aria-required="false"
-          class="c9"
+          class="c10"
           data-blade-component="styled-base-input"
           id="textarea-1-input-2"
           rows="2"
           type="text"
         />
         <div
-          class=" c10"
+          class=" c11"
           data-blade-component="base-box"
         />
       </div>
     </div>
     <div
-      class="c11"
+      class="c12"
       data-blade-component="base-box"
     >
       <div
-        class="c12"
+        class="c13"
         data-blade-component="base-box"
       />
     </div>
@@ -413,11 +419,11 @@ exports[`<TextArea /> should set number of lines 1`] = `
   width: 100%;
 }
 
-.c11 {
+.c12 {
   margin-left: 0px;
 }
 
-.c12 {
+.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -462,7 +468,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
   padding: 0;
 }
 
-.c9 {
+.c10 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -482,13 +488,14 @@ exports[`<TextArea /> should set number of lines 1`] = `
   padding-left: 12px;
   padding-right: 12px;
   width: 100%;
+  min-height: 36px;
   resize: none;
   outline: none;
   border: none;
   cursor: auto;
 }
 
-.c9::-webkit-input-placeholder {
+.c10::-webkit-input-placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -501,7 +508,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
   padding: 0;
 }
 
-.c9::-moz-placeholder {
+.c10::-moz-placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -514,7 +521,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
   padding: 0;
 }
 
-.c9:-ms-input-placeholder {
+.c10:-ms-input-placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -527,7 +534,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
   padding: 0;
 }
 
-.c9::placeholder {
+.c10::placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -540,11 +547,11 @@ exports[`<TextArea /> should set number of lines 1`] = `
   padding: 0;
 }
 
-.c9:focus {
+.c10:focus {
   outline: none;
 }
 
-.c10 {
+.c11 {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -556,6 +563,11 @@ exports[`<TextArea /> should set number of lines 1`] = `
 }
 
 .c8 {
+  -webkit-animation: iHeBRq 200ms cubic-bezier(0.17,0,1,1);
+  animation: iHeBRq 200ms cubic-bezier(0.17,0,1,1);
+}
+
+.c9 {
   background-color: hsla(216,15%,54%,0.09);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
@@ -564,7 +576,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
   border-bottom-style: solid;
 }
 
-.c8:hover {
+.c9:hover {
   background-color: hsla(216,15%,54%,0.18);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
@@ -579,7 +591,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c8:focus-within {
+.c9:focus-within {
   background-color: hsla(216,15%,54%,0.09);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
@@ -651,7 +663,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
         </label>
       </div>
       <div
-        class="c7 c8"
+        class="c7 c8 c9"
         data-blade-component="base-box"
       >
         <textarea
@@ -659,24 +671,24 @@ exports[`<TextArea /> should set number of lines 1`] = `
           aria-disabled="false"
           aria-invalid="false"
           aria-required="false"
-          class="c9"
+          class="c10"
           data-blade-component="styled-base-input"
           id="textarea-91-input-92"
           rows="3"
           type="text"
         />
         <div
-          class=" c10"
+          class=" c11"
           data-blade-component="base-box"
         />
       </div>
     </div>
     <div
-      class="c11"
+      class="c12"
       data-blade-component="base-box"
     >
       <div
-        class="c12"
+        class="c13"
         data-blade-component="base-box"
       />
     </div>

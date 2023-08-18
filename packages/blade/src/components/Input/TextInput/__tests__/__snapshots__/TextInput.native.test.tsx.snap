@@ -186,6 +186,8 @@ exports[`<TextInput /> should render 1`] = `
         display="flex"
         flexDirection="row"
         position="relative"
+        setShowAllTagsWithAnimation={[Function]}
+        showAllTags={false}
         style={
           [
             {
@@ -251,6 +253,7 @@ exports[`<TextInput /> should render 1`] = `
                 "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
+                "minHeight": 36,
                 "paddingBottom": 8,
                 "paddingLeft": 12,
                 "paddingRight": 12,
@@ -500,6 +503,8 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
         display="flex"
         flexDirection="row"
         position="relative"
+        setShowAllTagsWithAnimation={[Function]}
+        showAllTags={false}
         style={
           [
             {
@@ -715,6 +720,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
                 "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
+                "minHeight": 36,
                 "paddingBottom": 8,
                 "paddingLeft": 8,
                 "paddingRight": 8,

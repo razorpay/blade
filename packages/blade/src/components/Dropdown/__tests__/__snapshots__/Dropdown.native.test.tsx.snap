@@ -218,6 +218,8 @@ exports[`<Dropdown /> should render dropdown 1`] = `
               display="flex"
               flexDirection="row"
               position="relative"
+              setShowAllTagsWithAnimation={[Function]}
+              showAllTags={false}
               style={
                 [
                   {
@@ -271,6 +273,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                     "marginLeft": 0,
                     "marginRight": 0,
                     "marginTop": 0,
+                    "minHeight": 36,
                     "opacity": 1,
                     "paddingBottom": 8,
                     "paddingLeft": 12,
@@ -337,10 +340,12 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                 <View
                   data-blade-component="base-box"
                   display="flex"
+                  height="100%"
                   style={
                     [
                       {
                         "display": "flex",
+                        "height": "100%",
                         "paddingRight": 12,
                       },
                     ]
@@ -360,6 +365,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                     style={
                       {
                         "display": "flex",
+                        "height": "100%",
                         "justifyContent": "center",
                         "opacity": 1,
                       }
@@ -371,6 +377,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                       bbHeight="16px"
                       bbWidth="16px"
                       data-blade-component="icon"
+                      display="flex"
                       fill="none"
                       focusable={false}
                       height="16px"
@@ -385,7 +392,9 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                             "borderWidth": 0,
                           },
                           [
-                            {},
+                            {
+                              "display": "flex",
+                            },
                           ],
                           {
                             "flex": 0,
@@ -420,6 +429,66 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                         />
                       </RNSVGGroup>
                     </RNSVGSvgView>
+                    <RNSVGSvgView
+                      accessibilityElementsHidden={true}
+                      align="xMidYMid"
+                      bbHeight="16px"
+                      bbWidth="16px"
+                      data-blade-component="icon"
+                      display="none"
+                      fill="none"
+                      focusable={false}
+                      height="16px"
+                      importantForAccessibility="no-hide-descendants"
+                      meetOrSlice={0}
+                      minX={0}
+                      minY={0}
+                      style={
+                        [
+                          {
+                            "backgroundColor": "transparent",
+                            "borderWidth": 0,
+                          },
+                          [
+                            {
+                              "display": "none",
+                            },
+                          ],
+                          {
+                            "flex": 0,
+                            "height": 16,
+                            "width": 16,
+                          },
+                        ]
+                      }
+                      vbHeight={24}
+                      vbWidth={24}
+                      width="16px"
+                    >
+                      <RNSVGGroup
+                        display="none"
+                        fill={null}
+                        propList={
+                          [
+                            "fill",
+                          ]
+                        }
+                      >
+                        <RNSVGPath
+                          clipRule={0}
+                          d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z"
+                          fill={4279445060}
+                          fillRule={0}
+                          propList={
+                            [
+                              "fill",
+                              "fillRule",
+                            ]
+                          }
+                        />
+                      </RNSVGGroup>
+                    </RNSVGSvgView>
+                     
                   </View>
                 </View>
               </View>
@@ -512,6 +581,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
           <View
             data-blade-component="dropdown-overlay"
             display="none"
+            elevation="midRaised"
             isInBottomSheet={false}
             position="absolute"
             style={
@@ -522,17 +592,29 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                   "width": "100%",
                 },
                 {
-                  "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                  "borderColor": "hsla(216, 15%, 54%, 0.18)",
-                  "borderRadius": 4,
-                  "borderStyle": "solid",
-                  "borderWidth": 1,
-                  "transform": [
-                    {
-                      "translateY": 8,
-                    },
-                  ],
+                  "elevation": 12,
+                  "shadowColor": "hsla(217, 56%, 17%, 0.64)",
+                  "shadowOffset": {
+                    "height": 8,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.1,
+                  "shadowRadius": 4,
                 },
+                [
+                  {
+                    "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                    "borderColor": "hsla(216, 15%, 54%, 0.18)",
+                    "borderRadius": 4,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
+                    "transform": [
+                      {
+                        "translateY": 8,
+                      },
+                    ],
+                  },
+                ],
               ]
             }
             testID="dropdown-overlay"
@@ -541,12 +623,10 @@ exports[`<Dropdown /> should render dropdown 1`] = `
             <View
               data-blade-component="base-box"
               flexShrink={0}
-              overflow="auto"
               style={
                 [
                   {
                     "flexShrink": 0,
-                    "overflow": "auto",
                   },
                 ]
               }
@@ -1096,138 +1176,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                     },
                   ]
                 }
-              >
-                <View
-                  accessibilityRole="button"
-                  accessibilityState={
-                    {
-                      "disabled": false,
-                    }
-                  }
-                  accessible={true}
-                  activeBackgroundColor="hsla(230, 100%, 42%, 1)"
-                  activeBorderColor="hsla(230, 100%, 42%, 1)"
-                  borderRadius="2px"
-                  borderWidth="1px"
-                  buttonPaddingBottom="0px"
-                  buttonPaddingLeft="20px"
-                  buttonPaddingRight="20px"
-                  buttonPaddingTop="0px"
-                  collapsable={false}
-                  data-blade-component="button"
-                  defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
-                  defaultBorderColor="hsla(218, 89%, 51%, 1)"
-                  focusBackgroundColor="hsla(227, 100%, 45%, 1)"
-                  focusBorderColor="hsla(227, 100%, 45%, 1)"
-                  focusRingColor="hsla(218, 89%, 51%, 0.18)"
-                  focusable={true}
-                  hoverBackgroundColor="hsla(223, 95%, 48%, 1)"
-                  hoverBorderColor="hsla(223, 95%, 48%, 1)"
-                  isFullWidth={false}
-                  isLoading={false}
-                  minHeight="36px"
-                  motionDuration="duration.xquick"
-                  motionEasing="easing.standard.effective"
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "alignSelf": "center",
-                        "backgroundColor": "hsla(218, 89%, 51%, 1)",
-                        "borderColor": "hsla(218, 89%, 51%, 1)",
-                        "borderRadius": 2,
-                        "borderStyle": "solid",
-                        "borderWidth": 1,
-                        "cursor": "pointer",
-                        "display": "flex",
-                        "justifyContent": "center",
-                        "minHeight": 36,
-                        "paddingBottom": 0,
-                        "paddingLeft": 20,
-                        "paddingRight": 20,
-                        "paddingTop": 0,
-                        "textDecorationColor": "black",
-                        "textDecorationLine": "none",
-                        "textDecorationStyle": "solid",
-                        "width": "auto",
-                      },
-                      {
-                        "backgroundColor": "hsla(218, 89%, 51%, 1)",
-                        "borderColor": "hsla(218, 89%, 51%, 1)",
-                      },
-                    ]
-                  }
-                  type="button"
-                >
-                  <View
-                    alignItems="center"
-                    data-blade-component="base-box"
-                    display="flex"
-                    flexDirection="row"
-                    isHidden={false}
-                    justifyContent="center"
-                    style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "display": "flex",
-                          "flexBasis": 0,
-                          "flexDirection": "row",
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "justifyContent": "center",
-                        },
-                        {
-                          "opacity": 1,
-                        },
-                      ]
-                    }
-                  >
-                    <Text
-                      accessible={true}
-                      color="action.text.primary.default"
-                      data-blade-component="base-text"
-                      fontSize={100}
-                      fontWeight="bold"
-                      lineHeight={100}
-                      style={
-                        [
-                          {
-                            "color": "hsla(0, 0%, 100%, 1)",
-                            "fontFamily": "Lato",
-                            "fontSize": 14,
-                            "fontStyle": "normal",
-                            "fontWeight": "700",
-                            "lineHeight": 20,
-                            "marginBottom": 0,
-                            "marginLeft": 0,
-                            "marginRight": 0,
-                            "marginTop": 0,
-                            "paddingBottom": 0,
-                            "paddingLeft": 0,
-                            "paddingRight": 0,
-                            "paddingTop": 0,
-                            "textAlign": "center",
-                            "textDecorationLine": "none",
-                          },
-                        ]
-                      }
-                      textAlign="center"
-                    >
-                      Apply
-                    </Text>
-                  </View>
-                </View>
-              </View>
+              />
             </View>
           </View>
         </View>

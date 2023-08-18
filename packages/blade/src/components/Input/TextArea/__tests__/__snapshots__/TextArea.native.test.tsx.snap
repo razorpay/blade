@@ -189,6 +189,8 @@ exports[`<TextArea /> should render 1`] = `
         display="flex"
         flexDirection="row"
         position="relative"
+        setShowAllTagsWithAnimation={[Function]}
+        showAllTags={false}
         style={
           [
             {
@@ -254,6 +256,7 @@ exports[`<TextArea /> should render 1`] = `
                 "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
+                "minHeight": 36,
                 "paddingBottom": 8,
                 "paddingLeft": 12,
                 "paddingRight": 12,
