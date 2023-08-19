@@ -169,15 +169,15 @@ const chipColorTokens = {
   },
 };
 
-const getChipHoverTokens = (variant: ChipProps['variant']): SelectorInputHoverTokens => {
+const getChipHoverTokens = (intent: ChipProps['intent']): SelectorInputHoverTokens => {
   return {
     default: {
       background: {
-        checked: `colors.${chipColorTokens.background[variant || 'neutral'].hover}` as never,
+        checked: `colors.${chipColorTokens.background[intent || 'neutral'].hover}` as never,
         unchecked: 'colors.brand.gray.a50.lowContrast',
       },
       border: {
-        checked: `colors.${chipColorTokens.border[variant || 'neutral'].hover}` as never,
+        checked: `colors.${chipColorTokens.border[intent || 'neutral'].hover}` as never,
         unchecked: 'colors.brand.gray.500.lowContrast',
       },
     },

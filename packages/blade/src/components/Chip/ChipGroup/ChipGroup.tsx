@@ -20,7 +20,7 @@ const ChipGroup = ({
   onChange,
   value,
   size = 'small',
-  variant = 'neutral',
+  intent = 'neutral',
   testID,
   selectionType = 'single',
   ...styledProps
@@ -32,7 +32,7 @@ const ChipGroup = ({
     isDisabled,
     name,
     size,
-    variant,
+    intent,
     selectionType,
   });
   // const { theme } = useTheme();

@@ -69,15 +69,15 @@ type ChipProps = {
    */
   value?: string;
   /**
-   * Sets the Chip's visual variant
+   * Sets the Chip's visual intent
    *
    */
-  variant?: 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
+  intent?: 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
 } & TestID &
   StyledPropsBlade;
 
 const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
-  { isDisabled, value, children, icon: Icon, size = 'small', variant, testID, ...styledProps },
+  { isDisabled, value, children, icon: Icon, size = 'small', intent, testID, ...styledProps },
   ref,
 ) => {
   const theme = useTheme();
@@ -127,7 +127,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
       : groupProps?.defaultValue?.includes(value as string); // If multiple selection, check if value is in defaultValue array
   const useChip = groupProps?.selectionType === 'single' ? useRadio : useCheckbox;
   const _size = groupProps?.size ?? size;
-  const _variant = variant ?? groupProps?.variant;
+  const _intent = intent ?? groupProps?.intent;
 
   const handleChange: OnChange = ({ isChecked, value }) => {
     if (isChecked) {
@@ -149,14 +149,6 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
     value,
     onChange: handleChange,
   });
-
-  // const handleClick = React.useCallback(() => {
-  //   if (_isDisabled || isPressed) return;
-  //   setIsPressed(true);
-  //   setTimeout(() => {
-  //     setIsPressed(false);
-  //   }, 150);
-  // }, [_isDisabled, isPressed]);
 
   const handlePointerPressedIn = React.useCallback(() => {
     if (_isDisabled) return;
@@ -189,15 +181,13 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
   );
 
   const chipTextColor =
-    chipColorTokens.text[
-      _isDisabled ? 'disabled' : _isChecked && _variant ? _variant : 'unchecked'
-    ];
+    chipColorTokens.text[_isDisabled ? 'disabled' : _isChecked && _intent ? _intent : 'unchecked'];
   const chipBackgroundColor =
-    chipColorTokens.background[_isChecked && _variant ? _variant : 'unchecked'][
+    chipColorTokens.background[_isChecked && _intent ? _intent : 'unchecked'][
       _isDisabled ? 'disabled' : 'default'
     ];
   const chipBorderColor =
-    chipColorTokens.border[_isChecked && _variant ? _variant : 'unchecked'][
+    chipColorTokens.border[_isChecked && _intent ? _intent : 'unchecked'][
       _isDisabled ? 'disabled' : 'default'
     ];
 
@@ -222,7 +212,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
         <BaseBox display="flex" flexDirection="column">
           <BaseBox display="flex" alignItems="center" flexDirection="row">
             <SelectorInput
-              hoverTokens={getChipHoverTokens(_variant)}
+              hoverTokens={getChipHoverTokens(_intent)}
               isChecked={state.isChecked}
               isDisabled={_isDisabled}
               inputProps={inputProps}

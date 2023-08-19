@@ -109,28 +109,28 @@ const ChipTemplate: ComponentStory<typeof ChipGroupComponent> = ({ children, ...
         <ChipComponent value="mango">Mango</ChipComponent>
         <ChipComponent value="orange">Orange</ChipComponent>
       </ChipGroupComponent>
-      <ChipGroupComponent {...args} size="small" variant="positive">
+      <ChipGroupComponent {...args} size="small" intent="positive">
         <ChipComponent value="apple" icon={InfoIcon}>
           Apple
         </ChipComponent>
         <ChipComponent value="mango">Mango</ChipComponent>
         <ChipComponent value="orange">Orange</ChipComponent>
       </ChipGroupComponent>
-      <ChipGroupComponent {...args} size="medium" variant="negative">
+      <ChipGroupComponent {...args} size="medium" intent="negative">
         <ChipComponent value="apple" icon={InfoIcon}>
           Apple
         </ChipComponent>
         <ChipComponent value="mango">Mango</ChipComponent>
         <ChipComponent value="orange">Orange</ChipComponent>
       </ChipGroupComponent>
-      <ChipGroupComponent {...args} size="medium" variant="information">
+      <ChipGroupComponent {...args} size="medium" intent="information">
         <ChipComponent value="apple" icon={InfoIcon}>
           Apple
         </ChipComponent>
         <ChipComponent value="mango">Mango</ChipComponent>
         <ChipComponent value="orange">Orange</ChipComponent>
       </ChipGroupComponent>
-      <ChipGroupComponent {...args} size="large" variant="notice">
+      <ChipGroupComponent {...args} size="large" intent="notice">
         <ChipComponent value="apple" icon={InfoIcon}>
           Apple
         </ChipComponent>

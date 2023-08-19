@@ -49,11 +49,11 @@ type ChipGroupProps = {
    */
   value?: string | string[];
   /**
-   * Sets the ChipGroups's visual variant, it will propagate down to all the Chips
+   * Sets the ChipGroups's visual intent, it will propagate down to all the Chips
    *
    * @default "neutral"
    */
-  variant?: 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
+  intent?: 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
 } & TestID &
   StyledPropsBlade;
 
@@ -73,7 +73,7 @@ type ChipGroupContextType = Pick<
   | 'value'
   | 'onChange'
   | 'size'
-  | 'variant'
+  | 'intent'
   | 'selectionType'
 > & { state?: State };
 
