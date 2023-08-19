@@ -20,6 +20,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { castWebType, makeMotionTime, useInterval, useTheme } from '~utils';
 import { useId } from '~utils/useId';
 import { makeAccessible } from '~utils/makeAccessible';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
 type ControlsProp = Required<
   Pick<
@@ -45,9 +46,7 @@ const Controls = ({
   indicatorVariant,
   navigationButtonVariant,
 }: ControlsProp): React.ReactElement => {
-  const isNavButtonsOnBottom = navigationButtonPosition === 'bottom';
-
-  if (isNavButtonsOnBottom) {
+  if (navigationButtonPosition === 'bottom') {
     return (
       <Box marginTop="spacing.7" display="flex" alignItems="center" gap="spacing.4">
         <NavigationButton
@@ -427,6 +426,7 @@ const Carousel = ({
   return (
     <CarouselContext.Provider value={carouselContext}>
       <BaseBox
+        {...metaAttribute({ name: MetaConstants.Carousel })}
         // stop autoplaying when any elements in carousel is in focus
         onFocus={(e: React.FocusEvent) => {
           if (!e.currentTarget.contains(e.relatedTarget)) {
