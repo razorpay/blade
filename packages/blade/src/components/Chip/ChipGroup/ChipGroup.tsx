@@ -35,7 +35,6 @@ const ChipGroup = ({
     intent,
     selectionType,
   });
-
   // const { theme } = useTheme();
   // const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
   // const gap = checkboxSizes.group.gap[size][matchedDeviceType];
@@ -51,7 +50,7 @@ const ChipGroup = ({
           testID={testID}
         >
           <BaseBox>
-            <BaseBox display="flex" flexDirection="row">
+            <BaseBox display="flex" flexDirection="row" flexWrap="wrap">
               {React.Children.map(children, (child, index) => {
                 return (
                   <BaseBox

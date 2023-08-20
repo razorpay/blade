@@ -117,7 +117,6 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
       : groupProps?.defaultValue?.includes(value as string); // If multiple selection, check if value is in defaultValue array
   const useChip = groupProps?.selectionType === 'single' ? useRadio : useCheckbox;
   const _size = groupProps?.size || 'small';
-  console.log('🚀 ~ file: Chip.tsx:119 ~ _size:', _size, groupProps?.size);
   const _intent = groupProps?.intent;
 
   const handleChange: OnChange = ({ isChecked, value }) => {
