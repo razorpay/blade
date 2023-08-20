@@ -107,12 +107,6 @@ const ChipTemplate: ComponentStory<typeof ChipGroupComponent> = ({ children, ...
 export const Default = ChipTemplate.bind({});
 Default.storyName = 'Default';
 
-export const Disabled = ChipTemplate.bind({});
-Disabled.storyName = 'Disabled';
-Disabled.args = {
-  isDisabled: true,
-};
-
 export const SingleSelection = ChipTemplate.bind({});
 SingleSelection.storyName = 'Single Selection';
 SingleSelection.args = {
@@ -123,6 +117,87 @@ export const MultiSelection = ChipTemplate.bind({});
 MultiSelection.storyName = 'Multi Selection';
 MultiSelection.args = {
   selectionType: 'multiple',
+};
+
+export const DefaultSelectedSingle = ChipTemplate.bind({});
+DefaultSelectedSingle.storyName = 'Default Single Selection';
+DefaultSelectedSingle.args = {
+  defaultValue: 'Proprietorship',
+};
+
+export const DefaultMultiSelected = ChipTemplate.bind({});
+DefaultMultiSelected.storyName = 'Default Multiple Selection';
+DefaultMultiSelected.args = {
+  defaultValue: ['Proprietorship', 'Public'],
+  selectionType: 'multiple',
+};
+
+const ControlledSingleSelectionTemplate: ComponentStory<typeof ChipGroupComponent> = () => {
+  const chipValues = ['Proprietorship', 'Public', 'Small Business'];
+  const [value, setValue] = React.useState('Proprietorship');
+  return (
+    <Box>
+      <Text marginBottom="spacing.3" marginTop="spacing.3">
+        Select Business type:
+      </Text>
+
+      <ChipGroupComponent
+        selectionType="single"
+        value={value}
+        onChange={({ value }) => setValue(value as string)}
+      >
+        {chipValues.map((chipValue: string) => (
+          <ChipComponent key={chipValue} value={chipValue} icon={InfoIcon}>
+            {chipValue}
+          </ChipComponent>
+        ))}
+      </ChipGroupComponent>
+
+      <Text marginBottom="spacing.3" marginTop="spacing.3">
+        Selected value is &quot;{value}&quot;
+      </Text>
+    </Box>
+  );
+};
+
+export const ControlledSingleSelection = ControlledSingleSelectionTemplate.bind({});
+ControlledSingleSelection.storyName = 'Controlled Single Selection';
+
+const ControlledMultiSelectionTemplate: ComponentStory<typeof ChipGroupComponent> = () => {
+  const chipValues = ['Proprietorship', 'Public', 'Small Business'];
+  const [value, setValue] = React.useState(['Proprietorship']);
+  return (
+    <Box>
+      <Text marginBottom="spacing.3" marginTop="spacing.3">
+        Select Business type:
+      </Text>
+
+      <ChipGroupComponent
+        selectionType="multiple"
+        value={value}
+        onChange={({ value }) => setValue(value as string[])}
+      >
+        {chipValues.map((chipValue: string) => (
+          <ChipComponent key={chipValue} value={chipValue} icon={InfoIcon}>
+            {chipValue}
+          </ChipComponent>
+        ))}
+      </ChipGroupComponent>
+
+      <Text marginBottom="spacing.3" marginTop="spacing.3">
+        Selected values are &quot;{value.join(', ')}&quot;
+      </Text>
+    </Box>
+  );
+};
+
+export const ControlledMultiSelection = ControlledMultiSelectionTemplate.bind({});
+ControlledMultiSelection.storyName = 'Controlled Multiple Selection';
+
+export const Disabled = ChipTemplate.bind({});
+Disabled.storyName = 'Disabled';
+Disabled.args = {
+  isDisabled: true,
 };
 
 const ChipWithIconTemplate: ComponentStory<typeof ChipGroupComponent> = ({ children, ...args }) => {
@@ -220,7 +295,7 @@ export const chipRef: ComponentStory<typeof ChipComponent> = (args) => {
   const chipRef = React.useRef<BladeElementRef>(null);
 
   return (
-    <Box gap="spacing.3" display="flex" flexDirection="column" alignItems="center">
+    <Box gap="spacing.3" display="flex" flexDirection="column">
       <ChipGroupComponent {...args}>
         <ChipComponent ref={chipRef} value="Proprietorship" icon={InfoIcon}>
           Proprietorship
@@ -232,7 +307,11 @@ export const chipRef: ComponentStory<typeof ChipComponent> = (args) => {
           Small Business
         </ChipComponent>
       </ChipGroupComponent>
-      <Button onClick={() => chipRef?.current?.focus()}>Click to focus the Chip</Button>
+      <Box maxWidth="200px">
+        <Button isFullWidth={false} onClick={() => chipRef?.current?.focus()}>
+          Click to focus the Chip
+        </Button>
+      </Box>
     </Box>
   );
 };
