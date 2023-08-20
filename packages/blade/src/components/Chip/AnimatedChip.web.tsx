@@ -2,12 +2,14 @@ import styled from 'styled-components';
 import getIn from 'lodash/get';
 import { getAnimatedChipStyles } from './getAnimatedChipStyles';
 import type { AnimatedChipProps } from './types';
+import { chipMotionTokens } from './chipTokens';
 import BaseBox from '~components/Box/BaseBox';
 import { makeMotionTime } from '~utils/makeMotionTime';
+import { castWebType } from '~utils';
 
 const AnimatedChip = styled(BaseBox)<AnimatedChipProps>((props) => {
-  const easing = getIn(props.theme, 'motion.easing.standard.effective');
-  const duration = makeMotionTime(getIn(props.theme, 'motion.duration.xquick'));
+  const easing = getIn(props.theme, chipMotionTokens.timingFunction);
+  const duration = castWebType(makeMotionTime(getIn(props.theme, chipMotionTokens.duration)));
   return {
     ...getAnimatedChipStyles(props),
     width: 'fit-content',

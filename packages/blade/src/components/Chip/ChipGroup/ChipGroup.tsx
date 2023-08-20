@@ -7,10 +7,6 @@ import BaseBox from '~components/Box/BaseBox';
 import { SelectorGroupField } from '~components/Form/Selector/SelectorGroupField';
 import { getStyledProps } from '~components/Box/styledProps';
 import { isReactNative } from '~utils';
-// import { useBreakpoint } from '~utils';
-
-// import { useTheme } from '~components/BladeProvider';
-// import { makeSize } from '~utils/makeSize';
 
 const ChipGroup = ({
   children,
@@ -35,11 +31,6 @@ const ChipGroup = ({
     intent,
     selectionType,
   });
-  // const { theme } = useTheme();
-  // const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
-  // const gap = checkboxSizes.group.gap[size][matchedDeviceType];
-  // const childCount = React.Children.count(children);
-
   return (
     <ChipGroupProvider value={contextValue}>
       <BaseBox {...getStyledProps(styledProps)}>

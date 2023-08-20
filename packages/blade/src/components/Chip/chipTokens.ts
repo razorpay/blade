@@ -1,6 +1,6 @@
 import type { ChipGroupProps } from './ChipGroup';
-import type { Theme } from '~components/BladeProvider';
-import type { DotNotationColorStringToken, DotNotationSpacingStringToken } from '~utils/types';
+// import type { Theme } from '~components/BladeProvider';
+// import type { DotNotationColorStringToken, DotNotationSpacingStringToken } from '~utils/types';
 import type { SelectorInputHoverTokens } from '~components/Form/Selector/types';
 import { size } from '~tokens/global';
 import type { IconProps } from '~components/Icons';
@@ -26,7 +26,7 @@ const chipGroupGapTokens = {
 
 // type ColorTokens = `colors.${DotNotationColorStringToken<Theme['colors']>}` | 'transparent';
 
-const chipHeightTokens: Record<NonNullable<ChipProps['size']>, number> = {
+const chipHeightTokens: Record<NonNullable<ChipGroupProps['size']>, number> = {
   xsmall: size[24],
   small: size[28],
   medium: size[36],
@@ -35,7 +35,7 @@ const chipHeightTokens: Record<NonNullable<ChipProps['size']>, number> = {
 
 const chipBorderWidthTokens: Record<
   string,
-  Record<NonNullable<ChipProps['size']>, number | string>
+  Record<NonNullable<ChipGroupProps['size']>, number | string>
 > = {
   unchecked: {
     xsmall: 'border.width.thin',
@@ -184,11 +184,35 @@ const getChipHoverTokens = (intent: ChipGroupProps['intent']): SelectorInputHove
   };
 };
 
-const iconSize: Record<NonNullable<ChipGroupProps['size']>, IconProps['size']> = {
+const chipIconSizes: Record<NonNullable<ChipGroupProps['size']>, IconProps['size']> = {
   xsmall: 'small',
   small: 'small',
   medium: 'medium',
   large: 'large',
+};
+
+const chipTextSizes = {
+  xsmall: {
+    variant: 'body',
+    size: 'small',
+  },
+  small: {
+    variant: 'body',
+    size: 'medium',
+  },
+  medium: {
+    variant: 'body',
+    size: 'large',
+  },
+  large: {
+    variant: 'body',
+    size: 'large',
+  },
+} as const;
+
+const chipMotionTokens = {
+  duration: 'motion.duration.xquick',
+  timingFunction: 'motion.easing.standard.effective',
 };
 
 export {
@@ -198,5 +222,7 @@ export {
   chipGroupGapTokens,
   getChipHoverTokens,
   chipHorizontalPaddingTokens,
-  iconSize,
+  chipTextSizes,
+  chipIconSizes,
+  chipMotionTokens,
 };

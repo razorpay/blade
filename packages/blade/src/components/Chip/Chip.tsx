@@ -2,14 +2,9 @@
 import React from 'react';
 import isEmpty from 'lodash/isEmpty';
 import { useChipGroupContext } from './ChipGroup/ChipGroupContext';
-import {
-  iconSize,
-  chipHorizontalPaddingTokens,
-  chipColorTokens,
-  getChipHoverTokens,
-} from './chipTokens';
+import { chipIconSizes, chipTextSizes, chipColorTokens, getChipHoverTokens } from './chipTokens';
 import { AnimatedChip } from './AnimatedChip';
-import { IconComponent, IconProps } from '~components/Icons';
+import type { IconComponent } from '~components/Icons';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
@@ -23,11 +18,7 @@ import { throwBladeError } from '~utils/logger';
 import { useCheckbox } from '~components/Checkbox/useCheckbox';
 import { useRadio } from '~components/Radio/useRadio';
 import { isReactNative } from '~utils';
-import { useTheme } from '~components/BladeProvider';
-import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import { Text } from '~components/Typography';
-import type { Feedback } from '~tokens/theme/theme';
-import { StyledChipProps } from './types';
 
 type OnChange = ({
   isChecked,
@@ -69,9 +60,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
   { isDisabled, value, children, icon: Icon, testID, ...styledProps },
   ref,
 ) => {
-  // const theme = useTheme();
   const groupProps = useChipGroupContext();
-  console.log('🚀 ~ file: Chip.tsx:74 ~ groupProps:', groupProps);
   const isInsideGroup = !isEmpty(groupProps);
   const [isPressed, setIsPressed] = React.useState(false);
 
@@ -84,25 +73,6 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
       });
     }
   }
-
-  const chipTextSizes = {
-    xsmall: {
-      variant: 'body',
-      size: 'small',
-    },
-    small: {
-      variant: 'body',
-      size: 'medium',
-    },
-    medium: {
-      variant: 'body',
-      size: 'large',
-    },
-    large: {
-      variant: 'body',
-      size: 'large',
-    },
-  } as const;
 
   const _isDisabled = isDisabled ?? groupProps?.isDisabled;
   const _name = groupProps?.name;
@@ -225,7 +195,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
               >
                 {Icon ? (
                   <BaseBox paddingRight="spacing.3" display="flex">
-                    <Icon color={chipTextColor as never} size={iconSize[_size]} />
+                    <Icon color={chipTextColor as never} size={chipIconSizes[_size]} />
                   </BaseBox>
                 ) : null}
                 <Text

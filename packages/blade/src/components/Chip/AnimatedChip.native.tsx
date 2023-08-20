@@ -4,6 +4,7 @@ import styled from 'styled-components/native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import { getAnimatedChipStyles } from './getAnimatedChipStyles';
 import type { AnimatedChipProps } from './types';
+import { chipMotionTokens } from './chipTokens';
 import { useTheme } from '~components/BladeProvider';
 
 const StyledAnimatedChip = styled(Animated.View)<AnimatedChipProps>((props) => {
@@ -22,13 +23,13 @@ const AnimatedChip = ({
   backgroundColor,
   borderColor,
   withIcon,
-}: AnimatedChipProps): React.ReactElement => {
+}: Omit<AnimatedChipProps, 'theme'>): React.ReactElement => {
   const { theme } = useTheme();
 
   const scaleDownAnimation = useSharedValue(1);
 
-  const easing = getIn(theme, 'motion.easing.standard.effective');
-  const duration = getIn(theme, 'motion.duration.xquick');
+  const easing = getIn(theme, chipMotionTokens.timingFunction);
+  const duration = getIn(theme, chipMotionTokens.duration);
 
   React.useEffect(() => {
     scaleDownAnimation.value = withTiming(isPressed ? 0.8 : 1, {
