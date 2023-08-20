@@ -72,10 +72,12 @@ const useChipGroup = ({
         if (selectionType === 'single') {
           setValue(undefined!);
         }
-        if (selectionType === 'multiple' && checkedValue.includes(value)) {
-          setValue(() =>
-            (checkedValue as string[]).filter((existingValue) => existingValue !== value),
-          );
+        if (
+          selectionType === 'multiple' &&
+          Array.isArray(checkedValue) &&
+          checkedValue.includes(value)
+        ) {
+          setValue(() => checkedValue.filter((existingValue) => existingValue !== value));
         }
       },
     };

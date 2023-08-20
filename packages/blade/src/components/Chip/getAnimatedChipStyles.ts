@@ -1,6 +1,6 @@
 import type { CSSObject } from 'styled-components';
 import getIn from 'lodash/get';
-import type { StyledChipProps } from './types';
+import type { AnimatedChipProps } from './types';
 import { chipHeightTokens, chipBorderWidthTokens, chipHorizontalPaddingTokens } from './chipTokens';
 import { makeBorderSize } from '~utils/makeBorderSize';
 
@@ -11,7 +11,7 @@ const getAnimatedChipStyles = ({
   size,
   isChecked,
   withIcon,
-}: StyledChipProps): CSSObject => {
+}: AnimatedChipProps): CSSObject => {
   return {
     backgroundColor: getIn(theme.colors, backgroundColor),
     borderColor: getIn(theme.colors, borderColor),

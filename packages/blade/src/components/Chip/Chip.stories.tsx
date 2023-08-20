@@ -2,23 +2,23 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import React from 'react';
 import { Title } from '@storybook/addon-docs';
-import { Text } from '../Typography';
+import { Heading, Text } from '../Typography';
 import type { ChipGroupProps } from './ChipGroup/ChipGroup';
 import { ChipGroup as ChipGroupComponent } from './ChipGroup/ChipGroup';
 import { Chip as ChipComponent } from './Chip';
 import { InfoIcon } from '~components/Icons';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
-import BaseBox from '~components/Box/BaseBox';
 import type { BladeElementRef } from '~utils/useBladeInnerRef';
 import { Button } from '~components/Button';
+import { Box } from '~components/Box';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const Page = (): React.ReactElement => {
   return (
     <StoryPageWrapper
-      componentDescription="Chip & ChipGroup can be used in forms when a user needs to single value from several options."
-      componentName="Chip"
+      componentDescription="Chips represents a collection of selectable objects which enable users to make selections, filter content, and trigger relevant actions. Chips can have either single selection or multiple (based on context)."
+      componentName="Chip & ChipGroup"
       imports={`import { Chip, ChipGroup } from '@razorpay/blade/components';\nimport type { ChipProps, ChipGroupProps } from '@razorpay/blade/components';`}
       figmaURL={{
         paymentTheme:
@@ -30,25 +30,18 @@ const Page = (): React.ReactElement => {
       <Title>Usage</Title>
       <Sandbox showConsole editorHeight={400} editorWidthPercentage={60}>
         {`
-          import { ChipGroup, Chip } from '@razorpay/blade/components';
+          import { Box, Chip, ChipGroup, Text } from '@razorpay/blade/components';
 
           function App(): React.ReactElement {
             return (
-              <ChipGroup
-                name="payment-collection" 
-                onChange={({name, value}) => console.log({name, value})}
-                defaultValue="website"
-              >
-                <Chip value="website">Website</Chip>
-                <Chip value="android">Android App</Chip>
-                <Chip value="ios">iOS App</Chip>
-                <Chip 
-                  value="social-media" 
-                >
-                  Social Media
-                </Chip>
-                <Chip value="offline-store">Offline Store</Chip>
-              </ChipGroup>
+              <Box>
+                <Text> Select Business type: </Text>
+                <ChipGroup defaultValue="proprietorship" onChange={({name, value}) => console.log({name, value})}>
+                  <Chip value="proprietorship">Proprietorship</Chip>
+                  <Chip value="public">Public</Chip>
+                  <Chip value="small-business">Small Business</Chip>
+                </ChipGroup>
+              </Box>
             )
           }
 
@@ -63,29 +56,22 @@ export default {
   title: 'Components/Chip & ChipGroup',
   component: ChipGroupComponent,
   args: {
-    label: 'Chip example',
-    helpText: undefined,
     isDisabled: false,
-    isRequired: false,
-    necessityIndicator: 'none',
-    labelPosition: undefined,
-    validationState: undefined,
-    errorText: undefined,
     name: undefined,
     defaultValue: undefined,
     onChange: undefined,
     value: undefined,
-    size: 'medium',
+    selectionType: 'single',
   },
   argTypes: {
     value: {
-      options: ['apple', 'mango', 'orange'],
+      options: ['proprietorship', 'public', 'small-business'],
       control: {
         type: 'select',
       },
     },
     defaultValue: {
-      options: ['apple', 'mango', 'orange'],
+      options: ['proprietorship', 'public', 'small-business'],
       control: {
         type: 'select',
       },
@@ -100,197 +86,163 @@ export default {
 } as Meta<ChipGroupProps>;
 
 const ChipTemplate: ComponentStory<typeof ChipGroupComponent> = ({ children, ...args }) => {
+  const chipValues = ['Proprietorship', 'Public', 'Small Business'];
   return (
-    <>
+    <Box>
+      <Text marginBottom="spacing.3" marginTop="spacing.3">
+        Select Business type:
+      </Text>
+
       <ChipGroupComponent {...args}>
-        <ChipComponent value="apple" icon={InfoIcon}>
-          Apple
-        </ChipComponent>
-        <ChipComponent value="mango">Mango</ChipComponent>
-        <ChipComponent value="orange">Orange</ChipComponent>
+        {chipValues.map((chipValue: string) => (
+          <ChipComponent key={chipValue} value={chipValue}>
+            {chipValue}
+          </ChipComponent>
+        ))}
       </ChipGroupComponent>
-      <ChipGroupComponent {...args} size="small" intent="positive">
-        <ChipComponent value="apple" icon={InfoIcon}>
-          Apple
-        </ChipComponent>
-        <ChipComponent value="mango">Mango</ChipComponent>
-        <ChipComponent value="orange">Orange</ChipComponent>
-      </ChipGroupComponent>
-      <ChipGroupComponent {...args} size="medium" intent="negative">
-        <ChipComponent value="apple" icon={InfoIcon}>
-          Apple
-        </ChipComponent>
-        <ChipComponent value="mango">Mango</ChipComponent>
-        <ChipComponent value="orange">Orange</ChipComponent>
-      </ChipGroupComponent>
-      <ChipGroupComponent {...args} size="medium" intent="information">
-        <ChipComponent value="apple" icon={InfoIcon}>
-          Apple
-        </ChipComponent>
-        <ChipComponent value="mango">Mango</ChipComponent>
-        <ChipComponent value="orange">Orange</ChipComponent>
-      </ChipGroupComponent>
-      <ChipGroupComponent {...args} size="large" intent="notice">
-        <ChipComponent value="apple" icon={InfoIcon}>
-          Apple
-        </ChipComponent>
-        <ChipComponent value="mango">Mango</ChipComponent>
-        <ChipComponent value="orange">Orange</ChipComponent>
-      </ChipGroupComponent>
-    </>
+    </Box>
   );
 };
 
 export const Default = ChipTemplate.bind({});
 Default.storyName = 'Default';
 
-// export const Disabled = ChipTemplate.bind({});
-// Disabled.storyName = 'Disabled';
-// Disabled.args = {
-//   isDisabled: true,
-// };
+export const Disabled = ChipTemplate.bind({});
+Disabled.storyName = 'Disabled';
+Disabled.args = {
+  isDisabled: true,
+};
 
 export const SingleSelection = ChipTemplate.bind({});
 SingleSelection.storyName = 'Single Selection';
 SingleSelection.args = {
-  size: 'xsmall',
   selectionType: 'single',
 };
 
 export const MultiSelection = ChipTemplate.bind({});
 MultiSelection.storyName = 'Multi Selection';
 MultiSelection.args = {
-  size: 'xsmall',
   selectionType: 'multiple',
 };
 
-// export const KitchenSink = (): React.ReactElement => {
-//   const [selected, setSelected] = React.useState('orange');
+const ChipWithIconTemplate: ComponentStory<typeof ChipGroupComponent> = ({ children, ...args }) => {
+  const chipValues = ['Proprietorship', 'Public', 'Small Business'];
+  return (
+    <Box>
+      <Text marginBottom="spacing.3" marginTop="spacing.3">
+        Select Business type:
+      </Text>
 
-//   return (
-//     <>
-//       <ChipGroupComponent
-//         helpText="Select atleast one"
-//         label="Medium"
-//         defaultValue="orange"
-//         onChange={(e) => console.log(e)}
-//         size="medium"
-//       >
-//         <ChipComponent value="apple">Apple</ChipComponent>
-//         <ChipComponent value="mango">Mango</ChipComponent>
-//         <ChipComponent value="orange">Orange</ChipComponent>
-//       </ChipGroupComponent>
-//       <Text>&nbsp;</Text>
-//       <ChipGroupComponent
-//         size="small"
-//         helpText="Select atleast one"
-//         label="Small"
-//         defaultValue="orange"
-//         onChange={(e) => console.log(e)}
-//       >
-//         <ChipComponent helpText="Apples are good" value="apple">
-//           Apple
-//         </ChipComponent>
-//         <ChipComponent value="mango">Mango</ChipComponent>
-//         <ChipComponent value="orange">Orange</ChipComponent>
-//       </ChipGroupComponent>
-//       <Text>&nbsp;</Text>
-//       <ChipGroupComponent
-//         errorText="Selected atleast one item"
-//         helpText={`You selected ${selected}`}
-//         label="Controlled"
-//         value={selected}
-//         onChange={({ value, name }) => {
-//           setSelected(value);
-//           console.log(name, value);
-//         }}
-//       >
-//         <ChipComponent helpText="Apples Are 25% Air" value="apple">
-//           Apple
-//         </ChipComponent>
-//         <ChipComponent helpText="The name “mango” originated in India" value="mango">
-//           Mango
-//         </ChipComponent>
-//         <ChipComponent helpText="There are over 600 varieties of oranges." value="orange">
-//           Orange
-//         </ChipComponent>
-//       </ChipGroupComponent>
-//       <Text>&nbsp;</Text>
-//       <ChipGroupComponent
-//         necessityIndicator="required"
-//         errorText="Atleast one has to be selected"
-//         helpText="Select atleast one"
-//         label="Select your fruit"
-//       >
-//         <ChipComponent value="apple">Apple</ChipComponent>
-//         <ChipComponent value="mango">Mango</ChipComponent>
-//         <ChipComponent value="orange">Orange</ChipComponent>
-//       </ChipGroupComponent>
-//       <Text>&nbsp;</Text>
-//       <ChipGroupComponent
-//         validationState="error"
-//         necessityIndicator="optional"
-//         errorText="Atleast one has to be selected"
-//         helpText="Select atleast one"
-//         label="Select your fruit"
-//       >
-//         <ChipComponent value="apple">Apple</ChipComponent>
-//         <ChipComponent value="mango">Mango</ChipComponent>
-//         <ChipComponent value="orange">Orange</ChipComponent>
-//       </ChipGroupComponent>
-//       <Text>&nbsp;</Text>
-//       <ChipGroupComponent
-//         labelPosition="left"
-//         necessityIndicator="optional"
-//         validationState="error"
-//         errorText="This is invalid"
-//         helpText="Select atleast one"
-//         label="Select your fruit"
-//       >
-//         <ChipComponent value="apple">Apple</ChipComponent>
-//         <ChipComponent value="mango">Mango</ChipComponent>
-//         <ChipComponent value="orange">Orange</ChipComponent>
-//       </ChipGroupComponent>
-//       <BaseBox height="50px" overflow="scroll" marginTop="spacing.4">
-//         <ChipGroupComponent
-//           labelPosition="left"
-//           necessityIndicator="optional"
-//           validationState="error"
-//           errorText="This is invalid"
-//           helpText="Select atleast one"
-//           label="Overflow Scroll"
-//         >
-//           <ChipComponent value="apple">Apple</ChipComponent>
-//           <ChipComponent value="mango">Mango</ChipComponent>
-//           <ChipComponent value="orange">Orange</ChipComponent>
-//         </ChipGroupComponent>
-//       </BaseBox>
-//     </>
-//   );
-// };
+      <ChipGroupComponent {...args}>
+        {chipValues.map((chipValue: string) => (
+          <ChipComponent key={chipValue} value={chipValue} icon={InfoIcon}>
+            {chipValue}
+          </ChipComponent>
+        ))}
+      </ChipGroupComponent>
+    </Box>
+  );
+};
 
-// export const radioRef: ComponentStory<typeof ChipComponent> = () => {
-//   // eslint-disable-next-line react-hooks/rules-of-hooks
-//   const radioRef = React.useRef<BladeElementRef>(null);
+export const ChipWithIcon = ChipWithIconTemplate.bind({});
+ChipWithIcon.storyName = 'With Icon';
+ChipWithIcon.args = {
+  selectionType: 'multiple',
+};
 
-//   return (
-//     <BaseBox gap="spacing.3" display="flex" alignItems="center">
-//       <ChipGroupComponent label="Chip ref example">
-//         <ChipComponent ref={radioRef} value="1">
-//           Chip
-//         </ChipComponent>
-//       </ChipGroupComponent>
-//       <Button onClick={() => radioRef?.current?.focus()}>Click to focus the Chip</Button>
-//     </BaseBox>
-//   );
-// };
+const AllChipSizesTemplate: ComponentStory<typeof ChipGroupComponent> = ({ children, ...args }) => {
+  const chipValues = ['Proprietorship', 'Public', 'Small Business'];
+  const sizes = ['xsmall', 'small', 'medium', 'large'];
+  return (
+    <Box>
+      {sizes.map((size, index) => (
+        <Box key={index}>
+          <Heading size="medium">{size}</Heading>
+          <Text marginBottom="spacing.3" marginTop="spacing.3" size="medium">
+            Select Business type:
+          </Text>
 
-// radioRef.storyName = 'Chip Ref';
-// radioRef.parameters = {
-//   docs: {
-//     description: {
-//       story:
-//         'Chip component exposes the `ref` prop. The `ref` exposes two methods `focus` & `scrollIntoView` which can be used to programatically control the DOM element',
-//     },
-//   },
-// };
+          <ChipGroupComponent size={size as ChipGroupProps['size']} {...args}>
+            {chipValues.map((chipValue: string) => (
+              <ChipComponent key={chipValue} value={chipValue} icon={InfoIcon}>
+                {chipValue}
+              </ChipComponent>
+            ))}
+          </ChipGroupComponent>
+        </Box>
+      ))}
+    </Box>
+  );
+};
+
+export const AllChipSizes = AllChipSizesTemplate.bind({});
+AllChipSizes.storyName = 'All Sizes';
+AllChipSizes.args = {
+  selectionType: 'multiple',
+};
+
+const AllChipIntentsTemplate: ComponentStory<typeof ChipGroupComponent> = ({
+  children,
+  ...args
+}) => {
+  const chipValues = ['Proprietorship', 'Public', 'Small Business'];
+  const intents = ['neutral', 'positive', 'negative', 'notice', 'information'];
+  return (
+    <Box>
+      {intents.map((intent, index) => (
+        <Box key={index}>
+          <Heading size="medium">{intent}</Heading>
+          <Text marginBottom="spacing.3" marginTop="spacing.3" size="medium">
+            Select Business type:
+          </Text>
+
+          <ChipGroupComponent intent={intent as ChipGroupProps['intent']} {...args}>
+            {chipValues.map((chipValue: string) => (
+              <ChipComponent key={chipValue} value={chipValue} icon={InfoIcon}>
+                {chipValue}
+              </ChipComponent>
+            ))}
+          </ChipGroupComponent>
+        </Box>
+      ))}
+    </Box>
+  );
+};
+
+export const AllChipIntents = AllChipIntentsTemplate.bind({});
+AllChipIntents.storyName = 'All Intents';
+AllChipIntents.args = {
+  selectionType: 'multiple',
+};
+
+export const chipRef: ComponentStory<typeof ChipComponent> = (args) => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const chipRef = React.useRef<BladeElementRef>(null);
+
+  return (
+    <Box gap="spacing.3" display="flex" flexDirection="column" alignItems="center">
+      <ChipGroupComponent {...args}>
+        <ChipComponent ref={chipRef} value="Proprietorship" icon={InfoIcon}>
+          Proprietorship
+        </ChipComponent>
+        <ChipComponent value="Public" icon={InfoIcon}>
+          Public
+        </ChipComponent>
+        <ChipComponent value="Small Business" icon={InfoIcon}>
+          Small Business
+        </ChipComponent>
+      </ChipGroupComponent>
+      <Button onClick={() => chipRef?.current?.focus()}>Click to focus the Chip</Button>
+    </Box>
+  );
+};
+
+chipRef.storyName = 'Chip Ref';
+chipRef.parameters = {
+  docs: {
+    description: {
+      story:
+        'Chip component exposes the `ref` prop. The `ref` exposes two methods `focus` & `scrollIntoView` which can be used to programmatically control the DOM element',
+    },
+  },
+};

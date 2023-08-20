@@ -1,4 +1,4 @@
-import type { ChipProps } from './Chip';
+import type { ChipGroupProps } from './ChipGroup';
 import type { Theme } from '~components/BladeProvider';
 import type { DotNotationColorStringToken } from '~utils/types';
 
@@ -8,7 +8,7 @@ type FeedbackBackgroundColors = `feedback.background.${DotNotationColorStringTok
 
 export type AnimatedChipProps = {
   backgroundColor: FeedbackBackgroundColors;
-  size: NonNullable<ChipProps['size']>;
+  size: NonNullable<ChipGroupProps['size']>;
   isChecked?: boolean;
   isPressed?: boolean;
   isDisabled?: boolean;

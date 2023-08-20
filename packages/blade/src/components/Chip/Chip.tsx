@@ -57,31 +57,21 @@ type ChipProps = {
    */
   isDisabled?: boolean;
   /**
-   * Specifies the size of the rendered Chip
-   *
-   * @default "small"
-   */
-  size?: 'xsmall' | 'small' | 'medium' | 'large';
-  /**
    * The value to be used in the Chip input.
    * This is the value that will be returned on form submission.
    * Use `onChange` to update its value
    */
   value?: string;
-  /**
-   * Sets the Chip's visual intent
-   *
-   */
-  intent?: 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
 } & TestID &
   StyledPropsBlade;
 
 const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
-  { isDisabled, value, children, icon: Icon, size = 'small', intent, testID, ...styledProps },
+  { isDisabled, value, children, icon: Icon, testID, ...styledProps },
   ref,
 ) => {
-  const theme = useTheme();
+  // const theme = useTheme();
   const groupProps = useChipGroupContext();
+  console.log('🚀 ~ file: Chip.tsx:74 ~ groupProps:', groupProps);
   const isInsideGroup = !isEmpty(groupProps);
   const [isPressed, setIsPressed] = React.useState(false);
 
@@ -126,8 +116,9 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
       ? groupProps?.defaultValue === value // If single selection and defaultValue equals value, defaultChecked is true
       : groupProps?.defaultValue?.includes(value as string); // If multiple selection, check if value is in defaultValue array
   const useChip = groupProps?.selectionType === 'single' ? useRadio : useCheckbox;
-  const _size = groupProps?.size ?? size;
-  const _intent = intent ?? groupProps?.intent;
+  const _size = groupProps?.size || 'small';
+  console.log('🚀 ~ file: Chip.tsx:119 ~ _size:', _size, groupProps?.size);
+  const _intent = groupProps?.intent;
 
   const handleChange: OnChange = ({ isChecked, value }) => {
     if (isChecked) {
@@ -235,7 +226,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
               >
                 {Icon ? (
                   <BaseBox paddingRight="spacing.3" display="flex">
-                    <Icon color={chipTextColor as never} size={iconSize[size]} />
+                    <Icon color={chipTextColor as never} size={iconSize[_size]} />
                   </BaseBox>
                 ) : null}
                 <Text

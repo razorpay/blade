@@ -1,4 +1,4 @@
-import type { ChipProps } from './Chip';
+import type { ChipGroupProps } from './ChipGroup';
 import type { Theme } from '~components/BladeProvider';
 import type { DotNotationColorStringToken, DotNotationSpacingStringToken } from '~utils/types';
 import type { SelectorInputHoverTokens } from '~components/Form/Selector/types';
@@ -169,7 +169,7 @@ const chipColorTokens = {
   },
 };
 
-const getChipHoverTokens = (intent: ChipProps['intent']): SelectorInputHoverTokens => {
+const getChipHoverTokens = (intent: ChipGroupProps['intent']): SelectorInputHoverTokens => {
   return {
     default: {
       background: {
@@ -184,7 +184,7 @@ const getChipHoverTokens = (intent: ChipProps['intent']): SelectorInputHoverToke
   };
 };
 
-const iconSize: Record<NonNullable<ChipProps['size']>, IconProps['size']> = {
+const iconSize: Record<NonNullable<ChipGroupProps['size']>, IconProps['size']> = {
   xsmall: 'small',
   small: 'small',
   medium: 'medium',

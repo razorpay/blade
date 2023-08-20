@@ -35,6 +35,7 @@ const ChipGroup = ({
     intent,
     selectionType,
   });
+
   // const { theme } = useTheme();
   // const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
   // const gap = checkboxSizes.group.gap[size][matchedDeviceType];
