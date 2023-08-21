@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 10.2.0
+
+### Minor Changes
+
+- 30109b99: feat(blade): added Carousel component
+
 ## 10.1.0
 
 ### Minor Changes
