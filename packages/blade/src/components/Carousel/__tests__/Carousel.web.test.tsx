@@ -5,6 +5,7 @@ import { Carousel } from '../Carousel';
 import { CarouselItem } from '../CarouselItem';
 import { useCarouselContext } from '../CarouselContext';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+import { mockViewport } from 'jsdom-testing-mocks';
 
 const TestimonialCard = (): React.ReactElement => {
   const { activeSlide } = useCarouselContext();
@@ -439,5 +440,23 @@ describe('Carousel Snapshots', () => {
     );
 
     expect(container).toMatchSnapshot();
+  });
+
+  it('should not render overlay on mobile devices', () => {
+    const viewport = mockViewport({ width: '320px', height: '568px' });
+
+    const { container } = renderWithTheme(
+      <Carousel scrollOverlayColor="surface.background.level1.lowContrast" shouldAddStartEndSpacing>
+        <CarouselItem>
+          <TestimonialCard />
+        </CarouselItem>
+        <CarouselItem>
+          <TestimonialCard />
+        </CarouselItem>
+      </Carousel>,
+    );
+
+    expect(container).toMatchSnapshot();
+    viewport.cleanup();
   });
 });
