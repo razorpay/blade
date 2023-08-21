@@ -333,7 +333,7 @@ describe('<Carousel />', () => {
     expect(queryByRole('button', { name: 'Previous Slide' })).toBeInTheDocument();
   });
 
-  test('when visibleItems:autofit & shouldAddStartEndSpacing is undefined then we hide the indicators since they are useless', () => {
+  test('when visibleItems:autofit & shouldAddStartEndSpacing is undefined then we hide the indicators since they are unnecessary', () => {
     const onChange = jest.fn();
     const { queryAllByRole } = renderWithTheme(
       <Carousel onChange={onChange} visibleItems="autofit">
