@@ -244,11 +244,23 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                 accessibilityRole="combobox"
                 accessibilityState={
                   {
+                    "busy": undefined,
+                    "checked": undefined,
                     "disabled": false,
                     "expanded": false,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
                   }
                 }
                 accessible={true}
+                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -353,7 +365,25 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                 >
                   <View
                     accessibilityLabel="Chevron Icon"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
                     accessible={true}
+                    collapsable={false}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -553,6 +583,23 @@ exports[`<Dropdown /> should render dropdown 1`] = `
         }
       >
         <View
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
           accessible={true}
           collapsable={false}
           display="none"
@@ -844,10 +891,12 @@ exports[`<Dropdown /> should render dropdown 1`] = `
               >
                 <View>
                   <View
+                    onFocusCapture={[Function]}
                     onLayout={[Function]}
                     style={null}
                   />
                   <View
+                    onFocusCapture={[Function]}
                     onLayout={[Function]}
                     style={null}
                   >
@@ -855,11 +904,23 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                       accessibilityRole="menuitem"
                       accessibilityState={
                         {
+                          "busy": undefined,
+                          "checked": undefined,
                           "disabled": undefined,
+                          "expanded": undefined,
                           "selected": false,
                         }
                       }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
                       accessible={true}
+                      collapsable={false}
                       focusable={true}
                       onClick={[Function]}
                       onResponderGrant={[Function]}
@@ -987,6 +1048,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                     </View>
                   </View>
                   <View
+                    onFocusCapture={[Function]}
                     onLayout={[Function]}
                     style={null}
                   >
@@ -994,11 +1056,23 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                       accessibilityRole="menuitem"
                       accessibilityState={
                         {
+                          "busy": undefined,
+                          "checked": undefined,
                           "disabled": undefined,
+                          "expanded": undefined,
                           "selected": false,
                         }
                       }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
                       accessible={true}
+                      collapsable={false}
                       focusable={true}
                       onClick={[Function]}
                       onResponderGrant={[Function]}
@@ -1126,6 +1200,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                     </View>
                   </View>
                   <View
+                    onFocusCapture={[Function]}
                     onLayout={[Function]}
                     style={null}
                   />

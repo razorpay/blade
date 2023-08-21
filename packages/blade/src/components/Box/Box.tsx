@@ -12,10 +12,11 @@ const validateBackgroundString = (stringBackgroundColorValue: string): void => {
   if (__DEV__) {
     if (
       !stringBackgroundColorValue.startsWith('surface.background') &&
-      !stringBackgroundColorValue.startsWith('brand.')
+      !stringBackgroundColorValue.startsWith('brand.') &&
+      stringBackgroundColorValue !== 'transparent'
     ) {
       throwBladeError({
-        message: `Oops! Currently you can only use \`surface.background.*\` and \`brand.*\` tokens with backgroundColor property but we received \`${stringBackgroundColorValue}\` instead.\n\n Do you have a usecase of using other values? Create an issue on https://github.com/razorpay/blade repo to let us know and we can discuss ✨`,
+        message: `Oops! Currently you can only use \`transparent\`, \`surface.background.*\`, and \`brand.*\` tokens with backgroundColor property but we received \`${stringBackgroundColorValue}\` instead.\n\n Do you have a usecase of using other values? Create an issue on https://github.com/razorpay/blade repo to let us know and we can discuss ✨`,
         moduleName: 'Box',
       });
     }
@@ -74,6 +75,7 @@ const makeBoxProps = (props: BoxProps): KeysRequired<Omit<BoxProps, 'testID' | '
     justifyContent: props.justifyContent,
     justifySelf: props.justifySelf,
     placeSelf: props.placeSelf,
+    placeItems: props.placeItems,
     order: props.order,
 
     // Grid
@@ -152,6 +154,16 @@ const makeBoxProps = (props: BoxProps): KeysRequired<Omit<BoxProps, 'testID' | '
     onMouseOver: props.onMouseOver,
     onScroll: props.onScroll,
 
+    // Drag and Drop
+    draggable: props.draggable,
+    onDragStart: props.onDragStart,
+    onDragEnd: props.onDragEnd,
+    onDragEnter: props.onDragEnter,
+    onDragLeave: props.onDragLeave,
+    onDragOver: props.onDragOver,
+    onDrop: props.onDrop,
+
+    pointerEvents: props.pointerEvents,
     children: props.children,
     tabIndex: props.tabIndex,
     as: isReactNative() ? undefined : props.as, // as is not supported on react-native

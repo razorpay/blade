@@ -10,6 +10,7 @@ import { useStyledProps } from '~components/Box/styledProps';
 import { useTheme } from '~components/BladeProvider';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { logger } from '~utils/logger';
+import { castNativeType } from '~utils';
 
 const StyledPressable = styled(Animated.createAnimatedComponent(Pressable))<
   Omit<StyledBaseButtonProps, 'accessibilityProps'>
@@ -71,6 +72,11 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<TextInput, StyledBaseBut
     isLoading,
     accessibilityProps,
     testID,
+    onTouchStart,
+    onTouchEnd,
+    onPointerEnter,
+    onPointerDown,
+    onFocus,
     ...styledProps
   },
   ref,
@@ -110,6 +116,12 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<TextInput, StyledBaseBut
       {...styledProps}
       {...accessibilityProps}
       ref={ref}
+      role="button"
+      onTouchStart={castNativeType(onTouchStart)}
+      onTouchEnd={castNativeType(onTouchEnd)}
+      onPointerEnter={castNativeType(onPointerEnter)}
+      onPointerDown={castNativeType(onPointerDown)}
+      onFocus={castNativeType(onFocus)}
       isLoading={isLoading}
       onPress={handleOnPress}
       style={animatedStyles}
