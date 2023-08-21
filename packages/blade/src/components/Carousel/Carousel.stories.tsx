@@ -231,7 +231,12 @@ const CarouselExample = (props: Omit<CarouselProps, 'children'>): React.ReactEle
   const key = `${props.visibleItems}-${props.shouldAddStartEndSpacing}`;
   return (
     <Box height={isReactNative() ? '350px' : 'auto'}>
-      <CarouselComponent {...props} key={key} carouselItemAlignment="stretch">
+      <CarouselComponent
+        {...props}
+        key={key}
+        carouselItemAlignment="stretch"
+        accessibilityLabel="Testimonials"
+      >
         {testimonialData.map((testimonial) => (
           <CarouselItem key={testimonial.name}>
             <TestimonialCard {...testimonial} />

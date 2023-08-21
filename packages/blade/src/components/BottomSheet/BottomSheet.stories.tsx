@@ -4,6 +4,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { ComponentStory, Meta } from '@storybook/react';
 import React from 'react';
+import isChromatic from 'chromatic/isChromatic';
 import type { BottomSheetHeaderProps, BottomSheetProps } from './';
 import {
   BottomSheetBody,
@@ -216,7 +217,9 @@ export default {
 } as Meta<StoryControlProps>;
 
 const BottomSheetTemplate: ComponentStory<typeof BottomSheetComponent> = ({ ...args }) => {
-  const [isOpen, setIsOpen] = React.useState(false);
+  // `!!isChramatic` is not readable hence disabling the eslint rule
+  // eslint-disable-next-line no-unneeded-ternary
+  const [isOpen, setIsOpen] = React.useState(isChromatic() ? true : false);
 
   return (
     <BaseBox>

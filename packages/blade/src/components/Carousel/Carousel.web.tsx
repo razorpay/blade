@@ -21,6 +21,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { castWebType, makeMotionTime, useInterval, useTheme } from '~utils';
 import { useId } from '~utils/useId';
 import { makeAccessible } from '~utils/makeAccessible';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
 type ControlsProp = Required<
   Pick<
@@ -46,9 +47,7 @@ const Controls = ({
   indicatorVariant,
   navigationButtonVariant,
 }: ControlsProp): React.ReactElement => {
-  const isNavButtonsOnBottom = navigationButtonPosition === 'bottom';
-
-  if (isNavButtonsOnBottom) {
+  if (navigationButtonPosition === 'bottom') {
     return (
       <Box marginTop="spacing.7" display="flex" alignItems="center" gap="spacing.4">
         <NavigationButton
@@ -155,6 +154,7 @@ type CarouselBodyProps = {
   isScrollAtStart: boolean;
   isScrollAtEnd: boolean;
   carouselItemAlignment: CarouselProps['carouselItemAlignment'];
+  accessibilityLabel?: string;
 };
 
 const CarouselBody = React.forwardRef<HTMLDivElement, CarouselBodyProps>(
@@ -168,11 +168,13 @@ const CarouselBody = React.forwardRef<HTMLDivElement, CarouselBodyProps>(
       isScrollAtStart,
       isScrollAtEnd,
       carouselItemAlignment,
+      accessibilityLabel,
     },
     ref,
   ) => {
     return (
       <CarouselContainer
+        tabIndex={0}
         ref={ref}
         showOverlay={Boolean(scrollOverlayColor)}
         scrollOverlayColor={scrollOverlayColor}
@@ -180,7 +182,11 @@ const CarouselBody = React.forwardRef<HTMLDivElement, CarouselBodyProps>(
         isScrollAtStart={isScrollAtStart}
         isScrollAtEnd={isScrollAtEnd}
         alignItems={carouselItemAlignment}
-        {...makeAccessible({ liveRegion: 'polite' })}
+        {...makeAccessible({
+          role: 'group',
+          roleDescription: 'carousel',
+          label: accessibilityLabel,
+        })}
       >
         {React.Children.map(children, (child, index) => {
           return React.cloneElement(child as React.ReactElement, {
@@ -421,7 +427,7 @@ const Carousel = ({
   return (
     <CarouselContext.Provider value={carouselContext}>
       <BaseBox
-        {...makeAccessible({ roleDescription: 'carousel', label: accessibilityLabel })}
+        {...metaAttribute({ name: MetaConstants.Carousel })}
         // stop autoplaying when any elements in carousel is in focus
         onFocus={(e: React.FocusEvent) => {
           if (!e.currentTarget.contains(e.relatedTarget)) {
@@ -483,6 +489,7 @@ const Carousel = ({
             isScrollAtEnd={isScrollAtEnd}
             ref={containerRef}
             carouselItemAlignment={carouselItemAlignment}
+            accessibilityLabel={accessibilityLabel}
           >
             {children}
           </CarouselBody>
