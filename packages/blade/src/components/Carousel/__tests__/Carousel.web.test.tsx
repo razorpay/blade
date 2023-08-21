@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 /* eslint-disable @typescript-eslint/require-await */
 import { fireEvent, act } from '@testing-library/react';
+import { mockViewport } from 'jsdom-testing-mocks';
 import { Carousel } from '../Carousel';
 import { CarouselItem } from '../CarouselItem';
 import { useCarouselContext } from '../CarouselContext';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
-import { mockViewport } from 'jsdom-testing-mocks';
 
 const TestimonialCard = (): React.ReactElement => {
   const { activeSlide } = useCarouselContext();
