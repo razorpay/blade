@@ -25,13 +25,12 @@ This document outlines the API details of the `Chip` and `ChipGroup` components,
 >
 > The `Chip` component is inherently tied to the `ChipGroup` and cannot be utilized outside its context.
 
-| Prop                    | Type                                                                 | Default     | Description                                                                                                                                        | Required |
-| ----------------------- | -------------------------------------------------------------------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| **children**            | `string`                                                             | `undefined` | Renders the label text for the Chip                                                                                                                | ✅       |
-| **icon**                | `Icon`                                                               | `undefined` | Displays the Blade Icon component within the Chip                                                                                                  | ❌       |
-| **isDisabled**          | `boolean`                                                            | `false`     | Disables or enables the Chip                                                                                                                       | ❌       |
-| **value (html native)** | `string`                                                             | `undefined` | The value of the input field in Chip, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#value) | ❌       |
-| **intent**              | `'positive' \| 'negative' \| 'notice' \| 'information' \| 'neutral'` | `undefined` | Sets the Chip's visual variant                                                                                                                     | ❌       |
+| Prop                    | Type      | Default     | Description                                                                                                                                        | Required |
+| ----------------------- | --------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| **children**            | `string`  | `undefined` | Renders the label text for the Chip                                                                                                                | ✅       |
+| **icon**                | `Icon`    | `undefined` | Displays the Blade Icon component within the Chip                                                                                                  | ❌       |
+| **isDisabled**          | `boolean` | `false`     | Disables or enables the Chip                                                                                                                       | ❌       |
+| **value (html native)** | `string`  | `undefined` | The value of the input field in Chip, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#value) | ❌       |
 
 ## `ChipGroup` API
 
