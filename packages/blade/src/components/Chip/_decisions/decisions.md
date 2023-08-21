@@ -34,17 +34,17 @@ This document outlines the API details of the `Chip` and `ChipGroup` components,
 
 ## `ChipGroup` API
 
-| Prop              | Type                                                                 | Default     | Description                                                                                                                    | Required |
-| ----------------- | -------------------------------------------------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------ | -------- |
-| **children**      | `React.ReactNode`                                                    | `undefined` | Accepts multiple `Chip` components                                                                                             | ✅       |
-| **defaultValue**  | `string \|string[]`                                                  | `undefined` | Sets the initial value of the Chip group                                                                                       | ❌       |
-| **isDisabled**    | `boolean`                                                            | `false`     | Disables or enables ChipGroup, it will propagate down to all the Chips                                                         | ❌       |
-| **name**          | `string`                                                             | `undefined` | The name of the chip group, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#name) | ❌       |
-| **onChange**      | `({ name, values }: { name: string; values: string[] }) => void`     | `undefined` | Calls a function on any state change within the ChipGroup                                                                      | ❌       |
-| **selectionType** | `'single' \| 'multiple'`                                             | `'single'`  | Defines the selection behavior within the ChipGroup component, simulating radio/checkbox like behavior within the group        | ❌       |
-| **size**          | `'xsmall' \| 'small' \| 'medium' \| 'large'`                         | `'small'`   | Specifies the size of the rendered Chips withing the ChipGroup                                                                 | ❌       |
-| **value**         | `string \|string[]`                                                  | `undefined` | Acts as a controlled component by specifying the ChipGroup value                                                               | ❌       |
-| **intent**        | `'positive' \| 'negative' \| 'notice' \| 'information' \| 'neutral'` | `'neutral'` | Sets the ChipGroups's visual variant, it will propagate down to all the Chips                                                  | ❌       |
+| Prop              | Type                                                             | Default     | Description                                                                                                                    | Required |
+| ----------------- | ---------------------------------------------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------ | -------- |
+| **children**      | `React.ReactNode`                                                | `undefined` | Accepts multiple `Chip` components                                                                                             | ✅       |
+| **defaultValue**  | `string \|string[]`                                              | `undefined` | Sets the initial value of the Chip group                                                                                       | ❌       |
+| **isDisabled**    | `boolean`                                                        | `false`     | Disables or enables ChipGroup, it will propagate down to all the Chips                                                         | ❌       |
+| **name**          | `string`                                                         | `undefined` | The name of the chip group, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#name) | ❌       |
+| **onChange**      | `({ name, values }: { name: string; values: string[] }) => void` | `undefined` | Calls a function on any state change within the ChipGroup                                                                      | ❌       |
+| **selectionType** | `'single' \| 'multiple'`                                         | `'single'`  | Defines the selection behavior within the ChipGroup component, simulating radio/checkbox like behavior within the group        | ❌       |
+| **size**          | `'xsmall' \| 'small' \| 'medium' \| 'large'`                     | `'small'`   | Specifies the size of the rendered Chips withing the ChipGroup                                                                 | ❌       |
+| **value**         | `string \|string[]`                                              | `undefined` | Acts as a controlled component by specifying the ChipGroup value                                                               | ❌       |
+| **intent**        | `'positive' \| 'negative' \| 'neutral'`                          | `'neutral'` | Sets the ChipGroups's visual variant, it will propagate down to all the Chips                                                  | ❌       |
 
 ## Examples
 
