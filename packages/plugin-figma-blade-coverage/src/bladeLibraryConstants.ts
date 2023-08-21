@@ -385,7 +385,7 @@ export const paymentLightThemeData = {
       key: '526d28fecc42fb3b615e7e92911795c2e9343096',
     },
     grid: {
-      key: 'd6f06379bc794fc4a8bff1b00f78bf2cec709ff4',
+      key: '4032d9f4ae3638943fca92d0fa7c272cd1e5b963',
     },
     watch: {
       key: '40f459ef3a62f95aa938caa7ae88fab212f7fbf8',
@@ -475,7 +475,7 @@ export const paymentLightThemeData = {
       key: 'de1ac1673d3bb28aea1d984abf8e0cc71cde71ab',
     },
     'file-text': {
-      key: 'c1824d91771423a3f38634e8e962585ce88ed48c',
+      key: '5fe07d7afbb94e7bfbed16ca64ddab04acb56300',
     },
     square: {
       key: '602bcb02bb38d4b1f02c05a18c719914eae393a0',
@@ -4312,7 +4312,7 @@ export const bankingDarkThemeData = {
       key: '17ee700539026a45a117bab4220bfb87a5340029',
     },
     grid: {
-      key: '7d01a065bf5c7295eb53c4ce68f4c8b749b5d144',
+      key: '183242f6126eb70a2fd8968504ec44744fde0b09',
     },
     'full-screen-enter': {
       key: '4d2036ef75cd7961022e7892b73f94c1513dc7ab',
@@ -4321,7 +4321,7 @@ export const bankingDarkThemeData = {
       key: '1ba7af527d5623a4b8b5f128a0ce890e8edf7839',
     },
     'file-text': {
-      key: 'b304456983e8438f6cdb7b7460c506deb6b6af76',
+      key: '1ca4b02908cdca86542909e186396c3135d4387e',
     },
     power: {
       key: 'eae5bde818bc6e1bebd0501deb37250e29d1b1e7',
