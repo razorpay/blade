@@ -1,5 +1,5 @@
 import React from 'react';
-import type { CarouselProps } from './types';
+import { throwBladeError } from '~utils/logger';
 
 type CarouselContextProps =
   | (Pick<
@@ -19,10 +19,13 @@ const useCarouselContext = (): NonNullable<CarouselContextProps> => {
   const state = React.useContext<CarouselContextProps>(CarouselContext);
 
   if (!state) {
-    throw new Error('[Blade Carousel]: useCarouselContext must be used within Carousel');
+    throwBladeError({
+      moduleName: 'Carousel',
+      message: 'useCarouselContext must be used within Carousel',
+    });
   }
 
-  return state;
+  return state!;
 };
 
 export { CarouselContext, useCarouselContext };

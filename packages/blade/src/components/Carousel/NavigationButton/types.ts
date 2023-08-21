@@ -1,6 +1,6 @@
 type NavigationButtonProps = {
   type: 'next' | 'previous';
-  variant: 'filled' | 'stroke';
+  variant: 'filled' | 'stroked';
   onClick?: () => void;
 };
 

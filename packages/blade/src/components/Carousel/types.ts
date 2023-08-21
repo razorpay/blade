@@ -17,6 +17,7 @@ type CarouselProps = {
   visibleItems?: 1 | 2 | 3 | 'autofit';
   /**
    * If true, adds extra margin before and after the first/last slides so that they align in center
+   * This prop is only effective on desktop screen sizes
    *
    * @default false
    */
@@ -37,6 +38,8 @@ type CarouselProps = {
    * Changes the color of the overlay, so that carousel can blend with the background color
    * If set to undefined overlay won't be shown
    *
+   * This prop is only effective on desktop screen sizes
+   *
    * @default undefined
    */
   scrollOverlayColor?: OverlayColor;
@@ -51,7 +54,7 @@ type CarouselProps = {
    *
    * @default 'filled'
    */
-  navigationButtonVariant?: 'filled' | 'stroke';
+  navigationButtonVariant?: 'filled' | 'stroked';
   /**
    * Variant to be used depending on the emphasis you want to give to the indicators
    *
