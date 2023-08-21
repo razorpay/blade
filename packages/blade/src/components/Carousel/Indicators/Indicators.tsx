@@ -10,6 +10,7 @@ const Indicators = (props: IndicatorsProps): React.ReactElement => {
     <BaseBox
       display="flex"
       flexDirection="row"
+      gap="spacing.2"
       {...makeAccessible({ role: 'tablist', label: 'Slides' })}
     >
       {new Array(props.totalItems).fill(0).map((_, idx) => {
@@ -28,9 +29,9 @@ const Indicators = (props: IndicatorsProps): React.ReactElement => {
               selected: idx === props.activeIndex,
               controls: `${carouselId}-carousel-item-${idx * _visibleItems}`,
             })}
-            marginLeft={idx !== 0 ? 'spacing.2' : 'spacing.0'}
+            slideIndex={idx * _visibleItems}
             isActive={idx === props.activeIndex}
-            onClick={() => props?.onIndicatorButtonClick?.(idx)}
+            onClick={() => props?.onClick?.(idx)}
             variant={props.variant}
           />
         );

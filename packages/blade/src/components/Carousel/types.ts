@@ -1,4 +1,5 @@
 import type { BoxProps } from '~components/Box';
+import type { Platform } from '~utils';
 
 type OverlayColor = BoxProps['backgroundColor'];
 
@@ -66,7 +67,7 @@ type CarouselProps = {
    *
    * @default undefined
    */
-  carouselItemWidth?: BoxProps['width'];
+  carouselItemWidth?: Platform.Select<{ web: BoxProps['width']; native: `${number}%` }>;
   /**
    * Sets the align-items CSS property on carousel container which specifies how the carousel items will align if their heights are different
    *

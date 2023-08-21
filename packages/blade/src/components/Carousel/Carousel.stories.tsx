@@ -1,15 +1,15 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title as AddonTitle } from '@storybook/addon-docs';
-import type { CarouselProps } from './types';
-import { Carousel as CarouselComponent } from './Carousel';
-import { CarouselItem } from './CarouselItem';
+import type { CarouselProps } from './';
+import { Carousel as CarouselComponent, CarouselItem } from './';
 import { Box } from '~components/Box';
 import { Code, Heading, Text } from '~components/Typography';
 import { Card, CardBody } from '~components/Card';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { Divider } from '~components/Divider';
-import { useTheme } from '~utils';
+import { isReactNative, useTheme } from '~utils';
 
 const Page = (): React.ReactElement => {
   return (
@@ -150,6 +150,11 @@ const testimonialData: TestimonialData[] = [
 
 const QuoteSvg = (): React.ReactElement => {
   const { theme } = useTheme();
+
+  if (isReactNative()) {
+    return <></>;
+  }
+
   return (
     <svg width="38" height="31" viewBox="0 0 38 31" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -157,6 +162,20 @@ const QuoteSvg = (): React.ReactElement => {
         fill={theme.colors.brand.primary[300]}
       />
     </svg>
+  );
+};
+const Avatar = ({ name }: { name: string }): React.ReactElement => {
+  if (isReactNative()) {
+    return <></>;
+  }
+
+  return (
+    <Box flexShrink={0} width="50px" height="50px" borderRadius="max" overflow="hidden">
+      <img
+        src={`https://api.dicebear.com/6.x/notionists/svg?seed=${name}&backgroundColor=b6e3f4,c0aede,d1d4f9`}
+        alt={name}
+      />
+    </Box>
   );
 };
 
@@ -180,14 +199,13 @@ const TestimonialCard = ({
               {longQuote}
             </Text>
           </Box>
-          <Divider />
-          <Box display="flex" alignItems="center" gap="spacing.4">
-            <Box flexShrink={0} width="50px" height="50px" borderRadius="max" overflow="hidden">
-              <img
-                src={`https://api.dicebear.com/6.x/notionists/svg?seed=${name}&backgroundColor=b6e3f4,c0aede,d1d4f9`}
-                alt={name}
-              />
-            </Box>
+          <Divider marginY="spacing.4" />
+          <Box
+            display="flex"
+            alignItems={isReactNative() ? 'flex-start' : 'center'}
+            gap="spacing.4"
+          >
+            <Avatar name={name} />
             <Box>
               <Text size="large" weight="bold">
                 {name}
@@ -212,18 +230,20 @@ const TestimonialCard = ({
 const CarouselExample = (props: Omit<CarouselProps, 'children'>): React.ReactElement => {
   const key = `${props.visibleItems}-${props.shouldAddStartEndSpacing}`;
   return (
-    <CarouselComponent
-      {...props}
-      key={key}
-      carouselItemAlignment="stretch"
-      accessibilityLabel="Testimonials"
-    >
-      {testimonialData.map((testimonial) => (
-        <CarouselItem key={testimonial.name}>
-          <TestimonialCard {...testimonial} />
-        </CarouselItem>
-      ))}
-    </CarouselComponent>
+    <Box height={isReactNative() ? '350px' : 'auto'}>
+      <CarouselComponent
+        {...props}
+        key={key}
+        carouselItemAlignment="stretch"
+        accessibilityLabel="Testimonials"
+      >
+        {testimonialData.map((testimonial) => (
+          <CarouselItem key={testimonial.name}>
+            <TestimonialCard {...testimonial} />
+          </CarouselItem>
+        ))}
+      </CarouselComponent>
+    </Box>
   );
 };
 
@@ -238,6 +258,15 @@ const CarouselTestimonialTemplate: ComponentStory<typeof CarouselComponent> = (p
 export const Default = CarouselTestimonialTemplate.bind({});
 
 export const VisibleItems: ComponentStory<typeof CarouselComponent> = (props) => {
+  if (isReactNative()) {
+    return (
+      <Box margin="auto" width="100%" padding="spacing.4">
+        <Text marginY="spacing.5">on mobile visibleItems is always 1</Text>
+        <CarouselExample {...props} visibleItems={1} />
+      </Box>
+    );
+  }
+
   return (
     <Box margin="auto" width={{ base: '100%', m: '100%' }} padding="spacing.4">
       <Text marginY="spacing.5">visibleItems: 1</Text>
@@ -259,6 +288,15 @@ VisibleItems.argTypes = {
 };
 
 export const AutoBleed: ComponentStory<typeof CarouselComponent> = (props) => {
+  if (isReactNative()) {
+    return (
+      <Box>
+        <Text>You can set carouselItemWidth to 90% to get 10% bleed on mobile</Text>
+        <CarouselExample {...props} carouselItemWidth="90%" />
+      </Box>
+    );
+  }
+
   return (
     <Box margin="auto" padding="spacing.4">
       <Box marginY="spacing.8">
