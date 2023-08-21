@@ -1,6 +1,6 @@
 import type { ChipGroupProps } from './ChipGroup';
-// import type { Theme } from '~components/BladeProvider';
-// import type { DotNotationColorStringToken, DotNotationSpacingStringToken } from '~utils/types';
+import type { Theme } from '~components/BladeProvider';
+import type { DotNotationColorStringToken, DotNotationSpacingStringToken } from '~utils/types';
 import type { SelectorInputHoverTokens } from '~components/Form/Selector/types';
 import { size } from '~tokens/global';
 import type { IconProps } from '~components/Icons';
@@ -23,8 +23,6 @@ const chipGroupGapTokens = {
     bottom: 'spacing.4',
   },
 } as const;
-
-// type ColorTokens = `colors.${DotNotationColorStringToken<Theme['colors']>}` | 'transparent';
 
 const chipHeightTokens: Record<NonNullable<ChipGroupProps['size']>, number> = {
   xsmall: size[24],
@@ -52,7 +50,18 @@ const chipBorderWidthTokens: Record<
   },
 };
 
-const chipHorizontalPaddingTokens = {
+type ChipHorizontalPaddingTokens = {
+  default: Record<
+    'left' | 'right',
+    Record<NonNullable<ChipGroupProps['size']>, DotNotationSpacingStringToken>
+  >;
+  icon: Record<
+    'left' | 'right',
+    Record<NonNullable<ChipGroupProps['size']>, DotNotationSpacingStringToken>
+  >;
+};
+
+const chipHorizontalPaddingTokens: ChipHorizontalPaddingTokens = {
   default: {
     left: {
       xsmall: 'spacing.4',
@@ -83,7 +92,15 @@ const chipHorizontalPaddingTokens = {
   },
 };
 
-const chipColorTokens = {
+type ColorTokens = `${DotNotationColorStringToken<Theme['colors']>}` | 'transparent';
+
+type ChipColorTokens = {
+  text: Record<string, ColorTokens>;
+  background: Record<string, Record<string, ColorTokens>>;
+  border: Record<string, Record<string, ColorTokens>>;
+};
+
+const chipColorTokens: ChipColorTokens = {
   text: {
     unchecked: 'surface.text.subtle.lowContrast',
     disabled: 'surface.text.placeholder.lowContrast',

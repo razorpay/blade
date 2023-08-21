@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import type { ComponentStory, Meta } from '@storybook/react';
 import React from 'react';
 import { Title } from '@storybook/addon-docs';

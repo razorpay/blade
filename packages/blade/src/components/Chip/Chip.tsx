@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-shadow */
 import React from 'react';
 import isEmpty from 'lodash/isEmpty';
 import { useChipGroupContext } from './ChipGroup/ChipGroupContext';
