@@ -9,8 +9,12 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   background-color: hsla(214,18%,69%,1);
   width: 18px;
   height: 6px;
-  -webkit-transition: 300ms width;
-  transition: 300ms width;
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 400ms;
+  transition-duration: 400ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c8:before {
@@ -29,11 +33,15 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   cursor: pointer;
   padding: 0px;
   border-radius: 9999px;
-  background-color: hsla(214,15%,18%,0.64);
+  background-color: hsla(214,18%,69%,0.64);
   width: 6px;
   height: 6px;
-  -webkit-transition: 300ms width;
-  transition: 300ms width;
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 400ms;
+  transition-duration: 400ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c9:before {
@@ -107,6 +115,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  gap: 4px;
 }
 
 .c6 {
