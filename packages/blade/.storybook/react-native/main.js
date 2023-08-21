@@ -1,6 +1,6 @@
 module.exports = {
   stories: [
-    '../../src/**/*.stories.?(ts|tsx|js|jsx)',
+    '../../src/**/!(_KitchenSink)*.stories.?(ts|tsx|js|jsx)',
     '../../src/**/*.stories.internal.?(ts|tsx|js|jsx)',
   ],
   addons: [

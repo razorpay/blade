@@ -12,9 +12,9 @@ global.STORIES = [
   {
     titlePrefix: '',
     directory: './src',
-    files: '**/*.stories.?(ts|tsx|js|jsx)',
+    files: '**/!(_KitchenSink)*.stories.?(ts|tsx|js|jsx)',
     importPathMatcher:
-      '^\\.[\\\\/](?:src(?:\\/(?!\\.)(?:(?:(?!(?:^|\\/)\\.).)*?)\\/|\\/|$)(?!\\.)(?=.)[^/]*?\\.stories\\.(?:ts|tsx|js|jsx)?)$',
+      '^\\.[\\\\/](?:src(?:\\/(?!\\.)(?:(?:(?!(?:^|\\/)\\.).)*?)\\/|\\/|$)(?:(?!(?:_KitchenSink))[^/]*?)[^/]*?\\.stories\\.(?:ts|tsx|js|jsx)?)$',
   },
   {
     titlePrefix: '',
