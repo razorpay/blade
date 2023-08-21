@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 /* eslint-disable @typescript-eslint/require-await */
 import { fireEvent, act } from '@testing-library/react';
+import { mockViewport } from 'jsdom-testing-mocks';
 import { Carousel } from '../Carousel';
 import { CarouselItem } from '../CarouselItem';
 import { useCarouselContext } from '../CarouselContext';
@@ -439,5 +440,23 @@ describe('Carousel Snapshots', () => {
     );
 
     expect(container).toMatchSnapshot();
+  });
+
+  it('should not render overlay on mobile devices', () => {
+    const viewport = mockViewport({ width: '320px', height: '568px' });
+
+    const { container } = renderWithTheme(
+      <Carousel scrollOverlayColor="surface.background.level1.lowContrast" shouldAddStartEndSpacing>
+        <CarouselItem>
+          <TestimonialCard />
+        </CarouselItem>
+        <CarouselItem>
+          <TestimonialCard />
+        </CarouselItem>
+      </Carousel>,
+    );
+
+    expect(container).toMatchSnapshot();
+    viewport.cleanup();
   });
 });
