@@ -10,6 +10,7 @@ import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { Divider } from '~components/Divider';
 import { isReactNative, useTheme } from '~utils';
+import { List, ListItem } from '~components/List';
 
 const Page = (): React.ReactElement => {
   return (
@@ -73,6 +74,30 @@ const meta: Meta<CarouselProps> = {
     shouldAddStartEndSpacing: false,
     showIndicators: true,
     scrollOverlayColor: undefined,
+  },
+  argTypes: {
+    // hide children prop
+    children: {
+      table: {
+        disable: true,
+      },
+    },
+    carouselItemAlignment: {
+      control: {
+        type: 'select',
+        options: [
+          'normal',
+          'stretch',
+          'center',
+          'end',
+          'flex-end',
+          'flex-start',
+          'self-end',
+          'self-start',
+          'start',
+        ],
+      },
+    },
   },
   parameters: {
     docs: {
@@ -256,6 +281,9 @@ const CarouselTestimonialTemplate: ComponentStory<typeof CarouselComponent> = (p
 };
 
 export const Default = CarouselTestimonialTemplate.bind({});
+Default.args = {
+  carouselItemWidth: { base: '100%', m: '100%' },
+};
 
 export const VisibleItems: ComponentStory<typeof CarouselComponent> = (props) => {
   if (isReactNative()) {
@@ -269,30 +297,43 @@ export const VisibleItems: ComponentStory<typeof CarouselComponent> = (props) =>
 
   return (
     <Box margin="auto" width={{ base: '100%', m: '100%' }} padding="spacing.4">
-      <Text marginY="spacing.5">visibleItems: 1</Text>
+      <Code size="medium" marginY="spacing.5">
+        visibleItems: 1
+      </Code>
       <CarouselExample {...props} visibleItems={1} />
-      <Text marginY="spacing.5">visibleItems: 2</Text>
+      <Code size="medium" marginY="spacing.5">
+        visibleItems: 2
+      </Code>
       <CarouselExample {...props} visibleItems={2} />
-      <Text marginY="spacing.5">visibleItems: 3</Text>
+      <Code size="medium" marginY="spacing.5">
+        visibleItems: 3
+      </Code>
       <CarouselExample {...props} visibleItems={3} />
     </Box>
   );
 };
-
+VisibleItems.args = {
+  carouselItemWidth: { base: '100%', m: '100%' },
+};
 VisibleItems.argTypes = {
   visibleItems: {
     table: {
       disable: true,
     },
   },
+  shouldAddStartEndSpacing: {
+    table: {
+      disable: true,
+    },
+  },
 };
 
-export const AutoBleed: ComponentStory<typeof CarouselComponent> = (props) => {
+export const AutoBleed: ComponentStory<typeof CarouselComponent> = () => {
   if (isReactNative()) {
     return (
       <Box>
         <Text>You can set carouselItemWidth to 90% to get 10% bleed on mobile</Text>
-        <CarouselExample {...props} carouselItemWidth="90%" />
+        <CarouselExample carouselItemWidth="90%" />
       </Box>
     );
   }
@@ -311,18 +352,29 @@ export const AutoBleed: ComponentStory<typeof CarouselComponent> = (props) => {
         </Text>
       </Box>
 
-      <CarouselExample
-        {...props}
-        visibleItems="autofit"
-        carouselItemWidth={{ base: '90%', m: '300px' }}
-      />
+      <Text weight="bold">Props:</Text>
+      <List marginBottom="spacing.3">
+        <ListItem>visibleItems: autofit</ListItem>
+        <ListItem>
+          carouselItemWidth: {'{'} base: '90%', m: 300px {'}'}
+        </ListItem>
+      </List>
+      <CarouselExample visibleItems="autofit" carouselItemWidth={{ base: '90%', m: '300px' }} />
 
       <Text marginY="spacing.8">
         If you want emphasis on 1 item with bleed you can set{' '}
         <Code size="medium">shouldAddStartEndSpacing</Code> to true
       </Text>
+
+      <Text weight="bold">Props:</Text>
+      <List marginBottom="spacing.3">
+        <ListItem>visibleItems: autofit</ListItem>
+        <ListItem>shouldAddStartEndSpacing: true</ListItem>
+        <ListItem>
+          carouselItemWidth: {'{'} base: '90%', m: 300px {'}'}
+        </ListItem>
+      </List>
       <CarouselExample
-        {...props}
         navigationButtonPosition="side"
         shouldAddStartEndSpacing
         visibleItems="autofit"
@@ -332,6 +384,7 @@ export const AutoBleed: ComponentStory<typeof CarouselComponent> = (props) => {
     </Box>
   );
 };
+
 AutoBleed.args = {
   visibleItems: 'autofit',
   carouselItemWidth: { base: '90%', m: '300px' },
@@ -340,9 +393,13 @@ AutoBleed.args = {
 export const ButtonPositions: ComponentStory<typeof CarouselComponent> = (props) => {
   return (
     <Box margin="auto" padding="spacing.4">
-      <Text marginY="spacing.5">navigationButtonPosition: bottom</Text>
+      <Code size="medium" marginY="spacing.8">
+        navigationButtonPosition: bottom
+      </Code>
       <CarouselExample key={props.visibleItems} {...props} navigationButtonPosition="bottom" />
-      <Text marginY="spacing.5">navigationButtonPosition: bottom</Text>
+      <Code size="medium" marginY="spacing.8">
+        navigationButtonPosition: bottom
+      </Code>
       <CarouselExample key={props.visibleItems} {...props} navigationButtonPosition="side" />
     </Box>
   );
@@ -350,6 +407,13 @@ export const ButtonPositions: ComponentStory<typeof CarouselComponent> = (props)
 
 ButtonPositions.args = {
   visibleItems: 2,
+};
+ButtonPositions.argTypes = {
+  shouldAddStartEndSpacing: {
+    table: {
+      disable: true,
+    },
+  },
 };
 
 export const AutoPlay: ComponentStory<typeof CarouselComponent> = (props) => {
@@ -367,6 +431,13 @@ export const AutoPlay: ComponentStory<typeof CarouselComponent> = (props) => {
 AutoPlay.args = {
   autoPlay: true,
   visibleItems: 2,
+};
+AutoPlay.argTypes = {
+  shouldAddStartEndSpacing: {
+    table: {
+      disable: true,
+    },
+  },
 };
 
 export default meta;

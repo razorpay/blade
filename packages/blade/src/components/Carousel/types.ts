@@ -1,7 +1,14 @@
+import type { Theme } from '~components/BladeProvider';
 import type { BoxProps } from '~components/Box';
 import type { Platform } from '~utils';
+import type { DotNotationColorStringToken } from '~utils/types';
 
-type OverlayColor = BoxProps['backgroundColor'];
+type ColorObjects = 'feedback' | 'surface' | 'action';
+type BackgroundColorString<T extends ColorObjects> = `${T}.background.${DotNotationColorStringToken<
+  Theme['colors'][T]['background']
+>}`;
+type BrandColorString = `brand.${DotNotationColorStringToken<Theme['colors']['brand']>}`;
+type OverlayColor = BackgroundColorString<'surface'> | BrandColorString;
 
 type CarouselProps = {
   /**
