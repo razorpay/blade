@@ -401,7 +401,7 @@ exports[`Carousel Snapshots should render 1`] = `
               }
             }
             accessible={true}
-            data-blade-component="base-box"
+            data-blade-component="carousel-indicator-button"
             isActive={true}
             slideIndex={0}
             style={
@@ -474,7 +474,7 @@ exports[`Carousel Snapshots should render 1`] = `
               }
             }
             accessible={true}
-            data-blade-component="base-box"
+            data-blade-component="carousel-indicator-button"
             isActive={false}
             slideIndex={1}
             style={
@@ -1095,7 +1095,7 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
               }
             }
             accessible={true}
-            data-blade-component="base-box"
+            data-blade-component="carousel-indicator-button"
             isActive={true}
             slideIndex={0}
             style={
@@ -1168,7 +1168,7 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
               }
             }
             accessible={true}
-            data-blade-component="base-box"
+            data-blade-component="carousel-indicator-button"
             isActive={false}
             slideIndex={1}
             style={
@@ -1241,7 +1241,7 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
               }
             }
             accessible={true}
-            data-blade-component="base-box"
+            data-blade-component="carousel-indicator-button"
             isActive={false}
             slideIndex={2}
             style={
