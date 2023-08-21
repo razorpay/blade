@@ -135,6 +135,8 @@ const getAllProps = (
     justifyItems: getResponsiveValue(props.justifyItems, breakpoint),
     justifyContent: getResponsiveValue(props.justifyContent, breakpoint),
     justifySelf: getResponsiveValue(props.justifySelf, breakpoint),
+    placeSelf: getResponsiveValue(props.placeSelf, breakpoint),
+    placeItems: getResponsiveValue(props.placeItems, breakpoint),
     order: getResponsiveValue(props.order, breakpoint),
     position: getResponsiveValue(props.position, breakpoint),
     zIndex: getResponsiveValue(props.zIndex, breakpoint),

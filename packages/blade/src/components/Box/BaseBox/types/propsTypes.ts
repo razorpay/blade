@@ -61,6 +61,7 @@ type FlexboxProps = MakeObjectResponsive<
     | 'justifyContent'
     | 'justifySelf'
     | 'placeSelf'
+    | 'placeItems'
     | 'order'
   >
 >;
@@ -143,6 +144,7 @@ type CommonBoxVisualProps = MakeObjectResponsive<
     | 'backgroundPosition'
     | 'backgroundOrigin'
     | 'backgroundRepeat'
+    | 'pointerEvents'
   > & {
       /**
        * Sets the elevation for Box
@@ -249,6 +251,31 @@ type BoxCallbackProps = Omit<
   '__brand__'
 >;
 
+type BoxDragAndDropProps = Omit<
+  Platform.Select<{
+    web: {
+      draggable: boolean;
+      onDragStart: React.DragEventHandler<HTMLElement>;
+      onDragEnter: React.DragEventHandler<HTMLElement>;
+      onDragLeave: React.DragEventHandler<HTMLElement>;
+      onDragOver: React.DragEventHandler<HTMLElement>;
+      onDragEnd: React.DragEventHandler<HTMLElement>;
+      onDrop: React.DragEventHandler<HTMLElement>;
+    };
+    native: Record<
+      | 'draggable'
+      | 'onDragStart'
+      | 'onDragEnter'
+      | 'onDragLeave'
+      | 'onDragOver'
+      | 'onDragEnd'
+      | 'onDrop',
+      undefined
+    >;
+  }>,
+  '__brand__'
+>;
+
 type BoxProps = Partial<
   PaddingProps &
     MarginProps &
@@ -257,6 +284,7 @@ type BoxProps = Partial<
     PositionProps &
     GridProps &
     BoxCallbackProps &
+    BoxDragAndDropProps &
     CommonBoxVisualProps &
     BoxVisualProps & {
       children?: React.ReactNode | React.ReactNode[];
