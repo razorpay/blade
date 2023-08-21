@@ -25,12 +25,12 @@ This document outlines the API details of the `Chip` and `ChipGroup` components,
 >
 > The `Chip` component is inherently tied to the `ChipGroup` and cannot be utilized outside its context.
 
-| Prop                    | Type      | Default     | Description                                                                                                                                        | Required |
-| ----------------------- | --------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| **children**            | `string`  | `undefined` | Renders the label text for the Chip                                                                                                                | ✅       |
-| **icon**                | `Icon`    | `undefined` | Displays the Blade Icon component within the Chip                                                                                                  | ❌       |
-| **isDisabled**          | `boolean` | `false`     | Disables or enables the Chip                                                                                                                       | ❌       |
-| **value (html native)** | `string`  | `undefined` | The value of the input field in Chip, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#value) | ❌       |
+| Prop                    | Type                                   | Default     | Description                                                                                                                                        | Required |
+| ----------------------- | -------------------------------------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| **children**            | `React.ReactText \| React.ReactText[]` | `undefined` | Renders the label text for the Chip                                                                                                                | ✅       |
+| **icon**                | `Icon`                                 | `undefined` | Displays the Blade Icon component within the Chip                                                                                                  | ❌       |
+| **isDisabled**          | `boolean`                              | `false`     | Disables or enables the Chip                                                                                                                       | ❌       |
+| **value (html native)** | `string`                               | `undefined` | The value of the input field in Chip, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#value) | ❌       |
 
 ## `ChipGroup` API
 
@@ -88,7 +88,11 @@ function Single() {
   return (
     <Box>
       <Text> Select Business type: </Text>
-      <ChipGroup selectionType="single" value={value} onChange={({ value }) => setSelected(value)}>
+      <ChipGroup
+        selectionType="single"
+        value={selected}
+        onChange={({ value }) => setSelected(value)}
+      >
         <Chip value="proprietorship">Proprietorship</Chip>
         <Chip value="public">Public</Chip>
         <Chip value="small-business">Small Business</Chip>
@@ -106,7 +110,7 @@ function Multiple() {
       <Text> Quick Filters: </Text>
       <ChipGroup
         selectionType="multiple"
-        value={value}
+        value={selected}
         onChange={({ value }) => setSelected(value)}
       >
         <Chip value="refunded">Refunded</Chip>
