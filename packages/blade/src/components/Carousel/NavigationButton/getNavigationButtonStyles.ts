@@ -17,7 +17,7 @@ const getNavigationButtonStyles = (props: {
       focus: theme.colors.action.icon.tertiary.focus,
       active: theme.colors.action.icon.tertiary.active,
     },
-    stroke: {
+    stroked: {
       default: theme.colors.surface.action.icon.active.highContrast,
       hover: theme.colors.surface.action.icon.active.highContrast,
       focus: theme.colors.surface.action.icon.active.highContrast,
@@ -32,7 +32,7 @@ const getNavigationButtonStyles = (props: {
       focus: theme.colors.action.background.tertiary.focus,
       active: theme.colors.action.background.tertiary.active,
     },
-    stroke: {
+    stroked: {
       default: 'transparent',
       hover: theme.colors.brand.gray.a50.highContrast,
       focus: theme.colors.brand.gray.a100.highContrast,
