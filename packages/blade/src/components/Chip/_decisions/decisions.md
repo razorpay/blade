@@ -4,7 +4,7 @@ Chips embody a collection of selectable entities that empower users to engage in
 
 This document outlines the API details of the `Chip` and `ChipGroup` components, encompassing their structural composition, functional attributes, and visual representation.
 
-<img width="100%" height="50%" src="./chip-intents.png" alt="Different variants of the Chip component">
+<img width="100%" src="./chip-variants.png" alt="Different variants of the Chip component">
 
 - [Design](#design)
 - [`Chip` API](#chip-api)
