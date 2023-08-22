@@ -255,7 +255,7 @@ const TestimonialCard = ({
 const CarouselExample = (props: Omit<CarouselProps, 'children'>): React.ReactElement => {
   const key = `${props.visibleItems}-${props.shouldAddStartEndSpacing}`;
   return (
-    <Box height={isReactNative() ? '350px' : 'auto'}>
+    <Box width="100%" height={isReactNative() ? '350px' : 'auto'}>
       <CarouselComponent
         {...props}
         key={key}
@@ -339,7 +339,7 @@ export const AutoBleed: ComponentStory<typeof CarouselComponent> = () => {
   }
 
   return (
-    <Box margin="auto" padding="spacing.4">
+    <Box margin="auto" padding="spacing.4" width="100%">
       <Box marginY="spacing.8">
         <Text>
           You can achive bleed by setting <Code size="medium">visibleItems</Code> to autofit &
@@ -392,7 +392,7 @@ AutoBleed.args = {
 
 export const ButtonPositions: ComponentStory<typeof CarouselComponent> = (props) => {
   return (
-    <Box margin="auto" padding="spacing.4">
+    <Box margin="auto" padding="spacing.4" width="100%">
       <Code size="medium" marginY="spacing.8">
         navigationButtonPosition: bottom
       </Code>
@@ -418,7 +418,7 @@ ButtonPositions.argTypes = {
 
 export const AutoPlay: ComponentStory<typeof CarouselComponent> = (props) => {
   return (
-    <Box margin="auto" padding="spacing.4">
+    <Box margin="auto" padding="spacing.4" width="100%">
       <Text marginY="spacing.5">
         Setting autoPlay prop will auto scroll the slides every 6s, if you hover or focus inside the
         Carousel it will pause
