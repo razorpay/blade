@@ -13,6 +13,7 @@ export type AnimatedChipProps = {
   isPressed?: boolean;
   isDisabled?: boolean;
   withIcon?: boolean;
+  isDesktop?: boolean;
   borderColor: `colors.${DotNotationColorStringToken<Theme['colors']>}`;
   theme: Theme;
   children: React.ReactNode;

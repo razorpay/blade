@@ -11,6 +11,7 @@ const getAnimatedChipStyles = ({
   size,
   isChecked,
   withIcon,
+  isDesktop,
 }: AnimatedChipProps): CSSObject => {
   return {
     backgroundColor: getIn(theme.colors, backgroundColor),
@@ -35,6 +36,8 @@ const getAnimatedChipStyles = ({
     alignItems: 'center',
     justifyContent: 'center',
     textAlign: 'left',
+    textOverflow: 'ellipsis',
+    maxWidth: isDesktop ? '420px' : '280px',
   };
 };
 

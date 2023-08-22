@@ -16,8 +16,9 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { throwBladeError } from '~utils/logger';
 import { useCheckbox } from '~components/Checkbox/useCheckbox';
 import { useRadio } from '~components/Radio/useRadio';
-import { isReactNative } from '~utils';
+import { isReactNative, useBreakpoint } from '~utils';
 import { Text } from '~components/Typography';
+import { useTheme } from '~components/BladeProvider';
 
 type OnChange = ({
   isChecked,
@@ -59,6 +60,8 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
   { isDisabled, value, children, icon: Icon, testID, ...styledProps },
   ref,
 ) => {
+  const { theme } = useTheme();
+  const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
   const groupProps = useChipGroupContext();
   const isInsideGroup = !isEmpty(groupProps);
   const [isPressed, setIsPressed] = React.useState(false);
@@ -184,6 +187,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
               isChecked={state.isChecked}
               isPressed={isPressed}
               withIcon={Boolean(Icon)}
+              isDesktop={matchedDeviceType === 'desktop'}
             >
               <BaseBox
                 display="flex"
