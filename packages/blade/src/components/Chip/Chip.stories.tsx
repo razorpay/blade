@@ -121,7 +121,7 @@ MultiSelection.args = {
 export const DefaultSelectedSingle = ChipTemplate.bind({});
 DefaultSelectedSingle.storyName = 'Default Single Selection';
 DefaultSelectedSingle.args = {
-  defaultValue: ['Public', 'Proprietorship'],
+  defaultValue: ['Proprietorship'],
 };
 
 export const DefaultMultiSelected = ChipTemplate.bind({});
@@ -222,6 +222,7 @@ export const ChipWithIcon = ChipWithIconTemplate.bind({});
 ChipWithIcon.storyName = 'With Icon';
 ChipWithIcon.args = {
   selectionType: 'multiple',
+  defaultValue: ['Proprietorship'],
 };
 
 const AllChipSizesTemplate: ComponentStory<typeof ChipGroupComponent> = ({ children, ...args }) => {
@@ -253,6 +254,7 @@ export const AllChipSizes = AllChipSizesTemplate.bind({});
 AllChipSizes.storyName = 'All Sizes';
 AllChipSizes.args = {
   selectionType: 'multiple',
+  defaultValue: ['Proprietorship'],
 };
 
 const AllChipIntentsTemplate: ComponentStory<typeof ChipGroupComponent> = ({
@@ -287,6 +289,7 @@ export const AllChipIntents = AllChipIntentsTemplate.bind({});
 AllChipIntents.storyName = 'All Intents';
 AllChipIntents.args = {
   selectionType: 'multiple',
+  defaultValue: ['Proprietorship'],
 };
 
 export const chipRef: ComponentStory<typeof ChipComponent> = (args) => {
