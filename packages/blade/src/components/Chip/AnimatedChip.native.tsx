@@ -25,7 +25,6 @@ const AnimatedChip = ({
   withIcon,
 }: Omit<AnimatedChipProps, 'theme'>): React.ReactElement => {
   const { theme } = useTheme();
-
   const scaleDownAnimation = useSharedValue(1);
 
   const easing = getIn(theme, chipMotionTokens.timingFunction);

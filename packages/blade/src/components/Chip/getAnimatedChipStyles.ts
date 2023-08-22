@@ -15,18 +15,8 @@ const getAnimatedChipStyles = ({
 }: AnimatedChipProps): CSSObject => {
   return {
     backgroundColor: getIn(theme.colors, backgroundColor),
-    borderColor: getIn(theme.colors, borderColor),
     borderRadius: makeBorderSize(theme.border.radius.max),
-    borderWidth: getIn(theme, chipBorderWidthTokens[isChecked ? 'checked' : 'unchecked'][size]),
-    height: chipHeightTokens[size],
-    paddingLeft: getIn(
-      theme,
-      chipHorizontalPaddingTokens[withIcon ? 'icon' : 'default'].left[size],
-    ),
-    paddingRight: getIn(
-      theme,
-      chipHorizontalPaddingTokens[withIcon ? 'icon' : 'default'].right[size],
-    ),
+    borderWidth: getIn(theme, 'border.width.thin'),
     display: 'flex',
     flexWrap: 'nowrap',
     flexDirection: 'row',

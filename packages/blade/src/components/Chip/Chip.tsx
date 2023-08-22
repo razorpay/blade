@@ -1,7 +1,14 @@
 import React from 'react';
 import isEmpty from 'lodash/isEmpty';
 import { useChipGroupContext } from './ChipGroup/ChipGroupContext';
-import { chipIconSizes, chipTextSizes, chipColorTokens, getChipHoverTokens } from './chipTokens';
+import {
+  chipIconSizes,
+  chipTextSizes,
+  chipColorTokens,
+  getChipHoverTokens,
+  chipHeightTokens,
+  chipHorizontalPaddingTokens,
+} from './chipTokens';
 import { AnimatedChip } from './AnimatedChip';
 import type { IconComponent } from '~components/Icons';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
@@ -195,6 +202,18 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
                 justifyContent="center"
                 alignItems="center"
                 overflow="hidden"
+                borderRadius="max"
+                borderWidth={['xsmall', 'small'].includes(_size) ? 'thinner' : 'thin'}
+                paddingLeft={
+                  chipHorizontalPaddingTokens[Boolean(Icon) ? 'icon' : 'default'].left[_size]
+                }
+                paddingRight={
+                  chipHorizontalPaddingTokens[Boolean(Icon) ? 'icon' : 'default'].left[_size]
+                }
+                style={{
+                  height: chipHeightTokens[_size],
+                  borderColor: _isChecked ? 'inherit' : 'transparent',
+                }}
               >
                 {Icon ? (
                   <BaseBox paddingRight="spacing.3" display="flex">
