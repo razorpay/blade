@@ -7,6 +7,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { SelectorGroupField } from '~components/Form/Selector/SelectorGroupField';
 import { getStyledProps } from '~components/Box/styledProps';
 import { isReactNative } from '~utils';
+import { throwBladeError } from '~utils/logger';
 
 const ChipGroup = ({
   children,
@@ -31,6 +32,16 @@ const ChipGroup = ({
     intent,
     selectionType,
   });
+
+  if (__DEV__) {
+    if (selectionType === 'single' && Number(defaultValue?.length) > 1) {
+      throwBladeError({
+        moduleName: 'ChipGroup',
+        message: `When "selectionType" is "single", the "defaultValue" prop cans only contain one item.`,
+      });
+    }
+  }
+
   return (
     <ChipGroupProvider value={contextValue}>
       <BaseBox {...getStyledProps(styledProps)}>

@@ -58,8 +58,8 @@ type ChipGroupProps = {
   StyledPropsBlade;
 
 type State = {
-  value: string | string[];
-  setValue(value: string | string[]): void;
+  value: string[];
+  setValue(value: string[]): void;
   isChecked(value: string): boolean;
   addValue(value: string): void;
   removeValue(value: string): void;

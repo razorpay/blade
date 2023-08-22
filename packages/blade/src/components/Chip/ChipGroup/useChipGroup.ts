@@ -33,10 +33,11 @@ const useChipGroup = ({
 }: UseChipGroupProps): UseChipGroupReturn => {
   const idBase = useId('chip-group');
   const labelId = `${idBase}-label`;
+
   const fallbackName = name ?? idBase;
   const [checkedValues, setValues] = useControllableState({
     value,
-    defaultValue: defaultValue ?? (selectionType === 'multiple' ? [] : undefined),
+    defaultValue: defaultValue || [],
     onChange: (values: string[]) => onChange?.({ values, name: fallbackName }),
   });
 

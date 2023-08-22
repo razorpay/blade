@@ -163,7 +163,13 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
         style={{ cursor: _isDisabled ? 'not-allowed' : 'pointer' }}
       >
         <BaseBox display="flex" flexDirection="column">
-          <BaseBox display="flex" alignItems="center" flexDirection="row">
+          <BaseBox
+            display="flex"
+            alignItems="center"
+            flexDirection="row"
+            backgroundColor={_isDisabled ? undefined : 'surface.background.level2.lowContrast'}
+            borderRadius="max"
+          >
             <SelectorInput
               hoverTokens={getChipHoverTokens(_intent)}
               isChecked={state.isChecked}

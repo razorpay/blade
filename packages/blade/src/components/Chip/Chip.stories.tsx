@@ -121,7 +121,7 @@ MultiSelection.args = {
 export const DefaultSelectedSingle = ChipTemplate.bind({});
 DefaultSelectedSingle.storyName = 'Default Single Selection';
 DefaultSelectedSingle.args = {
-  defaultValue: ['Proprietorship'],
+  defaultValue: ['Public', 'Proprietorship'],
 };
 
 export const DefaultMultiSelected = ChipTemplate.bind({});
