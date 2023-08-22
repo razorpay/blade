@@ -107,8 +107,6 @@ const chipColorTokens: ChipColorTokens = {
     neutral: 'brand.primary.500',
     positive: 'feedback.text.positive.lowContrast',
     negative: 'feedback.text.negative.lowContrast',
-    notice: 'feedback.text.notice.lowContrast',
-    information: 'feedback.text.information.lowContrast',
   },
   background: {
     unchecked: {
@@ -135,18 +133,6 @@ const chipColorTokens: ChipColorTokens = {
       focus: 'feedback.negative.action.background.primary.focus.lowContrast',
       disabled: 'brand.gray.a50.lowContrast',
     },
-    notice: {
-      default: 'feedback.notice.action.background.primary.default.lowContrast',
-      hover: 'feedback.notice.action.background.primary.hover.lowContrast',
-      focus: 'feedback.notice.action.background.primary.focus.lowContrast',
-      disabled: 'brand.gray.a50.lowContrast',
-    },
-    information: {
-      default: 'feedback.information.action.background.primary.default.lowContrast',
-      hover: 'feedback.information.action.background.primary.hover.lowContrast',
-      focus: 'feedback.information.action.background.primary.focus.lowContrast',
-      disabled: 'brand.gray.a50.lowContrast',
-    },
   },
   border: {
     unchecked: {
@@ -169,18 +155,6 @@ const chipColorTokens: ChipColorTokens = {
       default: 'feedback.negative.action.border.primary.default.lowContrast',
       hover: 'feedback.negative.action.border.primary.hover.lowContrast',
       focus: 'feedback.negative.action.border.primary.focus.lowContrast',
-      disabled: 'brand.gray.a50.lowContrast',
-    },
-    notice: {
-      default: 'feedback.notice.action.border.primary.default.lowContrast',
-      hover: 'feedback.notice.action.border.primary.hover.lowContrast',
-      focus: 'feedback.notice.action.border.primary.focus.lowContrast',
-      disabled: 'brand.gray.a50.lowContrast',
-    },
-    information: {
-      default: 'feedback.information.action.border.primary.default.lowContrast',
-      hover: 'feedback.information.action.border.primary.hover.lowContrast',
-      focus: 'feedback.information.action.border.primary.focus.lowContrast',
       disabled: 'brand.gray.a50.lowContrast',
     },
   },

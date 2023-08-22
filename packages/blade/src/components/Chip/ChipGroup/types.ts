@@ -53,7 +53,7 @@ type ChipGroupProps = {
    *
    * @default "neutral"
    */
-  intent?: 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
+  intent?: 'positive' | 'negative' | 'neutral';
 } & TestID &
   StyledPropsBlade;
 

@@ -260,7 +260,7 @@ const AllChipIntentsTemplate: ComponentStory<typeof ChipGroupComponent> = ({
   ...args
 }) => {
   const chipValues = ['Proprietorship', 'Public', 'Small Business'];
-  const intents = ['neutral', 'positive', 'negative', 'notice', 'information'];
+  const intents = ['neutral', 'positive', 'negative'];
   return (
     <Box>
       {intents.map((intent, index) => (
