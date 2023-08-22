@@ -121,7 +121,7 @@ MultiSelection.args = {
 export const DefaultSelectedSingle = ChipTemplate.bind({});
 DefaultSelectedSingle.storyName = 'Default Single Selection';
 DefaultSelectedSingle.args = {
-  defaultValue: 'Proprietorship',
+  defaultValue: ['Proprietorship'],
 };
 
 export const DefaultMultiSelected = ChipTemplate.bind({});
@@ -133,7 +133,7 @@ DefaultMultiSelected.args = {
 
 const ControlledSingleSelectionTemplate: ComponentStory<typeof ChipGroupComponent> = () => {
   const chipValues = ['Proprietorship', 'Public', 'Small Business'];
-  const [value, setValue] = React.useState('Proprietorship');
+  const [value, setValue] = React.useState(['Proprietorship']);
   return (
     <Box>
       <Text marginBottom="spacing.3" marginTop="spacing.3">
@@ -143,7 +143,7 @@ const ControlledSingleSelectionTemplate: ComponentStory<typeof ChipGroupComponen
       <ChipGroupComponent
         selectionType="single"
         value={value}
-        onChange={({ value }) => setValue(value as string)}
+        onChange={({ values }) => setValue(values)}
       >
         {chipValues.map((chipValue: string) => (
           <ChipComponent key={chipValue} value={chipValue} icon={InfoIcon}>
@@ -174,7 +174,7 @@ const ControlledMultiSelectionTemplate: ComponentStory<typeof ChipGroupComponent
       <ChipGroupComponent
         selectionType="multiple"
         value={value}
-        onChange={({ value }) => setValue(value as string[])}
+        onChange={({ values }) => setValue(values)}
       >
         {chipValues.map((chipValue: string) => (
           <ChipComponent key={chipValue} value={chipValue} icon={InfoIcon}>

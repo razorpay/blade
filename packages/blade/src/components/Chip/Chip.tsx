@@ -81,8 +81,6 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
   const defaultChecked =
     typeof groupProps?.defaultValue === 'undefined'
       ? undefined // If undefined, defaultChecked is also undefined
-      : groupProps?.selectionType === 'single'
-      ? groupProps?.defaultValue === value // If single selection and defaultValue equals value, defaultChecked is true
       : groupProps?.defaultValue?.includes(value as string); // If multiple selection, check if value is in defaultValue array
   const useChip = groupProps?.selectionType === 'single' ? useRadio : useCheckbox;
   const _size = groupProps?.size || 'small';
@@ -90,11 +88,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
 
   const handleChange: OnChange = ({ isChecked, value }) => {
     if (isChecked) {
-      if (groupProps?.selectionType === 'single') {
-        groupProps?.state?.setValue(value!);
-      } else {
-        groupProps?.state?.addValue(value!);
-      }
+      groupProps?.state?.addValue(value!);
     } else {
       groupProps?.state?.removeValue(value!);
     }

@@ -9,7 +9,7 @@ type ChipGroupProps = {
   /**
    * Sets the initial value of the ChipGroup component.
    */
-  defaultValue?: string | string[];
+  defaultValue?: string[];
   /**
    * Controls the interactive state of the ChipGroup. When set to true, all contained Chip elements become non-interactive and visually disabled.
    * Setting it to false enables normal user interaction. Useful for temporarily disabling user input within the ChipGroup.
@@ -27,7 +27,7 @@ type ChipGroupProps = {
   /**
    * The callback invoked on any state change within the ChipGroup
    */
-  onChange?: ({ name, value }: { name: string; value: string | string[] }) => void;
+  onChange?: ({ name, values }: { name: string; values: string[] }) => void;
   /**
    * Defines the selection behavior within the ChipGroup component.
    * When set to 'single', only one Chip can be selected at a time, akin to a radio button group.
@@ -47,7 +47,7 @@ type ChipGroupProps = {
    * Acts as a controlled component by specifying the ChipGroup value
    * Use `onChange` to update its value
    */
-  value?: string | string[];
+  value?: string[];
   /**
    * Sets the ChipGroups's visual intent, it will propagate down to all the Chips
    *

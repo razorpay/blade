@@ -34,35 +34,38 @@ const useChipGroup = ({
   const idBase = useId('chip-group');
   const labelId = `${idBase}-label`;
   const fallbackName = name ?? idBase;
-  const [checkedValue, setValue] = useControllableState({
+  const [checkedValues, setValues] = useControllableState({
     value,
     defaultValue: defaultValue ?? (selectionType === 'multiple' ? [] : undefined),
-    onChange: (v: string | string[]) => onChange?.({ value: v, name: fallbackName }),
+    onChange: (values: string[]) => onChange?.({ values, name: fallbackName }),
   });
 
   const state = React.useMemo<State>(() => {
     return {
-      value: checkedValue,
-      setValue(value: string[]) {
+      value: checkedValues,
+      setValue(values: string[]) {
         if (isDisabled) {
           return;
         }
 
-        setValue(() => value);
+        setValues(() => values);
       },
       isChecked(value: string): boolean {
         if (selectionType === 'single') {
-          if (isUndefined(value) || isUndefined(checkedValue)) return false;
-          return checkedValue === value;
+          if (isUndefined(value) || isUndefined(checkedValues)) return false;
+          return checkedValues[0] === value;
         }
-        return checkedValue.includes(value);
+        return checkedValues.includes(value);
       },
       addValue(value: string) {
         if (isDisabled) {
           return;
         }
-        if (selectionType === 'multiple' && !checkedValue.includes(value)) {
-          setValue(() => checkedValue.concat(value));
+        if (selectionType === 'single') {
+          setValues(() => [value]);
+        }
+        if (selectionType === 'multiple' && !checkedValues.includes(value)) {
+          setValues(() => checkedValues.concat(value));
         }
       },
       removeValue(value: string) {
@@ -70,18 +73,18 @@ const useChipGroup = ({
           return;
         }
         if (selectionType === 'single') {
-          setValue(undefined!);
+          setValues(undefined!);
         }
         if (
           selectionType === 'multiple' &&
-          Array.isArray(checkedValue) &&
-          checkedValue.includes(value)
+          Array.isArray(checkedValues) &&
+          checkedValues.includes(value)
         ) {
-          setValue(() => checkedValue.filter((existingValue) => existingValue !== value));
+          setValues(() => checkedValues.filter((existingValue) => existingValue !== value));
         }
       },
     };
-  }, [checkedValue, isDisabled, setValue, selectionType]);
+  }, [checkedValues, isDisabled, setValues, selectionType]);
 
   const contextValue = React.useMemo<ChipGroupContextType>(() => {
     return {
