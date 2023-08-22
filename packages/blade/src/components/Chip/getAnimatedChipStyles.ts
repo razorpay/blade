@@ -17,10 +17,7 @@ const getAnimatedChipStyles = ({
     backgroundColor: getIn(theme.colors, backgroundColor),
     borderColor: getIn(theme.colors, borderColor),
     borderRadius: makeBorderSize(theme.border.radius.max),
-    borderWidth:
-      isChecked && ['medium', 'large'].includes(size)
-        ? makeBorderSize(chipBorderWidthTokens.checked[size] as number)
-        : getIn(theme, chipBorderWidthTokens[isChecked ? 'checked' : 'unchecked'][size]),
+    borderWidth: getIn(theme, chipBorderWidthTokens[isChecked ? 'checked' : 'unchecked'][size]),
     height: chipHeightTokens[size],
     paddingLeft: getIn(
       theme,

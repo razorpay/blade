@@ -44,9 +44,8 @@ const chipBorderWidthTokens: Record<
   checked: {
     xsmall: 'border.width.thick',
     small: 'border.width.thick',
-    // TODO: replace with border.width.thicker when available as a token
-    medium: size[2],
-    large: size[2],
+    medium: 'border.width.thicker',
+    large: 'border.width.thicker',
   },
 };
 
