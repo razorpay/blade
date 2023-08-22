@@ -57,7 +57,7 @@ Single Chip selection:
 ```jsx
 <Box>
   <Text> Select Business type: </Text>
-  <ChipGroup defaultValue={['proprietorship']}>
+  <ChipGroup defaultValue="proprietorship">
     <Chip value="proprietorship">Proprietorship</Chip>
     <Chip value="public">Public</Chip>
     <Chip value="small-business">Small Business</Chip>
@@ -82,8 +82,8 @@ Multiple Chip selection:
 
 ```jsx
 function Single() {
-  // Only one value in array when selectionType is 'single' (default)
-  const [selected, setSelected] = useState(['proprietorship']);
+  // string value when selectionType is 'single' (default)
+  const [selected, setSelected] = useState('proprietorship');
 
   return (
     <Box>
