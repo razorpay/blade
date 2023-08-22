@@ -4,7 +4,7 @@ Chips embody a collection of selectable entities that empower users to engage in
 
 This document outlines the API details of the `Chip` and `ChipGroup` components, encompassing their structural composition, functional attributes, and visual representation.
 
-<img width="70%" src="./chips-variants.png" alt="Different variants of the Chip component">
+<img width="100%" height="50%" src="./chip-intents.png" alt="Different variants of the Chip component">
 
 - [Design](#design)
 - [`Chip` API](#chip-api)
@@ -57,7 +57,7 @@ Single Chip selection:
 ```jsx
 <Box>
   <Text> Select Business type: </Text>
-  <ChipGroup defaultValue="proprietorship">
+  <ChipGroup defaultValue={['proprietorship']}>
     <Chip value="proprietorship">Proprietorship</Chip>
     <Chip value="public">Public</Chip>
     <Chip value="small-business">Small Business</Chip>
@@ -82,8 +82,8 @@ Multiple Chip selection:
 
 ```jsx
 function Single() {
-  // string value when selectionType is 'single' (default)
-  const [selected, setSelected] = useState('proprietorship');
+  // Only one value in array when selectionType is 'single' (default)
+  const [selected, setSelected] = useState(['proprietorship']);
 
   return (
     <Box>
@@ -91,7 +91,7 @@ function Single() {
       <ChipGroup
         selectionType="single"
         value={selected}
-        onChange={({ value }) => setSelected(value)}
+        onChange={({ values }) => setSelected(values)}
       >
         <Chip value="proprietorship">Proprietorship</Chip>
         <Chip value="public">Public</Chip>
@@ -111,7 +111,7 @@ function Multiple() {
       <ChipGroup
         selectionType="multiple"
         value={selected}
-        onChange={({ value }) => setSelected(value)}
+        onChange={({ values }) => setSelected(values)}
       >
         <Chip value="refunded">Refunded</Chip>
         <Chip value="failed">Failed</Chip>
