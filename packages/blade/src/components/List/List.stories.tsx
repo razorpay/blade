@@ -221,7 +221,7 @@ const OrderedFilledListWithSizesTemplate: ComponentStory<typeof List> = () => {
     <BaseBox>
       {listSizes.map((size) => (
         <BaseBox key={size}>
-          <Heading>{`${capitalize(size)} Size:`}</Heading>
+          <Heading>{capitalize(size)} Size:</Heading>
           <List variant="ordered-filled" size={size}>
             <ListItem>
               <ListItemLink>Build Integration:</ListItemLink> Use the sample codes to integrate the
@@ -272,7 +272,7 @@ const ListWithCodeTemplate: ComponentStory<typeof List> = () => {
     <BaseBox>
       {listSizes.map((size) => (
         <BaseBox key={size}>
-          <Heading>{`${capitalize(size)} Size:`}</Heading>
+          <Heading>{capitalize(size)} Size:</Heading>
           <List variant="ordered" size={size}>
             <ListItem>
               Bump blade version to <ListItemCode>v6.0.0</ListItemCode>
@@ -298,7 +298,7 @@ const ListWithListItemTextTemplate: ComponentStory<typeof List> = () => {
     <BaseBox>
       {listSizes.map((size) => (
         <BaseBox key={size}>
-          <Heading>{`${capitalize(size)} Size:`}</Heading>
+          <Heading>{capitalize(size)} Size:</Heading>
           <List variant="ordered" size={size}>
             <ListItem>
               <ListItemText>
