@@ -9,7 +9,7 @@ const BASEINPUT_BOTTOM_LINE_HEIGHT: number = size['1'];
 // @todo: add animations for input here
 
 const AnimatedBaseInputWrapper = (props: BaseBoxProps): React.ReactElement => (
-  <BaseBox maxHeight={makeSize(BASEINPUT_MIN_HEIGHT + BASEINPUT_BOTTOM_LINE_HEIGHT)} {...props} />
+  <BaseBox {...props} />
 );
 
 export { AnimatedBaseInputWrapper };

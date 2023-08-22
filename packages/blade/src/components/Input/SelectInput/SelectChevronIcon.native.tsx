@@ -6,7 +6,7 @@ import { ChevronDownIcon, ChevronUpIcon } from '~components/Icons';
 const StyledChevronIconContainer = styled(TouchableOpacity)((_props) => ({
   display: 'flex',
   justifyContent: 'center',
-  height: '100%',
+  margin: 'auto',
 }));
 
 const SelectChevronIcon = (props: SelectChevronIconProps): React.ReactElement => {

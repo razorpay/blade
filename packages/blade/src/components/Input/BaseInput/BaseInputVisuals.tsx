@@ -51,7 +51,7 @@ const getInteractionElementStyles = ({
   hasTrailingIcon: boolean;
   hasInteractionElement: boolean;
   hasSuffix: boolean;
-}): Pick<BaseBoxProps, 'paddingRight' | 'height'> => {
+}): Pick<BaseBoxProps, 'paddingRight'> => {
   if (hasInteractionElement && (hasSuffix || hasTrailingIcon)) {
     return {
       paddingRight: 'spacing.2',
@@ -61,7 +61,6 @@ const getInteractionElementStyles = ({
   if (hasInteractionElement && !hasSuffix && !hasTrailingIcon) {
     return {
       paddingRight: 'spacing.4',
-      height: '100%',
     };
   }
 
@@ -167,11 +166,13 @@ export const BaseInputVisuals = ({
 
   if (hasTrailingVisuals) {
     return (
-      <BaseBox {...getVisualContainerStyles()}>
+      <BaseBox alignSelf="stretch" alignItems="stretch" {...getVisualContainerStyles()}>
         {hasInteractionElement ? (
           <BaseBox
             {...getInteractionElementStyles({ hasTrailingIcon, hasInteractionElement, hasSuffix })}
             display="flex"
+            alignItems="stretch"
+            alignSelf="stretch"
           >
             {interactionElement}
           </BaseBox>
