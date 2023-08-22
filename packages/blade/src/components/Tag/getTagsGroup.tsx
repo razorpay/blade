@@ -1,6 +1,6 @@
 import React from 'react';
 import { AnimatedTag } from './AnimatedTag';
-import { TagsGroupProps } from './types';
+import type { TagsGroupProps } from './types';
 
 const getTagsGroup = ({
   tags,

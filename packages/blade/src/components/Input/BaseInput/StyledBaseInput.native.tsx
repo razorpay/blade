@@ -105,6 +105,7 @@ const getRNInputStyles = (
       suffix: props.suffix,
       trailingIcon: props.trailingIcon,
       isTextArea: props.isTextArea,
+      hasTags: props.hasTags,
     }),
     lineHeight: undefined,
     textAlignVertical: 'top',
@@ -127,6 +128,7 @@ const StyledNativeBaseInput = styled.TextInput<StyledComponentInputProps>(
     trailingIcon,
     isTextArea,
     numberOfLines,
+    hasTags,
   }) =>
     getRNInputStyles({
       id,
@@ -141,6 +143,7 @@ const StyledNativeBaseInput = styled.TextInput<StyledComponentInputProps>(
       trailingIcon,
       isTextArea,
       numberOfLines,
+      hasTags,
     }),
 );
 const StyledNativeBaseButton = styled.TouchableOpacity<StyledComponentInputProps>(
@@ -157,6 +160,7 @@ const StyledNativeBaseButton = styled.TouchableOpacity<StyledComponentInputProps
     trailingIcon,
     isTextArea,
     numberOfLines,
+    hasTags,
   }) =>
     getRNInputStyles({
       id,
@@ -171,6 +175,7 @@ const StyledNativeBaseButton = styled.TouchableOpacity<StyledComponentInputProps
       trailingIcon,
       isTextArea,
       numberOfLines,
+      hasTags,
     }),
 );
 

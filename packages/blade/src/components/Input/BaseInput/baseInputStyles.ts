@@ -22,6 +22,7 @@ type GetInputStyles = Pick<
   isHovered?: boolean;
   isFocused?: boolean;
   isTextArea?: boolean;
+  hasTags?: boolean;
   theme: Theme;
 };
 
@@ -84,6 +85,7 @@ export const getBaseInputStyles = ({
   trailingIcon,
   textAlign,
   isTextArea,
+  hasTags,
 }: GetInputStyles): CSSObject => {
   const {
     hasLeadingIcon,
@@ -111,7 +113,7 @@ export const getBaseInputStyles = ({
       theme,
     }),
     // take the full available width of parent container for input field
-    flex: 1,
+    flex: hasTags ? undefined : 1,
     backgroundColor: 'transparent',
     paddingTop: makeSpace(theme.spacing[3]),
     paddingBottom: makeSpace(theme.spacing[3]),
@@ -122,7 +124,7 @@ export const getBaseInputStyles = ({
         ? makeSpace(theme.spacing[3])
         : makeSpace(theme.spacing[4]),
     textAlign,
-    width: '100%',
+    width: hasTags ? undefined : '100%',
     height: isTextArea ? undefined : makeSpace(size[36]),
     minHeight: makeSpace(size[36]),
     ...(isReactNative ? {} : { resize: 'none' }),

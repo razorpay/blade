@@ -1,9 +1,10 @@
 import React from 'react';
-import styled, { css, FlattenSimpleInterpolation, keyframes } from 'styled-components';
+import type { FlattenSimpleInterpolation } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
+import { Tag } from './Tag';
+import type { AnimatedTagProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
 import { makeMotionTime, useTheme } from '~utils';
-import { Tag } from './Tag';
-import { AnimatedTagProps } from './types';
 
 const tagDissappearKeyframe = keyframes`
   100% {
@@ -44,7 +45,7 @@ const AnimatedTag = ({
   activeTagIndex,
   onDismiss,
   tagsLength,
-}: AnimatedTagProps) => {
+}: AnimatedTagProps): React.ReactElement => {
   const [isTagVisible, setIsTagVisible] = React.useState(true);
   const { theme } = useTheme();
   const prevSelectionsLength = React.useRef<number>();

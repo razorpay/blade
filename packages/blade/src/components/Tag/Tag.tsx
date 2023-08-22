@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import type { TagProps } from './types';
 import { Box } from '~components/Box';
 import { getStyledProps } from '~components/Box/styledProps';
 import { IconButton } from '~components/Button/IconButton';
@@ -11,7 +12,6 @@ import { size as globalSizeTokens } from '~tokens/global';
 import BaseBox from '~components/Box/BaseBox';
 import type { PaddingProps } from '~components/Box/BaseBox/types/spacingTypes';
 import { useIsMobile } from '~utils/useIsMobile';
-import { TagProps } from './types';
 
 const FocussableTag = styled(BaseBox)<{ _isVirtuallyFocussed: TagProps['_isVirtuallyFocussed'] }>(
   (props) => {

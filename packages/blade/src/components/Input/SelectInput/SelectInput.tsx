@@ -229,7 +229,7 @@ const _SelectInput = (
       return getTagsGroup({
         tags: selectedIndices.map((selectedIndex) => options[selectedIndex].title),
         activeTagIndex,
-        onDismiss: ({ tagIndex, tagName }) => {
+        onDismiss: ({ tagIndex }) => {
           if (isTagDismissedRef.current) {
             isTagDismissedRef.current.value = true;
           }
@@ -239,7 +239,8 @@ const _SelectInput = (
         },
       });
     },
-    [selectedIndices, selectionType, activeTagIndex, changeCallbackTriggerer],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [selectedIndices, selectionType, activeTagIndex, changeCallbackTriggerer, options],
   );
 
   return (
@@ -264,7 +265,7 @@ const _SelectInput = (
       <BaseInput
         {...baseInputProps}
         as="button"
-        tagRows={props.rows}
+        tagRows={props.rows ?? '1'}
         tags={getTags()}
         showAllTags={isOpen}
         activeTagIndex={activeTagIndex}

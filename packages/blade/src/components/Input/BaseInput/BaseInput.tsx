@@ -717,6 +717,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
       setActiveTagIndex,
     );
     const [showAllTagsWithAnimation, setShowAllTagsWithAnimation] = React.useState(false);
+    const isReactNative = getPlatformType() === 'react-native';
 
     React.useEffect(() => {
       if (showAllTags) {
@@ -789,9 +790,12 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
     }
 
     const isTextArea = as === 'textarea';
-    const isReactNative = getPlatformType() === 'react-native';
     return (
-      <BaseBox {...metaAttribute({ name: componentName, testID })} {...getStyledProps(styledProps)}>
+      <BaseBox
+        className="hi-there"
+        {...metaAttribute({ name: componentName, testID })}
+        {...getStyledProps(styledProps)}
+      >
         <BaseBox
           display="flex"
           flexDirection={isLabelLeftPositioned ? 'row' : 'column'}
@@ -833,7 +837,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
             <BaseInputVisuals leadingIcon={leadingIcon} prefix={prefix} isDisabled={isDisabled} />
             <BaseInputTagSlot
               tags={tags}
-              showAllTags={showAllTagsWithAnimation}
+              showAllTags={isReactNative ? showAllTags : showAllTagsWithAnimation}
               setFocusOnInput={() => {
                 if (ref && 'current' in ref) {
                   ref.current?.focus();
@@ -882,6 +886,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
               numberOfLines={numberOfLines}
               isTextArea={isTextArea || tagRows === '3' || tagRows === 'expandable'}
               hasPopup={hasPopup}
+              hasTags={!!(tags && tags.length > 0)}
               shouldIgnoreBlurAnimation={shouldIgnoreBlurAnimation}
               autoCapitalize={autoCapitalize}
               {...metaAttribute({ name: MetaConstants.StyledBaseInput })}

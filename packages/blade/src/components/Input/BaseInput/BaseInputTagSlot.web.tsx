@@ -82,6 +82,7 @@ const useTagsDisplay = (
         behavior: 'smooth',
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tags?.length]);
 
   return {
@@ -141,8 +142,6 @@ const BaseInputTagSlot = ({
       position="relative"
       maxWidth="100%"
       overflowX="auto"
-      // Move to using gap instead of marginLeft on individual tags after RN upgrade
-      // gap="spacing.3"
       onMouseDown={() => {
         setShouldIgnoreBlurAnimation?.(true);
       }}
@@ -170,7 +169,6 @@ const BaseInputTagSlot = ({
         top="spacing.0"
         left="spacing.0"
         paddingLeft="spacing.4"
-        marginY="spacing.2"
       >
         {tags}
       </InvisibleTagsContainer>

@@ -1,12 +1,14 @@
 import React from 'react';
-import styled, { css, FlattenSimpleInterpolation, keyframes } from 'styled-components';
-import BaseBox, { BaseBoxProps } from '~components/Box/BaseBox';
+import type { FlattenSimpleInterpolation } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
+import type { BaseBoxProps } from '~components/Box/BaseBox';
+import BaseBox from '~components/Box/BaseBox';
 import { motion, size } from '~tokens/global';
 import { makeMotionTime, makeSize } from '~utils';
-import { BladeElementRef } from '~utils/types';
+import type { BladeElementRef } from '~utils/types';
 
-const BASEINPUT_MIN_HEIGHT = size['36'];
-const BASEINPUT_BOTTOM_LINE_HEIGHT = size['1'];
+const BASEINPUT_MIN_HEIGHT: number = size['36'];
+const BASEINPUT_BOTTOM_LINE_HEIGHT: number = size['1'];
 const MAX_ROWS = 4;
 const BASEINPUT_MAX_HEIGHT = size['36'] * MAX_ROWS; // we don't want exact number but rough number to be able to animate correctly in height.
 
@@ -55,6 +57,7 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
 > = ({ showAllTags, setShowAllTagsWithAnimation, ...baseBoxProps }, ref): React.ReactElement => {
   return (
     <StyledAnimatedBaseInputWrapper
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={ref as any}
       {...baseBoxProps}
       transition={showAllTags ? expandTransition : collapseTransition}
@@ -63,7 +66,7 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
           setShowAllTagsWithAnimation?.(false);
         }
       }}
-    ></StyledAnimatedBaseInputWrapper>
+    />
   );
 };
 

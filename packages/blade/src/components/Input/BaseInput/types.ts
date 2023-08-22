@@ -32,6 +32,7 @@ export type StyledBaseInputProps = {
   currentInteraction: keyof ActionStates;
   setCurrentInteraction: Dispatch<SetStateAction<keyof ActionStates>>;
   isTextArea?: boolean;
+  hasTags?: boolean;
 } & Pick<
   BaseInputProps,
   | 'as'

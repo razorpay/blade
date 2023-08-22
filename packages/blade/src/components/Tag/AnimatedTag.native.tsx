@@ -1,14 +1,14 @@
 import React from 'react';
-import BaseBox from '~components/Box/BaseBox';
 import { Tag } from './Tag';
-import { AnimatedTagProps } from './types';
+import type { AnimatedTagProps } from './types';
+import BaseBox from '~components/Box/BaseBox';
 
 const AnimatedTag = ({
   children,
   currentTagIndex,
   activeTagIndex,
   onDismiss,
-}: AnimatedTagProps) => {
+}: AnimatedTagProps): React.ReactElement => {
   return (
     <BaseBox>
       <Tag

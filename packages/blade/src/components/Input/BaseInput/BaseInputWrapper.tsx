@@ -4,10 +4,10 @@ import React from 'react';
 import { getInputBackgroundAndBorderStyles } from './baseInputStyles';
 import type { BaseInputProps } from './BaseInput';
 import { BaseInputAnimatedBorder } from './BaseInputAnimatedBorder';
+import { AnimatedBaseInputWrapper } from './AnimatedBaseInputWrapper';
 import { castWebType, getPlatformType } from '~utils';
 import type { ActionStates } from '~tokens/theme/theme';
 import { makeMotionTime } from '~utils/makeMotionTime';
-import { AnimatedBaseInputWrapper } from './AnimatedBaseInputWrapper';
 
 type BaseInputWrapperProps = Pick<
   BaseInputProps,
@@ -76,6 +76,7 @@ const _BaseInputWrapper: React.ForwardRefRenderFunction<
 ): ReactElement => {
   return (
     <StyledBaseInputWrapper
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={ref as any}
       display="flex"
       flexDirection="row"
