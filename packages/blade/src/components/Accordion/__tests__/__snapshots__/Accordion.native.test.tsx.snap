@@ -27,7 +27,7 @@ exports[`<Accordion /> should render 1`] = `
       }
       minWidth={
         {
-          "l": "400px",
+          "l": "360px",
           "m": "360px",
           "s": "200px",
         }
