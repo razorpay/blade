@@ -791,11 +791,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
 
     const isTextArea = as === 'textarea';
     return (
-      <BaseBox
-        className="hi-there"
-        {...metaAttribute({ name: componentName, testID })}
-        {...getStyledProps(styledProps)}
-      >
+      <BaseBox {...metaAttribute({ name: componentName, testID })} {...getStyledProps(styledProps)}>
         <BaseBox
           display="flex"
           flexDirection={isLabelLeftPositioned ? 'row' : 'column'}

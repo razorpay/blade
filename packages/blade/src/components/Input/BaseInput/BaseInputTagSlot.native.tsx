@@ -5,17 +5,14 @@ import type { BaseInputTagSlotProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 
-const StyledScrollView = styled(ScrollView)<{ tagRows: BaseInputTagSlotProps['tagRows'] }>(
-  (props) => {
-    return {
-      display: 'flex',
-      flexDirection: 'row',
-      flexWrap: props.tagRows === '3' || props.tagRows === 'expandable' ? 'wrap' : 'nowrap',
-      // gap is still not working in RN for some reason
-      // gap: makeSpace(props.theme.spacing[3]),
-    };
-  },
-);
+const StyledScrollView = styled(ScrollView)((_props) => {
+  return {
+    display: 'flex',
+    flexDirection: 'column',
+    // gap is still not working in RN for some reason
+    // gap: makeSpace(props.theme.spacing[3]),
+  };
+});
 
 const ScrollableTagSlotContainer = ({
   tagRows,
@@ -27,7 +24,9 @@ const ScrollableTagSlotContainer = ({
   const [isScrolling, setIsScrolling] = React.useState(false);
   return (
     <StyledScrollView
-      tagRows={tagRows}
+      contentContainerStyle={{
+        flexWrap: 'wrap',
+      }}
       onScrollBeginDrag={() => {
         setIsScrolling(true);
       }}
@@ -39,7 +38,8 @@ const ScrollableTagSlotContainer = ({
           handleOnClick?.({ name: '', value: '' });
         }
       }}
-      horizontal={tagRows === '1'}
+      horizontal={true}
+      showsHorizontalScrollIndicator={tagRows === '1'}
     >
       {children}
     </StyledScrollView>
@@ -76,11 +76,6 @@ const BaseInputTagSlot = ({
         tagRows={tagRows}
         showAllTags={showAllTags}
         handleOnClick={handleOnClick}
-        // switch to these on `props.rows` value
-        // display="flex"
-        // flexDirection="row"
-        // flexWrap={tagRows === '3' || tagRows === 'expandable' ? 'wrap' : 'nowrap'}
-        // maxHeight={showAllTags && invisibleTagsCount ? '100%' : '84px'}
       >
         {showAllTags ? tags : tags.slice(0, 2)}
         {invisibleTagsCount > 0 && !showAllTags ? (
