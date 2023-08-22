@@ -32,7 +32,7 @@ const AnimatedChip = ({
   const duration = getIn(theme, chipMotionTokens.duration);
 
   React.useEffect(() => {
-    scaleDownAnimation.value = withTiming(isPressed ? 0.8 : 1, {
+    scaleDownAnimation.value = withTiming(isPressed ? 0.92 : 1, {
       duration,
       easing,
     });
