@@ -174,7 +174,7 @@ const ListWithSizesTemplate: ComponentStory<typeof List> = ({ ...args }) => {
     <BaseBox>
       {listSizes.map((size) => (
         <BaseBox key={size}>
-          <Heading>{`${capitalize(size)} Size:`}</Heading>
+          <Heading>{capitalize(size)} Size:</Heading>
           <List {...args} size={size}>
             <ListItem>
               Level 1
