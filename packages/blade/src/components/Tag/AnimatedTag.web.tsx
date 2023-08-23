@@ -3,29 +3,36 @@ import type { FlattenSimpleInterpolation } from 'styled-components';
 import styled, { css, keyframes } from 'styled-components';
 import { Tag } from './Tag';
 import type { AnimatedTagProps } from './types';
+import {
+  TAG_MAX_HEIGHT_END,
+  TAG_MAX_WIDTH_END,
+  TAG_MAX_WIDTH_START,
+  TAG_OPACITY_END,
+  TAG_OPACITY_START,
+} from './tagAnimationConfig';
 import BaseBox from '~components/Box/BaseBox';
-import { makeMotionTime, useTheme } from '~utils';
+import { makeMotionTime, makeSize, useTheme } from '~utils';
 
 const tagDissappearKeyframe = keyframes`
-  100% {
-    opacity: 1;
-    max-width: 140px;
+  0% {
+    opacity: ${TAG_OPACITY_START};
+    max-width: ${makeSize(TAG_MAX_WIDTH_START)};
   }
 
   100% {
-    opacity: 0;
-    max-width: 0px;
-    max-height: 0px;
+    opacity: ${TAG_OPACITY_END};
+    max-width: ${makeSize(TAG_MAX_WIDTH_END)};
+    max-height: ${makeSize(TAG_MAX_HEIGHT_END)};
   }
 `;
 
 const tagShowKeyframe = keyframes`
   0% {
-    opacity: 0;
+    opacity: ${TAG_OPACITY_END};
   }
 
   100% {
-    opacity: 1;
+    opacity: ${TAG_OPACITY_START};
   }
 `;
 
