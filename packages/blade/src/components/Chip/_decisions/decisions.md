@@ -91,7 +91,7 @@ function Single() {
       <ChipGroup
         selectionType="single"
         value={selected}
-        onChange={({ values }) => setSelected(values)}
+        onChange={({ values }) => setSelected(values[0])}
       >
         <Chip value="proprietorship">Proprietorship</Chip>
         <Chip value="public">Public</Chip>
