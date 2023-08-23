@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 10.2.1
+
+### Patch Changes
+
+- 98291854: chore: make accordion min-width 360px for large screens
+- 5f2f3e44: feat: add large size to List component
+
 ## 10.2.0
 
 ### Minor Changes
