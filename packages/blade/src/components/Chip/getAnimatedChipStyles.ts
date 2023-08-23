@@ -1,20 +1,13 @@
 import type { CSSObject } from 'styled-components';
 import getIn from 'lodash/get';
 import type { AnimatedChipProps } from './types';
-import { chipHeightTokens, chipBorderWidthTokens, chipHorizontalPaddingTokens } from './chipTokens';
 import { makeBorderSize } from '~utils/makeBorderSize';
 
-const getAnimatedChipStyles = ({
-  theme,
-  backgroundColor,
-  borderColor,
-  size,
-  isChecked,
-  withIcon,
-  isDesktop,
-}: AnimatedChipProps): CSSObject => {
+const getAnimatedChipStyles = ({ theme, isDesktop, isDisabled }: AnimatedChipProps): CSSObject => {
   return {
-    backgroundColor: getIn(theme.colors, backgroundColor),
+    backgroundColor: isDisabled
+      ? 'transparent'
+      : getIn(theme.colors, 'surface.background.level2.lowContrast'),
     borderRadius: makeBorderSize(theme.border.radius.max),
     borderWidth: getIn(theme, 'border.width.thin'),
     display: 'flex',

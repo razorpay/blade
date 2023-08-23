@@ -31,24 +31,6 @@ const chipHeightTokens: Record<NonNullable<ChipGroupProps['size']>, number> = {
   large: size[48],
 };
 
-const chipBorderWidthTokens: Record<
-  string,
-  Record<NonNullable<ChipGroupProps['size']>, number | string>
-> = {
-  unchecked: {
-    xsmall: 'border.width.thin',
-    small: 'border.width.thin',
-    medium: 'border.width.thin',
-    large: 'border.width.thin',
-  },
-  checked: {
-    xsmall: 'border.width.thick',
-    small: 'border.width.thick',
-    medium: 'border.width.thicker',
-    large: 'border.width.thicker',
-  },
-};
-
 type ChipHorizontalPaddingTokens = {
   default: Record<
     'left' | 'right',
@@ -208,7 +190,6 @@ const chipMotionTokens = {
 export {
   chipColorTokens,
   chipHeightTokens,
-  chipBorderWidthTokens,
   chipGroupGapTokens,
   getChipHoverTokens,
   chipHorizontalPaddingTokens,

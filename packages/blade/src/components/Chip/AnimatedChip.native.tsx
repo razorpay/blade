@@ -15,14 +15,9 @@ const StyledAnimatedChip = styled(Animated.View)<AnimatedChipProps>((props) => {
 });
 
 const AnimatedChip = ({
-  isChecked,
-  isDisabled,
-  size = 'small',
   children,
   isPressed,
-  backgroundColor,
-  borderColor,
-  withIcon,
+  isDisabled,
 }: Omit<AnimatedChipProps, 'theme'>): React.ReactElement => {
   const { theme } = useTheme();
   const scaleDownAnimation = useSharedValue(1);
@@ -48,15 +43,7 @@ const AnimatedChip = ({
   }, []);
 
   return (
-    <StyledAnimatedChip
-      isChecked={isChecked}
-      size={size}
-      backgroundColor={backgroundColor}
-      style={chipAnimation}
-      isDisabled={isDisabled}
-      withIcon={withIcon}
-      borderColor={borderColor}
-    >
+    <StyledAnimatedChip isDisabled={isDisabled} style={chipAnimation}>
       {children}
     </StyledAnimatedChip>
   );

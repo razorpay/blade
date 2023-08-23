@@ -26,6 +26,7 @@ import { useRadio } from '~components/Radio/useRadio';
 import { isReactNative, useBreakpoint } from '~utils';
 import { Text } from '~components/Typography';
 import { useTheme } from '~components/BladeProvider';
+import { ChipGroupProps } from './ChipGroup';
 
 type OnChange = ({
   isChecked,
@@ -93,7 +94,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
       ? undefined // If undefined, defaultChecked is also undefined
       : groupProps?.defaultValue?.includes(value as string); // If multiple selection, check if value is in defaultValue array
   const useChip = groupProps?.selectionType === 'single' ? useRadio : useCheckbox;
-  const _size = groupProps?.size || 'small';
+  const _size: ChipGroupProps['size'] = groupProps?.size || 'small';
   const _intent = groupProps?.intent;
 
   const handleChange: OnChange = ({ isChecked, value }) => {
@@ -173,13 +174,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
         style={{ cursor: _isDisabled ? 'not-allowed' : 'pointer' }}
       >
         <BaseBox display="flex" flexDirection="column">
-          <BaseBox
-            display="flex"
-            alignItems="center"
-            flexDirection="row"
-            backgroundColor={_isDisabled ? undefined : 'surface.background.level2.lowContrast'}
-            borderRadius="max"
-          >
+          <BaseBox display="flex" alignItems="center" flexDirection="row">
             <SelectorInput
               hoverTokens={getChipHoverTokens(_intent)}
               isChecked={state.isChecked}
@@ -188,12 +183,9 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
               ref={ref}
             />
             <AnimatedChip
-              backgroundColor={chipBackgroundColor as never}
               borderColor={chipBorderColor as never}
-              size={_size}
-              isChecked={state.isChecked}
+              isDisabled={_isDisabled}
               isPressed={isPressed}
-              withIcon={Boolean(Icon)}
               isDesktop={matchedDeviceType === 'desktop'}
             >
               <BaseBox
@@ -202,13 +194,14 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
                 justifyContent="center"
                 alignItems="center"
                 overflow="hidden"
+                backgroundColor={chipBackgroundColor as never}
                 borderRadius="max"
                 borderWidth={['xsmall', 'small'].includes(_size) ? 'thinner' : 'thin'}
                 paddingLeft={
                   chipHorizontalPaddingTokens[Boolean(Icon) ? 'icon' : 'default'].left[_size]
                 }
                 paddingRight={
-                  chipHorizontalPaddingTokens[Boolean(Icon) ? 'icon' : 'default'].left[_size]
+                  chipHorizontalPaddingTokens[Boolean(Icon) ? 'icon' : 'default'].right[_size]
                 }
                 style={{
                   height: chipHeightTokens[_size],
