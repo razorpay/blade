@@ -31,7 +31,7 @@ const AnimatedChip = ({
       duration,
       easing,
     });
-  }, [isPressed]);
+  }, [isPressed, easing, duration, scaleDownAnimation]);
 
   const chipAnimation = useAnimatedStyle(() => {
     return {

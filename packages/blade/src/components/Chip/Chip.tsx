@@ -26,7 +26,6 @@ import { useRadio } from '~components/Radio/useRadio';
 import { isReactNative, useBreakpoint } from '~utils';
 import { Text } from '~components/Typography';
 import { useTheme } from '~components/BladeProvider';
-import { ChipGroupProps } from './ChipGroup';
 
 type OnChange = ({
   isChecked,
@@ -94,7 +93,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
       ? undefined // If undefined, defaultChecked is also undefined
       : groupProps?.defaultValue?.includes(value as string); // If multiple selection, check if value is in defaultValue array
   const useChip = groupProps?.selectionType === 'single' ? useRadio : useCheckbox;
-  const _size: ChipGroupProps['size'] = groupProps?.size || 'small';
+  const _size = groupProps?.size || 'small';
   const _intent = groupProps?.intent;
 
   const handleChange: OnChange = ({ isChecked, value }) => {
