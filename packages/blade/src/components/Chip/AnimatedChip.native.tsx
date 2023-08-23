@@ -15,6 +15,7 @@ const StyledAnimatedChip = styled(Animated.View)<AnimatedChipProps>((props) => {
 });
 
 const AnimatedChip = ({
+  borderColor,
   children,
   isPressed,
   isDisabled,
@@ -43,7 +44,7 @@ const AnimatedChip = ({
   }, []);
 
   return (
-    <StyledAnimatedChip isDisabled={isDisabled} style={chipAnimation}>
+    <StyledAnimatedChip borderColor={borderColor} isDisabled={isDisabled} style={chipAnimation}>
       {children}
     </StyledAnimatedChip>
   );

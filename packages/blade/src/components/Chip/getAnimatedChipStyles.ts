@@ -3,12 +3,18 @@ import getIn from 'lodash/get';
 import type { AnimatedChipProps } from './types';
 import { makeBorderSize } from '~utils/makeBorderSize';
 
-const getAnimatedChipStyles = ({ theme, isDesktop, isDisabled }: AnimatedChipProps): CSSObject => {
+const getAnimatedChipStyles = ({
+  theme,
+  isDesktop,
+  isDisabled,
+  borderColor,
+}: AnimatedChipProps): CSSObject => {
   return {
     backgroundColor: isDisabled
       ? 'transparent'
       : getIn(theme.colors, 'surface.background.level2.lowContrast'),
     borderRadius: makeBorderSize(theme.border.radius.max),
+    borderColor: getIn(theme.colors, borderColor),
     borderWidth: getIn(theme, 'border.width.thin'),
     display: 'flex',
     flexWrap: 'nowrap',
