@@ -36,21 +36,17 @@ const useChipGroup = ({
 
   const fallbackName = name ?? idBase;
   const [checkedValues, setValues] = useControllableState({
-    value,
-    defaultValue: defaultValue || [],
+    value: (value && selectionType === 'single' ? [value] : value) as string[] | undefined,
+    // If selectionType is single, we need to convert the value to an array
+    defaultValue: (defaultValue && selectionType === 'single'
+      ? [defaultValue]
+      : defaultValue || []) as string[] | undefined,
     onChange: (values: string[]) => onChange?.({ values, name: fallbackName }),
   });
 
   const state = React.useMemo<State>(() => {
     return {
       value: checkedValues,
-      setValue(values: string[]) {
-        if (isDisabled) {
-          return;
-        }
-
-        setValues(() => values);
-      },
       isChecked(value: string): boolean {
         if (selectionType === 'single') {
           if (isUndefined(value) || isUndefined(checkedValues)) return false;

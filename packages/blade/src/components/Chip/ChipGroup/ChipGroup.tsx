@@ -34,10 +34,16 @@ const ChipGroup = ({
   });
 
   if (__DEV__) {
-    if (selectionType === 'single' && Number(defaultValue?.length) > 1) {
+    if (selectionType === 'single' && Array.isArray(defaultValue)) {
       throwBladeError({
         moduleName: 'ChipGroup',
-        message: `When "selectionType" is "single", the "defaultValue" prop cans only contain one item.`,
+        message: `When "selectionType" is "single", the "defaultValue" prop must be a string value, but an array was provided.`,
+      });
+    }
+    if (selectionType === 'single' && Array.isArray(value)) {
+      throwBladeError({
+        moduleName: 'ChipGroup',
+        message: `When "selectionType" is "single", the "value" prop must be a string value, but an array was provided.`,
       });
     }
   }

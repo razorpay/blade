@@ -9,7 +9,7 @@ type ChipGroupProps = {
   /**
    * Sets the initial value of the ChipGroup component.
    */
-  defaultValue?: string[];
+  defaultValue?: string | string[];
   /**
    * Controls the interactive state of the ChipGroup. When set to true, all contained Chip elements become non-interactive and visually disabled.
    * Setting it to false enables normal user interaction. Useful for temporarily disabling user input within the ChipGroup.
@@ -47,7 +47,7 @@ type ChipGroupProps = {
    * Acts as a controlled component by specifying the ChipGroup value
    * Use `onChange` to update its value
    */
-  value?: string[];
+  value?: string | string[];
   /**
    * Sets the ChipGroups's visual intent, it will propagate down to all the Chips
    *
@@ -59,7 +59,6 @@ type ChipGroupProps = {
 
 type State = {
   value: string[];
-  setValue(value: string[]): void;
   isChecked(value: string): boolean;
   addValue(value: string): void;
   removeValue(value: string): void;
