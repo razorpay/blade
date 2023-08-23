@@ -1,4 +1,5 @@
 import React from 'react';
+import getIn from 'lodash/get';
 import isEmpty from 'lodash/isEmpty';
 import { useChipGroupContext } from './ChipGroup/ChipGroupContext';
 import {
@@ -204,7 +205,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
                 }
                 style={{
                   height: chipHeightTokens[_size],
-                  borderColor: _isChecked ? 'inherit' : 'transparent',
+                  borderColor: _isChecked ? getIn(theme.colors, chipBorderColor) : 'transparent',
                 }}
               >
                 {Icon ? (

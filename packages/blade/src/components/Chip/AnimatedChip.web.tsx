@@ -8,7 +8,7 @@ import { makeMotionTime } from '~utils/makeMotionTime';
 import { castWebType } from '~utils';
 
 const AnimatedChip = styled(BaseBox)<AnimatedChipProps>((props) => {
-  const easing = getIn(props.theme, chipMotionTokens.timingFunction);
+  const easing = getIn(props.theme, chipMotionTokens.easing);
   const duration = castWebType(makeMotionTime(getIn(props.theme, chipMotionTokens.duration)));
   return {
     ...getAnimatedChipStyles(props),

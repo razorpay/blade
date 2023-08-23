@@ -184,7 +184,7 @@ const chipTextSizes = {
 
 const chipMotionTokens = {
   duration: 'motion.duration.xquick',
-  timingFunction: 'motion.easing.standard.effective',
+  easing: 'motion.easing.standard.effective',
 };
 
 export {

@@ -1,7 +1,7 @@
 import getIn from 'lodash/get';
 import React from 'react';
 import styled from 'styled-components/native';
-import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
+import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import { getAnimatedChipStyles } from './getAnimatedChipStyles';
 import type { AnimatedChipProps } from './types';
 import { chipMotionTokens } from './chipTokens';
@@ -21,27 +21,22 @@ const AnimatedChip = ({
   isDisabled,
 }: Omit<AnimatedChipProps, 'theme'>): React.ReactElement => {
   const { theme } = useTheme();
-  const scaleDownAnimation = useSharedValue(1);
 
-  const easing = getIn(theme, chipMotionTokens.timingFunction);
+  const easing = getIn(theme, chipMotionTokens.easing);
   const duration = getIn(theme, chipMotionTokens.duration);
-
-  React.useEffect(() => {
-    scaleDownAnimation.value = withTiming(isPressed ? 0.92 : 1, {
-      duration,
-      easing,
-    });
-  }, [isPressed, easing, duration, scaleDownAnimation]);
 
   const chipAnimation = useAnimatedStyle(() => {
     return {
       transform: [
         {
-          scale: scaleDownAnimation.value,
+          scale: withTiming(isPressed ? 0.92 : 1, {
+            duration,
+            easing,
+          }),
         },
       ],
     };
-  }, []);
+  }, [isPressed]);
 
   return (
     <StyledAnimatedChip borderColor={borderColor} isDisabled={isDisabled} style={chipAnimation}>
