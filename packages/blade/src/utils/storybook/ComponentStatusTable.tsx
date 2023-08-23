@@ -370,7 +370,9 @@ const componentData: ComponentStatusData = [
   },
   {
     name: 'Carousel',
-    status: 'in-design',
+    status: 'released',
+    releasedIn: '10.2.0',
+    storybookLink: 'Components/Carousel',
     description:
       'Carousel is a component to one-by-one display multiple blocks of information in circular manner',
   },
