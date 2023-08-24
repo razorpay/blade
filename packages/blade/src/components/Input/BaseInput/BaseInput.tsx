@@ -608,6 +608,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
       isPopupExpanded,
       shouldIgnoreBlurAnimation,
       autoCapitalize,
+      setInputWrapperRef,
       testID,
       ...styledProps
     },
@@ -716,6 +717,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
             validationState={validationState}
             currentInteraction={currentInteraction}
             isLabelLeftPositioned={isLabelLeftPositioned}
+            setInputWrapperRef={setInputWrapperRef}
           >
             <BaseInputVisuals leadingIcon={leadingIcon} prefix={prefix} isDisabled={isDisabled} />
             <StyledBaseInput

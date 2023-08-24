@@ -109,6 +109,7 @@ const _SelectInput = (
     setIsControlled,
     selectionType,
     selectedIndices,
+    triggererWrapperRef,
   } = useDropdown();
 
   const inputRef = useBladeInnerRef(ref, {
@@ -208,7 +209,7 @@ const _SelectInput = (
   }, [props.labelPosition, setHasLabelOnLeft]);
 
   return (
-    <BaseBox position="relative">
+    <BaseBox position="relative" id={`${dropdownBaseId}-select`}>
       {!isReactNative() ? (
         <VisuallyHidden>
           <input
@@ -232,6 +233,10 @@ const _SelectInput = (
         hideLabelText={props.label?.length === 0}
         componentName={MetaConstants.SelectInput}
         ref={!isReactNative() ? (triggererRef as React.MutableRefObject<HTMLInputElement>) : null}
+        setInputWrapperRef={(node) => {
+          triggererWrapperRef.current = node;
+          console.log(node);
+        }}
         textAlign="left"
         value={displayValue}
         placeholder={placeholder}

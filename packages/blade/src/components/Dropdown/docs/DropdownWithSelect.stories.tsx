@@ -240,7 +240,13 @@ InternalControlledSingleSelect.parameters = {
 
 export const InternalSelect = (): React.ReactElement => {
   return (
-    <Box padding="spacing.5">
+    <Box
+      padding="spacing.5"
+      width="100%"
+      backgroundColor="surface.background.level3.highContrast"
+      overflow="scroll"
+    >
+      <Box minHeight="100vh" />
       <Dropdown selectionType="multiple">
         <SelectInput label="Select fruits" labelPosition="left" />
         <DropdownOverlay>

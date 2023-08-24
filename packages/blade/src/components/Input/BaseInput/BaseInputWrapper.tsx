@@ -56,12 +56,14 @@ export const BaseInputWrapper = ({
   currentInteraction,
   isLabelLeftPositioned,
   isTextArea,
+  setInputWrapperRef,
   ...props
 }: BaseInputWrapperProps & {
   children: ReactNode;
 }): ReactElement => {
   return (
     <StyledBaseInputWrapper
+      ref={setInputWrapperRef}
       display="flex"
       flexDirection="row"
       width="100%"
