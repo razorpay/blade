@@ -12,8 +12,6 @@ import { MetaConstants } from '~utils/metaAttribute';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
 import BaseBox from '~components/Box/BaseBox';
 import { Spinner } from '~components/Spinner';
-import type { BladeElementRef } from '~utils/useBladeInnerRef';
-import { useBladeInnerRef } from '~utils/useBladeInnerRef';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getPlatformType } from '~utils';
 
@@ -211,7 +209,10 @@ const isReactNative = (_textInputRef: any): _textInputRef is TextInputReactNativ
   return getPlatformType() === 'react-native';
 };
 
-const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps> = (
+const _TextInput: React.ForwardRefRenderFunction<
+  HTMLInputElement | TextInputReactNative,
+  TextInputProps
+> = (
   {
     label,
     accessibilityLabel,
@@ -248,7 +249,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
   },
   ref,
 ): ReactElement => {
-  const textInputRef = useBladeInnerRef(ref);
+  const textInputRef = React.useRef<HTMLInputElement | TextInputReactNative>(null);
   const [shouldShowClearButton, setShouldShowClearButton] = useState(false);
 
   React.useEffect(() => {
@@ -293,7 +294,12 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     <BaseInput
       id="textinput"
       componentName={MetaConstants.TextInput}
-      ref={textInputRef as React.Ref<HTMLInputElement>}
+      ref={(value) => {
+        if (ref) {
+          (ref as React.MutableRefObject<unknown>).current = value;
+        }
+        (textInputRef as React.MutableRefObject<unknown>).current = value!;
+      }}
       label={label as string}
       accessibilityLabel={accessibilityLabel}
       hideLabelText={!Boolean(label)}

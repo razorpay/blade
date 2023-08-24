@@ -9,7 +9,6 @@ import type { Theme } from '~components/BladeProvider';
 import { castWebType } from '~utils';
 import { screenReaderStyles } from '~components/VisuallyHidden';
 import type { BladeElementRef } from '~utils/useBladeInnerRef';
-import { useBladeInnerRef } from '~utils/useBladeInnerRef';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeMotionTime } from '~utils/makeMotionTime';
 import { makeAccessible } from '~utils/makeAccessible';
@@ -53,8 +52,6 @@ const _SelectorInput: React.ForwardRefRenderFunction<BladeElementRef, SelectorIn
   { id, inputProps, isChecked, isDisabled, hasError, hoverTokens, tabIndex, accessibilityLabel },
   ref,
 ) => {
-  const inputRef = useBladeInnerRef(ref);
-
   return (
     <StyledInput
       id={id}
@@ -70,7 +67,7 @@ const _SelectorInput: React.ForwardRefRenderFunction<BladeElementRef, SelectorIn
       // TODO: replace with a generic `mergeRefs()` util if we do this in other places
       ref={(value) => {
         inputProps.ref.current = value;
-        (inputRef as React.MutableRefObject<any>).current = value;
+        (ref as React.MutableRefObject<any>).current = value;
       }}
     />
   );

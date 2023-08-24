@@ -11,7 +11,6 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { MetaConstants } from '~utils/metaAttribute';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
 import type { BladeElementRef } from '~utils/useBladeInnerRef';
-import { useBladeInnerRef } from '~utils/useBladeInnerRef';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getPlatformType } from '~utils';
 
@@ -116,7 +115,7 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
   },
   ref,
 ) => {
-  const inputRef = useBladeInnerRef(ref);
+  const inputRef = React.useRef<HTMLTextAreaElement | TextInputReactNative>(null);
   const [shouldShowClearButton, setShouldShowClearButton] = React.useState(false);
 
   React.useEffect(() => {
@@ -160,7 +159,12 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
       id="textarea"
       componentName={MetaConstants.TextArea}
       autoFocus={autoFocus}
-      ref={inputRef as React.Ref<HTMLInputElement>}
+      ref={(value) => {
+        if (ref) {
+          (ref as React.MutableRefObject<unknown>).current = value;
+        }
+        (inputRef as React.MutableRefObject<unknown>).current = value!;
+      }}
       label={label as string}
       accessibilityLabel={accessibilityLabel}
       hideLabelText={!Boolean(label)}

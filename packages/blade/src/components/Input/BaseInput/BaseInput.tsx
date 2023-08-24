@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import type { ReactNode } from 'react';
+import type { TextInput as TextInputReactNative } from 'react-native';
 import type {
   FormInputLabelProps,
   FormInputValidationProps,
@@ -557,7 +558,7 @@ const getDescribedByElementId = ({
   return '';
 };
 
-export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
+export const BaseInput = React.forwardRef<HTMLInputElement | TextInputReactNative, BaseInputProps>(
   (
     {
       as = 'input',
