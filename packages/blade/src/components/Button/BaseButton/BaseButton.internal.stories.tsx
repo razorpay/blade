@@ -26,7 +26,6 @@ export default {
     ...getStyledPropsArgTypes(),
     icon: {
       name: 'icon',
-      type: 'select',
       options: Object.keys(iconMap),
     },
   },
