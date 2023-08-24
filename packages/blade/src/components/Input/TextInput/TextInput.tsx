@@ -14,6 +14,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { Spinner } from '~components/Spinner';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getPlatformType } from '~utils';
+import { useMergeRefs } from '~utils/useMergeRefs';
 
 // Users should use PasswordInput for input type password
 type Type = Exclude<BaseInputProps['type'], 'password'>;
@@ -250,6 +251,8 @@ const _TextInput: React.ForwardRefRenderFunction<
   ref,
 ): ReactElement => {
   const textInputRef = React.useRef<HTMLInputElement | TextInputReactNative>(null);
+  const mergedRef = useMergeRefs(ref, textInputRef);
+
   const [shouldShowClearButton, setShouldShowClearButton] = useState(false);
 
   React.useEffect(() => {
@@ -294,12 +297,7 @@ const _TextInput: React.ForwardRefRenderFunction<
     <BaseInput
       id="textinput"
       componentName={MetaConstants.TextInput}
-      ref={(value) => {
-        if (ref) {
-          (ref as React.MutableRefObject<unknown>).current = value;
-        }
-        (textInputRef as React.MutableRefObject<unknown>).current = value!;
-      }}
+      ref={mergedRef}
       label={label as string}
       accessibilityLabel={accessibilityLabel}
       hideLabelText={!Boolean(label)}
