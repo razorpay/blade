@@ -14,6 +14,7 @@ import type { Elevation } from '~tokens/global';
 import type { SurfaceLevels } from '~tokens/theme/theme';
 import type { BoxProps } from '~components/Box';
 import { makeAccessible } from '~utils/makeAccessible';
+import { castWebType, makeMotionTime } from '~utils';
 
 export const ComponentIds = {
   CardHeader: 'CardHeader',
@@ -77,40 +78,47 @@ export type CardProps = {
   onClick?: () => void;
   isSelected?: boolean;
   href?: string;
-  linkLabel?: string;
+  accessibilityLabel?: string;
+  scaleOnHover?: boolean;
+  onHover?: () => void;
+  as?: 'label';
 } & TestID &
   StyledPropsBlade;
 
-const CardRoot = styled(BaseBox)<{ isSelected?: boolean; isFocused?: boolean }>(
-  ({ theme, isSelected, isFocused }) => {
-    return {
-      // Selected state
-      // TODO: use thicker
-      boxShadow: `0px 0px 0px ${theme.border.width.thick}px ${
-        isSelected ? theme.colors.brand.primary[500] : 'transparent'
-      }`,
-      transition: '200ms ease',
-      transitionProperty: 'transform, box-shadow',
+const CardRoot = styled(BaseBox)<{
+  isSelected?: boolean;
+  isFocused?: boolean;
+  scaleOnHover?: boolean;
+}>(({ theme, isSelected, isFocused, scaleOnHover }) => {
+  const selectedColor = isSelected ? theme.colors.brand.primary[500] : 'transparent';
+  return {
+    // Selected state
+    // TODO: use thicker
+    boxShadow: `0px 0px 0px ${theme.border.width.thick}px ${selectedColor}`,
+    transitionDuration: castWebType(makeMotionTime(theme.motion.duration.xquick)),
+    transitionTimingFunction: castWebType(theme.motion.easing.standard.effective),
+    transitionProperty: 'transform, box-shadow',
 
-      // link focused state
-      ...(isFocused && {
-        boxShadow: `0px 0px 0px 4px ${theme.colors.brand.primary[400]}`,
-      }),
+    // link focused state
+    ...(isFocused && {
+      boxShadow: `0px 0px 0px 4px ${theme.colors.brand.primary[400]}`,
+    }),
 
-      // Hover state
+    // Hover state
+    ...(scaleOnHover && {
       '&:hover': {
         transform: 'scale(1.05)',
       },
+    }),
 
-      // uplift all the nested links so they receive clicks and events
-      // https://www.sarasoueidan.com/blog/nested-links
-      '& a[href]:not(.blade-card-linkoverlay)': {
-        zIndex: 1,
-        position: 'relative',
-      },
-    };
-  },
-);
+    // uplift all the nested links so they receive clicks and events
+    // https://www.sarasoueidan.com/blog/nested-links
+    '& a[href]:not(.blade-card-linkoverlay)': {
+      zIndex: 1,
+      position: 'relative',
+    },
+  };
+});
 
 const LinkOverlay = styled.a(
   (): CSSObject => {
@@ -141,7 +149,9 @@ const Card = ({
   height,
   onClick,
   isSelected,
-  linkLabel,
+  accessibilityLabel,
+  scaleOnHover,
+  onHover,
   href,
   as,
   ...styledProps
@@ -157,6 +167,8 @@ const Card = ({
     <CardProvider>
       <CardRoot
         as={as}
+        onMouseEnter={onHover}
+        scaleOnHover={scaleOnHover}
         isSelected={isSelected}
         isFocused={isFocused}
         borderRadius="medium"
@@ -165,6 +177,7 @@ const Card = ({
         height={height}
         {...metaAttribute({ name: MetaConstants.Card, testID })}
         {...getStyledProps(styledProps)}
+        {...makeAccessible({ label: as === 'label' ? accessibilityLabel : undefined })}
       >
         <CardSurface
           height={height}
@@ -176,7 +189,7 @@ const Card = ({
         >
           {href ? (
             <LinkOverlay
-              {...makeAccessible({ label: linkLabel })}
+              {...makeAccessible({ label: accessibilityLabel })}
               onFocus={() => {
                 setIsFocused(true);
               }}

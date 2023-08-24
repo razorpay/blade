@@ -1,5 +1,6 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
+import React from 'react';
 import type { CardFooterAction } from './';
 import {
   CardBody,
@@ -32,9 +33,6 @@ import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgType
 import type { Elevation } from '~tokens/global';
 import type { SurfaceLevels } from '~tokens/theme/theme';
 import { Box } from '~components/Box';
-import React from 'react';
-import { Link } from '~components/Link';
-import { VisuallyHidden } from '~components/VisuallyHidden/VisuallyHidden.web';
 
 const Page = (): React.ReactElement => {
   return (
