@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 10.3.0
+
+### Minor Changes
+
+- 5872d7ea: refactor(blade): remove useBladeInnerRef & expose native DOM nodes via ref
+
 ## 10.2.1
 
 ### Patch Changes
