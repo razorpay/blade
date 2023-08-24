@@ -50,6 +50,11 @@ type ChipProps = {
    */
   icon?: IconComponent;
   /**
+   * Sets the Chip's visual intent
+   *
+   */
+  intent?: 'positive' | 'negative' | 'neutral';
+  /**
    * If `true`, the Chip will be disabled
    *
    * @default false
@@ -65,7 +70,7 @@ type ChipProps = {
   StyledPropsBlade;
 
 const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
-  { isDisabled, value, children, icon: Icon, testID, ...styledProps },
+  { isDisabled, value, children, icon: Icon, intent, testID, ...styledProps },
   ref,
 ) => {
   const { theme } = useTheme();
@@ -95,7 +100,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
       : groupProps?.defaultValue?.includes(value as string); // If multiple selection, check if value is in defaultValue array
   const useChip = groupProps?.selectionType === 'single' ? useRadio : useCheckbox;
   const _size = groupProps?.size || 'small';
-  const _intent = groupProps?.intent;
+  const _intent = intent ?? groupProps?.intent;
 
   const handleChange: OnChange = ({ isChecked, value }) => {
     if (isChecked) {
