@@ -84,18 +84,23 @@ const _DropdownOverlay = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
-  return isMounted ? (
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    <BaseBox ref={refs.setFloating as any} style={{ ...floatingStyles }}>
+  return (
+    <BaseBox
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ref={refs.setFloating as any}
+      style={{ ...floatingStyles }}
+      display={isMounted ? 'flex' : 'none'}
+    >
       <StyledDropdownOverlay
         isInBottomSheet={bottomSheetAndDropdownGlue?.dropdownHasBottomSheet}
         style={{ ...styles }}
+        width="100%"
         {...metaAttribute({ name: MetaConstants.DropdownOverlay, testID })}
       >
         {children}
       </StyledDropdownOverlay>
     </BaseBox>
-  ) : null;
+  );
 };
 
 const DropdownOverlay = assignWithoutSideEffects(_DropdownOverlay, {

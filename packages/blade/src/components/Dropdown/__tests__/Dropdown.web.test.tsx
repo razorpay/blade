@@ -1,5 +1,6 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
+import { waitFor, act } from '@testing-library/react';
 import { Dropdown, DropdownLink, DropdownOverlay } from '../index';
 import { DropdownButton } from '../DropdownButton';
 import { DropdownFooter, DropdownHeader } from '../DropdownHeaderFooter';
@@ -23,7 +24,7 @@ describe('<Dropdown />', () => {
   it('should render dropdown and make it visible on click', async () => {
     const user = userEvent.setup();
 
-    const { container, getByRole } = renderWithTheme(
+    const { container, getByRole, queryByRole } = renderWithTheme(
       <Dropdown>
         <SelectInput label="Fruits" />
         <DropdownOverlay>
@@ -46,9 +47,9 @@ describe('<Dropdown />', () => {
     expect(selectInput).toBeInTheDocument();
     // testing library ignores the nodes because they are set to display none so using querySelector to select from dom instead.
     // the node becomes accessible after click on selectInput
-    expect(container.querySelector('[role=dialog]')).not.toBeVisible();
+    expect(queryByRole('dialog')).toBeNull();
     await user.click(selectInput);
-    expect(getByRole('dialog', { name: 'Fruits' })).toBeVisible();
+    await waitFor(() => expect(getByRole('dialog', { name: 'Fruits' })).toBeVisible());
     expect(container).toMatchSnapshot();
   });
 
@@ -56,7 +57,7 @@ describe('<Dropdown />', () => {
   it('should select item with mouse clicks', async () => {
     const user = userEvent.setup();
 
-    const { container, getByRole } = renderWithTheme(
+    const { getByRole, queryByRole } = renderWithTheme(
       <Dropdown>
         <SelectInput label="Fruits" />
         <DropdownOverlay>
@@ -72,12 +73,12 @@ describe('<Dropdown />', () => {
 
     expect(selectInput).toBeInTheDocument();
     expect(selectInput.textContent).toBe('Select Option');
-    expect(container.querySelector('[role=listbox]')).not.toBeVisible();
+    expect(queryByRole('listbox')).toBeNull();
 
     await user.click(selectInput);
-    expect(getByRole('listbox', { name: 'Fruits' })).toBeVisible();
+    await waitFor(() => expect(getByRole('listbox', { name: 'Fruits' })).toBeVisible());
     await user.click(getByRole('option', { name: 'Orange' }));
-    expect(container.querySelector('[role=listbox]')).not.toBeVisible();
+    await waitFor(() => expect(queryByRole('listbox')).toBeNull());
     expect(selectInput.textContent).toBe('Orange');
   });
 
@@ -112,7 +113,7 @@ describe('<Dropdown />', () => {
 
   it('should handle accessibility of multiselect', async () => {
     const user = userEvent.setup();
-    const { container, getByRole } = renderWithTheme(
+    const { queryByRole, getByRole } = renderWithTheme(
       <Dropdown selectionType="multiple">
         <SelectInput label="Fruits" />
         <DropdownOverlay>
@@ -127,10 +128,10 @@ describe('<Dropdown />', () => {
     const selectInput = getByRole('combobox', { name: 'Fruits' });
 
     expect(selectInput).toBeInTheDocument();
-    expect(container.querySelector('[role=listbox]')).not.toBeVisible();
+    expect(queryByRole('listbox')).toBeNull();
 
     await user.click(selectInput);
-    expect(getByRole('listbox', { name: 'Fruits' })).toBeVisible();
+    await waitFor(() => expect(getByRole('listbox', { name: 'Fruits' })).toBeVisible());
     expect(getByRole('option', { name: 'Apple' }).getAttribute('aria-selected')).toBe('false');
 
     await user.click(getByRole('option', { name: 'Apple' }));
@@ -146,7 +147,7 @@ describe('<Dropdown />', () => {
   it('should close with escape', async () => {
     const user = userEvent.setup();
 
-    const { container, getByRole } = renderWithTheme(
+    const { queryByRole, getByRole } = renderWithTheme(
       <Dropdown>
         <SelectInput label="Fruits" />
         <DropdownOverlay>
@@ -161,18 +162,17 @@ describe('<Dropdown />', () => {
     const selectInput = getByRole('combobox', { name: 'Fruits' });
 
     expect(selectInput).toBeInTheDocument();
-    expect(container.querySelector('[role=listbox]')).not.toBeVisible();
+    expect(queryByRole('listbox')).toBeNull();
 
     await user.click(selectInput);
-    expect(getByRole('listbox', { name: 'Fruits' })).toBeVisible();
-
+    await waitFor(() => expect(getByRole('listbox', { name: 'Fruits' })).toBeVisible());
     await user.keyboard('{Escape}');
-    expect(getByRole('listbox', { name: 'Fruits' })).not.toBeVisible();
+    await waitFor(() => expect(queryByRole('listbox', { name: 'Fruits' })).toBeNull());
   });
 
   it('should move focus between items with arrow key', async () => {
     const user = userEvent.setup();
-    const { container, getByRole } = renderWithTheme(
+    const { container, getByRole, queryByRole } = renderWithTheme(
       <Dropdown>
         <SelectInput label="Fruits" />
         <DropdownOverlay>
@@ -198,12 +198,12 @@ describe('<Dropdown />', () => {
 
     expect(selectInput).toBeInTheDocument();
     expect(selectInput.textContent).toBe('Select Option');
-    expect(container.querySelector('[role=listbox]')).not.toBeVisible();
+    expect(queryByRole('listbox')).toBeNull();
 
     // Dropdown open
-    selectInput.focus();
+    await act(() => selectInput.focus());
     await user.keyboard('{ArrowDown}');
-    expect(getByRole('listbox', { name: 'Fruits' })).toBeVisible();
+    await waitFor(() => expect(getByRole('listbox', { name: 'Fruits' })).toBeVisible());
 
     // Move to first item
     await user.keyboard('{ArrowDown}');
@@ -238,7 +238,7 @@ describe('<Dropdown />', () => {
 
   it('should move focus between items with arrow key in multiselect', async () => {
     const user = userEvent.setup();
-    const { container, getByRole } = renderWithTheme(
+    const { container, getByRole, queryByRole } = renderWithTheme(
       <Dropdown selectionType="multiple">
         <SelectInput label="Fruits" />
         <DropdownOverlay>
@@ -255,12 +255,12 @@ describe('<Dropdown />', () => {
 
     expect(selectInput).toBeInTheDocument();
     expect(selectInput.textContent).toBe('Select Option');
-    expect(container.querySelector('[role=listbox]')).not.toBeVisible();
+    expect(queryByRole('listbox')).toBeNull();
 
     // Dropdown open
-    selectInput.focus();
+    await act(() => selectInput.focus());
     await user.keyboard('{ArrowDown}');
-    expect(getByRole('listbox', { name: 'Fruits' })).toBeVisible();
+    await waitFor(() => expect(getByRole('listbox', { name: 'Fruits' })).toBeVisible());
 
     // Move to first item
     await user.keyboard('{ArrowDown}');
@@ -289,7 +289,7 @@ describe('<Dropdown />', () => {
 
   it('should work with type ahead', async () => {
     const user = userEvent.setup();
-    const { container, getByRole } = renderWithTheme(
+    const { container, getByRole, queryByRole } = renderWithTheme(
       <Dropdown>
         <SelectInput label="Fruits" />
         <DropdownOverlay>
@@ -305,12 +305,12 @@ describe('<Dropdown />', () => {
 
     expect(selectInput).toBeInTheDocument();
     expect(selectInput.textContent).toBe('Select Option');
-    expect(container.querySelector('[role=listbox]')).not.toBeVisible();
+    expect(queryByRole('listbox')).toBeNull();
 
     // Dropdown Open and Jump to option starting with "M"
-    selectInput.focus();
+    await act(() => selectInput.focus());
     await user.keyboard('m');
-    expect(getByRole('listbox', { name: 'Fruits' })).toBeVisible();
+    await waitFor(() => expect(getByRole('listbox', { name: 'Fruits' })).toBeVisible());
 
     // Jump to option starting with "Ma"
     await user.keyboard('a');
@@ -327,7 +327,7 @@ describe('<Dropdown />', () => {
 
   it('should move focus away on TAB', async () => {
     const user = userEvent.setup();
-    const { container, getByRole } = renderWithTheme(
+    const { queryByRole, getByRole } = renderWithTheme(
       <Dropdown>
         <SelectInput label="Fruits" />
         <DropdownOverlay>
@@ -342,10 +342,10 @@ describe('<Dropdown />', () => {
     const selectInput = getByRole('combobox', { name: 'Fruits' });
 
     expect(selectInput).toBeInTheDocument();
-    expect(container.querySelector('[role=listbox]')).not.toBeVisible();
+    expect(queryByRole('listbox')).toBeNull();
 
     await user.click(selectInput);
-    expect(getByRole('listbox', { name: 'Fruits' })).toBeVisible();
+    await waitFor(() => expect(getByRole('listbox', { name: 'Fruits' })).toBeVisible());
 
     await user.keyboard('{ArrowDown}');
     expect(selectInput).toHaveFocus();
@@ -357,7 +357,7 @@ describe('<Dropdown />', () => {
   it('should move focus to footer button', async () => {
     const user = userEvent.setup();
     const applyClickHandler = jest.fn();
-    const { container, getByRole } = renderWithTheme(
+    const { queryByRole, getByRole } = renderWithTheme(
       <Dropdown>
         <SelectInput label="Fruits" />
         <DropdownOverlay>
@@ -375,10 +375,10 @@ describe('<Dropdown />', () => {
     const selectInput = getByRole('combobox', { name: 'Fruits' });
 
     expect(selectInput).toBeInTheDocument();
-    expect(container.querySelector('[role=dialog]')).not.toBeVisible();
+    expect(queryByRole('dialot')).toBeNull();
 
     await user.click(selectInput);
-    expect(getByRole('dialog', { name: 'Fruits' })).toBeVisible();
+    await waitFor(() => expect(getByRole('dialog', { name: 'Fruits' })).toBeVisible());
 
     // Check focus
     await user.keyboard('{ArrowDown}');
@@ -494,8 +494,8 @@ describe('<Dropdown />', () => {
     expect(selectInput).toHaveTextContent('2 items selected');
   });
 
-  it('should accept testID', () => {
-    const { getByTestId } = renderWithTheme(
+  it('should accept testID', async () => {
+    const { getByTestId, getByRole } = renderWithTheme(
       <Dropdown>
         <SelectInput label="Fruits" testID="select-test" />
         <DropdownOverlay testID="dropdown-overlay-test">
@@ -510,8 +510,11 @@ describe('<Dropdown />', () => {
         </DropdownOverlay>
       </Dropdown>,
     );
+    const user = userEvent.setup();
 
-    expect(getByTestId('select-test')).toBeTruthy();
+    const selectInput = getByRole('combobox', { name: 'Fruits' });
+    await user.click(selectInput);
+    await waitFor(() => expect(getByRole('listbox')).toBeVisible());
     expect(getByTestId('dropdown-overlay-test')).toBeTruthy();
     expect(getByTestId('action-list-test')).toBeTruthy();
     expect(getByTestId('action-list-header-test')).toBeTruthy();
@@ -525,7 +528,7 @@ describe('<Dropdown /> with <DropdownButton />', () => {
     const user = userEvent.setup();
     const profileClickHandler = jest.fn();
 
-    const { container, getByRole } = renderWithTheme(
+    const { container, getByRole, queryByRole } = renderWithTheme(
       <Dropdown>
         <DropdownButton>My Account</DropdownButton>
         <DropdownOverlay>
@@ -542,9 +545,9 @@ describe('<Dropdown /> with <DropdownButton />', () => {
     expect(dropdownTrigger).toBeInTheDocument();
     // testing library ignores the nodes because they are set to display none so using querySelector to select from dom instead.
     // the node becomes accessible after click on selectInput
-    expect(container.querySelector('[role=menu]')).not.toBeVisible();
+    expect(queryByRole('menu')).toBeNull();
     await user.click(dropdownTrigger);
-    expect(getByRole('menu')).toBeVisible();
+    await waitFor(() => expect(getByRole('menu')).toBeVisible());
     expect(profileClickHandler).not.toBeCalled();
     await user.click(getByRole('menuitem', { name: 'Profile' }));
     expect(profileClickHandler).toBeCalled();
@@ -633,7 +636,7 @@ describe('<Dropdown /> with <DropdownButton />', () => {
     const user = userEvent.setup();
     const profileClickHandler = jest.fn();
 
-    const { container, getByRole } = renderWithTheme(
+    const { container, getByRole, queryByRole } = renderWithTheme(
       <Dropdown>
         <DropdownButton>My Account</DropdownButton>
         <DropdownOverlay>
@@ -650,12 +653,12 @@ describe('<Dropdown /> with <DropdownButton />', () => {
     expect(dropdownTrigger).toBeInTheDocument();
     // testing library ignores the nodes because they are set to display none so using querySelector to select from dom instead.
     // the node becomes accessible after click on selectInput
-    expect(container.querySelector('[role=menu]')).not.toBeVisible();
+    expect(queryByRole('menu')).toBeNull();
 
     dropdownTrigger.focus();
     await user.keyboard('{ArrowDown}');
 
-    expect(getByRole('menu')).toBeVisible();
+    await waitFor(() => expect(getByRole('menu')).toBeVisible());
     expect(profileClickHandler).not.toBeCalled();
 
     // Move to first item
