@@ -3,12 +3,13 @@
 exports[`<BaseText /> should render regular text 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
 >
   <Text
+    accessible={true}
     color="surface.text.normal.highContrast"
     data-blade-component="base-text"
     fontFamily="text"
@@ -16,8 +17,8 @@ exports[`<BaseText /> should render regular text 1`] = `
     fontWeight="regular"
     lineHeight={100}
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "hsla(0, 0%, 100%, 1)",
           "fontFamily": "Lato",
           "fontSize": 10,
@@ -45,12 +46,13 @@ exports[`<BaseText /> should render regular text 1`] = `
 exports[`<BaseText /> should render text in italics style with line-through 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
 >
   <Text
+    accessible={true}
     color="surface.text.normal.highContrast"
     data-blade-component="base-text"
     fontFamily="text"
@@ -59,8 +61,8 @@ exports[`<BaseText /> should render text in italics style with line-through 1`] 
     fontWeight="regular"
     lineHeight={100}
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "hsla(0, 0%, 100%, 1)",
           "fontFamily": "Lato",
           "fontSize": 10,
@@ -89,16 +91,17 @@ exports[`<BaseText /> should render text in italics style with line-through 1`] 
 exports[`<BaseText /> should render text with default properties 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
 >
   <Text
+    accessible={true}
     data-blade-component="base-text"
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "hsla(217, 56%, 17%, 1)",
           "fontFamily": "Lato",
           "fontSize": 16,

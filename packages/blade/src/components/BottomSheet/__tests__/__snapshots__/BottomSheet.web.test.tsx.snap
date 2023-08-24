@@ -100,10 +100,10 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
 }
 
 .c14 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
 }
 
 .c15 {
@@ -111,10 +111,10 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
 }
 
 .c17 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   overflow: hidden;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
@@ -193,15 +193,6 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   justify-content: center;
 }
 
-.c20 {
-  margin-right: 16px;
-}
-
-.c21 {
-  text-align: left;
-  background-color: hsla(155,100%,31%,0.09);
-}
-
 .c0 {
   position: fixed;
   z-index: 100;
@@ -211,6 +202,15 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   left: 0px;
   background-color: hsla(214,15%,18%,0.64);
   opacity: 1;
+}
+
+.c20 {
+  margin-right: 16px;
+}
+
+.c21 {
+  text-align: left;
+  background-color: hsla(155,100%,31%,0.09);
 }
 
 .c26 {
@@ -576,8 +576,19 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
 }
 
 <div>
+  <span
+    aria-hidden="true"
+    data-aria-hidden="true"
+    data-floating-ui-focus-guard=""
+    data-type="inside"
+    role="button"
+    style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: fixed; white-space: nowrap; width: 1px; top: 0px; left: 0px;"
+    tabindex="0"
+  />
   <div
+    aria-hidden="true"
     class="c0 c1"
+    data-aria-hidden="true"
     data-blade-component="base-box"
     data-testid="bottomsheet-backdrop"
     opacity="1"
@@ -586,8 +597,10 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
     aria-modal="true"
     class="c2"
     data-blade-component="bottom-sheet"
+    data-testid="bottomsheet-surface"
     role="dialog"
     style="opacity: 1; pointer-events: all; height: 0px; bottom: 0px; z-index: 100;"
+    tabindex="-1"
   >
     <div
       class="c3"
@@ -789,6 +802,15 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
       </div>
     </div>
   </div>
+  <span
+    aria-hidden="true"
+    data-aria-hidden="true"
+    data-floating-ui-focus-guard=""
+    data-type="inside"
+    role="button"
+    style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: fixed; white-space: nowrap; width: 1px; top: 0px; left: 0px;"
+    tabindex="0"
+  />
 </div>
 `;
 
@@ -1009,8 +1031,19 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
 }
 
 <div>
+  <span
+    aria-hidden="true"
+    data-aria-hidden="true"
+    data-floating-ui-focus-guard=""
+    data-type="inside"
+    role="button"
+    style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: fixed; white-space: nowrap; width: 1px; top: 0px; left: 0px;"
+    tabindex="0"
+  />
   <div
+    aria-hidden="true"
     class="c0 c1"
+    data-aria-hidden="true"
     data-blade-component="base-box"
     data-testid="bottomsheet-backdrop"
     opacity="1"
@@ -1019,8 +1052,10 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
     aria-modal="true"
     class="c2"
     data-blade-component="bottom-sheet"
+    data-testid="bottomsheet-surface"
     role="dialog"
     style="opacity: 1; pointer-events: all; height: 0px; bottom: 0px; z-index: 100;"
+    tabindex="-1"
   >
     <div
       class="c3"
@@ -1087,5 +1122,14 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
       </div>
     </div>
   </div>
+  <span
+    aria-hidden="true"
+    data-aria-hidden="true"
+    data-floating-ui-focus-guard=""
+    data-type="inside"
+    role="button"
+    style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: fixed; white-space: nowrap; width: 1px; top: 0px; left: 0px;"
+    tabindex="0"
+  />
 </div>
 `;

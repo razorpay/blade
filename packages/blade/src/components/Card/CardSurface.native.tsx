@@ -4,6 +4,7 @@ import BaseBox from '~components/Box/BaseBox';
 import type { BaseBoxProps } from '~components/Box/BaseBox';
 import type { Elevation } from '~tokens/global';
 import type { SurfaceLevels } from '~tokens/theme/theme';
+import { castNativeType } from '~utils';
 
 const CardSurfaceStyled = styled(BaseBox)<{
   surfaceLevel: Exclude<SurfaceLevels, 1>;
@@ -32,10 +33,24 @@ const CardSurface = ({
   children,
   surfaceLevel,
   elevation,
+  onTouchEnd,
+  onTouchStart,
+  onPointerDown,
+  onPointerEnter,
+  pointerEvents,
   ...props
 }: CardSurfaceProps): React.ReactElement => {
   return (
-    <CardSurfaceStyled {...props} surfaceLevel={surfaceLevel} elevation={elevation}>
+    <CardSurfaceStyled
+      {...props}
+      surfaceLevel={surfaceLevel}
+      elevation={elevation}
+      onPointerEnter={castNativeType(onPointerEnter)}
+      onPointerDown={castNativeType(onPointerDown)}
+      onTouchStart={castNativeType(onTouchStart)}
+      onTouchEnd={castNativeType(onTouchEnd)}
+      pointerEvents={castNativeType(pointerEvents)}
+    >
       {children}
     </CardSurfaceStyled>
   );

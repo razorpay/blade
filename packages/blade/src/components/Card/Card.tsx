@@ -10,6 +10,7 @@ import type { TestID } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { Elevation } from '~tokens/global';
 import type { SurfaceLevels } from '~tokens/theme/theme';
+import type { BoxProps } from '~components/Box';
 
 export const ComponentIds = {
   CardHeader: 'CardHeader',
@@ -68,6 +69,8 @@ export type CardProps = {
    * - Docs: https://blade.razorpay.com/?path=/docs/tokens-spacing--page
    */
   padding?: Extract<SpacingValueType, 'spacing.0' | 'spacing.3' | 'spacing.5' | 'spacing.7'>;
+  width?: BoxProps['width'];
+  height?: BoxProps['height'];
 } & TestID &
   StyledPropsBlade;
 
@@ -77,6 +80,8 @@ const Card = ({
   elevation = 'lowRaised',
   testID,
   padding = 'spacing.7',
+  width,
+  height,
   ...styledProps
 }: CardProps): React.ReactElement => {
   useVerifyAllowedComponents(children, 'Card', [
@@ -88,10 +93,13 @@ const Card = ({
   return (
     <CardProvider>
       <BaseBox
+        width={width}
+        height={height}
         {...metaAttribute({ name: MetaConstants.Card, testID })}
         {...getStyledProps(styledProps)}
       >
         <CardSurface
+          height={height}
           padding={padding}
           borderRadius="medium"
           surfaceLevel={surfaceLevel}
@@ -107,13 +115,19 @@ const Card = ({
 
 type CardBodyProps = {
   children: React.ReactNode;
+  height?: BoxProps['height'];
 } & TestID;
 
-const _CardBody = ({ children, testID }: CardBodyProps): React.ReactElement => {
+const _CardBody = ({ height, children, testID }: CardBodyProps): React.ReactElement => {
   useVerifyInsideCard('CardBody');
 
-  return <BaseBox {...metaAttribute({ name: MetaConstants.CardBody, testID })}>{children}</BaseBox>;
+  return (
+    <BaseBox {...metaAttribute({ name: MetaConstants.CardBody, testID })} height={height}>
+      {children}
+    </BaseBox>
+  );
 };
+
 const CardBody = assignWithoutSideEffects(_CardBody, { componentId: ComponentIds.CardBody });
 
 export { Card, CardBody };

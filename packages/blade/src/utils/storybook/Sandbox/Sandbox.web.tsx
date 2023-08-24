@@ -10,28 +10,13 @@ import {
 } from '@codesandbox/sandpack-react';
 import { DocsContext } from '@storybook/addon-docs';
 import dedent from 'dedent';
+import type { RecipeSandboxProps, SandboxProps } from './types';
 // @ts-expect-error We don't resolve JSON files right now. didn't want to change TS config for single JSON
 import packageJson from '../../../../package.json'; // eslint-disable-line
-import type { BaseBoxProps } from '~components/Box/BaseBox';
 import BaseBox from '~components/Box/BaseBox';
 import { castWebType } from '~utils';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
-
-type SandboxProps = {
-  children: string;
-  language?: 'ts' | 'tsx';
-  showConsole?: boolean;
-  editorHeight?: number | string;
-  editorWidthPercentage?: number;
-  padding?: BaseBoxProps['padding'];
-  /**
-   * Renders link in react native stories to open storybook on web
-   *
-   * (Its workaround since sandpack doesn't work on native)
-   */
-  uri?: string;
-};
 
 const getBladeVersion = (): string => {
   // We don't publish codesandbox ci on master so version is not present
@@ -57,16 +42,14 @@ const useSandpackSetup = ({
 }): any => {
   const docsContext = React.useContext(DocsContext);
 
-  // @ts-expect-error: globals in unavailable on TS
   const themeTokenName = docsContext?.globals?.themeTokenName ?? 'paymentTheme';
-  // @ts-expect-error: globals in unavailable on TS
   const colorScheme = docsContext?.globals?.colorScheme ?? 'light';
 
   return {
     template: 'react-ts',
     files: {
       '/index.tsx': dedent`import { StrictMode } from "react";
-            import ReactDOM from "react-dom";
+            import { createRoot } from "react-dom/client";
             import { createGlobalStyle } from "styled-components";
   
             import { BladeProvider, Box, Theme } from "@razorpay/blade/components";
@@ -91,8 +74,9 @@ const useSandpackSetup = ({
             if (!rootElement) {
               throw new Error("root is null");
             }
-                        
-            ReactDOM.render(
+            const root = createRoot(rootElement);
+
+            root.render(
               <StrictMode>
                 <BladeProvider themeTokens={${themeTokenName}} colorScheme="${colorScheme}">
                   <GlobalStyles />
@@ -104,8 +88,7 @@ const useSandpackSetup = ({
                     <App />
                   </Box>
                 </BladeProvider>
-              </StrictMode>,
-              rootElement
+              </StrictMode>
             );
 
             console.clear(); // There could be some codesandbox warnings, clearing them here on init
@@ -200,24 +183,6 @@ function Sandbox({
   );
 }
 
-type RecipeSandboxProps = {
-  title: string;
-  /**
-   * ID of the sandbox.
-   *
-   *
-   * E.g. For this URL https://codesandbox.io/s/blade-form-7holu5?file=/src/App.tsx,
-   *
-   * The id will be - `blade-form-7holu5`
-   *
-   */
-  codesandboxId: string;
-  /** E.g. `/src/Form.tsx`  */
-  activeFile?: `/${string}`;
-  editorWidthPercentage?: number;
-  view?: 'preview' | 'editor';
-};
-
 /**
  * Direct Embed of the Codesandbox as iframe. To be used in recipes.
  *
@@ -292,12 +257,4 @@ const VerticalSandbox = ({
   );
 };
 
-export {
-  Sandbox,
-  VerticalSandbox,
-  SandboxProvider,
-  SandboxHighlighter,
-  SandboxProps,
-  RecipeSandbox,
-  RecipeSandboxProps,
-};
+export { Sandbox, VerticalSandbox, SandboxProvider, SandboxHighlighter, RecipeSandbox };

@@ -3,7 +3,7 @@
 exports[`<Rect /> should render react-native-svg Rect component 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -21,15 +21,15 @@ exports[`<Rect /> should render react-native-svg Rect component 1`] = `
     minX={0}
     minY={0}
     style={
-      Array [
-        Object {
+      [
+        {
           "backgroundColor": "transparent",
           "borderWidth": 0,
         },
-        Array [
-          Object {},
+        [
+          {},
         ],
-        Object {
+        {
           "flex": 0,
           "height": 110,
           "width": 400,

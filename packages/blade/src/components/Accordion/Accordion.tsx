@@ -46,7 +46,7 @@ type AccordionProps = {
 const MIN_WIDTH: BoxProps['minWidth'] = {
   s: makeSize(size[200]),
   m: makeSize(size[360]),
-  l: makeSize(size[400]),
+  l: makeSize(size[360]),
 };
 
 const Accordion = ({
