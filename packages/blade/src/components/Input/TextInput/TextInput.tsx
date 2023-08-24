@@ -15,6 +15,7 @@ import { Spinner } from '~components/Spinner';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getPlatformType } from '~utils';
 import { useMergeRefs } from '~utils/useMergeRefs';
+import type { BladeElementRef } from '~utils/types';
 
 // Users should use PasswordInput for input type password
 type Type = Exclude<BaseInputProps['type'], 'password'>;
@@ -210,10 +211,7 @@ const isReactNative = (_textInputRef: any): _textInputRef is TextInputReactNativ
   return getPlatformType() === 'react-native';
 };
 
-const _TextInput: React.ForwardRefRenderFunction<
-  HTMLInputElement | TextInputReactNative,
-  TextInputProps
-> = (
+const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps> = (
   {
     label,
     accessibilityLabel,
@@ -250,9 +248,8 @@ const _TextInput: React.ForwardRefRenderFunction<
   },
   ref,
 ): ReactElement => {
-  const textInputRef = React.useRef<HTMLInputElement | TextInputReactNative>(null);
+  const textInputRef = React.useRef<BladeElementRef>(null);
   const mergedRef = useMergeRefs(ref, textInputRef);
-
   const [shouldShowClearButton, setShouldShowClearButton] = useState(false);
 
   React.useEffect(() => {

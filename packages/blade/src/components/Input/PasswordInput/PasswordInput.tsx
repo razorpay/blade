@@ -1,5 +1,4 @@
 import React from 'react';
-import type { TextInput as TextInputReactNative } from 'react-native';
 import type { BaseInputProps } from '../BaseInput';
 import { BaseInput } from '../BaseInput';
 import { EyeIcon, EyeOffIcon } from '~components/Icons';
@@ -9,6 +8,7 @@ import { IconButton } from '~components/Button/IconButton';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { MetaConstants } from '~utils/metaAttribute';
+import type { BladeElementRef } from '~utils/types';
 
 type PasswordInputExtraProps = {
   /**
@@ -105,10 +105,7 @@ type PasswordInputPropsWithLabel = {
 type PasswordInputProps = (PasswordInputPropsWithA11yLabel | PasswordInputPropsWithLabel) &
   PasswordInputCommonProps;
 
-const _PasswordInput: React.ForwardRefRenderFunction<
-  HTMLInputElement | TextInputReactNative,
-  PasswordInputProps
-> = (
+const _PasswordInput: React.ForwardRefRenderFunction<BladeElementRef, PasswordInputProps> = (
   {
     label,
     accessibilityLabel,
@@ -168,7 +165,7 @@ const _PasswordInput: React.ForwardRefRenderFunction<
 
   return (
     <BaseInput
-      ref={ref as React.Ref<HTMLInputElement>}
+      ref={ref}
       componentName={MetaConstants.PasswordInput}
       id="password-field"
       label={label as string}

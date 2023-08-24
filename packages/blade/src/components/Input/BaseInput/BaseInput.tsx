@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import type { ReactNode } from 'react';
-import type { TextInput as TextInputReactNative } from 'react-native';
 import type {
   FormInputLabelProps,
   FormInputValidationProps,
@@ -27,7 +26,7 @@ import type {
   FormInputHandleOnClickEvent,
   FormInputHandleOnKeyDownEvent,
 } from '~components/Form/FormTypes';
-import type { TestID } from '~utils/types';
+import type { BladeElementRef, TestID } from '~utils/types';
 import { makeSize } from '~utils/makeSize';
 import type { AriaAttributes } from '~utils/makeAccessible';
 import { makeAccessible } from '~utils/makeAccessible';
@@ -558,7 +557,7 @@ const getDescribedByElementId = ({
   return '';
 };
 
-export const BaseInput = React.forwardRef<HTMLInputElement | TextInputReactNative, BaseInputProps>(
+export const BaseInput = React.forwardRef<BladeElementRef, BaseInputProps>(
   (
     {
       as = 'input',

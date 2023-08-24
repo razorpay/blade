@@ -30,7 +30,12 @@ import { announce } from '~components/LiveAnnouncer';
 import type { BaseSpinnerProps } from '~components/Spinner/BaseSpinner';
 import { BaseSpinner } from '~components/Spinner/BaseSpinner';
 import BaseBox from '~components/Box/BaseBox';
-import type { DotNotationSpacingStringToken, StringChildrenType, TestID } from '~utils/types';
+import type {
+  BladeElementRef,
+  DotNotationSpacingStringToken,
+  StringChildrenType,
+  TestID,
+} from '~utils/types';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { usePrevious } from '~utils/usePrevious';

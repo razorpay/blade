@@ -122,8 +122,8 @@ type PickCSSByPlatform<T extends keyof React.CSSProperties | keyof ViewStyle> = 
 }>;
 
 type BladeElementRef = Platform.Select<{
-  web: HTMLElement | View;
-  native: React.MutableRefObject<any>;
+  web: HTMLElement;
+  native: View;
 }>;
 
 export {
