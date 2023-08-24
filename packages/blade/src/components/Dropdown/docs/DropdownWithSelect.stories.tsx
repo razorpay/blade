@@ -242,11 +242,11 @@ export const InternalSelect = (): React.ReactElement => {
   return (
     <Box
       padding="spacing.5"
+      backgroundColor="surface.background.level3.lowContrast"
       width="100%"
-      backgroundColor="surface.background.level3.highContrast"
+      minHeight="100px"
       overflow="scroll"
     >
-      <Box minHeight="100vh" />
       <Dropdown selectionType="multiple">
         <SelectInput label="Select fruits" labelPosition="left" />
         <DropdownOverlay>
@@ -256,6 +256,49 @@ export const InternalSelect = (): React.ReactElement => {
           </ActionList>
         </DropdownOverlay>
       </Dropdown>
+    </Box>
+  );
+};
+
+export const InternalAutoPositioning = (): React.ReactElement => {
+  return (
+    <Box>
+      <Box
+        padding="spacing.5"
+        backgroundColor="surface.background.level3.lowContrast"
+        width="100%"
+        minHeight="100px"
+        overflow="scroll"
+      >
+        <Dropdown selectionType="multiple">
+          <SelectInput label="Select fruits" labelPosition="left" />
+          <DropdownOverlay>
+            <ActionList surfaceLevel={3}>
+              <ActionListItem title="Apples" value="Apples" />
+              <ActionListItem title="Appricots" value="Appricots" />
+            </ActionList>
+          </DropdownOverlay>
+        </Dropdown>
+      </Box>
+      <Box
+        padding="spacing.5"
+        backgroundColor="surface.background.level3.lowContrast"
+        width="100%"
+        position="fixed"
+        bottom="spacing.0"
+        minHeight="100px"
+        overflow="scroll"
+      >
+        <Dropdown selectionType="multiple">
+          <SelectInput label="Select fruits" labelPosition="left" />
+          <DropdownOverlay>
+            <ActionList surfaceLevel={3}>
+              <ActionListItem title="Apples" value="Apples" />
+              <ActionListItem title="Appricots" value="Appricots" />
+            </ActionList>
+          </DropdownOverlay>
+        </Dropdown>
+      </Box>
     </Box>
   );
 };

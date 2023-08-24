@@ -228,6 +228,7 @@ type BaseInputCommonProps = FormInputLabelProps &
      * true if popup is in expanded state
      */
     isPopupExpanded?: boolean;
+    setInputWrapperRef: (node: HTMLDivElement) => void;
     /**
      * sets the autocapitalize behavior for the input
      */

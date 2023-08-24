@@ -233,9 +233,8 @@ const _SelectInput = (
         hideLabelText={props.label?.length === 0}
         componentName={MetaConstants.SelectInput}
         ref={!isReactNative() ? (triggererRef as React.MutableRefObject<HTMLInputElement>) : null}
-        setInputWrapperRef={(node) => {
-          triggererWrapperRef.current = node;
-          console.log(node);
+        setInputWrapperRef={(wrapperNode) => {
+          triggererWrapperRef.current = wrapperNode;
         }}
         textAlign="left"
         value={displayValue}
