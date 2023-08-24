@@ -1,4 +1,5 @@
 import { Meta, DocsContainer } from '@storybook/addon-docs';
+import { Unstyled } from '@storybook/blocks';
 import { useTheme, BladeProvider, Code, Text, Alert } from '../../src/components';
 import { paymentTheme, bankingTheme } from '../../src/tokens';
 import { getMediaQuery } from '../../src/utils';
@@ -64,11 +65,13 @@ export const Breakpoints = () => {
             <td>{`theme.breakpoints.${key}`}</td>
             <td>{value}</td>
             <td>
-              {value === 0 ? (
-                <Text>Base styles without media query</Text>
-              ) : (
-                <Code>@media {getMediaQuery({ min: value })}</Code>
-              )}
+              <Unstyled>
+                {value === 0 ? (
+                  <Text>Base styles without media query</Text>
+                ) : (
+                  <Code>@media {getMediaQuery({ min: value })}</Code>
+                )}
+              </Unstyled>
             </td>
             <td dangerouslySetInnerHTML={{ __html: breakpointScreenMapping[key] }} />
           </tr>
@@ -78,14 +81,18 @@ export const Breakpoints = () => {
   );
 };
 
+{' '}
+
 <Breakpoints />
 
-<Alert
-  description="The corresponding screens mentioned in the table are under assumption that you're using min-width query over token values. Internally in Blade we use min-width queries for responsive props in Box and in useBreakpoint hook. If you're importing breakpoint tokens and using some other media query, the corresponding screen may change"
-  isFullWidth
-  marginY="spacing.6"
-  isDismissible={false}
-/>
+<Unstyled>
+  <Alert
+    description="The corresponding screens mentioned in the table are under assumption that you're using min-width query over token values. Internally in Blade we use min-width queries for responsive props in Box and in useBreakpoint hook. If you're importing breakpoint tokens and using some other media query, the corresponding screen may change"
+    isFullWidth
+    marginY="spacing.6"
+    isDismissible={false}
+  />
+</Unstyled>
 
 ## `useBreakpoint` hook
 
