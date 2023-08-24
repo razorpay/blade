@@ -58,7 +58,7 @@ const useAnimatedTag = (
     );
     opacity.value = withTiming(TAG_OPACITY_END, {
       duration: theme.motion.duration.xquick,
-      easing: Easing.out(Easing.exp),
+      easing: castNativeType(theme.motion.easing.exit.effective),
     });
   };
 
