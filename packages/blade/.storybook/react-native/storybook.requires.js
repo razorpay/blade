@@ -66,6 +66,7 @@ const getStories = () => {
     './src/components/Button/Button/Button.stories.tsx': require('../../src/components/Button/Button/Button.stories.tsx'),
     './src/components/Button/IconButton/IconButton.stories.tsx': require('../../src/components/Button/IconButton/IconButton.stories.tsx'),
     './src/components/Card/Card.stories.tsx': require('../../src/components/Card/Card.stories.tsx'),
+    './src/components/Card/CardInteractive.stories.tsx': require('../../src/components/Card/CardInteractive.stories.tsx'),
     './src/components/Carousel/Carousel.stories.tsx': require('../../src/components/Carousel/Carousel.stories.tsx'),
     './src/components/Checkbox/Checkbox.stories.tsx': require('../../src/components/Checkbox/Checkbox.stories.tsx'),
     './src/components/Checkbox/CheckboxGroup.stories.tsx': require('../../src/components/Checkbox/CheckboxGroup.stories.tsx'),

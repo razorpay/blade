@@ -1,8 +1,8 @@
 import React from 'react';
-import type { CSSObject } from 'styled-components';
-import styled from 'styled-components';
 import { CardSurface } from './CardSurface';
 import { CardProvider, useVerifyInsideCard, useVerifyAllowedComponents } from './CardContext';
+import { LinkOverlay } from './LinkOverlay';
+import { CardRoot } from './CardRoot';
 import type { SpacingValueType } from '~components/Box/BaseBox';
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
@@ -14,7 +14,6 @@ import type { Elevation } from '~tokens/global';
 import type { SurfaceLevels } from '~tokens/theme/theme';
 import type { BoxProps } from '~components/Box';
 import { makeAccessible } from '~utils/makeAccessible';
-import { castWebType, makeMotionTime } from '~utils';
 
 export const ComponentIds = {
   CardHeader: 'CardHeader',
@@ -85,60 +84,6 @@ export type CardProps = {
 } & TestID &
   StyledPropsBlade;
 
-const CardRoot = styled(BaseBox)<{
-  isSelected?: boolean;
-  isFocused?: boolean;
-  scaleOnHover?: boolean;
-}>(({ theme, isSelected, isFocused, scaleOnHover }) => {
-  const selectedColor = isSelected ? theme.colors.brand.primary[500] : 'transparent';
-  return {
-    // Selected state
-    // TODO: use thicker
-    boxShadow: `0px 0px 0px ${theme.border.width.thick}px ${selectedColor}`,
-    transitionDuration: castWebType(makeMotionTime(theme.motion.duration.xquick)),
-    transitionTimingFunction: castWebType(theme.motion.easing.standard.effective),
-    transitionProperty: 'transform, box-shadow',
-
-    // link focused state
-    ...(isFocused && {
-      boxShadow: `0px 0px 0px 4px ${theme.colors.brand.primary[400]}`,
-    }),
-
-    // Hover state
-    ...(scaleOnHover && {
-      '&:hover': {
-        transform: 'scale(1.05)',
-      },
-    }),
-
-    // uplift all the nested links so they receive clicks and events
-    // https://www.sarasoueidan.com/blog/nested-links
-    '& a[href]:not(.blade-card-linkoverlay)': {
-      zIndex: 1,
-      position: 'relative',
-    },
-  };
-});
-
-const LinkOverlay = styled.a(
-  (): CSSObject => {
-    return {
-      position: 'static',
-      '&:before': {
-        content: "''",
-        cursor: 'inherit',
-        display: 'block',
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        zIndex: 0,
-        width: '100%',
-        height: '100%',
-      },
-    };
-  },
-);
-
 const Card = ({
   children,
   surfaceLevel = 2,
@@ -175,9 +120,10 @@ const Card = ({
         onClick={onClick}
         width={width}
         height={height}
+        href={href}
+        accessibilityLabel={accessibilityLabel}
         {...metaAttribute({ name: MetaConstants.Card, testID })}
         {...getStyledProps(styledProps)}
-        {...makeAccessible({ label: as === 'label' ? accessibilityLabel : undefined })}
       >
         <CardSurface
           height={height}
@@ -189,6 +135,7 @@ const Card = ({
         >
           {href ? (
             <LinkOverlay
+              {...metaAttribute({ name: 'card-link-overlay' })}
               {...makeAccessible({ label: accessibilityLabel })}
               onFocus={() => {
                 setIsFocused(true);
@@ -196,7 +143,6 @@ const Card = ({
               onBlur={() => {
                 setIsFocused(false);
               }}
-              className="blade-card-linkoverlay"
               href={href}
             />
           ) : null}
@@ -225,11 +171,3 @@ const _CardBody = ({ height, children, testID }: CardBodyProps): React.ReactElem
 const CardBody = assignWithoutSideEffects(_CardBody, { componentId: ComponentIds.CardBody });
 
 export { Card, CardBody };
-
-/*
-# TODO
-- Scope Link to only do normal navagitation
-- Provide accessibilityLabel for linkable Card
-- Go with ScaleOnHover
-- Go with method 1 for multi select
-*/

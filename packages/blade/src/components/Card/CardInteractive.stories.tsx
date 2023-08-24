@@ -1,9 +1,8 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable no-alert */
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import React from 'react';
 import type { CardProps } from './Card';
-import type { CardFooterAction } from './';
 import {
   CardBody,
   Card,
@@ -16,17 +15,15 @@ import {
   CardHeaderIcon,
   CardHeaderCounter,
   CardHeaderBadge,
-  CardHeaderIconButton,
-  CardHeaderLink,
-  CardHeaderText,
-} from './';
+} from '.';
 import { Code, Text } from '~components/Typography';
 import { RupeeIcon } from '~components/Icons';
 import { Link } from '~components/Link';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
-import { VisuallyHidden } from '~components/VisuallyHidden/VisuallyHidden.web';
+import { VisuallyHidden } from '~components/VisuallyHidden';
 import { Amount } from '~components/Amount';
+import { isReactNative } from '~utils';
 
 export default {
   title: 'Components/Card/Interactive',
@@ -42,7 +39,7 @@ const CardTemplate = ({ ...args }): React.ReactElement => {
         console.log('Hovered');
       }}
       scaleOnHover
-      width="400px"
+      width={{ base: '400px', s: '100%' }}
       isSelected={selected}
       onClick={() => setSelected(!selected)}
       surfaceLevel={args.surfaceLevel}
@@ -89,7 +86,7 @@ export const ClickableCard = (): React.ReactElement => {
           can use <Code size="medium">event.stopPropagation()</Code>.
         </Text>
       </Box>
-      <Card onClick={() => alert('Card clicked')} width="400px">
+      <Card onClick={() => alert('Card clicked')} width={{ base: '400px', s: '100%' }}>
         <CardHeader>
           <CardHeaderLeading title="Click the card" />
         </CardHeader>
@@ -121,7 +118,7 @@ export const HoverableCard = (): React.ReactElement => {
         By passing the <Code size="medium">scaleOnHover</Code> prop, the card will scale up on
         hover.
       </Text>
-      <Card scaleOnHover width="400px">
+      <Card scaleOnHover width={{ base: '400px', s: '100%' }}>
         <CardHeader>
           <CardHeaderLeading
             title="Payment Links"
@@ -151,7 +148,7 @@ export const LinkableCard = (): React.ReactElement => {
         href="https://razorpay.com/payment-links"
         accessibilityLabel="Payment Links"
         scaleOnHover
-        width="400px"
+        width={{ base: '400px', s: '100%' }}
       >
         <CardHeader>
           <CardHeaderLeading
@@ -188,7 +185,7 @@ export const SelectableCard = (): React.ReactElement => {
         onClick={() => {
           setIsSelected(!isSelected);
         }}
-        width="400px"
+        width={{ base: '400px', s: '100%' }}
       >
         <CardHeader>
           <CardHeaderLeading title="Payment Links" subtitle="Click the Card to toggle selection" />
@@ -229,7 +226,7 @@ const HiddenInput = ({
   );
 };
 
-export const SingleSelectCard = (): React.ReactElement => {
+const SingleSelectCardWeb = (): React.ReactElement => {
   const [selected, setSelected] = React.useState('free');
 
   return (
@@ -315,7 +312,7 @@ export const SingleSelectCard = (): React.ReactElement => {
   );
 };
 
-export const MultiSelectCard = (): React.ReactElement => {
+const MultiSelectCardWeb = (): React.ReactElement => {
   const [selected, setSelected] = React.useState(['free']);
 
   const handleChange = (value: string) => {
@@ -390,4 +387,168 @@ export const MultiSelectCard = (): React.ReactElement => {
       </Box>
     </Box>
   );
+};
+
+const SingleSelectCardReactNative = (): React.ReactElement => {
+  const [selected, setSelected] = React.useState('free');
+
+  return (
+    <Box>
+      <Text marginBottom="spacing.6">
+        To make a group of cards behave like radio buttons, you can use a hidden input and pass{' '}
+        <Code size="medium">as="label"</Code> prop to the card.
+      </Text>
+
+      <Box display="flex" gap="spacing.5">
+        <Card
+          onClick={() => setSelected('free')}
+          accessibilityLabel="Free Tier"
+          scaleOnHover
+          isSelected={selected === 'free'}
+        >
+          <CardBody>
+            <Amount marginBottom="spacing.1" value={0} currency="USD" size="heading-large-bold" />
+            <Box paddingX="spacing.2">
+              <Text marginBottom="spacing.3" size="large" type="subtle">
+                Free
+              </Text>
+              <Text>
+                For individuals or teams just getting started with payments. No setup fees, no
+                monthly or annual fees.
+              </Text>
+            </Box>
+          </CardBody>
+        </Card>
+        <Card
+          onClick={() => setSelected('standard')}
+          accessibilityLabel="Standard Tier"
+          scaleOnHover
+          isSelected={selected === 'standard'}
+        >
+          <CardBody>
+            <Amount marginBottom="spacing.1" value={10} currency="USD" size="heading-large-bold" />
+            <Box paddingX="spacing.2">
+              <Text marginBottom="spacing.3" size="large" type="subtle">
+                Standard
+              </Text>
+              <Text>
+                For teams that are scaling up and need advanced features like payment failure.
+              </Text>
+            </Box>
+          </CardBody>
+        </Card>
+        <Card
+          onClick={() => setSelected('premium')}
+          accessibilityLabel="Premium Tier"
+          scaleOnHover
+          isSelected={selected === 'premium'}
+        >
+          <CardBody>
+            <Amount marginBottom="spacing.1" value={20} currency="USD" size="heading-large-bold" />
+            <Box paddingX="spacing.2">
+              <Text marginBottom="spacing.3" size="large" type="subtle">
+                Premium
+              </Text>
+              <Text>
+                Best suited for businesses that need a dedicated account manager and 24x7 support.
+              </Text>
+            </Box>
+          </CardBody>
+        </Card>
+      </Box>
+    </Box>
+  );
+};
+
+const MultiSelectCardReactNative = (): React.ReactElement => {
+  const [selected, setSelected] = React.useState(['free']);
+
+  const handleChange = (value: string) => {
+    if (selected.includes(value)) {
+      setSelected(selected.filter((item) => item !== value));
+    } else {
+      setSelected([...selected, value]);
+    }
+  };
+
+  return (
+    <Box>
+      <Text marginBottom="spacing.6">
+        To make a group of cards behave like radio buttons, you can use a hidden input and pass{' '}
+        <Code size="medium">as="label"</Code> prop to the card.
+      </Text>
+
+      <Box display="flex" gap="spacing.5">
+        <Card
+          onClick={() => handleChange('free')}
+          isSelected={selected.includes('free')}
+          accessibilityLabel="Free Tier"
+          scaleOnHover
+        >
+          <CardBody>
+            <Amount marginBottom="spacing.1" value={0} currency="USD" size="heading-large-bold" />
+            <Box paddingX="spacing.2">
+              <Text marginBottom="spacing.3" size="large" type="subtle">
+                Free
+              </Text>
+              <Text>
+                For individuals or teams just getting started with payments. No setup fees, no
+                monthly or annual fees.
+              </Text>
+            </Box>
+          </CardBody>
+        </Card>
+        <Card
+          onClick={() => handleChange('standard')}
+          isSelected={selected.includes('standard')}
+          accessibilityLabel="Standard Tier"
+          scaleOnHover
+        >
+          <CardBody>
+            <Amount marginBottom="spacing.1" value={10} currency="USD" size="heading-large-bold" />
+            <Box paddingX="spacing.2">
+              <Text marginBottom="spacing.3" size="large" type="subtle">
+                Standard
+              </Text>
+              <Text>
+                For teams that are scaling up and need advanced features like payment failure.
+              </Text>
+            </Box>
+          </CardBody>
+        </Card>
+        <Card
+          onClick={() => handleChange('premium')}
+          isSelected={selected.includes('premium')}
+          accessibilityLabel="Premium Tier"
+          scaleOnHover
+        >
+          <CardBody>
+            <Amount marginBottom="spacing.1" value={20} currency="USD" size="heading-large-bold" />
+            <Box paddingX="spacing.2">
+              <Text marginBottom="spacing.3" size="large" type="subtle">
+                Premium
+              </Text>
+              <Text>
+                Best suited for businesses that need a dedicated account manager and 24x7 support.
+              </Text>
+            </Box>
+          </CardBody>
+        </Card>
+      </Box>
+    </Box>
+  );
+};
+
+export const SingleSelectCard = (): React.ReactElement => {
+  if (isReactNative()) {
+    return <SingleSelectCardReactNative />;
+  }
+  return <SingleSelectCardWeb />;
+};
+
+export const MultiSelectCard = (): React.ReactElement => {
+  if (isReactNative()) {
+    return <MultiSelectCardReactNative />;
+  }
+  return <MultiSelectCardWeb />;
 };
