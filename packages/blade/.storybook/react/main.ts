@@ -39,6 +39,9 @@ const config: StorybookConfig = {
     GITHUB_SHA: process.env.GITHUB_SHA || '',
     GITHUB_REF: process.env.GITHUB_REF || '',
   }),
+  docs: {
+    autodocs: true,
+  },
   staticDirs: ['../../public'],
   webpackFinal: async (config, { configType }) => {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'

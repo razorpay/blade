@@ -42,8 +42,10 @@ const useSandpackSetup = ({
 }): any => {
   const docsContext = React.useContext(DocsContext);
 
-  const themeTokenName = docsContext?.globals?.themeTokenName ?? 'paymentTheme';
-  const colorScheme = docsContext?.globals?.colorScheme ?? 'light';
+  // @ts-expect-error docsContext.store exists
+  const themeTokenName = docsContext?.store?.globals?.globals?.themeTokenName ?? 'paymentTheme';
+  // @ts-expect-error docsContext.store exists
+  const colorScheme = docsContext?.store?.globals?.globals?.colorScheme ?? 'light';
 
   return {
     template: 'react-ts',
