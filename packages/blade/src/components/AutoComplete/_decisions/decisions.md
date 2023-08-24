@@ -18,12 +18,12 @@ A SelectInput where you can type inside the input to filter through the items.
 | ------------------ | -------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- | ----------------- |
 | label              | label of input                                                                                                       | string                                                          |                   |
 | accessibilityLabel | aria-label of input when label is not defined                                                                        | string                                                          |                   |
-| rows               | height restrictions of input ([Checkout "Inactive - Active States" Usage](#with-different-inactive---active-states)) | '1' \| '3' \| 'expandable'                                      | '3'               |
-| showTags           | Boolean to show or hide tags inside AutoComplete ([Checkout "With Tags Outside" Usage](#with-tags-outside))          | boolean                                                         | true              |
-| value              | Controlled state of the value inside input                                                                           | string                                                          |                   |
-| onChange           | Callback when input value changes                                                                                    | (inputValue: string) => void                                    |                   |
-| selected           | Controlled state of the selected items ([Checkout "Controlled AutoComplete" Usage](#controlled-autocomplete))        | string[]                                                        |                   |
-| onSelectChange     | Callback when selected items change                                                                                  | ({ name, values }: { name: string; values: string[] } ) => void |                   |
+| labelPosition      | Label Position like other inputs but with new option `inside-input`                                                  | 'top' \| 'left' \| 'inside-input'                               | 'top'             |
+| maxRows            | height restrictions of input ([Checkout "Inactive - Active States" Usage](#with-different-inactive---active-states)) | 'single' \| 'multiple' \| 'expandable'                          | '3'               |
+| inputValue         | Controlled state of the value inside input                                                                           | string                                                          |                   |
+| onInputValueChange | Callback when input value changes                                                                                    | (inputValue: string) => void                                    |                   |
+| value              | Controlled state of the selected items ([Checkout "Controlled AutoComplete" Usage](#controlled-autocomplete))        | string[]                                                        |                   |
+| onChange           | Callback when selected items change                                                                                  | ({ name, values }: { name: string; values: string[] } ) => void |                   |
 
 ## Usage
 
@@ -63,11 +63,11 @@ There are 3 controlled states that are relevant to AutoComplete
 ```jsx
 <AutoComplete
   // For controlling the input value
-  value={}
-  onChange={(inputValue) => {}}
+  inputValue={}
+  onInputValueChange={(inputValue) => {}}
   // For controlling the selections
-  selected={}
-  onSelectChange={({ name, values }) => {}}
+  value={}
+  onChange={({ name, values }) => {}}
 />
 
 // ...
@@ -100,9 +100,9 @@ const ControlledAutoComplete = () => {
         label="Select City"
         // Controlled input value
         // Sets the input value of input element in AutoComplete
-        value={currentInputValue}
+        inputValue={currentInputValue}
         // Triggers when input value changes
-        onChange={(inputValue) => {
+        onInputValueChange={(inputValue) => {
           if (inputValue) {
             // filtering logic
             setCities(allCities.filter((city) => city.includes(inputValue)));
@@ -112,8 +112,8 @@ const ControlledAutoComplete = () => {
           setCurrentInputValue(inputValue);
         }}
         // Selected Items in AutoComplete
-        selected={currentSelections}
-        onSelectChange={({ values }) => {
+        value={currentSelections}
+        onChange={({ values }) => {
           setCurrentSelections(values);
         }}
       />
@@ -166,20 +166,11 @@ const ControlledAutoComplete = () => {
 
 When possible selections are more than 11, it is advised to put tags outside of the Input.
 
+> **Note**
+>
+> This screenshot is outdated. The input will show "Status (13 Selected)" instead of just "Status". Will update this soon.
+
 <img width="700" alt="image" src="https://github.com/razorpay/blade/assets/30949385/8906eb6c-fae0-4e99-bd3f-d7e0edc60537">
-
-We add `showTags={false}` to AutoComplete to remove tags from input. Then we can use Controlled state to show tags outside in the UI.
-
-If not tags, what to show inside AutoComplete :thinking:? Checkout this table to understand -
-
-| Code                                                            | Description                                                                                                  | Output                                                                                                                     |
-| --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------- |
-| `<AutoComplete label="Status" showTags={false} />`              | When input has label, we show number of selected items                                                       | <img width="220" alt="image" src="https://github.com/razorpay/blade/assets/30949385/c8a30845-812c-493f-a51f-97c233880960"> |
-| `<AutoComplete accessibilityLabel="Status" showTags={false} />` | When input doesn't have a label, we show accessibilityLabel inside the input to show what the input is about | <img width="200" alt="image" src="https://github.com/razorpay/blade/assets/30949385/83cf63d5-ccc4-4bb9-bf0d-ce91dc5c1b09"> |
-
-.
-
-.
 
 **Code**
 
@@ -189,11 +180,11 @@ const [selectedItems, setSelectedItems] = React.useState([]);
 // ...
 
 <AutoComplete
-  accessibilityLabel="Status"
-  rows="1"
-  showTags={false} // we don't want to show tags at 2 places
-  selected={selectedItems}
-  onSelectChange={({ values }) => setSelectedItems(values)}
+  label="Status"
+  labelPosition="inside-input"
+  maxRows="single"
+  value={selectedItems}
+  onChange={({ values }) => setSelectedItems(values)}
 />
 
 
@@ -209,17 +200,26 @@ const [selectedItems, setSelectedItems] = React.useState([]);
 </Box>;
 ```
 
+### With Different Label Positions
+
+While things are flawless when you give visible label (highly recommended), If there are scenarios where you are not able to give label to inputs (questionable but ok), you can use `labelPosition: 'inside-input'` prop.
+
+| **Code**                                                       | **Description**       | **Single Select**                                                                                                | **Multi Select**                                                                                                 |
+| -------------------------------------------------------------- | --------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `<AutoComplete label="Status" /> `                             | With Label Present    | <img width="500" src="https://github.com/razorpay/blade/assets/30949385/0c559daa-5cdc-4d71-9221-6073b7969b1b" /> | <img width="500" src="https://github.com/razorpay/blade/assets/30949385/9314fd11-96b7-46ef-963f-283b393cb9fd" /> |
+| `<AutoComplete label="Status" labelPosition="inside-input" />` | Without Label Present | <img width="500" src="https://github.com/razorpay/blade/assets/30949385/2cb1d659-4a98-4f63-96d8-204ead4a681f" /> | <img width="500" src="https://github.com/razorpay/blade/assets/30949385/0b219c4c-2df2-4cfe-a32d-4c02809ab440" /> |
+
 ### With Different Inactive - Active States
 
 > **Note**
 >
 > Number of items shown in inactive state is auto-calculated based on height and width of the input.
 
-| Code                                 | Inactive                                                                                                                   | Active                                                                                                                     |
-| ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| `<AutoComplete rows="1" />`          | <img width="266" alt="image" src="https://github.com/razorpay/blade/assets/30949385/74b849f3-f1b9-4922-b717-70ffc7ffd56e"> | <img width="276" alt="image" src="https://github.com/razorpay/blade/assets/30949385/055bc4f4-fb57-4129-b27a-0f1966c8ad26"> |
-| `<AutoComplete rows="3" />`          | <img width="420" alt="image" src="https://github.com/razorpay/blade/assets/30949385/ed71318c-889e-407e-86bf-fe4f5902dedf"> | <img width="416" alt="image" src="https://github.com/razorpay/blade/assets/30949385/8a636a3c-2afe-43a2-b283-c5ef40c14362"> |
-| `<AutoComplete rows="expandable" />` | <img width="385" alt="image" src="https://github.com/razorpay/blade/assets/30949385/21b63bc4-804a-4180-953c-119a2b676cd5"> | <img width="394" alt="image" src="https://github.com/razorpay/blade/assets/30949385/1131a1bd-2989-4bfc-b659-207088be3bfb"> |
+| Code                                    | Inactive                                                                                                                   | Active                                                                                                                     |
+| --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `<AutoComplete maxRows="single" />`     | <img width="266" alt="image" src="https://github.com/razorpay/blade/assets/30949385/74b849f3-f1b9-4922-b717-70ffc7ffd56e"> | <img width="276" alt="image" src="https://github.com/razorpay/blade/assets/30949385/055bc4f4-fb57-4129-b27a-0f1966c8ad26"> |
+| `<AutoComplete maxRows="multiple" />`   | <img width="420" alt="image" src="https://github.com/razorpay/blade/assets/30949385/ed71318c-889e-407e-86bf-fe4f5902dedf"> | <img width="416" alt="image" src="https://github.com/razorpay/blade/assets/30949385/8a636a3c-2afe-43a2-b283-c5ef40c14362"> |
+| `<AutoComplete maxRows="expandable" />` | <img width="385" alt="image" src="https://github.com/razorpay/blade/assets/30949385/21b63bc4-804a-4180-953c-119a2b676cd5"> | <img width="394" alt="image" src="https://github.com/razorpay/blade/assets/30949385/1131a1bd-2989-4bfc-b659-207088be3bfb"> |
 
 ## Accessibility
 
@@ -240,6 +240,9 @@ AutoComplete will contiue to follow [same keyboard navigations as SelectInput](h
 ## Open Questions
 
 - **Q1:** Is everyone sold on `selected` and `onSelectChange` API? It is inconsistent with SelectInput. Might have to change it in SelectInput as well.
+  - Ans: Answered in Q4's answer. Its not inconsistent anymore
 - **Q2:** What to do with BottomSheetHeader (and BaseHeader)? Should we make it slot like Footer? Should we remove title, subtitle, etc?
 - **Q3:** `rows: '1' | '3' | 'expandable'` vs `numberOfLines: '1' | '3' | 'expandable'`ˀ vs `height: 'single-line' | 'multi-line' | 'expandable'`
+  - Ans: We're going with `maxRows: 'single' | 'multiple' | 'expandable'`
 - **Q4:** `onSelectChange` vs `onSelectionChange` vs `onItemSelectionChange`
+  - Ans: We're calling it `onChange` and we're changing input value's change to `onInputValueChange`
