@@ -209,7 +209,7 @@ const _SelectInput = (
   }, [props.labelPosition, setHasLabelOnLeft]);
 
   return (
-    <BaseBox position="relative" id={`${dropdownBaseId}-select`}>
+    <BaseBox position="relative">
       {!isReactNative() ? (
         <VisuallyHidden>
           <input

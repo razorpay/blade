@@ -696,7 +696,6 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
       <div
         class="c1"
         data-blade-component="base-box"
-        id="dropdown-7-select"
       >
         <div
           class="c2"
