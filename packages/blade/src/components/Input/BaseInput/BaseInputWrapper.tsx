@@ -68,7 +68,8 @@ export const BaseInputWrapper = ({
 }): ReactElement => {
   return (
     <StyledBaseInputWrapper
-      ref={setInputWrapperRef}
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion, @typescript-eslint/no-explicit-any
+      ref={setInputWrapperRef as any}
       display="flex"
       flexDirection="row"
       width="100%"
