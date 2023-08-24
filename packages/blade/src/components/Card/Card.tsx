@@ -1,4 +1,6 @@
 import React from 'react';
+import type { CSSObject } from 'styled-components';
+import styled from 'styled-components';
 import { CardSurface } from './CardSurface';
 import { CardProvider, useVerifyInsideCard, useVerifyAllowedComponents } from './CardContext';
 import type { SpacingValueType } from '~components/Box/BaseBox';
@@ -11,6 +13,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { Elevation } from '~tokens/global';
 import type { SurfaceLevels } from '~tokens/theme/theme';
 import type { BoxProps } from '~components/Box';
+import { makeAccessible } from '~utils/makeAccessible';
 
 export const ComponentIds = {
   CardHeader: 'CardHeader',
@@ -71,8 +74,62 @@ export type CardProps = {
   padding?: Extract<SpacingValueType, 'spacing.0' | 'spacing.3' | 'spacing.5' | 'spacing.7'>;
   width?: BoxProps['width'];
   height?: BoxProps['height'];
+  onClick?: () => void;
+  isSelected?: boolean;
+  href?: string;
+  linkLabel?: string;
 } & TestID &
   StyledPropsBlade;
+
+const CardRoot = styled(BaseBox)<{ isSelected?: boolean; isFocused?: boolean }>(
+  ({ theme, isSelected, isFocused }) => {
+    return {
+      // Selected state
+      // TODO: use thicker
+      boxShadow: `0px 0px 0px ${theme.border.width.thick}px ${
+        isSelected ? theme.colors.brand.primary[500] : 'transparent'
+      }`,
+      transition: '200ms ease',
+      transitionProperty: 'transform, box-shadow',
+
+      // link focused state
+      ...(isFocused && {
+        boxShadow: `0px 0px 0px 4px ${theme.colors.brand.primary[400]}`,
+      }),
+
+      // Hover state
+      '&:hover': {
+        transform: 'scale(1.05)',
+      },
+
+      // uplift all the nested links so they receive clicks and events
+      // https://www.sarasoueidan.com/blog/nested-links
+      '& a[href]:not(.blade-card-linkoverlay)': {
+        zIndex: 1,
+        position: 'relative',
+      },
+    };
+  },
+);
+
+const LinkOverlay = styled.a(
+  (): CSSObject => {
+    return {
+      position: 'static',
+      '&:before': {
+        content: "''",
+        cursor: 'inherit',
+        display: 'block',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        zIndex: 0,
+        width: '100%',
+        height: '100%',
+      },
+    };
+  },
+);
 
 const Card = ({
   children,
@@ -82,8 +139,14 @@ const Card = ({
   padding = 'spacing.7',
   width,
   height,
+  onClick,
+  isSelected,
+  linkLabel,
+  href,
+  as,
   ...styledProps
 }: CardProps): React.ReactElement => {
+  const [isFocused, setIsFocused] = React.useState(false);
   useVerifyAllowedComponents(children, 'Card', [
     ComponentIds.CardHeader,
     ComponentIds.CardBody,
@@ -92,7 +155,12 @@ const Card = ({
 
   return (
     <CardProvider>
-      <BaseBox
+      <CardRoot
+        as={as}
+        isSelected={isSelected}
+        isFocused={isFocused}
+        borderRadius="medium"
+        onClick={onClick}
         width={width}
         height={height}
         {...metaAttribute({ name: MetaConstants.Card, testID })}
@@ -106,9 +174,22 @@ const Card = ({
           elevation={elevation}
           textAlign={'left' as never}
         >
+          {href ? (
+            <LinkOverlay
+              {...makeAccessible({ label: linkLabel })}
+              onFocus={() => {
+                setIsFocused(true);
+              }}
+              onBlur={() => {
+                setIsFocused(false);
+              }}
+              className="blade-card-linkoverlay"
+              href={href}
+            />
+          ) : null}
           {children}
         </CardSurface>
-      </BaseBox>
+      </CardRoot>
     </CardProvider>
   );
 };
@@ -131,3 +212,11 @@ const _CardBody = ({ height, children, testID }: CardBodyProps): React.ReactElem
 const CardBody = assignWithoutSideEffects(_CardBody, { componentId: ComponentIds.CardBody });
 
 export { Card, CardBody };
+
+/*
+# TODO
+- Scope Link to only do normal navagitation
+- Provide accessibilityLabel for linkable Card
+- Go with ScaleOnHover
+- Go with method 1 for multi select
+*/

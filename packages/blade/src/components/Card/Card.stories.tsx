@@ -32,6 +32,9 @@ import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgType
 import type { Elevation } from '~tokens/global';
 import type { SurfaceLevels } from '~tokens/theme/theme';
 import { Box } from '~components/Box';
+import React from 'react';
+import { Link } from '~components/Link';
+import { VisuallyHidden } from '~components/VisuallyHidden/VisuallyHidden.web';
 
 const Page = (): React.ReactElement => {
   return (
@@ -278,6 +281,41 @@ const CardTemplate = ({ ...args }: StoryControlProps): React.ReactElement => {
 };
 
 export const CardExample = CardTemplate.bind({});
+
+const HiddenInput = ({ name, value, setSelected }) => {
+  return (
+    <input onChange={(e) => setSelected(e.target.value)} type="radio" name={name} value={value} />
+  );
+};
+
+const ClickableCard = ({ ...args }: StoryControlProps): React.ReactElement => {
+  const [selected, setSelected] = React.useState('monthly');
+
+  return (
+    <Box>
+      <Card as="label" isSelected={selected === 'monthly'}>
+        <CardBody>
+          <Text>Monthly</Text>
+          <HiddenInput setSelected={setSelected} name="pricing-radio-card" value="monthly" />
+        </CardBody>
+      </Card>
+      <Card as="label" isSelected={selected === 'quarterly'}>
+        <CardBody>
+          <Text>Quarterly</Text>
+          <HiddenInput setSelected={setSelected} name="pricing-radio-card" value="quarterly" />
+        </CardBody>
+      </Card>
+      <Card as="label" isSelected={selected === 'annually'}>
+        <CardBody>
+          <Text>Annually</Text>
+          <HiddenInput setSelected={setSelected} name="pricing-radio-card" value="annually" />
+        </CardBody>
+      </Card>
+    </Box>
+  );
+};
+
+export const ClickableCardExample = ClickableCard.bind({});
 
 const CardChildrenExample = ({ ...args }: StoryControlProps): React.ReactElement => {
   return (
