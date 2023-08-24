@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { useMemo } from 'react';
+import { throwBladeError } from './logger';
 
 type ReactRef<T> = React.RefCallback<T> | React.MutableRefObject<T>;
 
@@ -15,7 +16,10 @@ function assignRef<T = any>(ref: ReactRef<T> | null | undefined, value: T) {
   try {
     ref.current = value;
   } catch (error: unknown) {
-    throw new Error(`Cannot assign value '${value}' to ref '${ref}'`);
+    throwBladeError({
+      moduleName: 'useMergeRefs',
+      message: `Cannot assign value '${value}' to ref '${ref}'`,
+    });
   }
 }
 
