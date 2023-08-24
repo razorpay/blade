@@ -4,7 +4,7 @@ import type { DotNotationColorStringToken, DotNotationSpacingStringToken } from 
 import type { SelectorInputHoverTokens } from '~components/Form/Selector/types';
 import { size } from '~tokens/global';
 import type { IconProps } from '~components/Icons';
-import { BaseTextProps } from '~components/Typography/BaseText';
+import type { BaseTextProps } from '~components/Typography/BaseText/types';
 
 const chipGroupGapTokens = {
   xsmall: {
@@ -76,8 +76,10 @@ const chipHorizontalPaddingTokens: ChipHorizontalPaddingTokens = {
 
 type ColorTokens = DotNotationColorStringToken<Theme['colors']>;
 type TextColorTokens = BaseTextProps['color'];
+type IconColorTokens = IconProps['color'];
 type ChipColorTokens = {
   text: Record<string, TextColorTokens>;
+  icon: Record<string, IconColorTokens | 'brand.primary.500'>;
   background: Record<string, Record<string, ColorTokens | 'transparent'>>;
   border: Record<string, Record<string, ColorTokens>>;
 };
@@ -89,6 +91,13 @@ const chipColorTokens: ChipColorTokens = {
     neutral: 'brand.primary.500',
     positive: 'feedback.text.positive.lowContrast',
     negative: 'feedback.text.negative.lowContrast',
+  },
+  icon: {
+    unchecked: 'surface.text.subtle.lowContrast',
+    disabled: 'surface.text.placeholder.lowContrast',
+    neutral: 'brand.primary.500',
+    positive: 'feedback.icon.positive.lowContrast',
+    negative: 'feedback.icon.negative.lowContrast',
   },
   background: {
     unchecked: {

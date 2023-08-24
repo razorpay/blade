@@ -152,6 +152,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
     textVariant = 'disabled';
   }
   const chipTextColor = chipColorTokens.text[textVariant];
+  const chipIconColor = chipColorTokens.icon[textVariant];
 
   let intentVariant = 'unchecked';
   const stateVariant = _isDisabled ? 'disabled' : 'default';
@@ -216,7 +217,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
               >
                 {Icon ? (
                   <BaseBox paddingRight="spacing.3" display="flex">
-                    <Icon color={chipTextColor} size={chipIconSizes[_size]} />
+                    <Icon color={chipIconColor as never} size={chipIconSizes[_size]} />
                   </BaseBox>
                 ) : null}
                 <Text
