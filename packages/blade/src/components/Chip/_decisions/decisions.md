@@ -25,26 +25,28 @@ This document outlines the API details of the `Chip` and `ChipGroup` components,
 >
 > The `Chip` component is inherently tied to the `ChipGroup` and cannot be utilized outside its context.
 
-| Prop                    | Type                                   | Default     | Description                                                                                                                                        | Required |
-| ----------------------- | -------------------------------------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| **children**            | `React.ReactText \| React.ReactText[]` | `undefined` | Renders the label text for the Chip                                                                                                                | ✅       |
-| **icon**                | `Icon`                                 | `undefined` | Displays the Blade Icon component within the Chip                                                                                                  | ❌       |
-| **isDisabled**          | `boolean`                              | `false`     | Disables or enables the Chip                                                                                                                       | ❌       |
-| **value (html native)** | `string`                               | `undefined` | The value of the input field in Chip, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#value) | ❌       |
+| Prop                    | Type                                    | Default     | Description                                                                                                                                        | Required |
+| ----------------------- | --------------------------------------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| **children**            | `React.ReactText \| React.ReactText[]`  | `undefined` | Renders the label text for the Chip                                                                                                                | ✅       |
+| **icon**                | `Icon`                                  | `undefined` | Displays the Blade Icon component within the Chip                                                                                                  | ❌       |
+| **isDisabled**          | `boolean`                               | `false`     | Disables or enables the Chip                                                                                                                       | ❌       |
+| **intent**              | `'positive' \| 'negative' \| 'neutral'` | `'neutral'` | Sets the ChipGroups's visual variant, it will propagate down to all the Chips                                                                      | ❌       |
+| **value (html native)** | `string`                                | `undefined` | The value of the input field in Chip, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#value) | ❌       |
 
 ## `ChipGroup` API
 
-| Prop              | Type                                                             | Default     | Description                                                                                                                    | Required |
-| ----------------- | ---------------------------------------------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------ | -------- |
-| **children**      | `React.ReactNode`                                                | `undefined` | Accepts multiple `Chip` components                                                                                             | ✅       |
-| **defaultValue**  | `string \|string[]`                                              | `undefined` | Sets the initial value of the Chip group                                                                                       | ❌       |
-| **isDisabled**    | `boolean`                                                        | `false`     | Disables or enables ChipGroup, it will propagate down to all the Chips                                                         | ❌       |
-| **name**          | `string`                                                         | `undefined` | The name of the chip group, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#name) | ❌       |
-| **onChange**      | `({ name, values }: { name: string; values: string[] }) => void` | `undefined` | Calls a function on any state change within the ChipGroup                                                                      | ❌       |
-| **selectionType** | `'single' \| 'multiple'`                                         | `'single'`  | Defines the selection behavior within the ChipGroup component, simulating radio/checkbox like behavior within the group        | ❌       |
-| **size**          | `'xsmall' \| 'small' \| 'medium' \| 'large'`                     | `'small'`   | Specifies the size of the rendered Chips withing the ChipGroup                                                                 | ❌       |
-| **value**         | `string \|string[]`                                              | `undefined` | Acts as a controlled component by specifying the ChipGroup value                                                               | ❌       |
-| **intent**        | `'positive' \| 'negative' \| 'neutral'`                          | `'neutral'` | Sets the ChipGroups's visual variant, it will propagate down to all the Chips                                                  | ❌       |
+| Prop                   | Type                                                             | Default     | Description                                                                                                                    | Required |
+| ---------------------- | ---------------------------------------------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------ | -------- |
+| **accessibilityLabel** | `string`                                                         | `undefined` | Accessibility label for the ChipGroup                                                                                          | ✅       |
+| **children**           | `React.ReactNode`                                                | `undefined` | Accepts multiple `Chip` components                                                                                             | ✅       |
+| **defaultValue**       | `string \|string[]`                                              | `undefined` | Sets the initial value of the Chip group                                                                                       | ❌       |
+| **isDisabled**         | `boolean`                                                        | `false`     | Disables or enables ChipGroup, it will propagate down to all the Chips                                                         | ❌       |
+| **name**               | `string`                                                         | `undefined` | The name of the chip group, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#name) | ❌       |
+| **onChange**           | `({ name, values }: { name: string; values: string[] }) => void` | `undefined` | Calls a function on any state change within the ChipGroup                                                                      | ❌       |
+| **selectionType**      | `'single' \| 'multiple'`                                         | `'single'`  | Defines the selection behavior within the ChipGroup component, simulating radio/checkbox like behavior within the group        | ❌       |
+| **size**               | `'xsmall' \| 'small' \| 'medium' \| 'large'`                     | `'small'`   | Specifies the size of the rendered Chips withing the ChipGroup                                                                 | ❌       |
+| **value**              | `string \|string[]`                                              | `undefined` | Acts as a controlled component by specifying the ChipGroup value                                                               | ❌       |
+| **intent**             | `'positive' \| 'negative' \| 'neutral'`                          | `'neutral'` | Sets the ChipGroups's visual variant, it will propagate down to all the Chips                                                  | ❌       |
 
 ## Examples
 
@@ -57,7 +59,7 @@ Single Chip selection:
 ```jsx
 <Box>
   <Text> Select Business type: </Text>
-  <ChipGroup defaultValue="proprietorship">
+  <ChipGroup accessibilityLabel="select business type" defaultValue="proprietorship">
     <Chip value="proprietorship">Proprietorship</Chip>
     <Chip value="public">Public</Chip>
     <Chip value="small-business">Small Business</Chip>
@@ -70,7 +72,11 @@ Multiple Chip selection:
 ```jsx
 <Box>
   <Text> What other capabilities are you looking for? </Text>
-  <ChipGroup selectionType="multiple" defaultValue={['payment-links', 'offers']}>
+  <ChipGroup
+    accessibilityLabel="select business type"
+    selectionType="multiple"
+    defaultValue={['payment-links', 'offers']}
+  >
     <Chip value="payment-links">Automated Payment Links</Chip>
     <Chip value="wallet">Wallet on My App</Chip>
     <Chip value="offers">Offer discounts & EMI options</Chip>
@@ -90,6 +96,7 @@ function Single() {
       <Text> Select Business type: </Text>
       <ChipGroup
         selectionType="single"
+        accessibilityLabel="select business type"
         value={selected}
         onChange={({ values }) => setSelected(values[0])}
       >
@@ -109,6 +116,7 @@ function Multiple() {
     <Box>
       <Text> Quick Filters: </Text>
       <ChipGroup
+        accessibilityLabel="Select business type"
         selectionType="multiple"
         value={selected}
         onChange={({ values }) => setSelected(values)}
