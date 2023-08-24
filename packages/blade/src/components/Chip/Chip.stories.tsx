@@ -61,6 +61,7 @@ export default {
     onChange: undefined,
     value: undefined,
     selectionType: 'single',
+    accessibilityLabel: 'Select Business type:',
   },
   argTypes: {
     value: {

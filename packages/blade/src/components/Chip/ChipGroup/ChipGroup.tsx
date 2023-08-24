@@ -6,10 +6,13 @@ import type { ChipGroupProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
 import { SelectorGroupField } from '~components/Form/Selector/SelectorGroupField';
 import { getStyledProps } from '~components/Box/styledProps';
+import { VisuallyHidden } from '~components/VisuallyHidden';
+import { Text } from '~components/Typography';
 import { isReactNative } from '~utils';
 import { throwBladeError } from '~utils/logger';
 
 const ChipGroup = ({
+  accessibilityLabel,
   children,
   isDisabled = false,
   name,
@@ -58,6 +61,9 @@ const ChipGroup = ({
           testID={testID}
         >
           <BaseBox>
+            <VisuallyHidden>
+              <Text>{accessibilityLabel}</Text>
+            </VisuallyHidden>
             <BaseBox display="flex" flexDirection="row" flexWrap="wrap">
               {React.Children.map(children, (child, index) => {
                 return (

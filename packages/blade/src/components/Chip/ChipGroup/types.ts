@@ -3,6 +3,10 @@ import type { TestID } from '~utils/types';
 
 type ChipGroupProps = {
   /**
+   * Accessibility label for the ChipGroup
+   */
+  accessibilityLabel: string;
+  /**
    * Accepts multiple Chip components as children
    */
   children: React.ReactNode;
