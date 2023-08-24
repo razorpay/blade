@@ -24,7 +24,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { throwBladeError } from '~utils/logger';
 import { useCheckbox } from '~components/Checkbox/useCheckbox';
 import { useRadio } from '~components/Radio/useRadio';
-import { isReactNative, useBreakpoint } from '~utils';
+import { isReactNative, makeSize, useBreakpoint } from '~utils';
 import { Text } from '~components/Typography';
 import { useTheme } from '~components/BladeProvider';
 
@@ -144,16 +144,22 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
     [_isDisabled],
   );
 
-  const chipTextColor =
-    chipColorTokens.text[_isDisabled ? 'disabled' : _isChecked && _intent ? _intent : 'unchecked'];
-  const chipBackgroundColor =
-    chipColorTokens.background[_isChecked && _intent ? _intent : 'unchecked'][
-      _isDisabled ? 'disabled' : 'default'
-    ];
-  const chipBorderColor =
-    chipColorTokens.border[_isChecked && _intent ? _intent : 'unchecked'][
-      _isDisabled ? 'disabled' : 'default'
-    ];
+  let textVariant = 'unchecked';
+  if (_isChecked && _intent) {
+    textVariant = _intent;
+  }
+  if (_isDisabled) {
+    textVariant = 'disabled';
+  }
+  const chipTextColor = chipColorTokens.text[textVariant];
+
+  let intentVariant = 'unchecked';
+  const stateVariant = _isDisabled ? 'disabled' : 'default';
+  if (_isChecked && _intent) {
+    intentVariant = _intent;
+  }
+  const chipBackgroundColor = chipColorTokens.background[intentVariant][stateVariant];
+  const chipBorderColor = chipColorTokens.border[intentVariant][stateVariant];
 
   return (
     <BaseBox
@@ -183,7 +189,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
               ref={ref}
             />
             <AnimatedChip
-              borderColor={chipBorderColor as never}
+              borderColor={chipBorderColor}
               isDisabled={_isDisabled}
               isPressed={isPressed}
               isDesktop={matchedDeviceType === 'desktop'}
@@ -194,7 +200,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
                 justifyContent="center"
                 alignItems="center"
                 overflow="hidden"
-                backgroundColor={chipBackgroundColor as never}
+                backgroundColor={chipBackgroundColor}
                 borderRadius="max"
                 borderWidth={['xsmall', 'small'].includes(_size) ? 'thinner' : 'thin'}
                 paddingLeft={
@@ -203,21 +209,21 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
                 paddingRight={
                   chipHorizontalPaddingTokens[Boolean(Icon) ? 'icon' : 'default'].right[_size]
                 }
+                height={makeSize(chipHeightTokens[_size])}
                 style={{
-                  height: chipHeightTokens[_size],
                   borderColor: _isChecked ? getIn(theme.colors, chipBorderColor) : 'transparent',
                 }}
               >
                 {Icon ? (
                   <BaseBox paddingRight="spacing.3" display="flex">
-                    <Icon color={chipTextColor as never} size={chipIconSizes[_size]} />
+                    <Icon color={chipTextColor} size={chipIconSizes[_size]} />
                   </BaseBox>
                 ) : null}
                 <Text
                   {...chipTextSizes[_size]}
                   type="normal"
                   truncateAfterLines={1}
-                  color={chipTextColor as never}
+                  color={chipTextColor}
                 >
                   {children}
                 </Text>
