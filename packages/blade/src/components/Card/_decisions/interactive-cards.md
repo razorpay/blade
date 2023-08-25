@@ -100,7 +100,7 @@ We will go ahead with Method 2 because of the reason mentioned above and we will
 
 ## Selectable Card
 
-<img src="./selectable-card.png" alt="Screenshot of selected card" width="65%" />
+<img src="./selected-card.png" alt="Screenshot of selected card" width="65%" />
 
 The selectable card will have additional functionality and accessibility requirements since it can have
 
