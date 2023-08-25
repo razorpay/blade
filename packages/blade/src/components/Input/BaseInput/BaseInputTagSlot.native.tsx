@@ -21,9 +21,11 @@ const ScrollableTagSlotContainer = ({
 }: Pick<BaseInputTagSlotProps, 'tagRows' | 'showAllTags' | 'handleOnClick'> & {
   children: (React.ReactNode | null)[];
 }): React.ReactElement => {
+  const scrollViewRef = React.useRef<ScrollView>(null);
   const [isScrolling, setIsScrolling] = React.useState(false);
   return (
     <StyledScrollView
+      ref={scrollViewRef}
       contentContainerStyle={{
         flexWrap: 'wrap',
       }}
@@ -40,6 +42,7 @@ const ScrollableTagSlotContainer = ({
       }}
       horizontal={true}
       showsHorizontalScrollIndicator={tagRows === '1'}
+      onContentSizeChange={() => scrollViewRef.current?.scrollToEnd({ animated: true })}
     >
       {children}
     </StyledScrollView>
