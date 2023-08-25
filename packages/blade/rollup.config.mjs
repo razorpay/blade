@@ -11,8 +11,6 @@ import pluginReplace from '@rollup/plugin-replace';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import ts from 'typescript';
 
-console.log('URLLL->', fileURLToPath(new URL('src', import.meta.url)));
-
 const webExtensions = [
   '.web.js',
   '.web.ts',

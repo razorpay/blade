@@ -214,7 +214,7 @@
     "react-scripts": "4.0.3",
     "react-test-renderer": "18.2.0",
     "rollup": "3.28.1",
-    "rollup-plugin-dts": "6.0.0",
+    "rollup-plugin-dts": "5.3.1",
     "rollup-plugin-peer-deps-external": "2.2.4",
     "size-limit": "8.2.4",
     "style-dictionary": "3.7.1",
