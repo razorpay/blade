@@ -1,10 +1,11 @@
 import React from 'react';
 import type { FlattenSimpleInterpolation } from 'styled-components';
 import styled, { css, keyframes } from 'styled-components';
-import type { BaseBoxProps } from '~components/Box/BaseBox';
+import type { BaseInputWrapperProps } from './types';
+import { getInputBackgroundAndBorderStyles } from './baseInputStyles';
 import BaseBox from '~components/Box/BaseBox';
 import { motion, size } from '~tokens/global';
-import { makeMotionTime, makeSize } from '~utils';
+import { castWebType, makeMotionTime, makeSize } from '~utils';
 import type { BladeElementRef } from '~utils/types';
 
 const BASEINPUT_MIN_HEIGHT: number = size['36'];
@@ -41,8 +42,45 @@ const collapseTransition = css`
     ${String(motion.easing.exit.effective)};
 `;
 
+const StyledBaseInputWrapper = styled(BaseBox)<
+  Pick<
+    BaseInputWrapperProps,
+    'currentInteraction' | 'isDisabled' | 'validationState' | 'isTextArea'
+  >
+>((props) => ({
+  ...getInputBackgroundAndBorderStyles({
+    theme: props.theme,
+    isFocused: props.currentInteraction === 'active',
+    isDisabled: props.isDisabled,
+    validationState: props.validationState,
+    isTextArea: props.isTextArea,
+  }),
+  '&:hover': {
+    ...getInputBackgroundAndBorderStyles({
+      theme: props.theme,
+      isHovered: true,
+      isFocused: props.currentInteraction === 'active',
+      isDisabled: props.isDisabled,
+      validationState: props.validationState,
+    }),
+    transitionProperty: 'background-color',
+    transitionDuration: castWebType(makeMotionTime(props.theme.motion.duration.xquick)),
+    transitionTimingFunction: castWebType(props.theme.motion.easing.standard.effective),
+  },
+  ':focus-within': {
+    ...getInputBackgroundAndBorderStyles({
+      theme: props.theme,
+      isFocused: props.currentInteraction === 'active',
+      isDisabled: props.isDisabled,
+      validationState: props.validationState,
+    }),
+  },
+}));
+
 // Styled component with animation
-const StyledAnimatedBaseInputWrapper = styled(BaseBox)<{ transition?: FlattenSimpleInterpolation }>(
+const StyledAnimatedBaseInputWrapper = styled(StyledBaseInputWrapper)<{
+  transition?: FlattenSimpleInterpolation;
+}>(
   (props) => css`
     ${props.transition};
   `,
@@ -50,16 +88,15 @@ const StyledAnimatedBaseInputWrapper = styled(BaseBox)<{ transition?: FlattenSim
 
 const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
   BladeElementRef,
-  BaseBoxProps & {
+  BaseInputWrapperProps & {
     showAllTags?: boolean;
-    setShowAllTagsWithAnimation: (showAllTagsWithAnimation: boolean) => void;
   }
-> = ({ showAllTags, setShowAllTagsWithAnimation, ...baseBoxProps }, ref): React.ReactElement => {
+> = ({ showAllTags, setShowAllTagsWithAnimation, ...rest }, ref): React.ReactElement => {
   return (
     <StyledAnimatedBaseInputWrapper
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={ref as any}
-      {...baseBoxProps}
+      {...rest}
       transition={showAllTags ? expandTransition : collapseTransition}
       onAnimationEnd={(e) => {
         if (!showAllTags && e.animationName === collapseAnimation.getName()) {

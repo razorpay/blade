@@ -18,6 +18,18 @@ export type BaseInputTagSlotProps = {
   inputWrapperRef: React.RefObject<HTMLDivElement>;
 };
 
+export type BaseInputWrapperProps = Pick<
+  BaseInputProps,
+  'isDisabled' | 'validationState' | 'showAllTags'
+> & {
+  isFocused?: boolean;
+  isLabelLeftPositioned?: boolean;
+  currentInteraction: keyof ActionStates;
+  isTextArea?: boolean;
+  setShowAllTagsWithAnimation: (showAllTagsWithAnimation: boolean) => void;
+  children: React.ReactNode;
+};
+
 export type StyledBaseInputProps = {
   handleOnFocus?: FormInputHandleOnEvent;
   handleOnChange?: FormInputHandleOnEvent;

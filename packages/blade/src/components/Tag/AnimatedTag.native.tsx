@@ -77,15 +77,21 @@ const AnimatedTag = ({
   currentTagIndex,
   activeTagIndex,
   onDismiss,
+  tagsLength,
 }: AnimatedTagProps): React.ReactElement => {
   const onAnimationEnd = (): void => {
     onDismiss({ tagIndex: currentTagIndex, tagName: children });
   };
 
+  const prevSelectionsLength = React.useRef<number>();
   const { animate, animatedStyle, entering } = useAnimatedTag(onAnimationEnd);
 
+  const isTagRemoved = prevSelectionsLength.current
+    ? prevSelectionsLength.current > tagsLength
+    : false;
+
   return (
-    <Animated.View style={animatedStyle} entering={entering}>
+    <Animated.View style={animatedStyle} entering={isTagRemoved ? undefined : entering}>
       <Tag
         _isVirtuallyFocussed={currentTagIndex === activeTagIndex}
         _isTagInsideInput={true}

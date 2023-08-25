@@ -1,13 +1,9 @@
-import styled from 'styled-components';
 import type { ReactElement, ReactNode } from 'react';
 import React from 'react';
-import { getInputBackgroundAndBorderStyles } from './baseInputStyles';
 import type { BaseInputProps } from './BaseInput';
 import { BaseInputAnimatedBorder } from './BaseInputAnimatedBorder';
 import { AnimatedBaseInputWrapper } from './AnimatedBaseInputWrapper';
-import { castWebType, getPlatformType } from '~utils';
 import type { ActionStates } from '~tokens/theme/theme';
-import { makeMotionTime } from '~utils/makeMotionTime';
 
 type BaseInputWrapperProps = Pick<
   BaseInputProps,
@@ -20,41 +16,6 @@ type BaseInputWrapperProps = Pick<
   setShowAllTagsWithAnimation: (showAllTagsWithAnimation: boolean) => void;
   children: React.ReactNode;
 };
-
-const StyledBaseInputWrapper = styled(AnimatedBaseInputWrapper)<BaseInputWrapperProps>((props) => ({
-  ...getInputBackgroundAndBorderStyles({
-    theme: props.theme,
-    isFocused: props.currentInteraction === 'active',
-    isDisabled: props.isDisabled,
-    validationState: props.validationState,
-  }),
-  '&:hover':
-    getPlatformType() === 'react-native'
-      ? undefined
-      : {
-          ...getInputBackgroundAndBorderStyles({
-            theme: props.theme,
-            isHovered: true,
-            isFocused: props.currentInteraction === 'active',
-            isDisabled: props.isDisabled,
-            validationState: props.validationState,
-          }),
-          transitionProperty: 'background-color',
-          transitionDuration: castWebType(makeMotionTime(props.theme.motion.duration.xquick)),
-          transitionTimingFunction: castWebType(props.theme.motion.easing.standard.effective),
-        },
-  ':focus-within':
-    getPlatformType() === 'react-native'
-      ? undefined
-      : {
-          ...getInputBackgroundAndBorderStyles({
-            theme: props.theme,
-            isFocused: props.currentInteraction === 'active',
-            isDisabled: props.isDisabled,
-            validationState: props.validationState,
-          }),
-        },
-}));
 
 const _BaseInputWrapper: React.ForwardRefRenderFunction<
   HTMLDivElement,
@@ -75,18 +36,14 @@ const _BaseInputWrapper: React.ForwardRefRenderFunction<
   ref,
 ): ReactElement => {
   return (
-    <StyledBaseInputWrapper
+    <AnimatedBaseInputWrapper
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={ref as any}
-      display="flex"
-      flexDirection="row"
-      width="100%"
-      alignItems={isTextArea ? 'flex-start' : undefined}
+      isTextArea={isTextArea}
       validationState={validationState}
       currentInteraction={currentInteraction}
       showAllTags={showAllTags}
       setShowAllTagsWithAnimation={setShowAllTagsWithAnimation}
-      position="relative"
       {...props}
     >
       {children}
@@ -94,7 +51,7 @@ const _BaseInputWrapper: React.ForwardRefRenderFunction<
         currentInteraction={currentInteraction}
         validationState={validationState}
       />
-    </StyledBaseInputWrapper>
+    </AnimatedBaseInputWrapper>
   );
 };
 

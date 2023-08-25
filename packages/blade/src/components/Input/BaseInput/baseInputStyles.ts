@@ -32,9 +32,10 @@ export const getInputBackgroundAndBorderStyles = ({
   isFocused,
   isDisabled,
   validationState,
+  isTextArea,
 }: Pick<
   GetInputStyles,
-  'theme' | 'isFocused' | 'isDisabled' | 'validationState' | 'isHovered'
+  'theme' | 'isFocused' | 'isDisabled' | 'validationState' | 'isHovered' | 'isTextArea'
 >): CSSObject => {
   // normal state
   let backgroundColor = theme.colors.brand.gray.a50.lowContrast;
@@ -72,6 +73,12 @@ export const getInputBackgroundAndBorderStyles = ({
     borderTopRightRadius: makeBorderSize(theme.border.radius.small),
     borderBottomWidth: makeBorderSize(theme.border.width.thin),
     borderBottomStyle: 'solid',
+    display: 'flex',
+    flexDirection: 'row',
+    width: '100%',
+    alignItems: isTextArea ? 'flex-start' : undefined,
+    position: 'relative',
+    height: 'auto',
   };
 };
 

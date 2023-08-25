@@ -833,7 +833,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
             <BaseInputVisuals leadingIcon={leadingIcon} prefix={prefix} isDisabled={isDisabled} />
             <BaseInputTagSlot
               tags={tags}
-              showAllTags={isReactNative ? showAllTags : showAllTagsWithAnimation}
+              showAllTags={showAllTagsWithAnimation}
               setFocusOnInput={() => {
                 if (ref && 'current' in ref) {
                   ref.current?.focus();
