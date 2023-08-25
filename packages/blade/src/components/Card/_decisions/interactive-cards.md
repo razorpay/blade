@@ -95,7 +95,8 @@ In this method we don't provide isScaled prop.
 
 - Users can still know when the `onHover` is triggered but users won't be able to manually set the state of the Card to be `scaled` (eg isScaled={true}), imagine if user wants a card to be `scaled` when user selects it, they won't be able to achive that. (now if we say this is not a valid pattern then fine or else we need further discussion on this)
 
-**My Opinion:** Method 2 is better since it's easier to use + provide good flexibility to consumer
+**Conclusion:** 
+We will go ahead with Method 2 because of the reason mentioned above and we will also be able to keep the behaviour consistent + control how the behaviour would work in mobile devices (eg we can say instead of hover we can do pressed state changes the scale)
 
 ## Selectable Card
 
@@ -209,14 +210,14 @@ const [selected, setSelected] = React.useState('orange');
 - Bit of effort on our end, we will basically have to create subset of Radio/Checkbox components for Card's usecase
 - Introduces new components, CardGroup, CardGroupItem.
 
-**My Opinion:** Method 2 will be much more consistent across platforms and neater than letting consumer hack around various combinations of tricks to get single/multi selection to work.
-
+**Conclusion:** 
+After discussing with the team, we decided to go with Method 1, because as the Card is a more flexible component in general we want to keep the behaviour generic and let consumers handle the interaction as per their usecase, plus prodiving CardGroup,CardGroupItem could cause flexibility issues and might not work for all the usecases.  
 
 ## Linkable Card
 
 With linkable card, the whole card itself can be clicked or linked to any URL. 
 
-With linkable card the main issue is accessibility & interaction, because simpliy wrapping the whole card in an `a` tag won't be valid, because inside the card there can also be interactive elements.
+With linkable card the main issue is accessibility & interaction, because simply wrapping the whole card in an `a` tag won't be valid, because inside the card there can also be interactive elements.
 
 Three problems with naive approach of just wrapping the card in a link: 
 
@@ -245,7 +246,7 @@ Example usage:
 ```
 
 
-
 ## Open Questions
 
 - What about client-side nagivation with linkable cards?
+  - Client side navigation will be prioritised when we solve it for Link component
