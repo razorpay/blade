@@ -231,7 +231,7 @@ While things are flawless when you give visible label (highly recommended), If t
 
 ## Accessibility
 
-AutoComplete will contiue to follow [same keyboard navigations as SelectInput](https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Dropdown/_decisions/decisions.md#accessibility).
+AutoComplete will continue to follow [same keyboard navigations as SelectInput](https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Dropdown/_decisions/decisions.md#accessibility).
 
 ## Referrences
 
