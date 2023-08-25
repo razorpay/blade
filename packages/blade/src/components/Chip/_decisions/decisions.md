@@ -23,7 +23,7 @@ This document outlines the API details of the `Chip` and `ChipGroup` components,
 
 > **Note**
 >
-> The `Chip` component is inherently tied to the `ChipGroup` and cannot be utilized outside its context.
+> The `Chip` component is inherently tied to the `ChipGroup` and cannot be utilized outside its context. This is because the chips are designed to be used in multiples since they represent collections of objects.
 
 | Prop                    | Type                                    | Default     | Description                                                                                                                                        | Required |
 | ----------------------- | --------------------------------------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
@@ -34,6 +34,10 @@ This document outlines the API details of the `Chip` and `ChipGroup` components,
 | **value (html native)** | `string`                                | `undefined` | The value of the input field in Chip, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#value) | ❌       |
 
 ## `ChipGroup` API
+
+> **Note**
+>
+> The requirement of the `accessibilityLabel` prop is intentional for ChipGroup. This setup will continue until a forthcoming introduction of a Label component of various sizes, intended for all input elements. This development is currently in the pipeline.
 
 | Prop                   | Type                                                             | Default     | Description                                                                                                                    | Required |
 | ---------------------- | ---------------------------------------------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------ | -------- |
@@ -73,7 +77,7 @@ Multiple Chip selection:
 <Box>
   <Text> What other capabilities are you looking for? </Text>
   <ChipGroup
-    accessibilityLabel="select business type"
+    accessibilityLabel="What other capabilities are you looking for?"
     selectionType="multiple"
     defaultValue={['payment-links', 'offers']}
   >
@@ -116,7 +120,7 @@ function Multiple() {
     <Box>
       <Text> Quick Filters: </Text>
       <ChipGroup
-        accessibilityLabel="Select business type"
+        accessibilityLabel="Quick filters"
         selectionType="multiple"
         value={selected}
         onChange={({ values }) => setSelected(values)}
@@ -125,6 +129,46 @@ function Multiple() {
         <Chip value="failed">Failed</Chip>
         <Chip value="pending">Pending</Chip>
         <Chip value="in-progress">In Progress</Chip>
+      </ChipGroup>
+    </Box>
+  );
+}
+```
+
+### Multiple Intent
+
+```jsx
+<Box>
+  <Text> Is the result helpful? </Text>
+  <ChipGroup accessibilityLabel="Is the result helpful?" selectionType="single">
+    <Chip intent="positive" value="yes">
+      Yes
+    </Chip>
+    <Chip intent="negative" value="no">
+      No
+    </Chip>
+  </ChipGroup>
+</Box>
+```
+
+### Text Transformation (Uppercase)
+
+```jsx
+function TextTransform() {
+  const values = ['proprietorship', 'public', 'small business];
+
+  return (
+    <Box>
+      <Text> Select Business type: </Text>
+      <ChipGroup
+        selectionType="single"
+        accessibilityLabel="select business type"
+        value={selected}
+        onChange={({ values }) => setSelected(values[0])}
+      >
+        {values.map(value => (
+          <Chip value={value}>{value.toUpperCase()}</Chip>
+        ))}
       </ChipGroup>
     </Box>
   );
