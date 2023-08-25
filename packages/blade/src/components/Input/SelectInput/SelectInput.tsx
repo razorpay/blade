@@ -108,6 +108,7 @@ const _SelectInput = (
     setIsControlled,
     selectionType,
     selectedIndices,
+    triggererWrapperRef,
   } = useDropdown();
 
   const {
@@ -228,6 +229,9 @@ const _SelectInput = (
         hideLabelText={props.label?.length === 0}
         componentName={MetaConstants.SelectInput}
         ref={(!isReactNative() ? triggererRef : null) as never}
+        setInputWrapperRef={(wrapperNode) => {
+          triggererWrapperRef.current = wrapperNode;
+        }}
         textAlign="left"
         value={displayValue}
         placeholder={placeholder}

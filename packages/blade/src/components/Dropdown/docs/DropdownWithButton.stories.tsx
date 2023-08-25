@@ -6,7 +6,7 @@ import {
   WithControlledMenuStory,
   WithControlledMultiSelectMenuStory,
   WithLinkStory,
-  WithRightAlignedMenuStory,
+  WithAutoPositioningMenuStory,
   WithSimpleMenuStory,
 } from './stories';
 import { Sandbox } from '~utils/storybook/Sandbox';
@@ -65,10 +65,10 @@ export const WithLink = (): React.ReactElement => {
   );
 };
 
-export const WithRightAlignedMenu = (): React.ReactElement => {
+export const WithAutoPositioning = (): React.ReactElement => {
   return (
     <Sandbox padding="spacing.0" editorHeight="100vh">
-      {WithRightAlignedMenuStory}
+      {WithAutoPositioningMenuStory}
     </Sandbox>
   );
 };
@@ -159,6 +159,57 @@ InternalMenu.parameters = {
   chromatic: {
     disableSnapshot: false,
   },
+};
+
+export const InternalAutoPositioning = (): React.ReactElement => {
+  return (
+    <Box>
+      <Box display="inline-flex" position="fixed" left="spacing.5" top="spacing.5">
+        <Dropdown>
+          <DropdownButton>Top Left Menu</DropdownButton>
+          <DropdownOverlay>
+            <ActionList surfaceLevel={3}>
+              <ActionListItem title="Apples" value="Apples" />
+              <ActionListItem title="Appricots" value="Appricots" />
+            </ActionList>
+          </DropdownOverlay>
+        </Dropdown>
+      </Box>
+      <Box display="inline-flex" position="fixed" right="spacing.5" top="spacing.5">
+        <Dropdown>
+          <DropdownButton>Top Right Menu</DropdownButton>
+          <DropdownOverlay>
+            <ActionList surfaceLevel={3}>
+              <ActionListItem title="Apples" value="Apples" />
+              <ActionListItem title="Appricots" value="Appricots" />
+            </ActionList>
+          </DropdownOverlay>
+        </Dropdown>
+      </Box>
+      <Box display="inline-flex" position="fixed" right="spacing.5" bottom="spacing.5">
+        <Dropdown>
+          <DropdownButton>Bottom Right Menu</DropdownButton>
+          <DropdownOverlay>
+            <ActionList surfaceLevel={3}>
+              <ActionListItem title="Apples" value="Apples" />
+              <ActionListItem title="Appricots" value="Appricots" />
+            </ActionList>
+          </DropdownOverlay>
+        </Dropdown>
+      </Box>
+      <Box display="inline-flex" position="fixed" left="spacing.5" bottom="spacing.5">
+        <Dropdown>
+          <DropdownButton>Bottom Left Menu</DropdownButton>
+          <DropdownOverlay>
+            <ActionList surfaceLevel={3}>
+              <ActionListItem title="Apples" value="Apples" />
+              <ActionListItem title="Appricots" value="Appricots" />
+            </ActionList>
+          </DropdownOverlay>
+        </Dropdown>
+      </Box>
+    </Box>
+  );
 };
 
 export const InternalLinkDropdown = (): React.ReactElement => {
