@@ -27,7 +27,7 @@ describe('<Dropdown />', () => {
     const { container, getByRole, queryByRole } = renderWithTheme(
       <Dropdown>
         <SelectInput label="Fruits" />
-        <DropdownOverlay>
+        <DropdownOverlay zIndex={1002}>
           <DropdownHeader title="Recent Searches" />
           <ActionList>
             <ActionListItem title="Apple" value="apple" />

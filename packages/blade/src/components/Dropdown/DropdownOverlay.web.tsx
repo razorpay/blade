@@ -32,6 +32,7 @@ const OVERLAY_ZINDEX = 1001;
 const _DropdownOverlay = ({
   children,
   testID,
+  zIndex = OVERLAY_ZINDEX,
 }: DropdownOverlayProps): React.ReactElement | null => {
   const { isOpen, triggererRef, triggererWrapperRef, dropdownTriggerer, setIsOpen } = useDropdown();
   const { theme } = useTheme();
@@ -90,7 +91,7 @@ const _DropdownOverlay = ({
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={refs.setFloating as any}
       style={floatingStyles}
-      zIndex={OVERLAY_ZINDEX}
+      zIndex={zIndex}
       display={isMounted ? 'flex' : 'none'}
     >
       <StyledDropdownOverlay

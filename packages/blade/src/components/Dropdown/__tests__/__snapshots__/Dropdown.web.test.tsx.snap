@@ -274,7 +274,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  z-index: 1001;
+  z-index: 1002;
 }
 
 .c21 {
