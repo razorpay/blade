@@ -3,7 +3,7 @@ import type { ComponentStory, Meta } from '@storybook/react';
 import { Dropdown, DropdownOverlay } from '..';
 import {
   getSimpleSelectCode,
-  WithBottomAlignedSelectStory,
+  WithAutoPositioningSelectStory,
   WithControlledMultiSelectStory,
   WithControlledSelectStory,
   WithHeaderFooterScroll,
@@ -106,10 +106,10 @@ export const WithRefUsage = (): React.ReactElement => {
   );
 };
 
-export const WithBottomAlignedSelect = (): React.ReactElement => {
+export const WithAutoPositioning = (): React.ReactElement => {
   return (
     <Sandbox padding="spacing.0" editorHeight="100vh">
-      {WithBottomAlignedSelectStory}
+      {WithAutoPositioningSelectStory}
     </Sandbox>
   );
 };

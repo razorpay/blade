@@ -6,7 +6,7 @@ import {
   WithControlledMenuStory,
   WithControlledMultiSelectMenuStory,
   WithLinkStory,
-  WithRightAlignedMenuStory,
+  WithAutoPositioningMenuStory,
   WithSimpleMenuStory,
 } from './stories';
 import { Sandbox } from '~utils/storybook/Sandbox';
@@ -65,10 +65,10 @@ export const WithLink = (): React.ReactElement => {
   );
 };
 
-export const WithRightAlignedMenu = (): React.ReactElement => {
+export const WithAutoPositioning = (): React.ReactElement => {
   return (
     <Sandbox padding="spacing.0" editorHeight="100vh">
-      {WithRightAlignedMenuStory}
+      {WithAutoPositioningMenuStory}
     </Sandbox>
   );
 };

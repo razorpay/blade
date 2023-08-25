@@ -46,6 +46,9 @@ const _DropdownOverlay = ({
     strategy: 'fixed',
     placement: 'bottom-start',
     elements: {
+      // Input triggers have their ref on internal input element but we want width height of overall visible input hence wrapperRef is needed
+      // We fallback to use `triggererRef` for triggers like button and link where wrapper is not needed
+      // Checkout: https://github.com/razorpay/blade/pull/1559#discussion_r1305438920
       reference: triggererWrapperRef.current ?? triggererRef.current,
     },
     middleware: [
