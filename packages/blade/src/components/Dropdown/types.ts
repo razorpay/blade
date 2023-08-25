@@ -10,6 +10,12 @@ type DropdownProps = {
 
 type DropdownOverlayProps = {
   children: React.ReactElement[] | React.ReactElement;
+  /**
+   * Sets the z-index of the DropdownOverlay
+   *
+   * @default 1001
+   */
+  zIndex?: number;
 } & TestID;
 
 export { DropdownProps, DropdownOverlayProps };
