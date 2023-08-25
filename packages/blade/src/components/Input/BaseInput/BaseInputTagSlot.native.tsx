@@ -1,9 +1,8 @@
 import React from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, Text as RNText } from 'react-native';
 import styled from 'styled-components';
 import type { BaseInputTagSlotProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
-import { Text } from '~components/Typography';
 
 const StyledScrollView = styled(ScrollView)((_props) => {
   return {
@@ -28,6 +27,7 @@ const ScrollableTagSlotContainer = ({
       ref={scrollViewRef}
       contentContainerStyle={{
         flexWrap: 'wrap',
+        position: 'relative',
       }}
       onScrollBeginDrag={() => {
         setIsScrolling(true);
@@ -35,15 +35,21 @@ const ScrollableTagSlotContainer = ({
       onScrollEndDrag={() => {
         setIsScrolling(false);
       }}
-      onTouchEndCapture={() => {
-        if (!isScrolling) {
-          handleOnClick?.({ name: '', value: '' });
-        }
-      }}
       horizontal={true}
       showsHorizontalScrollIndicator={tagRows === '1'}
       onContentSizeChange={() => scrollViewRef.current?.scrollToEnd({ animated: true })}
     >
+      {/* This creates a clickable layer behind tags so if user clicks empty area between of tags, it handles opening of Dropdown */}
+      <BaseBox
+        position="absolute"
+        height="100%"
+        width="100%"
+        onTouchEndCapture={() => {
+          if (!isScrolling) {
+            handleOnClick?.({ name: '', value: '' });
+          }
+        }}
+      />
       {children}
     </StyledScrollView>
   );
@@ -82,7 +88,14 @@ const BaseInputTagSlot = ({
       >
         {showAllTags ? tags : tags.slice(0, 2)}
         {invisibleTagsCount > 0 && !showAllTags ? (
-          <Text alignSelf="center">+{invisibleTagsCount} More</Text>
+          <RNText
+            onPress={() => {
+              handleOnClick?.({ name: '', value: '' });
+            }}
+            style={{ alignSelf: 'center' }}
+          >
+            +{invisibleTagsCount} More
+          </RNText>
         ) : null}
       </ScrollableTagSlotContainer>
     </BaseBox>
