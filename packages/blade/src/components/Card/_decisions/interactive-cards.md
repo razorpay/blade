@@ -37,10 +37,11 @@ To prevent this consumers can use `e.stopPropagation()` on the child buttons.
 
 ## Hoverable Card
 
-For hoverable card there are two things we need to solve:
+For hoverable card there are 3 things we need to solve:
 
 1. Actual visual hover indication, eg scalling up the card.
 2. Giving users control when the card is hovered.
+3. Mobile interaction
 
 No.1 point can be solved by providing an `isScaled` prop
 
@@ -94,6 +95,12 @@ In this method we don't provide isScaled prop.
 **Cons:**
 
 - Users can still know when the `onHover` is triggered but users won't be able to manually set the state of the Card to be `scaled` (eg isScaled={true}), imagine if user wants a card to be `scaled` when user selects it, they won't be able to achive that. (now if we say this is not a valid pattern then fine or else we need further discussion on this)
+
+**Mobile Interaction:** 
+
+In mobile devices there can't be any hover interaction, thus we will have to change the interaction to be on `tap-and-hold` instead, if consumer taps the card or presses the card it will scale and provide feedback to the user. 
+
+And instead of scaling up, we will scale down the card so that the interaction feels more natural as it's getting `pressed-in`
 
 **Conclusion:** 
 We will go ahead with Method 2 because of the reason mentioned above and we will also be able to keep the behaviour consistent + control how the behaviour would work in mobile devices (eg we can say instead of hover we can do pressed state changes the scale)
