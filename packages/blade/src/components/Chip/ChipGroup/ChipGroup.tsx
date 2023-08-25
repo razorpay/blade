@@ -20,7 +20,7 @@ const ChipGroup = ({
   onChange,
   value,
   size = 'small',
-  intent = 'neutral',
+  intent = 'none',
   testID,
   selectionType = 'single',
   ...styledProps

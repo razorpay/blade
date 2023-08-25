@@ -88,14 +88,14 @@ const chipColorTokens: ChipColorTokens = {
   text: {
     unchecked: 'surface.text.subtle.lowContrast',
     disabled: 'surface.text.placeholder.lowContrast',
-    neutral: 'brand.primary.500',
+    none: 'brand.primary.500',
     positive: 'feedback.text.positive.lowContrast',
     negative: 'feedback.text.negative.lowContrast',
   },
   icon: {
     unchecked: 'surface.text.subtle.lowContrast',
     disabled: 'surface.text.placeholder.lowContrast',
-    neutral: 'brand.primary.500',
+    none: 'brand.primary.500',
     positive: 'feedback.icon.positive.lowContrast',
     negative: 'feedback.icon.negative.lowContrast',
   },
@@ -106,7 +106,7 @@ const chipColorTokens: ChipColorTokens = {
       focus: 'brand.gray.a50.lowContrast',
       disabled: 'transparent',
     },
-    neutral: {
+    none: {
       default: 'brand.primary.300',
       hover: 'brand.primary.400',
       focused: 'brand.primary.400',
@@ -130,7 +130,7 @@ const chipColorTokens: ChipColorTokens = {
       default: 'brand.gray.400.lowContrast',
       disabled: 'brand.gray.400.lowContrast',
     },
-    neutral: {
+    none: {
       default: 'brand.primary.500',
       hover: 'brand.primary.500',
       focused: 'brand.primary.500',
@@ -155,11 +155,11 @@ const getChipHoverTokens = (intent: ChipGroupProps['intent']): SelectorInputHove
   return {
     default: {
       background: {
-        checked: `colors.${chipColorTokens.background[intent || 'neutral'].hover}` as never,
+        checked: `colors.${chipColorTokens.background[intent || 'none'].hover}` as never,
         unchecked: 'colors.brand.gray.a50.lowContrast',
       },
       border: {
-        checked: `colors.${chipColorTokens.border[intent || 'neutral'].hover}` as never,
+        checked: `colors.${chipColorTokens.border[intent || 'none'].hover}` as never,
         unchecked: 'colors.brand.gray.500.lowContrast',
       },
     },

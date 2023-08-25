@@ -1,7 +1,6 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import React from 'react';
-import { Title } from '@storybook/addon-docs';
-import { Heading, Text } from '../Typography';
+import { Heading, Text, Title } from '../Typography';
 import type { ChipGroupProps } from './ChipGroup/ChipGroup';
 import { ChipGroup as ChipGroupComponent } from './ChipGroup/ChipGroup';
 import { Chip as ChipComponent } from './Chip';
@@ -14,7 +13,7 @@ import {
 } from '~components/Icons';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
-import type { BladeElementRef } from '~utils/useBladeInnerRef';
+import type { BladeElementRef } from '~utils/types';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
@@ -264,18 +263,44 @@ const AllChipSizesTemplate: ComponentStory<typeof ChipGroupComponent> = ({ child
     <Box>
       {sizes.map((size, index) => (
         <Box key={index}>
-          <Heading size="medium">{size}</Heading>
-          <Text marginBottom="spacing.3" marginTop="spacing.3" size="medium">
-            Select Business type:
-          </Text>
+          <Title size="medium" marginBottom="spacing.3">
+            {size}
+          </Title>
+          <Box marginBottom="spacing.3">
+            <Heading size="small">Without Icon</Heading>
+            <Text marginBottom="spacing.3" marginTop="spacing.3" size="medium">
+              Select Business type:
+            </Text>
 
-          <ChipGroupComponent size={size as ChipGroupProps['size']} {...args}>
-            {chipValues.map((chipValue: string) => (
-              <ChipComponent key={chipValue} value={chipValue}>
-                {chipValue}
+            <ChipGroupComponent size={size as ChipGroupProps['size']} {...args}>
+              {chipValues.map((chipValue: string) => (
+                <ChipComponent key={chipValue} value={chipValue}>
+                  {chipValue}
+                </ChipComponent>
+              ))}
+            </ChipGroupComponent>
+          </Box>
+          <Box marginBottom="spacing.3">
+            <Heading size="small">with Icon</Heading>
+            <Text marginBottom="spacing.3" marginTop="spacing.3" size="medium">
+              What other capabilities are you looking for?
+            </Text>
+
+            <ChipGroupComponent
+              accessibilityLabel="What other capabilities are you looking for?"
+              size={size as ChipGroupProps['size']}
+            >
+              <ChipComponent value="payment-links" icon={PaymentLinksIcon}>
+                Automated Payment Links
               </ChipComponent>
-            ))}
-          </ChipGroupComponent>
+              <ChipComponent value="wallet" icon={SmartphoneIcon}>
+                Wallet on My App
+              </ChipComponent>
+              <ChipComponent value="offers" icon={OffersIcon}>
+                Offer discounts, Pay Later & EMI options
+              </ChipComponent>
+            </ChipGroupComponent>
+          </Box>
         </Box>
       ))}
     </Box>

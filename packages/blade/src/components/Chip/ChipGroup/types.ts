@@ -55,9 +55,9 @@ type ChipGroupProps = {
   /**
    * Sets the ChipGroups's visual intent, it will propagate down to all the Chips
    *
-   * @default "neutral"
+   * @default "none"
    */
-  intent?: 'positive' | 'negative' | 'neutral';
+  intent?: 'positive' | 'negative' | 'none';
 } & TestID &
   StyledPropsBlade;
 

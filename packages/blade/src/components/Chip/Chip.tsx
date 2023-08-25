@@ -18,8 +18,7 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 import BaseBox from '~components/Box/BaseBox';
 import { SelectorLabel } from '~components/Form/Selector/SelectorLabel';
 import { SelectorInput } from '~components/Form/Selector/SelectorInput';
-import type { BladeElementRef } from '~utils/useBladeInnerRef';
-import type { StringChildrenType, TestID } from '~utils/types';
+import type { BladeElementRef, StringChildrenType, TestID } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { throwBladeError } from '~utils/logger';
 import { useCheckbox } from '~components/Checkbox/useCheckbox';
@@ -53,7 +52,7 @@ type ChipProps = {
    * Sets the Chip's visual intent
    *
    */
-  intent?: 'positive' | 'negative' | 'neutral';
+  intent?: 'positive' | 'negative' | 'none';
   /**
    * If `true`, the Chip will be disabled
    *
