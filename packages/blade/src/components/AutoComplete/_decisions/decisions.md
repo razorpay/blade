@@ -17,7 +17,7 @@ A SelectInput where you can type inside the input to filter through the items.
 | **Props**          | **Description**                                                                                                                             | **Type**                                                        | **Default Value** |
 | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- | ----------------- |
 | label              | label of input                                                                                                                              | string                                                          |                   |
-| accessibilityLabel | aria-label of input when label is not defined                                                                                               | string                                                          |                   |
+| accessibilityLabel | aria-label of input when label is not defined (required when label is not passed)                                                           | string                                                          |                   |
 | labelPosition      | Label Position like other inputs but with new option `inside-input`. This value new value will be added to `AutoComplete` and `SelectInput` | 'top' \| 'left' \| 'inside-input'                               | 'top'             |
 | maxRows            | height restrictions of input ([Checkout "Inactive - Active States" Usage](#with-different-inactive---active-states))                        | 'single' \| 'multiple' \| 'expandable'                          | 'multiple'        |
 | inputValue         | Controlled state of the value inside input                                                                                                  | string                                                          |                   |
@@ -174,11 +174,7 @@ const ControlledAutoComplete = () => {
 
 When possible selections are more than 10, it is advised to put tags outside of the Input.
 
-> **Note**
->
-> This screenshot is outdated. The input will show "Status (13 Selected)" instead of just "Status". Will update this soon.
-
-<img width="700" alt="image" src="https://github.com/razorpay/blade/assets/30949385/8906eb6c-fae0-4e99-bd3f-d7e0edc60537">
+<img width="700" alt="image" src="https://github.com/razorpay/blade/assets/30949385/7ed7c93f-e434-4d29-ad10-222906810b7f">
 
 **Code**
 
@@ -223,11 +219,11 @@ While things are flawless when you give visible label (highly recommended), If t
 >
 > Number of items shown in inactive state is auto-calculated based on height and width of the input.
 
-| Code                                    | Inactive                                                                                                                   | Active                                                                                                                     |
-| --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| `<AutoComplete maxRows="single" />`     | <img width="266" alt="image" src="https://github.com/razorpay/blade/assets/30949385/74b849f3-f1b9-4922-b717-70ffc7ffd56e"> | <img width="276" alt="image" src="https://github.com/razorpay/blade/assets/30949385/055bc4f4-fb57-4129-b27a-0f1966c8ad26"> |
-| `<AutoComplete maxRows="multiple" />`   | <img width="420" alt="image" src="https://github.com/razorpay/blade/assets/30949385/ed71318c-889e-407e-86bf-fe4f5902dedf"> | <img width="416" alt="image" src="https://github.com/razorpay/blade/assets/30949385/8a636a3c-2afe-43a2-b283-c5ef40c14362"> |
-| `<AutoComplete maxRows="expandable" />` | <img width="385" alt="image" src="https://github.com/razorpay/blade/assets/30949385/21b63bc4-804a-4180-953c-119a2b676cd5"> | <img width="394" alt="image" src="https://github.com/razorpay/blade/assets/30949385/1131a1bd-2989-4bfc-b659-207088be3bfb"> |
+| Code                                    | Description                                                 | Inactive                                                                                                                   | Active                                                                                                                     |
+| --------------------------------------- | ----------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `<AutoComplete maxRows="single" />`     | Input always stays 1 line                                   | <img width="266" alt="image" src="https://github.com/razorpay/blade/assets/30949385/74b849f3-f1b9-4922-b717-70ffc7ffd56e"> | <img width="276" alt="image" src="https://github.com/razorpay/blade/assets/30949385/055bc4f4-fb57-4129-b27a-0f1966c8ad26"> |
+| `<AutoComplete maxRows="multiple" />`   | Input can go upto 3 lines                                   | <img width="420" alt="image" src="https://github.com/razorpay/blade/assets/30949385/ed71318c-889e-407e-86bf-fe4f5902dedf"> | <img width="416" alt="image" src="https://github.com/razorpay/blade/assets/30949385/8a636a3c-2afe-43a2-b283-c5ef40c14362"> |
+| `<AutoComplete maxRows="expandable" />` | Input is 1 line initially but expands upto 3 lines on click | <img width="385" alt="image" src="https://github.com/razorpay/blade/assets/30949385/21b63bc4-804a-4180-953c-119a2b676cd5"> | <img width="394" alt="image" src="https://github.com/razorpay/blade/assets/30949385/1131a1bd-2989-4bfc-b659-207088be3bfb"> |
 
 ## Accessibility
 
