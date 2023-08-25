@@ -274,6 +274,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  z-index: 1001;
 }
 
 .c21 {
@@ -1102,6 +1103,7 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  z-index: 1001;
 }
 
 .c7 {
