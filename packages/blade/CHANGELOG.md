@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 10.3.1
+
+### Patch Changes
+
+- 5f500f3d: fix(DropdownOverlay): Dropdown clipping issue in overflow scroll containers
+
 ## 10.3.0
 
 ### Minor Changes
