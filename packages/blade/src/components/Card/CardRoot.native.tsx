@@ -67,18 +67,16 @@ const CardRoot = ({
         {...makeAccessible({ label: accessibilityLabel, selected: isSelected })}
         style={styles}
         onPressIn={() => {
-          setIsPressed(true);
-        }}
-        onPressOut={() => {
-          setIsPressed(false);
-        }}
-        onPress={() => {
           if (onClick) {
             onClick();
           }
+          setIsPressed(true);
+        }}
+        onPressOut={() => {
           if (href) {
             void openURL(href);
           }
+          setIsPressed(false);
         }}
       >
         <StyledCardRoot as={undefined} isSelected={isSelected} {...props}>
