@@ -14,16 +14,16 @@ A SelectInput where you can type inside the input to filter through the items.
 >
 > Below this section, I have added [examples of common AutoComplete usage](#usage). Check them out to understand usage of these props in details.
 
-| **Props**          | **Description**                                                                                                      | **Type**                                                        | **Default Value** |
-| ------------------ | -------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- | ----------------- |
-| label              | label of input                                                                                                       | string                                                          |                   |
-| accessibilityLabel | aria-label of input when label is not defined                                                                        | string                                                          |                   |
-| labelPosition      | Label Position like other inputs but with new option `inside-input`                                                  | 'top' \| 'left' \| 'inside-input'                               | 'top'             |
-| maxRows            | height restrictions of input ([Checkout "Inactive - Active States" Usage](#with-different-inactive---active-states)) | 'single' \| 'multiple' \| 'expandable'                          | '3'               |
-| inputValue         | Controlled state of the value inside input                                                                           | string                                                          |                   |
-| onInputValueChange | Callback when input value changes                                                                                    | (inputValue: string) => void                                    |                   |
-| value              | Controlled state of the selected items ([Checkout "Controlled AutoComplete" Usage](#controlled-autocomplete))        | string[]                                                        |                   |
-| onChange           | Callback when selected items change                                                                                  | ({ name, values }: { name: string; values: string[] } ) => void |                   |
+| **Props**          | **Description**                                                                                                                             | **Type**                                                        | **Default Value** |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- | ----------------- |
+| label              | label of input                                                                                                                              | string                                                          |                   |
+| accessibilityLabel | aria-label of input when label is not defined                                                                                               | string                                                          |                   |
+| labelPosition      | Label Position like other inputs but with new option `inside-input`. This value new value will be added to `AutoComplete` and `SelectInput` | 'top' \| 'left' \| 'inside-input'                               | 'top'             |
+| maxRows            | height restrictions of input ([Checkout "Inactive - Active States" Usage](#with-different-inactive---active-states))                        | 'single' \| 'multiple' \| 'expandable'                          | 'multiple'        |
+| inputValue         | Controlled state of the value inside input                                                                                                  | string                                                          |                   |
+| onInputValueChange | Callback when input value changes                                                                                                           | (inputValue: string) => void                                    |                   |
+| value              | Controlled state of the selected items ([Checkout "Controlled AutoComplete" Usage](#controlled-autocomplete))                               | string[]                                                        |                   |
+| onChange           | Callback when selected items change                                                                                                         | ({ name, values }: { name: string; values: string[] } ) => void |                   |
 
 ## Usage
 
@@ -61,13 +61,23 @@ There are 3 controlled states that are relevant to AutoComplete
 3. Controlled state of selected items
 
 ```jsx
+const [cities, setCities] = React.useState(allCitiesData);
+const [selections, setSelections] = React.useState([]);
+
+// ...
+
 <AutoComplete
+  // For controlling the selections
+  value={selections}
+  onChange={({ name, values }) => {
+    setSelections(values)
+  }}
   // For controlling the input value
   inputValue={}
-  onInputValueChange={(inputValue) => {}}
-  // For controlling the selections
-  value={}
-  onChange={({ name, values }) => {}}
+  onInputValueChange={(inputValue) => {
+    // Filter and set the state here
+    setCities(allCitiesData.filter((city) => city.includes(inputValue)));
+  }}
 />
 
 // ...
@@ -136,11 +146,9 @@ const ControlledAutoComplete = () => {
 
 ### In BottomSheet
 
-> **Warning**
+> **Note**
 >
-> We will have to turn BottomSheetHeader (and maybe BaseHeader) to a slot to allow adding Input element there.
-
-**Open Question:** Should we also remove `leading` `trailing` etc props from Header? since same can be implemented inside the slot. This is what we follow for Footer.
+> We will be turning BottomSheetHeader (and BaseHeader) to a slot to allow adding Input element there. The existing prop will remain and work as is without any breaking change. The children slot will come at the end of the header.
 
 <img height="200" alt="image" src="https://github.com/razorpay/blade/assets/30949385/6867b09a-1ae2-4c4a-a977-e254b45b5282">
 
@@ -164,7 +172,7 @@ const ControlledAutoComplete = () => {
 
 ### With Tags Outside
 
-When possible selections are more than 11, it is advised to put tags outside of the Input.
+When possible selections are more than 10, it is advised to put tags outside of the Input.
 
 > **Note**
 >
@@ -242,6 +250,7 @@ AutoComplete will contiue to follow [same keyboard navigations as SelectInput](h
 - **Q1:** Is everyone sold on `selected` and `onSelectChange` API? It is inconsistent with SelectInput. Might have to change it in SelectInput as well.
   - Ans: Answered in Q4's answer. Its not inconsistent anymore
 - **Q2:** What to do with BottomSheetHeader (and BaseHeader)? Should we make it slot like Footer? Should we remove title, subtitle, etc?
+  - Ans: Nope we're not removing anything. We will just also start accepting children in header to allow adding AutoComplete
 - **Q3:** `rows: '1' | '3' | 'expandable'` vs `numberOfLines: '1' | '3' | 'expandable'`ˀ vs `height: 'single-line' | 'multi-line' | 'expandable'`
   - Ans: We're going with `maxRows: 'single' | 'multiple' | 'expandable'`
 - **Q4:** `onSelectChange` vs `onSelectionChange` vs `onItemSelectionChange`
