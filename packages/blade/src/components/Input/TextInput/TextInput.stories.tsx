@@ -8,7 +8,6 @@ import iconMap from '~components/Icons/iconMap';
 import BaseBox from '~components/Box/BaseBox';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
-import type { BladeElementRef } from '~utils/useBladeInnerRef';
 import { Button } from '~components/Button';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
@@ -453,7 +452,7 @@ export const TextInputKitchenSink = TextInputKitchenSinkTemplate.bind({});
 
 export const inputRef: ComponentStory<typeof TextInputComponent> = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const inputRef = React.useRef<BladeElementRef>(null);
+  const inputRef = React.useRef<HTMLInputElement>(null);
 
   return (
     <BaseBox gap="spacing.3" display="flex" alignItems="end">

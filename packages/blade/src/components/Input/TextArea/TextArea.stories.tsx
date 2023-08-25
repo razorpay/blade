@@ -7,7 +7,6 @@ import BaseBox from '~components/Box/BaseBox';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Button } from '~components/Button';
-import type { BladeElementRef } from '~utils/useBladeInnerRef';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const propsCategory = {
@@ -385,7 +384,7 @@ export const TextAreaKitchenSink = TextAreaKitchenSinkTemplate.bind({});
 
 export const inputRef: ComponentStory<typeof TextAreaComponent> = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const inputRef = React.useRef<BladeElementRef>(null);
+  const inputRef = React.useRef<HTMLTextAreaElement>(null);
 
   return (
     <BaseBox gap="spacing.3" display="flex" alignItems="end">

@@ -9,7 +9,6 @@ import { Radio as RadioComponent } from './Radio';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import BaseBox from '~components/Box/BaseBox';
-import type { BladeElementRef } from '~utils/useBladeInnerRef';
 import { Button } from '~components/Button';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
@@ -264,7 +263,7 @@ export const KitchenSink = (): React.ReactElement => {
 
 export const radioRef: ComponentStory<typeof RadioComponent> = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const radioRef = React.useRef<BladeElementRef>(null);
+  const radioRef = React.useRef<HTMLInputElement>(null);
 
   return (
     <BaseBox gap="spacing.3" display="flex" alignItems="center">
