@@ -22,6 +22,7 @@ import BaseBox from '~components/Box/BaseBox';
 
 const OVERLAY_OFFSET: number = size['8'];
 const OVERLAY_PADDING: number = size['12']; // doesn't have to be exact. Just rough padding for floating ui to decide to show overlay on top or bottom
+const OVERLAY_ZINDEX = 1001;
 
 /**
  * Overlay of dropdown
@@ -88,7 +89,8 @@ const _DropdownOverlay = ({
     <BaseBox
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={refs.setFloating as any}
-      style={{ ...floatingStyles }}
+      style={floatingStyles}
+      zIndex={OVERLAY_ZINDEX}
       display={isMounted ? 'flex' : 'none'}
     >
       <StyledDropdownOverlay
