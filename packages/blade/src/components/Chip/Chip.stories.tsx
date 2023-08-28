@@ -18,6 +18,8 @@ import { Button } from '~components/Button';
 import { Box } from '~components/Box';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import iconMap from '~components/Icons/iconMap';
+import { Dropdown, DropdownButton, DropdownOverlay } from '~components/Dropdown';
+import { ActionList, ActionListItem, ActionListSection } from '~components/ActionList';
 
 const Page = (): React.ReactElement => {
   return (
@@ -107,7 +109,6 @@ export default {
     },
     onChange: {
       description: 'The callback invoked on any state change within the `ChipGroup`.',
-      /// type: `,
       table: {
         category: propsCategory.CHIP_GROUP,
         type: {
@@ -296,16 +297,29 @@ const ControlledSingleSelectionTemplate: ComponentStory<typeof ChipGroupComponen
   const chipValues = ['Proprietorship', 'Public', 'Small Business'];
   const [value, setValue] = React.useState('Proprietorship');
   return (
-    <Box>
-      <Text marginBottom="spacing.3" marginTop="spacing.3">
-        Select Business type:
-      </Text>
+    <Box display="flex">
+      <Dropdown marginRight="spacing.4">
+        <DropdownButton size="small">Business Type</DropdownButton>
+        <DropdownOverlay>
+          <ActionList>
+            {chipValues.map((chipValue: string) => (
+              <ActionListItem
+                key={chipValue}
+                title={chipValue}
+                value={chipValue}
+                onClick={({ name }) => setValue(name)}
+                isSelected={value === chipValue}
+              />
+            ))}
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
 
       <ChipGroupComponent
+        {...args}
         selectionType="single"
         value={value}
         onChange={({ values }) => setValue(values[0])}
-        {...args}
       >
         {chipValues.map((chipValue: string) => (
           <ChipComponent key={chipValue} value={chipValue}>
@@ -313,10 +327,6 @@ const ControlledSingleSelectionTemplate: ComponentStory<typeof ChipGroupComponen
           </ChipComponent>
         ))}
       </ChipGroupComponent>
-
-      <Text marginBottom="spacing.3" marginTop="spacing.3">
-        Selected value is &quot;{value}&quot;
-      </Text>
     </Box>
   );
 };
@@ -331,15 +341,31 @@ const ControlledMultiSelectionTemplate: ComponentStory<typeof ChipGroupComponent
   const chipValues = ['Refunded', 'Failed', 'Pending', 'In Progress'];
   const [values, setValues] = React.useState(['In Progress']);
   return (
-    <Box>
-      <Text marginBottom="spacing.3" marginTop="spacing.3">
-        Quick Filters:
-      </Text>
-
+    <Box display="flex">
+      <Dropdown marginRight="spacing.4">
+        <DropdownButton size="small">Quick Filters:</DropdownButton>
+        <DropdownOverlay>
+          <ActionList>
+            {chipValues.map((chipValue: string) => (
+              <ActionListItem
+                key={chipValue}
+                title={chipValue}
+                value={chipValue}
+                onClick={({ name, value }) =>
+                  value
+                    ? setValues(values.filter((v) => v !== name))
+                    : setValues(values.concat([name]))
+                }
+                isSelected={values.includes(chipValue)}
+              />
+            ))}
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
       <ChipGroupComponent
+        {...args}
         selectionType="multiple"
         onChange={({ values }) => setValues(values)}
-        {...args}
         value={values}
       >
         {chipValues.map((chipValue: string) => (
@@ -348,10 +374,6 @@ const ControlledMultiSelectionTemplate: ComponentStory<typeof ChipGroupComponent
           </ChipComponent>
         ))}
       </ChipGroupComponent>
-
-      <Text marginBottom="spacing.3" marginTop="spacing.3">
-        Selected filters are &quot;{values.join(', ')}&quot;
-      </Text>
     </Box>
   );
 };
