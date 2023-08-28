@@ -5,6 +5,11 @@ import type { LinkOverlayProps } from './types';
 const LinkOverlay = styled.a<LinkOverlayProps>(
   (): CSSObject => {
     return {
+      // Need this to reset the button styles
+      all: 'unset',
+      appearance: 'none',
+      border: 0,
+      padding: 0,
       position: 'static',
       '&:before': {
         content: "''",

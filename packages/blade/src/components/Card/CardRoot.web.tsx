@@ -1,31 +1,39 @@
 import styled from 'styled-components';
+import React from 'react';
 import type { CardRootProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
 import { castWebType, makeMotionTime } from '~utils';
 import { makeAccessible } from '~utils/makeAccessible';
+import { useIsMobile } from '~utils/useIsMobile';
 
-const StyledCardRoot = styled(BaseBox)<CardRootProps>(
-  ({ theme, isSelected, isFocused, scaleOnHover }) => {
+const StyledCardRoot = styled(BaseBox)<CardRootProps & { isPressed: boolean; isMobile: boolean }>(
+  ({ theme, isSelected, isFocused, scaleOnHover, isPressed, isMobile }) => {
     const selectedColor = isSelected ? theme.colors.brand.primary[500] : 'transparent';
+    const selectedRing = `0px 0px 0px ${theme.border.width.thick}px ${selectedColor}`;
+    //  focused state
+    const focusRing = isFocused ? `, 0px 0px 0px 4px ${theme.colors.brand.primary[400]}` : '';
+
     return {
       // Selected state
       // TODO: use thicker
-      boxShadow: `0px 0px 0px ${theme.border.width.thick}px ${selectedColor}`,
+      boxShadow: `${selectedRing}${focusRing}`,
       transitionDuration: castWebType(makeMotionTime(theme.motion.duration.xquick)),
       transitionTimingFunction: castWebType(theme.motion.easing.standard.effective),
       transitionProperty: 'transform, box-shadow',
 
-      // link focused state
-      ...(isFocused && {
-        boxShadow: `0px 0px 0px 4px ${theme.colors.brand.primary[400]}`,
-      }),
+      // pressed state for mobile only
+      ...(isMobile &&
+        isPressed && {
+          transform: 'scale(0.95)',
+        }),
 
-      // Hover state
-      ...(scaleOnHover && {
-        '&:hover': {
-          transform: 'scale(1.05)',
-        },
-      }),
+      // Hover state for desktop only
+      ...(!isMobile &&
+        scaleOnHover && {
+          '&:hover': {
+            transform: 'scale(1.05)',
+          },
+        }),
 
       // uplift all the nested links so they receive clicks and events (except the LinkOverlay)
       // https://www.sarasoueidan.com/blog/nested-links
@@ -43,11 +51,22 @@ const CardRoot = ({
   children,
   ...props
 }: CardRootProps): React.ReactElement => {
+  const isMobile = useIsMobile();
+  const [isPressed, setIsPressed] = React.useState(false);
+
   return (
     <StyledCardRoot
       as={as}
       {...props}
-      {...makeAccessible({ label: as === 'label' ? accessibilityLabel : undefined })}
+      isMobile={isMobile}
+      isPressed={isPressed}
+      onTouchStart={() => setIsPressed(true)}
+      onTouchEnd={() => setIsPressed(false)}
+      onMouseDown={() => setIsPressed(true)}
+      onMouseUp={() => setIsPressed(false)}
+      {...makeAccessible({
+        label: as === 'label' ? accessibilityLabel : undefined,
+      })}
     >
       {children}
     </StyledCardRoot>

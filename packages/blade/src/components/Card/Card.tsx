@@ -3,6 +3,7 @@ import { CardSurface } from './CardSurface';
 import { CardProvider, useVerifyInsideCard, useVerifyAllowedComponents } from './CardContext';
 import { LinkOverlay } from './LinkOverlay';
 import { CardRoot } from './CardRoot';
+import type { LinkOverlayProps } from './types';
 import type { SpacingValueType } from '~components/Box/BaseBox';
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
@@ -14,6 +15,7 @@ import type { Elevation } from '~tokens/global';
 import type { SurfaceLevels } from '~tokens/theme/theme';
 import type { BoxProps } from '~components/Box';
 import { makeAccessible } from '~utils/makeAccessible';
+import { isReactNative } from '~utils';
 
 export const ComponentIds = {
   CardHeader: 'CardHeader',
@@ -151,6 +153,17 @@ const Card = ({
     ComponentIds.CardFooter,
   ]);
 
+  const linkOverlayProps: LinkOverlayProps = {
+    ...metaAttribute({ name: 'card-link-overlay' }),
+    ...makeAccessible({ label: accessibilityLabel, pressed: isSelected }),
+    onFocus: () => {
+      setIsFocused(true);
+    },
+    onBlur: () => {
+      setIsFocused(false);
+    },
+  };
+
   return (
     <CardProvider>
       <CardRoot
@@ -160,7 +173,8 @@ const Card = ({
         isSelected={isSelected}
         isFocused={isFocused}
         borderRadius="medium"
-        onClick={onClick}
+        // on react native we need to pass onClick to root, because we don't need the LinkOverlay in RN
+        onClick={isReactNative() ? onClick : undefined}
         width={width}
         height={height}
         href={href}
@@ -176,19 +190,8 @@ const Card = ({
           elevation={elevation}
           textAlign={'left' as never}
         >
-          {href ? (
-            <LinkOverlay
-              {...metaAttribute({ name: 'card-link-overlay' })}
-              {...makeAccessible({ label: accessibilityLabel })}
-              onFocus={() => {
-                setIsFocused(true);
-              }}
-              onBlur={() => {
-                setIsFocused(false);
-              }}
-              href={href}
-            />
-          ) : null}
+          {href ? <LinkOverlay href={href} {...linkOverlayProps} /> : null}
+          {onClick ? <LinkOverlay as="button" onClick={onClick} {...linkOverlayProps} /> : null}
           {children}
         </CardSurface>
       </CardRoot>

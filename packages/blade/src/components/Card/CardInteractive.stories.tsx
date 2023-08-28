@@ -16,7 +16,7 @@ import {
   CardHeaderCounter,
   CardHeaderBadge,
 } from '.';
-import { Code, Text } from '~components/Typography';
+import { Code, Text, Title } from '~components/Typography';
 import { RupeeIcon } from '~components/Icons';
 import { Link } from '~components/Link';
 import { Box } from '~components/Box';
@@ -24,13 +24,151 @@ import { Button } from '~components/Button';
 import { VisuallyHidden } from '~components/VisuallyHidden';
 import { Amount } from '~components/Amount';
 import { isReactNative } from '~utils';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
+import { Sandbox } from '~utils/storybook/Sandbox';
+
+const Page = (): React.ReactElement => {
+  return (
+    <StoryPageWrapper
+      componentName="Interactive Card"
+      componentDescription="Enhancing the Card component to add additional interactions and behaviour. This includes making the card clickable, hoverable, linkable, selectable and more."
+      figmaURL={{
+        paymentTheme:
+          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=21248%3A400833&t=ZCWT255jVK78xf1J-4',
+        bankingTheme:
+          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=12791%3A336279&t=ZCWT255jVK78xf1J-4',
+      }}
+    >
+      <Title>Usage</Title>
+      <Sandbox editorHeight={500}>
+        {`
+        import React from 'react';
+        import { Card, CardBody, Box, Text, Amount, VisuallyHidden } from '@razorpay/blade/components';
+
+        type HiddenInputProps = {
+          onChange: (value: string) => void;
+          value: string;
+          name: string;
+          type?: string;
+        }
+        const HiddenInput = ({
+          onChange,
+          value,
+          name,
+          type,
+        }: HiddenInputProps): React.ReactElement => {
+          return (
+            <VisuallyHidden>
+              <input
+                type={type ?? 'radio'}
+                onChange={(e) => {
+                  onChange(e.target.value);
+                }}
+                name={name}
+                value={value}
+              />
+            </VisuallyHidden>
+          );
+        };
+
+        const App = (): React.ReactElement => {
+          const [selected, setSelected] = React.useState('free');
+
+          return (
+            <Box display="flex" flexWrap="wrap" gap="spacing.5">
+              <Card
+                as="label"
+                accessibilityLabel="Free Tier"
+                scaleOnHover
+                isSelected={selected === 'free'}
+              >
+                <CardBody>
+                  <HiddenInput
+                    onChange={(value) => setSelected(value)}
+                    value="free"
+                    name="pricing-card"
+                  />
+                  <Amount marginBottom="spacing.1" value={0} currency="USD" size="heading-large-bold" />
+                  <Box paddingX="spacing.2">
+                    <Text marginBottom="spacing.3" size="large" type="subtle">
+                      Free
+                    </Text>
+                    <Text>
+                      For individuals or teams just getting started with payments. No setup fees, no
+                      monthly or annual fees.
+                    </Text>
+                  </Box>
+                </CardBody>
+              </Card>
+              <Card
+                as="label"
+                accessibilityLabel="Standard Tier"
+                scaleOnHover
+                isSelected={selected === 'standard'}
+              >
+                <CardBody>
+                  <HiddenInput
+                    onChange={(value) => setSelected(value)}
+                    value="standard"
+                    name="pricing-card"
+                  />
+                  <Amount marginBottom="spacing.1" value={10} currency="USD" size="heading-large-bold" />
+                  <Box paddingX="spacing.2">
+                    <Text marginBottom="spacing.3" size="large" type="subtle">
+                      Standard
+                    </Text>
+                    <Text>
+                      For teams that are scaling up and need advanced features like payment failure.
+                    </Text>
+                  </Box>
+                </CardBody>
+              </Card>
+              <Card
+                as="label"
+                accessibilityLabel="Premium Tier"
+                scaleOnHover
+                isSelected={selected === 'premium'}
+                height="100%"
+              >
+                <CardBody>
+                  <HiddenInput
+                    onChange={(value) => setSelected(value)}
+                    value="premium"
+                    name="pricing-card"
+                  />
+                  <Amount marginBottom="spacing.1" value={20} currency="USD" size="heading-large-bold" />
+                  <Box paddingX="spacing.2">
+                    <Text marginBottom="spacing.3" size="large" type="subtle">
+                      Premium
+                    </Text>
+                    <Text>
+                      Best suited for businesses that need a dedicated account manager and 24x7 support.
+                    </Text>
+                  </Box>
+                </CardBody>
+              </Card>
+            </Box>
+          );
+        };
+
+        export default App;
+        `}
+      </Sandbox>
+    </StoryPageWrapper>
+  );
+};
 
 export default {
   title: 'Components/Card/Interactive',
   component: Card,
+  parameters: {
+    docs: {
+      page: Page,
+    },
+  },
 } as Meta<CardProps>;
 
-const CardTemplate = ({ ...args }): React.ReactElement => {
+const CardTemplate = (): React.ReactElement => {
   const [selected, setSelected] = React.useState(false);
 
   return (
@@ -39,16 +177,14 @@ const CardTemplate = ({ ...args }): React.ReactElement => {
         console.log('Hovered');
       }}
       scaleOnHover
-      width={{ base: '400px', s: '100%' }}
+      width={{ s: '100%', m: '400px' }}
       isSelected={selected}
       onClick={() => setSelected(!selected)}
-      surfaceLevel={args.surfaceLevel}
-      elevation={args.elevation}
-      padding={args.padding}
+      accessibilityLabel="Payment Pages Card"
     >
       <CardHeader>
         <CardHeaderLeading
-          title="Card Header"
+          title="Payment Pages"
           subtitle="Card Header Subtitle"
           prefix={<CardHeaderIcon icon={RupeeIcon} />}
           suffix={<CardHeaderCounter value={12} />}
@@ -56,7 +192,10 @@ const CardTemplate = ({ ...args }): React.ReactElement => {
         <CardHeaderTrailing visual={<CardHeaderBadge variant="positive">NEW</CardHeaderBadge>} />
       </CardHeader>
       <CardBody>
-        <Text>Hello world</Text>
+        <Text>
+          Share payment link via an email, SMS, messenger, chatbot etc. and get paid immediately.
+          Accepting payments from customers is now just a link away.
+        </Text>
       </CardBody>
       <CardFooter>
         <CardFooterLeading title="Footer" subtitle="Footer Subtitle" />
@@ -80,26 +219,28 @@ export const ClickableCard = (): React.ReactElement => {
         <Text>
           Cards can be made clickable by passing the <Code size="medium">onClick</Code> prop.
         </Text>
-        <Text marginTop="spacing.3">
-          If you have nested elements inside the card which have event listeners attached to it, by
-          default the events will propagate to the parent element, if you want to stop the event you
-          can use <Code size="medium">event.stopPropagation()</Code>.
+        <Text>
+          You will also need to pass the <Code size="medium">accessibilityLabel</Code> to make the
+          card accessible to screen readers.
         </Text>
       </Box>
-      <Card onClick={() => alert('Card clicked')} width={{ base: '400px', s: '100%' }}>
+      <Card
+        accessibilityLabel="Payment Pages Card"
+        onClick={() => alert('Card clicked')}
+        width={{ s: '100%', m: '400px' }}
+      >
         <CardHeader>
-          <CardHeaderLeading title="Click the card" />
+          <CardHeaderLeading title="Payment Pages" />
         </CardHeader>
         <CardBody>
           <Text>
-            This button has <Code size="medium">event.stopPropagation()</Code>, and won't propogate
-            to the parent element.
+            Take your store online instantly with zero coding. Accept international & domestic
+            payments.
           </Text>
           <Button
             size="small"
             marginTop="spacing.5"
-            onClick={(e) => {
-              e.stopPropagation();
+            onClick={() => {
               alert('Child button clicked');
             }}
           >
@@ -116,9 +257,10 @@ export const HoverableCard = (): React.ReactElement => {
     <Box>
       <Text marginBottom="spacing.6">
         By passing the <Code size="medium">scaleOnHover</Code> prop, the card will scale up on
-        hover.
+        hover. (on mobile devices the interaction will happen on press and the card will scale down
+        instead)
       </Text>
-      <Card scaleOnHover width={{ base: '400px', s: '100%' }}>
+      <Card scaleOnHover width={{ s: '100%', m: '400px' }}>
         <CardHeader>
           <CardHeaderLeading
             title="Payment Links"
@@ -139,16 +281,20 @@ export const HoverableCard = (): React.ReactElement => {
 export const LinkableCard = (): React.ReactElement => {
   return (
     <Box>
-      <Text marginBottom="spacing.6">
-        Cards can be made linkable by passing the <Code size="medium">href</Code> prop, you will
-        also need to pass the <Code size="medium">accessibilityLabel</Code> to make the link
-        accessible to screen readers.
-      </Text>
+      <Box marginBottom="spacing.6">
+        <Text>
+          Cards can be made linkable by passing the <Code size="medium">href</Code> prop,
+        </Text>
+        <Text>
+          You will also need to pass the <Code size="medium">accessibilityLabel</Code> to make the
+          link accessible to screen readers.
+        </Text>
+      </Box>
       <Card
         href="https://razorpay.com/payment-links"
         accessibilityLabel="Payment Links"
         scaleOnHover
-        width={{ base: '400px', s: '100%' }}
+        width={{ s: '100%', m: '400px' }}
       >
         <CardHeader>
           <CardHeaderLeading
@@ -161,7 +307,6 @@ export const LinkableCard = (): React.ReactElement => {
             Share payment link via an email, SMS, messenger, chatbot etc. and get paid immediately.
             Accepting payments from customers is now just a link away.
           </Text>
-
           <Link marginTop="spacing.4" href="https://razorpay.com/payment-links/#overview">
             Get Demo
           </Link>
@@ -185,7 +330,8 @@ export const SelectableCard = (): React.ReactElement => {
         onClick={() => {
           setIsSelected(!isSelected);
         }}
-        width={{ base: '400px', s: '100%' }}
+        accessibilityLabel="Payment Links Card"
+        width={{ s: '100%', m: '400px' }}
       >
         <CardHeader>
           <CardHeaderLeading title="Payment Links" subtitle="Click the Card to toggle selection" />
@@ -232,8 +378,9 @@ const SingleSelectCardWeb = (): React.ReactElement => {
   return (
     <Box>
       <Text marginBottom="spacing.6">
-        To make a group of cards behave like radio buttons, you can use a hidden input and pass{' '}
-        <Code size="medium">as="label"</Code> prop to the card.
+        To make a group of cards behave like radio buttons, you can put a hidden radio input inside
+        the <Code size="medium">CardBody</Code> and pass <Code size="medium">as="label"</Code> prop
+        to the <Code size="medium">Card</Code>.
       </Text>
 
       <Box display="flex" gap="spacing.5">
@@ -325,6 +472,12 @@ const MultiSelectCardWeb = (): React.ReactElement => {
 
   return (
     <Box>
+      <Text marginBottom="spacing.6">
+        To make a group of cards behave like checkboxes, you can put a hidden checkbox input inside
+        the <Code size="medium">CardBody</Code> and pass <Code size="medium">as="label"</Code> prop
+        to the <Code size="medium">Card</Code>.
+      </Text>
+
       <Box display="flex" gap="spacing.5">
         <Card as="label" scaleOnHover isSelected={selected.includes('free')}>
           <CardBody>
@@ -395,8 +548,9 @@ const SingleSelectCardReactNative = (): React.ReactElement => {
   return (
     <Box>
       <Text marginBottom="spacing.6">
-        To make a group of cards behave like radio buttons, you can use a hidden input and pass{' '}
-        <Code size="medium">as="label"</Code> prop to the card.
+        On ReactNative, to make a group of cards behave like radio buttons, you can manage your own
+        state for selected card and use the <Code size="medium">isSelected</Code> &{' '}
+        <Code size="medium">onClick</Code> prop to highlight the selected card.
       </Text>
 
       <Box display="flex" gap="spacing.5">
@@ -474,8 +628,9 @@ const MultiSelectCardReactNative = (): React.ReactElement => {
   return (
     <Box>
       <Text marginBottom="spacing.6">
-        To make a group of cards behave like radio buttons, you can use a hidden input and pass{' '}
-        <Code size="medium">as="label"</Code> prop to the card.
+        On ReactNative, to make a group of cards behave like checkboxes, you can manage your own
+        state for selected card and use the <Code size="medium">isSelected</Code> &{' '}
+        <Code size="medium">onClick</Code> prop to highlight the selected card.
       </Text>
 
       <Box display="flex" gap="spacing.5">
