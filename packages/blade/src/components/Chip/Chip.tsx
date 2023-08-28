@@ -1,7 +1,7 @@
 import React from 'react';
 import getIn from 'lodash/get';
 import isEmpty from 'lodash/isEmpty';
-import { useChipGroupContext } from './ChipGroup/ChipGroupContext';
+import { useChipGroupContext } from './ChipGroupContext';
 import {
   chipIconSizes,
   chipTextSizes,
@@ -10,15 +10,14 @@ import {
   chipHeightTokens,
   chipHorizontalPaddingTokens,
 } from './chipTokens';
+import type { ChipProps } from './types';
 import { AnimatedChip } from './AnimatedChip';
-import type { IconComponent } from '~components/Icons';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
-import type { StyledPropsBlade } from '~components/Box/styledProps';
 import BaseBox from '~components/Box/BaseBox';
 import { SelectorLabel } from '~components/Form/Selector/SelectorLabel';
 import { SelectorInput } from '~components/Form/Selector/SelectorInput';
-import type { BladeElementRef, StringChildrenType, TestID } from '~utils/types';
+import type { BladeElementRef } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { throwBladeError } from '~utils/logger';
 import { useCheckbox } from '~components/Checkbox/useCheckbox';
@@ -36,37 +35,6 @@ type OnChange = ({
   event?: React.ChangeEvent;
   value?: string;
 }) => void;
-
-type ChipProps = {
-  /**
-   * Sets the label of the Chip
-   */
-  children: StringChildrenType;
-  /**
-   * Displays the Blade Icon component within the Chip
-   * Accepts a component of type `IconComponent` from Blade.
-   *
-   */
-  icon?: IconComponent;
-  /**
-   * Sets the Chip's visual intent
-   *
-   */
-  intent?: 'positive' | 'negative' | 'none';
-  /**
-   * If `true`, the Chip will be disabled
-   *
-   * @default false
-   */
-  isDisabled?: boolean;
-  /**
-   * The value to be used in the Chip input.
-   * This is the value that will be returned on form submission.
-   * Use `onChange` to update its value
-   */
-  value?: string;
-} & TestID &
-  StyledPropsBlade;
 
 const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
   { isDisabled, value, children, icon: Icon, intent, testID, ...styledProps },

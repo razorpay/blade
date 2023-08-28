@@ -1,8 +1,8 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import React from 'react';
 import { Heading, Text, Title } from '../Typography';
-import type { ChipGroupProps } from './ChipGroup/ChipGroup';
-import { ChipGroup as ChipGroupComponent } from './ChipGroup/ChipGroup';
+import type { ChipGroupProps } from './ChipGroup';
+import { ChipGroup as ChipGroupComponent } from './ChipGroup';
 import { Chip as ChipComponent } from './Chip';
 import {
   PaymentLinksIcon,

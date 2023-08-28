@@ -1,5 +1,5 @@
 import React from 'react';
-import { chipGroupGapTokens } from '../chipTokens';
+import { chipGroupGapTokens } from './chipTokens';
 import { ChipGroupProvider } from './ChipGroupContext';
 import { useChipGroup } from './useChipGroup';
 import type { ChipGroupProps } from './types';
