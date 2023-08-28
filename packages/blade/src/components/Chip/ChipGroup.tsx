@@ -8,7 +8,6 @@ import { SelectorGroupField } from '~components/Form/Selector/SelectorGroupField
 import { getStyledProps } from '~components/Box/styledProps';
 import { VisuallyHidden } from '~components/VisuallyHidden';
 import { Text } from '~components/Typography';
-import { isReactNative } from '~utils';
 import { throwBladeError } from '~utils/logger';
 
 const ChipGroup = ({
