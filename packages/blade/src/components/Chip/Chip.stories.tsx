@@ -145,8 +145,8 @@ const ChipTemplate: ComponentStory<typeof ChipComponent> = ({ children, ...args 
   );
 };
 
-export const SingleSelection = ChipTemplate.bind({});
-SingleSelection.storyName = 'Default';
+export const Default = ChipTemplate.bind({});
+Default.storyName = 'Default';
 
 export const Disabled = ChipTemplate.bind({});
 Disabled.storyName = 'Disabled';

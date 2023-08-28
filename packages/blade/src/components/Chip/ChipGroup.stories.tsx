@@ -207,9 +207,12 @@ const ChipTemplate: ComponentStory<typeof ChipGroupComponent> = ({ children, ...
   );
 };
 
-export const Default = ChipTemplate.bind({});
-Default.storyName = 'Single Selection';
-Default.argTypes = {
+export const SingleSelection = ChipTemplate.bind({});
+SingleSelection.storyName = 'Single Selection';
+SingleSelection.args = {
+  selectionType: 'single',
+};
+SingleSelection.argTypes = {
   value: {
     options: ['Proprietorship', 'Public', 'Small Business'],
     control: {
@@ -255,6 +258,7 @@ export const MultiSelection = MultiSelectChipTemplate.bind({});
 MultiSelection.storyName = 'Multi Selection';
 MultiSelection.args = {
   accessibilityLabel: 'Select other capabilities you are looking for from the options below',
+  selectionType: 'multiple',
 };
 MultiSelection.argTypes = {
   defaultValue: {
@@ -273,6 +277,7 @@ export const DefaultSelectedSingle = ChipTemplate.bind({});
 DefaultSelectedSingle.storyName = 'Uncontrolled Single Selection with Default Value';
 DefaultSelectedSingle.args = {
   defaultValue: 'Proprietorship',
+  selectionType: 'single',
 };
 DefaultSelectedSingle.argTypes = {
   defaultValue: {
@@ -288,6 +293,7 @@ DefaultMultiSelected.storyName = 'Uncontrolled Multiple Selection with Default V
 DefaultMultiSelected.args = {
   defaultValue: ['Automated Payment Links'],
   accessibilityLabel: 'Select other capabilities you are looking for from the options below',
+  selectionType: 'multiple',
 };
 DefaultMultiSelected.argTypes = {
   defaultValue: {
@@ -346,6 +352,7 @@ export const ControlledSingleSelection = ControlledSingleSelectionTemplate.bind(
 ControlledSingleSelection.storyName = 'Controlled Single Selection';
 ControlledSingleSelection.args = {
   accessibilityLabel: 'Choose one business type from the options below',
+  selectionType: 'single',
 };
 
 const ControlledMultiSelectionTemplate: ComponentStory<typeof ChipGroupComponent> = (args) => {
@@ -354,7 +361,7 @@ const ControlledMultiSelectionTemplate: ComponentStory<typeof ChipGroupComponent
     'Wallet on My App',
     'Offer discounts, Pay Later & EMI options',
   ];
-  const [values, setValues] = React.useState(['In Progress']);
+  const [values, setValues] = React.useState(['Automated Payment Links']);
   return (
     <Box display="flex" gap="spacing.5" flexDirection="column" minHeight="200px">
       <Dropdown marginRight="spacing.4">
@@ -397,12 +404,14 @@ export const ControlledMultiSelection = ControlledMultiSelectionTemplate.bind({}
 ControlledMultiSelection.storyName = 'Controlled Multiple Selection';
 ControlledMultiSelection.args = {
   accessibilityLabel: 'Select other capabilities you are looking for from the options below',
+  selectionType: 'multiple',
 };
 
 export const Disabled = ChipTemplate.bind({});
 Disabled.storyName = 'Disabled';
 Disabled.args = {
   isDisabled: true,
+  selectionType: 'single',
 };
 
 const AllChipSizesTemplate: ComponentStory<typeof ChipGroupComponent> = ({ children, ...args }) => {
@@ -445,6 +454,7 @@ export const AllChipSizes = AllChipSizesTemplate.bind({});
 AllChipSizes.storyName = 'All Sizes';
 AllChipSizes.args = {
   accessibilityLabel: 'Select other capabilities you are looking for from the options below',
+  selectionType: 'single',
 };
 AllChipSizes.parameters = {
   controls: {
