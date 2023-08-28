@@ -261,15 +261,16 @@ export const chipRef: ComponentStory<typeof ChipComponent> = (args) => {
             chipRef?.current?.click();
           }}
         >
-          Click to focus the Chip
+          Select Proprietorship
         </Button>
         <Button
           isFullWidth={true}
+          variant="secondary"
           onClick={() => {
             chipRef?.current?.blur();
           }}
         >
-          Click to remove focus
+          Remove Focus
         </Button>
       </Box>
     </Box>

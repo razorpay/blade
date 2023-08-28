@@ -55,7 +55,7 @@ const ChipGroup = ({
     <ChipGroupProvider value={contextValue}>
       <BaseBox {...getStyledProps(styledProps)}>
         <SelectorGroupField
-          accessibilityRole={isReactNative() && selectionType === 'single' ? 'radiogroup' : 'group'}
+          accessibilityRole={selectionType === 'single' ? 'radiogroup' : 'group'}
           labelledBy={ids.labelId}
           componentName="chip-group"
           testID={testID}
