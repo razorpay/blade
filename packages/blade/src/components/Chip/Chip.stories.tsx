@@ -127,10 +127,6 @@ export default {
     value: {
       description:
         'Value of the Chip group Acts as a controlled component by specifying the ChipGroup value Use onChange to update its value.',
-      options: ['Proprietorship', 'Public', 'Small Business'],
-      control: {
-        type: 'select',
-      },
       table: {
         category: propsCategory.CHIP_GROUP,
         type: {
@@ -140,10 +136,6 @@ export default {
     },
     defaultValue: {
       description: 'Sets the initial value of the Chip group',
-      options: ['Proprietorship', 'Public', 'Small Business'],
-      control: {
-        type: 'select',
-      },
       table: {
         category: propsCategory.CHIP_GROUP,
         type: {
@@ -211,6 +203,20 @@ const ChipTemplate: ComponentStory<typeof ChipGroupComponent> = ({ children, ...
 
 export const Default = ChipTemplate.bind({});
 Default.storyName = 'Single Selection';
+Default.argTypes = {
+  value: {
+    options: ['Proprietorship', 'Public', 'Small Business'],
+    control: {
+      type: 'select',
+    },
+  },
+  defaultValue: {
+    options: ['Proprietorship', 'Public', 'Small Business'],
+    control: {
+      type: 'select',
+    },
+  },
+};
 
 const MultiSelectChipTemplate: ComponentStory<typeof ChipGroupComponent> = ({
   children,
@@ -240,11 +246,33 @@ MultiSelection.storyName = 'Multi Selection';
 MultiSelection.args = {
   accessibilityLabel: 'Quick Filters:',
 };
+MultiSelection.argTypes = {
+  value: {
+    options: ['Refunded', 'Failed', 'Pending', 'In Progress'],
+    control: {
+      type: 'multi-select',
+    },
+  },
+  defaultValue: {
+    options: ['Refunded', 'Failed', 'Pending', 'In Progress'],
+    control: {
+      type: 'multi-select',
+    },
+  },
+};
 
 export const DefaultSelectedSingle = ChipTemplate.bind({});
 DefaultSelectedSingle.storyName = 'Uncontrolled Single Selection with Default Value';
 DefaultSelectedSingle.args = {
   defaultValue: 'Proprietorship',
+};
+DefaultSelectedSingle.argTypes = {
+  defaultValue: {
+    options: ['Proprietorship', 'Public', 'Small Business'],
+    control: {
+      type: 'select',
+    },
+  },
 };
 
 export const DefaultMultiSelected = MultiSelectChipTemplate.bind({});
@@ -253,8 +281,18 @@ DefaultMultiSelected.args = {
   defaultValue: ['Pending', 'In Progress'],
   accessibilityLabel: 'Quick Filters:',
 };
+DefaultMultiSelected.argTypes = {
+  defaultValue: {
+    options: ['Refunded', 'Failed', 'Pending', 'In Progress'],
+    control: {
+      type: 'multi-select',
+    },
+  },
+};
 
-const ControlledSingleSelectionTemplate: ComponentStory<typeof ChipGroupComponent> = () => {
+const ControlledSingleSelectionTemplate: ComponentStory<typeof ChipGroupComponent> = ({
+  ...args
+}) => {
   const chipValues = ['Proprietorship', 'Public', 'Small Business'];
   const [value, setValue] = React.useState('Proprietorship');
   return (
@@ -264,10 +302,10 @@ const ControlledSingleSelectionTemplate: ComponentStory<typeof ChipGroupComponen
       </Text>
 
       <ChipGroupComponent
-        accessibilityLabel="Select Business type:"
         selectionType="single"
         value={value}
         onChange={({ values }) => setValue(values[0])}
+        {...args}
       >
         {chipValues.map((chipValue: string) => (
           <ChipComponent key={chipValue} value={chipValue}>
@@ -285,10 +323,13 @@ const ControlledSingleSelectionTemplate: ComponentStory<typeof ChipGroupComponen
 
 export const ControlledSingleSelection = ControlledSingleSelectionTemplate.bind({});
 ControlledSingleSelection.storyName = 'Controlled Single Selection';
+ControlledSingleSelection.args = {
+  accessibilityLabel: 'Select Business type:',
+};
 
-const ControlledMultiSelectionTemplate: ComponentStory<typeof ChipGroupComponent> = () => {
+const ControlledMultiSelectionTemplate: ComponentStory<typeof ChipGroupComponent> = (args) => {
   const chipValues = ['Refunded', 'Failed', 'Pending', 'In Progress'];
-  const [value, setValue] = React.useState(['In Progress']);
+  const [values, setValues] = React.useState(['In Progress']);
   return (
     <Box>
       <Text marginBottom="spacing.3" marginTop="spacing.3">
@@ -296,20 +337,20 @@ const ControlledMultiSelectionTemplate: ComponentStory<typeof ChipGroupComponent
       </Text>
 
       <ChipGroupComponent
-        accessibilityLabel="Quick Filters:"
         selectionType="multiple"
-        value={value}
-        onChange={({ values }) => setValue(values)}
+        onChange={({ values }) => setValues(values)}
+        {...args}
+        value={values}
       >
         {chipValues.map((chipValue: string) => (
-          <ChipComponent key={chipValue} value={chipValue}>
+          <ChipComponent key={chipValue} value={chipValue} icon={args.icon}>
             {chipValue}
           </ChipComponent>
         ))}
       </ChipGroupComponent>
 
       <Text marginBottom="spacing.3" marginTop="spacing.3">
-        Selected filters are &quot;{value.join(', ')}&quot;
+        Selected filters are &quot;{values.join(', ')}&quot;
       </Text>
     </Box>
   );
@@ -317,6 +358,9 @@ const ControlledMultiSelectionTemplate: ComponentStory<typeof ChipGroupComponent
 
 export const ControlledMultiSelection = ControlledMultiSelectionTemplate.bind({});
 ControlledMultiSelection.storyName = 'Controlled Multiple Selection';
+ControlledMultiSelection.args = {
+  accessibilityLabel: 'Quick Filters:',
+};
 
 export const Disabled = ChipTemplate.bind({});
 Disabled.storyName = 'Disabled';
