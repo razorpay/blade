@@ -12,8 +12,13 @@ const BladeProvider = ({
   themeTokens,
   colorScheme: initialColorScheme,
   children,
+  brandColor,
 }: BladeProviderProps): ReactElement => {
-  const { theme, themeContextValue } = useBladeProvider({ initialColorScheme, themeTokens });
+  const { theme, themeContextValue } = useBladeProvider({
+    initialColorScheme,
+    themeTokens,
+    brandColor,
+  });
 
   return (
     <ThemeContext.Provider value={themeContextValue}>

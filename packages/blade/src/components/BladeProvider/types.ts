@@ -5,6 +5,7 @@ type BladeProviderProps = {
   themeTokens: ThemeTokens;
   colorScheme?: ColorSchemeNamesInput;
   children: ReactNode;
+  brandColor?: string;
 };
 
 export { BladeProviderProps };

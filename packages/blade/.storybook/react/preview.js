@@ -71,6 +71,7 @@ export const parameters = {
             key={`${context.globals.themeTokenName}-${context.globals.colorScheme}`}
             themeTokens={getThemeTokens()}
             colorScheme={context.globals.colorScheme}
+            brandColor={context.globals.brandColor}
           >
             {children}
           </BladeProvider>
@@ -154,6 +155,7 @@ export const decorators = [
           key={`${context.globals.themeTokenName}-${context.globals.colorScheme}`}
           themeTokens={getThemeTokens()}
           colorScheme={context.globals.colorScheme}
+          brandColor={context.globals.brandColor}
         >
           <StoryCanvas context={context}>
             <Story />
@@ -191,6 +193,28 @@ export const globalTypes = {
         { value: 'light', title: 'Light' },
         { value: 'dark', title: 'Dark' },
         { value: 'system', title: 'System' },
+      ],
+      // Property that specifies if the name of the item will be displayed
+      showName: true,
+    },
+  },
+  brandColor: {
+    name: 'Brand Color',
+    description: 'Brand Color (You can pass any valid color to BladeProvider)',
+    defaultValue: undefined,
+    toolbar: {
+      icon: 'contrast',
+      // Array of plain string values or MenuItem shape (see below)
+      items: [
+        { value: undefined, title: 'Razorpay' },
+        { value: '#EB001B', title: 'HDFC' },
+        { value: '#961020', title: 'ICICI' },
+        { value: '#981049', title: 'Axis' },
+        { value: '#1654C9', title: 'SBI' },
+        { value: '#0E6D56', title: 'IDBI' },
+        { value: '#F4EE0B', title: 'Allahabad' },
+        { value: '#E97019', title: 'Swiggy' },
+        { value: '#CF2033', title: 'Zomato' },
       ],
       // Property that specifies if the name of the item will be displayed
       showName: true,
