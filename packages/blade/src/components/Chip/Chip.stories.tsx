@@ -425,29 +425,10 @@ const AllChipSizesTemplate: ComponentStory<typeof ChipGroupComponent> = ({ child
     <Box>
       {sizes.map((size, index) => (
         <Box key={index}>
-          <Title size="medium" marginBottom="spacing.3">
+          <Heading size="medium" marginBottom="spacing.3">
             {size}
-          </Title>
+          </Heading>
           <Box marginBottom="spacing.3">
-            <Heading size="small">Without Icon</Heading>
-            <Text marginBottom="spacing.3" marginTop="spacing.3" size="medium">
-              Select Business type:
-            </Text>
-
-            <ChipGroupComponent
-              size={size as ChipGroupProps['size']}
-              defaultValue="Proprietorship"
-              {...args}
-            >
-              {chipValues.map((chipValue: string) => (
-                <ChipComponent key={chipValue} value={chipValue}>
-                  {chipValue}
-                </ChipComponent>
-              ))}
-            </ChipGroupComponent>
-          </Box>
-          <Box marginBottom="spacing.3">
-            <Heading size="small">with Icon</Heading>
             <Text marginBottom="spacing.3" marginTop="spacing.3" size="medium">
               What other capabilities are you looking for?
             </Text>
