@@ -202,9 +202,9 @@ const ChipTemplate: ComponentStory<typeof ChipGroupComponent> = ({ children, ...
   );
 };
 
-export const Default = ChipTemplate.bind({});
-Default.storyName = 'Single Selection';
-Default.argTypes = {
+export const SingleSelection = ChipTemplate.bind({});
+SingleSelection.storyName = 'Single Selection';
+SingleSelection.argTypes = {
   value: {
     options: ['Proprietorship', 'Public', 'Small Business'],
     control: {
@@ -545,7 +545,13 @@ export const chipRef: ComponentStory<typeof ChipComponent> = (args) => {
         <ChipComponent value="Small Business">Small Business</ChipComponent>
       </ChipGroupComponent>
       <Box maxWidth="200px">
-        <Button isFullWidth={false} onClick={() => chipRef?.current?.focus()}>
+        <Button
+          isFullWidth={false}
+          onClick={() => {
+            chipRef?.current?.focus();
+            chipRef?.current?.click();
+          }}
+        >
           Click to focus the Chip
         </Button>
       </Box>
