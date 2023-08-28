@@ -375,7 +375,7 @@ const ChipWithIconTemplate: ComponentStory<typeof ChipGroupComponent> = ({ child
         What other capabilities are you looking for?
       </Text>
 
-      <ChipGroupComponent selectionType="multiple" {...args}>
+      <ChipGroupComponent selectionType="multiple" defaultValue="payment-links" {...args}>
         <ChipComponent value="payment-links" icon={PaymentLinksIcon}>
           Automated Payment Links
         </ChipComponent>
@@ -393,7 +393,6 @@ const ChipWithIconTemplate: ComponentStory<typeof ChipGroupComponent> = ({ child
 export const ChipWithIcon = ChipWithIconTemplate.bind({});
 ChipWithIcon.storyName = 'With Icon';
 ChipWithIcon.args = {
-  defaultValue: ['payment-links'],
   accessibilityLabel: 'Quick Filters:',
 };
 
@@ -413,7 +412,11 @@ const AllChipSizesTemplate: ComponentStory<typeof ChipGroupComponent> = ({ child
               Select Business type:
             </Text>
 
-            <ChipGroupComponent size={size as ChipGroupProps['size']} {...args}>
+            <ChipGroupComponent
+              size={size as ChipGroupProps['size']}
+              defaultValue="Proprietorship"
+              {...args}
+            >
               {chipValues.map((chipValue: string) => (
                 <ChipComponent key={chipValue} value={chipValue}>
                   {chipValue}
@@ -429,6 +432,7 @@ const AllChipSizesTemplate: ComponentStory<typeof ChipGroupComponent> = ({ child
 
             <ChipGroupComponent
               accessibilityLabel="What other capabilities are you looking for?"
+              defaultValue="Proprietorship"
               size={size as ChipGroupProps['size']}
             >
               <ChipComponent value="payment-links" icon={PaymentLinksIcon}>
@@ -450,18 +454,15 @@ const AllChipSizesTemplate: ComponentStory<typeof ChipGroupComponent> = ({ child
 
 export const AllChipSizes = AllChipSizesTemplate.bind({});
 AllChipSizes.storyName = 'All Sizes';
-AllChipSizes.args = {
-  defaultValue: 'Proprietorship',
-};
 
-const ChipIntentsTemplate: ComponentStory<typeof ChipGroupComponent> = () => {
+const ChipIntentsTemplate: ComponentStory<typeof ChipGroupComponent> = (args) => {
   return (
     <Box display="flex" flexDirection="column">
       <Text size="large" weight="bold" marginBottom="spacing.3">
         Is the result helpful?
       </Text>
 
-      <ChipGroupComponent accessibilityLabel="Is the result helpful?" defaultValue="yes">
+      <ChipGroupComponent defaultValue="yes" {...args}>
         <ChipComponent intent="positive" value="yes" icon={ThumbsUpIcon}>
           Yes
         </ChipComponent>
@@ -475,6 +476,9 @@ const ChipIntentsTemplate: ComponentStory<typeof ChipGroupComponent> = () => {
 
 export const ChipWithIntent = ChipIntentsTemplate.bind({});
 ChipWithIntent.storyName = 'With Intent';
+ChipWithIntent.args = {
+  accessibilityLabel: 'Is the result helpful?',
+};
 
 const TextTransformationTemplate: ComponentStory<typeof ChipGroupComponent> = ({
   children,
