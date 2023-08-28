@@ -95,6 +95,7 @@ export type CardProps = {
    * @default undefined
    */
   href?: string;
+  target?: string;
   /**
    * Sets the accessibility label for the card
    * This is useful when the card has an `href` prop and is used as a link
@@ -143,6 +144,7 @@ const Card = ({
   scaleOnHover = false,
   onHover,
   href,
+  target,
   as,
   ...styledProps
 }: CardProps): React.ReactElement => {
@@ -190,8 +192,12 @@ const Card = ({
           elevation={elevation}
           textAlign={'left' as never}
         >
-          {href ? <LinkOverlay href={href} {...linkOverlayProps} /> : null}
-          {onClick ? <LinkOverlay as="button" onClick={onClick} {...linkOverlayProps} /> : null}
+          {href ? (
+            <LinkOverlay onClick={onClick} href={href} target={target} {...linkOverlayProps} />
+          ) : null}
+          {!href && onClick ? (
+            <LinkOverlay as="button" onClick={onClick} {...linkOverlayProps} />
+          ) : null}
           {children}
         </CardSurface>
       </CardRoot>
