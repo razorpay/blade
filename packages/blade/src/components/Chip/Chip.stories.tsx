@@ -17,6 +17,7 @@ import type { BladeElementRef } from '~utils/types';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+import iconMap from '~components/Icons/iconMap';
 
 const Page = (): React.ReactElement => {
   return (
@@ -56,31 +57,130 @@ const Page = (): React.ReactElement => {
   );
 };
 
+const propsCategory = { CHIP: 'Chip Props', CHIP_GROUP: 'ChipGroup Props' };
+
 export default {
   title: 'Components/Chip & ChipGroup',
-  component: ChipGroupComponent,
   args: {
     isDisabled: false,
     name: undefined,
-    defaultValue: undefined,
-    onChange: undefined,
-    value: undefined,
-    selectionType: 'single',
     accessibilityLabel: 'Select Business type:',
+    icon: undefined,
   },
   argTypes: {
+    // ChipGroup props
+    accessibilityLabel: {
+      description: 'Accessibility label for the `ChipGroup`.',
+      control: {
+        type: 'text',
+      },
+      table: {
+        category: propsCategory.CHIP_GROUP,
+        type: {
+          summary: 'string',
+        },
+      },
+    },
+    isDisabled: {
+      description:
+        'Disables or enables `ChipGroup`, it will propagate down to all the children `Chip` components.',
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        category: propsCategory.CHIP_GROUP,
+        type: {
+          summary: 'boolean',
+        },
+      },
+    },
+    name: {
+      description:
+        'Specifies the name attribute for the `ChipGroup` component. When provided, this attribute ensures that the Chip elements within the group are semantically associated, allowing them to be grouped logically for form submission.',
+      control: { type: 'text' },
+      table: {
+        category: propsCategory.CHIP_GROUP,
+        type: {
+          summary: 'string',
+        },
+      },
+    },
+    onChange: {
+      description: 'The callback invoked on any state change within the `ChipGroup`.',
+      /// type: `,
+      table: {
+        category: propsCategory.CHIP_GROUP,
+        type: {
+          summary: '({ name, values }: { name: string; values: string[] }) => void',
+        },
+      },
+    },
+    selectionType: {
+      description: `Defines the selection behavior within the ChipGroup component. When set to 'single', only one Chip can be selected at a time, akin to a radio button group. When set to 'multiple', multiple Chips can be concurrently selected, simulating checkbox-like behavior within the group.`,
+      table: {
+        category: propsCategory.CHIP_GROUP,
+        type: {
+          summary: '"single" | "multiple"',
+        },
+      },
+    },
     value: {
-      options: ['proprietorship', 'public', 'small-business'],
+      description:
+        'Value of the Chip group Acts as a controlled component by specifying the ChipGroup value Use onChange to update its value.',
+      options: ['Proprietorship', 'Public', 'Small Business'],
       control: {
         type: 'select',
+      },
+      table: {
+        category: propsCategory.CHIP_GROUP,
+        type: {
+          summary: 'string',
+        },
       },
     },
     defaultValue: {
-      options: ['proprietorship', 'public', 'small-business'],
+      description: 'Sets the initial value of the Chip group',
+      options: ['Proprietorship', 'Public', 'Small Business'],
       control: {
         type: 'select',
       },
+      table: {
+        category: propsCategory.CHIP_GROUP,
+        type: {
+          summary: 'string | string[]',
+        },
+      },
     },
+    size: {
+      description: 'Specifies the size of the rendered Chips withing the ChipGroup',
+      options: ['xsmall', 'small', 'medium', 'large'],
+      control: {
+        type: 'radio',
+      },
+      table: {
+        category: propsCategory.CHIP_GROUP,
+        type: {
+          summary: '"xsmall" | "small" | "medium" | "large"',
+        },
+      },
+    },
+
+    // Chip Props
+    icon: {
+      name: 'icon',
+      description: 'Displays the Blade Icon component within the Chip',
+      type: 'select',
+      options: Object.keys(iconMap),
+      mapping: iconMap,
+      table: {
+        category: propsCategory.CHIP,
+        type: {
+          summary: 'IconComponent',
+        },
+      },
+    },
+
+    // Styled Props
     ...getStyledPropsArgTypes(),
   },
   parameters: {
@@ -100,7 +200,7 @@ const ChipTemplate: ComponentStory<typeof ChipGroupComponent> = ({ children, ...
 
       <ChipGroupComponent {...args}>
         {chipValues.map((chipValue: string) => (
-          <ChipComponent key={chipValue} value={chipValue}>
+          <ChipComponent key={chipValue} value={chipValue} icon={args.icon}>
             {chipValue}
           </ChipComponent>
         ))}
@@ -138,7 +238,6 @@ const MultiSelectChipTemplate: ComponentStory<typeof ChipGroupComponent> = ({
 export const MultiSelection = MultiSelectChipTemplate.bind({});
 MultiSelection.storyName = 'Multi Selection';
 MultiSelection.args = {
-  selectionType: 'multiple',
   accessibilityLabel: 'Quick Filters:',
 };
 
@@ -152,7 +251,6 @@ export const DefaultMultiSelected = MultiSelectChipTemplate.bind({});
 DefaultMultiSelected.storyName = 'Uncontrolled Multiple Selection with Default Value';
 DefaultMultiSelected.args = {
   defaultValue: ['Pending', 'In Progress'],
-  selectionType: 'multiple',
   accessibilityLabel: 'Quick Filters:',
 };
 
@@ -233,7 +331,7 @@ const ChipWithIconTemplate: ComponentStory<typeof ChipGroupComponent> = ({ child
         What other capabilities are you looking for?
       </Text>
 
-      <ChipGroupComponent {...args}>
+      <ChipGroupComponent selectionType="multiple" {...args}>
         <ChipComponent value="payment-links" icon={PaymentLinksIcon}>
           Automated Payment Links
         </ChipComponent>
@@ -251,7 +349,6 @@ const ChipWithIconTemplate: ComponentStory<typeof ChipGroupComponent> = ({ child
 export const ChipWithIcon = ChipWithIconTemplate.bind({});
 ChipWithIcon.storyName = 'With Icon';
 ChipWithIcon.args = {
-  selectionType: 'multiple',
   defaultValue: ['payment-links'],
   accessibilityLabel: 'Quick Filters:',
 };
@@ -310,7 +407,6 @@ const AllChipSizesTemplate: ComponentStory<typeof ChipGroupComponent> = ({ child
 export const AllChipSizes = AllChipSizesTemplate.bind({});
 AllChipSizes.storyName = 'All Sizes';
 AllChipSizes.args = {
-  selectionType: 'single',
   defaultValue: 'Proprietorship',
 };
 
@@ -335,6 +431,31 @@ const ChipIntentsTemplate: ComponentStory<typeof ChipGroupComponent> = () => {
 
 export const ChipWithIntent = ChipIntentsTemplate.bind({});
 ChipWithIntent.storyName = 'With Intent';
+
+const TextTransformationTemplate: ComponentStory<typeof ChipGroupComponent> = ({
+  children,
+  ...args
+}) => {
+  const chipValues = ['Proprietorship', 'Public', 'Small Business'];
+  return (
+    <Box>
+      <Text marginBottom="spacing.3" marginTop="spacing.3">
+        Select Business type:
+      </Text>
+
+      <ChipGroupComponent defaultValue="Proprietorship" {...args}>
+        {chipValues.map((chipValue: string) => (
+          <ChipComponent key={chipValue} value={chipValue}>
+            {chipValue.toUpperCase()}
+          </ChipComponent>
+        ))}
+      </ChipGroupComponent>
+    </Box>
+  );
+};
+
+export const TextTransformationUppercase = TextTransformationTemplate.bind({});
+TextTransformationUppercase.storyName = 'Text Transformation (Uppercase)';
 
 export const chipRef: ComponentStory<typeof ChipComponent> = (args) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
