@@ -49,30 +49,36 @@ const listItemBulletMarginTop: Record<
     onDesktop: {
       small: makeSize(6),
       medium: makeSize(7),
+      large: makeSize(10),
     },
     onMobile: {
       small: makeSize(6),
       medium: makeSize(7),
+      large: makeSize(10),
     },
   },
   unorderedWithIcon: {
     onDesktop: {
       small: 'spacing.2',
       medium: 'spacing.1',
+      large: makeSize(5),
     },
     onMobile: {
       small: 'spacing.2',
       medium: 'spacing.1',
+      large: makeSize(5),
     },
   },
   ordered: {
     onDesktop: {
       small: makeSize(0),
       medium: makeSize(0),
+      large: makeSize(0),
     },
     onMobile: {
       small: makeSize(0),
       medium: makeSize(0),
+      large: makeSize(0),
     },
   },
   'ordered-filled': {
@@ -80,10 +86,12 @@ const listItemBulletMarginTop: Record<
     onDesktop: {
       small: makeSize(0),
       medium: makeSize(0),
+      large: makeSize(0),
     },
     onMobile: {
       small: makeSize(0),
       medium: makeSize(0),
+      large: makeSize(0),
     },
   },
 };
@@ -95,10 +103,12 @@ const listItemUnorderedBulletSize: Record<
   onDesktop: {
     small: makeSize(size[6]),
     medium: makeSize(size[6]),
+    large: makeSize(size[6]),
   },
   onMobile: {
     small: makeSize(size[5]),
     medium: makeSize(size[6]),
+    large: makeSize(size[6]),
   },
 };
 
@@ -113,20 +123,24 @@ const listItemOrderedBulletBoxSize: Record<
     onDesktop: {
       small: makeSize(size[16]),
       medium: makeSize(size[20]),
+      large: makeSize(size[24]),
     },
     onMobile: {
       small: makeSize(size[16]),
       medium: makeSize(size[24]),
+      large: makeSize(size[24]),
     },
   },
   'ordered-filled': {
     onDesktop: {
       small: makeSize(size[18]),
       medium: makeSize(size[20]),
+      large: makeSize(size[24]),
     },
     onMobile: {
       small: makeSize(size[16]),
       medium: makeSize(size[20]),
+      large: makeSize(size[24]),
     },
   },
 };
@@ -134,6 +148,7 @@ const listItemOrderedBulletBoxSize: Record<
 const listItemCodeSize: Record<NonNullable<ListProps['size']>, NonNullable<CodeProps['size']>> = {
   small: 'small',
   medium: 'small',
+  large: 'medium',
 };
 
 export {

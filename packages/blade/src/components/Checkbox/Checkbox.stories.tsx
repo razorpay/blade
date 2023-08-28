@@ -7,7 +7,6 @@ import type { CheckboxProps } from './';
 import { Checkbox as CheckboxComponent } from './';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
-import type { BladeElementRef } from '~utils/useBladeInnerRef';
 import BaseBox from '~components/Box/BaseBox';
 import { Button } from '~components/Button';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
@@ -139,7 +138,7 @@ export const ControlledAndUncontrolled = _ControlledAndUncontrolled.bind({});
 
 export const checkboxRef: ComponentStory<typeof CheckboxComponent> = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const checkboxRef = React.useRef<BladeElementRef>(null);
+  const checkboxRef = React.useRef<HTMLInputElement>(null);
 
   return (
     <BaseBox gap="spacing.3" display="flex" alignItems="center">

@@ -66,6 +66,11 @@ const _Dropdown = ({
   const [shouldIgnoreBlur, setShouldIgnoreBlur] = React.useState(false);
   const [shouldIgnoreBlurAnimation, setShouldIgnoreBlurAnimation] = React.useState(false);
   const triggererRef = React.useRef<HTMLButtonElement>(null);
+  /**
+   * In inputs, actual input is smaller than the visible input wrapper.
+   * You can set this reference in such cases so floating ui calculations happen correctly
+   * */
+  const triggererWrapperRef = React.useRef<HTMLDivElement>(null);
   const actionListItemRef = React.useRef<HTMLDivElement>(null);
   const [hasFooterAction, setHasFooterAction] = React.useState(false);
   const [hasLabelOnLeft, setHasLabelOnLeft] = React.useState(false);
@@ -144,6 +149,7 @@ const _Dropdown = ({
       setIsKeydownPressed,
       dropdownBaseId,
       triggererRef,
+      triggererWrapperRef,
       actionListItemRef,
       selectionType,
       hasFooterAction,

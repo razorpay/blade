@@ -278,7 +278,9 @@ const componentData: ComponentStatusData = [
   },
   {
     name: 'Tags',
-    status: 'in-development',
+    status: 'released',
+    releasedIn: '9.3.0',
+    storybookLink: 'Components/Tag',
     description: 'A tag labels UI objects for quick recognition and navigation.',
   },
   {
@@ -364,13 +366,17 @@ const componentData: ComponentStatusData = [
   },
   {
     name: 'SkeletonLoader',
-    status: 'in-development',
+    status: 'released',
+    releasedIn: '9.1.0',
+    storybookLink: 'Components/Skeleton',
     description:
       'Skeleton Loader is a static / animated placeholder for the information that is still loading. It mimic the structure and look of the entire view.',
   },
   {
     name: 'Carousel',
-    status: 'in-design',
+    status: 'released',
+    releasedIn: '10.2.0',
+    storybookLink: 'Components/Carousel',
     description:
       'Carousel is a component to one-by-one display multiple blocks of information in circular manner',
   },
@@ -392,7 +398,7 @@ const componentData: ComponentStatusData = [
   },
   {
     name: 'AutoComplete',
-    status: 'in-design',
+    status: 'in-development',
     description:
       'AutoComplete Component will allow you to filter Dropdown options as you type ahead in the Input',
   },
@@ -408,7 +414,7 @@ const componentData: ComponentStatusData = [
   },
   {
     name: 'Popover',
-    status: 'planned-Q2-dev',
+    status: 'in-development',
     description: 'Used for cases like guided tours',
   },
 ];

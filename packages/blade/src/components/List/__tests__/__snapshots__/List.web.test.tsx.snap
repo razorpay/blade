@@ -515,6 +515,646 @@ exports[`<List /> should render List with inline ListItemText 1`] = `
 </div>
 `;
 
+exports[`<List /> should render large ordered List 1`] = `
+.c7 {
+  list-style-type: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+.c0 {
+  list-style-type: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-align-self: flex-start;
+  -ms-flex-item-align: start;
+  align-self: flex-start;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-top: 0px;
+  margin-right: 4px;
+  height: 24px;
+  width: 24px;
+}
+
+.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-self: flex-start;
+  -ms-flex-item-align: start;
+  align-self: flex-start;
+  margin-top: 10px;
+  margin-right: 8px;
+}
+
+.c1 {
+  margin-top: 8px;
+}
+
+.c5 {
+  color: hsla(216,27%,36%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c6 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c2 {
+  margin-left: 0;
+}
+
+.c8 {
+  margin-left: 16px;
+}
+
+<div>
+  <div
+    class=""
+    data-blade-component="base-box"
+  >
+    <ol
+      class="c0 c1"
+      data-blade-component="list"
+      role="list"
+    >
+      <li
+        class=" c2"
+        data-blade-component="list-item"
+      >
+        <div
+          class="c3"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c4"
+            data-blade-component="base-box"
+          >
+            <p
+              class="c5"
+              data-blade-component="text"
+            >
+              1.
+            </p>
+          </div>
+          <p
+            class="c6"
+            data-blade-component="text"
+          >
+            Level 1
+          </p>
+        </div>
+        <div
+          class=""
+          data-blade-component="base-box"
+        >
+          <ul
+            class="List__StyledUnorderedList-bqf6r7-1 c7"
+            data-blade-component="list"
+            role="list"
+          >
+            <li
+              class=" c8"
+              data-blade-component="list-item"
+            >
+              <div
+                class="c3"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9"
+                  data-blade-component="base-box"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="Svgweb__StyledSvg-vcmjs8-0"
+                    data-blade-component="icon"
+                    fill="none"
+                    height="6px"
+                    viewBox="0 0 6 6"
+                    width="6px"
+                  >
+                    <circle
+                      cx="3px"
+                      cy="3px"
+                      data-blade-component="svg-circle"
+                      r="2.5px"
+                      stroke="hsla(214, 18%, 69%, 1)"
+                    />
+                  </svg>
+                </div>
+                <p
+                  class="c6"
+                  data-blade-component="text"
+                >
+                  Level 2
+                </p>
+              </div>
+              <div
+                class=""
+                data-blade-component="base-box"
+              >
+                <ul
+                  class="List__StyledUnorderedList-bqf6r7-1 c7"
+                  data-blade-component="list"
+                  role="list"
+                >
+                  <li
+                    class=" c8"
+                    data-blade-component="list-item"
+                  >
+                    <div
+                      class="c3"
+                      data-blade-component="base-box"
+                    >
+                      <div
+                        class="c9"
+                        data-blade-component="base-box"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="Svgweb__StyledSvg-vcmjs8-0"
+                          data-blade-component="icon"
+                          fill="none"
+                          height="6px"
+                          viewBox="0 0 6 6"
+                          width="6px"
+                        >
+                          <rect
+                            data-blade-component="svg-rect"
+                            fill="hsla(214, 18%, 69%, 1)"
+                            height="6px"
+                            rx="1px"
+                            width="6px"
+                          />
+                        </svg>
+                      </div>
+                      <p
+                        class="c6"
+                        data-blade-component="text"
+                      >
+                        Level 3
+                      </p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </li>
+    </ol>
+  </div>
+</div>
+`;
+
+exports[`<List /> should render large ordered-filled List 1`] = `
+.c0 {
+  list-style-type: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-align-self: flex-start;
+  -ms-flex-item-align: start;
+  align-self: flex-start;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-top: 0px;
+  margin-right: 8px;
+  height: 24px;
+  width: 24px;
+  background-color: hsla(216,15%,54%,0.18);
+  border-radius: 9999px;
+}
+
+.c1 {
+  margin-top: 8px;
+}
+
+.c5 {
+  color: hsla(216,27%,36%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.625rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c6 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c2 {
+  margin-left: 0;
+}
+
+<div>
+  <div
+    class=""
+    data-blade-component="base-box"
+  >
+    <ol
+      class="c0 c1"
+      data-blade-component="list"
+      role="list"
+    >
+      <li
+        class=" c2"
+        data-blade-component="list-item"
+      >
+        <div
+          class="c3"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c4"
+            data-blade-component="base-box"
+          >
+            <p
+              class="c5"
+              data-blade-component="text"
+            >
+              1
+            </p>
+          </div>
+          <p
+            class="c6"
+            data-blade-component="text"
+          >
+            Level 1
+          </p>
+        </div>
+      </li>
+      <li
+        class=" c2"
+        data-blade-component="list-item"
+      >
+        <div
+          class="c3"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c4"
+            data-blade-component="base-box"
+          >
+            <p
+              class="c5"
+              data-blade-component="text"
+            >
+              2
+            </p>
+          </div>
+          <p
+            class="c6"
+            data-blade-component="text"
+          >
+            Level 2
+          </p>
+        </div>
+      </li>
+      <li
+        class=" c2"
+        data-blade-component="list-item"
+      >
+        <div
+          class="c3"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c4"
+            data-blade-component="base-box"
+          >
+            <p
+              class="c5"
+              data-blade-component="text"
+            >
+              3
+            </p>
+          </div>
+          <p
+            class="c6"
+            data-blade-component="text"
+          >
+            Level 3
+          </p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</div>
+`;
+
+exports[`<List /> should render large unordered List with icon 1`] = `
+.c0 {
+  list-style-type: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-self: flex-start;
+  -ms-flex-item-align: start;
+  align-self: flex-start;
+  margin-top: 5px;
+  margin-right: 8px;
+}
+
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-self: flex-start;
+  -ms-flex-item-align: start;
+  align-self: flex-start;
+  margin-top: 10px;
+  margin-right: 8px;
+}
+
+.c1 {
+  margin-top: 8px;
+}
+
+.c5 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c2 {
+  margin-left: 0;
+}
+
+.c6 {
+  margin-left: 16px;
+}
+
+<div>
+  <div
+    class=""
+    data-blade-component="base-box"
+  >
+    <ul
+      class="c0 c1"
+      data-blade-component="list"
+      role="list"
+    >
+      <li
+        class=" c2"
+        data-blade-component="list-item"
+      >
+        <div
+          class="c3"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c4"
+            data-blade-component="base-box"
+          >
+            <svg
+              aria-hidden="true"
+              class="Svgweb__StyledSvg-vcmjs8-0"
+              data-blade-component="icon"
+              fill="none"
+              height="20px"
+              viewBox="0 0 24 24"
+              width="20px"
+            >
+              <path
+                d="M14.707 5.293a1 1 0 1 0-1.414 1.414L17.586 11H4a1 1 0 1 0 0 2h13.586l-4.293 4.293a1 1 0 0 0 1.414 1.414l6-6a1 1 0 0 0 0-1.414l-6-6Z"
+                data-blade-component="svg-path"
+                fill="hsla(217, 18%, 45%, 1)"
+              />
+            </svg>
+          </div>
+          <p
+            class="c5"
+            data-blade-component="text"
+          >
+            Level 1
+          </p>
+        </div>
+        <div
+          class=""
+          data-blade-component="base-box"
+        >
+          <ul
+            class="c0"
+            data-blade-component="list"
+            role="list"
+          >
+            <li
+              class=" c6"
+              data-blade-component="list-item"
+            >
+              <div
+                class="c3"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c4"
+                  data-blade-component="base-box"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="Svgweb__StyledSvg-vcmjs8-0"
+                    data-blade-component="icon"
+                    fill="none"
+                    height="20px"
+                    viewBox="0 0 24 24"
+                    width="20px"
+                  >
+                    <path
+                      d="M12.707 3.293a1 1 0 0 0-1.414 0l-6 6a1 1 0 0 0 1.414 1.414L11 6.414V20a1 1 0 1 0 2 0V6.414l4.293 4.293a1 1 0 0 0 1.414-1.414l-6-6Z"
+                      data-blade-component="svg-path"
+                      fill="hsla(217, 18%, 45%, 1)"
+                    />
+                  </svg>
+                </div>
+                <p
+                  class="c5"
+                  data-blade-component="text"
+                >
+                  Level 2
+                </p>
+              </div>
+              <div
+                class=""
+                data-blade-component="base-box"
+              >
+                <ul
+                  class="c0"
+                  data-blade-component="list"
+                  role="list"
+                >
+                  <li
+                    class=" c6"
+                    data-blade-component="list-item"
+                  >
+                    <div
+                      class="c3"
+                      data-blade-component="base-box"
+                    >
+                      <div
+                        class="c7"
+                        data-blade-component="base-box"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="Svgweb__StyledSvg-vcmjs8-0"
+                          data-blade-component="icon"
+                          fill="none"
+                          height="6px"
+                          viewBox="0 0 6 6"
+                          width="6px"
+                        >
+                          <rect
+                            data-blade-component="svg-rect"
+                            fill="hsla(214, 18%, 69%, 1)"
+                            height="6px"
+                            rx="1px"
+                            width="6px"
+                          />
+                        </svg>
+                      </div>
+                      <p
+                        class="c5"
+                        data-blade-component="text"
+                      >
+                        Level 3
+                      </p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+`;
+
 exports[`<List /> should render medium ordered List 1`] = `
 .c7 {
   list-style-type: none;
