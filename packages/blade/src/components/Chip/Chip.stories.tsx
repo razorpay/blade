@@ -544,15 +544,23 @@ export const chipRef: ComponentStory<typeof ChipComponent> = (args) => {
         <ChipComponent value="Public">Public</ChipComponent>
         <ChipComponent value="Small Business">Small Business</ChipComponent>
       </ChipGroupComponent>
-      <Box maxWidth="200px">
+      <Box maxWidth="400px" display="flex" flexDirection="row" gap="spacing.3">
         <Button
-          isFullWidth={false}
+          isFullWidth={true}
           onClick={() => {
             chipRef?.current?.focus();
             chipRef?.current?.click();
           }}
         >
           Click to focus the Chip
+        </Button>
+        <Button
+          isFullWidth={true}
+          onClick={() => {
+            chipRef?.current?.blur();
+          }}
+        >
+          Click to remove focus
         </Button>
       </Box>
     </Box>
