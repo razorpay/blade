@@ -1,6 +1,6 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import React from 'react';
-import { Heading, Text, Title } from '../Typography';
+import { Text, Title } from '../Typography';
 import type { ChipGroupProps } from './ChipGroup';
 import { ChipGroup as ChipGroupComponent } from './ChipGroup';
 import { Chip as ChipComponent } from './Chip';
@@ -18,14 +18,12 @@ import { Button } from '~components/Button';
 import { Box } from '~components/Box';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import iconMap from '~components/Icons/iconMap';
-import { Dropdown, DropdownButton, DropdownOverlay } from '~components/Dropdown';
-import { ActionList, ActionListItem } from '~components/ActionList';
 
 const Page = (): React.ReactElement => {
   return (
     <StoryPageWrapper
       componentDescription="Chips represents a collection of selectable objects which enable users to make selections, filter content, and trigger relevant actions. Chips can have either single selection or multiple (based on context)."
-      componentName="Chip & ChipGroup"
+      componentName="Chip"
       imports={`import { Chip, ChipGroup } from '@razorpay/blade/components';\nimport type { ChipProps, ChipGroupProps } from '@razorpay/blade/components';`}
       figmaURL={{
         paymentTheme:
@@ -62,27 +60,12 @@ const Page = (): React.ReactElement => {
 const propsCategory = { CHIP: 'Chip Props', CHIP_GROUP: 'ChipGroup Props' };
 
 export default {
-  title: 'Components/Chip & ChipGroup',
+  title: 'Components/Chip/Chip',
   args: {
     isDisabled: false,
-    name: undefined,
-    accessibilityLabel: 'Choose one business type from the options below',
-    icon: undefined,
   },
   argTypes: {
     // ChipGroup props
-    accessibilityLabel: {
-      description: 'Accessibility label for the `ChipGroup`.',
-      control: {
-        type: 'text',
-      },
-      table: {
-        category: propsCategory.CHIP_GROUP,
-        type: {
-          summary: 'string',
-        },
-      },
-    },
     isDisabled: {
       description:
         'Disables or enables `ChipGroup`, it will propagate down to all the children `Chip` components.',
@@ -90,38 +73,9 @@ export default {
         type: 'boolean',
       },
       table: {
-        category: propsCategory.CHIP_GROUP,
+        category: propsCategory.CHIP,
         type: {
           summary: 'boolean',
-        },
-      },
-    },
-    name: {
-      description:
-        'Specifies the name attribute for the `ChipGroup` component. When provided, this attribute ensures that the Chip elements within the group are semantically associated, allowing them to be grouped logically for form submission.',
-      control: { type: 'text' },
-      table: {
-        category: propsCategory.CHIP_GROUP,
-        type: {
-          summary: 'string',
-        },
-      },
-    },
-    onChange: {
-      description: 'The callback invoked on any state change within the `ChipGroup`.',
-      table: {
-        category: propsCategory.CHIP_GROUP,
-        type: {
-          summary: '({ name, values }: { name: string; values: string[] }) => void',
-        },
-      },
-    },
-    selectionType: {
-      description: `Defines the selection behavior within the ChipGroup component. When set to 'single', only one Chip can be selected at a time, akin to a radio button group. When set to 'multiple', multiple Chips can be concurrently selected, simulating checkbox-like behavior within the group.`,
-      table: {
-        category: propsCategory.CHIP_GROUP,
-        type: {
-          summary: '"single" | "multiple"',
         },
       },
     },
@@ -129,36 +83,12 @@ export default {
       description:
         'Value of the Chip group Acts as a controlled component by specifying the ChipGroup value Use onChange to update its value.',
       table: {
-        category: propsCategory.CHIP_GROUP,
+        category: propsCategory.CHIP,
         type: {
           summary: 'string',
         },
       },
     },
-    defaultValue: {
-      description: 'Sets the initial value of the Chip group',
-      table: {
-        category: propsCategory.CHIP_GROUP,
-        type: {
-          summary: 'string | string[]',
-        },
-      },
-    },
-    size: {
-      description: 'Specifies the size of the rendered Chips withing the ChipGroup',
-      options: ['xsmall', 'small', 'medium', 'large'],
-      control: {
-        type: 'radio',
-      },
-      table: {
-        category: propsCategory.CHIP_GROUP,
-        type: {
-          summary: '"xsmall" | "small" | "medium" | "large"',
-        },
-      },
-    },
-
-    // Chip Props
     icon: {
       name: 'icon',
       description: 'Displays the Blade Icon component within the Chip',
@@ -172,6 +102,19 @@ export default {
         },
       },
     },
+    intent: {
+      description: 'Sets the intent of the Chip',
+      table: {
+        category: propsCategory.CHIP,
+        type: {
+          summary: '"none" | "positive" | "negative"',
+        },
+      },
+      options: ['none', 'positive', 'negative'],
+      control: {
+        type: 'select',
+      },
+    },
 
     // Styled Props
     ...getStyledPropsArgTypes(),
@@ -183,7 +126,7 @@ export default {
   },
 } as Meta<ChipGroupProps>;
 
-const ChipTemplate: ComponentStory<typeof ChipGroupComponent> = ({ children, ...args }) => {
+const ChipTemplate: ComponentStory<typeof ChipComponent> = ({ children, ...args }) => {
   const chipValues = ['Proprietorship', 'Public', 'Small Business'];
   return (
     <Box>
@@ -191,9 +134,9 @@ const ChipTemplate: ComponentStory<typeof ChipGroupComponent> = ({ children, ...
         Select Business type:
       </Text>
 
-      <ChipGroupComponent {...args}>
+      <ChipGroupComponent accessibilityLabel="Choose one business type from the options below">
         {chipValues.map((chipValue: string, index) => (
-          <ChipComponent key={index} value={chipValue} icon={args.icon}>
+          <ChipComponent key={index} value={chipValue} {...args}>
             {chipValue}
           </ChipComponent>
         ))}
@@ -203,180 +146,7 @@ const ChipTemplate: ComponentStory<typeof ChipGroupComponent> = ({ children, ...
 };
 
 export const SingleSelection = ChipTemplate.bind({});
-SingleSelection.storyName = 'Single Selection';
-SingleSelection.argTypes = {
-  value: {
-    options: ['Proprietorship', 'Public', 'Small Business'],
-    control: {
-      type: 'select',
-    },
-  },
-  defaultValue: {
-    options: ['Proprietorship', 'Public', 'Small Business'],
-    control: {
-      type: 'select',
-    },
-  },
-};
-
-const MultiSelectChipTemplate: ComponentStory<typeof ChipGroupComponent> = ({
-  children,
-  ...args
-}) => {
-  const chipValues = ['Refunded', 'Failed', 'Pending', 'In Progress'];
-
-  return (
-    <Box>
-      <Text marginBottom="spacing.3" marginTop="spacing.3">
-        Quick Filters:
-      </Text>
-
-      <ChipGroupComponent selectionType="multiple" {...args}>
-        {chipValues.map((chipValue: string) => (
-          <ChipComponent key={chipValue} value={chipValue} icon={args.icon}>
-            {chipValue}
-          </ChipComponent>
-        ))}
-      </ChipGroupComponent>
-    </Box>
-  );
-};
-
-export const MultiSelection = MultiSelectChipTemplate.bind({});
-MultiSelection.storyName = 'Multi Selection';
-MultiSelection.args = {
-  accessibilityLabel: 'Choose multiple filters from the options below',
-};
-MultiSelection.argTypes = {
-  defaultValue: {
-    options: ['Refunded', 'Failed', 'Pending', 'In Progress'],
-    control: {
-      type: 'multi-select',
-    },
-  },
-};
-
-export const DefaultSelectedSingle = ChipTemplate.bind({});
-DefaultSelectedSingle.storyName = 'Uncontrolled Single Selection with Default Value';
-DefaultSelectedSingle.args = {
-  defaultValue: 'Proprietorship',
-};
-DefaultSelectedSingle.argTypes = {
-  defaultValue: {
-    options: ['Proprietorship', 'Public', 'Small Business'],
-    control: {
-      type: 'select',
-    },
-  },
-};
-
-export const DefaultMultiSelected = MultiSelectChipTemplate.bind({});
-DefaultMultiSelected.storyName = 'Uncontrolled Multiple Selection with Default Value';
-DefaultMultiSelected.args = {
-  defaultValue: ['Pending', 'In Progress'],
-  accessibilityLabel: 'Choose multiple filters from the options below',
-};
-DefaultMultiSelected.argTypes = {
-  defaultValue: {
-    options: ['Refunded', 'Failed', 'Pending', 'In Progress'],
-    control: {
-      type: 'multi-select',
-    },
-  },
-};
-
-const ControlledSingleSelectionTemplate: ComponentStory<typeof ChipGroupComponent> = ({
-  ...args
-}) => {
-  const chipValues = ['Proprietorship', 'Public', 'Small Business'];
-  const [value, setValue] = React.useState('Proprietorship');
-  return (
-    <Box display="flex">
-      <Dropdown marginRight="spacing.4">
-        <DropdownButton size="small">Business Type</DropdownButton>
-        <DropdownOverlay>
-          <ActionList>
-            {chipValues.map((chipValue: string) => (
-              <ActionListItem
-                key={chipValue}
-                title={chipValue}
-                value={chipValue}
-                onClick={({ name }) => setValue(name)}
-                isSelected={value === chipValue}
-              />
-            ))}
-          </ActionList>
-        </DropdownOverlay>
-      </Dropdown>
-
-      <ChipGroupComponent
-        {...args}
-        selectionType="single"
-        value={value}
-        onChange={({ values }) => setValue(values[0])}
-      >
-        {chipValues.map((chipValue: string) => (
-          <ChipComponent key={chipValue} value={chipValue}>
-            {chipValue}
-          </ChipComponent>
-        ))}
-      </ChipGroupComponent>
-    </Box>
-  );
-};
-
-export const ControlledSingleSelection = ControlledSingleSelectionTemplate.bind({});
-ControlledSingleSelection.storyName = 'Controlled Single Selection';
-ControlledSingleSelection.args = {
-  accessibilityLabel: 'Choose one business type from the options below',
-};
-
-const ControlledMultiSelectionTemplate: ComponentStory<typeof ChipGroupComponent> = (args) => {
-  const chipValues = ['Refunded', 'Failed', 'Pending', 'In Progress'];
-  const [values, setValues] = React.useState(['In Progress']);
-  return (
-    <Box display="flex">
-      <Dropdown marginRight="spacing.4">
-        <DropdownButton size="small">Quick Filters:</DropdownButton>
-        <DropdownOverlay>
-          <ActionList>
-            {chipValues.map((chipValue: string) => (
-              <ActionListItem
-                key={chipValue}
-                title={chipValue}
-                value={chipValue}
-                onClick={({ name, value }) =>
-                  value
-                    ? setValues(values.filter((v) => v !== name))
-                    : setValues(values.concat([name]))
-                }
-                isSelected={values.includes(chipValue)}
-              />
-            ))}
-          </ActionList>
-        </DropdownOverlay>
-      </Dropdown>
-      <ChipGroupComponent
-        {...args}
-        selectionType="multiple"
-        onChange={({ values }) => setValues(values)}
-        value={values}
-      >
-        {chipValues.map((chipValue: string) => (
-          <ChipComponent key={chipValue} value={chipValue} icon={args.icon}>
-            {chipValue}
-          </ChipComponent>
-        ))}
-      </ChipGroupComponent>
-    </Box>
-  );
-};
-
-export const ControlledMultiSelection = ControlledMultiSelectionTemplate.bind({});
-ControlledMultiSelection.storyName = 'Controlled Multiple Selection';
-ControlledMultiSelection.args = {
-  accessibilityLabel: 'Choose multiple filters from the options below',
-};
+SingleSelection.storyName = 'Default';
 
 export const Disabled = ChipTemplate.bind({});
 Disabled.storyName = 'Disabled';
@@ -384,21 +154,25 @@ Disabled.args = {
   isDisabled: true,
 };
 
-const ChipWithIconTemplate: ComponentStory<typeof ChipGroupComponent> = ({ children, ...args }) => {
+const ChipWithIconTemplate: ComponentStory<typeof ChipComponent> = ({ children, ...args }) => {
   return (
     <Box>
       <Text marginBottom="spacing.3" marginTop="spacing.3">
         What other capabilities are you looking for?
       </Text>
 
-      <ChipGroupComponent selectionType="multiple" defaultValue="payment-links" {...args}>
-        <ChipComponent value="payment-links" icon={PaymentLinksIcon}>
+      <ChipGroupComponent
+        accessibilityLabel="Choose one business type from the options below"
+        defaultValue="payment-links"
+        {...args}
+      >
+        <ChipComponent value="payment-links" icon={PaymentLinksIcon} {...args}>
           Automated Payment Links
         </ChipComponent>
-        <ChipComponent value="wallet" icon={SmartphoneIcon}>
+        <ChipComponent value="wallet" icon={SmartphoneIcon} {...args}>
           Wallet on My App
         </ChipComponent>
-        <ChipComponent value="offers" icon={OffersIcon}>
+        <ChipComponent value="offers" icon={OffersIcon} {...args}>
           Offer discounts, Pay Later & EMI options
         </ChipComponent>
       </ChipGroupComponent>
@@ -408,50 +182,8 @@ const ChipWithIconTemplate: ComponentStory<typeof ChipGroupComponent> = ({ child
 
 export const ChipWithIcon = ChipWithIconTemplate.bind({});
 ChipWithIcon.storyName = 'With Icon';
-ChipWithIcon.args = {
-  accessibilityLabel: 'Choose multiple filters from the options below',
-};
 
-const AllChipSizesTemplate: ComponentStory<typeof ChipGroupComponent> = ({ children, ...args }) => {
-  const sizes = ['xsmall', 'small', 'medium', 'large'];
-  return (
-    <Box>
-      {sizes.map((size, index) => (
-        <Box key={index}>
-          <Heading size="medium" marginBottom="spacing.3">
-            {size}
-          </Heading>
-          <Box marginBottom="spacing.3">
-            <Text marginBottom="spacing.3" marginTop="spacing.3" size="medium">
-              What other capabilities are you looking for?
-            </Text>
-
-            <ChipGroupComponent
-              accessibilityLabel="Select other capabilities are you looking for from the options below"
-              defaultValue="Proprietorship"
-              size={size as ChipGroupProps['size']}
-            >
-              <ChipComponent value="payment-links" icon={PaymentLinksIcon}>
-                Automated Payment Links
-              </ChipComponent>
-              <ChipComponent value="wallet" icon={SmartphoneIcon}>
-                Wallet on My App
-              </ChipComponent>
-              <ChipComponent value="offers" icon={OffersIcon}>
-                Offer discounts, Pay Later & EMI options
-              </ChipComponent>
-            </ChipGroupComponent>
-          </Box>
-        </Box>
-      ))}
-    </Box>
-  );
-};
-
-export const AllChipSizes = AllChipSizesTemplate.bind({});
-AllChipSizes.storyName = 'All Sizes';
-
-const ChipIntentsTemplate: ComponentStory<typeof ChipGroupComponent> = (args) => {
+const ChipIntentsTemplate: ComponentStory<typeof ChipComponent> = (args) => {
   return (
     <Box display="flex" flexDirection="column">
       <Text size="large" weight="bold" marginBottom="spacing.3">
@@ -460,13 +192,12 @@ const ChipIntentsTemplate: ComponentStory<typeof ChipGroupComponent> = (args) =>
 
       <ChipGroupComponent
         defaultValue="yes"
-        {...args}
         accessibilityLabel="Is the result helpful? Please select either yer or no"
       >
-        <ChipComponent intent="positive" value="yes" icon={ThumbsUpIcon}>
+        <ChipComponent intent="positive" value="yes" icon={ThumbsUpIcon} {...args}>
           Yes
         </ChipComponent>
-        <ChipComponent intent="negative" value="no" icon={ThumbsDownIcon}>
+        <ChipComponent intent="negative" value="no" icon={ThumbsDownIcon} {...args}>
           No
         </ChipComponent>
       </ChipGroupComponent>
@@ -476,11 +207,8 @@ const ChipIntentsTemplate: ComponentStory<typeof ChipGroupComponent> = (args) =>
 
 export const ChipWithIntent = ChipIntentsTemplate.bind({});
 ChipWithIntent.storyName = 'With Intent';
-ChipWithIntent.args = {
-  accessibilityLabel: 'Is the result helpful?',
-};
 
-const TextTransformationTemplate: ComponentStory<typeof ChipGroupComponent> = ({
+const TextTransformationTemplate: ComponentStory<typeof ChipComponent> = ({
   children,
   ...args
 }) => {
@@ -491,9 +219,12 @@ const TextTransformationTemplate: ComponentStory<typeof ChipGroupComponent> = ({
         Select Business type:
       </Text>
 
-      <ChipGroupComponent defaultValue="Proprietorship" {...args}>
+      <ChipGroupComponent
+        accessibilityLabel="Choose one business type from the options below"
+        defaultValue="Proprietorship"
+      >
         {chipValues.map((chipValue: string) => (
-          <ChipComponent key={chipValue} value={chipValue}>
+          <ChipComponent key={chipValue} value={chipValue} {...args}>
             {chipValue.toUpperCase()}
           </ChipComponent>
         ))}
@@ -511,16 +242,16 @@ export const chipRef: ComponentStory<typeof ChipComponent> = (args) => {
 
   return (
     <Box gap="spacing.3" display="flex" flexDirection="column">
-      <ChipGroupComponent
-        accessibilityLabel="Select business type"
-        selectionType="single"
-        {...args}
-      >
-        <ChipComponent ref={chipRef} value="Proprietorship">
+      <ChipGroupComponent accessibilityLabel="Select business type" selectionType="single">
+        <ChipComponent ref={chipRef} value="Proprietorship" {...args}>
           Proprietorship
         </ChipComponent>
-        <ChipComponent value="Public">Public</ChipComponent>
-        <ChipComponent value="Small Business">Small Business</ChipComponent>
+        <ChipComponent value="Public" {...args}>
+          Public
+        </ChipComponent>
+        <ChipComponent value="Small Business" {...args}>
+          Small Business
+        </ChipComponent>
       </ChipGroupComponent>
       <Box maxWidth="400px" display="flex" flexDirection="row" gap="spacing.3">
         <Button
