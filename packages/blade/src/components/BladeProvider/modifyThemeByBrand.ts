@@ -61,7 +61,7 @@ export const modifyThemeByBrand = (existingTheme: ThemeTokens, brandColor: strin
 
   const foregroundOnBrandColor = tinycolor
     .mostReadable(
-      brandColors[700],
+      brandColors[900],
       [globalColors.neutral.blueGrayLight[1100], globalColors.neutral.blueGrayLight[50]],
       {
         level: 'AAA',
