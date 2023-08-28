@@ -25,13 +25,13 @@ This document outlines the API details of the `Chip` and `ChipGroup` components,
 >
 > The `Chip` component is inherently tied to the `ChipGroup` and cannot be utilized outside its context. This is because the chips are designed to be used in multiples since they represent collections of objects.
 
-| Prop                    | Type                                    | Default     | Description                                                                                                                                        | Required |
-| ----------------------- | --------------------------------------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| **children**            | `React.ReactText \| React.ReactText[]`  | `undefined` | Renders the label text for the Chip                                                                                                                | ✅       |
-| **icon**                | `Icon`                                  | `undefined` | Displays the Blade Icon component within the Chip                                                                                                  | ❌       |
-| **isDisabled**          | `boolean`                               | `false`     | Disables or enables the Chip                                                                                                                       | ❌       |
-| **intent**              | `'positive' \| 'negative' \| 'neutral'` | `'neutral'` | Sets the ChipGroups's visual variant, it will propagate down to all the Chips                                                                      | ❌       |
-| **value (html native)** | `string`                                | `undefined` | The value of the input field in Chip, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#value) | ❌       |
+| Prop                    | Type                                   | Default     | Description                                                                                                                                        | Required |
+| ----------------------- | -------------------------------------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| **children**            | `React.ReactText \| React.ReactText[]` | `undefined` | Renders the label text for the Chip                                                                                                                | ✅       |
+| **icon**                | `Icon`                                 | `undefined` | Displays the Blade Icon component within the Chip                                                                                                  | ❌       |
+| **isDisabled**          | `boolean`                              | `false`     | Disables or enables the Chip                                                                                                                       | ❌       |
+| **intent**              | `'positive' \| 'negative' \| 'none'`   | `'none'`    | Sets the ChipGroups's visual variant, it will propagate down to all the Chips                                                                      | ❌       |
+| **value (html native)** | `string`                               | `undefined` | The value of the input field in Chip, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#value) | ❌       |
 
 ## `ChipGroup` API
 
@@ -50,7 +50,7 @@ This document outlines the API details of the `Chip` and `ChipGroup` components,
 | **selectionType**      | `'single' \| 'multiple'`                                         | `'single'`  | Defines the selection behavior within the ChipGroup component, simulating radio/checkbox like behavior within the group        | ❌       |
 | **size**               | `'xsmall' \| 'small' \| 'medium' \| 'large'`                     | `'small'`   | Specifies the size of the rendered Chips withing the ChipGroup                                                                 | ❌       |
 | **value**              | `string \|string[]`                                              | `undefined` | Acts as a controlled component by specifying the ChipGroup value                                                               | ❌       |
-| **intent**             | `'positive' \| 'negative' \| 'neutral'`                          | `'neutral'` | Sets the ChipGroups's visual variant, it will propagate down to all the Chips                                                  | ❌       |
+| **intent**             | `'positive' \| 'negative' \| 'none'`                             | `'none'`    | Sets the ChipGroups's visual variant, it will propagate down to all the Chips                                                  | ❌       |
 
 ## Examples
 
