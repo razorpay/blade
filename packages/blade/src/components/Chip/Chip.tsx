@@ -177,10 +177,14 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
                 borderRadius="max"
                 borderWidth={['xsmall', 'small'].includes(_size) ? 'thinner' : 'thin'}
                 paddingLeft={
-                  chipHorizontalPaddingTokens[Boolean(Icon) ? 'icon' : 'default'].left[_size]
+                  chipHorizontalPaddingTokens[Boolean(Icon) ? 'withIcon' : 'withoutIcon'].left[
+                    _size
+                  ]
                 }
                 paddingRight={
-                  chipHorizontalPaddingTokens[Boolean(Icon) ? 'icon' : 'default'].right[_size]
+                  chipHorizontalPaddingTokens[Boolean(Icon) ? 'withIcon' : 'withoutIcon'].right[
+                    _size
+                  ]
                 }
                 height={makeSize(chipHeightTokens[_size])}
                 style={{

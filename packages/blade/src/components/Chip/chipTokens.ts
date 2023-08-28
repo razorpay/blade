@@ -33,18 +33,18 @@ const chipHeightTokens: Record<NonNullable<ChipGroupProps['size']>, number> = {
 };
 
 type ChipHorizontalPaddingTokens = {
-  default: Record<
+  withoutIcon: Record<
     'left' | 'right',
     Record<NonNullable<ChipGroupProps['size']>, DotNotationSpacingStringToken>
   >;
-  icon: Record<
+  withIcon: Record<
     'left' | 'right',
     Record<NonNullable<ChipGroupProps['size']>, DotNotationSpacingStringToken>
   >;
 };
 
 const chipHorizontalPaddingTokens: ChipHorizontalPaddingTokens = {
-  default: {
+  withoutIcon: {
     left: {
       xsmall: 'spacing.4',
       small: 'spacing.4',
@@ -58,7 +58,7 @@ const chipHorizontalPaddingTokens: ChipHorizontalPaddingTokens = {
       large: 'spacing.7',
     },
   },
-  icon: {
+  withIcon: {
     left: {
       xsmall: 'spacing.4',
       small: 'spacing.4',
@@ -74,14 +74,45 @@ const chipHorizontalPaddingTokens: ChipHorizontalPaddingTokens = {
   },
 };
 
-type ColorTokens = DotNotationColorStringToken<Theme['colors']>;
+type FeedbackActionBackgroundColors<
+  T extends 'positive' | 'negative'
+> = `feedback.${T}.action.background.${DotNotationColorStringToken<
+  Theme['colors']['feedback'][T]['action']['background']
+>}`;
+type FeedbackActionBorderColors<
+  T extends 'positive' | 'negative'
+> = `feedback.${T}.action.border.${DotNotationColorStringToken<
+  Theme['colors']['feedback'][T]['action']['border']
+>}`;
 type TextColorTokens = BaseTextProps['color'];
 type IconColorTokens = IconProps['color'];
 type ChipColorTokens = {
   text: Record<string, TextColorTokens>;
   icon: Record<string, IconColorTokens | 'brand.primary.500'>;
-  background: Record<string, Record<string, ColorTokens | 'transparent'>>;
-  border: Record<string, Record<string, ColorTokens>>;
+  background: Record<
+    string,
+    Record<
+      string,
+      | FeedbackActionBackgroundColors<'positive'>
+      | FeedbackActionBackgroundColors<'negative'>
+      | 'transparent'
+      | 'brand.gray.a50.lowContrast'
+      | 'brand.primary.300'
+      | 'brand.primary.400'
+    >
+  >;
+  border: Record<
+    string,
+    Record<
+      string,
+      | FeedbackActionBorderColors<'positive'>
+      | FeedbackActionBorderColors<'negative'>
+      | 'brand.gray.400.lowContrast'
+      | 'brand.gray.a100.lowContrast'
+      | 'brand.gray.a50.lowContrast'
+      | 'brand.primary.500'
+    >
+  >;
 };
 
 const chipColorTokens: ChipColorTokens = {
