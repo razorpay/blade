@@ -4,17 +4,9 @@ import { Heading, Text, Title } from '../Typography';
 import type { ChipGroupProps } from './ChipGroup';
 import { ChipGroup as ChipGroupComponent } from './ChipGroup';
 import { Chip as ChipComponent } from './Chip';
-import {
-  PaymentLinksIcon,
-  OffersIcon,
-  SmartphoneIcon,
-  ThumbsUpIcon,
-  ThumbsDownIcon,
-} from '~components/Icons';
+import { PaymentLinksIcon, OffersIcon, SmartphoneIcon } from '~components/Icons';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
-import type { BladeElementRef } from '~utils/types';
-import { Button } from '~components/Button';
 import { Box } from '~components/Box';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import iconMap from '~components/Icons/iconMap';
@@ -236,12 +228,16 @@ const MultiSelectChipTemplate: ComponentStory<typeof ChipGroupComponent> = ({
   children,
   ...args
 }) => {
-  const chipValues = ['Refunded', 'Failed', 'Pending', 'In Progress'];
+  const chipValues = [
+    'Automated Payment Links',
+    'Wallet on My App',
+    'Offer discounts, Pay Later & EMI options',
+  ];
 
   return (
     <Box>
       <Text marginBottom="spacing.3" marginTop="spacing.3">
-        Quick Filters:
+        What other capabilities are you looking for?
       </Text>
 
       <ChipGroupComponent selectionType="multiple" {...args}>
@@ -258,11 +254,15 @@ const MultiSelectChipTemplate: ComponentStory<typeof ChipGroupComponent> = ({
 export const MultiSelection = MultiSelectChipTemplate.bind({});
 MultiSelection.storyName = 'Multi Selection';
 MultiSelection.args = {
-  accessibilityLabel: 'Choose multiple filters from the options below',
+  accessibilityLabel: 'Select other capabilities you are looking for from the options below',
 };
 MultiSelection.argTypes = {
   defaultValue: {
-    options: ['Refunded', 'Failed', 'Pending', 'In Progress'],
+    options: [
+      'Automated Payment Links',
+      'Wallet on My App',
+      'Offer discounts, Pay Later & EMI options',
+    ],
     control: {
       type: 'multi-select',
     },
@@ -286,12 +286,16 @@ DefaultSelectedSingle.argTypes = {
 export const DefaultMultiSelected = MultiSelectChipTemplate.bind({});
 DefaultMultiSelected.storyName = 'Uncontrolled Multiple Selection with Default Value';
 DefaultMultiSelected.args = {
-  defaultValue: ['Pending', 'In Progress'],
-  accessibilityLabel: 'Choose multiple filters from the options below',
+  defaultValue: ['Automated Payment Links'],
+  accessibilityLabel: 'Select other capabilities you are looking for from the options below',
 };
 DefaultMultiSelected.argTypes = {
   defaultValue: {
-    options: ['Refunded', 'Failed', 'Pending', 'In Progress'],
+    options: [
+      'Automated Payment Links',
+      'Wallet on My App',
+      'Offer discounts, Pay Later & EMI options',
+    ],
     control: {
       type: 'multi-select',
     },
@@ -304,7 +308,7 @@ const ControlledSingleSelectionTemplate: ComponentStory<typeof ChipGroupComponen
   const chipValues = ['Proprietorship', 'Public', 'Small Business'];
   const [value, setValue] = React.useState('Proprietorship');
   return (
-    <Box display="flex">
+    <Box display="flex" gap="spacing.5" flexDirection="column" minHeight="200px">
       <Dropdown marginRight="spacing.4">
         <DropdownButton size="small">Business Type</DropdownButton>
         <DropdownOverlay>
@@ -345,12 +349,16 @@ ControlledSingleSelection.args = {
 };
 
 const ControlledMultiSelectionTemplate: ComponentStory<typeof ChipGroupComponent> = (args) => {
-  const chipValues = ['Refunded', 'Failed', 'Pending', 'In Progress'];
+  const chipValues = [
+    'Automated Payment Links',
+    'Wallet on My App',
+    'Offer discounts, Pay Later & EMI options',
+  ];
   const [values, setValues] = React.useState(['In Progress']);
   return (
-    <Box display="flex">
+    <Box display="flex" gap="spacing.5" flexDirection="column" minHeight="200px">
       <Dropdown marginRight="spacing.4">
-        <DropdownButton size="small">Quick Filters:</DropdownButton>
+        <DropdownButton size="small">What other capabilities are you looking for?</DropdownButton>
         <DropdownOverlay>
           <ActionList>
             {chipValues.map((chipValue: string) => (
@@ -388,7 +396,7 @@ const ControlledMultiSelectionTemplate: ComponentStory<typeof ChipGroupComponent
 export const ControlledMultiSelection = ControlledMultiSelectionTemplate.bind({});
 ControlledMultiSelection.storyName = 'Controlled Multiple Selection';
 ControlledMultiSelection.args = {
-  accessibilityLabel: 'Choose multiple filters from the options below',
+  accessibilityLabel: 'Select other capabilities you are looking for from the options below',
 };
 
 export const Disabled = ChipTemplate.bind({});
@@ -412,9 +420,9 @@ const AllChipSizesTemplate: ComponentStory<typeof ChipGroupComponent> = ({ child
             </Text>
 
             <ChipGroupComponent
-              accessibilityLabel="Select other capabilities are you looking for from the options below"
-              defaultValue="Proprietorship"
+              defaultValue="payment-links"
               size={size as ChipGroupProps['size']}
+              {...args}
             >
               <ChipComponent value="payment-links" icon={PaymentLinksIcon}>
                 Automated Payment Links
@@ -435,3 +443,11 @@ const AllChipSizesTemplate: ComponentStory<typeof ChipGroupComponent> = ({ child
 
 export const AllChipSizes = AllChipSizesTemplate.bind({});
 AllChipSizes.storyName = 'All Sizes';
+AllChipSizes.args = {
+  accessibilityLabel: 'Select other capabilities you are looking for from the options below',
+};
+AllChipSizes.parameters = {
+  controls: {
+    exclude: ['icon'],
+  },
+};
