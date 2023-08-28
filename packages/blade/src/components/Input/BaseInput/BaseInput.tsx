@@ -26,7 +26,7 @@ import type {
   FormInputHandleOnClickEvent,
   FormInputHandleOnKeyDownEvent,
 } from '~components/Form/FormTypes';
-import type { TestID } from '~utils/types';
+import type { BladeElementRef, TestID } from '~utils/types';
 import { makeSize } from '~utils/makeSize';
 import type { AriaAttributes } from '~utils/makeAccessible';
 import { makeAccessible } from '~utils/makeAccessible';
@@ -228,6 +228,7 @@ type BaseInputCommonProps = FormInputLabelProps &
      * true if popup is in expanded state
      */
     isPopupExpanded?: boolean;
+    setInputWrapperRef?: (node: HTMLDivElement) => void;
     /**
      * sets the autocapitalize behavior for the input
      */
@@ -557,7 +558,7 @@ const getDescribedByElementId = ({
   return '';
 };
 
-export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
+export const BaseInput = React.forwardRef<BladeElementRef, BaseInputProps>(
   (
     {
       as = 'input',
@@ -608,6 +609,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
       isPopupExpanded,
       shouldIgnoreBlurAnimation,
       autoCapitalize,
+      setInputWrapperRef,
       testID,
       ...styledProps
     },
@@ -716,6 +718,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
             validationState={validationState}
             currentInteraction={currentInteraction}
             isLabelLeftPositioned={isLabelLeftPositioned}
+            setInputWrapperRef={setInputWrapperRef}
           >
             <BaseInputVisuals leadingIcon={leadingIcon} prefix={prefix} isDisabled={isDisabled} />
             <StyledBaseInput

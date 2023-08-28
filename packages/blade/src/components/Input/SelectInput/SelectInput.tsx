@@ -12,7 +12,6 @@ import { isReactNative } from '~utils';
 import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
 import { componentIds } from '~components/Dropdown/dropdownUtils';
 import type { BladeElementRef } from '~utils/types';
-import { useBladeInnerRef } from '~utils/useBladeInnerRef';
 import { MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
@@ -109,13 +108,8 @@ const _SelectInput = (
     setIsControlled,
     selectionType,
     selectedIndices,
+    triggererWrapperRef,
   } = useDropdown();
-
-  const inputRef = useBladeInnerRef(ref, {
-    onFocus: (opts) => {
-      triggererRef.current?.focus(opts);
-    },
-  });
 
   const {
     icon,
@@ -212,7 +206,10 @@ const _SelectInput = (
       {!isReactNative() ? (
         <VisuallyHidden>
           <input
-            ref={inputRef as React.Ref<HTMLInputElement>}
+            onFocus={() => {
+              triggererRef.current?.focus();
+            }}
+            ref={ref as React.Ref<HTMLInputElement>}
             tabIndex={-1}
             required={props.isRequired}
             name={props.name}
@@ -231,7 +228,10 @@ const _SelectInput = (
         label={props.label as string}
         hideLabelText={props.label?.length === 0}
         componentName={MetaConstants.SelectInput}
-        ref={!isReactNative() ? (triggererRef as React.MutableRefObject<HTMLInputElement>) : null}
+        ref={(!isReactNative() ? triggererRef : null) as never}
+        setInputWrapperRef={(wrapperNode) => {
+          triggererWrapperRef.current = wrapperNode;
+        }}
         textAlign="left"
         value={displayValue}
         placeholder={placeholder}

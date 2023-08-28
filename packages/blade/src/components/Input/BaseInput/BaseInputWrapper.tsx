@@ -8,47 +8,52 @@ import { castWebType, getPlatformType } from '~utils';
 import type { ActionStates } from '~tokens/theme/theme';
 import { makeMotionTime } from '~utils/makeMotionTime';
 
-type BaseInputWrapperProps = Pick<BaseInputProps, 'isDisabled' | 'validationState'> & {
+type BaseInputWrapperProps = Pick<
+  BaseInputProps,
+  'isDisabled' | 'validationState' | 'setInputWrapperRef'
+> & {
   isFocused?: boolean;
   isLabelLeftPositioned?: boolean;
   currentInteraction: keyof ActionStates;
   isTextArea?: boolean;
 };
 
-const StyledBaseInputWrapper = styled(BaseBox)<BaseInputWrapperProps>((props) => ({
-  ...getInputBackgroundAndBorderStyles({
-    theme: props.theme,
-    isFocused: props.currentInteraction === 'active',
-    isDisabled: props.isDisabled,
-    validationState: props.validationState,
+const StyledBaseInputWrapper = styled(BaseBox)<Omit<BaseInputWrapperProps, 'setInputWrapperRef'>>(
+  (props) => ({
+    ...getInputBackgroundAndBorderStyles({
+      theme: props.theme,
+      isFocused: props.currentInteraction === 'active',
+      isDisabled: props.isDisabled,
+      validationState: props.validationState,
+    }),
+    '&:hover':
+      getPlatformType() === 'react-native'
+        ? undefined
+        : {
+            ...getInputBackgroundAndBorderStyles({
+              theme: props.theme,
+              isHovered: true,
+              isFocused: props.currentInteraction === 'active',
+              isDisabled: props.isDisabled,
+              validationState: props.validationState,
+            }),
+            transitionProperty: 'background-color',
+            transitionDuration: castWebType(makeMotionTime(props.theme.motion.duration.xquick)),
+            transitionTimingFunction: castWebType(props.theme.motion.easing.standard.effective),
+          },
+    ':focus-within':
+      getPlatformType() === 'react-native'
+        ? undefined
+        : {
+            ...getInputBackgroundAndBorderStyles({
+              theme: props.theme,
+              isFocused: props.currentInteraction === 'active',
+              isDisabled: props.isDisabled,
+              validationState: props.validationState,
+            }),
+          },
   }),
-  '&:hover':
-    getPlatformType() === 'react-native'
-      ? undefined
-      : {
-          ...getInputBackgroundAndBorderStyles({
-            theme: props.theme,
-            isHovered: true,
-            isFocused: props.currentInteraction === 'active',
-            isDisabled: props.isDisabled,
-            validationState: props.validationState,
-          }),
-          transitionProperty: 'background-color',
-          transitionDuration: castWebType(makeMotionTime(props.theme.motion.duration.xquick)),
-          transitionTimingFunction: castWebType(props.theme.motion.easing.standard.effective),
-        },
-  ':focus-within':
-    getPlatformType() === 'react-native'
-      ? undefined
-      : {
-          ...getInputBackgroundAndBorderStyles({
-            theme: props.theme,
-            isFocused: props.currentInteraction === 'active',
-            isDisabled: props.isDisabled,
-            validationState: props.validationState,
-          }),
-        },
-}));
+);
 
 export const BaseInputWrapper = ({
   children,
@@ -56,12 +61,15 @@ export const BaseInputWrapper = ({
   currentInteraction,
   isLabelLeftPositioned,
   isTextArea,
+  setInputWrapperRef,
   ...props
 }: BaseInputWrapperProps & {
   children: ReactNode;
 }): ReactElement => {
   return (
     <StyledBaseInputWrapper
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion, @typescript-eslint/no-explicit-any
+      ref={setInputWrapperRef as any}
       display="flex"
       flexDirection="row"
       width="100%"
