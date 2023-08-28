@@ -64,7 +64,11 @@ const CardRoot = ({
   if (onClick || scaleOnHover || href) {
     return (
       <AnimatedPressable
-        {...makeAccessible({ label: accessibilityLabel, selected: isSelected })}
+        {...makeAccessible({
+          role: href ? 'link' : undefined,
+          label: accessibilityLabel,
+          selected: isSelected,
+        })}
         style={styles}
         onPressIn={() => {
           if (onClick) {
