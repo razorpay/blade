@@ -19,7 +19,7 @@ import { Box } from '~components/Box';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import iconMap from '~components/Icons/iconMap';
 import { Dropdown, DropdownButton, DropdownOverlay } from '~components/Dropdown';
-import { ActionList, ActionListItem, ActionListSection } from '~components/ActionList';
+import { ActionList, ActionListItem } from '~components/ActionList';
 
 const Page = (): React.ReactElement => {
   return (
