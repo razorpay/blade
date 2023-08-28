@@ -170,7 +170,7 @@ const Card = ({
     <CardProvider>
       <CardRoot
         as={as}
-        onMouseEnter={onHover}
+        onMouseEnter={onHover as never}
         scaleOnHover={scaleOnHover}
         isSelected={isSelected}
         isFocused={isFocused}
