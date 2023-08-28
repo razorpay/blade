@@ -66,7 +66,7 @@ export default {
   args: {
     isDisabled: false,
     name: undefined,
-    accessibilityLabel: 'Select Business type:',
+    accessibilityLabel: 'Choose one business type from the options below',
     icon: undefined,
   },
   argTypes: {
@@ -192,8 +192,8 @@ const ChipTemplate: ComponentStory<typeof ChipGroupComponent> = ({ children, ...
       </Text>
 
       <ChipGroupComponent {...args}>
-        {chipValues.map((chipValue: string) => (
-          <ChipComponent key={chipValue} value={chipValue} icon={args.icon}>
+        {chipValues.map((chipValue: string, index) => (
+          <ChipComponent key={index} value={chipValue} icon={args.icon}>
             {chipValue}
           </ChipComponent>
         ))}
@@ -233,7 +233,7 @@ const MultiSelectChipTemplate: ComponentStory<typeof ChipGroupComponent> = ({
 
       <ChipGroupComponent selectionType="multiple" {...args}>
         {chipValues.map((chipValue: string) => (
-          <ChipComponent key={chipValue} value={chipValue}>
+          <ChipComponent key={chipValue} value={chipValue} icon={args.icon}>
             {chipValue}
           </ChipComponent>
         ))}
@@ -245,15 +245,9 @@ const MultiSelectChipTemplate: ComponentStory<typeof ChipGroupComponent> = ({
 export const MultiSelection = MultiSelectChipTemplate.bind({});
 MultiSelection.storyName = 'Multi Selection';
 MultiSelection.args = {
-  accessibilityLabel: 'Quick Filters:',
+  accessibilityLabel: 'Choose multiple filters from the options below',
 };
 MultiSelection.argTypes = {
-  value: {
-    options: ['Refunded', 'Failed', 'Pending', 'In Progress'],
-    control: {
-      type: 'multi-select',
-    },
-  },
   defaultValue: {
     options: ['Refunded', 'Failed', 'Pending', 'In Progress'],
     control: {
@@ -280,7 +274,7 @@ export const DefaultMultiSelected = MultiSelectChipTemplate.bind({});
 DefaultMultiSelected.storyName = 'Uncontrolled Multiple Selection with Default Value';
 DefaultMultiSelected.args = {
   defaultValue: ['Pending', 'In Progress'],
-  accessibilityLabel: 'Quick Filters:',
+  accessibilityLabel: 'Choose multiple filters from the options below',
 };
 DefaultMultiSelected.argTypes = {
   defaultValue: {
@@ -334,7 +328,7 @@ const ControlledSingleSelectionTemplate: ComponentStory<typeof ChipGroupComponen
 export const ControlledSingleSelection = ControlledSingleSelectionTemplate.bind({});
 ControlledSingleSelection.storyName = 'Controlled Single Selection';
 ControlledSingleSelection.args = {
-  accessibilityLabel: 'Select Business type:',
+  accessibilityLabel: 'Choose one business type from the options below',
 };
 
 const ControlledMultiSelectionTemplate: ComponentStory<typeof ChipGroupComponent> = (args) => {
@@ -381,7 +375,7 @@ const ControlledMultiSelectionTemplate: ComponentStory<typeof ChipGroupComponent
 export const ControlledMultiSelection = ControlledMultiSelectionTemplate.bind({});
 ControlledMultiSelection.storyName = 'Controlled Multiple Selection';
 ControlledMultiSelection.args = {
-  accessibilityLabel: 'Quick Filters:',
+  accessibilityLabel: 'Choose multiple filters from the options below',
 };
 
 export const Disabled = ChipTemplate.bind({});
@@ -415,11 +409,10 @@ const ChipWithIconTemplate: ComponentStory<typeof ChipGroupComponent> = ({ child
 export const ChipWithIcon = ChipWithIconTemplate.bind({});
 ChipWithIcon.storyName = 'With Icon';
 ChipWithIcon.args = {
-  accessibilityLabel: 'Quick Filters:',
+  accessibilityLabel: 'Choose multiple filters from the options below',
 };
 
 const AllChipSizesTemplate: ComponentStory<typeof ChipGroupComponent> = ({ children, ...args }) => {
-  const chipValues = ['Proprietorship', 'Public', 'Small Business'];
   const sizes = ['xsmall', 'small', 'medium', 'large'];
   return (
     <Box>
@@ -434,7 +427,7 @@ const AllChipSizesTemplate: ComponentStory<typeof ChipGroupComponent> = ({ child
             </Text>
 
             <ChipGroupComponent
-              accessibilityLabel="What other capabilities are you looking for?"
+              accessibilityLabel="Select other capabilities are you looking for from the options below"
               defaultValue="Proprietorship"
               size={size as ChipGroupProps['size']}
             >
@@ -465,7 +458,11 @@ const ChipIntentsTemplate: ComponentStory<typeof ChipGroupComponent> = (args) =>
         Is the result helpful?
       </Text>
 
-      <ChipGroupComponent defaultValue="yes" {...args}>
+      <ChipGroupComponent
+        defaultValue="yes"
+        {...args}
+        accessibilityLabel="Is the result helpful? Please select either yer or no"
+      >
         <ChipComponent intent="positive" value="yes" icon={ThumbsUpIcon}>
           Yes
         </ChipComponent>
