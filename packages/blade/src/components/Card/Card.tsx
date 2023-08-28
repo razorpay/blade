@@ -72,14 +72,57 @@ export type CardProps = {
    * - Docs: https://blade.razorpay.com/?path=/docs/tokens-spacing--page
    */
   padding?: Extract<SpacingValueType, 'spacing.0' | 'spacing.3' | 'spacing.5' | 'spacing.7'>;
+  /**
+   * Sets the width of the card
+   */
   width?: BoxProps['width'];
+  /**
+   * Sets the height of the card
+   */
   height?: BoxProps['height'];
-  onClick?: () => void;
+  /**
+   * If `true`, the card will be in selected state
+   * Card will have a visual ring around it.
+   *
+   * @default false
+   */
   isSelected?: boolean;
+  /**
+   * Makes the Card linkable by setting the `href` prop
+   *
+   * @default undefined
+   */
   href?: string;
+  /**
+   * Sets the accessibility label for the card
+   * This is useful when the card has an `href` prop and is used as a link
+   * Setting this will announce the label when the card is focused
+   */
   accessibilityLabel?: string;
+  /**
+   * If `true`, the card will scale up on hover
+   *
+   * On mobile devices it will scale down on press
+   *
+   * @default false
+   */
   scaleOnHover?: boolean;
+  /**
+   * Callback to trigger when the card is hovered
+   */
   onHover?: () => void;
+  /**
+   * Callback to trigger when the card is clicked
+   */
+  onClick?: () => void;
+  /**
+   * Sets the HTML element for the Card
+   *
+   * When `as` is set to `label`, the card will be rendered as a label element
+   * This can be used to create a custom checkbox or radio button using the card
+   *
+   * @default undefined
+   */
   as?: 'label';
 } & TestID &
   StyledPropsBlade;
@@ -93,9 +136,9 @@ const Card = ({
   width,
   height,
   onClick,
-  isSelected,
+  isSelected = false,
   accessibilityLabel,
-  scaleOnHover,
+  scaleOnHover = false,
   onHover,
   href,
   as,
