@@ -1,5 +1,30 @@
 # @razorpay/blade
 
+## 10.3.1
+
+### Patch Changes
+
+- 5f500f3d: fix(DropdownOverlay): Dropdown clipping issue in overflow scroll containers
+
+## 10.3.0
+
+### Minor Changes
+
+- 5872d7ea: refactor(blade): remove useBladeInnerRef & expose native DOM nodes via ref
+
+## 10.2.1
+
+### Patch Changes
+
+- 98291854: chore: make accordion min-width 360px for large screens
+- 5f2f3e44: feat: add large size to List component
+
+## 10.2.0
+
+### Minor Changes
+
+- 30109b99: feat(blade): added Carousel component
+
 ## 10.1.0
 
 ### Minor Changes

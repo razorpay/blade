@@ -121,7 +121,8 @@ const StoryCanvas = styled.div(
       overflow: auto;
       padding: ${
         context.kind.includes('/Dropdown/With Select') ||
-        context.kind.includes('/Dropdown/With Button')
+        context.kind.includes('/Dropdown/With Button') ||
+        context.kind.includes('/Carousel')
           ? '0rem'
           : '2rem'
       };

@@ -10,10 +10,10 @@ import BaseBox from '~components/Box/BaseBox';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { MetaConstants } from '~utils/metaAttribute';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
-import type { BladeElementRef } from '~utils/useBladeInnerRef';
-import { useBladeInnerRef } from '~utils/useBladeInnerRef';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getPlatformType } from '~utils';
+import { useMergeRefs } from '~utils/useMergeRefs';
+import type { BladeElementRef } from '~utils/types';
 
 type TextAreaCommonProps = Pick<
   BaseInputProps,
@@ -116,7 +116,9 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
   },
   ref,
 ) => {
-  const inputRef = useBladeInnerRef(ref);
+  const inputRef = React.useRef<BladeElementRef>(null);
+  const mergedRef = useMergeRefs(ref, inputRef);
+
   const [shouldShowClearButton, setShouldShowClearButton] = React.useState(false);
 
   React.useEffect(() => {
@@ -160,7 +162,7 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
       id="textarea"
       componentName={MetaConstants.TextArea}
       autoFocus={autoFocus}
-      ref={inputRef as React.Ref<HTMLInputElement>}
+      ref={mergedRef}
       label={label as string}
       accessibilityLabel={accessibilityLabel}
       hideLabelText={!Boolean(label)}

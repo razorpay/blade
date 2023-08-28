@@ -135,6 +135,25 @@ describe('<List />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should render large unordered List with icon', () => {
+    const { container } = renderWithTheme(
+      <List variant="unordered" size="large" icon={ArrowRightIcon}>
+        <ListItem>
+          Level 1
+          <List>
+            <ListItem icon={ArrowUpIcon}>
+              Level 2
+              <List>
+                <ListItem>Level 3</ListItem>
+              </List>
+            </ListItem>
+          </List>
+        </ListItem>
+      </List>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
   it('should render small ordered List', () => {
     const { container } = renderWithTheme(
       <List variant="ordered" size="small">
@@ -173,6 +192,25 @@ describe('<List />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should render large ordered List', () => {
+    const { container } = renderWithTheme(
+      <List variant="ordered" size="large">
+        <ListItem>
+          Level 1
+          <List>
+            <ListItem>
+              Level 2
+              <List>
+                <ListItem>Level 3</ListItem>
+              </List>
+            </ListItem>
+          </List>
+        </ListItem>
+      </List>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
   it('should render small ordered-filled List', () => {
     const { container } = renderWithTheme(
       <List variant="ordered-filled" size="small">
@@ -187,6 +225,17 @@ describe('<List />', () => {
   it('should render medium ordered-filled List', () => {
     const { container } = renderWithTheme(
       <List variant="ordered-filled" size="medium">
+        <ListItem>Level 1</ListItem>
+        <ListItem>Level 2</ListItem>
+        <ListItem>Level 3</ListItem>
+      </List>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render large ordered-filled List', () => {
+    const { container } = renderWithTheme(
+      <List variant="ordered-filled" size="large">
         <ListItem>Level 1</ListItem>
         <ListItem>Level 2</ListItem>
         <ListItem>Level 3</ListItem>

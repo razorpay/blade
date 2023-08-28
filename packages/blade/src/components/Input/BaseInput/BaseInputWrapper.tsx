@@ -7,7 +7,7 @@ import type { ActionStates } from '~tokens/theme/theme';
 
 type BaseInputWrapperProps = Pick<
   BaseInputProps,
-  'isDisabled' | 'validationState' | 'showAllTags' | 'tagRows'
+  'isDisabled' | 'validationState' | 'showAllTags' | 'tagRows' | 'setInputWrapperRef'
 > & {
   isFocused?: boolean;
   isLabelLeftPositioned?: boolean;
@@ -22,24 +22,23 @@ const _BaseInputWrapper: React.ForwardRefRenderFunction<
   BaseInputWrapperProps & {
     children: ReactNode;
   }
-> = (
-  {
-    children,
-    validationState,
-    currentInteraction,
-    isLabelLeftPositioned,
-    isTextArea,
-    showAllTags,
-    setShowAllTagsWithAnimation,
-    tagRows,
-    ...props
-  },
-  ref,
-): ReactElement => {
+> = ({
+  children,
+  validationState,
+  currentInteraction,
+  isLabelLeftPositioned,
+  isTextArea,
+  showAllTags,
+  setShowAllTagsWithAnimation,
+  tagRows,
+  setInputWrapperRef,
+  ...props
+}): // ref,
+ReactElement => {
   return (
     <AnimatedBaseInputWrapper
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ref={ref as any}
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unnecessary-type-assertion
+      ref={setInputWrapperRef as any}
       isTextArea={isTextArea}
       validationState={validationState}
       currentInteraction={currentInteraction}

@@ -61,19 +61,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   gap: 0px;
 }
 
-.c9 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  position: relative;
-  width: 100%;
-}
-
-.c14 {
+.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -85,18 +73,27 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
 }
 
-.c15 {
+.c14 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
   padding-right: 12px;
-  height: 100%;
 }
 
-.c16 {
+.c15 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -112,11 +109,11 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   height: 100%;
 }
 
-.c20 {
+.c19 {
   margin-left: 0px;
 }
 
-.c21 {
+.c20 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -130,13 +127,18 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   justify-content: flex-end;
 }
 
-.c25 {
+.c22 {
+  width: 100%;
+  box-shadow: 0 12px 16px -4px hsla(217,56%,17%,0.08),0 4px 6px -2px hsla(217,56%,17%,0.03);
+}
+
+.c24 {
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
 }
 
-.c26 {
+.c25 {
   padding-right: 16px;
   padding-left: 16px;
   margin-bottom: 16px;
@@ -144,7 +146,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   touch-action: none;
 }
 
-.c27 {
+.c26 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -158,7 +160,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   user-select: none;
 }
 
-.c28 {
+.c27 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -177,13 +179,13 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   margin-right: auto;
 }
 
-.c29 {
+.c28 {
   -webkit-flex: auto;
   -ms-flex: auto;
   flex: auto;
 }
 
-.c30 {
+.c29 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -196,13 +198,13 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   flex-shrink: 0;
 }
 
-.c32 {
+.c31 {
   border-width: 0px;
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-style: solid;
 }
 
-.c36 {
+.c35 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -221,7 +223,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   max-height: 20px;
 }
 
-.c37 {
+.c36 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -236,27 +238,28 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   justify-content: center;
 }
 
-.c38 {
+.c37 {
   padding-right: 8px;
   padding-left: 0px;
 }
 
-.c40 {
+.c39 {
   margin-left: auto;
 }
 
-.c41 {
+.c40 {
   padding: 16px;
 }
 
-.c22 {
-  position: absolute;
-  width: 100%;
-  right: 0px;
-  box-shadow: 0 12px 16px -4px hsla(217,56%,17%,0.08),0 4px 6px -2px hsla(217,56%,17%,0.03);
+.c21 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  z-index: 1002;
 }
 
-.c43 {
+.c42 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -285,18 +288,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   border-radius: 4px;
 }
 
-.c24 {
-  -webkit-animation: hEZwlf 200ms cubic-bezier(0,0,0,1);
-  animation: hEZwlf 200ms cubic-bezier(0,0,0,1);
-  -webkit-transform: translateY(8px);
-  -ms-transform: translateY(8px);
-  transform: translateY(8px);
-  opacity: 0;
-  z-index: 99;
-  pointer-events: all;
-}
-
-.c42 {
+.c41 {
   min-height: 36px;
   width: 100%;
   cursor: pointer;
@@ -332,24 +324,24 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   position: relative;
 }
 
-.c42:hover {
+.c41:hover {
   background-color: hsla(223,95%,48%,1);
   border-color: hsla(223,95%,48%,1);
 }
 
-.c42:active {
+.c41:active {
   background-color: hsla(230,100%,42%,1);
   border-color: hsla(230,100%,42%,1);
 }
 
-.c42:focus {
+.c41:focus {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
 
-.c42 * {
+.c41 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -389,7 +381,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   padding: 0;
 }
 
-.c13 {
+.c12 {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -408,7 +400,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   -webkit-box-orient: vertical;
 }
 
-.c31 {
+.c30 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1rem;
@@ -421,7 +413,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   padding: 0;
 }
 
-.c39 {
+.c38 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -439,7 +431,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   -webkit-box-orient: vertical;
 }
 
-.c45 {
+.c44 {
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -453,22 +445,22 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   padding: 0;
 }
 
-.c18 {
+.c17 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.c17 {
+.c16 {
   display: none;
 }
 
-.c44 {
+.c43 {
   opacity: 1;
 }
 
-.c33 {
+.c32 {
   border-bottom-style: solid;
   border-bottom-width: 1px;
   -webkit-box-flex: 1;
@@ -477,7 +469,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   flex-grow: 1;
 }
 
-.c12 {
+.c11 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -506,7 +498,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   cursor: auto;
 }
 
-.c12::-webkit-input-placeholder {
+.c11::-webkit-input-placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -520,7 +512,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   padding: 0;
 }
 
-.c12::-moz-placeholder {
+.c11::-moz-placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -534,7 +526,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   padding: 0;
 }
 
-.c12:-ms-input-placeholder {
+.c11:-ms-input-placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -548,7 +540,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   padding: 0;
 }
 
-.c12::placeholder {
+.c11::placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -562,11 +554,11 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   padding: 0;
 }
 
-.c12:focus {
+.c11:focus {
   outline: none;
 }
 
-.c19 {
+.c18 {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -579,27 +571,42 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   animation: cAlpMa 250ms cubic-bezier(0.3,0,0.2,1) forwards;
 }
 
-.c10 {
-  -webkit-animation: hEoffO 200ms cubic-bezier(0,0,0.2,1);
-  animation: hEoffO 200ms cubic-bezier(0,0,0.2,1);
-}
-
-.c11 {
+.c9 {
   background-color: hsla(218,89%,51%,0.09);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
   border-bottom-width: 1px;
   border-bottom-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
+  height: auto;
 }
 
-.c11:hover {
+.c9:hover {
   background-color: hsla(218,89%,51%,0.09);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
   border-bottom-width: 1px;
   border-bottom-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
+  height: auto;
   -webkit-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-duration: 150ms;
@@ -608,13 +615,29 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c11:focus-within {
+.c9:focus-within {
   background-color: hsla(218,89%,51%,0.09);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
   border-bottom-width: 1px;
   border-bottom-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
+  height: auto;
+}
+
+.c10 {
+  -webkit-animation: none;
+  animation: none;
+  max-height: 145px;
 }
 
 .c2 {
@@ -634,17 +657,17 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   word-wrap: normal;
 }
 
-.c34 {
+.c33 {
   overflow-y: auto;
   max-height: 300px;
   padding: 8px;
 }
 
-.c34 [role=group]:last-child > [role=separator]:last-child {
+.c33 [role=group]:last-child > [role=separator]:last-child {
   display: none;
 }
 
-.c35 {
+.c34 {
   border-width: 4px;
   border-style: solid;
   border-color: transparent;
@@ -659,16 +682,16 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   display: block;
 }
 
-.c35:hover:not([aria-disabled=true]) {
+.c34:hover:not([aria-disabled=true]) {
   background-color: hsla(216,15%,54%,0.09);
 }
 
-.c35[aria-selected=true] {
+.c34[aria-selected=true] {
   background-color: hsla(218,89%,51%,0.09);
 }
 
 @media screen and (min-width:768px) {
-  .c26 {
+  .c25 {
     padding-right: 20px;
     padding-left: 20px;
     margin-bottom: 20px;
@@ -677,37 +700,37 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
 }
 
 @media screen and (min-width:320px) {
-  .c32 {
+  .c31 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c32 {
+  .c31 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c32 {
+  .c31 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c32 {
+  .c31 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c32 {
+  .c31 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c41 {
+  .c40 {
     padding: 20px;
   }
 }
@@ -781,7 +804,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
               </label>
             </div>
             <div
-              class="c9 c10 c11"
+              class=" c9 c10"
               data-blade-component="base-box"
             >
               <button
@@ -792,7 +815,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
                 aria-haspopup="dialog"
                 aria-invalid="false"
                 aria-required="false"
-                class="c12"
+                class="c11"
                 data-blade-component="styled-base-input"
                 id="dropdown-7-trigger-1-input-2"
                 placeholder="Select Option"
@@ -801,27 +824,27 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
                 value=""
               >
                 <p
-                  class="c13"
+                  class="c12"
                   data-blade-component="text"
                 >
                   Select Option
                 </p>
               </button>
               <div
-                class="c14"
+                class="c13"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c15"
+                  class="c14"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c16"
+                    class="c15"
                     data-blade-component="base-box"
                   >
                     <svg
                       aria-hidden="true"
-                      class="c17"
+                      class="c16"
                       data-blade-component="icon"
                       fill="none"
                       height="16px"
@@ -838,7 +861,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
                     </svg>
                     <svg
                       aria-hidden="true"
-                      class="c18"
+                      class="c17"
                       data-blade-component="icon"
                       fill="none"
                       height="16px"
@@ -857,34 +880,35 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
                 </div>
               </div>
               <div
-                class=" c19"
+                class=" c18"
                 data-blade-component="base-box"
               />
             </div>
           </div>
           <div
-            class="c20"
+            class="c19"
             data-blade-component="base-box"
           >
             <div
-              class="c21"
+              class="c20"
               data-blade-component="base-box"
             />
           </div>
         </div>
       </div>
       <div
-        class="c1"
+        class="c21"
         data-blade-component="base-box"
+        style="position: fixed; left: 0px; top: 0px; transform: translate(0px, 8px); width: 0px;"
       >
         <div
-          class="c22 c23 c24"
+          class="c22 c23"
           data-blade-component="dropdown-overlay"
           elevation="midRaised"
-          style="opacity: 1;"
+          style="transition-property: transform,opacity; transition-duration: 200ms;"
         >
           <div
-            class="c25"
+            class="c24"
             data-blade-component="base-box"
           >
             <div
@@ -892,27 +916,27 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
               data-blade-component="dropdown-header"
             >
               <div
-                class="c26"
+                class="c25"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c27"
+                  class="c26"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c28"
+                    class="c27"
                     data-blade-component="base-box"
                   >
                     <div
-                      class="c29"
+                      class="c28"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c30"
+                        class="c29"
                         data-blade-component="base-box"
                       >
                         <h6
-                          class="c31"
+                          class="c30"
                           data-blade-component="heading"
                         >
                           Recent Searches
@@ -923,7 +947,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
                 </div>
               </div>
               <div
-                class="c32 c33"
+                class="c31 c32"
                 data-blade-component="divider"
               />
             </div>
@@ -937,13 +961,13 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
           >
             <div
               aria-multiselectable="false"
-              class=" c34"
+              class=" c33"
               data-blade-component="base-box"
               role="listbox"
             >
               <button
                 aria-selected="false"
-                class=" c35"
+                class=" c34"
                 data-blade-component="action-list-item"
                 data-index="0"
                 data-value="apple"
@@ -953,26 +977,26 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
                 type="button"
               >
                 <div
-                  class="c36"
+                  class="c35"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c37"
+                    class="c36"
                     data-blade-component="base-box"
                   />
                   <div
-                    class="c38"
+                    class="c37"
                     data-blade-component="base-box"
                   >
                     <p
-                      class="c39"
+                      class="c38"
                       data-blade-component="text"
                     >
                       Apple
                     </p>
                   </div>
                   <div
-                    class="c40"
+                    class="c39"
                     data-blade-component="base-box"
                   />
                 </div>
@@ -983,7 +1007,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
               </button>
               <button
                 aria-selected="false"
-                class=" c35"
+                class=" c34"
                 data-blade-component="action-list-item"
                 data-index="1"
                 data-value="mango"
@@ -993,26 +1017,26 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
                 type="button"
               >
                 <div
-                  class="c36"
+                  class="c35"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c37"
+                    class="c36"
                     data-blade-component="base-box"
                   />
                   <div
-                    class="c38"
+                    class="c37"
                     data-blade-component="base-box"
                   >
                     <p
-                      class="c39"
+                      class="c38"
                       data-blade-component="text"
                     >
                       Mango
                     </p>
                   </div>
                   <div
-                    class="c40"
+                    class="c39"
                     data-blade-component="base-box"
                   />
                 </div>
@@ -1029,11 +1053,11 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
             role="group"
           >
             <div
-              class="c32 c33"
+              class="c31 c32"
               data-blade-component="divider"
             />
             <div
-              class="c41"
+              class="c40"
               data-blade-component="dropdown-footer"
             >
               <div
@@ -1041,17 +1065,17 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
                 data-blade-component="box"
               >
                 <button
-                  class="c42"
+                  class="c41"
                   data-blade-component="button"
                   role="button"
                   type="button"
                 >
                   <div
-                    class="c43 c44"
+                    class="c42 c43"
                     data-blade-component="base-box"
                   >
                     <div
-                      class="c45"
+                      class="c44"
                       data-blade-component="base-text"
                     >
                       Apply
@@ -1095,11 +1119,12 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
   justify-content: center;
 }
 
-.c5 {
-  position: relative;
+.c6 {
+  width: 100%;
+  box-shadow: 0 12px 16px -4px hsla(217,56%,17%,0.08),0 4px 6px -2px hsla(217,56%,17%,0.03);
 }
 
-.c11 {
+.c10 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1118,7 +1143,7 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
   max-height: 20px;
 }
 
-.c12 {
+.c11 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1133,24 +1158,21 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
   justify-content: center;
 }
 
-.c13 {
+.c12 {
   padding-right: 8px;
   padding-left: 0px;
 }
 
-.c15 {
+.c14 {
   margin-left: auto;
 }
 
-.c6 {
-  position: absolute;
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
-  min-width: 240px;
-  max-width: 400px;
-  right: 0px;
-  box-shadow: 0 12px 16px -4px hsla(217,56%,17%,0.08),0 4px 6px -2px hsla(217,56%,17%,0.03);
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  z-index: 1001;
 }
 
 .c7 {
@@ -1159,17 +1181,6 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
   border-color: hsla(216,15%,54%,0.18);
   border-style: solid;
   border-radius: 4px;
-}
-
-.c8 {
-  -webkit-animation: none;
-  animation: none;
-  -webkit-transform: translateY(8px);
-  -ms-transform: translateY(8px);
-  transform: translateY(8px);
-  opacity: 0;
-  z-index: 99;
-  pointer-events: none;
 }
 
 .c1 {
@@ -1248,7 +1259,7 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
   padding: 0;
 }
 
-.c14 {
+.c13 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -1270,17 +1281,17 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
   opacity: 1;
 }
 
-.c9 {
+.c8 {
   overflow-y: auto;
   max-height: 300px;
   padding: 8px;
 }
 
-.c9 [role=group]:last-child > [role=separator]:last-child {
+.c8 [role=group]:last-child > [role=separator]:last-child {
   display: none;
 }
 
-.c10 {
+.c9 {
   border-width: 4px;
   border-style: solid;
   border-color: transparent;
@@ -1295,11 +1306,11 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
   display: block;
 }
 
-.c10:hover:not([aria-disabled=true]) {
+.c9:hover:not([aria-disabled=true]) {
   background-color: hsla(216,15%,54%,0.09);
 }
 
-.c10[aria-selected=true] {
+.c9[aria-selected=true] {
   background-color: hsla(218,89%,51%,0.09);
 }
 
@@ -1313,7 +1324,7 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
       data-blade-component="base-box"
     >
       <button
-        aria-controls="dropdown-929-actionlist"
+        aria-controls="dropdown-818-actionlist"
         aria-expanded="false"
         aria-haspopup="menu"
         class="c1"
@@ -1336,55 +1347,56 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
       <div
         class="c5"
         data-blade-component="base-box"
+        style="position: fixed; left: 0px; top: 0px; transform: translate(0px, 8px); min-width: 240px; max-width: 400px;"
       >
         <div
-          class="c6 c7 c8"
+          class="c6 c7"
           data-blade-component="dropdown-overlay"
           elevation="midRaised"
-          style="opacity: 0;"
+          style="transition-property: transform,opacity; transition-duration: 200ms; transform: translateY(-8px); opacity: 0;"
         >
           <div
-            aria-labelledby="dropdown-929-label"
+            aria-labelledby="dropdown-818-label"
             class=""
             data-blade-component="action-list"
-            id="dropdown-929-actionlist"
+            id="dropdown-818-actionlist"
             role="menu"
           >
             <div
-              class=" c9"
+              class=" c8"
               data-blade-component="base-box"
             >
               <button
-                class=" c10"
+                class=" c9"
                 data-blade-component="action-list-item"
                 data-index="0"
                 data-value="profile"
-                id="dropdown-929-0"
+                id="dropdown-818-0"
                 role="menuitem"
                 tabindex="-1"
                 type="button"
               >
                 <div
-                  class="c11"
+                  class="c10"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c12"
+                    class="c11"
                     data-blade-component="base-box"
                   />
                   <div
-                    class="c13"
+                    class="c12"
                     data-blade-component="base-box"
                   >
                     <p
-                      class="c14"
+                      class="c13"
                       data-blade-component="text"
                     >
                       Profile
                     </p>
                   </div>
                   <div
-                    class="c15"
+                    class="c14"
                     data-blade-component="base-box"
                   />
                 </div>
@@ -1394,37 +1406,37 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
                 />
               </button>
               <a
-                class=" c10"
+                class=" c9"
                 data-blade-component="action-list-item"
                 data-index="1"
                 data-value="settings"
                 href="/settings"
-                id="dropdown-929-1"
+                id="dropdown-818-1"
                 role="link"
                 tabindex="-1"
                 type="button"
               >
                 <div
-                  class="c11"
+                  class="c10"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c12"
+                    class="c11"
                     data-blade-component="base-box"
                   />
                   <div
-                    class="c13"
+                    class="c12"
                     data-blade-component="base-box"
                   >
                     <p
-                      class="c14"
+                      class="c13"
                       data-blade-component="text"
                     >
                       Settings
                     </p>
                   </div>
                   <div
-                    class="c15"
+                    class="c14"
                     data-blade-component="base-box"
                   />
                 </div>
