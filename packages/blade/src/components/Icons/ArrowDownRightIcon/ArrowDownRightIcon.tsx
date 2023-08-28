@@ -1,8 +1,13 @@
 import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
+import { defaultProps } from '../defaults';
 
-const ArrowDownRightIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const ArrowDownRightIcon: IconComponent = ({
+  size = defaultProps.size,
+  color = defaultProps.color,
+  ...styledProps
+}) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
