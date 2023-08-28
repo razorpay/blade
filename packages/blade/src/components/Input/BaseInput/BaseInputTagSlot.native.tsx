@@ -14,10 +14,10 @@ const StyledScrollView = styled(ScrollView)((_props) => {
 });
 
 const ScrollableTagSlotContainer = ({
-  tagRows,
+  maxTagRows,
   children,
   handleOnClick,
-}: Pick<BaseInputTagSlotProps, 'tagRows' | 'showAllTags' | 'handleOnClick'> & {
+}: Pick<BaseInputTagSlotProps, 'maxTagRows' | 'showAllTags' | 'handleOnClick'> & {
   children: (React.ReactNode | null)[];
 }): React.ReactElement => {
   const scrollViewRef = React.useRef<ScrollView>(null);
@@ -36,7 +36,7 @@ const ScrollableTagSlotContainer = ({
         setIsScrolling(false);
       }}
       horizontal={true}
-      showsHorizontalScrollIndicator={tagRows === '1'}
+      showsHorizontalScrollIndicator={maxTagRows === 'single'}
       onContentSizeChange={() => scrollViewRef.current?.scrollToEnd({ animated: true })}
     >
       {/* This creates a clickable layer behind tags so if user clicks empty area between of tags, it handles opening of Dropdown */}
@@ -57,7 +57,7 @@ const ScrollableTagSlotContainer = ({
 
 const BaseInputTagSlot = ({
   tags,
-  tagRows,
+  maxTagRows,
   showAllTags,
   handleOnClick,
 }: BaseInputTagSlotProps): React.ReactElement | null => {
@@ -82,7 +82,7 @@ const BaseInputTagSlot = ({
       flex="1"
     >
       <ScrollableTagSlotContainer
-        tagRows={tagRows}
+        maxTagRows={maxTagRows}
         showAllTags={showAllTags}
         handleOnClick={handleOnClick}
       >

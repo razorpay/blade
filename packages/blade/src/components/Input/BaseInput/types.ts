@@ -9,17 +9,20 @@ import type {
 
 export type BaseInputTagSlotProps = {
   tags?: BaseInputProps['tags'];
+  renderAs?: BaseInputProps['as'];
   showAllTags: BaseInputProps['showAllTags'];
   setFocusOnInput: () => void;
   setShouldIgnoreBlurAnimation: BaseInputProps['setShouldIgnoreBlurAnimation'];
   handleOnClick: StyledBaseInputProps['handleOnClick'];
-  tagRows: BaseInputProps['tagRows'];
+  maxTagRows: BaseInputProps['maxTagRows'];
   visibleTagsCountRef: React.MutableRefObject<number>;
+  children: React.ReactElement;
+  inputWrapperRef: React.RefObject<HTMLDivElement>;
 };
 
 export type BaseInputWrapperProps = Pick<
   BaseInputProps,
-  'isDisabled' | 'validationState' | 'showAllTags' | 'tagRows'
+  'isDisabled' | 'validationState' | 'showAllTags' | 'maxTagRows'
 > & {
   isFocused?: boolean;
   isLabelLeftPositioned?: boolean;

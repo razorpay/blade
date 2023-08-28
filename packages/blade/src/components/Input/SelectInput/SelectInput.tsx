@@ -54,9 +54,9 @@ type SelectInputCommonProps = Pick<
    *
    * When set to expandable, input takes 1 row in the begining and expands to take 3 when active
    *
-   * @default 1
+   * @default 'single'
    */
-  rows?: '1' | '3' | 'expandable';
+  maxRows?: BaseInputProps['maxTagRows'];
 };
 
 /*
@@ -262,7 +262,7 @@ const _SelectInput = (
       <BaseInput
         {...baseInputProps}
         as="button"
-        tagRows={props.rows ?? '1'}
+        maxTagRows={props.maxRows ?? 'single'}
         tags={getTags()}
         showAllTags={isOpen}
         activeTagIndex={activeTagIndex}

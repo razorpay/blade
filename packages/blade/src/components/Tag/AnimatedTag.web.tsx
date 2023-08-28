@@ -4,7 +4,6 @@ import styled, { css, keyframes } from 'styled-components';
 import { Tag } from './Tag';
 import type { AnimatedTagProps } from './types';
 import {
-  TAG_MAX_HEIGHT_END,
   TAG_MAX_WIDTH_END,
   TAG_MAX_WIDTH_START,
   TAG_OPACITY_END,
@@ -22,7 +21,6 @@ const tagDissappearKeyframe = keyframes`
   100% {
     opacity: ${TAG_OPACITY_END};
     max-width: ${makeSize(TAG_MAX_WIDTH_END)};
-    max-height: ${makeSize(TAG_MAX_HEIGHT_END)};
   }
 `;
 
@@ -67,13 +65,13 @@ const AnimatedTag = ({
       ${String(theme.motion.easing.entrance.effective)};
   `;
 
-  const noTransition = css`
-    animation: none;
-  `;
+  // const noTransition = css`
+  //   animation: none;
+  // `;
 
-  const isTagRemoved = prevSelectionsLength.current
-    ? prevSelectionsLength.current > tagsLength
-    : false;
+  // const isTagRemoved = prevSelectionsLength.current
+  //   ? prevSelectionsLength.current > tagsLength
+  //   : false;
 
   return (
     <AnimatedTagContainer
@@ -84,9 +82,7 @@ const AnimatedTag = ({
           onDismiss({ tagIndex: currentTagIndex, tagName: children });
         }
       }}
-      transition={
-        isTagRemoved ? noTransition : isTagVisible ? showTagTransition : hideTagTransition
-      }
+      transition={isTagVisible ? showTagTransition : hideTagTransition}
     >
       <Tag
         _isVirtuallyFocussed={currentTagIndex === activeTagIndex}

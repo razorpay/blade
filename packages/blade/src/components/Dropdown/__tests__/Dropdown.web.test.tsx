@@ -113,7 +113,7 @@ describe('<Dropdown />', () => {
 
   it('should handle accessibility of multiselect', async () => {
     const user = userEvent.setup();
-    const { queryByRole, getByRole } = renderWithTheme(
+    const { queryByRole, getByRole, queryAllByLabelText } = renderWithTheme(
       <Dropdown selectionType="multiple">
         <SelectInput label="Fruits" />
         <DropdownOverlay>

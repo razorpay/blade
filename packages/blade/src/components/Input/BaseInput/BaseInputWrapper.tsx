@@ -7,7 +7,7 @@ import type { ActionStates } from '~tokens/theme/theme';
 
 type BaseInputWrapperProps = Pick<
   BaseInputProps,
-  'isDisabled' | 'validationState' | 'showAllTags' | 'tagRows' | 'setInputWrapperRef'
+  'isDisabled' | 'validationState' | 'showAllTags' | 'maxTagRows' | 'setInputWrapperRef'
 > & {
   isFocused?: boolean;
   isLabelLeftPositioned?: boolean;
@@ -22,28 +22,29 @@ const _BaseInputWrapper: React.ForwardRefRenderFunction<
   BaseInputWrapperProps & {
     children: ReactNode;
   }
-> = ({
-  children,
-  validationState,
-  currentInteraction,
-  isLabelLeftPositioned,
-  isTextArea,
-  showAllTags,
-  setShowAllTagsWithAnimation,
-  tagRows,
-  setInputWrapperRef,
-  ...props
-}): // ref,
-ReactElement => {
+> = (
+  {
+    children,
+    validationState,
+    currentInteraction,
+    isLabelLeftPositioned,
+    isTextArea,
+    showAllTags,
+    setShowAllTagsWithAnimation,
+    maxTagRows,
+    ...props
+  },
+  ref,
+): ReactElement => {
   return (
     <AnimatedBaseInputWrapper
       // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unnecessary-type-assertion
-      ref={setInputWrapperRef as any}
+      ref={ref as any}
       isTextArea={isTextArea}
       validationState={validationState}
       currentInteraction={currentInteraction}
       showAllTags={showAllTags}
-      tagRows={tagRows}
+      maxTagRows={maxTagRows}
       setShowAllTagsWithAnimation={setShowAllTagsWithAnimation}
       {...props}
     >

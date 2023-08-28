@@ -243,7 +243,8 @@ type BaseInputCommonProps = FormInputLabelProps &
      * Sets different height restriction for tag-based inputs
      * Unlike as="textarea" prop, this does not make input render as textarea element while increasing height.
      */
-    tagRows?: '1' | '3' | 'expandable';
+    maxTagRows?: 'single' | 'multiple' | 'expandable';
+
     /**
      * A slot for adding tags to input
      */
@@ -701,7 +702,7 @@ export const BaseInput = React.forwardRef<BladeElementRef, BaseInputProps>(
       hasPopup,
       popupId,
       isPopupExpanded,
-      tagRows,
+      maxTagRows,
       shouldIgnoreBlurAnimation,
       setShouldIgnoreBlurAnimation,
       autoCapitalize,
@@ -712,7 +713,7 @@ export const BaseInput = React.forwardRef<BladeElementRef, BaseInputProps>(
     ref,
   ) => {
     const { theme } = useTheme();
-    const inputWrapperRef = React.useRef<HTMLDivElement>(null);
+    const inputWrapperRef: React.MutableRefObject<HTMLDivElement | null> = React.useRef(null);
     const { onInputKeydownTagHandler, visibleTagsCountRef } = useTags(
       tags,
       activeTagIndex,
@@ -830,12 +831,15 @@ export const BaseInput = React.forwardRef<BladeElementRef, BaseInputProps>(
             isLabelLeftPositioned={isLabelLeftPositioned}
             showAllTags={showAllTags}
             setShowAllTagsWithAnimation={setShowAllTagsWithAnimation}
-            ref={inputWrapperRef as any}
-            tagRows={tagRows}
-            setInputWrapperRef={setInputWrapperRef}
+            ref={(refNode) => {
+              setInputWrapperRef?.(refNode as any);
+              inputWrapperRef.current = refNode;
+            }}
+            maxTagRows={maxTagRows}
           >
             <BaseInputVisuals leadingIcon={leadingIcon} prefix={prefix} isDisabled={isDisabled} />
             <BaseInputTagSlot
+              renderAs={as}
               tags={tags}
               showAllTags={showAllTagsWithAnimation}
               setFocusOnInput={() => {
@@ -846,51 +850,52 @@ export const BaseInput = React.forwardRef<BladeElementRef, BaseInputProps>(
               visibleTagsCountRef={visibleTagsCountRef}
               handleOnClick={handleOnClick}
               setShouldIgnoreBlurAnimation={setShouldIgnoreBlurAnimation}
-              tagRows={tagRows}
-              // inputWrapperRef={inputWrapperRef}
-            />
-            <StyledBaseInput
-              as={isReactNative ? undefined : as}
-              id={inputId}
-              ref={ref as any}
-              name={name}
-              type={type}
-              defaultValue={defaultValue}
-              value={value}
-              placeholder={placeholder}
-              isDisabled={isDisabled}
-              validationState={validationState}
-              isRequired={_isRequired}
-              handleOnFocus={handleOnFocus}
-              handleOnChange={handleOnChange}
-              handleOnBlur={handleOnBlur}
-              handleOnSubmit={handleOnSubmit}
-              handleOnInput={handleOnInput}
-              handleOnKeyDown={handleOnKeyDown}
-              handleOnClick={handleOnClick}
-              leadingIcon={leadingIcon}
-              prefix={prefix}
-              interactionElement={interactionElement}
-              suffix={suffix}
-              trailingIcon={trailingIcon}
-              maxCharacters={maxCharacters}
-              textAlign={textAlign}
-              // eslint-disable-next-line jsx-a11y/no-autofocus
-              autoFocus={autoFocus}
-              keyboardReturnKeyType={keyboardReturnKeyType}
-              keyboardType={keyboardType}
-              autoCompleteSuggestionType={autoCompleteSuggestionType}
-              accessibilityProps={accessibilityProps}
-              currentInteraction={currentInteraction}
-              setCurrentInteraction={setCurrentInteraction}
-              numberOfLines={numberOfLines}
-              isTextArea={isTextArea || tagRows === '3' || tagRows === 'expandable'}
-              hasPopup={hasPopup}
-              hasTags={!!(tags && tags.length > 0)}
-              shouldIgnoreBlurAnimation={shouldIgnoreBlurAnimation}
-              autoCapitalize={autoCapitalize}
-              {...metaAttribute({ name: MetaConstants.StyledBaseInput })}
-            />
+              maxTagRows={maxTagRows}
+              inputWrapperRef={inputWrapperRef}
+            >
+              <StyledBaseInput
+                as={isReactNative ? undefined : as}
+                id={inputId}
+                ref={ref as any}
+                name={name}
+                type={type}
+                defaultValue={defaultValue}
+                value={value}
+                placeholder={placeholder}
+                isDisabled={isDisabled}
+                validationState={validationState}
+                isRequired={_isRequired}
+                handleOnFocus={handleOnFocus}
+                handleOnChange={handleOnChange}
+                handleOnBlur={handleOnBlur}
+                handleOnSubmit={handleOnSubmit}
+                handleOnInput={handleOnInput}
+                handleOnKeyDown={handleOnKeyDown}
+                handleOnClick={handleOnClick}
+                leadingIcon={leadingIcon}
+                prefix={prefix}
+                interactionElement={interactionElement}
+                suffix={suffix}
+                trailingIcon={trailingIcon}
+                maxCharacters={maxCharacters}
+                textAlign={textAlign}
+                // eslint-disable-next-line jsx-a11y/no-autofocus
+                autoFocus={autoFocus}
+                keyboardReturnKeyType={keyboardReturnKeyType}
+                keyboardType={keyboardType}
+                autoCompleteSuggestionType={autoCompleteSuggestionType}
+                accessibilityProps={accessibilityProps}
+                currentInteraction={currentInteraction}
+                setCurrentInteraction={setCurrentInteraction}
+                numberOfLines={numberOfLines}
+                isTextArea={isTextArea || maxTagRows === 'multiple' || maxTagRows === 'expandable'}
+                hasPopup={hasPopup}
+                hasTags={!!(tags && tags.length > 0)}
+                shouldIgnoreBlurAnimation={shouldIgnoreBlurAnimation}
+                autoCapitalize={autoCapitalize}
+                {...metaAttribute({ name: MetaConstants.StyledBaseInput })}
+              />
+            </BaseInputTagSlot>
             <BaseInputVisuals
               interactionElement={interactionElement}
               suffix={suffix}

@@ -131,7 +131,11 @@ const Tag = ({
             accessibilityLabel={`Close ${children} tag`}
             isDisabled={isDisabled}
             _tabIndex={_isTagInsideInput ? -1 : undefined}
-            onClick={() => {
+            onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+              // Inside tag input, we stop propagation to avoid opening dropdown on click of close on tag
+              if (_isTagInsideInput) {
+                e.stopPropagation();
+              }
               onDismiss();
             }}
           />

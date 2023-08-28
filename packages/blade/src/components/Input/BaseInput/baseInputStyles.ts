@@ -120,7 +120,7 @@ export const getBaseInputStyles = ({
       theme,
     }),
     // take the full available width of parent container for input field
-    flex: hasTags ? undefined : 1,
+    flex: 1,
     backgroundColor: 'transparent',
     paddingTop: makeSpace(theme.spacing[3]),
     paddingBottom: makeSpace(theme.spacing[3]),
@@ -133,7 +133,7 @@ export const getBaseInputStyles = ({
     textAlign,
     width: hasTags ? undefined : '100%',
     height: isTextArea ? undefined : makeSpace(size[36]),
-    minHeight: makeSpace(size[36]),
+    minHeight: hasTags ? undefined : makeSpace(size[36]),
     ...(isReactNative ? {} : { resize: 'none' }),
   };
 };

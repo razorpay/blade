@@ -96,14 +96,17 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
   BaseInputWrapperProps & {
     showAllTags?: boolean;
   }
-> = ({ showAllTags, setShowAllTagsWithAnimation, tagRows, ...rest }, ref): React.ReactElement => {
+> = (
+  { showAllTags, setShowAllTagsWithAnimation, maxTagRows, ...rest },
+  ref,
+): React.ReactElement => {
   return (
     <StyledAnimatedBaseInputWrapper
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={ref as any}
       {...rest}
       transition={
-        tagRows !== 'expandable'
+        maxTagRows !== 'expandable'
           ? noTransition
           : showAllTags
           ? expandTransition
@@ -114,7 +117,7 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
           setShowAllTagsWithAnimation?.(false);
         }
 
-        if (tagRows !== 'expandable' && !showAllTags) {
+        if (maxTagRows !== 'expandable' && !showAllTags) {
           setShowAllTagsWithAnimation?.(false);
         }
       }}
