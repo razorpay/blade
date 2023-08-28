@@ -2,7 +2,6 @@ import React from 'react';
 import type { CSSObject } from 'styled-components';
 import styled from 'styled-components';
 import type { BaseInputTagSlotProps } from './types';
-import type { SpacingValueType } from '~components/Box/BaseBox';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 
@@ -106,7 +105,6 @@ const BaseInputTagSlot = ({
   tagRows,
   showAllTags,
   visibleTagsCountRef,
-  inputWrapperRef,
 }: BaseInputTagSlotProps): React.ReactElement | null => {
   const {
     invisibleTagsCount,
@@ -126,9 +124,6 @@ const BaseInputTagSlot = ({
   const isMultiline = tagRows === '3' || tagRows === 'expandable';
 
   // taking 200px as default width when we fail to get width from ref (should be rare). 200px is small enough so tags tend to be shown as +x selected
-  const inputContainerWidth = inputWrapperRef.current?.clientWidth ?? 200;
-  const maxTagContainerWidth: SpacingValueType =
-    tagRows === '3' ? '100%' : `${inputContainerWidth - 100}px`;
 
   return (
     <BaseBox
@@ -141,6 +136,7 @@ const BaseInputTagSlot = ({
       maxHeight={`${MAX_TAGSLOT_HEIGHT}px`}
       position="relative"
       maxWidth="100%"
+      flex="1"
       overflowX="auto"
       onMouseDown={() => {
         setShouldIgnoreBlurAnimation?.(true);
@@ -155,6 +151,16 @@ const BaseInputTagSlot = ({
         setShouldIgnoreBlurAnimation?.(false);
       }}
     >
+      <BaseBox
+        position="absolute"
+        top="spacing.0"
+        left="spacing.0"
+        width="100%"
+        height="100%"
+        onClick={(e) => {
+          handleOnClick?.({ name: '', value: e as React.MouseEvent<HTMLInputElement> });
+        }}
+      />
       <InvisibleTagsContainer
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         ref={tagsContainerRef as any}
@@ -164,7 +170,7 @@ const BaseInputTagSlot = ({
         overflow={showAllTags ? 'auto' : 'hidden'}
         // We only want the tags to be shown till 75% of maximum height possible for input
         maxHeight={`${(MAX_TAGSLOT_HEIGHT * 75) / 100}px`}
-        maxWidth={maxTagContainerWidth}
+        maxWidth="100%"
         position="absolute"
         top="spacing.0"
         left="spacing.0"
@@ -177,9 +183,10 @@ const BaseInputTagSlot = ({
         flexWrap={isMultiline ? 'wrap' : 'nowrap'}
         whiteSpace={isMultiline ? undefined : 'nowrap'}
         overflow={showAllTags ? 'auto' : 'hidden'}
+        position="relative"
         maxHeight="100%"
-        maxWidth="100%"
-        display="flex"
+        maxWidth="max-content"
+        display="inline-flex"
         alignItems="center"
         flexDirection={tagRows === '3' ? 'column' : 'row'}
       >

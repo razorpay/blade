@@ -15,12 +15,11 @@ export type BaseInputTagSlotProps = {
   handleOnClick: StyledBaseInputProps['handleOnClick'];
   tagRows: BaseInputProps['tagRows'];
   visibleTagsCountRef: React.MutableRefObject<number>;
-  inputWrapperRef: React.RefObject<HTMLDivElement>;
 };
 
 export type BaseInputWrapperProps = Pick<
   BaseInputProps,
-  'isDisabled' | 'validationState' | 'showAllTags'
+  'isDisabled' | 'validationState' | 'showAllTags' | 'tagRows'
 > & {
   isFocused?: boolean;
   isLabelLeftPositioned?: boolean;

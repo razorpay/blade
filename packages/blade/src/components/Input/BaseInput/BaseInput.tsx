@@ -829,6 +829,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
             showAllTags={showAllTags}
             setShowAllTagsWithAnimation={setShowAllTagsWithAnimation}
             ref={inputWrapperRef as any}
+            tagRows={tagRows}
           >
             <BaseInputVisuals leadingIcon={leadingIcon} prefix={prefix} isDisabled={isDisabled} />
             <BaseInputTagSlot
@@ -843,7 +844,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
               handleOnClick={handleOnClick}
               setShouldIgnoreBlurAnimation={setShouldIgnoreBlurAnimation}
               tagRows={tagRows}
-              inputWrapperRef={inputWrapperRef}
+              // inputWrapperRef={inputWrapperRef}
             />
             <StyledBaseInput
               as={isReactNative ? undefined : as}

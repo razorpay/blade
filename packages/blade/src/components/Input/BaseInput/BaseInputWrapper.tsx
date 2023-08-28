@@ -7,7 +7,7 @@ import type { ActionStates } from '~tokens/theme/theme';
 
 type BaseInputWrapperProps = Pick<
   BaseInputProps,
-  'isDisabled' | 'validationState' | 'showAllTags'
+  'isDisabled' | 'validationState' | 'showAllTags' | 'tagRows'
 > & {
   isFocused?: boolean;
   isLabelLeftPositioned?: boolean;
@@ -31,6 +31,7 @@ const _BaseInputWrapper: React.ForwardRefRenderFunction<
     isTextArea,
     showAllTags,
     setShowAllTagsWithAnimation,
+    tagRows,
     ...props
   },
   ref,
@@ -43,6 +44,7 @@ const _BaseInputWrapper: React.ForwardRefRenderFunction<
       validationState={validationState}
       currentInteraction={currentInteraction}
       showAllTags={showAllTags}
+      tagRows={tagRows}
       setShowAllTagsWithAnimation={setShowAllTagsWithAnimation}
       {...props}
     >

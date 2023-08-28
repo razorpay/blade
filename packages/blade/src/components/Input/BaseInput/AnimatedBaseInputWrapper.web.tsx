@@ -42,6 +42,11 @@ const collapseTransition = css`
     ${String(motion.easing.exit.effective)};
 `;
 
+const noTransition = css`
+  animation: none;
+  max-height: ${makeSize(BASEINPUT_MAX_HEIGHT + BASEINPUT_BOTTOM_LINE_HEIGHT)};
+`;
+
 const StyledBaseInputWrapper = styled(BaseBox)<
   Pick<
     BaseInputWrapperProps,
@@ -91,15 +96,25 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
   BaseInputWrapperProps & {
     showAllTags?: boolean;
   }
-> = ({ showAllTags, setShowAllTagsWithAnimation, ...rest }, ref): React.ReactElement => {
+> = ({ showAllTags, setShowAllTagsWithAnimation, tagRows, ...rest }, ref): React.ReactElement => {
   return (
     <StyledAnimatedBaseInputWrapper
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={ref as any}
       {...rest}
-      transition={showAllTags ? expandTransition : collapseTransition}
+      transition={
+        tagRows !== 'expandable'
+          ? noTransition
+          : showAllTags
+          ? expandTransition
+          : collapseTransition
+      }
       onAnimationEnd={(e) => {
         if (!showAllTags && e.animationName === collapseAnimation.getName()) {
+          setShowAllTagsWithAnimation?.(false);
+        }
+
+        if (tagRows !== 'expandable' && !showAllTags) {
           setShowAllTagsWithAnimation?.(false);
         }
       }}
