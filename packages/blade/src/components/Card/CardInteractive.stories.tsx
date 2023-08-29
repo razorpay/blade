@@ -23,9 +23,10 @@ import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import { VisuallyHidden } from '~components/VisuallyHidden';
 import { Amount } from '~components/Amount';
-import { isReactNative } from '~utils';
+import { castWebType, isReactNative } from '~utils';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
-import { Sandbox } from '~utils/storybook/Sandbox';
+import { Sandbox, SandboxProvider } from '~utils/storybook/Sandbox';
+import { SandpackCodeEditor, SandpackLayout, SandpackPreview } from '@codesandbox/sandpack-react';
 
 const Page = (): React.ReactElement => {
   return (
@@ -40,8 +41,9 @@ const Page = (): React.ReactElement => {
       }}
     >
       <Title>Usage</Title>
-      <Sandbox editorHeight={500}>
-        {`
+      <Box marginY="spacing.6">
+        <SandboxProvider
+          code={`
         import React from 'react';
         import { Card, CardBody, Box, Text, Amount, VisuallyHidden } from '@razorpay/blade/components';
 
@@ -75,7 +77,7 @@ const Page = (): React.ReactElement => {
           const [selected, setSelected] = React.useState('free');
 
           return (
-            <Box display="flex" flexWrap="wrap" gap="spacing.5">
+            <Box display="flex" gap="spacing.5">
               <Card
                 as="label"
                 accessibilityLabel="Free Tier"
@@ -153,7 +155,15 @@ const Page = (): React.ReactElement => {
 
         export default App;
         `}
-      </Sandbox>
+        >
+          <SandpackLayout>
+            <SandpackCodeEditor />
+            <Box display={castWebType({ base: 'none', m: 'block' })} height="200px" width="100%">
+              <SandpackPreview style={{ width: '100%', height: '100%' }} />
+            </Box>
+          </SandpackLayout>
+        </SandboxProvider>
+      </Box>
     </StoryPageWrapper>
   );
 };
