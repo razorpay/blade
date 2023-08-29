@@ -233,7 +233,7 @@ describe('Modal', () => {
       );
     };
     expect(() => renderWithTheme(<Example />)).toThrow(
-      '[Blade Modal] Modal only accepts ModalHeader, ModalBody and ModalFooter as children',
+      '[Blade: Modal]: Modal only accepts ModalHeader, ModalBody and ModalFooter as children',
     );
     mockConsoleError.mockRestore();
   });

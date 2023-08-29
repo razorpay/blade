@@ -10,11 +10,10 @@ import { VisuallyHidden } from '~components/VisuallyHidden';
 import { isReactNative } from '~utils';
 import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
 import { componentIds } from '~components/Dropdown/dropdownUtils';
-import { Tag } from '~components/Tag';
 import type { BladeElementRef } from '~utils/types';
-import { useBladeInnerRef } from '~utils/useBladeInnerRef';
 import { MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { getTagsGroup } from '~components/Tag/getTagsGroup';
 
 type SelectInputCommonProps = Pick<
   BaseInputProps,
@@ -55,9 +54,9 @@ type SelectInputCommonProps = Pick<
    *
    * When set to expandable, input takes 1 row in the begining and expands to take 3 when active
    *
-   * @default 1
+   * @default 'single'
    */
-  rows?: '1' | '3' | 'expandable';
+  maxRows?: BaseInputProps['maxTagRows'];
 };
 
 /*
@@ -114,21 +113,16 @@ const _SelectInput = (
     setShouldIgnoreBlurAnimation,
     controlledValueIndices,
     options,
+    removeOption,
+    isTagDismissedRef,
     changeCallbackTriggerer,
     setChangeCallbackTriggerer,
     isControlled,
     setIsControlled,
     selectionType,
     selectedIndices,
-    removeOption,
-    isTagDismissedRef,
+    triggererWrapperRef,
   } = useDropdown();
-
-  const inputRef = useBladeInnerRef(ref, {
-    onFocus: (opts) => {
-      triggererRef.current?.focus(opts);
-    },
-  });
 
   const {
     icon,
@@ -151,7 +145,6 @@ const _SelectInput = (
   };
 
   const isFirstRenderRef = React.useRef(true);
-  const selectInputContainerRef = React.useRef<HTMLDivElement>(null);
 
   const selectValues = (valuesToSelect: string | string[]): void => {
     if (options.length > 0) {
@@ -221,41 +214,39 @@ const _SelectInput = (
     setHasLabelOnLeft(props.labelPosition === 'left');
   }, [props.labelPosition, setHasLabelOnLeft]);
 
-  const getTags = (): React.ReactElement[] | null => {
-    if (selectionType === 'single') {
-      return null;
-    }
+  const getTags = React.useMemo(
+    () => () => {
+      if (selectionType === 'single') {
+        return undefined;
+      }
 
-    const tags = selectedIndices.map((selectedIndex, tagIndex) => (
-      <Tag
-        _isVirtuallyFocussed={tagIndex === activeTagIndex}
-        _isTagInsideInput={true}
-        key={selectedIndex}
-        marginRight="spacing.3"
-        marginY="spacing.2"
-        onDismiss={() => {
+      return getTagsGroup({
+        tags: selectedIndices.map((selectedIndex) => options[selectedIndex].title),
+        activeTagIndex,
+        onDismiss: ({ tagIndex }) => {
           if (isTagDismissedRef.current) {
             isTagDismissedRef.current.value = true;
           }
 
-          removeOption(selectedIndex);
+          removeOption(selectedIndices[tagIndex]);
           setChangeCallbackTriggerer(Number(changeCallbackTriggerer) + 1);
-        }}
-      >
-        {options[selectedIndex].title}
-      </Tag>
-    ));
-
-    return tags;
-  };
+        },
+      });
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [selectedIndices, selectionType, activeTagIndex, changeCallbackTriggerer, options],
+  );
 
   return (
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    <BaseBox position="relative" ref={selectInputContainerRef as any}>
+    <BaseBox position="relative">
       {!isReactNative() ? (
         <VisuallyHidden>
           <input
-            ref={inputRef as React.Ref<HTMLInputElement>}
+            onFocus={() => {
+              triggererRef.current?.focus();
+            }}
+            ref={ref as React.Ref<HTMLInputElement>}
             tabIndex={-1}
             required={props.isRequired}
             name={props.name}
@@ -271,7 +262,7 @@ const _SelectInput = (
       <BaseInput
         {...baseInputProps}
         as="button"
-        isMultiline={props.rows === '3' || props.rows === 'expandable'}
+        maxTagRows={props.maxRows ?? 'single'}
         tags={getTags()}
         showAllTags={isOpen}
         activeTagIndex={activeTagIndex}
@@ -280,7 +271,10 @@ const _SelectInput = (
         label={props.label as string}
         hideLabelText={props.label?.length === 0}
         componentName={MetaConstants.SelectInput}
-        ref={!isReactNative() ? (triggererRef as React.MutableRefObject<HTMLInputElement>) : null}
+        ref={(!isReactNative() ? triggererRef : null) as never}
+        setInputWrapperRef={(wrapperNode) => {
+          triggererWrapperRef.current = wrapperNode;
+        }}
         textAlign="left"
         placeholder={
           selectionType === 'multiple' && selectedIndices.length > 0 ? undefined : placeholder
@@ -293,6 +287,9 @@ const _SelectInput = (
         onClick={(e) => {
           onTriggerClick();
           props?.onClick?.(e);
+        }}
+        onBlur={({ name }) => {
+          onBlur?.({ name, value });
         }}
         onKeyDown={onTriggerKeydown}
         activeDescendant={activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined}

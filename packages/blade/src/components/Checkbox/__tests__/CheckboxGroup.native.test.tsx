@@ -46,14 +46,14 @@ describe('<CheckboxGroup />', () => {
 
   it('should propagate isDisabled prop to child checkboxes', () => {
     const labelText = 'Select fruits';
-    const { getAllByA11yRole } = renderWithTheme(
+    const { getAllByRole } = renderWithTheme(
       <CheckboxGroup isDisabled label={labelText}>
         <Checkbox value="apple">Apple</Checkbox>
         <Checkbox value="mango">Mango</Checkbox>
         <Checkbox value="orange">Orange</Checkbox>
       </CheckboxGroup>,
     );
-    const checkboxes = getAllByA11yRole('checkbox');
+    const checkboxes = getAllByRole('checkbox');
     checkboxes.forEach((checkbox) => {
       expect(checkbox.props.accessibilityState.disabled).toBeTruthy();
     });
@@ -61,7 +61,7 @@ describe('<CheckboxGroup />', () => {
 
   it('should propagate name prop to child checkboxes', () => {
     const labelText = 'Select fruits';
-    const { getAllByA11yRole } = renderWithTheme(
+    const { getAllByRole } = renderWithTheme(
       <CheckboxGroup isDisabled label={labelText} name="fruits">
         <Checkbox value="apple">Apple</Checkbox>
         <Checkbox value="mango">Mango</Checkbox>
@@ -69,7 +69,7 @@ describe('<CheckboxGroup />', () => {
       </CheckboxGroup>,
     );
 
-    const checkboxes = getAllByA11yRole('checkbox');
+    const checkboxes = getAllByRole('checkbox');
     checkboxes.forEach((checkbox) => {
       expect(checkbox.props.name).toBe('fruits');
     });
@@ -100,7 +100,7 @@ describe('<CheckboxGroup />', () => {
     const helpText = 'Select one';
     const errorText = 'Invalid selection';
 
-    const { getAllByA11yRole, queryByText } = renderWithTheme(
+    const { getAllByRole, queryByText } = renderWithTheme(
       <CheckboxGroup
         helpText={helpText}
         errorText={errorText}
@@ -116,7 +116,7 @@ describe('<CheckboxGroup />', () => {
     expect(queryByText(helpText)).toBeFalsy();
     expect(queryByText(errorText)).toBeTruthy();
 
-    const checkboxes = getAllByA11yRole('checkbox');
+    const checkboxes = getAllByRole('checkbox');
     checkboxes.forEach((checkbox) => {
       expect(checkbox.props.accessibilityInvalid).toBeTruthy();
     });
@@ -145,7 +145,7 @@ describe('<CheckboxGroup />', () => {
   it('should work in uncontrolled mode', () => {
     const labelText = 'Select fruits';
     const fn = jest.fn();
-    const { getAllByA11yRole, getByA11yState } = renderWithTheme(
+    const { getAllByRole, getByA11yState } = renderWithTheme(
       <CheckboxGroup
         label={labelText}
         defaultValue={['apple']}
@@ -160,7 +160,7 @@ describe('<CheckboxGroup />', () => {
     const checkbox = getByA11yState({ checked: true });
     expect(checkbox.props.value).toBe('apple');
 
-    const checkboxes = getAllByA11yRole('checkbox');
+    const checkboxes = getAllByRole('checkbox');
     const apple = checkboxes.find((checkbox) => checkbox.props.value === 'apple');
     const mango = checkboxes.find((checkbox) => checkbox.props.value === 'mango');
     const orange = checkboxes.find((checkbox) => checkbox.props.value === 'orange');
@@ -201,12 +201,12 @@ describe('<CheckboxGroup />', () => {
         </>
       );
     };
-    const { getAllByA11yRole, getByA11yState, getByTestId } = renderWithTheme(<Example />);
+    const { getAllByRole, getByA11yState, getByTestId } = renderWithTheme(<Example />);
 
     const checkbox = getByA11yState({ checked: true });
     expect(checkbox.props.value).toBe('apple');
 
-    const checkboxes = getAllByA11yRole('checkbox');
+    const checkboxes = getAllByRole('checkbox');
     const apple = checkboxes.find((checkbox) => checkbox.props.value === 'apple');
     const mango = checkboxes.find((checkbox) => checkbox.props.value === 'mango');
     const orange = checkboxes.find((checkbox) => checkbox.props.value === 'orange');
@@ -241,7 +241,7 @@ describe('<CheckboxGroup /> runtime errors', () => {
       );
     } catch (err: any) {
       expect(err.message).toBe(
-        "[Blade Checkbox]: Cannot set `defaultChecked,isChecked,onChange` on <Checkbox /> when it's inside <CheckboxGroup />, Please set it on the <CheckboxGroup /> itself",
+        "[Blade: Checkbox]: Cannot set `defaultChecked,isChecked,onChange` on <Checkbox /> when it's inside <CheckboxGroup />, Please set it on the <CheckboxGroup /> itself",
       );
     }
   });
@@ -266,7 +266,7 @@ describe('<CheckboxGroup /> runtime errors', () => {
   it('should throw error if validationState is used in Checkboxes', () => {
     const labelText = 'Select fruit';
     const errorMsg =
-      "[Blade Checkbox]: Cannot set `validationState` on <Checkbox /> when it's inside <CheckboxGroup />, Please set it on the <CheckboxGroup /> itself";
+      "[Blade: Checkbox]: Cannot set `validationState` on <Checkbox /> when it's inside <CheckboxGroup />, Please set it on the <CheckboxGroup /> itself";
 
     try {
       renderWithTheme(

@@ -89,7 +89,7 @@ const _DropdownFooter = ({ children, testID }: DropdownFooter): React.ReactEleme
             },
           })}
       {...makeAccessible({
-        role: 'group',
+        role: isReactNative() ? undefined : 'group',
       })}
     >
       <BaseFooter metaComponentName={MetaConstants.DropdownFooter} testID={testID}>

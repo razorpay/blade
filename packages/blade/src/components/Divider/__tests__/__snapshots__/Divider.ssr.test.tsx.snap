@@ -1,10 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Divider /> should render Divider on server 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><div data-blade-component=\\"box\\" class=\\"BaseBox-bmPWx jLCxzZ\\"><div data-blade-component=\\"divider\\" class=\\"BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 jfizlv jvaPlR\\"></div></div></div>"`;
+exports[`<Divider /> should render Divider on server 1`] = `"<div id="root"><div data-blade-component="box" class="BaseBox-bmPWx jLCxzZ"><div data-blade-component="divider" class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 jfizlv jvaPlR"></div></div></div>"`;
 
 exports[`<Divider /> should render Divider on server 2`] = `
 <div
-  data-reactroot=""
   id="root"
 >
   <div

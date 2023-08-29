@@ -39,7 +39,12 @@ const ScrollIntoViewLink = assignWithoutSideEffects(_ScrollIntoViewLink, {
   componentId: MetaConstants.ListItemLink,
 });
 
-const Section = (props: BaseBoxProps): React.ReactElement => {
+const Section = ({
+  ...props
+}: Omit<
+  BaseBoxProps,
+  'onTouchEnd' | 'onTouchStart' | 'onPointerDown' | 'onPointerEnter' | 'pointerEvents'
+>): React.ReactElement => {
   return <BaseBox paddingY="spacing.6" {...props} />;
 };
 

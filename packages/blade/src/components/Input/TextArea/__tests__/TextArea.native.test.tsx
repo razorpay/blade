@@ -272,7 +272,6 @@ describe('<TextArea />', () => {
         <TextArea
           label="ref test"
           ref={(value) => {
-            console.log(value);
             // @ts-expect-error
             ref.current = value;
             refValue = value;

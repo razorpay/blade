@@ -1,11 +1,11 @@
 import type { CSSObject } from 'styled-components';
 import type { BaseInputProps } from './BaseInput';
 import { getInputVisualsToBeRendered } from './BaseInputVisuals';
+import { BASEINPUT_DEFAULT_HEIGHT } from './baseInputConfig';
 import type { Theme } from '~components/BladeProvider';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
 import { makeSpace } from '~utils/makeSpace';
 import { makeBorderSize } from '~utils/makeBorderSize';
-import { size } from '~tokens/global';
 import { getPlatformType } from '~utils';
 
 type GetInputStyles = Pick<
@@ -22,6 +22,7 @@ type GetInputStyles = Pick<
   isHovered?: boolean;
   isFocused?: boolean;
   isTextArea?: boolean;
+  hasTags?: boolean;
   theme: Theme;
 };
 
@@ -31,9 +32,10 @@ export const getInputBackgroundAndBorderStyles = ({
   isFocused,
   isDisabled,
   validationState,
+  isTextArea,
 }: Pick<
   GetInputStyles,
-  'theme' | 'isFocused' | 'isDisabled' | 'validationState' | 'isHovered'
+  'theme' | 'isFocused' | 'isDisabled' | 'validationState' | 'isHovered' | 'isTextArea'
 >): CSSObject => {
   // normal state
   let backgroundColor = theme.colors.brand.gray.a50.lowContrast;
@@ -71,6 +73,12 @@ export const getInputBackgroundAndBorderStyles = ({
     borderTopRightRadius: makeBorderSize(theme.border.radius.small),
     borderBottomWidth: makeBorderSize(theme.border.width.thin),
     borderBottomStyle: 'solid',
+    display: 'flex',
+    flexDirection: 'row',
+    width: '100%',
+    alignItems: isTextArea ? 'flex-start' : undefined,
+    position: 'relative',
+    height: 'auto',
   };
 };
 
@@ -84,6 +92,7 @@ export const getBaseInputStyles = ({
   trailingIcon,
   textAlign,
   isTextArea,
+  hasTags,
 }: GetInputStyles): CSSObject => {
   const {
     hasLeadingIcon,
@@ -122,9 +131,9 @@ export const getBaseInputStyles = ({
         ? makeSpace(theme.spacing[3])
         : makeSpace(theme.spacing[4]),
     textAlign,
-    width: '100%',
-    height: isTextArea ? undefined : makeSpace(size[36]),
-    minHeight: makeSpace(size[36]),
+    width: hasTags ? undefined : '100%',
+    height: isTextArea ? undefined : makeSpace(BASEINPUT_DEFAULT_HEIGHT),
+    minHeight: hasTags ? undefined : makeSpace(BASEINPUT_DEFAULT_HEIGHT),
     ...(isReactNative ? {} : { resize: 'none' }),
   };
 };

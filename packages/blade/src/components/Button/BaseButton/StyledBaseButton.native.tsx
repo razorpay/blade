@@ -9,6 +9,8 @@ import type { StyledBaseButtonProps } from './types';
 import { useStyledProps } from '~components/Box/styledProps';
 import { useTheme } from '~components/BladeProvider';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { logger } from '~utils/logger';
+import { castNativeType } from '~utils';
 
 const StyledPressable = styled(Animated.createAnimatedComponent(Pressable))<
   Omit<StyledBaseButtonProps, 'accessibilityProps'>
@@ -30,7 +32,13 @@ const openURL = async (href: string): Promise<void> => {
       await Linking.openURL(href);
     }
   } catch {
-    console.warn(`[Blade: BaseButton]: Could not open the link "href=${href}"`);
+    if (__DEV__) {
+      logger({
+        type: 'warn',
+        message: `Could not open the link "href=${href}"`,
+        moduleName: 'BaseButton',
+      });
+    }
   }
 };
 
@@ -64,6 +72,11 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<TextInput, StyledBaseBut
     isLoading,
     accessibilityProps,
     testID,
+    onTouchStart,
+    onTouchEnd,
+    onPointerEnter,
+    onPointerDown,
+    onFocus,
     ...styledProps
   },
   ref,
@@ -103,6 +116,12 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<TextInput, StyledBaseBut
       {...styledProps}
       {...accessibilityProps}
       ref={ref}
+      role="button"
+      onTouchStart={castNativeType(onTouchStart)}
+      onTouchEnd={castNativeType(onTouchEnd)}
+      onPointerEnter={castNativeType(onPointerEnter)}
+      onPointerDown={castNativeType(onPointerDown)}
+      onFocus={castNativeType(onFocus)}
       isLoading={isLoading}
       onPress={handleOnPress}
       style={animatedStyles}

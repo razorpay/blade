@@ -3,7 +3,7 @@
 exports[`<OTPInput /> should render 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -11,8 +11,8 @@ exports[`<OTPInput /> should render 1`] = `
   <View
     data-blade-component="otp-input"
     style={
-      Array [
-        Object {},
+      [
+        {},
       ]
     }
   >
@@ -22,8 +22,8 @@ exports[`<OTPInput /> should render 1`] = `
       flexDirection="column"
       position="relative"
       style={
-        Array [
-          Object {
+        [
+          {
             "display": "flex",
             "flexDirection": "column",
             "position": "relative",
@@ -34,8 +34,8 @@ exports[`<OTPInput /> should render 1`] = `
       <View
         data-blade-component="base-box"
         style={
-          Array [
-            Object {
+          [
+            {
               "marginBottom": 4,
               "marginRight": 16,
             },
@@ -51,8 +51,8 @@ exports[`<OTPInput /> should render 1`] = `
           gap="spacing.0"
           maxHeight="36px"
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "display": "flex",
                 "flexDirection": "row",
@@ -64,6 +64,7 @@ exports[`<OTPInput /> should render 1`] = `
           }
         >
           <Text
+            accessible={true}
             color="surface.text.subdued.lowContrast"
             data-blade-component="text"
             fontFamily="text"
@@ -73,8 +74,8 @@ exports[`<OTPInput /> should render 1`] = `
             lineHeight={50}
             numberOfLines={2}
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "hsla(217, 18%, 45%, 1)",
                   "fontFamily": "Lato",
                   "fontSize": 12,
@@ -99,8 +100,8 @@ exports[`<OTPInput /> should render 1`] = `
           <View
             data-blade-component="visually-hidden"
             style={
-              Array [
-                Object {
+              [
+                {
                   "borderColor": "black",
                   "borderStyle": "solid",
                   "borderWidth": 0,
@@ -126,6 +127,7 @@ exports[`<OTPInput /> should render 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.normal.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -134,8 +136,8 @@ exports[`<OTPInput /> should render 1`] = `
               fontWeight="regular"
               lineHeight={100}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "hsla(217, 56%, 17%, 1)",
                     "fontFamily": "Lato",
                     "fontSize": 14,
@@ -163,8 +165,8 @@ exports[`<OTPInput /> should render 1`] = `
         display="flex"
         flexDirection="row"
         style={
-          Array [
-            Object {
+          [
+            {
               "display": "flex",
               "flexDirection": "row",
             },
@@ -174,8 +176,8 @@ exports[`<OTPInput /> should render 1`] = `
         <View
           data-blade-component="base-box"
           style={
-            Array [
-              Object {
+            [
+              {
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
@@ -187,8 +189,8 @@ exports[`<OTPInput /> should render 1`] = `
           <View
             data-blade-component="base-box"
             style={
-              Array [
-                Object {},
+              [
+                {},
               ]
             }
           >
@@ -198,8 +200,8 @@ exports[`<OTPInput /> should render 1`] = `
               flexDirection="column"
               position="relative"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "display": "flex",
                     "flexDirection": "column",
                     "position": "relative",
@@ -211,92 +213,168 @@ exports[`<OTPInput /> should render 1`] = `
             >
               <View
                 currentInteraction="default"
-                data-blade-component="base-box"
-                display="flex"
-                flexDirection="row"
-                position="relative"
+                isTextArea={false}
                 style={
-                  Array [
-                    Object {
-                      "display": "flex",
-                      "flexDirection": "row",
-                      "position": "relative",
-                      "width": "100%",
-                    },
-                    Object {
+                  [
+                    {
                       "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
                       "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
                       "borderBottomStyle": "solid",
                       "borderBottomWidth": 1,
                       "borderTopLeftRadius": 2,
                       "borderTopRightRadius": 2,
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "height": "auto",
+                      "position": "relative",
+                      "width": "100%",
                     },
                   ]
                 }
-                width="100%"
               >
-                <TextInput
-                  accessibilityDescribedBy=""
-                  accessibilityInvalid={false}
-                  accessibilityLabel="Enter OTP character 1"
-                  accessibilityRequired={true}
-                  accessibilityState={
-                    Object {
-                      "disabled": false,
-                      "expanded": undefined,
-                    }
-                  }
-                  autoCompleteType="sms-otp"
-                  data-blade-component="styled-base-input"
-                  editable={true}
-                  id="otp-37-input-38-0-49-input-50"
-                  isFocused={false}
-                  isTextArea={false}
-                  keyboardType="decimal-pad"
-                  multiline={false}
-                  onBlur={[Function]}
-                  onChangeText={[Function]}
-                  onEndEditing={[Function]}
-                  onFocus={[Function]}
-                  onKeyPress={[Function]}
-                  onSubmitEditing={[Function]}
-                  placeholder=""
-                  secureTextEntry={false}
+                <View
+                  data-blade-component="base-box"
+                  display="flex"
+                  flexDirection="row"
+                  justifyContent="flex-start"
+                  maxHeight="145px"
+                  minHeight="36px"
                   style={
-                    Array [
-                      Object {
-                        "backgroundColor": "transparent",
-                        "color": "hsla(216, 27%, 36%, 1)",
+                    [
+                      {
+                        "display": "flex",
                         "flexBasis": 0,
+                        "flexDirection": "row",
                         "flexGrow": 1,
                         "flexShrink": 1,
-                        "fontFamily": "Lato",
-                        "fontSize": 14,
-                        "fontStyle": "normal",
-                        "fontWeight": "400",
-                        "height": 36,
+                        "justifyContent": "flex-start",
                         "marginBottom": 0,
-                        "marginLeft": 0,
-                        "marginRight": 0,
                         "marginTop": 0,
-                        "paddingBottom": 8,
-                        "paddingLeft": 12,
-                        "paddingRight": 12,
-                        "paddingTop": 8,
-                        "textAlignVertical": "top",
-                        "textDecorationLine": "none",
-                        "width": "100%",
+                        "maxHeight": 145,
+                        "minHeight": 36,
+                        "paddingLeft": 0,
                       },
                     ]
                   }
-                  textAlign="center"
-                  textContentType="oneTimeCode"
-                  value=""
-                />
+                >
+                  <RCTScrollView
+                    contentContainerStyle={
+                      {
+                        "flexWrap": "wrap",
+                        "position": "relative",
+                      }
+                    }
+                    horizontal={true}
+                    onContentSizeChange={[Function]}
+                    onScrollBeginDrag={[Function]}
+                    onScrollEndDrag={[Function]}
+                    showsHorizontalScrollIndicator={false}
+                    style={
+                      [
+                        {
+                          "display": "flex",
+                          "flexDirection": "column",
+                        },
+                      ]
+                    }
+                  >
+                    <View>
+                      <View
+                        data-blade-component="base-box"
+                        height="100%"
+                        onTouchEndCapture={[Function]}
+                        position="absolute"
+                        style={
+                          [
+                            {
+                              "height": "100%",
+                              "position": "absolute",
+                              "width": "100%",
+                            },
+                          ]
+                        }
+                        width="100%"
+                      />
+                      <View
+                        data-blade-component="base-box"
+                        style={
+                          [
+                            {
+                              "width": "100%",
+                            },
+                          ]
+                        }
+                        width="100%"
+                      >
+                        <TextInput
+                          accessibilityDescribedBy=""
+                          accessibilityInvalid={false}
+                          accessibilityLabel="Enter OTP character 1"
+                          accessibilityRequired={true}
+                          accessibilityState={
+                            {
+                              "disabled": false,
+                              "expanded": undefined,
+                            }
+                          }
+                          accessible={true}
+                          autoCompleteType="sms-otp"
+                          data-blade-component="styled-base-input"
+                          editable={true}
+                          hasTags={false}
+                          id="otp-37-input-38-0-49-input-50"
+                          isFocused={false}
+                          isTextArea={false}
+                          keyboardType="decimal-pad"
+                          multiline={false}
+                          onBlur={[Function]}
+                          onChangeText={[Function]}
+                          onEndEditing={[Function]}
+                          onFocus={[Function]}
+                          onKeyPress={[Function]}
+                          onSubmitEditing={[Function]}
+                          placeholder=""
+                          secureTextEntry={false}
+                          style={
+                            [
+                              {
+                                "backgroundColor": "transparent",
+                                "color": "hsla(216, 27%, 36%, 1)",
+                                "flexBasis": 0,
+                                "flexGrow": 1,
+                                "flexShrink": 1,
+                                "fontFamily": "Lato",
+                                "fontSize": 14,
+                                "fontStyle": "normal",
+                                "fontWeight": "400",
+                                "height": 36,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "minHeight": 36,
+                                "paddingBottom": 8,
+                                "paddingLeft": 12,
+                                "paddingRight": 12,
+                                "paddingTop": 8,
+                                "textAlignVertical": "top",
+                                "textDecorationLine": "none",
+                                "width": "100%",
+                              },
+                            ]
+                          }
+                          textAlign="center"
+                          textContentType="oneTimeCode"
+                          value=""
+                        />
+                      </View>
+                    </View>
+                  </RCTScrollView>
+                </View>
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "hsla(218, 89%, 51%, 1)",
                         "bottom": 0,
                         "height": 1,
@@ -305,7 +383,7 @@ exports[`<OTPInput /> should render 1`] = `
                         "position": "absolute",
                         "right": 0,
                       },
-                      Object {
+                      {
                         "opacity": undefined,
                         "width": "undefined%",
                       },
@@ -319,8 +397,8 @@ exports[`<OTPInput /> should render 1`] = `
         <View
           data-blade-component="base-box"
           style={
-            Array [
-              Object {
+            [
+              {
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
@@ -332,8 +410,8 @@ exports[`<OTPInput /> should render 1`] = `
           <View
             data-blade-component="base-box"
             style={
-              Array [
-                Object {},
+              [
+                {},
               ]
             }
           >
@@ -343,8 +421,8 @@ exports[`<OTPInput /> should render 1`] = `
               flexDirection="column"
               position="relative"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "display": "flex",
                     "flexDirection": "column",
                     "position": "relative",
@@ -356,92 +434,168 @@ exports[`<OTPInput /> should render 1`] = `
             >
               <View
                 currentInteraction="default"
-                data-blade-component="base-box"
-                display="flex"
-                flexDirection="row"
-                position="relative"
+                isTextArea={false}
                 style={
-                  Array [
-                    Object {
-                      "display": "flex",
-                      "flexDirection": "row",
-                      "position": "relative",
-                      "width": "100%",
-                    },
-                    Object {
+                  [
+                    {
                       "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
                       "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
                       "borderBottomStyle": "solid",
                       "borderBottomWidth": 1,
                       "borderTopLeftRadius": 2,
                       "borderTopRightRadius": 2,
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "height": "auto",
+                      "position": "relative",
+                      "width": "100%",
                     },
                   ]
                 }
-                width="100%"
               >
-                <TextInput
-                  accessibilityDescribedBy=""
-                  accessibilityInvalid={false}
-                  accessibilityLabel=" character 2"
-                  accessibilityRequired={true}
-                  accessibilityState={
-                    Object {
-                      "disabled": false,
-                      "expanded": undefined,
-                    }
-                  }
-                  autoCompleteType="sms-otp"
-                  data-blade-component="styled-base-input"
-                  editable={true}
-                  id="otp-37-input-38-1-55-input-56"
-                  isFocused={false}
-                  isTextArea={false}
-                  keyboardType="decimal-pad"
-                  multiline={false}
-                  onBlur={[Function]}
-                  onChangeText={[Function]}
-                  onEndEditing={[Function]}
-                  onFocus={[Function]}
-                  onKeyPress={[Function]}
-                  onSubmitEditing={[Function]}
-                  placeholder=""
-                  secureTextEntry={false}
+                <View
+                  data-blade-component="base-box"
+                  display="flex"
+                  flexDirection="row"
+                  justifyContent="flex-start"
+                  maxHeight="145px"
+                  minHeight="36px"
                   style={
-                    Array [
-                      Object {
-                        "backgroundColor": "transparent",
-                        "color": "hsla(216, 27%, 36%, 1)",
+                    [
+                      {
+                        "display": "flex",
                         "flexBasis": 0,
+                        "flexDirection": "row",
                         "flexGrow": 1,
                         "flexShrink": 1,
-                        "fontFamily": "Lato",
-                        "fontSize": 14,
-                        "fontStyle": "normal",
-                        "fontWeight": "400",
-                        "height": 36,
+                        "justifyContent": "flex-start",
                         "marginBottom": 0,
-                        "marginLeft": 0,
-                        "marginRight": 0,
                         "marginTop": 0,
-                        "paddingBottom": 8,
-                        "paddingLeft": 12,
-                        "paddingRight": 12,
-                        "paddingTop": 8,
-                        "textAlignVertical": "top",
-                        "textDecorationLine": "none",
-                        "width": "100%",
+                        "maxHeight": 145,
+                        "minHeight": 36,
+                        "paddingLeft": 0,
                       },
                     ]
                   }
-                  textAlign="center"
-                  textContentType="oneTimeCode"
-                  value=""
-                />
+                >
+                  <RCTScrollView
+                    contentContainerStyle={
+                      {
+                        "flexWrap": "wrap",
+                        "position": "relative",
+                      }
+                    }
+                    horizontal={true}
+                    onContentSizeChange={[Function]}
+                    onScrollBeginDrag={[Function]}
+                    onScrollEndDrag={[Function]}
+                    showsHorizontalScrollIndicator={false}
+                    style={
+                      [
+                        {
+                          "display": "flex",
+                          "flexDirection": "column",
+                        },
+                      ]
+                    }
+                  >
+                    <View>
+                      <View
+                        data-blade-component="base-box"
+                        height="100%"
+                        onTouchEndCapture={[Function]}
+                        position="absolute"
+                        style={
+                          [
+                            {
+                              "height": "100%",
+                              "position": "absolute",
+                              "width": "100%",
+                            },
+                          ]
+                        }
+                        width="100%"
+                      />
+                      <View
+                        data-blade-component="base-box"
+                        style={
+                          [
+                            {
+                              "width": "100%",
+                            },
+                          ]
+                        }
+                        width="100%"
+                      >
+                        <TextInput
+                          accessibilityDescribedBy=""
+                          accessibilityInvalid={false}
+                          accessibilityLabel=" character 2"
+                          accessibilityRequired={true}
+                          accessibilityState={
+                            {
+                              "disabled": false,
+                              "expanded": undefined,
+                            }
+                          }
+                          accessible={true}
+                          autoCompleteType="sms-otp"
+                          data-blade-component="styled-base-input"
+                          editable={true}
+                          hasTags={false}
+                          id="otp-37-input-38-1-55-input-56"
+                          isFocused={false}
+                          isTextArea={false}
+                          keyboardType="decimal-pad"
+                          multiline={false}
+                          onBlur={[Function]}
+                          onChangeText={[Function]}
+                          onEndEditing={[Function]}
+                          onFocus={[Function]}
+                          onKeyPress={[Function]}
+                          onSubmitEditing={[Function]}
+                          placeholder=""
+                          secureTextEntry={false}
+                          style={
+                            [
+                              {
+                                "backgroundColor": "transparent",
+                                "color": "hsla(216, 27%, 36%, 1)",
+                                "flexBasis": 0,
+                                "flexGrow": 1,
+                                "flexShrink": 1,
+                                "fontFamily": "Lato",
+                                "fontSize": 14,
+                                "fontStyle": "normal",
+                                "fontWeight": "400",
+                                "height": 36,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "minHeight": 36,
+                                "paddingBottom": 8,
+                                "paddingLeft": 12,
+                                "paddingRight": 12,
+                                "paddingTop": 8,
+                                "textAlignVertical": "top",
+                                "textDecorationLine": "none",
+                                "width": "100%",
+                              },
+                            ]
+                          }
+                          textAlign="center"
+                          textContentType="oneTimeCode"
+                          value=""
+                        />
+                      </View>
+                    </View>
+                  </RCTScrollView>
+                </View>
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "hsla(218, 89%, 51%, 1)",
                         "bottom": 0,
                         "height": 1,
@@ -450,7 +604,7 @@ exports[`<OTPInput /> should render 1`] = `
                         "position": "absolute",
                         "right": 0,
                       },
-                      Object {
+                      {
                         "opacity": undefined,
                         "width": "undefined%",
                       },
@@ -464,8 +618,8 @@ exports[`<OTPInput /> should render 1`] = `
         <View
           data-blade-component="base-box"
           style={
-            Array [
-              Object {
+            [
+              {
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
@@ -477,8 +631,8 @@ exports[`<OTPInput /> should render 1`] = `
           <View
             data-blade-component="base-box"
             style={
-              Array [
-                Object {},
+              [
+                {},
               ]
             }
           >
@@ -488,8 +642,8 @@ exports[`<OTPInput /> should render 1`] = `
               flexDirection="column"
               position="relative"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "display": "flex",
                     "flexDirection": "column",
                     "position": "relative",
@@ -501,92 +655,168 @@ exports[`<OTPInput /> should render 1`] = `
             >
               <View
                 currentInteraction="default"
-                data-blade-component="base-box"
-                display="flex"
-                flexDirection="row"
-                position="relative"
+                isTextArea={false}
                 style={
-                  Array [
-                    Object {
-                      "display": "flex",
-                      "flexDirection": "row",
-                      "position": "relative",
-                      "width": "100%",
-                    },
-                    Object {
+                  [
+                    {
                       "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
                       "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
                       "borderBottomStyle": "solid",
                       "borderBottomWidth": 1,
                       "borderTopLeftRadius": 2,
                       "borderTopRightRadius": 2,
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "height": "auto",
+                      "position": "relative",
+                      "width": "100%",
                     },
                   ]
                 }
-                width="100%"
               >
-                <TextInput
-                  accessibilityDescribedBy=""
-                  accessibilityInvalid={false}
-                  accessibilityLabel=" character 3"
-                  accessibilityRequired={true}
-                  accessibilityState={
-                    Object {
-                      "disabled": false,
-                      "expanded": undefined,
-                    }
-                  }
-                  autoCompleteType="sms-otp"
-                  data-blade-component="styled-base-input"
-                  editable={true}
-                  id="otp-37-input-38-2-61-input-62"
-                  isFocused={false}
-                  isTextArea={false}
-                  keyboardType="decimal-pad"
-                  multiline={false}
-                  onBlur={[Function]}
-                  onChangeText={[Function]}
-                  onEndEditing={[Function]}
-                  onFocus={[Function]}
-                  onKeyPress={[Function]}
-                  onSubmitEditing={[Function]}
-                  placeholder=""
-                  secureTextEntry={false}
+                <View
+                  data-blade-component="base-box"
+                  display="flex"
+                  flexDirection="row"
+                  justifyContent="flex-start"
+                  maxHeight="145px"
+                  minHeight="36px"
                   style={
-                    Array [
-                      Object {
-                        "backgroundColor": "transparent",
-                        "color": "hsla(216, 27%, 36%, 1)",
+                    [
+                      {
+                        "display": "flex",
                         "flexBasis": 0,
+                        "flexDirection": "row",
                         "flexGrow": 1,
                         "flexShrink": 1,
-                        "fontFamily": "Lato",
-                        "fontSize": 14,
-                        "fontStyle": "normal",
-                        "fontWeight": "400",
-                        "height": 36,
+                        "justifyContent": "flex-start",
                         "marginBottom": 0,
-                        "marginLeft": 0,
-                        "marginRight": 0,
                         "marginTop": 0,
-                        "paddingBottom": 8,
-                        "paddingLeft": 12,
-                        "paddingRight": 12,
-                        "paddingTop": 8,
-                        "textAlignVertical": "top",
-                        "textDecorationLine": "none",
-                        "width": "100%",
+                        "maxHeight": 145,
+                        "minHeight": 36,
+                        "paddingLeft": 0,
                       },
                     ]
                   }
-                  textAlign="center"
-                  textContentType="oneTimeCode"
-                  value=""
-                />
+                >
+                  <RCTScrollView
+                    contentContainerStyle={
+                      {
+                        "flexWrap": "wrap",
+                        "position": "relative",
+                      }
+                    }
+                    horizontal={true}
+                    onContentSizeChange={[Function]}
+                    onScrollBeginDrag={[Function]}
+                    onScrollEndDrag={[Function]}
+                    showsHorizontalScrollIndicator={false}
+                    style={
+                      [
+                        {
+                          "display": "flex",
+                          "flexDirection": "column",
+                        },
+                      ]
+                    }
+                  >
+                    <View>
+                      <View
+                        data-blade-component="base-box"
+                        height="100%"
+                        onTouchEndCapture={[Function]}
+                        position="absolute"
+                        style={
+                          [
+                            {
+                              "height": "100%",
+                              "position": "absolute",
+                              "width": "100%",
+                            },
+                          ]
+                        }
+                        width="100%"
+                      />
+                      <View
+                        data-blade-component="base-box"
+                        style={
+                          [
+                            {
+                              "width": "100%",
+                            },
+                          ]
+                        }
+                        width="100%"
+                      >
+                        <TextInput
+                          accessibilityDescribedBy=""
+                          accessibilityInvalid={false}
+                          accessibilityLabel=" character 3"
+                          accessibilityRequired={true}
+                          accessibilityState={
+                            {
+                              "disabled": false,
+                              "expanded": undefined,
+                            }
+                          }
+                          accessible={true}
+                          autoCompleteType="sms-otp"
+                          data-blade-component="styled-base-input"
+                          editable={true}
+                          hasTags={false}
+                          id="otp-37-input-38-2-61-input-62"
+                          isFocused={false}
+                          isTextArea={false}
+                          keyboardType="decimal-pad"
+                          multiline={false}
+                          onBlur={[Function]}
+                          onChangeText={[Function]}
+                          onEndEditing={[Function]}
+                          onFocus={[Function]}
+                          onKeyPress={[Function]}
+                          onSubmitEditing={[Function]}
+                          placeholder=""
+                          secureTextEntry={false}
+                          style={
+                            [
+                              {
+                                "backgroundColor": "transparent",
+                                "color": "hsla(216, 27%, 36%, 1)",
+                                "flexBasis": 0,
+                                "flexGrow": 1,
+                                "flexShrink": 1,
+                                "fontFamily": "Lato",
+                                "fontSize": 14,
+                                "fontStyle": "normal",
+                                "fontWeight": "400",
+                                "height": 36,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "minHeight": 36,
+                                "paddingBottom": 8,
+                                "paddingLeft": 12,
+                                "paddingRight": 12,
+                                "paddingTop": 8,
+                                "textAlignVertical": "top",
+                                "textDecorationLine": "none",
+                                "width": "100%",
+                              },
+                            ]
+                          }
+                          textAlign="center"
+                          textContentType="oneTimeCode"
+                          value=""
+                        />
+                      </View>
+                    </View>
+                  </RCTScrollView>
+                </View>
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "hsla(218, 89%, 51%, 1)",
                         "bottom": 0,
                         "height": 1,
@@ -595,7 +825,7 @@ exports[`<OTPInput /> should render 1`] = `
                         "position": "absolute",
                         "right": 0,
                       },
-                      Object {
+                      {
                         "opacity": undefined,
                         "width": "undefined%",
                       },
@@ -609,8 +839,8 @@ exports[`<OTPInput /> should render 1`] = `
         <View
           data-blade-component="base-box"
           style={
-            Array [
-              Object {
+            [
+              {
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
@@ -622,8 +852,8 @@ exports[`<OTPInput /> should render 1`] = `
           <View
             data-blade-component="base-box"
             style={
-              Array [
-                Object {},
+              [
+                {},
               ]
             }
           >
@@ -633,8 +863,8 @@ exports[`<OTPInput /> should render 1`] = `
               flexDirection="column"
               position="relative"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "display": "flex",
                     "flexDirection": "column",
                     "position": "relative",
@@ -646,92 +876,168 @@ exports[`<OTPInput /> should render 1`] = `
             >
               <View
                 currentInteraction="default"
-                data-blade-component="base-box"
-                display="flex"
-                flexDirection="row"
-                position="relative"
+                isTextArea={false}
                 style={
-                  Array [
-                    Object {
-                      "display": "flex",
-                      "flexDirection": "row",
-                      "position": "relative",
-                      "width": "100%",
-                    },
-                    Object {
+                  [
+                    {
                       "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
                       "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
                       "borderBottomStyle": "solid",
                       "borderBottomWidth": 1,
                       "borderTopLeftRadius": 2,
                       "borderTopRightRadius": 2,
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "height": "auto",
+                      "position": "relative",
+                      "width": "100%",
                     },
                   ]
                 }
-                width="100%"
               >
-                <TextInput
-                  accessibilityDescribedBy=""
-                  accessibilityInvalid={false}
-                  accessibilityLabel=" character 4"
-                  accessibilityRequired={true}
-                  accessibilityState={
-                    Object {
-                      "disabled": false,
-                      "expanded": undefined,
-                    }
-                  }
-                  autoCompleteType="sms-otp"
-                  data-blade-component="styled-base-input"
-                  editable={true}
-                  id="otp-37-input-38-3-67-input-68"
-                  isFocused={false}
-                  isTextArea={false}
-                  keyboardType="decimal-pad"
-                  multiline={false}
-                  onBlur={[Function]}
-                  onChangeText={[Function]}
-                  onEndEditing={[Function]}
-                  onFocus={[Function]}
-                  onKeyPress={[Function]}
-                  onSubmitEditing={[Function]}
-                  placeholder=""
-                  secureTextEntry={false}
+                <View
+                  data-blade-component="base-box"
+                  display="flex"
+                  flexDirection="row"
+                  justifyContent="flex-start"
+                  maxHeight="145px"
+                  minHeight="36px"
                   style={
-                    Array [
-                      Object {
-                        "backgroundColor": "transparent",
-                        "color": "hsla(216, 27%, 36%, 1)",
+                    [
+                      {
+                        "display": "flex",
                         "flexBasis": 0,
+                        "flexDirection": "row",
                         "flexGrow": 1,
                         "flexShrink": 1,
-                        "fontFamily": "Lato",
-                        "fontSize": 14,
-                        "fontStyle": "normal",
-                        "fontWeight": "400",
-                        "height": 36,
+                        "justifyContent": "flex-start",
                         "marginBottom": 0,
-                        "marginLeft": 0,
-                        "marginRight": 0,
                         "marginTop": 0,
-                        "paddingBottom": 8,
-                        "paddingLeft": 12,
-                        "paddingRight": 12,
-                        "paddingTop": 8,
-                        "textAlignVertical": "top",
-                        "textDecorationLine": "none",
-                        "width": "100%",
+                        "maxHeight": 145,
+                        "minHeight": 36,
+                        "paddingLeft": 0,
                       },
                     ]
                   }
-                  textAlign="center"
-                  textContentType="oneTimeCode"
-                  value=""
-                />
+                >
+                  <RCTScrollView
+                    contentContainerStyle={
+                      {
+                        "flexWrap": "wrap",
+                        "position": "relative",
+                      }
+                    }
+                    horizontal={true}
+                    onContentSizeChange={[Function]}
+                    onScrollBeginDrag={[Function]}
+                    onScrollEndDrag={[Function]}
+                    showsHorizontalScrollIndicator={false}
+                    style={
+                      [
+                        {
+                          "display": "flex",
+                          "flexDirection": "column",
+                        },
+                      ]
+                    }
+                  >
+                    <View>
+                      <View
+                        data-blade-component="base-box"
+                        height="100%"
+                        onTouchEndCapture={[Function]}
+                        position="absolute"
+                        style={
+                          [
+                            {
+                              "height": "100%",
+                              "position": "absolute",
+                              "width": "100%",
+                            },
+                          ]
+                        }
+                        width="100%"
+                      />
+                      <View
+                        data-blade-component="base-box"
+                        style={
+                          [
+                            {
+                              "width": "100%",
+                            },
+                          ]
+                        }
+                        width="100%"
+                      >
+                        <TextInput
+                          accessibilityDescribedBy=""
+                          accessibilityInvalid={false}
+                          accessibilityLabel=" character 4"
+                          accessibilityRequired={true}
+                          accessibilityState={
+                            {
+                              "disabled": false,
+                              "expanded": undefined,
+                            }
+                          }
+                          accessible={true}
+                          autoCompleteType="sms-otp"
+                          data-blade-component="styled-base-input"
+                          editable={true}
+                          hasTags={false}
+                          id="otp-37-input-38-3-67-input-68"
+                          isFocused={false}
+                          isTextArea={false}
+                          keyboardType="decimal-pad"
+                          multiline={false}
+                          onBlur={[Function]}
+                          onChangeText={[Function]}
+                          onEndEditing={[Function]}
+                          onFocus={[Function]}
+                          onKeyPress={[Function]}
+                          onSubmitEditing={[Function]}
+                          placeholder=""
+                          secureTextEntry={false}
+                          style={
+                            [
+                              {
+                                "backgroundColor": "transparent",
+                                "color": "hsla(216, 27%, 36%, 1)",
+                                "flexBasis": 0,
+                                "flexGrow": 1,
+                                "flexShrink": 1,
+                                "fontFamily": "Lato",
+                                "fontSize": 14,
+                                "fontStyle": "normal",
+                                "fontWeight": "400",
+                                "height": 36,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "minHeight": 36,
+                                "paddingBottom": 8,
+                                "paddingLeft": 12,
+                                "paddingRight": 12,
+                                "paddingTop": 8,
+                                "textAlignVertical": "top",
+                                "textDecorationLine": "none",
+                                "width": "100%",
+                              },
+                            ]
+                          }
+                          textAlign="center"
+                          textContentType="oneTimeCode"
+                          value=""
+                        />
+                      </View>
+                    </View>
+                  </RCTScrollView>
+                </View>
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "hsla(218, 89%, 51%, 1)",
                         "bottom": 0,
                         "height": 1,
@@ -740,7 +1046,7 @@ exports[`<OTPInput /> should render 1`] = `
                         "position": "absolute",
                         "right": 0,
                       },
-                      Object {
+                      {
                         "opacity": undefined,
                         "width": "undefined%",
                       },
@@ -754,8 +1060,8 @@ exports[`<OTPInput /> should render 1`] = `
         <View
           data-blade-component="base-box"
           style={
-            Array [
-              Object {
+            [
+              {
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
@@ -767,8 +1073,8 @@ exports[`<OTPInput /> should render 1`] = `
           <View
             data-blade-component="base-box"
             style={
-              Array [
-                Object {},
+              [
+                {},
               ]
             }
           >
@@ -778,8 +1084,8 @@ exports[`<OTPInput /> should render 1`] = `
               flexDirection="column"
               position="relative"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "display": "flex",
                     "flexDirection": "column",
                     "position": "relative",
@@ -791,92 +1097,168 @@ exports[`<OTPInput /> should render 1`] = `
             >
               <View
                 currentInteraction="default"
-                data-blade-component="base-box"
-                display="flex"
-                flexDirection="row"
-                position="relative"
+                isTextArea={false}
                 style={
-                  Array [
-                    Object {
-                      "display": "flex",
-                      "flexDirection": "row",
-                      "position": "relative",
-                      "width": "100%",
-                    },
-                    Object {
+                  [
+                    {
                       "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
                       "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
                       "borderBottomStyle": "solid",
                       "borderBottomWidth": 1,
                       "borderTopLeftRadius": 2,
                       "borderTopRightRadius": 2,
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "height": "auto",
+                      "position": "relative",
+                      "width": "100%",
                     },
                   ]
                 }
-                width="100%"
               >
-                <TextInput
-                  accessibilityDescribedBy=""
-                  accessibilityInvalid={false}
-                  accessibilityLabel=" character 5"
-                  accessibilityRequired={true}
-                  accessibilityState={
-                    Object {
-                      "disabled": false,
-                      "expanded": undefined,
-                    }
-                  }
-                  autoCompleteType="sms-otp"
-                  data-blade-component="styled-base-input"
-                  editable={true}
-                  id="otp-37-input-38-4-73-input-74"
-                  isFocused={false}
-                  isTextArea={false}
-                  keyboardType="decimal-pad"
-                  multiline={false}
-                  onBlur={[Function]}
-                  onChangeText={[Function]}
-                  onEndEditing={[Function]}
-                  onFocus={[Function]}
-                  onKeyPress={[Function]}
-                  onSubmitEditing={[Function]}
-                  placeholder=""
-                  secureTextEntry={false}
+                <View
+                  data-blade-component="base-box"
+                  display="flex"
+                  flexDirection="row"
+                  justifyContent="flex-start"
+                  maxHeight="145px"
+                  minHeight="36px"
                   style={
-                    Array [
-                      Object {
-                        "backgroundColor": "transparent",
-                        "color": "hsla(216, 27%, 36%, 1)",
+                    [
+                      {
+                        "display": "flex",
                         "flexBasis": 0,
+                        "flexDirection": "row",
                         "flexGrow": 1,
                         "flexShrink": 1,
-                        "fontFamily": "Lato",
-                        "fontSize": 14,
-                        "fontStyle": "normal",
-                        "fontWeight": "400",
-                        "height": 36,
+                        "justifyContent": "flex-start",
                         "marginBottom": 0,
-                        "marginLeft": 0,
-                        "marginRight": 0,
                         "marginTop": 0,
-                        "paddingBottom": 8,
-                        "paddingLeft": 12,
-                        "paddingRight": 12,
-                        "paddingTop": 8,
-                        "textAlignVertical": "top",
-                        "textDecorationLine": "none",
-                        "width": "100%",
+                        "maxHeight": 145,
+                        "minHeight": 36,
+                        "paddingLeft": 0,
                       },
                     ]
                   }
-                  textAlign="center"
-                  textContentType="oneTimeCode"
-                  value=""
-                />
+                >
+                  <RCTScrollView
+                    contentContainerStyle={
+                      {
+                        "flexWrap": "wrap",
+                        "position": "relative",
+                      }
+                    }
+                    horizontal={true}
+                    onContentSizeChange={[Function]}
+                    onScrollBeginDrag={[Function]}
+                    onScrollEndDrag={[Function]}
+                    showsHorizontalScrollIndicator={false}
+                    style={
+                      [
+                        {
+                          "display": "flex",
+                          "flexDirection": "column",
+                        },
+                      ]
+                    }
+                  >
+                    <View>
+                      <View
+                        data-blade-component="base-box"
+                        height="100%"
+                        onTouchEndCapture={[Function]}
+                        position="absolute"
+                        style={
+                          [
+                            {
+                              "height": "100%",
+                              "position": "absolute",
+                              "width": "100%",
+                            },
+                          ]
+                        }
+                        width="100%"
+                      />
+                      <View
+                        data-blade-component="base-box"
+                        style={
+                          [
+                            {
+                              "width": "100%",
+                            },
+                          ]
+                        }
+                        width="100%"
+                      >
+                        <TextInput
+                          accessibilityDescribedBy=""
+                          accessibilityInvalid={false}
+                          accessibilityLabel=" character 5"
+                          accessibilityRequired={true}
+                          accessibilityState={
+                            {
+                              "disabled": false,
+                              "expanded": undefined,
+                            }
+                          }
+                          accessible={true}
+                          autoCompleteType="sms-otp"
+                          data-blade-component="styled-base-input"
+                          editable={true}
+                          hasTags={false}
+                          id="otp-37-input-38-4-73-input-74"
+                          isFocused={false}
+                          isTextArea={false}
+                          keyboardType="decimal-pad"
+                          multiline={false}
+                          onBlur={[Function]}
+                          onChangeText={[Function]}
+                          onEndEditing={[Function]}
+                          onFocus={[Function]}
+                          onKeyPress={[Function]}
+                          onSubmitEditing={[Function]}
+                          placeholder=""
+                          secureTextEntry={false}
+                          style={
+                            [
+                              {
+                                "backgroundColor": "transparent",
+                                "color": "hsla(216, 27%, 36%, 1)",
+                                "flexBasis": 0,
+                                "flexGrow": 1,
+                                "flexShrink": 1,
+                                "fontFamily": "Lato",
+                                "fontSize": 14,
+                                "fontStyle": "normal",
+                                "fontWeight": "400",
+                                "height": 36,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "minHeight": 36,
+                                "paddingBottom": 8,
+                                "paddingLeft": 12,
+                                "paddingRight": 12,
+                                "paddingTop": 8,
+                                "textAlignVertical": "top",
+                                "textDecorationLine": "none",
+                                "width": "100%",
+                              },
+                            ]
+                          }
+                          textAlign="center"
+                          textContentType="oneTimeCode"
+                          value=""
+                        />
+                      </View>
+                    </View>
+                  </RCTScrollView>
+                </View>
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "hsla(218, 89%, 51%, 1)",
                         "bottom": 0,
                         "height": 1,
@@ -885,7 +1267,7 @@ exports[`<OTPInput /> should render 1`] = `
                         "position": "absolute",
                         "right": 0,
                       },
-                      Object {
+                      {
                         "opacity": undefined,
                         "width": "undefined%",
                       },
@@ -899,8 +1281,8 @@ exports[`<OTPInput /> should render 1`] = `
         <View
           data-blade-component="base-box"
           style={
-            Array [
-              Object {
+            [
+              {
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
@@ -912,8 +1294,8 @@ exports[`<OTPInput /> should render 1`] = `
           <View
             data-blade-component="base-box"
             style={
-              Array [
-                Object {},
+              [
+                {},
               ]
             }
           >
@@ -923,8 +1305,8 @@ exports[`<OTPInput /> should render 1`] = `
               flexDirection="column"
               position="relative"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "display": "flex",
                     "flexDirection": "column",
                     "position": "relative",
@@ -936,92 +1318,168 @@ exports[`<OTPInput /> should render 1`] = `
             >
               <View
                 currentInteraction="default"
-                data-blade-component="base-box"
-                display="flex"
-                flexDirection="row"
-                position="relative"
+                isTextArea={false}
                 style={
-                  Array [
-                    Object {
-                      "display": "flex",
-                      "flexDirection": "row",
-                      "position": "relative",
-                      "width": "100%",
-                    },
-                    Object {
+                  [
+                    {
                       "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
                       "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
                       "borderBottomStyle": "solid",
                       "borderBottomWidth": 1,
                       "borderTopLeftRadius": 2,
                       "borderTopRightRadius": 2,
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "height": "auto",
+                      "position": "relative",
+                      "width": "100%",
                     },
                   ]
                 }
-                width="100%"
               >
-                <TextInput
-                  accessibilityDescribedBy=""
-                  accessibilityInvalid={false}
-                  accessibilityLabel=" character 6"
-                  accessibilityRequired={true}
-                  accessibilityState={
-                    Object {
-                      "disabled": false,
-                      "expanded": undefined,
-                    }
-                  }
-                  autoCompleteType="sms-otp"
-                  data-blade-component="styled-base-input"
-                  editable={true}
-                  id="otp-37-input-38-5-79-input-80"
-                  isFocused={false}
-                  isTextArea={false}
-                  keyboardType="decimal-pad"
-                  multiline={false}
-                  onBlur={[Function]}
-                  onChangeText={[Function]}
-                  onEndEditing={[Function]}
-                  onFocus={[Function]}
-                  onKeyPress={[Function]}
-                  onSubmitEditing={[Function]}
-                  placeholder=""
-                  secureTextEntry={false}
+                <View
+                  data-blade-component="base-box"
+                  display="flex"
+                  flexDirection="row"
+                  justifyContent="flex-start"
+                  maxHeight="145px"
+                  minHeight="36px"
                   style={
-                    Array [
-                      Object {
-                        "backgroundColor": "transparent",
-                        "color": "hsla(216, 27%, 36%, 1)",
+                    [
+                      {
+                        "display": "flex",
                         "flexBasis": 0,
+                        "flexDirection": "row",
                         "flexGrow": 1,
                         "flexShrink": 1,
-                        "fontFamily": "Lato",
-                        "fontSize": 14,
-                        "fontStyle": "normal",
-                        "fontWeight": "400",
-                        "height": 36,
+                        "justifyContent": "flex-start",
                         "marginBottom": 0,
-                        "marginLeft": 0,
-                        "marginRight": 0,
                         "marginTop": 0,
-                        "paddingBottom": 8,
-                        "paddingLeft": 12,
-                        "paddingRight": 12,
-                        "paddingTop": 8,
-                        "textAlignVertical": "top",
-                        "textDecorationLine": "none",
-                        "width": "100%",
+                        "maxHeight": 145,
+                        "minHeight": 36,
+                        "paddingLeft": 0,
                       },
                     ]
                   }
-                  textAlign="center"
-                  textContentType="oneTimeCode"
-                  value=""
-                />
+                >
+                  <RCTScrollView
+                    contentContainerStyle={
+                      {
+                        "flexWrap": "wrap",
+                        "position": "relative",
+                      }
+                    }
+                    horizontal={true}
+                    onContentSizeChange={[Function]}
+                    onScrollBeginDrag={[Function]}
+                    onScrollEndDrag={[Function]}
+                    showsHorizontalScrollIndicator={false}
+                    style={
+                      [
+                        {
+                          "display": "flex",
+                          "flexDirection": "column",
+                        },
+                      ]
+                    }
+                  >
+                    <View>
+                      <View
+                        data-blade-component="base-box"
+                        height="100%"
+                        onTouchEndCapture={[Function]}
+                        position="absolute"
+                        style={
+                          [
+                            {
+                              "height": "100%",
+                              "position": "absolute",
+                              "width": "100%",
+                            },
+                          ]
+                        }
+                        width="100%"
+                      />
+                      <View
+                        data-blade-component="base-box"
+                        style={
+                          [
+                            {
+                              "width": "100%",
+                            },
+                          ]
+                        }
+                        width="100%"
+                      >
+                        <TextInput
+                          accessibilityDescribedBy=""
+                          accessibilityInvalid={false}
+                          accessibilityLabel=" character 6"
+                          accessibilityRequired={true}
+                          accessibilityState={
+                            {
+                              "disabled": false,
+                              "expanded": undefined,
+                            }
+                          }
+                          accessible={true}
+                          autoCompleteType="sms-otp"
+                          data-blade-component="styled-base-input"
+                          editable={true}
+                          hasTags={false}
+                          id="otp-37-input-38-5-79-input-80"
+                          isFocused={false}
+                          isTextArea={false}
+                          keyboardType="decimal-pad"
+                          multiline={false}
+                          onBlur={[Function]}
+                          onChangeText={[Function]}
+                          onEndEditing={[Function]}
+                          onFocus={[Function]}
+                          onKeyPress={[Function]}
+                          onSubmitEditing={[Function]}
+                          placeholder=""
+                          secureTextEntry={false}
+                          style={
+                            [
+                              {
+                                "backgroundColor": "transparent",
+                                "color": "hsla(216, 27%, 36%, 1)",
+                                "flexBasis": 0,
+                                "flexGrow": 1,
+                                "flexShrink": 1,
+                                "fontFamily": "Lato",
+                                "fontSize": 14,
+                                "fontStyle": "normal",
+                                "fontWeight": "400",
+                                "height": 36,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "minHeight": 36,
+                                "paddingBottom": 8,
+                                "paddingLeft": 12,
+                                "paddingRight": 12,
+                                "paddingTop": 8,
+                                "textAlignVertical": "top",
+                                "textDecorationLine": "none",
+                                "width": "100%",
+                              },
+                            ]
+                          }
+                          textAlign="center"
+                          textContentType="oneTimeCode"
+                          value=""
+                        />
+                      </View>
+                    </View>
+                  </RCTScrollView>
+                </View>
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "hsla(218, 89%, 51%, 1)",
                         "bottom": 0,
                         "height": 1,
@@ -1030,7 +1488,7 @@ exports[`<OTPInput /> should render 1`] = `
                         "position": "absolute",
                         "right": 0,
                       },
-                      Object {
+                      {
                         "opacity": undefined,
                         "width": "undefined%",
                       },
@@ -1046,8 +1504,8 @@ exports[`<OTPInput /> should render 1`] = `
     <View
       data-blade-component="base-box"
       style={
-        Array [
-          Object {
+        [
+          {
             "marginLeft": 0,
           },
         ]

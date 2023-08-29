@@ -3,7 +3,7 @@
 exports[`<Card /> should render a Card with Footer 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -11,8 +11,8 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   <View
     data-blade-component="card"
     style={
-      Array [
-        Object {},
+      [
+        {},
       ]
     }
   >
@@ -21,8 +21,8 @@ exports[`<Card /> should render a Card with Footer 1`] = `
       data-blade-component="base-box"
       elevation="lowRaised"
       style={
-        Array [
-          Object {
+        [
+          {
             "borderRadius": 4,
             "paddingBottom": 24,
             "paddingLeft": 24,
@@ -30,18 +30,18 @@ exports[`<Card /> should render a Card with Footer 1`] = `
             "paddingTop": 24,
             "textAlign": "left",
           },
-          Object {
+          {
             "elevation": 4,
             "shadowColor": "hsla(217, 56%, 17%, 0.64)",
-            "shadowOffset": Object {
+            "shadowOffset": {
               "height": 3,
               "width": 0,
             },
             "shadowOpacity": 0.12,
             "shadowRadius": 2,
           },
-          Array [
-            Object {
+          [
+            {
               "backgroundColor": "hsla(0, 0%, 100%, 1)",
               "display": "flex",
               "flexDirection": "column",
@@ -56,12 +56,13 @@ exports[`<Card /> should render a Card with Footer 1`] = `
       <View
         data-blade-component="card-body"
         style={
-          Array [
-            Object {},
+          [
+            {},
           ]
         }
       >
         <Text
+          accessible={true}
           color="surface.text.normal.lowContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -70,8 +71,8 @@ exports[`<Card /> should render a Card with Footer 1`] = `
           fontWeight="regular"
           lineHeight={100}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(217, 56%, 17%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 14,
@@ -97,8 +98,8 @@ exports[`<Card /> should render a Card with Footer 1`] = `
       <View
         data-blade-component="card-footer"
         style={
-          Array [
-            Object {
+          [
+            {
               "marginTop": "auto",
             },
           ]
@@ -107,8 +108,8 @@ exports[`<Card /> should render a Card with Footer 1`] = `
         <View
           data-blade-component="base-box"
           style={
-            Array [
-              Object {
+            [
+              {
                 "marginTop": 24,
               },
             ]
@@ -122,13 +123,13 @@ exports[`<Card /> should render a Card with Footer 1`] = `
           dividerStyle="solid"
           isDividerHorizontal={true}
           style={
-            Array [
-              Object {
+            [
+              {
                 "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
                 "borderStyle": "solid",
                 "borderWidth": 0,
               },
-              Object {
+              {
                 "borderBottomStyle": "solid",
                 "borderBottomWidth": 1,
                 "flexGrow": 1,
@@ -144,8 +145,8 @@ exports[`<Card /> should render a Card with Footer 1`] = `
           flexDirection="column"
           justifyContent="space-between"
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "stretch",
                 "display": "flex",
                 "flexDirection": "column",
@@ -158,8 +159,8 @@ exports[`<Card /> should render a Card with Footer 1`] = `
           <View
             data-blade-component="base-box"
             style={
-              Array [
-                Object {
+              [
+                {
                   "textAlign": "left",
                 },
               ]
@@ -167,6 +168,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
             textAlign="left"
           >
             <Text
+              accessible={true}
               color="surface.text.normal.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -175,8 +177,8 @@ exports[`<Card /> should render a Card with Footer 1`] = `
               fontWeight="bold"
               lineHeight={100}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "hsla(217, 56%, 17%, 1)",
                     "fontFamily": "Lato",
                     "fontSize": 14,
@@ -199,6 +201,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
               Card Header
             </Text>
             <Text
+              accessible={true}
               color="surface.text.normal.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -207,8 +210,8 @@ exports[`<Card /> should render a Card with Footer 1`] = `
               fontWeight="regular"
               lineHeight={50}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "hsla(217, 56%, 17%, 1)",
                     "fontFamily": "Lato",
                     "fontSize": 12,
@@ -237,8 +240,8 @@ exports[`<Card /> should render a Card with Footer 1`] = `
             display="flex"
             flexDirection="row"
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignSelf": "auto",
                   "display": "flex",
                   "flexDirection": "row",
@@ -252,8 +255,8 @@ exports[`<Card /> should render a Card with Footer 1`] = `
               data-blade-component="base-box"
               flexGrow={1}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "flexGrow": 1,
                   },
                 ]
@@ -262,8 +265,20 @@ exports[`<Card /> should render a Card with Footer 1`] = `
               <View
                 accessibilityRole="button"
                 accessibilityState={
-                  Object {
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
                     "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
                   }
                 }
                 accessible={true}
@@ -299,9 +314,10 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                 onResponderTerminate={[Function]}
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
+                role="button"
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "alignItems": "center",
                       "alignSelf": "center",
                       "backgroundColor": "hsla(218, 89%, 51%, 0)",
@@ -322,13 +338,12 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                       "textDecorationStyle": "solid",
                       "width": "100%",
                     },
-                    Object {
+                    {
                       "backgroundColor": "hsla(218, 89%, 51%, 0)",
                       "borderColor": "hsla(218, 89%, 51%, 1)",
                     },
                   ]
                 }
-                text="Delete"
                 type="button"
               >
                 <View
@@ -339,8 +354,8 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                   isHidden={false}
                   justifyContent="center"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignItems": "center",
                         "display": "flex",
                         "flexBasis": 0,
@@ -349,21 +364,22 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                         "flexShrink": 1,
                         "justifyContent": "center",
                       },
-                      Object {
+                      {
                         "opacity": 1,
                       },
                     ]
                   }
                 >
                   <Text
+                    accessible={true}
                     color="action.text.secondary.default"
                     data-blade-component="base-text"
                     fontSize={100}
                     fontWeight="bold"
                     lineHeight={100}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "hsla(218, 89%, 51%, 1)",
                           "fontFamily": "Lato",
                           "fontSize": 14,
@@ -393,8 +409,8 @@ exports[`<Card /> should render a Card with Footer 1`] = `
             <View
               data-blade-component="base-box"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "marginLeft": 16,
                   },
                 ]
@@ -404,8 +420,8 @@ exports[`<Card /> should render a Card with Footer 1`] = `
               data-blade-component="base-box"
               flexGrow={1}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "flexGrow": 1,
                   },
                 ]
@@ -414,8 +430,20 @@ exports[`<Card /> should render a Card with Footer 1`] = `
               <View
                 accessibilityRole="button"
                 accessibilityState={
-                  Object {
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
                     "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
                   }
                 }
                 accessible={true}
@@ -451,9 +479,10 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                 onResponderTerminate={[Function]}
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
+                role="button"
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "alignItems": "center",
                       "alignSelf": "center",
                       "backgroundColor": "hsla(218, 89%, 51%, 1)",
@@ -474,13 +503,12 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                       "textDecorationStyle": "solid",
                       "width": "100%",
                     },
-                    Object {
+                    {
                       "backgroundColor": "hsla(218, 89%, 51%, 1)",
                       "borderColor": "hsla(218, 89%, 51%, 1)",
                     },
                   ]
                 }
-                text="Save"
                 type="button"
               >
                 <View
@@ -491,8 +519,8 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                   isHidden={false}
                   justifyContent="center"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignItems": "center",
                         "display": "flex",
                         "flexBasis": 0,
@@ -501,21 +529,22 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                         "flexShrink": 1,
                         "justifyContent": "center",
                       },
-                      Object {
+                      {
                         "opacity": 1,
                       },
                     ]
                   }
                 >
                   <Text
+                    accessible={true}
                     color="action.text.primary.default"
                     data-blade-component="base-text"
                     fontSize={100}
                     fontWeight="bold"
                     lineHeight={100}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "hsla(0, 0%, 100%, 1)",
                           "fontFamily": "Lato",
                           "fontSize": 14,
@@ -553,7 +582,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
 exports[`<Card /> should render a Card with Header 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -561,8 +590,8 @@ exports[`<Card /> should render a Card with Header 1`] = `
   <View
     data-blade-component="card"
     style={
-      Array [
-        Object {},
+      [
+        {},
       ]
     }
   >
@@ -571,8 +600,8 @@ exports[`<Card /> should render a Card with Header 1`] = `
       data-blade-component="base-box"
       elevation="lowRaised"
       style={
-        Array [
-          Object {
+        [
+          {
             "borderRadius": 4,
             "paddingBottom": 24,
             "paddingLeft": 24,
@@ -580,18 +609,18 @@ exports[`<Card /> should render a Card with Header 1`] = `
             "paddingTop": 24,
             "textAlign": "left",
           },
-          Object {
+          {
             "elevation": 4,
             "shadowColor": "hsla(217, 56%, 17%, 0.64)",
-            "shadowOffset": Object {
+            "shadowOffset": {
               "height": 3,
               "width": 0,
             },
             "shadowOpacity": 0.12,
             "shadowRadius": 2,
           },
-          Array [
-            Object {
+          [
+            {
               "backgroundColor": "hsla(0, 0%, 100%, 1)",
               "display": "flex",
               "flexDirection": "column",
@@ -606,8 +635,8 @@ exports[`<Card /> should render a Card with Header 1`] = `
       <View
         data-blade-component="card-header"
         style={
-          Array [
-            Object {
+          [
+            {
               "marginBottom": 24,
             },
           ]
@@ -619,8 +648,8 @@ exports[`<Card /> should render a Card with Header 1`] = `
           flexDirection="row"
           justifyContent="space-between"
           style={
-            Array [
-              Object {
+            [
+              {
                 "display": "flex",
                 "flexDirection": "row",
                 "justifyContent": "space-between",
@@ -634,8 +663,8 @@ exports[`<Card /> should render a Card with Header 1`] = `
             display="flex"
             flexDirection="row"
             style={
-              Array [
-                Object {
+              [
+                {
                   "display": "flex",
                   "flexBasis": 0,
                   "flexDirection": "row",
@@ -650,8 +679,8 @@ exports[`<Card /> should render a Card with Header 1`] = `
               data-blade-component="base-box"
               display="flex"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignSelf": "center",
                     "display": "flex",
                     "marginRight": 8,
@@ -673,15 +702,15 @@ exports[`<Card /> should render a Card with Header 1`] = `
                 minX={0}
                 minY={0}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "transparent",
                       "borderWidth": 0,
                     },
-                    Array [
-                      Object {},
+                    [
+                      {},
                     ],
-                    Object {
+                    {
                       "flex": 0,
                       "height": 24,
                       "width": 24,
@@ -695,7 +724,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
                 <RNSVGGroup
                   fill={null}
                   propList={
-                    Array [
+                    [
                       "fill",
                     ]
                   }
@@ -704,7 +733,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
                     d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
                     fill={4279445060}
                     propList={
-                      Array [
+                      [
                         "fill",
                       ]
                     }
@@ -713,7 +742,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
                     d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
                     fill={4279445060}
                     propList={
-                      Array [
+                      [
                         "fill",
                       ]
                     }
@@ -724,7 +753,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
                     fill={4279445060}
                     fillRule={0}
                     propList={
-                      Array [
+                      [
                         "fill",
                         "fillRule",
                       ]
@@ -736,8 +765,8 @@ exports[`<Card /> should render a Card with Header 1`] = `
             <View
               data-blade-component="base-box"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "marginRight": 16,
                   },
                 ]
@@ -750,8 +779,8 @@ exports[`<Card /> should render a Card with Header 1`] = `
                 flexDirection="row"
                 flexWrap="wrap"
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "alignItems": "center",
                       "display": "flex",
                       "flexDirection": "row",
@@ -762,6 +791,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
               >
                 <Text
                   accessibilityRole="header"
+                  accessible={true}
                   color="surface.text.normal.lowContrast"
                   data-blade-component="heading"
                   fontFamily="text"
@@ -770,8 +800,8 @@ exports[`<Card /> should render a Card with Header 1`] = `
                   fontWeight="bold"
                   lineHeight={300}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "hsla(217, 56%, 17%, 1)",
                         "fontFamily": "Lato",
                         "fontSize": 16,
@@ -796,8 +826,8 @@ exports[`<Card /> should render a Card with Header 1`] = `
                 <View
                   data-blade-component="base-box"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "marginLeft": 8,
                       },
                     ]
@@ -807,8 +837,8 @@ exports[`<Card /> should render a Card with Header 1`] = `
                     data-blade-component="counter"
                     display="flex"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "display": "flex",
                         },
                       ]
@@ -820,11 +850,11 @@ exports[`<Card /> should render a Card with Header 1`] = `
                       platform="onMobile"
                       size="medium"
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
                           },
-                          Object {
+                          {
                             "alignSelf": "center",
                             "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
                             "borderRadius": 9999,
@@ -843,8 +873,8 @@ exports[`<Card /> should render a Card with Header 1`] = `
                         justifyContent="center"
                         overflow="hidden"
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "alignItems": "center",
                               "display": "flex",
                               "flexDirection": "row",
@@ -859,6 +889,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
                         }
                       >
                         <Text
+                          accessible={true}
                           color="feedback.text.neutral.lowContrast"
                           data-blade-component="text"
                           fontFamily="text"
@@ -868,8 +899,8 @@ exports[`<Card /> should render a Card with Header 1`] = `
                           lineHeight={50}
                           numberOfLines={1}
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "color": "hsla(216, 27%, 36%, 1)",
                                 "fontFamily": "Lato",
                                 "fontSize": 12,
@@ -899,6 +930,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
                 </View>
               </View>
               <Text
+                accessible={true}
                 color="surface.text.normal.lowContrast"
                 data-blade-component="text"
                 fontFamily="text"
@@ -907,8 +939,8 @@ exports[`<Card /> should render a Card with Header 1`] = `
                 fontWeight="regular"
                 lineHeight={50}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "color": "hsla(217, 56%, 17%, 1)",
                       "fontFamily": "Lato",
                       "fontSize": 12,
@@ -938,8 +970,8 @@ exports[`<Card /> should render a Card with Header 1`] = `
             alignSelf="center"
             data-blade-component="base-box"
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignSelf": "center",
                 },
               ]
@@ -949,8 +981,8 @@ exports[`<Card /> should render a Card with Header 1`] = `
               data-blade-component="badge"
               display="flex"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "display": "flex",
                   },
                 ]
@@ -961,12 +993,12 @@ exports[`<Card /> should render a Card with Header 1`] = `
                 data-blade-component="base-box"
                 size="medium"
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
                       "textAlign": "left",
                     },
-                    Object {
+                    {
                       "alignSelf": "center",
                       "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
                       "borderRadius": 9999,
@@ -985,8 +1017,8 @@ exports[`<Card /> should render a Card with Header 1`] = `
                   justifyContent="center"
                   overflow="hidden"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignItems": "center",
                         "display": "flex",
                         "flexDirection": "row",
@@ -1001,6 +1033,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
                   }
                 >
                   <Text
+                    accessible={true}
                     color="feedback.text.neutral.lowContrast"
                     data-blade-component="text"
                     fontFamily="text"
@@ -1010,8 +1043,8 @@ exports[`<Card /> should render a Card with Header 1`] = `
                     lineHeight={50}
                     numberOfLines={1}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "hsla(216, 27%, 36%, 1)",
                           "fontFamily": "Lato",
                           "fontSize": 12,
@@ -1046,13 +1079,13 @@ exports[`<Card /> should render a Card with Header 1`] = `
           dividerStyle="solid"
           isDividerHorizontal={true}
           style={
-            Array [
-              Object {
+            [
+              {
                 "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
                 "borderStyle": "solid",
                 "borderWidth": 0,
               },
-              Object {
+              {
                 "borderBottomStyle": "solid",
                 "borderBottomWidth": 1,
                 "flexGrow": 1,
@@ -1065,12 +1098,13 @@ exports[`<Card /> should render a Card with Header 1`] = `
       <View
         data-blade-component="card-body"
         style={
-          Array [
-            Object {},
+          [
+            {},
           ]
         }
       >
         <Text
+          accessible={true}
           color="surface.text.normal.lowContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -1079,8 +1113,8 @@ exports[`<Card /> should render a Card with Header 1`] = `
           fontWeight="regular"
           lineHeight={100}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(217, 56%, 17%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 14,
@@ -1111,7 +1145,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
 exports[`<Card /> should render a Card without 0 padding 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -1119,8 +1153,8 @@ exports[`<Card /> should render a Card without 0 padding 1`] = `
   <View
     data-blade-component="card"
     style={
-      Array [
-        Object {},
+      [
+        {},
       ]
     }
   >
@@ -1129,8 +1163,8 @@ exports[`<Card /> should render a Card without 0 padding 1`] = `
       data-blade-component="base-box"
       elevation="lowRaised"
       style={
-        Array [
-          Object {
+        [
+          {
             "borderRadius": 4,
             "paddingBottom": 0,
             "paddingLeft": 0,
@@ -1138,18 +1172,18 @@ exports[`<Card /> should render a Card without 0 padding 1`] = `
             "paddingTop": 0,
             "textAlign": "left",
           },
-          Object {
+          {
             "elevation": 4,
             "shadowColor": "hsla(217, 56%, 17%, 0.64)",
-            "shadowOffset": Object {
+            "shadowOffset": {
               "height": 3,
               "width": 0,
             },
             "shadowOpacity": 0.12,
             "shadowRadius": 2,
           },
-          Array [
-            Object {
+          [
+            {
               "backgroundColor": "hsla(0, 0%, 100%, 1)",
               "display": "flex",
               "flexDirection": "column",
@@ -1164,8 +1198,8 @@ exports[`<Card /> should render a Card without 0 padding 1`] = `
       <View
         data-blade-component="card-body"
         style={
-          Array [
-            Object {},
+          [
+            {},
           ]
         }
       >
@@ -1179,7 +1213,7 @@ exports[`<Card /> should render a Card without 0 padding 1`] = `
 exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -1187,8 +1221,8 @@ exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
   <View
     data-blade-component="card"
     style={
-      Array [
-        Object {},
+      [
+        {},
       ]
     }
   >
@@ -1197,8 +1231,8 @@ exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
       data-blade-component="base-box"
       elevation="none"
       style={
-        Array [
-          Object {
+        [
+          {
             "borderRadius": 4,
             "paddingBottom": 24,
             "paddingLeft": 24,
@@ -1206,18 +1240,18 @@ exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
             "paddingTop": 24,
             "textAlign": "left",
           },
-          Object {
+          {
             "elevation": 0,
             "shadowColor": "",
-            "shadowOffset": Object {
+            "shadowOffset": {
               "height": 0,
               "width": 0,
             },
             "shadowOpacity": 0,
             "shadowRadius": 0,
           },
-          Array [
-            Object {
+          [
+            {
               "backgroundColor": "hsla(0, 0%, 100%, 1)",
               "borderColor": "hsla(216, 15%, 54%, 0.18)",
               "borderStyle": "solid",
@@ -1235,12 +1269,13 @@ exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
       <View
         data-blade-component="card-body"
         style={
-          Array [
-            Object {},
+          [
+            {},
           ]
         }
       >
         <Text
+          accessible={true}
           color="surface.text.normal.lowContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -1249,8 +1284,8 @@ exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
           fontWeight="regular"
           lineHeight={100}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(217, 56%, 17%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 14,
@@ -1281,7 +1316,7 @@ exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
 exports[`<Card /> should render a plain Card 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -1289,8 +1324,8 @@ exports[`<Card /> should render a plain Card 1`] = `
   <View
     data-blade-component="card"
     style={
-      Array [
-        Object {},
+      [
+        {},
       ]
     }
   >
@@ -1299,8 +1334,8 @@ exports[`<Card /> should render a plain Card 1`] = `
       data-blade-component="base-box"
       elevation="highRaised"
       style={
-        Array [
-          Object {
+        [
+          {
             "borderRadius": 4,
             "paddingBottom": 24,
             "paddingLeft": 24,
@@ -1308,18 +1343,18 @@ exports[`<Card /> should render a plain Card 1`] = `
             "paddingTop": 24,
             "textAlign": "left",
           },
-          Object {
+          {
             "elevation": 26,
             "shadowColor": "hsla(217, 56%, 17%, 0.64)",
-            "shadowOffset": Object {
+            "shadowOffset": {
               "height": 18,
               "width": 0,
             },
             "shadowOpacity": 0.2,
             "shadowRadius": 12,
           },
-          Array [
-            Object {
+          [
+            {
               "backgroundColor": "hsla(220, 27%, 98%, 1)",
               "display": "flex",
               "flexDirection": "column",
@@ -1334,12 +1369,13 @@ exports[`<Card /> should render a plain Card 1`] = `
       <View
         data-blade-component="card-body"
         style={
-          Array [
-            Object {},
+          [
+            {},
           ]
         }
       >
         <Text
+          accessible={true}
           color="surface.text.normal.lowContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -1348,8 +1384,8 @@ exports[`<Card /> should render a plain Card 1`] = `
           fontWeight="regular"
           lineHeight={100}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(217, 56%, 17%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 14,

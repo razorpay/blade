@@ -314,7 +314,7 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
     <label
       class="c1"
       data-blade-component="switch-label"
-      style="cursor: pointer;"
+      style="cursor: not-allowed;"
     >
       <input
         aria-checked="false"

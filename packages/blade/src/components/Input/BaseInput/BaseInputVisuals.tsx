@@ -10,7 +10,10 @@ type InputVisuals = Pick<
   'leadingIcon' | 'prefix' | 'interactionElement' | 'suffix' | 'trailingIcon' | 'isDisabled'
 >;
 
-const getVisualContainerStyles = (): BaseBoxProps => ({
+const getVisualContainerStyles = (): Pick<
+  BaseBoxProps,
+  'display' | 'flexDirection' | 'alignItems'
+> => ({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
@@ -22,7 +25,7 @@ const getPrefixStyles = ({
 }: {
   hasLeadingIcon: boolean;
   hasPrefix: boolean;
-}): BaseBoxProps => {
+}): Pick<BaseBoxProps, 'paddingLeft'> => {
   if (hasPrefix && hasLeadingIcon) {
     return {
       paddingLeft: 'spacing.2',
@@ -48,7 +51,7 @@ const getInteractionElementStyles = ({
   hasTrailingIcon: boolean;
   hasInteractionElement: boolean;
   hasSuffix: boolean;
-}): BaseBoxProps => {
+}): Pick<BaseBoxProps, 'paddingRight'> => {
   if (hasInteractionElement && (hasSuffix || hasTrailingIcon)) {
     return {
       paddingRight: 'spacing.2',
@@ -58,7 +61,6 @@ const getInteractionElementStyles = ({
   if (hasInteractionElement && !hasSuffix && !hasTrailingIcon) {
     return {
       paddingRight: 'spacing.4',
-      height: '100%',
     };
   }
 
@@ -73,7 +75,7 @@ const getSuffixStyles = ({
 }: {
   hasTrailingIcon: boolean;
   hasSuffix: boolean;
-}): BaseBoxProps => {
+}): Pick<BaseBoxProps, 'paddingRight'> => {
   if (hasSuffix && hasTrailingIcon) {
     return {
       paddingRight: 'spacing.2',
@@ -164,11 +166,13 @@ export const BaseInputVisuals = ({
 
   if (hasTrailingVisuals) {
     return (
-      <BaseBox {...getVisualContainerStyles()}>
+      <BaseBox alignSelf="stretch" alignItems="stretch" {...getVisualContainerStyles()}>
         {hasInteractionElement ? (
           <BaseBox
             {...getInteractionElementStyles({ hasTrailingIcon, hasInteractionElement, hasSuffix })}
             display="flex"
+            alignItems="stretch"
+            alignSelf="stretch"
           >
             {interactionElement}
           </BaseBox>

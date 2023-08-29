@@ -14,6 +14,7 @@ import type { DropdownProps } from './types';
 
 import type { FormInputHandleOnKeyDownEvent } from '~components/Form/FormTypes';
 import { isReactNative } from '~utils';
+import type { ContainerElementType } from '~utils/types';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 const noop = (): void => {};
@@ -66,6 +67,7 @@ type DropdownContextType = {
   dropdownTriggerer?: 'SelectInput' | 'DropdownButton' | 'AutoComplete' | 'DropdownLink';
   /** ref of triggerer. Used to call focus in certain places */
   triggererRef: React.RefObject<HTMLButtonElement | null>;
+  triggererWrapperRef: React.MutableRefObject<ContainerElementType | null>;
   actionListItemRef: React.RefObject<HTMLDivElement | null>;
   isTagDismissedRef: React.RefObject<{ value: boolean } | null>;
   visibleTagsCountRef: React.RefObject<{ value: number } | null>;
@@ -142,6 +144,9 @@ const DropdownContext = React.createContext<DropdownContextType>({
     current: null,
   },
   visibleTagsCountRef: {
+    current: null,
+  },
+  triggererWrapperRef: {
     current: null,
   },
 });
@@ -232,6 +237,10 @@ const useDropdown = (): UseDropdownReturnValue => {
   const removeOption = (index: number): void => {
     // remove existing item
     const existingItemIndex = selectedIndices.indexOf(index);
+    if (existingItemIndex < 0) {
+      return;
+    }
+
     setIndices([
       ...selectedIndices.slice(0, existingItemIndex),
       ...selectedIndices.slice(existingItemIndex + 1),
@@ -287,7 +296,6 @@ const useDropdown = (): UseDropdownReturnValue => {
    * Click listener for combobox (or any triggerer of the dropdown)
    */
   const onTriggerClick = (): void => {
-    console.log('onTriggerClick');
     if (isOpen) {
       close();
     } else {

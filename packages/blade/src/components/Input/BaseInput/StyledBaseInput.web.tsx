@@ -6,6 +6,7 @@ import { getBaseInputStyles } from './baseInputStyles';
 import type { StyledBaseInputProps } from './types';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { Text } from '~components/Typography';
 
 const getWebInputStyles = (
   props: Omit<StyledBaseInputProps, 'accessibilityProps' | 'setCurrentInteraction' | 'type'> &
@@ -24,6 +25,7 @@ const getWebInputStyles = (
       trailingIcon: props.trailingIcon,
       textAlign: props.textAlign,
       isTextArea: props.isTextArea,
+      hasTags: props.hasTags,
     }),
     outline: 'none',
     border: 'none',
@@ -53,15 +55,6 @@ const StyledBaseNativeButton = styled.button<
   Omit<StyledBaseInputProps, 'accessibilityProps' | 'setCurrentInteraction' | 'type'>
 >((props) => ({
   ...getWebInputStyles(props),
-  ...getTextStyles({
-    size: 'medium',
-    variant: 'body',
-    type: props.value ? 'subtle' : 'placeholder',
-    weight: 'regular',
-    contrast: 'low',
-    theme: props.theme,
-  }),
-  textAlign: props.textAlign,
 }));
 
 const autoCompleteSuggestionTypeMap = {
@@ -149,7 +142,13 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
       {...accessibilityProps}
       value={props.value}
     >
-      {props.value ? props.value : props.placeholder}
+      <Text
+        type={props.value ? 'subtle' : 'placeholder'}
+        truncateAfterLines={1}
+        textAlign={props.textAlign}
+      >
+        {props.value ? props.value : props.placeholder}
+      </Text>
     </StyledBaseNativeButton>
   ) : (
     <StyledBaseNativeInput

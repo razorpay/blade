@@ -1,71 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
+import type { TagProps } from './types';
 import { Box } from '~components/Box';
-import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getStyledProps } from '~components/Box/styledProps';
 import { IconButton } from '~components/Button/IconButton';
-import type { IconComponent } from '~components/Icons';
 import { CloseIcon } from '~components/Icons';
 import { Text } from '~components/Typography';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import type { StringChildrenType, TestID } from '~utils/types';
 import { isReactNative, makeSize } from '~utils';
 import { size as globalSizeTokens } from '~tokens/global';
 import BaseBox from '~components/Box/BaseBox';
 import type { PaddingProps } from '~components/Box/BaseBox/types/spacingTypes';
 import { useIsMobile } from '~utils/useIsMobile';
 
-type TagProps = {
-  /**
-   * Decides the size of Tag
-   *
-   * @default medium
-   */
-  size?: 'medium' | 'large';
-
-  /**
-   * Leading icon for your Tag
-   */
-  icon?: IconComponent;
-
-  /**
-   * Callback when close icon on Tag is clicked
-   */
-  onDismiss: () => void;
-
-  /**
-   * Text that renders inside Tag
-   */
-  children: StringChildrenType;
-
-  /**
-   * Disable tag
-   */
-  isDisabled?: boolean;
-
-  /**
-   * Private property for Blade.
-   *
-   * Should not be used by consumers.
-   *
-   * Used for adding virtual focus on tag.
-   *
-   * @private
-   */
-  _isVirtuallyFocussed?: boolean;
-
-  /**
-   * Is tag placed inside an input
-   *
-   * @private
-   */
-  _isTagInsideInput?: boolean;
-} & StyledPropsBlade &
-  TestID;
-
 const FocussableTag = styled(BaseBox)<{ _isVirtuallyFocussed: TagProps['_isVirtuallyFocussed'] }>(
   (props) => {
-    if (props._isVirtuallyFocussed) {
+    if (props._isVirtuallyFocussed && !isReactNative()) {
       return {
         outline: `1px solid ${props.theme.colors.surface.background.level1.lowContrast}`,
         boxShadow: `0px 0px 0px 4px ${props.theme.colors.brand.primary[400]}`,
@@ -181,7 +131,11 @@ const Tag = ({
             accessibilityLabel={`Close ${children} tag`}
             isDisabled={isDisabled}
             _tabIndex={_isTagInsideInput ? -1 : undefined}
-            onClick={() => {
+            onClick={(e) => {
+              // Inside tag input, we stop propagation to avoid opening dropdown on click of close on tag
+              if (_isTagInsideInput) {
+                e.stopPropagation();
+              }
               onDismiss();
             }}
           />
@@ -191,4 +145,4 @@ const Tag = ({
   );
 };
 
-export { Tag, TagProps };
+export { Tag };

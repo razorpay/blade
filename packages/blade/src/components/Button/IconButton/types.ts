@@ -5,11 +5,11 @@ import type { BladeCommonEvents } from '~components/types';
 
 export type StyledIconButtonProps = {
   icon: IconComponent;
-  onClick: () => void;
   size: RemoveUndefinedFromUnion<IconButtonProps['size']>;
   contrast: 'low' | 'high';
   accessibilityLabel: string;
   isDisabled?: IconButtonProps['isDisabled'];
   tabIndex?: IconButtonProps['_tabIndex'];
+  onClick?: IconButtonProps['onClick'];
 } & TestID &
   BladeCommonEvents;

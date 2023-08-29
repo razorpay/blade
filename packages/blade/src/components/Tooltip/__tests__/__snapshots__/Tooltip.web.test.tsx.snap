@@ -124,7 +124,7 @@ exports[`<Tooltip /> should render 1`] = `
 
 <div>
   <button
-    aria-describedby="floating-ui-0"
+    aria-describedby=":r0:"
     class="c0"
     data-blade-component="button"
     role="button"
@@ -269,7 +269,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
 
 <div>
   <button
-    aria-describedby="floating-ui-4"
+    aria-describedby=":r4:"
     class="c0"
     data-blade-component="button"
     role="button"

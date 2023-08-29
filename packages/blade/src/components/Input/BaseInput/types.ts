@@ -6,15 +6,33 @@ import type {
   FormInputHandleOnClickEvent,
   FormInputHandleOnKeyDownEvent,
 } from '~components/Form/FormTypes';
+import type { ContainerElementType } from '~utils/types';
+
+export type InputWrapperRef = React.MutableRefObject<ContainerElementType | null>;
 
 export type BaseInputTagSlotProps = {
   tags?: BaseInputProps['tags'];
+  renderAs?: BaseInputProps['as'];
   showAllTags: BaseInputProps['showAllTags'];
   setFocusOnInput: () => void;
   setShouldIgnoreBlurAnimation: BaseInputProps['setShouldIgnoreBlurAnimation'];
   handleOnClick: StyledBaseInputProps['handleOnClick'];
-  isMultiline: BaseInputProps['isMultiline'];
+  maxTagRows: BaseInputProps['maxTagRows'];
   visibleTagsCountRef: React.MutableRefObject<number>;
+  children: React.ReactElement;
+  inputWrapperRef: InputWrapperRef;
+};
+
+export type BaseInputWrapperProps = Pick<
+  BaseInputProps,
+  'isDisabled' | 'validationState' | 'showAllTags' | 'maxTagRows'
+> & {
+  isFocused?: boolean;
+  isLabelLeftPositioned?: boolean;
+  currentInteraction: keyof ActionStates;
+  isTextArea?: boolean;
+  setShowAllTagsWithAnimation?: (showAllTagsWithAnimation: boolean) => void;
+  children: React.ReactNode;
 };
 
 export type StyledBaseInputProps = {
@@ -31,6 +49,7 @@ export type StyledBaseInputProps = {
   currentInteraction: keyof ActionStates;
   setCurrentInteraction: Dispatch<SetStateAction<keyof ActionStates>>;
   isTextArea?: boolean;
+  hasTags?: boolean;
 } & Pick<
   BaseInputProps,
   | 'as'
@@ -61,4 +80,5 @@ export type StyledBaseInputProps = {
   | 'shouldIgnoreBlurAnimation'
   | 'autoCapitalize'
 >;
+
 export { StyledBaseInput } from './StyledBaseInput.web';

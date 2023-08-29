@@ -1,118 +1,86 @@
 import React from 'react';
-import throttle from 'lodash/throttle';
-import styled, { keyframes, css } from 'styled-components';
-import type { FlattenSimpleInterpolation } from 'styled-components';
-import { autoUpdate, useFloating } from '@floating-ui/react';
-import type { DropdownPosition } from './dropdownUtils';
-import { componentIds, getDropdownOverflowMiddleware } from './dropdownUtils';
+import {
+  autoUpdate,
+  offset,
+  size as sizeMiddleware,
+  useFloating,
+  useTransitionStyles,
+  flip,
+} from '@floating-ui/react';
+import { componentIds } from './dropdownUtils';
 import { useDropdown } from './useDropdown';
 import { StyledDropdownOverlay } from './StyledDropdownOverlay';
 import type { DropdownOverlayProps } from './types';
-import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
 // Reading directly because its not possible to get theme object on top level to be used in keyframes
-import { spacing, size } from '~tokens/global';
-import type { SpacingValueType } from '~components/Box/BaseBox';
-import { makeMotionTime, makeSize } from '~utils';
+import { size } from '~tokens/global';
+import { makeSize } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { useBottomSheetAndDropdownGlue } from '~components/BottomSheet/BottomSheetContext';
+import BaseBox from '~components/Box/BaseBox';
 
-const dropdownFadeIn = keyframes`
-from {
-  transform: translateY(${makeSize(spacing[0])});
-  opacity: 0;
-}
-
-to {
-  transform: translateY(${makeSize(spacing[3])});
-  opacity: 1;
-}
-`;
-
-const dropdownFadeOut = keyframes`
-from {
-  transform: translateY(${makeSize(spacing[3])});
-  opacity: 1;
-}
-
-to {
-  transform: translateY(${makeSize(spacing[0])});
-  opacity: 0;
-}
-`;
-
-const AnimatedOverlay = styled(StyledDropdownOverlay)<{
-  transition: FlattenSimpleInterpolation;
-  onAnimationEnd: () => void;
-  isInBottomSheet?: boolean;
-  isOpen: boolean;
-}>(
-  (props) =>
-    css`
-      ${props.transition}
-      transform: translateY(${makeSize(props.theme.spacing[3])});
-      opacity: 0;
-      z-index: 99;
-      pointer-events: ${props.isOpen ? 'all' : 'none'};
-    `,
-);
+const OVERLAY_OFFSET: number = size['8'];
+const OVERLAY_PADDING: number = size['12']; // doesn't have to be exact. Just rough padding for floating ui to decide to show overlay on top or bottom
+const OVERLAY_ZINDEX = 1001;
 
 /**
  * Overlay of dropdown
  *
  * Wrap your ActionList within this component
  */
-const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): React.ReactElement => {
-  const {
-    isOpen,
-    triggererRef,
-    hasLabelOnLeft,
-    dropdownTriggerer,
-    setIsOpen,
-    actionListItemRef,
-  } = useDropdown();
+const _DropdownOverlay = ({
+  children,
+  testID,
+  zIndex = OVERLAY_ZINDEX,
+}: DropdownOverlayProps): React.ReactElement | null => {
+  const { isOpen, triggererRef, triggererWrapperRef, dropdownTriggerer, setIsOpen } = useDropdown();
   const { theme } = useTheme();
   const bottomSheetAndDropdownGlue = useBottomSheetAndDropdownGlue();
-  const [showFadeOutAnimation, setShowFadeOutAnimation] = React.useState(false);
-  const [width, setWidth] = React.useState<SpacingValueType>('100%');
-  const [dropdownPosition, setDropdownPosition] = React.useState<DropdownPosition>({});
 
   console.log({ dropdownTriggerer });
   const isMenu = dropdownTriggerer !== 'SelectInput' && dropdownTriggerer !== 'AutoComplete';
 
-  const { refs } = useFloating({
+  const { refs, floatingStyles, context } = useFloating({
     open: isOpen,
     onOpenChange: setIsOpen,
-    strategy: 'absolute',
+    strategy: 'fixed',
     placement: 'bottom-start',
     elements: {
-      reference: triggererRef.current,
+      // Input triggers have their ref on internal input element but we want width height of overall visible input hence wrapperRef is needed
+      // We fallback to use `triggererRef` for triggers like button and link where wrapper is not needed
+      // Checkout: https://github.com/razorpay/blade/pull/1559#discussion_r1305438920
+      reference: triggererWrapperRef.current ?? triggererRef.current,
     },
     middleware: [
-      getDropdownOverflowMiddleware({
-        isMenu,
-        triggererRef,
-        actionListItemRef,
-        setDropdownPosition,
+      offset({
+        mainAxis: OVERLAY_OFFSET,
+      }),
+      flip({
+        padding: OVERLAY_OFFSET + OVERLAY_PADDING,
+      }),
+      sizeMiddleware({
+        apply({ rects, elements }) {
+          Object.assign(elements.floating.style, {
+            // in menu, we have flexible width between min and max
+            // in input triggers, we just take width of trigger
+            width: isMenu ? undefined : makeSize(rects.reference.width),
+            minWidth: isMenu ? makeSize(size['240']) : undefined,
+            maxWidth: isMenu ? makeSize(size['400']) : undefined,
+          });
+        },
       }),
     ],
     whileElementsMounted: autoUpdate,
   });
 
-  const fadeIn = css`
-    animation: ${dropdownFadeIn} ${makeMotionTime(theme.motion.duration.quick)}
-      ${String(theme.motion.easing.entrance.revealing)};
-  `;
-
-  const fadeOut = css`
-    animation: ${dropdownFadeOut} ${makeMotionTime(theme.motion.duration.quick)}
-      ${String(theme.motion.easing.entrance.revealing)};
-  `;
-
-  const noAnimation = css`
-    animation: none;
-  `;
+  const { isMounted, styles } = useTransitionStyles(context, {
+    duration: theme.motion.duration.quick,
+    initial: () => ({
+      transform: `translateY(-${makeSize(size['8'])})`,
+      opacity: 0,
+    }),
+  });
 
   React.useEffect(() => {
     if (isOpen) {
@@ -122,69 +90,23 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): React.Rea
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
-  // We want to set width of overlay as per width of the SelectInput
-  React.useEffect(() => {
-    // We don't set width according to trigger when trigger is Button or other menu trigger
-    if (isMenu) {
-      return undefined;
-    }
-
-    const setOverlayWidth = throttle((): void => {
-      if (triggererRef.current?.clientWidth && hasLabelOnLeft) {
-        const svgWidth: number = size[16];
-        const interactionElementPadding: number = theme.spacing[4];
-        const offset = svgWidth + interactionElementPadding;
-        // SelectInput is -> Button + InteractionElement on right (the chevron icon)
-        // So we add the interactionElement offset with Button's width.
-        setWidth(makeSize(triggererRef.current?.clientWidth + offset));
-      } else {
-        // We don't have to worry about setting the custom width when label is on top since we can just 100% width of parent div
-        setWidth('100%');
-        window.removeEventListener('resize', setOverlayWidth);
-      }
-    }, 1000);
-
-    setOverlayWidth();
-    window.addEventListener('resize', setOverlayWidth);
-    return () => {
-      window.removeEventListener('resize', setOverlayWidth);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [setWidth, triggererRef, hasLabelOnLeft]);
-
-  const onAnimationEnd = React.useCallback(() => {
-    if (isOpen) {
-      setShowFadeOutAnimation(true);
-    } else {
-      setShowFadeOutAnimation(false);
-    }
-  }, [isOpen]);
-
-  const styles = React.useMemo(() => ({ opacity: isOpen ? 1 : 0 }), [isOpen]);
-
   return (
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    <BaseBox position="relative" ref={refs.setFloating as any}>
-      <AnimatedOverlay
+    <BaseBox
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ref={refs.setFloating as any}
+      style={floatingStyles}
+      zIndex={zIndex}
+      display={isMounted ? 'flex' : 'none'}
+    >
+      <StyledDropdownOverlay
         isInBottomSheet={bottomSheetAndDropdownGlue?.dropdownHasBottomSheet}
         elevation={bottomSheetAndDropdownGlue?.dropdownHasBottomSheet ? undefined : 'midRaised'}
-        width={isMenu ? 'max-content' : width}
-        // In SelectInput, Overlay should always take width of Input
-        minWidth={isMenu ? '240px' : undefined}
-        // in SelectInput, we don't want to set maxWidth because it takes width according to the trigger
-        maxWidth={isMenu ? '400px' : undefined}
-        left={dropdownPosition.left}
-        right={dropdownPosition.right}
-        bottom={dropdownPosition.bottom}
-        style={styles}
-        isOpen={isOpen}
-        position="absolute"
-        transition={isOpen ? fadeIn : showFadeOutAnimation ? fadeOut : noAnimation}
-        onAnimationEnd={onAnimationEnd}
+        style={{ ...styles }}
+        width="100%"
         {...metaAttribute({ name: MetaConstants.DropdownOverlay, testID })}
       >
         {children}
-      </AnimatedOverlay>
+      </StyledDropdownOverlay>
     </BaseBox>
   );
 };

@@ -7,88 +7,13 @@ import type {
   SpacingValueType,
   ArrayOfMaxLength4,
 } from './types';
+import { getResponsiveValue } from './getResponsiveValue';
 import type { Breakpoints } from '~tokens/global';
 import { breakpoints } from '~tokens/global';
 import { isReactNative, getMediaQuery } from '~utils';
 import type { Theme } from '~components/BladeProvider';
 import { makeSpace } from '~utils/makeSpace';
 import { makeBorderSize } from '~utils/makeBorderSize';
-
-/**
- * A helper function that returns the exact value for that breakpoint on passing the prop and breakpoint
- *
- * ## Usage
- *
- * ### Get base value of prop
- *
- * ```ts
- * getResponsiveValue(props.yourProp, 'base');
- * // yourProp="hi" -> "hi"
- * // yourProp={{ base: 'hello', m: 'hi' }} -> "hello"
- * // yourProp={{ m: 'hi' }} -> undefined
- * ```
- *
- * ### Get value of particular breakpoint
- *
- *
- * ```ts
- * getResponsiveValue(props.yourProp, 'm');
- * // yourProp="hi" -> undefined
- * // yourProp={{ base: 'hello', m: 'hi' }} -> "hi"
- * // yourProp={{ m: 'hi' }} -> "hi"
- * ```
- */
-const getResponsiveValue = <T extends string | number | string[]>(
-  value: MakeValueResponsive<T> | undefined,
-  breakpoint: keyof Breakpoints = 'base',
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-): any | undefined => {
-  if (value === undefined || value === null) {
-    return undefined;
-  }
-
-  if (typeof value === 'string' || typeof value === 'number' || Array.isArray(value)) {
-    /**
-     * Flat values like string or number should only be added in `base` styles.
-     *
-     * E.g. if you pass `display="block"`, it should only put that style in base style and not in media queries
-     * ```js
-     * // Output should be just this-
-     * display: block;
-     *
-     * // And not this-
-     * display: block;
-     * media (min-width: s) {
-     *   display: block;
-     * }
-     *
-     * media (min-width: m) {
-     *   display: block
-     * }
-     * //  and more ...
-     * ```
-     */
-    if (breakpoint === 'base') {
-      return value;
-    }
-
-    return undefined;
-  }
-
-  if (isEmpty(value)) {
-    return undefined;
-  }
-
-  if (isReactNative()) {
-    // In React Native, we map the value `s` token on priority (since the breakpoint maps to mobiles in useBreakpoint hook).
-    // We further look into smaller sizes, then we check base size.
-    // Then we return the first non-undefined value in this priority
-    const priorityArray = [value.s, value.xs, value.base];
-    return priorityArray.find((val) => val !== undefined);
-  }
-
-  return value[breakpoint];
-};
 
 const getSpacingValue = (
   spacingValue:
@@ -211,6 +136,8 @@ const getAllProps = (
     justifyItems: getResponsiveValue(props.justifyItems, breakpoint),
     justifyContent: getResponsiveValue(props.justifyContent, breakpoint),
     justifySelf: getResponsiveValue(props.justifySelf, breakpoint),
+    placeSelf: getResponsiveValue(props.placeSelf, breakpoint),
+    placeItems: getResponsiveValue(props.placeItems, breakpoint),
     order: getResponsiveValue(props.order, breakpoint),
     position: getResponsiveValue(props.position, breakpoint),
     zIndex: getResponsiveValue(props.zIndex, breakpoint),
@@ -340,7 +267,6 @@ const getBaseBoxStyles = (props: BaseBoxProps & { theme: Theme }): CSSObject => 
 
 export {
   getBaseBoxStyles,
-  getResponsiveValue,
   getSpacingValue,
   getColorValue,
   getBorderRadiusValue,

@@ -13,6 +13,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { isReactNative } from '~utils';
 import { metaAttribute } from '~utils/metaAttribute';
+import { logger, throwBladeError } from '~utils/logger';
 
 type BaseHeaderProps = {
   title?: string;
@@ -106,20 +107,23 @@ const useTrailingRestriction = (trailing: React.ReactNode): React.ReactNode => {
       const allowedComponents = Object.keys(propRestrictionMap);
       if (__DEV__) {
         if (!restrictedProps) {
-          throw new Error(
-            `[Blade Header]: Only one of \`${allowedComponents.join(
+          throwBladeError({
+            message: `Only one of \`${allowedComponents.join(
               ', ',
             )}\` component is accepted as trailing`,
-          );
+            moduleName: 'Header',
+          });
         }
       }
 
       const restrictedPropKeys = Object.keys(propRestrictionMap[trailingComponentType]);
       for (const prop of restrictedPropKeys) {
         if (trailing?.props?.hasOwnProperty(prop)) {
-          console.warn(
-            `[Blade Header]: Do not pass "${prop}" to "${trailingComponentType}" while inside Header trailing, because we override it.`,
-          );
+          logger({
+            message: `Do not pass "${prop}" to "${trailingComponentType}" while inside Header trailing, because we override it.`,
+            moduleName: 'Header',
+            type: 'warn',
+          });
         }
       }
       setValidatedTrailingComponent(

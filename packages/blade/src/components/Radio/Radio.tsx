@@ -13,11 +13,11 @@ import { SelectorSupportText } from '~components/Form/Selector/SelectorSupportTe
 import { SelectorInput } from '~components/Form/Selector/SelectorInput';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import type { BladeElementRef } from '~utils/useBladeInnerRef';
-import type { StringChildrenType, TestID } from '~utils/types';
+import type { BladeElementRef, StringChildrenType, TestID } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getPlatformType } from '~utils';
 import { MetaConstants } from '~utils/metaAttribute';
+import { throwBladeError } from '~utils/logger';
 
 type RadioProps = {
   /**
@@ -57,7 +57,10 @@ const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
 
   if (__DEV__) {
     if (!isInsideGroup) {
-      throw new Error('[Blade Radio]: Cannot use <Radio /> outside of <RadioGroup />');
+      throwBladeError({
+        moduleName: 'Radio',
+        message: 'Cannot use <Radio /> outside of <RadioGroup />',
+      });
     }
   }
 

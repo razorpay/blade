@@ -3,7 +3,7 @@
 exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -11,8 +11,8 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   <View
     data-blade-component="collapsible"
     style={
-      Array [
-        Object {},
+      [
+        {},
       ]
     }
   >
@@ -22,7 +22,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
       display="flex"
       flexDirection="column"
       maxWidth={
-        Object {
+        {
           "l": "1136px",
           "m": "640px",
           "s": "710px",
@@ -30,8 +30,8 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
       }
       minWidth="200px"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "flex-start",
             "display": "flex",
             "flexDirection": "column",
@@ -45,9 +45,20 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
         accessibilityControls="collapsible-body-1"
         accessibilityRole="button"
         accessibilityState={
-          Object {
+          {
+            "busy": undefined,
+            "checked": undefined,
             "disabled": false,
             "expanded": false,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
           }
         }
         accessible={true}
@@ -84,9 +95,10 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
         onResponderTerminate={[Function]}
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
+        role="button"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "alignSelf": "flex-start",
               "backgroundColor": "hsla(218, 89%, 51%, 1)",
@@ -107,7 +119,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
               "textDecorationStyle": "solid",
               "width": "auto",
             },
-            Object {
+            {
               "backgroundColor": "hsla(218, 89%, 51%, 1)",
               "borderColor": "hsla(218, 89%, 51%, 1)",
             },
@@ -123,8 +135,8 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
           isHidden={false}
           justifyContent="center"
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "display": "flex",
                 "flexBasis": 0,
@@ -133,21 +145,22 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                 "flexShrink": 1,
                 "justifyContent": "center",
               },
-              Object {
+              {
                 "opacity": 1,
               },
             ]
           }
         >
           <Text
+            accessible={true}
             color="action.text.primary.default"
             data-blade-component="base-text"
             fontSize={100}
             fontWeight="bold"
             lineHeight={100}
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "hsla(0, 0%, 100%, 1)",
                   "fontFamily": "Lato",
                   "fontSize": 14,
@@ -180,19 +193,19 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
         id="collapsible-body-1"
         importantForAccessibility="no-hide-descendants"
         style={
-          Array [
-            Object {},
+          [
+            {},
           ]
         }
       >
         <View
           isExpanded={false}
           style={
-            Array [
-              Object {
+            [
+              {
                 "overflow": "hidden",
               },
-              Object {
+              {
                 "height": 0,
                 "opacity": 0.8,
               },
@@ -202,7 +215,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
           <View
             onLayout={[Function]}
             style={
-              Object {
+              {
                 "position": "relative",
               }
             }
@@ -210,8 +223,8 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
             <View
               data-blade-component="box"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "marginBottom": 0,
                     "marginTop": 16,
                   },
@@ -224,8 +237,8 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                 flexDirection="column"
                 minWidth="200px"
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "display": "flex",
                       "flexDirection": "column",
                       "minWidth": 200,
@@ -234,6 +247,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                 }
               >
                 <Text
+                  accessible={true}
                   color="surface.text.normal.lowContrast"
                   data-blade-component="text"
                   fontFamily="text"
@@ -242,8 +256,8 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                   fontWeight="regular"
                   lineHeight={100}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "hsla(217, 56%, 17%, 1)",
                         "fontFamily": "Lato",
                         "fontSize": 14,
@@ -269,8 +283,8 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                   data-blade-component="amount"
                   display="flex"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "display": "flex",
                       },
                     ]
@@ -282,8 +296,8 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                     display="flex"
                     flexDirection="row"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "alignItems": "baseline",
                           "display": "flex",
                           "flexDirection": "row",
@@ -294,14 +308,15 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                     }
                   >
                     <Text
+                      accessible={true}
                       color="feedback.text.positive.lowContrast"
                       data-blade-component="base-text"
                       fontSize={75}
                       fontWeight="bold"
                       marginRight="spacing.1"
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "color": "hsla(160, 100%, 26%, 1)",
                             "fontFamily": "Lato",
                             "fontSize": 12,
@@ -324,10 +339,11 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                       ₹
                     </Text>
                     <Text
+                      accessible={true}
                       data-blade-component="base-text"
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "color": "hsla(217, 56%, 17%, 1)",
                             "fontFamily": "Lato",
                             "fontSize": 16,
@@ -348,14 +364,15 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                       }
                     >
                       <Text
+                        accessible={true}
                         color="feedback.text.positive.lowContrast"
                         data-blade-component="base-text"
                         fontSize={100}
                         fontWeight="regular"
                         lineHeight={100}
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "color": "hsla(160, 100%, 26%, 1)",
                               "fontFamily": "Lato",
                               "fontSize": 14,
@@ -379,14 +396,15 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                         .
                       </Text>
                       <Text
+                        accessible={true}
                         color="feedback.text.positive.lowContrast"
                         data-blade-component="base-text"
                         fontSize={75}
                         fontWeight="regular"
                         marginLeft="spacing.1"
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "color": "hsla(160, 100%, 26%, 1)",
                               "fontFamily": "Lato",
                               "fontSize": 12,
@@ -424,7 +442,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
 exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -432,8 +450,8 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   <View
     data-blade-component="collapsible"
     style={
-      Array [
-        Object {},
+      [
+        {},
       ]
     }
   >
@@ -443,7 +461,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
       display="flex"
       flexDirection="column"
       maxWidth={
-        Object {
+        {
           "l": "1136px",
           "m": "640px",
           "s": "710px",
@@ -451,8 +469,8 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
       }
       minWidth="200px"
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "flex-start",
             "display": "flex",
             "flexDirection": "column",
@@ -463,10 +481,23 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
       }
     >
       <View
+        accessibilityControls="collapsible-body-3"
         accessibilityRole="button"
         accessibilityState={
-          Object {
+          {
+            "busy": undefined,
+            "checked": undefined,
             "disabled": false,
+            "expanded": false,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
           }
         }
         accessible={true}
@@ -482,8 +513,8 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Array [
-            Object {
+          [
+            {
               "alignSelf": "flex-start",
               "backgroundColor": "transparent",
               "borderColor": "black",
@@ -508,8 +539,8 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
           display="flex"
           flexDirection="row"
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "display": "flex",
                 "flexDirection": "row",
@@ -518,14 +549,15 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
           }
         >
           <Text
+            accessible={true}
             color="action.text.link.default"
             data-blade-component="base-text"
             fontSize={100}
             fontWeight="bold"
             lineHeight={100}
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "hsla(218, 89%, 51%, 1)",
                   "fontFamily": "Lato",
                   "fontSize": 14,
@@ -555,8 +587,8 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
             data-blade-component="base-box"
             display="flex"
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignItems": "center",
                   "display": "flex",
                   "paddingLeft": 4,
@@ -568,9 +600,9 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
               accessibilityElementsHidden={true}
               importantForAccessibility="no-hide-descendants"
               style={
-                Object {
-                  "transform": Array [
-                    Object {
+                {
+                  "transform": [
+                    {
                       "rotateZ": "0deg",
                     },
                   ],
@@ -591,15 +623,15 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                 minX={0}
                 minY={0}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "transparent",
                       "borderWidth": 0,
                     },
-                    Array [
-                      Object {},
+                    [
+                      {},
                     ],
-                    Object {
+                    {
                       "flex": 0,
                       "height": 16,
                       "width": 16,
@@ -613,7 +645,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                 <RNSVGGroup
                   fill={null}
                   propList={
-                    Array [
+                    [
                       "fill",
                     ]
                   }
@@ -624,7 +656,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                     fill={4279461105}
                     fillRule={0}
                     propList={
-                      Array [
+                      [
                         "fill",
                         "fillRule",
                       ]
@@ -643,19 +675,19 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
         id="collapsible-body-3"
         importantForAccessibility="no-hide-descendants"
         style={
-          Array [
-            Object {},
+          [
+            {},
           ]
         }
       >
         <View
           isExpanded={false}
           style={
-            Array [
-              Object {
+            [
+              {
                 "overflow": "hidden",
               },
-              Object {
+              {
                 "height": 0,
                 "opacity": 0.8,
               },
@@ -665,7 +697,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
           <View
             onLayout={[Function]}
             style={
-              Object {
+              {
                 "position": "relative",
               }
             }
@@ -673,8 +705,8 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
             <View
               data-blade-component="box"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "marginBottom": 0,
                     "marginTop": 16,
                   },
@@ -687,8 +719,8 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                 flexDirection="column"
                 minWidth="200px"
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "display": "flex",
                       "flexDirection": "column",
                       "minWidth": 200,
@@ -697,6 +729,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                 }
               >
                 <Text
+                  accessible={true}
                   color="surface.text.normal.lowContrast"
                   data-blade-component="text"
                   fontFamily="text"
@@ -705,8 +738,8 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                   fontWeight="regular"
                   lineHeight={100}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "hsla(217, 56%, 17%, 1)",
                         "fontFamily": "Lato",
                         "fontSize": 14,
@@ -732,8 +765,8 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                   data-blade-component="amount"
                   display="flex"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "display": "flex",
                       },
                     ]
@@ -745,8 +778,8 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                     display="flex"
                     flexDirection="row"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "alignItems": "baseline",
                           "display": "flex",
                           "flexDirection": "row",
@@ -757,14 +790,15 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                     }
                   >
                     <Text
+                      accessible={true}
                       color="feedback.text.positive.lowContrast"
                       data-blade-component="base-text"
                       fontSize={75}
                       fontWeight="bold"
                       marginRight="spacing.1"
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "color": "hsla(160, 100%, 26%, 1)",
                             "fontFamily": "Lato",
                             "fontSize": 12,
@@ -787,10 +821,11 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                       ₹
                     </Text>
                     <Text
+                      accessible={true}
                       data-blade-component="base-text"
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "color": "hsla(217, 56%, 17%, 1)",
                             "fontFamily": "Lato",
                             "fontSize": 16,
@@ -811,14 +846,15 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                       }
                     >
                       <Text
+                        accessible={true}
                         color="feedback.text.positive.lowContrast"
                         data-blade-component="base-text"
                         fontSize={100}
                         fontWeight="regular"
                         lineHeight={100}
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "color": "hsla(160, 100%, 26%, 1)",
                               "fontFamily": "Lato",
                               "fontSize": 14,
@@ -842,14 +878,15 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                         .
                       </Text>
                       <Text
+                        accessible={true}
                         color="feedback.text.positive.lowContrast"
                         data-blade-component="base-text"
                         fontSize={75}
                         fontWeight="regular"
                         marginLeft="spacing.1"
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "color": "hsla(160, 100%, 26%, 1)",
                               "fontFamily": "Lato",
                               "fontSize": 12,

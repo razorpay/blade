@@ -12,6 +12,7 @@ export const MetaConstants = {
   BaseBox: 'base-box',
   BaseText: 'base-text',
   Button: 'button',
+  Carousel: 'carousel',
   Checkbox: 'checkbox',
   CheckboxGroup: 'checkbox-group',
   CheckboxLabel: 'checkbox-label',

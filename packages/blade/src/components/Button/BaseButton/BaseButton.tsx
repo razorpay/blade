@@ -23,24 +23,31 @@ import type { BorderRadiusValues, BorderWidthValues, SpacingValues } from '~toke
 import type { Platform } from '~utils';
 import { isReactNative } from '~utils';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
+import { getStyledProps } from '~components/Box/styledProps';
 import { BaseText } from '~components/Typography/BaseText';
 import { useTheme } from '~components/BladeProvider';
 import { announce } from '~components/LiveAnnouncer';
 import type { BaseSpinnerProps } from '~components/Spinner/BaseSpinner';
 import { BaseSpinner } from '~components/Spinner/BaseSpinner';
 import BaseBox from '~components/Box/BaseBox';
-import type { DotNotationSpacingStringToken, StringChildrenType, TestID } from '~utils/types';
+import type {
+  BladeElementRef,
+  DotNotationSpacingStringToken,
+  StringChildrenType,
+  TestID,
+} from '~utils/types';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
-import type { BladeElementRef } from '~utils/useBladeInnerRef';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { usePrevious } from '~utils/usePrevious';
 import { makeSize } from '~utils/makeSize';
 import { makeBorderSize } from '~utils/makeBorderSize';
+import type { AccessibilityProps } from '~utils/makeAccessible';
 import { makeAccessible } from '~utils/makeAccessible';
 import { makeSpace } from '~utils/makeSpace';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
 import type { BladeCommonEvents } from '~components/types';
+import { throwBladeError } from '~utils/logger';
 
 type BaseButtonCommonProps = {
   href?: BaseLinkProps['href'];
@@ -60,7 +67,7 @@ type BaseButtonCommonProps = {
   }>;
   type?: 'button' | 'reset' | 'submit';
   isLoading?: boolean;
-  accessibilityLabel?: string;
+  accessibilityProps?: Partial<AccessibilityProps>;
   variant?: 'primary' | 'secondary' | 'tertiary';
   contrast?: 'low' | 'high';
   intent?: 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
@@ -317,14 +324,16 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     onKeyDown,
     type = 'button',
     children,
-    accessibilityLabel,
     testID,
     onFocus,
     onMouseLeave,
     onMouseMove,
     onPointerDown,
     onPointerEnter,
-    ...styledProps
+    accessibilityProps,
+    onTouchEnd,
+    onTouchStart,
+    ...rest
   },
   ref,
 ) => {
@@ -336,9 +345,10 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
 
   if (__DEV__) {
     if (!Icon && !childrenString?.trim()) {
-      throw new Error(
-        `[Blade: BaseButton]: At least one of icon or text is required to render a button.`,
-      );
+      throwBladeError({
+        message: 'At least one of icon or text is required to render a button.',
+        moduleName: 'BaseButton',
+      });
     }
   }
 
@@ -404,7 +414,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       accessibilityProps={{
         ...makeAccessible({
           role: isLink ? 'link' : 'button',
-          label: accessibilityLabel,
+          ...accessibilityProps,
         }),
       }}
       isLoading={isLoading}
@@ -432,13 +442,15 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       onPointerDown={onPointerDown}
       onPointerEnter={onPointerEnter}
       onKeyDown={onKeyDown}
+      onTouchStart={onTouchStart}
+      onTouchEnd={onTouchEnd}
       type={type}
       borderWidth={borderWidth}
       borderRadius={borderRadius}
       motionDuration={motionDuration}
       motionEasing={motionEasing}
       {...metaAttribute({ name: MetaConstants.Button, testID })}
-      {...styledProps}
+      {...getStyledProps(rest)}
     >
       {isLoading ? (
         <BaseBox

@@ -1,12 +1,12 @@
 import { TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
-import type { SelectChevronIconProps } from './SelectChevronIcon.web';
+import type { SelectChevronIconProps } from './types';
 import { ChevronDownIcon, ChevronUpIcon } from '~components/Icons';
 
 const StyledChevronIconContainer = styled(TouchableOpacity)((_props) => ({
   display: 'flex',
   justifyContent: 'center',
-  height: '100%',
+  margin: 'auto',
 }));
 
 const SelectChevronIcon = (props: SelectChevronIconProps): React.ReactElement => {
@@ -21,7 +21,7 @@ const SelectChevronIcon = (props: SelectChevronIconProps): React.ReactElement =>
         display={props.isOpen ? 'flex' : 'none'}
         color="surface.text.normal.lowContrast"
         size="medium"
-      />{' '}
+      />
     </StyledChevronIconContainer>
   );
 };

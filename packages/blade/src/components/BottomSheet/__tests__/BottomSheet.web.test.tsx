@@ -3,7 +3,7 @@
 import React from 'react';
 import userEvents from '@testing-library/user-event';
 import { mockViewport } from 'jsdom-testing-mocks';
-import { fireEvent, within } from '@testing-library/react';
+import { fireEvent, waitFor, within } from '@testing-library/react';
 import { BottomSheet, BottomSheetHeader, BottomSheetBody, BottomSheetFooter } from '../BottomSheet';
 import { Counter } from '../../Counter';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
@@ -127,7 +127,7 @@ describe('<BottomSheet />', () => {
     expect(queryByText('BottomSheet body')).toBeInTheDocument();
     await user.click(queryByTestId('bottomsheet-backdrop')!);
     await sleep(250);
-    expect(queryByText('BottomSheet body')).not.toBeInTheDocument();
+    await waitFor(() => expect(queryByText('BottomSheet body')).not.toBeInTheDocument());
     mockConsoleError.mockRestore();
   });
 
@@ -161,12 +161,10 @@ describe('<BottomSheet />', () => {
 
     expect(queryByText('BottomSheet body')).not.toBeInTheDocument();
     await user.click(getByRole('button', { name: 'Open' }));
-    await sleep(250);
-    expect(queryByText('BottomSheet body')).toBeInTheDocument();
+    await waitFor(() => expect(queryByText('BottomSheet body')).toBeInTheDocument());
     // for some reason userEvent.press didn't worked
     fireEvent.click(getByRole('button', { name: 'Close' }));
-    await sleep(250);
-    expect(queryByText('BottomSheet body')).not.toBeInTheDocument();
+    await waitFor(() => expect(queryByText('BottomSheet body')).not.toBeInTheDocument());
     mockConsoleError.mockRestore();
   });
 
@@ -184,6 +182,24 @@ describe('<BottomSheet />', () => {
     };
     const { queryByText } = renderWithTheme(<Example />);
     expect(queryByText('BottomSheet body')).toBeInTheDocument();
+    mockConsoleError.mockRestore();
+  });
+
+  it('should render bottom sheet with custom zIndex', () => {
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
+
+    const Example = (): React.ReactElement => {
+      return (
+        <BottomSheet isOpen={true} zIndex={425}>
+          <BottomSheetBody>
+            <Text>BottomSheet body</Text>
+          </BottomSheetBody>
+        </BottomSheet>
+      );
+    };
+    const { queryByText, queryByTestId } = renderWithTheme(<Example />);
+    expect(queryByText('BottomSheet body')).toBeInTheDocument();
+    expect(queryByTestId('bottomsheet-surface')).toHaveStyle({ 'z-index': 425 });
     mockConsoleError.mockRestore();
   });
 
@@ -205,12 +221,12 @@ describe('<BottomSheet />', () => {
         </Dropdown>
       );
     };
-    const { queryByTestId, getByRole } = renderWithTheme(<Example />);
+    const { queryByTestId, getByRole, getByLabelText } = renderWithTheme(<Example />);
 
     // open / close by clicking the select
     expect(queryByTestId('bottomsheet-body')).not.toBeVisible();
-    expect(getByRole('combobox', { name: 'Select Action' })).toBeInTheDocument();
-    await user.click(getByRole('combobox', { name: 'Select Action' }));
+    expect(getByLabelText('Select Action')).toBeInTheDocument();
+    await user.click(getByLabelText('Select Action'));
     await sleep(250);
     expect(queryByTestId('bottomsheet-body')).toBeVisible();
     await user.click(queryByTestId('bottomsheet-backdrop')!);
@@ -218,21 +234,21 @@ describe('<BottomSheet />', () => {
     expect(queryByTestId('bottomsheet-body')).not.toBeVisible();
 
     // close by selecting an element & assert the select's value
-    await user.click(getByRole('combobox', { name: 'Select Action' }));
+    await user.click(getByLabelText('Select Action'));
     await sleep(250);
     expect(queryByTestId('bottomsheet-body')).toBeVisible();
     await user.click(getByRole('option', { name: 'Settings' }));
     await sleep(250);
-    expect(getByRole('combobox', { name: 'Select Action' })).toHaveTextContent('Settings');
+    expect(getByLabelText('Select Action')).toHaveTextContent('Settings');
     expect(queryByTestId('bottomsheet-body')).not.toBeVisible();
 
     // check that cancelling should not update select's value
-    await user.click(getByRole('combobox', { name: 'Select Action' }));
+    await user.click(getByLabelText('Select Action'));
     await sleep(250);
     expect(queryByTestId('bottomsheet-body')).toBeVisible();
     await user.click(getByRole('button', { name: /Close/i })!);
     await sleep(250);
-    expect(getByRole('combobox', { name: 'Select Action' })).toHaveTextContent('Settings');
+    expect(getByLabelText('Select Action')).toHaveTextContent('Settings');
     expect(queryByTestId('bottomsheet-body')).not.toBeVisible();
     mockConsoleError.mockRestore();
   });
@@ -256,9 +272,11 @@ describe('<BottomSheet />', () => {
         </Dropdown>
       );
     };
-    const { queryByTestId, getByRole } = renderWithTheme(<Example />);
+    const { queryByTestId, getByRole, getByLabelText, queryAllByLabelText } = renderWithTheme(
+      <Example />,
+    );
 
-    const selectInput = getByRole('combobox', { name: 'Select Fruit' });
+    const selectInput = getByLabelText('Select Fruit');
 
     // open the dropdown
     expect(queryByTestId('bottomsheet-body')).not.toBeVisible();
@@ -271,25 +289,27 @@ describe('<BottomSheet />', () => {
     expect(selectInput).toHaveTextContent('Select Option');
 
     // select multiple elements
+    expect(queryAllByLabelText('Close Apple tag')?.[0]).toBeFalsy();
     await user.click(getByRole('option', { name: 'Apple' }));
-    expect(selectInput).toHaveTextContent('Apple');
+    expect(queryAllByLabelText('Close Apple tag')[0]).toBeInTheDocument();
     await user.click(getByRole('option', { name: 'Orange' }));
-    expect(selectInput).toHaveTextContent('2 items selected');
-    await user.click(getByRole('option', { name: 'Banana' }));
-    expect(selectInput).toHaveTextContent('3 items selected');
+    expect(queryAllByLabelText('Close Apple tag')[0]).toBeInTheDocument();
+    expect(queryAllByLabelText('Close Orange tag')[0]).toBeInTheDocument();
 
     // close the sheet
     await user.click(getByRole('button', { name: /Close/i })!);
     expect(queryByTestId('bottomsheet-body')).not.toBeVisible();
 
-    // asssert the selected items
-    expect(selectInput).toHaveTextContent('3 items selected');
+    expect(queryAllByLabelText('Close Apple tag')[0]).toBeInTheDocument();
+    expect(queryAllByLabelText('Close Orange tag')[0]).toBeInTheDocument();
 
     // open again and ensure the previously selected elements are there
     await user.click(selectInput);
     await sleep(250);
     expect(queryByTestId('bottomsheet-body')).toBeVisible();
-    expect(selectInput).toHaveTextContent('3 items selected');
+    expect(queryAllByLabelText('Close Apple tag')[0]).toBeInTheDocument();
+    expect(queryAllByLabelText('Close Orange tag')[0]).toBeInTheDocument();
+
     expect(
       within(getByRole('option', { name: 'Apple' })).getByRole('checkbox', { hidden: true }),
     ).toBeChecked();
@@ -298,12 +318,12 @@ describe('<BottomSheet />', () => {
     ).toBeChecked();
     expect(
       within(getByRole('option', { name: 'Banana' })).getByRole('checkbox', { hidden: true }),
-    ).toBeChecked();
+    ).not.toBeChecked();
     expect(
       within(getByRole('option', { name: 'Avocado' })).getByRole('checkbox', { hidden: true }),
     ).not.toBeChecked();
     mockConsoleError.mockRestore();
-  });
+  }, 10000);
 
   test('BottomSheetHeader trailing should not allow any random component', () => {
     const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
@@ -315,7 +335,7 @@ describe('<BottomSheet />', () => {
       );
     };
     expect(() => renderWithTheme(<Example />)).toThrow(
-      '[Blade Header]: Only one of `Button, Badge, Link, Text, Amount` component is accepted as trailing',
+      '[Blade: Header]: Only one of `Button, Badge, Link, Text, Amount` component is accepted as trailing',
     );
     mockConsoleError.mockRestore();
   });
@@ -335,7 +355,7 @@ describe('<BottomSheet />', () => {
 
     expect(console.warn).toHaveBeenCalledWith(
       expect.stringContaining(
-        '[Blade Header]: Do not pass "size" to "Badge" while inside Header trailing, because we override it.',
+        '[Blade: Header]: Do not pass "size" to "Badge" while inside Header trailing, because we override it.',
       ),
     );
 

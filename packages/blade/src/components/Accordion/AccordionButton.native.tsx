@@ -16,6 +16,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
 import type { IconProps } from '~components/Icons';
 import { makeAccessible } from '~utils/makeAccessible';
+import { throwBladeError } from '~utils/logger';
 
 const _AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps): ReactElement => {
   const { onExpandChange, isExpanded, collapsibleBodyId } = useCollapsible();
@@ -81,7 +82,10 @@ const _AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps)
 
     if (__DEV__) {
       if (_index && _icon) {
-        throw new Error(`[Blade: Accordion]: showNumberPrefix and icon shouldn't be used together`);
+        throwBladeError({
+          message: "showNumberPrefix and icon shouldn't be used together",
+          moduleName: 'Accordion',
+        });
       }
     }
 

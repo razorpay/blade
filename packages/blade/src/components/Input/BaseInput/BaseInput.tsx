@@ -12,6 +12,7 @@ import { StyledBaseInput } from './StyledBaseInput';
 import { BaseInputVisuals } from './BaseInputVisuals';
 import { BaseInputWrapper } from './BaseInputWrapper';
 import { BaseInputTagSlot } from './BaseInputTagSlot';
+import type { InputWrapperRef } from './types';
 import { FormHint, FormLabel } from '~components/Form';
 import type { IconComponent } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
@@ -27,10 +28,11 @@ import type {
   FormInputHandleOnClickEvent,
   FormInputHandleOnKeyDownEvent,
 } from '~components/Form/FormTypes';
-import type { TestID } from '~utils/types';
+import type { BladeElementRef, ContainerElementType, TestID } from '~utils/types';
 import { makeSize } from '~utils/makeSize';
 import type { AriaAttributes } from '~utils/makeAccessible';
 import { makeAccessible } from '~utils/makeAccessible';
+import { throwBladeError } from '~utils/logger';
 
 type CommonAutoCompleteSuggestionTypes =
   | 'none'
@@ -232,16 +234,18 @@ type BaseInputCommonProps = FormInputLabelProps &
      * true if popup is in expanded state
      */
     isPopupExpanded?: boolean;
+    setInputWrapperRef?: (node: ContainerElementType) => void;
     /**
      * sets the autocapitalize behavior for the input
      */
     autoCapitalize?: 'none' | 'sentences' | 'words' | 'characters';
 
     /**
-     * Removes the height restriction from input.
+     * Sets different height restriction for tag-based inputs
      * Unlike as="textarea" prop, this does not make input render as textarea element while increasing height.
      */
-    isMultiline?: boolean;
+    maxTagRows?: 'single' | 'multiple' | 'expandable';
+
     /**
      * A slot for adding tags to input
      */
@@ -363,13 +367,11 @@ const useTags = (
 
   const onTagLeft = (): void => {
     if (activeTagIndex < 0) {
-      console.log('setting based on visible tags count', { visibleTagsCountRef, activeTagIndex });
       setActiveTagIndex?.(visibleTagsCountRef.current - 1);
     }
 
     if (activeTagIndex > 0) {
       setActiveTagIndex?.(activeTagIndex - 1);
-      console.log('setting based on active tags index');
     }
   };
 
@@ -381,7 +383,7 @@ const useTags = (
 
   const onTagRemove = (): void => {
     if (activeTagIndex >= 0 && activeTagIndex < visibleTagsCountRef.current && tags) {
-      tags[activeTagIndex].props.onDismiss();
+      tags[activeTagIndex].props.onDismiss({ tagIndex: activeTagIndex });
     }
   };
 
@@ -443,9 +445,10 @@ const useInput = ({
 } => {
   if (__DEV__) {
     if (value && defaultValue) {
-      throw new Error(
-        `[Blade: Input]: Either 'value' or 'defaultValue' shall be passed. This decides if the input field is controlled or uncontrolled`,
-      );
+      throwBladeError({
+        message: `Either 'value' or 'defaultValue' shall be passed. This decides if the input field is controlled or uncontrolled`,
+        moduleName: 'Input',
+      });
     }
   }
 
@@ -647,7 +650,7 @@ const getDescribedByElementId = ({
   return '';
 };
 
-export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
+export const BaseInput = React.forwardRef<BladeElementRef, BaseInputProps>(
   (
     {
       as = 'input',
@@ -700,21 +703,32 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
       hasPopup,
       popupId,
       isPopupExpanded,
-      isMultiline,
+      maxTagRows,
       shouldIgnoreBlurAnimation,
       setShouldIgnoreBlurAnimation,
       autoCapitalize,
+      setInputWrapperRef,
       testID,
       ...styledProps
     },
     ref,
   ) => {
     const { theme } = useTheme();
+    const inputWrapperRef: InputWrapperRef = React.useRef(null);
     const { onInputKeydownTagHandler, visibleTagsCountRef } = useTags(
       tags,
       activeTagIndex,
       setActiveTagIndex,
     );
+    const [showAllTagsWithAnimation, setShowAllTagsWithAnimation] = React.useState(false);
+    const isReactNative = getPlatformType() === 'react-native';
+
+    React.useEffect(() => {
+      if (showAllTags) {
+        setShowAllTagsWithAnimation(true);
+      }
+    }, [showAllTags]);
+
     const {
       handleOnFocus,
       handleOnChange,
@@ -770,16 +784,16 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
         autoCompleteSuggestionType &&
         !autoCompleteSuggestionTypeValues.includes(autoCompleteSuggestionType)
       ) {
-        throw new Error(
-          `[Blade: Input]: Expected autoCompleteSuggestionType to be one of ${autoCompleteSuggestionTypeValues.join(
+        throwBladeError({
+          message: `Expected autoCompleteSuggestionType to be one of ${autoCompleteSuggestionTypeValues.join(
             ', ',
           )} but received ${autoCompleteSuggestionType}`,
-        );
+          moduleName: 'Input',
+        });
       }
     }
 
     const isTextArea = as === 'textarea';
-    const isReactNative = getPlatformType() === 'react-native';
     return (
       <BaseBox {...metaAttribute({ name: componentName, testID })} {...getStyledProps(styledProps)}>
         <BaseBox
@@ -816,62 +830,75 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
             validationState={validationState}
             currentInteraction={currentInteraction}
             isLabelLeftPositioned={isLabelLeftPositioned}
+            showAllTags={showAllTags}
+            setShowAllTagsWithAnimation={setShowAllTagsWithAnimation}
+            ref={(refNode) => {
+              if (refNode) {
+                setInputWrapperRef?.(refNode);
+                inputWrapperRef.current = refNode;
+              }
+            }}
+            maxTagRows={maxTagRows}
           >
             <BaseInputVisuals leadingIcon={leadingIcon} prefix={prefix} isDisabled={isDisabled} />
             <BaseInputTagSlot
+              renderAs={as}
               tags={tags}
-              showAllTags={showAllTags}
+              showAllTags={showAllTagsWithAnimation}
               setFocusOnInput={() => {
-                if (ref && 'current' in ref) {
+                if (ref && !isReactNative && 'current' in ref) {
                   ref.current?.focus();
                 }
               }}
               visibleTagsCountRef={visibleTagsCountRef}
               handleOnClick={handleOnClick}
               setShouldIgnoreBlurAnimation={setShouldIgnoreBlurAnimation}
-              isMultiline={isMultiline}
-            />
-            <StyledBaseInput
-              as={isReactNative ? undefined : as}
-              id={inputId}
-              ref={ref as any}
-              name={name}
-              type={type}
-              defaultValue={defaultValue}
-              value={value}
-              placeholder={placeholder}
-              isDisabled={isDisabled}
-              validationState={validationState}
-              isRequired={_isRequired}
-              handleOnFocus={handleOnFocus}
-              handleOnChange={handleOnChange}
-              handleOnBlur={handleOnBlur}
-              handleOnSubmit={handleOnSubmit}
-              handleOnInput={handleOnInput}
-              handleOnKeyDown={handleOnKeyDown}
-              handleOnClick={handleOnClick}
-              leadingIcon={leadingIcon}
-              prefix={prefix}
-              interactionElement={interactionElement}
-              suffix={suffix}
-              trailingIcon={trailingIcon}
-              maxCharacters={maxCharacters}
-              textAlign={textAlign}
-              // eslint-disable-next-line jsx-a11y/no-autofocus
-              autoFocus={autoFocus}
-              keyboardReturnKeyType={keyboardReturnKeyType}
-              keyboardType={keyboardType}
-              autoCompleteSuggestionType={autoCompleteSuggestionType}
-              accessibilityProps={accessibilityProps}
-              currentInteraction={currentInteraction}
-              setCurrentInteraction={setCurrentInteraction}
-              numberOfLines={numberOfLines}
-              isTextArea={isTextArea || isMultiline}
-              hasPopup={hasPopup}
-              shouldIgnoreBlurAnimation={shouldIgnoreBlurAnimation}
-              autoCapitalize={autoCapitalize}
-              {...metaAttribute({ name: MetaConstants.StyledBaseInput })}
-            />
+              maxTagRows={maxTagRows}
+              inputWrapperRef={inputWrapperRef}
+            >
+              <StyledBaseInput
+                as={isReactNative ? undefined : as}
+                id={inputId}
+                ref={ref as any}
+                name={name}
+                type={type}
+                defaultValue={defaultValue}
+                value={value}
+                placeholder={placeholder}
+                isDisabled={isDisabled}
+                validationState={validationState}
+                isRequired={_isRequired}
+                handleOnFocus={handleOnFocus}
+                handleOnChange={handleOnChange}
+                handleOnBlur={handleOnBlur}
+                handleOnSubmit={handleOnSubmit}
+                handleOnInput={handleOnInput}
+                handleOnKeyDown={handleOnKeyDown}
+                handleOnClick={handleOnClick}
+                leadingIcon={leadingIcon}
+                prefix={prefix}
+                interactionElement={interactionElement}
+                suffix={suffix}
+                trailingIcon={trailingIcon}
+                maxCharacters={maxCharacters}
+                textAlign={textAlign}
+                // eslint-disable-next-line jsx-a11y/no-autofocus
+                autoFocus={autoFocus}
+                keyboardReturnKeyType={keyboardReturnKeyType}
+                keyboardType={keyboardType}
+                autoCompleteSuggestionType={autoCompleteSuggestionType}
+                accessibilityProps={accessibilityProps}
+                currentInteraction={currentInteraction}
+                setCurrentInteraction={setCurrentInteraction}
+                numberOfLines={numberOfLines}
+                isTextArea={isTextArea || maxTagRows === 'multiple' || maxTagRows === 'expandable'}
+                hasPopup={hasPopup}
+                hasTags={!!(tags && tags.length > 0)}
+                shouldIgnoreBlurAnimation={shouldIgnoreBlurAnimation}
+                autoCapitalize={autoCapitalize}
+                {...metaAttribute({ name: MetaConstants.StyledBaseInput })}
+              />
+            </BaseInputTagSlot>
             <BaseInputVisuals
               interactionElement={interactionElement}
               suffix={suffix}

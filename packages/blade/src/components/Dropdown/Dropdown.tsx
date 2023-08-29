@@ -12,6 +12,8 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { isReactNative } from '~utils';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
+import { throwBladeError } from '~utils/logger';
+import type { ContainerElementType } from '~utils/types';
 
 const validDropdownChildren = [
   componentIds.triggers.SelectInput,
@@ -76,6 +78,11 @@ const _Dropdown = ({
   // keep track if dropdown contains bottomsheet
   const [dropdownHasBottomSheet, setDropdownHasBottomSheet] = React.useState(false);
 
+  /**
+   * In inputs, actual input is smaller than the visible input wrapper.
+   * You can set this reference in such cases so floating ui calculations happen correctly
+   * */
+  const triggererWrapperRef = React.useRef<ContainerElementType>(null);
   const triggererRef = React.useRef<HTMLButtonElement>(null);
   const actionListItemRef = React.useRef<HTMLDivElement>(null);
   const dropdownTriggerer = React.useRef<DropdownContextType['dropdownTriggerer']>();
@@ -109,11 +116,12 @@ const _Dropdown = ({
     if (React.isValidElement(child)) {
       if (__DEV__) {
         if (!validDropdownChildren.includes(getComponentId(child) ?? '')) {
-          throw new Error(
-            `[Dropdown]: Dropdown can only have one of following elements as children - \n\n ${validDropdownChildren.join(
+          throwBladeError({
+            message: `Dropdown can only have one of following elements as children - \n\n ${validDropdownChildren.join(
               ', ',
             )} \n\n Check out: https://blade.razorpay.com/?path=/story/components-dropdown`,
-          );
+            moduleName: 'Dropdown',
+          });
         }
       }
 
@@ -153,6 +161,7 @@ const _Dropdown = ({
       setIsKeydownPressed,
       dropdownBaseId,
       triggererRef,
+      triggererWrapperRef,
       actionListItemRef,
       selectionType,
       hasFooterAction,
@@ -206,10 +215,7 @@ const _Dropdown = ({
           return;
         }
 
-        console.log({ dropdown, target, isInside: dropdown.contains(target) });
-
         if (!dropdown.contains(target) && !isTagDismissedRef.current?.value) {
-          console.log('this close?');
           close();
         }
 

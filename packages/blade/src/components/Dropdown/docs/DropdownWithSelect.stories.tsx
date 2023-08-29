@@ -3,7 +3,7 @@ import type { ComponentStory, Meta } from '@storybook/react';
 import { Dropdown, DropdownFooter, DropdownHeader, DropdownOverlay } from '..';
 import {
   getSimpleSelectCode,
-  WithBottomAlignedSelectStory,
+  WithAutoPositioningSelectStory,
   WithControlledMultiSelectStory,
   WithControlledSelectStory,
   WithHeaderFooterScroll,
@@ -109,10 +109,10 @@ export const WithRefUsage = (): React.ReactElement => {
   );
 };
 
-export const WithBottomAlignedSelect = (): React.ReactElement => {
+export const WithAutoPositioning = (): React.ReactElement => {
   return (
     <Sandbox padding="spacing.0" editorHeight="100vh">
-      {WithBottomAlignedSelectStory}
+      {WithAutoPositioningSelectStory}
     </Sandbox>
   );
 };
@@ -190,9 +190,9 @@ InternalControlledSelect.parameters = {
 // For chromatic and internal react native testing
 export const InternalMultiSelect = (): React.ReactElement => {
   return (
-    <Box padding="spacing.5" maxWidth="300px">
+    <Box padding="spacing.5">
       <Dropdown selectionType="multiple">
-        <SelectInput label="Select City" rows="3" />
+        <SelectInput label="Select City" maxRows="expandable" />
         <DropdownOverlay>
           <DropdownHeader title="Header Title" subtitle="Header subtitle" />
           <ActionList>
@@ -282,7 +282,13 @@ InternalControlledSingleSelect.parameters = {
 
 export const InternalSelect = (): React.ReactElement => {
   return (
-    <Box padding="spacing.5">
+    <Box
+      padding="spacing.5"
+      backgroundColor="surface.background.level3.lowContrast"
+      width="100%"
+      minHeight="100px"
+      overflow="scroll"
+    >
       <Dropdown selectionType="multiple">
         <SelectInput label="Select fruits" labelPosition="left" />
         <DropdownOverlay>
@@ -292,6 +298,49 @@ export const InternalSelect = (): React.ReactElement => {
           </ActionList>
         </DropdownOverlay>
       </Dropdown>
+    </Box>
+  );
+};
+
+export const InternalAutoPositioning = (): React.ReactElement => {
+  return (
+    <Box>
+      <Box
+        padding="spacing.5"
+        backgroundColor="surface.background.level3.lowContrast"
+        width="100%"
+        minHeight="100px"
+        overflow="scroll"
+      >
+        <Dropdown selectionType="multiple">
+          <SelectInput label="Select fruits" labelPosition="left" />
+          <DropdownOverlay>
+            <ActionList surfaceLevel={3}>
+              <ActionListItem title="Apples" value="Apples" />
+              <ActionListItem title="Appricots" value="Appricots" />
+            </ActionList>
+          </DropdownOverlay>
+        </Dropdown>
+      </Box>
+      <Box
+        padding="spacing.5"
+        backgroundColor="surface.background.level3.lowContrast"
+        width="100%"
+        position="fixed"
+        bottom="spacing.0"
+        minHeight="100px"
+        overflow="scroll"
+      >
+        <Dropdown selectionType="multiple">
+          <SelectInput label="Select fruits" labelPosition="left" />
+          <DropdownOverlay>
+            <ActionList surfaceLevel={3}>
+              <ActionListItem title="Apples" value="Apples" />
+              <ActionListItem title="Appricots" value="Appricots" />
+            </ActionList>
+          </DropdownOverlay>
+        </Dropdown>
+      </Box>
     </Box>
   );
 };

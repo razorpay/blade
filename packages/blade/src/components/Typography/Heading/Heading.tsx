@@ -9,6 +9,7 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { Theme } from '~components/BladeProvider';
 import { isReactNative } from '~utils';
 import type { TestID } from '~utils/types';
+import { throwBladeError } from '~utils/logger';
 
 type HeadingVariant = 'regular' | 'subheading';
 
@@ -105,14 +106,16 @@ const getProps = <T extends { variant: HeadingVariant }>({
   } else if (variant === 'subheading') {
     if (__DEV__) {
       if (weight === 'regular') {
-        throw new Error(
-          `[Blade: Heading]: weight cannot be 'regular' when variant is 'subheading'`,
-        );
+        throwBladeError({
+          moduleName: 'Heading',
+          message: `weight cannot be 'regular' when variant is 'subheading'`,
+        });
       }
       if (size) {
-        throw new Error(
-          `[Blade: Heading]: size prop cannot be added when variant is 'subheading'. Use variant 'regular' or remove size prop`,
-        );
+        throwBladeError({
+          moduleName: 'Heading',
+          message: `size prop cannot be added when variant is 'subheading'. Use variant 'regular' or remove size prop`,
+        });
       }
     }
     props.fontSize = 75;

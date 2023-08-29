@@ -73,7 +73,7 @@ const StyledIconButton = React.forwardRef<HTMLButtonElement, StyledIconButtonPro
   ): ReactElement => (
     <StyledButton
       ref={ref}
-      onClick={onClick}
+      onClick={castWebType(onClick)}
       contrast={contrast}
       type="button"
       onBlur={onBlur}
