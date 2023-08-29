@@ -3,7 +3,7 @@
 import React from 'react';
 import userEvents from '@testing-library/user-event';
 import { mockViewport } from 'jsdom-testing-mocks';
-import { fireEvent, within } from '@testing-library/react';
+import { fireEvent, waitFor, within } from '@testing-library/react';
 import { BottomSheet, BottomSheetHeader, BottomSheetBody, BottomSheetFooter } from '../BottomSheet';
 import { Counter } from '../../Counter';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
@@ -161,12 +161,10 @@ describe('<BottomSheet />', () => {
 
     expect(queryByText('BottomSheet body')).not.toBeInTheDocument();
     await user.click(getByRole('button', { name: 'Open' }));
-    await sleep(250);
-    expect(queryByText('BottomSheet body')).toBeInTheDocument();
+    await waitFor(() => expect(queryByText('BottomSheet body')).toBeInTheDocument());
     // for some reason userEvent.press didn't worked
     fireEvent.click(getByRole('button', { name: 'Close' }));
-    await sleep(250);
-    expect(queryByText('BottomSheet body')).not.toBeInTheDocument();
+    await waitFor(() => expect(queryByText('BottomSheet body')).not.toBeInTheDocument());
     mockConsoleError.mockRestore();
   });
 
