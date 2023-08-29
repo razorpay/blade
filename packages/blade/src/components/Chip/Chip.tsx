@@ -45,6 +45,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
   const groupProps = useChipGroupContext();
   const isInsideGroup = !isEmpty(groupProps);
   const [isPressed, setIsPressed] = React.useState(false);
+  const [isHovered, setIsHovered] = React.useState(false);
 
   if (__DEV__) {
     if (!isInsideGroup) {
@@ -94,6 +95,16 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
   const handlePointerPressedOut = React.useCallback(() => {
     if (_isDisabled) return;
     setIsPressed(false);
+  }, [_isDisabled]);
+
+  const handleMouseEnter = React.useCallback(() => {
+    if (_isDisabled) return;
+    setIsHovered(true);
+  }, [_isDisabled]);
+
+  const handleMouseLeave = React.useCallback(() => {
+    if (_isDisabled) return;
+    setIsHovered(false);
   }, [_isDisabled]);
 
   const handleKeyboardPressedIn = React.useCallback(
@@ -151,6 +162,8 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
         onKeyUp={handleKeyboardPressedOut}
         inputProps={isReactNative() ? inputProps : {}}
         style={{ cursor: _isDisabled ? 'not-allowed' : 'pointer' }}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
       >
         <BaseBox display="flex" flexDirection="column">
           <BaseBox display="flex" alignItems="center" flexDirection="row">
@@ -173,7 +186,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
                 justifyContent="center"
                 alignItems="center"
                 overflow="hidden"
-                backgroundColor={chipBackgroundColor}
+                backgroundColor={isHovered ? 'transparent' : chipBackgroundColor}
                 borderRadius="max"
                 borderWidth={['xsmall', 'small'].includes(_size) ? 'thinner' : 'thin'}
                 paddingLeft={
