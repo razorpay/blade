@@ -6,7 +6,7 @@ import { ChipGroup as ChipGroupComponent } from './ChipGroup';
 import { Chip as ChipComponent } from './Chip';
 import {
   PaymentLinksIcon,
-  OffersIcon,
+  TagIcon,
   SmartphoneIcon,
   ThumbsUpIcon,
   ThumbsDownIcon,
@@ -172,7 +172,7 @@ const ChipWithIconTemplate: ComponentStory<typeof ChipComponent> = ({ children, 
         <ChipComponent value="wallet" icon={SmartphoneIcon} {...args}>
           Wallet on My App
         </ChipComponent>
-        <ChipComponent value="offers" icon={OffersIcon} {...args}>
+        <ChipComponent value="offers" icon={TagIcon} {...args}>
           Offer discounts, Pay Later & EMI options
         </ChipComponent>
       </ChipGroupComponent>
