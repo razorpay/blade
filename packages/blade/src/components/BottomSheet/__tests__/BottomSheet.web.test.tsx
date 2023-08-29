@@ -168,8 +168,6 @@ describe('<BottomSheet />', () => {
     mockConsoleError.mockRestore();
   });
 
-  // 1. Move height of baseinput to separate config
-
   it('should work with initial state as open', () => {
     const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
 
