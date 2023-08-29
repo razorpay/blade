@@ -81,7 +81,7 @@ const Page = (): React.ReactElement => {
               <Card
                 as="label"
                 accessibilityLabel="Free Tier"
-                scaleOnHover
+                shouldScaleOnHover
                 isSelected={selected === 'free'}
               >
                 <CardBody>
@@ -105,7 +105,7 @@ const Page = (): React.ReactElement => {
               <Card
                 as="label"
                 accessibilityLabel="Standard Tier"
-                scaleOnHover
+                shouldScaleOnHover
                 isSelected={selected === 'standard'}
               >
                 <CardBody>
@@ -128,7 +128,7 @@ const Page = (): React.ReactElement => {
               <Card
                 as="label"
                 accessibilityLabel="Premium Tier"
-                scaleOnHover
+                shouldScaleOnHover
                 isSelected={selected === 'premium'}
                 height="100%"
               >
@@ -234,7 +234,7 @@ export default {
       defaultValue: false,
       table: propCategory,
     },
-    scaleOnHover: {
+    shouldScaleOnHover: {
       control: {
         type: 'boolean',
       },
@@ -278,7 +278,7 @@ const CardTemplate: ComponentStory<typeof Card> = (args): React.ReactElement => 
         console.log('Hovered');
       }}
       isSelected={args.isSelected}
-      scaleOnHover={args.scaleOnHover}
+      shouldScaleOnHover={args.shouldScaleOnHover}
       href={args.href}
       target={args.target}
       accessibilityLabel={args.accessibilityLabel}
@@ -376,11 +376,11 @@ export const HoverableCard = (): React.ReactElement => {
   return (
     <Box>
       <Text marginBottom="spacing.6">
-        By passing the <Code size="medium">scaleOnHover</Code> prop, the card will scale up on
+        By passing the <Code size="medium">shouldScaleOnHover</Code> prop, the card will scale up on
         hover. (on mobile devices the interaction will happen on press and the card will scale down
         instead)
       </Text>
-      <Card scaleOnHover width={{ s: '100%', m: '400px' }}>
+      <Card shouldScaleOnHover width={{ s: '100%', m: '400px' }}>
         <CardHeader>
           <CardHeaderLeading
             title="Payment Links"
@@ -413,7 +413,7 @@ export const LinkableCard = (): React.ReactElement => {
       <Card
         href="https://razorpay.com/payment-links"
         accessibilityLabel="Payment Links"
-        scaleOnHover
+        shouldScaleOnHover
         width={{ s: '100%', m: '400px' }}
       >
         <CardHeader>
@@ -445,7 +445,7 @@ export const SelectableCard = (): React.ReactElement => {
         By passing the <Code size="medium">isSelected</Code> prop, the card will be highlighted.
       </Text>
       <Card
-        scaleOnHover
+        shouldScaleOnHover
         isSelected={isSelected}
         onClick={() => {
           setIsSelected(!isSelected);
@@ -507,7 +507,7 @@ const SingleSelectCardWeb = (): React.ReactElement => {
         <Card
           as="label"
           accessibilityLabel="Free Tier"
-          scaleOnHover
+          shouldScaleOnHover
           isSelected={selected === 'free'}
         >
           <CardBody>
@@ -531,7 +531,7 @@ const SingleSelectCardWeb = (): React.ReactElement => {
         <Card
           as="label"
           accessibilityLabel="Standard Tier"
-          scaleOnHover
+          shouldScaleOnHover
           isSelected={selected === 'standard'}
         >
           <CardBody>
@@ -554,7 +554,7 @@ const SingleSelectCardWeb = (): React.ReactElement => {
         <Card
           as="label"
           accessibilityLabel="Premium Tier"
-          scaleOnHover
+          shouldScaleOnHover
           isSelected={selected === 'premium'}
         >
           <CardBody>
@@ -599,7 +599,7 @@ const MultiSelectCardWeb = (): React.ReactElement => {
       </Text>
 
       <Box display="flex" gap="spacing.5">
-        <Card as="label" scaleOnHover isSelected={selected.includes('free')}>
+        <Card as="label" shouldScaleOnHover isSelected={selected.includes('free')}>
           <CardBody>
             <HiddenInput
               type="checkbox"
@@ -619,7 +619,7 @@ const MultiSelectCardWeb = (): React.ReactElement => {
             </Box>
           </CardBody>
         </Card>
-        <Card as="label" scaleOnHover isSelected={selected.includes('standard')}>
+        <Card as="label" shouldScaleOnHover isSelected={selected.includes('standard')}>
           <CardBody>
             <HiddenInput
               type="checkbox"
@@ -638,7 +638,7 @@ const MultiSelectCardWeb = (): React.ReactElement => {
             </Box>
           </CardBody>
         </Card>
-        <Card as="label" scaleOnHover isSelected={selected.includes('premium')}>
+        <Card as="label" shouldScaleOnHover isSelected={selected.includes('premium')}>
           <CardBody>
             <HiddenInput
               type="checkbox"
@@ -677,7 +677,7 @@ const SingleSelectCardReactNative = (): React.ReactElement => {
         <Card
           onClick={() => setSelected('free')}
           accessibilityLabel="Free Tier"
-          scaleOnHover
+          shouldScaleOnHover
           isSelected={selected === 'free'}
         >
           <CardBody>
@@ -696,7 +696,7 @@ const SingleSelectCardReactNative = (): React.ReactElement => {
         <Card
           onClick={() => setSelected('standard')}
           accessibilityLabel="Standard Tier"
-          scaleOnHover
+          shouldScaleOnHover
           isSelected={selected === 'standard'}
         >
           <CardBody>
@@ -714,7 +714,7 @@ const SingleSelectCardReactNative = (): React.ReactElement => {
         <Card
           onClick={() => setSelected('premium')}
           accessibilityLabel="Premium Tier"
-          scaleOnHover
+          shouldScaleOnHover
           isSelected={selected === 'premium'}
         >
           <CardBody>
@@ -758,7 +758,7 @@ const MultiSelectCardReactNative = (): React.ReactElement => {
           onClick={() => handleChange('free')}
           isSelected={selected.includes('free')}
           accessibilityLabel="Free Tier"
-          scaleOnHover
+          shouldScaleOnHover
         >
           <CardBody>
             <Amount marginBottom="spacing.1" value={0} currency="USD" size="heading-large-bold" />
@@ -777,7 +777,7 @@ const MultiSelectCardReactNative = (): React.ReactElement => {
           onClick={() => handleChange('standard')}
           isSelected={selected.includes('standard')}
           accessibilityLabel="Standard Tier"
-          scaleOnHover
+          shouldScaleOnHover
         >
           <CardBody>
             <Amount marginBottom="spacing.1" value={10} currency="USD" size="heading-large-bold" />
@@ -795,7 +795,7 @@ const MultiSelectCardReactNative = (): React.ReactElement => {
           onClick={() => handleChange('premium')}
           isSelected={selected.includes('premium')}
           accessibilityLabel="Premium Tier"
-          scaleOnHover
+          shouldScaleOnHover
         >
           <CardBody>
             <Amount marginBottom="spacing.1" value={20} currency="USD" size="heading-large-bold" />

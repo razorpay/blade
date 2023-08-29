@@ -3,7 +3,7 @@ import type { BaseBoxProps } from '~components/Box/BaseBox';
 type CardRootProps = {
   isSelected?: boolean;
   isFocused?: boolean;
-  scaleOnHover?: boolean;
+  shouldScaleOnHover?: boolean;
   onClick?: () => void;
   children?: React.ReactNode;
   href?: string;

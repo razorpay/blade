@@ -12,7 +12,7 @@ import { Text } from '~components/Typography';
 describe('<Card />', () => {
   it('should render a interactive Card', () => {
     const { container } = renderWithTheme(
-      <Card onClick={() => {}} scaleOnHover isSelected={true}>
+      <Card onClick={() => {}} shouldScaleOnHover isSelected={true}>
         <CardBody>Plain Card</CardBody>
       </Card>,
     );
@@ -154,7 +154,7 @@ describe('<Card />', () => {
 
       return (
         <Box>
-          <Card as="label" scaleOnHover isSelected={selected.includes('free')}>
+          <Card as="label" shouldScaleOnHover isSelected={selected.includes('free')}>
             <CardBody>
               <HiddenInput
                 type="checkbox"
@@ -166,7 +166,7 @@ describe('<Card />', () => {
               <Text>Free</Text>
             </CardBody>
           </Card>
-          <Card as="label" scaleOnHover isSelected={selected.includes('standard')}>
+          <Card as="label" shouldScaleOnHover isSelected={selected.includes('standard')}>
             <CardBody>
               <HiddenInput
                 type="checkbox"
@@ -178,7 +178,7 @@ describe('<Card />', () => {
               <Text>Standard</Text>
             </CardBody>
           </Card>
-          <Card as="label" scaleOnHover isSelected={selected.includes('premium')}>
+          <Card as="label" shouldScaleOnHover isSelected={selected.includes('premium')}>
             <CardBody>
               <HiddenInput
                 type="checkbox"

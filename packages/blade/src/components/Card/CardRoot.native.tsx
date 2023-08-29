@@ -39,7 +39,7 @@ const CardRoot = ({
   children,
   onClick,
   isSelected,
-  scaleOnHover,
+  shouldScaleOnHover,
   href,
   as,
   accessibilityLabel,
@@ -61,7 +61,7 @@ const CardRoot = ({
     };
   }, [isPressed]);
 
-  if (onClick || scaleOnHover || href) {
+  if (onClick || shouldScaleOnHover || href) {
     return (
       <AnimatedPressable
         {...makeAccessible({

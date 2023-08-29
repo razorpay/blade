@@ -109,7 +109,7 @@ export type CardProps = {
    *
    * @default false
    */
-  scaleOnHover?: boolean;
+  shouldScaleOnHover?: boolean;
   /**
    * Callback to trigger when the card is hovered
    */
@@ -141,7 +141,7 @@ const Card = ({
   onClick,
   isSelected = false,
   accessibilityLabel,
-  scaleOnHover = false,
+  shouldScaleOnHover = false,
   onHover,
   href,
   target,
@@ -171,7 +171,7 @@ const Card = ({
       <CardRoot
         as={as}
         onMouseEnter={onHover as never}
-        scaleOnHover={scaleOnHover}
+        shouldScaleOnHover={shouldScaleOnHover}
         isSelected={isSelected}
         isFocused={isFocused}
         borderRadius="medium"

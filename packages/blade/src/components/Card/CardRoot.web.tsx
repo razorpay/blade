@@ -7,7 +7,7 @@ import { makeAccessible } from '~utils/makeAccessible';
 import { useIsMobile } from '~utils/useIsMobile';
 
 const StyledCardRoot = styled(BaseBox)<CardRootProps & { isPressed: boolean; isMobile: boolean }>(
-  ({ theme, isSelected, isFocused, scaleOnHover, isPressed, isMobile }) => {
+  ({ theme, isSelected, isFocused, shouldScaleOnHover, isPressed, isMobile }) => {
     const selectedColor = isSelected ? theme.colors.brand.primary[500] : 'transparent';
     const selectedRing = `0px 0px 0px ${theme.border.width.thick}px ${selectedColor}`;
     //  focused state
@@ -29,7 +29,7 @@ const StyledCardRoot = styled(BaseBox)<CardRootProps & { isPressed: boolean; isM
 
       // Hover state for desktop only
       ...(!isMobile &&
-        scaleOnHover && {
+        shouldScaleOnHover && {
           '&:hover': {
             transform: 'scale(1.05)',
           },

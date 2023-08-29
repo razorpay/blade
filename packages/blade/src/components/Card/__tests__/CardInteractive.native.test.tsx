@@ -13,7 +13,7 @@ import { Button } from '~components/Button';
 describe('<Card />', () => {
   it('should render a interactive Card', () => {
     const { toJSON } = renderWithTheme(
-      <Card onClick={() => {}} scaleOnHover isSelected={true}>
+      <Card onClick={() => {}} shouldScaleOnHover isSelected={true}>
         <CardBody>Plain Card</CardBody>
       </Card>,
     );
