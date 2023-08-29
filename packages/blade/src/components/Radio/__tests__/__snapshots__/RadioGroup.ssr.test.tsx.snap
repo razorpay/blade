@@ -14,7 +14,7 @@ exports[`<RadioGroup /> should render with help text 2`] = `
       aria-labelledby="radio-group-7-label"
       class="BaseBox-bmPWx xrMLB"
       data-blade-component="radio-group"
-      role="group"
+      role="radiogroup"
     >
       <span
         data-blade-component="form-label"
