@@ -11,6 +11,7 @@ import { Sandbox } from '~utils/storybook/Sandbox';
 import { Divider } from '~components/Divider';
 import { isReactNative, useTheme } from '~utils';
 import { List, ListItem } from '~components/List';
+import { Link } from '~components/Link';
 
 const Page = (): React.ReactElement => {
   return (
@@ -439,5 +440,82 @@ AutoPlay.argTypes = {
     },
   },
 };
+
+const InteractiveTestimonialCard = ({
+  name,
+  quote,
+  longQuote,
+  role,
+  company,
+}: TestimonialData): React.ReactElement => {
+  return (
+    <Box display="flex" alignItems="center" padding="spacing.5" height="100%">
+      <Card
+        height="100%"
+        margin="auto"
+        shouldScaleOnHover
+        href={`https://www.google.com/search?q=${company}`}
+      >
+        <CardBody height="100%">
+          <Box height="100%" display="flex" gap="spacing.4" flexDirection="column">
+            <QuoteSvg />
+            <Box>
+              <Heading type="subtle" weight="bold" size="large">
+                {quote}
+              </Heading>
+              <Text size="medium" type="subdued" marginTop="spacing.4">
+                {longQuote}
+              </Text>
+            </Box>
+            <Divider marginY="spacing.4" />
+            <Box
+              display="flex"
+              alignItems={isReactNative() ? 'flex-start' : 'center'}
+              gap="spacing.4"
+            >
+              <Avatar name={name} />
+              <Box>
+                <Link size="large" href={`https://www.google.com/search?q=${name}`}>
+                  {name}
+                </Link>
+                <Text>
+                  <Text as="span" weight="bold" type="subdued">
+                    {company}
+                  </Text>
+                  {', '}
+                  <Text as="span" type="muted">
+                    {role}
+                  </Text>
+                </Text>
+              </Box>
+            </Box>
+          </Box>
+        </CardBody>
+      </Card>
+    </Box>
+  );
+};
+
+const InteractiveCarouselTestimonialTemplate: ComponentStory<typeof CarouselComponent> = () => {
+  return (
+    <Box margin="auto" width={{ base: '100%', m: '100%' }} padding="spacing.4">
+      <Box width="100%" height={isReactNative() ? '350px' : 'auto'}>
+        <CarouselComponent
+          visibleItems={2}
+          carouselItemAlignment="stretch"
+          accessibilityLabel="Testimonials"
+        >
+          {testimonialData.map((testimonial) => (
+            <CarouselItem key={testimonial.name}>
+              <InteractiveTestimonialCard {...testimonial} />
+            </CarouselItem>
+          ))}
+        </CarouselComponent>
+      </Box>
+    </Box>
+  );
+};
+
+export const WithInteractiveCards = InteractiveCarouselTestimonialTemplate.bind({});
 
 export default meta;

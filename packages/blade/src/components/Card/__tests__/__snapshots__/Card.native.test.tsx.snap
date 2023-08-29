@@ -9,10 +9,20 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   }
 >
   <View
+    borderRadius="medium"
     data-blade-component="card"
+    isFocused={false}
+    isSelected={false}
     style={
       [
-        {},
+        {
+          "borderRadius": 4,
+        },
+        {
+          "borderColor": "transparent",
+          "borderStyle": "solid",
+          "borderWidth": 1.5,
+        },
       ]
     }
   >
@@ -588,10 +598,20 @@ exports[`<Card /> should render a Card with Header 1`] = `
   }
 >
   <View
+    borderRadius="medium"
     data-blade-component="card"
+    isFocused={false}
+    isSelected={false}
     style={
       [
-        {},
+        {
+          "borderRadius": 4,
+        },
+        {
+          "borderColor": "transparent",
+          "borderStyle": "solid",
+          "borderWidth": 1.5,
+        },
       ]
     }
   >
@@ -1151,10 +1171,20 @@ exports[`<Card /> should render a Card without 0 padding 1`] = `
   }
 >
   <View
+    borderRadius="medium"
     data-blade-component="card"
+    isFocused={false}
+    isSelected={false}
     style={
       [
-        {},
+        {
+          "borderRadius": 4,
+        },
+        {
+          "borderColor": "transparent",
+          "borderStyle": "solid",
+          "borderWidth": 1.5,
+        },
       ]
     }
   >
@@ -1219,10 +1249,20 @@ exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
   }
 >
   <View
+    borderRadius="medium"
     data-blade-component="card"
+    isFocused={false}
+    isSelected={false}
     style={
       [
-        {},
+        {
+          "borderRadius": 4,
+        },
+        {
+          "borderColor": "transparent",
+          "borderStyle": "solid",
+          "borderWidth": 1.5,
+        },
       ]
     }
   >
@@ -1322,10 +1362,20 @@ exports[`<Card /> should render a plain Card 1`] = `
   }
 >
   <View
+    borderRadius="medium"
     data-blade-component="card"
+    isFocused={false}
+    isSelected={false}
     style={
       [
-        {},
+        {
+          "borderRadius": 4,
+        },
+        {
+          "borderColor": "transparent",
+          "borderStyle": "solid",
+          "borderWidth": 1.5,
+        },
       ]
     }
   >
