@@ -4,7 +4,7 @@ import { Heading, Text, Title } from '../Typography';
 import type { ChipGroupProps } from './ChipGroup';
 import { ChipGroup as ChipGroupComponent } from './ChipGroup';
 import { Chip as ChipComponent } from './Chip';
-import { PaymentLinksIcon, OffersIcon, SmartphoneIcon } from '~components/Icons';
+import { PaymentLinksIcon, TagIcon, SmartphoneIcon } from '~components/Icons';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
@@ -439,7 +439,7 @@ const AllChipSizesTemplate: ComponentStory<typeof ChipGroupComponent> = ({ child
               <ChipComponent value="wallet" icon={SmartphoneIcon}>
                 Wallet on My App
               </ChipComponent>
-              <ChipComponent value="offers" icon={OffersIcon}>
+              <ChipComponent value="offers" icon={TagIcon}>
                 Offer discounts, Pay Later & EMI options
               </ChipComponent>
             </ChipGroupComponent>
