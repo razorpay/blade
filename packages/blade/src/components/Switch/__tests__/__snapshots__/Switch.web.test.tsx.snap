@@ -110,8 +110,7 @@ exports[`<Switch /> should render switch 1`] = `
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c2:hover + div,
-.c2:focus + div {
+.c2:hover + div {
   background-color: hsla(216,16%,60%,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
