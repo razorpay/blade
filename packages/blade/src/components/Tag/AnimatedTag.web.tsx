@@ -40,7 +40,7 @@ const AnimatedTagContainer = styled(BaseBox)<{
   (props) => css`
     ${props.transition};
     display: inline-block;
-    max-width: 140px;
+    max-width: ${TAG_MAX_WIDTH_START};
   `,
 );
 

@@ -8,7 +8,6 @@ import Animated, {
 import styled from 'styled-components';
 import type { BaseInputWrapperProps } from './types';
 import { getInputBackgroundAndBorderStyles } from './baseInputStyles';
-import type { BaseBoxProps } from '~components/Box/BaseBox';
 import { size } from '~tokens/global';
 import { castNativeType, useTheme } from '~utils';
 
@@ -30,13 +29,16 @@ const StyledBaseInputWrapper = styled(Animated.View)<BaseInputWrapperProps>((pro
 
 const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
   HTMLDivElement,
-  BaseBoxProps & {
+  BaseInputWrapperProps & {
     showAllTags?: boolean;
     setShowAllTagsWithAnimation: (showAllTagsWithAnimation: boolean) => void;
   }
-> = ({ showAllTags, setShowAllTagsWithAnimation, ...props }, ref): React.ReactElement => {
+> = (
+  { showAllTags, setShowAllTagsWithAnimation, maxTagRows, ...props },
+  ref,
+): React.ReactElement => {
   const { theme } = useTheme();
-  const sharedHeight = useSharedValue(0); // Initial max-width value
+  const sharedHeight = useSharedValue(BASEINPUT_MIN_HEIGHT); // Initial max-width value
 
   React.useEffect(() => {
     sharedHeight.value = withTiming(
@@ -62,7 +64,10 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
 
   return (
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    <StyledBaseInputWrapper ref={ref as any} style={animatedStyle}>
+    <StyledBaseInputWrapper
+      ref={ref as unknown}
+      style={maxTagRows === 'expandable' ? animatedStyle : undefined}
+    >
       {props.children}
     </StyledBaseInputWrapper>
   );

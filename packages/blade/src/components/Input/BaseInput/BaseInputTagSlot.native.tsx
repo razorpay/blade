@@ -3,6 +3,8 @@ import { ScrollView, Text as RNText } from 'react-native';
 import styled from 'styled-components';
 import type { BaseInputTagSlotProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
+import { makeSize } from '~utils';
+import { size } from '~tokens/global';
 
 const StyledScrollView = styled(ScrollView)((_props) => {
   return {
@@ -60,25 +62,22 @@ const BaseInputTagSlot = ({
   maxTagRows,
   showAllTags,
   handleOnClick,
+  renderAs,
+  children,
 }: BaseInputTagSlotProps): React.ReactElement | null => {
-  if (!tags) {
-    return null;
-  }
-
-  const invisibleTagsCount = tags.length - 2;
-
-  if (tags.length <= 0) {
-    return null;
-  }
+  const hasTags = tags && tags.length > 0;
+  const visibleTags = maxTagRows === 'multiple' ? 6 : 2; // 2 tags * 3 rows = 6
+  const invisibleTagsCount = tags ? tags.length - visibleTags : 0;
 
   return (
     <BaseBox
-      paddingLeft="spacing.4"
-      marginY="spacing.1"
+      marginY={hasTags ? 'spacing.1' : 'spacing.0'}
       justifyContent="flex-start"
+      paddingLeft={hasTags ? 'spacing.4' : 'spacing.0'}
+      minHeight={makeSize(size['36'])}
       display="flex"
       flexDirection="row"
-      maxHeight="100px"
+      maxHeight={makeSize(size['100'])}
       flex="1"
     >
       <ScrollableTagSlotContainer
@@ -86,8 +85,8 @@ const BaseInputTagSlot = ({
         showAllTags={showAllTags}
         handleOnClick={handleOnClick}
       >
-        {showAllTags ? tags : tags.slice(0, 2)}
-        {invisibleTagsCount > 0 && !showAllTags ? (
+        {hasTags ? (showAllTags ? tags : tags.slice(0, visibleTags)) : null}
+        {hasTags && invisibleTagsCount > 0 && !showAllTags ? (
           <RNText
             onPress={() => {
               handleOnClick?.({ name: '', value: '' });
@@ -97,6 +96,9 @@ const BaseInputTagSlot = ({
             +{invisibleTagsCount} More
           </RNText>
         ) : null}
+        <BaseBox width={hasTags && renderAs === 'button' ? makeSize(size['1']) : '100%'}>
+          {children}
+        </BaseBox>
       </ScrollableTagSlotContainer>
     </BaseBox>
   );
