@@ -212,7 +212,13 @@ const BaseInputTagSlot = ({
             </Text>
           ) : null}
           {/* Giving it 1px width in button renders (e.g. selectinput) so it continues to maintain expected height but doesn't take up extra space from tags */}
-          <BaseBox width={hasTags && renderAs === 'button' ? '1px' : '100%'}>{children}</BaseBox>
+          <BaseBox
+            width={hasTags && renderAs === 'button' ? '1px' : '100%'}
+            display="inline-flex"
+            alignItems="flex-start"
+          >
+            {children}
+          </BaseBox>
         </BaseBox>
       </BaseBox>
     </BaseBox>
