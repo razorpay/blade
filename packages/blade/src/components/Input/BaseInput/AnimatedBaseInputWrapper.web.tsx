@@ -3,32 +3,28 @@ import type { FlattenSimpleInterpolation } from 'styled-components';
 import styled, { css, keyframes } from 'styled-components';
 import type { BaseInputWrapperProps } from './types';
 import { getInputBackgroundAndBorderStyles } from './baseInputStyles';
+import { BASEINPUT_WRAPPER_MIN_HEIGHT, BASEINPUT_WRAPPER_MAX_HEIGHT } from './baseInputConfig';
 import BaseBox from '~components/Box/BaseBox';
-import { motion, size } from '~tokens/global';
+import { motion } from '~tokens/global';
 import { castWebType, makeMotionTime, makeSize } from '~utils';
 import type { BladeElementRef } from '~utils/types';
-
-const BASEINPUT_MIN_HEIGHT: number = size['36'];
-const BASEINPUT_BOTTOM_LINE_HEIGHT: number = size['1'];
-const MAX_ROWS = 4;
-const BASEINPUT_MAX_HEIGHT = size['36'] * MAX_ROWS; // we don't want exact number but rough number to be able to animate correctly in height.
 
 // Define the animation keyframes
 const expandAnimation = keyframes`
   from {
-    max-height: ${makeSize(BASEINPUT_MIN_HEIGHT + BASEINPUT_BOTTOM_LINE_HEIGHT)};
+    max-height: ${makeSize(BASEINPUT_WRAPPER_MIN_HEIGHT)};
   }
   to {
-    max-height: ${makeSize(BASEINPUT_MAX_HEIGHT + BASEINPUT_BOTTOM_LINE_HEIGHT)};
+    max-height: ${makeSize(BASEINPUT_WRAPPER_MAX_HEIGHT)};
   }
 `;
 
 const collapseAnimation = keyframes`
   from {
-    max-height: ${makeSize(BASEINPUT_MAX_HEIGHT + BASEINPUT_BOTTOM_LINE_HEIGHT)};
+    max-height: ${makeSize(BASEINPUT_WRAPPER_MAX_HEIGHT)};
   }
   to {
-    max-height: ${makeSize(BASEINPUT_MIN_HEIGHT + BASEINPUT_BOTTOM_LINE_HEIGHT)};
+    max-height: ${makeSize(BASEINPUT_WRAPPER_MIN_HEIGHT)};
   }
 `;
 
@@ -44,7 +40,7 @@ const collapseTransition = css`
 
 const noTransition = css`
   animation: none;
-  max-height: ${makeSize(BASEINPUT_MAX_HEIGHT + BASEINPUT_BOTTOM_LINE_HEIGHT)};
+  max-height: ${makeSize(BASEINPUT_WRAPPER_MAX_HEIGHT)};
 `;
 
 const StyledBaseInputWrapper = styled(BaseBox)<

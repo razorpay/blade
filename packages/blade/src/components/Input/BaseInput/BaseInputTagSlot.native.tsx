@@ -2,6 +2,7 @@ import React from 'react';
 import { ScrollView, Text as RNText } from 'react-native';
 import styled from 'styled-components';
 import type { BaseInputTagSlotProps } from './types';
+import { BASEINPUT_DEFAULT_HEIGHT, BASEINPUT_WRAPPER_MAX_HEIGHT } from './baseInputConfig';
 import BaseBox from '~components/Box/BaseBox';
 import { makeSize } from '~utils';
 import { size } from '~tokens/global';
@@ -74,10 +75,10 @@ const BaseInputTagSlot = ({
       marginY={hasTags ? 'spacing.1' : 'spacing.0'}
       justifyContent="flex-start"
       paddingLeft={hasTags ? 'spacing.4' : 'spacing.0'}
-      minHeight={makeSize(size['36'])}
+      minHeight={makeSize(BASEINPUT_DEFAULT_HEIGHT)}
       display="flex"
       flexDirection="row"
-      maxHeight={makeSize(size['100'])}
+      maxHeight={makeSize(BASEINPUT_WRAPPER_MAX_HEIGHT)}
       flex="1"
     >
       <ScrollableTagSlotContainer

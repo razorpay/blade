@@ -8,14 +8,8 @@ import Animated, {
 import styled from 'styled-components';
 import type { BaseInputWrapperProps } from './types';
 import { getInputBackgroundAndBorderStyles } from './baseInputStyles';
-import { size } from '~tokens/global';
+import { BASEINPUT_WRAPPER_MAX_HEIGHT, BASEINPUT_WRAPPER_MIN_HEIGHT } from './baseInputConfig';
 import { castNativeType, useTheme } from '~utils';
-
-const BASEINPUT_BOTTOM_LINE_HEIGHT: number = size['1'];
-const MAX_ROWS = 4;
-
-const BASEINPUT_MIN_HEIGHT = (size['36'] as number) + BASEINPUT_BOTTOM_LINE_HEIGHT;
-const BASEINPUT_MAX_HEIGHT = size['36'] * MAX_ROWS + BASEINPUT_BOTTOM_LINE_HEIGHT; // we don't want exact number but rough number to be able to animate correctly in height.
 
 const StyledBaseInputWrapper = styled(Animated.View)<BaseInputWrapperProps>((props) => ({
   ...getInputBackgroundAndBorderStyles({
@@ -38,11 +32,11 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
   ref,
 ): React.ReactElement => {
   const { theme } = useTheme();
-  const sharedHeight = useSharedValue(BASEINPUT_MIN_HEIGHT); // Initial max-width value
+  const sharedHeight = useSharedValue(BASEINPUT_WRAPPER_MIN_HEIGHT); // Initial max-width value
 
   React.useEffect(() => {
     sharedHeight.value = withTiming(
-      showAllTags ? BASEINPUT_MAX_HEIGHT : BASEINPUT_MIN_HEIGHT,
+      showAllTags ? BASEINPUT_WRAPPER_MAX_HEIGHT : BASEINPUT_WRAPPER_MIN_HEIGHT,
       {
         duration: theme.motion.duration.xquick,
         easing: castNativeType(theme.motion.easing.exit.effective),

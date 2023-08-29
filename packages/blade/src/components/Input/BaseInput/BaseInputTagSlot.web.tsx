@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import type { BaseInputTagSlotProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
-import { size } from '~tokens/global';
+import { size, spacing } from '~tokens/global';
 import { makeSize } from '~utils';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 
@@ -92,10 +92,11 @@ const useTagsDisplay = (
   };
 };
 
-const TAG_HEIGHT = 20;
-const GAP = 8;
+const TAG_HEIGHT = size['20'];
+const GAP = spacing['3'];
+const MAX_TAG_ROWS = 4;
 
-const MAX_TAGSLOT_HEIGHT = TAG_HEIGHT * 4 + GAP * 4;
+const MAX_TAGSLOT_HEIGHT = TAG_HEIGHT * MAX_TAG_ROWS + GAP * MAX_TAG_ROWS;
 
 const BaseInputTagSlot = ({
   tags,

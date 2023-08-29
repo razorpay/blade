@@ -843,7 +843,7 @@ export const BaseInput = React.forwardRef<BladeElementRef, BaseInputProps>(
               tags={tags}
               showAllTags={showAllTagsWithAnimation}
               setFocusOnInput={() => {
-                if (ref && 'current' in ref) {
+                if (ref && !isReactNative && 'current' in ref) {
                   ref.current?.focus();
                 }
               }}
