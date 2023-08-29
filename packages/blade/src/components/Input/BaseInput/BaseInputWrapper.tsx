@@ -3,8 +3,8 @@ import React from 'react';
 import type { BaseInputProps } from './BaseInput';
 import { BaseInputAnimatedBorder } from './BaseInputAnimatedBorder';
 import { AnimatedBaseInputWrapper } from './AnimatedBaseInputWrapper';
-import type { ContainerElement } from './types';
 import type { ActionStates } from '~tokens/theme/theme';
+import type { ContainerElementType } from '~utils/types';
 
 type BaseInputWrapperProps = Pick<
   BaseInputProps,
@@ -19,7 +19,7 @@ type BaseInputWrapperProps = Pick<
 };
 
 const _BaseInputWrapper: React.ForwardRefRenderFunction<
-  ContainerElement,
+  ContainerElementType,
   BaseInputWrapperProps & {
     children: ReactNode;
   }

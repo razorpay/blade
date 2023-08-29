@@ -126,6 +126,11 @@ type BladeElementRef = Platform.Select<{
   native: View;
 }>;
 
+export type ContainerElementType = Platform.Select<{
+  web: HTMLDivElement;
+  native: View;
+}>;
+
 export {
   DotNotationColorStringToken,
   DotNotationMotionStringToken,

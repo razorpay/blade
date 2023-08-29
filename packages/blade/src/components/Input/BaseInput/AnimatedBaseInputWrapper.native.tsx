@@ -28,7 +28,7 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
     setShowAllTagsWithAnimation: (showAllTagsWithAnimation: boolean) => void;
   }
 > = (
-  { showAllTags, setShowAllTagsWithAnimation, maxTagRows, ...props },
+  { showAllTags, setShowAllTagsWithAnimation, children, maxTagRows, ...rest },
   ref,
 ): React.ReactElement => {
   const { theme } = useTheme();
@@ -57,12 +57,13 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
   });
 
   return (
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     <StyledBaseInputWrapper
-      ref={ref as unknown}
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ref={ref as any}
       style={maxTagRows === 'expandable' ? animatedStyle : undefined}
+      {...rest}
     >
-      {props.children}
+      {children}
     </StyledBaseInputWrapper>
   );
 };

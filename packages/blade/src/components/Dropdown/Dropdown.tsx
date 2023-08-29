@@ -13,6 +13,7 @@ import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChi
 import { isReactNative } from '~utils';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import { throwBladeError } from '~utils/logger';
+import type { ContainerElementType } from '~utils/types';
 
 const validDropdownChildren = [
   componentIds.triggers.SelectInput,
@@ -80,7 +81,7 @@ const _Dropdown = ({
    * In inputs, actual input is smaller than the visible input wrapper.
    * You can set this reference in such cases so floating ui calculations happen correctly
    * */
-  const triggererWrapperRef = React.useRef<HTMLDivElement>(null);
+  const triggererWrapperRef = React.useRef<ContainerElementType>(null);
   const triggererRef = React.useRef<HTMLButtonElement>(null);
   const actionListItemRef = React.useRef<HTMLDivElement>(null);
   const dropdownTriggerer = React.useRef<DropdownContextType['dropdownTriggerer']>();

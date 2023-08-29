@@ -14,6 +14,7 @@ import type { DropdownProps } from './types';
 
 import type { FormInputHandleOnKeyDownEvent } from '~components/Form/FormTypes';
 import { isReactNative } from '~utils';
+import type { ContainerElementType } from '~utils/types';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 const noop = (): void => {};
@@ -66,7 +67,7 @@ type DropdownContextType = {
   dropdownTriggerer?: 'SelectInput' | 'DropdownButton';
   /** ref of triggerer. Used to call focus in certain places */
   triggererRef: React.RefObject<HTMLButtonElement | null>;
-  triggererWrapperRef: React.MutableRefObject<HTMLDivElement | null>;
+  triggererWrapperRef: React.MutableRefObject<ContainerElementType | null>;
   actionListItemRef: React.RefObject<HTMLDivElement | null>;
   isTagDismissedRef: React.RefObject<{ value: boolean } | null>;
   visibleTagsCountRef: React.RefObject<{ value: number } | null>;

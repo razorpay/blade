@@ -81,7 +81,7 @@
     "types:generate-types:web": "tsc -p ./tsconfig-generate-types.web.json",
     "types:generate-types:native": "tsc -p ./tsconfig-generate-types.native.json",
     "types:typecheck:web": "tsc -p ./tsconfig-typecheck.web.json",
-    "dtypes:typecheck:native": "tsc -p ./tsconfig-typecheck.native.json",
+    "types:typecheck:native": "tsc -p ./tsconfig-typecheck.native.json",
     "types:copy-declarations:web": "copyfiles -u 1 \"src/**/*.d.ts\" build/types/web",
     "types:copy-declarations:native": "copyfiles -u 1 \"src/**/*.d.ts\" build/types/native",
     "build:generate-root-imports": "rollup -c && node ./scripts/generateRootImports.js",

@@ -1,5 +1,4 @@
 import type { Dispatch, SetStateAction } from 'react';
-import type { View } from 'react-native';
 import type { BaseInputProps } from './BaseInput';
 import type { FormInputHandleOnEvent } from '~components/Form';
 import type { ActionStates } from '~tokens/theme/theme';
@@ -7,14 +6,9 @@ import type {
   FormInputHandleOnClickEvent,
   FormInputHandleOnKeyDownEvent,
 } from '~components/Form/FormTypes';
-import type { Platform } from '~utils';
+import type { ContainerElementType } from '~utils/types';
 
-export type ContainerElement = Platform.Select<{
-  web: HTMLDivElement;
-  native: View;
-}>;
-
-export type InputWrapperRef = React.MutableRefObject<ContainerElement | null>;
+export type InputWrapperRef = React.MutableRefObject<ContainerElementType | null>;
 
 export type BaseInputTagSlotProps = {
   tags?: BaseInputProps['tags'];
@@ -37,7 +31,7 @@ export type BaseInputWrapperProps = Pick<
   isLabelLeftPositioned?: boolean;
   currentInteraction: keyof ActionStates;
   isTextArea?: boolean;
-  setShowAllTagsWithAnimation: (showAllTagsWithAnimation: boolean) => void;
+  setShowAllTagsWithAnimation?: (showAllTagsWithAnimation: boolean) => void;
   children: React.ReactNode;
 };
 
