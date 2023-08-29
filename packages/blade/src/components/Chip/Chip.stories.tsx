@@ -239,10 +239,16 @@ TextTransformationUppercase.storyName = 'Text Transformation (Uppercase)';
 export const chipRef: ComponentStory<typeof ChipComponent> = (args) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const chipRef = React.useRef<BladeElementRef>(null);
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const [value, setValue] = React.useState('');
 
   return (
     <Box gap="spacing.3" display="flex" flexDirection="column">
-      <ChipGroupComponent accessibilityLabel="Select business type" selectionType="single">
+      <ChipGroupComponent
+        accessibilityLabel="Select business type"
+        selectionType="single"
+        value={value}
+      >
         <ChipComponent ref={chipRef} value="Proprietorship" {...args}>
           Proprietorship
         </ChipComponent>
@@ -258,7 +264,7 @@ export const chipRef: ComponentStory<typeof ChipComponent> = (args) => {
           isFullWidth={true}
           onClick={() => {
             chipRef?.current?.focus();
-            chipRef?.current?.click();
+            setValue('Proprietorship');
           }}
         >
           Select Proprietorship
@@ -268,9 +274,10 @@ export const chipRef: ComponentStory<typeof ChipComponent> = (args) => {
           variant="secondary"
           onClick={() => {
             chipRef?.current?.blur();
+            setValue('');
           }}
         >
-          Remove Focus
+          Reset Selection
         </Button>
       </Box>
     </Box>
