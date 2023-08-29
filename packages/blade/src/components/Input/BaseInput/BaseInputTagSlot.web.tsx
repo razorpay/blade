@@ -2,9 +2,10 @@ import React from 'react';
 import type { CSSObject } from 'styled-components';
 import styled from 'styled-components';
 import type { BaseInputTagSlotProps } from './types';
+import { BASEINPUT_MAX_ROWS, TAG_GAP, TAG_HEIGHT } from './baseInputConfig';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
-import { size, spacing } from '~tokens/global';
+import { size } from '~tokens/global';
 import { castWebType, makeSize } from '~utils';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 
@@ -92,11 +93,7 @@ const useTagsDisplay = (
   };
 };
 
-const TAG_HEIGHT = size['20'];
-const GAP = spacing['3'];
-const MAX_TAG_ROWS = 4;
-
-const MAX_TAGSLOT_HEIGHT = TAG_HEIGHT * MAX_TAG_ROWS + GAP * MAX_TAG_ROWS;
+const MAX_TAGSLOT_HEIGHT = TAG_HEIGHT * BASEINPUT_MAX_ROWS + TAG_GAP * BASEINPUT_MAX_ROWS;
 
 const BaseInputTagSlot = ({
   tags,
@@ -146,7 +143,7 @@ const BaseInputTagSlot = ({
       justifyContent="flex-start"
       display="flex"
       flexDirection="column"
-      maxHeight={`${MAX_TAGSLOT_HEIGHT}px`}
+      maxHeight={renderAs === 'textarea' ? undefined : `${MAX_TAGSLOT_HEIGHT}px`}
       minHeight={makeSize(size['36'])}
       position="relative"
       width="100%"

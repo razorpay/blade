@@ -1,7 +1,10 @@
-import { size } from '~tokens/global';
+import { size, spacing } from '~tokens/global';
 
 const BASEINPUT_BOTTOM_LINE_HEIGHT: number = size['1'];
-const BASEINPUT_MAX_ROWS = 4;
+export const BASEINPUT_MAX_ROWS = 4;
+
+export const TAG_HEIGHT = size['20'];
+export const TAG_GAP = spacing['3'];
 
 /**
  * 36px
