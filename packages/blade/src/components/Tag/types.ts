@@ -1,6 +1,6 @@
-import { StyledPropsBlade } from '~components/Box/styledProps';
-import { IconComponent } from '~components/Icons';
-import { StringChildrenType, TestID } from '~utils/types';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
+import type { IconComponent } from '~components/Icons';
+import type { StringChildrenType, TestID } from '~utils/types';
 
 type TagProps = {
   /**
