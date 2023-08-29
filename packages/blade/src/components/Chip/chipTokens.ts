@@ -134,25 +134,21 @@ const chipColorTokens: ChipColorTokens = {
     unchecked: {
       default: 'transparent',
       hover: 'brand.gray.a50.lowContrast',
-      focus: 'brand.gray.a50.lowContrast',
       disabled: 'transparent',
     },
     none: {
       default: 'brand.primary.300',
       hover: 'brand.primary.400',
-      focused: 'brand.primary.400',
       disabled: 'brand.gray.a50.lowContrast',
     },
     positive: {
       default: 'feedback.positive.action.background.primary.default.lowContrast',
       hover: 'feedback.positive.action.background.primary.hover.lowContrast',
-      focus: 'feedback.positive.action.background.primary.focus.lowContrast',
       disabled: 'brand.gray.a50.lowContrast',
     },
     negative: {
       default: 'feedback.negative.action.background.primary.default.lowContrast',
       hover: 'feedback.negative.action.background.primary.hover.lowContrast',
-      focus: 'feedback.negative.action.background.primary.focus.lowContrast',
       disabled: 'brand.gray.a50.lowContrast',
     },
   },
@@ -164,19 +160,16 @@ const chipColorTokens: ChipColorTokens = {
     none: {
       default: 'brand.primary.500',
       hover: 'brand.primary.500',
-      focused: 'brand.primary.500',
       disabled: 'brand.gray.a100.lowContrast',
     },
     positive: {
       default: 'feedback.positive.action.border.primary.default.lowContrast',
       hover: 'feedback.positive.action.border.primary.hover.lowContrast',
-      focus: 'feedback.positive.action.border.primary.focus.lowContrast',
       disabled: 'brand.gray.a100.lowContrast',
     },
     negative: {
       default: 'feedback.negative.action.border.primary.default.lowContrast',
       hover: 'feedback.negative.action.border.primary.hover.lowContrast',
-      focus: 'feedback.negative.action.border.primary.focus.lowContrast',
       disabled: 'brand.gray.a50.lowContrast',
     },
   },
