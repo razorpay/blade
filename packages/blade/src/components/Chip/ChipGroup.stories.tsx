@@ -1,10 +1,16 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import React from 'react';
-import { Heading, Text, Title } from '../Typography';
+import { Heading, Text, Title, Code } from '../Typography';
 import type { ChipGroupProps } from './ChipGroup';
 import { ChipGroup as ChipGroupComponent } from './ChipGroup';
 import { Chip as ChipComponent } from './Chip';
-import { PaymentLinksIcon, TagIcon, SmartphoneIcon } from '~components/Icons';
+import {
+  PaymentLinksIcon,
+  TagIcon,
+  SmartphoneIcon,
+  ThumbsUpIcon,
+  ThumbsDownIcon,
+} from '~components/Icons';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
@@ -12,6 +18,9 @@ import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgType
 import iconMap from '~components/Icons/iconMap';
 import { Dropdown, DropdownButton, DropdownOverlay } from '~components/Dropdown';
 import { ActionList, ActionListItem } from '~components/ActionList';
+import type { BladeElementRef } from '~utils/types';
+import { Button } from '~components/Button';
+import { Link } from '~components/Link';
 
 const Page = (): React.ReactElement => {
   return (
@@ -25,6 +34,15 @@ const Page = (): React.ReactElement => {
         bankingTheme:
           'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?type=design&node-id=18358%3A3135&mode=design&t=FzNrQV6ZZaLoxzcj-1',
       }}
+      note={
+        <Text>
+          This story is only meant for demonstrating props of chip component. Refer to the Chip
+          story{' '}
+          <Link target="_blank" href="https://blade.razorpay.com/?path=/docs/components-chip-chip">
+            here
+          </Link>
+        </Text>
+      }
     >
       <Title>Usage</Title>
       <Sandbox showConsole editorHeight={400} editorWidthPercentage={60}>
@@ -364,7 +382,7 @@ const ControlledMultiSelectionTemplate: ComponentStory<typeof ChipGroupComponent
   const [values, setValues] = React.useState(['Automated Payment Links']);
   return (
     <Box display="flex" gap="spacing.5" flexDirection="column" minHeight="200px">
-      <Dropdown marginRight="spacing.4">
+      <Dropdown marginRight="spacing.4" selectionType="multiple">
         <DropdownButton size="small">What other capabilities are you looking for?</DropdownButton>
         <DropdownOverlay>
           <ActionList>
@@ -414,6 +432,104 @@ Disabled.args = {
   selectionType: 'single',
 };
 
+const ChipWithIconTemplate: ComponentStory<typeof ChipGroupComponent> = ({ children, ...args }) => {
+  return (
+    <Box>
+      <Text marginBottom="spacing.3" marginTop="spacing.3">
+        What other capabilities are you looking for?
+      </Text>
+
+      <ChipGroupComponent defaultValue="payment-links" {...args}>
+        <ChipComponent value="payment-links" icon={PaymentLinksIcon}>
+          Automated Payment Links
+        </ChipComponent>
+        <ChipComponent value="wallet" icon={SmartphoneIcon}>
+          Wallet on My App
+        </ChipComponent>
+        <ChipComponent value="offers" icon={TagIcon}>
+          Offer discounts, Pay Later & EMI options
+        </ChipComponent>
+      </ChipGroupComponent>
+    </Box>
+  );
+};
+
+export const ChipWithIcon = ChipWithIconTemplate.bind({});
+ChipWithIcon.storyName = 'With Icon';
+ChipWithIcon.args = {
+  selectionType: 'single',
+  accessibilityLabel: 'Choose one business type from the options below',
+};
+ChipWithIcon.parameters = {
+  controls: {
+    exclude: ['icon'],
+  },
+};
+
+const ChipIntentsTemplate: ComponentStory<typeof ChipGroupComponent> = (args) => {
+  return (
+    <Box display="flex" flexDirection="column">
+      <Text size="large" weight="bold" marginBottom="spacing.3">
+        Is the result helpful?
+      </Text>
+
+      <ChipGroupComponent defaultValue="yes" {...args}>
+        <ChipComponent intent="positive" value="yes" icon={ThumbsUpIcon}>
+          Yes
+        </ChipComponent>
+        <ChipComponent intent="negative" value="no" icon={ThumbsDownIcon}>
+          No
+        </ChipComponent>
+      </ChipGroupComponent>
+    </Box>
+  );
+};
+
+export const ChipWithIntent = ChipIntentsTemplate.bind({});
+ChipWithIntent.storyName = 'With Intent';
+ChipWithIntent.args = {
+  selectionType: 'single',
+  accessibilityLabel: 'Is the result helpful? Please select either yer or no',
+};
+ChipWithIntent.parameters = {
+  controls: {
+    exclude: ['icon'],
+  },
+};
+
+const TextTransformationTemplate: ComponentStory<typeof ChipGroupComponent> = ({
+  children,
+  ...args
+}) => {
+  const chipValues = ['Proprietorship', 'Public', 'Small Business'];
+  return (
+    <Box>
+      <Text marginBottom="spacing.3" marginTop="spacing.3">
+        Select Business type:
+      </Text>
+
+      <ChipGroupComponent defaultValue="Proprietorship" {...args}>
+        {chipValues.map((chipValue: string) => (
+          <ChipComponent key={chipValue} value={chipValue} icon={args.icon}>
+            {chipValue.toUpperCase()}
+          </ChipComponent>
+        ))}
+      </ChipGroupComponent>
+      <Text marginTop="spacing.3">
+        The text within the Chip can be transformed to uppercase by passing{' '}
+        <Code size="medium"> value.toUpperCase() </Code> as the children.
+      </Text>
+    </Box>
+  );
+};
+
+export const TextTransformationUppercase = TextTransformationTemplate.bind({});
+TextTransformationUppercase.storyName = 'Text Transformation (Uppercase)';
+TextTransformationTemplate.args = {
+  selectionType: 'single',
+  accessibilityLabel: 'Choose one business type from the options below',
+};
+
 const AllChipSizesTemplate: ComponentStory<typeof ChipGroupComponent> = ({ children, ...args }) => {
   const sizes = ['xsmall', 'small', 'medium', 'large'];
   return (
@@ -457,6 +573,57 @@ AllChipSizes.args = {
   selectionType: 'single',
 };
 AllChipSizes.parameters = {
+  controls: {
+    exclude: ['icon'],
+  },
+};
+
+export const chipRef: ComponentStory<typeof ChipGroupComponent> = (args) => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const chipRef = React.useRef<BladeElementRef>(null);
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const [value, setValue] = React.useState('');
+
+  return (
+    <Box gap="spacing.3" display="flex" flexDirection="column">
+      <ChipGroupComponent selectionType="single" value={value} {...args}>
+        <ChipComponent ref={chipRef} value="Proprietorship">
+          Proprietorship
+        </ChipComponent>
+        <ChipComponent value="Public">Public</ChipComponent>
+        <ChipComponent value="Small Business">Small Business</ChipComponent>
+      </ChipGroupComponent>
+      <Box maxWidth="400px" display="flex" flexDirection="row" gap="spacing.3">
+        <Button
+          isFullWidth={true}
+          onClick={() => {
+            chipRef?.current?.focus();
+            setValue('Proprietorship');
+          }}
+        >
+          Select Proprietorship
+        </Button>
+        <Button
+          isFullWidth={true}
+          variant="secondary"
+          onClick={() => {
+            chipRef?.current?.blur();
+            setValue('');
+          }}
+        >
+          Reset Selection
+        </Button>
+      </Box>
+    </Box>
+  );
+};
+
+chipRef.storyName = 'Chip Ref';
+chipRef.args = {
+  accessibilityLabel: 'Select one business type from the options below',
+  selectionType: 'single',
+};
+chipRef.parameters = {
   controls: {
     exclude: ['icon'],
   },
