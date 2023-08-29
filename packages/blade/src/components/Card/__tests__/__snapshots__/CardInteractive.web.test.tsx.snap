@@ -28,6 +28,7 @@ exports[`<Card /> should render a clickable Card 1`] = `
 
 .c4 {
   all: unset;
+  cursor: pointer;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -118,6 +119,7 @@ exports[`<Card /> should render a interactive Card 1`] = `
 
 .c4 {
   all: unset;
+  cursor: pointer;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -214,6 +216,7 @@ exports[`<Card /> should render a linkable Card 1`] = `
 
 .c4 {
   all: unset;
+  cursor: pointer;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -306,6 +309,7 @@ exports[`<Card /> should render a linkable Card with onClick 1`] = `
 
 .c4 {
   all: unset;
+  cursor: pointer;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
