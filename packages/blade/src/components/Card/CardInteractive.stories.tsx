@@ -2,6 +2,7 @@
 /* eslint-disable no-alert */
 import type { Meta, ComponentStory } from '@storybook/react';
 import React from 'react';
+import { SandpackCodeEditor, SandpackLayout, SandpackPreview } from '@codesandbox/sandpack-react';
 import type { CardProps } from './Card';
 import {
   CardBody,
@@ -25,8 +26,7 @@ import { VisuallyHidden } from '~components/VisuallyHidden';
 import { Amount } from '~components/Amount';
 import { castWebType, isReactNative } from '~utils';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
-import { Sandbox, SandboxProvider } from '~utils/storybook/Sandbox';
-import { SandpackCodeEditor, SandpackLayout, SandpackPreview } from '@codesandbox/sandpack-react';
+import { SandboxProvider } from '~utils/storybook/Sandbox';
 
 const Page = (): React.ReactElement => {
   return (
