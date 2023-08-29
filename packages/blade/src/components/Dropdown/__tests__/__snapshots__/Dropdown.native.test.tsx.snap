@@ -214,20 +214,9 @@ exports[`<Dropdown /> should render dropdown 1`] = `
             </View>
             <View
               currentInteraction="default"
-              data-blade-component="base-box"
-              display="flex"
-              flexDirection="row"
-              position="relative"
-              setShowAllTagsWithAnimation={[Function]}
-              showAllTags={false}
+              isTextArea={false}
               style={
                 [
-                  {
-                    "display": "flex",
-                    "flexDirection": "row",
-                    "position": "relative",
-                    "width": "100%",
-                  },
                   {
                     "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
                     "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
@@ -235,107 +224,190 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                     "borderBottomWidth": 1,
                     "borderTopLeftRadius": 2,
                     "borderTopRightRadius": 2,
+                    "display": "flex",
+                    "flexDirection": "row",
+                    "height": "auto",
+                    "position": "relative",
+                    "width": "100%",
                   },
                 ]
               }
-              width="100%"
             >
               <View
-                accessibilityRole="combobox"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": false,
-                    "expanded": false,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                collapsable={false}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
+                data-blade-component="base-box"
+                display="flex"
+                flexDirection="row"
+                justifyContent="flex-start"
+                maxHeight="145px"
+                minHeight="36px"
                 style={
-                  {
-                    "backgroundColor": "transparent",
-                    "color": "hsla(214, 18%, 69%, 1)",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Lato",
-                    "fontSize": 14,
-                    "fontStyle": "normal",
-                    "fontWeight": "400",
-                    "height": 36,
-                    "marginBottom": 0,
-                    "marginLeft": 0,
-                    "marginRight": 0,
-                    "marginTop": 0,
-                    "minHeight": 36,
-                    "opacity": 1,
-                    "paddingBottom": 8,
-                    "paddingLeft": 12,
-                    "paddingRight": 8,
-                    "paddingTop": 8,
-                    "textAlignVertical": "top",
-                    "textDecorationLine": "none",
-                    "width": "100%",
-                  }
+                  [
+                    {
+                      "display": "flex",
+                      "flexBasis": 0,
+                      "flexDirection": "row",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "justifyContent": "flex-start",
+                      "marginBottom": 0,
+                      "marginTop": 0,
+                      "maxHeight": 145,
+                      "minHeight": 36,
+                      "paddingLeft": 0,
+                    },
+                  ]
                 }
               >
-                <Text
-                  accessible={true}
-                  color="surface.text.placeholder.lowContrast"
-                  data-blade-component="text"
-                  fontFamily="text"
-                  fontSize={100}
-                  fontStyle="normal"
-                  fontWeight="regular"
-                  lineHeight={100}
-                  numberOfLines={1}
+                <RCTScrollView
+                  contentContainerStyle={
+                    {
+                      "flexWrap": "wrap",
+                      "position": "relative",
+                    }
+                  }
+                  horizontal={true}
+                  onContentSizeChange={[Function]}
+                  onScrollBeginDrag={[Function]}
+                  onScrollEndDrag={[Function]}
+                  showsHorizontalScrollIndicator={true}
                   style={
                     [
                       {
-                        "color": "hsla(214, 18%, 69%, 1)",
-                        "fontFamily": "Lato",
-                        "fontSize": 14,
-                        "fontStyle": "normal",
-                        "fontWeight": "400",
-                        "lineHeight": 20,
-                        "marginBottom": 0,
-                        "marginLeft": 0,
-                        "marginRight": 0,
-                        "marginTop": 0,
-                        "paddingBottom": 0,
-                        "paddingLeft": 0,
-                        "paddingRight": 0,
-                        "paddingTop": 0,
-                        "textAlign": "left",
-                        "textDecorationLine": "none",
+                        "display": "flex",
+                        "flexDirection": "column",
                       },
                     ]
                   }
-                  textAlign="left"
                 >
-                  Select Option
-                </Text>
+                  <View>
+                    <View
+                      data-blade-component="base-box"
+                      height="100%"
+                      onTouchEndCapture={[Function]}
+                      position="absolute"
+                      style={
+                        [
+                          {
+                            "height": "100%",
+                            "position": "absolute",
+                            "width": "100%",
+                          },
+                        ]
+                      }
+                      width="100%"
+                    />
+                    <View
+                      data-blade-component="base-box"
+                      style={
+                        [
+                          {
+                            "width": "100%",
+                          },
+                        ]
+                      }
+                      width="100%"
+                    >
+                      <View
+                        accessibilityRole="combobox"
+                        accessibilityState={
+                          {
+                            "busy": undefined,
+                            "checked": undefined,
+                            "disabled": false,
+                            "expanded": false,
+                            "selected": undefined,
+                          }
+                        }
+                        accessibilityValue={
+                          {
+                            "max": undefined,
+                            "min": undefined,
+                            "now": undefined,
+                            "text": undefined,
+                          }
+                        }
+                        accessible={true}
+                        collapsable={false}
+                        focusable={true}
+                        onClick={[Function]}
+                        onResponderGrant={[Function]}
+                        onResponderMove={[Function]}
+                        onResponderRelease={[Function]}
+                        onResponderTerminate={[Function]}
+                        onResponderTerminationRequest={[Function]}
+                        onStartShouldSetResponder={[Function]}
+                        style={
+                          {
+                            "backgroundColor": "transparent",
+                            "color": "hsla(214, 18%, 69%, 1)",
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "fontFamily": "Lato",
+                            "fontSize": 14,
+                            "fontStyle": "normal",
+                            "fontWeight": "400",
+                            "height": 36,
+                            "marginBottom": 0,
+                            "marginLeft": 0,
+                            "marginRight": 0,
+                            "marginTop": 0,
+                            "minHeight": 36,
+                            "opacity": 1,
+                            "paddingBottom": 8,
+                            "paddingLeft": 12,
+                            "paddingRight": 8,
+                            "paddingTop": 8,
+                            "textAlignVertical": "top",
+                            "textDecorationLine": "none",
+                            "width": "100%",
+                          }
+                        }
+                      >
+                        <Text
+                          accessible={true}
+                          color="surface.text.placeholder.lowContrast"
+                          data-blade-component="text"
+                          fontFamily="text"
+                          fontSize={100}
+                          fontStyle="normal"
+                          fontWeight="regular"
+                          lineHeight={100}
+                          numberOfLines={1}
+                          style={
+                            [
+                              {
+                                "color": "hsla(214, 18%, 69%, 1)",
+                                "fontFamily": "Lato",
+                                "fontSize": 14,
+                                "fontStyle": "normal",
+                                "fontWeight": "400",
+                                "lineHeight": 20,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "paddingBottom": 0,
+                                "paddingLeft": 0,
+                                "paddingRight": 0,
+                                "paddingTop": 0,
+                                "textAlign": "left",
+                                "textDecorationLine": "none",
+                              },
+                            ]
+                          }
+                          textAlign="left"
+                        >
+                          Select Option
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+                </RCTScrollView>
               </View>
               <View
                 alignItems="center"
+                alignSelf="stretch"
                 data-blade-component="base-box"
                 display="flex"
                 flexDirection="row"
@@ -343,6 +415,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                   [
                     {
                       "alignItems": "center",
+                      "alignSelf": "stretch",
                       "display": "flex",
                       "flexDirection": "row",
                     },
@@ -350,14 +423,16 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                 }
               >
                 <View
+                  alignItems="stretch"
+                  alignSelf="stretch"
                   data-blade-component="base-box"
                   display="flex"
-                  height="100%"
                   style={
                     [
                       {
+                        "alignItems": "stretch",
+                        "alignSelf": "stretch",
                         "display": "flex",
-                        "height": "100%",
                         "paddingRight": 12,
                       },
                     ]
@@ -395,8 +470,11 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                     style={
                       {
                         "display": "flex",
-                        "height": "100%",
                         "justifyContent": "center",
+                        "marginBottom": "auto",
+                        "marginLeft": "auto",
+                        "marginRight": "auto",
+                        "marginTop": "auto",
                         "opacity": 1,
                       }
                     }
@@ -518,7 +596,6 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                         />
                       </RNSVGGroup>
                     </RNSVGSvgView>
-                     
                   </View>
                 </View>
               </View>
@@ -829,6 +906,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
             </View>
             <View
               accessibilityLabelledBy="dropdown-7-label"
+              accessibilityRole="menu"
               accessible={true}
               data-blade-component="action-list"
               id="dropdown-7-actionlist"

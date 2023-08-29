@@ -127,7 +127,7 @@ describe('<BottomSheet />', () => {
     expect(queryByText('BottomSheet body')).toBeInTheDocument();
     await user.click(queryByTestId('bottomsheet-backdrop')!);
     await sleep(250);
-    expect(queryByText('BottomSheet body')).not.toBeInTheDocument();
+    await waitFor(() => expect(queryByText('BottomSheet body')).not.toBeInTheDocument());
     mockConsoleError.mockRestore();
   });
 
