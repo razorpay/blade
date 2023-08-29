@@ -84,7 +84,7 @@ export type CardProps = {
   height?: BoxProps['height'];
   /**
    * If `true`, the card will be in selected state
-   * Card will have a visual ring around it.
+   * Card will have a primary color border around it.
    *
    * @default false
    */
@@ -95,10 +95,17 @@ export type CardProps = {
    * @default undefined
    */
   href?: string;
+  /**
+   * Sets the `target` attribute for the linkable card
+   */
   target?: string;
   /**
+   * Sets the `rel` attribute for the linkable card
+   */
+  rel?: string;
+  /**
    * Sets the accessibility label for the card
-   * This is useful when the card has an `href` prop and is used as a link
+   * This is useful when the card has an `href` or `onClick` prop
    * Setting this will announce the label when the card is focused
    */
   accessibilityLabel?: string;
@@ -111,11 +118,11 @@ export type CardProps = {
    */
   shouldScaleOnHover?: boolean;
   /**
-   * Callback to trigger when the card is hovered
+   * Callback triggered when the card is hovered
    */
   onHover?: () => void;
   /**
-   * Callback to trigger when the card is clicked
+   * Callback triggered when the card is clicked
    */
   onClick?: () => void;
   /**
@@ -145,6 +152,7 @@ const Card = ({
   onHover,
   href,
   target,
+  rel,
   as,
   ...styledProps
 }: CardProps): React.ReactElement => {
@@ -165,6 +173,7 @@ const Card = ({
       setIsFocused(false);
     },
   };
+  const defaultRel = target && target === '_blank' ? 'noreferrer noopener' : undefined;
 
   return (
     <CardProvider>
@@ -193,7 +202,13 @@ const Card = ({
           textAlign={'left' as never}
         >
           {href ? (
-            <LinkOverlay onClick={onClick} href={href} target={target} {...linkOverlayProps} />
+            <LinkOverlay
+              onClick={onClick}
+              href={href}
+              target={target}
+              rel={rel ?? defaultRel}
+              {...linkOverlayProps}
+            />
           ) : null}
           {!href && onClick ? (
             <LinkOverlay as="button" onClick={onClick} {...linkOverlayProps} />

@@ -64,4 +64,28 @@ describe('<Card />', () => {
     expect(getByText(footerSubtitle)).toBeInTheDocument();
     expect(container).toMatchSnapshot();
   });
+
+  it('should render a Interactive Card with onClick', () => {
+    const { container } = renderWithSSR(
+      <Card onClick={() => console.log('hello world')}>
+        <CardBody>
+          <Text>Plain Card</Text>
+        </CardBody>
+      </Card>,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render a Interactive Card with href', () => {
+    const { container } = renderWithSSR(
+      <Card href="https://google.com">
+        <CardBody>
+          <Text>Plain Card</Text>
+        </CardBody>
+      </Card>,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
 });

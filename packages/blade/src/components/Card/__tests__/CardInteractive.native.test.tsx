@@ -76,10 +76,11 @@ describe('<Card />', () => {
 
     fireEvent(getByLabelText(/My Card/i), 'pressIn');
     fireEvent(getByLabelText(/My Card/i), 'pressOut');
-    expect(rootOnClick).toHaveBeenCalled();
+    expect(rootOnClick).toHaveBeenCalledTimes(1);
 
     fireEvent.press(getByRole('button', { name: 'Child Button' }));
-    expect(childOnClick).toHaveBeenCalled();
+    expect(childOnClick).toHaveBeenCalledTimes(1);
+    expect(rootOnClick).toHaveBeenCalledTimes(1);
   });
 
   it('should have href on card', async () => {
@@ -174,5 +175,60 @@ describe('<Card />', () => {
     fireEvent(standardCard, 'pressOut');
 
     expect(selectedValue).toHaveTextContent('free,premium');
+  });
+
+  it('should work like a radio with hidden input', () => {
+    const Example = (): React.ReactElement => {
+      const [selected, setSelected] = React.useState('free');
+
+      const handleChange = (value: string) => {
+        setSelected(value);
+      };
+
+      return (
+        <Box>
+          <Card onClick={() => handleChange('free')} isSelected={selected.includes('free')}>
+            <CardBody>
+              <Text>Free</Text>
+            </CardBody>
+          </Card>
+          <Card onClick={() => handleChange('standard')} isSelected={selected.includes('standard')}>
+            <CardBody>
+              <Text>Standard</Text>
+            </CardBody>
+          </Card>
+          <Card onClick={() => handleChange('premium')} isSelected={selected.includes('premium')}>
+            <CardBody>
+              <Text>Premium</Text>
+            </CardBody>
+          </Card>
+
+          <Text testID="selected-value">Selected: {selected}</Text>
+        </Box>
+      );
+    };
+
+    const { getByText, getByTestId } = renderWithTheme(<Example />);
+
+    const standardCard = getByText('Standard');
+    const premiumCard = getByText('Premium');
+    const selectedValue = getByTestId('selected-value');
+
+    expect(selectedValue).toHaveTextContent('free');
+
+    fireEvent(standardCard, 'pressIn');
+    fireEvent(standardCard, 'pressOut');
+
+    expect(selectedValue).toHaveTextContent('standard');
+
+    fireEvent(premiumCard, 'pressIn');
+    fireEvent(premiumCard, 'pressOut');
+
+    expect(selectedValue).toHaveTextContent('premium');
+
+    fireEvent(standardCard, 'pressIn');
+    fireEvent(standardCard, 'pressOut');
+
+    expect(selectedValue).toHaveTextContent('standard');
   });
 });

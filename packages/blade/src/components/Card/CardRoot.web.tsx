@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import React from 'react';
 import type { CardRootProps } from './types';
+import { CARD_SCALE_DOWN_VALUE, CARD_SCALE_UP_VALUE } from './constants';
 import BaseBox from '~components/Box/BaseBox';
 import { castWebType, makeMotionTime } from '~utils';
 import { makeAccessible } from '~utils/makeAccessible';
@@ -9,14 +10,14 @@ import { useIsMobile } from '~utils/useIsMobile';
 const StyledCardRoot = styled(BaseBox)<CardRootProps & { isPressed: boolean; isMobile: boolean }>(
   ({ theme, isSelected, isFocused, shouldScaleOnHover, isPressed, isMobile }) => {
     const selectedColor = isSelected ? theme.colors.brand.primary[500] : 'transparent';
-    const selectedRing = `0px 0px 0px ${theme.border.width.thick}px ${selectedColor}`;
+    const selectedBorder = `0px 0px 0px ${theme.border.width.thick}px ${selectedColor}`;
     //  focused state
     const focusRing = isFocused ? `, 0px 0px 0px 4px ${theme.colors.brand.primary[400]}` : '';
 
     return {
       // Selected state
       // TODO: use thicker
-      boxShadow: `${selectedRing}${focusRing}`,
+      boxShadow: `${selectedBorder}${focusRing}`,
       transitionDuration: castWebType(makeMotionTime(theme.motion.duration.xquick)),
       transitionTimingFunction: castWebType(theme.motion.easing.standard.effective),
       transitionProperty: 'transform, box-shadow',
@@ -24,14 +25,14 @@ const StyledCardRoot = styled(BaseBox)<CardRootProps & { isPressed: boolean; isM
       // pressed state for mobile only
       ...(isMobile &&
         isPressed && {
-          transform: 'scale(0.95)',
+          transform: `scale(${CARD_SCALE_DOWN_VALUE})`,
         }),
 
       // Hover state for desktop only
       ...(!isMobile &&
         shouldScaleOnHover && {
           '&:hover': {
-            transform: 'scale(1.05)',
+            transform: `scale(${CARD_SCALE_UP_VALUE})`,
           },
         }),
 

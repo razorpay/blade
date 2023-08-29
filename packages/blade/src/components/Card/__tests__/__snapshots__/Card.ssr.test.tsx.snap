@@ -245,3 +245,77 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
   </div>
 </div>
 `;
+
+exports[`<Card /> should render a Interactive Card with href 1`] = `"<div id="root"><div href="https://google.com" data-blade-component="card" class="BaseBox-bmPWx CardRootweb__StyledCardRoot-sc-1nb70ck-0 bkxOHl eoAnRj"><div elevation="lowRaised" data-blade-component="base-box" class="BaseBox-bmPWx CardSurfaceweb__CardSurface-sc-1pgxikk-0 dXrkKy hsLvuE"><a href="https://google.com" data-blade-component="card-link-overlay" aria-pressed="false" class="LinkOverlayweb__LinkOverlay-ugib1o-0 FyGjv"></a><div data-blade-component="card-body" class="BaseBox-bmPWx"><p class="StyledBaseText-dVBfTO eIdQFo" data-blade-component="text">Plain Card</p></div></div></div></div>"`;
+
+exports[`<Card /> should render a Interactive Card with href 2`] = `
+<div
+  id="root"
+>
+  <div
+    class="BaseBox-bmPWx CardRootweb__StyledCardRoot-sc-1nb70ck-0 bkxOHl eoAnRj"
+    data-blade-component="card"
+    href="https://google.com"
+  >
+    <div
+      class="BaseBox-bmPWx CardSurfaceweb__CardSurface-sc-1pgxikk-0 dXrkKy hsLvuE"
+      data-blade-component="base-box"
+      elevation="lowRaised"
+    >
+      <a
+        aria-pressed="false"
+        class="LinkOverlayweb__LinkOverlay-ugib1o-0 FyGjv"
+        data-blade-component="card-link-overlay"
+        href="https://google.com"
+      />
+      <div
+        class="BaseBox-bmPWx"
+        data-blade-component="card-body"
+      >
+        <p
+          class="StyledBaseText-dVBfTO eIdQFo"
+          data-blade-component="text"
+        >
+          Plain Card
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Card /> should render a Interactive Card with onClick 1`] = `"<div id="root"><div data-blade-component="card" class="BaseBox-bmPWx CardRootweb__StyledCardRoot-sc-1nb70ck-0 bkxOHl eoAnRj"><div elevation="lowRaised" data-blade-component="base-box" class="BaseBox-bmPWx CardSurfaceweb__CardSurface-sc-1pgxikk-0 dXrkKy hsLvuE"><button data-blade-component="card-link-overlay" aria-pressed="false" class="LinkOverlayweb__LinkOverlay-ugib1o-0 FyGjv"></button><div data-blade-component="card-body" class="BaseBox-bmPWx"><p class="StyledBaseText-dVBfTO eIdQFo" data-blade-component="text">Plain Card</p></div></div></div></div>"`;
+
+exports[`<Card /> should render a Interactive Card with onClick 2`] = `
+<div
+  id="root"
+>
+  <div
+    class="BaseBox-bmPWx CardRootweb__StyledCardRoot-sc-1nb70ck-0 bkxOHl eoAnRj"
+    data-blade-component="card"
+  >
+    <div
+      class="BaseBox-bmPWx CardSurfaceweb__CardSurface-sc-1pgxikk-0 dXrkKy hsLvuE"
+      data-blade-component="base-box"
+      elevation="lowRaised"
+    >
+      <button
+        aria-pressed="false"
+        class="LinkOverlayweb__LinkOverlay-ugib1o-0 FyGjv"
+        data-blade-component="card-link-overlay"
+      />
+      <div
+        class="BaseBox-bmPWx"
+        data-blade-component="card-body"
+      >
+        <p
+          class="StyledBaseText-dVBfTO eIdQFo"
+          data-blade-component="text"
+        >
+          Plain Card
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;

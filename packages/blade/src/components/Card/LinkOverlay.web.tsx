@@ -2,6 +2,7 @@ import type { CSSObject } from 'styled-components';
 import styled from 'styled-components';
 import type { LinkOverlayProps } from './types';
 
+// https://www.sarasoueidan.com/blog/nested-links/
 const LinkOverlay = styled.a<LinkOverlayProps>(
   (): CSSObject => {
     return {

@@ -3,6 +3,7 @@ import { Linking, Pressable } from 'react-native';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import styled from 'styled-components';
 import type { CardRootProps } from './types';
+import { CARD_SCALE_DOWN_VALUE } from './constants';
 import BaseBox from '~components/Box/BaseBox';
 import { castNativeType, makeMotionTime, useTheme } from '~utils';
 import { logger } from '~utils/logger';
@@ -55,7 +56,7 @@ const CardRoot = ({
       transform: [
         {
           // TODO: check with design once what to do on mobile
-          scale: withTiming(isPressed ? 0.95 : 1, { duration, easing }),
+          scale: withTiming(isPressed ? CARD_SCALE_DOWN_VALUE : 1, { duration, easing }),
         },
       ],
     };
