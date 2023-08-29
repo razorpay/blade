@@ -248,6 +248,13 @@ export default {
       defaultValue: undefined,
       table: propCategory,
     },
+    rel: {
+      control: {
+        type: 'text',
+      },
+      defaultValue: undefined,
+      table: propCategory,
+    },
     surfaceLevel: {
       control: {
         type: 'number',
