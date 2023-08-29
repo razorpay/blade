@@ -12,6 +12,7 @@ import { StyledBaseInput } from './StyledBaseInput';
 import { BaseInputVisuals } from './BaseInputVisuals';
 import { BaseInputWrapper } from './BaseInputWrapper';
 import { BaseInputTagSlot } from './BaseInputTagSlot';
+import type { ContainerElement, InputWrapperRef } from './types';
 import { FormHint, FormLabel } from '~components/Form';
 import type { IconComponent } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
@@ -233,7 +234,7 @@ type BaseInputCommonProps = FormInputLabelProps &
      * true if popup is in expanded state
      */
     isPopupExpanded?: boolean;
-    setInputWrapperRef?: (node: HTMLDivElement) => void;
+    setInputWrapperRef?: (node: ContainerElement) => void;
     /**
      * sets the autocapitalize behavior for the input
      */
@@ -713,7 +714,7 @@ export const BaseInput = React.forwardRef<BladeElementRef, BaseInputProps>(
     ref,
   ) => {
     const { theme } = useTheme();
-    const inputWrapperRef: React.MutableRefObject<HTMLDivElement | null> = React.useRef(null);
+    const inputWrapperRef: InputWrapperRef = React.useRef(null);
     const { onInputKeydownTagHandler, visibleTagsCountRef } = useTags(
       tags,
       activeTagIndex,
@@ -832,8 +833,10 @@ export const BaseInput = React.forwardRef<BladeElementRef, BaseInputProps>(
             showAllTags={showAllTags}
             setShowAllTagsWithAnimation={setShowAllTagsWithAnimation}
             ref={(refNode) => {
-              setInputWrapperRef?.(refNode as any);
-              inputWrapperRef.current = refNode;
+              if (refNode) {
+                setInputWrapperRef?.(refNode);
+                inputWrapperRef.current = refNode;
+              }
             }}
             maxTagRows={maxTagRows}
           >

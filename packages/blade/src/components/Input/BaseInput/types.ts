@@ -1,4 +1,5 @@
 import type { Dispatch, SetStateAction } from 'react';
+import type { View } from 'react-native';
 import type { BaseInputProps } from './BaseInput';
 import type { FormInputHandleOnEvent } from '~components/Form';
 import type { ActionStates } from '~tokens/theme/theme';
@@ -6,6 +7,14 @@ import type {
   FormInputHandleOnClickEvent,
   FormInputHandleOnKeyDownEvent,
 } from '~components/Form/FormTypes';
+import type { Platform } from '~utils';
+
+export type ContainerElement = Platform.Select<{
+  web: HTMLDivElement;
+  native: View;
+}>;
+
+export type InputWrapperRef = React.MutableRefObject<ContainerElement | null>;
 
 export type BaseInputTagSlotProps = {
   tags?: BaseInputProps['tags'];
@@ -17,7 +26,7 @@ export type BaseInputTagSlotProps = {
   maxTagRows: BaseInputProps['maxTagRows'];
   visibleTagsCountRef: React.MutableRefObject<number>;
   children: React.ReactElement;
-  inputWrapperRef: React.RefObject<HTMLDivElement>;
+  inputWrapperRef: InputWrapperRef;
 };
 
 export type BaseInputWrapperProps = Pick<
@@ -77,4 +86,5 @@ export type StyledBaseInputProps = {
   | 'shouldIgnoreBlurAnimation'
   | 'autoCapitalize'
 >;
+
 export { StyledBaseInput } from './StyledBaseInput.web';

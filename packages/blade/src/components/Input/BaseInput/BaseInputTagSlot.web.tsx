@@ -5,7 +5,7 @@ import type { BaseInputTagSlotProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import { size, spacing } from '~tokens/global';
-import { makeSize } from '~utils';
+import { castWebType, makeSize } from '~utils';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 
 function isElementVisibleInContainer(element: Element, container: HTMLDivElement): boolean {
@@ -138,7 +138,7 @@ const BaseInputTagSlot = ({
   const hasTags = tags && tags.length > 0;
 
   // taking 400px as default width when we fail to get width from ref (should be rare). 400px is small enough so tags tend to be shown as +x selected
-  const wrapperWidth = inputWrapperRef.current?.clientWidth ?? 400;
+  const wrapperWidth = castWebType(inputWrapperRef.current)?.clientWidth ?? 400;
 
   return (
     <BaseBox
