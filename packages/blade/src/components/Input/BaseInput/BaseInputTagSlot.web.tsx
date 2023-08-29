@@ -149,7 +149,7 @@ const BaseInputTagSlot = ({
       maxHeight={`${MAX_TAGSLOT_HEIGHT}px`}
       minHeight={makeSize(size['36'])}
       position="relative"
-      maxWidth="100%"
+      width="100%"
       flex="1"
       overflowX="auto"
       onMouseDown={() => {
@@ -203,9 +203,10 @@ const BaseInputTagSlot = ({
         display="inline-flex"
         alignItems="center"
         flexDirection="row"
+        flex="1"
       >
         {tags ? tags.slice(0, showAllTags ? tags.length : tags.length - invisibleTagsCount) : null}
-        <BaseBox display={hasTags ? 'inline-flex' : 'flex'}>
+        <BaseBox display={hasTags ? 'inline-flex' : 'flex'} flex="1">
           {tags && !showAllTags && invisibleTagsCount ? (
             <Text alignSelf="center" marginY="spacing.2">
               <BaseBox as="span" whiteSpace="nowrap">
