@@ -36,8 +36,8 @@ const Page = (): React.ReactElement => {
       }}
       note={
         <Text>
-          This story is only meant for demonstrating props of chip component. Refer to the Chip
-          story{' '}
+          Chip is a combination of ChipGroup and Chip components. This story demonstrates only the
+          props of ChipGroup component. For Chips component props refer to the Chip story{' '}
           <Link target="_blank" href="https://blade.razorpay.com/?path=/docs/components-chip-chip">
             here
           </Link>

@@ -13,17 +13,17 @@ import { Link } from '~components/Link';
 const Page = (): React.ReactElement => {
   return (
     <StoryPageWrapper
-      componentDescription="Chips represents a collection of selectable objects which enable users to make selections, filter content, and trigger relevant actions. This story is only meant for demonstrating props of chip component."
+      componentDescription="The Chip component is inherently tied to the ChipGroup and cannot be utilized outside its context."
       componentName="Chip"
       note={
         <Text>
-          The Chip component is inherently tied to the ChipGroup and cannot be utilized outside its
-          context. Refer to the ChipGroup story{' '}
+          This story is only meant to demonstrate the props of the Chip component. For complete
+          usage refer to the ChipGroup story{' '}
           <Link
             target="_blank"
             href="https://blade.razorpay.com/?path=/docs/components-chip-chipgroup"
           >
-            here
+            here.
           </Link>
         </Text>
       }
