@@ -1,6 +1,6 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import React from 'react';
-import { Text, Title } from '../Typography';
+import { Code, Text, Title } from '../Typography';
 import type { ChipGroupProps } from './ChipGroup';
 import { ChipGroup as ChipGroupComponent } from './ChipGroup';
 import { Chip as ChipComponent } from './Chip';
@@ -229,6 +229,10 @@ const TextTransformationTemplate: ComponentStory<typeof ChipComponent> = ({
           </ChipComponent>
         ))}
       </ChipGroupComponent>
+      <Text marginTop="spacing.3">
+        The text within the Chip can be transformed to uppercase by passing{' '}
+        <Code size="medium"> value.toUpperCase() </Code> as the children.
+      </Text>
     </Box>
   );
 };
@@ -285,11 +289,3 @@ export const chipRef: ComponentStory<typeof ChipComponent> = (args) => {
 };
 
 chipRef.storyName = 'Chip Ref';
-chipRef.parameters = {
-  docs: {
-    description: {
-      story:
-        'Chip component exposes the `ref` prop. The `ref` exposes two methods `focus` & `scrollIntoView` which can be used to programmatically control the DOM element',
-    },
-  },
-};
