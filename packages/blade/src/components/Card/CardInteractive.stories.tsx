@@ -213,6 +213,9 @@ const CardTemplate = (): React.ReactElement => {
 export const Default = CardTemplate.bind({});
 
 export const ClickableCard = (): React.ReactElement => {
+  const [cardClickCount, setCardClickCount] = React.useState(0);
+  const [buttonClickCount, setButtonClickCount] = React.useState(0);
+
   return (
     <Box>
       <Box marginBottom="spacing.6">
@@ -226,7 +229,7 @@ export const ClickableCard = (): React.ReactElement => {
       </Box>
       <Card
         accessibilityLabel="Payment Pages Card"
-        onClick={() => alert('Card clicked')}
+        onClick={() => setCardClickCount((prev) => prev + 1)}
         width={{ s: '100%', m: '400px' }}
       >
         <CardHeader>
@@ -237,11 +240,23 @@ export const ClickableCard = (): React.ReactElement => {
             Take your store online instantly with zero coding. Accept international & domestic
             payments.
           </Text>
+          <Text marginY="spacing.2">
+            Card Clicked:{' '}
+            <Text as="span" weight="bold">
+              {cardClickCount}
+            </Text>
+          </Text>
+          <Text marginY="spacing.2">
+            Button Clicked:{' '}
+            <Text as="span" weight="bold">
+              {buttonClickCount}
+            </Text>
+          </Text>
           <Button
             size="small"
             marginTop="spacing.5"
             onClick={() => {
-              alert('Child button clicked');
+              setButtonClickCount((prev) => prev + 1);
             }}
           >
             Get Demo
