@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable no-alert */
-import type { Meta } from '@storybook/react';
+import type { Meta, ComponentStory } from '@storybook/react';
 import React from 'react';
 import type { CardProps } from './Card';
 import {
@@ -158,9 +158,102 @@ const Page = (): React.ReactElement => {
   );
 };
 
+const disable = {
+  table: {
+    disable: true,
+  },
+};
+const propCategory = {
+  category: 'Supports All Card Props Plus:',
+};
 export default {
   title: 'Components/Card/Interactive',
   component: Card,
+  argTypes: {
+    width: disable,
+    height: disable,
+    alignSelf: disable,
+    bottom: disable,
+    display: disable,
+    children: disable,
+    gridArea: disable,
+    margin: disable,
+    top: disable,
+    left: disable,
+    right: disable,
+    marginLeft: disable,
+    marginRight: disable,
+    marginTop: disable,
+    marginBottom: disable,
+    testID: disable,
+    marginX: disable,
+    marginY: disable,
+    as: disable,
+    target: {
+      control: {
+        type: 'text',
+      },
+      defaultValue: undefined,
+      table: propCategory,
+    },
+    onClick: {
+      control: {
+        type: 'function',
+      },
+      defaultValue: undefined,
+      table: propCategory,
+    },
+    onHover: {
+      control: {
+        type: 'function',
+      },
+      defaultValue: undefined,
+      table: propCategory,
+    },
+    accessibilityLabel: {
+      control: {
+        type: 'text',
+      },
+      defaultValue: 'Payment Pages Card',
+      table: propCategory,
+    },
+    isSelected: {
+      control: {
+        type: 'boolean',
+      },
+      defaultValue: false,
+      table: propCategory,
+    },
+    scaleOnHover: {
+      control: {
+        type: 'boolean',
+      },
+      defaultValue: true,
+      table: propCategory,
+    },
+    href: {
+      control: {
+        type: 'text',
+      },
+      defaultValue: undefined,
+      table: propCategory,
+    },
+    surfaceLevel: {
+      control: {
+        type: 'number',
+      },
+      defaultValue: 2,
+      table: propCategory,
+    },
+    elevation: {
+      defaultValue: 'midRaised',
+      table: propCategory,
+    },
+    padding: {
+      defaultValue: 'spacing.7',
+      table: propCategory,
+    },
+  },
   parameters: {
     docs: {
       page: Page,
@@ -168,19 +261,21 @@ export default {
   },
 } as Meta<CardProps>;
 
-const CardTemplate = (): React.ReactElement => {
-  const [selected, setSelected] = React.useState(false);
-
+const CardTemplate: ComponentStory<typeof Card> = (args): React.ReactElement => {
   return (
     <Card
       onHover={() => {
         console.log('Hovered');
       }}
-      scaleOnHover
+      isSelected={args.isSelected}
+      scaleOnHover={args.scaleOnHover}
+      href={args.href}
+      target={args.target}
+      accessibilityLabel={args.accessibilityLabel}
+      surfaceLevel={args.surfaceLevel}
+      elevation={args.elevation}
+      padding={args.padding}
       width={{ s: '100%', m: '400px' }}
-      isSelected={selected}
-      onClick={() => setSelected(!selected)}
-      accessibilityLabel="Payment Pages Card"
     >
       <CardHeader>
         <CardHeaderLeading
