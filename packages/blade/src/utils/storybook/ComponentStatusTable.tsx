@@ -338,9 +338,12 @@ const componentData: ComponentStatusData = [
     storybookLink: 'Components/Divider',
   },
   {
-    name: 'Pill',
-    status: 'planned-Q2-dev',
-    description: '',
+    name: 'Chip',
+    status: 'released',
+    description:
+      'Chips represents a collection of selectable objects which enable users to make selections, filter content, and trigger relevant actions. Chips can have either single selection or multiple (based on context).',
+    releasedIn: '10.4.0',
+    storybookLink: 'Components/Chip/Chip',
   },
   {
     name: 'Pagination',
