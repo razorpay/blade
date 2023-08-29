@@ -111,8 +111,8 @@ const ChipTemplate: ComponentStory<typeof ChipComponent> = ({ children, ...args 
     <Box>
       <ChipGroupComponent
         selectionType="multiple"
+        defaultValue={['Automated Payment Links']}
         accessibilityLabel="Select other capabilities you are looking for from the options below"
-        intent={args.intent}
       >
         <ChipComponent value="Automated Payment Links" {...args}>
           Automated Payment Links
