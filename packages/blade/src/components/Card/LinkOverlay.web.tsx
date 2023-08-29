@@ -7,6 +7,7 @@ const LinkOverlay = styled.a<LinkOverlayProps>(
     return {
       // Need this to reset the button styles
       all: 'unset',
+      cursor: 'pointer',
       appearance: 'none',
       border: 0,
       padding: 0,
