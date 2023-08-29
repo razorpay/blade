@@ -59,8 +59,7 @@ export default {
       },
     },
     value: {
-      description:
-        'Value of the Chip group Acts as a controlled component by specifying the ChipGroup value Use onChange to update its value.',
+      description: 'The value to be used in the Chip input.',
       table: {
         category: propsCategory.CHIP,
         type: {
