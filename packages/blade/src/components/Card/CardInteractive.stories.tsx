@@ -503,7 +503,7 @@ const SingleSelectCardWeb = (): React.ReactElement => {
         to the <Code size="medium">Card</Code>.
       </Text>
 
-      <Box display="flex" gap="spacing.5">
+      <Box display="flex" gap="spacing.5" flexDirection={{ xs: 'column', m: 'row' }}>
         <Card
           as="label"
           accessibilityLabel="Free Tier"
@@ -598,7 +598,7 @@ const MultiSelectCardWeb = (): React.ReactElement => {
         to the <Code size="medium">Card</Code>.
       </Text>
 
-      <Box display="flex" gap="spacing.5">
+      <Box display="flex" gap="spacing.5" flexDirection={{ xs: 'column', m: 'row' }}>
         <Card as="label" shouldScaleOnHover isSelected={selected.includes('free')}>
           <CardBody>
             <HiddenInput
