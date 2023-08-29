@@ -9,6 +9,7 @@ This document outlines the API details of the `Chip` and `ChipGroup` components,
 - [Design](#design)
 - [`Chip` API](#chip-api)
 - [`ChipGroup` API](#chipgroup-api)
+- [Chip Differentiation](#chip-differentiation)
 - [Examples](#examples)
   - [Basic/Uncontrolled Usage](#basicuncontrolled-usage)
   - [Controlled Usage](#controlled-usage)
@@ -30,7 +31,7 @@ This document outlines the API details of the `Chip` and `ChipGroup` components,
 | **children**            | `React.ReactText \| React.ReactText[]` | `undefined` | Renders the label text for the Chip                                                                                                                | ✅       |
 | **icon**                | `Icon`                                 | `undefined` | Displays the Blade Icon component within the Chip                                                                                                  | ❌       |
 | **isDisabled**          | `boolean`                              | `false`     | Disables or enables the Chip                                                                                                                       | ❌       |
-| **intent**              | `'positive' \| 'negative' \| 'none'`   | `'none'`    | Sets the ChipGroups's visual variant, it will propagate down to all the Chips                                                                      | ❌       |
+| **intent**              | `'positive' \| 'negative' \| 'none'`   | `'none'`    | Sets the Chip's visual variant                                                                                                                     | ❌       |
 | **value (html native)** | `string`                               | `undefined` | The value of the input field in Chip, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#value) | ❌       |
 
 ## `ChipGroup` API
@@ -51,6 +52,10 @@ This document outlines the API details of the `Chip` and `ChipGroup` components,
 | **size**               | `'xsmall' \| 'small' \| 'medium' \| 'large'`                     | `'small'`   | Specifies the size of the rendered Chips withing the ChipGroup                                                                 | ❌       |
 | **value**              | `string \|string[]`                                              | `undefined` | Acts as a controlled component by specifying the ChipGroup value                                                               | ❌       |
 | **intent**             | `'positive' \| 'negative' \| 'none'`                             | `'none'`    | Sets the ChipGroups's visual variant, it will propagate down to all the Chips                                                  | ❌       |
+
+## Chip Differentiation
+
+<img width="100%" src="./chip-differentiation.png" alt="Differences between Chip, Tag, and Badge components" />
 
 ## Examples
 
