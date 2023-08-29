@@ -55,27 +55,66 @@ exports[`<TextArea /> should render 1`] = `
   gap: 0px;
 }
 
-.c7 {
+.c9 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  overflow-x: auto;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  position: relative;
+  min-height: 36px;
+  max-height: 112px;
+  max-width: 100%;
+}
+
+.c10 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  overflow: hidden;
+  white-space: nowrap;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
-  align-items: flex-start;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   position: relative;
-  width: 100%;
+  height: 100%;
+  max-width: 100%;
+}
+
+.c11 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c12 {
+  width: 100%;
+}
+
+.c15 {
   margin-left: 0px;
 }
 
-.c13 {
+.c16 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -120,7 +159,7 @@ exports[`<TextArea /> should render 1`] = `
   padding: 0;
 }
 
-.c10 {
+.c13 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -147,7 +186,7 @@ exports[`<TextArea /> should render 1`] = `
   cursor: auto;
 }
 
-.c10::-webkit-input-placeholder {
+.c13::-webkit-input-placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -160,7 +199,7 @@ exports[`<TextArea /> should render 1`] = `
   padding: 0;
 }
 
-.c10::-moz-placeholder {
+.c13::-moz-placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -173,7 +212,7 @@ exports[`<TextArea /> should render 1`] = `
   padding: 0;
 }
 
-.c10:-ms-input-placeholder {
+.c13:-ms-input-placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -186,7 +225,7 @@ exports[`<TextArea /> should render 1`] = `
   padding: 0;
 }
 
-.c10::placeholder {
+.c13::placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -199,11 +238,11 @@ exports[`<TextArea /> should render 1`] = `
   padding: 0;
 }
 
-.c10:focus {
+.c13:focus {
   outline: none;
 }
 
-.c11 {
+.c14 {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -214,27 +253,46 @@ exports[`<TextArea /> should render 1`] = `
   height: 1px;
 }
 
-.c8 {
-  -webkit-animation: iHeBRq 200ms cubic-bezier(0.17,0,1,1);
-  animation: iHeBRq 200ms cubic-bezier(0.17,0,1,1);
-}
-
-.c9 {
+.c7 {
   background-color: hsla(216,15%,54%,0.09);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
   border-bottom-width: 1px;
   border-bottom-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  position: relative;
+  height: auto;
 }
 
-.c9:hover {
+.c7:hover {
   background-color: hsla(216,15%,54%,0.18);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
   border-bottom-width: 1px;
   border-bottom-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
+  height: auto;
   -webkit-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-duration: 150ms;
@@ -243,13 +301,29 @@ exports[`<TextArea /> should render 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c9:focus-within {
+.c7:focus-within {
   background-color: hsla(216,15%,54%,0.09);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
   border-bottom-width: 1px;
   border-bottom-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
+  height: auto;
+}
+
+.c8 {
+  -webkit-animation: none;
+  animation: none;
+  max-height: 145px;
 }
 
 .c5 {
@@ -315,32 +389,52 @@ exports[`<TextArea /> should render 1`] = `
         </label>
       </div>
       <div
-        class="c7 c8 c9"
+        class=" c7 c8"
         data-blade-component="base-box"
       >
-        <textarea
-          aria-describedby=""
-          aria-disabled="false"
-          aria-invalid="false"
-          aria-required="false"
-          class="c10"
-          data-blade-component="styled-base-input"
-          id="textarea-1-input-2"
-          rows="2"
-          type="text"
-        />
         <div
-          class=" c11"
+          class="c9"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c10"
+            data-blade-component="base-box"
+          >
+            <div
+              class="c11"
+              data-blade-component="base-box"
+            >
+              <div
+                class="c12"
+                data-blade-component="base-box"
+              >
+                <textarea
+                  aria-describedby=""
+                  aria-disabled="false"
+                  aria-invalid="false"
+                  aria-required="false"
+                  class="c13"
+                  data-blade-component="styled-base-input"
+                  id="textarea-1-input-2"
+                  rows="2"
+                  type="text"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class=" c14"
           data-blade-component="base-box"
         />
       </div>
     </div>
     <div
-      class="c12"
+      class="c15"
       data-blade-component="base-box"
     >
       <div
-        class="c13"
+        class="c16"
         data-blade-component="base-box"
       />
     </div>
@@ -403,27 +497,66 @@ exports[`<TextArea /> should set number of lines 1`] = `
   gap: 0px;
 }
 
-.c7 {
+.c9 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  overflow-x: auto;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  position: relative;
+  min-height: 36px;
+  max-height: 112px;
+  max-width: 100%;
+}
+
+.c10 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  overflow: hidden;
+  white-space: nowrap;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
-  align-items: flex-start;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   position: relative;
-  width: 100%;
+  height: 100%;
+  max-width: 100%;
+}
+
+.c11 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c12 {
+  width: 100%;
+}
+
+.c15 {
   margin-left: 0px;
 }
 
-.c13 {
+.c16 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -468,7 +601,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
   padding: 0;
 }
 
-.c10 {
+.c13 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -495,7 +628,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
   cursor: auto;
 }
 
-.c10::-webkit-input-placeholder {
+.c13::-webkit-input-placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -508,7 +641,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
   padding: 0;
 }
 
-.c10::-moz-placeholder {
+.c13::-moz-placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -521,7 +654,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
   padding: 0;
 }
 
-.c10:-ms-input-placeholder {
+.c13:-ms-input-placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -534,7 +667,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
   padding: 0;
 }
 
-.c10::placeholder {
+.c13::placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -547,11 +680,11 @@ exports[`<TextArea /> should set number of lines 1`] = `
   padding: 0;
 }
 
-.c10:focus {
+.c13:focus {
   outline: none;
 }
 
-.c11 {
+.c14 {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -562,27 +695,46 @@ exports[`<TextArea /> should set number of lines 1`] = `
   height: 1px;
 }
 
-.c8 {
-  -webkit-animation: iHeBRq 200ms cubic-bezier(0.17,0,1,1);
-  animation: iHeBRq 200ms cubic-bezier(0.17,0,1,1);
-}
-
-.c9 {
+.c7 {
   background-color: hsla(216,15%,54%,0.09);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
   border-bottom-width: 1px;
   border-bottom-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  position: relative;
+  height: auto;
 }
 
-.c9:hover {
+.c7:hover {
   background-color: hsla(216,15%,54%,0.18);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
   border-bottom-width: 1px;
   border-bottom-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
+  height: auto;
   -webkit-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-duration: 150ms;
@@ -591,13 +743,29 @@ exports[`<TextArea /> should set number of lines 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c9:focus-within {
+.c7:focus-within {
   background-color: hsla(216,15%,54%,0.09);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
   border-bottom-width: 1px;
   border-bottom-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
+  height: auto;
+}
+
+.c8 {
+  -webkit-animation: none;
+  animation: none;
+  max-height: 145px;
 }
 
 .c5 {
@@ -663,32 +831,52 @@ exports[`<TextArea /> should set number of lines 1`] = `
         </label>
       </div>
       <div
-        class="c7 c8 c9"
+        class=" c7 c8"
         data-blade-component="base-box"
       >
-        <textarea
-          aria-describedby=""
-          aria-disabled="false"
-          aria-invalid="false"
-          aria-required="false"
-          class="c10"
-          data-blade-component="styled-base-input"
-          id="textarea-91-input-92"
-          rows="3"
-          type="text"
-        />
         <div
-          class=" c11"
+          class="c9"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c10"
+            data-blade-component="base-box"
+          >
+            <div
+              class="c11"
+              data-blade-component="base-box"
+            >
+              <div
+                class="c12"
+                data-blade-component="base-box"
+              >
+                <textarea
+                  aria-describedby=""
+                  aria-disabled="false"
+                  aria-invalid="false"
+                  aria-required="false"
+                  class="c13"
+                  data-blade-component="styled-base-input"
+                  id="textarea-91-input-92"
+                  rows="3"
+                  type="text"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class=" c14"
           data-blade-component="base-box"
         />
       </div>
     </div>
     <div
-      class="c12"
+      class="c15"
       data-blade-component="base-box"
     >
       <div
-        class="c13"
+        class="c16"
         data-blade-component="base-box"
       />
     </div>

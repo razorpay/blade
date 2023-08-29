@@ -66,19 +66,16 @@ const useTagsDisplay = (
     tagsContainerRef.current.classList.remove('show');
 
     // Set scroll
-    if (horizontallyScrollableContainerRef.current && maxTagRows === 'single') {
-      horizontallyScrollableContainerRef.current.scrollTo({
+    if (maxTagRows === 'single') {
+      horizontallyScrollableContainerRef.current?.scrollTo?.({
         top: 0,
         left: horizontallyScrollableContainerRef.current.scrollWidth,
         behavior: 'smooth',
       });
     }
 
-    if (
-      verticallyScrollableContainerRef.current &&
-      (maxTagRows === 'multiple' || maxTagRows === 'expandable')
-    ) {
-      verticallyScrollableContainerRef.current.scrollTo({
+    if (maxTagRows === 'multiple' || maxTagRows === 'expandable') {
+      verticallyScrollableContainerRef.current?.scrollTo?.({
         top: verticallyScrollableContainerRef.current.scrollHeight,
         left: 0,
         behavior: 'smooth',
@@ -120,18 +117,14 @@ const BaseInputTagSlot = ({
   } = useTagsDisplay(tags, visibleTagsCountRef, maxTagRows);
 
   React.useEffect(() => {
-    if (
-      !showAllTags &&
-      verticallyScrollableContainerRef.current &&
-      horizontallyScrollableContainerRef.current
-    ) {
-      verticallyScrollableContainerRef.current.scrollTo({
+    if (!showAllTags) {
+      verticallyScrollableContainerRef.current?.scrollTo?.({
         top: 0,
         left: 0,
         behavior: 'auto',
       });
 
-      horizontallyScrollableContainerRef.current.scrollTo({
+      horizontallyScrollableContainerRef.current?.scrollTo?.({
         top: 0,
         left: 0,
         behavior: 'smooth',
