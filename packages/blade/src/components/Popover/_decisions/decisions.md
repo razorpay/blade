@@ -13,6 +13,7 @@ The popover component is used to provide context as well as enable users to take
 - [Library](#library)
 - [Motion](#motion)
 - [Accessibility](#accessibility)
+- [Open Question](#open-question)
 - [References](#references)
 
 ## Design
@@ -126,6 +127,52 @@ And give relavant feedback for [motion in this thread](https://razorpay.slack.co
 
 - Popover will follow the [modaldialog](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/) WAI-ARIA pattern.
 - This can be achived with FloatingUI's [`modal` prop](https://floating-ui.com/docs/popover#modal)
+
+## Open Question
+
+How should the footer API look like? 
+
+- Should we keep footer flexible and accept React.ReactNode? 
+- Or should we follow similar API like Alert? 
+
+**Flexible API:**
+
+```jsx
+<Popover
+  content={<Text>Any content</Text>}
+  footerContent={
+    <Box display="flex">
+      <Button>Primary me</Button>
+      <Button variant="secondary">Secondary me</Button>
+    </Box>
+  }
+>
+  <IconButton icon={InfoIcon} />
+</Popover>
+```
+
+**Contrained API:** 
+
+```jsx
+<Popover
+  content={<Text>Any content</Text>}
+  footerContent={<Text>Slotted content of Footer</Text>}
+  footerActions={{
+    primary: {
+      text: "Primary me",
+      onClick: () => {},
+    },
+    secondary: {
+      text: "Secondary me",
+      onClick: () => {},
+    },
+  }}
+>
+  <IconButton icon={InfoIcon} />
+</Popover>
+```
+
+**My opinion:** We should go ahead with Flexible API because even if we go with constrained API, users will anyway still be able to pass React.ReactNode as `footerContent` and could just skip the `footerActions` altogether.
 
 ## References
 
