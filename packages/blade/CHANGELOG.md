@@ -1,5 +1,15 @@
 # @razorpay/blade
 
+## 10.4.0
+
+### Minor Changes
+
+- a561aaca: feat: Add new `Chip` and `ChipGroup` components
+
+### Patch Changes
+
+- 9278e808: fix(blade): use thicker border in selected card
+
 ## 10.3.2
 
 ### Patch Changes
