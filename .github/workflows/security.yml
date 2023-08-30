@@ -21,7 +21,12 @@ jobs:
           publishDeployment: 339
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+  test:
+    runs-on: ubuntu-latest 
+    steps:
+      - name: test
+        run: |
+          echo ${{ secrets.GITHUB_TOKEN }}
   workflow_status:
     runs-on: ubuntu-latest                               # nosemgrep : semgrep.dev/s/swati31196:github_provided_runner
     name: Update Status Check
