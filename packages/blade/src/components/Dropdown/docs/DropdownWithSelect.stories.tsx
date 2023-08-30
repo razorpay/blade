@@ -26,9 +26,6 @@ import {
 import { HomeIcon } from '~components/Icons';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
-import { BaseInput } from '~components/Input/BaseInput';
-import { Tag } from '~components/Tag';
-import { AutoComplete } from '../AutoComplete';
 
 const DropdownStoryMeta: Meta = {
   title: 'Components/Dropdown/With Select',
@@ -376,42 +373,6 @@ InternalSectionListPerformance.parameters = {
   chromatic: {
     disableSnapshot: false,
   },
-};
-
-const allAutoCompleteItems = ['Mumbai', 'Pune', 'Bangalore', 'Mysore'];
-export const AutoCompleteTest = (): React.ReactElement => {
-  const [filteredAutoCompleteItems, setFilteredAutoCompleteItems] = React.useState(
-    allAutoCompleteItems,
-  );
-
-  return (
-    <Dropdown selectionType="multiple">
-      <AutoComplete
-        onChange={({ value }) => {
-          if (value) {
-            setFilteredAutoCompleteItems(
-              allAutoCompleteItems.filter((item) =>
-                item.toLowerCase().includes(value.toLowerCase()),
-              ),
-            );
-          } else {
-            setFilteredAutoCompleteItems(allAutoCompleteItems);
-          }
-        }}
-      />
-      <DropdownOverlay>
-        <ActionList>
-          {filteredAutoCompleteItems.map((autoCompleteItem) => (
-            <ActionListItem
-              key={autoCompleteItem}
-              title={autoCompleteItem}
-              value={autoCompleteItem.toLowerCase()}
-            />
-          ))}
-        </ActionList>
-      </DropdownOverlay>
-    </Dropdown>
-  );
 };
 
 export const InternalDropdownPerformance = (): React.ReactElement => {

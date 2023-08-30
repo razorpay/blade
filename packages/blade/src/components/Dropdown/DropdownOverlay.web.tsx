@@ -38,7 +38,6 @@ const _DropdownOverlay = ({
   const { theme } = useTheme();
   const bottomSheetAndDropdownGlue = useBottomSheetAndDropdownGlue();
 
-  console.log({ dropdownTriggerer });
   const isMenu = dropdownTriggerer !== 'SelectInput' && dropdownTriggerer !== 'AutoComplete';
 
   const { refs, floatingStyles, context } = useFloating({

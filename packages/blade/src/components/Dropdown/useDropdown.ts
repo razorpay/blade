@@ -44,6 +44,13 @@ type DropdownContextType = {
    */
   options: OptionsType;
   setOptions: (value: OptionsType) => void;
+
+  /**
+   * Filtered values for AutoComplete Inputs
+   */
+  filteredValues: string[];
+  setFilteredValues: (values: string[]) => void;
+
   /** Currently active (focussed) index  */
   activeIndex: number;
   setActiveIndex: (value: number) => void;
@@ -116,10 +123,11 @@ const DropdownContext = React.createContext<DropdownContextType>({
   setControlledValueIndices: noop,
   options: [],
   setOptions: noop,
+  filteredValues: [],
+  setFilteredValues: noop,
   activeIndex: -1,
   setActiveIndex: noop,
   activeTagIndex: -1,
-
   setActiveTagIndex: noop,
   shouldIgnoreBlurAnimation: false,
   setShouldIgnoreBlurAnimation: noop,

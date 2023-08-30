@@ -241,8 +241,11 @@ type BaseInputCommonProps = FormInputLabelProps &
     autoCapitalize?: 'none' | 'sentences' | 'words' | 'characters';
 
     /**
-     * Sets different height restriction for tag-based inputs
-     * Unlike as="textarea" prop, this does not make input render as textarea element while increasing height.
+     * constraints the height of input to given number rows
+     *
+     * When set to expandable, input takes 1 row in the begining and expands to take 3 when active
+     *
+     * @default 'single'
      */
     maxTagRows?: 'single' | 'multiple' | 'expandable';
 

@@ -1,10 +1,9 @@
 import React from 'react';
 import isEmpty from 'lodash/isEmpty';
 import { BaseInput } from '../BaseInput';
-import type { BaseInputProps } from '../BaseInput';
 import { SelectChevronIcon } from './SelectChevronIcon';
+import type { SelectInputProps } from './types';
 import { useDropdown } from '~components/Dropdown/useDropdown';
-import type { IconComponent } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
 import { VisuallyHidden } from '~components/VisuallyHidden';
 import { isReactNative } from '~utils';
@@ -14,81 +13,6 @@ import type { BladeElementRef } from '~utils/types';
 import { MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getTagsGroup } from '~components/Tag/getTagsGroup';
-
-type SelectInputCommonProps = Pick<
-  BaseInputProps,
-  | 'label'
-  | 'accessibilityLabel'
-  | 'labelPosition'
-  | 'necessityIndicator'
-  | 'validationState'
-  | 'helpText'
-  | 'errorText'
-  | 'successText'
-  | 'name'
-  | 'isDisabled'
-  | 'isRequired'
-  | 'prefix'
-  | 'suffix'
-  | 'autoFocus'
-  | 'onClick'
-  | 'onFocus'
-  | 'onBlur'
-  | 'placeholder'
-  | 'testID'
-> & {
-  icon?: IconComponent;
-  /**
-   * Controlled value of the Select. Use it in combination of `onChange`.
-   *
-   * Check out [Controlled Dropdown Documentation](https://blade.razorpay.com/?path=/story/components-dropdown-with-select--controlled-dropdown&globals=measureEnabled:false) for example.
-   */
-  value?: string | string[];
-  /**
-   * Used to set the default value of SelectInput when it's uncontrolled. Use `value` instead for controlled SelectInput
-   */
-  defaultValue?: string | string[];
-  onChange?: ({ name, values }: { name?: string; values: string[] }) => void;
-  /**
-   * constraints the height of input to given number rows
-   *
-   * When set to expandable, input takes 1 row in the begining and expands to take 3 when active
-   *
-   * @default 'single'
-   */
-  maxRows?: BaseInputProps['maxTagRows'];
-};
-
-/*
-  Mandatory accessibilityLabel prop when label is not provided
-*/
-type SelectInputPropsWithA11yLabel = {
-  /**
-   * Label to be shown for the input field
-   */
-  label?: undefined;
-  /**
-   * Accessibility label for the input
-   */
-  accessibilityLabel: string;
-};
-
-/*
-  Optional accessibilityLabel prop when label is provided
-*/
-type SelectInputPropsWithLabel = {
-  /**
-   * Label to be shown for the input field
-   */
-  label: string;
-  /**
-   * Accessibility label for the input
-   */
-  accessibilityLabel?: string;
-};
-
-type SelectInputProps = (SelectInputPropsWithA11yLabel | SelectInputPropsWithLabel) &
-  SelectInputCommonProps;
 
 const _SelectInput = (
   props: SelectInputProps,
@@ -348,4 +272,4 @@ const SelectInput = assignWithoutSideEffects(React.forwardRef(_SelectInput), {
   componentId: componentIds.triggers.SelectInput,
 });
 
-export { SelectInput, SelectInputProps };
+export { SelectInput };

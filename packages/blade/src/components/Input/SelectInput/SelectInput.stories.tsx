@@ -1,9 +1,9 @@
 /* eslint-disable react-native-a11y/has-valid-accessibility-descriptors */
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { ComponentStory } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import React from 'react';
-import type { SelectInputProps } from './SelectInput';
 import { SelectInput } from './SelectInput';
+import { AutoComplete } from './AutoComplete';
 import iconMap from '~components/Icons/iconMap';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
@@ -217,7 +217,7 @@ export default {
       ),
     },
   },
-} as Meta<SelectInputProps>;
+};
 
 const SelectInputTemplate: ComponentStory<typeof SelectInput> = ({ icon, ...args }) => {
   return (
@@ -243,5 +243,21 @@ export const SelectInputWithoutLabel = SelectInputTemplate.bind({});
 SelectInputWithoutLabel.args = {
   label: undefined,
   accessibilityLabel: 'City',
+};
+
+export const AutoCompleteUncontrolled = (): React.ReactElement => {
+  return (
+    <Dropdown selectionType="multiple">
+      <AutoComplete label="City" />
+      <DropdownOverlay>
+        <ActionList>
+          <ActionListItem title="Mumbai" value="mumbai" />
+          <ActionListItem title="Pune" value="pune" />
+          <ActionListItem title="Bengaluru" value="bengaluru" />
+          <ActionListItem title="Ooty" value="ooty" />
+        </ActionList>
+      </DropdownOverlay>
+    </Dropdown>
+  );
 };
 SelectInputWithoutLabel.storyName = 'SelectInput without Label';

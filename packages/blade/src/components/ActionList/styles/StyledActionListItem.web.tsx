@@ -7,7 +7,7 @@ const StyledActionListItem = styled(BaseBox)<StyledActionListItemProps>((props) 
   return {
     ...getBaseActionListItemStyles(props),
     // fixes bug in web where the if rendered as a link it's messing the styles
-    display: 'block',
+    display: props.isVisible ? 'block' : 'none',
     // Web-specific styles
     '&:hover:not([aria-disabled=true])': {
       backgroundColor:
