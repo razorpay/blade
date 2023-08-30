@@ -484,6 +484,21 @@ const ReleasedInLink = ({ version }: { version?: string }): React.ReactElement =
   );
 };
 
+/**
+ * Compares two versions and returns true if newVersion is newer than oldVersion
+ */
+function isNewerVersion(oldVersion: string, newVersion: string): boolean {
+  const oldParts = oldVersion.split('.');
+  const newParts = newVersion.split('.');
+  for (let i = 0; i < newParts.length; i++) {
+    const a = parseInt(newParts[i], 10);
+    const b = parseInt(oldParts[i], 10);
+    if (a > b) return true;
+    if (a < b) return false;
+  }
+  return false;
+}
+
 const ComponentStatusTable = (): React.ReactElement => {
   const unreleasedComponentsSort: ComponentStatuses[] = [
     'in-design',
@@ -507,7 +522,8 @@ const ComponentStatusTable = (): React.ReactElement => {
         ? 1
         : -1;
     }
-    return b.releasedIn.localeCompare(a.releasedIn);
+
+    return isNewerVersion(b.releasedIn, a.releasedIn) ? -1 : 1;
   });
 
   return (
