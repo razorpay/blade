@@ -29,7 +29,7 @@ import { Badge, InfoIcon } from '@razorpay/components';
 </Badge>
 ```
 
-## Badge Differentiation
+## Difference between `Badge` vs `Tag` vs `Chip`
 
 <img width="100%" src="./badge-differentiation.png" alt="Differences between Chip, Tag, and Badge components" />
 
