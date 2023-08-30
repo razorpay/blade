@@ -53,7 +53,11 @@ const Page = (): React.ReactElement => {
             return (
               <Box>
                 <Text> Select Business type: </Text>
-                <ChipGroup defaultValue="proprietorship" onChange={({name, value}) => console.log({name, value})}>
+                <ChipGroup
+                  accessibilityLabel="Choose one business type from the options below"
+                  defaultValue="proprietorship"
+                  onChange={({name, values}) => console.log({name, values})}
+                >
                   <Chip value="proprietorship">Proprietorship</Chip>
                   <Chip value="public">Public</Chip>
                   <Chip value="small-business">Small Business</Chip>
