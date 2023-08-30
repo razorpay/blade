@@ -198,7 +198,7 @@ exports[`<Radio /> should render radio with label 1`] = `
       aria-labelledby="radio-group-3-label"
       class="c0"
       data-blade-component="radio-group"
-      role="group"
+      role="radiogroup"
     >
       <span
         data-blade-component="form-label"
@@ -490,7 +490,7 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
       aria-labelledby="radio-group-10-label"
       class="c0"
       data-blade-component="radio-group"
-      role="group"
+      role="radiogroup"
     >
       <span
         data-blade-component="form-label"

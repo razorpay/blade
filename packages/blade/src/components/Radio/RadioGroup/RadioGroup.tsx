@@ -7,7 +7,7 @@ import { FormHint, FormLabel } from '~components/Form';
 import { SelectorGroupField } from '~components/Form/Selector/SelectorGroupField';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import { getPlatformType, useBreakpoint } from '~utils';
+import { useBreakpoint } from '~utils';
 import { useTheme } from '~components/BladeProvider';
 import type { TestID } from '~utils/types';
 import { makeSize } from '~utils/makeSize';
@@ -126,7 +126,6 @@ const RadioGroup = ({
   const showError = validationState === 'error' && errorText;
   const showHelpText = !showError && helpText;
   const accessibilityText = `${showError ? errorText : ''} ${showHelpText ? helpText : ''}`.trim();
-  const isReactNative = getPlatformType() === 'react-native';
   const gap = radioSizes.group.gap[size][matchedDeviceType];
   const childCount = React.Children.count(children);
 
@@ -136,7 +135,7 @@ const RadioGroup = ({
         <SelectorGroupField
           position={labelPosition}
           labelledBy={ids.labelId}
-          accessibilityRole={isReactNative ? 'radiogroup' : 'group'}
+          accessibilityRole="radiogroup"
           componentName="radio-group"
           testID={testID}
         >
