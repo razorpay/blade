@@ -9,7 +9,7 @@ const StyledChevronIconContainer = styled(TouchableOpacity)((_props) => ({
   margin: 'auto',
 }));
 
-const SelectChevronIcon = (props: SelectChevronIconProps): React.ReactElement => {
+const InputChevronIcon = (props: SelectChevronIconProps): React.ReactElement => {
   return (
     <StyledChevronIconContainer accessibilityLabel="Chevron Icon" onPress={props.onClick}>
       <ChevronDownIcon
@@ -26,4 +26,4 @@ const SelectChevronIcon = (props: SelectChevronIconProps): React.ReactElement =>
   );
 };
 
-export { SelectChevronIcon };
+export { InputChevronIcon };

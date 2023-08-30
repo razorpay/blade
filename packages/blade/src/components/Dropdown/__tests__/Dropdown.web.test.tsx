@@ -5,7 +5,7 @@ import { Dropdown, DropdownLink, DropdownOverlay } from '../index';
 import { DropdownButton } from '../DropdownButton';
 import { DropdownFooter, DropdownHeader } from '../DropdownHeaderFooter';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
-import { SelectInput } from '~components/Input/SelectInput/SelectInput';
+import { SelectInput } from '~components/Input/DropdownInputTriggers/SelectInput';
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { Button } from '~components/Button';
 import { Text } from '~components/Typography';

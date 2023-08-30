@@ -16,7 +16,7 @@ export * from './Input/TextInput';
 export * from './Input/PasswordInput';
 export * from './Input/TextArea';
 export * from './Input/OTPInput';
-export * from './Input/SelectInput';
+export * from './Input/DropdownInputTriggers';
 export * from './Indicator';
 export * from './Link';
 export * from './List';

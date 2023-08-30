@@ -2,7 +2,7 @@ import type { SelectChevronIconProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
 import { ChevronDownIcon, ChevronUpIcon } from '~components/Icons';
 
-const SelectChevronIcon = (props: SelectChevronIconProps): React.ReactElement => {
+const InputChevronIcon = (props: SelectChevronIconProps): React.ReactElement => {
   return (
     <BaseBox
       display="flex"
@@ -25,4 +25,4 @@ const SelectChevronIcon = (props: SelectChevronIconProps): React.ReactElement =>
   );
 };
 
-export { SelectChevronIcon };
+export { InputChevronIcon };

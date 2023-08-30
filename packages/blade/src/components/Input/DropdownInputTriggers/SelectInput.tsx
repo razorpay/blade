@@ -1,7 +1,7 @@
 import React from 'react';
 import isEmpty from 'lodash/isEmpty';
 import { BaseInput } from '../BaseInput';
-import { SelectChevronIcon } from './SelectChevronIcon';
+import { InputChevronIcon } from './InputChevronIcon';
 import type { SelectInputProps } from './types';
 import { useDropdown } from '~components/Dropdown/useDropdown';
 import BaseBox from '~components/Box/BaseBox';
@@ -221,7 +221,7 @@ const _SelectInput = (
         shouldIgnoreBlurAnimation={shouldIgnoreBlurAnimation}
         setShouldIgnoreBlurAnimation={setShouldIgnoreBlurAnimation}
         interactionElement={
-          <SelectChevronIcon
+          <InputChevronIcon
             onClick={() => {
               if (!props.isDisabled) {
                 // Icon onClicks to the SelectInput itself

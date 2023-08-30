@@ -6,7 +6,7 @@ export type SelectChevronIconProps = {
   isOpen?: boolean;
 };
 
-type DropdownBaseInputTriggerCommonProps = Pick<
+type DropdownInputTriggersCommonProps = Pick<
   BaseInputProps,
   | 'label'
   | 'accessibilityLabel'
@@ -53,7 +53,7 @@ type DropdownBaseInputTriggerCommonProps = Pick<
 /*
   Mandatory accessibilityLabel prop when label is not provided
 */
-type DropdownBaseInputTriggerPropsWithA11yLabel = {
+type DropdownInputTriggersPropsWithA11yLabel = {
   /**
    * Label to be shown for the input field
    */
@@ -67,7 +67,7 @@ type DropdownBaseInputTriggerPropsWithA11yLabel = {
 /*
   Optional accessibilityLabel prop when label is provided
 */
-type DropdownBaseInputTriggerPropsWithLabel = {
+type DropdownInputTriggersPropsWithLabel = {
   /**
    * Label to be shown for the input field
    */
@@ -78,16 +78,16 @@ type DropdownBaseInputTriggerPropsWithLabel = {
   accessibilityLabel?: string;
 };
 
-type DropdownBaseInputTriggerProps = (
-  | DropdownBaseInputTriggerPropsWithA11yLabel
-  | DropdownBaseInputTriggerPropsWithLabel
+type DropdownInputTriggersProps = (
+  | DropdownInputTriggersPropsWithA11yLabel
+  | DropdownInputTriggersPropsWithLabel
 ) &
-  DropdownBaseInputTriggerCommonProps;
+  DropdownInputTriggersCommonProps;
 
-export type SelectInputProps = DropdownBaseInputTriggerProps;
+export type SelectInputProps = DropdownInputTriggersProps;
 
 // @TODO add jsdoc in documentation PR
-export type AutoCompleteProps = DropdownBaseInputTriggerCommonProps & {
+export type AutoCompleteProps = DropdownInputTriggersCommonProps & {
   onInputValueChange?: BaseInputProps['onChange'];
   inputValue?: BaseInputProps['value'];
 };

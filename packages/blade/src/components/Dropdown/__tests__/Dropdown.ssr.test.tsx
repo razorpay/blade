@@ -4,7 +4,7 @@ import { waitFor } from '@testing-library/react';
 import { Dropdown, DropdownOverlay } from '../index';
 import { DropdownFooter, DropdownHeader } from '../DropdownHeaderFooter';
 import renderWithSSR from '~utils/testing/renderWithSSR.web';
-import { SelectInput } from '~components/Input/SelectInput/SelectInput';
+import { SelectInput } from '~components/Input/DropdownInputTriggers/SelectInput';
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { Button } from '~components/Button';
 
