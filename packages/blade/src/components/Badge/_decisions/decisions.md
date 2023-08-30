@@ -26,7 +26,7 @@ import { Badge, InfoIcon } from '@razorpay/components';
 
 <Badge variant="positive" contrast="high" icon={InfoIcon} size="large" fontWeight="bold">
   New
-</Badge>;
+</Badge>
 ```
 
 ## Badge Differentiation
