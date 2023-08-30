@@ -21,7 +21,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
         {
           "borderColor": "transparent",
           "borderStyle": "solid",
-          "borderWidth": 1.5,
+          "borderWidth": 2,
         },
       ]
     }
@@ -610,7 +610,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
         {
           "borderColor": "transparent",
           "borderStyle": "solid",
-          "borderWidth": 1.5,
+          "borderWidth": 2,
         },
       ]
     }
@@ -1183,7 +1183,7 @@ exports[`<Card /> should render a Card without 0 padding 1`] = `
         {
           "borderColor": "transparent",
           "borderStyle": "solid",
-          "borderWidth": 1.5,
+          "borderWidth": 2,
         },
       ]
     }
@@ -1261,7 +1261,7 @@ exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
         {
           "borderColor": "transparent",
           "borderStyle": "solid",
-          "borderWidth": 1.5,
+          "borderWidth": 2,
         },
       ]
     }
@@ -1374,7 +1374,7 @@ exports[`<Card /> should render a plain Card 1`] = `
         {
           "borderColor": "transparent",
           "borderStyle": "solid",
-          "borderWidth": 1.5,
+          "borderWidth": 2,
         },
       ]
     }
