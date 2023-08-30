@@ -84,6 +84,22 @@ type DropdownInputTriggersProps = (
 ) &
   DropdownInputTriggersCommonProps;
 
+export type BaseDropdownInputTriggerProps = Omit<
+  DropdownInputTriggersProps,
+  // AutoComplete and SelectInput have slightly different implementations for keydown and change
+  'onKeydown'
+> & {
+  onTriggerKeydown: BaseInputProps['onKeyDown'];
+  /**
+   * For AutoComplete
+   */
+  onInputValueChange?: BaseInputProps['onChange'];
+  /**
+   * For AutoComplete
+   */
+  inputValue?: BaseInputProps['value'];
+};
+
 export type SelectInputProps = DropdownInputTriggersProps;
 
 // @TODO add jsdoc in documentation PR

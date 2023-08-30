@@ -70,7 +70,6 @@ const _Dropdown = ({
   const [activeTagIndex, setActiveTagIndex] = React.useState(-1);
   const [shouldIgnoreBlurAnimation, setShouldIgnoreBlurAnimation] = React.useState(false);
   const [hasFooterAction, setHasFooterAction] = React.useState(false);
-  const [hasLabelOnLeft, setHasLabelOnLeft] = React.useState(false);
   const [isKeydownPressed, setIsKeydownPressed] = React.useState(false);
   const [changeCallbackTriggerer, setChangeCallbackTriggerer] = React.useState<
     DropdownContextType['changeCallbackTriggerer']
@@ -169,8 +168,6 @@ const _Dropdown = ({
       selectionType,
       hasFooterAction,
       setHasFooterAction,
-      hasLabelOnLeft,
-      setHasLabelOnLeft,
       dropdownTriggerer: dropdownTriggerer.current,
       changeCallbackTriggerer,
       setChangeCallbackTriggerer,
@@ -190,7 +187,6 @@ const _Dropdown = ({
       shouldIgnoreBlurAnimation,
       selectionType,
       hasFooterAction,
-      hasLabelOnLeft,
       isKeydownPressed,
       changeCallbackTriggerer,
       isControlled,

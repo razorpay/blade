@@ -244,6 +244,7 @@ SelectInputWithoutLabel.args = {
   label: undefined,
   accessibilityLabel: 'City',
 };
+SelectInputWithoutLabel.storyName = 'SelectInput without Label';
 
 export const AutoCompleteUncontrolled = (): React.ReactElement => {
   return (
@@ -260,4 +261,3 @@ export const AutoCompleteUncontrolled = (): React.ReactElement => {
     </Dropdown>
   );
 };
-SelectInputWithoutLabel.storyName = 'SelectInput without Label';
