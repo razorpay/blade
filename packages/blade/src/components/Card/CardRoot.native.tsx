@@ -12,8 +12,7 @@ import { makeAccessible } from '~utils/makeAccessible/makeAccessible.native';
 const StyledCardRoot = styled(BaseBox)<CardRootProps>(({ isSelected, ...props }) => {
   const selectedColor = isSelected ? props.theme.colors.brand.primary[500] : 'transparent';
   return {
-    // TODO: use thicker
-    border: `${props.theme.border.width.thick}px solid ${selectedColor}`,
+    border: `${props.theme.border.width.thicker}px solid ${selectedColor}`,
   };
 });
 
