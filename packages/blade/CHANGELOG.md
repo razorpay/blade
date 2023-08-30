@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 10.4.1
+
+### Patch Changes
+
+- 6ca6d35b: fix(Amount): correctly round the value upto 2 decimal places
+
 ## 10.4.0
 
 ### Minor Changes
