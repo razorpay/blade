@@ -122,4 +122,20 @@ type AnimatedChipProps = {
   children: React.ReactNode;
 };
 
-export type { AnimatedChipProps, ChipGroupContextType, ChipGroupProps, ChipProps, State };
+type StyledChipWrapperProps = {
+  intent: ChipGroupProps['intent'];
+  borderColor: DotNotationColorStringToken<Theme['colors']>;
+  isChecked?: boolean;
+  isDisabled?: boolean;
+  theme: Theme;
+  children: React.ReactNode;
+};
+
+export type {
+  AnimatedChipProps,
+  ChipGroupContextType,
+  ChipGroupProps,
+  ChipProps,
+  State,
+  StyledChipWrapperProps,
+};

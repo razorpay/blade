@@ -70,6 +70,7 @@ const getStories = () => {
     './src/components/Checkbox/Checkbox.stories.tsx': require('../../src/components/Checkbox/Checkbox.stories.tsx'),
     './src/components/Checkbox/CheckboxGroup.stories.tsx': require('../../src/components/Checkbox/CheckboxGroup.stories.tsx'),
     './src/components/Chip/Chip.stories.tsx': require('../../src/components/Chip/Chip.stories.tsx'),
+    './src/components/Chip/ChipGroup.stories.tsx': require('../../src/components/Chip/ChipGroup.stories.tsx'),
     './src/components/Collapsible/Collapsible.stories.tsx': require('../../src/components/Collapsible/Collapsible.stories.tsx'),
     './src/components/Counter/Counter.stories.tsx': require('../../src/components/Counter/Counter.stories.tsx'),
     './src/components/Divider/Divider.stories.tsx': require('../../src/components/Divider/Divider.stories.tsx'),

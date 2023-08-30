@@ -1,17 +1,17 @@
 import React from 'react';
-import getIn from 'lodash/get';
 import isEmpty from 'lodash/isEmpty';
 import { useChipGroupContext } from './ChipGroupContext';
 import {
   chipIconSizes,
   chipTextSizes,
   chipColorTokens,
-  getChipHoverTokens,
+  getChipInputHoverTokens,
   chipHeightTokens,
   chipHorizontalPaddingTokens,
 } from './chipTokens';
 import type { ChipProps } from './types';
 import { AnimatedChip } from './AnimatedChip';
+import { StyledChipWrapper } from './StyledChipWrapper';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
 import BaseBox from '~components/Box/BaseBox';
@@ -45,7 +45,6 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
   const groupProps = useChipGroupContext();
   const isInsideGroup = !isEmpty(groupProps);
   const [isPressed, setIsPressed] = React.useState(false);
-  const [isHovered, setIsHovered] = React.useState(false);
 
   if (__DEV__) {
     if (!isInsideGroup) {
@@ -95,16 +94,6 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
   const handlePointerPressedOut = React.useCallback(() => {
     if (_isDisabled) return;
     setIsPressed(false);
-  }, [_isDisabled]);
-
-  const handleMouseEnter = React.useCallback(() => {
-    if (_isDisabled) return;
-    setIsHovered(true);
-  }, [_isDisabled]);
-
-  const handleMouseLeave = React.useCallback(() => {
-    if (_isDisabled) return;
-    setIsHovered(false);
   }, [_isDisabled]);
 
   const handleKeyboardPressedIn = React.useCallback(
@@ -162,13 +151,11 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
         onKeyUp={handleKeyboardPressedOut}
         inputProps={isReactNative() ? inputProps : {}}
         style={{ cursor: _isDisabled ? 'not-allowed' : 'pointer' }}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
       >
         <BaseBox display="flex" flexDirection="column">
           <BaseBox display="flex" alignItems="center" flexDirection="row">
             <SelectorInput
-              hoverTokens={getChipHoverTokens(_intent)}
+              hoverTokens={getChipInputHoverTokens(_intent)}
               isChecked={state.isChecked}
               isDisabled={_isDisabled}
               inputProps={inputProps}
@@ -180,13 +167,17 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
               isPressed={isPressed}
               isDesktop={matchedDeviceType === 'desktop'}
             >
-              <BaseBox
+              <StyledChipWrapper
+                borderColor={chipBorderColor}
+                isChecked={_isChecked}
+                isDisabled={_isDisabled}
+                intent={_intent}
                 display="flex"
                 flexDirection="row"
                 justifyContent="center"
                 alignItems="center"
                 overflow="hidden"
-                backgroundColor={isHovered ? 'transparent' : chipBackgroundColor}
+                backgroundColor={chipBackgroundColor}
                 borderRadius="max"
                 borderWidth={['xsmall', 'small'].includes(_size) ? 'thinner' : 'thin'}
                 paddingLeft={
@@ -200,9 +191,6 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
                   ]
                 }
                 height={makeSize(chipHeightTokens[_size])}
-                style={{
-                  borderColor: _isChecked ? getIn(theme.colors, chipBorderColor) : 'transparent',
-                }}
               >
                 {Icon ? (
                   <BaseBox paddingRight="spacing.3" display="flex">
@@ -217,7 +205,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
                 >
                   {children}
                 </Text>
-              </BaseBox>
+              </StyledChipWrapper>
             </AnimatedChip>
           </BaseBox>
         </BaseBox>

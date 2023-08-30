@@ -175,12 +175,12 @@ const chipColorTokens: ChipColorTokens = {
   },
 };
 
-const getChipHoverTokens = (intent: ChipGroupProps['intent']): SelectorInputHoverTokens => {
+const getChipInputHoverTokens = (intent: ChipGroupProps['intent']): SelectorInputHoverTokens => {
   return {
     default: {
       background: {
-        checked: `colors.${chipColorTokens.background[intent || 'none'].hover}` as never,
-        unchecked: 'colors.brand.gray.a50.lowContrast',
+        checked: 'transparent',
+        unchecked: 'transparent',
       },
       border: {
         checked: `colors.${chipColorTokens.border[intent || 'none'].hover}` as never,
@@ -225,7 +225,7 @@ export {
   chipColorTokens,
   chipHeightTokens,
   chipGroupGapTokens,
-  getChipHoverTokens,
+  getChipInputHoverTokens,
   chipHorizontalPaddingTokens,
   chipTextSizes,
   chipIconSizes,

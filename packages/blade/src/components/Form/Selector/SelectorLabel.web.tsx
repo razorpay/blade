@@ -17,8 +17,6 @@ const SelectorLabel = ({
   children,
   componentName,
   testID,
-  onMouseEnter,
-  onMouseLeave,
   onMouseDown,
   onMouseUp,
   onMouseOut,
@@ -38,8 +36,6 @@ const SelectorLabel = ({
       }}
       onMouseUp={onMouseUp}
       onMouseOut={onMouseOut}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
       onKeyDown={onKeyDown}
       onKeyUp={onKeyUp}
       style={style}
