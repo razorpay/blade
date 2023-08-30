@@ -157,16 +157,20 @@ export function getIndexByLetter(options: string[], filter: string, startIndex =
 /**
  * This functions makes sure the optionsIndex is not going out of possible options
  */
-export function getUpdatedIndex(
-  currentIndex: number,
-  maxIndex: number,
-  action: SelectActionsType,
-): number {
+export function getUpdatedIndex({
+  currentIndex,
+  maxIndex,
+  actionType,
+}: {
+  currentIndex: number;
+  maxIndex: number;
+  actionType: SelectActionsType;
+}): number {
   // On PageUP or PageDown, we jump focus by 10 items or to the first or last element
   // Details: https://www.w3.org/WAI/ARIA/apg/example-index/combobox/combobox-select-only.html#:~:text=PageUp,to%20last%20option).
   const pageSize = 10;
 
-  switch (action) {
+  switch (actionType) {
     case SelectActions.First:
       return 0;
     case SelectActions.Last:

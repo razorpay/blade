@@ -216,6 +216,7 @@ const useDropdown = (): UseDropdownReturnValue => {
     setChangeCallbackTriggerer,
     isControlled,
     setControlledValueIndices,
+    filteredValues,
     ...rest
   } = React.useContext(DropdownContext);
 
@@ -308,9 +309,32 @@ const useDropdown = (): UseDropdownReturnValue => {
    */
   const onOptionChange = (actionType: SelectActionsType, index?: number): void => {
     setActiveTagIndex(-1);
-    const max = options.length - 1;
     const newIndex = index ?? activeIndex;
-    setActiveIndex(getUpdatedIndex(newIndex, max, actionType));
+    let updatedIndex: number;
+    if (rest.dropdownTriggerer === 'AutoComplete' && filteredValues.length > 0) {
+      // When its autocomplete, we don't loop over all options. We only loop on filtered options
+
+      const filteredIndexes = filteredValues
+        .map((filteredValue) => options.findIndex((option) => option.value === filteredValue))
+        .sort();
+
+      updatedIndex =
+        filteredIndexes[
+          getUpdatedIndex({
+            currentIndex: filteredIndexes.indexOf(newIndex),
+            maxIndex: filteredIndexes.length - 1,
+            actionType,
+          })
+        ];
+    } else {
+      updatedIndex = getUpdatedIndex({
+        currentIndex: newIndex,
+        maxIndex: options.length - 1,
+        actionType,
+      });
+    }
+    setActiveIndex(updatedIndex);
+
     const optionValues = options.map((option) => option.value);
     ensureScrollVisiblity(newIndex, rest.actionListItemRef.current, optionValues);
   };
@@ -347,6 +371,10 @@ const useDropdown = (): UseDropdownReturnValue => {
   const onComboType = (letter: string, actionType: SelectActionsType): void => {
     // open the listbox if it is closed
     setIsOpen(true);
+
+    if (rest.dropdownTriggerer === 'AutoComplete') {
+      return;
+    }
 
     if (typeof searchTimeout === 'number') {
       window.clearTimeout(searchTimeout);
@@ -412,6 +440,7 @@ const useDropdown = (): UseDropdownReturnValue => {
     close,
     selectedIndices,
     setSelectedIndices,
+    filteredValues,
     removeOption,
     setControlledValueIndices,
     onTriggerClick,

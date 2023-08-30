@@ -9,7 +9,6 @@ import { componentIds } from '~components/Dropdown/dropdownUtils';
 
 const _AutoComplete = (props: AutoCompleteProps): React.ReactElement => {
   const [uncontrolledInputValue, setInputValue] = React.useState('');
-  const [activeTagIndex, setActiveTagIndex] = React.useState(-1);
   const inputValue = props.inputValue ?? uncontrolledInputValue;
 
   const {
@@ -22,7 +21,22 @@ const _AutoComplete = (props: AutoCompleteProps): React.ReactElement => {
     isControlled,
     options,
     setFilteredValues,
+    activeTagIndex,
+    setActiveTagIndex,
+    setActiveIndex,
+    filteredValues: globalFilteredValues,
   } = useDropdown();
+
+  const setFirstItemActive = React.useCallback((): void => {
+    const firstItemOptionIndex = options.findIndex(
+      (option) => option.value === globalFilteredValues[0],
+    );
+
+    if (firstItemOptionIndex >= 0) {
+      setActiveIndex(firstItemOptionIndex);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [globalFilteredValues]);
 
   React.useEffect(() => {
     if (props.filteredValues) {
@@ -32,6 +46,7 @@ const _AutoComplete = (props: AutoCompleteProps): React.ReactElement => {
 
   const onInputValueChangeCallback: BaseInputProps['onChange'] = ({ name, value }) => {
     setInputValue(value ?? '');
+    setFirstItemActive();
     props.onInputValueChange?.({ name, value });
     setActiveTagIndex(-1);
 
@@ -70,7 +85,6 @@ const _AutoComplete = (props: AutoCompleteProps): React.ReactElement => {
         setSelectedIndices(selectedIndices.slice(0, -1));
       }
     }
-
     onTriggerKeydown?.(e);
   };
 
