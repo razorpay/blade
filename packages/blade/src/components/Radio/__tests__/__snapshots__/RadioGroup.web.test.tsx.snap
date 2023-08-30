@@ -197,8 +197,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c8:hover + div,
-.c8:focus + div {
+.c8:hover + div {
   border-color: hsla(214,18%,69%,1);
   background-color: hsla(216,15%,54%,0.09);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -628,8 +627,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c8:hover + div,
-.c8:focus + div {
+.c8:hover + div {
   border-color: hsla(214,18%,69%,1);
   background-color: hsla(216,15%,54%,0.09);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
