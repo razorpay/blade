@@ -261,3 +261,65 @@ export const AutoCompleteUncontrolled = (): React.ReactElement => {
     </Dropdown>
   );
 };
+
+const cities = [
+  {
+    title: 'Mumbai',
+    value: 'mumbai',
+    keywords: ['maharashtra'],
+  },
+  {
+    title: 'Pune',
+    value: 'pune',
+    keywords: ['maharashtra'],
+  },
+  {
+    title: 'Bengaluru',
+    value: 'bengaluru',
+    keywords: ['karnataka', 'bangalore'],
+  },
+  {
+    title: 'Ooty',
+    value: 'ooty',
+    keywords: ['tamil nadu'],
+  },
+];
+export const AutoCompleteControlled = (): React.ReactElement => {
+  const [inputValue, setInputValue] = React.useState('');
+  const [filteredValues, setFilteredValues] = React.useState<string[]>([]);
+
+  return (
+    <Dropdown selectionType="multiple">
+      <AutoComplete
+        label="City"
+        inputValue={inputValue}
+        onInputValueChange={({ value }) => {
+          setInputValue(value ?? '');
+          if (value) {
+            const filteredItems = cities
+              .filter(
+                (city) =>
+                  city.title.toLowerCase().startsWith(value.toLowerCase()) ||
+                  city.keywords.find((keyword) =>
+                    keyword.toLowerCase().includes(value.toLowerCase()),
+                  ),
+              )
+              .map((city) => city.value);
+            setFilteredValues(filteredItems);
+          } else {
+            setFilteredValues([]);
+          }
+        }}
+        filteredValues={filteredValues}
+        helpText="Try typing 'maharashtra' in input"
+      />
+      <DropdownOverlay>
+        <ActionList>
+          {cities.map((city) => (
+            <ActionListItem key={city.value} title={city.title} value={city.value} />
+          ))}
+        </ActionList>
+      </DropdownOverlay>
+    </Dropdown>
+  );
+};

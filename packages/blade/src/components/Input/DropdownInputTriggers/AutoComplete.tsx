@@ -8,8 +8,9 @@ import BaseBox from '~components/Box/BaseBox';
 import { componentIds } from '~components/Dropdown/dropdownUtils';
 
 const _AutoComplete = (props: AutoCompleteProps): React.ReactElement => {
-  const [inputValue, setInputValue] = React.useState('');
+  const [uncontrolledInputValue, setInputValue] = React.useState('');
   const [activeTagIndex, setActiveTagIndex] = React.useState(-1);
+  const inputValue = props.inputValue ?? uncontrolledInputValue;
 
   const {
     onTriggerKeydown,
@@ -23,29 +24,38 @@ const _AutoComplete = (props: AutoCompleteProps): React.ReactElement => {
     setFilteredValues,
   } = useDropdown();
 
+  React.useEffect(() => {
+    if (props.filteredValues) {
+      setFilteredValues(props.filteredValues);
+    }
+  }, [props.filteredValues, setFilteredValues]);
+
   const onInputValueChangeCallback: BaseInputProps['onChange'] = ({ name, value }) => {
     setInputValue(value ?? '');
+    props.onInputValueChange?.({ name, value });
     setActiveTagIndex(-1);
 
     if (!isOpen) {
       setIsOpen(true);
     }
 
-    if (value && options && options.length > 0) {
-      const filteredOptions = options
-        .map((option) => option.value)
-        .filter((optionValue) => optionValue.toLowerCase().startsWith(value.toLowerCase()));
-      setFilteredValues(filteredOptions);
-    } else {
-      setFilteredValues([]);
+    if (!props.filteredValues) {
+      // eslint-disable-next-line no-lonely-if
+      if (value && options && options.length > 0) {
+        const filteredOptions = options
+          .map((option) => option.value)
+          .filter((optionValue) => optionValue.toLowerCase().startsWith(value.toLowerCase()));
+        setFilteredValues(filteredOptions);
+      } else {
+        setFilteredValues([]);
+      }
     }
-
-    props.onInputValueChange?.({ name, value });
   };
 
   const onKeydownCallback: BaseInputProps['onKeyDown'] = (e) => {
     if (e.key === 'Enter') {
       setInputValue('');
+      props.onInputValueChange?.({ name: props.name, value: '' });
       setActiveTagIndex(-1);
       setFilteredValues([]);
     } else if (

@@ -106,4 +106,5 @@ export type SelectInputProps = DropdownInputTriggersProps;
 export type AutoCompleteProps = DropdownInputTriggersCommonProps & {
   onInputValueChange?: BaseInputProps['onChange'];
   inputValue?: BaseInputProps['value'];
+  filteredValues?: string[];
 };
