@@ -1,5 +1,13 @@
 # @razorpay/blade
 
+## 10.3.2
+
+### Patch Changes
+
+- 67e0ae96: feat(blade): added interactive Card
+
+  Enables cards to be used as clickable, linkable & selectable.
+
 ## 10.3.1
 
 ### Patch Changes
