@@ -174,7 +174,7 @@ We can extend our `value` prop to accept JSX
 
 </details>
 
-## Tag Differentiation
+## Difference between `Badge` vs `Tag` vs `Chip`
 
 <img width="100%" src="./tag-differentiation.png" alt="Differences between Chip, Tag, and Badge components" />
 
