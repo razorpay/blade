@@ -157,7 +157,7 @@ const AmountValue = ({
 // This function rounds a number to a specified number of decimal places
 // and floors the result.
 export const getFlooredFixed = (value: number, decimalPlaces: number): number => {
-  const factor = 10 ** decimalPlaces;
+  const factor = 100 ** decimalPlaces;
   const roundedValue = Math.floor(value * factor) / factor;
   return Number(roundedValue.toFixed(decimalPlaces));
 };
