@@ -10,13 +10,12 @@ import { useIsMobile } from '~utils/useIsMobile';
 const StyledCardRoot = styled(BaseBox)<CardRootProps & { isPressed: boolean; isMobile: boolean }>(
   ({ theme, isSelected, isFocused, shouldScaleOnHover, isPressed, isMobile }) => {
     const selectedColor = isSelected ? theme.colors.brand.primary[500] : 'transparent';
-    const selectedBorder = `0px 0px 0px ${theme.border.width.thick}px ${selectedColor}`;
+    const selectedBorder = `0px 0px 0px ${theme.border.width.thicker}px ${selectedColor}`;
     //  focused state
     const focusRing = isFocused ? `, 0px 0px 0px 4px ${theme.colors.brand.primary[400]}` : '';
 
     return {
       // Selected state
-      // TODO: use thicker
       boxShadow: `${selectedBorder}${focusRing}`,
       transitionDuration: castWebType(makeMotionTime(theme.motion.duration.xquick)),
       transitionTimingFunction: castWebType(theme.motion.easing.standard.effective),
