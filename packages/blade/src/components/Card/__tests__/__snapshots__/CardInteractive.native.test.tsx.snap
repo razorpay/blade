@@ -61,7 +61,7 @@ exports[`<Card /> should render a clickable Card 1`] = `
           {
             "borderColor": "transparent",
             "borderStyle": "solid",
-            "borderWidth": 1.5,
+            "borderWidth": 2,
           },
         ]
       }
@@ -180,7 +180,7 @@ exports[`<Card /> should render a interactive Card 1`] = `
           {
             "borderColor": "hsla(218, 89%, 51%, 1)",
             "borderStyle": "solid",
-            "borderWidth": 1.5,
+            "borderWidth": 2,
           },
         ]
       }
@@ -300,7 +300,7 @@ exports[`<Card /> should render a linkable Card 1`] = `
           {
             "borderColor": "transparent",
             "borderStyle": "solid",
-            "borderWidth": 1.5,
+            "borderWidth": 2,
           },
         ]
       }
@@ -420,7 +420,7 @@ exports[`<Card /> should render a linkable Card with onClick 1`] = `
           {
             "borderColor": "transparent",
             "borderStyle": "solid",
-            "borderWidth": 1.5,
+            "borderWidth": 2,
           },
         ]
       }

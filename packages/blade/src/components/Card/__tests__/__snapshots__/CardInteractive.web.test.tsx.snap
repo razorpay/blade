@@ -50,7 +50,7 @@ exports[`<Card /> should render a clickable Card 1`] = `
 }
 
 .c1 {
-  box-shadow: 0px 0px 0px 1.5px transparent;
+  box-shadow: 0px 0px 0px 2px transparent;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -141,7 +141,7 @@ exports[`<Card /> should render a linkable Card 1`] = `
 }
 
 .c1 {
-  box-shadow: 0px 0px 0px 1.5px transparent;
+  box-shadow: 0px 0px 0px 2px transparent;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -234,7 +234,7 @@ exports[`<Card /> should render a linkable Card with onClick 1`] = `
 }
 
 .c1 {
-  box-shadow: 0px 0px 0px 1.5px transparent;
+  box-shadow: 0px 0px 0px 2px transparent;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -327,7 +327,7 @@ exports[`<Card /> should render an interactive Card 1`] = `
 }
 
 .c1 {
-  box-shadow: 0px 0px 0px 1.5px hsla(218,89%,51%,1);
+  box-shadow: 0px 0px 0px 2px hsla(218,89%,51%,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
