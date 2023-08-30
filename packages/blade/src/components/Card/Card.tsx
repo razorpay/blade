@@ -52,7 +52,6 @@ export type CardProps = {
    *
    * **Links:**
    * - Docs: https://blade.razorpay.com/?path=/docs/tokens-colors--page#-theme-tokens
-   * - Figma: https://shorturl.at/fsvwK
    */
   surfaceLevel?: Exclude<SurfaceLevels, 1>;
   /**
