@@ -80,7 +80,6 @@ const getWebConfig = ({ exportCategory }) => ({
     },
   ],
   external: (id) => id.includes('@babel/runtime'),
-  strictDeprecations: true,
   plugins: [
     pluginReplace({
       __DEV__: process.env.NODE_ENV !== 'production',
@@ -109,7 +108,6 @@ const getNativeConfig = ({ exportCategory }) => ({
     },
   ],
   external: (id) => id.includes('@babel/runtime'),
-  strictDeprecations: true,
   plugins: [
     pluginPeerDepsExternal(),
     pluginResolve({ extensions: nativeExtensions }),
@@ -151,7 +149,6 @@ const getDeclarationsConfig = ({ exportCategory, isNative }) => {
         format: 'esm',
       },
     ],
-    strictDeprecations: true,
     plugins: [
       pluginDeclarations({
         compilerOptions,
@@ -166,7 +163,6 @@ const getCSSVariablesConfig = ({ exportCategory }) => ({
     file: `${outputRootDirectory}/js-bundle-for-css/${exportCategory}Bundle.js`,
     format: 'cjs',
   },
-  strictDeprecations: true,
   plugins: [
     pluginPeerDepsExternal(),
     pluginResolve({ extensions: webExtensions }),
