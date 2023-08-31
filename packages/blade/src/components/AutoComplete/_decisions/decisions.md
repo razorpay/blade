@@ -99,6 +99,8 @@ const [selections, setSelections] = React.useState([]);
 
 Complex flows such as [Adding New Item to ActionList](https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=47091%3A711978&mode=dev) should be handled with Controlled API.
 
+Checkout the [Changelog](https://github.com/razorpay/blade/pull/1521#issue-1842703697) to see alternate API and limitations of it
+
 <details>
 <summary>Show Full Code</summary>
 
