@@ -44,7 +44,7 @@ exports[`<Card /> should render a clickable Card 1`] = `
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 0;
+  z-index: 1;
   width: 100%;
   height: 100%;
 }
@@ -61,7 +61,12 @@ exports[`<Card /> should render a clickable Card 1`] = `
 }
 
 .c1 a[href]:not(a[data-blade-component="card-link-overlay"]) {
-  z-index: 1;
+  z-index: 2;
+  position: relative;
+}
+
+.c1 button:not(button[data-blade-component="card-link-overlay"]) {
+  z-index: 2;
   position: relative;
 }
 
@@ -135,7 +140,7 @@ exports[`<Card /> should render a linkable Card 1`] = `
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 0;
+  z-index: 1;
   width: 100%;
   height: 100%;
 }
@@ -152,7 +157,12 @@ exports[`<Card /> should render a linkable Card 1`] = `
 }
 
 .c1 a[href]:not(a[data-blade-component="card-link-overlay"]) {
-  z-index: 1;
+  z-index: 2;
+  position: relative;
+}
+
+.c1 button:not(button[data-blade-component="card-link-overlay"]) {
+  z-index: 2;
   position: relative;
 }
 
@@ -228,7 +238,7 @@ exports[`<Card /> should render a linkable Card with onClick 1`] = `
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 0;
+  z-index: 1;
   width: 100%;
   height: 100%;
 }
@@ -245,7 +255,12 @@ exports[`<Card /> should render a linkable Card with onClick 1`] = `
 }
 
 .c1 a[href]:not(a[data-blade-component="card-link-overlay"]) {
-  z-index: 1;
+  z-index: 2;
+  position: relative;
+}
+
+.c1 button:not(button[data-blade-component="card-link-overlay"]) {
+  z-index: 2;
   position: relative;
 }
 
@@ -321,7 +336,7 @@ exports[`<Card /> should render an interactive Card 1`] = `
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 0;
+  z-index: 1;
   width: 100%;
   height: 100%;
 }
@@ -344,7 +359,12 @@ exports[`<Card /> should render an interactive Card 1`] = `
 }
 
 .c1 a[href]:not(a[data-blade-component="card-link-overlay"]) {
-  z-index: 1;
+  z-index: 2;
+  position: relative;
+}
+
+.c1 button:not(button[data-blade-component="card-link-overlay"]) {
+  z-index: 2;
   position: relative;
 }
 
