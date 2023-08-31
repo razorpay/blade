@@ -7,10 +7,6 @@ import { useBladeProvider } from './useBladeProvider';
 import type { BladeProviderProps } from './types';
 import { BottomSheetStackProvider } from '~components/BottomSheet/BottomSheetStack';
 
-const gestureHandlerStyle = {
-  flex: 1,
-};
-
 const BladeProvider = ({
   themeTokens,
   colorScheme: initialColorScheme,
@@ -19,7 +15,7 @@ const BladeProvider = ({
   const { theme, themeContextValue } = useBladeProvider({ initialColorScheme, themeTokens });
 
   return (
-    <GestureHandlerRootView style={gestureHandlerStyle}>
+    <GestureHandlerRootView style={{ flex: 1 }}>
       <PortalProvider>
         <ThemeContext.Provider value={themeContextValue}>
           <StyledComponentThemeProvider theme={theme}>
