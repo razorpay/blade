@@ -51,10 +51,32 @@ The popover component is used to provide context as well as enable users to take
   placement="top"
   headerTitle="Header Title"
   headerLeading={<InfoIcon />}
-  content={<>Any content</>}
+  content={<Text>Any content</Text>}
 >
   <IconButton icon={InfoIcon} accessibilityLabel="Refund" />
 </Popover>
+```
+
+#### Controlled 
+
+```js
+
+const ControlledPopover = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  return (
+    <>
+    <Button onClick={()=> setIsOpen(prev => !prev)}>Trigger</Button>
+    <Popover
+      isOpen={isOpen}
+      onDismiss={() => setIsOpen(false)}
+      content={<Text>Any content</Text>}
+    >
+      <IconButton icon={InfoIcon} accessibilityLabel="Refund" />
+    </Popover>
+    </> 
+  )
+}
 ```
 
 ### Working with non-interactive triggers
