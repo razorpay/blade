@@ -10,6 +10,7 @@ import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Dropdown, DropdownOverlay } from '~components/Dropdown';
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { Box } from '~components/Box';
+import { Text } from '~components/Typography';
 
 const propsCategory = {
   BASE_PROPS: 'Select Input Props',
@@ -319,12 +320,19 @@ export const AutoCompleteControlled = (): React.ReactElement => {
         filteredValues={filteredValues}
         helpText="Try typing 'maharashtra' in input"
       />
+
       <DropdownOverlay>
-        <ActionList>
-          {cities.map((city) => (
-            <ActionListItem key={city.value} title={city.title} value={city.value} />
-          ))}
-        </ActionList>
+        {filteredValues.length > 0 ? (
+          <ActionList>
+            {cities.map((city) => (
+              <ActionListItem key={city.value} title={city.title} value={city.value} />
+            ))}
+          </ActionList>
+        ) : (
+          <Box textAlign="center" padding="spacing.6">
+            <Text weight="bold">No City Found {':('} </Text>
+          </Box>
+        )}
       </DropdownOverlay>
     </Dropdown>
   );
