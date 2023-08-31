@@ -61,8 +61,6 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
-  padding-right: 4px;
-  padding-left: 4px;
 }
 
 <div>
@@ -159,8 +157,6 @@ exports[`<Amount /> should render Amount with default props 1`] = `
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
-  padding-right: 4px;
-  padding-left: 4px;
 }
 
 <div>
@@ -257,8 +253,6 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
-  padding-right: 4px;
-  padding-left: 4px;
 }
 
 <div>
@@ -355,8 +349,6 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
-  padding-right: 4px;
-  padding-left: 4px;
 }
 
 <div>
@@ -439,8 +431,6 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
-  padding-right: 4px;
-  padding-left: 4px;
 }
 
 <div>
@@ -530,8 +520,6 @@ exports[`<Amount /> should render body-medium size Amount 1`] = `
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
-  padding-right: 4px;
-  padding-left: 4px;
 }
 
 <div>
@@ -788,8 +776,6 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
-  padding-right: 4px;
-  padding-left: 4px;
 }
 
 <div>
@@ -1118,8 +1104,6 @@ exports[`<Amount /> should render body-small size Amount 1`] = `
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
-  padding-right: 4px;
-  padding-left: 4px;
 }
 
 <div>
@@ -1216,8 +1200,6 @@ exports[`<Amount /> should render body-small-bold size Amount 1`] = `
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
-  padding-right: 4px;
-  padding-left: 4px;
 }
 
 <div>
@@ -1300,8 +1282,6 @@ exports[`<Amount /> should render negative intent Amount  1`] = `
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
-  padding-right: 4px;
-  padding-left: 4px;
 }
 
 <div>
@@ -1391,8 +1371,6 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
-  padding-right: 4px;
-  padding-left: 4px;
 }
 
 <div>
