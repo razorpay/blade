@@ -346,12 +346,6 @@ const componentData: ComponentStatusData = [
     storybookLink: 'Components/Chip/Chip',
   },
   {
-    name: 'Pagination',
-    status: 'planned-Q2-dev',
-    description:
-      'Pagination component enables the user to select a specific page from a range of pages.',
-  },
-  {
     name: 'FileUpload',
     status: 'planned-Q2-dev',
     description: 'FileUpload component allow users to select one or more files to upload.',
@@ -363,7 +357,8 @@ const componentData: ComponentStatusData = [
   },
   {
     name: 'Slot',
-    status: 'planned-Q2-design',
+    status: 'released',
+    releasedIn: '5.3.0',
     description:
       'The Slot component is a generic component which can be used as container. (This is a design only component)',
   },
@@ -385,13 +380,13 @@ const componentData: ComponentStatusData = [
   },
   {
     name: 'Tabs',
-    status: 'planned-Q2-dev',
+    status: 'in-design',
     description:
       'Tabs is a component which will allow you to show multiple clickable tabs in your UI',
   },
   {
     name: 'Data Table',
-    status: 'planned-Q2-dev',
+    status: 'in-design',
     description: 'DataTable will allow you to display your data in tabular manner',
   },
   {
