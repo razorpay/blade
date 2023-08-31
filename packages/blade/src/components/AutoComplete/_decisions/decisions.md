@@ -26,6 +26,8 @@ A SelectInput where you can type inside the input to filter through the items.
 | value              | Controlled state of the selected items ([Checkout "Controlled AutoComplete" Usage](#controlled-autocomplete))                               | string[]                                                        |                                                  |
 | onChange           | Callback when selected items change                                                                                                         | ({ name, values }: { name: string; values: string[] } ) => void |                                                  |
 
+_This is a list of unique props to AutoComplete, apart from these all common input props will be supported such as `validationState`, `helpText`, `errorText`, etc_
+
 ## Usage
 
 AutoComplete will be built as a new trigger for existing Dropdown component.
