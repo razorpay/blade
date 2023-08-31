@@ -20,12 +20,19 @@ The popover component is used to provide context as well as enable users to take
 
 [Figma Link](https://www.figma.com/file/LSG77hEeVYDk7j7WV7OMJE/Blade-DSL---Components-Guideline?type=design&node-id=2875-40870&mode=design&t=mTbpUCQOr7kHk6UT-0) to all variants of the Popover component
 
+## Basic Features
+
+- Controlled & Uncontrolled state
+- Can be triggered on click or on load
+- Can be placed on different placements (top, bottom, left, right)
+
 ## `Popover` API
 
 | Prop            | Type                                                                                                                   | Default     | Description                                                                                                                           | Required |
 | --------------- | ---------------------------------------------------------------------------------------------------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | headerTitle     | `string`                                                                                                               | `undefined` | Title of the header                                                                                                                   | ✅        |
-| headerLeading   | `React.ReactNode`                                                                                                      | `undefined` | Leading element to be placed before header title                                                                                      |          |
+| headerLeading   | `React.ReactNode`                                                                                                      | `undefined` | Leading element to be placed before header title, recommended components are Icon or Asset. The icon's size will be set to large      |          |
+| footerContent   | `React.ReactNode`                                                                                                      | `undefined` | Slottable content of the footer                                                                                                       |          |
 | content         | `string`                                                                                                               | `undefined` | Content of the popover                                                                                                                |          |
 | children        | `React.ReactNode`                                                                                                      | `undefined` | Trigger component for popover, Accepts any interactive element or icons                                                               | ✅        |
 | placement       | `top, top-start, top-end, left, left-start, left-end, right, right-start, right-end, bottom, bottom-start, bottom-end` | `top`       | Placement of popver, the popver avoid collision with the edge of the screen and flip to the oppisite side even when placement is set. |          |
@@ -43,7 +50,7 @@ The popover component is used to provide context as well as enable users to take
 <Popover
   placement="top"
   headerTitle="Header Title"
-  headerLeading={<Icon />}
+  headerLeading={<InfoIcon />}
   content={<>Any content</>}
 >
   <IconButton icon={InfoIcon} accessibilityLabel="Refund" />
@@ -52,7 +59,7 @@ The popover component is used to provide context as well as enable users to take
 
 ### Working with non-interactive triggers
 
-To make popover apear on hovering over non-interactive elements such as icons, badges, counters etc. We will provide a `PopoverInteractiveWrapper` component which will work as a minimal trigger:
+To make popover apear on clicking a non-interactive elements such as icons, badges, counters etc. We will provide a `PopoverInteractiveWrapper` component which will work as a minimal trigger:
 
 ```js
 import { Popover, PopoverInteractiveWrapper } from '@razorpay/blade';
@@ -65,7 +72,7 @@ import { Popover, PopoverInteractiveWrapper } from '@razorpay/blade';
 </Popover>;
 ```
 
-> Note: If users don't wrap the non-interactive elements the popover won't apear
+> Note: If users don't wrap the non-interactive elements in `PopoverInteractiveWrapper` the popover won't apear
 
 ### Custom Triggers
 
