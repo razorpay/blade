@@ -28,6 +28,7 @@ const _AutoComplete = (props: AutoCompleteProps): React.ReactElement => {
     setHasAutoCompleteInBottomSheetHeader,
     filteredValues: globalFilteredValues,
     onTriggerClick,
+    dropdownTriggerer,
   } = useDropdown();
 
   const getOptionValues = React.useCallback(() => {
@@ -35,7 +36,11 @@ const _AutoComplete = (props: AutoCompleteProps): React.ReactElement => {
   }, [options]);
 
   React.useEffect(() => {
-    setHasAutoCompleteInBottomSheetHeader(true);
+    if (dropdownTriggerer !== 'AutoComplete') {
+      // When AutoComplete is mounted but not as trigger,
+      // we assume its in header of BottomSheet
+      setHasAutoCompleteInBottomSheetHeader(true);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
