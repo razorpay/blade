@@ -78,8 +78,8 @@
     "build:clean": "rm -rf build",
     "build:generate-types": "run-s types:generate-types:*",
     "build:copy-declarations": "run-s types:copy-declarations:*",
-    "types:generate-types:web": "tsc -p ./tsconfig-generate-types.web.json",
-    "types:generate-types:native": "tsc -p ./tsconfig-generate-types.native.json",
+    "types:generate-types:web": "ttsc -p ./tsconfig-generate-types.web.json",
+    "types:generate-types:native": "ttsc -p ./tsconfig-generate-types.native.json",
     "types:typecheck:web": "tsc -p ./tsconfig-typecheck.web.json",
     "types:typecheck:native": "tsc -p ./tsconfig-typecheck.native.json",
     "types:copy-declarations:web": "copyfiles -u 1 \"src/**/*.d.ts\" build/types/web",
@@ -222,7 +222,9 @@
     "tsconfig-paths-webpack-plugin": "3.5.2",
     "jsdom-testing-mocks": "1.9.0",
     "postinstall-postinstall": "2.1.0",
-    "react-native-safe-area-context": "3.4.1"
+    "react-native-safe-area-context": "3.4.1",
+    "ttypescript": "1.5.15",
+    "typescript-transform-paths": "3.4.6"
   },
   "peerDependencies": {
     "@gorhom/bottom-sheet": "^4",
