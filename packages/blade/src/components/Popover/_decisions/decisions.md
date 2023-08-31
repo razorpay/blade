@@ -5,10 +5,14 @@ The popover component is used to provide context as well as enable users to take
 <img src="./assets/popover-thumbnail.png" width="380" alt="Popover Thumbnail" />
 
 - [Design](#design)
+- [Basic Features](#basic-features)
 - [`Popover` API](#popover-api)
   - [Examples:](#examples)
     - [Usage](#usage)
-  - [Working with non-interactive triggers](#working-with-non-interactive-triggers)
+    - [Controlled](#controlled)
+    - [Uncontrolled](#uncontrolled)
+    - [On initial load](#on-initial-load)
+    - [Working with non-interactive triggers](#working-with-non-interactive-triggers)
   - [Custom Triggers](#custom-triggers)
 - [Library](#library)
 - [Motion](#motion)
@@ -84,7 +88,7 @@ const ControlledPopover = () => {
 }
 ```
 
-### Uncontrolled 
+#### Uncontrolled 
 
 ```js
 const UncontrolledPopover = () => {
@@ -99,7 +103,7 @@ const UncontrolledPopover = () => {
 }
 ```
 
-### On initial load 
+#### On initial load 
 
 To open the popover on initial load, consumers can just pass `defaultIsOpen` prop and whenever the popover mounts it will open.
 
@@ -116,7 +120,7 @@ const InitialOpen = () => {
 }
 ```
 
-### Working with non-interactive triggers
+#### Working with non-interactive triggers
 
 To make popover apear on clicking a non-interactive elements such as icons, badges, counters etc. We will provide a `PopoverInteractiveWrapper` component which will work as a minimal trigger:
 
