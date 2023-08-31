@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 10.4.2
+
+### Patch Changes
+
+- 3d3bef8e: chore(blade): remove broken figma link from Card
+
 ## 10.4.1
 
 ### Patch Changes
