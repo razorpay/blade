@@ -364,7 +364,7 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
     <ActionListItemContext.Provider value={{ intent: props.intent, isDisabled: props.isDisabled }}>
       <StyledActionListItem
         isVisible={
-          dropdownTriggerer === 'AutoComplete' && filteredValues.length > 0
+          dropdownTriggerer === 'AutoComplete' && filteredValues
             ? filteredValues.includes(props.value)
             : true
         }

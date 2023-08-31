@@ -50,6 +50,8 @@ const _AutoComplete = (props: AutoCompleteProps): React.ReactElement => {
     props.onInputValueChange?.({ name, value });
     setActiveTagIndex(-1);
 
+    const optionValues = options.map((option) => option.value);
+
     if (!isOpen) {
       setIsOpen(true);
     }
@@ -57,12 +59,12 @@ const _AutoComplete = (props: AutoCompleteProps): React.ReactElement => {
     if (!props.filteredValues) {
       // eslint-disable-next-line no-lonely-if
       if (value && options && options.length > 0) {
-        const filteredOptions = options
-          .map((option) => option.value)
-          .filter((optionValue) => optionValue.toLowerCase().startsWith(value.toLowerCase()));
+        const filteredOptions = optionValues.filter((optionValue) =>
+          optionValue.toLowerCase().startsWith(value.toLowerCase()),
+        );
         setFilteredValues(filteredOptions);
       } else {
-        setFilteredValues([]);
+        setFilteredValues(optionValues);
       }
     }
   };

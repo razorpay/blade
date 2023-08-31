@@ -286,7 +286,8 @@ const cities = [
 ];
 export const AutoCompleteControlled = (): React.ReactElement => {
   const [inputValue, setInputValue] = React.useState('');
-  const [filteredValues, setFilteredValues] = React.useState<string[]>([]);
+  const cityValues = cities.map((city) => city.value);
+  const [filteredValues, setFilteredValues] = React.useState<string[]>(cityValues);
 
   return (
     <Dropdown selectionType="multiple">
@@ -305,9 +306,14 @@ export const AutoCompleteControlled = (): React.ReactElement => {
                   ),
               )
               .map((city) => city.value);
-            setFilteredValues(filteredItems);
+
+            if (filteredItems.length > 0) {
+              setFilteredValues(filteredItems);
+            } else {
+              setFilteredValues([]);
+            }
           } else {
-            setFilteredValues([]);
+            setFilteredValues(cityValues);
           }
         }}
         filteredValues={filteredValues}
