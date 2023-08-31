@@ -137,14 +137,7 @@ import { Popover, PopoverInteractiveWrapper } from '@razorpay/blade';
 
 Users will be able to use their own custom components as triggers:
 
-To make custom elements work the components needs to expose:
-
-- ref
-- Web:
-  - TBD (Can only put this once we implement the initial popover logic, since it could either be onClick or onMouseDown)
-- Native:
-  - onTouchStart
-  - onTouchEnd
+To make custom elements work the components needs to expose it's inner ref, this can be achived by using `React.forwardRef`:
 
 ```jsx
 import type { PopoverTriggerProps } from "@razorpay/blade/components";
