@@ -48,14 +48,20 @@ The popover component is used to provide context as well as enable users to take
 ```js
 // basic example
 <Popover
-  placement="top"
-  headerTitle="Header Title"
-  headerLeading={<InfoIcon />}
-  content={<Text>Any content</Text>}
+  placement="top-end"
+  headerTitle="International Payments"
+  content={
+    <Text>
+      Your business can go international with support for transactions in 
+      <Link href="#">100 foreign currencies.</Link>
+    </Text>
+  }
 >
   <IconButton icon={InfoIcon} accessibilityLabel="Refund" />
 </Popover>
 ```
+
+<img src="./assets/popover-example-1.png" alt="Example usage of popover" width="70%" />
 
 #### Controlled 
 
