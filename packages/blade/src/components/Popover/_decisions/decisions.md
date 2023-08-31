@@ -60,7 +60,6 @@ The popover component is used to provide context as well as enable users to take
 #### Controlled 
 
 ```js
-
 const ControlledPopover = () => {
   const [isOpen, setIsOpen] = React.useState(false);
 
@@ -69,12 +68,27 @@ const ControlledPopover = () => {
     <Button onClick={()=> setIsOpen(prev => !prev)}>Trigger</Button>
     <Popover
       isOpen={isOpen}
-      onDismiss={() => setIsOpen(false)}
+      onOpenChange={({ isOpen }) => setIsOpen(isOpen)}
       content={<Text>Any content</Text>}
     >
       <IconButton icon={InfoIcon} accessibilityLabel="Refund" />
     </Popover>
     </> 
+  )
+}
+```
+
+### Uncontrolled 
+
+```js
+const UncontrolledPopover = () => {
+  return (
+    <Popover
+      defaultIsOpen={true}
+      content={<Text>Any content</Text>}
+    >
+      <IconButton icon={InfoIcon} accessibilityLabel="Refund" />
+    </Popover>
   )
 }
 ```
