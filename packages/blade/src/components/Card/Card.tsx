@@ -4,6 +4,7 @@ import { CardProvider, useVerifyInsideCard, useVerifyAllowedComponents } from '.
 import { LinkOverlay } from './LinkOverlay';
 import { CardRoot } from './CardRoot';
 import type { LinkOverlayProps } from './types';
+import { CARD_LINK_OVERLAY_ID } from './constants';
 import type { SpacingValueType } from '~components/Box/BaseBox';
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
@@ -163,7 +164,7 @@ const Card = ({
   ]);
 
   const linkOverlayProps: LinkOverlayProps = {
-    ...metaAttribute({ name: 'card-link-overlay' }),
+    ...metaAttribute({ name: CARD_LINK_OVERLAY_ID }),
     ...makeAccessible({ label: accessibilityLabel, pressed: isSelected }),
     onFocus: () => {
       setIsFocused(true);
