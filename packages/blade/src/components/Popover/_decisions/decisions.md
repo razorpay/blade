@@ -128,6 +128,10 @@ We will be using [FloatingUI](https://floating-ui.com/) to position the popover 
 
 You can check the [popover motion here](https://www.figma.com/file/LSG77hEeVYDk7j7WV7OMJE/Blade-DSL---Components-Guideline?type=design&node-id=2875-43270&mode=design&t=mTbpUCQOr7kHk6UT-0).
 
+
+https://github.com/razorpay/blade/assets/35374649/f774e28f-bbb7-4f44-a41d-71e9b873ec0c
+
+
 And give relavant feedback for [motion in this thread](https://razorpay.slack.com/archives/C0274H7QRC1/p1691645251106119).
 
 ## Accessibility
