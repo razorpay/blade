@@ -135,10 +135,7 @@ To make custom elements work the components needs to expose:
 
 - ref
 - Web:
-  - onMouseDown
-  - onMouseUp
-  - onPointerDown
-  - onPointerEnter
+  - TBD (Can only put this once we implement the initial popover logic, since it could either be onClick or onMouseDown)
 - Native:
   - onTouchStart
   - onTouchEnd
