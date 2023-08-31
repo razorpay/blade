@@ -93,6 +93,23 @@ const UncontrolledPopover = () => {
 }
 ```
 
+### On initial load 
+
+To open the popover on initial load, consumers can just pass `defaultIsOpen` prop and whenever the popover mounts it will open.
+
+```js
+const InitialOpen = () => {
+  return (
+    <Popover
+      defaultIsOpen={true}
+      content={<Text>Any content</Text>}
+    >
+      <IconButton icon={InfoIcon} accessibilityLabel="Refund" />
+    </Popover>
+  )
+}
+```
+
 ### Working with non-interactive triggers
 
 To make popover apear on clicking a non-interactive elements such as icons, badges, counters etc. We will provide a `PopoverInteractiveWrapper` component which will work as a minimal trigger:
@@ -219,7 +236,7 @@ How should the footer API look like?
 </Popover>
 ```
 
-**My opinion:** We should go ahead with Flexible API because even if we go with constrained API, users will anyway still be able to pass React.ReactNode as `footerContent` and could just skip the `footerActions` altogether.
+**Conclusion:** We should go ahead with Flexible API because even if we go with constrained API, users will anyway still be able to pass React.ReactNode as `footerContent` and could just skip the `footerActions` altogether.
 
 ## References
 
