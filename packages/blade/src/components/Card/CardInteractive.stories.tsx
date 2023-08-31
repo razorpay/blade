@@ -387,7 +387,7 @@ export const HoverableCard = (): React.ReactElement => {
         hover. (on mobile devices the interaction will happen on press and the card will scale down
         instead)
       </Text>
-      <Card shouldScaleOnHover width={{ s: '100%', m: '400px' }}>
+      <Card width={{ s: '100%', m: '400px' }}>
         <CardHeader>
           <CardHeaderLeading
             title="Payment Links"

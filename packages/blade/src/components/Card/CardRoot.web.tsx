@@ -63,7 +63,7 @@ const CardRoot = ({
       as={as}
       {...props}
       isMobile={isMobile}
-      isPressed={isPressed}
+      isPressed={props.shouldScaleOnHover ? isPressed : false}
       onTouchStart={() => setIsPressed(true)}
       onTouchEnd={() => setIsPressed(false)}
       onMouseDown={() => setIsPressed(true)}
