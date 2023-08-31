@@ -38,7 +38,7 @@ Depending on where and how AutoComplete is used, the API can differ. Checkout ex
 - [Controlled AutoComplete](#controlled-autocomplete)
 - [In BottomSheet](#in-bottomsheet)
 - [With Tags Outside](#with-tags-outside)
-- [With Different Inactive - Active States](#with-different-inactive---active-statess)
+- [With Different Inactive - Active States](#with-different-inactive---active-states)
 
 ### Basic Usage
 
