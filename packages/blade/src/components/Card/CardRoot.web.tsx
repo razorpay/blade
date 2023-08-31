@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import React from 'react';
 import type { CardRootProps } from './types';
-import { CARD_SCALE_DOWN_VALUE, CARD_SCALE_UP_VALUE } from './constants';
+import { CARD_LINK_OVERLAY_ID, CARD_SCALE_DOWN_VALUE, CARD_SCALE_UP_VALUE } from './constants';
 import BaseBox from '~components/Box/BaseBox';
 import { castWebType, makeMotionTime } from '~utils';
 import { makeAccessible } from '~utils/makeAccessible';
@@ -37,8 +37,12 @@ const StyledCardRoot = styled(BaseBox)<CardRootProps & { isPressed: boolean; isM
 
       // uplift all the nested links so they receive clicks and events (except the LinkOverlay)
       // https://www.sarasoueidan.com/blog/nested-links
-      '& a[href]:not(a[data-blade-component="card-link-overlay"])': {
-        zIndex: 1,
+      [`& a[href]:not(a[data-blade-component="${CARD_LINK_OVERLAY_ID}"])`]: {
+        zIndex: 2,
+        position: 'relative',
+      },
+      [`& button:not(button[data-blade-component="${CARD_LINK_OVERLAY_ID}"])`]: {
+        zIndex: 2,
         position: 'relative',
       },
     };
@@ -59,7 +63,7 @@ const CardRoot = ({
       as={as}
       {...props}
       isMobile={isMobile}
-      isPressed={isPressed}
+      isPressed={props.shouldScaleOnHover ? isPressed : false}
       onTouchStart={() => setIsPressed(true)}
       onTouchEnd={() => setIsPressed(false)}
       onMouseDown={() => setIsPressed(true)}
