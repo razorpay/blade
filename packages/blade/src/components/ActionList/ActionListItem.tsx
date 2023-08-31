@@ -314,10 +314,13 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
     dropdownTriggerer,
     isKeydownPressed,
     filteredValues,
+    hasAutoCompleteInBottomSheetHeader,
   } = useDropdown();
 
   const { platform } = useTheme();
   const isMobile = platform === 'onMobile';
+  const hasAutoComplete =
+    hasAutoCompleteInBottomSheetHeader || dropdownTriggerer === 'AutoComplete';
 
   const renderOnWebAs = props.href ? 'a' : 'button';
 
@@ -328,7 +331,7 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
    * isSelected prop explicitly is the only way to select item in menu
    */
   const getIsSelected = (): boolean | undefined => {
-    if (dropdownTriggerer === 'SelectInput' || dropdownTriggerer === 'AutoComplete') {
+    if (dropdownTriggerer === 'SelectInput' || hasAutoComplete) {
       if (typeof props._index === 'number') {
         return selectedIndices.includes(props._index);
       }
@@ -363,11 +366,7 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
   return (
     <ActionListItemContext.Provider value={{ intent: props.intent, isDisabled: props.isDisabled }}>
       <StyledActionListItem
-        isVisible={
-          dropdownTriggerer === 'AutoComplete' && filteredValues
-            ? filteredValues.includes(props.value)
-            : true
-        }
+        isVisible={hasAutoComplete && filteredValues ? filteredValues.includes(props.value) : true}
         as={!isReactNative() ? renderOnWebAs : undefined}
         id={`${dropdownBaseId}-${props._index}`}
         type="button"

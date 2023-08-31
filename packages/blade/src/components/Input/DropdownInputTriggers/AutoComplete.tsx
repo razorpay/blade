@@ -20,12 +20,31 @@ const _AutoComplete = (props: AutoCompleteProps): React.ReactElement => {
     setControlledValueIndices,
     isControlled,
     options,
-    setFilteredValues,
+    setFilteredValues: setGlobalFilteredValues,
     activeTagIndex,
     setActiveTagIndex,
     setActiveIndex,
+    hasAutoCompleteInBottomSheetHeader,
+    setHasAutoCompleteInBottomSheetHeader,
     filteredValues: globalFilteredValues,
+    onTriggerClick,
   } = useDropdown();
+
+  const getOptionValues = React.useCallback(() => {
+    return options.map((option) => option.value);
+  }, [options]);
+
+  React.useEffect(() => {
+    setHasAutoCompleteInBottomSheetHeader(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  React.useEffect(() => {
+    if (isOpen && !inputValue) {
+      setGlobalFilteredValues(getOptionValues());
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen]);
 
   const setFirstItemActive = React.useCallback((): void => {
     const firstItemOptionIndex = options.findIndex(
@@ -40,17 +59,15 @@ const _AutoComplete = (props: AutoCompleteProps): React.ReactElement => {
 
   React.useEffect(() => {
     if (props.filteredValues) {
-      setFilteredValues(props.filteredValues);
+      setGlobalFilteredValues(props.filteredValues);
     }
-  }, [props.filteredValues, setFilteredValues]);
+  }, [props.filteredValues, setGlobalFilteredValues]);
 
   const onInputValueChangeCallback: BaseInputProps['onChange'] = ({ name, value }) => {
     setInputValue(value ?? '');
     setFirstItemActive();
     props.onInputValueChange?.({ name, value });
     setActiveTagIndex(-1);
-
-    const optionValues = options.map((option) => option.value);
 
     if (!isOpen) {
       setIsOpen(true);
@@ -59,12 +76,12 @@ const _AutoComplete = (props: AutoCompleteProps): React.ReactElement => {
     if (!props.filteredValues) {
       // eslint-disable-next-line no-lonely-if
       if (value && options && options.length > 0) {
-        const filteredOptions = optionValues.filter((optionValue) =>
+        const filteredOptions = getOptionValues().filter((optionValue) =>
           optionValue.toLowerCase().startsWith(value.toLowerCase()),
         );
-        setFilteredValues(filteredOptions);
+        setGlobalFilteredValues(filteredOptions);
       } else {
-        setFilteredValues(optionValues);
+        setGlobalFilteredValues(getOptionValues());
       }
     }
   };
@@ -74,7 +91,7 @@ const _AutoComplete = (props: AutoCompleteProps): React.ReactElement => {
       setInputValue('');
       props.onInputValueChange?.({ name: props.name, value: '' });
       setActiveTagIndex(-1);
-      setFilteredValues([]);
+      setGlobalFilteredValues(getOptionValues());
     } else if (
       e.key === 'Backspace' &&
       !inputValue &&
@@ -94,9 +111,17 @@ const _AutoComplete = (props: AutoCompleteProps): React.ReactElement => {
     <BaseBox position="relative">
       <BaseDropdownInputTrigger
         {...props}
+        isSelectInput={false}
         inputValue={inputValue}
         onTriggerKeydown={onKeydownCallback}
         onInputValueChange={onInputValueChangeCallback}
+        onTriggerClick={(e) => {
+          if (!hasAutoCompleteInBottomSheetHeader) {
+            // we don't want clicking on autocomplete to open / close Dropdown when it is used inside BottomSheet's header
+            onTriggerClick();
+          }
+          props?.onClick?.(e);
+        }}
       />
     </BaseBox>
   );

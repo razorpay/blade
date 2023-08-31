@@ -11,6 +11,7 @@ import { Dropdown, DropdownOverlay } from '~components/Dropdown';
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
+import { BottomSheet, BottomSheetBody, BottomSheetHeader } from '~components/BottomSheet';
 
 const propsCategory = {
   BASE_PROPS: 'Select Input Props',
@@ -334,6 +335,43 @@ export const AutoCompleteControlled = (): React.ReactElement => {
           </Box>
         )}
       </DropdownOverlay>
+    </Dropdown>
+  );
+};
+
+export const ControlledAutoComplete = () => {
+  return (
+    <Dropdown>
+      <AutoComplete />
+      <DropdownOverlay>
+        <ActionList>
+          <ActionListItem title="Mumbai" value="mumbai" />
+          <ActionListItem title="Pune" value="pune" />
+          <ActionListItem title="Bangalore" value="bangalore" />
+        </ActionList>
+      </DropdownOverlay>
+    </Dropdown>
+  );
+};
+
+export const AutoCompleteWithBottomSheet = (): React.ReactElement => {
+  return (
+    <Dropdown selectionType="multiple">
+      <SelectInput label="Sort Dishes" />
+      <BottomSheet>
+        <BottomSheetHeader title="Sort By">
+          <AutoComplete label="Sort Dishes" />
+        </BottomSheetHeader>
+        <BottomSheetBody>
+          <ActionList>
+            <ActionListItem title="Relevance (Default)" value="relavance" />
+            <ActionListItem title="Delivery Time" value="delveiry-time" />
+            <ActionListItem title="Rating" value="rating" />
+            <ActionListItem title="Cost: Low to High" value="Cost: Low to High" />
+            <ActionListItem title="Cost: High to Low" value="Cost: High to Low" />
+          </ActionList>
+        </BottomSheetBody>
+      </BottomSheet>
     </Dropdown>
   );
 };

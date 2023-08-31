@@ -88,6 +88,12 @@ type DropdownContextType = {
   setHasFooterAction: (value: boolean) => void;
 
   /**
+   * Apart from dropdownTriggerer prop, we also set this boolean because in BottomSheet, the initial trigger can be Select but also have autocomplete inside of it
+   */
+  hasAutoCompleteInBottomSheetHeader: boolean;
+  setHasAutoCompleteInBottomSheetHeader: (value: boolean) => void;
+
+  /**
    * A value that can be used in dependency array to know when Dropdown value is changed.
    *
    * E.g.
@@ -127,6 +133,8 @@ const DropdownContext = React.createContext<DropdownContextType>({
   setShouldIgnoreBlurAnimation: noop,
   hasFooterAction: false,
   setHasFooterAction: noop,
+  hasAutoCompleteInBottomSheetHeader: false,
+  setHasAutoCompleteInBottomSheetHeader: noop,
   isKeydownPressed: false,
   setIsKeydownPressed: noop,
   changeCallbackTriggerer: 0,
@@ -311,7 +319,9 @@ const useDropdown = (): UseDropdownReturnValue => {
     setActiveTagIndex(-1);
     const newIndex = index ?? activeIndex;
     let updatedIndex: number;
-    if (rest.dropdownTriggerer === 'AutoComplete' && filteredValues.length > 0) {
+    const hasAutoComplete =
+      rest.hasAutoCompleteInBottomSheetHeader || rest.dropdownTriggerer === 'AutoComplete';
+    if (hasAutoComplete && filteredValues.length > 0) {
       // When its autocomplete, we don't loop over all options. We only loop on filtered options
 
       const filteredIndexes = filteredValues
@@ -372,7 +382,7 @@ const useDropdown = (): UseDropdownReturnValue => {
     // open the listbox if it is closed
     setIsOpen(true);
 
-    if (rest.dropdownTriggerer === 'AutoComplete') {
+    if (rest.hasAutoCompleteInBottomSheetHeader || rest.dropdownTriggerer === 'AutoComplete') {
       return;
     }
 

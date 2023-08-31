@@ -77,6 +77,7 @@ const useBottomSheetContext = (): BottomSheetContextProps => {
 
 type BottomSheetAndDropdownGlueContext = {
   isOpen: boolean;
+  hasAutoCompleteInBottomSheetHeader: boolean;
   /**
    * This flag is true when <Dropdown> contains or renders <BottomSheet> inside of it
    * We can use this flag to alter behavior or styles of Dropdown

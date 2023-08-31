@@ -70,6 +70,10 @@ const _Dropdown = ({
   const [activeTagIndex, setActiveTagIndex] = React.useState(-1);
   const [shouldIgnoreBlurAnimation, setShouldIgnoreBlurAnimation] = React.useState(false);
   const [hasFooterAction, setHasFooterAction] = React.useState(false);
+  const [
+    hasAutoCompleteInBottomSheetHeader,
+    setHasAutoCompleteInBottomSheetHeader,
+  ] = React.useState(false);
   const [isKeydownPressed, setIsKeydownPressed] = React.useState(false);
   const [changeCallbackTriggerer, setChangeCallbackTriggerer] = React.useState<
     DropdownContextType['changeCallbackTriggerer']
@@ -107,6 +111,11 @@ const _Dropdown = ({
   }, [isOpen]);
 
   const close = React.useCallback(() => {
+    // try {
+    //   throw new Error('checking stack');
+    // } catch (err: unknown) {
+    //   console.log(err);
+    // }
     setActiveTagIndex(-1);
     setIsOpen(false);
     onDismiss?.();
@@ -168,6 +177,8 @@ const _Dropdown = ({
       selectionType,
       hasFooterAction,
       setHasFooterAction,
+      hasAutoCompleteInBottomSheetHeader,
+      setHasAutoCompleteInBottomSheetHeader,
       dropdownTriggerer: dropdownTriggerer.current,
       changeCallbackTriggerer,
       setChangeCallbackTriggerer,
@@ -197,12 +208,13 @@ const _Dropdown = ({
     return {
       isOpen,
       dropdownHasBottomSheet,
+      hasAutoCompleteInBottomSheetHeader,
       setDropdownHasBottomSheet,
       // This is the dismiss function which will be injected into the BottomSheet
       // Basically <BottomSheet onDismiss={onBottomSheetDismiss} />
       onBottomSheetDismiss: close,
     };
-  }, [dropdownHasBottomSheet, isOpen, close]);
+  }, [dropdownHasBottomSheet, hasAutoCompleteInBottomSheetHeader, isOpen, close]);
 
   React.useEffect((): (() => void) | undefined => {
     if (!isReactNative()) {

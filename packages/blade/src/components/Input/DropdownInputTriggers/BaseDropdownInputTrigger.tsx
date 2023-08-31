@@ -127,7 +127,6 @@ const BaseDropdownInputTrigger = (props: BaseDropdownInputTriggerProps): React.R
   } = useDropdown();
 
   const dropdownTriggerPlaceholder = props.placeholder ?? 'Select Option';
-  const isSelectInput = dropdownTriggerer === 'SelectInput';
 
   useControlledDropdownInput({
     onChange: props.onChange,
@@ -137,7 +136,7 @@ const BaseDropdownInputTrigger = (props: BaseDropdownInputTriggerProps): React.R
   });
 
   const getValue = (): string | undefined => {
-    if (isSelectInput) {
+    if (props.isSelectInput) {
       if (selectionType === 'single') {
         return displayValue;
       }
@@ -175,7 +174,7 @@ const BaseDropdownInputTrigger = (props: BaseDropdownInputTriggerProps): React.R
 
   return (
     <BaseInput
-      as={isSelectInput ? 'button' : 'input'}
+      as={props.isSelectInput ? 'button' : 'input'}
       ref={(!isReactNative() ? triggererRef : null) as never}
       setInputWrapperRef={(wrapperNode) => {
         triggererWrapperRef.current = wrapperNode;
@@ -210,16 +209,13 @@ const BaseDropdownInputTrigger = (props: BaseDropdownInputTriggerProps): React.R
       suffix={props.suffix}
       autoFocus={props.autoFocus} // eslint-disable-line jsx-a11y/no-autofocus
       value={getValue()}
-      onClick={(e) => {
-        onTriggerClick();
-        props?.onClick?.(e);
-      }}
+      onClick={props.onTriggerClick}
       onBlur={({ name }) => {
         props.onBlur?.({ name, value });
       }}
       leadingIcon={props.icon}
       // Meta Props
-      componentName={isSelectInput ? MetaConstants.SelectInput : MetaConstants.AutoComplete}
+      componentName={props.isSelectInput ? MetaConstants.SelectInput : MetaConstants.AutoComplete}
       testID={props.testID}
       // a11y Props
       id={`${dropdownBaseId}-trigger`}
@@ -229,7 +225,7 @@ const BaseDropdownInputTrigger = (props: BaseDropdownInputTriggerProps): React.R
       activeDescendant={activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined}
       popupId={`${dropdownBaseId}-actionlist`}
       // Special Props for Unique behaviour between Select and AutoComplete
-      onChange={isSelectInput ? undefined : props.onInputValueChange}
+      onChange={props.isSelectInput ? undefined : props.onInputValueChange}
       onKeyDown={props.onTriggerKeydown}
       interactionElement={
         <InputChevronIcon

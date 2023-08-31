@@ -16,6 +16,7 @@ const _BottomSheetHeader = ({
   titleSuffix,
   showBackButton = false,
   onBackButtonClick,
+  children,
 }: BottomSheetHeaderProps): React.ReactElement => {
   const { close, setIsHeaderEmpty, defaultInitialFocusRef } = useBottomSheetContext();
   const isHeaderEmpty = !(title || subtitle || leading || trailing || showBackButton);
@@ -43,7 +44,9 @@ const _BottomSheetHeader = ({
           // close button
           showCloseButton={true}
           onCloseButtonClick={close}
-        />
+        >
+          {children}
+        </BaseHeader>
       )}
     </BaseBox>
   );
