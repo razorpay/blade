@@ -14,16 +14,17 @@ A SelectInput where you can type inside the input to filter through the items.
 >
 > Below this section, I have added [examples of common AutoComplete usage](#usage). Check them out to understand usage of these props in details.
 
-| **Props**          | **Description**                                                                                                                             | **Type**                                                        | **Default Value** |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- | ----------------- |
-| label              | label of input                                                                                                                              | string                                                          |                   |
-| accessibilityLabel | aria-label of input when label is not defined (required when label is not passed)                                                           | string                                                          |                   |
-| labelPosition      | Label Position like other inputs but with new option `inside-input`. This value new value will be added to `AutoComplete` and `SelectInput` | 'top' \| 'left' \| 'inside-input'                               | 'top'             |
-| maxRows            | height restrictions of input ([Checkout "Inactive - Active States" Usage](#with-different-inactive---active-states))                        | 'single' \| 'multiple' \| 'expandable'                          | 'multiple'        |
-| inputValue         | Controlled state of the value inside input                                                                                                  | string                                                          |                   |
-| onInputValueChange | Callback when input value changes                                                                                                           | (inputValue: string) => void                                    |                   |
-| value              | Controlled state of the selected items ([Checkout "Controlled AutoComplete" Usage](#controlled-autocomplete))                               | string[]                                                        |                   |
-| onChange           | Callback when selected items change                                                                                                         | ({ name, values }: { name: string; values: string[] } ) => void |                   |
+| **Props**          | **Description**                                                                                                                             | **Type**                                                        | **Default Value**                                |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- | ------------------------------------------------ |
+| label              | label of input                                                                                                                              | string                                                          |                                                  |
+| accessibilityLabel | aria-label of input when label is not defined (required when label is not passed)                                                           | string                                                          |                                                  |
+| labelPosition      | Label Position like other inputs but with new option `inside-input`. This value new value will be added to `AutoComplete` and `SelectInput` | 'top' \| 'left' \| 'inside-input'                               | 'top'                                            |
+| maxRows            | height restrictions of input ([Checkout "Inactive - Active States" Usage](#with-different-inactive---active-states))                        | 'single' \| 'multiple' \| 'expandable'                          | 'multiple'                                       |
+| filteredValues     | Controlled state of filtering of items                                                                                                      | string[]                                                        | (by default filtering happens with `startsWith`) |
+| inputValue         | Controlled state of the value inside input                                                                                                  | string                                                          |                                                  |
+| onInputValueChange | Callback when input value changes                                                                                                           | (inputValue: string) => void                                    |                                                  |
+| value              | Controlled state of the selected items ([Checkout "Controlled AutoComplete" Usage](#controlled-autocomplete))                               | string[]                                                        |                                                  |
+| onChange           | Callback when selected items change                                                                                                         | ({ name, values }: { name: string; values: string[] } ) => void |                                                  |
 
 ## Usage
 
@@ -61,7 +62,8 @@ There are 3 controlled states that are relevant to AutoComplete
 3. Controlled state of selected items
 
 ```jsx
-const [cities, setCities] = React.useState(allCitiesData);
+const allCities = ['Mumbai', 'Pune', 'Bangalore']
+const [filteredValues, setFilteredValues] = React.useState(allCities);
 const [selections, setSelections] = React.useState([]);
 
 // ...
@@ -76,15 +78,20 @@ const [selections, setSelections] = React.useState([]);
   inputValue={}
   onInputValueChange={(inputValue) => {
     // Filter and set the state here
-    setCities(allCitiesData.filter((city) => city.includes(inputValue)));
+    const filteredCityValues = allCities
+      .filter((city) => city.includes(inputValue))
+      .map((city) => city.toLowerCase());
+
+    setFilteredValues(filteredCityValues);
   }}
+  // Control the filtering of items (Make sure to pass array of values here)
+  filteredValue={filteredValues}
 />
 
 // ...
 
-// Filtering can be controlled by looping over <ActionListItem />
 <ActionList>
-  {cities.map((city) => <ActionListItem title={city} />)}
+  {allCities.map((city) => <ActionListItem title={city} value={city.toLowerCase()} />)}
 </ActionList>
 ```
 
@@ -94,11 +101,24 @@ Complex flows such as [Adding New Item to ActionList](https://www.figma.com/file
 <summary>Show Full Code</summary>
 
 ```jsx
-const allCities = ['Mumbai', 'Pune', 'Hyderabad'];
+const allCities = [
+  {
+    title: 'Mumbai',
+    value: 'mumbai'
+  },
+  {
+    title: 'Pune',
+    value: 'pune'
+  },
+  {
+    title: 'Bangalore',
+    value: 'bangalore'
+  },
+];
 
 const ControlledAutoComplete = () => {
   // Controlled Filtering
-  const [cities, setCities] = React.useState(allCities);
+  const [filteredValues, setFilteredValues] = React.useState(allCities);
   // Controlled Input Value
   const [currentInputValue, setCurrentInputValue] = React.useState('');
   // Controlled Selections
@@ -115,9 +135,11 @@ const ControlledAutoComplete = () => {
         onInputValueChange={(inputValue) => {
           if (inputValue) {
             // filtering logic
-            setCities(allCities.filter((city) => city.includes(inputValue)));
+            const allCityValues = allCities.map((city) => city.value);
+            const filteredCities = allCityValues.filter((cityValue) => cityValue.includes(inputValue));
+            setFilteredValues(filteredCities);
           } else {
-            setCities(allCities);
+            setFilteredValues(allCityValues);
           }
           setCurrentInputValue(inputValue);
         }}
@@ -126,13 +148,15 @@ const ControlledAutoComplete = () => {
         onChange={({ values }) => {
           setCurrentSelections(values);
         }}
+        // controls the values that should be shown to user
+        filteredValues={filteredValues}
       />
       <DropdownOverlay>
         <ActionList>
-          {cities.map((city) => (
+          {allCities.map((city) => (
             <ActionListItem
-              title={city}
-              value={city.toLowerCase()}
+              title={city.title}
+              value={city.value}
             />
           ))}
         </ActionList>
