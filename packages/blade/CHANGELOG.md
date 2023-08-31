@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 10.4.3
+
+### Patch Changes
+
+- 6b69d0e5: fix(blade): fixed card link overlay not working when wrapper is set to position:relative
+
 ## 10.4.2
 
 ### Patch Changes
