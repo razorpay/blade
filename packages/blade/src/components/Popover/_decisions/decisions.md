@@ -14,6 +14,8 @@ The popover component is used to provide context as well as enable users to take
     - [On initial load](#on-initial-load)
     - [Working with non-interactive triggers](#working-with-non-interactive-triggers)
   - [Custom Triggers](#custom-triggers)
+- [Future Scope](#future-scope)
+- [Tooltips vs Popovers vs Guided Popovers](#tooltips-vs-popovers-vs-guided-popovers)
 - [Library](#library)
 - [Motion](#motion)
 - [Accessibility](#accessibility)
