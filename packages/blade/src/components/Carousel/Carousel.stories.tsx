@@ -262,6 +262,9 @@ const CarouselExample = (props: Omit<CarouselProps, 'children'>): React.ReactEle
         key={key}
         carouselItemAlignment="stretch"
         accessibilityLabel="Testimonials"
+        onChange={(idx) => {
+          console.log(idx);
+        }}
       >
         {testimonialData.map((testimonial) => (
           <CarouselItem key={testimonial.name}>
@@ -341,40 +344,6 @@ export const AutoBleed: ComponentStory<typeof CarouselComponent> = () => {
 
   return (
     <Box margin="auto" padding="spacing.4" width="100%">
-      <Box marginY="spacing.8">
-        <Text>
-          You can achive bleed by setting <Code size="medium">visibleItems</Code> to autofit &
-          adding <Code size="medium">carouselItemWidth</Code> to be a fixed width (eg: 300px)
-        </Text>
-        <Text marginTop="spacing.2">
-          If you want bleed on mobile, you can set{' '}
-          <Code size="medium">{`carouselItemWidth={{ base: '90%', m: '300px' }}`}</Code> , this will
-          give a 10% bleed on mobile screens
-        </Text>
-      </Box>
-
-      <Text weight="bold">Props:</Text>
-      <List marginBottom="spacing.3">
-        <ListItem>visibleItems: autofit</ListItem>
-        <ListItem>
-          carouselItemWidth: {'{'} base: '90%', m: 300px {'}'}
-        </ListItem>
-      </List>
-      <CarouselExample visibleItems="autofit" carouselItemWidth={{ base: '90%', m: '300px' }} />
-
-      <Text marginY="spacing.8">
-        If you want emphasis on 1 item with bleed you can set{' '}
-        <Code size="medium">shouldAddStartEndSpacing</Code> to true
-      </Text>
-
-      <Text weight="bold">Props:</Text>
-      <List marginBottom="spacing.3">
-        <ListItem>visibleItems: autofit</ListItem>
-        <ListItem>shouldAddStartEndSpacing: true</ListItem>
-        <ListItem>
-          carouselItemWidth: {'{'} base: '90%', m: 300px {'}'}
-        </ListItem>
-      </List>
       <CarouselExample
         navigationButtonPosition="side"
         shouldAddStartEndSpacing

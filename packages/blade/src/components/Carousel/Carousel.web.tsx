@@ -115,7 +115,6 @@ const CarouselContainer = styled(BaseBox)<{
     flexWrap: 'nowrap',
     scrollSnapType: 'x mandatory',
     scrollSnapPointsY: `repeat(100%)`,
-    scrollBehavior: 'smooth',
     msOverflowStyle: 'none' /* IE and Edge */,
     scrollbarWidth: 'none' /* Firefox */,
     /* Needed to work on iOS Safari */
