@@ -23,7 +23,7 @@ type TextCommonProps = {
   /**
    * Overrides the color of the Text component.
    *
-   * **Note** This takes priority over `type` and `constrast` prop to decide color of text
+   * **Note** This takes priority over `type` and `contrast` prop to decide color of text
    */
   color?: BaseTextProps['color'];
   textAlign?: BaseTextProps['textAlign'];
