@@ -1,7 +1,7 @@
 <h1 align="center">
   Blade
 </h1>
-<p align="center">
+<p align="center">c
   <a href="https://github.com/styled-components/styled-components">
     <img src="https://img.shields.io/badge/style-%F0%9F%92%85%20styled--components-orange.svg?colorB=daa357&colorA=db748e" alt="Blade is styled with styled-components" />
   </a>
