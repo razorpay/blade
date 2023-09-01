@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Amount /> should render Amount on server 1`] = `"<div id="root"><div data-blade-component="amount" class="BaseBox-bmPWx bcSLaJ"><div data-blade-component="base-box" class="BaseBox-bmPWx iaZUuq"><span class="StyledBaseText-dVBfTO cQGNSm" data-blade-component="base-text">₹</span><span class="StyledBaseText-dVBfTO eIdQFo" data-blade-component="base-text">10,000<!-- -->.</span><span class="StyledBaseText-dVBfTO ghBMue" data-blade-component="base-text">00</span></div></div></div>"`;
+exports[`<Amount /> should render Amount on server 1`] = `"<div id="root"><div data-blade-component="amount" class="BaseBox-bmPWx bcSLaJ"><div data-blade-component="base-box" class="BaseBox-bmPWx dVzpVF"><span class="StyledBaseText-dVBfTO cQGNSm" data-blade-component="base-text">₹</span><span class="StyledBaseText-dVBfTO eIdQFo" data-blade-component="base-text">10,000<!-- -->.</span><span class="StyledBaseText-dVBfTO ghBMue" data-blade-component="base-text">00</span></div></div></div>"`;
 
 exports[`<Amount /> should render Amount on server 2`] = `
 <div
@@ -11,7 +11,7 @@ exports[`<Amount /> should render Amount on server 2`] = `
     data-blade-component="amount"
   >
     <div
-      class="BaseBox-bmPWx iaZUuq"
+      class="BaseBox-bmPWx dVzpVF"
       data-blade-component="base-box"
     >
       <span

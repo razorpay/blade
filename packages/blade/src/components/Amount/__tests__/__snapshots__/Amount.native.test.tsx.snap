@@ -30,8 +30,6 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
             "alignItems": "baseline",
             "display": "flex",
             "flexDirection": "row",
-            "paddingLeft": 4,
-            "paddingRight": 4,
           },
         ]
       }
@@ -191,8 +189,6 @@ exports[`<Amount /> should render Amount with default props 1`] = `
             "alignItems": "baseline",
             "display": "flex",
             "flexDirection": "row",
-            "paddingLeft": 4,
-            "paddingRight": 4,
           },
         ]
       }
@@ -352,8 +348,6 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
             "alignItems": "baseline",
             "display": "flex",
             "flexDirection": "row",
-            "paddingLeft": 4,
-            "paddingRight": 4,
           },
         ]
       }
@@ -513,8 +507,6 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
             "alignItems": "baseline",
             "display": "flex",
             "flexDirection": "row",
-            "paddingLeft": 4,
-            "paddingRight": 4,
           },
         ]
       }
@@ -674,8 +666,6 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
             "alignItems": "baseline",
             "display": "flex",
             "flexDirection": "row",
-            "paddingLeft": 4,
-            "paddingRight": 4,
           },
         ]
       }
@@ -824,8 +814,6 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
             "alignItems": "baseline",
             "display": "flex",
             "flexDirection": "row",
-            "paddingLeft": 4,
-            "paddingRight": 4,
           },
         ]
       }
@@ -974,8 +962,6 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
             "alignItems": "baseline",
             "display": "flex",
             "flexDirection": "row",
-            "paddingLeft": 4,
-            "paddingRight": 4,
           },
         ]
       }
@@ -1124,8 +1110,6 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
             "alignItems": "baseline",
             "display": "flex",
             "flexDirection": "row",
-            "paddingLeft": 4,
-            "paddingRight": 4,
           },
         ]
       }
@@ -1274,8 +1258,6 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
             "alignItems": "baseline",
             "display": "flex",
             "flexDirection": "row",
-            "paddingLeft": 4,
-            "paddingRight": 4,
           },
         ]
       }
@@ -1424,8 +1406,6 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
             "alignItems": "baseline",
             "display": "flex",
             "flexDirection": "row",
-            "paddingLeft": 4,
-            "paddingRight": 4,
           },
         ]
       }
@@ -1574,8 +1554,6 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
             "alignItems": "baseline",
             "display": "flex",
             "flexDirection": "row",
-            "paddingLeft": 4,
-            "paddingRight": 4,
           },
         ]
       }
@@ -1724,8 +1702,6 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
             "alignItems": "baseline",
             "display": "flex",
             "flexDirection": "row",
-            "paddingLeft": 4,
-            "paddingRight": 4,
           },
         ]
       }
@@ -1874,8 +1850,6 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
             "alignItems": "baseline",
             "display": "flex",
             "flexDirection": "row",
-            "paddingLeft": 4,
-            "paddingRight": 4,
           },
         ]
       }
@@ -2035,8 +2009,6 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
             "alignItems": "baseline",
             "display": "flex",
             "flexDirection": "row",
-            "paddingLeft": 4,
-            "paddingRight": 4,
           },
         ]
       }
@@ -2196,8 +2168,6 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
             "alignItems": "baseline",
             "display": "flex",
             "flexDirection": "row",
-            "paddingLeft": 4,
-            "paddingRight": 4,
           },
         ]
       }
@@ -2299,8 +2269,6 @@ exports[`<Amount /> should render information intent Amount  1`] = `
             "alignItems": "baseline",
             "display": "flex",
             "flexDirection": "row",
-            "paddingLeft": 4,
-            "paddingRight": 4,
           },
         ]
       }
@@ -2402,8 +2370,6 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
             "alignItems": "baseline",
             "display": "flex",
             "flexDirection": "row",
-            "paddingLeft": 4,
-            "paddingRight": 4,
           },
         ]
       }
