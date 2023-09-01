@@ -52,12 +52,25 @@ const DisplayStoryMeta: Meta<DisplayProps> = {
     contrast: 'low',
     as: undefined,
   },
+  argTypes: {
+    size: {
+      options: ['small', 'medium', 'large', 'xlarge'],
+      control: {
+        type: 'radio',
+      },
+      table: {
+        type: {
+          summary: '"small" | "medium" | "large" | "xlarge"',
+        },
+      },
+    },
+    ...getStyledPropsArgTypes(),
+  },
   parameters: {
     docs: {
       page: () => <Page />,
     },
   },
-  argTypes: getStyledPropsArgTypes(),
 };
 
 const DisplayTemplate: ComponentStory<typeof DisplayComponent> = (args) => {
