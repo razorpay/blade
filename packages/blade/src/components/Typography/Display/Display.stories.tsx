@@ -72,18 +72,18 @@ WithColor.args = {
 };
 
 const Sup = isReactNative() ? DisplayComponent : 'sup';
-const WithMixedColorsTemplate: ComponentStory<typeof DisplayComponent> = () => {
+const WithMixedColorsTemplate: ComponentStory<typeof DisplayComponent> = (args) => {
   return (
     <Box>
-      <DisplayComponent>
+      <DisplayComponent {...args}>
         Supercharge your business with the all‑powerful{' '}
-        <DisplayComponent as="span" color="brand.primary.500">
+        <DisplayComponent {...args} as="span" color="brand.primary.500">
           Payment Gateway
         </DisplayComponent>
       </DisplayComponent>
-      <DisplayComponent marginTop="spacing.5">
+      <DisplayComponent marginTop="spacing.5" {...args}>
         Start accepting{' '}
-        <DisplayComponent as="span" color="feedback.text.information.lowContrast">
+        <DisplayComponent {...args} as="span" color="feedback.text.information.lowContrast">
           payments
         </DisplayComponent>{' '}
         at just 2% <Sup>*</Sup>
