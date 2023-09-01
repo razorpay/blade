@@ -15,14 +15,13 @@ import { isReactNative } from '~utils';
 const Page = (): ReactElement => {
   return (
     <StoryPageWrapper
-      // TODO Update this description
-      componentDescription="The Display Component makes a bold visual statement. Use them to create impact when the main goal is visual storytelling. For example, use Display as marketing content on landing pages or to capture attention during onboarding."
+      componentDescription="The Display component adds a strong visual touch. Utilize it to create eye-catching sections on your landing pages."
       componentName="Display"
       figmaURL={{
         paymentTheme:
-          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=11770%3A147139',
+          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?type=design&node-id=13708%3A180902&mode=design&t=1sYKFDyXDXlugu2m-1',
         bankingTheme:
-          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=10344%3A190050',
+          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?type=design&node-id=10344%3A189840&mode=design&t=Np5DsiaBhYmDNpTw-1',
       }}
     >
       <StorybookTitle>Usage</StorybookTitle>
