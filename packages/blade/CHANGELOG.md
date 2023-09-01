@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 10.4.4
+
+### Patch Changes
+
+- f1478f1b: fix(blade): extra left/right padding on amount component
+
 ## 10.4.3
 
 ### Patch Changes
