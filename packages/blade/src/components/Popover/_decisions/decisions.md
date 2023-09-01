@@ -173,6 +173,34 @@ const MyCustomButton = React.forwardRef<
 </Popover>
 ```
 
+## Future Scope
+
+Apart from normal Popovers while we audited the components used in Razorpay, we also found instances of Guided Popovers (Tour component), which can be used to guide users through a flow. 
+We will be adding support for Guided Popovers in future.
+
+Guided Popovers will have additional features like: 
+
+- Ability to add multiple steps in a flow without juggling with state management
+- Mask & backdrop support
+- Proper guidelines on how to use the component
+- etc
+
+This will be a separate component and will be released in future, since the scope & complexity of Guided Popovers will be much larger than normal Popovers.
+
+## Tooltips vs Popovers vs Guided Popovers
+
+|                         	| Tooltip                                          	| Popover                                                        	| GuidedPopover                                                  	|
+|-------------------------	|--------------------------------------------------	|----------------------------------------------------------------	|----------------------------------------------------------------	|
+| **Use Case**            	| Set context                                      	| Set context<br>Let user take action                            	| Highlight new feature<br>Let users take action                 	|
+| **Trigger Interaction** 	| Hover                                            	| onClick<br>onLoad                                              	| onClick<br>onLoad                                              	|
+| **Triggered By**        	| Interactive elements<br>Non-interactive elements 	| Interactive elements<br>Non-interactive elements               	| On page load<br>Nav buttons of current popover                 	|
+| **Content**             	| Heading<br>Body Text (Normal + Bold)            	| Heading<br>Rich Body Text<br>Links<br>Buttons<br>Assets/ Media 	| Heading<br>Rich Body Text<br>Links<br>Buttons<br>Assets/ Media 	|
+| **Header**              	| Plain Text                                       	| Rich Text<br>Leading Icon<br>Leading Asset                     	| Rich Text<br>Leading Icon<br>Leading Asset                     	|
+| **Footer**              	| No                                               	| Slot<br>Action Buttons(1 or 2)                                	| Action Buttons(1 or 2)<br>Nav Buttons (2)                     	|
+| **Dismiss Button**      	| No                                               	| Yes                                                            	| Yes                                                            	|
+| **Background Overlay**  	| No                                               	| No                                                             	| Yes                                                            	|
+
+
 ## Library
 
 We will be using [FloatingUI](https://floating-ui.com/) to position the popover & handle the basic popover logic. Floating UI supports both Web & ReactNative.
