@@ -28,6 +28,13 @@ A SelectInput where you can type inside the input to filter through the items.
 
 _This is a list of unique props to AutoComplete, apart from these all common input props will be supported such as `validationState`, `helpText`, `errorText`, etc_
 
+#### Related Component APIs
+
+- [SelectInput](https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Dropdown/_decisions/decisions.md#selectinput)
+- [Dropdown](https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Dropdown/_decisions/decisions.md#dropdown)
+- [ActionList](https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Dropdown/_decisions/decisions.md#actionlist)
+- [Controlled Dropdown](https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Dropdown/_decisions/controlled-dropdown.md)
+
 ## Usage
 
 AutoComplete will be built as a new trigger for existing Dropdown component.
