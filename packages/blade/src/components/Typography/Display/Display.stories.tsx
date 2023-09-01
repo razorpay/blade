@@ -46,7 +46,7 @@ const DisplayStoryMeta: Meta<DisplayProps> = {
   title: 'Components/Typography/Display',
   component: DisplayComponent,
   args: {
-    size: 'xlarge',
+    size: 'small',
     type: 'normal',
     children: 'Power your finance, grow your business',
     contrast: 'low',
