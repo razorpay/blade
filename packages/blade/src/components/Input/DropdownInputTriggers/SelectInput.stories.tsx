@@ -354,7 +354,7 @@ export const AutoCompleteWithBottomSheet = (): React.ReactElement => {
       <SelectInput label="Sort Dishes" />
       <BottomSheet>
         <BottomSheetHeader title="Sort By">
-          <AutoComplete label="Sort Dishes" />
+          <AutoComplete label="Sort Dishes" maxRows="single" />
         </BottomSheetHeader>
         <BottomSheetBody>
           <ActionList>

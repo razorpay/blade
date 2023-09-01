@@ -132,6 +132,8 @@ const BaseDropdownInputTrigger = (props: BaseDropdownInputTriggerProps): React.R
   } = useDropdown();
 
   const dropdownTriggerPlaceholder = props.placeholder ?? 'Select Option';
+  const isAutoCompleteInHeader = !props.isSelectInput && hasAutoCompleteInBottomSheetHeader;
+
   useControlledDropdownInput({
     onSelectionChange: props.onSelectionChange,
     onChange: props.onChange,
@@ -186,7 +188,7 @@ const BaseDropdownInputTrigger = (props: BaseDropdownInputTriggerProps): React.R
       }}
       maxTagRows={props.maxRows ?? 'single'}
       tags={getTags()}
-      showAllTags={isOpen}
+      showAllTags={isOpen && isAutoCompleteInHeader}
       activeTagIndex={activeTagIndex}
       setActiveTagIndex={setActiveTagIndex}
       shouldIgnoreBlurAnimation={shouldIgnoreBlurAnimation}
@@ -234,7 +236,7 @@ const BaseDropdownInputTrigger = (props: BaseDropdownInputTriggerProps): React.R
       onChange={props.isSelectInput ? undefined : props.onInputValueChange}
       onKeyDown={props.onTriggerKeydown}
       interactionElement={
-        hasAutoCompleteInBottomSheetHeader && !props.isSelectInput ? null : (
+        isAutoCompleteInHeader ? null : (
           <InputChevronIcon
             onClick={() => {
               if (!props.isDisabled) {

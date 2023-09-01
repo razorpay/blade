@@ -860,7 +860,7 @@ export const BaseInput = React.forwardRef<BladeElementRef, BaseInputProps>(
               inputWrapperRef={inputWrapperRef}
             >
               <StyledBaseInput
-                as={isReactNative ? undefined : as}
+                as={as}
                 id={inputId}
                 ref={ref as any}
                 name={name}

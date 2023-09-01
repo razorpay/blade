@@ -207,7 +207,7 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
     hasPopup,
     shouldIgnoreBlurAnimation,
     autoCapitalize,
-    as,
+    as: renderAs,
     ...props
   },
   ref,
@@ -224,7 +224,7 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
     isFocused: currentInteraction === 'active',
   };
 
-  return hasPopup ? (
+  return renderAs === 'button' ? (
     <StyledNativeBaseButton
       // the types of styled-components for react-native is creating a mess, so there's no other option but to type `ref` as any
       // eslint-disable-next-line @typescript-eslint/no-explicit-any

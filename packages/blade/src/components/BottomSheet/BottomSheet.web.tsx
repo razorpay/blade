@@ -34,6 +34,7 @@ import { size } from '~tokens/global';
 import { makeMotionTime } from '~utils/makeMotionTime';
 
 export const BOTTOM_SHEET_EASING = 'cubic-bezier(.15,0,.24,.97)';
+const AUTOCOMPLETE_DEFAULT_SNAPPOINT = 0.85;
 
 const BottomSheetSurface = styled.div<{
   windowHeight: number;
@@ -112,15 +113,25 @@ const _BottomSheet = ({
 
   const setPositionY = React.useCallback(
     (value: number, limit = true) => {
+      // In AutoComplete, we want BottomSheet to be docked to top snappoint so we remove the limits
+      const shouldLimitPositionY =
+        limit && !bottomSheetAndDropdownGlue?.hasAutoCompleteInBottomSheetHeader;
+
       const maxValue = computeMaxContent({
         contentHeight,
         footerHeight,
         headerHeight: headerHeight + grabHandleHeight,
         maxHeight: value,
       });
-      _setPositionY(limit ? maxValue : value);
+      _setPositionY(shouldLimitPositionY ? maxValue : value);
     },
-    [contentHeight, footerHeight, grabHandleHeight, headerHeight],
+    [
+      bottomSheetAndDropdownGlue?.hasAutoCompleteInBottomSheetHeader,
+      contentHeight,
+      footerHeight,
+      grabHandleHeight,
+      headerHeight,
+    ],
   );
 
   // locks the body scroll to prevent accidental scrolling of content when we drag the sheet
@@ -150,10 +161,14 @@ const _BottomSheet = ({
 
   // if bottomSheet height is >35% & <50% then set initial snapPoint to 35%
   useIsomorphicLayoutEffect(() => {
-    const middleSnapPoint = snapPoints[1] * dimensions.height;
-    const lowerSnapPoint = snapPoints[0] * dimensions.height;
-    if (totalHeight > lowerSnapPoint && totalHeight < middleSnapPoint) {
-      initialSnapPoint.current = snapPoints[0];
+    if (bottomSheetAndDropdownGlue?.hasAutoCompleteInBottomSheetHeader) {
+      initialSnapPoint.current = AUTOCOMPLETE_DEFAULT_SNAPPOINT;
+    } else {
+      const middleSnapPoint = snapPoints[1] * dimensions.height;
+      const lowerSnapPoint = snapPoints[0] * dimensions.height;
+      if (totalHeight > lowerSnapPoint && totalHeight < middleSnapPoint) {
+        initialSnapPoint.current = snapPoints[0];
+      }
     }
   }, [dimensions.height, snapPoints, totalHeight]);
 
