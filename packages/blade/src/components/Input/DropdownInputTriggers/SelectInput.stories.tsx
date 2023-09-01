@@ -289,7 +289,6 @@ const cities = [
   },
 ];
 export const AutoCompleteControlled = (): React.ReactElement => {
-  const [inputValue, setInputValue] = React.useState('');
   const cityValues = cities.map((city) => city.value);
   const [filteredValues, setFilteredValues] = React.useState<string[]>(cityValues);
 
@@ -297,9 +296,7 @@ export const AutoCompleteControlled = (): React.ReactElement => {
     <Dropdown selectionType="multiple">
       <AutoComplete
         label="City"
-        inputValue={inputValue}
         onInputValueChange={({ value }) => {
-          setInputValue(value ?? '');
           if (value) {
             const filteredItems = cities
               .filter(
@@ -323,20 +320,15 @@ export const AutoCompleteControlled = (): React.ReactElement => {
         filteredValues={filteredValues}
         helpText="Try typing 'maharashtra' in input"
       />
-
-      <DropdownOverlay>
-        {filteredValues.length > 0 ? (
+      {filteredValues.length > 0 ? (
+        <DropdownOverlay>
           <ActionList>
             {cities.map((city) => (
               <ActionListItem key={city.value} title={city.title} value={city.value} />
             ))}
           </ActionList>
-        ) : (
-          <Box textAlign="center" padding="spacing.6">
-            <Text weight="bold">No City Found {':('} </Text>
-          </Box>
-        )}
-      </DropdownOverlay>
+        </DropdownOverlay>
+      ) : null}
     </Dropdown>
   );
 };
