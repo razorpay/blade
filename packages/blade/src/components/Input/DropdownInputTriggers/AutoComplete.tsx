@@ -29,6 +29,7 @@ const _AutoComplete = (props: AutoCompleteProps): React.ReactElement => {
     filteredValues: globalFilteredValues,
     onTriggerClick,
     dropdownTriggerer,
+    selectionType,
   } = useDropdown();
 
   const getOptionValues = React.useCallback(() => {
@@ -93,8 +94,7 @@ const _AutoComplete = (props: AutoCompleteProps): React.ReactElement => {
 
   const onKeydownCallback: BaseInputProps['onKeyDown'] = (e) => {
     if (e.key === 'Enter') {
-      setInputValue('');
-      props.onInputValueChange?.({ name: props.name, value: '' });
+      // setInputValue('');
       setActiveTagIndex(-1);
       setGlobalFilteredValues(getOptionValues());
     } else if (
@@ -116,6 +116,17 @@ const _AutoComplete = (props: AutoCompleteProps): React.ReactElement => {
     <BaseBox position="relative">
       <BaseDropdownInputTrigger
         {...props}
+        onChange={({ values }) => {
+          if (selectionType === 'multiple') {
+            setInputValue('');
+            props.onInputValueChange?.({ name: props.name, value: '' });
+            setActiveTagIndex(-1);
+            setGlobalFilteredValues(getOptionValues());
+          } else {
+            setInputValue(options[selectedIndices[0]].title);
+          }
+          props.onChange?.({ name: props.name, values });
+        }}
         isSelectInput={false}
         inputValue={inputValue}
         onTriggerKeydown={onKeydownCallback}

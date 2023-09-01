@@ -10,7 +10,10 @@ import { MetaConstants } from '~utils/metaAttribute';
 import { getTagsGroup } from '~components/Tag/getTagsGroup';
 
 const useControlledDropdownInput = (
-  props: Pick<BaseDropdownInputTriggerProps, 'onChange' | 'name' | 'value' | 'defaultValue'>,
+  props: Pick<
+    BaseDropdownInputTriggerProps,
+    'onChange' | 'onSelectionChange' | 'name' | 'value' | 'defaultValue'
+  >,
 ): void => {
   const isFirstRenderRef = React.useRef(true);
   const {
@@ -91,8 +94,9 @@ const useControlledDropdownInput = (
       return;
     }
 
-    if (props.onChange && !isFirstRenderRef.current) {
-      props.onChange({
+    if (!isFirstRenderRef.current) {
+      props.onSelectionChange?.();
+      props.onChange?.({
         name: props.name,
         values: getValuesArrayFromIndices(),
       });
@@ -120,6 +124,7 @@ const BaseDropdownInputTrigger = (props: BaseDropdownInputTriggerProps): React.R
     setShouldIgnoreBlurAnimation,
     activeIndex,
     hasFooterAction,
+    hasAutoCompleteInBottomSheetHeader,
     options,
     removeOption,
     setChangeCallbackTriggerer,
@@ -127,8 +132,8 @@ const BaseDropdownInputTrigger = (props: BaseDropdownInputTriggerProps): React.R
   } = useDropdown();
 
   const dropdownTriggerPlaceholder = props.placeholder ?? 'Select Option';
-
   useControlledDropdownInput({
+    onSelectionChange: props.onSelectionChange,
     onChange: props.onChange,
     name: props.name,
     value: props.value,
@@ -198,6 +203,7 @@ const BaseDropdownInputTrigger = (props: BaseDropdownInputTriggerProps): React.R
       accessibilityLabel={props.accessibilityLabel}
       labelPosition={props.labelPosition}
       necessityIndicator={props.necessityIndicator}
+      autoCompleteSuggestionType="none"
       validationState={props.validationState}
       helpText={props.helpText}
       errorText={props.errorText}
@@ -228,18 +234,20 @@ const BaseDropdownInputTrigger = (props: BaseDropdownInputTriggerProps): React.R
       onChange={props.isSelectInput ? undefined : props.onInputValueChange}
       onKeyDown={props.onTriggerKeydown}
       interactionElement={
-        <InputChevronIcon
-          onClick={() => {
-            if (!props.isDisabled) {
-              // Icon onClicks to the SelectInput itself
-              if (!isReactNative()) {
-                triggererRef.current?.focus();
+        hasAutoCompleteInBottomSheetHeader && !props.isSelectInput ? null : (
+          <InputChevronIcon
+            onClick={() => {
+              if (!props.isDisabled) {
+                // Icon onClicks to the SelectInput itself
+                if (!isReactNative()) {
+                  triggererRef.current?.focus();
+                }
+                onTriggerClick();
               }
-              onTriggerClick();
-            }
-          }}
-          isOpen={isOpen}
-        />
+            }}
+            isOpen={isOpen}
+          />
+        )
       }
     />
   );

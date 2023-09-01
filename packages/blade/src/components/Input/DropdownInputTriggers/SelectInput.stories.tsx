@@ -250,17 +250,19 @@ SelectInputWithoutLabel.storyName = 'SelectInput without Label';
 
 export const AutoCompleteUncontrolled = (): React.ReactElement => {
   return (
-    <Dropdown selectionType="multiple">
-      <AutoComplete label="City" />
-      <DropdownOverlay>
-        <ActionList>
-          <ActionListItem title="Mumbai" value="mumbai" />
-          <ActionListItem title="Pune" value="pune" />
-          <ActionListItem title="Bengaluru" value="bengaluru" />
-          <ActionListItem title="Ooty" value="ooty" />
-        </ActionList>
-      </DropdownOverlay>
-    </Dropdown>
+    <Box maxWidth="400px">
+      <Dropdown selectionType="multiple">
+        <AutoComplete maxRows="single" label="City" />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Mumbai" value="mumbai" />
+            <ActionListItem title="Pune" value="pune" />
+            <ActionListItem title="Bengaluru" value="bengaluru" />
+            <ActionListItem title="Ooty" value="ooty" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+    </Box>
   );
 };
 
@@ -339,10 +341,10 @@ export const AutoCompleteControlled = (): React.ReactElement => {
   );
 };
 
-export const ControlledAutoComplete = () => {
+export const AutoCompleteUncontrolledSingleSelect = (): React.ReactElement => {
   return (
     <Dropdown>
-      <AutoComplete />
+      <AutoComplete label="Select City" />
       <DropdownOverlay>
         <ActionList>
           <ActionListItem title="Mumbai" value="mumbai" />
