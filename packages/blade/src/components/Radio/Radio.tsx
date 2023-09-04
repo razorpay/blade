@@ -136,4 +136,5 @@ const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
 
 const Radio = assignWithoutSideEffects(React.forwardRef(_Radio), { displayName: 'Radio' });
 
-export { Radio, RadioProps };
+export type { RadioProps };
+export { Radio };

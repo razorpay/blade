@@ -36,4 +36,5 @@ const CollapsibleBody = assignWithoutSideEffects(_CollapsibleBody, {
   componentId: MetaConstants.CollapsibleBody,
 });
 
-export { CollapsibleBody, CollapsibleBodyProps };
+export type { CollapsibleBodyProps };
+export { CollapsibleBody };

@@ -356,4 +356,5 @@ const TextInput = assignWithoutSideEffects(React.forwardRef(_TextInput), {
   displayName: 'TextInput',
 });
 
-export { TextInput, TextInputProps };
+export type { TextInputProps };
+export { TextInput };

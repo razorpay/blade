@@ -297,4 +297,5 @@ const Amount = assignWithoutSideEffects(_Amount, {
   componentId: 'Amount',
 });
 
-export { Amount, AmountProps };
+export type { AmountProps };
+export { Amount };

@@ -64,4 +64,5 @@ const CollapsibleButton = assignWithoutSideEffects(forwardRef(_CollapsibleButton
   componentId: MetaConstants.CollapsibleButton,
 });
 
-export { CollapsibleButton, CollapsibleButtonProps };
+export type { CollapsibleButtonProps };
+export { CollapsibleButton };

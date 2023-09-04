@@ -69,4 +69,5 @@ const AccordionButton = assignWithoutSideEffects(_AccordionButton, {
   componentId: MetaConstants.AccordionButton,
 });
 
-export { AccordionButton, AccordionButtonProps };
+export type { AccordionButtonProps };
+export { AccordionButton };

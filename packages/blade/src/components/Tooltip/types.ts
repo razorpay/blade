@@ -46,4 +46,4 @@ type TooltipContentWrapperProps = {
   isVisible?: boolean;
 } & BaseBoxProps;
 
-export { TooltipProps, TooltipContentProps, TooltipContentWrapperProps };
+export type { TooltipProps, TooltipContentProps, TooltipContentWrapperProps };

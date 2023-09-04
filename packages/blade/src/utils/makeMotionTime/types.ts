@@ -5,4 +5,4 @@ type MakeMotionTime<Value extends number> = Platform.Select<{
   web: `${Value}ms`;
 }>;
 
-export { MakeMotionTime };
+export type { MakeMotionTime };

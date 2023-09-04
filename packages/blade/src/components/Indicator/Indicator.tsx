@@ -121,4 +121,5 @@ const Indicator = ({
   );
 };
 
-export { IndicatorProps, Indicator };
+export type { IndicatorProps };
+export { Indicator };

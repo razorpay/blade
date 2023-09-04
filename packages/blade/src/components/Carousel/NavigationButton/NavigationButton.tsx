@@ -43,4 +43,5 @@ const NavigationButton = ({ type, variant, onClick }: NavigationButtonProps): Re
   );
 };
 
-export { NavigationButton, NavigationButtonProps };
+export type { NavigationButtonProps };
+export { NavigationButton };

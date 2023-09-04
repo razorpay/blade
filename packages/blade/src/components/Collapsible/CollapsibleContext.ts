@@ -25,4 +25,5 @@ const useCollapsible = (): CollapsibleContextState => {
   return collapsibleContext!;
 };
 
-export { CollapsibleContext, useCollapsible, CollapsibleContextState };
+export type { CollapsibleContextState };
+export { CollapsibleContext, useCollapsible };

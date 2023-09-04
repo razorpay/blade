@@ -264,4 +264,5 @@ const Checkbox = assignWithoutSideEffects(React.forwardRef(_Checkbox), {
   displayName: 'Checkbox',
 });
 
-export { Checkbox, CheckboxProps };
+export type { CheckboxProps };
+export { Checkbox };

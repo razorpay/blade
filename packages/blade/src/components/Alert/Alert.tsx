@@ -326,4 +326,5 @@ const Alert = ({
   );
 };
 
-export { AlertProps, Alert };
+export type { AlertProps };
+export { Alert };

@@ -460,4 +460,5 @@ const useDropdown = (): UseDropdownReturnValue => {
   };
 };
 
-export { useDropdown, DropdownContext, DropdownContextType, OptionsType };
+export type { DropdownContextType, OptionsType };
+export { useDropdown, DropdownContext };

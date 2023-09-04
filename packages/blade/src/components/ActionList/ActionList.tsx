@@ -149,4 +149,5 @@ const ActionList = assignWithoutSideEffects(React.memo(_ActionList), {
   componentId: componentIds.ActionList,
 });
 
-export { ActionList, useActionListContext, ActionListProps };
+export type { ActionListProps };
+export { ActionList, useActionListContext };

@@ -449,4 +449,4 @@ type MarginProps = MakeObjectResponsive<{
   marginLeft: SpacingValueType;
 }>;
 
-export { PaddingProps, MarginProps, SpacingValueType, SpaceUnits, ArrayOfMaxLength4 };
+export type { PaddingProps, MarginProps, SpacingValueType, SpaceUnits, ArrayOfMaxLength4 };

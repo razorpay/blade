@@ -26,4 +26,5 @@ const getBaseActionListStyles = (props: StyledActionListProps & { theme: Theme }
   };
 };
 
-export { getBaseActionListStyles, StyledActionListProps };
+export type { StyledActionListProps };
+export { getBaseActionListStyles };

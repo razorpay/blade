@@ -17,4 +17,5 @@ const ListItemText = assignWithoutSideEffects(_ListItemText, {
   componentId: MetaConstants.ListItemText,
 });
 
-export { ListItemText, ListItemTextProps };
+export type { ListItemTextProps };
+export { ListItemText };

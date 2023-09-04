@@ -423,12 +423,11 @@ const ActionListItem = assignWithoutSideEffects(React.memo(_ActionListItem), {
   displayName: componentIds.ActionListItem,
 });
 
+export type { ActionListItemProps, ActionListSectionProps };
 export {
   ActionListItem,
-  ActionListItemProps,
   ActionListItemIcon,
   ActionListItemText,
   ActionListSection,
-  ActionListSectionProps,
   ActionListSectionDivider,
 };

@@ -18,4 +18,4 @@ type DropdownOverlayProps = {
   zIndex?: number;
 } & TestID;
 
-export { DropdownProps, DropdownOverlayProps };
+export type { DropdownProps, DropdownOverlayProps };

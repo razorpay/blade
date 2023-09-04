@@ -181,4 +181,5 @@ const Tag = ({
   );
 };
 
-export { Tag, TagProps };
+export type { TagProps };
+export { Tag };

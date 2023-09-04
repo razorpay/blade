@@ -50,4 +50,4 @@ type HoverProps = {
   hoverTokens: SelectorInputHoverTokens;
 };
 
-export { SelectorLabelProps, SelectorInputProps, HoverProps, SelectorInputHoverTokens };
+export type { SelectorLabelProps, SelectorInputProps, HoverProps, SelectorInputHoverTokens };

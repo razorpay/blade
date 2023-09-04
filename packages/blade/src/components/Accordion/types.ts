@@ -10,4 +10,4 @@ type AccordionButtonProps = {
   children: string;
 };
 
-export { StyledAccordionButtonProps, AccordionButtonProps };
+export type { StyledAccordionButtonProps, AccordionButtonProps };

@@ -126,7 +126,7 @@ type BladeElementRef = Platform.Select<{
   native: View;
 }>;
 
-export {
+export type {
   DotNotationColorStringToken,
   DotNotationMotionStringToken,
   DotNotationSpacingStringToken,

@@ -71,4 +71,9 @@ type BottomSheetBodyProps = {
   padding?: Extract<SpacingValueType, 'spacing.0' | 'spacing.5'>;
 };
 
-export { BottomSheetProps, BottomSheetHeaderProps, BottomSheetFooterProps, BottomSheetBodyProps };
+export type {
+  BottomSheetProps,
+  BottomSheetHeaderProps,
+  BottomSheetFooterProps,
+  BottomSheetBodyProps,
+};

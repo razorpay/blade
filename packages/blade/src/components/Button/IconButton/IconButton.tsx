@@ -84,4 +84,5 @@ const _IconButton: React.ForwardRefRenderFunction<BladeElementRef, IconButtonPro
 
 const IconButton = React.forwardRef(_IconButton);
 
-export { IconButtonProps, IconButton };
+export type { IconButtonProps };
+export { IconButton };
