@@ -22,7 +22,7 @@ import { castWebType, makeMotionTime, useInterval, useTheme } from '~utils';
 import { useId } from '~utils/useId';
 import { makeAccessible } from '~utils/makeAccessible';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import { useUpdateEffect } from '~utils/useUpdateEffect';
+import { useDidUpdate } from '~utils/useDidUpdate';
 
 type ControlsProp = Required<
   Pick<
@@ -402,6 +402,7 @@ const Carousel = ({
 
   const carouselContext = React.useMemo<CarouselContextProps>(() => {
     return {
+      isResponsive,
       visibleItems: _visibleItems,
       carouselItemWidth,
       carouselContainerRef: containerRef,
@@ -415,6 +416,7 @@ const Carousel = ({
   }, [
     id,
     startEndMargin,
+    isResponsive,
     _visibleItems,
     carouselItemWidth,
     totalNumberOfSlides,
@@ -422,7 +424,7 @@ const Carousel = ({
     shouldAddStartEndSpacing,
   ]);
 
-  useUpdateEffect(() => {
+  useDidUpdate(() => {
     onChange?.(activeSlide);
   }, [activeSlide, onChange]);
 

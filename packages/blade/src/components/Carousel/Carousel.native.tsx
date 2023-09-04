@@ -14,7 +14,7 @@ import { castNativeType } from '~utils';
 import { useId } from '~utils/useId';
 import { logger } from '~utils/logger';
 import { size } from '~tokens/global';
-import { useUpdateEffect } from '~utils/useUpdateEffect';
+import { useDidUpdate } from '~utils/useDidUpdate';
 
 const percentageStringToNumber = (percentage: string): number => {
   if (!percentage.endsWith('%')) {
@@ -130,6 +130,7 @@ const Carousel = ({
 
   const carouselContext = React.useMemo<CarouselContextProps>(() => {
     return {
+      isResponsive: false,
       visibleItems: _visibleItems,
       carouselItemWidth,
       carouselId: id,
@@ -155,7 +156,7 @@ const Carousel = ({
     },
   );
 
-  useUpdateEffect(() => {
+  useDidUpdate(() => {
     onChange?.(activeSlide);
   }, [activeSlide, onChange]);
 

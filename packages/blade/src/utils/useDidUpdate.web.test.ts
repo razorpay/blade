@@ -1,11 +1,11 @@
 import { renderHook } from '@testing-library/react';
-import { useUpdateEffect } from './useUpdateEffect';
+import { useDidUpdate } from './useDidUpdate';
 
-describe('useUpdateEffect', () => {
+describe('useDidUpdate', () => {
   it('should run the effect only when the component is updated', () => {
     const effect = jest.fn();
     const { rerender } = renderHook(() => {
-      return useUpdateEffect(effect, [{}]);
+      return useDidUpdate(effect, [{}]);
     });
 
     expect(effect).not.toHaveBeenCalled();
@@ -17,14 +17,14 @@ describe('useUpdateEffect', () => {
 
   it('should not run the effect on the first render', () => {
     const effect = jest.fn();
-    renderHook(() => useUpdateEffect(effect, [{}]));
+    renderHook(() => useDidUpdate(effect, [{}]));
 
     expect(effect).not.toHaveBeenCalled();
   });
 
   it('should not run the effect when the dependencies do not change', () => {
     const effect = jest.fn();
-    const { rerender } = renderHook(() => useUpdateEffect(effect, [1, 2, 3]));
+    const { rerender } = renderHook(() => useDidUpdate(effect, [1, 2, 3]));
 
     expect(effect).not.toHaveBeenCalled();
 
