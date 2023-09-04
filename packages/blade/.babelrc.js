@@ -1,3 +1,5 @@
+const manualPureFunctions = require('./scripts/manualPureFunctions');
+
 const alias = {
   '@storybook/react': '@storybook/react-native',
   '^styled-components$': 'styled-components/native',
@@ -128,6 +130,7 @@ const configs = {
         ['@babel/preset-react', { runtime: 'automatic' }],
       ],
       plugins: [
+        manualPureFunctions,
         [
           '@babel/plugin-transform-runtime',
           {

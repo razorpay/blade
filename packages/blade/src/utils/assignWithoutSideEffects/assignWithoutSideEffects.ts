@@ -28,7 +28,7 @@
  *
  * Checkout other components like [Button.tsx](../../components/Button/Button/Button.tsx), [SelectInput.tsx](../../components/Input/SelectInput/SelectInput.tsx) for example.
  *
- * _Note: You don't have to add PURE comment to this function as it is added during build-time by rollup - https://rollupjs.org/configuration-options/#treeshake-manualpurefunctions_
+ * _Note: You don't have to add PURE comment to this function as it is added during build-time by our `manualPureFunctions` babel plugin_
  */
 // We're matching the types of this with Object.assign types
 // eslint-disable-next-line @typescript-eslint/ban-types
