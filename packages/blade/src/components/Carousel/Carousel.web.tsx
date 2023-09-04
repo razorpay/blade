@@ -402,7 +402,7 @@ const Carousel = ({
 
   const carouselContext = React.useMemo<CarouselContextProps>(() => {
     return {
-      visibleItems,
+      visibleItems: _visibleItems,
       carouselItemWidth,
       carouselContainerRef: containerRef,
       setActiveIndicator,
@@ -415,7 +415,7 @@ const Carousel = ({
   }, [
     id,
     startEndMargin,
-    visibleItems,
+    _visibleItems,
     carouselItemWidth,
     totalNumberOfSlides,
     activeSlide,
