@@ -20,7 +20,7 @@ import React from 'react';
 import type { TooltipProps } from './types';
 import { TooltipContent } from './TooltipContent';
 import { ARROW_HEIGHT, ARROW_WIDTH, tooltipZIndex } from './constants';
-import { getPlacementParts, mergeProps } from './utils';
+import { getPlacementParts } from './utils';
 import { TooltipContext } from './TooltipContext';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
@@ -28,6 +28,7 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { size } from '~tokens/global';
 import { useId } from '~utils/useId';
 import { makeAccessible } from '~utils/makeAccessible';
+import { mergeProps } from '~utils/mergeProps';
 
 const Tooltip = ({
   content,

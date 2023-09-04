@@ -50,6 +50,8 @@ export const MetaConstants = {
   Tag: 'tag',
   Tooltip: 'tooltip',
   TooltipInteractiveWrapper: 'tooltip-interactive-wrapper',
+  Popover: 'popover',
+  PopoverInteractiveWrapper: 'popover-interactive-wrapper',
   BottomSheet: 'bottom-sheet',
   BottomSheetBody: 'bottom-sheet-body',
   BottomSheetHeader: 'bottom-sheet-header',

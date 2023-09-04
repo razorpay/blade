@@ -177,8 +177,8 @@ const _BaseHeader = ({
   return (
     <BaseBox {...metaAttribute({ name: metaComponentName, testID })}>
       <BaseBox
-        marginY={{ base: 'spacing.5', m: 'spacing.6' }}
-        paddingX={{ base: 'spacing.5', m: 'spacing.6' }}
+        // marginY={{ base: 'spacing.5', m: 'spacing.6' }}
+        // paddingX={{ base: 'spacing.5', m: 'spacing.6' }}
         touchAction="none"
         {...webOnlyEventHandlers}
       >
