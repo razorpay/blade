@@ -1,6 +1,6 @@
 import type { BaseButtonProps } from './BaseButton';
 import type { Theme } from '~components/BladeProvider';
-import type { IconProps } from '~components/Icons';
+import type { IconSize } from '~components/Icons';
 import type { SpinnerProps } from '~components/Spinner';
 import type { Size } from '~tokens/global';
 import { size } from '~tokens/global';
@@ -101,17 +101,14 @@ const buttonIconOnlyPadding: Record<
   },
 };
 
-const buttonSizeToIconSizeMap: Record<NonNullable<BaseButtonProps['size']>, IconProps['size']> = {
+const buttonSizeToIconSizeMap: Record<NonNullable<BaseButtonProps['size']>, IconSize> = {
   xsmall: 'small',
   small: 'small',
   medium: 'medium',
   large: 'medium',
 };
 
-const buttonIconOnlySizeToIconSizeMap: Record<
-  NonNullable<BaseButtonProps['size']>,
-  IconProps['size']
-> = {
+const buttonIconOnlySizeToIconSizeMap: Record<NonNullable<BaseButtonProps['size']>, IconSize> = {
   xsmall: 'medium',
   small: 'medium',
   medium: 'large',
