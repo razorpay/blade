@@ -1,5 +1,13 @@
 # @razorpay/blade
 
+## 10.5.0
+
+### Minor Changes
+
+- 3fc6ba3a: feat(Typography): add a new `Display` component
+
+  The Display component adds a strong visual touch. Utilize it to create eye-catching sections on your landing pages.
+
 ## 10.4.4
 
 ### Patch Changes
