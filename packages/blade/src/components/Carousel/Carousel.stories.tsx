@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title as AddonTitle } from '@storybook/addon-docs';
+import React from 'react';
 import type { CarouselProps } from './';
 import { Carousel as CarouselComponent, CarouselItem } from './';
 import { Box } from '~components/Box';
@@ -10,10 +11,8 @@ import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { Divider } from '~components/Divider';
 import { isReactNative, useTheme } from '~utils';
-import { List, ListItem } from '~components/List';
 import { Link } from '~components/Link';
 import BaseBox from '~components/Box/BaseBox';
-import React from 'react';
 
 const Page = (): React.ReactElement => {
   return (
@@ -255,9 +254,8 @@ const TestimonialCard = ({
   );
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const LearnMore = ({ foldLocaleData, instrumentation, ...rest }: any): JSX.Element => {
-  const { title, blogs } = foldLocaleData || {};
-  const { theme } = useTheme();
   const didMount = React.useRef(false);
 
   React.useEffect(() => {
@@ -329,7 +327,7 @@ const CarouselExample = (props: Omit<CarouselProps, 'children'>): React.ReactEle
   );
 };
 
-const CarouselTestimonialTemplate: ComponentStory<typeof CarouselComponent> = (props) => {
+const CarouselTestimonialTemplate: ComponentStory<typeof CarouselComponent> = () => {
   return <LearnMore />;
 };
 
