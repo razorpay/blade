@@ -47,28 +47,25 @@ const getProps = ({
     lineHeight: 900,
     fontFamily: 'text',
     accessibilityProps: isPlatformWeb ? {} : { role: 'heading' },
-    componentName: 'title',
+    componentName: 'display',
     testID,
   };
 
   if (size === 'small') {
     props.fontSize = 1100;
     props.lineHeight = 900;
-    props.as = isPlatformWeb ? 'h3' : undefined;
   } else if (size === 'medium') {
     props.fontSize = 1200;
     props.lineHeight = 1000;
-    props.as = isPlatformWeb ? 'h2' : undefined;
   } else if (size === 'large') {
     props.fontSize = 1300;
     props.lineHeight = 1100;
-    props.as = isPlatformWeb ? 'h1' : undefined;
   } else if (size === 'xlarge') {
     props.fontSize = 1600;
     props.lineHeight = 1500;
-    props.as = isPlatformWeb ? 'h1' : undefined;
   }
 
+  props.as = isPlatformWeb ? 'h1' : undefined;
   // override the computed `as` prop if user passed an `as` prop
   props.as = as || props.as;
   return props;
