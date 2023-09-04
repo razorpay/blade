@@ -22,6 +22,7 @@ export const MetaConstants = {
   Code: 'code',
   Component: 'blade-component',
   Counter: 'counter',
+  Display: 'display',
   Divider: 'divider',
   Dropdown: 'dropdown',
   DropdownOverlay: 'dropdown-overlay',

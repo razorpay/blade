@@ -9,10 +9,10 @@ import type { TestID } from '~utils/types';
 import { getPlatformType } from '~utils';
 
 const validAsValues = ['span', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const;
-export type TitleProps = {
+export type DisplayProps = {
   as?: typeof validAsValues[number];
   /**
-   * Overrides the color of the Title component.
+   * Overrides the color of the Display component.
    *
    * **Note** This takes priority over `type` and `contrast` prop to decide color of title
    */
@@ -33,7 +33,7 @@ const getProps = ({
   contrast,
   color,
   testID,
-}: Pick<TitleProps, 'as' | 'size' | 'type' | 'color' | 'contrast' | 'testID'>): Omit<
+}: Pick<DisplayProps, 'as' | 'size' | 'type' | 'color' | 'contrast' | 'testID'>): Omit<
   BaseTextProps,
   'children'
 > => {
@@ -41,40 +41,37 @@ const getProps = ({
   const colorContrast: keyof ColorContrast = contrast ? `${contrast}Contrast` : 'lowContrast';
   const props: Omit<BaseTextProps, 'children'> = {
     color: color ?? `surface.text.${type ?? 'normal'}.${colorContrast}`,
-    fontSize: 600,
+    fontSize: 1100,
     fontWeight: 'bold',
     fontStyle: 'normal',
-    lineHeight: 700,
+    lineHeight: 900,
     fontFamily: 'text',
     accessibilityProps: isPlatformWeb ? {} : { role: 'heading' },
-    componentName: 'title',
+    componentName: 'display',
     testID,
   };
 
   if (size === 'small') {
-    props.fontSize = 600;
-    props.lineHeight = 500;
-    props.as = isPlatformWeb ? 'h3' : undefined;
+    props.fontSize = 1100;
+    props.lineHeight = 900;
   } else if (size === 'medium') {
-    props.fontSize = 700;
-    props.lineHeight = 600;
-    props.as = isPlatformWeb ? 'h2' : undefined;
+    props.fontSize = 1200;
+    props.lineHeight = 1000;
   } else if (size === 'large') {
-    props.fontSize = 800;
-    props.lineHeight = 700;
-    props.as = isPlatformWeb ? 'h1' : undefined;
+    props.fontSize = 1300;
+    props.lineHeight = 1100;
   } else if (size === 'xlarge') {
-    props.fontSize = 1000;
-    props.lineHeight = 800;
-    props.as = isPlatformWeb ? 'h1' : undefined;
+    props.fontSize = 1600;
+    props.lineHeight = 1500;
   }
 
+  props.as = isPlatformWeb ? 'h1' : undefined;
   // override the computed `as` prop if user passed an `as` prop
   props.as = as || props.as;
   return props;
 };
 
-export const Title = ({
+export const Display = ({
   as,
   size = 'small',
   type = 'normal',
@@ -85,8 +82,8 @@ export const Title = ({
   textAlign,
   textDecorationLine,
   ...styledProps
-}: TitleProps): ReactElement => {
-  useValidateAsProp({ componentName: 'Title', as, validAsValues });
+}: DisplayProps): ReactElement => {
+  useValidateAsProp({ componentName: 'Display', as, validAsValues });
 
   const props = getProps({ as, size, type, contrast, color, testID });
 

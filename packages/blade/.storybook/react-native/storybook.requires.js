@@ -101,6 +101,7 @@ const getStories = () => {
     './src/components/Tooltip/Tooltip.stories.tsx': require('../../src/components/Tooltip/Tooltip.stories.tsx'),
     './src/components/Typography/BaseText/BaseText.stories.tsx': require('../../src/components/Typography/BaseText/BaseText.stories.tsx'),
     './src/components/Typography/Code/Code.stories.tsx': require('../../src/components/Typography/Code/Code.stories.tsx'),
+    './src/components/Typography/Display/Display.stories.tsx': require('../../src/components/Typography/Display/Display.stories.tsx'),
     './src/components/Typography/Heading/Heading.stories.tsx': require('../../src/components/Typography/Heading/Heading.stories.tsx'),
     './src/components/Typography/Text/Text.stories.tsx': require('../../src/components/Typography/Text/Text.stories.tsx'),
     './src/components/Typography/Title/Title.stories.tsx': require('../../src/components/Typography/Title/Title.stories.tsx'),
