@@ -276,6 +276,7 @@ const Carousel = ({
 
   const goToSlideIndex = (slideIndex: number) => {
     if (!containerRef.current) return;
+    console.log('blade:goToSlideIndex', slideIndex);
 
     const carouselItemId = getCarouselItemId(id, slideIndex * _visibleItems);
     const carouselItem = containerRef.current.querySelector(carouselItemId);
@@ -350,6 +351,8 @@ const Carousel = ({
 
   // Sync the indicators with scroll
   React.useEffect(() => {
+    // do not sync indicators on desktop, we are already in sync because we can only use the next/prev buttons
+    if (!isMobile) return;
     const carouselContainer = containerRef.current;
     if (!carouselContainer) return;
 
@@ -383,7 +386,7 @@ const Carousel = ({
     return () => {
       carouselContainer?.removeEventListener('scroll', handleScroll);
     };
-  }, [_visibleItems, isResponsive, shouldAddStartEndSpacing]);
+  }, [_visibleItems, isMobile, isResponsive, shouldAddStartEndSpacing]);
 
   // auto play
   useInterval(

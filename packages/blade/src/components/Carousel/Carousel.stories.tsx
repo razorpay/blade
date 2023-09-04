@@ -12,6 +12,8 @@ import { Divider } from '~components/Divider';
 import { isReactNative, useTheme } from '~utils';
 import { List, ListItem } from '~components/List';
 import { Link } from '~components/Link';
+import BaseBox from '~components/Box/BaseBox';
+import React from 'react';
 
 const Page = (): React.ReactElement => {
   return (
@@ -253,6 +255,57 @@ const TestimonialCard = ({
   );
 };
 
+const LearnMore = ({ foldLocaleData, instrumentation, ...rest }: any): JSX.Element => {
+  const { title, blogs } = foldLocaleData || {};
+  const { theme } = useTheme();
+  const didMount = React.useRef(false);
+
+  React.useEffect(() => {
+    didMount.current = true;
+  }, []);
+
+  return (
+    <BaseBox
+      maxWidth="none"
+      textAlign="left"
+      alignItems="center"
+      testID="learn-more"
+      position="relative"
+      marginTop={{ base: 'spacing.0', l: '-94px' }}
+      padding={{ base: '48px 10px 90px 10px', l: '138px 0px 90px 0px' }}
+      {...rest}
+    >
+      <Box
+        zIndex={2}
+        display="flex"
+        position="relative"
+        flexDirection="column"
+        alignItems={{ xs: 'left', m: 'center' }}
+      >
+        <Box paddingTop={{ base: 'spacing.4', l: 'spacing.6' }}>
+          <CarouselComponent
+            visibleItems="autofit"
+            carouselItemWidth={{ base: '90%', m: '360px' }}
+            shouldAddStartEndSpacing={true}
+            onChange={(current): void => {
+              if (didMount.current) {
+                console.log(current);
+              }
+              return undefined;
+            }}
+          >
+            {testimonialData.map((data) => (
+              <CarouselItem key={data.name} shouldHaveStartSpacing>
+                <TestimonialCard {...data} />
+              </CarouselItem>
+            ))}
+          </CarouselComponent>
+        </Box>
+      </Box>
+    </BaseBox>
+  );
+};
+
 const CarouselExample = (props: Omit<CarouselProps, 'children'>): React.ReactElement => {
   const key = `${props.visibleItems}-${props.shouldAddStartEndSpacing}`;
   return (
@@ -277,11 +330,7 @@ const CarouselExample = (props: Omit<CarouselProps, 'children'>): React.ReactEle
 };
 
 const CarouselTestimonialTemplate: ComponentStory<typeof CarouselComponent> = (props) => {
-  return (
-    <Box margin="auto" width={{ base: '100%', m: '100%' }} padding="spacing.4">
-      <CarouselExample {...props} />
-    </Box>
-  );
+  return <LearnMore />;
 };
 
 export const Default = CarouselTestimonialTemplate.bind({});
