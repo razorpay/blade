@@ -80,6 +80,10 @@ const getWebConfig = ({ exportCategory }) => ({
     },
   ],
   external: (id) => id.includes('@babel/runtime'),
+  treeshake: {
+    preset: 'smallest',
+    manualPureFunctions: ['assignWithoutSideEffects'],
+  },
   plugins: [
     pluginReplace({
       __DEV__: process.env.NODE_ENV !== 'production',
@@ -108,6 +112,10 @@ const getNativeConfig = ({ exportCategory }) => ({
     },
   ],
   external: (id) => id.includes('@babel/runtime'),
+  treeshake: {
+    preset: 'smallest',
+    manualPureFunctions: ['assignWithoutSideEffects'],
+  },
   plugins: [
     pluginPeerDepsExternal(),
     pluginResolve({ extensions: nativeExtensions }),
