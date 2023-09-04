@@ -9,7 +9,6 @@ import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Box } from '~components/Box';
-import { List, ListItem } from '~components/List';
 import { isReactNative } from '~utils';
 
 const Page = (): ReactElement => {
@@ -115,24 +114,13 @@ const AsPropTemplate: ComponentStory<typeof DisplayComponent> = (args) => {
         <Text as="span" weight="bold">
           Display
         </Text>{' '}
-        component automatically renders the respective <Code size="medium">h*</Code> tag based on
-        the{' '}
-        <Text as="span" weight="bold">
-          size prop
-        </Text>{' '}
-        passed
+        component automatically renders the <Code size="medium">h1</Code> tag.
       </Text>
-      <List>
-        <ListItem>small: h3</ListItem>
-        <ListItem>medium: h2</ListItem>
-        <ListItem>large: h1</ListItem>
-        <ListItem>xlarge: h1</ListItem>
-      </List>
       <Text marginBottom="spacing.5">
         But you can also pass a custom <Code>as</Code> prop to override the rendered HTML:
       </Text>
       <DisplayComponent {...args}>
-        Tweak the storybook controls to see the dom change
+        Tweak the storybook controls to see the DOM change
       </DisplayComponent>
     </Box>
   );
