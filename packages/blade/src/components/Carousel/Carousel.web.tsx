@@ -277,7 +277,6 @@ const Carousel = ({
 
   const goToSlideIndex = (slideIndex: number) => {
     if (!containerRef.current) return;
-    console.log('blade:goToSlideIndex', slideIndex);
 
     const carouselItemId = getCarouselItemId(id, slideIndex * _visibleItems);
     const carouselItem = containerRef.current.querySelector(carouselItemId);

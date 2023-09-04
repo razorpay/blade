@@ -14,6 +14,7 @@ import { castNativeType } from '~utils';
 import { useId } from '~utils/useId';
 import { logger } from '~utils/logger';
 import { size } from '~tokens/global';
+import { useUpdateEffect } from '~utils/useUpdateEffect';
 
 const percentageStringToNumber = (percentage: string): number => {
   if (!percentage.endsWith('%')) {
@@ -154,7 +155,7 @@ const Carousel = ({
     },
   );
 
-  React.useEffect(() => {
+  useUpdateEffect(() => {
     onChange?.(activeSlide);
   }, [activeSlide, onChange]);
 
