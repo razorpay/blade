@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title as AddonTitle } from '@storybook/addon-docs';
-import React from 'react';
 import type { CarouselProps } from './';
 import { Carousel as CarouselComponent, CarouselItem } from './';
 import { Box } from '~components/Box';
@@ -11,8 +10,8 @@ import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { Divider } from '~components/Divider';
 import { isReactNative, useTheme } from '~utils';
+import { List, ListItem } from '~components/List';
 import { Link } from '~components/Link';
-import BaseBox from '~components/Box/BaseBox';
 
 const Page = (): React.ReactElement => {
   return (
@@ -254,47 +253,6 @@ const TestimonialCard = ({
   );
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const LearnMore = ({ foldLocaleData, instrumentation, ...rest }: any): JSX.Element => {
-  return (
-    <BaseBox
-      maxWidth="none"
-      textAlign="left"
-      alignItems="center"
-      testID="learn-more"
-      position="relative"
-      marginTop={{ base: 'spacing.0', l: '-94px' }}
-      padding={{ base: '48px 10px 90px 10px', l: '138px 0px 90px 0px' }}
-      {...rest}
-    >
-      <Box
-        zIndex={2}
-        display="flex"
-        position="relative"
-        flexDirection="column"
-        alignItems={{ xs: 'left', m: 'center' }}
-      >
-        <Box paddingTop={{ base: 'spacing.4', l: 'spacing.6' }}>
-          <CarouselComponent
-            visibleItems="autofit"
-            carouselItemWidth={{ base: '90%', m: '360px' }}
-            shouldAddStartEndSpacing={true}
-            onChange={(current): void => {
-              console.log(current);
-            }}
-          >
-            {testimonialData.map((data) => (
-              <CarouselItem key={data.name} shouldHaveStartSpacing>
-                <TestimonialCard {...data} />
-              </CarouselItem>
-            ))}
-          </CarouselComponent>
-        </Box>
-      </Box>
-    </BaseBox>
-  );
-};
-
 const CarouselExample = (props: Omit<CarouselProps, 'children'>): React.ReactElement => {
   const key = `${props.visibleItems}-${props.shouldAddStartEndSpacing}`;
   return (
@@ -304,9 +262,6 @@ const CarouselExample = (props: Omit<CarouselProps, 'children'>): React.ReactEle
         key={key}
         carouselItemAlignment="stretch"
         accessibilityLabel="Testimonials"
-        onChange={(idx) => {
-          console.log(idx);
-        }}
       >
         {testimonialData.map((testimonial) => (
           <CarouselItem key={testimonial.name}>
@@ -318,8 +273,12 @@ const CarouselExample = (props: Omit<CarouselProps, 'children'>): React.ReactEle
   );
 };
 
-const CarouselTestimonialTemplate: ComponentStory<typeof CarouselComponent> = () => {
-  return <LearnMore />;
+const CarouselTestimonialTemplate: ComponentStory<typeof CarouselComponent> = (props) => {
+  return (
+    <Box margin="auto" width={{ base: '100%', m: '100%' }} padding="spacing.4">
+      <CarouselExample {...props} />
+    </Box>
+  );
 };
 
 export const Default = CarouselTestimonialTemplate.bind({});
@@ -382,6 +341,40 @@ export const AutoBleed: ComponentStory<typeof CarouselComponent> = () => {
 
   return (
     <Box margin="auto" padding="spacing.4" width="100%">
+      <Box marginY="spacing.8">
+        <Text>
+          You can achive bleed by setting <Code size="medium">visibleItems</Code> to autofit &
+          adding <Code size="medium">carouselItemWidth</Code> to be a fixed width (eg: 300px)
+        </Text>
+        <Text marginTop="spacing.2">
+          If you want bleed on mobile, you can set{' '}
+          <Code size="medium">{`carouselItemWidth={{ base: '90%', m: '300px' }}`}</Code> , this will
+          give a 10% bleed on mobile screens
+        </Text>
+      </Box>
+
+      <Text weight="bold">Props:</Text>
+      <List marginBottom="spacing.3">
+        <ListItem>visibleItems: autofit</ListItem>
+        <ListItem>
+          carouselItemWidth: {'{'} base: '90%', m: 300px {'}'}
+        </ListItem>
+      </List>
+      <CarouselExample visibleItems="autofit" carouselItemWidth={{ base: '90%', m: '300px' }} />
+
+      <Text marginY="spacing.8">
+        If you want emphasis on 1 item with bleed you can set{' '}
+        <Code size="medium">shouldAddStartEndSpacing</Code> to true
+      </Text>
+
+      <Text weight="bold">Props:</Text>
+      <List marginBottom="spacing.3">
+        <ListItem>visibleItems: autofit</ListItem>
+        <ListItem>shouldAddStartEndSpacing: true</ListItem>
+        <ListItem>
+          carouselItemWidth: {'{'} base: '90%', m: 300px {'}'}
+        </ListItem>
+      </List>
       <CarouselExample
         navigationButtonPosition="side"
         shouldAddStartEndSpacing
