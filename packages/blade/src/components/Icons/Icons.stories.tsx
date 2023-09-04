@@ -92,6 +92,10 @@ export default {
       type: 'select',
       options: Object.keys(iconMap),
     },
+    size: {
+      options: ['small', 'medium', 'large', 'xlarge', '2xlarge'],
+      control: { type: 'select' },
+    },
     ...getStyledPropsArgTypes(),
   },
   parameters: {
