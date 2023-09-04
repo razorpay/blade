@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Switch /> should render switch ssr 1`] = `"<div id="root"><h1 class="StyledBaseText-dVBfTO jZhbyo" data-blade-component="display">Displaying Landing Page Display</h1></div>"`;
+
+exports[`<Switch /> should render switch ssr 2`] = `
+<div
+  id="root"
+>
+  <h1
+    class="StyledBaseText-dVBfTO jZhbyo"
+    data-blade-component="display"
+  >
+    Displaying Landing Page Display
+  </h1>
+</div>
+`;

@@ -8,18 +8,12 @@ beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
 
 const sizes: DisplayProps['size'][] = ['small', 'medium', 'large', 'xlarge'];
-const headingLevels = {
-  small: 3,
-  medium: 2,
-  large: 1,
-  xlarge: 1,
-};
 
 describe('<Display />', () => {
   it('should render Display with default properties', () => {
     const displayText = 'Displaying Landing Page Display';
     const { container, getByRole, getByText } = renderWithTheme(<Display>{displayText}</Display>);
-    expect(getByRole('heading', { level: 3 })).toBeInTheDocument();
+    expect(getByRole('heading', { level: 1 })).toBeInTheDocument();
     expect(getByText('Displaying Landing Page Display')).toBeInTheDocument();
     expect(container).toMatchSnapshot();
   });
@@ -31,7 +25,7 @@ describe('<Display />', () => {
         {displayText}
       </Display>,
     );
-    expect(getByRole('heading', { level: 3 })).toBeInTheDocument();
+    expect(getByRole('heading', { level: 1 })).toBeInTheDocument();
     expect(getByText('Displaying Landing Page Display')).toBeInTheDocument();
     expect(container).toMatchSnapshot();
   });
@@ -41,7 +35,7 @@ describe('<Display />', () => {
     const { container, getByRole } = renderWithTheme(
       <Display color="surface.text.subtle.highContrast">{displayText}</Display>,
     );
-    expect(getByRole('heading', { level: 3 })).toBeInTheDocument();
+    expect(getByRole('heading', { level: 1 })).toBeInTheDocument();
     expect(container).toMatchSnapshot();
   });
 
@@ -66,7 +60,7 @@ describe('<Display />', () => {
         </Display>,
       );
       // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
-      expect(getByRole('heading', { level: headingLevels[size!] })).toBeInTheDocument();
+      expect(getByRole('heading', { level: 1 })).toBeInTheDocument();
       expect(getByText('Displaying Landing Page Display')).toBeInTheDocument();
       expect(container).toMatchSnapshot();
     });

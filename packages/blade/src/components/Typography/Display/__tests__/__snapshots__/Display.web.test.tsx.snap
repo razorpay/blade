@@ -15,12 +15,12 @@ exports[`<Display /> should render Display with color 1`] = `
 }
 
 <div>
-  <h3
+  <h1
     class="c0"
-    data-blade-component="title"
+    data-blade-component="display"
   >
     Displaying Landing Page Display
-  </h3>
+  </h1>
 </div>
 `;
 
@@ -39,12 +39,12 @@ exports[`<Display /> should render Display with default properties 1`] = `
 }
 
 <div>
-  <h3
+  <h1
     class="c0"
-    data-blade-component="title"
+    data-blade-component="display"
   >
     Displaying Landing Page Display
-  </h3>
+  </h1>
 </div>
 `;
 
@@ -76,19 +76,19 @@ exports[`<Display /> should render Display with mixed color 1`] = `
 }
 
 <div>
-  <h3
+  <h1
     class="c0"
-    data-blade-component="title"
+    data-blade-component="display"
   >
     Supercharge your business with the all‑powerful
      
     <span
       class="c1"
-      data-blade-component="title"
+      data-blade-component="display"
     >
       Payment Gateway
     </span>
-  </h3>
+  </h1>
 </div>
 `;
 
@@ -109,7 +109,7 @@ exports[`<Display /> should render Display with size "large" 1`] = `
 <div>
   <h1
     class="c0"
-    data-blade-component="title"
+    data-blade-component="display"
   >
     Displaying Landing Page Display
   </h1>
@@ -131,12 +131,12 @@ exports[`<Display /> should render Display with size "medium" 1`] = `
 }
 
 <div>
-  <h2
+  <h1
     class="c0"
-    data-blade-component="title"
+    data-blade-component="display"
   >
     Displaying Landing Page Display
-  </h2>
+  </h1>
 </div>
 `;
 
@@ -155,12 +155,12 @@ exports[`<Display /> should render Display with size "small" 1`] = `
 }
 
 <div>
-  <h3
+  <h1
     class="c0"
-    data-blade-component="title"
+    data-blade-component="display"
   >
     Displaying Landing Page Display
-  </h3>
+  </h1>
 </div>
 `;
 
@@ -181,7 +181,7 @@ exports[`<Display /> should render Display with size "xlarge" 1`] = `
 <div>
   <h1
     class="c0"
-    data-blade-component="title"
+    data-blade-component="display"
   >
     Displaying Landing Page Display
   </h1>
@@ -203,11 +203,11 @@ exports[`<Display /> should render Display with variant "small" and contrast "hi
 }
 
 <div>
-  <h3
+  <h1
     class="c0"
-    data-blade-component="title"
+    data-blade-component="display"
   >
     Displaying Landing Page Display
-  </h3>
+  </h1>
 </div>
 `;
