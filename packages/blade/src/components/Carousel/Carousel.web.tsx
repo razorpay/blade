@@ -22,6 +22,7 @@ import { castWebType, makeMotionTime, useInterval, useTheme } from '~utils';
 import { useId } from '~utils/useId';
 import { makeAccessible } from '~utils/makeAccessible';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { useUpdateEffect } from '~utils/useUpdateEffect';
 
 type ControlsProp = Required<
   Pick<
@@ -422,7 +423,7 @@ const Carousel = ({
     shouldAddStartEndSpacing,
   ]);
 
-  React.useEffect(() => {
+  useUpdateEffect(() => {
     onChange?.(activeSlide);
   }, [activeSlide, onChange]);
 

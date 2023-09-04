@@ -256,12 +256,6 @@ const TestimonialCard = ({
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const LearnMore = ({ foldLocaleData, instrumentation, ...rest }: any): JSX.Element => {
-  const didMount = React.useRef(false);
-
-  React.useEffect(() => {
-    didMount.current = true;
-  }, []);
-
   return (
     <BaseBox
       maxWidth="none"
@@ -286,10 +280,7 @@ const LearnMore = ({ foldLocaleData, instrumentation, ...rest }: any): JSX.Eleme
             carouselItemWidth={{ base: '90%', m: '360px' }}
             shouldAddStartEndSpacing={true}
             onChange={(current): void => {
-              if (didMount.current) {
-                console.log(current);
-              }
-              return undefined;
+              console.log(current);
             }}
           >
             {testimonialData.map((data) => (
