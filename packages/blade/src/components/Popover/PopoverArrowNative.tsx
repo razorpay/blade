@@ -93,7 +93,7 @@ const PopoverArrow = React.forwardRef<SvgProps, PopoverArrowProps>(
       };
     }
 
-    const strokeColor = theme.colors.brand.gray[300].highContrast;
+    const strokeColor = theme.colors.brand.gray[400].lowContrast;
     return (
       <View
         collapsable={false}
@@ -109,7 +109,11 @@ const PopoverArrow = React.forwardRef<SvgProps, PopoverArrowProps>(
           styles={newStyles}
         >
           <Path fill="none" stroke={strokeColor} strokeWidth={`${strokeWidth}px`} d={dValue} />
-          <Path fill={theme.colors.brand.gray[200].highContrast} stroke="none" d={dValue} />
+          <Path
+            fill={theme.colors.surface.background.level2.lowContrast}
+            stroke="none"
+            d={dValue}
+          />
         </StyledSvg>
       </View>
     );

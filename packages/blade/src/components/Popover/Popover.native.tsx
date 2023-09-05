@@ -6,20 +6,33 @@ import { PopoverArrow } from './PopoverArrowNative';
 import { PopoverContent } from './PopoverContent';
 import type { PopoverProps } from './types';
 import { ARROW_HEIGHT, ARROW_WIDTH, popoverZIndex } from './constants';
-import { getPlacementParts, mergeProps } from './utils';
+import { getPlacementParts } from './utils';
 import { PopoverContext } from './PopoverContext';
 import { useTheme } from '~components/BladeProvider';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { mergeProps } from '~utils/mergeProps';
+import { useControllableState } from '~utils/useControllable';
 
 const Popover = ({
   content,
   children,
-  placement = 'left',
+  placement = 'top',
   onOpenChange,
   zIndex = popoverZIndex,
+  headerTitle,
+  headerLeading,
+  footerContent,
+  isOpen,
+  defaultIsOpen,
+  initialFocusRef,
 }: PopoverProps): React.ReactElement => {
   const { theme } = useTheme();
-  const [isOpen, setIsOpen] = React.useState(false);
+  const defaultInitialFocusRef = React.useRef(null);
+  const [controllableIsOpen, controllableSetIsOpen] = useControllableState({
+    value: isOpen,
+    defaultValue: defaultIsOpen,
+    onChange: (isOpen) => onOpenChange?.({ isOpen }),
+  });
 
   const gap = theme.spacing[2];
   const [side] = getPlacementParts(placement);
@@ -30,7 +43,7 @@ const Popover = ({
     placement,
     middleware: [
       shift({ crossAxis: false, padding: gap }),
-      flip({ padding: gap }),
+      flip({ padding: gap, fallbackAxisSideDirection: 'start' }),
       offset(gap + ARROW_HEIGHT),
       arrow({
         element: arrowRef,
@@ -40,34 +53,42 @@ const Popover = ({
   });
 
   const { refs, floatingStyles } = context;
+  const [computedSide] = getPlacementParts(context.placement);
 
   const handleOpen = React.useCallback(() => {
-    setIsOpen(true);
+    controllableSetIsOpen(() => true);
     onOpenChange?.({ isOpen: true });
-  }, [onOpenChange]);
+  }, [controllableSetIsOpen, onOpenChange]);
 
   const handleClose = React.useCallback(() => {
-    setIsOpen(false);
+    controllableSetIsOpen(() => false);
     onOpenChange?.({ isOpen: false });
-  }, [onOpenChange]);
+  }, [controllableSetIsOpen, onOpenChange]);
 
   // wait for animation to finish before unmounting modal
-  const [isVisible, setIsVisible] = React.useState(() => isOpen);
+  const [isVisible, setIsVisible] = React.useState(() => controllableIsOpen);
   React.useEffect(() => {
     const id = setTimeout(() => {
-      if (!isOpen) {
+      if (!controllableIsOpen) {
         setIsVisible(false);
       }
     }, theme.motion.duration.gentle);
 
-    if (isOpen) {
+    if (controllableIsOpen) {
       setIsVisible(true);
     }
     return () => clearTimeout(id);
-  }, [isOpen]);
+  }, [controllableIsOpen]);
+
+  const contextValue = React.useMemo(() => {
+    return {
+      close: handleClose,
+      defaultInitialFocusRef,
+    };
+  }, [handleClose]);
 
   return (
-    <PopoverContext.Provider value={true}>
+    <PopoverContext.Provider value={contextValue}>
       {/* Cloning the trigger children to enhance it with ref and event handler */}
       {React.cloneElement(children, {
         ...mergeProps(
@@ -78,7 +99,8 @@ const Popover = ({
         ),
         ref: refs.setReference,
       })}
-      <Modal accessibilityLabel={content} collapsable={false} transparent visible={isVisible}>
+      {/* accessibilityLabel={content}  */}
+      <Modal collapsable={false} transparent visible={isVisible}>
         <TouchableOpacity
           style={{
             flexShrink: 0,
@@ -86,20 +108,18 @@ const Popover = ({
           }}
           onPress={handleClose}
           activeOpacity={1}
-          testID="Popover-modal-backdrop"
+          testID="popover-modal-backdrop"
           {...metaAttribute({ name: MetaConstants.Popover })}
         >
           <PopoverContent
-            isVisible={isOpen}
+            headerLeading={headerLeading}
+            headerTitle={headerTitle}
+            footerContent={footerContent}
+            isVisible={controllableIsOpen}
             ref={refs.setFloating}
-            side={side}
+            side={computedSide}
             style={{
               ...floatingStyles,
-              // To avoid flash of floating ui content at top, this only happens in RN <70
-              // if the position is zero move the floating element outside of the viewport
-              // this happens because measure is async and it takes few miliseconds to calculate the positions.
-              left: floatingStyles.left || -200,
-              top: floatingStyles.top || -200,
               // TODO: Tokenize zIndex values
               zIndex,
             }}

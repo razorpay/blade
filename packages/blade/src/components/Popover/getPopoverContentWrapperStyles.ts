@@ -11,11 +11,14 @@ const getPopoverContentWrapperStyles = ({
   styles: React.CSSProperties;
 }): CSSObject => {
   return {
-    minWidth: '100%',
+    minWidth: isReactNative() ? '90%' : '100%',
     maxWidth: makeSpace(400),
     display: 'flex',
     flexDirection: 'column',
-    gap: makeSpace(theme.spacing[5]),
+    position: isReactNative() ? 'absolute' : 'relative',
+    padding: makeSpace(theme.spacing[5]),
+    // TODO: fix spacing
+    gap: makeSpace(theme.spacing[2]),
     backgroundColor: theme.colors.surface.background.level2.lowContrast,
     borderWidth: makeBorderSize(theme.border.width.thin),
     borderRadius: makeBorderSize(theme.border.radius.large),

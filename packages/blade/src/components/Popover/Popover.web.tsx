@@ -63,7 +63,7 @@ const Popover = ({
     strategy: 'fixed',
     middleware: [
       shift({ crossAxis: false, padding: GAP }),
-      flip({ padding: GAP }),
+      flip({ padding: GAP, fallbackAxisSideDirection: 'end' }),
       offset(GAP + ARROW_HEIGHT),
       arrow({
         element: arrowRef,

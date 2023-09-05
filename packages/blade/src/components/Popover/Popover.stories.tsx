@@ -114,7 +114,13 @@ const Content = () => {
 const FooterContent = React.forwardRef<HTMLButtonElement, { onClick?: () => void }>(
   (props, ref) => {
     return (
-      <Box display="flex" gap="spacing.5" alignItems="center" justifyContent="space-between">
+      <Box
+        display="flex"
+        flexDirection="row"
+        gap="spacing.5"
+        alignItems="center"
+        justifyContent="space-between"
+      >
         <Checkbox size="medium">Settle with refunds</Checkbox>
         <Button ref={ref} onClick={props.onClick} size="small" variant="tertiary">
           Settle amount
@@ -124,20 +130,21 @@ const FooterContent = React.forwardRef<HTMLButtonElement, { onClick?: () => void
   },
 );
 
-const PopoverTemplate: ComponentStory<typeof PopoverComponent> = (args) => {
+const PopoverTemplate: ComponentStory<typeof PopoverComponent> = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const buttonRef = React.useRef<HTMLButtonElement>(null);
 
   return (
     <Center>
       <PopoverComponent
+        placement="left"
         initialFocusRef={buttonRef}
         headerTitle="Settlement breakup for setl_LB2H1j"
         headerLeading={<SettlementsIcon color="surface.text.normal.lowContrast" size="large" />}
         content={<Content />}
         footerContent={<FooterContent ref={buttonRef} />}
       >
-        <Button>Click me uncontrolled</Button>
+        <Button>Click me</Button>
       </PopoverComponent>
       <PopoverComponent
         isOpen={isOpen}
@@ -148,6 +155,20 @@ const PopoverTemplate: ComponentStory<typeof PopoverComponent> = (args) => {
         footerContent={<FooterContent onClick={() => setIsOpen(false)} ref={buttonRef} />}
       >
         <Button>Click me controlled {isOpen ? 'yes' : 'no'}</Button>
+      </PopoverComponent>
+      <PopoverComponent
+        headerTitle="International Payments"
+        content={
+          <Text>
+            Your business can go international with support for transactions in 100 foreign
+            currencies.
+          </Text>
+        }
+      >
+        <PopoverInteractiveWrapper>
+          <Text>hello</Text>
+          <InfoIcon marginTop="spacing.2" size="medium" color="surface.text.muted.lowContrast" />
+        </PopoverInteractiveWrapper>
       </PopoverComponent>
     </Center>
   );
@@ -265,7 +286,11 @@ const NonInteractiveTriggerTemplate: ComponentStory<typeof PopoverComponent> = (
       <Text>You can wrap the element in PopoverInteractiveWrapper component provided by blade</Text>
       <Box marginTop="spacing.5" display="flex" alignItems="center" gap="spacing.2">
         <Text>Refunds</Text>
-        <PopoverComponent {...args} placement="bottom-start">
+        <PopoverComponent
+          headerTitle="Hello world"
+          content={<Text>Hello world</Text>}
+          placement="bottom-start"
+        >
           <PopoverInteractiveWrapper>
             <InfoIcon marginTop="spacing.2" size="medium" color="surface.text.muted.lowContrast" />
           </PopoverInteractiveWrapper>

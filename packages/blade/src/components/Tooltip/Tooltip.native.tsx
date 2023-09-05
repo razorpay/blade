@@ -6,10 +6,11 @@ import { TooltipArrow } from './TooltipArrowNative';
 import { TooltipContent } from './TooltipContent';
 import type { TooltipProps } from './types';
 import { ARROW_HEIGHT, ARROW_WIDTH, tooltipZIndex } from './constants';
-import { getPlacementParts, mergeProps } from './utils';
+import { getPlacementParts } from './utils';
 import { TooltipContext } from './TooltipContext';
 import { useTheme } from '~components/BladeProvider';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { mergeProps } from '~utils/mergeProps';
 
 const Tooltip = ({
   content,

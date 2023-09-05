@@ -90,6 +90,7 @@ const getStories = () => {
     './src/components/List/List.stories.tsx': require('../../src/components/List/List.stories.tsx'),
     './src/components/Modal/docs/ModalExamples.stories.tsx': require('../../src/components/Modal/docs/ModalExamples.stories.tsx'),
     './src/components/Modal/docs/SimpleModal.stories.tsx': require('../../src/components/Modal/docs/SimpleModal.stories.tsx'),
+    './src/components/Popover/Popover.stories.tsx': require('../../src/components/Popover/Popover.stories.tsx'),
     './src/components/ProgressBar/ProgressBar.stories.tsx': require('../../src/components/ProgressBar/ProgressBar.stories.tsx'),
     './src/components/Radio/Radio.stories.tsx': require('../../src/components/Radio/Radio.stories.tsx'),
     './src/components/Skeleton/Skeleton.stories.tsx': require('../../src/components/Skeleton/Skeleton.stories.tsx'),
