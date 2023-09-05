@@ -58,6 +58,8 @@ const ScrollableTagSlotContainer = ({
   );
 };
 
+const PLUS_X_MORE_TEXT_WIDTH = 60;
+
 const BaseInputTagSlot = ({
   tags,
   maxTagRows,
@@ -67,7 +69,7 @@ const BaseInputTagSlot = ({
   children,
 }: BaseInputTagSlotProps): React.ReactElement | null => {
   const hasTags = tags && tags.length > 0;
-  const visibleTags = maxTagRows === 'multiple' ? 6 : 2; // 2 tags * 3 rows = 6
+  const [visibleTags, setVisibleTags] = React.useState(maxTagRows === 'multiple' ? 6 : 1);
   const invisibleTagsCount = tags ? tags.length - visibleTags : 0;
 
   return (
@@ -75,11 +77,25 @@ const BaseInputTagSlot = ({
       marginY={hasTags ? 'spacing.1' : 'spacing.0'}
       justifyContent="flex-start"
       paddingLeft={hasTags ? 'spacing.4' : 'spacing.0'}
-      minHeight={makeSize(BASEINPUT_DEFAULT_HEIGHT)}
+      // minHeight={makeSize(BASEINPUT_DEFAULT_HEIGHT)}
       display="flex"
       flexDirection="row"
-      maxHeight={makeSize(BASEINPUT_WRAPPER_MAX_HEIGHT)}
+      // maxHeight={makeSize(BASEINPUT_WRAPPER_MAX_HEIGHT)}
       flex="1"
+      onLayout={(e) => {
+        if (maxTagRows !== 'multiple') {
+          return;
+        }
+
+        const containerWidth = e.nativeEvent?.layout;
+        if (!containerWidth) {
+          return;
+        }
+
+        const availableTagsSpace = containerWidth - PLUS_X_MORE_TEXT_WIDTH;
+        const visibleTagsCount = Math.floor(availableTagsSpace / 140);
+        setVisibleTags(visibleTagsCount);
+      }}
     >
       <ScrollableTagSlotContainer
         maxTagRows={maxTagRows}
