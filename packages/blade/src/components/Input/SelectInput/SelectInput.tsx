@@ -228,6 +228,9 @@ const _SelectInput = (
             isTagDismissedRef.current.value = true;
           }
 
+          if (!isReactNative()) {
+            triggererRef.current?.focus();
+          }
           removeOption(selectedIndices[tagIndex]);
           setChangeCallbackTriggerer(Number(changeCallbackTriggerer) + 1);
         },

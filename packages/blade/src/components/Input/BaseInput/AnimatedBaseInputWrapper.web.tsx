@@ -40,7 +40,6 @@ const collapseTransition = css`
 
 const noTransition = css`
   animation: none;
-  max-height: ${makeSize(BASEINPUT_WRAPPER_MAX_HEIGHT)};
 `;
 
 const StyledBaseInputWrapper = styled(BaseBox)<
@@ -78,12 +77,33 @@ const StyledBaseInputWrapper = styled(BaseBox)<
   },
 }));
 
+const getMaxHeight = ({
+  maxTagRows,
+  showAllTags,
+}: Pick<BaseInputWrapperProps, 'maxTagRows' | 'showAllTags'>): number => {
+  if (maxTagRows === 'single') {
+    return BASEINPUT_WRAPPER_MIN_HEIGHT;
+  }
+
+  if (maxTagRows === 'multiple') {
+    return BASEINPUT_WRAPPER_MAX_HEIGHT;
+  }
+
+  // In expandable, max-height depends on the state
+  return showAllTags ? BASEINPUT_WRAPPER_MAX_HEIGHT : BASEINPUT_WRAPPER_MIN_HEIGHT;
+};
+
 // Styled component with animation
 const StyledAnimatedBaseInputWrapper = styled(StyledBaseInputWrapper)<{
   transition?: FlattenSimpleInterpolation;
+  maxTagRows: BaseInputWrapperProps['maxTagRows'];
+  showAllTags: BaseInputWrapperProps['showAllTags'];
 }>(
   (props) => css`
     ${props.transition};
+    max-height: ${makeSize(
+      getMaxHeight({ maxTagRows: props.maxTagRows, showAllTags: props.showAllTags }),
+    )};
   `,
 );
 
@@ -108,6 +128,8 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
           ? expandTransition
           : collapseTransition
       }
+      showAllTags={showAllTags}
+      maxTagRows={maxTagRows}
       onAnimationEnd={(e) => {
         if (!showAllTags && e.animationName === collapseAnimation.getName()) {
           setShowAllTagsWithAnimation?.(false);

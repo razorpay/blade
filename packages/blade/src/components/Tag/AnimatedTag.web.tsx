@@ -36,11 +36,13 @@ const tagShowKeyframe = keyframes`
 
 const AnimatedTagContainer = styled(BaseBox)<{
   transition: FlattenSimpleInterpolation;
+  isVisible: boolean;
 }>(
   (props) => css`
     ${props.transition};
     display: inline-block;
-    max-width: ${TAG_MAX_WIDTH_START};
+    opacity: ${props.isVisible ? TAG_OPACITY_START : TAG_OPACITY_END};
+    max-width: ${makeSize(props.isVisible ? TAG_MAX_WIDTH_START : TAG_MAX_WIDTH_END)};
   `,
 );
 
@@ -49,11 +51,9 @@ const AnimatedTag = ({
   currentTagIndex,
   activeTagIndex,
   onDismiss,
-  tagsLength,
 }: AnimatedTagProps): React.ReactElement => {
   const [isTagVisible, setIsTagVisible] = React.useState(true);
   const { theme } = useTheme();
-  const prevSelectionsLength = React.useRef<number>();
 
   const hideTagTransition = css`
     animation: ${tagDissappearKeyframe} ${makeMotionTime(theme.motion.duration.xquick)}
@@ -65,20 +65,11 @@ const AnimatedTag = ({
       ${String(theme.motion.easing.entrance.effective)};
   `;
 
-  // const noTransition = css`
-  //   animation: none;
-  // `;
-
-  // const isTagRemoved = prevSelectionsLength.current
-  //   ? prevSelectionsLength.current > tagsLength
-  //   : false;
-
   return (
     <AnimatedTagContainer
-      style={{ opacity: isTagVisible ? 1 : 0 }}
+      isVisible={isTagVisible}
       onAnimationEnd={() => {
         if (!isTagVisible) {
-          setIsTagVisible(true);
           onDismiss({ tagIndex: currentTagIndex, tagName: children });
         }
       }}
@@ -88,7 +79,6 @@ const AnimatedTag = ({
         _isVirtuallyFocussed={currentTagIndex === activeTagIndex}
         _isTagInsideInput={true}
         onDismiss={() => {
-          prevSelectionsLength.current = tagsLength;
           setIsTagVisible(false);
         }}
         marginRight="spacing.3"

@@ -131,8 +131,8 @@ export const getBaseInputStyles = ({
         ? makeSpace(theme.spacing[3])
         : makeSpace(theme.spacing[4]),
     textAlign,
-    width: hasTags ? undefined : '100%',
-    height: isTextArea ? undefined : makeSpace(BASEINPUT_DEFAULT_HEIGHT),
+    width: '100%',
+    height: isTextArea || hasTags ? undefined : makeSpace(BASEINPUT_DEFAULT_HEIGHT),
     minHeight: hasTags ? undefined : makeSpace(BASEINPUT_DEFAULT_HEIGHT),
     ...(isReactNative ? {} : { resize: 'none' }),
   };

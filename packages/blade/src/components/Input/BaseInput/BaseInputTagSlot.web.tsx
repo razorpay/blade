@@ -1,128 +1,98 @@
 import React from 'react';
-import type { CSSObject } from 'styled-components';
-import styled from 'styled-components';
 import type { BaseInputTagSlotProps } from './types';
-import { BASEINPUT_MAX_ROWS, TAG_GAP, TAG_HEIGHT } from './baseInputConfig';
+import { BASEINPUT_DEFAULT_HEIGHT } from './baseInputConfig';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
-import { size } from '~tokens/global';
-import { castWebType, makeSize } from '~utils';
+import { makeSize } from '~utils';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
+import { useIsMobile } from '~utils/useIsMobile';
+import { MetaConstants } from '~utils/metaAttribute';
 
-function isElementVisibleInContainer(element: Element, container: HTMLDivElement): boolean {
-  const elementRect = element.getBoundingClientRect();
-  const containerRect = container.getBoundingClientRect();
+const MINUMUM_INPUT_SPACE = 30;
+const PLUS_X_MORE_TEXT_WIDTH = 60;
 
-  return (
-    elementRect.top >= containerRect.top &&
-    elementRect.bottom <= containerRect.bottom &&
-    elementRect.left >= containerRect.left &&
-    elementRect.right <= containerRect.right
-  );
-}
-
-const InvisibleTagsContainer = styled(BaseBox)(
-  (): CSSObject => {
-    return {
-      '&.show': {
-        display: 'flex',
-      },
-      display: 'none',
-    };
-  },
-);
-
-const useTagsDisplay = (
-  tags: BaseInputTagSlotProps['tags'],
-  visibleTagsCountRef: BaseInputTagSlotProps['visibleTagsCountRef'],
-  maxTagRows: BaseInputTagSlotProps['maxTagRows'],
-): {
-  invisibleTagsCount: number;
-  tagsContainerRef: React.MutableRefObject<HTMLDivElement | null>;
-  horizontallyScrollableContainerRef: React.MutableRefObject<HTMLDivElement | null>;
-  verticallyScrollableContainerRef: React.MutableRefObject<HTMLDivElement | null>;
-} => {
-  const verticallyScrollableContainerRef = React.useRef<HTMLDivElement | null>(null);
-  const horizontallyScrollableContainerRef = React.useRef<HTMLDivElement | null>(null);
-  const tagsContainerRef = React.useRef<HTMLDivElement | null>(null);
-  const [invisibleTagsCount, setInvisibleTagsCount] = React.useState(0);
+const useVisibleTagsCount = ({
+  slotRef,
+  tags,
+  maxTagRows,
+}: {
+  slotRef: React.RefObject<HTMLDivElement>;
+  tags: BaseInputTagSlotProps['tags'];
+  maxTagRows: BaseInputTagSlotProps['maxTagRows'];
+}): number => {
+  const [visibleTagsCount, setVisibleTagsCount] = React.useState(0);
+  const visibleTagsCountRef = React.useRef<number>(0);
 
   useIsomorphicLayoutEffect(() => {
-    if (!tags) return;
-    if (!tagsContainerRef.current) return;
+    if (!tags) {
+      setVisibleTagsCount(0);
+      return;
+    }
 
-    const tagElements = tagsContainerRef.current.children;
-    tagsContainerRef.current.classList.add('show');
-    let visibleTagsCount = 0;
-    for (const tagElement of tagElements) {
-      if (isElementVisibleInContainer(tagElement, tagsContainerRef.current)) {
-        visibleTagsCount++;
-      } else {
+    if (maxTagRows === 'multiple') {
+      setVisibleTagsCount(tags.length);
+      return;
+    }
+
+    const inputTagsSlotWidth = slotRef.current?.clientWidth;
+    visibleTagsCountRef.current = 0;
+    let totalTagsWidth = 0;
+
+    if (!inputTagsSlotWidth) {
+      return;
+    }
+
+    const allTagsEl = slotRef.current?.querySelectorAll(
+      `[data-blade-component="${MetaConstants.Tag}"]`,
+    );
+
+    const totalAvailableSpaceForTags =
+      inputTagsSlotWidth - (MINUMUM_INPUT_SPACE + PLUS_X_MORE_TEXT_WIDTH);
+
+    for (const tagEl of allTagsEl) {
+      totalTagsWidth += tagEl.clientWidth;
+      if (totalTagsWidth >= totalAvailableSpaceForTags) {
         break;
+      } else {
+        visibleTagsCountRef.current++;
       }
     }
 
-    visibleTagsCountRef.current = visibleTagsCount;
-    setInvisibleTagsCount(tags.length - visibleTagsCount);
-    tagsContainerRef.current.classList.remove('show');
-
-    // Set scroll
-    if (maxTagRows === 'single') {
-      horizontallyScrollableContainerRef.current?.scrollTo?.({
-        top: 0,
-        left: horizontallyScrollableContainerRef.current.scrollWidth,
-        behavior: 'smooth',
-      });
-    }
-
-    if (maxTagRows === 'multiple' || maxTagRows === 'expandable') {
-      verticallyScrollableContainerRef.current?.scrollTo?.({
-        top: verticallyScrollableContainerRef.current.scrollHeight,
-        left: 0,
-        behavior: 'smooth',
-      });
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    setVisibleTagsCount(visibleTagsCountRef.current);
   }, [tags?.length]);
 
-  return {
-    invisibleTagsCount,
-    tagsContainerRef,
-    horizontallyScrollableContainerRef,
-    verticallyScrollableContainerRef,
-  };
+  return visibleTagsCount;
 };
 
-const MAX_TAGSLOT_HEIGHT = TAG_HEIGHT * BASEINPUT_MAX_ROWS + TAG_GAP * BASEINPUT_MAX_ROWS;
-
 const BaseInputTagSlot = ({
-  tags,
-  setShouldIgnoreBlurAnimation,
-  handleOnClick,
-  maxTagRows,
-  showAllTags,
-  setFocusOnInput,
-  visibleTagsCountRef,
-  inputWrapperRef,
   renderAs,
   children,
-}: BaseInputTagSlotProps): React.ReactElement | null => {
-  const {
-    invisibleTagsCount,
-    tagsContainerRef,
-    verticallyScrollableContainerRef,
-    horizontallyScrollableContainerRef,
-  } = useTagsDisplay(tags, visibleTagsCountRef, maxTagRows);
+  tags,
+  maxTagRows,
+  showAllTags,
+  setShouldIgnoreBlurAnimation,
+  handleOnClick,
+}: BaseInputTagSlotProps): React.ReactElement => {
+  const hasTags = tags && tags.length > 0;
+  const slotRef = React.useRef<HTMLDivElement>(null);
+  const visibleTagsCount = useVisibleTagsCount({
+    slotRef,
+    tags,
+    maxTagRows,
+  });
+
+  React.useEffect(() => {
+    slotRef.current?.scrollTo?.({
+      top:
+        maxTagRows === 'multiple' || maxTagRows === 'expandable' ? slotRef.current.scrollHeight : 0,
+      left: maxTagRows === 'single' ? slotRef.current.scrollWidth : 0,
+      behavior: 'smooth',
+    });
+  }, [tags?.length, maxTagRows]);
 
   React.useEffect(() => {
     if (!showAllTags) {
-      verticallyScrollableContainerRef.current?.scrollTo?.({
-        top: 0,
-        left: 0,
-        behavior: 'auto',
-      });
-
-      horizontallyScrollableContainerRef.current?.scrollTo?.({
+      slotRef.current?.scrollTo?.({
         top: 0,
         left: 0,
         behavior: 'smooth',
@@ -131,96 +101,53 @@ const BaseInputTagSlot = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [showAllTags]);
 
-  const isMultiline = maxTagRows === 'multiple' || maxTagRows === 'expandable';
-  const hasTags = tags && tags.length > 0;
+  const isMobile = useIsMobile();
+  // tag height changes in mobile and desktop so we keep different paddings to make it look as expected
+  const paddingYWithTags = isMobile ? 'spacing.1' : 'spacing.2';
 
-  // taking 400px as default width when we fail to get width from ref (should be rare). 400px is small enough so tags tend to be shown as +x selected
-  const wrapperWidth = castWebType(inputWrapperRef.current)?.clientWidth ?? 400;
+  const visibleTags = React.useMemo(() => {
+    return showAllTags ? tags : tags?.slice(0, visibleTagsCount);
+  }, [showAllTags, tags, visibleTagsCount]);
+
+  const invisibleTagsCount = React.useMemo(() => {
+    if (tags && visibleTags) {
+      return tags.length - visibleTags.length;
+    }
+
+    return 0;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tags?.length, visibleTags?.length]);
 
   return (
     <BaseBox
-      ref={horizontallyScrollableContainerRef}
-      justifyContent="flex-start"
+      ref={slotRef}
+      className="tags-slot"
+      paddingY={hasTags ? paddingYWithTags : 'spacing.0'}
+      paddingX={hasTags ? 'spacing.3' : 'spacing.0'}
       display="flex"
-      flexDirection="column"
-      maxHeight={renderAs === 'textarea' ? undefined : `${MAX_TAGSLOT_HEIGHT}px`}
-      minHeight={makeSize(size['36'])}
-      position="relative"
-      width="100%"
       flex="1"
-      overflowX="auto"
+      flexWrap={maxTagRows === 'single' ? 'nowrap' : 'wrap'}
+      overflow="auto"
+      minHeight={makeSize(BASEINPUT_DEFAULT_HEIGHT)}
       onMouseDown={() => {
         setShouldIgnoreBlurAnimation?.(true);
       }}
       onClick={(e) => {
         handleOnClick?.({ name: '', value: e as React.MouseEvent<HTMLInputElement> });
-        setFocusOnInput();
       }}
       onMouseUp={() => {
         setShouldIgnoreBlurAnimation?.(false);
       }}
     >
-      {hasTags && (
-        <InvisibleTagsContainer
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          ref={tagsContainerRef as any}
-          // switch to these on `props.rows` value
-          flexWrap={maxTagRows === 'multiple' ? 'wrap' : 'nowrap'}
-          whiteSpace={maxTagRows === 'multiple' ? undefined : 'nowrap'}
-          overflow={showAllTags ? 'auto' : 'hidden'}
-          // We only want the tags to be shown till 75% of maximum height possible for input
-          maxHeight={`${(MAX_TAGSLOT_HEIGHT * 75) / 100}px`}
-          maxWidth={
-            maxTagRows === 'single' || maxTagRows === 'expandable'
-              ? `${wrapperWidth - 200}px`
-              : '100%'
-          }
-          position="absolute"
-          top="spacing.0"
-          left="spacing.0"
-          paddingLeft="spacing.4"
-          backgroundColor="#f302"
-        >
-          {tags}
-        </InvisibleTagsContainer>
-      )}
-      <BaseBox
-        ref={verticallyScrollableContainerRef}
-        flexWrap={
-          maxTagRows === 'multiple' || (maxTagRows === 'expandable' && showAllTags)
-            ? 'wrap'
-            : 'nowrap'
-        }
-        whiteSpace={isMultiline ? undefined : 'nowrap'}
-        overflow={showAllTags ? 'auto' : 'hidden'}
-        position="relative"
-        paddingLeft={hasTags ? 'spacing.4' : undefined}
-        height="100%"
-        maxWidth={hasTags ? 'max-content' : '100%'}
-        display="inline-flex"
-        alignItems="center"
-        flexDirection="row"
-        flex="1"
-      >
-        {tags ? tags.slice(0, showAllTags ? tags.length : tags.length - invisibleTagsCount) : null}
-        <BaseBox display={hasTags ? 'inline-flex' : 'flex'} flex="1">
-          {tags && !showAllTags && invisibleTagsCount ? (
-            <Text alignSelf="center" marginY="spacing.2">
-              <BaseBox as="span" whiteSpace="nowrap">
-                +{invisibleTagsCount} More
-              </BaseBox>
-            </Text>
-          ) : null}
-          {/* Giving it 1px width in button renders (e.g. selectinput) so it continues to maintain expected height but doesn't take up extra space from tags */}
-          <BaseBox
-            width={hasTags && renderAs === 'button' ? '1px' : '100%'}
-            display="inline-flex"
-            alignItems="flex-start"
-          >
-            {children}
+      {visibleTags}
+      {tags && !showAllTags && invisibleTagsCount ? (
+        <Text alignSelf="center" marginY="spacing.2">
+          <BaseBox as="span" whiteSpace="nowrap">
+            +{invisibleTagsCount} More
           </BaseBox>
-        </BaseBox>
-      </BaseBox>
+        </Text>
+      ) : null}
+      {children}
     </BaseBox>
   );
 };
