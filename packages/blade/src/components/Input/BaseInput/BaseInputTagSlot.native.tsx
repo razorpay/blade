@@ -74,13 +74,13 @@ const BaseInputTagSlot = ({
 
   return (
     <BaseBox
-      marginY={hasTags ? 'spacing.1' : 'spacing.0'}
       justifyContent="flex-start"
-      paddingLeft={hasTags ? 'spacing.4' : 'spacing.0'}
-      // minHeight={makeSize(BASEINPUT_DEFAULT_HEIGHT)}
+      paddingY={hasTags ? 'spacing.1' : 'spacing.0'}
+      paddingX={hasTags ? 'spacing.3' : 'spacing.0'}
+      minHeight={makeSize(BASEINPUT_DEFAULT_HEIGHT)}
       display="flex"
       flexDirection="row"
-      // maxHeight={makeSize(BASEINPUT_WRAPPER_MAX_HEIGHT)}
+      maxHeight={makeSize(BASEINPUT_WRAPPER_MAX_HEIGHT)}
       flex="1"
       onLayout={(e) => {
         if (maxTagRows !== 'multiple') {

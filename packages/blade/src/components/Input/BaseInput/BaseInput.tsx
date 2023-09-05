@@ -842,7 +842,7 @@ export const BaseInput = React.forwardRef<BladeElementRef, BaseInputProps>(
           >
             <BaseInputVisuals leadingIcon={leadingIcon} prefix={prefix} isDisabled={isDisabled} />
             <BaseInputTagSlot
-              renderAs={as} // TODO: remove?
+              renderAs={as}
               tags={tags}
               showAllTags={showAllTagsWithAnimation}
               setFocusOnInput={() => {
