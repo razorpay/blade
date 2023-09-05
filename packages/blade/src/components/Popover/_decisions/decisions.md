@@ -139,9 +139,9 @@ import { Popover, PopoverInteractiveWrapper } from '@razorpay/blade';
 
 > Note: If users don't wrap the non-interactive elements in `PopoverInteractiveWrapper` the popover won't apear
 
-### Custom Triggers
+### Custom Interactive Triggers
 
-Users will be able to use their own custom components as triggers:
+Users will be able to use their own custom interactive components as triggers:
 
 To make custom elements work the components needs to expose it's inner ref, this can be achived by using `React.forwardRef`:
 
@@ -170,7 +170,7 @@ const MyCustomButton = React.forwardRef<
 });
 
 // Custom trigger
-<Popover content="Amount reversed to customer bank account">
+<Popover headerTitle="Refund Status" content="Amount reversed to customer bank account">
   <MyCustomButton>Click me<MyCustomButton>
 </Popover>
 ```
@@ -195,9 +195,9 @@ This will be a separate component and will be released in future, since the scop
 |-------------------------	|--------------------------------------------------	|----------------------------------------------------------------	|----------------------------------------------------------------	|
 | **Use Case**            	| Set context                                      	| Set context<br>Let user take action                            	| Highlight new feature<br>Let users take action                 	|
 | **Trigger Interaction** 	| Hover                                            	| onClick<br>onLoad                                              	| onClick<br>onLoad                                              	|
-| **Triggered By**        	| Interactive elements<br>Non-interactive elements 	| Interactive elements<br>Non-interactive elements               	| On page load<br>Nav buttons of current popover                 	|
+| **Triggered By**        	| Interactive elements<br>Non-interactive elements 	| On page load<br>Interactive elements<br>Non-interactive elements               	| On page load<br>Nav buttons of current popover                 	|
 | **Content**             	| Heading<br>Body Text (Normal + Bold)            	| Heading<br>Rich Body Text<br>Links<br>Buttons<br>Assets/ Media 	| Heading<br>Rich Body Text<br>Links<br>Buttons<br>Assets/ Media 	|
-| **Header**              	| Plain Text                                       	| Rich Text<br>Leading Icon<br>Leading Asset                     	| Rich Text<br>Leading Icon<br>Leading Asset                     	|
+| **Header**              	| Plain Text                                       	| Plain Text<br>Leading Icon<br>Leading Asset                     	| Plain Text<br>Leading Icon<br>Leading Asset                     	|
 | **Footer**              	| No                                               	| Slot<br>Action Buttons(1 or 2)                                	| Action Buttons(1 or 2)<br>Nav Buttons (2)                     	|
 | **Dismiss Button**      	| No                                               	| Yes                                                            	| Yes                                                            	|
 | **Background Overlay**  	| No                                               	| No                                                             	| Yes                                                            	|
@@ -266,7 +266,7 @@ How should the footer API look like?
 </Popover>
 ```
 
-**Conclusion:** We should go ahead with Flexible API because even if we go with constrained API, users will anyway still be able to pass React.ReactNode as `footerContent` and could just skip the `footerActions` altogether.
+**Conclusion:** We will go ahead with Flexible API as this will mostly be controlled by design and design has the slots and permutations and combinations in place of what is allowed and what is disallowed.
 
 ## References
 
