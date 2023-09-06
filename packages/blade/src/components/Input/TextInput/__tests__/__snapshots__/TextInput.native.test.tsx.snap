@@ -192,10 +192,12 @@ exports[`<TextInput /> should render 1`] = `
               "borderBottomWidth": 1,
               "borderTopLeftRadius": 2,
               "borderTopRightRadius": 2,
+              "display": "flex",
+              "flexDirection": "row",
+              "position": "relative",
+              "width": "100%",
             },
-            {
-              "maxHeight": 37,
-            },
+            {},
           ]
         }
       >
@@ -501,10 +503,12 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
               "borderBottomWidth": 1,
               "borderTopLeftRadius": 2,
               "borderTopRightRadius": 2,
+              "display": "flex",
+              "flexDirection": "row",
+              "position": "relative",
+              "width": "100%",
             },
-            {
-              "maxHeight": 37,
-            },
+            {},
           ]
         }
       >
