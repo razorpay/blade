@@ -2,7 +2,6 @@
 import { arrow, shift, useFloating, flip, offset } from '@floating-ui/react-native';
 import React from 'react';
 import { Modal, TouchableOpacity } from 'react-native';
-import { TooltipArrow } from './TooltipArrowNative';
 import { TooltipContent } from './TooltipContent';
 import type { TooltipProps } from './types';
 import { ARROW_HEIGHT, ARROW_WIDTH, tooltipZIndex } from './constants';
@@ -11,6 +10,7 @@ import { TooltipContext } from './TooltipContext';
 import { useTheme } from '~components/BladeProvider';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { mergeProps } from '~utils/mergeProps';
+import { PopupArrow } from '~components/PopupArrow';
 
 const Tooltip = ({
   content,
@@ -104,7 +104,16 @@ const Tooltip = ({
               // TODO: Tokenize zIndex values
               zIndex,
             }}
-            arrow={<TooltipArrow context={context} ref={arrowRef as never} />}
+            arrow={
+              <PopupArrow
+                ref={arrowRef as never}
+                context={context}
+                width={ARROW_WIDTH}
+                height={ARROW_HEIGHT}
+                fillColor={theme.colors.brand.gray[200].highContrast}
+                strokeColor={theme.colors.brand.gray[300].highContrast}
+              />
+            }
           >
             {content}
           </TooltipContent>

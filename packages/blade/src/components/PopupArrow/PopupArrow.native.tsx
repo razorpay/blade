@@ -1,11 +1,10 @@
 /* eslint-disable react/jsx-no-useless-fragment */
 import * as React from 'react';
 import styled from 'styled-components/native';
-import type { UseFloatingReturn } from '@floating-ui/react-native';
 import { View } from 'react-native';
 import type { CSSObject } from 'styled-components';
-import { ARROW_HEIGHT, ARROW_WIDTH } from './constants';
-import { getPlacementParts } from './utils';
+import type { Alignment, Placement, Side } from '@floating-ui/react';
+import type { PopupArrowProps } from './types';
 import Svg, { Path } from '~components/Icons/_Svg';
 import { useTheme } from '~components/BladeProvider';
 import type { SvgProps } from '~components/Icons/_Svg/Svg/types';
@@ -13,8 +12,10 @@ import { makeSize } from '~utils';
 import { size } from '~tokens/global';
 import { logger } from '~utils/logger';
 
-type TooltipArrowProps = {
-  context: UseFloatingReturn;
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+const getPlacementParts = (placement: NonNullable<Placement>) => {
+  const [side, alignment] = placement.split('-') as [Side, Alignment];
+  return [side, alignment] as const;
 };
 
 const StyledSvg = styled(Svg)<{ styles?: CSSObject }>(({ styles }) => {
@@ -23,8 +24,8 @@ const StyledSvg = styled(Svg)<{ styles?: CSSObject }>(({ styles }) => {
 
 // modified version of FloatingArrow
 // https://github.com/floating-ui/floating-ui/blob/master/packages/react/src/components/FloatingArrow.tsx
-const TooltipArrow = React.forwardRef<SvgProps, TooltipArrowProps>(
-  ({ context }, ref): React.ReactElement => {
+const PopupArrow = React.forwardRef<SvgProps, PopupArrowProps>(
+  ({ context, width, height, fillColor, strokeColor }, ref): React.ReactElement => {
     const { theme } = useTheme();
 
     const {
@@ -32,15 +33,13 @@ const TooltipArrow = React.forwardRef<SvgProps, TooltipArrowProps>(
       elements: { floating },
       middlewareData: { arrow },
     } = context;
-    const width = ARROW_WIDTH;
-    const height = ARROW_HEIGHT;
     const strokeWidth = theme.border.width.thin * 2;
 
     if (__DEV__) {
       if (!ref) {
         logger({
           type: 'warn',
-          moduleName: 'TooltipArrow',
+          moduleName: 'PopupArrow',
           message: 'Floating UI: The `ref` prop is required for the `FloatingArrow` component.',
         });
       }
@@ -93,9 +92,9 @@ const TooltipArrow = React.forwardRef<SvgProps, TooltipArrowProps>(
       };
     }
 
-    const strokeColor = theme.colors.brand.gray[300].highContrast;
     return (
       <View
+        pointerEvents="none"
         collapsable={false}
         style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0 }}
       >
@@ -109,11 +108,11 @@ const TooltipArrow = React.forwardRef<SvgProps, TooltipArrowProps>(
           styles={newStyles}
         >
           <Path fill="none" stroke={strokeColor} strokeWidth={`${strokeWidth}px`} d={dValue} />
-          <Path fill={theme.colors.brand.gray[200].highContrast} stroke="none" d={dValue} />
+          <Path fill={fillColor} stroke="none" d={dValue} />
         </StyledSvg>
       </View>
     );
   },
 );
 
-export { TooltipArrow };
+export { PopupArrow };

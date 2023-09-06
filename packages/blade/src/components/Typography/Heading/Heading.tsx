@@ -140,6 +140,7 @@ export const Heading = <T extends { variant: HeadingVariant }>({
   testID,
   textAlign,
   textDecorationLine,
+  id,
   ...styledProps
 }: HeadingProps<T>): ReactElement => {
   useValidateAsProp({ componentName: 'Heading', as, validAsValues });
@@ -151,6 +152,7 @@ export const Heading = <T extends { variant: HeadingVariant }>({
       {...props}
       textAlign={textAlign}
       textDecorationLine={textDecorationLine}
+      id={id}
       {...getStyledProps(styledProps)}
     >
       {children}

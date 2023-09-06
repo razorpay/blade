@@ -4,7 +4,6 @@ import {
   FloatingPortal,
   arrow,
   flip,
-  FloatingArrow,
   offset,
   useDelayGroup,
   useDelayGroupContext,
@@ -29,6 +28,7 @@ import { size } from '~tokens/global';
 import { useId } from '~utils/useId';
 import { makeAccessible } from '~utils/makeAccessible';
 import { mergeProps } from '~utils/mergeProps';
+import { PopupArrow } from '~components/PopupArrow';
 
 const Tooltip = ({
   content,
@@ -113,14 +113,13 @@ const Tooltip = ({
             <TooltipContent
               style={styles}
               arrow={
-                <FloatingArrow
+                <PopupArrow
                   ref={arrowRef}
                   context={context}
                   width={ARROW_WIDTH}
                   height={ARROW_HEIGHT}
-                  fill={theme.colors.brand.gray[200].highContrast}
-                  stroke={theme.colors.brand.gray[300].highContrast}
-                  strokeWidth={theme.border.width.thin}
+                  fillColor={theme.colors.brand.gray[200].highContrast}
+                  strokeColor={theme.colors.brand.gray[300].highContrast}
                 />
               }
             >

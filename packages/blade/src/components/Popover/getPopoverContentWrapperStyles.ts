@@ -1,7 +1,8 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import type React from 'react';
 import type { CSSObject } from 'styled-components';
 import type { Theme } from '~components/BladeProvider';
-import { makeBorderSize, castWebType, isReactNative, makeSpace } from '~utils';
+import { makeBorderSize, castWebType, isReactNative, makeSpace, useTheme } from '~utils';
 
 const getPopoverContentWrapperStyles = ({
   theme,
@@ -10,9 +11,11 @@ const getPopoverContentWrapperStyles = ({
   theme: Theme;
   styles: React.CSSProperties;
 }): CSSObject => {
+  const { platform } = useTheme();
+
   return {
     minWidth: isReactNative() ? '90%' : '100%',
-    maxWidth: makeSpace(400),
+    maxWidth: makeSpace(platform === 'onMobile' ? 288 : 328),
     display: 'flex',
     flexDirection: 'column',
     position: isReactNative() ? 'absolute' : 'relative',

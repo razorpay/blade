@@ -4,7 +4,6 @@ import {
   FloatingPortal,
   arrow,
   flip,
-  FloatingArrow,
   offset,
   useFloating,
   useInteractions,
@@ -27,6 +26,8 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { size } from '~tokens/global';
 import { useControllableState } from '~utils/useControllable';
 import { mergeProps } from '~utils/mergeProps';
+import { PopupArrow } from '~components/PopupArrow';
+import { useMergeRefs } from '~utils/useMergeRefs';
 
 const Popover = ({
   content,
@@ -56,7 +57,7 @@ const Popover = ({
     onChange: (isOpen) => onOpenChange?.({ isOpen }),
   });
 
-  const { refs, floatingStyles, context } = useFloating({
+  const { refs, floatingStyles, context, placement: computedPlacement } = useFloating({
     open: controllableIsOpen,
     onOpenChange: (isOpen) => controllableSetIsOpen(() => isOpen),
     placement,
@@ -77,12 +78,16 @@ const Popover = ({
     controllableSetIsOpen(() => false);
   }, [controllableSetIsOpen]);
 
+  // we need to animate from the offset of the computed placement
+  // because placement can change dynamically based on available space
+  const [computedSide] = getPlacementParts(computedPlacement);
+  const computedIsHorizontal = computedSide === 'left' || computedSide === 'right';
   const animationOffset = isOppositeAxis ? -size[4] : size[4];
   const { isMounted, styles } = useTransitionStyles(context, {
     duration: theme.motion.duration.quick,
     initial: {
       opacity: 0,
-      transform: `translate${isHorizontal ? 'X' : 'Y'}(${animationOffset}px)`,
+      transform: `translate${computedIsHorizontal ? 'X' : 'Y'}(${animationOffset}px)`,
     },
   });
 
@@ -91,6 +96,8 @@ const Popover = ({
   const role = useRole(context);
 
   const { getReferenceProps, getFloatingProps } = useInteractions([click, dismiss, role]);
+  const triggerRef = React.useRef<HTMLButtonElement>(null);
+  const mergedRef = useMergeRefs(refs.setReference, triggerRef);
 
   const contextValue = React.useMemo(() => {
     return {
@@ -99,14 +106,27 @@ const Popover = ({
     };
   }, [close]);
 
+  // Inject aria attributes to trigger
+  // Doing it this way instead of makeAccessible()
+  // because with makeAccessible we will need to make sure aria-controls, aria-expanded etc
+  // are exposed from the trigger component prop, which we cannot ensure
+  React.useLayoutEffect(() => {
+    if (!triggerRef.current) return;
+
+    const props = getReferenceProps() as Record<string, string>;
+    for (const key of Object.keys(props)) {
+      if (key.startsWith('aria-')) {
+        triggerRef.current.setAttribute(key, props[key]);
+      }
+    }
+  }, [getReferenceProps, triggerRef]);
+
   return (
     <PopoverContext.Provider value={contextValue}>
       {/* Cloning the trigger children to enhance it with ref and event handler */}
       {React.cloneElement(children, {
-        ref: refs.setReference,
+        ref: mergedRef,
         ...mergeProps(children.props, getReferenceProps()),
-        // TODO: flatten children
-        // ...makeAccessible({ label: content }),
       })}
       {isMounted && (
         <FloatingPortal>
@@ -130,14 +150,13 @@ const Popover = ({
                 footerContent={footerContent}
                 style={styles}
                 arrow={
-                  <FloatingArrow
+                  <PopupArrow
                     ref={arrowRef}
                     context={context}
                     width={ARROW_WIDTH}
                     height={ARROW_HEIGHT}
-                    fill={theme.colors.surface.background.level2.lowContrast}
-                    stroke={theme.colors.brand.gray[400].lowContrast}
-                    strokeWidth={theme.border.width.thin}
+                    fillColor={theme.colors.surface.background.level2.lowContrast}
+                    strokeColor={theme.colors.brand.gray[400].lowContrast}
                   />
                 }
               >

@@ -2,7 +2,6 @@
 import { arrow, shift, useFloating, flip, offset } from '@floating-ui/react-native';
 import React from 'react';
 import { Modal, TouchableOpacity } from 'react-native';
-import { PopoverArrow } from './PopoverArrowNative';
 import { PopoverContent } from './PopoverContent';
 import type { PopoverProps } from './types';
 import { ARROW_HEIGHT, ARROW_WIDTH, popoverZIndex } from './constants';
@@ -12,6 +11,7 @@ import { useTheme } from '~components/BladeProvider';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { mergeProps } from '~utils/mergeProps';
 import { useControllableState } from '~utils/useControllable';
+import { PopupArrow } from '~components/PopupArrow';
 
 const Popover = ({
   content,
@@ -24,7 +24,6 @@ const Popover = ({
   footerContent,
   isOpen,
   defaultIsOpen,
-  initialFocusRef,
 }: PopoverProps): React.ReactElement => {
   const { theme } = useTheme();
   const defaultInitialFocusRef = React.useRef(null);
@@ -99,35 +98,45 @@ const Popover = ({
         ),
         ref: refs.setReference,
       })}
-      {/* accessibilityLabel={content}  */}
       <Modal collapsable={false} transparent visible={isVisible}>
         <TouchableOpacity
           style={{
-            flexShrink: 0,
-            flex: 1,
+            position: 'absolute',
+            top: 0,
+            bottom: 0,
+            left: 0,
+            right: 0,
           }}
           onPress={handleClose}
           activeOpacity={1}
           testID="popover-modal-backdrop"
           {...metaAttribute({ name: MetaConstants.Popover })}
+        />
+        <PopoverContent
+          headerLeading={headerLeading}
+          headerTitle={headerTitle}
+          footerContent={footerContent}
+          isVisible={controllableIsOpen}
+          ref={refs.setFloating}
+          side={computedSide}
+          style={{
+            ...floatingStyles,
+            // TODO: Tokenize zIndex values
+            zIndex,
+          }}
+          arrow={
+            <PopupArrow
+              ref={arrowRef as never}
+              context={context}
+              width={ARROW_WIDTH}
+              height={ARROW_HEIGHT}
+              fillColor={theme.colors.surface.background.level2.lowContrast}
+              strokeColor={theme.colors.brand.gray[400].lowContrast}
+            />
+          }
         >
-          <PopoverContent
-            headerLeading={headerLeading}
-            headerTitle={headerTitle}
-            footerContent={footerContent}
-            isVisible={controllableIsOpen}
-            ref={refs.setFloating}
-            side={computedSide}
-            style={{
-              ...floatingStyles,
-              // TODO: Tokenize zIndex values
-              zIndex,
-            }}
-            arrow={<PopoverArrow context={context} ref={arrowRef as never} />}
-          >
-            {content}
-          </PopoverContent>
-        </TouchableOpacity>
+          {content}
+        </PopoverContent>
       </Modal>
     </PopoverContext.Provider>
   );
