@@ -54,8 +54,7 @@ const useSandpackSetup = ({
             import { createGlobalStyle } from "styled-components";
   
             import { BladeProvider, Box, Theme } from "@razorpay/blade/components";
-            import { ${themeTokenName} } from "@razorpay/blade/tokens";
-            import { createTheme } from "@razorpay/blade/utils";
+            import { ${themeTokenName}, createTheme } from "@razorpay/blade/tokens";
             import "@fontsource/lato/400.css";
             import "@fontsource/lato/700.css";
             
@@ -79,7 +78,7 @@ const useSandpackSetup = ({
             const root = createRoot(rootElement);
             
             const getTheme = () => {
-              if(${brandColor}){
+              if(${Boolean(brandColor)}){
                 return createTheme({
                   brandColor: "${brandColor}",
                 });
@@ -89,7 +88,7 @@ const useSandpackSetup = ({
 
             root.render(
               <StrictMode>
-                <BladeProvider themeTokens={${themeTokenName}} colorScheme="${colorScheme}">
+                <BladeProvider themeTokens={getTheme()} colorScheme="${colorScheme}">
                   <GlobalStyles />
                   <Box 
                     backgroundColor="surface.background.level1.lowContrast"
