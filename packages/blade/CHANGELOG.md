@@ -1,5 +1,61 @@
 # @razorpay/blade
 
+## 10.6.0
+
+### Minor Changes
+
+- 1732199a: fix(blade): fix firefox bug in carousel & fixed visible items not switching to `1` on mobile devices.
+
+## 10.5.0
+
+### Minor Changes
+
+- 3fc6ba3a: feat(Typography): add a new `Display` component
+
+  The Display component adds a strong visual touch. Utilize it to create eye-catching sections on your landing pages.
+
+## 10.4.4
+
+### Patch Changes
+
+- f1478f1b: fix(blade): extra left/right padding on amount component
+
+## 10.4.3
+
+### Patch Changes
+
+- 6b69d0e5: fix(blade): fixed card link overlay not working when wrapper is set to position:relative
+
+## 10.4.2
+
+### Patch Changes
+
+- 3d3bef8e: chore(blade): remove broken figma link from Card
+
+## 10.4.1
+
+### Patch Changes
+
+- 6ca6d35b: fix(Amount): correctly round the value upto 2 decimal places
+
+## 10.4.0
+
+### Minor Changes
+
+- a561aaca: feat: Add new `Chip` and `ChipGroup` components
+
+### Patch Changes
+
+- 9278e808: fix(blade): use thicker border in selected card
+
+## 10.3.2
+
+### Patch Changes
+
+- 67e0ae96: feat(blade): added interactive Card
+
+  Enables cards to be used as clickable, linkable & selectable.
+
 ## 10.3.1
 
 ### Patch Changes

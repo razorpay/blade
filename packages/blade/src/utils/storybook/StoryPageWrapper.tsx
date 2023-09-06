@@ -19,7 +19,7 @@ type StoryPageWrapperTypes = {
   propsDescription?: string;
   componentName: string;
   children?: React.ReactNode;
-  note?: string;
+  note?: React.ReactChild;
   showStorybookControls?: boolean;
   showArgsTable?: boolean;
   /**

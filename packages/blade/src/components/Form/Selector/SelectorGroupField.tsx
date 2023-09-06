@@ -12,7 +12,7 @@ type SelectorGroupFieldProps = {
   labelledBy: string;
   position?: 'top' | 'left';
   accessibilityRole?: AriaRoles;
-  componentName: 'checkbox-group' | 'radio-group';
+  componentName: 'checkbox-group' | 'radio-group' | 'chip-group';
 } & TestID;
 
 const SelectorGroupField = ({

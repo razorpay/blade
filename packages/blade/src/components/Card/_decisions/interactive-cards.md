@@ -71,7 +71,7 @@ const [isHovered, setIsHovered] = React.useState(false);
 - Plus state management is also needs to be handled by consumers
 - Uses JS events for hover
 
-**Method 2:** shouldScaleOnHover prop
+**Method 2:** shouldshouldScaleOnHover prop
 
 In this method we don't provide isScaled prop.
 
@@ -82,14 +82,14 @@ In this method we don't provide isScaled prop.
     // users can do stuff here
   }}
   // automatic hover, we can internally pass :hover to styled components
-  shouldScaleOnHover
+  shouldshouldScaleOnHover
 />
 ```
 
 **Pros:**
 
 - No state management involved
-- Less overhead for consumers, they can just pass shouldScaleOnHover
+- Less overhead for consumers, they can just pass shouldshouldScaleOnHover
 - The scale animation can be driven via plain CSS :hover
 
 **Cons:**

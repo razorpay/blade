@@ -84,6 +84,26 @@ export type FontSize = {
    * mobile: 32(px/rem/pt)
    */
   1000: number;
+  /** desktop: 48(px/rem/pt)
+   *
+   * mobile: 40(px/rem/pt)
+   */
+  1100: number;
+  /** desktop: 56(px/rem/pt)
+   *
+   * mobile: 48(px/rem/pt)
+   */
+  1200: number;
+  /** desktop: 64(px/rem/pt)
+   *
+   * mobile: 56(px/rem/pt)
+   */
+  1300: number;
+  /** desktop: 88(px/rem/pt)
+   *
+   * mobile: 64(px/rem/pt)
+   */
+  1600: number;
 };
 
 const fontWeight: FontWeight = {
@@ -158,6 +178,26 @@ export type Typography = {
      * mobile: 40(px/rem/pt)
      */
     800: number;
+    /** desktop: 56(px/rem/pt)
+     *
+     * mobile: 48(px/rem/pt)
+     */
+    900: number;
+    /** desktop: 64(px/rem/pt)
+     *
+     * mobile: 56(px/rem/pt)
+     */
+    1000: number;
+    /** desktop: 72(px/rem/pt)
+     *
+     * mobile: 64(px/rem/pt)
+     */
+    1100: number;
+    /** desktop: 104(px/rem/pt)
+     *
+     * mobile: 72(px/rem/pt)
+     */
+    1500: number;
   };
   // letterSpacings: {};
 };
@@ -187,6 +227,10 @@ export const typography: TypographyWithPlatforms = {
         800: 32,
         900: 36,
         1000: 40,
+        1100: 48,
+        1200: 56,
+        1300: 64,
+        1600: 88,
       },
       weight: {
         ...fontWeight,
@@ -205,6 +249,10 @@ export const typography: TypographyWithPlatforms = {
       600: 40,
       700: 40,
       800: 48,
+      900: 56,
+      1000: 64,
+      1100: 72,
+      1500: 104,
     },
     // letterSpacings: {},
   },
@@ -228,6 +276,10 @@ export const typography: TypographyWithPlatforms = {
         800: 28,
         900: 32,
         1000: 32,
+        1100: 40,
+        1200: 48,
+        1300: 56,
+        1600: 64,
       },
       weight: {
         ...fontWeight,
@@ -246,6 +298,10 @@ export const typography: TypographyWithPlatforms = {
       600: 32,
       700: 40,
       800: 40,
+      900: 48,
+      1000: 56,
+      1100: 64,
+      1500: 72,
     },
     // letterSpacings: {},
   },
