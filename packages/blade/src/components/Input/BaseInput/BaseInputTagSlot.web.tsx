@@ -7,6 +7,7 @@ import { makeSize } from '~utils';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { useIsMobile } from '~utils/useIsMobile';
 import { MetaConstants } from '~utils/metaAttribute';
+import { size } from '~tokens/global';
 
 const MINUMUM_INPUT_SPACE = 30;
 const PLUS_X_MORE_TEXT_WIDTH = 60;
@@ -147,7 +148,15 @@ const BaseInputTagSlot = ({
           </BaseBox>
         </Text>
       ) : null}
-      {children}
+      <BaseBox
+        width={
+          hasTags && renderAs === 'button' && maxTagRows === 'multiple'
+            ? makeSize(size['1'])
+            : '100%'
+        }
+      >
+        {children}
+      </BaseBox>
     </BaseBox>
   );
 };

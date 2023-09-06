@@ -21,6 +21,22 @@ const StyledBaseInputWrapper = styled(Animated.View)<BaseInputWrapperProps>((pro
   }),
 }));
 
+const getMaxHeight = ({
+  maxTagRows,
+  showAllTags,
+}: Pick<BaseInputWrapperProps, 'maxTagRows' | 'showAllTags'>): number => {
+  if (maxTagRows === 'single') {
+    return BASEINPUT_WRAPPER_MIN_HEIGHT;
+  }
+
+  if (maxTagRows === 'multiple') {
+    return BASEINPUT_WRAPPER_MAX_HEIGHT;
+  }
+
+  // In expandable, max-height depends on the state
+  return showAllTags ? BASEINPUT_WRAPPER_MAX_HEIGHT : BASEINPUT_WRAPPER_MIN_HEIGHT;
+};
+
 const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
   HTMLDivElement,
   BaseInputWrapperProps & {
@@ -56,11 +72,22 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
     };
   });
 
+  const animatedStyleObject = maxTagRows === 'expandable' ? animatedStyle : {};
+  const maxHeightStyleObject = {
+    maxHeight: getMaxHeight({
+      showAllTags,
+      maxTagRows,
+    }),
+  };
+
   return (
     <StyledBaseInputWrapper
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={ref as any}
-      style={maxTagRows === 'expandable' ? animatedStyle : undefined}
+      style={{
+        ...maxHeightStyleObject,
+        ...animatedStyleObject,
+      }}
       {...rest}
     >
       {children}

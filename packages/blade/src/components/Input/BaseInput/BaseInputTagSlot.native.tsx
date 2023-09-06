@@ -1,20 +1,10 @@
 import React from 'react';
-import { ScrollView, Text as RNText } from 'react-native';
-import styled from 'styled-components';
+import { ScrollView, Text as RNText, TouchableWithoutFeedback, View } from 'react-native';
 import type { BaseInputTagSlotProps } from './types';
 import { BASEINPUT_DEFAULT_HEIGHT, BASEINPUT_WRAPPER_MAX_HEIGHT } from './baseInputConfig';
 import BaseBox from '~components/Box/BaseBox';
 import { makeSize } from '~utils';
 import { size } from '~tokens/global';
-
-const StyledScrollView = styled(ScrollView)((_props) => {
-  return {
-    display: 'flex',
-    flexDirection: 'column',
-    // gap is still not working in RN for some reason
-    // gap: makeSpace(props.theme.spacing[3]),
-  };
-});
 
 const ScrollableTagSlotContainer = ({
   maxTagRows,
@@ -26,11 +16,12 @@ const ScrollableTagSlotContainer = ({
   const scrollViewRef = React.useRef<ScrollView>(null);
   const [isScrolling, setIsScrolling] = React.useState(false);
   return (
-    <StyledScrollView
+    <ScrollView
       ref={scrollViewRef}
       contentContainerStyle={{
-        flexWrap: 'wrap',
+        flexWrap: maxTagRows === 'single' ? 'nowrap' : 'wrap',
         position: 'relative',
+        flexDirection: 'row',
       }}
       onScrollBeginDrag={() => {
         setIsScrolling(true);
@@ -38,9 +29,11 @@ const ScrollableTagSlotContainer = ({
       onScrollEndDrag={() => {
         setIsScrolling(false);
       }}
-      horizontal={true}
+      horizontal={maxTagRows === 'single'}
       showsHorizontalScrollIndicator={maxTagRows === 'single'}
-      onContentSizeChange={() => scrollViewRef.current?.scrollToEnd({ animated: true })}
+      onContentSizeChange={() => {
+        scrollViewRef.current?.scrollToEnd({ animated: true });
+      }}
     >
       {/* This creates a clickable layer behind tags so if user clicks empty area between of tags, it handles opening of Dropdown */}
       <BaseBox
@@ -54,7 +47,7 @@ const ScrollableTagSlotContainer = ({
         }}
       />
       {children}
-    </StyledScrollView>
+    </ScrollView>
   );
 };
 
@@ -80,14 +73,21 @@ const BaseInputTagSlot = ({
       minHeight={makeSize(BASEINPUT_DEFAULT_HEIGHT)}
       display="flex"
       flexDirection="row"
-      maxHeight={makeSize(BASEINPUT_WRAPPER_MAX_HEIGHT)}
+      position="relative"
+      // maxHeight={makeSize(
+      //   maxTagRows === 'single' ? BASEINPUT_DEFAULT_HEIGHT : BASEINPUT_WRAPPER_MAX_HEIGHT,
+      // )}
       flex="1"
       onLayout={(e) => {
-        if (maxTagRows !== 'multiple') {
+        if (!hasTags) return;
+
+        if (maxTagRows === 'multiple') {
+          // The calculation is for single-line versions.
+          // In multiline, we have default 6 tags in RN
           return;
         }
 
-        const containerWidth = e.nativeEvent?.layout;
+        const containerWidth = e.nativeEvent?.layout?.width;
         if (!containerWidth) {
           return;
         }
@@ -102,8 +102,12 @@ const BaseInputTagSlot = ({
         showAllTags={showAllTags}
         handleOnClick={handleOnClick}
       >
-        {hasTags ? (showAllTags ? tags : tags.slice(0, visibleTags)) : null}
-        {hasTags && invisibleTagsCount > 0 && !showAllTags ? (
+        {hasTags
+          ? showAllTags || maxTagRows === 'multiple'
+            ? tags
+            : tags.slice(0, visibleTags)
+          : null}
+        {hasTags && invisibleTagsCount > 0 && !showAllTags && maxTagRows !== 'multiple' ? (
           <RNText
             onPress={() => {
               handleOnClick?.({ name: '', value: '' });
@@ -117,6 +121,17 @@ const BaseInputTagSlot = ({
           {children}
         </BaseBox>
       </ScrollableTagSlotContainer>
+      <TouchableWithoutFeedback
+        onPress={() => {
+          handleOnClick?.({ name: '', value: '' });
+        }}
+      >
+        <View
+          style={{
+            flex: 1,
+          }}
+        />
+      </TouchableWithoutFeedback>
     </BaseBox>
   );
 };
