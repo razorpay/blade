@@ -338,15 +338,12 @@ const componentData: ComponentStatusData = [
     storybookLink: 'Components/Divider',
   },
   {
-    name: 'Pill',
-    status: 'planned-Q2-dev',
-    description: '',
-  },
-  {
-    name: 'Pagination',
-    status: 'planned-Q2-dev',
+    name: 'Chip',
+    status: 'released',
     description:
-      'Pagination component enables the user to select a specific page from a range of pages.',
+      'Chips represents a collection of selectable objects which enable users to make selections, filter content, and trigger relevant actions. Chips can have either single selection or multiple (based on context).',
+    releasedIn: '10.4.0',
+    storybookLink: 'Components/Chip/Chip',
   },
   {
     name: 'FileUpload',
@@ -360,7 +357,8 @@ const componentData: ComponentStatusData = [
   },
   {
     name: 'Slot',
-    status: 'planned-Q2-design',
+    status: 'released',
+    releasedIn: '5.3.0',
     description:
       'The Slot component is a generic component which can be used as container. (This is a design only component)',
   },
@@ -382,13 +380,13 @@ const componentData: ComponentStatusData = [
   },
   {
     name: 'Tabs',
-    status: 'planned-Q2-dev',
+    status: 'in-design',
     description:
       'Tabs is a component which will allow you to show multiple clickable tabs in your UI',
   },
   {
     name: 'Data Table',
-    status: 'planned-Q2-dev',
+    status: 'in-design',
     description: 'DataTable will allow you to display your data in tabular manner',
   },
   {
@@ -481,6 +479,21 @@ const ReleasedInLink = ({ version }: { version?: string }): React.ReactElement =
   );
 };
 
+/**
+ * Compares two versions and returns true if newVersion is newer than oldVersion
+ */
+function isNewerVersion(oldVersion: string, newVersion: string): boolean {
+  const oldParts = oldVersion.split('.');
+  const newParts = newVersion.split('.');
+  for (let i = 0; i < newParts.length; i++) {
+    const a = parseInt(newParts[i], 10);
+    const b = parseInt(oldParts[i], 10);
+    if (a > b) return true;
+    if (a < b) return false;
+  }
+  return false;
+}
+
 const ComponentStatusTable = (): React.ReactElement => {
   const unreleasedComponentsSort: ComponentStatuses[] = [
     'in-design',
@@ -504,7 +517,8 @@ const ComponentStatusTable = (): React.ReactElement => {
         ? 1
         : -1;
     }
-    return b.releasedIn.localeCompare(a.releasedIn);
+
+    return isNewerVersion(b.releasedIn, a.releasedIn) ? -1 : 1;
   });
 
   return (

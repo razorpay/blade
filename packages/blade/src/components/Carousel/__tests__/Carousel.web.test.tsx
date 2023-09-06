@@ -79,6 +79,7 @@ describe('<Carousel />', () => {
     expect(onChange).toHaveBeenLastCalledWith(0);
 
     expect(queryAllByRole('tab').length).toBe(4);
+    expect(onChange).toBeCalledTimes(4);
   });
 
   it('should go to specific slide when clicking on indicator button', () => {
@@ -105,6 +106,7 @@ describe('<Carousel />', () => {
     fireEvent.click(indicatorButton);
 
     expect(onChange).toHaveBeenLastCalledWith(2);
+    expect(onChange).toBeCalledTimes(1);
   });
 
   it('should wrap around when reaching start or end slide', () => {
@@ -135,6 +137,8 @@ describe('<Carousel />', () => {
 
     fireEvent.click(nextButton);
     expect(onChange).toHaveBeenLastCalledWith(0);
+
+    expect(onChange).toBeCalledTimes(2);
   });
 
   it('should work with visibleItems prop', () => {
@@ -172,6 +176,7 @@ describe('<Carousel />', () => {
 
     // assert indicator button count
     expect(queryAllByRole('tab').length).toBe(3);
+    expect(onChange).toBeCalledTimes(2);
   });
 
   it('should auto play', async () => {
@@ -209,6 +214,7 @@ describe('<Carousel />', () => {
     });
 
     expect(onChange).toHaveBeenLastCalledWith(0);
+    expect(onChange).toBeCalledTimes(3);
   });
 
   it('should not auto play when mouse is over', async () => {
@@ -252,6 +258,7 @@ describe('<Carousel />', () => {
     });
 
     expect(onChange).toHaveBeenLastCalledWith(2);
+    expect(onChange).toBeCalledTimes(2);
   });
 
   it('should not auto play when focus is inside carousel', async () => {
@@ -294,6 +301,7 @@ describe('<Carousel />', () => {
     });
 
     expect(onChange).toHaveBeenLastCalledWith(2);
+    expect(onChange).toBeCalledTimes(2);
   });
 
   test('when visibleItems:autofit & navigationButtonPosition:side then next / previous buttons should be removed on reaching start/end slide', () => {
@@ -332,6 +340,7 @@ describe('<Carousel />', () => {
 
     expect(queryByRole('button', { name: 'Next Slide' })).not.toBeInTheDocument();
     expect(queryByRole('button', { name: 'Previous Slide' })).toBeInTheDocument();
+    expect(onChange).toBeCalledTimes(3);
   });
 
   test('when visibleItems:autofit & shouldAddStartEndSpacing is undefined then we hide the indicators since they are unnecessary', () => {

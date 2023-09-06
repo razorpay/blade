@@ -22,6 +22,8 @@ type BorderWidth = Readonly<{
   thin: 1;
   /** thick: 1.5(px/rem/pt) */
   thick: 1.5;
+  /** thicker: 2(px/rem/pt) */
+  thicker: 2;
 }>;
 
 export type Border = Readonly<{
@@ -43,5 +45,6 @@ export const border: Border = {
     thinner: 0.5,
     thin: 1,
     thick: 1.5,
+    thicker: 2,
   },
 };

@@ -14,7 +14,7 @@ export type TitleProps = {
   /**
    * Overrides the color of the Title component.
    *
-   * **Note** This takes priority over `type` and `constrast` prop to decide color of title
+   * **Note** This takes priority over `type` and `contrast` prop to decide color of title
    */
   color?: BaseTextProps['color'];
   size?: Extract<BaseTextSizes, 'small' | 'medium' | 'large' | 'xlarge'>;

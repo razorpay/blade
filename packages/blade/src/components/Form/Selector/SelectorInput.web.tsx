@@ -43,7 +43,7 @@ const StyledInput = styled.input<HoverProps>(
       outline: `1px solid ${theme.colors.surface.background.level1.lowContrast}`,
       boxShadow: `0px 0px 0px 4px ${theme.colors.brand.primary[400]}`,
     },
-    '&:hover + div, &:focus + div': {
+    '&:hover + div': {
       ...getHoverStyles({ theme, isChecked, isDisabled, hasError, hoverTokens }),
     },
   }),

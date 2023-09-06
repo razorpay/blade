@@ -5,12 +5,14 @@ import { throwBladeError } from '~utils/logger';
 type CarouselContextProps =
   | (Pick<
       CarouselProps,
-      'visibleItems' | 'carouselItemWidth' | 'shouldAddStartEndSpacing' | 'carouselItemAlignment'
+      'carouselItemWidth' | 'shouldAddStartEndSpacing' | 'carouselItemAlignment'
     > & {
       carouselContainerRef: React.RefObject<HTMLDivElement>;
       setActiveIndicator: (value: React.SetStateAction<number>) => void;
       carouselId: string | null;
       totalNumberOfSlides: number;
+      isResponsive?: boolean;
+      visibleItems?: 1 | 2 | 3;
       /**
        * React native only
        */

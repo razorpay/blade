@@ -12,11 +12,13 @@ import { makeAccessible } from '~utils/makeAccessible';
 type StyledCarouselItemProps = Pick<CarouselProps, 'visibleItems' | 'shouldAddStartEndSpacing'> &
   Pick<CarouselItemProps, 'shouldHaveEndSpacing' | 'shouldHaveStartSpacing'> & {
     isMobile?: boolean;
+    isResponsive?: boolean;
   };
 
 const StyledCarouselItem = styled(BaseBox)<StyledCarouselItemProps>(
   ({
     visibleItems,
+    isResponsive,
     shouldAddStartEndSpacing,
     shouldHaveStartSpacing,
     shouldHaveEndSpacing,
@@ -24,7 +26,6 @@ const StyledCarouselItem = styled(BaseBox)<StyledCarouselItemProps>(
   }) => {
     const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
     const isMobile = matchedDeviceType === 'mobile';
-    const isResponsive = visibleItems === 'autofit';
 
     const gap = isMobile ? theme.spacing[4] : theme.spacing[5];
     const calculatedWidth = `calc(100% / ${visibleItems!} - ${gap}px * (${visibleItems} - 1) / ${visibleItems})`;
@@ -66,6 +67,7 @@ const CarouselItem = ({
   const {
     totalNumberOfSlides,
     visibleItems,
+    isResponsive,
     carouselItemWidth,
     shouldAddStartEndSpacing,
   } = useCarouselContext();
@@ -83,6 +85,7 @@ const CarouselItem = ({
       id={id}
       isMobile={isMobile}
       data-slide-index={index}
+      isResponsive={isResponsive}
       visibleItems={visibleItems}
       maxWidth={carouselItemWidth}
       shouldAddStartEndSpacing={shouldAddStartEndSpacing}
