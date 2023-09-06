@@ -1,7 +1,7 @@
-import tinycolor from 'tinycolor2';
+import tinycolor, { WCAG2Options } from 'tinycolor2';
 import { colors as globalColors, opacity } from '~tokens/global';
 import type { ThemeTokens } from '~tokens/theme';
-import { paymentTheme, overrideTheme } from '~tokens/theme';
+import { paymentTheme, overrideTheme, bankingTheme } from '~tokens/theme';
 import type { DeepPartial } from '~utils/isPartialMatchObjectKeys';
 
 const generateColorPalette = (oldBaseColorString: string): string[] => {
@@ -66,49 +66,27 @@ export const createTheme = ({
     }%, ${opacity[3]})`,
   };
 
-  const foregroundOnBrandColor = tinycolor
+  const WCAG2ContrastOptions: WCAG2Options = {
+    level: 'AAA',
+    size: 'large',
+  };
+
+  // Payment Light Theme Overrides with Branding
+  const foregroundOnBrandColorPaymentLight = tinycolor
     .mostReadable(
       brandColors[900],
       [globalColors.neutral.blueGrayLight[1100], globalColors.neutral.blueGrayLight[50]],
-      {
-        level: 'AAA',
-        size: 'large',
-      },
+      WCAG2ContrastOptions,
     )
     .toHexString();
 
-  const foregroundOnBrandColorBankingDark = tinycolor
-    .mostReadable(
-      brandColors[800],
-      [globalColors.neutral.navyGrayDark[800], globalColors.neutral.navyGrayDark[0]],
-      {
-        level: 'AAA',
-        size: 'large',
-      },
-    )
-    .toHexString();
-
-  const foregroundOnSurface = tinycolor.isReadable(
+  const foregroundOnSurfacePaymentLight = tinycolor.isReadable(
     globalColors.neutral.blueGrayLight[50],
     brandColors[600],
-    {
-      level: 'AAA',
-      size: 'large',
-    },
+    WCAG2ContrastOptions,
   )
     ? brandColors[600]
     : globalColors.neutral.blueGrayLight[1100];
-
-  const foregroundOnSurfaceBankingDark = tinycolor.isReadable(
-    globalColors.neutral.navyGrayDark[1100],
-    brandColors[400],
-    {
-      level: 'AAA',
-      size: 'large',
-    },
-  )
-    ? brandColors[400]
-    : globalColors.neutral.navyGrayDark[0];
 
   const lightThemePaymentsOverrides = {
     colors: {
@@ -124,10 +102,9 @@ export const createTheme = ({
           },
           gray: {
             200: {
-              lowContrast: foregroundOnBrandColor,
+              lowContrast: foregroundOnBrandColorPaymentLight,
             },
           },
-          secondary: { 500: globalColors.chromatic.emerald[500] },
         },
         action: {
           background: {
@@ -136,21 +113,18 @@ export const createTheme = ({
               hover: brandColors[700],
               focus: brandColors[800],
               active: brandColors[900],
-              disabled: globalColors.neutral.blueGrayLight[300],
             },
             secondary: {
               default: brandColors.a00,
               hover: brandColors.a50,
               focus: brandColors.a100,
               active: brandColors.a200,
-              disabled: globalColors.neutral.blueGrayLight.a00,
             },
             tertiary: {
               default: globalColors.neutral.blueGrayLight[0],
               hover: globalColors.neutral.blueGrayLight[50],
               focus: globalColors.neutral.blueGrayLight[100],
               active: globalColors.neutral.blueGrayLight[200],
-              disabled: globalColors.neutral.blueGrayLight[0],
             },
           },
           border: {
@@ -159,59 +133,74 @@ export const createTheme = ({
               hover: brandColors[700],
               focus: brandColors[800],
               active: brandColors[900],
-              disabled: globalColors.neutral.blueGrayLight[300],
             },
             secondary: {
               default: brandColors[600],
               hover: brandColors[600],
               focus: brandColors[600],
               active: brandColors[600],
-              disabled: globalColors.neutral.blueGrayLight[400],
             },
             tertiary: {
               default: globalColors.neutral.blueGrayLight[300],
               hover: globalColors.neutral.blueGrayLight[300],
               focus: globalColors.neutral.blueGrayLight[300],
               active: globalColors.neutral.blueGrayLight[300],
-              disabled: globalColors.neutral.blueGrayLight[300],
             },
           },
           text: {
             primary: {
-              default: foregroundOnBrandColor,
-              hover: globalColors.neutral.blueGrayLight[0],
-              focus: globalColors.neutral.blueGrayLight[0],
-              active: globalColors.neutral.blueGrayLight[0],
-              disabled: globalColors.neutral.blueGrayLight[600],
+              default: foregroundOnBrandColorPaymentLight,
+              hover: foregroundOnBrandColorPaymentLight,
+              focus: foregroundOnBrandColorPaymentLight,
+              active: foregroundOnBrandColorPaymentLight,
             },
             secondary: {
-              default: foregroundOnSurface,
-              hover: brandColors[600],
-              focus: brandColors[600],
-              active: brandColors[600],
-              disabled: globalColors.neutral.blueGrayLight[400],
+              default: foregroundOnSurfacePaymentLight,
+              hover: foregroundOnSurfacePaymentLight,
+              focus: foregroundOnSurfacePaymentLight,
+              active: foregroundOnSurfacePaymentLight,
             },
           },
           icon: {
             primary: {
-              default: foregroundOnBrandColor,
-              hover: foregroundOnBrandColor,
-              focus: foregroundOnBrandColor,
-              active: foregroundOnBrandColor,
-              disabled: globalColors.neutral.blueGrayLight[600],
+              default: foregroundOnBrandColorPaymentLight,
+              hover: foregroundOnBrandColorPaymentLight,
+              focus: foregroundOnBrandColorPaymentLight,
+              active: foregroundOnBrandColorPaymentLight,
             },
             secondary: {
-              default: foregroundOnSurface,
-              hover: foregroundOnSurface,
-              focus: foregroundOnSurface,
-              active: foregroundOnSurface,
-              disabled: globalColors.neutral.blueGrayLight[400],
+              default: foregroundOnSurfacePaymentLight,
+              hover: foregroundOnSurfacePaymentLight,
+              focus: foregroundOnSurfacePaymentLight,
+              active: foregroundOnSurfacePaymentLight,
             },
           },
         },
       },
     },
   };
+
+  const brandedPaymentLightThemeTokens = overrideTheme({
+    baseThemeTokens: paymentTheme,
+    overrides: lightThemePaymentsOverrides,
+  });
+
+  // Banking Dark Theme Overrides with Branding
+  const foregroundOnBrandColorBankingDark = tinycolor
+    .mostReadable(
+      brandColors[800],
+      [globalColors.neutral.navyGrayDark[800], globalColors.neutral.navyGrayDark[0]],
+      WCAG2ContrastOptions,
+    )
+    .toHexString();
+
+  const foregroundOnSurfaceBankingDark = tinycolor.isReadable(
+    globalColors.neutral.navyGrayDark[1100],
+    brandColors[400],
+    WCAG2ContrastOptions,
+  )
+    ? brandColors[400]
+    : globalColors.neutral.navyGrayDark[0];
 
   const darkThemeBankingOverrides = {
     colors: {
@@ -227,10 +216,9 @@ export const createTheme = ({
           },
           gray: {
             200: {
-              lowContrast: foregroundOnBrandColorBankingDark, //globalColors.neutral.navyGrayDark[800],
+              lowContrast: foregroundOnBrandColorBankingDark,
             },
           },
-          secondary: { 500: globalColors.chromatic.cider[600] },
         },
         action: {
           background: {
@@ -263,18 +251,16 @@ export const createTheme = ({
           },
           text: {
             primary: {
-              default: foregroundOnBrandColorBankingDark, // ?globalColors.neutral.navyGrayDark[0],
-              // hover: globalColors.neutral.blueGrayLight[0],
-              // focus: globalColors.neutral.blueGrayLight[0],
-              // active: globalColors.neutral.blueGrayLight[0],
-              // disabled: globalColors.neutral.blueGrayLight[600],
+              default: foregroundOnBrandColorBankingDark,
+              hover: foregroundOnBrandColorBankingDark,
+              focus: foregroundOnBrandColorBankingDark,
+              active: foregroundOnBrandColorBankingDark,
             },
             secondary: {
-              default: foregroundOnSurfaceBankingDark, // ?globalColors.chromatic.azure[400],
-              hover: brandColors[400],
-              focus: brandColors[400],
-              active: brandColors[400],
-              disabled: globalColors.neutral.blueGrayLight[400],
+              default: foregroundOnSurfaceBankingDark,
+              hover: foregroundOnSurfaceBankingDark,
+              focus: foregroundOnSurfaceBankingDark,
+              active: foregroundOnSurfaceBankingDark,
             },
           },
           icon: {
@@ -296,15 +282,21 @@ export const createTheme = ({
     },
   };
 
+  const brandedBankingDarkThemeTokens = overrideTheme({
+    baseThemeTokens: bankingTheme,
+    overrides: darkThemeBankingOverrides,
+  });
+
+  // merge theme with light colors from payment theme and dark colors from banking theme
   const brandedThemeTokens = overrideTheme({
     baseThemeTokens: paymentTheme,
     overrides: {
       colors: {
         onLight: {
-          ...lightThemePaymentsOverrides.colors.onLight,
+          ...brandedPaymentLightThemeTokens.colors.onLight,
         },
         onDark: {
-          ...darkThemeBankingOverrides.colors.onDark,
+          ...brandedBankingDarkThemeTokens.colors.onDark,
         },
       },
     },
