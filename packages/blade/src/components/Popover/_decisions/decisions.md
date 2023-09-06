@@ -38,8 +38,8 @@ The popover component is used to provide context as well as enable users to take
 | --------------- | ---------------------------------------------------------------------------------------------------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | headerTitle     | `string`                                                                                                               | `undefined` | Title of the header                                                                                                                   | ✅        |
 | headerLeading   | `React.ReactNode`                                                                                                      | `undefined` | Leading element to be placed before header title, recommended components are Icon or Asset. The icon's size will be set to large      |          |
-| footerContent   | `React.ReactNode`                                                                                                      | `undefined` | Slottable content of the footer                                                                                                       |          |
-| content         | `string`                                                                                                               | `undefined` | Content of the popover                                                                                                                |          |
+| footer   | `React.ReactNode`                                                                                                      | `undefined` | Slottable content of the footer                                                                                                       |          |
+| content         | `React.ReactNode`                                                                                                               | `undefined` | Content of the popover (can be any interactive or non-interactive elements)                                                                                                                |          |
 | children        | `React.ReactNode`                                                                                                      | `undefined` | Trigger component for popover, Accepts any interactive element or icons                                                               | ✅        |
 | placement       | `top, top-start, top-end, left, left-start, left-end, right, right-start, right-end, bottom, bottom-start, bottom-end` | `top`       | Placement of popver, the popver avoid collision with the edge of the screen and flip to the oppisite side even when placement is set. |          |
 | isOpen          | `boolean`                                                                                                              | `undefined` | Controlled state of the popover                                                                                                       |          |
@@ -143,7 +143,7 @@ import { Popover, PopoverInteractiveWrapper } from '@razorpay/blade';
 
 Users will be able to use their own custom interactive components as triggers:
 
-To make custom elements work the components needs to expose it's inner ref, this can be achived by using `React.forwardRef`:
+To make custom elements work, the component needs to expose its inner ref, this can be achieved by using `React.forwardRef`:
 
 ```jsx
 import type { PopoverTriggerProps } from "@razorpay/blade/components";
@@ -185,7 +185,6 @@ Guided Popovers will have additional features like:
 - Ability to add multiple steps in a flow without juggling with state management
 - Mask & backdrop support
 - Proper guidelines on how to use the component
-- etc
 
 This will be a separate component and will be released in future, since the scope & complexity of Guided Popovers will be much larger than normal Popovers.
 
@@ -234,7 +233,7 @@ How should the footer API look like?
 ```jsx
 <Popover
   content={<Text>Any content</Text>}
-  footerContent={
+  footer={
     <Box display="flex">
       <Button>Primary me</Button>
       <Button variant="secondary">Secondary me</Button>
@@ -250,7 +249,7 @@ How should the footer API look like?
 ```jsx
 <Popover
   content={<Text>Any content</Text>}
-  footerContent={<Text>Slotted content of Footer</Text>}
+  footer={<Text>Slotted content of Footer</Text>}
   footerActions={{
     primary: {
       text: "Primary me",
