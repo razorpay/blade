@@ -6,9 +6,18 @@ import bankingTheme from './bankingTheme';
 import paymentTheme from './paymentTheme';
 import { colors as globalColors, opacity } from '~tokens/global';
 import type { DeepPartial } from '~utils/isPartialMatchObjectKeys';
+import { throwBladeError } from '~utils/logger';
 
-const generateColorPalette = (oldBaseColorString: ColorInput): string[] => {
-  const oldBaseColor = tinycolor(oldBaseColorString);
+const generateColorPalette = (oldBaseColorInput: ColorInput): string[] => {
+  const oldBaseColor = tinycolor(oldBaseColorInput);
+  if (__DEV__) {
+    if (!oldBaseColor.isValid())
+      throwBladeError({
+        message: 'Invalid brandColor passed',
+        moduleName: 'createTheme',
+      });
+  }
+
   const palette = [oldBaseColor.toHexString()]; // Include the original color
   const baseColor = tinycolor(oldBaseColor.toHexString());
   const brightness = tinycolor(oldBaseColor).getBrightness();
