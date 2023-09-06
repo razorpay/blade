@@ -89,10 +89,14 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
     <StyledBaseInputWrapper
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={ref as any}
-      style={{
-        ...maxHeightStyleObject,
-        ...animatedStyleObject,
-      }}
+      style={
+        isDropdownTrigger
+          ? {
+              ...maxHeightStyleObject,
+              ...animatedStyleObject,
+            }
+          : {}
+      }
       isDropdownTrigger={isDropdownTrigger}
       {...rest}
     >

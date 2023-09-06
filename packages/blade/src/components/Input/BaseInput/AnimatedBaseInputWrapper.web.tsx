@@ -101,13 +101,16 @@ const StyledAnimatedBaseInputWrapper = styled(StyledBaseInputWrapper)<{
   transition?: FlattenSimpleInterpolation;
   maxTagRows: BaseInputWrapperProps['maxTagRows'];
   showAllTags: BaseInputWrapperProps['showAllTags'];
-}>(
-  (props) => css`
-    ${props.transition};
-    max-height: ${makeSize(
-      getMaxHeight({ maxTagRows: props.maxTagRows, showAllTags: props.showAllTags }),
-    )};
-  `,
+  isDropdownTrigger: BaseInputWrapperProps['isDropdownTrigger'];
+}>((props) =>
+  props.isDropdownTrigger
+    ? css`
+        ${props.transition};
+        max-height: ${makeSize(
+          getMaxHeight({ maxTagRows: props.maxTagRows, showAllTags: props.showAllTags }),
+        )};
+      `
+    : undefined,
 );
 
 const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
