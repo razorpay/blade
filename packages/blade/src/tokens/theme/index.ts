@@ -7,3 +7,4 @@ export type {
   ColorsWithModes,
   ThemeTokens,
 } from './theme';
+export { createTheme } from './createTheme';

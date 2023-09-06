@@ -1,7 +1,10 @@
-import tinycolor, { WCAG2Options } from 'tinycolor2';
+import tinycolor from 'tinycolor2';
+import type { WCAG2Options } from 'tinycolor2';
+import type { ThemeTokens } from './theme';
+import overrideTheme from './overrideTheme';
+import bankingTheme from './bankingTheme';
+import paymentTheme from './paymentTheme';
 import { colors as globalColors, opacity } from '~tokens/global';
-import type { ThemeTokens } from '~tokens/theme';
-import { paymentTheme, overrideTheme, bankingTheme } from '~tokens/theme';
 import type { DeepPartial } from '~utils/isPartialMatchObjectKeys';
 
 const generateColorPalette = (oldBaseColorString: string): string[] => {
@@ -33,7 +36,7 @@ const generateColorPalette = (oldBaseColorString: string): string[] => {
 
 export const createTheme = ({
   brandColor,
-  overrides,
+  overrides = {},
 }: {
   brandColor: string;
   overrides?: DeepPartial<ThemeTokens>;
@@ -299,6 +302,7 @@ export const createTheme = ({
           ...brandedBankingDarkThemeTokens.colors.onDark,
         },
       },
+      ...overrides,
     },
   });
 

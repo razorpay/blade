@@ -44,6 +44,7 @@ const useSandpackSetup = ({
 
   const themeTokenName = docsContext?.globals?.themeTokenName ?? 'paymentTheme';
   const colorScheme = docsContext?.globals?.colorScheme ?? 'light';
+  const brandColor = docsContext?.globals?.brandColor;
 
   return {
     template: 'react-ts',
@@ -54,6 +55,7 @@ const useSandpackSetup = ({
   
             import { BladeProvider, Box, Theme } from "@razorpay/blade/components";
             import { ${themeTokenName} } from "@razorpay/blade/tokens";
+            import { createTheme } from "@razorpay/blade/utils";
             import "@fontsource/lato/400.css";
             import "@fontsource/lato/700.css";
             
@@ -75,6 +77,15 @@ const useSandpackSetup = ({
               throw new Error("root is null");
             }
             const root = createRoot(rootElement);
+            
+            const getTheme = () => {
+              if(${brandColor}){
+                return createTheme({
+                  brandColor: "${brandColor}",
+                });
+              }
+              return ${themeTokenName};
+            }
 
             root.render(
               <StrictMode>
