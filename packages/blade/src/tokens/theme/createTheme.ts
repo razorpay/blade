@@ -1,5 +1,5 @@
 import tinycolor from 'tinycolor2';
-import type { WCAG2Options } from 'tinycolor2';
+import type { WCAG2Options, ColorInput } from 'tinycolor2';
 import type { ThemeTokens } from './theme';
 import overrideTheme from './overrideTheme';
 import bankingTheme from './bankingTheme';
@@ -7,7 +7,7 @@ import paymentTheme from './paymentTheme';
 import { colors as globalColors, opacity } from '~tokens/global';
 import type { DeepPartial } from '~utils/isPartialMatchObjectKeys';
 
-const generateColorPalette = (oldBaseColorString: string): string[] => {
+const generateColorPalette = (oldBaseColorString: ColorInput): string[] => {
   const oldBaseColor = tinycolor(oldBaseColorString);
   const palette = [oldBaseColor.toHexString()]; // Include the original color
   const baseColor = tinycolor(oldBaseColor.toHexString());
@@ -38,7 +38,7 @@ export const createTheme = ({
   brandColor,
   overrides = {},
 }: {
-  brandColor: string;
+  brandColor: ColorInput;
   overrides?: DeepPartial<ThemeTokens>;
 }): ThemeTokens => {
   const colorPalette = generateColorPalette(brandColor);
