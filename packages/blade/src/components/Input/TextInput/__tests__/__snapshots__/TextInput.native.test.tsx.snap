@@ -194,150 +194,72 @@ exports[`<TextInput /> should render 1`] = `
               "borderTopRightRadius": 2,
               "display": "flex",
               "flexDirection": "row",
-              "height": "auto",
               "position": "relative",
               "width": "100%",
             },
+            {},
           ]
         }
       >
-        <View
-          data-blade-component="base-box"
-          display="flex"
-          flexDirection="row"
-          justifyContent="flex-start"
-          maxHeight="145px"
-          minHeight="36px"
+        <TextInput
+          accessibilityDescribedBy=""
+          accessibilityInvalid={false}
+          accessibilityRequired={false}
+          accessibilityState={
+            {
+              "disabled": false,
+              "expanded": undefined,
+            }
+          }
+          accessible={true}
+          autoCompleteType="off"
+          data-blade-component="styled-base-input"
+          editable={true}
+          hasTags={false}
+          id="textinput-1-input-2"
+          interactionElement={null}
+          isFocused={false}
+          isTextArea={false}
+          keyboardType="default"
+          multiline={false}
+          onBlur={[Function]}
+          onChangeText={[Function]}
+          onEndEditing={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          onSubmitEditing={[Function]}
+          returnKeyType="default"
+          secureTextEntry={false}
           style={
             [
               {
-                "display": "flex",
+                "backgroundColor": "transparent",
+                "color": "hsla(216, 27%, 36%, 1)",
                 "flexBasis": 0,
-                "flexDirection": "row",
                 "flexGrow": 1,
                 "flexShrink": 1,
-                "justifyContent": "flex-start",
+                "fontFamily": "Lato",
+                "fontSize": 14,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "height": 36,
                 "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
                 "marginTop": 0,
-                "maxHeight": 145,
                 "minHeight": 36,
-                "paddingLeft": 0,
+                "paddingBottom": 8,
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 8,
+                "textAlignVertical": "top",
+                "textDecorationLine": "none",
+                "width": "100%",
               },
             ]
           }
-        >
-          <RCTScrollView
-            contentContainerStyle={
-              {
-                "flexWrap": "wrap",
-                "position": "relative",
-              }
-            }
-            horizontal={true}
-            onContentSizeChange={[Function]}
-            onScrollBeginDrag={[Function]}
-            onScrollEndDrag={[Function]}
-            showsHorizontalScrollIndicator={false}
-            style={
-              [
-                {
-                  "display": "flex",
-                  "flexDirection": "column",
-                },
-              ]
-            }
-          >
-            <View>
-              <View
-                data-blade-component="base-box"
-                height="100%"
-                onTouchEndCapture={[Function]}
-                position="absolute"
-                style={
-                  [
-                    {
-                      "height": "100%",
-                      "position": "absolute",
-                      "width": "100%",
-                    },
-                  ]
-                }
-                width="100%"
-              />
-              <View
-                data-blade-component="base-box"
-                style={
-                  [
-                    {
-                      "width": "100%",
-                    },
-                  ]
-                }
-                width="100%"
-              >
-                <TextInput
-                  accessibilityDescribedBy=""
-                  accessibilityInvalid={false}
-                  accessibilityRequired={false}
-                  accessibilityState={
-                    {
-                      "disabled": false,
-                      "expanded": undefined,
-                    }
-                  }
-                  accessible={true}
-                  autoCompleteType="off"
-                  data-blade-component="styled-base-input"
-                  editable={true}
-                  hasTags={false}
-                  id="textinput-1-input-2"
-                  interactionElement={null}
-                  isFocused={false}
-                  isTextArea={false}
-                  keyboardType="default"
-                  multiline={false}
-                  onBlur={[Function]}
-                  onChangeText={[Function]}
-                  onEndEditing={[Function]}
-                  onFocus={[Function]}
-                  onKeyPress={[Function]}
-                  onSubmitEditing={[Function]}
-                  returnKeyType="default"
-                  secureTextEntry={false}
-                  style={
-                    [
-                      {
-                        "backgroundColor": "transparent",
-                        "color": "hsla(216, 27%, 36%, 1)",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Lato",
-                        "fontSize": 14,
-                        "fontStyle": "normal",
-                        "fontWeight": "400",
-                        "height": 36,
-                        "marginBottom": 0,
-                        "marginLeft": 0,
-                        "marginRight": 0,
-                        "marginTop": 0,
-                        "minHeight": 36,
-                        "paddingBottom": 8,
-                        "paddingLeft": 12,
-                        "paddingRight": 12,
-                        "paddingTop": 8,
-                        "textAlignVertical": "top",
-                        "textDecorationLine": "none",
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                  textContentType="none"
-                />
-              </View>
-            </View>
-          </RCTScrollView>
-        </View>
+          textContentType="none"
+        />
         <View
           style={
             [
@@ -583,10 +505,10 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
               "borderTopRightRadius": 2,
               "display": "flex",
               "flexDirection": "row",
-              "height": "auto",
               "position": "relative",
               "width": "100%",
             },
+            {},
           ]
         }
       >
@@ -736,148 +658,70 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
             </Text>
           </View>
         </View>
-        <View
-          data-blade-component="base-box"
-          display="flex"
-          flexDirection="row"
-          justifyContent="flex-start"
-          maxHeight="145px"
-          minHeight="36px"
+        <TextInput
+          accessibilityDescribedBy=""
+          accessibilityInvalid={false}
+          accessibilityRequired={false}
+          accessibilityState={
+            {
+              "disabled": false,
+              "expanded": undefined,
+            }
+          }
+          accessible={true}
+          autoCapitalize="none"
+          autoCompleteType="off"
+          data-blade-component="styled-base-input"
+          editable={true}
+          hasTags={false}
+          id="textinput-31-input-32"
+          interactionElement={null}
+          isFocused={false}
+          isTextArea={false}
+          keyboardType="url"
+          leadingIcon={[Function]}
+          multiline={false}
+          onBlur={[Function]}
+          onChangeText={[Function]}
+          onEndEditing={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          onSubmitEditing={[Function]}
+          placeholder="something"
+          prefix="https://"
+          returnKeyType="go"
+          secureTextEntry={false}
           style={
             [
               {
-                "display": "flex",
+                "backgroundColor": "transparent",
+                "color": "hsla(216, 27%, 36%, 1)",
                 "flexBasis": 0,
-                "flexDirection": "row",
                 "flexGrow": 1,
                 "flexShrink": 1,
-                "justifyContent": "flex-start",
+                "fontFamily": "Lato",
+                "fontSize": 14,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "height": 36,
                 "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
                 "marginTop": 0,
-                "maxHeight": 145,
                 "minHeight": 36,
-                "paddingLeft": 0,
+                "paddingBottom": 8,
+                "paddingLeft": 8,
+                "paddingRight": 8,
+                "paddingTop": 8,
+                "textAlignVertical": "top",
+                "textDecorationLine": "none",
+                "width": "100%",
               },
             ]
           }
-        >
-          <RCTScrollView
-            contentContainerStyle={
-              {
-                "flexWrap": "wrap",
-                "position": "relative",
-              }
-            }
-            horizontal={true}
-            onContentSizeChange={[Function]}
-            onScrollBeginDrag={[Function]}
-            onScrollEndDrag={[Function]}
-            showsHorizontalScrollIndicator={false}
-            style={
-              [
-                {
-                  "display": "flex",
-                  "flexDirection": "column",
-                },
-              ]
-            }
-          >
-            <View>
-              <View
-                data-blade-component="base-box"
-                height="100%"
-                onTouchEndCapture={[Function]}
-                position="absolute"
-                style={
-                  [
-                    {
-                      "height": "100%",
-                      "position": "absolute",
-                      "width": "100%",
-                    },
-                  ]
-                }
-                width="100%"
-              />
-              <View
-                data-blade-component="base-box"
-                style={
-                  [
-                    {
-                      "width": "100%",
-                    },
-                  ]
-                }
-                width="100%"
-              >
-                <TextInput
-                  accessibilityDescribedBy=""
-                  accessibilityInvalid={false}
-                  accessibilityRequired={false}
-                  accessibilityState={
-                    {
-                      "disabled": false,
-                      "expanded": undefined,
-                    }
-                  }
-                  accessible={true}
-                  autoCapitalize="none"
-                  autoCompleteType="off"
-                  data-blade-component="styled-base-input"
-                  editable={true}
-                  hasTags={false}
-                  id="textinput-31-input-32"
-                  interactionElement={null}
-                  isFocused={false}
-                  isTextArea={false}
-                  keyboardType="url"
-                  leadingIcon={[Function]}
-                  multiline={false}
-                  onBlur={[Function]}
-                  onChangeText={[Function]}
-                  onEndEditing={[Function]}
-                  onFocus={[Function]}
-                  onKeyPress={[Function]}
-                  onSubmitEditing={[Function]}
-                  placeholder="something"
-                  prefix="https://"
-                  returnKeyType="go"
-                  secureTextEntry={false}
-                  style={
-                    [
-                      {
-                        "backgroundColor": "transparent",
-                        "color": "hsla(216, 27%, 36%, 1)",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Lato",
-                        "fontSize": 14,
-                        "fontStyle": "normal",
-                        "fontWeight": "400",
-                        "height": 36,
-                        "marginBottom": 0,
-                        "marginLeft": 0,
-                        "marginRight": 0,
-                        "marginTop": 0,
-                        "minHeight": 36,
-                        "paddingBottom": 8,
-                        "paddingLeft": 8,
-                        "paddingRight": 8,
-                        "paddingTop": 8,
-                        "textAlignVertical": "top",
-                        "textDecorationLine": "none",
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                  suffix=".com"
-                  textContentType="none"
-                />
-              </View>
-            </View>
-          </RCTScrollView>
-        </View>
+          suffix=".com"
+          textContentType="none"
+        />
         <View
           alignItems="center"
           alignSelf="stretch"

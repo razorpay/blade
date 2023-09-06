@@ -191,10 +191,6 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   -moz-scroll-snap-points-y: repeat(100%);
   -ms-scroll-snap-points-y: repeat(100%);
   scroll-snap-points-y: repeat(100%);
-  -webkit-scroll-behavior: smooth;
-  -moz-scroll-behavior: smooth;
-  -ms-scroll-behavior: smooth;
-  scroll-behavior: smooth;
   -ms-overflow-style: none;
   -webkit-scrollbar-width: none;
   -moz-scrollbar-width: none;
@@ -592,10 +588,6 @@ exports[`Carousel Snapshots should render 1`] = `
   -moz-scroll-snap-points-y: repeat(100%);
   -ms-scroll-snap-points-y: repeat(100%);
   scroll-snap-points-y: repeat(100%);
-  -webkit-scroll-behavior: smooth;
-  -moz-scroll-behavior: smooth;
-  -ms-scroll-behavior: smooth;
-  scroll-behavior: smooth;
   -ms-overflow-style: none;
   -webkit-scrollbar-width: none;
   -moz-scrollbar-width: none;
@@ -948,10 +940,6 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
   -moz-scroll-snap-points-y: repeat(100%);
   -ms-scroll-snap-points-y: repeat(100%);
   scroll-snap-points-y: repeat(100%);
-  -webkit-scroll-behavior: smooth;
-  -moz-scroll-behavior: smooth;
-  -ms-scroll-behavior: smooth;
-  scroll-behavior: smooth;
   -ms-overflow-style: none;
   -webkit-scrollbar-width: none;
   -moz-scrollbar-width: none;
@@ -1317,10 +1305,6 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
   -moz-scroll-snap-points-y: repeat(100%);
   -ms-scroll-snap-points-y: repeat(100%);
   scroll-snap-points-y: repeat(100%);
-  -webkit-scroll-behavior: smooth;
-  -moz-scroll-behavior: smooth;
-  -ms-scroll-behavior: smooth;
-  scroll-behavior: smooth;
   -ms-overflow-style: none;
   -webkit-scrollbar-width: none;
   -moz-scrollbar-width: none;
@@ -1713,10 +1697,6 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   -moz-scroll-snap-points-y: repeat(100%);
   -ms-scroll-snap-points-y: repeat(100%);
   scroll-snap-points-y: repeat(100%);
-  -webkit-scroll-behavior: smooth;
-  -moz-scroll-behavior: smooth;
-  -ms-scroll-behavior: smooth;
-  scroll-behavior: smooth;
   -ms-overflow-style: none;
   -webkit-scrollbar-width: none;
   -moz-scrollbar-width: none;
@@ -2139,10 +2119,6 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
   -moz-scroll-snap-points-y: repeat(100%);
   -ms-scroll-snap-points-y: repeat(100%);
   scroll-snap-points-y: repeat(100%);
-  -webkit-scroll-behavior: smooth;
-  -moz-scroll-behavior: smooth;
-  -ms-scroll-behavior: smooth;
-  scroll-behavior: smooth;
   -ms-overflow-style: none;
   -webkit-scrollbar-width: none;
   -moz-scrollbar-width: none;

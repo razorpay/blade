@@ -132,5 +132,15 @@ describe('<Amount />', () => {
     expect(formatAmountWithSuffix({ value: 10000000, currency: 'MYR', suffix: 'none' })).toBe(
       '10,000,000',
     );
+    // Related issue - https://github.com/razorpay/blade/issues/1572
+    expect(formatAmountWithSuffix({ value: 2.07, currency: 'INR', suffix: 'decimals' })).toBe(
+      '2.07',
+    );
+    expect(formatAmountWithSuffix({ value: 2.077, currency: 'INR', suffix: 'decimals' })).toBe(
+      '2.08',
+    );
+    expect(formatAmountWithSuffix({ value: 2.3, currency: 'INR', suffix: 'decimals' })).toBe(
+      '2.30',
+    );
   });
 });

@@ -18,8 +18,25 @@ const StyledBaseInputWrapper = styled(Animated.View)<BaseInputWrapperProps>((pro
     isDisabled: props.isDisabled,
     validationState: props.validationState,
     isTextArea: props.isTextArea,
+    isDropdownTrigger: props.isDropdownTrigger,
   }),
 }));
+
+const getMaxHeight = ({
+  maxTagRows,
+  showAllTags,
+}: Pick<BaseInputWrapperProps, 'maxTagRows' | 'showAllTags'>): number => {
+  if (maxTagRows === 'single') {
+    return BASEINPUT_WRAPPER_MIN_HEIGHT;
+  }
+
+  if (maxTagRows === 'multiple') {
+    return BASEINPUT_WRAPPER_MAX_HEIGHT;
+  }
+
+  // In expandable, max-height depends on the state
+  return showAllTags ? BASEINPUT_WRAPPER_MAX_HEIGHT : BASEINPUT_WRAPPER_MIN_HEIGHT;
+};
 
 const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
   HTMLDivElement,
@@ -28,13 +45,17 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
     setShowAllTagsWithAnimation: (showAllTagsWithAnimation: boolean) => void;
   }
 > = (
-  { showAllTags, setShowAllTagsWithAnimation, children, maxTagRows, ...rest },
+  { showAllTags, setShowAllTagsWithAnimation, children, maxTagRows, isDropdownTrigger, ...rest },
   ref,
 ): React.ReactElement => {
   const { theme } = useTheme();
   const sharedHeight = useSharedValue(BASEINPUT_WRAPPER_MIN_HEIGHT); // Initial max-width value
 
   React.useEffect(() => {
+    if (!isDropdownTrigger) {
+      return;
+    }
+
     sharedHeight.value = withTiming(
       showAllTags ? BASEINPUT_WRAPPER_MAX_HEIGHT : BASEINPUT_WRAPPER_MIN_HEIGHT,
       {
@@ -56,11 +77,27 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
     };
   });
 
+  const animatedStyleObject = maxTagRows === 'expandable' ? animatedStyle : {};
+  const maxHeightStyleObject = {
+    maxHeight: getMaxHeight({
+      showAllTags,
+      maxTagRows,
+    }),
+  };
+
   return (
     <StyledBaseInputWrapper
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={ref as any}
-      style={maxTagRows === 'expandable' ? animatedStyle : undefined}
+      style={
+        isDropdownTrigger
+          ? {
+              ...maxHeightStyleObject,
+              ...animatedStyleObject,
+            }
+          : {}
+      }
+      isDropdownTrigger={isDropdownTrigger}
       {...rest}
     >
       {children}

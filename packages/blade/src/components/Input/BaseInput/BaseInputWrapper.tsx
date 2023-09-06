@@ -8,7 +8,12 @@ import type { ContainerElementType } from '~utils/types';
 
 type BaseInputWrapperProps = Pick<
   BaseInputProps,
-  'isDisabled' | 'validationState' | 'showAllTags' | 'maxTagRows' | 'setInputWrapperRef'
+  | 'isDisabled'
+  | 'validationState'
+  | 'showAllTags'
+  | 'maxTagRows'
+  | 'setInputWrapperRef'
+  | 'isDropdownTrigger'
 > & {
   isFocused?: boolean;
   isLabelLeftPositioned?: boolean;

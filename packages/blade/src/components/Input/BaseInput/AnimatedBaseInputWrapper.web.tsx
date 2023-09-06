@@ -40,13 +40,12 @@ const collapseTransition = css`
 
 const noTransition = css`
   animation: none;
-  max-height: ${makeSize(BASEINPUT_WRAPPER_MAX_HEIGHT)};
 `;
 
 const StyledBaseInputWrapper = styled(BaseBox)<
   Pick<
     BaseInputWrapperProps,
-    'currentInteraction' | 'isDisabled' | 'validationState' | 'isTextArea'
+    'currentInteraction' | 'isDisabled' | 'validationState' | 'isTextArea' | 'isDropdownTrigger'
   >
 >((props) => ({
   ...getInputBackgroundAndBorderStyles({
@@ -55,6 +54,7 @@ const StyledBaseInputWrapper = styled(BaseBox)<
     isDisabled: props.isDisabled,
     validationState: props.validationState,
     isTextArea: props.isTextArea,
+    isDropdownTrigger: props.isDropdownTrigger,
   }),
   '&:hover': {
     ...getInputBackgroundAndBorderStyles({
@@ -63,6 +63,7 @@ const StyledBaseInputWrapper = styled(BaseBox)<
       isFocused: props.currentInteraction === 'active',
       isDisabled: props.isDisabled,
       validationState: props.validationState,
+      isDropdownTrigger: props.isDropdownTrigger,
     }),
     transitionProperty: 'background-color',
     transitionDuration: castWebType(makeMotionTime(props.theme.motion.duration.xquick)),
@@ -74,17 +75,42 @@ const StyledBaseInputWrapper = styled(BaseBox)<
       isFocused: props.currentInteraction === 'active',
       isDisabled: props.isDisabled,
       validationState: props.validationState,
+      isDropdownTrigger: props.isDropdownTrigger,
     }),
   },
 }));
 
+const getMaxHeight = ({
+  maxTagRows,
+  showAllTags,
+}: Pick<BaseInputWrapperProps, 'maxTagRows' | 'showAllTags'>): number => {
+  if (maxTagRows === 'single') {
+    return BASEINPUT_WRAPPER_MIN_HEIGHT;
+  }
+
+  if (maxTagRows === 'multiple') {
+    return BASEINPUT_WRAPPER_MAX_HEIGHT;
+  }
+
+  // In expandable, max-height depends on the state
+  return showAllTags ? BASEINPUT_WRAPPER_MAX_HEIGHT : BASEINPUT_WRAPPER_MIN_HEIGHT;
+};
+
 // Styled component with animation
 const StyledAnimatedBaseInputWrapper = styled(StyledBaseInputWrapper)<{
   transition?: FlattenSimpleInterpolation;
-}>(
-  (props) => css`
-    ${props.transition};
-  `,
+  maxTagRows: BaseInputWrapperProps['maxTagRows'];
+  showAllTags: BaseInputWrapperProps['showAllTags'];
+  isDropdownTrigger: BaseInputWrapperProps['isDropdownTrigger'];
+}>((props) =>
+  props.isDropdownTrigger
+    ? css`
+        ${props.transition};
+        max-height: ${makeSize(
+          getMaxHeight({ maxTagRows: props.maxTagRows, showAllTags: props.showAllTags }),
+        )};
+      `
+    : undefined,
 );
 
 const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
@@ -93,7 +119,7 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
     showAllTags?: boolean;
   }
 > = (
-  { showAllTags, setShowAllTagsWithAnimation, maxTagRows, ...rest },
+  { showAllTags, setShowAllTagsWithAnimation, maxTagRows, isDropdownTrigger, ...rest },
   ref,
 ): React.ReactElement => {
   return (
@@ -108,6 +134,9 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
           ? expandTransition
           : collapseTransition
       }
+      isDropdownTrigger={isDropdownTrigger}
+      showAllTags={showAllTags}
+      maxTagRows={maxTagRows}
       onAnimationEnd={(e) => {
         if (!showAllTags && e.animationName === collapseAnimation.getName()) {
           setShowAllTagsWithAnimation?.(false);

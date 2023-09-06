@@ -20,12 +20,13 @@ export type BaseInputTagSlotProps = {
   maxTagRows: BaseInputProps['maxTagRows'];
   visibleTagsCountRef: React.MutableRefObject<number>;
   children: React.ReactElement;
+  isDropdownTrigger: BaseInputProps['isDropdownTrigger'];
   inputWrapperRef: InputWrapperRef;
 };
 
 export type BaseInputWrapperProps = Pick<
   BaseInputProps,
-  'isDisabled' | 'validationState' | 'showAllTags' | 'maxTagRows'
+  'isDisabled' | 'validationState' | 'showAllTags' | 'maxTagRows' | 'isDropdownTrigger'
 > & {
   isFocused?: boolean;
   isLabelLeftPositioned?: boolean;
@@ -79,6 +80,7 @@ export type StyledBaseInputProps = {
   | 'isPopupExpanded'
   | 'shouldIgnoreBlurAnimation'
   | 'autoCapitalize'
+  | 'isDropdownTrigger'
 >;
 
 export { StyledBaseInput } from './StyledBaseInput.web';

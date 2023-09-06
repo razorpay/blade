@@ -9,6 +9,7 @@ export * from './Button/IconButton';
 export * from './Counter';
 export * from './Checkbox';
 export * from './Carousel';
+export * from './Chip';
 export * from './Divider';
 export * from './Dropdown';
 export * from './Icons';

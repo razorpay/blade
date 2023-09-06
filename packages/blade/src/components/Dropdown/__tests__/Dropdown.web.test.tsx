@@ -480,6 +480,9 @@ describe('<Dropdown />', () => {
       );
     };
 
+    // JSDOM doesn't calculate layouts so always return 0 https://github.com/testing-library/react-testing-library/issues/353#issuecomment-481248489
+    Object.defineProperty(HTMLElement.prototype, 'clientWidth', { configurable: true, value: 500 });
+
     const user = userEvent.setup();
     const { getByRole, queryAllByLabelText } = renderWithTheme(<ControlledDropdown />);
 
@@ -495,6 +498,7 @@ describe('<Dropdown />', () => {
     expect(queryAllByLabelText('Close Bangalore tag')?.[0]).toBeInTheDocument();
 
     await user.click(getByRole('button', { name: 'Select Bangalore' }));
+    Object.defineProperty(HTMLElement.prototype, 'clientWidth', { configurable: true, value: 0 });
   });
 
   it('should accept testID', async () => {

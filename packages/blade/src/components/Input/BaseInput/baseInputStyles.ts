@@ -18,6 +18,7 @@ type GetInputStyles = Pick<
   | 'suffix'
   | 'trailingIcon'
   | 'textAlign'
+  | 'isDropdownTrigger'
 > & {
   isHovered?: boolean;
   isFocused?: boolean;
@@ -33,9 +34,16 @@ export const getInputBackgroundAndBorderStyles = ({
   isDisabled,
   validationState,
   isTextArea,
+  isDropdownTrigger,
 }: Pick<
   GetInputStyles,
-  'theme' | 'isFocused' | 'isDisabled' | 'validationState' | 'isHovered' | 'isTextArea'
+  | 'theme'
+  | 'isFocused'
+  | 'isDisabled'
+  | 'validationState'
+  | 'isHovered'
+  | 'isTextArea'
+  | 'isDropdownTrigger'
 >): CSSObject => {
   // normal state
   let backgroundColor = theme.colors.brand.gray.a50.lowContrast;
@@ -78,7 +86,7 @@ export const getInputBackgroundAndBorderStyles = ({
     width: '100%',
     alignItems: isTextArea ? 'flex-start' : undefined,
     position: 'relative',
-    height: 'auto',
+    height: isDropdownTrigger ? 'auto' : undefined,
   };
 };
 
@@ -93,6 +101,7 @@ export const getBaseInputStyles = ({
   textAlign,
   isTextArea,
   hasTags,
+  isDropdownTrigger,
 }: GetInputStyles): CSSObject => {
   const {
     hasLeadingIcon,
@@ -108,6 +117,7 @@ export const getBaseInputStyles = ({
     trailingIcon,
   });
 
+  const isDropdownWithTags = isDropdownTrigger && hasTags;
   const isReactNative = getPlatformType() === 'react-native';
 
   return {
@@ -131,9 +141,9 @@ export const getBaseInputStyles = ({
         ? makeSpace(theme.spacing[3])
         : makeSpace(theme.spacing[4]),
     textAlign,
-    width: hasTags ? undefined : '100%',
-    height: isTextArea ? undefined : makeSpace(BASEINPUT_DEFAULT_HEIGHT),
-    minHeight: hasTags ? undefined : makeSpace(BASEINPUT_DEFAULT_HEIGHT),
+    width: '100%',
+    height: isTextArea || isDropdownWithTags ? undefined : makeSpace(BASEINPUT_DEFAULT_HEIGHT),
+    minHeight: isDropdownWithTags ? undefined : makeSpace(BASEINPUT_DEFAULT_HEIGHT),
     ...(isReactNative ? {} : { resize: 'none' }),
   };
 };

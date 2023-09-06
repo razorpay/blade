@@ -170,6 +170,10 @@ const BaseDropdownInputTrigger = (props: BaseDropdownInputTriggerProps): React.R
             isTagDismissedRef.current.value = true;
           }
 
+          if (!isReactNative()) {
+            triggererRef.current?.focus();
+          }
+
           removeOption(selectedIndices[tagIndex]);
           setChangeCallbackTriggerer(Number(changeCallbackTriggerer) + 1);
         },
@@ -183,6 +187,7 @@ const BaseDropdownInputTrigger = (props: BaseDropdownInputTriggerProps): React.R
     <BaseInput
       as={props.isSelectInput ? 'button' : 'input'}
       ref={(!isReactNative() ? triggererRef : null) as never}
+      isDropdownTrigger={true}
       setInputWrapperRef={(wrapperNode) => {
         triggererWrapperRef.current = wrapperNode;
       }}

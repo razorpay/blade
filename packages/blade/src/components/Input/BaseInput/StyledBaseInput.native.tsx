@@ -88,6 +88,25 @@ type StyledComponentInputProps = Omit<
   onPress?: (event: GestureResponderEvent) => void;
 };
 
+const getInputHeight = ({
+  isTextArea,
+  hasTags,
+  numberOfLines,
+  lineHeight,
+}: Pick<StyledBaseInputProps, 'hasTags' | 'isTextArea' | 'numberOfLines'> & {
+  lineHeight: number;
+}): string | undefined => {
+  if (isTextArea) {
+    return `${lineHeight * (numberOfLines ?? 0)}px`;
+  }
+
+  if (hasTags) {
+    return undefined; // we don't set height on input. We set it on wrapper to properly include tags in overall height
+  }
+
+  return makeSize(size[36]);
+};
+
 const getRNInputStyles = (
   props: StyledComponentInputProps &
     ThemeProps<DefaultTheme> &
@@ -106,12 +125,16 @@ const getRNInputStyles = (
       trailingIcon: props.trailingIcon,
       isTextArea: props.isTextArea,
       hasTags: props.hasTags,
+      isDropdownTrigger: props.isDropdownTrigger,
     }),
     lineHeight: undefined,
     textAlignVertical: 'top',
-    height: props.isTextArea
-      ? `${props.theme.typography.lineHeights[300] * (props.numberOfLines ?? 0)}px`
-      : makeSize(size[36]),
+    height: getInputHeight({
+      isTextArea: props.isTextArea,
+      hasTags: props.hasTags,
+      numberOfLines: props.numberOfLines,
+      lineHeight: props.theme.typography.lineHeights[300],
+    }),
   };
 };
 const StyledNativeBaseInput = styled.TextInput<StyledComponentInputProps>(
@@ -128,6 +151,7 @@ const StyledNativeBaseInput = styled.TextInput<StyledComponentInputProps>(
     trailingIcon,
     isTextArea,
     numberOfLines,
+    isDropdownTrigger,
     hasTags,
   }) =>
     getRNInputStyles({
@@ -144,6 +168,7 @@ const StyledNativeBaseInput = styled.TextInput<StyledComponentInputProps>(
       isTextArea,
       numberOfLines,
       hasTags,
+      isDropdownTrigger,
     }),
 );
 const StyledNativeBaseButton = styled.TouchableOpacity<StyledComponentInputProps>(
@@ -160,6 +185,7 @@ const StyledNativeBaseButton = styled.TouchableOpacity<StyledComponentInputProps
     trailingIcon,
     isTextArea,
     numberOfLines,
+    isDropdownTrigger,
     hasTags,
   }) =>
     getRNInputStyles({
@@ -175,6 +201,7 @@ const StyledNativeBaseButton = styled.TouchableOpacity<StyledComponentInputProps
       trailingIcon,
       isTextArea,
       numberOfLines,
+      isDropdownTrigger,
       hasTags,
     }),
 );
