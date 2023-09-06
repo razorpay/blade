@@ -142,6 +142,9 @@ export const paymentLightThemeData = {
     Heading: {
       key: 'c91a7dfbe196427235d83d1f2d0616cf9d68adb0',
     },
+    Display: {
+      key: '856b8daacf67b0dda92fca150324a1ceb888cc0f',
+    },
 
     // Input Elements
     'Text Input': {
@@ -4289,6 +4292,9 @@ export const bankingDarkThemeData = {
     },
     Heading: {
       key: 'f62d79aec517f0cd7176b7bada076e12d1ab27d7',
+    },
+    Display: {
+      key: '6e3ddeff38aea7ff19d02655fc274d6a008b8a2b',
     },
 
     // Input Elements
