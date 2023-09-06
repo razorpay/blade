@@ -22,6 +22,7 @@ import { castWebType, makeMotionTime, useInterval, useTheme } from '~utils';
 import { useId } from '~utils/useId';
 import { makeAccessible } from '~utils/makeAccessible';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { useDidUpdate } from '~utils/useDidUpdate';
 
 type ControlsProp = Required<
   Pick<
@@ -115,7 +116,6 @@ const CarouselContainer = styled(BaseBox)<{
     flexWrap: 'nowrap',
     scrollSnapType: 'x mandatory',
     scrollSnapPointsY: `repeat(100%)`,
-    scrollBehavior: 'smooth',
     msOverflowStyle: 'none' /* IE and Edge */,
     scrollbarWidth: 'none' /* Firefox */,
     /* Needed to work on iOS Safari */
@@ -351,6 +351,8 @@ const Carousel = ({
 
   // Sync the indicators with scroll
   React.useEffect(() => {
+    // do not sync indicators on desktop, we are already in sync because we can only use the next/prev buttons
+    if (!isMobile) return;
     const carouselContainer = containerRef.current;
     if (!carouselContainer) return;
 
@@ -384,7 +386,7 @@ const Carousel = ({
     return () => {
       carouselContainer?.removeEventListener('scroll', handleScroll);
     };
-  }, [_visibleItems, isResponsive, shouldAddStartEndSpacing]);
+  }, [_visibleItems, isMobile, isResponsive, shouldAddStartEndSpacing]);
 
   // auto play
   useInterval(
@@ -400,7 +402,8 @@ const Carousel = ({
 
   const carouselContext = React.useMemo<CarouselContextProps>(() => {
     return {
-      visibleItems,
+      isResponsive,
+      visibleItems: _visibleItems,
       carouselItemWidth,
       carouselContainerRef: containerRef,
       setActiveIndicator,
@@ -413,14 +416,15 @@ const Carousel = ({
   }, [
     id,
     startEndMargin,
-    visibleItems,
+    isResponsive,
+    _visibleItems,
     carouselItemWidth,
     totalNumberOfSlides,
     activeSlide,
     shouldAddStartEndSpacing,
   ]);
 
-  React.useEffect(() => {
+  useDidUpdate(() => {
     onChange?.(activeSlide);
   }, [activeSlide, onChange]);
 
