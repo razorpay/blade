@@ -74,17 +74,6 @@ export const getInputBackgroundAndBorderStyles = ({
     borderBottomColor = theme.colors.feedback.border.positive.highContrast;
   }
 
-  const dropdownTriggerStyles: CSSObject = isDropdownTrigger
-    ? {
-        display: 'flex',
-        flexDirection: 'row',
-        width: '100%',
-        alignItems: isTextArea ? 'flex-start' : undefined,
-        position: 'relative',
-        height: 'auto',
-      }
-    : {};
-
   return {
     backgroundColor,
     borderBottomColor,
@@ -92,7 +81,12 @@ export const getInputBackgroundAndBorderStyles = ({
     borderTopRightRadius: makeBorderSize(theme.border.radius.small),
     borderBottomWidth: makeBorderSize(theme.border.width.thin),
     borderBottomStyle: 'solid',
-    ...dropdownTriggerStyles,
+    display: 'flex',
+    flexDirection: 'row',
+    width: '100%',
+    alignItems: isTextArea ? 'flex-start' : undefined,
+    position: 'relative',
+    height: isDropdownTrigger ? 'auto' : undefined,
   };
 };
 
