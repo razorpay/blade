@@ -83,7 +83,7 @@ export default {
   title: 'Components/Icons',
   component: CreditCardIcon, // need to give it some icon component so that storybook can infer props & arg types
   args: {
-    color: 'feedback.icon.neutral.lowContrast',
+    color: 'surface.text.normal.lowContrast',
     size: 'medium',
   },
   argTypes: {
