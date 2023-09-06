@@ -17,13 +17,15 @@ const useVisibleTagsCount = ({
   slotRef,
   tags,
   maxTagRows,
+  visibleTagsCountRef,
 }: {
   slotRef: React.RefObject<HTMLDivElement>;
   tags: BaseInputTagSlotProps['tags'];
   maxTagRows: BaseInputTagSlotProps['maxTagRows'];
+  visibleTagsCountRef: BaseInputTagSlotProps['visibleTagsCountRef'];
 }): number => {
   const [visibleTagsCount, setVisibleTagsCount] = React.useState(0);
-  const visibleTagsCountRef = React.useRef<number>(0);
+  const visibleTagsCountStateRef = React.useRef<number>(0);
 
   useIsomorphicLayoutEffect(() => {
     if (!tags) {
@@ -37,7 +39,7 @@ const useVisibleTagsCount = ({
     }
 
     const inputTagsSlotWidth = slotRef.current?.clientWidth;
-    visibleTagsCountRef.current = 0;
+    visibleTagsCountStateRef.current = 0;
     let totalTagsWidth = 0;
 
     if (!inputTagsSlotWidth) {
@@ -54,7 +56,9 @@ const useVisibleTagsCount = ({
     if (allTagsEl.length !== tags.length) {
       // some weird edge cases in controlled select where tags are not rendered in children
       // we assume 140px (max-width of tag as width of all tags)
-      setVisibleTagsCount(Math.floor((totalAvailableSpaceForTags / TAG_MAX_WIDTH) * tags.length));
+      const tagsCount = Math.floor((totalAvailableSpaceForTags / TAG_MAX_WIDTH) * tags.length);
+      visibleTagsCountRef.current = tagsCount;
+      setVisibleTagsCount(tagsCount);
       return;
     }
 
@@ -63,11 +67,12 @@ const useVisibleTagsCount = ({
       if (totalTagsWidth >= totalAvailableSpaceForTags) {
         break;
       } else {
-        visibleTagsCountRef.current++;
+        visibleTagsCountStateRef.current++;
       }
     }
 
-    setVisibleTagsCount(visibleTagsCountRef.current);
+    visibleTagsCountRef.current = visibleTagsCountStateRef.current;
+    setVisibleTagsCount(visibleTagsCountStateRef.current);
   }, [tags?.length]);
 
   return visibleTagsCount;
@@ -82,6 +87,7 @@ const BaseInputTagSlot = ({
   setShouldIgnoreBlurAnimation,
   handleOnClick,
   isDropdownTrigger,
+  visibleTagsCountRef,
 }: BaseInputTagSlotProps): React.ReactElement => {
   const hasTags = tags && tags.length > 0;
   const slotRef = React.useRef<HTMLDivElement>(null);
@@ -89,6 +95,7 @@ const BaseInputTagSlot = ({
     slotRef,
     tags,
     maxTagRows,
+    visibleTagsCountRef,
   });
 
   React.useEffect(() => {
@@ -101,7 +108,11 @@ const BaseInputTagSlot = ({
   }, [tags?.length, maxTagRows]);
 
   React.useEffect(() => {
-    if (!showAllTags) {
+    if (showAllTags) {
+      if (hasTags) {
+        visibleTagsCountRef.current = tags?.length;
+      }
+    } else {
       slotRef.current?.scrollTo?.({
         top: 0,
         left: 0,
