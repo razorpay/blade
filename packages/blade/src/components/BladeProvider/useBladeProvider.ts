@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import { modifyThemeByBrand } from './modifyThemeByBrand';
 import type { Theme } from './index';
 import { useColorScheme, useBreakpoint } from '~utils';
 import type { ColorSchemeNames, ColorSchemeNamesInput, ThemeTokens } from '~tokens/theme';
@@ -25,7 +24,6 @@ type ThemeContextValue = {
 const useBladeProvider = ({
   themeTokens,
   initialColorScheme,
-  brandColor,
 }: {
   themeTokens: ThemeTokens;
   initialColorScheme?: ColorSchemeNamesInput;
@@ -55,16 +53,11 @@ const useBladeProvider = ({
   const onColorMode = `on${toTitleCase(colorScheme)}` as ColorSchemeModes;
   const onDeviceType = `on${toTitleCase(matchedDeviceType)}` as TypographyPlatforms;
 
-  console.log('🚀 ~ file: useBladeProvider.ts:59 ~ brandColor:', brandColor);
-  const brandModifiedThemeTokens = brandColor
-    ? modifyThemeByBrand(themeTokens, brandColor)
-    : themeTokens;
-
   const theme: Theme = {
-    ...brandModifiedThemeTokens,
-    colors: brandModifiedThemeTokens.colors[onColorMode],
-    elevation: brandModifiedThemeTokens.elevation[onColorMode],
-    typography: brandModifiedThemeTokens.typography[onDeviceType],
+    ...themeTokens,
+    colors: themeTokens.colors[onColorMode],
+    elevation: themeTokens.elevation[onColorMode],
+    typography: themeTokens.typography[onDeviceType],
   };
 
   const themeContextValue = {

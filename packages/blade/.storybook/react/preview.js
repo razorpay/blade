@@ -3,10 +3,13 @@ import { theme, toggleHiddenStoryStyle } from './manager';
 import { global } from '@storybook/design-system';
 import { BladeProvider } from '../../src/components/BladeProvider';
 import { paymentTheme, bankingTheme } from '../../src/tokens/theme';
+import { createTheme } from '../../src/tokens/theme/createTheme';
 import ErrorBoundary from './ErrorBoundary';
 import { INTERNAL_STORY_ADDON_PARAM } from './constants';
 const { GlobalStyle } = global;
 import { DocsContainer } from '@storybook/addon-docs/blocks';
+
+const getBrandedTheme = () => {};
 
 export const parameters = {
   // disable snapshot by default and then enable it only for kitchen sink
@@ -58,6 +61,9 @@ export const parameters = {
   docs: {
     container: ({ children, context }) => {
       const getThemeTokens = () => {
+        if (context.globals.brandColor) {
+          return createTheme({ brandColor: context.globals.brandColor });
+        }
         if (context.globals.themeTokenName === 'paymentTheme') {
           return paymentTheme;
         }
@@ -71,7 +77,6 @@ export const parameters = {
             key={`${context.globals.themeTokenName}-${context.globals.colorScheme}`}
             themeTokens={getThemeTokens()}
             colorScheme={context.globals.colorScheme}
-            brandColor={context.globals.brandColor}
           >
             {children}
           </BladeProvider>
@@ -140,6 +145,9 @@ export const decorators = [
   (Story, context) => {
     toggleHiddenStoryStyle(context.globals.showInternalComponents);
     const getThemeTokens = () => {
+      if (context.globals.brandColor) {
+        return createTheme({ brandColor: context.globals.brandColor });
+      }
       if (context.globals.themeTokenName === 'paymentTheme') {
         return paymentTheme;
       }
@@ -155,7 +163,6 @@ export const decorators = [
           key={`${context.globals.themeTokenName}-${context.globals.colorScheme}`}
           themeTokens={getThemeTokens()}
           colorScheme={context.globals.colorScheme}
-          brandColor={context.globals.brandColor}
         >
           <StoryCanvas context={context}>
             <Story />
