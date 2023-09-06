@@ -39,7 +39,7 @@ const useAutoCompleteHandlers = ({
     displayValue,
   } = useDropdown();
 
-  const setFirstItemActive = React.useCallback((): void => {
+  React.useEffect((): void => {
     const firstItemOptionIndex = options.findIndex(
       (option) => option.value === globalFilteredValues[0],
     );
@@ -48,14 +48,13 @@ const useAutoCompleteHandlers = ({
       setActiveIndex(firstItemOptionIndex);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [globalFilteredValues]);
+  }, [globalFilteredValues.length]);
 
   const onInputValueChange: BaseDropdownInputTriggerProps['onInputValueChange'] = ({
     name,
     value,
   }) => {
     setInputValue(value ?? '');
-    setFirstItemActive();
     props.onInputValueChange?.({ name, value });
     setActiveTagIndex(-1);
 
@@ -78,7 +77,6 @@ const useAutoCompleteHandlers = ({
 
   const onTriggerKeydown: BaseDropdownInputTriggerProps['onTriggerKeydown'] = (e) => {
     if (e.key === 'Enter') {
-      // setInputValue('');
       setActiveTagIndex(-1);
       setGlobalFilteredValues(getOptionValues());
     } else if (

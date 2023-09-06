@@ -193,7 +193,7 @@ const BaseDropdownInputTrigger = (props: BaseDropdownInputTriggerProps): React.R
       }}
       maxTagRows={props.maxRows ?? 'single'}
       tags={getTags()}
-      showAllTags={isOpen && isAutoCompleteInHeader}
+      showAllTags={isAutoCompleteInHeader ? false : isOpen}
       activeTagIndex={activeTagIndex}
       setActiveTagIndex={setActiveTagIndex}
       shouldIgnoreBlurAnimation={shouldIgnoreBlurAnimation}

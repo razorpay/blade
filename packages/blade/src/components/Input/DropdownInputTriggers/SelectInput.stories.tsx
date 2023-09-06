@@ -250,7 +250,7 @@ SelectInputWithoutLabel.storyName = 'SelectInput without Label';
 
 export const AutoCompleteUncontrolled = (): React.ReactElement => {
   return (
-    <Box maxWidth="400px">
+    <Box maxWidth="200px">
       <Dropdown selectionType="multiple">
         <AutoComplete maxRows="single" label="City" />
         <DropdownOverlay>
