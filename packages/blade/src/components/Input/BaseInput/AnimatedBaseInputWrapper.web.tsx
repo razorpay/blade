@@ -45,7 +45,7 @@ const noTransition = css`
 const StyledBaseInputWrapper = styled(BaseBox)<
   Pick<
     BaseInputWrapperProps,
-    'currentInteraction' | 'isDisabled' | 'validationState' | 'isTextArea'
+    'currentInteraction' | 'isDisabled' | 'validationState' | 'isTextArea' | 'isDropdownTrigger'
   >
 >((props) => ({
   ...getInputBackgroundAndBorderStyles({
@@ -54,6 +54,7 @@ const StyledBaseInputWrapper = styled(BaseBox)<
     isDisabled: props.isDisabled,
     validationState: props.validationState,
     isTextArea: props.isTextArea,
+    isDropdownTrigger: props.isDropdownTrigger,
   }),
   '&:hover': {
     ...getInputBackgroundAndBorderStyles({
@@ -62,6 +63,7 @@ const StyledBaseInputWrapper = styled(BaseBox)<
       isFocused: props.currentInteraction === 'active',
       isDisabled: props.isDisabled,
       validationState: props.validationState,
+      isDropdownTrigger: props.isDropdownTrigger,
     }),
     transitionProperty: 'background-color',
     transitionDuration: castWebType(makeMotionTime(props.theme.motion.duration.xquick)),
@@ -73,6 +75,7 @@ const StyledBaseInputWrapper = styled(BaseBox)<
       isFocused: props.currentInteraction === 'active',
       isDisabled: props.isDisabled,
       validationState: props.validationState,
+      isDropdownTrigger: props.isDropdownTrigger,
     }),
   },
 }));
@@ -113,7 +116,7 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
     showAllTags?: boolean;
   }
 > = (
-  { showAllTags, setShowAllTagsWithAnimation, maxTagRows, ...rest },
+  { showAllTags, setShowAllTagsWithAnimation, maxTagRows, isDropdownTrigger, ...rest },
   ref,
 ): React.ReactElement => {
   return (
@@ -128,6 +131,7 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
           ? expandTransition
           : collapseTransition
       }
+      isDropdownTrigger={isDropdownTrigger}
       showAllTags={showAllTags}
       maxTagRows={maxTagRows}
       onAnimationEnd={(e) => {

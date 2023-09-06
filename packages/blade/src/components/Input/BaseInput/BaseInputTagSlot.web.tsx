@@ -73,6 +73,7 @@ const BaseInputTagSlot = ({
   showAllTags,
   setShouldIgnoreBlurAnimation,
   handleOnClick,
+  isDropdownTrigger,
 }: BaseInputTagSlotProps): React.ReactElement => {
   const hasTags = tags && tags.length > 0;
   const slotRef = React.useRef<HTMLDivElement>(null);
@@ -102,10 +103,6 @@ const BaseInputTagSlot = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [showAllTags]);
 
-  const isMobile = useIsMobile();
-  // tag height changes in mobile and desktop so we keep different paddings to make it look as expected
-  const paddingYWithTags = isMobile ? 'spacing.1' : 'spacing.2';
-
   const visibleTags = React.useMemo(() => {
     return showAllTags ? tags : tags?.slice(0, visibleTagsCount);
   }, [showAllTags, tags, visibleTagsCount]);
@@ -118,6 +115,16 @@ const BaseInputTagSlot = ({
     return 0;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tags?.length, visibleTags?.length]);
+
+  const isMobile = useIsMobile();
+
+  if (!isDropdownTrigger) {
+    // If its not dropdown trigger, we don't need to render tag containers
+    return children;
+  }
+
+  // tag height changes in mobile and desktop so we keep different paddings to make it look as expected
+  const paddingYWithTags = isMobile ? 'spacing.1' : 'spacing.2';
 
   return (
     <BaseBox

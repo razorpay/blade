@@ -1,7 +1,7 @@
 import React from 'react';
 import { ScrollView, Text as RNText, TouchableWithoutFeedback, View } from 'react-native';
 import type { BaseInputTagSlotProps } from './types';
-import { BASEINPUT_DEFAULT_HEIGHT, BASEINPUT_WRAPPER_MAX_HEIGHT } from './baseInputConfig';
+import { BASEINPUT_DEFAULT_HEIGHT } from './baseInputConfig';
 import BaseBox from '~components/Box/BaseBox';
 import { makeSize } from '~utils';
 import { size } from '~tokens/global';
@@ -60,10 +60,15 @@ const BaseInputTagSlot = ({
   handleOnClick,
   renderAs,
   children,
+  isDropdownTrigger,
 }: BaseInputTagSlotProps): React.ReactElement | null => {
   const hasTags = tags && tags.length > 0;
   const [visibleTags, setVisibleTags] = React.useState(maxTagRows === 'multiple' ? 6 : 1);
   const invisibleTagsCount = tags ? tags.length - visibleTags : 0;
+
+  if (!isDropdownTrigger) {
+    return children;
+  }
 
   return (
     <BaseBox

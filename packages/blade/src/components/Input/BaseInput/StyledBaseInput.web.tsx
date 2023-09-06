@@ -26,6 +26,7 @@ const getWebInputStyles = (
       textAlign: props.textAlign,
       isTextArea: props.isTextArea,
       hasTags: props.hasTags,
+      isDropdownTrigger: props.isDropdownTrigger,
     }),
     outline: 'none',
     border: 'none',

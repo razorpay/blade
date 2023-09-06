@@ -64,83 +64,14 @@ exports[`<OTPInput /> should render 1`] = `
   width: 100%;
 }
 
-.c11 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  overflow-x: auto;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-  position: relative;
-  min-height: 36px;
-  max-height: 112px;
-  width: 100%;
-}
-
-.c12 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  overflow: hidden;
-  white-space: nowrap;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  position: relative;
-  height: 100%;
-  max-width: 100%;
-}
-
 .c13 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-}
-
-.c14 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
-  align-items: flex-start;
-  width: 100%;
-}
-
-.c17 {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
   margin-left: 8px;
 }
 
-.c18 {
+.c14 {
   margin-left: 0px;
 }
 
@@ -175,7 +106,7 @@ exports[`<OTPInput /> should render 1`] = `
   padding: 0;
 }
 
-.c15 {
+.c11 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -204,7 +135,7 @@ exports[`<OTPInput /> should render 1`] = `
   cursor: auto;
 }
 
-.c15::-webkit-input-placeholder {
+.c11::-webkit-input-placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -218,7 +149,7 @@ exports[`<OTPInput /> should render 1`] = `
   padding: 0;
 }
 
-.c15::-moz-placeholder {
+.c11::-moz-placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -232,7 +163,7 @@ exports[`<OTPInput /> should render 1`] = `
   padding: 0;
 }
 
-.c15:-ms-input-placeholder {
+.c11:-ms-input-placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -246,7 +177,7 @@ exports[`<OTPInput /> should render 1`] = `
   padding: 0;
 }
 
-.c15::placeholder {
+.c11::placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -260,11 +191,11 @@ exports[`<OTPInput /> should render 1`] = `
   padding: 0;
 }
 
-.c15:focus {
+.c11:focus {
   outline: none;
 }
 
-.c16 {
+.c12 {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -282,16 +213,6 @@ exports[`<OTPInput /> should render 1`] = `
   border-top-right-radius: 2px;
   border-bottom-width: 1px;
   border-bottom-style: solid;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  width: 100%;
-  position: relative;
-  height: auto;
 }
 
 .c9:hover {
@@ -301,16 +222,6 @@ exports[`<OTPInput /> should render 1`] = `
   border-top-right-radius: 2px;
   border-bottom-width: 1px;
   border-bottom-style: solid;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  width: 100%;
-  position: relative;
-  height: auto;
   -webkit-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-duration: 150ms;
@@ -326,22 +237,12 @@ exports[`<OTPInput /> should render 1`] = `
   border-top-right-radius: 2px;
   border-bottom-width: 1px;
   border-bottom-style: solid;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  width: 100%;
-  position: relative;
-  height: auto;
 }
 
 .c10 {
   -webkit-animation: none;
   animation: none;
-  max-height: 145px;
+  max-height: 37px;
 }
 
 .c4 {
@@ -427,44 +328,24 @@ exports[`<OTPInput /> should render 1`] = `
                 class=" c9 c10"
                 data-blade-component="base-box"
               >
-                <div
+                <input
+                  aria-describedby=""
+                  aria-disabled="false"
+                  aria-invalid="false"
+                  aria-label="Enter OTP character 1"
+                  aria-required="true"
+                  autocomplete="one-time-code"
                   class="c11"
-                  data-blade-component="base-box"
-                >
-                  <div
-                    class="c12"
-                    data-blade-component="base-box"
-                  >
-                    <div
-                      class="c13"
-                      data-blade-component="base-box"
-                    >
-                      <div
-                        class="c14"
-                        data-blade-component="base-box"
-                      >
-                        <input
-                          aria-describedby=""
-                          aria-disabled="false"
-                          aria-invalid="false"
-                          aria-label="Enter OTP character 1"
-                          aria-required="true"
-                          autocomplete="one-time-code"
-                          class="c15"
-                          data-blade-component="styled-base-input"
-                          id="otp-37-input-38-0-49-input-50"
-                          inputmode="decimal"
-                          placeholder=""
-                          required=""
-                          type="text"
-                          value=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                  data-blade-component="styled-base-input"
+                  id="otp-37-input-38-0-49-input-50"
+                  inputmode="decimal"
+                  placeholder=""
+                  required=""
+                  type="text"
+                  value=""
+                />
                 <div
-                  class=" c16"
+                  class=" c12"
                   data-blade-component="base-box"
                 />
               </div>
@@ -472,7 +353,7 @@ exports[`<OTPInput /> should render 1`] = `
           </div>
         </div>
         <div
-          class="c17"
+          class="c13"
           data-blade-component="base-box"
         >
           <div
@@ -487,44 +368,24 @@ exports[`<OTPInput /> should render 1`] = `
                 class=" c9 c10"
                 data-blade-component="base-box"
               >
-                <div
+                <input
+                  aria-describedby=""
+                  aria-disabled="false"
+                  aria-invalid="false"
+                  aria-label=" character 2"
+                  aria-required="true"
+                  autocomplete="one-time-code"
                   class="c11"
-                  data-blade-component="base-box"
-                >
-                  <div
-                    class="c12"
-                    data-blade-component="base-box"
-                  >
-                    <div
-                      class="c13"
-                      data-blade-component="base-box"
-                    >
-                      <div
-                        class="c14"
-                        data-blade-component="base-box"
-                      >
-                        <input
-                          aria-describedby=""
-                          aria-disabled="false"
-                          aria-invalid="false"
-                          aria-label=" character 2"
-                          aria-required="true"
-                          autocomplete="one-time-code"
-                          class="c15"
-                          data-blade-component="styled-base-input"
-                          id="otp-37-input-38-1-55-input-56"
-                          inputmode="decimal"
-                          placeholder=""
-                          required=""
-                          type="text"
-                          value=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                  data-blade-component="styled-base-input"
+                  id="otp-37-input-38-1-55-input-56"
+                  inputmode="decimal"
+                  placeholder=""
+                  required=""
+                  type="text"
+                  value=""
+                />
                 <div
-                  class=" c16"
+                  class=" c12"
                   data-blade-component="base-box"
                 />
               </div>
@@ -532,7 +393,7 @@ exports[`<OTPInput /> should render 1`] = `
           </div>
         </div>
         <div
-          class="c17"
+          class="c13"
           data-blade-component="base-box"
         >
           <div
@@ -547,44 +408,24 @@ exports[`<OTPInput /> should render 1`] = `
                 class=" c9 c10"
                 data-blade-component="base-box"
               >
-                <div
+                <input
+                  aria-describedby=""
+                  aria-disabled="false"
+                  aria-invalid="false"
+                  aria-label=" character 3"
+                  aria-required="true"
+                  autocomplete="one-time-code"
                   class="c11"
-                  data-blade-component="base-box"
-                >
-                  <div
-                    class="c12"
-                    data-blade-component="base-box"
-                  >
-                    <div
-                      class="c13"
-                      data-blade-component="base-box"
-                    >
-                      <div
-                        class="c14"
-                        data-blade-component="base-box"
-                      >
-                        <input
-                          aria-describedby=""
-                          aria-disabled="false"
-                          aria-invalid="false"
-                          aria-label=" character 3"
-                          aria-required="true"
-                          autocomplete="one-time-code"
-                          class="c15"
-                          data-blade-component="styled-base-input"
-                          id="otp-37-input-38-2-61-input-62"
-                          inputmode="decimal"
-                          placeholder=""
-                          required=""
-                          type="text"
-                          value=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                  data-blade-component="styled-base-input"
+                  id="otp-37-input-38-2-61-input-62"
+                  inputmode="decimal"
+                  placeholder=""
+                  required=""
+                  type="text"
+                  value=""
+                />
                 <div
-                  class=" c16"
+                  class=" c12"
                   data-blade-component="base-box"
                 />
               </div>
@@ -592,7 +433,7 @@ exports[`<OTPInput /> should render 1`] = `
           </div>
         </div>
         <div
-          class="c17"
+          class="c13"
           data-blade-component="base-box"
         >
           <div
@@ -607,44 +448,24 @@ exports[`<OTPInput /> should render 1`] = `
                 class=" c9 c10"
                 data-blade-component="base-box"
               >
-                <div
+                <input
+                  aria-describedby=""
+                  aria-disabled="false"
+                  aria-invalid="false"
+                  aria-label=" character 4"
+                  aria-required="true"
+                  autocomplete="one-time-code"
                   class="c11"
-                  data-blade-component="base-box"
-                >
-                  <div
-                    class="c12"
-                    data-blade-component="base-box"
-                  >
-                    <div
-                      class="c13"
-                      data-blade-component="base-box"
-                    >
-                      <div
-                        class="c14"
-                        data-blade-component="base-box"
-                      >
-                        <input
-                          aria-describedby=""
-                          aria-disabled="false"
-                          aria-invalid="false"
-                          aria-label=" character 4"
-                          aria-required="true"
-                          autocomplete="one-time-code"
-                          class="c15"
-                          data-blade-component="styled-base-input"
-                          id="otp-37-input-38-3-67-input-68"
-                          inputmode="decimal"
-                          placeholder=""
-                          required=""
-                          type="text"
-                          value=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                  data-blade-component="styled-base-input"
+                  id="otp-37-input-38-3-67-input-68"
+                  inputmode="decimal"
+                  placeholder=""
+                  required=""
+                  type="text"
+                  value=""
+                />
                 <div
-                  class=" c16"
+                  class=" c12"
                   data-blade-component="base-box"
                 />
               </div>
@@ -652,7 +473,7 @@ exports[`<OTPInput /> should render 1`] = `
           </div>
         </div>
         <div
-          class="c17"
+          class="c13"
           data-blade-component="base-box"
         >
           <div
@@ -667,44 +488,24 @@ exports[`<OTPInput /> should render 1`] = `
                 class=" c9 c10"
                 data-blade-component="base-box"
               >
-                <div
+                <input
+                  aria-describedby=""
+                  aria-disabled="false"
+                  aria-invalid="false"
+                  aria-label=" character 5"
+                  aria-required="true"
+                  autocomplete="one-time-code"
                   class="c11"
-                  data-blade-component="base-box"
-                >
-                  <div
-                    class="c12"
-                    data-blade-component="base-box"
-                  >
-                    <div
-                      class="c13"
-                      data-blade-component="base-box"
-                    >
-                      <div
-                        class="c14"
-                        data-blade-component="base-box"
-                      >
-                        <input
-                          aria-describedby=""
-                          aria-disabled="false"
-                          aria-invalid="false"
-                          aria-label=" character 5"
-                          aria-required="true"
-                          autocomplete="one-time-code"
-                          class="c15"
-                          data-blade-component="styled-base-input"
-                          id="otp-37-input-38-4-73-input-74"
-                          inputmode="decimal"
-                          placeholder=""
-                          required=""
-                          type="text"
-                          value=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                  data-blade-component="styled-base-input"
+                  id="otp-37-input-38-4-73-input-74"
+                  inputmode="decimal"
+                  placeholder=""
+                  required=""
+                  type="text"
+                  value=""
+                />
                 <div
-                  class=" c16"
+                  class=" c12"
                   data-blade-component="base-box"
                 />
               </div>
@@ -712,7 +513,7 @@ exports[`<OTPInput /> should render 1`] = `
           </div>
         </div>
         <div
-          class="c17"
+          class="c13"
           data-blade-component="base-box"
         >
           <div
@@ -727,44 +528,24 @@ exports[`<OTPInput /> should render 1`] = `
                 class=" c9 c10"
                 data-blade-component="base-box"
               >
-                <div
+                <input
+                  aria-describedby=""
+                  aria-disabled="false"
+                  aria-invalid="false"
+                  aria-label=" character 6"
+                  aria-required="true"
+                  autocomplete="one-time-code"
                   class="c11"
-                  data-blade-component="base-box"
-                >
-                  <div
-                    class="c12"
-                    data-blade-component="base-box"
-                  >
-                    <div
-                      class="c13"
-                      data-blade-component="base-box"
-                    >
-                      <div
-                        class="c14"
-                        data-blade-component="base-box"
-                      >
-                        <input
-                          aria-describedby=""
-                          aria-disabled="false"
-                          aria-invalid="false"
-                          aria-label=" character 6"
-                          aria-required="true"
-                          autocomplete="one-time-code"
-                          class="c15"
-                          data-blade-component="styled-base-input"
-                          id="otp-37-input-38-5-79-input-80"
-                          inputmode="decimal"
-                          placeholder=""
-                          required=""
-                          type="text"
-                          value=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                  data-blade-component="styled-base-input"
+                  id="otp-37-input-38-5-79-input-80"
+                  inputmode="decimal"
+                  placeholder=""
+                  required=""
+                  type="text"
+                  value=""
+                />
                 <div
-                  class=" c16"
+                  class=" c12"
                   data-blade-component="base-box"
                 />
               </div>
@@ -774,7 +555,7 @@ exports[`<OTPInput /> should render 1`] = `
       </div>
     </div>
     <div
-      class="c18"
+      class="c14"
       data-blade-component="base-box"
     />
   </div>

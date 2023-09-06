@@ -18,6 +18,7 @@ const StyledBaseInputWrapper = styled(Animated.View)<BaseInputWrapperProps>((pro
     isDisabled: props.isDisabled,
     validationState: props.validationState,
     isTextArea: props.isTextArea,
+    isDropdownTrigger: props.isDropdownTrigger,
   }),
 }));
 
@@ -44,13 +45,17 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
     setShowAllTagsWithAnimation: (showAllTagsWithAnimation: boolean) => void;
   }
 > = (
-  { showAllTags, setShowAllTagsWithAnimation, children, maxTagRows, ...rest },
+  { showAllTags, setShowAllTagsWithAnimation, children, maxTagRows, isDropdownTrigger, ...rest },
   ref,
 ): React.ReactElement => {
   const { theme } = useTheme();
   const sharedHeight = useSharedValue(BASEINPUT_WRAPPER_MIN_HEIGHT); // Initial max-width value
 
   React.useEffect(() => {
+    if (!isDropdownTrigger) {
+      return;
+    }
+
     sharedHeight.value = withTiming(
       showAllTags ? BASEINPUT_WRAPPER_MAX_HEIGHT : BASEINPUT_WRAPPER_MIN_HEIGHT,
       {
@@ -88,6 +93,7 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
         ...maxHeightStyleObject,
         ...animatedStyleObject,
       }}
+      isDropdownTrigger={isDropdownTrigger}
       {...rest}
     >
       {children}

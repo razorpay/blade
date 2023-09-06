@@ -262,6 +262,11 @@ type BaseInputCommonProps = FormInputLabelProps &
     activeTagIndex?: number;
 
     /**
+     * Is this input SelectInput or AutoComplete
+     */
+    isDropdownTrigger?: boolean;
+
+    /**
      * State setter for active tag index
      */
     setActiveTagIndex?: (activeTagIndex: number) => void;
@@ -709,6 +714,7 @@ export const BaseInput = React.forwardRef<BladeElementRef, BaseInputProps>(
       autoCapitalize,
       setInputWrapperRef,
       testID,
+      isDropdownTrigger,
       ...styledProps
     },
     ref,
@@ -825,6 +831,7 @@ export const BaseInput = React.forwardRef<BladeElementRef, BaseInputProps>(
             </BaseBox>
           )}
           <BaseInputWrapper
+            isDropdownTrigger={isDropdownTrigger}
             isTextArea={isTextArea}
             isDisabled={isDisabled}
             validationState={validationState}
@@ -850,6 +857,7 @@ export const BaseInput = React.forwardRef<BladeElementRef, BaseInputProps>(
                   ref.current?.focus();
                 }
               }}
+              isDropdownTrigger={isDropdownTrigger}
               visibleTagsCountRef={visibleTagsCountRef}
               handleOnClick={handleOnClick}
               setShouldIgnoreBlurAnimation={setShouldIgnoreBlurAnimation}
@@ -896,6 +904,7 @@ export const BaseInput = React.forwardRef<BladeElementRef, BaseInputProps>(
                 hasTags={!!(tags && tags.length > 0)}
                 shouldIgnoreBlurAnimation={shouldIgnoreBlurAnimation}
                 autoCapitalize={autoCapitalize}
+                isDropdownTrigger={isDropdownTrigger}
                 {...metaAttribute({ name: MetaConstants.StyledBaseInput })}
               />
             </BaseInputTagSlot>

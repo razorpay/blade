@@ -265,6 +265,7 @@ const _SelectInput = (
       <BaseInput
         {...baseInputProps}
         as="button"
+        isDropdownTrigger={true}
         maxTagRows={props.maxRows ?? 'single'}
         tags={getTags()}
         showAllTags={isOpen}
