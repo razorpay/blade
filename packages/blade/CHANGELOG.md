@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 10.6.0
+
+### Minor Changes
+
+- 1732199a: fix(blade): fix firefox bug in carousel & fixed visible items not switching to `1` on mobile devices.
+
 ## 10.5.0
 
 ### Minor Changes
