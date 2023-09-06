@@ -148,13 +148,7 @@ const BaseInputTagSlot = ({
           </BaseBox>
         </Text>
       ) : null}
-      <BaseBox
-        width={
-          hasTags && renderAs === 'button' && maxTagRows === 'multiple'
-            ? makeSize(size['1'])
-            : '100%'
-        }
-      >
+      <BaseBox width={hasTags && renderAs === 'button' ? makeSize(size['1']) : '100%'}>
         {children}
       </BaseBox>
     </BaseBox>
