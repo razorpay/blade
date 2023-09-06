@@ -11,6 +11,7 @@ import { size } from '~tokens/global';
 
 const MINUMUM_INPUT_SPACE = 30;
 const PLUS_X_MORE_TEXT_WIDTH = 60;
+const TAG_MAX_WIDTH = size['140'];
 
 const useVisibleTagsCount = ({
   slotRef,
@@ -49,6 +50,13 @@ const useVisibleTagsCount = ({
 
     const totalAvailableSpaceForTags =
       inputTagsSlotWidth - (MINUMUM_INPUT_SPACE + PLUS_X_MORE_TEXT_WIDTH);
+
+    if (allTagsEl.length !== tags.length) {
+      // some weird edge cases in controlled select where tags are not rendered in children
+      // we assume 140px (max-width of tag as width of all tags)
+      setVisibleTagsCount(Math.floor((totalAvailableSpaceForTags / TAG_MAX_WIDTH) * tags.length));
+      return;
+    }
 
     for (const tagEl of allTagsEl) {
       totalTagsWidth += tagEl.clientWidth;
@@ -151,7 +159,9 @@ const BaseInputTagSlot = ({
       {tags && !showAllTags && invisibleTagsCount ? (
         <Text alignSelf="center" marginY="spacing.2">
           <BaseBox as="span" whiteSpace="nowrap">
-            +{invisibleTagsCount} More
+            {visibleTags?.length === 0
+              ? `${invisibleTagsCount} Items Selected`
+              : `+${invisibleTagsCount} More`}
           </BaseBox>
         </Text>
       ) : null}
