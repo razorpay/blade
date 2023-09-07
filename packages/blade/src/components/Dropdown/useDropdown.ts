@@ -73,7 +73,7 @@ type DropdownContextType = {
   /** Which element has triggered the dropdown */
   dropdownTriggerer?: 'SelectInput' | 'DropdownButton' | 'AutoComplete' | 'DropdownLink';
   /** ref of triggerer. Used to call focus in certain places */
-  triggererRef: React.RefObject<HTMLButtonElement | null>;
+  triggererRef: React.MutableRefObject<HTMLButtonElement | null>;
   triggererWrapperRef: React.MutableRefObject<ContainerElementType | null>;
   actionListItemRef: React.RefObject<HTMLDivElement | null>;
   isTagDismissedRef: React.RefObject<{ value: boolean } | null>;
