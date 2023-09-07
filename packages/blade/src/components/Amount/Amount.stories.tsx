@@ -1,9 +1,9 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
-import { getStyledPropsArgTypes } from '../Box/BaseBox/storybookArgTypes';
 import type { AmountProps } from './Amount';
 import { Amount as AmountComponent } from './Amount';
 import { currencyPrefixMapping } from './amountTokens';
+import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import BaseBox from '~components/Box/BaseBox';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { Text } from '~components/Typography';

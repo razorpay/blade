@@ -1,8 +1,7 @@
 import type { ReactElement } from 'react';
 import { forwardRef, useCallback } from 'react';
-// This has to be a relative import otherwise plugin-dts will go 💥 https://github.com/razorpay/blade/issues/701
-import type { ButtonProps } from '../Button';
 import { useCollapsible } from './CollapsibleContext';
+import type { ButtonProps } from '~components/Button';
 import type { IconComponent } from '~components/Icons';
 import BaseButton from '~components/Button/BaseButton';
 import type { BladeElementRef } from '~utils/types';

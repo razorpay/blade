@@ -1,9 +1,6 @@
 import styled from 'styled-components';
 import getIn from 'lodash/get';
 import React from 'react';
-import { Text } from '../Typography';
-import type { IconComponent } from '../Icons';
-import { useTheme } from '../BladeProvider';
 import { useListContext } from './ListContext';
 import { UnorderedItemIcon } from './ListItemIcons';
 import { ListItemElement } from './ListItemElement';
@@ -16,6 +13,9 @@ import {
 } from './listTokens';
 import type { ListProps } from './List';
 import { getOrderedListItemBullet } from './getOrderedListItemBullet';
+import { Text } from '~components/Typography';
+import type { IconComponent } from '~components/Icons';
+import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { TestID } from '~utils/types';
