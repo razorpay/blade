@@ -35,7 +35,7 @@ const _BottomSheetHeader = ({
     setHeaderHeight(ref.current.getBoundingClientRect().height);
   }, [ref, isOpen]);
 
-  const isHeaderEmpty = !(title || subtitle || leading || trailing || showBackButton);
+  const isHeaderEmpty = !(title || subtitle || leading || trailing || showBackButton || children);
 
   React.useEffect(() => {
     setIsHeaderEmpty(isHeaderEmpty);
