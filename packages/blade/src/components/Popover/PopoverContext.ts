@@ -4,6 +4,7 @@ import { throwBladeError } from '~utils/logger';
 type PopoverContext = {
   close: () => void;
   defaultInitialFocusRef: React.RefObject<HTMLElement>;
+  titleId: string;
 } | null;
 const PopoverContext = React.createContext<PopoverContext>(null);
 

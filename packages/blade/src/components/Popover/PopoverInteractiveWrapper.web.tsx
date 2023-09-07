@@ -1,23 +1,64 @@
 import styled from 'styled-components';
+import React from 'react';
 import { usePopoverContext } from './PopoverContext';
+import type { BaseBoxProps } from '~components/Box/BaseBox';
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { makeAccessible } from '~utils/makeAccessible';
 
-const PopoverInteractiveWrapper = styled(BaseBox).attrs((props) => {
+const StyledPopoverInteractiveWrapper = styled(BaseBox)(({ theme }) => {
   return {
-    tabIndex: props.tabIndex ?? -1,
-    ...metaAttribute({
-      testID: 'popover-interactive-wrapper',
-      name: MetaConstants.PopoverInteractiveWrapper,
-    }),
-  };
-})((props) => {
-  usePopoverContext();
-
-  return {
-    // TODO:
-    display: props.display ?? 'inline-block',
+    appearance: 'none',
+    all: 'unset',
+    cursor: 'pointer',
+    '&:focus': {
+      // TODO: refactor to use focus ring token
+      outline: 'none',
+      boxShadow: `0px 0px 0px 4px ${theme.colors.brand.primary[400]}`,
+    },
   };
 });
+
+type PopoverInteractiveWrapper = {
+  /**
+   * Note: it is recommended that PopoverInteractiveWrapper is used as a button,
+   * If you change this to a div, you will need to handle keyboard events yourself.
+   *
+   * @default "button"
+   */
+  as?: 'div' | 'button';
+  /**
+   * A label for screen readers to announce when the popover is opened.
+   */
+  accessibilityLabel?: string;
+  /**
+   * The content of the PopoverInteractiveWrapper.
+   */
+  children?: React.ReactNode;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  onKeyDown?: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
+} & Omit<BaseBoxProps, 'as'>;
+
+const PopoverInteractiveWrapper = React.forwardRef<HTMLButtonElement, PopoverInteractiveWrapper>(
+  ({ accessibilityLabel, as = 'button', ...props }, ref) => {
+    usePopoverContext();
+
+    return (
+      <StyledPopoverInteractiveWrapper
+        ref={ref}
+        as={as}
+        display={props.display || 'inline-block'}
+        {...props}
+        {...metaAttribute({
+          testID: 'popover-interactive-wrapper',
+          name: MetaConstants.PopoverInteractiveWrapper,
+        })}
+        {...makeAccessible({
+          label: accessibilityLabel,
+        })}
+      />
+    );
+  },
+);
 
 export { PopoverInteractiveWrapper };

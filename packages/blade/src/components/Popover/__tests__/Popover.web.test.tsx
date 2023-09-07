@@ -1,0 +1,259 @@
+/* eslint-disable @typescript-eslint/restrict-plus-operands */
+/* eslint-disable @typescript-eslint/require-await */
+/* eslint-disable @typescript-eslint/no-empty-function */
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+import { act, fireEvent } from '@testing-library/react';
+import React from 'react';
+import { Popover, PopoverInteractiveWrapper } from '..';
+import { Button } from '~components/Button';
+import { paymentTheme } from '~tokens/theme';
+import { InfoIcon } from '~components/Icons';
+import { MetaConstants } from '~utils/metaAttribute';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
+import assertAccessible from '~utils/testing/assertAccessible.web';
+import { Box } from '~components/Box';
+
+const waitForPosition = () => act(async () => {});
+const animationDuration = paymentTheme.motion.duration.quick;
+
+describe('<Popover />', () => {
+  jest.useFakeTimers();
+
+  it('should render', () => {
+    const buttonText = 'Click me';
+    const { container, getByRole, queryByRole } = renderWithTheme(
+      <Popover content="Hello world">
+        <Button>{buttonText}</Button>
+      </Popover>,
+    );
+
+    // snapshot while on opened
+    fireEvent.click(getByRole('button', { name: buttonText }));
+    expect(queryByRole('dialog')).toBeInTheDocument();
+    expect(queryByRole('dialog')).toHaveStyle({ 'z-index': 1100 });
+    expect(queryByRole('dialog')).toHaveAttribute('data-blade-component', MetaConstants.Popover);
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render popover with custom zIndex', () => {
+    const buttonText = 'Click me';
+    const { container, getByRole, queryByRole } = renderWithTheme(
+      <Popover content="Hello world" zIndex={9999}>
+        <Button>{buttonText}</Button>
+      </Popover>,
+    );
+
+    // snapshot while on opened
+    fireEvent.click(getByRole('button', { name: buttonText }));
+    expect(queryByRole('dialog')).toBeInTheDocument();
+    expect(queryByRole('dialog')).toHaveStyle({ 'z-index': 9999 });
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should open on clicking', async () => {
+    const buttonText = 'Click me';
+    const { getByRole, queryByRole } = renderWithTheme(
+      <Popover content="Hello world">
+        <Button>{buttonText}</Button>
+      </Popover>,
+    );
+    await waitForPosition();
+
+    // should not be opened by default
+    expect(queryByRole('dialog')).not.toBeInTheDocument();
+
+    // should open after 300ms
+    fireEvent.click(getByRole('button', { name: buttonText }));
+    expect(queryByRole('dialog')).toBeInTheDocument();
+
+    // close after 300ms
+    fireEvent.click(getByRole('button', { hidden: true, name: buttonText }));
+
+    await act(async () => {
+      jest.advanceTimersByTime(299 + animationDuration);
+    });
+    expect(queryByRole('dialog')).not.toBeInTheDocument();
+  });
+
+  it('should close clicking the close icon', async () => {
+    const buttonText = 'Click me';
+    const { getByRole, queryByRole } = renderWithTheme(
+      <Popover content="Hello world">
+        <Button>{buttonText}</Button>
+      </Popover>,
+    );
+    await waitForPosition();
+
+    // should not be opened by default
+    expect(queryByRole('dialog')).not.toBeInTheDocument();
+
+    // should open after 300ms
+    fireEvent.click(getByRole('button', { name: buttonText }));
+    expect(queryByRole('dialog')).toBeInTheDocument();
+
+    // close after 300ms
+    fireEvent.click(getByRole('button', { hidden: true, name: 'Close' }));
+
+    await act(async () => {
+      jest.advanceTimersByTime(299 + animationDuration);
+    });
+    expect(queryByRole('dialog')).not.toBeInTheDocument();
+  });
+
+  it('should not close when interacting with internal components', async () => {
+    const buttonText = 'Click me';
+    const internalButtonText = 'Internal Button Click me';
+    const clickFn = jest.fn();
+    const { getByRole, queryByRole } = renderWithTheme(
+      <Popover
+        content={
+          <Box>
+            <Button onClick={clickFn}>{internalButtonText}</Button>
+          </Box>
+        }
+      >
+        <Button>{buttonText}</Button>
+      </Popover>,
+    );
+    await waitForPosition();
+
+    // should not be opened by default
+    expect(queryByRole('dialog')).not.toBeInTheDocument();
+
+    // should open after 300ms
+    fireEvent.click(getByRole('button', { name: buttonText }));
+    expect(queryByRole('dialog')).toBeInTheDocument();
+
+    // should not close after 300ms
+    fireEvent.click(getByRole('button', { name: internalButtonText }));
+
+    await act(async () => {
+      jest.advanceTimersByTime(299 + animationDuration);
+    });
+
+    expect(clickFn).toHaveBeenCalledTimes(1);
+    expect(queryByRole('dialog')).toBeInTheDocument();
+  });
+
+  it('should work with uncontrolled state', async () => {
+    const buttonText = 'Click me';
+    const onChange = jest.fn();
+    const { getByRole, queryByRole } = renderWithTheme(
+      <Popover defaultIsOpen onOpenChange={({ isOpen }) => onChange(isOpen)} content="Hello world">
+        <Button>{buttonText}</Button>
+      </Popover>,
+    );
+    await waitForPosition();
+
+    // should not be opened by default
+    expect(queryByRole('dialog')).toBeInTheDocument();
+    expect(onChange).toHaveBeenCalledTimes(0);
+
+    // close after 300ms
+    fireEvent.click(getByRole('button', { hidden: true, name: 'Close' }));
+
+    await act(async () => {
+      jest.advanceTimersByTime(299 + animationDuration);
+    });
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onChange).toHaveBeenCalledWith(false);
+
+    expect(queryByRole('dialog')).not.toBeInTheDocument();
+
+    // open
+    fireEvent.click(getByRole('button', { name: buttonText }));
+    expect(queryByRole('dialog')).toBeInTheDocument();
+    expect(onChange).toHaveBeenCalledTimes(2);
+    expect(onChange).toHaveBeenCalledWith(true);
+  });
+
+  it('should work with controlled isOpen', async () => {
+    const buttonText = 'Click me';
+    const toggleButtonText = 'Toggle';
+
+    const ControlledExample = () => {
+      const [isOpen, setIsOpen] = React.useState(true);
+
+      return (
+        <>
+          <Popover
+            content="Hello world"
+            isOpen={isOpen}
+            onOpenChange={({ isOpen }) => setIsOpen(isOpen)}
+          >
+            <Button onClick={() => setIsOpen(true)}>{buttonText}</Button>
+          </Popover>
+          <Button onClick={() => setIsOpen((prev) => !prev)}>{toggleButtonText}</Button>
+        </>
+      );
+    };
+    const { getByRole, queryByRole } = renderWithTheme(<ControlledExample />);
+    await waitForPosition();
+
+    // should be opened by default
+    expect(queryByRole('dialog')).toBeInTheDocument();
+
+    // should close after 300ms
+    fireEvent.click(getByRole('button', { hidden: true, name: toggleButtonText }));
+
+    await act(async () => {
+      jest.advanceTimersByTime(299 + animationDuration);
+    });
+    expect(queryByRole('dialog')).not.toBeInTheDocument();
+
+    // open again
+    fireEvent.click(getByRole('button', { name: buttonText }));
+
+    await act(async () => {
+      jest.advanceTimersByTime(299);
+    });
+
+    expect(queryByRole('dialog')).toBeInTheDocument();
+
+    // close again with close icon
+    fireEvent.click(getByRole('button', { hidden: true, name: 'Close' }));
+
+    await act(async () => {
+      jest.advanceTimersByTime(299 + animationDuration);
+    });
+    expect(queryByRole('dialog')).not.toBeInTheDocument();
+  });
+
+  it('should pass a11y', async () => {
+    jest.useRealTimers();
+
+    const content = 'Hello world';
+    const title = 'Popover title';
+    const buttonText = 'Click me';
+    const { getByRole } = renderWithTheme(
+      <Popover defaultIsOpen title={title} content={content}>
+        <Button>{buttonText}</Button>
+      </Popover>,
+    );
+    expect(getByRole('dialog')).toHaveAccessibleName(title);
+    await assertAccessible(getByRole('dialog'));
+  });
+
+  it('should have proper meta attributes', async () => {
+    jest.useFakeTimers();
+    const { getByTestId, queryByRole } = renderWithTheme(
+      <Popover content="Hello world">
+        <PopoverInteractiveWrapper>
+          <InfoIcon color="surface.action.icon.default.highContrast" size="medium" />
+        </PopoverInteractiveWrapper>
+      </Popover>,
+    );
+    const wrapper = getByTestId('popover-interactive-wrapper');
+    expect(wrapper).toHaveAttribute(
+      'data-blade-component',
+      MetaConstants.PopoverInteractiveWrapper,
+    );
+
+    // should open after 300ms
+    fireEvent.click(wrapper);
+    await act(async () => {
+      jest.advanceTimersByTime(300);
+    });
+    expect(queryByRole('dialog')).toHaveAttribute('data-blade-component', MetaConstants.Popover);
+  });
+});

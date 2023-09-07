@@ -28,6 +28,8 @@ import { useControllableState } from '~utils/useControllable';
 import { mergeProps } from '~utils/mergeProps';
 import { PopupArrow } from '~components/PopupArrow';
 import { useMergeRefs } from '~utils/useMergeRefs';
+import { makeAccessible } from '~utils/makeAccessible';
+import { useId } from '~utils/useId';
 
 const Popover = ({
   content,
@@ -45,6 +47,7 @@ const Popover = ({
   const { theme } = useTheme();
   const defaultInitialFocusRef = React.useRef<HTMLButtonElement>(null);
   const arrowRef = React.useRef<SVGSVGElement>(null);
+  const titleId = useId('popover-title');
 
   const GAP = theme.spacing[2];
   const [side] = getPlacementParts(placement);
@@ -91,7 +94,9 @@ const Popover = ({
     },
   });
 
-  const click = useClick(context);
+  // remove click handler if popover is controlled
+  const isControlled = isOpen !== undefined;
+  const click = useClick(context, { enabled: !isControlled });
   const dismiss = useDismiss(context);
   const role = useRole(context);
 
@@ -103,8 +108,9 @@ const Popover = ({
     return {
       close,
       defaultInitialFocusRef,
+      titleId,
     };
-  }, [close]);
+  }, [close, titleId]);
 
   // Inject aria attributes to trigger
   // Doing it this way instead of makeAccessible()
@@ -143,6 +149,7 @@ const Popover = ({
               zIndex={zIndex}
               {...getFloatingProps()}
               {...metaAttribute({ name: MetaConstants.Popover })}
+              {...makeAccessible({ labelledBy: titleId })}
             >
               <PopoverContent
                 title={title}

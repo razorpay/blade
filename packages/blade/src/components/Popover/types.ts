@@ -37,6 +37,7 @@ type PopoverContentProps = {
   children: React.ReactNode;
   style: CSSProperties;
   arrow: React.ReactNode;
+  zIndex?: number;
   /**
    * react-native only
    */

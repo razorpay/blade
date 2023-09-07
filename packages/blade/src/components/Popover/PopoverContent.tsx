@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 import React from 'react';
 import { PopoverContentWrapper } from './PopoverContentWrapper';
 import type { PopoverContentProps } from './types';
 import { PopoverCloseButton } from './PopoverCloseButton';
+import { usePopoverContext } from './PopoverContext';
 import BaseBox from '~components/Box/BaseBox';
 import { Heading } from '~components/Typography';
 import { isReactNative } from '~utils';
@@ -13,7 +15,9 @@ type PopoverHeaderProps = {
 };
 
 const PopoverHeader = ({ title, titleLeading }: PopoverHeaderProps): React.ReactElement => {
-  const isFloating = !(title && titleLeading);
+  const { titleId } = usePopoverContext();
+
+  const isFloating = !(title || titleLeading);
   if (isFloating) {
     return (
       <BaseBox
@@ -42,7 +46,7 @@ const PopoverHeader = ({ title, titleLeading }: PopoverHeaderProps): React.React
         ? React.cloneElement(titleLeading as React.ReactElement, { size: 'large' })
         : null}
       {title ? (
-        <BaseBox paddingRight="spacing.4">
+        <BaseBox id={titleId} paddingRight="spacing.4">
           <Heading size="small" weight="bold" type="normal">
             {title}
           </Heading>
@@ -58,7 +62,6 @@ const PopoverHeader = ({ title, titleLeading }: PopoverHeaderProps): React.React
 const PopoverContent = React.forwardRef<HTMLDivElement, PopoverContentProps>(
   ({ children, title, titleLeading, footer, arrow, side, style, isVisible }, ref) => {
     const isMobile = useIsMobile();
-
     return (
       <PopoverContentWrapper
         ref={ref as never}
@@ -68,7 +71,7 @@ const PopoverContent = React.forwardRef<HTMLDivElement, PopoverContentProps>(
         isMobile={isMobile}
       >
         <BaseBox padding="spacing.4" display="flex" flexDirection="column" gap="spacing.4">
-          <PopoverHeader titleLeading={titleLeading} title={title} />
+          <PopoverHeader title={title} titleLeading={titleLeading} />
           <BaseBox>{children}</BaseBox>
           {footer ? <BaseBox>{footer}</BaseBox> : null}
         </BaseBox>

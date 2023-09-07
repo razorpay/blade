@@ -131,8 +131,27 @@ const FooterContent = React.forwardRef<HTMLButtonElement, { onClick?: () => void
 );
 
 const PopoverTemplate: ComponentStory<typeof PopoverComponent> = () => {
-  const [isOpen, setIsOpen] = React.useState(true);
-  const buttonRef = React.useRef<HTMLButtonElement>(null);
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  return (
+    <PopoverComponent
+      title="Hello Popover"
+      content="Hello world"
+      isOpen={isOpen}
+      onOpenChange={({ isOpen }) => {
+        setIsOpen(isOpen);
+      }}
+    >
+      <PopoverInteractiveWrapper
+        onClick={() => {
+          return setIsOpen(true);
+        }}
+        accessibilityLabel="Info trigger"
+      >
+        <InfoIcon color="action.icon.link.visited" size="small" />
+      </PopoverInteractiveWrapper>
+    </PopoverComponent>
+  );
 
   return (
     <Center>
