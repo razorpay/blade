@@ -37,7 +37,6 @@ const useAutoCompleteHandlers = ({
     setActiveIndex,
     filteredValues: globalFilteredValues,
     selectionType,
-    displayValue,
   } = useDropdown();
 
   React.useEffect((): void => {
@@ -102,7 +101,12 @@ const useAutoCompleteHandlers = ({
       setActiveTagIndex(-1);
       setGlobalFilteredValues(getOptionValues());
     } else {
-      setInputValue(displayValue);
+      const displayText = options.find((option) => option.value === values[0])?.title;
+      props.onInputValueChange?.({
+        name: props.name,
+        value: displayText,
+      });
+      setInputValue(displayText ?? '');
     }
     props.onChange?.({ name: props.name, values });
   };
@@ -156,7 +160,7 @@ const _AutoComplete = (
       setGlobalFilteredValues(getOptionValues());
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isOpen]);
+  }, [isOpen, options]);
 
   React.useEffect(() => {
     if (props.filteredValues) {
