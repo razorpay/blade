@@ -5,7 +5,7 @@ import { BaseDropdownInputTrigger } from './BaseDropdownInputTrigger';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import BaseBox from '~components/Box/BaseBox';
 import { componentIds } from '~components/Dropdown/dropdownUtils';
-import { BladeElementRef } from '~utils/types';
+import type { BladeElementRef } from '~utils/types';
 
 const useAutoCompleteHandlers = ({
   props,
@@ -156,7 +156,7 @@ const _AutoComplete = (
       setGlobalFilteredValues(getOptionValues());
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isOpen]);
+  }, [isOpen, options]);
 
   React.useEffect(() => {
     if (props.filteredValues) {

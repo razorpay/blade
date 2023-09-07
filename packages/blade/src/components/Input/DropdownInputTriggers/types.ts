@@ -105,14 +105,6 @@ export type BaseDropdownInputTriggerProps = Omit<
   isSelectInput: boolean;
 
   onTriggerClick: BaseInputProps['onClick'];
-
-  /**
-   * For AutoComplete
-   *
-   * Although similar to onChange, this is the callback that we can internally use without interferring with controlled props
-   * This is used in changing AutoComplete's internal states when item gets selected
-   */
-  onSelectionChange?: () => void;
 };
 
 export type SelectInputProps = DropdownInputTriggersProps;

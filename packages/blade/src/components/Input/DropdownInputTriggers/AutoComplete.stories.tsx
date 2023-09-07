@@ -13,6 +13,7 @@ import { Box } from '~components/Box';
 import { BottomSheet, BottomSheetBody, BottomSheetHeader } from '~components/BottomSheet';
 import { Button } from '~components/Button';
 import { PlusIcon } from '~components/Icons';
+import { Text } from '~components/Typography';
 
 const propsCategory = {
   BASE_PROPS: 'Select Input Props',
@@ -367,14 +368,19 @@ export const AutoCompleteWithBottomSheet = (): React.ReactElement => {
 export const CreatableItem = (): React.ReactElement => {
   const [items, setItems] = React.useState(['Mumbai', 'Pune', 'Bangalore']);
   const [inputValue, setInputValue] = React.useState('');
-  const autocompleteRef = React.useRef(null);
+  const [currentSelection, setCurrentSelection] = React.useState<string | undefined>(undefined);
 
   return (
     <Box maxWidth="500px">
       <Dropdown>
         <AutoComplete
-          ref={autocompleteRef}
           label="Select City"
+          value={currentSelection}
+          onChange={({ values }) => {
+            if (values[0]) {
+              setCurrentSelection(values[0]);
+            }
+          }}
           inputValue={inputValue}
           onInputValueChange={({ value }) => {
             setInputValue(value ?? '');
@@ -382,8 +388,8 @@ export const CreatableItem = (): React.ReactElement => {
         />
         <DropdownOverlay>
           <ActionList>
-            {items.map((item) => (
-              <ActionListItem key={item} title={item} value={item.toLowerCase()} />
+            {items.map((item, index) => (
+              <ActionListItem key={item + String(index)} title={item} value={item.toLowerCase()} />
             ))}
           </ActionList>
           <DropdownFooter>
@@ -393,13 +399,39 @@ export const CreatableItem = (): React.ReactElement => {
               variant="secondary"
               iconPosition="right"
               onClick={() => {
-                setInputValue('');
+                setCurrentSelection(inputValue.toLowerCase());
                 setItems([...items, inputValue]);
               }}
             >
               Create Items
             </Button>
           </DropdownFooter>
+        </DropdownOverlay>
+      </Dropdown>
+    </Box>
+  );
+};
+
+export const ControlledInputValue = () => {
+  const [inputValue, setInputValue] = React.useState<string | undefined>('');
+
+  return (
+    <Box>
+      <Text>{inputValue}</Text>
+      <Dropdown>
+        <AutoComplete
+          inputValue={inputValue}
+          onInputValueChange={({ value }) => {
+            setInputValue(value);
+          }}
+          label="Select City"
+        />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Mumbai" value="mumbai" />
+            <ActionListItem title="Pune" value="pune" />
+            <ActionListItem title="Bangalore" value="bangalore" />
+          </ActionList>
         </DropdownOverlay>
       </Dropdown>
     </Box>

@@ -11,10 +11,7 @@ import { getTagsGroup } from '~components/Tag/getTagsGroup';
 import type { BladeElementRef } from '~utils/types';
 
 const useControlledDropdownInput = (
-  props: Pick<
-    BaseDropdownInputTriggerProps,
-    'onChange' | 'onSelectionChange' | 'name' | 'value' | 'defaultValue'
-  >,
+  props: Pick<BaseDropdownInputTriggerProps, 'onChange' | 'name' | 'value' | 'defaultValue'>,
 ): void => {
   const isFirstRenderRef = React.useRef(true);
   const {
@@ -96,7 +93,6 @@ const useControlledDropdownInput = (
     }
 
     if (!isFirstRenderRef.current) {
-      props.onSelectionChange?.();
       props.onChange?.({
         name: props.name,
         values: getValuesArrayFromIndices(),
@@ -139,7 +135,6 @@ const _BaseDropdownInputTrigger = (
   const isAutoCompleteInHeader = !props.isSelectInput && hasAutoCompleteInBottomSheetHeader;
 
   useControlledDropdownInput({
-    onSelectionChange: props.onSelectionChange,
     onChange: props.onChange,
     name: props.name,
     value: props.value,
