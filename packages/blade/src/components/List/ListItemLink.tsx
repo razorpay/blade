@@ -39,4 +39,5 @@ const ListItemLink = assignWithoutSideEffects(_ListItemLink, {
   componentId: MetaConstants.ListItemLink,
 });
 
-export { ListItemLink, ListItemLinkProps };
+export type { ListItemLinkProps };
+export { ListItemLink };

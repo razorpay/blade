@@ -53,4 +53,5 @@ const BottomSheetHeader = assignWithoutSideEffects(_BottomSheetHeader, {
   componentId: ComponentIds.BottomSheetHeader,
 });
 
-export { BottomSheetHeader, BottomSheetHeaderProps };
+export type { BottomSheetHeaderProps };
+export { BottomSheetHeader };

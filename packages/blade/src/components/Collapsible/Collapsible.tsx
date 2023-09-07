@@ -142,4 +142,5 @@ const Collapsible = ({
   );
 };
 
-export { Collapsible, CollapsibleProps };
+export type { CollapsibleProps };
+export { Collapsible };

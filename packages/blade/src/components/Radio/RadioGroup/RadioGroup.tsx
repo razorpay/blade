@@ -173,4 +173,5 @@ const RadioGroup = ({
   );
 };
 
-export { RadioGroup, RadioGroupProps };
+export type { RadioGroupProps };
+export { RadioGroup };
