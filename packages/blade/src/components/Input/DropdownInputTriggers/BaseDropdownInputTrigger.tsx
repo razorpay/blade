@@ -147,9 +147,14 @@ const _BaseDropdownInputTrigger = (
   });
 
   const getValue = (): string | undefined => {
+    let prefix = '';
+    if (props.labelPosition === 'inside-input' && props.label) {
+      prefix = `${props.label}: `;
+    }
+
     if (props.isSelectInput) {
       if (selectionType === 'single') {
-        return displayValue;
+        return `${prefix}${displayValue}`;
       }
 
       // In multiselect, we return tags so no display value is required
@@ -226,7 +231,8 @@ const _BaseDropdownInputTrigger = (
       }
       hideLabelText={props.label?.length === 0}
       accessibilityLabel={props.accessibilityLabel}
-      labelPosition={props.labelPosition}
+      labelPosition={props.labelPosition === 'inside-input' ? undefined : props.labelPosition}
+      isLabelInsideInput={props.labelPosition === 'inside-input'}
       necessityIndicator={props.necessityIndicator}
       autoCompleteSuggestionType="none"
       validationState={props.validationState}

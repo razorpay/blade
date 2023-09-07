@@ -5,7 +5,7 @@ import { BaseDropdownInputTrigger } from './BaseDropdownInputTrigger';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import BaseBox from '~components/Box/BaseBox';
 import { componentIds } from '~components/Dropdown/dropdownUtils';
-import { BladeElementRef } from '~utils/types';
+import type { BladeElementRef } from '~utils/types';
 
 const useAutoCompleteHandlers = ({
   props,
