@@ -368,19 +368,14 @@ export const AutoCompleteWithBottomSheet = (): React.ReactElement => {
 export const CreatableItem = (): React.ReactElement => {
   const [items, setItems] = React.useState(['Mumbai', 'Pune', 'Bangalore']);
   const [inputValue, setInputValue] = React.useState('');
-  const [currentSelection, setCurrentSelection] = React.useState<string | undefined>(undefined);
+  const autoCompleteRef = React.useRef<HTMLInputElement>(null);
 
   return (
     <Box maxWidth="500px">
       <Dropdown>
         <AutoComplete
+          ref={autoCompleteRef}
           label="Select City"
-          value={currentSelection}
-          onChange={({ values }) => {
-            if (values[0]) {
-              setCurrentSelection(values[0]);
-            }
-          }}
           inputValue={inputValue}
           onInputValueChange={({ value }) => {
             setInputValue(value ?? '');
@@ -399,11 +394,12 @@ export const CreatableItem = (): React.ReactElement => {
               variant="secondary"
               iconPosition="right"
               onClick={() => {
-                setCurrentSelection(inputValue.toLowerCase());
+                autoCompleteRef.current?.focus();
+                setInputValue('');
                 setItems([...items, inputValue]);
               }}
             >
-              Create Items
+              Create {inputValue}
             </Button>
           </DropdownFooter>
         </DropdownOverlay>
@@ -412,7 +408,7 @@ export const CreatableItem = (): React.ReactElement => {
   );
 };
 
-export const ControlledInputValue = () => {
+export const ControlledInputValue = (): React.ReactElement => {
   const [inputValue, setInputValue] = React.useState<string | undefined>('');
 
   return (
