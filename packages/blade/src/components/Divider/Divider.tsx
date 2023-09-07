@@ -5,9 +5,10 @@ import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { ColorContrast } from '~tokens/theme/theme';
-import { makeBorderSize } from '~utils';
+import { isReactNative, makeBorderSize } from '~utils';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import type { TestID } from '~utils/types';
+import { makeAccessible } from '~utils/makeAccessible';
 
 type DividerProps = {
   /**
@@ -94,6 +95,9 @@ const Divider = ({
       {...borderColor}
       {...metaAttribute({ name: MetaConstants.Divider, testID })}
       {...getStyledProps(styledProps)}
+      {...makeAccessible({
+        role: isReactNative() ? undefined : 'separator',
+      })}
     />
   );
 };
