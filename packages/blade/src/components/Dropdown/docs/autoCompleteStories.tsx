@@ -201,6 +201,9 @@ export const tagsOutside = `
 
 export const responsiveBottomSheet = `
   import { 
+    Box,
+    Text,
+    Code,
     Dropdown, 
     DropdownOverlay,
     AutoComplete,
@@ -213,7 +216,7 @@ export const responsiveBottomSheet = `
     BottomSheetBody,
   } from '@razorpay/blade/components';
 
-  // Change this flag and watch BottomSheet turn into Dropdown
+  // Change this flag, refresh the sandbox preview and watch BottomSheet turn into Dropdown
   const isMobile = true;
 
   const triggerProps: SelectInputProps = {
@@ -235,34 +238,141 @@ export const responsiveBottomSheet = `
 
   function App(): React.ReactElement {
     return (
-      <Dropdown 
-        selectionType="multiple"
-      >
-        {
-          isMobile 
-          ? <SelectInput {...triggerProps} /> 
-          : <AutoComplete {...triggerProps} />
-        }
-        { 
-          isMobile 
-          ? (
-            <BottomSheet>
-              <BottomSheetHeader>
-                <AutoComplete {...triggerProps} />
-              </BottomSheetHeader>
-              <BottomSheetBody>
+      <Box>
+        <Text textAlign="center" marginBottom="spacing.8">Change the <Code>isMobile</Code> flag in code and refresh the sandbox preview</Text>
+        <Dropdown 
+          selectionType="multiple"
+        >
+          {
+            isMobile 
+            ? <SelectInput {...triggerProps} /> 
+            : <AutoComplete {...triggerProps} />
+          }
+          { 
+            isMobile 
+            ? (
+              <BottomSheet>
+                <BottomSheetHeader>
+                  <AutoComplete {...triggerProps} />
+                </BottomSheetHeader>
+                <BottomSheetBody>
+                  <List />
+                </BottomSheetBody>
+              </BottomSheet>
+            ) : (
+              <DropdownOverlay>
                 <List />
-              </BottomSheetBody>
-            </BottomSheet>
-          ) : (
-            <DropdownOverlay>
-              <List />
-            </DropdownOverlay>
-          )
-        }
-      </Dropdown>
+              </DropdownOverlay>
+            )
+          }
+        </Dropdown>
+      </Box>
     )
   }
+
+  export default App;
+`;
+
+export const creatableItems = `
+  import React from 'react';
+  import { 
+    Box,
+    Button,
+    PlusIcon,
+    Dropdown, 
+    DropdownFooter,
+    DropdownOverlay,
+    AutoComplete,
+    ActionList,
+    ActionListItem,
+  } from '@razorpay/blade/components';
+
+
+  const App = (): React.ReactElement => {
+    const [items, setItems] = React.useState(['Mumbai', 'Pune', 'Bangalore']);
+    const [inputValue, setInputValue] = React.useState('');
+    const autoCompleteRef = React.useRef<HTMLInputElement>(null);
+
+    return (
+      <Box maxWidth="500px">
+        <Dropdown>
+          <AutoComplete
+            ref={autoCompleteRef}
+            label="Select City"
+            inputValue={inputValue}
+            onInputValueChange={({ value }) => {
+              setInputValue(value ?? '');
+            }}
+          />
+          <DropdownOverlay>
+            <ActionList>
+              {items.map((item, index) => (
+                <ActionListItem key={item + String(index)} title={item} value={item.toLowerCase()} />
+              ))}
+            </ActionList>
+            <DropdownFooter>
+              <Button
+                icon={PlusIcon}
+                isFullWidth
+                variant="secondary"
+                iconPosition="right"
+                onClick={() => {
+                  autoCompleteRef.current?.focus();
+                  setInputValue('');
+                  setItems([...items, inputValue]);
+                }}
+              >
+                Create {inputValue}
+              </Button>
+            </DropdownFooter>
+          </DropdownOverlay>
+        </Dropdown>
+      </Box>
+    );
+  };
+
+  export default App;
+`;
+
+export const clearOnDismiss = `
+  import React from 'react';
+  import { 
+    Box,
+    Button,
+    PlusIcon,
+    Dropdown, 
+    DropdownFooter,
+    DropdownOverlay,
+    AutoComplete,
+    ActionList,
+    ActionListItem,
+  } from '@razorpay/blade/components';
+
+
+  const App = (): React.ReactElement => {
+    const [inputValue, setInputValue] = React.useState('');
+
+    return (
+      <Box maxWidth="500px">
+        <Dropdown selectionType="multiple" onDismiss={() => setInputValue('')}>
+          <AutoComplete
+            label="Select City"
+            inputValue={inputValue}
+            onInputValueChange={({ value }) => {
+              setInputValue(value ?? '');
+            }}
+          />
+          <DropdownOverlay>
+            <ActionList>
+              <ActionListItem title="Mumbai" value="mumbai" />
+              <ActionListItem title="Pune" value="pune" />
+              <ActionListItem title="Bengaluru" value="bengaluru" />
+            </ActionList>
+          </DropdownOverlay>
+        </Dropdown>
+      </Box>
+    );
+  };
 
   export default App;
 `;

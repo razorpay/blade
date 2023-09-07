@@ -1,11 +1,13 @@
 import React from 'react';
 import type { ComponentStory, Meta } from '@storybook/react';
-import { Dropdown, DropdownFooter, DropdownHeader, DropdownOverlay } from '..';
+import { Dropdown, DropdownOverlay } from '..';
 import {
   getSimpleAutoComplete,
   controlledFiltering,
   tagsOutside,
   responsiveBottomSheet,
+  creatableItems,
+  clearOnDismiss,
 } from './autoCompleteStories';
 
 import { Sandbox } from '~utils/storybook/Sandbox';
@@ -77,6 +79,22 @@ export const ResponsiveBottomSheet = (): React.ReactElement => {
   return (
     <Sandbox padding="spacing.0" editorHeight="100vh">
       {responsiveBottomSheet}
+    </Sandbox>
+  );
+};
+
+export const CreatableItems = (): React.ReactElement => {
+  return (
+    <Sandbox padding="spacing.0" editorHeight="100vh">
+      {creatableItems}
+    </Sandbox>
+  );
+};
+
+export const ClearInputOnDismiss = (): React.ReactElement => {
+  return (
+    <Sandbox padding="spacing.0" editorHeight="100vh">
+      {clearOnDismiss}
     </Sandbox>
   );
 };
