@@ -4,7 +4,13 @@ import { Text } from '~components/Typography';
 
 const ActionListNoResults = (): React.ReactElement => {
   return (
-    <Box textAlign="center" padding="spacing.5">
+    <Box
+      display="flex"
+      flexDirection="column"
+      alignItems="center"
+      justifyContent="center"
+      padding="spacing.5"
+    >
       <SearchIcon size="xlarge" color="surface.text.normal.lowContrast" />
       <Text marginTop="spacing.5" weight="bold">
         No Search Result Found

@@ -5,9 +5,9 @@ import { useDropdown } from '~components/Dropdown/useDropdown';
 import BaseBox from '~components/Box/BaseBox';
 import { VisuallyHidden } from '~components/VisuallyHidden';
 import { isReactNative } from '~utils';
-import { componentIds } from '~components/Dropdown/dropdownUtils';
 import type { BladeElementRef } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { dropdownComponentIds } from '~components/Dropdown/dropdownComponentIds';
 
 const _SelectInput = (
   props: SelectInputProps,
@@ -79,7 +79,7 @@ const _SelectInput = (
  */
 
 const SelectInput = assignWithoutSideEffects(React.forwardRef(_SelectInput), {
-  componentId: componentIds.triggers.SelectInput,
+  componentId: dropdownComponentIds.triggers.SelectInput,
 });
 
 export { SelectInput };

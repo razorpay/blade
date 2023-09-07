@@ -4,7 +4,7 @@ import { BaseLink } from '../Link/BaseLink';
 import type { BaseLinkProps } from '../Link/BaseLink';
 import type { LinkButtonVariantProps } from '../Link';
 import { useDropdown } from './useDropdown';
-import { componentIds } from './dropdownUtils';
+import { dropdownComponentIds } from './dropdownComponentIds';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 type DropdownLinkProps = LinkButtonVariantProps & {
@@ -85,7 +85,7 @@ const _DropdownLink = ({
 };
 
 const DropdownLink = assignWithoutSideEffects(_DropdownLink, {
-  componentId: componentIds.triggers.DropdownLink,
+  componentId: dropdownComponentIds.triggers.DropdownLink,
 });
 
 export { DropdownLink };
