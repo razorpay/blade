@@ -8,6 +8,7 @@ import { isReactNative } from '~utils';
 import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
 import { MetaConstants } from '~utils/metaAttribute';
 import { getTagsGroup } from '~components/Tag/getTagsGroup';
+import type { BladeElementRef } from '~utils/types';
 
 const useControlledDropdownInput = (
   props: Pick<
@@ -105,7 +106,10 @@ const useControlledDropdownInput = (
   }, [changeCallbackTriggerer]);
 };
 
-const BaseDropdownInputTrigger = (props: BaseDropdownInputTriggerProps): React.ReactElement => {
+const _BaseDropdownInputTrigger = (
+  props: BaseDropdownInputTriggerProps,
+  ref: React.ForwardedRef<BladeElementRef>,
+): React.ReactElement => {
   const {
     isOpen,
     activeTagIndex,
@@ -186,7 +190,21 @@ const BaseDropdownInputTrigger = (props: BaseDropdownInputTriggerProps): React.R
   return (
     <BaseInput
       as={props.isSelectInput ? 'button' : 'input'}
-      ref={(!isReactNative() ? triggererRef : null) as never}
+      ref={
+        (!isReactNative()
+          ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            (node: any) => {
+              triggererRef.current = node;
+              if (ref) {
+                if (typeof ref === 'function') {
+                  ref(node);
+                } else {
+                  ref.current = node;
+                }
+              }
+            }
+          : null) as never
+      }
       isDropdownTrigger={true}
       setInputWrapperRef={(wrapperNode) => {
         triggererWrapperRef.current = wrapperNode;
@@ -259,5 +277,7 @@ const BaseDropdownInputTrigger = (props: BaseDropdownInputTriggerProps): React.R
     />
   );
 };
+
+const BaseDropdownInputTrigger = React.forwardRef(_BaseDropdownInputTrigger);
 
 export { BaseDropdownInputTrigger };

@@ -5,6 +5,7 @@ import { BaseDropdownInputTrigger } from './BaseDropdownInputTrigger';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import BaseBox from '~components/Box/BaseBox';
 import { componentIds } from '~components/Dropdown/dropdownUtils';
+import { BladeElementRef } from '~utils/types';
 
 const useAutoCompleteHandlers = ({
   props,
@@ -113,7 +114,10 @@ const useAutoCompleteHandlers = ({
   };
 };
 
-const _AutoComplete = (props: AutoCompleteProps): React.ReactElement => {
+const _AutoComplete = (
+  props: AutoCompleteProps,
+  ref: React.ForwardedRef<BladeElementRef>,
+): React.ReactElement => {
   const [uncontrolledInputValue, setInputValue] = React.useState('');
   const inputValue = props.inputValue ?? uncontrolledInputValue;
 
@@ -164,6 +168,8 @@ const _AutoComplete = (props: AutoCompleteProps): React.ReactElement => {
     <BaseBox position="relative">
       <BaseDropdownInputTrigger
         {...props}
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        ref={ref as any}
         onChange={onSelectionChange}
         isSelectInput={false}
         inputValue={inputValue}
@@ -181,7 +187,7 @@ const _AutoComplete = (props: AutoCompleteProps): React.ReactElement => {
   );
 };
 
-const AutoComplete = assignWithoutSideEffects(_AutoComplete, {
+const AutoComplete = assignWithoutSideEffects(React.forwardRef(_AutoComplete), {
   componentId: componentIds.triggers.AutoComplete,
 });
 
