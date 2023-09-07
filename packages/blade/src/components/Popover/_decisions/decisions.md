@@ -36,8 +36,8 @@ The popover component is used to provide context as well as enable users to take
 
 | Prop            | Type                                                                                                                   | Default     | Description                                                                                                                           | Required |
 | --------------- | ---------------------------------------------------------------------------------------------------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| headerTitle     | `string`                                                                                                               | `undefined` | Title of the header                                                                                                                   | ✅        |
-| headerLeading   | `React.ReactNode`                                                                                                      | `undefined` | Leading element to be placed before header title, recommended components are Icon or Asset. The icon's size will be set to large      |          |
+| title     | `string`                                                                                                               | `undefined` | Title of the header                                                                                                                   | ✅        |
+| titleLeading   | `React.ReactNode`                                                                                                      | `undefined` | Leading element to be placed before header title, recommended components are Icon or Asset. The icon's size will be set to large      |          |
 | footer   | `React.ReactNode`                                                                                                      | `undefined` | Slottable content of the footer                                                                                                       |          |
 | content         | `React.ReactNode`                                                                                                               | `undefined` | Content of the popover (can be any interactive or non-interactive elements)                                                                                                                |          |
 | children        | `React.ReactNode`                                                                                                      | `undefined` | Trigger component for popover, Accepts any interactive element or icons                                                               | ✅        |
@@ -45,6 +45,7 @@ The popover component is used to provide context as well as enable users to take
 | isOpen          | `boolean`                                                                                                              | `undefined` | Controlled state of the popover                                                                                                       |          |
 | defaultIsOpen   | `boolean`                                                                                                              | `undefined` | Uncontrolled state of the popover                                                                                                     |          |
 | onOpenChange    | `({ isOpen }) => void`                                                                                                 | `undefined` | Called when popover isOpen state is changed, this can be used to detect when popover opens or closed                                  |          |
+| onDismissButtonClick    | `() => void`                                                                                                 | `undefined` | Called when dismiss button is clicked, useful for sending analytic events                                  |          |
 | initialFocusRef | `React.RefObject`                                                                                                      | `undefined` | The ref of the element that should receive focus when the popover opens.                                                              |          |  |
 
 ### Examples:
@@ -55,7 +56,7 @@ The popover component is used to provide context as well as enable users to take
 // basic example
 <Popover
   placement="top-end"
-  headerTitle="International Payments"
+  title="International Payments"
   content={
     <Text>
       Your business can go international with support for transactions in 
@@ -170,7 +171,7 @@ const MyCustomButton = React.forwardRef<
 });
 
 // Custom trigger
-<Popover headerTitle="Refund Status" content="Amount reversed to customer bank account">
+<Popover title="Refund Status" content="Amount reversed to customer bank account">
   <MyCustomButton>Click me<MyCustomButton>
 </Popover>
 ```
