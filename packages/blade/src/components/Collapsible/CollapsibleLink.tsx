@@ -51,4 +51,5 @@ const CollapsibleLink = assignWithoutSideEffects(_CollapsibleLink, {
   componentId: MetaConstants.CollapsibleLink,
 });
 
-export { CollapsibleLink, CollapsibleLinkProps };
+export type { CollapsibleLinkProps };
+export { CollapsibleLink };

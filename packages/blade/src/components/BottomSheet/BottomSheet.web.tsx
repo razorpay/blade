@@ -461,4 +461,5 @@ const BottomSheet = assignWithoutSideEffects(_BottomSheet, {
   componentId: ComponentIds.BottomSheet,
 });
 
-export { BottomSheet, BottomSheetBody, BottomSheetHeader, BottomSheetFooter, BottomSheetProps };
+export { BottomSheet, BottomSheetBody, BottomSheetHeader, BottomSheetFooter };
+export type { BottomSheetProps };

@@ -17,4 +17,5 @@ const ListItemCode = assignWithoutSideEffects(_ListItemCode, {
   componentId: MetaConstants.ListItemCode,
 });
 
-export { ListItemCode, ListItemCodeProps };
+export type { ListItemCodeProps };
+export { ListItemCode };

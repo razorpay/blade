@@ -207,4 +207,5 @@ const PasswordInput = assignWithoutSideEffects(React.forwardRef(_PasswordInput),
   displayName: 'PasswordInput',
 });
 
-export { PasswordInputProps, PasswordInput };
+export type { PasswordInputProps };
+export { PasswordInput };

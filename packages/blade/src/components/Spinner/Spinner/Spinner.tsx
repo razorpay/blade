@@ -25,4 +25,5 @@ const Spinner = ({
   );
 };
 
-export { Spinner, SpinnerProps };
+export type { SpinnerProps };
+export { Spinner };

@@ -303,4 +303,5 @@ const SelectInput = assignWithoutSideEffects(React.forwardRef(_SelectInput), {
   componentId: componentIds.triggers.SelectInput,
 });
 
-export { SelectInput, SelectInputProps };
+export type { SelectInputProps };
+export { SelectInput };

@@ -214,4 +214,5 @@ const TextArea = assignWithoutSideEffects(React.forwardRef(_TextArea), {
   displayName: 'TextArea',
 });
 
-export { TextArea, TextAreaProps };
+export type { TextAreaProps };
+export { TextArea };

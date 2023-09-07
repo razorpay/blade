@@ -176,4 +176,5 @@ const ProgressBarFilled = ({
   );
 };
 
-export { ProgressBarFilled, ProgressBarFilledProps };
+export type { ProgressBarFilledProps };
+export { ProgressBarFilled };
