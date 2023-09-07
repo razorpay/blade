@@ -10,7 +10,6 @@ import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Dropdown, DropdownFooter, DropdownOverlay } from '~components/Dropdown';
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { Box } from '~components/Box';
-import { Text } from '~components/Typography';
 import { BottomSheet, BottomSheetBody, BottomSheetHeader } from '~components/BottomSheet';
 import { Button } from '~components/Button';
 import { PlusIcon } from '~components/Icons';
@@ -252,7 +251,7 @@ SelectInputWithoutLabel.storyName = 'SelectInput without Label';
 
 export const AutoCompleteUncontrolled = (): React.ReactElement => {
   return (
-    <Box maxWidth="200px">
+    <Box maxWidth="400px">
       <Dropdown selectionType="multiple">
         <AutoComplete maxRows="single" label="City" />
         <DropdownOverlay>

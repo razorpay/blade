@@ -6,6 +6,7 @@ import { getActionListContainerRole, getActionListItemWrapperRole } from './getA
 import { getActionListProperties } from './actionListUtils';
 import { ActionListBox } from './ActionListBox';
 import { componentIds } from './componentIds';
+import { ActionListNoResults } from './ActionListNoResults';
 import { makeAccessible } from '~utils/makeAccessible';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { TestID } from '~utils/types';
@@ -81,6 +82,7 @@ const _ActionList = ({
     dropdownBaseId,
     dropdownTriggerer,
     hasFooterAction,
+    filteredValues,
   } = useDropdown();
 
   const { isInBottomSheet } = useBottomSheetContext();
@@ -94,6 +96,11 @@ const _ActionList = ({
     setOptions(actionListOptions);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [actionListOptions]);
+  const actionListContextValue = React.useMemo(() => ({ surfaceLevel }), [surfaceLevel]);
+
+  if (filteredValues.length <= 0 && dropdownTriggerer === 'AutoComplete') {
+    return <ActionListNoResults />;
+  }
 
   const actionListContainerRole = getActionListContainerRole(hasFooterAction, dropdownTriggerer);
   const actionListItemWrapperRole = getActionListItemWrapperRole(
@@ -101,8 +108,6 @@ const _ActionList = ({
     dropdownTriggerer,
   );
   const isMultiSelectable = selectionType === 'multiple';
-
-  const actionListContextValue = React.useMemo(() => ({ surfaceLevel }), [surfaceLevel]);
 
   // If we are inside BottomSheet, we don't render The StyledActionList wrapper
   // This is to ensure:
