@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 10.7.0
+
+### Minor Changes
+
+- f43d9b35: feat(Icon): add default value for `size` & `color` props
+
 ## 10.6.0
 
 ### Minor Changes
