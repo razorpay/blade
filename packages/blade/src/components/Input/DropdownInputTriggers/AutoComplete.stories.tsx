@@ -7,10 +7,12 @@ import { AutoComplete } from './AutoComplete';
 import iconMap from '~components/Icons/iconMap';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
-import { Dropdown, DropdownOverlay } from '~components/Dropdown';
+import { Dropdown, DropdownFooter, DropdownOverlay } from '~components/Dropdown';
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { Box } from '~components/Box';
 import { BottomSheet, BottomSheetBody, BottomSheetHeader } from '~components/BottomSheet';
+import { Button } from '~components/Button';
+import { PlusIcon } from '~components/Icons';
 
 const propsCategory = {
   BASE_PROPS: 'Select Input Props',
@@ -359,5 +361,47 @@ export const AutoCompleteWithBottomSheet = (): React.ReactElement => {
         </BottomSheetBody>
       </BottomSheet>
     </Dropdown>
+  );
+};
+
+export const CreatableItem = (): React.ReactElement => {
+  const [items, setItems] = React.useState(['Mumbai', 'Pune', 'Bangalore']);
+  const [inputValue, setInputValue] = React.useState('');
+  const autocompleteRef = React.useRef(null);
+
+  return (
+    <Box maxWidth="500px">
+      <Dropdown>
+        <AutoComplete
+          ref={autocompleteRef}
+          label="Select City"
+          inputValue={inputValue}
+          onInputValueChange={({ value }) => {
+            setInputValue(value ?? '');
+          }}
+        />
+        <DropdownOverlay>
+          <ActionList>
+            {items.map((item) => (
+              <ActionListItem key={item} title={item} value={item.toLowerCase()} />
+            ))}
+          </ActionList>
+          <DropdownFooter>
+            <Button
+              icon={PlusIcon}
+              isFullWidth
+              variant="secondary"
+              iconPosition="right"
+              onClick={() => {
+                setInputValue('');
+                setItems([...items, inputValue]);
+              }}
+            >
+              Create Items
+            </Button>
+          </DropdownFooter>
+        </DropdownOverlay>
+      </Dropdown>
+    </Box>
   );
 };
