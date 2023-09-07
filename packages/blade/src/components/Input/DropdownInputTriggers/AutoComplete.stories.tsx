@@ -3,12 +3,14 @@ import type { ComponentStory } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import React from 'react';
 import { SelectInput } from './SelectInput';
+import { AutoComplete } from './AutoComplete';
 import iconMap from '~components/Icons/iconMap';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Dropdown, DropdownOverlay } from '~components/Dropdown';
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { Box } from '~components/Box';
+import { BottomSheet, BottomSheetBody, BottomSheetHeader } from '~components/BottomSheet';
 
 const propsCategory = {
   BASE_PROPS: 'Select Input Props',
@@ -20,8 +22,8 @@ const propsCategory = {
 };
 
 export default {
-  title: 'Components/Dropdown/SelectInput',
-  component: SelectInput,
+  title: 'Components/Dropdown/AutoComplete',
+  component: AutoComplete,
   args: {
     defaultValue: undefined,
     placeholder: 'Select Option',
@@ -32,11 +34,8 @@ export default {
     onChange: ({ name, values }): void => {
       console.log(`input field ${name} content changed to ${values}`);
     },
-    onFocus: ({ name, value }): void => {
+    onInputValueChange: ({ name, value }): void => {
       console.log(`input field ${name} received focus. The value is ${value}`);
-    },
-    onBlur: ({ name, value }): void => {
-      console.log(`input field ${name} content lost focus. The value is ${value}`);
     },
     label: 'Select Item',
     labelPosition: 'top',
@@ -174,9 +173,9 @@ export default {
     docs: {
       page: () => (
         <StoryPageWrapper
-          componentDescription="The SelectInput component is a component that can be used inside Dropdown component to create a Select Menu"
-          componentName="SelectInput"
-          note="SelectInput is meant to be used only inside the Dropdown component. Things will not work as expected if you are using this without Dropdown"
+          componentDescription="The AutoComplete component is SelectInput-like component where you can type text and search through the list"
+          componentName="AutoComplete"
+          note="AutoComplete is meant to be used only inside the Dropdown component. Things will not work as expected if you are using this without Dropdown"
           figmaURL={{
             paymentTheme:
               'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13590-171090',
@@ -187,22 +186,25 @@ export default {
           <Title>Usage</Title>
           <Sandbox showConsole>
             {`
-              import { SelectInput, Dropdown, DropdownOverlay, ActionList, ActionListItem } from '@razorpay/blade/components';
+              import { AutoComplete, Dropdown, DropdownOverlay, ActionList, ActionListItem } from '@razorpay/blade/components';
 
               function App(): React.ReactElement {
                 return (
                   // Only works inside Dropdown component
                   <Dropdown>
-                    <SelectInput 
+                    <AutoComplete 
                       label="City" 
                       name="city"
                       placeholder="Select City" 
                       onChange={(e) => console.log(e)}
+                      onInputValueChange={(e) => console.log(e)}
                     />
                     <DropdownOverlay>
                       <ActionList>
                         <ActionListItem title="Mumbai" value="mumbai" />
-                        <ActionListItem title="Bangalore" value="bangalore" />
+                        <ActionListItem title="Bengaluru" value="bengaluru" />
+                        <ActionListItem title="Pune" value="pune" />
+                        <ActionListItem title="Mysuru" value="mysuru" />
                       </ActionList>
                     </DropdownOverlay>
                   </Dropdown>
@@ -218,11 +220,11 @@ export default {
   },
 };
 
-const SelectInputTemplate: ComponentStory<typeof SelectInput> = ({ icon, ...args }) => {
+const AutoCompleteTemplate: ComponentStory<typeof AutoComplete> = ({ icon, ...args }) => {
   return (
     <Box minHeight="150px">
       <Dropdown>
-        <SelectInput {...args} icon={iconMap[(icon as unknown) as string]} />
+        <AutoComplete {...args} icon={iconMap[(icon as unknown) as string]} />
         <DropdownOverlay>
           <ActionList>
             <ActionListItem title="Item 1" value="item-1" />
@@ -234,13 +236,128 @@ const SelectInputTemplate: ComponentStory<typeof SelectInput> = ({ icon, ...args
   );
 };
 
-export const Default = SelectInputTemplate.bind({});
+export const Default = AutoCompleteTemplate.bind({});
 // Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
-Default.storyName = 'SelectInput';
+Default.storyName = 'AutoComplete';
 
-export const SelectInputWithoutLabel = SelectInputTemplate.bind({});
-SelectInputWithoutLabel.args = {
-  label: undefined,
-  accessibilityLabel: 'City',
+export const AutoCompleteUncontrolled = (): React.ReactElement => {
+  return (
+    <Box maxWidth="200px">
+      <Dropdown selectionType="multiple">
+        <AutoComplete maxRows="single" label="City" />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Mumbai" value="mumbai" />
+            <ActionListItem title="Pune" value="pune" />
+            <ActionListItem title="Bengaluru" value="bengaluru" />
+            <ActionListItem title="Ooty" value="ooty" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+    </Box>
+  );
 };
-SelectInputWithoutLabel.storyName = 'SelectInput without Label';
+
+const cities = [
+  {
+    title: 'Mumbai',
+    value: 'mumbai',
+    keywords: ['maharashtra'],
+  },
+  {
+    title: 'Pune',
+    value: 'pune',
+    keywords: ['maharashtra'],
+  },
+  {
+    title: 'Bengaluru',
+    value: 'bengaluru',
+    keywords: ['karnataka', 'bangalore'],
+  },
+  {
+    title: 'Ooty',
+    value: 'ooty',
+    keywords: ['tamil nadu'],
+  },
+];
+export const AutoCompleteControlled = (): React.ReactElement => {
+  const cityValues = cities.map((city) => city.value);
+  const [filteredValues, setFilteredValues] = React.useState<string[]>(cityValues);
+
+  return (
+    <Dropdown selectionType="multiple">
+      <AutoComplete
+        label="City"
+        onInputValueChange={({ value }) => {
+          if (value) {
+            const filteredItems = cities
+              .filter(
+                (city) =>
+                  city.title.toLowerCase().startsWith(value.toLowerCase()) ||
+                  city.keywords.find((keyword) =>
+                    keyword.toLowerCase().includes(value.toLowerCase()),
+                  ),
+              )
+              .map((city) => city.value);
+
+            if (filteredItems.length > 0) {
+              setFilteredValues(filteredItems);
+            } else {
+              setFilteredValues([]);
+            }
+          } else {
+            setFilteredValues(cityValues);
+          }
+        }}
+        filteredValues={filteredValues}
+        helpText="Try typing 'maharashtra' in input"
+      />
+      {filteredValues.length > 0 ? (
+        <DropdownOverlay>
+          <ActionList>
+            {cities.map((city) => (
+              <ActionListItem key={city.value} title={city.title} value={city.value} />
+            ))}
+          </ActionList>
+        </DropdownOverlay>
+      ) : null}
+    </Dropdown>
+  );
+};
+
+export const AutoCompleteUncontrolledSingleSelect = (): React.ReactElement => {
+  return (
+    <Dropdown>
+      <AutoComplete label="Select City" />
+      <DropdownOverlay>
+        <ActionList>
+          <ActionListItem title="Mumbai" value="mumbai" />
+          <ActionListItem title="Pune" value="pune" />
+          <ActionListItem title="Bangalore" value="bangalore" />
+        </ActionList>
+      </DropdownOverlay>
+    </Dropdown>
+  );
+};
+
+export const AutoCompleteWithBottomSheet = (): React.ReactElement => {
+  return (
+    <Dropdown selectionType="multiple">
+      <SelectInput label="Sort Dishes" />
+      <BottomSheet>
+        <BottomSheetHeader title="Sort By">
+          <AutoComplete label="Sort Dishes" maxRows="single" />
+        </BottomSheetHeader>
+        <BottomSheetBody>
+          <ActionList>
+            <ActionListItem title="Relevance (Default)" value="relavance" />
+            <ActionListItem title="Delivery Time" value="delveiry-time" />
+            <ActionListItem title="Rating" value="rating" />
+            <ActionListItem title="Cost: Low to High" value="Cost: Low to High" />
+            <ActionListItem title="Cost: High to Low" value="Cost: High to Low" />
+          </ActionList>
+        </BottomSheetBody>
+      </BottomSheet>
+    </Dropdown>
+  );
+};
