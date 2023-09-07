@@ -131,35 +131,36 @@ const FooterContent = React.forwardRef<HTMLButtonElement, { onClick?: () => void
 );
 
 const PopoverTemplate: ComponentStory<typeof PopoverComponent> = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = React.useState(true);
   const buttonRef = React.useRef<HTMLButtonElement>(null);
 
   return (
     <Center>
+      {/* <PopoverComponent
+        isOpen={isOpen}
+        onOpenChange={({ isOpen }) => setIsOpen(isOpen)}
+        titleLeading={<SettlementsIcon color="surface.text.normal.lowContrast" size="large" />}
+        content={<Content />}
+        footer={<FooterContent onClick={() => setIsOpen(false)} ref={buttonRef} />}
+      >
+        <Button>Click me controlled {isOpen ? 'yes' : 'no'}</Button>
+      </PopoverComponent> */}
       <PopoverComponent
         placement="left"
+        isOpen={isOpen}
         initialFocusRef={buttonRef}
-        headerTitle="Settlement breakup for setl_LB2H1j"
-        headerLeading={<SettlementsIcon color="surface.text.normal.lowContrast" size="large" />}
+        onOpenChange={({ isOpen }) => setIsOpen(isOpen)}
+        title="Settlement breakup for setl_LB2H1j"
+        titleLeading={<SettlementsIcon color="surface.text.normal.lowContrast" size="large" />}
         content={<Content />}
-        footerContent={<FooterContent ref={buttonRef} />}
+        footer={<FooterContent ref={buttonRef} />}
       >
         <Button>Click me</Button>
       </PopoverComponent>
       <PopoverComponent
-        isOpen={isOpen}
-        onOpenChange={({ isOpen }) => setIsOpen(isOpen)}
-        headerTitle="Settlement breakup for setl_LB2H1j"
-        headerLeading={<SettlementsIcon color="surface.text.normal.lowContrast" size="large" />}
-        content={<Content />}
-        footerContent={<FooterContent onClick={() => setIsOpen(false)} ref={buttonRef} />}
-      >
-        <Button>Click me controlled {isOpen ? 'yes' : 'no'}</Button>
-      </PopoverComponent>
-      <PopoverComponent
-        headerTitle="International Payments"
+        title="International Payments"
         content={
-          <Text>
+          <Text marginRight="spacing.2">
             Your business can go international with support for transactions in 100 foreign
             currencies.
           </Text>
@@ -201,7 +202,7 @@ const PlacementBox = React.forwardRef<
 });
 
 const PlacementTemplate: ComponentStory<typeof PopoverComponent> = () => {
-  const popoverContent = 'Hello world';
+  const popoverContent = <Text>Hello world</Text>;
 
   if (isReactNative()) {
     return (
@@ -277,7 +278,7 @@ const PlacementTemplate: ComponentStory<typeof PopoverComponent> = () => {
 export const Placement = PlacementTemplate.bind({});
 Placement.storyName = 'Placement';
 
-const NonInteractiveTriggerTemplate: ComponentStory<typeof PopoverComponent> = (args) => {
+const NonInteractiveTriggerTemplate: ComponentStory<typeof PopoverComponent> = () => {
   return (
     <Box>
       <Text>
@@ -287,7 +288,7 @@ const NonInteractiveTriggerTemplate: ComponentStory<typeof PopoverComponent> = (
       <Box marginTop="spacing.5" display="flex" alignItems="center" gap="spacing.2">
         <Text>Refunds</Text>
         <PopoverComponent
-          headerTitle="Hello world"
+          title="Hello world"
           content={<Text>Hello world</Text>}
           placement="bottom-start"
         >

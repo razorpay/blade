@@ -2,26 +2,21 @@
 import type React from 'react';
 import type { CSSObject } from 'styled-components';
 import type { Theme } from '~components/BladeProvider';
-import { makeBorderSize, castWebType, isReactNative, makeSpace, useTheme } from '~utils';
+import { makeBorderSize, castWebType, isReactNative, makeSpace } from '~utils';
 
 const getPopoverContentWrapperStyles = ({
   theme,
   styles,
+  isMobile,
 }: {
+  isMobile: boolean;
   theme: Theme;
   styles: React.CSSProperties;
 }): CSSObject => {
-  const { platform } = useTheme();
-
   return {
-    minWidth: isReactNative() ? '90%' : '100%',
-    maxWidth: makeSpace(platform === 'onMobile' ? 288 : 328),
-    display: 'flex',
-    flexDirection: 'column',
+    width: '100%',
+    maxWidth: makeSpace(isMobile ? 288 : 328),
     position: isReactNative() ? 'absolute' : 'relative',
-    padding: makeSpace(theme.spacing[5]),
-    // TODO: fix spacing
-    gap: makeSpace(theme.spacing[2]),
     backgroundColor: theme.colors.surface.background.level2.lowContrast,
     borderWidth: makeBorderSize(theme.border.width.thin),
     borderRadius: makeBorderSize(theme.border.radius.large),

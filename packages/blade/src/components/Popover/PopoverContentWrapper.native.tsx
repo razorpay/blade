@@ -18,15 +18,18 @@ import { useTheme } from '~components/BladeProvider';
 import { size } from '~tokens/global';
 import { castNativeType } from '~utils';
 
-const StyledPopoverContentWrapper = styled(BaseBox)<{ collapse?: boolean; styles: CSSProperties }>(
-  ({ theme, styles }) => {
-    return getPopoverContentWrapperStyles({ theme, styles });
-  },
-);
+const StyledPopoverContentWrapper = styled(BaseBox)<{
+  collapse?: boolean;
+  styles: CSSProperties;
+  isMobile: boolean;
+}>(({ theme, isMobile, styles }) => {
+  return getPopoverContentWrapperStyles({ theme, styles, isMobile });
+});
 
 const PopoverContentWrapper = React.forwardRef<View, PopoverContentWrapperProps>(
   ({ children, styles, side, isVisible, ...props }, ref) => {
-    const { theme } = useTheme();
+    const { theme, platform } = useTheme();
+    const isMobile = platform === 'onMobile';
 
     const isOppositeAxis = side === 'right' || side === 'bottom';
     const isHorizontal = side === 'left' || side === 'right';
@@ -64,6 +67,7 @@ const PopoverContentWrapper = React.forwardRef<View, PopoverContentWrapperProps>
           elevation={20}
           ref={ref as never}
           collapse={false}
+          isMobile={isMobile}
           // if I don't assert this TS throws error
           // I think because of the intersection type in PopoverContentWrapperProps
           {...(props as any)}

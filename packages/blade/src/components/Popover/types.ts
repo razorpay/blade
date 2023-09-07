@@ -5,9 +5,9 @@ import type React from 'react';
 import type { BaseBoxProps } from '~components/Box/BaseBox';
 
 type PopoverProps = {
-  headerTitle?: string;
-  headerLeading?: React.ReactNode;
-  footerContent?: React.ReactNode;
+  title?: string;
+  titleLeading?: React.ReactNode;
+  footer?: React.ReactNode;
   /**
    * Popover content
    */
@@ -31,9 +31,9 @@ type PopoverProps = {
 };
 
 type PopoverContentProps = {
-  headerTitle?: string;
-  headerLeading?: React.ReactNode;
-  footerContent?: React.ReactNode;
+  title?: string;
+  titleLeading?: React.ReactNode;
+  footer?: React.ReactNode;
   children: React.ReactNode;
   style: CSSProperties;
   arrow: React.ReactNode;

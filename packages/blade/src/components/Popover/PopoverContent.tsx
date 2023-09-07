@@ -4,22 +4,47 @@ import type { PopoverContentProps } from './types';
 import { PopoverCloseButton } from './PopoverCloseButton';
 import BaseBox from '~components/Box/BaseBox';
 import { Heading } from '~components/Typography';
+import { isReactNative } from '~utils';
+import { useIsMobile } from '~utils/useIsMobile';
 
 type PopoverHeaderProps = {
-  headerTitle?: string;
-  headerLeading?: React.ReactNode;
+  title?: string;
+  titleLeading?: React.ReactNode;
 };
 
-const PopoverHeader = ({ headerLeading, headerTitle }: PopoverHeaderProps): React.ReactElement => {
+const PopoverHeader = ({ title, titleLeading }: PopoverHeaderProps): React.ReactElement => {
+  const isFloating = !(title && titleLeading);
+  if (isFloating) {
+    return (
+      <BaseBox
+        backgroundColor="white"
+        borderRadius="max"
+        position="absolute"
+        padding="spacing.2"
+        top="spacing.2"
+        right="spacing.2"
+        zIndex={1}
+      >
+        <PopoverCloseButton />
+      </BaseBox>
+    );
+  }
+
   return (
-    <BaseBox display="flex" flexDirection="row" alignItems="center" gap="spacing.3">
-      {headerLeading
-        ? React.cloneElement(headerLeading as React.ReactElement, { size: 'large' })
+    <BaseBox
+      display="flex"
+      flexDirection="row"
+      flexWrap={isReactNative() ? 'wrap' : 'nowrap'}
+      alignItems="center"
+      gap="spacing.3"
+    >
+      {titleLeading
+        ? React.cloneElement(titleLeading as React.ReactElement, { size: 'large' })
         : null}
-      {headerTitle ? (
+      {title ? (
         <BaseBox paddingRight="spacing.4">
           <Heading size="small" weight="bold" type="normal">
-            {headerTitle}
+            {title}
           </Heading>
         </BaseBox>
       ) : null}
@@ -31,12 +56,22 @@ const PopoverHeader = ({ headerLeading, headerTitle }: PopoverHeaderProps): Reac
 };
 
 const PopoverContent = React.forwardRef<HTMLDivElement, PopoverContentProps>(
-  ({ children, headerTitle, headerLeading, footerContent, arrow, side, style, isVisible }, ref) => {
+  ({ children, title, titleLeading, footer, arrow, side, style, isVisible }, ref) => {
+    const isMobile = useIsMobile();
+
     return (
-      <PopoverContentWrapper ref={ref} styles={style} side={side} isVisible={isVisible}>
-        <PopoverHeader headerLeading={headerLeading} headerTitle={headerTitle} />
-        <BaseBox>{children}</BaseBox>
-        {footerContent ? <BaseBox>{footerContent}</BaseBox> : null}
+      <PopoverContentWrapper
+        ref={ref as never}
+        styles={style}
+        side={side}
+        isVisible={isVisible}
+        isMobile={isMobile}
+      >
+        <BaseBox padding="spacing.4" display="flex" flexDirection="column" gap="spacing.4">
+          <PopoverHeader titleLeading={titleLeading} title={title} />
+          <BaseBox>{children}</BaseBox>
+          {footer ? <BaseBox>{footer}</BaseBox> : null}
+        </BaseBox>
         {arrow}
       </PopoverContentWrapper>
     );

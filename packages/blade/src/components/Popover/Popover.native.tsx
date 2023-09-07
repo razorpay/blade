@@ -19,9 +19,9 @@ const Popover = ({
   placement = 'top',
   onOpenChange,
   zIndex = popoverZIndex,
-  headerTitle,
-  headerLeading,
-  footerContent,
+  title,
+  titleLeading,
+  footer,
   isOpen,
   defaultIsOpen,
 }: PopoverProps): React.ReactElement => {
@@ -33,6 +33,7 @@ const Popover = ({
     onChange: (isOpen) => onOpenChange?.({ isOpen }),
   });
 
+  console.log(controllableIsOpen);
   const gap = theme.spacing[2];
   const [side] = getPlacementParts(placement);
   const isHorizontal = side === 'left' || side === 'right';
@@ -113,9 +114,9 @@ const Popover = ({
           {...metaAttribute({ name: MetaConstants.Popover })}
         />
         <PopoverContent
-          headerLeading={headerLeading}
-          headerTitle={headerTitle}
-          footerContent={footerContent}
+          titleLeading={titleLeading}
+          title={title}
+          footer={footer}
           isVisible={controllableIsOpen}
           ref={refs.setFloating}
           side={computedSide}

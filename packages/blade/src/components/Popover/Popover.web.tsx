@@ -31,9 +31,9 @@ import { useMergeRefs } from '~utils/useMergeRefs';
 
 const Popover = ({
   content,
-  headerTitle,
-  headerLeading,
-  footerContent,
+  title,
+  titleLeading,
+  footer,
   children,
   placement = 'top',
   onOpenChange,
@@ -145,9 +145,9 @@ const Popover = ({
               {...metaAttribute({ name: MetaConstants.Popover })}
             >
               <PopoverContent
-                headerTitle={headerTitle}
-                headerLeading={headerLeading}
-                footerContent={footerContent}
+                title={title}
+                titleLeading={titleLeading}
+                footer={footer}
                 style={styles}
                 arrow={
                   <PopupArrow
