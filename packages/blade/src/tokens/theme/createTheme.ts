@@ -24,12 +24,8 @@ const WCAG2ContrastOptions: WCAG2Options = {
  * getColorWithOpacity('#fff', 0.5) // returns 'hsla(0, 0%, 100%, 0.5)'
  *
  **/
-const getColorWithOpacity = (
-  color: ColorInput,
-  opacity: number,
-): `hsla(${number}, ${number}%, ${number}%, ${number})` => {
-  const hslColorObj = tinycolor(color).toHsl();
-  return `hsla(${hslColorObj.h}, ${hslColorObj.s * 100}%, ${hslColorObj.l * 100}%, ${opacity})`;
+const getColorWithOpacity = (color: ColorInput, opacity: number): string => {
+  return tinycolor(color).setAlpha(opacity).toHslString();
 };
 
 /**
@@ -44,11 +40,12 @@ const generateChromaticBrandColors = (baseColorInput: ColorInput): Color['chroma
   const baseColor = tinycolor(baseColorInput);
   const baseColorHslString = baseColor.toHslString();
   if (__DEV__) {
-    if (!baseColor.isValid())
+    if (!baseColor.isValid()) {
       throwBladeError({
         message: 'Invalid brandColor passed',
         moduleName: 'createTheme',
       });
+    }
   }
 
   const palette = [baseColorHslString]; // Include the original color
