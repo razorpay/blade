@@ -155,6 +155,7 @@ type CarouselBodyProps = {
   isScrollAtEnd: boolean;
   carouselItemAlignment: CarouselProps['carouselItemAlignment'];
   accessibilityLabel?: string;
+  startEndMargin: number;
 };
 
 const CarouselBody = React.forwardRef<HTMLDivElement, CarouselBodyProps>(
@@ -169,6 +170,7 @@ const CarouselBody = React.forwardRef<HTMLDivElement, CarouselBodyProps>(
       isScrollAtEnd,
       carouselItemAlignment,
       accessibilityLabel,
+      startEndMargin,
     },
     ref,
   ) => {
@@ -189,12 +191,30 @@ const CarouselBody = React.forwardRef<HTMLDivElement, CarouselBodyProps>(
         })}
       >
         {React.Children.map(children, (child, index) => {
-          return React.cloneElement(child as React.ReactElement, {
-            index,
-            id: `${idPrefix}-carousel-item-${index}`,
-            shouldHaveStartSpacing: shouldAddStartEndSpacing && index === 0,
-            shouldHaveEndSpacing: shouldAddStartEndSpacing && index === totalSlides - 1,
-          });
+          const shouldHaveStartSpacing = shouldAddStartEndSpacing && index === 0;
+          const shouldHaveEndSpacing = shouldAddStartEndSpacing && index === totalSlides - 1;
+          const carouselItemNode: React.ReactElement = React.cloneElement(
+            child as React.ReactElement,
+            {
+              index,
+              id: `${idPrefix}-carousel-item-${index}`,
+              shouldHaveStartSpacing,
+              shouldHaveEndSpacing,
+            },
+          );
+
+          // Safari doesn't include the margin in the bounding box calculation
+          // Thus have to add an additional box to the end of the carousel to ensure we can scroll past the last item
+          // https://stackoverflow.com/questions/75509058/safari-does-not-include-margins-to-the-scroll-width
+          if (shouldHaveEndSpacing) {
+            return (
+              <>
+                {carouselItemNode}
+                {<BaseBox minWidth={`${startEndMargin}px`} />}
+              </>
+            );
+          }
+          return carouselItemNode;
         })}
       </CarouselContainer>
     );
@@ -486,6 +506,7 @@ const Carousel = ({
           ) : null}
           <CarouselBody
             idPrefix={id}
+            startEndMargin={startEndMargin}
             totalSlides={totalNumberOfSlides}
             shouldAddStartEndSpacing={shouldAddStartEndSpacing}
             scrollOverlayColor={scrollOverlayColor}
