@@ -9,11 +9,21 @@ import type { Color } from '~tokens/global';
 import type { DeepPartial } from '~utils/isPartialMatchObjectKeys';
 import { throwBladeError } from '~utils/logger';
 
+// WCAG2ContrastOptions are the options used to determine if a color is readable
 const WCAG2ContrastOptions: WCAG2Options = {
   level: 'AAA',
   size: 'large',
 };
 
+/**
+ * getColorWithOpacity
+ * @param color - The color to add opacity to
+ * @param opacity - The opacity to add to the color
+ * @returns The color with the opacity added
+ * @example
+ * getColorWithOpacity('#fff', 0.5) // returns 'hsla(0, 0%, 100%, 0.5)'
+ *
+ **/
 const getColorWithOpacity = (
   color: ColorInput,
   opacity: number,
@@ -22,6 +32,14 @@ const getColorWithOpacity = (
   return `hsla(${hslColorObj.h}, ${hslColorObj.s * 100}%, ${hslColorObj.l * 100}%, ${opacity})`;
 };
 
+/**
+ *
+ * @param baseColorInput - The base color to generate the chromatic color palette from in hex, rgb, or hsl format
+ * @description
+ * Generates a chromatic color palette based on the base color passed in.
+ * The base color is used to generate a palette of 11 colors, 5 shades lighter and 5 shades darker than the base color.
+ * @returns Array of chromatic color palette
+ */
 const generateChromaticBrandColors = (baseColorInput: ColorInput): Color['chromatic']['azure'] => {
   const baseColor = tinycolor(baseColorInput);
   const baseColorHslString = baseColor.toHslString();
@@ -78,6 +96,12 @@ const generateChromaticBrandColors = (baseColorInput: ColorInput): Color['chroma
   return brandColors;
 };
 
+/**
+ *
+ * @param brandColors - The brand colors to use to override the payment theme
+ * @description Overrides the payment theme with the brand colors passed in
+ * @returns The light theme tokens with the custom brand colors
+ */
 const getLightTheme = (brandColors: Color['chromatic']['azure']): ThemeTokens => {
   const foregroundOnBrandColorPaymentLight = tinycolor
     .mostReadable(
@@ -193,6 +217,12 @@ const getLightTheme = (brandColors: Color['chromatic']['azure']): ThemeTokens =>
   });
 };
 
+/**
+ *
+ * @param brandColors - The brand colors to use to override the banking theme
+ * @description Overrides the banking theme with the brand colors passed in
+ * @returns The dark theme tokens with the custom brand colors
+ */
 const getDarkTheme = (brandColors: Color['chromatic']['azure']): ThemeTokens => {
   const foregroundOnBrandColorBankingDark = tinycolor
     .mostReadable(
@@ -296,6 +326,15 @@ const getDarkTheme = (brandColors: Color['chromatic']['azure']): ThemeTokens => 
   });
 };
 
+/**
+ * @param {Object} themeConfig - The brand color and overrides to apply to the theme
+ * @param {string} themeConfig.brandColor - The brand color to use to generate the theme. Can be in hex, rgb, or hsl format.
+ * @description
+ * Creates a Blade Theme based on the custom brand color and overrides passed in
+ * @returns The Theme Tokens with the custom brand colors and overrides applied
+ * @example
+ * const theme = createTheme({ brandColor: '#19BEA2', overrides: {} })
+ **/
 export const createTheme = ({
   brandColor,
   overrides: extraOverrides = {},
