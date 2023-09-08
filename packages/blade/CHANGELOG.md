@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 10.7.1
+
+### Patch Changes
+
+- 52288df2: fix(blade): carousel bug in safari
+
 ## 10.7.0
 
 ### Minor Changes
