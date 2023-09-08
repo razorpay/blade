@@ -1,5 +1,5 @@
 ---
-"@razorpay/blade": patch
+"@razorpay/blade": minor
 ---
 
 chore(blade): added id to Box component

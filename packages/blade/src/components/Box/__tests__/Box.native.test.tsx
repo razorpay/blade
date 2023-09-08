@@ -104,4 +104,11 @@ describe('<Box />', () => {
     // we just check if the ref value has focus prop to make sure it's not null and has appropriate values loaded
     expect(refHasFocusProp).toBeCalledWith(true);
   });
+
+  it('should accept id prop', () => {
+    const id = 'my-id';
+    const testId = 'box-test-id';
+    const { getByTestId } = renderWithTheme(<Box id={id} testID={testId} />);
+    expect(getByTestId(testId)).toHaveProp('id', id);
+  });
 });
