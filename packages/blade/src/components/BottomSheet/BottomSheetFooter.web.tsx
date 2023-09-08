@@ -1,7 +1,7 @@
 import React from 'react';
-import type { BaseFooterProps } from '../BaseHeaderFooter/BaseFooter';
-import { BaseFooter } from '../BaseHeaderFooter/BaseFooter';
 import { useBottomSheetContext } from './BottomSheetContext';
+import type { BaseFooterProps } from '~components/BaseHeaderFooter/BaseFooter';
+import { BaseFooter } from '~components/BaseHeaderFooter/BaseFooter';
 import BaseBox from '~components/Box/BaseBox';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { useTheme } from '~components/BladeProvider';

@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 import type { ReactElement } from 'react';
 import React from 'react';
-import type { ButtonProps } from '../Button';
-import { Button } from '../Button';
 import { useVerifyInsideCard, useVerifyAllowedComponents } from './CardContext';
 import { ComponentIds } from './Card';
+import type { ButtonProps } from '~components/Button';
+import { Button } from '~components/Button';
 import { Divider } from '~components/Divider';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';

@@ -1,6 +1,6 @@
-import type { LinkProps } from '../Link';
-import { Link } from '../Link';
 import { useListContext } from './ListContext';
+import type { LinkProps } from '~components/Link';
+import { Link } from '~components/Link';
 import { MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
