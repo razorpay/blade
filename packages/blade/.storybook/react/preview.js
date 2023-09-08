@@ -222,10 +222,6 @@ export const globalTypes = {
         { value: '#CF2033', title: 'Zomato' },
         { value: '#19BEA2', title: 'DSP Mutual Fund' },
         { value: '#DF005D', title: 'Nykaa' },
-        { value: '#2D67C6', title: 'Zerodha' },
-        { value: '#1AB36D', title: 'Unacademy' },
-        { value: '#010302', title: 'Ather' },
-        { value: '#1BAA3F', title: 'Treebo' },
       ],
       // Property that specifies if the name of the item will be displayed
       showName: true,
