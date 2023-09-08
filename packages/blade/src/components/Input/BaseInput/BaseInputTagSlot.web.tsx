@@ -19,18 +19,20 @@ const useVisibleTagsCount = ({
   maxTagRows,
   visibleTagsCountRef,
   showAllTags,
+  labelPrefix,
 }: {
   slotRef: React.RefObject<HTMLDivElement>;
   tags: BaseInputTagSlotProps['tags'];
   maxTagRows: BaseInputTagSlotProps['maxTagRows'];
   visibleTagsCountRef: BaseInputTagSlotProps['visibleTagsCountRef'];
   showAllTags: BaseInputTagSlotProps['showAllTags'];
+  labelPrefix: BaseInputTagSlotProps['labelPrefix'];
 }): number => {
   const [visibleTagsCount, setVisibleTagsCount] = React.useState(0);
   const visibleTagsCountStateRef = React.useRef<number>(0);
 
   useIsomorphicLayoutEffect(() => {
-    if (!tags) {
+    if (!tags || labelPrefix) {
       setVisibleTagsCount(0);
       return;
     }
@@ -81,6 +83,20 @@ const useVisibleTagsCount = ({
   return visibleTagsCount;
 };
 
+const getSelectedTextWithoutTags = ({
+  items,
+  labelPrefix,
+}: {
+  items: number;
+  labelPrefix?: string;
+}): string => {
+  if (labelPrefix) {
+    return `${labelPrefix} (${items} Selected)`;
+  }
+
+  return `${items} Selected`;
+};
+
 const BaseInputTagSlot = ({
   renderAs,
   children,
@@ -91,6 +107,7 @@ const BaseInputTagSlot = ({
   handleOnClick,
   isDropdownTrigger,
   visibleTagsCountRef,
+  labelPrefix,
 }: BaseInputTagSlotProps): React.ReactElement => {
   const hasTags = tags && tags.length > 0;
   const slotRef = React.useRef<HTMLDivElement>(null);
@@ -100,6 +117,7 @@ const BaseInputTagSlot = ({
     maxTagRows,
     visibleTagsCountRef,
     showAllTags,
+    labelPrefix,
   });
 
   React.useEffect(() => {
@@ -171,7 +189,10 @@ const BaseInputTagSlot = ({
         <Text alignSelf="center" marginY="spacing.2">
           <BaseBox as="span" whiteSpace="nowrap">
             {visibleTags?.length === 0
-              ? `${invisibleTagsCount} Items Selected`
+              ? getSelectedTextWithoutTags({
+                  items: invisibleTagsCount,
+                  labelPrefix,
+                })
               : `+${invisibleTagsCount} More`}
           </BaseBox>
         </Text>

@@ -22,6 +22,7 @@ export type BaseInputTagSlotProps = {
   children: React.ReactElement;
   isDropdownTrigger: BaseInputProps['isDropdownTrigger'];
   inputWrapperRef: InputWrapperRef;
+  labelPrefix?: string;
 };
 
 export type BaseInputWrapperProps = Pick<

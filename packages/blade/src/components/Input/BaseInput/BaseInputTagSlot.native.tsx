@@ -61,10 +61,12 @@ const BaseInputTagSlot = ({
   renderAs,
   children,
   isDropdownTrigger,
+  labelPrefix,
 }: BaseInputTagSlotProps): React.ReactElement | null => {
   const hasTags = tags && tags.length > 0;
-  const [visibleTags, setVisibleTags] = React.useState(maxTagRows === 'multiple' ? 6 : 1);
-  const invisibleTagsCount = tags ? tags.length - visibleTags : 0;
+  const initialVisibleTags = maxTagRows === 'multiple' ? 6 : 1;
+  const [visibleTags, setVisibleTags] = React.useState(labelPrefix ? 0 : initialVisibleTags);
+  const invisibleTagsCount = tags || (tags && labelPrefix) ? tags.length - visibleTags : 0;
 
   if (!isDropdownTrigger) {
     return children;
@@ -85,6 +87,11 @@ const BaseInputTagSlot = ({
       flex="1"
       onLayout={(e) => {
         if (!hasTags) return;
+
+        if (labelPrefix) {
+          setVisibleTags(0);
+          return;
+        }
 
         if (maxTagRows === 'multiple') {
           // The calculation is for single-line versions.
@@ -112,7 +119,11 @@ const BaseInputTagSlot = ({
             ? tags
             : tags.slice(0, visibleTags)
           : null}
-        {hasTags && invisibleTagsCount > 0 && !showAllTags && maxTagRows !== 'multiple' ? (
+        {hasTags &&
+        invisibleTagsCount > 0 &&
+        !showAllTags &&
+        !labelPrefix &&
+        maxTagRows !== 'multiple' ? (
           <RNText
             onPress={() => {
               handleOnClick?.({ name: '', value: '' });
@@ -120,6 +131,16 @@ const BaseInputTagSlot = ({
             style={{ alignSelf: 'center' }}
           >
             +{invisibleTagsCount} More
+          </RNText>
+        ) : null}
+        {hasTags && labelPrefix && !showAllTags && invisibleTagsCount > 0 ? (
+          <RNText
+            onPress={() => {
+              handleOnClick?.({ name: '', value: '' });
+            }}
+            style={{ alignSelf: 'center' }}
+          >
+            {labelPrefix} ({invisibleTagsCount} Selected)
           </RNText>
         ) : null}
         <BaseBox width={hasTags && renderAs === 'button' ? makeSize(size['1']) : '100%'}>
