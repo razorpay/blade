@@ -8,6 +8,7 @@ import {
   responsiveBottomSheet,
   creatableItems,
   clearOnDismiss,
+  maxRowsStates,
 } from './autoCompleteStories';
 
 import { Sandbox } from '~utils/storybook/Sandbox';
@@ -95,6 +96,14 @@ export const ClearInputOnDismiss = (): React.ReactElement => {
   return (
     <Sandbox padding="spacing.0" editorHeight="100vh">
       {clearOnDismiss}
+    </Sandbox>
+  );
+};
+
+export const MaxRowsStates = (): React.ReactElement => {
+  return (
+    <Sandbox padding="spacing.0" editorHeight="100vh">
+      {maxRowsStates}
     </Sandbox>
   );
 };

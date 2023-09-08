@@ -21,7 +21,7 @@ import { Button } from '~components/Button';
 const getBladeVersion = (): string => {
   // We don't publish codesandbox ci on master so version is not present
   const isMaster = process.env.GITHUB_REF === 'refs/heads/master';
-  const sha = process.env.GITHUB_SHA ?? '16e1c9f6f8e38eef5436a97ec14cc57b43fa9f25'; // @todo: for development, remove before merging
+  const sha = process.env.GITHUB_SHA ?? '444cef841f34dd69b542f04510450fc7f15c7da2'; // @todo: for development, remove before merging
   if (sha && !isMaster) {
     const shortSha = sha.slice(0, 8);
     return `https://pkg.csb.dev/razorpay/blade/commit/${shortSha}/@razorpay/blade`;

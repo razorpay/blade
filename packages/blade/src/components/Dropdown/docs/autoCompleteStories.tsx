@@ -376,3 +376,84 @@ export const clearOnDismiss = `
 
   export default App;
 `;
+
+export const maxRowsStates = `
+  import React from 'react';
+  import { 
+    Box,
+    Button,
+    PlusIcon,
+    Dropdown, 
+    DropdownFooter,
+    DropdownOverlay,
+    AutoComplete,
+    ActionList,
+    ActionListItem,
+  } from '@razorpay/blade/components';
+
+
+  const App = (): React.ReactElement => {
+    return (
+      <Box maxWidth="300px" display="flex" flexDirection="column" gap="300px">
+        <Dropdown selectionType="multiple">
+          <AutoComplete
+            label="Select City"
+            maxRows="single"
+            helpText="Try selecting more than 4 items"
+          />
+          <DropdownOverlay>
+            <ActionList>
+              <ActionListItem title="Mumbai" value="mumbai" />
+              <ActionListItem title="Pune" value="pune" />
+              <ActionListItem title="Bengaluru" value="bengaluru" />
+              <ActionListItem title="Mysuru" value="mysuru" />
+              <ActionListItem title="Ooty" value="ooty" />
+            </ActionList>
+          </DropdownOverlay>
+        </Dropdown>
+
+        <Dropdown selectionType="multiple">
+          <AutoComplete
+            label="Select City"
+            maxRows="multiple"
+            helpText="Try selecting multiple items to see the input grow"
+          />
+          <DropdownOverlay>
+            <ActionList>
+              <ActionListItem title="Mumbai" value="mumbai" />
+              <ActionListItem title="Pune" value="pune" />
+              <ActionListItem title="Bengaluru" value="bengaluru" />
+              <ActionListItem title="Mysuru" value="mysuru" />
+              <ActionListItem title="Ooty" value="ooty" />
+              <ActionListItem title="Coorg" value="coorg" />
+              <ActionListItem title="Kolhapur" value="kolhapur" />
+              <ActionListItem title="Munnar" value="munnar" />
+            </ActionList>
+          </DropdownOverlay>
+        </Dropdown>
+
+        <Dropdown selectionType="multiple">
+          <AutoComplete
+            label="Select City"
+            maxRows="expandable"
+            helpText="Try selecting multiple items to see the input grow in active state"
+          />
+          <DropdownOverlay>
+            <ActionList>
+              <ActionListItem title="Mumbai" value="mumbai" />
+              <ActionListItem title="Pune" value="pune" />
+              <ActionListItem title="Bengaluru" value="bengaluru" />
+              <ActionListItem title="Mysuru" value="mysuru" />
+              <ActionListItem title="Ooty" value="ooty" />
+              <ActionListItem title="Coorg" value="coorg" />
+              <ActionListItem title="Kolhapur" value="kolhapur" />
+              <ActionListItem title="Munnar" value="munnar" />
+            </ActionList>
+          </DropdownOverlay>
+        </Dropdown>
+      </Box>
+    );
+  };
+
+  export default App;
+`;
