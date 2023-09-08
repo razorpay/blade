@@ -4,7 +4,7 @@ import BaseButton from '../Button/BaseButton';
 import { getActionListContainerRole } from '../ActionList/getA11yRoles';
 import type { ButtonProps } from '../Button';
 import { useDropdown } from './useDropdown';
-import { componentIds } from './dropdownUtils';
+import { dropdownComponentIds } from './dropdownComponentIds';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 type DropdownButtonProps = ButtonProps & {
@@ -86,7 +86,7 @@ const _DropdownButton = ({
 };
 
 const DropdownButton = assignWithoutSideEffects(_DropdownButton, {
-  componentId: componentIds.triggers.DropdownButton,
+  componentId: dropdownComponentIds.triggers.DropdownButton,
 });
 
 export { DropdownButton };

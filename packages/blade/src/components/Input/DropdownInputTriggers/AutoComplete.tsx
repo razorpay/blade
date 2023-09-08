@@ -4,8 +4,8 @@ import type { AutoCompleteProps, BaseDropdownInputTriggerProps } from './types';
 import { BaseDropdownInputTrigger } from './BaseDropdownInputTrigger';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import BaseBox from '~components/Box/BaseBox';
-import { componentIds } from '~components/Dropdown/dropdownUtils';
 import type { BladeElementRef } from '~utils/types';
+import { dropdownComponentIds } from '~components/Dropdown/dropdownComponentIds';
 
 const useAutoCompleteHandlers = ({
   props,
@@ -147,7 +147,7 @@ const _AutoComplete = (
   });
 
   React.useEffect(() => {
-    if (dropdownTriggerer !== 'AutoComplete') {
+    if (dropdownTriggerer !== dropdownComponentIds.triggers.AutoComplete) {
       // When AutoComplete is mounted but not as trigger,
       // we assume its in header of BottomSheet
       setHasAutoCompleteInBottomSheetHeader(true);
@@ -192,7 +192,7 @@ const _AutoComplete = (
 };
 
 const AutoComplete = assignWithoutSideEffects(React.forwardRef(_AutoComplete), {
-  componentId: componentIds.triggers.AutoComplete,
+  componentId: dropdownComponentIds.triggers.AutoComplete,
 });
 
 export { AutoComplete };
