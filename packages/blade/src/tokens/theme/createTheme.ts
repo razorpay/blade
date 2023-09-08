@@ -14,6 +14,14 @@ const WCAG2ContrastOptions: WCAG2Options = {
   size: 'large',
 };
 
+const getColorWithOpacity = (
+  color: ColorInput,
+  opacity: number,
+): `hsla(${number}, ${number}%, ${number}%, ${number})` => {
+  const hslColorObj = tinycolor(color).toHsl();
+  return `hsla(${hslColorObj.h}, ${hslColorObj.s * 100}%, ${hslColorObj.l * 100}%, ${opacity})`;
+};
+
 const generateChromaticBrandColors = (baseColorInput: ColorInput): Color['chromatic']['azure'] => {
   const baseColor = tinycolor(baseColorInput);
   const baseColorHslString = baseColor.toHslString();
@@ -48,7 +56,7 @@ const generateChromaticBrandColors = (baseColorInput: ColorInput): Color['chroma
 
   const colorPalette = palette.reverse();
   const brandPrimaryColor = colorPalette[6];
-  const brandPrimaryColorHSLObj = tinycolor(brandPrimaryColor).toHsl();
+
   const brandColors = {
     '50': colorPalette[0],
     '100': colorPalette[1],
@@ -61,19 +69,12 @@ const generateChromaticBrandColors = (baseColorInput: ColorInput): Color['chroma
     '800': colorPalette[8],
     '900': colorPalette[9],
     '950': colorPalette[10],
-    a00: `hsla(${brandPrimaryColorHSLObj.h}, ${brandPrimaryColorHSLObj.s * 100}%, ${
-      brandPrimaryColorHSLObj.l * 100
-    }%, ${opacity[0]})`,
-    a50: `hsla(${brandPrimaryColorHSLObj.h}, ${brandPrimaryColorHSLObj.s * 100}%, ${
-      brandPrimaryColorHSLObj.l * 100
-    }%, ${opacity[1]})`,
-    a100: `hsla(${brandPrimaryColorHSLObj.h}, ${brandPrimaryColorHSLObj.s * 100}%, ${
-      brandPrimaryColorHSLObj.l * 100
-    }%, ${opacity[2]})`,
-    a200: `hsla(${brandPrimaryColorHSLObj.h}, ${brandPrimaryColorHSLObj.s * 100}%, ${
-      brandPrimaryColorHSLObj.l * 100
-    }%, ${opacity[3]})`,
+    a00: getColorWithOpacity(brandPrimaryColor, opacity[0]),
+    a50: getColorWithOpacity(brandPrimaryColor, opacity[1]),
+    a100: getColorWithOpacity(brandPrimaryColor, opacity[2]),
+    a200: getColorWithOpacity(brandPrimaryColor, opacity[3]),
   };
+
   return brandColors;
 };
 
