@@ -5,57 +5,54 @@ import overrideTheme from './overrideTheme';
 import bankingTheme from './bankingTheme';
 import paymentTheme from './paymentTheme';
 import { colors as globalColors, opacity } from '~tokens/global';
+import type { Color } from '~tokens/global';
 import type { DeepPartial } from '~utils/isPartialMatchObjectKeys';
 import { throwBladeError } from '~utils/logger';
 
-const generateColorPalette = (oldBaseColorInput: ColorInput): string[] => {
-  const oldBaseColor = tinycolor(oldBaseColorInput);
+const WCAG2ContrastOptions: WCAG2Options = {
+  level: 'AAA',
+  size: 'large',
+};
+
+const generateChromaticBrandColors = (baseColorInput: ColorInput): Color['chromatic']['azure'] => {
+  const baseColor = tinycolor(baseColorInput);
+  const baseColorHslString = baseColor.toHslString();
   if (__DEV__) {
-    if (!oldBaseColor.isValid())
+    if (!baseColor.isValid())
       throwBladeError({
         message: 'Invalid brandColor passed',
         moduleName: 'createTheme',
       });
   }
 
-  const palette = [oldBaseColor.toHexString()]; // Include the original color
-  const baseColor = tinycolor(oldBaseColor.toHexString());
-  const brightness = tinycolor(oldBaseColor).getBrightness();
+  const palette = [baseColorHslString]; // Include the original color
+  const brightness = tinycolor(baseColor).getBrightness();
   const lightnessFactor = brightness > 150 ? 3 : 6;
   const darknessFactor = brightness < 50 ? 3 : 5;
-  if (!baseColor) return [];
-  let currentColor = tinycolor(oldBaseColor.toHexString());
+
+  let currentColor = baseColor;
 
   // Generate shades lighter
   for (let i = 0; i < 6; i++) {
     currentColor = currentColor.brighten(lightnessFactor);
-    palette.push(currentColor.toHexString());
+    palette.push(currentColor.toHslString());
   }
 
-  currentColor = tinycolor(oldBaseColor.toHexString()); // Reset to the base color
+  currentColor = tinycolor(baseColorHslString); // Reset to the base color
 
   // Generate shades darker
   for (let i = 0; i < 4; i++) {
     currentColor = currentColor.darken(darknessFactor);
-    palette.unshift(currentColor.toHexString()); // Add shades at the beginning of the palette
+    palette.unshift(currentColor.toHslString()); // Add shades at the beginning of the palette
   }
 
-  return palette.reverse();
-};
-
-export const createTheme = ({
-  brandColor,
-  overrides = {},
-}: {
-  brandColor: ColorInput;
-  overrides?: DeepPartial<ThemeTokens>;
-}): ThemeTokens => {
-  const colorPalette = generateColorPalette(brandColor);
-
+  const colorPalette = palette.reverse();
   const brandPrimaryColor = colorPalette[6];
   const brandPrimaryColorHSLObj = tinycolor(brandPrimaryColor).toHsl();
-
   const brandColors = {
+    '50': colorPalette[0],
+    '100': colorPalette[1],
+    '200': colorPalette[2],
     '300': colorPalette[3],
     '400': colorPalette[4],
     '500': colorPalette[5],
@@ -77,13 +74,10 @@ export const createTheme = ({
       brandPrimaryColorHSLObj.l * 100
     }%, ${opacity[3]})`,
   };
+  return brandColors;
+};
 
-  const WCAG2ContrastOptions: WCAG2Options = {
-    level: 'AAA',
-    size: 'large',
-  };
-
-  // Payment Light Theme Overrides with Branding
+const getLightTheme = (brandColors: Color['chromatic']['azure']): ThemeTokens => {
   const foregroundOnBrandColorPaymentLight = tinycolor
     .mostReadable(
       brandColors[900],
@@ -192,12 +186,13 @@ export const createTheme = ({
     },
   };
 
-  const brandedPaymentLightThemeTokens = overrideTheme({
+  return overrideTheme({
     baseThemeTokens: paymentTheme,
     overrides: lightThemePaymentsOverrides,
   });
+};
 
-  // Banking Dark Theme Overrides with Branding
+const getDarkTheme = (brandColors: Color['chromatic']['azure']): ThemeTokens => {
   const foregroundOnBrandColorBankingDark = tinycolor
     .mostReadable(
       brandColors[800],
@@ -294,10 +289,22 @@ export const createTheme = ({
     },
   };
 
-  const brandedBankingDarkThemeTokens = overrideTheme({
+  return overrideTheme({
     baseThemeTokens: bankingTheme,
     overrides: darkThemeBankingOverrides,
   });
+};
+
+export const createTheme = ({
+  brandColor,
+  overrides: extraOverrides = {},
+}: {
+  brandColor: ColorInput;
+  overrides?: DeepPartial<ThemeTokens>;
+}): ThemeTokens => {
+  const chromaticBrandColors = generateChromaticBrandColors(brandColor);
+  const brandedLightTheme = getLightTheme(chromaticBrandColors);
+  const brandedDarkTheme = getDarkTheme(chromaticBrandColors);
 
   // merge theme with light colors from payment theme and dark colors from banking theme
   const brandedThemeTokens = overrideTheme({
@@ -305,13 +312,13 @@ export const createTheme = ({
     overrides: {
       colors: {
         onLight: {
-          ...brandedPaymentLightThemeTokens.colors.onLight,
+          ...brandedLightTheme.colors.onLight,
         },
         onDark: {
-          ...brandedBankingDarkThemeTokens.colors.onDark,
+          ...brandedDarkTheme.colors.onDark,
         },
       },
-      ...overrides,
+      ...extraOverrides,
     },
   });
 
