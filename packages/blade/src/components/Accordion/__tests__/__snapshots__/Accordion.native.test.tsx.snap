@@ -436,6 +436,7 @@ exports[`<Accordion /> should render 1`] = `
           </View>
         </View>
         <View
+          accessible={true}
           borderBottomColor="surface.border.normal.lowContrast"
           borderPosition="borderBottom"
           borderWidth="none"
@@ -852,6 +853,7 @@ exports[`<Accordion /> should render 1`] = `
           </View>
         </View>
         <View
+          accessible={true}
           borderBottomColor="surface.border.normal.lowContrast"
           borderPosition="borderBottom"
           borderWidth="none"
@@ -1268,6 +1270,7 @@ exports[`<Accordion /> should render 1`] = `
           </View>
         </View>
         <View
+          accessible={true}
           borderBottomColor="surface.border.normal.lowContrast"
           borderPosition="borderBottom"
           borderWidth="none"

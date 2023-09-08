@@ -723,6 +723,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                   </View>
                 </View>
                 <View
+                  accessible={true}
                   borderBottomColor="surface.border.normal.lowContrast"
                   borderPosition="borderBottom"
                   borderWidth="none"
@@ -1137,6 +1138,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
               }
             >
               <View
+                accessible={true}
                 borderBottomColor="surface.border.normal.lowContrast"
                 borderPosition="borderBottom"
                 borderWidth="none"

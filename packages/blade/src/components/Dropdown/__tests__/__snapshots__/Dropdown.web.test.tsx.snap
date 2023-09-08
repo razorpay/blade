@@ -881,6 +881,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
               <div
                 class="c29 c30"
                 data-blade-component="divider"
+                role="separator"
               />
             </div>
           </div>
@@ -987,6 +988,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
             <div
               class="c29 c30"
               data-blade-component="divider"
+              role="separator"
             />
             <div
               class="c38"

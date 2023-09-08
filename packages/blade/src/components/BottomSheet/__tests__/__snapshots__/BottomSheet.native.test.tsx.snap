@@ -208,6 +208,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                 zIndex={2}
               >
                 <View
+                  accessible={true}
                   borderBottomColor="surface.border.normal.lowContrast"
                   borderPosition="borderBottom"
                   borderWidth="none"
@@ -1002,6 +1003,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                 </View>
               </View>
               <View
+                accessible={true}
                 borderBottomColor="surface.border.normal.lowContrast"
                 borderPosition="borderBottom"
                 borderWidth="none"
@@ -1241,6 +1243,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                 zIndex={2}
               >
                 <View
+                  accessible={true}
                   borderBottomColor="surface.border.normal.lowContrast"
                   borderPosition="borderBottom"
                   borderWidth="none"

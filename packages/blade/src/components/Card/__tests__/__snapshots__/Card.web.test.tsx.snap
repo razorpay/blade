@@ -397,6 +397,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
         <div
           class="c7 c8"
           data-blade-component="divider"
+          role="separator"
         />
         <div
           class="c9"
@@ -927,6 +928,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
         <div
           class="c22 c23"
           data-blade-component="divider"
+          role="separator"
         />
       </div>
       <div
