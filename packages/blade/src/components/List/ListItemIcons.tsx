@@ -1,7 +1,7 @@
 import React from 'react';
-import { useTheme } from '../BladeProvider';
 import { listItemUnorderedBulletSize } from './listTokens';
 import { useListContext } from './ListContext';
+import { useTheme } from '~components/BladeProvider';
 import { Svg, Circle, Rect } from '~components/Icons/_Svg';
 
 type UnorderedIconProps = {

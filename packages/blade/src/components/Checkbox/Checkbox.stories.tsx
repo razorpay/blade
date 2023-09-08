@@ -2,9 +2,9 @@
 import { Title } from '@storybook/addon-docs';
 import type { ComponentStory, Meta } from '@storybook/react';
 import React from 'react';
-import { Text } from '../Typography';
 import type { CheckboxProps } from './';
 import { Checkbox as CheckboxComponent } from './';
+import { Text } from '~components/Typography';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import BaseBox from '~components/Box/BaseBox';

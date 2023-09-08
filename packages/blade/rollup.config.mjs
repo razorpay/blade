@@ -1,5 +1,6 @@
 /* eslint-disable import/extensions */
 import fs from 'fs';
+import { fileURLToPath } from 'node:url';
 import { babel as pluginBabel } from '@rollup/plugin-babel';
 import pluginPeerDepsExternal from 'rollup-plugin-peer-deps-external';
 import pluginResolve from '@rollup/plugin-node-resolve';
@@ -51,10 +52,19 @@ const themeBundleCategories = ['tokens', 'utils'];
 
 const aliases = pluginAlias({
   entries: [
-    { find: '~src', replacement: `${__dirname}/${inputRootDirectory}` },
-    { find: '~components', replacement: `${__dirname}/${inputRootDirectory}/components` },
-    { find: '~utils', replacement: `${__dirname}/${inputRootDirectory}/utils` },
-    { find: '~tokens', replacement: `${__dirname}/${inputRootDirectory}/tokens` },
+    { find: '~src', replacement: fileURLToPath(new URL(inputRootDirectory, import.meta.url)) },
+    {
+      find: '~components',
+      replacement: fileURLToPath(new URL(`${inputRootDirectory}/components`, import.meta.url)),
+    },
+    {
+      find: '~utils',
+      replacement: fileURLToPath(new URL(`${inputRootDirectory}/utils`, import.meta.url)),
+    },
+    {
+      find: '~tokens',
+      replacement: fileURLToPath(new URL(`${inputRootDirectory}/tokens`, import.meta.url)),
+    },
   ],
 });
 
@@ -117,8 +127,9 @@ const getDeclarationsConfig = ({ exportCategory, isNative }) => {
 
   // Need to resolve paths in d.ts files
   // https://github.com/Swatinem/rollup-plugin-dts/issues/169
-  const currentTsConfig = ts.readConfigFile(`${__dirname}/tsconfig.json`, (p) =>
-    fs.readFileSync(p, 'utf8'),
+  const currentTsConfig = ts.readConfigFile(
+    fileURLToPath(new URL(`tsconfig.json`, import.meta.url)),
+    (p) => fs.readFileSync(p, 'utf8'),
   ).config.compilerOptions;
   const compilerOptions = {
     ...currentTsConfig,

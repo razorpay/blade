@@ -2,9 +2,9 @@
 import React from 'react';
 import isEmpty from 'lodash/isEmpty';
 import type { TextInput as TextInputReactNative } from 'react-native';
-import { CloseIcon } from '../../Icons';
 import type { BaseInputProps } from '../BaseInput';
 import { BaseInput } from '../BaseInput';
+import { CloseIcon } from '~components/Icons';
 import { IconButton } from '~components/Button/IconButton';
 import BaseBox from '~components/Box/BaseBox';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
