@@ -53,6 +53,7 @@ const generateChromaticBrandColors = (baseColorInput: ColorInput): Color['chroma
 
   const palette = [baseColorHslString]; // Include the original color
   const brightness = tinycolor(baseColor).getBrightness();
+  // Determine how much to lighten or darken the colors depending on the brightness of the base color
   const lightnessFactor = brightness > 150 ? 3 : 6;
   const darknessFactor = brightness < 50 ? 3 : 5;
 
@@ -103,6 +104,8 @@ const generateChromaticBrandColors = (baseColorInput: ColorInput): Color['chroma
  * @returns The light theme tokens with the custom brand colors
  */
 const getLightTheme = (brandColors: Color['chromatic']['azure']): ThemeTokens => {
+  // Select the most readable color to use as the foreground color on top of brand color
+  // For example: On Primary Button where the background color is brand color, the text color should be either dark or light depending on which is more readable on top of that brand color
   const foregroundOnBrandColorPaymentLight = tinycolor
     .mostReadable(
       brandColors[900],
@@ -111,6 +114,8 @@ const getLightTheme = (brandColors: Color['chromatic']['azure']): ThemeTokens =>
     )
     .toHexString();
 
+  // Select the most readable color to use as the foreground color on top of surface color
+  // For example: On Secondary Button where the background color is surface color, the text color should be either the brand color or dark color depending on which is more readable on top of that surface color
   const foregroundOnSurfacePaymentLight = tinycolor.isReadable(
     globalColors.neutral.blueGrayLight[50],
     brandColors[600],
@@ -119,6 +124,7 @@ const getLightTheme = (brandColors: Color['chromatic']['azure']): ThemeTokens =>
     ? brandColors[600]
     : globalColors.neutral.blueGrayLight[1100];
 
+  // Override the payment theme onLight with the brand colors
   const lightThemePaymentsOverrides = {
     colors: {
       onLight: {
@@ -224,6 +230,8 @@ const getLightTheme = (brandColors: Color['chromatic']['azure']): ThemeTokens =>
  * @returns The dark theme tokens with the custom brand colors
  */
 const getDarkTheme = (brandColors: Color['chromatic']['azure']): ThemeTokens => {
+  // Select the most readable color to use as the foreground color on top of brand color
+  // For example: On Primary Button where the background color is brand color, the text color should be either dark or light depending on which is more readable on top of that brand color
   const foregroundOnBrandColorBankingDark = tinycolor
     .mostReadable(
       brandColors[800],
@@ -232,6 +240,8 @@ const getDarkTheme = (brandColors: Color['chromatic']['azure']): ThemeTokens => 
     )
     .toHexString();
 
+  // Select the most readable color to use as the foreground color on top of surface color
+  // For example: On Secondary Button where the background color is surface color, the text color should be either the brand color or light color depending on which is more readable on top of that surface color
   const foregroundOnSurfaceBankingDark = tinycolor.isReadable(
     globalColors.neutral.navyGrayDark[1100],
     brandColors[400],
@@ -240,6 +250,7 @@ const getDarkTheme = (brandColors: Color['chromatic']['azure']): ThemeTokens => 
     ? brandColors[400]
     : globalColors.neutral.navyGrayDark[0];
 
+  // Override the banking theme onDark with the brand colors
   const darkThemeBankingOverrides = {
     colors: {
       onDark: {
@@ -343,10 +354,12 @@ export const createTheme = ({
   overrides?: DeepPartial<ThemeTokens>;
 }): ThemeTokens => {
   const chromaticBrandColors = generateChromaticBrandColors(brandColor);
+  // Get theme tokens for overriding onLight colors which are based on payment theme
   const brandedLightTheme = getLightTheme(chromaticBrandColors);
+  // Get theme tokens for overriding onDark colors which are based on banking theme
   const brandedDarkTheme = getDarkTheme(chromaticBrandColors);
 
-  // merge theme with light colors from payment theme and dark colors from banking theme
+  // Merge theme with light colors from payment theme and dark colors from banking theme
   const brandedThemeTokens = overrideTheme({
     baseThemeTokens: paymentTheme,
     overrides: {
@@ -358,7 +371,7 @@ export const createTheme = ({
           ...brandedDarkTheme.colors.onDark,
         },
       },
-      ...extraOverrides,
+      ...extraOverrides, // Apply any extra overrides passed in by the consumer
     },
   });
 
