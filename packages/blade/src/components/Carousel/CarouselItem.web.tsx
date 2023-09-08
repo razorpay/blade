@@ -16,14 +16,7 @@ type StyledCarouselItemProps = Pick<CarouselProps, 'visibleItems' | 'shouldAddSt
   };
 
 const StyledCarouselItem = styled(BaseBox)<StyledCarouselItemProps>(
-  ({
-    visibleItems,
-    isResponsive,
-    shouldAddStartEndSpacing,
-    shouldHaveStartSpacing,
-    shouldHaveEndSpacing,
-    theme,
-  }) => {
+  ({ visibleItems, isResponsive, shouldAddStartEndSpacing, shouldHaveStartSpacing, theme }) => {
     const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
     const isMobile = matchedDeviceType === 'mobile';
 
@@ -42,7 +35,6 @@ const StyledCarouselItem = styled(BaseBox)<StyledCarouselItemProps>(
         width: '100%',
         scrollSnapAlign: isMobile || !shouldAddStartEndSpacing ? 'start' : 'center',
         marginLeft: shouldHaveStartSpacing ? '100%' : 0,
-        marginRight: shouldHaveEndSpacing ? '100%' : 0,
       }),
     };
   },
