@@ -16,10 +16,7 @@ const BladeProvider = ({
   colorScheme: initialColorScheme,
   children,
 }: BladeProviderProps): ReactElement => {
-  const { theme, themeContextValue } = useBladeProvider({
-    initialColorScheme,
-    themeTokens,
-  });
+  const { theme, themeContextValue } = useBladeProvider({ initialColorScheme, themeTokens });
 
   return (
     <GestureHandlerRootView style={gestureHandlerStyle}>

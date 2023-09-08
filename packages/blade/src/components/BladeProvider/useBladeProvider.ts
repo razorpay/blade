@@ -27,7 +27,6 @@ const useBladeProvider = ({
 }: {
   themeTokens: ThemeTokens;
   initialColorScheme?: ColorSchemeNamesInput;
-  brandColor?: string;
 }): { theme: Theme; themeContextValue: ThemeContextValue } => {
   if (__DEV__) {
     if (!themeTokens) {

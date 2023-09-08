@@ -9,8 +9,6 @@ import { INTERNAL_STORY_ADDON_PARAM } from './constants';
 const { GlobalStyle } = global;
 import { DocsContainer } from '@storybook/addon-docs/blocks';
 
-const getBrandedTheme = () => {};
-
 export const parameters = {
   // disable snapshot by default and then enable it only for kitchen sink
   chromatic: {
