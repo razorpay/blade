@@ -37,21 +37,6 @@ type ControlsProp = Required<
   onPreviousButtonClick: () => void;
 };
 
-// function isSafari() {
-//   const isChrome = navigator.userAgent.includes('Chrome');
-//   const isSafari = navigator.userAgent.includes('Safari');
-
-//   if (isSafari) {
-//     if (isChrome) {
-//       // Chrome seems to have both Chrome and Safari userAgents
-//       return false;
-//     } else {
-//       return true;
-//     }
-//   }
-//   return false;
-// }
-
 const Controls = ({
   showIndicators,
   navigationButtonPosition,
