@@ -219,25 +219,7 @@ describe('<Popover />', () => {
     expect(queryByRole('dialog')).not.toBeInTheDocument();
   });
 
-  // TODO: PopoverInteractiveWrapper
-  // TODO: initialFocusRef
-
-  it('should pass a11y', async () => {
-    jest.useRealTimers();
-
-    const content = 'Hello world';
-    const title = 'Popover title';
-    const buttonText = 'Click me';
-    const { getByRole } = renderWithTheme(
-      <Popover defaultIsOpen title={title} content={content}>
-        <Button>{buttonText}</Button>
-      </Popover>,
-    );
-    expect(getByRole('dialog')).toHaveAccessibleName(title);
-    await assertAccessible(getByRole('dialog'));
-  });
-
-  it('should have proper meta attributes', async () => {
+  it('should have work with PopoverInteractiveWrapper', async () => {
     jest.useFakeTimers();
     const { getByTestId, queryByRole } = renderWithTheme(
       <Popover content="Hello world">
@@ -258,5 +240,27 @@ describe('<Popover />', () => {
       jest.advanceTimersByTime(300);
     });
     expect(queryByRole('dialog')).toHaveAttribute('data-blade-component', MetaConstants.Popover);
+
+    fireEvent.click(wrapper);
+
+    await act(async () => {
+      jest.advanceTimersByTime(299 + animationDuration);
+    });
+    expect(queryByRole('dialog')).not.toBeInTheDocument();
+  });
+
+  it('should pass a11y', async () => {
+    jest.useRealTimers();
+
+    const content = 'Hello world';
+    const title = 'Popover title';
+    const buttonText = 'Click me';
+    const { getByRole } = renderWithTheme(
+      <Popover defaultIsOpen title={title} content={content}>
+        <Button>{buttonText}</Button>
+      </Popover>,
+    );
+    expect(getByRole('dialog')).toHaveAccessibleName(title);
+    await assertAccessible(getByRole('dialog'));
   });
 });
