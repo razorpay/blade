@@ -33,7 +33,6 @@ const Popover = ({
     onChange: (isOpen) => onOpenChange?.({ isOpen }),
   });
 
-  console.log(controllableIsOpen);
   const gap = theme.spacing[2];
   const [side] = getPlacementParts(placement);
   const isHorizontal = side === 'left' || side === 'right';
@@ -99,7 +98,12 @@ const Popover = ({
         ),
         ref: refs.setReference,
       })}
-      <Modal collapsable={false} transparent visible={isVisible}>
+      <Modal
+        collapsable={false}
+        transparent
+        visible={Boolean(isVisible)}
+        {...metaAttribute({ testID: 'popover-modal' })}
+      >
         <TouchableOpacity
           style={{
             position: 'absolute',

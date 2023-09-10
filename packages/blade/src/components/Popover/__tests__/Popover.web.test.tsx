@@ -12,6 +12,7 @@ import { MetaConstants } from '~utils/metaAttribute';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
 import { Box } from '~components/Box';
+import { Text } from '~components/Typography';
 
 const waitForPosition = () => act(async () => {});
 const animationDuration = paymentTheme.motion.duration.quick;
@@ -32,6 +33,20 @@ describe('<Popover />', () => {
     expect(queryByRole('dialog')).toBeInTheDocument();
     expect(queryByRole('dialog')).toHaveStyle({ 'z-index': 1100 });
     expect(queryByRole('dialog')).toHaveAttribute('data-blade-component', MetaConstants.Popover);
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render with title,footer', () => {
+    const buttonText = 'Click me';
+    const { container, getByRole, queryByRole } = renderWithTheme(
+      <Popover content="Hello world" title="This is title" footer={<Text>Footer</Text>}>
+        <Button>{buttonText}</Button>
+      </Popover>,
+    );
+
+    // snapshot while on opened
+    fireEvent.click(getByRole('button', { name: buttonText }));
+    expect(queryByRole('dialog')).toBeInTheDocument();
     expect(container).toMatchSnapshot();
   });
 
