@@ -82,6 +82,11 @@ const Divider = ({
   const borderPosition = isDividerHorizontal ? 'borderBottom' : 'borderLeft';
   const colorContrast: keyof ColorContrast = `${contrast}Contrast`;
   const borderColor = { [`${borderPosition}Color`]: `surface.border.${variant}.${colorContrast}` };
+  const accessibilityProps = isReactNative()
+    ? {}
+    : makeAccessible({
+        role: 'separator',
+      });
 
   return (
     <StyledDivider
@@ -95,9 +100,7 @@ const Divider = ({
       {...borderColor}
       {...metaAttribute({ name: MetaConstants.Divider, testID })}
       {...getStyledProps(styledProps)}
-      {...makeAccessible({
-        role: isReactNative() ? undefined : 'separator',
-      })}
+      {...accessibilityProps}
     />
   );
 };
