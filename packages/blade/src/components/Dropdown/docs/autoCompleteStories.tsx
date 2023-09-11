@@ -562,3 +562,59 @@ export const maxRowsStates = `
 
   export default App;
 `;
+
+export const withErrorState = `
+  import React from 'react';
+  import { 
+    Dropdown, 
+    DropdownOverlay,
+    AutoComplete,
+    ActionList,
+    ActionListItem,
+  } from '@razorpay/blade/components';
+
+  const cities = ['Mumbai', 'Pune', 'Bangalore', 'Mysore'];
+
+  function App(): React.ReactElement {
+    const [isError, setIsError] = React.useState(false);
+    const [currentInputValue, setCurrentInputValue] = React.useState('');
+
+    return (
+      <Dropdown 
+        selectionType="single"
+        onDismiss={() => {
+          if (!cities.includes(currentInputValue) && currentInputValue) {
+            setIsError(true);
+          }
+        }}
+      >
+        <AutoComplete
+          label="City"
+          placeholder="Select your City"
+          name="city"
+          inputValue={currentInputValue}
+          onInputValueChange={({ value }) => {
+            if (isError) {
+              setIsError(false);
+            }
+            setCurrentInputValue(value);
+          }}
+          errorText="Invalid selection. You can only select items from the list"
+          validationState={isError ? 'error' : 'none'}
+          helpText="Type something not in the list and click outside"
+        />
+        <DropdownOverlay>
+          <ActionList>
+            { 
+              cities.map((city) => 
+                <ActionListItem key={city} title={city} value={city} />
+              ) 
+            }
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+    )
+  }
+
+  export default App;
+`;

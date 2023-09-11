@@ -10,6 +10,7 @@ import {
   clearOnDismiss,
   maxRowsStates,
   controlledFilteringWithBottomSheet,
+  withErrorState,
 } from './autoCompleteStories';
 
 import { Sandbox } from '~utils/storybook/Sandbox';
@@ -113,6 +114,14 @@ export const MaxRowsStates = (): React.ReactElement => {
   return (
     <Sandbox padding="spacing.0" editorHeight="100vh">
       {maxRowsStates}
+    </Sandbox>
+  );
+};
+
+export const WithErrorState = (): React.ReactElement => {
+  return (
+    <Sandbox padding="spacing.0" editorHeight="100vh">
+      {withErrorState}
     </Sandbox>
   );
 };
