@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 10.8.0
+
+### Minor Changes
+
+- ac405dfc: chore(blade): added id to Box component
+
 ## 10.7.1
 
 ### Patch Changes
