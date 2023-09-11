@@ -12,10 +12,10 @@ import {
 import type { SelectActionsType } from './dropdownUtils';
 import type { DropdownProps } from './types';
 
+import { dropdownComponentIds } from './dropdownComponentIds';
 import type { FormInputHandleOnKeyDownEvent } from '~components/Form/FormTypes';
 import { isReactNative } from '~utils';
 import type { ContainerElementType } from '~utils/types';
-import { dropdownComponentIds } from './dropdownComponentIds';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 const noop = (): void => {};

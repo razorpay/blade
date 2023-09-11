@@ -9,11 +9,12 @@ import { getActionListContainerRole } from '~components/ActionList/getA11yRoles'
 import { MetaConstants } from '~utils/metaAttribute';
 import { getTagsGroup } from '~components/Tag/getTagsGroup';
 import type { BladeElementRef } from '~utils/types';
+import { useFirstRender } from '~utils/useFirstRender';
 
 const useControlledDropdownInput = (
   props: Pick<BaseDropdownInputTriggerProps, 'onChange' | 'name' | 'value' | 'defaultValue'>,
 ): void => {
-  const isFirstRenderRef = React.useRef(true);
+  const isFirstRender = useFirstRender();
   const {
     changeCallbackTriggerer,
     isControlled,
@@ -87,12 +88,8 @@ const useControlledDropdownInput = (
   // onChange behaviour
   React.useEffect(() => {
     // Ignore calling onChange on mount
-    if (isFirstRenderRef.current) {
-      isFirstRenderRef.current = false;
-      return;
-    }
 
-    if (!isFirstRenderRef.current) {
+    if (!isFirstRender) {
       props.onChange?.({
         name: props.name,
         values: getValuesArrayFromIndices(),
