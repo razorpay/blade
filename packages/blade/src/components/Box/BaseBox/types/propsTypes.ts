@@ -289,6 +289,7 @@ type BoxProps = Partial<
     BoxVisualProps & {
       children?: React.ReactNode | React.ReactNode[];
       tabIndex?: number;
+      id?: string;
     } & TestID
 >;
 
