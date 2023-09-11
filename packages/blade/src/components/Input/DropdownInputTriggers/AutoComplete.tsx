@@ -39,6 +39,8 @@ const useAutoComplete = ({
     selectionType,
   } = useDropdown();
 
+  const resetFilters = (): void => setGlobalFilteredValues(getOptionValues());
+
   // Makes sure that first item is always in focus
   React.useEffect((): void => {
     const firstItemOptionIndex = options.findIndex(
@@ -53,11 +55,18 @@ const useAutoComplete = ({
 
   // When input is empty or its single select, we want all items to be shown in filter on open of dropdown
   React.useEffect(() => {
-    if (isOpen && (!inputValue || selectionType === 'single')) {
-      setGlobalFilteredValues(getOptionValues());
+    if (isOpen && !inputValue) {
+      resetFilters();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen, options]);
+
+  React.useEffect(() => {
+    if (isOpen && selectionType === 'single') {
+      resetFilters();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen]);
 
   const onInputValueChange: BaseDropdownInputTriggerProps['onInputValueChange'] = ({
     name,
@@ -80,7 +89,7 @@ const useAutoComplete = ({
         );
         setGlobalFilteredValues(filteredOptions);
       } else {
-        setGlobalFilteredValues(getOptionValues());
+        resetFilters();
       }
     }
   };
@@ -102,7 +111,7 @@ const useAutoComplete = ({
       setInputValue('');
       props.onInputValueChange?.({ name: props.name, value: '' });
       setActiveTagIndex(-1);
-      setGlobalFilteredValues(getOptionValues());
+      resetFilters();
     } else {
       const displayText = options.find((option) => option.value === values[0])?.title;
       props.onInputValueChange?.({
