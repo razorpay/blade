@@ -103,7 +103,7 @@ const BaseInputTagSlot = ({
   });
 
   React.useEffect(() => {
-    slotRef.current?.scrollTo({
+    slotRef.current?.scrollTo?.({
       top:
         maxTagRows === 'multiple' || maxTagRows === 'expandable' ? slotRef.current.scrollHeight : 0,
       left: maxTagRows === 'single' ? slotRef.current.scrollWidth : 0,

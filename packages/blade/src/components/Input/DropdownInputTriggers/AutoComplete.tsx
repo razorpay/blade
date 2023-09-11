@@ -7,7 +7,7 @@ import BaseBox from '~components/Box/BaseBox';
 import type { BladeElementRef } from '~utils/types';
 import { dropdownComponentIds } from '~components/Dropdown/dropdownComponentIds';
 
-const useAutoCompleteHandlers = ({
+const useAutoComplete = ({
   props,
   inputValue,
   setInputValue,
@@ -39,6 +39,7 @@ const useAutoCompleteHandlers = ({
     selectionType,
   } = useDropdown();
 
+  // Makes sure that first item is always in focus
   React.useEffect((): void => {
     const firstItemOptionIndex = options.findIndex(
       (option) => option.value === globalFilteredValues[0],
@@ -49,6 +50,14 @@ const useAutoCompleteHandlers = ({
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [globalFilteredValues.length]);
+
+  // When input is empty or its single select, we want all items to be shown in filter on open of dropdown
+  React.useEffect(() => {
+    if (isOpen && (!inputValue || selectionType === 'single')) {
+      setGlobalFilteredValues(getOptionValues());
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen, options]);
 
   const onInputValueChange: BaseDropdownInputTriggerProps['onInputValueChange'] = ({
     name,
@@ -62,6 +71,7 @@ const useAutoCompleteHandlers = ({
       setIsOpen(true);
     }
 
+    // default filtering when filteredValues is uncontrolled
     if (!props.filteredValues) {
       // eslint-disable-next-line no-lonely-if
       if (value && options && options.length > 0) {
@@ -76,15 +86,8 @@ const useAutoCompleteHandlers = ({
   };
 
   const onTriggerKeydown: BaseDropdownInputTriggerProps['onTriggerKeydown'] = (e) => {
-    if (e.key === 'Enter') {
-      setActiveTagIndex(-1);
-      setGlobalFilteredValues(getOptionValues());
-    } else if (
-      e.key === 'Backspace' &&
-      !inputValue &&
-      activeTagIndex < 0 &&
-      selectedIndices.length > 0
-    ) {
+    // Pressing backspace on empty input should remove the last tag
+    if (e.key === 'Backspace' && !inputValue && activeTagIndex < 0 && selectedIndices.length > 0) {
       if (isControlled) {
         setControlledValueIndices(selectedIndices.slice(0, -1));
       } else {
@@ -126,7 +129,6 @@ const _AutoComplete = (
   const inputValue = props.inputValue ?? uncontrolledInputValue;
 
   const {
-    isOpen,
     options,
     setFilteredValues: setGlobalFilteredValues,
     hasAutoCompleteInBottomSheetHeader,
@@ -139,7 +141,7 @@ const _AutoComplete = (
     return options.map((option) => option.value);
   }, [options]);
 
-  const { onSelectionChange, onTriggerKeydown, onInputValueChange } = useAutoCompleteHandlers({
+  const { onSelectionChange, onTriggerKeydown, onInputValueChange } = useAutoComplete({
     props,
     inputValue,
     setInputValue,
@@ -149,19 +151,13 @@ const _AutoComplete = (
   React.useEffect(() => {
     if (dropdownTriggerer !== dropdownComponentIds.triggers.AutoComplete) {
       // When AutoComplete is mounted but not as trigger,
-      // we assume its in header of BottomSheet
+      // it has to be somewhere in the BottomSheet (most likely header based on UI but works in other parts too)
       setHasAutoCompleteInBottomSheetHeader(true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  React.useEffect(() => {
-    if (isOpen && !inputValue) {
-      setGlobalFilteredValues(getOptionValues());
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isOpen, options]);
-
+  // handles controlled filteredValues state (syncs it with our global filteredValues)
   React.useEffect(() => {
     if (props.filteredValues) {
       setGlobalFilteredValues(props.filteredValues);
@@ -179,12 +175,12 @@ const _AutoComplete = (
         inputValue={inputValue}
         onTriggerKeydown={onTriggerKeydown}
         onInputValueChange={onInputValueChange}
-        onTriggerClick={(e) => {
+        onTriggerClick={(triggerEvent) => {
           if (!hasAutoCompleteInBottomSheetHeader) {
             // we don't want clicking on autocomplete to open / close Dropdown when it is used inside BottomSheet's header
             onTriggerClick();
           }
-          props?.onClick?.(e);
+          props?.onClick?.(triggerEvent);
         }}
       />
     </BaseBox>
