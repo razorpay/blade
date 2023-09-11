@@ -395,7 +395,7 @@ describe('<BottomSheet /> & <Dropdown /> with <AutoComplete />', () => {
     const user = userEvent.setup();
     const { queryByTestId, getAllByLabelText, getByRole } = renderWithTheme(
       <Dropdown selectionType="multiple">
-        <AutoComplete label="Fruits" placeholder="Select Fruits" />
+        <SelectInput label="Fruits" placeholder="Select Fruits" />
         <BottomSheet>
           <BottomSheetHeader>
             <AutoComplete label="Fruits" placeholder="Select Fruits" />
@@ -438,5 +438,105 @@ describe('<BottomSheet /> & <Dropdown /> with <AutoComplete />', () => {
     await user.click(getTag('Orange'));
     await waitFor(() => expect(getTag('Orange')).not.toBeVisible());
     expect(getTag('Mango')).toBeVisible();
+  });
+
+  it('should handle controlled filtering', async () => {
+    const cities = [
+      {
+        title: 'Mumbai',
+        value: 'mumbai',
+        keywords: ['maharashtra'],
+      },
+      {
+        title: 'Pune',
+        value: 'pune',
+        keywords: ['maharashtra'],
+      },
+      {
+        title: 'Bengaluru',
+        value: 'bengaluru',
+        keywords: ['karnataka', 'bangalore'],
+      },
+    ];
+
+    const ControlledFiltering = (): React.ReactElement => {
+      const cityValues = cities.map((city) => city.value);
+      const [filteredValues, setFilteredValues] = React.useState<string[]>(cityValues);
+
+      return (
+        <Dropdown selectionType="multiple">
+          <SelectInput label="Cities" />
+          <BottomSheet>
+            <BottomSheetHeader>
+              <AutoComplete
+                label="Cities"
+                onInputValueChange={({ value }) => {
+                  if (value) {
+                    const filteredItems = cities
+                      .filter(
+                        (city) =>
+                          city.title.toLowerCase().startsWith(value.toLowerCase()) ||
+                          city.keywords.find((keyword) =>
+                            keyword.toLowerCase().includes(value.toLowerCase()),
+                          ),
+                      )
+                      .map((city) => city.value);
+
+                    if (filteredItems.length > 0) {
+                      setFilteredValues(filteredItems);
+                    } else {
+                      setFilteredValues([]);
+                    }
+                  } else {
+                    setFilteredValues(cityValues);
+                  }
+                }}
+                filteredValues={filteredValues}
+                helpText="Try typing 'maharashtra' in input"
+              />
+            </BottomSheetHeader>
+            <BottomSheetBody>
+              <ActionList>
+                {cities.map((city) => (
+                  <ActionListItem key={city.value} title={city.title} value={city.value} />
+                ))}
+              </ActionList>
+            </BottomSheetBody>
+          </BottomSheet>
+        </Dropdown>
+      );
+    };
+
+    const user = userEvent.setup();
+    const { getByRole, getAllByLabelText, queryByRole, queryByTestId } = renderWithTheme(
+      <ControlledFiltering />,
+    );
+
+    const [selectInput, autoComplete] = getAllByLabelText('Cities') as HTMLInputElement[];
+
+    expect(selectInput).toBeInTheDocument();
+    expect(queryByTestId('bottomsheet-body')).not.toBeVisible();
+
+    await user.click(selectInput);
+    await waitFor(() => expect(queryByTestId('bottomsheet-body')).toBeVisible());
+
+    act(() => {
+      autoComplete.focus();
+    });
+
+    expect(getByRole('option', { name: 'Mumbai' })).toBeVisible();
+    expect(getByRole('option', { name: 'Pune' })).toBeVisible();
+    expect(getByRole('option', { name: 'Bengaluru' })).toBeVisible();
+
+    // typing maharashtra should filter mumbai and pune and remove other options
+    await user.keyboard('maha');
+
+    expect(getByRole('option', { name: 'Mumbai' })).toBeVisible();
+    expect(getByRole('option', { name: 'Pune' })).toBeVisible();
+    expect(queryByRole('option', { name: 'Bengaluru' })).not.toBeInTheDocument();
+
+    expect(getByRole('option', { name: 'Pune' })).toHaveAttribute('aria-selected', 'false');
+    await user.click(getByRole('option', { name: 'Pune' }));
+    expect(getByRole('option', { name: 'Pune' })).toHaveAttribute('aria-selected', 'true');
   });
 });
