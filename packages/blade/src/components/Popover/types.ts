@@ -3,6 +3,7 @@ import type { Side, UseFloatingOptions } from '@floating-ui/react';
 import type { CSSProperties } from 'react';
 import type React from 'react';
 import type { BaseBoxProps } from '~components/Box/BaseBox';
+import type { Platform } from '~utils';
 
 type PopoverProps = {
   title?: string;
@@ -11,7 +12,7 @@ type PopoverProps = {
   /**
    * Popover content
    */
-  content: React.ReactNode;
+  content: React.ReactElement;
   /**
    * Placement of Popover
    *
@@ -54,4 +55,17 @@ type PopoverContentWrapperProps = {
   isVisible?: boolean;
 } & BaseBoxProps;
 
-export { PopoverProps, PopoverContentProps, PopoverContentWrapperProps };
+/**
+ * PopoverTriggerProps
+ *
+ * This can be useful when working with Custom Trigger Components
+ */
+type PopoverTriggerProps = {
+  onMouseDown?: Platform.Select<{ web: React.MouseEventHandler; native: undefined }>;
+  onPointerDown?: Platform.Select<{ web: React.PointerEventHandler; native: undefined }>;
+  onKeyDown?: Platform.Select<{ web: React.KeyboardEventHandler; native: undefined }>;
+  onKeyUp?: Platform.Select<{ web: React.KeyboardEventHandler; native: undefined }>;
+  onClick?: Platform.Select<{ web: React.MouseEventHandler; native: undefined }>;
+};
+
+export { PopoverProps, PopoverContentProps, PopoverContentWrapperProps, PopoverTriggerProps };

@@ -1,3 +1,3 @@
 export * from './Popover';
 export * from './PopoverInteractiveWrapper';
-export type { PopoverProps } from './types';
+export type { PopoverProps, PopoverTriggerProps } from './types';

@@ -2,19 +2,23 @@ import styled from 'styled-components';
 import React from 'react';
 import { usePopoverContext } from './PopoverContext';
 import type { BaseBoxProps } from '~components/Box/BaseBox';
-import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeAccessible } from '~utils/makeAccessible';
+import { useMemoizedStyles } from '~components/Box/BaseBox/useMemoizedStyles.web';
 
-const StyledPopoverInteractiveWrapper = styled(BaseBox)(({ theme }) => {
+const StyledPopoverInteractiveWrapper = styled.button((props) => {
+  const cssObject = useMemoizedStyles(props as never);
+
   return {
-    appearance: 'none',
     all: 'unset',
+    ...cssObject,
+    appearance: 'none',
     cursor: 'pointer',
+    lineHeight: 0,
     '&:focus': {
       // TODO: refactor to use focus ring token
       outline: 'none',
-      boxShadow: `0px 0px 0px 4px ${theme.colors.brand.primary[400]}`,
+      boxShadow: `0px 0px 0px 4px ${props.theme.colors.brand.primary[400]}`,
     },
   };
 });
