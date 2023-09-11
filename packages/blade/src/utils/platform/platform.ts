@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-namespace */
 import type { Brand, NativeOrWebBrand } from './types';
 
-namespace Platform {
+export namespace Platform {
   export type Name = 'web';
   /**
    * Right now, the module resolution is set to resolve `.web` files,
@@ -23,5 +23,3 @@ namespace Platform {
     { __brand__?: 'platform-web' | 'platform-all' }
   >;
 }
-
-export type { Platform };
