@@ -83,6 +83,7 @@ const Popover = ({
     return {
       close: handleClose,
       defaultInitialFocusRef,
+      titleId: '',
     };
   }, [handleClose]);
 

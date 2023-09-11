@@ -5,7 +5,7 @@ import type { PopoverContentWrapperProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
 
 const PopoverContentWrapper = styled(BaseBox)<
-  { styles: CSSProperties; isMobile: boolean } & PopoverContentWrapperProps
+  { styles: CSSProperties } & PopoverContentWrapperProps
 >(({ theme, isMobile, styles }) => {
   return getPopoverContentWrapperStyles({ theme, styles, isMobile });
 });

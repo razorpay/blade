@@ -7,7 +7,7 @@ const PopoverCloseButton = (): React.ReactElement => {
 
   return (
     <IconButton
-      ref={defaultInitialFocusRef}
+      ref={defaultInitialFocusRef as never}
       size="large"
       icon={CloseIcon}
       accessibilityLabel="Close"
