@@ -33,7 +33,6 @@ const Popover = ({
     onChange: (isOpen) => onOpenChange?.({ isOpen }),
   });
 
-  console.log(controllableIsOpen);
   const gap = theme.spacing[2];
   const [side] = getPlacementParts(placement);
   const isHorizontal = side === 'left' || side === 'right';

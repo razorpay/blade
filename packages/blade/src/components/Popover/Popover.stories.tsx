@@ -4,6 +4,7 @@ import type { ComponentStory, Meta } from '@storybook/react';
 import React from 'react';
 import { Title } from '@storybook/addon-docs';
 import { action } from '@storybook/addon-actions';
+import { Pressable } from 'react-native';
 import type { PopoverTriggerProps } from './types';
 import type { PopoverProps } from '.';
 import { PopoverInteractiveWrapper, Popover } from '.';
@@ -23,6 +24,7 @@ import { Counter } from '~components/Counter';
 import { List, ListItem, ListItemText } from '~components/List';
 import { TextInput } from '~components/Input/TextInput';
 import { IconButton } from '~components/Button/IconButton';
+import { isReactNative } from '~utils';
 
 const Page = (): React.ReactElement => {
   return (
@@ -238,7 +240,7 @@ const PlacementTemplate: ComponentStory<typeof Popover> = (args) => {
       </Box>
 
       <Box flex={1} margin="auto" marginTop="20%">
-        <Popover {...args} isOpen placement={placement}>
+        <Popover {...args} isOpen={isReactNative() ? undefined : true} placement={placement}>
           <Button>Click me</Button>
         </Popover>
       </Box>
@@ -311,6 +313,14 @@ const MyCustomTriggerButton = React.forwardRef<
   HTMLDivElement,
   { children: string } & PopoverTriggerProps
 >(({ children, ...props }, ref) => {
+  if (isReactNative()) {
+    return (
+      // just spread the props
+      <Pressable ref={ref as never} onTouchEnd={props.onTouchEnd}>
+        <Text>{children}</Text>
+      </Pressable>
+    );
+  }
   return (
     // just spread the props
     <div role="button" tabIndex={0} ref={ref} {...props}>
@@ -319,54 +329,63 @@ const MyCustomTriggerButton = React.forwardRef<
   );
 });
 
+const CustomTriggerDocs = () => {
+  if (isReactNative()) return null;
+  return (
+    <List>
+      <ListItem>Forward the ref to the custom trigger</ListItem>
+      <ListItem>
+        Forward event handlers to the custom trigger (you can import the PopoverTriggerProps type
+        from blade when using TypeScript)
+        <List>
+          <ListItem>onClick</ListItem>
+          <ListItem>
+            onMouseDown{' '}
+            <ListItemText as="span" type="placeholder">
+              (not needed if your trigger is a button component)
+            </ListItemText>
+          </ListItem>
+          <ListItem>
+            onPointerDown{' '}
+            <ListItemText as="span" type="placeholder">
+              (not needed if your trigger is a button component)
+            </ListItemText>
+          </ListItem>
+          <ListItem>
+            onKeyDown{' '}
+            <ListItemText as="span" type="placeholder">
+              (not needed if your trigger is a button component)
+            </ListItemText>
+          </ListItem>
+          <ListItem>
+            onKeyUp{' '}
+            <ListItemText as="span" type="placeholder">
+              (not needed if your trigger is a button component)
+            </ListItemText>
+          </ListItem>
+          <ListItem>
+            onTouchEnd{' '}
+            <ListItemText as="span" type="placeholder">
+              (react-native only)
+            </ListItemText>
+          </ListItem>
+        </List>
+      </ListItem>
+    </List>
+  );
+};
+
 export const CustomTrigger: ComponentStory<typeof Popover> = (args) => {
   const LeadingIcon = iconMap[args.titleLeading as string]!;
+
   return (
     <>
       <Text as="span">
         Most of your usecase can be solved using PopoverInteractiveWrapper, but if you want to use a
         custom trigger element you can pass
       </Text>
-      <List>
-        <ListItem>Forward the ref to the custom trigger</ListItem>
-        <ListItem>
-          Forward event handlers to the custom trigger (you can import the PopoverTriggerProps type
-          from blade when using TypeScript)
-          <List>
-            <ListItem>onClick</ListItem>
-            <ListItem>
-              onMouseDown{' '}
-              <ListItemText as="span" type="placeholder">
-                (not needed if your trigger is a button component)
-              </ListItemText>
-            </ListItem>
-            <ListItem>
-              onPointerDown{' '}
-              <ListItemText as="span" type="placeholder">
-                (not needed if your trigger is a button component)
-              </ListItemText>
-            </ListItem>
-            <ListItem>
-              onKeyDown{' '}
-              <ListItemText as="span" type="placeholder">
-                (not needed if your trigger is a button component)
-              </ListItemText>
-            </ListItem>
-            <ListItem>
-              onKeyUp{' '}
-              <ListItemText as="span" type="placeholder">
-                (not needed if your trigger is a button component)
-              </ListItemText>
-            </ListItem>
-            <ListItem>
-              onTouchEnd{' '}
-              <ListItemText as="span" type="placeholder">
-                (react-native only)
-              </ListItemText>
-            </ListItem>
-          </List>
-        </ListItem>
-      </List>
+
+      <CustomTriggerDocs />
       <Text>
         Alternatively you can just spread the props to the trigger, instead of adding them 1 by 1
       </Text>

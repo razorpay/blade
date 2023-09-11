@@ -2,6 +2,7 @@
 import type { Side, UseFloatingOptions } from '@floating-ui/react';
 import type { CSSProperties } from 'react';
 import type React from 'react';
+import type { GestureResponderEvent } from 'react-native';
 import type { BaseBoxProps } from '~components/Box/BaseBox';
 import type { Platform } from '~utils';
 
@@ -66,6 +67,10 @@ type PopoverTriggerProps = {
   onKeyDown?: Platform.Select<{ web: React.KeyboardEventHandler; native: undefined }>;
   onKeyUp?: Platform.Select<{ web: React.KeyboardEventHandler; native: undefined }>;
   onClick?: Platform.Select<{ web: React.MouseEventHandler; native: undefined }>;
+  onTouchEnd?: Platform.Select<{
+    web: React.TouchEventHandler;
+    native: (event: GestureResponderEvent) => void;
+  }>;
 };
 
 export { PopoverProps, PopoverContentProps, PopoverContentWrapperProps, PopoverTriggerProps };
