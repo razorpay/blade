@@ -1,8 +1,8 @@
 import React from 'react';
 import { DropdownContext } from './useDropdown';
 import type { DropdownContextType } from './useDropdown';
-import { componentIds } from './dropdownUtils';
 import type { DropdownProps } from './types';
+import { dropdownComponentIds } from './dropdownComponentIds';
 import { useId } from '~utils/useId';
 import { ComponentIds as bottomSheetComponentIds } from '~components/BottomSheet/componentIds';
 import { BottomSheetAndDropdownGlueContext } from '~components/BottomSheet/BottomSheetContext';
@@ -16,11 +16,11 @@ import { throwBladeError } from '~utils/logger';
 import type { ContainerElementType } from '~utils/types';
 
 const validDropdownChildren = [
-  componentIds.triggers.SelectInput,
-  componentIds.triggers.DropdownButton,
-  componentIds.triggers.DropdownLink,
-  componentIds.DropdownOverlay,
-  componentIds.triggers.AutoComplete,
+  dropdownComponentIds.triggers.SelectInput,
+  dropdownComponentIds.triggers.DropdownButton,
+  dropdownComponentIds.triggers.DropdownLink,
+  dropdownComponentIds.DropdownOverlay,
+  dropdownComponentIds.triggers.AutoComplete,
   bottomSheetComponentIds.BottomSheet,
 ];
 
@@ -134,15 +134,15 @@ const _Dropdown = ({
         }
       }
 
-      if (isValidAllowedChildren(child, componentIds.triggers.SelectInput)) {
+      if (isValidAllowedChildren(child, dropdownComponentIds.triggers.SelectInput)) {
         dropdownTriggerer.current = 'SelectInput';
       }
 
-      if (isValidAllowedChildren(child, componentIds.triggers.DropdownButton)) {
+      if (isValidAllowedChildren(child, dropdownComponentIds.triggers.DropdownButton)) {
         dropdownTriggerer.current = 'DropdownButton';
       }
 
-      if (isValidAllowedChildren(child, componentIds.triggers.AutoComplete)) {
+      if (isValidAllowedChildren(child, dropdownComponentIds.triggers.AutoComplete)) {
         dropdownTriggerer.current = 'AutoComplete';
       }
     }
@@ -280,6 +280,8 @@ const _Dropdown = ({
   );
 };
 
-const Dropdown = assignWithoutSideEffects(_Dropdown, { componentId: componentIds.Dropdown });
+const Dropdown = assignWithoutSideEffects(_Dropdown, {
+  componentId: dropdownComponentIds.Dropdown,
+});
 
 export { Dropdown };

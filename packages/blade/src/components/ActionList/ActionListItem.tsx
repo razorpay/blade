@@ -30,6 +30,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeSize } from '~utils/makeSize';
 import { makeAccessible } from '~utils/makeAccessible';
 import { throwBladeError } from '~utils/logger';
+import { dropdownComponentIds } from '~components/Dropdown/dropdownComponentIds';
 
 type ActionListItemProps = {
   title: string;
@@ -320,7 +321,8 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
   const { platform } = useTheme();
   const isMobile = platform === 'onMobile';
   const hasAutoComplete =
-    hasAutoCompleteInBottomSheetHeader || dropdownTriggerer === 'AutoComplete';
+    hasAutoCompleteInBottomSheetHeader ||
+    dropdownTriggerer === dropdownComponentIds.triggers.AutoComplete;
 
   const renderOnWebAs = props.href ? 'a' : 'button';
 
@@ -331,7 +333,7 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
    * isSelected prop explicitly is the only way to select item in menu
    */
   const getIsSelected = (): boolean | undefined => {
-    if (dropdownTriggerer === 'SelectInput' || hasAutoComplete) {
+    if (dropdownTriggerer === dropdownComponentIds.triggers.SelectInput || hasAutoComplete) {
       if (typeof props._index === 'number') {
         return selectedIndices.includes(props._index);
       }
@@ -353,7 +355,10 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
 
   React.useEffect(() => {
     if (__DEV__) {
-      if (dropdownTriggerer === 'SelectInput' && props.intent === 'negative') {
+      if (
+        dropdownTriggerer === dropdownComponentIds.triggers.SelectInput &&
+        props.intent === 'negative'
+      ) {
         throwBladeError({
           message:
             'negative intent ActionListItem cannot be used inside Dropdown with SelectInput trigger',

@@ -12,6 +12,7 @@ import {
 import type { SelectActionsType } from './dropdownUtils';
 import type { DropdownProps } from './types';
 
+import { dropdownComponentIds } from './dropdownComponentIds';
 import type { FormInputHandleOnKeyDownEvent } from '~components/Form/FormTypes';
 import { isReactNative } from '~utils';
 import type { ContainerElementType } from '~utils/types';
@@ -320,7 +321,8 @@ const useDropdown = (): UseDropdownReturnValue => {
     const newIndex = index ?? activeIndex;
     let updatedIndex: number;
     const hasAutoComplete =
-      rest.hasAutoCompleteInBottomSheetHeader || rest.dropdownTriggerer === 'AutoComplete';
+      rest.hasAutoCompleteInBottomSheetHeader ||
+      rest.dropdownTriggerer === dropdownComponentIds.triggers.AutoComplete;
     if (hasAutoComplete && filteredValues.length > 0) {
       // When its autocomplete, we don't loop over all options. We only loop on filtered options
 
@@ -382,7 +384,10 @@ const useDropdown = (): UseDropdownReturnValue => {
     // open the listbox if it is closed
     setIsOpen(true);
 
-    if (rest.hasAutoCompleteInBottomSheetHeader || rest.dropdownTriggerer === 'AutoComplete') {
+    if (
+      rest.hasAutoCompleteInBottomSheetHeader ||
+      rest.dropdownTriggerer === dropdownComponentIds.triggers.AutoComplete
+    ) {
       return;
     }
 

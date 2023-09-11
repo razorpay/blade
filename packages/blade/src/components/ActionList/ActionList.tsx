@@ -14,6 +14,7 @@ import type { SurfaceLevels } from '~tokens/theme/theme';
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { throwBladeError } from '~utils/logger';
+import { dropdownComponentIds } from '~components/Dropdown/dropdownComponentIds';
 
 type ActionListContextProp = Pick<ActionListProps, 'surfaceLevel'>;
 const ActionListContext = React.createContext<ActionListContextProp>({ surfaceLevel: 2 });
@@ -98,7 +99,10 @@ const _ActionList = ({
   }, [actionListOptions]);
   const actionListContextValue = React.useMemo(() => ({ surfaceLevel }), [surfaceLevel]);
 
-  if (filteredValues.length <= 0 && dropdownTriggerer === 'AutoComplete') {
+  if (
+    filteredValues.length <= 0 &&
+    dropdownTriggerer === dropdownComponentIds.triggers.AutoComplete
+  ) {
     return <ActionListNoResults />;
   }
 
