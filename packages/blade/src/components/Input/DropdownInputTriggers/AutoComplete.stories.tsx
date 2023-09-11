@@ -16,7 +16,7 @@ import { PlusIcon } from '~components/Icons';
 import { Text } from '~components/Typography';
 
 const propsCategory = {
-  BASE_PROPS: 'Select Input Props',
+  BASE_PROPS: 'Input Base Props',
   LABEL_PROPS: 'Label Props',
   VALIDATION_PROPS: 'Validation Props',
   LEADING_VISUAL_PROPS: 'Leading Visual Props',
@@ -54,6 +54,26 @@ export default {
   },
   argTypes: {
     defaultValue: {
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
+    onInputValueChange: {
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
+    maxRows: {
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
+    inputValue: {
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
+    filteredValues: {
       table: {
         category: propsCategory.BASE_PROPS,
       },
@@ -230,8 +250,10 @@ const AutoCompleteTemplate: ComponentStory<typeof AutoComplete> = ({ icon, ...ar
         <AutoComplete {...args} icon={iconMap[(icon as unknown) as string]} />
         <DropdownOverlay>
           <ActionList>
-            <ActionListItem title="Item 1" value="item-1" />
-            <ActionListItem title="Item 2" value="item-2" />
+            <ActionListItem title="Mumbai" value="mumbai" />
+            <ActionListItem title="Pune" value="pune" />
+            <ActionListItem title="Bengaluru" value="bengaluru" />
+            <ActionListItem title="Ooty" value="ooty" />
           </ActionList>
         </DropdownOverlay>
       </Dropdown>
@@ -242,8 +264,12 @@ const AutoCompleteTemplate: ComponentStory<typeof AutoComplete> = ({ icon, ...ar
 export const Default = AutoCompleteTemplate.bind({});
 // Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
 Default.storyName = 'AutoComplete';
+Default.args = {
+  label: 'City',
+  placeholder: 'Select City',
+};
 
-export const AutoCompleteUncontrolled = (): React.ReactElement => {
+export const InternalAutoCompleteUncontrolled = (): React.ReactElement => {
   return (
     <Box maxWidth="200px">
       <Dropdown selectionType="multiple">
@@ -283,7 +309,7 @@ const cities = [
     keywords: ['tamil nadu'],
   },
 ];
-export const AutoCompleteControlled = (): React.ReactElement => {
+export const InternalAutoCompleteControlled = (): React.ReactElement => {
   const cityValues = cities.map((city) => city.value);
   const [filteredValues, setFilteredValues] = React.useState<string[]>(cityValues);
 
@@ -328,7 +354,7 @@ export const AutoCompleteControlled = (): React.ReactElement => {
   );
 };
 
-export const AutoCompleteUncontrolledSingleSelect = (): React.ReactElement => {
+export const InternalAutoCompleteUncontrolledSingleSelect = (): React.ReactElement => {
   return (
     <Dropdown>
       <AutoComplete label="Select City" />
@@ -343,7 +369,7 @@ export const AutoCompleteUncontrolledSingleSelect = (): React.ReactElement => {
   );
 };
 
-export const AutoCompleteWithBottomSheet = (): React.ReactElement => {
+export const InternalAutoCompleteWithBottomSheet = (): React.ReactElement => {
   return (
     <Dropdown selectionType="multiple">
       <SelectInput label="Sort Dishes" />
@@ -365,7 +391,7 @@ export const AutoCompleteWithBottomSheet = (): React.ReactElement => {
   );
 };
 
-export const CreatableItem = (): React.ReactElement => {
+export const InternalCreatableItem = (): React.ReactElement => {
   const [items, setItems] = React.useState(['Mumbai', 'Pune', 'Bangalore']);
   const [inputValue, setInputValue] = React.useState('');
   const autoCompleteRef = React.useRef<HTMLInputElement>(null);
@@ -408,7 +434,7 @@ export const CreatableItem = (): React.ReactElement => {
   );
 };
 
-export const ControlledInputValue = (): React.ReactElement => {
+export const InternalControlledInputValue = (): React.ReactElement => {
   const [inputValue, setInputValue] = React.useState<string | undefined>('');
 
   return (

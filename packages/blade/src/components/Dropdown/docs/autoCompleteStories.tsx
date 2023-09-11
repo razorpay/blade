@@ -136,6 +136,106 @@ const App = (): React.ReactElement => {
 export default App;
 `;
 
+export const controlledFilteringWithBottomSheet = `
+  import React from 'react';
+  import { 
+    Box,
+    Text,
+    Dropdown, 
+    BottomSheet,
+    BottomSheetBody,
+    BottomSheetHeader,
+    SelectInput,
+    AutoComplete,
+    ActionList,
+    ActionListItem,
+  } from '@razorpay/blade/components';
+
+  const cities = [
+    {
+      title: 'Mumbai',
+      value: 'mumbai',
+      keywords: ['maharashtra'],
+    },
+    {
+      title: 'Pune',
+      value: 'pune',
+      keywords: ['maharashtra'],
+    },
+    {
+      title: 'Bengaluru',
+      value: 'bengaluru',
+      keywords: ['karnataka', 'bangalore'],
+    },
+    {
+      title: 'Ooty',
+      value: 'ooty',
+      keywords: ['tamil nadu'],
+    },
+  ];
+
+  const App = (): React.ReactElement => {
+    const cityValues = cities.map((city) => city.value);
+    const [filteredValues, setFilteredValues] = React.useState<string[]>(cityValues);
+
+    return (
+      <Dropdown selectionType="multiple">
+        <SelectInput label="City" />
+        <BottomSheet>
+          <BottomSheetHeader>
+            <AutoComplete
+              label="City"
+              onInputValueChange={({ value }) => {
+                if (value) {
+                  const filteredItems = cities
+                    .filter(
+                      (city) =>
+                        city.title.toLowerCase().startsWith(value.toLowerCase()) ||
+                        city.keywords.find((keyword) =>
+                          keyword.toLowerCase().includes(value.toLowerCase()),
+                        ),
+                    )
+                    .map((city) => city.value);
+
+                  // If we find valid filtered items, we apply filter by setting state
+                  if (filteredItems.length > 0) {
+                    setFilteredValues(filteredItems);
+                  } else {
+                    // if we don't find anything, we filter nothing
+                    setFilteredValues([]);
+                  }
+                } else {
+                  // If inputValue is empty, we set all options as filtered items
+                  setFilteredValues(cityValues);
+                }
+              }}
+              filteredValues={filteredValues}
+              helpText="Try typing 'maharashtra' in input"
+            />
+          </BottomSheetHeader>
+          <BottomSheetBody>
+          {
+            filteredValues.length > 0 ? (
+              <ActionList>
+                {cities.map((city) => (
+                  <ActionListItem key={city.value} title={city.title} value={city.value} />
+                ))}
+              </ActionList>
+            ) : (
+              <Box>
+                <Text>Custom No Results Found Message!</Text>
+              </Box>
+            )
+          }  
+          </BottomSheetBody>
+        </BottomSheet>
+      </Dropdown>
+    );
+  };
+
+  export default App;
+`;
+
 export const tagsOutside = `
   import React from 'react';
   import { 
@@ -157,7 +257,8 @@ export const tagsOutside = `
           selectionType="multiple"
         >
           <AutoComplete
-            label="Filter"
+            label="Filters"
+            labelPosition="inside-input"
             placeholder="Select your Filters"
             name="filters"
             value={selections}
@@ -394,7 +495,7 @@ export const maxRowsStates = `
 
   const App = (): React.ReactElement => {
     return (
-      <Box maxWidth="300px" display="flex" flexDirection="column" gap="300px">
+      <Box maxWidth="300px" paddingBottom="400px" display="flex" flexDirection="column" gap="300px">
         <Dropdown selectionType="multiple">
           <AutoComplete
             label="Select City"
@@ -428,6 +529,10 @@ export const maxRowsStates = `
               <ActionListItem title="Coorg" value="coorg" />
               <ActionListItem title="Kolhapur" value="kolhapur" />
               <ActionListItem title="Munnar" value="munnar" />
+              <ActionListItem title="New York" value="new-york" />
+              <ActionListItem title="Lagos" value="lagos" />
+              <ActionListItem title="Indore" value="indore" />
+              <ActionListItem title="New Delhi" value="new-delhi" />
             </ActionList>
           </DropdownOverlay>
         </Dropdown>

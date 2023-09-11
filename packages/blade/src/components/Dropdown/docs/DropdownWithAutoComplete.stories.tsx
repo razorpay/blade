@@ -9,6 +9,7 @@ import {
   creatableItems,
   clearOnDismiss,
   maxRowsStates,
+  controlledFilteringWithBottomSheet,
 } from './autoCompleteStories';
 
 import { Sandbox } from '~utils/storybook/Sandbox';
@@ -64,6 +65,14 @@ export const ControlledFiltering = (): React.ReactElement => {
   return (
     <Sandbox padding="spacing.0" editorHeight="100vh">
       {controlledFiltering}
+    </Sandbox>
+  );
+};
+
+export const ControlledFilteringWithBottomSheet = (): React.ReactElement => {
+  return (
+    <Sandbox padding="spacing.0" editorHeight="100vh">
+      {controlledFilteringWithBottomSheet}
     </Sandbox>
   );
 };
