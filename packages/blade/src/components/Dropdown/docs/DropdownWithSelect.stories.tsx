@@ -250,7 +250,7 @@ export const InternalSelect = (): React.ReactElement => {
       <Dropdown selectionType="multiple">
         <SelectInput label="Select fruits" labelPosition="left" />
         <DropdownOverlay>
-          <ActionList surfaceLevel={3}>
+          <ActionList>
             <ActionListItem title="Apples" value="Apples" />
             <ActionListItem title="Appricots" value="Appricots" />
           </ActionList>
@@ -273,7 +273,7 @@ export const InternalAutoPositioning = (): React.ReactElement => {
         <Dropdown selectionType="multiple">
           <SelectInput label="Select fruits" labelPosition="left" />
           <DropdownOverlay>
-            <ActionList surfaceLevel={3}>
+            <ActionList>
               <ActionListItem title="Apples" value="Apples" />
               <ActionListItem title="Appricots" value="Appricots" />
             </ActionList>
@@ -292,7 +292,7 @@ export const InternalAutoPositioning = (): React.ReactElement => {
         <Dropdown selectionType="multiple">
           <SelectInput label="Select fruits" labelPosition="left" />
           <DropdownOverlay>
-            <ActionList surfaceLevel={3}>
+            <ActionList>
               <ActionListItem title="Apples" value="Apples" />
               <ActionListItem title="Appricots" value="Appricots" />
             </ActionList>
@@ -308,7 +308,7 @@ export const InternalSectionListPerformance = (): React.ReactElement => {
     <Dropdown selectionType="multiple">
       <SelectInput label="Select fruits" />
       <DropdownOverlay>
-        <ActionList surfaceLevel={3}>
+        <ActionList>
           <ActionListItem title="Apples" value="Apples" />
           <ActionListItem title="Appricots" value="Appricots" />
           <ActionListItem title="Abc" value="Abc" />

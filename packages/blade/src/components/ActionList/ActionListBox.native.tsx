@@ -4,11 +4,12 @@ import React from 'react';
 import { BottomSheetSectionList as GorhomBottomSheetSectionList } from '@gorhom/bottom-sheet';
 import { SectionList } from 'react-native';
 import { StyledListBoxWrapper } from './styles/StyledListBoxWrapper';
-import { ActionListItem, ActionListSection, ActionListSectionDivider } from './ActionListItem';
+import { ActionListItem, ActionListSection } from './ActionListItem';
 import type { SectionData } from './actionListUtils';
 import { useBottomSheetContext } from '~components/BottomSheet/BottomSheetContext';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeAccessible } from '~utils/makeAccessible';
+import { Divider } from '~components/Divider';
 
 type ActionListBoxProps = {
   childrenWithId?: React.ReactNode[] | null;
@@ -35,7 +36,7 @@ const _ActionListBox = React.forwardRef<SectionList, ActionListBoxProps>(
       ({ section: { title, hideDivider } }) => {
         if (!title) return null;
         if (hideDivider) return null;
-        return <ActionListSectionDivider />;
+        return <Divider />;
       },
       [],
     );
