@@ -582,11 +582,6 @@ export const withErrorState = `
     return (
       <Dropdown 
         selectionType="single"
-        onDismiss={() => {
-          if (!cities.includes(currentInputValue) && currentInputValue) {
-            setIsError(true);
-          }
-        }}
       >
         <AutoComplete
           label="City"
@@ -598,6 +593,11 @@ export const withErrorState = `
               setIsError(false);
             }
             setCurrentInputValue(value);
+          }}
+          onBlur={() => {
+            if (!cities.includes(currentInputValue)) {
+              setIsError(true);
+            }
           }}
           errorText="Invalid selection. You can only select items from the list"
           validationState={isError ? 'error' : 'none'}
