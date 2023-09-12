@@ -154,7 +154,8 @@ const BaseInputTagSlot = ({
       display="flex"
       flex="1"
       flexWrap={maxTagRows === 'single' ? 'nowrap' : 'wrap'}
-      overflow="auto"
+      overflowX="auto"
+      overflowY={showAllTags || maxTagRows === 'multiple' ? 'auto' : 'hidden'}
       minHeight={makeSize(BASEINPUT_DEFAULT_HEIGHT)}
       onMouseDown={() => {
         setShouldIgnoreBlurAnimation?.(true);
