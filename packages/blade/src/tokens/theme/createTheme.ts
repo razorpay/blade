@@ -360,6 +360,7 @@ export const createTheme = ({
   const brandedThemeTokens = overrideTheme({
     baseThemeTokens: paymentTheme,
     overrides: {
+      name: `custom-${tinycolor(brandColor).toHex()}`,
       colors: {
         onLight: {
           ...brandedLightTheme.colors.onLight,
