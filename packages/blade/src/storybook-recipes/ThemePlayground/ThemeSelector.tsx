@@ -59,9 +59,9 @@ const ThemeSelector = ({
   ];
 
   return (
-    <Card>
+    <Card elevation="none">
       <CardBody>
-        <Box>
+        <Box minWidth="300px">
           <Heading>Customise theme</Heading>
           <Box marginTop="spacing.5" />
           <Box display="flex" flexDirection="row" gap="spacing.2" flexWrap="wrap">

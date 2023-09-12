@@ -18,7 +18,7 @@ const ThemePlayground = (): React.ReactElement => {
   };
   return (
     <BladeProvider themeTokens={getTheme()} colorScheme={colorScheme} key={`${colorScheme}`}>
-      <Box display="flex" flexDirection="row" gap="spacing.5">
+      <Box display="flex" flexDirection="row" gap="spacing.5" flexWrap="wrap">
         <Box flex={1}>
           <ThemeSelector
             selectedColor={selectedColor}
