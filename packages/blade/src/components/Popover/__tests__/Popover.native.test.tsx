@@ -14,6 +14,7 @@ import { InfoIcon } from '~components/Icons';
 const triggerId = 'popover-interactive-wrapper';
 const modalBackdropId = 'popover-modal-backdrop';
 const popoverModalId = 'popover-modal';
+const popoverInteractiveWrapperId = 'popover-interactive-wrapper';
 
 describe('<Popover />', () => {
   jest.useFakeTimers();
@@ -65,7 +66,7 @@ describe('<Popover />', () => {
     const popoverContent = 'hello world';
     const { getByTestId } = renderWithTheme(
       <Popover content={<Text>{popoverContent}</Text>}>
-        <PopoverInteractiveWrapper>
+        <PopoverInteractiveWrapper testID={popoverInteractiveWrapperId}>
           <Text>{triggerText}</Text>
         </PopoverInteractiveWrapper>
       </Popover>,

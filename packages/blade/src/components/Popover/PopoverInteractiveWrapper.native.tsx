@@ -12,7 +12,7 @@ const PopoverInteractiveWrapper = React.forwardRef<View, PressableProps>((props,
   usePopoverContext();
 
   return (
-    <StyledPressable ref={ref} collapsable={false} testID="popover-interactive-wrapper" {...props}>
+    <StyledPressable ref={ref} collapsable={false} {...props}>
       {props.children}
     </StyledPressable>
   );

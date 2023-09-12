@@ -16,29 +16,36 @@ import { Text } from '~components/Typography';
 
 const waitForPosition = () => act(async () => {});
 const animationDuration = paymentTheme.motion.duration.quick;
+const popoverInteractiveWrapperId = 'popover-interactive-wrapper';
 
 describe('<Popover />', () => {
   jest.useFakeTimers();
 
-  it('should render', () => {
+  it('should render', async () => {
     const buttonText = 'Click me';
-    const { container, getByRole, queryByRole } = renderWithTheme(
-      <Popover content="Hello world">
+    const contentText = 'Hello world';
+    const { baseElement, getByRole, queryByRole, getByText } = renderWithTheme(
+      <Popover content={contentText}>
         <Button>{buttonText}</Button>
       </Popover>,
     );
 
     // snapshot while on opened
     fireEvent.click(getByRole('button', { name: buttonText }));
+    await act(async () => {
+      jest.advanceTimersByTime(animationDuration);
+    });
+
     expect(queryByRole('dialog')).toBeInTheDocument();
     expect(queryByRole('dialog')).toHaveStyle({ 'z-index': 1100 });
     expect(queryByRole('dialog')).toHaveAttribute('data-blade-component', MetaConstants.Popover);
-    expect(container).toMatchSnapshot();
+    expect(getByText(contentText)).toBeInTheDocument();
+    expect(baseElement).toMatchSnapshot();
   });
 
   it('should render with title,footer', () => {
     const buttonText = 'Click me';
-    const { container, getByRole, queryByRole } = renderWithTheme(
+    const { baseElement, getByRole, queryByRole } = renderWithTheme(
       <Popover content="Hello world" title="This is title" footer={<Text>Footer</Text>}>
         <Button>{buttonText}</Button>
       </Popover>,
@@ -47,12 +54,12 @@ describe('<Popover />', () => {
     // snapshot while on opened
     fireEvent.click(getByRole('button', { name: buttonText }));
     expect(queryByRole('dialog')).toBeInTheDocument();
-    expect(container).toMatchSnapshot();
+    expect(baseElement).toMatchSnapshot();
   });
 
   it('should render popover with custom zIndex', () => {
     const buttonText = 'Click me';
-    const { container, getByRole, queryByRole } = renderWithTheme(
+    const { baseElement, getByRole, queryByRole } = renderWithTheme(
       <Popover content="Hello world" zIndex={9999}>
         <Button>{buttonText}</Button>
       </Popover>,
@@ -62,7 +69,7 @@ describe('<Popover />', () => {
     fireEvent.click(getByRole('button', { name: buttonText }));
     expect(queryByRole('dialog')).toBeInTheDocument();
     expect(queryByRole('dialog')).toHaveStyle({ 'z-index': 9999 });
-    expect(container).toMatchSnapshot();
+    expect(baseElement).toMatchSnapshot();
   });
 
   it('should open on clicking', async () => {
@@ -160,7 +167,7 @@ describe('<Popover />', () => {
     );
     await waitForPosition();
 
-    // should not be opened by default
+    // should be opened by default
     expect(queryByRole('dialog')).toBeInTheDocument();
     expect(onChange).toHaveBeenCalledTimes(0);
 
@@ -238,7 +245,7 @@ describe('<Popover />', () => {
     jest.useFakeTimers();
     const { getByTestId, queryByRole } = renderWithTheme(
       <Popover content="Hello world">
-        <PopoverInteractiveWrapper>
+        <PopoverInteractiveWrapper testID={popoverInteractiveWrapperId}>
           <InfoIcon color="surface.action.icon.default.highContrast" size="medium" />
         </PopoverInteractiveWrapper>
       </Popover>,
