@@ -78,6 +78,13 @@ export const paymentLightThemeData = {
     'Dropdown/Footer': {
       key: '1568049d40a5c7465dbf686d6e9d5892ec4b69d2',
     },
+    'Icon Size': {
+      key: '06edcdaff550d4c96534c6d95f968e0e4b3eb224',
+    },
+    // @TODO: remove this once replaced on Theme files on Figma
+    'Icon Size Base': {
+      key: 'f97da62257fb94b1bfcfc3f0fb81ef77ac65276d',
+    },
     List: {
       key: '49cd227b1c67f7c13d432eadd4adbd59d2c93572',
     },
@@ -4227,6 +4234,9 @@ export const bankingDarkThemeData = {
     },
     'Dropdown/Footer': {
       key: '9b9e58ddb16265e0eed88e2288ac7e88fa995648',
+    },
+    'Icon Size': {
+      key: '5e2b568a6f6166640f7cad8f5aca2076f00f47ad',
     },
     List: {
       key: 'fee722721f71351976176095b6d4bb0ca2e5373d',

@@ -238,10 +238,12 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
           } else {
             bladeComponents++;
           }
-        } else if (traversedNode.type === 'INSTANCE') {
-          nonBladeComponents++;
-          highlightNonBladeNode(traversedNode, 'Instance is not a Blade Instance');
-        } else if (traversedNode.type === 'TEXT') {
+        }
+        // else if (traversedNode.type === 'INSTANCE') {
+        //   nonBladeComponents++;
+        //   highlightNonBladeNode(traversedNode, 'Instance is not a Blade Instance');
+        // }
+        else if (traversedNode.type === 'TEXT') {
           // check if the text is using Blade's text styles
           let isMixedTextStyleOfBlade = false;
           let traversedNodeTextStyleId = '';
