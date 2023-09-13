@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useImperativeHandle, useState } from 'react';
 import isEmpty from 'lodash/isEmpty';
 import type { BaseInputProps } from '../BaseInput';
 import { BaseInput } from '../BaseInput';
@@ -13,7 +13,6 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getPlatformType } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeSize } from '~utils/makeSize';
-import { mergeRefs } from '~utils/useMergeRefs';
 
 type FormInputOnEventWithIndex = ({
   name,
@@ -135,7 +134,7 @@ const otpToArray = (code?: string): string[] => code?.split('') ?? Array(6).fill
  *   />
  * ```
  */
-const _OTPInput: React.ForwardRefRenderFunction<HTMLInputElement, OTPInputProps> = (
+const _OTPInput: React.ForwardRefRenderFunction<HTMLInputElement[], OTPInputProps> = (
   {
     autoFocus,
     errorText,
@@ -168,6 +167,14 @@ const _OTPInput: React.ForwardRefRenderFunction<HTMLInputElement, OTPInputProps>
   const [inputType, setInputType] = useState<('password' | undefined)[]>([]);
   const isLabelLeftPositioned = labelPosition === 'left';
   const { inputId, helpTextId, errorTextId, successTextId } = useFormId('otp');
+
+  useImperativeHandle(
+    incomingRef,
+    () => {
+      return inputRefs.map((ref) => ref.current!);
+    },
+    [inputRefs],
+  );
 
   useEffect(() => {
     // Effect for calling `onOTPFilled` callback
@@ -338,7 +345,7 @@ const _OTPInput: React.ForwardRefRenderFunction<HTMLInputElement, OTPInputProps>
             hideLabelText={true}
             id={`${inputId}-${index}`}
             textAlign="center"
-            ref={(index === 0 ? mergeRefs(incomingRef, ref) : ref) as never}
+            ref={ref as never}
             name={name}
             value={currentValue}
             maxCharacters={otpValue[index]?.length > 0 ? 1 : undefined}
@@ -406,6 +413,6 @@ const _OTPInput: React.ForwardRefRenderFunction<HTMLInputElement, OTPInputProps>
   );
 };
 
-const OTPInput = React.forwardRef<HTMLInputElement, OTPInputProps>(_OTPInput);
+const OTPInput = React.forwardRef<HTMLInputElement[], OTPInputProps>(_OTPInput);
 
 export { OTPInput };

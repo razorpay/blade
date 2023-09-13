@@ -248,7 +248,7 @@ export const OTPInputControlled = OTPInputControlledTemplate.bind({});
 
 export const inputRef: ComponentStory<typeof OTPInputComponent> = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const inputRef = React.useRef<HTMLInputElement>(null);
+  const inputRef = React.useRef<HTMLInputElement[]>([]);
 
   return (
     <Box gap="spacing.3" display="flex" alignItems="end">
@@ -260,8 +260,8 @@ export const inputRef: ComponentStory<typeof OTPInputComponent> = () => {
       />
       <Button
         onClick={() => {
-          inputRef?.current?.focus();
           console.log(inputRef);
+          inputRef?.current[1].focus();
         }}
       >
         Click to focus the OTPInput
