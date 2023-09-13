@@ -270,6 +270,13 @@ type BaseInputCommonProps = FormInputLabelProps &
     isDropdownTrigger?: boolean;
 
     /**
+     * Is the label expected to be rendered inside input?
+     * Used in AutoComplete and Select when label can't exist outside
+     *
+     */
+    isLabelInsideInput?: boolean;
+
+    /**
      * State setter for active tag index
      */
     setActiveTagIndex?: (activeTagIndex: number) => void;
@@ -718,6 +725,7 @@ export const BaseInput = React.forwardRef<BladeElementRef, BaseInputProps>(
       setInputWrapperRef,
       testID,
       isDropdownTrigger,
+      isLabelInsideInput,
       ...styledProps
     },
     ref,
@@ -813,7 +821,7 @@ export const BaseInput = React.forwardRef<BladeElementRef, BaseInputProps>(
           position="relative"
           width="100%"
         >
-          {!hideLabelText && (
+          {!hideLabelText && !isLabelInsideInput && (
             <BaseBox
               display="flex"
               flexDirection={isLabelLeftPositioned ? 'column' : 'row'}
@@ -860,6 +868,7 @@ export const BaseInput = React.forwardRef<BladeElementRef, BaseInputProps>(
                   ref.current?.focus();
                 }
               }}
+              labelPrefix={isLabelInsideInput ? label : undefined}
               isDropdownTrigger={isDropdownTrigger}
               visibleTagsCountRef={visibleTagsCountRef}
               handleOnClick={handleOnClick}

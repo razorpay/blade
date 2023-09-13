@@ -244,8 +244,9 @@ Default.storyName = 'SelectInput';
 
 export const SelectInputWithoutLabel = SelectInputTemplate.bind({});
 SelectInputWithoutLabel.args = {
-  label: undefined,
+  label: 'City',
   accessibilityLabel: 'City',
+  labelPosition: 'inside-input',
 };
 SelectInputWithoutLabel.storyName = 'SelectInput without Label';
 

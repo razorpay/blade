@@ -6,6 +6,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { makeSize } from '~utils';
 import { size } from '~tokens/global';
 import { Text } from '~components/Typography';
+import type { StringChildrenType } from '~utils/types';
 
 const ScrollableTagSlotContainer = ({
   maxTagRows,
@@ -52,6 +53,26 @@ const ScrollableTagSlotContainer = ({
   );
 };
 
+const ClickableText = ({
+  children,
+  handleOnClick,
+}: {
+  children: StringChildrenType;
+  handleOnClick: BaseInputTagSlotProps['handleOnClick'];
+}): React.ReactElement => {
+  return (
+    <TouchableWithoutFeedback
+      onPress={() => {
+        handleOnClick?.({ name: '', value: '' });
+      }}
+    >
+      <BaseBox alignSelf="center" marginRight="spacing.4">
+        <Text>{children}</Text>
+      </BaseBox>
+    </TouchableWithoutFeedback>
+  );
+};
+
 const PLUS_X_MORE_TEXT_WIDTH = 60;
 
 const BaseInputTagSlot = ({
@@ -62,10 +83,12 @@ const BaseInputTagSlot = ({
   renderAs,
   children,
   isDropdownTrigger,
+  labelPrefix,
 }: BaseInputTagSlotProps): React.ReactElement | null => {
   const hasTags = tags && tags.length > 0;
-  const [visibleTags, setVisibleTags] = React.useState(maxTagRows === 'multiple' ? 6 : 1);
-  const invisibleTagsCount = tags ? tags.length - visibleTags : 0;
+  const initialVisibleTags = maxTagRows === 'multiple' ? 6 : 1;
+  const [visibleTags, setVisibleTags] = React.useState(labelPrefix ? 0 : initialVisibleTags);
+  const invisibleTagsCount = tags || (tags && labelPrefix) ? tags.length - visibleTags : 0;
 
   if (!isDropdownTrigger) {
     return children;
@@ -83,6 +106,11 @@ const BaseInputTagSlot = ({
       flex="1"
       onLayout={(e) => {
         if (!hasTags) return;
+
+        if (labelPrefix) {
+          setVisibleTags(0);
+          return;
+        }
 
         if (maxTagRows === 'multiple') {
           // The calculation is for single-line versions.
@@ -108,16 +136,15 @@ const BaseInputTagSlot = ({
         {hasTags ? (
           <>
             {showAllTags || maxTagRows === 'multiple' ? tags : tags.slice(0, visibleTags)}
-            {invisibleTagsCount > 0 && !showAllTags && maxTagRows !== 'multiple' ? (
-              <TouchableWithoutFeedback
-                onPress={() => {
-                  handleOnClick?.({ name: '', value: '' });
-                }}
-              >
-                <BaseBox alignSelf="center" marginRight="spacing.4">
-                  <Text>+{invisibleTagsCount} More</Text>
-                </BaseBox>
-              </TouchableWithoutFeedback>
+            {invisibleTagsCount > 0 && !showAllTags && !labelPrefix && maxTagRows !== 'multiple' ? (
+              <ClickableText handleOnClick={handleOnClick}>
+                + {invisibleTagsCount} More
+              </ClickableText>
+            ) : null}
+            {!showAllTags && invisibleTagsCount > 0 && labelPrefix ? (
+              <ClickableText handleOnClick={handleOnClick}>
+                {labelPrefix} ({invisibleTagsCount} Selected)
+              </ClickableText>
             ) : null}
           </>
         ) : null}

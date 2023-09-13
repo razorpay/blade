@@ -10,7 +10,6 @@ type DropdownInputTriggersCommonProps = Pick<
   BaseInputProps,
   | 'label'
   | 'accessibilityLabel'
-  | 'labelPosition'
   | 'necessityIndicator'
   | 'validationState'
   | 'helpText'
@@ -48,6 +47,16 @@ type DropdownInputTriggersCommonProps = Pick<
    * @default 'single'
    */
   maxRows?: 'single' | 'multiple' | 'expandable';
+
+  /**
+   * Position of the label.
+   *
+   * Can be
+   * - top: top positioned
+   * - left: left positioned
+   * - inside-input: added inside the input (not applicable for single select AutoComplete)
+   */
+  labelPosition?: BaseInputProps['labelPosition'] | 'inside-input';
 };
 
 /*
