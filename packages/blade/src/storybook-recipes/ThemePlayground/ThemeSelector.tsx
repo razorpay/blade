@@ -98,9 +98,13 @@ const ThemeSelector = ({
           <Text type="subdued" weight="bold" marginRight="spacing.8">
             Usage:
           </Text>
-          <Code size="medium">{`const productTheme = createTheme({ brandColor:${selectedColor} })`}</Code>
+          {selectedColor ? (
+            <Code size="medium">{`const productTheme = createTheme({ brandColor: '${selectedColor}' })`}</Code>
+          ) : null}
           <Box marginTop="spacing.3" />
-          <Code size="medium">{`<BladeProvider themeTokens={productTheme} colorScheme='${colorScheme}'>{App}</BladeProvider>`}</Code>
+          <Code size="medium">{`<BladeProvider themeTokens={${
+            selectedColor ? `productTheme` : `paymentTheme`
+          }} colorScheme='${colorScheme}'>{App}</BladeProvider>`}</Code>
         </Box>
       </CardBody>
     </Card>
