@@ -141,12 +141,12 @@ const BaseInputTagSlot = ({
                 + {invisibleTagsCount} More
               </ClickableText>
             ) : null}
+            {!showAllTags && invisibleTagsCount > 0 && labelPrefix ? (
+              <ClickableText handleOnClick={handleOnClick}>
+                {labelPrefix} ({invisibleTagsCount} Selected)
+              </ClickableText>
+            ) : null}
           </>
-        ) : null}
-        {hasTags && labelPrefix && !showAllTags && invisibleTagsCount > 0 ? (
-          <ClickableText handleOnClick={handleOnClick}>
-            {labelPrefix} ({invisibleTagsCount} Selected)
-          </ClickableText>
         ) : null}
         <BaseBox width={hasTags && renderAs === 'button' ? makeSize(size['1']) : '100%'}>
           {children}

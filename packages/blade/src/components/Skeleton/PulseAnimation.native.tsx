@@ -10,8 +10,8 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 import React from 'react';
-import BaseBox from '../../components/Box/BaseBox';
 import type { SkeletonProps } from './types';
+import BaseBox from '~components/Box/BaseBox';
 import { castNativeType, makeMotionTime } from '~utils';
 import { useTheme } from '~components/BladeProvider';
 

@@ -1,5 +1,23 @@
 # @razorpay/blade
 
+## 10.8.0
+
+### Minor Changes
+
+- ac405dfc: chore(blade): added id to Box component
+
+## 10.7.1
+
+### Patch Changes
+
+- 52288df2: fix(blade): carousel bug in safari
+
+## 10.7.0
+
+### Minor Changes
+
+- f43d9b35: feat(Icon): add default value for `size` & `color` props
+
 ## 10.6.0
 
 ### Minor Changes

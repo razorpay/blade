@@ -194,4 +194,11 @@ describe('<Box />', () => {
     await user.unhover(getByText('Hoverable Text'));
     expect(onMouseLeaveCallback).toBeCalled();
   });
+
+  it('should accept id prop', () => {
+    const text = 'Box id';
+    const id = 'my-id';
+    const { getByText } = renderWithTheme(<Box id={id}>{text}</Box>);
+    expect(getByText(text)).toHaveAttribute('id', id);
+  });
 });

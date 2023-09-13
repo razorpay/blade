@@ -126,12 +126,12 @@ type BladeElementRef = Platform.Select<{
   native: View;
 }>;
 
-export type ContainerElementType = Platform.Select<{
+type ContainerElementType = Platform.Select<{
   web: HTMLDivElement;
   native: View;
 }>;
 
-export {
+export type {
   DotNotationColorStringToken,
   DotNotationMotionStringToken,
   DotNotationSpacingStringToken,
@@ -143,4 +143,5 @@ export {
   PickCSSByPlatform,
   BladeElementRef,
   RemoveUndefinedFromUnion,
+  ContainerElementType,
 };

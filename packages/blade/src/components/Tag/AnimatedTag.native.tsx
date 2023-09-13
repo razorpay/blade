@@ -17,7 +17,7 @@ import {
   TAG_OPACITY_START,
 } from './tagAnimationConfig';
 import type { AnimatedTagProps } from './types';
-import { castNativeType, useTheme } from '~utils';
+import { castNativeType, makeMotionTime, useTheme } from '~utils';
 
 const useAnimatedTag = (
   onAnimationEndCallback: () => void,
@@ -41,13 +41,13 @@ const useAnimatedTag = (
       opacity: TAG_OPACITY_START,
       easing: (theme.motion.easing.exit.effective as unknown) as EasingFn,
     },
-  }).duration(theme.motion.duration.xquick);
+  }).duration(makeMotionTime(theme.motion.duration.xquick));
 
   const animate = (): void => {
     maxWidth.value = withTiming(
       TAG_MAX_WIDTH_END,
       {
-        duration: theme.motion.duration.xquick,
+        duration: makeMotionTime(theme.motion.duration.xquick),
         easing: castNativeType(theme.motion.easing.exit.effective),
       },
       (isComplete) => {
@@ -57,7 +57,7 @@ const useAnimatedTag = (
       },
     );
     opacity.value = withTiming(TAG_OPACITY_END, {
-      duration: theme.motion.duration.xquick,
+      duration: makeMotionTime(theme.motion.duration.xquick),
       easing: Easing.out(Easing.exp),
     });
   };
