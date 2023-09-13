@@ -338,7 +338,7 @@ const _OTPInput: React.ForwardRefRenderFunction<HTMLInputElement, OTPInputProps>
             hideLabelText={true}
             id={`${inputId}-${index}`}
             textAlign="center"
-            ref={index === 0 ? mergeRefs(incomingRef, ref) : (ref as never)}
+            ref={(index === 0 ? mergeRefs(incomingRef, ref) : ref) as never}
             name={name}
             value={currentValue}
             maxCharacters={otpValue[index]?.length > 0 ? 1 : undefined}
