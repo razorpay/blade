@@ -15,7 +15,7 @@ import {
 } from './stories';
 
 import { Sandbox } from '~utils/storybook/Sandbox';
-import { SelectInput } from '~components/Input/SelectInput';
+import { SelectInput } from '~components/Input/DropdownInputTriggers';
 import {
   ActionList,
   ActionListItem,

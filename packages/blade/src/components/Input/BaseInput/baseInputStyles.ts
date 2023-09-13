@@ -90,6 +90,28 @@ export const getInputBackgroundAndBorderStyles = ({
   };
 };
 
+const getLeftPadding = ({
+  theme,
+  isDropdownTrigger,
+  hasLeadingIcon,
+  hasPrefix,
+}: {
+  theme: Theme;
+  hasLeadingIcon: boolean;
+  hasPrefix: boolean;
+  isDropdownTrigger: GetInputStyles['isDropdownTrigger'];
+}): number => {
+  if (isDropdownTrigger) {
+    return theme.spacing[0];
+  }
+
+  if (hasLeadingIcon || hasPrefix) {
+    return theme.spacing[3];
+  }
+
+  return theme.spacing[4];
+};
+
 export const getBaseInputStyles = ({
   theme,
   isDisabled,
@@ -134,8 +156,7 @@ export const getBaseInputStyles = ({
     backgroundColor: 'transparent',
     paddingTop: makeSpace(theme.spacing[3]),
     paddingBottom: makeSpace(theme.spacing[3]),
-    paddingLeft:
-      hasLeadingIcon || hasPrefix ? makeSpace(theme.spacing[3]) : makeSpace(theme.spacing[4]),
+    paddingLeft: makeSpace(getLeftPadding({ theme, isDropdownTrigger, hasLeadingIcon, hasPrefix })),
     paddingRight:
       hasInteractionElement || hasSuffix || hasTrailingIcon
         ? makeSpace(theme.spacing[3])

@@ -12,6 +12,7 @@ import {
 import type { SelectActionsType } from './dropdownUtils';
 import type { DropdownProps } from './types';
 
+import { dropdownComponentIds } from './dropdownComponentIds';
 import type { FormInputHandleOnKeyDownEvent } from '~components/Form/FormTypes';
 import { isReactNative } from '~utils';
 import type { ContainerElementType } from '~utils/types';
@@ -44,6 +45,13 @@ type DropdownContextType = {
    */
   options: OptionsType;
   setOptions: (value: OptionsType) => void;
+
+  /**
+   * Filtered values for AutoComplete Inputs
+   */
+  filteredValues: string[];
+  setFilteredValues: (values: string[]) => void;
+
   /** Currently active (focussed) index  */
   activeIndex: number;
   setActiveIndex: (value: number) => void;
@@ -64,9 +72,9 @@ type DropdownContextType = {
   /** common baseId which is prepended to multiple other ids inside this dropdown  */
   dropdownBaseId: string;
   /** Which element has triggered the dropdown */
-  dropdownTriggerer?: 'SelectInput' | 'DropdownButton';
+  dropdownTriggerer?: 'SelectInput' | 'DropdownButton' | 'AutoComplete' | 'DropdownLink';
   /** ref of triggerer. Used to call focus in certain places */
-  triggererRef: React.RefObject<HTMLButtonElement | null>;
+  triggererRef: React.MutableRefObject<HTMLButtonElement | null>;
   triggererWrapperRef: React.MutableRefObject<ContainerElementType | null>;
   actionListItemRef: React.RefObject<HTMLDivElement | null>;
   isTagDismissedRef: React.RefObject<{ value: boolean } | null>;
@@ -79,12 +87,12 @@ type DropdownContextType = {
    */
   hasFooterAction: boolean;
   setHasFooterAction: (value: boolean) => void;
+
   /**
-   * We need to know the label's position because when it is on left, the overlay takes the width of input.
-   * Rest of the times, we can set 100% width
+   * Apart from dropdownTriggerer prop, we also set this boolean because in BottomSheet, the initial trigger can be Select but also have autocomplete inside of it
    */
-  hasLabelOnLeft: boolean;
-  setHasLabelOnLeft: (value: boolean) => void;
+  hasAutoCompleteInBottomSheetHeader: boolean;
+  setHasAutoCompleteInBottomSheetHeader: (value: boolean) => void;
 
   /**
    * A value that can be used in dependency array to know when Dropdown value is changed.
@@ -116,17 +124,18 @@ const DropdownContext = React.createContext<DropdownContextType>({
   setControlledValueIndices: noop,
   options: [],
   setOptions: noop,
+  filteredValues: [],
+  setFilteredValues: noop,
   activeIndex: -1,
   setActiveIndex: noop,
   activeTagIndex: -1,
-
   setActiveTagIndex: noop,
   shouldIgnoreBlurAnimation: false,
   setShouldIgnoreBlurAnimation: noop,
   hasFooterAction: false,
   setHasFooterAction: noop,
-  hasLabelOnLeft: false,
-  setHasLabelOnLeft: noop,
+  hasAutoCompleteInBottomSheetHeader: false,
+  setHasAutoCompleteInBottomSheetHeader: noop,
   isKeydownPressed: false,
   setIsKeydownPressed: noop,
   changeCallbackTriggerer: 0,
@@ -216,6 +225,7 @@ const useDropdown = (): UseDropdownReturnValue => {
     setChangeCallbackTriggerer,
     isControlled,
     setControlledValueIndices,
+    filteredValues,
     ...rest
   } = React.useContext(DropdownContext);
 
@@ -308,9 +318,35 @@ const useDropdown = (): UseDropdownReturnValue => {
    */
   const onOptionChange = (actionType: SelectActionsType, index?: number): void => {
     setActiveTagIndex(-1);
-    const max = options.length - 1;
     const newIndex = index ?? activeIndex;
-    setActiveIndex(getUpdatedIndex(newIndex, max, actionType));
+    let updatedIndex: number;
+    const hasAutoComplete =
+      rest.hasAutoCompleteInBottomSheetHeader ||
+      rest.dropdownTriggerer === dropdownComponentIds.triggers.AutoComplete;
+    if (hasAutoComplete && filteredValues.length > 0) {
+      // When its autocomplete, we don't loop over all options. We only loop on filtered options
+
+      const filteredIndexes = filteredValues
+        .map((filteredValue) => options.findIndex((option) => option.value === filteredValue))
+        .sort();
+
+      updatedIndex =
+        filteredIndexes[
+          getUpdatedIndex({
+            currentIndex: filteredIndexes.indexOf(newIndex),
+            maxIndex: filteredIndexes.length - 1,
+            actionType,
+          })
+        ];
+    } else {
+      updatedIndex = getUpdatedIndex({
+        currentIndex: newIndex,
+        maxIndex: options.length - 1,
+        actionType,
+      });
+    }
+    setActiveIndex(updatedIndex);
+
     const optionValues = options.map((option) => option.value);
     ensureScrollVisiblity(newIndex, rest.actionListItemRef.current, optionValues);
   };
@@ -347,6 +383,13 @@ const useDropdown = (): UseDropdownReturnValue => {
   const onComboType = (letter: string, actionType: SelectActionsType): void => {
     // open the listbox if it is closed
     setIsOpen(true);
+
+    if (
+      rest.hasAutoCompleteInBottomSheetHeader ||
+      rest.dropdownTriggerer === dropdownComponentIds.triggers.AutoComplete
+    ) {
+      return;
+    }
 
     if (typeof searchTimeout === 'number') {
       window.clearTimeout(searchTimeout);
@@ -412,6 +455,7 @@ const useDropdown = (): UseDropdownReturnValue => {
     close,
     selectedIndices,
     setSelectedIndices,
+    filteredValues,
     removeOption,
     setControlledValueIndices,
     onTriggerClick,

@@ -1,8 +1,8 @@
 import React from 'react';
 import { DropdownContext } from './useDropdown';
 import type { DropdownContextType } from './useDropdown';
-import { componentIds } from './dropdownUtils';
 import type { DropdownProps } from './types';
+import { dropdownComponentIds } from './dropdownComponentIds';
 import { useId } from '~utils/useId';
 import { ComponentIds as bottomSheetComponentIds } from '~components/BottomSheet/componentIds';
 import { BottomSheetAndDropdownGlueContext } from '~components/BottomSheet/BottomSheetContext';
@@ -16,10 +16,11 @@ import { throwBladeError } from '~utils/logger';
 import type { ContainerElementType } from '~utils/types';
 
 const validDropdownChildren = [
-  componentIds.triggers.SelectInput,
-  componentIds.triggers.DropdownButton,
-  componentIds.triggers.DropdownLink,
-  componentIds.DropdownOverlay,
+  dropdownComponentIds.triggers.SelectInput,
+  dropdownComponentIds.triggers.DropdownButton,
+  dropdownComponentIds.triggers.DropdownLink,
+  dropdownComponentIds.DropdownOverlay,
+  dropdownComponentIds.triggers.AutoComplete,
   bottomSheetComponentIds.BottomSheet,
 ];
 
@@ -58,6 +59,7 @@ const _Dropdown = ({
 }: DropdownProps): React.ReactElement => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [options, setOptions] = React.useState<DropdownContextType['options']>([]);
+  const [filteredValues, setFilteredValues] = React.useState<string[]>([]);
   const [selectedIndices, setSelectedIndices] = React.useState<
     DropdownContextType['selectedIndices']
   >([]);
@@ -68,7 +70,10 @@ const _Dropdown = ({
   const [activeTagIndex, setActiveTagIndex] = React.useState(-1);
   const [shouldIgnoreBlurAnimation, setShouldIgnoreBlurAnimation] = React.useState(false);
   const [hasFooterAction, setHasFooterAction] = React.useState(false);
-  const [hasLabelOnLeft, setHasLabelOnLeft] = React.useState(false);
+  const [
+    hasAutoCompleteInBottomSheetHeader,
+    setHasAutoCompleteInBottomSheetHeader,
+  ] = React.useState(false);
   const [isKeydownPressed, setIsKeydownPressed] = React.useState(false);
   const [changeCallbackTriggerer, setChangeCallbackTriggerer] = React.useState<
     DropdownContextType['changeCallbackTriggerer']
@@ -124,12 +129,16 @@ const _Dropdown = ({
         }
       }
 
-      if (isValidAllowedChildren(child, componentIds.triggers.SelectInput)) {
+      if (isValidAllowedChildren(child, dropdownComponentIds.triggers.SelectInput)) {
         dropdownTriggerer.current = 'SelectInput';
       }
 
-      if (isValidAllowedChildren(child, componentIds.triggers.DropdownButton)) {
+      if (isValidAllowedChildren(child, dropdownComponentIds.triggers.DropdownButton)) {
         dropdownTriggerer.current = 'DropdownButton';
+      }
+
+      if (isValidAllowedChildren(child, dropdownComponentIds.triggers.AutoComplete)) {
+        dropdownTriggerer.current = 'AutoComplete';
       }
     }
   });
@@ -145,6 +154,8 @@ const _Dropdown = ({
       setControlledValueIndices,
       options,
       setOptions,
+      filteredValues,
+      setFilteredValues,
       activeIndex,
       setActiveIndex,
       activeTagIndex,
@@ -161,8 +172,8 @@ const _Dropdown = ({
       selectionType,
       hasFooterAction,
       setHasFooterAction,
-      hasLabelOnLeft,
-      setHasLabelOnLeft,
+      hasAutoCompleteInBottomSheetHeader,
+      setHasAutoCompleteInBottomSheetHeader,
       dropdownTriggerer: dropdownTriggerer.current,
       changeCallbackTriggerer,
       setChangeCallbackTriggerer,
@@ -176,12 +187,12 @@ const _Dropdown = ({
       selectedIndices,
       controlledValueIndices,
       options,
+      filteredValues,
       activeIndex,
       activeTagIndex,
       shouldIgnoreBlurAnimation,
       selectionType,
       hasFooterAction,
-      hasLabelOnLeft,
       isKeydownPressed,
       changeCallbackTriggerer,
       isControlled,
@@ -192,12 +203,59 @@ const _Dropdown = ({
     return {
       isOpen,
       dropdownHasBottomSheet,
+      hasAutoCompleteInBottomSheetHeader,
       setDropdownHasBottomSheet,
       // This is the dismiss function which will be injected into the BottomSheet
       // Basically <BottomSheet onDismiss={onBottomSheetDismiss} />
       onBottomSheetDismiss: close,
     };
-  }, [dropdownHasBottomSheet, isOpen, close]);
+  }, [dropdownHasBottomSheet, hasAutoCompleteInBottomSheetHeader, isOpen, close]);
+
+  React.useEffect((): (() => void) | undefined => {
+    if (!isReactNative()) {
+      const dropdown = dropdownContainerRef.current;
+
+      const documentClickHandler = (e: MouseEvent): void => {
+        const target = e.target as HTMLDivElement;
+
+        if (!target || !dropdown) {
+          return;
+        }
+
+        if (!dropdown.contains(target) && !isTagDismissedRef.current?.value) {
+          close();
+        }
+
+        if (isTagDismissedRef.current?.value) {
+          isTagDismissedRef.current.value = false;
+        }
+      };
+
+      const documentFocusHandler = (e: FocusEvent): void => {
+        const target = e.relatedTarget as HTMLDivElement;
+        setActiveIndex(-1);
+
+        if (!dropdown || !target) {
+          return;
+        }
+
+        if (!dropdown.contains(target)) {
+          close();
+        }
+      };
+
+      document.addEventListener('click', documentClickHandler);
+      document.addEventListener('focusout', documentFocusHandler);
+
+      return (): void => {
+        document.removeEventListener('click', documentClickHandler);
+        document.removeEventListener('focusout', documentFocusHandler);
+      };
+    }
+
+    return undefined;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   React.useEffect((): (() => void) | undefined => {
     if (!isReactNative()) {
@@ -263,6 +321,8 @@ const _Dropdown = ({
   );
 };
 
-const Dropdown = assignWithoutSideEffects(_Dropdown, { componentId: componentIds.Dropdown });
+const Dropdown = assignWithoutSideEffects(_Dropdown, {
+  componentId: dropdownComponentIds.Dropdown,
+});
 
 export { Dropdown };

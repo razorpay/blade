@@ -1,4 +1,5 @@
 import type { DropdownProps } from '~components/Dropdown';
+import { dropdownComponentIds } from '~components/Dropdown/dropdownComponentIds';
 import type { DropdownContextType } from '~components/Dropdown/useDropdown';
 import { isReactNative } from '~utils';
 
@@ -8,7 +9,11 @@ import { isReactNative } from '~utils';
 export const isRoleMenu = (
   dropdownTriggerer: DropdownContextType['dropdownTriggerer'],
 ): boolean => {
-  return isReactNative() || dropdownTriggerer !== 'SelectInput';
+  return (
+    isReactNative() ||
+    (dropdownTriggerer !== dropdownComponentIds.triggers.SelectInput &&
+      dropdownTriggerer !== dropdownComponentIds.triggers.AutoComplete)
+  );
 };
 
 /**

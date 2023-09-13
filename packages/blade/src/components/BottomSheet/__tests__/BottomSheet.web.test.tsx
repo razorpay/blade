@@ -10,7 +10,7 @@ import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { Text } from '~components/Typography';
 import { Button } from '~components/Button';
 import { Dropdown } from '~components/Dropdown';
-import { SelectInput } from '~components/Input/SelectInput';
+import { SelectInput } from '~components/Input/DropdownInputTriggers';
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { Badge } from '~components/Badge';
 

@@ -11,18 +11,20 @@ import { size } from '~tokens/global';
 
 const MINUMUM_INPUT_SPACE = 30;
 const PLUS_X_MORE_TEXT_WIDTH = 60;
-const TAG_MAX_WIDTH = size['140'];
+const TAG_MAX_WIDTH: number = size['140'];
 
 const useVisibleTagsCount = ({
   slotRef,
   tags,
   maxTagRows,
   visibleTagsCountRef,
+  showAllTags,
 }: {
   slotRef: React.RefObject<HTMLDivElement>;
   tags: BaseInputTagSlotProps['tags'];
   maxTagRows: BaseInputTagSlotProps['maxTagRows'];
   visibleTagsCountRef: BaseInputTagSlotProps['visibleTagsCountRef'];
+  showAllTags: BaseInputTagSlotProps['showAllTags'];
 }): number => {
   const [visibleTagsCount, setVisibleTagsCount] = React.useState(0);
   const visibleTagsCountStateRef = React.useRef<number>(0);
@@ -33,7 +35,8 @@ const useVisibleTagsCount = ({
       return;
     }
 
-    if (maxTagRows === 'multiple') {
+    if (maxTagRows === 'multiple' || showAllTags) {
+      visibleTagsCountRef.current = tags.length;
       setVisibleTagsCount(tags.length);
       return;
     }
@@ -73,7 +76,7 @@ const useVisibleTagsCount = ({
 
     visibleTagsCountRef.current = visibleTagsCountStateRef.current;
     setVisibleTagsCount(visibleTagsCountStateRef.current);
-  }, [tags?.length]);
+  }, [tags?.length, showAllTags]);
 
   return visibleTagsCount;
 };
@@ -96,6 +99,7 @@ const BaseInputTagSlot = ({
     tags,
     maxTagRows,
     visibleTagsCountRef,
+    showAllTags,
   });
 
   React.useEffect(() => {
@@ -108,11 +112,7 @@ const BaseInputTagSlot = ({
   }, [tags?.length, maxTagRows]);
 
   React.useEffect(() => {
-    if (showAllTags) {
-      if (hasTags) {
-        visibleTagsCountRef.current = tags?.length;
-      }
-    } else {
+    if (!showAllTags) {
       slotRef.current?.scrollTo?.({
         top: 0,
         left: 0,
@@ -149,12 +149,13 @@ const BaseInputTagSlot = ({
     <BaseBox
       ref={slotRef}
       className="tags-slot"
-      paddingY={hasTags ? paddingYWithTags : 'spacing.0'}
-      paddingX={hasTags ? 'spacing.3' : 'spacing.0'}
+      paddingY={paddingYWithTags}
+      paddingLeft="spacing.4"
       display="flex"
       flex="1"
       flexWrap={maxTagRows === 'single' ? 'nowrap' : 'wrap'}
-      overflow="auto"
+      overflowX="auto"
+      overflowY={showAllTags || maxTagRows === 'multiple' ? 'auto' : 'hidden'}
       minHeight={makeSize(BASEINPUT_DEFAULT_HEIGHT)}
       onMouseDown={() => {
         setShouldIgnoreBlurAnimation?.(true);
@@ -168,7 +169,7 @@ const BaseInputTagSlot = ({
     >
       {visibleTags}
       {tags && !showAllTags && invisibleTagsCount ? (
-        <Text alignSelf="center" marginY="spacing.2">
+        <Text alignSelf="center" marginY="spacing.2" marginRight="spacing.4">
           <BaseBox as="span" whiteSpace="nowrap">
             {visibleTags?.length === 0
               ? `${invisibleTagsCount} Items Selected`
@@ -176,7 +177,11 @@ const BaseInputTagSlot = ({
           </BaseBox>
         </Text>
       ) : null}
-      <BaseBox width={hasTags && renderAs === 'button' ? makeSize(size['1']) : '100%'}>
+      <BaseBox
+        marginTop="-4px"
+        minWidth={hasTags && renderAs === 'button' ? undefined : makeSize(MINUMUM_INPUT_SPACE)}
+        width={hasTags && renderAs === 'button' ? makeSize(size['1']) : '100%'}
+      >
         {children}
       </BaseBox>
     </BaseBox>

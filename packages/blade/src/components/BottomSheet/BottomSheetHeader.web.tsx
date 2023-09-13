@@ -18,6 +18,7 @@ const _BottomSheetHeader = ({
   trailing,
   showBackButton = false,
   onBackButtonClick,
+  children,
 }: BottomSheetHeaderProps): React.ReactElement => {
   const {
     setHeaderHeight,
@@ -65,7 +66,9 @@ const _BottomSheetHeader = ({
           showCloseButton={true}
           onCloseButtonClick={close}
           {...bind?.()}
-        />
+        >
+          {children}
+        </BaseHeader>
       )}
     </BaseBox>
   );

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDropdown } from './useDropdown';
-import { componentIds } from './dropdownUtils';
+import { dropdownComponentIds } from './dropdownComponentIds';
 import BaseButton from '~components/Button/BaseButton';
 import type { ButtonProps } from '~components/Button';
 import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
@@ -86,7 +86,7 @@ const _DropdownButton = ({
 };
 
 const DropdownButton = assignWithoutSideEffects(_DropdownButton, {
-  componentId: componentIds.triggers.DropdownButton,
+  componentId: dropdownComponentIds.triggers.DropdownButton,
 });
 
 export { DropdownButton };

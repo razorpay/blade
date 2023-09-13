@@ -7,10 +7,10 @@ import {
   useTransitionStyles,
   flip,
 } from '@floating-ui/react';
-import { componentIds } from './dropdownUtils';
 import { useDropdown } from './useDropdown';
 import { StyledDropdownOverlay } from './StyledDropdownOverlay';
 import type { DropdownOverlayProps } from './types';
+import { dropdownComponentIds } from './dropdownComponentIds';
 import { useTheme } from '~components/BladeProvider';
 // Reading directly because its not possible to get theme object on top level to be used in keyframes
 import { size } from '~tokens/global';
@@ -38,7 +38,9 @@ const _DropdownOverlay = ({
   const { theme } = useTheme();
   const bottomSheetAndDropdownGlue = useBottomSheetAndDropdownGlue();
 
-  const isMenu = dropdownTriggerer !== 'SelectInput';
+  const isMenu =
+    dropdownTriggerer !== dropdownComponentIds.triggers.SelectInput &&
+    dropdownTriggerer !== dropdownComponentIds.triggers.AutoComplete;
 
   const { refs, floatingStyles, context } = useFloating({
     open: isOpen,
@@ -111,7 +113,7 @@ const _DropdownOverlay = ({
 };
 
 const DropdownOverlay = assignWithoutSideEffects(_DropdownOverlay, {
-  componentId: componentIds.DropdownOverlay,
+  componentId: dropdownComponentIds.DropdownOverlay,
 });
 
 export { DropdownOverlay };

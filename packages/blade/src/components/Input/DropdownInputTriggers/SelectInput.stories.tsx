@@ -1,15 +1,18 @@
 /* eslint-disable react-native-a11y/has-valid-accessibility-descriptors */
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { ComponentStory } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import React from 'react';
-import type { SelectInputProps } from './SelectInput';
 import { SelectInput } from './SelectInput';
+import { AutoComplete } from './AutoComplete';
 import iconMap from '~components/Icons/iconMap';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
-import { Dropdown, DropdownOverlay } from '~components/Dropdown';
+import { Dropdown, DropdownFooter, DropdownOverlay } from '~components/Dropdown';
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { Box } from '~components/Box';
+import { BottomSheet, BottomSheetBody, BottomSheetHeader } from '~components/BottomSheet';
+import { Button } from '~components/Button';
+import { PlusIcon } from '~components/Icons';
 
 const propsCategory = {
   BASE_PROPS: 'Select Input Props',
@@ -217,7 +220,7 @@ export default {
       ),
     },
   },
-} as Meta<SelectInputProps>;
+};
 
 const SelectInputTemplate: ComponentStory<typeof SelectInput> = ({ icon, ...args }) => {
   return (
@@ -245,3 +248,168 @@ SelectInputWithoutLabel.args = {
   accessibilityLabel: 'City',
 };
 SelectInputWithoutLabel.storyName = 'SelectInput without Label';
+
+export const AutoCompleteUncontrolled = (): React.ReactElement => {
+  return (
+    <Box maxWidth="400px">
+      <Dropdown selectionType="multiple">
+        <AutoComplete maxRows="single" label="City" />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Mumbai" value="mumbai" />
+            <ActionListItem title="Pune" value="pune" />
+            <ActionListItem title="Bengaluru" value="bengaluru" />
+            <ActionListItem title="Ooty" value="ooty" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+    </Box>
+  );
+};
+
+const cities = [
+  {
+    title: 'Mumbai',
+    value: 'mumbai',
+    keywords: ['maharashtra'],
+  },
+  {
+    title: 'Pune',
+    value: 'pune',
+    keywords: ['maharashtra'],
+  },
+  {
+    title: 'Bengaluru',
+    value: 'bengaluru',
+    keywords: ['karnataka', 'bangalore'],
+  },
+  {
+    title: 'Ooty',
+    value: 'ooty',
+    keywords: ['tamil nadu'],
+  },
+];
+export const AutoCompleteControlled = (): React.ReactElement => {
+  const cityValues = cities.map((city) => city.value);
+  const [filteredValues, setFilteredValues] = React.useState<string[]>(cityValues);
+
+  return (
+    <Dropdown selectionType="multiple">
+      <AutoComplete
+        label="City"
+        onInputValueChange={({ value }) => {
+          if (value) {
+            const filteredItems = cities
+              .filter(
+                (city) =>
+                  city.title.toLowerCase().startsWith(value.toLowerCase()) ||
+                  city.keywords.find((keyword) =>
+                    keyword.toLowerCase().includes(value.toLowerCase()),
+                  ),
+              )
+              .map((city) => city.value);
+
+            if (filteredItems.length > 0) {
+              setFilteredValues(filteredItems);
+            } else {
+              setFilteredValues([]);
+            }
+          } else {
+            setFilteredValues(cityValues);
+          }
+        }}
+        filteredValues={filteredValues}
+        helpText="Try typing 'maharashtra' in input"
+      />
+      {filteredValues.length > 0 ? (
+        <DropdownOverlay>
+          <ActionList>
+            {cities.map((city) => (
+              <ActionListItem key={city.value} title={city.title} value={city.value} />
+            ))}
+          </ActionList>
+        </DropdownOverlay>
+      ) : null}
+    </Dropdown>
+  );
+};
+
+export const AutoCompleteUncontrolledSingleSelect = (): React.ReactElement => {
+  return (
+    <Dropdown>
+      <AutoComplete label="Select City" />
+      <DropdownOverlay>
+        <ActionList>
+          <ActionListItem title="Mumbai" value="mumbai" />
+          <ActionListItem title="Pune" value="pune" />
+          <ActionListItem title="Bangalore" value="bangalore" />
+        </ActionList>
+      </DropdownOverlay>
+    </Dropdown>
+  );
+};
+
+export const AutoCompleteWithBottomSheet = (): React.ReactElement => {
+  return (
+    <Dropdown selectionType="multiple">
+      <SelectInput label="Sort Dishes" />
+      <BottomSheet>
+        <BottomSheetHeader title="Sort By">
+          <AutoComplete label="Sort Dishes" maxRows="single" />
+        </BottomSheetHeader>
+        <BottomSheetBody>
+          <ActionList>
+            <ActionListItem title="Relevance (Default)" value="relavance" />
+            <ActionListItem title="Delivery Time" value="delveiry-time" />
+            <ActionListItem title="Rating" value="rating" />
+            <ActionListItem title="Cost: Low to High" value="Cost: Low to High" />
+            <ActionListItem title="Cost: High to Low" value="Cost: High to Low" />
+          </ActionList>
+        </BottomSheetBody>
+      </BottomSheet>
+    </Dropdown>
+  );
+};
+
+export const CreatableItem = (): React.ReactElement => {
+  const [items, setItems] = React.useState(['Mumbai', 'Pune', 'Bangalore']);
+  const [inputValue, setInputValue] = React.useState('');
+  const autoCompleteRef = React.useRef<HTMLInputElement>(null);
+
+  return (
+    <Box maxWidth="500px">
+      <Dropdown>
+        <AutoComplete
+          ref={autoCompleteRef}
+          label="Select City"
+          inputValue={inputValue}
+          onInputValueChange={({ value }) => {
+            setInputValue(value ?? '');
+          }}
+        />
+        <DropdownOverlay>
+          <ActionList>
+            {items.map((item, index) => (
+              <ActionListItem key={item + String(index)} title={item} value={item.toLowerCase()} />
+            ))}
+          </ActionList>
+          <DropdownFooter>
+            <Button
+              icon={PlusIcon}
+              isFullWidth
+              variant="secondary"
+              iconPosition="right"
+              onClick={() => {
+                autoCompleteRef.current?.focus();
+                setInputValue('');
+                setItems([...items, inputValue]);
+              }}
+            >
+              Create {inputValue}
+            </Button>
+          </DropdownFooter>
+        </DropdownOverlay>
+      </Dropdown>
+    </Box>
+  );
+};
