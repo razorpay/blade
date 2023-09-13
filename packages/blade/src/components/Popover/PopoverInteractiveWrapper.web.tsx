@@ -4,7 +4,7 @@ import { usePopoverContext } from './PopoverContext';
 import type { BaseBoxProps } from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeAccessible } from '~utils/makeAccessible';
-import { useMemoizedStyles } from '~components/Box/BaseBox/useMemoizedStyles.web';
+import { useMemoizedStyles } from '~components/Box/BaseBox/useMemoizedStyles';
 
 const StyledPopoverInteractiveWrapper = styled.button((props) => {
   const cssObject = useMemoizedStyles(props as never);

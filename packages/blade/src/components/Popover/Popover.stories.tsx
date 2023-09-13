@@ -4,7 +4,6 @@ import type { ComponentStory, Meta } from '@storybook/react';
 import React from 'react';
 import { Title } from '@storybook/addon-docs';
 import { action } from '@storybook/addon-actions';
-import { Pressable } from 'react-native';
 import type { PopoverTriggerProps } from './types';
 import type { PopoverProps } from '.';
 import { PopoverInteractiveWrapper, Popover } from '.';
@@ -21,10 +20,12 @@ import { InfoIcon, MoonIcon, SearchIcon, SunIcon } from '~components/Icons';
 import { Radio, RadioGroup } from '~components/Radio';
 import { Badge } from '~components/Badge';
 import { Counter } from '~components/Counter';
-import { List, ListItem, ListItemText } from '~components/List';
+import { List, ListItem, ListItemLink, ListItemText } from '~components/List';
 import { TextInput } from '~components/Input/TextInput';
 import { IconButton } from '~components/Button/IconButton';
 import { isReactNative } from '~utils';
+import { Alert } from '~components/Alert';
+import BaseBox from '~components/Box/BaseBox';
 
 const Page = (): React.ReactElement => {
   return (
@@ -33,9 +34,9 @@ const Page = (): React.ReactElement => {
       componentDescription="The popover typically provides additional context about the element or its function. A popover is always triggered by a mouse hover on desktop and on tap on mobile."
       figmaURL={{
         paymentTheme:
-          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?type=design&node-id=40636-559188&t=vaK9ZJskCpoIS07l-0',
+          'https://www.figma.com/file/LSG77hEeVYDk7j7WV7OMJE/Blade-DSL---Components-Guideline?type=design&node-id=2875-40870&mode=design&t=UP0cRLPEhmoPYo3b-0',
         bankingTheme:
-          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?type=design&node-id=17121-718899&t=TtGMAUvsH8pUzTq9-0',
+          'https://www.figma.com/file/LSG77hEeVYDk7j7WV7OMJE/Blade-DSL---Components-Guideline?type=design&node-id=2875-40870&mode=design&t=UP0cRLPEhmoPYo3b-0',
       }}
     >
       <Title>Usage</Title>
@@ -66,6 +67,21 @@ export default {
       name: 'titleLeading',
       type: 'select',
       options: Object.keys(iconMap),
+    },
+    content: {
+      control: {
+        disable: true,
+      },
+    },
+    footer: {
+      control: {
+        disable: true,
+      },
+    },
+    initialFocusRef: {
+      control: {
+        disable: true,
+      },
     },
   },
   parameters: {
@@ -143,7 +159,7 @@ const PopoverTemplate: ComponentStory<typeof Popover> = (args) => {
         {...args}
         titleLeading={<LeadingIcon color="surface.text.normal.lowContrast" size="medium" />}
       >
-        <Button>Click me</Button>
+        <Button>View Settlement</Button>
       </Popover>
     </Center>
   );
@@ -185,7 +201,7 @@ export const Controlled: ComponentStory<typeof Popover> = (args) => {
         footer={<FooterContent onClick={() => setIsOpen(false)} />}
         titleLeading={<LeadingIcon color="surface.text.normal.lowContrast" size="medium" />}
       >
-        <Button onClick={() => setIsOpen((prev) => !prev)}>Click me</Button>
+        <Button onClick={() => setIsOpen((prev) => !prev)}>View Settlement</Button>
       </Popover>
       <Button
         marginLeft="spacing.3"
@@ -205,7 +221,7 @@ Controlled.args = {
   titleLeading: 'SettlementsIcon',
 };
 
-const PlacementTemplate: ComponentStory<typeof Popover> = (args) => {
+const PlacementTemplate: ComponentStory<typeof Popover> = (args, context) => {
   const allPlacements = [
     'top',
     'top-start',
@@ -221,6 +237,7 @@ const PlacementTemplate: ComponentStory<typeof Popover> = (args) => {
     'right-end',
   ];
   const [placement, setPlacement] = React.useState<PopoverProps['placement']>('bottom');
+  const isInDocsMode = context.viewMode === 'docs';
 
   return (
     <Box display="flex" flexDirection="row" flexWrap="nowrap">
@@ -240,8 +257,12 @@ const PlacementTemplate: ComponentStory<typeof Popover> = (args) => {
       </Box>
 
       <Box flex={1} margin="auto" marginTop="20%">
-        <Popover {...args} isOpen={isReactNative() ? undefined : true} placement={placement}>
-          <Button>Click me</Button>
+        <Popover
+          {...args}
+          isOpen={isInDocsMode || isReactNative() ? undefined : true}
+          placement={placement}
+        >
+          <Button>View Settlement</Button>
         </Popover>
       </Box>
     </Box>
@@ -312,20 +333,30 @@ PopoverInteractiveWrapperTemplate.args = {
 const MyCustomTriggerButton = React.forwardRef<
   HTMLDivElement,
   { children: string } & PopoverTriggerProps
->(({ children, ...props }, ref) => {
+>(({ children, onTouchEnd, ...props }, ref) => {
   if (isReactNative()) {
     return (
       // just spread the props
-      <Pressable ref={ref as never} onTouchEnd={props.onTouchEnd}>
-        <Text>{children}</Text>
-      </Pressable>
+      <Button ref={ref as never} onClick={props.onClick as never}>
+        {children}
+      </Button>
     );
   }
+
   return (
     // just spread the props
-    <div role="button" tabIndex={0} ref={ref} {...props}>
+    <BaseBox
+      backgroundColor="surface.background.level2.lowContrast"
+      padding="spacing.5"
+      borderRadius="medium"
+      role="button"
+      tabIndex={0}
+      ref={ref}
+      style={{ cursor: 'pointer' }}
+      {...props}
+    >
       {children}
-    </div>
+    </BaseBox>
   );
 });
 
@@ -333,10 +364,23 @@ const CustomTriggerDocs = () => {
   if (isReactNative()) return null;
   return (
     <List>
-      <ListItem>Forward the ref to the custom trigger</ListItem>
       <ListItem>
-        Forward event handlers to the custom trigger (you can import the PopoverTriggerProps type
-        from blade when using TypeScript)
+        Make sure to expose ref from the custom component via{' '}
+        <ListItemLink href="https://react.dev/reference/react/forwardRef">
+          React.forwardRef
+        </ListItemLink>
+      </ListItem>
+      <ListItem>
+        Make sure that your component can receive focus{' '}
+        <ListItemText as="span" type="placeholder">
+          (eg: have tabIndex:0)
+        </ListItemText>
+      </ListItem>
+      <ListItem>
+        Forward event handlers to the custom trigger{' '}
+        <ListItemText as="span" type="placeholder">
+          (you can import the PopoverTriggerProps type from blade when using TypeScript)
+        </ListItemText>
         <List>
           <ListItem>onClick</ListItem>
           <ListItem>
@@ -382,11 +426,11 @@ export const CustomTrigger: ComponentStory<typeof Popover> = (args) => {
     <>
       <Text as="span">
         Most of your usecase can be solved using PopoverInteractiveWrapper, but if you want to use a
-        custom trigger element you can pass
+        custom trigger element you do this:
       </Text>
 
       <CustomTriggerDocs />
-      <Text>
+      <Text marginBottom="spacing.4">
         Alternatively you can just spread the props to the trigger, instead of adding them 1 by 1
       </Text>
       <Center>
@@ -394,7 +438,7 @@ export const CustomTrigger: ComponentStory<typeof Popover> = (args) => {
           {...args}
           titleLeading={<LeadingIcon color="surface.text.normal.lowContrast" size="medium" />}
         >
-          <MyCustomTriggerButton>My Custom Trigger</MyCustomTriggerButton>
+          <MyCustomTriggerButton>View Settlements</MyCustomTriggerButton>
         </Popover>
       </Center>
     </>
@@ -423,7 +467,7 @@ export const InitialFocus: ComponentStory<typeof Popover> = (args) => {
           footer={<FooterContent ref={buttonRef} />}
           titleLeading={<LeadingIcon color="surface.text.normal.lowContrast" size="medium" />}
         >
-          <Button>Click me</Button>
+          <Button>View Settlement</Button>
         </Popover>
       </Center>
     </>
@@ -436,7 +480,19 @@ InitialFocus.args = {
   content: <Content />,
 };
 
-export const ProductUseCase1: ComponentStory<typeof Popover> = () => {
+const StoriesPanelSwitchAlert = ({ shouldShow }: { shouldShow: boolean }) => {
+  return shouldShow ? (
+    <Alert
+      title="Please switch to stories panel"
+      marginBottom="spacing.5"
+      intent="notice"
+      description="Open this example in the 'Stories' panel and reload the page for better experince"
+    />
+  ) : null;
+};
+
+export const ProductUseCase1: ComponentStory<typeof Popover> = (args, context) => {
+  const isInDocsMode = context.viewMode === 'docs';
   const integrateButtonRef = React.useRef<HTMLInputElement>(null);
   const [isOpen, setIsOpen] = React.useState(false);
   const [actionTaken, setActionTaken] = React.useState(false);
@@ -448,6 +504,7 @@ export const ProductUseCase1: ComponentStory<typeof Popover> = () => {
 
   return (
     <Box>
+      <StoriesPanelSwitchAlert shouldShow={isInDocsMode} />
       <Text as="span">
         <Text as="span" weight="bold">
           Product Usecase Example:
@@ -507,7 +564,8 @@ export const ProductUseCase1: ComponentStory<typeof Popover> = () => {
 };
 ProductUseCase1.storyName = 'Product Usecase: Input with action';
 
-export const ProductUseCase2: ComponentStory<typeof Popover> = () => {
+export const ProductUseCase2: ComponentStory<typeof Popover> = (args, context) => {
+  const isInDocsMode = context.viewMode === 'docs';
   const [isOpen, setIsOpen] = React.useState(true);
   const [isDarkMode, setIsDarkMode] = React.useState(false);
   const [hasSeen, setHasSeen] = React.useState(false);
@@ -520,6 +578,7 @@ export const ProductUseCase2: ComponentStory<typeof Popover> = () => {
 
   return (
     <Box>
+      <StoriesPanelSwitchAlert shouldShow={isInDocsMode} />
       <Text as="span">
         <Text as="span" weight="bold">
           Product Usecase Example:
@@ -577,10 +636,13 @@ export const ProductUseCase2: ComponentStory<typeof Popover> = () => {
 };
 ProductUseCase2.storyName = 'Product Usecase: Dark Mode';
 
-export const ProductUseCase3: ComponentStory<typeof Popover> = () => {
+export const ProductUseCase3: ComponentStory<typeof Popover> = (args, context) => {
   const [isOpen, setIsOpen] = React.useState(true);
+  const isInDocsMode = context.viewMode === 'docs';
+
   return (
     <Box>
+      <StoriesPanelSwitchAlert shouldShow={isInDocsMode} />
       <Text as="span">
         <Text as="span" weight="bold">
           Product Usecase Example:

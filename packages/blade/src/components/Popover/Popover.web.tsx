@@ -71,7 +71,7 @@ const Popover = ({
       offset(GAP + ARROW_HEIGHT),
       arrow({
         element: arrowRef,
-        padding: isHorizontal ? 0 : ARROW_WIDTH,
+        padding: isHorizontal ? GAP + ARROW_HEIGHT : ARROW_WIDTH,
       }),
     ],
     whileElementsMounted: autoUpdate,
