@@ -291,7 +291,6 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
     dropdownBaseId,
     onOptionClick,
     selectedIndices,
-    setShouldIgnoreBlur,
     setShouldIgnoreBlurAnimation,
     selectionType,
     dropdownTriggerer,
@@ -366,7 +365,6 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
         })}
         {...metaAttribute({ name: MetaConstants.ActionListItem, testID: props.testID })}
         onMouseDown={() => {
-          setShouldIgnoreBlur(true);
           // We want to keep focus on Dropdown's trigger while option is being clicked
           // So We set this flag that ignores the blur animation to avoid the flicker between focus out + focus in
           setShouldIgnoreBlurAnimation(true);

@@ -48,6 +48,7 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): React.Rea
           position="absolute"
           width="100%"
           testID="dropdown-overlay"
+          elevation={bottomSheetAndDropdownGlue?.dropdownHasBottomSheet ? undefined : 'midRaised'}
           {...metaAttribute({ name: MetaConstants.DropdownOverlay, testID })}
         >
           {children}

@@ -52,23 +52,11 @@ exports[`<TextInput /> should render 1`] = `
   gap: 0px;
 }
 
-.c7 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  position: relative;
-  width: 100%;
-}
-
-.c11 {
+.c10 {
   margin-left: 0px;
 }
 
-.c12 {
+.c11 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -113,7 +101,7 @@ exports[`<TextInput /> should render 1`] = `
   padding: 0;
 }
 
-.c9 {
+.c8 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -134,13 +122,14 @@ exports[`<TextInput /> should render 1`] = `
   padding-right: 12px;
   width: 100%;
   height: 36px;
+  min-height: 36px;
   resize: none;
   outline: none;
   border: none;
   cursor: auto;
 }
 
-.c9::-webkit-input-placeholder {
+.c8::-webkit-input-placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -153,7 +142,7 @@ exports[`<TextInput /> should render 1`] = `
   padding: 0;
 }
 
-.c9::-moz-placeholder {
+.c8::-moz-placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -166,7 +155,7 @@ exports[`<TextInput /> should render 1`] = `
   padding: 0;
 }
 
-.c9:-ms-input-placeholder {
+.c8:-ms-input-placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -179,7 +168,7 @@ exports[`<TextInput /> should render 1`] = `
   padding: 0;
 }
 
-.c9::placeholder {
+.c8::placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -192,11 +181,11 @@ exports[`<TextInput /> should render 1`] = `
   padding: 0;
 }
 
-.c9:focus {
+.c8:focus {
   outline: none;
 }
 
-.c10 {
+.c9 {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -207,22 +196,40 @@ exports[`<TextInput /> should render 1`] = `
   height: 1px;
 }
 
-.c8 {
+.c7 {
   background-color: hsla(216,15%,54%,0.09);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
   border-bottom-width: 1px;
   border-bottom-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
 }
 
-.c8:hover {
+.c7:hover {
   background-color: hsla(216,15%,54%,0.18);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
   border-bottom-width: 1px;
   border-bottom-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
   -webkit-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-duration: 150ms;
@@ -231,13 +238,22 @@ exports[`<TextInput /> should render 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c8:focus-within {
+.c7:focus-within {
   background-color: hsla(216,15%,54%,0.09);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
   border-bottom-width: 1px;
   border-bottom-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
 }
 
 .c5 {
@@ -303,7 +319,7 @@ exports[`<TextInput /> should render 1`] = `
         </label>
       </div>
       <div
-        class="c7 c8"
+        class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c7"
         data-blade-component="base-box"
       >
         <input
@@ -312,7 +328,7 @@ exports[`<TextInput /> should render 1`] = `
           aria-invalid="false"
           aria-required="false"
           autocomplete="off"
-          class="c9"
+          class="c8"
           data-blade-component="styled-base-input"
           enterkeyhint="enter"
           id="textinput-1-input-2"
@@ -321,17 +337,17 @@ exports[`<TextInput /> should render 1`] = `
           value=""
         />
         <div
-          class=" c10"
+          class=" c9"
           data-blade-component="base-box"
         />
       </div>
     </div>
     <div
-      class="c11"
+      class="c10"
       data-blade-component="base-box"
     >
       <div
-        class="c12"
+        class="c11"
         data-blade-component="base-box"
       />
     </div>
@@ -391,19 +407,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   gap: 0px;
 }
 
-.c7 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  position: relative;
-  width: 100%;
-}
-
-.c9 {
+.c8 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -417,7 +421,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   align-items: center;
 }
 
-.c10 {
+.c9 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -425,8 +429,25 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   padding-left: 12px;
 }
 
-.c11 {
+.c10 {
   padding-left: 4px;
+}
+
+.c13 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
 }
 
 .c14 {
@@ -482,7 +503,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   padding: 0;
 }
 
-.c12 {
+.c11 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -495,7 +516,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   padding: 0;
 }
 
-.c13 {
+.c12 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -516,13 +537,14 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   padding-right: 8px;
   width: 100%;
   height: 36px;
+  min-height: 36px;
   resize: none;
   outline: none;
   border: none;
   cursor: auto;
 }
 
-.c13::-webkit-input-placeholder {
+.c12::-webkit-input-placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -535,7 +557,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   padding: 0;
 }
 
-.c13::-moz-placeholder {
+.c12::-moz-placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -548,7 +570,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   padding: 0;
 }
 
-.c13:-ms-input-placeholder {
+.c12:-ms-input-placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -561,7 +583,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   padding: 0;
 }
 
-.c13::placeholder {
+.c12::placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -574,7 +596,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   padding: 0;
 }
 
-.c13:focus {
+.c12:focus {
   outline: none;
 }
 
@@ -589,22 +611,40 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   height: 1px;
 }
 
-.c8 {
+.c7 {
   background-color: hsla(216,15%,54%,0.09);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
   border-bottom-width: 1px;
   border-bottom-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
 }
 
-.c8:hover {
+.c7:hover {
   background-color: hsla(216,15%,54%,0.18);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
   border-bottom-width: 1px;
   border-bottom-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
   -webkit-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-duration: 150ms;
@@ -613,13 +653,22 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c8:focus-within {
+.c7:focus-within {
   background-color: hsla(216,15%,54%,0.09);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
   border-bottom-width: 1px;
   border-bottom-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
 }
 
 .c5 {
@@ -685,15 +734,15 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
         </label>
       </div>
       <div
-        class="c7 c8"
+        class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c7"
         data-blade-component="base-box"
       >
         <div
-          class="c9"
+          class="c8"
           data-blade-component="base-box"
         >
           <div
-            class="c10"
+            class="c9"
             data-blade-component="base-box"
           >
             <svg
@@ -725,11 +774,11 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
             </svg>
           </div>
           <div
-            class="c11"
+            class="c10"
             data-blade-component="base-box"
           >
             <p
-              class="c12"
+              class="c11"
               data-blade-component="text"
             >
               https://
@@ -743,7 +792,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
           aria-required="false"
           autocapitalize="none"
           autocomplete="off"
-          class="c13"
+          class="c12"
           data-blade-component="styled-base-input"
           enterkeyhint="go"
           id="textinput-31-input-32"
@@ -754,7 +803,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
           value=""
         />
         <div
-          class="c9"
+          class="c13"
           data-blade-component="base-box"
         >
           <div
@@ -762,7 +811,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
             data-blade-component="base-box"
           >
             <p
-              class="c12"
+              class="c11"
               data-blade-component="text"
             >
               .com

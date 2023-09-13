@@ -1,6 +1,6 @@
 import React from 'react';
 import type { ComponentStory, Meta } from '@storybook/react';
-import { Dropdown, DropdownOverlay } from '..';
+import { Dropdown, DropdownFooter, DropdownHeader, DropdownOverlay } from '..';
 import {
   getSimpleSelectCode,
   WithAutoPositioningSelectStory,
@@ -175,6 +175,45 @@ export const InternalControlledSelect = (): React.ReactElement => {
         </DropdownOverlay>
       </Dropdown>
     </>
+  );
+};
+
+InternalControlledSelect.parameters = {
+  chromatic: {
+    disableSnapshot: false,
+  },
+};
+
+// For chromatic and internal react native testing
+export const InternalMultiSelect = (): React.ReactElement => {
+  return (
+    <Box padding="spacing.5" maxWidth="300px">
+      <Dropdown selectionType="multiple">
+        <SelectInput label="Select City" maxRows="single" />
+        <DropdownOverlay>
+          <DropdownHeader title="Header Title" subtitle="Header subtitle" />
+          <ActionList>
+            <ActionListItem title="Mumbai" value="mumbai" />
+            <ActionListItem title="Bangalore" value="bangalore" />
+            <ActionListItem title="Pune" value="pune" />
+            <ActionListItem title="Chennai" value="chennai" />
+            <ActionListItem title="Hyderabad" value="hyderabad" />
+            <ActionListItem title="Varanasi" value="varanasi" />
+            <ActionListItem title="Mysore" value="mysore" />
+            <ActionListItem title="New York" value="new-york" />
+            <ActionListItem title="Indore" value="indore" />
+            <ActionListItem title="Kolhapur" value="kolhapur" />
+            <ActionListItem title="Ooty" value="ooty" />
+          </ActionList>
+          <DropdownFooter>
+            <Button isFullWidth onClick={() => console.log('Footer Clicked')}>
+              Apply
+            </Button>
+          </DropdownFooter>
+        </DropdownOverlay>
+      </Dropdown>
+      <Button marginTop="spacing.4">Outer Button</Button>
+    </Box>
   );
 };
 

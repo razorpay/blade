@@ -10,8 +10,10 @@ import { getStyledProps } from '~components/Box/styledProps';
 import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
+import { isReactNative } from '~utils';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import { throwBladeError } from '~utils/logger';
+import type { ContainerElementType } from '~utils/types';
 
 const validDropdownChildren = [
   componentIds.triggers.SelectInput,
@@ -63,15 +65,8 @@ const _Dropdown = ({
     DropdownContextType['selectedIndices']
   >([]);
   const [activeIndex, setActiveIndex] = React.useState(-1);
-  const [shouldIgnoreBlur, setShouldIgnoreBlur] = React.useState(false);
+  const [activeTagIndex, setActiveTagIndex] = React.useState(-1);
   const [shouldIgnoreBlurAnimation, setShouldIgnoreBlurAnimation] = React.useState(false);
-  const triggererRef = React.useRef<HTMLButtonElement>(null);
-  /**
-   * In inputs, actual input is smaller than the visible input wrapper.
-   * You can set this reference in such cases so floating ui calculations happen correctly
-   * */
-  const triggererWrapperRef = React.useRef<HTMLDivElement>(null);
-  const actionListItemRef = React.useRef<HTMLDivElement>(null);
   const [hasFooterAction, setHasFooterAction] = React.useState(false);
   const [hasLabelOnLeft, setHasLabelOnLeft] = React.useState(false);
   const [isKeydownPressed, setIsKeydownPressed] = React.useState(false);
@@ -82,10 +77,20 @@ const _Dropdown = ({
   // keep track if dropdown contains bottomsheet
   const [dropdownHasBottomSheet, setDropdownHasBottomSheet] = React.useState(false);
 
-  const dropdownBaseId = useId('dropdown');
-
+  /**
+   * In inputs, actual input is smaller than the visible input wrapper.
+   * You can set this reference in such cases so floating ui calculations happen correctly
+   * */
+  const triggererWrapperRef = React.useRef<ContainerElementType>(null);
+  const triggererRef = React.useRef<HTMLButtonElement>(null);
+  const actionListItemRef = React.useRef<HTMLDivElement>(null);
   const dropdownTriggerer = React.useRef<DropdownContextType['dropdownTriggerer']>();
   const isFirstRenderRef = React.useRef(true);
+  const isTagDismissedRef = React.useRef<{ value: boolean } | null>({ value: false });
+  const visibleTagsCountRef = React.useRef<{ value: number }>({ value: 0 });
+  const dropdownContainerRef = React.useRef<HTMLDivElement>(null);
+
+  const dropdownBaseId = useId('dropdown');
 
   React.useEffect(() => {
     // Ignoring the `onDismiss` call on first render
@@ -101,6 +106,7 @@ const _Dropdown = ({
   }, [isOpen]);
 
   const close = React.useCallback(() => {
+    setActiveTagIndex(-1);
     setIsOpen(false);
     onDismiss?.();
   }, [onDismiss]);
@@ -141,8 +147,9 @@ const _Dropdown = ({
       setOptions,
       activeIndex,
       setActiveIndex,
-      shouldIgnoreBlur,
-      setShouldIgnoreBlur,
+      activeTagIndex,
+      setActiveTagIndex,
+      visibleTagsCountRef,
       shouldIgnoreBlurAnimation,
       setShouldIgnoreBlurAnimation,
       isKeydownPressed,
@@ -161,6 +168,7 @@ const _Dropdown = ({
       setChangeCallbackTriggerer,
       isControlled,
       setIsControlled,
+      isTagDismissedRef,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [
@@ -169,7 +177,7 @@ const _Dropdown = ({
       controlledValueIndices,
       options,
       activeIndex,
-      shouldIgnoreBlur,
+      activeTagIndex,
       shouldIgnoreBlurAnimation,
       selectionType,
       hasFooterAction,
@@ -191,10 +199,58 @@ const _Dropdown = ({
     };
   }, [dropdownHasBottomSheet, isOpen, close]);
 
+  React.useEffect((): (() => void) | undefined => {
+    if (!isReactNative()) {
+      const dropdown = dropdownContainerRef.current;
+
+      const documentClickHandler = (e: MouseEvent): void => {
+        const target = e.target as HTMLDivElement;
+
+        if (!target || !dropdown) {
+          return;
+        }
+
+        if (!dropdown.contains(target) && !isTagDismissedRef.current?.value) {
+          close();
+        }
+
+        if (isTagDismissedRef.current?.value) {
+          isTagDismissedRef.current.value = false;
+        }
+      };
+
+      const documentFocusHandler = (e: FocusEvent): void => {
+        const target = e.relatedTarget as HTMLDivElement;
+        setActiveIndex(-1);
+
+        if (!dropdown || !target) {
+          return;
+        }
+
+        if (!dropdown.contains(target)) {
+          close();
+        }
+      };
+
+      document.addEventListener('click', documentClickHandler);
+      document.addEventListener('focusout', documentFocusHandler);
+
+      return (): void => {
+        document.removeEventListener('click', documentClickHandler);
+        document.removeEventListener('focusout', documentFocusHandler);
+      };
+    }
+
+    return undefined;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <BottomSheetAndDropdownGlueContext.Provider value={BottomSheetAndDropdownGlueContextValue}>
       <DropdownContext.Provider value={contextValue}>
         <BaseBox
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          ref={dropdownContainerRef as any}
           {...metaAttribute({ name: MetaConstants.Dropdown, testID })}
           {...getStyledProps(styledProps)}
         >

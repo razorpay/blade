@@ -99,6 +99,7 @@ const _DropdownOverlay = ({
     >
       <StyledDropdownOverlay
         isInBottomSheet={bottomSheetAndDropdownGlue?.dropdownHasBottomSheet}
+        elevation={bottomSheetAndDropdownGlue?.dropdownHasBottomSheet ? undefined : 'midRaised'}
         style={{ ...styles }}
         width="100%"
         {...metaAttribute({ name: MetaConstants.DropdownOverlay, testID })}

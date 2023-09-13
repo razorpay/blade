@@ -83,7 +83,7 @@ describe('<Dropdown />', () => {
     const selectOnChangeHandler = jest.fn();
     const applyClickHandler = jest.fn();
 
-    const { getByRole, getByTestId, getAllByRole, getByText } = renderWithTheme(
+    const { getByRole, getByTestId, getAllByRole, getByLabelText } = renderWithTheme(
       <Dropdown selectionType="multiple">
         <SelectInput name="fruits" label="Select Fruit" onChange={selectOnChangeHandler} />
         <DropdownOverlay>
@@ -110,22 +110,24 @@ describe('<Dropdown />', () => {
     // Click on item
     fireEvent.press(getAllByRole('menuitem')[1]);
     expect(selectOnChangeHandler).toBeCalledWith({ name: 'fruits', values: ['apple'] });
-    expect(getByRole('combobox')).toHaveTextContent('Apple');
+    expect(getByLabelText('Close Apple tag')).toBeOnTheScreen();
 
     // Click another item
     fireEvent.press(getAllByRole('menuitem')[2]);
     expect(selectOnChangeHandler).toBeCalledWith({ name: 'fruits', values: ['apple', 'banana'] });
-    expect(getByRole('combobox')).toHaveTextContent('2 items selected');
+    expect(getByLabelText('Close Apple tag')).toBeOnTheScreen();
+    expect(getByLabelText('Close Banana tag')).toBeOnTheScreen();
 
     // Ensure overlay is still visible
     expect(getByTestId('dropdown-overlay').props.display).toBe('flex');
+
+    // Apply button click
+    fireEvent.press(getByRole('button', { name: 'Apply' }));
+    expect(applyClickHandler).toBeCalled();
+
     // Click outside
     fireEvent.press(getByTestId('closeable-area'));
     expect(getByTestId('dropdown-overlay').props.display).toBe('none');
-
-    // Apply button click
-    fireEvent.press(getByText('Apply'));
-    expect(applyClickHandler).toBeCalled();
   });
 
   it('should accept testID', () => {
@@ -233,19 +235,23 @@ describe('<Dropdown />', () => {
       );
     };
 
-    const { getByRole, getByText } = renderWithTheme(<ControlledDropdown />);
+    const { getByRole, getByText, getByLabelText, queryByLabelText } = renderWithTheme(
+      <ControlledDropdown />,
+    );
 
-    const selectInput = getByRole('combobox');
-    expect(selectInput).toHaveTextContent('Select Option');
-    fireEvent.press(getByText('Select Bangalore'));
-    expect(selectInput).toHaveTextContent('Bangalore');
+    const selectInput = getByRole('combobox', { name: 'Select Option' });
+    expect(queryByLabelText('Close Bangalore tag')).not.toBeOnTheScreen();
+    fireEvent.press(getByRole('button', { name: 'Select Bangalore' }));
+    expect(getByLabelText('Close Bangalore tag')).toBeOnTheScreen();
 
     fireEvent.press(selectInput);
     fireEvent.press(getByText('Pune'));
-    expect(selectInput).toHaveTextContent('2 items selected');
+    expect(getByLabelText('Close Bangalore tag')).toBeOnTheScreen();
+    expect(getByLabelText('Close Pune tag')).toBeOnTheScreen();
 
     fireEvent.press(getByText('Select Bangalore'));
-    expect(selectInput).toHaveTextContent('2 items selected');
+    expect(getByLabelText('Close Bangalore tag')).toBeOnTheScreen();
+    expect(getByLabelText('Close Pune tag')).toBeOnTheScreen();
   });
 });
 

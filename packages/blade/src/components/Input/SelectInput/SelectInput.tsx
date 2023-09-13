@@ -3,7 +3,6 @@ import isEmpty from 'lodash/isEmpty';
 import { BaseInput } from '../BaseInput';
 import type { BaseInputProps } from '../BaseInput';
 import { SelectChevronIcon } from './SelectChevronIcon';
-import { ChevronDownIcon, ChevronUpIcon } from '~components/Icons';
 import { useDropdown } from '~components/Dropdown/useDropdown';
 import type { IconComponent } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
@@ -14,6 +13,7 @@ import { componentIds } from '~components/Dropdown/dropdownUtils';
 import type { BladeElementRef } from '~utils/types';
 import { MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { getTagsGroup } from '~components/Tag/getTagsGroup';
 
 type SelectInputCommonProps = Pick<
   BaseInputProps,
@@ -49,6 +49,14 @@ type SelectInputCommonProps = Pick<
    */
   defaultValue?: string | string[];
   onChange?: ({ name, values }: { name?: string; values: string[] }) => void;
+  /**
+   * constraints the height of input to given number rows
+   *
+   * When set to expandable, input takes 1 row in the begining and expands to take 3 when active
+   *
+   * @default 'single'
+   */
+  maxRows?: BaseInputProps['maxTagRows'];
 };
 
 /*
@@ -92,18 +100,23 @@ const _SelectInput = (
     displayValue,
     onTriggerClick,
     onTriggerKeydown,
-    onTriggerBlur,
     dropdownBaseId,
     activeIndex,
+    activeTagIndex,
+    setActiveTagIndex,
     triggererRef,
     hasFooterAction,
     dropdownTriggerer,
     shouldIgnoreBlurAnimation,
     setHasLabelOnLeft,
     setSelectedIndices,
+    setShouldIgnoreBlurAnimation,
     controlledValueIndices,
     options,
+    removeOption,
+    isTagDismissedRef,
     changeCallbackTriggerer,
+    setChangeCallbackTriggerer,
     isControlled,
     setIsControlled,
     selectionType,
@@ -201,7 +214,34 @@ const _SelectInput = (
     setHasLabelOnLeft(props.labelPosition === 'left');
   }, [props.labelPosition, setHasLabelOnLeft]);
 
+  const getTags = React.useMemo(
+    () => () => {
+      if (selectionType === 'single') {
+        return undefined;
+      }
+
+      return getTagsGroup({
+        tags: selectedIndices.map((selectedIndex) => options[selectedIndex].title),
+        activeTagIndex,
+        onDismiss: ({ tagIndex }) => {
+          if (isTagDismissedRef.current) {
+            isTagDismissedRef.current.value = true;
+          }
+
+          if (!isReactNative()) {
+            triggererRef.current?.focus();
+          }
+          removeOption(selectedIndices[tagIndex]);
+          setChangeCallbackTriggerer(Number(changeCallbackTriggerer) + 1);
+        },
+      });
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [selectedIndices, selectionType, activeTagIndex, changeCallbackTriggerer, options],
+  );
+
   return (
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     <BaseBox position="relative">
       {!isReactNative() ? (
         <VisuallyHidden>
@@ -225,6 +265,13 @@ const _SelectInput = (
       <BaseInput
         {...baseInputProps}
         as="button"
+        isDropdownTrigger={true}
+        maxTagRows={props.maxRows ?? 'single'}
+        tags={getTags()}
+        showAllTags={isOpen}
+        activeTagIndex={activeTagIndex}
+        setActiveTagIndex={setActiveTagIndex}
+        value={selectionType === 'multiple' ? undefined : displayValue}
         label={props.label as string}
         hideLabelText={props.label?.length === 0}
         componentName={MetaConstants.SelectInput}
@@ -233,8 +280,9 @@ const _SelectInput = (
           triggererWrapperRef.current = wrapperNode;
         }}
         textAlign="left"
-        value={displayValue}
-        placeholder={placeholder}
+        placeholder={
+          selectionType === 'multiple' && selectedIndices.length > 0 ? undefined : placeholder
+        }
         id={`${dropdownBaseId}-trigger`}
         labelId={`${dropdownBaseId}-label`}
         leadingIcon={icon}
@@ -244,13 +292,14 @@ const _SelectInput = (
           onTriggerClick();
           props?.onClick?.(e);
         }}
-        onKeyDown={onTriggerKeydown}
         onBlur={({ name }) => {
-          onTriggerBlur?.({ name, value, onBlurCallback: onBlur });
+          onBlur?.({ name, value });
         }}
+        onKeyDown={onTriggerKeydown}
         activeDescendant={activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined}
         popupId={`${dropdownBaseId}-actionlist`}
         shouldIgnoreBlurAnimation={shouldIgnoreBlurAnimation}
+        setShouldIgnoreBlurAnimation={setShouldIgnoreBlurAnimation}
         interactionElement={
           <SelectChevronIcon
             onClick={() => {
@@ -262,7 +311,7 @@ const _SelectInput = (
                 onTriggerClick();
               }
             }}
-            icon={isOpen ? ChevronUpIcon : ChevronDownIcon}
+            isOpen={isOpen}
           />
         }
         testID={props.testID}

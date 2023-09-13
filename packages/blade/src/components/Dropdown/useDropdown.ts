@@ -14,7 +14,7 @@ import type { DropdownProps } from './types';
 
 import type { FormInputHandleOnKeyDownEvent } from '~components/Form/FormTypes';
 import { isReactNative } from '~utils';
-import { useBottomSheetAndDropdownGlue } from '~components/BottomSheet/BottomSheetContext';
+import type { ContainerElementType } from '~utils/types';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 const noop = (): void => {};
@@ -47,9 +47,11 @@ type DropdownContextType = {
   /** Currently active (focussed) index  */
   activeIndex: number;
   setActiveIndex: (value: number) => void;
-  /** Used to ignore blur on certains events. E.g. to ignore blur of dropdown when click is inside the dropdown */
-  shouldIgnoreBlur: boolean;
-  setShouldIgnoreBlur: (value: boolean) => void;
+
+  /** Currently active (focussed) tag  */
+  activeTagIndex: number;
+  setActiveTagIndex: (value: number) => void;
+
   /**
    * Sometimes we want to ignore the blur event to keep dropdown open but not ignore the blur animation from selectinput
    * E.g. When someone clicks on Footer, we just want to ignore the blur event and not the blur animation
@@ -65,8 +67,11 @@ type DropdownContextType = {
   dropdownTriggerer?: 'SelectInput' | 'DropdownButton';
   /** ref of triggerer. Used to call focus in certain places */
   triggererRef: React.RefObject<HTMLButtonElement | null>;
-  triggererWrapperRef: React.MutableRefObject<HTMLDivElement | null>;
+  triggererWrapperRef: React.MutableRefObject<ContainerElementType | null>;
   actionListItemRef: React.RefObject<HTMLDivElement | null>;
+  isTagDismissedRef: React.RefObject<{ value: boolean } | null>;
+  visibleTagsCountRef: React.RefObject<{ value: number } | null>;
+
   selectionType?: DropdownProps['selectionType'];
   /** whether footer has an action item.
    * certain a11y behaviour changes happen here
@@ -113,8 +118,9 @@ const DropdownContext = React.createContext<DropdownContextType>({
   setOptions: noop,
   activeIndex: -1,
   setActiveIndex: noop,
-  shouldIgnoreBlur: false,
-  setShouldIgnoreBlur: noop,
+  activeTagIndex: -1,
+
+  setActiveTagIndex: noop,
   shouldIgnoreBlurAnimation: false,
   setShouldIgnoreBlurAnimation: noop,
   hasFooterAction: false,
@@ -134,6 +140,12 @@ const DropdownContext = React.createContext<DropdownContextType>({
   triggererRef: {
     current: null,
   },
+  isTagDismissedRef: {
+    current: null,
+  },
+  visibleTagsCountRef: {
+    current: null,
+  },
   triggererWrapperRef: {
     current: null,
   },
@@ -141,12 +153,6 @@ const DropdownContext = React.createContext<DropdownContextType>({
 
 let searchTimeout: number;
 let searchString = '';
-
-type OnTriggerBlurEvent = (options: {
-  name?: string;
-  value?: string;
-  onBlurCallback?: (callbackArgs: { name?: string; value?: string }) => void;
-}) => void;
 
 type UseDropdownReturnValue = DropdownContextType & {
   /**
@@ -160,15 +166,6 @@ type UseDropdownReturnValue = DropdownContextType & {
   onTriggerKeydown: FormInputHandleOnKeyDownEvent | undefined;
 
   /**
-   * Handles blur events like
-   * - closing the navbar when someone clicks outside
-   * - ignoring the blur for certain cases like clicks on footer
-   * - selecting the option before closing if Tab is pressed
-   * - ..etc
-   */
-  onTriggerBlur: OnTriggerBlurEvent | undefined;
-
-  /**
    * Handles the click even on option.
    *
    * Contains the logic that selects the option, moves the focus, etc
@@ -177,6 +174,11 @@ type UseDropdownReturnValue = DropdownContextType & {
     e: React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLInputElement>,
     index: number,
   ) => void;
+
+  /**
+   * Removes the option with given optionsIndex
+   */
+  removeOption: (index: number) => void;
 
   /**
    * value that is used during form submissions
@@ -203,8 +205,9 @@ const useDropdown = (): UseDropdownReturnValue => {
     setSelectedIndices,
     activeIndex,
     setActiveIndex,
-    shouldIgnoreBlur,
-    setShouldIgnoreBlur,
+    activeTagIndex,
+    setActiveTagIndex,
+    visibleTagsCountRef,
     isKeydownPressed,
     setIsKeydownPressed,
     options,
@@ -215,7 +218,6 @@ const useDropdown = (): UseDropdownReturnValue => {
     setControlledValueIndices,
     ...rest
   } = React.useContext(DropdownContext);
-  const bottomSheetAndDropdownGlue = useBottomSheetAndDropdownGlue();
 
   type SelectOptionType = (
     index: number,
@@ -231,6 +233,20 @@ const useDropdown = (): UseDropdownReturnValue => {
       setSelectedIndices(indices);
     }
   };
+
+  const removeOption = (index: number): void => {
+    // remove existing item
+    const existingItemIndex = selectedIndices.indexOf(index);
+    if (existingItemIndex < 0) {
+      return;
+    }
+
+    setIndices([
+      ...selectedIndices.slice(0, existingItemIndex),
+      ...selectedIndices.slice(existingItemIndex + 1),
+    ]);
+  };
+
   /**
    * Marks the given index as selected.
    *
@@ -251,12 +267,7 @@ const useDropdown = (): UseDropdownReturnValue => {
 
     if (selectionType === 'multiple') {
       if (selectedIndices.includes(index)) {
-        // remove existing item
-        const existingItemIndex = selectedIndices.indexOf(index);
-        setIndices([
-          ...selectedIndices.slice(0, existingItemIndex),
-          ...selectedIndices.slice(existingItemIndex + 1),
-        ]);
+        removeOption(index);
         isSelected = false;
       } else {
         setIndices([...selectedIndices, index]);
@@ -293,41 +304,10 @@ const useDropdown = (): UseDropdownReturnValue => {
   };
 
   /**
-   * Blur handler on combobox. Also handles the selection logic when user moves focus
-   */
-  const onTriggerBlur: OnTriggerBlurEvent = ({ name, value, onBlurCallback }) => {
-    if (rest.hasFooterAction) {
-      // When Footer has action buttons, we ignore the blur (by setting shouldIgnoreBlur to true in onTriggerKeyDown)
-      // And we remove the active item (by setting it to -1) so that we can shift focus on action buttons
-      setActiveIndex(-1);
-    }
-
-    if (bottomSheetAndDropdownGlue?.dropdownHasBottomSheet) {
-      setShouldIgnoreBlur(true);
-      return;
-    }
-
-    if (shouldIgnoreBlur) {
-      setShouldIgnoreBlur(false);
-      return;
-    }
-
-    onBlurCallback?.({ name, value });
-
-    if (isOpen) {
-      if (selectionType !== 'multiple') {
-        selectOption(activeIndex);
-      }
-      if (!bottomSheetAndDropdownGlue?.dropdownHasBottomSheet) {
-        close();
-      }
-    }
-  };
-
-  /**
    * Function that we call when we want to move focus from one option to other
    */
   const onOptionChange = (actionType: SelectActionsType, index?: number): void => {
+    setActiveTagIndex(-1);
     const max = options.length - 1;
     const newIndex = index ?? activeIndex;
     setActiveIndex(getUpdatedIndex(newIndex, max, actionType));
@@ -397,16 +377,6 @@ const useDropdown = (): UseDropdownReturnValue => {
   const onTriggerKeydown = (e: {
     event: React.KeyboardEvent<HTMLInputElement | HTMLButtonElement>;
   }): void => {
-    if (e.event.key === 'Tab' && rest.hasFooterAction) {
-      // When footer has Action Buttons, we ignore the blur event so that we can move focus to action item than bluring out of dropdown
-      setShouldIgnoreBlur(true);
-    }
-
-    // disable closing the select on blur events if we are using a bottomsheet
-    if (bottomSheetAndDropdownGlue?.dropdownHasBottomSheet) {
-      setShouldIgnoreBlur(true);
-    }
-
     if (!isKeydownPressed && ![' ', 'Enter', 'Escape', 'Meta'].includes(e.event.key)) {
       // When keydown is not already pressed and its not Enter, Space, Command, or Escape key (those are generic keys and we only want to handle arrow keys or home buttons etc)
       setIsKeydownPressed(true);
@@ -421,6 +391,10 @@ const useDropdown = (): UseDropdownReturnValue => {
         onOptionChange,
         onComboType,
         selectCurrentOption: () => {
+          if (activeIndex < 0) {
+            return;
+          }
+
           const isSelected = selectOption(activeIndex);
           if (rest.hasFooterAction && !isReactNative()) {
             rest.triggererRef.current?.focus();
@@ -438,15 +412,16 @@ const useDropdown = (): UseDropdownReturnValue => {
     close,
     selectedIndices,
     setSelectedIndices,
+    removeOption,
     setControlledValueIndices,
     onTriggerClick,
     onTriggerKeydown,
-    onTriggerBlur,
     onOptionClick,
     activeIndex,
     setActiveIndex,
-    shouldIgnoreBlur,
-    setShouldIgnoreBlur,
+    activeTagIndex,
+    setActiveTagIndex,
+    visibleTagsCountRef,
     isKeydownPressed,
     setIsKeydownPressed,
     changeCallbackTriggerer,

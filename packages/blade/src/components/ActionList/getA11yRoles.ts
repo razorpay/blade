@@ -24,6 +24,10 @@ export const getActionListContainerRole = (
   hasFooterAction: boolean,
   dropdownTriggerer: DropdownContextType['dropdownTriggerer'],
 ): 'dialog' | 'listbox' | 'menu' => {
+  if (isReactNative()) {
+    return 'menu';
+  }
+
   if (hasFooterAction) {
     return 'dialog';
   }
