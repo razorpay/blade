@@ -61,27 +61,10 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   gap: 0px;
 }
 
-.c11 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  overflow: auto;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-right: 0px;
-  padding-left: 0px;
-  min-height: 36px;
-}
-
 .c12 {
+  margin-top: -4px;
   width: 100%;
+  min-width: 30px;
 }
 
 .c15 {
@@ -303,6 +286,25 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   justify-content: center;
 }
 
+.c11 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow-x: auto;
+  overflow-y: auto;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 12px;
+  min-height: 36px;
+}
+
 .c25 {
   background-color: hsla(0,0%,100%,1);
   border-width: 1px;
@@ -510,7 +512,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   background-color: transparent;
   padding-top: 8px;
   padding-bottom: 8px;
-  padding-left: 12px;
+  padding-left: 0px;
   padding-right: 8px;
   width: 100%;
   height: 36px;
@@ -846,6 +848,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
                     aria-haspopup="dialog"
                     aria-invalid="false"
                     aria-required="false"
+                    autocomplete="off"
                     class="c13"
                     data-blade-component="styled-base-input"
                     id="dropdown-7-trigger-1-input-2"
