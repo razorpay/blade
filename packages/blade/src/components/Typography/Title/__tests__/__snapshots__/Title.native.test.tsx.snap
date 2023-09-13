@@ -145,7 +145,6 @@ exports[`<Title /> should render Title with mixed color 1`] = `
       style={
         [
           {
-            "color": "hsla(195, 100%, 31%, 1)",
             "fontFamily": "Lato",
             "fontSize": 20,
             "fontStyle": "normal",

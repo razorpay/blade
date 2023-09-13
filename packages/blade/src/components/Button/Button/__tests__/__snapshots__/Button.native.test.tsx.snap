@@ -1096,7 +1096,7 @@ exports[`<Button /> should render disabled tertiary variant button 1`] = `
       }
     }
     accessible={true}
-    activeBackgroundColor="hsla(0, 0%, 100%, 1)"
+    activeBackgroundColor="hsla(216, 15%, 54%, 0.09)"
     activeBorderColor="hsla(216, 19%, 89%, 1)"
     borderRadius="2px"
     borderWidth="1px"
@@ -1106,13 +1106,13 @@ exports[`<Button /> should render disabled tertiary variant button 1`] = `
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
-    defaultBackgroundColor="hsla(0, 0%, 100%, 1)"
+    defaultBackgroundColor="hsla(216, 15%, 54%, 0.09)"
     defaultBorderColor="hsla(216, 19%, 89%, 1)"
-    focusBackgroundColor="hsla(0, 0%, 100%, 1)"
+    focusBackgroundColor="hsla(216, 15%, 54%, 0.09)"
     focusBorderColor="hsla(216, 19%, 89%, 1)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(0, 0%, 100%, 1)"
+    hoverBackgroundColor="hsla(216, 15%, 54%, 0.09)"
     hoverBorderColor="hsla(216, 19%, 89%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -1134,7 +1134,7 @@ exports[`<Button /> should render disabled tertiary variant button 1`] = `
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(0, 0%, 100%, 1)",
+          "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
           "borderColor": "hsla(216, 19%, 89%, 1)",
           "borderRadius": 2,
           "borderStyle": "solid",
@@ -1153,7 +1153,7 @@ exports[`<Button /> should render disabled tertiary variant button 1`] = `
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(0, 0%, 100%, 1)",
+          "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
           "borderColor": "hsla(216, 19%, 89%, 1)",
         },
       ]
@@ -1866,7 +1866,7 @@ exports[`<Button /> should render tertiary variant button 1`] = `
       }
     }
     accessible={true}
-    activeBackgroundColor="hsla(214, 21%, 94%, 1)"
+    activeBackgroundColor="hsla(216, 15%, 54%, 0.32)"
     activeBorderColor="hsla(216, 19%, 89%, 1)"
     borderRadius="2px"
     borderWidth="1px"
@@ -1876,13 +1876,13 @@ exports[`<Button /> should render tertiary variant button 1`] = `
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
-    defaultBackgroundColor="hsla(0, 0%, 100%, 1)"
-    defaultBorderColor="hsla(216, 19%, 89%, 1)"
-    focusBackgroundColor="hsla(220, 30%, 96%, 1)"
+    defaultBackgroundColor="hsla(216, 15%, 54%, 0.09)"
+    defaultBorderColor="hsla(216, 44%, 23%, 0)"
+    focusBackgroundColor="hsla(216, 15%, 54%, 0.32)"
     focusBorderColor="hsla(216, 19%, 89%, 1)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(220, 27%, 98%, 1)"
+    hoverBackgroundColor="hsla(216, 15%, 54%, 0.18)"
     hoverBorderColor="hsla(216, 19%, 89%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -1904,8 +1904,8 @@ exports[`<Button /> should render tertiary variant button 1`] = `
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(0, 0%, 100%, 1)",
-          "borderColor": "hsla(216, 19%, 89%, 1)",
+          "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+          "borderColor": "hsla(216, 44%, 23%, 0)",
           "borderRadius": 2,
           "borderStyle": "solid",
           "borderWidth": 1,
@@ -1923,8 +1923,8 @@ exports[`<Button /> should render tertiary variant button 1`] = `
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(0, 0%, 100%, 1)",
-          "borderColor": "hsla(216, 19%, 89%, 1)",
+          "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+          "borderColor": "hsla(216, 44%, 23%, 0)",
         },
       ]
     }

@@ -145,7 +145,6 @@ exports[`<Heading /> should render Heading with mixed color 1`] = `
       style={
         [
           {
-            "color": "hsla(195, 100%, 31%, 1)",
             "fontFamily": "Lato",
             "fontSize": 16,
             "fontStyle": "normal",

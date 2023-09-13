@@ -541,7 +541,6 @@ exports[`<BaseLink /> should render disabled information intent high contrast li
         style={
           [
             {
-              "color": "hsla(180, 100%, 97%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
               "fontStyle": "normal",
@@ -769,7 +768,6 @@ exports[`<BaseLink /> should render disabled negative intent high contrast link 
         style={
           [
             {
-              "color": "hsla(0, 100%, 97%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
               "fontStyle": "normal",
@@ -997,7 +995,6 @@ exports[`<BaseLink /> should render disabled neutral intent high contrast link 1
         style={
           [
             {
-              "color": "hsla(220, 27%, 98%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
               "fontStyle": "normal",
@@ -1225,7 +1222,6 @@ exports[`<BaseLink /> should render disabled notice intent high contrast link 1`
         style={
           [
             {
-              "color": "hsla(32, 100%, 94%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
               "fontStyle": "normal",
@@ -1453,7 +1449,6 @@ exports[`<BaseLink /> should render disabled positive intent high contrast link 
         style={
           [
             {
-              "color": "hsla(107, 100%, 96%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
               "fontStyle": "normal",
@@ -1881,7 +1876,6 @@ exports[`<BaseLink /> should render information intent high contrast link 1`] = 
         style={
           [
             {
-              "color": "hsla(180, 100%, 97%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
               "fontStyle": "normal",
@@ -2829,7 +2823,6 @@ exports[`<BaseLink /> should render negative intent high contrast link 1`] = `
         style={
           [
             {
-              "color": "hsla(0, 100%, 97%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
               "fontStyle": "normal",
@@ -3057,7 +3050,6 @@ exports[`<BaseLink /> should render neutral intent high contrast link 1`] = `
         style={
           [
             {
-              "color": "hsla(220, 27%, 98%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
               "fontStyle": "normal",
@@ -3285,7 +3277,6 @@ exports[`<BaseLink /> should render notice intent high contrast link 1`] = `
         style={
           [
             {
-              "color": "hsla(32, 100%, 94%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
               "fontStyle": "normal",
@@ -3513,7 +3504,6 @@ exports[`<BaseLink /> should render positive intent high contrast link 1`] = `
         style={
           [
             {
-              "color": "hsla(107, 100%, 96%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
               "fontStyle": "normal",

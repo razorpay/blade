@@ -1360,8 +1360,6 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
       }
     }
     accessible={true}
-    activeBackgroundColor="hsla(193, 100%, 35%, 1)"
-    activeBorderColor="hsla(187, 68%, 52%, 1)"
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
@@ -1370,14 +1368,8 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
-    defaultBackgroundColor="hsla(193, 100%, 35%, 1)"
-    defaultBorderColor="hsla(187, 68%, 52%, 1)"
-    focusBackgroundColor="hsla(193, 100%, 35%, 1)"
-    focusBorderColor="hsla(187, 68%, 52%, 1)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(193, 100%, 35%, 1)"
-    hoverBorderColor="hsla(187, 68%, 52%, 1)"
     isFullWidth={false}
     isLoading={false}
     minHeight="36px"
@@ -1398,8 +1390,6 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(193, 100%, 35%, 1)",
-          "borderColor": "hsla(187, 68%, 52%, 1)",
           "borderRadius": 2,
           "borderStyle": "solid",
           "borderWidth": 1,
@@ -1417,8 +1407,8 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(193, 100%, 35%, 1)",
-          "borderColor": "hsla(187, 68%, 52%, 1)",
+          "backgroundColor": undefined,
+          "borderColor": undefined,
         },
       ]
     }
@@ -1458,7 +1448,6 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
         style={
           [
             {
-              "color": "hsla(187, 68%, 52%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
               "fontStyle": "normal",
@@ -1514,8 +1503,6 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
       }
     }
     accessible={true}
-    activeBackgroundColor="hsla(193, 100%, 35%, 0.09)"
-    activeBorderColor="hsla(193, 100%, 35%, 0.32)"
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
@@ -1524,14 +1511,8 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
-    defaultBackgroundColor="hsla(193, 100%, 35%, 0.09)"
-    defaultBorderColor="hsla(193, 100%, 35%, 0.32)"
-    focusBackgroundColor="hsla(193, 100%, 35%, 0.09)"
-    focusBorderColor="hsla(193, 100%, 35%, 0.32)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(193, 100%, 35%, 0.09)"
-    hoverBorderColor="hsla(193, 100%, 35%, 0.32)"
     isFullWidth={false}
     isLoading={false}
     minHeight="36px"
@@ -1552,8 +1533,6 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(193, 100%, 35%, 0.09)",
-          "borderColor": "hsla(193, 100%, 35%, 0.32)",
           "borderRadius": 2,
           "borderStyle": "solid",
           "borderWidth": 1,
@@ -1571,8 +1550,8 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(193, 100%, 35%, 0.09)",
-          "borderColor": "hsla(193, 100%, 35%, 0.32)",
+          "backgroundColor": undefined,
+          "borderColor": undefined,
         },
       ]
     }
@@ -1612,7 +1591,6 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
         style={
           [
             {
-              "color": "hsla(193, 100%, 35%, 0.32)",
               "fontFamily": "Lato",
               "fontSize": 14,
               "fontStyle": "normal",
@@ -1668,8 +1646,6 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
       }
     }
     accessible={true}
-    activeBackgroundColor="hsla(8, 73%, 47%, 1)"
-    activeBorderColor="hsla(8, 99%, 65%, 1)"
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
@@ -1678,14 +1654,8 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
-    defaultBackgroundColor="hsla(8, 73%, 47%, 1)"
-    defaultBorderColor="hsla(8, 99%, 65%, 1)"
-    focusBackgroundColor="hsla(8, 73%, 47%, 1)"
-    focusBorderColor="hsla(8, 99%, 65%, 1)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(8, 73%, 47%, 1)"
-    hoverBorderColor="hsla(8, 99%, 65%, 1)"
     isFullWidth={false}
     isLoading={false}
     minHeight="36px"
@@ -1706,8 +1676,6 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(8, 73%, 47%, 1)",
-          "borderColor": "hsla(8, 99%, 65%, 1)",
           "borderRadius": 2,
           "borderStyle": "solid",
           "borderWidth": 1,
@@ -1725,8 +1693,8 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(8, 73%, 47%, 1)",
-          "borderColor": "hsla(8, 99%, 65%, 1)",
+          "backgroundColor": undefined,
+          "borderColor": undefined,
         },
       ]
     }
@@ -1766,7 +1734,6 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
         style={
           [
             {
-              "color": "hsla(8, 99%, 65%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
               "fontStyle": "normal",
@@ -1822,8 +1789,6 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
       }
     }
     accessible={true}
-    activeBackgroundColor="hsla(9, 91%, 56%, 0.09)"
-    activeBorderColor="hsla(9, 91%, 56%, 0.32)"
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
@@ -1832,14 +1797,8 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
-    defaultBackgroundColor="hsla(9, 91%, 56%, 0.09)"
-    defaultBorderColor="hsla(9, 91%, 56%, 0.32)"
-    focusBackgroundColor="hsla(9, 91%, 56%, 0.09)"
-    focusBorderColor="hsla(9, 91%, 56%, 0.32)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(9, 91%, 56%, 0.09)"
-    hoverBorderColor="hsla(9, 91%, 56%, 0.32)"
     isFullWidth={false}
     isLoading={false}
     minHeight="36px"
@@ -1860,8 +1819,6 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(9, 91%, 56%, 0.09)",
-          "borderColor": "hsla(9, 91%, 56%, 0.32)",
           "borderRadius": 2,
           "borderStyle": "solid",
           "borderWidth": 1,
@@ -1879,8 +1836,8 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(9, 91%, 56%, 0.09)",
-          "borderColor": "hsla(9, 91%, 56%, 0.32)",
+          "backgroundColor": undefined,
+          "borderColor": undefined,
         },
       ]
     }
@@ -1920,7 +1877,6 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
         style={
           [
             {
-              "color": "hsla(9, 91%, 56%, 0.32)",
               "fontFamily": "Lato",
               "fontSize": 14,
               "fontStyle": "normal",
@@ -1976,8 +1932,6 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
       }
     }
     accessible={true}
-    activeBackgroundColor="hsla(216, 33%, 29%, 1)"
-    activeBorderColor="hsla(216, 15%, 54%, 1)"
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
@@ -1986,14 +1940,8 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
-    defaultBackgroundColor="hsla(216, 33%, 29%, 1)"
-    defaultBorderColor="hsla(216, 15%, 54%, 1)"
-    focusBackgroundColor="hsla(216, 33%, 29%, 1)"
-    focusBorderColor="hsla(216, 15%, 54%, 1)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(216, 33%, 29%, 1)"
-    hoverBorderColor="hsla(216, 15%, 54%, 1)"
     isFullWidth={false}
     isLoading={false}
     minHeight="36px"
@@ -2014,8 +1962,6 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(216, 33%, 29%, 1)",
-          "borderColor": "hsla(216, 15%, 54%, 1)",
           "borderRadius": 2,
           "borderStyle": "solid",
           "borderWidth": 1,
@@ -2033,8 +1979,8 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(216, 33%, 29%, 1)",
-          "borderColor": "hsla(216, 15%, 54%, 1)",
+          "backgroundColor": undefined,
+          "borderColor": undefined,
         },
       ]
     }
@@ -2074,7 +2020,6 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
         style={
           [
             {
-              "color": "hsla(216, 15%, 54%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
               "fontStyle": "normal",
@@ -2130,8 +2075,6 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
       }
     }
     accessible={true}
-    activeBackgroundColor="hsla(216, 15%, 54%, 0.09)"
-    activeBorderColor="hsla(216, 15%, 54%, 0.32)"
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
@@ -2140,14 +2083,8 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
-    defaultBackgroundColor="hsla(216, 15%, 54%, 0.09)"
-    defaultBorderColor="hsla(216, 15%, 54%, 0.32)"
-    focusBackgroundColor="hsla(216, 15%, 54%, 0.09)"
-    focusBorderColor="hsla(216, 15%, 54%, 0.32)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(216, 15%, 54%, 0.09)"
-    hoverBorderColor="hsla(216, 15%, 54%, 0.32)"
     isFullWidth={false}
     isLoading={false}
     minHeight="36px"
@@ -2168,8 +2105,6 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
-          "borderColor": "hsla(216, 15%, 54%, 0.32)",
           "borderRadius": 2,
           "borderStyle": "solid",
           "borderWidth": 1,
@@ -2187,8 +2122,8 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
-          "borderColor": "hsla(216, 15%, 54%, 0.32)",
+          "backgroundColor": undefined,
+          "borderColor": undefined,
         },
       ]
     }
@@ -2228,7 +2163,6 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
         style={
           [
             {
-              "color": "hsla(216, 15%, 54%, 0.32)",
               "fontFamily": "Lato",
               "fontSize": 14,
               "fontStyle": "normal",
@@ -2284,8 +2218,6 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
       }
     }
     accessible={true}
-    activeBackgroundColor="hsla(38, 97%, 38%, 1)"
-    activeBorderColor="hsla(35, 84%, 54%, 1)"
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
@@ -2294,14 +2226,8 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
-    defaultBackgroundColor="hsla(38, 97%, 38%, 1)"
-    defaultBorderColor="hsla(35, 84%, 54%, 1)"
-    focusBackgroundColor="hsla(38, 97%, 38%, 1)"
-    focusBorderColor="hsla(35, 84%, 54%, 1)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(38, 97%, 38%, 1)"
-    hoverBorderColor="hsla(35, 84%, 54%, 1)"
     isFullWidth={false}
     isLoading={false}
     minHeight="36px"
@@ -2322,8 +2248,6 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(38, 97%, 38%, 1)",
-          "borderColor": "hsla(35, 84%, 54%, 1)",
           "borderRadius": 2,
           "borderStyle": "solid",
           "borderWidth": 1,
@@ -2341,8 +2265,8 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(38, 97%, 38%, 1)",
-          "borderColor": "hsla(35, 84%, 54%, 1)",
+          "backgroundColor": undefined,
+          "borderColor": undefined,
         },
       ]
     }
@@ -2382,7 +2306,6 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
         style={
           [
             {
-              "color": "hsla(35, 84%, 54%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
               "fontStyle": "normal",
@@ -2438,8 +2361,6 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
       }
     }
     accessible={true}
-    activeBackgroundColor="hsla(36, 100%, 44%, 0.09)"
-    activeBorderColor="hsla(36, 100%, 44%, 0.32)"
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
@@ -2448,14 +2369,8 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
-    defaultBackgroundColor="hsla(36, 100%, 44%, 0.09)"
-    defaultBorderColor="hsla(36, 100%, 44%, 0.32)"
-    focusBackgroundColor="hsla(36, 100%, 44%, 0.09)"
-    focusBorderColor="hsla(36, 100%, 44%, 0.32)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(36, 100%, 44%, 0.09)"
-    hoverBorderColor="hsla(36, 100%, 44%, 0.32)"
     isFullWidth={false}
     isLoading={false}
     minHeight="36px"
@@ -2476,8 +2391,6 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(36, 100%, 44%, 0.09)",
-          "borderColor": "hsla(36, 100%, 44%, 0.32)",
           "borderRadius": 2,
           "borderStyle": "solid",
           "borderWidth": 1,
@@ -2495,8 +2408,8 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(36, 100%, 44%, 0.09)",
-          "borderColor": "hsla(36, 100%, 44%, 0.32)",
+          "backgroundColor": undefined,
+          "borderColor": undefined,
         },
       ]
     }
@@ -2536,7 +2449,6 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
         style={
           [
             {
-              "color": "hsla(36, 100%, 44%, 0.32)",
               "fontFamily": "Lato",
               "fontSize": 14,
               "fontStyle": "normal",
@@ -2592,8 +2504,6 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
       }
     }
     accessible={true}
-    activeBackgroundColor="hsla(160, 100%, 26%, 1)"
-    activeBorderColor="hsla(149, 99%, 35%, 1)"
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
@@ -2602,14 +2512,8 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
-    defaultBackgroundColor="hsla(160, 100%, 26%, 1)"
-    defaultBorderColor="hsla(149, 99%, 35%, 1)"
-    focusBackgroundColor="hsla(160, 100%, 26%, 1)"
-    focusBorderColor="hsla(149, 99%, 35%, 1)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(160, 100%, 26%, 1)"
-    hoverBorderColor="hsla(149, 99%, 35%, 1)"
     isFullWidth={false}
     isLoading={false}
     minHeight="36px"
@@ -2630,8 +2534,6 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(160, 100%, 26%, 1)",
-          "borderColor": "hsla(149, 99%, 35%, 1)",
           "borderRadius": 2,
           "borderStyle": "solid",
           "borderWidth": 1,
@@ -2649,8 +2551,8 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(160, 100%, 26%, 1)",
-          "borderColor": "hsla(149, 99%, 35%, 1)",
+          "backgroundColor": undefined,
+          "borderColor": undefined,
         },
       ]
     }
@@ -2690,7 +2592,6 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
         style={
           [
             {
-              "color": "hsla(149, 99%, 35%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
               "fontStyle": "normal",
@@ -2746,8 +2647,6 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
       }
     }
     accessible={true}
-    activeBackgroundColor="hsla(155, 100%, 31%, 0.09)"
-    activeBorderColor="hsla(155, 100%, 31%, 0.32)"
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
@@ -2756,14 +2655,8 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
-    defaultBackgroundColor="hsla(155, 100%, 31%, 0.09)"
-    defaultBorderColor="hsla(155, 100%, 31%, 0.32)"
-    focusBackgroundColor="hsla(155, 100%, 31%, 0.09)"
-    focusBorderColor="hsla(155, 100%, 31%, 0.32)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(155, 100%, 31%, 0.09)"
-    hoverBorderColor="hsla(155, 100%, 31%, 0.32)"
     isFullWidth={false}
     isLoading={false}
     minHeight="36px"
@@ -2784,8 +2677,6 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
-          "borderColor": "hsla(155, 100%, 31%, 0.32)",
           "borderRadius": 2,
           "borderStyle": "solid",
           "borderWidth": 1,
@@ -2803,8 +2694,8 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
-          "borderColor": "hsla(155, 100%, 31%, 0.32)",
+          "backgroundColor": undefined,
+          "borderColor": undefined,
         },
       ]
     }
@@ -2844,7 +2735,6 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
         style={
           [
             {
-              "color": "hsla(155, 100%, 31%, 0.32)",
               "fontFamily": "Lato",
               "fontSize": 14,
               "fontStyle": "normal",
@@ -3054,7 +2944,7 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
       }
     }
     accessible={true}
-    activeBackgroundColor="hsla(0, 0%, 100%, 1)"
+    activeBackgroundColor="hsla(216, 15%, 54%, 0.09)"
     activeBorderColor="hsla(216, 19%, 89%, 1)"
     borderRadius="2px"
     borderWidth="1px"
@@ -3064,13 +2954,13 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
-    defaultBackgroundColor="hsla(0, 0%, 100%, 1)"
+    defaultBackgroundColor="hsla(216, 15%, 54%, 0.09)"
     defaultBorderColor="hsla(216, 19%, 89%, 1)"
-    focusBackgroundColor="hsla(0, 0%, 100%, 1)"
+    focusBackgroundColor="hsla(216, 15%, 54%, 0.09)"
     focusBorderColor="hsla(216, 19%, 89%, 1)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(0, 0%, 100%, 1)"
+    hoverBackgroundColor="hsla(216, 15%, 54%, 0.09)"
     hoverBorderColor="hsla(216, 19%, 89%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -3092,7 +2982,7 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(0, 0%, 100%, 1)",
+          "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
           "borderColor": "hsla(216, 19%, 89%, 1)",
           "borderRadius": 2,
           "borderStyle": "solid",
@@ -3111,7 +3001,7 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(0, 0%, 100%, 1)",
+          "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
           "borderColor": "hsla(216, 19%, 89%, 1)",
         },
       ]
@@ -3208,8 +3098,6 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
       }
     }
     accessible={true}
-    activeBackgroundColor="hsla(196, 100%, 27%, 1)"
-    activeBorderColor="hsla(180, 100%, 97%, 1)"
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
@@ -3218,14 +3106,8 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
-    defaultBackgroundColor="hsla(193, 100%, 35%, 1)"
-    defaultBorderColor="hsla(180, 100%, 97%, 1)"
-    focusBackgroundColor="hsla(196, 100%, 27%, 1)"
-    focusBorderColor="hsla(180, 100%, 97%, 1)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(195, 100%, 31%, 1)"
-    hoverBorderColor="hsla(180, 100%, 97%, 1)"
     isFullWidth={false}
     isLoading={false}
     minHeight="36px"
@@ -3246,8 +3128,6 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(193, 100%, 35%, 1)",
-          "borderColor": "hsla(180, 100%, 97%, 1)",
           "borderRadius": 2,
           "borderStyle": "solid",
           "borderWidth": 1,
@@ -3265,8 +3145,8 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(193, 100%, 35%, 1)",
-          "borderColor": "hsla(180, 100%, 97%, 1)",
+          "backgroundColor": undefined,
+          "borderColor": undefined,
         },
       ]
     }
@@ -3306,7 +3186,6 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
         style={
           [
             {
-              "color": "hsla(180, 100%, 97%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
               "fontStyle": "normal",
@@ -3362,8 +3241,6 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
       }
     }
     accessible={true}
-    activeBackgroundColor="hsla(193, 100%, 35%, 0.32)"
-    activeBorderColor="hsla(193, 100%, 35%, 0.32)"
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
@@ -3372,14 +3249,8 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
-    defaultBackgroundColor="hsla(193, 100%, 35%, 0.09)"
-    defaultBorderColor="hsla(193, 100%, 35%, 0.32)"
-    focusBackgroundColor="hsla(193, 100%, 35%, 0.32)"
-    focusBorderColor="hsla(193, 100%, 35%, 0.32)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(193, 100%, 35%, 0.18)"
-    hoverBorderColor="hsla(193, 100%, 35%, 0.32)"
     isFullWidth={false}
     isLoading={false}
     minHeight="36px"
@@ -3400,8 +3271,6 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(193, 100%, 35%, 0.09)",
-          "borderColor": "hsla(193, 100%, 35%, 0.32)",
           "borderRadius": 2,
           "borderStyle": "solid",
           "borderWidth": 1,
@@ -3419,8 +3288,8 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(193, 100%, 35%, 0.09)",
-          "borderColor": "hsla(193, 100%, 35%, 0.32)",
+          "backgroundColor": undefined,
+          "borderColor": undefined,
         },
       ]
     }
@@ -3460,7 +3329,6 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
         style={
           [
             {
-              "color": "hsla(195, 100%, 31%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
               "fontStyle": "normal",
@@ -4128,8 +3996,6 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
       }
     }
     accessible={true}
-    activeBackgroundColor="hsla(5, 69%, 32%, 1)"
-    activeBorderColor="hsla(0, 100%, 97%, 1)"
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
@@ -4138,14 +4004,8 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
-    defaultBackgroundColor="hsla(8, 73%, 47%, 1)"
-    defaultBorderColor="hsla(0, 100%, 97%, 1)"
-    focusBackgroundColor="hsla(5, 69%, 32%, 1)"
-    focusBorderColor="hsla(0, 100%, 97%, 1)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(7, 72%, 40%, 1)"
-    hoverBorderColor="hsla(0, 100%, 97%, 1)"
     isFullWidth={false}
     isLoading={false}
     minHeight="36px"
@@ -4166,8 +4026,6 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(8, 73%, 47%, 1)",
-          "borderColor": "hsla(0, 100%, 97%, 1)",
           "borderRadius": 2,
           "borderStyle": "solid",
           "borderWidth": 1,
@@ -4185,8 +4043,8 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(8, 73%, 47%, 1)",
-          "borderColor": "hsla(0, 100%, 97%, 1)",
+          "backgroundColor": undefined,
+          "borderColor": undefined,
         },
       ]
     }
@@ -4226,7 +4084,6 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
         style={
           [
             {
-              "color": "hsla(0, 100%, 97%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
               "fontStyle": "normal",
@@ -4282,8 +4139,6 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
       }
     }
     accessible={true}
-    activeBackgroundColor="hsla(9, 91%, 56%, 0.32)"
-    activeBorderColor="hsla(9, 91%, 56%, 0.32)"
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
@@ -4292,14 +4147,8 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
-    defaultBackgroundColor="hsla(9, 91%, 56%, 0.09)"
-    defaultBorderColor="hsla(9, 91%, 56%, 0.32)"
-    focusBackgroundColor="hsla(9, 91%, 56%, 0.32)"
-    focusBorderColor="hsla(9, 91%, 56%, 0.32)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(9, 91%, 56%, 0.18)"
-    hoverBorderColor="hsla(9, 91%, 56%, 0.32)"
     isFullWidth={false}
     isLoading={false}
     minHeight="36px"
@@ -4320,8 +4169,6 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(9, 91%, 56%, 0.09)",
-          "borderColor": "hsla(9, 91%, 56%, 0.32)",
           "borderRadius": 2,
           "borderStyle": "solid",
           "borderWidth": 1,
@@ -4339,8 +4186,8 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(9, 91%, 56%, 0.09)",
-          "borderColor": "hsla(9, 91%, 56%, 0.32)",
+          "backgroundColor": undefined,
+          "borderColor": undefined,
         },
       ]
     }
@@ -4380,7 +4227,6 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
         style={
           [
             {
-              "color": "hsla(8, 73%, 47%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
               "fontStyle": "normal",
@@ -4436,8 +4282,6 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
       }
     }
     accessible={true}
-    activeBackgroundColor="hsla(217, 56%, 17%, 1)"
-    activeBorderColor="hsla(214, 18%, 69%, 1)"
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
@@ -4446,14 +4290,8 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
-    defaultBackgroundColor="hsla(216, 33%, 29%, 1)"
-    defaultBorderColor="hsla(214, 18%, 69%, 1)"
-    focusBackgroundColor="hsla(217, 56%, 17%, 1)"
-    focusBorderColor="hsla(214, 18%, 69%, 1)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(216, 44%, 23%, 1)"
-    hoverBorderColor="hsla(214, 18%, 69%, 1)"
     isFullWidth={false}
     isLoading={false}
     minHeight="36px"
@@ -4474,8 +4312,6 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(216, 33%, 29%, 1)",
-          "borderColor": "hsla(214, 18%, 69%, 1)",
           "borderRadius": 2,
           "borderStyle": "solid",
           "borderWidth": 1,
@@ -4493,8 +4329,8 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(216, 33%, 29%, 1)",
-          "borderColor": "hsla(214, 18%, 69%, 1)",
+          "backgroundColor": undefined,
+          "borderColor": undefined,
         },
       ]
     }
@@ -4534,7 +4370,6 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
         style={
           [
             {
-              "color": "hsla(220, 27%, 98%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
               "fontStyle": "normal",
@@ -4590,8 +4425,6 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
       }
     }
     accessible={true}
-    activeBackgroundColor="hsla(216, 15%, 54%, 0.32)"
-    activeBorderColor="hsla(216, 15%, 54%, 0.32)"
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
@@ -4600,14 +4433,8 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
-    defaultBackgroundColor="hsla(216, 15%, 54%, 0.09)"
-    defaultBorderColor="hsla(216, 15%, 54%, 0.32)"
-    focusBackgroundColor="hsla(216, 15%, 54%, 0.32)"
-    focusBorderColor="hsla(216, 15%, 54%, 0.32)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(216, 15%, 54%, 0.18)"
-    hoverBorderColor="hsla(216, 15%, 54%, 0.32)"
     isFullWidth={false}
     isLoading={false}
     minHeight="36px"
@@ -4628,8 +4455,6 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
-          "borderColor": "hsla(216, 15%, 54%, 0.32)",
           "borderRadius": 2,
           "borderStyle": "solid",
           "borderWidth": 1,
@@ -4647,8 +4472,8 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
-          "borderColor": "hsla(216, 15%, 54%, 0.32)",
+          "backgroundColor": undefined,
+          "borderColor": undefined,
         },
       ]
     }
@@ -4688,7 +4513,6 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
         style={
           [
             {
-              "color": "hsla(216, 27%, 36%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
               "fontStyle": "normal",
@@ -4744,8 +4568,6 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
       }
     }
     accessible={true}
-    activeBackgroundColor="hsla(41, 82%, 26%, 1)"
-    activeBorderColor="hsla(32, 100%, 94%, 1)"
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
@@ -4754,14 +4576,8 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
-    defaultBackgroundColor="hsla(38, 97%, 38%, 1)"
-    defaultBorderColor="hsla(32, 100%, 94%, 1)"
-    focusBackgroundColor="hsla(41, 82%, 26%, 1)"
-    focusBorderColor="hsla(32, 100%, 94%, 1)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(40, 90%, 32%, 1)"
-    hoverBorderColor="hsla(32, 100%, 94%, 1)"
     isFullWidth={false}
     isLoading={false}
     minHeight="36px"
@@ -4782,8 +4598,6 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(38, 97%, 38%, 1)",
-          "borderColor": "hsla(32, 100%, 94%, 1)",
           "borderRadius": 2,
           "borderStyle": "solid",
           "borderWidth": 1,
@@ -4801,8 +4615,8 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(38, 97%, 38%, 1)",
-          "borderColor": "hsla(32, 100%, 94%, 1)",
+          "backgroundColor": undefined,
+          "borderColor": undefined,
         },
       ]
     }
@@ -4842,7 +4656,6 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
         style={
           [
             {
-              "color": "hsla(32, 100%, 94%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
               "fontStyle": "normal",
@@ -4898,8 +4711,6 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
       }
     }
     accessible={true}
-    activeBackgroundColor="hsla(36, 100%, 44%, 0.32)"
-    activeBorderColor="hsla(36, 100%, 44%, 0.32)"
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
@@ -4908,14 +4719,8 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
-    defaultBackgroundColor="hsla(36, 100%, 44%, 0.09)"
-    defaultBorderColor="hsla(36, 100%, 44%, 0.32)"
-    focusBackgroundColor="hsla(36, 100%, 44%, 0.32)"
-    focusBorderColor="hsla(36, 100%, 44%, 0.32)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(36, 100%, 44%, 0.18)"
-    hoverBorderColor="hsla(36, 100%, 44%, 0.32)"
     isFullWidth={false}
     isLoading={false}
     minHeight="36px"
@@ -4936,8 +4741,6 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(36, 100%, 44%, 0.09)",
-          "borderColor": "hsla(36, 100%, 44%, 0.32)",
           "borderRadius": 2,
           "borderStyle": "solid",
           "borderWidth": 1,
@@ -4955,8 +4758,8 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(36, 100%, 44%, 0.09)",
-          "borderColor": "hsla(36, 100%, 44%, 0.32)",
+          "backgroundColor": undefined,
+          "borderColor": undefined,
         },
       ]
     }
@@ -4996,7 +4799,6 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
         style={
           [
             {
-              "color": "hsla(38, 97%, 38%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
               "fontStyle": "normal",
@@ -5052,8 +4854,6 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
       }
     }
     accessible={true}
-    activeBackgroundColor="hsla(164, 100%, 17%, 1)"
-    activeBorderColor="hsla(107, 100%, 96%, 1)"
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
@@ -5062,14 +4862,8 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
-    defaultBackgroundColor="hsla(160, 100%, 26%, 1)"
-    defaultBorderColor="hsla(107, 100%, 96%, 1)"
-    focusBackgroundColor="hsla(164, 100%, 17%, 1)"
-    focusBorderColor="hsla(107, 100%, 96%, 1)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(163, 100%, 22%, 1)"
-    hoverBorderColor="hsla(107, 100%, 96%, 1)"
     isFullWidth={false}
     isLoading={false}
     minHeight="36px"
@@ -5090,8 +4884,6 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(160, 100%, 26%, 1)",
-          "borderColor": "hsla(107, 100%, 96%, 1)",
           "borderRadius": 2,
           "borderStyle": "solid",
           "borderWidth": 1,
@@ -5109,8 +4901,8 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(160, 100%, 26%, 1)",
-          "borderColor": "hsla(107, 100%, 96%, 1)",
+          "backgroundColor": undefined,
+          "borderColor": undefined,
         },
       ]
     }
@@ -5150,7 +4942,6 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
         style={
           [
             {
-              "color": "hsla(107, 100%, 96%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
               "fontStyle": "normal",
@@ -5206,8 +4997,6 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
       }
     }
     accessible={true}
-    activeBackgroundColor="hsla(155, 100%, 31%, 0.32)"
-    activeBorderColor="hsla(155, 100%, 31%, 0.32)"
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
@@ -5216,14 +5005,8 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
-    defaultBackgroundColor="hsla(155, 100%, 31%, 0.09)"
-    defaultBorderColor="hsla(155, 100%, 31%, 0.32)"
-    focusBackgroundColor="hsla(155, 100%, 31%, 0.32)"
-    focusBorderColor="hsla(155, 100%, 31%, 0.32)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(155, 100%, 31%, 0.18)"
-    hoverBorderColor="hsla(155, 100%, 31%, 0.32)"
     isFullWidth={false}
     isLoading={false}
     minHeight="36px"
@@ -5244,8 +5027,6 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
-          "borderColor": "hsla(155, 100%, 31%, 0.32)",
           "borderRadius": 2,
           "borderStyle": "solid",
           "borderWidth": 1,
@@ -5263,8 +5044,8 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
-          "borderColor": "hsla(155, 100%, 31%, 0.32)",
+          "backgroundColor": undefined,
+          "borderColor": undefined,
         },
       ]
     }
@@ -5304,7 +5085,6 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
         style={
           [
             {
-              "color": "hsla(160, 100%, 26%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
               "fontStyle": "normal",
@@ -5668,7 +5448,7 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
       }
     }
     accessible={true}
-    activeBackgroundColor="hsla(214, 21%, 94%, 1)"
+    activeBackgroundColor="hsla(216, 15%, 54%, 0.32)"
     activeBorderColor="hsla(216, 19%, 89%, 1)"
     borderRadius="2px"
     borderWidth="1px"
@@ -5678,13 +5458,13 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
-    defaultBackgroundColor="hsla(0, 0%, 100%, 1)"
-    defaultBorderColor="hsla(216, 19%, 89%, 1)"
-    focusBackgroundColor="hsla(220, 30%, 96%, 1)"
+    defaultBackgroundColor="hsla(216, 15%, 54%, 0.09)"
+    defaultBorderColor="hsla(216, 44%, 23%, 0)"
+    focusBackgroundColor="hsla(216, 15%, 54%, 0.32)"
     focusBorderColor="hsla(216, 19%, 89%, 1)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(220, 27%, 98%, 1)"
+    hoverBackgroundColor="hsla(216, 15%, 54%, 0.18)"
     hoverBorderColor="hsla(216, 19%, 89%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -5706,8 +5486,8 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(0, 0%, 100%, 1)",
-          "borderColor": "hsla(216, 19%, 89%, 1)",
+          "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+          "borderColor": "hsla(216, 44%, 23%, 0)",
           "borderRadius": 2,
           "borderStyle": "solid",
           "borderWidth": 1,
@@ -5725,8 +5505,8 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(0, 0%, 100%, 1)",
-          "borderColor": "hsla(216, 19%, 89%, 1)",
+          "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+          "borderColor": "hsla(216, 44%, 23%, 0)",
         },
       ]
     }

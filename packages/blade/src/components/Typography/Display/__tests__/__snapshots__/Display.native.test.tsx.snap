@@ -145,7 +145,6 @@ exports[`<Display /> should render Display with mixed color 1`] = `
       style={
         [
           {
-            "color": "hsla(195, 100%, 31%, 1)",
             "fontFamily": "Lato",
             "fontSize": 40,
             "fontStyle": "normal",
