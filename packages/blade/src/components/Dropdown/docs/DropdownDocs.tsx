@@ -56,7 +56,7 @@ const DropdownDocs = (): React.ReactElement => {
               AutoComplete
             </ListItemLink>
             , DropdownButton (Has same props as{' '}
-            <ListItemLink href="/?path=/docs/components-button--default">Button</ListItemLink>, or
+            <ListItemLink href="/?path=/docs/components-button--default">Button</ListItemLink>), or
             DropdownLink (Has same props as{' '}
             <ListItemLink href="/?path=/docs/components-link--link-button">Link</ListItemLink>)
           </ListItem>
