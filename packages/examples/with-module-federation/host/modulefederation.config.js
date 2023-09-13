@@ -12,14 +12,14 @@ module.exports = {
       requiredVersion: dependencies['react'],
     },
     '@razorpay/blade': {
-      // Notice shared are NOT eager here.
       requiredVersion: dependencies['@razorpay/blade'],
-      singleton: true,
+      version: dependencies['@razorpay/blade'],
+      singleton: false,
     },
     'styled-components': {
       requiredVersion: dependencies['styled-components'],
       version: dependencies['styled-components'],
-      singleton: true,
+      singleton: false,
     },
     'react-dom': {
       singleton: true,
