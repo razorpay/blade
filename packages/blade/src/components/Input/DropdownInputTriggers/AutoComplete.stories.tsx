@@ -458,3 +458,53 @@ export const InternalControlledInputValue = (): React.ReactElement => {
     </Box>
   );
 };
+
+const errorStatesExampleCities = ['Mumbai', 'Pune', 'Bangalore', 'Mysore'];
+
+export const InternalWithValidations = (): React.ReactElement => {
+  const [isError, setIsError] = React.useState(false);
+  const [currentInputValue, setCurrentInputValue] = React.useState('');
+  const [isDismissed, setIsDismissed] = React.useState(false);
+
+  return (
+    <Dropdown
+      selectionType="single"
+      onDismiss={() => {
+        console.log('dismiss');
+        setIsDismissed(true);
+      }}
+    >
+      <AutoComplete
+        label="City"
+        placeholder="Select your City"
+        name="city"
+        inputValue={currentInputValue}
+        onInputValueChange={({ value }) => {
+          if (isError) {
+            setIsError(false);
+          }
+          setCurrentInputValue(value ?? '');
+        }}
+        onBlur={() => {
+          if (isDismissed) {
+            // We validate on blur after dismiss of Dropdown
+            if (!errorStatesExampleCities.includes(currentInputValue)) {
+              setIsError(true);
+            }
+            setIsDismissed(false);
+          }
+        }}
+        errorText="Invalid selection. You can only select items from the list"
+        validationState={isError ? 'error' : 'none'}
+        helpText="Type something not in the list and click outside"
+      />
+      <DropdownOverlay>
+        <ActionList>
+          {errorStatesExampleCities.map((city) => (
+            <ActionListItem key={city} title={city} value={city} />
+          ))}
+        </ActionList>
+      </DropdownOverlay>
+    </Dropdown>
+  );
+};
