@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
-import type { BaseHeaderProps } from '../BaseHeaderFooter/BaseHeader';
 import { useModalContext } from './ModalContext';
 import { modalHighestZIndex } from './modalTokens';
+import type { BaseHeaderProps } from '~components/BaseHeaderFooter/BaseHeader';
 import { makeSize } from '~utils';
 import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
 import { BaseBox } from '~components/Box/BaseBox';

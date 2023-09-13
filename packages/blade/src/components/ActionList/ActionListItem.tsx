@@ -5,14 +5,8 @@ import { StyledActionListItem } from './styles/StyledActionListItem';
 import { componentIds } from './componentIds';
 import type { StyledActionListItemProps } from './styles/getBaseActionListItemStyles';
 import { validateActionListItemProps, getNormalTextColor } from './actionListUtils';
-import {
-  getActionListItemRole,
-  getActionListSectionRole,
-  getSeparatorRole,
-  isRoleMenu,
-} from './getA11yRoles';
+import { getActionListItemRole, getActionListSectionRole, isRoleMenu } from './getA11yRoles';
 import { useActionListContext } from './ActionList';
-import { Box } from '~components/Box';
 import { Divider } from '~components/Divider';
 import BaseBox from '~components/Box/BaseBox';
 import type { IconComponent } from '~components/Icons';
@@ -82,14 +76,6 @@ const ActionListItemContext = React.createContext<{
   isDisabled?: ActionListItemProps['isDisabled'];
 }>({});
 
-const ActionListSectionDivider = (): React.ReactElement => (
-  <Divider
-    {...makeAccessible({
-      role: getSeparatorRole(),
-    })}
-  />
-);
-
 const StyledActionListSectionTitle = styled(BaseBox)((props) => ({
   // @TODO: replace this styled-component with new layout box when we have padding shorthand
   padding: makeSize(props.theme.spacing[3]),
@@ -139,11 +125,7 @@ const _ActionListSection = ({
       >
         {children}
       </BaseBox>
-      {_hideDivider && isReactNative() ? null : (
-        <Box marginX="spacing.3" marginY="spacing.1">
-          <ActionListSectionDivider />
-        </Box>
-      )}
+      {_hideDivider && isReactNative() ? null : <Divider marginX="spacing.3" marginY="spacing.1" />}
     </BaseBox>
   );
 };
@@ -421,12 +403,5 @@ const ActionListItem = assignWithoutSideEffects(React.memo(_ActionListItem), {
   displayName: componentIds.ActionListItem,
 });
 
-export {
-  ActionListItem,
-  ActionListItemProps,
-  ActionListItemIcon,
-  ActionListItemText,
-  ActionListSection,
-  ActionListSectionProps,
-  ActionListSectionDivider,
-};
+export type { ActionListItemProps, ActionListSectionProps };
+export { ActionListItem, ActionListItemIcon, ActionListItemText, ActionListSection };

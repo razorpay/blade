@@ -1,10 +1,10 @@
 import React from 'react';
-import { getActionListContainerRole } from '../ActionList/getA11yRoles';
-import { BaseLink } from '../Link/BaseLink';
-import type { BaseLinkProps } from '../Link/BaseLink';
-import type { LinkButtonVariantProps } from '../Link';
-import { useDropdown } from './useDropdown';
 import { componentIds } from './dropdownUtils';
+import { useDropdown } from './useDropdown';
+import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
+import { BaseLink } from '~components/Link/BaseLink';
+import type { BaseLinkProps } from '~components/Link/BaseLink';
+import type { LinkButtonVariantProps } from '~components/Link';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 
 type DropdownLinkProps = LinkButtonVariantProps & {
