@@ -20,7 +20,7 @@ const propsCategory = {
 };
 
 export default {
-  title: 'Components/Dropdown/SelectInput',
+  title: 'Components/Dropdown/With Select/Stories',
   component: SelectInput,
   args: {
     defaultValue: undefined,
@@ -220,7 +220,7 @@ export default {
 
 const SelectInputTemplate: ComponentStory<typeof SelectInput> = ({ icon, ...args }) => {
   return (
-    <Box minHeight="150px">
+    <Box minHeight="150px" padding="spacing.5">
       <Dropdown>
         <SelectInput {...args} icon={iconMap[(icon as unknown) as string]} />
         <DropdownOverlay>

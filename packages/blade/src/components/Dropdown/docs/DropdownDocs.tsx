@@ -48,11 +48,11 @@ const DropdownDocs = (): React.ReactElement => {
           </ListItem>
           <ListItem>
             A Trigger - Can be{' '}
-            <ListItemLink href="/?path=/docs/components-dropdown-selectinput--default">
+            <ListItemLink href="/?path=/docs/components-dropdown-with-select-stories--default">
               SelectInput
             </ListItemLink>
             ,{' '}
-            <ListItemLink href="/?path=/docs/components-dropdown-autocomplete--default">
+            <ListItemLink href="/?path=/docs/components-dropdown-with-autocomplete-stories--default">
               AutoComplete
             </ListItemLink>
             , DropdownButton (Has same props as{' '}
@@ -85,7 +85,7 @@ const DropdownDocs = (): React.ReactElement => {
           <ListItem>
             <ListItemLink
               target="_blank"
-              href="/?path=/docs/components-dropdown-selectinput--default"
+              href="/?path=/docs/components-dropdown-with-select-stories--default"
             >
               SelectInput Props
             </ListItemLink>
@@ -94,7 +94,7 @@ const DropdownDocs = (): React.ReactElement => {
           <ListItem>
             <ListItemLink
               target="_blank"
-              href="/?path=/docs/components-dropdown-selectinput--default"
+              href="/?path=/docs/components-dropdown-with-autocomplete-stories--default"
             >
               AutoComplete Props
             </ListItemLink>
