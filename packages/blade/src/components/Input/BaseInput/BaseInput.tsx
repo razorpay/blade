@@ -871,7 +871,9 @@ export const BaseInput = React.forwardRef<BladeElementRef, BaseInputProps>(
               labelPrefix={isLabelInsideInput ? label : undefined}
               isDropdownTrigger={isDropdownTrigger}
               visibleTagsCountRef={visibleTagsCountRef}
-              handleOnClick={handleOnClick}
+              handleOnInputClick={(e) => {
+                handleOnClick({ name, value: isReactNative ? value : e });
+              }}
               setShouldIgnoreBlurAnimation={setShouldIgnoreBlurAnimation}
               maxTagRows={maxTagRows}
               inputWrapperRef={inputWrapperRef}

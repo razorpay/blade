@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import { waitFor } from '@testing-library/react';
 import { Dropdown, DropdownOverlay } from '~components/Dropdown';
 import { DropdownFooter, DropdownHeader } from '~components/Dropdown/DropdownHeaderFooter';
-import renderWithSSR from '~utils/testing/renderWithSSR';
+import renderWithSSR from '~utils/testing/renderWithSSR.web';
 import { AutoComplete } from '~components/Input/DropdownInputTriggers';
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { Button } from '~components/Button';

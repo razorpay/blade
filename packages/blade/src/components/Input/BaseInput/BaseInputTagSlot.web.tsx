@@ -3,7 +3,7 @@ import type { BaseInputTagSlotProps } from './types';
 import { BASEINPUT_DEFAULT_HEIGHT } from './baseInputConfig';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
-import { makeSize } from '~utils';
+import { castWebType, makeSize } from '~utils';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { useIsMobile } from '~utils/useIsMobile';
 import { MetaConstants } from '~utils/metaAttribute';
@@ -104,7 +104,7 @@ const BaseInputTagSlot = ({
   maxTagRows,
   showAllTags,
   setShouldIgnoreBlurAnimation,
-  handleOnClick,
+  handleOnInputClick,
   isDropdownTrigger,
   visibleTagsCountRef,
   labelPrefix,
@@ -179,7 +179,7 @@ const BaseInputTagSlot = ({
         setShouldIgnoreBlurAnimation?.(true);
       }}
       onClick={(e) => {
-        handleOnClick?.({ name: '', value: e as React.MouseEvent<HTMLInputElement> });
+        handleOnInputClick(castWebType(e));
       }}
       onMouseUp={() => {
         setShouldIgnoreBlurAnimation?.(false);
