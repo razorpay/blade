@@ -1,11 +1,11 @@
 import getIn from 'lodash/get';
 import React, { useMemo } from 'react';
 import styled from 'styled-components';
-import type { IconComponent } from '../Icons';
 import { ListProvider, useListContext } from './ListContext';
 import { UnorderedList } from './UnorderedList';
 import { OrderedList } from './OrderedList';
 import type { ListItemProps } from './ListItem';
+import type { IconComponent } from '~components/Icons';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { DotNotationSpacingStringToken, TestID } from '~utils/types';
 import BaseBox from '~components/Box/BaseBox';

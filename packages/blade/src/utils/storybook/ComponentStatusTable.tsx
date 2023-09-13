@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import type { IconComponent } from '../../components/Icons';
+import { LinkToStorybook } from './LinkToStorybook';
+
+import type { IconComponent } from '~components/Icons';
 import {
   StampIcon,
   EditIcon,
@@ -8,9 +10,7 @@ import {
   ClockIcon,
   LoaderIcon,
   AlertCircleIcon,
-} from '../../components/Icons';
-
-import { LinkToStorybook } from './LinkToStorybook';
+} from '~components/Icons';
 import { Heading, Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
 import type { BadgeProps } from '~components/Badge';

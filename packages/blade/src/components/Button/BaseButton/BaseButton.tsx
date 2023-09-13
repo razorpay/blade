@@ -3,7 +3,6 @@ import getIn from 'lodash/get';
 import React from 'react';
 import styled from 'styled-components';
 import type { GestureResponderEvent } from 'react-native';
-import type { BaseLinkProps } from '../../Link/BaseLink';
 import StyledBaseButton from './StyledBaseButton';
 import type { ButtonTypography, ButtonMinHeight } from './buttonTokens';
 import {
@@ -16,6 +15,7 @@ import {
   textPadding,
   buttonPadding,
 } from './buttonTokens';
+import type { BaseLinkProps } from '~components/Link/BaseLink';
 import type { Theme } from '~components/BladeProvider';
 import type { IconComponent, IconProps, IconSize } from '~components/Icons';
 import type { DurationString, EasingString } from '~tokens/global';

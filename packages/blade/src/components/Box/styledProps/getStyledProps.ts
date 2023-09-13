@@ -143,4 +143,5 @@ const getStyledProps = (props: Record<string, any>): StyledPropsBlade => {
   return removeUndefinedStyledProps(makeStyledProps(props));
 };
 
-export { getStyledProps, makeStyledProps, StyledPropsBlade, removeUndefinedStyledProps };
+export type { StyledPropsBlade };
+export { getStyledProps, makeStyledProps, removeUndefinedStyledProps };

@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 import React from 'react';
-import { BaseFooter } from '../BaseHeaderFooter/BaseFooter';
-import { BaseHeader } from '../BaseHeaderFooter/BaseHeader';
-import type { BaseHeaderProps } from '../BaseHeaderFooter/BaseHeader';
-import type { BaseFooterProps } from '../BaseHeaderFooter/BaseFooter';
 import { useDropdown } from './useDropdown';
+import { BaseFooter } from '~components/BaseHeaderFooter/BaseFooter';
+import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
+import type { BaseHeaderProps } from '~components/BaseHeaderFooter/BaseHeader';
+import type { BaseFooterProps } from '~components/BaseHeaderFooter/BaseFooter';
 import BaseBox from '~components/Box/BaseBox';
 import { isReactNative } from '~utils';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';

@@ -32,7 +32,7 @@ export type IconProps = {
   /**
    * Color token (not to be confused with actual hsla value)
    */
-  color:
+  color?:
     | ActionIconColors
     | SurfaceActionIconColors
     | FeedbackIconColors
@@ -40,7 +40,7 @@ export type IconProps = {
     | TextIconColors
     | BadgeIconColors
     | 'currentColor'; // currentColor is useful for letting the SVG inherit color property from its container
-  size: IconSize;
+  size?: IconSize;
 } & StyledPropsBlade;
 export type IconComponent = React.ComponentType<IconProps>;
 

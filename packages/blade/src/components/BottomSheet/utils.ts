@@ -54,4 +54,5 @@ function computeMaxContent(
   );
 }
 
-export { SnapPoints, computeMaxContent, computeMinContent, computeSnapPointBounds };
+export type { SnapPoints };
+export { computeMaxContent, computeMinContent, computeSnapPointBounds };

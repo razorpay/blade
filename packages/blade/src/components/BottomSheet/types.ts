@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import type { BaseHeaderProps } from '../BaseHeaderFooter/BaseHeader';
-import type { BaseFooterProps } from '../BaseHeaderFooter/BaseFooter';
 import type { SnapPoints } from './utils';
+import type { BaseHeaderProps } from '~components/BaseHeaderFooter/BaseHeader';
+import type { BaseFooterProps } from '~components/BaseHeaderFooter/BaseFooter';
 import type { SpacingValueType } from '~components/Box/BaseBox';
 
 type BottomSheetProps = {
@@ -71,4 +71,9 @@ type BottomSheetBodyProps = {
   padding?: Extract<SpacingValueType, 'spacing.0' | 'spacing.5'>;
 };
 
-export { BottomSheetProps, BottomSheetHeaderProps, BottomSheetFooterProps, BottomSheetBodyProps };
+export type {
+  BottomSheetProps,
+  BottomSheetHeaderProps,
+  BottomSheetFooterProps,
+  BottomSheetBodyProps,
+};

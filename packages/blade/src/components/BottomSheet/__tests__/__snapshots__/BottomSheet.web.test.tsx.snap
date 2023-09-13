@@ -213,6 +213,47 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   background-color: hsla(155,100%,31%,0.09);
 }
 
+.c24 {
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 2px;
+  background: transparent;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  color: hsla(214,18%,69%,1);
+  -webkit-transition-property: color,box-shadow;
+  transition-property: color,box-shadow;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c24:hover {
+  color: hsla(217,18%,45%,1);
+}
+
+.c24:focus {
+  outline: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  color: hsla(217,18%,45%,1);
+}
+
+.c24:active {
+  color: hsla(217,18%,45%,1);
+}
+
 .c26 {
   border-bottom-style: solid;
   border-bottom-width: 1px;
@@ -310,47 +351,6 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
-}
-
-.c24 {
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  border-radius: 2px;
-  background: transparent;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  color: hsla(214,18%,69%,1);
-  -webkit-transition-property: color,box-shadow;
-  transition-property: color,box-shadow;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c24:hover {
-  color: hsla(217,18%,45%,1);
-}
-
-.c24:focus {
-  outline: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-  color: hsla(217,18%,45%,1);
-}
-
-.c24:active {
-  color: hsla(217,18%,45%,1);
 }
 
 .c1 {
@@ -747,6 +747,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
           <div
             class="c25 c26"
             data-blade-component="divider"
+            role="separator"
           />
         </div>
       </div>
@@ -775,6 +776,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
         <div
           class="c25 c26"
           data-blade-component="divider"
+          role="separator"
         />
         <div
           class="c31"
@@ -896,19 +898,6 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
   border-radius: 9999px;
 }
 
-.c11 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
-}
-
 .c8 {
   border: none;
   cursor: pointer;
@@ -948,6 +937,19 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
 
 .c8:active {
   color: hsla(217,18%,45%,1);
+}
+
+.c11 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
 }
 
 .c1 {

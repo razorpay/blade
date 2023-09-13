@@ -1,7 +1,7 @@
 import React from 'react';
-import { BaseFooter } from '../BaseHeaderFooter/BaseFooter';
 import type { BottomSheetFooterProps } from './types';
 import { ComponentIds } from './componentIds';
+import { BaseFooter } from '~components/BaseHeaderFooter/BaseFooter';
 import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';

@@ -274,4 +274,5 @@ const BaseHeader = assignWithoutSideEffects(_BaseHeader, {
   componentId: 'BaseHeader',
 });
 
-export { BaseHeader, BaseHeaderProps };
+export type { BaseHeaderProps };
+export { BaseHeader };

@@ -1,5 +1,5 @@
-import type { CodeProps } from '../Typography';
 import type { ListProps } from './List';
+import type { CodeProps } from '~components/Typography';
 import type { TypographyPlatforms } from '~tokens/global';
 import type { DotNotationSpacingStringToken } from '~utils/types';
 import type { SpacingValueType } from '~components/Box/BaseBox';

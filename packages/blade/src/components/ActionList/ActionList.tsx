@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
-import { useDropdown } from '../Dropdown/useDropdown';
-import { useBottomSheetContext } from '../BottomSheet/BottomSheetContext';
 import { getActionListContainerRole, getActionListItemWrapperRole } from './getA11yRoles';
 import { getActionListProperties } from './actionListUtils';
 import { ActionListBox } from './ActionListBox';
 import { componentIds } from './componentIds';
 import { ActionListNoResults } from './ActionListNoResults';
+import { useDropdown } from '~components/Dropdown/useDropdown';
+import { useBottomSheetContext } from '~components/BottomSheet/BottomSheetContext';
 import { makeAccessible } from '~utils/makeAccessible';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { TestID } from '~utils/types';
@@ -158,4 +158,5 @@ const ActionList = assignWithoutSideEffects(React.memo(_ActionList), {
   componentId: componentIds.ActionList,
 });
 
-export { ActionList, useActionListContext, ActionListProps };
+export type { ActionListProps };
+export { ActionList, useActionListContext };

@@ -36,4 +36,5 @@ const getBaseActionListItemStyles = (
   };
 };
 
-export { getBaseActionListItemStyles, StyledActionListItemProps };
+export type { StyledActionListItemProps };
+export { getBaseActionListItemStyles };
