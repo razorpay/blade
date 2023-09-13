@@ -45,7 +45,9 @@ const validateBackgroundProp = (
 /**
  * This function is to filter out any unexpected props passed by the user
  */
-const makeBoxProps = (props: BoxProps): KeysRequired<Omit<BoxProps, 'testID' | '__brand__'>> => {
+const makeBoxProps = (
+  props: BoxProps,
+): KeysRequired<Omit<BoxProps, 'testID' | 'id' | '__brand__'>> => {
   return {
     // Layout
     display: props.display,
@@ -238,6 +240,7 @@ const _Box: React.ForwardRefRenderFunction<BoxRefType, BoxProps> = (props, ref) 
     <BaseBox
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={ref as any}
+      id={props.id}
       {...metaAttribute({ name: MetaConstants.Box, testID: props.testID })}
       {...makeBoxProps(props)}
     />

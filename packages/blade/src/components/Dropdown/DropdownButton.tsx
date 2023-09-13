@@ -1,10 +1,10 @@
 import React from 'react';
-import type { BaseButtonProps } from '../Button/BaseButton/BaseButton';
-import BaseButton from '../Button/BaseButton';
-import { getActionListContainerRole } from '../ActionList/getA11yRoles';
-import type { ButtonProps } from '../Button';
 import { useDropdown } from './useDropdown';
 import { dropdownComponentIds } from './dropdownComponentIds';
+import BaseButton from '~components/Button/BaseButton';
+import type { ButtonProps } from '~components/Button';
+import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
+import type { BaseButtonProps } from '~components/Button/BaseButton/BaseButton';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 type DropdownButtonProps = ButtonProps & {

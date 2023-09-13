@@ -1,18 +1,18 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import type { ReactNode } from 'react';
+import { StyledBaseInput } from './StyledBaseInput';
+import { BaseInputVisuals } from './BaseInputVisuals';
+import { BaseInputWrapper } from './BaseInputWrapper';
+import { BaseInputTagSlot } from './BaseInputTagSlot';
+import type { InputWrapperRef } from './types';
 import type {
   FormInputLabelProps,
   FormInputValidationProps,
   FormInputHandleOnEvent,
   FormInputOnEvent,
   FormHintProps,
-} from '../../Form';
-import { StyledBaseInput } from './StyledBaseInput';
-import { BaseInputVisuals } from './BaseInputVisuals';
-import { BaseInputWrapper } from './BaseInputWrapper';
-import { BaseInputTagSlot } from './BaseInputTagSlot';
-import type { InputWrapperRef } from './types';
+} from '~components/Form';
 import { FormHint, FormLabel } from '~components/Form';
 import type { IconComponent } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';

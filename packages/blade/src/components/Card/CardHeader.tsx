@@ -1,15 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
-import type { BadgeProps } from '../Badge';
-import { Badge } from '../Badge';
-import type { LinkProps } from '../Link';
-import { Link } from '../Link';
-import type { ButtonProps } from '../Button';
-import { Button } from '../Button';
-import { Counter } from '../Counter';
-import type { CounterProps } from '../Counter';
 import { useVerifyInsideCard, useVerifyAllowedComponents } from './CardContext';
 import { ComponentIds } from './Card';
+import type { BadgeProps } from '~components/Badge';
+import { Badge } from '~components/Badge';
+import type { LinkProps } from '~components/Link';
+import { Link } from '~components/Link';
+import type { ButtonProps } from '~components/Button';
+import { Button } from '~components/Button';
+import { Counter } from '~components/Counter';
+import type { CounterProps } from '~components/Counter';
 import { Divider } from '~components/Divider';
 import BaseBox from '~components/Box/BaseBox';
 import type { TextProps, TextVariant } from '~components/Typography';

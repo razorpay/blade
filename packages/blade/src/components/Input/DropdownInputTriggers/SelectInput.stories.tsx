@@ -254,7 +254,7 @@ export const AutoCompleteUncontrolled = (): React.ReactElement => {
   return (
     <Box maxWidth="400px">
       <Dropdown selectionType="multiple">
-        <AutoComplete maxRows="single" label="City" labelPosition="inside-input" />
+        <AutoComplete maxRows="single" label="City" />
         <DropdownOverlay>
           <ActionList>
             <ActionListItem title="Mumbai" value="mumbai" />

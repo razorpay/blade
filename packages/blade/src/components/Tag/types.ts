@@ -42,6 +42,10 @@ type TagProps = {
   _isVirtuallyFocussed?: boolean;
 
   /**
+   * Private property for Blade.
+   *
+   * Should not be used by consumers.
+   *
    * Is tag placed inside an input
    *
    * @private
@@ -64,4 +68,4 @@ type AnimatedTagProps = {
   tagsLength: number;
 };
 
-export { TagProps, AnimatedTagProps, TagsGroupProps };
+export type { TagProps, AnimatedTagProps, TagsGroupProps };

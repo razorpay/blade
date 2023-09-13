@@ -1,7 +1,7 @@
-import type { CodeProps } from '../Typography';
-import { Code } from '../Typography';
-import { useListContext } from './ListContext';
 import { listItemCodeSize } from './listTokens';
+import { useListContext } from './ListContext';
+import type { CodeProps } from '~components/Typography';
+import { Code } from '~components/Typography';
 import { MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
@@ -17,4 +17,5 @@ const ListItemCode = assignWithoutSideEffects(_ListItemCode, {
   componentId: MetaConstants.ListItemCode,
 });
 
-export { ListItemCode, ListItemCodeProps };
+export type { ListItemCodeProps };
+export { ListItemCode };
