@@ -6,6 +6,8 @@ import { OTPInput as OTPInputComponent } from './OTPInput';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+import { Box } from '~components/Box';
+import { Button } from '~components/Button';
 
 const propsCategory = {
   BASE_PROPS: 'OTPInput Props',
@@ -243,3 +245,37 @@ const OTPInputControlledTemplate: ComponentStory<typeof OTPInputComponent> = () 
   return <OTPInput label="Enter OTP" value="123456" name="otp" />;
 };
 export const OTPInputControlled = OTPInputControlledTemplate.bind({});
+
+export const inputRef: ComponentStory<typeof OTPInputComponent> = () => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const inputRef = React.useRef<HTMLInputElement>(null);
+
+  return (
+    <Box gap="spacing.3" display="flex" alignItems="end">
+      <OTPInputComponent
+        ref={inputRef}
+        label="Enter OTP"
+        name="otp"
+        onChange={({ name, value }): void => console.log({ name, value })}
+      />
+      <Button
+        onClick={() => {
+          inputRef?.current?.focus();
+          console.log(inputRef);
+        }}
+      >
+        Click to focus the OTPInput
+      </Button>
+    </Box>
+  );
+};
+
+inputRef.storyName = 'OTP Input Ref';
+inputRef.parameters = {
+  docs: {
+    description: {
+      story:
+        'OTP component exposes the `ref` prop. You can use the ref to programatically focus the input.',
+    },
+  },
+};

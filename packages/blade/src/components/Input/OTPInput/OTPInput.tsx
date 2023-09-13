@@ -13,6 +13,7 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getPlatformType } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeSize } from '~utils/makeSize';
+import { mergeRefs } from '~utils/useMergeRefs';
 
 type FormInputOnEventWithIndex = ({
   name,
@@ -134,31 +135,34 @@ const otpToArray = (code?: string): string[] => code?.split('') ?? Array(6).fill
  *   />
  * ```
  */
-const OTPInput = ({
-  autoFocus,
-  errorText,
-  helpText,
-  isDisabled,
-  keyboardReturnKeyType,
-  keyboardType = 'decimal',
-  label,
-  accessibilityLabel,
-  labelPosition,
-  name,
-  onChange,
-  onFocus,
-  onBlur,
-  onOTPFilled,
-  otpLength = 6,
-  placeholder,
-  successText,
-  validationState,
-  value: inputValue,
-  isMasked,
-  autoCompleteSuggestionType = 'oneTimeCode',
-  testID,
-  ...styledProps
-}: OTPInputProps): React.ReactElement => {
+const _OTPInput: React.ForwardRefRenderFunction<HTMLInputElement, OTPInputProps> = (
+  {
+    autoFocus,
+    errorText,
+    helpText,
+    isDisabled,
+    keyboardReturnKeyType,
+    keyboardType = 'decimal',
+    label,
+    accessibilityLabel,
+    labelPosition,
+    name,
+    onChange,
+    onFocus,
+    onBlur,
+    onOTPFilled,
+    otpLength = 6,
+    placeholder,
+    successText,
+    validationState,
+    value: inputValue,
+    isMasked,
+    autoCompleteSuggestionType = 'oneTimeCode',
+    testID,
+    ...styledProps
+  },
+  incomingRef,
+) => {
   const inputRefs: React.RefObject<HTMLInputElement>[] = [];
   const [otpValue, setOtpValue] = useState<string[]>(otpToArray(inputValue));
   const [inputType, setInputType] = useState<('password' | undefined)[]>([]);
@@ -334,7 +338,7 @@ const OTPInput = ({
             hideLabelText={true}
             id={`${inputId}-${index}`}
             textAlign="center"
-            ref={ref as never}
+            ref={index === 0 ? mergeRefs(incomingRef, ref) : (ref as never)}
             name={name}
             value={currentValue}
             maxCharacters={otpValue[index]?.length > 0 ? 1 : undefined}
@@ -401,5 +405,7 @@ const OTPInput = ({
     </BaseBox>
   );
 };
+
+const OTPInput = React.forwardRef<HTMLInputElement, OTPInputProps>(_OTPInput);
 
 export { OTPInput };
