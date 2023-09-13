@@ -253,6 +253,7 @@ const _BaseDropdownInputTrigger = (
       autoFocus={props.autoFocus} // eslint-disable-line jsx-a11y/no-autofocus
       value={getValue()}
       onClick={props.onTriggerClick}
+      onFocus={props.onFocus}
       onBlur={({ name }) => {
         props.onBlur?.({ name, value });
       }}
