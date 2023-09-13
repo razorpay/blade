@@ -1,0 +1,12 @@
+{
+  "name": "cra",
+  "private": true,
+  "version": "0.0.1",
+  "scripts": {
+    "bootstrap": "lerna exec yarn",
+    "start": "lerna run --scope=cra_* start"
+  },
+  "devDependencies": {
+    "lerna": "6.0.0"
+  }
+}
