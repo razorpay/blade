@@ -45,95 +45,98 @@ export const getSimpleAutoComplete = (
 `;
 
 export const controlledFiltering = `
-import React from 'react';
-import { 
-  Box,
-  Text,
-  Dropdown, 
-  DropdownOverlay,
-  AutoComplete,
-  ActionList,
-  ActionListItem,
-} from '@razorpay/blade/components';
+  import React from 'react';
+  import { 
+    Box,
+    Text,
+    Dropdown, 
+    DropdownOverlay,
+    AutoComplete,
+    ActionList,
+    ActionListItem,
+  } from '@razorpay/blade/components';
 
-const cities = [
-  {
-    title: 'Mumbai',
-    value: 'mumbai',
-    keywords: ['maharashtra'],
-  },
-  {
-    title: 'Pune',
-    value: 'pune',
-    keywords: ['maharashtra'],
-  },
-  {
-    title: 'Bengaluru',
-    value: 'bengaluru',
-    keywords: ['karnataka', 'bangalore'],
-  },
-  {
-    title: 'Ooty',
-    value: 'ooty',
-    keywords: ['tamil nadu'],
-  },
-];
+  const cities = [
+    {
+      title: 'Mumbai',
+      value: 'mumbai',
+      keywords: ['maharashtra'],
+    },
+    {
+      title: 'Pune',
+      value: 'pune',
+      keywords: ['maharashtra'],
+    },
+    {
+      title: 'Bengaluru',
+      value: 'bengaluru',
+      keywords: ['karnataka', 'bangalore'],
+    },
+    {
+      title: 'Ooty',
+      value: 'ooty',
+      keywords: ['tamil nadu'],
+    },
+  ];
 
-const App = (): React.ReactElement => {
-  const cityValues = cities.map((city) => city.value);
-  const [filteredValues, setFilteredValues] = React.useState<string[]>(cityValues);
+  const App = (): React.ReactElement => {
+    const cityValues = cities.map((city) => city.value);
+    const [filteredValues, setFilteredValues] = React.useState<string[]>(cityValues);
 
-  return (
-    <Dropdown selectionType="multiple">
-      <AutoComplete
-        label="City"
-        onInputValueChange={({ value }) => {
-          if (value) {
-            const filteredItems = cities
-              .filter(
-                (city) =>
-                  city.title.toLowerCase().startsWith(value.toLowerCase()) ||
-                  city.keywords.find((keyword) =>
-                    keyword.toLowerCase().includes(value.toLowerCase()),
-                  ),
+    return (
+      <Box>
+        <Text marginBottom="spacing.4">In certain cases, you might want to change the filtering logic from default startsWith filtering. In this example we update the filtering logic to show name of cities when name of state is typed</Text>
+        <Dropdown selectionType="multiple">
+          <AutoComplete
+            label="City"
+            onInputValueChange={({ value }) => {
+              if (value) {
+                const filteredItems = cities
+                  .filter(
+                    (city) =>
+                      city.title.toLowerCase().startsWith(value.toLowerCase()) ||
+                      city.keywords.find((keyword) =>
+                        keyword.toLowerCase().includes(value.toLowerCase()),
+                      ),
+                  )
+                  .map((city) => city.value);
+
+                // If we find valid filtered items, we apply filter by setting state
+                if (filteredItems.length > 0) {
+                  setFilteredValues(filteredItems);
+                } else {
+                  // if we don't find anything, we filter nothing
+                  setFilteredValues([]);
+                }
+              } else {
+                // If inputValue is empty, we set all options as filtered items
+                setFilteredValues(cityValues);
+              }
+            }}
+            filteredValues={filteredValues}
+            helpText="Try typing 'maharashtra' in input"
+          />
+          <DropdownOverlay>
+            {
+              filteredValues.length > 0 ? (
+                <ActionList>
+                  {cities.map((city) => (
+                    <ActionListItem key={city.value} title={city.title} value={city.value} />
+                  ))}
+                </ActionList>
+              ) : (
+                <Box>
+                  <Text>Custom No Results Found Message!</Text>
+                </Box>
               )
-              .map((city) => city.value);
+            }          
+          </DropdownOverlay>
+        </Dropdown>
+      </Box>
+    );
+  };
 
-            // If we find valid filtered items, we apply filter by setting state
-            if (filteredItems.length > 0) {
-              setFilteredValues(filteredItems);
-            } else {
-              // if we don't find anything, we filter nothing
-              setFilteredValues([]);
-            }
-          } else {
-            // If inputValue is empty, we set all options as filtered items
-            setFilteredValues(cityValues);
-          }
-        }}
-        filteredValues={filteredValues}
-        helpText="Try typing 'maharashtra' in input"
-      />
-      <DropdownOverlay>
-        {
-          filteredValues.length > 0 ? (
-            <ActionList>
-              {cities.map((city) => (
-                <ActionListItem key={city.value} title={city.title} value={city.value} />
-              ))}
-            </ActionList>
-          ) : (
-            <Box>
-              <Text>Custom No Results Found Message!</Text>
-            </Box>
-          )
-        }          
-      </DropdownOverlay>
-    </Dropdown>
-  );
-};
-
-export default App;
+  export default App;
 `;
 
 export const controlledFilteringWithBottomSheet = `
@@ -179,57 +182,60 @@ export const controlledFilteringWithBottomSheet = `
     const [filteredValues, setFilteredValues] = React.useState<string[]>(cityValues);
 
     return (
-      <Dropdown selectionType="multiple">
-        <SelectInput label="City" />
-        <BottomSheet>
-          <BottomSheetHeader>
-            <AutoComplete
-              label="City"
-              onInputValueChange={({ value }) => {
-                if (value) {
-                  const filteredItems = cities
-                    .filter(
-                      (city) =>
-                        city.title.toLowerCase().startsWith(value.toLowerCase()) ||
-                        city.keywords.find((keyword) =>
-                          keyword.toLowerCase().includes(value.toLowerCase()),
-                        ),
-                    )
-                    .map((city) => city.value);
+      <Box>
+        <Text marginBottom="spacing.4">In certain cases, you might want to change the filtering logic from default startsWith filtering. In this example we update the filtering logic to show name of cities when name of state is typed</Text>
+        <Dropdown selectionType="multiple">
+          <SelectInput label="City" />
+          <BottomSheet>
+            <BottomSheetHeader>
+              <AutoComplete
+                label="City"
+                onInputValueChange={({ value }) => {
+                  if (value) {
+                    const filteredItems = cities
+                      .filter(
+                        (city) =>
+                          city.title.toLowerCase().startsWith(value.toLowerCase()) ||
+                          city.keywords.find((keyword) =>
+                            keyword.toLowerCase().includes(value.toLowerCase()),
+                          ),
+                      )
+                      .map((city) => city.value);
 
-                  // If we find valid filtered items, we apply filter by setting state
-                  if (filteredItems.length > 0) {
-                    setFilteredValues(filteredItems);
+                    // If we find valid filtered items, we apply filter by setting state
+                    if (filteredItems.length > 0) {
+                      setFilteredValues(filteredItems);
+                    } else {
+                      // if we don't find anything, we filter nothing
+                      setFilteredValues([]);
+                    }
                   } else {
-                    // if we don't find anything, we filter nothing
-                    setFilteredValues([]);
+                    // If inputValue is empty, we set all options as filtered items
+                    setFilteredValues(cityValues);
                   }
-                } else {
-                  // If inputValue is empty, we set all options as filtered items
-                  setFilteredValues(cityValues);
-                }
-              }}
-              filteredValues={filteredValues}
-              helpText="Try typing 'maharashtra' in input"
-            />
-          </BottomSheetHeader>
-          <BottomSheetBody>
-          {
-            filteredValues.length > 0 ? (
-              <ActionList>
-                {cities.map((city) => (
-                  <ActionListItem key={city.value} title={city.title} value={city.value} />
-                ))}
-              </ActionList>
-            ) : (
-              <Box>
-                <Text>Custom No Results Found Message!</Text>
-              </Box>
-            )
-          }  
-          </BottomSheetBody>
-        </BottomSheet>
-      </Dropdown>
+                }}
+                filteredValues={filteredValues}
+                helpText="Try typing 'maharashtra' in input"
+              />
+            </BottomSheetHeader>
+            <BottomSheetBody>
+            {
+              filteredValues.length > 0 ? (
+                <ActionList>
+                  {cities.map((city) => (
+                    <ActionListItem key={city.value} title={city.title} value={city.value} />
+                  ))}
+                </ActionList>
+              ) : (
+                <Box>
+                  <Text>Custom No Results Found Message!</Text>
+                </Box>
+              )
+            }  
+            </BottomSheetBody>
+          </BottomSheet>
+        </Dropdown>
+      </Box>
     );
   };
 
@@ -578,10 +584,14 @@ export const withErrorState = `
   function App(): React.ReactElement {
     const [isError, setIsError] = React.useState(false);
     const [currentInputValue, setCurrentInputValue] = React.useState('');
+    const [isDismissed, setIsDismissed] = React.useState(false);
 
     return (
       <Dropdown 
         selectionType="single"
+        onDismiss={() => {
+          setIsDismissed(true);
+        }}
       >
         <AutoComplete
           label="City"
@@ -595,8 +605,12 @@ export const withErrorState = `
             setCurrentInputValue(value);
           }}
           onBlur={() => {
-            if (!cities.includes(currentInputValue)) {
-              setIsError(true);
+            if (isDismissed) {
+              // We validate on blur after dismiss of Dropdown
+              if (!cities.includes(currentInputValue)) {
+                setIsError(true);
+              }
+              setIsDismissed(false);
             }
           }}
           errorText="Invalid selection. You can only select items from the list"
