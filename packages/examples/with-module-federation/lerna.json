@@ -1,0 +1,10 @@
+{
+  "version": "independent",
+  "npmClient": "yarn",
+  "packages": ["host", "remote"],
+  "command": {
+    "bootstrap": {
+      "ignoreScripts": true
+    }
+  }
+}
