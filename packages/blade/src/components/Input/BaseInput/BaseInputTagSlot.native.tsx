@@ -1,10 +1,11 @@
 import React from 'react';
-import { ScrollView, Text as RNText, TouchableWithoutFeedback, View } from 'react-native';
+import { ScrollView, TouchableWithoutFeedback } from 'react-native';
 import type { BaseInputTagSlotProps } from './types';
 import { BASEINPUT_DEFAULT_HEIGHT } from './baseInputConfig';
 import BaseBox from '~components/Box/BaseBox';
 import { makeSize } from '~utils';
-import { size, spacing } from '~tokens/global';
+import { size } from '~tokens/global';
+import { Text } from '~components/Typography';
 
 const ScrollableTagSlotContainer = ({
   maxTagRows,
@@ -108,14 +109,15 @@ const BaseInputTagSlot = ({
           <>
             {showAllTags || maxTagRows === 'multiple' ? tags : tags.slice(0, visibleTags)}
             {invisibleTagsCount > 0 && !showAllTags && maxTagRows !== 'multiple' ? (
-              <RNText
+              <TouchableWithoutFeedback
                 onPress={() => {
                   handleOnClick?.({ name: '', value: '' });
                 }}
-                style={{ alignSelf: 'center', marginRight: spacing['4'] }}
               >
-                +{invisibleTagsCount} More
-              </RNText>
+                <BaseBox alignSelf="center" marginRight="spacing.4">
+                  <Text>+{invisibleTagsCount} More</Text>
+                </BaseBox>
+              </TouchableWithoutFeedback>
             ) : null}
           </>
         ) : null}
