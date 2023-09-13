@@ -275,7 +275,7 @@ inputRef.parameters = {
   docs: {
     description: {
       story:
-        'OTP component exposes the `ref` prop. You can use the ref to programatically focus the input.',
+        'OTP component exposes the `ref` prop. You can use the ref to programatically focus the input. The OTPs ref prop exposes an array of refs for each input field. This will enable you to focus on any input field via `inputRef.current[index].focus()`',
     },
   },
 };
