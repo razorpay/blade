@@ -1,10 +1,12 @@
 import React from 'react';
-import { ScrollView, Text as RNText, TouchableWithoutFeedback, View } from 'react-native';
+import { ScrollView, TouchableWithoutFeedback } from 'react-native';
 import type { BaseInputTagSlotProps } from './types';
 import { BASEINPUT_DEFAULT_HEIGHT } from './baseInputConfig';
 import BaseBox from '~components/Box/BaseBox';
 import { makeSize } from '~utils';
 import { size } from '~tokens/global';
+import { Text } from '~components/Typography';
+import type { StringChildrenType } from '~utils/types';
 
 const ScrollableTagSlotContainer = ({
   maxTagRows,
@@ -22,6 +24,7 @@ const ScrollableTagSlotContainer = ({
         flexWrap: maxTagRows === 'single' ? 'nowrap' : 'wrap',
         position: 'relative',
         flexDirection: 'row',
+        flexGrow: 1,
       }}
       onScrollBeginDrag={() => {
         setIsScrolling(true);
@@ -36,18 +39,37 @@ const ScrollableTagSlotContainer = ({
       }}
     >
       {/* This creates a clickable layer behind tags so if user clicks empty area between of tags, it handles opening of Dropdown */}
-      <BaseBox
-        position="absolute"
-        height="100%"
-        width="100%"
-        onTouchEndCapture={() => {
+      <TouchableWithoutFeedback
+        onPress={() => {
           if (!isScrolling) {
             handleOnClick?.({ name: '', value: '' });
           }
         }}
-      />
+      >
+        <BaseBox position="absolute" height="100%" width="100%" />
+      </TouchableWithoutFeedback>
       {children}
     </ScrollView>
+  );
+};
+
+const ClickableText = ({
+  children,
+  handleOnClick,
+}: {
+  children: StringChildrenType;
+  handleOnClick: BaseInputTagSlotProps['handleOnClick'];
+}): React.ReactElement => {
+  return (
+    <TouchableWithoutFeedback
+      onPress={() => {
+        handleOnClick?.({ name: '', value: '' });
+      }}
+    >
+      <BaseBox alignSelf="center" marginRight="spacing.4">
+        <Text>{children}</Text>
+      </BaseBox>
+    </TouchableWithoutFeedback>
   );
 };
 
@@ -81,9 +103,6 @@ const BaseInputTagSlot = ({
       display="flex"
       flexDirection="row"
       position="relative"
-      // maxHeight={makeSize(
-      //   maxTagRows === 'single' ? BASEINPUT_DEFAULT_HEIGHT : BASEINPUT_WRAPPER_MAX_HEIGHT,
-      // )}
       flex="1"
       onLayout={(e) => {
         if (!hasTags) return;
@@ -114,34 +133,20 @@ const BaseInputTagSlot = ({
         showAllTags={showAllTags}
         handleOnClick={handleOnClick}
       >
-        {hasTags
-          ? showAllTags || maxTagRows === 'multiple'
-            ? tags
-            : tags.slice(0, visibleTags)
-          : null}
-        {hasTags &&
-        invisibleTagsCount > 0 &&
-        !showAllTags &&
-        !labelPrefix &&
-        maxTagRows !== 'multiple' ? (
-          <RNText
-            onPress={() => {
-              handleOnClick?.({ name: '', value: '' });
-            }}
-            style={{ alignSelf: 'center' }}
-          >
-            +{invisibleTagsCount} More
-          </RNText>
+        {hasTags ? (
+          <>
+            {showAllTags || maxTagRows === 'multiple' ? tags : tags.slice(0, visibleTags)}
+            {invisibleTagsCount > 0 && !showAllTags && !labelPrefix && maxTagRows !== 'multiple' ? (
+              <ClickableText handleOnClick={handleOnClick}>
+                + {invisibleTagsCount} More
+              </ClickableText>
+            ) : null}
+          </>
         ) : null}
         {hasTags && labelPrefix && !showAllTags && invisibleTagsCount > 0 ? (
-          <RNText
-            onPress={() => {
-              handleOnClick?.({ name: '', value: '' });
-            }}
-            style={{ alignSelf: 'center' }}
-          >
+          <ClickableText handleOnClick={handleOnClick}>
             {labelPrefix} ({invisibleTagsCount} Selected)
-          </RNText>
+          </ClickableText>
         ) : null}
         <BaseBox width={hasTags && renderAs === 'button' ? makeSize(size['1']) : '100%'}>
           {children}
@@ -152,11 +157,7 @@ const BaseInputTagSlot = ({
           handleOnClick?.({ name: '', value: '' });
         }}
       >
-        <View
-          style={{
-            flex: 1,
-          }}
-        />
+        <BaseBox flex="1" />
       </TouchableWithoutFeedback>
     </BaseBox>
   );

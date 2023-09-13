@@ -111,11 +111,6 @@ const _Dropdown = ({
   }, [isOpen]);
 
   const close = React.useCallback(() => {
-    // try {
-    //   throw new Error('checking stack');
-    // } catch (err: unknown) {
-    //   console.log(err);
-    // }
     setActiveTagIndex(-1);
     setIsOpen(false);
     onDismiss?.();
