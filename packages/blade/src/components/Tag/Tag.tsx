@@ -17,7 +17,9 @@ const FocussableTag = styled(BaseBox)<{ _isVirtuallyFocussed: TagProps['_isVirtu
   (props) => {
     if (props._isVirtuallyFocussed && !isReactNative()) {
       return {
-        outline: `1px solid ${props.theme.colors.surface.background.level1.lowContrast}`,
+        outline: `${makeSize(globalSizeTokens['1'])} solid ${
+          props.theme.colors.surface.background.level1.lowContrast
+        }`,
         boxShadow: `0px 0px 0px 4px ${props.theme.colors.brand.primary[400]}`,
       };
     }
