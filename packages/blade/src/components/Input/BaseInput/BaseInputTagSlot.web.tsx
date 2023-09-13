@@ -169,7 +169,7 @@ const BaseInputTagSlot = ({
     >
       {visibleTags}
       {tags && !showAllTags && invisibleTagsCount ? (
-        <Text alignSelf="center" marginY="spacing.2">
+        <Text alignSelf="center" marginY="spacing.2" marginRight="spacing.4">
           <BaseBox as="span" whiteSpace="nowrap">
             {visibleTags?.length === 0
               ? `${invisibleTagsCount} Items Selected`
