@@ -135,6 +135,20 @@ const _BaseDropdownInputTrigger = (
   const dropdownTriggerPlaceholder = props.placeholder ?? 'Select Option';
   const isAutoCompleteInHeader = !props.isSelectInput && hasAutoCompleteInBottomSheetHeader;
 
+  const getShowAllTags = React.useCallback((): boolean => {
+    if (hasAutoCompleteInBottomSheetHeader) {
+      // When AutoComplete is in bottomsheet header, we never want to show all tags in outer select input
+      if (props.isSelectInput) {
+        return false;
+      }
+
+      // ... And we always want to show all tags in inner AutoComplete
+      return true;
+    }
+
+    return isOpen;
+  }, [hasAutoCompleteInBottomSheetHeader, props.isSelectInput, isOpen]);
+
   useControlledDropdownInput({
     onSelectionChange: props.onSelectionChange,
     onChange: props.onChange,
@@ -213,7 +227,7 @@ const _BaseDropdownInputTrigger = (
       }}
       maxTagRows={props.maxRows ?? 'single'}
       tags={getTags()}
-      showAllTags={isAutoCompleteInHeader ? false : isOpen}
+      showAllTags={getShowAllTags()}
       activeTagIndex={activeTagIndex}
       setActiveTagIndex={setActiveTagIndex}
       shouldIgnoreBlurAnimation={shouldIgnoreBlurAnimation}

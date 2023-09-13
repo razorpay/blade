@@ -16,7 +16,7 @@ const ActionListNoResults = (): React.ReactElement => {
         No Search Result Found
       </Text>
       <Text marginTop="spacing.3" size="small" type="subtle">
-        Try Searching for a Different Text
+        Try searching for a different value
       </Text>
     </Box>
   );
