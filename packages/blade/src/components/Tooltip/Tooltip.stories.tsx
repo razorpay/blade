@@ -88,6 +88,11 @@ const TooltipTemplate: ComponentStory<typeof TooltipComponent> = (args) => {
 export const Default = TooltipTemplate.bind({});
 Default.storyName = 'Default';
 
+export const WithTitle = TooltipTemplate.bind({});
+WithTitle.args = {
+  title: 'Refund successful',
+};
+
 const PlacementBox = React.forwardRef<
   HTMLDivElement,
   { children: React.ReactNode } & BladeCommonEvents

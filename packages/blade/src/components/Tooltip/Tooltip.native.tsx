@@ -13,6 +13,7 @@ import { PopupArrow } from '~components/PopupArrow';
 import { getFloatingPlacementParts } from '~utils/getFloatingPlacementParts';
 
 const Tooltip = ({
+  title,
   content,
   children,
   placement = 'left',
@@ -91,6 +92,7 @@ const Tooltip = ({
           {...metaAttribute({ name: MetaConstants.Tooltip })}
         >
           <TooltipContent
+            title={title}
             isVisible={isOpen}
             ref={refs.setFloating}
             side={side}

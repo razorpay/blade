@@ -31,6 +31,7 @@ import { PopupArrow } from '~components/PopupArrow';
 import { getFloatingPlacementParts } from '~utils/getFloatingPlacementParts';
 
 const Tooltip = ({
+  title,
   content,
   children,
   placement = 'top',
@@ -111,6 +112,7 @@ const Tooltip = ({
             {...metaAttribute({ name: MetaConstants.Tooltip })}
           >
             <TooltipContent
+              title={title}
               style={styles}
               arrow={
                 <PopupArrow
