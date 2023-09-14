@@ -12,10 +12,7 @@ import type { BladeElementRef } from '~utils/types';
 import { useFirstRender } from '~utils/useFirstRender';
 
 const useControlledDropdownInput = (
-  props: Pick<
-    BaseDropdownInputTriggerProps,
-    'onChange' | 'onSelectionChange' | 'name' | 'value' | 'defaultValue'
-  >,
+  props: Pick<BaseDropdownInputTriggerProps, 'onChange' | 'name' | 'value' | 'defaultValue'>,
 ): void => {
   const isFirstRender = useFirstRender();
   const {
@@ -93,7 +90,6 @@ const useControlledDropdownInput = (
     // Ignore calling onChange on mount
 
     if (!isFirstRender) {
-      props.onSelectionChange?.();
       props.onChange?.({
         name: props.name,
         values: getValuesArrayFromIndices(),
@@ -150,7 +146,6 @@ const _BaseDropdownInputTrigger = (
   }, [hasAutoCompleteInBottomSheetHeader, props.isSelectInput, isOpen]);
 
   useControlledDropdownInput({
-    onSelectionChange: props.onSelectionChange,
     onChange: props.onChange,
     name: props.name,
     value: props.value,
@@ -258,6 +253,7 @@ const _BaseDropdownInputTrigger = (
       autoFocus={props.autoFocus} // eslint-disable-line jsx-a11y/no-autofocus
       value={getValue()}
       onClick={props.onTriggerClick}
+      onFocus={props.onFocus}
       onBlur={({ name }) => {
         props.onBlur?.({ name, value });
       }}

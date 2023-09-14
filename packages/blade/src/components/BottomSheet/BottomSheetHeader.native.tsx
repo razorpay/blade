@@ -19,7 +19,7 @@ const _BottomSheetHeader = ({
   children,
 }: BottomSheetHeaderProps): React.ReactElement => {
   const { close, setIsHeaderEmpty, defaultInitialFocusRef } = useBottomSheetContext();
-  const isHeaderEmpty = !(title || subtitle || leading || trailing || showBackButton);
+  const isHeaderEmpty = !(title || subtitle || leading || trailing || showBackButton || children);
 
   React.useEffect(() => {
     setIsHeaderEmpty(isHeaderEmpty);

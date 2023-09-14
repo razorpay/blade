@@ -113,22 +113,30 @@ export type BaseDropdownInputTriggerProps = Omit<
    */
   isSelectInput: boolean;
 
-  onTriggerClick: BaseInputProps['onClick'];
-
   /**
-   * For AutoComplete
-   *
-   * Although similar to onChange, this is the callback that we can internally use without interferring with controlled props
-   * This is used in changing AutoComplete's internal states when item gets selected
+   * Internal prop to handle click on input trigger
    */
-  onSelectionChange?: () => void;
+  onTriggerClick: BaseInputProps['onClick'];
 };
 
 export type SelectInputProps = DropdownInputTriggersProps;
 
-// @TODO add jsdoc in documentation PR
 export type AutoCompleteProps = DropdownInputTriggersCommonProps & {
+  /**
+   * Callback to handle the change in input element.
+   *
+   * This is different from onChange which handles the change in selection of item
+   */
   onInputValueChange?: BaseInputProps['onChange'];
+  /**
+   * Controlled state of value inside AutoComplete input
+   */
   inputValue?: BaseInputProps['value'];
+  /**
+   * Controlled state of filtering of items in AutoComplete.
+   *
+   * Checkout [Custom Filtering Example](https://blade.razorpay.com/?path=/story/components-dropdown-with-autocomplete--controlled-filtering)
+   *
+   */
   filteredValues?: string[];
 };

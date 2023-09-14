@@ -196,6 +196,52 @@ const _AutoComplete = (
   );
 };
 
+/**
+ * ### AutoComplete
+ *
+ * Extension on top of SelectInput which allows you type and filter between ActionList items
+ *
+ * To be used in combination of `Dropdown` and `ActionList` component
+ *
+ * ---
+ *
+ * #### Usage in Desktop
+ *
+ * ```diff
+ * <Dropdown>
+ * + <AutoComplete label="Select Fruits" />
+ *   <DropdownOverlay>
+ *     <ActionList>
+ *       <ActionListItem title="Mango" value="mango" />
+ *       <ActionListItem title="Apple" value="apple" />
+ *     </ActionList>
+ *   </DropdownOverlay>
+ * </Dropdown>
+ * ```
+ *
+ * #### Usage in Mobile
+ *
+ * ```diff
+ * <Dropdown>
+ * + <SelectInput label="Select Fruits" />
+ *   <BottomSheet>
+ *      <BottomSheetHeader>
+ * +      <AutoComplete label="Select Fruits" />
+ *      </BottomSheetHeader>
+ *      <BottomSheetBody>
+ *       <ActionList>
+ *         <ActionListItem title="Mango" value="mango" />
+ *         <ActionListItem title="Apple" value="apple" />
+ *       </ActionList>
+ *      </BottomSheetBody>
+ *   </BottomSheet>
+ * </Dropdown>
+ * ```
+ *
+ * ---
+ *
+ * Checkout {@link https://blade.razorpay.com/?path=/docs/components-dropdown-with-autocomplete--with-single-select AutoComplete Documentation}.
+ */
 const AutoComplete = assignWithoutSideEffects(React.forwardRef(_AutoComplete), {
   componentId: dropdownComponentIds.triggers.AutoComplete,
 });

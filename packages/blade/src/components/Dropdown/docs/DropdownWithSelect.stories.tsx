@@ -44,10 +44,10 @@ const DropdownStoryMeta: Meta = {
   },
 };
 
-const DropdownTemplate: ComponentStory<typeof Dropdown> = (args) => {
+const DropdownTemplate: ComponentStory<typeof Dropdown> = ({ selectionType = 'single' }) => {
   return (
     <Sandbox showConsole padding="spacing.0" editorHeight="100vh">
-      {getSimpleSelectCode(args.selectionType)}
+      {getSimpleSelectCode(selectionType)}
     </Sandbox>
   );
 };
