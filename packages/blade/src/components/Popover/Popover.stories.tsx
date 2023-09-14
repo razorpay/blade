@@ -9,7 +9,7 @@ import type { PopoverProps } from '.';
 import { PopoverInteractiveWrapper, Popover } from '.';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
-import { Text } from '~components/Typography';
+import { Code, Text } from '~components/Typography';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { Amount } from '~components/Amount';
@@ -193,7 +193,8 @@ export const Controlled: ComponentStory<typeof Popover> = (args) => {
   return (
     <Box>
       <Text marginBottom="spacing.5">
-        You can make the popover controlled by passing the isOpen, and onOpenChange props.
+        You can make the popover controlled by passing the <Code>isOpen</Code>, and{' '}
+        <Code>onOpenChange</Code> props.
       </Text>
       <Center>
         <Box textAlign="center">
