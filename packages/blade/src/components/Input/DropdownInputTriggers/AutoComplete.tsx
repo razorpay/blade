@@ -69,7 +69,8 @@ const useAutoComplete = ({
       resetFilters();
     }
 
-    // Sets focus on itself when opened inside bottomsheet
+    // Just setting autoFocus is setting the input in focus state but its not showing keyboard active.
+    // We do this in web to get around that
     if (hasAutoCompleteInBottomSheetHeader && isOpen && !isReactNative()) {
       triggererRef.current?.focus();
     }
@@ -185,6 +186,8 @@ const _AutoComplete = (
     <BaseBox position="relative">
       <BaseDropdownInputTrigger
         {...props}
+        // eslint-disable-next-line jsx-a11y/no-autofocus
+        autoFocus={props.autoFocus ?? hasAutoCompleteInBottomSheetHeader}
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         ref={ref as any}
         onChange={onSelectionChange}
