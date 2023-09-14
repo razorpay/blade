@@ -5,7 +5,7 @@ import overrideTheme from './overrideTheme';
 import bankingTheme from './bankingTheme';
 import paymentTheme from './paymentTheme';
 import { colors as globalColors, opacity } from '~tokens/global';
-import type { Color } from '~tokens/global';
+import type { ColorChromaticScale } from '~tokens/global/colors';
 import type { DeepPartial } from '~utils/isPartialMatchObjectKeys';
 import { throwBladeError } from '~utils/logger';
 
@@ -30,13 +30,13 @@ const getColorWithOpacity = (color: ColorInput, opacity: number): string => {
 
 /**
  *
- * @param baseColorInput - The base color to generate the chromatic color palette from in hex, rgb, or hsl format
  * @description
  * Generates a chromatic color palette based on the base color passed in.
  * The base color is used to generate a palette of 11 colors, 5 shades lighter and 5 shades darker than the base color.
+ * @param baseColorInput - The base color to generate the chromatic color palette from in hex, rgb, or hsl format
  * @returns Array of chromatic color palette
  */
-const generateChromaticBrandColors = (baseColorInput: ColorInput): Color['chromatic']['azure'] => {
+const generateChromaticBrandColors = (baseColorInput: ColorInput): ColorChromaticScale => {
   const baseColor = tinycolor(baseColorInput);
   const baseColorHslString = baseColor.toHslString();
   if (__DEV__) {
@@ -57,7 +57,7 @@ const generateChromaticBrandColors = (baseColorInput: ColorInput): Color['chroma
   let currentColor = baseColor;
 
   // Generate shades lighter
-  for (let i = 0; i < 6; i++) {
+  for (let lightShadeIndex = 0; lightShadeIndex < 6; lightShadeIndex++) {
     currentColor = currentColor.brighten(lightnessFactor);
     palette.push(currentColor.toHslString());
   }
@@ -65,7 +65,7 @@ const generateChromaticBrandColors = (baseColorInput: ColorInput): Color['chroma
   currentColor = tinycolor(baseColorHslString); // Reset to the base color
 
   // Generate shades darker
-  for (let i = 0; i < 4; i++) {
+  for (let darkShadeIndex = 0; darkShadeIndex < 4; darkShadeIndex++) {
     currentColor = currentColor.darken(darknessFactor);
     palette.unshift(currentColor.toHslString()); // Add shades at the beginning of the palette
   }
@@ -100,7 +100,7 @@ const generateChromaticBrandColors = (baseColorInput: ColorInput): Color['chroma
  * @description Overrides the payment theme with the brand colors passed in
  * @returns The light theme tokens with the custom brand colors
  */
-const getLightTheme = (brandColors: Color['chromatic']['azure']): ThemeTokens => {
+const getLightTheme = (brandColors: ColorChromaticScale): ThemeTokens => {
   // Select the most readable color to use as the foreground color on top of brand color
   // For example: On Primary Button where the background color is brand color, the text color should be either dark or light depending on which is more readable on top of that brand color
   const foregroundOnBrandColorPaymentLight = tinycolor
@@ -226,7 +226,7 @@ const getLightTheme = (brandColors: Color['chromatic']['azure']): ThemeTokens =>
  * @description Overrides the banking theme with the brand colors passed in
  * @returns The dark theme tokens with the custom brand colors
  */
-const getDarkTheme = (brandColors: Color['chromatic']['azure']): ThemeTokens => {
+const getDarkTheme = (brandColors: ColorChromaticScale): ThemeTokens => {
   // Select the most readable color to use as the foreground color on top of brand color
   // For example: On Primary Button where the background color is brand color, the text color should be either dark or light depending on which is more readable on top of that brand color
   const foregroundOnBrandColorBankingDark = tinycolor
