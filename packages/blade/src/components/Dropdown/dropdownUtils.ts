@@ -8,6 +8,7 @@
  */
 
 import type { DropdownContextType, OptionsType } from './useDropdown';
+import { dropdownComponentIds } from './dropdownComponentIds';
 import type { SpacingValueType } from '~components/Box/BaseBox';
 
 export type SelectActionsType =
@@ -60,6 +61,7 @@ export function filterOptions(
 export function getActionFromKey(
   e: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
   isOpen: boolean,
+  dropdownTriggerer: DropdownContextType['dropdownTriggerer'],
 ): SelectActionsType | undefined {
   if (!e) {
     return undefined;
@@ -108,7 +110,11 @@ export function getActionFromKey(
       return SelectActions.PageDown;
     } else if (key === 'Escape') {
       return SelectActions.Close;
-    } else if (key === 'Enter' || key === ' ') {
+    } else if (
+      key === 'Enter' ||
+      // we ignore the spacebar select in autocomplete since hitting spacebar might be expected while typing
+      (dropdownTriggerer !== dropdownComponentIds.triggers.AutoComplete && key === ' ')
+    ) {
       return SelectActions.CloseSelect;
     }
   }
