@@ -99,21 +99,11 @@ const getAllProps = (
   props: BaseBoxProps & { theme: Theme },
   breakpoint?: keyof Breakpoints,
 ): CSSObject => {
-  const hasBorder =
-    props.borderBottom ||
-    props.borderTop ||
-    props.borderLeft ||
-    props.borderRight ||
-    props.borderBottomColor ||
-    props.borderTopColor ||
-    props.borderLeftColor ||
-    props.borderRightColor ||
-    props.borderBottomWidth ||
-    props.borderTopWidth ||
-    props.borderLeftWidth ||
-    props.borderRightWidth ||
-    props.borderWidth ||
-    props.borderColor;
+  const hasBorder = props.borderWidth || props.borderColor;
+  const hasBorderRight = props.borderRight || props.borderRightColor || props.borderRightWidth;
+  const hasBorderLeft = props.borderLeft || props.borderLeftColor || props.borderLeftWidth;
+  const hasBorderTop = props.borderTop || props.borderTopColor || props.borderTopWidth;
+  const hasBorderBottom = props.borderBottom || props.borderBottomColor || props.borderBottomWidth;
 
   return {
     display: getResponsiveValue(props.display, breakpoint),
@@ -218,6 +208,11 @@ const getAllProps = (
       breakpoint,
     ),
     borderStyle: hasBorder ? 'solid' : undefined,
+    borderTopStyle: hasBorderTop ? 'solid' : undefined,
+    borderBottomStyle: hasBorderBottom ? 'solid' : undefined,
+    borderLeftStyle: hasBorderLeft ? 'solid' : undefined,
+    borderRightStyle: hasBorderRight ? 'solid' : undefined,
+
     touchAction: getResponsiveValue(props.touchAction, breakpoint),
     userSelect: getResponsiveValue(props.userSelect, breakpoint),
     pointerEvents: getResponsiveValue(props.pointerEvents),

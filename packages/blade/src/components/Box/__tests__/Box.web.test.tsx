@@ -201,4 +201,107 @@ describe('<Box />', () => {
     const { getByText } = renderWithTheme(<Box id={id}>{text}</Box>);
     expect(getByText(text)).toHaveAttribute('id', id);
   });
+
+  // https://github.com/razorpay/blade/issues/1624
+  it('should apply borderBottomColor prop to border bottom only', () => {
+    const { container } = renderWithTheme(
+      <Box borderBottomColor="surface.border.normal.lowContrast">I am Visible</Box>,
+    );
+    expect(container).toMatchInlineSnapshot(`
+      .c0 {
+        border-bottom-color: hsla(216,15%,54%,0.18);
+        border-bottom-style: solid;
+      }
+
+      @media screen and (min-width:320px) {
+        .c0 {
+          border-bottom-style: solid;
+        }
+      }
+
+      @media screen and (min-width:480px) {
+        .c0 {
+          border-bottom-style: solid;
+        }
+      }
+
+      @media screen and (min-width:768px) {
+        .c0 {
+          border-bottom-style: solid;
+        }
+      }
+
+      @media screen and (min-width:1024px) {
+        .c0 {
+          border-bottom-style: solid;
+        }
+      }
+
+      @media screen and (min-width:1200px) {
+        .c0 {
+          border-bottom-style: solid;
+        }
+      }
+
+      <div>
+        <div
+          class="c0"
+          data-blade-component="box"
+        >
+          I am Visible
+        </div>
+      </div>
+    `);
+  });
+
+  it('should apply borderColor prop to all borders', () => {
+    const { container } = renderWithTheme(
+      <Box borderColor="surface.border.normal.lowContrast">I am Visible</Box>,
+    );
+    expect(container).toMatchInlineSnapshot(`
+      .c0 {
+        border-color: hsla(216,15%,54%,0.18);
+        border-style: solid;
+      }
+
+      @media screen and (min-width:320px) {
+        .c0 {
+          border-style: solid;
+        }
+      }
+
+      @media screen and (min-width:480px) {
+        .c0 {
+          border-style: solid;
+        }
+      }
+
+      @media screen and (min-width:768px) {
+        .c0 {
+          border-style: solid;
+        }
+      }
+
+      @media screen and (min-width:1024px) {
+        .c0 {
+          border-style: solid;
+        }
+      }
+
+      @media screen and (min-width:1200px) {
+        .c0 {
+          border-style: solid;
+        }
+      }
+
+      <div>
+        <div
+          class="c0"
+          data-blade-component="box"
+        >
+          I am Visible
+        </div>
+      </div>
+    `);
+  });
 });
