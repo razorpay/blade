@@ -20,7 +20,7 @@ const propsCategory = {
 };
 
 export default {
-  title: 'Components/Dropdown/With Select/Stories',
+  title: 'Components/Dropdown/With Select',
   component: SelectInput,
   args: {
     defaultValue: undefined,
@@ -234,14 +234,4 @@ const SelectInputTemplate: ComponentStory<typeof SelectInput> = ({ icon, ...args
   );
 };
 
-export const Default = SelectInputTemplate.bind({});
-// Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
-Default.storyName = 'SelectInput';
-
-export const SelectInputWithoutLabel = SelectInputTemplate.bind({});
-SelectInputWithoutLabel.args = {
-  label: 'City',
-  accessibilityLabel: 'City',
-  labelPosition: 'inside-input',
-};
-SelectInputWithoutLabel.storyName = 'SelectInput without Label';
+export const PropsPlayground = SelectInputTemplate.bind({});
