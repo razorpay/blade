@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 10.8.1
+
+### Patch Changes
+
+- 09ca73d2: fix(ActionList): divider being added to last ActionListSection
+
 ## 10.8.0
 
 ### Minor Changes
