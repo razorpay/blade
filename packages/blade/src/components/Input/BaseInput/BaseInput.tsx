@@ -33,6 +33,7 @@ import { makeSize } from '~utils/makeSize';
 import type { AriaAttributes } from '~utils/makeAccessible';
 import { makeAccessible } from '~utils/makeAccessible';
 import { throwBladeError } from '~utils/logger';
+import { announce } from '~components/LiveAnnouncer/LiveAnnouncer';
 
 type CommonAutoCompleteSuggestionTypes =
   | 'none'
@@ -379,6 +380,16 @@ const useTags = (
   visibleTagsCountRef: React.MutableRefObject<number>;
 } => {
   const visibleTagsCountRef = React.useRef<number>(0);
+
+  React.useEffect(() => {
+    if (tags && activeTagIndex >= 0 && activeTagIndex < tags.length) {
+      const tagTitle = tags[activeTagIndex]?.props?.children;
+      if (tagTitle) {
+        announce(`Close ${tagTitle} Tag`);
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeTagIndex, tags?.length]);
 
   const onTagLeft = (): void => {
     if (activeTagIndex < 0) {
