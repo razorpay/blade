@@ -1,7 +1,6 @@
 import cloneDeep from 'lodash/cloneDeep';
 import merge from 'lodash/merge';
 import paymentTheme from './paymentTheme';
-import bankingTheme from './bankingTheme';
 import type { ThemeTokens } from './theme';
 import { hasSameObjectStructure } from '~utils/hasSameObjectStructure';
 import type { ObjectWithKeys } from '~utils/hasSameObjectStructure';
@@ -49,7 +48,10 @@ type OverrideTheme = {
 const overrideTheme = ({ baseThemeTokens, overrides }: OverrideTheme): ThemeTokens => {
   if (__DEV__) {
     if (
-      !hasSameObjectStructure(baseThemeTokens as ObjectWithKeys, paymentTheme as ObjectWithKeys)
+      !hasSameObjectStructure(
+        (baseThemeTokens as unknown) as ObjectWithKeys,
+        (paymentTheme as unknown) as ObjectWithKeys,
+      )
     ) {
       throwBladeError({
         message: 'The base theme provided is not a valid Blade theme',
