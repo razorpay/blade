@@ -6,6 +6,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import BaseBox from '~components/Box/BaseBox';
 import type { BladeElementRef } from '~utils/types';
 import { dropdownComponentIds } from '~components/Dropdown/dropdownComponentIds';
+import { isReactNative } from '~utils';
 
 const useAutoComplete = ({
   props,
@@ -37,6 +38,8 @@ const useAutoComplete = ({
     setActiveIndex,
     filteredValues: globalFilteredValues,
     selectionType,
+    triggererRef,
+    hasAutoCompleteInBottomSheetHeader,
   } = useDropdown();
 
   const resetFilters = (): void => setGlobalFilteredValues(getOptionValues());
@@ -64,6 +67,11 @@ const useAutoComplete = ({
   React.useEffect(() => {
     if (isOpen && selectionType === 'single') {
       resetFilters();
+    }
+
+    // Sets focus on itself when opened inside bottomsheet
+    if (hasAutoCompleteInBottomSheetHeader && isOpen && !isReactNative()) {
+      triggererRef.current?.focus();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
