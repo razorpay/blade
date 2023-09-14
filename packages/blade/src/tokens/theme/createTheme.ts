@@ -109,7 +109,7 @@ const getLightTheme = (brandColors: Color['chromatic']['azure']): ThemeTokens =>
       [globalColors.neutral.blueGrayLight[1100], globalColors.neutral.blueGrayLight[50]],
       WCAG2ContrastOptions,
     )
-    .toHexString();
+    .toHslString();
 
   // Select the most readable color to use as the foreground color on top of surface color
   // For example: On Secondary Button where the background color is surface color, the text color should be either the brand color or dark color depending on which is more readable on top of that surface color
@@ -235,7 +235,7 @@ const getDarkTheme = (brandColors: Color['chromatic']['azure']): ThemeTokens => 
       [globalColors.neutral.navyGrayDark[800], globalColors.neutral.navyGrayDark[0]],
       WCAG2ContrastOptions,
     )
-    .toHexString();
+    .toHslString();
 
   // Select the most readable color to use as the foreground color on top of surface color
   // For example: On Secondary Button where the background color is surface color, the text color should be either the brand color or light color depending on which is more readable on top of that surface color
@@ -368,9 +368,13 @@ export const createTheme = ({
           ...brandedDarkTheme.colors.onDark,
         },
       },
-      ...extraOverrides, // Apply any extra overrides passed in by the consumer
     },
   });
 
-  return brandedThemeTokens;
+  const brandedThemeTokensWithExtraOverrides = overrideTheme({
+    baseThemeTokens: brandedThemeTokens,
+    overrides: extraOverrides,
+  });
+
+  return brandedThemeTokensWithExtraOverrides;
 };
