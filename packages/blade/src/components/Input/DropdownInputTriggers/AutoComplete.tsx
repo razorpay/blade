@@ -182,12 +182,15 @@ const _AutoComplete = (
     }
   }, [props.filteredValues, setGlobalFilteredValues]);
 
+  // set autoFocus to true when used inside bottomsheet
+  const defaultAutoFocusState = hasAutoCompleteInBottomSheetHeader ? true : undefined;
+
   return (
     <BaseBox position="relative">
       <BaseDropdownInputTrigger
         {...props}
         // eslint-disable-next-line jsx-a11y/no-autofocus
-        autoFocus={props.autoFocus ?? hasAutoCompleteInBottomSheetHeader}
+        autoFocus={props.autoFocus ?? defaultAutoFocusState}
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         ref={ref as any}
         onChange={onSelectionChange}
