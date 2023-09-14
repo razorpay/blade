@@ -208,10 +208,14 @@ const getAllProps = (
       breakpoint,
     ),
     borderStyle: hasBorder ? 'solid' : undefined,
-    borderTopStyle: hasBorderTop ? 'solid' : undefined,
-    borderBottomStyle: hasBorderBottom ? 'solid' : undefined,
-    borderLeftStyle: hasBorderLeft ? 'solid' : undefined,
-    borderRightStyle: hasBorderRight ? 'solid' : undefined,
+    // Since we only allow 'solid', we can use the same value for all borders if hasBorder is true
+    // If hasBorder is false, we need to check each border individually
+    ...(!hasBorder && {
+      borderTopStyle: hasBorderTop ? 'solid' : undefined,
+      borderBottomStyle: hasBorderBottom ? 'solid' : undefined,
+      borderLeftStyle: hasBorderLeft ? 'solid' : undefined,
+      borderRightStyle: hasBorderRight ? 'solid' : undefined,
+    }),
 
     touchAction: getResponsiveValue(props.touchAction, breakpoint),
     userSelect: getResponsiveValue(props.userSelect, breakpoint),
