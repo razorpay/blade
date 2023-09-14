@@ -3,7 +3,6 @@ import * as React from 'react';
 import styled from 'styled-components/native';
 import { View } from 'react-native';
 import type { CSSObject } from 'styled-components';
-import type { Alignment, Placement, Side } from '@floating-ui/react';
 import type { PopupArrowProps } from './types';
 import Svg, { Path } from '~components/Icons/_Svg';
 import { useTheme } from '~components/BladeProvider';
@@ -11,12 +10,7 @@ import type { SvgProps } from '~components/Icons/_Svg/Svg/types';
 import { makeSize } from '~utils';
 import { size } from '~tokens/global';
 import { logger } from '~utils/logger';
-
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-const getPlacementParts = (placement: NonNullable<Placement>) => {
-  const [side, alignment] = placement.split('-') as [Side, Alignment];
-  return [side, alignment] as const;
-};
+import { getFloatingPlacementParts } from '~utils/getFloatingPlacementParts';
 
 const StyledSvg = styled(Svg)<{ styles?: CSSObject }>(({ styles }) => {
   return styles;
@@ -49,7 +43,7 @@ const PopupArrow = React.forwardRef<SvgProps, PopupArrowProps>(
       return <></>;
     }
 
-    const [side] = getPlacementParts(placement);
+    const [side] = getFloatingPlacementParts(placement);
 
     const svgX = width / 2;
     const svgY = 0;

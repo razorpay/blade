@@ -19,7 +19,6 @@ import React from 'react';
 import type { TooltipProps } from './types';
 import { TooltipContent } from './TooltipContent';
 import { ARROW_HEIGHT, ARROW_WIDTH, tooltipZIndex } from './constants';
-import { getPlacementParts } from './utils';
 import { TooltipContext } from './TooltipContext';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
@@ -29,6 +28,7 @@ import { useId } from '~utils/useId';
 import { makeAccessible } from '~utils/makeAccessible';
 import { mergeProps } from '~utils/mergeProps';
 import { PopupArrow } from '~components/PopupArrow';
+import { getFloatingPlacementParts } from '~utils/getFloatingPlacementParts';
 
 const Tooltip = ({
   content,
@@ -43,7 +43,7 @@ const Tooltip = ({
   const arrowRef = React.useRef<SVGSVGElement>(null);
 
   const GAP = theme.spacing[2];
-  const [side] = getPlacementParts(placement);
+  const [side] = getFloatingPlacementParts(placement);
   const isHorizontal = side === 'left' || side === 'right';
   const isOppositeAxis = side === 'right' || side === 'bottom';
 

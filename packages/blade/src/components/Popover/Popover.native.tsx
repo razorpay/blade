@@ -5,13 +5,13 @@ import { Modal, TouchableOpacity } from 'react-native';
 import { PopoverContent } from './PopoverContent';
 import type { PopoverProps } from './types';
 import { ARROW_HEIGHT, ARROW_WIDTH, popoverZIndex } from './constants';
-import { getPlacementParts } from './utils';
 import { PopoverContext } from './PopoverContext';
 import { useTheme } from '~components/BladeProvider';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { mergeProps } from '~utils/mergeProps';
 import { useControllableState } from '~utils/useControllable';
 import { PopupArrow } from '~components/PopupArrow';
+import { getFloatingPlacementParts } from '~utils/getFloatingPlacementParts';
 
 const Popover = ({
   content,
@@ -34,7 +34,7 @@ const Popover = ({
   });
 
   const gap = theme.spacing[2];
-  const [side] = getPlacementParts(placement);
+  const [side] = getFloatingPlacementParts(placement);
   const isHorizontal = side === 'left' || side === 'right';
   const arrowRef = React.useRef();
   const context = useFloating({
@@ -52,7 +52,7 @@ const Popover = ({
   });
 
   const { refs, floatingStyles } = context;
-  const [computedSide] = getPlacementParts(context.placement);
+  const [computedSide] = getFloatingPlacementParts(context.placement);
 
   const handleOpen = React.useCallback(() => {
     controllableSetIsOpen(() => true);

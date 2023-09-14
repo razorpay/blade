@@ -5,12 +5,12 @@ import { Modal, TouchableOpacity } from 'react-native';
 import { TooltipContent } from './TooltipContent';
 import type { TooltipProps } from './types';
 import { ARROW_HEIGHT, ARROW_WIDTH, tooltipZIndex } from './constants';
-import { getPlacementParts } from './utils';
 import { TooltipContext } from './TooltipContext';
 import { useTheme } from '~components/BladeProvider';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { mergeProps } from '~utils/mergeProps';
 import { PopupArrow } from '~components/PopupArrow';
+import { getFloatingPlacementParts } from '~utils/getFloatingPlacementParts';
 
 const Tooltip = ({
   content,
@@ -23,7 +23,7 @@ const Tooltip = ({
   const [isOpen, setIsOpen] = React.useState(false);
 
   const gap = theme.spacing[2];
-  const [side] = getPlacementParts(placement);
+  const [side] = getFloatingPlacementParts(placement);
   const isHorizontal = side === 'left' || side === 'right';
   const arrowRef = React.useRef();
   const context = useFloating({
