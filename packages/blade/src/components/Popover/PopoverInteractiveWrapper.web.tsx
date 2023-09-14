@@ -25,13 +25,6 @@ const StyledPopoverInteractiveWrapper = styled.button((props) => {
 
 type PopoverInteractiveWrapper = {
   /**
-   * Note: it is recommended that PopoverInteractiveWrapper is used as a button,
-   * If you change this to a div, you will need to handle keyboard events yourself.
-   *
-   * @default "button"
-   */
-  as?: 'div' | 'button';
-  /**
    * A label for screen readers to announce when the popover is opened.
    */
   accessibilityLabel?: string;
@@ -44,13 +37,12 @@ type PopoverInteractiveWrapper = {
 } & Omit<BaseBoxProps, 'as'>;
 
 const PopoverInteractiveWrapper = React.forwardRef<HTMLButtonElement, PopoverInteractiveWrapper>(
-  ({ accessibilityLabel, as = 'button', ...props }, ref) => {
+  ({ accessibilityLabel, ...props }, ref) => {
     usePopoverContext();
 
     return (
       <StyledPopoverInteractiveWrapper
         ref={ref}
-        as={as}
         display={props.display || 'inline-block'}
         {...props}
         {...metaAttribute({

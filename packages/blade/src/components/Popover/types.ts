@@ -25,18 +25,14 @@ type PopoverProps = {
   defaultIsOpen?: boolean;
   onOpenChange?: ({ isOpen }: { isOpen: boolean }) => void;
   /**
-   * Sets the z-index of the modal
-   * @default 1100
+   * Sets the z-index of the Popover
+   * @default 1000
    */
   zIndex?: number;
   initialFocusRef?: React.RefObject<any>;
 };
 
 type PopoverContentProps = {
-  title?: string;
-  titleLeading?: React.ReactNode;
-  footer?: React.ReactNode;
-  children: React.ReactNode;
   style: CSSProperties;
   arrow: React.ReactNode;
   zIndex?: number;
@@ -48,7 +44,7 @@ type PopoverContentProps = {
    * react-native only
    */
   side?: Side;
-};
+} & Pick<PopoverProps, 'title' | 'titleLeading' | 'footer' | 'children'>;
 
 type PopoverContentWrapperProps = {
   styles: CSSProperties;
