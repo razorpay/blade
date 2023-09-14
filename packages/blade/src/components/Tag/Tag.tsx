@@ -13,9 +13,9 @@ import BaseBox from '~components/Box/BaseBox';
 import type { PaddingProps } from '~components/Box/BaseBox/types/spacingTypes';
 import { useIsMobile } from '~utils/useIsMobile';
 
-const FocussableTag = styled(BaseBox)<{ _isVirtuallyFocussed: TagProps['_isVirtuallyFocussed'] }>(
+const FocussableTag = styled(BaseBox)<{ _isVirtuallyFocused: TagProps['_isVirtuallyFocused'] }>(
   (props) => {
-    if (props._isVirtuallyFocussed && !isReactNative()) {
+    if (props._isVirtuallyFocused && !isReactNative()) {
       return {
         outline: `${makeSize(globalSizeTokens['1'])} solid ${
           props.theme.colors.surface.background.level1.lowContrast
@@ -62,7 +62,7 @@ const Tag = ({
   children,
   isDisabled,
   testID,
-  _isVirtuallyFocussed,
+  _isVirtuallyFocused,
   _isTagInsideInput,
   ...styledProps
 }: TagProps): React.ReactElement | null => {
@@ -104,7 +104,7 @@ const Tag = ({
         backgroundColor="brand.gray.a100.lowContrast"
         borderRadius="max"
         padding={size === 'medium' ? mediumPadding : largePadding}
-        _isVirtuallyFocussed={_isVirtuallyFocussed}
+        _isVirtuallyFocused={_isVirtuallyFocused}
       >
         {/* Leading Icon */}
         {Icon ? (

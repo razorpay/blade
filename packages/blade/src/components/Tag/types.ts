@@ -39,7 +39,7 @@ type TagProps = {
    *
    * @private
    */
-  _isVirtuallyFocussed?: boolean;
+  _isVirtuallyFocused?: boolean;
 
   /**
    * Private property for Blade.

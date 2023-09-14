@@ -76,7 +76,7 @@ const AnimatedTag = ({
       transition={isTagVisible ? showTagTransition : hideTagTransition}
     >
       <Tag
-        _isVirtuallyFocussed={currentTagIndex === activeTagIndex}
+        _isVirtuallyFocused={currentTagIndex === activeTagIndex}
         _isTagInsideInput={true}
         onDismiss={() => {
           setIsTagVisible(false);

@@ -6,6 +6,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import BaseBox from '~components/Box/BaseBox';
 import type { BladeElementRef } from '~utils/types';
 import { dropdownComponentIds } from '~components/Dropdown/dropdownComponentIds';
+import { isReactNative } from '~utils';
 
 const useAutoComplete = ({
   props,
@@ -37,6 +38,8 @@ const useAutoComplete = ({
     setActiveIndex,
     filteredValues: globalFilteredValues,
     selectionType,
+    triggererRef,
+    hasAutoCompleteInBottomSheetHeader,
   } = useDropdown();
 
   const resetFilters = (): void => setGlobalFilteredValues(getOptionValues());
@@ -64,6 +67,12 @@ const useAutoComplete = ({
   React.useEffect(() => {
     if (isOpen && selectionType === 'single') {
       resetFilters();
+    }
+
+    // Just setting autoFocus is setting the input in focus state but its not showing keyboard active.
+    // We do this in web to get around that
+    if (hasAutoCompleteInBottomSheetHeader && isOpen && !isReactNative()) {
+      triggererRef.current?.focus();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
@@ -173,10 +182,15 @@ const _AutoComplete = (
     }
   }, [props.filteredValues, setGlobalFilteredValues]);
 
+  // set autoFocus to true when used inside bottomsheet
+  const defaultAutoFocusState = hasAutoCompleteInBottomSheetHeader ? true : undefined;
+
   return (
     <BaseBox position="relative">
       <BaseDropdownInputTrigger
         {...props}
+        // eslint-disable-next-line jsx-a11y/no-autofocus
+        autoFocus={props.autoFocus ?? defaultAutoFocusState}
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         ref={ref as any}
         onChange={onSelectionChange}

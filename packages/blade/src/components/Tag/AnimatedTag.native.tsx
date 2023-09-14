@@ -93,7 +93,7 @@ const AnimatedTag = ({
   return (
     <Animated.View style={animatedStyle} entering={isTagRemoved ? undefined : entering}>
       <Tag
-        _isVirtuallyFocussed={currentTagIndex === activeTagIndex}
+        _isVirtuallyFocused={currentTagIndex === activeTagIndex}
         _isTagInsideInput={true}
         onDismiss={() => {
           animate();

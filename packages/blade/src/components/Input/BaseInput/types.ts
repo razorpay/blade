@@ -1,3 +1,4 @@
+import type React from 'react';
 import type { Dispatch, SetStateAction } from 'react';
 import type { BaseInputProps } from './BaseInput';
 import type { FormInputHandleOnEvent } from '~components/Form';
@@ -5,6 +6,7 @@ import type { ActionStates } from '~tokens/theme/theme';
 import type {
   FormInputHandleOnClickEvent,
   FormInputHandleOnKeyDownEvent,
+  FormInputOnClickEvent,
 } from '~components/Form/FormTypes';
 import type { ContainerElementType } from '~utils/types';
 
@@ -16,7 +18,7 @@ export type BaseInputTagSlotProps = {
   showAllTags: BaseInputProps['showAllTags'];
   setFocusOnInput: () => void;
   setShouldIgnoreBlurAnimation: BaseInputProps['setShouldIgnoreBlurAnimation'];
-  handleOnClick: StyledBaseInputProps['handleOnClick'];
+  handleOnInputClick: (e?: FormInputOnClickEvent['value']) => void;
   maxTagRows: BaseInputProps['maxTagRows'];
   visibleTagsCountRef: React.MutableRefObject<number>;
   children: React.ReactElement;

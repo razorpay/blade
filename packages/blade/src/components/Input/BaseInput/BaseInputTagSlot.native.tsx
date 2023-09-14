@@ -11,8 +11,8 @@ import type { StringChildrenType } from '~utils/types';
 const ScrollableTagSlotContainer = ({
   maxTagRows,
   children,
-  handleOnClick,
-}: Pick<BaseInputTagSlotProps, 'maxTagRows' | 'showAllTags' | 'handleOnClick'> & {
+  handleOnInputClick,
+}: Pick<BaseInputTagSlotProps, 'maxTagRows' | 'showAllTags' | 'handleOnInputClick'> & {
   children: (React.ReactNode | null)[];
 }): React.ReactElement => {
   const scrollViewRef = React.useRef<ScrollView>(null);
@@ -42,7 +42,7 @@ const ScrollableTagSlotContainer = ({
       <TouchableWithoutFeedback
         onPress={() => {
           if (!isScrolling) {
-            handleOnClick?.({ name: '', value: '' });
+            handleOnInputClick();
           }
         }}
       >
@@ -55,15 +55,15 @@ const ScrollableTagSlotContainer = ({
 
 const ClickableText = ({
   children,
-  handleOnClick,
+  handleOnInputClick,
 }: {
   children: StringChildrenType;
-  handleOnClick: BaseInputTagSlotProps['handleOnClick'];
+  handleOnInputClick: BaseInputTagSlotProps['handleOnInputClick'];
 }): React.ReactElement => {
   return (
     <TouchableWithoutFeedback
       onPress={() => {
-        handleOnClick?.({ name: '', value: '' });
+        handleOnInputClick();
       }}
     >
       <BaseBox alignSelf="center" marginRight="spacing.4">
@@ -79,7 +79,7 @@ const BaseInputTagSlot = ({
   tags,
   maxTagRows,
   showAllTags,
-  handleOnClick,
+  handleOnInputClick,
   renderAs,
   children,
   isDropdownTrigger,
@@ -131,18 +131,18 @@ const BaseInputTagSlot = ({
       <ScrollableTagSlotContainer
         maxTagRows={maxTagRows}
         showAllTags={showAllTags}
-        handleOnClick={handleOnClick}
+        handleOnInputClick={handleOnInputClick}
       >
         {hasTags ? (
           <>
             {showAllTags || maxTagRows === 'multiple' ? tags : tags.slice(0, visibleTags)}
             {invisibleTagsCount > 0 && !showAllTags && !labelPrefix && maxTagRows !== 'multiple' ? (
-              <ClickableText handleOnClick={handleOnClick}>
+              <ClickableText handleOnInputClick={handleOnInputClick}>
                 + {invisibleTagsCount} More
               </ClickableText>
             ) : null}
             {!showAllTags && invisibleTagsCount > 0 && labelPrefix ? (
-              <ClickableText handleOnClick={handleOnClick}>
+              <ClickableText handleOnInputClick={handleOnInputClick}>
                 {labelPrefix} ({invisibleTagsCount} Selected)
               </ClickableText>
             ) : null}
@@ -154,7 +154,7 @@ const BaseInputTagSlot = ({
       </ScrollableTagSlotContainer>
       <TouchableWithoutFeedback
         onPress={() => {
-          handleOnClick?.({ name: '', value: '' });
+          handleOnInputClick();
         }}
       >
         <BaseBox flex="1" />

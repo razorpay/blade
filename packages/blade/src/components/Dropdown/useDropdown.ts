@@ -226,6 +226,7 @@ const useDropdown = (): UseDropdownReturnValue => {
     isControlled,
     setControlledValueIndices,
     filteredValues,
+    dropdownTriggerer,
     ...rest
   } = React.useContext(DropdownContext);
 
@@ -322,7 +323,7 @@ const useDropdown = (): UseDropdownReturnValue => {
     let updatedIndex: number;
     const hasAutoComplete =
       rest.hasAutoCompleteInBottomSheetHeader ||
-      rest.dropdownTriggerer === dropdownComponentIds.triggers.AutoComplete;
+      dropdownTriggerer === dropdownComponentIds.triggers.AutoComplete;
     if (hasAutoComplete && filteredValues.length > 0) {
       // When its autocomplete, we don't loop over all options. We only loop on filtered options
 
@@ -363,7 +364,7 @@ const useDropdown = (): UseDropdownReturnValue => {
     e: React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLInputElement>,
     index: number,
   ): void => {
-    const actionType = getActionFromKey(e, isOpen);
+    const actionType = getActionFromKey(e, isOpen, dropdownTriggerer);
     if (typeof actionType === 'number') {
       onOptionChange(actionType, index);
     }
@@ -386,7 +387,7 @@ const useDropdown = (): UseDropdownReturnValue => {
 
     if (
       rest.hasAutoCompleteInBottomSheetHeader ||
-      rest.dropdownTriggerer === dropdownComponentIds.triggers.AutoComplete
+      dropdownTriggerer === dropdownComponentIds.triggers.AutoComplete
     ) {
       return;
     }
@@ -425,7 +426,7 @@ const useDropdown = (): UseDropdownReturnValue => {
       setIsKeydownPressed(true);
     }
 
-    const actionType = getActionFromKey(e.event, isOpen);
+    const actionType = getActionFromKey(e.event, isOpen, dropdownTriggerer);
 
     if (actionType) {
       performAction(actionType, e, {
@@ -475,6 +476,7 @@ const useDropdown = (): UseDropdownReturnValue => {
     value: makeInputValue(selectedIndices, options),
     displayValue: makeInputDisplayValue(selectedIndices, options),
     selectionType,
+    dropdownTriggerer,
     ...rest,
   };
 };
