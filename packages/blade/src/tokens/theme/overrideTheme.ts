@@ -49,8 +49,7 @@ type OverrideTheme = {
 const overrideTheme = ({ baseThemeTokens, overrides }: OverrideTheme): ThemeTokens => {
   if (__DEV__) {
     if (
-      !hasSameObjectStructure(baseThemeTokens as ObjectWithKeys, paymentTheme as ObjectWithKeys) &&
-      !hasSameObjectStructure(baseThemeTokens as ObjectWithKeys, bankingTheme as ObjectWithKeys)
+      !hasSameObjectStructure(baseThemeTokens as ObjectWithKeys, paymentTheme as ObjectWithKeys)
     ) {
       throwBladeError({
         message: 'The base theme provided is not a valid Blade theme',
