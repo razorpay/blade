@@ -173,7 +173,7 @@ const getColorToken = ({
   }
 
   if (intent && state !== 'visited') {
-    return `feedback.${intent}.action.${element}.link.${state}.${contrast}Contrast`;
+    return `feedback.${intent}.action.${element}.link.${state}.lowContrast`;
   }
   return `action.${element}.link.${state}`;
 };

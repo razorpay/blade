@@ -39,7 +39,7 @@ describe('<Heading />', () => {
     const { container } = renderWithTheme(
       <Heading>
         Supercharge your business with the all‑powerful{' '}
-        <Heading as="span" color="feedback.information.action.text.primary.default.lowContrast">
+        <Heading as="span" color="feedback.information.action.text.primary.default">
           Payment Gateway
         </Heading>
       </Heading>,

@@ -758,10 +758,10 @@ const colors: ColorsWithModes = {
           },
           secondary: {
             default: globalColors.neutral.ashGrayLight.a00,
-            hover: globalColors.neutral.ashGrayLight.A400,
-            focus: globalColors.neutral.ashGrayLight.A500,
-            active: globalColors.neutral.ashGrayLight.A500,
-            disabled: globalColors.neutral.ashGrayLight.A00,
+            hover: globalColors.neutral.ashGrayLight.a400,
+            focus: globalColors.neutral.ashGrayLight.a500,
+            active: globalColors.neutral.ashGrayLight.a500,
+            disabled: globalColors.neutral.ashGrayLight.a00,
           },
           tertiary: {
             default: globalColors.neutral.ashGrayLight.a300,
@@ -784,7 +784,7 @@ const colors: ColorsWithModes = {
             hover: globalColors.neutral.ashGrayLight[0],
             focus: globalColors.neutral.ashGrayLight[0],
             active: globalColors.neutral.ashGrayLight[0],
-            disabled: globalColors.neutral.ashGrayLight.A500,
+            disabled: globalColors.neutral.ashGrayLight.a500,
           },
           tertiary: {
             default: globalColors.neutral.blueGrayLight[300],
@@ -807,7 +807,7 @@ const colors: ColorsWithModes = {
             hover: globalColors.neutral.ashGrayLight[0],
             focus: globalColors.neutral.ashGrayLight[0],
             active: globalColors.neutral.ashGrayLight[0],
-            disabled: globalColors.neutral.ashGrayLight.A500,
+            disabled: globalColors.neutral.ashGrayLight.a500,
           },
           tertiary: {
             default: globalColors.neutral.ashGrayLight[0],
@@ -838,7 +838,7 @@ const colors: ColorsWithModes = {
             hover: globalColors.neutral.ashGrayLight[0],
             focus: globalColors.neutral.ashGrayLight[0],
             active: globalColors.neutral.ashGrayLight[0],
-            disabled: globalColors.neutral.ashGrayLight.A500,
+            disabled: globalColors.neutral.ashGrayLight.a500,
           },
           tertiary: {
             default: globalColors.neutral.ashGrayLight[0],
@@ -1633,10 +1633,10 @@ const colors: ColorsWithModes = {
           },
           secondary: {
             default: globalColors.neutral.ashGrayLight.a00,
-            hover: globalColors.neutral.ashGrayLight.A400,
-            focus: globalColors.neutral.ashGrayLight.A500,
-            active: globalColors.neutral.ashGrayLight.A500,
-            disabled: globalColors.neutral.ashGrayLight.A00,
+            hover: globalColors.neutral.ashGrayLight.a400,
+            focus: globalColors.neutral.ashGrayLight.a500,
+            active: globalColors.neutral.ashGrayLight.a500,
+            disabled: globalColors.neutral.ashGrayLight.a00,
           },
           tertiary: {
             default: globalColors.neutral.ashGrayLight.a300,
@@ -1659,7 +1659,7 @@ const colors: ColorsWithModes = {
             hover: globalColors.neutral.ashGrayLight[0],
             focus: globalColors.neutral.ashGrayLight[0],
             active: globalColors.neutral.ashGrayLight[0],
-            disabled: globalColors.neutral.ashGrayLight.A500,
+            disabled: globalColors.neutral.ashGrayLight.a500,
           },
           tertiary: {
             default: globalColors.neutral.blueGrayDark[400],
@@ -1682,7 +1682,7 @@ const colors: ColorsWithModes = {
             hover: globalColors.neutral.ashGrayLight[0],
             focus: globalColors.neutral.ashGrayLight[0],
             active: globalColors.neutral.ashGrayLight[0],
-            disabled: globalColors.neutral.ashGrayLight.A500,
+            disabled: globalColors.neutral.ashGrayLight.a500,
           },
           tertiary: {
             default: globalColors.neutral.ashGrayLight[0],
@@ -1713,7 +1713,7 @@ const colors: ColorsWithModes = {
             hover: globalColors.neutral.ashGrayLight[0],
             focus: globalColors.neutral.ashGrayLight[0],
             active: globalColors.neutral.ashGrayLight[0],
-            disabled: globalColors.neutral.ashGrayLight.A500,
+            disabled: globalColors.neutral.ashGrayLight.a500,
           },
           tertiary: {
             default: globalColors.neutral.ashGrayLight[0],

@@ -43,7 +43,7 @@ describe('<Display />', () => {
     const { container } = renderWithTheme(
       <Display>
         Supercharge your business with the all‑powerful{' '}
-        <Display as="span" color="feedback.information.action.text.primary.default.lowContrast">
+        <Display as="span" color="feedback.information.action.text.primary.default">
           Payment Gateway
         </Display>
       </Display>,

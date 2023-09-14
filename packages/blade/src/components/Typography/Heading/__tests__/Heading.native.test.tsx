@@ -26,7 +26,7 @@ describe('<Heading />', () => {
     const { toJSON } = renderWithTheme(
       <Heading>
         Supercharge your business with the all‑powerful{' '}
-        <Heading as="span" color="feedback.information.action.text.primary.default.lowContrast">
+        <Heading as="span" color="feedback.information.action.text.primary.default">
           Payment Gateway
         </Heading>
       </Heading>,

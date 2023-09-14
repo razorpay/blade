@@ -47,7 +47,7 @@ describe('<Title />', () => {
     const { toJSON } = renderWithTheme(
       <Title>
         Supercharge your business with the all‑powerful{' '}
-        <Title as="span" color="feedback.information.action.text.primary.default.lowContrast">
+        <Title as="span" color="feedback.information.action.text.primary.default">
           Payment Gateway
         </Title>
       </Title>,
