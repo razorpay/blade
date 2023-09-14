@@ -93,7 +93,7 @@ export default {
 
 const Center = ({ children }: { children: React.ReactNode }): React.ReactElement => {
   return (
-    <Box width="100%" height="100%" display="flex" alignItems="center" justifyContent="center">
+    <Box width="100%" height="70vh" display="flex" alignItems="center" justifyContent="center">
       {children}
     </Box>
   );
@@ -191,27 +191,27 @@ export const Controlled: ComponentStory<typeof Popover> = (args) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const LeadingIcon = iconMap[args.titleLeading as string]!;
   return (
-    <Center>
-      <Popover
-        {...args}
-        isOpen={isOpen}
-        onOpenChange={({ isOpen }) => {
-          setIsOpen(isOpen);
-        }}
-        footer={<FooterContent onClick={() => setIsOpen(false)} />}
-        titleLeading={<LeadingIcon color="surface.text.normal.lowContrast" size="medium" />}
-      >
-        <Button onClick={() => setIsOpen((prev) => !prev)}>View Settlement</Button>
-      </Popover>
-      <Button
-        marginLeft="spacing.3"
-        onClick={() => {
-          setIsOpen((prev) => !prev);
-        }}
-      >
-        {isOpen ? 'Close' : 'Open'}
-      </Button>
-    </Center>
+    <Box>
+      <Text marginBottom="spacing.5">
+        You can make the popover controlled by passing the isOpen, and onOpenChange props.
+      </Text>
+      <Center>
+        <Box textAlign="center">
+          <Text marginBottom="spacing.4">Is Popover Open? {isOpen ? 'Yes' : 'No'}</Text>
+          <Popover
+            {...args}
+            isOpen={isOpen}
+            onOpenChange={({ isOpen }) => {
+              setIsOpen(isOpen);
+            }}
+            footer={<FooterContent onClick={() => setIsOpen(false)} />}
+            titleLeading={<LeadingIcon color="surface.text.normal.lowContrast" size="medium" />}
+          >
+            <Button onClick={() => setIsOpen((prev) => !prev)}>View Settlement</Button>
+          </Popover>
+        </Box>
+      </Center>
+    </Box>
   );
 };
 Controlled.args = {
