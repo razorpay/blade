@@ -1,20 +1,20 @@
 import React from 'react';
 import { throwBladeError } from '~utils/logger';
 
-type PopoverContext = {
+type PopoverContextProps = {
   close: () => void;
   defaultInitialFocusRef: React.RefObject<HTMLElement>;
   titleId?: string;
 } | null;
-const PopoverContext = React.createContext<PopoverContext>(null);
+const PopoverContext = React.createContext<PopoverContextProps>(null);
 
-const usePopoverContext = (): NonNullable<PopoverContext> => {
+const usePopoverContext = (): NonNullable<PopoverContextProps> => {
   const context = React.useContext(PopoverContext);
 
   if (__DEV__) {
     if (!context) {
       throwBladeError({
-        message: `PopoverInteractiveWrapper must be used within Popover`,
+        message: `usePopoverContext must be used within Popover`,
         moduleName: 'Popover',
       });
     }

@@ -18,7 +18,6 @@ import React from 'react';
 import type { PopoverProps } from './types';
 import { PopoverContent } from './PopoverContent';
 import { ARROW_HEIGHT, ARROW_WIDTH, popoverZIndex } from './constants';
-import { getPlacementParts } from './utils';
 import { PopoverContext } from './PopoverContext';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
@@ -30,6 +29,7 @@ import { PopupArrow } from '~components/PopupArrow';
 import { useMergeRefs } from '~utils/useMergeRefs';
 import { makeAccessible } from '~utils/makeAccessible';
 import { useId } from '~utils/useId';
+import { getFloatingPlacementParts } from '~utils/getFloatingPlacementParts';
 
 const Popover = ({
   content,
@@ -50,7 +50,7 @@ const Popover = ({
   const titleId = useId('popover-title');
 
   const GAP = theme.spacing[2];
-  const [side] = getPlacementParts(placement);
+  const [side] = getFloatingPlacementParts(placement);
   const isHorizontal = side === 'left' || side === 'right';
   const isOppositeAxis = side === 'right' || side === 'bottom';
 
@@ -71,7 +71,7 @@ const Popover = ({
       offset(GAP + ARROW_HEIGHT),
       arrow({
         element: arrowRef,
-        padding: isHorizontal ? 0 : ARROW_WIDTH,
+        padding: isHorizontal ? GAP + ARROW_HEIGHT : ARROW_WIDTH,
       }),
     ],
     whileElementsMounted: autoUpdate,
@@ -83,7 +83,7 @@ const Popover = ({
 
   // we need to animate from the offset of the computed placement
   // because placement can change dynamically based on available space
-  const [computedSide] = getPlacementParts(computedPlacement);
+  const [computedSide] = getFloatingPlacementParts(computedPlacement);
   const computedIsHorizontal = computedSide === 'left' || computedSide === 'right';
   const animationOffset = isOppositeAxis ? -size[4] : size[4];
   const { isMounted, styles } = useTransitionStyles(context, {
