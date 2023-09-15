@@ -220,11 +220,10 @@ export const InternalLinkDropdown = (): React.ReactElement => {
     <Box padding="spacing.10" display="flex" alignItems="center" gap="spacing.2">
       <Text>Sort By</Text>
       <Box flex="1">
-        <Dropdown onDismiss={() => setIsDropdownOpen(false)}>
+        <Dropdown onOpenChange={setIsDropdownOpen} isOpen={isDropdownOpen}>
           <DropdownLink
             icon={isDropdownOpen ? ChevronUpIcon : ChevronDownIcon}
             iconPosition="right"
-            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
           >
             {status ?? ''}
           </DropdownLink>

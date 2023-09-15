@@ -49,14 +49,14 @@ const validDropdownChildren = [
  */
 const _Dropdown = ({
   children,
-  isOpen: isOpenProp,
-  setIsOpen: setIsOpenProp,
+  isOpen: isOpenControlled,
+  onOpenChange,
   selectionType = 'single',
   onDismiss,
   testID,
   ...styledProps
 }: DropdownProps): React.ReactElement => {
-  const [isOpen, setIsOpen] = React.useState(isOpenProp ?? false);
+  const [isOpen, setIsOpen] = React.useState<boolean>(isOpenControlled ?? false);
   const [options, setOptions] = React.useState<DropdownContextType['options']>([]);
   const [selectedIndices, setSelectedIndices] = React.useState<
     DropdownContextType['selectedIndices']
@@ -90,33 +90,28 @@ const _Dropdown = ({
   const isFirstRenderRef = React.useRef(true);
 
   React.useEffect(() => {
-    // Ignoring the `onDismiss` call on first render
+    // Ignoring the `onDismiss` and `onOpenChange` call on first render
     if (isFirstRenderRef.current) {
       isFirstRenderRef.current = false;
       return;
     }
 
-    if (!isOpen && onDismiss) {
-      onDismiss();
+    onOpenChange?.(isOpen);
+    if (!isOpen) {
+      onDismiss?.();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
   React.useEffect(() => {
-    // Sets `isOpen` to `isOpenProp` is it is changed by the user
-    setIsOpen(isOpenProp ?? isOpen)
-  }, [isOpenProp])
-
-  React.useEffect(() => {
-    // if `setIsOpen` prop is not undefined, sync it with the internal `isOpen` state
-    if (setIsOpenProp)
-      setIsOpenProp(isOpen)
-  }, [isOpen])
+    if (isOpenControlled !== undefined) {
+      setIsOpen(isOpenControlled);
+    }
+  }, [isOpenControlled]);
 
   const close = React.useCallback(() => {
     setIsOpen(false);
-    onDismiss?.();
-  }, [onDismiss]);
+  }, []);
 
   React.Children.map(children, (child) => {
     if (React.isValidElement(child)) {

@@ -397,12 +397,14 @@ describe('<Dropdown />', () => {
   it('should handle controlled props with single select', async () => {
     const ControlledDropdown = (): React.ReactElement => {
       const [currentSelection, setCurrentSelection] = React.useState<undefined | string>();
+      const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
 
       return (
         <>
           <Button onClick={() => setCurrentSelection('bangalore')}>Select Bangalore</Button>
           <Button onClick={() => setCurrentSelection('')}>Clear Selection</Button>
-          <Dropdown selectionType="single">
+          <Button onClick={() => setIsDropdownOpen(!isDropdownOpen)}>Toggle Dropdown</Button>
+          <Dropdown isOpen={isDropdownOpen} onOpenChange={setIsDropdownOpen} selectionType="single">
             <SelectInput
               label="Select City"
               value={currentSelection}
@@ -423,7 +425,7 @@ describe('<Dropdown />', () => {
     };
 
     const user = userEvent.setup();
-    const { getByRole } = renderWithTheme(<ControlledDropdown />);
+    const { getByRole, queryByRole } = renderWithTheme(<ControlledDropdown />);
 
     const selectInput = getByRole('combobox', { name: 'Select City' });
     expect(selectInput).toHaveTextContent('Select Option');
@@ -439,11 +441,17 @@ describe('<Dropdown />', () => {
 
     await user.click(getByRole('button', { name: 'Clear Selection' }));
     expect(selectInput).toHaveTextContent('Select Option');
+
+    await user.click(getByRole('button', { name: 'Toggle Dropdown' }));
+    await waitFor(() => expect(getByRole('listbox', { name: 'Select City' })).toBeVisible());
+    await user.click(getByRole('button', { name: 'Toggle Dropdown' }));
+    await waitFor(() => expect(queryByRole('listbox', { name: 'Select City' })).not.toBeVisible());
   });
 
   it('should handle controlled props with multi select', async () => {
     const ControlledDropdown = (): React.ReactElement => {
       const [currentSelection, setCurrentSelection] = React.useState<string[]>([]);
+      const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
 
       return (
         <>
@@ -456,7 +464,13 @@ describe('<Dropdown />', () => {
           >
             Select Bangalore
           </Button>
-          <Dropdown selectionType="multiple">
+          <Button onClick={() => setIsDropdownOpen(!isDropdownOpen)}>Toggle Dropdown</Button>
+
+          <Dropdown
+            isOpen={isDropdownOpen}
+            onOpenChange={setIsDropdownOpen}
+            selectionType="multiple"
+          >
             <SelectInput
               label="Select City"
               value={currentSelection}
@@ -479,7 +493,7 @@ describe('<Dropdown />', () => {
     };
 
     const user = userEvent.setup();
-    const { getByRole } = renderWithTheme(<ControlledDropdown />);
+    const { getByRole, queryByRole } = renderWithTheme(<ControlledDropdown />);
 
     const selectInput = getByRole('combobox', { name: 'Select City' });
     expect(selectInput).toHaveTextContent('Select Option');
@@ -492,6 +506,11 @@ describe('<Dropdown />', () => {
 
     await user.click(getByRole('button', { name: 'Select Bangalore' }));
     expect(selectInput).toHaveTextContent('2 items selected');
+
+    await user.click(getByRole('button', { name: 'Toggle Dropdown' }));
+    await waitFor(() => expect(getByRole('listbox', { name: 'Select City' })).toBeVisible());
+    await user.click(getByRole('button', { name: 'Toggle Dropdown' }));
+    await waitFor(() => expect(queryByRole('listbox', { name: 'Select City' })).not.toBeVisible());
   });
 
   it('should accept testID', async () => {
