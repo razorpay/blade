@@ -20,7 +20,7 @@ const propsCategory = {
 };
 
 export default {
-  title: 'Components/Dropdown/With Select',
+  title: 'Components/Dropdown/With Select/Stories',
   component: SelectInput,
   args: {
     defaultValue: undefined,

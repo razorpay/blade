@@ -25,7 +25,7 @@ const propsCategory = {
 };
 
 export default {
-  title: 'Components/Dropdown/With AutoComplete',
+  title: 'Components/Dropdown/With AutoComplete/Stories',
   component: AutoComplete,
   args: {
     defaultValue: undefined,
