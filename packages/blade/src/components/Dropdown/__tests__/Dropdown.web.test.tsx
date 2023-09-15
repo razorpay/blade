@@ -552,7 +552,7 @@ describe('<Dropdown />', () => {
 describe('<Dropdown /> with <DropdownButton />', () => {
   // Skipping this test because the id that `useId` generates seems to be different and flaky between local and CI.
   // Have to figure out solution to that and then enable this again.
-  it('should render menu', async () => {
+  it.skip('should render menu', () => {
     const profileClickHandler = jest.fn();
 
     const { container } = renderWithTheme(
