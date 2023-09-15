@@ -338,18 +338,12 @@ const getDarkTheme = (brandColors: ColorChromaticScale): ThemeTokens => {
  * @param {Object} themeConfig - The brand color and overrides to apply to the theme
  * @param {string} themeConfig.brandColor - The brand color to use to generate the theme. Can be in hex, rgb, or hsl format.
  * @description
- * Creates a Blade Theme based on the custom brand color and overrides passed in
- * @returns The Theme Tokens with the custom brand colors and overrides applied
+ * Creates a Blade Theme based on the custom brand color
+ * @returns The Theme Tokens with the custom brand colors
  * @example
- * const theme = createTheme({ brandColor: '#19BEA2', overrides: {} })
+ * const theme = createTheme({ brandColor: '#19BEA2'})
  **/
-export const createTheme = ({
-  brandColor,
-  overrides: extraOverrides = {},
-}: {
-  brandColor: ColorInput;
-  overrides?: DeepPartial<ThemeTokens>;
-}): ThemeTokens => {
+export const createTheme = ({ brandColor }: { brandColor: ColorInput }): ThemeTokens => {
   const chromaticBrandColors = generateChromaticBrandColors(brandColor);
   // Get theme tokens for overriding onLight colors which are based on payment theme
   const brandedLightTheme = getLightTheme(chromaticBrandColors);
@@ -371,10 +365,5 @@ export const createTheme = ({
     },
   });
 
-  const brandedThemeTokensWithExtraOverrides = overrideTheme({
-    baseThemeTokens: brandedThemeTokens,
-    overrides: extraOverrides,
-  });
-
-  return brandedThemeTokensWithExtraOverrides;
+  return brandedThemeTokens;
 };
