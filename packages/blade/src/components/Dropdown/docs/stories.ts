@@ -110,6 +110,7 @@ const getSimpleSelectCode = (selectionType: DropdownProps['selectionType']): str
 `;
 
 const WithHeaderFooterScroll = `
+  import React from 'react';
   import { 
     Dropdown, 
     DropdownOverlay,
@@ -132,8 +133,13 @@ const WithHeaderFooterScroll = `
   } from '@razorpay/blade/components';
 
   function App(): React.ReactElement {
+    const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
+
     return (
-      <Dropdown>
+      <Dropdown
+        isOpen={isDropdownOpen}
+        onOpenChange={setIsDropdownOpen}
+      >
         <SelectInput
           label="Select Action"
           onChange={({ name, values }) => {
@@ -205,7 +211,14 @@ const WithHeaderFooterScroll = `
             />
           </ActionList>
           <DropdownFooter>
-            <Button isFullWidth onClick={console.log}>Apply</Button>
+            <Button 
+              isFullWidth 
+              onClick={() => {
+                setIsDropdownOpen(false);
+              }}
+            >
+              Close
+            </Button>
           </DropdownFooter>
         </DropdownOverlay>
       </Dropdown>
