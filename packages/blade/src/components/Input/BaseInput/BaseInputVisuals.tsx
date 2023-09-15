@@ -12,11 +12,12 @@ type InputVisuals = Pick<
 
 const getVisualContainerStyles = (): Pick<
   BaseBoxProps,
-  'display' | 'flexDirection' | 'alignItems'
+  'display' | 'flexDirection' | 'alignItems' | 'alignSelf'
 > => ({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
+  alignSelf: 'center',
 });
 
 const getPrefixStyles = ({
