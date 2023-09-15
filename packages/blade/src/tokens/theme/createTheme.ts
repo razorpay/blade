@@ -2,12 +2,11 @@ import tinycolor from 'tinycolor2';
 import type { WCAG2Options, ColorInput } from 'tinycolor2';
 import type { ThemeTokens } from './theme';
 import overrideTheme from './overrideTheme';
-import bankingTheme from './bankingTheme';
 import paymentTheme from './paymentTheme';
 import { colors as globalColors, opacity } from '~tokens/global';
 import type { ColorChromaticScale } from '~tokens/global/colors';
-import type { DeepPartial } from '~utils/isPartialMatchObjectKeys';
 import { throwBladeError } from '~utils/logger';
+import type { DeepPartial } from '~utils/isPartialMatchObjectKeys';
 
 // WCAG2ContrastOptions are the options used to determine if a color is readable
 const WCAG2ContrastOptions: WCAG2Options = {
@@ -96,14 +95,14 @@ const generateChromaticBrandColors = (baseColorInput: ColorInput): ColorChromati
 
 /**
  *
- * @param brandColors - The brand colors to use to override the payment theme
- * @description Overrides the payment theme with the brand colors passed in
- * @returns The light theme tokens with the custom brand colors
+ * @param brandColors - The brand colors to use to override the light theme
+ * @description Returns overrides for the light theme with the brand colors passed in
+ * @returns Overrides for the light theme with the custom brand colors
  */
-const getLightTheme = (brandColors: ColorChromaticScale): ThemeTokens => {
+const getOnLightOverrides = (brandColors: ColorChromaticScale): DeepPartial<ThemeTokens> => {
   // Select the most readable color to use as the foreground color on top of brand color
   // For example: On Primary Button where the background color is brand color, the text color should be either dark or light depending on which is more readable on top of that brand color
-  const foregroundOnBrandColorPaymentLight = tinycolor
+  const foregroundOnBrandColorLight = tinycolor
     .mostReadable(
       brandColors[900],
       [globalColors.neutral.blueGrayLight[1100], globalColors.neutral.blueGrayLight[50]],
@@ -113,7 +112,7 @@ const getLightTheme = (brandColors: ColorChromaticScale): ThemeTokens => {
 
   // Select the most readable color to use as the foreground color on top of surface color
   // For example: On Secondary Button where the background color is surface color, the text color should be either the brand color or dark color depending on which is more readable on top of that surface color
-  const foregroundOnSurfacePaymentLight = tinycolor.isReadable(
+  const foregroundOnSurfaceLight = tinycolor.isReadable(
     globalColors.neutral.blueGrayLight[50],
     brandColors[600],
     WCAG2ContrastOptions,
@@ -121,8 +120,8 @@ const getLightTheme = (brandColors: ColorChromaticScale): ThemeTokens => {
     ? brandColors[600]
     : globalColors.neutral.blueGrayLight[1100];
 
-  // Override the payment theme onLight with the brand colors
-  const lightThemePaymentsOverrides = {
+  // Overrides for the light theme with the brand colors passed in
+  const lightThemeOverrides = {
     colors: {
       onLight: {
         brand: {
@@ -136,7 +135,7 @@ const getLightTheme = (brandColors: ColorChromaticScale): ThemeTokens => {
           },
           gray: {
             200: {
-              lowContrast: foregroundOnBrandColorPaymentLight,
+              lowContrast: foregroundOnBrandColorLight,
             },
           },
         },
@@ -183,30 +182,30 @@ const getLightTheme = (brandColors: ColorChromaticScale): ThemeTokens => {
           },
           text: {
             primary: {
-              default: foregroundOnBrandColorPaymentLight,
-              hover: foregroundOnBrandColorPaymentLight,
-              focus: foregroundOnBrandColorPaymentLight,
-              active: foregroundOnBrandColorPaymentLight,
+              default: foregroundOnBrandColorLight,
+              hover: foregroundOnBrandColorLight,
+              focus: foregroundOnBrandColorLight,
+              active: foregroundOnBrandColorLight,
             },
             secondary: {
-              default: foregroundOnSurfacePaymentLight,
-              hover: foregroundOnSurfacePaymentLight,
-              focus: foregroundOnSurfacePaymentLight,
-              active: foregroundOnSurfacePaymentLight,
+              default: foregroundOnSurfaceLight,
+              hover: foregroundOnSurfaceLight,
+              focus: foregroundOnSurfaceLight,
+              active: foregroundOnSurfaceLight,
             },
           },
           icon: {
             primary: {
-              default: foregroundOnBrandColorPaymentLight,
-              hover: foregroundOnBrandColorPaymentLight,
-              focus: foregroundOnBrandColorPaymentLight,
-              active: foregroundOnBrandColorPaymentLight,
+              default: foregroundOnBrandColorLight,
+              hover: foregroundOnBrandColorLight,
+              focus: foregroundOnBrandColorLight,
+              active: foregroundOnBrandColorLight,
             },
             secondary: {
-              default: foregroundOnSurfacePaymentLight,
-              hover: foregroundOnSurfacePaymentLight,
-              focus: foregroundOnSurfacePaymentLight,
-              active: foregroundOnSurfacePaymentLight,
+              default: foregroundOnSurfaceLight,
+              hover: foregroundOnSurfaceLight,
+              focus: foregroundOnSurfaceLight,
+              active: foregroundOnSurfaceLight,
             },
           },
         },
@@ -214,41 +213,38 @@ const getLightTheme = (brandColors: ColorChromaticScale): ThemeTokens => {
     },
   };
 
-  return overrideTheme({
-    baseThemeTokens: paymentTheme,
-    overrides: lightThemePaymentsOverrides,
-  });
+  return lightThemeOverrides;
 };
 
 /**
  *
- * @param brandColors - The brand colors to use to override the banking theme
- * @description Overrides the banking theme with the brand colors passed in
- * @returns The dark theme tokens with the custom brand colors
+ * @param brandColors - The brand colors to use to override the dark theme
+ * @description Returns overrides for the dark theme with the brand colors passed in
+ * @returns Overrides for the dark theme with the custom brand colors
  */
-const getDarkTheme = (brandColors: ColorChromaticScale): ThemeTokens => {
+const getOnDarkOverrides = (brandColors: ColorChromaticScale): DeepPartial<ThemeTokens> => {
   // Select the most readable color to use as the foreground color on top of brand color
   // For example: On Primary Button where the background color is brand color, the text color should be either dark or light depending on which is more readable on top of that brand color
-  const foregroundOnBrandColorBankingDark = tinycolor
+  const foregroundOnBrandColorDark = tinycolor
     .mostReadable(
       brandColors[800],
-      [globalColors.neutral.navyGrayDark[800], globalColors.neutral.navyGrayDark[0]],
+      [globalColors.neutral.blueGrayDark[800], globalColors.neutral.blueGrayDark[0]],
       WCAG2ContrastOptions,
     )
     .toHslString();
 
   // Select the most readable color to use as the foreground color on top of surface color
   // For example: On Secondary Button where the background color is surface color, the text color should be either the brand color or light color depending on which is more readable on top of that surface color
-  const foregroundOnSurfaceBankingDark = tinycolor.isReadable(
-    globalColors.neutral.navyGrayDark[1100],
+  const foregroundOnSurfaceDark = tinycolor.isReadable(
+    globalColors.neutral.blueGrayDark[1100],
     brandColors[400],
     WCAG2ContrastOptions,
   )
     ? brandColors[400]
-    : globalColors.neutral.navyGrayDark[0];
+    : globalColors.neutral.blueGrayDark[0];
 
-  // Override the banking theme onDark with the brand colors
-  const darkThemeBankingOverrides = {
+  // Overrides for the dark theme with the brand colors passed in
+  const darkThemeOverrides = {
     colors: {
       onDark: {
         brand: {
@@ -262,7 +258,7 @@ const getDarkTheme = (brandColors: ColorChromaticScale): ThemeTokens => {
           },
           gray: {
             200: {
-              lowContrast: foregroundOnBrandColorBankingDark,
+              lowContrast: foregroundOnBrandColorDark,
             },
           },
         },
@@ -297,30 +293,30 @@ const getDarkTheme = (brandColors: ColorChromaticScale): ThemeTokens => {
           },
           text: {
             primary: {
-              default: foregroundOnBrandColorBankingDark,
-              hover: foregroundOnBrandColorBankingDark,
-              focus: foregroundOnBrandColorBankingDark,
-              active: foregroundOnBrandColorBankingDark,
+              default: foregroundOnBrandColorDark,
+              hover: foregroundOnBrandColorDark,
+              focus: foregroundOnBrandColorDark,
+              active: foregroundOnBrandColorDark,
             },
             secondary: {
-              default: foregroundOnSurfaceBankingDark,
-              hover: foregroundOnSurfaceBankingDark,
-              focus: foregroundOnSurfaceBankingDark,
-              active: foregroundOnSurfaceBankingDark,
+              default: foregroundOnSurfaceDark,
+              hover: foregroundOnSurfaceDark,
+              focus: foregroundOnSurfaceDark,
+              active: foregroundOnSurfaceDark,
             },
           },
           icon: {
             primary: {
-              default: foregroundOnBrandColorBankingDark,
-              hover: foregroundOnBrandColorBankingDark,
-              focus: foregroundOnBrandColorBankingDark,
-              active: foregroundOnBrandColorBankingDark,
+              default: foregroundOnBrandColorDark,
+              hover: foregroundOnBrandColorDark,
+              focus: foregroundOnBrandColorDark,
+              active: foregroundOnBrandColorDark,
             },
             secondary: {
-              default: foregroundOnSurfaceBankingDark,
-              hover: foregroundOnSurfaceBankingDark,
-              focus: foregroundOnSurfaceBankingDark,
-              active: foregroundOnSurfaceBankingDark,
+              default: foregroundOnSurfaceDark,
+              hover: foregroundOnSurfaceDark,
+              focus: foregroundOnSurfaceDark,
+              active: foregroundOnSurfaceDark,
             },
           },
         },
@@ -328,10 +324,7 @@ const getDarkTheme = (brandColors: ColorChromaticScale): ThemeTokens => {
     },
   };
 
-  return overrideTheme({
-    baseThemeTokens: bankingTheme,
-    overrides: darkThemeBankingOverrides,
-  });
+  return darkThemeOverrides;
 };
 
 /**
@@ -345,21 +338,21 @@ const getDarkTheme = (brandColors: ColorChromaticScale): ThemeTokens => {
  **/
 export const createTheme = ({ brandColor }: { brandColor: ColorInput }): ThemeTokens => {
   const chromaticBrandColors = generateChromaticBrandColors(brandColor);
-  // Get theme tokens for overriding onLight colors which are based on payment theme
-  const brandedLightTheme = getLightTheme(chromaticBrandColors);
-  // Get theme tokens for overriding onDark colors which are based on banking theme
-  const brandedDarkTheme = getDarkTheme(chromaticBrandColors);
+  // Get onLight overrides
+  const brandedLightTheme = getOnLightOverrides(chromaticBrandColors);
+  // Get onDark overrides
+  const brandedDarkTheme = getOnDarkOverrides(chromaticBrandColors);
 
-  // Merge theme with light colors from payment theme and dark colors from banking theme
+  // Override the payment theme with the brand colors
   const brandedThemeTokens = overrideTheme({
     baseThemeTokens: paymentTheme,
     overrides: {
       colors: {
         onLight: {
-          ...brandedLightTheme.colors.onLight,
+          ...brandedLightTheme?.colors?.onLight,
         },
         onDark: {
-          ...brandedDarkTheme.colors.onDark,
+          ...brandedDarkTheme?.colors?.onDark,
         },
       },
     },
