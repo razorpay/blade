@@ -47,7 +47,7 @@ const Page = (): React.ReactElement => {
         export default App;
       `}
       </Sandbox>
-      <Title>Tooltip Vs Popover</Title>
+      <Title>Tooltip Vs Popover Vs Guided Tour</Title>
       <PopoverVsTooltip />
     </StoryPageWrapper>
   );
@@ -297,7 +297,7 @@ const CustomTriggerDocs = () => {
       <ListItem>
         Forward event handlers to the custom trigger{' '}
         <ListItemText as="span" type="subdued">
-          (you can import the PopoverTriggerProps type from blade when using TypeScript)
+          (you can import the TooltipTriggerProps type from blade when using TypeScript)
         </ListItemText>
         <List>
           <ListItem>onBlur</ListItem>

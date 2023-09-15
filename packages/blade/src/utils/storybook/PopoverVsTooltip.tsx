@@ -36,14 +36,14 @@ const PopoverVsTooltip = (): React.ReactElement => {
       <thead>
         <tr>
           <th />
-          <th>
+          <th align="left">
             <Strong>Tooltip</Strong>
           </th>
-          <th>
+          <th align="left">
             <Strong>Popover</Strong>
           </th>
-          <th>
-            <Strong>Guided Tour</Strong>
+          <th align="left">
+            <Strong>Guided Tour (Future scope)</Strong>
           </th>
         </tr>
       </thead>

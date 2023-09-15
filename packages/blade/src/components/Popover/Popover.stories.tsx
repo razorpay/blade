@@ -56,7 +56,7 @@ const Page = (): React.ReactElement => {
         export default App;
       `}
       </Sandbox>
-      <Title>Popover Vs Tooltip</Title>
+      <Title>Popover Vs Tooltip Vs Guided Popover</Title>
       <PopoverVsTooltip />
     </StoryPageWrapper>
   );
