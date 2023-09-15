@@ -1,10 +1,10 @@
 import React from 'react';
 import { Pressable } from 'react-native';
 import styled from 'styled-components/native';
-import { componentIds } from './dropdownUtils';
 import { useDropdown } from './useDropdown';
 import { StyledDropdownOverlay } from './StyledDropdownOverlay';
 import type { DropdownOverlayProps } from './types';
+import { dropdownComponentIds } from './dropdownComponentIds';
 import BaseBox from '~components/Box/BaseBox';
 import { makeSize } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
@@ -48,6 +48,7 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): React.Rea
           position="absolute"
           width="100%"
           testID="dropdown-overlay"
+          elevation={bottomSheetAndDropdownGlue?.dropdownHasBottomSheet ? undefined : 'midRaised'}
           {...metaAttribute({ name: MetaConstants.DropdownOverlay, testID })}
         >
           {children}
@@ -58,7 +59,7 @@ const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): React.Rea
 };
 
 const DropdownOverlay = assignWithoutSideEffects(_DropdownOverlay, {
-  componentId: componentIds.DropdownOverlay,
+  componentId: dropdownComponentIds.DropdownOverlay,
 });
 
 export { DropdownOverlay };

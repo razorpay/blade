@@ -1,8 +1,7 @@
 /* eslint-disable react-native-a11y/has-valid-accessibility-descriptors */
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { ComponentStory } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import React from 'react';
-import type { SelectInputProps } from './SelectInput';
 import { SelectInput } from './SelectInput';
 import iconMap from '~components/Icons/iconMap';
 import { Sandbox } from '~utils/storybook/Sandbox';
@@ -21,7 +20,7 @@ const propsCategory = {
 };
 
 export default {
-  title: 'Components/Dropdown/SelectInput',
+  title: 'Components/Dropdown/With Select/Props Playground',
   component: SelectInput,
   args: {
     defaultValue: undefined,
@@ -217,11 +216,11 @@ export default {
       ),
     },
   },
-} as Meta<SelectInputProps>;
+};
 
 const SelectInputTemplate: ComponentStory<typeof SelectInput> = ({ icon, ...args }) => {
   return (
-    <Box minHeight="150px">
+    <Box minHeight="150px" padding="spacing.5">
       <Dropdown>
         <SelectInput {...args} icon={iconMap[(icon as unknown) as string]} />
         <DropdownOverlay>
@@ -236,12 +235,3 @@ const SelectInputTemplate: ComponentStory<typeof SelectInput> = ({ icon, ...args
 };
 
 export const Default = SelectInputTemplate.bind({});
-// Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
-Default.storyName = 'SelectInput';
-
-export const SelectInputWithoutLabel = SelectInputTemplate.bind({});
-SelectInputWithoutLabel.args = {
-  label: undefined,
-  accessibilityLabel: 'City',
-};
-SelectInputWithoutLabel.storyName = 'SelectInput without Label';

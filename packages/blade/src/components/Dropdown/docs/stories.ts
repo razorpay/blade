@@ -573,13 +573,13 @@ const WithControlledMultiSelectStory = `
         >
           Select Bangalore
         </Button>
-        <Dropdown selectionType="single">
+        <Dropdown selectionType="multiple">
           <SelectInput
             label="Select City"
             value={currentSelection}
             onChange={(args) => {
               if (args) {
-                setCurrentSelection(args.values[0]);
+                setCurrentSelection(args.values);
                 console.log('onChange triggered');
               }
             }}
