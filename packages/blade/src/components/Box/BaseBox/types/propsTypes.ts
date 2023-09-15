@@ -16,7 +16,9 @@ type LayoutProps = MakeObjectResponsive<
     width: SpacingValueType;
     minWidth: SpacingValueType;
     maxWidth: SpacingValueType;
-  } & PickCSSByPlatform<'display' | 'overflow' | 'overflowX' | 'overflowY' | 'textAlign'>
+  } & PickCSSByPlatform<
+    'display' | 'overflow' | 'overflowX' | 'overflowY' | 'textAlign' | 'whiteSpace'
+  >
 >;
 
 type FlexboxProps = MakeObjectResponsive<
@@ -289,6 +291,7 @@ type BoxProps = Partial<
     BoxVisualProps & {
       children?: React.ReactNode | React.ReactNode[];
       tabIndex?: number;
+      id?: string;
     } & TestID
 >;
 
@@ -311,4 +314,5 @@ type BoxRefType = Platform.Select<{
   native: View;
 }>;
 
-export { BaseBoxProps, BoxProps, BoxRefType, StyledPropsBlade, FlexboxProps, validBoxAsValues };
+export type { BaseBoxProps, BoxProps, BoxRefType, StyledPropsBlade, FlexboxProps };
+export { validBoxAsValues };

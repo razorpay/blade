@@ -5,7 +5,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { makeAccessible } from '~utils/makeAccessible';
 
 const Indicators = (props: IndicatorsProps): React.ReactElement => {
-  const { carouselId, visibleItems } = useCarouselContext();
+  const { carouselId, isResponsive, visibleItems } = useCarouselContext();
   return (
     <BaseBox
       display="flex"
@@ -14,8 +14,7 @@ const Indicators = (props: IndicatorsProps): React.ReactElement => {
       {...makeAccessible({ role: 'tablist', label: 'Slides' })}
     >
       {new Array(props.totalItems).fill(0).map((_, idx) => {
-        const isResponsive = visibleItems === 'autofit';
-        let _visibleItems = visibleItems as 1 | 2 | 3;
+        let _visibleItems = visibleItems!;
         if (isResponsive) {
           _visibleItems = 1;
         }

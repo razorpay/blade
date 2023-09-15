@@ -34,4 +34,5 @@ const BaseFooter = assignWithoutSideEffects(_BaseFooter, {
   componentId: 'BaseFooter',
 });
 
-export { BaseFooter, BaseFooterProps };
+export type { BaseFooterProps };
+export { BaseFooter };

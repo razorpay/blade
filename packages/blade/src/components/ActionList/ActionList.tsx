@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
-import { useDropdown } from '../Dropdown/useDropdown';
-import { useBottomSheetContext } from '../BottomSheet/BottomSheetContext';
 import { getActionListContainerRole, getActionListItemWrapperRole } from './getA11yRoles';
 import { getActionListProperties } from './actionListUtils';
 import { ActionListBox } from './ActionListBox';
 import { componentIds } from './componentIds';
+import { ActionListNoResults } from './ActionListNoResults';
+import { useDropdown } from '~components/Dropdown/useDropdown';
+import { useBottomSheetContext } from '~components/BottomSheet/BottomSheetContext';
 import { makeAccessible } from '~utils/makeAccessible';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { TestID } from '~utils/types';
@@ -13,6 +14,7 @@ import type { SurfaceLevels } from '~tokens/theme/theme';
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { throwBladeError } from '~utils/logger';
+import { dropdownComponentIds } from '~components/Dropdown/dropdownComponentIds';
 
 type ActionListContextProp = Pick<ActionListProps, 'surfaceLevel'>;
 const ActionListContext = React.createContext<ActionListContextProp>({ surfaceLevel: 2 });
@@ -81,6 +83,7 @@ const _ActionList = ({
     dropdownBaseId,
     dropdownTriggerer,
     hasFooterAction,
+    filteredValues,
   } = useDropdown();
 
   const { isInBottomSheet } = useBottomSheetContext();
@@ -94,6 +97,14 @@ const _ActionList = ({
     setOptions(actionListOptions);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [actionListOptions]);
+  const actionListContextValue = React.useMemo(() => ({ surfaceLevel }), [surfaceLevel]);
+
+  if (
+    filteredValues.length <= 0 &&
+    dropdownTriggerer === dropdownComponentIds.triggers.AutoComplete
+  ) {
+    return <ActionListNoResults />;
+  }
 
   const actionListContainerRole = getActionListContainerRole(hasFooterAction, dropdownTriggerer);
   const actionListItemWrapperRole = getActionListItemWrapperRole(
@@ -101,8 +112,6 @@ const _ActionList = ({
     dropdownTriggerer,
   );
   const isMultiSelectable = selectionType === 'multiple';
-
-  const actionListContextValue = React.useMemo(() => ({ surfaceLevel }), [surfaceLevel]);
 
   // If we are inside BottomSheet, we don't render The StyledActionList wrapper
   // This is to ensure:
@@ -149,4 +158,5 @@ const ActionList = assignWithoutSideEffects(React.memo(_ActionList), {
   componentId: componentIds.ActionList,
 });
 
-export { ActionList, useActionListContext, ActionListProps };
+export type { ActionListProps };
+export { ActionList, useActionListContext };

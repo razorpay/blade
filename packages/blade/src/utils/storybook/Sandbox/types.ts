@@ -33,4 +33,4 @@ type RecipeSandboxProps = {
   view?: 'preview' | 'editor';
 };
 
-export { SandboxProps, RecipeSandboxProps };
+export type { SandboxProps, RecipeSandboxProps };

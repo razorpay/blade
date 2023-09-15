@@ -1,4 +1,5 @@
 import type { DropdownProps } from '~components/Dropdown';
+import { dropdownComponentIds } from '~components/Dropdown/dropdownComponentIds';
 import type { DropdownContextType } from '~components/Dropdown/useDropdown';
 import { isReactNative } from '~utils';
 
@@ -8,7 +9,11 @@ import { isReactNative } from '~utils';
 export const isRoleMenu = (
   dropdownTriggerer: DropdownContextType['dropdownTriggerer'],
 ): boolean => {
-  return isReactNative() || dropdownTriggerer !== 'SelectInput';
+  return (
+    isReactNative() ||
+    (dropdownTriggerer !== dropdownComponentIds.triggers.SelectInput &&
+      dropdownTriggerer !== dropdownComponentIds.triggers.AutoComplete)
+  );
 };
 
 /**
@@ -24,6 +29,10 @@ export const getActionListContainerRole = (
   hasFooterAction: boolean,
   dropdownTriggerer: DropdownContextType['dropdownTriggerer'],
 ): 'dialog' | 'listbox' | 'menu' => {
+  if (isReactNative()) {
+    return 'menu';
+  }
+
   if (hasFooterAction) {
     return 'dialog';
   }
@@ -41,15 +50,6 @@ export const getActionListSectionRole = (): 'group' | undefined => {
   }
 
   return 'group';
-};
-
-export const getSeparatorRole = (): 'separator' | undefined => {
-  if (isReactNative()) {
-    // Its not really announced so ignoring it in native.
-    return undefined;
-  }
-
-  return 'separator';
 };
 
 export const getActionListItemWrapperRole = (

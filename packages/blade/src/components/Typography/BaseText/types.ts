@@ -64,7 +64,7 @@ export type BaseTextProps = {
    * React Native only
    */
   numberOfLines?: number;
-  componentName?: 'base-text' | 'text' | 'title' | 'heading' | 'code';
+  componentName?: 'base-text' | 'text' | 'title' | 'heading' | 'code' | 'display';
 } & TestID &
   StyledPropsBlade;
 

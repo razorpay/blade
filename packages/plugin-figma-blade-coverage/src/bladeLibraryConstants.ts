@@ -78,6 +78,13 @@ export const paymentLightThemeData = {
     'Dropdown/Footer': {
       key: '1568049d40a5c7465dbf686d6e9d5892ec4b69d2',
     },
+    'Icon Size': {
+      key: '06edcdaff550d4c96534c6d95f968e0e4b3eb224',
+    },
+    // @TODO: remove this once replaced on Theme files on Figma
+    'Icon Size Base': {
+      key: 'f97da62257fb94b1bfcfc3f0fb81ef77ac65276d',
+    },
     List: {
       key: '49cd227b1c67f7c13d432eadd4adbd59d2c93572',
     },
@@ -141,6 +148,9 @@ export const paymentLightThemeData = {
     },
     Heading: {
       key: 'c91a7dfbe196427235d83d1f2d0616cf9d68adb0',
+    },
+    Display: {
+      key: '856b8daacf67b0dda92fca150324a1ceb888cc0f',
     },
 
     // Input Elements
@@ -4225,6 +4235,9 @@ export const bankingDarkThemeData = {
     'Dropdown/Footer': {
       key: '9b9e58ddb16265e0eed88e2288ac7e88fa995648',
     },
+    'Icon Size': {
+      key: '5e2b568a6f6166640f7cad8f5aca2076f00f47ad',
+    },
     List: {
       key: 'fee722721f71351976176095b6d4bb0ca2e5373d',
     },
@@ -4289,6 +4302,9 @@ export const bankingDarkThemeData = {
     },
     Heading: {
       key: 'f62d79aec517f0cd7176b7bada076e12d1ab27d7',
+    },
+    Display: {
+      key: '6e3ddeff38aea7ff19d02655fc274d6a008b8a2b',
     },
 
     // Input Elements

@@ -1,17 +1,18 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/display-name */
 import React from 'react';
+import type { GestureResponderEvent } from 'react-native';
 import StyledIconButton from './StyledIconButton';
 import type { IconComponent } from '~components/Icons';
 import type { BladeElementRef } from '~utils/types';
 import type { BladeCommonEvents } from '~components/types';
+import type { Platform } from '~utils';
 
 type IconButtonProps = {
   /**
    * Icon component to be rendered, eg. `CloseIcon`
    */
   icon: IconComponent;
-  onClick: () => void;
 
   /**
    * Icon size
@@ -36,7 +37,20 @@ type IconButtonProps = {
    * Disabled state for IconButton
    */
   isDisabled?: boolean;
-} & BladeCommonEvents;
+
+  /**
+   * Sets tabindex property on button element
+   */
+  _tabIndex?: number;
+} & BladeCommonEvents &
+  Platform.Select<{
+    web: {
+      onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+    };
+    native: {
+      onClick: (event: GestureResponderEvent) => void;
+    };
+  }>;
 
 /**
  * Component for making clickable icons with transparent background.
@@ -58,6 +72,7 @@ const _IconButton: React.ForwardRefRenderFunction<BladeElementRef, IconButtonPro
     onPointerEnter,
     onTouchEnd,
     onTouchStart,
+    _tabIndex,
   },
   ref,
 ) => {
@@ -68,6 +83,7 @@ const _IconButton: React.ForwardRefRenderFunction<BladeElementRef, IconButtonPro
       contrast={contrast}
       size={size}
       icon={icon}
+      tabIndex={_tabIndex}
       accessibilityLabel={accessibilityLabel}
       isDisabled={isDisabled}
       onBlur={onBlur}
@@ -84,4 +100,5 @@ const _IconButton: React.ForwardRefRenderFunction<BladeElementRef, IconButtonPro
 
 const IconButton = React.forwardRef(_IconButton);
 
-export { IconButtonProps, IconButton };
+export type { IconButtonProps };
+export { IconButton };

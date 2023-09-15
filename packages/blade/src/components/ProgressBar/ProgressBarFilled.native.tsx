@@ -11,9 +11,9 @@ import Animated, {
   withSequence,
   withTiming,
 } from 'react-native-reanimated';
-import { useTheme } from '../BladeProvider';
 import type { ProgressBarFilledProps } from './types';
 import { indeterminateAnimation, pulseAnimation } from './progressBarTokens';
+import { useTheme } from '~components/BladeProvider';
 import { castNativeType } from '~utils';
 import { makeMotionTime } from '~utils/makeMotionTime';
 
@@ -176,4 +176,5 @@ const ProgressBarFilled = ({
   );
 };
 
-export { ProgressBarFilled, ProgressBarFilledProps };
+export type { ProgressBarFilledProps };
+export { ProgressBarFilled };

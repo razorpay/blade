@@ -63,6 +63,7 @@ describe('<Carousel />', () => {
     expect(getByRole('tab', { selected: true })).toHaveProp('slideIndex', 0);
 
     expect(queryAllByRole('tab').length).toBe(4);
+    expect(onChange).toBeCalledTimes(4);
   });
 
   it('should go to specific slide when clicking on indicator button', () => {
@@ -93,6 +94,7 @@ describe('<Carousel />', () => {
     fireEvent.press(queryAllByRole('tab')[0]);
     expect(onChange).toHaveBeenLastCalledWith(0);
     expect(getByRole('tab', { selected: true })).toHaveProp('slideIndex', 0);
+    expect(onChange).toBeCalledTimes(2);
   });
 
   it('should wrap around when reaching start or end slide', () => {
@@ -128,6 +130,7 @@ describe('<Carousel />', () => {
     fireEvent.press(nextButton);
     expect(onChange).toHaveBeenLastCalledWith(0);
     expect(getByRole('tab', { selected: true })).toHaveProp('slideIndex', 0);
+    expect(onChange).toBeCalledTimes(2);
   });
 
   it('should auto play', async () => {
@@ -169,6 +172,7 @@ describe('<Carousel />', () => {
 
     expect(onChange).toHaveBeenLastCalledWith(0);
     expect(getByRole('tab', { selected: true })).toHaveProp('slideIndex', 0);
+    expect(onChange).toBeCalledTimes(3);
   });
 
   it('should not auto play when user is scrolling', async () => {
@@ -215,6 +219,7 @@ describe('<Carousel />', () => {
 
     expect(onChange).toHaveBeenLastCalledWith(2);
     expect(getByRole('tab', { selected: true })).toHaveProp('slideIndex', 2);
+    expect(onChange).toBeCalledTimes(2);
   });
 });
 

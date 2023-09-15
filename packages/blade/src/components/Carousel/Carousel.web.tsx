@@ -22,6 +22,7 @@ import { castWebType, makeMotionTime, useInterval, useTheme } from '~utils';
 import { useId } from '~utils/useId';
 import { makeAccessible } from '~utils/makeAccessible';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { useDidUpdate } from '~utils/useDidUpdate';
 
 type ControlsProp = Required<
   Pick<
@@ -115,7 +116,6 @@ const CarouselContainer = styled(BaseBox)<{
     flexWrap: 'nowrap',
     scrollSnapType: 'x mandatory',
     scrollSnapPointsY: `repeat(100%)`,
-    scrollBehavior: 'smooth',
     msOverflowStyle: 'none' /* IE and Edge */,
     scrollbarWidth: 'none' /* Firefox */,
     /* Needed to work on iOS Safari */
@@ -155,6 +155,7 @@ type CarouselBodyProps = {
   isScrollAtEnd: boolean;
   carouselItemAlignment: CarouselProps['carouselItemAlignment'];
   accessibilityLabel?: string;
+  startEndMargin: number;
 };
 
 const CarouselBody = React.forwardRef<HTMLDivElement, CarouselBodyProps>(
@@ -169,6 +170,7 @@ const CarouselBody = React.forwardRef<HTMLDivElement, CarouselBodyProps>(
       isScrollAtEnd,
       carouselItemAlignment,
       accessibilityLabel,
+      startEndMargin,
     },
     ref,
   ) => {
@@ -189,12 +191,30 @@ const CarouselBody = React.forwardRef<HTMLDivElement, CarouselBodyProps>(
         })}
       >
         {React.Children.map(children, (child, index) => {
-          return React.cloneElement(child as React.ReactElement, {
-            index,
-            id: `${idPrefix}-carousel-item-${index}`,
-            shouldHaveStartSpacing: shouldAddStartEndSpacing && index === 0,
-            shouldHaveEndSpacing: shouldAddStartEndSpacing && index === totalSlides - 1,
-          });
+          const shouldHaveStartSpacing = shouldAddStartEndSpacing && index === 0;
+          const shouldHaveEndSpacing = shouldAddStartEndSpacing && index === totalSlides - 1;
+          const carouselItemNode: React.ReactElement = React.cloneElement(
+            child as React.ReactElement,
+            {
+              index,
+              id: `${idPrefix}-carousel-item-${index}`,
+              shouldHaveStartSpacing,
+              shouldHaveEndSpacing,
+            },
+          );
+
+          // Safari doesn't include the margin in the bounding box calculation
+          // Thus have to add an additional box to the end of the carousel to ensure we can scroll past the last item
+          // https://stackoverflow.com/questions/75509058/safari-does-not-include-margins-to-the-scroll-width
+          if (shouldHaveEndSpacing) {
+            return (
+              <>
+                {carouselItemNode}
+                {<BaseBox minWidth={`${startEndMargin}px`} />}
+              </>
+            );
+          }
+          return carouselItemNode;
         })}
       </CarouselContainer>
     );
@@ -351,6 +371,8 @@ const Carousel = ({
 
   // Sync the indicators with scroll
   React.useEffect(() => {
+    // do not sync indicators on desktop, we are already in sync because we can only use the next/prev buttons
+    if (!isMobile) return;
     const carouselContainer = containerRef.current;
     if (!carouselContainer) return;
 
@@ -384,7 +406,7 @@ const Carousel = ({
     return () => {
       carouselContainer?.removeEventListener('scroll', handleScroll);
     };
-  }, [_visibleItems, isResponsive, shouldAddStartEndSpacing]);
+  }, [_visibleItems, isMobile, isResponsive, shouldAddStartEndSpacing]);
 
   // auto play
   useInterval(
@@ -400,7 +422,8 @@ const Carousel = ({
 
   const carouselContext = React.useMemo<CarouselContextProps>(() => {
     return {
-      visibleItems,
+      isResponsive,
+      visibleItems: _visibleItems,
       carouselItemWidth,
       carouselContainerRef: containerRef,
       setActiveIndicator,
@@ -413,14 +436,15 @@ const Carousel = ({
   }, [
     id,
     startEndMargin,
-    visibleItems,
+    isResponsive,
+    _visibleItems,
     carouselItemWidth,
     totalNumberOfSlides,
     activeSlide,
     shouldAddStartEndSpacing,
   ]);
 
-  React.useEffect(() => {
+  useDidUpdate(() => {
     onChange?.(activeSlide);
   }, [activeSlide, onChange]);
 
@@ -482,6 +506,7 @@ const Carousel = ({
           ) : null}
           <CarouselBody
             idPrefix={id}
+            startEndMargin={startEndMargin}
             totalSlides={totalNumberOfSlides}
             shouldAddStartEndSpacing={shouldAddStartEndSpacing}
             scrollOverlayColor={scrollOverlayColor}

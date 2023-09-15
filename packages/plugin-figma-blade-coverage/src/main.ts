@@ -99,7 +99,11 @@ const renderCoverageCard = async ({
     );
     const coverageCardInstance = coverageCardComponent.createInstance();
     coverageCardInstance.visible = false;
-    coverageCardInstance.x = mainFrameNode.x + 150; // 150 because we want to prevent conflict with the frame name
+    if (mainFrameNode.width < 500) {
+      coverageCardInstance.x = mainFrameNode.x + 20; // for mobile screens the card shouldn't offset a lot
+    } else {
+      coverageCardInstance.x = mainFrameNode.x + 150; // 150 because we want to prevent conflict with the frame name
+    }
     coverageCardInstance.y = mainFrameNode.y - coverageCardComponent.height;
 
     // import styles for popsitive, negative and notice colors and set their id in BLADE_INTENT_COLOR_KEYS
@@ -234,10 +238,12 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
           } else {
             bladeComponents++;
           }
-        } else if (traversedNode.type === 'INSTANCE') {
-          nonBladeComponents++;
-          highlightNonBladeNode(traversedNode, 'Instance is not a Blade Instance');
-        } else if (traversedNode.type === 'TEXT') {
+        }
+        // else if (traversedNode.type === 'INSTANCE') {
+        //   nonBladeComponents++;
+        //   highlightNonBladeNode(traversedNode, 'Instance is not a Blade Instance');
+        // }
+        else if (traversedNode.type === 'TEXT') {
           // check if the text is using Blade's text styles
           let isMixedTextStyleOfBlade = false;
           let traversedNodeTextStyleId = '';

@@ -1,6 +1,6 @@
 import React from 'react';
 import type { ComponentStory, Meta } from '@storybook/react';
-import { Dropdown, DropdownOverlay } from '..';
+import { Dropdown, DropdownFooter, DropdownHeader, DropdownOverlay } from '..';
 import {
   getSimpleSelectCode,
   WithAutoPositioningSelectStory,
@@ -15,7 +15,7 @@ import {
 } from './stories';
 
 import { Sandbox } from '~utils/storybook/Sandbox';
-import { SelectInput } from '~components/Input/SelectInput';
+import { SelectInput } from '~components/Input/DropdownInputTriggers';
 import {
   ActionList,
   ActionListItem,
@@ -44,10 +44,10 @@ const DropdownStoryMeta: Meta = {
   },
 };
 
-const DropdownTemplate: ComponentStory<typeof Dropdown> = (args) => {
+const DropdownTemplate: ComponentStory<typeof Dropdown> = ({ selectionType = 'single' }) => {
   return (
     <Sandbox showConsole padding="spacing.0" editorHeight="100vh">
-      {getSimpleSelectCode(args.selectionType)}
+      {getSimpleSelectCode(selectionType)}
     </Sandbox>
   );
 };
@@ -185,6 +185,45 @@ InternalControlledSelect.parameters = {
 };
 
 // For chromatic and internal react native testing
+export const InternalMultiSelect = (): React.ReactElement => {
+  return (
+    <Box padding="spacing.5" maxWidth="300px">
+      <Dropdown selectionType="multiple">
+        <SelectInput label="Select City" maxRows="single" />
+        <DropdownOverlay>
+          <DropdownHeader title="Header Title" subtitle="Header subtitle" />
+          <ActionList>
+            <ActionListItem title="Mumbai" value="mumbai" />
+            <ActionListItem title="Bangalore" value="bangalore" />
+            <ActionListItem title="Pune" value="pune" />
+            <ActionListItem title="Chennai" value="chennai" />
+            <ActionListItem title="Hyderabad" value="hyderabad" />
+            <ActionListItem title="Varanasi" value="varanasi" />
+            <ActionListItem title="Mysore" value="mysore" />
+            <ActionListItem title="New York" value="new-york" />
+            <ActionListItem title="Indore" value="indore" />
+            <ActionListItem title="Kolhapur" value="kolhapur" />
+            <ActionListItem title="Ooty" value="ooty" />
+          </ActionList>
+          <DropdownFooter>
+            <Button isFullWidth onClick={() => console.log('Footer Clicked')}>
+              Apply
+            </Button>
+          </DropdownFooter>
+        </DropdownOverlay>
+      </Dropdown>
+      <Button marginTop="spacing.4">Outer Button</Button>
+    </Box>
+  );
+};
+
+InternalControlledSelect.parameters = {
+  chromatic: {
+    disableSnapshot: false,
+  },
+};
+
+// For chromatic and internal react native testing
 export const InternalControlledSingleSelect = (): React.ReactElement => {
   const [currentSelection, setCurrentSelection] = React.useState<string>('');
 
@@ -250,7 +289,7 @@ export const InternalSelect = (): React.ReactElement => {
       <Dropdown selectionType="multiple">
         <SelectInput label="Select fruits" labelPosition="left" />
         <DropdownOverlay>
-          <ActionList surfaceLevel={3}>
+          <ActionList>
             <ActionListItem title="Apples" value="Apples" />
             <ActionListItem title="Appricots" value="Appricots" />
           </ActionList>
@@ -273,7 +312,7 @@ export const InternalAutoPositioning = (): React.ReactElement => {
         <Dropdown selectionType="multiple">
           <SelectInput label="Select fruits" labelPosition="left" />
           <DropdownOverlay>
-            <ActionList surfaceLevel={3}>
+            <ActionList>
               <ActionListItem title="Apples" value="Apples" />
               <ActionListItem title="Appricots" value="Appricots" />
             </ActionList>
@@ -292,7 +331,7 @@ export const InternalAutoPositioning = (): React.ReactElement => {
         <Dropdown selectionType="multiple">
           <SelectInput label="Select fruits" labelPosition="left" />
           <DropdownOverlay>
-            <ActionList surfaceLevel={3}>
+            <ActionList>
               <ActionListItem title="Apples" value="Apples" />
               <ActionListItem title="Appricots" value="Appricots" />
             </ActionList>
@@ -308,7 +347,7 @@ export const InternalSectionListPerformance = (): React.ReactElement => {
     <Dropdown selectionType="multiple">
       <SelectInput label="Select fruits" />
       <DropdownOverlay>
-        <ActionList surfaceLevel={3}>
+        <ActionList>
           <ActionListItem title="Apples" value="Apples" />
           <ActionListItem title="Appricots" value="Appricots" />
           <ActionListItem title="Abc" value="Abc" />

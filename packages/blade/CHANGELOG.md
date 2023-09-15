@@ -1,5 +1,43 @@
 # @razorpay/blade
 
+## 10.8.1
+
+### Patch Changes
+
+- 09ca73d2: fix(ActionList): divider being added to last ActionListSection
+
+## 10.8.0
+
+### Minor Changes
+
+- ac405dfc: chore(blade): added id to Box component
+
+## 10.7.1
+
+### Patch Changes
+
+- 52288df2: fix(blade): carousel bug in safari
+
+## 10.7.0
+
+### Minor Changes
+
+- f43d9b35: feat(Icon): add default value for `size` & `color` props
+
+## 10.6.0
+
+### Minor Changes
+
+- 1732199a: fix(blade): fix firefox bug in carousel & fixed visible items not switching to `1` on mobile devices.
+
+## 10.5.0
+
+### Minor Changes
+
+- 3fc6ba3a: feat(Typography): add a new `Display` component
+
+  The Display component adds a strong visual touch. Utilize it to create eye-catching sections on your landing pages.
+
 ## 10.4.4
 
 ### Patch Changes

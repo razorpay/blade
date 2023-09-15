@@ -5,14 +5,8 @@ import { StyledActionListItem } from './styles/StyledActionListItem';
 import { componentIds } from './componentIds';
 import type { StyledActionListItemProps } from './styles/getBaseActionListItemStyles';
 import { validateActionListItemProps, getNormalTextColor } from './actionListUtils';
-import {
-  getActionListItemRole,
-  getActionListSectionRole,
-  getSeparatorRole,
-  isRoleMenu,
-} from './getA11yRoles';
+import { getActionListItemRole, getActionListSectionRole, isRoleMenu } from './getA11yRoles';
 import { useActionListContext } from './ActionList';
-import { Box } from '~components/Box';
 import { Divider } from '~components/Divider';
 import BaseBox from '~components/Box/BaseBox';
 import type { IconComponent } from '~components/Icons';
@@ -30,6 +24,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeSize } from '~utils/makeSize';
 import { makeAccessible } from '~utils/makeAccessible';
 import { throwBladeError } from '~utils/logger';
+import { dropdownComponentIds } from '~components/Dropdown/dropdownComponentIds';
 
 type ActionListItemProps = {
   title: string;
@@ -82,14 +77,6 @@ const ActionListItemContext = React.createContext<{
   isDisabled?: ActionListItemProps['isDisabled'];
 }>({});
 
-const ActionListSectionDivider = (): React.ReactElement => (
-  <Divider
-    {...makeAccessible({
-      role: getSeparatorRole(),
-    })}
-  />
-);
-
 const StyledActionListSectionTitle = styled(BaseBox)((props) => ({
   // @TODO: replace this styled-component with new layout box when we have padding shorthand
   padding: makeSize(props.theme.spacing[3]),
@@ -139,11 +126,7 @@ const _ActionListSection = ({
       >
         {children}
       </BaseBox>
-      {_hideDivider && isReactNative() ? null : (
-        <Box marginX="spacing.3" marginY="spacing.1">
-          <ActionListSectionDivider />
-        </Box>
-      )}
+      {_hideDivider && isReactNative() ? null : <Divider marginX="spacing.3" marginY="spacing.1" />}
     </BaseBox>
   );
 };
@@ -309,15 +292,19 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
     dropdownBaseId,
     onOptionClick,
     selectedIndices,
-    setShouldIgnoreBlur,
     setShouldIgnoreBlurAnimation,
     selectionType,
     dropdownTriggerer,
     isKeydownPressed,
+    filteredValues,
+    hasAutoCompleteInBottomSheetHeader,
   } = useDropdown();
 
   const { platform } = useTheme();
   const isMobile = platform === 'onMobile';
+  const hasAutoComplete =
+    hasAutoCompleteInBottomSheetHeader ||
+    dropdownTriggerer === dropdownComponentIds.triggers.AutoComplete;
 
   const renderOnWebAs = props.href ? 'a' : 'button';
 
@@ -328,7 +315,7 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
    * isSelected prop explicitly is the only way to select item in menu
    */
   const getIsSelected = (): boolean | undefined => {
-    if (dropdownTriggerer === 'SelectInput') {
+    if (dropdownTriggerer === dropdownComponentIds.triggers.SelectInput || hasAutoComplete) {
       if (typeof props._index === 'number') {
         return selectedIndices.includes(props._index);
       }
@@ -350,7 +337,10 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
 
   React.useEffect(() => {
     if (__DEV__) {
-      if (dropdownTriggerer === 'SelectInput' && props.intent === 'negative') {
+      if (
+        dropdownTriggerer === dropdownComponentIds.triggers.SelectInput &&
+        props.intent === 'negative'
+      ) {
         throwBladeError({
           message:
             'negative intent ActionListItem cannot be used inside Dropdown with SelectInput trigger',
@@ -363,6 +353,7 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
   return (
     <ActionListItemContext.Provider value={{ intent: props.intent, isDisabled: props.isDisabled }}>
       <StyledActionListItem
+        isVisible={hasAutoComplete && filteredValues ? filteredValues.includes(props.value) : true}
         as={!isReactNative() ? renderOnWebAs : undefined}
         id={`${dropdownBaseId}-${props._index}`}
         type="button"
@@ -384,7 +375,6 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
         })}
         {...metaAttribute({ name: MetaConstants.ActionListItem, testID: props.testID })}
         onMouseDown={() => {
-          setShouldIgnoreBlur(true);
           // We want to keep focus on Dropdown's trigger while option is being clicked
           // So We set this flag that ignores the blur animation to avoid the flicker between focus out + focus in
           setShouldIgnoreBlurAnimation(true);
@@ -423,12 +413,5 @@ const ActionListItem = assignWithoutSideEffects(React.memo(_ActionListItem), {
   displayName: componentIds.ActionListItem,
 });
 
-export {
-  ActionListItem,
-  ActionListItemProps,
-  ActionListItemIcon,
-  ActionListItemText,
-  ActionListSection,
-  ActionListSectionProps,
-  ActionListSectionDivider,
-};
+export type { ActionListItemProps, ActionListSectionProps };
+export { ActionListItem, ActionListItemIcon, ActionListItemText, ActionListSection };

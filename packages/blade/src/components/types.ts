@@ -24,4 +24,4 @@ type BladeCommonEvents = {
   }>;
 };
 
-export { BladeCommonEvents };
+export type { BladeCommonEvents };

@@ -8,6 +8,7 @@
  */
 
 import type { DropdownContextType, OptionsType } from './useDropdown';
+import { dropdownComponentIds } from './dropdownComponentIds';
 import type { SpacingValueType } from '~components/Box/BaseBox';
 
 export type SelectActionsType =
@@ -22,16 +23,6 @@ export type SelectActionsType =
   | 'Previous'
   | 'Select'
   | 'Type';
-
-export const componentIds = {
-  DropdownOverlay: 'DropdownOverlay',
-  Dropdown: 'Dropdown',
-  triggers: {
-    SelectInput: 'SelectInput',
-    DropdownButton: 'DropdownButton',
-    DropdownLink: 'DropdownLink',
-  },
-};
 
 // Save a list of named combobox actions, for future readability
 const SelectActions: Record<SelectActionsType, SelectActionsType> = {
@@ -70,6 +61,7 @@ export function filterOptions(
 export function getActionFromKey(
   e: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
   isOpen: boolean,
+  dropdownTriggerer: DropdownContextType['dropdownTriggerer'],
 ): SelectActionsType | undefined {
   if (!e) {
     return undefined;
@@ -118,7 +110,11 @@ export function getActionFromKey(
       return SelectActions.PageDown;
     } else if (key === 'Escape') {
       return SelectActions.Close;
-    } else if (key === 'Enter' || key === ' ') {
+    } else if (
+      key === 'Enter' ||
+      // we ignore the spacebar select in autocomplete since hitting spacebar might be expected while typing
+      (dropdownTriggerer !== dropdownComponentIds.triggers.AutoComplete && key === ' ')
+    ) {
       return SelectActions.CloseSelect;
     }
   }
@@ -156,16 +152,20 @@ export function getIndexByLetter(options: string[], filter: string, startIndex =
 /**
  * This functions makes sure the optionsIndex is not going out of possible options
  */
-export function getUpdatedIndex(
-  currentIndex: number,
-  maxIndex: number,
-  action: SelectActionsType,
-): number {
+export function getUpdatedIndex({
+  currentIndex,
+  maxIndex,
+  actionType,
+}: {
+  currentIndex: number;
+  maxIndex: number;
+  actionType: SelectActionsType;
+}): number {
   // On PageUP or PageDown, we jump focus by 10 items or to the first or last element
   // Details: https://www.w3.org/WAI/ARIA/apg/example-index/combobox/combobox-select-only.html#:~:text=PageUp,to%20last%20option).
   const pageSize = 10;
 
-  switch (action) {
+  switch (actionType) {
     case SelectActions.First:
       return 0;
     case SelectActions.Last:

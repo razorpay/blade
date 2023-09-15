@@ -1,9 +1,8 @@
 import type { ReactElement } from 'react';
 import { useCallback } from 'react';
-// This has to be a relative import otherwise plugin-dts will go 💥 https://github.com/razorpay/blade/issues/701
-import type { LinkProps } from '../Link';
 import { useCollapsible } from './CollapsibleContext';
 import { CollapsibleChevronIcon } from './CollapsibleChevronIcon';
+import type { LinkProps } from '~components/Link';
 import { MetaConstants } from '~utils/metaAttribute';
 import { BaseLink } from '~components/Link/BaseLink';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
@@ -51,4 +50,5 @@ const CollapsibleLink = assignWithoutSideEffects(_CollapsibleLink, {
   componentId: MetaConstants.CollapsibleLink,
 });
 
-export { CollapsibleLink, CollapsibleLinkProps };
+export type { CollapsibleLinkProps };
+export { CollapsibleLink };
