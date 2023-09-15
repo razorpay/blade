@@ -49,7 +49,6 @@ export const parameters = {
           'makeSpace',
           'makeTypographySize',
           'useTheme',
-          'overrideTheme',
         ],
         'Components',
         ['*', 'KitchenSink'],
