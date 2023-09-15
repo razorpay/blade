@@ -23,9 +23,9 @@ describe('<Popover />', () => {
 
   it('should render', async () => {
     const buttonText = 'Click me';
-    const contentText = 'Hello world';
+    const popoverContent = <Text>Hello world</Text>;
     const { baseElement, getByRole, queryByRole, getByText } = renderWithTheme(
-      <Popover content={contentText}>
+      <Popover content={popoverContent}>
         <Button>{buttonText}</Button>
       </Popover>,
     );
@@ -39,14 +39,15 @@ describe('<Popover />', () => {
     expect(queryByRole('dialog')).toBeInTheDocument();
     expect(queryByRole('dialog')).toHaveStyle({ 'z-index': 1100 });
     expect(queryByRole('dialog')).toHaveAttribute('data-blade-component', MetaConstants.Popover);
-    expect(getByText(contentText)).toBeInTheDocument();
+    expect(getByText('Hello world')).toBeInTheDocument();
     expect(baseElement).toMatchSnapshot();
   });
 
   it('should render with title,footer', () => {
     const buttonText = 'Click me';
+    const popoverContent = <Text>Hello world</Text>;
     const { baseElement, getByRole, queryByRole } = renderWithTheme(
-      <Popover content="Hello world" title="This is title" footer={<Text>Footer</Text>}>
+      <Popover content={popoverContent} title="This is title" footer={<Text>Footer</Text>}>
         <Button>{buttonText}</Button>
       </Popover>,
     );
@@ -58,9 +59,10 @@ describe('<Popover />', () => {
   });
 
   it('should render popover with custom zIndex', () => {
+    const popoverContent = <Text>Hello world</Text>;
     const buttonText = 'Click me';
     const { baseElement, getByRole, queryByRole } = renderWithTheme(
-      <Popover content="Hello world" zIndex={9999}>
+      <Popover content={popoverContent} zIndex={9999}>
         <Button>{buttonText}</Button>
       </Popover>,
     );
@@ -73,9 +75,10 @@ describe('<Popover />', () => {
   });
 
   it('should open on clicking', async () => {
+    const popoverContent = <Text>Hello world</Text>;
     const buttonText = 'Click me';
     const { getByRole, queryByRole } = renderWithTheme(
-      <Popover content="Hello world">
+      <Popover content={popoverContent}>
         <Button>{buttonText}</Button>
       </Popover>,
     );
@@ -98,9 +101,10 @@ describe('<Popover />', () => {
   });
 
   it('should close clicking the close icon', async () => {
+    const popoverContent = <Text>Hello world</Text>;
     const buttonText = 'Click me';
     const { getByRole, queryByRole } = renderWithTheme(
-      <Popover content="Hello world">
+      <Popover content={popoverContent}>
         <Button>{buttonText}</Button>
       </Popover>,
     );
@@ -158,10 +162,15 @@ describe('<Popover />', () => {
   });
 
   it('should work with uncontrolled state', async () => {
+    const popoverContent = <Text>Hello world</Text>;
     const buttonText = 'Click me';
     const onChange = jest.fn();
     const { getByRole, queryByRole } = renderWithTheme(
-      <Popover defaultIsOpen onOpenChange={({ isOpen }) => onChange(isOpen)} content="Hello world">
+      <Popover
+        defaultIsOpen
+        onOpenChange={({ isOpen }) => onChange(isOpen)}
+        content={popoverContent}
+      >
         <Button>{buttonText}</Button>
       </Popover>,
     );
@@ -190,6 +199,7 @@ describe('<Popover />', () => {
   });
 
   it('should work with controlled isOpen', async () => {
+    const popoverContent = <Text>Hello world</Text>;
     const buttonText = 'Click me';
     const toggleButtonText = 'Toggle';
 
@@ -199,7 +209,7 @@ describe('<Popover />', () => {
       return (
         <>
           <Popover
-            content="Hello world"
+            content={popoverContent}
             isOpen={isOpen}
             onOpenChange={({ isOpen }) => setIsOpen(isOpen)}
           >
@@ -242,9 +252,10 @@ describe('<Popover />', () => {
   });
 
   it('should have work with PopoverInteractiveWrapper', async () => {
+    const popoverContent = <Text>Hello world</Text>;
     jest.useFakeTimers();
     const { getByTestId, queryByRole } = renderWithTheme(
-      <Popover content="Hello world">
+      <Popover content={popoverContent}>
         <PopoverInteractiveWrapper testID={popoverInteractiveWrapperId}>
           <InfoIcon color="surface.action.icon.default.highContrast" size="medium" />
         </PopoverInteractiveWrapper>
@@ -274,11 +285,11 @@ describe('<Popover />', () => {
   it('should pass a11y', async () => {
     jest.useRealTimers();
 
-    const content = 'Hello world';
+    const popoverContent = <Text>Hello world</Text>;
     const title = 'Popover title';
     const buttonText = 'Click me';
     const { getByRole } = renderWithTheme(
-      <Popover defaultIsOpen title={title} content={content}>
+      <Popover defaultIsOpen title={title} content={popoverContent}>
         <Button>{buttonText}</Button>
       </Popover>,
     );
