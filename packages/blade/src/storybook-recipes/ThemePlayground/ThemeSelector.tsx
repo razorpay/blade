@@ -119,7 +119,13 @@ const ThemeSelector = ({
           </Box>
           <Box marginTop="spacing.5" />
           <Box display="flex" flexDirection="column" gap="spacing.2" flexWrap="wrap">
-            <Text type="subdued" weight="bold" marginRight="spacing.8" marginBottom="spacing.2">
+            <Text
+              size="small"
+              type="subdued"
+              weight="bold"
+              marginRight="spacing.8"
+              marginBottom="spacing.2"
+            >
               {'Custom Theme with Brand Color:'}
             </Text>
             <Box display="flex" flexDirection="row" gap="spacing.3">
