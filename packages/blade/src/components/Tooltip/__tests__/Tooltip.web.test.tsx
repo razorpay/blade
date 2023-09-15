@@ -34,6 +34,7 @@ describe('<Tooltip />', () => {
     expect(queryByRole('tooltip')).toBeInTheDocument();
     expect(queryByRole('tooltip')).toHaveStyle({ 'z-index': 1100 });
     expect(baseElement).toMatchSnapshot();
+<<<<<<< HEAD
   });
 
   it('should render with title', () => {
@@ -49,11 +50,13 @@ describe('<Tooltip />', () => {
     expect(queryByRole('tooltip')).toBeInTheDocument();
     expect(queryByRole('tooltip')).toHaveStyle({ 'z-index': 1100 });
     expect(baseElement).toMatchSnapshot();
+=======
+>>>>>>> 693f8820 (fix(Tooltip): prevent overriding the `aria-label` attribute)
   });
 
   it('should render tooltip with custom zIndex', () => {
     const buttonText = 'Hover me';
-    const { container, getByRole, queryByRole } = renderWithTheme(
+    const { baseElement, getByRole, queryByRole } = renderWithTheme(
       <Tooltip content="Hello world" zIndex={9999}>
         <Button>{buttonText}</Button>
       </Tooltip>,
@@ -63,7 +66,7 @@ describe('<Tooltip />', () => {
     fireEvent.focus(getByRole('button', { name: buttonText }));
     expect(queryByRole('tooltip')).toBeInTheDocument();
     expect(queryByRole('tooltip')).toHaveStyle({ 'z-index': 9999 });
-    expect(container).toMatchSnapshot();
+    expect(baseElement).toMatchSnapshot();
   });
 
   it('should open on hovering over', async () => {
@@ -285,7 +288,10 @@ describe('<Tooltip />', () => {
     );
     fireEvent.focus(getByRole('button', { name: buttonText }));
     expect(queryByRole('tooltip')).toBeInTheDocument();
-    expect(getByRole('button', { name: buttonText })).toHaveAccessibleDescription(tooltipContent);
+    expect(getByRole('button', { name: buttonText })).toHaveAttribute(
+      'aria-describedby',
+      tooltipContent,
+    );
     await assertAccessible(getByRole('tooltip'));
   });
 
@@ -310,5 +316,18 @@ describe('<Tooltip />', () => {
       jest.advanceTimersByTime(300);
     });
     expect(queryByRole('tooltip')).toHaveAttribute('data-blade-component', MetaConstants.Tooltip);
+  });
+
+  // https://github.com/razorpay/blade/issues/1386
+  it("should not override trigger's aria-label attribute", () => {
+    const tooltipContent = 'Hello world';
+    const { container, getByLabelText } = renderWithTheme(
+      <Tooltip content={tooltipContent}>
+        <input aria-label="Email Address" type="email" placeholder="Enter email" />
+      </Tooltip>,
+    );
+
+    expect(getByLabelText('Email Address')).toBeInTheDocument();
+    expect(container).toMatchSnapshot();
   });
 });

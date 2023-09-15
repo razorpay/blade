@@ -1,5 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<Tooltip /> should not override trigger's aria-label attribute 1`] = `
+<div>
+  <input
+    aria-describedby="Hello world"
+    aria-label="Email Address"
+    placeholder="Enter email"
+    type="email"
+  />
+</div>
+`;
+
 exports[`<Tooltip /> should render 1`] = `
 .c1 {
   display: -webkit-box;
@@ -175,7 +186,11 @@ exports[`<Tooltip /> should render 1`] = `
 <body>
   <div>
     <button
+<<<<<<< HEAD
       aria-describedby=":r0:"
+=======
+      aria-describedby="Hello world"
+>>>>>>> 693f8820 (fix(Tooltip): prevent overriding the `aria-label` attribute)
       class="c0"
       data-blade-component="button"
       role="button"
@@ -275,6 +290,33 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
   justify-content: center;
 }
 
+.c4 {
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.c5 {
+  position: relative;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-right: 12px;
+  padding-left: 12px;
+  max-width: 200px;
+}
+
+.c6 {
+  background-color: hsla(216,33%,29%,1);
+  border-width: 1px;
+  border-radius: 4px;
+  border-color: hsla(216,27%,36%,1);
+  border-style: solid;
+  box-shadow: 0 4px 8px -2px hsla(217,56%,17%,0.1),0 2px 4px -2px hsla(217,56%,17%,0.06);
+  opacity: 0;
+  -webkit-transform: translateY(4px);
+  -ms-transform: translateY(4px);
+  transform: translateY(4px);
+}
+
 .c3 {
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
@@ -285,6 +327,19 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
   text-decoration-line: none;
   line-height: 1.25rem;
   text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c7 {
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
   margin: 0;
   padding: 0;
 }
@@ -356,25 +411,36 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
 }
 
 @media screen and (min-width:320px) {
-
+  .c4 {
+    pointer-events: none;
+  }
 }
 
 @media screen and (min-width:480px) {
-
+  .c4 {
+    pointer-events: none;
+  }
 }
 
 @media screen and (min-width:768px) {
-
+  .c4 {
+    pointer-events: none;
+  }
 }
 
 @media screen and (min-width:1024px) {
-
+  .c4 {
+    pointer-events: none;
+  }
 }
 
 @media screen and (min-width:1200px) {
-
+  .c4 {
+    pointer-events: none;
+  }
 }
 
+<<<<<<< HEAD
 <div>
   <button
     aria-describedby=":r8:"
@@ -386,16 +452,87 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
     <div
       class="c1 c2"
       data-blade-component="base-box"
+=======
+<body>
+  <div>
+    <button
+      aria-describedby="Hello world"
+      class="c0"
+      data-blade-component="button"
+      role="button"
+      type="button"
+>>>>>>> 693f8820 (fix(Tooltip): prevent overriding the `aria-label` attribute)
     >
       <div
-        class="c3"
-        data-blade-component="base-text"
+        class="c1 c2"
+        data-blade-component="base-box"
       >
-        Hover me
+        <div
+          class="c3"
+          data-blade-component="base-text"
+        >
+          Hover me
+        </div>
+      </div>
+    </button>
+  </div>
+  <div
+    data-floating-ui-portal=""
+    id=":r6:"
+  >
+    <div
+      class="c4"
+      data-blade-component="tooltip"
+      id=":r4:"
+      pointer-events="none"
+      role="tooltip"
+      style="position: fixed; left: 0px; top: 0px; transform: translate(0px, 0px);"
+      tabindex="-1"
+    >
+      <div
+        class="c5 c6"
+        data-blade-component="base-box"
+      >
+        <p
+          class="c7"
+          data-blade-component="text"
+        >
+          Hello world
+        </p>
+        <svg
+          aria-hidden="true"
+          fill="hsla(216, 33%, 29%, 1)"
+          height="14"
+          style="position: absolute; pointer-events: none; top: 100%;"
+          viewBox="0 0 14 14"
+          width="16"
+        >
+          <path
+            clip-path="url(#:r7:)"
+            d="M0,0 H14 L7,7 Q7,7 7,7 Z"
+            fill="none"
+            stroke="hsla(216, 27%, 36%, 1)"
+            stroke-width="3"
+          />
+          <path
+            d="M0,0 H14 L7,7 Q7,7 7,7 Z"
+            stroke="hsla(216, 33%, 29%, 1)"
+          />
+          <clippath
+            id=":r7:"
+          >
+            <rect
+              height="14"
+              width="16"
+              x="-1"
+              y="1"
+            />
+          </clippath>
+        </svg>
       </div>
     </div>
-  </button>
-</div>
+  </div>
+</body>
 `;
 
 exports[`<Tooltip /> should render with title 1`] = `

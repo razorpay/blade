@@ -98,7 +98,7 @@ const Tooltip = ({
       {React.cloneElement(children, {
         ref: refs.setReference,
         ...mergeProps(children.props, getReferenceProps()),
-        ...makeAccessible({ label: content }),
+        ...makeAccessible({ describedBy: content }),
       })}
       {isMounted && (
         <FloatingPortal>
