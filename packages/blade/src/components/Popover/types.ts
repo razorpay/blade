@@ -99,4 +99,4 @@ type PopoverTriggerProps = {
   }>;
 };
 
-export { PopoverProps, PopoverContentProps, PopoverContentWrapperProps, PopoverTriggerProps };
+export type { PopoverProps, PopoverContentProps, PopoverContentWrapperProps, PopoverTriggerProps };
