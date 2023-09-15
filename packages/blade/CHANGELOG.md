@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 10.9.0
+
+### Minor Changes
+
+- 31fa01eb: feat(AutoComplete): add AutoComplete component
+
 ## 10.8.1
 
 ### Patch Changes
