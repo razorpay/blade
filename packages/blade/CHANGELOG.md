@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 10.9.2
+
+### Patch Changes
+
+- 86c57372: fix: type exports for Select and AutoComplete types
+
 ## 10.9.1
 
 ### Patch Changes
