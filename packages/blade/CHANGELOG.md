@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 10.9.1
+
+### Patch Changes
+
+- 1be2fecf: fix(AutoComplete): AutoComplete Storybook panel and React Native Icon Alignment in PasswordInput
+
 ## 10.9.0
 
 ### Minor Changes
