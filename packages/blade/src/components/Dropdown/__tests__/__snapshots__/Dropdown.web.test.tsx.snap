@@ -79,9 +79,9 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  -webkit-align-self: stretch;
-  -ms-flex-item-align: stretch;
-  align-self: stretch;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
 }
 
 .c16 {
@@ -1362,7 +1362,7 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
       data-blade-component="base-box"
     >
       <button
-        aria-controls="dropdown-1091-actionlist"
+        aria-controls="dropdown-1090-actionlist"
         aria-expanded="false"
         aria-haspopup="menu"
         class="c1"
@@ -1394,10 +1394,10 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
           style="transition-property: transform,opacity; transition-duration: 200ms; transform: translateY(-8px); opacity: 0;"
         >
           <div
-            aria-labelledby="dropdown-1091-label"
+            aria-labelledby="dropdown-1090-label"
             class=""
             data-blade-component="action-list"
-            id="dropdown-1091-actionlist"
+            id="dropdown-1090-actionlist"
             role="menu"
           >
             <div
@@ -1409,7 +1409,7 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
                 data-blade-component="action-list-item"
                 data-index="0"
                 data-value="profile"
-                id="dropdown-1091-0"
+                id="dropdown-1090-0"
                 role="menuitem"
                 tabindex="-1"
                 type="button"
@@ -1449,7 +1449,7 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
                 data-index="1"
                 data-value="settings"
                 href="/settings"
-                id="dropdown-1091-1"
+                id="dropdown-1090-1"
                 role="link"
                 tabindex="-1"
                 type="button"

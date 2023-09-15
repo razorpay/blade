@@ -416,6 +416,9 @@ exports[`<BaseInput /> should render with icons 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
 }
 
 .c9 {
@@ -431,31 +434,14 @@ exports[`<BaseInput /> should render with icons 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-align-self: stretch;
-  -ms-flex-item-align: stretch;
-  align-self: stretch;
-}
-
-.c12 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   padding-right: 12px;
 }
 
-.c14 {
+.c13 {
   margin-left: 0px;
 }
 
-.c15 {
+.c14 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -584,7 +570,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
   outline: none;
 }
 
-.c13 {
+.c12 {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -768,11 +754,11 @@ exports[`<BaseInput /> should render with icons 1`] = `
           value=""
         />
         <div
-          class="c11"
+          class="c8"
           data-blade-component="base-box"
         >
           <div
-            class="c12"
+            class="c11"
             data-blade-component="base-box"
           >
             <svg
@@ -793,17 +779,17 @@ exports[`<BaseInput /> should render with icons 1`] = `
           </div>
         </div>
         <div
-          class=" c13"
+          class=" c12"
           data-blade-component="base-box"
         />
       </div>
     </div>
     <div
-      class="c14"
+      class="c13"
       data-blade-component="base-box"
     >
       <div
-        class="c15"
+        class="c14"
         data-blade-component="base-box"
       />
     </div>

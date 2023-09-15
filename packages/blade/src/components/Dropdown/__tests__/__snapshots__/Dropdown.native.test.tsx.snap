@@ -454,7 +454,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
               </View>
               <View
                 alignItems="center"
-                alignSelf="stretch"
+                alignSelf="center"
                 data-blade-component="base-box"
                 display="flex"
                 flexDirection="row"
@@ -462,7 +462,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                   [
                     {
                       "alignItems": "center",
-                      "alignSelf": "stretch",
+                      "alignSelf": "center",
                       "display": "flex",
                       "flexDirection": "row",
                     },

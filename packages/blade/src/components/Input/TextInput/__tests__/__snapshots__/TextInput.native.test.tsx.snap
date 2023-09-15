@@ -514,6 +514,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
       >
         <View
           alignItems="center"
+          alignSelf="center"
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
@@ -521,6 +522,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
             [
               {
                 "alignItems": "center",
+                "alignSelf": "center",
                 "display": "flex",
                 "flexDirection": "row",
               },
@@ -724,7 +726,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
         />
         <View
           alignItems="center"
-          alignSelf="stretch"
+          alignSelf="center"
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
@@ -732,7 +734,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
             [
               {
                 "alignItems": "center",
-                "alignSelf": "stretch",
+                "alignSelf": "center",
                 "display": "flex",
                 "flexDirection": "row",
               },
