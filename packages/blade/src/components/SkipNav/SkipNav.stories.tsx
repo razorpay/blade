@@ -28,7 +28,7 @@ const Page = (): ReactElement => {
             Box 
           } from '@razorpay/blade/components';
 
-          function App(): JSX.Element {
+          function App(): React.ReactElement {
             return (
               <Box>
                 <Text>Click somewhere on the text here to focus on this window and press <Code>TAB</Code> key to see it in action</Text>

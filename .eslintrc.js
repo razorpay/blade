@@ -129,8 +129,9 @@ module.exports = {
         'plugin:@typescript-eslint/recommended-requiring-type-checking',
         'plugin:prettier/recommended',
       ],
-      plugins: ['@typescript-eslint', 'jsx-a11y', 'no-only-tests'],
+      plugins: ['@typescript-eslint', 'jsx-a11y', 'no-only-tests', 'blade'],
       rules: {
+        'blade/no-cross-platform-imports': ['error', { ignoreImportsPattern: 'renderWithSSR' }],
         'import/no-cycle': ['error', { maxDepth: '∞' }],
         'react/jsx-uses-react': 'off',
         'react/react-in-jsx-scope': 'off',
@@ -163,6 +164,7 @@ module.exports = {
         '@typescript-eslint/unbound-method': 'off',
         '@typescript-eslint/sort-type-union-intersection-members': 'off',
         '@typescript-eslint/no-non-null-assertion': 'off',
+        '@typescript-eslint/consistent-type-exports': 'error',
         'react-native-a11y/has-valid-accessibility-live-region': 'off',
         '@typescript-eslint/no-shadow': ['off'],
         '@typescript-eslint/explicit-module-boundary-types': ['off'],

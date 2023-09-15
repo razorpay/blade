@@ -11,6 +11,7 @@ import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { TestID } from '~utils/types';
 import { isReactNative } from '~utils';
+import { logger } from '~utils/logger';
 
 export type CounterProps = {
   /**
@@ -102,10 +103,15 @@ const Counter = ({
     contrast,
   });
 
-  if (intent) {
-    console.warn(
-      '[Blade: Counter] The prop `intent` is deprecated and will be removed in a future release. Please use `variant` instead.',
-    );
+  if (__DEV__) {
+    if (intent) {
+      logger({
+        type: 'warn',
+        message:
+          'The prop `intent` is deprecated and will be removed in a future release. Please use `variant` instead.',
+        moduleName: 'Counter',
+      });
+    }
   }
 
   const counterTextSizes = {
@@ -125,7 +131,7 @@ const Counter = ({
 
   return (
     <BaseBox
-      display="flex"
+      display={(isReactNative() ? 'flex' : 'inline-flex') as never}
       {...metaAttribute({ name: MetaConstants.Counter, testID })}
       {...getStyledProps(styledProps)}
     >
@@ -135,7 +141,7 @@ const Counter = ({
           paddingLeft={horizontalPadding[size]}
           paddingTop={verticalPadding[size]}
           paddingBottom={verticalPadding[size]}
-          display={(isReactNative() ? 'flex' : 'inline-flex') as never}
+          display="flex"
           flexDirection="row"
           justifyContent="center"
           alignItems="center"

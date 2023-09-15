@@ -111,24 +111,22 @@ describe('<ProgressBar />', () => {
   });
 
   it('should have accessibility attributes for progress variant', () => {
-    const { getByRole, getByA11yValue } = renderWithTheme(
+    const { getByRole } = renderWithTheme(
       <ProgressBar label="Label" accessibilityLabel="Downloading" value={70} variant="progress" />,
     );
 
     const progressbar = getByRole('progressbar');
     expect(progressbar.findByProps({ accessibilityLabel: 'Downloading' })).toBeTruthy();
-    expect(
-      getByA11yValue({
-        max: 100,
-        min: 0,
-        now: 70,
-        text: '70%',
-      }),
-    ).toBeTruthy();
+    expect(progressbar).toHaveAccessibilityValue({
+      max: 100,
+      min: 0,
+      now: 70,
+      text: '70%',
+    });
   });
 
   it('should have the right accessibility attributes for progress variant in indeterminate state', () => {
-    const { getByRole, getByA11yValue } = renderWithTheme(
+    const { getByRole } = renderWithTheme(
       <ProgressBar
         label="Label"
         accessibilityLabel="Checking"
@@ -139,31 +137,27 @@ describe('<ProgressBar />', () => {
 
     const progressbar = getByRole('progressbar');
     expect(progressbar.findByProps({ accessibilityLabel: 'Checking' })).toBeTruthy();
-    expect(
-      getByA11yValue({
-        max: undefined,
-        min: undefined,
-        now: undefined,
-        text: undefined,
-      }),
-    ).toBeTruthy();
+    expect(progressbar).toHaveAccessibilityValue({
+      max: undefined,
+      min: undefined,
+      now: undefined,
+      text: undefined,
+    });
   });
 
   it('should have accessibility attributes for meter variant', () => {
-    const { getByRole, findByA11yValue } = renderWithTheme(
+    const { getByRole } = renderWithTheme(
       <ProgressBar label="Label" accessibilityLabel="Amount" value={70} variant="meter" />,
     );
 
     const progressbar = getByRole('progressbar');
     expect(progressbar.findByProps({ accessibilityLabel: 'Amount' })).toBeTruthy();
-    expect(
-      findByA11yValue({
-        max: 100,
-        min: 0,
-        now: 70,
-        text: '70',
-      }),
-    ).toBeTruthy();
+    expect(progressbar).toHaveAccessibilityValue({
+      max: 100,
+      min: 0,
+      now: 70,
+      text: '70',
+    });
   });
 
   it('should throw an error when the variant is meter and isIndeterminate is set', () => {

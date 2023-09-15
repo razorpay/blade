@@ -1,0 +1,2321 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup isDisabled 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="base-box"
+    style={
+      [
+        {},
+      ]
+    }
+  >
+    <View
+      accessibilityLabelledBy="chip-group-26-label"
+      accessibilityRole="radiogroup"
+      accessible={true}
+      data-blade-component="chip-group"
+      display="flex"
+      flexDirection="column"
+      style={
+        [
+          {
+            "display": "flex",
+            "flexDirection": "column",
+          },
+        ]
+      }
+    >
+      <View
+        data-blade-component="base-box"
+        style={
+          [
+            {},
+          ]
+        }
+      >
+        <View
+          data-blade-component="visually-hidden"
+          style={
+            [
+              {
+                "borderColor": "black",
+                "borderStyle": "solid",
+                "borderWidth": 0,
+                "clip": "rect(0 0 0 0)",
+                "clipPath": "inset(50%)",
+                "height": 1,
+                "left": -10000,
+                "marginBottom": -1,
+                "marginLeft": 0,
+                "marginRight": -1,
+                "marginTop": 0,
+                "overflow": "hidden",
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "position": "absolute",
+                "whiteSpace": "nowrap",
+                "width": 1,
+                "wordWrap": "normal",
+              },
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            color="surface.text.normal.lowContrast"
+            data-blade-component="text"
+            fontFamily="text"
+            fontSize={100}
+            fontStyle="normal"
+            fontWeight="regular"
+            lineHeight={100}
+            style={
+              [
+                {
+                  "color": "hsla(217, 56%, 17%, 1)",
+                  "fontFamily": "Lato",
+                  "fontSize": 14,
+                  "fontStyle": "normal",
+                  "fontWeight": "400",
+                  "lineHeight": 20,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+          >
+            Select fruits
+          </Text>
+        </View>
+        <View
+          data-blade-component="base-box"
+          display="flex"
+          flexDirection="row"
+          flexWrap="wrap"
+          style={
+            [
+              {
+                "display": "flex",
+                "flexDirection": "row",
+                "flexWrap": "wrap",
+              },
+            ]
+          }
+        >
+          <View
+            data-blade-component="base-box"
+            style={
+              [
+                {
+                  "marginBottom": 8,
+                  "marginRight": 8,
+                },
+              ]
+            }
+          >
+            <View
+              data-blade-component="chip"
+              display="flex"
+              style={
+                [
+                  {
+                    "display": "flex",
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityDescribedBy="radio-27-helptext-28"
+                accessibilityInvalid={false}
+                accessibilityRequired={false}
+                accessibilityRole="radio"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": false,
+                    "disabled": true,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    {
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "marginBottom": 2,
+                      "marginTop": 2,
+                    },
+                  ]
+                }
+                value="apple"
+              >
+                <View
+                  data-blade-component="base-box"
+                  display="flex"
+                  flexDirection="column"
+                  style={
+                    [
+                      {
+                        "display": "flex",
+                        "flexDirection": "column",
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    alignItems="center"
+                    data-blade-component="base-box"
+                    display="flex"
+                    flexDirection="row"
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "display": "flex",
+                          "flexDirection": "row",
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      borderColor="brand.gray.400.lowContrast"
+                      isDisabled={true}
+                      style={
+                        [
+                          {
+                            "alignItems": "center",
+                            "alignSelf": "center",
+                            "backgroundColor": "transparent",
+                            "borderColor": "hsla(216, 19%, 89%, 1)",
+                            "borderRadius": 9999,
+                            "borderWidth": 1,
+                            "display": "flex",
+                            "flexDirection": "row",
+                            "flexWrap": "nowrap",
+                            "justifyContent": "center",
+                            "maxWidth": 280,
+                            "textAlign": "left",
+                            "textOverflow": "ellipsis",
+                          },
+                          {
+                            "transform": [
+                              {
+                                "scale": 1,
+                              },
+                            ],
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        alignItems="center"
+                        backgroundColor="transparent"
+                        borderColor="brand.gray.400.lowContrast"
+                        borderRadius="max"
+                        borderWidth="thinner"
+                        data-blade-component="base-box"
+                        display="flex"
+                        flexDirection="row"
+                        height="28px"
+                        intent="none"
+                        isChecked={false}
+                        isDisabled={true}
+                        justifyContent="center"
+                        overflow="hidden"
+                        style={
+                          [
+                            {
+                              "alignItems": "center",
+                              "backgroundColor": "transparent",
+                              "borderColor": "hsla(216, 19%, 89%, 1)",
+                              "borderRadius": 9999,
+                              "borderStyle": "solid",
+                              "borderWidth": 0.5,
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "height": 28,
+                              "justifyContent": "center",
+                              "overflow": "hidden",
+                              "paddingLeft": 12,
+                              "paddingRight": 12,
+                            },
+                            {
+                              "borderColor": "transparent",
+                              "display": "flex",
+                            },
+                          ]
+                        }
+                      >
+                        <Text
+                          accessible={true}
+                          color="surface.text.placeholder.lowContrast"
+                          data-blade-component="text"
+                          fontFamily="text"
+                          fontSize={100}
+                          fontStyle="normal"
+                          fontWeight="regular"
+                          lineHeight={100}
+                          numberOfLines={1}
+                          style={
+                            [
+                              {
+                                "color": "hsla(214, 18%, 69%, 1)",
+                                "fontFamily": "Lato",
+                                "fontSize": 14,
+                                "fontStyle": "normal",
+                                "fontWeight": "400",
+                                "lineHeight": 20,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "paddingBottom": 0,
+                                "paddingLeft": 0,
+                                "paddingRight": 0,
+                                "paddingTop": 0,
+                                "textDecorationLine": "none",
+                              },
+                            ]
+                          }
+                        >
+                          Apple
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            data-blade-component="base-box"
+            style={
+              [
+                {
+                  "marginBottom": 8,
+                  "marginRight": 8,
+                },
+              ]
+            }
+          >
+            <View
+              data-blade-component="chip"
+              display="flex"
+              style={
+                [
+                  {
+                    "display": "flex",
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityDescribedBy="radio-29-helptext-30"
+                accessibilityInvalid={false}
+                accessibilityRequired={false}
+                accessibilityRole="radio"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": false,
+                    "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    {
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "marginBottom": 2,
+                      "marginTop": 2,
+                    },
+                  ]
+                }
+                value="mango"
+              >
+                <View
+                  data-blade-component="base-box"
+                  display="flex"
+                  flexDirection="column"
+                  style={
+                    [
+                      {
+                        "display": "flex",
+                        "flexDirection": "column",
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    alignItems="center"
+                    data-blade-component="base-box"
+                    display="flex"
+                    flexDirection="row"
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "display": "flex",
+                          "flexDirection": "row",
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      borderColor="brand.gray.400.lowContrast"
+                      isDisabled={false}
+                      style={
+                        [
+                          {
+                            "alignItems": "center",
+                            "alignSelf": "center",
+                            "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                            "borderColor": "hsla(216, 19%, 89%, 1)",
+                            "borderRadius": 9999,
+                            "borderWidth": 1,
+                            "display": "flex",
+                            "flexDirection": "row",
+                            "flexWrap": "nowrap",
+                            "justifyContent": "center",
+                            "maxWidth": 280,
+                            "textAlign": "left",
+                            "textOverflow": "ellipsis",
+                          },
+                          {
+                            "transform": [
+                              {
+                                "scale": 1,
+                              },
+                            ],
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        alignItems="center"
+                        backgroundColor="transparent"
+                        borderColor="brand.gray.400.lowContrast"
+                        borderRadius="max"
+                        borderWidth="thinner"
+                        data-blade-component="base-box"
+                        display="flex"
+                        flexDirection="row"
+                        height="28px"
+                        intent="none"
+                        isChecked={false}
+                        isDisabled={false}
+                        justifyContent="center"
+                        overflow="hidden"
+                        style={
+                          [
+                            {
+                              "alignItems": "center",
+                              "backgroundColor": "transparent",
+                              "borderColor": "hsla(216, 19%, 89%, 1)",
+                              "borderRadius": 9999,
+                              "borderStyle": "solid",
+                              "borderWidth": 0.5,
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "height": 28,
+                              "justifyContent": "center",
+                              "overflow": "hidden",
+                              "paddingLeft": 12,
+                              "paddingRight": 12,
+                            },
+                            {
+                              "borderColor": "transparent",
+                              "display": "flex",
+                            },
+                          ]
+                        }
+                      >
+                        <Text
+                          accessible={true}
+                          color="surface.text.subtle.lowContrast"
+                          data-blade-component="text"
+                          fontFamily="text"
+                          fontSize={100}
+                          fontStyle="normal"
+                          fontWeight="regular"
+                          lineHeight={100}
+                          numberOfLines={1}
+                          style={
+                            [
+                              {
+                                "color": "hsla(216, 27%, 36%, 1)",
+                                "fontFamily": "Lato",
+                                "fontSize": 14,
+                                "fontStyle": "normal",
+                                "fontWeight": "400",
+                                "lineHeight": 20,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "paddingBottom": 0,
+                                "paddingLeft": 0,
+                                "paddingRight": 0,
+                                "paddingTop": 0,
+                                "textDecorationLine": "none",
+                              },
+                            ]
+                          }
+                        >
+                          Mango
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<Chip /> should render chip 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="base-box"
+    style={
+      [
+        {},
+      ]
+    }
+  >
+    <View
+      accessibilityLabelledBy="chip-group-5-label"
+      accessibilityRole="radiogroup"
+      accessible={true}
+      data-blade-component="chip-group"
+      display="flex"
+      flexDirection="column"
+      style={
+        [
+          {
+            "display": "flex",
+            "flexDirection": "column",
+          },
+        ]
+      }
+    >
+      <View
+        data-blade-component="base-box"
+        style={
+          [
+            {},
+          ]
+        }
+      >
+        <View
+          data-blade-component="visually-hidden"
+          style={
+            [
+              {
+                "borderColor": "black",
+                "borderStyle": "solid",
+                "borderWidth": 0,
+                "clip": "rect(0 0 0 0)",
+                "clipPath": "inset(50%)",
+                "height": 1,
+                "left": -10000,
+                "marginBottom": -1,
+                "marginLeft": 0,
+                "marginRight": -1,
+                "marginTop": 0,
+                "overflow": "hidden",
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "position": "absolute",
+                "whiteSpace": "nowrap",
+                "width": 1,
+                "wordWrap": "normal",
+              },
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            color="surface.text.normal.lowContrast"
+            data-blade-component="text"
+            fontFamily="text"
+            fontSize={100}
+            fontStyle="normal"
+            fontWeight="regular"
+            lineHeight={100}
+            style={
+              [
+                {
+                  "color": "hsla(217, 56%, 17%, 1)",
+                  "fontFamily": "Lato",
+                  "fontSize": 14,
+                  "fontStyle": "normal",
+                  "fontWeight": "400",
+                  "lineHeight": 20,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+          >
+            Select fruits
+          </Text>
+        </View>
+        <View
+          data-blade-component="base-box"
+          display="flex"
+          flexDirection="row"
+          flexWrap="wrap"
+          style={
+            [
+              {
+                "display": "flex",
+                "flexDirection": "row",
+                "flexWrap": "wrap",
+              },
+            ]
+          }
+        >
+          <View
+            data-blade-component="base-box"
+            style={
+              [
+                {
+                  "marginBottom": 8,
+                  "marginRight": 8,
+                },
+              ]
+            }
+          >
+            <View
+              data-blade-component="chip"
+              display="flex"
+              style={
+                [
+                  {
+                    "display": "flex",
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityDescribedBy="radio-1-helptext-2"
+                accessibilityInvalid={false}
+                accessibilityRequired={false}
+                accessibilityRole="radio"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": false,
+                    "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    {
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "marginBottom": 2,
+                      "marginTop": 2,
+                    },
+                  ]
+                }
+                value="apple"
+              >
+                <View
+                  data-blade-component="base-box"
+                  display="flex"
+                  flexDirection="column"
+                  style={
+                    [
+                      {
+                        "display": "flex",
+                        "flexDirection": "column",
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    alignItems="center"
+                    data-blade-component="base-box"
+                    display="flex"
+                    flexDirection="row"
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "display": "flex",
+                          "flexDirection": "row",
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      borderColor="brand.gray.400.lowContrast"
+                      isDisabled={false}
+                      style={
+                        [
+                          {
+                            "alignItems": "center",
+                            "alignSelf": "center",
+                            "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                            "borderColor": "hsla(216, 19%, 89%, 1)",
+                            "borderRadius": 9999,
+                            "borderWidth": 1,
+                            "display": "flex",
+                            "flexDirection": "row",
+                            "flexWrap": "nowrap",
+                            "justifyContent": "center",
+                            "maxWidth": 280,
+                            "textAlign": "left",
+                            "textOverflow": "ellipsis",
+                          },
+                          {
+                            "transform": [
+                              {
+                                "scale": 1,
+                              },
+                            ],
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        alignItems="center"
+                        backgroundColor="transparent"
+                        borderColor="brand.gray.400.lowContrast"
+                        borderRadius="max"
+                        borderWidth="thinner"
+                        data-blade-component="base-box"
+                        display="flex"
+                        flexDirection="row"
+                        height="28px"
+                        intent="none"
+                        isChecked={false}
+                        isDisabled={false}
+                        justifyContent="center"
+                        overflow="hidden"
+                        style={
+                          [
+                            {
+                              "alignItems": "center",
+                              "backgroundColor": "transparent",
+                              "borderColor": "hsla(216, 19%, 89%, 1)",
+                              "borderRadius": 9999,
+                              "borderStyle": "solid",
+                              "borderWidth": 0.5,
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "height": 28,
+                              "justifyContent": "center",
+                              "overflow": "hidden",
+                              "paddingLeft": 12,
+                              "paddingRight": 12,
+                            },
+                            {
+                              "borderColor": "transparent",
+                              "display": "flex",
+                            },
+                          ]
+                        }
+                      >
+                        <Text
+                          accessible={true}
+                          color="surface.text.subtle.lowContrast"
+                          data-blade-component="text"
+                          fontFamily="text"
+                          fontSize={100}
+                          fontStyle="normal"
+                          fontWeight="regular"
+                          lineHeight={100}
+                          numberOfLines={1}
+                          style={
+                            [
+                              {
+                                "color": "hsla(216, 27%, 36%, 1)",
+                                "fontFamily": "Lato",
+                                "fontSize": 14,
+                                "fontStyle": "normal",
+                                "fontWeight": "400",
+                                "lineHeight": 20,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "paddingBottom": 0,
+                                "paddingLeft": 0,
+                                "paddingRight": 0,
+                                "paddingTop": 0,
+                                "textDecorationLine": "none",
+                              },
+                            ]
+                          }
+                        >
+                          Apple
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            data-blade-component="base-box"
+            style={
+              [
+                {
+                  "marginBottom": 8,
+                  "marginRight": 8,
+                },
+              ]
+            }
+          >
+            <View
+              data-blade-component="chip"
+              display="flex"
+              style={
+                [
+                  {
+                    "display": "flex",
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityDescribedBy="radio-3-helptext-4"
+                accessibilityInvalid={false}
+                accessibilityRequired={false}
+                accessibilityRole="radio"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": false,
+                    "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    {
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "marginBottom": 2,
+                      "marginTop": 2,
+                    },
+                  ]
+                }
+                value="mango"
+              >
+                <View
+                  data-blade-component="base-box"
+                  display="flex"
+                  flexDirection="column"
+                  style={
+                    [
+                      {
+                        "display": "flex",
+                        "flexDirection": "column",
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    alignItems="center"
+                    data-blade-component="base-box"
+                    display="flex"
+                    flexDirection="row"
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "display": "flex",
+                          "flexDirection": "row",
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      borderColor="brand.gray.400.lowContrast"
+                      isDisabled={false}
+                      style={
+                        [
+                          {
+                            "alignItems": "center",
+                            "alignSelf": "center",
+                            "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                            "borderColor": "hsla(216, 19%, 89%, 1)",
+                            "borderRadius": 9999,
+                            "borderWidth": 1,
+                            "display": "flex",
+                            "flexDirection": "row",
+                            "flexWrap": "nowrap",
+                            "justifyContent": "center",
+                            "maxWidth": 280,
+                            "textAlign": "left",
+                            "textOverflow": "ellipsis",
+                          },
+                          {
+                            "transform": [
+                              {
+                                "scale": 1,
+                              },
+                            ],
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        alignItems="center"
+                        backgroundColor="transparent"
+                        borderColor="brand.gray.400.lowContrast"
+                        borderRadius="max"
+                        borderWidth="thinner"
+                        data-blade-component="base-box"
+                        display="flex"
+                        flexDirection="row"
+                        height="28px"
+                        intent="none"
+                        isChecked={false}
+                        isDisabled={false}
+                        justifyContent="center"
+                        overflow="hidden"
+                        style={
+                          [
+                            {
+                              "alignItems": "center",
+                              "backgroundColor": "transparent",
+                              "borderColor": "hsla(216, 19%, 89%, 1)",
+                              "borderRadius": 9999,
+                              "borderStyle": "solid",
+                              "borderWidth": 0.5,
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "height": 28,
+                              "justifyContent": "center",
+                              "overflow": "hidden",
+                              "paddingLeft": 12,
+                              "paddingRight": 12,
+                            },
+                            {
+                              "borderColor": "transparent",
+                              "display": "flex",
+                            },
+                          ]
+                        }
+                      >
+                        <Text
+                          accessible={true}
+                          color="surface.text.subtle.lowContrast"
+                          data-blade-component="text"
+                          fontFamily="text"
+                          fontSize={100}
+                          fontStyle="normal"
+                          fontWeight="regular"
+                          lineHeight={100}
+                          numberOfLines={1}
+                          style={
+                            [
+                              {
+                                "color": "hsla(216, 27%, 36%, 1)",
+                                "fontFamily": "Lato",
+                                "fontSize": 14,
+                                "fontStyle": "normal",
+                                "fontWeight": "400",
+                                "lineHeight": 20,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "paddingBottom": 0,
+                                "paddingLeft": 0,
+                                "paddingRight": 0,
+                                "paddingTop": 0,
+                                "textDecorationLine": "none",
+                              },
+                            ]
+                          }
+                        >
+                          Mango
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<Chip /> should render chip with icon 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="base-box"
+    style={
+      [
+        {},
+      ]
+    }
+  >
+    <View
+      accessibilityLabelledBy="chip-group-11-label"
+      accessibilityRole="radiogroup"
+      accessible={true}
+      data-blade-component="chip-group"
+      display="flex"
+      flexDirection="column"
+      style={
+        [
+          {
+            "display": "flex",
+            "flexDirection": "column",
+          },
+        ]
+      }
+    >
+      <View
+        data-blade-component="base-box"
+        style={
+          [
+            {},
+          ]
+        }
+      >
+        <View
+          data-blade-component="visually-hidden"
+          style={
+            [
+              {
+                "borderColor": "black",
+                "borderStyle": "solid",
+                "borderWidth": 0,
+                "clip": "rect(0 0 0 0)",
+                "clipPath": "inset(50%)",
+                "height": 1,
+                "left": -10000,
+                "marginBottom": -1,
+                "marginLeft": 0,
+                "marginRight": -1,
+                "marginTop": 0,
+                "overflow": "hidden",
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "position": "absolute",
+                "whiteSpace": "nowrap",
+                "width": 1,
+                "wordWrap": "normal",
+              },
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            color="surface.text.normal.lowContrast"
+            data-blade-component="text"
+            fontFamily="text"
+            fontSize={100}
+            fontStyle="normal"
+            fontWeight="regular"
+            lineHeight={100}
+            style={
+              [
+                {
+                  "color": "hsla(217, 56%, 17%, 1)",
+                  "fontFamily": "Lato",
+                  "fontSize": 14,
+                  "fontStyle": "normal",
+                  "fontWeight": "400",
+                  "lineHeight": 20,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+          >
+            Select fruits
+          </Text>
+        </View>
+        <View
+          data-blade-component="base-box"
+          display="flex"
+          flexDirection="row"
+          flexWrap="wrap"
+          style={
+            [
+              {
+                "display": "flex",
+                "flexDirection": "row",
+                "flexWrap": "wrap",
+              },
+            ]
+          }
+        >
+          <View
+            data-blade-component="base-box"
+            style={
+              [
+                {
+                  "marginBottom": 8,
+                  "marginRight": 8,
+                },
+              ]
+            }
+          >
+            <View
+              data-blade-component="chip"
+              display="flex"
+              style={
+                [
+                  {
+                    "display": "flex",
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityDescribedBy="radio-12-helptext-13"
+                accessibilityInvalid={false}
+                accessibilityRequired={false}
+                accessibilityRole="radio"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": false,
+                    "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    {
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "marginBottom": 2,
+                      "marginTop": 2,
+                    },
+                  ]
+                }
+                value="apple"
+              >
+                <View
+                  data-blade-component="base-box"
+                  display="flex"
+                  flexDirection="column"
+                  style={
+                    [
+                      {
+                        "display": "flex",
+                        "flexDirection": "column",
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    alignItems="center"
+                    data-blade-component="base-box"
+                    display="flex"
+                    flexDirection="row"
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "display": "flex",
+                          "flexDirection": "row",
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      borderColor="brand.gray.400.lowContrast"
+                      isDisabled={false}
+                      style={
+                        [
+                          {
+                            "alignItems": "center",
+                            "alignSelf": "center",
+                            "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                            "borderColor": "hsla(216, 19%, 89%, 1)",
+                            "borderRadius": 9999,
+                            "borderWidth": 1,
+                            "display": "flex",
+                            "flexDirection": "row",
+                            "flexWrap": "nowrap",
+                            "justifyContent": "center",
+                            "maxWidth": 280,
+                            "textAlign": "left",
+                            "textOverflow": "ellipsis",
+                          },
+                          {
+                            "transform": [
+                              {
+                                "scale": 1,
+                              },
+                            ],
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        alignItems="center"
+                        backgroundColor="transparent"
+                        borderColor="brand.gray.400.lowContrast"
+                        borderRadius="max"
+                        borderWidth="thinner"
+                        data-blade-component="base-box"
+                        display="flex"
+                        flexDirection="row"
+                        height="28px"
+                        intent="none"
+                        isChecked={false}
+                        isDisabled={false}
+                        justifyContent="center"
+                        overflow="hidden"
+                        style={
+                          [
+                            {
+                              "alignItems": "center",
+                              "backgroundColor": "transparent",
+                              "borderColor": "hsla(216, 19%, 89%, 1)",
+                              "borderRadius": 9999,
+                              "borderStyle": "solid",
+                              "borderWidth": 0.5,
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "height": 28,
+                              "justifyContent": "center",
+                              "overflow": "hidden",
+                              "paddingLeft": 12,
+                              "paddingRight": 12,
+                            },
+                            {
+                              "borderColor": "transparent",
+                              "display": "flex",
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          data-blade-component="base-box"
+                          display="flex"
+                          style={
+                            [
+                              {
+                                "display": "flex",
+                                "paddingRight": 8,
+                              },
+                            ]
+                          }
+                        >
+                          <RNSVGSvgView
+                            accessibilityElementsHidden={true}
+                            align="xMidYMid"
+                            bbHeight="12px"
+                            bbWidth="12px"
+                            data-blade-component="icon"
+                            fill="none"
+                            focusable={false}
+                            height="12px"
+                            importantForAccessibility="no-hide-descendants"
+                            meetOrSlice={0}
+                            minX={0}
+                            minY={0}
+                            style={
+                              [
+                                {
+                                  "backgroundColor": "transparent",
+                                  "borderWidth": 0,
+                                },
+                                [
+                                  {},
+                                ],
+                                {
+                                  "flex": 0,
+                                  "height": 12,
+                                  "width": 12,
+                                },
+                              ]
+                            }
+                            vbHeight={24}
+                            vbWidth={24}
+                            width="12px"
+                          >
+                            <RNSVGGroup
+                              fill={null}
+                              propList={
+                                [
+                                  "fill",
+                                ]
+                              }
+                            >
+                              <RNSVGPath
+                                d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
+                                fill={4282603381}
+                                propList={
+                                  [
+                                    "fill",
+                                  ]
+                                }
+                              />
+                              <RNSVGPath
+                                d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
+                                fill={4282603381}
+                                propList={
+                                  [
+                                    "fill",
+                                  ]
+                                }
+                              />
+                              <RNSVGPath
+                                clipRule={0}
+                                d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
+                                fill={4282603381}
+                                fillRule={0}
+                                propList={
+                                  [
+                                    "fill",
+                                    "fillRule",
+                                  ]
+                                }
+                              />
+                            </RNSVGGroup>
+                          </RNSVGSvgView>
+                        </View>
+                        <Text
+                          accessible={true}
+                          color="surface.text.subtle.lowContrast"
+                          data-blade-component="text"
+                          fontFamily="text"
+                          fontSize={100}
+                          fontStyle="normal"
+                          fontWeight="regular"
+                          lineHeight={100}
+                          numberOfLines={1}
+                          style={
+                            [
+                              {
+                                "color": "hsla(216, 27%, 36%, 1)",
+                                "fontFamily": "Lato",
+                                "fontSize": 14,
+                                "fontStyle": "normal",
+                                "fontWeight": "400",
+                                "lineHeight": 20,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "paddingBottom": 0,
+                                "paddingLeft": 0,
+                                "paddingRight": 0,
+                                "paddingTop": 0,
+                                "textDecorationLine": "none",
+                              },
+                            ]
+                          }
+                        >
+                          Apple
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            data-blade-component="base-box"
+            style={
+              [
+                {
+                  "marginBottom": 8,
+                  "marginRight": 8,
+                },
+              ]
+            }
+          >
+            <View
+              data-blade-component="chip"
+              display="flex"
+              style={
+                [
+                  {
+                    "display": "flex",
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityDescribedBy="radio-14-helptext-15"
+                accessibilityInvalid={false}
+                accessibilityRequired={false}
+                accessibilityRole="radio"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": false,
+                    "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    {
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "marginBottom": 2,
+                      "marginTop": 2,
+                    },
+                  ]
+                }
+                value="mango"
+              >
+                <View
+                  data-blade-component="base-box"
+                  display="flex"
+                  flexDirection="column"
+                  style={
+                    [
+                      {
+                        "display": "flex",
+                        "flexDirection": "column",
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    alignItems="center"
+                    data-blade-component="base-box"
+                    display="flex"
+                    flexDirection="row"
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "display": "flex",
+                          "flexDirection": "row",
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      borderColor="brand.gray.400.lowContrast"
+                      isDisabled={false}
+                      style={
+                        [
+                          {
+                            "alignItems": "center",
+                            "alignSelf": "center",
+                            "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                            "borderColor": "hsla(216, 19%, 89%, 1)",
+                            "borderRadius": 9999,
+                            "borderWidth": 1,
+                            "display": "flex",
+                            "flexDirection": "row",
+                            "flexWrap": "nowrap",
+                            "justifyContent": "center",
+                            "maxWidth": 280,
+                            "textAlign": "left",
+                            "textOverflow": "ellipsis",
+                          },
+                          {
+                            "transform": [
+                              {
+                                "scale": 1,
+                              },
+                            ],
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        alignItems="center"
+                        backgroundColor="transparent"
+                        borderColor="brand.gray.400.lowContrast"
+                        borderRadius="max"
+                        borderWidth="thinner"
+                        data-blade-component="base-box"
+                        display="flex"
+                        flexDirection="row"
+                        height="28px"
+                        intent="none"
+                        isChecked={false}
+                        isDisabled={false}
+                        justifyContent="center"
+                        overflow="hidden"
+                        style={
+                          [
+                            {
+                              "alignItems": "center",
+                              "backgroundColor": "transparent",
+                              "borderColor": "hsla(216, 19%, 89%, 1)",
+                              "borderRadius": 9999,
+                              "borderStyle": "solid",
+                              "borderWidth": 0.5,
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "height": 28,
+                              "justifyContent": "center",
+                              "overflow": "hidden",
+                              "paddingLeft": 12,
+                              "paddingRight": 12,
+                            },
+                            {
+                              "borderColor": "transparent",
+                              "display": "flex",
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          data-blade-component="base-box"
+                          display="flex"
+                          style={
+                            [
+                              {
+                                "display": "flex",
+                                "paddingRight": 8,
+                              },
+                            ]
+                          }
+                        >
+                          <RNSVGSvgView
+                            accessibilityElementsHidden={true}
+                            align="xMidYMid"
+                            bbHeight="12px"
+                            bbWidth="12px"
+                            data-blade-component="icon"
+                            fill="none"
+                            focusable={false}
+                            height="12px"
+                            importantForAccessibility="no-hide-descendants"
+                            meetOrSlice={0}
+                            minX={0}
+                            minY={0}
+                            style={
+                              [
+                                {
+                                  "backgroundColor": "transparent",
+                                  "borderWidth": 0,
+                                },
+                                [
+                                  {},
+                                ],
+                                {
+                                  "flex": 0,
+                                  "height": 12,
+                                  "width": 12,
+                                },
+                              ]
+                            }
+                            vbHeight={24}
+                            vbWidth={24}
+                            width="12px"
+                          >
+                            <RNSVGGroup
+                              fill={null}
+                              propList={
+                                [
+                                  "fill",
+                                ]
+                              }
+                            >
+                              <RNSVGPath
+                                d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
+                                fill={4282603381}
+                                propList={
+                                  [
+                                    "fill",
+                                  ]
+                                }
+                              />
+                              <RNSVGPath
+                                d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
+                                fill={4282603381}
+                                propList={
+                                  [
+                                    "fill",
+                                  ]
+                                }
+                              />
+                              <RNSVGPath
+                                clipRule={0}
+                                d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
+                                fill={4282603381}
+                                fillRule={0}
+                                propList={
+                                  [
+                                    "fill",
+                                    "fillRule",
+                                  ]
+                                }
+                              />
+                            </RNSVGGroup>
+                          </RNSVGSvgView>
+                        </View>
+                        <Text
+                          accessible={true}
+                          color="surface.text.subtle.lowContrast"
+                          data-blade-component="text"
+                          fontFamily="text"
+                          fontSize={100}
+                          fontStyle="normal"
+                          fontWeight="regular"
+                          lineHeight={100}
+                          numberOfLines={1}
+                          style={
+                            [
+                              {
+                                "color": "hsla(216, 27%, 36%, 1)",
+                                "fontFamily": "Lato",
+                                "fontSize": 14,
+                                "fontStyle": "normal",
+                                "fontWeight": "400",
+                                "lineHeight": 20,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "paddingBottom": 0,
+                                "paddingLeft": 0,
+                                "paddingRight": 0,
+                                "paddingTop": 0,
+                                "textDecorationLine": "none",
+                              },
+                            ]
+                          }
+                        >
+                          Mango
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<Chip /> should set disabled state with isDisabled 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="base-box"
+    style={
+      [
+        {},
+      ]
+    }
+  >
+    <View
+      accessibilityLabelledBy="chip-group-21-label"
+      accessibilityRole="radiogroup"
+      accessible={true}
+      data-blade-component="chip-group"
+      display="flex"
+      flexDirection="column"
+      style={
+        [
+          {
+            "display": "flex",
+            "flexDirection": "column",
+          },
+        ]
+      }
+    >
+      <View
+        data-blade-component="base-box"
+        style={
+          [
+            {},
+          ]
+        }
+      >
+        <View
+          data-blade-component="visually-hidden"
+          style={
+            [
+              {
+                "borderColor": "black",
+                "borderStyle": "solid",
+                "borderWidth": 0,
+                "clip": "rect(0 0 0 0)",
+                "clipPath": "inset(50%)",
+                "height": 1,
+                "left": -10000,
+                "marginBottom": -1,
+                "marginLeft": 0,
+                "marginRight": -1,
+                "marginTop": 0,
+                "overflow": "hidden",
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "position": "absolute",
+                "whiteSpace": "nowrap",
+                "width": 1,
+                "wordWrap": "normal",
+              },
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            color="surface.text.normal.lowContrast"
+            data-blade-component="text"
+            fontFamily="text"
+            fontSize={100}
+            fontStyle="normal"
+            fontWeight="regular"
+            lineHeight={100}
+            style={
+              [
+                {
+                  "color": "hsla(217, 56%, 17%, 1)",
+                  "fontFamily": "Lato",
+                  "fontSize": 14,
+                  "fontStyle": "normal",
+                  "fontWeight": "400",
+                  "lineHeight": 20,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+          >
+            Select fruits
+          </Text>
+        </View>
+        <View
+          data-blade-component="base-box"
+          display="flex"
+          flexDirection="row"
+          flexWrap="wrap"
+          style={
+            [
+              {
+                "display": "flex",
+                "flexDirection": "row",
+                "flexWrap": "wrap",
+              },
+            ]
+          }
+        >
+          <View
+            data-blade-component="base-box"
+            style={
+              [
+                {
+                  "marginBottom": 8,
+                  "marginRight": 8,
+                },
+              ]
+            }
+          >
+            <View
+              data-blade-component="chip"
+              display="flex"
+              style={
+                [
+                  {
+                    "display": "flex",
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityDescribedBy="radio-22-helptext-23"
+                accessibilityInvalid={false}
+                accessibilityRequired={false}
+                accessibilityRole="radio"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": false,
+                    "disabled": true,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    {
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "marginBottom": 2,
+                      "marginTop": 2,
+                    },
+                  ]
+                }
+                value="apple"
+              >
+                <View
+                  data-blade-component="base-box"
+                  display="flex"
+                  flexDirection="column"
+                  style={
+                    [
+                      {
+                        "display": "flex",
+                        "flexDirection": "column",
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    alignItems="center"
+                    data-blade-component="base-box"
+                    display="flex"
+                    flexDirection="row"
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "display": "flex",
+                          "flexDirection": "row",
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      borderColor="brand.gray.400.lowContrast"
+                      isDisabled={true}
+                      style={
+                        [
+                          {
+                            "alignItems": "center",
+                            "alignSelf": "center",
+                            "backgroundColor": "transparent",
+                            "borderColor": "hsla(216, 19%, 89%, 1)",
+                            "borderRadius": 9999,
+                            "borderWidth": 1,
+                            "display": "flex",
+                            "flexDirection": "row",
+                            "flexWrap": "nowrap",
+                            "justifyContent": "center",
+                            "maxWidth": 280,
+                            "textAlign": "left",
+                            "textOverflow": "ellipsis",
+                          },
+                          {
+                            "transform": [
+                              {
+                                "scale": 1,
+                              },
+                            ],
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        alignItems="center"
+                        backgroundColor="transparent"
+                        borderColor="brand.gray.400.lowContrast"
+                        borderRadius="max"
+                        borderWidth="thinner"
+                        data-blade-component="base-box"
+                        display="flex"
+                        flexDirection="row"
+                        height="28px"
+                        intent="none"
+                        isChecked={false}
+                        isDisabled={true}
+                        justifyContent="center"
+                        overflow="hidden"
+                        style={
+                          [
+                            {
+                              "alignItems": "center",
+                              "backgroundColor": "transparent",
+                              "borderColor": "hsla(216, 19%, 89%, 1)",
+                              "borderRadius": 9999,
+                              "borderStyle": "solid",
+                              "borderWidth": 0.5,
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "height": 28,
+                              "justifyContent": "center",
+                              "overflow": "hidden",
+                              "paddingLeft": 12,
+                              "paddingRight": 12,
+                            },
+                            {
+                              "borderColor": "transparent",
+                              "display": "flex",
+                            },
+                          ]
+                        }
+                      >
+                        <Text
+                          accessible={true}
+                          color="surface.text.placeholder.lowContrast"
+                          data-blade-component="text"
+                          fontFamily="text"
+                          fontSize={100}
+                          fontStyle="normal"
+                          fontWeight="regular"
+                          lineHeight={100}
+                          numberOfLines={1}
+                          style={
+                            [
+                              {
+                                "color": "hsla(214, 18%, 69%, 1)",
+                                "fontFamily": "Lato",
+                                "fontSize": 14,
+                                "fontStyle": "normal",
+                                "fontWeight": "400",
+                                "lineHeight": 20,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "paddingBottom": 0,
+                                "paddingLeft": 0,
+                                "paddingRight": 0,
+                                "paddingTop": 0,
+                                "textDecorationLine": "none",
+                              },
+                            ]
+                          }
+                        >
+                          Apple
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            data-blade-component="base-box"
+            style={
+              [
+                {
+                  "marginBottom": 8,
+                  "marginRight": 8,
+                },
+              ]
+            }
+          >
+            <View
+              data-blade-component="chip"
+              display="flex"
+              style={
+                [
+                  {
+                    "display": "flex",
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityDescribedBy="radio-24-helptext-25"
+                accessibilityInvalid={false}
+                accessibilityRequired={false}
+                accessibilityRole="radio"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": false,
+                    "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    {
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "marginBottom": 2,
+                      "marginTop": 2,
+                    },
+                  ]
+                }
+                value="mango"
+              >
+                <View
+                  data-blade-component="base-box"
+                  display="flex"
+                  flexDirection="column"
+                  style={
+                    [
+                      {
+                        "display": "flex",
+                        "flexDirection": "column",
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    alignItems="center"
+                    data-blade-component="base-box"
+                    display="flex"
+                    flexDirection="row"
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "display": "flex",
+                          "flexDirection": "row",
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      borderColor="brand.gray.400.lowContrast"
+                      isDisabled={false}
+                      style={
+                        [
+                          {
+                            "alignItems": "center",
+                            "alignSelf": "center",
+                            "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                            "borderColor": "hsla(216, 19%, 89%, 1)",
+                            "borderRadius": 9999,
+                            "borderWidth": 1,
+                            "display": "flex",
+                            "flexDirection": "row",
+                            "flexWrap": "nowrap",
+                            "justifyContent": "center",
+                            "maxWidth": 280,
+                            "textAlign": "left",
+                            "textOverflow": "ellipsis",
+                          },
+                          {
+                            "transform": [
+                              {
+                                "scale": 1,
+                              },
+                            ],
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        alignItems="center"
+                        backgroundColor="transparent"
+                        borderColor="brand.gray.400.lowContrast"
+                        borderRadius="max"
+                        borderWidth="thinner"
+                        data-blade-component="base-box"
+                        display="flex"
+                        flexDirection="row"
+                        height="28px"
+                        intent="none"
+                        isChecked={false}
+                        isDisabled={false}
+                        justifyContent="center"
+                        overflow="hidden"
+                        style={
+                          [
+                            {
+                              "alignItems": "center",
+                              "backgroundColor": "transparent",
+                              "borderColor": "hsla(216, 19%, 89%, 1)",
+                              "borderRadius": 9999,
+                              "borderStyle": "solid",
+                              "borderWidth": 0.5,
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "height": 28,
+                              "justifyContent": "center",
+                              "overflow": "hidden",
+                              "paddingLeft": 12,
+                              "paddingRight": 12,
+                            },
+                            {
+                              "borderColor": "transparent",
+                              "display": "flex",
+                            },
+                          ]
+                        }
+                      >
+                        <Text
+                          accessible={true}
+                          color="surface.text.subtle.lowContrast"
+                          data-blade-component="text"
+                          fontFamily="text"
+                          fontSize={100}
+                          fontStyle="normal"
+                          fontWeight="regular"
+                          lineHeight={100}
+                          numberOfLines={1}
+                          style={
+                            [
+                              {
+                                "color": "hsla(216, 27%, 36%, 1)",
+                                "fontFamily": "Lato",
+                                "fontSize": 14,
+                                "fontStyle": "normal",
+                                "fontWeight": "400",
+                                "lineHeight": 20,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "paddingBottom": 0,
+                                "paddingLeft": 0,
+                                "paddingRight": 0,
+                                "paddingTop": 0,
+                                "textDecorationLine": "none",
+                              },
+                            ]
+                          }
+                        >
+                          Mango
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;

@@ -9,11 +9,11 @@ import { Button } from '~components/Button';
 import { Checkbox } from '~components/Checkbox';
 import { isReactNative } from '~utils';
 
-const HeaderContainer = ({ children }: { children: BoxProps['children'] }): JSX.Element => {
+const HeaderContainer = ({ children }: { children: BoxProps['children'] }): React.ReactElement => {
   return <Box padding={{ base: 'spacing.0', m: 'spacing.2' }}>{children}</Box>;
 };
 
-export const BaseHeaderKitchenSink = (): JSX.Element => {
+export const BaseHeaderKitchenSink = (): React.ReactElement => {
   return (
     <Box
       backgroundColor="surface.background.level2.lowContrast"
@@ -82,7 +82,7 @@ export const BaseHeaderKitchenSink = (): JSX.Element => {
   );
 };
 
-export const BaseFooterSink = (): JSX.Element => {
+export const BaseFooterSink = (): React.ReactElement => {
   return (
     <Box
       backgroundColor="surface.background.level2.lowContrast"

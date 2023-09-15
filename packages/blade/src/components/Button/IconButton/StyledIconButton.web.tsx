@@ -21,7 +21,7 @@ const StyledButton = styled.button<StyledButtonProps>((props) => {
 
   return {
     border: 'none',
-    cursor: 'pointer',
+    cursor: props.disabled ? 'not-allowed' : 'pointer',
     padding: 0,
     borderRadius: theme.border.radius.small,
     background: 'transparent',
@@ -57,6 +57,7 @@ const StyledIconButton = React.forwardRef<HTMLButtonElement, StyledIconButtonPro
       size,
       contrast,
       accessibilityLabel,
+      isDisabled,
       testID,
       onBlur,
       onFocus,
@@ -82,10 +83,14 @@ const StyledIconButton = React.forwardRef<HTMLButtonElement, StyledIconButtonPro
       onPointerEnter={onPointerEnter}
       onTouchEnd={onTouchEnd}
       onTouchStart={onTouchStart}
+      disabled={isDisabled}
       {...makeAccessible({ label: accessibilityLabel })}
       {...metaAttribute({ name: MetaConstants.IconButton, testID })}
     >
-      <Icon size={size} color="currentColor" />
+      <Icon
+        size={size}
+        color={isDisabled ? 'surface.action.icon.disabled.lowContrast' : 'currentColor'}
+      />
     </StyledButton>
   ),
 );

@@ -42,7 +42,7 @@ describe('<RadioGroup />', () => {
 
   it('should propagate isDisabled prop to child radios', () => {
     const labelText = 'Select fruits';
-    const { getAllByA11yRole } = renderWithTheme(
+    const { getAllByRole } = renderWithTheme(
       <RadioGroup isDisabled label={labelText}>
         <Radio value="apple">Apple</Radio>
         <Radio value="mango">Mango</Radio>
@@ -50,7 +50,7 @@ describe('<RadioGroup />', () => {
       </RadioGroup>,
     );
 
-    const radios = getAllByA11yRole('radio');
+    const radios = getAllByRole('radio');
     radios.forEach((radio) => {
       expect(radio.props.accessibilityState.disabled).toBeTruthy();
     });
@@ -58,7 +58,7 @@ describe('<RadioGroup />', () => {
 
   it('should propagate name prop to child radios', () => {
     const labelText = 'Select fruits';
-    const { getAllByA11yRole } = renderWithTheme(
+    const { getAllByRole } = renderWithTheme(
       <RadioGroup isDisabled label={labelText} name="fruits">
         <Radio value="apple">Apple</Radio>
         <Radio value="mango">Mango</Radio>
@@ -66,7 +66,7 @@ describe('<RadioGroup />', () => {
       </RadioGroup>,
     );
 
-    const radios = getAllByA11yRole('radio');
+    const radios = getAllByRole('radio');
     radios.forEach((radio) => {
       expect(radio.props.name).toBe('fruits');
     });
@@ -97,7 +97,7 @@ describe('<RadioGroup />', () => {
     const helpText = 'Select one';
     const errorText = 'Invalid selection';
 
-    const { getAllByA11yRole, queryByText } = renderWithTheme(
+    const { getAllByRole, queryByText } = renderWithTheme(
       <RadioGroup
         helpText={helpText}
         errorText={errorText}
@@ -113,7 +113,7 @@ describe('<RadioGroup />', () => {
     expect(queryByText(helpText)).toBeFalsy();
     expect(queryByText(errorText)).toBeTruthy();
 
-    const radios = getAllByA11yRole('radio');
+    const radios = getAllByRole('radio');
     radios.forEach((radio) => {
       expect(radio.props.accessibilityInvalid).toBeTruthy();
     });
@@ -122,7 +122,7 @@ describe('<RadioGroup />', () => {
   it('should work in uncontrolled mode', () => {
     const labelText = 'Select fruits';
     const onChange = jest.fn();
-    const { getByA11yState, getAllByA11yRole } = renderWithTheme(
+    const { getByA11yState, getAllByRole } = renderWithTheme(
       <RadioGroup name="fruits" label={labelText} defaultValue="apple" onChange={onChange}>
         <Radio value="apple">Apple</Radio>
         <Radio value="mango">Mango</Radio>
@@ -133,7 +133,7 @@ describe('<RadioGroup />', () => {
     const radio = getByA11yState({ checked: true });
     expect(radio.props.value).toBe('apple');
 
-    const radios = getAllByA11yRole('radio');
+    const radios = getAllByRole('radio');
     const apple = radios.find((radio) => radio.props.value === 'apple');
     const mango = radios.find((radio) => radio.props.value === 'mango');
     const orange = radios.find((radio) => radio.props.value === 'orange');
@@ -174,12 +174,12 @@ describe('<RadioGroup />', () => {
         </>
       );
     };
-    const { getByA11yState, getAllByA11yRole, getByTestId } = renderWithTheme(<Example />);
+    const { getByA11yState, getAllByRole, getByTestId } = renderWithTheme(<Example />);
 
     const radio = getByA11yState({ checked: true });
     expect(radio.props.value).toBe('apple');
 
-    const radios = getAllByA11yRole('radio');
+    const radios = getAllByRole('radio');
     const apple = radios.find((radio) => radio.props.value === 'apple');
     const mango = radios.find((radio) => radio.props.value === 'mango');
     const orange = radios.find((radio) => radio.props.value === 'orange');

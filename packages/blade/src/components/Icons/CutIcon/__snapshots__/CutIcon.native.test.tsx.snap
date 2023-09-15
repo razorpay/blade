@@ -3,7 +3,7 @@
 exports[`<CutIcon /> should render CutIcon 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -22,15 +22,15 @@ exports[`<CutIcon /> should render CutIcon 1`] = `
     minX={0}
     minY={0}
     style={
-      Array [
-        Object {
+      [
+        {
           "backgroundColor": "transparent",
           "borderWidth": 0,
         },
-        Array [
-          Object {},
+        [
+          {},
         ],
-        Object {
+        {
           "flex": 0,
           "height": 20,
           "width": 20,
@@ -44,7 +44,7 @@ exports[`<CutIcon /> should render CutIcon 1`] = `
     <RNSVGGroup
       fill={null}
       propList={
-        Array [
+        [
           "fill",
         ]
       }
@@ -57,7 +57,7 @@ exports[`<CutIcon /> should render CutIcon 1`] = `
           d="M6 9C7.65685 9 9 7.65685 9 6C9 4.34315 7.65685 3 6 3C4.34315 3 3 4.34315 3 6C3 7.65685 4.34315 9 6 9Z"
           fillRule={0}
           propList={
-            Array [
+            [
               "fillRule",
               "stroke",
               "strokeWidth",
@@ -75,7 +75,7 @@ exports[`<CutIcon /> should render CutIcon 1`] = `
           d="M6 21C7.65685 21 9 19.6569 9 18C9 16.3431 7.65685 15 6 15C4.34315 15 3 16.3431 3 18C3 19.6569 4.34315 21 6 21Z"
           fillRule={0}
           propList={
-            Array [
+            [
               "fillRule",
               "stroke",
               "strokeWidth",
@@ -91,7 +91,7 @@ exports[`<CutIcon /> should render CutIcon 1`] = `
         <RNSVGPath
           d="M20 4L8.12 15.88"
           propList={
-            Array [
+            [
               "stroke",
               "strokeWidth",
               "strokeLinecap",
@@ -106,7 +106,7 @@ exports[`<CutIcon /> should render CutIcon 1`] = `
         <RNSVGPath
           d="M14.47 14.48L20 20"
           propList={
-            Array [
+            [
               "stroke",
               "strokeWidth",
               "strokeLinecap",
@@ -121,7 +121,7 @@ exports[`<CutIcon /> should render CutIcon 1`] = `
         <RNSVGPath
           d="M8.12 8.12L12 12"
           propList={
-            Array [
+            [
               "stroke",
               "strokeWidth",
               "strokeLinecap",
@@ -142,7 +142,7 @@ exports[`<CutIcon /> should render CutIcon 1`] = `
             fill={4282603381}
             height="24"
             propList={
-              Array [
+              [
                 "fill",
               ]
             }

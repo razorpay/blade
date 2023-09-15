@@ -3,7 +3,7 @@
 exports[`<List /> should render List with default properties 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -11,18 +11,19 @@ exports[`<List /> should render List with default properties 1`] = `
   <View
     data-blade-component="base-box"
     style={
-      Array [
-        Object {},
+      [
+        {},
       ]
     }
   >
     <View
       accessibilityRole="list"
+      accessible={true}
       data-blade-component="list"
       marginTop="spacing.3"
       style={
-        Array [
-          Object {
+        [
+          {
             "marginTop": 8,
           },
         ]
@@ -33,8 +34,8 @@ exports[`<List /> should render List with default properties 1`] = `
         hasIcon={false}
         level={1}
         style={
-          Array [
-            Object {
+          [
+            {
               "marginLeft": 4,
             },
           ]
@@ -47,8 +48,8 @@ exports[`<List /> should render List with default properties 1`] = `
           display="flex"
           flexDirection="row"
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "display": "flex",
                 "flexDirection": "row",
@@ -62,8 +63,8 @@ exports[`<List /> should render List with default properties 1`] = `
             data-blade-component="base-box"
             display="flex"
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignSelf": "flex-start",
                   "display": "flex",
                   "marginRight": 8,
@@ -86,15 +87,15 @@ exports[`<List /> should render List with default properties 1`] = `
               minX={0}
               minY={0}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "backgroundColor": "transparent",
                     "borderWidth": 0,
                   },
-                  Array [
-                    Object {},
+                  [
+                    {},
                   ],
-                  Object {
+                  {
                     "flex": 0,
                     "height": 6,
                     "width": 6,
@@ -108,7 +109,7 @@ exports[`<List /> should render List with default properties 1`] = `
               <RNSVGGroup
                 fill={null}
                 propList={
-                  Array [
+                  [
                     "fill",
                   ]
                 }
@@ -118,7 +119,7 @@ exports[`<List /> should render List with default properties 1`] = `
                   cy="3px"
                   fill={4288851646}
                   propList={
-                    Array [
+                    [
                       "fill",
                     ]
                   }
@@ -133,8 +134,8 @@ exports[`<List /> should render List with default properties 1`] = `
             flexDirection="row"
             flexWrap="wrap"
             style={
-              Array [
-                Object {
+              [
+                {
                   "display": "flex",
                   "flexDirection": "row",
                   "flexWrap": "wrap",
@@ -143,6 +144,7 @@ exports[`<List /> should render List with default properties 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.normal.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -151,8 +153,8 @@ exports[`<List /> should render List with default properties 1`] = `
               fontWeight="regular"
               lineHeight={100}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "hsla(217, 56%, 17%, 1)",
                     "fontFamily": "Lato",
                     "fontSize": 14,
@@ -179,17 +181,18 @@ exports[`<List /> should render List with default properties 1`] = `
         <View
           data-blade-component="base-box"
           style={
-            Array [
-              Object {},
+            [
+              {},
             ]
           }
         >
           <View
             accessibilityRole="list"
+            accessible={true}
             data-blade-component="list"
             style={
-              Array [
-                Object {},
+              [
+                {},
               ]
             }
           >
@@ -198,8 +201,8 @@ exports[`<List /> should render List with default properties 1`] = `
               hasIcon={false}
               level={2}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "marginLeft": 16,
                   },
                 ]
@@ -212,8 +215,8 @@ exports[`<List /> should render List with default properties 1`] = `
                 display="flex"
                 flexDirection="row"
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "alignItems": "center",
                       "display": "flex",
                       "flexDirection": "row",
@@ -227,8 +230,8 @@ exports[`<List /> should render List with default properties 1`] = `
                   data-blade-component="base-box"
                   display="flex"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignSelf": "flex-start",
                         "display": "flex",
                         "marginRight": 8,
@@ -251,15 +254,15 @@ exports[`<List /> should render List with default properties 1`] = `
                     minX={0}
                     minY={0}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "backgroundColor": "transparent",
                           "borderWidth": 0,
                         },
-                        Array [
-                          Object {},
+                        [
+                          {},
                         ],
-                        Object {
+                        {
                           "flex": 0,
                           "height": 6,
                           "width": 6,
@@ -273,7 +276,7 @@ exports[`<List /> should render List with default properties 1`] = `
                     <RNSVGGroup
                       fill={null}
                       propList={
-                        Array [
+                        [
                           "fill",
                         ]
                       }
@@ -282,7 +285,7 @@ exports[`<List /> should render List with default properties 1`] = `
                         cx="3px"
                         cy="3px"
                         propList={
-                          Array [
+                          [
                             "stroke",
                           ]
                         }
@@ -298,8 +301,8 @@ exports[`<List /> should render List with default properties 1`] = `
                   flexDirection="row"
                   flexWrap="wrap"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "display": "flex",
                         "flexDirection": "row",
                         "flexWrap": "wrap",
@@ -308,6 +311,7 @@ exports[`<List /> should render List with default properties 1`] = `
                   }
                 >
                   <Text
+                    accessible={true}
                     color="surface.text.normal.lowContrast"
                     data-blade-component="text"
                     fontFamily="text"
@@ -316,8 +320,8 @@ exports[`<List /> should render List with default properties 1`] = `
                     fontWeight="regular"
                     lineHeight={100}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "hsla(217, 56%, 17%, 1)",
                           "fontFamily": "Lato",
                           "fontSize": 14,
@@ -344,17 +348,18 @@ exports[`<List /> should render List with default properties 1`] = `
               <View
                 data-blade-component="base-box"
                 style={
-                  Array [
-                    Object {},
+                  [
+                    {},
                   ]
                 }
               >
                 <View
                   accessibilityRole="list"
+                  accessible={true}
                   data-blade-component="list"
                   style={
-                    Array [
-                      Object {},
+                    [
+                      {},
                     ]
                   }
                 >
@@ -363,8 +368,8 @@ exports[`<List /> should render List with default properties 1`] = `
                     hasIcon={false}
                     level={3}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "marginLeft": 16,
                         },
                       ]
@@ -377,8 +382,8 @@ exports[`<List /> should render List with default properties 1`] = `
                       display="flex"
                       flexDirection="row"
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "alignItems": "center",
                             "display": "flex",
                             "flexDirection": "row",
@@ -392,8 +397,8 @@ exports[`<List /> should render List with default properties 1`] = `
                         data-blade-component="base-box"
                         display="flex"
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "alignSelf": "flex-start",
                               "display": "flex",
                               "marginRight": 8,
@@ -416,15 +421,15 @@ exports[`<List /> should render List with default properties 1`] = `
                           minX={0}
                           minY={0}
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "backgroundColor": "transparent",
                                 "borderWidth": 0,
                               },
-                              Array [
-                                Object {},
+                              [
+                                {},
                               ],
-                              Object {
+                              {
                                 "flex": 0,
                                 "height": 6,
                                 "width": 6,
@@ -438,7 +443,7 @@ exports[`<List /> should render List with default properties 1`] = `
                           <RNSVGGroup
                             fill={null}
                             propList={
-                              Array [
+                              [
                                 "fill",
                               ]
                             }
@@ -447,7 +452,7 @@ exports[`<List /> should render List with default properties 1`] = `
                               fill={4288851646}
                               height="6px"
                               propList={
-                                Array [
+                                [
                                   "fill",
                                 ]
                               }
@@ -465,8 +470,8 @@ exports[`<List /> should render List with default properties 1`] = `
                         flexDirection="row"
                         flexWrap="wrap"
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "display": "flex",
                               "flexDirection": "row",
                               "flexWrap": "wrap",
@@ -475,6 +480,7 @@ exports[`<List /> should render List with default properties 1`] = `
                         }
                       >
                         <Text
+                          accessible={true}
                           color="surface.text.normal.lowContrast"
                           data-blade-component="text"
                           fontFamily="text"
@@ -483,8 +489,8 @@ exports[`<List /> should render List with default properties 1`] = `
                           fontWeight="regular"
                           lineHeight={100}
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "color": "hsla(217, 56%, 17%, 1)",
                                 "fontFamily": "Lato",
                                 "fontSize": 14,
@@ -523,7 +529,7 @@ exports[`<List /> should render List with default properties 1`] = `
 exports[`<List /> should render List with inline ListItemCode 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -531,18 +537,19 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
   <View
     data-blade-component="base-box"
     style={
-      Array [
-        Object {},
+      [
+        {},
       ]
     }
   >
     <View
       accessibilityRole="list"
+      accessible={true}
       data-blade-component="list"
       marginTop="spacing.3"
       style={
-        Array [
-          Object {
+        [
+          {
             "marginTop": 8,
           },
         ]
@@ -553,8 +560,8 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
         hasIcon={false}
         level={1}
         style={
-          Array [
-            Object {
+          [
+            {
               "marginLeft": 4,
             },
           ]
@@ -567,8 +574,8 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
           display="flex"
           flexDirection="row"
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "display": "flex",
                 "flexDirection": "row",
@@ -582,8 +589,8 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
             data-blade-component="base-box"
             display="flex"
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignSelf": "flex-start",
                   "display": "flex",
                   "marginRight": 8,
@@ -606,15 +613,15 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
               minX={0}
               minY={0}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "backgroundColor": "transparent",
                     "borderWidth": 0,
                   },
-                  Array [
-                    Object {},
+                  [
+                    {},
                   ],
-                  Object {
+                  {
                     "flex": 0,
                     "height": 6,
                     "width": 6,
@@ -628,7 +635,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
               <RNSVGGroup
                 fill={null}
                 propList={
-                  Array [
+                  [
                     "fill",
                   ]
                 }
@@ -638,7 +645,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
                   cy="3px"
                   fill={4288851646}
                   propList={
-                    Array [
+                    [
                       "fill",
                     ]
                   }
@@ -653,8 +660,8 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
             flexDirection="row"
             flexWrap="wrap"
             style={
-              Array [
-                Object {
+              [
+                {
                   "display": "flex",
                   "flexDirection": "row",
                   "flexWrap": "wrap",
@@ -663,6 +670,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.normal.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -671,8 +679,8 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
               fontWeight="regular"
               lineHeight={100}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "hsla(217, 56%, 17%, 1)",
                     "fontFamily": "Lato",
                     "fontSize": 14,
@@ -699,9 +707,9 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
               isHighlighted={true}
               size="small"
               style={
-                Array [
-                  Object {},
-                  Object {
+                [
+                  {},
+                  {
                     "alignSelf": "center",
                     "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
                     "borderRadius": 4,
@@ -717,6 +725,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
               }
             >
               <Text
+                accessible={true}
                 color="surface.text.subtle.lowContrast"
                 data-blade-component="base-text"
                 fontFamily="code"
@@ -724,8 +733,8 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
                 fontWeight="regular"
                 lineHeight={25}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "color": "hsla(216, 27%, 36%, 1)",
                       "fontFamily": "Courier",
                       "fontSize": 10,
@@ -756,8 +765,8 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
         hasIcon={false}
         level={1}
         style={
-          Array [
-            Object {
+          [
+            {
               "marginLeft": 4,
             },
           ]
@@ -770,8 +779,8 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
           display="flex"
           flexDirection="row"
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "display": "flex",
                 "flexDirection": "row",
@@ -785,8 +794,8 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
             data-blade-component="base-box"
             display="flex"
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignSelf": "flex-start",
                   "display": "flex",
                   "marginRight": 8,
@@ -809,15 +818,15 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
               minX={0}
               minY={0}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "backgroundColor": "transparent",
                     "borderWidth": 0,
                   },
-                  Array [
-                    Object {},
+                  [
+                    {},
                   ],
-                  Object {
+                  {
                     "flex": 0,
                     "height": 6,
                     "width": 6,
@@ -831,7 +840,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
               <RNSVGGroup
                 fill={null}
                 propList={
-                  Array [
+                  [
                     "fill",
                   ]
                 }
@@ -841,7 +850,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
                   cy="3px"
                   fill={4288851646}
                   propList={
-                    Array [
+                    [
                       "fill",
                     ]
                   }
@@ -856,8 +865,8 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
             flexDirection="row"
             flexWrap="wrap"
             style={
-              Array [
-                Object {
+              [
+                {
                   "display": "flex",
                   "flexDirection": "row",
                   "flexWrap": "wrap",
@@ -866,6 +875,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.normal.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -874,8 +884,8 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
               fontWeight="regular"
               lineHeight={100}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "hsla(217, 56%, 17%, 1)",
                     "fontFamily": "Lato",
                     "fontSize": 14,
@@ -908,7 +918,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
 exports[`<List /> should render List with inline ListItemLink 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -916,18 +926,19 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
   <View
     data-blade-component="base-box"
     style={
-      Array [
-        Object {},
+      [
+        {},
       ]
     }
   >
     <View
       accessibilityRole="list"
+      accessible={true}
       data-blade-component="list"
       marginTop="spacing.3"
       style={
-        Array [
-          Object {
+        [
+          {
             "marginTop": 8,
           },
         ]
@@ -938,8 +949,8 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
         hasIcon={false}
         level={1}
         style={
-          Array [
-            Object {
+          [
+            {
               "marginLeft": 4,
             },
           ]
@@ -952,8 +963,8 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
           display="flex"
           flexDirection="row"
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "display": "flex",
                 "flexDirection": "row",
@@ -967,8 +978,8 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
             data-blade-component="base-box"
             display="flex"
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignSelf": "flex-start",
                   "display": "flex",
                   "marginRight": 8,
@@ -991,15 +1002,15 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
               minX={0}
               minY={0}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "backgroundColor": "transparent",
                     "borderWidth": 0,
                   },
-                  Array [
-                    Object {},
+                  [
+                    {},
                   ],
-                  Object {
+                  {
                     "flex": 0,
                     "height": 6,
                     "width": 6,
@@ -1013,7 +1024,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
               <RNSVGGroup
                 fill={null}
                 propList={
-                  Array [
+                  [
                     "fill",
                   ]
                 }
@@ -1023,7 +1034,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
                   cy="3px"
                   fill={4288851646}
                   propList={
-                    Array [
+                    [
                       "fill",
                     ]
                   }
@@ -1038,8 +1049,8 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
             flexDirection="row"
             flexWrap="wrap"
             style={
-              Array [
-                Object {
+              [
+                {
                   "display": "flex",
                   "flexDirection": "row",
                   "flexWrap": "wrap",
@@ -1048,6 +1059,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.normal.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -1056,8 +1068,8 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
               fontWeight="regular"
               lineHeight={100}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "hsla(217, 56%, 17%, 1)",
                     "fontFamily": "Lato",
                     "fontSize": 14,
@@ -1082,8 +1094,20 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
             <View
               accessibilityRole="link"
               accessibilityState={
-                Object {
+                {
+                  "busy": undefined,
+                  "checked": undefined,
                   "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
                 }
               }
               accessible={true}
@@ -1099,8 +1123,8 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignSelf": "flex-start",
                     "backgroundColor": "transparent",
                     "borderColor": "black",
@@ -1125,8 +1149,8 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
                 display="flex"
                 flexDirection="row"
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "alignItems": "center",
                       "display": "flex",
                       "flexDirection": "row",
@@ -1135,14 +1159,15 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
                 }
               >
                 <Text
+                  accessible={true}
                   color="action.text.link.default"
                   data-blade-component="base-text"
                   fontSize={100}
                   fontWeight="bold"
                   lineHeight={100}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "hsla(218, 89%, 51%, 1)",
                         "fontFamily": "Lato",
                         "fontSize": 14,
@@ -1177,8 +1202,8 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
         hasIcon={false}
         level={1}
         style={
-          Array [
-            Object {
+          [
+            {
               "marginLeft": 4,
             },
           ]
@@ -1191,8 +1216,8 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
           display="flex"
           flexDirection="row"
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "display": "flex",
                 "flexDirection": "row",
@@ -1206,8 +1231,8 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
             data-blade-component="base-box"
             display="flex"
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignSelf": "flex-start",
                   "display": "flex",
                   "marginRight": 8,
@@ -1230,15 +1255,15 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
               minX={0}
               minY={0}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "backgroundColor": "transparent",
                     "borderWidth": 0,
                   },
-                  Array [
-                    Object {},
+                  [
+                    {},
                   ],
-                  Object {
+                  {
                     "flex": 0,
                     "height": 6,
                     "width": 6,
@@ -1252,7 +1277,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
               <RNSVGGroup
                 fill={null}
                 propList={
-                  Array [
+                  [
                     "fill",
                   ]
                 }
@@ -1262,7 +1287,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
                   cy="3px"
                   fill={4288851646}
                   propList={
-                    Array [
+                    [
                       "fill",
                     ]
                   }
@@ -1277,8 +1302,8 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
             flexDirection="row"
             flexWrap="wrap"
             style={
-              Array [
-                Object {
+              [
+                {
                   "display": "flex",
                   "flexDirection": "row",
                   "flexWrap": "wrap",
@@ -1287,6 +1312,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.normal.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -1295,8 +1321,8 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
               fontWeight="regular"
               lineHeight={100}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "hsla(217, 56%, 17%, 1)",
                     "fontFamily": "Lato",
                     "fontSize": 14,
@@ -1329,7 +1355,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
 exports[`<List /> should render List with inline ListItemText 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -1337,18 +1363,19 @@ exports[`<List /> should render List with inline ListItemText 1`] = `
   <View
     data-blade-component="base-box"
     style={
-      Array [
-        Object {},
+      [
+        {},
       ]
     }
   >
     <View
       accessibilityRole="list"
+      accessible={true}
       data-blade-component="list"
       marginTop="spacing.3"
       style={
-        Array [
-          Object {
+        [
+          {
             "marginTop": 8,
           },
         ]
@@ -1359,8 +1386,8 @@ exports[`<List /> should render List with inline ListItemText 1`] = `
         hasIcon={false}
         level={1}
         style={
-          Array [
-            Object {
+          [
+            {
               "marginLeft": 4,
             },
           ]
@@ -1373,8 +1400,8 @@ exports[`<List /> should render List with inline ListItemText 1`] = `
           display="flex"
           flexDirection="row"
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "display": "flex",
                 "flexDirection": "row",
@@ -1388,8 +1415,8 @@ exports[`<List /> should render List with inline ListItemText 1`] = `
             data-blade-component="base-box"
             display="flex"
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignSelf": "flex-start",
                   "display": "flex",
                   "marginRight": 8,
@@ -1412,15 +1439,15 @@ exports[`<List /> should render List with inline ListItemText 1`] = `
               minX={0}
               minY={0}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "backgroundColor": "transparent",
                     "borderWidth": 0,
                   },
-                  Array [
-                    Object {},
+                  [
+                    {},
                   ],
-                  Object {
+                  {
                     "flex": 0,
                     "height": 6,
                     "width": 6,
@@ -1434,7 +1461,7 @@ exports[`<List /> should render List with inline ListItemText 1`] = `
               <RNSVGGroup
                 fill={null}
                 propList={
-                  Array [
+                  [
                     "fill",
                   ]
                 }
@@ -1444,7 +1471,7 @@ exports[`<List /> should render List with inline ListItemText 1`] = `
                   cy="3px"
                   fill={4288851646}
                   propList={
-                    Array [
+                    [
                       "fill",
                     ]
                   }
@@ -1459,8 +1486,8 @@ exports[`<List /> should render List with inline ListItemText 1`] = `
             flexDirection="row"
             flexWrap="wrap"
             style={
-              Array [
-                Object {
+              [
+                {
                   "display": "flex",
                   "flexDirection": "row",
                   "flexWrap": "wrap",
@@ -1469,6 +1496,7 @@ exports[`<List /> should render List with inline ListItemText 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="action.text.secondary.default"
               data-blade-component="text"
               fontFamily="text"
@@ -1477,8 +1505,8 @@ exports[`<List /> should render List with inline ListItemText 1`] = `
               fontWeight="bold"
               lineHeight={100}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "hsla(218, 89%, 51%, 1)",
                     "fontFamily": "Lato",
                     "fontSize": 14,
@@ -1508,10 +1536,10 @@ exports[`<List /> should render List with inline ListItemText 1`] = `
 </View>
 `;
 
-exports[`<List /> should render medium ordered List 1`] = `
+exports[`<List /> should render large ordered List 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -1519,18 +1547,19 @@ exports[`<List /> should render medium ordered List 1`] = `
   <View
     data-blade-component="base-box"
     style={
-      Array [
-        Object {},
+      [
+        {},
       ]
     }
   >
     <View
       accessibilityRole="list"
+      accessible={true}
       data-blade-component="list"
       marginTop="spacing.3"
       style={
-        Array [
-          Object {
+        [
+          {
             "marginTop": 8,
           },
         ]
@@ -1541,8 +1570,8 @@ exports[`<List /> should render medium ordered List 1`] = `
         hasIcon={false}
         level={1}
         style={
-          Array [
-            Object {
+          [
+            {
               "marginLeft": 0,
             },
           ]
@@ -1555,8 +1584,8 @@ exports[`<List /> should render medium ordered List 1`] = `
           display="flex"
           flexDirection="row"
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "display": "flex",
                 "flexDirection": "row",
@@ -1574,8 +1603,8 @@ exports[`<List /> should render medium ordered List 1`] = `
             height="24px"
             justifyContent="center"
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignItems": "center",
                   "alignSelf": "flex-start",
                   "display": "flex",
@@ -1591,6 +1620,1507 @@ exports[`<List /> should render medium ordered List 1`] = `
             width="24px"
           >
             <Text
+              accessible={true}
+              color="surface.text.subtle.lowContrast"
+              data-blade-component="text"
+              fontFamily="text"
+              fontSize={200}
+              fontStyle="normal"
+              fontWeight="regular"
+              lineHeight={300}
+              style={
+                [
+                  {
+                    "color": "hsla(216, 27%, 36%, 1)",
+                    "fontFamily": "Lato",
+                    "fontSize": 16,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                    "lineHeight": 24,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+            >
+              1.
+            </Text>
+          </View>
+          <View
+            data-blade-component="base-box"
+            display="flex"
+            flexDirection="row"
+            flexWrap="wrap"
+            style={
+              [
+                {
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "flexWrap": "wrap",
+                },
+              ]
+            }
+          >
+            <Text
+              accessible={true}
+              color="surface.text.normal.lowContrast"
+              data-blade-component="text"
+              fontFamily="text"
+              fontSize={200}
+              fontStyle="normal"
+              fontWeight="regular"
+              lineHeight={300}
+              style={
+                [
+                  {
+                    "color": "hsla(217, 56%, 17%, 1)",
+                    "fontFamily": "Lato",
+                    "fontSize": 16,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                    "lineHeight": 24,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+            >
+              Level 1
+            </Text>
+          </View>
+        </View>
+        <View
+          data-blade-component="base-box"
+          style={
+            [
+              {},
+            ]
+          }
+        >
+          <View
+            accessibilityRole="list"
+            accessible={true}
+            data-blade-component="list"
+            style={
+              [
+                {},
+              ]
+            }
+          >
+            <View
+              data-blade-component="list-item"
+              hasIcon={false}
+              level={2}
+              style={
+                [
+                  {
+                    "marginLeft": 16,
+                  },
+                ]
+              }
+              variant="unordered"
+            >
+              <View
+                alignItems="center"
+                data-blade-component="base-box"
+                display="flex"
+                flexDirection="row"
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "marginBottom": 8,
+                    },
+                  ]
+                }
+              >
+                <View
+                  alignSelf="flex-start"
+                  data-blade-component="base-box"
+                  display="flex"
+                  style={
+                    [
+                      {
+                        "alignSelf": "flex-start",
+                        "display": "flex",
+                        "marginRight": 8,
+                        "marginTop": 10,
+                      },
+                    ]
+                  }
+                >
+                  <RNSVGSvgView
+                    accessibilityElementsHidden={true}
+                    align="xMidYMid"
+                    bbHeight="6px"
+                    bbWidth="6px"
+                    data-blade-component="icon"
+                    fill="none"
+                    focusable={false}
+                    height="6px"
+                    importantForAccessibility="no-hide-descendants"
+                    meetOrSlice={0}
+                    minX={0}
+                    minY={0}
+                    style={
+                      [
+                        {
+                          "backgroundColor": "transparent",
+                          "borderWidth": 0,
+                        },
+                        [
+                          {},
+                        ],
+                        {
+                          "flex": 0,
+                          "height": 6,
+                          "width": 6,
+                        },
+                      ]
+                    }
+                    vbHeight={6}
+                    vbWidth={6}
+                    width="6px"
+                  >
+                    <RNSVGGroup
+                      fill={null}
+                      propList={
+                        [
+                          "fill",
+                        ]
+                      }
+                    >
+                      <RNSVGCircle
+                        cx="3px"
+                        cy="3px"
+                        propList={
+                          [
+                            "stroke",
+                          ]
+                        }
+                        r="2.5px"
+                        stroke={4288851646}
+                      />
+                    </RNSVGGroup>
+                  </RNSVGSvgView>
+                </View>
+                <View
+                  data-blade-component="base-box"
+                  display="flex"
+                  flexDirection="row"
+                  flexWrap="wrap"
+                  style={
+                    [
+                      {
+                        "display": "flex",
+                        "flexDirection": "row",
+                        "flexWrap": "wrap",
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    accessible={true}
+                    color="surface.text.normal.lowContrast"
+                    data-blade-component="text"
+                    fontFamily="text"
+                    fontSize={200}
+                    fontStyle="normal"
+                    fontWeight="regular"
+                    lineHeight={300}
+                    style={
+                      [
+                        {
+                          "color": "hsla(217, 56%, 17%, 1)",
+                          "fontFamily": "Lato",
+                          "fontSize": 16,
+                          "fontStyle": "normal",
+                          "fontWeight": "400",
+                          "lineHeight": 24,
+                          "marginBottom": 0,
+                          "marginLeft": 0,
+                          "marginRight": 0,
+                          "marginTop": 0,
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                          "textDecorationLine": "none",
+                        },
+                      ]
+                    }
+                  >
+                    Level 2
+                  </Text>
+                </View>
+              </View>
+              <View
+                data-blade-component="base-box"
+                style={
+                  [
+                    {},
+                  ]
+                }
+              >
+                <View
+                  accessibilityRole="list"
+                  accessible={true}
+                  data-blade-component="list"
+                  style={
+                    [
+                      {},
+                    ]
+                  }
+                >
+                  <View
+                    data-blade-component="list-item"
+                    hasIcon={false}
+                    level={3}
+                    style={
+                      [
+                        {
+                          "marginLeft": 16,
+                        },
+                      ]
+                    }
+                    variant="unordered"
+                  >
+                    <View
+                      alignItems="center"
+                      data-blade-component="base-box"
+                      display="flex"
+                      flexDirection="row"
+                      style={
+                        [
+                          {
+                            "alignItems": "center",
+                            "display": "flex",
+                            "flexDirection": "row",
+                            "marginBottom": 8,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        alignSelf="flex-start"
+                        data-blade-component="base-box"
+                        display="flex"
+                        style={
+                          [
+                            {
+                              "alignSelf": "flex-start",
+                              "display": "flex",
+                              "marginRight": 8,
+                              "marginTop": 10,
+                            },
+                          ]
+                        }
+                      >
+                        <RNSVGSvgView
+                          accessibilityElementsHidden={true}
+                          align="xMidYMid"
+                          bbHeight="6px"
+                          bbWidth="6px"
+                          data-blade-component="icon"
+                          fill="none"
+                          focusable={false}
+                          height="6px"
+                          importantForAccessibility="no-hide-descendants"
+                          meetOrSlice={0}
+                          minX={0}
+                          minY={0}
+                          style={
+                            [
+                              {
+                                "backgroundColor": "transparent",
+                                "borderWidth": 0,
+                              },
+                              [
+                                {},
+                              ],
+                              {
+                                "flex": 0,
+                                "height": 6,
+                                "width": 6,
+                              },
+                            ]
+                          }
+                          vbHeight={6}
+                          vbWidth={6}
+                          width="6px"
+                        >
+                          <RNSVGGroup
+                            fill={null}
+                            propList={
+                              [
+                                "fill",
+                              ]
+                            }
+                          >
+                            <RNSVGRect
+                              fill={4288851646}
+                              height="6px"
+                              propList={
+                                [
+                                  "fill",
+                                ]
+                              }
+                              rx="1px"
+                              width="6px"
+                              x={0}
+                              y={0}
+                            />
+                          </RNSVGGroup>
+                        </RNSVGSvgView>
+                      </View>
+                      <View
+                        data-blade-component="base-box"
+                        display="flex"
+                        flexDirection="row"
+                        flexWrap="wrap"
+                        style={
+                          [
+                            {
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "flexWrap": "wrap",
+                            },
+                          ]
+                        }
+                      >
+                        <Text
+                          accessible={true}
+                          color="surface.text.normal.lowContrast"
+                          data-blade-component="text"
+                          fontFamily="text"
+                          fontSize={200}
+                          fontStyle="normal"
+                          fontWeight="regular"
+                          lineHeight={300}
+                          style={
+                            [
+                              {
+                                "color": "hsla(217, 56%, 17%, 1)",
+                                "fontFamily": "Lato",
+                                "fontSize": 16,
+                                "fontStyle": "normal",
+                                "fontWeight": "400",
+                                "lineHeight": 24,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "paddingBottom": 0,
+                                "paddingLeft": 0,
+                                "paddingRight": 0,
+                                "paddingTop": 0,
+                                "textDecorationLine": "none",
+                              },
+                            ]
+                          }
+                        >
+                          Level 3
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<List /> should render large ordered-filled List 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="base-box"
+    style={
+      [
+        {},
+      ]
+    }
+  >
+    <View
+      accessibilityRole="list"
+      accessible={true}
+      data-blade-component="list"
+      marginTop="spacing.3"
+      style={
+        [
+          {
+            "marginTop": 8,
+          },
+        ]
+      }
+    >
+      <View
+        data-blade-component="list-item"
+        hasIcon={false}
+        level={1}
+        style={
+          [
+            {
+              "marginLeft": 0,
+            },
+          ]
+        }
+        variant="ordered-filled"
+      >
+        <View
+          alignItems="center"
+          data-blade-component="base-box"
+          display="flex"
+          flexDirection="row"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "display": "flex",
+                "flexDirection": "row",
+                "marginBottom": 8,
+              },
+            ]
+          }
+        >
+          <View
+            alignItems="center"
+            alignSelf="flex-start"
+            backgroundColor="hsla(216, 15%, 54%, 0.18)"
+            borderRadius="max"
+            data-blade-component="base-box"
+            display="flex"
+            flexShrink={0}
+            height="24px"
+            justifyContent="center"
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "alignSelf": "flex-start",
+                  "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
+                  "borderRadius": 9999,
+                  "display": "flex",
+                  "flexShrink": 0,
+                  "height": 24,
+                  "justifyContent": "center",
+                  "marginRight": 8,
+                  "marginTop": 0,
+                  "width": 24,
+                },
+              ]
+            }
+            width="24px"
+          >
+            <Text
+              accessible={true}
+              color="surface.text.subtle.lowContrast"
+              data-blade-component="text"
+              fontFamily="text"
+              fontSize={25}
+              fontStyle="normal"
+              fontWeight="regular"
+              lineHeight={50}
+              style={
+                [
+                  {
+                    "color": "hsla(216, 27%, 36%, 1)",
+                    "fontFamily": "Lato",
+                    "fontSize": 10,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                    "lineHeight": 16,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+            >
+              1
+            </Text>
+          </View>
+          <View
+            data-blade-component="base-box"
+            display="flex"
+            flexDirection="row"
+            flexWrap="wrap"
+            style={
+              [
+                {
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "flexWrap": "wrap",
+                },
+              ]
+            }
+          >
+            <Text
+              accessible={true}
+              color="surface.text.normal.lowContrast"
+              data-blade-component="text"
+              fontFamily="text"
+              fontSize={200}
+              fontStyle="normal"
+              fontWeight="regular"
+              lineHeight={300}
+              style={
+                [
+                  {
+                    "color": "hsla(217, 56%, 17%, 1)",
+                    "fontFamily": "Lato",
+                    "fontSize": 16,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                    "lineHeight": 24,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+            >
+              Level 1
+            </Text>
+          </View>
+        </View>
+      </View>
+      <View
+        data-blade-component="list-item"
+        hasIcon={false}
+        level={1}
+        style={
+          [
+            {
+              "marginLeft": 0,
+            },
+          ]
+        }
+        variant="ordered-filled"
+      >
+        <View
+          alignItems="center"
+          data-blade-component="base-box"
+          display="flex"
+          flexDirection="row"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "display": "flex",
+                "flexDirection": "row",
+                "marginBottom": 8,
+              },
+            ]
+          }
+        >
+          <View
+            alignItems="center"
+            alignSelf="flex-start"
+            backgroundColor="hsla(216, 15%, 54%, 0.18)"
+            borderRadius="max"
+            data-blade-component="base-box"
+            display="flex"
+            flexShrink={0}
+            height="24px"
+            justifyContent="center"
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "alignSelf": "flex-start",
+                  "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
+                  "borderRadius": 9999,
+                  "display": "flex",
+                  "flexShrink": 0,
+                  "height": 24,
+                  "justifyContent": "center",
+                  "marginRight": 8,
+                  "marginTop": 0,
+                  "width": 24,
+                },
+              ]
+            }
+            width="24px"
+          >
+            <Text
+              accessible={true}
+              color="surface.text.subtle.lowContrast"
+              data-blade-component="text"
+              fontFamily="text"
+              fontSize={25}
+              fontStyle="normal"
+              fontWeight="regular"
+              lineHeight={50}
+              style={
+                [
+                  {
+                    "color": "hsla(216, 27%, 36%, 1)",
+                    "fontFamily": "Lato",
+                    "fontSize": 10,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                    "lineHeight": 16,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+            >
+              2
+            </Text>
+          </View>
+          <View
+            data-blade-component="base-box"
+            display="flex"
+            flexDirection="row"
+            flexWrap="wrap"
+            style={
+              [
+                {
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "flexWrap": "wrap",
+                },
+              ]
+            }
+          >
+            <Text
+              accessible={true}
+              color="surface.text.normal.lowContrast"
+              data-blade-component="text"
+              fontFamily="text"
+              fontSize={200}
+              fontStyle="normal"
+              fontWeight="regular"
+              lineHeight={300}
+              style={
+                [
+                  {
+                    "color": "hsla(217, 56%, 17%, 1)",
+                    "fontFamily": "Lato",
+                    "fontSize": 16,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                    "lineHeight": 24,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+            >
+              Level 2
+            </Text>
+          </View>
+        </View>
+      </View>
+      <View
+        data-blade-component="list-item"
+        hasIcon={false}
+        level={1}
+        style={
+          [
+            {
+              "marginLeft": 0,
+            },
+          ]
+        }
+        variant="ordered-filled"
+      >
+        <View
+          alignItems="center"
+          data-blade-component="base-box"
+          display="flex"
+          flexDirection="row"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "display": "flex",
+                "flexDirection": "row",
+                "marginBottom": 8,
+              },
+            ]
+          }
+        >
+          <View
+            alignItems="center"
+            alignSelf="flex-start"
+            backgroundColor="hsla(216, 15%, 54%, 0.18)"
+            borderRadius="max"
+            data-blade-component="base-box"
+            display="flex"
+            flexShrink={0}
+            height="24px"
+            justifyContent="center"
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "alignSelf": "flex-start",
+                  "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
+                  "borderRadius": 9999,
+                  "display": "flex",
+                  "flexShrink": 0,
+                  "height": 24,
+                  "justifyContent": "center",
+                  "marginRight": 8,
+                  "marginTop": 0,
+                  "width": 24,
+                },
+              ]
+            }
+            width="24px"
+          >
+            <Text
+              accessible={true}
+              color="surface.text.subtle.lowContrast"
+              data-blade-component="text"
+              fontFamily="text"
+              fontSize={25}
+              fontStyle="normal"
+              fontWeight="regular"
+              lineHeight={50}
+              style={
+                [
+                  {
+                    "color": "hsla(216, 27%, 36%, 1)",
+                    "fontFamily": "Lato",
+                    "fontSize": 10,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                    "lineHeight": 16,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+            >
+              3
+            </Text>
+          </View>
+          <View
+            data-blade-component="base-box"
+            display="flex"
+            flexDirection="row"
+            flexWrap="wrap"
+            style={
+              [
+                {
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "flexWrap": "wrap",
+                },
+              ]
+            }
+          >
+            <Text
+              accessible={true}
+              color="surface.text.normal.lowContrast"
+              data-blade-component="text"
+              fontFamily="text"
+              fontSize={200}
+              fontStyle="normal"
+              fontWeight="regular"
+              lineHeight={300}
+              style={
+                [
+                  {
+                    "color": "hsla(217, 56%, 17%, 1)",
+                    "fontFamily": "Lato",
+                    "fontSize": 16,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                    "lineHeight": 24,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+            >
+              Level 3
+            </Text>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<List /> should render large unordered List with icon 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="base-box"
+    style={
+      [
+        {},
+      ]
+    }
+  >
+    <View
+      accessibilityRole="list"
+      accessible={true}
+      data-blade-component="list"
+      marginTop="spacing.3"
+      style={
+        [
+          {
+            "marginTop": 8,
+          },
+        ]
+      }
+    >
+      <View
+        data-blade-component="list-item"
+        hasIcon={true}
+        level={1}
+        style={
+          [
+            {
+              "marginLeft": 0,
+            },
+          ]
+        }
+        variant="unordered"
+      >
+        <View
+          alignItems="center"
+          data-blade-component="base-box"
+          display="flex"
+          flexDirection="row"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "display": "flex",
+                "flexDirection": "row",
+                "marginBottom": 8,
+              },
+            ]
+          }
+        >
+          <View
+            alignSelf="flex-start"
+            data-blade-component="base-box"
+            display="flex"
+            style={
+              [
+                {
+                  "alignSelf": "flex-start",
+                  "display": "flex",
+                  "marginRight": 8,
+                  "marginTop": 5,
+                },
+              ]
+            }
+          >
+            <RNSVGSvgView
+              accessibilityElementsHidden={true}
+              align="xMidYMid"
+              bbHeight="20px"
+              bbWidth="20px"
+              data-blade-component="icon"
+              fill="none"
+              focusable={false}
+              height="20px"
+              importantForAccessibility="no-hide-descendants"
+              meetOrSlice={0}
+              minX={0}
+              minY={0}
+              style={
+                [
+                  {
+                    "backgroundColor": "transparent",
+                    "borderWidth": 0,
+                  },
+                  [
+                    {},
+                  ],
+                  {
+                    "flex": 0,
+                    "height": 20,
+                    "width": 20,
+                  },
+                ]
+              }
+              vbHeight={24}
+              vbWidth={24}
+              width="20px"
+            >
+              <RNSVGGroup
+                fill={null}
+                propList={
+                  [
+                    "fill",
+                  ]
+                }
+              >
+                <RNSVGPath
+                  d="M14.707 5.293a1 1 0 1 0-1.414 1.414L17.586 11H4a1 1 0 1 0 0 2h13.586l-4.293 4.293a1 1 0 0 0 1.414 1.414l6-6a1 1 0 0 0 0-1.414l-6-6Z"
+                  fill={4284378759}
+                  propList={
+                    [
+                      "fill",
+                    ]
+                  }
+                />
+              </RNSVGGroup>
+            </RNSVGSvgView>
+          </View>
+          <View
+            data-blade-component="base-box"
+            display="flex"
+            flexDirection="row"
+            flexWrap="wrap"
+            style={
+              [
+                {
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "flexWrap": "wrap",
+                },
+              ]
+            }
+          >
+            <Text
+              accessible={true}
+              color="surface.text.normal.lowContrast"
+              data-blade-component="text"
+              fontFamily="text"
+              fontSize={200}
+              fontStyle="normal"
+              fontWeight="regular"
+              lineHeight={300}
+              style={
+                [
+                  {
+                    "color": "hsla(217, 56%, 17%, 1)",
+                    "fontFamily": "Lato",
+                    "fontSize": 16,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                    "lineHeight": 24,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+            >
+              Level 1
+            </Text>
+          </View>
+        </View>
+        <View
+          data-blade-component="base-box"
+          style={
+            [
+              {},
+            ]
+          }
+        >
+          <View
+            accessibilityRole="list"
+            accessible={true}
+            data-blade-component="list"
+            style={
+              [
+                {},
+              ]
+            }
+          >
+            <View
+              data-blade-component="list-item"
+              hasIcon={true}
+              level={2}
+              style={
+                [
+                  {
+                    "marginLeft": 16,
+                  },
+                ]
+              }
+              variant="unordered"
+            >
+              <View
+                alignItems="center"
+                data-blade-component="base-box"
+                display="flex"
+                flexDirection="row"
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "marginBottom": 8,
+                    },
+                  ]
+                }
+              >
+                <View
+                  alignSelf="flex-start"
+                  data-blade-component="base-box"
+                  display="flex"
+                  style={
+                    [
+                      {
+                        "alignSelf": "flex-start",
+                        "display": "flex",
+                        "marginRight": 8,
+                        "marginTop": 5,
+                      },
+                    ]
+                  }
+                >
+                  <RNSVGSvgView
+                    accessibilityElementsHidden={true}
+                    align="xMidYMid"
+                    bbHeight="20px"
+                    bbWidth="20px"
+                    data-blade-component="icon"
+                    fill="none"
+                    focusable={false}
+                    height="20px"
+                    importantForAccessibility="no-hide-descendants"
+                    meetOrSlice={0}
+                    minX={0}
+                    minY={0}
+                    style={
+                      [
+                        {
+                          "backgroundColor": "transparent",
+                          "borderWidth": 0,
+                        },
+                        [
+                          {},
+                        ],
+                        {
+                          "flex": 0,
+                          "height": 20,
+                          "width": 20,
+                        },
+                      ]
+                    }
+                    vbHeight={24}
+                    vbWidth={24}
+                    width="20px"
+                  >
+                    <RNSVGGroup
+                      fill={null}
+                      propList={
+                        [
+                          "fill",
+                        ]
+                      }
+                    >
+                      <RNSVGPath
+                        d="M12.707 3.293a1 1 0 0 0-1.414 0l-6 6a1 1 0 0 0 1.414 1.414L11 6.414V20a1 1 0 1 0 2 0V6.414l4.293 4.293a1 1 0 0 0 1.414-1.414l-6-6Z"
+                        fill={4284378759}
+                        propList={
+                          [
+                            "fill",
+                          ]
+                        }
+                      />
+                    </RNSVGGroup>
+                  </RNSVGSvgView>
+                </View>
+                <View
+                  data-blade-component="base-box"
+                  display="flex"
+                  flexDirection="row"
+                  flexWrap="wrap"
+                  style={
+                    [
+                      {
+                        "display": "flex",
+                        "flexDirection": "row",
+                        "flexWrap": "wrap",
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    accessible={true}
+                    color="surface.text.normal.lowContrast"
+                    data-blade-component="text"
+                    fontFamily="text"
+                    fontSize={200}
+                    fontStyle="normal"
+                    fontWeight="regular"
+                    lineHeight={300}
+                    style={
+                      [
+                        {
+                          "color": "hsla(217, 56%, 17%, 1)",
+                          "fontFamily": "Lato",
+                          "fontSize": 16,
+                          "fontStyle": "normal",
+                          "fontWeight": "400",
+                          "lineHeight": 24,
+                          "marginBottom": 0,
+                          "marginLeft": 0,
+                          "marginRight": 0,
+                          "marginTop": 0,
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                          "textDecorationLine": "none",
+                        },
+                      ]
+                    }
+                  >
+                    Level 2
+                  </Text>
+                </View>
+              </View>
+              <View
+                data-blade-component="base-box"
+                style={
+                  [
+                    {},
+                  ]
+                }
+              >
+                <View
+                  accessibilityRole="list"
+                  accessible={true}
+                  data-blade-component="list"
+                  style={
+                    [
+                      {},
+                    ]
+                  }
+                >
+                  <View
+                    data-blade-component="list-item"
+                    hasIcon={false}
+                    level={3}
+                    style={
+                      [
+                        {
+                          "marginLeft": 16,
+                        },
+                      ]
+                    }
+                    variant="unordered"
+                  >
+                    <View
+                      alignItems="center"
+                      data-blade-component="base-box"
+                      display="flex"
+                      flexDirection="row"
+                      style={
+                        [
+                          {
+                            "alignItems": "center",
+                            "display": "flex",
+                            "flexDirection": "row",
+                            "marginBottom": 8,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        alignSelf="flex-start"
+                        data-blade-component="base-box"
+                        display="flex"
+                        style={
+                          [
+                            {
+                              "alignSelf": "flex-start",
+                              "display": "flex",
+                              "marginRight": 8,
+                              "marginTop": 10,
+                            },
+                          ]
+                        }
+                      >
+                        <RNSVGSvgView
+                          accessibilityElementsHidden={true}
+                          align="xMidYMid"
+                          bbHeight="6px"
+                          bbWidth="6px"
+                          data-blade-component="icon"
+                          fill="none"
+                          focusable={false}
+                          height="6px"
+                          importantForAccessibility="no-hide-descendants"
+                          meetOrSlice={0}
+                          minX={0}
+                          minY={0}
+                          style={
+                            [
+                              {
+                                "backgroundColor": "transparent",
+                                "borderWidth": 0,
+                              },
+                              [
+                                {},
+                              ],
+                              {
+                                "flex": 0,
+                                "height": 6,
+                                "width": 6,
+                              },
+                            ]
+                          }
+                          vbHeight={6}
+                          vbWidth={6}
+                          width="6px"
+                        >
+                          <RNSVGGroup
+                            fill={null}
+                            propList={
+                              [
+                                "fill",
+                              ]
+                            }
+                          >
+                            <RNSVGRect
+                              fill={4288851646}
+                              height="6px"
+                              propList={
+                                [
+                                  "fill",
+                                ]
+                              }
+                              rx="1px"
+                              width="6px"
+                              x={0}
+                              y={0}
+                            />
+                          </RNSVGGroup>
+                        </RNSVGSvgView>
+                      </View>
+                      <View
+                        data-blade-component="base-box"
+                        display="flex"
+                        flexDirection="row"
+                        flexWrap="wrap"
+                        style={
+                          [
+                            {
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "flexWrap": "wrap",
+                            },
+                          ]
+                        }
+                      >
+                        <Text
+                          accessible={true}
+                          color="surface.text.normal.lowContrast"
+                          data-blade-component="text"
+                          fontFamily="text"
+                          fontSize={200}
+                          fontStyle="normal"
+                          fontWeight="regular"
+                          lineHeight={300}
+                          style={
+                            [
+                              {
+                                "color": "hsla(217, 56%, 17%, 1)",
+                                "fontFamily": "Lato",
+                                "fontSize": 16,
+                                "fontStyle": "normal",
+                                "fontWeight": "400",
+                                "lineHeight": 24,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "paddingBottom": 0,
+                                "paddingLeft": 0,
+                                "paddingRight": 0,
+                                "paddingTop": 0,
+                                "textDecorationLine": "none",
+                              },
+                            ]
+                          }
+                        >
+                          Level 3
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<List /> should render medium ordered List 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="base-box"
+    style={
+      [
+        {},
+      ]
+    }
+  >
+    <View
+      accessibilityRole="list"
+      accessible={true}
+      data-blade-component="list"
+      marginTop="spacing.3"
+      style={
+        [
+          {
+            "marginTop": 8,
+          },
+        ]
+      }
+    >
+      <View
+        data-blade-component="list-item"
+        hasIcon={false}
+        level={1}
+        style={
+          [
+            {
+              "marginLeft": 0,
+            },
+          ]
+        }
+        variant="ordered"
+      >
+        <View
+          alignItems="center"
+          data-blade-component="base-box"
+          display="flex"
+          flexDirection="row"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "display": "flex",
+                "flexDirection": "row",
+                "marginBottom": 8,
+              },
+            ]
+          }
+        >
+          <View
+            alignItems="center"
+            alignSelf="flex-start"
+            data-blade-component="base-box"
+            display="flex"
+            flexShrink={0}
+            height="24px"
+            justifyContent="center"
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "alignSelf": "flex-start",
+                  "display": "flex",
+                  "flexShrink": 0,
+                  "height": 24,
+                  "justifyContent": "center",
+                  "marginRight": 4,
+                  "marginTop": 0,
+                  "width": 24,
+                },
+              ]
+            }
+            width="24px"
+          >
+            <Text
+              accessible={true}
               color="surface.text.subtle.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -1599,8 +3129,8 @@ exports[`<List /> should render medium ordered List 1`] = `
               fontWeight="regular"
               lineHeight={100}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "hsla(216, 27%, 36%, 1)",
                     "fontFamily": "Lato",
                     "fontSize": 14,
@@ -1629,8 +3159,8 @@ exports[`<List /> should render medium ordered List 1`] = `
             flexDirection="row"
             flexWrap="wrap"
             style={
-              Array [
-                Object {
+              [
+                {
                   "display": "flex",
                   "flexDirection": "row",
                   "flexWrap": "wrap",
@@ -1639,6 +3169,7 @@ exports[`<List /> should render medium ordered List 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.normal.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -1647,8 +3178,8 @@ exports[`<List /> should render medium ordered List 1`] = `
               fontWeight="regular"
               lineHeight={100}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "hsla(217, 56%, 17%, 1)",
                     "fontFamily": "Lato",
                     "fontSize": 14,
@@ -1675,17 +3206,18 @@ exports[`<List /> should render medium ordered List 1`] = `
         <View
           data-blade-component="base-box"
           style={
-            Array [
-              Object {},
+            [
+              {},
             ]
           }
         >
           <View
             accessibilityRole="list"
+            accessible={true}
             data-blade-component="list"
             style={
-              Array [
-                Object {},
+              [
+                {},
               ]
             }
           >
@@ -1694,8 +3226,8 @@ exports[`<List /> should render medium ordered List 1`] = `
               hasIcon={false}
               level={2}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "marginLeft": 16,
                   },
                 ]
@@ -1708,8 +3240,8 @@ exports[`<List /> should render medium ordered List 1`] = `
                 display="flex"
                 flexDirection="row"
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "alignItems": "center",
                       "display": "flex",
                       "flexDirection": "row",
@@ -1723,8 +3255,8 @@ exports[`<List /> should render medium ordered List 1`] = `
                   data-blade-component="base-box"
                   display="flex"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignSelf": "flex-start",
                         "display": "flex",
                         "marginRight": 8,
@@ -1747,15 +3279,15 @@ exports[`<List /> should render medium ordered List 1`] = `
                     minX={0}
                     minY={0}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "backgroundColor": "transparent",
                           "borderWidth": 0,
                         },
-                        Array [
-                          Object {},
+                        [
+                          {},
                         ],
-                        Object {
+                        {
                           "flex": 0,
                           "height": 6,
                           "width": 6,
@@ -1769,7 +3301,7 @@ exports[`<List /> should render medium ordered List 1`] = `
                     <RNSVGGroup
                       fill={null}
                       propList={
-                        Array [
+                        [
                           "fill",
                         ]
                       }
@@ -1778,7 +3310,7 @@ exports[`<List /> should render medium ordered List 1`] = `
                         cx="3px"
                         cy="3px"
                         propList={
-                          Array [
+                          [
                             "stroke",
                           ]
                         }
@@ -1794,8 +3326,8 @@ exports[`<List /> should render medium ordered List 1`] = `
                   flexDirection="row"
                   flexWrap="wrap"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "display": "flex",
                         "flexDirection": "row",
                         "flexWrap": "wrap",
@@ -1804,6 +3336,7 @@ exports[`<List /> should render medium ordered List 1`] = `
                   }
                 >
                   <Text
+                    accessible={true}
                     color="surface.text.normal.lowContrast"
                     data-blade-component="text"
                     fontFamily="text"
@@ -1812,8 +3345,8 @@ exports[`<List /> should render medium ordered List 1`] = `
                     fontWeight="regular"
                     lineHeight={100}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "hsla(217, 56%, 17%, 1)",
                           "fontFamily": "Lato",
                           "fontSize": 14,
@@ -1840,17 +3373,18 @@ exports[`<List /> should render medium ordered List 1`] = `
               <View
                 data-blade-component="base-box"
                 style={
-                  Array [
-                    Object {},
+                  [
+                    {},
                   ]
                 }
               >
                 <View
                   accessibilityRole="list"
+                  accessible={true}
                   data-blade-component="list"
                   style={
-                    Array [
-                      Object {},
+                    [
+                      {},
                     ]
                   }
                 >
@@ -1859,8 +3393,8 @@ exports[`<List /> should render medium ordered List 1`] = `
                     hasIcon={false}
                     level={3}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "marginLeft": 16,
                         },
                       ]
@@ -1873,8 +3407,8 @@ exports[`<List /> should render medium ordered List 1`] = `
                       display="flex"
                       flexDirection="row"
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "alignItems": "center",
                             "display": "flex",
                             "flexDirection": "row",
@@ -1888,8 +3422,8 @@ exports[`<List /> should render medium ordered List 1`] = `
                         data-blade-component="base-box"
                         display="flex"
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "alignSelf": "flex-start",
                               "display": "flex",
                               "marginRight": 8,
@@ -1912,15 +3446,15 @@ exports[`<List /> should render medium ordered List 1`] = `
                           minX={0}
                           minY={0}
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "backgroundColor": "transparent",
                                 "borderWidth": 0,
                               },
-                              Array [
-                                Object {},
+                              [
+                                {},
                               ],
-                              Object {
+                              {
                                 "flex": 0,
                                 "height": 6,
                                 "width": 6,
@@ -1934,7 +3468,7 @@ exports[`<List /> should render medium ordered List 1`] = `
                           <RNSVGGroup
                             fill={null}
                             propList={
-                              Array [
+                              [
                                 "fill",
                               ]
                             }
@@ -1943,7 +3477,7 @@ exports[`<List /> should render medium ordered List 1`] = `
                               fill={4288851646}
                               height="6px"
                               propList={
-                                Array [
+                                [
                                   "fill",
                                 ]
                               }
@@ -1961,8 +3495,8 @@ exports[`<List /> should render medium ordered List 1`] = `
                         flexDirection="row"
                         flexWrap="wrap"
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "display": "flex",
                               "flexDirection": "row",
                               "flexWrap": "wrap",
@@ -1971,6 +3505,7 @@ exports[`<List /> should render medium ordered List 1`] = `
                         }
                       >
                         <Text
+                          accessible={true}
                           color="surface.text.normal.lowContrast"
                           data-blade-component="text"
                           fontFamily="text"
@@ -1979,8 +3514,8 @@ exports[`<List /> should render medium ordered List 1`] = `
                           fontWeight="regular"
                           lineHeight={100}
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "color": "hsla(217, 56%, 17%, 1)",
                                 "fontFamily": "Lato",
                                 "fontSize": 14,
@@ -2019,7 +3554,7 @@ exports[`<List /> should render medium ordered List 1`] = `
 exports[`<List /> should render medium ordered-filled List 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -2027,18 +3562,19 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
   <View
     data-blade-component="base-box"
     style={
-      Array [
-        Object {},
+      [
+        {},
       ]
     }
   >
     <View
       accessibilityRole="list"
+      accessible={true}
       data-blade-component="list"
       marginTop="spacing.3"
       style={
-        Array [
-          Object {
+        [
+          {
             "marginTop": 8,
           },
         ]
@@ -2049,8 +3585,8 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
         hasIcon={false}
         level={1}
         style={
-          Array [
-            Object {
+          [
+            {
               "marginLeft": 0,
             },
           ]
@@ -2063,8 +3599,8 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
           display="flex"
           flexDirection="row"
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "display": "flex",
                 "flexDirection": "row",
@@ -2084,8 +3620,8 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
             height="20px"
             justifyContent="center"
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignItems": "center",
                   "alignSelf": "flex-start",
                   "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
@@ -2103,6 +3639,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
             width="20px"
           >
             <Text
+              accessible={true}
               color="surface.text.subtle.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -2111,8 +3648,8 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
               fontWeight="regular"
               lineHeight={50}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "hsla(216, 27%, 36%, 1)",
                     "fontFamily": "Lato",
                     "fontSize": 10,
@@ -2141,8 +3678,8 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
             flexDirection="row"
             flexWrap="wrap"
             style={
-              Array [
-                Object {
+              [
+                {
                   "display": "flex",
                   "flexDirection": "row",
                   "flexWrap": "wrap",
@@ -2151,6 +3688,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.normal.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -2159,8 +3697,8 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
               fontWeight="regular"
               lineHeight={100}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "hsla(217, 56%, 17%, 1)",
                     "fontFamily": "Lato",
                     "fontSize": 14,
@@ -2190,8 +3728,8 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
         hasIcon={false}
         level={1}
         style={
-          Array [
-            Object {
+          [
+            {
               "marginLeft": 0,
             },
           ]
@@ -2204,8 +3742,8 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
           display="flex"
           flexDirection="row"
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "display": "flex",
                 "flexDirection": "row",
@@ -2225,8 +3763,8 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
             height="20px"
             justifyContent="center"
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignItems": "center",
                   "alignSelf": "flex-start",
                   "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
@@ -2244,6 +3782,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
             width="20px"
           >
             <Text
+              accessible={true}
               color="surface.text.subtle.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -2252,8 +3791,8 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
               fontWeight="regular"
               lineHeight={50}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "hsla(216, 27%, 36%, 1)",
                     "fontFamily": "Lato",
                     "fontSize": 10,
@@ -2282,8 +3821,8 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
             flexDirection="row"
             flexWrap="wrap"
             style={
-              Array [
-                Object {
+              [
+                {
                   "display": "flex",
                   "flexDirection": "row",
                   "flexWrap": "wrap",
@@ -2292,6 +3831,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.normal.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -2300,8 +3840,8 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
               fontWeight="regular"
               lineHeight={100}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "hsla(217, 56%, 17%, 1)",
                     "fontFamily": "Lato",
                     "fontSize": 14,
@@ -2331,8 +3871,8 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
         hasIcon={false}
         level={1}
         style={
-          Array [
-            Object {
+          [
+            {
               "marginLeft": 0,
             },
           ]
@@ -2345,8 +3885,8 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
           display="flex"
           flexDirection="row"
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "display": "flex",
                 "flexDirection": "row",
@@ -2366,8 +3906,8 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
             height="20px"
             justifyContent="center"
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignItems": "center",
                   "alignSelf": "flex-start",
                   "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
@@ -2385,6 +3925,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
             width="20px"
           >
             <Text
+              accessible={true}
               color="surface.text.subtle.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -2393,8 +3934,8 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
               fontWeight="regular"
               lineHeight={50}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "hsla(216, 27%, 36%, 1)",
                     "fontFamily": "Lato",
                     "fontSize": 10,
@@ -2423,8 +3964,8 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
             flexDirection="row"
             flexWrap="wrap"
             style={
-              Array [
-                Object {
+              [
+                {
                   "display": "flex",
                   "flexDirection": "row",
                   "flexWrap": "wrap",
@@ -2433,6 +3974,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.normal.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -2441,8 +3983,8 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
               fontWeight="regular"
               lineHeight={100}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "hsla(217, 56%, 17%, 1)",
                     "fontFamily": "Lato",
                     "fontSize": 14,
@@ -2475,7 +4017,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
 exports[`<List /> should render medium unordered List with icon 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -2483,18 +4025,19 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
   <View
     data-blade-component="base-box"
     style={
-      Array [
-        Object {},
+      [
+        {},
       ]
     }
   >
     <View
       accessibilityRole="list"
+      accessible={true}
       data-blade-component="list"
       marginTop="spacing.3"
       style={
-        Array [
-          Object {
+        [
+          {
             "marginTop": 8,
           },
         ]
@@ -2505,8 +4048,8 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
         hasIcon={true}
         level={1}
         style={
-          Array [
-            Object {
+          [
+            {
               "marginLeft": 0,
             },
           ]
@@ -2519,8 +4062,8 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
           display="flex"
           flexDirection="row"
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "display": "flex",
                 "flexDirection": "row",
@@ -2534,8 +4077,8 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
             data-blade-component="base-box"
             display="flex"
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignSelf": "flex-start",
                   "display": "flex",
                   "marginRight": 8,
@@ -2558,15 +4101,15 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
               minX={0}
               minY={0}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "backgroundColor": "transparent",
                     "borderWidth": 0,
                   },
-                  Array [
-                    Object {},
+                  [
+                    {},
                   ],
-                  Object {
+                  {
                     "flex": 0,
                     "height": 16,
                     "width": 16,
@@ -2580,7 +4123,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
               <RNSVGGroup
                 fill={null}
                 propList={
-                  Array [
+                  [
                     "fill",
                   ]
                 }
@@ -2589,7 +4132,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                   d="M14.707 5.293a1 1 0 1 0-1.414 1.414L17.586 11H4a1 1 0 1 0 0 2h13.586l-4.293 4.293a1 1 0 0 0 1.414 1.414l6-6a1 1 0 0 0 0-1.414l-6-6Z"
                   fill={4284378759}
                   propList={
-                    Array [
+                    [
                       "fill",
                     ]
                   }
@@ -2603,8 +4146,8 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
             flexDirection="row"
             flexWrap="wrap"
             style={
-              Array [
-                Object {
+              [
+                {
                   "display": "flex",
                   "flexDirection": "row",
                   "flexWrap": "wrap",
@@ -2613,6 +4156,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.normal.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -2621,8 +4165,8 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
               fontWeight="regular"
               lineHeight={100}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "hsla(217, 56%, 17%, 1)",
                     "fontFamily": "Lato",
                     "fontSize": 14,
@@ -2649,17 +4193,18 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
         <View
           data-blade-component="base-box"
           style={
-            Array [
-              Object {},
+            [
+              {},
             ]
           }
         >
           <View
             accessibilityRole="list"
+            accessible={true}
             data-blade-component="list"
             style={
-              Array [
-                Object {},
+              [
+                {},
               ]
             }
           >
@@ -2668,8 +4213,8 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
               hasIcon={true}
               level={2}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "marginLeft": 16,
                   },
                 ]
@@ -2682,8 +4227,8 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                 display="flex"
                 flexDirection="row"
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "alignItems": "center",
                       "display": "flex",
                       "flexDirection": "row",
@@ -2697,8 +4242,8 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                   data-blade-component="base-box"
                   display="flex"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignSelf": "flex-start",
                         "display": "flex",
                         "marginRight": 8,
@@ -2721,15 +4266,15 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                     minX={0}
                     minY={0}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "backgroundColor": "transparent",
                           "borderWidth": 0,
                         },
-                        Array [
-                          Object {},
+                        [
+                          {},
                         ],
-                        Object {
+                        {
                           "flex": 0,
                           "height": 16,
                           "width": 16,
@@ -2743,7 +4288,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                     <RNSVGGroup
                       fill={null}
                       propList={
-                        Array [
+                        [
                           "fill",
                         ]
                       }
@@ -2752,7 +4297,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                         d="M12.707 3.293a1 1 0 0 0-1.414 0l-6 6a1 1 0 0 0 1.414 1.414L11 6.414V20a1 1 0 1 0 2 0V6.414l4.293 4.293a1 1 0 0 0 1.414-1.414l-6-6Z"
                         fill={4284378759}
                         propList={
-                          Array [
+                          [
                             "fill",
                           ]
                         }
@@ -2766,8 +4311,8 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                   flexDirection="row"
                   flexWrap="wrap"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "display": "flex",
                         "flexDirection": "row",
                         "flexWrap": "wrap",
@@ -2776,6 +4321,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                   }
                 >
                   <Text
+                    accessible={true}
                     color="surface.text.normal.lowContrast"
                     data-blade-component="text"
                     fontFamily="text"
@@ -2784,8 +4330,8 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                     fontWeight="regular"
                     lineHeight={100}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "hsla(217, 56%, 17%, 1)",
                           "fontFamily": "Lato",
                           "fontSize": 14,
@@ -2812,17 +4358,18 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
               <View
                 data-blade-component="base-box"
                 style={
-                  Array [
-                    Object {},
+                  [
+                    {},
                   ]
                 }
               >
                 <View
                   accessibilityRole="list"
+                  accessible={true}
                   data-blade-component="list"
                   style={
-                    Array [
-                      Object {},
+                    [
+                      {},
                     ]
                   }
                 >
@@ -2831,8 +4378,8 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                     hasIcon={false}
                     level={3}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "marginLeft": 16,
                         },
                       ]
@@ -2845,8 +4392,8 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                       display="flex"
                       flexDirection="row"
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "alignItems": "center",
                             "display": "flex",
                             "flexDirection": "row",
@@ -2860,8 +4407,8 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                         data-blade-component="base-box"
                         display="flex"
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "alignSelf": "flex-start",
                               "display": "flex",
                               "marginRight": 8,
@@ -2884,15 +4431,15 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                           minX={0}
                           minY={0}
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "backgroundColor": "transparent",
                                 "borderWidth": 0,
                               },
-                              Array [
-                                Object {},
+                              [
+                                {},
                               ],
-                              Object {
+                              {
                                 "flex": 0,
                                 "height": 6,
                                 "width": 6,
@@ -2906,7 +4453,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                           <RNSVGGroup
                             fill={null}
                             propList={
-                              Array [
+                              [
                                 "fill",
                               ]
                             }
@@ -2915,7 +4462,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                               fill={4288851646}
                               height="6px"
                               propList={
-                                Array [
+                                [
                                   "fill",
                                 ]
                               }
@@ -2933,8 +4480,8 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                         flexDirection="row"
                         flexWrap="wrap"
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "display": "flex",
                               "flexDirection": "row",
                               "flexWrap": "wrap",
@@ -2943,6 +4490,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                         }
                       >
                         <Text
+                          accessible={true}
                           color="surface.text.normal.lowContrast"
                           data-blade-component="text"
                           fontFamily="text"
@@ -2951,8 +4499,8 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                           fontWeight="regular"
                           lineHeight={100}
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "color": "hsla(217, 56%, 17%, 1)",
                                 "fontFamily": "Lato",
                                 "fontSize": 14,
@@ -2991,7 +4539,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
 exports[`<List /> should render small ordered List 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -2999,18 +4547,19 @@ exports[`<List /> should render small ordered List 1`] = `
   <View
     data-blade-component="base-box"
     style={
-      Array [
-        Object {},
+      [
+        {},
       ]
     }
   >
     <View
       accessibilityRole="list"
+      accessible={true}
       data-blade-component="list"
       marginTop="spacing.3"
       style={
-        Array [
-          Object {
+        [
+          {
             "marginTop": 8,
           },
         ]
@@ -3021,8 +4570,8 @@ exports[`<List /> should render small ordered List 1`] = `
         hasIcon={false}
         level={1}
         style={
-          Array [
-            Object {
+          [
+            {
               "marginLeft": 0,
             },
           ]
@@ -3035,8 +4584,8 @@ exports[`<List /> should render small ordered List 1`] = `
           display="flex"
           flexDirection="row"
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "display": "flex",
                 "flexDirection": "row",
@@ -3054,8 +4603,8 @@ exports[`<List /> should render small ordered List 1`] = `
             height="16px"
             justifyContent="center"
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignItems": "center",
                   "alignSelf": "flex-start",
                   "display": "flex",
@@ -3071,6 +4620,7 @@ exports[`<List /> should render small ordered List 1`] = `
             width="16px"
           >
             <Text
+              accessible={true}
               color="surface.text.subtle.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -3079,8 +4629,8 @@ exports[`<List /> should render small ordered List 1`] = `
               fontWeight="regular"
               lineHeight={50}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "hsla(216, 27%, 36%, 1)",
                     "fontFamily": "Lato",
                     "fontSize": 12,
@@ -3109,8 +4659,8 @@ exports[`<List /> should render small ordered List 1`] = `
             flexDirection="row"
             flexWrap="wrap"
             style={
-              Array [
-                Object {
+              [
+                {
                   "display": "flex",
                   "flexDirection": "row",
                   "flexWrap": "wrap",
@@ -3119,6 +4669,7 @@ exports[`<List /> should render small ordered List 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.normal.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -3127,8 +4678,8 @@ exports[`<List /> should render small ordered List 1`] = `
               fontWeight="regular"
               lineHeight={50}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "hsla(217, 56%, 17%, 1)",
                     "fontFamily": "Lato",
                     "fontSize": 12,
@@ -3155,17 +4706,18 @@ exports[`<List /> should render small ordered List 1`] = `
         <View
           data-blade-component="base-box"
           style={
-            Array [
-              Object {},
+            [
+              {},
             ]
           }
         >
           <View
             accessibilityRole="list"
+            accessible={true}
             data-blade-component="list"
             style={
-              Array [
-                Object {},
+              [
+                {},
               ]
             }
           >
@@ -3174,8 +4726,8 @@ exports[`<List /> should render small ordered List 1`] = `
               hasIcon={false}
               level={2}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "marginLeft": 16,
                   },
                 ]
@@ -3188,8 +4740,8 @@ exports[`<List /> should render small ordered List 1`] = `
                 display="flex"
                 flexDirection="row"
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "alignItems": "center",
                       "display": "flex",
                       "flexDirection": "row",
@@ -3203,8 +4755,8 @@ exports[`<List /> should render small ordered List 1`] = `
                   data-blade-component="base-box"
                   display="flex"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignSelf": "flex-start",
                         "display": "flex",
                         "marginRight": 8,
@@ -3227,15 +4779,15 @@ exports[`<List /> should render small ordered List 1`] = `
                     minX={0}
                     minY={0}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "backgroundColor": "transparent",
                           "borderWidth": 0,
                         },
-                        Array [
-                          Object {},
+                        [
+                          {},
                         ],
-                        Object {
+                        {
                           "flex": 0,
                           "height": 5,
                           "width": 5,
@@ -3249,7 +4801,7 @@ exports[`<List /> should render small ordered List 1`] = `
                     <RNSVGGroup
                       fill={null}
                       propList={
-                        Array [
+                        [
                           "fill",
                         ]
                       }
@@ -3258,7 +4810,7 @@ exports[`<List /> should render small ordered List 1`] = `
                         cx="3px"
                         cy="3px"
                         propList={
-                          Array [
+                          [
                             "stroke",
                           ]
                         }
@@ -3274,8 +4826,8 @@ exports[`<List /> should render small ordered List 1`] = `
                   flexDirection="row"
                   flexWrap="wrap"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "display": "flex",
                         "flexDirection": "row",
                         "flexWrap": "wrap",
@@ -3284,6 +4836,7 @@ exports[`<List /> should render small ordered List 1`] = `
                   }
                 >
                   <Text
+                    accessible={true}
                     color="surface.text.normal.lowContrast"
                     data-blade-component="text"
                     fontFamily="text"
@@ -3292,8 +4845,8 @@ exports[`<List /> should render small ordered List 1`] = `
                     fontWeight="regular"
                     lineHeight={50}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "hsla(217, 56%, 17%, 1)",
                           "fontFamily": "Lato",
                           "fontSize": 12,
@@ -3320,17 +4873,18 @@ exports[`<List /> should render small ordered List 1`] = `
               <View
                 data-blade-component="base-box"
                 style={
-                  Array [
-                    Object {},
+                  [
+                    {},
                   ]
                 }
               >
                 <View
                   accessibilityRole="list"
+                  accessible={true}
                   data-blade-component="list"
                   style={
-                    Array [
-                      Object {},
+                    [
+                      {},
                     ]
                   }
                 >
@@ -3339,8 +4893,8 @@ exports[`<List /> should render small ordered List 1`] = `
                     hasIcon={false}
                     level={3}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "marginLeft": 16,
                         },
                       ]
@@ -3353,8 +4907,8 @@ exports[`<List /> should render small ordered List 1`] = `
                       display="flex"
                       flexDirection="row"
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "alignItems": "center",
                             "display": "flex",
                             "flexDirection": "row",
@@ -3368,8 +4922,8 @@ exports[`<List /> should render small ordered List 1`] = `
                         data-blade-component="base-box"
                         display="flex"
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "alignSelf": "flex-start",
                               "display": "flex",
                               "marginRight": 8,
@@ -3392,15 +4946,15 @@ exports[`<List /> should render small ordered List 1`] = `
                           minX={0}
                           minY={0}
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "backgroundColor": "transparent",
                                 "borderWidth": 0,
                               },
-                              Array [
-                                Object {},
+                              [
+                                {},
                               ],
-                              Object {
+                              {
                                 "flex": 0,
                                 "height": 5,
                                 "width": 5,
@@ -3414,7 +4968,7 @@ exports[`<List /> should render small ordered List 1`] = `
                           <RNSVGGroup
                             fill={null}
                             propList={
-                              Array [
+                              [
                                 "fill",
                               ]
                             }
@@ -3423,7 +4977,7 @@ exports[`<List /> should render small ordered List 1`] = `
                               fill={4288851646}
                               height="5px"
                               propList={
-                                Array [
+                                [
                                   "fill",
                                 ]
                               }
@@ -3441,8 +4995,8 @@ exports[`<List /> should render small ordered List 1`] = `
                         flexDirection="row"
                         flexWrap="wrap"
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "display": "flex",
                               "flexDirection": "row",
                               "flexWrap": "wrap",
@@ -3451,6 +5005,7 @@ exports[`<List /> should render small ordered List 1`] = `
                         }
                       >
                         <Text
+                          accessible={true}
                           color="surface.text.normal.lowContrast"
                           data-blade-component="text"
                           fontFamily="text"
@@ -3459,8 +5014,8 @@ exports[`<List /> should render small ordered List 1`] = `
                           fontWeight="regular"
                           lineHeight={50}
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "color": "hsla(217, 56%, 17%, 1)",
                                 "fontFamily": "Lato",
                                 "fontSize": 12,
@@ -3499,7 +5054,7 @@ exports[`<List /> should render small ordered List 1`] = `
 exports[`<List /> should render small ordered-filled List 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -3507,18 +5062,19 @@ exports[`<List /> should render small ordered-filled List 1`] = `
   <View
     data-blade-component="base-box"
     style={
-      Array [
-        Object {},
+      [
+        {},
       ]
     }
   >
     <View
       accessibilityRole="list"
+      accessible={true}
       data-blade-component="list"
       marginTop="spacing.3"
       style={
-        Array [
-          Object {
+        [
+          {
             "marginTop": 8,
           },
         ]
@@ -3529,8 +5085,8 @@ exports[`<List /> should render small ordered-filled List 1`] = `
         hasIcon={false}
         level={1}
         style={
-          Array [
-            Object {
+          [
+            {
               "marginLeft": 0,
             },
           ]
@@ -3543,8 +5099,8 @@ exports[`<List /> should render small ordered-filled List 1`] = `
           display="flex"
           flexDirection="row"
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "display": "flex",
                 "flexDirection": "row",
@@ -3564,8 +5120,8 @@ exports[`<List /> should render small ordered-filled List 1`] = `
             height="16px"
             justifyContent="center"
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignItems": "center",
                   "alignSelf": "flex-start",
                   "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
@@ -3583,6 +5139,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
             width="16px"
           >
             <Text
+              accessible={true}
               color="surface.text.subtle.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -3591,8 +5148,8 @@ exports[`<List /> should render small ordered-filled List 1`] = `
               fontWeight="regular"
               lineHeight={50}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "hsla(216, 27%, 36%, 1)",
                     "fontFamily": "Lato",
                     "fontSize": 10,
@@ -3621,8 +5178,8 @@ exports[`<List /> should render small ordered-filled List 1`] = `
             flexDirection="row"
             flexWrap="wrap"
             style={
-              Array [
-                Object {
+              [
+                {
                   "display": "flex",
                   "flexDirection": "row",
                   "flexWrap": "wrap",
@@ -3631,6 +5188,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.normal.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -3639,8 +5197,8 @@ exports[`<List /> should render small ordered-filled List 1`] = `
               fontWeight="regular"
               lineHeight={50}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "hsla(217, 56%, 17%, 1)",
                     "fontFamily": "Lato",
                     "fontSize": 12,
@@ -3670,8 +5228,8 @@ exports[`<List /> should render small ordered-filled List 1`] = `
         hasIcon={false}
         level={1}
         style={
-          Array [
-            Object {
+          [
+            {
               "marginLeft": 0,
             },
           ]
@@ -3684,8 +5242,8 @@ exports[`<List /> should render small ordered-filled List 1`] = `
           display="flex"
           flexDirection="row"
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "display": "flex",
                 "flexDirection": "row",
@@ -3705,8 +5263,8 @@ exports[`<List /> should render small ordered-filled List 1`] = `
             height="16px"
             justifyContent="center"
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignItems": "center",
                   "alignSelf": "flex-start",
                   "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
@@ -3724,6 +5282,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
             width="16px"
           >
             <Text
+              accessible={true}
               color="surface.text.subtle.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -3732,8 +5291,8 @@ exports[`<List /> should render small ordered-filled List 1`] = `
               fontWeight="regular"
               lineHeight={50}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "hsla(216, 27%, 36%, 1)",
                     "fontFamily": "Lato",
                     "fontSize": 10,
@@ -3762,8 +5321,8 @@ exports[`<List /> should render small ordered-filled List 1`] = `
             flexDirection="row"
             flexWrap="wrap"
             style={
-              Array [
-                Object {
+              [
+                {
                   "display": "flex",
                   "flexDirection": "row",
                   "flexWrap": "wrap",
@@ -3772,6 +5331,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.normal.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -3780,8 +5340,8 @@ exports[`<List /> should render small ordered-filled List 1`] = `
               fontWeight="regular"
               lineHeight={50}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "hsla(217, 56%, 17%, 1)",
                     "fontFamily": "Lato",
                     "fontSize": 12,
@@ -3811,8 +5371,8 @@ exports[`<List /> should render small ordered-filled List 1`] = `
         hasIcon={false}
         level={1}
         style={
-          Array [
-            Object {
+          [
+            {
               "marginLeft": 0,
             },
           ]
@@ -3825,8 +5385,8 @@ exports[`<List /> should render small ordered-filled List 1`] = `
           display="flex"
           flexDirection="row"
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "display": "flex",
                 "flexDirection": "row",
@@ -3846,8 +5406,8 @@ exports[`<List /> should render small ordered-filled List 1`] = `
             height="16px"
             justifyContent="center"
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignItems": "center",
                   "alignSelf": "flex-start",
                   "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
@@ -3865,6 +5425,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
             width="16px"
           >
             <Text
+              accessible={true}
               color="surface.text.subtle.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -3873,8 +5434,8 @@ exports[`<List /> should render small ordered-filled List 1`] = `
               fontWeight="regular"
               lineHeight={50}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "hsla(216, 27%, 36%, 1)",
                     "fontFamily": "Lato",
                     "fontSize": 10,
@@ -3903,8 +5464,8 @@ exports[`<List /> should render small ordered-filled List 1`] = `
             flexDirection="row"
             flexWrap="wrap"
             style={
-              Array [
-                Object {
+              [
+                {
                   "display": "flex",
                   "flexDirection": "row",
                   "flexWrap": "wrap",
@@ -3913,6 +5474,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.normal.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -3921,8 +5483,8 @@ exports[`<List /> should render small ordered-filled List 1`] = `
               fontWeight="regular"
               lineHeight={50}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "hsla(217, 56%, 17%, 1)",
                     "fontFamily": "Lato",
                     "fontSize": 12,
@@ -3955,7 +5517,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
 exports[`<List /> should render small unordered List with icon 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -3963,18 +5525,19 @@ exports[`<List /> should render small unordered List with icon 1`] = `
   <View
     data-blade-component="base-box"
     style={
-      Array [
-        Object {},
+      [
+        {},
       ]
     }
   >
     <View
       accessibilityRole="list"
+      accessible={true}
       data-blade-component="list"
       marginTop="spacing.3"
       style={
-        Array [
-          Object {
+        [
+          {
             "marginTop": 8,
           },
         ]
@@ -3985,8 +5548,8 @@ exports[`<List /> should render small unordered List with icon 1`] = `
         hasIcon={true}
         level={1}
         style={
-          Array [
-            Object {
+          [
+            {
               "marginLeft": 0,
             },
           ]
@@ -3999,8 +5562,8 @@ exports[`<List /> should render small unordered List with icon 1`] = `
           display="flex"
           flexDirection="row"
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "display": "flex",
                 "flexDirection": "row",
@@ -4014,8 +5577,8 @@ exports[`<List /> should render small unordered List with icon 1`] = `
             data-blade-component="base-box"
             display="flex"
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignSelf": "flex-start",
                   "display": "flex",
                   "marginRight": 8,
@@ -4038,15 +5601,15 @@ exports[`<List /> should render small unordered List with icon 1`] = `
               minX={0}
               minY={0}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "backgroundColor": "transparent",
                     "borderWidth": 0,
                   },
-                  Array [
-                    Object {},
+                  [
+                    {},
                   ],
-                  Object {
+                  {
                     "flex": 0,
                     "height": 12,
                     "width": 12,
@@ -4060,7 +5623,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
               <RNSVGGroup
                 fill={null}
                 propList={
-                  Array [
+                  [
                     "fill",
                   ]
                 }
@@ -4069,7 +5632,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                   d="M14.707 5.293a1 1 0 1 0-1.414 1.414L17.586 11H4a1 1 0 1 0 0 2h13.586l-4.293 4.293a1 1 0 0 0 1.414 1.414l6-6a1 1 0 0 0 0-1.414l-6-6Z"
                   fill={4284378759}
                   propList={
-                    Array [
+                    [
                       "fill",
                     ]
                   }
@@ -4083,8 +5646,8 @@ exports[`<List /> should render small unordered List with icon 1`] = `
             flexDirection="row"
             flexWrap="wrap"
             style={
-              Array [
-                Object {
+              [
+                {
                   "display": "flex",
                   "flexDirection": "row",
                   "flexWrap": "wrap",
@@ -4093,6 +5656,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.normal.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -4101,8 +5665,8 @@ exports[`<List /> should render small unordered List with icon 1`] = `
               fontWeight="regular"
               lineHeight={50}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "hsla(217, 56%, 17%, 1)",
                     "fontFamily": "Lato",
                     "fontSize": 12,
@@ -4129,17 +5693,18 @@ exports[`<List /> should render small unordered List with icon 1`] = `
         <View
           data-blade-component="base-box"
           style={
-            Array [
-              Object {},
+            [
+              {},
             ]
           }
         >
           <View
             accessibilityRole="list"
+            accessible={true}
             data-blade-component="list"
             style={
-              Array [
-                Object {},
+              [
+                {},
               ]
             }
           >
@@ -4148,8 +5713,8 @@ exports[`<List /> should render small unordered List with icon 1`] = `
               hasIcon={true}
               level={2}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "marginLeft": 16,
                   },
                 ]
@@ -4162,8 +5727,8 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                 display="flex"
                 flexDirection="row"
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "alignItems": "center",
                       "display": "flex",
                       "flexDirection": "row",
@@ -4177,8 +5742,8 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                   data-blade-component="base-box"
                   display="flex"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignSelf": "flex-start",
                         "display": "flex",
                         "marginRight": 8,
@@ -4201,15 +5766,15 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                     minX={0}
                     minY={0}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "backgroundColor": "transparent",
                           "borderWidth": 0,
                         },
-                        Array [
-                          Object {},
+                        [
+                          {},
                         ],
-                        Object {
+                        {
                           "flex": 0,
                           "height": 12,
                           "width": 12,
@@ -4223,7 +5788,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                     <RNSVGGroup
                       fill={null}
                       propList={
-                        Array [
+                        [
                           "fill",
                         ]
                       }
@@ -4232,7 +5797,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                         d="M12.707 3.293a1 1 0 0 0-1.414 0l-6 6a1 1 0 0 0 1.414 1.414L11 6.414V20a1 1 0 1 0 2 0V6.414l4.293 4.293a1 1 0 0 0 1.414-1.414l-6-6Z"
                         fill={4284378759}
                         propList={
-                          Array [
+                          [
                             "fill",
                           ]
                         }
@@ -4246,8 +5811,8 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                   flexDirection="row"
                   flexWrap="wrap"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "display": "flex",
                         "flexDirection": "row",
                         "flexWrap": "wrap",
@@ -4256,6 +5821,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                   }
                 >
                   <Text
+                    accessible={true}
                     color="surface.text.normal.lowContrast"
                     data-blade-component="text"
                     fontFamily="text"
@@ -4264,8 +5830,8 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                     fontWeight="regular"
                     lineHeight={50}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "hsla(217, 56%, 17%, 1)",
                           "fontFamily": "Lato",
                           "fontSize": 12,
@@ -4292,17 +5858,18 @@ exports[`<List /> should render small unordered List with icon 1`] = `
               <View
                 data-blade-component="base-box"
                 style={
-                  Array [
-                    Object {},
+                  [
+                    {},
                   ]
                 }
               >
                 <View
                   accessibilityRole="list"
+                  accessible={true}
                   data-blade-component="list"
                   style={
-                    Array [
-                      Object {},
+                    [
+                      {},
                     ]
                   }
                 >
@@ -4311,8 +5878,8 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                     hasIcon={false}
                     level={3}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "marginLeft": 16,
                         },
                       ]
@@ -4325,8 +5892,8 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                       display="flex"
                       flexDirection="row"
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "alignItems": "center",
                             "display": "flex",
                             "flexDirection": "row",
@@ -4340,8 +5907,8 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                         data-blade-component="base-box"
                         display="flex"
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "alignSelf": "flex-start",
                               "display": "flex",
                               "marginRight": 8,
@@ -4364,15 +5931,15 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                           minX={0}
                           minY={0}
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "backgroundColor": "transparent",
                                 "borderWidth": 0,
                               },
-                              Array [
-                                Object {},
+                              [
+                                {},
                               ],
-                              Object {
+                              {
                                 "flex": 0,
                                 "height": 5,
                                 "width": 5,
@@ -4386,7 +5953,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                           <RNSVGGroup
                             fill={null}
                             propList={
-                              Array [
+                              [
                                 "fill",
                               ]
                             }
@@ -4395,7 +5962,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                               fill={4288851646}
                               height="5px"
                               propList={
-                                Array [
+                                [
                                   "fill",
                                 ]
                               }
@@ -4413,8 +5980,8 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                         flexDirection="row"
                         flexWrap="wrap"
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "display": "flex",
                               "flexDirection": "row",
                               "flexWrap": "wrap",
@@ -4423,6 +5990,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                         }
                       >
                         <Text
+                          accessible={true}
                           color="surface.text.normal.lowContrast"
                           data-blade-component="text"
                           fontFamily="text"
@@ -4431,8 +5999,8 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                           fontWeight="regular"
                           lineHeight={50}
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "color": "hsla(217, 56%, 17%, 1)",
                                 "fontFamily": "Lato",
                                 "fontSize": 12,
@@ -4471,7 +6039,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
 exports[`<List /> should render unordered List of small size 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -4479,18 +6047,19 @@ exports[`<List /> should render unordered List of small size 1`] = `
   <View
     data-blade-component="base-box"
     style={
-      Array [
-        Object {},
+      [
+        {},
       ]
     }
   >
     <View
       accessibilityRole="list"
+      accessible={true}
       data-blade-component="list"
       marginTop="spacing.3"
       style={
-        Array [
-          Object {
+        [
+          {
             "marginTop": 8,
           },
         ]
@@ -4501,8 +6070,8 @@ exports[`<List /> should render unordered List of small size 1`] = `
         hasIcon={false}
         level={1}
         style={
-          Array [
-            Object {
+          [
+            {
               "marginLeft": 4,
             },
           ]
@@ -4515,8 +6084,8 @@ exports[`<List /> should render unordered List of small size 1`] = `
           display="flex"
           flexDirection="row"
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "display": "flex",
                 "flexDirection": "row",
@@ -4530,8 +6099,8 @@ exports[`<List /> should render unordered List of small size 1`] = `
             data-blade-component="base-box"
             display="flex"
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignSelf": "flex-start",
                   "display": "flex",
                   "marginRight": 8,
@@ -4554,15 +6123,15 @@ exports[`<List /> should render unordered List of small size 1`] = `
               minX={0}
               minY={0}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "backgroundColor": "transparent",
                     "borderWidth": 0,
                   },
-                  Array [
-                    Object {},
+                  [
+                    {},
                   ],
-                  Object {
+                  {
                     "flex": 0,
                     "height": 5,
                     "width": 5,
@@ -4576,7 +6145,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
               <RNSVGGroup
                 fill={null}
                 propList={
-                  Array [
+                  [
                     "fill",
                   ]
                 }
@@ -4586,7 +6155,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
                   cy="3px"
                   fill={4288851646}
                   propList={
-                    Array [
+                    [
                       "fill",
                     ]
                   }
@@ -4601,8 +6170,8 @@ exports[`<List /> should render unordered List of small size 1`] = `
             flexDirection="row"
             flexWrap="wrap"
             style={
-              Array [
-                Object {
+              [
+                {
                   "display": "flex",
                   "flexDirection": "row",
                   "flexWrap": "wrap",
@@ -4611,6 +6180,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
             }
           >
             <Text
+              accessible={true}
               color="surface.text.normal.lowContrast"
               data-blade-component="text"
               fontFamily="text"
@@ -4619,8 +6189,8 @@ exports[`<List /> should render unordered List of small size 1`] = `
               fontWeight="regular"
               lineHeight={50}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "hsla(217, 56%, 17%, 1)",
                     "fontFamily": "Lato",
                     "fontSize": 12,
@@ -4647,17 +6217,18 @@ exports[`<List /> should render unordered List of small size 1`] = `
         <View
           data-blade-component="base-box"
           style={
-            Array [
-              Object {},
+            [
+              {},
             ]
           }
         >
           <View
             accessibilityRole="list"
+            accessible={true}
             data-blade-component="list"
             style={
-              Array [
-                Object {},
+              [
+                {},
               ]
             }
           >
@@ -4666,8 +6237,8 @@ exports[`<List /> should render unordered List of small size 1`] = `
               hasIcon={false}
               level={2}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "marginLeft": 16,
                   },
                 ]
@@ -4680,8 +6251,8 @@ exports[`<List /> should render unordered List of small size 1`] = `
                 display="flex"
                 flexDirection="row"
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "alignItems": "center",
                       "display": "flex",
                       "flexDirection": "row",
@@ -4695,8 +6266,8 @@ exports[`<List /> should render unordered List of small size 1`] = `
                   data-blade-component="base-box"
                   display="flex"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignSelf": "flex-start",
                         "display": "flex",
                         "marginRight": 8,
@@ -4719,15 +6290,15 @@ exports[`<List /> should render unordered List of small size 1`] = `
                     minX={0}
                     minY={0}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "backgroundColor": "transparent",
                           "borderWidth": 0,
                         },
-                        Array [
-                          Object {},
+                        [
+                          {},
                         ],
-                        Object {
+                        {
                           "flex": 0,
                           "height": 5,
                           "width": 5,
@@ -4741,7 +6312,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
                     <RNSVGGroup
                       fill={null}
                       propList={
-                        Array [
+                        [
                           "fill",
                         ]
                       }
@@ -4750,7 +6321,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
                         cx="3px"
                         cy="3px"
                         propList={
-                          Array [
+                          [
                             "stroke",
                           ]
                         }
@@ -4766,8 +6337,8 @@ exports[`<List /> should render unordered List of small size 1`] = `
                   flexDirection="row"
                   flexWrap="wrap"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "display": "flex",
                         "flexDirection": "row",
                         "flexWrap": "wrap",
@@ -4776,6 +6347,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
                   }
                 >
                   <Text
+                    accessible={true}
                     color="surface.text.normal.lowContrast"
                     data-blade-component="text"
                     fontFamily="text"
@@ -4784,8 +6356,8 @@ exports[`<List /> should render unordered List of small size 1`] = `
                     fontWeight="regular"
                     lineHeight={50}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "hsla(217, 56%, 17%, 1)",
                           "fontFamily": "Lato",
                           "fontSize": 12,
@@ -4812,17 +6384,18 @@ exports[`<List /> should render unordered List of small size 1`] = `
               <View
                 data-blade-component="base-box"
                 style={
-                  Array [
-                    Object {},
+                  [
+                    {},
                   ]
                 }
               >
                 <View
                   accessibilityRole="list"
+                  accessible={true}
                   data-blade-component="list"
                   style={
-                    Array [
-                      Object {},
+                    [
+                      {},
                     ]
                   }
                 >
@@ -4831,8 +6404,8 @@ exports[`<List /> should render unordered List of small size 1`] = `
                     hasIcon={false}
                     level={3}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "marginLeft": 16,
                         },
                       ]
@@ -4845,8 +6418,8 @@ exports[`<List /> should render unordered List of small size 1`] = `
                       display="flex"
                       flexDirection="row"
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "alignItems": "center",
                             "display": "flex",
                             "flexDirection": "row",
@@ -4860,8 +6433,8 @@ exports[`<List /> should render unordered List of small size 1`] = `
                         data-blade-component="base-box"
                         display="flex"
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "alignSelf": "flex-start",
                               "display": "flex",
                               "marginRight": 8,
@@ -4884,15 +6457,15 @@ exports[`<List /> should render unordered List of small size 1`] = `
                           minX={0}
                           minY={0}
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "backgroundColor": "transparent",
                                 "borderWidth": 0,
                               },
-                              Array [
-                                Object {},
+                              [
+                                {},
                               ],
-                              Object {
+                              {
                                 "flex": 0,
                                 "height": 5,
                                 "width": 5,
@@ -4906,7 +6479,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
                           <RNSVGGroup
                             fill={null}
                             propList={
-                              Array [
+                              [
                                 "fill",
                               ]
                             }
@@ -4915,7 +6488,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
                               fill={4288851646}
                               height="5px"
                               propList={
-                                Array [
+                                [
                                   "fill",
                                 ]
                               }
@@ -4933,8 +6506,8 @@ exports[`<List /> should render unordered List of small size 1`] = `
                         flexDirection="row"
                         flexWrap="wrap"
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "display": "flex",
                               "flexDirection": "row",
                               "flexWrap": "wrap",
@@ -4943,6 +6516,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
                         }
                       >
                         <Text
+                          accessible={true}
                           color="surface.text.normal.lowContrast"
                           data-blade-component="text"
                           fontFamily="text"
@@ -4951,8 +6525,8 @@ exports[`<List /> should render unordered List of small size 1`] = `
                           fontWeight="regular"
                           lineHeight={50}
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "color": "hsla(217, 56%, 17%, 1)",
                                 "fontFamily": "Lato",
                                 "fontSize": 12,

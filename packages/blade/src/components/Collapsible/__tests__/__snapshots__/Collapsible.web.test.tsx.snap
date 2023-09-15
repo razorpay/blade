@@ -72,8 +72,6 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
-  padding-right: 4px;
-  padding-left: 4px;
 }
 
 .c5 {
@@ -409,8 +407,6 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
-  padding-right: 4px;
-  padding-left: 4px;
 }
 
 .c6 {

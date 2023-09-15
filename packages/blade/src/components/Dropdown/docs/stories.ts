@@ -21,7 +21,7 @@ const Playground = `
     Button
   } from '@razorpay/blade/components';
 
-  function App(): JSX.Element {
+  function App(): React.ReactElement {
     return (
       <Dropdown 
         // Uncomment next line to make it multiselectable
@@ -81,7 +81,7 @@ const getSimpleSelectCode = (selectionType: DropdownProps['selectionType']): str
     ActionListItem,
   } from '@razorpay/blade/components';
 
-  function App(): JSX.Element {
+  function App(): React.ReactElement {
     return (
       <Dropdown 
         selectionType="${selectionType}"
@@ -131,7 +131,7 @@ const WithHeaderFooterScroll = `
     Button
   } from '@razorpay/blade/components';
 
-  function App(): JSX.Element {
+  function App(): React.ReactElement {
     return (
       <Dropdown>
         <SelectInput
@@ -227,7 +227,7 @@ const WithValueDisplayStory = `
     Box,
   } from '@razorpay/blade/components';
 
-  function App(): JSX.Element {
+  function App(): React.ReactElement {
     const [currentSelections, setCurrentSelections] = React.useState([]);
     
     console.log({currentSelections});
@@ -281,7 +281,7 @@ const WithHTMLFormSubmissionStory = `
     Text,
   } from '@razorpay/blade/components';
 
-  function App(): JSX.Element {
+  function App(): React.ReactElement {
     const [submissionValues, setSubmissionValues] = React.useState('');
     
     return (
@@ -341,7 +341,7 @@ const WithValidationStateStory = `
   } from '@razorpay/blade/components';
   import type { SelectInputProps } from '@razorpay/blade/components';
 
-  function App(): JSX.Element {
+  function App(): React.ReactElement {
     const [validationState, setValidationState] = React.useState<SelectInputProps['validationState']>('none');
 
     return (
@@ -403,7 +403,7 @@ const WithRefUsageStory = `
     Text
   } from '@razorpay/blade/components';
 
-  function App(): JSX.Element {
+  function App(): React.ReactElement {
     const selectRef = React.useRef<HTMLElement>(null);
 
 
@@ -457,7 +457,7 @@ const WithMultipleDropdownsStory = `
   } from '@razorpay/blade/components';
 
 
-  function App(): JSX.Element {  
+  function App(): React.ReactElement {  
     return (
       <Box display="flex" flexDirection="row" minHeight="300px" gap="spacing.2">
         <Box flex={1}>
@@ -502,7 +502,7 @@ const WithControlledSelectStory = `
     Button,
   } from '@razorpay/blade/components';
 
-  function App(args): JSX.Element {
+  function App(args): React.ReactElement {
     const [currentSelection, setCurrentSelection] = React.useState<undefined | string>();
   
     return (
@@ -545,7 +545,7 @@ const WithControlledMultiSelectStory = `
     Button,
   } from '@razorpay/blade/components';
 
-  function App(args): JSX.Element {
+  function App(args): React.ReactElement {
     const [currentSelection, setCurrentSelection] = React.useState<string[]>([]);  
 
     return (
@@ -587,7 +587,7 @@ const WithControlledMultiSelectStory = `
   export default App;
 `;
 
-const WithBottomAlignedSelectStory = `
+const WithAutoPositioningSelectStory = `
   import { 
     Dropdown, 
     DropdownOverlay,
@@ -597,25 +597,41 @@ const WithBottomAlignedSelectStory = `
     Box,
   } from '@razorpay/blade/components';
 
-  function App(): JSX.Element {
+  function App(): React.ReactElement {
     return (
-      <Box minHeight="95vh" display="flex" alignItems="flex-end">
-        <Box flex="1">
-          <Dropdown>
-            <SelectInput
-              label="City"
-              placeholder="Select your City"
-              name="action"
-              onChange={({ name, values }) => {
-                console.log({ name, values });
-              }}
-            />
+      <Box>
+        <Box
+          padding="spacing.5"
+          backgroundColor="surface.background.level3.lowContrast"
+          width="100%"
+          minHeight="100px"
+          overflow="scroll"
+        >
+          <Dropdown selectionType="multiple">
+            <SelectInput label="Select fruits" labelPosition="left" />
             <DropdownOverlay>
               <ActionList>
-                <ActionListItem title="Mumbai" value="mumbai" />
-                <ActionListItem title="Pune" value="pune" />
-                <ActionListItem title="Bangalore" value="bangalore" />
-                <ActionListItem title="Mysore" value="mysore" />
+                <ActionListItem title="Apples" value="Apples" />
+                <ActionListItem title="Appricots" value="Appricots" />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        </Box>
+        <Box
+          padding="spacing.5"
+          backgroundColor="surface.background.level3.lowContrast"
+          width="100%"
+          position="fixed"
+          bottom="spacing.0"
+          minHeight="100px"
+          overflow="scroll"
+        >
+          <Dropdown selectionType="multiple">
+            <SelectInput label="Select fruits" labelPosition="left" />
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem title="Apples" value="Apples" />
+                <ActionListItem title="Appricots" value="Appricots" />
               </ActionList>
             </DropdownOverlay>
           </Dropdown>
@@ -641,7 +657,7 @@ const WithSimpleMenuStory = `
     Box,
   } from '@razorpay/blade/components';
 
-  function App (): JSX.Element {
+  function App (): React.ReactElement {
     return (
       <Box minHeight="200px" width={{ base: '100%', m: '500px' }}>
         <Dropdown>
@@ -701,7 +717,7 @@ const WithLinkStory = `
     Text,
   } from '@razorpay/blade/components';
 
-  function App (): JSX.Element {
+  function App (): React.ReactElement {
     const [status, setStatus] = React.useState<string | undefined>('latest-added');
     const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
   
@@ -774,7 +790,7 @@ const WithControlledMenuStory = `
     CloseIcon
   } from '@razorpay/blade/components';
 
-  function App(): JSX.Element {
+  function App(): React.ReactElement {
     const [status, setStatus] = React.useState<string | undefined>();
 
     return (
@@ -836,13 +852,13 @@ const WithControlledMultiSelectMenuStory = `
     ActionListItemIcon,
     ActionListSection,
     Box,
-    Badge,
+    Tag,
   } from '@razorpay/blade/components';
 
-  function App(): JSX.Element {
+  function App(): React.ReactElement {
     const [filters, setFilters] = React.useState<string[]>([]);
 
-    const selectItem = ({ name, value }: { name: string; value?: boolean }): void => {
+    const toggleSelection = ({ name, value }: { name: string; value?: boolean }): void => {
       if (value) {
         // Value is true which means it is selected. Then we deselect it.
         const existingItemIndex = filters.indexOf(name);
@@ -856,9 +872,15 @@ const WithControlledMultiSelectMenuStory = `
       <Box minHeight="200px">
         <Box display="flex" paddingBottom="spacing.5" minHeight="spacing.10">
           {filters.map((filter) => (
-            <Badge marginRight="spacing.3" variant="information" key={filter}>
+            <Tag 
+              key={filter} 
+              marginRight="spacing.3" 
+              onDismiss={() => {
+                toggleSelection({ name: filter, value: true });
+              }}
+            >
               {filter}
-            </Badge>
+            </Tag>
           ))}
         </Box>
         <Dropdown selectionType="multiple">
@@ -868,7 +890,7 @@ const WithControlledMultiSelectMenuStory = `
               <ActionListItem
                 onClick={({ name, value }) => {
                   console.log({ name, value });
-                  selectItem({ name, value });
+                  toggleSelection({ name, value });
                 }}
                 isSelected={filters.includes('< 3 months')}
                 title="Last 3 months"
@@ -877,7 +899,7 @@ const WithControlledMultiSelectMenuStory = `
               <ActionListItem
                 onClick={({ name, value }) => {
                   console.log({ name, value });
-                  selectItem({ name, value });
+                  toggleSelection({ name, value });
                 }}
                 isSelected={filters.includes('> 1000rs')}
                 title="More than 1000rs"
@@ -886,7 +908,7 @@ const WithControlledMultiSelectMenuStory = `
               <ActionListItem
                 onClick={({ name, value }) => {
                   console.log({ name, value });
-                  selectItem({ name, value });
+                  toggleSelection({ name, value });
                 }}
                 isSelected={filters.includes('failed')}
                 title="Failed Transactions"
@@ -902,57 +924,63 @@ const WithControlledMultiSelectMenuStory = `
   export default App;
 `;
 
-const WithRightAlignedMenuStory = `
+const WithAutoPositioningMenuStory = `
   import {
     Dropdown,
     DropdownOverlay,
     DropdownButton,
     ActionList,
     ActionListItem,
-    ActionListSection,
-    MyAccountIcon,
     Box,
   } from '@razorpay/blade/components';
 
-  function App (): JSX.Element {
+  function App (): React.ReactElement {
     return (
-      <Box minHeight="200px" width="100%" display="flex" justifyContent="flex-end">
-        <Dropdown>
-          <DropdownButton icon={MyAccountIcon} variant="secondary">
-            My Account
-          </DropdownButton>
-          <DropdownOverlay>
-            <ActionList>
-              <ActionListSection title="Account @saurabh">
-                <ActionListItem
-                  title="My Profile"
-                  value="profile"
-                  href="https://youtu.be/4qRZmFYdozY?t=33"
-                  target="_blank"
-                />
-                <ActionListItem
-                  title="Dashboard"
-                  value="dashboard"
-                  href="https://dashboard.razorpay.com/"
-                />
-                <ActionListItem
-                  title="Settings"
-                  value="settings"
-                  href="https://memezila.com/Me-changing-the-phone-language-just-for-fun-Couldnt-find-language-setting-now-meme-5150"
-                />
-              </ActionListSection>
-              <ActionListItem
-                intent="negative"
-                title="Log Out"
-                value="logout"
-                onClick={() => {
-                  // eslint-disable-next-line no-alert
-                  alert('Logging out');
-                }}
-              />
-            </ActionList>
-          </DropdownOverlay>
-        </Dropdown>
+      <Box>
+        <Box display="inline-flex" position="fixed" left="spacing.5" top="spacing.5">
+          <Dropdown>
+            <DropdownButton>Top Left Menu</DropdownButton>
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem title="Apples" value="Apples" />
+                <ActionListItem title="Appricots" value="Appricots" />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        </Box>
+        <Box display="inline-flex" position="fixed" right="spacing.5" top="spacing.5">
+          <Dropdown>
+            <DropdownButton>Top Right Menu</DropdownButton>
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem title="Apples" value="Apples" />
+                <ActionListItem title="Appricots" value="Appricots" />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        </Box>
+        <Box display="inline-flex" position="fixed" right="spacing.5" bottom="spacing.5">
+          <Dropdown>
+            <DropdownButton>Bottom Right Menu</DropdownButton>
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem title="Apples" value="Apples" />
+                <ActionListItem title="Appricots" value="Appricots" />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        </Box>
+        <Box display="inline-flex" position="fixed" left="spacing.5" bottom="spacing.5">
+          <Dropdown>
+            <DropdownButton>Bottom Left Menu</DropdownButton>
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem title="Apples" value="Apples" />
+                <ActionListItem title="Appricots" value="Appricots" />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        </Box>
       </Box>
     );
   };
@@ -975,6 +1003,6 @@ export {
   WithLinkStory,
   WithControlledMenuStory,
   WithControlledMultiSelectMenuStory,
-  WithBottomAlignedSelectStory,
-  WithRightAlignedMenuStory,
+  WithAutoPositioningSelectStory,
+  WithAutoPositioningMenuStory,
 };

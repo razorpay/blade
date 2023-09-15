@@ -3,7 +3,7 @@
 exports[`<FileMinusIcon /> should render FileMinusIcon 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -22,15 +22,15 @@ exports[`<FileMinusIcon /> should render FileMinusIcon 1`] = `
     minX={0}
     minY={0}
     style={
-      Array [
-        Object {
+      [
+        {
           "backgroundColor": "transparent",
           "borderWidth": 0,
         },
-        Array [
-          Object {},
+        [
+          {},
         ],
-        Object {
+        {
           "flex": 0,
           "height": 20,
           "width": 20,
@@ -44,7 +44,7 @@ exports[`<FileMinusIcon /> should render FileMinusIcon 1`] = `
     <RNSVGGroup
       fill={null}
       propList={
-        Array [
+        [
           "fill",
         ]
       }
@@ -53,7 +53,7 @@ exports[`<FileMinusIcon /> should render FileMinusIcon 1`] = `
         d="M9 14C8.44772 14 8 14.4477 8 15C8 15.5523 8.44772 16 9 16H15C15.5523 16 16 15.5523 16 15C16 14.4477 15.5523 14 15 14H9Z"
         fill={4282603381}
         propList={
-          Array [
+          [
             "fill",
           ]
         }
@@ -64,7 +64,7 @@ exports[`<FileMinusIcon /> should render FileMinusIcon 1`] = `
         fill={4282603381}
         fillRule={0}
         propList={
-          Array [
+          [
             "fill",
             "fillRule",
           ]

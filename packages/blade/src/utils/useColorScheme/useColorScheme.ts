@@ -2,6 +2,7 @@ import { useState, useCallback } from 'react';
 import { getColorScheme } from '../getColorScheme';
 import { colorSchemeNamesInput } from '~tokens/theme/theme';
 import type { ColorSchemeNames, ColorSchemeNamesInput } from '~tokens/theme';
+import { throwBladeError } from '~utils/logger';
 
 export type UseColorScheme = {
   colorScheme: ColorSchemeNames;
@@ -17,10 +18,13 @@ export const useColorScheme = (
   );
 
   const setColorScheme = useCallback(function setThemeMode(colorScheme: ColorSchemeNamesInput) {
-    if (!colorSchemeNamesInput.includes(colorScheme)) {
-      throw new Error(
-        `[useColorScheme]: Expected color scheme to be one of [${colorSchemeNamesInput.toString()}] but received ${colorScheme}`,
-      );
+    if (__DEV__) {
+      if (!colorSchemeNamesInput.includes(colorScheme)) {
+        throwBladeError({
+          message: `Expected color scheme to be one of [${colorSchemeNamesInput.toString()}] but received ${colorScheme}`,
+          moduleName: 'useColorScheme',
+        });
+      }
     }
     setColorSchemeState(getColorScheme(colorScheme));
   }, []);

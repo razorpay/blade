@@ -7,4 +7,4 @@ type BladeProviderProps = {
   children: ReactNode;
 };
 
-export { BladeProviderProps };
+export type { BladeProviderProps };

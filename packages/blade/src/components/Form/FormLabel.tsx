@@ -16,7 +16,7 @@ type CommonProps = {
   position?: 'top' | 'left';
   necessityIndicator?: 'required' | 'optional' | 'none';
   accessibilityText?: string;
-  children: string;
+  children: string | undefined;
   id?: string;
   contrast?: ColorContrastTypes;
 };
@@ -37,7 +37,7 @@ export type FormInputLabelProps = {
   /**
    * Label to be shown for the input field
    */
-  label: string;
+  label?: string;
   /**
    * Desktop only prop. Default value on mobile will be `top`
    */

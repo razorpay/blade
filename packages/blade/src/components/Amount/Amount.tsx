@@ -1,9 +1,9 @@
 import type { ReactElement } from 'react';
 import React from 'react';
+import type { Currency } from './amountTokens';
 import {
   amountFontSizes,
-  currencyAbbreviationsMapping,
-  currencyLocaleMapping,
+  getCurrencyAbbreviations,
   currencyPrefixMapping,
   affixFontSizes,
   amountLineHeights,
@@ -13,13 +13,12 @@ import type { Feedback } from '~tokens/theme/theme';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import BaseBox from '~components/Box/BaseBox';
 import type { TestID } from '~utils/types';
-import { castNativeType, castWebType, getPlatformType } from '~utils';
+import { getPlatformType } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-
-type Currency = 'INR' | 'MYR';
+import { throwBladeError } from '~utils/logger';
 
 type AmountProps = {
   /**
@@ -69,7 +68,8 @@ type AmountProps = {
    */
   prefix?: 'currency-symbol' | 'currency-code';
   /**
-   * The currency of the amount.
+   * The currency of the amount.  Note that this component
+   * only displays the provided value in the specified currency, it does not perform any currency conversion.
    *
    * @default 'INR'
    * */
@@ -157,13 +157,15 @@ const AmountValue = ({
 // This function rounds a number to a specified number of decimal places
 // and floors the result.
 export const getFlooredFixed = (value: number, decimalPlaces: number): number => {
-  const factor = 10 ** decimalPlaces;
+  const factor = 100 ** decimalPlaces;
   const roundedValue = Math.floor(value * factor) / factor;
   return Number(roundedValue.toFixed(decimalPlaces));
 };
 
 export const addCommas = (amountValue: number, currency: Currency, decimalPlaces = 0): string => {
-  const locale = currencyLocaleMapping[currency];
+  // If the currency is 'INR', set the locale to 'en-IN' (Indian English).
+  // Otherwise, set the locale to 'en-US' (U.S. English).
+  const locale = currency === 'INR' ? 'en-IN' : 'en-US';
   return amountValue.toLocaleString(locale, { minimumFractionDigits: decimalPlaces });
 };
 /**
@@ -172,7 +174,7 @@ export const addCommas = (amountValue: number, currency: Currency, decimalPlaces
  * for MYR 2000000 => 2M
  */
 export const getHumanizedAmount = (amountValue: number, currency: Currency): string => {
-  const abbreviations = currencyAbbreviationsMapping[currency];
+  const abbreviations = getCurrencyAbbreviations(currency);
 
   const abbreviation = abbreviations.find((abbr) => amountValue >= abbr.value);
   if (abbreviation) {
@@ -230,12 +232,20 @@ const _Amount = ({
   currency = 'INR',
   ...styledProps
 }: AmountProps): ReactElement => {
-  if (typeof value !== 'number') {
-    throw new Error('[Blade: Amount]: `value` prop must be of type `number` for Amount.');
-  }
-  // @ts-expect-error neutral intent should throw error
-  if (intent === 'neutral') {
-    throw new Error('[Blade Amount]: `neutral` intent is not supported.');
+  if (__DEV__) {
+    if (typeof value !== 'number') {
+      throwBladeError({
+        message: '`value` prop must be of type `number` for Amount.',
+        moduleName: 'Amount',
+      });
+    }
+    // @ts-expect-error neutral intent should throw error
+    if (intent === 'neutral') {
+      throwBladeError({
+        message: '`neutral` intent is not supported.',
+        moduleName: 'Amount',
+      });
+    }
   }
 
   const currencyPrefix = currencyPrefixMapping[currency][prefix];
@@ -251,15 +261,12 @@ const _Amount = ({
 
   return (
     <BaseBox
-      display={isReactNative ? castNativeType('flex') : castWebType('inline-flex')}
+      display={(isReactNative ? 'flex' : 'inline-flex') as never}
       {...metaAttribute({ name: MetaConstants.Amount, testID })}
       {...getStyledProps(styledProps)}
     >
       <BaseBox
-        paddingLeft="spacing.2"
-        paddingRight="spacing.2"
-        // @TODO: fix casting of platform types. currently they all become `never` type
-        display={isReactNative ? castNativeType('flex') : castWebType('inline-flex')}
+        display={(isReactNative ? 'flex' : 'inline-flex') as never}
         alignItems="baseline"
         flexDirection="row"
       >
@@ -290,4 +297,5 @@ const Amount = assignWithoutSideEffects(_Amount, {
   componentId: 'Amount',
 });
 
-export { Amount, AmountProps };
+export type { AmountProps };
+export { Amount };

@@ -3,7 +3,7 @@
 exports[`<AlertTriangleIcon /> should render AlertTriangleIcon 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -22,15 +22,15 @@ exports[`<AlertTriangleIcon /> should render AlertTriangleIcon 1`] = `
     minX={0}
     minY={0}
     style={
-      Array [
-        Object {
+      [
+        {
           "backgroundColor": "transparent",
           "borderWidth": 0,
         },
-        Array [
-          Object {},
+        [
+          {},
         ],
-        Object {
+        {
           "flex": 0,
           "height": 20,
           "width": 20,
@@ -44,7 +44,7 @@ exports[`<AlertTriangleIcon /> should render AlertTriangleIcon 1`] = `
     <RNSVGGroup
       fill={null}
       propList={
-        Array [
+        [
           "fill",
         ]
       }
@@ -53,7 +53,7 @@ exports[`<AlertTriangleIcon /> should render AlertTriangleIcon 1`] = `
         d="M12 8.10275C12.5523 8.10275 13 8.55047 13 9.10275V13.1028C13 13.655 12.5523 14.1028 12 14.1028C11.4477 14.1028 11 13.655 11 13.1028V9.10275C11 8.55047 11.4477 8.10275 12 8.10275Z"
         fill={4282603381}
         propList={
-          Array [
+          [
             "fill",
           ]
         }
@@ -62,7 +62,7 @@ exports[`<AlertTriangleIcon /> should render AlertTriangleIcon 1`] = `
         d="M12 18.1028C12.5523 18.1028 13 17.655 13 17.1028C13 16.5505 12.5523 16.1028 12 16.1028C11.4477 16.1028 11 16.5505 11 17.1028C11 17.655 11.4477 18.1028 12 18.1028Z"
         fill={4282603381}
         propList={
-          Array [
+          [
             "fill",
           ]
         }
@@ -73,7 +73,7 @@ exports[`<AlertTriangleIcon /> should render AlertTriangleIcon 1`] = `
         fill={4282603381}
         fillRule={0}
         propList={
-          Array [
+          [
             "fill",
             "fillRule",
           ]

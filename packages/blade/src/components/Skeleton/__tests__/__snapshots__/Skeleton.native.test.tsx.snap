@@ -3,7 +3,7 @@
 exports[`<Skeleton /> should render skeleton 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -15,12 +15,12 @@ exports[`<Skeleton /> should render skeleton 1`] = `
     height="50px"
     importantForAccessibility="no-hide-descendants"
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 50,
           "width": "100%",
         },
-        Object {
+        {
           "backgroundColor": undefined,
         },
       ]

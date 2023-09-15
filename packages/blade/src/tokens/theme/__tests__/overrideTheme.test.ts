@@ -3,10 +3,9 @@ import overrideTheme from '../overrideTheme';
 import { paymentTheme, bankingTheme } from '../';
 import type { ThemeTokens } from '../../theme';
 
-const invalidOverridesObjectError =
-  '[@razorpay/blade:overrideTheme]: The overrides object is not valid';
+const invalidOverridesObjectError = '[Blade: overrideTheme]: The overrides object is not valid';
 const invalidBaseThemeError =
-  '[@razorpay/blade:overrideTheme]: The base theme provided is not a valid Blade theme';
+  '[Blade: overrideTheme]: The base theme provided is not a valid Blade theme';
 
 describe('overrideTheme', () => {
   it('should return new theme based on overrides for paymentTheme', () => {

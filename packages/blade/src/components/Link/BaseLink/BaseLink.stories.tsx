@@ -1,8 +1,8 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
-import iconMap from '../../Icons/iconMap';
 import type { BaseLinkProps } from './BaseLink';
 import BaseLinkComponent from './BaseLink';
+import iconMap from '~components/Icons/iconMap';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 export default {

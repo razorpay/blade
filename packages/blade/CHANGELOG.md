@@ -1,5 +1,242 @@
 # @razorpay/blade
 
+## 10.8.1
+
+### Patch Changes
+
+- 09ca73d2: fix(ActionList): divider being added to last ActionListSection
+
+## 10.8.0
+
+### Minor Changes
+
+- ac405dfc: chore(blade): added id to Box component
+
+## 10.7.1
+
+### Patch Changes
+
+- 52288df2: fix(blade): carousel bug in safari
+
+## 10.7.0
+
+### Minor Changes
+
+- f43d9b35: feat(Icon): add default value for `size` & `color` props
+
+## 10.6.0
+
+### Minor Changes
+
+- 1732199a: fix(blade): fix firefox bug in carousel & fixed visible items not switching to `1` on mobile devices.
+
+## 10.5.0
+
+### Minor Changes
+
+- 3fc6ba3a: feat(Typography): add a new `Display` component
+
+  The Display component adds a strong visual touch. Utilize it to create eye-catching sections on your landing pages.
+
+## 10.4.4
+
+### Patch Changes
+
+- f1478f1b: fix(blade): extra left/right padding on amount component
+
+## 10.4.3
+
+### Patch Changes
+
+- 6b69d0e5: fix(blade): fixed card link overlay not working when wrapper is set to position:relative
+
+## 10.4.2
+
+### Patch Changes
+
+- 3d3bef8e: chore(blade): remove broken figma link from Card
+
+## 10.4.1
+
+### Patch Changes
+
+- 6ca6d35b: fix(Amount): correctly round the value upto 2 decimal places
+
+## 10.4.0
+
+### Minor Changes
+
+- a561aaca: feat: Add new `Chip` and `ChipGroup` components
+
+### Patch Changes
+
+- 9278e808: fix(blade): use thicker border in selected card
+
+## 10.3.2
+
+### Patch Changes
+
+- 67e0ae96: feat(blade): added interactive Card
+
+  Enables cards to be used as clickable, linkable & selectable.
+
+## 10.3.1
+
+### Patch Changes
+
+- 5f500f3d: fix(DropdownOverlay): Dropdown clipping issue in overflow scroll containers
+
+## 10.3.0
+
+### Minor Changes
+
+- 5872d7ea: refactor(blade): remove useBladeInnerRef & expose native DOM nodes via ref
+
+## 10.2.1
+
+### Patch Changes
+
+- 98291854: chore: make accordion min-width 360px for large screens
+- 5f2f3e44: feat: add large size to List component
+
+## 10.2.0
+
+### Minor Changes
+
+- 30109b99: feat(blade): added Carousel component
+
+## 10.1.0
+
+### Minor Changes
+
+- 0e2d5154: feat(Box): add `draggable`, `onDragStart`, `onDragEnd`, `onDragEnter`, `onDragLeave`, `onDragOver`, `onDrop`, `pointerEvents`, & `placeItems` props
+
+## 10.0.0
+
+### Major Changes
+
+- abf52f07: build: upgrade react `v18.2.0`, react-native `v0.72.3` & other libraries
+
+  ### Upgrade the following packages:
+
+  - `react` to `18.2.0`
+  - `react-native` to `0.72.3`
+  - `react-dom` to `18.2.0`
+  - `react-native-reanimated` to `3.4.1`
+  - `react-test-renderer` to `18.2.0`
+  - `@react-native-async-storage/async-storage` to `1.19.1`
+  - `@testing-library/react` to `13.4.0`
+  - `@testing-library/react-native` to `12.2.0`
+
+  ### Migration Guide
+
+  - You can follow [React's](https://react.dev/blog/2022/03/08/react-18-upgrade-guide) & [React Native's](https://react-native-community.github.io/upgrade-helper/?from=0.66.5&to=0.72.3) guides to update your packages to the latest version
+  - If you are using `npm` as your package manager and continue to remain on `react` `v17`, you will have to run `npm install` with `--legacy-peer-deps` flag otherwise you will encounter react version mismatch errors
+  - React Native consumers will need to upgrade to `react-native-reanimated` `v3`
+
+## 9.7.0
+
+### Minor Changes
+
+- d5d174fa: feat: make `Badge`, `Counter`, & `Indicator` components `inline-flex` by default
+
+### Patch Changes
+
+- f4624db2: fix: react native errors with floating-ui/react
+- 2e20ce04: feat(Box): add support for the `transparent` background color
+
+## 9.6.1
+
+### Patch Changes
+
+- 5fb722d8: fix(Switch): correct cursor style in disabled state
+
+## 9.6.0
+
+### Minor Changes
+
+- 50d55a5f: feat(Amount): add support for more currencies
+
+## 9.5.3
+
+### Patch Changes
+
+- d7183b49: fix(SelectInput): truncate text in select input
+- 59518acb: feat(BottomSheet): add `zindex` prop & improve focus management logic
+
+  Thanks to @archie252000 for his contribution!
+
+## 9.5.2
+
+### Patch Changes
+
+- a1e75040: fix: standardize logs & errors
+- 37bdc811: fix(Box): handle `undefined` for `backgroundColor` prop
+- e8a81131: fix: remove className from Button, svg, Link
+
+  > **Note**
+  >
+  > There was an internal bug introduced with styled-props which allowed certain props like className to pass through and get added on DOM. This release fixes that bug.
+
+  This will be non-breaking for most projects (especially if you're using TypeScript).
+
+  If your project happened to use `className` prop on Button, SVG Icons, or Link, it will stop working post this release.
+
+## 9.5.1
+
+### Patch Changes
+
+- 14271605: refactor: move to `React.ReactElement` type
+
+## 9.5.0
+
+### Minor Changes
+
+- cbed430f: feat: strip off logs & errors in production builds
+
+#### Jest v27 and Custom Resolver Compatibility
+
+For users on Jest v27 or older, or those with custom Jest resolvers (like `jest-directory-named-resolve`) not supporting `package.json` exports, a `moduleNameMapper` update is needed. This ensures compatibility with the `@razorpay/blade` package:
+
+```diff
+  moduleNameMapper: {
+    // ...rest of your config
++   '@razorpay/blade/components': '<rootDir>/node_modules/@razorpay/blade/build/components/index.development.web.js',
++   '@razorpay/blade/utils': '<rootDir>/node_modules/@razorpay/blade/build/utils/index.development.web.js',
++   '@razorpay/blade/tokens': '<rootDir>/node_modules/@razorpay/blade/build/tokens/index.development.web.js',
+  },
+```
+
+### Patch Changes
+
+- 2be798d9: feat: add zIndex prop to Tooltip
+
+## 9.4.1
+
+### Patch Changes
+
+- ebd3cbda: feat: add zIndex prop for Modal
+
+## 9.4.0
+
+### Minor Changes
+
+- 5bddbe08: feat(Input): make `label` prop optional & add `accessibilityLabel` prop to `TextInput`, `TextArea`, `PasswordInput`, `SelectInput`, and `OTPInput` components
+
+  #### Key Updates
+
+  - **Optional `label` Prop**: We understand that not all use cases require a label for the Input components. Therefore, we have made the label prop optional, providing you with the freedom to choose whether to display a label or not, depending on your specific application requirements.
+
+  - **Introducing `accessibilityLabel`:** Recognizing the significance of accessibility in modern applications, we have added the `accessibilityLabel` prop to the Input components. This prop enables developers to assign a descriptive label for the input field, making it more user-friendly for individuals using assistive technologies or screen readers.
+
+  - **Enhanced User Guidance:** To maintain usability, we have implemented a requirement that either the `label` or `accessibilityLabel` prop must be provided. This ensures that users will always have clear guidance when interacting with Inputs, promoting a seamless user experience.
+
+## 9.3.0
+
+### Minor Changes
+
+- d28d8a72: feat(Tag): add Tag component
+
 ## 9.2.0
 
 ### Minor Changes

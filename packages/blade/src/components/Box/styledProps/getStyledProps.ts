@@ -101,7 +101,7 @@ const makeStyledProps = (props: StyledPropsInputType): KeysRequired<StyledPropsB
  *   // ... Your Props
  * } & StyledPropsBlade;
  *
- * const MyComponent = (props: MyComponentProps): JSX.Element => {
+ * const MyComponent = (props: MyComponentProps): React.ReactElement => {
  *  return (
  *    // Make sure styledProps come last so they take priority in stylings in-case of overrides
  *    <BaseBox someOtherProp={someValue} {...getStyledProps(props)}>
@@ -143,4 +143,5 @@ const getStyledProps = (props: Record<string, any>): StyledPropsBlade => {
   return removeUndefinedStyledProps(makeStyledProps(props));
 };
 
-export { getStyledProps, makeStyledProps, StyledPropsBlade, removeUndefinedStyledProps };
+export type { StyledPropsBlade };
+export { getStyledProps, makeStyledProps, removeUndefinedStyledProps };

@@ -43,7 +43,7 @@ describe('<Radio />', () => {
     expect(toJSON()).toMatchSnapshot();
     const radio = queryByA11yState({ disabled: true });
     expect(radio).toBeTruthy();
-    expect(radio?.props?.accessibilityState).toStrictEqual({ checked: false, disabled: true });
+    expect(radio).toHaveAccessibilityState({ checked: false, disabled: true });
   });
 
   test('user should be able to set checked state', () => {

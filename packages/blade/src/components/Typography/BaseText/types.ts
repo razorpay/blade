@@ -64,7 +64,7 @@ export type BaseTextProps = {
    * React Native only
    */
   numberOfLines?: number;
-  componentName?: 'base-text' | 'text' | 'title' | 'heading' | 'code';
+  componentName?: 'base-text' | 'text' | 'title' | 'heading' | 'code' | 'display';
 } & TestID &
   StyledPropsBlade;
 
@@ -82,3 +82,5 @@ export type StyledBaseTextProps = Pick<
   | 'numberOfLines'
   | 'truncateAfterLines'
 > & { theme: Theme };
+
+export type BaseTextSizes = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';

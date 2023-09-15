@@ -26,6 +26,7 @@ const Skeleton = ({
   justifyContent,
   justifySelf,
   placeSelf,
+  placeItems,
   order,
   testID,
   ...props
@@ -49,6 +50,7 @@ const Skeleton = ({
       justifyContent={justifyContent}
       justifySelf={justifySelf}
       placeSelf={placeSelf}
+      placeItems={placeItems}
       order={order}
       contrast={contrast}
       {...getStyledProps(props)}

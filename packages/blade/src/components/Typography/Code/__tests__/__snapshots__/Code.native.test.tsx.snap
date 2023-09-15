@@ -3,7 +3,7 @@
 exports[`<Code /> should render Code with color 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -13,9 +13,9 @@ exports[`<Code /> should render Code with color 1`] = `
     isHighlighted={false}
     size="small"
     style={
-      Array [
-        Object {},
-        Object {
+      [
+        {},
+        {
           "alignSelf": "center",
           "borderRadius": 4,
           "display": "flex",
@@ -30,6 +30,7 @@ exports[`<Code /> should render Code with color 1`] = `
     }
   >
     <Text
+      accessible={true}
       color="action.text.link.disabled"
       data-blade-component="base-text"
       fontFamily="code"
@@ -37,8 +38,8 @@ exports[`<Code /> should render Code with color 1`] = `
       fontWeight="regular"
       lineHeight={25}
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "hsla(218, 19%, 81%, 1)",
             "fontFamily": "Courier",
             "fontSize": 10,
@@ -67,7 +68,7 @@ exports[`<Code /> should render Code with color 1`] = `
 exports[`<Code /> should render Code with default properties 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -77,9 +78,9 @@ exports[`<Code /> should render Code with default properties 1`] = `
     isHighlighted={true}
     size="small"
     style={
-      Array [
-        Object {},
-        Object {
+      [
+        {},
+        {
           "alignSelf": "center",
           "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
           "borderRadius": 4,
@@ -95,6 +96,7 @@ exports[`<Code /> should render Code with default properties 1`] = `
     }
   >
     <Text
+      accessible={true}
       color="surface.text.subtle.lowContrast"
       data-blade-component="base-text"
       fontFamily="code"
@@ -102,8 +104,8 @@ exports[`<Code /> should render Code with default properties 1`] = `
       fontWeight="regular"
       lineHeight={25}
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "hsla(216, 27%, 36%, 1)",
             "fontFamily": "Courier",
             "fontSize": 10,
@@ -132,7 +134,7 @@ exports[`<Code /> should render Code with default properties 1`] = `
 exports[`<Code /> should render isHighlighted false Code 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -142,9 +144,9 @@ exports[`<Code /> should render isHighlighted false Code 1`] = `
     isHighlighted={false}
     size="small"
     style={
-      Array [
-        Object {},
-        Object {
+      [
+        {},
+        {
           "alignSelf": "center",
           "borderRadius": 4,
           "display": "flex",
@@ -159,6 +161,7 @@ exports[`<Code /> should render isHighlighted false Code 1`] = `
     }
   >
     <Text
+      accessible={true}
       color="surface.text.normal.lowContrast"
       data-blade-component="base-text"
       fontFamily="code"
@@ -166,8 +169,8 @@ exports[`<Code /> should render isHighlighted false Code 1`] = `
       fontWeight="regular"
       lineHeight={25}
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "hsla(217, 56%, 17%, 1)",
             "fontFamily": "Courier",
             "fontSize": 10,
@@ -196,7 +199,7 @@ exports[`<Code /> should render isHighlighted false Code 1`] = `
 exports[`<Code /> should render medium Code 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -206,9 +209,9 @@ exports[`<Code /> should render medium Code 1`] = `
     isHighlighted={true}
     size="medium"
     style={
-      Array [
-        Object {},
-        Object {
+      [
+        {},
+        {
           "alignSelf": "center",
           "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
           "borderRadius": 4,
@@ -224,6 +227,7 @@ exports[`<Code /> should render medium Code 1`] = `
     }
   >
     <Text
+      accessible={true}
       color="surface.text.subtle.lowContrast"
       data-blade-component="base-text"
       fontFamily="code"
@@ -231,8 +235,8 @@ exports[`<Code /> should render medium Code 1`] = `
       fontWeight="regular"
       lineHeight={75}
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "hsla(216, 27%, 36%, 1)",
             "fontFamily": "Courier",
             "fontSize": 12,
@@ -261,7 +265,7 @@ exports[`<Code /> should render medium Code 1`] = `
 exports[`<Code /> should render small Code 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -271,9 +275,9 @@ exports[`<Code /> should render small Code 1`] = `
     isHighlighted={true}
     size="small"
     style={
-      Array [
-        Object {},
-        Object {
+      [
+        {},
+        {
           "alignSelf": "center",
           "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
           "borderRadius": 4,
@@ -289,6 +293,7 @@ exports[`<Code /> should render small Code 1`] = `
     }
   >
     <Text
+      accessible={true}
       color="surface.text.subtle.lowContrast"
       data-blade-component="base-text"
       fontFamily="code"
@@ -296,8 +301,8 @@ exports[`<Code /> should render small Code 1`] = `
       fontWeight="regular"
       lineHeight={25}
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "hsla(216, 27%, 36%, 1)",
             "fontFamily": "Courier",
             "fontSize": 10,

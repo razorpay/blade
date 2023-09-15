@@ -104,9 +104,9 @@ const useBottomSheetAndDropdownGlue = (): BottomSheetAndDropdownGlueContext => {
   return state;
 };
 
+export type { BottomSheetContextProps };
 export {
   BottomSheetContext,
-  BottomSheetContextProps,
   useBottomSheetContext,
   BottomSheetAndDropdownGlueContext,
   useBottomSheetAndDropdownGlue,

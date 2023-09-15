@@ -11,9 +11,9 @@ import Animated, {
   withSequence,
   withTiming,
 } from 'react-native-reanimated';
-import { useTheme } from '../BladeProvider';
 import type { ProgressBarFilledProps } from './types';
 import { indeterminateAnimation, pulseAnimation } from './progressBarTokens';
+import { useTheme } from '~components/BladeProvider';
 import { castNativeType } from '~utils';
 import { makeMotionTime } from '~utils/makeMotionTime';
 
@@ -121,6 +121,8 @@ const ProgressBarFilled = ({
   }, [animatedLeft, animatedScaleX, indeterminateMotionDuration, isIndeterminate, theme, variant]);
 
   // Animated styles for indeterminate animation
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  //@ts-expect-error TS errors originating from reanimated. Should be fixed in future versions. Ref: https://github.com/software-mansion/react-native-reanimated/issues/4840
   const indeterminateAnimatedStyle = useAnimatedStyle(() => {
     return {
       left: animatedLeft.value,
@@ -174,4 +176,5 @@ const ProgressBarFilled = ({
   );
 };
 
-export { ProgressBarFilled, ProgressBarFilledProps };
+export type { ProgressBarFilledProps };
+export { ProgressBarFilled };

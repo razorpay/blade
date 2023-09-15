@@ -15,7 +15,7 @@ import { List, ListItem, ListItemLink } from '~components/List';
 import BaseBox from '~components/Box/BaseBox';
 import { Link } from '~components/Link';
 
-const DropdownDocs = (): JSX.Element => {
+const DropdownDocs = (): React.ReactElement => {
   return (
     <StoryPageWrapper
       componentName="Dropdown"

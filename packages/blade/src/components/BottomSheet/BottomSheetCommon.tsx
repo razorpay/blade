@@ -6,7 +6,7 @@ import { useBottomSheetContext } from './BottomSheetContext';
 import BaseBox from '~components/Box/BaseBox';
 import { IconButton } from '~components/Button/IconButton';
 import { CloseIcon } from '~components/Icons';
-import type { BladeElementRef } from '~utils/useBladeInnerRef';
+import type { BladeElementRef } from '~utils/types';
 import { isReactNative } from '~utils';
 import { size } from '~tokens/global';
 import { useTheme } from '~components/BladeProvider';

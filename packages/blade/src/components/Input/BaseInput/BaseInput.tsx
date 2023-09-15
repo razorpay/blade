@@ -1,16 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import type { ReactNode } from 'react';
+import { StyledBaseInput } from './StyledBaseInput';
+import { BaseInputVisuals } from './BaseInputVisuals';
+import { BaseInputWrapper } from './BaseInputWrapper';
 import type {
   FormInputLabelProps,
   FormInputValidationProps,
   FormInputHandleOnEvent,
   FormInputOnEvent,
   FormHintProps,
-} from '../../Form';
-import { StyledBaseInput } from './StyledBaseInput';
-import { BaseInputVisuals } from './BaseInputVisuals';
-import { BaseInputWrapper } from './BaseInputWrapper';
+} from '~components/Form';
 import { FormHint, FormLabel } from '~components/Form';
 import type { IconComponent } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
@@ -26,10 +26,11 @@ import type {
   FormInputHandleOnClickEvent,
   FormInputHandleOnKeyDownEvent,
 } from '~components/Form/FormTypes';
-import type { TestID } from '~utils/types';
+import type { BladeElementRef, TestID } from '~utils/types';
 import { makeSize } from '~utils/makeSize';
 import type { AriaAttributes } from '~utils/makeAccessible';
 import { makeAccessible } from '~utils/makeAccessible';
+import { throwBladeError } from '~utils/logger';
 
 type CommonAutoCompleteSuggestionTypes =
   | 'none'
@@ -50,7 +51,7 @@ type CommonAutoCompleteSuggestionTypes =
 
 type WebAutoCompleteSuggestionType = CommonAutoCompleteSuggestionTypes | 'on';
 
-export type BaseInputProps = FormInputLabelProps &
+type BaseInputCommonProps = FormInputLabelProps &
   FormInputValidationProps & {
     /**
      * Determines if it needs to be rendered as input, textarea or button
@@ -227,6 +228,7 @@ export type BaseInputProps = FormInputLabelProps &
      * true if popup is in expanded state
      */
     isPopupExpanded?: boolean;
+    setInputWrapperRef?: (node: HTMLDivElement) => void;
     /**
      * sets the autocapitalize behavior for the input
      */
@@ -269,6 +271,37 @@ export type BaseInputProps = FormInputLabelProps &
     };
   }> &
   StyledPropsBlade;
+
+/*
+  Mandatory accessibilityLabel prop when label is not provided
+*/
+type BaseInputPropsWithA11yLabel = {
+  /**
+   * Label to be shown for the input field
+   */
+  label?: undefined;
+  /**
+   * Accessibility label for the input
+   */
+  accessibilityLabel: string;
+};
+
+/*
+  Optional accessibilityLabel prop when label is provided
+*/
+type BaseInputPropsWithLabel = {
+  /**
+   * Label to be shown for the input field
+   */
+  label: string;
+  /**
+   * Accessibility label for the input
+   */
+  accessibilityLabel?: string;
+};
+
+export type BaseInputProps = (BaseInputPropsWithA11yLabel | BaseInputPropsWithLabel) &
+  BaseInputCommonProps;
 
 const autoCompleteSuggestionTypeValues = [
   'none',
@@ -320,10 +353,13 @@ const useInput = ({
   handleOnKeyDown: FormInputHandleOnKeyDownEvent;
   inputValue?: string;
 } => {
-  if (value && defaultValue) {
-    throw new Error(
-      `[Blade: Input]: Either 'value' or 'defaultValue' shall be passed. This decides if the input field is controlled or uncontrolled`,
-    );
+  if (__DEV__) {
+    if (value && defaultValue) {
+      throwBladeError({
+        message: `Either 'value' or 'defaultValue' shall be passed. This decides if the input field is controlled or uncontrolled`,
+        moduleName: 'Input',
+      });
+    }
   }
 
   const [inputValue, setInputValue] = React.useState(defaultValue ?? value);
@@ -522,7 +558,7 @@ const getDescribedByElementId = ({
   return '';
 };
 
-export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
+export const BaseInput = React.forwardRef<BladeElementRef, BaseInputProps>(
   (
     {
       as = 'input',
@@ -573,6 +609,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
       isPopupExpanded,
       shouldIgnoreBlurAnimation,
       autoCapitalize,
+      setInputWrapperRef,
       testID,
       ...styledProps
     },
@@ -628,15 +665,18 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
 
     const willRenderHintText = Boolean(helpText) || Boolean(successText) || Boolean(errorText);
 
-    if (
-      autoCompleteSuggestionType &&
-      !autoCompleteSuggestionTypeValues.includes(autoCompleteSuggestionType)
-    ) {
-      throw new Error(
-        `[Blade: Input]: Expected autoCompleteSuggestionType to be one of ${autoCompleteSuggestionTypeValues.join(
-          ', ',
-        )} but received ${autoCompleteSuggestionType}`,
-      );
+    if (__DEV__) {
+      if (
+        autoCompleteSuggestionType &&
+        !autoCompleteSuggestionTypeValues.includes(autoCompleteSuggestionType)
+      ) {
+        throwBladeError({
+          message: `Expected autoCompleteSuggestionType to be one of ${autoCompleteSuggestionTypeValues.join(
+            ', ',
+          )} but received ${autoCompleteSuggestionType}`,
+          moduleName: 'Input',
+        });
+      }
     }
 
     const isTextArea = as === 'textarea';
@@ -678,6 +718,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
             validationState={validationState}
             currentInteraction={currentInteraction}
             isLabelLeftPositioned={isLabelLeftPositioned}
+            setInputWrapperRef={setInputWrapperRef}
           >
             <BaseInputVisuals leadingIcon={leadingIcon} prefix={prefix} isDisabled={isDisabled} />
             <StyledBaseInput
@@ -731,7 +772,7 @@ export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
         </BaseBox>
         {/* the magic number 136 is basically max-width of label i.e 120 and then right margin i.e 16 which is the spacing between label and input field */}
         {!hideFormHint && (
-          <BaseBox marginLeft={makeSize(isLabelLeftPositioned ? 136 : 0)}>
+          <BaseBox marginLeft={makeSize(isLabelLeftPositioned && !hideLabelText ? 136 : 0)}>
             <BaseBox
               display="flex"
               flexDirection="row"

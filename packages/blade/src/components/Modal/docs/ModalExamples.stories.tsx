@@ -38,7 +38,7 @@ const ModalTemplate: ComponentStory<typeof Modal> = () => {
 
 export const BasicModal = ModalTemplate.bind({});
 
-export const ModalWithHeaderFooter = (): JSX.Element => {
+export const ModalWithHeaderFooter = (): React.ReactElement => {
   return (
     <Sandbox padding="spacing.0" editorHeight="90vh">
       {ModalWithHeaderFooterStory}
@@ -46,7 +46,7 @@ export const ModalWithHeaderFooter = (): JSX.Element => {
   );
 };
 
-export const ModalWithScrollableBackground = (): JSX.Element => {
+export const ModalWithScrollableBackground = (): React.ReactElement => {
   return (
     <Sandbox padding="spacing.0" editorHeight="90vh">
       {ModalWithScrollableBackgroundStory}
@@ -54,7 +54,7 @@ export const ModalWithScrollableBackground = (): JSX.Element => {
   );
 };
 
-export const ModalWithScrollableContent = (): JSX.Element => {
+export const ModalWithScrollableContent = (): React.ReactElement => {
   return (
     <Sandbox padding="spacing.0" editorHeight="90vh">
       {ModalWithScrollableContentStory}
@@ -62,7 +62,7 @@ export const ModalWithScrollableContent = (): JSX.Element => {
   );
 };
 
-export const ModalStacking = (): JSX.Element => {
+export const ModalStacking = (): React.ReactElement => {
   return (
     <Sandbox padding="spacing.0" editorHeight="90vh">
       {ModalStackingStory}
@@ -70,7 +70,7 @@ export const ModalStacking = (): JSX.Element => {
   );
 };
 
-export const ModalWithNoBodyPadding = (): JSX.Element => {
+export const ModalWithNoBodyPadding = (): React.ReactElement => {
   return (
     <Sandbox padding="spacing.0" editorHeight="90vh">
       {ModalWithNoBodyPaddingStory}

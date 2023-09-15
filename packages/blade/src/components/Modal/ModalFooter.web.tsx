@@ -1,6 +1,6 @@
 import React from 'react';
-import { BaseFooter } from '../BaseHeaderFooter/BaseFooter';
-import type { BaseFooterProps } from '../BaseHeaderFooter/BaseFooter';
+import { BaseFooter } from '~components/BaseHeaderFooter/BaseFooter';
+import type { BaseFooterProps } from '~components/BaseHeaderFooter/BaseFooter';
 import { Box } from '~components/Box';
 import { MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';

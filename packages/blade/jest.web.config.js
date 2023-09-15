@@ -10,6 +10,7 @@ const baseConfig = {
       statements: 75,
     },
   },
+  snapshotSerializers: ['<rootDir>/jestStyledComponentsSerializer.js'],
   moduleFileExtensions: ['web.ts', 'web.tsx', 'ts', 'tsx', 'js', 'json', 'node'],
   testMatch: ['**/*.test.{ts,tsx}'],
   transform: {
@@ -23,6 +24,9 @@ const baseConfig = {
     '^\\~utils$': '<rootDir>/src/utils',
     '^\\~utils/(.*)': '<rootDir>/src/utils/$1',
     '^\\~tokens/(.*)': '<rootDir>/src/tokens/$1',
+  },
+  globals: {
+    __DEV__: true,
   },
 };
 

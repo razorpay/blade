@@ -1,13 +1,13 @@
 import { TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
-import type { SelectChevronIconProps } from './SelectChevronIcon.web';
+import type { SelectChevronIconProps } from './types';
 
 const StyledChevronIconContainer = styled(TouchableOpacity)((_props) => ({
   display: 'flex',
   justifyContent: 'center',
 }));
 
-const SelectChevronIcon = (props: SelectChevronIconProps): JSX.Element => {
+const SelectChevronIcon = (props: SelectChevronIconProps): React.ReactElement => {
   const Icon = props.icon;
   return (
     <StyledChevronIconContainer accessibilityLabel="Chevron Icon" onPress={props.onClick}>

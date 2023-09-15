@@ -31,10 +31,10 @@ describe('<IconButton />', () => {
   it('should have a11y label', () => {
     const noop = () => {};
     const a11yLabel = 'Close modal';
-    const { getByA11yLabel } = renderWithTheme(
+    const { getByLabelText } = renderWithTheme(
       <IconButton accessibilityLabel={a11yLabel} icon={CloseIcon} onClick={noop} />,
     );
-    const iconButton = getByA11yLabel(a11yLabel);
+    const iconButton = getByLabelText(a11yLabel);
 
     expect(iconButton).toBeTruthy();
   });

@@ -233,8 +233,22 @@ describe('Modal', () => {
       );
     };
     expect(() => renderWithTheme(<Example />)).toThrow(
-      '[Blade Modal] Modal only accepts ModalHeader, ModalBody and ModalFooter as children',
+      '[Blade: Modal]: Modal only accepts ModalHeader, ModalBody and ModalFooter as children',
     );
     mockConsoleError.mockRestore();
+  });
+
+  it('renders a Modal with custom zIndex', () => {
+    const { getByTestId } = renderWithTheme(
+      <Modal isOpen={true} onDismiss={() => {}} accessibilityLabel="Test Modal" zIndex={9999}>
+        <ModalBody>
+          <Text>Test Content</Text>
+        </ModalBody>
+      </Modal>,
+    );
+    const container = getByTestId('modal-wrapper');
+    expect(container).toHaveStyle({
+      zIndex: 9999,
+    });
   });
 });

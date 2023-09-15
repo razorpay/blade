@@ -4,7 +4,7 @@ import paymentLightTheme from '~components/BladeProvider/__tests__/paymentLightT
 import { BladeProvider } from '~components/BladeProvider';
 import { paymentTheme } from '~tokens/theme';
 
-const BladeThemeProvider = ({ children }: { children: React.ReactNode }): JSX.Element => {
+const BladeThemeProvider = ({ children }: { children: React.ReactNode }): React.ReactElement => {
   return (
     <BladeProvider themeTokens={paymentTheme} colorScheme="light">
       {children}
@@ -25,9 +25,7 @@ describe('getDependencyProp', () => {
         theme: { name: 'paymentTheme', something: 'something' },
         colorScheme: 'light',
       }),
-    ).toMatchInlineSnapshot(
-      `"{\\"paddingLeft\\":\\"12px\\",\\"display\\":\\"block\\"}-paymentTheme-light"`,
-    );
+    ).toMatchInlineSnapshot(`"{"paddingLeft":"12px","display":"block"}-paymentTheme-light"`);
   });
 });
 
@@ -46,7 +44,7 @@ describe('useMemoizedStyles', () => {
     );
 
     expect(JSON.stringify(result.current)).toMatchInlineSnapshot(
-      `"{\\"padding\\":\\"48px\\",\\"margin\\":\\"2px 4px\\"}"`,
+      `"{"padding":"48px","margin":"2px 4px"}"`,
     );
   });
 });

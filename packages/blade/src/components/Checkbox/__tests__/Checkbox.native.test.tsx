@@ -44,7 +44,10 @@ describe('<Checkbox />', () => {
     expect(toJSON()).toMatchSnapshot();
     const checkbox = queryByA11yState({ disabled: true });
     expect(checkbox).toBeTruthy();
-    expect(checkbox?.props?.accessibilityState).toStrictEqual({ checked: false, disabled: true });
+    expect(checkbox).toHaveAccessibilityState({
+      checked: false,
+      disabled: true,
+    });
   });
 
   it('should set defaultChecked', () => {

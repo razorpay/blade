@@ -26,9 +26,6 @@ jobs:
       - name: Run TypeScript Checks
         run: yarn typecheck
         working-directory: packages/blade
-      - name: Run Web & Native Tests
-        run: yarn test
-        working-directory: packages/blade
       - name: Check Bundle Size
         run: yarn bundlemon
         working-directory: packages/blade
@@ -37,3 +34,25 @@ jobs:
       - name: Check Tree Shaking
         run: yarn size-limit
         working-directory: packages/blade
+
+  test:
+    name: Run Tests (${{ matrix.shard }})
+    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1/4, 2/4, 3/4, 4/4]
+    steps:
+      - name: Checkout Codebase
+        uses: actions/checkout@v3
+      - name: Use Node v18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.12.1
+      - name: Setup Cache & Install Dependencies
+        uses: ./.github/actions/install-dependencies
+      - name: Run React & React Native Tests
+        run: yarn test
+        working-directory: packages/blade
+        env:
+          SHARD: ${{ matrix.shard }}

@@ -1,6 +1,6 @@
 import getIn from 'lodash/get';
 import React from 'react';
-import type { EasingFunctionFactory } from 'react-native-reanimated';
+import type { EasingFactoryFn } from 'react-native-reanimated';
 import Animated, {
   withTiming,
   cancelAnimation,
@@ -17,7 +17,7 @@ import { makeMotionTime } from '~utils/makeMotionTime';
 const SpinningBox = ({ children }: { children: React.ReactNode }): React.ReactElement => {
   const { theme } = useTheme();
   const duration = castNativeType(makeMotionTime(getIn(theme.motion, spinnerMotion.duration)));
-  const easing = getIn(theme.motion, spinnerMotion.easing) as EasingFunctionFactory;
+  const easing = getIn(theme.motion, spinnerMotion.easing) as EasingFactoryFn;
 
   const rotation = useSharedValue(0);
   const animatedStyles = useAnimatedStyle(() => {

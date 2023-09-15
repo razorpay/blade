@@ -1,7 +1,7 @@
 import dedent from 'dedent';
 import type { CodeViewerProps } from '@codesandbox/sandpack-react';
 import { ScrollView } from 'react-native';
-import type { RecipeSandboxProps, SandboxProps } from './Sandbox.web';
+import type { RecipeSandboxProps, SandboxProps } from './types';
 import { BaseText } from '~components/Typography/BaseText';
 import { Link } from '~components/Link';
 import { Text } from '~components/Typography';

@@ -91,7 +91,7 @@ describe('<Accordion />', () => {
     const externalButton2 = 'Expand Second';
     const externalButtonCollapse = 'Collapse';
 
-    const ControlledAccordionExample = (): JSX.Element => {
+    const ControlledAccordionExample = (): React.ReactElement => {
       const [expandedIndex, setExpandedIndex] = useState(-1);
 
       return (

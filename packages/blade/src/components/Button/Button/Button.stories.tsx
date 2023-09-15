@@ -13,7 +13,7 @@ import iconMap from '~components/Icons/iconMap';
 import BaseBox from '~components/Box/BaseBox';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
-import type { BladeElementRef } from '~utils/useBladeInnerRef';
+import type { BladeElementRef } from '~utils/types';
 import {
   getBladeCommonEventArgTypes,
   getStyledPropsArgTypes,
@@ -37,7 +37,7 @@ const Page = (): ReactElement => {
         {`
         import { Button } from '@razorpay/blade/components'
         
-        function App(): JSX.Element {
+        function App(): React.ReactElement {
           return (
             // Try changing variant here to secondary
             <Button 

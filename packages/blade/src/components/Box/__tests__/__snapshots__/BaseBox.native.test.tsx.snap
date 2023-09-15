@@ -3,7 +3,7 @@
 exports[`<BaseBox /> should render BaseBox component with elevation 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -14,16 +14,16 @@ exports[`<BaseBox /> should render BaseBox component with elevation 1`] = `
     elevation="highRaised"
     height="200px"
     style={
-      Array [
-        Object {
+      [
+        {
           "backgroundColor": "hsla(220, 30%, 96%, 1)",
           "height": 200,
           "width": 200,
         },
-        Object {
+        {
           "elevation": 26,
           "shadowColor": "hsla(217, 56%, 17%, 0.64)",
-          "shadowOffset": Object {
+          "shadowOffset": {
             "height": 18,
             "width": 0,
           },
@@ -36,6 +36,7 @@ exports[`<BaseBox /> should render BaseBox component with elevation 1`] = `
     width="200px"
   >
     <Text
+      accessible={true}
       color="surface.text.normal.lowContrast"
       data-blade-component="text"
       fontFamily="text"
@@ -44,8 +45,8 @@ exports[`<BaseBox /> should render BaseBox component with elevation 1`] = `
       fontWeight="regular"
       lineHeight={100}
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "hsla(217, 56%, 17%, 1)",
             "fontFamily": "Lato",
             "fontSize": 14,
@@ -74,7 +75,7 @@ exports[`<BaseBox /> should render BaseBox component with elevation 1`] = `
 exports[`<BaseBox /> should render BaseBox component with the correct styles 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -96,8 +97,8 @@ exports[`<BaseBox /> should render BaseBox component with the correct styles 1`]
     position="absolute"
     right="0px"
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "bottom": 0,

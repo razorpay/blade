@@ -1,13 +1,12 @@
 import { metaAttribute } from '..';
-import { Button } from '~components/Button';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+import BaseBox from '~components/Box/BaseBox';
 
 describe('metaAttribute', () => {
   it('add the correct meta attributes', () => {
-    const { getByRole } = renderWithTheme(
-      <Button {...metaAttribute({ name: 'Button', testID: 'button-test' })}>{'Click'}</Button>,
+    const { getByTestId } = renderWithTheme(
+      <BaseBox {...metaAttribute({ name: 'new-box', testID: 'box-test' })} />,
     );
-    expect(getByRole('button')).toHaveAttribute('data-blade-component', 'Button');
-    expect(getByRole('button')).toHaveAttribute('data-testid', 'button-test');
+    expect(getByTestId('box-test')).toHaveAttribute('data-blade-component', 'new-box');
   });
 });

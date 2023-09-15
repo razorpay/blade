@@ -77,7 +77,7 @@ describe('<BladeProvider/>', () => {
     });
 
     expect(result.error?.message).toBe(
-      `[BladeProvider]: Expected valid themeTokens of type ThemeTokens to be passed but found undefined`,
+      `[Blade: BladeProvider]: Expected valid themeTokens of type ThemeTokens to be passed but found undefined`,
     );
   });
 
@@ -94,7 +94,7 @@ describe('<BladeProvider/>', () => {
     });
 
     expect(result.error?.message).toBe(
-      `[BladeProvider]: Expected color scheme to be one of [${colorSchemeNamesInput.toString()}] but received ${initialColorScheme}`,
+      `[Blade: BladeProvider]: Expected color scheme to be one of [${colorSchemeNamesInput.toString()}] but received ${initialColorScheme}`,
     );
   });
 });

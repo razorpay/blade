@@ -29,7 +29,7 @@ const StyledCloseableArea = styled(Pressable)<{ display: 'flex' | 'none' }>((pro
  *
  * Wrap your ActionList within this component
  */
-const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): JSX.Element => {
+const _DropdownOverlay = ({ children, testID }: DropdownOverlayProps): React.ReactElement => {
   const { isOpen, close } = useDropdown();
   const bottomSheetAndDropdownGlue = useBottomSheetAndDropdownGlue();
 

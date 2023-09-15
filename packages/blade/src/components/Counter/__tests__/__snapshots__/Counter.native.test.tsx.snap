@@ -3,7 +3,7 @@
 exports[`<Counter /> should render Counter with default props 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -12,8 +12,8 @@ exports[`<Counter /> should render Counter with default props 1`] = `
     data-blade-component="counter"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -25,11 +25,11 @@ exports[`<Counter /> should render Counter with default props 1`] = `
       platform="onMobile"
       size="medium"
       style={
-        Array [
-          Object {
+        [
+          {
             "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
           },
-          Object {
+          {
             "alignSelf": "center",
             "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
             "borderRadius": 9999,
@@ -48,8 +48,8 @@ exports[`<Counter /> should render Counter with default props 1`] = `
         justifyContent="center"
         overflow="hidden"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "display": "flex",
               "flexDirection": "row",
@@ -64,6 +64,7 @@ exports[`<Counter /> should render Counter with default props 1`] = `
         }
       >
         <Text
+          accessible={true}
           color="feedback.text.neutral.lowContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -73,8 +74,8 @@ exports[`<Counter /> should render Counter with default props 1`] = `
           lineHeight={50}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(216, 27%, 36%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 12,
@@ -107,7 +108,7 @@ exports[`<Counter /> should render Counter with default props 1`] = `
 exports[`<Counter /> should render high contrast blue variant Counter 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -116,8 +117,8 @@ exports[`<Counter /> should render high contrast blue variant Counter 1`] = `
     data-blade-component="counter"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -129,11 +130,11 @@ exports[`<Counter /> should render high contrast blue variant Counter 1`] = `
       platform="onMobile"
       size="medium"
       style={
-        Array [
-          Object {
+        [
+          {
             "backgroundColor": "hsla(218, 89%, 51%, 1)",
           },
-          Object {
+          {
             "alignSelf": "center",
             "backgroundColor": "hsla(218, 89%, 51%, 1)",
             "borderRadius": 9999,
@@ -152,8 +153,8 @@ exports[`<Counter /> should render high contrast blue variant Counter 1`] = `
         justifyContent="center"
         overflow="hidden"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "display": "flex",
               "flexDirection": "row",
@@ -168,6 +169,7 @@ exports[`<Counter /> should render high contrast blue variant Counter 1`] = `
         }
       >
         <Text
+          accessible={true}
           color="badge.text.blue.highContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -177,8 +179,8 @@ exports[`<Counter /> should render high contrast blue variant Counter 1`] = `
           lineHeight={50}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(0, 0%, 100%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 12,
@@ -211,7 +213,7 @@ exports[`<Counter /> should render high contrast blue variant Counter 1`] = `
 exports[`<Counter /> should render high contrast information variant Counter 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -220,8 +222,8 @@ exports[`<Counter /> should render high contrast information variant Counter 1`]
     data-blade-component="counter"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -233,11 +235,11 @@ exports[`<Counter /> should render high contrast information variant Counter 1`]
       platform="onMobile"
       size="medium"
       style={
-        Array [
-          Object {
+        [
+          {
             "backgroundColor": "hsla(193, 100%, 35%, 1)",
           },
-          Object {
+          {
             "alignSelf": "center",
             "backgroundColor": "hsla(193, 100%, 35%, 1)",
             "borderRadius": 9999,
@@ -256,8 +258,8 @@ exports[`<Counter /> should render high contrast information variant Counter 1`]
         justifyContent="center"
         overflow="hidden"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "display": "flex",
               "flexDirection": "row",
@@ -272,6 +274,7 @@ exports[`<Counter /> should render high contrast information variant Counter 1`]
         }
       >
         <Text
+          accessible={true}
           color="feedback.text.information.highContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -281,8 +284,8 @@ exports[`<Counter /> should render high contrast information variant Counter 1`]
           lineHeight={50}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(0, 0%, 100%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 12,
@@ -315,7 +318,7 @@ exports[`<Counter /> should render high contrast information variant Counter 1`]
 exports[`<Counter /> should render high contrast negative variant Counter 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -324,8 +327,8 @@ exports[`<Counter /> should render high contrast negative variant Counter 1`] = 
     data-blade-component="counter"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -337,11 +340,11 @@ exports[`<Counter /> should render high contrast negative variant Counter 1`] = 
       platform="onMobile"
       size="medium"
       style={
-        Array [
-          Object {
+        [
+          {
             "backgroundColor": "hsla(8, 73%, 47%, 1)",
           },
-          Object {
+          {
             "alignSelf": "center",
             "backgroundColor": "hsla(8, 73%, 47%, 1)",
             "borderRadius": 9999,
@@ -360,8 +363,8 @@ exports[`<Counter /> should render high contrast negative variant Counter 1`] = 
         justifyContent="center"
         overflow="hidden"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "display": "flex",
               "flexDirection": "row",
@@ -376,6 +379,7 @@ exports[`<Counter /> should render high contrast negative variant Counter 1`] = 
         }
       >
         <Text
+          accessible={true}
           color="feedback.text.negative.highContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -385,8 +389,8 @@ exports[`<Counter /> should render high contrast negative variant Counter 1`] = 
           lineHeight={50}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(0, 0%, 100%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 12,
@@ -419,7 +423,7 @@ exports[`<Counter /> should render high contrast negative variant Counter 1`] = 
 exports[`<Counter /> should render high contrast neutral variant Counter 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -428,8 +432,8 @@ exports[`<Counter /> should render high contrast neutral variant Counter 1`] = `
     data-blade-component="counter"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -441,11 +445,11 @@ exports[`<Counter /> should render high contrast neutral variant Counter 1`] = `
       platform="onMobile"
       size="medium"
       style={
-        Array [
-          Object {
+        [
+          {
             "backgroundColor": "hsla(216, 33%, 29%, 1)",
           },
-          Object {
+          {
             "alignSelf": "center",
             "backgroundColor": "hsla(216, 33%, 29%, 1)",
             "borderRadius": 9999,
@@ -464,8 +468,8 @@ exports[`<Counter /> should render high contrast neutral variant Counter 1`] = `
         justifyContent="center"
         overflow="hidden"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "display": "flex",
               "flexDirection": "row",
@@ -480,6 +484,7 @@ exports[`<Counter /> should render high contrast neutral variant Counter 1`] = `
         }
       >
         <Text
+          accessible={true}
           color="feedback.text.neutral.highContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -489,8 +494,8 @@ exports[`<Counter /> should render high contrast neutral variant Counter 1`] = `
           lineHeight={50}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(0, 0%, 100%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 12,
@@ -523,7 +528,7 @@ exports[`<Counter /> should render high contrast neutral variant Counter 1`] = `
 exports[`<Counter /> should render high contrast notice variant Counter 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -532,8 +537,8 @@ exports[`<Counter /> should render high contrast notice variant Counter 1`] = `
     data-blade-component="counter"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -545,11 +550,11 @@ exports[`<Counter /> should render high contrast notice variant Counter 1`] = `
       platform="onMobile"
       size="medium"
       style={
-        Array [
-          Object {
+        [
+          {
             "backgroundColor": "hsla(38, 97%, 38%, 1)",
           },
-          Object {
+          {
             "alignSelf": "center",
             "backgroundColor": "hsla(38, 97%, 38%, 1)",
             "borderRadius": 9999,
@@ -568,8 +573,8 @@ exports[`<Counter /> should render high contrast notice variant Counter 1`] = `
         justifyContent="center"
         overflow="hidden"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "display": "flex",
               "flexDirection": "row",
@@ -584,6 +589,7 @@ exports[`<Counter /> should render high contrast notice variant Counter 1`] = `
         }
       >
         <Text
+          accessible={true}
           color="feedback.text.notice.highContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -593,8 +599,8 @@ exports[`<Counter /> should render high contrast notice variant Counter 1`] = `
           lineHeight={50}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(0, 0%, 100%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 12,
@@ -627,7 +633,7 @@ exports[`<Counter /> should render high contrast notice variant Counter 1`] = `
 exports[`<Counter /> should render high contrast positive variant Counter 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -636,8 +642,8 @@ exports[`<Counter /> should render high contrast positive variant Counter 1`] = 
     data-blade-component="counter"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -649,11 +655,11 @@ exports[`<Counter /> should render high contrast positive variant Counter 1`] = 
       platform="onMobile"
       size="medium"
       style={
-        Array [
-          Object {
+        [
+          {
             "backgroundColor": "hsla(160, 100%, 26%, 1)",
           },
-          Object {
+          {
             "alignSelf": "center",
             "backgroundColor": "hsla(160, 100%, 26%, 1)",
             "borderRadius": 9999,
@@ -672,8 +678,8 @@ exports[`<Counter /> should render high contrast positive variant Counter 1`] = 
         justifyContent="center"
         overflow="hidden"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "display": "flex",
               "flexDirection": "row",
@@ -688,6 +694,7 @@ exports[`<Counter /> should render high contrast positive variant Counter 1`] = 
         }
       >
         <Text
+          accessible={true}
           color="feedback.text.positive.highContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -697,8 +704,8 @@ exports[`<Counter /> should render high contrast positive variant Counter 1`] = 
           lineHeight={50}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(0, 0%, 100%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 12,
@@ -731,7 +738,7 @@ exports[`<Counter /> should render high contrast positive variant Counter 1`] = 
 exports[`<Counter /> should render large size Counter 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -740,8 +747,8 @@ exports[`<Counter /> should render large size Counter 1`] = `
     data-blade-component="counter"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -753,11 +760,11 @@ exports[`<Counter /> should render large size Counter 1`] = `
       platform="onMobile"
       size="large"
       style={
-        Array [
-          Object {
+        [
+          {
             "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
           },
-          Object {
+          {
             "alignSelf": "center",
             "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
             "borderRadius": 9999,
@@ -776,8 +783,8 @@ exports[`<Counter /> should render large size Counter 1`] = `
         justifyContent="center"
         overflow="hidden"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "display": "flex",
               "flexDirection": "row",
@@ -792,6 +799,7 @@ exports[`<Counter /> should render large size Counter 1`] = `
         }
       >
         <Text
+          accessible={true}
           color="feedback.text.neutral.lowContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -801,8 +809,8 @@ exports[`<Counter /> should render large size Counter 1`] = `
           lineHeight={100}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(216, 27%, 36%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 14,
@@ -835,7 +843,7 @@ exports[`<Counter /> should render large size Counter 1`] = `
 exports[`<Counter /> should render low contrast blue variant Counter 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -844,8 +852,8 @@ exports[`<Counter /> should render low contrast blue variant Counter 1`] = `
     data-blade-component="counter"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -857,11 +865,11 @@ exports[`<Counter /> should render low contrast blue variant Counter 1`] = `
       platform="onMobile"
       size="medium"
       style={
-        Array [
-          Object {
+        [
+          {
             "backgroundColor": "hsla(218, 89%, 51%, 0.09)",
           },
-          Object {
+          {
             "alignSelf": "center",
             "backgroundColor": "hsla(218, 89%, 51%, 0.09)",
             "borderRadius": 9999,
@@ -880,8 +888,8 @@ exports[`<Counter /> should render low contrast blue variant Counter 1`] = `
         justifyContent="center"
         overflow="hidden"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "display": "flex",
               "flexDirection": "row",
@@ -896,6 +904,7 @@ exports[`<Counter /> should render low contrast blue variant Counter 1`] = `
         }
       >
         <Text
+          accessible={true}
           color="badge.text.blue.lowContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -905,8 +914,8 @@ exports[`<Counter /> should render low contrast blue variant Counter 1`] = `
           lineHeight={50}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(218, 89%, 51%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 12,
@@ -939,7 +948,7 @@ exports[`<Counter /> should render low contrast blue variant Counter 1`] = `
 exports[`<Counter /> should render low contrast information variant Counter 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -948,8 +957,8 @@ exports[`<Counter /> should render low contrast information variant Counter 1`] 
     data-blade-component="counter"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -961,11 +970,11 @@ exports[`<Counter /> should render low contrast information variant Counter 1`] 
       platform="onMobile"
       size="medium"
       style={
-        Array [
-          Object {
+        [
+          {
             "backgroundColor": "hsla(193, 100%, 35%, 0.09)",
           },
-          Object {
+          {
             "alignSelf": "center",
             "backgroundColor": "hsla(193, 100%, 35%, 0.09)",
             "borderRadius": 9999,
@@ -984,8 +993,8 @@ exports[`<Counter /> should render low contrast information variant Counter 1`] 
         justifyContent="center"
         overflow="hidden"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "display": "flex",
               "flexDirection": "row",
@@ -1000,6 +1009,7 @@ exports[`<Counter /> should render low contrast information variant Counter 1`] 
         }
       >
         <Text
+          accessible={true}
           color="feedback.text.information.lowContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -1009,8 +1019,8 @@ exports[`<Counter /> should render low contrast information variant Counter 1`] 
           lineHeight={50}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(193, 100%, 35%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 12,
@@ -1043,7 +1053,7 @@ exports[`<Counter /> should render low contrast information variant Counter 1`] 
 exports[`<Counter /> should render low contrast negative variant Counter 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -1052,8 +1062,8 @@ exports[`<Counter /> should render low contrast negative variant Counter 1`] = `
     data-blade-component="counter"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -1065,11 +1075,11 @@ exports[`<Counter /> should render low contrast negative variant Counter 1`] = `
       platform="onMobile"
       size="medium"
       style={
-        Array [
-          Object {
+        [
+          {
             "backgroundColor": "hsla(9, 91%, 56%, 0.09)",
           },
-          Object {
+          {
             "alignSelf": "center",
             "backgroundColor": "hsla(9, 91%, 56%, 0.09)",
             "borderRadius": 9999,
@@ -1088,8 +1098,8 @@ exports[`<Counter /> should render low contrast negative variant Counter 1`] = `
         justifyContent="center"
         overflow="hidden"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "display": "flex",
               "flexDirection": "row",
@@ -1104,6 +1114,7 @@ exports[`<Counter /> should render low contrast negative variant Counter 1`] = `
         }
       >
         <Text
+          accessible={true}
           color="feedback.text.negative.lowContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -1113,8 +1124,8 @@ exports[`<Counter /> should render low contrast negative variant Counter 1`] = `
           lineHeight={50}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(8, 73%, 47%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 12,
@@ -1147,7 +1158,7 @@ exports[`<Counter /> should render low contrast negative variant Counter 1`] = `
 exports[`<Counter /> should render low contrast neutral variant Counter 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -1156,8 +1167,8 @@ exports[`<Counter /> should render low contrast neutral variant Counter 1`] = `
     data-blade-component="counter"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -1169,11 +1180,11 @@ exports[`<Counter /> should render low contrast neutral variant Counter 1`] = `
       platform="onMobile"
       size="medium"
       style={
-        Array [
-          Object {
+        [
+          {
             "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
           },
-          Object {
+          {
             "alignSelf": "center",
             "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
             "borderRadius": 9999,
@@ -1192,8 +1203,8 @@ exports[`<Counter /> should render low contrast neutral variant Counter 1`] = `
         justifyContent="center"
         overflow="hidden"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "display": "flex",
               "flexDirection": "row",
@@ -1208,6 +1219,7 @@ exports[`<Counter /> should render low contrast neutral variant Counter 1`] = `
         }
       >
         <Text
+          accessible={true}
           color="feedback.text.neutral.lowContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -1217,8 +1229,8 @@ exports[`<Counter /> should render low contrast neutral variant Counter 1`] = `
           lineHeight={50}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(216, 27%, 36%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 12,
@@ -1251,7 +1263,7 @@ exports[`<Counter /> should render low contrast neutral variant Counter 1`] = `
 exports[`<Counter /> should render low contrast notice variant Counter 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -1260,8 +1272,8 @@ exports[`<Counter /> should render low contrast notice variant Counter 1`] = `
     data-blade-component="counter"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -1273,11 +1285,11 @@ exports[`<Counter /> should render low contrast notice variant Counter 1`] = `
       platform="onMobile"
       size="medium"
       style={
-        Array [
-          Object {
+        [
+          {
             "backgroundColor": "hsla(36, 100%, 44%, 0.09)",
           },
-          Object {
+          {
             "alignSelf": "center",
             "backgroundColor": "hsla(36, 100%, 44%, 0.09)",
             "borderRadius": 9999,
@@ -1296,8 +1308,8 @@ exports[`<Counter /> should render low contrast notice variant Counter 1`] = `
         justifyContent="center"
         overflow="hidden"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "display": "flex",
               "flexDirection": "row",
@@ -1312,6 +1324,7 @@ exports[`<Counter /> should render low contrast notice variant Counter 1`] = `
         }
       >
         <Text
+          accessible={true}
           color="feedback.text.notice.lowContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -1321,8 +1334,8 @@ exports[`<Counter /> should render low contrast notice variant Counter 1`] = `
           lineHeight={50}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(38, 97%, 38%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 12,
@@ -1355,7 +1368,7 @@ exports[`<Counter /> should render low contrast notice variant Counter 1`] = `
 exports[`<Counter /> should render low contrast positive variant Counter 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -1364,8 +1377,8 @@ exports[`<Counter /> should render low contrast positive variant Counter 1`] = `
     data-blade-component="counter"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -1377,11 +1390,11 @@ exports[`<Counter /> should render low contrast positive variant Counter 1`] = `
       platform="onMobile"
       size="medium"
       style={
-        Array [
-          Object {
+        [
+          {
             "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
           },
-          Object {
+          {
             "alignSelf": "center",
             "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
             "borderRadius": 9999,
@@ -1400,8 +1413,8 @@ exports[`<Counter /> should render low contrast positive variant Counter 1`] = `
         justifyContent="center"
         overflow="hidden"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "display": "flex",
               "flexDirection": "row",
@@ -1416,6 +1429,7 @@ exports[`<Counter /> should render low contrast positive variant Counter 1`] = `
         }
       >
         <Text
+          accessible={true}
           color="feedback.text.positive.lowContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -1425,8 +1439,8 @@ exports[`<Counter /> should render low contrast positive variant Counter 1`] = `
           lineHeight={50}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(160, 100%, 26%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 12,
@@ -1459,7 +1473,7 @@ exports[`<Counter /> should render low contrast positive variant Counter 1`] = `
 exports[`<Counter /> should render medium size Counter 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -1468,8 +1482,8 @@ exports[`<Counter /> should render medium size Counter 1`] = `
     data-blade-component="counter"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -1481,11 +1495,11 @@ exports[`<Counter /> should render medium size Counter 1`] = `
       platform="onMobile"
       size="medium"
       style={
-        Array [
-          Object {
+        [
+          {
             "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
           },
-          Object {
+          {
             "alignSelf": "center",
             "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
             "borderRadius": 9999,
@@ -1504,8 +1518,8 @@ exports[`<Counter /> should render medium size Counter 1`] = `
         justifyContent="center"
         overflow="hidden"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "display": "flex",
               "flexDirection": "row",
@@ -1520,6 +1534,7 @@ exports[`<Counter /> should render medium size Counter 1`] = `
         }
       >
         <Text
+          accessible={true}
           color="feedback.text.neutral.lowContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -1529,8 +1544,8 @@ exports[`<Counter /> should render medium size Counter 1`] = `
           lineHeight={50}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(216, 27%, 36%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 12,
@@ -1563,7 +1578,7 @@ exports[`<Counter /> should render medium size Counter 1`] = `
 exports[`<Counter /> should render small size Counter 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -1572,8 +1587,8 @@ exports[`<Counter /> should render small size Counter 1`] = `
     data-blade-component="counter"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -1585,11 +1600,11 @@ exports[`<Counter /> should render small size Counter 1`] = `
       platform="onMobile"
       size="small"
       style={
-        Array [
-          Object {
+        [
+          {
             "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
           },
-          Object {
+          {
             "alignSelf": "center",
             "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
             "borderRadius": 9999,
@@ -1608,8 +1623,8 @@ exports[`<Counter /> should render small size Counter 1`] = `
         justifyContent="center"
         overflow="hidden"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "display": "flex",
               "flexDirection": "row",
@@ -1624,6 +1639,7 @@ exports[`<Counter /> should render small size Counter 1`] = `
         }
       >
         <Text
+          accessible={true}
           color="feedback.text.neutral.lowContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -1633,8 +1649,8 @@ exports[`<Counter /> should render small size Counter 1`] = `
           lineHeight={50}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(216, 27%, 36%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 10,

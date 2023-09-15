@@ -120,4 +120,5 @@ const AccordionItem = ({
   );
 };
 
-export { AccordionItemProps, AccordionItem };
+export type { AccordionItemProps };
+export { AccordionItem };

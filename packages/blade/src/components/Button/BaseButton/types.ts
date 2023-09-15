@@ -4,6 +4,7 @@ import type { BaseButtonProps } from './BaseButton';
 import type { DurationString, EasingString } from '~tokens/global';
 import type { BorderRadiusValues, BorderWidthValues, SpacingValues } from '~tokens/theme/theme';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
+import type { BladeCommonEvents } from '~components/types';
 
 export type StyledBaseButtonProps = Omit<
   BaseButtonProps,
@@ -31,4 +32,5 @@ export type StyledBaseButtonProps = Omit<
   borderWidth: BorderWidthValues;
   borderRadius: BorderRadiusValues;
   accessibilityProps: Record<string, unknown>;
-} & StyledPropsBlade;
+} & StyledPropsBlade &
+  BladeCommonEvents;

@@ -19,7 +19,7 @@ describe('<Radio />', () => {
         <Radio value="mango">Mango</Radio>
       </RadioGroup>,
     );
-    expect(getByRole('group')).toBeInTheDocument();
+    expect(getByRole('radiogroup')).toBeInTheDocument();
     expect(getByText(radioHelpText)).toBeInTheDocument();
     expect(getByText(radioGroupHelpText)).toBeInTheDocument();
     expect(container).toMatchSnapshot();

@@ -81,7 +81,7 @@ describe('<Collapsible />', () => {
   it('should expand and close in controlled behavior', async () => {
     const bodyText = 'Actual amount';
 
-    const ControlledCollapseExample = (): JSX.Element => {
+    const ControlledCollapseExample = (): React.ReactElement => {
       const [isCollapsibleExpanded, setIsCollapsibleExpanded] = useState(false);
 
       return (

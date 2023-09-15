@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import getBaseTextStyles from './getBaseTextStyles';
 import type { BaseTextProps, StyledBaseTextProps } from './types';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import { useStyledProps } from '~components/Box/styledProps';
+import { getStyledProps, useStyledProps } from '~components/Box/styledProps';
 import { makeAccessible } from '~utils/makeAccessible';
 import { omitPropsFromHTML } from '~utils/omitPropsFromHTML';
 
@@ -65,7 +65,7 @@ export const BaseText = ({
 }: BaseTextProps): ReactElement => {
   return (
     <StyledBaseText
-      {...styledProps}
+      {...getStyledProps(styledProps)}
       color={color}
       fontFamily={fontFamily}
       fontSize={fontSize}

@@ -92,7 +92,7 @@ describe('<Text />', () => {
         <Text as="button">{displayText}</Text>,
       ),
     ).toThrow(
-      '[Blade Text]: Invalid `as` prop value - button. Only p, span, div, abbr, figcaption, cite, q are accepted',
+      '[Blade: Text]: Invalid `as` prop value - button. Only p, span, div, abbr, figcaption, cite, q are accepted',
     );
   });
 

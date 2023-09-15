@@ -97,7 +97,7 @@ const _Switch: React.ForwardRefRenderFunction<BladeElementRef, SwitchProps> = (
         onMouseOut={handlePointerPressedOut}
         onKeyDown={handleKeyboardPressedIn}
         onKeyUp={handleKeyboardPressedOut}
-        style={{ cursor: 'pointer' }}
+        style={{ cursor: isDisabled ? 'not-allowed' : 'pointer' }}
         inputProps={
           state.isReactNative
             ? // accessibility label for react-native needs to be added

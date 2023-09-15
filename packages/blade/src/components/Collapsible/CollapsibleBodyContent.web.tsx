@@ -2,7 +2,6 @@ import type { ReactElement, TransitionEventHandler } from 'react';
 import { useRef } from 'react';
 import styled from 'styled-components';
 import { useCollapsible } from './CollapsibleContext';
-import { useDidUpdate } from './useDidUpdate';
 import type { CollapsibleBodyContentProps } from './types';
 import {
   getCollapsibleBodyContentBoxProps,
@@ -12,6 +11,7 @@ import {
 } from './commonStyles';
 import { castWebType, makeSize } from '~utils';
 import { Box } from '~components/Box';
+import { useDidUpdate } from '~utils/useDidUpdate';
 
 type StyledCollapsibleBodyContentProps = {
   defaultIsExpanded: boolean;

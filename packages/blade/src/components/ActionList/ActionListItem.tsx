@@ -5,14 +5,8 @@ import { StyledActionListItem } from './styles/StyledActionListItem';
 import { componentIds } from './componentIds';
 import type { StyledActionListItemProps } from './styles/getBaseActionListItemStyles';
 import { validateActionListItemProps, getNormalTextColor } from './actionListUtils';
-import {
-  getActionListItemRole,
-  getActionListSectionRole,
-  getSeparatorRole,
-  isRoleMenu,
-} from './getA11yRoles';
+import { getActionListItemRole, getActionListSectionRole, isRoleMenu } from './getA11yRoles';
 import { useActionListContext } from './ActionList';
-import { Box } from '~components/Box';
 import { Divider } from '~components/Divider';
 import BaseBox from '~components/Box/BaseBox';
 import type { IconComponent } from '~components/Icons';
@@ -29,6 +23,7 @@ import { useTheme } from '~components/BladeProvider';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeSize } from '~utils/makeSize';
 import { makeAccessible } from '~utils/makeAccessible';
+import { throwBladeError } from '~utils/logger';
 
 type ActionListItemProps = {
   title: string;
@@ -81,14 +76,6 @@ const ActionListItemContext = React.createContext<{
   isDisabled?: ActionListItemProps['isDisabled'];
 }>({});
 
-const ActionListSectionDivider = (): JSX.Element => (
-  <Divider
-    {...makeAccessible({
-      role: getSeparatorRole(),
-    })}
-  />
-);
-
 const StyledActionListSectionTitle = styled(BaseBox)((props) => ({
   // @TODO: replace this styled-component with new layout box when we have padding shorthand
   padding: makeSize(props.theme.spacing[3]),
@@ -111,7 +98,7 @@ const _ActionListSection = ({
   children,
   testID,
   _hideDivider,
-}: ActionListSectionProps): JSX.Element => {
+}: ActionListSectionProps): React.ReactElement => {
   const { surfaceLevel } = useActionListContext();
 
   return (
@@ -138,11 +125,7 @@ const _ActionListSection = ({
       >
         {children}
       </BaseBox>
-      {_hideDivider && isReactNative() ? null : (
-        <Box marginX="spacing.3" marginY="spacing.1">
-          <ActionListSectionDivider />
-        </Box>
-      )}
+      {_hideDivider && isReactNative() ? null : <Divider marginX="spacing.3" marginY="spacing.1" />}
     </BaseBox>
   );
 };
@@ -151,7 +134,7 @@ const ActionListSection = assignWithoutSideEffects(_ActionListSection, {
   componentId: componentIds.ActionListSection,
 });
 
-const _ActionListItemIcon = ({ icon }: { icon: IconComponent }): JSX.Element => {
+const _ActionListItemIcon = ({ icon }: { icon: IconComponent }): React.ReactElement => {
   const Icon = icon;
   const { intent, isDisabled } = React.useContext(ActionListItemContext);
   return (
@@ -302,7 +285,7 @@ const ActionListItemBody = React.memo(_ActionListItemBody);
  * </ActionList>
  * ```
  */
-const _ActionListItem = (props: ActionListItemProps): JSX.Element => {
+const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
   const {
     activeIndex,
     dropdownBaseId,
@@ -348,10 +331,14 @@ const _ActionListItem = (props: ActionListItemProps): JSX.Element => {
   }, [props.leading, props.trailing]);
 
   React.useEffect(() => {
-    if (dropdownTriggerer === 'SelectInput' && props.intent === 'negative') {
-      throw new Error(
-        '[ActionListItem]: negative intent ActionListItem cannot be used inside Dropdown with SelectInput trigger',
-      );
+    if (__DEV__) {
+      if (dropdownTriggerer === 'SelectInput' && props.intent === 'negative') {
+        throwBladeError({
+          message:
+            'negative intent ActionListItem cannot be used inside Dropdown with SelectInput trigger',
+          moduleName: 'ActionListItem',
+        });
+      }
     }
   }, [props.intent, dropdownTriggerer]);
 
@@ -418,12 +405,5 @@ const ActionListItem = assignWithoutSideEffects(React.memo(_ActionListItem), {
   displayName: componentIds.ActionListItem,
 });
 
-export {
-  ActionListItem,
-  ActionListItemProps,
-  ActionListItemIcon,
-  ActionListItemText,
-  ActionListSection,
-  ActionListSectionProps,
-  ActionListSectionDivider,
-};
+export type { ActionListItemProps, ActionListSectionProps };
+export { ActionListItem, ActionListItemIcon, ActionListItemText, ActionListSection };

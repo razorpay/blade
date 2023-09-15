@@ -3,7 +3,7 @@
 exports[`<Circle /> should render react-native-svg Circle component 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -21,15 +21,15 @@ exports[`<Circle /> should render react-native-svg Circle component 1`] = `
     minX={0}
     minY={0}
     style={
-      Array [
-        Object {
+      [
+        {
           "backgroundColor": "transparent",
           "borderWidth": 0,
         },
-        Array [
-          Object {},
+        [
+          {},
         ],
-        Object {
+        {
           "flex": 0,
           "height": 110,
           "width": 400,
@@ -45,7 +45,7 @@ exports[`<Circle /> should render react-native-svg Circle component 1`] = `
         cx="200"
         cy="100"
         matrix={
-          Array [
+          [
             1,
             0,
             -0,
@@ -55,7 +55,7 @@ exports[`<Circle /> should render react-native-svg Circle component 1`] = `
           ]
         }
         propList={
-          Array [
+          [
             "strokeWidth",
           ]
         }

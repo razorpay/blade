@@ -136,7 +136,7 @@ describe('<Card />', () => {
           </CardHeader>
         </Card>,
       ),
-    ).toThrow('[Blade CardHeaderLeading]: Only `CardHeaderIcon` component is accepted in prefix');
+    ).toThrow('[Blade: CardHeaderLeading]: Only `CardHeaderIcon` component is accepted in prefix');
 
     expect(() =>
       renderWithTheme(
@@ -151,7 +151,7 @@ describe('<Card />', () => {
         </Card>,
       ),
     ).toThrow(
-      '[Blade CardHeaderLeading]: Only `CardHeaderCounter` component is accepted in prefix',
+      '[Blade: CardHeaderLeading]: Only `CardHeaderCounter` component is accepted in prefix',
     );
 
     expect(() =>
@@ -163,7 +163,7 @@ describe('<Card />', () => {
         </Card>,
       ),
     ).toThrow(
-      '[Blade CardHeaderTrailing]: Only one of `CardHeaderLink, CardHeaderText, CardHeaderIconButton, CardHeaderBadge` component is accepted in visual',
+      '[Blade: CardHeaderTrailing]: Only one of `CardHeaderLink, CardHeaderText, CardHeaderIconButton, CardHeaderBadge` component is accepted in visual',
     );
     mockConsoleError.mockRestore();
   });
@@ -171,25 +171,25 @@ describe('<Card />', () => {
   it('should throw error if any sub card components are used outside of Card', () => {
     const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
     expect(() => renderWithTheme(<CardBody>body</CardBody>)).toThrow(
-      '[Blade Card]: CardBody cannot be used outside of Card component',
+      '[Blade: Card]: CardBody cannot be used outside of Card component',
     );
     expect(() => renderWithTheme(<CardHeader />)).toThrow(
-      '[Blade Card]: CardHeader cannot be used outside of Card component',
+      '[Blade: Card]: CardHeader cannot be used outside of Card component',
     );
     expect(() => renderWithTheme(<CardHeaderLeading title="" />)).toThrow(
-      '[Blade Card]: CardHeaderLeading cannot be used outside of Card component',
+      '[Blade: Card]: CardHeaderLeading cannot be used outside of Card component',
     );
     expect(() => renderWithTheme(<CardHeaderTrailing />)).toThrow(
-      '[Blade Card]: CardHeaderTrailing cannot be used outside of Card component',
+      '[Blade: Card]: CardHeaderTrailing cannot be used outside of Card component',
     );
     expect(() => renderWithTheme(<CardFooter />)).toThrow(
-      '[Blade Card]: CardFooter cannot be used outside of Card component',
+      '[Blade: Card]: CardFooter cannot be used outside of Card component',
     );
     expect(() => renderWithTheme(<CardFooterLeading title="" />)).toThrow(
-      '[Blade Card]: CardFooterLeading cannot be used outside of Card component',
+      '[Blade: Card]: CardFooterLeading cannot be used outside of Card component',
     );
     expect(() => renderWithTheme(<CardFooterTrailing />)).toThrow(
-      '[Blade Card]: CardFooterTrailing cannot be used outside of Card component',
+      '[Blade: Card]: CardFooterTrailing cannot be used outside of Card component',
     );
     mockConsoleError.mockRestore();
   });
@@ -206,7 +206,7 @@ describe('<Card />', () => {
         </Card>,
       ),
     ).toThrow(
-      '[Blade Card]: Only one of `CardHeader, CardBody, CardFooter` component is accepted as Card children',
+      '[Blade: Card]: Only one of `CardHeader, CardBody, CardFooter` component is accepted as Card children',
     );
     mockConsoleError.mockRestore();
   });
@@ -226,7 +226,7 @@ describe('<Card />', () => {
         </Card>,
       ),
     ).toThrow(
-      '[Blade Card]: Only one of `CardHeaderLeading, CardHeaderTrailing` component is accepted as CardHeader children',
+      '[Blade: Card]: Only one of `CardHeaderLeading, CardHeaderTrailing` component is accepted as CardHeader children',
     );
     mockConsoleError.mockRestore();
   });
@@ -246,7 +246,7 @@ describe('<Card />', () => {
         </Card>,
       ),
     ).toThrow(
-      '[Blade Card]: Only one of `CardFooterLeading, CardFooterTrailing` component is accepted as CardFooter children',
+      '[Blade: Card]: Only one of `CardFooterLeading, CardFooterTrailing` component is accepted as CardFooter children',
     );
     mockConsoleError.mockRestore();
   });

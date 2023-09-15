@@ -3,7 +3,7 @@
 exports[`<Badge /> should render Badge with Icon 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -12,8 +12,8 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
     data-blade-component="badge"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -24,12 +24,12 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
       data-blade-component="base-box"
       size="medium"
       style={
-        Array [
-          Object {
+        [
+          {
             "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
             "textAlign": "left",
           },
-          Object {
+          {
             "alignSelf": "center",
             "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
             "borderRadius": 9999,
@@ -48,8 +48,8 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
         justifyContent="center"
         overflow="hidden"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "display": "flex",
               "flexDirection": "row",
@@ -67,8 +67,8 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
           data-blade-component="base-box"
           display="flex"
           style={
-            Array [
-              Object {
+            [
+              {
                 "display": "flex",
                 "paddingRight": 4,
               },
@@ -89,15 +89,15 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
             minX={0}
             minY={0}
             style={
-              Array [
-                Object {
+              [
+                {
                   "backgroundColor": "transparent",
                   "borderWidth": 0,
                 },
-                Array [
-                  Object {},
+                [
+                  {},
                 ],
-                Object {
+                {
                   "flex": 0,
                   "height": 12,
                   "width": 12,
@@ -111,7 +111,7 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
             <RNSVGGroup
               fill={null}
               propList={
-                Array [
+                [
                   "fill",
                 ]
               }
@@ -120,7 +120,7 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
                 d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
                 fill={4282603381}
                 propList={
-                  Array [
+                  [
                     "fill",
                   ]
                 }
@@ -129,7 +129,7 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
                 d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
                 fill={4282603381}
                 propList={
-                  Array [
+                  [
                     "fill",
                   ]
                 }
@@ -140,7 +140,7 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
                 fill={4282603381}
                 fillRule={0}
                 propList={
-                  Array [
+                  [
                     "fill",
                     "fillRule",
                   ]
@@ -150,6 +150,7 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
           </RNSVGSvgView>
         </View>
         <Text
+          accessible={true}
           color="feedback.text.neutral.lowContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -159,8 +160,8 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
           lineHeight={50}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(216, 27%, 36%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 12,
@@ -191,7 +192,7 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
 exports[`<Badge /> should render Badge with bold font 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -200,8 +201,8 @@ exports[`<Badge /> should render Badge with bold font 1`] = `
     data-blade-component="badge"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -212,12 +213,12 @@ exports[`<Badge /> should render Badge with bold font 1`] = `
       data-blade-component="base-box"
       size="medium"
       style={
-        Array [
-          Object {
+        [
+          {
             "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
             "textAlign": "left",
           },
-          Object {
+          {
             "alignSelf": "center",
             "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
             "borderRadius": 9999,
@@ -236,8 +237,8 @@ exports[`<Badge /> should render Badge with bold font 1`] = `
         justifyContent="center"
         overflow="hidden"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "display": "flex",
               "flexDirection": "row",
@@ -252,6 +253,7 @@ exports[`<Badge /> should render Badge with bold font 1`] = `
         }
       >
         <Text
+          accessible={true}
           color="feedback.text.neutral.lowContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -261,8 +263,8 @@ exports[`<Badge /> should render Badge with bold font 1`] = `
           lineHeight={50}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(216, 27%, 36%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 12,
@@ -293,7 +295,7 @@ exports[`<Badge /> should render Badge with bold font 1`] = `
 exports[`<Badge /> should render Badge with default props 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -302,8 +304,8 @@ exports[`<Badge /> should render Badge with default props 1`] = `
     data-blade-component="badge"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -314,12 +316,12 @@ exports[`<Badge /> should render Badge with default props 1`] = `
       data-blade-component="base-box"
       size="medium"
       style={
-        Array [
-          Object {
+        [
+          {
             "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
             "textAlign": "left",
           },
-          Object {
+          {
             "alignSelf": "center",
             "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
             "borderRadius": 9999,
@@ -338,8 +340,8 @@ exports[`<Badge /> should render Badge with default props 1`] = `
         justifyContent="center"
         overflow="hidden"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "display": "flex",
               "flexDirection": "row",
@@ -354,6 +356,7 @@ exports[`<Badge /> should render Badge with default props 1`] = `
         }
       >
         <Text
+          accessible={true}
           color="feedback.text.neutral.lowContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -363,8 +366,8 @@ exports[`<Badge /> should render Badge with default props 1`] = `
           lineHeight={50}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(216, 27%, 36%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 12,
@@ -395,7 +398,7 @@ exports[`<Badge /> should render Badge with default props 1`] = `
 exports[`<Badge /> should render high contrast blue variant Badge 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -404,8 +407,8 @@ exports[`<Badge /> should render high contrast blue variant Badge 1`] = `
     data-blade-component="badge"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -416,12 +419,12 @@ exports[`<Badge /> should render high contrast blue variant Badge 1`] = `
       data-blade-component="base-box"
       size="medium"
       style={
-        Array [
-          Object {
+        [
+          {
             "backgroundColor": "hsla(218, 89%, 51%, 1)",
             "textAlign": "left",
           },
-          Object {
+          {
             "alignSelf": "center",
             "backgroundColor": "hsla(218, 89%, 51%, 1)",
             "borderRadius": 9999,
@@ -440,8 +443,8 @@ exports[`<Badge /> should render high contrast blue variant Badge 1`] = `
         justifyContent="center"
         overflow="hidden"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "display": "flex",
               "flexDirection": "row",
@@ -456,6 +459,7 @@ exports[`<Badge /> should render high contrast blue variant Badge 1`] = `
         }
       >
         <Text
+          accessible={true}
           color="badge.text.blue.highContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -465,8 +469,8 @@ exports[`<Badge /> should render high contrast blue variant Badge 1`] = `
           lineHeight={50}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(0, 0%, 100%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 12,
@@ -497,7 +501,7 @@ exports[`<Badge /> should render high contrast blue variant Badge 1`] = `
 exports[`<Badge /> should render high contrast information variant Badge 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -506,8 +510,8 @@ exports[`<Badge /> should render high contrast information variant Badge 1`] = `
     data-blade-component="badge"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -518,12 +522,12 @@ exports[`<Badge /> should render high contrast information variant Badge 1`] = `
       data-blade-component="base-box"
       size="medium"
       style={
-        Array [
-          Object {
+        [
+          {
             "backgroundColor": "hsla(193, 100%, 35%, 1)",
             "textAlign": "left",
           },
-          Object {
+          {
             "alignSelf": "center",
             "backgroundColor": "hsla(193, 100%, 35%, 1)",
             "borderRadius": 9999,
@@ -542,8 +546,8 @@ exports[`<Badge /> should render high contrast information variant Badge 1`] = `
         justifyContent="center"
         overflow="hidden"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "display": "flex",
               "flexDirection": "row",
@@ -558,6 +562,7 @@ exports[`<Badge /> should render high contrast information variant Badge 1`] = `
         }
       >
         <Text
+          accessible={true}
           color="feedback.text.information.highContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -567,8 +572,8 @@ exports[`<Badge /> should render high contrast information variant Badge 1`] = `
           lineHeight={50}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(0, 0%, 100%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 12,
@@ -599,7 +604,7 @@ exports[`<Badge /> should render high contrast information variant Badge 1`] = `
 exports[`<Badge /> should render high contrast negative variant Badge 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -608,8 +613,8 @@ exports[`<Badge /> should render high contrast negative variant Badge 1`] = `
     data-blade-component="badge"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -620,12 +625,12 @@ exports[`<Badge /> should render high contrast negative variant Badge 1`] = `
       data-blade-component="base-box"
       size="medium"
       style={
-        Array [
-          Object {
+        [
+          {
             "backgroundColor": "hsla(8, 73%, 47%, 1)",
             "textAlign": "left",
           },
-          Object {
+          {
             "alignSelf": "center",
             "backgroundColor": "hsla(8, 73%, 47%, 1)",
             "borderRadius": 9999,
@@ -644,8 +649,8 @@ exports[`<Badge /> should render high contrast negative variant Badge 1`] = `
         justifyContent="center"
         overflow="hidden"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "display": "flex",
               "flexDirection": "row",
@@ -660,6 +665,7 @@ exports[`<Badge /> should render high contrast negative variant Badge 1`] = `
         }
       >
         <Text
+          accessible={true}
           color="feedback.text.negative.highContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -669,8 +675,8 @@ exports[`<Badge /> should render high contrast negative variant Badge 1`] = `
           lineHeight={50}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(0, 0%, 100%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 12,
@@ -701,7 +707,7 @@ exports[`<Badge /> should render high contrast negative variant Badge 1`] = `
 exports[`<Badge /> should render high contrast neutral variant Badge 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -710,8 +716,8 @@ exports[`<Badge /> should render high contrast neutral variant Badge 1`] = `
     data-blade-component="badge"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -722,12 +728,12 @@ exports[`<Badge /> should render high contrast neutral variant Badge 1`] = `
       data-blade-component="base-box"
       size="medium"
       style={
-        Array [
-          Object {
+        [
+          {
             "backgroundColor": "hsla(216, 33%, 29%, 1)",
             "textAlign": "left",
           },
-          Object {
+          {
             "alignSelf": "center",
             "backgroundColor": "hsla(216, 33%, 29%, 1)",
             "borderRadius": 9999,
@@ -746,8 +752,8 @@ exports[`<Badge /> should render high contrast neutral variant Badge 1`] = `
         justifyContent="center"
         overflow="hidden"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "display": "flex",
               "flexDirection": "row",
@@ -762,6 +768,7 @@ exports[`<Badge /> should render high contrast neutral variant Badge 1`] = `
         }
       >
         <Text
+          accessible={true}
           color="feedback.text.neutral.highContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -771,8 +778,8 @@ exports[`<Badge /> should render high contrast neutral variant Badge 1`] = `
           lineHeight={50}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(0, 0%, 100%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 12,
@@ -803,7 +810,7 @@ exports[`<Badge /> should render high contrast neutral variant Badge 1`] = `
 exports[`<Badge /> should render high contrast notice variant Badge 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -812,8 +819,8 @@ exports[`<Badge /> should render high contrast notice variant Badge 1`] = `
     data-blade-component="badge"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -824,12 +831,12 @@ exports[`<Badge /> should render high contrast notice variant Badge 1`] = `
       data-blade-component="base-box"
       size="medium"
       style={
-        Array [
-          Object {
+        [
+          {
             "backgroundColor": "hsla(38, 97%, 38%, 1)",
             "textAlign": "left",
           },
-          Object {
+          {
             "alignSelf": "center",
             "backgroundColor": "hsla(38, 97%, 38%, 1)",
             "borderRadius": 9999,
@@ -848,8 +855,8 @@ exports[`<Badge /> should render high contrast notice variant Badge 1`] = `
         justifyContent="center"
         overflow="hidden"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "display": "flex",
               "flexDirection": "row",
@@ -864,6 +871,7 @@ exports[`<Badge /> should render high contrast notice variant Badge 1`] = `
         }
       >
         <Text
+          accessible={true}
           color="feedback.text.notice.highContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -873,8 +881,8 @@ exports[`<Badge /> should render high contrast notice variant Badge 1`] = `
           lineHeight={50}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(0, 0%, 100%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 12,
@@ -905,7 +913,7 @@ exports[`<Badge /> should render high contrast notice variant Badge 1`] = `
 exports[`<Badge /> should render high contrast positive variant Badge 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -914,8 +922,8 @@ exports[`<Badge /> should render high contrast positive variant Badge 1`] = `
     data-blade-component="badge"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -926,12 +934,12 @@ exports[`<Badge /> should render high contrast positive variant Badge 1`] = `
       data-blade-component="base-box"
       size="medium"
       style={
-        Array [
-          Object {
+        [
+          {
             "backgroundColor": "hsla(160, 100%, 26%, 1)",
             "textAlign": "left",
           },
-          Object {
+          {
             "alignSelf": "center",
             "backgroundColor": "hsla(160, 100%, 26%, 1)",
             "borderRadius": 9999,
@@ -950,8 +958,8 @@ exports[`<Badge /> should render high contrast positive variant Badge 1`] = `
         justifyContent="center"
         overflow="hidden"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "display": "flex",
               "flexDirection": "row",
@@ -966,6 +974,7 @@ exports[`<Badge /> should render high contrast positive variant Badge 1`] = `
         }
       >
         <Text
+          accessible={true}
           color="feedback.text.positive.highContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -975,8 +984,8 @@ exports[`<Badge /> should render high contrast positive variant Badge 1`] = `
           lineHeight={50}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(0, 0%, 100%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 12,
@@ -1007,7 +1016,7 @@ exports[`<Badge /> should render high contrast positive variant Badge 1`] = `
 exports[`<Badge /> should render large size Badge 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -1016,8 +1025,8 @@ exports[`<Badge /> should render large size Badge 1`] = `
     data-blade-component="badge"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -1028,12 +1037,12 @@ exports[`<Badge /> should render large size Badge 1`] = `
       data-blade-component="base-box"
       size="large"
       style={
-        Array [
-          Object {
+        [
+          {
             "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
             "textAlign": "left",
           },
-          Object {
+          {
             "alignSelf": "center",
             "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
             "borderRadius": 9999,
@@ -1052,8 +1061,8 @@ exports[`<Badge /> should render large size Badge 1`] = `
         justifyContent="center"
         overflow="hidden"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "display": "flex",
               "flexDirection": "row",
@@ -1068,6 +1077,7 @@ exports[`<Badge /> should render large size Badge 1`] = `
         }
       >
         <Text
+          accessible={true}
           color="feedback.text.neutral.lowContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -1077,8 +1087,8 @@ exports[`<Badge /> should render large size Badge 1`] = `
           lineHeight={50}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(216, 27%, 36%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 12,
@@ -1109,7 +1119,7 @@ exports[`<Badge /> should render large size Badge 1`] = `
 exports[`<Badge /> should render low contrast blue variant Badge 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -1118,8 +1128,8 @@ exports[`<Badge /> should render low contrast blue variant Badge 1`] = `
     data-blade-component="badge"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -1130,12 +1140,12 @@ exports[`<Badge /> should render low contrast blue variant Badge 1`] = `
       data-blade-component="base-box"
       size="medium"
       style={
-        Array [
-          Object {
+        [
+          {
             "backgroundColor": "hsla(218, 89%, 51%, 0.09)",
             "textAlign": "left",
           },
-          Object {
+          {
             "alignSelf": "center",
             "backgroundColor": "hsla(218, 89%, 51%, 0.09)",
             "borderRadius": 9999,
@@ -1154,8 +1164,8 @@ exports[`<Badge /> should render low contrast blue variant Badge 1`] = `
         justifyContent="center"
         overflow="hidden"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "display": "flex",
               "flexDirection": "row",
@@ -1170,6 +1180,7 @@ exports[`<Badge /> should render low contrast blue variant Badge 1`] = `
         }
       >
         <Text
+          accessible={true}
           color="badge.text.blue.lowContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -1179,8 +1190,8 @@ exports[`<Badge /> should render low contrast blue variant Badge 1`] = `
           lineHeight={50}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(218, 89%, 51%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 12,
@@ -1211,7 +1222,7 @@ exports[`<Badge /> should render low contrast blue variant Badge 1`] = `
 exports[`<Badge /> should render low contrast information variant Badge 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -1220,8 +1231,8 @@ exports[`<Badge /> should render low contrast information variant Badge 1`] = `
     data-blade-component="badge"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -1232,12 +1243,12 @@ exports[`<Badge /> should render low contrast information variant Badge 1`] = `
       data-blade-component="base-box"
       size="medium"
       style={
-        Array [
-          Object {
+        [
+          {
             "backgroundColor": "hsla(193, 100%, 35%, 0.09)",
             "textAlign": "left",
           },
-          Object {
+          {
             "alignSelf": "center",
             "backgroundColor": "hsla(193, 100%, 35%, 0.09)",
             "borderRadius": 9999,
@@ -1256,8 +1267,8 @@ exports[`<Badge /> should render low contrast information variant Badge 1`] = `
         justifyContent="center"
         overflow="hidden"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "display": "flex",
               "flexDirection": "row",
@@ -1272,6 +1283,7 @@ exports[`<Badge /> should render low contrast information variant Badge 1`] = `
         }
       >
         <Text
+          accessible={true}
           color="feedback.text.information.lowContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -1281,8 +1293,8 @@ exports[`<Badge /> should render low contrast information variant Badge 1`] = `
           lineHeight={50}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(193, 100%, 35%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 12,
@@ -1313,7 +1325,7 @@ exports[`<Badge /> should render low contrast information variant Badge 1`] = `
 exports[`<Badge /> should render low contrast negative variant Badge 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -1322,8 +1334,8 @@ exports[`<Badge /> should render low contrast negative variant Badge 1`] = `
     data-blade-component="badge"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -1334,12 +1346,12 @@ exports[`<Badge /> should render low contrast negative variant Badge 1`] = `
       data-blade-component="base-box"
       size="medium"
       style={
-        Array [
-          Object {
+        [
+          {
             "backgroundColor": "hsla(9, 91%, 56%, 0.09)",
             "textAlign": "left",
           },
-          Object {
+          {
             "alignSelf": "center",
             "backgroundColor": "hsla(9, 91%, 56%, 0.09)",
             "borderRadius": 9999,
@@ -1358,8 +1370,8 @@ exports[`<Badge /> should render low contrast negative variant Badge 1`] = `
         justifyContent="center"
         overflow="hidden"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "display": "flex",
               "flexDirection": "row",
@@ -1374,6 +1386,7 @@ exports[`<Badge /> should render low contrast negative variant Badge 1`] = `
         }
       >
         <Text
+          accessible={true}
           color="feedback.text.negative.lowContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -1383,8 +1396,8 @@ exports[`<Badge /> should render low contrast negative variant Badge 1`] = `
           lineHeight={50}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(8, 73%, 47%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 12,
@@ -1415,7 +1428,7 @@ exports[`<Badge /> should render low contrast negative variant Badge 1`] = `
 exports[`<Badge /> should render low contrast neutral variant Badge 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -1424,8 +1437,8 @@ exports[`<Badge /> should render low contrast neutral variant Badge 1`] = `
     data-blade-component="badge"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -1436,12 +1449,12 @@ exports[`<Badge /> should render low contrast neutral variant Badge 1`] = `
       data-blade-component="base-box"
       size="medium"
       style={
-        Array [
-          Object {
+        [
+          {
             "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
             "textAlign": "left",
           },
-          Object {
+          {
             "alignSelf": "center",
             "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
             "borderRadius": 9999,
@@ -1460,8 +1473,8 @@ exports[`<Badge /> should render low contrast neutral variant Badge 1`] = `
         justifyContent="center"
         overflow="hidden"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "display": "flex",
               "flexDirection": "row",
@@ -1476,6 +1489,7 @@ exports[`<Badge /> should render low contrast neutral variant Badge 1`] = `
         }
       >
         <Text
+          accessible={true}
           color="feedback.text.neutral.lowContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -1485,8 +1499,8 @@ exports[`<Badge /> should render low contrast neutral variant Badge 1`] = `
           lineHeight={50}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(216, 27%, 36%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 12,
@@ -1517,7 +1531,7 @@ exports[`<Badge /> should render low contrast neutral variant Badge 1`] = `
 exports[`<Badge /> should render low contrast notice variant Badge 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -1526,8 +1540,8 @@ exports[`<Badge /> should render low contrast notice variant Badge 1`] = `
     data-blade-component="badge"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -1538,12 +1552,12 @@ exports[`<Badge /> should render low contrast notice variant Badge 1`] = `
       data-blade-component="base-box"
       size="medium"
       style={
-        Array [
-          Object {
+        [
+          {
             "backgroundColor": "hsla(36, 100%, 44%, 0.09)",
             "textAlign": "left",
           },
-          Object {
+          {
             "alignSelf": "center",
             "backgroundColor": "hsla(36, 100%, 44%, 0.09)",
             "borderRadius": 9999,
@@ -1562,8 +1576,8 @@ exports[`<Badge /> should render low contrast notice variant Badge 1`] = `
         justifyContent="center"
         overflow="hidden"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "display": "flex",
               "flexDirection": "row",
@@ -1578,6 +1592,7 @@ exports[`<Badge /> should render low contrast notice variant Badge 1`] = `
         }
       >
         <Text
+          accessible={true}
           color="feedback.text.notice.lowContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -1587,8 +1602,8 @@ exports[`<Badge /> should render low contrast notice variant Badge 1`] = `
           lineHeight={50}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(38, 97%, 38%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 12,
@@ -1619,7 +1634,7 @@ exports[`<Badge /> should render low contrast notice variant Badge 1`] = `
 exports[`<Badge /> should render low contrast positive variant Badge 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -1628,8 +1643,8 @@ exports[`<Badge /> should render low contrast positive variant Badge 1`] = `
     data-blade-component="badge"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -1640,12 +1655,12 @@ exports[`<Badge /> should render low contrast positive variant Badge 1`] = `
       data-blade-component="base-box"
       size="medium"
       style={
-        Array [
-          Object {
+        [
+          {
             "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
             "textAlign": "left",
           },
-          Object {
+          {
             "alignSelf": "center",
             "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
             "borderRadius": 9999,
@@ -1664,8 +1679,8 @@ exports[`<Badge /> should render low contrast positive variant Badge 1`] = `
         justifyContent="center"
         overflow="hidden"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "display": "flex",
               "flexDirection": "row",
@@ -1680,6 +1695,7 @@ exports[`<Badge /> should render low contrast positive variant Badge 1`] = `
         }
       >
         <Text
+          accessible={true}
           color="feedback.text.positive.lowContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -1689,8 +1705,8 @@ exports[`<Badge /> should render low contrast positive variant Badge 1`] = `
           lineHeight={50}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(160, 100%, 26%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 12,
@@ -1721,7 +1737,7 @@ exports[`<Badge /> should render low contrast positive variant Badge 1`] = `
 exports[`<Badge /> should render medium size Badge 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -1730,8 +1746,8 @@ exports[`<Badge /> should render medium size Badge 1`] = `
     data-blade-component="badge"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -1742,12 +1758,12 @@ exports[`<Badge /> should render medium size Badge 1`] = `
       data-blade-component="base-box"
       size="medium"
       style={
-        Array [
-          Object {
+        [
+          {
             "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
             "textAlign": "left",
           },
-          Object {
+          {
             "alignSelf": "center",
             "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
             "borderRadius": 9999,
@@ -1766,8 +1782,8 @@ exports[`<Badge /> should render medium size Badge 1`] = `
         justifyContent="center"
         overflow="hidden"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "display": "flex",
               "flexDirection": "row",
@@ -1782,6 +1798,7 @@ exports[`<Badge /> should render medium size Badge 1`] = `
         }
       >
         <Text
+          accessible={true}
           color="feedback.text.neutral.lowContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -1791,8 +1808,8 @@ exports[`<Badge /> should render medium size Badge 1`] = `
           lineHeight={50}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(216, 27%, 36%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 12,
@@ -1823,7 +1840,7 @@ exports[`<Badge /> should render medium size Badge 1`] = `
 exports[`<Badge /> should render small size Badge 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -1832,8 +1849,8 @@ exports[`<Badge /> should render small size Badge 1`] = `
     data-blade-component="badge"
     display="flex"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "flex",
         },
       ]
@@ -1844,12 +1861,12 @@ exports[`<Badge /> should render small size Badge 1`] = `
       data-blade-component="base-box"
       size="small"
       style={
-        Array [
-          Object {
+        [
+          {
             "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
             "textAlign": "left",
           },
-          Object {
+          {
             "alignSelf": "center",
             "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
             "borderRadius": 9999,
@@ -1868,8 +1885,8 @@ exports[`<Badge /> should render small size Badge 1`] = `
         justifyContent="center"
         overflow="hidden"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "display": "flex",
               "flexDirection": "row",
@@ -1884,6 +1901,7 @@ exports[`<Badge /> should render small size Badge 1`] = `
         }
       >
         <Text
+          accessible={true}
           color="feedback.text.neutral.lowContrast"
           data-blade-component="text"
           fontFamily="text"
@@ -1893,8 +1911,8 @@ exports[`<Badge /> should render small size Badge 1`] = `
           lineHeight={50}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "hsla(216, 27%, 36%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 10,

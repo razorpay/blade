@@ -21,7 +21,7 @@ describe('Modal', () => {
       ),
     ).toBeTruthy();
     expect(console.warn).toHaveBeenCalledWith(
-      '[Blade Modal] Modal is not supported on mobile devices. Please use BottomSheet instead.',
+      '[Blade: Modal]: Modal is not supported on mobile devices. Please use BottomSheet instead.',
     );
     mockConsoleWarn.mockRestore();
   });

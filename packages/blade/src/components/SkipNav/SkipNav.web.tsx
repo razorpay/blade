@@ -27,7 +27,7 @@ const StyledLink = styled(BaseLink)(({ theme }) => ({
 const SkipNavLink = ({
   id = fallbackId,
   children = 'Skip to content',
-}: SkipNavLinkProps): JSX.Element => {
+}: SkipNavLinkProps): React.ReactElement => {
   return <StyledLink href={`#${id}`}>{children}</StyledLink>;
 };
 
@@ -38,7 +38,7 @@ type SkipNavContentProps = {
 const SkipNavContent = ({
   id = fallbackId,
   testID = 'skipnav-content',
-}: SkipNavContentProps): JSX.Element => {
+}: SkipNavContentProps): React.ReactElement => {
   return (
     <div
       tabIndex={-1}

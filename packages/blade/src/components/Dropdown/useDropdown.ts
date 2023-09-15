@@ -65,6 +65,7 @@ type DropdownContextType = {
   dropdownTriggerer?: 'SelectInput' | 'DropdownButton';
   /** ref of triggerer. Used to call focus in certain places */
   triggererRef: React.RefObject<HTMLButtonElement | null>;
+  triggererWrapperRef: React.MutableRefObject<HTMLDivElement | null>;
   actionListItemRef: React.RefObject<HTMLDivElement | null>;
   selectionType?: DropdownProps['selectionType'];
   /** whether footer has an action item.
@@ -131,6 +132,9 @@ const DropdownContext = React.createContext<DropdownContextType>({
     current: null,
   },
   triggererRef: {
+    current: null,
+  },
+  triggererWrapperRef: {
     current: null,
   },
 });
@@ -456,4 +460,5 @@ const useDropdown = (): UseDropdownReturnValue => {
   };
 };
 
-export { useDropdown, DropdownContext, DropdownContextType, OptionsType };
+export type { DropdownContextType, OptionsType };
+export { useDropdown, DropdownContext };

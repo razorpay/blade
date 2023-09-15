@@ -16,13 +16,7 @@ export type {
 export { typography } from './typography';
 export type { Spacing } from './spacing';
 export { spacing } from './spacing';
-export type {
-  Motion,
-  EasingFunctionFactory,
-  DurationString,
-  EasingString,
-  DelayString,
-} from './motion';
+export type { Motion, EasingFactoryFn, DurationString, EasingString, DelayString } from './motion';
 export { motion } from './motion';
 export type { Size } from './size';
 export { size } from './size';

@@ -1,11 +1,17 @@
 /** Setup the React Native globals to differentiate between a web and react native app.
  * For browser we have `window`, for node we have `process` as globals, for React Native it's `global.navigator.product: ReactNative`
  **/
+import { configure } from '@testing-library/react-native';
 
-Object.defineProperty(global.navigator, 'product', {
-  value: 'ReactNative',
+// Since v12, all queries exclude elements hidden from accessibility by default
+configure({
+  defaultIncludeHiddenElements: true,
 });
-require('react-native-reanimated/lib/reanimated2/jestUtils').setUpTests();
+
+global.navigator = {
+  product: 'ReactNative',
+};
+
 jest.mock('react-native-reanimated', () => ({
   ...require('react-native-reanimated/mock'),
   Easing: {

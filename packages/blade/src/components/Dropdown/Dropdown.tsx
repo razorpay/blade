@@ -11,6 +11,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
+import { throwBladeError } from '~utils/logger';
 
 const validDropdownChildren = [
   componentIds.triggers.SelectInput,
@@ -54,7 +55,7 @@ const _Dropdown = ({
   onDismiss,
   testID,
   ...styledProps
-}: DropdownProps): JSX.Element => {
+}: DropdownProps): React.ReactElement => {
   const [isOpen, setIsOpen] = React.useState(isOpenProp ?? false);
   const [options, setOptions] = React.useState<DropdownContextType['options']>([]);
   const [selectedIndices, setSelectedIndices] = React.useState<
@@ -67,6 +68,11 @@ const _Dropdown = ({
   const [shouldIgnoreBlur, setShouldIgnoreBlur] = React.useState(false);
   const [shouldIgnoreBlurAnimation, setShouldIgnoreBlurAnimation] = React.useState(false);
   const triggererRef = React.useRef<HTMLButtonElement>(null);
+  /**
+   * In inputs, actual input is smaller than the visible input wrapper.
+   * You can set this reference in such cases so floating ui calculations happen correctly
+   * */
+  const triggererWrapperRef = React.useRef<HTMLDivElement>(null);
   const actionListItemRef = React.useRef<HTMLDivElement>(null);
   const [hasFooterAction, setHasFooterAction] = React.useState(false);
   const [hasLabelOnLeft, setHasLabelOnLeft] = React.useState(false);
@@ -114,12 +120,15 @@ const _Dropdown = ({
 
   React.Children.map(children, (child) => {
     if (React.isValidElement(child)) {
-      if (!validDropdownChildren.includes(getComponentId(child) ?? '')) {
-        throw new Error(
-          `[Dropdown]: Dropdown can only have one of following elements as children - \n\n ${validDropdownChildren.join(
-            ', ',
-          )} \n\n Check out: https://blade.razorpay.com/?path=/story/components-dropdown`,
-        );
+      if (__DEV__) {
+        if (!validDropdownChildren.includes(getComponentId(child) ?? '')) {
+          throwBladeError({
+            message: `Dropdown can only have one of following elements as children - \n\n ${validDropdownChildren.join(
+              ', ',
+            )} \n\n Check out: https://blade.razorpay.com/?path=/story/components-dropdown`,
+            moduleName: 'Dropdown',
+          });
+        }
       }
 
       if (isValidAllowedChildren(child, componentIds.triggers.SelectInput)) {
@@ -153,6 +162,7 @@ const _Dropdown = ({
       setIsKeydownPressed,
       dropdownBaseId,
       triggererRef,
+      triggererWrapperRef,
       actionListItemRef,
       selectionType,
       hasFooterAction,

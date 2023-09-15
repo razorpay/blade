@@ -1,11 +1,17 @@
 import { Easing } from 'react-native-reanimated';
-import paymentLightThemeWeb from './paymentLightTheme.web';
+import { paymentTheme } from '~tokens/theme';
 import type { Theme } from '~components/BladeProvider';
 
 const paymentLightTheme: Theme = {
-  ...paymentLightThemeWeb,
+  name: 'paymentTheme',
+  colors: paymentTheme.colors.onLight,
+  border: paymentTheme.border,
+  spacing: paymentTheme.spacing,
+  breakpoints: paymentTheme.breakpoints,
+  elevation: paymentTheme.elevation.onLight,
+  typography: paymentTheme.typography.onMobile,
   motion: {
-    ...paymentLightThemeWeb.motion,
+    ...paymentTheme.motion,
     easing: {
       standard: {
         attentive: Easing.bezier(0.5, 0, 0.3, 1.5),

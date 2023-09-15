@@ -9,6 +9,7 @@ import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { LinkToStorybook } from '~utils/storybook/LinkToStorybook';
 import { castWebType, isReactNative } from '~utils';
 import { Button } from '~components/Button';
+import { Link } from '~components/Link';
 
 // Storybook renders inside iframe so by default it doesn't support scrolling to the sections.
 // So we manually read location.hash of parent window and scroll to that section on load
@@ -44,7 +45,7 @@ const BoxStoryMeta = {
   },
 } as Meta<BoxProps>;
 
-export const Default = (args: BoxProps): JSX.Element => {
+export const Default = (args: BoxProps): React.ReactElement => {
   return (
     <Box {...args}>
       <Text>Change controls to see the parameters change for the container</Text>
@@ -57,7 +58,7 @@ Default.args = {
   backgroundColor: 'surface.background.level1.lowContrast',
 } as BoxProps;
 
-export const Responsive = (args: BoxProps): JSX.Element => {
+export const Responsive = (args: BoxProps): React.ReactElement => {
   return (
     <>
       <Text>Change screen size to see flexDirection switch between row and column</Text>
@@ -79,7 +80,7 @@ Responsive.args = {
   flexDirection: { base: 'column', m: 'row' },
 } as BoxProps;
 
-export const AsSection = (args: BoxProps): JSX.Element => {
+export const AsSection = (args: BoxProps): React.ReactElement => {
   if (isReactNative()) {
     return (
       <Box>
@@ -99,7 +100,7 @@ AsSection.args = {
   as: 'section',
 } as BoxProps;
 
-export const WithRef = (args: BoxProps): JSX.Element => {
+export const WithRef = (args: BoxProps): React.ReactElement => {
   const ref = React.useRef<BoxRefType>(null);
 
   return (
@@ -124,7 +125,7 @@ WithRef.args = {
   marginTop: '800px',
 } as BoxProps;
 
-export const WithMouseEvents = (args: BoxProps): JSX.Element => {
+export const WithMouseEvents = (args: BoxProps): React.ReactElement => {
   return (
     <Box
       {...args}
@@ -142,5 +143,67 @@ WithMouseEvents.args = {
   overflowY: 'auto',
   height: '300px',
 } as BoxProps;
+
+export const WithDragAndDropEvents = (args: BoxProps): React.ReactElement => {
+  return (
+    <Box>
+      <Box
+        draggable
+        maxWidth="fit-content"
+        onDragStart={(e) => {
+          console.log('onDragStart', e);
+        }}
+        onDragEnd={(e) => {
+          console.log('onDragEnd', e);
+        }}
+      >
+        <Button> Drag me into the box below & check console</Button>
+      </Box>
+      <Box
+        {...args}
+        margin="spacing.5"
+        backgroundColor="surface.background.level2.lowContrast"
+        onDragEnter={(e) => {
+          e.preventDefault();
+          console.log('onDragEnter', e);
+        }}
+        onDragOver={(e) => {
+          e.preventDefault();
+          console.log('onDragOver', e);
+        }}
+        onDragLeave={(e) => {
+          console.log('onDragLeave', e);
+        }}
+        onDrop={(e) => {
+          e.preventDefault();
+          console.log('onDrop', e);
+        }}
+      />
+    </Box>
+  );
+};
+
+WithDragAndDropEvents.args = {
+  overflowY: 'auto',
+  height: '300px',
+} as BoxProps;
+
+export const WithId = (): React.ReactElement => {
+  return (
+    <Box>
+      <Link href="#section-1">Scroll to section</Link>
+      <Box height="100vh" />
+      <Box height="100vh" as="section" id="section-1">
+        <Text>
+          Section of the page with id{' '}
+          <Text as="span" weight="bold">
+            section-1
+          </Text>{' '}
+          that we want to scroll to.
+        </Text>
+      </Box>
+    </Box>
+  );
+};
 
 export default BoxStoryMeta;

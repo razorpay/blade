@@ -187,6 +187,24 @@ describe('<BottomSheet />', () => {
     mockConsoleError.mockRestore();
   });
 
+  it('should render bottom sheet with custom zIndex', () => {
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
+
+    const Example = (): React.ReactElement => {
+      return (
+        <BottomSheet isOpen={true} zIndex={425}>
+          <BottomSheetBody>
+            <Text>BottomSheet body</Text>
+          </BottomSheetBody>
+        </BottomSheet>
+      );
+    };
+    const { queryByText, queryByTestId } = renderWithTheme(<Example />);
+    expect(queryByText('BottomSheet body')).toBeInTheDocument();
+    expect(queryByTestId('bottomsheet-surface')).toHaveStyle({ 'z-index': 425 });
+    mockConsoleError.mockRestore();
+  });
+
   it('should compose with Dropdown single select', async () => {
     const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
 
@@ -205,12 +223,12 @@ describe('<BottomSheet />', () => {
         </Dropdown>
       );
     };
-    const { queryByTestId, getByRole } = renderWithTheme(<Example />);
+    const { queryByTestId, getByRole, getByLabelText } = renderWithTheme(<Example />);
 
     // open / close by clicking the select
     expect(queryByTestId('bottomsheet-body')).not.toBeVisible();
-    expect(getByRole('combobox', { name: 'Select Action' })).toBeInTheDocument();
-    await user.click(getByRole('combobox', { name: 'Select Action' }));
+    expect(getByLabelText('Select Action')).toBeInTheDocument();
+    await user.click(getByLabelText('Select Action'));
     await sleep(250);
     expect(queryByTestId('bottomsheet-body')).toBeVisible();
     await user.click(queryByTestId('bottomsheet-backdrop')!);
@@ -218,21 +236,21 @@ describe('<BottomSheet />', () => {
     expect(queryByTestId('bottomsheet-body')).not.toBeVisible();
 
     // close by selecting an element & assert the select's value
-    await user.click(getByRole('combobox', { name: 'Select Action' }));
+    await user.click(getByLabelText('Select Action'));
     await sleep(250);
     expect(queryByTestId('bottomsheet-body')).toBeVisible();
     await user.click(getByRole('option', { name: 'Settings' }));
     await sleep(250);
-    expect(getByRole('combobox', { name: 'Select Action' })).toHaveTextContent('Settings');
+    expect(getByLabelText('Select Action')).toHaveTextContent('Settings');
     expect(queryByTestId('bottomsheet-body')).not.toBeVisible();
 
     // check that cancelling should not update select's value
-    await user.click(getByRole('combobox', { name: 'Select Action' }));
+    await user.click(getByLabelText('Select Action'));
     await sleep(250);
     expect(queryByTestId('bottomsheet-body')).toBeVisible();
     await user.click(getByRole('button', { name: /Close/i })!);
     await sleep(250);
-    expect(getByRole('combobox', { name: 'Select Action' })).toHaveTextContent('Settings');
+    expect(getByLabelText('Select Action')).toHaveTextContent('Settings');
     expect(queryByTestId('bottomsheet-body')).not.toBeVisible();
     mockConsoleError.mockRestore();
   });
@@ -256,9 +274,9 @@ describe('<BottomSheet />', () => {
         </Dropdown>
       );
     };
-    const { queryByTestId, getByRole } = renderWithTheme(<Example />);
+    const { queryByTestId, getByRole, getByLabelText } = renderWithTheme(<Example />);
 
-    const selectInput = getByRole('combobox', { name: 'Select Fruit' });
+    const selectInput = getByLabelText('Select Fruit');
 
     // open the dropdown
     expect(queryByTestId('bottomsheet-body')).not.toBeVisible();
@@ -303,7 +321,7 @@ describe('<BottomSheet />', () => {
       within(getByRole('option', { name: 'Avocado' })).getByRole('checkbox', { hidden: true }),
     ).not.toBeChecked();
     mockConsoleError.mockRestore();
-  });
+  }, 10000);
 
   test('BottomSheetHeader trailing should not allow any random component', () => {
     const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
@@ -315,7 +333,7 @@ describe('<BottomSheet />', () => {
       );
     };
     expect(() => renderWithTheme(<Example />)).toThrow(
-      '[Blade Header]: Only one of `Button, Badge, Link, Text, Amount` component is accepted as trailing',
+      '[Blade: Header]: Only one of `Button, Badge, Link, Text, Amount` component is accepted as trailing',
     );
     mockConsoleError.mockRestore();
   });
@@ -335,7 +353,7 @@ describe('<BottomSheet />', () => {
 
     expect(console.warn).toHaveBeenCalledWith(
       expect.stringContaining(
-        '[Blade Header]: Do not pass "size" to "Badge" while inside Header trailing, because we override it.',
+        '[Blade: Header]: Do not pass "size" to "Badge" while inside Header trailing, because we override it.',
       ),
     );
 

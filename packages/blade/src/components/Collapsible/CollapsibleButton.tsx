@@ -1,13 +1,11 @@
 import type { ReactElement } from 'react';
 import { forwardRef, useCallback } from 'react';
-// This has to be a relative import otherwise plugin-dts will go 💥 https://github.com/razorpay/blade/issues/701
-import type { ButtonProps } from '../Button';
 import { useCollapsible } from './CollapsibleContext';
+import type { ButtonProps } from '~components/Button';
 import type { IconComponent } from '~components/Icons';
 import BaseButton from '~components/Button/BaseButton';
 import type { BladeElementRef } from '~utils/types';
 import { MetaConstants } from '~utils/metaAttribute';
-import { makeAccessible } from '~utils/makeAccessible';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { isReactNative } from '~utils';
 
@@ -46,11 +44,14 @@ const _CollapsibleButton: React.ForwardRefRenderFunction<
       iconPosition={iconPosition}
       isDisabled={isDisabled}
       testID={testID}
-      accessibilityLabel={accessibilityLabel}
       ref={ref}
       onClick={toggleIsExpanded}
       alignSelf={isReactNative() ? 'flex-start' : undefined}
-      {...makeAccessible({ controls: collapsibleBodyId, expanded: isExpanded })}
+      accessibilityProps={{
+        label: accessibilityLabel,
+        controls: collapsibleBodyId,
+        expanded: isExpanded,
+      }}
     >
       {children}
     </BaseButton>
@@ -62,4 +63,5 @@ const CollapsibleButton = assignWithoutSideEffects(forwardRef(_CollapsibleButton
   componentId: MetaConstants.CollapsibleButton,
 });
 
-export { CollapsibleButton, CollapsibleButtonProps };
+export type { CollapsibleButtonProps };
+export { CollapsibleButton };

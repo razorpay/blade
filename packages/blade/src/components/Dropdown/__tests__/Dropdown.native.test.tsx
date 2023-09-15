@@ -154,7 +154,7 @@ describe('<Dropdown />', () => {
   });
 
   it('should handle controlled props with single select', () => {
-    const ControlledDropdown = (): JSX.Element => {
+    const ControlledDropdown = (): React.ReactElement => {
       const [currentSelection, setCurrentSelection] = React.useState<undefined | string>();
 
       return (
@@ -197,7 +197,7 @@ describe('<Dropdown />', () => {
   });
 
   it('should handle controlled props with multi select', () => {
-    const ControlledDropdown = (): JSX.Element => {
+    const ControlledDropdown = (): React.ReactElement => {
       const [currentSelection, setCurrentSelection] = React.useState<string[]>([]);
 
       return (
@@ -277,7 +277,7 @@ describe('<Dropdown /> with <DropdownButton />', () => {
   });
 
   it('should handle controlled selections', () => {
-    const ControlledDropdownMenu = (): JSX.Element => {
+    const ControlledDropdownMenu = (): React.ReactElement => {
       const [currentSelection, setCurrentSelection] = React.useState<string | undefined>(undefined);
       return (
         <>
@@ -319,7 +319,7 @@ describe('<Dropdown /> with <DropdownButton />', () => {
   });
 
   it('should handle controlled selections in DropdownLink', () => {
-    const ControlledDropdownMenu = (): JSX.Element => {
+    const ControlledDropdownMenu = (): React.ReactElement => {
       const [currentSelection, setCurrentSelection] = React.useState<string | undefined>(undefined);
       return (
         <>

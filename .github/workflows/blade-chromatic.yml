@@ -29,6 +29,8 @@ jobs:
           buildScriptName: react:storybook:build
           exitOnceUploaded: true
           onlyChanged: true
+          untraced: '**/package.json'
+          traceChanged: 'expanded'
         env:
           GITHUB_SHA: ${{ github.sha }}
           GITHUB_REF: ${{ github.ref }}

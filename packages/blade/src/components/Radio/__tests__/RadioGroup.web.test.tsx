@@ -20,7 +20,7 @@ describe('<RadioGroup />', () => {
       </RadioGroup>,
     );
     expect(container).toMatchSnapshot();
-    expect(getByRole('group')).toHaveTextContent(labelText);
+    expect(getByRole('radiogroup')).toHaveTextContent(labelText);
   });
 
   it('should render with help text', () => {
@@ -34,7 +34,7 @@ describe('<RadioGroup />', () => {
       </RadioGroup>,
     );
     expect(container).toMatchSnapshot();
-    expect(getByRole('group')).toHaveTextContent(labelText);
+    expect(getByRole('radiogroup')).toHaveTextContent(labelText);
     expect(queryByText(helpText)).toBeInTheDocument();
   });
 

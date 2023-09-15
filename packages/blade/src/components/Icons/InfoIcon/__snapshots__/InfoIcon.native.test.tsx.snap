@@ -3,7 +3,7 @@
 exports[`<InfoIcon /> should render InfoIcon 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
@@ -22,15 +22,15 @@ exports[`<InfoIcon /> should render InfoIcon 1`] = `
     minX={0}
     minY={0}
     style={
-      Array [
-        Object {
+      [
+        {
           "backgroundColor": "transparent",
           "borderWidth": 0,
         },
-        Array [
-          Object {},
+        [
+          {},
         ],
-        Object {
+        {
           "flex": 0,
           "height": 20,
           "width": 20,
@@ -44,7 +44,7 @@ exports[`<InfoIcon /> should render InfoIcon 1`] = `
     <RNSVGGroup
       fill={null}
       propList={
-        Array [
+        [
           "fill",
         ]
       }
@@ -53,7 +53,7 @@ exports[`<InfoIcon /> should render InfoIcon 1`] = `
         d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
         fill={4282603381}
         propList={
-          Array [
+          [
             "fill",
           ]
         }
@@ -62,7 +62,7 @@ exports[`<InfoIcon /> should render InfoIcon 1`] = `
         d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
         fill={4282603381}
         propList={
-          Array [
+          [
             "fill",
           ]
         }
@@ -73,7 +73,7 @@ exports[`<InfoIcon /> should render InfoIcon 1`] = `
         fill={4282603381}
         fillRule={0}
         propList={
-          Array [
+          [
             "fill",
             "fillRule",
           ]

@@ -3,12 +3,13 @@
 exports[`<Text /> should render Text with center textAlign 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
 >
   <Text
+    accessible={true}
     color="surface.text.normal.lowContrast"
     data-blade-component="text"
     fontFamily="text"
@@ -17,8 +18,8 @@ exports[`<Text /> should render Text with center textAlign 1`] = `
     fontWeight="regular"
     lineHeight={100}
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "hsla(217, 56%, 17%, 1)",
           "fontFamily": "Lato",
           "fontSize": 14,
@@ -48,12 +49,13 @@ exports[`<Text /> should render Text with center textAlign 1`] = `
 exports[`<Text /> should render Text with color 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
 >
   <Text
+    accessible={true}
     color="surface.text.muted.lowContrast"
     data-blade-component="text"
     fontFamily="text"
@@ -62,8 +64,8 @@ exports[`<Text /> should render Text with color 1`] = `
     fontWeight="regular"
     lineHeight={100}
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "hsla(216, 16%, 60%, 1)",
           "fontFamily": "Lato",
           "fontSize": 14,
@@ -91,12 +93,13 @@ exports[`<Text /> should render Text with color 1`] = `
 exports[`<Text /> should render Text with default properties 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
 >
   <Text
+    accessible={true}
     color="surface.text.normal.lowContrast"
     data-blade-component="text"
     fontFamily="text"
@@ -105,8 +108,8 @@ exports[`<Text /> should render Text with default properties 1`] = `
     fontWeight="regular"
     lineHeight={100}
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "hsla(217, 56%, 17%, 1)",
           "fontFamily": "Lato",
           "fontSize": 14,
@@ -134,12 +137,13 @@ exports[`<Text /> should render Text with default properties 1`] = `
 exports[`<Text /> should render Text with variant "body" 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
 >
   <Text
+    accessible={true}
     color="surface.text.normal.lowContrast"
     data-blade-component="text"
     fontFamily="text"
@@ -149,8 +153,8 @@ exports[`<Text /> should render Text with variant "body" 1`] = `
     lineHeight={100}
     numberOfLines={3}
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "hsla(217, 56%, 17%, 1)",
           "fontFamily": "Lato",
           "fontSize": 14,
@@ -178,12 +182,13 @@ exports[`<Text /> should render Text with variant "body" 1`] = `
 exports[`<Text /> should render Text with variant "body" and contrast "high" 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
 >
   <Text
+    accessible={true}
     color="surface.text.normal.highContrast"
     data-blade-component="text"
     fontFamily="text"
@@ -193,8 +198,8 @@ exports[`<Text /> should render Text with variant "body" and contrast "high" 1`]
     lineHeight={100}
     numberOfLines={3}
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "hsla(0, 0%, 100%, 1)",
           "fontFamily": "Lato",
           "fontSize": 14,
@@ -222,12 +227,13 @@ exports[`<Text /> should render Text with variant "body" and contrast "high" 1`]
 exports[`<Text /> should render Text with variant "body" and size "small" 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
 >
   <Text
+    accessible={true}
     color="surface.text.normal.lowContrast"
     data-blade-component="text"
     fontFamily="text"
@@ -237,8 +243,8 @@ exports[`<Text /> should render Text with variant "body" and size "small" 1`] = 
     lineHeight={50}
     numberOfLines={3}
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "hsla(217, 56%, 17%, 1)",
           "fontFamily": "Lato",
           "fontSize": 12,
@@ -266,12 +272,13 @@ exports[`<Text /> should render Text with variant "body" and size "small" 1`] = 
 exports[`<Text /> should render Text with variant "caption" 1`] = `
 <View
   style={
-    Object {
+    {
       "flex": 1,
     }
   }
 >
   <Text
+    accessible={true}
     color="surface.text.normal.lowContrast"
     data-blade-component="text"
     fontFamily="text"
@@ -280,8 +287,8 @@ exports[`<Text /> should render Text with variant "caption" 1`] = `
     fontWeight="bold"
     lineHeight={100}
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "hsla(217, 56%, 17%, 1)",
           "fontFamily": "Lato",
           "fontSize": 14,

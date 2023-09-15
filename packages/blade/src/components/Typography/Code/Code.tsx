@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { BaseText } from '../BaseText';
-import type { BaseTextProps } from '../BaseText/types';
+import type { BaseTextProps, BaseTextSizes } from '../BaseText/types';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
@@ -11,6 +11,7 @@ import type { FontSize, Typography } from '~tokens/global';
 import type { StringChildrenType, TestID } from '~utils/types';
 import { makeSpace } from '~utils/makeSpace';
 import { makeTypographySize } from '~utils/makeTypographySize';
+import { throwBladeError } from '~utils/logger';
 
 type CodeCommonProps = {
   /**
@@ -22,7 +23,7 @@ type CodeCommonProps = {
    *
    * @default small
    */
-  size?: 'small' | 'medium';
+  size?: Extract<BaseTextSizes, 'small' | 'medium'>;
   weight?: 'regular' | 'bold';
   isHighlighted?: boolean;
   color?: BaseTextProps['color'];
@@ -67,14 +68,20 @@ const isPlatformWeb = platformType === 'browser' || platformType === 'node';
 
 const getCodeFontSizeAndLineHeight = (
   size: CodeProps['size'],
-): { fontSize: keyof FontSize; lineHeight: keyof Typography['lineHeights'] } => {
+): { fontSize: keyof FontSize; lineHeight: keyof Typography['lineHeights'] } | undefined => {
   switch (size) {
     case 'medium':
       return { fontSize: 75, lineHeight: 75 };
     case 'small':
       return { fontSize: 25, lineHeight: 25 };
     default:
-      throw new Error(`[Blade Code]: Unexpected size: ${size}`);
+      if (__DEV__) {
+        throwBladeError({
+          moduleName: 'Code',
+          message: `Unexpected size: ${size}`,
+        });
+      }
+      return undefined;
   }
 };
 
@@ -98,8 +105,13 @@ const getCodeColor = ({
   color,
 }: Pick<CodeProps, 'isHighlighted' | 'color'>): CodeProps['color'] => {
   if (isHighlighted) {
-    if (color) {
-      throw new Error('[Blade: Code]: `color` prop cannot be used without `isHighlighted={false}`');
+    if (__DEV__) {
+      if (color) {
+        throwBladeError({
+          moduleName: 'Code',
+          message: '`color` prop cannot be used without `isHighlighted={false}`',
+        });
+      }
     }
 
     return 'surface.text.subtle.lowContrast';
@@ -145,8 +157,8 @@ const Code = ({
   color,
   testID,
   ...styledProps
-}: CodeProps): JSX.Element => {
-  const { fontSize, lineHeight } = getCodeFontSizeAndLineHeight(size);
+}: CodeProps): React.ReactElement => {
+  const { fontSize, lineHeight } = getCodeFontSizeAndLineHeight(size)!;
   const codeTextColor = React.useMemo<CodeProps['color']>(
     () => getCodeColor({ isHighlighted, color }),
     [isHighlighted, color],

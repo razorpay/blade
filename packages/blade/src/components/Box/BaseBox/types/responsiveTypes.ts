@@ -56,4 +56,4 @@ type MakeObjectResponsive<
   [P in K]: MakeValueResponsive<T[P]>;
 };
 
-export { MakeObjectResponsive, MakeValueResponsive };
+export type { MakeObjectResponsive, MakeValueResponsive };

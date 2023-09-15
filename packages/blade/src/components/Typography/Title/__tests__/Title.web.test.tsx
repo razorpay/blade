@@ -98,7 +98,7 @@ describe('<Title />', () => {
         <Title as="button">{displayText}</Title>,
       ),
     ).toThrow(
-      '[Blade Title]: Invalid `as` prop value - button. Only span, h1, h2, h3, h4, h5, h6 are accepted',
+      '[Blade: Title]: Invalid `as` prop value - button. Only span, h1, h2, h3, h4, h5, h6 are accepted',
     );
   });
 

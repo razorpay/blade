@@ -27,7 +27,6 @@ const _ActionListItemAsset = (props: ActionListItemAssetProps): React.ReactEleme
       source={source}
       style={{ width: size[16], height: size[12] }}
       accessibilityIgnoresInvertColors
-      // @ts-expect-error: alt does exist on React Native Image https://reactnative.dev/docs/image#alt
       alt={props.alt}
     />
   );
@@ -37,4 +36,5 @@ const ActionListItemAsset = assignWithoutSideEffects(_ActionListItemAsset, {
   componentId: componentIds.ActionListItemAsset,
 });
 
-export { ActionListItemAsset, ActionListItemAssetProps };
+export type { ActionListItemAssetProps };
+export { ActionListItemAsset };

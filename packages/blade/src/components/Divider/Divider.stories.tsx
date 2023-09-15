@@ -37,7 +37,7 @@ const Page = (): React.ReactElement => {
             CardBody
           } from "@razorpay/blade/components";
           
-          function App(): JSX.Element {
+          function App(): React.ReactElement {
             return (
               <Card>
                 <CardBody>

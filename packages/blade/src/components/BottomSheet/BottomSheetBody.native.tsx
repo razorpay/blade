@@ -50,7 +50,7 @@ const _BottomSheetBody = ({
         children
       ) : (
         <BottomSheetScrollView
-          onContentSizeChange={(_width, height) => {
+          onContentSizeChange={(_width: number, height: number) => {
             setContentHeight(height);
           }}
           style={{ marginBottom: footerHeight, borderRadius: isHeaderFloating ? size[16] : 0 }}

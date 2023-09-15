@@ -26,7 +26,7 @@ import type { Theme } from '~components/BladeProvider';
  *   // ... Your Props
  * } & StyledPropsBlade;
  *
- * const MyComponent = (props: MyComponentProps): JSX.Element => {
+ * const MyComponent = (props: MyComponentProps): React.ReactElement => {
  *  return (
  *    // Make sure styledProps come last so they take priority in stylings in-case of overrides
  *    <BaseBox {...getStyledProps(props)}>

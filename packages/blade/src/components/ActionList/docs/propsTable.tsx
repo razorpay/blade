@@ -5,7 +5,7 @@ import { ScrollLink } from '~utils/storybook/ScrollLink';
 
 type PropsTableType<T> = Record<
   keyof Omit<T, 'testID' | '_hideDivider' | '_index'>,
-  string | JSX.Element | { note: string; type: string | JSX.Element }
+  string | React.ReactElement | { note: string; type: string | React.ReactElement }
 >;
 const actionListPropsTables: {
   ActionList: PropsTableType<ActionListProps>;

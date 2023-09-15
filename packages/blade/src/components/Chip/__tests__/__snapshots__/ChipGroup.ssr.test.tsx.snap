@@ -1,0 +1,400 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ChipGroup /> should render with selectionType="multiple" 1`] = `"<div id="root"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div role="group" aria-labelledby="chip-group-15-label" data-blade-component="chip-group" class="BaseBox-bmPWx djEyfF"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 ijVANw"><p class="StyledBaseText-dVBfTO eIdQFo" data-blade-component="text">Select fruits</p></div><div data-blade-component="base-box" class="BaseBox-bmPWx jjhFBS"><div data-blade-component="base-box" class="BaseBox-bmPWx geZScS"><div data-blade-component="chip" class="BaseBox-bmPWx bcSLaJ"><label style="cursor:pointer" data-blade-component="chip-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 bgSmPY"><div data-blade-component="base-box" class="BaseBox-bmPWx xrMLB"><div data-blade-component="base-box" class="BaseBox-bmPWx fSbYvl"><input type="checkbox" role="checkbox" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 jsNgDv" value="apple"/><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedChipweb__AnimatedChip-sc-1xiynj1-0 dRscRB kDMGeD"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledChipWrapperweb__StyledChipWrapper-sc-1p3u1xx-0 jRMjox iQELOd"><p class="StyledBaseText-dVBfTO jICDGX" data-blade-component="text">Apple</p></div></div></div></div></label></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx geZScS"><div data-blade-component="chip" class="BaseBox-bmPWx bcSLaJ"><label style="cursor:pointer" data-blade-component="chip-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 bgSmPY"><div data-blade-component="base-box" class="BaseBox-bmPWx xrMLB"><div data-blade-component="base-box" class="BaseBox-bmPWx fSbYvl"><input type="checkbox" role="checkbox" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 jsNgDv" value="mango"/><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedChipweb__AnimatedChip-sc-1xiynj1-0 dRscRB kDMGeD"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledChipWrapperweb__StyledChipWrapper-sc-1p3u1xx-0 jRMjox iQELOd"><p class="StyledBaseText-dVBfTO jICDGX" data-blade-component="text">Mango</p></div></div></div></div></label></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx geZScS"><div data-blade-component="chip" class="BaseBox-bmPWx bcSLaJ"><label style="cursor:pointer" data-blade-component="chip-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 bgSmPY"><div data-blade-component="base-box" class="BaseBox-bmPWx xrMLB"><div data-blade-component="base-box" class="BaseBox-bmPWx fSbYvl"><input type="checkbox" role="checkbox" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 jsNgDv" value="orange"/><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedChipweb__AnimatedChip-sc-1xiynj1-0 dRscRB kDMGeD"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledChipWrapperweb__StyledChipWrapper-sc-1p3u1xx-0 jRMjox iQELOd"><p class="StyledBaseText-dVBfTO jICDGX" data-blade-component="text">Orange</p></div></div></div></div></label></div></div></div></div></div></div></div>"`;
+
+exports[`<ChipGroup /> should render with selectionType="multiple" 2`] = `
+<div
+  id="root"
+>
+  <div
+    class="BaseBox-bmPWx"
+    data-blade-component="base-box"
+  >
+    <div
+      aria-labelledby="chip-group-15-label"
+      class="BaseBox-bmPWx djEyfF"
+      data-blade-component="chip-group"
+      role="group"
+    >
+      <div
+        class="BaseBox-bmPWx"
+        data-blade-component="base-box"
+      >
+        <div
+          class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 ijVANw"
+          data-blade-component="visually-hidden"
+        >
+          <p
+            class="StyledBaseText-dVBfTO eIdQFo"
+            data-blade-component="text"
+          >
+            Select fruits
+          </p>
+        </div>
+        <div
+          class="BaseBox-bmPWx jjhFBS"
+          data-blade-component="base-box"
+        >
+          <div
+            class="BaseBox-bmPWx geZScS"
+            data-blade-component="base-box"
+          >
+            <div
+              class="BaseBox-bmPWx bcSLaJ"
+              data-blade-component="chip"
+            >
+              <label
+                class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 bgSmPY"
+                data-blade-component="chip-label"
+                style="cursor:pointer"
+              >
+                <div
+                  class="BaseBox-bmPWx xrMLB"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="BaseBox-bmPWx fSbYvl"
+                    data-blade-component="base-box"
+                  >
+                    <input
+                      aria-checked="false"
+                      aria-disabled="false"
+                      aria-invalid="false"
+                      aria-required="false"
+                      class="SelectorInputweb__StyledInput-sc-1bnkrae-0 jsNgDv"
+                      role="checkbox"
+                      type="checkbox"
+                      value="apple"
+                    />
+                    <div
+                      class="BaseBox-bmPWx AnimatedChipweb__AnimatedChip-sc-1xiynj1-0 dRscRB kDMGeD"
+                      data-blade-component="base-box"
+                    >
+                      <div
+                        class="BaseBox-bmPWx StyledChipWrapperweb__StyledChipWrapper-sc-1p3u1xx-0 jRMjox iQELOd"
+                        data-blade-component="base-box"
+                      >
+                        <p
+                          class="StyledBaseText-dVBfTO jICDGX"
+                          data-blade-component="text"
+                        >
+                          Apple
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </label>
+            </div>
+          </div>
+          <div
+            class="BaseBox-bmPWx geZScS"
+            data-blade-component="base-box"
+          >
+            <div
+              class="BaseBox-bmPWx bcSLaJ"
+              data-blade-component="chip"
+            >
+              <label
+                class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 bgSmPY"
+                data-blade-component="chip-label"
+                style="cursor:pointer"
+              >
+                <div
+                  class="BaseBox-bmPWx xrMLB"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="BaseBox-bmPWx fSbYvl"
+                    data-blade-component="base-box"
+                  >
+                    <input
+                      aria-checked="false"
+                      aria-disabled="false"
+                      aria-invalid="false"
+                      aria-required="false"
+                      class="SelectorInputweb__StyledInput-sc-1bnkrae-0 jsNgDv"
+                      role="checkbox"
+                      type="checkbox"
+                      value="mango"
+                    />
+                    <div
+                      class="BaseBox-bmPWx AnimatedChipweb__AnimatedChip-sc-1xiynj1-0 dRscRB kDMGeD"
+                      data-blade-component="base-box"
+                    >
+                      <div
+                        class="BaseBox-bmPWx StyledChipWrapperweb__StyledChipWrapper-sc-1p3u1xx-0 jRMjox iQELOd"
+                        data-blade-component="base-box"
+                      >
+                        <p
+                          class="StyledBaseText-dVBfTO jICDGX"
+                          data-blade-component="text"
+                        >
+                          Mango
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </label>
+            </div>
+          </div>
+          <div
+            class="BaseBox-bmPWx geZScS"
+            data-blade-component="base-box"
+          >
+            <div
+              class="BaseBox-bmPWx bcSLaJ"
+              data-blade-component="chip"
+            >
+              <label
+                class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 bgSmPY"
+                data-blade-component="chip-label"
+                style="cursor:pointer"
+              >
+                <div
+                  class="BaseBox-bmPWx xrMLB"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="BaseBox-bmPWx fSbYvl"
+                    data-blade-component="base-box"
+                  >
+                    <input
+                      aria-checked="false"
+                      aria-disabled="false"
+                      aria-invalid="false"
+                      aria-required="false"
+                      class="SelectorInputweb__StyledInput-sc-1bnkrae-0 jsNgDv"
+                      role="checkbox"
+                      type="checkbox"
+                      value="orange"
+                    />
+                    <div
+                      class="BaseBox-bmPWx AnimatedChipweb__AnimatedChip-sc-1xiynj1-0 dRscRB kDMGeD"
+                      data-blade-component="base-box"
+                    >
+                      <div
+                        class="BaseBox-bmPWx StyledChipWrapperweb__StyledChipWrapper-sc-1p3u1xx-0 jRMjox iQELOd"
+                        data-blade-component="base-box"
+                      >
+                        <p
+                          class="StyledBaseText-dVBfTO jICDGX"
+                          data-blade-component="text"
+                        >
+                          Orange
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<ChipGroup /> should render with selectionType="single" 1`] = `"<div id="root"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div role="radiogroup" aria-labelledby="chip-group-undefined-label" data-blade-component="chip-group" class="BaseBox-bmPWx djEyfF"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 ijVANw"><p class="StyledBaseText-dVBfTO eIdQFo" data-blade-component="text">Select fruits</p></div><div data-blade-component="base-box" class="BaseBox-bmPWx jjhFBS"><div data-blade-component="base-box" class="BaseBox-bmPWx geZScS"><div data-blade-component="chip" class="BaseBox-bmPWx bcSLaJ"><label style="cursor:pointer" data-blade-component="chip-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 bgSmPY"><div data-blade-component="base-box" class="BaseBox-bmPWx xrMLB"><div data-blade-component="base-box" class="BaseBox-bmPWx fSbYvl"><input type="radio" role="radio" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" aria-describedby="radio-undefined-helptext-undefined" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 jsNgDv" value="apple"/><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedChipweb__AnimatedChip-sc-1xiynj1-0 dRscRB kDMGeD"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledChipWrapperweb__StyledChipWrapper-sc-1p3u1xx-0 jRMjox iQELOd"><p class="StyledBaseText-dVBfTO jICDGX" data-blade-component="text">Apple</p></div></div></div></div></label></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx geZScS"><div data-blade-component="chip" class="BaseBox-bmPWx bcSLaJ"><label style="cursor:pointer" data-blade-component="chip-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 bgSmPY"><div data-blade-component="base-box" class="BaseBox-bmPWx xrMLB"><div data-blade-component="base-box" class="BaseBox-bmPWx fSbYvl"><input type="radio" role="radio" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" aria-describedby="radio-undefined-helptext-undefined" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 jsNgDv" value="mango"/><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedChipweb__AnimatedChip-sc-1xiynj1-0 dRscRB kDMGeD"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledChipWrapperweb__StyledChipWrapper-sc-1p3u1xx-0 jRMjox iQELOd"><p class="StyledBaseText-dVBfTO jICDGX" data-blade-component="text">Mango</p></div></div></div></div></label></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx geZScS"><div data-blade-component="chip" class="BaseBox-bmPWx bcSLaJ"><label style="cursor:pointer" data-blade-component="chip-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 bgSmPY"><div data-blade-component="base-box" class="BaseBox-bmPWx xrMLB"><div data-blade-component="base-box" class="BaseBox-bmPWx fSbYvl"><input type="radio" role="radio" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" aria-describedby="radio-undefined-helptext-undefined" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 jsNgDv" value="orange"/><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedChipweb__AnimatedChip-sc-1xiynj1-0 dRscRB kDMGeD"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledChipWrapperweb__StyledChipWrapper-sc-1p3u1xx-0 jRMjox iQELOd"><p class="StyledBaseText-dVBfTO jICDGX" data-blade-component="text">Orange</p></div></div></div></div></label></div></div></div></div></div></div></div>"`;
+
+exports[`<ChipGroup /> should render with selectionType="single" 2`] = `
+<div
+  id="root"
+>
+  <div
+    class="BaseBox-bmPWx"
+    data-blade-component="base-box"
+  >
+    <div
+      aria-labelledby="chip-group-7-label"
+      class="BaseBox-bmPWx djEyfF"
+      data-blade-component="chip-group"
+      role="radiogroup"
+    >
+      <div
+        class="BaseBox-bmPWx"
+        data-blade-component="base-box"
+      >
+        <div
+          class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 ijVANw"
+          data-blade-component="visually-hidden"
+        >
+          <p
+            class="StyledBaseText-dVBfTO eIdQFo"
+            data-blade-component="text"
+          >
+            Select fruits
+          </p>
+        </div>
+        <div
+          class="BaseBox-bmPWx jjhFBS"
+          data-blade-component="base-box"
+        >
+          <div
+            class="BaseBox-bmPWx geZScS"
+            data-blade-component="base-box"
+          >
+            <div
+              class="BaseBox-bmPWx bcSLaJ"
+              data-blade-component="chip"
+            >
+              <label
+                class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 bgSmPY"
+                data-blade-component="chip-label"
+                style="cursor:pointer"
+              >
+                <div
+                  class="BaseBox-bmPWx xrMLB"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="BaseBox-bmPWx fSbYvl"
+                    data-blade-component="base-box"
+                  >
+                    <input
+                      aria-checked="false"
+                      aria-describedby="radio-1-helptext-2"
+                      aria-disabled="false"
+                      aria-invalid="false"
+                      aria-required="false"
+                      class="SelectorInputweb__StyledInput-sc-1bnkrae-0 jsNgDv"
+                      role="radio"
+                      type="radio"
+                      value="apple"
+                    />
+                    <div
+                      class="BaseBox-bmPWx AnimatedChipweb__AnimatedChip-sc-1xiynj1-0 dRscRB kDMGeD"
+                      data-blade-component="base-box"
+                    >
+                      <div
+                        class="BaseBox-bmPWx StyledChipWrapperweb__StyledChipWrapper-sc-1p3u1xx-0 jRMjox iQELOd"
+                        data-blade-component="base-box"
+                      >
+                        <p
+                          class="StyledBaseText-dVBfTO jICDGX"
+                          data-blade-component="text"
+                        >
+                          Apple
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </label>
+            </div>
+          </div>
+          <div
+            class="BaseBox-bmPWx geZScS"
+            data-blade-component="base-box"
+          >
+            <div
+              class="BaseBox-bmPWx bcSLaJ"
+              data-blade-component="chip"
+            >
+              <label
+                class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 bgSmPY"
+                data-blade-component="chip-label"
+                style="cursor:pointer"
+              >
+                <div
+                  class="BaseBox-bmPWx xrMLB"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="BaseBox-bmPWx fSbYvl"
+                    data-blade-component="base-box"
+                  >
+                    <input
+                      aria-checked="false"
+                      aria-describedby="radio-3-helptext-4"
+                      aria-disabled="false"
+                      aria-invalid="false"
+                      aria-required="false"
+                      class="SelectorInputweb__StyledInput-sc-1bnkrae-0 jsNgDv"
+                      role="radio"
+                      type="radio"
+                      value="mango"
+                    />
+                    <div
+                      class="BaseBox-bmPWx AnimatedChipweb__AnimatedChip-sc-1xiynj1-0 dRscRB kDMGeD"
+                      data-blade-component="base-box"
+                    >
+                      <div
+                        class="BaseBox-bmPWx StyledChipWrapperweb__StyledChipWrapper-sc-1p3u1xx-0 jRMjox iQELOd"
+                        data-blade-component="base-box"
+                      >
+                        <p
+                          class="StyledBaseText-dVBfTO jICDGX"
+                          data-blade-component="text"
+                        >
+                          Mango
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </label>
+            </div>
+          </div>
+          <div
+            class="BaseBox-bmPWx geZScS"
+            data-blade-component="base-box"
+          >
+            <div
+              class="BaseBox-bmPWx bcSLaJ"
+              data-blade-component="chip"
+            >
+              <label
+                class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 bgSmPY"
+                data-blade-component="chip-label"
+                style="cursor:pointer"
+              >
+                <div
+                  class="BaseBox-bmPWx xrMLB"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="BaseBox-bmPWx fSbYvl"
+                    data-blade-component="base-box"
+                  >
+                    <input
+                      aria-checked="false"
+                      aria-describedby="radio-5-helptext-6"
+                      aria-disabled="false"
+                      aria-invalid="false"
+                      aria-required="false"
+                      class="SelectorInputweb__StyledInput-sc-1bnkrae-0 jsNgDv"
+                      role="radio"
+                      type="radio"
+                      value="orange"
+                    />
+                    <div
+                      class="BaseBox-bmPWx AnimatedChipweb__AnimatedChip-sc-1xiynj1-0 dRscRB kDMGeD"
+                      data-blade-component="base-box"
+                    >
+                      <div
+                        class="BaseBox-bmPWx StyledChipWrapperweb__StyledChipWrapper-sc-1p3u1xx-0 jRMjox iQELOd"
+                        data-blade-component="base-box"
+                      >
+                        <p
+                          class="StyledBaseText-dVBfTO jICDGX"
+                          data-blade-component="text"
+                        >
+                          Orange
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

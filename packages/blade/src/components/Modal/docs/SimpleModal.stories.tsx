@@ -1,5 +1,6 @@
 import React from 'react';
 import type { ComponentStory, Meta } from '@storybook/react';
+import isChromatic from 'chromatic/isChromatic';
 import type { ModalProps } from '../Modal';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from '../Modal';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
@@ -26,7 +27,10 @@ export default {
 } as Meta<ModalProps>;
 
 const ModalTemplate: ComponentStory<typeof Modal> = ({ size }) => {
-  const [isOpen, setIsOpen] = React.useState(true);
+  // `!!isChramatic` is not readable hence disabling the eslint rule
+  // eslint-disable-next-line no-unneeded-ternary
+  const [isOpen, setIsOpen] = React.useState(isChromatic() ? true : false);
+
   return (
     <>
       <Button onClick={() => setIsOpen(!isOpen)}>Open Modal</Button>

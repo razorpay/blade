@@ -25,7 +25,7 @@ const Page = (): ReactElement => {
         {`
           import { Code, Text } from '@razorpay/blade/components';
 
-          function App(): JSX.Element {
+          function App(): React.ReactElement {
             return (
               // For React Native, you will have to use flex layout to align Code component properly
               <Text>You can use <Code>Code</Code> component to add inlined Code, token names, variable names, etc</Text>
@@ -78,11 +78,11 @@ WithBoldColor.args = {
   weight: 'bold',
 };
 
-export const SizeMedium = (): JSX.Element => {
+export const SizeMedium = (): React.ReactElement => {
   return <CodeComponent size="medium">mediumCode</CodeComponent>;
 };
 
-export const SizeSmall = (): JSX.Element => {
+export const SizeSmall = (): React.ReactElement => {
   return <CodeComponent size="small">smallCode</CodeComponent>;
 };
 
@@ -91,7 +91,7 @@ NonHighlighted.args = {
   isHighlighted: false,
 };
 
-export const ParagraphUse = (): JSX.Element => {
+export const ParagraphUse = (): React.ReactElement => {
   return (
     <>
       {/* For React Native, use flex to align items correctly */}

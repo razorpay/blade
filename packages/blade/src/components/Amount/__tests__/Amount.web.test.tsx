@@ -1,3 +1,4 @@
+import type { AmountProps } from '../Amount';
 import {
   addCommas,
   Amount,
@@ -80,10 +81,14 @@ describe('<Amount />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should render MYR currency Amount ', () => {
-    const { container } = renderWithTheme(<Amount currency="MYR" value={1000} />);
-    expect(container).toMatchSnapshot();
-  });
+  for (const currency of ['USD', 'MYR', 'AED']) {
+    it(`should render ${currency} currency Amount`, () => {
+      const { container } = renderWithTheme(
+        <Amount currency={currency as AmountProps['currency']} value={1000} />,
+      );
+      expect(container).toMatchSnapshot();
+    });
+  }
 
   it('should not have accessibility violations', async () => {
     const { container } = renderWithTheme(<Amount value={1000} />);
@@ -126,6 +131,16 @@ describe('<Amount />', () => {
     );
     expect(formatAmountWithSuffix({ value: 10000000, currency: 'MYR', suffix: 'none' })).toBe(
       '10,000,000',
+    );
+    // Related issue - https://github.com/razorpay/blade/issues/1572
+    expect(formatAmountWithSuffix({ value: 2.07, currency: 'INR', suffix: 'decimals' })).toBe(
+      '2.07',
+    );
+    expect(formatAmountWithSuffix({ value: 2.077, currency: 'INR', suffix: 'decimals' })).toBe(
+      '2.08',
+    );
+    expect(formatAmountWithSuffix({ value: 2.3, currency: 'INR', suffix: 'decimals' })).toBe(
+      '2.30',
     );
   });
 });

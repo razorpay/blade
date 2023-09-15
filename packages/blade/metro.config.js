@@ -1,13 +1,15 @@
+const { getDefaultConfig, mergeConfig } = require('@react-native/metro-config');
+
 /**
- * Metro configuration for React Native
- * https://github.com/facebook/react-native
+ * Metro configuration
+ * https://facebook.github.io/metro/docs/configuration
  *
- * @format
+ * @type {import('metro-config').MetroConfig}
  */
 
 // eslint-disable-next-line import/no-extraneous-dependencies
 
-module.exports = {
+const config = {
   resetCache: true,
   transformer: {
     getTransformOptions: async () => ({
@@ -19,5 +21,9 @@ module.exports = {
   },
   resolver: {
     resolverMainFields: ['sbmodern', 'browser', 'module', 'main'],
+    // TODO: Remove sourceExts array after upgrading to RN 0.72.3
+    sourceExts: ['js', 'jsx', 'json', 'ts', 'tsx', 'mjs', 'cjs'],
   },
 };
+
+module.exports = mergeConfig(getDefaultConfig(__dirname), config);

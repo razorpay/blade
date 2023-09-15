@@ -145,7 +145,7 @@ describe('<Heading />', () => {
         <Heading as="button">{displayText}</Heading>,
       ),
     ).toThrow(
-      '[Blade Heading]: Invalid `as` prop value - button. Only span, h1, h2, h3, h4, h5, h6 are accepted',
+      '[Blade: Heading]: Invalid `as` prop value - button. Only span, h1, h2, h3, h4, h5, h6 are accepted',
     );
   });
 

@@ -29,7 +29,7 @@ const Page = (): ReactElement => {
         {`
           import { Heading } from '@razorpay/blade/components';
 
-          function App(): JSX.Element {
+          function App(): React.ReactElement {
             return (
               <Heading size="large">Blade by Razorpay</Heading>
             )

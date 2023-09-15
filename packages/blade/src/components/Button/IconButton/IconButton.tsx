@@ -3,7 +3,7 @@
 import React from 'react';
 import StyledIconButton from './StyledIconButton';
 import type { IconComponent } from '~components/Icons';
-import type { BladeElementRef } from '~utils/useBladeInnerRef';
+import type { BladeElementRef } from '~utils/types';
 import type { BladeCommonEvents } from '~components/types';
 
 type IconButtonProps = {
@@ -18,7 +18,7 @@ type IconButtonProps = {
    *
    * @default 'medium'
    */
-  size?: 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large';
 
   /**
    * Icon contrast
@@ -31,6 +31,11 @@ type IconButtonProps = {
    * Sets aria-label to help users know what the action does, eg 'Dismiss alert'
    */
   accessibilityLabel: string;
+
+  /**
+   * Disabled state for IconButton
+   */
+  isDisabled?: boolean;
 } & BladeCommonEvents;
 
 /**
@@ -44,6 +49,7 @@ const _IconButton: React.ForwardRefRenderFunction<BladeElementRef, IconButtonPro
     size = 'medium',
     contrast = 'low',
     accessibilityLabel,
+    isDisabled,
     onBlur,
     onFocus,
     onMouseLeave,
@@ -63,6 +69,7 @@ const _IconButton: React.ForwardRefRenderFunction<BladeElementRef, IconButtonPro
       size={size}
       icon={icon}
       accessibilityLabel={accessibilityLabel}
+      isDisabled={isDisabled}
       onBlur={onBlur}
       onFocus={onFocus}
       onMouseLeave={onMouseLeave}
@@ -77,4 +84,5 @@ const _IconButton: React.ForwardRefRenderFunction<BladeElementRef, IconButtonPro
 
 const IconButton = React.forwardRef(_IconButton);
 
-export { IconButtonProps, IconButton };
+export type { IconButtonProps };
+export { IconButton };
