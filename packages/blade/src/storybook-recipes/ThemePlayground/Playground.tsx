@@ -20,7 +20,7 @@ const Playground = (): React.ReactElement => {
           />
         </CardHeader>
         <CardBody>
-          <Box minWidth="300px">
+          <Box>
             <Box display="flex" flexDirection="column" gap="spacing.5">
               <TextInput
                 label="Name"
