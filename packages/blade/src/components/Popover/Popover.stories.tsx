@@ -26,6 +26,7 @@ import { IconButton } from '~components/Button/IconButton';
 import { isReactNative } from '~utils';
 import { Alert } from '~components/Alert';
 import BaseBox from '~components/Box/BaseBox';
+import { PopoverVsTooltip } from '~utils/storybook/PopoverVsTooltip';
 
 const Page = (): React.ReactElement => {
   return (
@@ -55,6 +56,8 @@ const Page = (): React.ReactElement => {
         export default App;
       `}
       </Sandbox>
+      <Title>Popover Vs Tooltip</Title>
+      <PopoverVsTooltip />
     </StoryPageWrapper>
   );
 };

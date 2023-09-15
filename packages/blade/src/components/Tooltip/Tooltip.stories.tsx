@@ -17,6 +17,7 @@ import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import BaseBox from '~components/Box/BaseBox';
 import type { BladeCommonEvents } from '~components/types';
+import { PopoverVsTooltip } from '~utils/storybook/PopoverVsTooltip';
 
 const Page = (): React.ReactElement => {
   return (
@@ -46,6 +47,8 @@ const Page = (): React.ReactElement => {
         export default App;
       `}
       </Sandbox>
+      <Title>Tooltip Vs Popover</Title>
+      <PopoverVsTooltip />
     </StoryPageWrapper>
   );
 };
