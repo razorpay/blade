@@ -49,12 +49,14 @@ const validDropdownChildren = [
  */
 const _Dropdown = ({
   children,
+  isOpen: isOpenProp,
+  setIsOpen: setIsOpenProp,
   selectionType = 'single',
   onDismiss,
   testID,
   ...styledProps
 }: DropdownProps): React.ReactElement => {
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = React.useState(isOpenProp ?? false);
   const [options, setOptions] = React.useState<DropdownContextType['options']>([]);
   const [selectedIndices, setSelectedIndices] = React.useState<
     DropdownContextType['selectedIndices']
@@ -99,6 +101,17 @@ const _Dropdown = ({
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
+
+  React.useEffect(() => {
+    // Sets `isOpen` to `isOpenProp` is it is changed by the user
+    setIsOpen(isOpenProp ?? isOpen)
+  }, [isOpenProp])
+
+  React.useEffect(() => {
+    // if `setIsOpen` prop is not undefined, sync it with the internal `isOpen` state
+    if (setIsOpenProp)
+      setIsOpenProp(isOpen)
+  }, [isOpen])
 
   const close = React.useCallback(() => {
     setIsOpen(false);
