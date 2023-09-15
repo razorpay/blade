@@ -15,7 +15,7 @@ const Playground = (): React.ReactElement => {
       <Card elevation="none">
         <CardHeader>
           <CardHeaderLeading
-            title="Razorpay Singup"
+            title="Razorpay Signup"
             prefix={<CardHeaderIcon icon={RazorpayIcon} />}
           />
         </CardHeader>

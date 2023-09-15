@@ -5,6 +5,7 @@ import { CheckIcon } from '~components/Icons';
 import { Radio, RadioGroup } from '~components/Radio';
 import { Code, Heading, Text } from '~components/Typography';
 import type { ColorSchemeNamesInput } from '~tokens/theme';
+import { SandboxHighlighter } from '~utils/storybook/Sandbox';
 
 const ColorSelection = styled.button<{ color: string }>(({ color }) => ({
   width: '24px',
@@ -41,7 +42,7 @@ const ThemeSelector = ({
   setColorScheme,
 }: {
   selectedColor?: string;
-  colorScheme: ColorSchemeNamesInput;
+  colorScheme: Exclude<ColorSchemeNamesInput, 'system'>;
   setSelectedColor: React.Dispatch<React.SetStateAction<string | undefined>>;
   setColorScheme: React.Dispatch<React.SetStateAction<ColorSchemeNamesInput>>;
 }): React.ReactElement => {
@@ -96,15 +97,50 @@ const ThemeSelector = ({
           </Box>
           <Box marginTop="spacing.5" />
           <Text type="subdued" weight="bold" marginRight="spacing.8">
-            Usage:
+            Code:
           </Text>
           {selectedColor ? (
+            <SandboxHighlighter showLineNumbers={false} theme={colorScheme}>
+              {` 
+              import { createTheme } from '@razorpay/blade/utils';
+              import App from './App';
+
+              const Wrapper = () => {
+              // create your custom theme here with any brand color
+              const customTheme = createTheme({ brandColor: '${selectedColor}' })
+              
+              return (
+                  <BladeProvider themeTokens={customTheme} colorScheme='${colorScheme}'>
+                    {App}
+                  </BladeProvider>
+                );
+              };
+            `}
+            </SandboxHighlighter>
+          ) : (
+            <SandboxHighlighter showLineNumbers={false} theme={colorScheme}>
+              {` 
+              import { paymentTheme } from '@razorpay/blade/tokens';
+              import App from './App';
+              
+              const Wrapper = () => {
+                return (
+                  <BladeProvider themeTokens={paymentTheme} colorScheme='${colorScheme}'>
+                  {App}
+                  </BladeProvider>
+                  );
+                };
+                `}
+            </SandboxHighlighter>
+          )}
+
+          {/* {selectedColor ? (
             <Code size="medium">{`const productTheme = createTheme({ brandColor: '${selectedColor}' })`}</Code>
           ) : null}
           <Box marginTop="spacing.3" />
           <Code size="medium">{`<BladeProvider themeTokens={${
             selectedColor ? `productTheme` : `paymentTheme`
-          }} colorScheme='${colorScheme}'>{App}</BladeProvider>`}</Code>
+          }} colorScheme='${colorScheme}'>{App}</BladeProvider>`}</Code> */}
         </Box>
       </CardBody>
     </Card>
