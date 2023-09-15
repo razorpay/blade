@@ -22,7 +22,7 @@ To make this possible, Blade allows you to customize the theme of the components
 
 ### `createTheme()`:
 
-> Returns a `ThemeTokens` object that can be passed to `themeTokens` prop of `BladeProvider` to customize the theme of all components.
+> Returns a `ThemeTokens` object that can be passed to `themeTokens` prop of `BladeProvider` to customize the branding of all components.
 
 `createTheme()` accepts an object with the following keys:
 
@@ -32,10 +32,6 @@ To make this possible, Blade allows you to customize the theme of the components
 - `createTheme` will generate a color palatte using this brand color which will then be used across Blade components to match your brand.
 - You can pass any valid CSS color value (rgb, hex or hsl) format to this key.
 
-#### `overrides`:
-
-This is an object that can be used to override any other theme tokens.
-
 ## Usage
 
 ```tsx
@@ -43,7 +39,6 @@ import { createTheme } from '@razorpay/blade/tokens';
 
 const customThemeTokens = createTheme({
   brandColor: '#83003D', // 'rgba(131, 0, 61)', 'hsl(332, 100%, 26%)' are also valid values
-  overrides: {}, // any other theme overrides
 });
 
 const Wrapper = () => {

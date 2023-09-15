@@ -102,7 +102,7 @@ const ThemeSelector = ({
           {selectedColor ? (
             <SandboxHighlighter showLineNumbers={false} theme={colorScheme}>
               {` 
-              import { createTheme } from '@razorpay/blade/utils';
+              import { createTheme } from '@razorpay/blade/tokens';
               import App from './App';
 
               const Wrapper = () => {
