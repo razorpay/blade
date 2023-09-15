@@ -179,9 +179,11 @@ const getActionListProperties = (
 const validateActionListItemProps = ({
   leading,
   trailing,
+  titleSuffix,
 }: {
   leading: ActionListItemProps['leading'];
   trailing: ActionListItemProps['trailing'];
+  titleSuffix: ActionListItemProps['titleSuffix'];
 }): void => {
   if (__DEV__) {
     React.Children.map(trailing, (child) => {
@@ -191,6 +193,18 @@ const validateActionListItemProps = ({
       ) {
         throwBladeError({
           message: `Only ${componentIds.ActionListItemIcon} and ${componentIds.ActionListItemText} are allowed in trailing prop`,
+          moduleName: 'ActionListItem',
+        });
+      }
+    });
+
+    React.Children.map(titleSuffix, (child) => {
+      if (
+        !isValidAllowedChildren(child, componentIds.ActionListItemBadge) &&
+        !isValidAllowedChildren(child, componentIds.ActionListItemBadgeGroup)
+      ) {
+        throwBladeError({
+          message: `Only ${componentIds.ActionListItemBadge} and ${componentIds.ActionListItemBadgeGroup} are allowed in trailing prop`,
           moduleName: 'ActionListItem',
         });
       }
