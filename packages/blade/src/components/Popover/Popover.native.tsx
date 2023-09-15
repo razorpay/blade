@@ -83,6 +83,7 @@ const Popover = ({
     return {
       close: handleClose,
       defaultInitialFocusRef,
+      titleId: undefined,
     };
   }, [handleClose]);
 
@@ -98,7 +99,12 @@ const Popover = ({
         ),
         ref: refs.setReference,
       })}
-      <Modal collapsable={false} transparent visible={isVisible}>
+      <Modal
+        collapsable={false}
+        transparent
+        visible={Boolean(isVisible)}
+        {...metaAttribute({ testID: 'popover-modal' })}
+      >
         <TouchableOpacity
           style={{
             position: 'absolute',

@@ -79,6 +79,7 @@ type PopoverContentWrapperProps = {
   styles: CSSProperties;
   side?: Side;
   isVisible?: boolean;
+  isMobile: boolean;
 } & BaseBoxProps;
 
 /**
