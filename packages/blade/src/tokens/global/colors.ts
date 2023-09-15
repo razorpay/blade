@@ -1,6 +1,6 @@
 import { opacity } from './opacity';
 
-type ColorChromaticScale = Readonly<{
+export type ColorChromaticScale = Readonly<{
   50: string;
   100: string;
   200: string;
@@ -18,7 +18,7 @@ type ColorChromaticScale = Readonly<{
   a200: string;
 }>;
 
-type ColorNeutralScale = Readonly<{
+export type ColorNeutralScale = Readonly<{
   0: string;
   50: string;
   100: string;
