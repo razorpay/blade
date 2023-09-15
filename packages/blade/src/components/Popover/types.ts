@@ -7,8 +7,19 @@ import type { BaseBoxProps } from '~components/Box/BaseBox';
 import type { Platform } from '~utils';
 
 type PopoverProps = {
+  /**
+   * Popover title
+   */
   title?: string;
+  /**
+   * Leading content placed before the title
+   *
+   * Can be any blade icon or asset.
+   */
   titleLeading?: React.ReactNode;
+  /**
+   * Footer content
+   */
   footer?: React.ReactNode;
   /**
    * Popover content
@@ -20,15 +31,33 @@ type PopoverProps = {
    * @default "top"
    */
   placement?: UseFloatingOptions['placement'];
+  /**
+   * Popover trigger
+   */
   children: React.ReactElement;
+  /**
+   * Open state of Popover
+   * If set to true makes the popover controlled
+   */
   isOpen?: boolean;
+  /**
+   * Uncontrolled state of the popover
+   */
   defaultIsOpen?: boolean;
+  /**
+   * Called when popover open state is changed, this can be used to detect when popover opens or closed
+   */
   onOpenChange?: ({ isOpen }: { isOpen: boolean }) => void;
   /**
    * Sets the z-index of the Popover
    * @default 1000
    */
   zIndex?: number;
+  /**
+   * The ref of the element that should receive focus when the popover opens.
+   *
+   * @default PopoverCloseButton
+   */
   initialFocusRef?: React.RefObject<any>;
 };
 

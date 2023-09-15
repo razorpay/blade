@@ -373,44 +373,44 @@ const CustomTriggerDocs = () => {
       </ListItem>
       <ListItem>
         Make sure that your component can receive focus{' '}
-        <ListItemText as="span" type="placeholder">
+        <ListItemText as="span" type="subdued">
           (eg: have tabIndex:0)
         </ListItemText>
       </ListItem>
       <ListItem>
         Forward event handlers to the custom trigger{' '}
-        <ListItemText as="span" type="placeholder">
+        <ListItemText as="span" type="subdued">
           (you can import the PopoverTriggerProps type from blade when using TypeScript)
         </ListItemText>
         <List>
           <ListItem>onClick</ListItem>
           <ListItem>
             onMouseDown{' '}
-            <ListItemText as="span" type="placeholder">
+            <ListItemText as="span" type="subdued">
               (not needed if your trigger is a button component)
             </ListItemText>
           </ListItem>
           <ListItem>
             onPointerDown{' '}
-            <ListItemText as="span" type="placeholder">
+            <ListItemText as="span" type="subdued">
               (not needed if your trigger is a button component)
             </ListItemText>
           </ListItem>
           <ListItem>
             onKeyDown{' '}
-            <ListItemText as="span" type="placeholder">
+            <ListItemText as="span" type="subdued">
               (not needed if your trigger is a button component)
             </ListItemText>
           </ListItem>
           <ListItem>
             onKeyUp{' '}
-            <ListItemText as="span" type="placeholder">
+            <ListItemText as="span" type="subdued">
               (not needed if your trigger is a button component)
             </ListItemText>
           </ListItem>
           <ListItem>
             onTouchEnd{' '}
-            <ListItemText as="span" type="placeholder">
+            <ListItemText as="span" type="subdued">
               (react-native only)
             </ListItemText>
           </ListItem>
