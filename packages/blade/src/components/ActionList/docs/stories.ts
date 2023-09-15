@@ -19,8 +19,8 @@ const Playground = `
 
   function App(): React.ReactElement {
     return (
-    <Box>
-      <ActionList surfaceLevel={2}>
+    <Box backgroundColor="surface.background.level2.lowContrast">
+      <ActionList>
         <ActionListItem
           leading={<ActionListItemIcon icon={UserIcon} />}
           title="Profile"
@@ -64,8 +64,8 @@ const ActionList = `
 
   function App(): React.ReactElement {
     return (
-    <Box>
-      <ActionList surfaceLevel={2}>
+    <Box backgroundColor="surface.background.level2.lowContrast">
+      <ActionList>
         <ActionListItem title="Mumbai" value="mumbai" />
         <ActionListItem title="Bangalore" value="bangalore" />
       </ActionList>
@@ -83,15 +83,23 @@ const ActionListItem = `
     ActionListItem, 
     ActionListItemIcon, 
     ActionListItemText, 
+    ActionListItemBadgeGroup,
+    ActionListItemBadge,
     HomeIcon 
   } from '@razorpay/blade/components';
 
   function App(): React.ReactElement {
     return (
-    <Box>
+    <Box backgroundColor="surface.background.level2.lowContrast">
       <ActionList>
         <ActionListItem 
           title="Title"
+          titleSuffix={(
+            <ActionListItemBadgeGroup>
+              <ActionListItemBadge>as: Keyword</ActionListItemBadge>
+              <ActionListItemBadge>as: Place</ActionListItemBadge>
+            </ActionListItemBadgeGroup>
+          )}
           value="actionlist-value" 
           description="Description of the ActionListItem" 
           leading={<ActionListItemIcon icon={HomeIcon} />} 
@@ -115,7 +123,7 @@ const ActionListSection = `
 
   function App(): React.ReactElement {
     return (
-    <Box>
+    <Box backgroundColor="surface.background.level2.lowContrast">
       <ActionList>
         {/* You can multiple sections like this 👇🏼 */}
         <ActionListSection title="Account @blade">
