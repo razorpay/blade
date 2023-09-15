@@ -12,6 +12,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import { throwBladeError } from '~utils/logger';
+import { useDidUpdate } from '~utils/useDidUpdate';
 
 const validDropdownChildren = [
   componentIds.triggers.SelectInput,
@@ -87,15 +88,8 @@ const _Dropdown = ({
   const dropdownBaseId = useId('dropdown');
 
   const dropdownTriggerer = React.useRef<DropdownContextType['dropdownTriggerer']>();
-  const isFirstRenderRef = React.useRef(true);
 
-  React.useEffect(() => {
-    // Ignoring the `onDismiss` and `onOpenChange` call on first render
-    if (isFirstRenderRef.current) {
-      isFirstRenderRef.current = false;
-      return;
-    }
-
+  useDidUpdate(() => {
     onOpenChange?.(isOpen);
     if (!isOpen) {
       onDismiss?.();
