@@ -20,7 +20,7 @@ const propsCategory = {
 };
 
 export default {
-  title: 'Components/Dropdown/With Select',
+  title: 'Components/Dropdown/With Select/Props Playground',
   component: SelectInput,
   args: {
     defaultValue: undefined,
@@ -234,4 +234,4 @@ const SelectInputTemplate: ComponentStory<typeof SelectInput> = ({ icon, ...args
   );
 };
 
-export const PropsPlayground = SelectInputTemplate.bind({});
+export const Default = SelectInputTemplate.bind({});

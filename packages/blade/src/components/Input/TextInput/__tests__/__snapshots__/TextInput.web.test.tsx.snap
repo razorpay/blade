@@ -419,6 +419,9 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
 }
 
 .c9 {
@@ -434,31 +437,14 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
 }
 
 .c13 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-align-self: stretch;
-  -ms-flex-item-align: stretch;
-  align-self: stretch;
-}
-
-.c14 {
   padding-right: 12px;
 }
 
-.c16 {
+.c15 {
   margin-left: 0px;
 }
 
-.c17 {
+.c16 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -600,7 +586,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   outline: none;
 }
 
-.c15 {
+.c14 {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -803,11 +789,11 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
           value=""
         />
         <div
-          class="c13"
+          class="c8"
           data-blade-component="base-box"
         >
           <div
-            class="c14"
+            class="c13"
             data-blade-component="base-box"
           >
             <p
@@ -819,17 +805,17 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
           </div>
         </div>
         <div
-          class=" c15"
+          class=" c14"
           data-blade-component="base-box"
         />
       </div>
     </div>
     <div
-      class="c16"
+      class="c15"
       data-blade-component="base-box"
     >
       <div
-        class="c17"
+        class="c16"
         data-blade-component="base-box"
       />
     </div>
