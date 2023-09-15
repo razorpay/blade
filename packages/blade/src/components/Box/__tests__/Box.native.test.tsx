@@ -117,59 +117,13 @@ describe('<Box />', () => {
     const { toJSON } = renderWithTheme(
       <Box borderBottomColor="surface.border.normal.lowContrast">I am Visible</Box>,
     );
-    expect(toJSON()).toMatchInlineSnapshot(`
-      <View
-        style={
-          {
-            "flex": 1,
-          }
-        }
-      >
-        <View
-          borderBottomColor="surface.border.normal.lowContrast"
-          data-blade-component="box"
-          style={
-            [
-              {
-                "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
-                "borderBottomStyle": "solid",
-              },
-            ]
-          }
-        >
-          I am Visible
-        </View>
-      </View>
-    `);
+    expect(toJSON()).toMatchSnapshot();
   });
 
   it('should apply borderColor prop to all borders', () => {
     const { toJSON } = renderWithTheme(
       <Box borderColor="surface.border.normal.lowContrast">I am Visible</Box>,
     );
-    expect(toJSON()).toMatchInlineSnapshot(`
-      <View
-        style={
-          {
-            "flex": 1,
-          }
-        }
-      >
-        <View
-          borderColor="surface.border.normal.lowContrast"
-          data-blade-component="box"
-          style={
-            [
-              {
-                "borderColor": "hsla(216, 15%, 54%, 0.18)",
-                "borderStyle": "solid",
-              },
-            ]
-          }
-        >
-          I am Visible
-        </View>
-      </View>
-    `);
+    expect(toJSON()).toMatchSnapshot();
   });
 });
