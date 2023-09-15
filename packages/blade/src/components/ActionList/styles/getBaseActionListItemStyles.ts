@@ -15,6 +15,7 @@ type StyledActionListItemProps = {
   isSelected?: boolean;
   isKeydownPressed: boolean;
   isMobile: boolean;
+  isVisible?: boolean;
 };
 
 const getBaseActionListItemStyles = (
