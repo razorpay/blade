@@ -25,7 +25,7 @@ const propsCategory = {
 };
 
 export default {
-  title: 'Components/Dropdown/With AutoComplete/Stories',
+  title: 'Components/Dropdown/With AutoComplete/Props Playground',
   component: AutoComplete,
   args: {
     defaultValue: undefined,
@@ -261,9 +261,9 @@ const AutoCompleteTemplate: ComponentStory<typeof AutoComplete> = ({ icon, ...ar
   );
 };
 
-export const PropsPlayground = AutoCompleteTemplate.bind({});
+export const Default = AutoCompleteTemplate.bind({});
 // Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
-PropsPlayground.args = {
+Default.args = {
   label: 'City',
   placeholder: 'Select City',
 };
