@@ -41,7 +41,7 @@ type BottomSheetProps = {
 
 type BottomSheetHeaderProps = Pick<
   BaseHeaderProps,
-  'title' | 'subtitle' | 'leading' | 'showBackButton' | 'onBackButtonClick'
+  'title' | 'subtitle' | 'leading' | 'showBackButton' | 'onBackButtonClick' | 'children'
 > & {
   /**
    * Trailing element to be rendered in the Header

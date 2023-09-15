@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 import React from 'react';
 import { ComponentIds } from './componentIds';
-import { useBottomSheetContext } from './BottomSheetContext';
+import { useBottomSheetAndDropdownGlue, useBottomSheetContext } from './BottomSheetContext';
 import type { BottomSheetHeaderProps } from './types';
 import { BottomSheetEmptyHeader } from './BottomSheetCommon';
 import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
@@ -18,6 +18,7 @@ const _BottomSheetHeader = ({
   trailing,
   showBackButton = false,
   onBackButtonClick,
+  children,
 }: BottomSheetHeaderProps): React.ReactElement => {
   const {
     setHeaderHeight,
@@ -27,6 +28,7 @@ const _BottomSheetHeader = ({
     setIsHeaderEmpty,
     defaultInitialFocusRef,
   } = useBottomSheetContext();
+  const bottomSheetAndDropdownGlue = useBottomSheetAndDropdownGlue();
   const ref = React.useRef<HTMLDivElement>(null);
 
   useIsomorphicLayoutEffect(() => {
@@ -34,7 +36,7 @@ const _BottomSheetHeader = ({
     setHeaderHeight(ref.current.getBoundingClientRect().height);
   }, [ref, isOpen]);
 
-  const isHeaderEmpty = !(title || subtitle || leading || trailing || showBackButton);
+  const isHeaderEmpty = !(title || subtitle || leading || trailing || showBackButton || children);
 
   React.useEffect(() => {
     setIsHeaderEmpty(isHeaderEmpty);
@@ -57,15 +59,23 @@ const _BottomSheetHeader = ({
           leading={leading}
           trailing={trailing}
           titleSuffix={titleSuffix}
+          // we don't set focus on close button when it has AutoComplete inside.
+          // We set focus on AutoComplete instead inside AutoComplete component
+          closeButtonRef={
+            bottomSheetAndDropdownGlue?.hasAutoCompleteInBottomSheetHeader
+              ? undefined
+              : defaultInitialFocusRef
+          }
           // back button
-          closeButtonRef={defaultInitialFocusRef}
           showBackButton={showBackButton}
           onBackButtonClick={onBackButtonClick}
           // close button
           showCloseButton={true}
           onCloseButtonClick={close}
           {...bind?.()}
-        />
+        >
+          {children}
+        </BaseHeader>
       )}
     </BaseBox>
   );

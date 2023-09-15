@@ -27,6 +27,7 @@ import { throwBladeError } from '~utils/logger';
 import type { BadgeProps } from '~components/Badge';
 import { Badge } from '~components/Badge';
 import { Box } from '~components/Box';
+import { dropdownComponentIds } from '~components/Dropdown/dropdownComponentIds';
 
 type ActionListItemProps = {
   title: string;
@@ -330,15 +331,19 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
     dropdownBaseId,
     onOptionClick,
     selectedIndices,
-    setShouldIgnoreBlur,
     setShouldIgnoreBlurAnimation,
     selectionType,
     dropdownTriggerer,
     isKeydownPressed,
+    filteredValues,
+    hasAutoCompleteInBottomSheetHeader,
   } = useDropdown();
 
   const { platform } = useTheme();
   const isMobile = platform === 'onMobile';
+  const hasAutoComplete =
+    hasAutoCompleteInBottomSheetHeader ||
+    dropdownTriggerer === dropdownComponentIds.triggers.AutoComplete;
 
   const renderOnWebAs = props.href ? 'a' : 'button';
 
@@ -349,7 +354,7 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
    * isSelected prop explicitly is the only way to select item in menu
    */
   const getIsSelected = (): boolean | undefined => {
-    if (dropdownTriggerer === 'SelectInput') {
+    if (dropdownTriggerer === dropdownComponentIds.triggers.SelectInput || hasAutoComplete) {
       if (typeof props._index === 'number') {
         return selectedIndices.includes(props._index);
       }
@@ -372,7 +377,10 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
 
   React.useEffect(() => {
     if (__DEV__) {
-      if (dropdownTriggerer === 'SelectInput' && props.intent === 'negative') {
+      if (
+        dropdownTriggerer === dropdownComponentIds.triggers.SelectInput &&
+        props.intent === 'negative'
+      ) {
         throwBladeError({
           message:
             'negative intent ActionListItem cannot be used inside Dropdown with SelectInput trigger',
@@ -385,6 +393,7 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
   return (
     <ActionListItemContext.Provider value={{ intent: props.intent, isDisabled: props.isDisabled }}>
       <StyledActionListItem
+        isVisible={hasAutoComplete && filteredValues ? filteredValues.includes(props.value) : true}
         as={!isReactNative() ? renderOnWebAs : undefined}
         id={`${dropdownBaseId}-${props._index}`}
         type="button"
@@ -406,7 +415,6 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
         })}
         {...metaAttribute({ name: MetaConstants.ActionListItem, testID: props.testID })}
         onMouseDown={() => {
-          setShouldIgnoreBlur(true);
           // We want to keep focus on Dropdown's trigger while option is being clicked
           // So We set this flag that ignores the blur animation to avoid the flicker between focus out + focus in
           setShouldIgnoreBlurAnimation(true);

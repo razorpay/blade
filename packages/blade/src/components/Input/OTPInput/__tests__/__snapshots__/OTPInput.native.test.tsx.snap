@@ -213,18 +213,9 @@ exports[`<OTPInput /> should render 1`] = `
             >
               <View
                 currentInteraction="default"
-                data-blade-component="base-box"
-                display="flex"
-                flexDirection="row"
-                position="relative"
+                isTextArea={false}
                 style={
                   [
-                    {
-                      "display": "flex",
-                      "flexDirection": "row",
-                      "position": "relative",
-                      "width": "100%",
-                    },
                     {
                       "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
                       "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
@@ -232,10 +223,14 @@ exports[`<OTPInput /> should render 1`] = `
                       "borderBottomWidth": 1,
                       "borderTopLeftRadius": 2,
                       "borderTopRightRadius": 2,
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "position": "relative",
+                      "width": "100%",
                     },
+                    {},
                   ]
                 }
-                width="100%"
               >
                 <TextInput
                   accessibilityDescribedBy=""
@@ -252,6 +247,7 @@ exports[`<OTPInput /> should render 1`] = `
                   autoCompleteType="sms-otp"
                   data-blade-component="styled-base-input"
                   editable={true}
+                  hasTags={false}
                   id="otp-37-input-38-0-49-input-50"
                   isFocused={false}
                   isTextArea={false}
@@ -282,6 +278,7 @@ exports[`<OTPInput /> should render 1`] = `
                         "marginLeft": 0,
                         "marginRight": 0,
                         "marginTop": 0,
+                        "minHeight": 36,
                         "paddingBottom": 8,
                         "paddingLeft": 12,
                         "paddingRight": 12,
@@ -359,18 +356,9 @@ exports[`<OTPInput /> should render 1`] = `
             >
               <View
                 currentInteraction="default"
-                data-blade-component="base-box"
-                display="flex"
-                flexDirection="row"
-                position="relative"
+                isTextArea={false}
                 style={
                   [
-                    {
-                      "display": "flex",
-                      "flexDirection": "row",
-                      "position": "relative",
-                      "width": "100%",
-                    },
                     {
                       "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
                       "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
@@ -378,10 +366,14 @@ exports[`<OTPInput /> should render 1`] = `
                       "borderBottomWidth": 1,
                       "borderTopLeftRadius": 2,
                       "borderTopRightRadius": 2,
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "position": "relative",
+                      "width": "100%",
                     },
+                    {},
                   ]
                 }
-                width="100%"
               >
                 <TextInput
                   accessibilityDescribedBy=""
@@ -398,6 +390,7 @@ exports[`<OTPInput /> should render 1`] = `
                   autoCompleteType="sms-otp"
                   data-blade-component="styled-base-input"
                   editable={true}
+                  hasTags={false}
                   id="otp-37-input-38-1-55-input-56"
                   isFocused={false}
                   isTextArea={false}
@@ -428,6 +421,7 @@ exports[`<OTPInput /> should render 1`] = `
                         "marginLeft": 0,
                         "marginRight": 0,
                         "marginTop": 0,
+                        "minHeight": 36,
                         "paddingBottom": 8,
                         "paddingLeft": 12,
                         "paddingRight": 12,
@@ -505,18 +499,9 @@ exports[`<OTPInput /> should render 1`] = `
             >
               <View
                 currentInteraction="default"
-                data-blade-component="base-box"
-                display="flex"
-                flexDirection="row"
-                position="relative"
+                isTextArea={false}
                 style={
                   [
-                    {
-                      "display": "flex",
-                      "flexDirection": "row",
-                      "position": "relative",
-                      "width": "100%",
-                    },
                     {
                       "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
                       "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
@@ -524,10 +509,14 @@ exports[`<OTPInput /> should render 1`] = `
                       "borderBottomWidth": 1,
                       "borderTopLeftRadius": 2,
                       "borderTopRightRadius": 2,
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "position": "relative",
+                      "width": "100%",
                     },
+                    {},
                   ]
                 }
-                width="100%"
               >
                 <TextInput
                   accessibilityDescribedBy=""
@@ -544,6 +533,7 @@ exports[`<OTPInput /> should render 1`] = `
                   autoCompleteType="sms-otp"
                   data-blade-component="styled-base-input"
                   editable={true}
+                  hasTags={false}
                   id="otp-37-input-38-2-61-input-62"
                   isFocused={false}
                   isTextArea={false}
@@ -574,6 +564,7 @@ exports[`<OTPInput /> should render 1`] = `
                         "marginLeft": 0,
                         "marginRight": 0,
                         "marginTop": 0,
+                        "minHeight": 36,
                         "paddingBottom": 8,
                         "paddingLeft": 12,
                         "paddingRight": 12,
@@ -651,18 +642,9 @@ exports[`<OTPInput /> should render 1`] = `
             >
               <View
                 currentInteraction="default"
-                data-blade-component="base-box"
-                display="flex"
-                flexDirection="row"
-                position="relative"
+                isTextArea={false}
                 style={
                   [
-                    {
-                      "display": "flex",
-                      "flexDirection": "row",
-                      "position": "relative",
-                      "width": "100%",
-                    },
                     {
                       "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
                       "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
@@ -670,10 +652,14 @@ exports[`<OTPInput /> should render 1`] = `
                       "borderBottomWidth": 1,
                       "borderTopLeftRadius": 2,
                       "borderTopRightRadius": 2,
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "position": "relative",
+                      "width": "100%",
                     },
+                    {},
                   ]
                 }
-                width="100%"
               >
                 <TextInput
                   accessibilityDescribedBy=""
@@ -690,6 +676,7 @@ exports[`<OTPInput /> should render 1`] = `
                   autoCompleteType="sms-otp"
                   data-blade-component="styled-base-input"
                   editable={true}
+                  hasTags={false}
                   id="otp-37-input-38-3-67-input-68"
                   isFocused={false}
                   isTextArea={false}
@@ -720,6 +707,7 @@ exports[`<OTPInput /> should render 1`] = `
                         "marginLeft": 0,
                         "marginRight": 0,
                         "marginTop": 0,
+                        "minHeight": 36,
                         "paddingBottom": 8,
                         "paddingLeft": 12,
                         "paddingRight": 12,
@@ -797,18 +785,9 @@ exports[`<OTPInput /> should render 1`] = `
             >
               <View
                 currentInteraction="default"
-                data-blade-component="base-box"
-                display="flex"
-                flexDirection="row"
-                position="relative"
+                isTextArea={false}
                 style={
                   [
-                    {
-                      "display": "flex",
-                      "flexDirection": "row",
-                      "position": "relative",
-                      "width": "100%",
-                    },
                     {
                       "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
                       "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
@@ -816,10 +795,14 @@ exports[`<OTPInput /> should render 1`] = `
                       "borderBottomWidth": 1,
                       "borderTopLeftRadius": 2,
                       "borderTopRightRadius": 2,
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "position": "relative",
+                      "width": "100%",
                     },
+                    {},
                   ]
                 }
-                width="100%"
               >
                 <TextInput
                   accessibilityDescribedBy=""
@@ -836,6 +819,7 @@ exports[`<OTPInput /> should render 1`] = `
                   autoCompleteType="sms-otp"
                   data-blade-component="styled-base-input"
                   editable={true}
+                  hasTags={false}
                   id="otp-37-input-38-4-73-input-74"
                   isFocused={false}
                   isTextArea={false}
@@ -866,6 +850,7 @@ exports[`<OTPInput /> should render 1`] = `
                         "marginLeft": 0,
                         "marginRight": 0,
                         "marginTop": 0,
+                        "minHeight": 36,
                         "paddingBottom": 8,
                         "paddingLeft": 12,
                         "paddingRight": 12,
@@ -943,18 +928,9 @@ exports[`<OTPInput /> should render 1`] = `
             >
               <View
                 currentInteraction="default"
-                data-blade-component="base-box"
-                display="flex"
-                flexDirection="row"
-                position="relative"
+                isTextArea={false}
                 style={
                   [
-                    {
-                      "display": "flex",
-                      "flexDirection": "row",
-                      "position": "relative",
-                      "width": "100%",
-                    },
                     {
                       "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
                       "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
@@ -962,10 +938,14 @@ exports[`<OTPInput /> should render 1`] = `
                       "borderBottomWidth": 1,
                       "borderTopLeftRadius": 2,
                       "borderTopRightRadius": 2,
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "position": "relative",
+                      "width": "100%",
                     },
+                    {},
                   ]
                 }
-                width="100%"
               >
                 <TextInput
                   accessibilityDescribedBy=""
@@ -982,6 +962,7 @@ exports[`<OTPInput /> should render 1`] = `
                   autoCompleteType="sms-otp"
                   data-blade-component="styled-base-input"
                   editable={true}
+                  hasTags={false}
                   id="otp-37-input-38-5-79-input-80"
                   isFocused={false}
                   isTextArea={false}
@@ -1012,6 +993,7 @@ exports[`<OTPInput /> should render 1`] = `
                         "marginLeft": 0,
                         "marginRight": 0,
                         "marginTop": 0,
+                        "minHeight": 36,
                         "paddingBottom": 8,
                         "paddingLeft": 12,
                         "paddingRight": 12,

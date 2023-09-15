@@ -46,6 +46,10 @@ type BaseHeaderProps = {
   onBackButtonClick?: () => void;
   closeButtonRef?: React.MutableRefObject<any>;
   metaComponentName?: string;
+  /**
+   * inner child of BottomSheetHeader. Meant to be used for AutoComplete only
+   */
+  children?: React.ReactElement;
 } & Pick<
   ReactDOMAttributes,
   | 'onClickCapture'
@@ -157,6 +161,7 @@ const _BaseHeader = ({
   onPointerMove,
   onPointerUp,
   metaComponentName,
+  children,
 }: BaseHeaderProps): React.ReactElement => {
   const validatedTrailingComponent = useTrailingRestriction(trailing);
   const shouldWrapTitle = titleSuffix && trailing && showBackButton && showCloseButton;
@@ -258,6 +263,7 @@ const _BaseHeader = ({
             </Box>
           ) : null}
         </BaseBox>
+        {children}
       </BaseBox>
       {showDivider ? <Divider /> : null}
     </BaseBox>

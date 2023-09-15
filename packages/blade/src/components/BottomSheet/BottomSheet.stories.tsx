@@ -30,7 +30,7 @@ import {
 import BaseBox from '~components/Box/BaseBox';
 import { Button } from '~components/Button';
 import { Dropdown } from '~components/Dropdown';
-import { SelectInput } from '~components/Input/SelectInput';
+import { SelectInput } from '~components/Input/DropdownInputTriggers';
 import { Heading, Text, Title } from '~components/Typography';
 import { Badge } from '~components/Badge';
 import { TextInput } from '~components/Input/TextInput';

@@ -68,7 +68,7 @@ export default {
       options: Object.keys(iconMap),
       mapping: iconMap,
     },
-    _isTagFocussed: {
+    _isVirtuallyFocussed: {
       table: {
         disable: true,
       },

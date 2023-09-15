@@ -6,6 +6,7 @@ import {
   WithControlledSelectStory,
   WithSimpleMenuStory,
 } from './stories';
+import { getSimpleAutoComplete } from './autoCompleteStories';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Code, Heading, Text, Title } from '~components/Typography';
 import { Sandbox, VerticalSandbox } from '~utils/storybook/Sandbox';
@@ -19,7 +20,7 @@ const DropdownDocs = (): React.ReactElement => {
   return (
     <StoryPageWrapper
       componentName="Dropdown"
-      componentDescription="Dropdown component to help you create select menu or action menu. To create a menu, you would have to use this component + Trigger (SelectInput, DropdownButton, DropdownLink) + ActionList"
+      componentDescription="Dropdown component to help you create select menu or action menu. To create a menu, you would have to use this component + Trigger (SelectInput, AutoComplete, DropdownButton, DropdownLink) + ActionList"
       imports=""
       showStorybookControls={false}
       figmaURL={{
@@ -47,11 +48,15 @@ const DropdownDocs = (): React.ReactElement => {
           </ListItem>
           <ListItem>
             A Trigger - Can be{' '}
-            <ListItemLink href="/?path=/docs/components-dropdown-selectinput--default">
+            <ListItemLink href="/?path=/docs/components-dropdown-with-select-stories--props-playground">
               SelectInput
             </ListItemLink>
+            ,{' '}
+            <ListItemLink href="/?path=/docs/components-dropdown-with-autocomplete-stories--props-playground">
+              AutoComplete
+            </ListItemLink>
             , DropdownButton (Has same props as{' '}
-            <ListItemLink href="/?path=/docs/components-button--default">Button</ListItemLink>, or
+            <ListItemLink href="/?path=/docs/components-button--default">Button</ListItemLink>), or
             DropdownLink (Has same props as{' '}
             <ListItemLink href="/?path=/docs/components-link--link-button">Link</ListItemLink>)
           </ListItem>
@@ -80,11 +85,21 @@ const DropdownDocs = (): React.ReactElement => {
           <ListItem>
             <ListItemLink
               target="_blank"
-              href="/?path=/docs/components-dropdown-selectinput--default"
+              href="/?path=/docs/components-dropdown-with-select-stories--props-playground"
             >
               SelectInput Props
             </ListItemLink>
           </ListItem>
+
+          <ListItem>
+            <ListItemLink
+              target="_blank"
+              href="/?path=/docs/components-dropdown-with-autocomplete-stories--props-playground"
+            >
+              AutoComplete Props
+            </ListItemLink>
+          </ListItem>
+
           <ListItem>
             <ListItemLink target="_blank" href="/?path=/docs/components-dropdown-actionlist--page">
               ActionList Props
@@ -136,6 +151,23 @@ const DropdownDocs = (): React.ReactElement => {
           Controlled Select
         </Heading>
         <VerticalSandbox minHeight="250px" code={WithControlledSelectStory} />
+      </BaseBox>
+      <BaseBox as="section">
+        <Title size="small">With AutoComplete</Title>
+        <Text marginY="spacing.3">
+          Check out more AutoComplete examples at{' '}
+          <Link href="/?path=/docs/components-dropdown-with-autocomplete--with-single-select">
+            Dropdown with AutoComplete Stories
+          </Link>
+        </Text>
+        <Heading size="large" marginBottom="spacing.3">
+          Simple Single Select
+        </Heading>
+        <VerticalSandbox minHeight="250px" code={getSimpleAutoComplete('single')} />
+        <Heading size="large" marginBottom="spacing.3">
+          Simple Multi Select
+        </Heading>
+        <VerticalSandbox minHeight="250px" code={getSimpleAutoComplete('multiple')} />
       </BaseBox>
       <BaseBox as="section">
         <Title size="small" marginBottom="spacing.3">
