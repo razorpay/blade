@@ -26,8 +26,8 @@ const ThemePlayground = (): React.ReactElement => {
   };
   return (
     <BladeProvider themeTokens={getTheme()} colorScheme={colorScheme} key={`${colorScheme}`}>
-      <Box display="flex" flexDirection="row" gap="spacing.5" flexWrap="wrap">
-        <Box flex={1}>
+      <Box maxWidth="50vw">
+        <Box display="flex" flexDirection="row" gap="spacing.5" flexWrap="wrap">
           <ThemeSelector
             selectedColor={selectedColor}
             setSelectedColor={setSelectedColor}
@@ -36,14 +36,14 @@ const ThemePlayground = (): React.ReactElement => {
             selectedPreBuiltTheme={selectedPreBuiltTheme}
             setSelectedPreBuiltTheme={setSelectedPreBuiltTheme}
           />
+          <Box flex={1}>
+            <Playground />
+          </Box>
         </Box>
-        <Box flex={1}>
-          <Playground />
+        <Box marginTop="spacing.5">
+          <Heading marginBottom="spacing.2">Component Showcase</Heading>
+          <BrandedComponentKitchenSink />
         </Box>
-      </Box>
-      <Box marginTop="spacing.5">
-        <Heading marginBottom="spacing.2">Component Showcase</Heading>
-        <BrandedComponentKitchenSink />
       </Box>
     </BladeProvider>
   );

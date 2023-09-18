@@ -101,87 +101,89 @@ const ThemeSelector = ({
   }, 100);
 
   return (
-    <Card elevation="none">
-      <CardBody>
-        <Box width="500px">
-          <Heading>Customise theme</Heading>
-          <Box marginTop="spacing.5" />
-          <Box display="flex" flexDirection="row" gap="spacing.2" flexWrap="wrap">
-            <RadioGroup
-              value={selectedPreBuiltTheme}
-              labelPosition="top"
-              label="Pre-built Theme:"
-              onChange={({ value }) => {
-                setSelectedPreBuiltTheme(value);
-                setSelectedColor(undefined);
-              }}
-            >
-              <Radio value="paymentTheme">Payment Theme</Radio>
-              <Radio value="bankingTheme">Banking Theme</Radio>
-            </RadioGroup>
-          </Box>
-          <Box marginTop="spacing.5" />
-          <Box display="flex" flexDirection="column" gap="spacing.2" flexWrap="wrap">
-            <Text
-              size="small"
-              type="subdued"
-              weight="bold"
-              marginRight="spacing.8"
-              marginBottom="spacing.2"
-            >
-              {'Theme with custom brand color:'}
-            </Text>
-            <Box display="flex" flexDirection="row" gap="spacing.3">
-              {colorOptions.map((color) => (
-                <ColorSelector
-                  key={color}
-                  color={color}
-                  isSelected={selectedColor === color}
-                  onClick={() => {
-                    setSelectedColor(color);
-                    setSelectedPreBuiltTheme(undefined);
-                  }}
-                />
-              ))}
-              <ColorPickerTrigger
-                isSelected={
-                  !colorOptions.includes(selectedColor ?? '') && selectedPreBuiltTheme === undefined
-                }
+    <Box position="fixed" right="spacing.4" top="15vh" zIndex={999}>
+      <Card elevation="highRaised">
+        <CardBody>
+          <Box width="400px">
+            <Heading>Customise theme</Heading>
+            <Box marginTop="spacing.5" />
+            <Box display="flex" flexDirection="row" gap="spacing.2" flexWrap="wrap">
+              <RadioGroup
+                value={selectedPreBuiltTheme}
+                labelPosition="top"
+                label="Pre-built Theme:"
+                onChange={({ value }) => {
+                  setSelectedPreBuiltTheme(value);
+                  setSelectedColor(undefined);
+                }}
               >
-                <ColorPickerInput
-                  defaultValue={colorOptions[0]}
-                  type="color"
-                  onChange={handleDebouncedColorChange}
-                  aria-label="Select a color"
-                />
-              </ColorPickerTrigger>
+                <Radio value="paymentTheme">Payment Theme</Radio>
+                <Radio value="bankingTheme">Banking Theme</Radio>
+              </RadioGroup>
             </Box>
-          </Box>
-          <Box
-            display="flex"
-            flexDirection="row"
-            gap="spacing.2"
-            flexWrap="wrap"
-            marginTop="spacing.5"
-          >
-            <RadioGroup
-              value={colorScheme}
-              labelPosition="top"
-              label="Color Scheme:"
-              onChange={({ value }) => setColorScheme(value as ColorSchemeNames)}
+            <Box marginTop="spacing.5" />
+            <Box display="flex" flexDirection="column" gap="spacing.2" flexWrap="wrap">
+              <Text
+                size="small"
+                type="subdued"
+                weight="bold"
+                marginRight="spacing.8"
+                marginBottom="spacing.2"
+              >
+                {'Theme with custom brand color:'}
+              </Text>
+              <Box display="flex" flexDirection="row" gap="spacing.3">
+                {colorOptions.map((color) => (
+                  <ColorSelector
+                    key={color}
+                    color={color}
+                    isSelected={selectedColor === color}
+                    onClick={() => {
+                      setSelectedColor(color);
+                      setSelectedPreBuiltTheme(undefined);
+                    }}
+                  />
+                ))}
+                <ColorPickerTrigger
+                  isSelected={
+                    !colorOptions.includes(selectedColor ?? '') &&
+                    selectedPreBuiltTheme === undefined
+                  }
+                >
+                  <ColorPickerInput
+                    defaultValue={colorOptions[0]}
+                    type="color"
+                    onChange={handleDebouncedColorChange}
+                    aria-label="Select a color"
+                  />
+                </ColorPickerTrigger>
+              </Box>
+            </Box>
+            <Box
+              display="flex"
+              flexDirection="row"
+              gap="spacing.2"
+              flexWrap="wrap"
+              marginTop="spacing.5"
             >
-              <Radio value="light">Light</Radio>
-              <Radio value="dark">Dark</Radio>
-            </RadioGroup>
-          </Box>
-          <Box marginTop="spacing.5" />
-          <Text type="subdued" weight="bold" marginRight="spacing.8">
-            Code:
-          </Text>
-          <Box overflow="scroll">
-            {selectedColor ? (
-              <SandboxHighlighter showLineNumbers={false} theme={colorScheme}>
-                {` 
+              <RadioGroup
+                value={colorScheme}
+                labelPosition="top"
+                label="Color Scheme:"
+                onChange={({ value }) => setColorScheme(value as ColorSchemeNames)}
+              >
+                <Radio value="light">Light</Radio>
+                <Radio value="dark">Dark</Radio>
+              </RadioGroup>
+            </Box>
+            <Box marginTop="spacing.5" />
+            <Text type="subdued" weight="bold" marginRight="spacing.8">
+              Code:
+            </Text>
+            <Box overflow="scroll">
+              {selectedColor ? (
+                <SandboxHighlighter showLineNumbers={false} theme={colorScheme}>
+                  {` 
               import { createTheme } from '@razorpay/blade/tokens';
               import App from './App';
 
@@ -199,10 +201,10 @@ const ThemeSelector = ({
                 );
               };
             `}
-              </SandboxHighlighter>
-            ) : (
-              <SandboxHighlighter showLineNumbers={false} theme={colorScheme}>
-                {` 
+                </SandboxHighlighter>
+              ) : (
+                <SandboxHighlighter showLineNumbers={false} theme={colorScheme}>
+                  {` 
               import { ${selectedPreBuiltTheme} } from '@razorpay/blade/tokens';
               import App from './App';
               
@@ -217,12 +219,13 @@ const ThemeSelector = ({
                   );
                 };
                 `}
-              </SandboxHighlighter>
-            )}
+                </SandboxHighlighter>
+              )}
+            </Box>
           </Box>
-        </Box>
-      </CardBody>
-    </Card>
+        </CardBody>
+      </Card>
+    </Box>
   );
 };
 
