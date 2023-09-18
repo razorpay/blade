@@ -1,5 +1,19 @@
 # @razorpay/blade
 
+## 10.10.0
+
+### Minor Changes
+
+- 18bdaed2: feat(blade): added Popover component
+
+  **Tooltip Changes**
+
+  - Added a new prop `title`
+
+### Patch Changes
+
+- c4ef32f8: chore: export popover & update status table
+
 ## 10.9.2
 
 ### Patch Changes
