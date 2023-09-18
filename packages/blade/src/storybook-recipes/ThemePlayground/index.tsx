@@ -27,7 +27,7 @@ const ThemePlayground = (): React.ReactElement => {
   };
   return (
     <BladeProvider themeTokens={getTheme()} colorScheme={colorScheme} key={`${colorScheme}`}>
-      <Box maxWidth="50vw">
+      <Box maxWidth={{ l: '50vw', m: '50vw', s: '100%' }}>
         <Box display="flex" flexDirection="column" gap="spacing.5">
           <ThemeSelector
             selectedColor={selectedColor}

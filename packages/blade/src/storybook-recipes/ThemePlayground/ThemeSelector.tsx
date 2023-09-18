@@ -108,7 +108,7 @@ const ThemeSelector = ({
       position={isDesktop ? 'fixed' : 'relative'}
       right="spacing.4"
       top={isDesktop ? '15vh' : undefined}
-      zIndex={999}
+      zIndex={50}
     >
       <Card elevation={isDesktop ? 'highRaised' : 'none'}>
         <CardBody>
