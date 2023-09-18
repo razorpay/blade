@@ -6,6 +6,8 @@
 </picture>
 </p>
 
+<p align="center"><a href="https://npmjs.org/package/@razorpay/blade"><img alt="Blade Latest Version" src="https://img.shields.io/github/package-json/v/razorpay/blade/main?style=for-the-badge&labelColor=322&logo=npm&label=@razorpay/Blade&color=darkred&filename=packages/blade/package.json"></a> &nbsp;<a href="https://blade.razorpay.com/"><img alt="Documentation blade.razorpay.com" src="https://img.shields.io/badge/Documentation-blade.razorpay.com-0648EF?style=for-the-badge&labelColor=0012AD&logo=readthedocs&logoColor=eee"/></a> &nbsp;<a href="https://github.com/razorpay/blade/tree/master/CONTRIBUTING.md"><img alt="Discord Join Chat" src="https://img.shields.io/badge/Contributions-Open-333333?style=for-the-badge&logo=github&logoColor=ffffff&labelColor=111111"/></a></p>
+
 <br/>
 
 <h1 aria-hidden="true"></h1>
