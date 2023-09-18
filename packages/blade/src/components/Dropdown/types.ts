@@ -6,7 +6,6 @@ type DropdownProps = {
   /**
    * Control open / close state of the Dropdown component
    *
-   * Make sure to not misuse this prop to create custom triggers. Use DropdownButton instead for such usecases.
    * This can be used to close the dropdown when button in the footer of dropdown is clicked
    */
   isOpen?: boolean;
