@@ -399,12 +399,14 @@ describe('<Dropdown />', () => {
   it('should handle controlled props with single select', async () => {
     const ControlledDropdown = (): React.ReactElement => {
       const [currentSelection, setCurrentSelection] = React.useState<undefined | string>();
+      const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
 
       return (
         <>
           <Button onClick={() => setCurrentSelection('bangalore')}>Select Bangalore</Button>
           <Button onClick={() => setCurrentSelection('')}>Clear Selection</Button>
-          <Dropdown selectionType="single">
+          <Button onClick={() => setIsDropdownOpen(!isDropdownOpen)}>Toggle Dropdown</Button>
+          <Dropdown isOpen={isDropdownOpen} onOpenChange={setIsDropdownOpen} selectionType="single">
             <SelectInput
               label="Select City"
               value={currentSelection}
@@ -425,7 +427,7 @@ describe('<Dropdown />', () => {
     };
 
     const user = userEvent.setup();
-    const { getByRole } = renderWithTheme(<ControlledDropdown />);
+    const { getByRole, queryByRole } = renderWithTheme(<ControlledDropdown />);
 
     const selectInput = getByRole('combobox', { name: 'Select City' });
     expect(selectInput).toHaveTextContent('Select Option');
@@ -441,11 +443,17 @@ describe('<Dropdown />', () => {
 
     await user.click(getByRole('button', { name: 'Clear Selection' }));
     expect(selectInput).toHaveTextContent('Select Option');
+
+    await user.click(getByRole('button', { name: 'Toggle Dropdown' }));
+    await waitFor(() => expect(getByRole('listbox', { name: 'Select City' })).toBeVisible());
+    await user.click(getByRole('button', { name: 'Toggle Dropdown' }));
+    await waitFor(() => expect(queryByRole('listbox', { name: 'Select City' })).not.toBeVisible());
   });
 
   it('should handle controlled props with multi select', async () => {
     const ControlledDropdown = (): React.ReactElement => {
       const [currentSelection, setCurrentSelection] = React.useState<string[]>([]);
+      const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
 
       return (
         <>
@@ -458,7 +466,13 @@ describe('<Dropdown />', () => {
           >
             Select Bangalore
           </Button>
-          <Dropdown selectionType="multiple">
+          <Button onClick={() => setIsDropdownOpen(!isDropdownOpen)}>Toggle Dropdown</Button>
+
+          <Dropdown
+            isOpen={isDropdownOpen}
+            onOpenChange={setIsDropdownOpen}
+            selectionType="multiple"
+          >
             <SelectInput
               label="Select City"
               value={currentSelection}
@@ -484,7 +498,7 @@ describe('<Dropdown />', () => {
     Object.defineProperty(HTMLElement.prototype, 'clientWidth', { configurable: true, value: 500 });
 
     const user = userEvent.setup();
-    const { getByRole, queryAllByLabelText } = renderWithTheme(<ControlledDropdown />);
+    const { getByRole, queryAllByLabelText, queryByRole } = renderWithTheme(<ControlledDropdown />);
 
     const selectInput = getByRole('combobox', { name: 'Select City' });
     expect(selectInput).toHaveTextContent('Select Option');
@@ -498,6 +512,11 @@ describe('<Dropdown />', () => {
     expect(queryAllByLabelText('Close Bangalore tag')?.[0]).toBeInTheDocument();
 
     await user.click(getByRole('button', { name: 'Select Bangalore' }));
+
+    await user.click(getByRole('button', { name: 'Toggle Dropdown' }));
+    await waitFor(() => expect(getByRole('listbox', { name: 'Select City' })).toBeVisible());
+    await user.click(getByRole('button', { name: 'Toggle Dropdown' }));
+    await waitFor(() => expect(queryByRole('listbox', { name: 'Select City' })).not.toBeVisible());
     Object.defineProperty(HTMLElement.prototype, 'clientWidth', { configurable: true, value: 0 });
   });
 
@@ -533,11 +552,29 @@ describe('<Dropdown />', () => {
 describe('<Dropdown /> with <DropdownButton />', () => {
   // Skipping this test because the id that `useId` generates seems to be different and flaky between local and CI.
   // Have to figure out solution to that and then enable this again.
-  it.skip('should render menu and make items clickable', async () => {
+  it.skip('should render menu', () => {
+    const profileClickHandler = jest.fn();
+
+    const { container } = renderWithTheme(
+      <Dropdown>
+        <DropdownButton>My Account</DropdownButton>
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Profile" value="profile" onClick={profileClickHandler} />
+            <ActionListItem title="Settings" value="settings" href="/settings" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should make items clickable', async () => {
     const user = userEvent.setup();
     const profileClickHandler = jest.fn();
 
-    const { container, getByRole, queryByRole } = renderWithTheme(
+    const { getByRole, queryByRole } = renderWithTheme(
       <Dropdown>
         <DropdownButton>My Account</DropdownButton>
         <DropdownOverlay>
@@ -562,7 +599,6 @@ describe('<Dropdown /> with <DropdownButton />', () => {
     expect(profileClickHandler).toBeCalled();
     expect(getByRole('link', { name: 'Settings' })).toHaveAttribute('href', '/settings');
     expect(getByRole('link', { name: 'Settings' }).tagName).toBe('A');
-    expect(container).toMatchSnapshot();
   });
 
   it('should handle controlled selection in menu', async () => {
