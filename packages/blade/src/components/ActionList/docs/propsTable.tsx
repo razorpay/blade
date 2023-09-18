@@ -25,6 +25,12 @@ const actionListPropsTables: {
     title: 'string',
     description: 'string',
     value: 'string',
+    titleSuffix: (
+      <>
+        <ScrollLink href="#actionlistitembadge">&lt;ActionListItemBadge /&gt;</ScrollLink> |{' '}
+        <ScrollLink href="#actionlistitembadgegroup">&lt;ActionListItemBadgeGroup /&gt;</ScrollLink>
+      </>
+    ),
     leading: (
       <>
         <ScrollLink href="#actionlistitemicon">&lt;ActionListItemIcon /&gt;</ScrollLink> |{' '}
