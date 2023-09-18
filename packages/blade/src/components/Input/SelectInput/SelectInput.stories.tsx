@@ -235,9 +235,9 @@ const SelectInputTemplate: ComponentStory<typeof SelectInput> = ({ icon, ...args
   );
 };
 
-export const Default = SelectInputTemplate.bind({});
+export const DefaultSelectInput = SelectInputTemplate.bind({});
 // Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
-Default.storyName = 'SelectInput';
+DefaultSelectInput.storyName = 'SelectInput';
 
 export const SelectInputWithoutLabel = SelectInputTemplate.bind({});
 SelectInputWithoutLabel.args = {

@@ -110,9 +110,9 @@ const CheckboxGroupTemplate: ComponentStory<typeof CheckboxGroupComponent> = ({
 export const Default = CheckboxGroupTemplate.bind({});
 Default.storyName = 'Default';
 
-export const HelpText = CheckboxGroupTemplate.bind({});
-HelpText.storyName = 'HelpText';
-HelpText.args = {
+export const HelpTextCheckbox = CheckboxGroupTemplate.bind({});
+HelpTextCheckbox.storyName = 'HelpText';
+HelpTextCheckbox.args = {
   helpText: 'CheckboxGroup help text',
 };
 

@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { Playground } from './Playground';
 import { ThemeSelector } from './ThemeSelector';
+import { BrandedComponentKitchenSink } from './BrandedComponentKitchenSink';
 import { BladeProvider } from '~components/BladeProvider';
 import { bankingTheme, createTheme, paymentTheme } from '~tokens/theme';
 import type { ColorSchemeNames, ThemeTokens } from '~tokens/theme';
 import { Box } from '~components/Box';
+import { Heading } from '~components/Typography';
 
 const ThemePlayground = (): React.ReactElement => {
   const [selectedColor, setSelectedColor] = useState<string | undefined>(undefined);
@@ -38,6 +40,10 @@ const ThemePlayground = (): React.ReactElement => {
         <Box flex={1}>
           <Playground />
         </Box>
+      </Box>
+      <Box marginTop="spacing.5">
+        <Heading marginBottom="spacing.2">Component Showcase</Heading>
+        <BrandedComponentKitchenSink />
       </Box>
     </BladeProvider>
   );

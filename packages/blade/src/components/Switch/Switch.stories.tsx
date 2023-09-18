@@ -83,9 +83,9 @@ Checked.args = {
   isChecked: true,
 };
 
-export const DefaultChecked = SwitchTemplate.bind({});
-DefaultChecked.storyName = 'DefaultChecked';
-DefaultChecked.args = {
+export const DefaultCheckedSwitch = SwitchTemplate.bind({});
+DefaultCheckedSwitch.storyName = 'DefaultChecked';
+DefaultCheckedSwitch.args = {
   defaultChecked: true,
 };
 

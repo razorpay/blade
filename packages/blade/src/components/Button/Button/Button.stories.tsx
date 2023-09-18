@@ -351,3 +351,10 @@ ButtonRef.parameters = {
     },
   },
 };
+
+export const RenderComponents = {
+  ButtonTemplate,
+  ButtonWithSizeTemplate,
+  ButtonWithVariantTemplate,
+  ButtonLoadingTemplate,
+};
