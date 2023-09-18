@@ -6,7 +6,7 @@ import { CheckIcon } from '~components/Icons';
 import { Radio, RadioGroup } from '~components/Radio';
 import { Heading, Text } from '~components/Typography';
 import type { ColorSchemeNames } from '~tokens/theme';
-import { makeBorderSize } from '~utils';
+import { makeBorderSize, useTheme } from '~utils';
 import { SandboxHighlighter } from '~utils/storybook/Sandbox';
 
 const ColorSelection = styled.button<{ color: string; isSelected?: boolean }>(
@@ -100,11 +100,19 @@ const ThemeSelector = ({
     setSelectedPreBuiltTheme(undefined);
   }, 100);
 
+  const { platform } = useTheme();
+  const isDesktop = platform === 'onDesktop';
+
   return (
-    <Box position="fixed" right="spacing.4" top="15vh" zIndex={999}>
-      <Card elevation="highRaised">
+    <Box
+      position={isDesktop ? 'fixed' : 'relative'}
+      right="spacing.4"
+      top={isDesktop ? '15vh' : undefined}
+      zIndex={999}
+    >
+      <Card elevation={isDesktop ? 'highRaised' : 'none'}>
         <CardBody>
-          <Box width="400px">
+          <Box width={isDesktop ? '400px' : '100%'} overflow="scroll">
             <Heading>Customise theme</Heading>
             <Box marginTop="spacing.5" />
             <Box display="flex" flexDirection="row" gap="spacing.2" flexWrap="wrap">
@@ -180,7 +188,7 @@ const ThemeSelector = ({
             <Text type="subdued" weight="bold" marginRight="spacing.8">
               Code:
             </Text>
-            <Box overflow="scroll">
+            <Box>
               {selectedColor ? (
                 <SandboxHighlighter showLineNumbers={false} theme={colorScheme}>
                   {` 
