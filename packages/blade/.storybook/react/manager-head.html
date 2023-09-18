@@ -1,3 +1,50 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blade-surface-action-icon: rgba(163, 175, 191, 1);
+    --blade-surface-action-icon-active: rgba(93, 109, 134, 1);
+    --blade-surface-text-normal: rgba(19, 38, 68, 1);
+    --blade-brand-gray: rgba(121, 135, 156, 0.18);
+  }
+
+  .search-field input {
+    border-radius: 4px !important;
+  }
+
+  .sidebar-subheading,
+  .sidebar-subheading svg {
+    color: rgba(19, 38, 68, 1) !important;
+    font-weight: bold !important;
+    text-transform: none !important;
+    letter-spacing: normal !important;
+    font-size: 12px !important;
+  }
+
+  .sidebar-item svg {
+    color: var(--blade-surface-action-icon) !important;
+  }
+
+  .sidebar-item[data-selected="true"] {
+    background: var(--blade-brand-gray) !important;
+    color: var(--blade-surface-text-normal) !important;
+    font-weight: bold !important;
+  }
+
+  .sidebar-item[data-selected="true"]+a[href] {
+    opacity: 0 !important;
+  }
+
+  .sidebar-item[data-selected="true"]+a[href]:focus {
+    opacity: 1 !important;
+  }
+
+  .sidebar-item[data-selected="true"] svg {
+    color: var(--blade-surface-action-icon-active) !important;
+  }
+
+  .sto-1va4tas {
+    box-shadow: none !important;
+  }
+</style>
