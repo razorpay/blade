@@ -115,6 +115,15 @@ export const paymentLightThemeData = {
     Tooltip: {
       key: '98c01f6af44a12914232ce6ce3660665dcc10f5c',
     },
+    Popover: {
+      key: 'b14ad333fa2f8483b4c7ed780738b57a788191b3',
+    },
+    'Popover/Header': {
+      key: '57a321084e8ce1899b8233e9493ed949e0a94a4e',
+    },
+    'Popover/Footer': {
+      key: 'a63e1855eaaae27bf7cd60efe0aa7475dee14158',
+    },
 
     // Feedback Components
     Alert: {
@@ -4269,6 +4278,15 @@ export const bankingDarkThemeData = {
     Tooltip: {
       key: '22024c07a64fde300d410f2614e9eb1ff9e545f0',
     },
+    Popover: {
+      key: 'd862fb9823cf3921ca3c85210c3ce4f51ea49e42',
+    },
+    'Popover/Header': {
+      key: 'ffc08b1e38a71ab4b483173321ff1d5ab2ae7cdf',
+    },
+    'Popover/Footer': {
+      key: '0fe1893a0b6ac6e47e803ea13f28f8629490da72',
+    },
 
     // Feedback Components
     Alert: {
@@ -8340,6 +8358,7 @@ export const BLADE_COMPONENT_IDS_HAVING_SLOT = [
     paymentLightThemeData.components.Carousel,
     paymentLightThemeData.components.Modal,
     paymentLightThemeData.components['Modal/Footer'],
+    paymentLightThemeData.components.Popover,
   ]
     .map((component) => component.key)
     .flat(),
@@ -8357,6 +8376,7 @@ export const BLADE_COMPONENT_IDS_HAVING_SLOT = [
     bankingDarkThemeData.components.Carousel,
     bankingDarkThemeData.components.Modal,
     bankingDarkThemeData.components['Modal/Footer'],
+    bankingDarkThemeData.components.Popover,
   ]
     .map((component) => component.key)
     .flat(),
