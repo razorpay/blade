@@ -42,7 +42,7 @@ const PhantomUI = (): React.ReactElement => {
               <Chip value="SmallBusiness">Small Business</Chip>
             </ChipGroup>
           </Box>
-          <Box marginTop="spacing.10">
+          <Box marginTop="spacing.8">
             <Box display="flex" flexDirection="row" gap="spacing.2">
               <Text size="medium" type="subdued">
                 REGISTERED
