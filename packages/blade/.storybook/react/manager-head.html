@@ -1,12 +1,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<link rel="icon"
+  href="https://raw.githubusercontent.com/razorpay/blade/1e77f0b35172654037a431a916b3190b545fd232/branding/favicon.ico" />
 <style>
   :root {
     --blade-surface-action-icon: rgba(163, 175, 191, 1);
     --blade-surface-action-icon-active: rgba(93, 109, 134, 1);
     --blade-surface-text-normal: rgba(19, 38, 68, 1);
     --blade-brand-gray: rgba(121, 135, 156, 0.18);
+    --blade-brand-gray-light: rgba(121, 135, 156, 0.08);
   }
 
   .search-field input {
@@ -20,6 +23,10 @@
     text-transform: none !important;
     letter-spacing: normal !important;
     font-size: 12px !important;
+  }
+
+  .sidebar-item:hover {
+    background: var(--blade-brand-gray-light) !important;
   }
 
   .sidebar-item svg {

@@ -1,21 +1,14 @@
-<h1 align="center">
-  Blade
-</h1>
 <p align="center">
-  <a href="https://github.com/styled-components/styled-components">
-    <img src="https://img.shields.io/badge/style-%F0%9F%92%85%20styled--components-orange.svg?colorB=daa357&colorA=db748e" alt="Blade is styled with styled-components" />
-  </a>
-  <a href="https://github.com/facebook/jest">
-    <img src="https://jestjs.io/img/jest-badge.svg" alt="Blade is tested with jest" />
-  </a>
-  <a href="https://github.com/razorpay/blade/blob/master/LICENSE.md">
-    <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="Blade is released under the MIT license." />
-  </a>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./branding/blade-original-dark-mode.min.svg">
+  <source media="(prefers-color-scheme: light)" srcset="./branding/blade-original.min.svg">
+  <img width="512" alt="Blade Design System Logo" src="./branding/blade-original.min.svg">
+</picture>
 </p>
 
-<p align="center">
-   The Design System that powers Razorpay
-<p align="center">
+<br/>
+
+<h1 aria-hidden="true"></h1>
 
 ### [`@razorpay/blade`](https://github.com/razorpay/blade/tree/master/packages/blade)
 
