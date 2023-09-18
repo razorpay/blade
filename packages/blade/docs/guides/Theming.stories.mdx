@@ -8,7 +8,12 @@ import {
   Text,
   Code,
   Link,
+  BladeProvider,
+  Button,
+  CreditCardIcon,
+  Heading,
 } from '../../src/components';
+import { createTheme } from '../../src/tokens';
 
 <Meta title="Guides/Themeing/createTheme" />
 
@@ -60,3 +65,26 @@ Custom branded themes also contain support for light and dark color schemes. You
   <App />
 </BladeProvider>
 ```
+
+export const ContrastDemo = () => {
+  return (
+    <div>
+      <BladeProvider themeTokens={createTheme({ brandColor: '#83003D' })} colorScheme="light">
+        <Heading>Foreground on Button is Light based on the brand color</Heading>
+        <Button icon={CreditCardIcon}>Pay Now</Button>
+      </BladeProvider>
+      <BladeProvider themeTokens={createTheme({ brandColor: '#5EDD55' })} colorScheme="light">
+        <Heading marginTop="spacing.6">
+          Foreground on Button is Dark based on the brand color
+        </Heading>
+        <Button icon={CreditCardIcon}>Pay Now</Button>
+      </BladeProvider>
+    </div>
+  );
+};
+
+### Handling Contrast
+
+`createTheme` will automatically handle contrast of your components to ensure that the text is always readable as per [WCAG 2.0 guidelines](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast7.html).
+
+<ContrastDemo />
