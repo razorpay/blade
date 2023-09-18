@@ -1,7 +1,7 @@
 import userEvent from '@testing-library/user-event';
 
 import type { ReactElement } from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { OTPInput } from '..';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
@@ -134,6 +134,37 @@ describe('<OTPInput />', () => {
       name: 'otp',
       value: otp[otp.length - 2], // -2 because the last input will remain focused and the last blurred input would be 2nd last
       inputIndex: otp.length - 2,
+    });
+  });
+
+  it('should handle ref focus', async () => {
+    const label = 'Enter OTP';
+    const onFocus = jest.fn();
+    const user = userEvent.setup();
+
+    const Example = (): ReactElement => {
+      const inputRef = React.useRef<HTMLInputElement[]>([]);
+      const handleClick = (): void => {
+        inputRef.current[1].focus();
+      };
+
+      return (
+        <>
+          <OTPInput label={label} name="otp" onFocus={onFocus} ref={inputRef} />
+          <button onClick={handleClick}>Focus</button>
+        </>
+      );
+    };
+
+    const { getByRole } = renderWithTheme(<Example />);
+
+    await user.click(getByRole('button', { name: 'Focus' }));
+
+    expect(onFocus).toHaveBeenCalledTimes(1);
+    expect(onFocus).toHaveBeenLastCalledWith({
+      name: 'otp',
+      value: '',
+      inputIndex: 1,
     });
   });
 
