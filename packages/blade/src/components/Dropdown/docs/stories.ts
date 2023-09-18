@@ -10,6 +10,8 @@ const Playground = `
     ActionList,
     ActionListItem,
     ActionListItemIcon,
+    ActionListItemBadge,
+    ActionListItemBadgeGroup,
     ActionListSection,
     HistoryIcon,
     HomeIcon,
@@ -43,6 +45,12 @@ const Playground = `
           <ActionList>
             <ActionListItem
               leading={<ActionListItemIcon icon={HomeIcon} />}
+              titleSuffix={
+                <ActionListItemBadgeGroup>
+                  <ActionListItemBadge>as: Option</ActionListItemBadge>
+                  <ActionListItemBadge>as: Main</ActionListItemBadge>
+                </ActionListItemBadgeGroup>
+              }
               trailing={<ActionListItemIcon icon={ArrowRightIcon} />}
               title="Home"
               value="home"
