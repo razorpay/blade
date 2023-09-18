@@ -396,7 +396,9 @@ const componentData: ComponentStatusData = [
   },
   {
     name: 'AutoComplete',
-    status: 'in-development',
+    status: 'released',
+    releasedIn: '10.9.0',
+    storybookLink: 'Components/Dropdown/With AutoComplete',
     description:
       'AutoComplete Component will allow you to filter Dropdown options as you type ahead in the Input',
   },
@@ -412,7 +414,9 @@ const componentData: ComponentStatusData = [
   },
   {
     name: 'Popover',
-    status: 'in-development',
+    status: 'released',
+    releasedIn: '10.10.0',
+    storybookLink: 'Components/Popover',
     description: 'Used for cases like guided tours',
   },
 ];
