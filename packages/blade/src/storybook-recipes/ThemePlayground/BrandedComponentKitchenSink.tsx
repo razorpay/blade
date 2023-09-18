@@ -22,7 +22,7 @@ const includedStories = [
   'IconRightButton',
   'WithIcons',
   'WithHeaderFooter',
-  'WithInteractiveCards',
+  'DefaultCarousel',
   'HelpTextCheckbox',
   'DefaultSelectedSingle',
   'WithCollapsibleButton',
@@ -35,11 +35,12 @@ const includedStories = [
   'TextInputHelpText',
   'OTPInputHelpText',
 ];
+
 const StoryNameToHeadingMap = {
   IconRightButton: 'Button',
   WithIcons: 'Accordion',
   WithHeaderFooter: 'BottomSheet',
-  WithInteractiveCards: 'Carousel',
+  DefaultCarousel: 'Carousel',
   HelpTextCheckbox: 'Checkbox',
   DefaultSelectedSingle: 'Chip',
   WithCollapsibleButton: 'Collapsible',
