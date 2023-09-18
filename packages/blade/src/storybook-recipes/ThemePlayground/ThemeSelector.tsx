@@ -15,13 +15,16 @@ const ColorSelection = styled.button<{ color: string; isSelected?: boolean }>(
     height: '24px',
     borderRadius: makeBorderSize(theme.border.radius.round),
     outline: `1px solid ${theme.colors.surface.background.level1.lowContrast}`,
-    boxShadow: `0px 0px 0px 3px ${isSelected ? theme.colors.brand.primary[500] : 'transparent'}`,
+    boxShadow: `0px 0px 4px 3px ${isSelected ? theme.colors.brand.primary[500] : 'transparent'}`,
     border: 'none',
     backgroundColor: color,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     cursor: 'pointer',
+    '&:focus-visible': {
+      boxShadow: `0px 0px 6px 3px ${color}`,
+    },
   }),
 );
 
@@ -34,7 +37,7 @@ const ColorPickerTrigger = styled.label<{ isSelected?: boolean }>(({ isSelected,
   position: 'relative',
   background: 'conic-gradient(red, yellow, lime, aqua, blue, magenta, red)',
   outline: `1px solid ${theme.colors.surface.background.level1.lowContrast}`,
-  boxShadow: `0px 0px 0px 3px ${isSelected ? theme.colors.brand.primary[500] : 'transparent'}`,
+  boxShadow: `0px 0px 4px 3px ${isSelected ? theme.colors.brand.primary[500] : 'transparent'}`,
 }));
 
 const ColorPickerInput = styled.input({
@@ -107,7 +110,7 @@ const ThemeSelector = ({
             <RadioGroup
               value={selectedPreBuiltTheme}
               labelPosition="top"
-              label="Pre-built Themes:"
+              label="Pre-built Theme:"
               onChange={({ value }) => {
                 setSelectedPreBuiltTheme(value);
                 setSelectedColor(undefined);
@@ -126,7 +129,7 @@ const ThemeSelector = ({
               marginRight="spacing.8"
               marginBottom="spacing.2"
             >
-              {'Custom Theme with Brand Color:'}
+              {'Theme with custom brand color:'}
             </Text>
             <Box display="flex" flexDirection="row" gap="spacing.3">
               {colorOptions.map((color) => (
@@ -149,6 +152,7 @@ const ThemeSelector = ({
                   defaultValue={colorOptions[0]}
                   type="color"
                   onChange={handleDebouncedColorChange}
+                  aria-label="Select a color"
                 />
               </ColorPickerTrigger>
             </Box>
@@ -199,13 +203,13 @@ const ThemeSelector = ({
             ) : (
               <SandboxHighlighter showLineNumbers={false} theme={colorScheme}>
                 {` 
-              import { paymentTheme } from '@razorpay/blade/tokens';
+              import { ${selectedPreBuiltTheme} } from '@razorpay/blade/tokens';
               import App from './App';
               
               const Wrapper = () => {
                 return (
                   <BladeProvider 
-                    themeTokens={paymentTheme} 
+                    themeTokens={${selectedPreBuiltTheme}} 
                     colorScheme='${colorScheme}'
                   >
                     {App}
