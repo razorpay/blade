@@ -70,27 +70,14 @@ allStories.push(...Object.values(composeStories(switchStories)));
 allStories.push(...Object.values(composeStories(textInputStories)));
 allStories.push(...Object.values(composeStories(otpInputStories)));
 
-console.log(
-  '🚀 ~ file: BrandedComponentKitchenSink.tsx:36 ~ allStories:',
-  allStories.map((Story) =>
-    includedStories.includes(Story.storyName) ? Story.storyName : Story.storyName,
-  ),
-);
-
 const BrandedComponentKitchenSink = (): React.ReactElement => {
-  // console.log(Object.values(chipGroupStories).map((Story) => Story.storyName));
   return (
     <Card elevation="none">
       <CardBody>
         {allStories.map((Story) => {
           return includedStories.includes(Story.storyName) ? (
             <>
-              <Heading
-                color="brand.primary.800"
-                textDecorationLine="underline"
-                marginBottom="spacing.3"
-              >
-                {/* @ts-expect-error - This is valid */}
+              <Heading textDecorationLine="underline" marginBottom="spacing.3">
                 {StoryNameToHeadingMap[Story.storyName] ?? Story.storyName}:
               </Heading>
               <Story />
