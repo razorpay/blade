@@ -2,16 +2,18 @@
 import { arrow, shift, useFloating, flip, offset } from '@floating-ui/react-native';
 import React from 'react';
 import { Modal, TouchableOpacity } from 'react-native';
-import { TooltipArrow } from './TooltipArrowNative';
 import { TooltipContent } from './TooltipContent';
 import type { TooltipProps } from './types';
 import { ARROW_HEIGHT, ARROW_WIDTH, tooltipZIndex } from './constants';
-import { getPlacementParts, mergeProps } from './utils';
 import { TooltipContext } from './TooltipContext';
 import { useTheme } from '~components/BladeProvider';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { mergeProps } from '~utils/mergeProps';
+import { PopupArrow } from '~components/PopupArrow';
+import { getFloatingPlacementParts } from '~utils/getFloatingPlacementParts';
 
 const Tooltip = ({
+  title,
   content,
   children,
   placement = 'left',
@@ -22,7 +24,7 @@ const Tooltip = ({
   const [isOpen, setIsOpen] = React.useState(false);
 
   const gap = theme.spacing[2];
-  const [side] = getPlacementParts(placement);
+  const [side] = getFloatingPlacementParts(placement);
   const isHorizontal = side === 'left' || side === 'right';
   const arrowRef = React.useRef();
   const context = useFloating({
@@ -90,6 +92,7 @@ const Tooltip = ({
           {...metaAttribute({ name: MetaConstants.Tooltip })}
         >
           <TooltipContent
+            title={title}
             isVisible={isOpen}
             ref={refs.setFloating}
             side={side}
@@ -103,7 +106,16 @@ const Tooltip = ({
               // TODO: Tokenize zIndex values
               zIndex,
             }}
-            arrow={<TooltipArrow context={context} ref={arrowRef as never} />}
+            arrow={
+              <PopupArrow
+                ref={arrowRef as never}
+                context={context}
+                width={ARROW_WIDTH}
+                height={ARROW_HEIGHT}
+                fillColor={theme.colors.brand.gray[200].highContrast}
+                strokeColor={theme.colors.brand.gray[300].highContrast}
+              />
+            }
           >
             {content}
           </TooltipContent>

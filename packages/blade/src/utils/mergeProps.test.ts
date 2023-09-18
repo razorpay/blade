@@ -1,4 +1,4 @@
-import { mergeProps } from '../utils';
+import { mergeProps } from '~utils/mergeProps';
 
 describe('mergeProps', () => {
   it('should merge two basic props', () => {
