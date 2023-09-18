@@ -61,7 +61,7 @@ const Page = (): ReactElement => {
   );
 };
 
-export default {
+export default ({
   title: 'Components/Button',
   component: ButtonComponent,
   args: {
@@ -91,7 +91,7 @@ export default {
       page: Page,
     },
   },
-} as Meta<ButtonProps>;
+} as unknown) as Meta<ButtonProps>;
 
 const ButtonTemplate: ComponentStory<typeof ButtonComponent> = ({
   children = 'Button',
@@ -350,11 +350,4 @@ ButtonRef.parameters = {
         'Button component exposes the `ref` prop. The `ref` exposes two methods `focus` & `scrollIntoView` which can be used to programatically control the DOM element',
     },
   },
-};
-
-export const RenderComponents = {
-  ButtonTemplate,
-  ButtonWithSizeTemplate,
-  ButtonWithVariantTemplate,
-  ButtonLoadingTemplate,
 };
