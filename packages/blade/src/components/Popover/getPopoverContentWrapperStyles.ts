@@ -4,6 +4,7 @@ import type { CSSObject } from 'styled-components';
 import { POPOVER_BG_DARK, POPOVER_BG_LIGHT } from './constants';
 import type { Theme } from '~components/BladeProvider';
 import { makeBorderSize, castWebType, isReactNative, makeSpace } from '~utils';
+import type { ColorSchemeNames } from '~tokens/theme';
 
 const getPopoverContentWrapperStyles = ({
   theme,
@@ -14,7 +15,7 @@ const getPopoverContentWrapperStyles = ({
   isMobile: boolean;
   theme: Theme;
   styles: React.CSSProperties;
-  colorScheme: 'light' | 'dark';
+  colorScheme: ColorSchemeNames;
 }): CSSObject => {
   return {
     width: '100%',
