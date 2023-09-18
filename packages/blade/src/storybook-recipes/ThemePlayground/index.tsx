@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Playground } from './Playground';
+import { BasicForm } from './BasicForm';
+import { Checkout } from './Checkout';
 import { ThemeSelector } from './ThemeSelector';
 import { BrandedComponentKitchenSink } from './BrandedComponentKitchenSink';
 import { BladeProvider } from '~components/BladeProvider';
@@ -27,7 +28,7 @@ const ThemePlayground = (): React.ReactElement => {
   return (
     <BladeProvider themeTokens={getTheme()} colorScheme={colorScheme} key={`${colorScheme}`}>
       <Box maxWidth="50vw">
-        <Box display="flex" flexDirection="row" gap="spacing.5" flexWrap="wrap">
+        <Box display="flex" flexDirection="column" gap="spacing.5">
           <ThemeSelector
             selectedColor={selectedColor}
             setSelectedColor={setSelectedColor}
@@ -37,7 +38,12 @@ const ThemePlayground = (): React.ReactElement => {
             setSelectedPreBuiltTheme={setSelectedPreBuiltTheme}
           />
           <Box flex={1}>
-            <Playground />
+            <Heading marginBottom="spacing.2">Checkout UI</Heading>
+            <Checkout />
+          </Box>
+          <Box flex={1}>
+            <Heading marginBottom="spacing.2">Form</Heading>
+            <BasicForm />
           </Box>
         </Box>
         <Box marginTop="spacing.5">
