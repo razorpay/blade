@@ -204,7 +204,7 @@ const validateActionListItemProps = ({
         !isValidAllowedChildren(child, componentIds.ActionListItemBadgeGroup)
       ) {
         throwBladeError({
-          message: `Only ${componentIds.ActionListItemBadge} and ${componentIds.ActionListItemBadgeGroup} are allowed in trailing prop`,
+          message: `Only ${componentIds.ActionListItemBadge} and ${componentIds.ActionListItemBadgeGroup} are allowed in titleSuffix prop`,
           moduleName: 'ActionListItem',
         });
       }

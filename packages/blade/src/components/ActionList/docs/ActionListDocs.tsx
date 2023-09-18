@@ -69,6 +69,13 @@ const ActionListDocs = (): React.ReactElement => {
           <Text marginTop="spacing.3">
             Shares same props as <Link href="/?path=/docs/components-badge--badge">Badge</Link>
           </Text>
+          <Text marginTop="spacing.3">
+            Checkout{' '}
+            <Link href="/?path=/story/components-dropdown-with-autocomplete--controlled-filtering">
+              Custom Filtering with AutoComplete
+            </Link>{' '}
+            for usage of ActionListItemBadge
+          </Text>
         </BaseBox>
       </BaseBox>
       <BaseBox as="section" id="actionlistsection">

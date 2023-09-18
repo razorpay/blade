@@ -97,7 +97,7 @@ const ActionListItem = `
           titleSuffix={(
             <ActionListItemBadgeGroup>
               <ActionListItemBadge>as: Keyword</ActionListItemBadge>
-              <ActionListItemBadge>as: Place</ActionListItemBadge>
+              <ActionListItemBadge>in: Something</ActionListItemBadge>
             </ActionListItemBadgeGroup>
           )}
           value="actionlist-value" 
