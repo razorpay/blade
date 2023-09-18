@@ -19,7 +19,10 @@ function Sandbox({ children, uri }: SandboxProps): JSX.Element {
   );
 }
 
-function SandboxHighlighter({ children }: { children: string } & CodeViewerProps): JSX.Element {
+function SandboxHighlighter({
+  children,
+}: // eslint-disable-next-line react/no-unused-prop-types
+{ children: string; theme?: 'light' | 'dark' } & CodeViewerProps): JSX.Element {
   return <BaseText fontFamily="code">{dedent(children)}</BaseText>;
 }
 
