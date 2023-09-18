@@ -100,7 +100,7 @@ const ThemeSelector = ({
   return (
     <Card elevation="none">
       <CardBody>
-        <Box>
+        <Box width="500px">
           <Heading>Customise theme</Heading>
           <Box marginTop="spacing.5" />
           <Box display="flex" flexDirection="row" gap="spacing.2" flexWrap="wrap">
@@ -174,9 +174,9 @@ const ThemeSelector = ({
           <Text type="subdued" weight="bold" marginRight="spacing.8">
             Code:
           </Text>
-          <Box>
+          <Box overflow="scroll">
             {selectedColor ? (
-              <SandboxHighlighter wrapContent showLineNumbers={false} theme={colorScheme}>
+              <SandboxHighlighter showLineNumbers={false} theme={colorScheme}>
                 {` 
               import { createTheme } from '@razorpay/blade/tokens';
               import App from './App';
@@ -197,7 +197,7 @@ const ThemeSelector = ({
             `}
               </SandboxHighlighter>
             ) : (
-              <SandboxHighlighter wrapContent showLineNumbers={false} theme={colorScheme}>
+              <SandboxHighlighter showLineNumbers={false} theme={colorScheme}>
                 {` 
               import { paymentTheme } from '@razorpay/blade/tokens';
               import App from './App';
