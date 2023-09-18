@@ -54,28 +54,30 @@ export const controlledFiltering = `
     AutoComplete,
     ActionList,
     ActionListItem,
+    ActionListItemBadge,
+    ActionListItemBadgeGroup
   } from '@razorpay/blade/components';
 
   const cities = [
     {
       title: 'Mumbai',
       value: 'mumbai',
-      keywords: ['maharashtra'],
+      keywords: ['Maharashtra'],
     },
     {
       title: 'Pune',
       value: 'pune',
-      keywords: ['maharashtra'],
+      keywords: ['Maharashtra'],
     },
     {
       title: 'Bengaluru',
       value: 'bengaluru',
-      keywords: ['karnataka', 'bangalore'],
+      keywords: ['Karnataka'],
     },
     {
       title: 'Ooty',
       value: 'ooty',
-      keywords: ['tamil nadu'],
+      keywords: ['Tamil Nadu'],
     },
   ];
 
@@ -121,7 +123,16 @@ export const controlledFiltering = `
               filteredValues.length > 0 ? (
                 <ActionList>
                   {cities.map((city) => (
-                    <ActionListItem key={city.value} title={city.title} value={city.value} />
+                    <ActionListItem 
+                      key={city.value} 
+                      title={city.title} 
+                      value={city.value} 
+                      titleSuffix={(
+                        <ActionListItemBadgeGroup>
+                          {city.keywords.map((keyword) => <ActionListItemBadge>in:{keyword}</ActionListItemBadge>)}
+                        </ActionListItemBadgeGroup>
+                      )}
+                    />
                   ))}
                 </ActionList>
               ) : (

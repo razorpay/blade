@@ -24,6 +24,9 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeSize } from '~utils/makeSize';
 import { makeAccessible } from '~utils/makeAccessible';
 import { throwBladeError } from '~utils/logger';
+import type { BadgeProps } from '~components/Badge';
+import { Badge } from '~components/Badge';
+import { Box } from '~components/Box';
 import { dropdownComponentIds } from '~components/Dropdown/dropdownComponentIds';
 
 type ActionListItemProps = {
@@ -56,6 +59,13 @@ type ActionListItemProps = {
    * Valid elements - `<ActionListItemText />`, `<ActionListItemIcon />`
    */
   trailing?: React.ReactNode;
+  /**
+   * Item that goes immediately next to the title.
+   *
+   * Valid elements - `<ActionListItemBadge />`, `<ActionListItemBadgeGroup />`
+   *
+   */
+  titleSuffix?: React.ReactElement;
   isDisabled?: boolean;
   intent?: Extract<Feedback, 'negative'>;
   /**
@@ -154,6 +164,30 @@ const ActionListItemIcon = assignWithoutSideEffects(_ActionListItemIcon, {
   componentId: componentIds.ActionListItemIcon,
 });
 
+const _ActionListItemBadgeGroup = ({
+  children,
+}: {
+  children: React.ReactElement[] | React.ReactElement;
+}): React.ReactElement => {
+  return (
+    <Box display="flex" alignItems="center" flexDirection="row">
+      {children}
+    </Box>
+  );
+};
+
+const ActionListItemBadgeGroup = assignWithoutSideEffects(_ActionListItemBadgeGroup, {
+  componentId: componentIds.ActionListItemBadgeGroup,
+});
+
+const _ActionListItemBadge = (props: BadgeProps): React.ReactElement => {
+  return <Badge size="medium" marginLeft="spacing.3" {...props} />;
+};
+
+const ActionListItemBadge = assignWithoutSideEffects(_ActionListItemBadge, {
+  componentId: componentIds.ActionListItemBadge,
+});
+
 const _ActionListItemText = ({
   children,
 }: {
@@ -200,10 +234,11 @@ const _ActionListItemBody = ({
   leading,
   trailing,
   title,
+  titleSuffix,
   isSelected,
 }: Pick<
   ActionListItemProps,
-  'intent' | 'isDisabled' | 'description' | 'trailing' | 'leading' | 'title'
+  'intent' | 'isDisabled' | 'description' | 'trailing' | 'leading' | 'title' | 'titleSuffix'
 > & {
   selectionType: DropdownProps['selectionType'];
   isSelected?: boolean;
@@ -241,6 +276,9 @@ const _ActionListItemBody = ({
         <BaseBox
           paddingLeft={selectionType === 'multiple' || !leading ? 'spacing.0' : 'spacing.3'}
           paddingRight="spacing.3"
+          display="flex"
+          alignItems="center"
+          flexDirection="row"
         >
           <Text
             truncateAfterLines={1}
@@ -252,6 +290,7 @@ const _ActionListItemBody = ({
           >
             {title}
           </Text>
+          {titleSuffix}
         </BaseBox>
         <BaseBox marginLeft="auto">{trailing}</BaseBox>
       </BaseBox>
@@ -332,8 +371,9 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
     validateActionListItemProps({
       leading: props.leading,
       trailing: props.trailing,
+      titleSuffix: props.titleSuffix,
     });
-  }, [props.leading, props.trailing]);
+  }, [props.leading, props.trailing, props.titleSuffix]);
 
   React.useEffect(() => {
     if (__DEV__) {
@@ -401,6 +441,7 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
           leading={props.leading}
           trailing={props.trailing}
           title={props.title}
+          titleSuffix={props.titleSuffix}
           isSelected={isSelected}
         />
       </StyledActionListItem>
@@ -414,4 +455,11 @@ const ActionListItem = assignWithoutSideEffects(React.memo(_ActionListItem), {
 });
 
 export type { ActionListItemProps, ActionListSectionProps };
-export { ActionListItem, ActionListItemIcon, ActionListItemText, ActionListSection };
+export {
+  ActionListItem,
+  ActionListItemIcon,
+  ActionListItemText,
+  ActionListItemBadge,
+  ActionListItemBadgeGroup,
+  ActionListSection,
+};
