@@ -77,11 +77,11 @@ const BrandedComponentKitchenSink = (): React.ReactElement => {
         {allStories.map((Story) => {
           return includedStories.includes(Story.storyName) ? (
             <>
-              <Heading textDecorationLine="underline" marginBottom="spacing.3">
+              <Heading size="large" marginBottom="spacing.4">
                 {StoryNameToHeadingMap[Story.storyName] ?? Story.storyName}:
               </Heading>
               <Story />
-              <Box marginTop="spacing.5" />
+              <Box marginTop="spacing.8" />
             </>
           ) : null;
         })}

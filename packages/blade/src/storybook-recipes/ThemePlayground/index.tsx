@@ -41,12 +41,12 @@ const ThemePlayground = (): React.ReactElement => {
             <Heading marginBottom="spacing.2">Checkout UI</Heading>
             <Checkout />
           </Box>
-          <Box flex={1}>
+          <Box flex={1} marginTop="spacing.6">
             <Heading marginBottom="spacing.2">Form</Heading>
             <BasicForm />
           </Box>
         </Box>
-        <Box marginTop="spacing.5">
+        <Box marginTop="spacing.6">
           <Heading marginBottom="spacing.2">Component Showcase</Heading>
           <BrandedComponentKitchenSink />
         </Box>

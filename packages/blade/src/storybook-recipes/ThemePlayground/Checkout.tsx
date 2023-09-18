@@ -12,7 +12,7 @@ const StyledHeader = styled(BaseBox)({
 });
 
 const StyledFooter = styled(BaseBox)(({ theme }) => ({
-  boxShadow: '0 -10px 10px rgba(23,26,30,.15)',
+  boxShadow: '0 -5px 10px rgba(23,26,30,.15)',
   borderTop: `1px solid ${theme.colors.brand.gray[300].lowContrast}`,
 }));
 
@@ -25,64 +25,71 @@ const Checkout = (): React.ReactElement => {
   return (
     <Card elevation="lowRaised" padding="spacing.0" width="375px">
       <CardBody>
-        <Box>
-          <StyledHeader
-            backgroundImage="linear-gradient(to bottom right,rgba(255,255,255,0.2),rgba(0,0,0,0.2))"
-            height="80px"
-            width="100%"
-            backgroundColor="brand.primary.500"
-            padding="spacing.4"
-            borderTopLeftRadius="medium"
-            borderTopRightRadius="medium"
-            flexDirection="row"
+        <Box overflow="hidden">
+          <Box>
+            <StyledHeader
+              backgroundImage="linear-gradient(to bottom right,rgba(255,255,255,0.2),rgba(0,0,0,0.2))"
+              height="80px"
+              width="100%"
+              backgroundColor="brand.primary.500"
+              padding="spacing.4"
+              borderTopLeftRadius="medium"
+              borderTopRightRadius="medium"
+              flexDirection="row"
+              display="flex"
+              gap="spacing.4"
+              alignItems="center"
+            >
+              <MerchantAvatar src="https://i.imgur.com/n5tjHFD.png" />
+              <Box>
+                <Heading color="action.text.primary.default">Merchant Name</Heading>
+                <Text size="small" color="action.text.primary.default">
+                  Razorpay trusted business
+                </Text>
+              </Box>
+            </StyledHeader>
+            <Box padding="spacing.4">
+              <Heading>Add New Card</Heading>
+              <Box display="flex" gap="spacing.6" marginTop="spacing.6">
+                <Box flex="2">
+                  <TextInput label="Card Number" />
+                </Box>
+                <Box flex="1">
+                  <TextInput label="Expiry" />
+                </Box>
+              </Box>
+              <Box display="flex" gap="spacing.6" marginTop="spacing.6">
+                <Box flex="2">
+                  <TextInput label="Card Holder's Name" />
+                </Box>
+                <Box flex="1">
+                  <PasswordInput label="CVV" />
+                </Box>
+              </Box>
+              <Box marginTop="spacing.8">
+                <Checkbox defaultChecked>Save card securely for future payments</Checkbox>
+              </Box>
+            </Box>
+          </Box>
+          <StyledFooter
             display="flex"
-            gap="spacing.4"
+            marginTop="spacing.10"
+            padding="spacing.4"
             alignItems="center"
           >
-            <MerchantAvatar src="https://i.imgur.com/n5tjHFD.png" />
-            <Box>
-              <Heading color="action.text.primary.default">Merchant Name</Heading>
-              <Text size="small" color="action.text.primary.default">
-                Razorpay trusted business
+            <Box flex={1} flexDirection="column">
+              <Amount value={5500} />
+              <Text size="small" type="subdued">
+                View Details
               </Text>
             </Box>
-          </StyledHeader>
-          <Box padding="spacing.4">
-            <Heading>Add New Card</Heading>
-            <Box display="flex" gap="spacing.6" marginTop="spacing.6">
-              <Box flex="2">
-                <TextInput label="Card Number" />
-              </Box>
-              <Box flex="1">
-                <TextInput label="Expiry" />
-              </Box>
+            <Box flex={2}>
+              <Button size="large" isFullWidth>
+                Pay Now
+              </Button>
             </Box>
-            <Box display="flex" gap="spacing.6" marginTop="spacing.6">
-              <Box flex="2">
-                <TextInput label="Card Holder's Name" />
-              </Box>
-              <Box flex="1">
-                <PasswordInput label="CVV" />
-              </Box>
-            </Box>
-            <Box marginTop="spacing.8">
-              <Checkbox defaultChecked>Save card securely for future payments</Checkbox>
-            </Box>
-          </Box>
+          </StyledFooter>
         </Box>
-        <StyledFooter display="flex" marginTop="spacing.10" padding="spacing.4" alignItems="center">
-          <Box flex={1} flexDirection="column">
-            <Amount value={5500} />
-            <Text size="small" type="subdued">
-              View Details
-            </Text>
-          </Box>
-          <Box flex={2}>
-            <Button size="large" isFullWidth>
-              Pay Now
-            </Button>
-          </Box>
-        </StyledFooter>
       </CardBody>
     </Card>
   );
