@@ -16,7 +16,10 @@ const ThemePlayground = (): React.ReactElement => {
     if (selectedColor) {
       return createTheme({ brandColor: selectedColor });
     }
-    if (selectedPreBuiltTheme === 'paymentTheme') return paymentTheme;
+    if (selectedPreBuiltTheme === 'paymentTheme') {
+      return paymentTheme;
+    }
+
     return bankingTheme;
   };
   return (
