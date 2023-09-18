@@ -17,18 +17,20 @@ import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
 import { size } from '~tokens/global';
 import { castNativeType } from '~utils';
+import type { ColorSchemeNames } from '~tokens/theme';
 
 const StyledPopoverContentWrapper = styled(BaseBox)<{
   collapse?: boolean;
   styles: CSSProperties;
   isMobile: boolean;
-}>(({ theme, isMobile, styles }) => {
-  return getPopoverContentWrapperStyles({ theme, styles, isMobile });
+  colorScheme: ColorSchemeNames;
+}>(({ theme, isMobile, styles, colorScheme }) => {
+  return getPopoverContentWrapperStyles({ theme, styles, isMobile, colorScheme });
 });
 
 const PopoverContentWrapper = React.forwardRef<View, PopoverContentWrapperProps>(
   ({ children, styles, side, isVisible, ...props }, ref) => {
-    const { theme, platform } = useTheme();
+    const { theme, platform, colorScheme } = useTheme();
     const isMobile = platform === 'onMobile';
 
     const isOppositeAxis = side === 'right' || side === 'bottom';
@@ -60,6 +62,7 @@ const PopoverContentWrapper = React.forwardRef<View, PopoverContentWrapperProps>
     return (
       <Animated.View style={animatedStyles}>
         <StyledPopoverContentWrapper
+          colorScheme={colorScheme}
           styles={styles}
           // Shadow styles need to be passed directly through native style prop
           // Cannot be done via styled components

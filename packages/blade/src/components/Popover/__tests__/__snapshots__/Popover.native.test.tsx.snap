@@ -213,6 +213,7 @@ exports[`<Popover /> should render 1`] = `
     >
       <View
         collapse={false}
+        colorScheme="light"
         data-blade-component="base-box"
         elevation={20}
         isMobile={true}
@@ -220,7 +221,7 @@ exports[`<Popover /> should render 1`] = `
           [
             {},
             {
-              "backgroundColor": "hsla(0, 0%, 100%, 1)",
+              "backgroundColor": "#FFFFFF",
               "borderColor": "hsla(216, 19%, 89%, 1)",
               "borderRadius": 8,
               "borderStyle": "solid",
@@ -729,6 +730,7 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
     >
       <View
         collapse={false}
+        colorScheme="light"
         data-blade-component="base-box"
         elevation={20}
         isMobile={true}
@@ -736,7 +738,7 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
           [
             {},
             {
-              "backgroundColor": "hsla(0, 0%, 100%, 1)",
+              "backgroundColor": "#FFFFFF",
               "borderColor": "hsla(216, 19%, 89%, 1)",
               "borderRadius": 8,
               "borderStyle": "solid",
@@ -1245,6 +1247,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
     >
       <View
         collapse={false}
+        colorScheme="light"
         data-blade-component="base-box"
         elevation={20}
         isMobile={true}
@@ -1252,7 +1255,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
           [
             {},
             {
-              "backgroundColor": "hsla(0, 0%, 100%, 1)",
+              "backgroundColor": "#FFFFFF",
               "borderColor": "hsla(216, 19%, 89%, 1)",
               "borderRadius": 8,
               "borderStyle": "solid",

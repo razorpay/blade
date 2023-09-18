@@ -52,7 +52,7 @@ exports[`<Popover /> should render 1`] = `
   width: 100%;
   max-width: 328px;
   position: relative;
-  background-color: hsla(0,0%,100%,1);
+  background-color: #FFFFFF;
   border-width: 1px;
   border-radius: 8px;
   border-color: hsla(216,19%,89%,1);
@@ -297,7 +297,7 @@ exports[`<Popover /> should render 1`] = `
         </div>
         <svg
           aria-hidden="true"
-          fill="hsla(0, 0%, 100%, 1)"
+          fill="#FFFFFF"
           height="14"
           style="position: absolute; pointer-events: none; top: 100%; left: 14px;"
           viewBox="0 0 14 14"
@@ -312,7 +312,7 @@ exports[`<Popover /> should render 1`] = `
           />
           <path
             d="M0,0 H14 L7,7 Q7,7 7,7 Z"
-            stroke="hsla(0, 0%, 100%, 1)"
+            stroke="#FFFFFF"
           />
           <clippath
             id=":r3:"
@@ -392,7 +392,7 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
   width: 100%;
   max-width: 328px;
   position: relative;
-  background-color: hsla(0,0%,100%,1);
+  background-color: #FFFFFF;
   border-width: 1px;
   border-radius: 8px;
   border-color: hsla(216,19%,89%,1);
@@ -636,7 +636,7 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
         </div>
         <svg
           aria-hidden="true"
-          fill="hsla(0, 0%, 100%, 1)"
+          fill="#FFFFFF"
           height="14"
           style="position: absolute; pointer-events: none; top: 100%;"
           viewBox="0 0 14 14"
@@ -651,7 +651,7 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
           />
           <path
             d="M0,0 H14 L7,7 Q7,7 7,7 Z"
-            stroke="hsla(0, 0%, 100%, 1)"
+            stroke="#FFFFFF"
           />
           <clippath
             id=":rb:"
@@ -747,7 +747,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
   width: 100%;
   max-width: 328px;
   position: relative;
-  background-color: hsla(0,0%,100%,1);
+  background-color: #FFFFFF;
   border-width: 1px;
   border-radius: 8px;
   border-color: hsla(216,19%,89%,1);
@@ -1032,7 +1032,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
         </div>
         <svg
           aria-hidden="true"
-          fill="hsla(0, 0%, 100%, 1)"
+          fill="#FFFFFF"
           height="14"
           style="position: absolute; pointer-events: none; top: 100%;"
           viewBox="0 0 14 14"
@@ -1047,7 +1047,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
           />
           <path
             d="M0,0 H14 L7,7 Q7,7 7,7 Z"
-            stroke="hsla(0, 0%, 100%, 1)"
+            stroke="#FFFFFF"
           />
           <clippath
             id=":r7:"

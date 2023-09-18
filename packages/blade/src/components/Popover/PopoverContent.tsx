@@ -6,7 +6,7 @@ import { PopoverCloseButton } from './PopoverCloseButton';
 import { usePopoverContext } from './PopoverContext';
 import BaseBox from '~components/Box/BaseBox';
 import { Heading } from '~components/Typography';
-import { isReactNative } from '~utils';
+import { isReactNative, useTheme } from '~utils';
 import { useIsMobile } from '~utils/useIsMobile';
 
 type PopoverHeaderProps = {
@@ -61,9 +61,11 @@ const PopoverHeader = ({ title, titleLeading }: PopoverHeaderProps): React.React
 
 const PopoverContent = React.forwardRef<HTMLDivElement, PopoverContentProps>(
   ({ children, title, titleLeading, footer, arrow, side, style, isVisible }, ref) => {
+    const { colorScheme } = useTheme();
     const isMobile = useIsMobile();
     return (
       <PopoverContentWrapper
+        colorScheme={colorScheme}
         ref={ref as never}
         styles={style}
         side={side}

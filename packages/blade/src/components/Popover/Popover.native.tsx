@@ -4,7 +4,13 @@ import React from 'react';
 import { Modal, TouchableOpacity } from 'react-native';
 import { PopoverContent } from './PopoverContent';
 import type { PopoverProps } from './types';
-import { ARROW_HEIGHT, ARROW_WIDTH, popoverZIndex } from './constants';
+import {
+  ARROW_HEIGHT,
+  ARROW_WIDTH,
+  popoverZIndex,
+  POPOVER_BG_DARK,
+  POPOVER_BG_LIGHT,
+} from './constants';
 import { PopoverContext } from './PopoverContext';
 import { useTheme } from '~components/BladeProvider';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
@@ -25,7 +31,7 @@ const Popover = ({
   isOpen,
   defaultIsOpen,
 }: PopoverProps): React.ReactElement => {
-  const { theme } = useTheme();
+  const { theme, colorScheme } = useTheme();
   const defaultInitialFocusRef = React.useRef(null);
   const [controllableIsOpen, controllableSetIsOpen] = useControllableState({
     value: isOpen,
@@ -136,7 +142,7 @@ const Popover = ({
               context={context}
               width={ARROW_WIDTH}
               height={ARROW_HEIGHT}
-              fillColor={theme.colors.surface.background.level2.lowContrast}
+              fillColor={colorScheme === 'dark' ? POPOVER_BG_DARK : POPOVER_BG_LIGHT}
               strokeColor={theme.colors.brand.gray[400].lowContrast}
             />
           }

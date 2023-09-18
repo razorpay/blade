@@ -17,7 +17,13 @@ import {
 import React from 'react';
 import type { PopoverProps } from './types';
 import { PopoverContent } from './PopoverContent';
-import { ARROW_HEIGHT, ARROW_WIDTH, popoverZIndex } from './constants';
+import {
+  ARROW_HEIGHT,
+  ARROW_WIDTH,
+  popoverZIndex,
+  POPOVER_BG_DARK,
+  POPOVER_BG_LIGHT,
+} from './constants';
 import { PopoverContext } from './PopoverContext';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
@@ -44,7 +50,7 @@ const Popover = ({
   defaultIsOpen,
   initialFocusRef,
 }: PopoverProps): React.ReactElement => {
-  const { theme } = useTheme();
+  const { theme, colorScheme } = useTheme();
   const defaultInitialFocusRef = React.useRef<HTMLButtonElement>(null);
   const arrowRef = React.useRef<SVGSVGElement>(null);
   const titleId = useId('popover-title');
@@ -162,7 +168,7 @@ const Popover = ({
                     context={context}
                     width={ARROW_WIDTH}
                     height={ARROW_HEIGHT}
-                    fillColor={theme.colors.surface.background.level2.lowContrast}
+                    fillColor={colorScheme === 'dark' ? POPOVER_BG_DARK : POPOVER_BG_LIGHT}
                     strokeColor={theme.colors.brand.gray[400].lowContrast}
                   />
                 }
