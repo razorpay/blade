@@ -78,6 +78,13 @@ export type FeedbackActions = {
   icon: Pick<ActionVariantsWithContrast, 'link' | 'primary'>;
 };
 
+export type WhiteColors = {
+  background: Pick<ActionVariants, 'primary' | 'secondary' | 'tertiary'>;
+  border: Pick<ActionVariants, 'primary' | 'secondary' | 'tertiary'>;
+  text: Pick<ActionVariants, 'link' | 'primary' | 'secondary' | 'tertiary'>;
+  icon: Pick<ActionVariants, 'link' | 'primary' | 'secondary' | 'tertiary'>;
+};
+
 export type Colors = {
   brand: {
     primary: Record<300 | 400 | 500 | 600 | 700 | 800, string>;
@@ -133,6 +140,12 @@ export type Colors = {
     icon: {
       blue: ColorContrast;
     };
+  };
+  static: {
+    white: string;
+  };
+  white: {
+    action: WhiteColors;
   };
 };
 
