@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { BasicForm } from './BasicForm';
 import { Checkout } from './Checkout';
+import { PhantomUI } from './PhantomUI';
 import { ThemeSelector } from './ThemeSelector';
 import { BrandedComponentKitchenSink } from './BrandedComponentKitchenSink';
 import { BladeProvider } from '~components/BladeProvider';
@@ -40,6 +41,10 @@ const ThemePlayground = (): React.ReactElement => {
           <Box flex={1}>
             <Heading marginBottom="spacing.2">Checkout UI</Heading>
             <Checkout />
+          </Box>
+          <Box flex={1}>
+            <Heading marginBottom="spacing.2">Phantom UI</Heading>
+            <PhantomUI />
           </Box>
           <Box flex={1} marginTop="spacing.6">
             <Heading marginBottom="spacing.2">Form</Heading>
