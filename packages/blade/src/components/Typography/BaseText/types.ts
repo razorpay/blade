@@ -17,6 +17,9 @@ type ActionColors = `action.text.${DotNotationColorStringToken<Theme['colors']['
 type BadgeTextColors = `badge.text.${DotNotationColorStringToken<
   Theme['colors']['badge']['text']
 >}`;
+type WhiteTextColors = `white.action.text.${DotNotationColorStringToken<
+  Theme['colors']['white']['action']['text']
+>}`;
 
 type BrandPrimaryColors = `brand.primary.${keyof Theme['colors']['brand']['primary']}`;
 
@@ -43,6 +46,7 @@ export type BaseTextProps = {
     | FeedbackColors
     | SurfaceColors
     | FeedbackActionColors
+    | WhiteTextColors
     | BadgeTextColors;
   fontFamily?: keyof Theme['typography']['fonts']['family'];
   fontSize?: keyof Theme['typography']['fonts']['size'];
