@@ -27,6 +27,10 @@ type BadgeIconColors = `badge.icon.${DotNotationColorStringToken<
   Theme['colors']['badge']['icon']
 >}`;
 
+type WhiteIconColors = `white.action.icon.${DotNotationColorStringToken<
+  Theme['colors']['white']['action']['icon']
+>}`;
+
 export type IconSize = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';
 export type IconProps = {
   /**
@@ -39,6 +43,7 @@ export type IconProps = {
     | FeedbackActionIconColors
     | TextIconColors
     | BadgeIconColors
+    | WhiteIconColors
     | 'currentColor'; // currentColor is useful for letting the SVG inherit color property from its container
   size?: IconSize;
 } & StyledPropsBlade;

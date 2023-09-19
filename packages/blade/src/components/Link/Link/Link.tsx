@@ -13,6 +13,7 @@ import type { BladeCommonEvents } from '~components/types';
 type LinkCommonProps = {
   variant?: 'anchor' | 'button';
   icon?: IconComponent;
+  color?: 'default' | 'white';
   iconPosition?: 'left' | 'right';
   isDisabled?: boolean;
   onClick?: (event: SyntheticEvent) => void;
@@ -122,6 +123,7 @@ const _Link: React.ForwardRefRenderFunction<BladeElementRef, LinkProps> = (
     isDisabled = false,
     onClick,
     variant = 'anchor',
+    color = 'default',
     href,
     target,
     rel,
@@ -151,6 +153,7 @@ const _Link: React.ForwardRefRenderFunction<BladeElementRef, LinkProps> = (
       onClick={onClick}
       accessibilityProps={{ label: accessibilityLabel, describedBy: rest['aria-describedby'] }}
       size={size}
+      color={color}
       testID={testID}
       hitSlop={hitSlop}
       htmlTitle={htmlTitle}

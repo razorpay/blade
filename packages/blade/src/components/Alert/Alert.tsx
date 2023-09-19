@@ -242,7 +242,11 @@ const Alert = ({
       marginRight="spacing.4"
       display={isReactNative ? castNativeType('flex') : castWebType('inline-flex')}
     >
-      <BaseLink size={textSize} contrast={contrast} intent={intent} {...secondaryActionParams}>
+      <BaseLink
+        size={textSize}
+        color={contrast === 'high' ? 'white' : intent}
+        {...secondaryActionParams}
+      >
         {actions.secondary.text}
       </BaseLink>
     </BaseBox>
