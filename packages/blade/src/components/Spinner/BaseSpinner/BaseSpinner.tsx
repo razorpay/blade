@@ -16,7 +16,12 @@ import { makeSize } from '~utils/makeSize';
 import { makeAccessible } from '~utils/makeAccessible';
 
 type BaseSpinnerProps = {
-  intent?: Feedback;
+  /**
+   * Sets the color of the spinner.
+   *
+   * @default 'default'
+   */
+  color?: 'default' | 'white' | Feedback;
   /**
    * Sets the label of the spinner.
    *
@@ -31,6 +36,7 @@ type BaseSpinnerProps = {
   /**
    * Sets the contrast of the spinner.
    *
+   * @deprecated Use `color="white"` for high contrast and `color="default"` for low contrast
    * @default 'low'
    */
   contrast?: ColorContrastTypes;
@@ -50,23 +56,20 @@ type BaseSpinnerProps = {
 
 const getColor = ({
   contrast,
-  intent,
+  color,
   theme,
 }: {
   contrast: NonNullable<BaseSpinnerProps['contrast']>;
-  intent: BaseSpinnerProps['intent'];
+  color: BaseSpinnerProps['color'];
   theme: Theme;
 }): string => {
-  if (intent) {
-    return getIn(
-      theme.colors,
-      `feedback.${intent}.action.icon.primary.disabled.${contrast}Contrast`,
-    );
-  } else if (contrast == 'low') {
-    return getIn(theme.colors, 'brand.gray.700.lowContrast');
-  } else {
-    return getIn(theme.colors, 'brand.gray.700.highContrast');
+  if (contrast === 'high' || (color && color === 'white')) {
+    return getIn(theme.colors, 'static.white');
   }
+  if (color && color !== 'default') {
+    return getIn(theme.colors, `feedback.${color}.action.icon.primary.disabled.lowContrast`);
+  }
+  return getIn(theme.colors, 'brand.gray.700.lowContrast');
 };
 
 const BaseSpinner = ({
@@ -74,7 +77,7 @@ const BaseSpinner = ({
   labelPosition = 'right',
   accessibilityLabel,
   contrast = 'low',
-  intent,
+  color = 'default',
   size = 'medium',
   testID,
   ...styledProps
@@ -97,7 +100,7 @@ const BaseSpinner = ({
         <SpinningBox>
           <SpinnerIcon
             dimensions={makeSize(dimensions[size])}
-            color={getColor({ contrast, intent, theme })}
+            color={getColor({ contrast, color, theme })}
           />
         </SpinningBox>
         {label && label.trim().length > 0 ? (
