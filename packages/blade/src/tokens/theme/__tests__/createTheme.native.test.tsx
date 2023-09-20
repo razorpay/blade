@@ -1,5 +1,5 @@
+import { render } from '@testing-library/react-native';
 import tinycolor from 'tinycolor2';
-import { render } from '@testing-library/react';
 import { createTheme } from '../createTheme';
 import { BladeProvider } from '~components/BladeProvider';
 import { Button } from '~components/Button';
@@ -8,7 +8,7 @@ describe('createTheme', () => {
   it('should create a theme with the correct brand colors', () => {
     const brandColor = '#83003D';
     const theme = createTheme({ brandColor });
-    const { getByRole } = render(
+    const { toJSON } = render(
       <BladeProvider themeTokens={theme} colorScheme="light">
         <Button>Pay now</Button>
       </BladeProvider>,
@@ -25,13 +25,13 @@ describe('createTheme', () => {
       ),
     ).toBe(true);
     expect(theme).toMatchSnapshot();
-    expect(getByRole('button')).toMatchSnapshot();
+    expect(toJSON()).toMatchSnapshot();
   });
 
   it('should create a theme with the correct brand colors', () => {
     const brandColor = '#FFF10A';
     const theme = createTheme({ brandColor });
-    const { getByRole } = render(
+    const { toJSON } = render(
       <BladeProvider themeTokens={theme} colorScheme="dark">
         <Button>Pay now</Button>
       </BladeProvider>,
@@ -47,6 +47,6 @@ describe('createTheme', () => {
       ),
     ).toBe(true);
     expect(theme).toMatchSnapshot();
-    expect(getByRole('button')).toMatchSnapshot();
+    expect(toJSON()).toMatchSnapshot();
   });
 });
