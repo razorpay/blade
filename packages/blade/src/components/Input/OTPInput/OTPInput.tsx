@@ -415,4 +415,5 @@ const _OTPInput: React.ForwardRefRenderFunction<HTMLInputElement[], OTPInputProp
 
 const OTPInput = React.forwardRef<HTMLInputElement[], OTPInputProps>(_OTPInput);
 
+export type { OTPInputProps };
 export { OTPInput };

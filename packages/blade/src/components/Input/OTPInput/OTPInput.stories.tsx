@@ -249,7 +249,7 @@ const OTPInputControlledTemplate: ComponentStory<typeof OTPInputComponent> = () 
 };
 export const OTPInputControlled = OTPInputControlledTemplate.bind({});
 
-export const inputRef: ComponentStory<typeof OTPInputComponent> = () => {
+export const OTPInputRef: ComponentStory<typeof OTPInputComponent> = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [focusOn, setFocusOn] = React.useState(0);
   const inputRef = React.useRef<HTMLInputElement[]>([]);
@@ -294,8 +294,8 @@ export const inputRef: ComponentStory<typeof OTPInputComponent> = () => {
   );
 };
 
-inputRef.storyName = 'OTP Input Ref';
-inputRef.parameters = {
+OTPInputRef.storyName = 'OTP Input Ref';
+OTPInputRef.parameters = {
   docs: {
     description: {
       story:
