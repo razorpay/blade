@@ -1323,8 +1323,8 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
-  background-color: hsla(193,100%,35%,1);
-  border-color: hsla(187,68%,52%,1);
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
@@ -1356,18 +1356,18 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
 }
 
 .c0:hover {
-  background-color: hsla(193,100%,35%,1);
-  border-color: hsla(187,68%,52%,1);
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
 }
 
 .c0:active {
-  background-color: hsla(193,100%,35%,1);
-  border-color: hsla(187,68%,52%,1);
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
 }
 
 .c0:focus {
-  background-color: hsla(193,100%,35%,1);
-  border-color: hsla(187,68%,52%,1);
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
@@ -1382,7 +1382,7 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
 }
 
 .c3 {
-  color: hsla(187,68%,52%,1);
+  color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
   font-weight: 700;
@@ -1448,8 +1448,8 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
-  background-color: hsla(193,100%,35%,0.09);
-  border-color: hsla(193,100%,35%,0.32);
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
@@ -1481,18 +1481,18 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
 }
 
 .c0:hover {
-  background-color: hsla(193,100%,35%,0.09);
-  border-color: hsla(193,100%,35%,0.32);
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
 }
 
 .c0:active {
-  background-color: hsla(193,100%,35%,0.09);
-  border-color: hsla(193,100%,35%,0.32);
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
 }
 
 .c0:focus {
-  background-color: hsla(193,100%,35%,0.09);
-  border-color: hsla(193,100%,35%,0.32);
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
@@ -1507,7 +1507,7 @@ exports[`<BaseButton /> should render disabled information intent low contrast b
 }
 
 .c3 {
-  color: hsla(193,100%,35%,0.32);
+  color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
   font-weight: 700;
@@ -1573,8 +1573,8 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
-  background-color: hsla(8,73%,47%,1);
-  border-color: hsla(8,99%,65%,1);
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
@@ -1606,18 +1606,18 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
 }
 
 .c0:hover {
-  background-color: hsla(8,73%,47%,1);
-  border-color: hsla(8,99%,65%,1);
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
 }
 
 .c0:active {
-  background-color: hsla(8,73%,47%,1);
-  border-color: hsla(8,99%,65%,1);
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
 }
 
 .c0:focus {
-  background-color: hsla(8,73%,47%,1);
-  border-color: hsla(8,99%,65%,1);
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
@@ -1632,7 +1632,7 @@ exports[`<BaseButton /> should render disabled negative intent high contrast but
 }
 
 .c3 {
-  color: hsla(8,99%,65%,1);
+  color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
   font-weight: 700;
@@ -1698,8 +1698,8 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
-  background-color: hsla(9,91%,56%,0.09);
-  border-color: hsla(9,91%,56%,0.32);
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
@@ -1731,18 +1731,18 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
 }
 
 .c0:hover {
-  background-color: hsla(9,91%,56%,0.09);
-  border-color: hsla(9,91%,56%,0.32);
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
 }
 
 .c0:active {
-  background-color: hsla(9,91%,56%,0.09);
-  border-color: hsla(9,91%,56%,0.32);
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
 }
 
 .c0:focus {
-  background-color: hsla(9,91%,56%,0.09);
-  border-color: hsla(9,91%,56%,0.32);
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
@@ -1757,7 +1757,7 @@ exports[`<BaseButton /> should render disabled negative intent low contrast butt
 }
 
 .c3 {
-  color: hsla(9,91%,56%,0.32);
+  color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
   font-weight: 700;
@@ -1823,8 +1823,8 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
-  background-color: hsla(216,33%,29%,1);
-  border-color: hsla(216,15%,54%,1);
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
@@ -1856,18 +1856,18 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
 }
 
 .c0:hover {
-  background-color: hsla(216,33%,29%,1);
-  border-color: hsla(216,15%,54%,1);
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
 }
 
 .c0:active {
-  background-color: hsla(216,33%,29%,1);
-  border-color: hsla(216,15%,54%,1);
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
 }
 
 .c0:focus {
-  background-color: hsla(216,33%,29%,1);
-  border-color: hsla(216,15%,54%,1);
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
@@ -1882,7 +1882,7 @@ exports[`<BaseButton /> should render disabled neutral intent high contrast butt
 }
 
 .c3 {
-  color: hsla(216,15%,54%,1);
+  color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
   font-weight: 700;
@@ -1948,8 +1948,8 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
-  background-color: hsla(216,15%,54%,0.09);
-  border-color: hsla(216,15%,54%,0.32);
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
@@ -1981,18 +1981,18 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
 }
 
 .c0:hover {
-  background-color: hsla(216,15%,54%,0.09);
-  border-color: hsla(216,15%,54%,0.32);
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
 }
 
 .c0:active {
-  background-color: hsla(216,15%,54%,0.09);
-  border-color: hsla(216,15%,54%,0.32);
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
 }
 
 .c0:focus {
-  background-color: hsla(216,15%,54%,0.09);
-  border-color: hsla(216,15%,54%,0.32);
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
@@ -2007,7 +2007,7 @@ exports[`<BaseButton /> should render disabled neutral intent low contrast butto
 }
 
 .c3 {
-  color: hsla(216,15%,54%,0.32);
+  color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
   font-weight: 700;
@@ -2073,8 +2073,8 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
-  background-color: hsla(38,97%,38%,1);
-  border-color: hsla(35,84%,54%,1);
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
@@ -2106,18 +2106,18 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
 }
 
 .c0:hover {
-  background-color: hsla(38,97%,38%,1);
-  border-color: hsla(35,84%,54%,1);
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
 }
 
 .c0:active {
-  background-color: hsla(38,97%,38%,1);
-  border-color: hsla(35,84%,54%,1);
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
 }
 
 .c0:focus {
-  background-color: hsla(38,97%,38%,1);
-  border-color: hsla(35,84%,54%,1);
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
@@ -2132,7 +2132,7 @@ exports[`<BaseButton /> should render disabled notice intent high contrast butto
 }
 
 .c3 {
-  color: hsla(35,84%,54%,1);
+  color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
   font-weight: 700;
@@ -2198,8 +2198,8 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
-  background-color: hsla(36,100%,44%,0.09);
-  border-color: hsla(36,100%,44%,0.32);
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
@@ -2231,18 +2231,18 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
 }
 
 .c0:hover {
-  background-color: hsla(36,100%,44%,0.09);
-  border-color: hsla(36,100%,44%,0.32);
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
 }
 
 .c0:active {
-  background-color: hsla(36,100%,44%,0.09);
-  border-color: hsla(36,100%,44%,0.32);
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
 }
 
 .c0:focus {
-  background-color: hsla(36,100%,44%,0.09);
-  border-color: hsla(36,100%,44%,0.32);
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
@@ -2257,7 +2257,7 @@ exports[`<BaseButton /> should render disabled notice intent low contrast button
 }
 
 .c3 {
-  color: hsla(36,100%,44%,0.32);
+  color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
   font-weight: 700;
@@ -2323,8 +2323,8 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
-  background-color: hsla(160,100%,26%,1);
-  border-color: hsla(149,99%,35%,1);
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
@@ -2356,18 +2356,18 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
 }
 
 .c0:hover {
-  background-color: hsla(160,100%,26%,1);
-  border-color: hsla(149,99%,35%,1);
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
 }
 
 .c0:active {
-  background-color: hsla(160,100%,26%,1);
-  border-color: hsla(149,99%,35%,1);
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
 }
 
 .c0:focus {
-  background-color: hsla(160,100%,26%,1);
-  border-color: hsla(149,99%,35%,1);
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
@@ -2382,7 +2382,7 @@ exports[`<BaseButton /> should render disabled positive intent high contrast but
 }
 
 .c3 {
-  color: hsla(149,99%,35%,1);
+  color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
   font-weight: 700;
@@ -2448,8 +2448,8 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
-  background-color: hsla(155,100%,31%,0.09);
-  border-color: hsla(155,100%,31%,0.32);
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
@@ -2481,18 +2481,18 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
 }
 
 .c0:hover {
-  background-color: hsla(155,100%,31%,0.09);
-  border-color: hsla(155,100%,31%,0.32);
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
 }
 
 .c0:active {
-  background-color: hsla(155,100%,31%,0.09);
-  border-color: hsla(155,100%,31%,0.32);
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
 }
 
 .c0:focus {
-  background-color: hsla(155,100%,31%,0.09);
-  border-color: hsla(155,100%,31%,0.32);
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
@@ -2507,7 +2507,7 @@ exports[`<BaseButton /> should render disabled positive intent low contrast butt
 }
 
 .c3 {
-  color: hsla(155,100%,31%,0.32);
+  color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
   font-weight: 700;
@@ -2698,7 +2698,7 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
-  background-color: hsla(0,0%,100%,1);
+  background-color: hsla(216,15%,54%,0.09);
   border-color: hsla(216,19%,89%,1);
   border-width: 1px;
   border-radius: 2px;
@@ -2731,17 +2731,17 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
 }
 
 .c0:hover {
-  background-color: hsla(0,0%,100%,1);
+  background-color: hsla(216,15%,54%,0.09);
   border-color: hsla(216,19%,89%,1);
 }
 
 .c0:active {
-  background-color: hsla(0,0%,100%,1);
+  background-color: hsla(216,15%,54%,0.09);
   border-color: hsla(216,19%,89%,1);
 }
 
 .c0:focus {
-  background-color: hsla(0,0%,100%,1);
+  background-color: hsla(216,15%,54%,0.09);
   border-color: hsla(216,19%,89%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
@@ -2823,8 +2823,8 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(193,100%,35%,1);
-  border-color: hsla(180,100%,97%,1);
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
@@ -2856,18 +2856,18 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
 }
 
 .c0:hover {
-  background-color: hsla(195,100%,31%,1);
-  border-color: hsla(180,100%,97%,1);
+  background-color: hsla(223,95%,48%,1);
+  border-color: hsla(223,95%,48%,1);
 }
 
 .c0:active {
-  background-color: hsla(196,100%,27%,1);
-  border-color: hsla(180,100%,97%,1);
+  background-color: hsla(230,100%,42%,1);
+  border-color: hsla(230,100%,42%,1);
 }
 
 .c0:focus {
-  background-color: hsla(196,100%,27%,1);
-  border-color: hsla(180,100%,97%,1);
+  background-color: hsla(227,100%,45%,1);
+  border-color: hsla(227,100%,45%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
@@ -2882,7 +2882,7 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
 }
 
 .c3 {
-  color: hsla(180,100%,97%,1);
+  color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
   font-weight: 700;
@@ -2947,8 +2947,8 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(193,100%,35%,0.09);
-  border-color: hsla(193,100%,35%,0.32);
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
@@ -2980,18 +2980,18 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
 }
 
 .c0:hover {
-  background-color: hsla(193,100%,35%,0.18);
-  border-color: hsla(193,100%,35%,0.32);
+  background-color: hsla(223,95%,48%,1);
+  border-color: hsla(223,95%,48%,1);
 }
 
 .c0:active {
-  background-color: hsla(193,100%,35%,0.32);
-  border-color: hsla(193,100%,35%,0.32);
+  background-color: hsla(230,100%,42%,1);
+  border-color: hsla(230,100%,42%,1);
 }
 
 .c0:focus {
-  background-color: hsla(193,100%,35%,0.32);
-  border-color: hsla(193,100%,35%,0.32);
+  background-color: hsla(227,100%,45%,1);
+  border-color: hsla(227,100%,45%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
@@ -3006,7 +3006,7 @@ exports[`<BaseButton /> should render information intent low contrast button 1`]
 }
 
 .c3 {
-  color: hsla(195,100%,31%,1);
+  color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
   font-weight: 700;
@@ -3319,8 +3319,8 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(8,73%,47%,1);
-  border-color: hsla(0,100%,97%,1);
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
@@ -3352,18 +3352,18 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
 }
 
 .c0:hover {
-  background-color: hsla(7,72%,40%,1);
-  border-color: hsla(0,100%,97%,1);
+  background-color: hsla(223,95%,48%,1);
+  border-color: hsla(223,95%,48%,1);
 }
 
 .c0:active {
-  background-color: hsla(5,69%,32%,1);
-  border-color: hsla(0,100%,97%,1);
+  background-color: hsla(230,100%,42%,1);
+  border-color: hsla(230,100%,42%,1);
 }
 
 .c0:focus {
-  background-color: hsla(5,69%,32%,1);
-  border-color: hsla(0,100%,97%,1);
+  background-color: hsla(227,100%,45%,1);
+  border-color: hsla(227,100%,45%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
@@ -3378,7 +3378,7 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
 }
 
 .c3 {
-  color: hsla(0,100%,97%,1);
+  color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
   font-weight: 700;
@@ -3443,8 +3443,8 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(9,91%,56%,0.09);
-  border-color: hsla(9,91%,56%,0.32);
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
@@ -3476,18 +3476,18 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
 }
 
 .c0:hover {
-  background-color: hsla(9,91%,56%,0.18);
-  border-color: hsla(9,91%,56%,0.32);
+  background-color: hsla(223,95%,48%,1);
+  border-color: hsla(223,95%,48%,1);
 }
 
 .c0:active {
-  background-color: hsla(9,91%,56%,0.32);
-  border-color: hsla(9,91%,56%,0.32);
+  background-color: hsla(230,100%,42%,1);
+  border-color: hsla(230,100%,42%,1);
 }
 
 .c0:focus {
-  background-color: hsla(9,91%,56%,0.32);
-  border-color: hsla(9,91%,56%,0.32);
+  background-color: hsla(227,100%,45%,1);
+  border-color: hsla(227,100%,45%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
@@ -3502,7 +3502,7 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
 }
 
 .c3 {
-  color: hsla(8,73%,47%,1);
+  color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
   font-weight: 700;
@@ -3567,8 +3567,8 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(216,33%,29%,1);
-  border-color: hsla(214,18%,69%,1);
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
@@ -3600,18 +3600,18 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
 }
 
 .c0:hover {
-  background-color: hsla(216,44%,23%,1);
-  border-color: hsla(214,18%,69%,1);
+  background-color: hsla(223,95%,48%,1);
+  border-color: hsla(223,95%,48%,1);
 }
 
 .c0:active {
-  background-color: hsla(217,56%,17%,1);
-  border-color: hsla(214,18%,69%,1);
+  background-color: hsla(230,100%,42%,1);
+  border-color: hsla(230,100%,42%,1);
 }
 
 .c0:focus {
-  background-color: hsla(217,56%,17%,1);
-  border-color: hsla(214,18%,69%,1);
+  background-color: hsla(227,100%,45%,1);
+  border-color: hsla(227,100%,45%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
@@ -3626,7 +3626,7 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
 }
 
 .c3 {
-  color: hsla(220,27%,98%,1);
+  color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
   font-weight: 700;
@@ -3691,8 +3691,8 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(216,15%,54%,0.09);
-  border-color: hsla(216,15%,54%,0.32);
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
@@ -3724,18 +3724,18 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
 }
 
 .c0:hover {
-  background-color: hsla(216,15%,54%,0.18);
-  border-color: hsla(216,15%,54%,0.32);
+  background-color: hsla(223,95%,48%,1);
+  border-color: hsla(223,95%,48%,1);
 }
 
 .c0:active {
-  background-color: hsla(216,15%,54%,0.32);
-  border-color: hsla(216,15%,54%,0.32);
+  background-color: hsla(230,100%,42%,1);
+  border-color: hsla(230,100%,42%,1);
 }
 
 .c0:focus {
-  background-color: hsla(216,15%,54%,0.32);
-  border-color: hsla(216,15%,54%,0.32);
+  background-color: hsla(227,100%,45%,1);
+  border-color: hsla(227,100%,45%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
@@ -3750,7 +3750,7 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
 }
 
 .c3 {
-  color: hsla(216,27%,36%,1);
+  color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
   font-weight: 700;
@@ -3815,8 +3815,8 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(38,97%,38%,1);
-  border-color: hsla(32,100%,94%,1);
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
@@ -3848,18 +3848,18 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
 }
 
 .c0:hover {
-  background-color: hsla(40,90%,32%,1);
-  border-color: hsla(32,100%,94%,1);
+  background-color: hsla(223,95%,48%,1);
+  border-color: hsla(223,95%,48%,1);
 }
 
 .c0:active {
-  background-color: hsla(41,82%,26%,1);
-  border-color: hsla(32,100%,94%,1);
+  background-color: hsla(230,100%,42%,1);
+  border-color: hsla(230,100%,42%,1);
 }
 
 .c0:focus {
-  background-color: hsla(41,82%,26%,1);
-  border-color: hsla(32,100%,94%,1);
+  background-color: hsla(227,100%,45%,1);
+  border-color: hsla(227,100%,45%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
@@ -3874,7 +3874,7 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
 }
 
 .c3 {
-  color: hsla(32,100%,94%,1);
+  color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
   font-weight: 700;
@@ -3939,8 +3939,8 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(36,100%,44%,0.09);
-  border-color: hsla(36,100%,44%,0.32);
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
@@ -3972,18 +3972,18 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
 }
 
 .c0:hover {
-  background-color: hsla(36,100%,44%,0.18);
-  border-color: hsla(36,100%,44%,0.32);
+  background-color: hsla(223,95%,48%,1);
+  border-color: hsla(223,95%,48%,1);
 }
 
 .c0:active {
-  background-color: hsla(36,100%,44%,0.32);
-  border-color: hsla(36,100%,44%,0.32);
+  background-color: hsla(230,100%,42%,1);
+  border-color: hsla(230,100%,42%,1);
 }
 
 .c0:focus {
-  background-color: hsla(36,100%,44%,0.32);
-  border-color: hsla(36,100%,44%,0.32);
+  background-color: hsla(227,100%,45%,1);
+  border-color: hsla(227,100%,45%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
@@ -3998,7 +3998,7 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
 }
 
 .c3 {
-  color: hsla(38,97%,38%,1);
+  color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
   font-weight: 700;
@@ -4063,8 +4063,8 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(160,100%,26%,1);
-  border-color: hsla(107,100%,96%,1);
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
@@ -4096,18 +4096,18 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
 }
 
 .c0:hover {
-  background-color: hsla(163,100%,22%,1);
-  border-color: hsla(107,100%,96%,1);
+  background-color: hsla(223,95%,48%,1);
+  border-color: hsla(223,95%,48%,1);
 }
 
 .c0:active {
-  background-color: hsla(164,100%,17%,1);
-  border-color: hsla(107,100%,96%,1);
+  background-color: hsla(230,100%,42%,1);
+  border-color: hsla(230,100%,42%,1);
 }
 
 .c0:focus {
-  background-color: hsla(164,100%,17%,1);
-  border-color: hsla(107,100%,96%,1);
+  background-color: hsla(227,100%,45%,1);
+  border-color: hsla(227,100%,45%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
@@ -4122,7 +4122,7 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
 }
 
 .c3 {
-  color: hsla(107,100%,96%,1);
+  color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
   font-weight: 700;
@@ -4187,8 +4187,8 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(155,100%,31%,0.09);
-  border-color: hsla(155,100%,31%,0.32);
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
@@ -4220,18 +4220,18 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
 }
 
 .c0:hover {
-  background-color: hsla(155,100%,31%,0.18);
-  border-color: hsla(155,100%,31%,0.32);
+  background-color: hsla(223,95%,48%,1);
+  border-color: hsla(223,95%,48%,1);
 }
 
 .c0:active {
-  background-color: hsla(155,100%,31%,0.32);
-  border-color: hsla(155,100%,31%,0.32);
+  background-color: hsla(230,100%,42%,1);
+  border-color: hsla(230,100%,42%,1);
 }
 
 .c0:focus {
-  background-color: hsla(155,100%,31%,0.32);
-  border-color: hsla(155,100%,31%,0.32);
+  background-color: hsla(227,100%,45%,1);
+  border-color: hsla(227,100%,45%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
@@ -4246,7 +4246,7 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
 }
 
 .c3 {
-  color: hsla(160,100%,26%,1);
+  color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
   font-weight: 700;
@@ -4559,8 +4559,8 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(0,0%,100%,1);
-  border-color: hsla(216,19%,89%,1);
+  background-color: hsla(216,15%,54%,0.09);
+  border-color: hsla(216,44%,23%,0);
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
@@ -4592,17 +4592,17 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
 }
 
 .c0:hover {
-  background-color: hsla(220,27%,98%,1);
+  background-color: hsla(216,15%,54%,0.18);
   border-color: hsla(216,19%,89%,1);
 }
 
 .c0:active {
-  background-color: hsla(214,21%,94%,1);
+  background-color: hsla(216,15%,54%,0.32);
   border-color: hsla(216,19%,89%,1);
 }
 
 .c0:focus {
-  background-color: hsla(220,30%,96%,1);
+  background-color: hsla(216,15%,54%,0.32);
   border-color: hsla(216,19%,89%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;

@@ -66,6 +66,7 @@ export default {
   component: ButtonComponent,
   args: {
     variant: 'primary',
+    color: 'default',
     children: 'Pay Now',
     onClick: (): void => {
       console.log('clicked');
