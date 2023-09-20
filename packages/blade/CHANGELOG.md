@@ -1,5 +1,30 @@
 # @razorpay/blade
 
+## 10.11.0
+
+### Minor Changes
+
+- c4242ad4: feat(Dropdown): add isOpen and onOpenChange
+
+  > **Warning**
+  >
+  > This PR marks `onDismiss` as deprecated. While it continues to work, we recommend consumers to move to onOpenChange using migration steps below
+
+  ### Migration from `onDismiss` on Dropdown
+
+  ```diff
+  <Dropdown
+  - onDismiss={() => console.log('dismissed')}
+  + onOpenChange={(isOpen) => {
+  +  if (!isOpen) {
+  +    console.log('dismissed');
+  +  }
+  + }}
+  />
+  ```
+
+- 18748f1f: feat(ActionListItem): add ActionListItemBadge component and `titleSuffix` option on ActionListItem
+
 ## 10.10.0
 
 ### Minor Changes
