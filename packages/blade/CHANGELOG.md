@@ -1,5 +1,15 @@
 # @razorpay/blade
 
+## 10.12.0
+
+### Minor Changes
+
+- 2f2fcab4: feat(blade): add ref to OTP Input
+
+### Patch Changes
+
+- dc42ae1e: fix(Box): correctly apply border styles
+
 ## 10.11.0
 
 ### Minor Changes
