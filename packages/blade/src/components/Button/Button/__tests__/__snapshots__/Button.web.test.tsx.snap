@@ -827,7 +827,7 @@ exports[`<Button /> should render disabled tertiary variant button 1`] = `
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
-  background-color: hsla(0,0%,100%,1);
+  background-color: hsla(216,15%,54%,0.09);
   border-color: hsla(216,19%,89%,1);
   border-width: 1px;
   border-radius: 2px;
@@ -860,17 +860,17 @@ exports[`<Button /> should render disabled tertiary variant button 1`] = `
 }
 
 .c0:hover {
-  background-color: hsla(0,0%,100%,1);
+  background-color: hsla(216,15%,54%,0.09);
   border-color: hsla(216,19%,89%,1);
 }
 
 .c0:active {
-  background-color: hsla(0,0%,100%,1);
+  background-color: hsla(216,15%,54%,0.09);
   border-color: hsla(216,19%,89%,1);
 }
 
 .c0:focus {
-  background-color: hsla(0,0%,100%,1);
+  background-color: hsla(216,15%,54%,0.09);
   border-color: hsla(216,19%,89%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
@@ -1448,8 +1448,8 @@ exports[`<Button /> should render tertiary variant button 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(0,0%,100%,1);
-  border-color: hsla(216,19%,89%,1);
+  background-color: hsla(216,15%,54%,0.09);
+  border-color: hsla(216,44%,23%,0);
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
@@ -1481,17 +1481,17 @@ exports[`<Button /> should render tertiary variant button 1`] = `
 }
 
 .c0:hover {
-  background-color: hsla(220,27%,98%,1);
+  background-color: hsla(216,15%,54%,0.18);
   border-color: hsla(216,19%,89%,1);
 }
 
 .c0:active {
-  background-color: hsla(214,21%,94%,1);
+  background-color: hsla(216,15%,54%,0.32);
   border-color: hsla(216,19%,89%,1);
 }
 
 .c0:focus {
-  background-color: hsla(220,30%,96%,1);
+  background-color: hsla(216,15%,54%,0.32);
   border-color: hsla(216,19%,89%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;

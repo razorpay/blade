@@ -69,8 +69,7 @@ type BaseButtonCommonProps = {
   isLoading?: boolean;
   accessibilityProps?: Partial<AccessibilityProps>;
   variant?: 'primary' | 'secondary' | 'tertiary';
-  contrast?: 'low' | 'high';
-  intent?: 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
+  color?: 'default' | 'white' | 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
 } & TestID &
   StyledPropsBlade &
   BladeCommonEvents;
@@ -100,8 +99,7 @@ type BaseButtonColorTokenModifiers = {
   property: 'background' | 'border' | 'text' | 'icon';
   variant: NonNullable<BaseButtonProps['variant']>;
   state: 'default' | 'hover' | 'active' | 'focus' | 'disabled';
-  intent: BaseButtonProps['intent'];
-  contrast: BaseButtonProps['contrast'];
+  color: BaseButtonProps['color'];
 };
 
 /**
@@ -125,20 +123,25 @@ const getColorToken = ({
   property,
   variant,
   state,
-  contrast,
-  intent,
+  color,
 }: BaseButtonColorTokenModifiers):
   | `action.${BaseButtonColorTokenModifiers['property']}.${BaseButtonColorTokenModifiers['variant']}.${BaseButtonColorTokenModifiers['state']}`
+  | `white.action.${BaseButtonColorTokenModifiers['property']}.${BaseButtonColorTokenModifiers['variant']}.${BaseButtonColorTokenModifiers['state']}`
   | `feedback.${NonNullable<
-      BaseButtonColorTokenModifiers['intent']
-    >}.action.${BaseButtonColorTokenModifiers['property']}.primary.${BaseButtonColorTokenModifiers['state']}.${NonNullable<
-      BaseButtonColorTokenModifiers['contrast']
-    >}Contrast` => {
-  if (intent && contrast) {
-    // TODO: Add support for secondary & tertiary variants for feedback buttons here when a use-case is identified
-    return `feedback.${intent}.action.${property}.primary.${state}.${contrast}Contrast`;
+      Exclude<BaseButtonColorTokenModifiers['color'], 'default' | 'white'>
+    >}.action.${BaseButtonColorTokenModifiers['property']}.primary.${BaseButtonColorTokenModifiers['state']}.${
+      | 'high'
+      | 'low'}Contrast` => {
+  if (!color || color === 'default') {
+    return `action.${property}.${variant}.${state}`;
   }
-  return `action.${property}.${variant}.${state}`;
+  if (color === 'white') {
+    return `white.action.${property}.${variant}.${state}`;
+  }
+
+  return `feedback.${color}.action.${property}.primary.${state}.${
+    variant === 'primary' ? 'high' : 'low'
+  }Contrast`;
 };
 
 type BaseButtonStyleProps = {
@@ -177,8 +180,7 @@ const getProps = ({
   size,
   theme,
   variant,
-  intent,
-  contrast,
+  color,
   hasIcon,
 }: {
   buttonTypographyTokens: ButtonTypography;
@@ -188,9 +190,15 @@ const getProps = ({
   theme: Theme;
   size: NonNullable<BaseButtonProps['size']>;
   variant: NonNullable<BaseButtonProps['variant']>;
-  intent: BaseButtonProps['intent'];
-  contrast: NonNullable<BaseButtonProps['contrast']>;
+  color: BaseButtonProps['color'];
 }): BaseButtonStyleProps => {
+  if (variant === 'tertiary' && color !== 'default' && color !== 'white') {
+    throwBladeError({
+      moduleName: 'BaseButton',
+      message: `Tertiary buttons can only be used with default or white color. You passed ${color}`,
+    });
+  }
+
   const isIconOnly = hasIcon && (!children || children?.trim().length === 0);
   const props: BaseButtonStyleProps = {
     iconSize: isIconOnly ? buttonIconOnlySizeToIconSizeMap[size] : buttonSizeToIconSizeMap[size],
@@ -202,15 +210,13 @@ const getProps = ({
     iconColor: getColorToken({
       property: 'icon',
       variant,
-      contrast,
-      intent,
+      color,
       state: 'default',
     }) as IconColor,
     textColor: getColorToken({
       property: 'text',
       variant,
-      contrast,
-      intent,
+      color,
       state: 'default',
     }) as BaseTextProps['color'],
     buttonPaddingTop: isIconOnly
@@ -228,35 +234,35 @@ const getProps = ({
     text: size === 'xsmall' ? children?.trim().toUpperCase() : children?.trim(),
     defaultBackgroundColor: getIn(
       theme.colors,
-      getColorToken({ property: 'background', variant, contrast, intent, state: 'default' }),
+      getColorToken({ property: 'background', variant, color, state: 'default' }),
     ),
     defaultBorderColor: getIn(
       theme.colors,
-      getColorToken({ property: 'border', variant, contrast, intent, state: 'default' }),
+      getColorToken({ property: 'border', variant, color, state: 'default' }),
     ),
     hoverBackgroundColor: getIn(
       theme.colors,
-      getColorToken({ property: 'background', variant, contrast, intent, state: 'hover' }),
+      getColorToken({ property: 'background', variant, color, state: 'hover' }),
     ),
     hoverBorderColor: getIn(
       theme.colors,
-      getColorToken({ property: 'border', variant, contrast, intent, state: 'hover' }),
+      getColorToken({ property: 'border', variant, color, state: 'hover' }),
     ),
     activeBackgroundColor: getIn(
       theme.colors,
-      getColorToken({ property: 'background', variant, contrast, intent, state: 'active' }),
+      getColorToken({ property: 'background', variant, color, state: 'active' }),
     ),
     activeBorderColor: getIn(
       theme.colors,
-      getColorToken({ property: 'border', variant, contrast, intent, state: 'active' }),
+      getColorToken({ property: 'border', variant, color, state: 'active' }),
     ),
     focusBackgroundColor: getIn(
       theme.colors,
-      getColorToken({ property: 'background', variant, contrast, intent, state: 'focus' }),
+      getColorToken({ property: 'background', variant, color, state: 'focus' }),
     ),
     focusBorderColor: getIn(
       theme.colors,
-      getColorToken({ property: 'border', variant, contrast, intent, state: 'focus' }),
+      getColorToken({ property: 'border', variant, color, state: 'focus' }),
     ),
     focusRingColor: getIn(theme.colors, 'brand.primary.400'),
     borderWidth: makeBorderSize(theme.border.width.thin),
@@ -268,24 +274,22 @@ const getProps = ({
   if (isDisabled) {
     const disabledBackgroundColor = getIn(
       theme.colors,
-      getColorToken({ property: 'background', variant, contrast, intent, state: 'disabled' }),
+      getColorToken({ property: 'background', variant, color, state: 'disabled' }),
     );
     const disabledBorderColor = getIn(
       theme.colors,
-      getColorToken({ property: 'border', variant, contrast, intent, state: 'disabled' }),
+      getColorToken({ property: 'border', variant, color, state: 'disabled' }),
     );
     props.iconColor = getColorToken({
       property: 'icon',
       variant,
-      contrast,
-      intent,
+      color,
       state: 'disabled',
     }) as IconColor;
     props.textColor = getColorToken({
       property: 'text',
       variant,
-      contrast,
-      intent,
+      color,
       state: 'disabled',
     }) as BaseTextProps['color'];
     props.defaultBackgroundColor = disabledBackgroundColor;
@@ -311,8 +315,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     target,
     rel,
     variant = 'primary',
-    intent,
-    contrast = 'low',
+    color = 'default',
     size = 'medium',
     icon: Icon,
     iconPosition = 'left',
@@ -394,8 +397,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     size,
     variant,
     theme,
-    intent,
-    contrast,
+    color,
     hasIcon: Boolean(Icon),
   });
 
@@ -463,12 +465,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
           bottom="0px"
           right="0px"
         >
-          <BaseSpinner
-            accessibilityLabel="Loading"
-            size={spinnerSize}
-            intent={intent}
-            contrast={contrast}
-          />
+          <BaseSpinner accessibilityLabel="Loading" size={spinnerSize} color={color} />
         </BaseBox>
       ) : null}
       <ButtonContent

@@ -28,6 +28,7 @@ type ButtonCommonProps = {
    */
   rel?: BaseButtonProps['rel'];
   variant?: 'primary' | 'secondary' | 'tertiary';
+  color?: 'default' | 'white' | 'positive' | 'negative';
   size?: 'xsmall' | 'small' | 'medium' | 'large';
   iconPosition?: 'left' | 'right';
   isDisabled?: boolean;
@@ -84,6 +85,7 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
     size = 'medium',
     type = 'button',
     variant = 'primary',
+    color = 'default',
     accessibilityLabel,
     testID,
     onBlur,
@@ -111,6 +113,7 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
         describedBy: rest['aria-describedby'],
       }}
       iconPosition={iconPosition}
+      color={color}
       isDisabled={isDisabled}
       isFullWidth={isFullWidth}
       onClick={onClick}
