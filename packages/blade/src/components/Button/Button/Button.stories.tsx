@@ -61,7 +61,7 @@ const Page = (): ReactElement => {
   );
 };
 
-export default ({
+export default {
   title: 'Components/Button',
   component: ButtonComponent,
   args: {
@@ -91,7 +91,7 @@ export default ({
       page: Page,
     },
   },
-} as unknown) as Meta<ButtonProps>;
+} as Meta<ButtonProps>;
 
 const ButtonTemplate: ComponentStory<typeof ButtonComponent> = ({
   children = 'Button',
