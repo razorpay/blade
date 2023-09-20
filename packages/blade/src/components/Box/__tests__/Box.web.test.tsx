@@ -201,4 +201,19 @@ describe('<Box />', () => {
     const { getByText } = renderWithTheme(<Box id={id}>{text}</Box>);
     expect(getByText(text)).toHaveAttribute('id', id);
   });
+
+  // https://github.com/razorpay/blade/issues/1624
+  it('should apply borderBottomColor prop to border bottom only', () => {
+    const { container } = renderWithTheme(
+      <Box borderBottomColor="surface.border.normal.lowContrast">I am Visible</Box>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should apply borderColor prop to all borders', () => {
+    const { container } = renderWithTheme(
+      <Box borderColor="surface.border.normal.lowContrast">I am Visible</Box>,
+    );
+    expect(container).toMatchSnapshot();
+  });
 });
