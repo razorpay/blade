@@ -179,7 +179,7 @@ const Card = ({
     <CardProvider>
       <CardRoot
         as={as}
-        display="block"
+        display={'block' as never}
         borderRadius="medium"
         onMouseEnter={onHover as never}
         shouldScaleOnHover={shouldScaleOnHover}

@@ -840,14 +840,14 @@ export const MultiSelectCard = (): React.ReactElement => {
 
 const RadioCard = ({ value, label }: { value: string; label: string }) => {
   return (
-    <Box display="flex" gap="spacing.3" alignItems="flex-start">
+    <Box display="flex" flexDirection="row" gap="spacing.3" alignItems="flex-start">
       <Radio value={value} />
       <Box display="flex" flexDirection="column" gap="spacing.3">
-        <Box display="flex" gap="spacing.4">
+        <Box display="flex" flexDirection="row" gap="spacing.4">
           <Text weight="bold">{label}</Text>
           <Badge variant="positive">Issued</Badge>
         </Box>
-        <Box display="flex" gap="spacing.4">
+        <Box display="flex" flexDirection="row" gap="spacing.4">
           <Text size="small">13 Aug’23</Text>
           <Amount size="body-small" value={1000} />
           <Text size="small">Un-billed/₹1,000</Text>
@@ -901,14 +901,14 @@ export const SingleSelectWithRadio = (): React.ReactElement => {
 
 const CheckboxCard = ({ value, label }: { value: string; label: string }) => {
   return (
-    <Box display="flex" gap="spacing.3" alignItems="flex-start">
+    <Box display="flex" flexDirection="row" gap="spacing.3" alignItems="flex-start">
       <Checkbox value={value} />
       <Box display="flex" flexDirection="column" gap="spacing.3">
-        <Box display="flex" gap="spacing.4">
+        <Box display="flex" flexDirection="row" gap="spacing.4">
           <Text weight="bold">{label}</Text>
           <Badge variant="positive">Issued</Badge>
         </Box>
-        <Box display="flex" gap="spacing.4">
+        <Box display="flex" flexDirection="row" gap="spacing.4">
           <Text size="small">13 Aug’23</Text>
           <Amount size="body-small" value={1000} />
           <Text size="small">Un-billed/₹1,000</Text>
