@@ -425,14 +425,14 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
       }
     >
       <View
-        alignItems="center"
+        alignItems="right"
         data-blade-component="base-box"
         display="flex"
         justifyContent="center"
         style={
           [
             {
-              "alignItems": "center",
+              "alignItems": "right",
               "display": "flex",
               "justifyContent": "center",
               "paddingRight": 8,
@@ -651,14 +651,14 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
       }
     >
       <View
-        alignItems="center"
+        alignItems="right"
         data-blade-component="base-box"
         display="flex"
         justifyContent="center"
         style={
           [
             {
-              "alignItems": "center",
+              "alignItems": "right",
               "display": "flex",
               "justifyContent": "center",
               "paddingRight": 8,
@@ -910,14 +910,14 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
         Pay Now
       </Text>
       <View
-        alignItems="center"
+        alignItems="left"
         data-blade-component="base-box"
         display="flex"
         justifyContent="center"
         style={
           [
             {
-              "alignItems": "center",
+              "alignItems": "left",
               "display": "flex",
               "justifyContent": "center",
               "paddingLeft": 8,
@@ -1103,14 +1103,14 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
       }
     >
       <View
-        alignItems="center"
+        alignItems="right"
         data-blade-component="base-box"
         display="flex"
         justifyContent="center"
         style={
           [
             {
-              "alignItems": "center",
+              "alignItems": "right",
               "display": "flex",
               "justifyContent": "center",
             },
@@ -1120,12 +1120,12 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
         <RNSVGSvgView
           accessibilityElementsHidden={true}
           align="xMidYMid"
-          bbHeight="20px"
-          bbWidth="20px"
+          bbHeight="16px"
+          bbWidth="16px"
           data-blade-component="icon"
           fill="none"
           focusable={false}
-          height="20px"
+          height="16px"
           importantForAccessibility="no-hide-descendants"
           meetOrSlice={0}
           minX={0}
@@ -1141,14 +1141,14 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
               ],
               {
                 "flex": 0,
-                "height": 20,
-                "width": 20,
+                "height": 16,
+                "width": 16,
               },
             ]
           }
           vbHeight={24}
           vbWidth={24}
-          width="20px"
+          width="16px"
         >
           <RNSVGGroup
             fill={null}
@@ -1173,6 +1173,468 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
           </RNSVGGroup>
         </RNSVGSvgView>
       </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<BaseButton /> should render default color primary button 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    accessibilityRole="button"
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": false,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    activeBackgroundColor="hsla(230, 100%, 42%, 1)"
+    activeBorderColor="hsla(230, 100%, 42%, 1)"
+    borderRadius="2px"
+    borderWidth="1px"
+    buttonPaddingBottom="0px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
+    buttonPaddingTop="0px"
+    collapsable={false}
+    data-blade-component="button"
+    defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
+    defaultBorderColor="hsla(218, 89%, 51%, 1)"
+    focusBackgroundColor="hsla(227, 100%, 45%, 1)"
+    focusBorderColor="hsla(227, 100%, 45%, 1)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
+    focusable={true}
+    hoverBackgroundColor="hsla(223, 95%, 48%, 1)"
+    hoverBorderColor="hsla(223, 95%, 48%, 1)"
+    isFullWidth={false}
+    isLoading={false}
+    minHeight="36px"
+    motionDuration="duration.xquick"
+    motionEasing="easing.standard.effective"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    role="button"
+    style={
+      [
+        {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "pointer",
+          "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
+        },
+        {
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
+        },
+      ]
+    }
+    type="button"
+  >
+    <View
+      alignItems="center"
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="row"
+      isHidden={false}
+      justifyContent="center"
+      style={
+        [
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+          },
+          {
+            "opacity": 1,
+          },
+        ]
+      }
+    >
+      <Text
+        accessible={true}
+        color="action.text.primary.default"
+        data-blade-component="base-text"
+        fontSize={100}
+        fontWeight="bold"
+        lineHeight={100}
+        style={
+          [
+            {
+              "color": "hsla(0, 0%, 100%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 14,
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textAlign": "center",
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+        textAlign="center"
+      >
+        Pay Now
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<BaseButton /> should render default color secondary button 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    accessibilityRole="button"
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": false,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    activeBackgroundColor="hsla(218, 89%, 51%, 0.32)"
+    activeBorderColor="hsla(218, 89%, 51%, 1)"
+    borderRadius="2px"
+    borderWidth="1px"
+    buttonPaddingBottom="0px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
+    buttonPaddingTop="0px"
+    collapsable={false}
+    data-blade-component="button"
+    defaultBackgroundColor="hsla(218, 89%, 51%, 0)"
+    defaultBorderColor="hsla(218, 89%, 51%, 1)"
+    focusBackgroundColor="hsla(218, 89%, 51%, 0.18)"
+    focusBorderColor="hsla(218, 89%, 51%, 1)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
+    focusable={true}
+    hoverBackgroundColor="hsla(218, 89%, 51%, 0.09)"
+    hoverBorderColor="hsla(218, 89%, 51%, 1)"
+    isFullWidth={false}
+    isLoading={false}
+    minHeight="36px"
+    motionDuration="duration.xquick"
+    motionEasing="easing.standard.effective"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    role="button"
+    style={
+      [
+        {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(218, 89%, 51%, 0)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "pointer",
+          "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
+        },
+        {
+          "backgroundColor": "hsla(218, 89%, 51%, 0)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
+        },
+      ]
+    }
+    type="button"
+  >
+    <View
+      alignItems="center"
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="row"
+      isHidden={false}
+      justifyContent="center"
+      style={
+        [
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+          },
+          {
+            "opacity": 1,
+          },
+        ]
+      }
+    >
+      <Text
+        accessible={true}
+        color="action.text.secondary.default"
+        data-blade-component="base-text"
+        fontSize={100}
+        fontWeight="bold"
+        lineHeight={100}
+        style={
+          [
+            {
+              "color": "hsla(218, 89%, 51%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 14,
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textAlign": "center",
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+        textAlign="center"
+      >
+        Pay Now
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<BaseButton /> should render default color tertiary button 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    accessibilityRole="button"
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": false,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    activeBackgroundColor="hsla(216, 15%, 54%, 0.32)"
+    activeBorderColor="hsla(216, 19%, 89%, 1)"
+    borderRadius="2px"
+    borderWidth="1px"
+    buttonPaddingBottom="0px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
+    buttonPaddingTop="0px"
+    collapsable={false}
+    data-blade-component="button"
+    defaultBackgroundColor="hsla(216, 15%, 54%, 0.09)"
+    defaultBorderColor="hsla(216, 44%, 23%, 0)"
+    focusBackgroundColor="hsla(216, 15%, 54%, 0.32)"
+    focusBorderColor="hsla(216, 19%, 89%, 1)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
+    focusable={true}
+    hoverBackgroundColor="hsla(216, 15%, 54%, 0.18)"
+    hoverBorderColor="hsla(216, 19%, 89%, 1)"
+    isFullWidth={false}
+    isLoading={false}
+    minHeight="36px"
+    motionDuration="duration.xquick"
+    motionEasing="easing.standard.effective"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    role="button"
+    style={
+      [
+        {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+          "borderColor": "hsla(216, 44%, 23%, 0)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "pointer",
+          "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
+        },
+        {
+          "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+          "borderColor": "hsla(216, 44%, 23%, 0)",
+        },
+      ]
+    }
+    type="button"
+  >
+    <View
+      alignItems="center"
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="row"
+      isHidden={false}
+      justifyContent="center"
+      style={
+        [
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+          },
+          {
+            "opacity": 1,
+          },
+        ]
+      }
+    >
+      <Text
+        accessible={true}
+        color="action.text.tertiary.default"
+        data-blade-component="base-text"
+        fontSize={100}
+        fontWeight="bold"
+        lineHeight={100}
+        style={
+          [
+            {
+              "color": "hsla(216, 33%, 29%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 14,
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textAlign": "center",
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+        textAlign="center"
+      >
+        Pay Now
+      </Text>
     </View>
   </View>
 </View>
@@ -1332,7 +1794,7 @@ exports[`<BaseButton /> should render disabled button 1`] = `
 </View>
 `;
 
-exports[`<BaseButton /> should render disabled information intent high contrast button 1`] = `
+exports[`<BaseButton /> should render disabled default color primary button 1`] = `
 <View
   style={
     {
@@ -1360,8 +1822,8 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
       }
     }
     accessible={true}
-    activeBackgroundColor="hsla(193, 100%, 35%, 1)"
-    activeBorderColor="hsla(187, 68%, 52%, 1)"
+    activeBackgroundColor="hsla(216, 19%, 89%, 1)"
+    activeBorderColor="hsla(216, 19%, 89%, 1)"
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
@@ -1370,14 +1832,14 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
-    defaultBackgroundColor="hsla(193, 100%, 35%, 1)"
-    defaultBorderColor="hsla(187, 68%, 52%, 1)"
-    focusBackgroundColor="hsla(193, 100%, 35%, 1)"
-    focusBorderColor="hsla(187, 68%, 52%, 1)"
+    defaultBackgroundColor="hsla(216, 19%, 89%, 1)"
+    defaultBorderColor="hsla(216, 19%, 89%, 1)"
+    focusBackgroundColor="hsla(216, 19%, 89%, 1)"
+    focusBorderColor="hsla(216, 19%, 89%, 1)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(193, 100%, 35%, 1)"
-    hoverBorderColor="hsla(187, 68%, 52%, 1)"
+    hoverBackgroundColor="hsla(216, 19%, 89%, 1)"
+    hoverBorderColor="hsla(216, 19%, 89%, 1)"
     isFullWidth={false}
     isLoading={false}
     minHeight="36px"
@@ -1398,8 +1860,8 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(193, 100%, 35%, 1)",
-          "borderColor": "hsla(187, 68%, 52%, 1)",
+          "backgroundColor": "hsla(216, 19%, 89%, 1)",
+          "borderColor": "hsla(216, 19%, 89%, 1)",
           "borderRadius": 2,
           "borderStyle": "solid",
           "borderWidth": 1,
@@ -1417,8 +1879,8 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(193, 100%, 35%, 1)",
-          "borderColor": "hsla(187, 68%, 52%, 1)",
+          "backgroundColor": "hsla(216, 19%, 89%, 1)",
+          "borderColor": "hsla(216, 19%, 89%, 1)",
         },
       ]
     }
@@ -1450,7 +1912,7 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
     >
       <Text
         accessible={true}
-        color="feedback.information.action.text.primary.disabled.highContrast"
+        color="action.text.primary.disabled"
         data-blade-component="base-text"
         fontSize={100}
         fontWeight="bold"
@@ -1458,7 +1920,7 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
         style={
           [
             {
-              "color": "hsla(187, 68%, 52%, 1)",
+              "color": "hsla(216, 16%, 60%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
               "fontStyle": "normal",
@@ -1486,1393 +1948,7 @@ exports[`<BaseButton /> should render disabled information intent high contrast 
 </View>
 `;
 
-exports[`<BaseButton /> should render disabled information intent low contrast button 1`] = `
-<View
-  style={
-    {
-      "flex": 1,
-    }
-  }
->
-  <View
-    accessibilityRole="button"
-    accessibilityState={
-      {
-        "busy": undefined,
-        "checked": undefined,
-        "disabled": true,
-        "expanded": undefined,
-        "selected": undefined,
-      }
-    }
-    accessibilityValue={
-      {
-        "max": undefined,
-        "min": undefined,
-        "now": undefined,
-        "text": undefined,
-      }
-    }
-    accessible={true}
-    activeBackgroundColor="hsla(193, 100%, 35%, 0.09)"
-    activeBorderColor="hsla(193, 100%, 35%, 0.32)"
-    borderRadius="2px"
-    borderWidth="1px"
-    buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
-    buttonPaddingTop="0px"
-    collapsable={false}
-    data-blade-component="button"
-    defaultBackgroundColor="hsla(193, 100%, 35%, 0.09)"
-    defaultBorderColor="hsla(193, 100%, 35%, 0.32)"
-    focusBackgroundColor="hsla(193, 100%, 35%, 0.09)"
-    focusBorderColor="hsla(193, 100%, 35%, 0.32)"
-    focusRingColor="hsla(218, 89%, 51%, 0.18)"
-    focusable={true}
-    hoverBackgroundColor="hsla(193, 100%, 35%, 0.09)"
-    hoverBorderColor="hsla(193, 100%, 35%, 0.32)"
-    isFullWidth={false}
-    isLoading={false}
-    minHeight="36px"
-    motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
-    onBlur={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    role="button"
-    style={
-      [
-        {
-          "alignItems": "center",
-          "alignSelf": "center",
-          "backgroundColor": "hsla(193, 100%, 35%, 0.09)",
-          "borderColor": "hsla(193, 100%, 35%, 0.32)",
-          "borderRadius": 2,
-          "borderStyle": "solid",
-          "borderWidth": 1,
-          "cursor": "not-allowed",
-          "display": "flex",
-          "justifyContent": "center",
-          "minHeight": 36,
-          "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
-          "paddingTop": 0,
-          "textDecorationColor": "black",
-          "textDecorationLine": "none",
-          "textDecorationStyle": "solid",
-          "width": "auto",
-        },
-        {
-          "backgroundColor": "hsla(193, 100%, 35%, 0.09)",
-          "borderColor": "hsla(193, 100%, 35%, 0.32)",
-        },
-      ]
-    }
-    type="button"
-  >
-    <View
-      alignItems="center"
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="row"
-      isHidden={false}
-      justifyContent="center"
-      style={
-        [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "center",
-          },
-          {
-            "opacity": 1,
-          },
-        ]
-      }
-    >
-      <Text
-        accessible={true}
-        color="feedback.information.action.text.primary.disabled.lowContrast"
-        data-blade-component="base-text"
-        fontSize={100}
-        fontWeight="bold"
-        lineHeight={100}
-        style={
-          [
-            {
-              "color": "hsla(193, 100%, 35%, 0.32)",
-              "fontFamily": "Lato",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "700",
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textAlign": "center",
-              "textDecorationLine": "none",
-            },
-          ]
-        }
-        textAlign="center"
-      >
-        Pay Now
-      </Text>
-    </View>
-  </View>
-</View>
-`;
-
-exports[`<BaseButton /> should render disabled negative intent high contrast button 1`] = `
-<View
-  style={
-    {
-      "flex": 1,
-    }
-  }
->
-  <View
-    accessibilityRole="button"
-    accessibilityState={
-      {
-        "busy": undefined,
-        "checked": undefined,
-        "disabled": true,
-        "expanded": undefined,
-        "selected": undefined,
-      }
-    }
-    accessibilityValue={
-      {
-        "max": undefined,
-        "min": undefined,
-        "now": undefined,
-        "text": undefined,
-      }
-    }
-    accessible={true}
-    activeBackgroundColor="hsla(8, 73%, 47%, 1)"
-    activeBorderColor="hsla(8, 99%, 65%, 1)"
-    borderRadius="2px"
-    borderWidth="1px"
-    buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
-    buttonPaddingTop="0px"
-    collapsable={false}
-    data-blade-component="button"
-    defaultBackgroundColor="hsla(8, 73%, 47%, 1)"
-    defaultBorderColor="hsla(8, 99%, 65%, 1)"
-    focusBackgroundColor="hsla(8, 73%, 47%, 1)"
-    focusBorderColor="hsla(8, 99%, 65%, 1)"
-    focusRingColor="hsla(218, 89%, 51%, 0.18)"
-    focusable={true}
-    hoverBackgroundColor="hsla(8, 73%, 47%, 1)"
-    hoverBorderColor="hsla(8, 99%, 65%, 1)"
-    isFullWidth={false}
-    isLoading={false}
-    minHeight="36px"
-    motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
-    onBlur={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    role="button"
-    style={
-      [
-        {
-          "alignItems": "center",
-          "alignSelf": "center",
-          "backgroundColor": "hsla(8, 73%, 47%, 1)",
-          "borderColor": "hsla(8, 99%, 65%, 1)",
-          "borderRadius": 2,
-          "borderStyle": "solid",
-          "borderWidth": 1,
-          "cursor": "not-allowed",
-          "display": "flex",
-          "justifyContent": "center",
-          "minHeight": 36,
-          "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
-          "paddingTop": 0,
-          "textDecorationColor": "black",
-          "textDecorationLine": "none",
-          "textDecorationStyle": "solid",
-          "width": "auto",
-        },
-        {
-          "backgroundColor": "hsla(8, 73%, 47%, 1)",
-          "borderColor": "hsla(8, 99%, 65%, 1)",
-        },
-      ]
-    }
-    type="button"
-  >
-    <View
-      alignItems="center"
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="row"
-      isHidden={false}
-      justifyContent="center"
-      style={
-        [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "center",
-          },
-          {
-            "opacity": 1,
-          },
-        ]
-      }
-    >
-      <Text
-        accessible={true}
-        color="feedback.negative.action.text.primary.disabled.highContrast"
-        data-blade-component="base-text"
-        fontSize={100}
-        fontWeight="bold"
-        lineHeight={100}
-        style={
-          [
-            {
-              "color": "hsla(8, 99%, 65%, 1)",
-              "fontFamily": "Lato",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "700",
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textAlign": "center",
-              "textDecorationLine": "none",
-            },
-          ]
-        }
-        textAlign="center"
-      >
-        Pay Now
-      </Text>
-    </View>
-  </View>
-</View>
-`;
-
-exports[`<BaseButton /> should render disabled negative intent low contrast button 1`] = `
-<View
-  style={
-    {
-      "flex": 1,
-    }
-  }
->
-  <View
-    accessibilityRole="button"
-    accessibilityState={
-      {
-        "busy": undefined,
-        "checked": undefined,
-        "disabled": true,
-        "expanded": undefined,
-        "selected": undefined,
-      }
-    }
-    accessibilityValue={
-      {
-        "max": undefined,
-        "min": undefined,
-        "now": undefined,
-        "text": undefined,
-      }
-    }
-    accessible={true}
-    activeBackgroundColor="hsla(9, 91%, 56%, 0.09)"
-    activeBorderColor="hsla(9, 91%, 56%, 0.32)"
-    borderRadius="2px"
-    borderWidth="1px"
-    buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
-    buttonPaddingTop="0px"
-    collapsable={false}
-    data-blade-component="button"
-    defaultBackgroundColor="hsla(9, 91%, 56%, 0.09)"
-    defaultBorderColor="hsla(9, 91%, 56%, 0.32)"
-    focusBackgroundColor="hsla(9, 91%, 56%, 0.09)"
-    focusBorderColor="hsla(9, 91%, 56%, 0.32)"
-    focusRingColor="hsla(218, 89%, 51%, 0.18)"
-    focusable={true}
-    hoverBackgroundColor="hsla(9, 91%, 56%, 0.09)"
-    hoverBorderColor="hsla(9, 91%, 56%, 0.32)"
-    isFullWidth={false}
-    isLoading={false}
-    minHeight="36px"
-    motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
-    onBlur={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    role="button"
-    style={
-      [
-        {
-          "alignItems": "center",
-          "alignSelf": "center",
-          "backgroundColor": "hsla(9, 91%, 56%, 0.09)",
-          "borderColor": "hsla(9, 91%, 56%, 0.32)",
-          "borderRadius": 2,
-          "borderStyle": "solid",
-          "borderWidth": 1,
-          "cursor": "not-allowed",
-          "display": "flex",
-          "justifyContent": "center",
-          "minHeight": 36,
-          "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
-          "paddingTop": 0,
-          "textDecorationColor": "black",
-          "textDecorationLine": "none",
-          "textDecorationStyle": "solid",
-          "width": "auto",
-        },
-        {
-          "backgroundColor": "hsla(9, 91%, 56%, 0.09)",
-          "borderColor": "hsla(9, 91%, 56%, 0.32)",
-        },
-      ]
-    }
-    type="button"
-  >
-    <View
-      alignItems="center"
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="row"
-      isHidden={false}
-      justifyContent="center"
-      style={
-        [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "center",
-          },
-          {
-            "opacity": 1,
-          },
-        ]
-      }
-    >
-      <Text
-        accessible={true}
-        color="feedback.negative.action.text.primary.disabled.lowContrast"
-        data-blade-component="base-text"
-        fontSize={100}
-        fontWeight="bold"
-        lineHeight={100}
-        style={
-          [
-            {
-              "color": "hsla(9, 91%, 56%, 0.32)",
-              "fontFamily": "Lato",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "700",
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textAlign": "center",
-              "textDecorationLine": "none",
-            },
-          ]
-        }
-        textAlign="center"
-      >
-        Pay Now
-      </Text>
-    </View>
-  </View>
-</View>
-`;
-
-exports[`<BaseButton /> should render disabled neutral intent high contrast button 1`] = `
-<View
-  style={
-    {
-      "flex": 1,
-    }
-  }
->
-  <View
-    accessibilityRole="button"
-    accessibilityState={
-      {
-        "busy": undefined,
-        "checked": undefined,
-        "disabled": true,
-        "expanded": undefined,
-        "selected": undefined,
-      }
-    }
-    accessibilityValue={
-      {
-        "max": undefined,
-        "min": undefined,
-        "now": undefined,
-        "text": undefined,
-      }
-    }
-    accessible={true}
-    activeBackgroundColor="hsla(216, 33%, 29%, 1)"
-    activeBorderColor="hsla(216, 15%, 54%, 1)"
-    borderRadius="2px"
-    borderWidth="1px"
-    buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
-    buttonPaddingTop="0px"
-    collapsable={false}
-    data-blade-component="button"
-    defaultBackgroundColor="hsla(216, 33%, 29%, 1)"
-    defaultBorderColor="hsla(216, 15%, 54%, 1)"
-    focusBackgroundColor="hsla(216, 33%, 29%, 1)"
-    focusBorderColor="hsla(216, 15%, 54%, 1)"
-    focusRingColor="hsla(218, 89%, 51%, 0.18)"
-    focusable={true}
-    hoverBackgroundColor="hsla(216, 33%, 29%, 1)"
-    hoverBorderColor="hsla(216, 15%, 54%, 1)"
-    isFullWidth={false}
-    isLoading={false}
-    minHeight="36px"
-    motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
-    onBlur={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    role="button"
-    style={
-      [
-        {
-          "alignItems": "center",
-          "alignSelf": "center",
-          "backgroundColor": "hsla(216, 33%, 29%, 1)",
-          "borderColor": "hsla(216, 15%, 54%, 1)",
-          "borderRadius": 2,
-          "borderStyle": "solid",
-          "borderWidth": 1,
-          "cursor": "not-allowed",
-          "display": "flex",
-          "justifyContent": "center",
-          "minHeight": 36,
-          "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
-          "paddingTop": 0,
-          "textDecorationColor": "black",
-          "textDecorationLine": "none",
-          "textDecorationStyle": "solid",
-          "width": "auto",
-        },
-        {
-          "backgroundColor": "hsla(216, 33%, 29%, 1)",
-          "borderColor": "hsla(216, 15%, 54%, 1)",
-        },
-      ]
-    }
-    type="button"
-  >
-    <View
-      alignItems="center"
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="row"
-      isHidden={false}
-      justifyContent="center"
-      style={
-        [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "center",
-          },
-          {
-            "opacity": 1,
-          },
-        ]
-      }
-    >
-      <Text
-        accessible={true}
-        color="feedback.neutral.action.text.primary.disabled.highContrast"
-        data-blade-component="base-text"
-        fontSize={100}
-        fontWeight="bold"
-        lineHeight={100}
-        style={
-          [
-            {
-              "color": "hsla(216, 15%, 54%, 1)",
-              "fontFamily": "Lato",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "700",
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textAlign": "center",
-              "textDecorationLine": "none",
-            },
-          ]
-        }
-        textAlign="center"
-      >
-        Pay Now
-      </Text>
-    </View>
-  </View>
-</View>
-`;
-
-exports[`<BaseButton /> should render disabled neutral intent low contrast button 1`] = `
-<View
-  style={
-    {
-      "flex": 1,
-    }
-  }
->
-  <View
-    accessibilityRole="button"
-    accessibilityState={
-      {
-        "busy": undefined,
-        "checked": undefined,
-        "disabled": true,
-        "expanded": undefined,
-        "selected": undefined,
-      }
-    }
-    accessibilityValue={
-      {
-        "max": undefined,
-        "min": undefined,
-        "now": undefined,
-        "text": undefined,
-      }
-    }
-    accessible={true}
-    activeBackgroundColor="hsla(216, 15%, 54%, 0.09)"
-    activeBorderColor="hsla(216, 15%, 54%, 0.32)"
-    borderRadius="2px"
-    borderWidth="1px"
-    buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
-    buttonPaddingTop="0px"
-    collapsable={false}
-    data-blade-component="button"
-    defaultBackgroundColor="hsla(216, 15%, 54%, 0.09)"
-    defaultBorderColor="hsla(216, 15%, 54%, 0.32)"
-    focusBackgroundColor="hsla(216, 15%, 54%, 0.09)"
-    focusBorderColor="hsla(216, 15%, 54%, 0.32)"
-    focusRingColor="hsla(218, 89%, 51%, 0.18)"
-    focusable={true}
-    hoverBackgroundColor="hsla(216, 15%, 54%, 0.09)"
-    hoverBorderColor="hsla(216, 15%, 54%, 0.32)"
-    isFullWidth={false}
-    isLoading={false}
-    minHeight="36px"
-    motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
-    onBlur={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    role="button"
-    style={
-      [
-        {
-          "alignItems": "center",
-          "alignSelf": "center",
-          "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
-          "borderColor": "hsla(216, 15%, 54%, 0.32)",
-          "borderRadius": 2,
-          "borderStyle": "solid",
-          "borderWidth": 1,
-          "cursor": "not-allowed",
-          "display": "flex",
-          "justifyContent": "center",
-          "minHeight": 36,
-          "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
-          "paddingTop": 0,
-          "textDecorationColor": "black",
-          "textDecorationLine": "none",
-          "textDecorationStyle": "solid",
-          "width": "auto",
-        },
-        {
-          "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
-          "borderColor": "hsla(216, 15%, 54%, 0.32)",
-        },
-      ]
-    }
-    type="button"
-  >
-    <View
-      alignItems="center"
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="row"
-      isHidden={false}
-      justifyContent="center"
-      style={
-        [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "center",
-          },
-          {
-            "opacity": 1,
-          },
-        ]
-      }
-    >
-      <Text
-        accessible={true}
-        color="feedback.neutral.action.text.primary.disabled.lowContrast"
-        data-blade-component="base-text"
-        fontSize={100}
-        fontWeight="bold"
-        lineHeight={100}
-        style={
-          [
-            {
-              "color": "hsla(216, 15%, 54%, 0.32)",
-              "fontFamily": "Lato",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "700",
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textAlign": "center",
-              "textDecorationLine": "none",
-            },
-          ]
-        }
-        textAlign="center"
-      >
-        Pay Now
-      </Text>
-    </View>
-  </View>
-</View>
-`;
-
-exports[`<BaseButton /> should render disabled notice intent high contrast button 1`] = `
-<View
-  style={
-    {
-      "flex": 1,
-    }
-  }
->
-  <View
-    accessibilityRole="button"
-    accessibilityState={
-      {
-        "busy": undefined,
-        "checked": undefined,
-        "disabled": true,
-        "expanded": undefined,
-        "selected": undefined,
-      }
-    }
-    accessibilityValue={
-      {
-        "max": undefined,
-        "min": undefined,
-        "now": undefined,
-        "text": undefined,
-      }
-    }
-    accessible={true}
-    activeBackgroundColor="hsla(38, 97%, 38%, 1)"
-    activeBorderColor="hsla(35, 84%, 54%, 1)"
-    borderRadius="2px"
-    borderWidth="1px"
-    buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
-    buttonPaddingTop="0px"
-    collapsable={false}
-    data-blade-component="button"
-    defaultBackgroundColor="hsla(38, 97%, 38%, 1)"
-    defaultBorderColor="hsla(35, 84%, 54%, 1)"
-    focusBackgroundColor="hsla(38, 97%, 38%, 1)"
-    focusBorderColor="hsla(35, 84%, 54%, 1)"
-    focusRingColor="hsla(218, 89%, 51%, 0.18)"
-    focusable={true}
-    hoverBackgroundColor="hsla(38, 97%, 38%, 1)"
-    hoverBorderColor="hsla(35, 84%, 54%, 1)"
-    isFullWidth={false}
-    isLoading={false}
-    minHeight="36px"
-    motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
-    onBlur={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    role="button"
-    style={
-      [
-        {
-          "alignItems": "center",
-          "alignSelf": "center",
-          "backgroundColor": "hsla(38, 97%, 38%, 1)",
-          "borderColor": "hsla(35, 84%, 54%, 1)",
-          "borderRadius": 2,
-          "borderStyle": "solid",
-          "borderWidth": 1,
-          "cursor": "not-allowed",
-          "display": "flex",
-          "justifyContent": "center",
-          "minHeight": 36,
-          "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
-          "paddingTop": 0,
-          "textDecorationColor": "black",
-          "textDecorationLine": "none",
-          "textDecorationStyle": "solid",
-          "width": "auto",
-        },
-        {
-          "backgroundColor": "hsla(38, 97%, 38%, 1)",
-          "borderColor": "hsla(35, 84%, 54%, 1)",
-        },
-      ]
-    }
-    type="button"
-  >
-    <View
-      alignItems="center"
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="row"
-      isHidden={false}
-      justifyContent="center"
-      style={
-        [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "center",
-          },
-          {
-            "opacity": 1,
-          },
-        ]
-      }
-    >
-      <Text
-        accessible={true}
-        color="feedback.notice.action.text.primary.disabled.highContrast"
-        data-blade-component="base-text"
-        fontSize={100}
-        fontWeight="bold"
-        lineHeight={100}
-        style={
-          [
-            {
-              "color": "hsla(35, 84%, 54%, 1)",
-              "fontFamily": "Lato",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "700",
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textAlign": "center",
-              "textDecorationLine": "none",
-            },
-          ]
-        }
-        textAlign="center"
-      >
-        Pay Now
-      </Text>
-    </View>
-  </View>
-</View>
-`;
-
-exports[`<BaseButton /> should render disabled notice intent low contrast button 1`] = `
-<View
-  style={
-    {
-      "flex": 1,
-    }
-  }
->
-  <View
-    accessibilityRole="button"
-    accessibilityState={
-      {
-        "busy": undefined,
-        "checked": undefined,
-        "disabled": true,
-        "expanded": undefined,
-        "selected": undefined,
-      }
-    }
-    accessibilityValue={
-      {
-        "max": undefined,
-        "min": undefined,
-        "now": undefined,
-        "text": undefined,
-      }
-    }
-    accessible={true}
-    activeBackgroundColor="hsla(36, 100%, 44%, 0.09)"
-    activeBorderColor="hsla(36, 100%, 44%, 0.32)"
-    borderRadius="2px"
-    borderWidth="1px"
-    buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
-    buttonPaddingTop="0px"
-    collapsable={false}
-    data-blade-component="button"
-    defaultBackgroundColor="hsla(36, 100%, 44%, 0.09)"
-    defaultBorderColor="hsla(36, 100%, 44%, 0.32)"
-    focusBackgroundColor="hsla(36, 100%, 44%, 0.09)"
-    focusBorderColor="hsla(36, 100%, 44%, 0.32)"
-    focusRingColor="hsla(218, 89%, 51%, 0.18)"
-    focusable={true}
-    hoverBackgroundColor="hsla(36, 100%, 44%, 0.09)"
-    hoverBorderColor="hsla(36, 100%, 44%, 0.32)"
-    isFullWidth={false}
-    isLoading={false}
-    minHeight="36px"
-    motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
-    onBlur={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    role="button"
-    style={
-      [
-        {
-          "alignItems": "center",
-          "alignSelf": "center",
-          "backgroundColor": "hsla(36, 100%, 44%, 0.09)",
-          "borderColor": "hsla(36, 100%, 44%, 0.32)",
-          "borderRadius": 2,
-          "borderStyle": "solid",
-          "borderWidth": 1,
-          "cursor": "not-allowed",
-          "display": "flex",
-          "justifyContent": "center",
-          "minHeight": 36,
-          "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
-          "paddingTop": 0,
-          "textDecorationColor": "black",
-          "textDecorationLine": "none",
-          "textDecorationStyle": "solid",
-          "width": "auto",
-        },
-        {
-          "backgroundColor": "hsla(36, 100%, 44%, 0.09)",
-          "borderColor": "hsla(36, 100%, 44%, 0.32)",
-        },
-      ]
-    }
-    type="button"
-  >
-    <View
-      alignItems="center"
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="row"
-      isHidden={false}
-      justifyContent="center"
-      style={
-        [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "center",
-          },
-          {
-            "opacity": 1,
-          },
-        ]
-      }
-    >
-      <Text
-        accessible={true}
-        color="feedback.notice.action.text.primary.disabled.lowContrast"
-        data-blade-component="base-text"
-        fontSize={100}
-        fontWeight="bold"
-        lineHeight={100}
-        style={
-          [
-            {
-              "color": "hsla(36, 100%, 44%, 0.32)",
-              "fontFamily": "Lato",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "700",
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textAlign": "center",
-              "textDecorationLine": "none",
-            },
-          ]
-        }
-        textAlign="center"
-      >
-        Pay Now
-      </Text>
-    </View>
-  </View>
-</View>
-`;
-
-exports[`<BaseButton /> should render disabled positive intent high contrast button 1`] = `
-<View
-  style={
-    {
-      "flex": 1,
-    }
-  }
->
-  <View
-    accessibilityRole="button"
-    accessibilityState={
-      {
-        "busy": undefined,
-        "checked": undefined,
-        "disabled": true,
-        "expanded": undefined,
-        "selected": undefined,
-      }
-    }
-    accessibilityValue={
-      {
-        "max": undefined,
-        "min": undefined,
-        "now": undefined,
-        "text": undefined,
-      }
-    }
-    accessible={true}
-    activeBackgroundColor="hsla(160, 100%, 26%, 1)"
-    activeBorderColor="hsla(149, 99%, 35%, 1)"
-    borderRadius="2px"
-    borderWidth="1px"
-    buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
-    buttonPaddingTop="0px"
-    collapsable={false}
-    data-blade-component="button"
-    defaultBackgroundColor="hsla(160, 100%, 26%, 1)"
-    defaultBorderColor="hsla(149, 99%, 35%, 1)"
-    focusBackgroundColor="hsla(160, 100%, 26%, 1)"
-    focusBorderColor="hsla(149, 99%, 35%, 1)"
-    focusRingColor="hsla(218, 89%, 51%, 0.18)"
-    focusable={true}
-    hoverBackgroundColor="hsla(160, 100%, 26%, 1)"
-    hoverBorderColor="hsla(149, 99%, 35%, 1)"
-    isFullWidth={false}
-    isLoading={false}
-    minHeight="36px"
-    motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
-    onBlur={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    role="button"
-    style={
-      [
-        {
-          "alignItems": "center",
-          "alignSelf": "center",
-          "backgroundColor": "hsla(160, 100%, 26%, 1)",
-          "borderColor": "hsla(149, 99%, 35%, 1)",
-          "borderRadius": 2,
-          "borderStyle": "solid",
-          "borderWidth": 1,
-          "cursor": "not-allowed",
-          "display": "flex",
-          "justifyContent": "center",
-          "minHeight": 36,
-          "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
-          "paddingTop": 0,
-          "textDecorationColor": "black",
-          "textDecorationLine": "none",
-          "textDecorationStyle": "solid",
-          "width": "auto",
-        },
-        {
-          "backgroundColor": "hsla(160, 100%, 26%, 1)",
-          "borderColor": "hsla(149, 99%, 35%, 1)",
-        },
-      ]
-    }
-    type="button"
-  >
-    <View
-      alignItems="center"
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="row"
-      isHidden={false}
-      justifyContent="center"
-      style={
-        [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "center",
-          },
-          {
-            "opacity": 1,
-          },
-        ]
-      }
-    >
-      <Text
-        accessible={true}
-        color="feedback.positive.action.text.primary.disabled.highContrast"
-        data-blade-component="base-text"
-        fontSize={100}
-        fontWeight="bold"
-        lineHeight={100}
-        style={
-          [
-            {
-              "color": "hsla(149, 99%, 35%, 1)",
-              "fontFamily": "Lato",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "700",
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textAlign": "center",
-              "textDecorationLine": "none",
-            },
-          ]
-        }
-        textAlign="center"
-      >
-        Pay Now
-      </Text>
-    </View>
-  </View>
-</View>
-`;
-
-exports[`<BaseButton /> should render disabled positive intent low contrast button 1`] = `
-<View
-  style={
-    {
-      "flex": 1,
-    }
-  }
->
-  <View
-    accessibilityRole="button"
-    accessibilityState={
-      {
-        "busy": undefined,
-        "checked": undefined,
-        "disabled": true,
-        "expanded": undefined,
-        "selected": undefined,
-      }
-    }
-    accessibilityValue={
-      {
-        "max": undefined,
-        "min": undefined,
-        "now": undefined,
-        "text": undefined,
-      }
-    }
-    accessible={true}
-    activeBackgroundColor="hsla(155, 100%, 31%, 0.09)"
-    activeBorderColor="hsla(155, 100%, 31%, 0.32)"
-    borderRadius="2px"
-    borderWidth="1px"
-    buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
-    buttonPaddingTop="0px"
-    collapsable={false}
-    data-blade-component="button"
-    defaultBackgroundColor="hsla(155, 100%, 31%, 0.09)"
-    defaultBorderColor="hsla(155, 100%, 31%, 0.32)"
-    focusBackgroundColor="hsla(155, 100%, 31%, 0.09)"
-    focusBorderColor="hsla(155, 100%, 31%, 0.32)"
-    focusRingColor="hsla(218, 89%, 51%, 0.18)"
-    focusable={true}
-    hoverBackgroundColor="hsla(155, 100%, 31%, 0.09)"
-    hoverBorderColor="hsla(155, 100%, 31%, 0.32)"
-    isFullWidth={false}
-    isLoading={false}
-    minHeight="36px"
-    motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
-    onBlur={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    role="button"
-    style={
-      [
-        {
-          "alignItems": "center",
-          "alignSelf": "center",
-          "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
-          "borderColor": "hsla(155, 100%, 31%, 0.32)",
-          "borderRadius": 2,
-          "borderStyle": "solid",
-          "borderWidth": 1,
-          "cursor": "not-allowed",
-          "display": "flex",
-          "justifyContent": "center",
-          "minHeight": 36,
-          "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
-          "paddingTop": 0,
-          "textDecorationColor": "black",
-          "textDecorationLine": "none",
-          "textDecorationStyle": "solid",
-          "width": "auto",
-        },
-        {
-          "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
-          "borderColor": "hsla(155, 100%, 31%, 0.32)",
-        },
-      ]
-    }
-    type="button"
-  >
-    <View
-      alignItems="center"
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="row"
-      isHidden={false}
-      justifyContent="center"
-      style={
-        [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "center",
-          },
-          {
-            "opacity": 1,
-          },
-        ]
-      }
-    >
-      <Text
-        accessible={true}
-        color="feedback.positive.action.text.primary.disabled.lowContrast"
-        data-blade-component="base-text"
-        fontSize={100}
-        fontWeight="bold"
-        lineHeight={100}
-        style={
-          [
-            {
-              "color": "hsla(155, 100%, 31%, 0.32)",
-              "fontFamily": "Lato",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "700",
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textAlign": "center",
-              "textDecorationLine": "none",
-            },
-          ]
-        }
-        textAlign="center"
-      >
-        Pay Now
-      </Text>
-    </View>
-  </View>
-</View>
-`;
-
-exports[`<BaseButton /> should render disabled secondary variant button 1`] = `
+exports[`<BaseButton /> should render disabled default color secondary button 1`] = `
 <View
   style={
     {
@@ -3026,7 +2102,7 @@ exports[`<BaseButton /> should render disabled secondary variant button 1`] = `
 </View>
 `;
 
-exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
+exports[`<BaseButton /> should render disabled default color tertiary button 1`] = `
 <View
   style={
     {
@@ -3054,7 +2130,7 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
       }
     }
     accessible={true}
-    activeBackgroundColor="hsla(0, 0%, 100%, 1)"
+    activeBackgroundColor="hsla(216, 15%, 54%, 0.09)"
     activeBorderColor="hsla(216, 19%, 89%, 1)"
     borderRadius="2px"
     borderWidth="1px"
@@ -3064,13 +2140,13 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
-    defaultBackgroundColor="hsla(0, 0%, 100%, 1)"
+    defaultBackgroundColor="hsla(216, 15%, 54%, 0.09)"
     defaultBorderColor="hsla(216, 19%, 89%, 1)"
-    focusBackgroundColor="hsla(0, 0%, 100%, 1)"
+    focusBackgroundColor="hsla(216, 15%, 54%, 0.09)"
     focusBorderColor="hsla(216, 19%, 89%, 1)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(0, 0%, 100%, 1)"
+    hoverBackgroundColor="hsla(216, 15%, 54%, 0.09)"
     hoverBorderColor="hsla(216, 19%, 89%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -3092,7 +2168,7 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(0, 0%, 100%, 1)",
+          "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
           "borderColor": "hsla(216, 19%, 89%, 1)",
           "borderRadius": 2,
           "borderStyle": "solid",
@@ -3111,7 +2187,7 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(0, 0%, 100%, 1)",
+          "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
           "borderColor": "hsla(216, 19%, 89%, 1)",
         },
       ]
@@ -3180,7 +2256,2009 @@ exports[`<BaseButton /> should render disabled tertiary variant button 1`] = `
 </View>
 `;
 
-exports[`<BaseButton /> should render information intent high contrast button 1`] = `
+exports[`<BaseButton /> should render disabled information color primary button 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    accessibilityRole="button"
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": true,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    activeBackgroundColor="hsla(193, 100%, 35%, 1)"
+    activeBorderColor="hsla(187, 68%, 52%, 1)"
+    borderRadius="2px"
+    borderWidth="1px"
+    buttonPaddingBottom="0px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
+    buttonPaddingTop="0px"
+    collapsable={false}
+    data-blade-component="button"
+    defaultBackgroundColor="hsla(193, 100%, 35%, 1)"
+    defaultBorderColor="hsla(187, 68%, 52%, 1)"
+    focusBackgroundColor="hsla(193, 100%, 35%, 1)"
+    focusBorderColor="hsla(187, 68%, 52%, 1)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
+    focusable={true}
+    hoverBackgroundColor="hsla(193, 100%, 35%, 1)"
+    hoverBorderColor="hsla(187, 68%, 52%, 1)"
+    isFullWidth={false}
+    isLoading={false}
+    minHeight="36px"
+    motionDuration="duration.xquick"
+    motionEasing="easing.standard.effective"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    role="button"
+    style={
+      [
+        {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(193, 100%, 35%, 1)",
+          "borderColor": "hsla(187, 68%, 52%, 1)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "not-allowed",
+          "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
+        },
+        {
+          "backgroundColor": "hsla(193, 100%, 35%, 1)",
+          "borderColor": "hsla(187, 68%, 52%, 1)",
+        },
+      ]
+    }
+    type="button"
+  >
+    <View
+      alignItems="center"
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="row"
+      isHidden={false}
+      justifyContent="center"
+      style={
+        [
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+          },
+          {
+            "opacity": 1,
+          },
+        ]
+      }
+    >
+      <Text
+        accessible={true}
+        color="feedback.information.action.text.primary.disabled.highContrast"
+        data-blade-component="base-text"
+        fontSize={100}
+        fontWeight="bold"
+        lineHeight={100}
+        style={
+          [
+            {
+              "color": "hsla(187, 68%, 52%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 14,
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textAlign": "center",
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+        textAlign="center"
+      >
+        Pay Now
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<BaseButton /> should render disabled information color secondary button 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    accessibilityRole="button"
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": true,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    activeBackgroundColor="hsla(193, 100%, 35%, 0.09)"
+    activeBorderColor="hsla(193, 100%, 35%, 0.32)"
+    borderRadius="2px"
+    borderWidth="1px"
+    buttonPaddingBottom="0px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
+    buttonPaddingTop="0px"
+    collapsable={false}
+    data-blade-component="button"
+    defaultBackgroundColor="hsla(193, 100%, 35%, 0.09)"
+    defaultBorderColor="hsla(193, 100%, 35%, 0.32)"
+    focusBackgroundColor="hsla(193, 100%, 35%, 0.09)"
+    focusBorderColor="hsla(193, 100%, 35%, 0.32)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
+    focusable={true}
+    hoverBackgroundColor="hsla(193, 100%, 35%, 0.09)"
+    hoverBorderColor="hsla(193, 100%, 35%, 0.32)"
+    isFullWidth={false}
+    isLoading={false}
+    minHeight="36px"
+    motionDuration="duration.xquick"
+    motionEasing="easing.standard.effective"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    role="button"
+    style={
+      [
+        {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(193, 100%, 35%, 0.09)",
+          "borderColor": "hsla(193, 100%, 35%, 0.32)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "not-allowed",
+          "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
+        },
+        {
+          "backgroundColor": "hsla(193, 100%, 35%, 0.09)",
+          "borderColor": "hsla(193, 100%, 35%, 0.32)",
+        },
+      ]
+    }
+    type="button"
+  >
+    <View
+      alignItems="center"
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="row"
+      isHidden={false}
+      justifyContent="center"
+      style={
+        [
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+          },
+          {
+            "opacity": 1,
+          },
+        ]
+      }
+    >
+      <Text
+        accessible={true}
+        color="feedback.information.action.text.primary.disabled.lowContrast"
+        data-blade-component="base-text"
+        fontSize={100}
+        fontWeight="bold"
+        lineHeight={100}
+        style={
+          [
+            {
+              "color": "hsla(193, 100%, 35%, 0.32)",
+              "fontFamily": "Lato",
+              "fontSize": 14,
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textAlign": "center",
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+        textAlign="center"
+      >
+        Pay Now
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<BaseButton /> should render disabled negative color primary button 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    accessibilityRole="button"
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": true,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    activeBackgroundColor="hsla(8, 73%, 47%, 1)"
+    activeBorderColor="hsla(8, 99%, 65%, 1)"
+    borderRadius="2px"
+    borderWidth="1px"
+    buttonPaddingBottom="0px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
+    buttonPaddingTop="0px"
+    collapsable={false}
+    data-blade-component="button"
+    defaultBackgroundColor="hsla(8, 73%, 47%, 1)"
+    defaultBorderColor="hsla(8, 99%, 65%, 1)"
+    focusBackgroundColor="hsla(8, 73%, 47%, 1)"
+    focusBorderColor="hsla(8, 99%, 65%, 1)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
+    focusable={true}
+    hoverBackgroundColor="hsla(8, 73%, 47%, 1)"
+    hoverBorderColor="hsla(8, 99%, 65%, 1)"
+    isFullWidth={false}
+    isLoading={false}
+    minHeight="36px"
+    motionDuration="duration.xquick"
+    motionEasing="easing.standard.effective"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    role="button"
+    style={
+      [
+        {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(8, 73%, 47%, 1)",
+          "borderColor": "hsla(8, 99%, 65%, 1)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "not-allowed",
+          "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
+        },
+        {
+          "backgroundColor": "hsla(8, 73%, 47%, 1)",
+          "borderColor": "hsla(8, 99%, 65%, 1)",
+        },
+      ]
+    }
+    type="button"
+  >
+    <View
+      alignItems="center"
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="row"
+      isHidden={false}
+      justifyContent="center"
+      style={
+        [
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+          },
+          {
+            "opacity": 1,
+          },
+        ]
+      }
+    >
+      <Text
+        accessible={true}
+        color="feedback.negative.action.text.primary.disabled.highContrast"
+        data-blade-component="base-text"
+        fontSize={100}
+        fontWeight="bold"
+        lineHeight={100}
+        style={
+          [
+            {
+              "color": "hsla(8, 99%, 65%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 14,
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textAlign": "center",
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+        textAlign="center"
+      >
+        Pay Now
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<BaseButton /> should render disabled negative color secondary button 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    accessibilityRole="button"
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": true,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    activeBackgroundColor="hsla(9, 91%, 56%, 0.09)"
+    activeBorderColor="hsla(9, 91%, 56%, 0.32)"
+    borderRadius="2px"
+    borderWidth="1px"
+    buttonPaddingBottom="0px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
+    buttonPaddingTop="0px"
+    collapsable={false}
+    data-blade-component="button"
+    defaultBackgroundColor="hsla(9, 91%, 56%, 0.09)"
+    defaultBorderColor="hsla(9, 91%, 56%, 0.32)"
+    focusBackgroundColor="hsla(9, 91%, 56%, 0.09)"
+    focusBorderColor="hsla(9, 91%, 56%, 0.32)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
+    focusable={true}
+    hoverBackgroundColor="hsla(9, 91%, 56%, 0.09)"
+    hoverBorderColor="hsla(9, 91%, 56%, 0.32)"
+    isFullWidth={false}
+    isLoading={false}
+    minHeight="36px"
+    motionDuration="duration.xquick"
+    motionEasing="easing.standard.effective"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    role="button"
+    style={
+      [
+        {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(9, 91%, 56%, 0.09)",
+          "borderColor": "hsla(9, 91%, 56%, 0.32)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "not-allowed",
+          "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
+        },
+        {
+          "backgroundColor": "hsla(9, 91%, 56%, 0.09)",
+          "borderColor": "hsla(9, 91%, 56%, 0.32)",
+        },
+      ]
+    }
+    type="button"
+  >
+    <View
+      alignItems="center"
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="row"
+      isHidden={false}
+      justifyContent="center"
+      style={
+        [
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+          },
+          {
+            "opacity": 1,
+          },
+        ]
+      }
+    >
+      <Text
+        accessible={true}
+        color="feedback.negative.action.text.primary.disabled.lowContrast"
+        data-blade-component="base-text"
+        fontSize={100}
+        fontWeight="bold"
+        lineHeight={100}
+        style={
+          [
+            {
+              "color": "hsla(9, 91%, 56%, 0.32)",
+              "fontFamily": "Lato",
+              "fontSize": 14,
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textAlign": "center",
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+        textAlign="center"
+      >
+        Pay Now
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<BaseButton /> should render disabled neutral color primary button 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    accessibilityRole="button"
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": true,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    activeBackgroundColor="hsla(216, 33%, 29%, 1)"
+    activeBorderColor="hsla(216, 15%, 54%, 1)"
+    borderRadius="2px"
+    borderWidth="1px"
+    buttonPaddingBottom="0px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
+    buttonPaddingTop="0px"
+    collapsable={false}
+    data-blade-component="button"
+    defaultBackgroundColor="hsla(216, 33%, 29%, 1)"
+    defaultBorderColor="hsla(216, 15%, 54%, 1)"
+    focusBackgroundColor="hsla(216, 33%, 29%, 1)"
+    focusBorderColor="hsla(216, 15%, 54%, 1)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
+    focusable={true}
+    hoverBackgroundColor="hsla(216, 33%, 29%, 1)"
+    hoverBorderColor="hsla(216, 15%, 54%, 1)"
+    isFullWidth={false}
+    isLoading={false}
+    minHeight="36px"
+    motionDuration="duration.xquick"
+    motionEasing="easing.standard.effective"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    role="button"
+    style={
+      [
+        {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(216, 33%, 29%, 1)",
+          "borderColor": "hsla(216, 15%, 54%, 1)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "not-allowed",
+          "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
+        },
+        {
+          "backgroundColor": "hsla(216, 33%, 29%, 1)",
+          "borderColor": "hsla(216, 15%, 54%, 1)",
+        },
+      ]
+    }
+    type="button"
+  >
+    <View
+      alignItems="center"
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="row"
+      isHidden={false}
+      justifyContent="center"
+      style={
+        [
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+          },
+          {
+            "opacity": 1,
+          },
+        ]
+      }
+    >
+      <Text
+        accessible={true}
+        color="feedback.neutral.action.text.primary.disabled.highContrast"
+        data-blade-component="base-text"
+        fontSize={100}
+        fontWeight="bold"
+        lineHeight={100}
+        style={
+          [
+            {
+              "color": "hsla(216, 15%, 54%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 14,
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textAlign": "center",
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+        textAlign="center"
+      >
+        Pay Now
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<BaseButton /> should render disabled neutral color secondary button 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    accessibilityRole="button"
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": true,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    activeBackgroundColor="hsla(216, 15%, 54%, 0.09)"
+    activeBorderColor="hsla(216, 15%, 54%, 0.32)"
+    borderRadius="2px"
+    borderWidth="1px"
+    buttonPaddingBottom="0px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
+    buttonPaddingTop="0px"
+    collapsable={false}
+    data-blade-component="button"
+    defaultBackgroundColor="hsla(216, 15%, 54%, 0.09)"
+    defaultBorderColor="hsla(216, 15%, 54%, 0.32)"
+    focusBackgroundColor="hsla(216, 15%, 54%, 0.09)"
+    focusBorderColor="hsla(216, 15%, 54%, 0.32)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
+    focusable={true}
+    hoverBackgroundColor="hsla(216, 15%, 54%, 0.09)"
+    hoverBorderColor="hsla(216, 15%, 54%, 0.32)"
+    isFullWidth={false}
+    isLoading={false}
+    minHeight="36px"
+    motionDuration="duration.xquick"
+    motionEasing="easing.standard.effective"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    role="button"
+    style={
+      [
+        {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+          "borderColor": "hsla(216, 15%, 54%, 0.32)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "not-allowed",
+          "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
+        },
+        {
+          "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+          "borderColor": "hsla(216, 15%, 54%, 0.32)",
+        },
+      ]
+    }
+    type="button"
+  >
+    <View
+      alignItems="center"
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="row"
+      isHidden={false}
+      justifyContent="center"
+      style={
+        [
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+          },
+          {
+            "opacity": 1,
+          },
+        ]
+      }
+    >
+      <Text
+        accessible={true}
+        color="feedback.neutral.action.text.primary.disabled.lowContrast"
+        data-blade-component="base-text"
+        fontSize={100}
+        fontWeight="bold"
+        lineHeight={100}
+        style={
+          [
+            {
+              "color": "hsla(216, 15%, 54%, 0.32)",
+              "fontFamily": "Lato",
+              "fontSize": 14,
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textAlign": "center",
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+        textAlign="center"
+      >
+        Pay Now
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<BaseButton /> should render disabled notice color primary button 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    accessibilityRole="button"
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": true,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    activeBackgroundColor="hsla(38, 97%, 38%, 1)"
+    activeBorderColor="hsla(35, 84%, 54%, 1)"
+    borderRadius="2px"
+    borderWidth="1px"
+    buttonPaddingBottom="0px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
+    buttonPaddingTop="0px"
+    collapsable={false}
+    data-blade-component="button"
+    defaultBackgroundColor="hsla(38, 97%, 38%, 1)"
+    defaultBorderColor="hsla(35, 84%, 54%, 1)"
+    focusBackgroundColor="hsla(38, 97%, 38%, 1)"
+    focusBorderColor="hsla(35, 84%, 54%, 1)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
+    focusable={true}
+    hoverBackgroundColor="hsla(38, 97%, 38%, 1)"
+    hoverBorderColor="hsla(35, 84%, 54%, 1)"
+    isFullWidth={false}
+    isLoading={false}
+    minHeight="36px"
+    motionDuration="duration.xquick"
+    motionEasing="easing.standard.effective"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    role="button"
+    style={
+      [
+        {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(38, 97%, 38%, 1)",
+          "borderColor": "hsla(35, 84%, 54%, 1)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "not-allowed",
+          "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
+        },
+        {
+          "backgroundColor": "hsla(38, 97%, 38%, 1)",
+          "borderColor": "hsla(35, 84%, 54%, 1)",
+        },
+      ]
+    }
+    type="button"
+  >
+    <View
+      alignItems="center"
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="row"
+      isHidden={false}
+      justifyContent="center"
+      style={
+        [
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+          },
+          {
+            "opacity": 1,
+          },
+        ]
+      }
+    >
+      <Text
+        accessible={true}
+        color="feedback.notice.action.text.primary.disabled.highContrast"
+        data-blade-component="base-text"
+        fontSize={100}
+        fontWeight="bold"
+        lineHeight={100}
+        style={
+          [
+            {
+              "color": "hsla(35, 84%, 54%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 14,
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textAlign": "center",
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+        textAlign="center"
+      >
+        Pay Now
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<BaseButton /> should render disabled notice color secondary button 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    accessibilityRole="button"
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": true,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    activeBackgroundColor="hsla(36, 100%, 44%, 0.09)"
+    activeBorderColor="hsla(36, 100%, 44%, 0.32)"
+    borderRadius="2px"
+    borderWidth="1px"
+    buttonPaddingBottom="0px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
+    buttonPaddingTop="0px"
+    collapsable={false}
+    data-blade-component="button"
+    defaultBackgroundColor="hsla(36, 100%, 44%, 0.09)"
+    defaultBorderColor="hsla(36, 100%, 44%, 0.32)"
+    focusBackgroundColor="hsla(36, 100%, 44%, 0.09)"
+    focusBorderColor="hsla(36, 100%, 44%, 0.32)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
+    focusable={true}
+    hoverBackgroundColor="hsla(36, 100%, 44%, 0.09)"
+    hoverBorderColor="hsla(36, 100%, 44%, 0.32)"
+    isFullWidth={false}
+    isLoading={false}
+    minHeight="36px"
+    motionDuration="duration.xquick"
+    motionEasing="easing.standard.effective"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    role="button"
+    style={
+      [
+        {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(36, 100%, 44%, 0.09)",
+          "borderColor": "hsla(36, 100%, 44%, 0.32)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "not-allowed",
+          "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
+        },
+        {
+          "backgroundColor": "hsla(36, 100%, 44%, 0.09)",
+          "borderColor": "hsla(36, 100%, 44%, 0.32)",
+        },
+      ]
+    }
+    type="button"
+  >
+    <View
+      alignItems="center"
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="row"
+      isHidden={false}
+      justifyContent="center"
+      style={
+        [
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+          },
+          {
+            "opacity": 1,
+          },
+        ]
+      }
+    >
+      <Text
+        accessible={true}
+        color="feedback.notice.action.text.primary.disabled.lowContrast"
+        data-blade-component="base-text"
+        fontSize={100}
+        fontWeight="bold"
+        lineHeight={100}
+        style={
+          [
+            {
+              "color": "hsla(36, 100%, 44%, 0.32)",
+              "fontFamily": "Lato",
+              "fontSize": 14,
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textAlign": "center",
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+        textAlign="center"
+      >
+        Pay Now
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<BaseButton /> should render disabled positive color primary button 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    accessibilityRole="button"
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": true,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    activeBackgroundColor="hsla(160, 100%, 26%, 1)"
+    activeBorderColor="hsla(149, 99%, 35%, 1)"
+    borderRadius="2px"
+    borderWidth="1px"
+    buttonPaddingBottom="0px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
+    buttonPaddingTop="0px"
+    collapsable={false}
+    data-blade-component="button"
+    defaultBackgroundColor="hsla(160, 100%, 26%, 1)"
+    defaultBorderColor="hsla(149, 99%, 35%, 1)"
+    focusBackgroundColor="hsla(160, 100%, 26%, 1)"
+    focusBorderColor="hsla(149, 99%, 35%, 1)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
+    focusable={true}
+    hoverBackgroundColor="hsla(160, 100%, 26%, 1)"
+    hoverBorderColor="hsla(149, 99%, 35%, 1)"
+    isFullWidth={false}
+    isLoading={false}
+    minHeight="36px"
+    motionDuration="duration.xquick"
+    motionEasing="easing.standard.effective"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    role="button"
+    style={
+      [
+        {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(160, 100%, 26%, 1)",
+          "borderColor": "hsla(149, 99%, 35%, 1)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "not-allowed",
+          "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
+        },
+        {
+          "backgroundColor": "hsla(160, 100%, 26%, 1)",
+          "borderColor": "hsla(149, 99%, 35%, 1)",
+        },
+      ]
+    }
+    type="button"
+  >
+    <View
+      alignItems="center"
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="row"
+      isHidden={false}
+      justifyContent="center"
+      style={
+        [
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+          },
+          {
+            "opacity": 1,
+          },
+        ]
+      }
+    >
+      <Text
+        accessible={true}
+        color="feedback.positive.action.text.primary.disabled.highContrast"
+        data-blade-component="base-text"
+        fontSize={100}
+        fontWeight="bold"
+        lineHeight={100}
+        style={
+          [
+            {
+              "color": "hsla(149, 99%, 35%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 14,
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textAlign": "center",
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+        textAlign="center"
+      >
+        Pay Now
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<BaseButton /> should render disabled positive color secondary button 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    accessibilityRole="button"
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": true,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    activeBackgroundColor="hsla(155, 100%, 31%, 0.09)"
+    activeBorderColor="hsla(155, 100%, 31%, 0.32)"
+    borderRadius="2px"
+    borderWidth="1px"
+    buttonPaddingBottom="0px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
+    buttonPaddingTop="0px"
+    collapsable={false}
+    data-blade-component="button"
+    defaultBackgroundColor="hsla(155, 100%, 31%, 0.09)"
+    defaultBorderColor="hsla(155, 100%, 31%, 0.32)"
+    focusBackgroundColor="hsla(155, 100%, 31%, 0.09)"
+    focusBorderColor="hsla(155, 100%, 31%, 0.32)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
+    focusable={true}
+    hoverBackgroundColor="hsla(155, 100%, 31%, 0.09)"
+    hoverBorderColor="hsla(155, 100%, 31%, 0.32)"
+    isFullWidth={false}
+    isLoading={false}
+    minHeight="36px"
+    motionDuration="duration.xquick"
+    motionEasing="easing.standard.effective"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    role="button"
+    style={
+      [
+        {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
+          "borderColor": "hsla(155, 100%, 31%, 0.32)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "not-allowed",
+          "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
+        },
+        {
+          "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
+          "borderColor": "hsla(155, 100%, 31%, 0.32)",
+        },
+      ]
+    }
+    type="button"
+  >
+    <View
+      alignItems="center"
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="row"
+      isHidden={false}
+      justifyContent="center"
+      style={
+        [
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+          },
+          {
+            "opacity": 1,
+          },
+        ]
+      }
+    >
+      <Text
+        accessible={true}
+        color="feedback.positive.action.text.primary.disabled.lowContrast"
+        data-blade-component="base-text"
+        fontSize={100}
+        fontWeight="bold"
+        lineHeight={100}
+        style={
+          [
+            {
+              "color": "hsla(155, 100%, 31%, 0.32)",
+              "fontFamily": "Lato",
+              "fontSize": 14,
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textAlign": "center",
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+        textAlign="center"
+      >
+        Pay Now
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<BaseButton /> should render disabled white color primary button 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    accessibilityRole="button"
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": true,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    activeBackgroundColor="hsla(210, 6%, 94%, 0.18)"
+    activeBorderColor="hsla(210, 6%, 94%, 0.18)"
+    borderRadius="2px"
+    borderWidth="1px"
+    buttonPaddingBottom="0px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
+    buttonPaddingTop="0px"
+    collapsable={false}
+    data-blade-component="button"
+    defaultBackgroundColor="hsla(210, 6%, 94%, 0.18)"
+    defaultBorderColor="hsla(210, 6%, 94%, 0.18)"
+    focusBackgroundColor="hsla(210, 6%, 94%, 0.18)"
+    focusBorderColor="hsla(210, 6%, 94%, 0.18)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
+    focusable={true}
+    hoverBackgroundColor="hsla(210, 6%, 94%, 0.18)"
+    hoverBorderColor="hsla(210, 6%, 94%, 0.18)"
+    isFullWidth={false}
+    isLoading={false}
+    minHeight="36px"
+    motionDuration="duration.xquick"
+    motionEasing="easing.standard.effective"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    role="button"
+    style={
+      [
+        {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(210, 6%, 94%, 0.18)",
+          "borderColor": "hsla(210, 6%, 94%, 0.18)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "not-allowed",
+          "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
+        },
+        {
+          "backgroundColor": "hsla(210, 6%, 94%, 0.18)",
+          "borderColor": "hsla(210, 6%, 94%, 0.18)",
+        },
+      ]
+    }
+    type="button"
+  >
+    <View
+      alignItems="center"
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="row"
+      isHidden={false}
+      justifyContent="center"
+      style={
+        [
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+          },
+          {
+            "opacity": 1,
+          },
+        ]
+      }
+    >
+      <Text
+        accessible={true}
+        color="white.action.text.primary.disabled"
+        data-blade-component="base-text"
+        fontSize={100}
+        fontWeight="bold"
+        lineHeight={100}
+        style={
+          [
+            {
+              "color": "hsla(210, 6%, 94%, 0.32)",
+              "fontFamily": "Lato",
+              "fontSize": 14,
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textAlign": "center",
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+        textAlign="center"
+      >
+        Pay Now
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<BaseButton /> should render disabled white color secondary button 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    accessibilityRole="button"
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": true,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    activeBackgroundColor="hsla(214, 15%, 18%, 0)"
+    activeBorderColor="hsla(210, 6%, 94%, 0.32)"
+    borderRadius="2px"
+    borderWidth="1px"
+    buttonPaddingBottom="0px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
+    buttonPaddingTop="0px"
+    collapsable={false}
+    data-blade-component="button"
+    defaultBackgroundColor="hsla(214, 15%, 18%, 0)"
+    defaultBorderColor="hsla(210, 6%, 94%, 0.32)"
+    focusBackgroundColor="hsla(214, 15%, 18%, 0)"
+    focusBorderColor="hsla(210, 6%, 94%, 0.32)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
+    focusable={true}
+    hoverBackgroundColor="hsla(214, 15%, 18%, 0)"
+    hoverBorderColor="hsla(210, 6%, 94%, 0.32)"
+    isFullWidth={false}
+    isLoading={false}
+    minHeight="36px"
+    motionDuration="duration.xquick"
+    motionEasing="easing.standard.effective"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    role="button"
+    style={
+      [
+        {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(214, 15%, 18%, 0)",
+          "borderColor": "hsla(210, 6%, 94%, 0.32)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "not-allowed",
+          "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
+        },
+        {
+          "backgroundColor": "hsla(214, 15%, 18%, 0)",
+          "borderColor": "hsla(210, 6%, 94%, 0.32)",
+        },
+      ]
+    }
+    type="button"
+  >
+    <View
+      alignItems="center"
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="row"
+      isHidden={false}
+      justifyContent="center"
+      style={
+        [
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+          },
+          {
+            "opacity": 1,
+          },
+        ]
+      }
+    >
+      <Text
+        accessible={true}
+        color="white.action.text.secondary.disabled"
+        data-blade-component="base-text"
+        fontSize={100}
+        fontWeight="bold"
+        lineHeight={100}
+        style={
+          [
+            {
+              "color": "hsla(210, 6%, 94%, 0.32)",
+              "fontFamily": "Lato",
+              "fontSize": 14,
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textAlign": "center",
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+        textAlign="center"
+      >
+        Pay Now
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<BaseButton /> should render disabled white color tertiary button 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    accessibilityRole="button"
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": true,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    activeBackgroundColor="hsla(210, 6%, 94%, 0.09)"
+    activeBorderColor="hsla(214, 15%, 18%, 0)"
+    borderRadius="2px"
+    borderWidth="1px"
+    buttonPaddingBottom="0px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
+    buttonPaddingTop="0px"
+    collapsable={false}
+    data-blade-component="button"
+    defaultBackgroundColor="hsla(210, 6%, 94%, 0.09)"
+    defaultBorderColor="hsla(214, 15%, 18%, 0)"
+    focusBackgroundColor="hsla(210, 6%, 94%, 0.09)"
+    focusBorderColor="hsla(214, 15%, 18%, 0)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
+    focusable={true}
+    hoverBackgroundColor="hsla(210, 6%, 94%, 0.09)"
+    hoverBorderColor="hsla(214, 15%, 18%, 0)"
+    isFullWidth={false}
+    isLoading={false}
+    minHeight="36px"
+    motionDuration="duration.xquick"
+    motionEasing="easing.standard.effective"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    role="button"
+    style={
+      [
+        {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(210, 6%, 94%, 0.09)",
+          "borderColor": "hsla(214, 15%, 18%, 0)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "not-allowed",
+          "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
+        },
+        {
+          "backgroundColor": "hsla(210, 6%, 94%, 0.09)",
+          "borderColor": "hsla(214, 15%, 18%, 0)",
+        },
+      ]
+    }
+    type="button"
+  >
+    <View
+      alignItems="center"
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="row"
+      isHidden={false}
+      justifyContent="center"
+      style={
+        [
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+          },
+          {
+            "opacity": 1,
+          },
+        ]
+      }
+    >
+      <Text
+        accessible={true}
+        color="white.action.text.tertiary.disabled"
+        data-blade-component="base-text"
+        fontSize={100}
+        fontWeight="bold"
+        lineHeight={100}
+        style={
+          [
+            {
+              "color": "hsla(210, 6%, 94%, 0.32)",
+              "fontFamily": "Lato",
+              "fontSize": 14,
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textAlign": "center",
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+        textAlign="center"
+      >
+        Pay Now
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<BaseButton /> should render information color primary button 1`] = `
 <View
   style={
     {
@@ -3334,7 +4412,7 @@ exports[`<BaseButton /> should render information intent high contrast button 1`
 </View>
 `;
 
-exports[`<BaseButton /> should render information intent low contrast button 1`] = `
+exports[`<BaseButton /> should render information color secondary button 1`] = `
 <View
   style={
     {
@@ -4100,7 +5178,7 @@ exports[`<BaseButton /> should render medium size button 1`] = `
 </View>
 `;
 
-exports[`<BaseButton /> should render negative intent high contrast button 1`] = `
+exports[`<BaseButton /> should render negative color primary button 1`] = `
 <View
   style={
     {
@@ -4254,7 +5332,7 @@ exports[`<BaseButton /> should render negative intent high contrast button 1`] =
 </View>
 `;
 
-exports[`<BaseButton /> should render negative intent low contrast button 1`] = `
+exports[`<BaseButton /> should render negative color secondary button 1`] = `
 <View
   style={
     {
@@ -4408,7 +5486,7 @@ exports[`<BaseButton /> should render negative intent low contrast button 1`] = 
 </View>
 `;
 
-exports[`<BaseButton /> should render neutral intent high contrast button 1`] = `
+exports[`<BaseButton /> should render neutral color primary button 1`] = `
 <View
   style={
     {
@@ -4562,7 +5640,7 @@ exports[`<BaseButton /> should render neutral intent high contrast button 1`] = 
 </View>
 `;
 
-exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
+exports[`<BaseButton /> should render neutral color secondary button 1`] = `
 <View
   style={
     {
@@ -4716,7 +5794,7 @@ exports[`<BaseButton /> should render neutral intent low contrast button 1`] = `
 </View>
 `;
 
-exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
+exports[`<BaseButton /> should render notice color primary button 1`] = `
 <View
   style={
     {
@@ -4870,7 +5948,7 @@ exports[`<BaseButton /> should render notice intent high contrast button 1`] = `
 </View>
 `;
 
-exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
+exports[`<BaseButton /> should render notice color secondary button 1`] = `
 <View
   style={
     {
@@ -5024,7 +6102,7 @@ exports[`<BaseButton /> should render notice intent low contrast button 1`] = `
 </View>
 `;
 
-exports[`<BaseButton /> should render positive intent high contrast button 1`] = `
+exports[`<BaseButton /> should render positive color primary button 1`] = `
 <View
   style={
     {
@@ -5178,7 +6256,7 @@ exports[`<BaseButton /> should render positive intent high contrast button 1`] =
 </View>
 `;
 
-exports[`<BaseButton /> should render positive intent low contrast button 1`] = `
+exports[`<BaseButton /> should render positive color secondary button 1`] = `
 <View
   style={
     {
@@ -5305,160 +6383,6 @@ exports[`<BaseButton /> should render positive intent low contrast button 1`] = 
           [
             {
               "color": "hsla(160, 100%, 26%, 1)",
-              "fontFamily": "Lato",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "700",
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textAlign": "center",
-              "textDecorationLine": "none",
-            },
-          ]
-        }
-        textAlign="center"
-      >
-        Pay Now
-      </Text>
-    </View>
-  </View>
-</View>
-`;
-
-exports[`<BaseButton /> should render secondary variant button 1`] = `
-<View
-  style={
-    {
-      "flex": 1,
-    }
-  }
->
-  <View
-    accessibilityRole="button"
-    accessibilityState={
-      {
-        "busy": undefined,
-        "checked": undefined,
-        "disabled": false,
-        "expanded": undefined,
-        "selected": undefined,
-      }
-    }
-    accessibilityValue={
-      {
-        "max": undefined,
-        "min": undefined,
-        "now": undefined,
-        "text": undefined,
-      }
-    }
-    accessible={true}
-    activeBackgroundColor="hsla(218, 89%, 51%, 0.32)"
-    activeBorderColor="hsla(218, 89%, 51%, 1)"
-    borderRadius="2px"
-    borderWidth="1px"
-    buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
-    buttonPaddingTop="0px"
-    collapsable={false}
-    data-blade-component="button"
-    defaultBackgroundColor="hsla(218, 89%, 51%, 0)"
-    defaultBorderColor="hsla(218, 89%, 51%, 1)"
-    focusBackgroundColor="hsla(218, 89%, 51%, 0.18)"
-    focusBorderColor="hsla(218, 89%, 51%, 1)"
-    focusRingColor="hsla(218, 89%, 51%, 0.18)"
-    focusable={true}
-    hoverBackgroundColor="hsla(218, 89%, 51%, 0.09)"
-    hoverBorderColor="hsla(218, 89%, 51%, 1)"
-    isFullWidth={false}
-    isLoading={false}
-    minHeight="36px"
-    motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
-    onBlur={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    role="button"
-    style={
-      [
-        {
-          "alignItems": "center",
-          "alignSelf": "center",
-          "backgroundColor": "hsla(218, 89%, 51%, 0)",
-          "borderColor": "hsla(218, 89%, 51%, 1)",
-          "borderRadius": 2,
-          "borderStyle": "solid",
-          "borderWidth": 1,
-          "cursor": "pointer",
-          "display": "flex",
-          "justifyContent": "center",
-          "minHeight": 36,
-          "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
-          "paddingTop": 0,
-          "textDecorationColor": "black",
-          "textDecorationLine": "none",
-          "textDecorationStyle": "solid",
-          "width": "auto",
-        },
-        {
-          "backgroundColor": "hsla(218, 89%, 51%, 0)",
-          "borderColor": "hsla(218, 89%, 51%, 1)",
-        },
-      ]
-    }
-    type="button"
-  >
-    <View
-      alignItems="center"
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="row"
-      isHidden={false}
-      justifyContent="center"
-      style={
-        [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "center",
-          },
-          {
-            "opacity": 1,
-          },
-        ]
-      }
-    >
-      <Text
-        accessible={true}
-        color="action.text.secondary.default"
-        data-blade-component="base-text"
-        fontSize={100}
-        fontWeight="bold"
-        lineHeight={100}
-        style={
-          [
-            {
-              "color": "hsla(218, 89%, 51%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
               "fontStyle": "normal",
@@ -5640,7 +6564,7 @@ exports[`<BaseButton /> should render small size button 1`] = `
 </View>
 `;
 
-exports[`<BaseButton /> should render tertiary variant button 1`] = `
+exports[`<BaseButton /> should render white color primary button 1`] = `
 <View
   style={
     {
@@ -5668,8 +6592,8 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
       }
     }
     accessible={true}
-    activeBackgroundColor="hsla(214, 21%, 94%, 1)"
-    activeBorderColor="hsla(216, 19%, 89%, 1)"
+    activeBackgroundColor="hsla(216, 4%, 89%, 1)"
+    activeBorderColor="hsla(216, 4%, 89%, 1)"
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
@@ -5679,13 +6603,13 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
     collapsable={false}
     data-blade-component="button"
     defaultBackgroundColor="hsla(0, 0%, 100%, 1)"
-    defaultBorderColor="hsla(216, 19%, 89%, 1)"
-    focusBackgroundColor="hsla(220, 30%, 96%, 1)"
-    focusBorderColor="hsla(216, 19%, 89%, 1)"
+    defaultBorderColor="hsla(0, 0%, 100%, 1)"
+    focusBackgroundColor="hsla(216, 4%, 89%, 1)"
+    focusBorderColor="hsla(216, 4%, 89%, 1)"
     focusRingColor="hsla(218, 89%, 51%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(220, 27%, 98%, 1)"
-    hoverBorderColor="hsla(216, 19%, 89%, 1)"
+    hoverBackgroundColor="hsla(216, 6%, 94%, 1)"
+    hoverBorderColor="hsla(216, 6%, 94%, 1)"
     isFullWidth={false}
     isLoading={false}
     minHeight="36px"
@@ -5707,7 +6631,7 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(0, 0%, 100%, 1)",
-          "borderColor": "hsla(216, 19%, 89%, 1)",
+          "borderColor": "hsla(0, 0%, 100%, 1)",
           "borderRadius": 2,
           "borderStyle": "solid",
           "borderWidth": 1,
@@ -5726,7 +6650,7 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
         },
         {
           "backgroundColor": "hsla(0, 0%, 100%, 1)",
-          "borderColor": "hsla(216, 19%, 89%, 1)",
+          "borderColor": "hsla(0, 0%, 100%, 1)",
         },
       ]
     }
@@ -5758,7 +6682,7 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
     >
       <Text
         accessible={true}
-        color="action.text.tertiary.default"
+        color="white.action.text.primary.default"
         data-blade-component="base-text"
         fontSize={100}
         fontWeight="bold"
@@ -5766,7 +6690,315 @@ exports[`<BaseButton /> should render tertiary variant button 1`] = `
         style={
           [
             {
-              "color": "hsla(216, 33%, 29%, 1)",
+              "color": "hsla(213, 89%, 56%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 14,
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textAlign": "center",
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+        textAlign="center"
+      >
+        Pay Now
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<BaseButton /> should render white color secondary button 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    accessibilityRole="button"
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": false,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    activeBackgroundColor="hsla(210, 6%, 94%, 0.32)"
+    activeBorderColor="hsla(0, 0%, 100%, 1)"
+    borderRadius="2px"
+    borderWidth="1px"
+    buttonPaddingBottom="0px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
+    buttonPaddingTop="0px"
+    collapsable={false}
+    data-blade-component="button"
+    defaultBackgroundColor="hsla(214, 15%, 18%, 0)"
+    defaultBorderColor="hsla(0, 0%, 100%, 1)"
+    focusBackgroundColor="hsla(210, 6%, 94%, 0.32)"
+    focusBorderColor="hsla(0, 0%, 100%, 1)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
+    focusable={true}
+    hoverBackgroundColor="hsla(210, 6%, 94%, 0.18)"
+    hoverBorderColor="hsla(0, 0%, 100%, 1)"
+    isFullWidth={false}
+    isLoading={false}
+    minHeight="36px"
+    motionDuration="duration.xquick"
+    motionEasing="easing.standard.effective"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    role="button"
+    style={
+      [
+        {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(214, 15%, 18%, 0)",
+          "borderColor": "hsla(0, 0%, 100%, 1)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "pointer",
+          "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
+        },
+        {
+          "backgroundColor": "hsla(214, 15%, 18%, 0)",
+          "borderColor": "hsla(0, 0%, 100%, 1)",
+        },
+      ]
+    }
+    type="button"
+  >
+    <View
+      alignItems="center"
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="row"
+      isHidden={false}
+      justifyContent="center"
+      style={
+        [
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+          },
+          {
+            "opacity": 1,
+          },
+        ]
+      }
+    >
+      <Text
+        accessible={true}
+        color="white.action.text.secondary.default"
+        data-blade-component="base-text"
+        fontSize={100}
+        fontWeight="bold"
+        lineHeight={100}
+        style={
+          [
+            {
+              "color": "hsla(0, 0%, 100%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 14,
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textAlign": "center",
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+        textAlign="center"
+      >
+        Pay Now
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<BaseButton /> should render white color tertiary button 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    accessibilityRole="button"
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": false,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    activeBackgroundColor="hsla(210, 6%, 94%, 0.32)"
+    activeBorderColor="hsla(214, 15%, 18%, 0)"
+    borderRadius="2px"
+    borderWidth="1px"
+    buttonPaddingBottom="0px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
+    buttonPaddingTop="0px"
+    collapsable={false}
+    data-blade-component="button"
+    defaultBackgroundColor="hsla(210, 6%, 94%, 0.09)"
+    defaultBorderColor="hsla(214, 15%, 18%, 0)"
+    focusBackgroundColor="hsla(210, 6%, 94%, 0.32)"
+    focusBorderColor="hsla(214, 15%, 18%, 0)"
+    focusRingColor="hsla(218, 89%, 51%, 0.18)"
+    focusable={true}
+    hoverBackgroundColor="hsla(210, 6%, 94%, 0.18)"
+    hoverBorderColor="hsla(214, 15%, 18%, 0)"
+    isFullWidth={false}
+    isLoading={false}
+    minHeight="36px"
+    motionDuration="duration.xquick"
+    motionEasing="easing.standard.effective"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    role="button"
+    style={
+      [
+        {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(210, 6%, 94%, 0.09)",
+          "borderColor": "hsla(214, 15%, 18%, 0)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "pointer",
+          "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
+        },
+        {
+          "backgroundColor": "hsla(210, 6%, 94%, 0.09)",
+          "borderColor": "hsla(214, 15%, 18%, 0)",
+        },
+      ]
+    }
+    type="button"
+  >
+    <View
+      alignItems="center"
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="row"
+      isHidden={false}
+      justifyContent="center"
+      style={
+        [
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+          },
+          {
+            "opacity": 1,
+          },
+        ]
+      }
+    >
+      <Text
+        accessible={true}
+        color="white.action.text.tertiary.default"
+        data-blade-component="base-text"
+        fontSize={100}
+        fontWeight="bold"
+        lineHeight={100}
+        style={
+          [
+            {
+              "color": "hsla(0, 0%, 100%, 1)",
               "fontFamily": "Lato",
               "fontSize": 14,
               "fontStyle": "normal",

@@ -109,10 +109,10 @@ const buttonSizeToIconSizeMap: Record<NonNullable<BaseButtonProps['size']>, Icon
 };
 
 const buttonIconOnlySizeToIconSizeMap: Record<NonNullable<BaseButtonProps['size']>, IconSize> = {
-  xsmall: 'medium',
-  small: 'medium',
-  medium: 'large',
-  large: 'xlarge',
+  xsmall: 'small',
+  small: 'small',
+  medium: 'medium',
+  large: 'medium',
 };
 
 const buttonSizeToSpinnerSizeMap: Record<
