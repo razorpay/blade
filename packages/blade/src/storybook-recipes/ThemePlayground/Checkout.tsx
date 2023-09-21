@@ -14,6 +14,10 @@ const StyledHeader = styled(BaseBox)({
 const StyledFooter = styled(BaseBox)(({ theme }) => ({
   boxShadow: `0 -2px 6px  rgba(23,26,30,.15)`,
   borderTop: `1px solid ${theme.colors.brand.gray[400].lowContrast}`,
+  bottom: 0,
+  left: 0,
+  right: 0,
+  position: 'absolute',
 }));
 
 const MerchantAvatar = styled.img(() => ({
@@ -23,8 +27,8 @@ const MerchantAvatar = styled.img(() => ({
 
 const Checkout = (): React.ReactElement => {
   return (
-    <Box maxWidth="375px">
-      <Card elevation="lowRaised" padding="spacing.0">
+    <Box>
+      <Card elevation="lowRaised" padding="spacing.0" width="375px" height="600px">
         <CardBody>
           <Box overflow="hidden">
             <Box>
@@ -50,8 +54,8 @@ const Checkout = (): React.ReactElement => {
                 </Box>
               </StyledHeader>
               <Box padding="spacing.4">
-                <Heading>Add New Card</Heading>
-                <Box display="flex" gap="spacing.6" marginTop="spacing.6">
+                <Heading marginTop="spacing.3">Add New Card</Heading>
+                <Box display="flex" gap="spacing.6" marginTop="spacing.8">
                   <Box flex="2">
                     <TextInput label="Card Number" />
                   </Box>
@@ -59,7 +63,7 @@ const Checkout = (): React.ReactElement => {
                     <TextInput label="Expiry" />
                   </Box>
                 </Box>
-                <Box display="flex" gap="spacing.6" marginTop="spacing.6">
+                <Box display="flex" gap="spacing.6" marginTop="spacing.8">
                   <Box flex="2">
                     <TextInput label="Card Holder's Name" />
                   </Box>
@@ -67,7 +71,7 @@ const Checkout = (): React.ReactElement => {
                     <PasswordInput label="CVV" />
                   </Box>
                 </Box>
-                <Box marginTop="spacing.8">
+                <Box marginTop="spacing.10">
                   <Checkbox defaultChecked>Save card securely for future payments</Checkbox>
                 </Box>
               </Box>
