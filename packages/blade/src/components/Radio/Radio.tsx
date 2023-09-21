@@ -17,13 +17,12 @@ import type { BladeElementRef, StringChildrenType, TestID } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getPlatformType } from '~utils';
 import { MetaConstants } from '~utils/metaAttribute';
-import { throwBladeError } from '~utils/logger';
 
 type RadioProps = {
   /**
    * Sets the label text of the Radio
    */
-  children: StringChildrenType;
+  children?: StringChildrenType;
   /**
    * Help text for the Radio
    */
@@ -57,10 +56,10 @@ const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
 
   if (__DEV__) {
     if (!isInsideGroup) {
-      throwBladeError({
-        moduleName: 'Radio',
-        message: 'Cannot use <Radio /> outside of <RadioGroup />',
-      });
+      // throwBladeError({
+      //   moduleName: 'Radio',
+      //   message: 'Cannot use <Radio /> outside of <RadioGroup />',
+      // });
     }
   }
 
@@ -119,15 +118,17 @@ const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
               isDisabled={_isDisabled}
               isNegative={hasError}
             />
-            <SelectorTitle size={_size} isDisabled={_isDisabled}>
-              {children}
-            </SelectorTitle>
+            {children ? (
+              <SelectorTitle size={_size} isDisabled={_isDisabled}>
+                {children}
+              </SelectorTitle>
+            ) : null}
           </BaseBox>
-          <BaseBox marginLeft={isSmall ? 'spacing.6' : 'spacing.7'}>
-            {showHelpText && (
-              <SelectorSupportText id={ids?.helpTextId}>{helpText}</SelectorSupportText>
-            )}
-          </BaseBox>
+          {showHelpText && (
+            <BaseBox marginLeft={isSmall ? 'spacing.6' : 'spacing.7'}>
+              <SelectorSupportText id={ids?.helpTextId}>{helpText}</SelectorSupportText>)
+            </BaseBox>
+          )}
         </BaseBox>
       </SelectorLabel>
     </BaseBox>

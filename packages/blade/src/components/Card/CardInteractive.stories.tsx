@@ -27,6 +27,9 @@ import { Amount } from '~components/Amount';
 import { castWebType, isReactNative } from '~utils';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { SandboxProvider } from '~utils/storybook/Sandbox';
+import { Badge } from '~components/Badge';
+import { Radio, RadioGroup } from '~components/Radio';
+import { Checkbox, CheckboxGroup } from '~components/Checkbox';
 
 const Page = (): React.ReactElement => {
   return (
@@ -833,4 +836,126 @@ export const MultiSelectCard = (): React.ReactElement => {
     return <MultiSelectCardReactNative />;
   }
   return <MultiSelectCardWeb />;
+};
+
+const RadioCard = ({ value, label }: { value: string; label: string }) => {
+  return (
+    <Box display="flex" gap="spacing.3" alignItems="flex-start">
+      <Radio value={value} />
+      <Box display="flex" flexDirection="column" gap="spacing.3">
+        <Box display="flex" gap="spacing.4">
+          <Text weight="bold">{label}</Text>
+          <Badge variant="positive">Issued</Badge>
+        </Box>
+        <Box display="flex" gap="spacing.4">
+          <Text size="small">13 Aug’23</Text>
+          <Amount size="body-small" value={1000} />
+          <Text size="small">Un-billed/₹1,000</Text>
+        </Box>
+      </Box>
+    </Box>
+  );
+};
+
+export const SingleSelectWithRadio = (): React.ReactElement => {
+  const [selected, setSelected] = React.useState('P0');
+
+  const onChange = (value: string) => {
+    setSelected(value);
+  };
+
+  return (
+    <Box display="flex" gap="spacing.5" flexDirection={{ xs: 'column', m: 'column' }}>
+      <Text>⚡️ 1 open PO(s) detected against Vendor Name, Selected: {selected}</Text>
+
+      <RadioGroup value={selected} onChange={({ value }) => onChange(value)}>
+        <Card
+          as="label"
+          accessibilityLabel="PO Issue 1234"
+          isSelected={selected === 'P0'}
+          marginBottom="spacing.2"
+        >
+          <CardBody>
+            <RadioCard value="P0" label="P0#123" />
+          </CardBody>
+        </Card>
+        <Card
+          as="label"
+          accessibilityLabel="P1 Issue 123"
+          isSelected={selected === 'P1'}
+          marginBottom="spacing.2"
+        >
+          <CardBody>
+            <RadioCard value="P1" label="P1#123" />
+          </CardBody>
+        </Card>
+        <Card as="label" accessibilityLabel="P2 Issue 123" isSelected={selected === 'P2'}>
+          <CardBody>
+            <RadioCard value="P2" label="P2#123" />
+          </CardBody>
+        </Card>
+      </RadioGroup>
+    </Box>
+  );
+};
+
+const CheckboxCard = ({ value, label }: { value: string; label: string }) => {
+  return (
+    <Box display="flex" gap="spacing.3" alignItems="flex-start">
+      <Checkbox value={value} />
+      <Box display="flex" flexDirection="column" gap="spacing.3">
+        <Box display="flex" gap="spacing.4">
+          <Text weight="bold">{label}</Text>
+          <Badge variant="positive">Issued</Badge>
+        </Box>
+        <Box display="flex" gap="spacing.4">
+          <Text size="small">13 Aug’23</Text>
+          <Amount size="body-small" value={1000} />
+          <Text size="small">Un-billed/₹1,000</Text>
+        </Box>
+      </Box>
+    </Box>
+  );
+};
+
+export const MultiSelectSelectWithCheckbox = (): React.ReactElement => {
+  const [selected, setSelected] = React.useState(['P0']);
+
+  const onChange = (value: string[]) => {
+    setSelected(value);
+  };
+
+  return (
+    <Box display="flex" gap="spacing.5" flexDirection={{ xs: 'column', m: 'column' }}>
+      <Text>⚡️ 1 open PO(s) detected against Vendor Name, Selected: {selected.join(', ')}</Text>
+
+      <CheckboxGroup value={selected} onChange={({ values }) => onChange(values)}>
+        <Card
+          as="label"
+          accessibilityLabel="PO Issue 1234"
+          isSelected={selected.includes('P0')}
+          marginBottom="spacing.2"
+        >
+          <CardBody>
+            <CheckboxCard value="P0" label="P0#123" />
+          </CardBody>
+        </Card>
+        <Card
+          as="label"
+          accessibilityLabel="P1 Issue 123"
+          isSelected={selected.includes('P1')}
+          marginBottom="spacing.2"
+        >
+          <CardBody>
+            <CheckboxCard value="P1" label="P1#123" />
+          </CardBody>
+        </Card>
+        <Card as="label" accessibilityLabel="P2 Issue 123" isSelected={selected.includes('P2')}>
+          <CardBody>
+            <CheckboxCard value="P2" label="P2#123" />
+          </CardBody>
+        </Card>
+      </CheckboxGroup>
+    </Box>
+  );
 };
