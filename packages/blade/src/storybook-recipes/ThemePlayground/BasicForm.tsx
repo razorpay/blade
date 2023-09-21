@@ -11,7 +11,7 @@ import { RazorpayIcon } from '~components/Icons';
 
 const BasicForm = (): React.ReactElement => {
   return (
-    <Card elevation="none">
+    <Card elevation="lowRaised">
       <CardHeader>
         <CardHeaderLeading
           title="Razorpay Signup"

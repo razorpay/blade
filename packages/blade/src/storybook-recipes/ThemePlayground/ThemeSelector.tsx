@@ -110,7 +110,7 @@ const ThemeSelector = ({
       top={isDesktop ? '15vh' : undefined}
       zIndex={50}
     >
-      <Card elevation={isDesktop ? 'highRaised' : 'none'}>
+      <Card elevation={isDesktop ? 'highRaised' : 'none'} surfaceLevel={3}>
         <CardBody>
           <Box width={isDesktop ? '400px' : '100%'}>
             <Heading>Customise theme</Heading>

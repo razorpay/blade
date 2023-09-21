@@ -17,6 +17,7 @@ import * as otpInputStories from '../../components/Input/OTPInput/OTPInput.stori
 import { Card, CardBody } from '~components/Card';
 import { Box } from '~components/Box';
 import { Heading } from '~components/Typography';
+import { Divider } from '~components/Divider';
 
 const includedStories = [
   'IconRightButton',
@@ -71,20 +72,23 @@ allStories.push(...Object.values(composeStories(switchStories)));
 allStories.push(...Object.values(composeStories(textInputStories)));
 allStories.push(...Object.values(composeStories(otpInputStories)));
 
+const filteredstories = allStories.filter((Story) => includedStories.includes(Story.storyName));
+
 const BrandedComponentKitchenSink = (): React.ReactElement => {
   return (
-    <Card elevation="none">
+    <Card elevation="lowRaised">
       <CardBody>
-        {allStories.map((Story) => {
-          return includedStories.includes(Story.storyName) ? (
+        {filteredstories.map((Story, index) => {
+          return (
             <>
+              {index === 0 ? null : <Divider orientation="horizontal" marginBottom="spacing.6" />}
               <Heading size="large" marginBottom="spacing.4">
                 {StoryNameToHeadingMap[Story.storyName] ?? Story.storyName}:
               </Heading>
               <Story />
               <Box marginTop="spacing.8" />
             </>
-          ) : null;
+          );
         })}
       </CardBody>
     </Card>

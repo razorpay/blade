@@ -8,12 +8,12 @@ import { Button } from '~components/Button';
 import { Amount } from '~components/Amount';
 
 const StyledHeader = styled(BaseBox)({
-  boxShadow: '0 4px 8px rgba(23,26,30,.15)',
+  boxShadow: '0 4px 8px  rgba(23,26,30,.15)',
 });
 
 const StyledFooter = styled(BaseBox)(({ theme }) => ({
-  boxShadow: '0 -5px 10px rgba(23,26,30,.15)',
-  borderTop: `1px solid ${theme.colors.brand.gray[300].lowContrast}`,
+  boxShadow: `0 -2px 6px  rgba(23,26,30,.15)`,
+  borderTop: `1px solid ${theme.colors.brand.gray[400].lowContrast}`,
 }));
 
 const MerchantAvatar = styled.img(() => ({
