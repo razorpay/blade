@@ -82,7 +82,7 @@ const BrandedComponentKitchenSink = (): React.ReactElement => {
           return (
             <>
               {index === 0 ? null : <Divider orientation="horizontal" marginBottom="spacing.6" />}
-              <Heading size="large" marginBottom="spacing.4">
+              <Heading type="subtle" size="large" marginBottom="spacing.4">
                 {StoryNameToHeadingMap[Story.storyName] ?? Story.storyName}:
               </Heading>
               <Story />

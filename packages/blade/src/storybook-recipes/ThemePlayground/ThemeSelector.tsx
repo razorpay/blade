@@ -107,14 +107,15 @@ const ThemeSelector = ({
     <Box
       position={isDesktop ? 'fixed' : 'relative'}
       right="spacing.4"
-      top={isDesktop ? '15vh' : undefined}
+      top={isDesktop ? '0px' : undefined}
       zIndex={50}
+      height="100%"
     >
-      <Card elevation={isDesktop ? 'highRaised' : 'none'} surfaceLevel={3}>
+      <Card elevation="midRaised" surfaceLevel={3} height="100%">
         <CardBody>
           <Box width={isDesktop ? '400px' : '100%'}>
             <Heading>Customise theme</Heading>
-            <Box marginTop="spacing.5" />
+            <Box marginTop="spacing.8" />
             <Box display="flex" flexDirection="row" gap="spacing.2" flexWrap="wrap">
               <RadioGroup
                 value={selectedPreBuiltTheme}
@@ -129,7 +130,7 @@ const ThemeSelector = ({
                 <Radio value="bankingTheme">Banking Theme</Radio>
               </RadioGroup>
             </Box>
-            <Box marginTop="spacing.5" />
+            <Box marginTop="spacing.8" />
             <Box display="flex" flexDirection="column" gap="spacing.2" flexWrap="wrap">
               <Text
                 size="small"
@@ -172,7 +173,7 @@ const ThemeSelector = ({
               flexDirection="row"
               gap="spacing.2"
               flexWrap="wrap"
-              marginTop="spacing.5"
+              marginTop="spacing.8"
             >
               <RadioGroup
                 value={colorScheme}
@@ -184,8 +185,8 @@ const ThemeSelector = ({
                 <Radio value="dark">Dark</Radio>
               </RadioGroup>
             </Box>
-            <Box marginTop="spacing.5" />
-            <Text type="subdued" weight="bold" marginRight="spacing.8">
+            <Box marginTop="spacing.8" />
+            <Text type="subdued" weight="bold" marginRight="spacing.8" marginBottom="spacing.3">
               Code:
             </Text>
             <Box>

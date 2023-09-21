@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { BasicForm } from './BasicForm';
 import { Checkout } from './Checkout';
 import { PhantomUI } from './PhantomUI';
 import { ThemeSelector } from './ThemeSelector';
@@ -8,7 +7,7 @@ import { BladeProvider } from '~components/BladeProvider';
 import { bankingTheme, createTheme, paymentTheme } from '~tokens/theme';
 import type { ColorSchemeNames, ThemeTokens } from '~tokens/theme';
 import { Box } from '~components/Box';
-import { Heading } from '~components/Typography';
+import { Title } from '~components/Typography';
 
 const ThemePlayground = (): React.ReactElement => {
   const [selectedColor, setSelectedColor] = useState<string | undefined>(undefined);
@@ -39,20 +38,22 @@ const ThemePlayground = (): React.ReactElement => {
             setSelectedPreBuiltTheme={setSelectedPreBuiltTheme}
           />
           <Box flex={1}>
-            <Heading marginBottom="spacing.2">Checkout UI</Heading>
+            <Title size="medium" marginBottom="spacing.4">
+              Checkout UI
+            </Title>
             <Checkout />
           </Box>
-          <Box flex={1}>
-            <Heading marginBottom="spacing.2">Phantom UI</Heading>
+          <Box flex={1} marginTop="spacing.8">
+            <Title size="medium" marginBottom="spacing.4">
+              Phantom UI
+            </Title>
             <PhantomUI />
           </Box>
-          <Box flex={1} marginTop="spacing.6">
-            <Heading marginBottom="spacing.2">Form</Heading>
-            <BasicForm />
-          </Box>
         </Box>
-        <Box marginTop="spacing.6">
-          <Heading marginBottom="spacing.2">Component Showcase</Heading>
+        <Box marginTop="spacing.8">
+          <Title size="medium" marginBottom="spacing.4">
+            Component Showcase
+          </Title>
           <BrandedComponentKitchenSink />
         </Box>
       </Box>
