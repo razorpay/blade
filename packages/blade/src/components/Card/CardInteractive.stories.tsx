@@ -908,7 +908,7 @@ const CheckboxCard = ({ value, label }: { value: string; label: string }) => {
           <Text weight="bold">{label}</Text>
           <Badge variant="positive">Issued</Badge>
         </Box>
-        <Box display="flex" flexDirection="row" gap="spacing.4">
+        <Box display="flex" flexDirection="row" alignItems="center" gap="spacing.4">
           <Text size="small">13 Aug’23</Text>
           <Amount size="body-small" value={1000} />
           <Text size="small">Un-billed/₹1,000</Text>
@@ -931,6 +931,7 @@ export const MultiSelectSelectWithCheckbox = (): React.ReactElement => {
 
       <CheckboxGroup value={selected} onChange={({ values }) => onChange(values)}>
         <Card
+          height="100vh"
           as="label"
           accessibilityLabel="PO Issue 1234"
           isSelected={selected.includes('P0')}

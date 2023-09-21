@@ -2,6 +2,7 @@
 
 exports[`<Card /> should render a Card with Footer 1`] = `
 .c0 {
+  display: block;
   border-radius: 4px;
 }
 
@@ -484,6 +485,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
 
 exports[`<Card /> should render a Card with Header 1`] = `
 .c0 {
+  display: block;
   border-radius: 4px;
 }
 
@@ -949,6 +951,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
 
 exports[`<Card /> should render a Card without 0 padding 1`] = `
 .c0 {
+  display: block;
   border-radius: 4px;
 }
 
@@ -1017,6 +1020,7 @@ exports[`<Card /> should render a Card without 0 padding 1`] = `
 
 exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
 .c0 {
+  display: block;
   border-radius: 4px;
 }
 
@@ -1088,6 +1092,7 @@ exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
 
 exports[`<Card /> should render a plain Card 1`] = `
 .c0 {
+  display: block;
   border-radius: 4px;
 }
 

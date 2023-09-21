@@ -51,12 +51,14 @@ exports[`<Card /> should render a clickable Card 1`] = `
     <View
       borderRadius="medium"
       data-blade-component="card"
+      display="block"
       isFocused={false}
       isSelected={false}
       style={
         [
           {
             "borderRadius": 4,
+            "display": "block",
           },
           {
             "borderColor": "transparent",
@@ -170,12 +172,14 @@ exports[`<Card /> should render a interactive Card 1`] = `
     <View
       borderRadius="medium"
       data-blade-component="card"
+      display="block"
       isFocused={false}
       isSelected={true}
       style={
         [
           {
             "borderRadius": 4,
+            "display": "block",
           },
           {
             "borderColor": "hsla(218, 89%, 51%, 1)",
@@ -290,12 +294,14 @@ exports[`<Card /> should render a linkable Card 1`] = `
     <View
       borderRadius="medium"
       data-blade-component="card"
+      display="block"
       isFocused={false}
       isSelected={false}
       style={
         [
           {
             "borderRadius": 4,
+            "display": "block",
           },
           {
             "borderColor": "transparent",
@@ -410,12 +416,14 @@ exports[`<Card /> should render a linkable Card with onClick 1`] = `
     <View
       borderRadius="medium"
       data-blade-component="card"
+      display="block"
       isFocused={false}
       isSelected={false}
       style={
         [
           {
             "borderRadius": 4,
+            "display": "block",
           },
           {
             "borderColor": "transparent",
