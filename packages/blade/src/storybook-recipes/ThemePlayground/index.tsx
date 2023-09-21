@@ -8,6 +8,7 @@ import { bankingTheme, createTheme, paymentTheme } from '~tokens/theme';
 import type { ColorSchemeNames, ThemeTokens } from '~tokens/theme';
 import { Box } from '~components/Box';
 import { Title } from '~components/Typography';
+import { Card, CardBody } from '~components/Card';
 
 const ThemePlayground = (): React.ReactElement => {
   const [selectedColor, setSelectedColor] = useState<string | undefined>(undefined);
@@ -37,24 +38,30 @@ const ThemePlayground = (): React.ReactElement => {
             selectedPreBuiltTheme={selectedPreBuiltTheme}
             setSelectedPreBuiltTheme={setSelectedPreBuiltTheme}
           />
-          <Box flex={1}>
-            <Title size="medium" marginBottom="spacing.4">
-              Checkout UI
-            </Title>
-            <Checkout />
-          </Box>
-          <Box flex={1} marginTop="spacing.8">
-            <Title size="medium" marginBottom="spacing.4">
-              Phantom UI
-            </Title>
-            <PhantomUI />
-          </Box>
-        </Box>
-        <Box marginTop="spacing.8">
-          <Title size="medium" marginBottom="spacing.4">
-            Component Showcase
-          </Title>
-          <BrandedComponentKitchenSink />
+          <Card surfaceLevel={3}>
+            <CardBody>
+              <Box>
+                <Box flex={1}>
+                  <Title size="medium" marginBottom="spacing.4">
+                    Checkout UI
+                  </Title>
+                  <Checkout />
+                </Box>
+                <Box flex={1} marginTop="spacing.8">
+                  <Title size="medium" marginBottom="spacing.4">
+                    Phantom UI
+                  </Title>
+                  <PhantomUI />
+                </Box>
+                <Box marginTop="spacing.8">
+                  <Title size="medium" marginBottom="spacing.4">
+                    Component Showcase
+                  </Title>
+                  <BrandedComponentKitchenSink />
+                </Box>
+              </Box>
+            </CardBody>
+          </Card>
         </Box>
       </Box>
     </BladeProvider>

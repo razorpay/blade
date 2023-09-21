@@ -10,7 +10,7 @@ const PhantomUI = (): React.ReactElement => {
   const [selectedBusinessType, setSelectedBusinessType] = useState('Individual');
   return (
     <Box maxWidth="375px">
-      <Card surfaceLevel={3} elevation="lowRaised">
+      <Card surfaceLevel={2} elevation="lowRaised">
         <CardBody>
           <Box>
             <Heading size="large">What's your business type?</Heading>
