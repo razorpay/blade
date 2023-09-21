@@ -931,7 +931,6 @@ export const MultiSelectSelectWithCheckbox = (): React.ReactElement => {
 
       <CheckboxGroup value={selected} onChange={({ values }) => onChange(values)}>
         <Card
-          height="100vh"
           as="label"
           accessibilityLabel="PO Issue 1234"
           isSelected={selected.includes('P0')}
