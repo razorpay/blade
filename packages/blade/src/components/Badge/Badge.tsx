@@ -172,4 +172,5 @@ const Badge = assignWithoutSideEffects(_Badge, {
   componentId: 'Badge',
 });
 
-export { Badge, BadgeProps };
+export type { BadgeProps };
+export { Badge };

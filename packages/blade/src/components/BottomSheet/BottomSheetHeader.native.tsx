@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 import React from 'react';
-import { BaseHeader } from '../BaseHeaderFooter/BaseHeader';
 import { ComponentIds } from './componentIds';
 import { useBottomSheetContext } from './BottomSheetContext';
 import type { BottomSheetHeaderProps } from './types';
 import { BottomSheetEmptyHeader } from './BottomSheetCommon';
+import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
 import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
@@ -16,9 +16,10 @@ const _BottomSheetHeader = ({
   titleSuffix,
   showBackButton = false,
   onBackButtonClick,
+  children,
 }: BottomSheetHeaderProps): React.ReactElement => {
   const { close, setIsHeaderEmpty, defaultInitialFocusRef } = useBottomSheetContext();
-  const isHeaderEmpty = !(title || subtitle || leading || trailing || showBackButton);
+  const isHeaderEmpty = !(title || subtitle || leading || trailing || showBackButton || children);
 
   React.useEffect(() => {
     setIsHeaderEmpty(isHeaderEmpty);
@@ -43,7 +44,9 @@ const _BottomSheetHeader = ({
           // close button
           showCloseButton={true}
           onCloseButtonClick={close}
-        />
+        >
+          {children}
+        </BaseHeader>
       )}
     </BaseBox>
   );
@@ -53,4 +56,5 @@ const BottomSheetHeader = assignWithoutSideEffects(_BottomSheetHeader, {
   componentId: ComponentIds.BottomSheetHeader,
 });
 
-export { BottomSheetHeader, BottomSheetHeaderProps };
+export type { BottomSheetHeaderProps };
+export { BottomSheetHeader };

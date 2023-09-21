@@ -1,16 +1,15 @@
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 import React from 'react';
-import { BaseFooter } from '../BaseHeaderFooter/BaseFooter';
-import { BaseHeader } from '../BaseHeaderFooter/BaseHeader';
-import type { BaseHeaderProps } from '../BaseHeaderFooter/BaseHeader';
-import type { BaseFooterProps } from '../BaseHeaderFooter/BaseFooter';
 import { useDropdown } from './useDropdown';
+import { BaseFooter } from '~components/BaseHeaderFooter/BaseFooter';
+import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
+import type { BaseHeaderProps } from '~components/BaseHeaderFooter/BaseHeader';
+import type { BaseFooterProps } from '~components/BaseHeaderFooter/BaseFooter';
 import BaseBox from '~components/Box/BaseBox';
 import { isReactNative } from '~utils';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeAccessible } from '~utils/makeAccessible';
 import { MetaConstants } from '~utils/metaAttribute/metaConstants';
-import { useBottomSheetAndDropdownGlue } from '~components/BottomSheet/BottomSheetContext';
 
 type DropdownHeaderProps = Pick<
   BaseHeaderProps,
@@ -27,7 +26,6 @@ const _DropdownHeader = ({
 }: DropdownHeaderProps): React.ReactElement => {
   return (
     <BaseBox
-      overflow={'auto' as never}
       flexShrink={0}
       {...(isReactNative()
         ? {}
@@ -63,16 +61,8 @@ const DropdownHeader = assignWithoutSideEffects(_DropdownHeader, {
 type DropdownFooter = Pick<BaseFooterProps, 'children' | 'testID'>;
 
 const _DropdownFooter = ({ children, testID }: DropdownFooter): React.ReactElement => {
-  const {
-    setHasFooterAction,
-    setShouldIgnoreBlur,
-    activeIndex,
-    onTriggerKeydown,
-    close,
-  } = useDropdown();
-  const bottomSheetAndDropdownGlue = useBottomSheetAndDropdownGlue();
+  const { setHasFooterAction, activeIndex, onTriggerKeydown, isOpen } = useDropdown();
   const footerRef = React.useRef<HTMLDivElement>(null);
-  const [isClickedInsideFooter, setIsClickedInsideFooter] = React.useState(false);
 
   React.useEffect(() => {
     setHasFooterAction(true);
@@ -86,13 +76,6 @@ const _DropdownFooter = ({ children, testID }: DropdownFooter): React.ReactEleme
       {...(isReactNative()
         ? {}
         : {
-            onMouseDown: () => {
-              setShouldIgnoreBlur(true);
-              setIsClickedInsideFooter(true);
-            },
-            onMouseUp: () => {
-              setIsClickedInsideFooter(false);
-            },
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             onKeyDown: (e: any) => {
               const nativeEvent = e.nativeEvent;
@@ -104,18 +87,14 @@ const _DropdownFooter = ({ children, testID }: DropdownFooter): React.ReactEleme
                 onTriggerKeydown?.({ event: e.nativeEvent } as any);
               }
             },
-            onBlur: () => {
-              if (!isClickedInsideFooter && !bottomSheetAndDropdownGlue?.dropdownHasBottomSheet) {
-                close();
-              }
-            },
           })}
       {...makeAccessible({
-        role: 'group',
+        role: isReactNative() ? undefined : 'group',
       })}
     >
       <BaseFooter metaComponentName={MetaConstants.DropdownFooter} testID={testID}>
-        {children}
+        {/* We don't want any of the interactive children to get focussed on TAB when dropdown is closed so we remove them from DOM itself */}
+        {isOpen ? children : null}
       </BaseFooter>
     </BaseBox>
   );

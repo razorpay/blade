@@ -1,11 +1,16 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import React from 'react';
+import { SelectInput } from '../SelectInput';
 import type { OTPInputProps } from './OTPInput';
 import { OTPInput as OTPInputComponent } from './OTPInput';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+import { Box } from '~components/Box';
+import { Button } from '~components/Button';
+import { Dropdown, DropdownOverlay } from '~components/Dropdown';
+import { ActionList, ActionListItem } from '~components/ActionList';
 
 const propsCategory = {
   BASE_PROPS: 'OTPInput Props',
@@ -243,3 +248,58 @@ const OTPInputControlledTemplate: ComponentStory<typeof OTPInputComponent> = () 
   return <OTPInput label="Enter OTP" value="123456" name="otp" />;
 };
 export const OTPInputControlled = OTPInputControlledTemplate.bind({});
+
+export const OTPInputRef: ComponentStory<typeof OTPInputComponent> = () => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const [focusOn, setFocusOn] = React.useState(0);
+  const inputRef = React.useRef<HTMLInputElement[]>([]);
+
+  return (
+    <Box gap="spacing.3" display="flex" alignItems="end">
+      <OTPInputComponent
+        ref={inputRef}
+        label="Enter OTP"
+        name="otp"
+        otpLength={4}
+        onChange={({ name, value }): void => console.log({ name, value })}
+      />
+      <Dropdown selectionType="single">
+        <SelectInput
+          label="Item to focus"
+          placeholder="Select Item To Focus"
+          name="action"
+          value={`${focusOn}`}
+          onChange={({ values }) => {
+            setFocusOn(Number(values[0]));
+          }}
+        />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="0" value="0" />
+            <ActionListItem title="1" value="1" />
+            <ActionListItem title="2" value="2" />
+            <ActionListItem title="3" value="3" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+      <Button
+        onClick={() => {
+          console.log(inputRef);
+          inputRef?.current[focusOn].focus();
+        }}
+      >
+        Focus
+      </Button>
+    </Box>
+  );
+};
+
+OTPInputRef.storyName = 'OTP Input Ref';
+OTPInputRef.parameters = {
+  docs: {
+    description: {
+      story:
+        'The OTP component offers a `ref` prop for programmatically focusing on its input fields. This prop exposes an array of individual refs for each input, allowing you to focus on a particular field using `inputRef.current[index].focus()`.',
+    },
+  },
+};

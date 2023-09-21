@@ -23,7 +23,7 @@ describe('<Tooltip />', () => {
 
   it('should render', () => {
     const buttonText = 'Hover me';
-    const { container, getByRole, queryByRole } = renderWithTheme(
+    const { baseElement, getByRole, queryByRole } = renderWithTheme(
       <Tooltip content="Hello world">
         <Button>{buttonText}</Button>
       </Tooltip>,
@@ -33,7 +33,22 @@ describe('<Tooltip />', () => {
     fireEvent.focus(getByRole('button', { name: buttonText }));
     expect(queryByRole('tooltip')).toBeInTheDocument();
     expect(queryByRole('tooltip')).toHaveStyle({ 'z-index': 1100 });
-    expect(container).toMatchSnapshot();
+    expect(baseElement).toMatchSnapshot();
+  });
+
+  it('should render with title', () => {
+    const buttonText = 'Hover me';
+    const { baseElement, getByRole, queryByRole } = renderWithTheme(
+      <Tooltip title="Tooltip title" content="Hello world">
+        <Button>{buttonText}</Button>
+      </Tooltip>,
+    );
+
+    // snapshot while on opened
+    fireEvent.focus(getByRole('button', { name: buttonText }));
+    expect(queryByRole('tooltip')).toBeInTheDocument();
+    expect(queryByRole('tooltip')).toHaveStyle({ 'z-index': 1100 });
+    expect(baseElement).toMatchSnapshot();
   });
 
   it('should render tooltip with custom zIndex', () => {

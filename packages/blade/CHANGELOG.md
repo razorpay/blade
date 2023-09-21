@@ -1,5 +1,96 @@
 # @razorpay/blade
 
+## 10.12.0
+
+### Minor Changes
+
+- 2f2fcab4: feat(blade): add ref to OTP Input
+
+### Patch Changes
+
+- dc42ae1e: fix(Box): correctly apply border styles
+
+## 10.11.0
+
+### Minor Changes
+
+- c4242ad4: feat(Dropdown): add isOpen and onOpenChange
+
+  > **Warning**
+  >
+  > This PR marks `onDismiss` as deprecated. While it continues to work, we recommend consumers to move to onOpenChange using migration steps below
+
+  ### Migration from `onDismiss` on Dropdown
+
+  ```diff
+  <Dropdown
+  - onDismiss={() => console.log('dismissed')}
+  + onOpenChange={(isOpen) => {
+  +  if (!isOpen) {
+  +    console.log('dismissed');
+  +  }
+  + }}
+  />
+  ```
+
+- 18748f1f: feat(ActionListItem): add ActionListItemBadge component and `titleSuffix` option on ActionListItem
+
+## 10.10.0
+
+### Minor Changes
+
+- 18bdaed2: feat(blade): added Popover component
+
+  **Tooltip Changes**
+
+  - Added a new prop `title`
+
+### Patch Changes
+
+- c4ef32f8: chore: export popover & update status table
+
+## 10.9.2
+
+### Patch Changes
+
+- 86c57372: fix: type exports for Select and AutoComplete types
+
+## 10.9.1
+
+### Patch Changes
+
+- 1be2fecf: fix(AutoComplete): AutoComplete Storybook panel and React Native Icon Alignment in PasswordInput
+
+## 10.9.0
+
+### Minor Changes
+
+- 31fa01eb: feat(AutoComplete): add AutoComplete component
+
+## 10.8.1
+
+### Patch Changes
+
+- 09ca73d2: fix(ActionList): divider being added to last ActionListSection
+
+## 10.8.0
+
+### Minor Changes
+
+- ac405dfc: chore(blade): added id to Box component
+
+## 10.7.1
+
+### Patch Changes
+
+- 52288df2: fix(blade): carousel bug in safari
+
+## 10.7.0
+
+### Minor Changes
+
+- f43d9b35: feat(Icon): add default value for `size` & `color` props
+
 ## 10.6.0
 
 ### Minor Changes

@@ -5,14 +5,8 @@ import { StyledActionListItem } from './styles/StyledActionListItem';
 import { componentIds } from './componentIds';
 import type { StyledActionListItemProps } from './styles/getBaseActionListItemStyles';
 import { validateActionListItemProps, getNormalTextColor } from './actionListUtils';
-import {
-  getActionListItemRole,
-  getActionListSectionRole,
-  getSeparatorRole,
-  isRoleMenu,
-} from './getA11yRoles';
+import { getActionListItemRole, getActionListSectionRole, isRoleMenu } from './getA11yRoles';
 import { useActionListContext } from './ActionList';
-import { Box } from '~components/Box';
 import { Divider } from '~components/Divider';
 import BaseBox from '~components/Box/BaseBox';
 import type { IconComponent } from '~components/Icons';
@@ -30,6 +24,10 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeSize } from '~utils/makeSize';
 import { makeAccessible } from '~utils/makeAccessible';
 import { throwBladeError } from '~utils/logger';
+import type { BadgeProps } from '~components/Badge';
+import { Badge } from '~components/Badge';
+import { Box } from '~components/Box';
+import { dropdownComponentIds } from '~components/Dropdown/dropdownComponentIds';
 
 type ActionListItemProps = {
   title: string;
@@ -61,6 +59,13 @@ type ActionListItemProps = {
    * Valid elements - `<ActionListItemText />`, `<ActionListItemIcon />`
    */
   trailing?: React.ReactNode;
+  /**
+   * Item that goes immediately next to the title.
+   *
+   * Valid elements - `<ActionListItemBadge />`, `<ActionListItemBadgeGroup />`
+   *
+   */
+  titleSuffix?: React.ReactElement;
   isDisabled?: boolean;
   intent?: Extract<Feedback, 'negative'>;
   /**
@@ -81,14 +86,6 @@ const ActionListItemContext = React.createContext<{
   intent?: ActionListItemProps['intent'];
   isDisabled?: ActionListItemProps['isDisabled'];
 }>({});
-
-const ActionListSectionDivider = (): React.ReactElement => (
-  <Divider
-    {...makeAccessible({
-      role: getSeparatorRole(),
-    })}
-  />
-);
 
 const StyledActionListSectionTitle = styled(BaseBox)((props) => ({
   // @TODO: replace this styled-component with new layout box when we have padding shorthand
@@ -139,11 +136,7 @@ const _ActionListSection = ({
       >
         {children}
       </BaseBox>
-      {_hideDivider && isReactNative() ? null : (
-        <Box marginX="spacing.3" marginY="spacing.1">
-          <ActionListSectionDivider />
-        </Box>
-      )}
+      {_hideDivider && isReactNative() ? null : <Divider marginX="spacing.3" marginY="spacing.1" />}
     </BaseBox>
   );
 };
@@ -169,6 +162,30 @@ const _ActionListItemIcon = ({ icon }: { icon: IconComponent }): React.ReactElem
 
 const ActionListItemIcon = assignWithoutSideEffects(_ActionListItemIcon, {
   componentId: componentIds.ActionListItemIcon,
+});
+
+const _ActionListItemBadgeGroup = ({
+  children,
+}: {
+  children: React.ReactElement[] | React.ReactElement;
+}): React.ReactElement => {
+  return (
+    <Box display="flex" alignItems="center" flexDirection="row">
+      {children}
+    </Box>
+  );
+};
+
+const ActionListItemBadgeGroup = assignWithoutSideEffects(_ActionListItemBadgeGroup, {
+  componentId: componentIds.ActionListItemBadgeGroup,
+});
+
+const _ActionListItemBadge = (props: BadgeProps): React.ReactElement => {
+  return <Badge size="medium" marginLeft="spacing.3" {...props} />;
+};
+
+const ActionListItemBadge = assignWithoutSideEffects(_ActionListItemBadge, {
+  componentId: componentIds.ActionListItemBadge,
 });
 
 const _ActionListItemText = ({
@@ -217,10 +234,11 @@ const _ActionListItemBody = ({
   leading,
   trailing,
   title,
+  titleSuffix,
   isSelected,
 }: Pick<
   ActionListItemProps,
-  'intent' | 'isDisabled' | 'description' | 'trailing' | 'leading' | 'title'
+  'intent' | 'isDisabled' | 'description' | 'trailing' | 'leading' | 'title' | 'titleSuffix'
 > & {
   selectionType: DropdownProps['selectionType'];
   isSelected?: boolean;
@@ -258,6 +276,9 @@ const _ActionListItemBody = ({
         <BaseBox
           paddingLeft={selectionType === 'multiple' || !leading ? 'spacing.0' : 'spacing.3'}
           paddingRight="spacing.3"
+          display="flex"
+          alignItems="center"
+          flexDirection="row"
         >
           <Text
             truncateAfterLines={1}
@@ -269,6 +290,7 @@ const _ActionListItemBody = ({
           >
             {title}
           </Text>
+          {titleSuffix}
         </BaseBox>
         <BaseBox marginLeft="auto">{trailing}</BaseBox>
       </BaseBox>
@@ -309,15 +331,19 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
     dropdownBaseId,
     onOptionClick,
     selectedIndices,
-    setShouldIgnoreBlur,
     setShouldIgnoreBlurAnimation,
     selectionType,
     dropdownTriggerer,
     isKeydownPressed,
+    filteredValues,
+    hasAutoCompleteInBottomSheetHeader,
   } = useDropdown();
 
   const { platform } = useTheme();
   const isMobile = platform === 'onMobile';
+  const hasAutoComplete =
+    hasAutoCompleteInBottomSheetHeader ||
+    dropdownTriggerer === dropdownComponentIds.triggers.AutoComplete;
 
   const renderOnWebAs = props.href ? 'a' : 'button';
 
@@ -328,7 +354,7 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
    * isSelected prop explicitly is the only way to select item in menu
    */
   const getIsSelected = (): boolean | undefined => {
-    if (dropdownTriggerer === 'SelectInput') {
+    if (dropdownTriggerer === dropdownComponentIds.triggers.SelectInput || hasAutoComplete) {
       if (typeof props._index === 'number') {
         return selectedIndices.includes(props._index);
       }
@@ -345,12 +371,16 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
     validateActionListItemProps({
       leading: props.leading,
       trailing: props.trailing,
+      titleSuffix: props.titleSuffix,
     });
-  }, [props.leading, props.trailing]);
+  }, [props.leading, props.trailing, props.titleSuffix]);
 
   React.useEffect(() => {
     if (__DEV__) {
-      if (dropdownTriggerer === 'SelectInput' && props.intent === 'negative') {
+      if (
+        dropdownTriggerer === dropdownComponentIds.triggers.SelectInput &&
+        props.intent === 'negative'
+      ) {
         throwBladeError({
           message:
             'negative intent ActionListItem cannot be used inside Dropdown with SelectInput trigger',
@@ -363,6 +393,7 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
   return (
     <ActionListItemContext.Provider value={{ intent: props.intent, isDisabled: props.isDisabled }}>
       <StyledActionListItem
+        isVisible={hasAutoComplete && filteredValues ? filteredValues.includes(props.value) : true}
         as={!isReactNative() ? renderOnWebAs : undefined}
         id={`${dropdownBaseId}-${props._index}`}
         type="button"
@@ -384,7 +415,6 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
         })}
         {...metaAttribute({ name: MetaConstants.ActionListItem, testID: props.testID })}
         onMouseDown={() => {
-          setShouldIgnoreBlur(true);
           // We want to keep focus on Dropdown's trigger while option is being clicked
           // So We set this flag that ignores the blur animation to avoid the flicker between focus out + focus in
           setShouldIgnoreBlurAnimation(true);
@@ -411,6 +441,7 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
           leading={props.leading}
           trailing={props.trailing}
           title={props.title}
+          titleSuffix={props.titleSuffix}
           isSelected={isSelected}
         />
       </StyledActionListItem>
@@ -423,12 +454,12 @@ const ActionListItem = assignWithoutSideEffects(React.memo(_ActionListItem), {
   displayName: componentIds.ActionListItem,
 });
 
+export type { ActionListItemProps, ActionListSectionProps };
 export {
   ActionListItem,
-  ActionListItemProps,
   ActionListItemIcon,
   ActionListItemText,
+  ActionListItemBadge,
+  ActionListItemBadgeGroup,
   ActionListSection,
-  ActionListSectionProps,
-  ActionListSectionDivider,
 };

@@ -226,4 +226,5 @@ const ProgressBar = ({
   );
 };
 
-export { ProgressBar, ProgressBarProps, ProgressBarVariant };
+export type { ProgressBarProps, ProgressBarVariant };
+export { ProgressBar };

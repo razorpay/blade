@@ -108,4 +108,5 @@ const Accordion = ({
   );
 };
 
-export { AccordionProps, Accordion };
+export type { AccordionProps };
+export { Accordion };

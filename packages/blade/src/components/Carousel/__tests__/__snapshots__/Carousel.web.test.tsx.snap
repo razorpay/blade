@@ -1,40 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
-.c8 {
+.c9 {
   border: none;
   cursor: pointer;
   padding: 0px;
   border-radius: 9999px;
   background-color: hsla(214,18%,69%,1);
   width: 18px;
-  height: 6px;
-  -webkit-transition-property: width;
-  transition-property: width;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c8:before {
-  content: "";
-  padding: 10px;
-  padding-top: 20px;
-}
-
-.c8:focus {
-  outline: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-}
-
-.c9 {
-  border: none;
-  cursor: pointer;
-  padding: 0px;
-  border-radius: 9999px;
-  background-color: hsla(214,18%,69%,0.64);
-  width: 6px;
   height: 6px;
   -webkit-transition-property: width;
   transition-property: width;
@@ -51,6 +24,33 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
 }
 
 .c9:focus {
+  outline: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+}
+
+.c10 {
+  border: none;
+  cursor: pointer;
+  padding: 0px;
+  border-radius: 9999px;
+  background-color: hsla(214,18%,69%,0.64);
+  width: 6px;
+  height: 6px;
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 400ms;
+  transition-duration: 400ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c10:before {
+  content: "";
+  padding: 10px;
+  padding-top: 20px;
+}
+
+.c10:focus {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
@@ -95,6 +95,10 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
 }
 
 .c5 {
+  min-width: 0px;
+}
+
+.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -107,7 +111,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   gap: 12px;
 }
 
-.c7 {
+.c8 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -118,7 +122,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   gap: 4px;
 }
 
-.c6 {
+.c7 {
   cursor: pointer;
   background: transparent;
   border: none;
@@ -153,13 +157,13 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   box-shadow: 0 12px 16px -4px hsla(217,56%,17%,0.08),0 4px 6px -2px hsla(217,56%,17%,0.03);
 }
 
-.c6:hover {
+.c7:hover {
   color: hsla(216,33%,29%,1);
   border-color: hsla(216,19%,89%,1);
   background-color: hsla(220,27%,98%,1);
 }
 
-.c6:focus {
+.c7:focus {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   color: hsla(216,33%,29%,1);
@@ -167,7 +171,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   background-color: hsla(220,30%,96%,1);
 }
 
-.c6:active {
+.c7:active {
   color: hsla(216,33%,29%,1);
   border-color: hsla(216,19%,89%,1);
   background-color: hsla(214,21%,94%,1);
@@ -317,15 +321,19 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
             </p>
           </div>
         </div>
+        <div
+          class="c5"
+          data-blade-component="base-box"
+        />
       </div>
     </div>
     <div
-      class="c5"
+      class="c6"
       data-blade-component="box"
     >
       <button
         aria-label="Previous Slide"
-        class="c6"
+        class="c7"
         data-blade-component="NavigationButton"
       >
         <svg
@@ -348,7 +356,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
       </button>
       <div
         aria-label="Slides"
-        class="c7"
+        class="c8"
         data-blade-component="base-box"
         role="tablist"
       >
@@ -356,7 +364,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
           aria-controls="carousel-39-carousel-item-0"
           aria-label="Slide 1"
           aria-selected="true"
-          class="c8"
+          class="c9"
           data-blade-component="carousel-indicator-button"
           role="tab"
         />
@@ -364,14 +372,14 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
           aria-controls="carousel-39-carousel-item-1"
           aria-label="Slide 2"
           aria-selected="false"
-          class="c9"
+          class="c10"
           data-blade-component="carousel-indicator-button"
           role="tab"
         />
       </div>
       <button
         aria-label="Next Slide"
-        class="c6"
+        class="c7"
         data-blade-component="NavigationButton"
       >
         <svg
@@ -1111,40 +1119,13 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
 `;
 
 exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
-.c9 {
+.c10 {
   border: none;
   cursor: pointer;
   padding: 0px;
   border-radius: 9999px;
   background-color: hsla(214,18%,69%,1);
   width: 18px;
-  height: 6px;
-  -webkit-transition-property: width;
-  transition-property: width;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c9:before {
-  content: "";
-  padding: 10px;
-  padding-top: 20px;
-}
-
-.c9:focus {
-  outline: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-}
-
-.c10 {
-  border: none;
-  cursor: pointer;
-  padding: 0px;
-  border-radius: 9999px;
-  background-color: hsla(214,18%,69%,0.64);
-  width: 6px;
   height: 6px;
   -webkit-transition-property: width;
   transition-property: width;
@@ -1161,6 +1142,33 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
 }
 
 .c10:focus {
+  outline: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+}
+
+.c11 {
+  border: none;
+  cursor: pointer;
+  padding: 0px;
+  border-radius: 9999px;
+  background-color: hsla(214,18%,69%,0.64);
+  width: 6px;
+  height: 6px;
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 400ms;
+  transition-duration: 400ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c11:before {
+  content: "";
+  padding: 10px;
+  padding-top: 20px;
+}
+
+.c11:focus {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
@@ -1209,6 +1217,10 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
 }
 
 .c6 {
+  min-width: 0px;
+}
+
+.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1221,7 +1233,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
   gap: 12px;
 }
 
-.c8 {
+.c9 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1232,7 +1244,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
   gap: 4px;
 }
 
-.c7 {
+.c8 {
   cursor: pointer;
   background: transparent;
   border: none;
@@ -1267,13 +1279,13 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
   box-shadow: 0 12px 16px -4px hsla(217,56%,17%,0.08),0 4px 6px -2px hsla(217,56%,17%,0.03);
 }
 
-.c7:hover {
+.c8:hover {
   color: hsla(216,33%,29%,1);
   border-color: hsla(216,19%,89%,1);
   background-color: hsla(220,27%,98%,1);
 }
 
-.c7:focus {
+.c8:focus {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   color: hsla(216,33%,29%,1);
@@ -1281,7 +1293,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
   background-color: hsla(220,30%,96%,1);
 }
 
-.c7:active {
+.c8:active {
   color: hsla(216,33%,29%,1);
   border-color: hsla(216,19%,89%,1);
   background-color: hsla(214,21%,94%,1);
@@ -1418,15 +1430,19 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
             </p>
           </div>
         </div>
+        <div
+          class="c6"
+          data-blade-component="base-box"
+        />
       </div>
     </div>
     <div
-      class="c6"
+      class="c7"
       data-blade-component="box"
     >
       <button
         aria-label="Previous Slide"
-        class="c7"
+        class="c8"
         data-blade-component="NavigationButton"
       >
         <svg
@@ -1449,7 +1465,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
       </button>
       <div
         aria-label="Slides"
-        class="c8"
+        class="c9"
         data-blade-component="base-box"
         role="tablist"
       >
@@ -1457,7 +1473,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
           aria-controls="carousel-36-carousel-item-0"
           aria-label="Slide 1"
           aria-selected="true"
-          class="c9"
+          class="c10"
           data-blade-component="carousel-indicator-button"
           role="tab"
         />
@@ -1465,7 +1481,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
           aria-controls="carousel-36-carousel-item-1"
           aria-label="Slide 2"
           aria-selected="false"
-          class="c10"
+          class="c11"
           data-blade-component="carousel-indicator-button"
           role="tab"
         />
@@ -1473,14 +1489,14 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
           aria-controls="carousel-36-carousel-item-2"
           aria-label="Slide 3"
           aria-selected="false"
-          class="c10"
+          class="c11"
           data-blade-component="carousel-indicator-button"
           role="tab"
         />
       </div>
       <button
         aria-label="Next Slide"
-        class="c7"
+        class="c8"
         data-blade-component="NavigationButton"
       >
         <svg
@@ -1507,40 +1523,13 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
 `;
 
 exports[`Carousel Snapshots should render with showOverlay 1`] = `
-.c8 {
+.c9 {
   border: none;
   cursor: pointer;
   padding: 0px;
   border-radius: 9999px;
   background-color: hsla(214,18%,69%,1);
   width: 18px;
-  height: 6px;
-  -webkit-transition-property: width;
-  transition-property: width;
-  -webkit-transition-duration: 400ms;
-  transition-duration: 400ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c8:before {
-  content: "";
-  padding: 10px;
-  padding-top: 20px;
-}
-
-.c8:focus {
-  outline: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-}
-
-.c9 {
-  border: none;
-  cursor: pointer;
-  padding: 0px;
-  border-radius: 9999px;
-  background-color: hsla(214,18%,69%,0.64);
-  width: 6px;
   height: 6px;
   -webkit-transition-property: width;
   transition-property: width;
@@ -1557,6 +1546,33 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
 }
 
 .c9:focus {
+  outline: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+}
+
+.c10 {
+  border: none;
+  cursor: pointer;
+  padding: 0px;
+  border-radius: 9999px;
+  background-color: hsla(214,18%,69%,0.64);
+  width: 6px;
+  height: 6px;
+  -webkit-transition-property: width;
+  transition-property: width;
+  -webkit-transition-duration: 400ms;
+  transition-duration: 400ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c10:before {
+  content: "";
+  padding: 10px;
+  padding-top: 20px;
+}
+
+.c10:focus {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
@@ -1601,6 +1617,10 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
 }
 
 .c5 {
+  min-width: 0px;
+}
+
+.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1613,7 +1633,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   gap: 12px;
 }
 
-.c7 {
+.c8 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1624,7 +1644,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   gap: 4px;
 }
 
-.c6 {
+.c7 {
   cursor: pointer;
   background: transparent;
   border: none;
@@ -1659,13 +1679,13 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   box-shadow: 0 12px 16px -4px hsla(217,56%,17%,0.08),0 4px 6px -2px hsla(217,56%,17%,0.03);
 }
 
-.c6:hover {
+.c7:hover {
   color: hsla(216,33%,29%,1);
   border-color: hsla(216,19%,89%,1);
   background-color: hsla(220,27%,98%,1);
 }
 
-.c6:focus {
+.c7:focus {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   color: hsla(216,33%,29%,1);
@@ -1673,7 +1693,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   background-color: hsla(220,30%,96%,1);
 }
 
-.c6:active {
+.c7:active {
   color: hsla(216,33%,29%,1);
   border-color: hsla(216,19%,89%,1);
   background-color: hsla(214,21%,94%,1);
@@ -1840,15 +1860,19 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
             </p>
           </div>
         </div>
+        <div
+          class="c5"
+          data-blade-component="base-box"
+        />
       </div>
     </div>
     <div
-      class="c5"
+      class="c6"
       data-blade-component="box"
     >
       <button
         aria-label="Previous Slide"
-        class="c6"
+        class="c7"
         data-blade-component="NavigationButton"
       >
         <svg
@@ -1871,7 +1895,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
       </button>
       <div
         aria-label="Slides"
-        class="c7"
+        class="c8"
         data-blade-component="base-box"
         role="tablist"
       >
@@ -1879,7 +1903,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
           aria-controls="carousel-37-carousel-item-0"
           aria-label="Slide 1"
           aria-selected="true"
-          class="c8"
+          class="c9"
           data-blade-component="carousel-indicator-button"
           role="tab"
         />
@@ -1887,7 +1911,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
           aria-controls="carousel-37-carousel-item-1"
           aria-label="Slide 2"
           aria-selected="false"
-          class="c9"
+          class="c10"
           data-blade-component="carousel-indicator-button"
           role="tab"
         />
@@ -1895,14 +1919,14 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
           aria-controls="carousel-37-carousel-item-2"
           aria-label="Slide 3"
           aria-selected="false"
-          class="c9"
+          class="c10"
           data-blade-component="carousel-indicator-button"
           role="tab"
         />
       </div>
       <button
         aria-label="Next Slide"
-        class="c6"
+        class="c7"
         data-blade-component="NavigationButton"
       >
         <svg

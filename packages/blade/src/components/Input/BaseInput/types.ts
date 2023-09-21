@@ -1,3 +1,4 @@
+import type React from 'react';
 import type { Dispatch, SetStateAction } from 'react';
 import type { BaseInputProps } from './BaseInput';
 import type { FormInputHandleOnEvent } from '~components/Form';
@@ -5,7 +6,38 @@ import type { ActionStates } from '~tokens/theme/theme';
 import type {
   FormInputHandleOnClickEvent,
   FormInputHandleOnKeyDownEvent,
+  FormInputOnClickEvent,
 } from '~components/Form/FormTypes';
+import type { ContainerElementType } from '~utils/types';
+
+export type InputWrapperRef = React.MutableRefObject<ContainerElementType | null>;
+
+export type BaseInputTagSlotProps = {
+  tags?: BaseInputProps['tags'];
+  renderAs?: BaseInputProps['as'];
+  showAllTags: BaseInputProps['showAllTags'];
+  setFocusOnInput: () => void;
+  setShouldIgnoreBlurAnimation: BaseInputProps['setShouldIgnoreBlurAnimation'];
+  handleOnInputClick: (e?: FormInputOnClickEvent['value']) => void;
+  maxTagRows: BaseInputProps['maxTagRows'];
+  visibleTagsCountRef: React.MutableRefObject<number>;
+  children: React.ReactElement;
+  isDropdownTrigger: BaseInputProps['isDropdownTrigger'];
+  inputWrapperRef: InputWrapperRef;
+  labelPrefix?: string;
+};
+
+export type BaseInputWrapperProps = Pick<
+  BaseInputProps,
+  'isDisabled' | 'validationState' | 'showAllTags' | 'maxTagRows' | 'isDropdownTrigger'
+> & {
+  isFocused?: boolean;
+  isLabelLeftPositioned?: boolean;
+  currentInteraction: keyof ActionStates;
+  isTextArea?: boolean;
+  setShowAllTagsWithAnimation?: (showAllTagsWithAnimation: boolean) => void;
+  children: React.ReactNode;
+};
 
 export type StyledBaseInputProps = {
   handleOnFocus?: FormInputHandleOnEvent;
@@ -21,6 +53,7 @@ export type StyledBaseInputProps = {
   currentInteraction: keyof ActionStates;
   setCurrentInteraction: Dispatch<SetStateAction<keyof ActionStates>>;
   isTextArea?: boolean;
+  hasTags?: boolean;
 } & Pick<
   BaseInputProps,
   | 'as'
@@ -50,5 +83,7 @@ export type StyledBaseInputProps = {
   | 'isPopupExpanded'
   | 'shouldIgnoreBlurAnimation'
   | 'autoCapitalize'
+  | 'isDropdownTrigger'
 >;
+
 export { StyledBaseInput } from './StyledBaseInput.web';

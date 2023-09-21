@@ -115,4 +115,5 @@ const BaseSpinner = ({
   );
 };
 
-export { BaseSpinner, BaseSpinnerProps };
+export type { BaseSpinnerProps };
+export { BaseSpinner };

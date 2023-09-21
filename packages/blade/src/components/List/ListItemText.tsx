@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react';
-import type { TextProps, TextVariant } from '../Typography';
-import { Text } from '../Typography';
 import { useListContext } from './ListContext';
+import type { TextProps, TextVariant } from '~components/Typography';
+import { Text } from '~components/Typography';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { MetaConstants } from '~utils/metaAttribute';
 
@@ -17,4 +17,5 @@ const ListItemText = assignWithoutSideEffects(_ListItemText, {
   componentId: MetaConstants.ListItemText,
 });
 
-export { ListItemText, ListItemTextProps };
+export type { ListItemTextProps };
+export { ListItemText };

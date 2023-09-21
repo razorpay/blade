@@ -81,10 +81,15 @@ const _BottomSheet = ({
 
   // if bottomSheet height is >35% & <50% then set initial snapPoint to 35%
   useIsomorphicLayoutEffect(() => {
-    const height = Dimensions.get('window').height;
-    const middleSnapPoint = snapPoints[1] * height;
-    if (totalHeight > middleSnapPoint) {
-      initialSnapPoint.current = 1;
+    if (bottomSheetAndDropdownGlue?.hasAutoCompleteInBottomSheetHeader) {
+      // In AutoComplete, we want to open BottomSheet with max height so we set this to last index
+      initialSnapPoint.current = 2;
+    } else {
+      const height = Dimensions.get('window').height;
+      const middleSnapPoint = snapPoints[1] * height;
+      if (totalHeight > middleSnapPoint) {
+        initialSnapPoint.current = 1;
+      }
     }
   }, [snapPoints, totalHeight]);
 
