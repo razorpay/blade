@@ -6,11 +6,9 @@ import * as carouselStories from '../../components/Carousel/Carousel.stories';
 import * as checkboxGroupStories from '../../components/Checkbox/CheckboxGroup.stories';
 import * as chipGroupStories from '../../components/Chip/ChipGroup.stories';
 import * as collapsibleStories from '../../components/Collapsible/Collapsible.stories';
-import * as dropdownStories from '../../components/Dropdown/docs/DropdownWithSelect.stories';
 import * as modalStories from '../../components/Modal/docs/SimpleModal.stories';
 import * as progressBarStories from '../../components/ProgressBar/ProgressBar.stories';
 import * as radioStories from '../../components/Radio/Radio.stories';
-import * as selectInputStories from '../../components/Input/SelectInput/SelectInput.stories';
 import * as switchStories from '../../components/Switch/Switch.stories';
 import * as textInputStories from '../../components/Input/TextInput/TextInput.stories';
 import * as otpInputStories from '../../components/Input/OTPInput/OTPInput.stories';
@@ -27,11 +25,9 @@ const includedStories = [
   'HelpTextCheckbox',
   'DefaultSelectedSingle',
   'WithCollapsibleButton',
-  'InternalSelect',
   'SimpleModal',
   'ProgressBarIndeterminate',
   'RequiredRadio',
-  'DefaultSelectInput',
   'DefaultCheckedSwitch',
   'TextInputHelpText',
   'OTPInputHelpText',
@@ -45,11 +41,9 @@ const StoryNameToHeadingMap = {
   HelpTextCheckbox: 'Checkbox',
   DefaultSelectedSingle: 'Chip',
   WithCollapsibleButton: 'Collapsible',
-  InternalSelect: 'Dropdown',
   SimpleModal: 'Modal',
   ProgressBarIndeterminate: 'ProgressBar',
   RequiredRadio: 'Radio',
-  DefaultSelectInput: 'SelectInput',
   DefaultCheckedSwitch: 'Switch',
   TextInputHelpText: 'TextInput',
   OTPInputHelpText: 'OTPInput',
@@ -57,20 +51,19 @@ const StoryNameToHeadingMap = {
 
 const allStories = [];
 allStories.push(...Object.values(composeStories(buttonStories)));
-allStories.push(...Object.values(composeStories(accordionStories)));
-allStories.push(...Object.values(composeStories(bottomSheetStories)));
-allStories.push(...Object.values(composeStories(carouselStories)));
-allStories.push(...Object.values(composeStories(checkboxGroupStories)));
-allStories.push(...Object.values(composeStories(chipGroupStories)));
-allStories.push(...Object.values(composeStories(collapsibleStories)));
-allStories.push(...Object.values(composeStories(dropdownStories)));
-allStories.push(...Object.values(composeStories(modalStories)));
-allStories.push(...Object.values(composeStories(progressBarStories)));
-allStories.push(...Object.values(composeStories(radioStories)));
-allStories.push(...Object.values(composeStories(selectInputStories)));
-allStories.push(...Object.values(composeStories(switchStories)));
 allStories.push(...Object.values(composeStories(textInputStories)));
 allStories.push(...Object.values(composeStories(otpInputStories)));
+allStories.push(...Object.values(composeStories(checkboxGroupStories)));
+allStories.push(...Object.values(composeStories(radioStories)));
+allStories.push(...Object.values(composeStories(switchStories)));
+allStories.push(...Object.values(composeStories(chipGroupStories)));
+// allStories.push(...Object.values(composeStories(autoComplete)));
+allStories.push(...Object.values(composeStories(accordionStories)));
+allStories.push(...Object.values(composeStories(collapsibleStories)));
+allStories.push(...Object.values(composeStories(modalStories)));
+allStories.push(...Object.values(composeStories(bottomSheetStories)));
+allStories.push(...Object.values(composeStories(carouselStories)));
+allStories.push(...Object.values(composeStories(progressBarStories)));
 
 const filteredstories = allStories.filter((Story) => includedStories.includes(Story.storyName));
 
