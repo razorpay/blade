@@ -1,6 +1,6 @@
 import { useContext, createContext } from 'react';
-import type { UseColorScheme } from '../../utils/useColorScheme';
 import type { Theme } from './';
+import type { UseColorScheme } from '~utils/useColorScheme';
 import type { TypographyPlatforms } from '~tokens/global';
 import { throwBladeError } from '~utils/logger';
 

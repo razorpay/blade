@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import type { IconComponent } from '../../components/Icons';
+import { LinkToStorybook } from './LinkToStorybook';
+
+import type { IconComponent } from '~components/Icons';
 import {
   StampIcon,
   EditIcon,
@@ -8,9 +10,7 @@ import {
   ClockIcon,
   LoaderIcon,
   AlertCircleIcon,
-} from '../../components/Icons';
-
-import { LinkToStorybook } from './LinkToStorybook';
+} from '~components/Icons';
 import { Heading, Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
 import type { BadgeProps } from '~components/Badge';
@@ -396,7 +396,9 @@ const componentData: ComponentStatusData = [
   },
   {
     name: 'AutoComplete',
-    status: 'in-development',
+    status: 'released',
+    releasedIn: '10.9.0',
+    storybookLink: 'Components/Dropdown/With AutoComplete',
     description:
       'AutoComplete Component will allow you to filter Dropdown options as you type ahead in the Input',
   },
@@ -412,7 +414,9 @@ const componentData: ComponentStatusData = [
   },
   {
     name: 'Popover',
-    status: 'in-development',
+    status: 'released',
+    releasedIn: '10.10.0',
+    storybookLink: 'Components/Popover',
     description: 'Used for cases like guided tours',
   },
 ];

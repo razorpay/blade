@@ -173,4 +173,5 @@ const CheckboxGroup = ({
   );
 };
 
-export { CheckboxGroup, CheckboxGroupProps };
+export type { CheckboxGroupProps };
+export { CheckboxGroup };

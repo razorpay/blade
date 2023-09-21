@@ -36,4 +36,5 @@ const ActionListItemAsset = assignWithoutSideEffects(_ActionListItemAsset, {
   componentId: componentIds.ActionListItemAsset,
 });
 
-export { ActionListItemAsset, ActionListItemAssetProps };
+export type { ActionListItemAssetProps };
+export { ActionListItemAsset };

@@ -83,7 +83,7 @@ export default {
   title: 'Components/Icons',
   component: CreditCardIcon, // need to give it some icon component so that storybook can infer props & arg types
   args: {
-    color: 'feedback.icon.neutral.lowContrast',
+    color: 'surface.text.normal.lowContrast',
     size: 'medium',
   },
   argTypes: {
@@ -91,6 +91,10 @@ export default {
       name: 'icon',
       type: 'select',
       options: Object.keys(iconMap),
+    },
+    size: {
+      options: ['small', 'medium', 'large', 'xlarge', '2xlarge'],
+      control: { type: 'select' },
     },
     ...getStyledPropsArgTypes(),
   },

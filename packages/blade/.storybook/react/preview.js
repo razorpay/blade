@@ -126,6 +126,7 @@ const StoryCanvas = styled.div(
       padding: ${
         context.kind.includes('/Dropdown/With Select') ||
         context.kind.includes('/Dropdown/With Button') ||
+        context.kind.includes('/Dropdown/With AutoComplete') ||
         context.kind.includes('/Carousel')
           ? '0rem'
           : '2rem'

@@ -10,8 +10,13 @@
       "~tokens/*": ["src/tokens/*"],
       "~src/*": ["src/*"]
     },
-    // In Blade side we are targetting `.web` types
+    // In Blade side we are targeting `.web` types
     // We can't add both `.native` & `.web` at once.
-    "moduleSuffixes": [".all", ".web", ""]
+    "moduleSuffixes": [".all", ".web", ""],
+    "plugins": [
+      // TODO: Replace ttypescript when official compiler transforms are supported https://github.com/microsoft/TypeScript/issues/54276
+      // Transform paths in output .d.ts files
+      { "transform": "typescript-transform-paths", "afterDeclarations": true }
+    ]
   }
 }

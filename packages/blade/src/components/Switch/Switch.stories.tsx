@@ -3,9 +3,9 @@
 import { Title } from '@storybook/addon-docs';
 import type { ComponentStory, Meta } from '@storybook/react';
 import React from 'react';
-import { Text } from '../Typography';
 import type { SwitchProps } from './';
 import { Switch as SwitchComponent } from './';
+import { Text } from '~components/Typography';
 import { BaseBox } from '~components/Box/BaseBox';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';

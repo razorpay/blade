@@ -12,11 +12,12 @@ type InputVisuals = Pick<
 
 const getVisualContainerStyles = (): Pick<
   BaseBoxProps,
-  'display' | 'flexDirection' | 'alignItems'
+  'display' | 'flexDirection' | 'alignItems' | 'alignSelf'
 > => ({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
+  alignSelf: 'center',
 });
 
 const getPrefixStyles = ({
@@ -166,11 +167,13 @@ export const BaseInputVisuals = ({
 
   if (hasTrailingVisuals) {
     return (
-      <BaseBox {...getVisualContainerStyles()}>
+      <BaseBox alignSelf="stretch" alignItems="stretch" {...getVisualContainerStyles()}>
         {hasInteractionElement ? (
           <BaseBox
             {...getInteractionElementStyles({ hasTrailingIcon, hasInteractionElement, hasSuffix })}
             display="flex"
+            alignItems="stretch"
+            alignSelf="stretch"
           >
             {interactionElement}
           </BaseBox>

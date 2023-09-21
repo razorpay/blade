@@ -23,4 +23,5 @@ const useAccordion = (): AccordionContextState => {
   return accordionContext!;
 };
 
-export { AccordionContext, useAccordion, AccordionContextState };
+export type { AccordionContextState };
+export { AccordionContext, useAccordion };

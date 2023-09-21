@@ -1,7 +1,7 @@
 {
   "name": "@razorpay/blade",
   "description": "The Design System that powers Razorpay",
-  "version": "10.6.0",
+  "version": "10.12.0",
   "license": "MIT",
   "engines": {
     "node": ">=18.12.1"
@@ -78,8 +78,8 @@
     "build:clean": "rm -rf build",
     "build:generate-types": "run-s types:generate-types:*",
     "build:copy-declarations": "run-s types:copy-declarations:*",
-    "types:generate-types:web": "tsc -p ./tsconfig-generate-types.web.json",
-    "types:generate-types:native": "tsc -p ./tsconfig-generate-types.native.json",
+    "types:generate-types:web": "ttsc -p ./tsconfig-generate-types.web.json",
+    "types:generate-types:native": "ttsc -p ./tsconfig-generate-types.native.json",
     "types:typecheck:web": "tsc -p ./tsconfig-typecheck.web.json",
     "types:typecheck:native": "tsc -p ./tsconfig-typecheck.native.json",
     "types:copy-declarations:web": "copyfiles -u 1 \"src/**/*.d.ts\" build/types/web",
@@ -139,10 +139,10 @@
     "@react-native-async-storage/async-storage": "1.19.1",
     "@react-native-community/datetimepicker": "5.0.1",
     "@react-native-community/slider": "4.1.12",
-    "@rollup/plugin-alias": "3.1.9",
-    "@rollup/plugin-babel": "5.3.1",
-    "@rollup/plugin-commonjs": "21.1.0",
-    "@rollup/plugin-node-resolve": "13.1.1",
+    "@rollup/plugin-alias": "5.0.0",
+    "@rollup/plugin-babel": "6.0.3",
+    "@rollup/plugin-commonjs": "25.0.4",
+    "@rollup/plugin-node-resolve": "15.2.1",
     "@rollup/plugin-replace": "5.0.2",
     "@size-limit/preset-big-lib": "8.2.4",
     "@storybook/addon-a11y": "6.5.16",
@@ -215,8 +215,8 @@
     "react-native-svg": "12.3.0",
     "react-scripts": "4.0.3",
     "react-test-renderer": "18.2.0",
-    "rollup": "2.61.1",
-    "rollup-plugin-dts": "4.0.1",
+    "rollup": "3.28.1",
+    "rollup-plugin-dts": "5.3.1",
     "rollup-plugin-peer-deps-external": "2.2.4",
     "size-limit": "8.2.4",
     "style-dictionary": "3.7.1",
@@ -224,7 +224,9 @@
     "tsconfig-paths-webpack-plugin": "3.5.2",
     "jsdom-testing-mocks": "1.9.0",
     "postinstall-postinstall": "2.1.0",
-    "react-native-safe-area-context": "3.4.1"
+    "react-native-safe-area-context": "3.4.1",
+    "ttypescript": "1.5.15",
+    "typescript-transform-paths": "3.4.6"
   },
   "peerDependencies": {
     "@gorhom/bottom-sheet": "^4",

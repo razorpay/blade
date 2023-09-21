@@ -104,4 +104,26 @@ describe('<Box />', () => {
     // we just check if the ref value has focus prop to make sure it's not null and has appropriate values loaded
     expect(refHasFocusProp).toBeCalledWith(true);
   });
+
+  it('should accept id prop', () => {
+    const id = 'my-id';
+    const testId = 'box-test-id';
+    const { getByTestId } = renderWithTheme(<Box id={id} testID={testId} />);
+    expect(getByTestId(testId)).toHaveProp('id', id);
+  });
+
+  // https://github.com/razorpay/blade/issues/1624
+  it('should apply borderBottomColor prop to border bottom only', () => {
+    const { toJSON } = renderWithTheme(
+      <Box borderBottomColor="surface.border.normal.lowContrast">I am Visible</Box>,
+    );
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should apply borderColor prop to all borders', () => {
+    const { toJSON } = renderWithTheme(
+      <Box borderColor="surface.border.normal.lowContrast">I am Visible</Box>,
+    );
+    expect(toJSON()).toMatchSnapshot();
+  });
 });

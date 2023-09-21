@@ -1,10 +1,10 @@
 import React from 'react';
-import type { BaseButtonProps } from '../Button/BaseButton/BaseButton';
-import BaseButton from '../Button/BaseButton';
-import { getActionListContainerRole } from '../ActionList/getA11yRoles';
-import type { ButtonProps } from '../Button';
 import { useDropdown } from './useDropdown';
-import { componentIds } from './dropdownUtils';
+import { dropdownComponentIds } from './dropdownComponentIds';
+import BaseButton from '~components/Button/BaseButton';
+import type { ButtonProps } from '~components/Button';
+import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
+import type { BaseButtonProps } from '~components/Button/BaseButton/BaseButton';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 type DropdownButtonProps = ButtonProps & {
@@ -31,7 +31,6 @@ const _DropdownButton = ({
 }: DropdownButtonProps): React.ReactElement => {
   const {
     onTriggerClick,
-    onTriggerBlur,
     onTriggerKeydown,
     dropdownBaseId,
     isOpen,
@@ -71,7 +70,6 @@ const _DropdownButton = ({
       }}
       onBlur={(e) => {
         // With button trigger, there is no "value" as such. It's just clickable items
-        onTriggerBlur?.({ name: undefined, value: undefined });
         // Setting it for web fails it on native typecheck and vice versa
         // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion, @typescript-eslint/no-explicit-any
         onBlur?.(e as any);
@@ -88,7 +86,7 @@ const _DropdownButton = ({
 };
 
 const DropdownButton = assignWithoutSideEffects(_DropdownButton, {
-  componentId: componentIds.triggers.DropdownButton,
+  componentId: dropdownComponentIds.triggers.DropdownButton,
 });
 
 export { DropdownButton };

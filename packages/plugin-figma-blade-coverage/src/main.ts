@@ -27,7 +27,7 @@ type CoverageMetrics = {
 };
 
 const MAIN_FRAME_NODES = ['FRAME', 'SECTION'];
-const NODES_SKIP_FROM_COVERAGE = ['GROUP', 'SECTION', 'VECTOR', 'FRAME', 'ELLIPSE'];
+const NODES_SKIP_FROM_COVERAGE = ['GROUP', 'SECTION', 'VECTOR', 'FRAME', 'ELLIPSE', 'INSTANCE'];
 const nonBladeHighlighterNodes: BaseNode[] = [];
 const bladeCoverageCards: BaseNode[] = [];
 
@@ -238,10 +238,13 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
           } else {
             bladeComponents++;
           }
-        } else if (traversedNode.type === 'INSTANCE') {
-          nonBladeComponents++;
-          highlightNonBladeNode(traversedNode, 'Instance is not a Blade Instance');
-        } else if (traversedNode.type === 'TEXT') {
+          totalLayers++;
+        }
+        // else if (traversedNode.type === 'INSTANCE') {
+        //   nonBladeComponents++;
+        //   highlightNonBladeNode(traversedNode, 'Instance is not a Blade Instance');
+        // }
+        else if (traversedNode.type === 'TEXT') {
           // check if the text is using Blade's text styles
           let isMixedTextStyleOfBlade = false;
           let traversedNodeTextStyleId = '';
@@ -350,6 +353,10 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
               const traversedNodeColorStyleId = traversedNode.strokeStyleId.split(',')[0];
               if (BLADE_BOX_BORDER_COLOR_STYLE_IDS.includes(traversedNodeColorStyleId ?? '')) {
                 bladeColorStyles++;
+                highlightNonBladeNode(
+                  traversedNode,
+                  'Check if you really need rectangle otherwise use Card',
+                );
               } else {
                 nonBladeColorStyles++;
                 highlightNonBladeNode(
@@ -363,6 +370,10 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
               const traversedNodeFillStyleId = traversedNode.fillStyleId.split(',')[0];
               if (BLADE_BOX_BACKGROUND_COLOR_STYLE_IDS.includes(traversedNodeFillStyleId ?? '')) {
                 bladeColorStyles++;
+                highlightNonBladeNode(
+                  traversedNode,
+                  'Check if you really need rectangle otherwise use Card',
+                );
               } else {
                 nonBladeColorStyles++;
                 highlightNonBladeNode(
@@ -371,11 +382,13 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
                 );
               }
             }
+          } else {
+            highlightNonBladeNode(traversedNode, 'Maybe an unnecessary Box');
           }
         }
 
         if (
-          ![...NODES_SKIP_FROM_COVERAGE, 'INSTANCE', 'TEXT', 'LINE', 'RECTANGLE'].includes(
+          ![...NODES_SKIP_FROM_COVERAGE, 'TEXT', 'LINE', 'RECTANGLE'].includes(
             traversedNode.type,
           ) &&
           getParentNode(traversedNode)?.type !== 'PAGE'

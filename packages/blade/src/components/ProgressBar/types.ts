@@ -13,4 +13,4 @@ type ProgressBarFilledProps = {
   isIndeterminate: boolean;
 };
 
-export { ProgressBarFilledProps };
+export type { ProgressBarFilledProps };
