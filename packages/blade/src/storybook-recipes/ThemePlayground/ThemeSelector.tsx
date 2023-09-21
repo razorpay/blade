@@ -113,7 +113,7 @@ const ThemeSelector = ({
     >
       <Card surfaceLevel={3} elevation="none" height="100%">
         <CardBody>
-          <Box width={isDesktop ? '400px' : '100%'} marginTop="spacing.6" overflow="scroll">
+          <Box width={isDesktop ? '400px' : '100%'} marginTop="spacing.6">
             <Heading>Customise theme</Heading>
             <Box marginTop="spacing.8" />
             <Box display="flex" flexDirection="row" gap="spacing.2" flexWrap="wrap">

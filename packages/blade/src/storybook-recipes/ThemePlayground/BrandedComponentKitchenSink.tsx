@@ -12,6 +12,7 @@ import * as radioStories from '../../components/Radio/Radio.stories';
 import * as switchStories from '../../components/Switch/Switch.stories';
 import * as textInputStories from '../../components/Input/TextInput/TextInput.stories';
 import * as otpInputStories from '../../components/Input/OTPInput/OTPInput.stories';
+import * as autoCompleteStories from '../../components/Input/DropdownInputTriggers/AutoComplete.stories';
 import { Card, CardBody } from '~components/Card';
 import { Box } from '~components/Box';
 import { Heading } from '~components/Typography';
@@ -31,6 +32,7 @@ const includedStories = [
   'DefaultCheckedSwitch',
   'TextInputHelpText',
   'OTPInputHelpText',
+  'InternalAutoCompleteControlled',
 ];
 
 const StoryNameToHeadingMap = {
@@ -47,6 +49,7 @@ const StoryNameToHeadingMap = {
   DefaultCheckedSwitch: 'Switch',
   TextInputHelpText: 'TextInput',
   OTPInputHelpText: 'OTPInput',
+  InternalAutoCompleteControlled: 'AutoComplete',
 };
 
 const allStories = [];
@@ -57,7 +60,7 @@ allStories.push(...Object.values(composeStories(checkboxGroupStories)));
 allStories.push(...Object.values(composeStories(radioStories)));
 allStories.push(...Object.values(composeStories(switchStories)));
 allStories.push(...Object.values(composeStories(chipGroupStories)));
-// allStories.push(...Object.values(composeStories(autoComplete)));
+allStories.push(...Object.values(composeStories(autoCompleteStories)));
 allStories.push(...Object.values(composeStories(accordionStories)));
 allStories.push(...Object.values(composeStories(collapsibleStories)));
 allStories.push(...Object.values(composeStories(modalStories)));
