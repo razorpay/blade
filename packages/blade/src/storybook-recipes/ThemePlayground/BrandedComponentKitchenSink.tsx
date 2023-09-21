@@ -76,7 +76,7 @@ const filteredstories = allStories.filter((Story) => includedStories.includes(St
 
 const BrandedComponentKitchenSink = (): React.ReactElement => {
   return (
-    <Card elevation="lowRaised">
+    <Card surfaceLevel={3} elevation="lowRaised">
       <CardBody>
         {filteredstories.map((Story, index) => {
           return (
