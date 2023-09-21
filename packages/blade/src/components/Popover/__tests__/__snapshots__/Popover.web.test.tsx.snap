@@ -44,8 +44,121 @@ exports[`<Popover /> should render 1`] = `
   padding: 4px;
   top: 4px;
   right: 4px;
-  background-color: white;
   border-radius: 9999px;
+}
+
+.c7 backgroundColor action background primary {
+  default: hsla(0,0%,100%,1);
+  hover: hsla(216,6%,94%,1);
+  focus: hsla(216,4%,89%,1);
+  active: hsla(216,4%,89%,1);
+  disabled: hsla(210,6%,94%,0.18);
+}
+
+.c7 backgroundColor action background secondary {
+  default: hsla(214,15%,18%,0);
+  hover: hsla(210,6%,94%,0.18);
+  focus: hsla(210,6%,94%,0.32);
+  active: hsla(210,6%,94%,0.32);
+  disabled: hsla(214,15%,18%,0);
+}
+
+.c7 backgroundColor action background tertiary {
+  default: hsla(210,6%,94%,0.09);
+  hover: hsla(210,6%,94%,0.18);
+  focus: hsla(210,6%,94%,0.32);
+  active: hsla(210,6%,94%,0.32);
+  disabled: hsla(210,6%,94%,0.09);
+}
+
+.c7 backgroundColor action border primary {
+  default: hsla(0,0%,100%,1);
+  hover: hsla(216,6%,94%,1);
+  focus: hsla(216,4%,89%,1);
+  active: hsla(216,4%,89%,1);
+  disabled: hsla(210,6%,94%,0.18);
+}
+
+.c7 backgroundColor action border secondary {
+  default: hsla(0,0%,100%,1);
+  hover: hsla(0,0%,100%,1);
+  focus: hsla(0,0%,100%,1);
+  active: hsla(0,0%,100%,1);
+  disabled: hsla(210,6%,94%,0.32);
+}
+
+.c7 backgroundColor action border tertiary {
+  default: hsla(214,15%,18%,0);
+  hover: hsla(214,15%,18%,0);
+  focus: hsla(214,15%,18%,0);
+  active: hsla(214,15%,18%,0);
+  disabled: hsla(214,15%,18%,0);
+}
+
+.c7 backgroundColor action text primary {
+  default: hsla(213,89%,56%,1);
+  hover: hsla(213,89%,56%,1);
+  focus: hsla(213,89%,56%,1);
+  active: hsla(213,89%,56%,1);
+  disabled: hsla(210,6%,94%,0.32);
+}
+
+.c7 backgroundColor action text secondary {
+  default: hsla(0,0%,100%,1);
+  hover: hsla(0,0%,100%,1);
+  focus: hsla(0,0%,100%,1);
+  active: hsla(0,0%,100%,1);
+  disabled: hsla(210,6%,94%,0.32);
+}
+
+.c7 backgroundColor action text tertiary {
+  default: hsla(0,0%,100%,1);
+  hover: hsla(0,0%,100%,1);
+  focus: hsla(0,0%,100%,1);
+  active: hsla(0,0%,100%,1);
+  disabled: hsla(210,6%,94%,0.32);
+}
+
+.c7 backgroundColor action text link {
+  default: hsla(0,0%,100%,1);
+  hover: hsla(216,4%,89%,1);
+  focus: hsla(214,7%,81%,1);
+  active: hsla(214,7%,81%,1);
+  disabled: hsla(210,6%,94%,0.32);
+  visited: hsla(267,100%,83%,1);
+}
+
+.c7 backgroundColor action icon primary {
+  default: hsla(213,89%,56%,1);
+  hover: hsla(213,89%,56%,1);
+  focus: hsla(213,89%,56%,1);
+  active: hsla(213,89%,56%,1);
+  disabled: hsla(210,6%,94%,0.32);
+}
+
+.c7 backgroundColor action icon secondary {
+  default: hsla(0,0%,100%,1);
+  hover: hsla(0,0%,100%,1);
+  focus: hsla(0,0%,100%,1);
+  active: hsla(0,0%,100%,1);
+  disabled: hsla(210,6%,94%,0.32);
+}
+
+.c7 backgroundColor action icon tertiary {
+  default: hsla(0,0%,100%,1);
+  hover: hsla(0,0%,100%,1);
+  focus: hsla(0,0%,100%,1);
+  active: hsla(0,0%,100%,1);
+  disabled: hsla(210,6%,94%,0.32);
+}
+
+.c7 backgroundColor action icon link {
+  default: hsla(0,0%,100%,1);
+  hover: hsla(216,4%,89%,1);
+  focus: hsla(214,7%,81%,1);
+  active: hsla(214,7%,81%,1);
+  disabled: hsla(210,6%,94%,0.32);
+  visited: hsla(267,100%,83%,1);
 }
 
 .c5 {
@@ -384,8 +497,121 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
   padding: 4px;
   top: 4px;
   right: 4px;
-  background-color: white;
   border-radius: 9999px;
+}
+
+.c7 backgroundColor action background primary {
+  default: hsla(0,0%,100%,1);
+  hover: hsla(216,6%,94%,1);
+  focus: hsla(216,4%,89%,1);
+  active: hsla(216,4%,89%,1);
+  disabled: hsla(210,6%,94%,0.18);
+}
+
+.c7 backgroundColor action background secondary {
+  default: hsla(214,15%,18%,0);
+  hover: hsla(210,6%,94%,0.18);
+  focus: hsla(210,6%,94%,0.32);
+  active: hsla(210,6%,94%,0.32);
+  disabled: hsla(214,15%,18%,0);
+}
+
+.c7 backgroundColor action background tertiary {
+  default: hsla(210,6%,94%,0.09);
+  hover: hsla(210,6%,94%,0.18);
+  focus: hsla(210,6%,94%,0.32);
+  active: hsla(210,6%,94%,0.32);
+  disabled: hsla(210,6%,94%,0.09);
+}
+
+.c7 backgroundColor action border primary {
+  default: hsla(0,0%,100%,1);
+  hover: hsla(216,6%,94%,1);
+  focus: hsla(216,4%,89%,1);
+  active: hsla(216,4%,89%,1);
+  disabled: hsla(210,6%,94%,0.18);
+}
+
+.c7 backgroundColor action border secondary {
+  default: hsla(0,0%,100%,1);
+  hover: hsla(0,0%,100%,1);
+  focus: hsla(0,0%,100%,1);
+  active: hsla(0,0%,100%,1);
+  disabled: hsla(210,6%,94%,0.32);
+}
+
+.c7 backgroundColor action border tertiary {
+  default: hsla(214,15%,18%,0);
+  hover: hsla(214,15%,18%,0);
+  focus: hsla(214,15%,18%,0);
+  active: hsla(214,15%,18%,0);
+  disabled: hsla(214,15%,18%,0);
+}
+
+.c7 backgroundColor action text primary {
+  default: hsla(213,89%,56%,1);
+  hover: hsla(213,89%,56%,1);
+  focus: hsla(213,89%,56%,1);
+  active: hsla(213,89%,56%,1);
+  disabled: hsla(210,6%,94%,0.32);
+}
+
+.c7 backgroundColor action text secondary {
+  default: hsla(0,0%,100%,1);
+  hover: hsla(0,0%,100%,1);
+  focus: hsla(0,0%,100%,1);
+  active: hsla(0,0%,100%,1);
+  disabled: hsla(210,6%,94%,0.32);
+}
+
+.c7 backgroundColor action text tertiary {
+  default: hsla(0,0%,100%,1);
+  hover: hsla(0,0%,100%,1);
+  focus: hsla(0,0%,100%,1);
+  active: hsla(0,0%,100%,1);
+  disabled: hsla(210,6%,94%,0.32);
+}
+
+.c7 backgroundColor action text link {
+  default: hsla(0,0%,100%,1);
+  hover: hsla(216,4%,89%,1);
+  focus: hsla(214,7%,81%,1);
+  active: hsla(214,7%,81%,1);
+  disabled: hsla(210,6%,94%,0.32);
+  visited: hsla(267,100%,83%,1);
+}
+
+.c7 backgroundColor action icon primary {
+  default: hsla(213,89%,56%,1);
+  hover: hsla(213,89%,56%,1);
+  focus: hsla(213,89%,56%,1);
+  active: hsla(213,89%,56%,1);
+  disabled: hsla(210,6%,94%,0.32);
+}
+
+.c7 backgroundColor action icon secondary {
+  default: hsla(0,0%,100%,1);
+  hover: hsla(0,0%,100%,1);
+  focus: hsla(0,0%,100%,1);
+  active: hsla(0,0%,100%,1);
+  disabled: hsla(210,6%,94%,0.32);
+}
+
+.c7 backgroundColor action icon tertiary {
+  default: hsla(0,0%,100%,1);
+  hover: hsla(0,0%,100%,1);
+  focus: hsla(0,0%,100%,1);
+  active: hsla(0,0%,100%,1);
+  disabled: hsla(210,6%,94%,0.32);
+}
+
+.c7 backgroundColor action icon link {
+  default: hsla(0,0%,100%,1);
+  hover: hsla(216,4%,89%,1);
+  focus: hsla(214,7%,81%,1);
+  active: hsla(214,7%,81%,1);
+  disabled: hsla(210,6%,94%,0.32);
+  visited: hsla(267,100%,83%,1);
 }
 
 .c5 {
