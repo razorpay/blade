@@ -1,6 +1,7 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import React from 'react';
+import { SelectInput } from '../DropdownInputTriggers';
 import type { OTPInputProps } from './OTPInput';
 import { OTPInput as OTPInputComponent } from './OTPInput';
 import { Sandbox } from '~utils/storybook/Sandbox';
@@ -10,7 +11,6 @@ import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import { Dropdown, DropdownOverlay } from '~components/Dropdown';
 import { ActionList, ActionListItem } from '~components/ActionList';
-import { SelectInput } from '../DropdownInputTriggers';
 
 const propsCategory = {
   BASE_PROPS: 'OTPInput Props',
