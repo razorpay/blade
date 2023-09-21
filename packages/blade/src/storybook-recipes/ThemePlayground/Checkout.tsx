@@ -27,8 +27,8 @@ const MerchantAvatar = styled.img(() => ({
 
 const Checkout = (): React.ReactElement => {
   return (
-    <Box>
-      <Card surfaceLevel={2} elevation="lowRaised" padding="spacing.0" width="375px" height="600px">
+    <Box maxWidth="375px">
+      <Card surfaceLevel={2} elevation="lowRaised" padding="spacing.0" height="600px">
         <CardBody>
           <Box overflow="hidden">
             <Box>
