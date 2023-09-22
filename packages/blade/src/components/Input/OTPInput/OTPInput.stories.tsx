@@ -1,7 +1,7 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import React from 'react';
-import { SelectInput } from '../SelectInput';
+import { SelectInput } from '../DropdownInputTriggers';
 import type { OTPInputProps } from './OTPInput';
 import { OTPInput as OTPInputComponent } from './OTPInput';
 import { Sandbox } from '~utils/storybook/Sandbox';

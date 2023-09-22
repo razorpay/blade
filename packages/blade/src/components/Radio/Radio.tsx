@@ -23,7 +23,7 @@ type RadioProps = {
   /**
    * Sets the label text of the Radio
    */
-  children: StringChildrenType;
+  children?: StringChildrenType;
   /**
    * Help text for the Radio
    */
@@ -119,15 +119,17 @@ const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
               isDisabled={_isDisabled}
               isNegative={hasError}
             />
-            <SelectorTitle size={_size} isDisabled={_isDisabled}>
-              {children}
-            </SelectorTitle>
+            {children ? (
+              <SelectorTitle size={_size} isDisabled={_isDisabled}>
+                {children}
+              </SelectorTitle>
+            ) : null}
           </BaseBox>
-          <BaseBox marginLeft={isSmall ? 'spacing.6' : 'spacing.7'}>
-            {showHelpText && (
+          {showHelpText && (
+            <BaseBox marginLeft={isSmall ? 'spacing.6' : 'spacing.7'}>
               <SelectorSupportText id={ids?.helpTextId}>{helpText}</SelectorSupportText>
-            )}
-          </BaseBox>
+            </BaseBox>
+          )}
         </BaseBox>
       </SelectorLabel>
     </BaseBox>

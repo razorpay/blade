@@ -179,11 +179,12 @@ const Card = ({
     <CardProvider>
       <CardRoot
         as={as}
+        display={'block' as never}
+        borderRadius="medium"
         onMouseEnter={onHover as never}
         shouldScaleOnHover={shouldScaleOnHover}
         isSelected={isSelected}
         isFocused={isFocused}
-        borderRadius="medium"
         // on react native we need to pass onClick to root, because we don't need the LinkOverlay in RN
         onClick={isReactNative() ? onClick : undefined}
         width={width}

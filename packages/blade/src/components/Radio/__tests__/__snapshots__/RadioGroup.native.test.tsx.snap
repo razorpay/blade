@@ -348,16 +348,6 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                       Apple
                     </Text>
                   </View>
-                  <View
-                    data-blade-component="base-box"
-                    style={
-                      [
-                        {
-                          "marginLeft": 24,
-                        },
-                      ]
-                    }
-                  />
                 </View>
               </View>
             </View>
@@ -526,16 +516,6 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                       Mango
                     </Text>
                   </View>
-                  <View
-                    data-blade-component="base-box"
-                    style={
-                      [
-                        {
-                          "marginLeft": 24,
-                        },
-                      ]
-                    }
-                  />
                 </View>
               </View>
             </View>
@@ -704,16 +684,6 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                       Orange
                     </Text>
                   </View>
-                  <View
-                    data-blade-component="base-box"
-                    style={
-                      [
-                        {
-                          "marginLeft": 24,
-                        },
-                      ]
-                    }
-                  />
                 </View>
               </View>
             </View>
@@ -1130,16 +1100,6 @@ exports[`<RadioGroup /> should render with label 1`] = `
                       Apple
                     </Text>
                   </View>
-                  <View
-                    data-blade-component="base-box"
-                    style={
-                      [
-                        {
-                          "marginLeft": 24,
-                        },
-                      ]
-                    }
-                  />
                 </View>
               </View>
             </View>
@@ -1308,16 +1268,6 @@ exports[`<RadioGroup /> should render with label 1`] = `
                       Mango
                     </Text>
                   </View>
-                  <View
-                    data-blade-component="base-box"
-                    style={
-                      [
-                        {
-                          "marginLeft": 24,
-                        },
-                      ]
-                    }
-                  />
                 </View>
               </View>
             </View>
@@ -1486,16 +1436,6 @@ exports[`<RadioGroup /> should render with label 1`] = `
                       Orange
                     </Text>
                   </View>
-                  <View
-                    data-blade-component="base-box"
-                    style={
-                      [
-                        {
-                          "marginLeft": 24,
-                        },
-                      ]
-                    }
-                  />
                 </View>
               </View>
             </View>
