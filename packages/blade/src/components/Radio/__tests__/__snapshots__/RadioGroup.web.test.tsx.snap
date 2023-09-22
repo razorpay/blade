@@ -90,14 +90,10 @@ exports[`<RadioGroup /> should render with help text 1`] = `
 }
 
 .c12 {
-  margin-left: 24px;
-}
-
-.c13 {
   margin-bottom: 0px;
 }
 
-.c14 {
+.c13 {
   margin-top: 4px;
 }
 
@@ -145,7 +141,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
   padding: 0;
 }
 
-.c15 {
+.c14 {
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.6875rem;
@@ -305,10 +301,6 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                       Apple
                     </div>
                   </div>
-                  <div
-                    class="c12"
-                    data-blade-component="base-box"
-                  />
                 </div>
               </label>
             </div>
@@ -360,16 +352,12 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                       Mango
                     </div>
                   </div>
-                  <div
-                    class="c12"
-                    data-blade-component="base-box"
-                  />
                 </div>
               </label>
             </div>
           </div>
           <div
-            class="c13"
+            class="c12"
             data-blade-component="base-box"
           >
             <div
@@ -415,17 +403,13 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                       Orange
                     </div>
                   </div>
-                  <div
-                    class="c12"
-                    data-blade-component="base-box"
-                  />
                 </div>
               </label>
             </div>
           </div>
         </div>
         <div
-          class="c14"
+          class="c13"
           data-blade-component="base-box"
         >
           <span
@@ -434,7 +418,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
             style="word-break: break-all;"
           >
             <span
-              class="c15"
+              class="c14"
               data-blade-component="base-text"
             >
               Select one
@@ -537,10 +521,6 @@ exports[`<RadioGroup /> should render with label 1`] = `
 }
 
 .c12 {
-  margin-left: 24px;
-}
-
-.c13 {
   margin-bottom: 0px;
 }
 
@@ -733,10 +713,6 @@ exports[`<RadioGroup /> should render with label 1`] = `
                       Apple
                     </div>
                   </div>
-                  <div
-                    class="c12"
-                    data-blade-component="base-box"
-                  />
                 </div>
               </label>
             </div>
@@ -788,16 +764,12 @@ exports[`<RadioGroup /> should render with label 1`] = `
                       Mango
                     </div>
                   </div>
-                  <div
-                    class="c12"
-                    data-blade-component="base-box"
-                  />
                 </div>
               </label>
             </div>
           </div>
           <div
-            class="c13"
+            class="c12"
             data-blade-component="base-box"
           >
             <div
@@ -843,10 +815,6 @@ exports[`<RadioGroup /> should render with label 1`] = `
                       Orange
                     </div>
                   </div>
-                  <div
-                    class="c12"
-                    data-blade-component="base-box"
-                  />
                 </div>
               </label>
             </div>

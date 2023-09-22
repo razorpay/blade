@@ -55,7 +55,7 @@ type RadioGroupProps = {
   /**
    * Renders the label of the radio group
    */
-  label: string;
+  label?: string;
   /**
    * Sets the position of the label
    *
@@ -139,15 +139,17 @@ const RadioGroup = ({
           componentName="radio-group"
           testID={testID}
         >
-          <FormLabel
-            as="span"
-            necessityIndicator={necessityIndicator}
-            position={labelPosition}
-            id={ids.labelId}
-            accessibilityText={accessibilityText && `,${accessibilityText}`}
-          >
-            {label}
-          </FormLabel>
+          {label ? (
+            <FormLabel
+              as="span"
+              necessityIndicator={necessityIndicator}
+              position={labelPosition}
+              id={ids.labelId}
+              accessibilityText={accessibilityText && `,${accessibilityText}`}
+            >
+              {label}
+            </FormLabel>
+          ) : null}
           <BaseBox>
             <BaseBox display="flex" flexDirection="column">
               {React.Children.map(children, (child, index) => {
