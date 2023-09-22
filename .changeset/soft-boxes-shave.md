@@ -4,7 +4,7 @@
 
 feat: support customizing Blade Theme with a single brand color
 
-You can find a detailed documentation [here](https://blade.razorpay.com/?path=/docs/guides-themeing-createtheme--page)
+You can find a detailed documentation [here](https://blade.razorpay.com/?path=/docs/guides-theming-createtheme--page)
 ### Example Usage
     
     ```tsx
