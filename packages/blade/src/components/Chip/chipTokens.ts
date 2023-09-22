@@ -76,8 +76,8 @@ const chipHorizontalPaddingTokens: ChipHorizontalPaddingTokens = {
 
 type FeedbackActionBackgroundColors<
   T extends 'positive' | 'negative'
-> = `feedback.${T}.action.background.${DotNotationColorStringToken<
-  Theme['colors']['feedback'][T]['action']['background']
+> = `feedback.${T}.action.background.primary.${DotNotationColorStringToken<
+  Theme['colors']['feedback'][T]['action']['background']['primary']
 >}`;
 type FeedbackActionBorderColors<
   T extends 'positive' | 'negative'

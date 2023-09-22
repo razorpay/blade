@@ -82,16 +82,13 @@ export type SecondaryFeedbackActionStatesWithContrast = {
 // };
 
 export type FeedbackActions = {
-  background:
-    | Pick<ActionVariantsWithContrast, 'primary'>
-    | SecondaryFeedbackActionStatesWithContrast;
-  border: Pick<ActionVariantsWithContrast, 'primary'> | SecondaryFeedbackActionStatesWithContrast;
-  text:
-    | Pick<ActionVariantsWithContrast, 'link' | 'primary'>
-    | SecondaryFeedbackActionStatesWithContrast;
-  icon:
-    | Pick<ActionVariantsWithContrast, 'link' | 'primary'>
-    | SecondaryFeedbackActionStatesWithContrast;
+  background: Pick<ActionVariantsWithContrast, 'primary'> &
+    SecondaryFeedbackActionStatesWithContrast;
+  border: Pick<ActionVariantsWithContrast, 'primary'> & SecondaryFeedbackActionStatesWithContrast;
+  text: Pick<ActionVariantsWithContrast, 'link' | 'primary'> &
+    SecondaryFeedbackActionStatesWithContrast;
+  icon: Pick<ActionVariantsWithContrast, 'link' | 'primary'> &
+    SecondaryFeedbackActionStatesWithContrast;
 };
 
 export type WhiteColors = {

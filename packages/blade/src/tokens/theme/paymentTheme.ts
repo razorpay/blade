@@ -747,11 +747,26 @@ const colors: ColorsWithModes = {
         action: {
           background: {
             primary: {
-              default: { highContrast: globalColors.chromatic.sapphire[600] },
-              hover: { highContrast: globalColors.chromatic.sapphire[700] },
-              focus: { highContrast: globalColors.chromatic.sapphire[800] },
-              active: { highContrast: globalColors.chromatic.sapphire[800] },
-              disabled: { highContrast: globalColors.chromatic.sapphire[600] },
+              default: {
+                highContrast: globalColors.chromatic.sapphire[600],
+                lowContrast: globalColors.chromatic.sapphire.a50,
+              },
+              hover: {
+                highContrast: globalColors.chromatic.sapphire[700],
+                lowContrast: globalColors.chromatic.sapphire.a100,
+              },
+              focus: {
+                highContrast: globalColors.chromatic.sapphire[800],
+                lowContrast: globalColors.chromatic.sapphire.a200,
+              },
+              active: {
+                highContrast: globalColors.chromatic.sapphire[800],
+                lowContrast: globalColors.chromatic.sapphire.a200,
+              },
+              disabled: {
+                highContrast: globalColors.chromatic.sapphire[600],
+                lowContrast: globalColors.chromatic.sapphire.a50,
+              },
             },
             secondary: {
               default: { lowContrast: globalColors.chromatic.sapphire.a50 },
@@ -763,11 +778,26 @@ const colors: ColorsWithModes = {
           },
           border: {
             primary: {
-              default: { highContrast: globalColors.chromatic.sapphire[50] },
-              hover: { highContrast: globalColors.chromatic.sapphire[50] },
-              focus: { highContrast: globalColors.chromatic.sapphire[50] },
-              active: { highContrast: globalColors.chromatic.sapphire[50] },
-              disabled: { highContrast: globalColors.chromatic.sapphire[400] },
+              default: {
+                highContrast: globalColors.chromatic.sapphire[50],
+                lowContrast: globalColors.chromatic.sapphire.a200,
+              },
+              hover: {
+                highContrast: globalColors.chromatic.sapphire[50],
+                lowContrast: globalColors.chromatic.sapphire.a200,
+              },
+              focus: {
+                highContrast: globalColors.chromatic.sapphire[50],
+                lowContrast: globalColors.chromatic.sapphire.a200,
+              },
+              active: {
+                highContrast: globalColors.chromatic.sapphire[50],
+                lowContrast: globalColors.chromatic.sapphire.a200,
+              },
+              disabled: {
+                highContrast: globalColors.chromatic.sapphire[400],
+                lowContrast: globalColors.chromatic.sapphire.a200,
+              },
             },
             secondary: {
               default: { lowContrast: globalColors.chromatic.sapphire.a200 },
@@ -779,11 +809,26 @@ const colors: ColorsWithModes = {
           },
           text: {
             primary: {
-              default: { highContrast: globalColors.chromatic.sapphire[50] },
-              hover: { highContrast: globalColors.chromatic.sapphire[50] },
-              focus: { highContrast: globalColors.chromatic.sapphire[50] },
-              active: { highContrast: globalColors.chromatic.sapphire[50] },
-              disabled: { highContrast: globalColors.chromatic.sapphire[400] },
+              default: {
+                highContrast: globalColors.chromatic.sapphire[50],
+                lowContrast: globalColors.chromatic.sapphire[700],
+              },
+              hover: {
+                highContrast: globalColors.chromatic.sapphire[50],
+                lowContrast: globalColors.chromatic.sapphire[700],
+              },
+              focus: {
+                highContrast: globalColors.chromatic.sapphire[50],
+                lowContrast: globalColors.chromatic.sapphire[700],
+              },
+              active: {
+                highContrast: globalColors.chromatic.sapphire[50],
+                lowContrast: globalColors.chromatic.sapphire[700],
+              },
+              disabled: {
+                highContrast: globalColors.chromatic.sapphire[400],
+                lowContrast: globalColors.chromatic.sapphire.a200,
+              },
             },
             secondary: {
               default: { lowContrast: globalColors.chromatic.sapphire[700] },
@@ -793,20 +838,50 @@ const colors: ColorsWithModes = {
               disabled: { lowContrast: globalColors.chromatic.sapphire.a200 },
             },
             link: {
-              default: { lowContrast: globalColors.chromatic.sapphire[700] },
-              hover: { lowContrast: globalColors.chromatic.sapphire[600] },
-              focus: { lowContrast: globalColors.chromatic.sapphire[800] },
-              active: { lowContrast: globalColors.chromatic.sapphire[800] },
-              disabled: { lowContrast: globalColors.chromatic.sapphire.a200 },
+              default: {
+                lowContrast: globalColors.chromatic.sapphire[700],
+                highContrast: globalColors.chromatic.sapphire[50],
+              },
+              hover: {
+                lowContrast: globalColors.chromatic.sapphire[600],
+                highContrast: globalColors.chromatic.sapphire[50],
+              },
+              focus: {
+                lowContrast: globalColors.chromatic.sapphire[800],
+                highContrast: globalColors.chromatic.sapphire[100],
+              },
+              active: {
+                lowContrast: globalColors.chromatic.sapphire[800],
+                highContrast: globalColors.chromatic.sapphire[100],
+              },
+              disabled: {
+                lowContrast: globalColors.chromatic.sapphire.a200,
+                highContrast: globalColors.chromatic.sapphire[400],
+              },
             },
           },
           icon: {
             primary: {
-              default: { highContrast: globalColors.chromatic.sapphire[50] },
-              hover: { highContrast: globalColors.chromatic.sapphire[50] },
-              focus: { highContrast: globalColors.chromatic.sapphire[50] },
-              active: { highContrast: globalColors.chromatic.sapphire[50] },
-              disabled: { highContrast: globalColors.chromatic.sapphire[400] },
+              default: {
+                highContrast: globalColors.chromatic.sapphire[50],
+                lowContrast: globalColors.chromatic.sapphire[700],
+              },
+              hover: {
+                highContrast: globalColors.chromatic.sapphire[50],
+                lowContrast: globalColors.chromatic.sapphire[700],
+              },
+              focus: {
+                highContrast: globalColors.chromatic.sapphire[50],
+                lowContrast: globalColors.chromatic.sapphire[700],
+              },
+              active: {
+                highContrast: globalColors.chromatic.sapphire[50],
+                lowContrast: globalColors.chromatic.sapphire[700],
+              },
+              disabled: {
+                highContrast: globalColors.chromatic.sapphire[400],
+                lowContrast: globalColors.chromatic.sapphire.a200,
+              },
             },
             secondary: {
               default: { lowContrast: globalColors.chromatic.sapphire[700] },
@@ -816,11 +891,26 @@ const colors: ColorsWithModes = {
               disabled: { lowContrast: globalColors.chromatic.sapphire.a200 },
             },
             link: {
-              default: { lowContrast: globalColors.chromatic.sapphire[700] },
-              hover: { lowContrast: globalColors.chromatic.sapphire[600] },
-              focus: { lowContrast: globalColors.chromatic.sapphire[800] },
-              active: { lowContrast: globalColors.chromatic.sapphire[800] },
-              disabled: { lowContrast: globalColors.chromatic.sapphire.a200 },
+              default: {
+                lowContrast: globalColors.chromatic.sapphire[700],
+                highContrast: globalColors.chromatic.sapphire[50],
+              },
+              hover: {
+                lowContrast: globalColors.chromatic.sapphire[600],
+                highContrast: globalColors.chromatic.sapphire[50],
+              },
+              focus: {
+                lowContrast: globalColors.chromatic.sapphire[800],
+                highContrast: globalColors.chromatic.sapphire[100],
+              },
+              active: {
+                lowContrast: globalColors.chromatic.sapphire[800],
+                highContrast: globalColors.chromatic.sapphire[100],
+              },
+              disabled: {
+                lowContrast: globalColors.chromatic.sapphire.a200,
+                highContrast: globalColors.chromatic.sapphire[400],
+              },
             },
           },
         },
@@ -1985,11 +2075,26 @@ const colors: ColorsWithModes = {
         action: {
           background: {
             primary: {
-              default: { highContrast: globalColors.chromatic.sapphire[600] },
-              hover: { highContrast: globalColors.chromatic.sapphire[700] },
-              focus: { highContrast: globalColors.chromatic.sapphire[800] },
-              active: { highContrast: globalColors.chromatic.sapphire[800] },
-              disabled: { highContrast: globalColors.chromatic.sapphire[600] },
+              default: {
+                highContrast: globalColors.chromatic.sapphire[600],
+                lowContrast: globalColors.chromatic.sapphire.a50,
+              },
+              hover: {
+                highContrast: globalColors.chromatic.sapphire[700],
+                lowContrast: globalColors.chromatic.sapphire.a100,
+              },
+              focus: {
+                highContrast: globalColors.chromatic.sapphire[800],
+                lowContrast: globalColors.chromatic.sapphire.a200,
+              },
+              active: {
+                highContrast: globalColors.chromatic.sapphire[800],
+                lowContrast: globalColors.chromatic.sapphire.a200,
+              },
+              disabled: {
+                highContrast: globalColors.chromatic.sapphire[600],
+                lowContrast: globalColors.chromatic.sapphire.a50,
+              },
             },
             secondary: {
               default: { lowContrast: globalColors.chromatic.sapphire.a50 },
@@ -2001,11 +2106,26 @@ const colors: ColorsWithModes = {
           },
           border: {
             primary: {
-              default: { highContrast: globalColors.chromatic.sapphire[50] },
-              hover: { highContrast: globalColors.chromatic.sapphire[50] },
-              focus: { highContrast: globalColors.chromatic.sapphire[50] },
-              active: { highContrast: globalColors.chromatic.sapphire[50] },
-              disabled: { highContrast: globalColors.chromatic.sapphire[400] },
+              default: {
+                highContrast: globalColors.chromatic.sapphire[50],
+                lowContrast: globalColors.chromatic.sapphire[700],
+              },
+              hover: {
+                highContrast: globalColors.chromatic.sapphire[50],
+                lowContrast: globalColors.chromatic.sapphire[700],
+              },
+              focus: {
+                highContrast: globalColors.chromatic.sapphire[50],
+                lowContrast: globalColors.chromatic.sapphire[700],
+              },
+              active: {
+                highContrast: globalColors.chromatic.sapphire[50],
+                lowContrast: globalColors.chromatic.sapphire[700],
+              },
+              disabled: {
+                highContrast: globalColors.chromatic.sapphire[400],
+                lowContrast: globalColors.chromatic.sapphire[900],
+              },
             },
             secondary: {
               default: { lowContrast: globalColors.chromatic.sapphire[700] },
@@ -2017,11 +2137,26 @@ const colors: ColorsWithModes = {
           },
           text: {
             primary: {
-              default: { highContrast: globalColors.chromatic.sapphire[50] },
-              hover: { highContrast: globalColors.chromatic.sapphire[50] },
-              focus: { highContrast: globalColors.chromatic.sapphire[50] },
-              active: { highContrast: globalColors.chromatic.sapphire[50] },
-              disabled: { highContrast: globalColors.chromatic.sapphire[400] },
+              default: {
+                highContrast: globalColors.chromatic.sapphire[50],
+                lowContrast: globalColors.chromatic.sapphire[500],
+              },
+              hover: {
+                highContrast: globalColors.chromatic.sapphire[50],
+                lowContrast: globalColors.chromatic.sapphire[500],
+              },
+              focus: {
+                highContrast: globalColors.chromatic.sapphire[50],
+                lowContrast: globalColors.chromatic.sapphire[500],
+              },
+              active: {
+                highContrast: globalColors.chromatic.sapphire[50],
+                lowContrast: globalColors.chromatic.sapphire[500],
+              },
+              disabled: {
+                highContrast: globalColors.chromatic.sapphire[400],
+                lowContrast: globalColors.chromatic.sapphire[900],
+              },
             },
             secondary: {
               default: { lowContrast: globalColors.chromatic.sapphire[500] },
@@ -2031,20 +2166,50 @@ const colors: ColorsWithModes = {
               disabled: { lowContrast: globalColors.chromatic.sapphire[900] },
             },
             link: {
-              default: { lowContrast: globalColors.chromatic.sapphire[500] },
-              hover: { lowContrast: globalColors.chromatic.sapphire[400] },
-              focus: { lowContrast: globalColors.chromatic.sapphire[600] },
-              active: { lowContrast: globalColors.chromatic.sapphire[600] },
-              disabled: { lowContrast: globalColors.chromatic.sapphire[900] },
+              default: {
+                lowContrast: globalColors.chromatic.sapphire[500],
+                highContrast: globalColors.chromatic.sapphire[50],
+              },
+              hover: {
+                lowContrast: globalColors.chromatic.sapphire[400],
+                highContrast: globalColors.chromatic.sapphire[50],
+              },
+              focus: {
+                lowContrast: globalColors.chromatic.sapphire[600],
+                highContrast: globalColors.chromatic.sapphire[100],
+              },
+              active: {
+                lowContrast: globalColors.chromatic.sapphire[600],
+                highContrast: globalColors.chromatic.sapphire[100],
+              },
+              disabled: {
+                lowContrast: globalColors.chromatic.sapphire[900],
+                highContrast: globalColors.chromatic.sapphire[400],
+              },
             },
           },
           icon: {
             primary: {
-              default: { highContrast: globalColors.chromatic.sapphire[50] },
-              hover: { highContrast: globalColors.chromatic.sapphire[50] },
-              focus: { highContrast: globalColors.chromatic.sapphire[50] },
-              active: { highContrast: globalColors.chromatic.sapphire[50] },
-              disabled: { highContrast: globalColors.chromatic.sapphire[400] },
+              default: {
+                highContrast: globalColors.chromatic.sapphire[50],
+                lowContrast: globalColors.chromatic.sapphire[500],
+              },
+              hover: {
+                highContrast: globalColors.chromatic.sapphire[50],
+                lowContrast: globalColors.chromatic.sapphire[500],
+              },
+              focus: {
+                highContrast: globalColors.chromatic.sapphire[50],
+                lowContrast: globalColors.chromatic.sapphire[500],
+              },
+              active: {
+                highContrast: globalColors.chromatic.sapphire[50],
+                lowContrast: globalColors.chromatic.sapphire[500],
+              },
+              disabled: {
+                highContrast: globalColors.chromatic.sapphire[400],
+                lowContrast: globalColors.chromatic.sapphire[900],
+              },
             },
             secondary: {
               default: { lowContrast: globalColors.chromatic.sapphire[500] },
@@ -2054,11 +2219,26 @@ const colors: ColorsWithModes = {
               disabled: { lowContrast: globalColors.chromatic.sapphire[900] },
             },
             link: {
-              default: { lowContrast: globalColors.chromatic.sapphire[500] },
-              hover: { lowContrast: globalColors.chromatic.sapphire[400] },
-              focus: { lowContrast: globalColors.chromatic.sapphire[600] },
-              active: { lowContrast: globalColors.chromatic.sapphire[600] },
-              disabled: { lowContrast: globalColors.chromatic.sapphire[900] },
+              default: {
+                lowContrast: globalColors.chromatic.sapphire[500],
+                highContrast: globalColors.chromatic.sapphire[50],
+              },
+              hover: {
+                lowContrast: globalColors.chromatic.sapphire[400],
+                highContrast: globalColors.chromatic.sapphire[50],
+              },
+              focus: {
+                lowContrast: globalColors.chromatic.sapphire[600],
+                highContrast: globalColors.chromatic.sapphire[100],
+              },
+              active: {
+                lowContrast: globalColors.chromatic.sapphire[600],
+                highContrast: globalColors.chromatic.sapphire[100],
+              },
+              disabled: {
+                lowContrast: globalColors.chromatic.sapphire[900],
+                highContrast: globalColors.chromatic.sapphire[400],
+              },
             },
           },
         },

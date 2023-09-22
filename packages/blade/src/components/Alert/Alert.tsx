@@ -90,9 +90,17 @@ type AlertProps = {
   /**
    * Sets the color tone
    *
+   * @deprecated Use `color` instead
    * @default neutral
    */
   intent?: Feedback;
+
+  /**
+   * Sets the color tone
+   *
+   * @default neutral
+   */
+  color?: Feedback;
 
   /**
    * Renders a primary action button and a secondary action link button
@@ -131,7 +139,9 @@ const Alert = ({
   onDismiss,
   contrast = 'low',
   isFullWidth = false,
+  // TODO: Remove intent prop in favor of color in the next major release
   intent = 'neutral',
+  color,
   actions,
   testID,
   ...styledProps
@@ -212,8 +222,8 @@ const Alert = ({
       <BaseButton
         size={textSize}
         onClick={actions.primary.onClick}
-        intent={intent}
-        contrast={contrast}
+        color={color || intent}
+        variant={contrast === 'high' ? 'primary' : 'secondary'}
       >
         {actions.primary.text}
       </BaseButton>
