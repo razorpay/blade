@@ -64,6 +64,16 @@ export type ActionVariantsWithContrast = {
   link: ActionStatesWithContrast;
 };
 
+export type SecondaryFeedbackActionStatesWithContrast = {
+  secondary: {
+    default: Pick<ColorContrast, 'lowContrast'>;
+    hover: Pick<ColorContrast, 'lowContrast'>;
+    focus: Pick<ColorContrast, 'lowContrast'>;
+    active: Pick<ColorContrast, 'lowContrast'>;
+    disabled: Pick<ColorContrast, 'lowContrast'>;
+  };
+};
+
 // export type ActionProperties = {
 //   background: ActionVariants;
 //   border: ActionVariants;
@@ -72,10 +82,16 @@ export type ActionVariantsWithContrast = {
 // };
 
 export type FeedbackActions = {
-  background: Pick<ActionVariantsWithContrast, 'primary'>;
-  border: Pick<ActionVariantsWithContrast, 'primary'>;
-  text: Pick<ActionVariantsWithContrast, 'link' | 'primary'>;
-  icon: Pick<ActionVariantsWithContrast, 'link' | 'primary'>;
+  background:
+    | Pick<ActionVariantsWithContrast, 'primary'>
+    | SecondaryFeedbackActionStatesWithContrast;
+  border: Pick<ActionVariantsWithContrast, 'primary'> | SecondaryFeedbackActionStatesWithContrast;
+  text:
+    | Pick<ActionVariantsWithContrast, 'link' | 'primary'>
+    | SecondaryFeedbackActionStatesWithContrast;
+  icon:
+    | Pick<ActionVariantsWithContrast, 'link' | 'primary'>
+    | SecondaryFeedbackActionStatesWithContrast;
 };
 
 export type WhiteColors = {
@@ -119,6 +135,8 @@ export type Colors = {
     action: {
       icon: ActionStatesWithContrast;
     };
+    overlay: Record<'background', Record<400 | 800, string>>;
+    popup: Record<'background', string>;
   };
   overlay: Record<'background', string>;
   action: {
