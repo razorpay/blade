@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 10.12.1
+
+### Patch Changes
+
+- 68820c36: feat: radio & checkbox integration with card
+
 ## 10.12.0
 
 ### Minor Changes
