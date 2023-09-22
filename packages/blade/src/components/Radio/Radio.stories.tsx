@@ -138,9 +138,9 @@ Optional.args = {
   necessityIndicator: 'optional',
 };
 
-export const Required = RadioTemplate.bind({});
-Required.storyName = 'Required';
-Required.args = {
+export const RequiredRadio = RadioTemplate.bind({});
+RequiredRadio.storyName = 'Required';
+RequiredRadio.args = {
   necessityIndicator: 'required',
 };
 

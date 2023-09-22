@@ -63,6 +63,6 @@ const ModalTemplate: ComponentStory<typeof Modal> = ({ size }) => {
   );
 };
 
-export const Default = ModalTemplate.bind({});
+export const SimpleModal = ModalTemplate.bind({});
 // Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
-Default.storyName = 'Default';
+SimpleModal.storyName = 'Simple Modal';

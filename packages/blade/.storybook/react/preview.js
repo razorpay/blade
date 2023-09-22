@@ -8,6 +8,7 @@ import ErrorBoundary from './ErrorBoundary';
 import { INTERNAL_STORY_ADDON_PARAM } from './constants';
 const { GlobalStyle } = global;
 import { DocsContainer } from '@storybook/addon-docs/blocks';
+import './global.css';
 
 export const parameters = {
   // disable snapshot by default and then enable it only for kitchen sink
@@ -48,7 +49,6 @@ export const parameters = {
           'makeSpace',
           'makeTypographySize',
           'useTheme',
-          'overrideTheme',
         ],
         'Components',
         ['*', 'KitchenSink'],

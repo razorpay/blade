@@ -133,12 +133,14 @@ const CodeLineHighlighterContainer = styled(BaseBox)((_props) => ({
 
 const SandboxHighlighter = ({
   children,
+  theme = 'light',
   ...sandpackCodeViewerProps
-}: { children: string } & CodeViewerProps): JSX.Element => {
+}: { children: string; theme?: 'light' | 'dark' } & CodeViewerProps): JSX.Element => {
   return (
     <CodeLineHighlighterContainer>
       <SandpackProvider
         template="vanilla-ts"
+        theme={theme}
         files={{
           '/src/index.ts': dedent(children),
         }}

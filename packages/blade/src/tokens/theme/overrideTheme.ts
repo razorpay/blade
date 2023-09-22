@@ -20,6 +20,8 @@ type OverrideTheme = {
 };
 
 /**
+ * @deprecated Use `createTheme` from `@razorpay/blade/tokens` instead
+ *
  * @description
  *
  * `overrideTheme` merges the `baseThemeTokens` and `overrides` and returns a new ThemeTokens object,

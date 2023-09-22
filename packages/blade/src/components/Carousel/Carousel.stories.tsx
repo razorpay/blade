@@ -281,8 +281,8 @@ const CarouselTestimonialTemplate: ComponentStory<typeof CarouselComponent> = (p
   );
 };
 
-export const Default = CarouselTestimonialTemplate.bind({});
-Default.args = {
+export const DefaultCarousel = CarouselTestimonialTemplate.bind({});
+DefaultCarousel.args = {
   carouselItemWidth: { base: '100%', m: '100%' },
 };
 
