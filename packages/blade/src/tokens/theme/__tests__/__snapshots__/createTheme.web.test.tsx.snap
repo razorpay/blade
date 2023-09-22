@@ -1156,11 +1156,11 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
             "visited": "hsla(268, 100%, 79%, 1)",
           },
           "primary": {
-            "active": "hsl(220, 27%, 98%)",
-            "default": "hsl(220, 27%, 98%)",
+            "active": "hsl(0, 0%, 100%)",
+            "default": "hsl(0, 0%, 100%)",
             "disabled": "hsla(216, 16%, 60%, 1)",
-            "focus": "hsl(220, 27%, 98%)",
-            "hover": "hsl(220, 27%, 98%)",
+            "focus": "hsl(0, 0%, 100%)",
+            "hover": "hsl(0, 0%, 100%)",
           },
           "secondary": {
             "active": "hsl(332, 100%, 26%)",
@@ -1187,11 +1187,11 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
             "visited": "hsla(268, 100%, 79%, 1)",
           },
           "primary": {
-            "active": "hsl(220, 27%, 98%)",
-            "default": "hsl(220, 27%, 98%)",
+            "active": "hsl(0, 0%, 100%)",
+            "default": "hsl(0, 0%, 100%)",
             "disabled": "hsla(216, 16%, 60%, 1)",
-            "focus": "hsl(220, 27%, 98%)",
-            "hover": "hsl(220, 27%, 98%)",
+            "focus": "hsl(0, 0%, 100%)",
+            "hover": "hsl(0, 0%, 100%)",
           },
           "secondary": {
             "active": "hsl(332, 100%, 26%)",
@@ -1239,7 +1239,7 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
         "gray": {
           "200": {
             "highContrast": "hsla(216, 33%, 29%, 1)",
-            "lowContrast": "hsl(220, 27%, 98%)",
+            "lowContrast": "hsl(0, 0%, 100%)",
           },
           "300": {
             "highContrast": "hsla(216, 27%, 36%, 1)",
@@ -2404,7 +2404,7 @@ exports[`createTheme should create a theme with the correct brand colors 2`] = `
 }
 
 .c3 {
-  color: hsl(220,27%,98%);
+  color: hsl(0,0%,100%);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
   font-weight: 700;
@@ -3618,11 +3618,11 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
             "visited": "hsla(268, 100%, 79%, 1)",
           },
           "primary": {
-            "active": "hsl(216, 44%, 23%)",
-            "default": "hsl(216, 44%, 23%)",
+            "active": "hsl(215, 70%, 13%)",
+            "default": "hsl(215, 70%, 13%)",
             "disabled": "hsla(216, 16%, 60%, 1)",
-            "focus": "hsl(216, 44%, 23%)",
-            "hover": "hsl(216, 44%, 23%)",
+            "focus": "hsl(215, 70%, 13%)",
+            "hover": "hsl(215, 70%, 13%)",
           },
           "secondary": {
             "active": "hsla(216, 44%, 23%, 1)",
@@ -3649,11 +3649,11 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
             "visited": "hsla(268, 100%, 79%, 1)",
           },
           "primary": {
-            "active": "hsl(216, 44%, 23%)",
-            "default": "hsl(216, 44%, 23%)",
+            "active": "hsl(215, 70%, 13%)",
+            "default": "hsl(215, 70%, 13%)",
             "disabled": "hsla(216, 16%, 60%, 1)",
-            "focus": "hsl(216, 44%, 23%)",
-            "hover": "hsl(216, 44%, 23%)",
+            "focus": "hsl(215, 70%, 13%)",
+            "hover": "hsl(215, 70%, 13%)",
           },
           "secondary": {
             "active": "hsla(216, 44%, 23%, 1)",
@@ -3701,7 +3701,7 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
         "gray": {
           "200": {
             "highContrast": "hsla(216, 33%, 29%, 1)",
-            "lowContrast": "hsl(216, 44%, 23%)",
+            "lowContrast": "hsl(215, 70%, 13%)",
           },
           "300": {
             "highContrast": "hsla(216, 27%, 36%, 1)",
