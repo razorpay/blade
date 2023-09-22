@@ -9,7 +9,8 @@
     "**/**.stories.tsx",
     "**/**.stories.internal.tsx",
     "**/**.native.ts",
-    "**/**.native.tsx"
+    "**/**.native.tsx",
+    "**/ThemePlayground/**.tsx"
   ],
   "compilerOptions": {
     "declarationDir": "build/types/web",

@@ -3,10 +3,12 @@ import { theme, toggleHiddenStoryStyle } from './manager';
 import { global } from '@storybook/design-system';
 import { BladeProvider } from '../../src/components/BladeProvider';
 import { paymentTheme, bankingTheme } from '../../src/tokens/theme';
+import { createTheme } from '../../src/tokens/theme/createTheme';
 import ErrorBoundary from './ErrorBoundary';
 import { INTERNAL_STORY_ADDON_PARAM } from './constants';
 const { GlobalStyle } = global;
 import { DocsContainer } from '@storybook/addon-docs/blocks';
+import './global.css';
 
 export const parameters = {
   // disable snapshot by default and then enable it only for kitchen sink
@@ -47,7 +49,6 @@ export const parameters = {
           'makeSpace',
           'makeTypographySize',
           'useTheme',
-          'overrideTheme',
         ],
         'Components',
         ['*', 'KitchenSink'],
@@ -58,6 +59,9 @@ export const parameters = {
   docs: {
     container: ({ children, context }) => {
       const getThemeTokens = () => {
+        if (context.globals.brandColor) {
+          return createTheme({ brandColor: context.globals.brandColor });
+        }
         if (context.globals.themeTokenName === 'paymentTheme') {
           return paymentTheme;
         }
@@ -140,6 +144,9 @@ export const decorators = [
   (Story, context) => {
     toggleHiddenStoryStyle(context.globals.showInternalComponents);
     const getThemeTokens = () => {
+      if (context.globals.brandColor) {
+        return createTheme({ brandColor: context.globals.brandColor });
+      }
       if (context.globals.themeTokenName === 'paymentTheme') {
         return paymentTheme;
       }
@@ -192,6 +199,30 @@ export const globalTypes = {
         { value: 'light', title: 'Light' },
         { value: 'dark', title: 'Dark' },
         { value: 'system', title: 'System' },
+      ],
+      // Property that specifies if the name of the item will be displayed
+      showName: true,
+    },
+  },
+  brandColor: {
+    name: 'Brand Color',
+    description: 'Brand Color (You can pass any valid color to BladeProvider)',
+    defaultValue: undefined,
+    toolbar: {
+      icon: 'contrast',
+      // Array of plain string values or MenuItem shape (see below)
+      items: [
+        { value: undefined, title: 'Razorpay' },
+        { value: '#EE681A', title: 'ICICI' },
+        { value: '#83003D', title: 'Axis' },
+        { value: '#15A5EB', title: 'SBI' },
+        { value: '#107259', title: 'IDBI' },
+        { value: '#FFF10A', title: 'Allahabad' },
+        { value: '#F32951', title: 'BookMyShow' },
+        { value: '#F86B15', title: 'Swiggy' },
+        { value: '#CF2033', title: 'Zomato' },
+        { value: '#19BEA2', title: 'DSP Mutual Fund' },
+        { value: '#DF005D', title: 'Nykaa' },
       ],
       // Property that specifies if the name of the item will be displayed
       showName: true,
