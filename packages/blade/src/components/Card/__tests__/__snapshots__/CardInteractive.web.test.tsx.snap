@@ -2,6 +2,7 @@
 
 exports[`<Card /> should render a clickable Card 1`] = `
 .c0 {
+  display: block;
   border-radius: 4px;
 }
 
@@ -98,6 +99,7 @@ exports[`<Card /> should render a clickable Card 1`] = `
 
 exports[`<Card /> should render a linkable Card 1`] = `
 .c0 {
+  display: block;
   border-radius: 4px;
 }
 
@@ -196,6 +198,7 @@ exports[`<Card /> should render a linkable Card 1`] = `
 
 exports[`<Card /> should render a linkable Card with onClick 1`] = `
 .c0 {
+  display: block;
   border-radius: 4px;
 }
 
@@ -294,6 +297,7 @@ exports[`<Card /> should render a linkable Card with onClick 1`] = `
 
 exports[`<Card /> should render an interactive Card 1`] = `
 .c0 {
+  display: block;
   border-radius: 4px;
 }
 

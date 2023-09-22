@@ -158,16 +158,6 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
             Remember password
           </Text>
         </View>
-        <View
-          data-blade-component="base-box"
-          style={
-            [
-              {
-                "marginLeft": 24,
-              },
-            ]
-          }
-        />
       </View>
     </View>
   </View>
@@ -333,16 +323,6 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
             Remember password
           </Text>
         </View>
-        <View
-          data-blade-component="base-box"
-          style={
-            [
-              {
-                "marginLeft": 24,
-              },
-            ]
-          }
-        />
       </View>
     </View>
   </View>
@@ -508,16 +488,6 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
             Remember password
           </Text>
         </View>
-        <View
-          data-blade-component="base-box"
-          style={
-            [
-              {
-                "marginLeft": 24,
-              },
-            ]
-          }
-        />
       </View>
     </View>
     <View

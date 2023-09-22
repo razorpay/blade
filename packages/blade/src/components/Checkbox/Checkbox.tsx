@@ -50,7 +50,7 @@ type CheckboxProps = {
   /**
    * Sets the label of the checkbox
    */
-  children: React.ReactNode;
+  children?: React.ReactNode;
   /**
    * Help text for the checkbox
    */
@@ -240,15 +240,17 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
               isDisabled={_isDisabled}
               isNegative={_hasError}
             />
-            <SelectorTitle size={_size} isDisabled={_isDisabled}>
-              {children}
-            </SelectorTitle>
+            {children ? (
+              <SelectorTitle size={_size} isDisabled={_isDisabled}>
+                {children}
+              </SelectorTitle>
+            ) : null}
           </BaseBox>
-          <BaseBox marginLeft={isSmall ? 'spacing.6' : 'spacing.7'}>
-            {showSupportingText && (
+          {showSupportingText ? (
+            <BaseBox marginLeft={isSmall ? 'spacing.6' : 'spacing.7'}>
               <SelectorSupportText id={ids?.helpTextId}>{helpText}</SelectorSupportText>
-            )}
-          </BaseBox>
+            </BaseBox>
+          ) : null}
         </BaseBox>
       </SelectorLabel>
       <FormHint

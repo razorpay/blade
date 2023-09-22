@@ -58,10 +58,6 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
   margin-left: 4px;
 }
 
-.c10 {
-  margin-left: 24px;
-}
-
 .c7 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
@@ -259,10 +255,6 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
             </a>
           </div>
         </div>
-        <div
-          class="c10"
-          data-blade-component="base-box"
-        />
       </div>
     </label>
   </div>
@@ -325,10 +317,6 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
 
 .c6 {
   margin-left: 4px;
-}
-
-.c8 {
-  margin-left: 24px;
 }
 
 .c7 {
@@ -449,10 +437,6 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
             Remember password
           </div>
         </div>
-        <div
-          class="c8"
-          data-blade-component="base-box"
-        />
       </div>
     </label>
   </div>
@@ -518,14 +502,10 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
 }
 
 .c8 {
-  margin-left: 24px;
-}
-
-.c9 {
   margin-top: 4px;
 }
 
-.c10 {
+.c9 {
   margin-right: 4px;
 }
 
@@ -542,7 +522,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
   padding: 0;
 }
 
-.c11 {
+.c10 {
   color: hsla(8,73%,47%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.6875rem;
@@ -660,14 +640,10 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
             Remember password
           </div>
         </div>
-        <div
-          class="c8"
-          data-blade-component="base-box"
-        />
       </div>
     </label>
     <div
-      class="c9"
+      class="c8"
       data-blade-component="base-box"
     >
       <span
@@ -703,11 +679,11 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
           />
         </svg>
         <div
-          class="c10"
+          class="c9"
           data-blade-component="base-box"
         />
         <span
-          class="c11"
+          class="c10"
           data-blade-component="base-text"
           id="checkbox-19-errortext-21"
         >
@@ -780,10 +756,6 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
 
 .c7 {
   margin-left: 4px;
-}
-
-.c9 {
-  margin-left: 24px;
 }
 
 .c8 {
@@ -935,10 +907,6 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
             Remember password
           </div>
         </div>
-        <div
-          class="c9"
-          data-blade-component="base-box"
-        />
       </div>
     </label>
   </div>
