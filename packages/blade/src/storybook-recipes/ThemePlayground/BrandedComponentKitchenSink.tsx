@@ -52,21 +52,22 @@ const StoryNameToHeadingMap = {
   InternalAutoCompleteControlled: 'AutoComplete',
 };
 
-const allStories = [];
-allStories.push(...Object.values(composeStories(buttonStories)));
-allStories.push(...Object.values(composeStories(textInputStories)));
-allStories.push(...Object.values(composeStories(otpInputStories)));
-allStories.push(...Object.values(composeStories(checkboxGroupStories)));
-allStories.push(...Object.values(composeStories(radioStories)));
-allStories.push(...Object.values(composeStories(switchStories)));
-allStories.push(...Object.values(composeStories(chipGroupStories)));
-allStories.push(...Object.values(composeStories(autoCompleteStories)));
-allStories.push(...Object.values(composeStories(accordionStories)));
-allStories.push(...Object.values(composeStories(collapsibleStories)));
-allStories.push(...Object.values(composeStories(modalStories)));
-allStories.push(...Object.values(composeStories(bottomSheetStories)));
-allStories.push(...Object.values(composeStories(carouselStories)));
-allStories.push(...Object.values(composeStories(progressBarStories)));
+const allStories = [
+  ...Object.values(composeStories(buttonStories)),
+  ...Object.values(composeStories(textInputStories)),
+  ...Object.values(composeStories(otpInputStories)),
+  ...Object.values(composeStories(checkboxGroupStories)),
+  ...Object.values(composeStories(radioStories)),
+  ...Object.values(composeStories(switchStories)),
+  ...Object.values(composeStories(chipGroupStories)),
+  ...Object.values(composeStories(autoCompleteStories)),
+  ...Object.values(composeStories(accordionStories)),
+  ...Object.values(composeStories(collapsibleStories)),
+  ...Object.values(composeStories(modalStories)),
+  ...Object.values(composeStories(bottomSheetStories)),
+  ...Object.values(composeStories(carouselStories)),
+  ...Object.values(composeStories(progressBarStories)),
+];
 
 const filteredstories = allStories.filter((Story) => includedStories.includes(Story.storyName));
 
