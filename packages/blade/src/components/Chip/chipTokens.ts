@@ -119,14 +119,14 @@ const chipColorTokens: ChipColorTokens = {
   text: {
     unchecked: 'surface.text.subtle.lowContrast',
     disabled: 'surface.text.placeholder.lowContrast',
-    none: 'brand.primary.500',
+    none: 'action.text.secondary.default',
     positive: 'feedback.text.positive.lowContrast',
     negative: 'feedback.text.negative.lowContrast',
   },
   icon: {
     unchecked: 'surface.text.subtle.lowContrast',
     disabled: 'surface.text.placeholder.lowContrast',
-    none: 'brand.primary.500',
+    none: 'action.icon.secondary.default',
     positive: 'feedback.icon.positive.lowContrast',
     negative: 'feedback.icon.negative.lowContrast',
   },
