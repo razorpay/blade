@@ -1,5 +1,23 @@
 # @razorpay/blade
 
+## 10.13.0
+
+### Minor Changes
+
+- e99730d7: feat: support customizing Blade Theme with a single brand color
+
+  You can find a detailed documentation [here](https://blade.razorpay.com/?path=/docs/guides-theming-createtheme--page)
+
+  ### Example Usage
+
+      ```tsx
+      const customTheme = createTheme({ brandColor: '#19BEA2' })
+
+      <BladeProvider themeTokens={customTheme} colorScheme={colorScheme}>
+       {App}
+      </BladeProvider>
+      ```
+
 ## 10.12.1
 
 ### Patch Changes
