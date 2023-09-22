@@ -104,8 +104,8 @@ const getOnLightOverrides = (brandColors: ColorChromaticScale): DeepPartial<Them
   // For example: On Primary Button where the background color is brand color, the text color should be either dark or light depending on which is more readable on top of that brand color
   const foregroundOnBrandColorLight = tinycolor
     .mostReadable(
-      brandColors[900],
-      [globalColors.neutral.blueGrayLight[1100], globalColors.neutral.blueGrayLight[50]],
+      brandColors[800],
+      [globalColors.neutral.blueGrayLight[1300], globalColors.neutral.blueGrayLight[0]],
       WCAG2ContrastOptions,
     )
     .toHslString();
