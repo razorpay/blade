@@ -48,26 +48,26 @@ const buttonPadding: Record<
   xsmall: {
     top: 0,
     bottom: 0,
+    left: 2,
+    right: 2,
+  },
+  small: {
+    top: 0,
+    bottom: 0,
     left: 3,
     right: 3,
   },
-  small: {
+  medium: {
     top: 0,
     bottom: 0,
     left: 4,
     right: 4,
   },
-  medium: {
-    top: 0,
-    bottom: 0,
-    left: 6,
-    right: 6,
-  },
   large: {
     top: 0,
     bottom: 0,
-    left: 6,
-    right: 6,
+    left: 4,
+    right: 4,
   },
 };
 
@@ -96,8 +96,8 @@ const buttonIconOnlyPadding: Record<
   large: {
     top: 0,
     bottom: 0,
-    left: 4,
-    right: 4,
+    left: 2,
+    right: 2,
   },
 };
 

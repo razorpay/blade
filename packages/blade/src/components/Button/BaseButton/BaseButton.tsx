@@ -482,6 +482,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
             display="flex"
             justifyContent="center"
             alignItems="center"
+            textAlign="right"
           >
             <Icon size={iconSize} color={iconColor} />
           </BaseBox>
@@ -503,6 +504,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
             display="flex"
             justifyContent="center"
             alignItems="center"
+            textAlign="left"
           >
             <Icon size={iconSize} color={iconColor} />
           </BaseBox>
