@@ -333,7 +333,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   -webkit-transition-property: opacity;
   transition-property: opacity;
   opacity: 0;
-  background-color: hsla(214,15%,18%,0.64);
+  background-color: hsla(231,11%,12%,0.72);
 }
 
 .c3 {
@@ -389,8 +389,8 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -746,7 +746,7 @@ exports[`Modal renders a basic Modal 1`] = `
   -webkit-transition-property: opacity;
   transition-property: opacity;
   opacity: 0;
-  background-color: hsla(214,15%,18%,0.64);
+  background-color: hsla(231,11%,12%,0.72);
 }
 
 .c3 {
@@ -848,7 +848,7 @@ exports[`Modal renders a basic Modal of large size 1`] = `
   -webkit-transition-property: opacity;
   transition-property: opacity;
   opacity: 0;
-  background-color: hsla(214,15%,18%,0.64);
+  background-color: hsla(231,11%,12%,0.72);
 }
 
 .c3 {
@@ -950,7 +950,7 @@ exports[`Modal renders a basic Modal of medium size 1`] = `
   -webkit-transition-property: opacity;
   transition-property: opacity;
   opacity: 0;
-  background-color: hsla(214,15%,18%,0.64);
+  background-color: hsla(231,11%,12%,0.72);
 }
 
 .c3 {

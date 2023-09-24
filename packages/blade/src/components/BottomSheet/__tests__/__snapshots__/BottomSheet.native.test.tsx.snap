@@ -33,7 +33,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
             "top": 0,
           },
           {
-            "backgroundColor": "hsla(214, 15%, 18%, 0.64)",
+            "backgroundColor": "hsla(231, 11%, 12%, 0.72)",
             "zIndex": 100,
           },
         ],
@@ -268,8 +268,8 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                     borderRadius="2px"
                     borderWidth="1px"
                     buttonPaddingBottom="0px"
-                    buttonPaddingLeft="20px"
-                    buttonPaddingRight="20px"
+                    buttonPaddingLeft="12px"
+                    buttonPaddingRight="12px"
                     buttonPaddingTop="0px"
                     collapsable={false}
                     data-blade-component="button"
@@ -311,8 +311,8 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                           "justifyContent": "center",
                           "minHeight": 36,
                           "paddingBottom": 0,
-                          "paddingLeft": 20,
-                          "paddingRight": 20,
+                          "paddingLeft": 12,
+                          "paddingRight": 12,
                           "paddingTop": 0,
                           "textDecorationColor": "black",
                           "textDecorationLine": "none",
@@ -1066,7 +1066,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
             "top": 0,
           },
           {
-            "backgroundColor": "hsla(214, 15%, 18%, 0.64)",
+            "backgroundColor": "hsla(231, 11%, 12%, 0.72)",
             "zIndex": 100,
           },
         ],
@@ -1301,8 +1301,8 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                     borderRadius="2px"
                     borderWidth="1px"
                     buttonPaddingBottom="0px"
-                    buttonPaddingLeft="20px"
-                    buttonPaddingRight="20px"
+                    buttonPaddingLeft="12px"
+                    buttonPaddingRight="12px"
                     buttonPaddingTop="0px"
                     collapsable={false}
                     data-blade-component="button"
@@ -1344,8 +1344,8 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                           "justifyContent": "center",
                           "minHeight": 36,
                           "paddingBottom": 0,
-                          "paddingLeft": 20,
-                          "paddingRight": 20,
+                          "paddingLeft": 12,
+                          "paddingRight": 12,
                           "paddingTop": 0,
                           "textDecorationColor": "black",
                           "textDecorationLine": "none",

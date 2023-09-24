@@ -33,8 +33,8 @@ exports[`<Popover /> should render 1`] = `
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
+    buttonPaddingLeft="12px"
+    buttonPaddingRight="12px"
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
@@ -77,8 +77,8 @@ exports[`<Popover /> should render 1`] = `
           "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
+          "paddingLeft": 12,
+          "paddingRight": 12,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -549,8 +549,8 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
+    buttonPaddingLeft="12px"
+    buttonPaddingRight="12px"
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
@@ -593,8 +593,8 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
           "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
+          "paddingLeft": 12,
+          "paddingRight": 12,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -1065,8 +1065,8 @@ exports[`<Popover /> should render with title,footer 1`] = `
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
+    buttonPaddingLeft="12px"
+    buttonPaddingRight="12px"
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
@@ -1109,8 +1109,8 @@ exports[`<Popover /> should render with title,footer 1`] = `
           "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
+          "paddingLeft": 12,
+          "paddingRight": 12,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",

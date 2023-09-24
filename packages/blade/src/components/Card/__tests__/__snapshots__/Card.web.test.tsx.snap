@@ -210,8 +210,8 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -272,8 +272,8 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
