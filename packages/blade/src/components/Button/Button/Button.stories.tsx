@@ -8,7 +8,7 @@ import type { ButtonProps } from './Button';
 import ButtonComponent from './Button';
 import { BaseText } from '~components/Typography/BaseText';
 import { CreditCardIcon } from '~components/Icons';
-import { Text } from '~components/Typography';
+import { Text, Heading as HeadingComponent } from '~components/Typography';
 import iconMap from '~components/Icons/iconMap';
 import BaseBox from '~components/Box/BaseBox';
 import { Sandbox } from '~utils/storybook/Sandbox';
@@ -155,9 +155,90 @@ const ButtonWithVariantTemplate: ComponentStory<typeof ButtonComponent> = ({
   );
 };
 
+const ButtonWithColorTemplate: ComponentStory<typeof ButtonComponent> = ({
+  children = 'Button',
+  ...args
+}) => {
+  const colors: ButtonProps['color'][] = ['default', 'white', 'positive', 'negative'];
+
+  return (
+    <>
+      {colors.map((color) => (
+        <BaseBox
+          key={color}
+          display="flex"
+          flexDirection="row"
+          gap="spacing.5"
+          backgroundColor={color === 'white' ? 'brand.primary.500' : 'transparent'}
+          margin="spacing.2"
+        >
+          <BaseBox
+            width="100px"
+            margin="spacing.2"
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+          >
+            <HeadingComponent
+              marginBottom="spacing.3"
+              contrast={color == 'white' ? 'high' : 'low'}
+              size="medium"
+            >
+              {color}
+            </HeadingComponent>
+          </BaseBox>
+          <BaseBox margin="spacing.2">
+            <Text
+              marginBottom="spacing.3"
+              contrast={color == 'white' ? 'high' : 'low'}
+              weight="bold"
+            >
+              Primary
+            </Text>
+            <ButtonComponent {...args} color={color} variant="primary">
+              {children}
+            </ButtonComponent>
+          </BaseBox>
+
+          <BaseBox margin="spacing.2">
+            <Text
+              marginBottom="spacing.3"
+              contrast={color == 'white' ? 'high' : 'low'}
+              weight="bold"
+            >
+              Secondary
+            </Text>
+            <ButtonComponent {...args} color={color} variant="secondary">
+              {children}
+            </ButtonComponent>
+          </BaseBox>
+
+          {(color == 'default' || color == 'white') && (
+            <BaseBox margin="spacing.2">
+              <Text
+                marginBottom="spacing.3"
+                contrast={color == 'white' ? 'high' : 'low'}
+                weight="bold"
+              >
+                Tertiary
+              </Text>
+              <ButtonComponent {...args} color={color} variant="tertiary">
+                {children}
+              </ButtonComponent>
+            </BaseBox>
+          )}
+        </BaseBox>
+      ))}
+    </>
+  );
+};
+
 export const Default = ButtonTemplate.bind({});
 // Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
 Default.storyName = 'Default';
+
+export const ButtonWithColors = ButtonWithColorTemplate.bind({});
+ButtonWithColors.storyName = 'Button with colors';
 
 export const PrimaryButton = ButtonWithSizeTemplate.bind({});
 PrimaryButton.storyName = 'Primary';
