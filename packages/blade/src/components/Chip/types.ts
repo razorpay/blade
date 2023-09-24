@@ -15,10 +15,16 @@ type ChipProps = {
    */
   icon?: IconComponent;
   /**
-   * Sets the Chip's visual intent
+   * Sets the Chip's visual intent. This is deprecated in favor of the `color` prop.
    *
+   *  @deprecated Use the `color` prop instead.
    */
   intent?: 'positive' | 'negative' | 'none';
+  /**
+   * Sets the Chip's visual color.
+   *
+   */
+  color?: 'positive' | 'negative' | 'default';
   /**
    * If `true`, the Chip will be disabled
    *
@@ -86,11 +92,17 @@ type ChipGroupProps = {
    */
   value?: string | string[];
   /**
-   * Sets the ChipGroups's visual intent, it will propagate down to all the Chips
+   * Sets the ChipGroups's visual intent, it will propagate down to all the Chips. This is deprecated in favor of the `color` prop.
    *
    * @default "none"
+   * @deprecated Use the `color` prop instead.
    */
   intent?: 'positive' | 'negative' | 'none';
+  /**
+   * Sets the ChipGroups's visual color, it will propagate down to all the Chips
+   *
+   */
+  color?: 'positive' | 'negative' | 'default';
 } & TestID &
   StyledPropsBlade;
 
@@ -110,6 +122,7 @@ type ChipGroupContextType = Pick<
   | 'onChange'
   | 'size'
   | 'intent'
+  | 'color'
   | 'selectionType'
 > & { state?: State };
 
@@ -123,7 +136,7 @@ type AnimatedChipProps = {
 };
 
 type StyledChipWrapperProps = {
-  intent: ChipGroupProps['intent'];
+  color: ChipGroupProps['color'];
   borderColor: DotNotationColorStringToken<Theme['colors']>;
   isChecked?: boolean;
   isDisabled?: boolean;

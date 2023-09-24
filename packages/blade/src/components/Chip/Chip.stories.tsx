@@ -94,6 +94,20 @@ export default {
         type: 'radio',
       },
     },
+    color: {
+      description:
+        'Sets the color of the Chip. This overwrites the color set by the parent `ChipGroup` component',
+      table: {
+        category: propsCategory.CHIP,
+        type: {
+          summary: '"default" | "positive" | "negative"',
+        },
+      },
+      options: ['default', 'positive', 'negative'],
+      control: {
+        type: 'radio',
+      },
+    },
 
     // Styled Props
     ...getStyledPropsArgTypes(),
@@ -124,5 +138,5 @@ const ChipTemplate: ComponentStory<typeof ChipComponent> = ({ children, ...args 
 export const Default = ChipTemplate.bind({});
 Default.storyName = 'Default';
 Default.args = {
-  intent: 'none',
+  color: 'default',
 };

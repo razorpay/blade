@@ -37,7 +37,7 @@ type OnChange = ({
 }) => void;
 
 const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
-  { isDisabled, value, children, icon: Icon, intent, testID, ...styledProps },
+  { isDisabled, value, children, icon: Icon, intent, color, testID, ...styledProps },
   ref,
 ) => {
   const { theme } = useTheme();
@@ -68,6 +68,9 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
   const useChip = groupProps?.selectionType === 'single' ? useRadio : useCheckbox;
   const _size = groupProps?.size || 'small';
   const _intent = intent ?? groupProps?.intent;
+  // If intent is proovided and it's not none, use intent otherwise use color
+  const _color = color ?? groupProps?.color ?? 'default';
+  const chipColor = _intent && _intent !== 'none' ? _intent : _color;
 
   const handleChange: OnChange = ({ isChecked, value }) => {
     if (isChecked) {
@@ -117,8 +120,8 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
   );
 
   let textVariant = 'unchecked';
-  if (_isChecked && _intent) {
-    textVariant = _intent;
+  if (_isChecked && chipColor) {
+    textVariant = chipColor;
   }
   if (_isDisabled) {
     textVariant = 'disabled';
@@ -128,8 +131,8 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
 
   let intentVariant = 'unchecked';
   const stateVariant = _isDisabled ? 'disabled' : 'default';
-  if (_isChecked && _intent) {
-    intentVariant = _intent;
+  if (_isChecked && chipColor) {
+    intentVariant = chipColor;
   }
   const chipBackgroundColor = chipColorTokens.background[intentVariant][stateVariant];
   const chipBorderColor = chipColorTokens.border[intentVariant][stateVariant];
@@ -155,7 +158,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
         <BaseBox display="flex" flexDirection="column">
           <BaseBox display="flex" alignItems="center" flexDirection="row">
             <SelectorInput
-              hoverTokens={getChipInputHoverTokens(_intent)}
+              hoverTokens={getChipInputHoverTokens(chipColor)}
               isChecked={state.isChecked}
               isDisabled={_isDisabled}
               inputProps={inputProps}
@@ -171,7 +174,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
                 borderColor={chipBorderColor}
                 isChecked={_isChecked}
                 isDisabled={_isDisabled}
-                intent={_intent}
+                color={chipColor}
                 display="flex"
                 flexDirection="row"
                 justifyContent="center"
