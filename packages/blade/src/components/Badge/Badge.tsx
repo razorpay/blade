@@ -23,11 +23,18 @@ type BadgeProps = {
    */
   children: StringChildrenType;
   /**
+   * Sets the variant of the badge. This prop is deprecated in favor of `color`.
+   *
+   * @deprecated Use the `color` prop instead
+   * @default 'neutral'
+   */
+  variant?: Feedback | 'blue';
+  /**
    * Sets the variant of the badge.
    *
    * @default 'neutral'
    */
-  variant?: Feedback | 'blue';
+  color?: Feedback | 'blue';
   /**
    * Sets the contrast of the badge.
    *
@@ -96,7 +103,9 @@ const _Badge = ({
   fontWeight = 'regular',
   icon: Icon,
   size = 'medium',
+  // TODO: Remove variant prop in next major release in favor of color prop
   variant = 'neutral',
+  color,
   testID,
   ...styledProps
 }: BadgeProps): ReactElement => {
@@ -109,8 +118,10 @@ const _Badge = ({
       });
     }
   }
+
+  const badgeVariant = color ?? variant;
   const { backgroundColor, iconColor, textColor } = getColorProps({
-    variant,
+    variant: badgeVariant,
     contrast,
   });
 
