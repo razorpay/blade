@@ -351,11 +351,10 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: right;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+  -webkit-align-items: end;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: end;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -514,11 +513,10 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: left;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+  -webkit-align-items: start;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: start;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -1451,8 +1449,8 @@ exports[`<Button /> should render disabled negative color primary button 1`] = `
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
-  background-color: hsla(8,73%,47%,1);
-  border-color: hsla(8,99%,65%,1);
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
@@ -1484,18 +1482,18 @@ exports[`<Button /> should render disabled negative color primary button 1`] = `
 }
 
 .c0:hover {
-  background-color: hsla(8,73%,47%,1);
-  border-color: hsla(8,99%,65%,1);
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
 }
 
 .c0:active {
-  background-color: hsla(8,73%,47%,1);
-  border-color: hsla(8,99%,65%,1);
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
 }
 
 .c0:focus {
-  background-color: hsla(8,73%,47%,1);
-  border-color: hsla(8,99%,65%,1);
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
@@ -1510,7 +1508,7 @@ exports[`<Button /> should render disabled negative color primary button 1`] = `
 }
 
 .c3 {
-  color: hsla(8,99%,65%,1);
+  color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
   font-weight: 700;
@@ -1576,8 +1574,8 @@ exports[`<Button /> should render disabled negative color secondary button 1`] =
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
-  background-color: hsla(9,91%,56%,0.09);
-  border-color: hsla(9,91%,56%,0.32);
+  background-color: hsla(216,44%,23%,0);
+  border-color: hsla(218,19%,81%,1);
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
@@ -1609,18 +1607,18 @@ exports[`<Button /> should render disabled negative color secondary button 1`] =
 }
 
 .c0:hover {
-  background-color: hsla(9,91%,56%,0.09);
-  border-color: hsla(9,91%,56%,0.32);
+  background-color: hsla(216,44%,23%,0);
+  border-color: hsla(218,19%,81%,1);
 }
 
 .c0:active {
-  background-color: hsla(9,91%,56%,0.09);
-  border-color: hsla(9,91%,56%,0.32);
+  background-color: hsla(216,44%,23%,0);
+  border-color: hsla(218,19%,81%,1);
 }
 
 .c0:focus {
-  background-color: hsla(9,91%,56%,0.09);
-  border-color: hsla(9,91%,56%,0.32);
+  background-color: hsla(216,44%,23%,0);
+  border-color: hsla(218,19%,81%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
@@ -1635,7 +1633,7 @@ exports[`<Button /> should render disabled negative color secondary button 1`] =
 }
 
 .c3 {
-  color: hsla(9,91%,56%,0.32);
+  color: hsla(218,19%,81%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
   font-weight: 700;
@@ -1701,8 +1699,8 @@ exports[`<Button /> should render disabled positive color primary button 1`] = `
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
-  background-color: hsla(160,100%,26%,1);
-  border-color: hsla(149,99%,35%,1);
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
@@ -1734,18 +1732,18 @@ exports[`<Button /> should render disabled positive color primary button 1`] = `
 }
 
 .c0:hover {
-  background-color: hsla(160,100%,26%,1);
-  border-color: hsla(149,99%,35%,1);
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
 }
 
 .c0:active {
-  background-color: hsla(160,100%,26%,1);
-  border-color: hsla(149,99%,35%,1);
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
 }
 
 .c0:focus {
-  background-color: hsla(160,100%,26%,1);
-  border-color: hsla(149,99%,35%,1);
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
@@ -1760,7 +1758,7 @@ exports[`<Button /> should render disabled positive color primary button 1`] = `
 }
 
 .c3 {
-  color: hsla(149,99%,35%,1);
+  color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
   font-weight: 700;
@@ -1826,8 +1824,8 @@ exports[`<Button /> should render disabled positive color secondary button 1`] =
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
-  background-color: hsla(155,100%,31%,0.09);
-  border-color: hsla(155,100%,31%,0.32);
+  background-color: hsla(216,44%,23%,0);
+  border-color: hsla(218,19%,81%,1);
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
@@ -1859,18 +1857,18 @@ exports[`<Button /> should render disabled positive color secondary button 1`] =
 }
 
 .c0:hover {
-  background-color: hsla(155,100%,31%,0.09);
-  border-color: hsla(155,100%,31%,0.32);
+  background-color: hsla(216,44%,23%,0);
+  border-color: hsla(218,19%,81%,1);
 }
 
 .c0:active {
-  background-color: hsla(155,100%,31%,0.09);
-  border-color: hsla(155,100%,31%,0.32);
+  background-color: hsla(216,44%,23%,0);
+  border-color: hsla(218,19%,81%,1);
 }
 
 .c0:focus {
-  background-color: hsla(155,100%,31%,0.09);
-  border-color: hsla(155,100%,31%,0.32);
+  background-color: hsla(216,44%,23%,0);
+  border-color: hsla(218,19%,81%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
@@ -1885,7 +1883,7 @@ exports[`<Button /> should render disabled positive color secondary button 1`] =
 }
 
 .c3 {
-  color: hsla(155,100%,31%,0.32);
+  color: hsla(218,19%,81%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
   font-weight: 700;
@@ -1951,8 +1949,8 @@ exports[`<Button /> should render disabled white color primary button 1`] = `
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
-  background-color: hsla(210,6%,94%,0.18);
-  border-color: hsla(210,6%,94%,0.18);
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
@@ -1984,18 +1982,18 @@ exports[`<Button /> should render disabled white color primary button 1`] = `
 }
 
 .c0:hover {
-  background-color: hsla(210,6%,94%,0.18);
-  border-color: hsla(210,6%,94%,0.18);
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
 }
 
 .c0:active {
-  background-color: hsla(210,6%,94%,0.18);
-  border-color: hsla(210,6%,94%,0.18);
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
 }
 
 .c0:focus {
-  background-color: hsla(210,6%,94%,0.18);
-  border-color: hsla(210,6%,94%,0.18);
+  background-color: hsla(216,19%,89%,1);
+  border-color: hsla(216,19%,89%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
@@ -2010,7 +2008,7 @@ exports[`<Button /> should render disabled white color primary button 1`] = `
 }
 
 .c3 {
-  color: hsla(210,6%,94%,0.32);
+  color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
   font-weight: 700;
@@ -2076,8 +2074,8 @@ exports[`<Button /> should render disabled white color secondary button 1`] = `
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
-  background-color: hsla(214,15%,18%,0);
-  border-color: hsla(210,6%,94%,0.32);
+  background-color: hsla(216,44%,23%,0);
+  border-color: hsla(218,19%,81%,1);
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
@@ -2109,18 +2107,18 @@ exports[`<Button /> should render disabled white color secondary button 1`] = `
 }
 
 .c0:hover {
-  background-color: hsla(214,15%,18%,0);
-  border-color: hsla(210,6%,94%,0.32);
+  background-color: hsla(216,44%,23%,0);
+  border-color: hsla(218,19%,81%,1);
 }
 
 .c0:active {
-  background-color: hsla(214,15%,18%,0);
-  border-color: hsla(210,6%,94%,0.32);
+  background-color: hsla(216,44%,23%,0);
+  border-color: hsla(218,19%,81%,1);
 }
 
 .c0:focus {
-  background-color: hsla(214,15%,18%,0);
-  border-color: hsla(210,6%,94%,0.32);
+  background-color: hsla(216,44%,23%,0);
+  border-color: hsla(218,19%,81%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
@@ -2135,7 +2133,7 @@ exports[`<Button /> should render disabled white color secondary button 1`] = `
 }
 
 .c3 {
-  color: hsla(210,6%,94%,0.32);
+  color: hsla(218,19%,81%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
   font-weight: 700;
@@ -2201,8 +2199,8 @@ exports[`<Button /> should render disabled white color tertiary button 1`] = `
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
-  background-color: hsla(210,6%,94%,0.09);
-  border-color: hsla(214,15%,18%,0);
+  background-color: hsla(216,15%,54%,0.09);
+  border-color: hsla(216,19%,89%,1);
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
@@ -2234,18 +2232,18 @@ exports[`<Button /> should render disabled white color tertiary button 1`] = `
 }
 
 .c0:hover {
-  background-color: hsla(210,6%,94%,0.09);
-  border-color: hsla(214,15%,18%,0);
+  background-color: hsla(216,15%,54%,0.09);
+  border-color: hsla(216,19%,89%,1);
 }
 
 .c0:active {
-  background-color: hsla(210,6%,94%,0.09);
-  border-color: hsla(214,15%,18%,0);
+  background-color: hsla(216,15%,54%,0.09);
+  border-color: hsla(216,19%,89%,1);
 }
 
 .c0:focus {
-  background-color: hsla(210,6%,94%,0.09);
-  border-color: hsla(214,15%,18%,0);
+  background-color: hsla(216,15%,54%,0.09);
+  border-color: hsla(216,19%,89%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
@@ -2260,7 +2258,7 @@ exports[`<Button /> should render disabled white color tertiary button 1`] = `
 }
 
 .c3 {
-  color: hsla(210,6%,94%,0.32);
+  color: hsla(218,19%,81%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
   font-weight: 700;
@@ -2574,8 +2572,8 @@ exports[`<Button /> should render negative color primary button 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(8,73%,47%,1);
-  border-color: hsla(0,100%,97%,1);
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
@@ -2607,18 +2605,18 @@ exports[`<Button /> should render negative color primary button 1`] = `
 }
 
 .c0:hover {
-  background-color: hsla(7,72%,40%,1);
-  border-color: hsla(0,100%,97%,1);
+  background-color: hsla(223,95%,48%,1);
+  border-color: hsla(223,95%,48%,1);
 }
 
 .c0:active {
-  background-color: hsla(5,69%,32%,1);
-  border-color: hsla(0,100%,97%,1);
+  background-color: hsla(230,100%,42%,1);
+  border-color: hsla(230,100%,42%,1);
 }
 
 .c0:focus {
-  background-color: hsla(5,69%,32%,1);
-  border-color: hsla(0,100%,97%,1);
+  background-color: hsla(227,100%,45%,1);
+  border-color: hsla(227,100%,45%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
@@ -2633,7 +2631,7 @@ exports[`<Button /> should render negative color primary button 1`] = `
 }
 
 .c3 {
-  color: hsla(0,100%,97%,1);
+  color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
   font-weight: 700;
@@ -2698,8 +2696,8 @@ exports[`<Button /> should render negative color secondary button 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(9,91%,56%,0.09);
-  border-color: hsla(9,91%,56%,0.32);
+  background-color: hsla(218,89%,51%,0);
+  border-color: hsla(218,89%,51%,1);
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
@@ -2731,18 +2729,18 @@ exports[`<Button /> should render negative color secondary button 1`] = `
 }
 
 .c0:hover {
-  background-color: hsla(9,91%,56%,0.18);
-  border-color: hsla(9,91%,56%,0.32);
+  background-color: hsla(218,89%,51%,0.09);
+  border-color: hsla(218,89%,51%,1);
 }
 
 .c0:active {
-  background-color: hsla(9,91%,56%,0.32);
-  border-color: hsla(9,91%,56%,0.32);
+  background-color: hsla(218,89%,51%,0.32);
+  border-color: hsla(218,89%,51%,1);
 }
 
 .c0:focus {
-  background-color: hsla(9,91%,56%,0.32);
-  border-color: hsla(9,91%,56%,0.32);
+  background-color: hsla(218,89%,51%,0.18);
+  border-color: hsla(218,89%,51%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
@@ -2757,7 +2755,7 @@ exports[`<Button /> should render negative color secondary button 1`] = `
 }
 
 .c3 {
-  color: hsla(8,73%,47%,1);
+  color: hsla(218,89%,51%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
   font-weight: 700;
@@ -2822,8 +2820,8 @@ exports[`<Button /> should render positive color primary button 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(160,100%,26%,1);
-  border-color: hsla(107,100%,96%,1);
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
@@ -2855,18 +2853,18 @@ exports[`<Button /> should render positive color primary button 1`] = `
 }
 
 .c0:hover {
-  background-color: hsla(163,100%,22%,1);
-  border-color: hsla(107,100%,96%,1);
+  background-color: hsla(223,95%,48%,1);
+  border-color: hsla(223,95%,48%,1);
 }
 
 .c0:active {
-  background-color: hsla(164,100%,17%,1);
-  border-color: hsla(107,100%,96%,1);
+  background-color: hsla(230,100%,42%,1);
+  border-color: hsla(230,100%,42%,1);
 }
 
 .c0:focus {
-  background-color: hsla(164,100%,17%,1);
-  border-color: hsla(107,100%,96%,1);
+  background-color: hsla(227,100%,45%,1);
+  border-color: hsla(227,100%,45%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
@@ -2881,7 +2879,7 @@ exports[`<Button /> should render positive color primary button 1`] = `
 }
 
 .c3 {
-  color: hsla(107,100%,96%,1);
+  color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
   font-weight: 700;
@@ -2946,8 +2944,8 @@ exports[`<Button /> should render positive color secondary button 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(155,100%,31%,0.09);
-  border-color: hsla(155,100%,31%,0.32);
+  background-color: hsla(218,89%,51%,0);
+  border-color: hsla(218,89%,51%,1);
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
@@ -2979,18 +2977,18 @@ exports[`<Button /> should render positive color secondary button 1`] = `
 }
 
 .c0:hover {
-  background-color: hsla(155,100%,31%,0.18);
-  border-color: hsla(155,100%,31%,0.32);
+  background-color: hsla(218,89%,51%,0.09);
+  border-color: hsla(218,89%,51%,1);
 }
 
 .c0:active {
-  background-color: hsla(155,100%,31%,0.32);
-  border-color: hsla(155,100%,31%,0.32);
+  background-color: hsla(218,89%,51%,0.32);
+  border-color: hsla(218,89%,51%,1);
 }
 
 .c0:focus {
-  background-color: hsla(155,100%,31%,0.32);
-  border-color: hsla(155,100%,31%,0.32);
+  background-color: hsla(218,89%,51%,0.18);
+  border-color: hsla(218,89%,51%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
@@ -3005,7 +3003,7 @@ exports[`<Button /> should render positive color secondary button 1`] = `
 }
 
 .c3 {
-  color: hsla(160,100%,26%,1);
+  color: hsla(218,89%,51%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
   font-weight: 700;
@@ -3194,8 +3192,8 @@ exports[`<Button /> should render white color primary button 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(0,0%,100%,1);
-  border-color: hsla(0,0%,100%,1);
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
@@ -3227,18 +3225,142 @@ exports[`<Button /> should render white color primary button 1`] = `
 }
 
 .c0:hover {
-  background-color: hsla(216,6%,94%,1);
-  border-color: hsla(216,6%,94%,1);
+  background-color: hsla(223,95%,48%,1);
+  border-color: hsla(223,95%,48%,1);
 }
 
 .c0:active {
-  background-color: hsla(216,4%,89%,1);
-  border-color: hsla(216,4%,89%,1);
+  background-color: hsla(230,100%,42%,1);
+  border-color: hsla(230,100%,42%,1);
 }
 
 .c0:focus {
-  background-color: hsla(216,4%,89%,1);
-  border-color: hsla(216,4%,89%,1);
+  background-color: hsla(227,100%,45%,1);
+  border-color: hsla(227,100%,45%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: none;
+}
+
+.c0 * {
+  -webkit-transition-property: color,fill;
+  transition-property: color,fill;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c3 {
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c2 {
+  opacity: 1;
+}
+
+<div>
+  <button
+    class="c0"
+    data-blade-component="button"
+    role="button"
+    type="button"
+  >
+    <div
+      class="c1 c2"
+      data-blade-component="base-box"
+    >
+      <div
+        class="c3"
+        data-blade-component="base-text"
+      >
+        Pay Now
+      </div>
+    </div>
+  </button>
+</div>
+`;
+
+exports[`<Button /> should render white color secondary button 1`] = `
+.c0 {
+  min-height: 36px;
+  width: auto;
+  cursor: pointer;
+  background-color: hsla(218,89%,51%,0);
+  border-color: hsla(218,89%,51%,1);
+  border-width: 1px;
+  border-radius: 2px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 12px;
+  padding-right: 12px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c0:hover {
+  background-color: hsla(218,89%,51%,0.09);
+  border-color: hsla(218,89%,51%,1);
+}
+
+.c0:active {
+  background-color: hsla(218,89%,51%,0.32);
+  border-color: hsla(218,89%,51%,1);
+}
+
+.c0:focus {
+  background-color: hsla(218,89%,51%,0.18);
+  border-color: hsla(218,89%,51%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
@@ -3313,137 +3435,13 @@ exports[`<Button /> should render white color primary button 1`] = `
 </div>
 `;
 
-exports[`<Button /> should render white color secondary button 1`] = `
-.c0 {
-  min-height: 36px;
-  width: auto;
-  cursor: pointer;
-  background-color: hsla(214,15%,18%,0);
-  border-color: hsla(0,0%,100%,1);
-  border-width: 1px;
-  border-radius: 2px;
-  border-style: solid;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 12px;
-  padding-right: 12px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  position: relative;
-}
-
-.c0:hover {
-  background-color: hsla(210,6%,94%,0.18);
-  border-color: hsla(0,0%,100%,1);
-}
-
-.c0:active {
-  background-color: hsla(210,6%,94%,0.32);
-  border-color: hsla(0,0%,100%,1);
-}
-
-.c0:focus {
-  background-color: hsla(210,6%,94%,0.32);
-  border-color: hsla(0,0%,100%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-  outline: none;
-}
-
-.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c3 {
-  color: hsla(0,0%,100%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-}
-
-.c2 {
-  opacity: 1;
-}
-
-<div>
-  <button
-    class="c0"
-    data-blade-component="button"
-    role="button"
-    type="button"
-  >
-    <div
-      class="c1 c2"
-      data-blade-component="base-box"
-    >
-      <div
-        class="c3"
-        data-blade-component="base-text"
-      >
-        Pay Now
-      </div>
-    </div>
-  </button>
-</div>
-`;
-
 exports[`<Button /> should render white color tertiary button 1`] = `
 .c0 {
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(210,6%,94%,0.09);
-  border-color: hsla(214,15%,18%,0);
+  background-color: hsla(216,15%,54%,0.09);
+  border-color: hsla(216,44%,23%,0);
   border-width: 1px;
   border-radius: 2px;
   border-style: solid;
@@ -3475,18 +3473,18 @@ exports[`<Button /> should render white color tertiary button 1`] = `
 }
 
 .c0:hover {
-  background-color: hsla(210,6%,94%,0.18);
-  border-color: hsla(214,15%,18%,0);
+  background-color: hsla(216,15%,54%,0.18);
+  border-color: hsla(216,19%,89%,1);
 }
 
 .c0:active {
-  background-color: hsla(210,6%,94%,0.32);
-  border-color: hsla(214,15%,18%,0);
+  background-color: hsla(216,15%,54%,0.32);
+  border-color: hsla(216,19%,89%,1);
 }
 
 .c0:focus {
-  background-color: hsla(210,6%,94%,0.32);
-  border-color: hsla(214,15%,18%,0);
+  background-color: hsla(216,15%,54%,0.32);
+  border-color: hsla(216,19%,89%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
@@ -3501,7 +3499,7 @@ exports[`<Button /> should render white color tertiary button 1`] = `
 }
 
 .c3 {
-  color: hsla(0,0%,100%,1);
+  color: hsla(216,33%,29%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
   font-weight: 700;

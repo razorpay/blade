@@ -69,7 +69,8 @@ type BaseButtonCommonProps = {
   isLoading?: boolean;
   accessibilityProps?: Partial<AccessibilityProps>;
   variant?: 'primary' | 'secondary' | 'tertiary';
-  color?: 'default' | 'white' | 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
+  contrast?: 'low' | 'high';
+  intent?: 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
 } & TestID &
   StyledPropsBlade &
   BladeCommonEvents;
@@ -99,7 +100,8 @@ type BaseButtonColorTokenModifiers = {
   property: 'background' | 'border' | 'text' | 'icon';
   variant: NonNullable<BaseButtonProps['variant']>;
   state: 'default' | 'hover' | 'active' | 'focus' | 'disabled';
-  color: BaseButtonProps['color'];
+  intent: BaseButtonProps['intent'];
+  contrast: BaseButtonProps['contrast'];
 };
 
 /**
@@ -123,25 +125,20 @@ const getColorToken = ({
   property,
   variant,
   state,
-  color,
+  contrast,
+  intent,
 }: BaseButtonColorTokenModifiers):
   | `action.${BaseButtonColorTokenModifiers['property']}.${BaseButtonColorTokenModifiers['variant']}.${BaseButtonColorTokenModifiers['state']}`
-  | `white.action.${BaseButtonColorTokenModifiers['property']}.${BaseButtonColorTokenModifiers['variant']}.${BaseButtonColorTokenModifiers['state']}`
   | `feedback.${NonNullable<
-      Exclude<BaseButtonColorTokenModifiers['color'], 'default' | 'white'>
-    >}.action.${BaseButtonColorTokenModifiers['property']}.primary.${BaseButtonColorTokenModifiers['state']}.${
-      | 'high'
-      | 'low'}Contrast` => {
-  if (!color || color === 'default') {
-    return `action.${property}.${variant}.${state}`;
+      BaseButtonColorTokenModifiers['intent']
+    >}.action.${BaseButtonColorTokenModifiers['property']}.primary.${BaseButtonColorTokenModifiers['state']}.${NonNullable<
+      BaseButtonColorTokenModifiers['contrast']
+    >}Contrast` => {
+  if (intent && contrast) {
+    // TODO: Add support for secondary & tertiary variants for feedback buttons here when a use-case is identified
+    return `feedback.${intent}.action.${property}.primary.${state}.${contrast}Contrast`;
   }
-  if (color === 'white') {
-    return `white.action.${property}.${variant}.${state}`;
-  }
-
-  return `feedback.${color}.action.${property}.primary.${state}.${
-    variant === 'primary' ? 'high' : 'low'
-  }Contrast`;
+  return `action.${property}.${variant}.${state}`;
 };
 
 type BaseButtonStyleProps = {
@@ -180,7 +177,8 @@ const getProps = ({
   size,
   theme,
   variant,
-  color,
+  intent,
+  contrast,
   hasIcon,
 }: {
   buttonTypographyTokens: ButtonTypography;
@@ -190,15 +188,9 @@ const getProps = ({
   theme: Theme;
   size: NonNullable<BaseButtonProps['size']>;
   variant: NonNullable<BaseButtonProps['variant']>;
-  color: BaseButtonProps['color'];
+  intent: BaseButtonProps['intent'];
+  contrast: NonNullable<BaseButtonProps['contrast']>;
 }): BaseButtonStyleProps => {
-  if (variant === 'tertiary' && color !== 'default' && color !== 'white') {
-    throwBladeError({
-      moduleName: 'BaseButton',
-      message: `Tertiary buttons can only be used with default or white color. You passed ${color}`,
-    });
-  }
-
   const isIconOnly = hasIcon && (!children || children?.trim().length === 0);
   const props: BaseButtonStyleProps = {
     iconSize: isIconOnly ? buttonIconOnlySizeToIconSizeMap[size] : buttonSizeToIconSizeMap[size],
@@ -210,13 +202,15 @@ const getProps = ({
     iconColor: getColorToken({
       property: 'icon',
       variant,
-      color,
+      contrast,
+      intent,
       state: 'default',
     }) as IconColor,
     textColor: getColorToken({
       property: 'text',
       variant,
-      color,
+      contrast,
+      intent,
       state: 'default',
     }) as BaseTextProps['color'],
     buttonPaddingTop: isIconOnly
@@ -234,35 +228,35 @@ const getProps = ({
     text: size === 'xsmall' ? children?.trim().toUpperCase() : children?.trim(),
     defaultBackgroundColor: getIn(
       theme.colors,
-      getColorToken({ property: 'background', variant, color, state: 'default' }),
+      getColorToken({ property: 'background', variant, contrast, intent, state: 'default' }),
     ),
     defaultBorderColor: getIn(
       theme.colors,
-      getColorToken({ property: 'border', variant, color, state: 'default' }),
+      getColorToken({ property: 'border', variant, contrast, intent, state: 'default' }),
     ),
     hoverBackgroundColor: getIn(
       theme.colors,
-      getColorToken({ property: 'background', variant, color, state: 'hover' }),
+      getColorToken({ property: 'background', variant, contrast, intent, state: 'hover' }),
     ),
     hoverBorderColor: getIn(
       theme.colors,
-      getColorToken({ property: 'border', variant, color, state: 'hover' }),
+      getColorToken({ property: 'border', variant, contrast, intent, state: 'hover' }),
     ),
     activeBackgroundColor: getIn(
       theme.colors,
-      getColorToken({ property: 'background', variant, color, state: 'active' }),
+      getColorToken({ property: 'background', variant, contrast, intent, state: 'active' }),
     ),
     activeBorderColor: getIn(
       theme.colors,
-      getColorToken({ property: 'border', variant, color, state: 'active' }),
+      getColorToken({ property: 'border', variant, contrast, intent, state: 'active' }),
     ),
     focusBackgroundColor: getIn(
       theme.colors,
-      getColorToken({ property: 'background', variant, color, state: 'focus' }),
+      getColorToken({ property: 'background', variant, contrast, intent, state: 'focus' }),
     ),
     focusBorderColor: getIn(
       theme.colors,
-      getColorToken({ property: 'border', variant, color, state: 'focus' }),
+      getColorToken({ property: 'border', variant, contrast, intent, state: 'focus' }),
     ),
     focusRingColor: getIn(theme.colors, 'brand.primary.400'),
     borderWidth: makeBorderSize(theme.border.width.thin),
@@ -274,22 +268,24 @@ const getProps = ({
   if (isDisabled) {
     const disabledBackgroundColor = getIn(
       theme.colors,
-      getColorToken({ property: 'background', variant, color, state: 'disabled' }),
+      getColorToken({ property: 'background', variant, contrast, intent, state: 'disabled' }),
     );
     const disabledBorderColor = getIn(
       theme.colors,
-      getColorToken({ property: 'border', variant, color, state: 'disabled' }),
+      getColorToken({ property: 'border', variant, contrast, intent, state: 'disabled' }),
     );
     props.iconColor = getColorToken({
       property: 'icon',
       variant,
-      color,
+      contrast,
+      intent,
       state: 'disabled',
     }) as IconColor;
     props.textColor = getColorToken({
       property: 'text',
       variant,
-      color,
+      contrast,
+      intent,
       state: 'disabled',
     }) as BaseTextProps['color'];
     props.defaultBackgroundColor = disabledBackgroundColor;
@@ -315,7 +311,8 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     target,
     rel,
     variant = 'primary',
-    color = 'default',
+    intent,
+    contrast = 'low',
     size = 'medium',
     icon: Icon,
     iconPosition = 'left',
@@ -397,7 +394,8 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     size,
     variant,
     theme,
-    color,
+    intent,
+    contrast,
     hasIcon: Boolean(Icon),
   });
 
@@ -465,7 +463,12 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
           bottom="0px"
           right="0px"
         >
-          <BaseSpinner accessibilityLabel="Loading" size={spinnerSize} color={color} />
+          <BaseSpinner
+            accessibilityLabel="Loading"
+            size={spinnerSize}
+            intent={intent}
+            contrast={contrast}
+          />
         </BaseBox>
       ) : null}
       <ButtonContent
@@ -481,8 +484,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
             paddingRight={iconPadding}
             display="flex"
             justifyContent="center"
-            alignItems="center"
-            textAlign="right"
+            alignItems="end"
           >
             <Icon size={iconSize} color={iconColor} />
           </BaseBox>
@@ -503,8 +505,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
             paddingLeft={iconPadding}
             display="flex"
             justifyContent="center"
-            alignItems="center"
-            textAlign="left"
+            alignItems="start"
           >
             <Icon size={iconSize} color={iconColor} />
           </BaseBox>
