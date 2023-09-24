@@ -30,7 +30,7 @@ type BadgeProps = {
    */
   variant?: Feedback | 'blue';
   /**
-   * Sets the variant of the badge.
+   * Sets the color of the badge.
    *
    * @default 'neutral'
    */

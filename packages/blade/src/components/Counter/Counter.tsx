@@ -24,18 +24,25 @@ export type CounterProps = {
    */
   max?: number;
   /**
-   * Sets the intent of the counter.
+   * Sets the intent of the counter. This prop is deprecated in favor of `color`.
    *
    * @default 'neutral'
-   * @deprecated Use `variant` instead
+   * @deprecated Use `color` instead
    */
   intent?: Feedback;
   /**
-   * Sets the variant of the counter.
+   * Sets the variant of the counter. This prop is deprecated in favor of `color`.
+   *
+   * @default 'neutral'
+   * @deprecated Use `color` instead
+   */
+  variant?: Feedback | 'blue';
+  /**
+   * Sets the color of the counter.
    *
    * @default 'neutral'
    */
-  variant?: Feedback | 'blue';
+  color?: Feedback | 'blue';
   /**
    * Sets the contrast of the counter.
    *
@@ -87,6 +94,7 @@ const Counter = ({
   max,
   intent,
   variant = 'neutral',
+  color,
   contrast = 'low',
   size = 'medium',
   testID,
@@ -99,7 +107,7 @@ const Counter = ({
 
   const { platform } = useTheme();
   const { backgroundColor, textColor } = getColorProps({
-    variant: intent ?? variant,
+    variant: color ?? intent ?? variant,
     contrast,
   });
 
