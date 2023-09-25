@@ -37,13 +37,13 @@ const StyledBaseButton = styled.button
         borderColor: props.activeBorderColor,
       }),
     },
-    '&:focus': {
+    '&:focus-visible': {
       backgroundColor: props.focusBackgroundColor,
       ...(props.variant !== 'tertiary' && {
         borderColor: props.focusBorderColor,
       }),
+      outline: `1px solid ${props.theme.colors.surface.background.level1.lowContrast}`,
       boxShadow: `0px 0px 0px 4px ${props.focusRingColor}`,
-      outline: 'none',
     },
     '*': {
       transitionProperty: 'color, fill',
