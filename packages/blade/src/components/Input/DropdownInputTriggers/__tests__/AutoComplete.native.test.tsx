@@ -185,7 +185,7 @@ describe('<Dropdown /> with <AutoComplete />', () => {
     expect(getByLabelText('Close Bengaluru tag')).toBeOnTheScreen();
   });
 
-  it('should handle controlled single selection', async () => {
+  it('should handle controlled single selection', () => {
     const ControlledDropdown = (): React.ReactElement => {
       const [currentSelection, setCurrentSelection] = React.useState<string>('');
 
