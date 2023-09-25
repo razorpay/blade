@@ -12,8 +12,8 @@ exports[`<Button /> should render button with default properties 1`] = `
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 12px;
-  padding-right: 12px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -136,8 +136,8 @@ exports[`<Button /> should render button with full width 1`] = `
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 12px;
-  padding-right: 12px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -260,8 +260,8 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 12px;
-  padding-right: 12px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -359,7 +359,7 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-right: 8px;
+  padding-right: 4px;
 }
 
 .c2 {
@@ -422,8 +422,8 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 12px;
-  padding-right: 12px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -521,7 +521,7 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-left: 8px;
+  padding-left: 4px;
 }
 
 .c2 {
@@ -584,8 +584,8 @@ exports[`<Button /> should render default color primary button 1`] = `
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 12px;
-  padding-right: 12px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -708,8 +708,8 @@ exports[`<Button /> should render default color secondary button 1`] = `
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 12px;
-  padding-right: 12px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -832,8 +832,8 @@ exports[`<Button /> should render default color tertiary button 1`] = `
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 12px;
-  padding-right: 12px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -956,8 +956,8 @@ exports[`<Button /> should render disabled button 1`] = `
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 12px;
-  padding-right: 12px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -1081,8 +1081,8 @@ exports[`<Button /> should render disabled default color primary button 1`] = `
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 12px;
-  padding-right: 12px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -1206,8 +1206,8 @@ exports[`<Button /> should render disabled default color secondary button 1`] = 
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 12px;
-  padding-right: 12px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -1331,8 +1331,8 @@ exports[`<Button /> should render disabled default color tertiary button 1`] = `
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 12px;
-  padding-right: 12px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -1456,8 +1456,8 @@ exports[`<Button /> should render disabled negative color primary button 1`] = `
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 12px;
-  padding-right: 12px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -1581,8 +1581,8 @@ exports[`<Button /> should render disabled negative color secondary button 1`] =
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 12px;
-  padding-right: 12px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -1706,8 +1706,8 @@ exports[`<Button /> should render disabled positive color primary button 1`] = `
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 12px;
-  padding-right: 12px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -1831,8 +1831,8 @@ exports[`<Button /> should render disabled positive color secondary button 1`] =
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 12px;
-  padding-right: 12px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -1956,8 +1956,8 @@ exports[`<Button /> should render disabled white color primary button 1`] = `
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 12px;
-  padding-right: 12px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -2081,8 +2081,8 @@ exports[`<Button /> should render disabled white color secondary button 1`] = `
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 12px;
-  padding-right: 12px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -2206,8 +2206,8 @@ exports[`<Button /> should render disabled white color tertiary button 1`] = `
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 12px;
-  padding-right: 12px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -2331,8 +2331,8 @@ exports[`<Button /> should render large size button 1`] = `
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 12px;
-  padding-right: 12px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -2455,8 +2455,8 @@ exports[`<Button /> should render medium size button 1`] = `
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 12px;
-  padding-right: 12px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -2579,8 +2579,8 @@ exports[`<Button /> should render negative color primary button 1`] = `
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 12px;
-  padding-right: 12px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -2703,8 +2703,8 @@ exports[`<Button /> should render negative color secondary button 1`] = `
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 12px;
-  padding-right: 12px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -2827,8 +2827,8 @@ exports[`<Button /> should render positive color primary button 1`] = `
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 12px;
-  padding-right: 12px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -2951,8 +2951,8 @@ exports[`<Button /> should render positive color secondary button 1`] = `
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 12px;
-  padding-right: 12px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -3075,8 +3075,8 @@ exports[`<Button /> should render small size button 1`] = `
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 8px;
-  padding-right: 8px;
+  padding-left: 12px;
+  padding-right: 12px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -3199,8 +3199,8 @@ exports[`<Button /> should render white color primary button 1`] = `
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 12px;
-  padding-right: 12px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -3323,8 +3323,8 @@ exports[`<Button /> should render white color secondary button 1`] = `
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 12px;
-  padding-right: 12px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -3447,8 +3447,8 @@ exports[`<Button /> should render white color tertiary button 1`] = `
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 12px;
-  padding-right: 12px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -3571,8 +3571,8 @@ exports[`<Button /> should render xsmall size button 1`] = `
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 4px;
-  padding-right: 4px;
+  padding-left: 8px;
+  padding-right: 8px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;

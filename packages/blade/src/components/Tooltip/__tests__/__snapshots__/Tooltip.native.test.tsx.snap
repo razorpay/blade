@@ -33,8 +33,8 @@ exports[`<Tooltip /> should render 1`] = `
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="12px"
-    buttonPaddingRight="12px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
@@ -77,8 +77,8 @@ exports[`<Tooltip /> should render 1`] = `
           "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
-          "paddingLeft": 12,
-          "paddingRight": 12,
+          "paddingLeft": 20,
+          "paddingRight": 20,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -404,8 +404,8 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="12px"
-    buttonPaddingRight="12px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
@@ -448,8 +448,8 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
           "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
-          "paddingLeft": 12,
-          "paddingRight": 12,
+          "paddingLeft": 20,
+          "paddingRight": 20,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -775,8 +775,8 @@ exports[`<Tooltip /> should render with title 1`] = `
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="12px"
-    buttonPaddingRight="12px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
@@ -819,8 +819,8 @@ exports[`<Tooltip /> should render with title 1`] = `
           "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
-          "paddingLeft": 12,
-          "paddingRight": 12,
+          "paddingLeft": 20,
+          "paddingRight": 20,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",

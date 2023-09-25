@@ -33,8 +33,8 @@ exports[`<Button /> should render button with default properties 1`] = `
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="12px"
-    buttonPaddingRight="12px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
@@ -76,8 +76,8 @@ exports[`<Button /> should render button with default properties 1`] = `
           "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
-          "paddingLeft": 12,
-          "paddingRight": 12,
+          "paddingLeft": 20,
+          "paddingRight": 20,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -187,8 +187,8 @@ exports[`<Button /> should render button with full width 1`] = `
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="12px"
-    buttonPaddingRight="12px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
@@ -230,8 +230,8 @@ exports[`<Button /> should render button with full width 1`] = `
           "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
-          "paddingLeft": 12,
-          "paddingRight": 12,
+          "paddingLeft": 20,
+          "paddingRight": 20,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -341,8 +341,8 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="12px"
-    buttonPaddingRight="12px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
@@ -384,8 +384,8 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
           "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
-          "paddingLeft": 12,
-          "paddingRight": 12,
+          "paddingLeft": 20,
+          "paddingRight": 20,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -435,7 +435,7 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
               "alignItems": "center",
               "display": "flex",
               "justifyContent": "center",
-              "paddingRight": 8,
+              "paddingRight": 4,
             },
           ]
         }
@@ -567,8 +567,8 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="12px"
-    buttonPaddingRight="12px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
@@ -610,8 +610,8 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
           "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
-          "paddingLeft": 12,
-          "paddingRight": 12,
+          "paddingLeft": 20,
+          "paddingRight": 20,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -694,7 +694,7 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
               "alignItems": "center",
               "display": "flex",
               "justifyContent": "center",
-              "paddingLeft": 8,
+              "paddingLeft": 4,
             },
           ]
         }
@@ -793,8 +793,8 @@ exports[`<Button /> should render default color primary button 1`] = `
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="12px"
-    buttonPaddingRight="12px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
@@ -836,8 +836,8 @@ exports[`<Button /> should render default color primary button 1`] = `
           "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
-          "paddingLeft": 12,
-          "paddingRight": 12,
+          "paddingLeft": 20,
+          "paddingRight": 20,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -947,8 +947,8 @@ exports[`<Button /> should render default color secondary button 1`] = `
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="12px"
-    buttonPaddingRight="12px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
@@ -990,8 +990,8 @@ exports[`<Button /> should render default color secondary button 1`] = `
           "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
-          "paddingLeft": 12,
-          "paddingRight": 12,
+          "paddingLeft": 20,
+          "paddingRight": 20,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -1101,8 +1101,8 @@ exports[`<Button /> should render default color tertiary button 1`] = `
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="12px"
-    buttonPaddingRight="12px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
@@ -1144,8 +1144,8 @@ exports[`<Button /> should render default color tertiary button 1`] = `
           "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
-          "paddingLeft": 12,
-          "paddingRight": 12,
+          "paddingLeft": 20,
+          "paddingRight": 20,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -1255,8 +1255,8 @@ exports[`<Button /> should render disabled button 1`] = `
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="12px"
-    buttonPaddingRight="12px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
@@ -1298,8 +1298,8 @@ exports[`<Button /> should render disabled button 1`] = `
           "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
-          "paddingLeft": 12,
-          "paddingRight": 12,
+          "paddingLeft": 20,
+          "paddingRight": 20,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -1409,8 +1409,8 @@ exports[`<Button /> should render disabled default color primary button 1`] = `
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="12px"
-    buttonPaddingRight="12px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
@@ -1452,8 +1452,8 @@ exports[`<Button /> should render disabled default color primary button 1`] = `
           "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
-          "paddingLeft": 12,
-          "paddingRight": 12,
+          "paddingLeft": 20,
+          "paddingRight": 20,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -1563,8 +1563,8 @@ exports[`<Button /> should render disabled default color secondary button 1`] = 
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="12px"
-    buttonPaddingRight="12px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
@@ -1606,8 +1606,8 @@ exports[`<Button /> should render disabled default color secondary button 1`] = 
           "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
-          "paddingLeft": 12,
-          "paddingRight": 12,
+          "paddingLeft": 20,
+          "paddingRight": 20,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -1717,8 +1717,8 @@ exports[`<Button /> should render disabled default color tertiary button 1`] = `
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="12px"
-    buttonPaddingRight="12px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
@@ -1760,8 +1760,8 @@ exports[`<Button /> should render disabled default color tertiary button 1`] = `
           "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
-          "paddingLeft": 12,
-          "paddingRight": 12,
+          "paddingLeft": 20,
+          "paddingRight": 20,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -1871,8 +1871,8 @@ exports[`<Button /> should render disabled negative color primary button 1`] = `
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="12px"
-    buttonPaddingRight="12px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
@@ -1914,8 +1914,8 @@ exports[`<Button /> should render disabled negative color primary button 1`] = `
           "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
-          "paddingLeft": 12,
-          "paddingRight": 12,
+          "paddingLeft": 20,
+          "paddingRight": 20,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -2025,8 +2025,8 @@ exports[`<Button /> should render disabled negative color secondary button 1`] =
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="12px"
-    buttonPaddingRight="12px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
@@ -2068,8 +2068,8 @@ exports[`<Button /> should render disabled negative color secondary button 1`] =
           "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
-          "paddingLeft": 12,
-          "paddingRight": 12,
+          "paddingLeft": 20,
+          "paddingRight": 20,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -2179,8 +2179,8 @@ exports[`<Button /> should render disabled positive color primary button 1`] = `
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="12px"
-    buttonPaddingRight="12px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
@@ -2222,8 +2222,8 @@ exports[`<Button /> should render disabled positive color primary button 1`] = `
           "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
-          "paddingLeft": 12,
-          "paddingRight": 12,
+          "paddingLeft": 20,
+          "paddingRight": 20,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -2333,8 +2333,8 @@ exports[`<Button /> should render disabled positive color secondary button 1`] =
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="12px"
-    buttonPaddingRight="12px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
@@ -2376,8 +2376,8 @@ exports[`<Button /> should render disabled positive color secondary button 1`] =
           "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
-          "paddingLeft": 12,
-          "paddingRight": 12,
+          "paddingLeft": 20,
+          "paddingRight": 20,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -2487,8 +2487,8 @@ exports[`<Button /> should render disabled white color primary button 1`] = `
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="12px"
-    buttonPaddingRight="12px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
@@ -2530,8 +2530,8 @@ exports[`<Button /> should render disabled white color primary button 1`] = `
           "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
-          "paddingLeft": 12,
-          "paddingRight": 12,
+          "paddingLeft": 20,
+          "paddingRight": 20,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -2641,8 +2641,8 @@ exports[`<Button /> should render disabled white color secondary button 1`] = `
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="12px"
-    buttonPaddingRight="12px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
@@ -2684,8 +2684,8 @@ exports[`<Button /> should render disabled white color secondary button 1`] = `
           "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
-          "paddingLeft": 12,
-          "paddingRight": 12,
+          "paddingLeft": 20,
+          "paddingRight": 20,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -2795,8 +2795,8 @@ exports[`<Button /> should render disabled white color tertiary button 1`] = `
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="12px"
-    buttonPaddingRight="12px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
@@ -2838,8 +2838,8 @@ exports[`<Button /> should render disabled white color tertiary button 1`] = `
           "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
-          "paddingLeft": 12,
-          "paddingRight": 12,
+          "paddingLeft": 20,
+          "paddingRight": 20,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -2949,8 +2949,8 @@ exports[`<Button /> should render large size button 1`] = `
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="12px"
-    buttonPaddingRight="12px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
@@ -2992,8 +2992,8 @@ exports[`<Button /> should render large size button 1`] = `
           "justifyContent": "center",
           "minHeight": 48,
           "paddingBottom": 0,
-          "paddingLeft": 12,
-          "paddingRight": 12,
+          "paddingLeft": 20,
+          "paddingRight": 20,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -3103,8 +3103,8 @@ exports[`<Button /> should render medium size button 1`] = `
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="12px"
-    buttonPaddingRight="12px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
@@ -3146,8 +3146,8 @@ exports[`<Button /> should render medium size button 1`] = `
           "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
-          "paddingLeft": 12,
-          "paddingRight": 12,
+          "paddingLeft": 20,
+          "paddingRight": 20,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -3257,8 +3257,8 @@ exports[`<Button /> should render negative color primary button 1`] = `
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="12px"
-    buttonPaddingRight="12px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
@@ -3300,8 +3300,8 @@ exports[`<Button /> should render negative color primary button 1`] = `
           "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
-          "paddingLeft": 12,
-          "paddingRight": 12,
+          "paddingLeft": 20,
+          "paddingRight": 20,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -3411,8 +3411,8 @@ exports[`<Button /> should render negative color secondary button 1`] = `
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="12px"
-    buttonPaddingRight="12px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
@@ -3454,8 +3454,8 @@ exports[`<Button /> should render negative color secondary button 1`] = `
           "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
-          "paddingLeft": 12,
-          "paddingRight": 12,
+          "paddingLeft": 20,
+          "paddingRight": 20,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -3565,8 +3565,8 @@ exports[`<Button /> should render positive color primary button 1`] = `
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="12px"
-    buttonPaddingRight="12px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
@@ -3608,8 +3608,8 @@ exports[`<Button /> should render positive color primary button 1`] = `
           "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
-          "paddingLeft": 12,
-          "paddingRight": 12,
+          "paddingLeft": 20,
+          "paddingRight": 20,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -3719,8 +3719,8 @@ exports[`<Button /> should render positive color secondary button 1`] = `
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="12px"
-    buttonPaddingRight="12px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
@@ -3762,8 +3762,8 @@ exports[`<Button /> should render positive color secondary button 1`] = `
           "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
-          "paddingLeft": 12,
-          "paddingRight": 12,
+          "paddingLeft": 20,
+          "paddingRight": 20,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -3873,8 +3873,8 @@ exports[`<Button /> should render small size button 1`] = `
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="8px"
-    buttonPaddingRight="8px"
+    buttonPaddingLeft="12px"
+    buttonPaddingRight="12px"
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
@@ -3916,8 +3916,8 @@ exports[`<Button /> should render small size button 1`] = `
           "justifyContent": "center",
           "minHeight": 32,
           "paddingBottom": 0,
-          "paddingLeft": 8,
-          "paddingRight": 8,
+          "paddingLeft": 12,
+          "paddingRight": 12,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -4027,8 +4027,8 @@ exports[`<Button /> should render white color primary button 1`] = `
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="12px"
-    buttonPaddingRight="12px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
@@ -4070,8 +4070,8 @@ exports[`<Button /> should render white color primary button 1`] = `
           "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
-          "paddingLeft": 12,
-          "paddingRight": 12,
+          "paddingLeft": 20,
+          "paddingRight": 20,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -4181,8 +4181,8 @@ exports[`<Button /> should render white color secondary button 1`] = `
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="12px"
-    buttonPaddingRight="12px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
@@ -4224,8 +4224,8 @@ exports[`<Button /> should render white color secondary button 1`] = `
           "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
-          "paddingLeft": 12,
-          "paddingRight": 12,
+          "paddingLeft": 20,
+          "paddingRight": 20,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -4335,8 +4335,8 @@ exports[`<Button /> should render white color tertiary button 1`] = `
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="12px"
-    buttonPaddingRight="12px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
@@ -4378,8 +4378,8 @@ exports[`<Button /> should render white color tertiary button 1`] = `
           "justifyContent": "center",
           "minHeight": 36,
           "paddingBottom": 0,
-          "paddingLeft": 12,
-          "paddingRight": 12,
+          "paddingLeft": 20,
+          "paddingRight": 20,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -4489,8 +4489,8 @@ exports[`<Button /> should render xsmall size button 1`] = `
     borderRadius="2px"
     borderWidth="1px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="4px"
-    buttonPaddingRight="4px"
+    buttonPaddingLeft="8px"
+    buttonPaddingRight="8px"
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
@@ -4532,8 +4532,8 @@ exports[`<Button /> should render xsmall size button 1`] = `
           "justifyContent": "center",
           "minHeight": 28,
           "paddingBottom": 0,
-          "paddingLeft": 4,
-          "paddingRight": 4,
+          "paddingLeft": 8,
+          "paddingRight": 8,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",

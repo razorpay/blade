@@ -257,8 +257,8 @@ exports[`<Popover /> should render 1`] = `
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 12px;
-  padding-right: 12px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -709,8 +709,8 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 12px;
-  padding-right: 12px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -1077,8 +1077,8 @@ exports[`<Popover /> should render with title,footer 1`] = `
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 12px;
-  padding-right: 12px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;

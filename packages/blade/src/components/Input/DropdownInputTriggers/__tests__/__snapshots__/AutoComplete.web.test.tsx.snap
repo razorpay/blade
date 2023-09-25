@@ -401,8 +401,8 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 12px;
-  padding-right: 12px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -1969,8 +1969,8 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 12px;
-  padding-right: 12px;
+  padding-left: 20px;
+  padding-right: 20px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
