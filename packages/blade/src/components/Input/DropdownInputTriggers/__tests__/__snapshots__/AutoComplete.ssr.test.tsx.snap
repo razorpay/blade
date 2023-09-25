@@ -332,7 +332,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
                 data-blade-component="box"
               >
                 <button
-                  class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 fcmfVa"
+                  class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 jgdzFd"
                   data-blade-component="button"
                   role="button"
                   type="button"

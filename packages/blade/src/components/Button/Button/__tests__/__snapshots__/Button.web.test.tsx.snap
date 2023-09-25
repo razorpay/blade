@@ -47,7 +47,7 @@ exports[`<Button /> should render button with default properties 1`] = `
   border-color: hsla(230,100%,42%,1);
 }
 
-.c0:focus {
+.c0:focus-visible {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
@@ -171,7 +171,7 @@ exports[`<Button /> should render button with full width 1`] = `
   border-color: hsla(230,100%,42%,1);
 }
 
-.c0:focus {
+.c0:focus-visible {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
@@ -295,7 +295,7 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
   border-color: hsla(230,100%,42%,1);
 }
 
-.c0:focus {
+.c0:focus-visible {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
@@ -457,7 +457,7 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
   border-color: hsla(230,100%,42%,1);
 }
 
-.c0:focus {
+.c0:focus-visible {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
@@ -619,7 +619,7 @@ exports[`<Button /> should render disabled button 1`] = `
   border-color: hsla(216,19%,89%,1);
 }
 
-.c0:focus {
+.c0:focus-visible {
   background-color: hsla(216,19%,89%,1);
   border-color: hsla(216,19%,89%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
@@ -744,7 +744,7 @@ exports[`<Button /> should render disabled secondary variant button 1`] = `
   border-color: hsla(218,19%,81%,1);
 }
 
-.c0:focus {
+.c0:focus-visible {
   background-color: hsla(216,44%,23%,0);
   border-color: hsla(218,19%,81%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
@@ -869,7 +869,7 @@ exports[`<Button /> should render disabled tertiary variant button 1`] = `
   border-color: hsla(216,19%,89%,1);
 }
 
-.c0:focus {
+.c0:focus-visible {
   background-color: hsla(0,0%,100%,1);
   border-color: hsla(216,19%,89%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
@@ -994,7 +994,7 @@ exports[`<Button /> should render large size button 1`] = `
   border-color: hsla(230,100%,42%,1);
 }
 
-.c0:focus {
+.c0:focus-visible {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
@@ -1118,7 +1118,7 @@ exports[`<Button /> should render medium size button 1`] = `
   border-color: hsla(230,100%,42%,1);
 }
 
-.c0:focus {
+.c0:focus-visible {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
@@ -1242,7 +1242,7 @@ exports[`<Button /> should render secondary variant button 1`] = `
   border-color: hsla(218,89%,51%,1);
 }
 
-.c0:focus {
+.c0:focus-visible {
   background-color: hsla(218,89%,51%,0.18);
   border-color: hsla(218,89%,51%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
@@ -1366,7 +1366,7 @@ exports[`<Button /> should render small size button 1`] = `
   border-color: hsla(230,100%,42%,1);
 }
 
-.c0:focus {
+.c0:focus-visible {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
@@ -1490,7 +1490,7 @@ exports[`<Button /> should render tertiary variant button 1`] = `
   border-color: hsla(216,19%,89%,1);
 }
 
-.c0:focus {
+.c0:focus-visible {
   background-color: hsla(220,30%,96%,1);
   border-color: hsla(216,19%,89%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
@@ -1614,7 +1614,7 @@ exports[`<Button /> should render xsmall size button 1`] = `
   border-color: hsla(230,100%,42%,1);
 }
 
-.c0:focus {
+.c0:focus-visible {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);

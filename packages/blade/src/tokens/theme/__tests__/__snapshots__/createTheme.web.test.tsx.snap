@@ -2387,7 +2387,7 @@ exports[`createTheme should create a theme with the correct brand colors 2`] = `
   border-color: hsl(332,100%,17%);
 }
 
-.c0:focus {
+.c0:focus-visible {
   background-color: hsl(332,100%,20%);
   border-color: hsl(332,100%,20%);
   box-shadow: 0px 0px 0px 4px hsla(332,100%,26%,0.18);
@@ -4849,7 +4849,7 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
   border-color: hsl(57,100%,42%);
 }
 
-.c0:focus {
+.c0:focus-visible {
   background-color: hsl(57,100%,47%);
   border-color: hsl(57,100%,47%);
   box-shadow: 0px 0px 0px 4px hsla(57,100%,52%,0.32);

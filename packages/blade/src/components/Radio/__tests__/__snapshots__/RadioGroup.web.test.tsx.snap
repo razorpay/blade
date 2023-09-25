@@ -188,7 +188,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
   word-wrap: normal;
 }
 
-.c8:focus + div {
+.c8:focus-visible + div {
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
@@ -602,7 +602,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
   word-wrap: normal;
 }
 
-.c8:focus + div {
+.c8:focus-visible + div {
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }

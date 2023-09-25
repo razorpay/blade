@@ -189,7 +189,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
   word-wrap: normal;
 }
 
-.c9:focus + div {
+.c9:focus-visible + div {
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
@@ -675,7 +675,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
   word-wrap: normal;
 }
 
-.c9:focus + div {
+.c9:focus-visible + div {
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
