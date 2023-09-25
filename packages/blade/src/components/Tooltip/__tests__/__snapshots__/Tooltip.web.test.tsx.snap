@@ -186,11 +186,7 @@ exports[`<Tooltip /> should render 1`] = `
 <body>
   <div>
     <button
-<<<<<<< HEAD
       aria-describedby=":r0:"
-=======
-      aria-describedby="Hello world"
->>>>>>> 693f8820 (fix(Tooltip): prevent overriding the `aria-label` attribute)
       class="c0"
       data-blade-component="button"
       role="button"
@@ -440,7 +436,6 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
   }
 }
 
-<<<<<<< HEAD
 <div>
   <button
     aria-describedby=":r8:"
@@ -452,16 +447,6 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
     <div
       class="c1 c2"
       data-blade-component="base-box"
-=======
-<body>
-  <div>
-    <button
-      aria-describedby="Hello world"
-      class="c0"
-      data-blade-component="button"
-      role="button"
-      type="button"
->>>>>>> 693f8820 (fix(Tooltip): prevent overriding the `aria-label` attribute)
     >
       <div
         class="c1 c2"
