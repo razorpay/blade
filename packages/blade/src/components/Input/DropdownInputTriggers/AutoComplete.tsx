@@ -196,6 +196,14 @@ const _AutoComplete = (
         onChange={onSelectionChange}
         isSelectInput={false}
         inputValue={inputValue}
+        syncInputValueWithSelection={(value) => {
+          if (!value) {
+            setInputValue('');
+            return;
+          }
+          const selectedOption = options.find((option) => option.value === value);
+          setInputValue(selectedOption?.title ?? '');
+        }}
         onTriggerKeydown={onTriggerKeydown}
         onInputValueChange={onInputValueChange}
         onTriggerClick={(triggerEvent) => {

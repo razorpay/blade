@@ -12,7 +12,15 @@ import type { BladeElementRef } from '~utils/types';
 import { useFirstRender } from '~utils/useFirstRender';
 
 const useControlledDropdownInput = (
-  props: Pick<BaseDropdownInputTriggerProps, 'onChange' | 'name' | 'value' | 'defaultValue'>,
+  props: Pick<
+    BaseDropdownInputTriggerProps,
+    | 'onChange'
+    | 'name'
+    | 'value'
+    | 'defaultValue'
+    | 'onInputValueChange'
+    | 'syncInputValueWithSelection'
+  >,
 ): void => {
   const isFirstRender = useFirstRender();
   const {
@@ -81,6 +89,11 @@ const useControlledDropdownInput = (
       }
 
       selectValues(props.value);
+
+      // we only
+      if (selectionType === 'single' && !Array.isArray(props.value)) {
+        props.syncInputValueWithSelection?.(props.value);
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.value, options]);
@@ -150,6 +163,7 @@ const _BaseDropdownInputTrigger = (
     name: props.name,
     value: props.value,
     defaultValue: props.defaultValue,
+    syncInputValueWithSelection: props.syncInputValueWithSelection,
   });
 
   const getValue = (): string | undefined => {

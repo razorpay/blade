@@ -40,6 +40,14 @@ type DropdownInputTriggersCommonProps = Pick<
   defaultValue?: string | string[];
   onChange?: ({ name, values }: { name?: string; values: string[] }) => void;
   /**
+   * Handles the controlled selection change.
+   *
+   * Most controlled changing is handled internally in base component so this is only required when you want to perform additional changes.
+   *
+   * E.g. in AutoComplete, we want to sync the inputValue of autocomplete with its selection
+   */
+  syncInputValueWithSelection?: (value: string) => void;
+  /**
    * constraints the height of input to given number rows
    *
    * When set to expandable, input takes 1 row in the begining and expands to take 3 when active

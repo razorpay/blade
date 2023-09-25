@@ -286,6 +286,43 @@ export const InternalAutoCompleteUncontrolled = (): React.ReactElement => {
   );
 };
 
+export const InternalAutoCompleteControlledSelection = (): React.ReactElement => {
+  const [currentSelection, setCurrentSelection] = React.useState<undefined | string>();
+
+  return (
+    <>
+      <Button marginBottom="spacing.4" onClick={() => setCurrentSelection('bangalore')}>
+        Select Bangalore
+      </Button>
+      <Button
+        marginBottom="spacing.4"
+        marginLeft="spacing.4"
+        onClick={() => setCurrentSelection('')}
+      >
+        Clear Selection
+      </Button>
+      <Dropdown selectionType="single">
+        <AutoComplete
+          label="Select A City"
+          value={currentSelection}
+          onChange={(args) => {
+            if (args) {
+              setCurrentSelection(args.values[0]);
+              console.log('onChange triggered');
+            }
+          }}
+        />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Mumbai" value="mumbai" />
+            <ActionListItem title="Bangalore" value="bangalore" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+    </>
+  );
+};
+
 const cities = [
   {
     title: 'Mumbai',
