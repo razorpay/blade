@@ -23,7 +23,7 @@ const StyledAccordionButton = styled.button<StyledAccordionButtonProps>((props) 
     border: 'none',
     textAlign: 'left',
 
-    '&:hover, &:focus': {
+    '&:hover, &:focus-visible': {
       backgroundColor: getBackgroundColor({ theme, isExpanded, isActive: true }),
     },
 
@@ -31,7 +31,7 @@ const StyledAccordionButton = styled.button<StyledAccordionButtonProps>((props) 
       color: theme.colors.surface.action.icon.hover.lowContrast,
     },
 
-    '&:focus': {
+    '&:focus-visible': {
       outline: 'none',
       boxShadow: `0px 0px 0px 4px ${theme.colors.brand.primary[400]}`,
       // only need border radius on the focus ring

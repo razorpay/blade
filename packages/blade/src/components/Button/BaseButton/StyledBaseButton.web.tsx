@@ -33,7 +33,7 @@ const StyledBaseButton = styled.button
       backgroundColor: props.activeBackgroundColor,
       borderColor: props.activeBorderColor,
     },
-    '&:focus': {
+    '&:focus-visible': {
       backgroundColor: props.focusBackgroundColor,
       borderColor: props.focusBorderColor,
       boxShadow: `0px 0px 0px 4px ${props.focusRingColor}`,

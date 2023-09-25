@@ -44,7 +44,7 @@ const getIndicatorButtonStyles = ({
         padding: makeSize(size[10]),
         paddingTop: makeSize(size[20]),
       },
-      '&:focus': {
+      '&:focus-visible': {
         // TODO: refactor to use focus ring token
         outline: 'none',
         boxShadow: `0px 0px 0px 4px ${theme.colors.brand.primary[400]}`,

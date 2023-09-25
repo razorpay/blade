@@ -15,7 +15,7 @@ const StyledPopoverInteractiveWrapper = styled.button((props) => {
     appearance: 'none',
     cursor: 'pointer',
     lineHeight: 0,
-    '&:focus': {
+    '&:focus-visible': {
       // TODO: refactor to use focus ring token
       outline: 'none',
       boxShadow: `0px 0px 0px 4px ${props.theme.colors.brand.primary[400]}`,
