@@ -1154,7 +1154,6 @@ exports[`<Button /> should render default color tertiary button 1`] = `
         },
         {
           "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
-          "borderColor": "hsla(216, 44%, 23%, 0)",
         },
       ]
     }
@@ -1770,7 +1769,6 @@ exports[`<Button /> should render disabled default color tertiary button 1`] = `
         },
         {
           "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
-          "borderColor": "hsla(216, 19%, 89%, 1)",
         },
       ]
     }
@@ -2848,7 +2846,6 @@ exports[`<Button /> should render disabled white color tertiary button 1`] = `
         },
         {
           "backgroundColor": "hsla(210, 6%, 94%, 0.09)",
-          "borderColor": "hsla(214, 15%, 18%, 0)",
         },
       ]
     }
@@ -4388,7 +4385,6 @@ exports[`<Button /> should render white color tertiary button 1`] = `
         },
         {
           "backgroundColor": "hsla(210, 6%, 94%, 0.09)",
-          "borderColor": "hsla(214, 15%, 18%, 0)",
         },
       ]
     }

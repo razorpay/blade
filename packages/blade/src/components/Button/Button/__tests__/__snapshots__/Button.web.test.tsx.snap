@@ -859,17 +859,14 @@ exports[`<Button /> should render default color tertiary button 1`] = `
 
 .c0:hover {
   background-color: hsla(216,15%,54%,0.18);
-  border-color: hsla(216,19%,89%,1);
 }
 
 .c0:active {
   background-color: hsla(216,15%,54%,0.32);
-  border-color: hsla(216,19%,89%,1);
 }
 
 .c0:focus {
   background-color: hsla(216,15%,54%,0.32);
-  border-color: hsla(216,19%,89%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
@@ -1358,17 +1355,14 @@ exports[`<Button /> should render disabled default color tertiary button 1`] = `
 
 .c0:hover {
   background-color: hsla(216,15%,54%,0.09);
-  border-color: hsla(216,19%,89%,1);
 }
 
 .c0:active {
   background-color: hsla(216,15%,54%,0.09);
-  border-color: hsla(216,19%,89%,1);
 }
 
 .c0:focus {
   background-color: hsla(216,15%,54%,0.09);
-  border-color: hsla(216,19%,89%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
@@ -2233,17 +2227,14 @@ exports[`<Button /> should render disabled white color tertiary button 1`] = `
 
 .c0:hover {
   background-color: hsla(210,6%,94%,0.09);
-  border-color: hsla(214,15%,18%,0);
 }
 
 .c0:active {
   background-color: hsla(210,6%,94%,0.09);
-  border-color: hsla(214,15%,18%,0);
 }
 
 .c0:focus {
   background-color: hsla(210,6%,94%,0.09);
-  border-color: hsla(214,15%,18%,0);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }
@@ -3474,17 +3465,14 @@ exports[`<Button /> should render white color tertiary button 1`] = `
 
 .c0:hover {
   background-color: hsla(210,6%,94%,0.18);
-  border-color: hsla(214,15%,18%,0);
 }
 
 .c0:active {
   background-color: hsla(210,6%,94%,0.32);
-  border-color: hsla(214,15%,18%,0);
 }
 
 .c0:focus {
   background-color: hsla(210,6%,94%,0.32);
-  border-color: hsla(214,15%,18%,0);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   outline: none;
 }

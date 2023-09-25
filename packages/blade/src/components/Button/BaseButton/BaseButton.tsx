@@ -419,6 +419,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
           ...accessibilityProps,
         }),
       }}
+      variant={variant}
       isLoading={isLoading}
       disabled={disabled}
       activeBorderColor={activeBorderColor}
