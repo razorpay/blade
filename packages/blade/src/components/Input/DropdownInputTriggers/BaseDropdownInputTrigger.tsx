@@ -20,6 +20,7 @@ const useControlledDropdownInput = (
     | 'defaultValue'
     | 'onInputValueChange'
     | 'syncInputValueWithSelection'
+    | 'isSelectInput'
   >,
 ): void => {
   const isFirstRender = useFirstRender();
@@ -90,8 +91,8 @@ const useControlledDropdownInput = (
 
       selectValues(props.value);
 
-      // we only
-      if (selectionType === 'single' && !Array.isArray(props.value)) {
+      // in single select AutoComplete, we have to set inputValue of autocomplete according to the new selection.
+      if (selectionType === 'single' && !Array.isArray(props.value) && !props.isSelectInput) {
         props.syncInputValueWithSelection?.(props.value);
       }
     }
@@ -164,6 +165,7 @@ const _BaseDropdownInputTrigger = (
     value: props.value,
     defaultValue: props.defaultValue,
     syncInputValueWithSelection: props.syncInputValueWithSelection,
+    isSelectInput: props.isSelectInput,
   });
 
   const getValue = (): string | undefined => {

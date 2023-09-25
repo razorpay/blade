@@ -40,11 +40,9 @@ type DropdownInputTriggersCommonProps = Pick<
   defaultValue?: string | string[];
   onChange?: ({ name, values }: { name?: string; values: string[] }) => void;
   /**
-   * Handles the controlled selection change.
+   * Syncs the selected value to inputValue in AutoComplete
    *
-   * Most controlled changing is handled internally in base component so this is only required when you want to perform additional changes.
-   *
-   * E.g. in AutoComplete, we want to sync the inputValue of autocomplete with its selection
+   * Only needed in single select AutoComplete because inputValue is expected to be same as selected value there
    */
   syncInputValueWithSelection?: (value: string) => void;
   /**
