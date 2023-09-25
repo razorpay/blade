@@ -292,11 +292,11 @@ exports[`<Popover /> should render 1`] = `
   border-color: hsla(230,100%,42%,1);
 }
 
-.c0:focus {
+.c0:focus-visible {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
+  outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-  outline: none;
 }
 
 .c0 * {
@@ -744,11 +744,11 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
   border-color: hsla(230,100%,42%,1);
 }
 
-.c0:focus {
+.c0:focus-visible {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
+  outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-  outline: none;
 }
 
 .c0 * {
@@ -1112,11 +1112,11 @@ exports[`<Popover /> should render with title,footer 1`] = `
   border-color: hsla(230,100%,42%,1);
 }
 
-.c0:focus {
+.c0:focus-visible {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
+  outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-  outline: none;
 }
 
 .c0 * {
