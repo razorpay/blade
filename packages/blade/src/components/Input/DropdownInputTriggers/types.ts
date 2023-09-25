@@ -40,6 +40,12 @@ type DropdownInputTriggersCommonProps = Pick<
   defaultValue?: string | string[];
   onChange?: ({ name, values }: { name?: string; values: string[] }) => void;
   /**
+   * Syncs the selected value to inputValue in AutoComplete
+   *
+   * Only needed in single select AutoComplete because inputValue is expected to be same as selected value there
+   */
+  syncInputValueWithSelection?: (value: string) => void;
+  /**
    * constraints the height of input to given number rows
    *
    * When set to expandable, input takes 1 row in the begining and expands to take 3 when active

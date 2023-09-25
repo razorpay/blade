@@ -184,4 +184,58 @@ describe('<Dropdown /> with <AutoComplete />', () => {
     fireEvent.press(getByRole('menuitem', { name: 'Bengaluru' }));
     expect(getByLabelText('Close Bengaluru tag')).toBeOnTheScreen();
   });
+
+  it('should handle controlled single selection', () => {
+    const ControlledDropdown = (): React.ReactElement => {
+      const [currentSelection, setCurrentSelection] = React.useState<string>('');
+
+      return (
+        <>
+          <Button
+            onClick={() => {
+              setCurrentSelection('bangalore');
+            }}
+          >
+            Select Bangalore
+          </Button>
+          <Button
+            onClick={() => {
+              setCurrentSelection('');
+            }}
+          >
+            Clear Selection
+          </Button>
+          <Dropdown selectionType="single">
+            <AutoComplete
+              label="Select City"
+              value={currentSelection}
+              onChange={(args) => {
+                setCurrentSelection(args?.values[0]);
+              }}
+            />
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem title="Bangalore" value="bangalore" />
+                <ActionListItem title="Pune" value="pune" />
+                <ActionListItem title="Chennai" value="chennai" />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        </>
+      );
+    };
+
+    const { getByRole, getByDisplayValue, queryByDisplayValue } = renderWithTheme(
+      <ControlledDropdown />,
+    );
+
+    expect(getByDisplayValue('')).toBeTruthy();
+
+    expect(queryByDisplayValue('Bangalore')).toBeFalsy();
+    fireEvent.press(getByRole('button', { name: 'Select Bangalore' }));
+    expect(getByDisplayValue('Bangalore')).toBeTruthy();
+
+    fireEvent.press(getByRole('button', { name: 'Clear Selection' }));
+    expect(queryByDisplayValue('Bangalore')).toBeFalsy();
+  });
 });
