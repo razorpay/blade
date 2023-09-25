@@ -48,26 +48,26 @@ const buttonPadding: Record<
   xsmall: {
     top: 0,
     bottom: 0,
-    left: 2,
-    right: 2,
+    left: 3,
+    right: 3,
   },
   small: {
     top: 0,
     bottom: 0,
-    left: 3,
-    right: 3,
+    left: 4,
+    right: 4,
   },
   medium: {
     top: 0,
     bottom: 0,
-    left: 4,
-    right: 4,
+    left: 6,
+    right: 6,
   },
   large: {
     top: 0,
     bottom: 0,
-    left: 4,
-    right: 4,
+    left: 6,
+    right: 6,
   },
 };
 
@@ -125,11 +125,11 @@ const buttonSizeToSpinnerSizeMap: Record<
   large: 'xlarge',
 };
 
-const textPadding: Record<NonNullable<BaseButtonProps['size']>, keyof Theme['spacing']> = {
-  xsmall: 2,
-  small: 2,
-  medium: 3,
-  large: 3,
+const buttonIconPadding: Record<NonNullable<BaseButtonProps['size']>, keyof Theme['spacing']> = {
+  xsmall: 1,
+  small: 1,
+  medium: 2,
+  large: 2,
 };
 
 export {
@@ -138,7 +138,7 @@ export {
   buttonSizeToIconSizeMap,
   buttonIconOnlySizeToIconSizeMap,
   buttonSizeToSpinnerSizeMap,
-  textPadding,
+  buttonIconPadding,
   buttonPadding,
   buttonIconOnlyPadding,
 };

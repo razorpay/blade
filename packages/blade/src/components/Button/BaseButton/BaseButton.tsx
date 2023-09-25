@@ -12,7 +12,7 @@ import {
   minHeight as buttonMinHeight,
   buttonSizeToIconSizeMap,
   buttonSizeToSpinnerSizeMap,
-  textPadding,
+  buttonIconPadding,
   buttonPadding,
 } from './buttonTokens';
 import type { BaseLinkProps } from '~components/Link/BaseLink';
@@ -206,7 +206,7 @@ const getProps = ({
     fontSize: buttonTypographyTokens.fonts.size[size],
     lineHeight: buttonTypographyTokens.lineHeights[size],
     minHeight: makeSize(buttonMinHeight[size]),
-    iconPadding: hasIcon && children?.trim() ? `spacing.${textPadding[size]}` : undefined,
+    iconPadding: hasIcon && children?.trim() ? `spacing.${buttonIconPadding[size]}` : undefined,
     iconColor: getColorToken({
       property: 'icon',
       variant,
