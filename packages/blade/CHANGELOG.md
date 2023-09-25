@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 10.13.1
+
+### Patch Changes
+
+- d22cbd3d: fix(AutoComplete): Handle inputValue in Controlled Single Selection
+- acd0f7b0: fix: change autocomplete search logic from startsWith to includes
+
 ## 10.13.0
 
 ### Minor Changes
