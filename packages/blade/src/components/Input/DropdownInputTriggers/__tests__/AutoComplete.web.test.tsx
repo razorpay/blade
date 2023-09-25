@@ -211,6 +211,62 @@ describe('<Dropdown /> with <AutoComplete />', () => {
     Object.defineProperty(HTMLElement.prototype, 'clientWidth', { configurable: true, value: 0 });
   });
 
+  it('should handle controlled single selection', async () => {
+    const ControlledDropdown = (): React.ReactElement => {
+      const [currentSelection, setCurrentSelection] = React.useState<string>('');
+
+      return (
+        <>
+          <Button
+            onClick={() => {
+              setCurrentSelection('bangalore');
+            }}
+          >
+            Select Bangalore
+          </Button>
+          <Button
+            onClick={() => {
+              setCurrentSelection('');
+            }}
+          >
+            Clear Selection
+          </Button>
+          <Dropdown selectionType="single">
+            <AutoComplete
+              label="Select City"
+              value={currentSelection}
+              onChange={(args) => {
+                setCurrentSelection(args?.values[0]);
+              }}
+            />
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem title="Bangalore" value="bangalore" />
+                <ActionListItem title="Pune" value="pune" />
+                <ActionListItem title="Chennai" value="chennai" />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        </>
+      );
+    };
+
+    const user = userEvent.setup();
+    const { getByRole } = renderWithTheme(<ControlledDropdown />);
+
+    const selectInput = getByRole('combobox', { name: 'Select City' });
+    expect(selectInput).toHaveValue('');
+    await user.click(getByRole('button', { name: 'Select Bangalore' }));
+    expect(selectInput).toHaveValue('Bangalore');
+
+    await user.click(selectInput);
+    await user.click(getByRole('option', { name: 'Pune' }));
+    expect(selectInput).toHaveValue('Pune');
+
+    await user.click(getByRole('button', { name: 'Clear Selection' }));
+    expect(selectInput).toHaveValue('');
+  });
+
   it('should handle controlled filtering', async () => {
     const cities = [
       {
