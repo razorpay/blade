@@ -34,7 +34,6 @@ describe('<Tooltip />', () => {
     expect(queryByRole('tooltip')).toBeInTheDocument();
     expect(queryByRole('tooltip')).toHaveStyle({ 'z-index': 1100 });
     expect(baseElement).toMatchSnapshot();
-<<<<<<< HEAD
   });
 
   it('should render with title', () => {
@@ -50,8 +49,6 @@ describe('<Tooltip />', () => {
     expect(queryByRole('tooltip')).toBeInTheDocument();
     expect(queryByRole('tooltip')).toHaveStyle({ 'z-index': 1100 });
     expect(baseElement).toMatchSnapshot();
-=======
->>>>>>> 693f8820 (fix(Tooltip): prevent overriding the `aria-label` attribute)
   });
 
   it('should render tooltip with custom zIndex', () => {

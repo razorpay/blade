@@ -186,7 +186,7 @@ exports[`<Tooltip /> should render 1`] = `
 <body>
   <div>
     <button
-      aria-describedby=":r0:"
+      aria-describedby="Hello world"
       class="c0"
       data-blade-component="button"
       role="button"
@@ -436,17 +436,14 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
   }
 }
 
-<div>
-  <button
-    aria-describedby=":r8:"
-    class="c0"
-    data-blade-component="button"
-    role="button"
-    type="button"
-  >
-    <div
-      class="c1 c2"
-      data-blade-component="base-box"
+<body>
+  <div>
+    <button
+      aria-describedby="Hello world"
+      class="c0"
+      data-blade-component="button"
+      role="button"
+      type="button"
     >
       <div
         class="c1 c2"
@@ -463,12 +460,12 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
   </div>
   <div
     data-floating-ui-portal=""
-    id=":r6:"
+    id=":ra:"
   >
     <div
       class="c4"
       data-blade-component="tooltip"
-      id=":r4:"
+      id=":r8:"
       pointer-events="none"
       role="tooltip"
       style="position: fixed; left: 0px; top: 0px; transform: translate(0px, 0px);"
@@ -493,7 +490,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
           width="16"
         >
           <path
-            clip-path="url(#:r7:)"
+            clip-path="url(#:rb:)"
             d="M0,0 H14 L7,7 Q7,7 7,7 Z"
             fill="none"
             stroke="hsla(216, 27%, 36%, 1)"
@@ -504,7 +501,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
             stroke="hsla(216, 33%, 29%, 1)"
           />
           <clippath
-            id=":r7:"
+            id=":rb:"
           >
             <rect
               height="14"
@@ -708,7 +705,7 @@ exports[`<Tooltip /> should render with title 1`] = `
 <body>
   <div>
     <button
-      aria-describedby=":r4:"
+      aria-describedby="Hello world"
       class="c0"
       data-blade-component="button"
       role="button"
