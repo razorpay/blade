@@ -94,7 +94,7 @@ const useAutoComplete = ({
       // eslint-disable-next-line no-lonely-if
       if (value && options && options.length > 0) {
         const filteredOptions = getOptionValues().filter((optionValue) =>
-          optionValue.toLowerCase().startsWith(value.toLowerCase()),
+          optionValue.toLowerCase().includes(value.toLowerCase()),
         );
         setGlobalFilteredValues(filteredOptions);
       } else {
