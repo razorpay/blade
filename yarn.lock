@@ -23442,10 +23442,10 @@ react-native-modal-selector@^2.1.1:
   dependencies:
     prop-types "^15.5.10"
 
-react-native-reanimated@3.4.1:
-  version "3.4.1"
-  resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-3.4.1.tgz#3518f4fbe716423a4361dfd4a2276c9f9c832a05"
-  integrity sha512-UjEBbWloCoUB/fkehj9GWAhuvfUx2BLYkQ3rP7+nVMJ5K5Ck1K6XFEBGfYdz4ttCBoyTSuzrPxe2XxJl3yRSdA==
+react-native-reanimated@3.5.2:
+  version "3.5.2"
+  resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-3.5.2.tgz#c7b4e70ee3210e26e6326d3e43f9299590898c5d"
+  integrity sha512-Uv9imJ6ZC7F/tTSpjjfo/0AZlw19Lag63+MUqF6p483LOoRkYtYP3JmtVV402mQWfhL1LPMeyAu/1spRjPKCCQ==
   dependencies:
     "@babel/plugin-transform-object-assign" "^7.16.7"
     "@babel/preset-typescript" "^7.16.7"

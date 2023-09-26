@@ -435,7 +435,7 @@ PODS:
     - React-Core
   - RNGestureHandler (2.9.0):
     - React-Core
-  - RNReanimated (3.4.1):
+  - RNReanimated (3.5.2):
     - DoubleConversion
     - FBLazyVector
     - glog
@@ -666,7 +666,7 @@ SPEC CHECKSUMS:
   RNCAsyncStorage: f47fe18526970a69c34b548883e1aeceb115e3e1
   RNDateTimePicker: d16386fda012db9e1fac5d2f8281a91254dfee99
   RNGestureHandler: 071d7a9ad81e8b83fe7663b303d132406a7d8f39
-  RNReanimated: 53ca20eee770c41173703f5948cd8898aa08262c
+  RNReanimated: 2491645f0883526f4470d8b5c761308709ba31f8
   RNSVG: 302bfc9905bd8122f08966dc2ce2d07b7b52b9f8
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
   Yoga: 8796b55dba14d7004f980b54bcc9833ee45b28ce
