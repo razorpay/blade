@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 10.13.2
+
+### Patch Changes
+
+- a047ea61: fix(AutoComplete): handle focus ring on option change
+
 ## 10.13.1
 
 ### Patch Changes
