@@ -319,7 +319,7 @@ export const makeInputDisplayValue = (selectedIndices: number[], options: Option
 
   // When one item is selected, we display that item's title in input
   if (selectedIndices.length === 1) {
-    return options[selectedIndices[0]].title;
+    return options[selectedIndices[0]]?.title;
   }
 
   // When more than one item is selected, we display the count of items
