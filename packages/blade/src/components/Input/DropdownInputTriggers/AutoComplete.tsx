@@ -54,7 +54,7 @@ const useAutoComplete = ({
       setActiveIndex(firstItemOptionIndex);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [globalFilteredValues.length]);
+  }, [globalFilteredValues.length, options.length]);
 
   // When input is empty or its single select, we want all items to be shown in filter on open of dropdown
   React.useEffect(() => {
