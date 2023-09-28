@@ -46,11 +46,11 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
             "hover": "hsla(332, 100%, 26%, 0.09)",
           },
           "tertiary": {
-            "active": "hsla(216, 44%, 23%, 1)",
-            "default": "hsla(218, 49%, 17%, 1)",
-            "disabled": "hsla(219, 41%, 19%, 1)",
-            "focus": "hsla(218, 52%, 16%, 1)",
-            "hover": "hsla(218, 49%, 17%, 1)",
+            "active": "hsla(216, 15%, 54%, 0.32)",
+            "default": "hsla(220, 11%, 84%, 0.09)",
+            "disabled": "hsla(220, 11%, 84%, 0.09)",
+            "focus": "hsla(220, 11%, 84%, 0.32)",
+            "hover": "hsla(220, 11%, 84%, 0.18)",
           },
         },
         "border": {
@@ -70,7 +70,7 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
           },
           "tertiary": {
             "active": "hsla(219, 12%, 45%, 1)",
-            "default": "hsla(219, 12%, 45%, 1)",
+            "default": "hsla(220, 11%, 84%, 0)",
             "disabled": "hsla(220, 23%, 29%, 1)",
             "focus": "hsla(219, 12%, 45%, 1)",
             "hover": "hsla(219, 12%, 45%, 1)",
@@ -102,7 +102,7 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
           "tertiary": {
             "active": "hsla(218, 11%, 84%, 1)",
             "default": "hsla(218, 11%, 84%, 1)",
-            "disabled": "hsla(219, 12%, 45%, 1)",
+            "disabled": "hsla(220, 16%, 37%, 1)",
             "focus": "hsla(216, 33%, 29%, 1)",
             "hover": "hsla(218, 11%, 84%, 1)",
           },
@@ -133,7 +133,7 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
           "tertiary": {
             "active": "hsla(218, 11%, 84%, 1)",
             "default": "hsla(218, 11%, 84%, 1)",
-            "disabled": "hsla(219, 12%, 45%, 1)",
+            "disabled": "hsla(220, 16%, 37%, 1)",
             "focus": "hsla(218, 11%, 84%, 1)",
             "hover": "hsla(218, 11%, 84%, 1)",
           },
@@ -304,6 +304,23 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
                   "lowContrast": "hsla(193, 100%, 35%, 0.18)",
                 },
               },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(193, 100%, 35%, 0.32)",
+                },
+                "default": {
+                  "lowContrast": "hsla(193, 100%, 35%, 0.09)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(193, 100%, 35%, 0.09)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(193, 100%, 35%, 0.32)",
+                },
+                "hover": {
+                  "lowContrast": "hsla(193, 100%, 35%, 0.18)",
+                },
+              },
             },
             "border": {
               "primary": {
@@ -325,6 +342,23 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
                 },
                 "hover": {
                   "highContrast": "hsla(180, 100%, 97%, 1)",
+                  "lowContrast": "hsla(195, 100%, 31%, 1)",
+                },
+              },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(195, 100%, 31%, 1)",
+                },
+                "default": {
+                  "lowContrast": "hsla(195, 100%, 31%, 1)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(197, 100%, 23%, 1)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(195, 100%, 31%, 1)",
+                },
+                "hover": {
                   "lowContrast": "hsla(195, 100%, 31%, 1)",
                 },
               },
@@ -374,6 +408,23 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
                   "lowContrast": "hsla(190, 100%, 39%, 1)",
                 },
               },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(190, 100%, 39%, 1)",
+                },
+                "default": {
+                  "lowContrast": "hsla(190, 100%, 39%, 1)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(197, 100%, 23%, 1)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(190, 100%, 39%, 1)",
+                },
+                "hover": {
+                  "lowContrast": "hsla(190, 100%, 39%, 1)",
+                },
+              },
             },
             "text": {
               "link": {
@@ -417,6 +468,23 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
                 },
                 "hover": {
                   "highContrast": "hsla(180, 100%, 97%, 1)",
+                  "lowContrast": "hsla(190, 100%, 39%, 1)",
+                },
+              },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(190, 100%, 39%, 1)",
+                },
+                "default": {
+                  "lowContrast": "hsla(190, 100%, 39%, 1)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(197, 100%, 23%, 1)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(190, 100%, 39%, 1)",
+                },
+                "hover": {
                   "lowContrast": "hsla(190, 100%, 39%, 1)",
                 },
               },
@@ -448,6 +516,23 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
                   "lowContrast": "hsla(9, 91%, 56%, 0.18)",
                 },
               },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(9, 91%, 56%, 0.32)",
+                },
+                "default": {
+                  "lowContrast": "hsla(9, 91%, 56%, 0.09)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(9, 91%, 56%, 0.09)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(9, 91%, 56%, 0.32)",
+                },
+                "hover": {
+                  "lowContrast": "hsla(9, 91%, 56%, 0.18)",
+                },
+              },
             },
             "border": {
               "primary": {
@@ -469,6 +554,23 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
                 },
                 "hover": {
                   "highContrast": "hsla(0, 100%, 97%, 1)",
+                  "lowContrast": "hsla(8, 99%, 65%, 1)",
+                },
+              },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(8, 99%, 65%, 1)",
+                },
+                "default": {
+                  "lowContrast": "hsla(8, 99%, 65%, 1)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(5, 69%, 32%, 1)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(8, 99%, 65%, 1)",
+                },
+                "hover": {
                   "lowContrast": "hsla(8, 99%, 65%, 1)",
                 },
               },
@@ -518,6 +620,23 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
                   "lowContrast": "hsla(6, 100%, 75%, 1)",
                 },
               },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(6, 100%, 75%, 1)",
+                },
+                "default": {
+                  "lowContrast": "hsla(6, 100%, 75%, 1)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(7, 72%, 40%, 1)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(6, 100%, 75%, 1)",
+                },
+                "hover": {
+                  "lowContrast": "hsla(6, 100%, 75%, 1)",
+                },
+              },
             },
             "text": {
               "link": {
@@ -561,6 +680,23 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
                 },
                 "hover": {
                   "highContrast": "hsla(0, 100%, 97%, 1)",
+                  "lowContrast": "hsla(6, 100%, 75%, 1)",
+                },
+              },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(6, 100%, 75%, 1)",
+                },
+                "default": {
+                  "lowContrast": "hsla(6, 100%, 75%, 1)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(7, 72%, 40%, 1)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(6, 100%, 75%, 1)",
+                },
+                "hover": {
                   "lowContrast": "hsla(6, 100%, 75%, 1)",
                 },
               },
@@ -592,6 +728,23 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
                   "lowContrast": "hsla(220, 11%, 84%, 0.18)",
                 },
               },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(220, 11%, 84%, 0.32)",
+                },
+                "default": {
+                  "lowContrast": "hsla(220, 11%, 84%, 0.09)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(220, 11%, 84%, 0.09)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(220, 11%, 84%, 0.32)",
+                },
+                "hover": {
+                  "lowContrast": "hsla(220, 11%, 84%, 0.18)",
+                },
+              },
             },
             "border": {
               "primary": {
@@ -613,6 +766,23 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
                 },
                 "hover": {
                   "highContrast": "hsla(219, 10%, 60%, 1)",
+                  "lowContrast": "hsla(219, 12%, 45%, 1)",
+                },
+              },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(219, 12%, 45%, 1)",
+                },
+                "default": {
+                  "lowContrast": "hsla(219, 12%, 45%, 1)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(219, 12%, 45%, 1)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(219, 12%, 45%, 1)",
+                },
+                "hover": {
                   "lowContrast": "hsla(219, 12%, 45%, 1)",
                 },
               },
@@ -662,6 +832,23 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
                   "lowContrast": "hsla(218, 11%, 84%, 1)",
                 },
               },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(218, 11%, 84%, 1)",
+                },
+                "default": {
+                  "lowContrast": "hsla(218, 11%, 84%, 1)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(219, 12%, 45%, 1)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(218, 11%, 84%, 1)",
+                },
+                "hover": {
+                  "lowContrast": "hsla(218, 11%, 84%, 1)",
+                },
+              },
             },
             "text": {
               "link": {
@@ -705,6 +892,23 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
                 },
                 "hover": {
                   "highContrast": "hsla(220, 35%, 22%, 1)",
+                  "lowContrast": "hsla(218, 11%, 84%, 1)",
+                },
+              },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(218, 11%, 84%, 1)",
+                },
+                "default": {
+                  "lowContrast": "hsla(218, 11%, 84%, 1)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(219, 12%, 45%, 1)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(218, 11%, 84%, 1)",
+                },
+                "hover": {
                   "lowContrast": "hsla(218, 11%, 84%, 1)",
                 },
               },
@@ -736,6 +940,23 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
                   "lowContrast": "hsla(36, 100%, 44%, 0.18)",
                 },
               },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(36, 100%, 44%, 0.32)",
+                },
+                "default": {
+                  "lowContrast": "hsla(36, 100%, 44%, 0.09)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(36, 100%, 44%, 0.09)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(36, 100%, 44%, 0.32)",
+                },
+                "hover": {
+                  "lowContrast": "hsla(36, 100%, 44%, 0.18)",
+                },
+              },
             },
             "border": {
               "primary": {
@@ -757,6 +978,23 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
                 },
                 "hover": {
                   "highContrast": "hsla(32, 100%, 94%, 1)",
+                  "lowContrast": "hsla(40, 90%, 32%, 1)",
+                },
+              },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(40, 90%, 32%, 1)",
+                },
+                "default": {
+                  "lowContrast": "hsla(40, 90%, 32%, 1)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(41, 82%, 26%, 1)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(40, 90%, 32%, 1)",
+                },
+                "hover": {
                   "lowContrast": "hsla(40, 90%, 32%, 1)",
                 },
               },
@@ -806,6 +1044,23 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
                   "lowContrast": "hsla(35, 84%, 54%, 1)",
                 },
               },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(35, 84%, 54%, 1)",
+                },
+                "default": {
+                  "lowContrast": "hsla(35, 84%, 54%, 1)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(41, 82%, 26%, 1)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(35, 84%, 54%, 1)",
+                },
+                "hover": {
+                  "lowContrast": "hsla(35, 84%, 54%, 1)",
+                },
+              },
             },
             "text": {
               "link": {
@@ -849,6 +1104,23 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
                 },
                 "hover": {
                   "highContrast": "hsla(32, 100%, 94%, 1)",
+                  "lowContrast": "hsla(35, 84%, 54%, 1)",
+                },
+              },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(35, 84%, 54%, 1)",
+                },
+                "default": {
+                  "lowContrast": "hsla(35, 84%, 54%, 1)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(41, 82%, 26%, 1)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(35, 84%, 54%, 1)",
+                },
+                "hover": {
                   "lowContrast": "hsla(35, 84%, 54%, 1)",
                 },
               },
@@ -880,6 +1152,23 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
                   "lowContrast": "hsla(155, 100%, 31%, 0.18)",
                 },
               },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(155, 100%, 31%, 0.32)",
+                },
+                "default": {
+                  "lowContrast": "hsla(155, 100%, 31%, 0.09)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(155, 100%, 31%, 0.09)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(155, 100%, 31%, 0.32)",
+                },
+                "hover": {
+                  "lowContrast": "hsla(155, 100%, 31%, 0.18)",
+                },
+              },
             },
             "border": {
               "primary": {
@@ -901,6 +1190,23 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
                 },
                 "hover": {
                   "highContrast": "hsla(107, 100%, 96%, 1)",
+                  "lowContrast": "hsla(160, 100%, 26%, 1)",
+                },
+              },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(160, 100%, 26%, 1)",
+                },
+                "default": {
+                  "lowContrast": "hsla(160, 100%, 26%, 1)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(160, 100%, 26%, 1)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(160, 100%, 26%, 1)",
+                },
+                "hover": {
                   "lowContrast": "hsla(160, 100%, 26%, 1)",
                 },
               },
@@ -950,6 +1256,23 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
                   "lowContrast": "hsla(149, 99%, 35%, 1)",
                 },
               },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(149, 99%, 35%, 1)",
+                },
+                "default": {
+                  "lowContrast": "hsla(149, 99%, 35%, 1)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(163, 100%, 22%, 1)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(149, 99%, 35%, 1)",
+                },
+                "hover": {
+                  "lowContrast": "hsla(149, 99%, 35%, 1)",
+                },
+              },
             },
             "text": {
               "link": {
@@ -996,6 +1319,23 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
                   "lowContrast": "hsla(149, 99%, 35%, 1)",
                 },
               },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(149, 99%, 35%, 1)",
+                },
+                "default": {
+                  "lowContrast": "hsla(149, 99%, 35%, 1)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(163, 100%, 22%, 1)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(149, 99%, 35%, 1)",
+                },
+                "hover": {
+                  "lowContrast": "hsla(149, 99%, 35%, 1)",
+                },
+              },
             },
           },
         },
@@ -1024,6 +1364,9 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
       },
       "overlay": {
         "background": "hsla(231, 11%, 12%, 0.72)",
+      },
+      "static": {
+        "white": "hsla(0, 0%, 100%, 1)",
       },
       "surface": {
         "action": {
@@ -1074,6 +1417,15 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
             "lowContrast": "hsla(220, 11%, 84%, 0.09)",
           },
         },
+        "overlay": {
+          "background": {
+            "400": "hsla(0, 0, 0, 0)",
+            "800": "hsla(231, 11%, 12%, 0.72)",
+          },
+        },
+        "popup": {
+          "background": "hsla(218, 11%, 84%, 1)",
+        },
         "text": {
           "muted": {
             "highContrast": "hsla(218, 11%, 76%, 1)",
@@ -1094,6 +1446,118 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
           "subtle": {
             "highContrast": "hsla(215, 12%, 92%, 1)",
             "lowContrast": "hsla(215, 12%, 92%, 1)",
+          },
+        },
+      },
+      "white": {
+        "action": {
+          "background": {
+            "primary": {
+              "active": "hsla(216, 4%, 89%, 1)",
+              "default": "hsla(0, 0%, 100%, 1)",
+              "disabled": "hsla(210, 6%, 94%, 0.18)",
+              "focus": "hsla(216, 4%, 89%, 1)",
+              "hover": "hsla(216, 6%, 94%, 1)",
+            },
+            "secondary": {
+              "active": "hsla(210, 6%, 94%, 0.32)",
+              "default": "hsla(214, 15%, 18%, 0)",
+              "disabled": "hsla(214, 15%, 18%, 0)",
+              "focus": "hsla(210, 6%, 94%, 0.32)",
+              "hover": "hsla(210, 6%, 94%, 0.18)",
+            },
+            "tertiary": {
+              "active": "hsla(210, 6%, 94%, 0.32)",
+              "default": "hsla(210, 6%, 94%, 0.09)",
+              "disabled": "hsla(210, 6%, 94%, 0.09)",
+              "focus": "hsla(210, 6%, 94%, 0.32)",
+              "hover": "hsla(210, 6%, 94%, 0.18)",
+            },
+          },
+          "border": {
+            "primary": {
+              "active": "hsla(216, 4%, 89%, 1)",
+              "default": "hsla(0, 0%, 100%, 1)",
+              "disabled": "hsla(210, 6%, 94%, 0.18)",
+              "focus": "hsla(216, 4%, 89%, 1)",
+              "hover": "hsla(216, 6%, 94%, 1)",
+            },
+            "secondary": {
+              "active": "hsla(0, 0%, 100%, 1)",
+              "default": "hsla(0, 0%, 100%, 1)",
+              "disabled": "hsla(210, 6%, 94%, 0.32)",
+              "focus": "hsla(0, 0%, 100%, 1)",
+              "hover": "hsla(0, 0%, 100%, 1)",
+            },
+            "tertiary": {
+              "active": "hsla(214, 15%, 18%, 0)",
+              "default": "hsla(214, 15%, 18%, 0)",
+              "disabled": "hsla(214, 15%, 18%, 0)",
+              "focus": "hsla(214, 15%, 18%, 0)",
+              "hover": "hsla(214, 15%, 18%, 0)",
+            },
+          },
+          "icon": {
+            "link": {
+              "active": "hsla(214, 7%, 81%, 1)",
+              "default": "hsla(0, 0%, 100%, 1)",
+              "disabled": "hsla(210, 6%, 94%, 0.32)",
+              "focus": "hsla(214, 7%, 81%, 1)",
+              "hover": "hsla(216, 4%, 89%, 1)",
+              "visited": "hsla(267, 100%, 83%, 1)",
+            },
+            "primary": {
+              "active": "hsla(213, 89%, 56%, 1)",
+              "default": "hsla(213, 89%, 56%, 1)",
+              "disabled": "hsla(210, 6%, 94%, 0.32)",
+              "focus": "hsla(213, 89%, 56%, 1)",
+              "hover": "hsla(213, 89%, 56%, 1)",
+            },
+            "secondary": {
+              "active": "hsla(0, 0%, 100%, 1)",
+              "default": "hsla(0, 0%, 100%, 1)",
+              "disabled": "hsla(210, 6%, 94%, 0.32)",
+              "focus": "hsla(0, 0%, 100%, 1)",
+              "hover": "hsla(0, 0%, 100%, 1)",
+            },
+            "tertiary": {
+              "active": "hsla(0, 0%, 100%, 1)",
+              "default": "hsla(0, 0%, 100%, 1)",
+              "disabled": "hsla(210, 6%, 94%, 0.32)",
+              "focus": "hsla(0, 0%, 100%, 1)",
+              "hover": "hsla(0, 0%, 100%, 1)",
+            },
+          },
+          "text": {
+            "link": {
+              "active": "hsla(214, 7%, 81%, 1)",
+              "default": "hsla(0, 0%, 100%, 1)",
+              "disabled": "hsla(210, 6%, 94%, 0.32)",
+              "focus": "hsla(214, 7%, 81%, 1)",
+              "hover": "hsla(216, 4%, 89%, 1)",
+              "visited": "hsla(267, 100%, 83%, 1)",
+            },
+            "primary": {
+              "active": "hsla(213, 89%, 56%, 1)",
+              "default": "hsla(213, 89%, 56%, 1)",
+              "disabled": "hsla(210, 6%, 94%, 0.32)",
+              "focus": "hsla(213, 89%, 56%, 1)",
+              "hover": "hsla(213, 89%, 56%, 1)",
+            },
+            "secondary": {
+              "active": "hsla(0, 0%, 100%, 1)",
+              "default": "hsla(0, 0%, 100%, 1)",
+              "disabled": "hsla(210, 6%, 94%, 0.32)",
+              "focus": "hsla(0, 0%, 100%, 1)",
+              "hover": "hsla(0, 0%, 100%, 1)",
+            },
+            "tertiary": {
+              "active": "hsla(0, 0%, 100%, 1)",
+              "default": "hsla(0, 0%, 100%, 1)",
+              "disabled": "hsla(210, 6%, 94%, 0.32)",
+              "focus": "hsla(0, 0%, 100%, 1)",
+              "hover": "hsla(0, 0%, 100%, 1)",
+            },
           },
         },
       },
@@ -1118,7 +1582,7 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
           "tertiary": {
             "active": "hsla(214, 21%, 94%, 1)",
             "default": "hsla(0, 0%, 100%, 1)",
-            "disabled": "hsla(0, 0%, 100%, 1)",
+            "disabled": "hsla(216, 15%, 54%, 0.09)",
             "focus": "hsla(220, 30%, 96%, 1)",
             "hover": "hsla(220, 27%, 98%, 1)",
           },
@@ -1374,6 +1838,23 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
                   "lowContrast": "hsla(193, 100%, 35%, 0.18)",
                 },
               },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(193, 100%, 35%, 0.32)",
+                },
+                "default": {
+                  "lowContrast": "hsla(193, 100%, 35%, 0.09)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(193, 100%, 35%, 0.09)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(193, 100%, 35%, 0.32)",
+                },
+                "hover": {
+                  "lowContrast": "hsla(193, 100%, 35%, 0.18)",
+                },
+              },
             },
             "border": {
               "primary": {
@@ -1395,6 +1876,23 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
                 },
                 "hover": {
                   "highContrast": "hsla(180, 100%, 97%, 1)",
+                  "lowContrast": "hsla(193, 100%, 35%, 0.32)",
+                },
+              },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(193, 100%, 35%, 0.32)",
+                },
+                "default": {
+                  "lowContrast": "hsla(193, 100%, 35%, 0.32)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(193, 100%, 35%, 0.32)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(193, 100%, 35%, 0.32)",
+                },
+                "hover": {
                   "lowContrast": "hsla(193, 100%, 35%, 0.32)",
                 },
               },
@@ -1444,6 +1942,23 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
                   "lowContrast": "hsla(195, 100%, 31%, 1)",
                 },
               },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(195, 100%, 31%, 1)",
+                },
+                "default": {
+                  "lowContrast": "hsla(195, 100%, 31%, 1)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(193, 100%, 35%, 0.32)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(195, 100%, 31%, 1)",
+                },
+                "hover": {
+                  "lowContrast": "hsla(195, 100%, 31%, 1)",
+                },
+              },
             },
             "text": {
               "link": {
@@ -1487,6 +2002,23 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
                 },
                 "hover": {
                   "highContrast": "hsla(180, 100%, 97%, 1)",
+                  "lowContrast": "hsla(195, 100%, 31%, 1)",
+                },
+              },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(195, 100%, 31%, 1)",
+                },
+                "default": {
+                  "lowContrast": "hsla(195, 100%, 31%, 1)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(193, 100%, 35%, 0.32)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(195, 100%, 31%, 1)",
+                },
+                "hover": {
                   "lowContrast": "hsla(195, 100%, 31%, 1)",
                 },
               },
@@ -1518,6 +2050,23 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
                   "lowContrast": "hsla(9, 91%, 56%, 0.18)",
                 },
               },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(9, 91%, 56%, 0.32)",
+                },
+                "default": {
+                  "lowContrast": "hsla(9, 91%, 56%, 0.09)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(9, 91%, 56%, 0.09)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(9, 91%, 56%, 0.32)",
+                },
+                "hover": {
+                  "lowContrast": "hsla(9, 91%, 56%, 0.18)",
+                },
+              },
             },
             "border": {
               "primary": {
@@ -1539,6 +2088,23 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
                 },
                 "hover": {
                   "highContrast": "hsla(0, 100%, 97%, 1)",
+                  "lowContrast": "hsla(9, 91%, 56%, 0.32)",
+                },
+              },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(9, 91%, 56%, 0.32)",
+                },
+                "default": {
+                  "lowContrast": "hsla(9, 91%, 56%, 0.32)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(9, 91%, 56%, 0.32)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(9, 91%, 56%, 0.32)",
+                },
+                "hover": {
                   "lowContrast": "hsla(9, 91%, 56%, 0.32)",
                 },
               },
@@ -1588,6 +2154,23 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
                   "lowContrast": "hsla(8, 73%, 47%, 1)",
                 },
               },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(8, 73%, 47%, 1)",
+                },
+                "default": {
+                  "lowContrast": "hsla(8, 73%, 47%, 1)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(9, 91%, 56%, 0.32)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(8, 73%, 47%, 1)",
+                },
+                "hover": {
+                  "lowContrast": "hsla(8, 73%, 47%, 1)",
+                },
+              },
             },
             "text": {
               "link": {
@@ -1631,6 +2214,23 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
                 },
                 "hover": {
                   "highContrast": "hsla(0, 100%, 97%, 1)",
+                  "lowContrast": "hsla(8, 73%, 47%, 1)",
+                },
+              },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(8, 73%, 47%, 1)",
+                },
+                "default": {
+                  "lowContrast": "hsla(8, 73%, 47%, 1)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(9, 91%, 56%, 0.32)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(8, 73%, 47%, 1)",
+                },
+                "hover": {
                   "lowContrast": "hsla(8, 73%, 47%, 1)",
                 },
               },
@@ -1662,6 +2262,23 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
                   "lowContrast": "hsla(216, 15%, 54%, 0.18)",
                 },
               },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(216, 15%, 54%, 0.32)",
+                },
+                "default": {
+                  "lowContrast": "hsla(216, 15%, 54%, 0.09)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(216, 15%, 54%, 0.09)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(216, 15%, 54%, 0.32)",
+                },
+                "hover": {
+                  "lowContrast": "hsla(216, 15%, 54%, 0.18)",
+                },
+              },
             },
             "border": {
               "primary": {
@@ -1683,6 +2300,23 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
                 },
                 "hover": {
                   "highContrast": "hsla(214, 18%, 69%, 1)",
+                  "lowContrast": "hsla(216, 15%, 54%, 0.32)",
+                },
+              },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(216, 15%, 54%, 0.32)",
+                },
+                "default": {
+                  "lowContrast": "hsla(216, 15%, 54%, 0.32)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(216, 15%, 54%, 0.32)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(216, 15%, 54%, 0.32)",
+                },
+                "hover": {
                   "lowContrast": "hsla(216, 15%, 54%, 0.32)",
                 },
               },
@@ -1732,6 +2366,23 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
                   "lowContrast": "hsla(216, 27%, 36%, 1)",
                 },
               },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(216, 27%, 36%, 1)",
+                },
+                "default": {
+                  "lowContrast": "hsla(216, 27%, 36%, 1)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(216, 15%, 54%, 0.32)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(216, 27%, 36%, 1)",
+                },
+                "hover": {
+                  "lowContrast": "hsla(216, 27%, 36%, 1)",
+                },
+              },
             },
             "text": {
               "link": {
@@ -1775,6 +2426,23 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
                 },
                 "hover": {
                   "highContrast": "hsla(220, 27%, 98%, 1)",
+                  "lowContrast": "hsla(216, 27%, 36%, 1)",
+                },
+              },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(216, 27%, 36%, 1)",
+                },
+                "default": {
+                  "lowContrast": "hsla(216, 27%, 36%, 1)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(216, 15%, 54%, 0.32)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(216, 27%, 36%, 1)",
+                },
+                "hover": {
                   "lowContrast": "hsla(216, 27%, 36%, 1)",
                 },
               },
@@ -1806,6 +2474,23 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
                   "lowContrast": "hsla(36, 100%, 44%, 0.18)",
                 },
               },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(36, 100%, 44%, 0.32)",
+                },
+                "default": {
+                  "lowContrast": "hsla(36, 100%, 44%, 0.09)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(36, 100%, 44%, 0.09)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(36, 100%, 44%, 0.32)",
+                },
+                "hover": {
+                  "lowContrast": "hsla(36, 100%, 44%, 0.18)",
+                },
+              },
             },
             "border": {
               "primary": {
@@ -1827,6 +2512,23 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
                 },
                 "hover": {
                   "highContrast": "hsla(32, 100%, 94%, 1)",
+                  "lowContrast": "hsla(36, 100%, 44%, 0.32)",
+                },
+              },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(36, 100%, 44%, 0.32)",
+                },
+                "default": {
+                  "lowContrast": "hsla(36, 100%, 44%, 0.32)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(36, 100%, 44%, 0.32)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(36, 100%, 44%, 0.32)",
+                },
+                "hover": {
                   "lowContrast": "hsla(36, 100%, 44%, 0.32)",
                 },
               },
@@ -1876,6 +2578,23 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
                   "lowContrast": "hsla(38, 97%, 38%, 1)",
                 },
               },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(38, 97%, 38%, 1)",
+                },
+                "default": {
+                  "lowContrast": "hsla(38, 97%, 38%, 1)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(36, 100%, 44%, 0.32)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(38, 97%, 38%, 1)",
+                },
+                "hover": {
+                  "lowContrast": "hsla(38, 97%, 38%, 1)",
+                },
+              },
             },
             "text": {
               "link": {
@@ -1919,6 +2638,23 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
                 },
                 "hover": {
                   "highContrast": "hsla(32, 100%, 94%, 1)",
+                  "lowContrast": "hsla(38, 97%, 38%, 1)",
+                },
+              },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(38, 97%, 38%, 1)",
+                },
+                "default": {
+                  "lowContrast": "hsla(38, 97%, 38%, 1)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(36, 100%, 44%, 0.32)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(38, 97%, 38%, 1)",
+                },
+                "hover": {
                   "lowContrast": "hsla(38, 97%, 38%, 1)",
                 },
               },
@@ -1950,6 +2686,23 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
                   "lowContrast": "hsla(155, 100%, 31%, 0.18)",
                 },
               },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(155, 100%, 31%, 0.32)",
+                },
+                "default": {
+                  "lowContrast": "hsla(155, 100%, 31%, 0.09)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(155, 100%, 31%, 0.09)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(155, 100%, 31%, 0.32)",
+                },
+                "hover": {
+                  "lowContrast": "hsla(155, 100%, 31%, 0.18)",
+                },
+              },
             },
             "border": {
               "primary": {
@@ -1971,6 +2724,23 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
                 },
                 "hover": {
                   "highContrast": "hsla(107, 100%, 96%, 1)",
+                  "lowContrast": "hsla(155, 100%, 31%, 0.32)",
+                },
+              },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(155, 100%, 31%, 0.32)",
+                },
+                "default": {
+                  "lowContrast": "hsla(155, 100%, 31%, 0.32)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(155, 100%, 31%, 0.32)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(155, 100%, 31%, 0.32)",
+                },
+                "hover": {
                   "lowContrast": "hsla(155, 100%, 31%, 0.32)",
                 },
               },
@@ -2020,6 +2790,23 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
                   "lowContrast": "hsla(160, 100%, 26%, 1)",
                 },
               },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(160, 100%, 26%, 1)",
+                },
+                "default": {
+                  "lowContrast": "hsla(160, 100%, 26%, 1)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(155, 100%, 31%, 0.32)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(160, 100%, 26%, 1)",
+                },
+                "hover": {
+                  "lowContrast": "hsla(160, 100%, 26%, 1)",
+                },
+              },
             },
             "text": {
               "link": {
@@ -2066,6 +2853,23 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
                   "lowContrast": "hsla(160, 100%, 26%, 1)",
                 },
               },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(160, 100%, 26%, 1)",
+                },
+                "default": {
+                  "lowContrast": "hsla(160, 100%, 26%, 1)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(155, 100%, 31%, 0.32)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(160, 100%, 26%, 1)",
+                },
+                "hover": {
+                  "lowContrast": "hsla(160, 100%, 26%, 1)",
+                },
+              },
             },
           },
         },
@@ -2094,6 +2898,9 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
       },
       "overlay": {
         "background": "hsla(214, 15%, 18%, 0.64)",
+      },
+      "static": {
+        "white": "hsla(0, 0%, 100%, 1)",
       },
       "surface": {
         "action": {
@@ -2144,6 +2951,15 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
             "lowContrast": "hsla(216, 15%, 54%, 0.09)",
           },
         },
+        "overlay": {
+          "background": {
+            "400": "hsla(0, 0, 0, 0)",
+            "800": "hsla(214, 15%, 18%, 0.64)",
+          },
+        },
+        "popup": {
+          "background": "hsla(220, 30%, 96%, 1)",
+        },
         "text": {
           "muted": {
             "highContrast": "hsla(218, 19%, 81%, 1)",
@@ -2154,7 +2970,7 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
             "lowContrast": "hsla(217, 56%, 17%, 1)",
           },
           "placeholder": {
-            "highContrast": "hsla(216, 15%, 54%, 1)",
+            "highContrast": "hsla(214, 18%, 69%, 1)",
             "lowContrast": "hsla(214, 18%, 69%, 1)",
           },
           "subdued": {
@@ -2164,6 +2980,118 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
           "subtle": {
             "highContrast": "hsla(220, 30%, 96%, 1)",
             "lowContrast": "hsla(216, 27%, 36%, 1)",
+          },
+        },
+      },
+      "white": {
+        "action": {
+          "background": {
+            "primary": {
+              "active": "hsla(216, 4%, 89%, 1)",
+              "default": "hsla(0, 0%, 100%, 1)",
+              "disabled": "hsla(210, 6%, 94%, 0.18)",
+              "focus": "hsla(216, 4%, 89%, 1)",
+              "hover": "hsla(216, 6%, 94%, 1)",
+            },
+            "secondary": {
+              "active": "hsla(210, 6%, 94%, 0.32)",
+              "default": "hsla(214, 15%, 18%, 0)",
+              "disabled": "hsla(214, 15%, 18%, 0)",
+              "focus": "hsla(210, 6%, 94%, 0.32)",
+              "hover": "hsla(210, 6%, 94%, 0.18)",
+            },
+            "tertiary": {
+              "active": "hsla(210, 6%, 94%, 0.32)",
+              "default": "hsla(210, 6%, 94%, 0.09)",
+              "disabled": "hsla(210, 6%, 94%, 0.09)",
+              "focus": "hsla(210, 6%, 94%, 0.32)",
+              "hover": "hsla(210, 6%, 94%, 0.18)",
+            },
+          },
+          "border": {
+            "primary": {
+              "active": "hsla(216, 4%, 89%, 1)",
+              "default": "hsla(0, 0%, 100%, 1)",
+              "disabled": "hsla(210, 6%, 94%, 0.18)",
+              "focus": "hsla(216, 4%, 89%, 1)",
+              "hover": "hsla(216, 6%, 94%, 1)",
+            },
+            "secondary": {
+              "active": "hsla(0, 0%, 100%, 1)",
+              "default": "hsla(0, 0%, 100%, 1)",
+              "disabled": "hsla(210, 6%, 94%, 0.32)",
+              "focus": "hsla(0, 0%, 100%, 1)",
+              "hover": "hsla(0, 0%, 100%, 1)",
+            },
+            "tertiary": {
+              "active": "hsla(214, 15%, 18%, 0)",
+              "default": "hsla(214, 15%, 18%, 0)",
+              "disabled": "hsla(214, 15%, 18%, 0)",
+              "focus": "hsla(214, 15%, 18%, 0)",
+              "hover": "hsla(214, 15%, 18%, 0)",
+            },
+          },
+          "icon": {
+            "link": {
+              "active": "hsla(214, 7%, 81%, 1)",
+              "default": "hsla(0, 0%, 100%, 1)",
+              "disabled": "hsla(210, 6%, 94%, 0.32)",
+              "focus": "hsla(214, 7%, 81%, 1)",
+              "hover": "hsla(216, 4%, 89%, 1)",
+              "visited": "hsla(268, 100%, 79%, 1)",
+            },
+            "primary": {
+              "active": "hsla(218, 89%, 51%, 1)",
+              "default": "hsla(218, 89%, 51%, 1)",
+              "disabled": "hsla(210, 6%, 94%, 0.32)",
+              "focus": "hsla(218, 89%, 51%, 1)",
+              "hover": "hsla(218, 89%, 51%, 1)",
+            },
+            "secondary": {
+              "active": "hsla(0, 0%, 100%, 1)",
+              "default": "hsla(0, 0%, 100%, 1)",
+              "disabled": "hsla(210, 6%, 94%, 0.32)",
+              "focus": "hsla(0, 0%, 100%, 1)",
+              "hover": "hsla(0, 0%, 100%, 1)",
+            },
+            "tertiary": {
+              "active": "hsla(0, 0%, 100%, 1)",
+              "default": "hsla(0, 0%, 100%, 1)",
+              "disabled": "hsla(210, 6%, 94%, 0.32)",
+              "focus": "hsla(0, 0%, 100%, 1)",
+              "hover": "hsla(0, 0%, 100%, 1)",
+            },
+          },
+          "text": {
+            "link": {
+              "active": "hsla(214, 7%, 81%, 1)",
+              "default": "hsla(0, 0%, 100%, 1)",
+              "disabled": "hsla(210, 6%, 94%, 0.32)",
+              "focus": "hsla(214, 7%, 81%, 1)",
+              "hover": "hsla(216, 4%, 89%, 1)",
+              "visited": "hsla(268, 100%, 79%, 1)",
+            },
+            "primary": {
+              "active": "hsla(218, 89%, 51%, 1)",
+              "default": "hsla(218, 89%, 51%, 1)",
+              "disabled": "hsla(210, 6%, 94%, 0.32)",
+              "focus": "hsla(218, 89%, 51%, 1)",
+              "hover": "hsla(218, 89%, 51%, 1)",
+            },
+            "secondary": {
+              "active": "hsla(0, 0%, 100%, 1)",
+              "default": "hsla(0, 0%, 100%, 1)",
+              "disabled": "hsla(210, 6%, 94%, 0.32)",
+              "focus": "hsla(0, 0%, 100%, 1)",
+              "hover": "hsla(0, 0%, 100%, 1)",
+            },
+            "tertiary": {
+              "active": "hsla(0, 0%, 100%, 1)",
+              "default": "hsla(0, 0%, 100%, 1)",
+              "disabled": "hsla(210, 6%, 94%, 0.32)",
+              "focus": "hsla(0, 0%, 100%, 1)",
+              "hover": "hsla(0, 0%, 100%, 1)",
+            },
           },
         },
       },
@@ -2390,8 +3318,8 @@ exports[`createTheme should create a theme with the correct brand colors 2`] = `
 .c0:focus-visible {
   background-color: hsl(332,100%,20%);
   border-color: hsl(332,100%,20%);
+  outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(332,100%,26%,0.18);
-  outline: none;
 }
 
 .c0 * {
@@ -2508,11 +3436,11 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
             "hover": "hsla(57, 100%, 52%, 0.09)",
           },
           "tertiary": {
-            "active": "hsla(216, 44%, 23%, 1)",
-            "default": "hsla(218, 49%, 17%, 1)",
-            "disabled": "hsla(219, 41%, 19%, 1)",
-            "focus": "hsla(218, 52%, 16%, 1)",
-            "hover": "hsla(218, 49%, 17%, 1)",
+            "active": "hsla(216, 15%, 54%, 0.32)",
+            "default": "hsla(220, 11%, 84%, 0.09)",
+            "disabled": "hsla(220, 11%, 84%, 0.09)",
+            "focus": "hsla(220, 11%, 84%, 0.32)",
+            "hover": "hsla(220, 11%, 84%, 0.18)",
           },
         },
         "border": {
@@ -2532,7 +3460,7 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
           },
           "tertiary": {
             "active": "hsla(219, 12%, 45%, 1)",
-            "default": "hsla(219, 12%, 45%, 1)",
+            "default": "hsla(220, 11%, 84%, 0)",
             "disabled": "hsla(220, 23%, 29%, 1)",
             "focus": "hsla(219, 12%, 45%, 1)",
             "hover": "hsla(219, 12%, 45%, 1)",
@@ -2564,7 +3492,7 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
           "tertiary": {
             "active": "hsla(218, 11%, 84%, 1)",
             "default": "hsla(218, 11%, 84%, 1)",
-            "disabled": "hsla(219, 12%, 45%, 1)",
+            "disabled": "hsla(220, 16%, 37%, 1)",
             "focus": "hsla(216, 33%, 29%, 1)",
             "hover": "hsla(218, 11%, 84%, 1)",
           },
@@ -2595,7 +3523,7 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
           "tertiary": {
             "active": "hsla(218, 11%, 84%, 1)",
             "default": "hsla(218, 11%, 84%, 1)",
-            "disabled": "hsla(219, 12%, 45%, 1)",
+            "disabled": "hsla(220, 16%, 37%, 1)",
             "focus": "hsla(218, 11%, 84%, 1)",
             "hover": "hsla(218, 11%, 84%, 1)",
           },
@@ -2766,6 +3694,23 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
                   "lowContrast": "hsla(193, 100%, 35%, 0.18)",
                 },
               },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(193, 100%, 35%, 0.32)",
+                },
+                "default": {
+                  "lowContrast": "hsla(193, 100%, 35%, 0.09)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(193, 100%, 35%, 0.09)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(193, 100%, 35%, 0.32)",
+                },
+                "hover": {
+                  "lowContrast": "hsla(193, 100%, 35%, 0.18)",
+                },
+              },
             },
             "border": {
               "primary": {
@@ -2787,6 +3732,23 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
                 },
                 "hover": {
                   "highContrast": "hsla(180, 100%, 97%, 1)",
+                  "lowContrast": "hsla(195, 100%, 31%, 1)",
+                },
+              },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(195, 100%, 31%, 1)",
+                },
+                "default": {
+                  "lowContrast": "hsla(195, 100%, 31%, 1)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(197, 100%, 23%, 1)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(195, 100%, 31%, 1)",
+                },
+                "hover": {
                   "lowContrast": "hsla(195, 100%, 31%, 1)",
                 },
               },
@@ -2836,6 +3798,23 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
                   "lowContrast": "hsla(190, 100%, 39%, 1)",
                 },
               },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(190, 100%, 39%, 1)",
+                },
+                "default": {
+                  "lowContrast": "hsla(190, 100%, 39%, 1)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(197, 100%, 23%, 1)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(190, 100%, 39%, 1)",
+                },
+                "hover": {
+                  "lowContrast": "hsla(190, 100%, 39%, 1)",
+                },
+              },
             },
             "text": {
               "link": {
@@ -2879,6 +3858,23 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
                 },
                 "hover": {
                   "highContrast": "hsla(180, 100%, 97%, 1)",
+                  "lowContrast": "hsla(190, 100%, 39%, 1)",
+                },
+              },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(190, 100%, 39%, 1)",
+                },
+                "default": {
+                  "lowContrast": "hsla(190, 100%, 39%, 1)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(197, 100%, 23%, 1)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(190, 100%, 39%, 1)",
+                },
+                "hover": {
                   "lowContrast": "hsla(190, 100%, 39%, 1)",
                 },
               },
@@ -2910,6 +3906,23 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
                   "lowContrast": "hsla(9, 91%, 56%, 0.18)",
                 },
               },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(9, 91%, 56%, 0.32)",
+                },
+                "default": {
+                  "lowContrast": "hsla(9, 91%, 56%, 0.09)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(9, 91%, 56%, 0.09)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(9, 91%, 56%, 0.32)",
+                },
+                "hover": {
+                  "lowContrast": "hsla(9, 91%, 56%, 0.18)",
+                },
+              },
             },
             "border": {
               "primary": {
@@ -2931,6 +3944,23 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
                 },
                 "hover": {
                   "highContrast": "hsla(0, 100%, 97%, 1)",
+                  "lowContrast": "hsla(8, 99%, 65%, 1)",
+                },
+              },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(8, 99%, 65%, 1)",
+                },
+                "default": {
+                  "lowContrast": "hsla(8, 99%, 65%, 1)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(5, 69%, 32%, 1)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(8, 99%, 65%, 1)",
+                },
+                "hover": {
                   "lowContrast": "hsla(8, 99%, 65%, 1)",
                 },
               },
@@ -2980,6 +4010,23 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
                   "lowContrast": "hsla(6, 100%, 75%, 1)",
                 },
               },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(6, 100%, 75%, 1)",
+                },
+                "default": {
+                  "lowContrast": "hsla(6, 100%, 75%, 1)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(7, 72%, 40%, 1)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(6, 100%, 75%, 1)",
+                },
+                "hover": {
+                  "lowContrast": "hsla(6, 100%, 75%, 1)",
+                },
+              },
             },
             "text": {
               "link": {
@@ -3023,6 +4070,23 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
                 },
                 "hover": {
                   "highContrast": "hsla(0, 100%, 97%, 1)",
+                  "lowContrast": "hsla(6, 100%, 75%, 1)",
+                },
+              },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(6, 100%, 75%, 1)",
+                },
+                "default": {
+                  "lowContrast": "hsla(6, 100%, 75%, 1)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(7, 72%, 40%, 1)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(6, 100%, 75%, 1)",
+                },
+                "hover": {
                   "lowContrast": "hsla(6, 100%, 75%, 1)",
                 },
               },
@@ -3054,6 +4118,23 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
                   "lowContrast": "hsla(220, 11%, 84%, 0.18)",
                 },
               },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(220, 11%, 84%, 0.32)",
+                },
+                "default": {
+                  "lowContrast": "hsla(220, 11%, 84%, 0.09)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(220, 11%, 84%, 0.09)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(220, 11%, 84%, 0.32)",
+                },
+                "hover": {
+                  "lowContrast": "hsla(220, 11%, 84%, 0.18)",
+                },
+              },
             },
             "border": {
               "primary": {
@@ -3075,6 +4156,23 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
                 },
                 "hover": {
                   "highContrast": "hsla(219, 10%, 60%, 1)",
+                  "lowContrast": "hsla(219, 12%, 45%, 1)",
+                },
+              },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(219, 12%, 45%, 1)",
+                },
+                "default": {
+                  "lowContrast": "hsla(219, 12%, 45%, 1)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(219, 12%, 45%, 1)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(219, 12%, 45%, 1)",
+                },
+                "hover": {
                   "lowContrast": "hsla(219, 12%, 45%, 1)",
                 },
               },
@@ -3124,6 +4222,23 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
                   "lowContrast": "hsla(218, 11%, 84%, 1)",
                 },
               },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(218, 11%, 84%, 1)",
+                },
+                "default": {
+                  "lowContrast": "hsla(218, 11%, 84%, 1)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(219, 12%, 45%, 1)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(218, 11%, 84%, 1)",
+                },
+                "hover": {
+                  "lowContrast": "hsla(218, 11%, 84%, 1)",
+                },
+              },
             },
             "text": {
               "link": {
@@ -3167,6 +4282,23 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
                 },
                 "hover": {
                   "highContrast": "hsla(220, 35%, 22%, 1)",
+                  "lowContrast": "hsla(218, 11%, 84%, 1)",
+                },
+              },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(218, 11%, 84%, 1)",
+                },
+                "default": {
+                  "lowContrast": "hsla(218, 11%, 84%, 1)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(219, 12%, 45%, 1)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(218, 11%, 84%, 1)",
+                },
+                "hover": {
                   "lowContrast": "hsla(218, 11%, 84%, 1)",
                 },
               },
@@ -3198,6 +4330,23 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
                   "lowContrast": "hsla(36, 100%, 44%, 0.18)",
                 },
               },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(36, 100%, 44%, 0.32)",
+                },
+                "default": {
+                  "lowContrast": "hsla(36, 100%, 44%, 0.09)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(36, 100%, 44%, 0.09)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(36, 100%, 44%, 0.32)",
+                },
+                "hover": {
+                  "lowContrast": "hsla(36, 100%, 44%, 0.18)",
+                },
+              },
             },
             "border": {
               "primary": {
@@ -3219,6 +4368,23 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
                 },
                 "hover": {
                   "highContrast": "hsla(32, 100%, 94%, 1)",
+                  "lowContrast": "hsla(40, 90%, 32%, 1)",
+                },
+              },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(40, 90%, 32%, 1)",
+                },
+                "default": {
+                  "lowContrast": "hsla(40, 90%, 32%, 1)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(41, 82%, 26%, 1)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(40, 90%, 32%, 1)",
+                },
+                "hover": {
                   "lowContrast": "hsla(40, 90%, 32%, 1)",
                 },
               },
@@ -3268,6 +4434,23 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
                   "lowContrast": "hsla(35, 84%, 54%, 1)",
                 },
               },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(35, 84%, 54%, 1)",
+                },
+                "default": {
+                  "lowContrast": "hsla(35, 84%, 54%, 1)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(41, 82%, 26%, 1)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(35, 84%, 54%, 1)",
+                },
+                "hover": {
+                  "lowContrast": "hsla(35, 84%, 54%, 1)",
+                },
+              },
             },
             "text": {
               "link": {
@@ -3311,6 +4494,23 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
                 },
                 "hover": {
                   "highContrast": "hsla(32, 100%, 94%, 1)",
+                  "lowContrast": "hsla(35, 84%, 54%, 1)",
+                },
+              },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(35, 84%, 54%, 1)",
+                },
+                "default": {
+                  "lowContrast": "hsla(35, 84%, 54%, 1)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(41, 82%, 26%, 1)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(35, 84%, 54%, 1)",
+                },
+                "hover": {
                   "lowContrast": "hsla(35, 84%, 54%, 1)",
                 },
               },
@@ -3342,6 +4542,23 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
                   "lowContrast": "hsla(155, 100%, 31%, 0.18)",
                 },
               },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(155, 100%, 31%, 0.32)",
+                },
+                "default": {
+                  "lowContrast": "hsla(155, 100%, 31%, 0.09)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(155, 100%, 31%, 0.09)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(155, 100%, 31%, 0.32)",
+                },
+                "hover": {
+                  "lowContrast": "hsla(155, 100%, 31%, 0.18)",
+                },
+              },
             },
             "border": {
               "primary": {
@@ -3363,6 +4580,23 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
                 },
                 "hover": {
                   "highContrast": "hsla(107, 100%, 96%, 1)",
+                  "lowContrast": "hsla(160, 100%, 26%, 1)",
+                },
+              },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(160, 100%, 26%, 1)",
+                },
+                "default": {
+                  "lowContrast": "hsla(160, 100%, 26%, 1)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(160, 100%, 26%, 1)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(160, 100%, 26%, 1)",
+                },
+                "hover": {
                   "lowContrast": "hsla(160, 100%, 26%, 1)",
                 },
               },
@@ -3412,6 +4646,23 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
                   "lowContrast": "hsla(149, 99%, 35%, 1)",
                 },
               },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(149, 99%, 35%, 1)",
+                },
+                "default": {
+                  "lowContrast": "hsla(149, 99%, 35%, 1)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(163, 100%, 22%, 1)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(149, 99%, 35%, 1)",
+                },
+                "hover": {
+                  "lowContrast": "hsla(149, 99%, 35%, 1)",
+                },
+              },
             },
             "text": {
               "link": {
@@ -3458,6 +4709,23 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
                   "lowContrast": "hsla(149, 99%, 35%, 1)",
                 },
               },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(149, 99%, 35%, 1)",
+                },
+                "default": {
+                  "lowContrast": "hsla(149, 99%, 35%, 1)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(163, 100%, 22%, 1)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(149, 99%, 35%, 1)",
+                },
+                "hover": {
+                  "lowContrast": "hsla(149, 99%, 35%, 1)",
+                },
+              },
             },
           },
         },
@@ -3486,6 +4754,9 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
       },
       "overlay": {
         "background": "hsla(231, 11%, 12%, 0.72)",
+      },
+      "static": {
+        "white": "hsla(0, 0%, 100%, 1)",
       },
       "surface": {
         "action": {
@@ -3536,6 +4807,15 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
             "lowContrast": "hsla(220, 11%, 84%, 0.09)",
           },
         },
+        "overlay": {
+          "background": {
+            "400": "hsla(0, 0, 0, 0)",
+            "800": "hsla(231, 11%, 12%, 0.72)",
+          },
+        },
+        "popup": {
+          "background": "hsla(218, 11%, 84%, 1)",
+        },
         "text": {
           "muted": {
             "highContrast": "hsla(218, 11%, 76%, 1)",
@@ -3556,6 +4836,118 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
           "subtle": {
             "highContrast": "hsla(215, 12%, 92%, 1)",
             "lowContrast": "hsla(215, 12%, 92%, 1)",
+          },
+        },
+      },
+      "white": {
+        "action": {
+          "background": {
+            "primary": {
+              "active": "hsla(216, 4%, 89%, 1)",
+              "default": "hsla(0, 0%, 100%, 1)",
+              "disabled": "hsla(210, 6%, 94%, 0.18)",
+              "focus": "hsla(216, 4%, 89%, 1)",
+              "hover": "hsla(216, 6%, 94%, 1)",
+            },
+            "secondary": {
+              "active": "hsla(210, 6%, 94%, 0.32)",
+              "default": "hsla(214, 15%, 18%, 0)",
+              "disabled": "hsla(214, 15%, 18%, 0)",
+              "focus": "hsla(210, 6%, 94%, 0.32)",
+              "hover": "hsla(210, 6%, 94%, 0.18)",
+            },
+            "tertiary": {
+              "active": "hsla(210, 6%, 94%, 0.32)",
+              "default": "hsla(210, 6%, 94%, 0.09)",
+              "disabled": "hsla(210, 6%, 94%, 0.09)",
+              "focus": "hsla(210, 6%, 94%, 0.32)",
+              "hover": "hsla(210, 6%, 94%, 0.18)",
+            },
+          },
+          "border": {
+            "primary": {
+              "active": "hsla(216, 4%, 89%, 1)",
+              "default": "hsla(0, 0%, 100%, 1)",
+              "disabled": "hsla(210, 6%, 94%, 0.18)",
+              "focus": "hsla(216, 4%, 89%, 1)",
+              "hover": "hsla(216, 6%, 94%, 1)",
+            },
+            "secondary": {
+              "active": "hsla(0, 0%, 100%, 1)",
+              "default": "hsla(0, 0%, 100%, 1)",
+              "disabled": "hsla(210, 6%, 94%, 0.32)",
+              "focus": "hsla(0, 0%, 100%, 1)",
+              "hover": "hsla(0, 0%, 100%, 1)",
+            },
+            "tertiary": {
+              "active": "hsla(214, 15%, 18%, 0)",
+              "default": "hsla(214, 15%, 18%, 0)",
+              "disabled": "hsla(214, 15%, 18%, 0)",
+              "focus": "hsla(214, 15%, 18%, 0)",
+              "hover": "hsla(214, 15%, 18%, 0)",
+            },
+          },
+          "icon": {
+            "link": {
+              "active": "hsla(214, 7%, 81%, 1)",
+              "default": "hsla(0, 0%, 100%, 1)",
+              "disabled": "hsla(210, 6%, 94%, 0.32)",
+              "focus": "hsla(214, 7%, 81%, 1)",
+              "hover": "hsla(216, 4%, 89%, 1)",
+              "visited": "hsla(267, 100%, 83%, 1)",
+            },
+            "primary": {
+              "active": "hsla(213, 89%, 56%, 1)",
+              "default": "hsla(213, 89%, 56%, 1)",
+              "disabled": "hsla(210, 6%, 94%, 0.32)",
+              "focus": "hsla(213, 89%, 56%, 1)",
+              "hover": "hsla(213, 89%, 56%, 1)",
+            },
+            "secondary": {
+              "active": "hsla(0, 0%, 100%, 1)",
+              "default": "hsla(0, 0%, 100%, 1)",
+              "disabled": "hsla(210, 6%, 94%, 0.32)",
+              "focus": "hsla(0, 0%, 100%, 1)",
+              "hover": "hsla(0, 0%, 100%, 1)",
+            },
+            "tertiary": {
+              "active": "hsla(0, 0%, 100%, 1)",
+              "default": "hsla(0, 0%, 100%, 1)",
+              "disabled": "hsla(210, 6%, 94%, 0.32)",
+              "focus": "hsla(0, 0%, 100%, 1)",
+              "hover": "hsla(0, 0%, 100%, 1)",
+            },
+          },
+          "text": {
+            "link": {
+              "active": "hsla(214, 7%, 81%, 1)",
+              "default": "hsla(0, 0%, 100%, 1)",
+              "disabled": "hsla(210, 6%, 94%, 0.32)",
+              "focus": "hsla(214, 7%, 81%, 1)",
+              "hover": "hsla(216, 4%, 89%, 1)",
+              "visited": "hsla(267, 100%, 83%, 1)",
+            },
+            "primary": {
+              "active": "hsla(213, 89%, 56%, 1)",
+              "default": "hsla(213, 89%, 56%, 1)",
+              "disabled": "hsla(210, 6%, 94%, 0.32)",
+              "focus": "hsla(213, 89%, 56%, 1)",
+              "hover": "hsla(213, 89%, 56%, 1)",
+            },
+            "secondary": {
+              "active": "hsla(0, 0%, 100%, 1)",
+              "default": "hsla(0, 0%, 100%, 1)",
+              "disabled": "hsla(210, 6%, 94%, 0.32)",
+              "focus": "hsla(0, 0%, 100%, 1)",
+              "hover": "hsla(0, 0%, 100%, 1)",
+            },
+            "tertiary": {
+              "active": "hsla(0, 0%, 100%, 1)",
+              "default": "hsla(0, 0%, 100%, 1)",
+              "disabled": "hsla(210, 6%, 94%, 0.32)",
+              "focus": "hsla(0, 0%, 100%, 1)",
+              "hover": "hsla(0, 0%, 100%, 1)",
+            },
           },
         },
       },
@@ -3580,7 +4972,7 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
           "tertiary": {
             "active": "hsla(214, 21%, 94%, 1)",
             "default": "hsla(0, 0%, 100%, 1)",
-            "disabled": "hsla(0, 0%, 100%, 1)",
+            "disabled": "hsla(216, 15%, 54%, 0.09)",
             "focus": "hsla(220, 30%, 96%, 1)",
             "hover": "hsla(220, 27%, 98%, 1)",
           },
@@ -3836,6 +5228,23 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
                   "lowContrast": "hsla(193, 100%, 35%, 0.18)",
                 },
               },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(193, 100%, 35%, 0.32)",
+                },
+                "default": {
+                  "lowContrast": "hsla(193, 100%, 35%, 0.09)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(193, 100%, 35%, 0.09)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(193, 100%, 35%, 0.32)",
+                },
+                "hover": {
+                  "lowContrast": "hsla(193, 100%, 35%, 0.18)",
+                },
+              },
             },
             "border": {
               "primary": {
@@ -3857,6 +5266,23 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
                 },
                 "hover": {
                   "highContrast": "hsla(180, 100%, 97%, 1)",
+                  "lowContrast": "hsla(193, 100%, 35%, 0.32)",
+                },
+              },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(193, 100%, 35%, 0.32)",
+                },
+                "default": {
+                  "lowContrast": "hsla(193, 100%, 35%, 0.32)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(193, 100%, 35%, 0.32)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(193, 100%, 35%, 0.32)",
+                },
+                "hover": {
                   "lowContrast": "hsla(193, 100%, 35%, 0.32)",
                 },
               },
@@ -3906,6 +5332,23 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
                   "lowContrast": "hsla(195, 100%, 31%, 1)",
                 },
               },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(195, 100%, 31%, 1)",
+                },
+                "default": {
+                  "lowContrast": "hsla(195, 100%, 31%, 1)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(193, 100%, 35%, 0.32)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(195, 100%, 31%, 1)",
+                },
+                "hover": {
+                  "lowContrast": "hsla(195, 100%, 31%, 1)",
+                },
+              },
             },
             "text": {
               "link": {
@@ -3949,6 +5392,23 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
                 },
                 "hover": {
                   "highContrast": "hsla(180, 100%, 97%, 1)",
+                  "lowContrast": "hsla(195, 100%, 31%, 1)",
+                },
+              },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(195, 100%, 31%, 1)",
+                },
+                "default": {
+                  "lowContrast": "hsla(195, 100%, 31%, 1)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(193, 100%, 35%, 0.32)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(195, 100%, 31%, 1)",
+                },
+                "hover": {
                   "lowContrast": "hsla(195, 100%, 31%, 1)",
                 },
               },
@@ -3980,6 +5440,23 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
                   "lowContrast": "hsla(9, 91%, 56%, 0.18)",
                 },
               },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(9, 91%, 56%, 0.32)",
+                },
+                "default": {
+                  "lowContrast": "hsla(9, 91%, 56%, 0.09)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(9, 91%, 56%, 0.09)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(9, 91%, 56%, 0.32)",
+                },
+                "hover": {
+                  "lowContrast": "hsla(9, 91%, 56%, 0.18)",
+                },
+              },
             },
             "border": {
               "primary": {
@@ -4001,6 +5478,23 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
                 },
                 "hover": {
                   "highContrast": "hsla(0, 100%, 97%, 1)",
+                  "lowContrast": "hsla(9, 91%, 56%, 0.32)",
+                },
+              },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(9, 91%, 56%, 0.32)",
+                },
+                "default": {
+                  "lowContrast": "hsla(9, 91%, 56%, 0.32)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(9, 91%, 56%, 0.32)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(9, 91%, 56%, 0.32)",
+                },
+                "hover": {
                   "lowContrast": "hsla(9, 91%, 56%, 0.32)",
                 },
               },
@@ -4050,6 +5544,23 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
                   "lowContrast": "hsla(8, 73%, 47%, 1)",
                 },
               },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(8, 73%, 47%, 1)",
+                },
+                "default": {
+                  "lowContrast": "hsla(8, 73%, 47%, 1)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(9, 91%, 56%, 0.32)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(8, 73%, 47%, 1)",
+                },
+                "hover": {
+                  "lowContrast": "hsla(8, 73%, 47%, 1)",
+                },
+              },
             },
             "text": {
               "link": {
@@ -4093,6 +5604,23 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
                 },
                 "hover": {
                   "highContrast": "hsla(0, 100%, 97%, 1)",
+                  "lowContrast": "hsla(8, 73%, 47%, 1)",
+                },
+              },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(8, 73%, 47%, 1)",
+                },
+                "default": {
+                  "lowContrast": "hsla(8, 73%, 47%, 1)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(9, 91%, 56%, 0.32)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(8, 73%, 47%, 1)",
+                },
+                "hover": {
                   "lowContrast": "hsla(8, 73%, 47%, 1)",
                 },
               },
@@ -4124,6 +5652,23 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
                   "lowContrast": "hsla(216, 15%, 54%, 0.18)",
                 },
               },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(216, 15%, 54%, 0.32)",
+                },
+                "default": {
+                  "lowContrast": "hsla(216, 15%, 54%, 0.09)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(216, 15%, 54%, 0.09)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(216, 15%, 54%, 0.32)",
+                },
+                "hover": {
+                  "lowContrast": "hsla(216, 15%, 54%, 0.18)",
+                },
+              },
             },
             "border": {
               "primary": {
@@ -4145,6 +5690,23 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
                 },
                 "hover": {
                   "highContrast": "hsla(214, 18%, 69%, 1)",
+                  "lowContrast": "hsla(216, 15%, 54%, 0.32)",
+                },
+              },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(216, 15%, 54%, 0.32)",
+                },
+                "default": {
+                  "lowContrast": "hsla(216, 15%, 54%, 0.32)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(216, 15%, 54%, 0.32)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(216, 15%, 54%, 0.32)",
+                },
+                "hover": {
                   "lowContrast": "hsla(216, 15%, 54%, 0.32)",
                 },
               },
@@ -4194,6 +5756,23 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
                   "lowContrast": "hsla(216, 27%, 36%, 1)",
                 },
               },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(216, 27%, 36%, 1)",
+                },
+                "default": {
+                  "lowContrast": "hsla(216, 27%, 36%, 1)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(216, 15%, 54%, 0.32)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(216, 27%, 36%, 1)",
+                },
+                "hover": {
+                  "lowContrast": "hsla(216, 27%, 36%, 1)",
+                },
+              },
             },
             "text": {
               "link": {
@@ -4237,6 +5816,23 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
                 },
                 "hover": {
                   "highContrast": "hsla(220, 27%, 98%, 1)",
+                  "lowContrast": "hsla(216, 27%, 36%, 1)",
+                },
+              },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(216, 27%, 36%, 1)",
+                },
+                "default": {
+                  "lowContrast": "hsla(216, 27%, 36%, 1)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(216, 15%, 54%, 0.32)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(216, 27%, 36%, 1)",
+                },
+                "hover": {
                   "lowContrast": "hsla(216, 27%, 36%, 1)",
                 },
               },
@@ -4268,6 +5864,23 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
                   "lowContrast": "hsla(36, 100%, 44%, 0.18)",
                 },
               },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(36, 100%, 44%, 0.32)",
+                },
+                "default": {
+                  "lowContrast": "hsla(36, 100%, 44%, 0.09)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(36, 100%, 44%, 0.09)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(36, 100%, 44%, 0.32)",
+                },
+                "hover": {
+                  "lowContrast": "hsla(36, 100%, 44%, 0.18)",
+                },
+              },
             },
             "border": {
               "primary": {
@@ -4289,6 +5902,23 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
                 },
                 "hover": {
                   "highContrast": "hsla(32, 100%, 94%, 1)",
+                  "lowContrast": "hsla(36, 100%, 44%, 0.32)",
+                },
+              },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(36, 100%, 44%, 0.32)",
+                },
+                "default": {
+                  "lowContrast": "hsla(36, 100%, 44%, 0.32)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(36, 100%, 44%, 0.32)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(36, 100%, 44%, 0.32)",
+                },
+                "hover": {
                   "lowContrast": "hsla(36, 100%, 44%, 0.32)",
                 },
               },
@@ -4338,6 +5968,23 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
                   "lowContrast": "hsla(38, 97%, 38%, 1)",
                 },
               },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(38, 97%, 38%, 1)",
+                },
+                "default": {
+                  "lowContrast": "hsla(38, 97%, 38%, 1)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(36, 100%, 44%, 0.32)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(38, 97%, 38%, 1)",
+                },
+                "hover": {
+                  "lowContrast": "hsla(38, 97%, 38%, 1)",
+                },
+              },
             },
             "text": {
               "link": {
@@ -4381,6 +6028,23 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
                 },
                 "hover": {
                   "highContrast": "hsla(32, 100%, 94%, 1)",
+                  "lowContrast": "hsla(38, 97%, 38%, 1)",
+                },
+              },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(38, 97%, 38%, 1)",
+                },
+                "default": {
+                  "lowContrast": "hsla(38, 97%, 38%, 1)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(36, 100%, 44%, 0.32)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(38, 97%, 38%, 1)",
+                },
+                "hover": {
                   "lowContrast": "hsla(38, 97%, 38%, 1)",
                 },
               },
@@ -4412,6 +6076,23 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
                   "lowContrast": "hsla(155, 100%, 31%, 0.18)",
                 },
               },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(155, 100%, 31%, 0.32)",
+                },
+                "default": {
+                  "lowContrast": "hsla(155, 100%, 31%, 0.09)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(155, 100%, 31%, 0.09)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(155, 100%, 31%, 0.32)",
+                },
+                "hover": {
+                  "lowContrast": "hsla(155, 100%, 31%, 0.18)",
+                },
+              },
             },
             "border": {
               "primary": {
@@ -4433,6 +6114,23 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
                 },
                 "hover": {
                   "highContrast": "hsla(107, 100%, 96%, 1)",
+                  "lowContrast": "hsla(155, 100%, 31%, 0.32)",
+                },
+              },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(155, 100%, 31%, 0.32)",
+                },
+                "default": {
+                  "lowContrast": "hsla(155, 100%, 31%, 0.32)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(155, 100%, 31%, 0.32)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(155, 100%, 31%, 0.32)",
+                },
+                "hover": {
                   "lowContrast": "hsla(155, 100%, 31%, 0.32)",
                 },
               },
@@ -4482,6 +6180,23 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
                   "lowContrast": "hsla(160, 100%, 26%, 1)",
                 },
               },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(160, 100%, 26%, 1)",
+                },
+                "default": {
+                  "lowContrast": "hsla(160, 100%, 26%, 1)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(155, 100%, 31%, 0.32)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(160, 100%, 26%, 1)",
+                },
+                "hover": {
+                  "lowContrast": "hsla(160, 100%, 26%, 1)",
+                },
+              },
             },
             "text": {
               "link": {
@@ -4528,6 +6243,23 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
                   "lowContrast": "hsla(160, 100%, 26%, 1)",
                 },
               },
+              "secondary": {
+                "active": {
+                  "lowContrast": "hsla(160, 100%, 26%, 1)",
+                },
+                "default": {
+                  "lowContrast": "hsla(160, 100%, 26%, 1)",
+                },
+                "disabled": {
+                  "lowContrast": "hsla(155, 100%, 31%, 0.32)",
+                },
+                "focus": {
+                  "lowContrast": "hsla(160, 100%, 26%, 1)",
+                },
+                "hover": {
+                  "lowContrast": "hsla(160, 100%, 26%, 1)",
+                },
+              },
             },
           },
         },
@@ -4556,6 +6288,9 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
       },
       "overlay": {
         "background": "hsla(214, 15%, 18%, 0.64)",
+      },
+      "static": {
+        "white": "hsla(0, 0%, 100%, 1)",
       },
       "surface": {
         "action": {
@@ -4606,6 +6341,15 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
             "lowContrast": "hsla(216, 15%, 54%, 0.09)",
           },
         },
+        "overlay": {
+          "background": {
+            "400": "hsla(0, 0, 0, 0)",
+            "800": "hsla(214, 15%, 18%, 0.64)",
+          },
+        },
+        "popup": {
+          "background": "hsla(220, 30%, 96%, 1)",
+        },
         "text": {
           "muted": {
             "highContrast": "hsla(218, 19%, 81%, 1)",
@@ -4616,7 +6360,7 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
             "lowContrast": "hsla(217, 56%, 17%, 1)",
           },
           "placeholder": {
-            "highContrast": "hsla(216, 15%, 54%, 1)",
+            "highContrast": "hsla(214, 18%, 69%, 1)",
             "lowContrast": "hsla(214, 18%, 69%, 1)",
           },
           "subdued": {
@@ -4626,6 +6370,118 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
           "subtle": {
             "highContrast": "hsla(220, 30%, 96%, 1)",
             "lowContrast": "hsla(216, 27%, 36%, 1)",
+          },
+        },
+      },
+      "white": {
+        "action": {
+          "background": {
+            "primary": {
+              "active": "hsla(216, 4%, 89%, 1)",
+              "default": "hsla(0, 0%, 100%, 1)",
+              "disabled": "hsla(210, 6%, 94%, 0.18)",
+              "focus": "hsla(216, 4%, 89%, 1)",
+              "hover": "hsla(216, 6%, 94%, 1)",
+            },
+            "secondary": {
+              "active": "hsla(210, 6%, 94%, 0.32)",
+              "default": "hsla(214, 15%, 18%, 0)",
+              "disabled": "hsla(214, 15%, 18%, 0)",
+              "focus": "hsla(210, 6%, 94%, 0.32)",
+              "hover": "hsla(210, 6%, 94%, 0.18)",
+            },
+            "tertiary": {
+              "active": "hsla(210, 6%, 94%, 0.32)",
+              "default": "hsla(210, 6%, 94%, 0.09)",
+              "disabled": "hsla(210, 6%, 94%, 0.09)",
+              "focus": "hsla(210, 6%, 94%, 0.32)",
+              "hover": "hsla(210, 6%, 94%, 0.18)",
+            },
+          },
+          "border": {
+            "primary": {
+              "active": "hsla(216, 4%, 89%, 1)",
+              "default": "hsla(0, 0%, 100%, 1)",
+              "disabled": "hsla(210, 6%, 94%, 0.18)",
+              "focus": "hsla(216, 4%, 89%, 1)",
+              "hover": "hsla(216, 6%, 94%, 1)",
+            },
+            "secondary": {
+              "active": "hsla(0, 0%, 100%, 1)",
+              "default": "hsla(0, 0%, 100%, 1)",
+              "disabled": "hsla(210, 6%, 94%, 0.32)",
+              "focus": "hsla(0, 0%, 100%, 1)",
+              "hover": "hsla(0, 0%, 100%, 1)",
+            },
+            "tertiary": {
+              "active": "hsla(214, 15%, 18%, 0)",
+              "default": "hsla(214, 15%, 18%, 0)",
+              "disabled": "hsla(214, 15%, 18%, 0)",
+              "focus": "hsla(214, 15%, 18%, 0)",
+              "hover": "hsla(214, 15%, 18%, 0)",
+            },
+          },
+          "icon": {
+            "link": {
+              "active": "hsla(214, 7%, 81%, 1)",
+              "default": "hsla(0, 0%, 100%, 1)",
+              "disabled": "hsla(210, 6%, 94%, 0.32)",
+              "focus": "hsla(214, 7%, 81%, 1)",
+              "hover": "hsla(216, 4%, 89%, 1)",
+              "visited": "hsla(268, 100%, 79%, 1)",
+            },
+            "primary": {
+              "active": "hsla(218, 89%, 51%, 1)",
+              "default": "hsla(218, 89%, 51%, 1)",
+              "disabled": "hsla(210, 6%, 94%, 0.32)",
+              "focus": "hsla(218, 89%, 51%, 1)",
+              "hover": "hsla(218, 89%, 51%, 1)",
+            },
+            "secondary": {
+              "active": "hsla(0, 0%, 100%, 1)",
+              "default": "hsla(0, 0%, 100%, 1)",
+              "disabled": "hsla(210, 6%, 94%, 0.32)",
+              "focus": "hsla(0, 0%, 100%, 1)",
+              "hover": "hsla(0, 0%, 100%, 1)",
+            },
+            "tertiary": {
+              "active": "hsla(0, 0%, 100%, 1)",
+              "default": "hsla(0, 0%, 100%, 1)",
+              "disabled": "hsla(210, 6%, 94%, 0.32)",
+              "focus": "hsla(0, 0%, 100%, 1)",
+              "hover": "hsla(0, 0%, 100%, 1)",
+            },
+          },
+          "text": {
+            "link": {
+              "active": "hsla(214, 7%, 81%, 1)",
+              "default": "hsla(0, 0%, 100%, 1)",
+              "disabled": "hsla(210, 6%, 94%, 0.32)",
+              "focus": "hsla(214, 7%, 81%, 1)",
+              "hover": "hsla(216, 4%, 89%, 1)",
+              "visited": "hsla(268, 100%, 79%, 1)",
+            },
+            "primary": {
+              "active": "hsla(218, 89%, 51%, 1)",
+              "default": "hsla(218, 89%, 51%, 1)",
+              "disabled": "hsla(210, 6%, 94%, 0.32)",
+              "focus": "hsla(218, 89%, 51%, 1)",
+              "hover": "hsla(218, 89%, 51%, 1)",
+            },
+            "secondary": {
+              "active": "hsla(0, 0%, 100%, 1)",
+              "default": "hsla(0, 0%, 100%, 1)",
+              "disabled": "hsla(210, 6%, 94%, 0.32)",
+              "focus": "hsla(0, 0%, 100%, 1)",
+              "hover": "hsla(0, 0%, 100%, 1)",
+            },
+            "tertiary": {
+              "active": "hsla(0, 0%, 100%, 1)",
+              "default": "hsla(0, 0%, 100%, 1)",
+              "disabled": "hsla(210, 6%, 94%, 0.32)",
+              "focus": "hsla(0, 0%, 100%, 1)",
+              "hover": "hsla(0, 0%, 100%, 1)",
+            },
           },
         },
       },
@@ -4852,8 +6708,8 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
 .c0:focus-visible {
   background-color: hsl(57,100%,47%);
   border-color: hsl(57,100%,47%);
+  outline: 1px solid hsla(218,67%,10%,1);
   box-shadow: 0px 0px 0px 4px hsla(57,100%,52%,0.32);
-  outline: none;
 }
 
 .c0 * {

@@ -1,5 +1,15 @@
+import type { CounterProps } from '../Counter';
 import { Counter } from '../Counter';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+const colors: CounterProps['color'][] = [
+  'default',
+  'information',
+  'negative',
+  'neutral',
+  'notice',
+  'positive',
+];
 
 describe('<Counter />', () => {
   it('should render Counter with default props', () => {
@@ -25,6 +35,18 @@ describe('<Counter />', () => {
   it('should render large size Counter', () => {
     const { container } = renderWithTheme(<Counter size="large" value={20} />);
     expect(container).toMatchSnapshot();
+  });
+
+  colors.forEach((color) => {
+    it(`should render low contrast ${color} color Counter`, () => {
+      const { container } = renderWithTheme(<Counter color={color} contrast="low" value={20} />);
+      expect(container).toMatchSnapshot();
+    });
+
+    it(`should render high contrast ${color} color Counter`, () => {
+      const { container } = renderWithTheme(<Counter color={color} contrast="high" value={20} />);
+      expect(container).toMatchSnapshot();
+    });
   });
 
   it('should render low contrast positive variant Counter', () => {

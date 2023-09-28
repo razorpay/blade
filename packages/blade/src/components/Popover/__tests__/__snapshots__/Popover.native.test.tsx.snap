@@ -282,7 +282,6 @@ exports[`<Popover /> should render 1`] = `
             style={
               [
                 {
-                  "backgroundColor": "white",
                   "borderRadius": 9999,
                   "paddingBottom": 4,
                   "paddingLeft": 4,
@@ -799,7 +798,6 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
             style={
               [
                 {
-                  "backgroundColor": "white",
                   "borderRadius": 9999,
                   "paddingBottom": 4,
                   "paddingLeft": 4,

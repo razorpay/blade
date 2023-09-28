@@ -43,6 +43,9 @@ const getBaseTextStyles = ({
     fontWeight: themeFontWeight,
     fontStyle,
     textDecorationLine,
+    ...(textDecorationLine !== 'none' && {
+      textDecorationColor: textColor,
+    }),
     lineHeight: themeLineHeight,
     textAlign,
     margin: 0,

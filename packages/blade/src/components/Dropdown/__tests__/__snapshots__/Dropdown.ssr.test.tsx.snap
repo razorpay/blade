@@ -344,7 +344,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 2`] = 
               data-blade-component="dropdown-footer"
             >
               <button
-                class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 jgdzFd"
+                class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 dAizYV"
                 data-blade-component="button"
                 role="button"
                 type="button"

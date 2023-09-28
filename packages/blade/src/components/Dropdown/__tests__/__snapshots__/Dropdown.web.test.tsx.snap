@@ -373,8 +373,8 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
 .c43:focus-visible {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
+  outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-  outline: none;
 }
 
 .c43 * {

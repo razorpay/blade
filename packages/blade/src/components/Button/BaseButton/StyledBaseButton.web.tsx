@@ -27,17 +27,23 @@ const StyledBaseButton = styled.button
     position: 'relative',
     '&:hover': {
       backgroundColor: props.hoverBackgroundColor,
-      borderColor: props.hoverBorderColor,
+      ...(props.variant !== 'tertiary' && {
+        borderColor: props.hoverBorderColor,
+      }),
     },
     '&:active': {
       backgroundColor: props.activeBackgroundColor,
-      borderColor: props.activeBorderColor,
+      ...(props.variant !== 'tertiary' && {
+        borderColor: props.activeBorderColor,
+      }),
     },
     '&:focus-visible': {
       backgroundColor: props.focusBackgroundColor,
-      borderColor: props.focusBorderColor,
+      ...(props.variant !== 'tertiary' && {
+        borderColor: props.focusBorderColor,
+      }),
+      outline: `1px solid ${props.theme.colors.surface.background.level1.lowContrast}`,
       boxShadow: `0px 0px 0px 4px ${props.focusRingColor}`,
-      outline: 'none',
     },
     '*': {
       transitionProperty: 'color, fill',

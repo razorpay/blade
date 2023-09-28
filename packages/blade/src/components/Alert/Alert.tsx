@@ -88,11 +88,17 @@ type AlertProps = {
   isFullWidth?: boolean;
 
   /**
-   * Sets the color tone
+   * This prop is deprecated in favor of the `color` prop.
    *
+   * @deprecated Use `color` instead
    * @default neutral
    */
   intent?: Feedback;
+
+  /**
+   * Sets the color tone
+   */
+  color?: Feedback;
 
   /**
    * Renders a primary action button and a secondary action link button
@@ -131,7 +137,9 @@ const Alert = ({
   onDismiss,
   contrast = 'low',
   isFullWidth = false,
+  // TODO: Remove intent prop in favor of color in the next major release
   intent = 'neutral',
+  color,
   actions,
   testID,
   ...styledProps
@@ -212,8 +220,8 @@ const Alert = ({
       <BaseButton
         size={textSize}
         onClick={actions.primary.onClick}
-        intent={intent}
-        contrast={contrast}
+        color={color || intent}
+        variant={contrast === 'high' ? 'primary' : 'secondary'}
       >
         {actions.primary.text}
       </BaseButton>
@@ -242,7 +250,11 @@ const Alert = ({
       marginRight="spacing.4"
       display={isReactNative ? castNativeType('flex') : castWebType('inline-flex')}
     >
-      <BaseLink size={textSize} contrast={contrast} intent={intent} {...secondaryActionParams}>
+      <BaseLink
+        size={textSize}
+        color={contrast === 'high' ? 'white' : intent}
+        {...secondaryActionParams}
+      >
         {actions.secondary.text}
       </BaseLink>
     </BaseBox>

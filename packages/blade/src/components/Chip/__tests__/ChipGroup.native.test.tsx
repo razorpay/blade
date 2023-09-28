@@ -10,6 +10,7 @@ import renderWithTheme from '~utils/testing/renderWithTheme.native';
 const selectionTypes: ChipGroupProps['selectionType'][] = ['single', 'multiple'];
 const sizes: ChipGroupProps['size'][] = ['xsmall', 'small', 'medium', 'large'];
 const intents: ChipGroupProps['intent'][] = ['none', 'positive', 'negative'];
+const colors: ChipGroupProps['color'][] = ['default', 'positive', 'negative'];
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
@@ -55,6 +56,26 @@ describe('<ChipGroup />', () => {
               accessibilityLabel="Select fruits"
               selectionType={selectionType}
               intent={intent}
+            >
+              <Chip value="apple">Apple</Chip>
+              <Chip value="mango">Mango</Chip>
+              <Chip value="orange">Orange</Chip>
+            </ChipGroup>,
+          );
+
+          expect(getByText('Apple')).toBeDefined();
+          expect(getByText('Mango')).toBeDefined();
+          expect(getByText('Orange')).toBeDefined();
+        });
+      });
+
+      colors.forEach((color) => {
+        it(`should render with color="${color}"`, () => {
+          const { getByText } = renderWithTheme(
+            <ChipGroup
+              accessibilityLabel="Select fruits"
+              selectionType={selectionType}
+              color={color}
             >
               <Chip value="apple">Apple</Chip>
               <Chip value="mango">Mango</Chip>

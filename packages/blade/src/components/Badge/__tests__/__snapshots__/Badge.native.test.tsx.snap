@@ -498,6 +498,212 @@ exports[`<Badge /> should render high contrast blue variant Badge 1`] = `
 </View>
 `;
 
+exports[`<Badge /> should render high contrast default color Badge 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="badge"
+    display="flex"
+    style={
+      [
+        {
+          "display": "flex",
+        },
+      ]
+    }
+  >
+    <View
+      backgroundColor="badge.background.blue.highContrast"
+      data-blade-component="base-box"
+      size="medium"
+      style={
+        [
+          {
+            "backgroundColor": "hsla(218, 89%, 51%, 1)",
+            "textAlign": "left",
+          },
+          {
+            "alignSelf": "center",
+            "backgroundColor": "hsla(218, 89%, 51%, 1)",
+            "borderRadius": 9999,
+            "display": "flex",
+            "flexWrap": "nowrap",
+          },
+        ]
+      }
+      textAlign="left"
+    >
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        justifyContent="center"
+        overflow="hidden"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "overflow": "hidden",
+              "paddingBottom": 2,
+              "paddingLeft": 8,
+              "paddingRight": 8,
+              "paddingTop": 2,
+            },
+          ]
+        }
+      >
+        <Text
+          accessible={true}
+          color="badge.text.blue.highContrast"
+          data-blade-component="text"
+          fontFamily="text"
+          fontSize={75}
+          fontStyle="normal"
+          fontWeight="regular"
+          lineHeight={50}
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "hsla(0, 0%, 100%, 1)",
+                "fontFamily": "Lato",
+                "fontSize": 12,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "lineHeight": 16,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          Label
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<Badge /> should render high contrast information color Badge 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="badge"
+    display="flex"
+    style={
+      [
+        {
+          "display": "flex",
+        },
+      ]
+    }
+  >
+    <View
+      backgroundColor="feedback.background.information.highContrast"
+      data-blade-component="base-box"
+      size="medium"
+      style={
+        [
+          {
+            "backgroundColor": "hsla(193, 100%, 35%, 1)",
+            "textAlign": "left",
+          },
+          {
+            "alignSelf": "center",
+            "backgroundColor": "hsla(193, 100%, 35%, 1)",
+            "borderRadius": 9999,
+            "display": "flex",
+            "flexWrap": "nowrap",
+          },
+        ]
+      }
+      textAlign="left"
+    >
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        justifyContent="center"
+        overflow="hidden"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "overflow": "hidden",
+              "paddingBottom": 2,
+              "paddingLeft": 8,
+              "paddingRight": 8,
+              "paddingTop": 2,
+            },
+          ]
+        }
+      >
+        <Text
+          accessible={true}
+          color="feedback.text.information.highContrast"
+          data-blade-component="text"
+          fontFamily="text"
+          fontSize={75}
+          fontStyle="normal"
+          fontWeight="regular"
+          lineHeight={50}
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "hsla(0, 0%, 100%, 1)",
+                "fontFamily": "Lato",
+                "fontSize": 12,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "lineHeight": 16,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          Label
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
 exports[`<Badge /> should render high contrast information variant Badge 1`] = `
 <View
   style={
@@ -564,6 +770,109 @@ exports[`<Badge /> should render high contrast information variant Badge 1`] = `
         <Text
           accessible={true}
           color="feedback.text.information.highContrast"
+          data-blade-component="text"
+          fontFamily="text"
+          fontSize={75}
+          fontStyle="normal"
+          fontWeight="regular"
+          lineHeight={50}
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "hsla(0, 0%, 100%, 1)",
+                "fontFamily": "Lato",
+                "fontSize": 12,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "lineHeight": 16,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          Label
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<Badge /> should render high contrast negative color Badge 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="badge"
+    display="flex"
+    style={
+      [
+        {
+          "display": "flex",
+        },
+      ]
+    }
+  >
+    <View
+      backgroundColor="feedback.background.negative.highContrast"
+      data-blade-component="base-box"
+      size="medium"
+      style={
+        [
+          {
+            "backgroundColor": "hsla(8, 73%, 47%, 1)",
+            "textAlign": "left",
+          },
+          {
+            "alignSelf": "center",
+            "backgroundColor": "hsla(8, 73%, 47%, 1)",
+            "borderRadius": 9999,
+            "display": "flex",
+            "flexWrap": "nowrap",
+          },
+        ]
+      }
+      textAlign="left"
+    >
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        justifyContent="center"
+        overflow="hidden"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "overflow": "hidden",
+              "paddingBottom": 2,
+              "paddingLeft": 8,
+              "paddingRight": 8,
+              "paddingTop": 2,
+            },
+          ]
+        }
+      >
+        <Text
+          accessible={true}
+          color="feedback.text.negative.highContrast"
           data-blade-component="text"
           fontFamily="text"
           fontSize={75}
@@ -704,6 +1013,109 @@ exports[`<Badge /> should render high contrast negative variant Badge 1`] = `
 </View>
 `;
 
+exports[`<Badge /> should render high contrast neutral color Badge 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="badge"
+    display="flex"
+    style={
+      [
+        {
+          "display": "flex",
+        },
+      ]
+    }
+  >
+    <View
+      backgroundColor="feedback.background.neutral.highContrast"
+      data-blade-component="base-box"
+      size="medium"
+      style={
+        [
+          {
+            "backgroundColor": "hsla(216, 33%, 29%, 1)",
+            "textAlign": "left",
+          },
+          {
+            "alignSelf": "center",
+            "backgroundColor": "hsla(216, 33%, 29%, 1)",
+            "borderRadius": 9999,
+            "display": "flex",
+            "flexWrap": "nowrap",
+          },
+        ]
+      }
+      textAlign="left"
+    >
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        justifyContent="center"
+        overflow="hidden"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "overflow": "hidden",
+              "paddingBottom": 2,
+              "paddingLeft": 8,
+              "paddingRight": 8,
+              "paddingTop": 2,
+            },
+          ]
+        }
+      >
+        <Text
+          accessible={true}
+          color="feedback.text.neutral.highContrast"
+          data-blade-component="text"
+          fontFamily="text"
+          fontSize={75}
+          fontStyle="normal"
+          fontWeight="regular"
+          lineHeight={50}
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "hsla(0, 0%, 100%, 1)",
+                "fontFamily": "Lato",
+                "fontSize": 12,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "lineHeight": 16,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          Label
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
 exports[`<Badge /> should render high contrast neutral variant Badge 1`] = `
 <View
   style={
@@ -807,6 +1219,109 @@ exports[`<Badge /> should render high contrast neutral variant Badge 1`] = `
 </View>
 `;
 
+exports[`<Badge /> should render high contrast notice color Badge 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="badge"
+    display="flex"
+    style={
+      [
+        {
+          "display": "flex",
+        },
+      ]
+    }
+  >
+    <View
+      backgroundColor="feedback.background.notice.highContrast"
+      data-blade-component="base-box"
+      size="medium"
+      style={
+        [
+          {
+            "backgroundColor": "hsla(38, 97%, 38%, 1)",
+            "textAlign": "left",
+          },
+          {
+            "alignSelf": "center",
+            "backgroundColor": "hsla(38, 97%, 38%, 1)",
+            "borderRadius": 9999,
+            "display": "flex",
+            "flexWrap": "nowrap",
+          },
+        ]
+      }
+      textAlign="left"
+    >
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        justifyContent="center"
+        overflow="hidden"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "overflow": "hidden",
+              "paddingBottom": 2,
+              "paddingLeft": 8,
+              "paddingRight": 8,
+              "paddingTop": 2,
+            },
+          ]
+        }
+      >
+        <Text
+          accessible={true}
+          color="feedback.text.notice.highContrast"
+          data-blade-component="text"
+          fontFamily="text"
+          fontSize={75}
+          fontStyle="normal"
+          fontWeight="regular"
+          lineHeight={50}
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "hsla(0, 0%, 100%, 1)",
+                "fontFamily": "Lato",
+                "fontSize": 12,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "lineHeight": 16,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          Label
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
 exports[`<Badge /> should render high contrast notice variant Badge 1`] = `
 <View
   style={
@@ -873,6 +1388,109 @@ exports[`<Badge /> should render high contrast notice variant Badge 1`] = `
         <Text
           accessible={true}
           color="feedback.text.notice.highContrast"
+          data-blade-component="text"
+          fontFamily="text"
+          fontSize={75}
+          fontStyle="normal"
+          fontWeight="regular"
+          lineHeight={50}
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "hsla(0, 0%, 100%, 1)",
+                "fontFamily": "Lato",
+                "fontSize": 12,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "lineHeight": 16,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          Label
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<Badge /> should render high contrast positive color Badge 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="badge"
+    display="flex"
+    style={
+      [
+        {
+          "display": "flex",
+        },
+      ]
+    }
+  >
+    <View
+      backgroundColor="feedback.background.positive.highContrast"
+      data-blade-component="base-box"
+      size="medium"
+      style={
+        [
+          {
+            "backgroundColor": "hsla(160, 100%, 26%, 1)",
+            "textAlign": "left",
+          },
+          {
+            "alignSelf": "center",
+            "backgroundColor": "hsla(160, 100%, 26%, 1)",
+            "borderRadius": 9999,
+            "display": "flex",
+            "flexWrap": "nowrap",
+          },
+        ]
+      }
+      textAlign="left"
+    >
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        justifyContent="center"
+        overflow="hidden"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "overflow": "hidden",
+              "paddingBottom": 2,
+              "paddingLeft": 8,
+              "paddingRight": 8,
+              "paddingTop": 2,
+            },
+          ]
+        }
+      >
+        <Text
+          accessible={true}
+          color="feedback.text.positive.highContrast"
           data-blade-component="text"
           fontFamily="text"
           fontSize={75}
@@ -1219,6 +1837,212 @@ exports[`<Badge /> should render low contrast blue variant Badge 1`] = `
 </View>
 `;
 
+exports[`<Badge /> should render low contrast default color Badge 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="badge"
+    display="flex"
+    style={
+      [
+        {
+          "display": "flex",
+        },
+      ]
+    }
+  >
+    <View
+      backgroundColor="badge.background.blue.lowContrast"
+      data-blade-component="base-box"
+      size="medium"
+      style={
+        [
+          {
+            "backgroundColor": "hsla(218, 89%, 51%, 0.09)",
+            "textAlign": "left",
+          },
+          {
+            "alignSelf": "center",
+            "backgroundColor": "hsla(218, 89%, 51%, 0.09)",
+            "borderRadius": 9999,
+            "display": "flex",
+            "flexWrap": "nowrap",
+          },
+        ]
+      }
+      textAlign="left"
+    >
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        justifyContent="center"
+        overflow="hidden"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "overflow": "hidden",
+              "paddingBottom": 2,
+              "paddingLeft": 8,
+              "paddingRight": 8,
+              "paddingTop": 2,
+            },
+          ]
+        }
+      >
+        <Text
+          accessible={true}
+          color="badge.text.blue.lowContrast"
+          data-blade-component="text"
+          fontFamily="text"
+          fontSize={75}
+          fontStyle="normal"
+          fontWeight="regular"
+          lineHeight={50}
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "hsla(218, 89%, 51%, 1)",
+                "fontFamily": "Lato",
+                "fontSize": 12,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "lineHeight": 16,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          Label
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<Badge /> should render low contrast information color Badge 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="badge"
+    display="flex"
+    style={
+      [
+        {
+          "display": "flex",
+        },
+      ]
+    }
+  >
+    <View
+      backgroundColor="feedback.background.information.lowContrast"
+      data-blade-component="base-box"
+      size="medium"
+      style={
+        [
+          {
+            "backgroundColor": "hsla(193, 100%, 35%, 0.09)",
+            "textAlign": "left",
+          },
+          {
+            "alignSelf": "center",
+            "backgroundColor": "hsla(193, 100%, 35%, 0.09)",
+            "borderRadius": 9999,
+            "display": "flex",
+            "flexWrap": "nowrap",
+          },
+        ]
+      }
+      textAlign="left"
+    >
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        justifyContent="center"
+        overflow="hidden"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "overflow": "hidden",
+              "paddingBottom": 2,
+              "paddingLeft": 8,
+              "paddingRight": 8,
+              "paddingTop": 2,
+            },
+          ]
+        }
+      >
+        <Text
+          accessible={true}
+          color="feedback.text.information.lowContrast"
+          data-blade-component="text"
+          fontFamily="text"
+          fontSize={75}
+          fontStyle="normal"
+          fontWeight="regular"
+          lineHeight={50}
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "hsla(193, 100%, 35%, 1)",
+                "fontFamily": "Lato",
+                "fontSize": 12,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "lineHeight": 16,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          Label
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
 exports[`<Badge /> should render low contrast information variant Badge 1`] = `
 <View
   style={
@@ -1296,6 +2120,109 @@ exports[`<Badge /> should render low contrast information variant Badge 1`] = `
             [
               {
                 "color": "hsla(193, 100%, 35%, 1)",
+                "fontFamily": "Lato",
+                "fontSize": 12,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "lineHeight": 16,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          Label
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<Badge /> should render low contrast negative color Badge 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="badge"
+    display="flex"
+    style={
+      [
+        {
+          "display": "flex",
+        },
+      ]
+    }
+  >
+    <View
+      backgroundColor="feedback.background.negative.lowContrast"
+      data-blade-component="base-box"
+      size="medium"
+      style={
+        [
+          {
+            "backgroundColor": "hsla(9, 91%, 56%, 0.09)",
+            "textAlign": "left",
+          },
+          {
+            "alignSelf": "center",
+            "backgroundColor": "hsla(9, 91%, 56%, 0.09)",
+            "borderRadius": 9999,
+            "display": "flex",
+            "flexWrap": "nowrap",
+          },
+        ]
+      }
+      textAlign="left"
+    >
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        justifyContent="center"
+        overflow="hidden"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "overflow": "hidden",
+              "paddingBottom": 2,
+              "paddingLeft": 8,
+              "paddingRight": 8,
+              "paddingTop": 2,
+            },
+          ]
+        }
+      >
+        <Text
+          accessible={true}
+          color="feedback.text.negative.lowContrast"
+          data-blade-component="text"
+          fontFamily="text"
+          fontSize={75}
+          fontStyle="normal"
+          fontWeight="regular"
+          lineHeight={50}
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "hsla(8, 73%, 47%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 12,
                 "fontStyle": "normal",
@@ -1425,6 +2352,109 @@ exports[`<Badge /> should render low contrast negative variant Badge 1`] = `
 </View>
 `;
 
+exports[`<Badge /> should render low contrast neutral color Badge 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="badge"
+    display="flex"
+    style={
+      [
+        {
+          "display": "flex",
+        },
+      ]
+    }
+  >
+    <View
+      backgroundColor="feedback.background.neutral.lowContrast"
+      data-blade-component="base-box"
+      size="medium"
+      style={
+        [
+          {
+            "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+            "textAlign": "left",
+          },
+          {
+            "alignSelf": "center",
+            "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+            "borderRadius": 9999,
+            "display": "flex",
+            "flexWrap": "nowrap",
+          },
+        ]
+      }
+      textAlign="left"
+    >
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        justifyContent="center"
+        overflow="hidden"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "overflow": "hidden",
+              "paddingBottom": 2,
+              "paddingLeft": 8,
+              "paddingRight": 8,
+              "paddingTop": 2,
+            },
+          ]
+        }
+      >
+        <Text
+          accessible={true}
+          color="feedback.text.neutral.lowContrast"
+          data-blade-component="text"
+          fontFamily="text"
+          fontSize={75}
+          fontStyle="normal"
+          fontWeight="regular"
+          lineHeight={50}
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "hsla(216, 27%, 36%, 1)",
+                "fontFamily": "Lato",
+                "fontSize": 12,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "lineHeight": 16,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          Label
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
 exports[`<Badge /> should render low contrast neutral variant Badge 1`] = `
 <View
   style={
@@ -1528,6 +2558,109 @@ exports[`<Badge /> should render low contrast neutral variant Badge 1`] = `
 </View>
 `;
 
+exports[`<Badge /> should render low contrast notice color Badge 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="badge"
+    display="flex"
+    style={
+      [
+        {
+          "display": "flex",
+        },
+      ]
+    }
+  >
+    <View
+      backgroundColor="feedback.background.notice.lowContrast"
+      data-blade-component="base-box"
+      size="medium"
+      style={
+        [
+          {
+            "backgroundColor": "hsla(36, 100%, 44%, 0.09)",
+            "textAlign": "left",
+          },
+          {
+            "alignSelf": "center",
+            "backgroundColor": "hsla(36, 100%, 44%, 0.09)",
+            "borderRadius": 9999,
+            "display": "flex",
+            "flexWrap": "nowrap",
+          },
+        ]
+      }
+      textAlign="left"
+    >
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        justifyContent="center"
+        overflow="hidden"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "overflow": "hidden",
+              "paddingBottom": 2,
+              "paddingLeft": 8,
+              "paddingRight": 8,
+              "paddingTop": 2,
+            },
+          ]
+        }
+      >
+        <Text
+          accessible={true}
+          color="feedback.text.notice.lowContrast"
+          data-blade-component="text"
+          fontFamily="text"
+          fontSize={75}
+          fontStyle="normal"
+          fontWeight="regular"
+          lineHeight={50}
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "hsla(38, 97%, 38%, 1)",
+                "fontFamily": "Lato",
+                "fontSize": 12,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "lineHeight": 16,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          Label
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
 exports[`<Badge /> should render low contrast notice variant Badge 1`] = `
 <View
   style={
@@ -1605,6 +2738,109 @@ exports[`<Badge /> should render low contrast notice variant Badge 1`] = `
             [
               {
                 "color": "hsla(38, 97%, 38%, 1)",
+                "fontFamily": "Lato",
+                "fontSize": 12,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "lineHeight": 16,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          Label
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<Badge /> should render low contrast positive color Badge 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="badge"
+    display="flex"
+    style={
+      [
+        {
+          "display": "flex",
+        },
+      ]
+    }
+  >
+    <View
+      backgroundColor="feedback.background.positive.lowContrast"
+      data-blade-component="base-box"
+      size="medium"
+      style={
+        [
+          {
+            "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
+            "textAlign": "left",
+          },
+          {
+            "alignSelf": "center",
+            "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
+            "borderRadius": 9999,
+            "display": "flex",
+            "flexWrap": "nowrap",
+          },
+        ]
+      }
+      textAlign="left"
+    >
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        justifyContent="center"
+        overflow="hidden"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "overflow": "hidden",
+              "paddingBottom": 2,
+              "paddingLeft": 8,
+              "paddingRight": 8,
+              "paddingTop": 2,
+            },
+          ]
+        }
+      >
+        <Text
+          accessible={true}
+          color="feedback.text.positive.lowContrast"
+          data-blade-component="text"
+          fontFamily="text"
+          fontSize={75}
+          fontStyle="normal"
+          fontWeight="regular"
+          lineHeight={50}
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "hsla(160, 100%, 26%, 1)",
                 "fontFamily": "Lato",
                 "fontSize": 12,
                 "fontStyle": "normal",

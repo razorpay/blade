@@ -1,5 +1,40 @@
 # @razorpay/blade
 
+## 10.14.0
+
+### Minor Changes
+
+- dc3e240b: feat: add `color` prop to `Alert`, `Badge`, `Button`, `Chip`, `ChipGroup`, `Counter`, `Link`, & `Spinner`
+
+  #### Color Tokens Update
+
+  **[New White Color Tokens:](https://blade.razorpay.com/?path=/docs/tokens-colors--page)** Introducing white color tokens, enabling white buttons and links for enhanced design options.
+
+  #### Deprecated `intent` prop in favor of the new `color` prop
+
+  - **Alert** - Deprecated `intent` prop.
+  - **Badge** - Deprecated `variant` prop.
+  - **Chip & ChipGroup** - Deprecated `intent` prop.
+  - **Counter** - Deprecated `variant` and `intent` prop.
+  - **Spinner** - Deprecated the `contrast` prop.
+
+  #### Jest Snapshots
+
+  Your existing component snapshots may update, there is no change in the visual appearance of components. Feel free to commit the updated snapshots.
+
+## 10.13.2
+
+### Patch Changes
+
+- a047ea61: fix(AutoComplete): handle focus ring on option change
+
+## 10.13.1
+
+### Patch Changes
+
+- d22cbd3d: fix(AutoComplete): Handle inputValue in Controlled Single Selection
+- acd0f7b0: fix: change autocomplete search logic from startsWith to includes
+
 ## 10.13.0
 
 ### Minor Changes

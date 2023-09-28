@@ -24,18 +24,25 @@ export type CounterProps = {
    */
   max?: number;
   /**
-   * Sets the intent of the counter.
+   * This prop is deprecated in favor of `color`.
    *
    * @default 'neutral'
-   * @deprecated Use `variant` instead
+   * @deprecated Use `color` instead
    */
   intent?: Feedback;
   /**
-   * Sets the variant of the counter.
+   * This prop is deprecated in favor of `color`.
+   *
+   * @default 'neutral'
+   * @deprecated Use `color` instead
+   */
+  variant?: Feedback | 'blue';
+  /**
+   * Sets the color of the counter.
    *
    * @default 'neutral'
    */
-  variant?: Feedback | 'blue';
+  color?: Feedback | 'default';
   /**
    * Sets the contrast of the counter.
    *
@@ -65,19 +72,20 @@ const getColorProps = ({
   variant = 'neutral',
   contrast = 'low',
 }: {
-  variant: NonNullable<CounterProps['variant']>;
+  variant: NonNullable<CounterProps['color'] | 'blue'>;
   contrast: NonNullable<CounterProps['contrast']>;
 }): ColorProps => {
+  const counterVariant = variant === 'default' ? 'blue' : variant;
   const props: ColorProps = {
     textColor: 'feedback.text.neutral.lowContrast',
     backgroundColor: 'feedback.background.neutral.lowContrast',
   };
-  if (isFeedbackVariant(variant)) {
-    props.textColor = `feedback.text.${variant}.${contrast}Contrast`;
-    props.backgroundColor = `feedback.background.${variant}.${contrast}Contrast`;
+  if (isFeedbackVariant(counterVariant)) {
+    props.textColor = `feedback.text.${counterVariant}.${contrast}Contrast`;
+    props.backgroundColor = `feedback.background.${counterVariant}.${contrast}Contrast`;
   } else {
-    props.textColor = `badge.text.${variant}.${contrast}Contrast`;
-    props.backgroundColor = `badge.background.${variant}.${contrast}Contrast`;
+    props.textColor = `badge.text.${counterVariant}.${contrast}Contrast`;
+    props.backgroundColor = `badge.background.${counterVariant}.${contrast}Contrast`;
   }
   return props;
 };
@@ -87,6 +95,7 @@ const Counter = ({
   max,
   intent,
   variant = 'neutral',
+  color,
   contrast = 'low',
   size = 'medium',
   testID,
@@ -99,7 +108,7 @@ const Counter = ({
 
   const { platform } = useTheme();
   const { backgroundColor, textColor } = getColorProps({
-    variant: intent ?? variant,
+    variant: color ?? intent ?? variant,
     contrast,
   });
 
