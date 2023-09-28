@@ -1148,8 +1148,8 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
             >
               <label
                 data-blade-component="form-label"
-                for="dropdown-914-trigger-915-input-916"
-                id="dropdown-914-label"
+                for="dropdown-1003-trigger-1004-input-1005"
+                id="dropdown-1003-label"
                 style="width: auto; flex-shrink: 0; margin-right: 16px;"
               >
                 <div
@@ -1192,8 +1192,8 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                   data-blade-component="base-box"
                 >
                   <button
-                    aria-activedescendant="dropdown-914-0"
-                    aria-controls="dropdown-914-actionlist"
+                    aria-activedescendant="dropdown-1003-0"
+                    aria-controls="dropdown-1003-actionlist"
                     aria-describedby=""
                     aria-disabled="false"
                     aria-expanded="true"
@@ -1203,7 +1203,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                     autocomplete="off"
                     class="c13"
                     data-blade-component="styled-base-input"
-                    id="dropdown-914-trigger-915-input-916"
+                    id="dropdown-1003-trigger-1004-input-1005"
                     placeholder="Select Option"
                     role="combobox"
                     type="button"
@@ -1394,8 +1394,8 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                       >
                         <label
                           data-blade-component="form-label"
-                          for="dropdown-914-trigger-922-input-923"
-                          id="dropdown-914-label"
+                          for="dropdown-1003-trigger-1011-input-1012"
+                          id="dropdown-1003-label"
                           style="width: auto; flex-shrink: 0; margin-right: 16px;"
                         >
                           <div
@@ -1438,8 +1438,8 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                             data-blade-component="base-box"
                           >
                             <input
-                              aria-activedescendant="dropdown-914-0"
-                              aria-controls="dropdown-914-actionlist"
+                              aria-activedescendant="dropdown-1003-0"
+                              aria-controls="dropdown-1003-actionlist"
                               aria-describedby=""
                               aria-disabled="false"
                               aria-expanded="true"
@@ -1450,7 +1450,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                               autofocus=""
                               class="c38"
                               data-blade-component="styled-base-input"
-                              id="dropdown-914-trigger-922-input-923"
+                              id="dropdown-1003-trigger-1011-input-1012"
                               placeholder="Select Option"
                               role="combobox"
                               type="text"
@@ -1503,7 +1503,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                   data-blade-component="action-list-item"
                   data-index="0"
                   data-value="apple"
-                  id="dropdown-914-0"
+                  id="dropdown-1003-0"
                   role="option"
                   tabindex="-1"
                   type="button"
@@ -1543,7 +1543,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                   data-blade-component="action-list-item"
                   data-index="1"
                   data-value="mango"
-                  id="dropdown-914-1"
+                  id="dropdown-1003-1"
                   role="option"
                   tabindex="-1"
                   type="button"
