@@ -100,6 +100,7 @@ exports[`<Link /> should render button variant of link 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(218, 89%, 51%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -214,6 +215,7 @@ exports[`<Link /> should render default color link 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(218, 89%, 51%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -328,6 +330,7 @@ exports[`<Link /> should render disabled button variant of link 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(218, 19%, 81%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -442,6 +445,122 @@ exports[`<Link /> should render disabled default color link 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(218, 89%, 51%, 1)",
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+        textAlign="center"
+        textDecorationLine="none"
+      >
+        Learn More
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<Link /> should render disabled neutral color link 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    accessibilityRole="link"
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": false,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      [
+        {
+          "alignSelf": "flex-start",
+          "backgroundColor": "transparent",
+          "borderColor": "black",
+          "borderStyle": "solid",
+          "borderWidth": 0,
+          "outline": "none",
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+        },
+      ]
+    }
+  >
+    <View
+      alignItems="center"
+      className="content-container"
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="row"
+      style={
+        [
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+          },
+        ]
+      }
+    >
+      <Text
+        accessible={true}
+        color="feedback.neutral.action.text.link.default.lowContrast"
+        data-blade-component="base-text"
+        fontSize={100}
+        fontWeight="bold"
+        lineHeight={100}
+        style={
+          [
+            {
+              "color": "hsla(216, 27%, 36%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 14,
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textAlign": "center",
+              "textDecorationColor": "hsla(216, 27%, 36%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -556,6 +675,7 @@ exports[`<Link /> should render disabled white color link 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(0, 0%, 100%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -670,6 +790,7 @@ exports[`<Link /> should render link with default properties 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(218, 89%, 51%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -872,6 +993,7 @@ exports[`<Link /> should render link with icon with default iconPosition 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(218, 89%, 51%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -1074,6 +1196,7 @@ exports[`<Link /> should render link with icon with left iconPosition 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(218, 89%, 51%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -1188,6 +1311,7 @@ exports[`<Link /> should render link with icon with right iconPosition 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(218, 89%, 51%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -1478,6 +1602,7 @@ exports[`<Link /> should render link with icon without text 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(218, 89%, 51%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -1485,6 +1610,121 @@ exports[`<Link /> should render link with icon without text 1`] = `
         textAlign="center"
         textDecorationLine="none"
       />
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<Link /> should render neutral color link 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    accessibilityRole="link"
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": false,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      [
+        {
+          "alignSelf": "flex-start",
+          "backgroundColor": "transparent",
+          "borderColor": "black",
+          "borderStyle": "solid",
+          "borderWidth": 0,
+          "outline": "none",
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+        },
+      ]
+    }
+  >
+    <View
+      alignItems="center"
+      className="content-container"
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="row"
+      style={
+        [
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+          },
+        ]
+      }
+    >
+      <Text
+        accessible={true}
+        color="feedback.neutral.action.text.link.default.lowContrast"
+        data-blade-component="base-text"
+        fontSize={100}
+        fontWeight="bold"
+        lineHeight={100}
+        style={
+          [
+            {
+              "color": "hsla(216, 27%, 36%, 1)",
+              "fontFamily": "Lato",
+              "fontSize": 14,
+              "fontStyle": "normal",
+              "fontWeight": "700",
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textAlign": "center",
+              "textDecorationColor": "hsla(216, 27%, 36%, 1)",
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+        textAlign="center"
+        textDecorationLine="none"
+      >
+        Learn More
+      </Text>
     </View>
   </View>
 </View>
@@ -1590,6 +1830,7 @@ exports[`<Link /> should render white color link 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(0, 0%, 100%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -1792,6 +2033,7 @@ exports[`<Link /> should render with small size 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(218, 89%, 51%, 1)",
               "textDecorationLine": "none",
             },
           ]

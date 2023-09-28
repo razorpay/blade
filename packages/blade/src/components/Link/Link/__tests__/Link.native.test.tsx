@@ -13,7 +13,7 @@ jest.mock('react-native/Libraries/Linking/Linking', () => ({
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
 
-const colors: LinkProps['color'][] = ['default', 'white'];
+const colors: LinkProps['color'][] = ['default', 'white', 'neutral'];
 
 describe('<Link />', () => {
   it('should render link with default properties', () => {

@@ -183,6 +183,11 @@ const LinkColorsTemplate: ComponentStory<typeof LinkComponent> = ({
           {children}
         </LinkComponent>
       </BaseBox>
+      <BaseBox padding="spacing.2">
+        <LinkComponent {...args} color="nuetral">
+          {children}
+        </LinkComponent>
+      </BaseBox>
     </BaseBox>
   );
 };
