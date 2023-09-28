@@ -172,7 +172,7 @@ export default {
       },
     },
     intent: {
-      description: `Sets the ChipGroups's visual intent, it will propagate down to all the Chips. This prop is deprecated, use 'color' instead.`,
+      description: `This prop is deprecated, use 'color' instead.`,
       table: {
         category: propsCategory.CHIP_GROUP,
         type: {

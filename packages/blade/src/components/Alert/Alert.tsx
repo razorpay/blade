@@ -88,7 +88,7 @@ type AlertProps = {
   isFullWidth?: boolean;
 
   /**
-   * Sets the color tone
+   * This prop is deprecated in favor of the `color` prop.
    *
    * @deprecated Use `color` instead
    * @default neutral
@@ -97,8 +97,6 @@ type AlertProps = {
 
   /**
    * Sets the color tone
-   *
-   * @default neutral
    */
   color?: Feedback;
 

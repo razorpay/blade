@@ -24,14 +24,14 @@ export type CounterProps = {
    */
   max?: number;
   /**
-   * Sets the intent of the counter. This prop is deprecated in favor of `color`.
+   * This prop is deprecated in favor of `color`.
    *
    * @default 'neutral'
    * @deprecated Use `color` instead
    */
   intent?: Feedback;
   /**
-   * Sets the variant of the counter. This prop is deprecated in favor of `color`.
+   * This prop is deprecated in favor of `color`.
    *
    * @default 'neutral'
    * @deprecated Use `color` instead

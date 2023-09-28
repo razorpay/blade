@@ -34,7 +34,7 @@ type BaseSpinnerProps = {
    */
   labelPosition?: 'right' | 'bottom';
   /**
-   * Sets the contrast of the spinner.
+   * This is deprecated in favor of the `color` prop.
    *
    * @deprecated Use `color="white"` for high contrast and `color="default"` for low contrast
    * @default 'low'

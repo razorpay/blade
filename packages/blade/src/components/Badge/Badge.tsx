@@ -23,7 +23,7 @@ type BadgeProps = {
    */
   children: StringChildrenType;
   /**
-   * Sets the variant of the badge. This prop is deprecated in favor of `color`.
+   * This prop is deprecated in favor of `color`.
    *
    * @deprecated Use the `color` prop instead
    * @default 'neutral'

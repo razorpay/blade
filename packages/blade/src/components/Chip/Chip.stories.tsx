@@ -81,8 +81,7 @@ export default {
       },
     },
     intent: {
-      description:
-        'Sets the intent of the Chip. This overwrites the intent set by the parent `ChipGroup` component',
+      description: 'This is deprecated in favor of the `color` prop.',
       table: {
         category: propsCategory.CHIP,
         type: {

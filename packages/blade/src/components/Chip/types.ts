@@ -15,7 +15,7 @@ type ChipProps = {
    */
   icon?: IconComponent;
   /**
-   * Sets the Chip's visual intent. This is deprecated in favor of the `color` prop.
+   * This is deprecated in favor of the `color` prop.
    *
    *  @deprecated Use the `color` prop instead.
    */
@@ -92,7 +92,7 @@ type ChipGroupProps = {
    */
   value?: string | string[];
   /**
-   * Sets the ChipGroups's visual intent, it will propagate down to all the Chips. This is deprecated in favor of the `color` prop.
+   * This is deprecated in favor of the `color` prop.
    *
    * @default "none"
    * @deprecated Use the `color` prop instead.
