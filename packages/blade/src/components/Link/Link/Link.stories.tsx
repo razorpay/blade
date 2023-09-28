@@ -14,7 +14,6 @@ import {
   getBladeCommonEventArgTypes,
   getStyledPropsArgTypes,
 } from '~components/Box/BaseBox/storybookArgTypes';
-import { Box } from '~components/Box';
 
 const Page = (): ReactElement => {
   return (
