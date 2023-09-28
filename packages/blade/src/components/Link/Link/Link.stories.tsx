@@ -14,6 +14,7 @@ import {
   getBladeCommonEventArgTypes,
   getStyledPropsArgTypes,
 } from '~components/Box/BaseBox/storybookArgTypes';
+import { Box } from '~components/Box';
 
 const Page = (): ReactElement => {
   return (
@@ -156,12 +157,42 @@ LinkButtonInline.args = {
   variant: 'button',
   children: 'Reset Password',
 };
+
 LinkButtonInline.parameters = {
   docs: {
     description: {
       story: 'Inline Link Button within a Text component',
     },
   },
+};
+
+const LinkColorsTemplate: ComponentStory<typeof LinkComponent> = ({
+  icon,
+  children = '',
+  ...args
+}) => {
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.2">
+      <Box padding="spacing.2">
+        <LinkComponent {...args} color="default">
+          {children}
+        </LinkComponent>
+      </Box>
+      <Box padding="spacing.2" backgroundColor="brand.primary.500">
+        <LinkComponent {...args} color="white">
+          {children}
+        </LinkComponent>
+      </Box>
+    </Box>
+  );
+};
+
+export const LinkWithColor = LinkColorsTemplate.bind({});
+LinkWithColor.storyName = 'Link - With Color';
+LinkWithColor.args = {
+  variant: 'anchor',
+  children: 'Learn More',
+  href: 'https://github.com/razorpay/blade',
 };
 
 export const DisabledLinkButton = LinkTemplate.bind({});
