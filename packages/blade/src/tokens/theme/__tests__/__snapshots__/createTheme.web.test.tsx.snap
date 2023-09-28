@@ -3339,8 +3339,6 @@ exports[`createTheme should create a theme with the correct brand colors 2`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsl(0,0%,100%);
-  text-decoration-color: hsl(0,0%,100%);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;
@@ -6731,8 +6729,6 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsl(219,41%,19%);
-  text-decoration-color: hsl(219,41%,19%);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;

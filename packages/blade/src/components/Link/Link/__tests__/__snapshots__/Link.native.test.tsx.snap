@@ -100,7 +100,6 @@ exports[`<Link /> should render button variant of link 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
-              "textDecorationColor": "hsla(218, 89%, 51%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -215,7 +214,6 @@ exports[`<Link /> should render default color link 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
-              "textDecorationColor": "hsla(218, 89%, 51%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -330,7 +328,6 @@ exports[`<Link /> should render disabled button variant of link 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
-              "textDecorationColor": "hsla(218, 19%, 81%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -445,7 +442,6 @@ exports[`<Link /> should render disabled default color link 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
-              "textDecorationColor": "hsla(218, 89%, 51%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -560,7 +556,6 @@ exports[`<Link /> should render disabled neutral color link 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
-              "textDecorationColor": "hsla(216, 27%, 36%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -675,7 +670,6 @@ exports[`<Link /> should render disabled white color link 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
-              "textDecorationColor": "hsla(0, 0%, 100%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -790,7 +784,6 @@ exports[`<Link /> should render link with default properties 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
-              "textDecorationColor": "hsla(218, 89%, 51%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -993,7 +986,6 @@ exports[`<Link /> should render link with icon with default iconPosition 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
-              "textDecorationColor": "hsla(218, 89%, 51%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -1196,7 +1188,6 @@ exports[`<Link /> should render link with icon with left iconPosition 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
-              "textDecorationColor": "hsla(218, 89%, 51%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -1311,7 +1302,6 @@ exports[`<Link /> should render link with icon with right iconPosition 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
-              "textDecorationColor": "hsla(218, 89%, 51%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -1602,7 +1592,6 @@ exports[`<Link /> should render link with icon without text 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
-              "textDecorationColor": "hsla(218, 89%, 51%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -1715,7 +1704,6 @@ exports[`<Link /> should render neutral color link 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
-              "textDecorationColor": "hsla(216, 27%, 36%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -1830,7 +1818,6 @@ exports[`<Link /> should render white color link 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
-              "textDecorationColor": "hsla(0, 0%, 100%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -2033,7 +2020,6 @@ exports[`<Link /> should render with small size 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
-              "textDecorationColor": "hsla(218, 89%, 51%, 1)",
               "textDecorationLine": "none",
             },
           ]

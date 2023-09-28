@@ -35,7 +35,6 @@ exports[`<Text /> should render Text with center textAlign 1`] = `
           "paddingRight": 0,
           "paddingTop": 0,
           "textAlign": "center",
-          "textDecorationColor": "hsla(217, 56%, 17%, 1)",
           "textDecorationLine": "none",
         },
       ]
@@ -81,7 +80,6 @@ exports[`<Text /> should render Text with color 1`] = `
           "paddingLeft": 0,
           "paddingRight": 0,
           "paddingTop": 0,
-          "textDecorationColor": "hsla(216, 16%, 60%, 1)",
           "textDecorationLine": "none",
         },
       ]
@@ -126,7 +124,6 @@ exports[`<Text /> should render Text with default properties 1`] = `
           "paddingLeft": 0,
           "paddingRight": 0,
           "paddingTop": 0,
-          "textDecorationColor": "hsla(217, 56%, 17%, 1)",
           "textDecorationLine": "none",
         },
       ]
@@ -172,7 +169,6 @@ exports[`<Text /> should render Text with variant "body" 1`] = `
           "paddingLeft": 0,
           "paddingRight": 0,
           "paddingTop": 0,
-          "textDecorationColor": "hsla(217, 56%, 17%, 1)",
           "textDecorationLine": "none",
         },
       ]
@@ -218,7 +214,6 @@ exports[`<Text /> should render Text with variant "body" and contrast "high" 1`]
           "paddingLeft": 0,
           "paddingRight": 0,
           "paddingTop": 0,
-          "textDecorationColor": "hsla(0, 0%, 100%, 1)",
           "textDecorationLine": "none",
         },
       ]
@@ -264,7 +259,6 @@ exports[`<Text /> should render Text with variant "body" and size "small" 1`] = 
           "paddingLeft": 0,
           "paddingRight": 0,
           "paddingTop": 0,
-          "textDecorationColor": "hsla(217, 56%, 17%, 1)",
           "textDecorationLine": "none",
         },
       ]
@@ -309,7 +303,6 @@ exports[`<Text /> should render Text with variant "caption" 1`] = `
           "paddingLeft": 0,
           "paddingRight": 0,
           "paddingTop": 0,
-          "textDecorationColor": "hsla(217, 56%, 17%, 1)",
           "textDecorationLine": "none",
         },
       ]

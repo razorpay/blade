@@ -99,7 +99,6 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                 "paddingLeft": 0,
                 "paddingRight": 0,
                 "paddingTop": 0,
-                "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                 "textDecorationLine": "none",
               },
             ]
@@ -206,7 +205,6 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
-                    "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -240,7 +238,6 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
-                    "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -410,7 +407,6 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                           "paddingRight": 0,
                           "paddingTop": 0,
                           "textAlign": "center",
-                          "textDecorationColor": "hsla(218, 89%, 51%, 1)",
                           "textDecorationLine": "none",
                         },
                       ]
@@ -576,7 +572,6 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                           "paddingRight": 0,
                           "paddingTop": 0,
                           "textAlign": "center",
-                          "textDecorationColor": "hsla(0, 0%, 100%, 1)",
                           "textDecorationLine": "none",
                         },
                       ]
@@ -845,7 +840,6 @@ exports[`<Card /> should render a Card with Header 1`] = `
                         "paddingLeft": 0,
                         "paddingRight": 0,
                         "paddingTop": 0,
-                        "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                         "textDecorationLine": "none",
                       },
                     ]
@@ -946,7 +940,6 @@ exports[`<Card /> should render a Card with Header 1`] = `
                                 "paddingRight": 0,
                                 "paddingTop": 0,
                                 "textAlign": "center",
-                                "textDecorationColor": "hsla(216, 27%, 36%, 1)",
                                 "textDecorationLine": "none",
                               },
                             ]
@@ -987,7 +980,6 @@ exports[`<Card /> should render a Card with Header 1`] = `
                       "paddingRight": 0,
                       "paddingTop": 0,
                       "textAlign": "left",
-                      "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                       "textDecorationLine": "none",
                     },
                   ]
@@ -1091,7 +1083,6 @@ exports[`<Card /> should render a Card with Header 1`] = `
                           "paddingLeft": 0,
                           "paddingRight": 0,
                           "paddingTop": 0,
-                          "textDecorationColor": "hsla(216, 27%, 36%, 1)",
                           "textDecorationLine": "none",
                         },
                       ]
@@ -1162,7 +1153,6 @@ exports[`<Card /> should render a Card with Header 1`] = `
                 "paddingLeft": 0,
                 "paddingRight": 0,
                 "paddingTop": 0,
-                "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                 "textDecorationLine": "none",
               },
             ]
@@ -1358,7 +1348,6 @@ exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
                 "paddingLeft": 0,
                 "paddingRight": 0,
                 "paddingTop": 0,
-                "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                 "textDecorationLine": "none",
               },
             ]
@@ -1471,7 +1460,6 @@ exports[`<Card /> should render a plain Card 1`] = `
                 "paddingLeft": 0,
                 "paddingRight": 0,
                 "paddingTop": 0,
-                "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                 "textDecorationLine": "none",
               },
             ]

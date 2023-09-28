@@ -9,8 +9,6 @@ exports[`<BaseText /> should render regular text 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(0,0%,100%,1);
-  text-decoration-color: hsla(0,0%,100%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -87,8 +85,6 @@ exports[`<BaseText /> should render text with default properties 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(217,56%,17%,1);
-  text-decoration-color: hsla(217,56%,17%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;

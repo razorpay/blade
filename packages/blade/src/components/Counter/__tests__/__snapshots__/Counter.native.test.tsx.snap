@@ -91,7 +91,6 @@ exports[`<Counter /> should render Counter with default props 1`] = `
                 "paddingRight": 0,
                 "paddingTop": 0,
                 "textAlign": "center",
-                "textDecorationColor": "hsla(216, 27%, 36%, 1)",
                 "textDecorationLine": "none",
               },
             ]
@@ -197,7 +196,6 @@ exports[`<Counter /> should render high contrast blue variant Counter 1`] = `
                 "paddingRight": 0,
                 "paddingTop": 0,
                 "textAlign": "center",
-                "textDecorationColor": "hsla(0, 0%, 100%, 1)",
                 "textDecorationLine": "none",
               },
             ]
@@ -303,7 +301,6 @@ exports[`<Counter /> should render high contrast default color Counter 1`] = `
                 "paddingRight": 0,
                 "paddingTop": 0,
                 "textAlign": "center",
-                "textDecorationColor": "hsla(0, 0%, 100%, 1)",
                 "textDecorationLine": "none",
               },
             ]
@@ -409,7 +406,6 @@ exports[`<Counter /> should render high contrast information color Counter 1`] =
                 "paddingRight": 0,
                 "paddingTop": 0,
                 "textAlign": "center",
-                "textDecorationColor": "hsla(0, 0%, 100%, 1)",
                 "textDecorationLine": "none",
               },
             ]
@@ -515,7 +511,6 @@ exports[`<Counter /> should render high contrast information variant Counter 1`]
                 "paddingRight": 0,
                 "paddingTop": 0,
                 "textAlign": "center",
-                "textDecorationColor": "hsla(0, 0%, 100%, 1)",
                 "textDecorationLine": "none",
               },
             ]
@@ -621,7 +616,6 @@ exports[`<Counter /> should render high contrast negative color Counter 1`] = `
                 "paddingRight": 0,
                 "paddingTop": 0,
                 "textAlign": "center",
-                "textDecorationColor": "hsla(0, 0%, 100%, 1)",
                 "textDecorationLine": "none",
               },
             ]
@@ -727,7 +721,6 @@ exports[`<Counter /> should render high contrast negative variant Counter 1`] = 
                 "paddingRight": 0,
                 "paddingTop": 0,
                 "textAlign": "center",
-                "textDecorationColor": "hsla(0, 0%, 100%, 1)",
                 "textDecorationLine": "none",
               },
             ]
@@ -833,7 +826,6 @@ exports[`<Counter /> should render high contrast neutral color Counter 1`] = `
                 "paddingRight": 0,
                 "paddingTop": 0,
                 "textAlign": "center",
-                "textDecorationColor": "hsla(0, 0%, 100%, 1)",
                 "textDecorationLine": "none",
               },
             ]
@@ -939,7 +931,6 @@ exports[`<Counter /> should render high contrast neutral variant Counter 1`] = `
                 "paddingRight": 0,
                 "paddingTop": 0,
                 "textAlign": "center",
-                "textDecorationColor": "hsla(0, 0%, 100%, 1)",
                 "textDecorationLine": "none",
               },
             ]
@@ -1045,7 +1036,6 @@ exports[`<Counter /> should render high contrast notice color Counter 1`] = `
                 "paddingRight": 0,
                 "paddingTop": 0,
                 "textAlign": "center",
-                "textDecorationColor": "hsla(0, 0%, 100%, 1)",
                 "textDecorationLine": "none",
               },
             ]
@@ -1151,7 +1141,6 @@ exports[`<Counter /> should render high contrast notice variant Counter 1`] = `
                 "paddingRight": 0,
                 "paddingTop": 0,
                 "textAlign": "center",
-                "textDecorationColor": "hsla(0, 0%, 100%, 1)",
                 "textDecorationLine": "none",
               },
             ]
@@ -1257,7 +1246,6 @@ exports[`<Counter /> should render high contrast positive color Counter 1`] = `
                 "paddingRight": 0,
                 "paddingTop": 0,
                 "textAlign": "center",
-                "textDecorationColor": "hsla(0, 0%, 100%, 1)",
                 "textDecorationLine": "none",
               },
             ]
@@ -1363,7 +1351,6 @@ exports[`<Counter /> should render high contrast positive variant Counter 1`] = 
                 "paddingRight": 0,
                 "paddingTop": 0,
                 "textAlign": "center",
-                "textDecorationColor": "hsla(0, 0%, 100%, 1)",
                 "textDecorationLine": "none",
               },
             ]
@@ -1469,7 +1456,6 @@ exports[`<Counter /> should render large size Counter 1`] = `
                 "paddingRight": 0,
                 "paddingTop": 0,
                 "textAlign": "center",
-                "textDecorationColor": "hsla(216, 27%, 36%, 1)",
                 "textDecorationLine": "none",
               },
             ]
@@ -1575,7 +1561,6 @@ exports[`<Counter /> should render low contrast blue variant Counter 1`] = `
                 "paddingRight": 0,
                 "paddingTop": 0,
                 "textAlign": "center",
-                "textDecorationColor": "hsla(218, 89%, 51%, 1)",
                 "textDecorationLine": "none",
               },
             ]
@@ -1681,7 +1666,6 @@ exports[`<Counter /> should render low contrast default color Counter 1`] = `
                 "paddingRight": 0,
                 "paddingTop": 0,
                 "textAlign": "center",
-                "textDecorationColor": "hsla(218, 89%, 51%, 1)",
                 "textDecorationLine": "none",
               },
             ]
@@ -1787,7 +1771,6 @@ exports[`<Counter /> should render low contrast information color Counter 1`] = 
                 "paddingRight": 0,
                 "paddingTop": 0,
                 "textAlign": "center",
-                "textDecorationColor": "hsla(193, 100%, 35%, 1)",
                 "textDecorationLine": "none",
               },
             ]
@@ -1893,7 +1876,6 @@ exports[`<Counter /> should render low contrast information variant Counter 1`] 
                 "paddingRight": 0,
                 "paddingTop": 0,
                 "textAlign": "center",
-                "textDecorationColor": "hsla(193, 100%, 35%, 1)",
                 "textDecorationLine": "none",
               },
             ]
@@ -1999,7 +1981,6 @@ exports[`<Counter /> should render low contrast negative color Counter 1`] = `
                 "paddingRight": 0,
                 "paddingTop": 0,
                 "textAlign": "center",
-                "textDecorationColor": "hsla(8, 73%, 47%, 1)",
                 "textDecorationLine": "none",
               },
             ]
@@ -2105,7 +2086,6 @@ exports[`<Counter /> should render low contrast negative variant Counter 1`] = `
                 "paddingRight": 0,
                 "paddingTop": 0,
                 "textAlign": "center",
-                "textDecorationColor": "hsla(8, 73%, 47%, 1)",
                 "textDecorationLine": "none",
               },
             ]
@@ -2211,7 +2191,6 @@ exports[`<Counter /> should render low contrast neutral color Counter 1`] = `
                 "paddingRight": 0,
                 "paddingTop": 0,
                 "textAlign": "center",
-                "textDecorationColor": "hsla(216, 27%, 36%, 1)",
                 "textDecorationLine": "none",
               },
             ]
@@ -2317,7 +2296,6 @@ exports[`<Counter /> should render low contrast neutral variant Counter 1`] = `
                 "paddingRight": 0,
                 "paddingTop": 0,
                 "textAlign": "center",
-                "textDecorationColor": "hsla(216, 27%, 36%, 1)",
                 "textDecorationLine": "none",
               },
             ]
@@ -2423,7 +2401,6 @@ exports[`<Counter /> should render low contrast notice color Counter 1`] = `
                 "paddingRight": 0,
                 "paddingTop": 0,
                 "textAlign": "center",
-                "textDecorationColor": "hsla(38, 97%, 38%, 1)",
                 "textDecorationLine": "none",
               },
             ]
@@ -2529,7 +2506,6 @@ exports[`<Counter /> should render low contrast notice variant Counter 1`] = `
                 "paddingRight": 0,
                 "paddingTop": 0,
                 "textAlign": "center",
-                "textDecorationColor": "hsla(38, 97%, 38%, 1)",
                 "textDecorationLine": "none",
               },
             ]
@@ -2635,7 +2611,6 @@ exports[`<Counter /> should render low contrast positive color Counter 1`] = `
                 "paddingRight": 0,
                 "paddingTop": 0,
                 "textAlign": "center",
-                "textDecorationColor": "hsla(160, 100%, 26%, 1)",
                 "textDecorationLine": "none",
               },
             ]
@@ -2741,7 +2716,6 @@ exports[`<Counter /> should render low contrast positive variant Counter 1`] = `
                 "paddingRight": 0,
                 "paddingTop": 0,
                 "textAlign": "center",
-                "textDecorationColor": "hsla(160, 100%, 26%, 1)",
                 "textDecorationLine": "none",
               },
             ]
@@ -2847,7 +2821,6 @@ exports[`<Counter /> should render medium size Counter 1`] = `
                 "paddingRight": 0,
                 "paddingTop": 0,
                 "textAlign": "center",
-                "textDecorationColor": "hsla(216, 27%, 36%, 1)",
                 "textDecorationLine": "none",
               },
             ]
@@ -2953,7 +2926,6 @@ exports[`<Counter /> should render small size Counter 1`] = `
                 "paddingRight": 0,
                 "paddingTop": 0,
                 "textAlign": "center",
-                "textDecorationColor": "hsla(216, 27%, 36%, 1)",
                 "textDecorationLine": "none",
               },
             ]

@@ -95,7 +95,6 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
                   "paddingLeft": 0,
                   "paddingRight": 0,
                   "paddingTop": 0,
-                  "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                   "textDecorationLine": "none",
                 },
               ]
@@ -311,7 +310,6 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
                                 "paddingLeft": 0,
                                 "paddingRight": 0,
                                 "paddingTop": 0,
-                                "textDecorationColor": "hsla(214, 18%, 69%, 1)",
                                 "textDecorationLine": "none",
                               },
                             ]
@@ -518,7 +516,6 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
                                 "paddingLeft": 0,
                                 "paddingRight": 0,
                                 "paddingTop": 0,
-                                "textDecorationColor": "hsla(216, 27%, 36%, 1)",
                                 "textDecorationLine": "none",
                               },
                             ]
@@ -635,7 +632,6 @@ exports[`<Chip /> should render chip 1`] = `
                   "paddingLeft": 0,
                   "paddingRight": 0,
                   "paddingTop": 0,
-                  "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                   "textDecorationLine": "none",
                 },
               ]
@@ -851,7 +847,6 @@ exports[`<Chip /> should render chip 1`] = `
                                 "paddingLeft": 0,
                                 "paddingRight": 0,
                                 "paddingTop": 0,
-                                "textDecorationColor": "hsla(216, 27%, 36%, 1)",
                                 "textDecorationLine": "none",
                               },
                             ]
@@ -1058,7 +1053,6 @@ exports[`<Chip /> should render chip 1`] = `
                                 "paddingLeft": 0,
                                 "paddingRight": 0,
                                 "paddingTop": 0,
-                                "textDecorationColor": "hsla(216, 27%, 36%, 1)",
                                 "textDecorationLine": "none",
                               },
                             ]
@@ -1175,7 +1169,6 @@ exports[`<Chip /> should render chip with icon 1`] = `
                   "paddingLeft": 0,
                   "paddingRight": 0,
                   "paddingTop": 0,
-                  "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                   "textDecorationLine": "none",
                 },
               ]
@@ -1477,7 +1470,6 @@ exports[`<Chip /> should render chip with icon 1`] = `
                                 "paddingLeft": 0,
                                 "paddingRight": 0,
                                 "paddingTop": 0,
-                                "textDecorationColor": "hsla(216, 27%, 36%, 1)",
                                 "textDecorationLine": "none",
                               },
                             ]
@@ -1770,7 +1762,6 @@ exports[`<Chip /> should render chip with icon 1`] = `
                                 "paddingLeft": 0,
                                 "paddingRight": 0,
                                 "paddingTop": 0,
-                                "textDecorationColor": "hsla(216, 27%, 36%, 1)",
                                 "textDecorationLine": "none",
                               },
                             ]
@@ -1887,7 +1878,6 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                   "paddingLeft": 0,
                   "paddingRight": 0,
                   "paddingTop": 0,
-                  "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                   "textDecorationLine": "none",
                 },
               ]
@@ -2103,7 +2093,6 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                                 "paddingLeft": 0,
                                 "paddingRight": 0,
                                 "paddingTop": 0,
-                                "textDecorationColor": "hsla(214, 18%, 69%, 1)",
                                 "textDecorationLine": "none",
                               },
                             ]
@@ -2310,7 +2299,6 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                                 "paddingLeft": 0,
                                 "paddingRight": 0,
                                 "paddingTop": 0,
-                                "textDecorationColor": "hsla(216, 27%, 36%, 1)",
                                 "textDecorationLine": "none",
                               },
                             ]

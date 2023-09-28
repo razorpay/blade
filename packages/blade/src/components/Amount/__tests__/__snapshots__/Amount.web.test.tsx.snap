@@ -9,8 +9,6 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(216,16%,60%,1);
-  text-decoration-color: hsla(216,16%,60%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -25,8 +23,6 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(217,56%,17%,1);
-  text-decoration-color: hsla(217,56%,17%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -40,8 +36,6 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(216,16%,60%,1);
-  text-decoration-color: hsla(216,16%,60%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -111,8 +105,6 @@ exports[`<Amount /> should render Amount with default props 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(216,16%,60%,1);
-  text-decoration-color: hsla(216,16%,60%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -127,8 +119,6 @@ exports[`<Amount /> should render Amount with default props 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(217,56%,17%,1);
-  text-decoration-color: hsla(217,56%,17%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -142,8 +132,6 @@ exports[`<Amount /> should render Amount with default props 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(216,16%,60%,1);
-  text-decoration-color: hsla(216,16%,60%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -213,8 +201,6 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(216,16%,60%,1);
-  text-decoration-color: hsla(216,16%,60%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -229,8 +215,6 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(217,56%,17%,1);
-  text-decoration-color: hsla(217,56%,17%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -244,8 +228,6 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(216,16%,60%,1);
-  text-decoration-color: hsla(216,16%,60%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -315,8 +297,6 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(216,16%,60%,1);
-  text-decoration-color: hsla(216,16%,60%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -331,8 +311,6 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(217,56%,17%,1);
-  text-decoration-color: hsla(217,56%,17%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -346,8 +324,6 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(216,16%,60%,1);
-  text-decoration-color: hsla(216,16%,60%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -417,8 +393,6 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(216,16%,60%,1);
-  text-decoration-color: hsla(216,16%,60%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -433,8 +407,6 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(217,56%,17%,1);
-  text-decoration-color: hsla(217,56%,17%,1);
   line-height: 2.5rem;
   margin: 0;
   padding: 0;
@@ -496,8 +468,6 @@ exports[`<Amount /> should render body-medium size Amount 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(216,16%,60%,1);
-  text-decoration-color: hsla(216,16%,60%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -512,8 +482,6 @@ exports[`<Amount /> should render body-medium size Amount 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(217,56%,17%,1);
-  text-decoration-color: hsla(217,56%,17%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -527,8 +495,6 @@ exports[`<Amount /> should render body-medium size Amount 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(216,16%,60%,1);
-  text-decoration-color: hsla(216,16%,60%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -598,8 +564,6 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(216,16%,60%,1);
-  text-decoration-color: hsla(216,16%,60%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -614,8 +578,6 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(217,56%,17%,1);
-  text-decoration-color: hsla(217,56%,17%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -629,8 +591,6 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(216,16%,60%,1);
-  text-decoration-color: hsla(216,16%,60%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -645,8 +605,6 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(217,56%,17%,1);
-  text-decoration-color: hsla(217,56%,17%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -660,8 +618,6 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(217,56%,17%,1);
-  text-decoration-color: hsla(217,56%,17%,1);
   line-height: 1rem;
   margin: 0;
   padding: 0;
@@ -675,8 +631,6 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(217,56%,17%,1);
-  text-decoration-color: hsla(217,56%,17%,1);
   line-height: 1rem;
   margin: 0;
   padding: 0;
@@ -690,8 +644,6 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(216,16%,60%,1);
-  text-decoration-color: hsla(216,16%,60%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -706,8 +658,6 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(217,56%,17%,1);
-  text-decoration-color: hsla(217,56%,17%,1);
   line-height: 1.75rem;
   margin: 0;
   padding: 0;
@@ -721,8 +671,6 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(216,16%,60%,1);
-  text-decoration-color: hsla(216,16%,60%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -737,8 +685,6 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(217,56%,17%,1);
-  text-decoration-color: hsla(217,56%,17%,1);
   line-height: 1.75rem;
   margin: 0;
   padding: 0;
@@ -752,8 +698,6 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(217,56%,17%,1);
-  text-decoration-color: hsla(217,56%,17%,1);
   line-height: 1.5rem;
   margin: 0;
   padding: 0;
@@ -767,8 +711,6 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(217,56%,17%,1);
-  text-decoration-color: hsla(217,56%,17%,1);
   line-height: 1.5rem;
   margin: 0;
   padding: 0;
@@ -782,8 +724,6 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(216,16%,60%,1);
-  text-decoration-color: hsla(216,16%,60%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -798,8 +738,6 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(217,56%,17%,1);
-  text-decoration-color: hsla(217,56%,17%,1);
   line-height: 2.5rem;
   margin: 0;
   padding: 0;
@@ -813,8 +751,6 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(216,16%,60%,1);
-  text-decoration-color: hsla(216,16%,60%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -1116,8 +1052,6 @@ exports[`<Amount /> should render body-small size Amount 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(216,16%,60%,1);
-  text-decoration-color: hsla(216,16%,60%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -1132,8 +1066,6 @@ exports[`<Amount /> should render body-small size Amount 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(217,56%,17%,1);
-  text-decoration-color: hsla(217,56%,17%,1);
   line-height: 1rem;
   margin: 0;
   padding: 0;
@@ -1147,8 +1079,6 @@ exports[`<Amount /> should render body-small size Amount 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(216,16%,60%,1);
-  text-decoration-color: hsla(216,16%,60%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -1218,8 +1148,6 @@ exports[`<Amount /> should render body-small-bold size Amount 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(216,16%,60%,1);
-  text-decoration-color: hsla(216,16%,60%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -1234,8 +1162,6 @@ exports[`<Amount /> should render body-small-bold size Amount 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(217,56%,17%,1);
-  text-decoration-color: hsla(217,56%,17%,1);
   line-height: 1rem;
   margin: 0;
   padding: 0;
@@ -1249,8 +1175,6 @@ exports[`<Amount /> should render body-small-bold size Amount 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(216,16%,60%,1);
-  text-decoration-color: hsla(216,16%,60%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -1320,8 +1244,6 @@ exports[`<Amount /> should render negative intent Amount  1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(8,73%,47%,1);
-  text-decoration-color: hsla(8,73%,47%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -1336,8 +1258,6 @@ exports[`<Amount /> should render negative intent Amount  1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(8,73%,47%,1);
-  text-decoration-color: hsla(8,73%,47%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -1399,8 +1319,6 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(160,100%,26%,1);
-  text-decoration-color: hsla(160,100%,26%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -1415,8 +1333,6 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(160,100%,26%,1);
-  text-decoration-color: hsla(160,100%,26%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -1430,8 +1346,6 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(160,100%,26%,1);
-  text-decoration-color: hsla(160,100%,26%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;

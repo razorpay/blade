@@ -57,8 +57,6 @@ exports[`<Tooltip /> should render 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(0,0%,100%,1);
-  text-decoration-color: hsla(0,0%,100%,1);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;
@@ -73,8 +71,6 @@ exports[`<Tooltip /> should render 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(0,0%,100%,1);
-  text-decoration-color: hsla(0,0%,100%,1);
   line-height: 1rem;
   margin: 0;
   padding: 0;
@@ -287,8 +283,6 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(0,0%,100%,1);
-  text-decoration-color: hsla(0,0%,100%,1);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;
@@ -461,8 +455,6 @@ exports[`<Tooltip /> should render with title 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(0,0%,100%,1);
-  text-decoration-color: hsla(0,0%,100%,1);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;
@@ -477,8 +469,6 @@ exports[`<Tooltip /> should render with title 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(0,0%,100%,1);
-  text-decoration-color: hsla(0,0%,100%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -492,8 +482,6 @@ exports[`<Tooltip /> should render with title 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(0,0%,100%,1);
-  text-decoration-color: hsla(0,0%,100%,1);
   line-height: 1rem;
   margin: 0;
   padding: 0;

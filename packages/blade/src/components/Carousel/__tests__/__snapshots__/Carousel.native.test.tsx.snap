@@ -129,7 +129,6 @@ exports[`Carousel Snapshots should render 1`] = `
                       "paddingLeft": 0,
                       "paddingRight": 0,
                       "paddingTop": 0,
-                      "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                       "textDecorationLine": "none",
                     },
                   ]
@@ -191,7 +190,6 @@ exports[`Carousel Snapshots should render 1`] = `
                       "paddingLeft": 0,
                       "paddingRight": 0,
                       "paddingTop": 0,
-                      "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                       "textDecorationLine": "none",
                     },
                   ]
@@ -764,7 +762,6 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
                       "paddingLeft": 0,
                       "paddingRight": 0,
                       "paddingTop": 0,
-                      "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                       "textDecorationLine": "none",
                     },
                   ]
@@ -826,7 +823,6 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
                       "paddingLeft": 0,
                       "paddingRight": 0,
                       "paddingTop": 0,
-                      "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                       "textDecorationLine": "none",
                     },
                   ]
@@ -888,7 +884,6 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
                       "paddingLeft": 0,
                       "paddingRight": 0,
                       "paddingTop": 0,
-                      "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                       "textDecorationLine": "none",
                     },
                   ]

@@ -376,7 +376,6 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                               "paddingRight": 0,
                               "paddingTop": 0,
                               "textAlign": "center",
-                              "textDecorationColor": "hsla(218, 89%, 51%, 1)",
                               "textDecorationLine": "none",
                             },
                           ]
@@ -601,7 +600,6 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                                 "paddingLeft": 0,
                                 "paddingRight": 0,
                                 "paddingTop": 0,
-                                "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                                 "textDecorationLine": "none",
                               },
                             ]
@@ -719,7 +717,6 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                                           "paddingRight": 0,
                                           "paddingTop": 0,
                                           "textAlign": "center",
-                                          "textDecorationColor": "hsla(160, 100%, 26%, 1)",
                                           "textDecorationLine": "none",
                                         },
                                       ]
@@ -760,7 +757,6 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                               "paddingLeft": 0,
                               "paddingRight": 0,
                               "paddingTop": 0,
-                              "textDecorationColor": "hsla(216, 16%, 60%, 1)",
                               "textDecorationLine": "none",
                             },
                           ]
@@ -879,7 +875,6 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                                     "paddingLeft": 0,
                                     "paddingRight": 0,
                                     "paddingTop": 0,
-                                    "textDecorationColor": "hsla(160, 100%, 26%, 1)",
                                     "textDecorationLine": "none",
                                   },
                                 ]
@@ -1414,7 +1409,6 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                               "paddingRight": 0,
                               "paddingTop": 0,
                               "textAlign": "center",
-                              "textDecorationColor": "hsla(218, 89%, 51%, 1)",
                               "textDecorationLine": "none",
                             },
                           ]

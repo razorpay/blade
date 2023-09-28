@@ -90,7 +90,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                   "paddingLeft": 0,
                   "paddingRight": 0,
                   "paddingTop": 0,
-                  "textDecorationColor": "hsla(217, 18%, 45%, 1)",
                   "textDecorationLine": "none",
                 },
               ]
@@ -153,7 +152,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
-                    "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -339,7 +337,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                             "paddingLeft": 0,
                             "paddingRight": 0,
                             "paddingTop": 0,
-                            "textDecorationColor": "hsla(216, 27%, 36%, 1)",
                             "textDecorationLine": "none",
                           },
                         ]
@@ -506,7 +503,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                             "paddingLeft": 0,
                             "paddingRight": 0,
                             "paddingTop": 0,
-                            "textDecorationColor": "hsla(216, 27%, 36%, 1)",
                             "textDecorationLine": "none",
                           },
                         ]
@@ -673,7 +669,6 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                             "paddingLeft": 0,
                             "paddingRight": 0,
                             "paddingTop": 0,
-                            "textDecorationColor": "hsla(216, 27%, 36%, 1)",
                             "textDecorationLine": "none",
                           },
                         ]
@@ -783,7 +778,6 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                   "paddingLeft": 0,
                   "paddingRight": 0,
                   "paddingTop": 0,
-                  "textDecorationColor": "hsla(217, 18%, 45%, 1)",
                   "textDecorationLine": "none",
                 },
               ]
@@ -846,7 +840,6 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
-                    "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -1032,7 +1025,6 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                             "paddingLeft": 0,
                             "paddingRight": 0,
                             "paddingTop": 0,
-                            "textDecorationColor": "hsla(216, 27%, 36%, 1)",
                             "textDecorationLine": "none",
                           },
                         ]
@@ -1199,7 +1191,6 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                             "paddingLeft": 0,
                             "paddingRight": 0,
                             "paddingTop": 0,
-                            "textDecorationColor": "hsla(216, 27%, 36%, 1)",
                             "textDecorationLine": "none",
                           },
                         ]
@@ -1366,7 +1357,6 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                             "paddingLeft": 0,
                             "paddingRight": 0,
                             "paddingTop": 0,
-                            "textDecorationColor": "hsla(216, 27%, 36%, 1)",
                             "textDecorationLine": "none",
                           },
                         ]
@@ -1430,7 +1420,6 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
-                    "textDecorationColor": "hsla(216, 16%, 60%, 1)",
                     "textDecorationLine": "none",
                   },
                 ]

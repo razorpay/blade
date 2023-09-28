@@ -101,8 +101,6 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(217,18%,45%,1);
-  text-decoration-color: hsla(217,18%,45%,1);
   line-height: 1rem;
   margin: 0;
   padding: 0;
@@ -121,8 +119,6 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(217,56%,17%,1);
-  text-decoration-color: hsla(217,56%,17%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -136,8 +132,6 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(217,18%,45%,1);
-  text-decoration-color: hsla(217,18%,45%,1);
   line-height: 1rem;
   margin: 0;
   padding: 0;
@@ -442,8 +436,6 @@ exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(216,19%,89%,1);
-  text-decoration-color: hsla(216,19%,89%,1);
   line-height: 1rem;
   margin: 0;
   padding: 0;
@@ -586,8 +578,6 @@ exports[`<ProgressBar /> should render high contrast information intent Progress
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(216,19%,89%,1);
-  text-decoration-color: hsla(216,19%,89%,1);
   line-height: 1rem;
   margin: 0;
   padding: 0;
@@ -730,8 +720,6 @@ exports[`<ProgressBar /> should render high contrast negative intent ProgressBar
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(216,19%,89%,1);
-  text-decoration-color: hsla(216,19%,89%,1);
   line-height: 1rem;
   margin: 0;
   padding: 0;
@@ -874,8 +862,6 @@ exports[`<ProgressBar /> should render high contrast neutral intent ProgressBar 
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(216,19%,89%,1);
-  text-decoration-color: hsla(216,19%,89%,1);
   line-height: 1rem;
   margin: 0;
   padding: 0;
@@ -1018,8 +1004,6 @@ exports[`<ProgressBar /> should render high contrast notice intent ProgressBar 1
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(216,19%,89%,1);
-  text-decoration-color: hsla(216,19%,89%,1);
   line-height: 1rem;
   margin: 0;
   padding: 0;
@@ -1162,8 +1146,6 @@ exports[`<ProgressBar /> should render high contrast positive intent ProgressBar
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(216,19%,89%,1);
-  text-decoration-color: hsla(216,19%,89%,1);
   line-height: 1rem;
   margin: 0;
   padding: 0;
@@ -1306,8 +1288,6 @@ exports[`<ProgressBar /> should render low contrast information intent ProgressB
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(217,18%,45%,1);
-  text-decoration-color: hsla(217,18%,45%,1);
   line-height: 1rem;
   margin: 0;
   padding: 0;
@@ -1450,8 +1430,6 @@ exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(217,18%,45%,1);
-  text-decoration-color: hsla(217,18%,45%,1);
   line-height: 1rem;
   margin: 0;
   padding: 0;
@@ -1594,8 +1572,6 @@ exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(217,18%,45%,1);
-  text-decoration-color: hsla(217,18%,45%,1);
   line-height: 1rem;
   margin: 0;
   padding: 0;
@@ -1738,8 +1714,6 @@ exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(217,18%,45%,1);
-  text-decoration-color: hsla(217,18%,45%,1);
   line-height: 1rem;
   margin: 0;
   padding: 0;
@@ -1882,8 +1856,6 @@ exports[`<ProgressBar /> should render low contrast positive intent ProgressBar 
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(217,18%,45%,1);
-  text-decoration-color: hsla(217,18%,45%,1);
   line-height: 1rem;
   margin: 0;
   padding: 0;
@@ -2045,8 +2017,6 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(217,18%,45%,1);
-  text-decoration-color: hsla(217,18%,45%,1);
   line-height: 1rem;
   margin: 0;
   padding: 0;
@@ -2065,8 +2035,6 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(217,56%,17%,1);
-  text-decoration-color: hsla(217,56%,17%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -2080,8 +2048,6 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(217,18%,45%,1);
-  text-decoration-color: hsla(217,18%,45%,1);
   line-height: 1rem;
   margin: 0;
   padding: 0;
@@ -2394,8 +2360,6 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(217,18%,45%,1);
-  text-decoration-color: hsla(217,18%,45%,1);
   line-height: 1rem;
   margin: 0;
   padding: 0;
@@ -2414,8 +2378,6 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(217,56%,17%,1);
-  text-decoration-color: hsla(217,56%,17%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -2429,8 +2391,6 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(217,18%,45%,1);
-  text-decoration-color: hsla(217,18%,45%,1);
   line-height: 1rem;
   margin: 0;
   padding: 0;
@@ -2662,8 +2622,6 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(0,0%,100%,1);
-  text-decoration-color: hsla(0,0%,100%,1);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;
@@ -2678,8 +2636,6 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(217,18%,45%,1);
-  text-decoration-color: hsla(217,18%,45%,1);
   line-height: 1rem;
   margin: 0;
   padding: 0;
@@ -2698,8 +2654,6 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(217,56%,17%,1);
-  text-decoration-color: hsla(217,56%,17%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -2713,8 +2667,6 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(217,18%,45%,1);
-  text-decoration-color: hsla(217,18%,45%,1);
   line-height: 1rem;
   margin: 0;
   padding: 0;
@@ -3030,8 +2982,6 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(0,0%,100%,1);
-  text-decoration-color: hsla(0,0%,100%,1);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;
@@ -3046,8 +2996,6 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(217,18%,45%,1);
-  text-decoration-color: hsla(217,18%,45%,1);
   line-height: 1rem;
   margin: 0;
   padding: 0;
@@ -3066,8 +3014,6 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(217,56%,17%,1);
-  text-decoration-color: hsla(217,56%,17%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -3081,8 +3027,6 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(217,18%,45%,1);
-  text-decoration-color: hsla(217,18%,45%,1);
   line-height: 1rem;
   margin: 0;
   padding: 0;

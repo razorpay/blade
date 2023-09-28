@@ -169,7 +169,6 @@ exports[`<List /> should render List with default properties 1`] = `
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
-                    "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -337,7 +336,6 @@ exports[`<List /> should render List with default properties 1`] = `
                           "paddingLeft": 0,
                           "paddingRight": 0,
                           "paddingTop": 0,
-                          "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                           "textDecorationLine": "none",
                         },
                       ]
@@ -507,7 +505,6 @@ exports[`<List /> should render List with default properties 1`] = `
                                 "paddingLeft": 0,
                                 "paddingRight": 0,
                                 "paddingTop": 0,
-                                "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                                 "textDecorationLine": "none",
                               },
                             ]
@@ -698,7 +695,6 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
-                    "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -753,7 +749,6 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
                       "paddingLeft": 0,
                       "paddingRight": 0,
                       "paddingTop": 0,
-                      "textDecorationColor": "hsla(216, 27%, 36%, 1)",
                       "textDecorationLine": "none",
                     },
                   ]
@@ -905,7 +900,6 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
-                    "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -1090,7 +1084,6 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
-                    "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -1190,7 +1183,6 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
                         "paddingRight": 0,
                         "paddingTop": 0,
                         "textAlign": "center",
-                        "textDecorationColor": "hsla(218, 89%, 51%, 1)",
                         "textDecorationLine": "none",
                       },
                     ]
@@ -1345,7 +1337,6 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
-                    "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -1530,7 +1521,6 @@ exports[`<List /> should render List with inline ListItemText 1`] = `
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
-                    "textDecorationColor": "hsla(218, 89%, 51%, 1)",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -1655,7 +1645,6 @@ exports[`<List /> should render large ordered List 1`] = `
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
-                    "textDecorationColor": "hsla(216, 27%, 36%, 1)",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -1705,7 +1694,6 @@ exports[`<List /> should render large ordered List 1`] = `
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
-                    "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -1873,7 +1861,6 @@ exports[`<List /> should render large ordered List 1`] = `
                           "paddingLeft": 0,
                           "paddingRight": 0,
                           "paddingTop": 0,
-                          "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                           "textDecorationLine": "none",
                         },
                       ]
@@ -2043,7 +2030,6 @@ exports[`<List /> should render large ordered List 1`] = `
                                 "paddingLeft": 0,
                                 "paddingRight": 0,
                                 "paddingTop": 0,
-                                "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                                 "textDecorationLine": "none",
                               },
                             ]
@@ -2178,7 +2164,6 @@ exports[`<List /> should render large ordered-filled List 1`] = `
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
-                    "textDecorationColor": "hsla(216, 27%, 36%, 1)",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -2228,7 +2213,6 @@ exports[`<List /> should render large ordered-filled List 1`] = `
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
-                    "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -2323,7 +2307,6 @@ exports[`<List /> should render large ordered-filled List 1`] = `
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
-                    "textDecorationColor": "hsla(216, 27%, 36%, 1)",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -2373,7 +2356,6 @@ exports[`<List /> should render large ordered-filled List 1`] = `
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
-                    "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -2468,7 +2450,6 @@ exports[`<List /> should render large ordered-filled List 1`] = `
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
-                    "textDecorationColor": "hsla(216, 27%, 36%, 1)",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -2518,7 +2499,6 @@ exports[`<List /> should render large ordered-filled List 1`] = `
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
-                    "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -2701,7 +2681,6 @@ exports[`<List /> should render large unordered List with icon 1`] = `
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
-                    "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -2867,7 +2846,6 @@ exports[`<List /> should render large unordered List with icon 1`] = `
                           "paddingLeft": 0,
                           "paddingRight": 0,
                           "paddingTop": 0,
-                          "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                           "textDecorationLine": "none",
                         },
                       ]
@@ -3037,7 +3015,6 @@ exports[`<List /> should render large unordered List with icon 1`] = `
                                 "paddingLeft": 0,
                                 "paddingRight": 0,
                                 "paddingTop": 0,
-                                "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                                 "textDecorationLine": "none",
                               },
                             ]
@@ -3168,7 +3145,6 @@ exports[`<List /> should render medium ordered List 1`] = `
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
-                    "textDecorationColor": "hsla(216, 27%, 36%, 1)",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -3218,7 +3194,6 @@ exports[`<List /> should render medium ordered List 1`] = `
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
-                    "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -3386,7 +3361,6 @@ exports[`<List /> should render medium ordered List 1`] = `
                           "paddingLeft": 0,
                           "paddingRight": 0,
                           "paddingTop": 0,
-                          "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                           "textDecorationLine": "none",
                         },
                       ]
@@ -3556,7 +3530,6 @@ exports[`<List /> should render medium ordered List 1`] = `
                                 "paddingLeft": 0,
                                 "paddingRight": 0,
                                 "paddingTop": 0,
-                                "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                                 "textDecorationLine": "none",
                               },
                             ]
@@ -3691,7 +3664,6 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
-                    "textDecorationColor": "hsla(216, 27%, 36%, 1)",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -3741,7 +3713,6 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
-                    "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -3836,7 +3807,6 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
-                    "textDecorationColor": "hsla(216, 27%, 36%, 1)",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -3886,7 +3856,6 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
-                    "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -3981,7 +3950,6 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
-                    "textDecorationColor": "hsla(216, 27%, 36%, 1)",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -4031,7 +3999,6 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
-                    "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -4214,7 +4181,6 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
-                    "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -4380,7 +4346,6 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                           "paddingLeft": 0,
                           "paddingRight": 0,
                           "paddingTop": 0,
-                          "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                           "textDecorationLine": "none",
                         },
                       ]
@@ -4550,7 +4515,6 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                                 "paddingLeft": 0,
                                 "paddingRight": 0,
                                 "paddingTop": 0,
-                                "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                                 "textDecorationLine": "none",
                               },
                             ]
@@ -4681,7 +4645,6 @@ exports[`<List /> should render small ordered List 1`] = `
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
-                    "textDecorationColor": "hsla(216, 27%, 36%, 1)",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -4731,7 +4694,6 @@ exports[`<List /> should render small ordered List 1`] = `
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
-                    "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -4899,7 +4861,6 @@ exports[`<List /> should render small ordered List 1`] = `
                           "paddingLeft": 0,
                           "paddingRight": 0,
                           "paddingTop": 0,
-                          "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                           "textDecorationLine": "none",
                         },
                       ]
@@ -5069,7 +5030,6 @@ exports[`<List /> should render small ordered List 1`] = `
                                 "paddingLeft": 0,
                                 "paddingRight": 0,
                                 "paddingTop": 0,
-                                "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                                 "textDecorationLine": "none",
                               },
                             ]
@@ -5204,7 +5164,6 @@ exports[`<List /> should render small ordered-filled List 1`] = `
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
-                    "textDecorationColor": "hsla(216, 27%, 36%, 1)",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -5254,7 +5213,6 @@ exports[`<List /> should render small ordered-filled List 1`] = `
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
-                    "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -5349,7 +5307,6 @@ exports[`<List /> should render small ordered-filled List 1`] = `
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
-                    "textDecorationColor": "hsla(216, 27%, 36%, 1)",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -5399,7 +5356,6 @@ exports[`<List /> should render small ordered-filled List 1`] = `
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
-                    "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -5494,7 +5450,6 @@ exports[`<List /> should render small ordered-filled List 1`] = `
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
-                    "textDecorationColor": "hsla(216, 27%, 36%, 1)",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -5544,7 +5499,6 @@ exports[`<List /> should render small ordered-filled List 1`] = `
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
-                    "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -5727,7 +5681,6 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
-                    "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -5893,7 +5846,6 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                           "paddingLeft": 0,
                           "paddingRight": 0,
                           "paddingTop": 0,
-                          "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                           "textDecorationLine": "none",
                         },
                       ]
@@ -6063,7 +6015,6 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                                 "paddingLeft": 0,
                                 "paddingRight": 0,
                                 "paddingTop": 0,
-                                "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                                 "textDecorationLine": "none",
                               },
                             ]
@@ -6254,7 +6205,6 @@ exports[`<List /> should render unordered List of small size 1`] = `
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
-                    "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -6422,7 +6372,6 @@ exports[`<List /> should render unordered List of small size 1`] = `
                           "paddingLeft": 0,
                           "paddingRight": 0,
                           "paddingTop": 0,
-                          "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                           "textDecorationLine": "none",
                         },
                       ]
@@ -6592,7 +6541,6 @@ exports[`<List /> should render unordered List of small size 1`] = `
                                 "paddingLeft": 0,
                                 "paddingRight": 0,
                                 "paddingTop": 0,
-                                "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                                 "textDecorationLine": "none",
                               },
                             ]

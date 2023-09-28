@@ -66,8 +66,6 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(216,27%,36%,1);
-  text-decoration-color: hsla(216,27%,36%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -81,8 +79,6 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(218,89%,51%,1);
-  text-decoration-color: hsla(218,89%,51%,1);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;
@@ -331,8 +327,6 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(214,18%,69%,1);
-  text-decoration-color: hsla(214,18%,69%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -523,8 +517,6 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(216,27%,36%,1);
-  text-decoration-color: hsla(216,27%,36%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -538,8 +530,6 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
   font-style: italic;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(8,73%,47%,1);
-  text-decoration-color: hsla(8,73%,47%,1);
   line-height: 1rem;
   margin: 0;
   padding: 0;
@@ -776,8 +766,6 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(216,27%,36%,1);
-  text-decoration-color: hsla(216,27%,36%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;

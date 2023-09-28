@@ -35,7 +35,6 @@ exports[`<Title /> should render Title with color 1`] = `
           "paddingLeft": 0,
           "paddingRight": 0,
           "paddingTop": 0,
-          "textDecorationColor": "hsla(220, 30%, 96%, 1)",
           "textDecorationLine": "none",
         },
       ]
@@ -81,7 +80,6 @@ exports[`<Title /> should render Title with default properties 1`] = `
           "paddingLeft": 0,
           "paddingRight": 0,
           "paddingTop": 0,
-          "textDecorationColor": "hsla(217, 56%, 17%, 1)",
           "textDecorationLine": "none",
         },
       ]
@@ -127,7 +125,6 @@ exports[`<Title /> should render Title with mixed color 1`] = `
           "paddingLeft": 0,
           "paddingRight": 0,
           "paddingTop": 0,
-          "textDecorationColor": "hsla(217, 56%, 17%, 1)",
           "textDecorationLine": "none",
         },
       ]
@@ -162,7 +159,6 @@ exports[`<Title /> should render Title with mixed color 1`] = `
             "paddingLeft": 0,
             "paddingRight": 0,
             "paddingTop": 0,
-            "textDecorationColor": "hsla(195, 100%, 31%, 1)",
             "textDecorationLine": "none",
           },
         ]
@@ -209,7 +205,6 @@ exports[`<Title /> should render Title with variant "large" 1`] = `
           "paddingLeft": 0,
           "paddingRight": 0,
           "paddingTop": 0,
-          "textDecorationColor": "hsla(217, 18%, 45%, 1)",
           "textDecorationLine": "none",
         },
       ]
@@ -255,7 +250,6 @@ exports[`<Title /> should render Title with variant "medium" 1`] = `
           "paddingLeft": 0,
           "paddingRight": 0,
           "paddingTop": 0,
-          "textDecorationColor": "hsla(216, 16%, 60%, 1)",
           "textDecorationLine": "none",
         },
       ]
@@ -301,7 +295,6 @@ exports[`<Title /> should render Title with variant "small" 1`] = `
           "paddingLeft": 0,
           "paddingRight": 0,
           "paddingTop": 0,
-          "textDecorationColor": "hsla(217, 56%, 17%, 1)",
           "textDecorationLine": "none",
         },
       ]
@@ -347,7 +340,6 @@ exports[`<Title /> should render Title with variant "small" and contrast "high" 
           "paddingLeft": 0,
           "paddingRight": 0,
           "paddingTop": 0,
-          "textDecorationColor": "hsla(0, 0%, 100%, 1)",
           "textDecorationLine": "none",
         },
       ]

@@ -386,7 +386,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   right: 0px;
   bottom: 0px;
   left: 0px;
-  background-color: hsla(231,11%,12%,0.72);
+  background-color: hsla(214,15%,18%,0.64);
   opacity: 1;
 }
 
@@ -460,8 +460,6 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(217,18%,45%,1);
-  text-decoration-color: hsla(217,18%,45%,1);
   line-height: 1rem;
   margin: 0;
   padding: 0;
@@ -480,8 +478,6 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(217,56%,17%,1);
-  text-decoration-color: hsla(217,56%,17%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -495,8 +491,6 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(214,18%,69%,1);
-  text-decoration-color: hsla(214,18%,69%,1);
   line-height: 1.25rem;
   text-align: left;
   margin: 0;
@@ -516,8 +510,6 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(217,56%,17%,1);
-  text-decoration-color: hsla(217,56%,17%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -536,8 +528,6 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(0,0%,100%,1);
-  text-decoration-color: hsla(0,0%,100%,1);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;
@@ -617,8 +607,6 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(216,27%,36%,1);
-  text-decoration-color: hsla(216,27%,36%,1);
   line-height: 1.25rem;
   text-align: left;
   margin: 0;
@@ -648,8 +636,6 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(214,18%,69%,1);
-  text-decoration-color: hsla(214,18%,69%,1);
   line-height: 1.25rem;
   text-align: left;
   margin: 0;
@@ -664,8 +650,6 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(214,18%,69%,1);
-  text-decoration-color: hsla(214,18%,69%,1);
   line-height: 1.25rem;
   text-align: left;
   margin: 0;
@@ -680,8 +664,6 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(214,18%,69%,1);
-  text-decoration-color: hsla(214,18%,69%,1);
   line-height: 1.25rem;
   text-align: left;
   margin: 0;
@@ -696,8 +678,6 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(214,18%,69%,1);
-  text-decoration-color: hsla(214,18%,69%,1);
   line-height: 1.25rem;
   text-align: left;
   margin: 0;
@@ -716,8 +696,6 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(216,27%,36%,1);
-  text-decoration-color: hsla(216,27%,36%,1);
   line-height: 1.25rem;
   text-align: left;
   margin: 0;
@@ -747,8 +725,6 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(214,18%,69%,1);
-  text-decoration-color: hsla(214,18%,69%,1);
   line-height: 1.25rem;
   text-align: left;
   margin: 0;
@@ -763,8 +739,6 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(214,18%,69%,1);
-  text-decoration-color: hsla(214,18%,69%,1);
   line-height: 1.25rem;
   text-align: left;
   margin: 0;
@@ -779,8 +753,6 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(214,18%,69%,1);
-  text-decoration-color: hsla(214,18%,69%,1);
   line-height: 1.25rem;
   text-align: left;
   margin: 0;
@@ -795,8 +767,6 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(214,18%,69%,1);
-  text-decoration-color: hsla(214,18%,69%,1);
   line-height: 1.25rem;
   text-align: left;
   margin: 0;
@@ -1002,15 +972,11 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   text-decoration: none;
   cursor: pointer;
   width: 100%;
-  display: none;
+  display: block;
 }
 
 .c45:hover:not([aria-disabled=true]) {
   background-color: hsla(216,15%,54%,0.09);
-}
-
-.c45.active-focus {
-  border-color: hsla(218,89%,51%,0.09);
 }
 
 .c45[aria-selected=true] {
@@ -1182,8 +1148,8 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
             >
               <label
                 data-blade-component="form-label"
-                for="dropdown-643-trigger-644-input-645"
-                id="dropdown-643-label"
+                for="dropdown-914-trigger-915-input-916"
+                id="dropdown-914-label"
                 style="width: auto; flex-shrink: 0; margin-right: 16px;"
               >
                 <div
@@ -1226,8 +1192,8 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                   data-blade-component="base-box"
                 >
                   <button
-                    aria-activedescendant="dropdown-643-0"
-                    aria-controls="dropdown-643-actionlist"
+                    aria-activedescendant="dropdown-914-0"
+                    aria-controls="dropdown-914-actionlist"
                     aria-describedby=""
                     aria-disabled="false"
                     aria-expanded="true"
@@ -1237,7 +1203,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                     autocomplete="off"
                     class="c13"
                     data-blade-component="styled-base-input"
-                    id="dropdown-643-trigger-644-input-645"
+                    id="dropdown-914-trigger-915-input-916"
                     placeholder="Select Option"
                     role="combobox"
                     type="button"
@@ -1428,8 +1394,8 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                       >
                         <label
                           data-blade-component="form-label"
-                          for="dropdown-643-trigger-651-input-652"
-                          id="dropdown-643-label"
+                          for="dropdown-914-trigger-922-input-923"
+                          id="dropdown-914-label"
                           style="width: auto; flex-shrink: 0; margin-right: 16px;"
                         >
                           <div
@@ -1472,8 +1438,8 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                             data-blade-component="base-box"
                           >
                             <input
-                              aria-activedescendant="dropdown-643-0"
-                              aria-controls="dropdown-643-actionlist"
+                              aria-activedescendant="dropdown-914-0"
+                              aria-controls="dropdown-914-actionlist"
                               aria-describedby=""
                               aria-disabled="false"
                               aria-expanded="true"
@@ -1484,11 +1450,11 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                               autofocus=""
                               class="c38"
                               data-blade-component="styled-base-input"
-                              id="dropdown-643-trigger-651-input-652"
+                              id="dropdown-914-trigger-922-input-923"
                               placeholder="Select Option"
                               role="combobox"
                               type="text"
-                              value="ha"
+                              value=""
                             />
                           </div>
                         </div>
@@ -1537,7 +1503,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                   data-blade-component="action-list-item"
                   data-index="0"
                   data-value="apple"
-                  id="dropdown-643-0"
+                  id="dropdown-914-0"
                   role="option"
                   tabindex="-1"
                   type="button"
@@ -1577,7 +1543,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                   data-blade-component="action-list-item"
                   data-index="1"
                   data-value="mango"
-                  id="dropdown-643-1"
+                  id="dropdown-914-1"
                   role="option"
                   tabindex="-1"
                   type="button"
@@ -2062,8 +2028,6 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(217,18%,45%,1);
-  text-decoration-color: hsla(217,18%,45%,1);
   line-height: 1rem;
   margin: 0;
   padding: 0;
@@ -2082,8 +2046,6 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(217,56%,17%,1);
-  text-decoration-color: hsla(217,56%,17%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -2097,8 +2059,6 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(217,56%,17%,1);
-  text-decoration-color: hsla(217,56%,17%,1);
   line-height: 1.5rem;
   margin: 0;
   padding: 0;
@@ -2112,8 +2072,6 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(0,0%,100%,1);
-  text-decoration-color: hsla(0,0%,100%,1);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;
@@ -2128,8 +2086,6 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(217,56%,17%,1);
-  text-decoration-color: hsla(217,56%,17%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -2172,8 +2128,6 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(216,27%,36%,1);
-  text-decoration-color: hsla(216,27%,36%,1);
   line-height: 1.25rem;
   text-align: left;
   margin: 0;
@@ -2203,8 +2157,6 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(214,18%,69%,1);
-  text-decoration-color: hsla(214,18%,69%,1);
   line-height: 1.25rem;
   text-align: left;
   margin: 0;
@@ -2219,8 +2171,6 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(214,18%,69%,1);
-  text-decoration-color: hsla(214,18%,69%,1);
   line-height: 1.25rem;
   text-align: left;
   margin: 0;
@@ -2235,8 +2185,6 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(214,18%,69%,1);
-  text-decoration-color: hsla(214,18%,69%,1);
   line-height: 1.25rem;
   text-align: left;
   margin: 0;
@@ -2251,8 +2199,6 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(214,18%,69%,1);
-  text-decoration-color: hsla(214,18%,69%,1);
   line-height: 1.25rem;
   text-align: left;
   margin: 0;

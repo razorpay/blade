@@ -90,7 +90,6 @@ exports[`<Tag /> should render tag 1`] = `
                 "paddingLeft": 0,
                 "paddingRight": 0,
                 "paddingTop": 0,
-                "textDecorationColor": "hsla(216, 27%, 36%, 1)",
                 "textDecorationLine": "none",
               },
             ]

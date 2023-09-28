@@ -61,7 +61,6 @@ exports[`<BaseBox /> should render BaseBox component with elevation 1`] = `
             "paddingLeft": 0,
             "paddingRight": 0,
             "paddingTop": 0,
-            "textDecorationColor": "hsla(217, 56%, 17%, 1)",
             "textDecorationLine": "none",
           },
         ]

@@ -210,8 +210,6 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(217,56%,17%,1);
-  text-decoration-color: hsla(217,56%,17%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -225,8 +223,6 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(216,27%,36%,1);
-  text-decoration-color: hsla(216,27%,36%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -700,8 +696,6 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(217,56%,17%,1);
-  text-decoration-color: hsla(217,56%,17%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -715,8 +709,6 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(216,27%,36%,1);
-  text-decoration-color: hsla(216,27%,36%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;

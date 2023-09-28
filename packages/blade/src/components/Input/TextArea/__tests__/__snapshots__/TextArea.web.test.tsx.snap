@@ -81,8 +81,6 @@ exports[`<TextArea /> should render 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(217,18%,45%,1);
-  text-decoration-color: hsla(217,18%,45%,1);
   line-height: 1rem;
   margin: 0;
   padding: 0;
@@ -101,8 +99,6 @@ exports[`<TextArea /> should render 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(217,56%,17%,1);
-  text-decoration-color: hsla(217,56%,17%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -116,8 +112,6 @@ exports[`<TextArea /> should render 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(216,27%,36%,1);
-  text-decoration-color: hsla(216,27%,36%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -145,8 +139,6 @@ exports[`<TextArea /> should render 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(214,18%,69%,1);
-  text-decoration-color: hsla(214,18%,69%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -160,8 +152,6 @@ exports[`<TextArea /> should render 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(214,18%,69%,1);
-  text-decoration-color: hsla(214,18%,69%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -175,8 +165,6 @@ exports[`<TextArea /> should render 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(214,18%,69%,1);
-  text-decoration-color: hsla(214,18%,69%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -190,8 +178,6 @@ exports[`<TextArea /> should render 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(214,18%,69%,1);
-  text-decoration-color: hsla(214,18%,69%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -453,8 +439,6 @@ exports[`<TextArea /> should set number of lines 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(217,18%,45%,1);
-  text-decoration-color: hsla(217,18%,45%,1);
   line-height: 1rem;
   margin: 0;
   padding: 0;
@@ -473,8 +457,6 @@ exports[`<TextArea /> should set number of lines 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(217,56%,17%,1);
-  text-decoration-color: hsla(217,56%,17%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -488,8 +470,6 @@ exports[`<TextArea /> should set number of lines 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(216,27%,36%,1);
-  text-decoration-color: hsla(216,27%,36%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -517,8 +497,6 @@ exports[`<TextArea /> should set number of lines 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(214,18%,69%,1);
-  text-decoration-color: hsla(214,18%,69%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -532,8 +510,6 @@ exports[`<TextArea /> should set number of lines 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(214,18%,69%,1);
-  text-decoration-color: hsla(214,18%,69%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -547,8 +523,6 @@ exports[`<TextArea /> should set number of lines 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(214,18%,69%,1);
-  text-decoration-color: hsla(214,18%,69%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -562,8 +536,6 @@ exports[`<TextArea /> should set number of lines 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  -webkit-text-decoration-color: hsla(214,18%,69%,1);
-  text-decoration-color: hsla(214,18%,69%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
