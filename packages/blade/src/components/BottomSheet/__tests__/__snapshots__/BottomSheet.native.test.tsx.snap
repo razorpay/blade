@@ -33,7 +33,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
             "top": 0,
           },
           {
-            "backgroundColor": "hsla(231, 11%, 12%, 0.72)",
+            "backgroundColor": "hsla(214, 15%, 18%, 0.64)",
             "zIndex": 100,
           },
         ],
@@ -1071,7 +1071,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
             "top": 0,
           },
           {
-            "backgroundColor": "hsla(231, 11%, 12%, 0.72)",
+            "backgroundColor": "hsla(214, 15%, 18%, 0.64)",
             "zIndex": 100,
           },
         ],

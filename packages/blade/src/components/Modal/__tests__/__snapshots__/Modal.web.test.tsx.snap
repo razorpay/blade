@@ -345,7 +345,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   -webkit-transition-property: opacity;
   transition-property: opacity;
   opacity: 0;
-  background-color: hsla(231,11%,12%,0.72);
+  background-color: hsla(214,15%,18%,0.64);
 }
 
 .c3 {
@@ -760,7 +760,7 @@ exports[`Modal renders a basic Modal 1`] = `
   -webkit-transition-property: opacity;
   transition-property: opacity;
   opacity: 0;
-  background-color: hsla(231,11%,12%,0.72);
+  background-color: hsla(214,15%,18%,0.64);
 }
 
 .c3 {
@@ -864,7 +864,7 @@ exports[`Modal renders a basic Modal of large size 1`] = `
   -webkit-transition-property: opacity;
   transition-property: opacity;
   opacity: 0;
-  background-color: hsla(231,11%,12%,0.72);
+  background-color: hsla(214,15%,18%,0.64);
 }
 
 .c3 {
@@ -968,7 +968,7 @@ exports[`Modal renders a basic Modal of medium size 1`] = `
   -webkit-transition-property: opacity;
   transition-property: opacity;
   opacity: 0;
-  background-color: hsla(231,11%,12%,0.72);
+  background-color: hsla(214,15%,18%,0.64);
 }
 
 .c3 {
