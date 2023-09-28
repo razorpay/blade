@@ -1,5 +1,5 @@
 ---
-"@razorpay/blade": minor
+'@razorpay/blade': minor
 ---
 
 feat: add `color` prop to `Alert`, `Badge`, `Button`, `Chip`, `ChipGroup`, `Counter`, `Link`, & `Spinner`
@@ -13,5 +13,9 @@ feat: add `color` prop to `Alert`, `Badge`, `Button`, `Chip`, `ChipGroup`, `Coun
 - **Alert** - Deprecated `intent` prop.
 - **Badge** - Deprecated `variant` prop.
 - **Chip & ChipGroup** - Deprecated `intent` prop.
-- **Counter** - Deprecated `variant` * `intent` prop.
+- **Counter** - Deprecated `variant` and `intent` prop.
 - **Spinner** - Deprecated the `contrast` prop.
+
+#### Jest Snapshots
+
+Your existing component snapshots may update, there is no change in the functionality of components. Feel free to commit the updated the snapshots.
