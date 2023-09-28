@@ -58,7 +58,7 @@ const CounterTemplate: ComponentStory<typeof CounterComponent> = ({ ...args }) =
 export const Counter = CounterTemplate.bind({});
 Counter.args = {
   value: 20,
-  variant: 'neutral',
+  color: 'neutral',
   contrast: 'low',
 };
 Counter.storyName = 'Default';
@@ -67,13 +67,13 @@ export const Max = CounterTemplate.bind({});
 Max.args = {
   value: 120,
   max: 99,
-  variant: 'neutral',
+  color: 'neutral',
   contrast: 'high',
 };
 Max.storyName = 'Max';
 
-const CountersWithVariantTemplate: ComponentStory<typeof CounterComponent> = ({ ...args }) => {
-  const variants = ['positive', 'negative', 'notice', 'information', 'neutral', 'blue'] as const;
+const CountersWithColorTemplate: ComponentStory<typeof CounterComponent> = ({ ...args }) => {
+  const colors = ['positive', 'negative', 'notice', 'information', 'neutral', 'blue'] as const;
 
   return (
     <BaseBox display="flex" flexDirection="column">
@@ -85,13 +85,13 @@ const CountersWithVariantTemplate: ComponentStory<typeof CounterComponent> = ({ 
         paddingBottom="spacing.5"
         flexWrap="wrap"
       >
-        {variants.map((variant) => (
+        {colors.map((color) => (
           <CounterComponent
             {...args}
-            key={variant}
+            key={color}
             marginRight="spacing.3"
             marginTop="spacing.2"
-            variant={variant}
+            color={color}
             contrast="low"
           />
         ))}
@@ -104,13 +104,13 @@ const CountersWithVariantTemplate: ComponentStory<typeof CounterComponent> = ({ 
         paddingBottom="spacing.5"
         flexWrap="wrap"
       >
-        {variants.map((variant) => (
+        {colors.map((color) => (
           <CounterComponent
             {...args}
-            key={variant}
+            key={color}
             marginRight="spacing.3"
             marginTop="spacing.2"
-            variant={variant}
+            color={color}
             contrast="high"
           />
         ))}
@@ -119,21 +119,21 @@ const CountersWithVariantTemplate: ComponentStory<typeof CounterComponent> = ({ 
   );
 };
 
-export const CounterSmallSize = CountersWithVariantTemplate.bind({});
+export const CounterSmallSize = CountersWithColorTemplate.bind({});
 CounterSmallSize.args = {
   value: 20,
   size: 'small',
 };
 CounterSmallSize.storyName = 'Small Size';
 
-export const CounterMediumSize = CountersWithVariantTemplate.bind({});
+export const CounterMediumSize = CountersWithColorTemplate.bind({});
 CounterMediumSize.args = {
   value: 20,
   size: 'medium',
 };
 CounterMediumSize.storyName = 'Medium Size';
 
-export const CounterLargeSize = CountersWithVariantTemplate.bind({});
+export const CounterLargeSize = CountersWithColorTemplate.bind({});
 CounterLargeSize.args = {
   value: 20,
   size: 'large',

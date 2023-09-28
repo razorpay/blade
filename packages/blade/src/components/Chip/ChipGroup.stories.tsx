@@ -172,7 +172,7 @@ export default {
       },
     },
     intent: {
-      description: `Sets the ChipGroups's visual intent, it will propagate down to all the Chips`,
+      description: `This prop is deprecated, use 'color' instead.`,
       table: {
         category: propsCategory.CHIP_GROUP,
         type: {
@@ -180,6 +180,19 @@ export default {
         },
       },
       options: ['none', 'positive', 'negative'],
+      control: {
+        type: 'select',
+      },
+    },
+    color: {
+      description: `Sets the ChipGroups's visual color, it will propagate down to all the Chips`,
+      table: {
+        category: propsCategory.CHIP_GROUP,
+        type: {
+          summary: '"default" | "positive" | "negative"',
+        },
+      },
+      options: ['default', 'positive', 'negative'],
       control: {
         type: 'select',
       },
@@ -470,7 +483,7 @@ ChipWithIcon.parameters = {
   },
 };
 
-const ChipIntentsTemplate: ComponentStory<typeof ChipGroupComponent> = (args) => {
+const ChipColorsTemplate: ComponentStory<typeof ChipGroupComponent> = (args) => {
   return (
     <Box display="flex" flexDirection="column">
       <Text size="large" weight="bold" marginBottom="spacing.3">
@@ -478,10 +491,10 @@ const ChipIntentsTemplate: ComponentStory<typeof ChipGroupComponent> = (args) =>
       </Text>
 
       <ChipGroupComponent defaultValue="yes" {...args}>
-        <ChipComponent intent="positive" value="yes" icon={ThumbsUpIcon}>
+        <ChipComponent color="positive" value="yes" icon={ThumbsUpIcon}>
           Yes
         </ChipComponent>
-        <ChipComponent intent="negative" value="no" icon={ThumbsDownIcon}>
+        <ChipComponent color="negative" value="no" icon={ThumbsDownIcon}>
           No
         </ChipComponent>
       </ChipGroupComponent>
@@ -489,8 +502,8 @@ const ChipIntentsTemplate: ComponentStory<typeof ChipGroupComponent> = (args) =>
   );
 };
 
-export const ChipWithIntent = ChipIntentsTemplate.bind({});
-ChipWithIntent.storyName = 'With Intent';
+export const ChipWithIntent = ChipColorsTemplate.bind({});
+ChipWithIntent.storyName = 'With Color';
 ChipWithIntent.args = {
   selectionType: 'single',
   accessibilityLabel: 'Is the result helpful? Please select either yer or no',

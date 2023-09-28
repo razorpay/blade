@@ -7,7 +7,7 @@ import { makeMotionTime } from '~utils/makeMotionTime';
 import { castWebType } from '~utils';
 
 const StyledChipWrapper = styled(BaseBox)<StyledChipWrapperProps>(
-  ({ theme, borderColor, isChecked, isDisabled, intent }) => {
+  ({ theme, borderColor, isChecked, isDisabled, color }) => {
     const easing = getIn(theme, chipMotionTokens.easing);
     const duration = castWebType(makeMotionTime(getIn(theme, chipMotionTokens.duration)));
 
@@ -19,7 +19,7 @@ const StyledChipWrapper = styled(BaseBox)<StyledChipWrapperProps>(
         '&:hover': {
           backgroundColor: getIn(
             theme.colors,
-            chipColorTokens.background[isChecked && intent ? intent : 'unchecked'].hover,
+            chipColorTokens.background[isChecked && color ? color : 'unchecked'].hover,
           ),
           transitionTimingFunction: easing,
           transitionDuration: duration,
