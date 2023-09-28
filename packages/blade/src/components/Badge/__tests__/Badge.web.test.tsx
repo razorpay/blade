@@ -1,9 +1,19 @@
+import type { BadgeProps } from '../Badge';
 import { Badge } from '../Badge';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { InfoIcon } from '~components/Icons';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
+
+const colors: BadgeProps['color'][] = [
+  'default',
+  'information',
+  'negative',
+  'neutral',
+  'notice',
+  'positive',
+];
 
 describe('<Badge />', () => {
   it('should render Badge with default props', () => {
@@ -171,6 +181,28 @@ describe('<Badge />', () => {
       </Badge>,
     );
     expect(container).toMatchSnapshot();
+  });
+
+  colors.forEach((color) => {
+    it(`should render low contrast ${color} color Badge`, () => {
+      const label = 'Label';
+      const { container } = renderWithTheme(
+        <Badge color={color} contrast="low">
+          {label}
+        </Badge>,
+      );
+      expect(container).toMatchSnapshot();
+    });
+
+    it(`should render high contrast ${color} color Badge`, () => {
+      const label = 'Label';
+      const { container } = renderWithTheme(
+        <Badge color={color} contrast="high">
+          {label}
+        </Badge>,
+      );
+      expect(container).toMatchSnapshot();
+    });
   });
 
   it('should accept testID', () => {

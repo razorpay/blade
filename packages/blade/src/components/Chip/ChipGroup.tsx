@@ -20,6 +20,7 @@ const ChipGroup = ({
   value,
   size = 'small',
   intent = 'none',
+  color,
   testID,
   selectionType = 'single',
   ...styledProps
@@ -32,6 +33,7 @@ const ChipGroup = ({
     name,
     size,
     intent,
+    color,
     selectionType,
   });
 

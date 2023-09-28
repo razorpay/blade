@@ -76,8 +76,8 @@ const chipHorizontalPaddingTokens: ChipHorizontalPaddingTokens = {
 
 type FeedbackActionBackgroundColors<
   T extends 'positive' | 'negative'
-> = `feedback.${T}.action.background.${DotNotationColorStringToken<
-  Theme['colors']['feedback'][T]['action']['background']
+> = `feedback.${T}.action.background.primary.${DotNotationColorStringToken<
+  Theme['colors']['feedback'][T]['action']['background']['primary']
 >}`;
 type FeedbackActionBorderColors<
   T extends 'positive' | 'negative'
@@ -119,14 +119,14 @@ const chipColorTokens: ChipColorTokens = {
   text: {
     unchecked: 'surface.text.subtle.lowContrast',
     disabled: 'surface.text.placeholder.lowContrast',
-    none: 'action.text.secondary.default',
+    default: 'action.text.secondary.default',
     positive: 'feedback.text.positive.lowContrast',
     negative: 'feedback.text.negative.lowContrast',
   },
   icon: {
     unchecked: 'surface.text.subtle.lowContrast',
     disabled: 'surface.text.placeholder.lowContrast',
-    none: 'action.icon.secondary.default',
+    default: 'action.icon.secondary.default',
     positive: 'feedback.icon.positive.lowContrast',
     negative: 'feedback.icon.negative.lowContrast',
   },
@@ -136,7 +136,7 @@ const chipColorTokens: ChipColorTokens = {
       hover: 'brand.gray.a50.lowContrast',
       disabled: 'transparent',
     },
-    none: {
+    default: {
       default: 'brand.primary.300',
       hover: 'brand.primary.400',
       disabled: 'brand.gray.a50.lowContrast',
@@ -157,7 +157,7 @@ const chipColorTokens: ChipColorTokens = {
       default: 'brand.gray.400.lowContrast',
       disabled: 'brand.gray.400.lowContrast',
     },
-    none: {
+    default: {
       default: 'brand.primary.500',
       hover: 'brand.primary.500',
       disabled: 'brand.gray.a100.lowContrast',
@@ -175,7 +175,7 @@ const chipColorTokens: ChipColorTokens = {
   },
 };
 
-const getChipInputHoverTokens = (intent: ChipGroupProps['intent']): SelectorInputHoverTokens => {
+const getChipInputHoverTokens = (color: ChipGroupProps['color']): SelectorInputHoverTokens => {
   return {
     default: {
       background: {
@@ -183,7 +183,7 @@ const getChipInputHoverTokens = (intent: ChipGroupProps['intent']): SelectorInpu
         unchecked: 'transparent',
       },
       border: {
-        checked: `colors.${chipColorTokens.border[intent || 'none'].hover}` as never,
+        checked: `colors.${chipColorTokens.border[color || 'default'].hover}` as never,
         unchecked: 'colors.brand.gray.500.lowContrast',
       },
     },

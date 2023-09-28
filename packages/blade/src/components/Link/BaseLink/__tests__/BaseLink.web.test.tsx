@@ -1,4 +1,5 @@
 import { fireEvent } from '@testing-library/react';
+import type { BaseLinkProps } from '../BaseLink';
 import BaseLink from '../BaseLink';
 import assertAccessible from '~utils/testing/assertAccessible.web';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
@@ -7,6 +8,16 @@ import { paymentTheme } from '~tokens/theme';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
+
+const colors: BaseLinkProps['color'][] = [
+  'default',
+  'white',
+  'positive',
+  'negative',
+  'notice',
+  'information',
+  'neutral',
+];
 
 describe('<BaseLink />', () => {
   it('should render link with default properties', () => {
@@ -163,204 +174,22 @@ describe('<BaseLink />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should render positive intent low contrast link', () => {
-    const linkText = 'Learn More';
-    const { container } = renderWithTheme(
-      <BaseLink intent="positive" contrast="low">
-        {linkText}
-      </BaseLink>,
-    );
-    expect(container).toMatchSnapshot();
-  });
+  colors.forEach((color) => {
+    it(`should render ${color} color link`, () => {
+      const linkText = 'Learn More';
+      const { container } = renderWithTheme(<BaseLink color={color}>{linkText}</BaseLink>);
+      expect(container).toMatchSnapshot();
+    });
 
-  it('should render disabled positive intent low contrast link', () => {
-    const linkText = 'Learn More';
-    const { container } = renderWithTheme(
-      <BaseLink intent="positive" contrast="low" isDisabled={true}>
-        {linkText}
-      </BaseLink>,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render positive intent high contrast link', () => {
-    const linkText = 'Learn More';
-    const { container } = renderWithTheme(
-      <BaseLink intent="positive" contrast="high">
-        {linkText}
-      </BaseLink>,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render disabled positive intent high contrast link', () => {
-    const linkText = 'Learn More';
-    const { container } = renderWithTheme(
-      <BaseLink intent="positive" contrast="high" isDisabled={true}>
-        {linkText}
-      </BaseLink>,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render negative intent low contrast link', () => {
-    const linkText = 'Learn More';
-    const { container } = renderWithTheme(
-      <BaseLink intent="negative" contrast="low">
-        {linkText}
-      </BaseLink>,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render disabled negative intent low contrast link', () => {
-    const linkText = 'Learn More';
-    const { container } = renderWithTheme(
-      <BaseLink intent="negative" contrast="low" isDisabled={true}>
-        {linkText}
-      </BaseLink>,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render negative intent high contrast link', () => {
-    const linkText = 'Learn More';
-    const { container } = renderWithTheme(
-      <BaseLink intent="negative" contrast="high">
-        {linkText}
-      </BaseLink>,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render disabled negative intent high contrast link', () => {
-    const linkText = 'Learn More';
-    const { container } = renderWithTheme(
-      <BaseLink intent="negative" contrast="high" isDisabled={true}>
-        {linkText}
-      </BaseLink>,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render information intent low contrast link', () => {
-    const linkText = 'Learn More';
-    const { container } = renderWithTheme(
-      <BaseLink intent="information" contrast="low">
-        {linkText}
-      </BaseLink>,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render disabled information intent low contrast link', () => {
-    const linkText = 'Learn More';
-    const { container } = renderWithTheme(
-      <BaseLink intent="information" contrast="low" isDisabled={true}>
-        {linkText}
-      </BaseLink>,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render information intent high contrast link', () => {
-    const linkText = 'Learn More';
-    const { container } = renderWithTheme(
-      <BaseLink intent="information" contrast="high">
-        {linkText}
-      </BaseLink>,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render disabled information intent high contrast link', () => {
-    const linkText = 'Learn More';
-    const { container } = renderWithTheme(
-      <BaseLink intent="information" contrast="high" isDisabled={true}>
-        {linkText}
-      </BaseLink>,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render notice intent low contrast link', () => {
-    const linkText = 'Learn More';
-    const { container } = renderWithTheme(
-      <BaseLink intent="notice" contrast="low">
-        {linkText}
-      </BaseLink>,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render disabled notice intent low contrast link', () => {
-    const linkText = 'Learn More';
-    const { container } = renderWithTheme(
-      <BaseLink intent="notice" contrast="low" isDisabled={true}>
-        {linkText}
-      </BaseLink>,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render notice intent high contrast link', () => {
-    const linkText = 'Learn More';
-    const { container } = renderWithTheme(
-      <BaseLink intent="notice" contrast="high">
-        {linkText}
-      </BaseLink>,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render disabled notice intent high contrast link', () => {
-    const linkText = 'Learn More';
-    const { container } = renderWithTheme(
-      <BaseLink intent="notice" contrast="high" isDisabled={true}>
-        {linkText}
-      </BaseLink>,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render neutral intent low contrast link', () => {
-    const linkText = 'Learn More';
-    const { container } = renderWithTheme(
-      <BaseLink intent="neutral" contrast="low">
-        {linkText}
-      </BaseLink>,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render disabled neutral intent low contrast link', () => {
-    const linkText = 'Learn More';
-    const { container } = renderWithTheme(
-      <BaseLink intent="neutral" contrast="low" isDisabled={true}>
-        {linkText}
-      </BaseLink>,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render neutral intent high contrast link', () => {
-    const linkText = 'Learn More';
-    const { container } = renderWithTheme(
-      <BaseLink intent="neutral" contrast="high">
-        {linkText}
-      </BaseLink>,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render disabled neutral intent high contrast link', () => {
-    const linkText = 'Learn More';
-    const { container } = renderWithTheme(
-      <BaseLink intent="neutral" contrast="high" isDisabled={true}>
-        {linkText}
-      </BaseLink>,
-    );
-    expect(container).toMatchSnapshot();
+    it(`should render disabled ${color} color link`, () => {
+      const linkText = 'Learn More';
+      const { container } = renderWithTheme(
+        <BaseLink color={color} isDisabled={true}>
+          {linkText}
+        </BaseLink>,
+      );
+      expect(container).toMatchSnapshot();
+    });
   });
 
   it('should have accessibilityLabel', () => {

@@ -495,11 +495,11 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   border-color: hsla(218,89%,51%,1);
 }
 
-.c32:focus {
+.c32:focus-visible {
   background-color: hsla(218,89%,51%,0.18);
   border-color: hsla(218,89%,51%,1);
+  outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-  outline: none;
 }
 
 .c32 * {

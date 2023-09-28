@@ -35,8 +35,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { throwBladeError } from '~utils/logger';
 
 type BaseLinkCommonProps = {
-  intent?: 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
-  contrast?: 'low' | 'high';
+  color?: 'default' | 'white' | 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
   icon?: IconComponent;
   iconPosition?: 'left' | 'right';
   onClick?: (event: SyntheticEvent) => void;
@@ -148,16 +147,14 @@ type BaseLinkStyleProps = {
 
 const getColorToken = ({
   variant,
-  intent,
-  contrast,
+  color,
   element,
   currentInteraction,
   isDisabled,
   isVisited,
 }: {
   variant: BaseLinkProps['variant'];
-  intent: BaseLinkProps['intent'];
-  contrast: NonNullable<BaseLinkProps['contrast']>;
+  color: BaseLinkProps['color'];
   element: 'icon' | 'text';
   currentInteraction: keyof LinkActionStates;
   isDisabled: boolean;
@@ -167,13 +164,16 @@ const getColorToken = ({
   if (isDisabled && variant == 'button') {
     state = 'disabled';
   }
-  if (isVisited && variant == 'anchor' && !intent) {
-    // visited state is only valid for anchor variant without any intent
+  if (isVisited && variant == 'anchor') {
+    // visited state is only valid for anchor variant
     state = 'visited';
   }
 
-  if (intent && state !== 'visited') {
-    return `feedback.${intent}.action.${element}.link.${state}.${contrast}Contrast`;
+  if (color && color !== 'default' && state !== 'visited') {
+    if (color !== 'white') {
+      return `feedback.${color}.action.${element}.link.${state}.lowContrast`;
+    }
+    return `white.action.${element}.link.${state}`;
   }
   return `action.${element}.link.${state}`;
 };
@@ -184,8 +184,7 @@ const getProps = ({
   currentInteraction,
   children,
   isDisabled,
-  intent,
-  contrast,
+  color,
   isVisited,
   target,
   size,
@@ -195,8 +194,7 @@ const getProps = ({
   currentInteraction: keyof LinkActionStates;
   children?: string;
   isDisabled: boolean;
-  intent: BaseLinkProps['intent'];
-  contrast: NonNullable<BaseLinkProps['contrast']>;
+  color: BaseLinkProps['color'];
   isVisited: boolean;
   target: BaseLinkProps['target'];
   size: NonNullable<BaseLinkProps['size']>;
@@ -225,8 +223,7 @@ const getProps = ({
     textDecorationLine: !isButton && currentInteraction !== 'default' ? 'underline' : 'none',
     iconColor: getColorToken({
       variant,
-      intent,
-      contrast,
+      color,
       element: 'icon',
       currentInteraction,
       isDisabled,
@@ -238,8 +235,7 @@ const getProps = ({
     iconPadding: children?.trim() ? 'spacing.2' : 'spacing.0',
     textColor: getColorToken({
       variant,
-      intent,
-      contrast,
+      color,
       element: 'text',
       currentInteraction,
       isDisabled,
@@ -270,8 +266,7 @@ const _BaseLink: React.ForwardRefRenderFunction<BladeElementRef, BaseLinkProps> 
     href,
     target,
     rel,
-    intent,
-    contrast = 'low',
+    color = 'default',
     accessibilityProps,
     // @ts-expect-error avoiding exposing to public
     className,
@@ -328,16 +323,15 @@ const _BaseLink: React.ForwardRefRenderFunction<BladeElementRef, BaseLinkProps> 
     currentInteraction,
     children: childrenString,
     isDisabled,
-    intent,
-    contrast,
+    color,
     isVisited,
     target,
     size,
   });
 
   const handleOnClick = (event: SyntheticEvent): void => {
-    if (!isVisited && !intent && variant === 'anchor') {
-      // visited state is only valid for anchor variant without any intent
+    if (!isVisited && variant === 'anchor') {
+      // visited state is only valid for anchor variant
       setIsVisited(true);
     }
 

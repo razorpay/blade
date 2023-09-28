@@ -17,7 +17,7 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
     }
   >
     <View
-      accessibilityLabelledBy="chip-group-26-label"
+      accessibilityLabelledBy="chip-group-31-label"
       accessibilityRole="radiogroup"
       accessible={true}
       data-blade-component="chip-group"
@@ -141,7 +141,7 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
               }
             >
               <View
-                accessibilityDescribedBy="radio-27-helptext-28"
+                accessibilityDescribedBy="radio-32-helptext-33"
                 accessibilityInvalid={false}
                 accessibilityRequired={false}
                 accessibilityRole="radio"
@@ -250,11 +250,11 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
                         borderColor="brand.gray.400.lowContrast"
                         borderRadius="max"
                         borderWidth="thinner"
+                        color="default"
                         data-blade-component="base-box"
                         display="flex"
                         flexDirection="row"
                         height="28px"
-                        intent="none"
                         isChecked={false}
                         isDisabled={true}
                         justifyContent="center"
@@ -347,7 +347,7 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
               }
             >
               <View
-                accessibilityDescribedBy="radio-29-helptext-30"
+                accessibilityDescribedBy="radio-34-helptext-35"
                 accessibilityInvalid={false}
                 accessibilityRequired={false}
                 accessibilityRole="radio"
@@ -456,11 +456,11 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
                         borderColor="brand.gray.400.lowContrast"
                         borderRadius="max"
                         borderWidth="thinner"
+                        color="default"
                         data-blade-component="base-box"
                         display="flex"
                         flexDirection="row"
                         height="28px"
-                        intent="none"
                         isChecked={false}
                         isDisabled={false}
                         justifyContent="center"
@@ -787,11 +787,11 @@ exports[`<Chip /> should render chip 1`] = `
                         borderColor="brand.gray.400.lowContrast"
                         borderRadius="max"
                         borderWidth="thinner"
+                        color="default"
                         data-blade-component="base-box"
                         display="flex"
                         flexDirection="row"
                         height="28px"
-                        intent="none"
                         isChecked={false}
                         isDisabled={false}
                         justifyContent="center"
@@ -993,11 +993,11 @@ exports[`<Chip /> should render chip 1`] = `
                         borderColor="brand.gray.400.lowContrast"
                         borderRadius="max"
                         borderWidth="thinner"
+                        color="default"
                         data-blade-component="base-box"
                         display="flex"
                         flexDirection="row"
                         height="28px"
-                        intent="none"
                         isChecked={false}
                         isDisabled={false}
                         justifyContent="center"
@@ -1324,11 +1324,11 @@ exports[`<Chip /> should render chip with icon 1`] = `
                         borderColor="brand.gray.400.lowContrast"
                         borderRadius="max"
                         borderWidth="thinner"
+                        color="default"
                         data-blade-component="base-box"
                         display="flex"
                         flexDirection="row"
                         height="28px"
-                        intent="none"
                         isChecked={false}
                         isDisabled={false}
                         justifyContent="center"
@@ -1616,11 +1616,11 @@ exports[`<Chip /> should render chip with icon 1`] = `
                         borderColor="brand.gray.400.lowContrast"
                         borderRadius="max"
                         borderWidth="thinner"
+                        color="default"
                         data-blade-component="base-box"
                         display="flex"
                         flexDirection="row"
                         height="28px"
-                        intent="none"
                         isChecked={false}
                         isDisabled={false}
                         justifyContent="center"
@@ -1800,7 +1800,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
     }
   >
     <View
-      accessibilityLabelledBy="chip-group-21-label"
+      accessibilityLabelledBy="chip-group-26-label"
       accessibilityRole="radiogroup"
       accessible={true}
       data-blade-component="chip-group"
@@ -1924,7 +1924,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
               }
             >
               <View
-                accessibilityDescribedBy="radio-22-helptext-23"
+                accessibilityDescribedBy="radio-27-helptext-28"
                 accessibilityInvalid={false}
                 accessibilityRequired={false}
                 accessibilityRole="radio"
@@ -2033,11 +2033,11 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                         borderColor="brand.gray.400.lowContrast"
                         borderRadius="max"
                         borderWidth="thinner"
+                        color="default"
                         data-blade-component="base-box"
                         display="flex"
                         flexDirection="row"
                         height="28px"
-                        intent="none"
                         isChecked={false}
                         isDisabled={true}
                         justifyContent="center"
@@ -2130,7 +2130,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
               }
             >
               <View
-                accessibilityDescribedBy="radio-24-helptext-25"
+                accessibilityDescribedBy="radio-29-helptext-30"
                 accessibilityInvalid={false}
                 accessibilityRequired={false}
                 accessibilityRole="radio"
@@ -2239,11 +2239,11 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                         borderColor="brand.gray.400.lowContrast"
                         borderRadius="max"
                         borderWidth="thinner"
+                        color="default"
                         data-blade-component="base-box"
                         display="flex"
                         flexDirection="row"
                         height="28px"
-                        intent="none"
                         isChecked={false}
                         isDisabled={false}
                         justifyContent="center"
