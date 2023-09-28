@@ -46,6 +46,14 @@ export type ActionStatesWithContrast = {
   disabled: ColorContrast;
 };
 
+export type ActionStatesWithLowContrast = {
+  default: Pick<ColorContrast, 'lowContrast'>;
+  hover: Pick<ColorContrast, 'lowContrast'>;
+  focus: Pick<ColorContrast, 'lowContrast'>;
+  active: Pick<ColorContrast, 'lowContrast'>;
+  disabled: Pick<ColorContrast, 'lowContrast'>;
+};
+
 export type LinkActionStatesWithContrast = ActionStatesWithContrast & {
   visited: ColorContrast;
 };
@@ -82,13 +90,26 @@ export type SecondaryFeedbackActionStatesWithContrast = {
 // };
 
 export type FeedbackActions = {
-  background: Pick<ActionVariantsWithContrast, 'primary'> &
-    SecondaryFeedbackActionStatesWithContrast;
-  border: Pick<ActionVariantsWithContrast, 'primary'> & SecondaryFeedbackActionStatesWithContrast;
-  text: Pick<ActionVariantsWithContrast, 'link' | 'primary'> &
-    SecondaryFeedbackActionStatesWithContrast;
-  icon: Pick<ActionVariantsWithContrast, 'link' | 'primary'> &
-    SecondaryFeedbackActionStatesWithContrast;
+  action: {
+    background: {
+      primary: ActionStatesWithContrast;
+      secondary: ActionStatesWithLowContrast;
+    };
+    border: {
+      primary: ActionStatesWithContrast;
+      secondary: ActionStatesWithLowContrast;
+    };
+    text: {
+      link: ActionStatesWithContrast;
+      primary: ActionStatesWithContrast;
+      secondary: ActionStatesWithLowContrast;
+    };
+    icon: {
+      link: ActionStatesWithContrast;
+      primary: ActionStatesWithContrast;
+      secondary: ActionStatesWithLowContrast;
+    };
+  };
 };
 
 export type WhiteColors = {
@@ -109,21 +130,11 @@ export type Colors = {
     border: Record<Feedback, ColorContrast>;
     text: Record<Feedback, ColorContrast>;
     icon: Record<Feedback, ColorContrast>;
-    positive: {
-      action: FeedbackActions;
-    };
-    negative: {
-      action: FeedbackActions;
-    };
-    information: {
-      action: FeedbackActions;
-    };
-    notice: {
-      action: FeedbackActions;
-    };
-    neutral: {
-      action: FeedbackActions;
-    };
+    positive: FeedbackActions;
+    negative: FeedbackActions;
+    information: FeedbackActions;
+    notice: FeedbackActions;
+    neutral: FeedbackActions;
   };
   surface: {
     background: Record<'level1' | 'level2' | 'level3', ColorContrast>;
