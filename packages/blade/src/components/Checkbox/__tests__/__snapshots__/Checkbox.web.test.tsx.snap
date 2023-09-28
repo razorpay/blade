@@ -111,7 +111,7 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
   word-wrap: normal;
 }
 
-.c3:focus + div {
+.c3:focus-visible + div {
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
@@ -150,7 +150,7 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
   border-radius: 2px;
 }
 
-.c8:focus .content-container {
+.c8:focus-visible .content-container {
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
@@ -358,7 +358,7 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
   word-wrap: normal;
 }
 
-.c3:focus + div {
+.c3:focus-visible + div {
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
@@ -561,7 +561,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
   word-wrap: normal;
 }
 
-.c3:focus + div {
+.c3:focus-visible + div {
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
@@ -797,7 +797,7 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
   word-wrap: normal;
 }
 
-.c3:focus + div {
+.c3:focus-visible + div {
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }

@@ -539,7 +539,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   border-radius: 2px;
 }
 
-.c1:focus .content-container {
+.c1:focus-visible .content-container {
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
