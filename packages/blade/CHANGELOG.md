@@ -1,5 +1,14 @@
 # @razorpay/blade
 
+## 10.14.1
+
+### Patch Changes
+
+- a65ebf9c: feat(blade): update to use focus-visible
+
+  This will ensure that focus will only appear while using keyboard.
+  Note that this is a non-breaking change but you might need to update UT snapshots.
+
 ## 10.14.0
 
 ### Minor Changes
