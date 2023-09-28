@@ -172,18 +172,18 @@ const LinkColorsTemplate: ComponentStory<typeof LinkComponent> = ({
   ...args
 }) => {
   return (
-    <Box display="flex" flexDirection="column" gap="spacing.2">
-      <Box padding="spacing.2">
+    <BaseBox display="flex" flexDirection="column" gap="spacing.2">
+      <BaseBox padding="spacing.2">
         <LinkComponent {...args} color="default">
           {children}
         </LinkComponent>
-      </Box>
-      <Box padding="spacing.2" backgroundColor="brand.primary.500">
+      </BaseBox>
+      <BaseBox padding="spacing.2" backgroundColor="brand.gray.700.lowContrast">
         <LinkComponent {...args} color="white">
           {children}
         </LinkComponent>
-      </Box>
-    </Box>
+      </BaseBox>
+    </BaseBox>
   );
 };
 
