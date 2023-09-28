@@ -169,8 +169,9 @@ const ButtonWithColorTemplate: ComponentStory<typeof ButtonComponent> = ({
           display="flex"
           flexDirection="row"
           gap="spacing.5"
-          backgroundColor={color === 'white' ? 'brand.primary.500' : 'transparent'}
-          margin="spacing.2"
+          backgroundColor={color === 'white' ? 'brand.gray.700.lowContrast' : 'transparent'}
+          margin="spacing.4"
+          padding="spacing.5"
         >
           <BaseBox
             width="100px"
