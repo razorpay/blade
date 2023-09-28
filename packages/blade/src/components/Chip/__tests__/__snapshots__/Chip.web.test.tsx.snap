@@ -210,6 +210,8 @@ exports[`<Chip /> should render chip 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(217,56%,17%,1);
+  text-decoration-color: hsla(217,56%,17%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -223,6 +225,8 @@ exports[`<Chip /> should render chip 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(216,27%,36%,1);
+  text-decoration-color: hsla(216,27%,36%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -654,6 +658,8 @@ exports[`<Chip /> should render chip with icon 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(217,56%,17%,1);
+  text-decoration-color: hsla(217,56%,17%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -667,6 +673,8 @@ exports[`<Chip /> should render chip with icon 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(216,27%,36%,1);
+  text-decoration-color: hsla(216,27%,36%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -1222,6 +1230,8 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(217,56%,17%,1);
+  text-decoration-color: hsla(217,56%,17%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -1235,6 +1245,8 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(214,18%,69%,1);
+  text-decoration-color: hsla(214,18%,69%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -1253,6 +1265,8 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(216,27%,36%,1);
+  text-decoration-color: hsla(216,27%,36%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;

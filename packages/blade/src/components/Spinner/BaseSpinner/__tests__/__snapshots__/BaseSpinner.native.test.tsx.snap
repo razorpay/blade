@@ -572,6 +572,7 @@ exports[`<BaseSpinner /> should render high contrast BaseSpinner with bottom lab
                 "paddingLeft": 0,
                 "paddingRight": 0,
                 "paddingTop": 0,
+                "textDecorationColor": "hsla(216, 19%, 89%, 1)",
                 "textDecorationLine": "none",
               },
             ]
@@ -1157,6 +1158,7 @@ exports[`<BaseSpinner /> should render low contrast BaseSpinner with right label
                 "paddingLeft": 0,
                 "paddingRight": 0,
                 "paddingTop": 0,
+                "textDecorationColor": "hsla(217, 18%, 45%, 1)",
                 "textDecorationLine": "none",
               },
             ]

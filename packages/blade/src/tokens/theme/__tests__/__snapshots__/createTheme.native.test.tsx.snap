@@ -3481,6 +3481,7 @@ exports[`createTheme should create a theme with the correct brand colors 2`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsl(0, 0%, 100%)",
               "textDecorationLine": "none",
             },
           ]
@@ -6975,6 +6976,7 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsl(219, 41%, 19%)",
               "textDecorationLine": "none",
             },
           ]

@@ -157,6 +157,8 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(0,0%,100%,1);
+  text-decoration-color: hsla(0,0%,100%,1);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;
@@ -171,6 +173,8 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(217,56%,17%,1);
+  text-decoration-color: hsla(217,56%,17%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -184,6 +188,8 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(160,100%,26%,1);
+  text-decoration-color: hsla(160,100%,26%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -198,6 +204,8 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(160,100%,26%,1);
+  text-decoration-color: hsla(160,100%,26%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -211,6 +219,8 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(160,100%,26%,1);
+  text-decoration-color: hsla(160,100%,26%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -430,6 +440,8 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(218,89%,51%,1);
+  text-decoration-color: hsla(218,89%,51%,1);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;
@@ -444,6 +456,8 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(217,56%,17%,1);
+  text-decoration-color: hsla(217,56%,17%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -457,6 +471,8 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(160,100%,26%,1);
+  text-decoration-color: hsla(160,100%,26%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -471,6 +487,8 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(160,100%,26%,1);
+  text-decoration-color: hsla(160,100%,26%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -484,6 +502,8 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(160,100%,26%,1);
+  text-decoration-color: hsla(160,100%,26%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;

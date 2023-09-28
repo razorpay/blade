@@ -141,6 +141,7 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(0, 0%, 100%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -295,6 +296,7 @@ exports[`<BaseButton /> should render button with full width 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(0, 0%, 100%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -521,6 +523,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(0, 0%, 100%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -747,6 +750,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(0, 0%, 100%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -901,6 +905,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(0, 0%, 100%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -1319,6 +1324,7 @@ exports[`<BaseButton /> should render default color primary button 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(0, 0%, 100%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -1473,6 +1479,7 @@ exports[`<BaseButton /> should render default color secondary button 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(218, 89%, 51%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -1626,6 +1633,7 @@ exports[`<BaseButton /> should render default color tertiary button 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(216, 33%, 29%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -1780,6 +1788,7 @@ exports[`<BaseButton /> should render disabled button 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(216, 16%, 60%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -1934,6 +1943,7 @@ exports[`<BaseButton /> should render disabled default color primary button 1`] 
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(216, 16%, 60%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -2088,6 +2098,7 @@ exports[`<BaseButton /> should render disabled default color secondary button 1`
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(218, 19%, 81%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -2241,6 +2252,7 @@ exports[`<BaseButton /> should render disabled default color tertiary button 1`]
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(218, 19%, 81%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -2395,6 +2407,7 @@ exports[`<BaseButton /> should render disabled information color primary button 
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(187, 68%, 52%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -2549,6 +2562,7 @@ exports[`<BaseButton /> should render disabled information color secondary butto
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(193, 100%, 35%, 0.32)",
               "textDecorationLine": "none",
             },
           ]
@@ -2703,6 +2717,7 @@ exports[`<BaseButton /> should render disabled negative color primary button 1`]
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(8, 99%, 65%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -2857,6 +2872,7 @@ exports[`<BaseButton /> should render disabled negative color secondary button 1
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(9, 91%, 56%, 0.32)",
               "textDecorationLine": "none",
             },
           ]
@@ -3011,6 +3027,7 @@ exports[`<BaseButton /> should render disabled neutral color primary button 1`] 
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(216, 15%, 54%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -3165,6 +3182,7 @@ exports[`<BaseButton /> should render disabled neutral color secondary button 1`
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(216, 15%, 54%, 0.32)",
               "textDecorationLine": "none",
             },
           ]
@@ -3319,6 +3337,7 @@ exports[`<BaseButton /> should render disabled notice color primary button 1`] =
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(35, 84%, 54%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -3473,6 +3492,7 @@ exports[`<BaseButton /> should render disabled notice color secondary button 1`]
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(36, 100%, 44%, 0.32)",
               "textDecorationLine": "none",
             },
           ]
@@ -3627,6 +3647,7 @@ exports[`<BaseButton /> should render disabled positive color primary button 1`]
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(149, 99%, 35%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -3781,6 +3802,7 @@ exports[`<BaseButton /> should render disabled positive color secondary button 1
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(155, 100%, 31%, 0.32)",
               "textDecorationLine": "none",
             },
           ]
@@ -3935,6 +3957,7 @@ exports[`<BaseButton /> should render disabled white color primary button 1`] = 
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(210, 6%, 94%, 0.32)",
               "textDecorationLine": "none",
             },
           ]
@@ -4089,6 +4112,7 @@ exports[`<BaseButton /> should render disabled white color secondary button 1`] 
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(210, 6%, 94%, 0.32)",
               "textDecorationLine": "none",
             },
           ]
@@ -4242,6 +4266,7 @@ exports[`<BaseButton /> should render disabled white color tertiary button 1`] =
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(210, 6%, 94%, 0.32)",
               "textDecorationLine": "none",
             },
           ]
@@ -4396,6 +4421,7 @@ exports[`<BaseButton /> should render information color primary button 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(180, 100%, 97%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -4550,6 +4576,7 @@ exports[`<BaseButton /> should render information color secondary button 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(195, 100%, 31%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -4704,6 +4731,7 @@ exports[`<BaseButton /> should render large size button 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(0, 0%, 100%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -5008,6 +5036,7 @@ exports[`<BaseButton /> should render loading button 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(216, 16%, 60%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -5162,6 +5191,7 @@ exports[`<BaseButton /> should render medium size button 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(0, 0%, 100%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -5316,6 +5346,7 @@ exports[`<BaseButton /> should render negative color primary button 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(0, 100%, 97%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -5470,6 +5501,7 @@ exports[`<BaseButton /> should render negative color secondary button 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(8, 73%, 47%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -5624,6 +5656,7 @@ exports[`<BaseButton /> should render neutral color primary button 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(220, 27%, 98%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -5778,6 +5811,7 @@ exports[`<BaseButton /> should render neutral color secondary button 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(216, 27%, 36%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -5932,6 +5966,7 @@ exports[`<BaseButton /> should render notice color primary button 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(32, 100%, 94%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -6086,6 +6121,7 @@ exports[`<BaseButton /> should render notice color secondary button 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(38, 97%, 38%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -6240,6 +6276,7 @@ exports[`<BaseButton /> should render positive color primary button 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(107, 100%, 96%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -6394,6 +6431,7 @@ exports[`<BaseButton /> should render positive color secondary button 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(160, 100%, 26%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -6548,6 +6586,7 @@ exports[`<BaseButton /> should render small size button 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(0, 0%, 100%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -6702,6 +6741,7 @@ exports[`<BaseButton /> should render white color primary button 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(218, 89%, 51%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -6856,6 +6896,7 @@ exports[`<BaseButton /> should render white color secondary button 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(0, 0%, 100%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -7009,6 +7050,7 @@ exports[`<BaseButton /> should render white color tertiary button 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(0, 0%, 100%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -7163,6 +7205,7 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(0, 0%, 100%, 1)",
               "textDecorationLine": "none",
             },
           ]

@@ -140,6 +140,8 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(217,56%,17%,1);
+  text-decoration-color: hsla(217,56%,17%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -153,6 +155,8 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(217,56%,17%,1);
+  text-decoration-color: hsla(217,56%,17%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
@@ -166,6 +170,8 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(217,56%,17%,1);
+  text-decoration-color: hsla(217,56%,17%,1);
   line-height: 1rem;
   margin: 0;
   padding: 0;
@@ -179,6 +185,8 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(218,89%,51%,1);
+  text-decoration-color: hsla(218,89%,51%,1);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;
@@ -193,6 +201,8 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(0,0%,100%,1);
+  text-decoration-color: hsla(0,0%,100%,1);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;
@@ -673,6 +683,8 @@ exports[`<Card /> should render a Card with Header 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(217,56%,17%,1);
+  text-decoration-color: hsla(217,56%,17%,1);
   line-height: 1.5rem;
   margin: 0;
   padding: 0;
@@ -686,6 +698,8 @@ exports[`<Card /> should render a Card with Header 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(216,27%,36%,1);
+  text-decoration-color: hsla(216,27%,36%,1);
   line-height: 1rem;
   text-align: center;
   margin: 0;
@@ -705,6 +719,8 @@ exports[`<Card /> should render a Card with Header 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(217,56%,17%,1);
+  text-decoration-color: hsla(217,56%,17%,1);
   line-height: 1rem;
   text-align: left;
   margin: 0;
@@ -719,6 +735,8 @@ exports[`<Card /> should render a Card with Header 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(216,27%,36%,1);
+  text-decoration-color: hsla(216,27%,36%,1);
   line-height: 1rem;
   margin: 0;
   padding: 0;
@@ -737,6 +755,8 @@ exports[`<Card /> should render a Card with Header 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(217,56%,17%,1);
+  text-decoration-color: hsla(217,56%,17%,1);
   line-height: 1.25rem;
   margin: 0;
   padding: 0;

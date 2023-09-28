@@ -133,6 +133,8 @@ exports[`<BaseButton /> should announce button loading accessibilityLabel 1`] = 
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(0,0%,100%,1);
+  text-decoration-color: hsla(0,0%,100%,1);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;
@@ -147,6 +149,8 @@ exports[`<BaseButton /> should announce button loading accessibilityLabel 1`] = 
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(216,16%,60%,1);
+  text-decoration-color: hsla(216,16%,60%,1);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;
@@ -389,6 +393,8 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(0,0%,100%,1);
+  text-decoration-color: hsla(0,0%,100%,1);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;
@@ -513,6 +519,8 @@ exports[`<BaseButton /> should render button with full width 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(0,0%,100%,1);
+  text-decoration-color: hsla(0,0%,100%,1);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;
@@ -637,6 +645,8 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(0,0%,100%,1);
+  text-decoration-color: hsla(0,0%,100%,1);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;
@@ -799,6 +809,8 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(0,0%,100%,1);
+  text-decoration-color: hsla(0,0%,100%,1);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;
@@ -961,6 +973,8 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(0,0%,100%,1);
+  text-decoration-color: hsla(0,0%,100%,1);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;
@@ -1264,6 +1278,8 @@ exports[`<BaseButton /> should render default color primary button 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(0,0%,100%,1);
+  text-decoration-color: hsla(0,0%,100%,1);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;
@@ -1388,6 +1404,8 @@ exports[`<BaseButton /> should render default color secondary button 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(218,89%,51%,1);
+  text-decoration-color: hsla(218,89%,51%,1);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;
@@ -1509,6 +1527,8 @@ exports[`<BaseButton /> should render default color tertiary button 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(216,33%,29%,1);
+  text-decoration-color: hsla(216,33%,29%,1);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;
@@ -1633,6 +1653,8 @@ exports[`<BaseButton /> should render disabled button 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(216,16%,60%,1);
+  text-decoration-color: hsla(216,16%,60%,1);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;
@@ -1758,6 +1780,8 @@ exports[`<BaseButton /> should render disabled default color primary button 1`] 
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(216,16%,60%,1);
+  text-decoration-color: hsla(216,16%,60%,1);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;
@@ -1883,6 +1907,8 @@ exports[`<BaseButton /> should render disabled default color secondary button 1`
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(218,19%,81%,1);
+  text-decoration-color: hsla(218,19%,81%,1);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;
@@ -2005,6 +2031,8 @@ exports[`<BaseButton /> should render disabled default color tertiary button 1`]
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(218,19%,81%,1);
+  text-decoration-color: hsla(218,19%,81%,1);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;
@@ -2130,6 +2158,8 @@ exports[`<BaseButton /> should render disabled information color primary button 
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(187,68%,52%,1);
+  text-decoration-color: hsla(187,68%,52%,1);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;
@@ -2255,6 +2285,8 @@ exports[`<BaseButton /> should render disabled information color secondary butto
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(193,100%,35%,0.32);
+  text-decoration-color: hsla(193,100%,35%,0.32);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;
@@ -2380,6 +2412,8 @@ exports[`<BaseButton /> should render disabled negative color primary button 1`]
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(8,99%,65%,1);
+  text-decoration-color: hsla(8,99%,65%,1);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;
@@ -2505,6 +2539,8 @@ exports[`<BaseButton /> should render disabled negative color secondary button 1
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(9,91%,56%,0.32);
+  text-decoration-color: hsla(9,91%,56%,0.32);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;
@@ -2630,6 +2666,8 @@ exports[`<BaseButton /> should render disabled neutral color primary button 1`] 
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(216,15%,54%,1);
+  text-decoration-color: hsla(216,15%,54%,1);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;
@@ -2755,6 +2793,8 @@ exports[`<BaseButton /> should render disabled neutral color secondary button 1`
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(216,15%,54%,0.32);
+  text-decoration-color: hsla(216,15%,54%,0.32);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;
@@ -2880,6 +2920,8 @@ exports[`<BaseButton /> should render disabled notice color primary button 1`] =
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(35,84%,54%,1);
+  text-decoration-color: hsla(35,84%,54%,1);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;
@@ -3005,6 +3047,8 @@ exports[`<BaseButton /> should render disabled notice color secondary button 1`]
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(36,100%,44%,0.32);
+  text-decoration-color: hsla(36,100%,44%,0.32);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;
@@ -3130,6 +3174,8 @@ exports[`<BaseButton /> should render disabled positive color primary button 1`]
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(149,99%,35%,1);
+  text-decoration-color: hsla(149,99%,35%,1);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;
@@ -3255,6 +3301,8 @@ exports[`<BaseButton /> should render disabled positive color secondary button 1
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(155,100%,31%,0.32);
+  text-decoration-color: hsla(155,100%,31%,0.32);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;
@@ -3380,6 +3428,8 @@ exports[`<BaseButton /> should render disabled white color primary button 1`] = 
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(210,6%,94%,0.32);
+  text-decoration-color: hsla(210,6%,94%,0.32);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;
@@ -3505,6 +3555,8 @@ exports[`<BaseButton /> should render disabled white color secondary button 1`] 
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(210,6%,94%,0.32);
+  text-decoration-color: hsla(210,6%,94%,0.32);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;
@@ -3627,6 +3679,8 @@ exports[`<BaseButton /> should render disabled white color tertiary button 1`] =
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(210,6%,94%,0.32);
+  text-decoration-color: hsla(210,6%,94%,0.32);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;
@@ -3752,6 +3806,8 @@ exports[`<BaseButton /> should render information color primary button 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(180,100%,97%,1);
+  text-decoration-color: hsla(180,100%,97%,1);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;
@@ -3876,6 +3932,8 @@ exports[`<BaseButton /> should render information color secondary button 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(195,100%,31%,1);
+  text-decoration-color: hsla(195,100%,31%,1);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;
@@ -4000,6 +4058,8 @@ exports[`<BaseButton /> should render large size button 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(0,0%,100%,1);
+  text-decoration-color: hsla(0,0%,100%,1);
   line-height: 1.5rem;
   text-align: center;
   margin: 0;
@@ -4124,6 +4184,8 @@ exports[`<BaseButton /> should render medium size button 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(0,0%,100%,1);
+  text-decoration-color: hsla(0,0%,100%,1);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;
@@ -4248,6 +4310,8 @@ exports[`<BaseButton /> should render negative color primary button 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(0,100%,97%,1);
+  text-decoration-color: hsla(0,100%,97%,1);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;
@@ -4372,6 +4436,8 @@ exports[`<BaseButton /> should render negative color secondary button 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(8,73%,47%,1);
+  text-decoration-color: hsla(8,73%,47%,1);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;
@@ -4496,6 +4562,8 @@ exports[`<BaseButton /> should render neutral color primary button 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(220,27%,98%,1);
+  text-decoration-color: hsla(220,27%,98%,1);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;
@@ -4620,6 +4688,8 @@ exports[`<BaseButton /> should render neutral color secondary button 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(216,27%,36%,1);
+  text-decoration-color: hsla(216,27%,36%,1);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;
@@ -4744,6 +4814,8 @@ exports[`<BaseButton /> should render notice color primary button 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(32,100%,94%,1);
+  text-decoration-color: hsla(32,100%,94%,1);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;
@@ -4868,6 +4940,8 @@ exports[`<BaseButton /> should render notice color secondary button 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(38,97%,38%,1);
+  text-decoration-color: hsla(38,97%,38%,1);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;
@@ -4992,6 +5066,8 @@ exports[`<BaseButton /> should render positive color primary button 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(107,100%,96%,1);
+  text-decoration-color: hsla(107,100%,96%,1);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;
@@ -5116,6 +5192,8 @@ exports[`<BaseButton /> should render positive color secondary button 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(160,100%,26%,1);
+  text-decoration-color: hsla(160,100%,26%,1);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;
@@ -5240,6 +5318,8 @@ exports[`<BaseButton /> should render small size button 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(0,0%,100%,1);
+  text-decoration-color: hsla(0,0%,100%,1);
   line-height: 1rem;
   text-align: center;
   margin: 0;
@@ -5364,6 +5444,8 @@ exports[`<BaseButton /> should render white color primary button 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(218,89%,51%,1);
+  text-decoration-color: hsla(218,89%,51%,1);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;
@@ -5488,6 +5570,8 @@ exports[`<BaseButton /> should render white color secondary button 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(0,0%,100%,1);
+  text-decoration-color: hsla(0,0%,100%,1);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;
@@ -5609,6 +5693,8 @@ exports[`<BaseButton /> should render white color tertiary button 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(0,0%,100%,1);
+  text-decoration-color: hsla(0,0%,100%,1);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;
@@ -5733,6 +5819,8 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(0,0%,100%,1);
+  text-decoration-color: hsla(0,0%,100%,1);
   line-height: 1rem;
   text-align: center;
   margin: 0;

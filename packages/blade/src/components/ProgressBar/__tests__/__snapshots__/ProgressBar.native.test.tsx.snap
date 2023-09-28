@@ -105,6 +105,7 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
+                    "textDecorationColor": "hsla(217, 18%, 45%, 1)",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -167,6 +168,7 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
                       "paddingLeft": 0,
                       "paddingRight": 0,
                       "paddingTop": 0,
+                      "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                       "textDecorationLine": "none",
                     },
                   ]
@@ -211,6 +213,7 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
                   "paddingLeft": 0,
                   "paddingRight": 0,
                   "paddingTop": 0,
+                  "textDecorationColor": "hsla(217, 18%, 45%, 1)",
                   "textDecorationLine": "none",
                 },
               ]
@@ -499,6 +502,7 @@ exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
                   "paddingLeft": 0,
                   "paddingRight": 0,
                   "paddingTop": 0,
+                  "textDecorationColor": "hsla(216, 19%, 89%, 1)",
                   "textDecorationLine": "none",
                 },
               ]
@@ -665,6 +669,7 @@ exports[`<ProgressBar /> should render high contrast information intent Progress
                   "paddingLeft": 0,
                   "paddingRight": 0,
                   "paddingTop": 0,
+                  "textDecorationColor": "hsla(216, 19%, 89%, 1)",
                   "textDecorationLine": "none",
                 },
               ]
@@ -831,6 +836,7 @@ exports[`<ProgressBar /> should render high contrast negative intent ProgressBar
                   "paddingLeft": 0,
                   "paddingRight": 0,
                   "paddingTop": 0,
+                  "textDecorationColor": "hsla(216, 19%, 89%, 1)",
                   "textDecorationLine": "none",
                 },
               ]
@@ -997,6 +1003,7 @@ exports[`<ProgressBar /> should render high contrast neutral intent ProgressBar 
                   "paddingLeft": 0,
                   "paddingRight": 0,
                   "paddingTop": 0,
+                  "textDecorationColor": "hsla(216, 19%, 89%, 1)",
                   "textDecorationLine": "none",
                 },
               ]
@@ -1163,6 +1170,7 @@ exports[`<ProgressBar /> should render high contrast notice intent ProgressBar 1
                   "paddingLeft": 0,
                   "paddingRight": 0,
                   "paddingTop": 0,
+                  "textDecorationColor": "hsla(216, 19%, 89%, 1)",
                   "textDecorationLine": "none",
                 },
               ]
@@ -1329,6 +1337,7 @@ exports[`<ProgressBar /> should render high contrast positive intent ProgressBar
                   "paddingLeft": 0,
                   "paddingRight": 0,
                   "paddingTop": 0,
+                  "textDecorationColor": "hsla(216, 19%, 89%, 1)",
                   "textDecorationLine": "none",
                 },
               ]
@@ -1495,6 +1504,7 @@ exports[`<ProgressBar /> should render low contrast information intent ProgressB
                   "paddingLeft": 0,
                   "paddingRight": 0,
                   "paddingTop": 0,
+                  "textDecorationColor": "hsla(217, 18%, 45%, 1)",
                   "textDecorationLine": "none",
                 },
               ]
@@ -1661,6 +1671,7 @@ exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 
                   "paddingLeft": 0,
                   "paddingRight": 0,
                   "paddingTop": 0,
+                  "textDecorationColor": "hsla(217, 18%, 45%, 1)",
                   "textDecorationLine": "none",
                 },
               ]
@@ -1827,6 +1838,7 @@ exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1
                   "paddingLeft": 0,
                   "paddingRight": 0,
                   "paddingTop": 0,
+                  "textDecorationColor": "hsla(217, 18%, 45%, 1)",
                   "textDecorationLine": "none",
                 },
               ]
@@ -1993,6 +2005,7 @@ exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`
                   "paddingLeft": 0,
                   "paddingRight": 0,
                   "paddingTop": 0,
+                  "textDecorationColor": "hsla(217, 18%, 45%, 1)",
                   "textDecorationLine": "none",
                 },
               ]
@@ -2159,6 +2172,7 @@ exports[`<ProgressBar /> should render low contrast positive intent ProgressBar 
                   "paddingLeft": 0,
                   "paddingRight": 0,
                   "paddingTop": 0,
+                  "textDecorationColor": "hsla(217, 18%, 45%, 1)",
                   "textDecorationLine": "none",
                 },
               ]
@@ -2348,6 +2362,7 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
+                    "textDecorationColor": "hsla(217, 18%, 45%, 1)",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -2410,6 +2425,7 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
                       "paddingLeft": 0,
                       "paddingRight": 0,
                       "paddingTop": 0,
+                      "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                       "textDecorationLine": "none",
                     },
                   ]
@@ -2454,6 +2470,7 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
                   "paddingLeft": 0,
                   "paddingRight": 0,
                   "paddingTop": 0,
+                  "textDecorationColor": "hsla(217, 18%, 45%, 1)",
                   "textDecorationLine": "none",
                 },
               ]
@@ -2765,6 +2782,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
+                    "textDecorationColor": "hsla(217, 18%, 45%, 1)",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -2827,6 +2845,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
                       "paddingLeft": 0,
                       "paddingRight": 0,
                       "paddingTop": 0,
+                      "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                       "textDecorationLine": "none",
                     },
                   ]
@@ -2871,6 +2890,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
                   "paddingLeft": 0,
                   "paddingRight": 0,
                   "paddingTop": 0,
+                  "textDecorationColor": "hsla(217, 18%, 45%, 1)",
                   "textDecorationLine": "none",
                 },
               ]
@@ -3097,6 +3117,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(0, 0%, 100%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -3204,6 +3225,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
+                    "textDecorationColor": "hsla(217, 18%, 45%, 1)",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -3266,6 +3288,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
                       "paddingLeft": 0,
                       "paddingRight": 0,
                       "paddingTop": 0,
+                      "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                       "textDecorationLine": "none",
                     },
                   ]
@@ -3310,6 +3333,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
                   "paddingLeft": 0,
                   "paddingRight": 0,
                   "paddingTop": 0,
+                  "textDecorationColor": "hsla(217, 18%, 45%, 1)",
                   "textDecorationLine": "none",
                 },
               ]
@@ -3536,6 +3560,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(0, 0%, 100%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -3643,6 +3668,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
+                    "textDecorationColor": "hsla(217, 18%, 45%, 1)",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -3705,6 +3731,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
                       "paddingLeft": 0,
                       "paddingRight": 0,
                       "paddingTop": 0,
+                      "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                       "textDecorationLine": "none",
                     },
                   ]
@@ -3749,6 +3776,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
                   "paddingLeft": 0,
                   "paddingRight": 0,
                   "paddingTop": 0,
+                  "textDecorationColor": "hsla(217, 18%, 45%, 1)",
                   "textDecorationLine": "none",
                 },
               ]

@@ -185,6 +185,7 @@ exports[`<Alert /> should render 1`] = `
                   "paddingLeft": 0,
                   "paddingRight": 0,
                   "paddingTop": 0,
+                  "textDecorationColor": "hsla(216, 27%, 36%, 1)",
                   "textDecorationLine": "none",
                 },
               ]
@@ -498,6 +499,7 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
                   "paddingLeft": 0,
                   "paddingRight": 0,
                   "paddingTop": 0,
+                  "textDecorationColor": "hsla(216, 27%, 36%, 1)",
                   "textDecorationLine": "none",
                 },
               ]

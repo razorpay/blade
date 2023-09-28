@@ -109,6 +109,7 @@ exports[`<TextInput /> should render 1`] = `
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
+                    "textDecorationColor": "hsla(217, 18%, 45%, 1)",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -171,6 +172,7 @@ exports[`<TextInput /> should render 1`] = `
                       "paddingLeft": 0,
                       "paddingRight": 0,
                       "paddingTop": 0,
+                      "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                       "textDecorationLine": "none",
                     },
                   ]
@@ -253,6 +255,7 @@ exports[`<TextInput /> should render 1`] = `
                 "paddingRight": 12,
                 "paddingTop": 8,
                 "textAlignVertical": "top",
+                "textDecorationColor": "hsla(216, 27%, 36%, 1)",
                 "textDecorationLine": "none",
                 "width": "100%",
               },
@@ -420,6 +423,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
+                    "textDecorationColor": "hsla(217, 18%, 45%, 1)",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -482,6 +486,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
                       "paddingLeft": 0,
                       "paddingRight": 0,
                       "paddingTop": 0,
+                      "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                       "textDecorationLine": "none",
                     },
                   ]
@@ -651,6 +656,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
+                    "textDecorationColor": "hsla(216, 27%, 36%, 1)",
                     "textDecorationLine": "none",
                   },
                 ]
@@ -716,6 +722,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
                 "paddingRight": 8,
                 "paddingTop": 8,
                 "textAlignVertical": "top",
+                "textDecorationColor": "hsla(216, 27%, 36%, 1)",
                 "textDecorationLine": "none",
                 "width": "100%",
               },
@@ -777,6 +784,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
+                    "textDecorationColor": "hsla(216, 27%, 36%, 1)",
                     "textDecorationLine": "none",
                   },
                 ]

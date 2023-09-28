@@ -140,6 +140,7 @@ exports[`<Indicator /> should render 1`] = `
                 "paddingRight": 0,
                 "paddingTop": 0,
                 "textAlign": "left",
+                "textDecorationColor": "hsla(216, 27%, 36%, 1)",
                 "textDecorationLine": "none",
               },
             ]
@@ -292,6 +293,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
                 "paddingRight": 0,
                 "paddingTop": 0,
                 "textAlign": "left",
+                "textDecorationColor": "hsla(216, 27%, 36%, 1)",
                 "textDecorationLine": "none",
               },
             ]
@@ -433,6 +435,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
                 "paddingRight": 0,
                 "paddingTop": 0,
                 "textAlign": "left",
+                "textDecorationColor": "hsla(216, 27%, 36%, 1)",
                 "textDecorationLine": "none",
               },
             ]
@@ -574,6 +577,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
                 "paddingRight": 0,
                 "paddingTop": 0,
                 "textAlign": "left",
+                "textDecorationColor": "hsla(216, 27%, 36%, 1)",
                 "textDecorationLine": "none",
               },
             ]
@@ -715,6 +719,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
                 "paddingRight": 0,
                 "paddingTop": 0,
                 "textAlign": "left",
+                "textDecorationColor": "hsla(216, 27%, 36%, 1)",
                 "textDecorationLine": "none",
               },
             ]

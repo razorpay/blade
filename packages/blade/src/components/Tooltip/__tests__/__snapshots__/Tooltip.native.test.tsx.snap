@@ -142,6 +142,7 @@ exports[`<Tooltip /> should render 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(0, 0%, 100%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -282,6 +283,7 @@ exports[`<Tooltip /> should render 1`] = `
                   "paddingLeft": 0,
                   "paddingRight": 0,
                   "paddingTop": 0,
+                  "textDecorationColor": "hsla(0, 0%, 100%, 1)",
                   "textDecorationLine": "none",
                 },
               ]
@@ -513,6 +515,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(0, 0%, 100%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -653,6 +656,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
                   "paddingLeft": 0,
                   "paddingRight": 0,
                   "paddingTop": 0,
+                  "textDecorationColor": "hsla(0, 0%, 100%, 1)",
                   "textDecorationLine": "none",
                 },
               ]
@@ -884,6 +888,7 @@ exports[`<Tooltip /> should render with title 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
               "textAlign": "center",
+              "textDecorationColor": "hsla(0, 0%, 100%, 1)",
               "textDecorationLine": "none",
             },
           ]
@@ -1024,6 +1029,7 @@ exports[`<Tooltip /> should render with title 1`] = `
                   "paddingLeft": 0,
                   "paddingRight": 0,
                   "paddingTop": 0,
+                  "textDecorationColor": "hsla(0, 0%, 100%, 1)",
                   "textDecorationLine": "none",
                 },
               ]
@@ -1057,6 +1063,7 @@ exports[`<Tooltip /> should render with title 1`] = `
                   "paddingLeft": 0,
                   "paddingRight": 0,
                   "paddingTop": 0,
+                  "textDecorationColor": "hsla(0, 0%, 100%, 1)",
                   "textDecorationLine": "none",
                 },
               ]

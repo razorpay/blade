@@ -9,6 +9,8 @@ exports[`<Code /> should render Code with color 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(218,19%,81%,1);
+  text-decoration-color: hsla(218,19%,81%,1);
   line-height: 0.875rem;
   margin: 0;
   padding: 0;
@@ -46,6 +48,8 @@ exports[`<Code /> should render Code with default properties 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(216,27%,36%,1);
+  text-decoration-color: hsla(216,27%,36%,1);
   line-height: 0.875rem;
   margin: 0;
   padding: 0;
@@ -84,6 +88,8 @@ exports[`<Code /> should render isHighlighted false Code 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(217,56%,17%,1);
+  text-decoration-color: hsla(217,56%,17%,1);
   line-height: 0.875rem;
   margin: 0;
   padding: 0;
@@ -121,6 +127,8 @@ exports[`<Code /> should render medium Code 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(216,27%,36%,1);
+  text-decoration-color: hsla(216,27%,36%,1);
   line-height: 1.125rem;
   margin: 0;
   padding: 0;
@@ -159,6 +167,8 @@ exports[`<Code /> should render small Code 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(216,27%,36%,1);
+  text-decoration-color: hsla(216,27%,36%,1);
   line-height: 0.875rem;
   margin: 0;
   padding: 0;

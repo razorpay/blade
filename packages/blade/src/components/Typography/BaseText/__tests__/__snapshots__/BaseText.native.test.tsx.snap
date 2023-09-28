@@ -33,6 +33,7 @@ exports[`<BaseText /> should render regular text 1`] = `
           "paddingLeft": 0,
           "paddingRight": 0,
           "paddingTop": 0,
+          "textDecorationColor": "hsla(0, 0%, 100%, 1)",
           "textDecorationLine": "none",
         },
       ]
@@ -77,6 +78,7 @@ exports[`<BaseText /> should render text in italics style with line-through 1`] 
           "paddingLeft": 0,
           "paddingRight": 0,
           "paddingTop": 0,
+          "textDecorationColor": "hsla(0, 0%, 100%, 1)",
           "textDecorationLine": "line-through",
         },
       ]
@@ -116,6 +118,7 @@ exports[`<BaseText /> should render text with default properties 1`] = `
           "paddingLeft": 0,
           "paddingRight": 0,
           "paddingTop": 0,
+          "textDecorationColor": "hsla(217, 56%, 17%, 1)",
           "textDecorationLine": "none",
         },
       ]

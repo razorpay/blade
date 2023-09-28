@@ -59,6 +59,8 @@ exports[`<Counter /> should render Counter with default props 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(216,27%,36%,1);
+  text-decoration-color: hsla(216,27%,36%,1);
   line-height: 1rem;
   text-align: center;
   margin: 0;
@@ -154,6 +156,8 @@ exports[`<Counter /> should render high contrast blue color Counter 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(0,0%,100%,1);
+  text-decoration-color: hsla(0,0%,100%,1);
   line-height: 1rem;
   text-align: center;
   margin: 0;
@@ -249,6 +253,8 @@ exports[`<Counter /> should render high contrast blue variant Counter 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(0,0%,100%,1);
+  text-decoration-color: hsla(0,0%,100%,1);
   line-height: 1rem;
   text-align: center;
   margin: 0;
@@ -344,6 +350,8 @@ exports[`<Counter /> should render high contrast information color Counter 1`] =
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(0,0%,100%,1);
+  text-decoration-color: hsla(0,0%,100%,1);
   line-height: 1rem;
   text-align: center;
   margin: 0;
@@ -439,6 +447,8 @@ exports[`<Counter /> should render high contrast information variant Counter 1`]
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(0,0%,100%,1);
+  text-decoration-color: hsla(0,0%,100%,1);
   line-height: 1rem;
   text-align: center;
   margin: 0;
@@ -534,6 +544,8 @@ exports[`<Counter /> should render high contrast negative color Counter 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(0,0%,100%,1);
+  text-decoration-color: hsla(0,0%,100%,1);
   line-height: 1rem;
   text-align: center;
   margin: 0;
@@ -629,6 +641,8 @@ exports[`<Counter /> should render high contrast negative variant Counter 1`] = 
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(0,0%,100%,1);
+  text-decoration-color: hsla(0,0%,100%,1);
   line-height: 1rem;
   text-align: center;
   margin: 0;
@@ -724,6 +738,8 @@ exports[`<Counter /> should render high contrast neutral color Counter 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(0,0%,100%,1);
+  text-decoration-color: hsla(0,0%,100%,1);
   line-height: 1rem;
   text-align: center;
   margin: 0;
@@ -819,6 +835,8 @@ exports[`<Counter /> should render high contrast neutral variant Counter 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(0,0%,100%,1);
+  text-decoration-color: hsla(0,0%,100%,1);
   line-height: 1rem;
   text-align: center;
   margin: 0;
@@ -914,6 +932,8 @@ exports[`<Counter /> should render high contrast notice color Counter 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(0,0%,100%,1);
+  text-decoration-color: hsla(0,0%,100%,1);
   line-height: 1rem;
   text-align: center;
   margin: 0;
@@ -1009,6 +1029,8 @@ exports[`<Counter /> should render high contrast notice variant Counter 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(0,0%,100%,1);
+  text-decoration-color: hsla(0,0%,100%,1);
   line-height: 1rem;
   text-align: center;
   margin: 0;
@@ -1104,6 +1126,8 @@ exports[`<Counter /> should render high contrast positive color Counter 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(0,0%,100%,1);
+  text-decoration-color: hsla(0,0%,100%,1);
   line-height: 1rem;
   text-align: center;
   margin: 0;
@@ -1199,6 +1223,8 @@ exports[`<Counter /> should render high contrast positive variant Counter 1`] = 
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(0,0%,100%,1);
+  text-decoration-color: hsla(0,0%,100%,1);
   line-height: 1rem;
   text-align: center;
   margin: 0;
@@ -1294,6 +1320,8 @@ exports[`<Counter /> should render large size Counter 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(216,27%,36%,1);
+  text-decoration-color: hsla(216,27%,36%,1);
   line-height: 1.25rem;
   text-align: center;
   margin: 0;
@@ -1389,6 +1417,8 @@ exports[`<Counter /> should render low contrast blue color Counter 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(218,89%,51%,1);
+  text-decoration-color: hsla(218,89%,51%,1);
   line-height: 1rem;
   text-align: center;
   margin: 0;
@@ -1484,6 +1514,8 @@ exports[`<Counter /> should render low contrast blue variant Counter 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(218,89%,51%,1);
+  text-decoration-color: hsla(218,89%,51%,1);
   line-height: 1rem;
   text-align: center;
   margin: 0;
@@ -1579,6 +1611,8 @@ exports[`<Counter /> should render low contrast information color Counter 1`] = 
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(193,100%,35%,1);
+  text-decoration-color: hsla(193,100%,35%,1);
   line-height: 1rem;
   text-align: center;
   margin: 0;
@@ -1674,6 +1708,8 @@ exports[`<Counter /> should render low contrast information variant Counter 1`] 
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(193,100%,35%,1);
+  text-decoration-color: hsla(193,100%,35%,1);
   line-height: 1rem;
   text-align: center;
   margin: 0;
@@ -1769,6 +1805,8 @@ exports[`<Counter /> should render low contrast negative color Counter 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(8,73%,47%,1);
+  text-decoration-color: hsla(8,73%,47%,1);
   line-height: 1rem;
   text-align: center;
   margin: 0;
@@ -1864,6 +1902,8 @@ exports[`<Counter /> should render low contrast negative variant Counter 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(8,73%,47%,1);
+  text-decoration-color: hsla(8,73%,47%,1);
   line-height: 1rem;
   text-align: center;
   margin: 0;
@@ -1959,6 +1999,8 @@ exports[`<Counter /> should render low contrast neutral color Counter 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(216,27%,36%,1);
+  text-decoration-color: hsla(216,27%,36%,1);
   line-height: 1rem;
   text-align: center;
   margin: 0;
@@ -2054,6 +2096,8 @@ exports[`<Counter /> should render low contrast neutral variant Counter 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(216,27%,36%,1);
+  text-decoration-color: hsla(216,27%,36%,1);
   line-height: 1rem;
   text-align: center;
   margin: 0;
@@ -2149,6 +2193,8 @@ exports[`<Counter /> should render low contrast notice color Counter 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(38,97%,38%,1);
+  text-decoration-color: hsla(38,97%,38%,1);
   line-height: 1rem;
   text-align: center;
   margin: 0;
@@ -2244,6 +2290,8 @@ exports[`<Counter /> should render low contrast notice variant Counter 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(38,97%,38%,1);
+  text-decoration-color: hsla(38,97%,38%,1);
   line-height: 1rem;
   text-align: center;
   margin: 0;
@@ -2339,6 +2387,8 @@ exports[`<Counter /> should render low contrast positive color Counter 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(160,100%,26%,1);
+  text-decoration-color: hsla(160,100%,26%,1);
   line-height: 1rem;
   text-align: center;
   margin: 0;
@@ -2434,6 +2484,8 @@ exports[`<Counter /> should render low contrast positive variant Counter 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(160,100%,26%,1);
+  text-decoration-color: hsla(160,100%,26%,1);
   line-height: 1rem;
   text-align: center;
   margin: 0;
@@ -2529,6 +2581,8 @@ exports[`<Counter /> should render medium size Counter 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(216,27%,36%,1);
+  text-decoration-color: hsla(216,27%,36%,1);
   line-height: 1rem;
   text-align: center;
   margin: 0;
@@ -2624,6 +2678,8 @@ exports[`<Counter /> should render small size Counter 1`] = `
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
+  -webkit-text-decoration-color: hsla(216,27%,36%,1);
+  text-decoration-color: hsla(216,27%,36%,1);
   line-height: 1rem;
   text-align: center;
   margin: 0;

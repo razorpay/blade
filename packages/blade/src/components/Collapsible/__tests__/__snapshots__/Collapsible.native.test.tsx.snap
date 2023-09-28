@@ -176,6 +176,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                   "paddingRight": 0,
                   "paddingTop": 0,
                   "textAlign": "center",
+                  "textDecorationColor": "hsla(0, 0%, 100%, 1)",
                   "textDecorationLine": "none",
                 },
               ]
@@ -272,6 +273,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                         "paddingLeft": 0,
                         "paddingRight": 0,
                         "paddingTop": 0,
+                        "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                         "textDecorationLine": "none",
                       },
                     ]
@@ -329,6 +331,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                             "paddingLeft": 0,
                             "paddingRight": 0,
                             "paddingTop": 0,
+                            "textDecorationColor": "hsla(160, 100%, 26%, 1)",
                             "textDecorationLine": "none",
                           },
                         ]
@@ -356,6 +359,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                             "paddingLeft": 0,
                             "paddingRight": 0,
                             "paddingTop": 0,
+                            "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                             "textDecorationLine": "none",
                           },
                         ]
@@ -385,6 +389,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                               "paddingLeft": 0,
                               "paddingRight": 0,
                               "paddingTop": 0,
+                              "textDecorationColor": "hsla(160, 100%, 26%, 1)",
                               "textDecorationLine": "none",
                             },
                           ]
@@ -417,6 +422,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                               "paddingLeft": 0,
                               "paddingRight": 0,
                               "paddingTop": 0,
+                              "textDecorationColor": "hsla(160, 100%, 26%, 1)",
                               "textDecorationLine": "none",
                             },
                           ]
@@ -571,6 +577,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                   "paddingRight": 0,
                   "paddingTop": 0,
                   "textAlign": "center",
+                  "textDecorationColor": "hsla(218, 89%, 51%, 1)",
                   "textDecorationLine": "none",
                 },
               ]
@@ -752,6 +759,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                         "paddingLeft": 0,
                         "paddingRight": 0,
                         "paddingTop": 0,
+                        "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                         "textDecorationLine": "none",
                       },
                     ]
@@ -809,6 +817,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                             "paddingLeft": 0,
                             "paddingRight": 0,
                             "paddingTop": 0,
+                            "textDecorationColor": "hsla(160, 100%, 26%, 1)",
                             "textDecorationLine": "none",
                           },
                         ]
@@ -836,6 +845,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                             "paddingLeft": 0,
                             "paddingRight": 0,
                             "paddingTop": 0,
+                            "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                             "textDecorationLine": "none",
                           },
                         ]
@@ -865,6 +875,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                               "paddingLeft": 0,
                               "paddingRight": 0,
                               "paddingTop": 0,
+                              "textDecorationColor": "hsla(160, 100%, 26%, 1)",
                               "textDecorationLine": "none",
                             },
                           ]
@@ -897,6 +908,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                               "paddingLeft": 0,
                               "paddingRight": 0,
                               "paddingTop": 0,
+                              "textDecorationColor": "hsla(160, 100%, 26%, 1)",
                               "textDecorationLine": "none",
                             },
                           ]

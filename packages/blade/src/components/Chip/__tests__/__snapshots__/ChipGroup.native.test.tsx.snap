@@ -94,6 +94,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                   "paddingLeft": 0,
                   "paddingRight": 0,
                   "paddingTop": 0,
+                  "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                   "textDecorationLine": "none",
                 },
               ]
@@ -308,6 +309,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                                 "paddingLeft": 0,
                                 "paddingRight": 0,
                                 "paddingTop": 0,
+                                "textDecorationColor": "hsla(216, 27%, 36%, 1)",
                                 "textDecorationLine": "none",
                               },
                             ]
@@ -513,6 +515,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                                 "paddingLeft": 0,
                                 "paddingRight": 0,
                                 "paddingTop": 0,
+                                "textDecorationColor": "hsla(216, 27%, 36%, 1)",
                                 "textDecorationLine": "none",
                               },
                             ]
@@ -718,6 +721,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                                 "paddingLeft": 0,
                                 "paddingRight": 0,
                                 "paddingTop": 0,
+                                "textDecorationColor": "hsla(216, 27%, 36%, 1)",
                                 "textDecorationLine": "none",
                               },
                             ]
@@ -834,6 +838,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                   "paddingLeft": 0,
                   "paddingRight": 0,
                   "paddingTop": 0,
+                  "textDecorationColor": "hsla(217, 56%, 17%, 1)",
                   "textDecorationLine": "none",
                 },
               ]
@@ -1049,6 +1054,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                                 "paddingLeft": 0,
                                 "paddingRight": 0,
                                 "paddingTop": 0,
+                                "textDecorationColor": "hsla(216, 27%, 36%, 1)",
                                 "textDecorationLine": "none",
                               },
                             ]
@@ -1255,6 +1261,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                                 "paddingLeft": 0,
                                 "paddingRight": 0,
                                 "paddingTop": 0,
+                                "textDecorationColor": "hsla(216, 27%, 36%, 1)",
                                 "textDecorationLine": "none",
                               },
                             ]
@@ -1461,6 +1468,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                                 "paddingLeft": 0,
                                 "paddingRight": 0,
                                 "paddingTop": 0,
+                                "textDecorationColor": "hsla(216, 27%, 36%, 1)",
                                 "textDecorationLine": "none",
                               },
                             ]

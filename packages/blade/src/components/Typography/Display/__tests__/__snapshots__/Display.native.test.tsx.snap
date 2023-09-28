@@ -35,6 +35,7 @@ exports[`<Display /> should render Display with color 1`] = `
           "paddingLeft": 0,
           "paddingRight": 0,
           "paddingTop": 0,
+          "textDecorationColor": "hsla(220, 30%, 96%, 1)",
           "textDecorationLine": "none",
         },
       ]
@@ -80,6 +81,7 @@ exports[`<Display /> should render Display with default properties 1`] = `
           "paddingLeft": 0,
           "paddingRight": 0,
           "paddingTop": 0,
+          "textDecorationColor": "hsla(217, 56%, 17%, 1)",
           "textDecorationLine": "none",
         },
       ]
@@ -125,6 +127,7 @@ exports[`<Display /> should render Display with mixed color 1`] = `
           "paddingLeft": 0,
           "paddingRight": 0,
           "paddingTop": 0,
+          "textDecorationColor": "hsla(217, 56%, 17%, 1)",
           "textDecorationLine": "none",
         },
       ]
@@ -159,6 +162,7 @@ exports[`<Display /> should render Display with mixed color 1`] = `
             "paddingLeft": 0,
             "paddingRight": 0,
             "paddingTop": 0,
+            "textDecorationColor": "hsla(195, 100%, 31%, 1)",
             "textDecorationLine": "none",
           },
         ]
@@ -205,6 +209,7 @@ exports[`<Display /> should render Display with variant "large" 1`] = `
           "paddingLeft": 0,
           "paddingRight": 0,
           "paddingTop": 0,
+          "textDecorationColor": "hsla(217, 56%, 17%, 1)",
           "textDecorationLine": "none",
         },
       ]
@@ -250,6 +255,7 @@ exports[`<Display /> should render Display with variant "medium" 1`] = `
           "paddingLeft": 0,
           "paddingRight": 0,
           "paddingTop": 0,
+          "textDecorationColor": "hsla(217, 56%, 17%, 1)",
           "textDecorationLine": "none",
         },
       ]
@@ -295,6 +301,7 @@ exports[`<Display /> should render Display with variant "small" 1`] = `
           "paddingLeft": 0,
           "paddingRight": 0,
           "paddingTop": 0,
+          "textDecorationColor": "hsla(217, 56%, 17%, 1)",
           "textDecorationLine": "none",
         },
       ]
@@ -340,6 +347,7 @@ exports[`<Display /> should render Display with variant "small" and contrast "hi
           "paddingLeft": 0,
           "paddingRight": 0,
           "paddingTop": 0,
+          "textDecorationColor": "hsla(0, 0%, 100%, 1)",
           "textDecorationLine": "none",
         },
       ]
@@ -385,6 +393,7 @@ exports[`<Display /> should render Display with variant "xlarge" 1`] = `
           "paddingLeft": 0,
           "paddingRight": 0,
           "paddingTop": 0,
+          "textDecorationColor": "hsla(217, 56%, 17%, 1)",
           "textDecorationLine": "none",
         },
       ]
