@@ -38,7 +38,7 @@ const getHoverStyles = ({
 const StyledInput = styled.input<HoverProps>(
   ({ theme, isChecked, isDisabled, hasError, hoverTokens }) => ({
     ...screenReaderStyles,
-    '&:focus + div': {
+    '&:focus-visible + div': {
       // TODO: Replace with focus outline token
       outline: `1px solid ${theme.colors.surface.background.level1.lowContrast}`,
       boxShadow: `0px 0px 0px 4px ${theme.colors.brand.primary[400]}`,

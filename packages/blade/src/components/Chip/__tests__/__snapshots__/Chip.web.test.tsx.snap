@@ -189,7 +189,7 @@ exports[`<Chip /> should render chip 1`] = `
   word-wrap: normal;
 }
 
-.c9:focus + div {
+.c9:focus-visible + div {
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
@@ -633,7 +633,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
   word-wrap: normal;
 }
 
-.c9:focus + div {
+.c9:focus-visible + div {
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
@@ -1179,7 +1179,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   word-wrap: normal;
 }
 
-.c9:focus + div {
+.c9:focus-visible + div {
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
@@ -1201,7 +1201,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   word-wrap: normal;
 }
 
-.c15:focus + div {
+.c15:focus-visible + div {
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }

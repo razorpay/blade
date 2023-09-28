@@ -315,7 +315,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   color: hsla(217,18%,45%,1);
 }
 
-.c22:focus {
+.c22:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   color: hsla(217,18%,45%,1);

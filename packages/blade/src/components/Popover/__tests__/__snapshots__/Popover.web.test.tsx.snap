@@ -209,7 +209,7 @@ exports[`<Popover /> should render 1`] = `
   color: hsla(217,18%,45%,1);
 }
 
-.c8:focus {
+.c8:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   color: hsla(217,18%,45%,1);
@@ -661,7 +661,7 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
   color: hsla(217,18%,45%,1);
 }
 
-.c8:focus {
+.c8:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   color: hsla(217,18%,45%,1);
@@ -1016,7 +1016,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
   color: hsla(217,18%,45%,1);
 }
 
-.c11:focus {
+.c11:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   color: hsla(217,18%,45%,1);
