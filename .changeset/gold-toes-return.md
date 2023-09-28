@@ -18,4 +18,4 @@ feat: add `color` prop to `Alert`, `Badge`, `Button`, `Chip`, `ChipGroup`, `Coun
 
 #### Jest Snapshots
 
-Your existing component snapshots may update, there is no change in the functionality of components. Feel free to commit the updated the snapshots.
+Your existing component snapshots may update, there is no change in the visual appearance of components. Feel free to commit the updated snapshots.
