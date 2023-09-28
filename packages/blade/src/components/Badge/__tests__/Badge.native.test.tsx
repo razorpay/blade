@@ -7,7 +7,7 @@ beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
 
 const colors: BadgeProps['color'][] = [
-  'blue',
+  'default',
   'information',
   'negative',
   'neutral',

@@ -195,7 +195,7 @@ const getProps = ({
   if (variant === 'tertiary' && color !== 'default' && color !== 'white') {
     throwBladeError({
       moduleName: 'BaseButton',
-      message: `Tertiary buttons can only be used with default or white color. You passed ${color}`,
+      message: `Tertiary variant can only be used with color: "default" or "white" but received "${color}"`,
     });
   }
 

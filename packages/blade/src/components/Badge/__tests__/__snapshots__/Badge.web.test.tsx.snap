@@ -328,7 +328,7 @@ exports[`<Badge /> should render Badge with default props 1`] = `
 </div>
 `;
 
-exports[`<Badge /> should render high contrast blue color Badge 1`] = `
+exports[`<Badge /> should render high contrast blue variant Badge 1`] = `
 .c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -424,7 +424,7 @@ exports[`<Badge /> should render high contrast blue color Badge 1`] = `
 </div>
 `;
 
-exports[`<Badge /> should render high contrast blue variant Badge 1`] = `
+exports[`<Badge /> should render high contrast default color Badge 1`] = `
 .c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -1576,7 +1576,7 @@ exports[`<Badge /> should render large size Badge 1`] = `
 </div>
 `;
 
-exports[`<Badge /> should render low contrast blue color Badge 1`] = `
+exports[`<Badge /> should render low contrast blue variant Badge 1`] = `
 .c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -1672,7 +1672,7 @@ exports[`<Badge /> should render low contrast blue color Badge 1`] = `
 </div>
 `;
 
-exports[`<Badge /> should render low contrast blue variant Badge 1`] = `
+exports[`<Badge /> should render low contrast default color Badge 1`] = `
 .c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;

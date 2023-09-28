@@ -185,6 +185,19 @@ describe('<BaseButton />', () => {
     });
   });
 
+  it('should throw error if tertiary variant is passed with positive color', () => {
+    const buttonText = 'Pay Now';
+    expect(() =>
+      renderWithTheme(
+        <BaseButton variant="tertiary" color="positive">
+          {buttonText}
+        </BaseButton>,
+      ),
+    ).toThrowErrorMatchingInlineSnapshot(
+      `"[Blade: BaseButton]: Tertiary variant can only be used with color: "default" or "white" but received "positive""`,
+    );
+  });
+
   it('should have accessibilityLabel', () => {
     const { getByRole } = renderWithTheme(
       <BaseButton accessibilityProps={{ label: 'Close' }} icon={CloseIcon}>

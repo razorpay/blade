@@ -3,7 +3,7 @@ import { Counter } from '../Counter';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 const colors: CounterProps['color'][] = [
-  'blue',
+  'default',
   'information',
   'negative',
   'neutral',
