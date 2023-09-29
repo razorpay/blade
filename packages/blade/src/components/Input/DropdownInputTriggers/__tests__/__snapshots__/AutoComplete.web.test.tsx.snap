@@ -1118,9 +1118,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
       data-blade-component="base-box"
     >
       <div
-        aria-hidden="true"
         class="c1"
-        data-aria-hidden="true"
         data-blade-component="base-box"
       >
         <div
@@ -1284,19 +1282,8 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
           </div>
         </div>
       </div>
-      <span
-        aria-hidden="true"
-        data-aria-hidden="true"
-        data-floating-ui-focus-guard=""
-        data-type="inside"
-        role="button"
-        style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: fixed; white-space: nowrap; width: 1px; top: 0px; left: 0px;"
-        tabindex="0"
-      />
       <div
-        aria-hidden="true"
         class="c23 c24"
-        data-aria-hidden="true"
         data-blade-component="base-box"
         data-testid="bottomsheet-backdrop"
         opacity="1"
@@ -1308,7 +1295,6 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
         data-testid="bottomsheet-surface"
         role="dialog"
         style="opacity: 1; pointer-events: all; height: 652.8px; bottom: 0px; z-index: 100;"
-        tabindex="-1"
       >
         <div
           class="c26"
@@ -1620,15 +1606,6 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
           </div>
         </div>
       </div>
-      <span
-        aria-hidden="true"
-        data-aria-hidden="true"
-        data-floating-ui-focus-guard=""
-        data-type="inside"
-        role="button"
-        style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: fixed; white-space: nowrap; width: 1px; top: 0px; left: 0px;"
-        tabindex="0"
-      />
     </div>
   </div>
 </div>

@@ -14,7 +14,9 @@ import {
 } from './';
 
 import {
+  CheckIcon,
   ClockIcon,
+  CloseIcon,
   CustomersIcon,
   InfoIcon,
   ThumbsUpIcon,
@@ -29,7 +31,7 @@ import {
 } from '~components/ActionList';
 import BaseBox from '~components/Box/BaseBox';
 import { Button } from '~components/Button';
-import { Dropdown } from '~components/Dropdown';
+import { Dropdown, DropdownButton } from '~components/Dropdown';
 import { SelectInput } from '~components/Input/DropdownInputTriggers';
 import { Heading, Text, Title } from '~components/Typography';
 import { Badge } from '~components/Badge';
@@ -380,6 +382,59 @@ const WithDropdownSingleSelectTemplate: ComponentStory<typeof BottomSheetCompone
 };
 
 export const WithDropdownSingleSelect = WithDropdownSingleSelectTemplate.bind({});
+
+const WithDropdownButtonTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
+  const [status, setStatus] = React.useState<string | undefined>('approve');
+
+  return (
+    <Box minHeight="200px">
+      <Dropdown>
+        <DropdownButton variant="tertiary">Status: {status ?? ''}</DropdownButton>
+        <BottomSheetComponent>
+          <BottomSheetBody>
+            <BottomSheetHeader />
+            <ActionList>
+              <ActionListItem
+                onClick={({ name, value }) => {
+                  console.log({ name, value });
+                  setStatus(name);
+                }}
+                leading={<ActionListItemIcon icon={CheckIcon} />}
+                isSelected={status === 'approve'}
+                title="Approve"
+                value="approve"
+              />
+              <ActionListItem
+                onClick={({ name, value }) => {
+                  console.log({ name, value });
+                  setStatus(name);
+                }}
+                leading={<ActionListItemIcon icon={ClockIcon} />}
+                isSelected={status === 'in-progress'}
+                title="In Progress"
+                value="in-progress"
+              />
+
+              <ActionListItem
+                onClick={({ name, value }) => {
+                  console.log({ name, value });
+                  setStatus(name);
+                }}
+                leading={<ActionListItemIcon icon={CloseIcon} />}
+                isSelected={status === 'reject'}
+                title="Reject"
+                value="reject"
+                intent="negative"
+              />
+            </ActionList>
+          </BottomSheetBody>
+        </BottomSheetComponent>
+      </Dropdown>
+    </Box>
+  );
+};
+
+export const WithDropdownButton = WithDropdownButtonTemplate.bind({});
 
 const WithDropdownMultiSelectTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
   return (

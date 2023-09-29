@@ -9,7 +9,7 @@ import { Counter } from '../../Counter';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { Text } from '~components/Typography';
 import { Button } from '~components/Button';
-import { Dropdown } from '~components/Dropdown';
+import { Dropdown, DropdownButton } from '~components/Dropdown';
 import { SelectInput } from '~components/Input/DropdownInputTriggers';
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { Badge } from '~components/Badge';
@@ -57,7 +57,35 @@ const MultiSelectContent = (): React.ReactElement => {
 describe('<BottomSheet />', () => {
   const viewport = mockViewport({ width: '320px', height: '568px' });
 
-  it('should render Header/Footer/Body properly', () => {
+  it('should render Header/Footer/Body properly on closed state', () => {
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
+
+    const Example = (): React.ReactElement => {
+      return (
+        <BottomSheet isOpen={false}>
+          <BottomSheetHeader
+            title="Address Details"
+            subtitle="Saving addresses will improve your checkout experience"
+            trailing={<Badge variant="positive">Action Needed</Badge>}
+            titleSuffix={<Counter variant="positive" value={2} />}
+          />
+          <BottomSheetBody>
+            <Text>BottomSheet body</Text>
+          </BottomSheetBody>
+          <BottomSheetFooter>
+            <Button isFullWidth variant="secondary">
+              Remove address
+            </Button>
+          </BottomSheetFooter>
+        </BottomSheet>
+      );
+    };
+    const { baseElement } = renderWithTheme(<Example />);
+    expect(baseElement).toMatchSnapshot();
+    mockConsoleError.mockRestore();
+  });
+
+  it('should render Header/Footer/Body properly on opened state', () => {
     const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
 
     const Example = (): React.ReactElement => {
@@ -80,8 +108,8 @@ describe('<BottomSheet />', () => {
         </BottomSheet>
       );
     };
-    const { container } = renderWithTheme(<Example />);
-    expect(container).toMatchSnapshot();
+    const { baseElement } = renderWithTheme(<Example />);
+    expect(baseElement).toMatchSnapshot();
     mockConsoleError.mockRestore();
   });
 
@@ -96,8 +124,8 @@ describe('<BottomSheet />', () => {
         </BottomSheet>
       );
     };
-    const { container } = renderWithTheme(<Example />);
-    expect(container).toMatchSnapshot();
+    const { baseElement } = renderWithTheme(<Example />);
+    expect(baseElement).toMatchSnapshot();
   });
 
   it('should open/close BottomSheet', async () => {
@@ -119,10 +147,10 @@ describe('<BottomSheet />', () => {
         </>
       );
     };
-    const { getByText, queryByText, queryByTestId } = renderWithTheme(<Example />);
+    const { getByRole, queryByText, queryByTestId } = renderWithTheme(<Example />);
 
     expect(queryByText('BottomSheet body')).not.toBeInTheDocument();
-    await user.click(getByText(/open/i));
+    await user.click(getByRole('button', { name: /open/i }));
     await sleep(250);
     expect(queryByText('BottomSheet body')).toBeInTheDocument();
     await user.click(queryByTestId('bottomsheet-backdrop')!);
@@ -221,12 +249,12 @@ describe('<BottomSheet />', () => {
         </Dropdown>
       );
     };
-    const { queryByTestId, getByRole, getByLabelText } = renderWithTheme(<Example />);
+    const { queryByTestId, getByRole } = renderWithTheme(<Example />);
 
     // open / close by clicking the select
     expect(queryByTestId('bottomsheet-body')).not.toBeVisible();
-    expect(getByLabelText('Select Action')).toBeInTheDocument();
-    await user.click(getByLabelText('Select Action'));
+    expect(getByRole('combobox', { name: 'Select Action' })).toBeInTheDocument();
+    await user.click(getByRole('combobox', { name: 'Select Action' }));
     await sleep(250);
     expect(queryByTestId('bottomsheet-body')).toBeVisible();
     await user.click(queryByTestId('bottomsheet-backdrop')!);
@@ -234,21 +262,21 @@ describe('<BottomSheet />', () => {
     expect(queryByTestId('bottomsheet-body')).not.toBeVisible();
 
     // close by selecting an element & assert the select's value
-    await user.click(getByLabelText('Select Action'));
+    await user.click(getByRole('combobox', { name: 'Select Action' }));
     await sleep(250);
     expect(queryByTestId('bottomsheet-body')).toBeVisible();
     await user.click(getByRole('option', { name: 'Settings' }));
     await sleep(250);
-    expect(getByLabelText('Select Action')).toHaveTextContent('Settings');
+    expect(getByRole('combobox', { name: 'Select Action' })).toHaveTextContent('Settings');
     expect(queryByTestId('bottomsheet-body')).not.toBeVisible();
 
     // check that cancelling should not update select's value
-    await user.click(getByLabelText('Select Action'));
+    await user.click(getByRole('combobox', { name: 'Select Action' }));
     await sleep(250);
     expect(queryByTestId('bottomsheet-body')).toBeVisible();
     await user.click(getByRole('button', { name: /Close/i })!);
     await sleep(250);
-    expect(getByLabelText('Select Action')).toHaveTextContent('Settings');
+    expect(getByRole('combobox', { name: 'Select Action' })).toHaveTextContent('Settings');
     expect(queryByTestId('bottomsheet-body')).not.toBeVisible();
     mockConsoleError.mockRestore();
   });
@@ -272,11 +300,9 @@ describe('<BottomSheet />', () => {
         </Dropdown>
       );
     };
-    const { queryByTestId, getByRole, getByLabelText, queryAllByLabelText } = renderWithTheme(
-      <Example />,
-    );
+    const { queryByTestId, getByRole, queryAllByLabelText } = renderWithTheme(<Example />);
 
-    const selectInput = getByLabelText('Select Fruit');
+    const selectInput = getByRole('combobox', { name: 'Select Fruit' });
 
     // open the dropdown
     expect(queryByTestId('bottomsheet-body')).not.toBeVisible();
@@ -297,7 +323,7 @@ describe('<BottomSheet />', () => {
     expect(queryAllByLabelText('Close Orange tag')[0]).toBeInTheDocument();
 
     // close the sheet
-    await user.click(getByRole('button', { name: /Close/i })!);
+    await user.click(getByRole('button', { name: /Close$/i })!);
     expect(queryByTestId('bottomsheet-body')).not.toBeVisible();
 
     expect(queryAllByLabelText('Close Apple tag')[0]).toBeInTheDocument();
@@ -324,6 +350,86 @@ describe('<BottomSheet />', () => {
     ).not.toBeChecked();
     mockConsoleError.mockRestore();
   }, 10000);
+
+  it('should compose with DropdownButton', async () => {
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
+
+    const user = userEvents.setup();
+
+    const Example = (): React.ReactElement => {
+      const [status, setStatus] = React.useState<string | undefined>('approve');
+
+      return (
+        <Dropdown>
+          <DropdownButton variant="tertiary">Status: {status ?? ''}</DropdownButton>
+          <BottomSheet>
+            <BottomSheetBody>
+              <BottomSheetHeader />
+              <ActionList>
+                <ActionListItem
+                  onClick={({ name, value }) => {
+                    console.log({ name, value });
+                    setStatus(name);
+                  }}
+                  isSelected={status === 'approve'}
+                  title="Approve"
+                  value="approve"
+                />
+                <ActionListItem
+                  onClick={({ name, value }) => {
+                    console.log({ name, value });
+                    setStatus(name);
+                  }}
+                  isSelected={status === 'in-progress'}
+                  title="In Progress"
+                  value="in-progress"
+                />
+                <ActionListItem
+                  onClick={({ name, value }) => {
+                    console.log({ name, value });
+                    setStatus(name);
+                  }}
+                  isSelected={status === 'reject'}
+                  title="Reject"
+                  value="reject"
+                  intent="negative"
+                />
+              </ActionList>
+            </BottomSheetBody>
+          </BottomSheet>
+        </Dropdown>
+      );
+    };
+    const { baseElement, queryByTestId, getByRole } = renderWithTheme(<Example />);
+    expect(baseElement).toMatchSnapshot();
+
+    // open / close by clicking the select
+    expect(queryByTestId('bottomsheet-body')).not.toBeVisible();
+    expect(getByRole('button', { name: 'Status: approve' })).toBeInTheDocument();
+    await user.click(getByRole('button', { name: 'Status: approve' }));
+    await sleep(250);
+    expect(queryByTestId('bottomsheet-body')).toBeVisible();
+    await user.click(queryByTestId('bottomsheet-backdrop')!);
+    await sleep(250);
+    expect(queryByTestId('bottomsheet-body')).not.toBeVisible();
+
+    // close by selecting an element & assert the select's value
+    await user.click(getByRole('button', { name: 'Status: approve' }));
+    await sleep(250);
+    expect(queryByTestId('bottomsheet-body')).toBeVisible();
+    await user.click(getByRole('menuitem', { name: 'In Progress' }));
+    await sleep(250);
+    expect(queryByTestId('bottomsheet-body')).not.toBeVisible();
+
+    // check that cancelling should not update select's value
+    await user.click(getByRole('button', { name: 'Status: in-progress' }));
+    await sleep(250);
+    expect(queryByTestId('bottomsheet-body')).toBeVisible();
+    await user.click(getByRole('button', { name: /Close/i })!);
+    await sleep(250);
+    expect(queryByTestId('bottomsheet-body')).not.toBeVisible();
+    mockConsoleError.mockRestore();
+  });
 
   test('BottomSheetHeader trailing should not allow any random component', () => {
     const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
