@@ -12,8 +12,9 @@ A tab is a navigation component used in the interface to switch between differen
 - [`TabsPanel` API](#tabspanel-api)
   - [Examples:](#examples)
 - [Basic](#basic)
-    - [Controlled, Uncontrolled](#controlled-uncontrolled)
+  - [Controlled, Uncontrolled](#controlled-uncontrolled)
 - [Filled Variant](#filled-variant)
+- [With Tooltip](#with-tooltip)
 - [Motion](#motion)
 - [Accessibility](#accessibility)
 - [Open Questions](#open-questions)
@@ -99,11 +100,11 @@ type TabsItemProps = {
    */
   leading?: React.ReactNode;
   /**
-   * Trailing element of the tab item. 
+   * Trailing element of the tab item.
    * Can be used to render an badge/counter.
    */
   trailing?: React.ReactNode;
-}
+};
 ```
 
 ## `TabsPanel` API
@@ -118,7 +119,7 @@ type TabsPanelProps = {
    * The content of the tab panel.
    */
   children: React.ReactNode;
-}
+};
 ```
 
 ### Examples:
@@ -193,30 +194,68 @@ const Uncontrolled = () => {
 };
 ```
 
+## Vertical Orientation
+
+```jsx
+<Tabs orientation="vertical">
+  <TabsList>
+    <TabsItem value="all-expenses" leading={RupeeIcon}>
+      All Expenses
+    </TabsItem>
+    <TabsItem
+      value="categories"
+      leading={EditIcon}
+      trailing={<Counter value={26} variant="notice" />}
+    >
+      Categorise
+    </TabsItem>
+    <TabsItem
+      value="review"
+      leading={TransactionIcon}
+      trailing={<Counter value={99} variant="information" />}
+    >
+      Review
+    </TabsItem>
+    <TabsItem value="synced" leading={CheckCircleIcon}>
+      Synced
+    </TabsItem>
+    <TabsItem
+      value="synced-fail"
+      leading={WarningIcon}
+      trailing={<Counter value={3} variant="negative" />}
+    >
+      Synced Failed
+    </TabsItem>
+    <TabsItem value="excluded" leading={SlashIcon}>
+      Excluded
+    </TabsItem>
+  </TabsList>
+  ...
+</Tabs>
+```
+
+<img src="./example-4.png" width="380" alt="Tabs Example 2" />
+
 ## Filled Variant
 
 ```jsx
-const FilledVariant = () => {
-  return (
-    <Tabs defaultValue="refunds">
-      <TabsList>
-        <TabsItem value="week">Week</TabsItem>
-        <TabsItem value="month">Month</TabsItem>
-        <TabsItem value="custom">Custom</TabsItem>
-      </TabsList>
+<Tabs defaultValue="refunds">
+  <TabsList>
+    <TabsItem value="week">Week</TabsItem>
+    <TabsItem value="month">Month</TabsItem>
+    <TabsItem value="custom">Custom</TabsItem>
+  </TabsList>
 
-      <TabsPanel value="week">
-        <WeekGraph />
-      </TabsPanel>
-      <TabsPanel value="month">
-        <MonthGraph />
-      </TabsPanel>
-      <TabsPanel value="custom">
-        <CustomGraph />
-      </TabsPanel>
-    </Tabs>
-  );
-};
+  <TabsPanel value="week">
+    <WeekGraph />
+  </TabsPanel>
+  <TabsPanel value="month">
+    <MonthGraph />
+  </TabsPanel>
+  <TabsPanel value="custom">
+    <CustomGraph />
+  </TabsPanel>
+</Tabs>
 ```
 
 <img src="./example-2.png" width="380" alt="Tabs Example 2" />
@@ -241,14 +280,13 @@ const FilledVariant = () => {
 
 <img src="./example-3.png" width="380" alt="Tabs Example 3" />
 
-
 ## Motion
 
 TBD
 
 ## Accessibility
 
-Tabs will follow the [WAI-ARIA Tabs](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/) pattern. 
+Tabs will follow the [WAI-ARIA Tabs](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/) pattern.
 
 - [Keyboard navigation](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/#keyboardinteraction)
 
