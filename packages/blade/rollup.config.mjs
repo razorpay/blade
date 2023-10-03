@@ -191,6 +191,7 @@ const config = () => {
   }
 
   if (framework === 'REACT_NATIVE') {
+    process.env.BABEL_ENV = 'production';
     return exportCategories.map((exportCategory) => [getNativeConfig({ exportCategory })]).flat();
   }
 
