@@ -12,6 +12,7 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { TestID } from '~utils/types';
 import { isReactNative } from '~utils';
 import { logger } from '~utils/logger';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 export type CounterProps = {
   /**
@@ -90,7 +91,7 @@ const getColorProps = ({
   return props;
 };
 
-const Counter = ({
+const _Counter = ({
   value,
   max,
   intent,
@@ -171,5 +172,10 @@ const Counter = ({
     </BaseBox>
   );
 };
+
+const Counter = assignWithoutSideEffects(_Counter, {
+  displayName: 'Counter',
+  componentId: 'Counter',
+});
 
 export { Counter };

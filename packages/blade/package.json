@@ -119,8 +119,8 @@
     "@use-gesture/react": "10.2.24",
     "body-scroll-lock": "4.0.0-beta.0",
     "use-presence": "1.1.0",
-    "@floating-ui/react": "0.24.2",
-    "@floating-ui/react-native": "0.10.0",
+    "@floating-ui/react": "0.26.0",
+    "@floating-ui/react-native": "0.10.1",
     "patch-package": "7.0.0",
     "tinycolor2": "1.6.0"
   },

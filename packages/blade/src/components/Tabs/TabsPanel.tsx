@@ -1,0 +1,24 @@
+import React from 'react';
+import type { TabsPanelProps } from './types';
+import { useTabsContext } from './TabsContext';
+import { makeAccessible } from '~utils/makeAccessible';
+import BaseBox from '~components/Box/BaseBox';
+
+const TabsPanel = ({ children, value }: TabsPanelProps): React.ReactElement => {
+  const { selectedValue, baseId } = useTabsContext();
+  const isSelected = selectedValue === value;
+  const panelId = `${baseId}-${value}-tabpanel`;
+  const tabItemId = `${baseId}-${value}-tabitem`;
+
+  return (
+    <BaseBox
+      id={panelId}
+      tabIndex={0}
+      {...makeAccessible({ role: 'tabpanel', labelledBy: tabItemId })}
+    >
+      {isSelected ? children : null}
+    </BaseBox>
+  );
+};
+
+export { TabsPanel };
