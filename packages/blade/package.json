@@ -88,7 +88,7 @@
     "build:clean-declarations": "rm -rf build/types",
     "build:react-dev": "FRAMEWORK=REACT NODE_ENV=development rollup -c",
     "build:react-prod": "FRAMEWORK=REACT NODE_ENV=production rollup -c",
-    "build:react-native": "FRAMEWORK=REACT_NATIVE rollup -c",
+    "build:react-native": "FRAMEWORK=REACT_NATIVE NODE_ENV=production rollup -c",
     "build:generate-css-variables": "GENERATE_CSS_VARIABLES=true FRAMEWORK=REACT rollup -c && node ./scripts/generateCssThemeVariables.js",
     "build:clean-theme-bundle": "rm -rf build/js-bundle-for-css",
     "react-native:get-stories": "sb-rn-get-stories --config-path=./.storybook/react-native && yarn prettier --write ./.storybook/react-native/storybook.requires.js",
