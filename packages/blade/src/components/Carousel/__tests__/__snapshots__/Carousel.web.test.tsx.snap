@@ -23,7 +23,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   padding-top: 20px;
 }
 
-.c9:focus {
+.c9:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
@@ -50,7 +50,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   padding-top: 20px;
 }
 
-.c10:focus {
+.c10:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
@@ -129,8 +129,8 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   border-style: solid;
   border-width: 1px;
   border-radius: 9999px;
-  border-color: hsla(216,19%,89%,1);
-  background-color: hsla(0,0%,100%,1);
+  border-color: hsla(216,44%,23%,0);
+  background-color: hsla(216,15%,54%,0.09);
   color: hsla(216,33%,29%,1);
   padding: 8px;
   display: -webkit-box;
@@ -160,21 +160,21 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
 .c7:hover {
   color: hsla(216,33%,29%,1);
   border-color: hsla(216,19%,89%,1);
-  background-color: hsla(220,27%,98%,1);
+  background-color: hsla(216,15%,54%,0.18);
 }
 
-.c7:focus {
+.c7:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   color: hsla(216,33%,29%,1);
   border-color: hsla(216,19%,89%,1);
-  background-color: hsla(220,30%,96%,1);
+  background-color: hsla(216,15%,54%,0.32);
 }
 
 .c7:active {
   color: hsla(216,33%,29%,1);
   border-color: hsla(216,19%,89%,1);
-  background-color: hsla(214,21%,94%,1);
+  background-color: hsla(216,15%,54%,0.32);
 }
 
 .c3 {
@@ -428,7 +428,7 @@ exports[`Carousel Snapshots should render 1`] = `
   padding-top: 20px;
 }
 
-.c8:focus {
+.c8:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
@@ -455,7 +455,7 @@ exports[`Carousel Snapshots should render 1`] = `
   padding-top: 20px;
 }
 
-.c9:focus {
+.c9:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
@@ -530,8 +530,8 @@ exports[`Carousel Snapshots should render 1`] = `
   border-style: solid;
   border-width: 1px;
   border-radius: 9999px;
-  border-color: hsla(216,19%,89%,1);
-  background-color: hsla(0,0%,100%,1);
+  border-color: hsla(216,44%,23%,0);
+  background-color: hsla(216,15%,54%,0.09);
   color: hsla(216,33%,29%,1);
   padding: 8px;
   display: -webkit-box;
@@ -561,21 +561,21 @@ exports[`Carousel Snapshots should render 1`] = `
 .c6:hover {
   color: hsla(216,33%,29%,1);
   border-color: hsla(216,19%,89%,1);
-  background-color: hsla(220,27%,98%,1);
+  background-color: hsla(216,15%,54%,0.18);
 }
 
-.c6:focus {
+.c6:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   color: hsla(216,33%,29%,1);
   border-color: hsla(216,19%,89%,1);
-  background-color: hsla(220,30%,96%,1);
+  background-color: hsla(216,15%,54%,0.32);
 }
 
 .c6:active {
   color: hsla(216,33%,29%,1);
   border-color: hsla(216,19%,89%,1);
-  background-color: hsla(214,21%,94%,1);
+  background-color: hsla(216,15%,54%,0.32);
 }
 
 .c3 {
@@ -789,7 +789,7 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
   padding-top: 20px;
 }
 
-.c8:focus {
+.c8:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
@@ -816,7 +816,7 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
   padding-top: 20px;
 }
 
-.c9:focus {
+.c9:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
@@ -882,8 +882,8 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
   border-style: solid;
   border-width: 1px;
   border-radius: 9999px;
-  border-color: hsla(216,19%,89%,1);
-  background-color: hsla(0,0%,100%,1);
+  border-color: hsla(216,44%,23%,0);
+  background-color: hsla(216,15%,54%,0.09);
   color: hsla(216,33%,29%,1);
   padding: 8px;
   display: -webkit-box;
@@ -913,21 +913,21 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
 .c2:hover {
   color: hsla(216,33%,29%,1);
   border-color: hsla(216,19%,89%,1);
-  background-color: hsla(220,27%,98%,1);
+  background-color: hsla(216,15%,54%,0.18);
 }
 
-.c2:focus {
+.c2:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   color: hsla(216,33%,29%,1);
   border-color: hsla(216,19%,89%,1);
-  background-color: hsla(220,30%,96%,1);
+  background-color: hsla(216,15%,54%,0.32);
 }
 
 .c2:active {
   color: hsla(216,33%,29%,1);
   border-color: hsla(216,19%,89%,1);
-  background-color: hsla(214,21%,94%,1);
+  background-color: hsla(216,15%,54%,0.32);
 }
 
 .c4 {
@@ -1141,7 +1141,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
   padding-top: 20px;
 }
 
-.c10:focus {
+.c10:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
@@ -1168,7 +1168,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
   padding-top: 20px;
 }
 
-.c11:focus {
+.c11:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
@@ -1251,8 +1251,8 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
   border-style: solid;
   border-width: 1px;
   border-radius: 9999px;
-  border-color: hsla(216,19%,89%,1);
-  background-color: hsla(0,0%,100%,1);
+  border-color: hsla(216,44%,23%,0);
+  background-color: hsla(216,15%,54%,0.09);
   color: hsla(216,33%,29%,1);
   padding: 8px;
   display: -webkit-box;
@@ -1282,21 +1282,21 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
 .c8:hover {
   color: hsla(216,33%,29%,1);
   border-color: hsla(216,19%,89%,1);
-  background-color: hsla(220,27%,98%,1);
+  background-color: hsla(216,15%,54%,0.18);
 }
 
-.c8:focus {
+.c8:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   color: hsla(216,33%,29%,1);
   border-color: hsla(216,19%,89%,1);
-  background-color: hsla(220,30%,96%,1);
+  background-color: hsla(216,15%,54%,0.32);
 }
 
 .c8:active {
   color: hsla(216,33%,29%,1);
   border-color: hsla(216,19%,89%,1);
-  background-color: hsla(214,21%,94%,1);
+  background-color: hsla(216,15%,54%,0.32);
 }
 
 .c3 {
@@ -1545,7 +1545,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   padding-top: 20px;
 }
 
-.c9:focus {
+.c9:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
@@ -1572,7 +1572,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   padding-top: 20px;
 }
 
-.c10:focus {
+.c10:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
@@ -1651,8 +1651,8 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   border-style: solid;
   border-width: 1px;
   border-radius: 9999px;
-  border-color: hsla(216,19%,89%,1);
-  background-color: hsla(0,0%,100%,1);
+  border-color: hsla(216,44%,23%,0);
+  background-color: hsla(216,15%,54%,0.09);
   color: hsla(216,33%,29%,1);
   padding: 8px;
   display: -webkit-box;
@@ -1682,21 +1682,21 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
 .c7:hover {
   color: hsla(216,33%,29%,1);
   border-color: hsla(216,19%,89%,1);
-  background-color: hsla(220,27%,98%,1);
+  background-color: hsla(216,15%,54%,0.18);
 }
 
-.c7:focus {
+.c7:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   color: hsla(216,33%,29%,1);
   border-color: hsla(216,19%,89%,1);
-  background-color: hsla(220,30%,96%,1);
+  background-color: hsla(216,15%,54%,0.32);
 }
 
 .c7:active {
   color: hsla(216,33%,29%,1);
   border-color: hsla(216,19%,89%,1);
-  background-color: hsla(214,21%,94%,1);
+  background-color: hsla(216,15%,54%,0.32);
 }
 
 .c3 {
@@ -1975,7 +1975,7 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
   padding-top: 20px;
 }
 
-.c8:focus {
+.c8:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
@@ -2002,7 +2002,7 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
   padding-top: 20px;
 }
 
-.c9:focus {
+.c9:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
@@ -2077,8 +2077,8 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
   border-style: solid;
   border-width: 1px;
   border-radius: 9999px;
-  border-color: hsla(216,19%,89%,1);
-  background-color: hsla(0,0%,100%,1);
+  border-color: hsla(216,44%,23%,0);
+  background-color: hsla(216,15%,54%,0.09);
   color: hsla(216,33%,29%,1);
   padding: 8px;
   display: -webkit-box;
@@ -2108,21 +2108,21 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
 .c6:hover {
   color: hsla(216,33%,29%,1);
   border-color: hsla(216,19%,89%,1);
-  background-color: hsla(220,27%,98%,1);
+  background-color: hsla(216,15%,54%,0.18);
 }
 
-.c6:focus {
+.c6:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   color: hsla(216,33%,29%,1);
   border-color: hsla(216,19%,89%,1);
-  background-color: hsla(220,30%,96%,1);
+  background-color: hsla(216,15%,54%,0.32);
 }
 
 .c6:active {
   color: hsla(216,33%,29%,1);
   border-color: hsla(216,19%,89%,1);
-  background-color: hsla(214,21%,94%,1);
+  background-color: hsla(216,15%,54%,0.32);
 }
 
 .c3 {

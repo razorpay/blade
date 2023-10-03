@@ -81,8 +81,7 @@ export default {
       },
     },
     intent: {
-      description:
-        'Sets the intent of the Chip. This overwrites the intent set by the parent `ChipGroup` component',
+      description: 'This is deprecated in favor of the `color` prop.',
       table: {
         category: propsCategory.CHIP,
         type: {
@@ -90,6 +89,20 @@ export default {
         },
       },
       options: ['none', 'positive', 'negative'],
+      control: {
+        type: 'radio',
+      },
+    },
+    color: {
+      description:
+        'Sets the color of the Chip. This overwrites the color set by the parent `ChipGroup` component',
+      table: {
+        category: propsCategory.CHIP,
+        type: {
+          summary: '"default" | "positive" | "negative"',
+        },
+      },
+      options: ['default', 'positive', 'negative'],
       control: {
         type: 'radio',
       },
@@ -124,5 +137,5 @@ const ChipTemplate: ComponentStory<typeof ChipComponent> = ({ children, ...args 
 export const Default = ChipTemplate.bind({});
 Default.storyName = 'Default';
 Default.args = {
-  intent: 'none',
+  color: 'default',
 };

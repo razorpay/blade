@@ -1,5 +1,130 @@
 # @razorpay/blade
 
+## 10.14.2
+
+### Patch Changes
+
+- 3b76e389: fix(blade): remove FloatingFocusManager and added more tests
+
+  Fixes bug with floating ui where it was adding aria-hidden to dropdown trigger. more context [here](https://razorpay.slack.com/archives/CMQ3RBHEU/p1695972277506429?thread_ts=1693739607.070049&cid=CMQ3RBHEU).
+
+## 10.14.1
+
+### Patch Changes
+
+- a65ebf9c: feat(blade): update to use focus-visible
+
+  This will ensure that focus will only appear while using keyboard.
+  Note that this is a non-breaking change but you might need to update UT snapshots.
+
+## 10.14.0
+
+### Minor Changes
+
+- dc3e240b: feat: add `color` prop to `Alert`, `Badge`, `Button`, `Chip`, `ChipGroup`, `Counter`, `Link`, & `Spinner`
+
+  #### Color Tokens Update
+
+  **[New White Color Tokens:](https://blade.razorpay.com/?path=/docs/tokens-colors--page)** Introducing white color tokens, enabling white buttons and links for enhanced design options.
+
+  #### Deprecated `intent` prop in favor of the new `color` prop
+
+  - **Alert** - Deprecated `intent` prop.
+  - **Badge** - Deprecated `variant` prop.
+  - **Chip & ChipGroup** - Deprecated `intent` prop.
+  - **Counter** - Deprecated `variant` and `intent` prop.
+  - **Spinner** - Deprecated the `contrast` prop.
+
+  #### Jest Snapshots
+
+  Your existing component snapshots may update, there is no change in the visual appearance of components. Feel free to commit the updated snapshots.
+
+## 10.13.2
+
+### Patch Changes
+
+- a047ea61: fix(AutoComplete): handle focus ring on option change
+
+## 10.13.1
+
+### Patch Changes
+
+- d22cbd3d: fix(AutoComplete): Handle inputValue in Controlled Single Selection
+- acd0f7b0: fix: change autocomplete search logic from startsWith to includes
+
+## 10.13.0
+
+### Minor Changes
+
+- e99730d7: feat: support customizing Blade Theme with a single brand color
+
+  You can find a detailed documentation [here](https://blade.razorpay.com/?path=/docs/guides-theming-createtheme--page)
+
+  ### Example Usage
+
+      ```tsx
+      const customTheme = createTheme({ brandColor: '#19BEA2' })
+
+      <BladeProvider themeTokens={customTheme} colorScheme={colorScheme}>
+       {App}
+      </BladeProvider>
+      ```
+
+## 10.12.1
+
+### Patch Changes
+
+- 68820c36: feat: radio & checkbox integration with card
+
+## 10.12.0
+
+### Minor Changes
+
+- 2f2fcab4: feat(blade): add ref to OTP Input
+
+### Patch Changes
+
+- dc42ae1e: fix(Box): correctly apply border styles
+
+## 10.11.0
+
+### Minor Changes
+
+- c4242ad4: feat(Dropdown): add isOpen and onOpenChange
+
+  > **Warning**
+  >
+  > This PR marks `onDismiss` as deprecated. While it continues to work, we recommend consumers to move to onOpenChange using migration steps below
+
+  ### Migration from `onDismiss` on Dropdown
+
+  ```diff
+  <Dropdown
+  - onDismiss={() => console.log('dismissed')}
+  + onOpenChange={(isOpen) => {
+  +  if (!isOpen) {
+  +    console.log('dismissed');
+  +  }
+  + }}
+  />
+  ```
+
+- 18748f1f: feat(ActionListItem): add ActionListItemBadge component and `titleSuffix` option on ActionListItem
+
+## 10.10.0
+
+### Minor Changes
+
+- 18bdaed2: feat(blade): added Popover component
+
+  **Tooltip Changes**
+
+  - Added a new prop `title`
+
+### Patch Changes
+
+- c4ef32f8: chore: export popover & update status table
+
 ## 10.9.2
 
 ### Patch Changes

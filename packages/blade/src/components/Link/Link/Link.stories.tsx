@@ -156,12 +156,47 @@ LinkButtonInline.args = {
   variant: 'button',
   children: 'Reset Password',
 };
+
 LinkButtonInline.parameters = {
   docs: {
     description: {
       story: 'Inline Link Button within a Text component',
     },
   },
+};
+
+const LinkColorsTemplate: ComponentStory<typeof LinkComponent> = ({
+  icon,
+  children = '',
+  ...args
+}) => {
+  return (
+    <BaseBox display="flex" flexDirection="column" gap="spacing.2">
+      <BaseBox padding="spacing.2">
+        <LinkComponent {...args} color="default">
+          {children}
+        </LinkComponent>
+      </BaseBox>
+      <BaseBox padding="spacing.2" backgroundColor="brand.gray.700.lowContrast">
+        <LinkComponent {...args} color="white">
+          {children}
+        </LinkComponent>
+      </BaseBox>
+      <BaseBox padding="spacing.2">
+        <LinkComponent {...args} color="neutral">
+          {children}
+        </LinkComponent>
+      </BaseBox>
+    </BaseBox>
+  );
+};
+
+export const LinkWithColor = LinkColorsTemplate.bind({});
+LinkWithColor.storyName = 'Link - With Color';
+LinkWithColor.args = {
+  variant: 'anchor',
+  children: 'Learn More',
+  href: 'https://github.com/razorpay/blade',
 };
 
 export const DisabledLinkButton = LinkTemplate.bind({});

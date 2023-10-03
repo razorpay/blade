@@ -92,7 +92,7 @@ const SpinnerSizesTemplate: ComponentStory<typeof SpinnerComponent> = ({ ...args
 export const SpinnerSizes = SpinnerSizesTemplate.bind({});
 SpinnerSizes.storyName = 'Sizes';
 
-const SpinnerContrastTemplate: ComponentStory<typeof SpinnerComponent> = ({ ...args }) => {
+const SpinnerColorTemplate: ComponentStory<typeof SpinnerComponent> = ({ ...args }) => {
   const { theme } = useTheme();
 
   return (
@@ -105,9 +105,9 @@ const SpinnerContrastTemplate: ComponentStory<typeof SpinnerComponent> = ({ ...a
         paddingLeft="spacing.3"
         backgroundColor={theme.colors.surface.background.level2.lowContrast}
       >
-        <Text>Low Contrast</Text>
+        <Text>Default Color</Text>
         <BaseBox marginBottom="spacing.2" />
-        <SpinnerComponent {...args} contrast="low" />
+        <SpinnerComponent {...args} color="default" />
       </BaseBox>
       <BaseBox
         marginBottom="spacing.3"
@@ -117,13 +117,13 @@ const SpinnerContrastTemplate: ComponentStory<typeof SpinnerComponent> = ({ ...a
         paddingLeft="spacing.3"
         backgroundColor={theme.colors.surface.background.level1.highContrast}
       >
-        <Text contrast="high">High Contrast</Text>
+        <Text contrast="high">White Color</Text>
         <BaseBox marginBottom="spacing.2" />
-        <SpinnerComponent {...args} contrast="high" />
+        <SpinnerComponent {...args} color="white" />
       </BaseBox>
     </BaseBox>
   );
 };
 
-export const SpinnerContrasts = SpinnerContrastTemplate.bind({});
-SpinnerContrasts.storyName = 'Contrasts';
+export const SpinnerContrasts = SpinnerColorTemplate.bind({});
+SpinnerContrasts.storyName = 'Colors';

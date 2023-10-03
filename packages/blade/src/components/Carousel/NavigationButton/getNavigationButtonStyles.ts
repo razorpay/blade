@@ -77,7 +77,7 @@ const getNavigationButtonStyles = (props: {
             backgroundColor: backgroundColor[variant].hover,
           },
 
-          '&:focus': {
+          '&:focus-visible': {
             // TODO: refactor to use focus ring token
             outline: 'none',
             boxShadow: `0px 0px 0px 4px ${theme.colors.brand.primary[400]}`,

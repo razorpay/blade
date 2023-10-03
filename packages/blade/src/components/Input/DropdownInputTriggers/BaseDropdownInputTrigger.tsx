@@ -12,7 +12,16 @@ import type { BladeElementRef } from '~utils/types';
 import { useFirstRender } from '~utils/useFirstRender';
 
 const useControlledDropdownInput = (
-  props: Pick<BaseDropdownInputTriggerProps, 'onChange' | 'name' | 'value' | 'defaultValue'>,
+  props: Pick<
+    BaseDropdownInputTriggerProps,
+    | 'onChange'
+    | 'name'
+    | 'value'
+    | 'defaultValue'
+    | 'onInputValueChange'
+    | 'syncInputValueWithSelection'
+    | 'isSelectInput'
+  >,
 ): void => {
   const isFirstRender = useFirstRender();
   const {
@@ -81,6 +90,11 @@ const useControlledDropdownInput = (
       }
 
       selectValues(props.value);
+
+      // in single select AutoComplete, we have to set inputValue of autocomplete according to the new selection.
+      if (selectionType === 'single' && !Array.isArray(props.value) && !props.isSelectInput) {
+        props.syncInputValueWithSelection?.(props.value);
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.value, options]);
@@ -150,6 +164,8 @@ const _BaseDropdownInputTrigger = (
     name: props.name,
     value: props.value,
     defaultValue: props.defaultValue,
+    syncInputValueWithSelection: props.syncInputValueWithSelection,
+    isSelectInput: props.isSelectInput,
   });
 
   const getValue = (): string | undefined => {

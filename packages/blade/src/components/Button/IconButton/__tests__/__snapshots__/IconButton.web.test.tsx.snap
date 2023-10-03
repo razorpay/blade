@@ -32,7 +32,7 @@ exports[`<IconButton /> should render 1`] = `
   color: hsla(217,18%,45%,1);
 }
 
-.c0:focus {
+.c0:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   color: hsla(217,18%,45%,1);

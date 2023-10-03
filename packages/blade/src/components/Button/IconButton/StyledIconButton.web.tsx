@@ -37,7 +37,7 @@ const StyledButton = styled.button<StyledButtonProps>((props) => {
       color: iconColorToken.hover[contrastToken],
     },
 
-    '&:focus': {
+    '&:focus-visible': {
       outline: 'none',
       boxShadow: `0px 0px 0px 4px ${theme.colors.brand.primary[400]}`,
       color: iconColorToken.focus[contrastToken],

@@ -21,7 +21,7 @@ import { Button } from '~components/Button';
 const getBladeVersion = (): string => {
   // We don't publish codesandbox ci on master so version is not present
   const isMaster = process.env.GITHUB_REF === 'refs/heads/master';
-  const sha = process.env.GITHUB_SHA ?? '6f76c2e1d36a5f0076ee76470b36cd54b7d4801b'; // @todo: for development, remove before merging
+  const sha = process.env.GITHUB_SHA;
   if (sha && !isMaster) {
     const shortSha = sha.slice(0, 8);
     return `https://pkg.csb.dev/razorpay/blade/commit/${shortSha}/@razorpay/blade`;
@@ -44,6 +44,7 @@ const useSandpackSetup = ({
 
   const themeTokenName = docsContext?.globals?.themeTokenName ?? 'paymentTheme';
   const colorScheme = docsContext?.globals?.colorScheme ?? 'light';
+  const brandColor = docsContext?.globals?.brandColor;
 
   return {
     template: 'react-ts',
@@ -53,7 +54,7 @@ const useSandpackSetup = ({
             import { createGlobalStyle } from "styled-components";
   
             import { BladeProvider, Box, Theme } from "@razorpay/blade/components";
-            import { ${themeTokenName} } from "@razorpay/blade/tokens";
+            import { ${themeTokenName}, createTheme } from "@razorpay/blade/tokens";
             import "@fontsource/lato/400.css";
             import "@fontsource/lato/700.css";
             
@@ -75,10 +76,19 @@ const useSandpackSetup = ({
               throw new Error("root is null");
             }
             const root = createRoot(rootElement);
+            
+            const getTheme = () => {
+              if(${Boolean(brandColor)}){
+                return createTheme({
+                  brandColor: "${brandColor}",
+                });
+              }
+              return ${themeTokenName};
+            }
 
             root.render(
               <StrictMode>
-                <BladeProvider themeTokens={${themeTokenName}} colorScheme="${colorScheme}">
+                <BladeProvider themeTokens={getTheme()} colorScheme="${colorScheme}">
                   <GlobalStyles />
                   <Box 
                     backgroundColor="surface.background.level1.lowContrast"
@@ -123,12 +133,14 @@ const CodeLineHighlighterContainer = styled(BaseBox)((_props) => ({
 
 const SandboxHighlighter = ({
   children,
+  theme = 'light',
   ...sandpackCodeViewerProps
-}: { children: string } & CodeViewerProps): JSX.Element => {
+}: { children: string; theme?: 'light' | 'dark' } & CodeViewerProps): JSX.Element => {
   return (
     <CodeLineHighlighterContainer>
       <SandpackProvider
         template="vanilla-ts"
+        theme={theme}
         files={{
           '/src/index.ts': dedent(children),
         }}

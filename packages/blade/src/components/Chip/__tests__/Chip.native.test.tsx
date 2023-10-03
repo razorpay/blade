@@ -54,6 +54,22 @@ describe('<Chip />', () => {
     expect(getByText('No')).toBeDefined();
   });
 
+  it('should render chip with color', () => {
+    const { getByText } = renderWithTheme(
+      <ChipGroup accessibilityLabel="Was this message helpful?">
+        <Chip value="apple" color="positive">
+          Yes
+        </Chip>
+        <Chip value="mango" color="negative">
+          No
+        </Chip>
+      </ChipGroup>,
+    );
+
+    expect(getByText('Yes')).toBeDefined();
+    expect(getByText('No')).toBeDefined();
+  });
+
   it('should throw error if used outside ChipGroup', () => {
     expect(() => renderWithTheme(<Chip value="apple">Apple</Chip>)).toThrowError(
       '[Blade: Chip]: <Chip /> component should only be used within the context of a <ChipGroup /> component',

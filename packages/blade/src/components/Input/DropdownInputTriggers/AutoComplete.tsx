@@ -54,7 +54,7 @@ const useAutoComplete = ({
       setActiveIndex(firstItemOptionIndex);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [globalFilteredValues.length]);
+  }, [globalFilteredValues.length, options.length]);
 
   // When input is empty or its single select, we want all items to be shown in filter on open of dropdown
   React.useEffect(() => {
@@ -94,7 +94,7 @@ const useAutoComplete = ({
       // eslint-disable-next-line no-lonely-if
       if (value && options && options.length > 0) {
         const filteredOptions = getOptionValues().filter((optionValue) =>
-          optionValue.toLowerCase().startsWith(value.toLowerCase()),
+          optionValue.toLowerCase().includes(value.toLowerCase()),
         );
         setGlobalFilteredValues(filteredOptions);
       } else {
@@ -196,6 +196,14 @@ const _AutoComplete = (
         onChange={onSelectionChange}
         isSelectInput={false}
         inputValue={inputValue}
+        syncInputValueWithSelection={(value) => {
+          if (!value) {
+            setInputValue('');
+            return;
+          }
+          const selectedOption = options.find((option) => option.value === value);
+          setInputValue(selectedOption?.title ?? '');
+        }}
         onTriggerKeydown={onTriggerKeydown}
         onInputValueChange={onInputValueChange}
         onTriggerClick={(triggerEvent) => {

@@ -1107,10 +1107,16 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                           }
                         />
                         <View
+                          alignItems="center"
                           data-blade-component="base-box"
+                          display="flex"
+                          flexDirection="row"
                           style={
                             [
                               {
+                                "alignItems": "center",
+                                "display": "flex",
+                                "flexDirection": "row",
                                 "paddingLeft": 0,
                                 "paddingRight": 8,
                               },
@@ -1260,10 +1266,16 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                           }
                         />
                         <View
+                          alignItems="center"
                           data-blade-component="base-box"
+                          display="flex"
+                          flexDirection="row"
                           style={
                             [
                               {
+                                "alignItems": "center",
+                                "display": "flex",
+                                "flexDirection": "row",
                                 "paddingLeft": 0,
                                 "paddingRight": 8,
                               },

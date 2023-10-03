@@ -1,0 +1,4 @@
+* {
+  /* Need this to ensure mdx stories don't break visually */
+  box-sizing: border-box;
+}

@@ -1049,67 +1049,23 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                                         ]
                                       }
                                     />
-                                    <View
-                                      data-blade-component="base-box"
-                                      style={
-                                        [
-                                          {
-                                            "marginLeft": 4,
-                                          },
-                                        ]
-                                      }
-                                    />
-                                    <Text
-                                      accessible={true}
-                                      color="surface.text.subtle.lowContrast"
-                                      data-blade-component="base-text"
-                                      fontFamily="text"
-                                      fontSize={100}
-                                      fontWeight="regular"
-                                      lineHeight={100}
-                                      style={
-                                        [
-                                          {
-                                            "color": "hsla(216, 27%, 36%, 1)",
-                                            "fontFamily": "Lato",
-                                            "fontSize": 14,
-                                            "fontStyle": "normal",
-                                            "fontWeight": "400",
-                                            "lineHeight": 20,
-                                            "marginBottom": 0,
-                                            "marginLeft": 0,
-                                            "marginRight": 0,
-                                            "marginTop": 0,
-                                            "paddingBottom": 0,
-                                            "paddingLeft": 0,
-                                            "paddingRight": 0,
-                                            "paddingTop": 0,
-                                            "textDecorationLine": "none",
-                                          },
-                                        ]
-                                      }
-                                    />
                                   </View>
-                                  <View
-                                    data-blade-component="base-box"
-                                    style={
-                                      [
-                                        {
-                                          "marginLeft": 24,
-                                        },
-                                      ]
-                                    }
-                                  />
                                 </View>
                               </View>
                             </View>
                           </View>
                         </View>
                         <View
+                          alignItems="center"
                           data-blade-component="base-box"
+                          display="flex"
+                          flexDirection="row"
                           style={
                             [
                               {
+                                "alignItems": "center",
+                                "display": "flex",
+                                "flexDirection": "row",
                                 "paddingLeft": 0,
                                 "paddingRight": 8,
                               },
@@ -1381,67 +1337,23 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                                         ]
                                       }
                                     />
-                                    <View
-                                      data-blade-component="base-box"
-                                      style={
-                                        [
-                                          {
-                                            "marginLeft": 4,
-                                          },
-                                        ]
-                                      }
-                                    />
-                                    <Text
-                                      accessible={true}
-                                      color="surface.text.subtle.lowContrast"
-                                      data-blade-component="base-text"
-                                      fontFamily="text"
-                                      fontSize={100}
-                                      fontWeight="regular"
-                                      lineHeight={100}
-                                      style={
-                                        [
-                                          {
-                                            "color": "hsla(216, 27%, 36%, 1)",
-                                            "fontFamily": "Lato",
-                                            "fontSize": 14,
-                                            "fontStyle": "normal",
-                                            "fontWeight": "400",
-                                            "lineHeight": 20,
-                                            "marginBottom": 0,
-                                            "marginLeft": 0,
-                                            "marginRight": 0,
-                                            "marginTop": 0,
-                                            "paddingBottom": 0,
-                                            "paddingLeft": 0,
-                                            "paddingRight": 0,
-                                            "paddingTop": 0,
-                                            "textDecorationLine": "none",
-                                          },
-                                        ]
-                                      }
-                                    />
                                   </View>
-                                  <View
-                                    data-blade-component="base-box"
-                                    style={
-                                      [
-                                        {
-                                          "marginLeft": 24,
-                                        },
-                                      ]
-                                    }
-                                  />
                                 </View>
                               </View>
                             </View>
                           </View>
                         </View>
                         <View
+                          alignItems="center"
                           data-blade-component="base-box"
+                          display="flex"
+                          flexDirection="row"
                           style={
                             [
                               {
+                                "alignItems": "center",
+                                "display": "flex",
+                                "flexDirection": "row",
                                 "paddingLeft": 0,
                                 "paddingRight": 8,
                               },
@@ -1713,67 +1625,23 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                                         ]
                                       }
                                     />
-                                    <View
-                                      data-blade-component="base-box"
-                                      style={
-                                        [
-                                          {
-                                            "marginLeft": 4,
-                                          },
-                                        ]
-                                      }
-                                    />
-                                    <Text
-                                      accessible={true}
-                                      color="surface.text.subtle.lowContrast"
-                                      data-blade-component="base-text"
-                                      fontFamily="text"
-                                      fontSize={100}
-                                      fontWeight="regular"
-                                      lineHeight={100}
-                                      style={
-                                        [
-                                          {
-                                            "color": "hsla(216, 27%, 36%, 1)",
-                                            "fontFamily": "Lato",
-                                            "fontSize": 14,
-                                            "fontStyle": "normal",
-                                            "fontWeight": "400",
-                                            "lineHeight": 20,
-                                            "marginBottom": 0,
-                                            "marginLeft": 0,
-                                            "marginRight": 0,
-                                            "marginTop": 0,
-                                            "paddingBottom": 0,
-                                            "paddingLeft": 0,
-                                            "paddingRight": 0,
-                                            "paddingTop": 0,
-                                            "textDecorationLine": "none",
-                                          },
-                                        ]
-                                      }
-                                    />
                                   </View>
-                                  <View
-                                    data-blade-component="base-box"
-                                    style={
-                                      [
-                                        {
-                                          "marginLeft": 24,
-                                        },
-                                      ]
-                                    }
-                                  />
                                 </View>
                               </View>
                             </View>
                           </View>
                         </View>
                         <View
+                          alignItems="center"
                           data-blade-component="base-box"
+                          display="flex"
+                          flexDirection="row"
                           style={
                             [
                               {
+                                "alignItems": "center",
+                                "display": "flex",
+                                "flexDirection": "row",
                                 "paddingLeft": 0,
                                 "paddingRight": 8,
                               },

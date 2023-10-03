@@ -22,13 +22,13 @@ describe('<Spinner />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should render low contrast Spinner', () => {
-    const { container } = renderWithTheme(<Spinner accessibilityLabel="Loading" contrast="low" />);
+  it('should render default color Spinner', () => {
+    const { container } = renderWithTheme(<Spinner accessibilityLabel="Loading" color="default" />);
     expect(container).toMatchSnapshot();
   });
 
-  it('should render high contrast Spinner', () => {
-    const { container } = renderWithTheme(<Spinner accessibilityLabel="Loading" contrast="high" />);
+  it('should render white color Spinner', () => {
+    const { container } = renderWithTheme(<Spinner accessibilityLabel="Loading" color="white" />);
     expect(container).toMatchSnapshot();
   });
 

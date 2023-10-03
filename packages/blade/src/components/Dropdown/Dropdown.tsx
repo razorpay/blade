@@ -13,6 +13,7 @@ import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChi
 import { isReactNative } from '~utils';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import { throwBladeError } from '~utils/logger';
+import { useDidUpdate } from '~utils/useDidUpdate';
 import type { ContainerElementType } from '~utils/types';
 
 const validDropdownChildren = [
@@ -52,12 +53,14 @@ const validDropdownChildren = [
  */
 const _Dropdown = ({
   children,
+  isOpen: isOpenControlled,
+  onOpenChange,
   selectionType = 'single',
   onDismiss,
   testID,
   ...styledProps
 }: DropdownProps): React.ReactElement => {
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = React.useState<boolean>(isOpenControlled ?? false);
   const [options, setOptions] = React.useState<DropdownContextType['options']>([]);
   const [filteredValues, setFilteredValues] = React.useState<string[]>([]);
   const [selectedIndices, setSelectedIndices] = React.useState<
@@ -90,31 +93,30 @@ const _Dropdown = ({
   const triggererRef = React.useRef<HTMLButtonElement>(null);
   const actionListItemRef = React.useRef<HTMLDivElement>(null);
   const dropdownTriggerer = React.useRef<DropdownContextType['dropdownTriggerer']>();
-  const isFirstRenderRef = React.useRef(true);
   const isTagDismissedRef = React.useRef<{ value: boolean } | null>({ value: false });
   const visibleTagsCountRef = React.useRef<{ value: number }>({ value: 0 });
   const dropdownContainerRef = React.useRef<HTMLDivElement>(null);
 
   const dropdownBaseId = useId('dropdown');
 
-  React.useEffect(() => {
-    // Ignoring the `onDismiss` call on first render
-    if (isFirstRenderRef.current) {
-      isFirstRenderRef.current = false;
-      return;
-    }
-
-    if (!isOpen && onDismiss) {
-      onDismiss();
+  useDidUpdate(() => {
+    onOpenChange?.(isOpen);
+    if (!isOpen) {
+      onDismiss?.();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
+  React.useEffect(() => {
+    if (isOpenControlled !== undefined) {
+      setIsOpen(isOpenControlled);
+    }
+  }, [isOpenControlled]);
+
   const close = React.useCallback(() => {
     setActiveTagIndex(-1);
     setIsOpen(false);
-    onDismiss?.();
-  }, [onDismiss]);
+  }, []);
 
   React.Children.map(children, (child) => {
     if (React.isValidElement(child)) {

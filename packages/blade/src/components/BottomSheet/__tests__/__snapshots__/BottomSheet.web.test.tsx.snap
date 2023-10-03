@@ -1,6 +1,699 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
+exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
+.c0 {
+  text-align: left;
+  position: relative;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c5 {
+  position: fixed;
+  z-index: 101;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-color: hsla(214,15%,18%,0.64);
+  opacity: 0;
+}
+
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 100%;
+}
+
+.c10 {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 1;
+  -ms-flex-negative: 1;
+  flex-shrink: 1;
+}
+
+.c12 {
+  overflow: visible;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c13 {
+  position: relative;
+  height: 8px;
+  right: 0px;
+  touch-action: none;
+}
+
+.c14 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  position: absolute;
+  z-index: 100;
+  height: 28px;
+  width: 28px;
+  top: -4px;
+  right: 16px;
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 9999px;
+}
+
+.c18 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  max-height: 20px;
+}
+
+.c19 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c20 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-right: 8px;
+  padding-left: 0px;
+}
+
+.c22 {
+  margin-left: auto;
+}
+
+.c11 {
+  overflow: auto;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.c15 {
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 2px;
+  background: transparent;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  color: hsla(214,18%,69%,1);
+  -webkit-transition-property: color,box-shadow;
+  transition-property: color,box-shadow;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c15:hover {
+  color: hsla(217,18%,45%,1);
+}
+
+.c15:focus-visible {
+  outline: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  color: hsla(217,18%,45%,1);
+}
+
+.c15:active {
+  color: hsla(217,18%,45%,1);
+}
+
+.c4 {
+  color: hsla(216,33%,29%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c21 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.c24 {
+  color: hsla(8,73%,47%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.c6 {
+  -webkit-transition-duration: 250ms;
+  transition-duration: 250ms;
+  -webkit-transition-timing-function: cubic-bezier(0.5,0,1,1);
+  transition-timing-function: cubic-bezier(0.5,0,1,1);
+  pointer-events: none;
+  -webkit-transition-property: opacity;
+  transition-property: opacity;
+}
+
+.c9 {
+  position: relative;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  padding-top: 12px;
+  margin-bottom: 4px;
+  touch-action: none;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.c9:after {
+  margin: auto;
+  content: '';
+  width: 56px;
+  height: 4px;
+  background-color: hsla(216,15%,54%,0.18);
+  border-radius: 16px;
+}
+
+.c7 {
+  background: hsla(0,0%,100%,1);
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  border-color: hsla(216,15%,54%,0.18);
+  box-shadow: 0px -24px 48px -12px hsla(217,56%,17%,0.18);
+  opacity: 0;
+  pointer-events: none;
+  -webkit-transition-duration: 250ms;
+  transition-duration: 250ms;
+  -webkit-transition-timing-function: cubic-bezier(.15,0,.24,.97);
+  transition-timing-function: cubic-bezier(.15,0,.24,.97);
+  will-change: transform,opacity,height;
+  -webkit-transition-property: -webkit-transform,opacity,height;
+  -webkit-transition-property: transform,opacity,height;
+  transition-property: transform,opacity,height;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 768px;
+  background-color: hsla(0,0%,100%,1);
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  touch-action: none;
+  overflow: hidden;
+}
+
+.c1 {
+  min-height: 36px;
+  width: auto;
+  cursor: pointer;
+  background-color: hsla(216,15%,54%,0.09);
+  border-color: hsla(216,44%,23%,0);
+  border-width: 1px;
+  border-radius: 2px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c1:hover {
+  background-color: hsla(216,15%,54%,0.18);
+}
+
+.c1:active {
+  background-color: hsla(216,15%,54%,0.32);
+}
+
+.c1:focus-visible {
+  background-color: hsla(216,15%,54%,0.32);
+  outline: 1px solid hsla(220,30%,96%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+}
+
+.c1 * {
+  -webkit-transition-property: color,fill;
+  transition-property: color,fill;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c3 {
+  opacity: 1;
+}
+
+.c16 {
+  overflow-y: auto;
+}
+
+.c16 [role=group]:last-child > [role=separator]:last-child {
+  display: none;
+}
+
+.c17 {
+  border-width: 4px;
+  border-style: solid;
+  border-color: transparent;
+  text-align: left;
+  background-color: transparent;
+  padding: 4px;
+  border-radius: 4px;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  cursor: pointer;
+  width: 100%;
+  display: block;
+}
+
+.c17:hover:not([aria-disabled=true]) {
+  background-color: hsla(216,15%,54%,0.09);
+}
+
+.c17[aria-selected=true] {
+  background-color: hsla(218,89%,51%,0.09);
+}
+
+.c23 {
+  border-width: 4px;
+  border-style: solid;
+  border-color: transparent;
+  text-align: left;
+  background-color: transparent;
+  padding: 4px;
+  border-radius: 4px;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  cursor: pointer;
+  width: 100%;
+  display: block;
+}
+
+.c23:hover:not([aria-disabled=true]) {
+  background-color: hsla(9,91%,56%,0.09);
+}
+
+.c23[aria-selected=true] {
+  background-color: hsla(218,89%,51%,0.09);
+}
+
+<body>
+  <div>
+    <div
+      class=""
+      data-blade-component="dropdown"
+    >
+      <div
+        class="c0"
+        data-blade-component="base-box"
+      >
+        <button
+          aria-controls="dropdown-506-actionlist"
+          aria-expanded="false"
+          aria-haspopup="menu"
+          class="c1"
+          data-blade-component="button"
+          role="button"
+          type="button"
+        >
+          <div
+            class="c2 c3"
+            data-blade-component="base-box"
+          >
+            <div
+              class="c4"
+              data-blade-component="base-text"
+            >
+              Status: approve
+            </div>
+          </div>
+        </button>
+        <div
+          class="c5 c6"
+          data-blade-component="base-box"
+          data-testid="bottomsheet-backdrop"
+          opacity="0"
+        />
+        <div
+          aria-modal="true"
+          class="c7"
+          data-blade-component="bottom-sheet"
+          data-testid="bottomsheet-surface"
+          role="dialog"
+          style="opacity: 0; pointer-events: none; height: 0px; bottom: 0px; z-index: 101;"
+        >
+          <div
+            class="c8"
+            data-blade-component="base-box"
+          >
+            <div
+              class="c9"
+              data-blade-component="BottomSheetGrabHandle"
+            />
+            <div
+              class="c10"
+              data-blade-component="bottom-sheet-body"
+              data-testid="bottomsheet-body"
+              style="user-select: auto; overflow: auto;"
+            >
+              <div
+                class="c11"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c12"
+                  data-blade-component="bottom-sheet-header"
+                >
+                  <div
+                    class="c13"
+                    data-blade-component="base-box"
+                  >
+                    <div
+                      class="c14"
+                      data-blade-component="base-box"
+                    >
+                      <button
+                        aria-label="Close"
+                        class="c15"
+                        data-blade-component="icon-button"
+                        type="button"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="Svgweb__StyledSvg-vcmjs8-0"
+                          data-blade-component="icon"
+                          fill="none"
+                          height="20px"
+                          viewBox="0 0 24 24"
+                          width="20px"
+                        >
+                          <path
+                            d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
+                            data-blade-component="svg-path"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class=" c16"
+                  data-blade-component="base-box"
+                >
+                  <button
+                    aria-current="true"
+                    aria-selected="true"
+                    class=" c17"
+                    data-blade-component="action-list-item"
+                    data-index="0"
+                    data-value="approve"
+                    id="dropdown-506-0"
+                    role="menuitem"
+                    tabindex="-1"
+                    type="button"
+                  >
+                    <div
+                      class="c18"
+                      data-blade-component="base-box"
+                    >
+                      <div
+                        class="c19"
+                        data-blade-component="base-box"
+                      />
+                      <div
+                        class="c20"
+                        data-blade-component="base-box"
+                      >
+                        <p
+                          class="c21"
+                          data-blade-component="text"
+                        >
+                          Approve
+                        </p>
+                      </div>
+                      <div
+                        class="c22"
+                        data-blade-component="base-box"
+                      />
+                    </div>
+                    <div
+                      class=""
+                      data-blade-component="base-box"
+                    />
+                  </button>
+                  <button
+                    aria-current="false"
+                    aria-selected="false"
+                    class=" c17"
+                    data-blade-component="action-list-item"
+                    data-index="1"
+                    data-value="in-progress"
+                    id="dropdown-506-1"
+                    role="menuitem"
+                    tabindex="-1"
+                    type="button"
+                  >
+                    <div
+                      class="c18"
+                      data-blade-component="base-box"
+                    >
+                      <div
+                        class="c19"
+                        data-blade-component="base-box"
+                      />
+                      <div
+                        class="c20"
+                        data-blade-component="base-box"
+                      >
+                        <p
+                          class="c21"
+                          data-blade-component="text"
+                        >
+                          In Progress
+                        </p>
+                      </div>
+                      <div
+                        class="c22"
+                        data-blade-component="base-box"
+                      />
+                    </div>
+                    <div
+                      class=""
+                      data-blade-component="base-box"
+                    />
+                  </button>
+                  <button
+                    aria-current="false"
+                    aria-selected="false"
+                    class=" c23"
+                    data-blade-component="action-list-item"
+                    data-index="2"
+                    data-value="reject"
+                    id="dropdown-506-2"
+                    role="menuitem"
+                    tabindex="-1"
+                    type="button"
+                  >
+                    <div
+                      class="c18"
+                      data-blade-component="base-box"
+                    >
+                      <div
+                        class="c19"
+                        data-blade-component="base-box"
+                      />
+                      <div
+                        class="c20"
+                        data-blade-component="base-box"
+                      >
+                        <p
+                          class="c24"
+                          data-blade-component="text"
+                        >
+                          Reject
+                        </p>
+                      </div>
+                      <div
+                        class="c22"
+                        data-blade-component="base-box"
+                      />
+                    </div>
+                    <div
+                      class=""
+                      data-blade-component="base-box"
+                    />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+`;
+
+exports[`<BottomSheet /> should render Header/Footer/Body properly on closed state 1`] = `
+<body>
+  <div />
+</body>
+`;
+
+exports[`<BottomSheet /> should render Header/Footer/Body properly on opened state 1`] = `
 .c3 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -244,7 +937,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   color: hsla(217,18%,45%,1);
 }
 
-.c24:focus {
+.c24:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   color: hsla(217,18%,45%,1);
@@ -495,11 +1188,11 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   border-color: hsla(218,89%,51%,1);
 }
 
-.c32:focus {
+.c32:focus-visible {
   background-color: hsla(218,89%,51%,0.18);
   border-color: hsla(218,89%,51%,1);
+  outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-  outline: none;
 }
 
 .c32 * {
@@ -575,245 +1268,226 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
   }
 }
 
-<div>
-  <span
-    aria-hidden="true"
-    data-aria-hidden="true"
-    data-floating-ui-focus-guard=""
-    data-type="inside"
-    role="button"
-    style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: fixed; white-space: nowrap; width: 1px; top: 0px; left: 0px;"
-    tabindex="0"
-  />
-  <div
-    aria-hidden="true"
-    class="c0 c1"
-    data-aria-hidden="true"
-    data-blade-component="base-box"
-    data-testid="bottomsheet-backdrop"
-    opacity="1"
-  />
-  <div
-    aria-modal="true"
-    class="c2"
-    data-blade-component="bottom-sheet"
-    data-testid="bottomsheet-surface"
-    role="dialog"
-    style="opacity: 1; pointer-events: all; height: 0px; bottom: 0px; z-index: 100;"
-    tabindex="-1"
-  >
+<body>
+  <div>
     <div
-      class="c3"
+      class="c0 c1"
       data-blade-component="base-box"
+      data-testid="bottomsheet-backdrop"
+      opacity="1"
+    />
+    <div
+      aria-modal="true"
+      class="c2"
+      data-blade-component="bottom-sheet"
+      data-testid="bottomsheet-surface"
+      role="dialog"
+      style="opacity: 1; pointer-events: all; height: 0px; bottom: 0px; z-index: 100;"
     >
       <div
-        class="c4"
-        data-blade-component="BottomSheetGrabHandle"
-      />
-      <div
-        class="c5"
-        data-blade-component="bottom-sheet-header"
+        class="c3"
+        data-blade-component="base-box"
       >
         <div
-          class=""
-          data-blade-component="base-box"
+          class="c4"
+          data-blade-component="BottomSheetGrabHandle"
+        />
+        <div
+          class="c5"
+          data-blade-component="bottom-sheet-header"
         >
           <div
-            class="c6"
+            class=""
             data-blade-component="base-box"
           >
             <div
-              class="c7"
+              class="c6"
               data-blade-component="base-box"
             >
               <div
-                class="c8"
+                class="c7"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c9"
+                  class="c8"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c10"
+                    class="c9"
                     data-blade-component="base-box"
                   >
-                    <h6
-                      class="c11"
-                      data-blade-component="heading"
-                    >
-                      Address Details
-                    </h6>
                     <div
-                      class="c12"
+                      class="c10"
                       data-blade-component="base-box"
                     >
+                      <h6
+                        class="c11"
+                        data-blade-component="heading"
+                      >
+                        Address Details
+                      </h6>
                       <div
-                        class="c13"
-                        data-blade-component="box"
+                        class="c12"
+                        data-blade-component="base-box"
                       >
                         <div
-                          class="c14"
-                          data-blade-component="counter"
+                          class="c13"
+                          data-blade-component="box"
                         >
                           <div
-                            class="c15 c16"
-                            data-blade-component="base-box"
+                            class="c14"
+                            data-blade-component="counter"
                           >
                             <div
-                              class="c17"
+                              class="c15 c16"
                               data-blade-component="base-box"
                             >
-                              <p
-                                class="c18"
-                                data-blade-component="text"
+                              <div
+                                class="c17"
+                                data-blade-component="base-box"
                               >
-                                2
-                              </p>
+                                <p
+                                  class="c18"
+                                  data-blade-component="text"
+                                >
+                                  2
+                                </p>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
+                    <p
+                      class="c19"
+                      data-blade-component="text"
+                    >
+                      Saving addresses will improve your checkout experience
+                    </p>
                   </div>
-                  <p
-                    class="c19"
-                    data-blade-component="text"
-                  >
-                    Saving addresses will improve your checkout experience
-                  </p>
                 </div>
-              </div>
-              <div
-                class="c20"
-                data-blade-component="base-box"
-              >
                 <div
-                  class="c13"
-                  data-blade-component="box"
+                  class="c20"
+                  data-blade-component="base-box"
                 >
                   <div
-                    class="c14"
-                    data-blade-component="badge"
+                    class="c13"
+                    data-blade-component="box"
                   >
                     <div
-                      class="c21 c22"
-                      data-blade-component="base-box"
+                      class="c14"
+                      data-blade-component="badge"
                     >
                       <div
-                        class="c17"
+                        class="c21 c22"
                         data-blade-component="base-box"
                       >
-                        <p
-                          class="c23"
-                          data-blade-component="text"
+                        <div
+                          class="c17"
+                          data-blade-component="base-box"
                         >
-                          Action Needed
-                        </p>
+                          <p
+                            class="c23"
+                            data-blade-component="text"
+                          >
+                            Action Needed
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div
-                class="c13"
-                data-blade-component="box"
-              >
-                <button
-                  aria-label="Close"
-                  class="c24"
-                  data-blade-component="icon-button"
-                  type="button"
+                <div
+                  class="c13"
+                  data-blade-component="box"
                 >
-                  <svg
-                    aria-hidden="true"
-                    class="Svgweb__StyledSvg-vcmjs8-0"
-                    data-blade-component="icon"
-                    fill="none"
-                    height="20px"
-                    viewBox="0 0 24 24"
-                    width="20px"
+                  <button
+                    aria-label="Close"
+                    class="c24"
+                    data-blade-component="icon-button"
+                    type="button"
                   >
-                    <path
-                      d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
-                      data-blade-component="svg-path"
-                      fill="currentColor"
-                    />
-                  </svg>
-                </button>
+                    <svg
+                      aria-hidden="true"
+                      class="Svgweb__StyledSvg-vcmjs8-0"
+                      data-blade-component="icon"
+                      fill="none"
+                      height="20px"
+                      viewBox="0 0 24 24"
+                      width="20px"
+                    >
+                      <path
+                        d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
+                        data-blade-component="svg-path"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </button>
+                </div>
               </div>
             </div>
+            <div
+              class="c25 c26"
+              data-blade-component="divider"
+              role="separator"
+            />
           </div>
+        </div>
+        <div
+          class="c27"
+          data-blade-component="bottom-sheet-body"
+          data-testid="bottomsheet-body"
+          style="user-select: auto; overflow: auto;"
+        >
+          <div
+            class="c28"
+            data-blade-component="base-box"
+          >
+            <p
+              class="c29"
+              data-blade-component="text"
+            >
+              BottomSheet body
+            </p>
+          </div>
+        </div>
+        <div
+          class="c30"
+          data-blade-component="bottom-sheet-footer"
+        >
           <div
             class="c25 c26"
             data-blade-component="divider"
             role="separator"
           />
-        </div>
-      </div>
-      <div
-        class="c27"
-        data-blade-component="bottom-sheet-body"
-        data-testid="bottomsheet-body"
-        style="user-select: auto; overflow: auto;"
-      >
-        <div
-          class="c28"
-          data-blade-component="base-box"
-        >
-          <p
-            class="c29"
-            data-blade-component="text"
+          <div
+            class="c31"
+            data-blade-component="base-box"
           >
-            BottomSheet body
-          </p>
-        </div>
-      </div>
-      <div
-        class="c30"
-        data-blade-component="bottom-sheet-footer"
-      >
-        <div
-          class="c25 c26"
-          data-blade-component="divider"
-          role="separator"
-        />
-        <div
-          class="c31"
-          data-blade-component="base-box"
-        >
-          <button
-            class="c32"
-            data-blade-component="button"
-            role="button"
-            type="button"
-          >
-            <div
-              class="c33 c34"
-              data-blade-component="base-box"
+            <button
+              class="c32"
+              data-blade-component="button"
+              role="button"
+              type="button"
             >
               <div
-                class="c35"
-                data-blade-component="base-text"
+                class="c33 c34"
+                data-blade-component="base-box"
               >
-                Remove address
+                <div
+                  class="c35"
+                  data-blade-component="base-text"
+                >
+                  Remove address
+                </div>
               </div>
-            </div>
-          </button>
+            </button>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <span
-    aria-hidden="true"
-    data-aria-hidden="true"
-    data-floating-ui-focus-guard=""
-    data-type="inside"
-    role="button"
-    style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: fixed; white-space: nowrap; width: 1px; top: 0px; left: 0px;"
-    tabindex="0"
-  />
-</div>
+</body>
 `;
 
 exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
@@ -929,7 +1603,7 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
   color: hsla(217,18%,45%,1);
 }
 
-.c8:focus {
+.c8:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   color: hsla(217,18%,45%,1);
@@ -1032,106 +1706,87 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
   overflow: hidden;
 }
 
-<div>
-  <span
-    aria-hidden="true"
-    data-aria-hidden="true"
-    data-floating-ui-focus-guard=""
-    data-type="inside"
-    role="button"
-    style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: fixed; white-space: nowrap; width: 1px; top: 0px; left: 0px;"
-    tabindex="0"
-  />
-  <div
-    aria-hidden="true"
-    class="c0 c1"
-    data-aria-hidden="true"
-    data-blade-component="base-box"
-    data-testid="bottomsheet-backdrop"
-    opacity="1"
-  />
-  <div
-    aria-modal="true"
-    class="c2"
-    data-blade-component="bottom-sheet"
-    data-testid="bottomsheet-surface"
-    role="dialog"
-    style="opacity: 1; pointer-events: all; height: 0px; bottom: 0px; z-index: 100;"
-    tabindex="-1"
-  >
+<body>
+  <div>
     <div
-      class="c3"
+      class="c0 c1"
       data-blade-component="base-box"
+      data-testid="bottomsheet-backdrop"
+      opacity="1"
+    />
+    <div
+      aria-modal="true"
+      class="c2"
+      data-blade-component="bottom-sheet"
+      data-testid="bottomsheet-surface"
+      role="dialog"
+      style="opacity: 1; pointer-events: all; height: 0px; bottom: 0px; z-index: 100;"
     >
       <div
-        class="c4"
-        data-blade-component="BottomSheetGrabHandle"
-      />
-      <div
-        class="c5"
-        data-blade-component="bottom-sheet-header"
+        class="c3"
+        data-blade-component="base-box"
       >
         <div
-          class="c6"
-          data-blade-component="base-box"
+          class="c4"
+          data-blade-component="BottomSheetGrabHandle"
+        />
+        <div
+          class="c5"
+          data-blade-component="bottom-sheet-header"
         >
           <div
-            class="c7"
+            class="c6"
             data-blade-component="base-box"
           >
-            <button
-              aria-label="Close"
-              class="c8"
-              data-blade-component="icon-button"
-              type="button"
+            <div
+              class="c7"
+              data-blade-component="base-box"
             >
-              <svg
-                aria-hidden="true"
-                class="Svgweb__StyledSvg-vcmjs8-0"
-                data-blade-component="icon"
-                fill="none"
-                height="20px"
-                viewBox="0 0 24 24"
-                width="20px"
+              <button
+                aria-label="Close"
+                class="c8"
+                data-blade-component="icon-button"
+                type="button"
               >
-                <path
-                  d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
-                  data-blade-component="svg-path"
-                  fill="currentColor"
-                />
-              </svg>
-            </button>
+                <svg
+                  aria-hidden="true"
+                  class="Svgweb__StyledSvg-vcmjs8-0"
+                  data-blade-component="icon"
+                  fill="none"
+                  height="20px"
+                  viewBox="0 0 24 24"
+                  width="20px"
+                >
+                  <path
+                    d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
+                    data-blade-component="svg-path"
+                    fill="currentColor"
+                  />
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        class="c9"
-        data-blade-component="bottom-sheet-body"
-        data-testid="bottomsheet-body"
-        style="user-select: auto; overflow: auto;"
-      >
         <div
-          class="c10"
-          data-blade-component="base-box"
+          class="c9"
+          data-blade-component="bottom-sheet-body"
+          data-testid="bottomsheet-body"
+          style="user-select: auto; overflow: auto;"
         >
-          <p
-            class="c11"
-            data-blade-component="text"
+          <div
+            class="c10"
+            data-blade-component="base-box"
           >
-            BottomSheet body
-          </p>
+            <p
+              class="c11"
+              data-blade-component="text"
+            >
+              BottomSheet body
+            </p>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <span
-    aria-hidden="true"
-    data-aria-hidden="true"
-    data-floating-ui-focus-guard=""
-    data-type="inside"
-    role="button"
-    style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: fixed; white-space: nowrap; width: 1px; top: 0px; left: 0px;"
-    tabindex="0"
-  />
-</div>
+</body>
 `;

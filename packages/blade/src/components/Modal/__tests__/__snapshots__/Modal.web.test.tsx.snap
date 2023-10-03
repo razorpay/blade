@@ -315,7 +315,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   color: hsla(217,18%,45%,1);
 }
 
-.c22:focus {
+.c22:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   color: hsla(217,18%,45%,1);
@@ -424,11 +424,11 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   border-color: hsla(230,100%,42%,1);
 }
 
-.c28:focus {
+.c28:focus-visible {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
+  outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-  outline: none;
 }
 
 .c28 * {

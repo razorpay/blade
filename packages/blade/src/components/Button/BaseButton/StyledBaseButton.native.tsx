@@ -49,6 +49,7 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<TextInput, StyledBaseBut
     onBlur,
     onKeyDown,
     children,
+    variant,
     minHeight,
     buttonPaddingTop,
     buttonPaddingBottom,
@@ -94,9 +95,11 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<TextInput, StyledBaseBut
           easing,
         },
       ),
-      borderColor: withTiming(isPressed.value ? activeBorderColor : defaultBorderColor, {
-        duration,
-        easing,
+      ...(variant !== 'tertiary' && {
+        borderColor: withTiming(isPressed.value ? activeBorderColor : defaultBorderColor, {
+          duration,
+          easing,
+        }),
       }),
     };
   });

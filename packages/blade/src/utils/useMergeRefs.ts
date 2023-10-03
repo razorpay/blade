@@ -49,4 +49,4 @@ function useMergeRefs<T>(...refs: (ReactRef<T> | null | undefined)[]) {
   return useMemo(() => mergeRefs(...refs), refs);
 }
 
-export { useMergeRefs };
+export { useMergeRefs, mergeRefs };

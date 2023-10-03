@@ -1,11 +1,23 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { fireEvent } from '@testing-library/react-native';
+import type { BaseButtonProps } from '../BaseButton';
 import BaseButton from '../BaseButton';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 import { CloseIcon, CreditCardIcon } from '~components/Icons';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
+
+const variants: BaseButtonProps['variant'][] = ['primary', 'secondary', 'tertiary'];
+const colors: BaseButtonProps['color'][] = [
+  'default',
+  'white',
+  'positive',
+  'negative',
+  'notice',
+  'information',
+  'neutral',
+];
 
 describe('<BaseButton />', () => {
   it('should render button with default properties', () => {
@@ -146,231 +158,44 @@ describe('<BaseButton />', () => {
     expect(onClick).toHaveBeenCalledWith(eventData);
   });
 
-  it('should render secondary variant button', () => {
-    const buttonText = 'Pay Now';
-    const { toJSON } = renderWithTheme(<BaseButton variant="secondary">{buttonText}</BaseButton>);
-    expect(toJSON()).toMatchSnapshot();
+  colors.forEach((color) => {
+    variants.forEach((variant) => {
+      // We support only white and default color for tertiary variant
+      if (variant === 'tertiary' && color !== 'white' && color !== 'default') return;
+
+      it(`should render ${color} color ${variant} button`, () => {
+        const buttonText = 'Pay Now';
+        const { toJSON } = renderWithTheme(
+          <BaseButton color={color} variant={variant}>
+            {buttonText}
+          </BaseButton>,
+        );
+        expect(toJSON()).toMatchSnapshot();
+      });
+
+      it(`should render disabled ${color} color ${variant} button`, () => {
+        const buttonText = 'Pay Now';
+        const { toJSON } = renderWithTheme(
+          <BaseButton color={color} variant={variant} isDisabled={true}>
+            {buttonText}
+          </BaseButton>,
+        );
+        expect(toJSON()).toMatchSnapshot();
+      });
+    });
   });
 
-  it('should render disabled secondary variant button', () => {
+  it('should throw error if tertiary variant is passed with positive color', () => {
     const buttonText = 'Pay Now';
-    const { toJSON } = renderWithTheme(
-      <BaseButton variant="secondary" isDisabled={true}>
-        {buttonText}
-      </BaseButton>,
+    expect(() =>
+      renderWithTheme(
+        <BaseButton variant="tertiary" color="positive">
+          {buttonText}
+        </BaseButton>,
+      ),
+    ).toThrowErrorMatchingInlineSnapshot(
+      `"[Blade: BaseButton]: Tertiary variant can only be used with color: "default" or "white" but received "positive""`,
     );
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render tertiary variant button', () => {
-    const buttonText = 'Pay Now';
-    const { toJSON } = renderWithTheme(<BaseButton variant="tertiary">{buttonText}</BaseButton>);
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render disabled tertiary variant button', () => {
-    const buttonText = 'Pay Now';
-    const { toJSON } = renderWithTheme(
-      <BaseButton variant="tertiary" isDisabled={true}>
-        {buttonText}
-      </BaseButton>,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render positive intent low contrast button', () => {
-    const buttonText = 'Pay Now';
-    const { toJSON } = renderWithTheme(
-      <BaseButton intent="positive" contrast="low">
-        {buttonText}
-      </BaseButton>,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-  it('should render disabled positive intent low contrast button', () => {
-    const buttonText = 'Pay Now';
-    const { toJSON } = renderWithTheme(
-      <BaseButton intent="positive" contrast="low" isDisabled={true}>
-        {buttonText}
-      </BaseButton>,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render negative intent low contrast button', () => {
-    const buttonText = 'Pay Now';
-    const { toJSON } = renderWithTheme(
-      <BaseButton intent="negative" contrast="low">
-        {buttonText}
-      </BaseButton>,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-  it('should render disabled negative intent low contrast button', () => {
-    const buttonText = 'Pay Now';
-    const { toJSON } = renderWithTheme(
-      <BaseButton intent="negative" contrast="low" isDisabled={true}>
-        {buttonText}
-      </BaseButton>,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render neutral intent low contrast button', () => {
-    const buttonText = 'Pay Now';
-    const { toJSON } = renderWithTheme(
-      <BaseButton intent="neutral" contrast="low">
-        {buttonText}
-      </BaseButton>,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-  it('should render disabled neutral intent low contrast button', () => {
-    const buttonText = 'Pay Now';
-    const { toJSON } = renderWithTheme(
-      <BaseButton intent="neutral" contrast="low" isDisabled={true}>
-        {buttonText}
-      </BaseButton>,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render notice intent low contrast button', () => {
-    const buttonText = 'Pay Now';
-    const { toJSON } = renderWithTheme(
-      <BaseButton intent="notice" contrast="low">
-        {buttonText}
-      </BaseButton>,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-  it('should render disabled notice intent low contrast button', () => {
-    const buttonText = 'Pay Now';
-    const { toJSON } = renderWithTheme(
-      <BaseButton intent="notice" contrast="low" isDisabled={true}>
-        {buttonText}
-      </BaseButton>,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render information intent low contrast button', () => {
-    const buttonText = 'Pay Now';
-    const { toJSON } = renderWithTheme(
-      <BaseButton intent="information" contrast="low">
-        {buttonText}
-      </BaseButton>,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-  it('should render disabled information intent low contrast button', () => {
-    const buttonText = 'Pay Now';
-    const { toJSON } = renderWithTheme(
-      <BaseButton intent="information" contrast="low" isDisabled={true}>
-        {buttonText}
-      </BaseButton>,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render positive intent high contrast button', () => {
-    const buttonText = 'Pay Now';
-    const { toJSON } = renderWithTheme(
-      <BaseButton intent="positive" contrast="high">
-        {buttonText}
-      </BaseButton>,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render disabled positive intent high contrast button', () => {
-    const buttonText = 'Pay Now';
-    const { toJSON } = renderWithTheme(
-      <BaseButton intent="positive" contrast="high" isDisabled={true}>
-        {buttonText}
-      </BaseButton>,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render negative intent high contrast button', () => {
-    const buttonText = 'Pay Now';
-    const { toJSON } = renderWithTheme(
-      <BaseButton intent="negative" contrast="high">
-        {buttonText}
-      </BaseButton>,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render disabled negative intent high contrast button', () => {
-    const buttonText = 'Pay Now';
-    const { toJSON } = renderWithTheme(
-      <BaseButton intent="negative" contrast="high" isDisabled={true}>
-        {buttonText}
-      </BaseButton>,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render neutral intent high contrast button', () => {
-    const buttonText = 'Pay Now';
-    const { toJSON } = renderWithTheme(
-      <BaseButton intent="neutral" contrast="high">
-        {buttonText}
-      </BaseButton>,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render disabled neutral intent high contrast button', () => {
-    const buttonText = 'Pay Now';
-    const { toJSON } = renderWithTheme(
-      <BaseButton intent="neutral" contrast="high" isDisabled={true}>
-        {buttonText}
-      </BaseButton>,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render notice intent high contrast button', () => {
-    const buttonText = 'Pay Now';
-    const { toJSON } = renderWithTheme(
-      <BaseButton intent="notice" contrast="high">
-        {buttonText}
-      </BaseButton>,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render disabled notice intent high contrast button', () => {
-    const buttonText = 'Pay Now';
-    const { toJSON } = renderWithTheme(
-      <BaseButton intent="notice" contrast="high" isDisabled={true}>
-        {buttonText}
-      </BaseButton>,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render information intent high contrast button', () => {
-    const buttonText = 'Pay Now';
-    const { toJSON } = renderWithTheme(
-      <BaseButton intent="information" contrast="high">
-        {buttonText}
-      </BaseButton>,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render disabled information intent high contrast button', () => {
-    const buttonText = 'Pay Now';
-    const { toJSON } = renderWithTheme(
-      <BaseButton intent="information" contrast="high" isDisabled={true}>
-        {buttonText}
-      </BaseButton>,
-    );
-    expect(toJSON()).toMatchSnapshot();
   });
 
   it('should have accessibilityLabel', () => {

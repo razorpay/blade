@@ -26,7 +26,7 @@ exports[`<BaseLink /> should change the link to a visited state after click 1`] 
   border-radius: 2px;
 }
 
-.c0:focus .content-container {
+.c0:focus-visible .content-container {
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
@@ -118,7 +118,7 @@ exports[`<BaseLink /> should not change the button to a visited state after clic
   border-radius: 2px;
 }
 
-.c0:focus .content-container {
+.c0:focus-visible .content-container {
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
@@ -208,7 +208,7 @@ exports[`<BaseLink /> should render button variant of link 1`] = `
   border-radius: 2px;
 }
 
-.c0:focus .content-container {
+.c0:focus-visible .content-container {
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
@@ -272,6 +272,95 @@ exports[`<BaseLink /> should render button variant of link 1`] = `
 </div>
 `;
 
+exports[`<BaseLink /> should render default color link 1`] = `
+.c0 {
+  padding: 0;
+  background-color: transparent;
+  outline: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 2px;
+  -webkit-transition-property: box-shadow;
+  transition-property: box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+}
+
+.c0 .content-container {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  border-radius: 2px;
+}
+
+.c0:focus-visible .content-container {
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+}
+
+.c0 * {
+  -webkit-transition-property: color,fill;
+  transition-property: color,fill;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c2 {
+  color: hsla(218,89%,51%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+<div>
+  <a
+    aria-disabled="false"
+    class="c0"
+    data-blade-component="link"
+    role="link"
+  >
+    <span
+      class="c1 content-container"
+      data-blade-component="base-box"
+    >
+      <span
+        class="c2"
+        data-blade-component="base-text"
+      >
+        Learn More
+      </span>
+    </span>
+  </a>
+</div>
+`;
+
 exports[`<BaseLink /> should render disabled button variant of link 1`] = `
 .c0 {
   padding: 0;
@@ -298,7 +387,7 @@ exports[`<BaseLink /> should render disabled button variant of link 1`] = `
   border-radius: 2px;
 }
 
-.c0:focus .content-container {
+.c0:focus-visible .content-container {
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
@@ -363,7 +452,7 @@ exports[`<BaseLink /> should render disabled button variant of link 1`] = `
 </div>
 `;
 
-exports[`<BaseLink /> should render disabled information intent high contrast link 1`] = `
+exports[`<BaseLink /> should render disabled default color link 1`] = `
 .c0 {
   padding: 0;
   background-color: transparent;
@@ -389,7 +478,7 @@ exports[`<BaseLink /> should render disabled information intent high contrast li
   border-radius: 2px;
 }
 
-.c0:focus .content-container {
+.c0:focus-visible .content-container {
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
@@ -417,7 +506,7 @@ exports[`<BaseLink /> should render disabled information intent high contrast li
 }
 
 .c2 {
-  color: hsla(180,100%,97%,1);
+  color: hsla(218,89%,51%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
   font-weight: 700;
@@ -452,7 +541,7 @@ exports[`<BaseLink /> should render disabled information intent high contrast li
 </div>
 `;
 
-exports[`<BaseLink /> should render disabled information intent low contrast link 1`] = `
+exports[`<BaseLink /> should render disabled information color link 1`] = `
 .c0 {
   padding: 0;
   background-color: transparent;
@@ -478,7 +567,7 @@ exports[`<BaseLink /> should render disabled information intent low contrast lin
   border-radius: 2px;
 }
 
-.c0:focus .content-container {
+.c0:focus-visible .content-container {
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
@@ -541,7 +630,7 @@ exports[`<BaseLink /> should render disabled information intent low contrast lin
 </div>
 `;
 
-exports[`<BaseLink /> should render disabled negative intent high contrast link 1`] = `
+exports[`<BaseLink /> should render disabled negative color link 1`] = `
 .c0 {
   padding: 0;
   background-color: transparent;
@@ -567,96 +656,7 @@ exports[`<BaseLink /> should render disabled negative intent high contrast link 
   border-radius: 2px;
 }
 
-.c0:focus .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-}
-
-.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c2 {
-  color: hsla(0,100%,97%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-<div>
-  <a
-    aria-disabled="false"
-    class="c0"
-    data-blade-component="link"
-    role="link"
-  >
-    <span
-      class="c1 content-container"
-      data-blade-component="base-box"
-    >
-      <span
-        class="c2"
-        data-blade-component="base-text"
-      >
-        Learn More
-      </span>
-    </span>
-  </a>
-</div>
-`;
-
-exports[`<BaseLink /> should render disabled negative intent low contrast link 1`] = `
-.c0 {
-  padding: 0;
-  background-color: transparent;
-  outline: none;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
-  display: inline-block;
-  border-radius: 2px;
-  -webkit-transition-property: box-shadow;
-  transition-property: box-shadow;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
-}
-
-.c0 .content-container {
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
-  border-radius: 2px;
-}
-
-.c0:focus .content-container {
+.c0:focus-visible .content-container {
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
@@ -719,7 +719,7 @@ exports[`<BaseLink /> should render disabled negative intent low contrast link 1
 </div>
 `;
 
-exports[`<BaseLink /> should render disabled neutral intent high contrast link 1`] = `
+exports[`<BaseLink /> should render disabled neutral color link 1`] = `
 .c0 {
   padding: 0;
   background-color: transparent;
@@ -745,96 +745,7 @@ exports[`<BaseLink /> should render disabled neutral intent high contrast link 1
   border-radius: 2px;
 }
 
-.c0:focus .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-}
-
-.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c2 {
-  color: hsla(220,27%,98%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-<div>
-  <a
-    aria-disabled="false"
-    class="c0"
-    data-blade-component="link"
-    role="link"
-  >
-    <span
-      class="c1 content-container"
-      data-blade-component="base-box"
-    >
-      <span
-        class="c2"
-        data-blade-component="base-text"
-      >
-        Learn More
-      </span>
-    </span>
-  </a>
-</div>
-`;
-
-exports[`<BaseLink /> should render disabled neutral intent low contrast link 1`] = `
-.c0 {
-  padding: 0;
-  background-color: transparent;
-  outline: none;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
-  display: inline-block;
-  border-radius: 2px;
-  -webkit-transition-property: box-shadow;
-  transition-property: box-shadow;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
-}
-
-.c0 .content-container {
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
-  border-radius: 2px;
-}
-
-.c0:focus .content-container {
+.c0:focus-visible .content-container {
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
@@ -897,7 +808,7 @@ exports[`<BaseLink /> should render disabled neutral intent low contrast link 1`
 </div>
 `;
 
-exports[`<BaseLink /> should render disabled notice intent high contrast link 1`] = `
+exports[`<BaseLink /> should render disabled notice color link 1`] = `
 .c0 {
   padding: 0;
   background-color: transparent;
@@ -923,96 +834,7 @@ exports[`<BaseLink /> should render disabled notice intent high contrast link 1`
   border-radius: 2px;
 }
 
-.c0:focus .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-}
-
-.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c2 {
-  color: hsla(32,100%,94%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-<div>
-  <a
-    aria-disabled="false"
-    class="c0"
-    data-blade-component="link"
-    role="link"
-  >
-    <span
-      class="c1 content-container"
-      data-blade-component="base-box"
-    >
-      <span
-        class="c2"
-        data-blade-component="base-text"
-      >
-        Learn More
-      </span>
-    </span>
-  </a>
-</div>
-`;
-
-exports[`<BaseLink /> should render disabled notice intent low contrast link 1`] = `
-.c0 {
-  padding: 0;
-  background-color: transparent;
-  outline: none;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
-  display: inline-block;
-  border-radius: 2px;
-  -webkit-transition-property: box-shadow;
-  transition-property: box-shadow;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
-}
-
-.c0 .content-container {
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
-  border-radius: 2px;
-}
-
-.c0:focus .content-container {
+.c0:focus-visible .content-container {
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
@@ -1075,7 +897,7 @@ exports[`<BaseLink /> should render disabled notice intent low contrast link 1`]
 </div>
 `;
 
-exports[`<BaseLink /> should render disabled positive intent high contrast link 1`] = `
+exports[`<BaseLink /> should render disabled positive color link 1`] = `
 .c0 {
   padding: 0;
   background-color: transparent;
@@ -1101,96 +923,7 @@ exports[`<BaseLink /> should render disabled positive intent high contrast link 
   border-radius: 2px;
 }
 
-.c0:focus .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-}
-
-.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c2 {
-  color: hsla(107,100%,96%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-<div>
-  <a
-    aria-disabled="false"
-    class="c0"
-    data-blade-component="link"
-    role="link"
-  >
-    <span
-      class="c1 content-container"
-      data-blade-component="base-box"
-    >
-      <span
-        class="c2"
-        data-blade-component="base-text"
-      >
-        Learn More
-      </span>
-    </span>
-  </a>
-</div>
-`;
-
-exports[`<BaseLink /> should render disabled positive intent low contrast link 1`] = `
-.c0 {
-  padding: 0;
-  background-color: transparent;
-  outline: none;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
-  display: inline-block;
-  border-radius: 2px;
-  -webkit-transition-property: box-shadow;
-  transition-property: box-shadow;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
-}
-
-.c0 .content-container {
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
-  border-radius: 2px;
-}
-
-.c0:focus .content-container {
+.c0:focus-visible .content-container {
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
@@ -1253,6 +986,95 @@ exports[`<BaseLink /> should render disabled positive intent low contrast link 1
 </div>
 `;
 
+exports[`<BaseLink /> should render disabled white color link 1`] = `
+.c0 {
+  padding: 0;
+  background-color: transparent;
+  outline: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 2px;
+  -webkit-transition-property: box-shadow;
+  transition-property: box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+}
+
+.c0 .content-container {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  border-radius: 2px;
+}
+
+.c0:focus-visible .content-container {
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+}
+
+.c0 * {
+  -webkit-transition-property: color,fill;
+  transition-property: color,fill;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c2 {
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+<div>
+  <a
+    aria-disabled="false"
+    class="c0"
+    data-blade-component="link"
+    role="link"
+  >
+    <span
+      class="c1 content-container"
+      data-blade-component="base-box"
+    >
+      <span
+        class="c2"
+        data-blade-component="base-text"
+      >
+        Learn More
+      </span>
+    </span>
+  </a>
+</div>
+`;
+
 exports[`<BaseLink /> should render icon only link 1`] = `
 .c0 {
   padding: 0;
@@ -1279,7 +1101,7 @@ exports[`<BaseLink /> should render icon only link 1`] = `
   border-radius: 2px;
 }
 
-.c0:focus .content-container {
+.c0:focus-visible .content-container {
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
@@ -1384,7 +1206,7 @@ exports[`<BaseLink /> should render icon only link 1`] = `
 </div>
 `;
 
-exports[`<BaseLink /> should render information intent high contrast link 1`] = `
+exports[`<BaseLink /> should render information color link 1`] = `
 .c0 {
   padding: 0;
   background-color: transparent;
@@ -1410,96 +1232,7 @@ exports[`<BaseLink /> should render information intent high contrast link 1`] = 
   border-radius: 2px;
 }
 
-.c0:focus .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-}
-
-.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c2 {
-  color: hsla(180,100%,97%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-<div>
-  <a
-    aria-disabled="false"
-    class="c0"
-    data-blade-component="link"
-    role="link"
-  >
-    <span
-      class="c1 content-container"
-      data-blade-component="base-box"
-    >
-      <span
-        class="c2"
-        data-blade-component="base-text"
-      >
-        Learn More
-      </span>
-    </span>
-  </a>
-</div>
-`;
-
-exports[`<BaseLink /> should render information intent low contrast link 1`] = `
-.c0 {
-  padding: 0;
-  background-color: transparent;
-  outline: none;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
-  display: inline-block;
-  border-radius: 2px;
-  -webkit-transition-property: box-shadow;
-  transition-property: box-shadow;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
-}
-
-.c0 .content-container {
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
-  border-radius: 2px;
-}
-
-.c0:focus .content-container {
+.c0:focus-visible .content-container {
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
@@ -1588,7 +1321,7 @@ exports[`<BaseLink /> should render link with default properties 1`] = `
   border-radius: 2px;
 }
 
-.c0:focus .content-container {
+.c0:focus-visible .content-container {
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
@@ -1677,7 +1410,7 @@ exports[`<BaseLink /> should render link with icon with default iconPosition 1`]
   border-radius: 2px;
 }
 
-.c0:focus .content-container {
+.c0:focus-visible .content-container {
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
@@ -1810,7 +1543,7 @@ exports[`<BaseLink /> should render link with icon with left iconPosition 1`] = 
   border-radius: 2px;
 }
 
-.c0:focus .content-container {
+.c0:focus-visible .content-container {
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
@@ -1943,7 +1676,7 @@ exports[`<BaseLink /> should render link with icon with right iconPosition 1`] =
   border-radius: 2px;
 }
 
-.c0:focus .content-container {
+.c0:focus-visible .content-container {
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
@@ -2050,7 +1783,7 @@ exports[`<BaseLink /> should render link with icon with right iconPosition 1`] =
 </div>
 `;
 
-exports[`<BaseLink /> should render negative intent high contrast link 1`] = `
+exports[`<BaseLink /> should render negative color link 1`] = `
 .c0 {
   padding: 0;
   background-color: transparent;
@@ -2076,96 +1809,7 @@ exports[`<BaseLink /> should render negative intent high contrast link 1`] = `
   border-radius: 2px;
 }
 
-.c0:focus .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-}
-
-.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c2 {
-  color: hsla(0,100%,97%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-<div>
-  <a
-    aria-disabled="false"
-    class="c0"
-    data-blade-component="link"
-    role="link"
-  >
-    <span
-      class="c1 content-container"
-      data-blade-component="base-box"
-    >
-      <span
-        class="c2"
-        data-blade-component="base-text"
-      >
-        Learn More
-      </span>
-    </span>
-  </a>
-</div>
-`;
-
-exports[`<BaseLink /> should render negative intent low contrast link 1`] = `
-.c0 {
-  padding: 0;
-  background-color: transparent;
-  outline: none;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
-  display: inline-block;
-  border-radius: 2px;
-  -webkit-transition-property: box-shadow;
-  transition-property: box-shadow;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
-}
-
-.c0 .content-container {
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
-  border-radius: 2px;
-}
-
-.c0:focus .content-container {
+.c0:focus-visible .content-container {
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
@@ -2228,7 +1872,7 @@ exports[`<BaseLink /> should render negative intent low contrast link 1`] = `
 </div>
 `;
 
-exports[`<BaseLink /> should render neutral intent high contrast link 1`] = `
+exports[`<BaseLink /> should render neutral color link 1`] = `
 .c0 {
   padding: 0;
   background-color: transparent;
@@ -2254,96 +1898,7 @@ exports[`<BaseLink /> should render neutral intent high contrast link 1`] = `
   border-radius: 2px;
 }
 
-.c0:focus .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-}
-
-.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c2 {
-  color: hsla(220,27%,98%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-<div>
-  <a
-    aria-disabled="false"
-    class="c0"
-    data-blade-component="link"
-    role="link"
-  >
-    <span
-      class="c1 content-container"
-      data-blade-component="base-box"
-    >
-      <span
-        class="c2"
-        data-blade-component="base-text"
-      >
-        Learn More
-      </span>
-    </span>
-  </a>
-</div>
-`;
-
-exports[`<BaseLink /> should render neutral intent low contrast link 1`] = `
-.c0 {
-  padding: 0;
-  background-color: transparent;
-  outline: none;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
-  display: inline-block;
-  border-radius: 2px;
-  -webkit-transition-property: box-shadow;
-  transition-property: box-shadow;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
-}
-
-.c0 .content-container {
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
-  border-radius: 2px;
-}
-
-.c0:focus .content-container {
+.c0:focus-visible .content-container {
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
@@ -2406,7 +1961,7 @@ exports[`<BaseLink /> should render neutral intent low contrast link 1`] = `
 </div>
 `;
 
-exports[`<BaseLink /> should render notice intent high contrast link 1`] = `
+exports[`<BaseLink /> should render notice color link 1`] = `
 .c0 {
   padding: 0;
   background-color: transparent;
@@ -2432,96 +1987,7 @@ exports[`<BaseLink /> should render notice intent high contrast link 1`] = `
   border-radius: 2px;
 }
 
-.c0:focus .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-}
-
-.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c2 {
-  color: hsla(32,100%,94%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-<div>
-  <a
-    aria-disabled="false"
-    class="c0"
-    data-blade-component="link"
-    role="link"
-  >
-    <span
-      class="c1 content-container"
-      data-blade-component="base-box"
-    >
-      <span
-        class="c2"
-        data-blade-component="base-text"
-      >
-        Learn More
-      </span>
-    </span>
-  </a>
-</div>
-`;
-
-exports[`<BaseLink /> should render notice intent low contrast link 1`] = `
-.c0 {
-  padding: 0;
-  background-color: transparent;
-  outline: none;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
-  display: inline-block;
-  border-radius: 2px;
-  -webkit-transition-property: box-shadow;
-  transition-property: box-shadow;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
-}
-
-.c0 .content-container {
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
-  border-radius: 2px;
-}
-
-.c0:focus .content-container {
+.c0:focus-visible .content-container {
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
@@ -2584,7 +2050,7 @@ exports[`<BaseLink /> should render notice intent low contrast link 1`] = `
 </div>
 `;
 
-exports[`<BaseLink /> should render positive intent high contrast link 1`] = `
+exports[`<BaseLink /> should render positive color link 1`] = `
 .c0 {
   padding: 0;
   background-color: transparent;
@@ -2610,7 +2076,7 @@ exports[`<BaseLink /> should render positive intent high contrast link 1`] = `
   border-radius: 2px;
 }
 
-.c0:focus .content-container {
+.c0:focus-visible .content-container {
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
@@ -2638,7 +2104,7 @@ exports[`<BaseLink /> should render positive intent high contrast link 1`] = `
 }
 
 .c2 {
-  color: hsla(107,100%,96%,1);
+  color: hsla(160,100%,26%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
   font-weight: 700;
@@ -2673,7 +2139,7 @@ exports[`<BaseLink /> should render positive intent high contrast link 1`] = `
 </div>
 `;
 
-exports[`<BaseLink /> should render positive intent low contrast link 1`] = `
+exports[`<BaseLink /> should render white color link 1`] = `
 .c0 {
   padding: 0;
   background-color: transparent;
@@ -2699,7 +2165,7 @@ exports[`<BaseLink /> should render positive intent low contrast link 1`] = `
   border-radius: 2px;
 }
 
-.c0:focus .content-container {
+.c0:focus-visible .content-container {
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
@@ -2727,7 +2193,7 @@ exports[`<BaseLink /> should render positive intent low contrast link 1`] = `
 }
 
 .c2 {
-  color: hsla(160,100%,26%,1);
+  color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
   font-weight: 700;

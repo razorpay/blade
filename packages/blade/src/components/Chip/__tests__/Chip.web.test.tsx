@@ -55,6 +55,22 @@ describe('<Chip />', () => {
     expect(getByRole('radio', { name: 'No' })).toBeInTheDocument();
   });
 
+  it('should render chip with color', () => {
+    const { getByRole } = renderWithTheme(
+      <ChipGroup accessibilityLabel="Was this message helpful?">
+        <Chip value="apple" color="positive">
+          Yes
+        </Chip>
+        <Chip value="mango" color="negative">
+          No
+        </Chip>
+      </ChipGroup>,
+    );
+
+    expect(getByRole('radio', { name: 'Yes' })).toBeInTheDocument();
+    expect(getByRole('radio', { name: 'No' })).toBeInTheDocument();
+  });
+
   it('should throw error if used outside ChipGroup', () => {
     expect(() => renderWithTheme(<Chip value="apple">Apple</Chip>)).toThrowError(
       '[Blade: Chip]: <Chip /> component should only be used within the context of a <ChipGroup /> component',

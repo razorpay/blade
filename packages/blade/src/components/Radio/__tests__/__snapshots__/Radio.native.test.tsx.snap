@@ -346,16 +346,6 @@ exports[`<Radio /> should render radio with label 1`] = `
                       Remember password
                     </Text>
                   </View>
-                  <View
-                    data-blade-component="base-box"
-                    style={
-                      [
-                        {
-                          "marginLeft": 24,
-                        },
-                      ]
-                    }
-                  />
                 </View>
               </View>
             </View>
@@ -713,16 +703,6 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
                       Remember password
                     </Text>
                   </View>
-                  <View
-                    data-blade-component="base-box"
-                    style={
-                      [
-                        {
-                          "marginLeft": 24,
-                        },
-                      ]
-                    }
-                  />
                 </View>
               </View>
             </View>

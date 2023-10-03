@@ -1,12 +1,16 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { fireEvent } from '@testing-library/react';
 import { useRef } from 'react';
+import type { ButtonProps } from '../Button';
 import Button from '../Button';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { CreditCardIcon } from '~components/Icons';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
+
+const variants: ButtonProps['variant'][] = ['primary', 'secondary', 'tertiary'];
+const colors: ButtonProps['color'][] = ['default', 'white', 'positive', 'negative'];
 
 describe('<Button />', () => {
   it('should render button with default properties', () => {
@@ -78,36 +82,31 @@ describe('<Button />', () => {
     expect(button).toBeDisabled();
   });
 
-  it('should render secondary variant button', () => {
-    const buttonText = 'Pay Now';
-    const { container } = renderWithTheme(<Button variant="secondary">{buttonText}</Button>);
-    expect(container).toMatchSnapshot();
-  });
+  colors.forEach((color) => {
+    variants.forEach((variant) => {
+      // We support only white and default color for tertiary variant
+      if (variant === 'tertiary' && color !== 'white' && color !== 'default') return;
 
-  it('should render disabled secondary variant button', () => {
-    const buttonText = 'Pay Now';
-    const { container } = renderWithTheme(
-      <Button variant="secondary" isDisabled={true}>
-        {buttonText}
-      </Button>,
-    );
-    expect(container).toMatchSnapshot();
-  });
+      it(`should render ${color} color ${variant} button`, () => {
+        const buttonText = 'Pay Now';
+        const { container } = renderWithTheme(
+          <Button color={color} variant={variant}>
+            {buttonText}
+          </Button>,
+        );
+        expect(container).toMatchSnapshot();
+      });
 
-  it('should render tertiary variant button', () => {
-    const buttonText = 'Pay Now';
-    const { container } = renderWithTheme(<Button variant="tertiary">{buttonText}</Button>);
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render disabled tertiary variant button', () => {
-    const buttonText = 'Pay Now';
-    const { container } = renderWithTheme(
-      <Button variant="tertiary" isDisabled={true}>
-        {buttonText}
-      </Button>,
-    );
-    expect(container).toMatchSnapshot();
+      it(`should render disabled ${color} color ${variant} button`, () => {
+        const buttonText = 'Pay Now';
+        const { container } = renderWithTheme(
+          <Button color={color} variant={variant} isDisabled={true}>
+            {buttonText}
+          </Button>,
+        );
+        expect(container).toMatchSnapshot();
+      });
+    });
   });
 
   it('should call function on click', () => {

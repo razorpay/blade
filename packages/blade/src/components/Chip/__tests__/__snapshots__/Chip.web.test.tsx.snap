@@ -189,7 +189,7 @@ exports[`<Chip /> should render chip 1`] = `
   word-wrap: normal;
 }
 
-.c9:focus + div {
+.c9:focus-visible + div {
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
@@ -633,7 +633,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
   word-wrap: normal;
 }
 
-.c9:focus + div {
+.c9:focus-visible + div {
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
@@ -1179,7 +1179,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   word-wrap: normal;
 }
 
-.c9:focus + div {
+.c9:focus-visible + div {
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
@@ -1201,7 +1201,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   word-wrap: normal;
 }
 
-.c15:focus + div {
+.c15:focus-visible + div {
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
@@ -1329,7 +1329,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
     data-blade-component="base-box"
   >
     <div
-      aria-labelledby="chip-group-21-label"
+      aria-labelledby="chip-group-26-label"
       class="c0"
       data-blade-component="chip-group"
       role="radiogroup"
@@ -1376,7 +1376,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                   >
                     <input
                       aria-checked="false"
-                      aria-describedby="radio-22-helptext-23"
+                      aria-describedby="radio-27-helptext-28"
                       aria-disabled="true"
                       aria-invalid="false"
                       aria-required="false"
@@ -1430,7 +1430,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                   >
                     <input
                       aria-checked="false"
-                      aria-describedby="radio-24-helptext-25"
+                      aria-describedby="radio-29-helptext-30"
                       aria-disabled="false"
                       aria-invalid="false"
                       aria-required="false"

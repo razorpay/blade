@@ -245,6 +245,17 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
 }
 
 .c39 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   padding-right: 8px;
   padding-left: 0px;
 }
@@ -359,11 +370,11 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   border-color: hsla(230,100%,42%,1);
 }
 
-.c43:focus {
+.c43:focus-visible {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
+  outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-  outline: none;
 }
 
 .c43 * {
@@ -1130,7 +1141,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
 </div>
 `;
 
-exports[`<Dropdown /> with <DropdownButton /> should render menu and make items clickable 1`] = `
+exports[`<Dropdown /> with <DropdownButton /> should render menu 1`] = `
 .c0 {
   text-align: left;
   position: relative;
@@ -1155,6 +1166,11 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+}
+
+.c5 {
+  display: none;
+  z-index: 1001;
 }
 
 .c6 {
@@ -1203,14 +1219,6 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
 
 .c14 {
   margin-left: auto;
-}
-
-.c5 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  z-index: 1001;
 }
 
 .c7 {
@@ -1362,7 +1370,7 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
       data-blade-component="base-box"
     >
       <button
-        aria-controls="dropdown-1044-actionlist"
+        aria-controls="dropdown-1307-actionlist"
         aria-expanded="false"
         aria-haspopup="menu"
         class="c1"
@@ -1385,19 +1393,19 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
       <div
         class="c5"
         data-blade-component="base-box"
-        style="position: fixed; left: 0px; top: 0px; transform: translate(0px, 8px); min-width: 240px; max-width: 400px;"
+        style="position: fixed; left: 0px; top: 0px; transform: translate(0px, 0px);"
       >
         <div
           class="c6 c7"
           data-blade-component="dropdown-overlay"
           elevation="midRaised"
-          style="transition-property: transform,opacity; transition-duration: 200ms; transform: translateY(-8px); opacity: 0;"
+          style="transform: translateY(-8px); opacity: 0; transition-property: transform,opacity; transition-duration: 200ms;"
         >
           <div
-            aria-labelledby="dropdown-1044-label"
+            aria-labelledby="dropdown-1307-label"
             class=""
             data-blade-component="action-list"
-            id="dropdown-1044-actionlist"
+            id="dropdown-1307-actionlist"
             role="menu"
           >
             <div
@@ -1409,7 +1417,7 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
                 data-blade-component="action-list-item"
                 data-index="0"
                 data-value="profile"
-                id="dropdown-1044-0"
+                id="dropdown-1307-0"
                 role="menuitem"
                 tabindex="-1"
                 type="button"
@@ -1449,7 +1457,7 @@ exports[`<Dropdown /> with <DropdownButton /> should render menu and make items 
                 data-index="1"
                 data-value="settings"
                 href="/settings"
-                id="dropdown-1044-1"
+                id="dropdown-1307-1"
                 role="link"
                 tabindex="-1"
                 type="button"

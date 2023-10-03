@@ -27,7 +27,7 @@ type CoverageMetrics = {
 };
 
 const MAIN_FRAME_NODES = ['FRAME', 'SECTION'];
-const NODES_SKIP_FROM_COVERAGE = ['GROUP', 'SECTION', 'VECTOR', 'FRAME', 'ELLIPSE'];
+const NODES_SKIP_FROM_COVERAGE = ['GROUP', 'SECTION', 'VECTOR', 'FRAME', 'ELLIPSE', 'INSTANCE'];
 const nonBladeHighlighterNodes: BaseNode[] = [];
 const bladeCoverageCards: BaseNode[] = [];
 
@@ -238,6 +238,7 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
           } else {
             bladeComponents++;
           }
+          totalLayers++;
         }
         // else if (traversedNode.type === 'INSTANCE') {
         //   nonBladeComponents++;
@@ -373,11 +374,13 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
                 );
               }
             }
+          } else if (!isImage) {
+            highlightNonBladeNode(traversedNode, 'Box not adhering to Blade guidelines');
           }
         }
 
         if (
-          ![...NODES_SKIP_FROM_COVERAGE, 'INSTANCE', 'TEXT', 'LINE', 'RECTANGLE'].includes(
+          ![...NODES_SKIP_FROM_COVERAGE, 'TEXT', 'LINE', 'RECTANGLE'].includes(
             traversedNode.type,
           ) &&
           getParentNode(traversedNode)?.type !== 'PAGE'

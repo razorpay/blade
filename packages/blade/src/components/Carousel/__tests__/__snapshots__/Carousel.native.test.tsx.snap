@@ -267,8 +267,8 @@ exports[`Carousel Snapshots should render 1`] = `
               {
                 "alignItems": "center",
                 "alignSelf": "center",
-                "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                "borderColor": "hsla(216, 19%, 89%, 1)",
+                "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+                "borderColor": "hsla(216, 44%, 23%, 0)",
                 "borderRadius": 9999,
                 "borderStyle": "solid",
                 "borderWidth": 1,
@@ -553,8 +553,8 @@ exports[`Carousel Snapshots should render 1`] = `
               {
                 "alignItems": "center",
                 "alignSelf": "center",
-                "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                "borderColor": "hsla(216, 19%, 89%, 1)",
+                "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+                "borderColor": "hsla(216, 44%, 23%, 0)",
                 "borderRadius": 9999,
                 "borderStyle": "solid",
                 "borderWidth": 1,
@@ -961,8 +961,8 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
               {
                 "alignItems": "center",
                 "alignSelf": "center",
-                "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                "borderColor": "hsla(216, 19%, 89%, 1)",
+                "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+                "borderColor": "hsla(216, 44%, 23%, 0)",
                 "borderRadius": 9999,
                 "borderStyle": "solid",
                 "borderWidth": 1,
@@ -1320,8 +1320,8 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
               {
                 "alignItems": "center",
                 "alignSelf": "center",
-                "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                "borderColor": "hsla(216, 19%, 89%, 1)",
+                "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+                "borderColor": "hsla(216, 44%, 23%, 0)",
                 "borderRadius": 9999,
                 "borderStyle": "solid",
                 "borderWidth": 1,
