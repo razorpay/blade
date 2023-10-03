@@ -119,18 +119,26 @@ const _ActionListSection = ({
 }: ActionListSectionProps): React.ReactElement => {
   const { surfaceLevel } = useActionListContext();
   const { hasAutoCompleteInBottomSheetHeader, dropdownTriggerer, filteredValues } = useDropdown();
+  const hasAutoComplete =
+    hasAutoCompleteInBottomSheetHeader ||
+    dropdownTriggerer === dropdownComponentIds.triggers.AutoComplete;
 
   const isSectionVisible = React.useMemo(() => {
-    const hasAutoComplete =
-      hasAutoCompleteInBottomSheetHeader ||
-      dropdownTriggerer === dropdownComponentIds.triggers.AutoComplete;
+    if (hasAutoComplete) {
+      const visibleActionListItemInSection = _sectionChildValues?.find((actionItemValue) =>
+        filteredValues.includes(actionItemValue),
+      );
 
-    const visibleActionListItemInSection = _sectionChildValues?.find((actionItemValue) =>
-      filteredValues.includes(actionItemValue),
-    );
+      return Boolean(visibleActionListItemInSection);
+    }
 
-    return hasAutoComplete && Boolean(visibleActionListItemInSection);
-  }, [_sectionChildValues, dropdownTriggerer, filteredValues, hasAutoCompleteInBottomSheetHeader]);
+    return true;
+  }, [_sectionChildValues, hasAutoComplete, filteredValues]);
+
+  const showDividerInRN = !(_hideDivider && isReactNative());
+  const showDividerInAutoComplete = hasAutoComplete
+    ? isSectionVisible && filteredValues.length > 1
+    : true;
 
   return (
     <BaseBox
@@ -158,9 +166,9 @@ const _ActionListSection = ({
       >
         {children}
       </BaseBox>
-      {(_hideDivider && isReactNative()) || !isSectionVisible ? null : (
+      {showDividerInAutoComplete && showDividerInRN ? (
         <Divider marginX="spacing.3" marginY="spacing.1" />
-      )}
+      ) : null}
     </BaseBox>
   );
 };

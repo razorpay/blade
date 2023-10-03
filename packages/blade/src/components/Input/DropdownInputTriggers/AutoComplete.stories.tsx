@@ -486,11 +486,30 @@ export const InternalControlledInputValue = (): React.ReactElement => {
         />
         <DropdownOverlay>
           <ActionList>
+            <ActionListItem title="Mumbai" value="mumbai" />
+            <ActionListItem title="Pune" value="pune" />
+            <ActionListItem title="Bangalore" value="bangalore" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+    </Box>
+  );
+};
+
+export const InternalWithSectionFiltering = (): React.ReactElement => {
+  return (
+    <Box>
+      <Dropdown>
+        <AutoComplete label="Select City" />
+        <DropdownOverlay>
+          <ActionList>
             <ActionListSection title="Maharashtra">
               <ActionListItem title="Mumbai" value="mumbai" />
               <ActionListItem title="Pune" value="pune" />
             </ActionListSection>
-            <ActionListItem title="Bangalore" value="bangalore" />
+            <ActionListSection title="Karnataka">
+              <ActionListItem title="Bangalore" value="bangalore" />
+            </ActionListSection>
           </ActionList>
         </DropdownOverlay>
       </Dropdown>
