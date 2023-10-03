@@ -146,6 +146,7 @@ const getNativeConfig = ({ exportCategory }) => ({
         'react-native-reanimated/plugin',
       ],
       extensions: nativeExtensions,
+      babelrc: false,
     }),
     aliases,
   ],
@@ -220,6 +221,8 @@ const config = () => {
   }
 
   if (framework === 'REACT_NATIVE') {
+    process.env.NODE_ENV = 'production';
+    process.env.BABEL_ENV = 'production';
     return exportCategories.map((exportCategory) => [getNativeConfig({ exportCategory })]).flat();
   }
 
