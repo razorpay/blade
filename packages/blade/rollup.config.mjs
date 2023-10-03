@@ -11,6 +11,16 @@ import pluginReplace from '@rollup/plugin-replace';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import ts from 'typescript';
 
+const babelAlias = {
+  '@storybook/react': '@storybook/react-native',
+  '^styled-components$': 'styled-components/native',
+  // react-native path resolution
+  '~src': './src',
+  '~components': './src/components',
+  '~utils': './src/utils',
+  '~tokens': './src/tokens',
+};
+
 const webExtensions = [
   '.web.js',
   '.web.ts',
@@ -116,6 +126,25 @@ const getNativeConfig = ({ exportCategory }) => ({
       exclude: 'node_modules/**',
       babelHelpers: 'runtime',
       envName: 'production',
+      presets: [
+        '@babel/preset-typescript',
+        ['module:metro-react-native-babel-preset', { disableImportExportTransform: true }],
+      ],
+      plugins: [
+        [
+          'module-resolver',
+          {
+            alias: babelAlias,
+          },
+        ],
+        [
+          '@babel/plugin-transform-react-jsx',
+          {
+            runtime: 'automatic',
+          },
+        ],
+        'react-native-reanimated/plugin',
+      ],
       extensions: nativeExtensions,
     }),
     aliases,
