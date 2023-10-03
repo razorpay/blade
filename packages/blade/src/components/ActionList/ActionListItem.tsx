@@ -103,14 +103,34 @@ type ActionListSectionProps = {
    * @private
    */
   _hideDivider?: boolean;
+  /**
+   * Internally used to hide / show section in AutoComplete
+   *
+   * @private
+   */
+  _sectionChildValues?: string[];
 } & TestID;
 const _ActionListSection = ({
   title,
   children,
   testID,
   _hideDivider,
+  _sectionChildValues,
 }: ActionListSectionProps): React.ReactElement => {
   const { surfaceLevel } = useActionListContext();
+  const { hasAutoCompleteInBottomSheetHeader, dropdownTriggerer, filteredValues } = useDropdown();
+
+  const isSectionVisible = React.useMemo(() => {
+    const hasAutoComplete =
+      hasAutoCompleteInBottomSheetHeader ||
+      dropdownTriggerer === dropdownComponentIds.triggers.AutoComplete;
+
+    const visibleActionListItemInSection = _sectionChildValues?.find((actionItemValue) =>
+      filteredValues.includes(actionItemValue),
+    );
+
+    return hasAutoComplete && Boolean(visibleActionListItemInSection);
+  }, [_sectionChildValues, dropdownTriggerer, filteredValues, hasAutoCompleteInBottomSheetHeader]);
 
   return (
     <BaseBox
@@ -122,11 +142,13 @@ const _ActionListSection = ({
       {...metaAttribute({ name: MetaConstants.ActionListSection, testID })}
     >
       {/* We're announcing title as group label so we can hide this */}
-      <StyledActionListSectionTitle {...makeAccessible({ hidden: true })}>
-        <Text color="surface.text.muted.lowContrast" size="small" weight="bold">
-          {title}
-        </Text>
-      </StyledActionListSectionTitle>
+      {isSectionVisible ? (
+        <StyledActionListSectionTitle {...makeAccessible({ hidden: true })}>
+          <Text color="surface.text.muted.lowContrast" size="small" weight="bold">
+            {title}
+          </Text>
+        </StyledActionListSectionTitle>
+      ) : null}
       <BaseBox
         {...makeAccessible({
           // On web, we just wrap it in another listbox to announce item count properly for particular group.
@@ -136,7 +158,9 @@ const _ActionListSection = ({
       >
         {children}
       </BaseBox>
-      {_hideDivider && isReactNative() ? null : <Divider marginX="spacing.3" marginY="spacing.1" />}
+      {(_hideDivider && isReactNative()) || !isSectionVisible ? null : (
+        <Divider marginX="spacing.3" marginY="spacing.1" />
+      )}
     </BaseBox>
   );
 };

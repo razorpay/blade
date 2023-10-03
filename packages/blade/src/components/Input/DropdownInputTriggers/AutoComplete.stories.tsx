@@ -8,7 +8,7 @@ import iconMap from '~components/Icons/iconMap';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Dropdown, DropdownFooter, DropdownOverlay } from '~components/Dropdown';
-import { ActionList, ActionListItem } from '~components/ActionList';
+import { ActionList, ActionListItem, ActionListSection } from '~components/ActionList';
 import { Box } from '~components/Box';
 import { BottomSheet, BottomSheetBody, BottomSheetHeader } from '~components/BottomSheet';
 import { Button } from '~components/Button';
@@ -486,8 +486,10 @@ export const InternalControlledInputValue = (): React.ReactElement => {
         />
         <DropdownOverlay>
           <ActionList>
-            <ActionListItem title="Mumbai" value="mumbai" />
-            <ActionListItem title="Pune" value="pune" />
+            <ActionListSection title="Maharashtra">
+              <ActionListItem title="Mumbai" value="mumbai" />
+              <ActionListItem title="Pune" value="pune" />
+            </ActionListSection>
             <ActionListItem title="Bangalore" value="bangalore" />
           </ActionList>
         </DropdownOverlay>
