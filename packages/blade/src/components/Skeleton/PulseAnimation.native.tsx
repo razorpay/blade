@@ -29,7 +29,6 @@ const PulseAnimation = ({
   const progress = useSharedValue(0);
 
   const fadeIn = () => {
-    'worklet';
     const animations = {
       opacity: withTiming(1, { duration: totalDuration, easing }),
     };
