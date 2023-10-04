@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 10.14.3
+
+### Patch Changes
+
+- 4d6e6aeb: fix(AutoComplete): hide ActionListSection when items are filtered out
+
 ## 10.14.2
 
 ### Patch Changes
