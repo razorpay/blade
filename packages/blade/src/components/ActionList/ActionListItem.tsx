@@ -103,14 +103,42 @@ type ActionListSectionProps = {
    * @private
    */
   _hideDivider?: boolean;
+  /**
+   * Internally used to hide / show section in AutoComplete
+   *
+   * @private
+   */
+  _sectionChildValues?: string[];
 } & TestID;
 const _ActionListSection = ({
   title,
   children,
   testID,
   _hideDivider,
+  _sectionChildValues,
 }: ActionListSectionProps): React.ReactElement => {
   const { surfaceLevel } = useActionListContext();
+  const { hasAutoCompleteInBottomSheetHeader, dropdownTriggerer, filteredValues } = useDropdown();
+  const hasAutoComplete =
+    hasAutoCompleteInBottomSheetHeader ||
+    dropdownTriggerer === dropdownComponentIds.triggers.AutoComplete;
+
+  const isSectionVisible = React.useMemo(() => {
+    if (hasAutoComplete) {
+      const visibleActionListItemInSection = _sectionChildValues?.find((actionItemValue) =>
+        filteredValues.includes(actionItemValue),
+      );
+
+      return Boolean(visibleActionListItemInSection);
+    }
+
+    return true;
+  }, [_sectionChildValues, hasAutoComplete, filteredValues]);
+
+  const showDividerInRN = !(_hideDivider && isReactNative());
+  const showDividerInAutoComplete = hasAutoComplete
+    ? isSectionVisible && filteredValues.length > 1
+    : true;
 
   return (
     <BaseBox
@@ -122,11 +150,13 @@ const _ActionListSection = ({
       {...metaAttribute({ name: MetaConstants.ActionListSection, testID })}
     >
       {/* We're announcing title as group label so we can hide this */}
-      <StyledActionListSectionTitle {...makeAccessible({ hidden: true })}>
-        <Text color="surface.text.muted.lowContrast" size="small" weight="bold">
-          {title}
-        </Text>
-      </StyledActionListSectionTitle>
+      {isSectionVisible ? (
+        <StyledActionListSectionTitle {...makeAccessible({ hidden: true })}>
+          <Text color="surface.text.muted.lowContrast" size="small" weight="bold">
+            {title}
+          </Text>
+        </StyledActionListSectionTitle>
+      ) : null}
       <BaseBox
         {...makeAccessible({
           // On web, we just wrap it in another listbox to announce item count properly for particular group.
@@ -136,7 +166,9 @@ const _ActionListSection = ({
       >
         {children}
       </BaseBox>
-      {_hideDivider && isReactNative() ? null : <Divider marginX="spacing.3" marginY="spacing.1" />}
+      {showDividerInAutoComplete && showDividerInRN ? (
+        <Divider marginX="spacing.3" marginY="spacing.1" />
+      ) : null}
     </BaseBox>
   );
 };
