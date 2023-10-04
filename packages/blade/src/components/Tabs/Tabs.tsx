@@ -4,6 +4,7 @@ import { TabsContext } from './TabsContext';
 import { useControllableState } from '~utils/useControllable';
 import { useFirstRender } from '~utils/useFirstRender';
 import { useId } from '~utils/useId';
+import BaseBox from '~components/Box/BaseBox';
 
 const Tabs = ({
   children,
@@ -36,7 +37,11 @@ const Tabs = ({
     setSelectedValue,
   };
 
-  return <TabsContext.Provider value={contextValue}>{children}</TabsContext.Provider>;
+  return (
+    <TabsContext.Provider value={contextValue}>
+      <BaseBox>{children}</BaseBox>
+    </TabsContext.Provider>
+  );
 };
 
 export { Tabs };

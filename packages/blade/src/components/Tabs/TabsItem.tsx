@@ -11,6 +11,7 @@ import { useIsMobile } from '~utils/useIsMobile';
 import { logger, throwBladeError } from '~utils/logger';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { makeAccessible } from '~utils/makeAccessible';
+import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 
 const paddings = {
   top: {
@@ -73,16 +74,19 @@ const selectedColor = {
 
 const StyledTabButton = styled.button<{
   size: TabsProps['size'];
-}>(({ theme, size }) => {
+  autoWidth?: TabsProps['autoWidth'];
+}>(({ theme, size, autoWidth }) => {
   const isMobile = useIsMobile();
   const device = isMobile ? 'mobile' : 'desktop';
 
   return {
+    width: autoWidth ? '100%' : undefined,
     appearance: 'none',
     border: 'none',
     outline: 'none',
     display: 'flex',
     alignItems: 'center',
+    justifyContent: autoWidth ? 'center' : 'left',
     gap: makeSpace(theme.spacing[3]),
     paddingTop: makeSpace(get(theme, paddings.top[device][size!])),
     paddingBottom: makeSpace(get(theme, paddings.bottom[device][size!])),
@@ -93,6 +97,7 @@ const StyledTabButton = styled.button<{
     borderBottomStyle: 'solid',
     borderBottomWidth: makeBorderSize(theme.border.width.thick),
     borderBottomColor: 'transparent',
+    transform: 'translateY(1.5px)',
     '&:hover': {
       borderBottomColor: theme.colors.surface.border.normal.lowContrast,
     },
@@ -155,7 +160,7 @@ const useTrailingRestriction = (
   ] = React.useState<React.ReactElement | null>(null);
 
   // validate and restrict sub component props in trailing prop
-  React.useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (React.isValidElement(trailing)) {
       const trailingComponentType = getComponentId(trailing) as TrailingComponents;
       const restrictedProps = propRestrictionMap[trailingComponentType]?.[tabItemSize];
@@ -194,7 +199,7 @@ const TabsItem = ({
   trailing,
   isDisabled,
 }: TabsItemProps): React.ReactElement => {
-  const { size, selectedValue, setSelectedValue, baseId } = useTabsContext();
+  const { size, autoWidth, selectedValue, setSelectedValue, baseId } = useTabsContext();
   const { currentInteraction, ...interactionProps } = useInteraction();
   const validatedTrailingComponent = useTrailingRestriction(trailing, size!);
   const isSelected = selectedValue === value;
@@ -205,6 +210,7 @@ const TabsItem = ({
     <CompositeItem
       render={
         <StyledTabButton
+          autoWidth={autoWidth}
           id={tabItemId}
           size={size}
           {...interactionProps}
