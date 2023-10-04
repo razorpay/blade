@@ -104,6 +104,10 @@ type TabsItemProps = {
    * Can be used to render an badge/counter.
    */
   trailing?: React.ReactNode;
+  /**
+   * If `true`, the tab item will be disabled.
+   */
+  disabled?: boolean;
 };
 ```
 
