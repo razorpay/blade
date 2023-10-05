@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 import styled from 'styled-components';
 import get from 'lodash/get';
 import React from 'react';
@@ -14,47 +15,91 @@ import { makeAccessible } from '~utils/makeAccessible';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 
 const paddings = {
-  top: {
-    desktop: {
-      medium: 'spacing.2',
-      large: 'spacing.2',
+  bordered: {
+    top: {
+      desktop: {
+        medium: 'spacing.2',
+        large: 'spacing.2',
+      },
+      mobile: {
+        medium: 'spacing.2',
+        large: 'spacing.2',
+      },
     },
-    mobile: {
-      medium: 'spacing.2',
-      large: 'spacing.2',
+    bottom: {
+      desktop: {
+        medium: 'spacing.5',
+        large: 'spacing.4',
+      },
+      mobile: {
+        medium: 'spacing.3',
+        large: 'spacing.3',
+      },
+    },
+    left: {
+      desktop: {
+        medium: 'spacing.6',
+        large: 'spacing.6',
+      },
+      mobile: {
+        medium: 'spacing.5',
+        large: 'spacing.5',
+      },
+    },
+    right: {
+      desktop: {
+        medium: 'spacing.6',
+        large: 'spacing.6',
+      },
+      mobile: {
+        medium: 'spacing.5',
+        large: 'spacing.5',
+      },
     },
   },
-  bottom: {
-    desktop: {
-      medium: 'spacing.5',
-      large: 'spacing.4',
+  filled: {
+    top: {
+      desktop: {
+        medium: 'spacing.3',
+        large: 'spacing.3',
+      },
+      mobile: {
+        medium: 'spacing.2',
+        large: 'spacing.2',
+      },
     },
-    mobile: {
-      medium: 'spacing.3',
-      large: 'spacing.3',
+    bottom: {
+      desktop: {
+        medium: 'spacing.3',
+        large: 'spacing.3',
+      },
+      mobile: {
+        medium: 'spacing.2',
+        large: 'spacing.2',
+      },
+    },
+    left: {
+      desktop: {
+        medium: 'spacing.0',
+        large: 'spacing.0',
+      },
+      mobile: {
+        medium: 'spacing.0',
+        large: 'spacing.0',
+      },
+    },
+    right: {
+      desktop: {
+        medium: 'spacing.0',
+        large: 'spacing.0',
+      },
+      mobile: {
+        medium: 'spacing.0',
+        large: 'spacing.0',
+      },
     },
   },
-  left: {
-    desktop: {
-      medium: 'spacing.6',
-      large: 'spacing.6',
-    },
-    mobile: {
-      medium: 'spacing.5',
-      large: 'spacing.5',
-    },
-  },
-  right: {
-    desktop: {
-      medium: 'spacing.6',
-      large: 'spacing.6',
-    },
-    mobile: {
-      medium: 'spacing.5',
-      large: 'spacing.5',
-    },
-  },
-};
+} as const;
 
 const textColor = {
   default: 'surface.text.muted.lowContrast',
@@ -72,12 +117,55 @@ const selectedColor = {
   disabled: 'surface.text.placeholder.lowContrast',
 } as const;
 
+const backgroundColor = {
+  unselected: {
+    bordered: {
+      default: 'transparent',
+      hover: 'transparent',
+      focus: 'transparent',
+      active: 'transparent',
+      disabled: 'transparent',
+    },
+    filled: {
+      default: 'transparent',
+      hover: 'colors.brand.gray.a50.lowContrast',
+      focus: 'colors.brand.gray.a50.lowContrast',
+      active: 'colors.brand.gray.a50.lowContrast',
+      disabled: 'transparent',
+    },
+  },
+  selected: {
+    bordered: {
+      default: 'transparent',
+      hover: 'transparent',
+      focus: 'transparent',
+      active: 'transparent',
+      disabled: 'transparent',
+    },
+    filled: {
+      default: 'transparent',
+      hover: 'transparent',
+      focus: 'transparent',
+      active: 'transparent',
+      disabled: 'transparent',
+    },
+  },
+} as const;
+
 const StyledTabButton = styled.button<{
   size: TabsProps['size'];
   autoWidth?: TabsProps['autoWidth'];
-}>(({ theme, size, autoWidth }) => {
+  variant: NonNullable<TabsProps['variant']>;
+  isSelected: boolean;
+}>(({ theme, isSelected, size, variant, autoWidth }) => {
   const isMobile = useIsMobile();
   const device = isMobile ? 'mobile' : 'desktop';
+  const selectedState = isSelected ? 'selected' : 'unselected';
+
+  const getColor = (value: string): string => {
+    if (value === 'transparent') return 'transparent';
+    return get(theme, value);
+  };
 
   return {
     width: autoWidth ? '100%' : undefined,
@@ -87,23 +175,32 @@ const StyledTabButton = styled.button<{
     display: 'flex',
     alignItems: 'center',
     justifyContent: autoWidth ? 'center' : 'left',
-    gap: makeSpace(theme.spacing[3]),
-    paddingTop: makeSpace(get(theme, paddings.top[device][size!])),
-    paddingBottom: makeSpace(get(theme, paddings.bottom[device][size!])),
-    paddingLeft: makeSpace(get(theme, paddings.left[device][size!])),
-    paddingRight: makeSpace(get(theme, paddings.right[device][size!])),
-    backgroundColor: 'transparent',
     cursor: 'pointer',
+    gap: makeSpace(theme.spacing[3]),
+    paddingTop: makeSpace(get(theme, paddings[variant].top[device][size!])),
+    paddingBottom: makeSpace(get(theme, paddings[variant].bottom[device][size!])),
+    paddingLeft: makeSpace(get(theme, paddings[variant].left[device][size!])),
+    paddingRight: makeSpace(get(theme, paddings[variant].right[device][size!])),
+    // colors
+    backgroundColor: getColor(backgroundColor[selectedState][variant].default),
+    borderRadius: variant === 'filled' ? theme.border.radius.small : 0,
     borderBottomStyle: 'solid',
-    borderBottomWidth: makeBorderSize(theme.border.width.thick),
+    borderBottomWidth: variant === 'filled' ? 0 : makeBorderSize(theme.border.width.thick),
     borderBottomColor: 'transparent',
-    transform: 'translateY(1.5px)',
+
+    // states
     '&:hover': {
       borderBottomColor: theme.colors.surface.border.normal.lowContrast,
+      backgroundColor: getColor(backgroundColor[selectedState][variant].hover),
+    },
+    '&:disabled': {
+      cursor: 'not-allowed',
+      backgroundColor: getColor(backgroundColor[selectedState][variant].disabled),
     },
     '&:focus-visible': {
       borderRadius: makeSpace(theme.border.radius.medium),
       boxShadow: `0px 0px 0px 4px ${theme.colors.brand.primary[400]}`,
+      backgroundColor: getColor(backgroundColor[selectedState][variant].focus),
     },
 
     '*': {
@@ -197,9 +294,9 @@ const TabsItem = ({
   value,
   leading,
   trailing,
-  isDisabled,
+  isDisabled = false,
 }: TabsItemProps): React.ReactElement => {
-  const { size, autoWidth, selectedValue, setSelectedValue, baseId } = useTabsContext();
+  const { size, autoWidth, selectedValue, setSelectedValue, baseId, variant } = useTabsContext();
   const { currentInteraction, ...interactionProps } = useInteraction();
   const validatedTrailingComponent = useTrailingRestriction(trailing, size!);
   const isSelected = selectedValue === value;
@@ -210,9 +307,12 @@ const TabsItem = ({
     <CompositeItem
       render={
         <StyledTabButton
-          autoWidth={autoWidth}
+          isSelected={isSelected}
+          variant={variant!}
+          autoWidth={autoWidth || variant === 'filled'}
           id={tabItemId}
           size={size}
+          disabled={isDisabled}
           {...interactionProps}
           onClick={() => {
             setSelectedValue(() => value);
@@ -221,7 +321,6 @@ const TabsItem = ({
             role: 'tab',
             selected: isSelected,
             controls: panelId,
-            disabled: isDisabled,
           })}
         >
           {leading
@@ -231,7 +330,11 @@ const TabsItem = ({
               })
             : null}
           <Text
-            color={isSelected ? selectedColor[currentInteraction] : textColor[currentInteraction]}
+            color={
+              isSelected
+                ? selectedColor[isDisabled ? 'disabled' : currentInteraction]
+                : textColor[isDisabled ? 'disabled' : currentInteraction]
+            }
             size={size === 'medium' ? 'medium' : 'large'}
             weight={size === 'medium' ? 'bold' : 'regular'}
           >

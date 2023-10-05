@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable consistent-return */
 import React from 'react';
 import { useTabsContext } from './TabsContext';
@@ -5,26 +7,48 @@ import { castWebType, makeMotionTime, useTheme } from '~utils';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import BaseBox from '~components/Box/BaseBox';
 
-const TabsIndicator = (): React.ReactElement => {
-  const { selectedValue, baseId } = useTabsContext();
+const TabsIndicator = ({
+  tabListContainerRef,
+}: {
+  tabListContainerRef: React.RefObject<HTMLElement | null>;
+}): React.ReactElement => {
   const { theme } = useTheme();
+  const { selectedValue, baseId, variant } = useTabsContext();
+  const [hasMeasured, setHasMeasured] = React.useState(false);
   const [activeElementDimensions, setActiveElementDimensions] = React.useState({
     width: 0,
+    height: 0,
     x: 0,
+    y: 0,
   });
-  const [hasMeasured, setHasMeasured] = React.useState(false);
 
-  useIsomorphicLayoutEffect(() => {
-    if (!selectedValue) return;
-    // Set the initial active element dimensions
+  // Update the dimensions of the active element
+  const updateDimensions = React.useCallback(() => {
     const tabItemId = `${baseId}-${selectedValue}-tabitem`;
     const activeTabItem = document.getElementById(tabItemId);
     if (!activeTabItem) return;
 
+    // Set the width offset cutoff for the indicator on filled variant
+    // This is to account for the divider in between tabs
+    const widthOffsetCutoff = variant === 'filled' ? 2 : 0;
     setActiveElementDimensions({
-      width: activeTabItem.offsetWidth,
-      x: activeTabItem.offsetLeft,
+      width: activeTabItem.offsetWidth - widthOffsetCutoff * 2,
+      height: activeTabItem.offsetHeight,
+      x: activeTabItem.offsetLeft + widthOffsetCutoff,
+      y:
+        variant === 'filled'
+          ? // on filled variant the indicator is positioned on top of the tab item
+            // so no need to add offsetHeight
+            activeTabItem.offsetTop
+          : activeTabItem.offsetTop + activeTabItem.offsetHeight - 2,
     });
+  }, [baseId, selectedValue, tabListContainerRef, variant]);
+
+  // Update the dimensions when the selected value changes
+  useIsomorphicLayoutEffect(() => {
+    if (!selectedValue) return;
+
+    updateDimensions();
 
     const id = requestAnimationFrame(() => {
       setHasMeasured(true);
@@ -37,20 +61,68 @@ const TabsIndicator = (): React.ReactElement => {
     };
   }, [baseId, selectedValue]);
 
+  // Update the dimensions when the window resizes or when the font loads
+  React.useEffect(() => {
+    if (!tabListContainerRef.current) return;
+
+    // check for FontFace API support
+    // FontFaceAPI is widely supported but better to be safe than sorry
+    if ('fonts' in document) {
+      try {
+        // wait for fonts to be loaded and then recalculate the dimensions
+        void document.fonts.ready.then(() => {
+          updateDimensions();
+        });
+      } catch (err: unknown) {
+        /* empty */
+      }
+    }
+
+    window.addEventListener('resize', updateDimensions);
+
+    return () => {
+      if (!tabListContainerRef.current) return;
+      window.removeEventListener('resize', updateDimensions);
+    };
+  }, [tabListContainerRef, updateDimensions]);
+
+  const transitionProps = {
+    transitionProperty: 'transform, width',
+    transitionDuration: hasMeasured
+      ? castWebType(makeMotionTime(theme.motion.duration.gentle))
+      : '0ms',
+    transitionTimingFunction: castWebType(theme.motion.easing.standard.effective),
+  };
+
+  if (variant === 'filled') {
+    return (
+      <BaseBox
+        position="absolute"
+        left="0px"
+        top="0px"
+        borderRadius="small"
+        backgroundColor="brand.primary.300"
+        style={{
+          ...transitionProps,
+          width: `${activeElementDimensions.width}px`,
+          height: `${activeElementDimensions.height}px`,
+          transform: `translate(${activeElementDimensions.x}px, ${activeElementDimensions.y}px)`,
+        }}
+      />
+    );
+  }
+
   return (
     <BaseBox
       position="absolute"
-      left="spacing.0"
-      borderBottomWidth="thick"
+      left="0%"
+      top="0px"
+      height="1.5px"
+      backgroundColor="brand.primary.500"
       style={{
-        transitionProperty: 'transform, width',
-        transitionDuration: hasMeasured
-          ? castWebType(makeMotionTime(theme.motion.duration.gentle))
-          : '0ms',
-        transitionTimingFunction: castWebType(theme.motion.easing.standard.effective),
-        borderBottomColor: theme.colors.brand.primary[500],
+        ...transitionProps,
         width: `${activeElementDimensions.width}px`,
-        transform: `translate(${activeElementDimensions.x}px, -1.5px)`,
+        transform: `translate(${activeElementDimensions.x}px, ${activeElementDimensions.y}px)`,
       }}
     />
   );
