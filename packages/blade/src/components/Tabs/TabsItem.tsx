@@ -5,6 +5,7 @@ import React from 'react';
 import { CompositeItem } from '@floating-ui/react';
 import type { TabsItemProps, TabsProps } from './types';
 import { useTabsContext } from './TabsContext';
+import { backgroundColor, paddings, textColor } from './tabTokens';
 import { Text } from '~components/Typography';
 import { castWebType, makeBorderSize, makeMotionTime, makeSpace } from '~utils';
 import useInteraction from '~utils/useInteraction';
@@ -13,244 +14,6 @@ import { logger, throwBladeError } from '~utils/logger';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { makeAccessible } from '~utils/makeAccessible';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
-import type { DotNotationSpacingStringToken } from '~utils/types';
-
-type Devices = 'desktop' | 'mobile';
-type TabSizes = 'medium' | 'large';
-type TabVariants = 'bordered' | 'filled';
-type TabOrientation = 'horizontal' | 'vertical';
-
-type TabItemPaddings = Record<
-  TabVariants,
-  Record<
-    TabOrientation,
-    Record<
-      Devices,
-      {
-        top: Record<TabSizes, DotNotationSpacingStringToken>;
-        bottom: Record<TabSizes, DotNotationSpacingStringToken>;
-        left: Record<TabSizes, DotNotationSpacingStringToken>;
-        right: Record<TabSizes, DotNotationSpacingStringToken>;
-      }
-    >
-  >
->;
-
-const paddings: TabItemPaddings = {
-  bordered: {
-    horizontal: {
-      desktop: {
-        top: {
-          medium: 'spacing.2',
-          large: 'spacing.2',
-        },
-        bottom: {
-          medium: 'spacing.5',
-          large: 'spacing.4',
-        },
-        left: {
-          medium: 'spacing.6',
-          large: 'spacing.6',
-        },
-        right: {
-          medium: 'spacing.6',
-          large: 'spacing.6',
-        },
-      },
-      mobile: {
-        top: {
-          medium: 'spacing.2',
-          large: 'spacing.2',
-        },
-        bottom: {
-          medium: 'spacing.3',
-          large: 'spacing.3',
-        },
-        left: {
-          medium: 'spacing.5',
-          large: 'spacing.5',
-        },
-        right: {
-          medium: 'spacing.5',
-          large: 'spacing.5',
-        },
-      },
-    },
-    vertical: {
-      desktop: {
-        top: {
-          medium: 'spacing.2',
-          large: 'spacing.2',
-        },
-        bottom: {
-          medium: 'spacing.2',
-          large: 'spacing.2',
-        },
-        left: {
-          medium: 'spacing.4',
-          large: 'spacing.4',
-        },
-        right: {
-          // TODO: Check with RK once,
-          // in design it's 0, but I'm deviating here because otherwise the text is too close to the edge of the tab
-          // And it's better to be consistent with the padding all around the tab imo
-          medium: 'spacing.4',
-          large: 'spacing.4',
-        },
-      },
-      mobile: {
-        top: {
-          medium: 'spacing.2',
-          large: 'spacing.2',
-        },
-        bottom: {
-          medium: 'spacing.2',
-          large: 'spacing.2',
-        },
-        left: {
-          medium: 'spacing.4',
-          large: 'spacing.4',
-        },
-        right: {
-          // TODO: Same here, Check with RK once,
-          medium: 'spacing.4',
-          large: 'spacing.4',
-        },
-      },
-    },
-  },
-  filled: {
-    horizontal: {
-      desktop: {
-        top: {
-          medium: 'spacing.3',
-          large: 'spacing.3',
-        },
-        bottom: {
-          medium: 'spacing.3',
-          large: 'spacing.3',
-        },
-        left: {
-          medium: 'spacing.0',
-          large: 'spacing.0',
-        },
-        right: {
-          medium: 'spacing.0',
-          large: 'spacing.0',
-        },
-      },
-      mobile: {
-        top: {
-          medium: 'spacing.2',
-          large: 'spacing.2',
-        },
-        bottom: {
-          medium: 'spacing.2',
-          large: 'spacing.2',
-        },
-        left: {
-          medium: 'spacing.0',
-          large: 'spacing.0',
-        },
-        right: {
-          medium: 'spacing.0',
-          large: 'spacing.0',
-        },
-      },
-    },
-    vertical: {
-      desktop: {
-        top: {
-          medium: 'spacing.4',
-          large: 'spacing.4',
-        },
-        bottom: {
-          medium: 'spacing.4',
-          large: 'spacing.4',
-        },
-        left: {
-          medium: 'spacing.4',
-          large: 'spacing.4',
-        },
-        right: {
-          // TODO: Check with RK once,
-          // on design SPEC it says it's 0, but when inspecting it shows spacing.4 which looks better
-          medium: 'spacing.4',
-          large: 'spacing.4',
-        },
-      },
-      mobile: {
-        top: {
-          medium: 'spacing.3',
-          large: 'spacing.3',
-        },
-        bottom: {
-          medium: 'spacing.3',
-          large: 'spacing.3',
-        },
-        left: {
-          medium: 'spacing.3',
-          large: 'spacing.3',
-        },
-        right: {
-          medium: 'spacing.3',
-          large: 'spacing.3',
-        },
-      },
-    },
-  },
-};
-
-const textColor = {
-  default: 'surface.text.muted.lowContrast',
-  hover: 'surface.text.subdued.lowContrast',
-  focus: 'surface.text.subdued.lowContrast',
-  active: 'surface.text.subdued.lowContrast',
-  disabled: 'surface.text.placeholder.lowContrast',
-} as const;
-
-const selectedColor = {
-  default: 'brand.primary.500',
-  hover: 'brand.primary.600',
-  focus: 'brand.primary.600',
-  active: 'brand.primary.600',
-  disabled: 'surface.text.placeholder.lowContrast',
-} as const;
-
-const backgroundColor = {
-  unselected: {
-    bordered: {
-      default: 'transparent',
-      hover: 'transparent',
-      focus: 'transparent',
-      active: 'transparent',
-      disabled: 'transparent',
-    },
-    filled: {
-      default: 'transparent',
-      hover: 'colors.brand.gray.a50.lowContrast',
-      focus: 'colors.brand.gray.a50.lowContrast',
-      active: 'colors.brand.gray.a50.lowContrast',
-      disabled: 'transparent',
-    },
-  },
-  selected: {
-    bordered: {
-      default: 'transparent',
-      hover: 'transparent',
-      focus: 'transparent',
-      active: 'transparent',
-      disabled: 'transparent',
-    },
-    filled: {
-      default: 'colors.brand.primary.300',
-      hover: 'colors.brand.primary.400',
-      focus: 'colors.brand.primary.400',
-      active: 'colors.brand.primary.400',
-      disabled: 'transparent',
-    },
-  },
-} as const;
 
 const StyledTabButton = styled.button<{
   size: TabsProps['size'];
@@ -427,6 +190,7 @@ const TabsItem = ({
   const { currentInteraction, ...interactionProps } = useInteraction();
   const validatedTrailingComponent = useTrailingRestriction(trailing, size!);
   const isSelected = selectedValue === value;
+  const selectedState = isSelected ? 'selected' : 'unselected';
   const panelId = `${baseId}-${value}-tabpanel`;
   const tabItemId = `${baseId}-${value}-tabitem`;
   const isFilled = variant === 'filled';
@@ -459,11 +223,7 @@ const TabsItem = ({
               })
             : null}
           <Text
-            color={
-              isSelected
-                ? selectedColor[isDisabled ? 'disabled' : currentInteraction]
-                : textColor[isDisabled ? 'disabled' : currentInteraction]
-            }
+            color={textColor[selectedState][isDisabled ? 'disabled' : currentInteraction]}
             size={size === 'medium' ? 'medium' : 'large'}
             weight={size === 'medium' ? 'bold' : 'regular'}
           >
