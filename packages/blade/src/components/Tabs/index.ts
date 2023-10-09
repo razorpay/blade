@@ -1,4 +1,5 @@
 export { Tabs } from './Tabs';
-export { TabsItem } from './TabsItem';
-export { TabsList } from './TabsList';
-export { TabsPanel } from './TabsPanel';
+export { TabItem } from './TabItem';
+export { TabList } from './TabList';
+export { TabPanel } from './TabPanel';
+export * from './types';

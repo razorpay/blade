@@ -8,7 +8,7 @@ import { castWebType, makeMotionTime, useTheme } from '~utils';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import BaseBox from '~components/Box/BaseBox';
 
-const StyledTabsIndicator = styled(BaseBox)(({ theme }) => {
+const StyledTabIndicator = styled(BaseBox)(({ theme }) => {
   return {
     cursor: 'pointer',
     '&:hover': {
@@ -17,7 +17,7 @@ const StyledTabsIndicator = styled(BaseBox)(({ theme }) => {
   };
 });
 
-const TabsIndicator = ({
+const TabIndicator = ({
   tabListContainerRef,
 }: {
   tabListContainerRef: React.RefObject<HTMLElement | null>;
@@ -106,7 +106,7 @@ const TabsIndicator = ({
 
   if (variant === 'filled') {
     return (
-      <StyledTabsIndicator
+      <StyledTabIndicator
         position="absolute"
         left="0px"
         top="0px"
@@ -123,7 +123,7 @@ const TabsIndicator = ({
   }
 
   return (
-    <StyledTabsIndicator
+    <StyledTabIndicator
       pointerEvents="none"
       position="absolute"
       left="0%"
@@ -139,4 +139,4 @@ const TabsIndicator = ({
   );
 };
 
-export { TabsIndicator };
+export { TabIndicator };

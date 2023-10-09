@@ -2,7 +2,7 @@ import React from 'react';
 import { Composite } from '@floating-ui/react';
 import styled from 'styled-components';
 import { useTabsContext } from './TabsContext';
-import { TabsIndicator } from './TabsIndicator';
+import { TabIndicator } from './TabIndicator';
 import BaseBox from '~components/Box/BaseBox';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { Divider } from '~components/Divider';
@@ -13,7 +13,7 @@ const ScrollableArea = styled(BaseBox)(() => {
   };
 });
 
-const TabsList = ({ children }: { children: React.ReactNode }): React.ReactElement => {
+const TabList = ({ children }: { children: React.ReactNode }): React.ReactElement => {
   const { setSelectedValue, selectedValue, variant, isVertical } = useTabsContext();
   const tabListContainerRef = React.useRef<HTMLDivElement>(null);
 
@@ -91,7 +91,7 @@ const TabsList = ({ children }: { children: React.ReactNode }): React.ReactEleme
             );
           }}
         />
-        {!isVertical ? <TabsIndicator tabListContainerRef={tabListContainerRef} /> : null}
+        {!isVertical ? <TabIndicator tabListContainerRef={tabListContainerRef} /> : null}
       </ScrollableArea>
       {/* 
         Static border bottom, can't just put it on the outer Box of tablist because 
@@ -108,4 +108,4 @@ const TabsList = ({ children }: { children: React.ReactNode }): React.ReactEleme
   );
 };
 
-export { TabsList };
+export { TabList };

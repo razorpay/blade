@@ -3,7 +3,7 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import React from 'react';
 import type { TabsProps } from './types';
-import { Tabs, TabsItem, TabsList, TabsPanel } from './';
+import { Tabs, TabItem, TabList, TabPanel } from './';
 import { Text } from '~components/Typography';
 import { TrendingUpIcon } from '~components/Icons';
 import { Counter } from '~components/Counter';
@@ -18,47 +18,47 @@ const TabsTemplate: ComponentStory<typeof Tabs> = () => {
   return (
     <Box>
       <Tabs autoWidth defaultValue="refunds" onChange={(v) => console.log(v)}>
-        <TabsList>
-          <TabsItem leading={<TrendingUpIcon />} trailing={<Counter value={12} />} value="payments">
+        <TabList>
+          <TabItem leading={<TrendingUpIcon />} trailing={<Counter value={12} />} value="payments">
             Payments
-          </TabsItem>
-          <TabsItem value="refunds">Refunds</TabsItem>
-          <TabsItem value="disputes">Disputes</TabsItem>
-          <TabsItem value="settlements">Settlements</TabsItem>
-        </TabsList>
+          </TabItem>
+          <TabItem value="refunds">Refunds</TabItem>
+          <TabItem value="disputes">Disputes</TabItem>
+          <TabItem value="settlements">Settlements</TabItem>
+        </TabList>
 
-        <TabsPanel value="payments">
+        <TabPanel value="payments">
           <Text>Payments</Text>
-        </TabsPanel>
-        <TabsPanel value="refunds">
+        </TabPanel>
+        <TabPanel value="refunds">
           <Text>Refunds</Text>
-        </TabsPanel>
-        <TabsPanel value="disputes">
+        </TabPanel>
+        <TabPanel value="disputes">
           <Text>Disputes</Text>
-        </TabsPanel>
-        <TabsPanel value="settlements">
+        </TabPanel>
+        <TabPanel value="settlements">
           <Text>Settlements</Text>
-        </TabsPanel>
+        </TabPanel>
       </Tabs>
       <br />
       <br />
       <br />
       <Tabs variant="filled" defaultValue="refunds" onChange={(v) => console.log(v)}>
-        <TabsList>
-          <TabsItem value="payments">Payments</TabsItem>
-          <TabsItem value="refunds">Refunds</TabsItem>
-          <TabsItem value="disputes">Disputes</TabsItem>
-        </TabsList>
+        <TabList>
+          <TabItem value="payments">Payments</TabItem>
+          <TabItem value="refunds">Refunds</TabItem>
+          <TabItem value="disputes">Disputes</TabItem>
+        </TabList>
 
-        <TabsPanel value="payments">
+        <TabPanel value="payments">
           <Text>Payments</Text>
-        </TabsPanel>
-        <TabsPanel value="refunds">
+        </TabPanel>
+        <TabPanel value="refunds">
           <Text>Refunds</Text>
-        </TabsPanel>
-        <TabsPanel value="disputes">
+        </TabPanel>
+        <TabPanel value="disputes">
           <Text>Disputes</Text>
-        </TabsPanel>
+        </TabPanel>
       </Tabs>
     </Box>
   );
@@ -76,35 +76,35 @@ const TabsVerticalTemplate: ComponentStory<typeof Tabs> = () => {
         defaultValue="refunds"
         onChange={(v) => console.log(v)}
       >
-        <TabsList>
-          <TabsItem leading={<TrendingUpIcon />} trailing={<Counter value={12} />} value="payments">
+        <TabList>
+          <TabItem leading={<TrendingUpIcon />} trailing={<Counter value={12} />} value="payments">
             Payments
-          </TabsItem>
-          <TabsItem value="refunds">Refunds</TabsItem>
-          <TabsItem value="disputes">Disputes</TabsItem>
-          <TabsItem value="settlements">Settlements</TabsItem>
-        </TabsList>
+          </TabItem>
+          <TabItem value="refunds">Refunds</TabItem>
+          <TabItem value="disputes">Disputes</TabItem>
+          <TabItem value="settlements">Settlements</TabItem>
+        </TabList>
 
-        <TabsPanel value="payments">
+        <TabPanel value="payments">
           <Box padding="spacing.0">
             <Text>Payments</Text>
           </Box>
-        </TabsPanel>
-        <TabsPanel value="refunds">
+        </TabPanel>
+        <TabPanel value="refunds">
           <Box padding="spacing.0">
             <Text>Refunds</Text>
           </Box>
-        </TabsPanel>
-        <TabsPanel value="disputes">
+        </TabPanel>
+        <TabPanel value="disputes">
           <Box padding="spacing.0">
             <Text>Disputes</Text>
           </Box>
-        </TabsPanel>
-        <TabsPanel value="settlements">
+        </TabPanel>
+        <TabPanel value="settlements">
           <Box padding="spacing.0">
             <Text>Settlements</Text>
           </Box>
-        </TabsPanel>
+        </TabPanel>
       </Tabs>
       <br />
       <br />
@@ -116,35 +116,35 @@ const TabsVerticalTemplate: ComponentStory<typeof Tabs> = () => {
         defaultValue="refunds"
         onChange={(v) => console.log(v)}
       >
-        <TabsList>
-          <TabsItem leading={<TrendingUpIcon />} trailing={<Counter value={12} />} value="payments">
+        <TabList>
+          <TabItem leading={<TrendingUpIcon />} trailing={<Counter value={12} />} value="payments">
             Payments
-          </TabsItem>
-          <TabsItem value="refunds">Refunds</TabsItem>
-          <TabsItem value="disputes">Disputes</TabsItem>
-          <TabsItem value="settlements">Settlements</TabsItem>
-        </TabsList>
+          </TabItem>
+          <TabItem value="refunds">Refunds</TabItem>
+          <TabItem value="disputes">Disputes</TabItem>
+          <TabItem value="settlements">Settlements</TabItem>
+        </TabList>
 
-        <TabsPanel value="payments">
+        <TabPanel value="payments">
           <Box padding="spacing.0">
             <Text>Payments</Text>
           </Box>
-        </TabsPanel>
-        <TabsPanel value="refunds">
+        </TabPanel>
+        <TabPanel value="refunds">
           <Box padding="spacing.0">
             <Text>Refunds</Text>
           </Box>
-        </TabsPanel>
-        <TabsPanel value="disputes">
+        </TabPanel>
+        <TabPanel value="disputes">
           <Box padding="spacing.0">
             <Text>Disputes</Text>
           </Box>
-        </TabsPanel>
-        <TabsPanel value="settlements">
+        </TabPanel>
+        <TabPanel value="settlements">
           <Box padding="spacing.0">
             <Text>Settlements</Text>
           </Box>
-        </TabsPanel>
+        </TabPanel>
       </Tabs>
 
       <br />
@@ -157,35 +157,35 @@ const TabsVerticalTemplate: ComponentStory<typeof Tabs> = () => {
         defaultValue="refunds"
         onChange={(v) => console.log(v)}
       >
-        <TabsList>
-          <TabsItem leading={<TrendingUpIcon />} trailing={<Counter value={12} />} value="payments">
+        <TabList>
+          <TabItem leading={<TrendingUpIcon />} trailing={<Counter value={12} />} value="payments">
             Payments
-          </TabsItem>
-          <TabsItem value="refunds">Refunds</TabsItem>
-          <TabsItem value="disputes">Disputes</TabsItem>
-          <TabsItem value="settlements">Settlements</TabsItem>
-        </TabsList>
+          </TabItem>
+          <TabItem value="refunds">Refunds</TabItem>
+          <TabItem value="disputes">Disputes</TabItem>
+          <TabItem value="settlements">Settlements</TabItem>
+        </TabList>
 
-        <TabsPanel value="payments">
+        <TabPanel value="payments">
           <Box padding="spacing.0">
             <Text>Payments</Text>
           </Box>
-        </TabsPanel>
-        <TabsPanel value="refunds">
+        </TabPanel>
+        <TabPanel value="refunds">
           <Box padding="spacing.0">
             <Text>Refunds</Text>
           </Box>
-        </TabsPanel>
-        <TabsPanel value="disputes">
+        </TabPanel>
+        <TabPanel value="disputes">
           <Box padding="spacing.0">
             <Text>Disputes</Text>
           </Box>
-        </TabsPanel>
-        <TabsPanel value="settlements">
+        </TabPanel>
+        <TabPanel value="settlements">
           <Box padding="spacing.0">
             <Text>Settlements</Text>
           </Box>
-        </TabsPanel>
+        </TabPanel>
       </Tabs>
     </Box>
   );

@@ -33,7 +33,7 @@ type TabsProps = {
   autoWidth?: boolean;
 };
 
-type TabsItemProps = {
+type TabItemProps = {
   /**
    * The label of the tab item.
    */
@@ -61,7 +61,7 @@ type TabsItemProps = {
   isDisabled?: boolean;
 };
 
-type TabsPanelProps = {
+type TabPanelProps = {
   /**
    * The value of the tab panel. This will be used to match the selected tab.
    */
@@ -72,4 +72,4 @@ type TabsPanelProps = {
   children: React.ReactNode;
 };
 
-export type { TabsProps, TabsItemProps, TabsPanelProps };
+export type { TabsProps, TabItemProps, TabPanelProps };

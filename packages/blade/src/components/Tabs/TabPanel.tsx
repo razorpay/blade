@@ -1,11 +1,11 @@
 /* eslint-disable react/jsx-no-useless-fragment */
 import React from 'react';
-import type { TabsPanelProps } from './types';
+import type { TabPanelProps } from './types';
 import { useTabsContext } from './TabsContext';
 import { makeAccessible } from '~utils/makeAccessible';
 import BaseBox from '~components/Box/BaseBox';
 
-const TabsPanel = ({ children, value }: TabsPanelProps): React.ReactElement => {
+const TabPanel = ({ children, value }: TabPanelProps): React.ReactElement => {
   const { selectedValue, baseId } = useTabsContext();
   const isSelected = selectedValue === value;
   const panelId = `${baseId}-${value}-tabpanel`;
@@ -26,4 +26,4 @@ const TabsPanel = ({ children, value }: TabsPanelProps): React.ReactElement => {
   );
 };
 
-export { TabsPanel };
+export { TabPanel };

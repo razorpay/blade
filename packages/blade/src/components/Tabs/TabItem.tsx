@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import get from 'lodash/get';
 import React from 'react';
 import { CompositeItem } from '@floating-ui/react';
-import type { TabsItemProps, TabsProps } from './types';
+import type { TabItemProps, TabsProps } from './types';
 import { useTabsContext } from './TabsContext';
 import { backgroundColor, paddings, textColor } from './tabTokens';
 import { iconSizeMap, useTabsItemPropRestriction } from './utils';
@@ -87,13 +87,13 @@ const StyledTabButton = styled.button<{
   };
 });
 
-const TabsItem = ({
+const TabItem = ({
   children,
   value,
   leading,
   trailing,
   isDisabled = false,
-}: TabsItemProps): React.ReactElement => {
+}: TabItemProps): React.ReactElement => {
   const {
     size,
     autoWidth,
@@ -152,4 +152,4 @@ const TabsItem = ({
   );
 };
 
-export { TabsItem };
+export { TabItem };
