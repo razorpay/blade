@@ -54,7 +54,6 @@ const TabsList = ({ children }: { children: React.ReactNode }): React.ReactEleme
                 role="tablist"
                 width="100%"
                 display="flex"
-                gap={variant === 'filled' && !isVertical ? 'spacing.1' : 'spacing.0'}
                 flexDirection={isVertical ? 'column' : 'row'}
                 alignItems={isVertical ? 'start' : 'center'}
                 overflow={isVertical ? 'hidden' : undefined}
@@ -67,6 +66,7 @@ const TabsList = ({ children }: { children: React.ReactNode }): React.ReactEleme
                       borderWidth: 'thick',
                       borderColor: 'surface.border.normal.lowContrast',
                       padding: isVertical ? 'spacing.0' : 'spacing.2',
+                      gap: isVertical ? 'spacing.0' : 'spacing.1',
                       backgroundColor: 'surface.background.level2.lowContrast',
                     })}
               >
