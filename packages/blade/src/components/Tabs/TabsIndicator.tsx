@@ -2,10 +2,20 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable consistent-return */
 import React from 'react';
+import styled from 'styled-components';
 import { useTabsContext } from './TabsContext';
 import { castWebType, makeMotionTime, useTheme } from '~utils';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import BaseBox from '~components/Box/BaseBox';
+
+const StyledTabsIndicator = styled(BaseBox)(({ theme }) => {
+  return {
+    cursor: 'pointer',
+    '&:hover': {
+      backgroundColor: theme.colors.brand.primary[400],
+    },
+  };
+});
 
 const TabsIndicator = ({
   tabListContainerRef,
@@ -30,7 +40,7 @@ const TabsIndicator = ({
 
     // Set the width offset cutoff for the indicator on filled variant
     // This is to account for the divider in between tabs
-    const widthOffsetCutoff = variant === 'filled' ? 2 : 0;
+    const widthOffsetCutoff = variant === 'filled' ? 0 : 0;
     setActiveElementDimensions({
       width: activeTabItem.offsetWidth - widthOffsetCutoff * 2,
       height: activeTabItem.offsetHeight,
@@ -39,7 +49,7 @@ const TabsIndicator = ({
         variant === 'filled'
           ? // on filled variant the indicator is positioned on top of the tab item
             // so no need to add offsetHeight
-            activeTabItem.offsetTop
+            activeTabItem.offsetTop - 1
           : activeTabItem.offsetTop + activeTabItem.offsetHeight - 2,
     });
   }, [baseId, selectedValue, tabListContainerRef, variant]);
@@ -87,7 +97,7 @@ const TabsIndicator = ({
   }, [tabListContainerRef, updateDimensions]);
 
   const transitionProps = {
-    transitionProperty: 'transform, width',
+    transitionProperty: 'transform, width, background-color',
     transitionDuration: hasMeasured
       ? castWebType(makeMotionTime(theme.motion.duration.gentle))
       : '0ms',
@@ -96,7 +106,7 @@ const TabsIndicator = ({
 
   if (variant === 'filled') {
     return (
-      <BaseBox
+      <StyledTabsIndicator
         position="absolute"
         left="0px"
         top="0px"
@@ -113,7 +123,8 @@ const TabsIndicator = ({
   }
 
   return (
-    <BaseBox
+    <StyledTabsIndicator
+      pointerEvents="none"
       position="absolute"
       left="0%"
       top="0px"

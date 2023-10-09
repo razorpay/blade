@@ -27,10 +27,11 @@ const Tabs = ({
     },
   });
 
+  const isVertical = orientation === 'vertical';
   const contextValue = {
     baseId,
     selectedValue,
-    orientation,
+    isVertical,
     size,
     variant,
     autoWidth,
@@ -39,7 +40,9 @@ const Tabs = ({
 
   return (
     <TabsContext.Provider value={contextValue}>
-      <BaseBox>{children}</BaseBox>
+      <BaseBox display="flex" flexDirection={isVertical ? 'row' : 'column'}>
+        {children}
+      </BaseBox>
     </TabsContext.Provider>
   );
 };

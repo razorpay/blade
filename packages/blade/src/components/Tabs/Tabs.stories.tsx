@@ -66,3 +66,130 @@ const TabsTemplate: ComponentStory<typeof Tabs> = () => {
 
 export const Default = TabsTemplate.bind({});
 Default.storyName = 'Default';
+
+const TabsVerticalTemplate: ComponentStory<typeof Tabs> = () => {
+  return (
+    <Box>
+      <Tabs
+        variant="bordered"
+        orientation="vertical"
+        defaultValue="refunds"
+        onChange={(v) => console.log(v)}
+      >
+        <TabsList>
+          <TabsItem leading={<TrendingUpIcon />} trailing={<Counter value={12} />} value="payments">
+            Payments
+          </TabsItem>
+          <TabsItem value="refunds">Refunds</TabsItem>
+          <TabsItem value="disputes">Disputes</TabsItem>
+          <TabsItem value="settlements">Settlements</TabsItem>
+        </TabsList>
+
+        <TabsPanel value="payments">
+          <Box padding="spacing.0">
+            <Text>Payments</Text>
+          </Box>
+        </TabsPanel>
+        <TabsPanel value="refunds">
+          <Box padding="spacing.0">
+            <Text>Refunds</Text>
+          </Box>
+        </TabsPanel>
+        <TabsPanel value="disputes">
+          <Box padding="spacing.0">
+            <Text>Disputes</Text>
+          </Box>
+        </TabsPanel>
+        <TabsPanel value="settlements">
+          <Box padding="spacing.0">
+            <Text>Settlements</Text>
+          </Box>
+        </TabsPanel>
+      </Tabs>
+      <br />
+      <br />
+      <br />
+
+      <Tabs
+        variant="filled"
+        orientation="vertical"
+        defaultValue="refunds"
+        onChange={(v) => console.log(v)}
+      >
+        <TabsList>
+          <TabsItem leading={<TrendingUpIcon />} trailing={<Counter value={12} />} value="payments">
+            Payments
+          </TabsItem>
+          <TabsItem value="refunds">Refunds</TabsItem>
+          <TabsItem value="disputes">Disputes</TabsItem>
+          <TabsItem value="settlements">Settlements</TabsItem>
+        </TabsList>
+
+        <TabsPanel value="payments">
+          <Box padding="spacing.0">
+            <Text>Payments</Text>
+          </Box>
+        </TabsPanel>
+        <TabsPanel value="refunds">
+          <Box padding="spacing.0">
+            <Text>Refunds</Text>
+          </Box>
+        </TabsPanel>
+        <TabsPanel value="disputes">
+          <Box padding="spacing.0">
+            <Text>Disputes</Text>
+          </Box>
+        </TabsPanel>
+        <TabsPanel value="settlements">
+          <Box padding="spacing.0">
+            <Text>Settlements</Text>
+          </Box>
+        </TabsPanel>
+      </Tabs>
+
+      <br />
+      <br />
+      <br />
+
+      <Tabs
+        variant="filled"
+        orientation="horizontal"
+        defaultValue="refunds"
+        onChange={(v) => console.log(v)}
+      >
+        <TabsList>
+          <TabsItem leading={<TrendingUpIcon />} trailing={<Counter value={12} />} value="payments">
+            Payments
+          </TabsItem>
+          <TabsItem value="refunds">Refunds</TabsItem>
+          <TabsItem value="disputes">Disputes</TabsItem>
+          <TabsItem value="settlements">Settlements</TabsItem>
+        </TabsList>
+
+        <TabsPanel value="payments">
+          <Box padding="spacing.0">
+            <Text>Payments</Text>
+          </Box>
+        </TabsPanel>
+        <TabsPanel value="refunds">
+          <Box padding="spacing.0">
+            <Text>Refunds</Text>
+          </Box>
+        </TabsPanel>
+        <TabsPanel value="disputes">
+          <Box padding="spacing.0">
+            <Text>Disputes</Text>
+          </Box>
+        </TabsPanel>
+        <TabsPanel value="settlements">
+          <Box padding="spacing.0">
+            <Text>Settlements</Text>
+          </Box>
+        </TabsPanel>
+      </Tabs>
+    </Box>
+  );
+};
+
+export const Vertical = TabsVerticalTemplate.bind({});
+Vertical.storyName = 'Vertical';

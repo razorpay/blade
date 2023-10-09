@@ -14,7 +14,7 @@ const ScrollableArea = styled(BaseBox)(() => {
 });
 
 const TabsList = ({ children }: { children: React.ReactNode }): React.ReactElement => {
-  const { setSelectedValue, selectedValue, variant } = useTabsContext();
+  const { setSelectedValue, selectedValue, variant, isVertical } = useTabsContext();
   const tabListContainerRef = React.useRef<HTMLDivElement>(null);
 
   // Set the first child as the selected value
@@ -27,7 +27,15 @@ const TabsList = ({ children }: { children: React.ReactNode }): React.ReactEleme
   }, [children, selectedValue, setSelectedValue]);
 
   return (
-    <BaseBox overflow="hidden">
+    <BaseBox display={isVertical ? 'flex' : 'block'} overflow="hidden">
+      {isVertical ? (
+        <BaseBox
+          width="1.5px"
+          height="100%"
+          backgroundColor="surface.border.normal.lowContrast"
+          style={{ transform: 'translateX(1.5px)' }}
+        />
+      ) : null}
       <ScrollableArea
         position="relative"
         display="inline-block"
@@ -42,12 +50,14 @@ const TabsList = ({ children }: { children: React.ReactNode }): React.ReactEleme
               // @ts-expect-error spreading composite props
               <BaseBox
                 {...htmlProps}
-                role="tablist"
-                display="flex"
-                flexDirection="row"
-                alignItems="center"
-                width="100%"
                 ref={tabListContainerRef}
+                role="tablist"
+                width="100%"
+                display="flex"
+                gap={variant === 'filled' && !isVertical ? 'spacing.1' : 'spacing.0'}
+                flexDirection={isVertical ? 'column' : 'row'}
+                alignItems={isVertical ? 'start' : 'center'}
+                overflow={isVertical ? 'hidden' : undefined}
                 {...(variant === 'bordered'
                   ? {
                       padding: 'spacing.0',
@@ -56,11 +66,11 @@ const TabsList = ({ children }: { children: React.ReactNode }): React.ReactEleme
                       borderRadius: 'small',
                       borderWidth: 'thick',
                       borderColor: 'surface.border.normal.lowContrast',
-                      padding: 'spacing.2',
+                      padding: isVertical ? 'spacing.0' : 'spacing.2',
                       backgroundColor: 'surface.background.level2.lowContrast',
                     })}
               >
-                {variant === 'filled'
+                {variant === 'filled' && !isVertical
                   ? React.Children.map(children, (child, index) => {
                       return (
                         <>
@@ -81,13 +91,13 @@ const TabsList = ({ children }: { children: React.ReactNode }): React.ReactEleme
             );
           }}
         />
-        <TabsIndicator tabListContainerRef={tabListContainerRef} />
+        {!isVertical ? <TabsIndicator tabListContainerRef={tabListContainerRef} /> : null}
       </ScrollableArea>
       {/* 
         Static border bottom, can't just put it on the outer Box of tablist because 
         it's not possible to offset or translate a border 
       */}
-      {variant === 'bordered' ? (
+      {!isVertical && variant === 'bordered' ? (
         <BaseBox
           style={{ transform: 'translateY(-5.5px)' }}
           borderBottomColor="surface.border.normal.lowContrast"
