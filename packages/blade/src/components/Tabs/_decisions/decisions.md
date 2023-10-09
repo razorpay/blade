@@ -310,7 +310,7 @@ We [discussed](https://github.com/razorpay/blade/pull/1693#discussion_r134567760
 
 We decided not to go with this API because of these downsides: 
 
-### 1. Quite tricky/hack to implement
+#### 1. Quite tricky/hack to implement
 
 With the API that you proposed it will be quite tricky to map the JSX to the HTML structure that a typical tab requires. 
 
@@ -344,7 +344,7 @@ We need to achieve the above HTML structure, and to do this with the API that yo
 </Tabs>
 ```
 
-### 2. The JSX doesn't map well with the visual hierarchy / the HTML structure
+#### 2. The JSX doesn't map well with the visual hierarchy / the HTML structure
 
 If you notice the HTML structure pointed out in point #1 you'll see that it's 1:1 with the JSX API that i'm proposing. 
 
@@ -352,13 +352,13 @@ The current API that is proposed also maps 1:1 with the visual hierarchy of the 
 
 ![Frame 1 (11)](https://github.com/razorpay/blade/assets/35374649/9058d53f-aa5b-4a45-9111-5bfbdafa8f27)
 
-### 3. Extensibility
+#### 3. Extensibility
 
 The current API is also much more easier to extend in case any future usecase arises, for example let's say we want to use these tabs like a segmented control (which works like radio buttons but doesn't associate with any "tabpanels" we can simply remove the tabpanels and change the underlying html structure to accommodate for any future usecases. 
 
 Check how reshaped is allowing this [extensibility](https://reshaped.so/content/docs/components/tabs#using-in-forms) - if you pass `name` prop it will convert the tabs to work like a Radio. 
 
-### 4. API Familiarity 
+#### 4. API Familiarity 
 
 The current API that is proposed is also much more familiar and is similar to how many other design systems are approaching compared to the second one: 
 
