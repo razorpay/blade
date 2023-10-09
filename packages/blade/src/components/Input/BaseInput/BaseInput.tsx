@@ -332,6 +332,10 @@ type BaseInputPropsWithA11yLabel = {
    * Accessibility label for the input
    */
   accessibilityLabel: string;
+  /**
+   * Label width for the input field
+   */
+  labelWidth?: number;
 };
 
 /*
@@ -346,6 +350,10 @@ type BaseInputPropsWithLabel = {
    * Accessibility label for the input
    */
   accessibilityLabel?: string;
+  /**
+   * Label width for the input field
+   */
+  labelWidth?: number;
 };
 
 export type BaseInputProps = (BaseInputPropsWithA11yLabel | BaseInputPropsWithLabel) &
@@ -682,6 +690,7 @@ export const BaseInput = React.forwardRef<BladeElementRef, BaseInputProps>(
       as = 'input',
       label,
       labelPosition = 'top',
+      labelWidth,
       placeholder,
       type = 'text',
       defaultValue,
@@ -846,6 +855,7 @@ export const BaseInput = React.forwardRef<BladeElementRef, BaseInputProps>(
                 position={labelPosition}
                 id={labelId}
                 htmlFor={inputId}
+                labelWidth={labelWidth}
               >
                 {label}
               </FormLabel>
@@ -943,7 +953,11 @@ export const BaseInput = React.forwardRef<BladeElementRef, BaseInputProps>(
         </BaseBox>
         {/* the magic number 136 is basically max-width of label i.e 120 and then right margin i.e 16 which is the spacing between label and input field */}
         {!hideFormHint && (
-          <BaseBox marginLeft={makeSize(isLabelLeftPositioned && !hideLabelText ? 136 : 0)}>
+          <BaseBox
+            marginLeft={makeSize(
+              isLabelLeftPositioned && !hideLabelText ? (labelWidth ? +labelWidth + 16 : 136) : 0,
+            )}
+          >
             <BaseBox
               display="flex"
               flexDirection="row"

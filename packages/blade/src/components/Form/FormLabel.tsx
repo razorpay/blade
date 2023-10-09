@@ -19,6 +19,7 @@ type CommonProps = {
   children: string | undefined;
   id?: string;
   contrast?: ColorContrastTypes;
+  labelWidth?: number;
 };
 
 type LabelProps = CommonProps & {
@@ -57,6 +58,7 @@ const FormLabel = ({
   id,
   htmlFor,
   contrast = 'low',
+  labelWidth,
 }: FormLabelProps): React.ReactElement => {
   const { theme } = useTheme();
   const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
@@ -132,8 +134,8 @@ const FormLabel = ({
 
   const Component = as;
   // only set 120px label when device is desktop
-  const width = isLabelLeftPositioned && isDesktop ? makeSize(size[120]) : 'auto';
-
+  const width =
+    isLabelLeftPositioned && isDesktop ? (labelWidth ? labelWidth : makeSize(size[120])) : 'auto';
   return (
     <Component
       htmlFor={htmlFor}

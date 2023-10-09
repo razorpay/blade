@@ -104,6 +104,10 @@ type TextInputPropsWithA11yLabel = {
    * Accessibility label for the input
    */
   accessibilityLabel: string;
+  /**
+   * Label width for the input field
+   */
+  labelWidth?: number;
 };
 
 /*
@@ -118,6 +122,10 @@ type TextInputPropsWithLabel = {
    * Accessibility label for the input
    */
   accessibilityLabel?: string;
+  /**
+   * Label width for the input field
+   */
+  labelWidth?: number;
 };
 
 type TextInputProps = (TextInputPropsWithA11yLabel | TextInputPropsWithLabel) &
@@ -219,6 +227,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     placeholder,
     type = 'text',
     defaultValue,
+    labelWidth,
     name,
     value,
     maxCharacters,
@@ -299,6 +308,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       accessibilityLabel={accessibilityLabel}
       hideLabelText={!Boolean(label)}
       labelPosition={labelPosition}
+      labelWidth={labelWidth}
       placeholder={placeholder}
       defaultValue={defaultValue}
       value={value}
