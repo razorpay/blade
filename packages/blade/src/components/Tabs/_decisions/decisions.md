@@ -8,8 +8,8 @@ A tab is a navigation component used in the interface to switch between differen
 - [Features](#features)
 - [Anatomy](#anatomy)
 - [`Tabs` API](#tabs-api)
-- [`TabsItem` API](#tabsitem-api)
-- [`TabsPanel` API](#tabspanel-api)
+- [`TabItem` API](#TabItem-api)
+- [`TabPanel` API](#TabPanel-api)
   - [Examples:](#examples)
 - [Basic](#basic)
   - [Controlled, Uncontrolled](#controlled-uncontrolled)
@@ -36,10 +36,10 @@ A tab is a navigation component used in the interface to switch between differen
 
 ```jsx
 <Tabs>
-  <TabsList>
-    <TabsItem />
-  </TabsList>
-  <TabsPanel />
+  <TabList>
+    <TabItem />
+  </TabList>
+  <TabPanel />
 </Tabs>
 ```
 
@@ -48,7 +48,7 @@ A tab is a navigation component used in the interface to switch between differen
 ```ts
 type TabsProps = {
   /**
-   * The content of the component, accepts `TabsList` and `TabsPanel` components.
+   * The content of the component, accepts `TabList` and `TabPanel` components.
    */
   children: React.ReactNode;
   /**
@@ -82,10 +82,10 @@ type TabsProps = {
 };
 ```
 
-## `TabsItem` API
+## `TabItem` API
 
 ```ts
-type TabsItemProps = {
+type TabItemProps = {
   /**
    * The label of the tab item.
    */
@@ -111,10 +111,10 @@ type TabsItemProps = {
 };
 ```
 
-## `TabsPanel` API
+## `TabPanel` API
 
 ```ts
-type TabsPanelProps = {
+type TabPanelProps = {
   /**
    * The value of the tab panel. This will be used to match the selected tab.
    */
@@ -132,25 +132,25 @@ type TabsPanelProps = {
 
 ```js
 <Tabs>
-  <TabsList>
-    <TabsItem value="payments">Payments</TabsItem>
-    <TabsItem value="refunds">Refunds</TabsItem>
-    <TabsItem value="disputes">Disputes</TabsItem>
-    <TabsItem value="settlements">Settlements</TabsItem>
-  </TabsList>
+  <TabList>
+    <TabItem value="payments">Payments</TabItem>
+    <TabItem value="refunds">Refunds</TabItem>
+    <TabItem value="disputes">Disputes</TabItem>
+    <TabItem value="settlements">Settlements</TabItem>
+  </TabList>
 
-  <TabsPanel value="payments">
+  <TabPanel value="payments">
     <Payments />
-  </TabsPanel>
-  <TabsPanel value="refunds">
+  </TabPanel>
+  <TabPanel value="refunds">
     <Refunds />
-  </TabsPanel>
-  <TabsPanel value="disputes">
+  </TabPanel>
+  <TabPanel value="disputes">
     <Disputes />
-  </TabsPanel>
-  <TabsPanel value="settlements">
+  </TabPanel>
+  <TabPanel value="settlements">
     <Settlements />
-  </TabsPanel>
+  </TabPanel>
 </Tabs>
 ```
 
@@ -164,17 +164,17 @@ const Controlled = () => {
 
   return (
     <Tabs value={selected} onChange={(value) => setSelected(value)}>
-      <TabsList>
-        <TabsItem value="payments">Payments</TabsItem>
-        <TabsItem value="refunds">Refunds</TabsItem>
-      </TabsList>
+      <TabList>
+        <TabItem value="payments">Payments</TabItem>
+        <TabItem value="refunds">Refunds</TabItem>
+      </TabList>
 
-      <TabsPanel value="payments">
+      <TabPanel value="payments">
         <Payments />
-      </TabsPanel>
-      <TabsPanel value="refunds">
+      </TabPanel>
+      <TabPanel value="refunds">
         <Refunds />
-      </TabsPanel>
+      </TabPanel>
     </Tabs>
   );
 };
@@ -182,17 +182,17 @@ const Controlled = () => {
 const Uncontrolled = () => {
   return (
     <Tabs defaultValue="refunds">
-      <TabsList>
-        <TabsItem value="payments">Payments</TabsItem>
-        <TabsItem value="refunds">Refunds</TabsItem>
-      </TabsList>
+      <TabList>
+        <TabItem value="payments">Payments</TabItem>
+        <TabItem value="refunds">Refunds</TabItem>
+      </TabList>
 
-      <TabsPanel value="payments">
+      <TabPanel value="payments">
         <Payments />
-      </TabsPanel>
-      <TabsPanel value="refunds">
+      </TabPanel>
+      <TabPanel value="refunds">
         <Refunds />
-      </TabsPanel>
+      </TabPanel>
     </Tabs>
   );
 };
@@ -202,38 +202,38 @@ const Uncontrolled = () => {
 
 ```jsx
 <Tabs orientation="vertical">
-  <TabsList>
-    <TabsItem value="all-expenses" leading={RupeeIcon}>
+  <TabList>
+    <TabItem value="all-expenses" leading={RupeeIcon}>
       All Expenses
-    </TabsItem>
-    <TabsItem
+    </TabItem>
+    <TabItem
       value="categories"
       leading={EditIcon}
       trailing={<Counter value={26} variant="notice" />}
     >
       Categorise
-    </TabsItem>
-    <TabsItem
+    </TabItem>
+    <TabItem
       value="review"
       leading={TransactionIcon}
       trailing={<Counter value={99} variant="information" />}
     >
       Review
-    </TabsItem>
-    <TabsItem value="synced" leading={CheckCircleIcon}>
+    </TabItem>
+    <TabItem value="synced" leading={CheckCircleIcon}>
       Synced
-    </TabsItem>
-    <TabsItem
+    </TabItem>
+    <TabItem
       value="synced-fail"
       leading={WarningIcon}
       trailing={<Counter value={3} variant="negative" />}
     >
       Synced Failed
-    </TabsItem>
-    <TabsItem value="excluded" leading={SlashIcon}>
+    </TabItem>
+    <TabItem value="excluded" leading={SlashIcon}>
       Excluded
-    </TabsItem>
-  </TabsList>
+    </TabItem>
+  </TabList>
   ...
 </Tabs>
 ```
@@ -244,21 +244,21 @@ const Uncontrolled = () => {
 
 ```jsx
 <Tabs defaultValue="refunds">
-  <TabsList>
-    <TabsItem value="week">Week</TabsItem>
-    <TabsItem value="month">Month</TabsItem>
-    <TabsItem value="custom">Custom</TabsItem>
-  </TabsList>
+  <TabList>
+    <TabItem value="week">Week</TabItem>
+    <TabItem value="month">Month</TabItem>
+    <TabItem value="custom">Custom</TabItem>
+  </TabList>
 
-  <TabsPanel value="week">
+  <TabPanel value="week">
     <WeekGraph />
-  </TabsPanel>
-  <TabsPanel value="month">
+  </TabPanel>
+  <TabPanel value="month">
     <MonthGraph />
-  </TabsPanel>
-  <TabsPanel value="custom">
+  </TabPanel>
+  <TabPanel value="custom">
     <CustomGraph />
-  </TabsPanel>
+  </TabPanel>
 </Tabs>
 ```
 
@@ -268,16 +268,16 @@ const Uncontrolled = () => {
 
 ```jsx
 <Tabs>
-  <TabsList>
-    <TabsItem value="payments">Payments</TabsItem>
-    <TabsItem value="refunds">
+  <TabList>
+    <TabItem value="payments">Payments</TabItem>
+    <TabItem value="refunds">
       <Tooltip content="Return (money) in restitution, repayment, or balancing of accounts.">
         <TooltipInteractiveWrapper>Refunds</TooltipInteractiveWrapper>
       </Tooltip>
-    </TabsItem>
-    <TabsItem value="disputes">Disputes</TabsItem>
-    <TabsItem value="settlements">Settlements</TabsItem>
-  </TabsList>
+    </TabItem>
+    <TabItem value="disputes">Disputes</TabItem>
+    <TabItem value="settlements">Settlements</TabItem>
+  </TabList>
   ...
 </Tabs>
 ```
