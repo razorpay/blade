@@ -3,7 +3,6 @@
 exports[`<Tooltip /> should not override trigger's aria-label attribute 1`] = `
 <div>
   <input
-    aria-describedby="Hello world"
     aria-label="Email Address"
     placeholder="Enter email"
     type="email"
@@ -186,7 +185,7 @@ exports[`<Tooltip /> should render 1`] = `
 <body>
   <div>
     <button
-      aria-describedby="Hello world"
+      aria-describedby=":r0:"
       class="c0"
       data-blade-component="button"
       role="button"
@@ -439,7 +438,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
 <body>
   <div>
     <button
-      aria-describedby="Hello world"
+      aria-describedby=":r8:"
       class="c0"
       data-blade-component="button"
       role="button"
@@ -705,7 +704,7 @@ exports[`<Tooltip /> should render with title 1`] = `
 <body>
   <div>
     <button
-      aria-describedby="Hello world"
+      aria-describedby=":r4:"
       class="c0"
       data-blade-component="button"
       role="button"

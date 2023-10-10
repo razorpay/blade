@@ -285,10 +285,7 @@ describe('<Tooltip />', () => {
     );
     fireEvent.focus(getByRole('button', { name: buttonText }));
     expect(queryByRole('tooltip')).toBeInTheDocument();
-    expect(getByRole('button', { name: buttonText })).toHaveAttribute(
-      'aria-describedby',
-      tooltipContent,
-    );
+    expect(getByRole('button', { name: buttonText })).toHaveAccessibleDescription(tooltipContent);
     await assertAccessible(getByRole('tooltip'));
   });
 
