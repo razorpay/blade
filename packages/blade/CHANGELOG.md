@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 10.14.4
+
+### Patch Changes
+
+- 87f75b03: feat: support `brand*` colors on Icon and borderColor styled prop
+
 ## 10.14.3
 
 ### Patch Changes
