@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 10.14.5
+
+### Patch Changes
+
+- 47b8149d: feat(ListItemText): make span as default tag for ListItemText
+
 ## 10.14.4
 
 ### Patch Changes
