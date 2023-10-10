@@ -501,12 +501,12 @@ exports[`<List /> should render List with inline ListItemText 1`] = `
             class="c5"
             data-blade-component="text"
           >
-            <p
+            <span
               class="c6"
               data-blade-component="text"
             >
               Level 1
-            </p>
+            </span>
           </p>
         </div>
       </li>
