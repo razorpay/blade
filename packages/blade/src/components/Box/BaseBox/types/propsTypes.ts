@@ -97,6 +97,10 @@ type GridProps = MakeObjectResponsive<
   >
 >;
 
+type PolygonSupportProps = MakeObjectResponsive<
+  PickCSSByPlatform<'transform' | 'transformOrigin' | 'clipPath'>
+>;
+
 type ColorObjects = 'feedback' | 'surface' | 'action';
 type BackgroundColorString<T extends ColorObjects> = `${T}.background.${DotNotationColorStringToken<
   Theme['colors'][T]['background']
@@ -147,6 +151,8 @@ type CommonBoxVisualProps = MakeObjectResponsive<
     | 'backgroundOrigin'
     | 'backgroundRepeat'
     | 'pointerEvents'
+    | 'opacity'
+    | 'visibility'
   > & {
       /**
        * Sets the elevation for Box
@@ -287,6 +293,7 @@ type BoxProps = Partial<
     GridProps &
     BoxCallbackProps &
     BoxDragAndDropProps &
+    PolygonSupportProps &
     CommonBoxVisualProps &
     BoxVisualProps & {
       children?: React.ReactNode | React.ReactNode[];
