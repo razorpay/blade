@@ -122,7 +122,9 @@
     "@floating-ui/react": "0.26.0",
     "@floating-ui/react-native": "0.10.1",
     "patch-package": "7.0.0",
-    "tinycolor2": "1.6.0"
+    "tinycolor2": "1.6.0",
+    "react-native-tab-view": "3.5.2",
+    "react-native-pager-view": "6.2.1"
   },
   "devDependencies": {
     "chromatic": "6.22.0",
@@ -213,6 +215,8 @@
     "react-native-gesture-handler": "2.9.0",
     "react-native-reanimated": "3.4.1",
     "react-native-svg": "12.3.0",
+    "react-native-tab-view": "3.5.2",
+    "react-native-pager-view": "6.2.1",
     "react-scripts": "4.0.3",
     "react-test-renderer": "18.2.0",
     "rollup": "3.28.1",
@@ -237,6 +241,8 @@
     "react-dom": ">=18",
     "react-native": "^0.72",
     "react-native-reanimated": "^3.4.1",
+    "react-native-tab-view": "3.5.2",
+    "react-native-pager-view": "6.2.1",
     "react-native-svg": "^12.3.0",
     "styled-components": "^5",
     "react-native-gesture-handler": "^2.9.0"

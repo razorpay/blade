@@ -16,8 +16,13 @@ export default {
 
 const TabsTemplate: ComponentStory<typeof Tabs> = () => {
   return (
-    <Box>
-      <Tabs autoWidth defaultValue="refunds" onChange={(v) => console.log(v)}>
+    <Box height="100%">
+      <Tabs
+        variant="filled"
+        autoWidth={false}
+        defaultValue="payments"
+        onChange={(v) => console.log(v)}
+      >
         <TabList>
           <TabItem leading={<TrendingUpIcon />} trailing={<Counter value={12} />} value="payments">
             Payments
@@ -38,26 +43,6 @@ const TabsTemplate: ComponentStory<typeof Tabs> = () => {
         </TabPanel>
         <TabPanel value="settlements">
           <Text>Settlements</Text>
-        </TabPanel>
-      </Tabs>
-      <br />
-      <br />
-      <br />
-      <Tabs variant="filled" defaultValue="refunds" onChange={(v) => console.log(v)}>
-        <TabList>
-          <TabItem value="payments">Payments</TabItem>
-          <TabItem value="refunds">Refunds</TabItem>
-          <TabItem value="disputes">Disputes</TabItem>
-        </TabList>
-
-        <TabPanel value="payments">
-          <Text>Payments</Text>
-        </TabPanel>
-        <TabPanel value="refunds">
-          <Text>Refunds</Text>
-        </TabPanel>
-        <TabPanel value="disputes">
-          <Text>Disputes</Text>
         </TabPanel>
       </Tabs>
     </Box>
@@ -106,9 +91,7 @@ const TabsVerticalTemplate: ComponentStory<typeof Tabs> = () => {
           </Box>
         </TabPanel>
       </Tabs>
-      <br />
-      <br />
-      <br />
+      <Box marginTop="spacing.4" />
 
       <Tabs
         variant="filled"
@@ -147,9 +130,7 @@ const TabsVerticalTemplate: ComponentStory<typeof Tabs> = () => {
         </TabPanel>
       </Tabs>
 
-      <br />
-      <br />
-      <br />
+      <Box marginTop="spacing.4" />
 
       <Tabs
         variant="filled"
