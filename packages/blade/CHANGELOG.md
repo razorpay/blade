@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 10.14.6
+
+### Patch Changes
+
+- 7738f70b: fix(Tooltip): prevent overriding the `aria-label` attribute
+- f38f7c0a: fix: react native crash with reanimated
+
 ## 10.14.5
 
 ### Patch Changes
