@@ -1,3 +1,5 @@
+import type { Platform } from '~utils';
+
 type TabsProps = {
   /**
    * The content of the component, accepts `TabsList` and `TabsPanel` components.
@@ -17,8 +19,13 @@ type TabsProps = {
   onChange?: (value: string) => void;
   /**
    * The orientation of the tabs.
+   *
+   * @default 'horizontal' (always horizontal on react-native)
    */
-  orientation?: 'horizontal' | 'vertical';
+  orientation?: Platform.Select<{
+    web: 'horizontal' | 'vertical';
+    native: 'horizontal';
+  }>;
   /**
    * The size of the tabs.
    */

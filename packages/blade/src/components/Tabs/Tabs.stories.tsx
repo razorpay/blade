@@ -20,7 +20,7 @@ const TabsTemplate: ComponentStory<typeof Tabs> = () => {
       <Tabs
         variant="filled"
         autoWidth={false}
-        defaultValue="payments"
+        defaultValue="refunds"
         onChange={(v) => console.log(v)}
       >
         <TabList>

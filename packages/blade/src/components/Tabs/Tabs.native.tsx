@@ -1,24 +1,21 @@
+/* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
 /* eslint-disable babel/new-cap */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React from 'react';
-import { SceneMap, TabBar, TabBarIndicator, TabBarItem, TabView } from 'react-native-tab-view';
-import {
-  Animated,
-  Dimensions,
-  Pressable,
-  StyleSheet,
-  useWindowDimensions,
-  View,
-} from 'react-native';
+import { SceneMap, TabBar, TabView } from 'react-native-tab-view';
+import { Dimensions } from 'react-native';
 import type { TabsProps } from './types';
 import { TabsContext } from './TabsContext';
 import { StyledTabButton } from './TabItem.native';
 import { textColor } from './tabTokens';
 import { iconSizeMap, useTabsItemPropRestriction } from './utils';
+import { TabIndicator } from './TabIndicator';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { Text } from '~components/Typography';
 import { Box } from '~components/Box';
 import { useTheme } from '~utils';
+import { useControllableState } from '~utils/useControllable';
+import { useFirstRender } from '~utils/useFirstRender';
 
 const initialLayout = {
   height: 0,
@@ -61,53 +58,126 @@ const getRouteIndexFromValue = ({ value, routes }: { value?: string; routes: Rou
   routes.findIndex((route) => route.value === value);
 
 const getRouteValueFromIndex = ({ index, routes }: { index?: number; routes: Route[] }) =>
-  routes.find((route) => route.index === index)?.value;
+  routes.find((route) => route.index === index)?.value!;
 
 const Tabs = ({
   children,
   defaultValue,
   value,
   onChange,
-  orientation = 'horizontal',
   size = 'medium',
   variant = 'bordered',
   autoWidth = false,
 }: TabsProps): React.ReactElement => {
   const { theme } = useTheme();
+  const isFirstRender = useFirstRender();
   const tabs = getTabs(children);
   const panels = getTabPanels(children);
   const routes = getRoutes(tabs);
   const isFilled = variant === 'filled';
 
-  const initialIndex =
-    value ?? defaultValue
-      ? getRouteIndexFromValue({
-          routes,
-          value: value ?? defaultValue,
-        })
-      : 0;
-  const [index, setIndex] = React.useState(initialIndex);
+  const [selectedValue, setSelectedValue] = useControllableState({
+    defaultValue,
+    value,
+    onChange: (value) => {
+      if (isFirstRender) return;
+      onChange?.(value);
+    },
+  });
 
-  // React.useEffect(() => {
-  //   if (!isUndefined(value))
-  //     setIndex(
-  //       getRouteIndexFromValue({
-  //         routes,
-  //         value,
-  //       }),
-  //     );
-  // }, [value, routes]);
+  const index = getRouteIndexFromValue({
+    value: selectedValue,
+    routes,
+  });
 
-  const isVertical = orientation === 'vertical';
+  const setIndex = React.useCallback(
+    (index: number) => {
+      const value = getRouteValueFromIndex({ index, routes });
+      setSelectedValue(() => value);
+    },
+    [routes, setSelectedValue],
+  );
+
+  const isVertical = false;
   const contextValue = {
     baseId: '',
-    selectedValue: '',
+    selectedValue,
     isVertical,
     size,
     variant,
     autoWidth,
-    setSelectedValue: () => {},
+    setSelectedValue: setIndex,
   };
+
+  const renderTabLabel = React.useCallback(
+    ({ route, focused }) => {
+      const { title, leading, trailing } = route;
+      const selectedState = focused ? 'selected' : 'unselected';
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      const validatedTrailingComponent = useTabsItemPropRestriction(trailing, size);
+
+      return (
+        <StyledTabButton autoWidth={!autoWidth} variant={variant} size={size}>
+          <Box display="flex" alignItems="center" flexDirection="row" gap="spacing.3">
+            {leading
+              ? React.cloneElement(leading as React.ReactElement, {
+                  size: iconSizeMap[size],
+                  color: `surface.action.icon.default.lowContrast`,
+                })
+              : null}
+            <Text
+              color={textColor[selectedState].default}
+              size={size === 'medium' ? 'medium' : 'large'}
+              weight={size === 'medium' ? 'bold' : 'regular'}
+            >
+              {title}
+            </Text>
+            {validatedTrailingComponent}
+          </Box>
+        </StyledTabButton>
+      );
+    },
+    [autoWidth, size, variant],
+  );
+
+  const renderTabBar = React.useCallback(
+    (props) => (
+      <TabBar
+        {...props}
+        gap={0}
+        android_ripple={{ borderless: true, color: 'transparent' }}
+        scrollEnabled={!autoWidth}
+        tabStyle={{
+          padding: 0,
+          margin: 0,
+          minHeight: 0,
+        }}
+        contentContainerStyle={
+          isFilled
+            ? {}
+            : {
+                borderBottomColor: theme.colors.surface.border.normal.lowContrast,
+                borderBottomWidth: 1.5,
+              }
+        }
+        style={{
+          ...(isFilled
+            ? {
+                borderRadius: theme.border.radius.small,
+                borderWidth: theme.border.width.thick,
+                borderColor: theme.colors.surface.border.normal.lowContrast,
+                backgroundColor: theme.colors.surface.background.level2.lowContrast,
+                padding: theme.spacing[2],
+              }
+            : { backgroundColor: 'transparent' }),
+        }}
+        renderIndicator={TabIndicator}
+        renderLabel={renderTabLabel}
+      />
+    ),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [autoWidth, isFilled, renderTabLabel],
+  );
 
   return (
     <TabsContext.Provider value={contextValue}>
@@ -117,93 +187,7 @@ const Tabs = ({
           routes,
         }}
         renderScene={SceneMap(panels)}
-        renderTabBar={(props) => (
-          <TabBar
-            {...props}
-            gap={0}
-            android_ripple={{ borderless: true, color: 'transparent' }}
-            scrollEnabled={!autoWidth}
-            tabStyle={{
-              padding: 0,
-              margin: 0,
-              minHeight: 0,
-            }}
-            contentContainerStyle={
-              isFilled
-                ? {}
-                : {
-                    borderBottomColor: theme.colors.surface.border.normal.lowContrast,
-                    borderBottomWidth: 1.5,
-                  }
-            }
-            style={{
-              ...(isFilled
-                ? {
-                    borderRadius: theme.border.radius.small,
-                    borderWidth: theme.border.width.thick,
-                    borderColor: theme.colors.surface.border.normal.lowContrast,
-                    backgroundColor: theme.colors.surface.background.level2.lowContrast,
-                    padding: theme.spacing[2],
-                  }
-                : { backgroundColor: 'transparent' }),
-            }}
-            renderIndicator={(props) => {
-              return (
-                <TabBarIndicator
-                  {...props}
-                  style={{
-                    ...(isFilled
-                      ? {
-                          // width:
-                          //   props?.getTabWidth(props.navigationState.index) - theme.spacing[2] * 2,
-                          height:
-                            props.layout.height - theme.border.width.thick - theme.spacing[2] * 2,
-                          marginBottom: theme.spacing[2],
-                          marginLeft: theme.spacing[2],
-                          backgroundColor: theme.colors.brand.primary[300],
-                          borderRadius: theme.border.radius.small,
-                        }
-                      : {
-                          height: theme.border.width.thick,
-                          backgroundColor: theme.colors.brand.primary[500],
-                        }),
-                  }}
-                />
-              );
-            }}
-            renderLabel={({ route, focused }) => {
-              const { title, leading, trailing } = route;
-              const selectedState = focused ? 'selected' : 'unselected';
-              // const validatedTrailingComponent = useTabsItemPropRestriction(trailing, size);
-              return (
-                <StyledTabButton
-                  autoWidth={!autoWidth}
-                  variant={variant}
-                  size={size}
-                  isSelected={focused}
-                  isVertical={false}
-                >
-                  <Box display="flex" alignItems="center" flexDirection="row" gap="spacing.3">
-                    {leading
-                      ? React.cloneElement(leading as React.ReactElement, {
-                          size: iconSizeMap[size],
-                          color: `surface.action.icon.default.lowContrast`,
-                        })
-                      : null}
-                    <Text
-                      color={textColor[selectedState].default}
-                      size={size === 'medium' ? 'medium' : 'large'}
-                      weight={size === 'medium' ? 'bold' : 'regular'}
-                    >
-                      {title}
-                    </Text>
-                    {/* {validatedTrailingComponent} */}
-                  </Box>
-                </StyledTabButton>
-              );
-            }}
-          />
-        )}
+        renderTabBar={renderTabBar}
         onIndexChange={setIndex}
         initialLayout={initialLayout}
         lazy={false}

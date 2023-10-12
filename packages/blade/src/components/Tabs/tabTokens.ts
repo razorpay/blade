@@ -4,7 +4,7 @@ import type { DotNotationSpacingStringToken } from '~utils/types';
 type Devices = 'desktop' | 'mobile';
 type TabSizes = NonNullable<TabsProps['size']>;
 type TabVariants = NonNullable<TabsProps['variant']>;
-type TabOrientation = NonNullable<TabsProps['orientation']>;
+type TabOrientation = 'horizontal' | 'vertical';
 
 type TabItemPaddings = Record<
   TabVariants,
@@ -77,9 +77,6 @@ const paddings: TabItemPaddings = {
           large: 'spacing.4',
         },
         right: {
-          // TODO: Check with RK once,
-          // in design it's 0, but I'm deviating here because otherwise the text is too close to the edge of the tab
-          // And it's better to be consistent with the padding all around the tab imo
           medium: 'spacing.4',
           large: 'spacing.4',
         },
@@ -98,7 +95,6 @@ const paddings: TabItemPaddings = {
           large: 'spacing.4',
         },
         right: {
-          // TODO: Same here, Check with RK once,
           medium: 'spacing.4',
           large: 'spacing.4',
         },
@@ -159,8 +155,6 @@ const paddings: TabItemPaddings = {
           large: 'spacing.4',
         },
         right: {
-          // TODO: Check with RK once,
-          // on design SPEC it says it's 0, but when inspecting it shows spacing.4 which looks better
           medium: 'spacing.4',
           large: 'spacing.4',
         },
