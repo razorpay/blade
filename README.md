@@ -28,7 +28,8 @@ Blade is a Design System that powers [Razorpay](https://razorpay.com/).
 - Cross-Platform (Works Natively on [React Web](https://blade.razorpay.com/?path=/docs/guides-installation--page#%EF%B8%8F-installation) and [React Native](https://blade.razorpay.com/?path=/docs/guides-installation--page#react-native-projects))
 - [White Labelling](https://blade.razorpay.com/?path=/docs/guides-theming-theme-playground--page)
 - [CSS Variables for non-React Projects](https://blade.razorpay.com/?path=/docs/tokens-css-variables--page)
-- [Accessibile](https://github.com/razorpay/blade/blob/master/rfcs/2022-04-09-accessibility.md#manual-testing)
+- [Accessible](https://github.com/razorpay/blade/blob/master/rfcs/2022-04-09-accessibility.md#manual-testing)
+- Documented [RFCs](https://github.com/razorpay/blade/tree/docs/make-docs-pretty/rfcs) and [API Decisions](https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Alert/_decisions/decisions.md)
 
 ## 📝 License
 
