@@ -8,7 +8,7 @@ import iconMap from '~components/Icons/iconMap';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Dropdown, DropdownFooter, DropdownOverlay } from '~components/Dropdown';
-import { ActionList, ActionListItem } from '~components/ActionList';
+import { ActionList, ActionListItem, ActionListSection } from '~components/ActionList';
 import { Box } from '~components/Box';
 import { BottomSheet, BottomSheetBody, BottomSheetHeader } from '~components/BottomSheet';
 import { Button } from '~components/Button';
@@ -489,6 +489,27 @@ export const InternalControlledInputValue = (): React.ReactElement => {
             <ActionListItem title="Mumbai" value="mumbai" />
             <ActionListItem title="Pune" value="pune" />
             <ActionListItem title="Bangalore" value="bangalore" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+    </Box>
+  );
+};
+
+export const InternalWithSectionFiltering = (): React.ReactElement => {
+  return (
+    <Box>
+      <Dropdown>
+        <AutoComplete label="Select City" />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListSection title="Maharashtra">
+              <ActionListItem title="Mumbai" value="mumbai" />
+              <ActionListItem title="Pune" value="pune" />
+            </ActionListSection>
+            <ActionListSection title="Karnataka">
+              <ActionListItem title="Bangalore" value="bangalore" />
+            </ActionListSection>
           </ActionList>
         </DropdownOverlay>
       </Dropdown>

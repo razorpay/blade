@@ -197,7 +197,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
               >
                 {Icon ? (
                   <BaseBox paddingRight="spacing.3" display="flex">
-                    <Icon color={chipIconColor as never} size={chipIconSizes[_size]} />
+                    <Icon color={chipIconColor} size={chipIconSizes[_size]} />
                   </BaseBox>
                 ) : null}
                 <Text

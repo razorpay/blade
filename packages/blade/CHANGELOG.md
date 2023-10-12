@@ -1,5 +1,30 @@
 # @razorpay/blade
 
+## 10.14.6
+
+### Patch Changes
+
+- 7738f70b: fix(Tooltip): prevent overriding the `aria-label` attribute
+- f38f7c0a: fix: react native crash with reanimated
+
+## 10.14.5
+
+### Patch Changes
+
+- 47b8149d: feat(ListItemText): make span as default tag for ListItemText
+
+## 10.14.4
+
+### Patch Changes
+
+- 87f75b03: feat: support `brand*` colors on Icon and borderColor styled prop
+
+## 10.14.3
+
+### Patch Changes
+
+- 4d6e6aeb: fix(AutoComplete): hide ActionListSection when items are filtered out
+
 ## 10.14.2
 
 ### Patch Changes

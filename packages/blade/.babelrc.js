@@ -69,7 +69,6 @@ const configs = {
             runtime: 'automatic',
           },
         ],
-        'react-native-reanimated/plugin',
       ],
     },
   },
