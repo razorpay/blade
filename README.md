@@ -36,5 +36,5 @@ Licensed under the [MIT License](https://github.com/razorpay/blade/blob/master/L
 
 <h1 aria-hidden="true"></h1>
 
-<p align="center">Interested in working with us? Checkout our <a href="https://razorpay.com/jobs">Jobs Page</a> to see open roles 🤗</p>
+<p align="center">Interested in working with us? Checkout our <a href="https://razorpay.com/jobs">Jobs Page</a> for open roles 🤗</p>
 
