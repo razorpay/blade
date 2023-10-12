@@ -12,15 +12,15 @@ const StyledTabButton = styled(BaseBox)<{
   autoWidth?: TabsProps['autoWidth'];
   variant: NonNullable<TabsProps['variant']>;
 }>(({ theme, size, variant, autoWidth }) => {
-  const device = 'mobile';
-  const orientation = 'horizontal';
-
   return {
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'row',
     width: autoWidth ? '100%' : undefined,
-    paddingTop: makeSpace(get(theme, paddings[variant][orientation][device].top[size!])),
-    paddingBottom: makeSpace(get(theme, paddings[variant][orientation][device].bottom[size!])),
-    paddingLeft: makeSpace(get(theme, paddings[variant][orientation][device].left[size!])),
-    paddingRight: makeSpace(get(theme, paddings[variant][orientation][device].right[size!])),
+    paddingTop: makeSpace(get(theme, paddings[variant].horizontal.mobile.top[size!])),
+    paddingBottom: makeSpace(get(theme, paddings[variant].horizontal.mobile.bottom[size!])),
+    paddingLeft: makeSpace(get(theme, paddings[variant].horizontal.mobile.left[size!])),
+    paddingRight: makeSpace(get(theme, paddings[variant].horizontal.mobile.right[size!])),
   };
 });
 

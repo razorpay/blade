@@ -16,9 +16,14 @@ const TabIndicator = (props: TabBarIndicatorProps<any>): React.ReactElement => {
       style={{
         ...(isFilled
           ? {
+              // width:
+              //   props.getTabWidth(props.navigationState.index) -
+              //   (props.navigationState.index === props.navigationState.routes.length - 1
+              //     ? theme.spacing[2] * 3
+              //     : 0),
               height: props.layout.height - theme.border.width.thick - theme.spacing[2] * 2,
-              marginBottom: theme.spacing[2],
-              marginLeft: theme.spacing[2],
+              left: theme.spacing[2],
+              bottom: theme.spacing[2],
               backgroundColor: theme.colors.brand.primary[300],
               borderRadius: theme.border.radius.small,
             }

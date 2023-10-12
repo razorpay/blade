@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
 /* eslint-disable babel/new-cap */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React from 'react';
-import { SceneMap, TabBar, TabView } from 'react-native-tab-view';
+import { TabBar, TabView } from 'react-native-tab-view';
 import { Dimensions } from 'react-native';
 import type { TabsProps } from './types';
 import { TabsContext } from './TabsContext';
@@ -10,6 +11,7 @@ import { StyledTabButton } from './TabItem.native';
 import { textColor } from './tabTokens';
 import { iconSizeMap, useTabsItemPropRestriction } from './utils';
 import { TabIndicator } from './TabIndicator';
+import { SafeSceneMap } from './SafeSceneMap.native';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { Text } from '~components/Typography';
 import { Box } from '~components/Box';
@@ -54,6 +56,7 @@ type Route = {
   value?: string;
   index?: number;
 };
+
 const getRouteIndexFromValue = ({ value, routes }: { value?: string; routes: Route[] }) =>
   routes.findIndex((route) => route.value === value);
 
@@ -117,7 +120,7 @@ const Tabs = ({
       const validatedTrailingComponent = useTabsItemPropRestriction(trailing, size);
 
       return (
-        <StyledTabButton autoWidth={!autoWidth} variant={variant} size={size}>
+        <StyledTabButton autoWidth={!autoWidth && !isFilled} variant={variant} size={size}>
           <Box display="flex" alignItems="center" flexDirection="row" gap="spacing.3">
             {leading
               ? React.cloneElement(leading as React.ReactElement, {
@@ -137,7 +140,7 @@ const Tabs = ({
         </StyledTabButton>
       );
     },
-    [autoWidth, size, variant],
+    [autoWidth, isFilled, size, variant],
   );
 
   const renderTabBar = React.useCallback(
@@ -146,7 +149,7 @@ const Tabs = ({
         {...props}
         gap={0}
         android_ripple={{ borderless: true, color: 'transparent' }}
-        scrollEnabled={!autoWidth}
+        scrollEnabled={!autoWidth && !isFilled}
         tabStyle={{
           padding: 0,
           margin: 0,
@@ -163,13 +166,14 @@ const Tabs = ({
         style={{
           ...(isFilled
             ? {
+                shadowOpacity: 0,
                 borderRadius: theme.border.radius.small,
                 borderWidth: theme.border.width.thick,
                 borderColor: theme.colors.surface.border.normal.lowContrast,
                 backgroundColor: theme.colors.surface.background.level2.lowContrast,
                 padding: theme.spacing[2],
               }
-            : { backgroundColor: 'transparent' }),
+            : { backgroundColor: 'transparent', shadowOpacity: 0 }),
         }}
         renderIndicator={TabIndicator}
         renderLabel={renderTabLabel}
@@ -186,7 +190,7 @@ const Tabs = ({
           index,
           routes,
         }}
-        renderScene={SceneMap(panels)}
+        renderScene={SafeSceneMap(panels)}
         renderTabBar={renderTabBar}
         onIndexChange={setIndex}
         initialLayout={initialLayout}

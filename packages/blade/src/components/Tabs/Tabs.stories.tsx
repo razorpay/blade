@@ -20,7 +20,7 @@ const TabsTemplate: ComponentStory<typeof Tabs> = () => {
       <Tabs
         variant="filled"
         autoWidth={false}
-        defaultValue="refunds"
+        defaultValue="disputes"
         onChange={(v) => console.log(v)}
       >
         <TabList>
@@ -29,7 +29,6 @@ const TabsTemplate: ComponentStory<typeof Tabs> = () => {
           </TabItem>
           <TabItem value="refunds">Refunds</TabItem>
           <TabItem value="disputes">Disputes</TabItem>
-          <TabItem value="settlements">Settlements</TabItem>
         </TabList>
 
         <TabPanel value="payments">
@@ -40,9 +39,6 @@ const TabsTemplate: ComponentStory<typeof Tabs> = () => {
         </TabPanel>
         <TabPanel value="disputes">
           <Text>Disputes</Text>
-        </TabPanel>
-        <TabPanel value="settlements">
-          <Text>Settlements</Text>
         </TabPanel>
       </Tabs>
     </Box>
