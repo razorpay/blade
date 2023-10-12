@@ -61,7 +61,6 @@ const calculateBladeCoverage = (shouldHighlightNodes) => {
     }
     // if it's a svg node but not a blade icon then skip it
     if (closestSvgNode && !elm.hasAttribute('data-blade-component')) {
-      nonBladeNodeElements.push(elm);
       return;
     }
 
