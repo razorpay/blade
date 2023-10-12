@@ -20,10 +20,9 @@ Blade is a Design System that powers [Razorpay](https://razorpay.com/).
 
 ## 🔗 Links
 
-- [Documentation](https://blade.razorpay.com)
-- [Installation Guide](https://blade.razorpay.com/?path=/docs/guides-installation--page)
-- [Contributing Guide](https://github.com/razorpay/blade/blob/master/CONTRIBUTING.md)
-- [@razorpay/blade-old (Deprecated, Private)](https://github.com/razorpay/blade-old)
+- [Docs](https://blade.razorpay.com)
+- [Installation](https://blade.razorpay.com/?path=/docs/guides-installation--page)
+- [@razorpay/blade-old](https://github.com/razorpay/blade-old) (Deprecated, Private)
 
 ## ✨ Features
 - Cross-Platform (Works Natively on [React Web](https://blade.razorpay.com/?path=/docs/guides-installation--page#%EF%B8%8F-installation) and [React Native](https://blade.razorpay.com/?path=/docs/guides-installation--page#react-native-projects))
