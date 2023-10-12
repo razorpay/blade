@@ -28,7 +28,16 @@ const calculateBladeCoverage = (shouldHighlightNodes) => {
     return false;
   };
 
+  /**
+   * Checks if DOM node is a media element or not
+   */
+  const isMediaElement = (element) => {
+    const mediaTags = ['img', 'video', 'audio', 'source', 'picture'];
+    return mediaTags.includes(element.tagName.toLowerCase());
+  };
+
   const allDomElements = document.querySelectorAll('body *');
+
   const bladeNodeElements = [];
   const totalNodeElements = [];
   const nonBladeNodeElements = [];
@@ -36,6 +45,26 @@ const calculateBladeCoverage = (shouldHighlightNodes) => {
   allDomElements.forEach((elm) => {
     if (isElementHidden(elm)) return;
     if (isElementEmpty(elm)) return;
+    if (isMediaElement(elm)) return;
+
+    // skip svg nodes but not blade icons
+    const closestSvgNode = elm.closest('svg');
+    // if this is a blade icon then add it
+    if (elm.tagName.toLocaleLowerCase() === 'svg' && elm.hasAttribute('data-blade-component')) {
+      bladeNodeElements.push(elm);
+      totalNodeElements.push(elm);
+      return;
+    }
+    // if it's a svg node inside a blade icon then skip it
+    if (closestSvgNode?.getAttribute('data-blade-component') === 'icon') {
+      return;
+    }
+    // if it's a svg node but not a blade icon then skip it
+    if (closestSvgNode && !elm.hasAttribute('data-blade-component')) {
+      nonBladeNodeElements.push(elm);
+      return;
+    }
+
     totalNodeElements.push(elm);
 
     // If element has data-blade-component add it
@@ -48,7 +77,11 @@ const calculateBladeCoverage = (shouldHighlightNodes) => {
 
   const totalNodes = totalNodeElements.length;
   const bladeNodes = bladeNodeElements.length;
-  const bladeCoverage = Number(((bladeNodes / totalNodes) * 100).toFixed(2));
+  let bladeCoverage = Number(((bladeNodes / totalNodes) * 100).toFixed(2));
+  // NaN guard
+  if (totalNodes === 0) {
+    bladeCoverage = 0;
+  }
 
   if (shouldHighlightNodes) {
     nonBladeNodeElements.forEach((node) => {
