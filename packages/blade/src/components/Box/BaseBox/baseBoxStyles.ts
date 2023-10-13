@@ -222,9 +222,15 @@ const getAllProps = (
     userSelect: getResponsiveValue(props.userSelect, breakpoint),
     pointerEvents: getResponsiveValue(props.pointerEvents),
     opacity: getResponsiveValue(props.opacity, breakpoint),
+    visibility: getResponsiveValue(props.visibility, breakpoint),
     ...(!isReactNative() && {
       boxShadow: getElevationValue(props.elevation, props.theme, breakpoint),
     }),
+
+    // Polygon support
+    transform: getResponsiveValue(props.transform as string, breakpoint),
+    transformOrigin: getResponsiveValue(props.transformOrigin, breakpoint),
+    clipPath: getResponsiveValue(props.clipPath, breakpoint),
   };
 };
 
