@@ -14,7 +14,7 @@ export const getCommonStyles = (props: StyledProps<StyledAlertProps>): CSSObject
   const feedbackColors = theme.colors.feedback;
 
   return {
-    background: feedbackColors.background[intent][contrastType],
+    background: 'red',
     padding: isFullWidth
       ? `${makeSpace(theme.spacing[4])} ${makeSpace(theme.spacing[5])}`
       : `${makeSpace(theme.spacing[3])} ${makeSpace(theme.spacing[3])} ${makeSpace(

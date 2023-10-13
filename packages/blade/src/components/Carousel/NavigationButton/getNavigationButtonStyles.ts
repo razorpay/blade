@@ -27,7 +27,7 @@ const getNavigationButtonStyles = (props: {
 
   const backgroundColor = {
     filled: {
-      default: theme.colors.action.background.tertiary.default,
+      default: theme.colors.brand.primary[500],
       hover: theme.colors.action.background.tertiary.hover,
       focus: theme.colors.action.background.tertiary.focus,
       active: theme.colors.action.background.tertiary.active,
