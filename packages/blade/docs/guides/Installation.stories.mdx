@@ -138,7 +138,7 @@ Follow the next steps mentioned below for configuring fonts to work on Android:
 - Navigate to `/android/app/src/main/java/com/<your_package_name>/MainApplication.java` and add the following contents to it
 
   ```js
-  //Add the below import statement after all the import statements
+  // add the below import statement after all the import statements
   import com.facebook.react.views.text.ReactFontManager;
   ```
 
@@ -146,7 +146,7 @@ Follow the next steps mentioned below for configuring fonts to work on Android:
 
   ```js
   public void onCreate() {
-    //Add the below line as the first line
+    // add the below line as the first line
     ReactFontManager.getInstance().addCustomFont(this, "Lato", R.font.lato);
     // rest of the content of the method
   }
