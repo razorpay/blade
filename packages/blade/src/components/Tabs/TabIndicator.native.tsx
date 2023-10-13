@@ -9,18 +9,20 @@ const TabIndicator = (props: TabBarIndicatorProps<any>): React.ReactElement => {
   const { theme } = useTheme();
   const { variant } = useTabsContext();
   const isFilled = variant === 'filled';
-
   return (
     <RNTabBarIndicator
       {...props}
+      width="auto"
+      getTabWidth={(index) => {
+        if (!isFilled) return props.getTabWidth(index);
+        if (index === props.navigationState.routes.length - 1) {
+          return props.getTabWidth(index) - theme.spacing[2] * 2;
+        }
+        return props.getTabWidth(index);
+      }}
       style={{
         ...(isFilled
           ? {
-              // width:
-              //   props.getTabWidth(props.navigationState.index) -
-              //   (props.navigationState.index === props.navigationState.routes.length - 1
-              //     ? theme.spacing[2] * 3
-              //     : 0),
               height: props.layout.height - theme.border.width.thick - theme.spacing[2] * 2,
               left: theme.spacing[2],
               bottom: theme.spacing[2],
