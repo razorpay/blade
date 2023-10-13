@@ -371,8 +371,6 @@ const Carousel = ({
 
   // Sync the indicators with scroll
   React.useEffect(() => {
-    // do not sync indicators on desktop, we are already in sync because we can only use the next/prev buttons
-    if (!isMobile) return;
     const carouselContainer = containerRef.current;
     if (!carouselContainer) return;
 
