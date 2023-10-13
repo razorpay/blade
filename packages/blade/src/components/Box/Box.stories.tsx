@@ -206,4 +206,22 @@ export const WithId = (): React.ReactElement => {
   );
 };
 
+export const Polygon = (): React.ReactElement => {
+  return (
+    <Box
+      backgroundColor="brand.primary.500"
+      padding="spacing.3"
+      margin="spacing.3"
+      height="300px"
+      clipPath="ellipse(130px 140px at 10% 20%)"
+      transformOrigin="top left"
+      transform="rotate(10deg) translate(100px, 20%)"
+    >
+      <Text as="span" weight="bold" contrast="high">
+        Custom Polygon
+      </Text>
+    </Box>
+  );
+};
+
 export default BoxStoryMeta;

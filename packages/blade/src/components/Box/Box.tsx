@@ -132,6 +132,8 @@ const makeBoxProps = (
     backgroundOrigin: props.backgroundOrigin,
     backgroundRepeat: props.backgroundRepeat,
     elevation: props.elevation,
+    opacity: props.opacity,
+    visibility: props.visibility,
 
     // Border
     borderWidth: props.borderWidth,
@@ -149,6 +151,11 @@ const makeBoxProps = (
     borderTopRightRadius: props.borderTopRightRadius,
     borderBottomRightRadius: props.borderBottomRightRadius,
     borderBottomLeftRadius: props.borderBottomLeftRadius,
+
+    // Polygon Support
+    transform: props.transform,
+    transformOrigin: props.transformOrigin,
+    clipPath: props.clipPath,
 
     // callbacks
     onMouseEnter: props.onMouseEnter,
