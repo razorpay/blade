@@ -18,6 +18,7 @@ import { Box } from '~components/Box';
 import { useTheme } from '~utils';
 import { useControllableState } from '~utils/useControllable';
 import { useFirstRender } from '~utils/useFirstRender';
+import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 
 const initialLayout = {
   height: 0,
@@ -112,6 +113,12 @@ const Tabs = ({
     setSelectedValue: setIndex,
   };
 
+  // Set initial value
+  React.useLayoutEffect(() => {
+    if (selectedValue) return;
+    setIndex(0);
+  }, [selectedValue, setIndex]);
+
   const renderTabLabel = React.useCallback(
     ({ route, focused }) => {
       const { title, leading, trailing } = route;
@@ -167,13 +174,18 @@ const Tabs = ({
           ...(isFilled
             ? {
                 shadowOpacity: 0,
+                shadowColor: 'transparent',
                 borderRadius: theme.border.radius.small,
                 borderWidth: theme.border.width.thick,
                 borderColor: theme.colors.surface.border.normal.lowContrast,
                 backgroundColor: theme.colors.surface.background.level2.lowContrast,
                 padding: theme.spacing[2],
               }
-            : { backgroundColor: 'transparent', shadowOpacity: 0 }),
+            : {
+                shadowOpacity: 0,
+                shadowColor: 'transparent',
+                backgroundColor: 'transparent',
+              }),
         }}
         renderIndicator={TabIndicator}
         renderLabel={renderTabLabel}

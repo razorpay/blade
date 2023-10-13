@@ -12,17 +12,13 @@ import { Box } from '~components/Box';
 export default {
   title: 'Components/Tabs',
   component: Tabs,
+  decorators: [(Story) => <Story />],
 } as Meta<TabsProps>;
 
 const TabsTemplate: ComponentStory<typeof Tabs> = () => {
   return (
     <Box height="100%">
-      <Tabs
-        variant="filled"
-        autoWidth={false}
-        defaultValue="disputes"
-        onChange={(v) => console.log(v)}
-      >
+      <Tabs variant="filled" autoWidth={false}>
         <TabList>
           <TabItem leading={<TrendingUpIcon />} trailing={<Counter value={12} />} value="payments">
             Payments

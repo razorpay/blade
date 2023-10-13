@@ -16,7 +16,7 @@ const TabIndicator = (props: TabBarIndicatorProps<any>): React.ReactElement => {
       getTabWidth={(index) => {
         if (!isFilled) return props.getTabWidth(index);
         if (index === props.navigationState.routes.length - 1) {
-          return props.getTabWidth(index) - theme.spacing[2] * 2;
+          return props.getTabWidth(index) - theme.spacing[2] * 3;
         }
         return props.getTabWidth(index);
       }}
