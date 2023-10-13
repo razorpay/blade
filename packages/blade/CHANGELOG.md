@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 10.14.7
+
+### Patch Changes
+
+- 59f0b92c: fix: carousel indicator sync bug
+
 ## 10.14.6
 
 ### Patch Changes
