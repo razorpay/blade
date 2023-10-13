@@ -95,7 +95,7 @@ type TabItemProps = {
   /**
    * The label of the tab item.
    */
-  children: string;
+  children: React.ReactNode;
   /**
    * The value of the tab item.
    */
@@ -249,7 +249,7 @@ const Uncontrolled = () => {
 ## Filled Variant
 
 ```jsx
-<Tabs defaultValue="refunds">
+<Tabs variant="filled" defaultValue="refunds">
   <TabList>
     <TabItem value="week">Week</TabItem>
     <TabItem value="month">Month</TabItem>
@@ -312,7 +312,7 @@ We decided not to go with this API because of these downsides:
 
 #### 1. Quite tricky/hack to implement
 
-With the API that you proposed it will be quite tricky to map the JSX to the HTML structure that a typical tab requires. 
+With this API it will be quite tricky to map the JSX to the HTML structure that a typical tab requires. 
 
 A tab's HTML structure is as follows
 
@@ -332,7 +332,7 @@ A tab's HTML structure is as follows
 </div>
 ```
 
-We need to achieve the above HTML structure, and to do this with the API that you proposed will get very hacky since now we need to use React.cloneElement and save those JSX nodes in state and render them in appropriate place. 
+We need to achieve the above HTML structure, and to do this with the above API it will get very hacky since now we need to use React.cloneElement and save those JSX nodes in state and render them in appropriate place. 
 
 ```html
 <Tabs>
