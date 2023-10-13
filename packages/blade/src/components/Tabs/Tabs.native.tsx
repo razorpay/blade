@@ -18,7 +18,6 @@ import { Box } from '~components/Box';
 import { useTheme } from '~utils';
 import { useControllableState } from '~utils/useControllable';
 import { useFirstRender } from '~utils/useFirstRender';
-import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 
 const initialLayout = {
   height: 0,
