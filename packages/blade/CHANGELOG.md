@@ -1,5 +1,15 @@
 # @razorpay/blade
 
+## 10.15.0
+
+### Minor Changes
+
+- 87c5a6ee: feat(Box): add `transform`, `transformOrigin`, `clipPath`, `opacity`, & `visibility` props
+
+### Patch Changes
+
+- 76d80dc2: fix(Input): ensure correct value passing for trailingFooterSlot & trailingHeaderSlot
+
 ## 10.14.7
 
 ### Patch Changes
