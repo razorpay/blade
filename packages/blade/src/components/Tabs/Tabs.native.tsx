@@ -120,7 +120,7 @@ const Tabs = ({
 
   const renderTabLabel = React.useCallback(
     ({ route, focused }) => {
-      const { title, leading, trailing } = route;
+      const { title, leading: Leading, trailing } = route;
       const selectedState = focused ? 'selected' : 'unselected';
       // eslint-disable-next-line react-hooks/rules-of-hooks
       const validatedTrailingComponent = useTabsItemPropRestriction(trailing, size);
@@ -128,12 +128,9 @@ const Tabs = ({
       return (
         <StyledTabButton autoWidth={!autoWidth && !isFilled} variant={variant} size={size}>
           <Box display="flex" alignItems="center" flexDirection="row" gap="spacing.3">
-            {leading
-              ? React.cloneElement(leading as React.ReactElement, {
-                  size: iconSizeMap[size],
-                  color: `surface.action.icon.default.lowContrast`,
-                })
-              : null}
+            {Leading ? (
+              <Leading size={iconSizeMap[size]} color="surface.action.icon.default.lowContrast" />
+            ) : null}
             <Text
               color={textColor[selectedState].default}
               size={size === 'medium' ? 'medium' : 'large'}

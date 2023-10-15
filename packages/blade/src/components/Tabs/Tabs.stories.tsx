@@ -18,6 +18,7 @@ import { Button } from '~components/Button';
 import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
+import { isReactNative } from '~utils';
 
 const Page = (): React.ReactElement => {
   return (
@@ -402,7 +403,7 @@ const TabsTemplate: ComponentStory<(props: StoryControlProps) => React.ReactElem
   const invalidationKey = `${args.autoWidth}-${args.orientation}-${args.size}-${args.tabItemIsDisabled}`;
   const isVertical = args.orientation === 'vertical';
   return (
-    <Box>
+    <Box height={isReactNative() ? '100%' : undefined}>
       <Tabs key={invalidationKey} {...args}>
         {/* <Box width="100%" display="flex" justifyContent="space-between" alignItems="center">
           <TabList>
@@ -456,7 +457,7 @@ const ControlledTabsTemplate: ComponentStory<(props: StoryControlProps) => React
   const [value, setValue] = React.useState('plans');
 
   return (
-    <Box>
+    <Box height={isReactNative() ? '100%' : undefined}>
       <Box padding="spacing.3" marginBottom="spacing.5">
         <Text>Tab's state can be controlled by using the value & onChange prop.</Text>
         <Text weight="bold" marginBottom="spacing.4">
@@ -515,6 +516,10 @@ const TabsWithTooltipTemplate: ComponentStory<(props: StoryControlProps) => Reac
 ) => {
   const invalidationKey = `${args.autoWidth}-${args.orientation}-${args.size}-${args.tabItemIsDisabled}`;
   const isVertical = args.orientation === 'vertical';
+
+  if (isReactNative()) {
+    return <Text>Story not available on ReactNative</Text>;
+  }
 
   return (
     <Box>
