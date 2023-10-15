@@ -5,6 +5,7 @@ import React from 'react';
 import type { TabItemProps, TabsProps } from './types';
 import { Tabs, TabItem, TabList, TabPanel } from './';
 import { Code, Heading, Text, Title } from '~components/Typography';
+import type { IconComponent } from '~components/Icons';
 import { BankIcon, CreditCardIcon, ZapIcon } from '~components/Icons';
 import { Counter } from '~components/Counter';
 import { Box } from '~components/Box';
@@ -304,11 +305,11 @@ const PlansPanel = ({ isVertical }: { isVertical: boolean }) => {
 
 const SettingsCard = ({
   title,
-  icon,
+  icon: Icon,
   children,
 }: {
   title: string;
-  icon: React.ReactNode;
+  icon: IconComponent;
   children: React.ReactNode;
 }) => {
   return (
@@ -322,7 +323,7 @@ const SettingsCard = ({
             alignItems="center"
           >
             <Box display="flex" flexDirection="row" gap="spacing.4" alignItems="center">
-              {icon}
+              <Icon size="large" color="surface.text.subtle.lowContrast" />
               <Heading>{title}</Heading>
             </Box>
             <Switch accessibilityLabel="Enable Card" />
