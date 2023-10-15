@@ -27,7 +27,7 @@ const TabList = ({ children }: { children: React.ReactNode }): React.ReactElemen
   }, [children, selectedValue, setSelectedValue]);
 
   return (
-    <BaseBox display={isVertical ? 'flex' : 'block'} overflow="hidden">
+    <BaseBox display={isVertical ? 'flex' : 'block'} flexShrink={0} overflow="hidden">
       {isVertical && variant === 'bordered' ? (
         <BaseBox
           width="1.5px"

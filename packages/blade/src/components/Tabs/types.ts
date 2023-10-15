@@ -1,3 +1,5 @@
+import type React from 'react';
+import { IconComponent } from '~components/Icons';
 import type { Platform } from '~utils';
 
 type TabsProps = {
@@ -44,7 +46,7 @@ type TabItemProps = {
   /**
    * The label of the tab item.
    */
-  children: string;
+  children: React.ReactNode;
   /**
    * The value of the tab item.
    */
@@ -53,7 +55,7 @@ type TabItemProps = {
    * Leading element of the tab item.
    * Can be used to render an icon.
    */
-  leading?: React.ReactNode;
+  leading?: IconComponent;
   /**
    * Trailing element of the tab item.
    * Can be used to render an badge/counter.

@@ -90,7 +90,7 @@ const StyledTabButton = styled.button<{
 const TabItem = ({
   children,
   value,
-  leading,
+  leading: Leading,
   trailing,
   isDisabled = false,
 }: TabItemProps): React.ReactElement => {
@@ -132,12 +132,12 @@ const TabItem = ({
             controls: panelId,
           })}
         >
-          {leading
-            ? React.cloneElement(leading as React.ReactElement, {
-                size: iconSizeMap[size!],
-                color: `surface.action.icon.${currentInteraction}.lowContrast`,
-              })
-            : null}
+          {Leading ? (
+            <Leading
+              size={iconSizeMap[size!]}
+              color={`surface.action.icon.${currentInteraction}.lowContrast`}
+            />
+          ) : null}
           <Text
             color={textColor[selectedState][isDisabled ? 'disabled' : currentInteraction]}
             size={size === 'medium' ? 'medium' : 'large'}
