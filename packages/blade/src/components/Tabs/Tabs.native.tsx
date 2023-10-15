@@ -18,6 +18,7 @@ import { Box } from '~components/Box';
 import { useTheme } from '~utils';
 import { useControllableState } from '~utils/useControllable';
 import { useFirstRender } from '~utils/useFirstRender';
+import { Divider } from '~components/Divider';
 
 const initialLayout = {
   height: 0,
@@ -120,7 +121,7 @@ const Tabs = ({
 
   const renderTabLabel = React.useCallback(
     ({ route, focused }) => {
-      const { title, leading, trailing } = route;
+      const { title, leading: Leading, trailing } = route;
       const selectedState = focused ? 'selected' : 'unselected';
       // eslint-disable-next-line react-hooks/rules-of-hooks
       const validatedTrailingComponent = useTabsItemPropRestriction(trailing, size);
@@ -128,12 +129,9 @@ const Tabs = ({
       return (
         <StyledTabButton autoWidth={!autoWidth && !isFilled} variant={variant} size={size}>
           <Box display="flex" alignItems="center" flexDirection="row" gap="spacing.3">
-            {leading
-              ? React.cloneElement(leading as React.ReactElement, {
-                  size: iconSizeMap[size],
-                  color: `surface.action.icon.default.lowContrast`,
-                })
-              : null}
+            {Leading ? (
+              <Leading size={iconSizeMap[size]} color="surface.action.icon.default.lowContrast" />
+            ) : null}
             <Text
               color={textColor[selectedState].default}
               size={size === 'medium' ? 'medium' : 'large'}
@@ -188,6 +186,25 @@ const Tabs = ({
         }}
         renderIndicator={TabIndicator}
         renderLabel={renderTabLabel}
+        // This is a bit hacky, but this is the only way to put a divider between tabs
+        // Since there is no way to use tablist.map() to render the tabs
+        renderBadge={() => {
+          if (!isFilled) return null;
+          if (index === 0) {
+            return null;
+          }
+          return (
+            <Divider
+              left="1px"
+              height="20px"
+              variant="normal"
+              orientation="vertical"
+              // again, hacky but no way to get exact height of the tabbar
+              // Since we already know the height of large,medium size tabs, I just hardcode it here.
+              top={size === 'large' ? '6px' : '4px'}
+            />
+          );
+        }}
       />
     ),
     // eslint-disable-next-line react-hooks/exhaustive-deps
