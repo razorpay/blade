@@ -589,7 +589,6 @@ Bordered.args = {
   variant: 'bordered',
 };
 
-// TODO: fix bug with vertical bordered tab
 export const BorderedVertical = TabsTemplate.bind({});
 BorderedVertical.args = {
   variant: 'bordered',

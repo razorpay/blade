@@ -16,6 +16,7 @@ const ScrollableArea = styled(BaseBox)(() => {
 const TabList = ({ children }: { children: React.ReactNode }): React.ReactElement => {
   const { setSelectedValue, selectedValue, variant, isVertical } = useTabsContext();
   const tabListContainerRef = React.useRef<HTMLDivElement>(null);
+  const isBordered = variant === 'bordered';
 
   // Set the first child as the selected value
   useIsomorphicLayoutEffect(() => {
@@ -28,14 +29,6 @@ const TabList = ({ children }: { children: React.ReactNode }): React.ReactElemen
 
   return (
     <BaseBox display={isVertical ? 'flex' : 'block'} flexShrink={0} overflow="hidden">
-      {isVertical && variant === 'bordered' ? (
-        <BaseBox
-          width="1.5px"
-          height="100%"
-          backgroundColor="surface.border.normal.lowContrast"
-          style={{ transform: 'translateX(1.5px)' }}
-        />
-      ) : null}
       <ScrollableArea
         position="relative"
         display="inline-block"
@@ -47,57 +40,70 @@ const TabList = ({ children }: { children: React.ReactNode }): React.ReactElemen
         <Composite
           render={(htmlProps) => {
             return (
-              // @ts-expect-error spreading composite props
-              <BaseBox
-                {...htmlProps}
-                ref={tabListContainerRef}
-                role="tablist"
-                width="100%"
-                display="flex"
-                flexDirection={isVertical ? 'column' : 'row'}
-                alignItems={isVertical ? 'start' : 'center'}
-                overflow={isVertical ? 'hidden' : undefined}
-                {...(variant === 'bordered'
-                  ? {
-                      padding: 'spacing.0',
-                    }
-                  : {
-                      borderRadius: 'small',
-                      borderWidth: 'thick',
-                      borderColor: 'surface.border.normal.lowContrast',
-                      padding: isVertical ? 'spacing.0' : 'spacing.2',
-                      gap: isVertical ? 'spacing.0' : 'spacing.1',
-                      backgroundColor: 'surface.background.level2.lowContrast',
-                    })}
-              >
-                {variant === 'filled' && !isVertical
-                  ? React.Children.map(children, (child, index) => {
-                      return (
-                        <>
-                          {index > 0 ? (
-                            <Divider
-                              margin="auto"
-                              height="20px"
-                              variant="subtle"
-                              orientation="vertical"
-                            />
-                          ) : null}
-                          {child}
-                        </>
-                      );
-                    })
-                  : children}
+              <BaseBox flexDirection="row" display="flex">
+                {isVertical && isBordered ? (
+                  <BaseBox
+                    width="1.5px"
+                    height="auto"
+                    flexGrow={1}
+                    flexShrink={0}
+                    backgroundColor="surface.border.normal.lowContrast"
+                    style={{ transform: 'translateX(1.5px)' }}
+                  />
+                ) : null}
+                {/* @ts-expect-error spreading composite props */}
+                <BaseBox
+                  {...htmlProps}
+                  flexGrow={1}
+                  ref={tabListContainerRef}
+                  role="tablist"
+                  width="100%"
+                  display="flex"
+                  flexDirection={isVertical ? 'column' : 'row'}
+                  alignItems={isVertical ? 'start' : 'center'}
+                  overflow={isVertical ? 'hidden' : undefined}
+                  {...(isBordered
+                    ? {
+                        padding: 'spacing.0',
+                      }
+                    : {
+                        borderRadius: 'small',
+                        borderWidth: 'thick',
+                        borderColor: 'surface.border.normal.lowContrast',
+                        padding: isVertical ? 'spacing.0' : 'spacing.2',
+                        gap: isVertical ? 'spacing.0' : 'spacing.1',
+                        backgroundColor: 'surface.background.level2.lowContrast',
+                      })}
+                >
+                  {variant === 'filled' && !isVertical
+                    ? React.Children.map(children, (child, index) => {
+                        return (
+                          <>
+                            {index > 0 ? (
+                              <Divider
+                                margin="auto"
+                                height="20px"
+                                variant="subtle"
+                                orientation="vertical"
+                              />
+                            ) : null}
+                            {child}
+                          </>
+                        );
+                      })
+                    : children}
+                </BaseBox>
               </BaseBox>
             );
           }}
         />
         {!isVertical ? <TabIndicator tabListContainerRef={tabListContainerRef} /> : null}
       </ScrollableArea>
-      {/* 
-        Static border bottom, can't just put it on the outer Box of tablist because 
+      {/*
+        Adding border bottom with an div element, we can't put it on the outer Box of tablist because 
         it's not possible to offset or translate a border 
       */}
-      {!isVertical && variant === 'bordered' ? (
+      {!isVertical && isBordered ? (
         <BaseBox
           style={{ transform: 'translateY(-5.5px)' }}
           borderBottomColor="surface.border.normal.lowContrast"
