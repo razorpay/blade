@@ -85,6 +85,14 @@ type TabsProps = {
    * If `true`, the TabItems will grow to use all the available space.
    */
   autoWidth?: boolean;
+  /**
+   * By default the TabPanels will be mounted to the DOM even if they are not selected.
+   * 
+   * If `true`, the TabPanels will only be mounted to the DOM when they are selected.
+   * 
+   * @default false
+   */
+  isLazy?: boolean;
 };
 ```
 
