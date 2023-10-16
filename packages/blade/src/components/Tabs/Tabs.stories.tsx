@@ -8,6 +8,7 @@ import { Text } from '~components/Typography';
 import { TrendingUpIcon } from '~components/Icons';
 import { Counter } from '~components/Counter';
 import { Box } from '~components/Box';
+import { Button } from '~components/Button';
 
 export default {
   title: 'Components/Tabs',
@@ -16,15 +17,18 @@ export default {
 } as Meta<TabsProps>;
 
 const TabsTemplate: ComponentStory<typeof Tabs> = () => {
+  const [isVisible, setIsVisible] = React.useState(true);
+
+  const [value, setValue] = React.useState('refunds');
   return (
-    <Box height="100%">
-      <Tabs variant="filled" autoWidth={false}>
+    <Box>
+      <Button onClick={() => setIsVisible((v) => !v)}>Toggle</Button>
+      <Tabs>
         <TabList>
-          <TabItem leading={<TrendingUpIcon />} trailing={<Counter value={12} />} value="payments">
-            Payments
-          </TabItem>
+          <TabItem value="payments">Payments</TabItem>
           <TabItem value="refunds">Refunds</TabItem>
           <TabItem value="disputes">Disputes</TabItem>
+          <TabItem value="settlements">Settlements</TabItem>
         </TabList>
 
         <TabPanel value="payments">
@@ -36,7 +40,41 @@ const TabsTemplate: ComponentStory<typeof Tabs> = () => {
         <TabPanel value="disputes">
           <Text>Disputes</Text>
         </TabPanel>
+        <TabPanel value="settlements">
+          <Text>Settlements</Text>
+        </TabPanel>
       </Tabs>
+      <br />
+      <br />
+      <br />
+      <Box>
+        <Text>{value}</Text>
+        {isVisible ? (
+          <Tabs
+            value={value}
+            onChange={(value) => {
+              console.log({ value });
+              setValue(value);
+            }}
+          >
+            <TabList>
+              <TabItem value="payments">Payments</TabItem>
+              <TabItem value="refunds">Refunds</TabItem>
+              <TabItem value="disputes">Disputes</TabItem>
+            </TabList>
+
+            <TabPanel value="payments">
+              <Text>Payments</Text>
+            </TabPanel>
+            <TabPanel value="refunds">
+              <Text>Refunds</Text>
+            </TabPanel>
+            <TabPanel value="disputes">
+              <Text>Disputes</Text>
+            </TabPanel>
+          </Tabs>
+        ) : null}
+      </Box>
     </Box>
   );
 };
