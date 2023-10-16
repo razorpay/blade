@@ -2,7 +2,6 @@ import React from 'react';
 import type { TabsProps } from './types';
 import { TabsContext } from './TabsContext';
 import { useControllableState } from '~utils/useControllable';
-import { useFirstRender } from '~utils/useFirstRender';
 import { useId } from '~utils/useId';
 import BaseBox from '~components/Box/BaseBox';
 
@@ -17,26 +16,27 @@ const Tabs = ({
   autoWidth = false,
 }: TabsProps): React.ReactElement => {
   const baseId = useId('tabs');
-  const isFirstRender = useFirstRender();
   const [selectedValue, setSelectedValue] = useControllableState({
     defaultValue,
     value,
     onChange: (value) => {
-      if (isFirstRender) return;
       onChange?.(value);
     },
   });
 
   const isVertical = orientation === 'vertical';
-  const contextValue = {
-    baseId,
-    selectedValue,
-    isVertical,
-    size,
-    variant,
-    autoWidth,
-    setSelectedValue,
-  };
+  const contextValue = React.useMemo(
+    () => ({
+      baseId,
+      selectedValue,
+      isVertical,
+      size,
+      variant,
+      autoWidth,
+      setSelectedValue,
+    }),
+    [autoWidth, baseId, isVertical, selectedValue, setSelectedValue, size, variant],
+  );
 
   return (
     <TabsContext.Provider value={contextValue}>
