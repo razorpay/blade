@@ -15,11 +15,11 @@ import { makeAccessible } from '~utils/makeAccessible';
 
 const StyledTabButton = styled.button<{
   size: TabsProps['size'];
-  autoWidth?: TabsProps['autoWidth'];
+  isFullWidthTabItem?: TabsProps['isFullWidthTabItem'];
   variant: NonNullable<TabsProps['variant']>;
   isVertical: boolean;
   isSelected: boolean;
-}>(({ theme, isSelected, size, variant, autoWidth, isVertical }) => {
+}>(({ theme, isSelected, size, variant, isFullWidthTabItem, isVertical }) => {
   const isMobile = useIsMobile();
   const isFilled = variant === 'filled';
   const device = isMobile ? 'mobile' : 'desktop';
@@ -42,7 +42,7 @@ const StyledTabButton = styled.button<{
     alignItems: 'center',
     justifyContent: isVertical ? 'left' : 'center',
     gap: makeSpace(theme.spacing[3]),
-    width: autoWidth ? '100%' : undefined,
+    width: isFullWidthTabItem ? '100%' : undefined,
     paddingTop: makeSpace(get(theme, paddings[variant][orientation][device].top[size!])),
     paddingBottom: makeSpace(get(theme, paddings[variant][orientation][device].bottom[size!])),
     paddingLeft: makeSpace(get(theme, paddings[variant][orientation][device].left[size!])),
@@ -96,7 +96,7 @@ const TabItem = ({
 }: TabItemProps): React.ReactElement => {
   const {
     size,
-    autoWidth,
+    isFullWidthTabItem,
     selectedValue,
     setSelectedValue,
     baseId,
@@ -118,7 +118,7 @@ const TabItem = ({
           isVertical={isVertical}
           isSelected={isSelected}
           variant={variant!}
-          autoWidth={autoWidth || isFilled}
+          isFullWidthTabItem={isFullWidthTabItem || isFilled}
           id={tabItemId}
           size={size}
           disabled={isDisabled}

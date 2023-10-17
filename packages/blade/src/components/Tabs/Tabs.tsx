@@ -13,7 +13,7 @@ const Tabs = ({
   orientation = 'horizontal',
   size = 'medium',
   variant = 'bordered',
-  autoWidth = false,
+  isFullWidthTabItem = false,
 }: TabsProps): React.ReactElement => {
   const baseId = useId('tabs');
   const [selectedValue, setSelectedValue] = useControllableState({
@@ -32,10 +32,10 @@ const Tabs = ({
       isVertical,
       size,
       variant,
-      autoWidth,
+      isFullWidthTabItem,
       setSelectedValue,
     }),
-    [autoWidth, baseId, isVertical, selectedValue, setSelectedValue, size, variant],
+    [isFullWidthTabItem, baseId, isVertical, selectedValue, setSelectedValue, size, variant],
   );
 
   return (

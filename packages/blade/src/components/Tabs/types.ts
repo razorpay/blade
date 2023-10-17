@@ -26,11 +26,11 @@ type TabsProps = {
   /**
    * The variant of the tabs.
    */
-  variant?: 'bordered' | 'filled';
+  variant?: 'bordered' | 'borderless' | 'filled';
   /**
    * If `true`, the TabItems will grow to use all the available space.
    */
-  autoWidth?: boolean;
+  isFullWidthTabItem?: boolean;
 };
 
 type TabItemProps = {

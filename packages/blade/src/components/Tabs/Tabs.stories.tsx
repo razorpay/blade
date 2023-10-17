@@ -17,7 +17,7 @@ export default {
 const TabsTemplate: ComponentStory<typeof Tabs> = () => {
   return (
     <Box>
-      <Tabs autoWidth defaultValue="refunds" onChange={(v) => console.log(v)}>
+      <Tabs isFullWidthTabItem defaultValue="refunds" onChange={(v) => console.log(v)}>
         <TabList>
           <TabItem leading={<TrendingUpIcon />} trailing={<Counter value={12} />} value="payments">
             Payments

@@ -4,7 +4,7 @@ import { throwBladeError } from '~utils/logger';
 import type { ControllableStateSetter } from '~utils/useControllable';
 
 type TabsContextProps =
-  | (Pick<TabsProps, 'size' | 'variant' | 'autoWidth'> & {
+  | (Pick<TabsProps, 'size' | 'variant' | 'isFullWidthTabItem'> & {
       isVertical: boolean;
       baseId: string;
       selectedValue: string;
