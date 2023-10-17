@@ -84,7 +84,7 @@ type TabsProps = {
   /**
    * If `true`, the TabItems will grow to use all the available space.
    */
-  autoWidth?: boolean;
+  isFullWidthTabItem?: boolean;
   /**
    * By default the TabPanels will be mounted to the DOM even if they are not selected.
    * 
