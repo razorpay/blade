@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Checkout } from './Checkout';
+import { Checkout } from './CheckoutHome';
 import { PhantomUI } from './PhantomUI';
 import { ThemeSelector } from './ThemeSelector';
 import { BrandedComponentKitchenSink } from './BrandedComponentKitchenSink';
