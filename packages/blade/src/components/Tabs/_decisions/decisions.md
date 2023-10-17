@@ -382,6 +382,11 @@ The current API that is proposed is also much more familiar and is similar to ho
 
 Check the motion [prototype](https://www.figma.com/proto/LSG77hEeVYDk7j7WV7OMJE/Blade-DSL---Components-Guideline?type=design&node-id=4005-31894&t=b3OlPHxPuFH1BAIZ-0&scaling=min-zoom&page-id=3698%3A13772) here.
 
+
+https://github.com/razorpay/blade/assets/35374649/8c9d59b1-6f59-42b3-a4c8-a31862479c82
+
+
+
 ## Accessibility
 
 Tabs will follow the [WAI-ARIA Tabs](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/) pattern.
