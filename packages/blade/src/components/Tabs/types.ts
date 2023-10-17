@@ -17,20 +17,34 @@ type TabsProps = {
   onChange?: (value: string) => void;
   /**
    * The orientation of the tabs.
+   *
+   * @default 'horizontal'
    */
   orientation?: 'horizontal' | 'vertical';
   /**
    * The size of the tabs.
+   *
+   * @default 'medium'
    */
   size?: 'medium' | 'large';
   /**
    * The variant of the tabs.
+   *
+   * @default 'bordered'
    */
   variant?: 'bordered' | 'borderless' | 'filled';
   /**
    * If `true`, the TabItems will grow to use all the available space.
+   *
+   * @default false
    */
   isFullWidthTabItem?: boolean;
+  /**
+   * If `true`, the TabPanel will be rendered only when it becomes active.
+   *
+   * @default false
+   */
+  isLazy?: boolean;
 };
 
 type TabItemProps = {

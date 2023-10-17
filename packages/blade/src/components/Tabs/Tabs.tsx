@@ -14,6 +14,7 @@ const Tabs = ({
   size = 'medium',
   variant = 'bordered',
   isFullWidthTabItem = false,
+  isLazy = false,
 }: TabsProps): React.ReactElement => {
   const baseId = useId('tabs');
   const [selectedValue, setSelectedValue] = useControllableState({
@@ -34,8 +35,18 @@ const Tabs = ({
       variant,
       isFullWidthTabItem,
       setSelectedValue,
+      isLazy,
     }),
-    [isFullWidthTabItem, baseId, isVertical, selectedValue, setSelectedValue, size, variant],
+    [
+      isFullWidthTabItem,
+      baseId,
+      isVertical,
+      selectedValue,
+      setSelectedValue,
+      size,
+      variant,
+      isLazy,
+    ],
   );
 
   return (
