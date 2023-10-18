@@ -18,6 +18,7 @@ import { Box } from '~components/Box';
 import { useTheme } from '~utils';
 import { useControllableState } from '~utils/useControllable';
 import { useFirstRender } from '~utils/useFirstRender';
+import { Divider } from '~components/Divider';
 
 const initialLayout = {
   height: 0,
@@ -70,7 +71,8 @@ const Tabs = ({
   onChange,
   size = 'medium',
   variant = 'bordered',
-  autoWidth = false,
+  isFullWidthTabItem = false,
+  isLazy = false,
 }: TabsProps): React.ReactElement => {
   const { theme } = useTheme();
   const isFirstRender = useFirstRender();
@@ -108,7 +110,7 @@ const Tabs = ({
     isVertical,
     size,
     variant,
-    autoWidth,
+    isFullWidthTabItem,
     setSelectedValue: setIndex,
   };
 
@@ -126,10 +128,21 @@ const Tabs = ({
       const validatedTrailingComponent = useTabsItemPropRestriction(trailing, size);
 
       return (
-        <StyledTabButton autoWidth={!autoWidth && !isFilled} variant={variant} size={size}>
+        <StyledTabButton
+          size={size}
+          variant={variant}
+          isFullWidthTabItem={!isFullWidthTabItem && !isFilled}
+        >
           <Box display="flex" alignItems="center" flexDirection="row" gap="spacing.3">
             {Leading ? (
-              <Leading size={iconSizeMap[size]} color="surface.action.icon.default.lowContrast" />
+              <Leading
+                size={iconSizeMap[size]}
+                color={
+                  selectedState === 'selected'
+                    ? 'brand.primary.500'
+                    : 'surface.action.icon.default.lowContrast'
+                }
+              />
             ) : null}
             <Text
               color={textColor[selectedState].default}
@@ -143,7 +156,7 @@ const Tabs = ({
         </StyledTabButton>
       );
     },
-    [autoWidth, isFilled, size, variant],
+    [isFullWidthTabItem, isFilled, size, variant],
   );
 
   const renderTabBar = React.useCallback(
@@ -152,7 +165,7 @@ const Tabs = ({
         {...props}
         gap={0}
         android_ripple={{ borderless: true, color: 'transparent' }}
-        scrollEnabled={!autoWidth && !isFilled}
+        scrollEnabled={!isFullWidthTabItem && !isFilled}
         tabStyle={{
           padding: 0,
           margin: 0,
@@ -185,10 +198,29 @@ const Tabs = ({
         }}
         renderIndicator={TabIndicator}
         renderLabel={renderTabLabel}
+        // This is a bit hacky, but this is the only way to put a divider between tabs
+        // Since there is no way to use tablist.map() to render the tabs
+        renderBadge={() => {
+          if (!isFilled) return null;
+          if (index === 0) {
+            return null;
+          }
+          return (
+            <Divider
+              left="1px"
+              height="20px"
+              variant="normal"
+              orientation="vertical"
+              // again, hacky but no way to get exact height of the tabbar
+              // Since we already know the height of large,medium size tabs, I just hardcode it here.
+              top={size === 'large' ? '6px' : '4px'}
+            />
+          );
+        }}
       />
     ),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [autoWidth, isFilled, renderTabLabel],
+    [isFullWidthTabItem, isFilled, renderTabLabel],
   );
 
   return (
@@ -202,7 +234,7 @@ const Tabs = ({
         renderTabBar={renderTabBar}
         onIndexChange={setIndex}
         initialLayout={initialLayout}
-        lazy={false}
+        lazy={isLazy}
       />
     </TabsContext.Provider>
   );

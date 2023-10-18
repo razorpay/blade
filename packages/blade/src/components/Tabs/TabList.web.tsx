@@ -17,13 +17,15 @@ const TabList = ({ children }: { children: React.ReactNode }): React.ReactElemen
   const { setSelectedValue, selectedValue, variant, isVertical } = useTabsContext();
   const tabListContainerRef = React.useRef<HTMLDivElement>(null);
   const isBordered = variant === 'bordered';
+  const isFilled = variant === 'filled';
 
   // Set the first child as the selected value
   useIsomorphicLayoutEffect(() => {
     if (selectedValue) return;
     const first = React.Children.toArray(children)[0];
     if (React.isValidElement(first)) {
-      setSelectedValue(() => first.props.value);
+      // We need to skip calling onChange on the first render when we set the initial value
+      setSelectedValue(() => first.props.value, true);
     }
   }, [children, selectedValue, setSelectedValue]);
 
@@ -31,7 +33,6 @@ const TabList = ({ children }: { children: React.ReactNode }): React.ReactElemen
     <BaseBox display={isVertical ? 'flex' : 'block'} flexShrink={0} overflow="hidden">
       <ScrollableArea
         position="relative"
-        display="inline-block"
         whiteSpace="nowrap"
         flex="1 1 auto"
         width="100%"
@@ -62,17 +63,18 @@ const TabList = ({ children }: { children: React.ReactNode }): React.ReactElemen
                   flexDirection={isVertical ? 'column' : 'row'}
                   alignItems={isVertical ? 'start' : 'center'}
                   overflow={isVertical ? 'hidden' : undefined}
-                  {...(isBordered
+                  {...(isFilled
                     ? {
-                        padding: 'spacing.0',
-                      }
-                    : {
                         borderRadius: 'small',
-                        borderWidth: 'thick',
+                        borderWidth: 'thin',
                         borderColor: 'surface.border.normal.lowContrast',
-                        padding: isVertical ? 'spacing.0' : 'spacing.2',
+                        padding: 'spacing.2',
                         gap: isVertical ? 'spacing.0' : 'spacing.1',
                         backgroundColor: 'surface.background.level2.lowContrast',
+                      }
+                    : {
+                        padding: 'spacing.0',
+                        gap: isVertical ? 'spacing.1' : { base: 'spacing.7', m: 'spacing.8' },
                       })}
                 >
                   {variant === 'filled' && !isVertical
@@ -105,9 +107,9 @@ const TabList = ({ children }: { children: React.ReactNode }): React.ReactElemen
       */}
       {!isVertical && isBordered ? (
         <BaseBox
-          style={{ transform: 'translateY(-5.5px)' }}
+          style={{ transform: 'translateY(-1px)' }}
           borderBottomColor="surface.border.normal.lowContrast"
-          borderBottomWidth="thick"
+          borderBottomWidth="thin"
         />
       ) : null}
     </BaseBox>

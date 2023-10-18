@@ -5,7 +5,7 @@ import React from 'react';
 import { CompositeItem } from '@floating-ui/react';
 import type { TabItemProps, TabsProps } from './types';
 import { useTabsContext } from './TabsContext';
-import { backgroundColor, paddings, textColor } from './tabTokens';
+import { backgroundColor, paddingY, paddingX, textColor } from './tabTokens';
 import { iconSizeMap, useTabsItemPropRestriction } from './utils';
 import { Text } from '~components/Typography';
 import { castWebType, makeBorderSize, makeMotionTime, makeSpace } from '~utils';
@@ -15,18 +15,19 @@ import { makeAccessible } from '~utils/makeAccessible';
 
 const StyledTabButton = styled.button<{
   size: TabsProps['size'];
-  autoWidth?: TabsProps['autoWidth'];
+  isFullWidthTabItem?: TabsProps['isFullWidthTabItem'];
   variant: NonNullable<TabsProps['variant']>;
   isVertical: boolean;
   isSelected: boolean;
-}>(({ theme, isSelected, size, variant, autoWidth, isVertical }) => {
+}>(({ theme, isSelected, size, variant, isFullWidthTabItem, isVertical }) => {
   const isMobile = useIsMobile();
   const isFilled = variant === 'filled';
   const device = isMobile ? 'mobile' : 'desktop';
   const orientation = isVertical ? 'vertical' : 'horizontal';
   const border = isVertical ? 'borderLeft' : 'borderBottom';
   const selectedState = isSelected ? 'selected' : 'unselected';
-  const background = backgroundColor[selectedState][variant];
+  const _variant = variant === 'borderless' ? 'bordered' : variant;
+  const background = backgroundColor[selectedState][_variant];
 
   const getColor = (value: string): string => {
     if (value === 'transparent') return 'transparent';
@@ -42,17 +43,19 @@ const StyledTabButton = styled.button<{
     alignItems: 'center',
     justifyContent: isVertical ? 'left' : 'center',
     gap: makeSpace(theme.spacing[3]),
-    width: autoWidth ? '100%' : undefined,
-    paddingTop: makeSpace(get(theme, paddings[variant][orientation][device].top[size!])),
-    paddingBottom: makeSpace(get(theme, paddings[variant][orientation][device].bottom[size!])),
-    paddingLeft: makeSpace(get(theme, paddings[variant][orientation][device].left[size!])),
-    paddingRight: makeSpace(get(theme, paddings[variant][orientation][device].right[size!])),
+    width: isFullWidthTabItem ? '100%' : undefined,
+    paddingTop: makeSpace(get(theme, paddingY[_variant][orientation][device][size!])),
+    paddingBottom: makeSpace(get(theme, paddingY[_variant][orientation][device][size!])),
+    paddingLeft: makeSpace(get(theme, paddingX[_variant][orientation][device][size!])),
+    paddingRight: makeSpace(get(theme, paddingX[_variant][orientation][device][size!])),
     // colors
     backgroundColor:
       isSelected && isFilled && !isVertical ? 'transparent' : getColor(background.default),
     borderRadius: isFilled && !isVertical ? theme.border.radius.small : 0,
     [`${border}Style`]: 'solid',
-    [`${border}Width`]: isFilled ? 0 : makeBorderSize(theme.border.width.thick),
+    [`${border}Width`]: isFilled
+      ? 0
+      : makeBorderSize(isVertical ? theme.border.width.thick : theme.border.width.thin),
     [`${border}Color`]: isVertical && isSelected ? theme.colors.brand.primary[500] : 'transparent',
 
     // states
@@ -96,7 +99,7 @@ const TabItem = ({
 }: TabItemProps): React.ReactElement => {
   const {
     size,
-    autoWidth,
+    isFullWidthTabItem,
     selectedValue,
     setSelectedValue,
     baseId,
@@ -118,7 +121,7 @@ const TabItem = ({
           isVertical={isVertical}
           isSelected={isSelected}
           variant={variant!}
-          autoWidth={autoWidth || isFilled}
+          isFullWidthTabItem={isFullWidthTabItem || isFilled}
           id={tabItemId}
           size={size}
           disabled={isDisabled}
@@ -135,13 +138,18 @@ const TabItem = ({
           {Leading ? (
             <Leading
               size={iconSizeMap[size!]}
-              color={`surface.action.icon.${currentInteraction}.lowContrast`}
+              // @ts-expect-error TODO: icons types don't support brand colors
+              color={
+                isSelected
+                  ? `brand.primary.500`
+                  : `surface.action.icon.${currentInteraction}.lowContrast`
+              }
             />
           ) : null}
           <Text
             color={textColor[selectedState][isDisabled ? 'disabled' : currentInteraction]}
             size={size === 'medium' ? 'medium' : 'large'}
-            weight={size === 'medium' ? 'bold' : 'regular'}
+            weight="bold"
           >
             {children}
           </Text>
