@@ -72,6 +72,7 @@ const Tabs = ({
   size = 'medium',
   variant = 'bordered',
   isFullWidthTabItem = false,
+  isLazy = false,
 }: TabsProps): React.ReactElement => {
   const { theme } = useTheme();
   const isFirstRender = useFirstRender();
@@ -233,7 +234,7 @@ const Tabs = ({
         renderTabBar={renderTabBar}
         onIndexChange={setIndex}
         initialLayout={initialLayout}
-        lazy={false}
+        lazy={isLazy}
       />
     </TabsContext.Provider>
   );
