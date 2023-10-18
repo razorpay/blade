@@ -5,7 +5,7 @@ import React from 'react';
 import type { TabsProps } from './types';
 import { Tabs, TabItem, TabList, TabPanel } from './';
 import { Text } from '~components/Typography';
-import { TrendingUpIcon } from '~components/Icons';
+import { RupeeIcon, TrendingUpIcon } from '~components/Icons';
 import { Counter } from '~components/Counter';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
@@ -39,7 +39,9 @@ const TabsTemplate: ComponentStory<typeof Tabs> = () => {
                   >
                     Payments
                   </TabItem>
-                  <TabItem value="refunds">Refunds</TabItem>
+                  <TabItem leading={<RupeeIcon />} value="refunds">
+                    Refunds
+                  </TabItem>
                   <TabItem value="disputes">Disputes</TabItem>
                   <TabItem value="settlements">Settlements</TabItem>
                 </TabList>

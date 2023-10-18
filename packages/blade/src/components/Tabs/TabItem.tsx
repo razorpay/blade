@@ -138,7 +138,9 @@ const TabItem = ({
           {leading
             ? React.cloneElement(leading as React.ReactElement, {
                 size: iconSizeMap[size!],
-                color: `surface.action.icon.${currentInteraction}.lowContrast`,
+                color: isSelected
+                  ? `brand.primary.500`
+                  : `surface.action.icon.${currentInteraction}.lowContrast`,
               })
             : null}
           <Text
