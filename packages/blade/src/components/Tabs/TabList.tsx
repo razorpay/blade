@@ -16,7 +16,6 @@ const ScrollableArea = styled(BaseBox)(() => {
 const TabList = ({ children }: { children: React.ReactNode }): React.ReactElement => {
   const { setSelectedValue, selectedValue, variant, isVertical } = useTabsContext();
   const tabListContainerRef = React.useRef<HTMLDivElement>(null);
-  const isBorderless = variant === 'borderless';
   const isBordered = variant === 'bordered';
   const isFilled = variant === 'filled';
 
@@ -43,7 +42,7 @@ const TabList = ({ children }: { children: React.ReactNode }): React.ReactElemen
           render={(htmlProps) => {
             return (
               <BaseBox flexDirection="row" display="flex">
-                {!isBorderless && isVertical && variant === 'bordered' ? (
+                {isVertical && isBordered ? (
                   <BaseBox
                     width="1.5px"
                     backgroundColor="surface.border.normal.lowContrast"
@@ -63,7 +62,7 @@ const TabList = ({ children }: { children: React.ReactNode }): React.ReactElemen
                   {...(isFilled
                     ? {
                         borderRadius: 'small',
-                        borderWidth: 'thick',
+                        borderWidth: 'thin',
                         borderColor: 'surface.border.normal.lowContrast',
                         padding: 'spacing.2',
                         gap: isVertical ? 'spacing.0' : 'spacing.1',
@@ -71,7 +70,7 @@ const TabList = ({ children }: { children: React.ReactNode }): React.ReactElemen
                       }
                     : {
                         padding: 'spacing.0',
-                        gap: isVertical ? 'spacing.1' : 'spacing.8',
+                        gap: isVertical ? 'spacing.1' : { base: 'spacing.7', m: 'spacing.8' },
                       })}
                 >
                   {variant === 'filled' && !isVertical
@@ -104,9 +103,9 @@ const TabList = ({ children }: { children: React.ReactNode }): React.ReactElemen
       */}
       {!isVertical && isBordered ? (
         <BaseBox
-          style={{ transform: 'translateY(-1.5px)' }}
+          style={{ transform: 'translateY(-1px)' }}
           borderBottomColor="surface.border.normal.lowContrast"
-          borderBottomWidth="thick"
+          borderBottomWidth="thin"
         />
       ) : null}
     </BaseBox>

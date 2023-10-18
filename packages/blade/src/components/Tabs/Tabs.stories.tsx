@@ -140,7 +140,7 @@ const TabsTemplate: ComponentStory<typeof Tabs> = () => {
       <br />
       <Tabs
         variant="filled"
-        orientation="vertical"
+        orientation="horizontal"
         defaultValue="refunds"
         onChange={(v) => console.log(v)}
       >

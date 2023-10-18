@@ -53,7 +53,9 @@ const StyledTabButton = styled.button<{
       isSelected && isFilled && !isVertical ? 'transparent' : getColor(background.default),
     borderRadius: isFilled && !isVertical ? theme.border.radius.small : 0,
     [`${border}Style`]: 'solid',
-    [`${border}Width`]: isFilled ? 0 : makeBorderSize(theme.border.width.thick),
+    [`${border}Width`]: isFilled
+      ? 0
+      : makeBorderSize(isVertical ? theme.border.width.thick : theme.border.width.thin),
     [`${border}Color`]: isVertical && isSelected ? theme.colors.brand.primary[500] : 'transparent',
 
     // states
