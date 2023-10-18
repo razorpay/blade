@@ -6,6 +6,8 @@ import { TabIndicator } from './TabIndicator';
 import BaseBox from '~components/Box/BaseBox';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { Divider } from '~components/Divider';
+import type { BoxProps } from '~components/Box';
+import { Box } from '~components/Box';
 
 const ScrollableArea = styled(BaseBox)(() => {
   return {
@@ -13,7 +15,10 @@ const ScrollableArea = styled(BaseBox)(() => {
   };
 });
 
-const TabList = ({ children }: { children: React.ReactNode }): React.ReactElement => {
+const TabList = ({
+  children,
+  ...props
+}: { children: React.ReactNode } & BoxProps): React.ReactElement => {
   const { setSelectedValue, selectedValue, variant, isVertical } = useTabsContext();
   const tabListContainerRef = React.useRef<HTMLDivElement>(null);
   const isBordered = variant === 'bordered';
@@ -30,7 +35,7 @@ const TabList = ({ children }: { children: React.ReactNode }): React.ReactElemen
   }, [children, selectedValue, setSelectedValue]);
 
   return (
-    <BaseBox display={isVertical ? 'flex' : 'block'} flexShrink={0} overflow="hidden">
+    <Box {...props} display={isVertical ? 'flex' : 'block'} flexShrink={0} overflow="hidden">
       <ScrollableArea
         position="relative"
         whiteSpace="nowrap"
@@ -112,7 +117,7 @@ const TabList = ({ children }: { children: React.ReactNode }): React.ReactElemen
           borderBottomWidth="thin"
         />
       ) : null}
-    </BaseBox>
+    </Box>
   );
 };
 

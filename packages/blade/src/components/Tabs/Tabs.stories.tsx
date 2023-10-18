@@ -6,7 +6,15 @@ import type { TabItemProps, TabsProps } from './types';
 import { Tabs, TabItem, TabList, TabPanel } from './';
 import { Code, Heading, Text, Title } from '~components/Typography';
 import type { IconComponent } from '~components/Icons';
-import { BankIcon, CreditCardIcon, ZapIcon } from '~components/Icons';
+import {
+  ExternalLinkIcon,
+  ClipboardIcon,
+  SettingsIcon,
+  SubscriptionsIcon,
+  BankIcon,
+  CreditCardIcon,
+  ZapIcon,
+} from '~components/Icons';
 import { Counter } from '~components/Counter';
 import { Box } from '~components/Box';
 import { Card, CardBody, CardHeader, CardHeaderLeading } from '~components/Card';
@@ -19,6 +27,9 @@ import { Tooltip, TooltipInteractiveWrapper } from '~components/Tooltip';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { isReactNative } from '~utils';
+import { Divider } from '~components/Divider';
+import { Link } from '~components/Link';
+import { useIsMobile } from '~utils/useIsMobile';
 
 const Page = (): React.ReactElement => {
   return (
@@ -119,7 +130,7 @@ export default {
         disable: true,
       },
     },
-    autoWidth: {
+    isFullWidthTabItem: {
       control: {
         type: 'boolean',
       },
@@ -177,6 +188,10 @@ export default {
       options: Object.keys(tabItemTrailing),
       defaultValue: 'Badge',
       description: 'Trailing element of the tab item. Can be used to render an badge/counter.',
+    },
+    isLazy: {
+      table: { category: propsCategory.TABS },
+      defaultValue: false,
     },
   },
   parameters: {
@@ -400,49 +415,38 @@ const SettingsPanel = ({ isVertical }: { isVertical: boolean }) => {
 };
 
 const TabsTemplate: ComponentStory<(props: StoryControlProps) => React.ReactElement> = (args) => {
-  const invalidationKey = `${args.autoWidth}-${args.orientation}-${args.size}-${args.tabItemIsDisabled}`;
+  const invalidationKey = `${args.isFullWidthTabItem}-${args.orientation}-${args.size}-${args.tabItemIsDisabled}`;
   const isVertical = args.orientation === 'vertical';
   return (
     <Box height={isReactNative() ? '100%' : undefined}>
-      <Tabs key={invalidationKey} {...args}>
-        {/* <Box width="100%" display="flex" justifyContent="space-between" alignItems="center">
-          <TabList>
-            <Box display="flex" alignItems="center" gap="spacing.4">
-              <TabItem value="subscriptions">Subscriptions</TabItem>
-              <TabItem value="plans">Plans</TabItem>
+      <Card elevation="none">
+        <CardBody>
+          <Tabs key={invalidationKey} {...args}>
+            <TabList>
+              <TabItem value="subscriptions">Subscription</TabItem>
+              <TabItem
+                value="plans"
+                isDisabled={args.tabItemIsDisabled}
+                leading={args.tabItemLeading}
+                trailing={args.tabItemTrailing}
+              >
+                {args.tabItemChildren}
+              </TabItem>
               <TabItem value="settings">Settings</TabItem>
-            </Box>
-            <Box marginLeft="auto" display="flex" alignItems="center" gap="spacing.4">
-              <Link href="#">Documentation</Link>
-              <Button variant="secondary" size="medium" icon={PlusIcon}>
-                Create New Subscription
-              </Button>
-            </Box>
-          </TabList>
-        </Box> */}
-        <TabList>
-          <TabItem value="subscriptions">Subscription</TabItem>
-          <TabItem
-            value="plans"
-            isDisabled={args.tabItemIsDisabled}
-            leading={args.tabItemLeading}
-            trailing={args.tabItemTrailing}
-          >
-            {args.tabItemChildren}
-          </TabItem>
-          <TabItem value="settings">Settings</TabItem>
-        </TabList>
+            </TabList>
 
-        <TabPanel value="subscriptions">
-          <SubscriptionPanel isVertical={isVertical} />
-        </TabPanel>
-        <TabPanel value="plans">
-          <PlansPanel isVertical={isVertical} />
-        </TabPanel>
-        <TabPanel value="settings">
-          <SettingsPanel isVertical={isVertical} />
-        </TabPanel>
-      </Tabs>
+            <TabPanel value="subscriptions">
+              <SubscriptionPanel isVertical={isVertical} />
+            </TabPanel>
+            <TabPanel value="plans">
+              <PlansPanel isVertical={isVertical} />
+            </TabPanel>
+            <TabPanel value="settings">
+              <SettingsPanel isVertical={isVertical} />
+            </TabPanel>
+          </Tabs>
+        </CardBody>
+      </Card>
     </Box>
   );
 };
@@ -452,7 +456,7 @@ export const Default = TabsTemplate.bind({});
 const ControlledTabsTemplate: ComponentStory<(props: StoryControlProps) => React.ReactElement> = (
   args,
 ) => {
-  const invalidationKey = `${args.autoWidth}-${args.orientation}-${args.size}-${args.tabItemIsDisabled}`;
+  const invalidationKey = `${args.isFullWidthTabItem}-${args.orientation}-${args.size}-${args.tabItemIsDisabled}`;
   const isVertical = args.orientation === 'vertical';
   const [value, setValue] = React.useState('plans');
 
@@ -475,36 +479,41 @@ const ControlledTabsTemplate: ComponentStory<(props: StoryControlProps) => React
           </Button>
         </Box>
       </Box>
-      <Tabs
-        key={invalidationKey}
-        value={value}
-        onChange={(value) => {
-          setValue(value);
-        }}
-      >
-        <TabList>
-          <TabItem value="subscriptions">Subscription</TabItem>
-          <TabItem
-            value="plans"
-            isDisabled={args.tabItemIsDisabled}
-            leading={args.tabItemLeading}
-            trailing={args.tabItemTrailing}
-          >
-            {args.tabItemChildren}
-          </TabItem>
-          <TabItem value="settings">Settings</TabItem>
-        </TabList>
 
-        <TabPanel value="subscriptions">
-          <SubscriptionPanel isVertical={isVertical} />
-        </TabPanel>
-        <TabPanel value="plans">
-          <PlansPanel isVertical={isVertical} />
-        </TabPanel>
-        <TabPanel value="settings">
-          <SettingsPanel isVertical={isVertical} />
-        </TabPanel>
-      </Tabs>
+      <Card elevation="none">
+        <CardBody>
+          <Tabs
+            key={invalidationKey}
+            value={value}
+            onChange={(value) => {
+              setValue(value);
+            }}
+          >
+            <TabList>
+              <TabItem value="subscriptions">Subscription</TabItem>
+              <TabItem
+                value="plans"
+                isDisabled={args.tabItemIsDisabled}
+                leading={args.tabItemLeading}
+                trailing={args.tabItemTrailing}
+              >
+                {args.tabItemChildren}
+              </TabItem>
+              <TabItem value="settings">Settings</TabItem>
+            </TabList>
+
+            <TabPanel value="subscriptions">
+              <SubscriptionPanel isVertical={isVertical} />
+            </TabPanel>
+            <TabPanel value="plans">
+              <PlansPanel isVertical={isVertical} />
+            </TabPanel>
+            <TabPanel value="settings">
+              <SettingsPanel isVertical={isVertical} />
+            </TabPanel>
+          </Tabs>
+        </CardBody>
+      </Card>
     </Box>
   );
 };
@@ -514,7 +523,7 @@ export const Controlled = ControlledTabsTemplate.bind({});
 const TabsWithTooltipTemplate: ComponentStory<(props: StoryControlProps) => React.ReactElement> = (
   args,
 ) => {
-  const invalidationKey = `${args.autoWidth}-${args.orientation}-${args.size}-${args.tabItemIsDisabled}`;
+  const invalidationKey = `${args.isFullWidthTabItem}-${args.orientation}-${args.size}-${args.tabItemIsDisabled}`;
   const isVertical = args.orientation === 'vertical';
 
   if (isReactNative()) {
@@ -595,13 +604,160 @@ Bordered.args = {
   variant: 'bordered',
 };
 
+export const Borderless = TabsTemplate.bind({});
+Borderless.args = {
+  variant: 'borderless',
+};
+
 export const BorderedVertical = TabsTemplate.bind({});
 BorderedVertical.args = {
   variant: 'bordered',
   orientation: 'vertical',
 };
 
-export const AutoWidth = TabsTemplate.bind({});
-AutoWidth.args = {
-  autoWidth: true,
+export const FullWidthTabItem = TabsTemplate.bind({});
+FullWidthTabItem.args = {
+  isFullWidthTabItem: true,
 };
+
+const ProductUseCase1Template: ComponentStory<
+  (props: StoryControlProps) => React.ReactElement
+> = () => {
+  return (
+    <Box height={isReactNative() ? '100%' : undefined}>
+      <Text>
+        With the <Code size="medium">borderless</Code> variant, you can remove the default border
+        below the TabList and separate <Code size="medium">Divider</Code> component which spans end
+        to end to the <Code size="medium">Card</Code>.
+      </Text>
+
+      <Card marginTop="spacing.6" elevation="none" padding="spacing.0">
+        <CardBody>
+          <Tabs variant="borderless" defaultValue="subscriptions">
+            <TabList paddingX="spacing.6">
+              <TabItem value="subscriptions" leading={SubscriptionsIcon}>
+                Subscription
+              </TabItem>
+              <TabItem value="plans" leading={ClipboardIcon}>
+                Plans
+              </TabItem>
+              <TabItem value="settings" leading={SettingsIcon}>
+                Settings
+              </TabItem>
+            </TabList>
+            <Divider />
+
+            <Box paddingX="spacing.6" paddingBottom="spacing.6">
+              <TabPanel value="subscriptions">
+                <SubscriptionPanel isVertical={false} />
+              </TabPanel>
+              <TabPanel value="plans">
+                <PlansPanel isVertical={false} />
+              </TabPanel>
+              <TabPanel value="settings">
+                <SettingsPanel isVertical={false} />
+              </TabPanel>
+            </Box>
+          </Tabs>
+        </CardBody>
+      </Card>
+    </Box>
+  );
+};
+
+export const ProductUseCase1 = ProductUseCase1Template.bind({});
+ProductUseCase1.storyName = 'Product Usecase: End to End Borders';
+
+const ProductUseCase2Template: ComponentStory<
+  (props: StoryControlProps) => React.ReactElement
+> = () => {
+  const isMobile = useIsMobile();
+  const [value, setValue] = React.useState('subscriptions');
+
+  let actions: React.ReactElement = <></>;
+
+  if (value === 'subscriptions') {
+    actions = (
+      <>
+        <Link href="#" icon={ExternalLinkIcon}>
+          Documentation
+        </Link>
+        <Button size="small">Subscribe</Button>
+      </>
+    );
+  }
+
+  if (value === 'plans') {
+    actions = <Button size="small">Create Plan</Button>;
+  }
+
+  if (value === 'settings') {
+    actions = (
+      <Link href="#" icon={ExternalLinkIcon}>
+        Need Help?
+      </Link>
+    );
+  }
+
+  if (isMobile) {
+    actions = <></>;
+  }
+
+  return (
+    <Box height={isReactNative() ? '100%' : undefined}>
+      <Text>
+        We can add related actions to the Tab's right side (as found in the{' '}
+        <Link href="https://dashboard.razorpay.com/app/subscriptions">dashboard</Link>) by wrapping
+        the <Code size="medium">TabList</Code> with a <Code size="medium">Box</Code> and aligning
+        buttons or links to the right side of the box with flex.
+      </Text>
+      <Text type="subdued">
+        Note: In mobile devices the real estate is limited, thus the UI should be tweaked.
+      </Text>
+
+      <Card marginTop="spacing.6" elevation="none" padding="spacing.0">
+        <CardBody>
+          <Tabs variant="borderless" value={value} onChange={setValue}>
+            <Box
+              display="flex"
+              alignItems="center"
+              justifyContent="space-between"
+              paddingX="spacing.6"
+            >
+              <TabList>
+                <TabItem value="subscriptions" leading={SubscriptionsIcon}>
+                  Subscription
+                </TabItem>
+                <TabItem value="plans" leading={ClipboardIcon}>
+                  Plans
+                </TabItem>
+                <TabItem value="settings" leading={SettingsIcon}>
+                  Settings
+                </TabItem>
+              </TabList>
+              <Box display="flex" alignItems="center" gap="spacing.5">
+                {actions}
+              </Box>
+            </Box>
+            <Divider />
+
+            <Box paddingX="spacing.6" paddingBottom="spacing.6">
+              <TabPanel value="subscriptions">
+                <SubscriptionPanel isVertical={false} />
+              </TabPanel>
+              <TabPanel value="plans">
+                <PlansPanel isVertical={false} />
+              </TabPanel>
+              <TabPanel value="settings">
+                <SettingsPanel isVertical={false} />
+              </TabPanel>
+            </Box>
+          </Tabs>
+        </CardBody>
+      </Card>
+    </Box>
+  );
+};
+
+export const ProductUseCase2 = ProductUseCase2Template.bind({});
+ProductUseCase2.storyName = 'Product Usecase: Tabs with Toolbar';
