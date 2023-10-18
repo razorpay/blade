@@ -8,6 +8,10 @@ import { Text } from '~components/Typography';
 import { TrendingUpIcon } from '~components/Icons';
 import { Counter } from '~components/Counter';
 import { Box } from '~components/Box';
+import { Button } from '~components/Button';
+import { Card, CardBody } from '~components/Card';
+import { Divider } from '~components/Divider';
+import { Alert } from '~components/Alert';
 
 export default {
   title: 'Components/Tabs',
@@ -17,14 +21,83 @@ export default {
 const TabsTemplate: ComponentStory<typeof Tabs> = () => {
   return (
     <Box>
-      <Tabs isFullWidthTabItem defaultValue="refunds" onChange={(v) => console.log(v)}>
+      <Card elevation="none" padding="spacing.0">
+        <CardBody>
+          <Box paddingY="spacing.0">
+            <Tabs variant="borderless" defaultValue="payments" onChange={(v) => console.log(v)}>
+              <Box
+                paddingX="spacing.6"
+                alignItems="center"
+                display="flex"
+                justifyContent="space-between"
+              >
+                <TabList>
+                  <TabItem
+                    leading={<TrendingUpIcon />}
+                    trailing={<Counter value={12} />}
+                    value="payments"
+                  >
+                    Payments
+                  </TabItem>
+                  <TabItem value="refunds">Refunds</TabItem>
+                  <TabItem value="disputes">Disputes</TabItem>
+                  <TabItem value="settlements">Settlements</TabItem>
+                </TabList>
+                <Box>
+                  <Button size="small">Subscribe</Button>
+                </Box>
+              </Box>
+              <Divider />
+
+              <Box paddingX="spacing.6">
+                <TabPanel value="payments">
+                  <Text marginY="spacing.5">
+                    This is an overview of your active subscriptions. You can click on each
+                    subscription to view more details.
+                  </Text>
+                  <Box
+                    flexDirection={{ base: 'column', m: 'row' }}
+                    display="flex"
+                    width="100%"
+                    gap="spacing.4"
+                    marginY="spacing.6"
+                  >
+                    <Alert
+                      title="1 - Active Subscriptions"
+                      description="You have 1 active subscription. Active subscriptions are subscriptions that are currently being charged."
+                      intent="positive"
+                      isDismissible={false}
+                    />
+                    <Alert
+                      title="1 - Failed Subscriptions"
+                      description="You have 1 failed subscription. Failed subscriptions are subscriptions that have failed to charge the customer."
+                      intent="negative"
+                      isDismissible={false}
+                    />
+                  </Box>
+                </TabPanel>
+                <TabPanel value="refunds">
+                  <Text>Refunds</Text>
+                </TabPanel>
+                <TabPanel value="disputes">
+                  <Text>Disputes</Text>
+                </TabPanel>
+                <TabPanel value="settlements">
+                  <Text>Settlements</Text>
+                </TabPanel>
+              </Box>
+            </Tabs>
+          </Box>
+        </CardBody>
+      </Card>
+      <br />
+      <br />
+      <br />
+      <Tabs variant="bordered" orientation="horizontal">
         <TabList>
-          <TabItem leading={<TrendingUpIcon />} trailing={<Counter value={12} />} value="payments">
-            Payments
-          </TabItem>
+          <TabItem value="payments">Payments</TabItem>
           <TabItem value="refunds">Refunds</TabItem>
           <TabItem value="disputes">Disputes</TabItem>
-          <TabItem value="settlements">Settlements</TabItem>
         </TabList>
 
         <TabPanel value="payments">
@@ -36,14 +109,41 @@ const TabsTemplate: ComponentStory<typeof Tabs> = () => {
         <TabPanel value="disputes">
           <Text>Disputes</Text>
         </TabPanel>
-        <TabPanel value="settlements">
-          <Text>Settlements</Text>
+      </Tabs>
+      <br />
+      <br />
+      <br />
+      <Tabs
+        variant="bordered"
+        orientation="vertical"
+        defaultValue="refunds"
+        onChange={(v) => console.log(v)}
+      >
+        <TabList>
+          <TabItem value="payments">Payments</TabItem>
+          <TabItem value="refunds">Refunds</TabItem>
+          <TabItem value="disputes">Disputes</TabItem>
+        </TabList>
+
+        <TabPanel value="payments">
+          <Text>Payments</Text>
+        </TabPanel>
+        <TabPanel value="refunds">
+          <Text>Refunds</Text>
+        </TabPanel>
+        <TabPanel value="disputes">
+          <Text>Disputes</Text>
         </TabPanel>
       </Tabs>
       <br />
       <br />
       <br />
-      <Tabs variant="filled" defaultValue="refunds" onChange={(v) => console.log(v)}>
+      <Tabs
+        variant="filled"
+        orientation="vertical"
+        defaultValue="refunds"
+        onChange={(v) => console.log(v)}
+      >
         <TabList>
           <TabItem value="payments">Payments</TabItem>
           <TabItem value="refunds">Refunds</TabItem>

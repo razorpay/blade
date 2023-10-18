@@ -5,7 +5,7 @@ import React from 'react';
 import { CompositeItem } from '@floating-ui/react';
 import type { TabItemProps, TabsProps } from './types';
 import { useTabsContext } from './TabsContext';
-import { backgroundColor, paddings, textColor } from './tabTokens';
+import { backgroundColor, paddingY, paddingX, textColor } from './tabTokens';
 import { iconSizeMap, useTabsItemPropRestriction } from './utils';
 import { Text } from '~components/Typography';
 import { castWebType, makeBorderSize, makeMotionTime, makeSpace } from '~utils';
@@ -26,7 +26,8 @@ const StyledTabButton = styled.button<{
   const orientation = isVertical ? 'vertical' : 'horizontal';
   const border = isVertical ? 'borderLeft' : 'borderBottom';
   const selectedState = isSelected ? 'selected' : 'unselected';
-  const background = backgroundColor[selectedState][variant];
+  const _variant = variant === 'borderless' ? 'bordered' : variant;
+  const background = backgroundColor[selectedState][_variant];
 
   const getColor = (value: string): string => {
     if (value === 'transparent') return 'transparent';
@@ -43,10 +44,10 @@ const StyledTabButton = styled.button<{
     justifyContent: isVertical ? 'left' : 'center',
     gap: makeSpace(theme.spacing[3]),
     width: isFullWidthTabItem ? '100%' : undefined,
-    paddingTop: makeSpace(get(theme, paddings[variant][orientation][device].top[size!])),
-    paddingBottom: makeSpace(get(theme, paddings[variant][orientation][device].bottom[size!])),
-    paddingLeft: makeSpace(get(theme, paddings[variant][orientation][device].left[size!])),
-    paddingRight: makeSpace(get(theme, paddings[variant][orientation][device].right[size!])),
+    paddingTop: makeSpace(get(theme, paddingY[_variant][orientation][device][size!])),
+    paddingBottom: makeSpace(get(theme, paddingY[_variant][orientation][device][size!])),
+    paddingLeft: makeSpace(get(theme, paddingX[_variant][orientation][device][size!])),
+    paddingRight: makeSpace(get(theme, paddingX[_variant][orientation][device][size!])),
     // colors
     backgroundColor:
       isSelected && isFilled && !isVertical ? 'transparent' : getColor(background.default),
