@@ -21,6 +21,7 @@ const TabIndicator = (props: TabBarIndicatorProps<any>): React.ReactElement => {
         return props.getTabWidth(index);
       }}
       style={{
+        pointerEvents: 'none',
         ...(isFilled
           ? {
               height: props.layout.height - theme.border.width.thick - theme.spacing[2] * 2,

@@ -71,7 +71,7 @@ const Tabs = ({
   onChange,
   size = 'medium',
   variant = 'bordered',
-  autoWidth = false,
+  isFullWidthTabItem = false,
 }: TabsProps): React.ReactElement => {
   const { theme } = useTheme();
   const isFirstRender = useFirstRender();
@@ -109,7 +109,7 @@ const Tabs = ({
     isVertical,
     size,
     variant,
-    autoWidth,
+    isFullWidthTabItem,
     setSelectedValue: setIndex,
   };
 
@@ -127,10 +127,21 @@ const Tabs = ({
       const validatedTrailingComponent = useTabsItemPropRestriction(trailing, size);
 
       return (
-        <StyledTabButton autoWidth={!autoWidth && !isFilled} variant={variant} size={size}>
+        <StyledTabButton
+          size={size}
+          variant={variant}
+          isFullWidthTabItem={!isFullWidthTabItem && !isFilled}
+        >
           <Box display="flex" alignItems="center" flexDirection="row" gap="spacing.3">
             {Leading ? (
-              <Leading size={iconSizeMap[size]} color="surface.action.icon.default.lowContrast" />
+              <Leading
+                size={iconSizeMap[size]}
+                color={
+                  selectedState === 'selected'
+                    ? 'brand.primary.500'
+                    : 'surface.action.icon.default.lowContrast'
+                }
+              />
             ) : null}
             <Text
               color={textColor[selectedState].default}
@@ -144,7 +155,7 @@ const Tabs = ({
         </StyledTabButton>
       );
     },
-    [autoWidth, isFilled, size, variant],
+    [isFullWidthTabItem, isFilled, size, variant],
   );
 
   const renderTabBar = React.useCallback(
@@ -153,7 +164,7 @@ const Tabs = ({
         {...props}
         gap={0}
         android_ripple={{ borderless: true, color: 'transparent' }}
-        scrollEnabled={!autoWidth && !isFilled}
+        scrollEnabled={!isFullWidthTabItem && !isFilled}
         tabStyle={{
           padding: 0,
           margin: 0,
@@ -208,7 +219,7 @@ const Tabs = ({
       />
     ),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [autoWidth, isFilled, renderTabLabel],
+    [isFullWidthTabItem, isFilled, renderTabLabel],
   );
 
   return (

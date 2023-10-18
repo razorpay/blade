@@ -22,7 +22,7 @@ export default {
 const TabsTemplate: ComponentStory<typeof Tabs> = () => {
   return (
     <Box height="100%">
-      <Tabs variant="filled" isFullWidthTabItem={false}>
+      <Tabs variant="bordered" isFullWidthTabItem={false}>
         <TabList>
           <TabItem value="payments">Payments</TabItem>
           <TabItem value="refunds">Refunds</TabItem>
