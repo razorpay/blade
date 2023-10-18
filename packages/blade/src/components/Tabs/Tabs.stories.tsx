@@ -160,6 +160,31 @@ const TabsTemplate: ComponentStory<typeof Tabs> = () => {
           <Text>Disputes</Text>
         </TabPanel>
       </Tabs>
+      <br />
+      <br />
+      <br />
+      <Tabs
+        variant="filled"
+        orientation="vertical"
+        defaultValue="refunds"
+        onChange={(v) => console.log(v)}
+      >
+        <TabList>
+          <TabItem value="payments">Payments</TabItem>
+          <TabItem value="refunds">Refunds</TabItem>
+          <TabItem value="disputes">Disputes</TabItem>
+        </TabList>
+
+        <TabPanel value="payments">
+          <Text>Payments</Text>
+        </TabPanel>
+        <TabPanel value="refunds">
+          <Text>Refunds</Text>
+        </TabPanel>
+        <TabPanel value="disputes">
+          <Text>Disputes</Text>
+        </TabPanel>
+      </Tabs>
     </Box>
   );
 };
