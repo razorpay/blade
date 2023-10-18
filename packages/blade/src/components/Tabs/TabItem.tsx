@@ -144,7 +144,7 @@ const TabItem = ({
           <Text
             color={textColor[selectedState][isDisabled ? 'disabled' : currentInteraction]}
             size={size === 'medium' ? 'medium' : 'large'}
-            weight={size === 'medium' ? 'bold' : 'regular'}
+            weight="bold"
           >
             {children}
           </Text>
