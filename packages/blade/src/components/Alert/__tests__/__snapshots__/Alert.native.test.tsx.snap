@@ -19,9 +19,9 @@ exports[`<Alert /> should render 1`] = `
     }
   >
     <View
+      color="neutral"
       contrastType="lowContrast"
       data-blade-component="base-box"
-      intent="neutral"
       isDesktop={false}
       isFullWidth={false}
       style={
@@ -321,9 +321,9 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
     }
   >
     <View
+      color="positive"
       contrastType="lowContrast"
       data-blade-component="base-box"
-      intent="positive"
       isDesktop={false}
       isFullWidth={true}
       style={
