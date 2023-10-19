@@ -133,7 +133,15 @@ const TabsVerticalTemplate: ComponentStory<typeof Tabs> = () => {
         onChange={(v) => console.log(v)}
       >
         <TabList>
-          <TabItem leading={<TrendingUpIcon />} trailing={<Counter value={12} />} value="payments">
+          <TabItem
+            onClick={() => {
+              alert(1);
+            }}
+            href="/hello"
+            leading={<TrendingUpIcon />}
+            trailing={<Counter value={12} />}
+            value="payments"
+          >
             Payments
           </TabItem>
           <TabItem value="refunds">Refunds</TabItem>
