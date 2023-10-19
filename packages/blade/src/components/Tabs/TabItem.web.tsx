@@ -36,6 +36,7 @@ const StyledTabButton = styled.button<{
 
   return {
     appearance: 'none',
+    textDecoration: 'none',
     border: 'none',
     outline: 'none',
     cursor: 'pointer',
@@ -96,6 +97,8 @@ const TabItem = ({
   leading: Leading,
   trailing,
   isDisabled = false,
+  href,
+  onClick,
 }: TabItemProps): React.ReactElement => {
   const {
     size,
@@ -118,6 +121,8 @@ const TabItem = ({
     <CompositeItem
       render={
         <StyledTabButton
+          as={href ? 'a' : 'button'}
+          href={href}
           isVertical={isVertical}
           isSelected={isSelected}
           variant={variant!}
@@ -126,8 +131,9 @@ const TabItem = ({
           size={size}
           disabled={isDisabled}
           {...interactionProps}
-          onClick={() => {
+          onClick={(e: React.MouseEvent) => {
             setSelectedValue(() => value);
+            onClick?.(e);
           }}
           {...makeAccessible({
             role: 'tab',
