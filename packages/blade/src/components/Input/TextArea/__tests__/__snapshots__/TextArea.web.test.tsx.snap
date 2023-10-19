@@ -89,6 +89,7 @@ exports[`<TextArea /> should render 1`] = `
   line-clamp: 2;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  word-break: break-word;
 }
 
 .c6 {
@@ -447,6 +448,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
   line-clamp: 2;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  word-break: break-word;
 }
 
 .c6 {

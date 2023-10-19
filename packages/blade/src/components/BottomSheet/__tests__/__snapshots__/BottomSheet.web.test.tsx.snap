@@ -232,6 +232,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  word-break: break-word;
 }
 
 .c24 {
@@ -250,6 +251,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  word-break: break-word;
 }
 
 .c6 {
@@ -460,7 +462,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
         data-blade-component="base-box"
       >
         <button
-          aria-controls="dropdown-507-actionlist"
+          aria-controls="dropdown-506-actionlist"
           aria-expanded="false"
           aria-haspopup="menu"
           class="c1"
@@ -560,7 +562,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
                     data-blade-component="action-list-item"
                     data-index="0"
                     data-value="approve"
-                    id="dropdown-507-0"
+                    id="dropdown-506-0"
                     role="menuitem"
                     tabindex="-1"
                     type="button"
@@ -601,7 +603,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
                     data-blade-component="action-list-item"
                     data-index="1"
                     data-value="in-progress"
-                    id="dropdown-507-1"
+                    id="dropdown-506-1"
                     role="menuitem"
                     tabindex="-1"
                     type="button"
@@ -642,7 +644,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
                     data-blade-component="action-list-item"
                     data-index="2"
                     data-value="reject"
-                    id="dropdown-507-2"
+                    id="dropdown-506-2"
                     role="menuitem"
                     tabindex="-1"
                     type="button"
@@ -986,6 +988,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  word-break: break-word;
 }
 
 .c19 {
@@ -1044,6 +1047,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  word-break: break-word;
 }
 
 .c1 {

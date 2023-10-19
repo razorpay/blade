@@ -695,6 +695,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  word-break: break-word;
 }
 
 .c17 {
@@ -727,6 +728,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  word-break: break-word;
 }
 
 .c24 {

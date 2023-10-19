@@ -402,6 +402,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   line-clamp: 2;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  word-break: break-word;
 }
 
 .c8 {
@@ -434,6 +435,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  word-break: break-word;
 }
 
 .c32 {
@@ -465,6 +467,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  word-break: break-word;
 }
 
 .c46 {

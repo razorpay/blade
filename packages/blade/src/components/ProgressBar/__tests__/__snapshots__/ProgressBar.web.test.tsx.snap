@@ -109,6 +109,7 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
   line-clamp: 2;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  word-break: break-word;
 }
 
 .c6 {
@@ -2025,6 +2026,7 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
   line-clamp: 2;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  word-break: break-word;
 }
 
 .c6 {
@@ -2368,6 +2370,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
   line-clamp: 2;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  word-break: break-word;
 }
 
 .c6 {
@@ -2644,6 +2647,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   line-clamp: 2;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  word-break: break-word;
 }
 
 .c10 {
@@ -3004,6 +3008,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   line-clamp: 2;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  word-break: break-word;
 }
 
 .c10 {

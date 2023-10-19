@@ -231,6 +231,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  word-break: break-word;
 }
 
 @media screen and (min-width:320px) {
@@ -717,6 +718,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  word-break: break-word;
 }
 
 @media screen and (min-width:320px) {
