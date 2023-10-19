@@ -73,6 +73,17 @@ type TabItemProps = {
    * If `true`, the tab item will be disabled.
    */
   isDisabled?: boolean;
+  /**
+   * If set the tab item will be rendered as a link.
+   * This can be used to create a tab item that redirects to another page or integrate with react-router.
+   *
+   * @default undefined
+   */
+  href?: string;
+  /**
+   * Callback fired when the tab item is clicked.
+   */
+  onClick?: (event: React.MouseEvent) => void;
 };
 
 type TabPanelProps = {
