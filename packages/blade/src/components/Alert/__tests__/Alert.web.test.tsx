@@ -25,6 +25,18 @@ describe('<Alert />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should render positive color and full width', () => {
+    const { container } = renderWithTheme(
+      <Alert
+        description="Currently you can only accept payments in international currencies using PayPal."
+        color="positive"
+        isFullWidth
+      />,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
   it('should handle onClick on actions', async () => {
     const user = userEvent.setup();
     const onClickPrimary = jest.fn();
