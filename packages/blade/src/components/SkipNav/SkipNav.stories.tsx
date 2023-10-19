@@ -15,6 +15,7 @@ const Page = (): ReactElement => {
       componentDescription="The SkipNav component lets users skip the navigation and jump to the main content of the page. Useful when you have navbars at the top and the user wants to jump directly to the main content."
       componentName="SkipNav"
       imports=""
+      apiDecisionLink=""
     >
       <Title>Usage</Title>
       <Sandbox editorHeight={400}>

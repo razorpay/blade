@@ -14,6 +14,7 @@ const Page = (): ReactElement => {
     <StoryPageWrapper
       componentName="IconButton"
       componentDescription="Useful for making clickable icons. For example - close button for modals, inputs, etc."
+      apiDecisionLink=""
       figmaURL={{
         bankingTheme:
           'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=10564%3A195699&t=b5e9P6qSqxDsq2rz-4',

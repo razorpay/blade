@@ -9,6 +9,8 @@ import { Alert } from '~components/Alert';
 import { BladeProvider } from '~components/BladeProvider';
 import { paymentTheme } from '~tokens/theme';
 import { Box } from '~components/Box';
+import { Link } from '~components/Link';
+import { Text } from '~components/Typography';
 
 type StoryPageWrapperTypes = {
   figmaURL?: {
@@ -22,6 +24,10 @@ type StoryPageWrapperTypes = {
   note?: React.ReactChild;
   showStorybookControls?: boolean;
   showArgsTable?: boolean;
+  /**
+   * Use this to override default API decision link generated from componentName
+   */
+  apiDecisionLink?: string;
   /**
    * Use this to override default imports
    */
@@ -75,6 +81,9 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
   }, []);
 
   const { showStorybookControls = true, showArgsTable = true } = props;
+  const trimmedAPIDecisionLink = props.apiDecisionLink?.includes('/blade/src')
+    ? props.apiDecisionLink?.slice(props.apiDecisionLink.indexOf('/blade/src'))
+    : props.apiDecisionLink;
 
   return (
     <WithGlobalStyles>
@@ -116,6 +125,22 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
             <>
               <BaseBox id="properties-ref">
                 <Title>Properties</Title>
+                {props.apiDecisionLink === '' ? null : (
+                  <Text marginY="spacing.5">
+                    You can checkout API Decisions for {props.componentName} at{' '}
+                    <Link
+                      target="_blank"
+                      href={
+                        props.apiDecisionLink ??
+                        `https://github.com/razorpay/blade/blob/master/packages/blade/src/components/${props.componentName}/_decisions/decisions.md`
+                      }
+                    >
+                      {trimmedAPIDecisionLink
+                        ? trimmedAPIDecisionLink
+                        : `/blade/src/components/${props.componentName}/_decisions/decisions.md`}
+                    </Link>
+                  </Text>
+                )}
                 {props.propsDescription ? (
                   // adding box with surface background so that when theme of storybook is changed, the alert doesn't become invisible
                   <Box backgroundColor="surface.background.level3.lowContrast">

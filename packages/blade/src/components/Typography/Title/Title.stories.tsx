@@ -17,6 +17,7 @@ const Page = (): ReactElement => {
     <StoryPageWrapper
       componentDescription="The Title Component makes a bold visual statement. Use them to create impact when the main goal is visual storytelling. For example, use Title as marketing content on landing pages or to capture attention during onboarding."
       componentName="Title"
+      apiDecisionLink="https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Typography/_decisions/decisions.md"
       figmaURL={{
         paymentTheme:
           'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=11770%3A147139',

@@ -176,6 +176,7 @@ export default {
         <StoryPageWrapper
           componentDescription="The SelectInput component is a component that can be used inside Dropdown component to create a Select Menu"
           componentName="SelectInput"
+          apiDecisionLink="https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Dropdown/_decisions/decisions.md"
           note="SelectInput is meant to be used only inside the Dropdown component. Things will not work as expected if you are using this without Dropdown"
           figmaURL={{
             paymentTheme:
