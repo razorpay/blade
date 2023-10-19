@@ -1,5 +1,5 @@
 import type React from 'react';
-import { IconComponent } from '~components/Icons';
+import type { IconComponent } from '~components/Icons';
 import type { Platform } from '~utils';
 
 type TabsProps = {

@@ -2,6 +2,8 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import type { ComponentStory, Meta } from '@storybook/react';
 import React from 'react';
+import StoryRouter from 'storybook-react-router';
+import { Route, useHistory } from 'react-router-dom';
 import type { TabItemProps, TabsProps } from './types';
 import { Tabs, TabItem, TabList, TabPanel } from './';
 import { Code, Heading, Text, Title } from '~components/Typography';
@@ -30,6 +32,7 @@ import { isReactNative } from '~utils';
 import { Divider } from '~components/Divider';
 import { Link } from '~components/Link';
 import { useIsMobile } from '~utils/useIsMobile';
+import { List, ListItem, ListItemText } from '~components/List';
 
 const Page = (): React.ReactElement => {
   return (
@@ -100,6 +103,7 @@ type StoryControlProps = TabsProps & {
   tabItemLeading: TabItemProps['leading'];
   tabItemTrailing: TabItemProps['trailing'];
   tabItemChildren: TabItemProps['children'];
+  tabItemHref: TabItemProps['href'];
 };
 const tabItemTrailing = {
   Counter: <Counter color="positive" value={2} />,
@@ -189,11 +193,20 @@ export default {
       defaultValue: 'Badge',
       description: 'Trailing element of the tab item. Can be used to render an badge/counter.',
     },
+    tabItemHref: {
+      table: { category: propsCategory.TAB_ITEM },
+      control: {
+        type: 'text',
+      },
+      defaultValue: '',
+    },
     isLazy: {
       table: { category: propsCategory.TABS },
       defaultValue: false,
     },
   },
+  // eslint-disable-next-line babel/new-cap
+  decorators: [StoryRouter(undefined, { initialEntries: ['/accounts/subscriptions'] })],
   parameters: {
     docs: {
       page: Page,
@@ -417,34 +430,42 @@ const SettingsPanel = ({ isVertical }: { isVertical: boolean }) => {
 const TabsTemplate: ComponentStory<(props: StoryControlProps) => React.ReactElement> = (args) => {
   const invalidationKey = `${args.isFullWidthTabItem}-${args.orientation}-${args.size}-${args.tabItemIsDisabled}`;
   const isVertical = args.orientation === 'vertical';
+  const isFilled = args.variant === 'filled';
+
   return (
     <Box height={isReactNative() ? '100%' : undefined}>
-      <Card elevation="none">
+      <Card elevation="none" padding="spacing.0">
         <CardBody>
-          <Tabs key={invalidationKey} {...args}>
-            <TabList>
-              <TabItem value="subscriptions">Subscription</TabItem>
-              <TabItem
-                value="plans"
-                isDisabled={args.tabItemIsDisabled}
-                leading={args.tabItemLeading}
-                trailing={args.tabItemTrailing}
-              >
-                {args.tabItemChildren}
-              </TabItem>
-              <TabItem value="settings">Settings</TabItem>
-            </TabList>
+          <Box
+            marginX="spacing.6"
+            marginBottom="spacing.6"
+            marginTop={isFilled || isVertical ? 'spacing.6' : 'spacing.2'}
+          >
+            <Tabs key={invalidationKey} {...args}>
+              <TabList>
+                <TabItem value="subscriptions">Subscription</TabItem>
+                <TabItem
+                  value="plans"
+                  isDisabled={args.tabItemIsDisabled}
+                  leading={args.tabItemLeading}
+                  trailing={args.tabItemTrailing}
+                >
+                  {args.tabItemChildren}
+                </TabItem>
+                <TabItem value="settings">Settings</TabItem>
+              </TabList>
 
-            <TabPanel value="subscriptions">
-              <SubscriptionPanel isVertical={isVertical} />
-            </TabPanel>
-            <TabPanel value="plans">
-              <PlansPanel isVertical={isVertical} />
-            </TabPanel>
-            <TabPanel value="settings">
-              <SettingsPanel isVertical={isVertical} />
-            </TabPanel>
-          </Tabs>
+              <TabPanel value="subscriptions">
+                <SubscriptionPanel isVertical={isVertical} />
+              </TabPanel>
+              <TabPanel value="plans">
+                <PlansPanel isVertical={isVertical} />
+              </TabPanel>
+              <TabPanel value="settings">
+                <SettingsPanel isVertical={isVertical} />
+              </TabPanel>
+            </Tabs>
+          </Box>
         </CardBody>
       </Card>
     </Box>
@@ -480,38 +501,40 @@ const ControlledTabsTemplate: ComponentStory<(props: StoryControlProps) => React
         </Box>
       </Box>
 
-      <Card elevation="none">
+      <Card elevation="none" padding="spacing.0">
         <CardBody>
-          <Tabs
-            key={invalidationKey}
-            value={value}
-            onChange={(value) => {
-              setValue(value);
-            }}
-          >
-            <TabList>
-              <TabItem value="subscriptions">Subscription</TabItem>
-              <TabItem
-                value="plans"
-                isDisabled={args.tabItemIsDisabled}
-                leading={args.tabItemLeading}
-                trailing={args.tabItemTrailing}
-              >
-                {args.tabItemChildren}
-              </TabItem>
-              <TabItem value="settings">Settings</TabItem>
-            </TabList>
+          <Box marginX="spacing.6" marginBottom="spacing.6" marginTop="spacing.2">
+            <Tabs
+              key={invalidationKey}
+              value={value}
+              onChange={(value) => {
+                setValue(value);
+              }}
+            >
+              <TabList>
+                <TabItem value="subscriptions">Subscription</TabItem>
+                <TabItem
+                  value="plans"
+                  isDisabled={args.tabItemIsDisabled}
+                  leading={args.tabItemLeading}
+                  trailing={args.tabItemTrailing}
+                >
+                  {args.tabItemChildren}
+                </TabItem>
+                <TabItem value="settings">Settings</TabItem>
+              </TabList>
 
-            <TabPanel value="subscriptions">
-              <SubscriptionPanel isVertical={isVertical} />
-            </TabPanel>
-            <TabPanel value="plans">
-              <PlansPanel isVertical={isVertical} />
-            </TabPanel>
-            <TabPanel value="settings">
-              <SettingsPanel isVertical={isVertical} />
-            </TabPanel>
-          </Tabs>
+              <TabPanel value="subscriptions">
+                <SubscriptionPanel isVertical={isVertical} />
+              </TabPanel>
+              <TabPanel value="plans">
+                <PlansPanel isVertical={isVertical} />
+              </TabPanel>
+              <TabPanel value="settings">
+                <SettingsPanel isVertical={isVertical} />
+              </TabPanel>
+            </Tabs>
+          </Box>
         </CardBody>
       </Card>
     </Box>
@@ -579,11 +602,13 @@ const TabsWithTooltipTemplate: ComponentStory<(props: StoryControlProps) => Reac
 export const WithTooltip = TabsWithTooltipTemplate.bind({});
 
 export const Medium = TabsTemplate.bind({});
+Medium.storyName = 'Size: Medium';
 Medium.args = {
   size: 'medium',
 };
 
 export const Large = TabsTemplate.bind({});
+Large.storyName = 'Size: Large';
 Large.args = {
   size: 'large',
 };
@@ -761,3 +786,118 @@ const ProductUseCase2Template: ComponentStory<
 
 export const ProductUseCase2 = ProductUseCase2Template.bind({});
 ProductUseCase2.storyName = 'Product Usecase: Tabs with Toolbar';
+
+const AccountRoute = ({
+  match,
+}: {
+  match: {
+    params: {
+      id: string;
+    };
+  };
+}) => (
+  <Text weight="bold" marginY="spacing.4">
+    Router param: {match.params.id}
+  </Text>
+);
+
+const ReactRouterExample = () => {
+  const history = useHistory();
+  const navigateTo = (e: React.MouseEvent, url: string) => {
+    e.preventDefault();
+    history.push(url);
+  };
+
+  return (
+    <Box height={isReactNative() ? '100%' : undefined}>
+      <Text>
+        You can use <Code size="medium">Tabs</Code> with <Code size="medium">react-router</Code> to
+        create a tabbed navigation.
+      </Text>
+      <List>
+        <ListItem>
+          <ListItemText>
+            Step 1: Pass <Code size="medium">href</Code> prop to the{' '}
+            <Code size="medium">TabItem</Code> to make it a link.
+          </ListItemText>
+        </ListItem>
+        <ListItem>
+          <ListItemText>
+            Step 2: Add <Code size="medium">onClick</Code> handler to the{' '}
+            <Code size="medium">TabItem</Code> to prevent the default behaviour of the link.
+          </ListItemText>
+        </ListItem>
+        <ListItem>
+          <ListItemText>
+            Step 3: Use <Code size="medium">react-router</Code> utilities like{' '}
+            <Code size="medium">history.push()</Code> to do client side navigation.
+          </ListItemText>
+        </ListItem>
+      </List>
+
+      <Text type="subdued">
+        Switch to the <Code size="medium">Actions</Code> addon panel in storybook to see how routes
+        are changing, and also notice how we can detect which route is active by using the{' '}
+        <Code size="medium">Route</Code>
+        component.
+      </Text>
+
+      <Card marginTop="spacing.6" elevation="none" padding="spacing.0">
+        <CardBody>
+          <Tabs variant="borderless" defaultValue="subscriptions">
+            <TabList paddingX="spacing.6">
+              <TabItem
+                value="subscriptions"
+                leading={SubscriptionsIcon}
+                href="/accounts/subscriptions"
+                onClick={(e) => navigateTo(e, '/accounts/subscriptions')}
+              >
+                Subscription
+              </TabItem>
+              <TabItem
+                value="plans"
+                leading={ClipboardIcon}
+                href="/accounts/plans"
+                onClick={(e) => navigateTo(e, '/accounts/plans')}
+              >
+                Plans
+              </TabItem>
+              <TabItem
+                value="settings"
+                leading={SettingsIcon}
+                href="/accounts/settings"
+                onClick={(e) => navigateTo(e, '/accounts/settings')}
+              >
+                Settings
+              </TabItem>
+            </TabList>
+            <Divider />
+
+            <Box paddingX="spacing.6" paddingBottom="spacing.6">
+              <Route path="/accounts/:id" component={AccountRoute} />
+
+              <TabPanel value="subscriptions">
+                <SubscriptionPanel isVertical={false} />
+              </TabPanel>
+              <TabPanel value="plans">
+                <PlansPanel isVertical={false} />
+              </TabPanel>
+              <TabPanel value="settings">
+                <SettingsPanel isVertical={false} />
+              </TabPanel>
+            </Box>
+          </Tabs>
+        </CardBody>
+      </Card>
+    </Box>
+  );
+};
+
+const ProductUseCase3Template: ComponentStory<
+  (props: StoryControlProps) => React.ReactElement
+> = () => {
+  return <ReactRouterExample />;
+};
+
+export const ProductUseCase3 = ProductUseCase3Template.bind({});
+ProductUseCase3.storyName = 'Product Usecase: React Router';
