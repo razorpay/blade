@@ -849,7 +849,7 @@ export const BaseInput = React.forwardRef<BladeElementRef, BaseInputProps>(
               >
                 {label}
               </FormLabel>
-              {trailingHeaderSlot?.(inputValue)}
+              {trailingHeaderSlot?.(value ?? inputValue)}
             </BaseBox>
           )}
           <BaseInputWrapper
@@ -958,7 +958,7 @@ export const BaseInput = React.forwardRef<BladeElementRef, BaseInputProps>(
                 errorTextId={errorTextId}
                 successTextId={successTextId}
               />
-              {trailingFooterSlot?.(inputValue)}
+              {trailingFooterSlot?.(value ?? inputValue)}
             </BaseBox>
           </BaseBox>
         )}
