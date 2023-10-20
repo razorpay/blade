@@ -76,6 +76,10 @@ const onSortChange = ({ headerKey, sortType }) => {
     isLoading={false}
     cellDensity='normal'
     showZebraStripes={true}
+    pagination={{
+      limit: 10,
+      offset: 0,
+    }}
 >
 {(tableData) => (
   <>
@@ -127,6 +131,16 @@ const onSortChange = ({ headerKey, sortType }) => {
         </TableFooterCell>
       </TableFooterRow>
     </TableFooter>
+
+    <TablePagination 
+      navigationType='compact' 
+      label='1-10 of 100'
+      labelPosition='left'
+      showRowCountPicker
+      rowCount='25'
+      onPaginationChange={console.log}
+      onRowCountPickerChange={console.log}
+      /> 
    </>
   )
 }
@@ -203,9 +217,18 @@ const footerDefinition = [
     {
         footer: computedTotalBalance,
     }
-]
+];
 
-
+const pagination = {
+  showRowCountPicker?: boolean
+  onRowCountPickerChange?: ({ count }) => void
+  navigationType?: 'compact' | 'expanded'
+	label?: string
+	labelPosition?: 'left' | 'right'
+	limit: number
+	offset: number
+	onPaginationChange?: ({ offset }) => void
+};
 ```
 
 ```jsx
