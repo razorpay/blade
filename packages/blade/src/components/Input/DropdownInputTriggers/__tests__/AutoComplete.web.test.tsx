@@ -21,11 +21,19 @@ import {
  * - Write E2E tests for maxRows prop once we have e2e setup (jsdom is acting strange in tag calculation at multiple places even after mocking)
  */
 
+jest.mock('~utils/useId', () => ({
+  useId: () => 'dropdown-123',
+}));
+
 const getTag = (tagName: string): HTMLElement => {
   return screen.queryAllByLabelText(`Close ${tagName} tag`)?.[0];
 };
 
 describe('<Dropdown /> with <AutoComplete />', () => {
+  beforeEach(() => {
+    jest.resetModules();
+  });
+
   it('should render dropdown and make it visible on click', async () => {
     const user = userEvent.setup();
 
@@ -362,15 +370,19 @@ describe('<Dropdown /> with <AutoComplete />', () => {
 });
 
 describe('<BottomSheet /> & <Dropdown /> with <AutoComplete />', () => {
+  beforeEach(() => {
+    jest.resetModules();
+  });
+
   it('should render BottomSheet and make it visible on click', async () => {
     const user = userEvent.setup();
 
-    const { container, getAllByLabelText, queryByTestId } = renderWithTheme(
+    const { container, getByLabelText, queryByTestId } = renderWithTheme(
       <Dropdown>
         <SelectInput testID="select" label="Fruits" />
         <BottomSheet>
           <BottomSheetHeader>
-            <AutoComplete label="Fruits" />
+            <AutoComplete label="Fruits" testID="fruits-autocomplete" />
           </BottomSheetHeader>
           <BottomSheetBody>
             <ActionList>
@@ -387,7 +399,8 @@ describe('<BottomSheet /> & <Dropdown /> with <AutoComplete />', () => {
       </Dropdown>,
     );
 
-    const [selectInput, autocomplete] = getAllByLabelText('Fruits');
+    const selectInput = getByLabelText('Fruits') as HTMLInputElement;
+    const autoComplete = queryByTestId('fruits-autocomplete') as HTMLInputElement;
     expect(selectInput).toBeVisible();
 
     // testing library ignores the nodes because they are set to display none so using querySelector to select from dom instead.
@@ -395,19 +408,19 @@ describe('<BottomSheet /> & <Dropdown /> with <AutoComplete />', () => {
     expect(queryByTestId('bottomsheet-body')).not.toBeVisible();
     await user.click(selectInput);
     await waitFor(() => expect(queryByTestId('bottomsheet-body')).toBeVisible());
-    expect(autocomplete).toBeVisible();
+    expect(autoComplete).toBeVisible();
     expect(container).toMatchSnapshot();
   });
 
   it('should handle AutoComplete behaviour in single select', async () => {
     const user = userEvent.setup();
 
-    const { getByRole, queryByRole, getAllByLabelText, queryByTestId } = renderWithTheme(
+    const { getByRole, queryByRole, getByLabelText, queryByTestId } = renderWithTheme(
       <Dropdown>
-        <AutoComplete label="Cities" placeholder="Select Cities" />
+        <SelectInput testID="select" label="Cities" />
         <BottomSheet>
           <BottomSheetHeader>
-            <AutoComplete label="Cities" placeholder="Select Cities" />
+            <AutoComplete label="Cities" placeholder="Select Cities" testID="cities-autocomplete" />
           </BottomSheetHeader>
           <BottomSheetBody>
             <ActionList>
@@ -421,7 +434,8 @@ describe('<BottomSheet /> & <Dropdown /> with <AutoComplete />', () => {
       </Dropdown>,
     );
 
-    const [selectInput, autoComplete] = getAllByLabelText('Cities') as HTMLInputElement[];
+    const selectInput = getByLabelText('Cities') as HTMLInputElement;
+    const autoComplete = queryByTestId('cities-autocomplete') as HTMLInputElement;
     expect(selectInput).toBeVisible();
 
     expect(queryByTestId('bottomsheet-body')).not.toBeVisible();
@@ -449,12 +463,12 @@ describe('<BottomSheet /> & <Dropdown /> with <AutoComplete />', () => {
 
   it('should handle AutoComplete behaviour in multiselect', async () => {
     const user = userEvent.setup();
-    const { queryByTestId, getAllByLabelText, getByRole } = renderWithTheme(
+    const { queryByTestId, getByLabelText, getByRole } = renderWithTheme(
       <Dropdown selectionType="multiple">
         <SelectInput label="Fruits" placeholder="Select Fruits" />
         <BottomSheet>
           <BottomSheetHeader>
-            <AutoComplete label="Fruits" placeholder="Select Fruits" />
+            <AutoComplete label="Fruits" placeholder="Select Fruits" testID="fruits-autocomplete" />
           </BottomSheetHeader>
           <BottomSheetBody>
             <ActionList>
@@ -467,7 +481,8 @@ describe('<BottomSheet /> & <Dropdown /> with <AutoComplete />', () => {
       </Dropdown>,
     );
 
-    const [selectInput, autoComplete] = getAllByLabelText('Fruits') as HTMLInputElement[];
+    const selectInput = getByLabelText('Fruits') as HTMLInputElement;
+    const autoComplete = queryByTestId('fruits-autocomplete') as HTMLInputElement;
     expect(selectInput).toBeVisible();
 
     expect(queryByTestId('bottomsheet-body')).not.toBeVisible();
@@ -482,7 +497,7 @@ describe('<BottomSheet /> & <Dropdown /> with <AutoComplete />', () => {
     await user.click(getByRole('option', { name: 'Mango' }));
     expect(getTag('Mango')).toBeVisible();
     expect(getByRole('option', { name: 'Mango' })).toBeVisible();
-    expect(autoComplete.value).toBe('');
+    expect(autoComplete.value).toBeFalsy();
     expect(queryByTestId('bottomsheet-body')).toBeVisible();
 
     await user.keyboard('o');
@@ -526,6 +541,7 @@ describe('<BottomSheet /> & <Dropdown /> with <AutoComplete />', () => {
             <BottomSheetHeader>
               <AutoComplete
                 label="Cities"
+                testID="cities-autocomplete"
                 onInputValueChange={({ value }) => {
                   if (value) {
                     const filteredItems = cities
@@ -564,11 +580,12 @@ describe('<BottomSheet /> & <Dropdown /> with <AutoComplete />', () => {
     };
 
     const user = userEvent.setup();
-    const { getByRole, getAllByLabelText, queryByRole, queryByTestId } = renderWithTheme(
+    const { getByRole, getByLabelText, queryByRole, queryByTestId } = renderWithTheme(
       <ControlledFiltering />,
     );
 
-    const [selectInput, autoComplete] = getAllByLabelText('Cities') as HTMLInputElement[];
+    const selectInput = getByLabelText('Cities') as HTMLInputElement;
+    const autoComplete = queryByTestId('cities-autocomplete') as HTMLInputElement;
 
     expect(selectInput).toBeInTheDocument();
     expect(queryByTestId('bottomsheet-body')).not.toBeVisible();
