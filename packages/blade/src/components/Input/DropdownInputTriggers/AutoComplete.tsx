@@ -128,7 +128,9 @@ const useAutoComplete = ({
         value: displayText,
       });
       // Use displayText as inputValue only if its not controlled by user
-      setInputValue((props.value as string) ?? displayText ?? '');
+      if (typeof props.value === 'undefined') {
+        setInputValue(displayText ?? '');
+      }
     }
     props.onChange?.({ name: props.name, values });
   };
