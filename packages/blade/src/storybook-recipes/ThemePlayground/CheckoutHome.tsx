@@ -16,10 +16,6 @@ const StyledHeader = styled(BaseBox)({
 const StyledFooter = styled(BaseBox)(({ theme }) => ({
   boxShadow: `0 -2px 6px  rgba(23,26,30,.15)`,
   borderTop: `1px solid ${theme.colors.brand.gray[400].lowContrast}`,
-  // bottom: 0,
-  // left: 0,
-  // right: 0,
-  // position: 'absolute',
 }));
 
 const MerchantAvatar = styled.img(() => ({
@@ -28,10 +24,42 @@ const MerchantAvatar = styled.img(() => ({
 }));
 
 const QRCodeImage = styled.img(({ theme }) => ({
-  maxHeight: '136px',
-  maxWidth: '136px',
-  border: `2px solid ${theme.colors.brand.primary[500]}`,
+  width: '136px',
+  zIndex: 1,
 }));
+
+const QRImageWrapper = styled(BaseBox)`
+  align-items: center;
+  align-self: center;
+  display: flex;
+  flex: 0 0 140px;
+  height: 140px;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  width: 140px;
+  &:before {
+    border-style: solid;
+    border-width: 2px;
+    border-color: ${({ theme }) => theme.colors.brand.primary[500]};
+    bottom: 1px;
+    content: '';
+    left: 1px;
+    position: absolute;
+    right: 1px;
+    top: 1px;
+  }
+  &:after {
+    background: ${({ theme }) => theme.colors.surface.background.level2.lowContrast};
+    content: '';
+    height: 120%;
+    left: -10%;
+    position: absolute;
+    top: -10%;
+    transform: rotate(45deg);
+    width: 120%;
+  }
+`;
 
 const UPIRowImage = styled.img(() => ({
   height: '20px',
@@ -100,10 +128,10 @@ const Checkout = (): React.ReactElement => {
         </Heading>
         <Card elevation="none" padding="spacing.5">
           <CardBody>
-            <Box display="flex" flexDirection="row" justifyContent="space-between">
-              <Box flex={1} display="flex">
+            <Box display="flex" flexDirection="row">
+              <QRImageWrapper marginRight="spacing.6">
                 <QRCodeImage src={BladeQRCode} />
-              </Box>
+              </QRImageWrapper>
               <Box flex={1} display="flex" flexDirection="column" justifyContent="center">
                 <Text size="small">Scan the QR using any UPI app on your phone.</Text>
                 <Box
@@ -126,7 +154,10 @@ const Checkout = (): React.ReactElement => {
                 </Box>
                 <Text type="subdued" size="small">
                   QR Code is valid for
-                  <br /> 12 minutes
+                  <br />
+                  <Text type="subdued" size="small" color="feedback.text.negative.lowContrast">
+                    12 minutes
+                  </Text>
                 </Text>
               </Box>
             </Box>
