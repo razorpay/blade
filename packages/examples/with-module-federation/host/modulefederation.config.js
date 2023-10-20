@@ -14,12 +14,12 @@ module.exports = {
     '@razorpay/blade': {
       requiredVersion: dependencies['@razorpay/blade'],
       version: dependencies['@razorpay/blade'],
-      singleton: false,
+      singleton: true,
     },
     'styled-components': {
       requiredVersion: dependencies['styled-components'],
       version: dependencies['styled-components'],
-      singleton: false,
+      singleton: true,
     },
     'react-dom': {
       singleton: true,

@@ -87,7 +87,7 @@ const configs = {
             regenerator: true,
           },
         ],
-        ['@quickbaseoss/babel-plugin-styled-components-css-namespace', { cssNamespace: '&&&&' }],
+        ['@quickbaseoss/babel-plugin-styled-components-css-namespace', { cssNamespace: '&&' }],
         [
           'babel-plugin-styled-components',
           {
@@ -112,7 +112,7 @@ const configs = {
             regenerator: true,
           },
         ],
-        ['@quickbaseoss/babel-plugin-styled-components-css-namespace', { cssNamespace: '&&&&' }],
+        ['@quickbaseoss/babel-plugin-styled-components-css-namespace', { cssNamespace: '&&' }],
         [
           'babel-plugin-styled-components',
           {
@@ -139,7 +139,7 @@ const configs = {
             regenerator: true,
           },
         ],
-        ['@quickbaseoss/babel-plugin-styled-components-css-namespace', { cssNamespace: '&&&&' }],
+        ['@quickbaseoss/babel-plugin-styled-components-css-namespace', { cssNamespace: '&&' }],
         [
           'babel-plugin-styled-components',
           {
