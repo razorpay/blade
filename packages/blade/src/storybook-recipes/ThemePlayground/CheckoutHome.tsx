@@ -19,9 +19,10 @@ const StyledFooter = styled(BaseBox)(({ theme }) => ({
   borderTop: `1px solid ${theme.colors.brand.gray[400].lowContrast}`,
 }));
 
-const MerchantAvatar = styled.img(() => ({
+const MerchantAvatar = styled.img(({ theme }) => ({
   maxHeight: '46px',
   maxWidth: '46px',
+  borderRadius: theme.border.radius.small,
 }));
 
 const QRCodeImage = styled.img(({ theme }) => ({
@@ -71,6 +72,7 @@ const ClickableRow = styled.button(({ theme }) => ({
   border: 'none',
   background: 'none',
   cursor: 'pointer',
+  overflow: 'hidden',
   alignItems: 'center',
   display: 'flex',
   flex: 1,
@@ -85,6 +87,12 @@ const ClickableRow = styled.button(({ theme }) => ({
   },
   '&:last-child': {
     borderBottom: 'none',
+    borderBottomLeftRadius: theme.border.radius.medium,
+    borderBottomRightRadius: theme.border.radius.medium,
+  },
+  '&:first-child': {
+    borderTopLeftRadius: theme.border.radius.medium,
+    borderTopRightRadius: theme.border.radius.medium,
   },
 }));
 
@@ -96,6 +104,7 @@ const TrustedBusinessWrapper = styled(BaseBox)(({ theme }) => ({
   background: 'rgba(255,255,255,0.1 )',
   padding: `${makeSpace(theme.spacing[1])} ${makeSpace(theme.spacing[2])}`,
   cursor: 'pointer',
+  borderRadius: theme.border.radius.small,
 }));
 
 const LanguageSelector = styled(BaseBox)(({ theme }) => ({
@@ -106,6 +115,7 @@ const LanguageSelector = styled(BaseBox)(({ theme }) => ({
   background: 'rgba(255,255,255,0.1 )',
   padding: `${makeSpace(theme.spacing[1])} ${makeSpace(theme.spacing[2])}`,
   cursor: 'pointer',
+  borderRadius: theme.border.radius.small,
 }));
 
 const Checkout = (): React.ReactElement => {
@@ -120,6 +130,7 @@ const Checkout = (): React.ReactElement => {
       borderRadius="medium"
       display="flex"
       flexDirection="column"
+      overflow="hidden"
     >
       <StyledHeader
         backgroundImage="linear-gradient(to bottom right,rgba(255,255,255,0.2),rgba(0,0,0,0.2))"

@@ -4,7 +4,7 @@ import { PhantomUI } from './PhantomUI';
 import { ThemeSelector } from './ThemeSelector';
 import { BrandedComponentKitchenSink } from './BrandedComponentKitchenSink';
 import { BladeProvider } from '~components/BladeProvider';
-import { bankingTheme, createTheme, paymentTheme } from '~tokens/theme';
+import { bankingTheme, createTheme, overrideTheme, paymentTheme } from '~tokens/theme';
 import type { ColorSchemeNames, ThemeTokens } from '~tokens/theme';
 import { Box } from '~components/Box';
 import { Title } from '~components/Typography';
@@ -12,6 +12,7 @@ import { Card, CardBody } from '~components/Card';
 
 const ThemePlayground = (): React.ReactElement => {
   const [selectedColor, setSelectedColor] = useState<string | undefined>(undefined);
+  const [borderBase, setBorderBase] = useState<string>('2');
   const [colorScheme, setColorScheme] = useState<ColorSchemeNames>('light');
   const [selectedPreBuiltTheme, setSelectedPreBuiltTheme] = useState<string | undefined>(
     'paymentTheme',
@@ -26,8 +27,31 @@ const ThemePlayground = (): React.ReactElement => {
 
     return bankingTheme;
   };
+
+  const getOverriddenTheme = (): ThemeTokens => {
+    return overrideTheme({
+      baseThemeTokens: getTheme(),
+      overrides: {
+        border: {
+          radius: {
+            none: 0,
+            small: Number(borderBase) * 1,
+            medium: Number(borderBase) * 2,
+            large: Number(borderBase) * 3,
+            max: 9999,
+            round: '50%',
+          },
+        },
+      },
+    });
+  };
+
   return (
-    <BladeProvider themeTokens={getTheme()} colorScheme={colorScheme} key={`${colorScheme}`}>
+    <BladeProvider
+      themeTokens={getOverriddenTheme()}
+      colorScheme={colorScheme}
+      key={`${colorScheme}-${borderBase}-${selectedColor}-${selectedPreBuiltTheme}`}
+    >
       <Box maxWidth={{ l: '50vw', m: '50vw', s: '100%' }}>
         <Box display="flex" flexDirection="column" gap="spacing.5">
           <ThemeSelector
@@ -37,6 +61,8 @@ const ThemePlayground = (): React.ReactElement => {
             setColorScheme={setColorScheme}
             selectedPreBuiltTheme={selectedPreBuiltTheme}
             setSelectedPreBuiltTheme={setSelectedPreBuiltTheme}
+            setBorderBase={setBorderBase}
+            borderBase={borderBase}
           />
           <Card surfaceLevel={3}>
             <CardBody>

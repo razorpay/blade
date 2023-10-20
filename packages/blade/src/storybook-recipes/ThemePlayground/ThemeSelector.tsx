@@ -73,9 +73,11 @@ const ThemeSelector = ({
   selectedColor,
   setSelectedColor,
   colorScheme,
+  borderBase,
   setColorScheme,
   selectedPreBuiltTheme,
   setSelectedPreBuiltTheme,
+  setBorderBase,
 }: {
   selectedColor?: string;
   setSelectedColor: React.Dispatch<React.SetStateAction<string | undefined>>;
@@ -83,6 +85,8 @@ const ThemeSelector = ({
   setColorScheme: React.Dispatch<React.SetStateAction<ColorSchemeNames>>;
   selectedPreBuiltTheme?: string;
   setSelectedPreBuiltTheme: React.Dispatch<React.SetStateAction<string | undefined>>;
+  setBorderBase: React.Dispatch<React.SetStateAction<string>>;
+  borderBase: string;
 }): React.ReactElement => {
   const colorOptions = [
     '#EE681A',
@@ -183,6 +187,25 @@ const ThemeSelector = ({
               >
                 <Radio value="light">Light</Radio>
                 <Radio value="dark">Dark</Radio>
+              </RadioGroup>
+            </Box>
+            <Box marginTop="spacing.8" />
+            <Box
+              display="flex"
+              flexDirection="row"
+              gap="spacing.2"
+              flexWrap="wrap"
+              marginTop="spacing.8"
+            >
+              <RadioGroup
+                value={borderBase}
+                labelPosition="top"
+                label="Style:"
+                onChange={({ value }) => setBorderBase(value)}
+              >
+                <Radio value="0">Flat</Radio>
+                <Radio value="2">Normal</Radio>
+                <Radio value="12">Rounded</Radio>
               </RadioGroup>
             </Box>
             <Box marginTop="spacing.8" />
