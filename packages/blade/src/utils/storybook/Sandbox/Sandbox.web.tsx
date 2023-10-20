@@ -49,16 +49,35 @@ const useSandpackSetup = ({
   return {
     template: 'react-ts',
     files: {
+      // 'public/index.html': dedent`
+      // <!DOCTYPE html>
+      // <html>
+      // <head>
+      //   <link rel="preconnect" href="https://fonts.googleapis.com">
+      //   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      //   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+      // </head>
+
+      // <body>
+      //   <div id="root"></div>
+      // </body>
+      // </html>
+      // `,
       '/index.tsx': dedent`import { StrictMode } from "react";
             import { createRoot } from "react-dom/client";
             import { createGlobalStyle } from "styled-components";
   
             import { BladeProvider, Box, Theme } from "@razorpay/blade/components";
             import { ${themeTokenName}, createTheme } from "@razorpay/blade/tokens";
-            import "@fontsource/lato/400.css";
-            import "@fontsource/lato/700.css";
             
             import App from "./App";
+
+            // Only way to load font correctly in sandbpack. Use @fontsource/lato in your actual projects
+            document.head.innerHTML += \`
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+            \`
   
             const GlobalStyles = createGlobalStyle\`
               * { 
@@ -67,6 +86,7 @@ const useSandpackSetup = ({
               body {
                 margin: 0;
                 padding: 0;
+                font-family: 'Lato', sans-serif;
               }
             \`;
             
@@ -101,7 +121,6 @@ const useSandpackSetup = ({
               </StrictMode>
             );
 
-            console.clear(); // There could be some codesandbox warnings, clearing them here on init
             `,
       [`/App.${language}`]: dedent(code),
     },
