@@ -14,6 +14,10 @@ import { SelectInput } from '~components/Input/DropdownInputTriggers';
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { Badge } from '~components/Badge';
 
+jest.mock('~utils/useId', () => ({
+  useId: () => 'dropdown-456',
+}));
+
 export const sleep = (delay = 10): Promise<number> =>
   new Promise((resolve) => setTimeout(resolve, delay));
 
@@ -56,6 +60,10 @@ const MultiSelectContent = (): React.ReactElement => {
 
 describe('<BottomSheet />', () => {
   const viewport = mockViewport({ width: '320px', height: '568px' });
+
+  beforeEach(() => {
+    jest.resetModules();
+  });
 
   it('should render Header/Footer/Body properly on closed state', () => {
     const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
