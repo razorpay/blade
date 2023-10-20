@@ -49,20 +49,6 @@ const useSandpackSetup = ({
   return {
     template: 'react-ts',
     files: {
-      // 'public/index.html': dedent`
-      // <!DOCTYPE html>
-      // <html>
-      // <head>
-      //   <link rel="preconnect" href="https://fonts.googleapis.com">
-      //   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      //   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
-      // </head>
-
-      // <body>
-      //   <div id="root"></div>
-      // </body>
-      // </html>
-      // `,
       '/index.tsx': dedent`import { StrictMode } from "react";
             import { createRoot } from "react-dom/client";
             import { createGlobalStyle } from "styled-components";
@@ -121,6 +107,7 @@ const useSandpackSetup = ({
               </StrictMode>
             );
 
+            console.clear(); // There could be some codesandbox warnings, clearing them here on init
             `,
       [`/App.${language}`]: dedent(code),
     },
@@ -130,7 +117,6 @@ const useSandpackSetup = ({
         'react-dom': packageJson.peerDependencies['react-dom'],
         'react-scripts': '4.0.3',
         '@razorpay/blade': bladeVersion,
-        '@fontsource/lato': '4.5.10',
         'styled-components': packageJson.peerDependencies['styled-components'],
       },
     },
