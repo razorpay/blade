@@ -25,10 +25,10 @@ const MerchantAvatar = styled.img(({ theme }) => ({
   borderRadius: theme.border.radius.small,
 }));
 
-const QRCodeImage = styled.img(({ theme }) => ({
+const QRCodeImage = styled.img({
   width: '136px',
   zIndex: 1,
-}));
+});
 
 const QRImageWrapper = styled(BaseBox)`
   align-items: center;
