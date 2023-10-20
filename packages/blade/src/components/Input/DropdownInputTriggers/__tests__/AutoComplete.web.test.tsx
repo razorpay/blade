@@ -328,7 +328,7 @@ describe('<Dropdown /> with <AutoComplete />', () => {
     // Clicking on Pune should not change the value
     await user.click(selectInput);
     await user.click(getByRole('option', { name: 'Pune' }));
-    expect(selectInput).toHaveValue('bangalore');
+    expect(selectInput).toHaveValue('Bangalore');
 
     await user.click(getByRole('button', { name: 'Clear Selection' }));
     expect(selectInput).toHaveValue('');
