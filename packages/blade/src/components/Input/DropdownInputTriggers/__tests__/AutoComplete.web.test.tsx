@@ -275,6 +275,65 @@ describe('<Dropdown /> with <AutoComplete />', () => {
     expect(selectInput).toHaveValue('');
   });
 
+  // https://github.com/razorpay/blade/issues/1676
+  it('should update value when explicitly set in controlled single selection', async () => {
+    const ControlledDropdown = (): React.ReactElement => {
+      const [currentSelection, setCurrentSelection] = React.useState<string>('');
+
+      return (
+        <>
+          <Button
+            onClick={() => {
+              setCurrentSelection('bangalore');
+            }}
+          >
+            Select Bangalore
+          </Button>
+          <Button
+            onClick={() => {
+              setCurrentSelection('');
+            }}
+          >
+            Clear Selection
+          </Button>
+          <Dropdown selectionType="single">
+            <AutoComplete
+              label="Select City"
+              value={currentSelection}
+              onChange={() => {
+                // Simulate a case where the value isn't explicitly set in the onChange handler
+                // setCurrentSelection(args?.values[0]);
+              }}
+            />
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem title="Bangalore" value="bangalore" />
+                <ActionListItem title="Pune" value="pune" />
+                <ActionListItem title="Chennai" value="chennai" />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        </>
+      );
+    };
+
+    const user = userEvent.setup();
+    const { getByRole } = renderWithTheme(<ControlledDropdown />);
+
+    const selectInput = getByRole('combobox', { name: 'Select City' });
+    expect(selectInput).toHaveValue('');
+    await user.click(getByRole('button', { name: 'Select Bangalore' }));
+    expect(selectInput).toHaveValue('Bangalore');
+
+    // Clicking on Pune should not change the value
+    await user.click(selectInput);
+    await user.click(getByRole('option', { name: 'Pune' }));
+    expect(selectInput).toHaveValue('Bangalore');
+
+    await user.click(getByRole('button', { name: 'Clear Selection' }));
+    expect(selectInput).toHaveValue('');
+  });
+
   it('should handle controlled filtering', async () => {
     const cities = [
       {
