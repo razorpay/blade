@@ -238,10 +238,6 @@ const ActionListItemText = assignWithoutSideEffects(_ActionListItemText, {
   componentId: componentIds.ActionListItemText,
 });
 
-const ActionListCheckboxWrapper = styled(BaseBox)<{ hasDescription: boolean }>((_props) => ({
-  pointerEvents: 'none',
-}));
-
 type ClickHandlerType = (e: React.MouseEvent<HTMLButtonElement>) => void;
 
 const makeActionListItemClickable = (
@@ -287,8 +283,9 @@ const _ActionListItemBody = ({
         <BaseBox display="flex" justifyContent="center" alignItems="center">
           {selectionType === 'multiple' ? (
             // Adding aria-hidden because the listbox item in multiselect in itself explains the behaviour so announcing checkbox is unneccesary and just a nice UI tweak for us
-            <ActionListCheckboxWrapper
-              hasDescription={Boolean(description)}
+            <BaseBox
+              pointerEvents="none"
+              paddingRight="spacing.2"
               {...makeAccessible({
                 hidden: true,
               })}
@@ -300,7 +297,7 @@ const _ActionListItemBody = ({
                     */}
                 {null}
               </Checkbox>
-            </ActionListCheckboxWrapper>
+            </BaseBox>
           ) : (
             leading
           )}
