@@ -931,12 +931,12 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                           <View
                             accessibilityElementsHidden={true}
                             data-blade-component="base-box"
-                            hasDescription={false}
                             importantForAccessibility="no-hide-descendants"
+                            pointerEvents="none"
                             style={
                               [
-                                {},
                                 {
+                                  "paddingRight": 4,
                                   "pointerEvents": "none",
                                 },
                               ]
@@ -1219,12 +1219,12 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                           <View
                             accessibilityElementsHidden={true}
                             data-blade-component="base-box"
-                            hasDescription={false}
                             importantForAccessibility="no-hide-descendants"
+                            pointerEvents="none"
                             style={
                               [
-                                {},
                                 {
+                                  "paddingRight": 4,
                                   "pointerEvents": "none",
                                 },
                               ]
@@ -1507,12 +1507,12 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                           <View
                             accessibilityElementsHidden={true}
                             data-blade-component="base-box"
-                            hasDescription={false}
                             importantForAccessibility="no-hide-descendants"
+                            pointerEvents="none"
                             style={
                               [
-                                {},
                                 {
+                                  "paddingRight": 4,
                                   "pointerEvents": "none",
                                 },
                               ]
