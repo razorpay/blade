@@ -19,6 +19,7 @@ type TextCommonProps = {
   contrast?: ColorContrastTypes;
   truncateAfterLines?: number;
   children: React.ReactNode;
+  shouldTruncate ?: boolean;
   weight?: keyof Theme['typography']['fonts']['weight'];
   /**
    * Overrides the color of the Text component.
@@ -137,6 +138,7 @@ const _Text = <T extends { variant: TextVariant }>({
   type = 'normal',
   contrast = 'low',
   truncateAfterLines,
+  shouldTruncate,
   children,
   color,
   testID,
@@ -147,6 +149,7 @@ const _Text = <T extends { variant: TextVariant }>({
   const props: Omit<BaseTextProps, 'children'> = {
     as,
     truncateAfterLines,
+    shouldTruncate,
     ...getTextProps({
       variant,
       type,

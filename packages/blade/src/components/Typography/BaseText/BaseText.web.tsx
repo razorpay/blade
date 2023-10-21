@@ -19,6 +19,7 @@ const StyledBaseText = styled.div.withConfig({
     fontWeight,
     fontStyle,
     textDecorationLine,
+    shouldTruncate,
     numberOfLines,
     lineHeight,
     textAlign,
@@ -34,6 +35,7 @@ const StyledBaseText = styled.div.withConfig({
         fontStyle,
         textDecorationLine,
         numberOfLines,
+        shouldTruncate,
         lineHeight,
         textAlign,
         theme: props.theme,
@@ -56,6 +58,7 @@ export const BaseText = ({
   textAlign,
   children,
   truncateAfterLines,
+  shouldTruncate,
   className,
   style,
   accessibilityProps = {},
@@ -76,6 +79,7 @@ export const BaseText = ({
       as={as}
       textAlign={textAlign}
       numberOfLines={truncateAfterLines}
+      shouldTruncate={shouldTruncate}
       className={className}
       style={style}
       id={id}

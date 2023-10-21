@@ -313,6 +313,7 @@ const _ActionListItemBody = ({
           flexDirection="row"
         >
           <Text
+            shouldTruncate={true}
             truncateAfterLines={1}
             color={
               intent === 'negative'
