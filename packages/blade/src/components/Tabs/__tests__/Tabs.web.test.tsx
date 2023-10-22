@@ -70,7 +70,7 @@ describe('Tabs', () => {
 
   it('should render with autoWidth', () => {
     const { baseElement } = renderWithTheme(
-      <Tabs defaultValue="refunds" autoWidth>
+      <Tabs defaultValue="refunds" isFullWidthTabItem>
         <TabList>
           <TabItem value="payments">Payments</TabItem>
           <TabItem value="refunds">Refunds</TabItem>
