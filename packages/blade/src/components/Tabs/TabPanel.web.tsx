@@ -6,23 +6,36 @@ import { makeAccessible } from '~utils/makeAccessible';
 import BaseBox from '~components/Box/BaseBox';
 
 const TabPanel = ({ children, value }: TabPanelProps): React.ReactElement => {
-  const { selectedValue, baseId } = useTabsContext();
+  const { selectedValue, baseId, isLazy } = useTabsContext();
   const isSelected = selectedValue === value;
   const panelId = `${baseId}-${value}-tabpanel`;
   const tabItemId = `${baseId}-${value}-tabitem`;
 
+  if (isLazy) {
+    return (
+      <>
+        {isSelected ? (
+          <BaseBox
+            id={panelId}
+            tabIndex={0}
+            {...makeAccessible({ role: 'tabpanel', labelledBy: tabItemId })}
+          >
+            {children}
+          </BaseBox>
+        ) : null}
+      </>
+    );
+  }
+
   return (
-    <>
-      {isSelected ? (
-        <BaseBox
-          id={panelId}
-          tabIndex={0}
-          {...makeAccessible({ role: 'tabpanel', labelledBy: tabItemId })}
-        >
-          {children}
-        </BaseBox>
-      ) : null}
-    </>
+    <BaseBox
+      id={panelId}
+      tabIndex={0}
+      display={isSelected ? 'block' : 'none'}
+      {...makeAccessible({ role: 'tabpanel', labelledBy: tabItemId, hidden: !isSelected })}
+    >
+      {children}
+    </BaseBox>
   );
 };
 

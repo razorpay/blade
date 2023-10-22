@@ -3,24 +3,26 @@ import styled from 'styled-components';
 import get from 'lodash/get';
 import React from 'react';
 import type { TabItemProps, TabsProps } from './types';
-import { paddings } from './tabTokens';
+import { paddingX, paddingY } from './tabTokens';
 import { makeSpace } from '~utils';
 import BaseBox from '~components/Box/BaseBox';
 
 const StyledTabButton = styled(BaseBox)<{
   size: TabsProps['size'];
-  autoWidth?: TabsProps['autoWidth'];
+  isFullWidthTabItem?: TabsProps['isFullWidthTabItem'];
   variant: NonNullable<TabsProps['variant']>;
-}>(({ theme, size, variant, autoWidth }) => {
+}>(({ theme, size, variant, isFullWidthTabItem }) => {
+  const _variant = variant === 'bordered' ? 'bordered' : 'filled';
+
   return {
     display: 'flex',
     alignItems: 'center',
     flexDirection: 'row',
-    width: autoWidth ? '100%' : undefined,
-    paddingTop: makeSpace(get(theme, paddings[variant].horizontal.mobile.top[size!])),
-    paddingBottom: makeSpace(get(theme, paddings[variant].horizontal.mobile.bottom[size!])),
-    paddingLeft: makeSpace(get(theme, paddings[variant].horizontal.mobile.left[size!])),
-    paddingRight: makeSpace(get(theme, paddings[variant].horizontal.mobile.right[size!])),
+    width: isFullWidthTabItem ? '100%' : undefined,
+    paddingTop: makeSpace(get(theme, paddingY[_variant].horizontal.mobile[size!])),
+    paddingBottom: makeSpace(get(theme, paddingY[_variant].horizontal.mobile[size!])),
+    paddingLeft: makeSpace(get(theme, paddingX[_variant].horizontal.mobile[size!])),
+    paddingRight: makeSpace(get(theme, paddingX[_variant].horizontal.mobile[size!])),
   };
 });
 

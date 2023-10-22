@@ -5,10 +5,13 @@ import React from 'react';
 import type { TabsProps } from './types';
 import { Tabs, TabItem, TabList, TabPanel } from './';
 import { Text } from '~components/Typography';
-import { TrendingUpIcon } from '~components/Icons';
+import { RupeeIcon, TrendingUpIcon } from '~components/Icons';
 import { Counter } from '~components/Counter';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
+import { Card, CardBody } from '~components/Card';
+import { Divider } from '~components/Divider';
+import { Alert } from '~components/Alert';
 
 export default {
   title: 'Components/Tabs',
@@ -21,9 +24,8 @@ const TabsTemplate: ComponentStory<typeof Tabs> = () => {
 
   const [value, setValue] = React.useState('refunds');
   return (
-    <Box>
-      <Button onClick={() => setIsVisible((v) => !v)}>Toggle</Button>
-      <Tabs>
+    <Box height="100%">
+      <Tabs variant="bordered" isFullWidthTabItem={false}>
         <TabList>
           <TabItem value="payments">Payments</TabItem>
           <TabItem value="refunds">Refunds</TabItem>
@@ -169,7 +171,15 @@ const TabsVerticalTemplate: ComponentStory<typeof Tabs> = () => {
         onChange={(v) => console.log(v)}
       >
         <TabList>
-          <TabItem leading={<TrendingUpIcon />} trailing={<Counter value={12} />} value="payments">
+          <TabItem
+            onClick={() => {
+              alert(1);
+            }}
+            href="/hello"
+            leading={<TrendingUpIcon />}
+            trailing={<Counter value={12} />}
+            value="payments"
+          >
             Payments
           </TabItem>
           <TabItem value="refunds">Refunds</TabItem>

@@ -38,19 +38,16 @@ const TabIndicator = ({
     const activeTabItem = document.getElementById(tabItemId);
     if (!activeTabItem) return;
 
-    // Set the width offset cutoff for the indicator on filled variant
-    // This is to account for the divider in between tabs
-    const widthOffsetCutoff = variant === 'filled' ? 0 : 0;
     setActiveElementDimensions({
-      width: activeTabItem.offsetWidth - widthOffsetCutoff * 2,
+      width: activeTabItem.offsetWidth,
       height: activeTabItem.offsetHeight,
-      x: activeTabItem.offsetLeft + widthOffsetCutoff,
+      x: activeTabItem.offsetLeft,
       y:
         variant === 'filled'
           ? // on filled variant the indicator is positioned on top of the tab item
             // so no need to add offsetHeight
             activeTabItem.offsetTop - 1
-          : activeTabItem.offsetTop + activeTabItem.offsetHeight - 2,
+          : activeTabItem.offsetTop + activeTabItem.offsetHeight - 1.5,
     });
   }, [baseId, selectedValue, tabListContainerRef, variant]);
 

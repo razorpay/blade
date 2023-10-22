@@ -1,13 +1,14 @@
 import React from 'react';
 import type { TabsProps } from './types';
 import { throwBladeError } from '~utils/logger';
+import type { ControllableStateSetter } from '~utils/useControllable';
 
 type TabsContextProps =
-  | (Pick<TabsProps, 'size' | 'variant' | 'autoWidth'> & {
+  | (Pick<TabsProps, 'size' | 'variant' | 'isFullWidthTabItem' | 'isLazy'> & {
       isVertical: boolean;
       baseId: string;
       selectedValue: string;
-      setSelectedValue: (next: (prevState: string) => string) => void;
+      setSelectedValue: ControllableStateSetter<string>;
     })
   | null;
 

@@ -3,179 +3,103 @@ import type { DotNotationSpacingStringToken } from '~utils/types';
 
 type Devices = 'desktop' | 'mobile';
 type TabSizes = NonNullable<TabsProps['size']>;
-type TabVariants = NonNullable<TabsProps['variant']>;
+type TabVariants = Exclude<NonNullable<TabsProps['variant']>, 'borderless'>;
 type TabOrientation = 'horizontal' | 'vertical';
 
-type TabItemPaddings = Record<
+type TabItemPadding = Record<
   TabVariants,
-  Record<
-    TabOrientation,
-    Record<
-      Devices,
-      {
-        top: Record<TabSizes, DotNotationSpacingStringToken>;
-        bottom: Record<TabSizes, DotNotationSpacingStringToken>;
-        left: Record<TabSizes, DotNotationSpacingStringToken>;
-        right: Record<TabSizes, DotNotationSpacingStringToken>;
-      }
-    >
-  >
+  Record<TabOrientation, Record<Devices, Record<TabSizes, DotNotationSpacingStringToken>>>
 >;
 
-const paddings: TabItemPaddings = {
+const paddingY: TabItemPadding = {
   bordered: {
     horizontal: {
       desktop: {
-        top: {
-          medium: 'spacing.2',
-          large: 'spacing.2',
-        },
-        bottom: {
-          medium: 'spacing.5',
-          large: 'spacing.4',
-        },
-        left: {
-          medium: 'spacing.6',
-          large: 'spacing.6',
-        },
-        right: {
-          medium: 'spacing.6',
-          large: 'spacing.6',
-        },
+        medium: 'spacing.5',
+        large: 'spacing.4',
       },
       mobile: {
-        top: {
-          medium: 'spacing.2',
-          large: 'spacing.2',
-        },
-        bottom: {
-          medium: 'spacing.3',
-          large: 'spacing.3',
-        },
-        left: {
-          medium: 'spacing.5',
-          large: 'spacing.5',
-        },
-        right: {
-          medium: 'spacing.5',
-          large: 'spacing.5',
-        },
+        medium: 'spacing.3',
+        large: 'spacing.3',
       },
     },
     vertical: {
       desktop: {
-        top: {
-          medium: 'spacing.2',
-          large: 'spacing.2',
-        },
-        bottom: {
-          medium: 'spacing.2',
-          large: 'spacing.2',
-        },
-        left: {
-          medium: 'spacing.4',
-          large: 'spacing.4',
-        },
-        right: {
-          medium: 'spacing.4',
-          large: 'spacing.4',
-        },
+        medium: 'spacing.2',
+        large: 'spacing.2',
       },
       mobile: {
-        top: {
-          medium: 'spacing.2',
-          large: 'spacing.2',
-        },
-        bottom: {
-          medium: 'spacing.2',
-          large: 'spacing.2',
-        },
-        left: {
-          medium: 'spacing.4',
-          large: 'spacing.4',
-        },
-        right: {
-          medium: 'spacing.4',
-          large: 'spacing.4',
-        },
+        medium: 'spacing.2',
+        large: 'spacing.2',
       },
     },
   },
   filled: {
     horizontal: {
       desktop: {
-        top: {
-          medium: 'spacing.3',
-          large: 'spacing.3',
-        },
-        bottom: {
-          medium: 'spacing.3',
-          large: 'spacing.3',
-        },
-        left: {
-          medium: 'spacing.0',
-          large: 'spacing.0',
-        },
-        right: {
-          medium: 'spacing.0',
-          large: 'spacing.0',
-        },
+        medium: 'spacing.3',
+        large: 'spacing.3',
       },
       mobile: {
-        top: {
-          medium: 'spacing.2',
-          large: 'spacing.2',
-        },
-        bottom: {
-          medium: 'spacing.2',
-          large: 'spacing.2',
-        },
-        left: {
-          medium: 'spacing.0',
-          large: 'spacing.0',
-        },
-        right: {
-          medium: 'spacing.0',
-          large: 'spacing.0',
-        },
+        medium: 'spacing.2',
+        large: 'spacing.2',
       },
     },
     vertical: {
       desktop: {
-        top: {
-          medium: 'spacing.4',
-          large: 'spacing.4',
-        },
-        bottom: {
-          medium: 'spacing.4',
-          large: 'spacing.4',
-        },
-        left: {
-          medium: 'spacing.4',
-          large: 'spacing.4',
-        },
-        right: {
-          medium: 'spacing.4',
-          large: 'spacing.4',
-        },
+        medium: 'spacing.4',
+        large: 'spacing.4',
       },
       mobile: {
-        top: {
-          medium: 'spacing.3',
-          large: 'spacing.3',
-        },
-        bottom: {
-          medium: 'spacing.3',
-          large: 'spacing.3',
-        },
-        left: {
-          medium: 'spacing.3',
-          large: 'spacing.3',
-        },
-        right: {
-          medium: 'spacing.3',
-          large: 'spacing.3',
-        },
+        medium: 'spacing.3',
+        large: 'spacing.3',
+      },
+    },
+  },
+};
+
+const paddingX: TabItemPadding = {
+  bordered: {
+    horizontal: {
+      desktop: {
+        medium: 'spacing.0',
+        large: 'spacing.0',
+      },
+      mobile: {
+        medium: 'spacing.0',
+        large: 'spacing.0',
+      },
+    },
+    vertical: {
+      desktop: {
+        medium: 'spacing.4',
+        large: 'spacing.4',
+      },
+      mobile: {
+        medium: 'spacing.4',
+        large: 'spacing.4',
+      },
+    },
+  },
+  filled: {
+    horizontal: {
+      desktop: {
+        medium: 'spacing.3',
+        large: 'spacing.3',
+      },
+      mobile: {
+        medium: 'spacing.2',
+        large: 'spacing.2',
+      },
+    },
+    vertical: {
+      desktop: {
+        medium: 'spacing.4',
+        large: 'spacing.4',
+      },
+      mobile: {
+        medium: 'spacing.3',
+        large: 'spacing.3',
       },
     },
   },
@@ -207,6 +131,13 @@ const backgroundColor = {
       active: 'transparent',
       disabled: 'transparent',
     },
+    borderless: {
+      default: 'transparent',
+      hover: 'transparent',
+      focus: 'transparent',
+      active: 'transparent',
+      disabled: 'transparent',
+    },
     filled: {
       default: 'transparent',
       hover: 'colors.brand.gray.a50.lowContrast',
@@ -223,6 +154,13 @@ const backgroundColor = {
       active: 'transparent',
       disabled: 'transparent',
     },
+    borderless: {
+      default: 'transparent',
+      hover: 'transparent',
+      focus: 'transparent',
+      active: 'transparent',
+      disabled: 'transparent',
+    },
     filled: {
       default: 'colors.brand.primary.300',
       hover: 'colors.brand.primary.400',
@@ -233,4 +171,4 @@ const backgroundColor = {
   },
 } as const;
 
-export { backgroundColor, textColor, paddings };
+export { backgroundColor, textColor, paddingY, paddingX };

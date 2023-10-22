@@ -28,16 +28,28 @@ type TabsProps = {
   }>;
   /**
    * The size of the tabs.
+   *
+   * @default 'medium'
    */
   size?: 'medium' | 'large';
   /**
    * The variant of the tabs.
+   *
+   * @default 'bordered'
    */
-  variant?: 'bordered' | 'filled';
+  variant?: 'bordered' | 'borderless' | 'filled';
   /**
    * If `true`, the TabItems will grow to use all the available space.
+   *
+   * @default false
    */
-  autoWidth?: boolean;
+  isFullWidthTabItem?: boolean;
+  /**
+   * If `true`, the TabPanel will be rendered only when it becomes active.
+   *
+   * @default false
+   */
+  isLazy?: boolean;
 };
 
 type TabItemProps = {
@@ -66,6 +78,17 @@ type TabItemProps = {
    * If `true`, the tab item will be disabled.
    */
   isDisabled?: boolean;
+  /**
+   * If set the tab item will be rendered as a link.
+   * This can be used to create a tab item that redirects to another page or integrate with react-router.
+   *
+   * @default undefined
+   */
+  href?: string;
+  /**
+   * Callback fired when the tab item is clicked.
+   */
+  onClick?: (event: React.MouseEvent) => void;
 };
 
 type TabPanelProps = {
