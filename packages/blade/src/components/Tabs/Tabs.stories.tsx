@@ -22,9 +22,10 @@ export default {
 const TabsTemplate: ComponentStory<typeof Tabs> = () => {
   const [isVisible, setIsVisible] = React.useState(true);
 
-  const [value, setValue] = React.useState('refunds');
+  const [value, setValue] = React.useState('payments');
   return (
     <Box height="100%">
+      <Button onClick={() => setValue('refunds')}>Switch to disabled</Button>
       <Tabs variant="bordered" isFullWidthTabItem={false}>
         <TabList>
           <TabItem value="payments">Payments</TabItem>
@@ -61,7 +62,9 @@ const TabsTemplate: ComponentStory<typeof Tabs> = () => {
           >
             <TabList>
               <TabItem value="payments">Payments</TabItem>
-              <TabItem value="refunds">Refunds</TabItem>
+              <TabItem value="refunds" isDisabled>
+                Refunds
+              </TabItem>
               <TabItem value="disputes">Disputes</TabItem>
             </TabList>
 

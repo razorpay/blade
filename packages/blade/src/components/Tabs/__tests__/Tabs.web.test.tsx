@@ -1,15 +1,23 @@
 import userEvent from '@testing-library/user-event';
-import { fireEvent } from '@testing-library/react';
+import { fireEvent, screen } from '@testing-library/react';
 import React from 'react';
 import { Tabs, TabList, TabItem, TabPanel } from '../';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { Text } from '~components/Typography';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
+import assertAccessible from '~utils/testing/assertAccessible.web';
+
+const queryTabPanelByText = (text: string): HTMLElement | null => {
+  return (
+    screen.queryAllByRole('tabpanel', { hidden: true }).find((el) => el.textContent === text) ??
+    null
+  );
+};
 
 describe('Tabs', () => {
   it('should render', () => {
-    const { baseElement } = renderWithTheme(
+    const { baseElement, queryAllByRole } = renderWithTheme(
       <Tabs defaultValue="refunds">
         <TabList>
           <TabItem value="payments">Payments</TabItem>
@@ -26,6 +34,17 @@ describe('Tabs', () => {
     );
 
     expect(baseElement).toMatchSnapshot();
+
+    // `queryByRole` is failing but `queryAllByRole` is working
+    // I think because even with `hidden: true` the `name` will try to assert the `accessibleName`
+    // Which never gets computed because `aria-hidden` is set
+    // To work around this, I've added a custom `queryTabPanelByText` function
+    // expect(queryByRole('Payments', idden: true })).toBeInTheDocument();
+
+    // Expect all tab panles to be in the dom
+    expect(queryAllByRole('tabpanel', { hidden: true })).toHaveLength(2);
+    expect(queryTabPanelByText('Payments')).toBeInTheDocument();
+    expect(queryTabPanelByText('Refunds')).toBeInTheDocument();
   });
 
   it('should render with vertical orientation', () => {
@@ -110,7 +129,7 @@ describe('Tabs', () => {
 
   it('should switch tabs with mouse', async () => {
     const user = userEvent.setup();
-    const { getByRole, queryByRole } = renderWithTheme(
+    const { getByRole } = renderWithTheme(
       <Tabs>
         <TabList>
           <TabItem value="payments">Payments</TabItem>
@@ -133,26 +152,26 @@ describe('Tabs', () => {
     expect(getByRole('tab', { name: 'Payments' })).toHaveAttribute('aria-selected', 'true');
 
     // TODO: change this after isLazy implementation
-    expect(queryByRole('tabpanel', { name: 'Payments' })).toBeVisible();
-    expect(queryByRole('tabpanel', { name: 'Refunds' })).not.toBeInTheDocument();
-    expect(queryByRole('tabpanel', { name: 'Disputes' })).not.toBeInTheDocument();
+    expect(queryTabPanelByText('Payments')).toBeVisible();
+    expect(queryTabPanelByText('Refunds')).not.toBeVisible();
+    expect(queryTabPanelByText('Disputes')).not.toBeVisible();
 
     await user.click(getByRole('tab', { name: 'Refunds' }));
     expect(getByRole('tab', { name: 'Refunds' })).toHaveAttribute('aria-selected', 'true');
-    expect(queryByRole('tabpanel', { name: 'Payments' })).not.toBeInTheDocument();
-    expect(queryByRole('tabpanel', { name: 'Refunds' })).toBeVisible();
-    expect(queryByRole('tabpanel', { name: 'Disputes' })).not.toBeInTheDocument();
+    expect(queryTabPanelByText('Payments')).not.toBeVisible();
+    expect(queryTabPanelByText('Refunds')).toBeVisible();
+    expect(queryTabPanelByText('Disputes')).not.toBeVisible();
 
     await user.click(getByRole('tab', { name: 'Disputes' }));
     expect(getByRole('tab', { name: 'Disputes' })).toHaveAttribute('aria-selected', 'true');
-    expect(queryByRole('tabpanel', { name: 'Payments' })).not.toBeInTheDocument();
-    expect(queryByRole('tabpanel', { name: 'Refunds' })).not.toBeInTheDocument();
-    expect(queryByRole('tabpanel', { name: 'Disputes' })).toBeVisible();
+    expect(queryTabPanelByText('Payments')).not.toBeVisible();
+    expect(queryTabPanelByText('Refunds')).not.toBeVisible();
+    expect(queryTabPanelByText('Disputes')).toBeVisible();
   });
 
   it('should switch tabs with keyboard', async () => {
     const user = userEvent.setup();
-    const { getByRole, queryByRole } = renderWithTheme(
+    const { getByRole } = renderWithTheme(
       <Tabs>
         <TabList>
           <TabItem value="payments">Payments</TabItem>
@@ -175,9 +194,9 @@ describe('Tabs', () => {
     expect(getByRole('tab', { name: 'Payments' })).toHaveAttribute('aria-selected', 'true');
 
     // TODO: change this after isLazy implementation
-    expect(queryByRole('tabpanel', { name: 'Payments' })).toBeVisible();
-    expect(queryByRole('tabpanel', { name: 'Refunds' })).not.toBeInTheDocument();
-    expect(queryByRole('tabpanel', { name: 'Disputes' })).not.toBeInTheDocument();
+    expect(queryTabPanelByText('Payments')).toBeVisible();
+    expect(queryTabPanelByText('Refunds')).not.toBeVisible();
+    expect(queryTabPanelByText('Disputes')).not.toBeVisible();
 
     fireEvent.keyDown(getByRole('tab', { name: 'Payments' }), { key: 'ArrowRight' });
     getByRole('tab', { name: 'Refunds' }).focus();
@@ -188,9 +207,9 @@ describe('Tabs', () => {
     getByRole('tab', { name: 'Refunds' }).focus();
     await user.keyboard('{Enter}');
     expect(getByRole('tab', { name: 'Refunds' })).toHaveAttribute('aria-selected', 'true');
-    expect(queryByRole('tabpanel', { name: 'Payments' })).not.toBeInTheDocument();
-    expect(queryByRole('tabpanel', { name: 'Refunds' })).toBeVisible();
-    expect(queryByRole('tabpanel', { name: 'Disputes' })).not.toBeInTheDocument();
+    expect(queryTabPanelByText('Payments')).not.toBeVisible();
+    expect(queryTabPanelByText('Refunds')).toBeVisible();
+    expect(queryTabPanelByText('Disputes')).not.toBeVisible();
 
     // Switch to Disputes
     fireEvent.keyDown(getByRole('tab', { name: 'Refunds' }), { key: 'ArrowRight' });
@@ -198,9 +217,9 @@ describe('Tabs', () => {
     getByRole('tab', { name: 'Disputes' }).focus();
     await user.keyboard('{Enter}');
     expect(getByRole('tab', { name: 'Disputes' })).toHaveAttribute('aria-selected', 'true');
-    expect(queryByRole('tabpanel', { name: 'Payments' })).not.toBeInTheDocument();
-    expect(queryByRole('tabpanel', { name: 'Refunds' })).not.toBeInTheDocument();
-    expect(queryByRole('tabpanel', { name: 'Disputes' })).toBeVisible();
+    expect(queryTabPanelByText('Payments')).not.toBeVisible();
+    expect(queryTabPanelByText('Refunds')).not.toBeVisible();
+    expect(queryTabPanelByText('Disputes')).toBeVisible();
 
     // Switch to Payments [loops back]
     fireEvent.keyDown(getByRole('tab', { name: 'Disputes' }), { key: 'ArrowRight' });
@@ -208,15 +227,15 @@ describe('Tabs', () => {
     getByRole('tab', { name: 'Payments' }).focus();
     await user.keyboard('{Enter}');
     expect(getByRole('tab', { name: 'Payments' })).toHaveAttribute('aria-selected', 'true');
-    expect(queryByRole('tabpanel', { name: 'Payments' })).toBeVisible();
-    expect(queryByRole('tabpanel', { name: 'Refunds' })).not.toBeInTheDocument();
-    expect(queryByRole('tabpanel', { name: 'Disputes' })).not.toBeInTheDocument();
+    expect(queryTabPanelByText('Payments')).toBeVisible();
+    expect(queryTabPanelByText('Refunds')).not.toBeVisible();
+    expect(queryTabPanelByText('Disputes')).not.toBeVisible();
   });
 
   it('should work with uncontrolled state', async () => {
     const user = userEvent.setup();
     const onChange = jest.fn();
-    const { getByRole, queryByRole } = renderWithTheme(
+    const { getByRole } = renderWithTheme(
       <Tabs onChange={onChange}>
         <TabList>
           <TabItem value="payments">Payments</TabItem>
@@ -240,9 +259,9 @@ describe('Tabs', () => {
     expect(getByRole('tab', { name: 'Payments' })).toHaveAttribute('aria-selected', 'true');
 
     // TODO: change this after isLazy implementation
-    expect(queryByRole('tabpanel', { name: 'Payments' })).toBeVisible();
-    expect(queryByRole('tabpanel', { name: 'Refunds' })).not.toBeInTheDocument();
-    expect(queryByRole('tabpanel', { name: 'Disputes' })).not.toBeInTheDocument();
+    expect(queryTabPanelByText('Payments')).toBeVisible();
+    expect(queryTabPanelByText('Refunds')).not.toBeVisible();
+    expect(queryTabPanelByText('Disputes')).not.toBeVisible();
 
     await user.click(getByRole('tab', { name: 'Refunds' }));
     expect(getByRole('tab', { name: 'Refunds' })).toHaveAttribute('aria-selected', 'true');
@@ -293,15 +312,15 @@ describe('Tabs', () => {
         </Box>
       );
     };
-    const { getByTestId, getByRole, queryByRole } = renderWithTheme(<ControlledTabExample />);
+    const { getByTestId, getByRole } = renderWithTheme(<ControlledTabExample />);
 
     expect(getByTestId(selectedTabTestId)).toHaveTextContent('refunds');
     expect(getByRole('tab', { name: 'Refunds' })).toHaveAttribute('aria-selected', 'true');
 
     // TODO: change this after isLazy implementation
-    expect(queryByRole('tabpanel', { name: 'Payments' })).not.toBeInTheDocument();
-    expect(queryByRole('tabpanel', { name: 'Refunds' })).toBeVisible();
-    expect(queryByRole('tabpanel', { name: 'Disputes' })).not.toBeInTheDocument();
+    expect(queryTabPanelByText('Payments')).not.toBeVisible();
+    expect(queryTabPanelByText('Refunds')).toBeVisible();
+    expect(queryTabPanelByText('Disputes')).not.toBeVisible();
 
     await user.click(getByRole('tab', { name: 'Disputes' }));
     expect(getByRole('tab', { name: 'Disputes' })).toHaveAttribute('aria-selected', 'true');
@@ -313,9 +332,115 @@ describe('Tabs', () => {
     expect(getByRole('tab', { name: 'Payments' })).toHaveAttribute('aria-selected', 'true');
   });
 
-  it('should skip disabled tabs', () => {});
+  it('should skip disabled tabs', () => {
+    const { getByRole } = renderWithTheme(
+      <Tabs>
+        <TabList>
+          <TabItem value="payments">Payments</TabItem>
+          <TabItem value="refunds" isDisabled>
+            Refunds
+          </TabItem>
+        </TabList>
 
-  it('should work with isLazy prop', () => {});
+        <TabPanel value="payments">
+          <Text>Payments</Text>
+        </TabPanel>
+        <TabPanel value="refunds">
+          <Text>Refunds</Text>
+        </TabPanel>
+      </Tabs>,
+    );
 
-  it('should not have any a11y violations', async () => {});
+    expect(getByRole('tab', { name: 'Payments' })).toHaveAttribute('aria-selected', 'true');
+    // The tab is a disabled button
+    // so no need to check if clicking it actually prevents the tab from switching
+    expect(getByRole('tab', { name: 'Refunds' })).toBeDisabled();
+  });
+
+  it('should work with isLazy prop', () => {
+    const { queryAllByRole } = renderWithTheme(
+      <Tabs isLazy defaultValue="refunds">
+        <TabList>
+          <TabItem value="payments">Payments</TabItem>
+          <TabItem value="refunds">Refunds</TabItem>
+          <TabItem value="disputes">Disputes</TabItem>
+        </TabList>
+
+        <TabPanel value="payments">
+          <Text>Payments</Text>
+        </TabPanel>
+        <TabPanel value="refunds">
+          <Text>Refunds</Text>
+        </TabPanel>
+        <TabPanel value="disputes">
+          <Text>Disputes</Text>
+        </TabPanel>
+      </Tabs>,
+    );
+
+    // should only render active tab panel
+    expect(queryAllByRole('tabpanel', { hidden: true })).toHaveLength(1);
+    expect(queryTabPanelByText('Payments')).not.toBeInTheDocument();
+    expect(queryTabPanelByText('Refunds')).toBeInTheDocument();
+    expect(queryTabPanelByText('Disputes')).not.toBeInTheDocument();
+  });
+
+  it('should not have any a11y violations', async () => {
+    const { container } = renderWithTheme(
+      <Tabs defaultValue="refunds">
+        <TabList>
+          <TabItem value="payments">Payments</TabItem>
+          <TabItem value="refunds">Refunds</TabItem>
+          <TabItem value="disputes">Disputes</TabItem>
+        </TabList>
+
+        <TabPanel value="payments">
+          <Text>Payments</Text>
+        </TabPanel>
+        <TabPanel value="refunds">
+          <Text>Refunds</Text>
+        </TabPanel>
+        <TabPanel value="disputes">
+          <Text>Disputes</Text>
+        </TabPanel>
+      </Tabs>,
+    );
+
+    await assertAccessible(container);
+  });
+
+  test('TabItems should respond to click events', async () => {
+    const onClick = jest.fn();
+    const { getByRole } = renderWithTheme(
+      <Tabs>
+        <TabList>
+          <TabItem value="payments" onClick={onClick}>
+            Payments
+          </TabItem>
+        </TabList>
+      </Tabs>,
+    );
+
+    expect(onClick).not.toHaveBeenCalled();
+    await userEvent.click(getByRole('tab', { name: 'Payments' }));
+    expect(onClick).toHaveBeenCalled();
+  });
+
+  test('TabItems can render as link', () => {
+    const { getByRole } = renderWithTheme(
+      <Tabs>
+        <TabList>
+          <TabItem value="payments" href="https://www.google.com">
+            Payments
+          </TabItem>
+        </TabList>
+      </Tabs>,
+    );
+
+    expect(getByRole('tab', { name: 'Payments' }).tagName).toBe('A');
+    expect(getByRole('tab', { name: 'Payments' })).toHaveAttribute(
+      'href',
+      'https://www.google.com',
+    );
+  });
 });
