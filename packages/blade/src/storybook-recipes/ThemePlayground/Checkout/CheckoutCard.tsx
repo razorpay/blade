@@ -1,4 +1,3 @@
-import styled from 'styled-components';
 import { Box, TextInput, Checkbox, Heading, PasswordInput } from '../../../components';
 import { CheckoutShell } from './CheckoutShell';
 
