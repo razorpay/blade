@@ -17,7 +17,6 @@ import { Text } from '~components/Typography';
 import { Box } from '~components/Box';
 import { useTheme } from '~utils';
 import { useControllableState } from '~utils/useControllable';
-import { useFirstRender } from '~utils/useFirstRender';
 import { Divider } from '~components/Divider';
 
 const initialLayout = {
@@ -45,11 +44,13 @@ const getTabPanels = (children: React.ReactNode): Record<string, () => React.Rea
 const getRoutes = (tabs: React.ReactElement[]) => {
   return tabs.map((TabComponent, index) => ({
     index,
+    testID: TabComponent.props.testID,
     title: TabComponent.props.children,
     key: TabComponent.props.value,
     value: TabComponent.props.value,
     leading: TabComponent.props.leading,
     trailing: TabComponent.props.trailing,
+    onClick: TabComponent.props.onClick,
   }));
 };
 
@@ -75,7 +76,6 @@ const Tabs = ({
   isLazy = false,
 }: TabsProps): React.ReactElement => {
   const { theme } = useTheme();
-  const isFirstRender = useFirstRender();
   const tabs = getTabs(children);
   const panels = getTabPanels(children);
   const routes = getRoutes(tabs);
@@ -85,7 +85,6 @@ const Tabs = ({
     defaultValue,
     value,
     onChange: (value) => {
-      if (isFirstRender) return;
       onChange?.(value);
     },
   });
@@ -96,9 +95,9 @@ const Tabs = ({
   });
 
   const setIndex = React.useCallback(
-    (index: number) => {
+    (index: number, skipUpdate = false) => {
       const value = getRouteValueFromIndex({ index, routes });
-      setSelectedValue(() => value);
+      setSelectedValue(() => value, skipUpdate);
     },
     [routes, setSelectedValue],
   );
@@ -117,7 +116,7 @@ const Tabs = ({
   // Set initial value
   React.useLayoutEffect(() => {
     if (selectedValue) return;
-    setIndex(0);
+    setIndex(0, true);
   }, [selectedValue, setIndex]);
 
   const renderTabLabel = React.useCallback(
@@ -226,13 +225,17 @@ const Tabs = ({
   return (
     <TabsContext.Provider value={contextValue}>
       <TabView
+        animationEnabled={false}
         navigationState={{
           index,
           routes,
         }}
         renderScene={SafeSceneMap(panels)}
         renderTabBar={renderTabBar}
-        onIndexChange={setIndex}
+        onIndexChange={(idx) => {
+          console.log('idx', idx);
+          setIndex(idx);
+        }}
         initialLayout={initialLayout}
         lazy={isLazy}
       />

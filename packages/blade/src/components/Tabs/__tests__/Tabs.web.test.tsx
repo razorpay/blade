@@ -87,7 +87,7 @@ describe('Tabs', () => {
     expect(baseElement).toMatchSnapshot();
   });
 
-  it('should render with autoWidth', () => {
+  it('should render with isFullWidthTabItem', () => {
     const { baseElement } = renderWithTheme(
       <Tabs defaultValue="refunds" isFullWidthTabItem>
         <TabList>

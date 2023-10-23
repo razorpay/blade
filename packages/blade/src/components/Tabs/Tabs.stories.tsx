@@ -47,9 +47,6 @@ const TabsTemplate: ComponentStory<typeof Tabs> = () => {
           <Text>Settlements</Text>
         </TabPanel>
       </Tabs>
-      <br />
-      <br />
-      <br />
       <Box>
         <Text>{value}</Text>
         {isVisible ? (
