@@ -12,31 +12,31 @@ const getNavigationButtonStyles = (props: {
 
   const iconColor = {
     filled: {
-      default: theme.colors.action.icon.tertiary.default,
-      hover: theme.colors.action.icon.tertiary.hover,
-      focus: theme.colors.action.icon.tertiary.focus,
-      active: theme.colors.action.icon.tertiary.active,
+      default: theme.colors.white.action.icon.primary.default,
+      hover: theme.colors.white.action.icon.primary.hover,
+      focus: theme.colors.white.action.icon.primary.focus,
+      active: theme.colors.white.action.icon.primary.active,
     },
     stroked: {
       default: theme.colors.surface.action.icon.active.highContrast,
-      hover: theme.colors.surface.action.icon.active.highContrast,
-      focus: theme.colors.surface.action.icon.active.highContrast,
+      hover: theme.colors.surface.action.icon.hover.highContrast,
+      focus: theme.colors.surface.action.icon.focus.highContrast,
       active: theme.colors.surface.action.icon.active.highContrast,
     },
   };
 
   const backgroundColor = {
     filled: {
-      default: theme.colors.action.background.tertiary.default,
-      hover: theme.colors.action.background.tertiary.hover,
-      focus: theme.colors.action.background.tertiary.focus,
-      active: theme.colors.action.background.tertiary.active,
+      default: theme.colors.white.action.background.primary.default,
+      hover: theme.colors.white.action.background.primary.hover,
+      focus: theme.colors.white.action.background.primary.focus,
+      active: theme.colors.white.action.background.primary.active,
     },
     stroked: {
-      default: 'transparent',
-      hover: theme.colors.brand.gray.a50.highContrast,
-      focus: theme.colors.brand.gray.a100.highContrast,
-      active: theme.colors.brand.gray.a100.highContrast,
+      default: theme.colors.action.background.tertiary.active,
+      hover: theme.colors.action.background.tertiary.active,
+      focus: theme.colors.action.background.tertiary.active,
+      active: theme.colors.action.background.tertiary.active,
     },
   };
 
