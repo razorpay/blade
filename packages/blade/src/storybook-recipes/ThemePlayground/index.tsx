@@ -18,6 +18,7 @@ const ThemePlayground = (): React.ReactElement => {
   const [selectedPreBuiltTheme, setSelectedPreBuiltTheme] = useState<string | undefined>(
     'paymentTheme',
   );
+  const [showInternalDemoConfig, setShowInternalDemoConfig] = useState(false);
   const getTheme = (): ThemeTokens => {
     if (selectedColor) {
       return createTheme({ brandColor: selectedColor });
@@ -64,6 +65,8 @@ const ThemePlayground = (): React.ReactElement => {
             setSelectedPreBuiltTheme={setSelectedPreBuiltTheme}
             setBorderBase={setBorderBase}
             borderBase={borderBase}
+            showInternalDemoConfig={showInternalDemoConfig}
+            setShowInternalDemoConfig={setShowInternalDemoConfig}
           />
           <Card surfaceLevel={3}>
             <CardBody>

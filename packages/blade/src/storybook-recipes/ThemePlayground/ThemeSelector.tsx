@@ -1,9 +1,12 @@
 import debounce from 'lodash/debounce';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Box } from '~components/Box';
+import { IconButton } from '~components/Button/IconButton';
 import { Card, CardBody } from '~components/Card';
-import { CheckIcon } from '~components/Icons';
+import { CheckIcon, LockIcon, UnlockIcon } from '~components/Icons';
 import { Radio, RadioGroup } from '~components/Radio';
+import { Tooltip } from '~components/Tooltip';
 import { Heading, Text } from '~components/Typography';
 import type { ColorSchemeNames } from '~tokens/theme';
 import { makeBorderSize, useTheme } from '~utils';
@@ -78,6 +81,8 @@ const ThemeSelector = ({
   selectedPreBuiltTheme,
   setSelectedPreBuiltTheme,
   setBorderBase,
+  setShowInternalDemoConfig,
+  showInternalDemoConfig,
 }: {
   selectedColor?: string;
   setSelectedColor: React.Dispatch<React.SetStateAction<string | undefined>>;
@@ -87,6 +92,8 @@ const ThemeSelector = ({
   setSelectedPreBuiltTheme: React.Dispatch<React.SetStateAction<string | undefined>>;
   setBorderBase: React.Dispatch<React.SetStateAction<string>>;
   borderBase: string;
+  setShowInternalDemoConfig: React.Dispatch<React.SetStateAction<boolean>>;
+  showInternalDemoConfig: boolean;
 }): React.ReactElement => {
   const colorOptions = [
     '#EE681A',
@@ -107,6 +114,13 @@ const ThemeSelector = ({
   const { platform } = useTheme();
   const isDesktop = platform === 'onDesktop';
 
+  useEffect(() => {
+    if (!showInternalDemoConfig) {
+      setBorderBase('2');
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [showInternalDemoConfig]);
+
   return (
     <Box
       position={isDesktop ? 'fixed' : 'relative'}
@@ -118,7 +132,16 @@ const ThemeSelector = ({
       <Card surfaceLevel={3} elevation="highRaised" height="100%">
         <CardBody>
           <Box width={isDesktop ? '400px' : '100%'} marginTop="spacing.6">
-            <Heading>Customise theme</Heading>
+            <Box display="flex" flexDirection="row" gap="spacing.4">
+              <Heading>Customise theme</Heading>
+              <Tooltip content="Toggle configuration meant only for internal demo purposes">
+                <IconButton
+                  accessibilityLabel="Unlock internal demo configurations"
+                  icon={showInternalDemoConfig ? UnlockIcon : LockIcon}
+                  onClick={() => setShowInternalDemoConfig(!showInternalDemoConfig)}
+                />
+              </Tooltip>
+            </Box>
             <Box marginTop="spacing.8" />
             <Box display="flex" flexDirection="row" gap="spacing.2" flexWrap="wrap">
               <RadioGroup
@@ -189,25 +212,31 @@ const ThemeSelector = ({
                 <Radio value="dark">Dark</Radio>
               </RadioGroup>
             </Box>
-            <Box marginTop="spacing.8" />
-            <Box
-              display="flex"
-              flexDirection="row"
-              gap="spacing.2"
-              flexWrap="wrap"
-              marginTop="spacing.8"
-            >
-              <RadioGroup
-                value={borderBase}
-                labelPosition="top"
-                label="Style:"
-                onChange={({ value }) => setBorderBase(value)}
-              >
-                <Radio value="0">Flat</Radio>
-                <Radio value="2">Normal</Radio>
-                <Radio value="12">Rounded</Radio>
-              </RadioGroup>
-            </Box>
+            {showInternalDemoConfig ? (
+              <>
+                <Box marginTop="spacing.8" />
+                <Box
+                  display="flex"
+                  flexDirection="row"
+                  gap="spacing.2"
+                  flexWrap="wrap"
+                  marginTop="spacing.8"
+                >
+                  <RadioGroup
+                    value={borderBase}
+                    labelPosition="top"
+                    label="Style:"
+                    onChange={({ value }) => setBorderBase(value)}
+                    helpText="For internal demo purpose only. Do not use in production."
+                  >
+                    <Radio value="0">Flat</Radio>
+                    <Radio value="2">Normal</Radio>
+                    <Radio value="12">Rounded</Radio>
+                  </RadioGroup>
+                </Box>
+              </>
+            ) : null}
+
             <Box marginTop="spacing.8" />
             <Text type="subdued" weight="bold" marginRight="spacing.8" marginBottom="spacing.3">
               Code:
