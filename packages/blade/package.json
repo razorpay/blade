@@ -113,6 +113,9 @@
     "generate-github-npmrc": "node ./scripts/generateGitHubRegistryNpmrc.js",
     "postinstall": "patch-package"
   },
+  "dependencies": {
+    "patch-package": "7.0.0"
+  },
   "devDependencies": {
     "chromatic": "6.22.0",
     "@babel/core": "7.20.2",
@@ -222,7 +225,6 @@
     "use-presence": "1.1.0",
     "@floating-ui/react": "0.24.2",
     "@floating-ui/react-native": "0.10.0",
-    "patch-package": "7.0.0",
     "tinycolor2": "1.6.0"
   },
   "peerDependencies": {
