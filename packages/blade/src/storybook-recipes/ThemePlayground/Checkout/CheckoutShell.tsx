@@ -176,7 +176,9 @@ const CheckoutShell = ({ children }: { children: React.ReactNode }): React.React
           </LanguageSelector>
         </Box>
       </StyledHeader>
-      <Box flex={1}>{children}</Box>
+      <Box flex={1} overflow="scroll">
+        {children}
+      </Box>
       <StyledFooter>
         <Box flex={1} flexDirection="column">
           <Amount value={5500} />
