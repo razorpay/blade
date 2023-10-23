@@ -15,7 +15,7 @@ const Page = (): ReactElement => {
     <StoryPageWrapper
       componentDescription="The VisuallyHidden component makes content hidden from sighted users but available for screen reader users."
       componentName="VisuallyHidden"
-      apiDecisionLink=""
+      apiDecisionLink={null}
     >
       <Link
         withArrow={true}

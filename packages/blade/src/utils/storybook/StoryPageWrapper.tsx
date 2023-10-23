@@ -27,7 +27,7 @@ type StoryPageWrapperTypes = {
   /**
    * Use this to override default API decision link generated from componentName
    */
-  apiDecisionLink?: string;
+  apiDecisionLink?: string | null;
   /**
    * Use this to override default imports
    */
@@ -81,9 +81,6 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
   }, []);
 
   const { showStorybookControls = true, showArgsTable = true } = props;
-  const trimmedAPIDecisionLink = props.apiDecisionLink?.includes('/blade/src')
-    ? props.apiDecisionLink?.slice(props.apiDecisionLink.indexOf('/blade/src'))
-    : props.apiDecisionLink;
 
   return (
     <WithGlobalStyles>
@@ -125,9 +122,9 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
             <>
               <BaseBox id="properties-ref">
                 <Title>Properties</Title>
-                {props.apiDecisionLink === '' ? null : (
+                {props.apiDecisionLink === '' || props.apiDecisionLink === null ? null : (
                   <Text marginY="spacing.5">
-                    You can checkout API Decisions for {props.componentName} at{' '}
+                    Check out{' '}
                     <Link
                       target="_blank"
                       href={
@@ -135,9 +132,7 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
                         `https://github.com/razorpay/blade/blob/master/packages/blade/src/components/${props.componentName}/_decisions/decisions.md`
                       }
                     >
-                      {trimmedAPIDecisionLink
-                        ? trimmedAPIDecisionLink
-                        : `/blade/src/components/${props.componentName}/_decisions/decisions.md`}
+                      API Decisions for {props.componentName}
                     </Link>
                   </Text>
                 )}
