@@ -14,12 +14,12 @@ const InputChevronIcon = (props: SelectChevronIconProps): React.ReactElement => 
     <StyledChevronIconContainer accessibilityLabel="Chevron Icon" onPress={props.onClick}>
       <ChevronDownIcon
         display={props.isOpen ? 'none' : 'flex'}
-        color="surface.text.normal.lowContrast"
+        color={`surface.text.${props.isDisabled ? 'placeholder' : 'normal'}.lowContrast`}
         size="medium"
       />
       <ChevronUpIcon
         display={props.isOpen ? 'flex' : 'none'}
-        color="surface.text.normal.lowContrast"
+        color={`surface.text.${props.isDisabled ? 'placeholder' : 'normal'}.lowContrast`}
         size="medium"
       />
     </StyledChevronIconContainer>

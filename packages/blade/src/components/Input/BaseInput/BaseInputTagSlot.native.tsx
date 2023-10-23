@@ -56,9 +56,11 @@ const ScrollableTagSlotContainer = ({
 const ClickableText = ({
   children,
   handleOnInputClick,
+  isDisabled,
 }: {
   children: StringChildrenType;
   handleOnInputClick: BaseInputTagSlotProps['handleOnInputClick'];
+  isDisabled: BaseInputTagSlotProps['isDisabled'];
 }): React.ReactElement => {
   return (
     <TouchableWithoutFeedback
@@ -67,7 +69,7 @@ const ClickableText = ({
       }}
     >
       <BaseBox alignSelf="center" marginRight="spacing.4">
-        <Text>{children}</Text>
+        <Text type={isDisabled ? 'placeholder' : 'normal'}>{children}</Text>
       </BaseBox>
     </TouchableWithoutFeedback>
   );
@@ -84,6 +86,7 @@ const BaseInputTagSlot = ({
   children,
   isDropdownTrigger,
   labelPrefix,
+  isDisabled,
 }: BaseInputTagSlotProps): React.ReactElement | null => {
   const hasTags = tags && tags.length > 0;
   const initialVisibleTags = maxTagRows === 'multiple' ? 6 : 1;
@@ -137,12 +140,12 @@ const BaseInputTagSlot = ({
           <>
             {showAllTags || maxTagRows === 'multiple' ? tags : tags.slice(0, visibleTags)}
             {invisibleTagsCount > 0 && !showAllTags && !labelPrefix && maxTagRows !== 'multiple' ? (
-              <ClickableText handleOnInputClick={handleOnInputClick}>
+              <ClickableText isDisabled={isDisabled} handleOnInputClick={handleOnInputClick}>
                 + {invisibleTagsCount} More
               </ClickableText>
             ) : null}
             {!showAllTags && invisibleTagsCount > 0 && labelPrefix ? (
-              <ClickableText handleOnInputClick={handleOnInputClick}>
+              <ClickableText isDisabled={isDisabled} handleOnInputClick={handleOnInputClick}>
                 {labelPrefix} ({invisibleTagsCount} Selected)
               </ClickableText>
             ) : null}

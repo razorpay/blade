@@ -4,6 +4,7 @@ import type { IconComponent } from '~components/Icons';
 export type SelectChevronIconProps = {
   onClick: () => void;
   isOpen?: boolean;
+  isDisabled?: boolean;
 };
 
 type DropdownInputTriggersCommonProps = Pick<
