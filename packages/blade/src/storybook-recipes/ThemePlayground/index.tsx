@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Checkout } from './CheckoutHome';
+import { CheckoutHome } from './Checkout/CheckoutHome';
+import { CheckoutCard } from './Checkout/CheckoutCard';
 import { PhantomUI } from './PhantomUI';
 import { ThemeSelector } from './ThemeSelector';
 import { BrandedComponentKitchenSink } from './BrandedComponentKitchenSink';
@@ -69,9 +70,15 @@ const ThemePlayground = (): React.ReactElement => {
               <Box>
                 <Box flex={1}>
                   <Title size="medium" marginBottom="spacing.4">
-                    Checkout UI
+                    Checkout Home Page
                   </Title>
-                  <Checkout />
+                  <CheckoutHome />
+                </Box>
+                <Box flex={1} marginTop="spacing.8">
+                  <Title size="medium" marginBottom="spacing.4">
+                    Checkout Card
+                  </Title>
+                  <CheckoutCard />
                 </Box>
                 <Box flex={1} marginTop="spacing.8">
                   <Title size="medium" marginBottom="spacing.4">
