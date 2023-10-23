@@ -9,28 +9,28 @@ import { Amount } from '~components/Amount';
 import { makeMotionTime, makeSpace, useTheme } from '~utils';
 import { ChevronDownIcon, CloseIcon, InfoIcon } from '~components/Icons';
 
-const StyledHeader = styled.div({
+const StyledHeader = styled.div(({ theme }) => ({
   boxShadow: '0 4px 8px  rgba(23,26,30,.15)', // not in box
   backgroundImage: 'linear-gradient(to bottom right,rgba(255,255,255,0.2),rgba(0,0,0,0.2))',
   height: '80px',
   width: '100%',
-  backgroundColor: 'brand.primary.500',
-  padding: 'spacing.4',
+  backgroundColor: theme.colors.brand.primary[500],
+  padding: makeSpace(theme.spacing[4]),
   borderTopLeftRadius: 'medium',
   borderTopRightRadius: 'medium',
   flexDirection: 'row',
   display: 'flex',
-  gap: 'spacing.4',
+  gap: makeSpace(theme.spacing[4]),
   alignItems: 'center',
   zIndex: 2,
-});
+}));
 
 const StyledFooter = styled.div(({ theme }) => ({
   boxShadow: `0 -2px 6px  rgba(23,26,30,.15)`, // not in box
   borderTop: `1px solid ${theme.colors.brand.gray[400].lowContrast}`,
   zIndex: 2,
   display: 'flex',
-  padding: 'spacing.4',
+  padding: makeSpace(theme.spacing[4]),
   alignItems: 'center',
 }));
 
@@ -56,7 +56,7 @@ const QRImageWrapper = styled.div`
   overflow: hidden;
   position: relative;
   width: 140px;
-  margin-right: ${({ theme }) => theme.spacing[6]};
+  margin-right: ${({ theme }) => makeSpace(theme.spacing[6])};
   &:before {
     border-style: solid;
     border-width: 2px;
@@ -133,6 +133,8 @@ const LanguageSelector = styled.div(({ theme }) => ({
   padding: `${makeSpace(theme.spacing[1])} ${makeSpace(theme.spacing[2])}`,
   cursor: 'pointer', // not in box
   borderRadius: theme.border.radius.small,
+  gap: makeSpace(theme.spacing[2]),
+  marginTop: makeSpace(theme.spacing[3]),
 }));
 
 const Checkout = (): React.ReactElement => {
@@ -175,7 +177,7 @@ const Checkout = (): React.ReactElement => {
 
         <Box display="flex" alignItems="flex-end" flexDirection="column" flex={1}>
           <CloseIcon size="medium" color="action.icon.primary.default" />
-          <LanguageSelector gap="spacing.2" marginTop="spacing.3">
+          <LanguageSelector>
             <svg
               width="15px"
               height="15px"
@@ -433,7 +435,7 @@ const Checkout = (): React.ReactElement => {
                 </svg>
               </Box>
               <Text>Internet Bank Transfer</Text>
-              <Box display="flex" flex={1} alignItems="center" justifyContent={'flex-end'}>
+              <Box display="flex" flex={1} alignItems="center" justifyContent="flex-end">
                 <ChevronRightIcon size="xlarge" color="brand.primary.500" />
               </Box>
             </ClickableRow>
