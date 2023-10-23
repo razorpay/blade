@@ -100,7 +100,7 @@ describe('<Dropdown /> with <AutoComplete />', () => {
     expect(getByTestId('dropdown-overlay').props.display).toBe('none');
   });
 
-  it('should not open dropdown when input is disabled', async () => {
+  it('should not open dropdown when input is disabled', () => {
     const { getByRole, getByTestId } = renderWithTheme(
       <Dropdown>
         <AutoComplete label="Fruits" isDisabled />
