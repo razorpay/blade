@@ -4,19 +4,34 @@ import { Box, Card, CardBody, ChevronRightIcon } from '../../components';
 // @ts-expect-error
 import BladeQRCode from './blade-qr-code.png';
 import { Heading, Text } from '~components/Typography';
-import BaseBox from '~components/Box/BaseBox';
 import { Button } from '~components/Button';
 import { Amount } from '~components/Amount';
 import { makeMotionTime, makeSpace, useTheme } from '~utils';
 import { ChevronDownIcon, CloseIcon, InfoIcon } from '~components/Icons';
 
-const StyledHeader = styled(BaseBox)({
-  boxShadow: '0 4px 8px  rgba(23,26,30,.15)',
+const StyledHeader = styled.div({
+  boxShadow: '0 4px 8px  rgba(23,26,30,.15)', // not in box
+  backgroundImage: 'linear-gradient(to bottom right,rgba(255,255,255,0.2),rgba(0,0,0,0.2))',
+  height: '80px',
+  width: '100%',
+  backgroundColor: 'brand.primary.500',
+  padding: 'spacing.4',
+  borderTopLeftRadius: 'medium',
+  borderTopRightRadius: 'medium',
+  flexDirection: 'row',
+  display: 'flex',
+  gap: 'spacing.4',
+  alignItems: 'center',
+  zIndex: 2,
 });
 
-const StyledFooter = styled(BaseBox)(({ theme }) => ({
-  boxShadow: `0 -2px 6px  rgba(23,26,30,.15)`,
+const StyledFooter = styled.div(({ theme }) => ({
+  boxShadow: `0 -2px 6px  rgba(23,26,30,.15)`, // not in box
   borderTop: `1px solid ${theme.colors.brand.gray[400].lowContrast}`,
+  zIndex: 2,
+  display: 'flex',
+  padding: 'spacing.4',
+  alignItems: 'center',
 }));
 
 const MerchantAvatar = styled.img(({ theme }) => ({
@@ -30,7 +45,8 @@ const QRCodeImage = styled.img({
   zIndex: 1,
 });
 
-const QRImageWrapper = styled(BaseBox)`
+// can't do after & before on Box
+const QRImageWrapper = styled.div`
   align-items: center;
   align-self: center;
   display: flex;
@@ -40,6 +56,7 @@ const QRImageWrapper = styled(BaseBox)`
   overflow: hidden;
   position: relative;
   width: 140px;
+  margin-right: ${({ theme }) => theme.spacing[6]};
   &:before {
     border-style: solid;
     border-width: 2px;
@@ -96,25 +113,25 @@ const ClickableRow = styled.button(({ theme }) => ({
   },
 }));
 
-const TrustedBusinessWrapper = styled(BaseBox)(({ theme }) => ({
+const TrustedBusinessWrapper = styled.div(({ theme }) => ({
   alignItems: 'center',
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'center',
-  background: 'rgba(255,255,255,0.1 )',
+  background: 'rgba(255,255,255,0.1 )', // not in box
   padding: `${makeSpace(theme.spacing[1])} ${makeSpace(theme.spacing[2])}`,
-  cursor: 'pointer',
+  cursor: 'pointer', // not in box
   borderRadius: theme.border.radius.small,
 }));
 
-const LanguageSelector = styled(BaseBox)(({ theme }) => ({
+const LanguageSelector = styled.div(({ theme }) => ({
   alignItems: 'center',
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'center',
-  background: 'rgba(255,255,255,0.1 )',
+  background: 'rgba(255,255,255,0.1 )', // not in box
   padding: `${makeSpace(theme.spacing[1])} ${makeSpace(theme.spacing[2])}`,
-  cursor: 'pointer',
+  cursor: 'pointer', // not in box
   borderRadius: theme.border.radius.small,
 }));
 
@@ -132,23 +149,11 @@ const Checkout = (): React.ReactElement => {
       flexDirection="column"
       overflow="hidden"
     >
-      <StyledHeader
-        backgroundImage="linear-gradient(to bottom right,rgba(255,255,255,0.2),rgba(0,0,0,0.2))"
-        height="80px"
-        width="100%"
-        backgroundColor="brand.primary.500"
-        padding="spacing.4"
-        borderTopLeftRadius="medium"
-        borderTopRightRadius="medium"
-        flexDirection="row"
-        display="flex"
-        gap="spacing.4"
-        alignItems="center"
-        zIndex={2}
-      >
+      <StyledHeader>
         <MerchantAvatar src="https://i.imgur.com/buGhEkT.png" />
         <Box zIndex={1}>
           <Heading color="action.text.primary.default">Merchant Name</Heading>
+
           <TrustedBusinessWrapper>
             <img
               src="https://checkout-static-next.razorpay.com/build/assets/images/rtb-live.d7eecf4c.svg"
@@ -230,7 +235,7 @@ const Checkout = (): React.ReactElement => {
         <Card elevation="none" padding="spacing.5">
           <CardBody>
             <Box display="flex" flexDirection="row">
-              <QRImageWrapper marginRight="spacing.6">
+              <QRImageWrapper>
                 <QRCodeImage src={BladeQRCode} />
               </QRImageWrapper>
               <Box flex={1} display="flex" flexDirection="column" justifyContent="center">
@@ -436,7 +441,7 @@ const Checkout = (): React.ReactElement => {
         </Card>
       </Box>
 
-      <StyledFooter zIndex={2} display="flex" padding="spacing.4" alignItems="center">
+      <StyledFooter>
         <Box flex={1} flexDirection="column">
           <Amount value={5500} />
           <Text size="small" type="subdued">
