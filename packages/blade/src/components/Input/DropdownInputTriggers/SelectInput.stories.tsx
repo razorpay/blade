@@ -235,3 +235,7 @@ const SelectInputTemplate: ComponentStory<typeof SelectInput> = ({ icon, ...args
 };
 
 export const Default = SelectInputTemplate.bind({});
+export const Disabled = SelectInputTemplate.bind({});
+Disabled.args = {
+  isDisabled: true,
+};
