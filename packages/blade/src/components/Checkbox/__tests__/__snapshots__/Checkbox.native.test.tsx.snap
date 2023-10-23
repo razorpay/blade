@@ -74,14 +74,12 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
         }
       >
         <View
-          alignItems="center"
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
           style={
             [
               {
-                "alignItems": "center",
                 "display": "flex",
                 "flexDirection": "row",
               },
@@ -238,14 +236,12 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
         }
       >
         <View
-          alignItems="center"
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
           style={
             [
               {
-                "alignItems": "center",
                 "display": "flex",
                 "flexDirection": "row",
               },
@@ -404,14 +400,12 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
         }
       >
         <View
-          alignItems="center"
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
           style={
             [
               {
-                "alignItems": "center",
                 "display": "flex",
                 "flexDirection": "row",
               },

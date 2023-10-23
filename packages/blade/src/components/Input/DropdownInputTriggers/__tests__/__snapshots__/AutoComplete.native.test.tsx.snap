@@ -1008,14 +1008,12 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                                   }
                                 >
                                   <View
-                                    alignItems="center"
                                     data-blade-component="base-box"
                                     display="flex"
                                     flexDirection="row"
                                     style={
                                       [
                                         {
-                                          "alignItems": "center",
                                           "display": "flex",
                                           "flexDirection": "row",
                                         },
@@ -1296,14 +1294,12 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                                   }
                                 >
                                   <View
-                                    alignItems="center"
                                     data-blade-component="base-box"
                                     display="flex"
                                     flexDirection="row"
                                     style={
                                       [
                                         {
-                                          "alignItems": "center",
                                           "display": "flex",
                                           "flexDirection": "row",
                                         },
@@ -1584,14 +1580,12 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                                   }
                                 >
                                   <View
-                                    alignItems="center"
                                     data-blade-component="base-box"
                                     display="flex"
                                     flexDirection="row"
                                     style={
                                       [
                                         {
-                                          "alignItems": "center",
                                           "display": "flex",
                                           "flexDirection": "row",
                                         },

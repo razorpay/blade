@@ -260,14 +260,12 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                   }
                 >
                   <View
-                    alignItems="center"
                     data-blade-component="base-box"
                     display="flex"
                     flexDirection="row"
                     style={
                       [
                         {
-                          "alignItems": "center",
                           "display": "flex",
                           "flexDirection": "row",
                         },
@@ -426,14 +424,12 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                   }
                 >
                   <View
-                    alignItems="center"
                     data-blade-component="base-box"
                     display="flex"
                     flexDirection="row"
                     style={
                       [
                         {
-                          "alignItems": "center",
                           "display": "flex",
                           "flexDirection": "row",
                         },
@@ -592,14 +588,12 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                   }
                 >
                   <View
-                    alignItems="center"
                     data-blade-component="base-box"
                     display="flex"
                     flexDirection="row"
                     style={
                       [
                         {
-                          "alignItems": "center",
                           "display": "flex",
                           "flexDirection": "row",
                         },
@@ -948,14 +942,12 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                   }
                 >
                   <View
-                    alignItems="center"
                     data-blade-component="base-box"
                     display="flex"
                     flexDirection="row"
                     style={
                       [
                         {
-                          "alignItems": "center",
                           "display": "flex",
                           "flexDirection": "row",
                         },
@@ -1114,14 +1106,12 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                   }
                 >
                   <View
-                    alignItems="center"
                     data-blade-component="base-box"
                     display="flex"
                     flexDirection="row"
                     style={
                       [
                         {
-                          "alignItems": "center",
                           "display": "flex",
                           "flexDirection": "row",
                         },
@@ -1280,14 +1270,12 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                   }
                 >
                   <View
-                    alignItems="center"
                     data-blade-component="base-box"
                     display="flex"
                     flexDirection="row"
                     style={
                       [
                         {
-                          "alignItems": "center",
                           "display": "flex",
                           "flexDirection": "row",
                         },
