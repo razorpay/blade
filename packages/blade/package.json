@@ -113,17 +113,6 @@
     "generate-github-npmrc": "node ./scripts/generateGitHubRegistryNpmrc.js",
     "postinstall": "patch-package"
   },
-  "dependencies": {
-    "@babel/runtime": "7.20.0",
-    "@types/body-scroll-lock": "3.1.0",
-    "@use-gesture/react": "10.2.24",
-    "body-scroll-lock": "4.0.0-beta.0",
-    "use-presence": "1.1.0",
-    "@floating-ui/react": "0.24.2",
-    "@floating-ui/react-native": "0.10.0",
-    "patch-package": "7.0.0",
-    "tinycolor2": "1.6.0"
-  },
   "devDependencies": {
     "chromatic": "6.22.0",
     "@babel/core": "7.20.2",
@@ -226,7 +215,15 @@
     "postinstall-postinstall": "2.1.0",
     "react-native-safe-area-context": "3.4.1",
     "ttypescript": "1.5.15",
-    "typescript-transform-paths": "3.4.6"
+    "typescript-transform-paths": "3.4.6",
+    "@babel/runtime": "7.20.0",
+    "@use-gesture/react": "10.2.24",
+    "body-scroll-lock": "4.0.0-beta.0",
+    "use-presence": "1.1.0",
+    "@floating-ui/react": "0.24.2",
+    "@floating-ui/react-native": "0.10.0",
+    "patch-package": "7.0.0",
+    "tinycolor2": "1.6.0"
   },
   "peerDependencies": {
     "@gorhom/bottom-sheet": "^4",
@@ -239,7 +236,11 @@
     "react-native-reanimated": "^3.4.1",
     "react-native-svg": "^12.3.0",
     "styled-components": "^5",
-    "react-native-gesture-handler": "^2.9.0"
+    "react-native-gesture-handler": "^2.9.0",
+    "tinycolor2": "1.6.0",
+    "use-presence": "1.1.0",
+    "body-scroll-lock": "4.0.0-beta.0",
+    "@use-gesture/react": "10.2.24"
   },
   "peerDependenciesMeta": {
     "react-native": {
