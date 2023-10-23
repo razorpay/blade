@@ -1028,6 +1028,13 @@
     core-js-pure "^3.25.1"
     regenerator-runtime "^0.13.10"
 
+"@babel/runtime@7.20.0":
+  version "7.20.0"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.20.0.tgz#824a9ef325ffde6f78056059db3168c08785e24a"
+  integrity sha512-NDYdls71fTXoU8TZHfbBWg7DiZfNzClcKui/+kyi6ppD2L1qnWW3VV6CjtaBXSUGGhiTWJ6ereOIkUvenif66Q==
+  dependencies:
+    regenerator-runtime "^0.13.10"
+
 "@babel/runtime@^7.10.2", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.5", "@babel/runtime@^7.16.3", "@babel/runtime@^7.18.9", "@babel/runtime@^7.8.4":
   version "7.20.1"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.20.1.tgz#1148bb33ab252b165a06698fde7576092a78b4a9"
@@ -1222,7 +1229,7 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
-"@floating-ui/core@^1.4.2":
+"@floating-ui/core@^1.2.6", "@floating-ui/core@^1.4.2":
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/@floating-ui/core/-/core-1.5.0.tgz#5c05c60d5ae2d05101c3021c1a2a350ddc027f8c"
   integrity sha512-kK1h4m36DQ0UHGj5Ah4db7R0rHemTqqO0QLvUqi1/mUUp3LuAWbWxdxSIf/XsnH9VS6rRVPLJCncjRzUvyCLXg==
@@ -1243,6 +1250,13 @@
   integrity sha512-5qhlDvjaLmAst/rKb3VdlCinwTF4EYMiVxuuc/HVUjs46W0zgtbMmAZ1UTsDrRTxRmUEzl92mOtWbeeXL26lSQ==
   dependencies:
     "@floating-ui/dom" "^1.5.1"
+
+"@floating-ui/react-native@0.10.0":
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/@floating-ui/react-native/-/react-native-0.10.0.tgz#bcef1365c389b17c81ccc12f688766fddd5beb13"
+  integrity sha512-hjjVjXr19b1kzEAVq+iGNbNFc9/WmmE/QpJtZAFGrLsQVnd1Tuv+VEBesKHfWnKO5oF7QBAkwFxn5iys5aOC2w==
+  dependencies:
+    "@floating-ui/core" "^1.2.6"
 
 "@floating-ui/react@0.24.2":
   version "0.24.2"
@@ -1604,11 +1618,20 @@
     schema-utils "^3.0.0"
     source-map "^0.7.3"
 
-"@razorpay/blade@https://pkg.csb.dev/razorpay/blade/commit/c0cfd96a/@razorpay/blade":
-  version "10.15.0"
-  resolved "https://pkg.csb.dev/razorpay/blade/commit/c0cfd96a/@razorpay/blade#d4a9f165b9bd25bc1c20199af43cddd467444088"
+"@razorpay/blade@10.15.1":
+  version "10.15.1"
+  resolved "https://npm.pkg.github.com/download/@razorpay/blade/10.15.1/d32f03dd638e513aa41bab5046d66d0a83575796#d32f03dd638e513aa41bab5046d66d0a83575796"
+  integrity sha512-pGCIM57H2wj4EUKqVNHM+wtOJF9B1vbpDOkVscb5N9BN8vJsI++AvrTJLgdCXFRShssyyOwR1txqY3/KDOoqkQ==
   dependencies:
+    "@babel/runtime" "7.20.0"
+    "@floating-ui/react" "0.24.2"
+    "@floating-ui/react-native" "0.10.0"
+    "@types/body-scroll-lock" "3.1.0"
+    "@use-gesture/react" "10.2.24"
+    body-scroll-lock "4.0.0-beta.0"
     patch-package "7.0.0"
+    tinycolor2 "1.6.0"
+    use-presence "1.1.0"
 
 "@rollup/plugin-babel@^5.2.0":
   version "5.3.1"
@@ -1834,6 +1857,11 @@
   dependencies:
     "@types/connect" "*"
     "@types/node" "*"
+
+"@types/body-scroll-lock@3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@types/body-scroll-lock/-/body-scroll-lock-3.1.0.tgz#435f6abf682bf58640e1c2ee5978320b891970e7"
+  integrity sha512-3owAC4iJub5WPqRhxd8INarF2bWeQq1yQHBgYhN0XLBJMpd5ED10RrJ3aKiAwlTyL5wK7RkBD4SZUQz2AAAMdA==
 
 "@types/bonjour@^3.5.9":
   version "3.5.10"
