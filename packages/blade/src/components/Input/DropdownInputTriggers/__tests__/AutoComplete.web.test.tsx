@@ -120,6 +120,30 @@ describe('<Dropdown /> with <AutoComplete />', () => {
     expect(selectInput.value).toBe('Pune');
   });
 
+  it('should not open dropdown when input is disabled', async () => {
+    const user = userEvent.setup();
+
+    const { getByRole, queryByRole } = renderWithTheme(
+      <Dropdown>
+        <AutoComplete label="Fruits" isDisabled />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Banana" value="banana" />
+            <ActionListItem title="Orange" value="orange" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>,
+    );
+
+    const autoComplete = getByRole('combobox', { name: 'Fruits' });
+
+    expect(autoComplete).toBeInTheDocument();
+    expect(queryByRole('listbox')).toBeNull();
+
+    await user.click(autoComplete);
+    expect(queryByRole('listbox')).toBeNull();
+  });
+
   it('should handle AutoComplete behaviour in multiselect', async () => {
     const user = userEvent.setup();
     const { queryByRole, getByRole } = renderWithTheme(

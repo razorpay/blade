@@ -100,6 +100,26 @@ describe('<Dropdown /> with <AutoComplete />', () => {
     expect(getByTestId('dropdown-overlay').props.display).toBe('none');
   });
 
+  it('should not open dropdown when input is disabled', async () => {
+    const { getByRole, getByTestId } = renderWithTheme(
+      <Dropdown>
+        <AutoComplete label="Fruits" isDisabled />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Banana" value="banana" />
+            <ActionListItem title="Orange" value="orange" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>,
+    );
+
+    const autoComplete = getByRole('combobox');
+    expect(getByTestId('dropdown-overlay').props.display).toBe('none');
+
+    fireEvent.press(autoComplete);
+    expect(getByTestId('dropdown-overlay').props.display).toBe('none');
+  });
+
   it('should handle controlled filtering', () => {
     const cities = [
       {
