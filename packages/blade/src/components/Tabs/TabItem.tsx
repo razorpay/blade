@@ -8,10 +8,10 @@ import { useTabsContext } from './TabsContext';
 import { backgroundColor, paddingY, paddingX, textColor } from './tabTokens';
 import { iconSizeMap, useTabsItemPropRestriction } from './utils';
 import { Text } from '~components/Typography';
-import { castWebType, makeBorderSize, makeMotionTime, makeSpace } from '~utils';
+import { castWebType, getMediaQuery, makeBorderSize, makeMotionTime, makeSpace } from '~utils';
 import useInteraction from '~utils/useInteraction';
-import { useIsMobile } from '~utils/useIsMobile';
 import { makeAccessible } from '~utils/makeAccessible';
+import { breakpoints } from '~tokens/global';
 
 const StyledTabButton = styled.button<{
   size: TabsProps['size'];
@@ -20,9 +20,7 @@ const StyledTabButton = styled.button<{
   isVertical: boolean;
   isSelected: boolean;
 }>(({ theme, isSelected, size, variant, isFullWidthTabItem, isVertical }) => {
-  const isMobile = useIsMobile();
   const isFilled = variant === 'filled';
-  const device = isMobile ? 'mobile' : 'desktop';
   const orientation = isVertical ? 'vertical' : 'horizontal';
   const border = isVertical ? 'borderLeft' : 'borderBottom';
   const selectedState = isSelected ? 'selected' : 'unselected';
@@ -45,10 +43,20 @@ const StyledTabButton = styled.button<{
     justifyContent: isVertical ? 'left' : 'center',
     gap: makeSpace(theme.spacing[3]),
     width: isFullWidthTabItem ? '100%' : undefined,
-    paddingTop: makeSpace(get(theme, paddingY[_variant][orientation][device][size!])),
-    paddingBottom: makeSpace(get(theme, paddingY[_variant][orientation][device][size!])),
-    paddingLeft: makeSpace(get(theme, paddingX[_variant][orientation][device][size!])),
-    paddingRight: makeSpace(get(theme, paddingX[_variant][orientation][device][size!])),
+
+    // Padding
+    paddingTop: makeSpace(get(theme, paddingY[_variant][orientation].desktop[size!])),
+    paddingBottom: makeSpace(get(theme, paddingY[_variant][orientation].desktop[size!])),
+    paddingLeft: makeSpace(get(theme, paddingX[_variant][orientation].desktop[size!])),
+    paddingRight: makeSpace(get(theme, paddingX[_variant][orientation].desktop[size!])),
+
+    [`@media ${getMediaQuery({ min: breakpoints.base, max: breakpoints.m })}`]: {
+      paddingTop: makeSpace(get(theme, paddingY[_variant][orientation].mobile[size!])),
+      paddingBottom: makeSpace(get(theme, paddingY[_variant][orientation].mobile[size!])),
+      paddingLeft: makeSpace(get(theme, paddingX[_variant][orientation].mobile[size!])),
+      paddingRight: makeSpace(get(theme, paddingX[_variant][orientation].mobile[size!])),
+    },
+
     // colors
     backgroundColor:
       isSelected && isFilled && !isVertical ? 'transparent' : getColor(background.default),
