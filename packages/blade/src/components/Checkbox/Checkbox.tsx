@@ -223,7 +223,7 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
         inputProps={state.isReactNative ? inputProps : {}}
       >
         <BaseBox display="flex" flexDirection="column">
-          <BaseBox display="flex" alignItems="center" flexDirection="row">
+          <BaseBox display="flex" flexDirection="row">
             <SelectorInput
               hoverTokens={checkboxHoverTokens}
               isChecked={state.isChecked || Boolean(isIndeterminate)}
