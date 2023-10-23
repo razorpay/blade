@@ -8,6 +8,9 @@ import { Button } from '~components/Button';
 import { Amount } from '~components/Amount';
 import { makeMotionTime, makeSpace, useTheme } from '~utils';
 import { ChevronDownIcon, CloseIcon, InfoIcon } from '~components/Icons';
+import { BottomSheet, BottomSheetBody, BottomSheetHeader } from '~components/BottomSheet';
+import { ActionList, ActionListItem, ActionListItemIcon } from '~components/ActionList';
+import { useState } from 'react';
 
 const StyledHeader = styled.div(({ theme }) => ({
   boxShadow: '0 4px 8px  rgba(23,26,30,.15)', // not in box
@@ -139,6 +142,8 @@ const LanguageSelector = styled.div(({ theme }) => ({
 
 const Checkout = (): React.ReactElement => {
   const { theme } = useTheme();
+  const [isLanguageSheetOpen, setIsLanguageSheetOpen] = useState(false);
+  const hideLanguageSheet = (): void => setIsLanguageSheetOpen(false);
   return (
     <Box
       maxWidth="375px"
@@ -151,6 +156,18 @@ const Checkout = (): React.ReactElement => {
       flexDirection="column"
       overflow="hidden"
     >
+      <BottomSheet isOpen={isLanguageSheetOpen} onDismiss={() => setIsLanguageSheetOpen(false)}>
+        <BottomSheetHeader title="Choose Language" />
+        <BottomSheetBody>
+          <ActionList>
+            <ActionListItem onClick={hideLanguageSheet} title="English" value="English" />
+            <ActionListItem onClick={hideLanguageSheet} title="Hindi" value="Hindi" />
+            <ActionListItem onClick={hideLanguageSheet} title="Marathi" value="Marathi" />
+            <ActionListItem onClick={hideLanguageSheet} title="Gujarati" value="Gujarati" />
+            <ActionListItem onClick={hideLanguageSheet} title="Kannada" value="Kannada" />
+          </ActionList>
+        </BottomSheetBody>
+      </BottomSheet>
       <StyledHeader>
         <MerchantAvatar src="https://i.imgur.com/buGhEkT.png" />
         <Box zIndex={1}>
@@ -177,7 +194,7 @@ const Checkout = (): React.ReactElement => {
 
         <Box display="flex" alignItems="flex-end" flexDirection="column" flex={1}>
           <CloseIcon size="medium" color="action.icon.primary.default" />
-          <LanguageSelector>
+          <LanguageSelector onClick={() => setIsLanguageSheetOpen(true)}>
             <svg
               width="15px"
               height="15px"
@@ -229,7 +246,6 @@ const Checkout = (): React.ReactElement => {
           </LanguageSelector>
         </Box>
       </StyledHeader>
-
       <Box padding="spacing.4" paddingBottom="spacing.8" overflowY="scroll">
         <Heading marginTop="spacing.3" marginBottom="spacing.3">
           Pay With UPI QR
@@ -442,7 +458,6 @@ const Checkout = (): React.ReactElement => {
           </CardBody>
         </Card>
       </Box>
-
       <StyledFooter>
         <Box flex={1} flexDirection="column">
           <Amount value={5500} />
