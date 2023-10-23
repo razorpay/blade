@@ -15,6 +15,9 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
   width: 16px;
   height: 16px;
   border-width: 1.5px;
@@ -286,6 +289,9 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
   width: 16px;
   height: 16px;
   border-width: 1.5px;
@@ -464,6 +470,9 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
   width: 16px;
   height: 16px;
   border-width: 1.5px;
@@ -726,6 +735,9 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
   width: 16px;
   height: 16px;
   border-width: 1.5px;
