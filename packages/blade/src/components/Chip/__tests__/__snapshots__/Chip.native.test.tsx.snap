@@ -25,10 +25,7 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
       flexDirection="column"
       style={
         [
-          {
-            "display": "flex",
-            "flexDirection": "column",
-          },
+          {},
         ]
       }
     >
@@ -44,28 +41,7 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
           data-blade-component="visually-hidden"
           style={
             [
-              {
-                "borderColor": "black",
-                "borderStyle": "solid",
-                "borderWidth": 0,
-                "clip": "rect(0 0 0 0)",
-                "clipPath": "inset(50%)",
-                "height": 1,
-                "left": -10000,
-                "marginBottom": -1,
-                "marginLeft": 0,
-                "marginRight": -1,
-                "marginTop": 0,
-                "overflow": "hidden",
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "position": "absolute",
-                "whiteSpace": "nowrap",
-                "width": 1,
-                "wordWrap": "normal",
-              },
+              {},
             ]
           }
         >
@@ -110,11 +86,7 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
           flexWrap="wrap"
           style={
             [
-              {
-                "display": "flex",
-                "flexDirection": "row",
-                "flexWrap": "wrap",
-              },
+              {},
             ]
           }
         >
@@ -122,10 +94,7 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
             data-blade-component="base-box"
             style={
               [
-                {
-                  "marginBottom": 8,
-                  "marginRight": 8,
-                },
+                {},
               ]
             }
           >
@@ -134,9 +103,7 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
               display="flex"
               style={
                 [
-                  {
-                    "display": "flex",
-                  },
+                  {},
                 ]
               }
             >
@@ -192,10 +159,7 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
                   flexDirection="column"
                   style={
                     [
-                      {
-                        "display": "flex",
-                        "flexDirection": "column",
-                      },
+                      {},
                     ]
                   }
                 >
@@ -206,11 +170,7 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
                     flexDirection="row"
                     style={
                       [
-                        {
-                          "alignItems": "center",
-                          "display": "flex",
-                          "flexDirection": "row",
-                        },
+                        {},
                       ]
                     }
                   >
@@ -220,19 +180,7 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
                       style={
                         [
                           {
-                            "alignItems": "center",
                             "alignSelf": "center",
-                            "backgroundColor": "transparent",
-                            "borderColor": "hsla(216, 19%, 89%, 1)",
-                            "borderRadius": 9999,
-                            "borderWidth": 1,
-                            "display": "flex",
-                            "flexDirection": "row",
-                            "flexWrap": "nowrap",
-                            "justifyContent": "center",
-                            "maxWidth": 280,
-                            "textAlign": "left",
-                            "textOverflow": "ellipsis",
                           },
                           {
                             "transform": [
@@ -261,21 +209,7 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
                         overflow="hidden"
                         style={
                           [
-                            {
-                              "alignItems": "center",
-                              "backgroundColor": "transparent",
-                              "borderColor": "hsla(216, 19%, 89%, 1)",
-                              "borderRadius": 9999,
-                              "borderStyle": "solid",
-                              "borderWidth": 0.5,
-                              "display": "flex",
-                              "flexDirection": "row",
-                              "height": 28,
-                              "justifyContent": "center",
-                              "overflow": "hidden",
-                              "paddingLeft": 12,
-                              "paddingRight": 12,
-                            },
+                            {},
                             {
                               "borderColor": "transparent",
                               "display": "flex",
@@ -328,10 +262,7 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
             data-blade-component="base-box"
             style={
               [
-                {
-                  "marginBottom": 8,
-                  "marginRight": 8,
-                },
+                {},
               ]
             }
           >
@@ -340,9 +271,7 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
               display="flex"
               style={
                 [
-                  {
-                    "display": "flex",
-                  },
+                  {},
                 ]
               }
             >
@@ -398,10 +327,7 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
                   flexDirection="column"
                   style={
                     [
-                      {
-                        "display": "flex",
-                        "flexDirection": "column",
-                      },
+                      {},
                     ]
                   }
                 >
@@ -412,11 +338,7 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
                     flexDirection="row"
                     style={
                       [
-                        {
-                          "alignItems": "center",
-                          "display": "flex",
-                          "flexDirection": "row",
-                        },
+                        {},
                       ]
                     }
                   >
@@ -426,19 +348,7 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
                       style={
                         [
                           {
-                            "alignItems": "center",
                             "alignSelf": "center",
-                            "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                            "borderColor": "hsla(216, 19%, 89%, 1)",
-                            "borderRadius": 9999,
-                            "borderWidth": 1,
-                            "display": "flex",
-                            "flexDirection": "row",
-                            "flexWrap": "nowrap",
-                            "justifyContent": "center",
-                            "maxWidth": 280,
-                            "textAlign": "left",
-                            "textOverflow": "ellipsis",
                           },
                           {
                             "transform": [
@@ -467,21 +377,7 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
                         overflow="hidden"
                         style={
                           [
-                            {
-                              "alignItems": "center",
-                              "backgroundColor": "transparent",
-                              "borderColor": "hsla(216, 19%, 89%, 1)",
-                              "borderRadius": 9999,
-                              "borderStyle": "solid",
-                              "borderWidth": 0.5,
-                              "display": "flex",
-                              "flexDirection": "row",
-                              "height": 28,
-                              "justifyContent": "center",
-                              "overflow": "hidden",
-                              "paddingLeft": 12,
-                              "paddingRight": 12,
-                            },
+                            {},
                             {
                               "borderColor": "transparent",
                               "display": "flex",
@@ -562,10 +458,7 @@ exports[`<Chip /> should render chip 1`] = `
       flexDirection="column"
       style={
         [
-          {
-            "display": "flex",
-            "flexDirection": "column",
-          },
+          {},
         ]
       }
     >
@@ -581,28 +474,7 @@ exports[`<Chip /> should render chip 1`] = `
           data-blade-component="visually-hidden"
           style={
             [
-              {
-                "borderColor": "black",
-                "borderStyle": "solid",
-                "borderWidth": 0,
-                "clip": "rect(0 0 0 0)",
-                "clipPath": "inset(50%)",
-                "height": 1,
-                "left": -10000,
-                "marginBottom": -1,
-                "marginLeft": 0,
-                "marginRight": -1,
-                "marginTop": 0,
-                "overflow": "hidden",
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "position": "absolute",
-                "whiteSpace": "nowrap",
-                "width": 1,
-                "wordWrap": "normal",
-              },
+              {},
             ]
           }
         >
@@ -647,11 +519,7 @@ exports[`<Chip /> should render chip 1`] = `
           flexWrap="wrap"
           style={
             [
-              {
-                "display": "flex",
-                "flexDirection": "row",
-                "flexWrap": "wrap",
-              },
+              {},
             ]
           }
         >
@@ -659,10 +527,7 @@ exports[`<Chip /> should render chip 1`] = `
             data-blade-component="base-box"
             style={
               [
-                {
-                  "marginBottom": 8,
-                  "marginRight": 8,
-                },
+                {},
               ]
             }
           >
@@ -671,9 +536,7 @@ exports[`<Chip /> should render chip 1`] = `
               display="flex"
               style={
                 [
-                  {
-                    "display": "flex",
-                  },
+                  {},
                 ]
               }
             >
@@ -729,10 +592,7 @@ exports[`<Chip /> should render chip 1`] = `
                   flexDirection="column"
                   style={
                     [
-                      {
-                        "display": "flex",
-                        "flexDirection": "column",
-                      },
+                      {},
                     ]
                   }
                 >
@@ -743,11 +603,7 @@ exports[`<Chip /> should render chip 1`] = `
                     flexDirection="row"
                     style={
                       [
-                        {
-                          "alignItems": "center",
-                          "display": "flex",
-                          "flexDirection": "row",
-                        },
+                        {},
                       ]
                     }
                   >
@@ -757,19 +613,7 @@ exports[`<Chip /> should render chip 1`] = `
                       style={
                         [
                           {
-                            "alignItems": "center",
                             "alignSelf": "center",
-                            "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                            "borderColor": "hsla(216, 19%, 89%, 1)",
-                            "borderRadius": 9999,
-                            "borderWidth": 1,
-                            "display": "flex",
-                            "flexDirection": "row",
-                            "flexWrap": "nowrap",
-                            "justifyContent": "center",
-                            "maxWidth": 280,
-                            "textAlign": "left",
-                            "textOverflow": "ellipsis",
                           },
                           {
                             "transform": [
@@ -798,21 +642,7 @@ exports[`<Chip /> should render chip 1`] = `
                         overflow="hidden"
                         style={
                           [
-                            {
-                              "alignItems": "center",
-                              "backgroundColor": "transparent",
-                              "borderColor": "hsla(216, 19%, 89%, 1)",
-                              "borderRadius": 9999,
-                              "borderStyle": "solid",
-                              "borderWidth": 0.5,
-                              "display": "flex",
-                              "flexDirection": "row",
-                              "height": 28,
-                              "justifyContent": "center",
-                              "overflow": "hidden",
-                              "paddingLeft": 12,
-                              "paddingRight": 12,
-                            },
+                            {},
                             {
                               "borderColor": "transparent",
                               "display": "flex",
@@ -865,10 +695,7 @@ exports[`<Chip /> should render chip 1`] = `
             data-blade-component="base-box"
             style={
               [
-                {
-                  "marginBottom": 8,
-                  "marginRight": 8,
-                },
+                {},
               ]
             }
           >
@@ -877,9 +704,7 @@ exports[`<Chip /> should render chip 1`] = `
               display="flex"
               style={
                 [
-                  {
-                    "display": "flex",
-                  },
+                  {},
                 ]
               }
             >
@@ -935,10 +760,7 @@ exports[`<Chip /> should render chip 1`] = `
                   flexDirection="column"
                   style={
                     [
-                      {
-                        "display": "flex",
-                        "flexDirection": "column",
-                      },
+                      {},
                     ]
                   }
                 >
@@ -949,11 +771,7 @@ exports[`<Chip /> should render chip 1`] = `
                     flexDirection="row"
                     style={
                       [
-                        {
-                          "alignItems": "center",
-                          "display": "flex",
-                          "flexDirection": "row",
-                        },
+                        {},
                       ]
                     }
                   >
@@ -963,19 +781,7 @@ exports[`<Chip /> should render chip 1`] = `
                       style={
                         [
                           {
-                            "alignItems": "center",
                             "alignSelf": "center",
-                            "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                            "borderColor": "hsla(216, 19%, 89%, 1)",
-                            "borderRadius": 9999,
-                            "borderWidth": 1,
-                            "display": "flex",
-                            "flexDirection": "row",
-                            "flexWrap": "nowrap",
-                            "justifyContent": "center",
-                            "maxWidth": 280,
-                            "textAlign": "left",
-                            "textOverflow": "ellipsis",
                           },
                           {
                             "transform": [
@@ -1004,21 +810,7 @@ exports[`<Chip /> should render chip 1`] = `
                         overflow="hidden"
                         style={
                           [
-                            {
-                              "alignItems": "center",
-                              "backgroundColor": "transparent",
-                              "borderColor": "hsla(216, 19%, 89%, 1)",
-                              "borderRadius": 9999,
-                              "borderStyle": "solid",
-                              "borderWidth": 0.5,
-                              "display": "flex",
-                              "flexDirection": "row",
-                              "height": 28,
-                              "justifyContent": "center",
-                              "overflow": "hidden",
-                              "paddingLeft": 12,
-                              "paddingRight": 12,
-                            },
+                            {},
                             {
                               "borderColor": "transparent",
                               "display": "flex",
@@ -1099,10 +891,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
       flexDirection="column"
       style={
         [
-          {
-            "display": "flex",
-            "flexDirection": "column",
-          },
+          {},
         ]
       }
     >
@@ -1118,28 +907,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
           data-blade-component="visually-hidden"
           style={
             [
-              {
-                "borderColor": "black",
-                "borderStyle": "solid",
-                "borderWidth": 0,
-                "clip": "rect(0 0 0 0)",
-                "clipPath": "inset(50%)",
-                "height": 1,
-                "left": -10000,
-                "marginBottom": -1,
-                "marginLeft": 0,
-                "marginRight": -1,
-                "marginTop": 0,
-                "overflow": "hidden",
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "position": "absolute",
-                "whiteSpace": "nowrap",
-                "width": 1,
-                "wordWrap": "normal",
-              },
+              {},
             ]
           }
         >
@@ -1184,11 +952,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
           flexWrap="wrap"
           style={
             [
-              {
-                "display": "flex",
-                "flexDirection": "row",
-                "flexWrap": "wrap",
-              },
+              {},
             ]
           }
         >
@@ -1196,10 +960,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
             data-blade-component="base-box"
             style={
               [
-                {
-                  "marginBottom": 8,
-                  "marginRight": 8,
-                },
+                {},
               ]
             }
           >
@@ -1208,9 +969,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
               display="flex"
               style={
                 [
-                  {
-                    "display": "flex",
-                  },
+                  {},
                 ]
               }
             >
@@ -1266,10 +1025,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
                   flexDirection="column"
                   style={
                     [
-                      {
-                        "display": "flex",
-                        "flexDirection": "column",
-                      },
+                      {},
                     ]
                   }
                 >
@@ -1280,11 +1036,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
                     flexDirection="row"
                     style={
                       [
-                        {
-                          "alignItems": "center",
-                          "display": "flex",
-                          "flexDirection": "row",
-                        },
+                        {},
                       ]
                     }
                   >
@@ -1294,19 +1046,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
                       style={
                         [
                           {
-                            "alignItems": "center",
                             "alignSelf": "center",
-                            "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                            "borderColor": "hsla(216, 19%, 89%, 1)",
-                            "borderRadius": 9999,
-                            "borderWidth": 1,
-                            "display": "flex",
-                            "flexDirection": "row",
-                            "flexWrap": "nowrap",
-                            "justifyContent": "center",
-                            "maxWidth": 280,
-                            "textAlign": "left",
-                            "textOverflow": "ellipsis",
                           },
                           {
                             "transform": [
@@ -1335,21 +1075,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
                         overflow="hidden"
                         style={
                           [
-                            {
-                              "alignItems": "center",
-                              "backgroundColor": "transparent",
-                              "borderColor": "hsla(216, 19%, 89%, 1)",
-                              "borderRadius": 9999,
-                              "borderStyle": "solid",
-                              "borderWidth": 0.5,
-                              "display": "flex",
-                              "flexDirection": "row",
-                              "height": 28,
-                              "justifyContent": "center",
-                              "overflow": "hidden",
-                              "paddingLeft": 12,
-                              "paddingRight": 12,
-                            },
+                            {},
                             {
                               "borderColor": "transparent",
                               "display": "flex",
@@ -1362,10 +1088,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
                           display="flex"
                           style={
                             [
-                              {
-                                "display": "flex",
-                                "paddingRight": 8,
-                              },
+                              {},
                             ]
                           }
                         >
@@ -1488,10 +1211,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
             data-blade-component="base-box"
             style={
               [
-                {
-                  "marginBottom": 8,
-                  "marginRight": 8,
-                },
+                {},
               ]
             }
           >
@@ -1500,9 +1220,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
               display="flex"
               style={
                 [
-                  {
-                    "display": "flex",
-                  },
+                  {},
                 ]
               }
             >
@@ -1558,10 +1276,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
                   flexDirection="column"
                   style={
                     [
-                      {
-                        "display": "flex",
-                        "flexDirection": "column",
-                      },
+                      {},
                     ]
                   }
                 >
@@ -1572,11 +1287,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
                     flexDirection="row"
                     style={
                       [
-                        {
-                          "alignItems": "center",
-                          "display": "flex",
-                          "flexDirection": "row",
-                        },
+                        {},
                       ]
                     }
                   >
@@ -1586,19 +1297,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
                       style={
                         [
                           {
-                            "alignItems": "center",
                             "alignSelf": "center",
-                            "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                            "borderColor": "hsla(216, 19%, 89%, 1)",
-                            "borderRadius": 9999,
-                            "borderWidth": 1,
-                            "display": "flex",
-                            "flexDirection": "row",
-                            "flexWrap": "nowrap",
-                            "justifyContent": "center",
-                            "maxWidth": 280,
-                            "textAlign": "left",
-                            "textOverflow": "ellipsis",
                           },
                           {
                             "transform": [
@@ -1627,21 +1326,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
                         overflow="hidden"
                         style={
                           [
-                            {
-                              "alignItems": "center",
-                              "backgroundColor": "transparent",
-                              "borderColor": "hsla(216, 19%, 89%, 1)",
-                              "borderRadius": 9999,
-                              "borderStyle": "solid",
-                              "borderWidth": 0.5,
-                              "display": "flex",
-                              "flexDirection": "row",
-                              "height": 28,
-                              "justifyContent": "center",
-                              "overflow": "hidden",
-                              "paddingLeft": 12,
-                              "paddingRight": 12,
-                            },
+                            {},
                             {
                               "borderColor": "transparent",
                               "display": "flex",
@@ -1654,10 +1339,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
                           display="flex"
                           style={
                             [
-                              {
-                                "display": "flex",
-                                "paddingRight": 8,
-                              },
+                              {},
                             ]
                           }
                         >
@@ -1808,10 +1490,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
       flexDirection="column"
       style={
         [
-          {
-            "display": "flex",
-            "flexDirection": "column",
-          },
+          {},
         ]
       }
     >
@@ -1827,28 +1506,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
           data-blade-component="visually-hidden"
           style={
             [
-              {
-                "borderColor": "black",
-                "borderStyle": "solid",
-                "borderWidth": 0,
-                "clip": "rect(0 0 0 0)",
-                "clipPath": "inset(50%)",
-                "height": 1,
-                "left": -10000,
-                "marginBottom": -1,
-                "marginLeft": 0,
-                "marginRight": -1,
-                "marginTop": 0,
-                "overflow": "hidden",
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "position": "absolute",
-                "whiteSpace": "nowrap",
-                "width": 1,
-                "wordWrap": "normal",
-              },
+              {},
             ]
           }
         >
@@ -1893,11 +1551,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
           flexWrap="wrap"
           style={
             [
-              {
-                "display": "flex",
-                "flexDirection": "row",
-                "flexWrap": "wrap",
-              },
+              {},
             ]
           }
         >
@@ -1905,10 +1559,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
             data-blade-component="base-box"
             style={
               [
-                {
-                  "marginBottom": 8,
-                  "marginRight": 8,
-                },
+                {},
               ]
             }
           >
@@ -1917,9 +1568,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
               display="flex"
               style={
                 [
-                  {
-                    "display": "flex",
-                  },
+                  {},
                 ]
               }
             >
@@ -1975,10 +1624,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                   flexDirection="column"
                   style={
                     [
-                      {
-                        "display": "flex",
-                        "flexDirection": "column",
-                      },
+                      {},
                     ]
                   }
                 >
@@ -1989,11 +1635,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                     flexDirection="row"
                     style={
                       [
-                        {
-                          "alignItems": "center",
-                          "display": "flex",
-                          "flexDirection": "row",
-                        },
+                        {},
                       ]
                     }
                   >
@@ -2003,19 +1645,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                       style={
                         [
                           {
-                            "alignItems": "center",
                             "alignSelf": "center",
-                            "backgroundColor": "transparent",
-                            "borderColor": "hsla(216, 19%, 89%, 1)",
-                            "borderRadius": 9999,
-                            "borderWidth": 1,
-                            "display": "flex",
-                            "flexDirection": "row",
-                            "flexWrap": "nowrap",
-                            "justifyContent": "center",
-                            "maxWidth": 280,
-                            "textAlign": "left",
-                            "textOverflow": "ellipsis",
                           },
                           {
                             "transform": [
@@ -2044,21 +1674,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                         overflow="hidden"
                         style={
                           [
-                            {
-                              "alignItems": "center",
-                              "backgroundColor": "transparent",
-                              "borderColor": "hsla(216, 19%, 89%, 1)",
-                              "borderRadius": 9999,
-                              "borderStyle": "solid",
-                              "borderWidth": 0.5,
-                              "display": "flex",
-                              "flexDirection": "row",
-                              "height": 28,
-                              "justifyContent": "center",
-                              "overflow": "hidden",
-                              "paddingLeft": 12,
-                              "paddingRight": 12,
-                            },
+                            {},
                             {
                               "borderColor": "transparent",
                               "display": "flex",
@@ -2111,10 +1727,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
             data-blade-component="base-box"
             style={
               [
-                {
-                  "marginBottom": 8,
-                  "marginRight": 8,
-                },
+                {},
               ]
             }
           >
@@ -2123,9 +1736,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
               display="flex"
               style={
                 [
-                  {
-                    "display": "flex",
-                  },
+                  {},
                 ]
               }
             >
@@ -2181,10 +1792,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                   flexDirection="column"
                   style={
                     [
-                      {
-                        "display": "flex",
-                        "flexDirection": "column",
-                      },
+                      {},
                     ]
                   }
                 >
@@ -2195,11 +1803,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                     flexDirection="row"
                     style={
                       [
-                        {
-                          "alignItems": "center",
-                          "display": "flex",
-                          "flexDirection": "row",
-                        },
+                        {},
                       ]
                     }
                   >
@@ -2209,19 +1813,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                       style={
                         [
                           {
-                            "alignItems": "center",
                             "alignSelf": "center",
-                            "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                            "borderColor": "hsla(216, 19%, 89%, 1)",
-                            "borderRadius": 9999,
-                            "borderWidth": 1,
-                            "display": "flex",
-                            "flexDirection": "row",
-                            "flexWrap": "nowrap",
-                            "justifyContent": "center",
-                            "maxWidth": 280,
-                            "textAlign": "left",
-                            "textOverflow": "ellipsis",
                           },
                           {
                             "transform": [
@@ -2250,21 +1842,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                         overflow="hidden"
                         style={
                           [
-                            {
-                              "alignItems": "center",
-                              "backgroundColor": "transparent",
-                              "borderColor": "hsla(216, 19%, 89%, 1)",
-                              "borderRadius": 9999,
-                              "borderStyle": "solid",
-                              "borderWidth": 0.5,
-                              "display": "flex",
-                              "flexDirection": "row",
-                              "height": 28,
-                              "justifyContent": "center",
-                              "overflow": "hidden",
-                              "paddingLeft": 12,
-                              "paddingRight": 12,
-                            },
+                            {},
                             {
                               "borderColor": "transparent",
                               "display": "flex",

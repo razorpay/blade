@@ -16,10 +16,7 @@ exports[`<Skeleton /> should render skeleton 1`] = `
     importantForAccessibility="no-hide-descendants"
     style={
       [
-        {
-          "height": 50,
-          "width": "100%",
-        },
+        {},
         {
           "backgroundColor": undefined,
         },

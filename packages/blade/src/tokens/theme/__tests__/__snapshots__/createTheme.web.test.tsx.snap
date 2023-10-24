@@ -3269,29 +3269,7 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
 `;
 
 exports[`createTheme should create a theme with the correct brand colors 2`] = `
-.c0 {
-  min-height: 36px;
-  width: auto;
-  cursor: pointer;
-  background-color: hsl(332,100%,26%);
-  border-color: hsl(332,100%,26%);
-  border-width: 1px;
-  border-radius: 2px;
-  border-style: solid;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
+.c0.c0.c0.c0.c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -3305,24 +3283,24 @@ exports[`createTheme should create a theme with the correct brand colors 2`] = `
   position: relative;
 }
 
-.c0:hover {
+.c0.c0.c0.c0.c0:hover {
   background-color: hsl(332,100%,23%);
   border-color: hsl(332,100%,23%);
 }
 
-.c0:active {
+.c0.c0.c0.c0.c0:active {
   background-color: hsl(332,100%,17%);
   border-color: hsl(332,100%,17%);
 }
 
-.c0:focus-visible {
+.c0.c0.c0.c0.c0:focus-visible {
   background-color: hsl(332,100%,20%);
   border-color: hsl(332,100%,20%);
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(332,100%,26%,0.18);
 }
 
-.c0 * {
+.c0.c0.c0.c0.c0 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -3331,7 +3309,7 @@ exports[`createTheme should create a theme with the correct brand colors 2`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3 {
+.c2.c2.c2.c2.c2 {
   color: hsl(0,0%,100%);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -3345,7 +3323,7 @@ exports[`createTheme should create a theme with the correct brand colors 2`] = `
   padding: 0;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3364,9 +3342,6 @@ exports[`createTheme should create a theme with the correct brand colors 2`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-}
-
-.c2 {
   opacity: 1;
 }
 
@@ -3377,11 +3352,12 @@ exports[`createTheme should create a theme with the correct brand colors 2`] = `
   type="button"
 >
   <div
-    class="c1 c2"
+    class="c1"
     data-blade-component="base-box"
+    opacity="1"
   >
     <div
-      class="c3"
+      class="c2"
       data-blade-component="base-text"
     >
       Pay now
@@ -6659,29 +6635,7 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
 `;
 
 exports[`createTheme should create a theme with the correct brand colors 4`] = `
-.c0 {
-  min-height: 36px;
-  width: auto;
-  cursor: pointer;
-  background-color: hsl(58,100%,54%);
-  border-color: hsl(58,100%,54%);
-  border-width: 1px;
-  border-radius: 2px;
-  border-style: solid;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
+.c0.c0.c0.c0.c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -6695,24 +6649,24 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
   position: relative;
 }
 
-.c0:hover {
+.c0.c0.c0.c0.c0:hover {
   background-color: hsl(57,100%,52%);
   border-color: hsl(57,100%,52%);
 }
 
-.c0:active {
+.c0.c0.c0.c0.c0:active {
   background-color: hsl(57,100%,42%);
   border-color: hsl(57,100%,42%);
 }
 
-.c0:focus-visible {
+.c0.c0.c0.c0.c0:focus-visible {
   background-color: hsl(57,100%,47%);
   border-color: hsl(57,100%,47%);
   outline: 1px solid hsla(218,67%,10%,1);
   box-shadow: 0px 0px 0px 4px hsla(57,100%,52%,0.32);
 }
 
-.c0 * {
+.c0.c0.c0.c0.c0 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -6721,7 +6675,7 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3 {
+.c2.c2.c2.c2.c2 {
   color: hsl(219,41%,19%);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -6735,7 +6689,7 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
   padding: 0;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -6754,9 +6708,6 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-}
-
-.c2 {
   opacity: 1;
 }
 
@@ -6767,11 +6718,12 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
   type="button"
 >
   <div
-    class="c1 c2"
+    class="c1"
     data-blade-component="base-box"
+    opacity="1"
   >
     <div
-      class="c3"
+      class="c2"
       data-blade-component="base-text"
     >
       Pay now

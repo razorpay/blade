@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Amount /> should render AED currency Amount 1`] = `
-.c2 {
+.c2.c2.c2.c2.c2 {
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -12,10 +12,13 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
+}
+
+.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2 {
   margin-right: 2px;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -28,7 +31,7 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
   padding: 0;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -39,17 +42,20 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
+}
+
+.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 {
   margin-left: 2px;
 }
 
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -97,7 +103,7 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
 `;
 
 exports[`<Amount /> should render Amount with default props 1`] = `
-.c2 {
+.c2.c2.c2.c2.c2 {
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -108,10 +114,13 @@ exports[`<Amount /> should render Amount with default props 1`] = `
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
+}
+
+.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2 {
   margin-right: 2px;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -124,7 +133,7 @@ exports[`<Amount /> should render Amount with default props 1`] = `
   padding: 0;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -135,17 +144,20 @@ exports[`<Amount /> should render Amount with default props 1`] = `
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
+}
+
+.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 {
   margin-left: 2px;
 }
 
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -193,7 +205,7 @@ exports[`<Amount /> should render Amount with default props 1`] = `
 `;
 
 exports[`<Amount /> should render MYR currency Amount 1`] = `
-.c2 {
+.c2.c2.c2.c2.c2 {
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -204,10 +216,13 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
+}
+
+.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2 {
   margin-right: 2px;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -220,7 +235,7 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
   padding: 0;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -231,17 +246,20 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
+}
+
+.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 {
   margin-left: 2px;
 }
 
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -289,7 +307,7 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
 `;
 
 exports[`<Amount /> should render USD currency Amount 1`] = `
-.c2 {
+.c2.c2.c2.c2.c2 {
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -300,10 +318,13 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
+}
+
+.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2 {
   margin-right: 2px;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -316,7 +337,7 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
   padding: 0;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -327,17 +348,20 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
+}
+
+.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 {
   margin-left: 2px;
 }
 
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -385,7 +409,7 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
 `;
 
 exports[`<Amount /> should render amount with Humanize value 1`] = `
-.c2 {
+.c2.c2.c2.c2.c2 {
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1.25rem;
@@ -396,10 +420,13 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
+}
+
+.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2 {
   margin-right: 2px;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1.75rem;
@@ -412,14 +439,14 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
   padding: 0;
 }
 
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -460,7 +487,7 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
 `;
 
 exports[`<Amount /> should render body-medium size Amount 1`] = `
-.c2 {
+.c2.c2.c2.c2.c2 {
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -471,10 +498,13 @@ exports[`<Amount /> should render body-medium size Amount 1`] = `
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
+}
+
+.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2 {
   margin-right: 2px;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -487,7 +517,7 @@ exports[`<Amount /> should render body-medium size Amount 1`] = `
   padding: 0;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -498,17 +528,20 @@ exports[`<Amount /> should render body-medium size Amount 1`] = `
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
+}
+
+.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 {
   margin-left: 2px;
 }
 
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -556,7 +589,7 @@ exports[`<Amount /> should render body-medium size Amount 1`] = `
 `;
 
 exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
-.c2 {
+.c2.c2.c2.c2.c2 {
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -567,10 +600,13 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
+}
+
+.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2 {
   margin-right: 2px;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -583,7 +619,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   padding: 0;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -594,10 +630,13 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
+}
+
+.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 {
   margin-left: 2px;
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -610,7 +649,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   padding: 0;
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -623,7 +662,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   padding: 0;
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -636,7 +675,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   padding: 0;
 }
 
-.c8 {
+.c8.c8.c8.c8.c8 {
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -647,10 +686,13 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
+}
+
+.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8 {
   margin-right: 2px;
 }
 
-.c9 {
+.c9.c9.c9.c9.c9 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1.25rem;
@@ -663,7 +705,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   padding: 0;
 }
 
-.c10 {
+.c10.c10.c10.c10.c10 {
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -674,10 +716,13 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
+}
+
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 {
   margin-left: 2px;
 }
 
-.c11 {
+.c11.c11.c11.c11.c11 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1.25rem;
@@ -690,7 +735,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   padding: 0;
 }
 
-.c12 {
+.c12.c12.c12.c12.c12 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1rem;
@@ -703,7 +748,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   padding: 0;
 }
 
-.c13 {
+.c13.c13.c13.c13.c13 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1rem;
@@ -716,7 +761,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   padding: 0;
 }
 
-.c14 {
+.c14.c14.c14.c14.c14 {
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1.25rem;
@@ -727,10 +772,13 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
+}
+
+.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14 {
   margin-right: 2px;
 }
 
-.c15 {
+.c15.c15.c15.c15.c15 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1.75rem;
@@ -743,7 +791,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   padding: 0;
 }
 
-.c16 {
+.c16.c16.c16.c16.c16 {
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1.25rem;
@@ -754,17 +802,20 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
+}
+
+.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16 {
   margin-left: 2px;
 }
 
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1044,7 +1095,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 `;
 
 exports[`<Amount /> should render body-small size Amount 1`] = `
-.c2 {
+.c2.c2.c2.c2.c2 {
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -1055,10 +1106,13 @@ exports[`<Amount /> should render body-small size Amount 1`] = `
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
+}
+
+.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2 {
   margin-right: 2px;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -1071,7 +1125,7 @@ exports[`<Amount /> should render body-small size Amount 1`] = `
   padding: 0;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -1082,17 +1136,20 @@ exports[`<Amount /> should render body-small size Amount 1`] = `
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
+}
+
+.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 {
   margin-left: 2px;
 }
 
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1140,7 +1197,7 @@ exports[`<Amount /> should render body-small size Amount 1`] = `
 `;
 
 exports[`<Amount /> should render body-small-bold size Amount 1`] = `
-.c2 {
+.c2.c2.c2.c2.c2 {
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -1151,10 +1208,13 @@ exports[`<Amount /> should render body-small-bold size Amount 1`] = `
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
+}
+
+.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2 {
   margin-right: 2px;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -1167,7 +1227,7 @@ exports[`<Amount /> should render body-small-bold size Amount 1`] = `
   padding: 0;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -1178,17 +1238,20 @@ exports[`<Amount /> should render body-small-bold size Amount 1`] = `
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
+}
+
+.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 {
   margin-left: 2px;
 }
 
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1236,7 +1299,7 @@ exports[`<Amount /> should render body-small-bold size Amount 1`] = `
 `;
 
 exports[`<Amount /> should render negative intent Amount  1`] = `
-.c2 {
+.c2.c2.c2.c2.c2 {
   color: hsla(8,73%,47%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -1247,10 +1310,13 @@ exports[`<Amount /> should render negative intent Amount  1`] = `
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
+}
+
+.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2 {
   margin-right: 2px;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   color: hsla(8,73%,47%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -1263,14 +1329,14 @@ exports[`<Amount /> should render negative intent Amount  1`] = `
   padding: 0;
 }
 
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1311,7 +1377,7 @@ exports[`<Amount /> should render negative intent Amount  1`] = `
 `;
 
 exports[`<Amount /> should render positive intent Amount  1`] = `
-.c2 {
+.c2.c2.c2.c2.c2 {
   color: hsla(160,100%,26%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -1322,10 +1388,13 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
+}
+
+.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2 {
   margin-right: 2px;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   color: hsla(160,100%,26%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -1338,7 +1407,7 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
   padding: 0;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   color: hsla(160,100%,26%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -1349,17 +1418,20 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
+}
+
+.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 {
   margin-left: 2px;
 }
 
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;

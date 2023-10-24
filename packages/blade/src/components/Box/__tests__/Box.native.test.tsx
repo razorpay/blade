@@ -30,13 +30,7 @@ describe('<Box />', () => {
           display="flex"
           style={
             [
-              {
-                "display": "flex",
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-              },
+              {},
             ]
           }
         >

@@ -67,7 +67,9 @@ describe('getBaseBoxStyles', () => {
     const boxStylesWithoutUndefined = JSON.parse(JSON.stringify(boxStyles));
     expect(boxStylesWithoutUndefined).toMatchInlineSnapshot(`
       {
-        "margin": "2px 12px 100%",
+        "&&&&&": {
+          "margin": "2px 12px 100%",
+        },
       }
     `);
   });

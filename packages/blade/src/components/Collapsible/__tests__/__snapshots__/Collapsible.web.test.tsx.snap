@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -16,7 +16,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   min-width: 200px;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -35,14 +35,15 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  opacity: 1;
 }
 
-.c6 {
+.c5.c5.c5.c5.c5 {
   margin-bottom: 0px;
   margin-top: 16px;
 }
 
-.c7 {
+.c6.c6.c6.c6.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -53,14 +54,14 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   min-width: 200px;
 }
 
-.c9 {
+.c8.c8.c8.c8.c8 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
-.c10 {
+.c9.c9.c9.c9.c9 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -74,7 +75,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   align-items: baseline;
 }
 
-.c5 {
+.c4.c4.c4.c4.c4 {
   -webkit-transition-duration: 300ms;
   transition-duration: 300ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -87,29 +88,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   overflow-y: hidden;
 }
 
-.c1 {
-  min-height: 36px;
-  width: auto;
-  cursor: pointer;
-  background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
-  border-width: 1px;
-  border-radius: 2px;
-  border-style: solid;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
+.c1.c1.c1.c1.c1 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -123,24 +102,24 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   position: relative;
 }
 
-.c1:hover {
+.c1.c1.c1.c1.c1:hover {
   background-color: hsla(223,95%,48%,1);
   border-color: hsla(223,95%,48%,1);
 }
 
-.c1:active {
+.c1.c1.c1.c1.c1:active {
   background-color: hsla(230,100%,42%,1);
   border-color: hsla(230,100%,42%,1);
 }
 
-.c1:focus-visible {
+.c1.c1.c1.c1.c1:focus-visible {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c1 * {
+.c1.c1.c1.c1.c1 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -149,7 +128,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c4 {
+.c3.c3.c3.c3.c3 {
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -163,7 +142,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   padding: 0;
 }
 
-.c8 {
+.c7.c7.c7.c7.c7 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -176,7 +155,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   padding: 0;
 }
 
-.c11 {
+.c10.c10.c10.c10.c10 {
   color: hsla(160,100%,26%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -187,10 +166,13 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
+}
+
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 {
   margin-right: 2px;
 }
 
-.c12 {
+.c11.c11.c11.c11.c11 {
   color: hsla(160,100%,26%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -203,7 +185,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   padding: 0;
 }
 
-.c13 {
+.c12.c12.c12.c12.c12 {
   color: hsla(160,100%,26%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -214,27 +196,26 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
+}
+
+.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12 {
   margin-left: 2px;
 }
 
-.c3 {
-  opacity: 1;
-}
-
 @media screen and (min-width:480px) {
-  .c0 {
+  .c0.c0.c0.c0.c0 {
     max-width: calc(100vw - 40px);
   }
 }
 
 @media screen and (min-width:768px) {
-  .c0 {
+  .c0.c0.c0.c0.c0 {
     max-width: 640px;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c0 {
+  .c0.c0.c0.c0.c0 {
     max-width: 1136px;
   }
 }
@@ -257,11 +238,12 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
         type="button"
       >
         <div
-          class="c2 c3"
+          class="c2"
           data-blade-component="base-box"
+          opacity="1"
         >
           <div
-            class="c4"
+            class="c3"
             data-blade-component="base-text"
           >
             View Price Breakdown
@@ -276,45 +258,45 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
         role="region"
       >
         <div
-          class="c5"
+          class="c4"
         >
           <div
-            class="c6"
+            class="c5"
             data-blade-component="box"
           >
             <div
-              class="c7"
+              class="c6"
               data-blade-component="box"
             >
               <p
-                class="c8"
+                class="c7"
                 data-blade-component="text"
               >
                 Actual amount
               </p>
               <div
-                class="c9"
+                class="c8"
                 data-blade-component="amount"
               >
                 <div
-                  class="c10"
+                  class="c9"
                   data-blade-component="base-box"
                 >
                   <span
-                    class="c11"
+                    class="c10"
                     data-blade-component="base-text"
                   >
                     ₹
                   </span>
                   <span
-                    class="c12"
+                    class="c11"
                     data-blade-component="base-text"
                   >
                     1,000
                     .
                   </span>
                   <span
-                    class="c13"
+                    class="c12"
                     data-blade-component="base-text"
                   >
                     00
@@ -331,7 +313,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
 `;
 
 exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -346,7 +328,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   min-width: 200px;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -360,7 +342,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   align-items: center;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -372,12 +354,12 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   padding-left: 4px;
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   margin-bottom: 0px;
   margin-top: 16px;
 }
 
-.c8 {
+.c8.c8.c8.c8.c8 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -388,14 +370,14 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   min-width: 200px;
 }
 
-.c10 {
+.c10.c10.c10.c10.c10 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
-.c11 {
+.c11.c11.c11.c11.c11 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -409,7 +391,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   align-items: baseline;
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   -webkit-transition-duration: 300ms;
   transition-duration: 300ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -422,7 +404,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   overflow-y: hidden;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   color: hsla(218,89%,51%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -436,7 +418,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   padding: 0;
 }
 
-.c9 {
+.c9.c9.c9.c9.c9 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -449,7 +431,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   padding: 0;
 }
 
-.c12 {
+.c12.c12.c12.c12.c12 {
   color: hsla(160,100%,26%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -460,10 +442,13 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
+}
+
+.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12 {
   margin-right: 2px;
 }
 
-.c13 {
+.c13.c13.c13.c13.c13 {
   color: hsla(160,100%,26%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -476,7 +461,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   padding: 0;
 }
 
-.c14 {
+.c14.c14.c14.c14.c14 {
   color: hsla(160,100%,26%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -487,10 +472,13 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   line-height: 1.25rem;
   margin: 0;
   padding: 0;
+}
+
+.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14 {
   margin-left: 2px;
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -514,14 +502,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   transition-property: transform;
 }
 
-.c1 {
-  padding: 0;
-  background-color: transparent;
-  outline: none;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
+.c1.c1.c1.c1.c1 {
   display: inline-block;
   border-radius: 2px;
   -webkit-transition-property: box-shadow;
@@ -532,18 +513,18 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   transition-duration: 70ms;
 }
 
-.c1 .content-container {
+.c1.c1.c1.c1.c1 .content-container {
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
   border-radius: 2px;
 }
 
-.c1:focus-visible .content-container {
+.c1.c1.c1.c1.c1:focus-visible .content-container {
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c1 * {
+.c1.c1.c1.c1.c1 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -553,19 +534,19 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
 }
 
 @media screen and (min-width:480px) {
-  .c0 {
+  .c0.c0.c0.c0.c0 {
     max-width: calc(100vw - 40px);
   }
 }
 
 @media screen and (min-width:768px) {
-  .c0 {
+  .c0.c0.c0.c0.c0 {
     max-width: 640px;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c0 {
+  .c0.c0.c0.c0.c0 {
     max-width: 1136px;
   }
 }
@@ -604,13 +585,13 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
           >
             <div
               aria-hidden="true"
-              class=" c5"
+              class="c5"
               data-blade-component="base-box"
               direction="bottom"
             >
               <svg
                 aria-hidden="true"
-                class="Svgweb__StyledSvg-vcmjs8-0"
+                class=""
                 data-blade-component="icon"
                 fill="none"
                 height="16px"

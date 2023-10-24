@@ -1,33 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it visible on click 1`] = `"<div id="root"><div data-blade-component="dropdown" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx eoXGsO"><div data-blade-component="base-box" class="BaseBox-bmPWx epXLnJ"><div data-blade-component="autocomplete" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx edjBu"><div data-blade-component="base-box" class="BaseBox-bmPWx fJyvvB"><label for="dropdown-undefined-trigger-undefined-input-undefined" style="width:auto;flex-shrink:0;margin-right:16px" id="dropdown-undefined-label" data-blade-component="form-label"><div data-blade-component="base-box" class="BaseBox-bmPWx bqWBik"><div data-blade-component="base-box" class="BaseBox-bmPWx eeqPab"><p class="StyledBaseText-dVBfTO gaMIEc" data-blade-component="text">Fruits</p><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 ijVANw"><p class="StyledBaseText-dVBfTO eIdQFo" data-blade-component="text"></p></div></div></div></label></div><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  fXDQuH wNqcQ"><div class="BaseBox-bmPWx cbxZCZ tags-slot" data-blade-component="base-box"><div data-blade-component="base-box" class="BaseBox-bmPWx ivjPKl"><input type="text" autoComplete="off" id="dropdown-undefined-trigger-undefined-input-undefined" placeholder="Select Option" data-blade-component="styled-base-input" aria-required="false" aria-disabled="false" aria-invalid="false" aria-describedby="" aria-haspopup="listbox" aria-expanded="false" aria-controls="dropdown-undefined-actionlist" role="combobox" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 gdWYxP" value=""/></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx bQSUVn"><div data-blade-component="base-box" class="BaseBox-bmPWx iqKjYJ"><div data-blade-component="base-box" class="BaseBox-bmPWx eZRnEP"><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0 knBhBu"><path d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z" clip-rule="evenodd" fill="hsla(217, 56%, 17%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0 jDmKOD"><path d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z" clip-rule="evenodd" fill="hsla(217, 56%, 17%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  dGtNgo"></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx jgxKDg"><div data-blade-component="base-box" class="BaseBox-bmPWx ctznZr"></div></div></div></div><div style="position:fixed;left:0;top:0" data-blade-component="base-box" class="BaseBox-bmPWx eRCNTT"><div elevation="midRaised" style="transform:translateY(-8px);opacity:0" data-blade-component="dropdown-overlay" class="BaseBox-bmPWx StyledDropdownOverlay-sc-1dik5mo-0 havWiW hsiFVr"><div data-blade-component="base-box" class="BaseBox-bmPWx cknGXH"><div data-blade-component="dropdown-header" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx HnFxS"><div data-blade-component="base-box" class="BaseBox-bmPWx isYLKC"><div data-blade-component="base-box" class="BaseBox-bmPWx jPnCFC"><div data-blade-component="base-box" class="BaseBox-bmPWx lhloZM"><div data-blade-component="base-box" class="BaseBox-bmPWx kGcQUv"><h6 class="StyledBaseText-dVBfTO dFejDk" data-blade-component="heading">Recent Searches</h6></div></div></div></div></div><div data-blade-component="divider" role="separator" class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 jfizlv jvaPlR"></div></div></div><div data-blade-component="box" class="BaseBox-bmPWx eaUCZq"><svg aria-hidden="true" data-blade-component="icon" height="24px" viewBox="0 0 24 24" width="24px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M16.618 18.032a9 9 0 1 1 1.414-1.414l3.675 3.675a1 1 0 0 1-1.414 1.414l-3.675-3.675ZM4 11a7 7 0 1 1 12.041 4.857 1.009 1.009 0 0 0-.185.184A7 7 0 0 1 4 11Z" clip-rule="evenodd" fill="hsla(217, 56%, 17%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg><p class="StyledBaseText-dVBfTO fKKfSp" data-blade-component="text">No Search Result Found</p><p class="StyledBaseText-dVBfTO hKVYDc" data-blade-component="text">Try searching for a different value</p></div><div role="group" data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="divider" role="separator" class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 jfizlv jvaPlR"></div><div data-blade-component="dropdown-footer" class="BaseBox-bmPWx kGtVIy"></div></div></div></div></div></div></div>"`;
+exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it visible on click 1`] = `"<div id="root"><div data-blade-component="dropdown" class="BaseBox-bmPWx iutvIJ"><div data-blade-component="base-box" class="BaseBox-bmPWx bwWUtu"><div data-blade-component="base-box" class="BaseBox-bmPWx eDdvdR"><div data-blade-component="autocomplete" class="BaseBox-bmPWx iutvIJ"><div data-blade-component="base-box" class="BaseBox-bmPWx jjVhDm"><div data-blade-component="base-box" class="BaseBox-bmPWx iMRrjR"><label for="dropdown-undefined-trigger-undefined-input-undefined" style="width:auto;flex-shrink:0;margin-right:16px" id="dropdown-undefined-label" data-blade-component="form-label"><div data-blade-component="base-box" class="BaseBox-bmPWx cWPgGA"><div data-blade-component="base-box" class="BaseBox-bmPWx cEagQj"><p class="StyledBaseText-dVBfTO caEKek" data-blade-component="text">Fruits</p><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 ctjjOt"><p class="StyledBaseText-dVBfTO kGtJcI" data-blade-component="text"></p></div></div></div></label></div><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 iutvIJ hyiIyr dkzCDo"><div class="BaseBox-bmPWx jnrKqt tags-slot" data-blade-component="base-box"><div data-blade-component="base-box" class="BaseBox-bmPWx QsEEZ"><input type="text" autoComplete="off" id="dropdown-undefined-trigger-undefined-input-undefined" placeholder="Select Option" data-blade-component="styled-base-input" aria-required="false" aria-disabled="false" aria-invalid="false" aria-describedby="" aria-haspopup="listbox" aria-expanded="false" aria-controls="dropdown-undefined-actionlist" role="combobox" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 cBuQHb" value=""/></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx eihNDL"><div data-blade-component="base-box" class="BaseBox-bmPWx gAFYoJ"><div data-blade-component="base-box" class="BaseBox-bmPWx jKmdRL"><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0 gOuJDm"><path d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z" clip-rule="evenodd" fill="hsla(217, 56%, 17%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0 cllTKD"><path d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z" clip-rule="evenodd" fill="hsla(217, 56%, 17%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0 iutvIJ dCWMmg"></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx hVlzDw"><div data-blade-component="base-box" class="BaseBox-bmPWx euuYYv"></div></div></div></div><div style="position:fixed;left:0;top:0" data-blade-component="base-box" class="BaseBox-bmPWx hFhWvD"><div elevation="midRaised" style="transform:translateY(-8px);opacity:0" data-blade-component="dropdown-overlay" class="BaseBox-bmPWx StyledDropdownOverlay-sc-1dik5mo-0 hBipEO hhjeEv"><div data-blade-component="base-box" class="BaseBox-bmPWx MZNjr"><div data-blade-component="dropdown-header" class="BaseBox-bmPWx iutvIJ"><div data-blade-component="base-box" class="BaseBox-bmPWx kQNDHe"><div data-blade-component="base-box" class="BaseBox-bmPWx icLHYe"><div data-blade-component="base-box" class="BaseBox-bmPWx dJWtjK"><div data-blade-component="base-box" class="BaseBox-bmPWx hEapmI"><div data-blade-component="base-box" class="BaseBox-bmPWx NgGbz"><h6 class="StyledBaseText-dVBfTO hYiPbA" data-blade-component="heading">Recent Searches</h6></div></div></div></div></div><div data-blade-component="divider" role="separator" class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 gSXrEz hSwZSx"></div></div></div><div data-blade-component="box" class="BaseBox-bmPWx bbZCCC"><svg aria-hidden="true" data-blade-component="icon" height="24px" viewBox="0 0 24 24" width="24px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0 dhIfXO"><path d="M16.618 18.032a9 9 0 1 1 1.414-1.414l3.675 3.675a1 1 0 0 1-1.414 1.414l-3.675-3.675ZM4 11a7 7 0 1 1 12.041 4.857 1.009 1.009 0 0 0-.185.184A7 7 0 0 1 4 11Z" clip-rule="evenodd" fill="hsla(217, 56%, 17%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg><p class="StyledBaseText-dVBfTO hvJTXR" data-blade-component="text">No Search Result Found</p><p class="StyledBaseText-dVBfTO hxmDDY" data-blade-component="text">Try searching for a different value</p></div><div role="group" data-blade-component="base-box" class="BaseBox-bmPWx iutvIJ"><div data-blade-component="divider" role="separator" class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 gSXrEz hSwZSx"></div><div data-blade-component="dropdown-footer" class="BaseBox-bmPWx fFACSG"></div></div></div></div></div></div></div>"`;
 
 exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it visible on click 2`] = `
 <div
   id="root"
 >
   <div
-    class="BaseBox-bmPWx"
+    class="BaseBox-bmPWx iutvIJ"
     data-blade-component="dropdown"
   >
     <div
-      class="BaseBox-bmPWx eoXGsO"
+      class="BaseBox-bmPWx bwWUtu"
       data-blade-component="base-box"
     >
       <div
-        class="BaseBox-bmPWx epXLnJ"
+        class="BaseBox-bmPWx eDdvdR"
         data-blade-component="base-box"
       >
         <div
-          class="BaseBox-bmPWx"
+          class="BaseBox-bmPWx iutvIJ"
           data-blade-component="autocomplete"
         >
           <div
-            class="BaseBox-bmPWx edjBu"
+            class="BaseBox-bmPWx jjVhDm"
             data-blade-component="base-box"
           >
             <div
-              class="BaseBox-bmPWx fJyvvB"
+              class="BaseBox-bmPWx iMRrjR"
               data-blade-component="base-box"
             >
               <label
@@ -37,25 +37,25 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
                 style="width:auto;flex-shrink:0;margin-right:16px"
               >
                 <div
-                  class="BaseBox-bmPWx bqWBik"
+                  class="BaseBox-bmPWx cWPgGA"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="BaseBox-bmPWx eeqPab"
+                    class="BaseBox-bmPWx cEagQj"
                     data-blade-component="base-box"
                   >
                     <p
-                      class="StyledBaseText-dVBfTO gaMIEc"
+                      class="StyledBaseText-dVBfTO caEKek"
                       data-blade-component="text"
                     >
                       Fruits
                     </p>
                     <div
-                      class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 ijVANw"
+                      class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 ctjjOt"
                       data-blade-component="visually-hidden"
                     >
                       <p
-                        class="StyledBaseText-dVBfTO eIdQFo"
+                        class="StyledBaseText-dVBfTO kGtJcI"
                         data-blade-component="text"
                       />
                     </div>
@@ -64,15 +64,15 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
               </label>
             </div>
             <div
-              class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  fXDQuH wNqcQ"
+              class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 iutvIJ hyiIyr dkzCDo"
               data-blade-component="base-box"
             >
               <div
-                class="BaseBox-bmPWx eOVvyM tags-slot"
+                class="BaseBox-bmPWx cGFJLc tags-slot"
                 data-blade-component="base-box"
               >
                 <div
-                  class="BaseBox-bmPWx ivjPKl"
+                  class="BaseBox-bmPWx QsEEZ"
                   data-blade-component="base-box"
                 >
                   <input
@@ -85,7 +85,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
                     aria-invalid="false"
                     aria-required="false"
                     autocomplete="off"
-                    class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 gdWYxP"
+                    class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 cBuQHb"
                     data-blade-component="styled-base-input"
                     id="dropdown-7-trigger-1-input-2"
                     placeholder="Select Option"
@@ -96,20 +96,20 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
                 </div>
               </div>
               <div
-                class="BaseBox-bmPWx bQSUVn"
+                class="BaseBox-bmPWx eihNDL"
                 data-blade-component="base-box"
               >
                 <div
-                  class="BaseBox-bmPWx iqKjYJ"
+                  class="BaseBox-bmPWx gAFYoJ"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="BaseBox-bmPWx eZRnEP"
+                    class="BaseBox-bmPWx jKmdRL"
                     data-blade-component="base-box"
                   >
                     <svg
                       aria-hidden="true"
-                      class="Svgweb__StyledSvg-vcmjs8-0 jDmKOD"
+                      class="Svgweb__StyledSvg-vcmjs8-0 cllTKD"
                       data-blade-component="icon"
                       fill="none"
                       height="16px"
@@ -126,7 +126,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
                     </svg>
                     <svg
                       aria-hidden="true"
-                      class="Svgweb__StyledSvg-vcmjs8-0 knBhBu"
+                      class="Svgweb__StyledSvg-vcmjs8-0 gOuJDm"
                       data-blade-component="icon"
                       fill="none"
                       height="16px"
@@ -145,63 +145,63 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
                 </div>
               </div>
               <div
-                class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  dGtNgo"
+                class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0 iutvIJ dCWMmg"
                 data-blade-component="base-box"
               />
             </div>
           </div>
           <div
-            class="BaseBox-bmPWx jgxKDg"
+            class="BaseBox-bmPWx hVlzDw"
             data-blade-component="base-box"
           >
             <div
-              class="BaseBox-bmPWx ctznZr"
+              class="BaseBox-bmPWx euuYYv"
               data-blade-component="base-box"
             />
           </div>
         </div>
       </div>
       <div
-        class="BaseBox-bmPWx OutXy"
+        class="BaseBox-bmPWx fCTbLO"
         data-blade-component="base-box"
         style="position: fixed; left: 0px; top: 0px; transform: translate(0px, 8px); width: 0px;"
       >
         <div
-          class="BaseBox-bmPWx StyledDropdownOverlay-sc-1dik5mo-0 havWiW hsiFVr"
+          class="BaseBox-bmPWx StyledDropdownOverlay-sc-1dik5mo-0 hBipEO hhjeEv"
           data-blade-component="dropdown-overlay"
           elevation="midRaised"
           style="transition-property: transform,opacity; transition-duration: 200ms;"
         >
           <div
-            class="BaseBox-bmPWx cknGXH"
+            class="BaseBox-bmPWx MZNjr"
             data-blade-component="base-box"
           >
             <div
-              class="BaseBox-bmPWx"
+              class="BaseBox-bmPWx iutvIJ"
               data-blade-component="dropdown-header"
             >
               <div
-                class="BaseBox-bmPWx HnFxS"
+                class="BaseBox-bmPWx kQNDHe"
                 data-blade-component="base-box"
               >
                 <div
-                  class="BaseBox-bmPWx isYLKC"
+                  class="BaseBox-bmPWx icLHYe"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="BaseBox-bmPWx jPnCFC"
+                    class="BaseBox-bmPWx dJWtjK"
                     data-blade-component="base-box"
                   >
                     <div
-                      class="BaseBox-bmPWx lhloZM"
+                      class="BaseBox-bmPWx hEapmI"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="BaseBox-bmPWx kGcQUv"
+                        class="BaseBox-bmPWx NgGbz"
                         data-blade-component="base-box"
                       >
                         <h6
-                          class="StyledBaseText-dVBfTO dFejDk"
+                          class="StyledBaseText-dVBfTO hYiPbA"
                           data-blade-component="heading"
                         >
                           Recent Searches
@@ -212,7 +212,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
                 </div>
               </div>
               <div
-                class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 jfizlv jvaPlR"
+                class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 gSXrEz hSwZSx"
                 data-blade-component="divider"
                 role="separator"
               />
@@ -220,20 +220,20 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
           </div>
           <div
             aria-labelledby="dropdown-7-label"
-            class="BaseBox-bmPWx"
+            class="BaseBox-bmPWx iutvIJ"
             data-blade-component="action-list"
             id="dropdown-7-actionlist"
             role="dialog"
           >
             <div
               aria-multiselectable="false"
-              class="BaseBox-bmPWx StyledListBoxWrapperweb__StyledListBoxWrapper-sc-1eo4pr6-0  iclxbZ"
+              class="BaseBox-bmPWx StyledListBoxWrapperweb__StyledListBoxWrapper-sc-1eo4pr6-0 iutvIJ WuFUp"
               data-blade-component="base-box"
               role="listbox"
             >
               <button
                 aria-selected="false"
-                class="BaseBox-bmPWx StyledActionListItemweb__StyledActionListItem-sc-1okp9u4-0  jhMmTr active-focus"
+                class="BaseBox-bmPWx StyledActionListItemweb__StyledActionListItem-sc-1okp9u4-0 iutvIJ fENAxP active-focus"
                 data-blade-component="action-list-item"
                 data-index="0"
                 data-value="apple"
@@ -243,37 +243,37 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
                 type="button"
               >
                 <div
-                  class="BaseBox-bmPWx hVfznU"
+                  class="BaseBox-bmPWx btyVrE"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="BaseBox-bmPWx exgaAZ"
+                    class="BaseBox-bmPWx hiSyul"
                     data-blade-component="base-box"
                   />
                   <div
-                    class="BaseBox-bmPWx fDCmJa"
+                    class="BaseBox-bmPWx eJNHse"
                     data-blade-component="base-box"
                   >
                     <p
-                      class="StyledBaseText-dVBfTO cwEniv"
+                      class="StyledBaseText-dVBfTO khZxBz"
                       data-blade-component="text"
                     >
                       Apple
                     </p>
                   </div>
                   <div
-                    class="BaseBox-bmPWx eWDSVX"
+                    class="BaseBox-bmPWx ibsUgf"
                     data-blade-component="base-box"
                   />
                 </div>
                 <div
-                  class="BaseBox-bmPWx"
+                  class="BaseBox-bmPWx iutvIJ"
                   data-blade-component="base-box"
                 />
               </button>
               <button
                 aria-selected="false"
-                class="BaseBox-bmPWx StyledActionListItemweb__StyledActionListItem-sc-1okp9u4-0  jhMmTr"
+                class="BaseBox-bmPWx StyledActionListItemweb__StyledActionListItem-sc-1okp9u4-0 iutvIJ fENAxP"
                 data-blade-component="action-list-item"
                 data-index="1"
                 data-value="mango"
@@ -283,66 +283,67 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
                 type="button"
               >
                 <div
-                  class="BaseBox-bmPWx hVfznU"
+                  class="BaseBox-bmPWx btyVrE"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="BaseBox-bmPWx exgaAZ"
+                    class="BaseBox-bmPWx hiSyul"
                     data-blade-component="base-box"
                   />
                   <div
-                    class="BaseBox-bmPWx fDCmJa"
+                    class="BaseBox-bmPWx eJNHse"
                     data-blade-component="base-box"
                   >
                     <p
-                      class="StyledBaseText-dVBfTO cwEniv"
+                      class="StyledBaseText-dVBfTO khZxBz"
                       data-blade-component="text"
                     >
                       Mango
                     </p>
                   </div>
                   <div
-                    class="BaseBox-bmPWx eWDSVX"
+                    class="BaseBox-bmPWx ibsUgf"
                     data-blade-component="base-box"
                   />
                 </div>
                 <div
-                  class="BaseBox-bmPWx"
+                  class="BaseBox-bmPWx iutvIJ"
                   data-blade-component="base-box"
                 />
               </button>
             </div>
           </div>
           <div
-            class="BaseBox-bmPWx"
+            class="BaseBox-bmPWx iutvIJ"
             data-blade-component="base-box"
             role="group"
           >
             <div
-              class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 jfizlv jvaPlR"
+              class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 gSXrEz hSwZSx"
               data-blade-component="divider"
               role="separator"
             />
             <div
-              class="BaseBox-bmPWx kGtVIy"
+              class="BaseBox-bmPWx fFACSG"
               data-blade-component="dropdown-footer"
             >
               <div
-                class="BaseBox-bmPWx"
+                class="BaseBox-bmPWx iutvIJ"
                 data-blade-component="box"
               >
                 <button
-                  class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 dAizYV"
+                  class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 bFyAlZ"
                   data-blade-component="button"
                   role="button"
                   type="button"
                 >
                   <div
-                    class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 kkGTK NIPoA"
+                    class="BaseBox-bmPWx gRxylf"
                     data-blade-component="base-box"
+                    opacity="1"
                   >
                     <div
-                      class="StyledBaseText-dVBfTO brGLEM"
+                      class="StyledBaseText-dVBfTO gEaGjA"
                       data-blade-component="base-text"
                     >
                       Apply

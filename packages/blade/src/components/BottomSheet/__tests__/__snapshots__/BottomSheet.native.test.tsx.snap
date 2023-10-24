@@ -112,9 +112,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
         pointerEvents="none"
         style={
           [
-            {
-              "pointerEvents": "none",
-            },
+            {},
             {
               "alignItems": "center",
               "backgroundColor": "hsla(0, 0%, 100%, 1)",
@@ -193,14 +191,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                 flexShrink={0}
                 style={
                   [
-                    {
-                      "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                      "flexShrink": 0,
-                      "marginTop": "auto",
-                      "touchAction": "none",
-                      "width": "100%",
-                      "zIndex": 2,
-                    },
+                    {},
                   ]
                 }
                 touchAction="none"
@@ -216,16 +207,8 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                   isDividerHorizontal={true}
                   style={
                     [
-                      {
-                        "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
-                        "borderStyle": "solid",
-                        "borderWidth": 0,
-                      },
-                      {
-                        "borderBottomStyle": "solid",
-                        "borderBottomWidth": 1,
-                        "flexGrow": 1,
-                      },
+                      {},
+                      {},
                     ]
                   }
                   thickness="thin"
@@ -234,12 +217,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                   data-blade-component="base-box"
                   style={
                     [
-                      {
-                        "paddingBottom": 16,
-                        "paddingLeft": 16,
-                        "paddingRight": 16,
-                        "paddingTop": 16,
-                      },
+                      {},
                     ]
                   }
                 >
@@ -299,25 +277,8 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                     style={
                       [
                         {
-                          "alignItems": "center",
                           "alignSelf": "center",
-                          "backgroundColor": "hsla(218, 89%, 51%, 0)",
-                          "borderColor": "hsla(218, 89%, 51%, 1)",
-                          "borderRadius": 2,
-                          "borderStyle": "solid",
-                          "borderWidth": 1,
-                          "cursor": "pointer",
                           "display": "flex",
-                          "justifyContent": "center",
-                          "minHeight": 36,
-                          "paddingBottom": 0,
-                          "paddingLeft": 20,
-                          "paddingRight": 20,
-                          "paddingTop": 0,
-                          "textDecorationColor": "black",
-                          "textDecorationLine": "none",
-                          "textDecorationStyle": "solid",
-                          "width": "100%",
                         },
                         {
                           "backgroundColor": "hsla(218, 89%, 51%, 0)",
@@ -332,22 +293,11 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                       data-blade-component="base-box"
                       display="flex"
                       flexDirection="row"
-                      isHidden={false}
                       justifyContent="center"
+                      opacity={1}
                       style={
                         [
-                          {
-                            "alignItems": "center",
-                            "display": "flex",
-                            "flexBasis": 0,
-                            "flexDirection": "row",
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "justifyContent": "center",
-                          },
-                          {
-                            "opacity": 1,
-                          },
+                          {},
                         ]
                       }
                     >
@@ -412,12 +362,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
           right="spacing.0"
           style={
             [
-              {
-                "left": 0,
-                "position": "relative",
-                "right": 0,
-                "top": 0,
-              },
+              {},
             ]
           }
           top="spacing.0"
@@ -426,9 +371,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
             data-blade-component="base-box"
             style={
               [
-                {
-                  "zIndex": 100,
-                },
+                {},
               ]
             }
             zIndex={100}
@@ -438,19 +381,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
               style={
                 [
                   {},
-                  {
-                    "alignItems": "center",
-                    "display": "flex",
-                    "flexDirection": "column",
-                    "flexShrink": 0,
-                    "justifyContent": "center",
-                    "marginBottom": 4,
-                    "paddingTop": 12,
-                    "position": "relative",
-                    "touchAction": "none",
-                    "width": "100%",
-                    "zIndex": 100,
-                  },
+                  {},
                 ]
               }
             >
@@ -459,17 +390,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                 style={
                   [
                     {},
-                    {
-                      "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
-                      "borderRadius": 16,
-                      "content": "''",
-                      "height": 4,
-                      "marginBottom": "auto",
-                      "marginLeft": "auto",
-                      "marginRight": "auto",
-                      "marginTop": "auto",
-                      "width": 56,
-                    },
+                    {},
                   ]
                 }
               />
@@ -481,10 +402,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
             overflow="visible"
             style={
               [
-                {
-                  "flexShrink": 0,
-                  "overflow": "visible",
-                },
+                {},
               ]
             }
           >
@@ -500,13 +418,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                 data-blade-component="base-box"
                 style={
                   [
-                    {
-                      "marginBottom": 16,
-                      "marginTop": 16,
-                      "paddingLeft": 16,
-                      "paddingRight": 16,
-                      "touchAction": "none",
-                    },
+                    {},
                   ]
                 }
                 touchAction="none"
@@ -517,11 +429,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                   flexDirection="row"
                   style={
                     [
-                      {
-                        "display": "flex",
-                        "flexDirection": "row",
-                        "userSelect": "none",
-                      },
+                      {},
                     ]
                   }
                   userSelect="none"
@@ -533,16 +441,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                     flexDirection="row"
                     style={
                       [
-                        {
-                          "alignItems": "flex-start",
-                          "display": "flex",
-                          "flexBasis": "auto",
-                          "flexDirection": "row",
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "marginRight": "auto",
-                          "paddingRight": 16,
-                        },
+                        {},
                       ]
                     }
                   >
@@ -550,11 +449,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                       data-blade-component="base-box"
                       style={
                         [
-                          {
-                            "flexBasis": "auto",
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                          },
+                          {},
                         ]
                       }
                     >
@@ -565,11 +460,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                         flexShrink={0}
                         style={
                           [
-                            {
-                              "display": "flex",
-                              "flexDirection": "row",
-                              "flexShrink": 0,
-                            },
+                            {},
                           ]
                         }
                       >
@@ -611,9 +502,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                           data-blade-component="base-box"
                           style={
                             [
-                              {
-                                "marginLeft": 8,
-                              },
+                              {},
                             ]
                           }
                         >
@@ -625,12 +514,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                             justifyContent="center"
                             style={
                               [
-                                {
-                                  "alignItems": "center",
-                                  "display": "flex",
-                                  "height": 28,
-                                  "justifyContent": "center",
-                                },
+                                {},
                               ]
                             }
                           >
@@ -639,9 +523,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                               display="flex"
                               style={
                                 [
-                                  {
-                                    "display": "flex",
-                                  },
+                                  {},
                                 ]
                               }
                             >
@@ -652,16 +534,9 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                                 size="medium"
                                 style={
                                   [
-                                    {
-                                      "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
-                                    },
+                                    {},
                                     {
                                       "alignSelf": "center",
-                                      "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
-                                      "borderRadius": 9999,
-                                      "display": "flex",
-                                      "flexWrap": "nowrap",
-                                      "maxWidth": 100,
                                     },
                                   ]
                                 }
@@ -675,17 +550,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                                   overflow="hidden"
                                   style={
                                     [
-                                      {
-                                        "alignItems": "center",
-                                        "display": "flex",
-                                        "flexDirection": "row",
-                                        "justifyContent": "center",
-                                        "overflow": "hidden",
-                                        "paddingBottom": 2,
-                                        "paddingLeft": 8,
-                                        "paddingRight": 8,
-                                        "paddingTop": 2,
-                                      },
+                                      {},
                                     ]
                                   }
                                 >
@@ -770,9 +635,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                     data-blade-component="base-box"
                     style={
                       [
-                        {
-                          "marginRight": 16,
-                        },
+                        {},
                       ]
                     }
                   >
@@ -784,12 +647,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                       justifyContent="center"
                       style={
                         [
-                          {
-                            "alignItems": "center",
-                            "display": "flex",
-                            "height": 28,
-                            "justifyContent": "center",
-                          },
+                          {},
                         ]
                       }
                     >
@@ -798,9 +656,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                         display="flex"
                         style={
                           [
-                            {
-                              "display": "flex",
-                            },
+                            {},
                           ]
                         }
                       >
@@ -810,16 +666,9 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                           size="medium"
                           style={
                             [
-                              {
-                                "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
-                                "textAlign": "left",
-                              },
+                              {},
                               {
                                 "alignSelf": "center",
-                                "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
-                                "borderRadius": 9999,
-                                "display": "flex",
-                                "flexWrap": "nowrap",
                               },
                             ]
                           }
@@ -834,17 +683,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                             overflow="hidden"
                             style={
                               [
-                                {
-                                  "alignItems": "center",
-                                  "display": "flex",
-                                  "flexDirection": "row",
-                                  "justifyContent": "center",
-                                  "overflow": "hidden",
-                                  "paddingBottom": 2,
-                                  "paddingLeft": 8,
-                                  "paddingRight": 8,
-                                  "paddingTop": 2,
-                                },
+                                {},
                               ]
                             }
                           >
@@ -895,12 +734,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                     justifyContent="center"
                     style={
                       [
-                        {
-                          "alignItems": "center",
-                          "display": "flex",
-                          "height": 28,
-                          "justifyContent": "center",
-                        },
+                        {},
                       ]
                     }
                   >
@@ -1010,16 +844,8 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                 isDividerHorizontal={true}
                 style={
                   [
-                    {
-                      "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
-                      "borderStyle": "solid",
-                      "borderWidth": 0,
-                    },
-                    {
-                      "borderBottomStyle": "solid",
-                      "borderBottomWidth": 1,
-                      "flexGrow": 1,
-                    },
+                    {},
+                    {},
                   ]
                 }
                 thickness="thin"
@@ -1145,9 +971,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
         pointerEvents="none"
         style={
           [
-            {
-              "pointerEvents": "none",
-            },
+            {},
             {
               "alignItems": "center",
               "backgroundColor": "hsla(0, 0%, 100%, 1)",
@@ -1226,14 +1050,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                 flexShrink={0}
                 style={
                   [
-                    {
-                      "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                      "flexShrink": 0,
-                      "marginTop": "auto",
-                      "touchAction": "none",
-                      "width": "100%",
-                      "zIndex": 2,
-                    },
+                    {},
                   ]
                 }
                 touchAction="none"
@@ -1249,16 +1066,8 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                   isDividerHorizontal={true}
                   style={
                     [
-                      {
-                        "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
-                        "borderStyle": "solid",
-                        "borderWidth": 0,
-                      },
-                      {
-                        "borderBottomStyle": "solid",
-                        "borderBottomWidth": 1,
-                        "flexGrow": 1,
-                      },
+                      {},
+                      {},
                     ]
                   }
                   thickness="thin"
@@ -1267,12 +1076,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                   data-blade-component="base-box"
                   style={
                     [
-                      {
-                        "paddingBottom": 16,
-                        "paddingLeft": 16,
-                        "paddingRight": 16,
-                        "paddingTop": 16,
-                      },
+                      {},
                     ]
                   }
                 >
@@ -1332,25 +1136,8 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                     style={
                       [
                         {
-                          "alignItems": "center",
                           "alignSelf": "center",
-                          "backgroundColor": "hsla(218, 89%, 51%, 0)",
-                          "borderColor": "hsla(218, 89%, 51%, 1)",
-                          "borderRadius": 2,
-                          "borderStyle": "solid",
-                          "borderWidth": 1,
-                          "cursor": "pointer",
                           "display": "flex",
-                          "justifyContent": "center",
-                          "minHeight": 36,
-                          "paddingBottom": 0,
-                          "paddingLeft": 20,
-                          "paddingRight": 20,
-                          "paddingTop": 0,
-                          "textDecorationColor": "black",
-                          "textDecorationLine": "none",
-                          "textDecorationStyle": "solid",
-                          "width": "100%",
                         },
                         {
                           "backgroundColor": "hsla(218, 89%, 51%, 0)",
@@ -1365,22 +1152,11 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                       data-blade-component="base-box"
                       display="flex"
                       flexDirection="row"
-                      isHidden={false}
                       justifyContent="center"
+                      opacity={1}
                       style={
                         [
-                          {
-                            "alignItems": "center",
-                            "display": "flex",
-                            "flexBasis": 0,
-                            "flexDirection": "row",
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "justifyContent": "center",
-                          },
-                          {
-                            "opacity": 1,
-                          },
+                          {},
                         ]
                       }
                     >
@@ -1445,12 +1221,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
           right="spacing.0"
           style={
             [
-              {
-                "left": 0,
-                "position": "absolute",
-                "right": 0,
-                "top": 0,
-              },
+              {},
             ]
           }
           top="spacing.0"
@@ -1459,9 +1230,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
             data-blade-component="base-box"
             style={
               [
-                {
-                  "zIndex": 100,
-                },
+                {},
               ]
             }
             zIndex={100}
@@ -1471,19 +1240,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
               style={
                 [
                   {},
-                  {
-                    "alignItems": "center",
-                    "display": "flex",
-                    "flexDirection": "column",
-                    "flexShrink": 0,
-                    "justifyContent": "center",
-                    "marginBottom": 4,
-                    "paddingTop": 12,
-                    "position": "relative",
-                    "touchAction": "none",
-                    "width": "100%",
-                    "zIndex": 100,
-                  },
+                  {},
                 ]
               }
             >
@@ -1492,17 +1249,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                 style={
                   [
                     {},
-                    {
-                      "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
-                      "borderRadius": 16,
-                      "content": "''",
-                      "height": 4,
-                      "marginBottom": "auto",
-                      "marginLeft": "auto",
-                      "marginRight": "auto",
-                      "marginTop": "auto",
-                      "width": 56,
-                    },
+                    {},
                   ]
                 }
               />
@@ -1514,10 +1261,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
             overflow="visible"
             style={
               [
-                {
-                  "flexShrink": 0,
-                  "overflow": "visible",
-                },
+                {},
               ]
             }
           >
@@ -1528,13 +1272,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
               right="spacing.0"
               style={
                 [
-                  {
-                    "height": 8,
-                    "position": "relative",
-                    "right": 0,
-                    "top": 0,
-                    "touchAction": "none",
-                  },
+                  {},
                 ]
               }
               top="spacing.0"
@@ -1553,20 +1291,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                 right="spacing.5"
                 style={
                   [
-                    {
-                      "alignItems": "center",
-                      "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                      "borderRadius": 9999,
-                      "display": "flex",
-                      "flexShrink": 0,
-                      "height": 28,
-                      "justifyContent": "center",
-                      "position": "absolute",
-                      "right": 16,
-                      "top": -4,
-                      "width": 28,
-                      "zIndex": 100,
-                    },
+                    {},
                   ]
                 }
                 top="-4px"

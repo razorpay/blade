@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -12,7 +12,7 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
   width: 100%;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -26,11 +26,11 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
   justify-content: space-between;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   margin-bottom: 4px;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -49,14 +49,14 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
   gap: 0px;
 }
 
-.c8 {
+.c8.c8.c8.c8.c8 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(216,15%,54%,0.18);
 }
 
-.c9 {
+.c9.c9.c9.c9.c9 {
   background-color: hsla(218,89%,51%,1);
 }
 
@@ -76,13 +76,13 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c11 {
+.c11.c11.c11.c11.c11 {
   background-color: hsla(218,89%,51%,1);
   height: 100%;
   width: 20%;
 }
 
-.c13 {
+.c13.c13.c13.c13.c13 {
   height: 100%;
   width: 100%;
   opacity: 0;
@@ -93,7 +93,7 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
   animation-delay: 3000ms;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -111,7 +111,7 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
   -webkit-box-orient: vertical;
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -124,7 +124,7 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
   padding: 0;
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -137,7 +137,7 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
   padding: 0;
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -230,7 +230,7 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
             data-blade-component="base-box"
           >
             <div
-              class=" c12 c13"
+              class="c12 c13"
               data-blade-component="base-box"
             />
           </div>
@@ -242,7 +242,7 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
 `;
 
 exports[`<ProgressBar /> should render ProgressBar without label and percentage 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -253,7 +253,7 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
   width: 100%;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -267,14 +267,14 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
   justify-content: flex-end;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(216,15%,54%,0.18);
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   background-color: hsla(218,89%,51%,1);
 }
 
@@ -294,13 +294,13 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   background-color: hsla(218,89%,51%,1);
   height: 100%;
   width: 50%;
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   height: 100%;
   width: 100%;
   opacity: 0;
@@ -343,7 +343,7 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
             data-blade-component="base-box"
           >
             <div
-              class=" c6 c7"
+              class="c6 c7"
               data-blade-component="base-box"
             />
           </div>
@@ -355,7 +355,7 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
 `;
 
 exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -366,7 +366,7 @@ exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
   width: 100%;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -380,18 +380,18 @@ exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
   justify-content: flex-end;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   margin-bottom: 4px;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(214,21%,94%,0.18);
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   background-color: hsla(218,89%,51%,1);
 }
 
@@ -411,13 +411,13 @@ exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   background-color: hsla(218,89%,51%,1);
   height: 100%;
   width: 20%;
 }
 
-.c9 {
+.c9.c9.c9.c9.c9 {
   height: 100%;
   width: 100%;
   opacity: 0;
@@ -428,7 +428,7 @@ exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
   animation-delay: 3000ms;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   color: hsla(216,19%,89%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -485,7 +485,7 @@ exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
             data-blade-component="base-box"
           >
             <div
-              class=" c8 c9"
+              class="c8 c9"
               data-blade-component="base-box"
             />
           </div>
@@ -497,7 +497,7 @@ exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
 `;
 
 exports[`<ProgressBar /> should render high contrast information intent ProgressBar 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -508,7 +508,7 @@ exports[`<ProgressBar /> should render high contrast information intent Progress
   width: 100%;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -522,18 +522,18 @@ exports[`<ProgressBar /> should render high contrast information intent Progress
   justify-content: flex-end;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   margin-bottom: 4px;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(214,21%,94%,0.18);
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   background-color: hsla(193,100%,35%,1);
 }
 
@@ -553,13 +553,13 @@ exports[`<ProgressBar /> should render high contrast information intent Progress
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   background-color: hsla(193,100%,35%,1);
   height: 100%;
   width: 20%;
 }
 
-.c9 {
+.c9.c9.c9.c9.c9 {
   height: 100%;
   width: 100%;
   opacity: 0;
@@ -570,7 +570,7 @@ exports[`<ProgressBar /> should render high contrast information intent Progress
   animation-delay: 3000ms;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   color: hsla(216,19%,89%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -627,7 +627,7 @@ exports[`<ProgressBar /> should render high contrast information intent Progress
             data-blade-component="base-box"
           >
             <div
-              class=" c8 c9"
+              class="c8 c9"
               data-blade-component="base-box"
             />
           </div>
@@ -639,7 +639,7 @@ exports[`<ProgressBar /> should render high contrast information intent Progress
 `;
 
 exports[`<ProgressBar /> should render high contrast negative intent ProgressBar 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -650,7 +650,7 @@ exports[`<ProgressBar /> should render high contrast negative intent ProgressBar
   width: 100%;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -664,18 +664,18 @@ exports[`<ProgressBar /> should render high contrast negative intent ProgressBar
   justify-content: flex-end;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   margin-bottom: 4px;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(214,21%,94%,0.18);
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   background-color: hsla(8,73%,47%,1);
 }
 
@@ -695,13 +695,13 @@ exports[`<ProgressBar /> should render high contrast negative intent ProgressBar
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   background-color: hsla(8,73%,47%,1);
   height: 100%;
   width: 20%;
 }
 
-.c9 {
+.c9.c9.c9.c9.c9 {
   height: 100%;
   width: 100%;
   opacity: 0;
@@ -712,7 +712,7 @@ exports[`<ProgressBar /> should render high contrast negative intent ProgressBar
   animation-delay: 3000ms;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   color: hsla(216,19%,89%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -769,7 +769,7 @@ exports[`<ProgressBar /> should render high contrast negative intent ProgressBar
             data-blade-component="base-box"
           >
             <div
-              class=" c8 c9"
+              class="c8 c9"
               data-blade-component="base-box"
             />
           </div>
@@ -781,7 +781,7 @@ exports[`<ProgressBar /> should render high contrast negative intent ProgressBar
 `;
 
 exports[`<ProgressBar /> should render high contrast neutral intent ProgressBar 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -792,7 +792,7 @@ exports[`<ProgressBar /> should render high contrast neutral intent ProgressBar 
   width: 100%;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -806,18 +806,18 @@ exports[`<ProgressBar /> should render high contrast neutral intent ProgressBar 
   justify-content: flex-end;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   margin-bottom: 4px;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(214,21%,94%,0.18);
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   background-color: hsla(216,33%,29%,1);
 }
 
@@ -837,13 +837,13 @@ exports[`<ProgressBar /> should render high contrast neutral intent ProgressBar 
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   background-color: hsla(216,33%,29%,1);
   height: 100%;
   width: 20%;
 }
 
-.c9 {
+.c9.c9.c9.c9.c9 {
   height: 100%;
   width: 100%;
   opacity: 0;
@@ -854,7 +854,7 @@ exports[`<ProgressBar /> should render high contrast neutral intent ProgressBar 
   animation-delay: 3000ms;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   color: hsla(216,19%,89%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -911,7 +911,7 @@ exports[`<ProgressBar /> should render high contrast neutral intent ProgressBar 
             data-blade-component="base-box"
           >
             <div
-              class=" c8 c9"
+              class="c8 c9"
               data-blade-component="base-box"
             />
           </div>
@@ -923,7 +923,7 @@ exports[`<ProgressBar /> should render high contrast neutral intent ProgressBar 
 `;
 
 exports[`<ProgressBar /> should render high contrast notice intent ProgressBar 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -934,7 +934,7 @@ exports[`<ProgressBar /> should render high contrast notice intent ProgressBar 1
   width: 100%;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -948,18 +948,18 @@ exports[`<ProgressBar /> should render high contrast notice intent ProgressBar 1
   justify-content: flex-end;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   margin-bottom: 4px;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(214,21%,94%,0.18);
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   background-color: hsla(38,97%,38%,1);
 }
 
@@ -979,13 +979,13 @@ exports[`<ProgressBar /> should render high contrast notice intent ProgressBar 1
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   background-color: hsla(38,97%,38%,1);
   height: 100%;
   width: 20%;
 }
 
-.c9 {
+.c9.c9.c9.c9.c9 {
   height: 100%;
   width: 100%;
   opacity: 0;
@@ -996,7 +996,7 @@ exports[`<ProgressBar /> should render high contrast notice intent ProgressBar 1
   animation-delay: 3000ms;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   color: hsla(216,19%,89%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -1053,7 +1053,7 @@ exports[`<ProgressBar /> should render high contrast notice intent ProgressBar 1
             data-blade-component="base-box"
           >
             <div
-              class=" c8 c9"
+              class="c8 c9"
               data-blade-component="base-box"
             />
           </div>
@@ -1065,7 +1065,7 @@ exports[`<ProgressBar /> should render high contrast notice intent ProgressBar 1
 `;
 
 exports[`<ProgressBar /> should render high contrast positive intent ProgressBar 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1076,7 +1076,7 @@ exports[`<ProgressBar /> should render high contrast positive intent ProgressBar
   width: 100%;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1090,18 +1090,18 @@ exports[`<ProgressBar /> should render high contrast positive intent ProgressBar
   justify-content: flex-end;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   margin-bottom: 4px;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(214,21%,94%,0.18);
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   background-color: hsla(160,100%,26%,1);
 }
 
@@ -1121,13 +1121,13 @@ exports[`<ProgressBar /> should render high contrast positive intent ProgressBar
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   background-color: hsla(160,100%,26%,1);
   height: 100%;
   width: 20%;
 }
 
-.c9 {
+.c9.c9.c9.c9.c9 {
   height: 100%;
   width: 100%;
   opacity: 0;
@@ -1138,7 +1138,7 @@ exports[`<ProgressBar /> should render high contrast positive intent ProgressBar
   animation-delay: 3000ms;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   color: hsla(216,19%,89%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -1195,7 +1195,7 @@ exports[`<ProgressBar /> should render high contrast positive intent ProgressBar
             data-blade-component="base-box"
           >
             <div
-              class=" c8 c9"
+              class="c8 c9"
               data-blade-component="base-box"
             />
           </div>
@@ -1207,7 +1207,7 @@ exports[`<ProgressBar /> should render high contrast positive intent ProgressBar
 `;
 
 exports[`<ProgressBar /> should render low contrast information intent ProgressBar 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1218,7 +1218,7 @@ exports[`<ProgressBar /> should render low contrast information intent ProgressB
   width: 100%;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1232,18 +1232,18 @@ exports[`<ProgressBar /> should render low contrast information intent ProgressB
   justify-content: flex-end;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   margin-bottom: 4px;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(216,15%,54%,0.18);
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   background-color: hsla(193,100%,35%,1);
 }
 
@@ -1263,13 +1263,13 @@ exports[`<ProgressBar /> should render low contrast information intent ProgressB
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   background-color: hsla(193,100%,35%,1);
   height: 100%;
   width: 20%;
 }
 
-.c9 {
+.c9.c9.c9.c9.c9 {
   height: 100%;
   width: 100%;
   opacity: 0;
@@ -1280,7 +1280,7 @@ exports[`<ProgressBar /> should render low contrast information intent ProgressB
   animation-delay: 3000ms;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -1337,7 +1337,7 @@ exports[`<ProgressBar /> should render low contrast information intent ProgressB
             data-blade-component="base-box"
           >
             <div
-              class=" c8 c9"
+              class="c8 c9"
               data-blade-component="base-box"
             />
           </div>
@@ -1349,7 +1349,7 @@ exports[`<ProgressBar /> should render low contrast information intent ProgressB
 `;
 
 exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1360,7 +1360,7 @@ exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 
   width: 100%;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1374,18 +1374,18 @@ exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 
   justify-content: flex-end;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   margin-bottom: 4px;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(216,15%,54%,0.18);
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   background-color: hsla(8,73%,47%,1);
 }
 
@@ -1405,13 +1405,13 @@ exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   background-color: hsla(8,73%,47%,1);
   height: 100%;
   width: 20%;
 }
 
-.c9 {
+.c9.c9.c9.c9.c9 {
   height: 100%;
   width: 100%;
   opacity: 0;
@@ -1422,7 +1422,7 @@ exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 
   animation-delay: 3000ms;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -1479,7 +1479,7 @@ exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 
             data-blade-component="base-box"
           >
             <div
-              class=" c8 c9"
+              class="c8 c9"
               data-blade-component="base-box"
             />
           </div>
@@ -1491,7 +1491,7 @@ exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 
 `;
 
 exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1502,7 +1502,7 @@ exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1
   width: 100%;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1516,18 +1516,18 @@ exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1
   justify-content: flex-end;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   margin-bottom: 4px;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(216,15%,54%,0.18);
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   background-color: hsla(216,33%,29%,1);
 }
 
@@ -1547,13 +1547,13 @@ exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   background-color: hsla(216,33%,29%,1);
   height: 100%;
   width: 20%;
 }
 
-.c9 {
+.c9.c9.c9.c9.c9 {
   height: 100%;
   width: 100%;
   opacity: 0;
@@ -1564,7 +1564,7 @@ exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1
   animation-delay: 3000ms;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -1621,7 +1621,7 @@ exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1
             data-blade-component="base-box"
           >
             <div
-              class=" c8 c9"
+              class="c8 c9"
               data-blade-component="base-box"
             />
           </div>
@@ -1633,7 +1633,7 @@ exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1
 `;
 
 exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1644,7 +1644,7 @@ exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`
   width: 100%;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1658,18 +1658,18 @@ exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`
   justify-content: flex-end;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   margin-bottom: 4px;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(216,15%,54%,0.18);
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   background-color: hsla(38,97%,38%,1);
 }
 
@@ -1689,13 +1689,13 @@ exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   background-color: hsla(38,97%,38%,1);
   height: 100%;
   width: 20%;
 }
 
-.c9 {
+.c9.c9.c9.c9.c9 {
   height: 100%;
   width: 100%;
   opacity: 0;
@@ -1706,7 +1706,7 @@ exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`
   animation-delay: 3000ms;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -1763,7 +1763,7 @@ exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`
             data-blade-component="base-box"
           >
             <div
-              class=" c8 c9"
+              class="c8 c9"
               data-blade-component="base-box"
             />
           </div>
@@ -1775,7 +1775,7 @@ exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`
 `;
 
 exports[`<ProgressBar /> should render low contrast positive intent ProgressBar 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1786,7 +1786,7 @@ exports[`<ProgressBar /> should render low contrast positive intent ProgressBar 
   width: 100%;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1800,18 +1800,18 @@ exports[`<ProgressBar /> should render low contrast positive intent ProgressBar 
   justify-content: flex-end;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   margin-bottom: 4px;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(216,15%,54%,0.18);
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   background-color: hsla(160,100%,26%,1);
 }
 
@@ -1831,13 +1831,13 @@ exports[`<ProgressBar /> should render low contrast positive intent ProgressBar 
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   background-color: hsla(160,100%,26%,1);
   height: 100%;
   width: 20%;
 }
 
-.c9 {
+.c9.c9.c9.c9.c9 {
   height: 100%;
   width: 100%;
   opacity: 0;
@@ -1848,7 +1848,7 @@ exports[`<ProgressBar /> should render low contrast positive intent ProgressBar 
   animation-delay: 3000ms;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -1905,7 +1905,7 @@ exports[`<ProgressBar /> should render low contrast positive intent ProgressBar 
             data-blade-component="base-box"
           >
             <div
-              class=" c8 c9"
+              class="c8 c9"
               data-blade-component="base-box"
             />
           </div>
@@ -1917,7 +1917,7 @@ exports[`<ProgressBar /> should render low contrast positive intent ProgressBar 
 `;
 
 exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1928,7 +1928,7 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
   width: 100%;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1942,11 +1942,11 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
   justify-content: space-between;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   margin-bottom: 4px;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1965,14 +1965,14 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
   gap: 0px;
 }
 
-.c8 {
+.c8.c8.c8.c8.c8 {
   overflow: hidden;
   position: relative;
   height: 4px;
   background-color: hsla(216,15%,54%,0.18);
 }
 
-.c9 {
+.c9.c9.c9.c9.c9 {
   background-color: hsla(218,89%,51%,1);
 }
 
@@ -1992,13 +1992,13 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c11 {
+.c11.c11.c11.c11.c11 {
   background-color: hsla(218,89%,51%,1);
   height: 100%;
   width: 20%;
 }
 
-.c13 {
+.c13.c13.c13.c13.c13 {
   height: 100%;
   width: 100%;
   opacity: 0;
@@ -2009,7 +2009,7 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
   animation-delay: 3000ms;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -2027,7 +2027,7 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
   -webkit-box-orient: vertical;
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -2040,7 +2040,7 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
   padding: 0;
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -2053,7 +2053,7 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
   padding: 0;
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -2146,7 +2146,7 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
             data-blade-component="base-box"
           >
             <div
-              class=" c12 c13"
+              class="c12 c13"
               data-blade-component="base-box"
             />
           </div>
@@ -2158,7 +2158,7 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
 `;
 
 exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2169,7 +2169,7 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
   width: 100%;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2183,14 +2183,14 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
   justify-content: flex-end;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(216,15%,54%,0.18);
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   background-color: hsla(218,89%,51%,1);
 }
 
@@ -2210,7 +2210,7 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   background-color: hsla(218,89%,51%,1);
   height: 100%;
   width: 70%;
@@ -2248,7 +2248,7 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
             data-blade-component="base-box"
           >
             <div
-              class=" c6"
+              class="c6"
               data-blade-component="base-box"
             />
           </div>
@@ -2260,7 +2260,7 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
 `;
 
 exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2271,7 +2271,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
   width: 100%;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2285,11 +2285,11 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
   justify-content: space-between;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   margin-bottom: 4px;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2308,14 +2308,14 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
   gap: 0px;
 }
 
-.c8 {
+.c8.c8.c8.c8.c8 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(216,15%,54%,0.18);
 }
 
-.c9 {
+.c9.c9.c9.c9.c9 {
   background-color: hsla(218,89%,51%,1);
 }
 
@@ -2335,13 +2335,13 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c11 {
+.c11.c11.c11.c11.c11 {
   background-color: hsla(218,89%,51%,1);
   height: 100%;
   width: 20%;
 }
 
-.c13 {
+.c13.c13.c13.c13.c13 {
   height: 100%;
   width: 100%;
   opacity: 0;
@@ -2352,7 +2352,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
   animation-delay: 3000ms;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -2370,7 +2370,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
   -webkit-box-orient: vertical;
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -2383,7 +2383,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
   padding: 0;
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -2396,7 +2396,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
   padding: 0;
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -2489,7 +2489,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
             data-blade-component="base-box"
           >
             <div
-              class=" c12 c13"
+              class="c12 c13"
               data-blade-component="base-box"
             />
           </div>
@@ -2501,7 +2501,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
 `;
 
 exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2520,9 +2520,10 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  opacity: 1;
 }
 
-.c4 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2533,7 +2534,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   width: 100%;
 }
 
-.c5 {
+.c4.c4.c4.c4.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2547,11 +2548,11 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   justify-content: space-between;
 }
 
-.c6 {
+.c5.c5.c5.c5.c5 {
   margin-bottom: 4px;
 }
 
-.c7 {
+.c6.c6.c6.c6.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2570,25 +2571,25 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   gap: 0px;
 }
 
-.c12 {
+.c11.c11.c11.c11.c11 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(216,15%,54%,0.18);
 }
 
-.c13 {
+.c12.c12.c12.c12.c12 {
   background-color: hsla(218,89%,51%,1);
 }
 
-.c14 {
+.c13 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
   transition-duration: 900ms;
 }
 
-.c16 {
+.c15 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -2597,13 +2598,13 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c15 {
+.c14.c14.c14.c14.c14 {
   background-color: hsla(218,89%,51%,1);
   height: 100%;
   width: 0%;
 }
 
-.c17 {
+.c16.c16.c16.c16.c16 {
   height: 100%;
   width: 100%;
   opacity: 0;
@@ -2614,7 +2615,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   animation-delay: 3000ms;
 }
 
-.c3 {
+.c2.c2.c2.c2.c2 {
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -2628,7 +2629,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   padding: 0;
 }
 
-.c8 {
+.c7.c7.c7.c7.c7 {
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -2646,7 +2647,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   -webkit-box-orient: vertical;
 }
 
-.c10 {
+.c9.c9.c9.c9.c9 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -2659,7 +2660,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   padding: 0;
 }
 
-.c11 {
+.c10.c10.c10.c10.c10 {
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -2672,7 +2673,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   padding: 0;
 }
 
-.c9 {
+.c8.c8.c8.c8.c8 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -2689,29 +2690,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   word-wrap: normal;
 }
 
-.c0 {
-  min-height: 36px;
-  width: auto;
-  cursor: pointer;
-  background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
-  border-width: 1px;
-  border-radius: 2px;
-  border-style: solid;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
+.c0.c0.c0.c0.c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -2725,34 +2704,30 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   position: relative;
 }
 
-.c0:hover {
+.c0.c0.c0.c0.c0:hover {
   background-color: hsla(223,95%,48%,1);
   border-color: hsla(223,95%,48%,1);
 }
 
-.c0:active {
+.c0.c0.c0.c0.c0:active {
   background-color: hsla(230,100%,42%,1);
   border-color: hsla(230,100%,42%,1);
 }
 
-.c0:focus-visible {
+.c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c0 * {
+.c0.c0.c0.c0.c0 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c2 {
-  opacity: 1;
 }
 
 <div>
@@ -2763,11 +2738,12 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
     type="button"
   >
     <div
-      class="c1 c2"
+      class="c1"
       data-blade-component="base-box"
+      opacity="1"
     >
       <div
-        class="c3"
+        class="c2"
         data-blade-component="base-text"
       >
         Update Progress
@@ -2779,11 +2755,11 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
     data-blade-component="progress-bar"
   >
     <div
-      class="c4"
+      class="c3"
       data-blade-component="base-box"
     >
       <div
-        class="c5"
+        class="c4"
         data-blade-component="base-box"
       >
         <label
@@ -2792,25 +2768,25 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
           style="width: auto; flex-shrink: 0; margin-right: 16px;"
         >
           <div
-            class="c6"
+            class="c5"
             data-blade-component="base-box"
           >
             <div
-              class="c7"
+              class="c6"
               data-blade-component="base-box"
             >
               <p
-                class="c8"
+                class="c7"
                 data-blade-component="text"
               >
                 Label
               </p>
               <div
-                class="c9"
+                class="c8"
                 data-blade-component="visually-hidden"
               >
                 <p
-                  class="c10"
+                  class="c9"
                   data-blade-component="text"
                 />
               </div>
@@ -2818,11 +2794,11 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
           </div>
         </label>
         <div
-          class="c6"
+          class="c5"
           data-blade-component="base-box"
         >
           <p
-            class="c11"
+            class="c10"
             data-blade-component="text"
           >
             0%
@@ -2841,15 +2817,15 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
         role="progressbar"
       >
         <div
-          class="c12"
+          class="c11"
           data-blade-component="base-box"
         >
           <div
-            class="c13 c14 c15"
+            class="c12 c13 c14"
             data-blade-component="base-box"
           >
             <div
-              class=" c16 c17"
+              class="c15 c16"
               data-blade-component="base-box"
             />
           </div>
@@ -2861,7 +2837,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
 `;
 
 exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2880,9 +2856,10 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  opacity: 1;
 }
 
-.c4 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2893,7 +2870,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   width: 100%;
 }
 
-.c5 {
+.c4.c4.c4.c4.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2907,11 +2884,11 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   justify-content: space-between;
 }
 
-.c6 {
+.c5.c5.c5.c5.c5 {
   margin-bottom: 4px;
 }
 
-.c7 {
+.c6.c6.c6.c6.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2930,25 +2907,25 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   gap: 0px;
 }
 
-.c12 {
+.c11.c11.c11.c11.c11 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(216,15%,54%,0.18);
 }
 
-.c13 {
+.c12.c12.c12.c12.c12 {
   background-color: hsla(218,89%,51%,1);
 }
 
-.c14 {
+.c13 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
   transition-duration: 900ms;
 }
 
-.c16 {
+.c15 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -2957,13 +2934,13 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c15 {
+.c14.c14.c14.c14.c14 {
   background-color: hsla(218,89%,51%,1);
   height: 100%;
   width: 0%;
 }
 
-.c17 {
+.c16.c16.c16.c16.c16 {
   height: 100%;
   width: 100%;
   opacity: 0;
@@ -2974,7 +2951,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   animation-delay: 3000ms;
 }
 
-.c3 {
+.c2.c2.c2.c2.c2 {
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -2988,7 +2965,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   padding: 0;
 }
 
-.c8 {
+.c7.c7.c7.c7.c7 {
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -3006,7 +2983,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   -webkit-box-orient: vertical;
 }
 
-.c10 {
+.c9.c9.c9.c9.c9 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -3019,7 +2996,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   padding: 0;
 }
 
-.c11 {
+.c10.c10.c10.c10.c10 {
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -3032,7 +3009,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   padding: 0;
 }
 
-.c9 {
+.c8.c8.c8.c8.c8 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -3049,29 +3026,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   word-wrap: normal;
 }
 
-.c0 {
-  min-height: 36px;
-  width: auto;
-  cursor: pointer;
-  background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
-  border-width: 1px;
-  border-radius: 2px;
-  border-style: solid;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
+.c0.c0.c0.c0.c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -3085,34 +3040,30 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   position: relative;
 }
 
-.c0:hover {
+.c0.c0.c0.c0.c0:hover {
   background-color: hsla(223,95%,48%,1);
   border-color: hsla(223,95%,48%,1);
 }
 
-.c0:active {
+.c0.c0.c0.c0.c0:active {
   background-color: hsla(230,100%,42%,1);
   border-color: hsla(230,100%,42%,1);
 }
 
-.c0:focus-visible {
+.c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c0 * {
+.c0.c0.c0.c0.c0 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c2 {
-  opacity: 1;
 }
 
 <div>
@@ -3123,11 +3074,12 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
     type="button"
   >
     <div
-      class="c1 c2"
+      class="c1"
       data-blade-component="base-box"
+      opacity="1"
     >
       <div
-        class="c3"
+        class="c2"
         data-blade-component="base-text"
       >
         Update Progress
@@ -3139,11 +3091,11 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
     data-blade-component="progress-bar"
   >
     <div
-      class="c4"
+      class="c3"
       data-blade-component="base-box"
     >
       <div
-        class="c5"
+        class="c4"
         data-blade-component="base-box"
       >
         <label
@@ -3152,25 +3104,25 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
           style="width: auto; flex-shrink: 0; margin-right: 16px;"
         >
           <div
-            class="c6"
+            class="c5"
             data-blade-component="base-box"
           >
             <div
-              class="c7"
+              class="c6"
               data-blade-component="base-box"
             >
               <p
-                class="c8"
+                class="c7"
                 data-blade-component="text"
               >
                 Label
               </p>
               <div
-                class="c9"
+                class="c8"
                 data-blade-component="visually-hidden"
               >
                 <p
-                  class="c10"
+                  class="c9"
                   data-blade-component="text"
                 />
               </div>
@@ -3178,11 +3130,11 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
           </div>
         </label>
         <div
-          class="c6"
+          class="c5"
           data-blade-component="base-box"
         >
           <p
-            class="c11"
+            class="c10"
             data-blade-component="text"
           >
             0%
@@ -3201,15 +3153,15 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
         role="progressbar"
       >
         <div
-          class="c12"
+          class="c11"
           data-blade-component="base-box"
         >
           <div
-            class="c13 c14 c15"
+            class="c12 c13 c14"
             data-blade-component="base-box"
           >
             <div
-              class=" c16 c17"
+              class="c15 c16"
               data-blade-component="base-box"
             />
           </div>

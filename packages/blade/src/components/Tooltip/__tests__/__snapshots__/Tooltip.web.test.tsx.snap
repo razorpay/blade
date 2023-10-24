@@ -11,7 +11,7 @@ exports[`<Tooltip /> should not override trigger's aria-label attribute 1`] = `
 `;
 
 exports[`<Tooltip /> should render 1`] = `
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -30,14 +30,15 @@ exports[`<Tooltip /> should render 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  opacity: 1;
 }
 
-.c4 {
+.c3.c3.c3.c3.c3 {
   z-index: 1100;
   pointer-events: none;
 }
 
-.c5 {
+.c4.c4.c4.c4.c4 {
   position: relative;
   padding-top: 8px;
   padding-bottom: 8px;
@@ -46,7 +47,7 @@ exports[`<Tooltip /> should render 1`] = `
   max-width: 200px;
 }
 
-.c6 {
+.c5.c5.c5.c5.c5 {
   background-color: hsla(216,33%,29%,1);
   border-width: 1px;
   border-radius: 4px;
@@ -59,7 +60,7 @@ exports[`<Tooltip /> should render 1`] = `
   transform: translateY(4px);
 }
 
-.c3 {
+.c2.c2.c2.c2.c2 {
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -73,7 +74,7 @@ exports[`<Tooltip /> should render 1`] = `
   padding: 0;
 }
 
-.c7 {
+.c6.c6.c6.c6.c6 {
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -86,29 +87,7 @@ exports[`<Tooltip /> should render 1`] = `
   padding: 0;
 }
 
-.c0 {
-  min-height: 36px;
-  width: auto;
-  cursor: pointer;
-  background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
-  border-width: 1px;
-  border-radius: 2px;
-  border-style: solid;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
+.c0.c0.c0.c0.c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -122,24 +101,24 @@ exports[`<Tooltip /> should render 1`] = `
   position: relative;
 }
 
-.c0:hover {
+.c0.c0.c0.c0.c0:hover {
   background-color: hsla(223,95%,48%,1);
   border-color: hsla(223,95%,48%,1);
 }
 
-.c0:active {
+.c0.c0.c0.c0.c0:active {
   background-color: hsla(230,100%,42%,1);
   border-color: hsla(230,100%,42%,1);
 }
 
-.c0:focus-visible {
+.c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c0 * {
+.c0.c0.c0.c0.c0 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -148,36 +127,32 @@ exports[`<Tooltip /> should render 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c2 {
-  opacity: 1;
-}
-
 @media screen and (min-width:320px) {
-  .c4 {
+  .c3.c3.c3.c3.c3 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c4 {
+  .c3.c3.c3.c3.c3 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c4 {
+  .c3.c3.c3.c3.c3 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c4 {
+  .c3.c3.c3.c3.c3 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c4 {
+  .c3.c3.c3.c3.c3 {
     pointer-events: none;
   }
 }
@@ -192,11 +167,12 @@ exports[`<Tooltip /> should render 1`] = `
       type="button"
     >
       <div
-        class="c1 c2"
+        class="c1"
         data-blade-component="base-box"
+        opacity="1"
       >
         <div
-          class="c3"
+          class="c2"
           data-blade-component="base-text"
         >
           Hover me
@@ -209,7 +185,7 @@ exports[`<Tooltip /> should render 1`] = `
     id=":r2:"
   >
     <div
-      class="c4"
+      class="c3"
       data-blade-component="tooltip"
       id=":r0:"
       pointer-events="none"
@@ -218,11 +194,11 @@ exports[`<Tooltip /> should render 1`] = `
       tabindex="-1"
     >
       <div
-        class="c5 c6"
+        class="c4 c5"
         data-blade-component="base-box"
       >
         <p
-          class="c7"
+          class="c6"
           data-blade-component="text"
         >
           Hello world
@@ -264,7 +240,7 @@ exports[`<Tooltip /> should render 1`] = `
 `;
 
 exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -283,14 +259,15 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  opacity: 1;
 }
 
-.c4 {
+.c3.c3.c3.c3.c3 {
   z-index: 9999;
   pointer-events: none;
 }
 
-.c5 {
+.c4.c4.c4.c4.c4 {
   position: relative;
   padding-top: 8px;
   padding-bottom: 8px;
@@ -299,7 +276,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
   max-width: 200px;
 }
 
-.c6 {
+.c5.c5.c5.c5.c5 {
   background-color: hsla(216,33%,29%,1);
   border-width: 1px;
   border-radius: 4px;
@@ -312,7 +289,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
   transform: translateY(4px);
 }
 
-.c3 {
+.c2.c2.c2.c2.c2 {
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -326,7 +303,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
   padding: 0;
 }
 
-.c7 {
+.c6.c6.c6.c6.c6 {
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -339,29 +316,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
   padding: 0;
 }
 
-.c0 {
-  min-height: 36px;
-  width: auto;
-  cursor: pointer;
-  background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
-  border-width: 1px;
-  border-radius: 2px;
-  border-style: solid;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
+.c0.c0.c0.c0.c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -375,24 +330,24 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
   position: relative;
 }
 
-.c0:hover {
+.c0.c0.c0.c0.c0:hover {
   background-color: hsla(223,95%,48%,1);
   border-color: hsla(223,95%,48%,1);
 }
 
-.c0:active {
+.c0.c0.c0.c0.c0:active {
   background-color: hsla(230,100%,42%,1);
   border-color: hsla(230,100%,42%,1);
 }
 
-.c0:focus-visible {
+.c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c0 * {
+.c0.c0.c0.c0.c0 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -401,36 +356,32 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c2 {
-  opacity: 1;
-}
-
 @media screen and (min-width:320px) {
-  .c4 {
+  .c3.c3.c3.c3.c3 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c4 {
+  .c3.c3.c3.c3.c3 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c4 {
+  .c3.c3.c3.c3.c3 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c4 {
+  .c3.c3.c3.c3.c3 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c4 {
+  .c3.c3.c3.c3.c3 {
     pointer-events: none;
   }
 }
@@ -445,11 +396,12 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
       type="button"
     >
       <div
-        class="c1 c2"
+        class="c1"
         data-blade-component="base-box"
+        opacity="1"
       >
         <div
-          class="c3"
+          class="c2"
           data-blade-component="base-text"
         >
           Hover me
@@ -462,7 +414,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
     id=":ra:"
   >
     <div
-      class="c4"
+      class="c3"
       data-blade-component="tooltip"
       id=":r8:"
       pointer-events="none"
@@ -471,11 +423,11 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
       tabindex="-1"
     >
       <div
-        class="c5 c6"
+        class="c4 c5"
         data-blade-component="base-box"
       >
         <p
-          class="c7"
+          class="c6"
           data-blade-component="text"
         >
           Hello world
@@ -517,7 +469,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
 `;
 
 exports[`<Tooltip /> should render with title 1`] = `
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -536,14 +488,15 @@ exports[`<Tooltip /> should render with title 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  opacity: 1;
 }
 
-.c4 {
+.c3.c3.c3.c3.c3 {
   z-index: 1100;
   pointer-events: none;
 }
 
-.c5 {
+.c4.c4.c4.c4.c4 {
   position: relative;
   padding-top: 8px;
   padding-bottom: 8px;
@@ -552,7 +505,7 @@ exports[`<Tooltip /> should render with title 1`] = `
   max-width: 200px;
 }
 
-.c6 {
+.c5.c5.c5.c5.c5 {
   background-color: hsla(216,33%,29%,1);
   border-width: 1px;
   border-radius: 4px;
@@ -565,7 +518,7 @@ exports[`<Tooltip /> should render with title 1`] = `
   transform: translateY(4px);
 }
 
-.c3 {
+.c2.c2.c2.c2.c2 {
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -579,7 +532,7 @@ exports[`<Tooltip /> should render with title 1`] = `
   padding: 0;
 }
 
-.c7 {
+.c6.c6.c6.c6.c6 {
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -592,7 +545,7 @@ exports[`<Tooltip /> should render with title 1`] = `
   padding: 0;
 }
 
-.c8 {
+.c7.c7.c7.c7.c7 {
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -605,29 +558,7 @@ exports[`<Tooltip /> should render with title 1`] = `
   padding: 0;
 }
 
-.c0 {
-  min-height: 36px;
-  width: auto;
-  cursor: pointer;
-  background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
-  border-width: 1px;
-  border-radius: 2px;
-  border-style: solid;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
+.c0.c0.c0.c0.c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -641,24 +572,24 @@ exports[`<Tooltip /> should render with title 1`] = `
   position: relative;
 }
 
-.c0:hover {
+.c0.c0.c0.c0.c0:hover {
   background-color: hsla(223,95%,48%,1);
   border-color: hsla(223,95%,48%,1);
 }
 
-.c0:active {
+.c0.c0.c0.c0.c0:active {
   background-color: hsla(230,100%,42%,1);
   border-color: hsla(230,100%,42%,1);
 }
 
-.c0:focus-visible {
+.c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c0 * {
+.c0.c0.c0.c0.c0 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -667,36 +598,32 @@ exports[`<Tooltip /> should render with title 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c2 {
-  opacity: 1;
-}
-
 @media screen and (min-width:320px) {
-  .c4 {
+  .c3.c3.c3.c3.c3 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c4 {
+  .c3.c3.c3.c3.c3 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c4 {
+  .c3.c3.c3.c3.c3 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c4 {
+  .c3.c3.c3.c3.c3 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c4 {
+  .c3.c3.c3.c3.c3 {
     pointer-events: none;
   }
 }
@@ -711,11 +638,12 @@ exports[`<Tooltip /> should render with title 1`] = `
       type="button"
     >
       <div
-        class="c1 c2"
+        class="c1"
         data-blade-component="base-box"
+        opacity="1"
       >
         <div
-          class="c3"
+          class="c2"
           data-blade-component="base-text"
         >
           Hover me
@@ -728,7 +656,7 @@ exports[`<Tooltip /> should render with title 1`] = `
     id=":r6:"
   >
     <div
-      class="c4"
+      class="c3"
       data-blade-component="tooltip"
       id=":r4:"
       pointer-events="none"
@@ -737,17 +665,17 @@ exports[`<Tooltip /> should render with title 1`] = `
       tabindex="-1"
     >
       <div
-        class="c5 c6"
+        class="c4 c5"
         data-blade-component="base-box"
       >
         <p
-          class="c7"
+          class="c6"
           data-blade-component="text"
         >
           Tooltip title
         </p>
         <p
-          class="c8"
+          class="c7"
           data-blade-component="text"
         >
           Hello world

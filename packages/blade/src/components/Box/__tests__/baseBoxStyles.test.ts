@@ -57,7 +57,9 @@ describe('getBaseBoxStyles', () => {
     const boxStylesWithoutUndefined = JSON.parse(JSON.stringify(boxStyles));
     expect(boxStylesWithoutUndefined).toMatchInlineSnapshot(`
       {
-        "backgroundColor": "red",
+        "&&&&&": {
+          "backgroundColor": "red",
+        },
       }
     `);
   });
@@ -67,6 +69,10 @@ describe('getBaseBoxStyles', () => {
       theme: paymentLightTheme,
     });
     const boxStylesWithoutUndefined = JSON.parse(JSON.stringify(boxStyles));
-    expect(boxStylesWithoutUndefined).toMatchInlineSnapshot(`{}`);
+    expect(boxStylesWithoutUndefined).toMatchInlineSnapshot(`
+      {
+        "&&&&&": {},
+      }
+    `);
   });
 });

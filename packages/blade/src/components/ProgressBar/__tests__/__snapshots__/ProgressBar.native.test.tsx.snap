@@ -22,11 +22,7 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
       flexDirection="column"
       style={
         [
-          {
-            "display": "flex",
-            "flexDirection": "column",
-            "width": "100%",
-          },
+          {},
         ]
       }
       width="100%"
@@ -38,11 +34,7 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
         justifyContent="space-between"
         style={
           [
-            {
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-            },
+            {},
           ]
         }
       >
@@ -50,10 +42,7 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
           data-blade-component="base-box"
           style={
             [
-              {
-                "marginBottom": 4,
-                "marginRight": 16,
-              },
+              {},
             ]
           }
         >
@@ -67,14 +56,7 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
             maxHeight="36px"
             style={
               [
-                {
-                  "alignItems": "center",
-                  "display": "flex",
-                  "flexDirection": "row",
-                  "flexWrap": "wrap",
-                  "gap": 0,
-                  "maxHeight": 36,
-                },
+                {},
               ]
             }
           >
@@ -116,28 +98,7 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
               data-blade-component="visually-hidden"
               style={
                 [
-                  {
-                    "borderColor": "black",
-                    "borderStyle": "solid",
-                    "borderWidth": 0,
-                    "clip": "rect(0 0 0 0)",
-                    "clipPath": "inset(50%)",
-                    "height": 1,
-                    "left": -10000,
-                    "marginBottom": -1,
-                    "marginLeft": 0,
-                    "marginRight": -1,
-                    "marginTop": 0,
-                    "overflow": "hidden",
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
-                    "position": "absolute",
-                    "whiteSpace": "nowrap",
-                    "width": 1,
-                    "wordWrap": "normal",
-                  },
+                  {},
                 ]
               }
             >
@@ -179,9 +140,7 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
           data-blade-component="base-box"
           style={
             [
-              {
-                "marginBottom": 4,
-              },
+              {},
             ]
           }
         >
@@ -248,12 +207,7 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
           position="relative"
           style={
             [
-              {
-                "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
-                "height": 2,
-                "overflow": "hidden",
-                "position": "relative",
-              },
+              {},
             ]
           }
         >
@@ -318,11 +272,7 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
       flexDirection="column"
       style={
         [
-          {
-            "display": "flex",
-            "flexDirection": "column",
-            "width": "100%",
-          },
+          {},
         ]
       }
       width="100%"
@@ -334,11 +284,7 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
         justifyContent="flex-end"
         style={
           [
-            {
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "flex-end",
-            },
+            {},
           ]
         }
       />
@@ -369,12 +315,7 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
           position="relative"
           style={
             [
-              {
-                "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
-                "height": 2,
-                "overflow": "hidden",
-                "position": "relative",
-              },
+              {},
             ]
           }
         >
@@ -439,11 +380,7 @@ exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
       flexDirection="column"
       style={
         [
-          {
-            "display": "flex",
-            "flexDirection": "column",
-            "width": "100%",
-          },
+          {},
         ]
       }
       width="100%"
@@ -455,11 +392,7 @@ exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
         justifyContent="flex-end"
         style={
           [
-            {
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "flex-end",
-            },
+            {},
           ]
         }
       >
@@ -467,9 +400,7 @@ exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
           data-blade-component="base-box"
           style={
             [
-              {
-                "marginBottom": 4,
-              },
+              {},
             ]
           }
         >
@@ -535,12 +466,7 @@ exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
           position="relative"
           style={
             [
-              {
-                "backgroundColor": "hsla(214, 21%, 94%, 0.18)",
-                "height": 2,
-                "overflow": "hidden",
-                "position": "relative",
-              },
+              {},
             ]
           }
         >
@@ -605,11 +531,7 @@ exports[`<ProgressBar /> should render high contrast information intent Progress
       flexDirection="column"
       style={
         [
-          {
-            "display": "flex",
-            "flexDirection": "column",
-            "width": "100%",
-          },
+          {},
         ]
       }
       width="100%"
@@ -621,11 +543,7 @@ exports[`<ProgressBar /> should render high contrast information intent Progress
         justifyContent="flex-end"
         style={
           [
-            {
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "flex-end",
-            },
+            {},
           ]
         }
       >
@@ -633,9 +551,7 @@ exports[`<ProgressBar /> should render high contrast information intent Progress
           data-blade-component="base-box"
           style={
             [
-              {
-                "marginBottom": 4,
-              },
+              {},
             ]
           }
         >
@@ -701,12 +617,7 @@ exports[`<ProgressBar /> should render high contrast information intent Progress
           position="relative"
           style={
             [
-              {
-                "backgroundColor": "hsla(214, 21%, 94%, 0.18)",
-                "height": 2,
-                "overflow": "hidden",
-                "position": "relative",
-              },
+              {},
             ]
           }
         >
@@ -771,11 +682,7 @@ exports[`<ProgressBar /> should render high contrast negative intent ProgressBar
       flexDirection="column"
       style={
         [
-          {
-            "display": "flex",
-            "flexDirection": "column",
-            "width": "100%",
-          },
+          {},
         ]
       }
       width="100%"
@@ -787,11 +694,7 @@ exports[`<ProgressBar /> should render high contrast negative intent ProgressBar
         justifyContent="flex-end"
         style={
           [
-            {
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "flex-end",
-            },
+            {},
           ]
         }
       >
@@ -799,9 +702,7 @@ exports[`<ProgressBar /> should render high contrast negative intent ProgressBar
           data-blade-component="base-box"
           style={
             [
-              {
-                "marginBottom": 4,
-              },
+              {},
             ]
           }
         >
@@ -867,12 +768,7 @@ exports[`<ProgressBar /> should render high contrast negative intent ProgressBar
           position="relative"
           style={
             [
-              {
-                "backgroundColor": "hsla(214, 21%, 94%, 0.18)",
-                "height": 2,
-                "overflow": "hidden",
-                "position": "relative",
-              },
+              {},
             ]
           }
         >
@@ -937,11 +833,7 @@ exports[`<ProgressBar /> should render high contrast neutral intent ProgressBar 
       flexDirection="column"
       style={
         [
-          {
-            "display": "flex",
-            "flexDirection": "column",
-            "width": "100%",
-          },
+          {},
         ]
       }
       width="100%"
@@ -953,11 +845,7 @@ exports[`<ProgressBar /> should render high contrast neutral intent ProgressBar 
         justifyContent="flex-end"
         style={
           [
-            {
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "flex-end",
-            },
+            {},
           ]
         }
       >
@@ -965,9 +853,7 @@ exports[`<ProgressBar /> should render high contrast neutral intent ProgressBar 
           data-blade-component="base-box"
           style={
             [
-              {
-                "marginBottom": 4,
-              },
+              {},
             ]
           }
         >
@@ -1033,12 +919,7 @@ exports[`<ProgressBar /> should render high contrast neutral intent ProgressBar 
           position="relative"
           style={
             [
-              {
-                "backgroundColor": "hsla(214, 21%, 94%, 0.18)",
-                "height": 2,
-                "overflow": "hidden",
-                "position": "relative",
-              },
+              {},
             ]
           }
         >
@@ -1103,11 +984,7 @@ exports[`<ProgressBar /> should render high contrast notice intent ProgressBar 1
       flexDirection="column"
       style={
         [
-          {
-            "display": "flex",
-            "flexDirection": "column",
-            "width": "100%",
-          },
+          {},
         ]
       }
       width="100%"
@@ -1119,11 +996,7 @@ exports[`<ProgressBar /> should render high contrast notice intent ProgressBar 1
         justifyContent="flex-end"
         style={
           [
-            {
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "flex-end",
-            },
+            {},
           ]
         }
       >
@@ -1131,9 +1004,7 @@ exports[`<ProgressBar /> should render high contrast notice intent ProgressBar 1
           data-blade-component="base-box"
           style={
             [
-              {
-                "marginBottom": 4,
-              },
+              {},
             ]
           }
         >
@@ -1199,12 +1070,7 @@ exports[`<ProgressBar /> should render high contrast notice intent ProgressBar 1
           position="relative"
           style={
             [
-              {
-                "backgroundColor": "hsla(214, 21%, 94%, 0.18)",
-                "height": 2,
-                "overflow": "hidden",
-                "position": "relative",
-              },
+              {},
             ]
           }
         >
@@ -1269,11 +1135,7 @@ exports[`<ProgressBar /> should render high contrast positive intent ProgressBar
       flexDirection="column"
       style={
         [
-          {
-            "display": "flex",
-            "flexDirection": "column",
-            "width": "100%",
-          },
+          {},
         ]
       }
       width="100%"
@@ -1285,11 +1147,7 @@ exports[`<ProgressBar /> should render high contrast positive intent ProgressBar
         justifyContent="flex-end"
         style={
           [
-            {
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "flex-end",
-            },
+            {},
           ]
         }
       >
@@ -1297,9 +1155,7 @@ exports[`<ProgressBar /> should render high contrast positive intent ProgressBar
           data-blade-component="base-box"
           style={
             [
-              {
-                "marginBottom": 4,
-              },
+              {},
             ]
           }
         >
@@ -1365,12 +1221,7 @@ exports[`<ProgressBar /> should render high contrast positive intent ProgressBar
           position="relative"
           style={
             [
-              {
-                "backgroundColor": "hsla(214, 21%, 94%, 0.18)",
-                "height": 2,
-                "overflow": "hidden",
-                "position": "relative",
-              },
+              {},
             ]
           }
         >
@@ -1435,11 +1286,7 @@ exports[`<ProgressBar /> should render low contrast information intent ProgressB
       flexDirection="column"
       style={
         [
-          {
-            "display": "flex",
-            "flexDirection": "column",
-            "width": "100%",
-          },
+          {},
         ]
       }
       width="100%"
@@ -1451,11 +1298,7 @@ exports[`<ProgressBar /> should render low contrast information intent ProgressB
         justifyContent="flex-end"
         style={
           [
-            {
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "flex-end",
-            },
+            {},
           ]
         }
       >
@@ -1463,9 +1306,7 @@ exports[`<ProgressBar /> should render low contrast information intent ProgressB
           data-blade-component="base-box"
           style={
             [
-              {
-                "marginBottom": 4,
-              },
+              {},
             ]
           }
         >
@@ -1531,12 +1372,7 @@ exports[`<ProgressBar /> should render low contrast information intent ProgressB
           position="relative"
           style={
             [
-              {
-                "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
-                "height": 2,
-                "overflow": "hidden",
-                "position": "relative",
-              },
+              {},
             ]
           }
         >
@@ -1601,11 +1437,7 @@ exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 
       flexDirection="column"
       style={
         [
-          {
-            "display": "flex",
-            "flexDirection": "column",
-            "width": "100%",
-          },
+          {},
         ]
       }
       width="100%"
@@ -1617,11 +1449,7 @@ exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 
         justifyContent="flex-end"
         style={
           [
-            {
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "flex-end",
-            },
+            {},
           ]
         }
       >
@@ -1629,9 +1457,7 @@ exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 
           data-blade-component="base-box"
           style={
             [
-              {
-                "marginBottom": 4,
-              },
+              {},
             ]
           }
         >
@@ -1697,12 +1523,7 @@ exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 
           position="relative"
           style={
             [
-              {
-                "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
-                "height": 2,
-                "overflow": "hidden",
-                "position": "relative",
-              },
+              {},
             ]
           }
         >
@@ -1767,11 +1588,7 @@ exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1
       flexDirection="column"
       style={
         [
-          {
-            "display": "flex",
-            "flexDirection": "column",
-            "width": "100%",
-          },
+          {},
         ]
       }
       width="100%"
@@ -1783,11 +1600,7 @@ exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1
         justifyContent="flex-end"
         style={
           [
-            {
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "flex-end",
-            },
+            {},
           ]
         }
       >
@@ -1795,9 +1608,7 @@ exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1
           data-blade-component="base-box"
           style={
             [
-              {
-                "marginBottom": 4,
-              },
+              {},
             ]
           }
         >
@@ -1863,12 +1674,7 @@ exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1
           position="relative"
           style={
             [
-              {
-                "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
-                "height": 2,
-                "overflow": "hidden",
-                "position": "relative",
-              },
+              {},
             ]
           }
         >
@@ -1933,11 +1739,7 @@ exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`
       flexDirection="column"
       style={
         [
-          {
-            "display": "flex",
-            "flexDirection": "column",
-            "width": "100%",
-          },
+          {},
         ]
       }
       width="100%"
@@ -1949,11 +1751,7 @@ exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`
         justifyContent="flex-end"
         style={
           [
-            {
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "flex-end",
-            },
+            {},
           ]
         }
       >
@@ -1961,9 +1759,7 @@ exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`
           data-blade-component="base-box"
           style={
             [
-              {
-                "marginBottom": 4,
-              },
+              {},
             ]
           }
         >
@@ -2029,12 +1825,7 @@ exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`
           position="relative"
           style={
             [
-              {
-                "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
-                "height": 2,
-                "overflow": "hidden",
-                "position": "relative",
-              },
+              {},
             ]
           }
         >
@@ -2099,11 +1890,7 @@ exports[`<ProgressBar /> should render low contrast positive intent ProgressBar 
       flexDirection="column"
       style={
         [
-          {
-            "display": "flex",
-            "flexDirection": "column",
-            "width": "100%",
-          },
+          {},
         ]
       }
       width="100%"
@@ -2115,11 +1902,7 @@ exports[`<ProgressBar /> should render low contrast positive intent ProgressBar 
         justifyContent="flex-end"
         style={
           [
-            {
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "flex-end",
-            },
+            {},
           ]
         }
       >
@@ -2127,9 +1910,7 @@ exports[`<ProgressBar /> should render low contrast positive intent ProgressBar 
           data-blade-component="base-box"
           style={
             [
-              {
-                "marginBottom": 4,
-              },
+              {},
             ]
           }
         >
@@ -2195,12 +1976,7 @@ exports[`<ProgressBar /> should render low contrast positive intent ProgressBar 
           position="relative"
           style={
             [
-              {
-                "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
-                "height": 2,
-                "overflow": "hidden",
-                "position": "relative",
-              },
+              {},
             ]
           }
         >
@@ -2265,11 +2041,7 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
       flexDirection="column"
       style={
         [
-          {
-            "display": "flex",
-            "flexDirection": "column",
-            "width": "100%",
-          },
+          {},
         ]
       }
       width="100%"
@@ -2281,11 +2053,7 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
         justifyContent="space-between"
         style={
           [
-            {
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-            },
+            {},
           ]
         }
       >
@@ -2293,10 +2061,7 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
           data-blade-component="base-box"
           style={
             [
-              {
-                "marginBottom": 4,
-                "marginRight": 16,
-              },
+              {},
             ]
           }
         >
@@ -2310,14 +2075,7 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
             maxHeight="36px"
             style={
               [
-                {
-                  "alignItems": "center",
-                  "display": "flex",
-                  "flexDirection": "row",
-                  "flexWrap": "wrap",
-                  "gap": 0,
-                  "maxHeight": 36,
-                },
+                {},
               ]
             }
           >
@@ -2359,28 +2117,7 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
               data-blade-component="visually-hidden"
               style={
                 [
-                  {
-                    "borderColor": "black",
-                    "borderStyle": "solid",
-                    "borderWidth": 0,
-                    "clip": "rect(0 0 0 0)",
-                    "clipPath": "inset(50%)",
-                    "height": 1,
-                    "left": -10000,
-                    "marginBottom": -1,
-                    "marginLeft": 0,
-                    "marginRight": -1,
-                    "marginTop": 0,
-                    "overflow": "hidden",
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
-                    "position": "absolute",
-                    "whiteSpace": "nowrap",
-                    "width": 1,
-                    "wordWrap": "normal",
-                  },
+                  {},
                 ]
               }
             >
@@ -2422,9 +2159,7 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
           data-blade-component="base-box"
           style={
             [
-              {
-                "marginBottom": 4,
-              },
+              {},
             ]
           }
         >
@@ -2491,12 +2226,7 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
           position="relative"
           style={
             [
-              {
-                "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
-                "height": 4,
-                "overflow": "hidden",
-                "position": "relative",
-              },
+              {},
             ]
           }
         >
@@ -2561,11 +2291,7 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
       flexDirection="column"
       style={
         [
-          {
-            "display": "flex",
-            "flexDirection": "column",
-            "width": "100%",
-          },
+          {},
         ]
       }
       width="100%"
@@ -2577,11 +2303,7 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
         justifyContent="flex-end"
         style={
           [
-            {
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "flex-end",
-            },
+            {},
           ]
         }
       />
@@ -2612,12 +2334,7 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
           position="relative"
           style={
             [
-              {
-                "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
-                "height": 2,
-                "overflow": "hidden",
-                "position": "relative",
-              },
+              {},
             ]
           }
         >
@@ -2682,11 +2399,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
       flexDirection="column"
       style={
         [
-          {
-            "display": "flex",
-            "flexDirection": "column",
-            "width": "100%",
-          },
+          {},
         ]
       }
       width="100%"
@@ -2698,11 +2411,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
         justifyContent="space-between"
         style={
           [
-            {
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-            },
+            {},
           ]
         }
       >
@@ -2710,10 +2419,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
           data-blade-component="base-box"
           style={
             [
-              {
-                "marginBottom": 4,
-                "marginRight": 16,
-              },
+              {},
             ]
           }
         >
@@ -2727,14 +2433,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
             maxHeight="36px"
             style={
               [
-                {
-                  "alignItems": "center",
-                  "display": "flex",
-                  "flexDirection": "row",
-                  "flexWrap": "wrap",
-                  "gap": 0,
-                  "maxHeight": 36,
-                },
+                {},
               ]
             }
           >
@@ -2776,28 +2475,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
               data-blade-component="visually-hidden"
               style={
                 [
-                  {
-                    "borderColor": "black",
-                    "borderStyle": "solid",
-                    "borderWidth": 0,
-                    "clip": "rect(0 0 0 0)",
-                    "clipPath": "inset(50%)",
-                    "height": 1,
-                    "left": -10000,
-                    "marginBottom": -1,
-                    "marginLeft": 0,
-                    "marginRight": -1,
-                    "marginTop": 0,
-                    "overflow": "hidden",
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
-                    "position": "absolute",
-                    "whiteSpace": "nowrap",
-                    "width": 1,
-                    "wordWrap": "normal",
-                  },
+                  {},
                 ]
               }
             >
@@ -2839,9 +2517,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
           data-blade-component="base-box"
           style={
             [
-              {
-                "marginBottom": 4,
-              },
+              {},
             ]
           }
         >
@@ -2908,12 +2584,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
           position="relative"
           style={
             [
-              {
-                "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
-                "height": 2,
-                "overflow": "hidden",
-                "position": "relative",
-              },
+              {},
             ]
           }
         >
@@ -3020,25 +2691,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
     style={
       [
         {
-          "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(218, 89%, 51%, 1)",
-          "borderColor": "hsla(218, 89%, 51%, 1)",
-          "borderRadius": 2,
-          "borderStyle": "solid",
-          "borderWidth": 1,
-          "cursor": "pointer",
           "display": "flex",
-          "justifyContent": "center",
-          "minHeight": 36,
-          "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
-          "paddingTop": 0,
-          "textDecorationColor": "black",
-          "textDecorationLine": "none",
-          "textDecorationStyle": "solid",
-          "width": "auto",
         },
         {
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
@@ -3053,22 +2707,11 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
       data-blade-component="base-box"
       display="flex"
       flexDirection="row"
-      isHidden={false}
       justifyContent="center"
+      opacity={1}
       style={
         [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "center",
-          },
-          {
-            "opacity": 1,
-          },
+          {},
         ]
       }
     >
@@ -3121,11 +2764,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
       flexDirection="column"
       style={
         [
-          {
-            "display": "flex",
-            "flexDirection": "column",
-            "width": "100%",
-          },
+          {},
         ]
       }
       width="100%"
@@ -3137,11 +2776,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
         justifyContent="space-between"
         style={
           [
-            {
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-            },
+            {},
           ]
         }
       >
@@ -3149,10 +2784,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
           data-blade-component="base-box"
           style={
             [
-              {
-                "marginBottom": 4,
-                "marginRight": 16,
-              },
+              {},
             ]
           }
         >
@@ -3166,14 +2798,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
             maxHeight="36px"
             style={
               [
-                {
-                  "alignItems": "center",
-                  "display": "flex",
-                  "flexDirection": "row",
-                  "flexWrap": "wrap",
-                  "gap": 0,
-                  "maxHeight": 36,
-                },
+                {},
               ]
             }
           >
@@ -3215,28 +2840,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
               data-blade-component="visually-hidden"
               style={
                 [
-                  {
-                    "borderColor": "black",
-                    "borderStyle": "solid",
-                    "borderWidth": 0,
-                    "clip": "rect(0 0 0 0)",
-                    "clipPath": "inset(50%)",
-                    "height": 1,
-                    "left": -10000,
-                    "marginBottom": -1,
-                    "marginLeft": 0,
-                    "marginRight": -1,
-                    "marginTop": 0,
-                    "overflow": "hidden",
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
-                    "position": "absolute",
-                    "whiteSpace": "nowrap",
-                    "width": 1,
-                    "wordWrap": "normal",
-                  },
+                  {},
                 ]
               }
             >
@@ -3278,9 +2882,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
           data-blade-component="base-box"
           style={
             [
-              {
-                "marginBottom": 4,
-              },
+              {},
             ]
           }
         >
@@ -3347,12 +2949,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
           position="relative"
           style={
             [
-              {
-                "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
-                "height": 2,
-                "overflow": "hidden",
-                "position": "relative",
-              },
+              {},
             ]
           }
         >
@@ -3459,25 +3056,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
     style={
       [
         {
-          "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(218, 89%, 51%, 1)",
-          "borderColor": "hsla(218, 89%, 51%, 1)",
-          "borderRadius": 2,
-          "borderStyle": "solid",
-          "borderWidth": 1,
-          "cursor": "pointer",
           "display": "flex",
-          "justifyContent": "center",
-          "minHeight": 36,
-          "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
-          "paddingTop": 0,
-          "textDecorationColor": "black",
-          "textDecorationLine": "none",
-          "textDecorationStyle": "solid",
-          "width": "auto",
         },
         {
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
@@ -3492,22 +3072,11 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
       data-blade-component="base-box"
       display="flex"
       flexDirection="row"
-      isHidden={false}
       justifyContent="center"
+      opacity={1}
       style={
         [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "center",
-          },
-          {
-            "opacity": 1,
-          },
+          {},
         ]
       }
     >
@@ -3560,11 +3129,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
       flexDirection="column"
       style={
         [
-          {
-            "display": "flex",
-            "flexDirection": "column",
-            "width": "100%",
-          },
+          {},
         ]
       }
       width="100%"
@@ -3576,11 +3141,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
         justifyContent="space-between"
         style={
           [
-            {
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-            },
+            {},
           ]
         }
       >
@@ -3588,10 +3149,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
           data-blade-component="base-box"
           style={
             [
-              {
-                "marginBottom": 4,
-                "marginRight": 16,
-              },
+              {},
             ]
           }
         >
@@ -3605,14 +3163,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
             maxHeight="36px"
             style={
               [
-                {
-                  "alignItems": "center",
-                  "display": "flex",
-                  "flexDirection": "row",
-                  "flexWrap": "wrap",
-                  "gap": 0,
-                  "maxHeight": 36,
-                },
+                {},
               ]
             }
           >
@@ -3654,28 +3205,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
               data-blade-component="visually-hidden"
               style={
                 [
-                  {
-                    "borderColor": "black",
-                    "borderStyle": "solid",
-                    "borderWidth": 0,
-                    "clip": "rect(0 0 0 0)",
-                    "clipPath": "inset(50%)",
-                    "height": 1,
-                    "left": -10000,
-                    "marginBottom": -1,
-                    "marginLeft": 0,
-                    "marginRight": -1,
-                    "marginTop": 0,
-                    "overflow": "hidden",
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
-                    "position": "absolute",
-                    "whiteSpace": "nowrap",
-                    "width": 1,
-                    "wordWrap": "normal",
-                  },
+                  {},
                 ]
               }
             >
@@ -3717,9 +3247,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
           data-blade-component="base-box"
           style={
             [
-              {
-                "marginBottom": 4,
-              },
+              {},
             ]
           }
         >
@@ -3786,12 +3314,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
           position="relative"
           style={
             [
-              {
-                "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
-                "height": 2,
-                "overflow": "hidden",
-                "position": "relative",
-              },
+              {},
             ]
           }
         >

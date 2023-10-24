@@ -26,25 +26,8 @@ exports[`<Alert /> should render 1`] = `
       isFullWidth={false}
       style={
         [
-          {
-            "textAlign": "left",
-          },
-          {
-            "alignItems": "flex-start",
-            "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
-            "borderColor": "hsla(216, 15%, 54%, 0.32)",
-            "borderRadius": 4,
-            "borderStyle": "solid",
-            "borderWidth": 1,
-            "boxSizing": "border-box",
-            "display": "flex",
-            "flexDirection": "row",
-            "maxWidth": 584,
-            "paddingBottom": 12,
-            "paddingLeft": 8,
-            "paddingRight": 8,
-            "paddingTop": 8,
-          },
+          {},
+          {},
         ]
       }
       textAlign="left"
@@ -54,10 +37,7 @@ exports[`<Alert /> should render 1`] = `
         display="flex"
         style={
           [
-            {
-              "display": "flex",
-              "marginTop": 0,
-            },
+            {},
           ]
         }
       >
@@ -139,13 +119,7 @@ exports[`<Alert /> should render 1`] = `
         data-blade-component="base-box"
         style={
           [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "paddingLeft": 8,
-              "paddingRight": 4,
-            },
+            {},
           ]
         }
       >
@@ -153,9 +127,7 @@ exports[`<Alert /> should render 1`] = `
           data-blade-component="base-box"
           style={
             [
-              {
-                "marginTop": 0,
-              },
+              {},
             ]
           }
         >
@@ -328,26 +300,8 @@ exports[`<Alert /> should render positive color and full width 1`] = `
       isFullWidth={true}
       style={
         [
-          {
-            "textAlign": "left",
-          },
-          {
-            "alignItems": "flex-start",
-            "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
-            "borderColor": "hsla(155, 100%, 31%, 0.32)",
-            "borderRadius": 0,
-            "borderStyle": "solid",
-            "borderWidth": 0,
-            "boxSizing": "border-box",
-            "display": "flex",
-            "flexDirection": "row",
-            "maxWidth": "auto",
-            "paddingBottom": 12,
-            "paddingLeft": 16,
-            "paddingRight": 16,
-            "paddingTop": 12,
-            "width": "100%",
-          },
+          {},
+          {},
         ]
       }
       textAlign="left"
@@ -357,10 +311,7 @@ exports[`<Alert /> should render positive color and full width 1`] = `
         display="flex"
         style={
           [
-            {
-              "display": "flex",
-              "marginTop": 2,
-            },
+            {},
           ]
         }
       >
@@ -452,13 +403,7 @@ exports[`<Alert /> should render positive color and full width 1`] = `
         data-blade-component="base-box"
         style={
           [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "paddingLeft": 12,
-              "paddingRight": 4,
-            },
+            {},
           ]
         }
       >
@@ -466,9 +411,7 @@ exports[`<Alert /> should render positive color and full width 1`] = `
           data-blade-component="base-box"
           style={
             [
-              {
-                "marginTop": 0,
-              },
+              {},
             ]
           }
         >
@@ -641,26 +584,8 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
       isFullWidth={true}
       style={
         [
-          {
-            "textAlign": "left",
-          },
-          {
-            "alignItems": "flex-start",
-            "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
-            "borderColor": "hsla(155, 100%, 31%, 0.32)",
-            "borderRadius": 0,
-            "borderStyle": "solid",
-            "borderWidth": 0,
-            "boxSizing": "border-box",
-            "display": "flex",
-            "flexDirection": "row",
-            "maxWidth": "auto",
-            "paddingBottom": 12,
-            "paddingLeft": 16,
-            "paddingRight": 16,
-            "paddingTop": 12,
-            "width": "100%",
-          },
+          {},
+          {},
         ]
       }
       textAlign="left"
@@ -670,10 +595,7 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
         display="flex"
         style={
           [
-            {
-              "display": "flex",
-              "marginTop": 2,
-            },
+            {},
           ]
         }
       >
@@ -765,13 +687,7 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
         data-blade-component="base-box"
         style={
           [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "paddingLeft": 12,
-              "paddingRight": 4,
-            },
+            {},
           ]
         }
       >
@@ -779,9 +695,7 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
           data-blade-component="base-box"
           style={
             [
-              {
-                "marginTop": 0,
-              },
+              {},
             ]
           }
         >

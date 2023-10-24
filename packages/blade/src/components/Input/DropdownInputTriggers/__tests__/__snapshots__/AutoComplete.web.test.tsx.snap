@@ -1,16 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render BottomSheet and make it visible on click 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   text-align: left;
   position: relative;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   position: relative;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -22,7 +22,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   width: 100%;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -38,11 +38,11 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   margin-top: 0px;
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   margin-bottom: 4px;
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -61,7 +61,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   gap: 0px;
 }
 
-.c11 {
+.c11.c11.c11.c11.c11 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -80,13 +80,13 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   min-height: 36px;
 }
 
-.c12 {
+.c12.c12.c12.c12.c12 {
   margin-top: -4px;
   width: 100%;
   min-width: 30px;
 }
 
-.c15 {
+.c15.c15.c15.c15.c15 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -103,7 +103,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   align-self: center;
 }
 
-.c16 {
+.c16.c16.c16.c16.c16 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -118,7 +118,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   padding-right: 12px;
 }
 
-.c17 {
+.c17.c17.c17.c17.c17 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -134,11 +134,11 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   height: 100%;
 }
 
-.c21 {
+.c21.c21.c21.c21.c21 {
   margin-left: 0px;
 }
 
-.c22 {
+.c22.c22.c22.c22.c22 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -152,7 +152,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   justify-content: flex-end;
 }
 
-.c26 {
+.c26.c26.c26.c26.c26 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -163,14 +163,14 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   height: 100%;
 }
 
-.c28 {
+.c28.c28.c28.c28.c28 {
   overflow: auto;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
 }
 
-.c29 {
+.c29.c29.c29.c29.c29 {
   padding-right: 16px;
   padding-left: 16px;
   margin-bottom: 16px;
@@ -178,7 +178,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   touch-action: none;
 }
 
-.c30 {
+.c30.c30.c30.c30.c30 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -192,7 +192,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   user-select: none;
 }
 
-.c31 {
+.c31.c31.c31.c31.c31 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -211,13 +211,13 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   margin-right: auto;
 }
 
-.c32 {
+.c32.c32.c32.c32.c32 {
   -webkit-flex: auto;
   -ms-flex: auto;
   flex: auto;
 }
 
-.c33 {
+.c33.c33.c33.c33.c33 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -230,7 +230,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   flex-shrink: 0;
 }
 
-.c34 {
+.c34.c34.c34.c34.c34 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -246,13 +246,13 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   height: 28px;
 }
 
-.c40 {
+.c40.c40.c40.c40.c40 {
   border-width: 0px;
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-style: solid;
 }
 
-.c42 {
+.c42.c42.c42.c42.c42 {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -262,7 +262,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   flex-shrink: 1;
 }
 
-.c46 {
+.c46.c46.c46.c46.c46 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -281,7 +281,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   max-height: 20px;
 }
 
-.c47 {
+.c47.c47.c47.c47.c47 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -296,7 +296,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   justify-content: center;
 }
 
-.c48 {
+.c48.c48.c48.c48.c48 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -312,11 +312,11 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   padding-left: 0px;
 }
 
-.c50 {
+.c50.c50.c50.c50.c50 {
   margin-left: auto;
 }
 
-.c51 {
+.c51.c51.c51.c51.c51 {
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -327,11 +327,11 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   touch-action: none;
 }
 
-.c52 {
+.c52.c52.c52.c52.c52 {
   padding: 16px;
 }
 
-.c54 {
+.c54.c54.c54.c54.c54 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -350,9 +350,10 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  opacity: 1;
 }
 
-.c43 {
+.c43.c43.c43.c43.c43 {
   overflow: auto;
   padding-top: 8px;
   padding-bottom: 8px;
@@ -360,7 +361,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   padding-left: 8px;
 }
 
-.c37 {
+.c37.c37.c37.c37.c37 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -379,7 +380,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   min-height: 36px;
 }
 
-.c23 {
+.c23.c23.c23.c23.c23 {
   position: fixed;
   z-index: 100;
   top: 0px;
@@ -390,29 +391,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   opacity: 1;
 }
 
-.c53 {
-  min-height: 36px;
-  width: 100%;
-  cursor: pointer;
-  background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
-  border-width: 1px;
-  border-radius: 2px;
-  border-style: solid;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
+.c53.c53.c53.c53.c53 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -426,24 +405,24 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   position: relative;
 }
 
-.c53:hover {
+.c53.c53.c53.c53.c53:hover {
   background-color: hsla(223,95%,48%,1);
   border-color: hsla(223,95%,48%,1);
 }
 
-.c53:active {
+.c53.c53.c53.c53.c53:active {
   background-color: hsla(230,100%,42%,1);
   border-color: hsla(230,100%,42%,1);
 }
 
-.c53:focus-visible {
+.c53.c53.c53.c53.c53:focus-visible {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c53 * {
+.c53.c53.c53.c53.c53 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -452,7 +431,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -470,7 +449,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   -webkit-box-orient: vertical;
 }
 
-.c8 {
+.c8.c8.c8.c8.c8 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -483,7 +462,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   padding: 0;
 }
 
-.c14 {
+.c14.c14.c14.c14.c14 {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -502,7 +481,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   -webkit-box-orient: vertical;
 }
 
-.c49 {
+.c49.c49.c49.c49.c49 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -520,7 +499,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   -webkit-box-orient: vertical;
 }
 
-.c56 {
+.c55.c55.c55.c55.c55 {
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -534,22 +513,18 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   padding: 0;
 }
 
-.c19 {
+.c19.c19.c19.c19.c19 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.c18 {
+.c18.c18.c18.c18.c18 {
   display: none;
 }
 
-.c55 {
-  opacity: 1;
-}
-
-.c41 {
+.c41.c41.c41.c41.c41 {
   border-bottom-style: solid;
   border-bottom-width: 1px;
   -webkit-box-flex: 1;
@@ -558,7 +533,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   flex-grow: 1;
 }
 
-.c35 {
+.c35.c35.c35.c35.c35 {
   border: none;
   cursor: pointer;
   padding: 0;
@@ -585,21 +560,27 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c35:hover {
+.c35.c35.c35.c35.c35:hover {
   color: hsla(217,18%,45%,1);
 }
 
-.c35:focus-visible {
+.c35.c35.c35.c35.c35:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   color: hsla(217,18%,45%,1);
 }
 
-.c35:active {
+.c35.c35.c35.c35.c35:active {
   color: hsla(217,18%,45%,1);
 }
 
-.c38 {
+.c38.c38.c38.c38.c38 {
+  outline: none;
+  border: none;
+  cursor: auto;
+}
+
+.c38.c38.c38.c38.c38.c38.c38.c38.c38.c38.c38.c38.c38.c38.c38.c38.c38.c38.c38.c38.c38.c38.c38.c38.c38 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -623,72 +604,75 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   height: 36px;
   min-height: 36px;
   resize: none;
+}
+
+.c38.c38.c38.c38.c38::-webkit-input-placeholder {
+  color: hsla(214,18%,69%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c38.c38.c38.c38.c38::-moz-placeholder {
+  color: hsla(214,18%,69%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c38.c38.c38.c38.c38:-ms-input-placeholder {
+  color: hsla(214,18%,69%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c38.c38.c38.c38.c38::placeholder {
+  color: hsla(214,18%,69%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c38.c38.c38.c38.c38:focus {
+  outline: none;
+}
+
+.c13.c13.c13.c13.c13 {
   outline: none;
   border: none;
   cursor: auto;
 }
 
-.c38::-webkit-input-placeholder {
-  color: hsla(214,18%,69%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: left;
-  margin: 0;
-  padding: 0;
-}
-
-.c38::-moz-placeholder {
-  color: hsla(214,18%,69%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: left;
-  margin: 0;
-  padding: 0;
-}
-
-.c38:-ms-input-placeholder {
-  color: hsla(214,18%,69%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: left;
-  margin: 0;
-  padding: 0;
-}
-
-.c38::placeholder {
-  color: hsla(214,18%,69%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: left;
-  margin: 0;
-  padding: 0;
-}
-
-.c38:focus {
-  outline: none;
-}
-
-.c13 {
+.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -712,12 +696,9 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   height: 36px;
   min-height: 36px;
   resize: none;
-  outline: none;
-  border: none;
-  cursor: auto;
 }
 
-.c13::-webkit-input-placeholder {
+.c13.c13.c13.c13.c13::-webkit-input-placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -731,7 +712,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   padding: 0;
 }
 
-.c13::-moz-placeholder {
+.c13.c13.c13.c13.c13::-moz-placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -745,7 +726,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   padding: 0;
 }
 
-.c13:-ms-input-placeholder {
+.c13.c13.c13.c13.c13:-ms-input-placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -759,7 +740,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   padding: 0;
 }
 
-.c13::placeholder {
+.c13.c13.c13.c13.c13::placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -773,11 +754,11 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   padding: 0;
 }
 
-.c13:focus {
+.c13.c13.c13.c13.c13:focus {
   outline: none;
 }
 
-.c39 {
+.c39.c39.c39.c39.c39 {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -790,7 +771,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   animation: cAlpMa 250ms cubic-bezier(0.3,0,0.2,1) forwards;
 }
 
-.c20 {
+.c20.c20.c20.c20.c20 {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -803,7 +784,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   animation: iXkvNT 150ms cubic-bezier(0.3,0,0.2,1) forwards;
 }
 
-.c9 {
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 {
   background-color: hsla(216,15%,54%,0.09);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
@@ -822,7 +803,16 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   height: auto;
 }
 
-.c9:hover {
+.c9.c9.c9.c9.c9:hover {
+  -webkit-transition-property: background-color;
+  transition-property: background-color;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9:hover.c9.c9.c9.c9.c9:hover.c9.c9.c9.c9.c9:hover.c9.c9.c9.c9.c9:hover.c9.c9.c9.c9.c9:hover {
   background-color: hsla(216,15%,54%,0.18);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
@@ -839,15 +829,9 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   width: 100%;
   position: relative;
   height: auto;
-  -webkit-transition-property: background-color;
-  transition-property: background-color;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c9:focus-within {
+.c9.c9.c9.c9.c9:focus-within.c9.c9.c9.c9.c9:focus-within.c9.c9.c9.c9.c9:focus-within.c9.c9.c9.c9.c9:focus-within.c9.c9.c9.c9.c9:focus-within {
   background-color: hsla(216,15%,54%,0.09);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
@@ -866,7 +850,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   height: auto;
 }
 
-.c36 {
+.c36.c36.c36.c36.c36.c36.c36.c36.c36.c36.c36.c36.c36.c36.c36.c36.c36.c36.c36.c36.c36.c36.c36.c36.c36 {
   background-color: hsla(218,89%,51%,0.09);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
@@ -885,23 +869,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   height: auto;
 }
 
-.c36:hover {
-  background-color: hsla(218,89%,51%,0.09);
-  border-bottom-color: hsla(216,15%,54%,0.18);
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  width: 100%;
-  position: relative;
-  height: auto;
+.c36.c36.c36.c36.c36:hover {
   -webkit-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-duration: 150ms;
@@ -910,7 +878,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c36:focus-within {
+.c36.c36.c36.c36.c36:hover.c36.c36.c36.c36.c36:hover.c36.c36.c36.c36.c36:hover.c36.c36.c36.c36.c36:hover.c36.c36.c36.c36.c36:hover {
   background-color: hsla(218,89%,51%,0.09);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
@@ -929,13 +897,32 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   height: auto;
 }
 
-.c10 {
+.c36.c36.c36.c36.c36:focus-within.c36.c36.c36.c36.c36:focus-within.c36.c36.c36.c36.c36:focus-within.c36.c36.c36.c36.c36:focus-within.c36.c36.c36.c36.c36:focus-within {
+  background-color: hsla(218,89%,51%,0.09);
+  border-bottom-color: hsla(216,15%,54%,0.18);
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
+  height: auto;
+}
+
+.c10.c10.c10.c10.c10 {
   -webkit-animation: none;
   animation: none;
   max-height: 37px;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -952,15 +939,19 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   word-wrap: normal;
 }
 
-.c44 {
+.c44.c44.c44.c44.c44 {
   overflow-y: auto;
 }
 
-.c44 [role=group]:last-child > [role=separator]:last-child {
+.c44.c44.c44.c44.c44 [role=group]:last-child > [role=separator]:last-child {
   display: none;
 }
 
-.c45 {
+.c45.c45.c45.c45.c45 {
+  display: block;
+}
+
+.c45.c45.c45.c45.c45.c45.c45.c45.c45.c45.c45.c45.c45.c45.c45.c45.c45.c45.c45.c45.c45.c45.c45.c45.c45 {
   border-width: 4px;
   border-style: solid;
   border-color: transparent;
@@ -972,18 +963,17 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   text-decoration: none;
   cursor: pointer;
   width: 100%;
-  display: block;
 }
 
-.c45:hover:not([aria-disabled=true]) {
+.c45.c45.c45.c45.c45:hover:not([aria-disabled=true]) {
   background-color: hsla(216,15%,54%,0.09);
 }
 
-.c45[aria-selected=true] {
+.c45.c45.c45.c45.c45[aria-selected=true] {
   background-color: hsla(218,89%,51%,0.09);
 }
 
-.c24 {
+.c24.c24.c24.c24.c24 {
   -webkit-transition-duration: 250ms;
   transition-duration: 250ms;
   -webkit-transition-timing-function: cubic-bezier(0,0,0,1);
@@ -993,7 +983,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   transition-property: opacity;
 }
 
-.c27 {
+.c27.c27.c27.c27.c27 {
   position: relative;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
@@ -1020,7 +1010,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   z-index: 100;
 }
 
-.c27:after {
+.c27.c27.c27.c27.c27:after.c27.c27.c27.c27.c27:after.c27.c27.c27.c27.c27:after.c27.c27.c27.c27.c27:after.c27.c27.c27.c27.c27:after {
   margin: auto;
   content: '';
   width: 56px;
@@ -1029,7 +1019,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   border-radius: 16px;
 }
 
-.c25 {
+.c25.c25.c25.c25.c25 {
   background: hsla(0,0%,100%,1);
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
@@ -1064,7 +1054,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 @media screen and (min-width:768px) {
-  .c29 {
+  .c29.c29.c29.c29.c29 {
     padding-right: 20px;
     padding-left: 20px;
     margin-bottom: 20px;
@@ -1073,37 +1063,37 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 @media screen and (min-width:320px) {
-  .c40 {
+  .c40.c40.c40.c40.c40 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c40 {
+  .c40.c40.c40.c40.c40 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c40 {
+  .c40.c40.c40.c40.c40 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c40 {
+  .c40.c40.c40.c40.c40 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c40 {
+  .c40.c40.c40.c40.c40 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c52 {
+  .c52.c52.c52.c52.c52 {
     padding: 20px;
   }
 }
@@ -1178,7 +1168,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
               </label>
             </div>
             <div
-              class=" c9 c10"
+              class="c9 c10"
               data-blade-component="base-box"
             >
               <div
@@ -1266,7 +1256,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                 </div>
               </div>
               <div
-                class=" c20"
+                class="c20"
                 data-blade-component="base-box"
               />
             </div>
@@ -1413,7 +1403,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                         </label>
                       </div>
                       <div
-                        class=" c36 c10"
+                        class="c36 c10"
                         data-blade-component="base-box"
                       >
                         <div
@@ -1446,7 +1436,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                           </div>
                         </div>
                         <div
-                          class=" c39"
+                          class="c39"
                           data-blade-component="base-box"
                         />
                       </div>
@@ -1481,12 +1471,12 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
               data-blade-component="base-box"
             >
               <div
-                class=" c44"
+                class="c44"
                 data-blade-component="base-box"
               >
                 <button
                   aria-selected="false"
-                  class=" c45 active-focus"
+                  class="c45 active-focus"
                   data-blade-component="action-list-item"
                   data-index="0"
                   data-value="apple"
@@ -1526,7 +1516,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                 </button>
                 <button
                   aria-selected="false"
-                  class=" c45"
+                  class="c45"
                   data-blade-component="action-list-item"
                   data-index="1"
                   data-value="mango"
@@ -1591,11 +1581,12 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                   type="button"
                 >
                   <div
-                    class="c54 c55"
+                    class="c54"
                     data-blade-component="base-box"
+                    opacity="1"
                   >
                     <div
-                      class="c56"
+                      class="c55"
                       data-blade-component="base-text"
                     >
                       Apply
@@ -1613,16 +1604,16 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 `;
 
 exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it visible on click 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   text-align: left;
   position: relative;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   position: relative;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1634,7 +1625,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   width: 100%;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1650,11 +1641,11 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   margin-top: 0px;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   margin-bottom: 4px;
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1673,13 +1664,13 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   gap: 0px;
 }
 
-.c12 {
+.c12.c12.c12.c12.c12 {
   margin-top: -4px;
   width: 100%;
   min-width: 30px;
 }
 
-.c14 {
+.c14.c14.c14.c14.c14 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1696,7 +1687,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   align-self: center;
 }
 
-.c15 {
+.c15.c15.c15.c15.c15 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1711,7 +1702,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   padding-right: 12px;
 }
 
-.c16 {
+.c16.c16.c16.c16.c16 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1727,11 +1718,11 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   height: 100%;
 }
 
-.c20 {
+.c20.c20.c20.c20.c20 {
   margin-left: 0px;
 }
 
-.c21 {
+.c21.c21.c21.c21.c21 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1745,18 +1736,18 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   justify-content: flex-end;
 }
 
-.c23 {
+.c23.c23.c23.c23.c23 {
   width: 100%;
   box-shadow: 0 12px 16px -4px hsla(217,56%,17%,0.08),0 4px 6px -2px hsla(217,56%,17%,0.03);
 }
 
-.c25 {
+.c25.c25.c25.c25.c25 {
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
 }
 
-.c26 {
+.c26.c26.c26.c26.c26 {
   padding-right: 16px;
   padding-left: 16px;
   margin-bottom: 16px;
@@ -1764,7 +1755,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   touch-action: none;
 }
 
-.c27 {
+.c27.c27.c27.c27.c27 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1778,7 +1769,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   user-select: none;
 }
 
-.c28 {
+.c28.c28.c28.c28.c28 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1797,13 +1788,13 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   margin-right: auto;
 }
 
-.c29 {
+.c29.c29.c29.c29.c29 {
   -webkit-flex: auto;
   -ms-flex: auto;
   flex: auto;
 }
 
-.c30 {
+.c30.c30.c30.c30.c30 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1816,17 +1807,17 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   flex-shrink: 0;
 }
 
-.c32 {
+.c32.c32.c32.c32.c32 {
   border-width: 0px;
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-style: solid;
 }
 
-.c41 {
+.c41.c41.c41.c41.c41 {
   padding: 16px;
 }
 
-.c22 {
+.c22.c22.c22.c22.c22 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1834,7 +1825,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   z-index: 1002;
 }
 
-.c43 {
+.c43.c43.c43.c43.c43 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1853,9 +1844,10 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  opacity: 1;
 }
 
-.c11 {
+.c11.c11.c11.c11.c11 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1874,7 +1866,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   min-height: 36px;
 }
 
-.c36 {
+.c36.c36.c36.c36.c36 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1893,7 +1885,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   max-height: 20px;
 }
 
-.c37 {
+.c37.c37.c37.c37.c37 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1908,7 +1900,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   justify-content: center;
 }
 
-.c38 {
+.c38.c38.c38.c38.c38 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1924,11 +1916,11 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   padding-left: 0px;
 }
 
-.c40 {
+.c40.c40.c40.c40.c40 {
   margin-left: auto;
 }
 
-.c24 {
+.c24.c24.c24.c24.c24 {
   background-color: hsla(0,0%,100%,1);
   border-width: 1px;
   border-color: hsla(216,15%,54%,0.18);
@@ -1936,29 +1928,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   border-radius: 4px;
 }
 
-.c42 {
-  min-height: 36px;
-  width: 100%;
-  cursor: pointer;
-  background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
-  border-width: 1px;
-  border-radius: 2px;
-  border-style: solid;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
+.c42.c42.c42.c42.c42 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1972,24 +1942,24 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   position: relative;
 }
 
-.c42:hover {
+.c42.c42.c42.c42.c42:hover {
   background-color: hsla(223,95%,48%,1);
   border-color: hsla(223,95%,48%,1);
 }
 
-.c42:active {
+.c42.c42.c42.c42.c42:active {
   background-color: hsla(230,100%,42%,1);
   border-color: hsla(230,100%,42%,1);
 }
 
-.c42:focus-visible {
+.c42.c42.c42.c42.c42:focus-visible {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c42 * {
+.c42.c42.c42.c42.c42 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -1998,7 +1968,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -2016,7 +1986,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   -webkit-box-orient: vertical;
 }
 
-.c8 {
+.c8.c8.c8.c8.c8 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -2029,7 +1999,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   padding: 0;
 }
 
-.c31 {
+.c31.c31.c31.c31.c31 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1rem;
@@ -2042,7 +2012,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   padding: 0;
 }
 
-.c45 {
+.c44.c44.c44.c44.c44 {
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -2056,7 +2026,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   padding: 0;
 }
 
-.c39 {
+.c39.c39.c39.c39.c39 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -2074,22 +2044,18 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   -webkit-box-orient: vertical;
 }
 
-.c18 {
+.c18.c18.c18.c18.c18 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.c17 {
+.c17.c17.c17.c17.c17 {
   display: none;
 }
 
-.c44 {
-  opacity: 1;
-}
-
-.c33 {
+.c33.c33.c33.c33.c33 {
   border-bottom-style: solid;
   border-bottom-width: 1px;
   -webkit-box-flex: 1;
@@ -2098,7 +2064,13 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   flex-grow: 1;
 }
 
-.c13 {
+.c13.c13.c13.c13.c13 {
+  outline: none;
+  border: none;
+  cursor: auto;
+}
+
+.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -2122,12 +2094,9 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   height: 36px;
   min-height: 36px;
   resize: none;
-  outline: none;
-  border: none;
-  cursor: auto;
 }
 
-.c13::-webkit-input-placeholder {
+.c13.c13.c13.c13.c13::-webkit-input-placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -2141,7 +2110,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   padding: 0;
 }
 
-.c13::-moz-placeholder {
+.c13.c13.c13.c13.c13::-moz-placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -2155,7 +2124,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   padding: 0;
 }
 
-.c13:-ms-input-placeholder {
+.c13.c13.c13.c13.c13:-ms-input-placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -2169,7 +2138,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   padding: 0;
 }
 
-.c13::placeholder {
+.c13.c13.c13.c13.c13::placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -2183,11 +2152,11 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   padding: 0;
 }
 
-.c13:focus {
+.c13.c13.c13.c13.c13:focus {
   outline: none;
 }
 
-.c19 {
+.c19.c19.c19.c19.c19 {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -2200,7 +2169,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   animation: cAlpMa 250ms cubic-bezier(0.3,0,0.2,1) forwards;
 }
 
-.c9 {
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 {
   background-color: hsla(218,89%,51%,0.09);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
@@ -2219,23 +2188,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   height: auto;
 }
 
-.c9:hover {
-  background-color: hsla(218,89%,51%,0.09);
-  border-bottom-color: hsla(216,15%,54%,0.18);
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  width: 100%;
-  position: relative;
-  height: auto;
+.c9.c9.c9.c9.c9:hover {
   -webkit-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-duration: 150ms;
@@ -2244,7 +2197,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c9:focus-within {
+.c9.c9.c9.c9.c9:hover.c9.c9.c9.c9.c9:hover.c9.c9.c9.c9.c9:hover.c9.c9.c9.c9.c9:hover.c9.c9.c9.c9.c9:hover {
   background-color: hsla(218,89%,51%,0.09);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
@@ -2263,13 +2216,32 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   height: auto;
 }
 
-.c10 {
+.c9.c9.c9.c9.c9:focus-within.c9.c9.c9.c9.c9:focus-within.c9.c9.c9.c9.c9:focus-within.c9.c9.c9.c9.c9:focus-within.c9.c9.c9.c9.c9:focus-within {
+  background-color: hsla(218,89%,51%,0.09);
+  border-bottom-color: hsla(216,15%,54%,0.18);
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
+  height: auto;
+}
+
+.c10.c10.c10.c10.c10 {
   -webkit-animation: none;
   animation: none;
   max-height: 37px;
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -2286,17 +2258,24 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   word-wrap: normal;
 }
 
-.c34 {
+.c34.c34.c34.c34.c34 {
   overflow-y: auto;
+}
+
+.c34.c34.c34.c34.c34 [role=group]:last-child > [role=separator]:last-child {
+  display: none;
+}
+
+.c34.c34.c34.c34.c34.c34.c34.c34.c34.c34.c34.c34.c34.c34.c34.c34.c34.c34.c34.c34.c34.c34.c34.c34.c34 {
   max-height: 300px;
   padding: 8px;
 }
 
-.c34 [role=group]:last-child > [role=separator]:last-child {
-  display: none;
+.c35.c35.c35.c35.c35 {
+  display: block;
 }
 
-.c35 {
+.c35.c35.c35.c35.c35.c35.c35.c35.c35.c35.c35.c35.c35.c35.c35.c35.c35.c35.c35.c35.c35.c35.c35.c35.c35 {
   border-width: 4px;
   border-style: solid;
   border-color: transparent;
@@ -2308,19 +2287,18 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   text-decoration: none;
   cursor: pointer;
   width: 100%;
-  display: block;
 }
 
-.c35:hover:not([aria-disabled=true]) {
+.c35.c35.c35.c35.c35:hover:not([aria-disabled=true]) {
   background-color: hsla(216,15%,54%,0.09);
 }
 
-.c35[aria-selected=true] {
+.c35.c35.c35.c35.c35[aria-selected=true] {
   background-color: hsla(218,89%,51%,0.09);
 }
 
 @media screen and (min-width:768px) {
-  .c26 {
+  .c26.c26.c26.c26.c26 {
     padding-right: 20px;
     padding-left: 20px;
     margin-bottom: 20px;
@@ -2329,37 +2307,37 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
 }
 
 @media screen and (min-width:320px) {
-  .c32 {
+  .c32.c32.c32.c32.c32 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c32 {
+  .c32.c32.c32.c32.c32 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c32 {
+  .c32.c32.c32.c32.c32 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c32 {
+  .c32.c32.c32.c32.c32 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c32 {
+  .c32.c32.c32.c32.c32 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c41 {
+  .c41.c41.c41.c41.c41 {
     padding: 20px;
   }
 }
@@ -2423,7 +2401,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
               </label>
             </div>
             <div
-              class=" c9 c10"
+              class="c9 c10"
               data-blade-component="base-box"
             >
               <div
@@ -2504,7 +2482,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
                 </div>
               </div>
               <div
-                class=" c19"
+                class="c19"
                 data-blade-component="base-box"
               />
             </div>
@@ -2586,13 +2564,13 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
           >
             <div
               aria-multiselectable="false"
-              class=" c34"
+              class="c34"
               data-blade-component="base-box"
               role="listbox"
             >
               <button
                 aria-selected="false"
-                class=" c35 active-focus"
+                class="c35 active-focus"
                 data-blade-component="action-list-item"
                 data-index="0"
                 data-value="apple"
@@ -2632,7 +2610,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
               </button>
               <button
                 aria-selected="false"
-                class=" c35"
+                class="c35"
                 data-blade-component="action-list-item"
                 data-index="1"
                 data-value="mango"
@@ -2697,11 +2675,12 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
                   type="button"
                 >
                   <div
-                    class="c43 c44"
+                    class="c43"
                     data-blade-component="base-box"
+                    opacity="1"
                   >
                     <div
-                      class="c45"
+                      class="c44"
                       data-blade-component="base-text"
                     >
                       Apply

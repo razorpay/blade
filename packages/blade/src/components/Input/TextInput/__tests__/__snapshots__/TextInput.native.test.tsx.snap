@@ -23,12 +23,7 @@ exports[`<TextInput /> should render 1`] = `
       position="relative"
       style={
         [
-          {
-            "display": "flex",
-            "flexDirection": "column",
-            "position": "relative",
-            "width": "100%",
-          },
+          {},
         ]
       }
       width="100%"
@@ -40,13 +35,7 @@ exports[`<TextInput /> should render 1`] = `
         justifyContent="space-between"
         style={
           [
-            {
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "marginBottom": 0,
-              "marginTop": 0,
-            },
+            {},
           ]
         }
       >
@@ -54,10 +43,7 @@ exports[`<TextInput /> should render 1`] = `
           data-blade-component="base-box"
           style={
             [
-              {
-                "marginBottom": 4,
-                "marginRight": 16,
-              },
+              {},
             ]
           }
         >
@@ -71,14 +57,7 @@ exports[`<TextInput /> should render 1`] = `
             maxHeight="36px"
             style={
               [
-                {
-                  "alignItems": "center",
-                  "display": "flex",
-                  "flexDirection": "row",
-                  "flexWrap": "wrap",
-                  "gap": 0,
-                  "maxHeight": 36,
-                },
+                {},
               ]
             }
           >
@@ -120,28 +99,7 @@ exports[`<TextInput /> should render 1`] = `
               data-blade-component="visually-hidden"
               style={
                 [
-                  {
-                    "borderColor": "black",
-                    "borderStyle": "solid",
-                    "borderWidth": 0,
-                    "clip": "rect(0 0 0 0)",
-                    "clipPath": "inset(50%)",
-                    "height": 1,
-                    "left": -10000,
-                    "marginBottom": -1,
-                    "marginLeft": 0,
-                    "marginRight": -1,
-                    "marginTop": 0,
-                    "overflow": "hidden",
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
-                    "position": "absolute",
-                    "whiteSpace": "nowrap",
-                    "width": 1,
-                    "wordWrap": "normal",
-                  },
+                  {},
                 ]
               }
             >
@@ -185,18 +143,7 @@ exports[`<TextInput /> should render 1`] = `
         isTextArea={false}
         style={
           [
-            {
-              "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
-              "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
-              "borderBottomStyle": "solid",
-              "borderBottomWidth": 1,
-              "borderTopLeftRadius": 2,
-              "borderTopRightRadius": 2,
-              "display": "flex",
-              "flexDirection": "row",
-              "position": "relative",
-              "width": "100%",
-            },
+            {},
             {},
           ]
         }
@@ -233,28 +180,8 @@ exports[`<TextInput /> should render 1`] = `
           style={
             [
               {
-                "backgroundColor": "transparent",
-                "color": "hsla(216, 27%, 36%, 1)",
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "fontFamily": "Lato",
-                "fontSize": 14,
-                "fontStyle": "normal",
-                "fontWeight": "400",
                 "height": 36,
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
-                "marginTop": 0,
-                "minHeight": 36,
-                "paddingBottom": 8,
-                "paddingLeft": 12,
-                "paddingRight": 12,
-                "paddingTop": 8,
                 "textAlignVertical": "top",
-                "textDecorationLine": "none",
-                "width": "100%",
               },
             ]
           }
@@ -285,9 +212,7 @@ exports[`<TextInput /> should render 1`] = `
       data-blade-component="base-box"
       style={
         [
-          {
-            "marginLeft": 0,
-          },
+          {},
         ]
       }
     >
@@ -298,11 +223,7 @@ exports[`<TextInput /> should render 1`] = `
         justifyContent="flex-end"
         style={
           [
-            {
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "flex-end",
-            },
+            {},
           ]
         }
       />
@@ -334,12 +255,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
       position="relative"
       style={
         [
-          {
-            "display": "flex",
-            "flexDirection": "column",
-            "position": "relative",
-            "width": "100%",
-          },
+          {},
         ]
       }
       width="100%"
@@ -351,13 +267,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
         justifyContent="space-between"
         style={
           [
-            {
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "marginBottom": 0,
-              "marginTop": 0,
-            },
+            {},
           ]
         }
       >
@@ -365,10 +275,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
           data-blade-component="base-box"
           style={
             [
-              {
-                "marginBottom": 4,
-                "marginRight": 16,
-              },
+              {},
             ]
           }
         >
@@ -382,14 +289,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
             maxHeight="36px"
             style={
               [
-                {
-                  "alignItems": "center",
-                  "display": "flex",
-                  "flexDirection": "row",
-                  "flexWrap": "wrap",
-                  "gap": 0,
-                  "maxHeight": 36,
-                },
+                {},
               ]
             }
           >
@@ -431,28 +331,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
               data-blade-component="visually-hidden"
               style={
                 [
-                  {
-                    "borderColor": "black",
-                    "borderStyle": "solid",
-                    "borderWidth": 0,
-                    "clip": "rect(0 0 0 0)",
-                    "clipPath": "inset(50%)",
-                    "height": 1,
-                    "left": -10000,
-                    "marginBottom": -1,
-                    "marginLeft": 0,
-                    "marginRight": -1,
-                    "marginTop": 0,
-                    "overflow": "hidden",
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
-                    "position": "absolute",
-                    "whiteSpace": "nowrap",
-                    "width": 1,
-                    "wordWrap": "normal",
-                  },
+                  {},
                 ]
               }
             >
@@ -496,18 +375,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
         isTextArea={false}
         style={
           [
-            {
-              "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
-              "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
-              "borderBottomStyle": "solid",
-              "borderBottomWidth": 1,
-              "borderTopLeftRadius": 2,
-              "borderTopRightRadius": 2,
-              "display": "flex",
-              "flexDirection": "row",
-              "position": "relative",
-              "width": "100%",
-            },
+            {},
             {},
           ]
         }
@@ -520,12 +388,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
           flexDirection="row"
           style={
             [
-              {
-                "alignItems": "center",
-                "alignSelf": "center",
-                "display": "flex",
-                "flexDirection": "row",
-              },
+              {},
             ]
           }
         >
@@ -534,10 +397,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
             display="flex"
             style={
               [
-                {
-                  "display": "flex",
-                  "paddingLeft": 12,
-                },
+                {},
               ]
             }
           >
@@ -619,9 +479,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
             data-blade-component="base-box"
             style={
               [
-                {
-                  "paddingLeft": 4,
-                },
+                {},
               ]
             }
           >
@@ -696,28 +554,8 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
           style={
             [
               {
-                "backgroundColor": "transparent",
-                "color": "hsla(216, 27%, 36%, 1)",
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "fontFamily": "Lato",
-                "fontSize": 14,
-                "fontStyle": "normal",
-                "fontWeight": "400",
                 "height": 36,
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
-                "marginTop": 0,
-                "minHeight": 36,
-                "paddingBottom": 8,
-                "paddingLeft": 8,
-                "paddingRight": 8,
-                "paddingTop": 8,
                 "textAlignVertical": "top",
-                "textDecorationLine": "none",
-                "width": "100%",
               },
             ]
           }
@@ -732,12 +570,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
           flexDirection="row"
           style={
             [
-              {
-                "alignItems": "center",
-                "alignSelf": "center",
-                "display": "flex",
-                "flexDirection": "row",
-              },
+              {},
             ]
           }
         >
@@ -745,9 +578,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
             data-blade-component="base-box"
             style={
               [
-                {
-                  "paddingRight": 12,
-                },
+                {},
               ]
             }
           >
@@ -811,9 +642,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
       data-blade-component="base-box"
       style={
         [
-          {
-            "marginLeft": 0,
-          },
+          {},
         ]
       }
     >
@@ -824,11 +653,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
         justifyContent="flex-end"
         style={
           [
-            {
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "flex-end",
-            },
+            {},
           ]
         }
       />

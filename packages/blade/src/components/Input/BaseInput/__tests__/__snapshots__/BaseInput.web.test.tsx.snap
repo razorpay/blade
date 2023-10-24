@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<BaseInput /> should render 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -13,7 +13,7 @@ exports[`<BaseInput /> should render 1`] = `
   width: 100%;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -29,11 +29,11 @@ exports[`<BaseInput /> should render 1`] = `
   margin-top: 0px;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   margin-bottom: 4px;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -52,11 +52,11 @@ exports[`<BaseInput /> should render 1`] = `
   gap: 0px;
 }
 
-.c10 {
+.c10.c10.c10.c10.c10 {
   margin-left: 0px;
 }
 
-.c11 {
+.c11.c11.c11.c11.c11 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -70,7 +70,7 @@ exports[`<BaseInput /> should render 1`] = `
   justify-content: flex-end;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -88,7 +88,7 @@ exports[`<BaseInput /> should render 1`] = `
   -webkit-box-orient: vertical;
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -101,7 +101,13 @@ exports[`<BaseInput /> should render 1`] = `
   padding: 0;
 }
 
-.c8 {
+.c8.c8.c8.c8.c8 {
+  outline: none;
+  border: none;
+  cursor: auto;
+}
+
+.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -124,12 +130,9 @@ exports[`<BaseInput /> should render 1`] = `
   height: 36px;
   min-height: 36px;
   resize: none;
-  outline: none;
-  border: none;
-  cursor: auto;
 }
 
-.c8::-webkit-input-placeholder {
+.c8.c8.c8.c8.c8::-webkit-input-placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -142,7 +145,7 @@ exports[`<BaseInput /> should render 1`] = `
   padding: 0;
 }
 
-.c8::-moz-placeholder {
+.c8.c8.c8.c8.c8::-moz-placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -155,7 +158,7 @@ exports[`<BaseInput /> should render 1`] = `
   padding: 0;
 }
 
-.c8:-ms-input-placeholder {
+.c8.c8.c8.c8.c8:-ms-input-placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -168,7 +171,7 @@ exports[`<BaseInput /> should render 1`] = `
   padding: 0;
 }
 
-.c8::placeholder {
+.c8.c8.c8.c8.c8::placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -181,11 +184,11 @@ exports[`<BaseInput /> should render 1`] = `
   padding: 0;
 }
 
-.c8:focus {
+.c8.c8.c8.c8.c8:focus {
   outline: none;
 }
 
-.c9 {
+.c9.c9.c9.c9.c9 {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -196,7 +199,7 @@ exports[`<BaseInput /> should render 1`] = `
   height: 1px;
 }
 
-.c7 {
+.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 {
   background-color: hsla(216,15%,54%,0.09);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
@@ -214,7 +217,16 @@ exports[`<BaseInput /> should render 1`] = `
   position: relative;
 }
 
-.c7:hover {
+.c7.c7.c7.c7.c7:hover {
+  -webkit-transition-property: background-color;
+  transition-property: background-color;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c7.c7.c7.c7.c7:hover.c7.c7.c7.c7.c7:hover.c7.c7.c7.c7.c7:hover.c7.c7.c7.c7.c7:hover.c7.c7.c7.c7.c7:hover {
   background-color: hsla(216,15%,54%,0.18);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
@@ -230,15 +242,9 @@ exports[`<BaseInput /> should render 1`] = `
   flex-direction: row;
   width: 100%;
   position: relative;
-  -webkit-transition-property: background-color;
-  transition-property: background-color;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c7:focus-within {
+.c7.c7.c7.c7.c7:focus-within.c7.c7.c7.c7.c7:focus-within.c7.c7.c7.c7.c7:focus-within.c7.c7.c7.c7.c7:focus-within.c7.c7.c7.c7.c7:focus-within {
   background-color: hsla(216,15%,54%,0.09);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
@@ -256,7 +262,7 @@ exports[`<BaseInput /> should render 1`] = `
   position: relative;
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -319,7 +325,7 @@ exports[`<BaseInput /> should render 1`] = `
         </label>
       </div>
       <div
-        class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c7"
+        class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 c7"
         data-blade-component="base-box"
       >
         <input
@@ -334,7 +340,7 @@ exports[`<BaseInput /> should render 1`] = `
           value=""
         />
         <div
-          class=" c9"
+          class="c9"
           data-blade-component="base-box"
         />
       </div>
@@ -353,7 +359,7 @@ exports[`<BaseInput /> should render 1`] = `
 `;
 
 exports[`<BaseInput /> should render with icons 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -365,7 +371,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
   width: 100%;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -381,11 +387,11 @@ exports[`<BaseInput /> should render with icons 1`] = `
   margin-top: 0px;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   margin-bottom: 4px;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -404,7 +410,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
   gap: 0px;
 }
 
-.c8 {
+.c8.c8.c8.c8.c8 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -421,7 +427,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
   align-self: center;
 }
 
-.c9 {
+.c9.c9.c9.c9.c9 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -429,7 +435,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
   padding-left: 12px;
 }
 
-.c11 {
+.c11.c11.c11.c11.c11 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -437,11 +443,11 @@ exports[`<BaseInput /> should render with icons 1`] = `
   padding-right: 12px;
 }
 
-.c13 {
+.c13.c13.c13.c13.c13 {
   margin-left: 0px;
 }
 
-.c14 {
+.c14.c14.c14.c14.c14 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -455,7 +461,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
   justify-content: flex-end;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -473,7 +479,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
   -webkit-box-orient: vertical;
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -486,7 +492,13 @@ exports[`<BaseInput /> should render with icons 1`] = `
   padding: 0;
 }
 
-.c10 {
+.c10.c10.c10.c10.c10 {
+  outline: none;
+  border: none;
+  cursor: auto;
+}
+
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -509,12 +521,9 @@ exports[`<BaseInput /> should render with icons 1`] = `
   height: 36px;
   min-height: 36px;
   resize: none;
-  outline: none;
-  border: none;
-  cursor: auto;
 }
 
-.c10::-webkit-input-placeholder {
+.c10.c10.c10.c10.c10::-webkit-input-placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -527,7 +536,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
   padding: 0;
 }
 
-.c10::-moz-placeholder {
+.c10.c10.c10.c10.c10::-moz-placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -540,7 +549,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
   padding: 0;
 }
 
-.c10:-ms-input-placeholder {
+.c10.c10.c10.c10.c10:-ms-input-placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -553,7 +562,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
   padding: 0;
 }
 
-.c10::placeholder {
+.c10.c10.c10.c10.c10::placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -566,11 +575,11 @@ exports[`<BaseInput /> should render with icons 1`] = `
   padding: 0;
 }
 
-.c10:focus {
+.c10.c10.c10.c10.c10:focus {
   outline: none;
 }
 
-.c12 {
+.c12.c12.c12.c12.c12 {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -581,7 +590,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
   height: 1px;
 }
 
-.c7 {
+.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 {
   background-color: hsla(216,15%,54%,0.09);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
@@ -599,7 +608,16 @@ exports[`<BaseInput /> should render with icons 1`] = `
   position: relative;
 }
 
-.c7:hover {
+.c7.c7.c7.c7.c7:hover {
+  -webkit-transition-property: background-color;
+  transition-property: background-color;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c7.c7.c7.c7.c7:hover.c7.c7.c7.c7.c7:hover.c7.c7.c7.c7.c7:hover.c7.c7.c7.c7.c7:hover.c7.c7.c7.c7.c7:hover {
   background-color: hsla(216,15%,54%,0.18);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
@@ -615,15 +633,9 @@ exports[`<BaseInput /> should render with icons 1`] = `
   flex-direction: row;
   width: 100%;
   position: relative;
-  -webkit-transition-property: background-color;
-  transition-property: background-color;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c7:focus-within {
+.c7.c7.c7.c7.c7:focus-within.c7.c7.c7.c7.c7:focus-within.c7.c7.c7.c7.c7:focus-within.c7.c7.c7.c7.c7:focus-within.c7.c7.c7.c7.c7:focus-within {
   background-color: hsla(216,15%,54%,0.09);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
@@ -641,7 +653,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
   position: relative;
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -704,7 +716,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
         </label>
       </div>
       <div
-        class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c7"
+        class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 c7"
         data-blade-component="base-box"
       >
         <div
@@ -717,7 +729,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
           >
             <svg
               aria-hidden="true"
-              class="Svgweb__StyledSvg-vcmjs8-0"
+              class=""
               data-blade-component="icon"
               fill="none"
               height="16px"
@@ -763,7 +775,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
           >
             <svg
               aria-hidden="true"
-              class="Svgweb__StyledSvg-vcmjs8-0"
+              class=""
               data-blade-component="icon"
               fill="none"
               height="16px"
@@ -779,7 +791,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
           </div>
         </div>
         <div
-          class=" c12"
+          class="c12"
           data-blade-component="base-box"
         />
       </div>

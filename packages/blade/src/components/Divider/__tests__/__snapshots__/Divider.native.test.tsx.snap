@@ -14,10 +14,7 @@ exports[`<Divider /> should render Divider using height 1`] = `
     height="100px"
     style={
       [
-        {
-          "display": "flex",
-          "height": 100,
-        },
+        {},
       ]
     }
   >
@@ -31,18 +28,8 @@ exports[`<Divider /> should render Divider using height 1`] = `
       isDividerHorizontal={false}
       style={
         [
-          {
-            "borderLeftColor": "hsla(216, 15%, 54%, 0.18)",
-            "borderStyle": "solid",
-            "borderWidth": 0,
-            "height": "100%",
-          },
-          {
-            "alignSelf": "stretch",
-            "borderLeftStyle": "solid",
-            "borderLeftWidth": 1,
-            "height": "100%",
-          },
+          {},
+          {},
         ]
       }
       thickness="thin"
@@ -64,9 +51,7 @@ exports[`<Divider /> should render Divider within flex container 1`] = `
     display="flex"
     style={
       [
-        {
-          "display": "flex",
-        },
+        {},
       ]
     }
   >
@@ -79,16 +64,8 @@ exports[`<Divider /> should render Divider within flex container 1`] = `
       isDividerHorizontal={true}
       style={
         [
-          {
-            "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
-            "borderStyle": "solid",
-            "borderWidth": 0,
-          },
-          {
-            "borderBottomStyle": "solid",
-            "borderBottomWidth": 1,
-            "flexGrow": 1,
-          },
+          {},
+          {},
         ]
       }
       thickness="thin"

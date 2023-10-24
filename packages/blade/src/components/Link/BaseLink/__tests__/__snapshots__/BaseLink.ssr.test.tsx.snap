@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<BaseLink /> should render link with a default rel set when target is _blank 1`] = `"<div id="root"><a data-blade-component="link" href="https://www.google.com/" target="_blank" rel="noreferrer noopener" class="StyledBaseLinkweb__StyledLink-sc-1yj1z8h-0 bVQhKA" role="link" aria-disabled="false"><span class="BaseBox-bmPWx fSbYvl content-container" data-blade-component="base-box"><span class="StyledBaseText-dVBfTO jSaisz" data-blade-component="base-text">Learn More</span></span></a></div>"`;
+exports[`<BaseLink /> should render link with a default rel set when target is _blank 1`] = `"<div id="root"><a data-blade-component="link" href="https://www.google.com/" target="_blank" rel="noreferrer noopener" class="StyledBaseLinkweb__StyledLink-sc-1yj1z8h-0 eJeYTI" role="link" aria-disabled="false"><span class="BaseBox-bmPWx bgHiDR content-container" data-blade-component="base-box"><span class="StyledBaseText-dVBfTO kKJmGb" data-blade-component="base-text">Learn More</span></span></a></div>"`;
 
 exports[`<BaseLink /> should render link with a default rel set when target is _blank 2`] = `
 <div
@@ -8,7 +8,7 @@ exports[`<BaseLink /> should render link with a default rel set when target is _
 >
   <a
     aria-disabled="false"
-    class="StyledBaseLinkweb__StyledLink-sc-1yj1z8h-0 bVQhKA"
+    class="StyledBaseLinkweb__StyledLink-sc-1yj1z8h-0 eJeYTI"
     data-blade-component="link"
     href="https://www.google.com/"
     rel="noreferrer noopener"
@@ -16,11 +16,11 @@ exports[`<BaseLink /> should render link with a default rel set when target is _
     target="_blank"
   >
     <span
-      class="BaseBox-bmPWx fSbYvl content-container"
+      class="BaseBox-bmPWx bgHiDR content-container"
       data-blade-component="base-box"
     >
       <span
-        class="StyledBaseText-dVBfTO jSaisz"
+        class="StyledBaseText-dVBfTO kKJmGb"
         data-blade-component="base-text"
       >
         Learn More

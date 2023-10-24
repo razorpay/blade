@@ -1,21 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<TextInput /> should render TextInput 1`] = `"<div id="root"><div data-blade-component="textinput" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx edjBu"><div data-blade-component="base-box" class="BaseBox-bmPWx fJyvvB"><label for="textinput-undefined-input-undefined" style="width:auto;flex-shrink:0;margin-right:16px" data-blade-component="form-label"><div data-blade-component="base-box" class="BaseBox-bmPWx bqWBik"><div data-blade-component="base-box" class="BaseBox-bmPWx eeqPab"><p class="StyledBaseText-dVBfTO gaMIEc" data-blade-component="text">Enter company website</p><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 ijVANw"><p class="StyledBaseText-dVBfTO eIdQFo" data-blade-component="text"></p></div></div></div></label></div><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  exvuoO"><div data-blade-component="base-box" class="BaseBox-bmPWx bQSUVn"><div data-blade-component="base-box" class="BaseBox-bmPWx eCxLQc"><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z" fill="hsla(216, 27%, 36%, 1)" data-blade-component="svg-path"></path><path d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z" fill="hsla(216, 27%, 36%, 1)" data-blade-component="svg-path"></path><path d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z" clip-rule="evenodd" fill="hsla(216, 27%, 36%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></div><div data-blade-component="base-box" class="BaseBox-bmPWx iAPQgj"><p class="StyledBaseText-dVBfTO ktUwvA" data-blade-component="text">https://</p></div></div><input type="url" inputMode="url" autoCapitalize="none" enterKeyHint="go" autoComplete="off" id="textinput-undefined-input-undefined" placeholder="something" prefix="https://" data-blade-component="styled-base-input" aria-required="false" aria-disabled="false" aria-invalid="false" aria-describedby="" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 gssCVX"/><div data-blade-component="base-box" class="BaseBox-bmPWx bQSUVn"><div data-blade-component="base-box" class="BaseBox-bmPWx kZoXjP"><p class="StyledBaseText-dVBfTO ktUwvA" data-blade-component="text">.com</p></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  dGtNgo"></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx jgxKDg"><div data-blade-component="base-box" class="BaseBox-bmPWx ctznZr"></div></div></div></div>"`;
+exports[`<TextInput /> should render TextInput 1`] = `"<div id="root"><div data-blade-component="textinput" class="BaseBox-bmPWx iutvIJ"><div data-blade-component="base-box" class="BaseBox-bmPWx jjVhDm"><div data-blade-component="base-box" class="BaseBox-bmPWx iMRrjR"><label for="textinput-undefined-input-undefined" style="width:auto;flex-shrink:0;margin-right:16px" data-blade-component="form-label"><div data-blade-component="base-box" class="BaseBox-bmPWx cWPgGA"><div data-blade-component="base-box" class="BaseBox-bmPWx cEagQj"><p class="StyledBaseText-dVBfTO caEKek" data-blade-component="text">Enter company website</p><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 ctjjOt"><p class="StyledBaseText-dVBfTO kGtJcI" data-blade-component="text"></p></div></div></div></label></div><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 iutvIJ ihOFwy"><div data-blade-component="base-box" class="BaseBox-bmPWx eihNDL"><div data-blade-component="base-box" class="BaseBox-bmPWx lmRglE"><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0 dhIfXO"><path d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z" fill="hsla(216, 27%, 36%, 1)" data-blade-component="svg-path"></path><path d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z" fill="hsla(216, 27%, 36%, 1)" data-blade-component="svg-path"></path><path d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z" clip-rule="evenodd" fill="hsla(216, 27%, 36%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></div><div data-blade-component="base-box" class="BaseBox-bmPWx dBZYGH"><p class="StyledBaseText-dVBfTO fClwHQ" data-blade-component="text">https://</p></div></div><input type="url" inputMode="url" autoCapitalize="none" enterKeyHint="go" autoComplete="off" id="textinput-undefined-input-undefined" placeholder="something" prefix="https://" data-blade-component="styled-base-input" aria-required="false" aria-disabled="false" aria-invalid="false" aria-describedby="" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 bjLDdX"/><div data-blade-component="base-box" class="BaseBox-bmPWx eihNDL"><div data-blade-component="base-box" class="BaseBox-bmPWx bdTRUL"><p class="StyledBaseText-dVBfTO fClwHQ" data-blade-component="text">.com</p></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0 iutvIJ dCWMmg"></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx hVlzDw"><div data-blade-component="base-box" class="BaseBox-bmPWx euuYYv"></div></div></div></div>"`;
 
 exports[`<TextInput /> should render TextInput 2`] = `
 <div
   id="root"
 >
   <div
-    class="BaseBox-bmPWx"
+    class="BaseBox-bmPWx iutvIJ"
     data-blade-component="textinput"
   >
     <div
-      class="BaseBox-bmPWx edjBu"
+      class="BaseBox-bmPWx jjVhDm"
       data-blade-component="base-box"
     >
       <div
-        class="BaseBox-bmPWx fJyvvB"
+        class="BaseBox-bmPWx iMRrjR"
         data-blade-component="base-box"
       >
         <label
@@ -24,25 +24,25 @@ exports[`<TextInput /> should render TextInput 2`] = `
           style="width:auto;flex-shrink:0;margin-right:16px"
         >
           <div
-            class="BaseBox-bmPWx bqWBik"
+            class="BaseBox-bmPWx cWPgGA"
             data-blade-component="base-box"
           >
             <div
-              class="BaseBox-bmPWx eeqPab"
+              class="BaseBox-bmPWx cEagQj"
               data-blade-component="base-box"
             >
               <p
-                class="StyledBaseText-dVBfTO gaMIEc"
+                class="StyledBaseText-dVBfTO caEKek"
                 data-blade-component="text"
               >
                 Enter company website
               </p>
               <div
-                class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 ijVANw"
+                class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 ctjjOt"
                 data-blade-component="visually-hidden"
               >
                 <p
-                  class="StyledBaseText-dVBfTO eIdQFo"
+                  class="StyledBaseText-dVBfTO kGtJcI"
                   data-blade-component="text"
                 />
               </div>
@@ -51,20 +51,20 @@ exports[`<TextInput /> should render TextInput 2`] = `
         </label>
       </div>
       <div
-        class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  exvuoO"
+        class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 iutvIJ ihOFwy"
         data-blade-component="base-box"
       >
         <div
-          class="BaseBox-bmPWx bQSUVn"
+          class="BaseBox-bmPWx eihNDL"
           data-blade-component="base-box"
         >
           <div
-            class="BaseBox-bmPWx eCxLQc"
+            class="BaseBox-bmPWx lmRglE"
             data-blade-component="base-box"
           >
             <svg
               aria-hidden="true"
-              class="Svgweb__StyledSvg-vcmjs8-0"
+              class="Svgweb__StyledSvg-vcmjs8-0 dhIfXO"
               data-blade-component="icon"
               fill="none"
               height="16px"
@@ -91,11 +91,11 @@ exports[`<TextInput /> should render TextInput 2`] = `
             </svg>
           </div>
           <div
-            class="BaseBox-bmPWx iAPQgj"
+            class="BaseBox-bmPWx dBZYGH"
             data-blade-component="base-box"
           >
             <p
-              class="StyledBaseText-dVBfTO ktUwvA"
+              class="StyledBaseText-dVBfTO fClwHQ"
               data-blade-component="text"
             >
               https://
@@ -109,7 +109,7 @@ exports[`<TextInput /> should render TextInput 2`] = `
           aria-required="false"
           autocapitalize="none"
           autocomplete="off"
-          class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 gssCVX"
+          class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 bjLDdX"
           data-blade-component="styled-base-input"
           enterkeyhint="go"
           id="textinput-1-input-2"
@@ -120,15 +120,15 @@ exports[`<TextInput /> should render TextInput 2`] = `
           value=""
         />
         <div
-          class="BaseBox-bmPWx bQSUVn"
+          class="BaseBox-bmPWx eihNDL"
           data-blade-component="base-box"
         >
           <div
-            class="BaseBox-bmPWx kZoXjP"
+            class="BaseBox-bmPWx bdTRUL"
             data-blade-component="base-box"
           >
             <p
-              class="StyledBaseText-dVBfTO ktUwvA"
+              class="StyledBaseText-dVBfTO fClwHQ"
               data-blade-component="text"
             >
               .com
@@ -136,17 +136,17 @@ exports[`<TextInput /> should render TextInput 2`] = `
           </div>
         </div>
         <div
-          class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  dGtNgo"
+          class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0 iutvIJ dCWMmg"
           data-blade-component="base-box"
         />
       </div>
     </div>
     <div
-      class="BaseBox-bmPWx jgxKDg"
+      class="BaseBox-bmPWx hVlzDw"
       data-blade-component="base-box"
     >
       <div
-        class="BaseBox-bmPWx ctznZr"
+        class="BaseBox-bmPWx euuYYv"
         data-blade-component="base-box"
       />
     </div>

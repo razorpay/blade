@@ -65,25 +65,8 @@ exports[`<Popover /> should render 1`] = `
     style={
       [
         {
-          "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(218, 89%, 51%, 1)",
-          "borderColor": "hsla(218, 89%, 51%, 1)",
-          "borderRadius": 2,
-          "borderStyle": "solid",
-          "borderWidth": 1,
-          "cursor": "pointer",
           "display": "flex",
-          "justifyContent": "center",
-          "minHeight": 36,
-          "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
-          "paddingTop": 0,
-          "textDecorationColor": "black",
-          "textDecorationLine": "none",
-          "textDecorationStyle": "solid",
-          "width": "auto",
         },
         {
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
@@ -98,22 +81,11 @@ exports[`<Popover /> should render 1`] = `
       data-blade-component="base-box"
       display="flex"
       flexDirection="row"
-      isHidden={false}
       justifyContent="center"
+      opacity={1}
       style={
         [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "center",
-          },
-          {
-            "opacity": 1,
-          },
+          {},
         ]
       }
     >
@@ -220,19 +192,7 @@ exports[`<Popover /> should render 1`] = `
         style={
           [
             {},
-            {
-              "backgroundColor": "#FFFFFF",
-              "borderColor": "hsla(216, 19%, 89%, 1)",
-              "borderRadius": 8,
-              "borderStyle": "solid",
-              "borderWidth": 1,
-              "left": 0,
-              "maxWidth": 288,
-              "position": "absolute",
-              "top": 0,
-              "width": "100%",
-              "zIndex": 1100,
-            },
+            {},
             {
               "elevation": 4,
               "shadowColor": "hsla(217, 56%, 17%, 0.64)",
@@ -261,15 +221,7 @@ exports[`<Popover /> should render 1`] = `
           gap="spacing.4"
           style={
             [
-              {
-                "display": "flex",
-                "flexDirection": "column",
-                "gap": 12,
-                "paddingBottom": 12,
-                "paddingLeft": 12,
-                "paddingRight": 12,
-                "paddingTop": 12,
-              },
+              {},
             ]
           }
         >
@@ -281,17 +233,7 @@ exports[`<Popover /> should render 1`] = `
             right="spacing.2"
             style={
               [
-                {
-                  "borderRadius": 9999,
-                  "paddingBottom": 4,
-                  "paddingLeft": 4,
-                  "paddingRight": 4,
-                  "paddingTop": 4,
-                  "position": "absolute",
-                  "right": 4,
-                  "top": 4,
-                  "zIndex": 1,
-                },
+                {},
               ]
             }
             top="spacing.2"
@@ -581,25 +523,8 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
     style={
       [
         {
-          "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(218, 89%, 51%, 1)",
-          "borderColor": "hsla(218, 89%, 51%, 1)",
-          "borderRadius": 2,
-          "borderStyle": "solid",
-          "borderWidth": 1,
-          "cursor": "pointer",
           "display": "flex",
-          "justifyContent": "center",
-          "minHeight": 36,
-          "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
-          "paddingTop": 0,
-          "textDecorationColor": "black",
-          "textDecorationLine": "none",
-          "textDecorationStyle": "solid",
-          "width": "auto",
         },
         {
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
@@ -614,22 +539,11 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
       data-blade-component="base-box"
       display="flex"
       flexDirection="row"
-      isHidden={false}
       justifyContent="center"
+      opacity={1}
       style={
         [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "center",
-          },
-          {
-            "opacity": 1,
-          },
+          {},
         ]
       }
     >
@@ -736,19 +650,7 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
         style={
           [
             {},
-            {
-              "backgroundColor": "#FFFFFF",
-              "borderColor": "hsla(216, 19%, 89%, 1)",
-              "borderRadius": 8,
-              "borderStyle": "solid",
-              "borderWidth": 1,
-              "left": 0,
-              "maxWidth": 288,
-              "position": "absolute",
-              "top": 0,
-              "width": "100%",
-              "zIndex": 9999,
-            },
+            {},
             {
               "elevation": 4,
               "shadowColor": "hsla(217, 56%, 17%, 0.64)",
@@ -777,15 +679,7 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
           gap="spacing.4"
           style={
             [
-              {
-                "display": "flex",
-                "flexDirection": "column",
-                "gap": 12,
-                "paddingBottom": 12,
-                "paddingLeft": 12,
-                "paddingRight": 12,
-                "paddingTop": 12,
-              },
+              {},
             ]
           }
         >
@@ -797,17 +691,7 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
             right="spacing.2"
             style={
               [
-                {
-                  "borderRadius": 9999,
-                  "paddingBottom": 4,
-                  "paddingLeft": 4,
-                  "paddingRight": 4,
-                  "paddingTop": 4,
-                  "position": "absolute",
-                  "right": 4,
-                  "top": 4,
-                  "zIndex": 1,
-                },
+                {},
               ]
             }
             top="spacing.2"
@@ -1097,25 +981,8 @@ exports[`<Popover /> should render with title,footer 1`] = `
     style={
       [
         {
-          "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(218, 89%, 51%, 1)",
-          "borderColor": "hsla(218, 89%, 51%, 1)",
-          "borderRadius": 2,
-          "borderStyle": "solid",
-          "borderWidth": 1,
-          "cursor": "pointer",
           "display": "flex",
-          "justifyContent": "center",
-          "minHeight": 36,
-          "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
-          "paddingTop": 0,
-          "textDecorationColor": "black",
-          "textDecorationLine": "none",
-          "textDecorationStyle": "solid",
-          "width": "auto",
         },
         {
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
@@ -1130,22 +997,11 @@ exports[`<Popover /> should render with title,footer 1`] = `
       data-blade-component="base-box"
       display="flex"
       flexDirection="row"
-      isHidden={false}
       justifyContent="center"
+      opacity={1}
       style={
         [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "center",
-          },
-          {
-            "opacity": 1,
-          },
+          {},
         ]
       }
     >
@@ -1252,19 +1108,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
         style={
           [
             {},
-            {
-              "backgroundColor": "#FFFFFF",
-              "borderColor": "hsla(216, 19%, 89%, 1)",
-              "borderRadius": 8,
-              "borderStyle": "solid",
-              "borderWidth": 1,
-              "left": 0,
-              "maxWidth": 288,
-              "position": "absolute",
-              "top": 0,
-              "width": "100%",
-              "zIndex": 1100,
-            },
+            {},
             {
               "elevation": 4,
               "shadowColor": "hsla(217, 56%, 17%, 0.64)",
@@ -1293,15 +1137,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
           gap="spacing.4"
           style={
             [
-              {
-                "display": "flex",
-                "flexDirection": "column",
-                "gap": 12,
-                "paddingBottom": 12,
-                "paddingLeft": 12,
-                "paddingRight": 12,
-                "paddingTop": 12,
-              },
+              {},
             ]
           }
         >
@@ -1314,13 +1150,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
             gap="spacing.3"
             style={
               [
-                {
-                  "alignItems": "center",
-                  "display": "flex",
-                  "flexDirection": "row",
-                  "flexWrap": "wrap",
-                  "gap": 8,
-                },
+                {},
               ]
             }
           >
@@ -1401,9 +1231,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
               data-blade-component="base-box"
               style={
                 [
-                  {
-                    "paddingRight": 12,
-                  },
+                  {},
                 ]
               }
             >
@@ -1446,9 +1274,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
               data-blade-component="base-box"
               style={
                 [
-                  {
-                    "marginLeft": "auto",
-                  },
+                  {},
                 ]
               }
             >

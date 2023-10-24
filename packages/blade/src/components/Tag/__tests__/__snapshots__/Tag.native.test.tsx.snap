@@ -13,9 +13,7 @@ exports[`<Tag /> should render tag 1`] = `
     display="flex"
     style={
       [
-        {
-          "display": "flex",
-        },
+        {},
       ]
     }
   >
@@ -29,18 +27,7 @@ exports[`<Tag /> should render tag 1`] = `
       flexWrap="nowrap"
       style={
         [
-          {
-            "alignSelf": "center",
-            "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
-            "borderRadius": 9999,
-            "display": "flex",
-            "flexDirection": "row",
-            "flexWrap": "nowrap",
-            "paddingBottom": 4,
-            "paddingLeft": 12,
-            "paddingRight": 8,
-            "paddingTop": 4,
-          },
+          {},
           {},
         ]
       }
@@ -53,12 +40,7 @@ exports[`<Tag /> should render tag 1`] = `
         maxWidth="100px"
         style={
           [
-            {
-              "alignItems": "center",
-              "display": "flex",
-              "flexDirection": "row",
-              "maxWidth": 100,
-            },
+            {},
           ]
         }
       >
@@ -84,7 +66,7 @@ exports[`<Tag /> should render tag 1`] = `
                 "lineHeight": 16,
                 "marginBottom": 0,
                 "marginLeft": 0,
-                "marginRight": 4,
+                "marginRight": 0,
                 "marginTop": 0,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
@@ -106,12 +88,7 @@ exports[`<Tag /> should render tag 1`] = `
         justifyContent="center"
         style={
           [
-            {
-              "alignItems": "center",
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "center",
-            },
+            {},
           ]
         }
       >

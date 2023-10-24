@@ -34,11 +34,7 @@ exports[`<Accordion /> should render 1`] = `
       }
       style={
         [
-          {
-            "maxWidth": 710,
-            "minWidth": 200,
-            "width": "100%",
-          },
+          {},
         ]
       }
       width="100%"
@@ -67,12 +63,7 @@ exports[`<Accordion /> should render 1`] = `
             minWidth="0px"
             style={
               [
-                {
-                  "alignItems": "flex-start",
-                  "display": "flex",
-                  "flexDirection": "column",
-                  "minWidth": 0,
-                },
+                {},
               ]
             }
           >
@@ -113,16 +104,7 @@ exports[`<Accordion /> should render 1`] = `
               onStartShouldSetResponder={[Function]}
               style={
                 [
-                  {
-                    "alignItems": "center",
-                    "display": "flex",
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                    "paddingBottom": 16,
-                    "paddingLeft": 16,
-                    "paddingRight": 16,
-                    "paddingTop": 16,
-                  },
+                  {},
                   {
                     "backgroundColor": "hsla(0, 0%, 100%, 0)",
                   },
@@ -137,15 +119,7 @@ exports[`<Accordion /> should render 1`] = `
                 justifyContent="space-between"
                 style={
                   [
-                    {
-                      "alignItems": "center",
-                      "display": "flex",
-                      "flexBasis": 0,
-                      "flexDirection": "row",
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "justifyContent": "space-between",
-                    },
+                    {},
                   ]
                 }
               >
@@ -157,13 +131,7 @@ exports[`<Accordion /> should render 1`] = `
                   flexShrink={1}
                   style={
                     [
-                      {
-                        "alignItems": "flex-start",
-                        "display": "flex",
-                        "flexDirection": "row",
-                        "flexShrink": 1,
-                        "marginRight": 16,
-                      },
+                      {},
                     ]
                   }
                 >
@@ -290,9 +258,7 @@ exports[`<Accordion /> should render 1`] = `
               importantForAccessibility="no-hide-descendants"
               style={
                 [
-                  {
-                    "width": "100%",
-                  },
+                  {},
                 ]
               }
               width="100%"
@@ -323,10 +289,7 @@ exports[`<Accordion /> should render 1`] = `
                     data-blade-component="box"
                     style={
                       [
-                        {
-                          "marginBottom": 0,
-                          "marginTop": 16,
-                        },
+                        {},
                       ]
                     }
                   >
@@ -334,10 +297,7 @@ exports[`<Accordion /> should render 1`] = `
                       data-blade-component="base-box"
                       style={
                         [
-                          {
-                            "marginLeft": 16,
-                            "marginRight": 16,
-                          },
+                          {},
                         ]
                       }
                     >
@@ -378,9 +338,7 @@ exports[`<Accordion /> should render 1`] = `
                         data-blade-component="base-box"
                         style={
                           [
-                            {
-                              "marginTop": 0,
-                            },
+                            {},
                           ]
                         }
                       />
@@ -444,16 +402,8 @@ exports[`<Accordion /> should render 1`] = `
           isDividerHorizontal={true}
           style={
             [
-              {
-                "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
-                "borderStyle": "solid",
-                "borderWidth": 0,
-              },
-              {
-                "borderBottomStyle": "solid",
-                "borderBottomWidth": 1,
-                "flexGrow": 1,
-              },
+              {},
+              {},
             ]
           }
           thickness="thin"
@@ -483,12 +433,7 @@ exports[`<Accordion /> should render 1`] = `
             minWidth="0px"
             style={
               [
-                {
-                  "alignItems": "flex-start",
-                  "display": "flex",
-                  "flexDirection": "column",
-                  "minWidth": 0,
-                },
+                {},
               ]
             }
           >
@@ -529,16 +474,7 @@ exports[`<Accordion /> should render 1`] = `
               onStartShouldSetResponder={[Function]}
               style={
                 [
-                  {
-                    "alignItems": "center",
-                    "display": "flex",
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                    "paddingBottom": 16,
-                    "paddingLeft": 16,
-                    "paddingRight": 16,
-                    "paddingTop": 16,
-                  },
+                  {},
                   {
                     "backgroundColor": "hsla(0, 0%, 100%, 0)",
                   },
@@ -553,15 +489,7 @@ exports[`<Accordion /> should render 1`] = `
                 justifyContent="space-between"
                 style={
                   [
-                    {
-                      "alignItems": "center",
-                      "display": "flex",
-                      "flexBasis": 0,
-                      "flexDirection": "row",
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "justifyContent": "space-between",
-                    },
+                    {},
                   ]
                 }
               >
@@ -573,13 +501,7 @@ exports[`<Accordion /> should render 1`] = `
                   flexShrink={1}
                   style={
                     [
-                      {
-                        "alignItems": "flex-start",
-                        "display": "flex",
-                        "flexDirection": "row",
-                        "flexShrink": 1,
-                        "marginRight": 16,
-                      },
+                      {},
                     ]
                   }
                 >
@@ -706,9 +628,7 @@ exports[`<Accordion /> should render 1`] = `
               importantForAccessibility="no-hide-descendants"
               style={
                 [
-                  {
-                    "width": "100%",
-                  },
+                  {},
                 ]
               }
               width="100%"
@@ -739,10 +659,7 @@ exports[`<Accordion /> should render 1`] = `
                     data-blade-component="box"
                     style={
                       [
-                        {
-                          "marginBottom": 0,
-                          "marginTop": 16,
-                        },
+                        {},
                       ]
                     }
                   >
@@ -750,10 +667,7 @@ exports[`<Accordion /> should render 1`] = `
                       data-blade-component="base-box"
                       style={
                         [
-                          {
-                            "marginLeft": 16,
-                            "marginRight": 16,
-                          },
+                          {},
                         ]
                       }
                     >
@@ -794,9 +708,7 @@ exports[`<Accordion /> should render 1`] = `
                         data-blade-component="base-box"
                         style={
                           [
-                            {
-                              "marginTop": 0,
-                            },
+                            {},
                           ]
                         }
                       />
@@ -860,16 +772,8 @@ exports[`<Accordion /> should render 1`] = `
           isDividerHorizontal={true}
           style={
             [
-              {
-                "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
-                "borderStyle": "solid",
-                "borderWidth": 0,
-              },
-              {
-                "borderBottomStyle": "solid",
-                "borderBottomWidth": 1,
-                "flexGrow": 1,
-              },
+              {},
+              {},
             ]
           }
           thickness="thin"
@@ -899,12 +803,7 @@ exports[`<Accordion /> should render 1`] = `
             minWidth="0px"
             style={
               [
-                {
-                  "alignItems": "flex-start",
-                  "display": "flex",
-                  "flexDirection": "column",
-                  "minWidth": 0,
-                },
+                {},
               ]
             }
           >
@@ -945,16 +844,7 @@ exports[`<Accordion /> should render 1`] = `
               onStartShouldSetResponder={[Function]}
               style={
                 [
-                  {
-                    "alignItems": "center",
-                    "display": "flex",
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                    "paddingBottom": 16,
-                    "paddingLeft": 16,
-                    "paddingRight": 16,
-                    "paddingTop": 16,
-                  },
+                  {},
                   {
                     "backgroundColor": "hsla(0, 0%, 100%, 0)",
                   },
@@ -969,15 +859,7 @@ exports[`<Accordion /> should render 1`] = `
                 justifyContent="space-between"
                 style={
                   [
-                    {
-                      "alignItems": "center",
-                      "display": "flex",
-                      "flexBasis": 0,
-                      "flexDirection": "row",
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "justifyContent": "space-between",
-                    },
+                    {},
                   ]
                 }
               >
@@ -989,13 +871,7 @@ exports[`<Accordion /> should render 1`] = `
                   flexShrink={1}
                   style={
                     [
-                      {
-                        "alignItems": "flex-start",
-                        "display": "flex",
-                        "flexDirection": "row",
-                        "flexShrink": 1,
-                        "marginRight": 16,
-                      },
+                      {},
                     ]
                   }
                 >
@@ -1122,9 +998,7 @@ exports[`<Accordion /> should render 1`] = `
               importantForAccessibility="no-hide-descendants"
               style={
                 [
-                  {
-                    "width": "100%",
-                  },
+                  {},
                 ]
               }
               width="100%"
@@ -1155,10 +1029,7 @@ exports[`<Accordion /> should render 1`] = `
                     data-blade-component="box"
                     style={
                       [
-                        {
-                          "marginBottom": 0,
-                          "marginTop": 16,
-                        },
+                        {},
                       ]
                     }
                   >
@@ -1166,10 +1037,7 @@ exports[`<Accordion /> should render 1`] = `
                       data-blade-component="base-box"
                       style={
                         [
-                          {
-                            "marginLeft": 16,
-                            "marginRight": 16,
-                          },
+                          {},
                         ]
                       }
                     >
@@ -1210,9 +1078,7 @@ exports[`<Accordion /> should render 1`] = `
                         data-blade-component="base-box"
                         style={
                           [
-                            {
-                              "marginTop": 0,
-                            },
+                            {},
                           ]
                         }
                       />
@@ -1276,16 +1142,8 @@ exports[`<Accordion /> should render 1`] = `
           isDividerHorizontal={true}
           style={
             [
-              {
-                "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
-                "borderStyle": "solid",
-                "borderWidth": 0,
-              },
-              {
-                "borderBottomStyle": "solid",
-                "borderBottomWidth": 1,
-                "flexGrow": 1,
-              },
+              {},
+              {},
             ]
           }
           thickness="thin"

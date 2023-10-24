@@ -15,17 +15,7 @@ exports[`<Code /> should render Code with color 1`] = `
     style={
       [
         {},
-        {
-          "alignSelf": "center",
-          "borderRadius": 4,
-          "display": "flex",
-          "lineHeight": 0,
-          "paddingBottom": 0,
-          "paddingLeft": 4,
-          "paddingRight": 4,
-          "paddingTop": 0,
-          "verticalAlign": "middle",
-        },
+        {},
       ]
     }
   >
@@ -80,18 +70,7 @@ exports[`<Code /> should render Code with default properties 1`] = `
     style={
       [
         {},
-        {
-          "alignSelf": "center",
-          "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
-          "borderRadius": 4,
-          "display": "flex",
-          "lineHeight": 0,
-          "paddingBottom": 0,
-          "paddingLeft": 4,
-          "paddingRight": 4,
-          "paddingTop": 0,
-          "verticalAlign": "middle",
-        },
+        {},
       ]
     }
   >
@@ -146,17 +125,7 @@ exports[`<Code /> should render isHighlighted false Code 1`] = `
     style={
       [
         {},
-        {
-          "alignSelf": "center",
-          "borderRadius": 4,
-          "display": "flex",
-          "lineHeight": 0,
-          "paddingBottom": 0,
-          "paddingLeft": 4,
-          "paddingRight": 4,
-          "paddingTop": 0,
-          "verticalAlign": "middle",
-        },
+        {},
       ]
     }
   >
@@ -211,18 +180,7 @@ exports[`<Code /> should render medium Code 1`] = `
     style={
       [
         {},
-        {
-          "alignSelf": "center",
-          "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
-          "borderRadius": 4,
-          "display": "flex",
-          "lineHeight": 0,
-          "paddingBottom": 0,
-          "paddingLeft": 4,
-          "paddingRight": 4,
-          "paddingTop": 0,
-          "verticalAlign": "middle",
-        },
+        {},
       ]
     }
   >
@@ -277,18 +235,7 @@ exports[`<Code /> should render small Code 1`] = `
     style={
       [
         {},
-        {
-          "alignSelf": "center",
-          "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
-          "borderRadius": 4,
-          "display": "flex",
-          "lineHeight": 0,
-          "paddingBottom": 0,
-          "paddingLeft": 4,
-          "paddingRight": 4,
-          "paddingTop": 0,
-          "verticalAlign": "middle",
-        },
+        {},
       ]
     }
   >

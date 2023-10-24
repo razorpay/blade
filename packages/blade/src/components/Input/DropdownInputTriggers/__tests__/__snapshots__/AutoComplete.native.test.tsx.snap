@@ -21,10 +21,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
       position="relative"
       style={
         [
-          {
-            "position": "relative",
-            "textAlign": "left",
-          },
+          {},
         ]
       }
       textAlign="left"
@@ -34,9 +31,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
         position="relative"
         style={
           [
-            {
-              "position": "relative",
-            },
+            {},
           ]
         }
       >
@@ -55,12 +50,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
             position="relative"
             style={
               [
-                {
-                  "display": "flex",
-                  "flexDirection": "column",
-                  "position": "relative",
-                  "width": "100%",
-                },
+                {},
               ]
             }
             width="100%"
@@ -72,13 +62,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
               justifyContent="space-between"
               style={
                 [
-                  {
-                    "display": "flex",
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                    "marginBottom": 0,
-                    "marginTop": 0,
-                  },
+                  {},
                 ]
               }
             >
@@ -86,10 +70,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                 data-blade-component="base-box"
                 style={
                   [
-                    {
-                      "marginBottom": 4,
-                      "marginRight": 16,
-                    },
+                    {},
                   ]
                 }
               >
@@ -103,14 +84,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                   maxHeight="36px"
                   style={
                     [
-                      {
-                        "alignItems": "center",
-                        "display": "flex",
-                        "flexDirection": "row",
-                        "flexWrap": "wrap",
-                        "gap": 0,
-                        "maxHeight": 36,
-                      },
+                      {},
                     ]
                   }
                 >
@@ -152,28 +126,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                     data-blade-component="visually-hidden"
                     style={
                       [
-                        {
-                          "borderColor": "black",
-                          "borderStyle": "solid",
-                          "borderWidth": 0,
-                          "clip": "rect(0 0 0 0)",
-                          "clipPath": "inset(50%)",
-                          "height": 1,
-                          "left": -10000,
-                          "marginBottom": -1,
-                          "marginLeft": 0,
-                          "marginRight": -1,
-                          "marginTop": 0,
-                          "overflow": "hidden",
-                          "paddingBottom": 0,
-                          "paddingLeft": 0,
-                          "paddingRight": 0,
-                          "paddingTop": 0,
-                          "position": "absolute",
-                          "whiteSpace": "nowrap",
-                          "width": 1,
-                          "wordWrap": "normal",
-                        },
+                        {},
                       ]
                     }
                   >
@@ -218,19 +171,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
               isTextArea={false}
               style={
                 [
-                  {
-                    "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
-                    "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
-                    "borderBottomStyle": "solid",
-                    "borderBottomWidth": 1,
-                    "borderTopLeftRadius": 2,
-                    "borderTopRightRadius": 2,
-                    "display": "flex",
-                    "flexDirection": "row",
-                    "height": "auto",
-                    "position": "relative",
-                    "width": "100%",
-                  },
+                  {},
                   {
                     "maxHeight": 37,
                   },
@@ -247,20 +188,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                 position="relative"
                 style={
                   [
-                    {
-                      "display": "flex",
-                      "flexBasis": 0,
-                      "flexDirection": "row",
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "justifyContent": "flex-start",
-                      "minHeight": 36,
-                      "paddingBottom": 2,
-                      "paddingLeft": 12,
-                      "paddingRight": 12,
-                      "paddingTop": 2,
-                      "position": "relative",
-                    },
+                    {},
                   ]
                 }
               >
@@ -304,11 +232,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                       position="absolute"
                       style={
                         [
-                          {
-                            "height": "100%",
-                            "position": "absolute",
-                            "width": "100%",
-                          },
+                          {},
                         ]
                       }
                       width="100%"
@@ -317,9 +241,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                       data-blade-component="base-box"
                       style={
                         [
-                          {
-                            "width": "100%",
-                          },
+                          {},
                         ]
                       }
                       width="100%"
@@ -366,28 +288,8 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                         style={
                           [
                             {
-                              "backgroundColor": "transparent",
-                              "color": "hsla(216, 27%, 36%, 1)",
-                              "flexBasis": 0,
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "fontFamily": "Lato",
-                              "fontSize": 14,
-                              "fontStyle": "normal",
-                              "fontWeight": "400",
                               "height": 36,
-                              "marginBottom": 0,
-                              "marginLeft": 0,
-                              "marginRight": 0,
-                              "marginTop": 0,
-                              "minHeight": 36,
-                              "paddingBottom": 8,
-                              "paddingLeft": 0,
-                              "paddingRight": 8,
-                              "paddingTop": 8,
                               "textAlignVertical": "top",
-                              "textDecorationLine": "none",
-                              "width": "100%",
                             },
                           ]
                         }
@@ -420,11 +322,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                   onStartShouldSetResponder={[Function]}
                   style={
                     [
-                      {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                      },
+                      {},
                     ]
                   }
                 />
@@ -437,12 +335,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                 flexDirection="row"
                 style={
                   [
-                    {
-                      "alignItems": "center",
-                      "alignSelf": "center",
-                      "display": "flex",
-                      "flexDirection": "row",
-                    },
+                    {},
                   ]
                 }
               >
@@ -453,12 +346,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                   display="flex"
                   style={
                     [
-                      {
-                        "alignItems": "stretch",
-                        "alignSelf": "stretch",
-                        "display": "flex",
-                        "paddingRight": 12,
-                      },
+                      {},
                     ]
                   }
                 >
@@ -524,9 +412,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                             "borderWidth": 0,
                           },
                           [
-                            {
-                              "display": "none",
-                            },
+                            {},
                           ],
                           {
                             "flex": 0,
@@ -540,7 +426,6 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                       width="16px"
                     >
                       <RNSVGGroup
-                        display="none"
                         fill={null}
                         propList={
                           [
@@ -583,9 +468,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                             "borderWidth": 0,
                           },
                           [
-                            {
-                              "display": "flex",
-                            },
+                            {},
                           ],
                           {
                             "flex": 0,
@@ -648,9 +531,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
             data-blade-component="base-box"
             style={
               [
-                {
-                  "marginLeft": 0,
-                },
+                {},
               ]
             }
           >
@@ -661,11 +542,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
               justifyContent="flex-end"
               style={
                 [
-                  {
-                    "display": "flex",
-                    "flexDirection": "row",
-                    "justifyContent": "flex-end",
-                  },
+                  {},
                 ]
               }
             />
@@ -677,9 +554,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
         position="relative"
         style={
           [
-            {
-              "position": "relative",
-            },
+            {},
           ]
         }
       >
@@ -734,11 +609,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
             position="absolute"
             style={
               [
-                {
-                  "display": "flex",
-                  "position": "absolute",
-                  "width": "100%",
-                },
+                {},
                 {
                   "elevation": 12,
                   "shadowColor": "hsla(217, 56%, 17%, 0.64)",
@@ -751,11 +622,6 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                 },
                 [
                   {
-                    "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                    "borderColor": "hsla(216, 15%, 54%, 0.18)",
-                    "borderRadius": 4,
-                    "borderStyle": "solid",
-                    "borderWidth": 1,
                     "transform": [
                       {
                         "translateY": 8,
@@ -826,7 +692,6 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                   [
                     {
                       "marginBottom": 0,
-                      "maxHeight": 300,
                       "paddingBottom": 8,
                       "paddingLeft": 8,
                       "paddingRight": 8,
@@ -878,21 +743,8 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                       onStartShouldSetResponder={[Function]}
                       style={
                         {
-                          "borderColor": "transparent",
-                          "borderRadius": 4,
-                          "borderStyle": "solid",
-                          "borderWidth": 4,
-                          "cursor": "pointer",
                           "display": "flex",
                           "opacity": 1,
-                          "paddingBottom": 8,
-                          "paddingLeft": 8,
-                          "paddingRight": 8,
-                          "paddingTop": 8,
-                          "textDecorationColor": "black",
-                          "textDecorationLine": "none",
-                          "textDecorationStyle": "solid",
-                          "width": "100%",
                         }
                       }
                     >
@@ -904,12 +756,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                         justifyContent="center"
                         style={
                           [
-                            {
-                              "alignItems": "center",
-                              "display": "flex",
-                              "flexDirection": "row",
-                              "justifyContent": "center",
-                            },
+                            {},
                           ]
                         }
                       >
@@ -920,11 +767,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                           justifyContent="center"
                           style={
                             [
-                              {
-                                "alignItems": "center",
-                                "display": "flex",
-                                "justifyContent": "center",
-                              },
+                              {},
                             ]
                           }
                         >
@@ -935,10 +778,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                             pointerEvents="none"
                             style={
                               [
-                                {
-                                  "paddingRight": 4,
-                                  "pointerEvents": "none",
-                                },
+                                {},
                               ]
                             }
                           >
@@ -1000,10 +840,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                                   flexDirection="column"
                                   style={
                                     [
-                                      {
-                                        "display": "flex",
-                                        "flexDirection": "column",
-                                      },
+                                      {},
                                     ]
                                   }
                                 >
@@ -1013,10 +850,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                                     flexDirection="row"
                                     style={
                                       [
-                                        {
-                                          "display": "flex",
-                                          "flexDirection": "row",
-                                        },
+                                        {},
                                       ]
                                     }
                                   >
@@ -1027,24 +861,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                                       size="medium"
                                       style={
                                         [
-                                          {
-                                            "alignItems": "center",
-                                            "backgroundColor": "transparent",
-                                            "borderColor": "hsla(214, 18%, 69%, 1)",
-                                            "borderRadius": 2,
-                                            "borderStyle": "solid",
-                                            "borderWidth": 1.5,
-                                            "display": "flex",
-                                            "flexShrink": 0,
-                                            "height": 16,
-                                            "justifyContent": "center",
-                                            "marginBottom": 2,
-                                            "marginLeft": 2,
-                                            "marginRight": 2,
-                                            "marginTop": 2,
-                                            "position": "relative",
-                                            "width": 16,
-                                          },
+                                          {},
                                         ]
                                       }
                                     />
@@ -1061,13 +878,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                           flexDirection="row"
                           style={
                             [
-                              {
-                                "alignItems": "center",
-                                "display": "flex",
-                                "flexDirection": "row",
-                                "paddingLeft": 0,
-                                "paddingRight": 8,
-                              },
+                              {},
                             ]
                           }
                         >
@@ -1110,9 +921,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                           data-blade-component="base-box"
                           style={
                             [
-                              {
-                                "marginLeft": "auto",
-                              },
+                              {},
                             ]
                           }
                         />
@@ -1121,9 +930,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                         data-blade-component="base-box"
                         style={
                           [
-                            {
-                              "paddingLeft": 24,
-                            },
+                            {},
                           ]
                         }
                       />
@@ -1165,21 +972,8 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                       onStartShouldSetResponder={[Function]}
                       style={
                         {
-                          "borderColor": "transparent",
-                          "borderRadius": 4,
-                          "borderStyle": "solid",
-                          "borderWidth": 4,
-                          "cursor": "pointer",
                           "display": "flex",
                           "opacity": 1,
-                          "paddingBottom": 8,
-                          "paddingLeft": 8,
-                          "paddingRight": 8,
-                          "paddingTop": 8,
-                          "textDecorationColor": "black",
-                          "textDecorationLine": "none",
-                          "textDecorationStyle": "solid",
-                          "width": "100%",
                         }
                       }
                     >
@@ -1191,12 +985,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                         justifyContent="center"
                         style={
                           [
-                            {
-                              "alignItems": "center",
-                              "display": "flex",
-                              "flexDirection": "row",
-                              "justifyContent": "center",
-                            },
+                            {},
                           ]
                         }
                       >
@@ -1207,11 +996,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                           justifyContent="center"
                           style={
                             [
-                              {
-                                "alignItems": "center",
-                                "display": "flex",
-                                "justifyContent": "center",
-                              },
+                              {},
                             ]
                           }
                         >
@@ -1222,10 +1007,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                             pointerEvents="none"
                             style={
                               [
-                                {
-                                  "paddingRight": 4,
-                                  "pointerEvents": "none",
-                                },
+                                {},
                               ]
                             }
                           >
@@ -1287,10 +1069,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                                   flexDirection="column"
                                   style={
                                     [
-                                      {
-                                        "display": "flex",
-                                        "flexDirection": "column",
-                                      },
+                                      {},
                                     ]
                                   }
                                 >
@@ -1300,10 +1079,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                                     flexDirection="row"
                                     style={
                                       [
-                                        {
-                                          "display": "flex",
-                                          "flexDirection": "row",
-                                        },
+                                        {},
                                       ]
                                     }
                                   >
@@ -1314,24 +1090,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                                       size="medium"
                                       style={
                                         [
-                                          {
-                                            "alignItems": "center",
-                                            "backgroundColor": "transparent",
-                                            "borderColor": "hsla(214, 18%, 69%, 1)",
-                                            "borderRadius": 2,
-                                            "borderStyle": "solid",
-                                            "borderWidth": 1.5,
-                                            "display": "flex",
-                                            "flexShrink": 0,
-                                            "height": 16,
-                                            "justifyContent": "center",
-                                            "marginBottom": 2,
-                                            "marginLeft": 2,
-                                            "marginRight": 2,
-                                            "marginTop": 2,
-                                            "position": "relative",
-                                            "width": 16,
-                                          },
+                                          {},
                                         ]
                                       }
                                     />
@@ -1348,13 +1107,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                           flexDirection="row"
                           style={
                             [
-                              {
-                                "alignItems": "center",
-                                "display": "flex",
-                                "flexDirection": "row",
-                                "paddingLeft": 0,
-                                "paddingRight": 8,
-                              },
+                              {},
                             ]
                           }
                         >
@@ -1397,9 +1150,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                           data-blade-component="base-box"
                           style={
                             [
-                              {
-                                "marginLeft": "auto",
-                              },
+                              {},
                             ]
                           }
                         />
@@ -1408,9 +1159,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                         data-blade-component="base-box"
                         style={
                           [
-                            {
-                              "paddingLeft": 24,
-                            },
+                            {},
                           ]
                         }
                       />
@@ -1452,21 +1201,8 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                       onStartShouldSetResponder={[Function]}
                       style={
                         {
-                          "borderColor": "transparent",
-                          "borderRadius": 4,
-                          "borderStyle": "solid",
-                          "borderWidth": 4,
-                          "cursor": "pointer",
                           "display": "flex",
                           "opacity": 1,
-                          "paddingBottom": 8,
-                          "paddingLeft": 8,
-                          "paddingRight": 8,
-                          "paddingTop": 8,
-                          "textDecorationColor": "black",
-                          "textDecorationLine": "none",
-                          "textDecorationStyle": "solid",
-                          "width": "100%",
                         }
                       }
                     >
@@ -1478,12 +1214,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                         justifyContent="center"
                         style={
                           [
-                            {
-                              "alignItems": "center",
-                              "display": "flex",
-                              "flexDirection": "row",
-                              "justifyContent": "center",
-                            },
+                            {},
                           ]
                         }
                       >
@@ -1494,11 +1225,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                           justifyContent="center"
                           style={
                             [
-                              {
-                                "alignItems": "center",
-                                "display": "flex",
-                                "justifyContent": "center",
-                              },
+                              {},
                             ]
                           }
                         >
@@ -1509,10 +1236,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                             pointerEvents="none"
                             style={
                               [
-                                {
-                                  "paddingRight": 4,
-                                  "pointerEvents": "none",
-                                },
+                                {},
                               ]
                             }
                           >
@@ -1574,10 +1298,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                                   flexDirection="column"
                                   style={
                                     [
-                                      {
-                                        "display": "flex",
-                                        "flexDirection": "column",
-                                      },
+                                      {},
                                     ]
                                   }
                                 >
@@ -1587,10 +1308,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                                     flexDirection="row"
                                     style={
                                       [
-                                        {
-                                          "display": "flex",
-                                          "flexDirection": "row",
-                                        },
+                                        {},
                                       ]
                                     }
                                   >
@@ -1601,24 +1319,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                                       size="medium"
                                       style={
                                         [
-                                          {
-                                            "alignItems": "center",
-                                            "backgroundColor": "transparent",
-                                            "borderColor": "hsla(214, 18%, 69%, 1)",
-                                            "borderRadius": 2,
-                                            "borderStyle": "solid",
-                                            "borderWidth": 1.5,
-                                            "display": "flex",
-                                            "flexShrink": 0,
-                                            "height": 16,
-                                            "justifyContent": "center",
-                                            "marginBottom": 2,
-                                            "marginLeft": 2,
-                                            "marginRight": 2,
-                                            "marginTop": 2,
-                                            "position": "relative",
-                                            "width": 16,
-                                          },
+                                          {},
                                         ]
                                       }
                                     />
@@ -1635,13 +1336,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                           flexDirection="row"
                           style={
                             [
-                              {
-                                "alignItems": "center",
-                                "display": "flex",
-                                "flexDirection": "row",
-                                "paddingLeft": 0,
-                                "paddingRight": 8,
-                              },
+                              {},
                             ]
                           }
                         >
@@ -1684,9 +1379,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                           data-blade-component="base-box"
                           style={
                             [
-                              {
-                                "marginLeft": "auto",
-                              },
+                              {},
                             ]
                           }
                         />
@@ -1695,9 +1388,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                         data-blade-component="base-box"
                         style={
                           [
-                            {
-                              "paddingLeft": 24,
-                            },
+                            {},
                           ]
                         }
                       />
@@ -1729,16 +1420,8 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                 isDividerHorizontal={true}
                 style={
                   [
-                    {
-                      "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
-                      "borderStyle": "solid",
-                      "borderWidth": 0,
-                    },
-                    {
-                      "borderBottomStyle": "solid",
-                      "borderBottomWidth": 1,
-                      "flexGrow": 1,
-                    },
+                    {},
+                    {},
                   ]
                 }
                 thickness="thin"
@@ -1747,12 +1430,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                 data-blade-component="dropdown-footer"
                 style={
                   [
-                    {
-                      "paddingBottom": 16,
-                      "paddingLeft": 16,
-                      "paddingRight": 16,
-                      "paddingTop": 16,
-                    },
+                    {},
                   ]
                 }
               >
@@ -1812,25 +1490,8 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                   style={
                     [
                       {
-                        "alignItems": "center",
                         "alignSelf": "center",
-                        "backgroundColor": "hsla(218, 89%, 51%, 1)",
-                        "borderColor": "hsla(218, 89%, 51%, 1)",
-                        "borderRadius": 2,
-                        "borderStyle": "solid",
-                        "borderWidth": 1,
-                        "cursor": "pointer",
                         "display": "flex",
-                        "justifyContent": "center",
-                        "minHeight": 36,
-                        "paddingBottom": 0,
-                        "paddingLeft": 20,
-                        "paddingRight": 20,
-                        "paddingTop": 0,
-                        "textDecorationColor": "black",
-                        "textDecorationLine": "none",
-                        "textDecorationStyle": "solid",
-                        "width": "auto",
                       },
                       {
                         "backgroundColor": "hsla(218, 89%, 51%, 1)",
@@ -1845,22 +1506,11 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                     data-blade-component="base-box"
                     display="flex"
                     flexDirection="row"
-                    isHidden={false}
                     justifyContent="center"
+                    opacity={1}
                     style={
                       [
-                        {
-                          "alignItems": "center",
-                          "display": "flex",
-                          "flexBasis": 0,
-                          "flexDirection": "row",
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "justifyContent": "center",
-                        },
-                        {
-                          "opacity": 1,
-                        },
+                        {},
                       ]
                     }
                   >

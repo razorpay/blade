@@ -1,23 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Tooltip /> should render Tooltip ssr 1`] = `"<div id="root"><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 biOBim"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 kkGTK NIPoA"><div class="StyledBaseText-dVBfTO brGLEM" data-blade-component="base-text">Hello world</div></div></button></div>"`;
+exports[`<Tooltip /> should render Tooltip ssr 1`] = `"<div id="root"><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 bFyAlZ"><div opacity="1" data-blade-component="base-box" class="BaseBox-bmPWx gRxylf"><div class="StyledBaseText-dVBfTO gEaGjA" data-blade-component="base-text">Hello world</div></div></button></div>"`;
 
 exports[`<Tooltip /> should render Tooltip ssr 2`] = `
 <div
   id="root"
 >
   <button
-    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 biOBim"
+    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 bFyAlZ"
     data-blade-component="button"
     role="button"
     type="button"
   >
     <div
-      class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 kkGTK NIPoA"
+      class="BaseBox-bmPWx gRxylf"
       data-blade-component="base-box"
+      opacity="1"
     >
       <div
-        class="StyledBaseText-dVBfTO brGLEM"
+        class="StyledBaseText-dVBfTO gEaGjA"
         data-blade-component="base-text"
       >
         Hello world

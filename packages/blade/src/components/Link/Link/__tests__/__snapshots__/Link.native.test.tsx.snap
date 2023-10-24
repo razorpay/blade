@@ -43,18 +43,6 @@ exports[`<Link /> should render button variant of link 1`] = `
       [
         {
           "alignSelf": "flex-start",
-          "backgroundColor": "transparent",
-          "borderColor": "black",
-          "borderStyle": "solid",
-          "borderWidth": 0,
-          "outline": "none",
-          "paddingBottom": 0,
-          "paddingLeft": 0,
-          "paddingRight": 0,
-          "paddingTop": 0,
-          "textDecorationColor": "black",
-          "textDecorationLine": "none",
-          "textDecorationStyle": "solid",
         },
       ]
     }
@@ -67,11 +55,7 @@ exports[`<Link /> should render button variant of link 1`] = `
       flexDirection="row"
       style={
         [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexDirection": "row",
-          },
+          {},
         ]
       }
     >
@@ -157,18 +141,6 @@ exports[`<Link /> should render default color link 1`] = `
       [
         {
           "alignSelf": "flex-start",
-          "backgroundColor": "transparent",
-          "borderColor": "black",
-          "borderStyle": "solid",
-          "borderWidth": 0,
-          "outline": "none",
-          "paddingBottom": 0,
-          "paddingLeft": 0,
-          "paddingRight": 0,
-          "paddingTop": 0,
-          "textDecorationColor": "black",
-          "textDecorationLine": "none",
-          "textDecorationStyle": "solid",
         },
       ]
     }
@@ -181,11 +153,7 @@ exports[`<Link /> should render default color link 1`] = `
       flexDirection="row"
       style={
         [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexDirection": "row",
-          },
+          {},
         ]
       }
     >
@@ -271,18 +239,6 @@ exports[`<Link /> should render disabled button variant of link 1`] = `
       [
         {
           "alignSelf": "flex-start",
-          "backgroundColor": "transparent",
-          "borderColor": "black",
-          "borderStyle": "solid",
-          "borderWidth": 0,
-          "outline": "none",
-          "paddingBottom": 0,
-          "paddingLeft": 0,
-          "paddingRight": 0,
-          "paddingTop": 0,
-          "textDecorationColor": "black",
-          "textDecorationLine": "none",
-          "textDecorationStyle": "solid",
         },
       ]
     }
@@ -295,11 +251,7 @@ exports[`<Link /> should render disabled button variant of link 1`] = `
       flexDirection="row"
       style={
         [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexDirection": "row",
-          },
+          {},
         ]
       }
     >
@@ -385,18 +337,6 @@ exports[`<Link /> should render disabled default color link 1`] = `
       [
         {
           "alignSelf": "flex-start",
-          "backgroundColor": "transparent",
-          "borderColor": "black",
-          "borderStyle": "solid",
-          "borderWidth": 0,
-          "outline": "none",
-          "paddingBottom": 0,
-          "paddingLeft": 0,
-          "paddingRight": 0,
-          "paddingTop": 0,
-          "textDecorationColor": "black",
-          "textDecorationLine": "none",
-          "textDecorationStyle": "solid",
         },
       ]
     }
@@ -409,11 +349,7 @@ exports[`<Link /> should render disabled default color link 1`] = `
       flexDirection="row"
       style={
         [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexDirection": "row",
-          },
+          {},
         ]
       }
     >
@@ -499,18 +435,6 @@ exports[`<Link /> should render disabled neutral color link 1`] = `
       [
         {
           "alignSelf": "flex-start",
-          "backgroundColor": "transparent",
-          "borderColor": "black",
-          "borderStyle": "solid",
-          "borderWidth": 0,
-          "outline": "none",
-          "paddingBottom": 0,
-          "paddingLeft": 0,
-          "paddingRight": 0,
-          "paddingTop": 0,
-          "textDecorationColor": "black",
-          "textDecorationLine": "none",
-          "textDecorationStyle": "solid",
         },
       ]
     }
@@ -523,11 +447,7 @@ exports[`<Link /> should render disabled neutral color link 1`] = `
       flexDirection="row"
       style={
         [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexDirection": "row",
-          },
+          {},
         ]
       }
     >
@@ -613,18 +533,6 @@ exports[`<Link /> should render disabled white color link 1`] = `
       [
         {
           "alignSelf": "flex-start",
-          "backgroundColor": "transparent",
-          "borderColor": "black",
-          "borderStyle": "solid",
-          "borderWidth": 0,
-          "outline": "none",
-          "paddingBottom": 0,
-          "paddingLeft": 0,
-          "paddingRight": 0,
-          "paddingTop": 0,
-          "textDecorationColor": "black",
-          "textDecorationLine": "none",
-          "textDecorationStyle": "solid",
         },
       ]
     }
@@ -637,11 +545,7 @@ exports[`<Link /> should render disabled white color link 1`] = `
       flexDirection="row"
       style={
         [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexDirection": "row",
-          },
+          {},
         ]
       }
     >
@@ -727,18 +631,6 @@ exports[`<Link /> should render link with default properties 1`] = `
       [
         {
           "alignSelf": "flex-start",
-          "backgroundColor": "transparent",
-          "borderColor": "black",
-          "borderStyle": "solid",
-          "borderWidth": 0,
-          "outline": "none",
-          "paddingBottom": 0,
-          "paddingLeft": 0,
-          "paddingRight": 0,
-          "paddingTop": 0,
-          "textDecorationColor": "black",
-          "textDecorationLine": "none",
-          "textDecorationStyle": "solid",
         },
       ]
     }
@@ -751,11 +643,7 @@ exports[`<Link /> should render link with default properties 1`] = `
       flexDirection="row"
       style={
         [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexDirection": "row",
-          },
+          {},
         ]
       }
     >
@@ -841,18 +729,6 @@ exports[`<Link /> should render link with icon with default iconPosition 1`] = `
       [
         {
           "alignSelf": "flex-start",
-          "backgroundColor": "transparent",
-          "borderColor": "black",
-          "borderStyle": "solid",
-          "borderWidth": 0,
-          "outline": "none",
-          "paddingBottom": 0,
-          "paddingLeft": 0,
-          "paddingRight": 0,
-          "paddingTop": 0,
-          "textDecorationColor": "black",
-          "textDecorationLine": "none",
-          "textDecorationStyle": "solid",
         },
       ]
     }
@@ -865,11 +741,7 @@ exports[`<Link /> should render link with icon with default iconPosition 1`] = `
       flexDirection="row"
       style={
         [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexDirection": "row",
-          },
+          {},
         ]
       }
     >
@@ -879,11 +751,7 @@ exports[`<Link /> should render link with icon with default iconPosition 1`] = `
         display="flex"
         style={
           [
-            {
-              "alignItems": "center",
-              "display": "flex",
-              "paddingRight": 4,
-            },
+            {},
           ]
         }
       >
@@ -1043,18 +911,6 @@ exports[`<Link /> should render link with icon with left iconPosition 1`] = `
       [
         {
           "alignSelf": "flex-start",
-          "backgroundColor": "transparent",
-          "borderColor": "black",
-          "borderStyle": "solid",
-          "borderWidth": 0,
-          "outline": "none",
-          "paddingBottom": 0,
-          "paddingLeft": 0,
-          "paddingRight": 0,
-          "paddingTop": 0,
-          "textDecorationColor": "black",
-          "textDecorationLine": "none",
-          "textDecorationStyle": "solid",
         },
       ]
     }
@@ -1067,11 +923,7 @@ exports[`<Link /> should render link with icon with left iconPosition 1`] = `
       flexDirection="row"
       style={
         [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexDirection": "row",
-          },
+          {},
         ]
       }
     >
@@ -1081,11 +933,7 @@ exports[`<Link /> should render link with icon with left iconPosition 1`] = `
         display="flex"
         style={
           [
-            {
-              "alignItems": "center",
-              "display": "flex",
-              "paddingRight": 4,
-            },
+            {},
           ]
         }
       >
@@ -1245,18 +1093,6 @@ exports[`<Link /> should render link with icon with right iconPosition 1`] = `
       [
         {
           "alignSelf": "flex-start",
-          "backgroundColor": "transparent",
-          "borderColor": "black",
-          "borderStyle": "solid",
-          "borderWidth": 0,
-          "outline": "none",
-          "paddingBottom": 0,
-          "paddingLeft": 0,
-          "paddingRight": 0,
-          "paddingTop": 0,
-          "textDecorationColor": "black",
-          "textDecorationLine": "none",
-          "textDecorationStyle": "solid",
         },
       ]
     }
@@ -1269,11 +1105,7 @@ exports[`<Link /> should render link with icon with right iconPosition 1`] = `
       flexDirection="row"
       style={
         [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexDirection": "row",
-          },
+          {},
         ]
       }
     >
@@ -1317,11 +1149,7 @@ exports[`<Link /> should render link with icon with right iconPosition 1`] = `
         display="flex"
         style={
           [
-            {
-              "alignItems": "center",
-              "display": "flex",
-              "paddingLeft": 4,
-            },
+            {},
           ]
         }
       >
@@ -1447,18 +1275,6 @@ exports[`<Link /> should render link with icon without text 1`] = `
       [
         {
           "alignSelf": "flex-start",
-          "backgroundColor": "transparent",
-          "borderColor": "black",
-          "borderStyle": "solid",
-          "borderWidth": 0,
-          "outline": "none",
-          "paddingBottom": 0,
-          "paddingLeft": 0,
-          "paddingRight": 0,
-          "paddingTop": 0,
-          "textDecorationColor": "black",
-          "textDecorationLine": "none",
-          "textDecorationStyle": "solid",
         },
       ]
     }
@@ -1471,11 +1287,7 @@ exports[`<Link /> should render link with icon without text 1`] = `
       flexDirection="row"
       style={
         [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexDirection": "row",
-          },
+          {},
         ]
       }
     >
@@ -1485,11 +1297,7 @@ exports[`<Link /> should render link with icon without text 1`] = `
         display="flex"
         style={
           [
-            {
-              "alignItems": "center",
-              "display": "flex",
-              "paddingRight": 0,
-            },
+            {},
           ]
         }
       >
@@ -1647,18 +1455,6 @@ exports[`<Link /> should render neutral color link 1`] = `
       [
         {
           "alignSelf": "flex-start",
-          "backgroundColor": "transparent",
-          "borderColor": "black",
-          "borderStyle": "solid",
-          "borderWidth": 0,
-          "outline": "none",
-          "paddingBottom": 0,
-          "paddingLeft": 0,
-          "paddingRight": 0,
-          "paddingTop": 0,
-          "textDecorationColor": "black",
-          "textDecorationLine": "none",
-          "textDecorationStyle": "solid",
         },
       ]
     }
@@ -1671,11 +1467,7 @@ exports[`<Link /> should render neutral color link 1`] = `
       flexDirection="row"
       style={
         [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexDirection": "row",
-          },
+          {},
         ]
       }
     >
@@ -1761,18 +1553,6 @@ exports[`<Link /> should render white color link 1`] = `
       [
         {
           "alignSelf": "flex-start",
-          "backgroundColor": "transparent",
-          "borderColor": "black",
-          "borderStyle": "solid",
-          "borderWidth": 0,
-          "outline": "none",
-          "paddingBottom": 0,
-          "paddingLeft": 0,
-          "paddingRight": 0,
-          "paddingTop": 0,
-          "textDecorationColor": "black",
-          "textDecorationLine": "none",
-          "textDecorationStyle": "solid",
         },
       ]
     }
@@ -1785,11 +1565,7 @@ exports[`<Link /> should render white color link 1`] = `
       flexDirection="row"
       style={
         [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexDirection": "row",
-          },
+          {},
         ]
       }
     >
@@ -1875,18 +1651,6 @@ exports[`<Link /> should render with small size 1`] = `
       [
         {
           "alignSelf": "flex-start",
-          "backgroundColor": "transparent",
-          "borderColor": "black",
-          "borderStyle": "solid",
-          "borderWidth": 0,
-          "outline": "none",
-          "paddingBottom": 0,
-          "paddingLeft": 0,
-          "paddingRight": 0,
-          "paddingTop": 0,
-          "textDecorationColor": "black",
-          "textDecorationLine": "none",
-          "textDecorationStyle": "solid",
         },
       ]
     }
@@ -1899,11 +1663,7 @@ exports[`<Link /> should render with small size 1`] = `
       flexDirection="row"
       style={
         [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexDirection": "row",
-          },
+          {},
         ]
       }
     >
@@ -1913,11 +1673,7 @@ exports[`<Link /> should render with small size 1`] = `
         display="flex"
         style={
           [
-            {
-              "alignItems": "center",
-              "display": "flex",
-              "paddingRight": 4,
-            },
+            {},
           ]
         }
       >

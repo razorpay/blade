@@ -13,10 +13,7 @@ exports[`<Box /> should apply borderBottomColor prop to border bottom only 1`] =
     data-blade-component="box"
     style={
       [
-        {
-          "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
-          "borderBottomStyle": "solid",
-        },
+        {},
       ]
     }
   >
@@ -38,10 +35,7 @@ exports[`<Box /> should apply borderColor prop to all borders 1`] = `
     data-blade-component="box"
     style={
       [
-        {
-          "borderColor": "hsla(216, 15%, 54%, 0.18)",
-          "borderStyle": "solid",
-        },
+        {},
       ]
     }
   >

@@ -23,9 +23,7 @@ exports[`<List /> should render List with default properties 1`] = `
       marginTop="spacing.3"
       style={
         [
-          {
-            "marginTop": 8,
-          },
+          {},
         ]
       }
     >
@@ -35,9 +33,7 @@ exports[`<List /> should render List with default properties 1`] = `
         level={1}
         style={
           [
-            {
-              "marginLeft": 4,
-            },
+            {},
           ]
         }
         variant="unordered"
@@ -49,12 +45,7 @@ exports[`<List /> should render List with default properties 1`] = `
           flexDirection="row"
           style={
             [
-              {
-                "alignItems": "center",
-                "display": "flex",
-                "flexDirection": "row",
-                "marginBottom": 8,
-              },
+              {},
             ]
           }
         >
@@ -64,12 +55,7 @@ exports[`<List /> should render List with default properties 1`] = `
             display="flex"
             style={
               [
-                {
-                  "alignSelf": "flex-start",
-                  "display": "flex",
-                  "marginRight": 8,
-                  "marginTop": 7,
-                },
+                {},
               ]
             }
           >
@@ -135,11 +121,7 @@ exports[`<List /> should render List with default properties 1`] = `
             flexWrap="wrap"
             style={
               [
-                {
-                  "display": "flex",
-                  "flexDirection": "row",
-                  "flexWrap": "wrap",
-                },
+                {},
               ]
             }
           >
@@ -202,9 +184,7 @@ exports[`<List /> should render List with default properties 1`] = `
               level={2}
               style={
                 [
-                  {
-                    "marginLeft": 16,
-                  },
+                  {},
                 ]
               }
               variant="unordered"
@@ -216,12 +196,7 @@ exports[`<List /> should render List with default properties 1`] = `
                 flexDirection="row"
                 style={
                   [
-                    {
-                      "alignItems": "center",
-                      "display": "flex",
-                      "flexDirection": "row",
-                      "marginBottom": 8,
-                    },
+                    {},
                   ]
                 }
               >
@@ -231,12 +206,7 @@ exports[`<List /> should render List with default properties 1`] = `
                   display="flex"
                   style={
                     [
-                      {
-                        "alignSelf": "flex-start",
-                        "display": "flex",
-                        "marginRight": 8,
-                        "marginTop": 7,
-                      },
+                      {},
                     ]
                   }
                 >
@@ -302,11 +272,7 @@ exports[`<List /> should render List with default properties 1`] = `
                   flexWrap="wrap"
                   style={
                     [
-                      {
-                        "display": "flex",
-                        "flexDirection": "row",
-                        "flexWrap": "wrap",
-                      },
+                      {},
                     ]
                   }
                 >
@@ -369,9 +335,7 @@ exports[`<List /> should render List with default properties 1`] = `
                     level={3}
                     style={
                       [
-                        {
-                          "marginLeft": 16,
-                        },
+                        {},
                       ]
                     }
                     variant="unordered"
@@ -383,12 +347,7 @@ exports[`<List /> should render List with default properties 1`] = `
                       flexDirection="row"
                       style={
                         [
-                          {
-                            "alignItems": "center",
-                            "display": "flex",
-                            "flexDirection": "row",
-                            "marginBottom": 8,
-                          },
+                          {},
                         ]
                       }
                     >
@@ -398,12 +357,7 @@ exports[`<List /> should render List with default properties 1`] = `
                         display="flex"
                         style={
                           [
-                            {
-                              "alignSelf": "flex-start",
-                              "display": "flex",
-                              "marginRight": 8,
-                              "marginTop": 7,
-                            },
+                            {},
                           ]
                         }
                       >
@@ -471,11 +425,7 @@ exports[`<List /> should render List with default properties 1`] = `
                         flexWrap="wrap"
                         style={
                           [
-                            {
-                              "display": "flex",
-                              "flexDirection": "row",
-                              "flexWrap": "wrap",
-                            },
+                            {},
                           ]
                         }
                       >
@@ -549,9 +499,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
       marginTop="spacing.3"
       style={
         [
-          {
-            "marginTop": 8,
-          },
+          {},
         ]
       }
     >
@@ -561,9 +509,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
         level={1}
         style={
           [
-            {
-              "marginLeft": 4,
-            },
+            {},
           ]
         }
         variant="unordered"
@@ -575,12 +521,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
           flexDirection="row"
           style={
             [
-              {
-                "alignItems": "center",
-                "display": "flex",
-                "flexDirection": "row",
-                "marginBottom": 8,
-              },
+              {},
             ]
           }
         >
@@ -590,12 +531,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
             display="flex"
             style={
               [
-                {
-                  "alignSelf": "flex-start",
-                  "display": "flex",
-                  "marginRight": 8,
-                  "marginTop": 7,
-                },
+                {},
               ]
             }
           >
@@ -661,11 +597,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
             flexWrap="wrap"
             style={
               [
-                {
-                  "display": "flex",
-                  "flexDirection": "row",
-                  "flexWrap": "wrap",
-                },
+                {},
               ]
             }
           >
@@ -709,18 +641,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
               style={
                 [
                   {},
-                  {
-                    "alignSelf": "center",
-                    "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
-                    "borderRadius": 4,
-                    "display": "flex",
-                    "lineHeight": 0,
-                    "paddingBottom": 0,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 0,
-                    "verticalAlign": "middle",
-                  },
+                  {},
                 ]
               }
             >
@@ -766,9 +687,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
         level={1}
         style={
           [
-            {
-              "marginLeft": 4,
-            },
+            {},
           ]
         }
         variant="unordered"
@@ -780,12 +699,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
           flexDirection="row"
           style={
             [
-              {
-                "alignItems": "center",
-                "display": "flex",
-                "flexDirection": "row",
-                "marginBottom": 8,
-              },
+              {},
             ]
           }
         >
@@ -795,12 +709,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
             display="flex"
             style={
               [
-                {
-                  "alignSelf": "flex-start",
-                  "display": "flex",
-                  "marginRight": 8,
-                  "marginTop": 7,
-                },
+                {},
               ]
             }
           >
@@ -866,11 +775,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
             flexWrap="wrap"
             style={
               [
-                {
-                  "display": "flex",
-                  "flexDirection": "row",
-                  "flexWrap": "wrap",
-                },
+                {},
               ]
             }
           >
@@ -938,9 +843,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
       marginTop="spacing.3"
       style={
         [
-          {
-            "marginTop": 8,
-          },
+          {},
         ]
       }
     >
@@ -950,9 +853,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
         level={1}
         style={
           [
-            {
-              "marginLeft": 4,
-            },
+            {},
           ]
         }
         variant="unordered"
@@ -964,12 +865,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
           flexDirection="row"
           style={
             [
-              {
-                "alignItems": "center",
-                "display": "flex",
-                "flexDirection": "row",
-                "marginBottom": 8,
-              },
+              {},
             ]
           }
         >
@@ -979,12 +875,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
             display="flex"
             style={
               [
-                {
-                  "alignSelf": "flex-start",
-                  "display": "flex",
-                  "marginRight": 8,
-                  "marginTop": 7,
-                },
+                {},
               ]
             }
           >
@@ -1050,11 +941,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
             flexWrap="wrap"
             style={
               [
-                {
-                  "display": "flex",
-                  "flexDirection": "row",
-                  "flexWrap": "wrap",
-                },
+                {},
               ]
             }
           >
@@ -1126,18 +1013,6 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
                 [
                   {
                     "alignSelf": "flex-start",
-                    "backgroundColor": "transparent",
-                    "borderColor": "black",
-                    "borderStyle": "solid",
-                    "borderWidth": 0,
-                    "outline": "none",
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
-                    "textDecorationColor": "black",
-                    "textDecorationLine": "none",
-                    "textDecorationStyle": "solid",
                   },
                 ]
               }
@@ -1150,11 +1025,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
                 flexDirection="row"
                 style={
                   [
-                    {
-                      "alignItems": "center",
-                      "display": "flex",
-                      "flexDirection": "row",
-                    },
+                    {},
                   ]
                 }
               >
@@ -1203,9 +1074,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
         level={1}
         style={
           [
-            {
-              "marginLeft": 4,
-            },
+            {},
           ]
         }
         variant="unordered"
@@ -1217,12 +1086,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
           flexDirection="row"
           style={
             [
-              {
-                "alignItems": "center",
-                "display": "flex",
-                "flexDirection": "row",
-                "marginBottom": 8,
-              },
+              {},
             ]
           }
         >
@@ -1232,12 +1096,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
             display="flex"
             style={
               [
-                {
-                  "alignSelf": "flex-start",
-                  "display": "flex",
-                  "marginRight": 8,
-                  "marginTop": 7,
-                },
+                {},
               ]
             }
           >
@@ -1303,11 +1162,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
             flexWrap="wrap"
             style={
               [
-                {
-                  "display": "flex",
-                  "flexDirection": "row",
-                  "flexWrap": "wrap",
-                },
+                {},
               ]
             }
           >
@@ -1375,9 +1230,7 @@ exports[`<List /> should render List with inline ListItemText 1`] = `
       marginTop="spacing.3"
       style={
         [
-          {
-            "marginTop": 8,
-          },
+          {},
         ]
       }
     >
@@ -1387,9 +1240,7 @@ exports[`<List /> should render List with inline ListItemText 1`] = `
         level={1}
         style={
           [
-            {
-              "marginLeft": 4,
-            },
+            {},
           ]
         }
         variant="unordered"
@@ -1401,12 +1252,7 @@ exports[`<List /> should render List with inline ListItemText 1`] = `
           flexDirection="row"
           style={
             [
-              {
-                "alignItems": "center",
-                "display": "flex",
-                "flexDirection": "row",
-                "marginBottom": 8,
-              },
+              {},
             ]
           }
         >
@@ -1416,12 +1262,7 @@ exports[`<List /> should render List with inline ListItemText 1`] = `
             display="flex"
             style={
               [
-                {
-                  "alignSelf": "flex-start",
-                  "display": "flex",
-                  "marginRight": 8,
-                  "marginTop": 7,
-                },
+                {},
               ]
             }
           >
@@ -1487,11 +1328,7 @@ exports[`<List /> should render List with inline ListItemText 1`] = `
             flexWrap="wrap"
             style={
               [
-                {
-                  "display": "flex",
-                  "flexDirection": "row",
-                  "flexWrap": "wrap",
-                },
+                {},
               ]
             }
           >
@@ -1559,9 +1396,7 @@ exports[`<List /> should render large ordered List 1`] = `
       marginTop="spacing.3"
       style={
         [
-          {
-            "marginTop": 8,
-          },
+          {},
         ]
       }
     >
@@ -1571,9 +1406,7 @@ exports[`<List /> should render large ordered List 1`] = `
         level={1}
         style={
           [
-            {
-              "marginLeft": 0,
-            },
+            {},
           ]
         }
         variant="ordered"
@@ -1585,12 +1418,7 @@ exports[`<List /> should render large ordered List 1`] = `
           flexDirection="row"
           style={
             [
-              {
-                "alignItems": "center",
-                "display": "flex",
-                "flexDirection": "row",
-                "marginBottom": 8,
-              },
+              {},
             ]
           }
         >
@@ -1604,17 +1432,7 @@ exports[`<List /> should render large ordered List 1`] = `
             justifyContent="center"
             style={
               [
-                {
-                  "alignItems": "center",
-                  "alignSelf": "flex-start",
-                  "display": "flex",
-                  "flexShrink": 0,
-                  "height": 24,
-                  "justifyContent": "center",
-                  "marginRight": 4,
-                  "marginTop": 0,
-                  "width": 24,
-                },
+                {},
               ]
             }
             width="24px"
@@ -1660,11 +1478,7 @@ exports[`<List /> should render large ordered List 1`] = `
             flexWrap="wrap"
             style={
               [
-                {
-                  "display": "flex",
-                  "flexDirection": "row",
-                  "flexWrap": "wrap",
-                },
+                {},
               ]
             }
           >
@@ -1727,9 +1541,7 @@ exports[`<List /> should render large ordered List 1`] = `
               level={2}
               style={
                 [
-                  {
-                    "marginLeft": 16,
-                  },
+                  {},
                 ]
               }
               variant="unordered"
@@ -1741,12 +1553,7 @@ exports[`<List /> should render large ordered List 1`] = `
                 flexDirection="row"
                 style={
                   [
-                    {
-                      "alignItems": "center",
-                      "display": "flex",
-                      "flexDirection": "row",
-                      "marginBottom": 8,
-                    },
+                    {},
                   ]
                 }
               >
@@ -1756,12 +1563,7 @@ exports[`<List /> should render large ordered List 1`] = `
                   display="flex"
                   style={
                     [
-                      {
-                        "alignSelf": "flex-start",
-                        "display": "flex",
-                        "marginRight": 8,
-                        "marginTop": 10,
-                      },
+                      {},
                     ]
                   }
                 >
@@ -1827,11 +1629,7 @@ exports[`<List /> should render large ordered List 1`] = `
                   flexWrap="wrap"
                   style={
                     [
-                      {
-                        "display": "flex",
-                        "flexDirection": "row",
-                        "flexWrap": "wrap",
-                      },
+                      {},
                     ]
                   }
                 >
@@ -1894,9 +1692,7 @@ exports[`<List /> should render large ordered List 1`] = `
                     level={3}
                     style={
                       [
-                        {
-                          "marginLeft": 16,
-                        },
+                        {},
                       ]
                     }
                     variant="unordered"
@@ -1908,12 +1704,7 @@ exports[`<List /> should render large ordered List 1`] = `
                       flexDirection="row"
                       style={
                         [
-                          {
-                            "alignItems": "center",
-                            "display": "flex",
-                            "flexDirection": "row",
-                            "marginBottom": 8,
-                          },
+                          {},
                         ]
                       }
                     >
@@ -1923,12 +1714,7 @@ exports[`<List /> should render large ordered List 1`] = `
                         display="flex"
                         style={
                           [
-                            {
-                              "alignSelf": "flex-start",
-                              "display": "flex",
-                              "marginRight": 8,
-                              "marginTop": 10,
-                            },
+                            {},
                           ]
                         }
                       >
@@ -1996,11 +1782,7 @@ exports[`<List /> should render large ordered List 1`] = `
                         flexWrap="wrap"
                         style={
                           [
-                            {
-                              "display": "flex",
-                              "flexDirection": "row",
-                              "flexWrap": "wrap",
-                            },
+                            {},
                           ]
                         }
                       >
@@ -2074,9 +1856,7 @@ exports[`<List /> should render large ordered-filled List 1`] = `
       marginTop="spacing.3"
       style={
         [
-          {
-            "marginTop": 8,
-          },
+          {},
         ]
       }
     >
@@ -2086,9 +1866,7 @@ exports[`<List /> should render large ordered-filled List 1`] = `
         level={1}
         style={
           [
-            {
-              "marginLeft": 0,
-            },
+            {},
           ]
         }
         variant="ordered-filled"
@@ -2100,12 +1878,7 @@ exports[`<List /> should render large ordered-filled List 1`] = `
           flexDirection="row"
           style={
             [
-              {
-                "alignItems": "center",
-                "display": "flex",
-                "flexDirection": "row",
-                "marginBottom": 8,
-              },
+              {},
             ]
           }
         >
@@ -2121,19 +1894,7 @@ exports[`<List /> should render large ordered-filled List 1`] = `
             justifyContent="center"
             style={
               [
-                {
-                  "alignItems": "center",
-                  "alignSelf": "flex-start",
-                  "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
-                  "borderRadius": 9999,
-                  "display": "flex",
-                  "flexShrink": 0,
-                  "height": 24,
-                  "justifyContent": "center",
-                  "marginRight": 8,
-                  "marginTop": 0,
-                  "width": 24,
-                },
+                {},
               ]
             }
             width="24px"
@@ -2179,11 +1940,7 @@ exports[`<List /> should render large ordered-filled List 1`] = `
             flexWrap="wrap"
             style={
               [
-                {
-                  "display": "flex",
-                  "flexDirection": "row",
-                  "flexWrap": "wrap",
-                },
+                {},
               ]
             }
           >
@@ -2229,9 +1986,7 @@ exports[`<List /> should render large ordered-filled List 1`] = `
         level={1}
         style={
           [
-            {
-              "marginLeft": 0,
-            },
+            {},
           ]
         }
         variant="ordered-filled"
@@ -2243,12 +1998,7 @@ exports[`<List /> should render large ordered-filled List 1`] = `
           flexDirection="row"
           style={
             [
-              {
-                "alignItems": "center",
-                "display": "flex",
-                "flexDirection": "row",
-                "marginBottom": 8,
-              },
+              {},
             ]
           }
         >
@@ -2264,19 +2014,7 @@ exports[`<List /> should render large ordered-filled List 1`] = `
             justifyContent="center"
             style={
               [
-                {
-                  "alignItems": "center",
-                  "alignSelf": "flex-start",
-                  "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
-                  "borderRadius": 9999,
-                  "display": "flex",
-                  "flexShrink": 0,
-                  "height": 24,
-                  "justifyContent": "center",
-                  "marginRight": 8,
-                  "marginTop": 0,
-                  "width": 24,
-                },
+                {},
               ]
             }
             width="24px"
@@ -2322,11 +2060,7 @@ exports[`<List /> should render large ordered-filled List 1`] = `
             flexWrap="wrap"
             style={
               [
-                {
-                  "display": "flex",
-                  "flexDirection": "row",
-                  "flexWrap": "wrap",
-                },
+                {},
               ]
             }
           >
@@ -2372,9 +2106,7 @@ exports[`<List /> should render large ordered-filled List 1`] = `
         level={1}
         style={
           [
-            {
-              "marginLeft": 0,
-            },
+            {},
           ]
         }
         variant="ordered-filled"
@@ -2386,12 +2118,7 @@ exports[`<List /> should render large ordered-filled List 1`] = `
           flexDirection="row"
           style={
             [
-              {
-                "alignItems": "center",
-                "display": "flex",
-                "flexDirection": "row",
-                "marginBottom": 8,
-              },
+              {},
             ]
           }
         >
@@ -2407,19 +2134,7 @@ exports[`<List /> should render large ordered-filled List 1`] = `
             justifyContent="center"
             style={
               [
-                {
-                  "alignItems": "center",
-                  "alignSelf": "flex-start",
-                  "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
-                  "borderRadius": 9999,
-                  "display": "flex",
-                  "flexShrink": 0,
-                  "height": 24,
-                  "justifyContent": "center",
-                  "marginRight": 8,
-                  "marginTop": 0,
-                  "width": 24,
-                },
+                {},
               ]
             }
             width="24px"
@@ -2465,11 +2180,7 @@ exports[`<List /> should render large ordered-filled List 1`] = `
             flexWrap="wrap"
             style={
               [
-                {
-                  "display": "flex",
-                  "flexDirection": "row",
-                  "flexWrap": "wrap",
-                },
+                {},
               ]
             }
           >
@@ -2537,9 +2248,7 @@ exports[`<List /> should render large unordered List with icon 1`] = `
       marginTop="spacing.3"
       style={
         [
-          {
-            "marginTop": 8,
-          },
+          {},
         ]
       }
     >
@@ -2549,9 +2258,7 @@ exports[`<List /> should render large unordered List with icon 1`] = `
         level={1}
         style={
           [
-            {
-              "marginLeft": 0,
-            },
+            {},
           ]
         }
         variant="unordered"
@@ -2563,12 +2270,7 @@ exports[`<List /> should render large unordered List with icon 1`] = `
           flexDirection="row"
           style={
             [
-              {
-                "alignItems": "center",
-                "display": "flex",
-                "flexDirection": "row",
-                "marginBottom": 8,
-              },
+              {},
             ]
           }
         >
@@ -2578,12 +2280,7 @@ exports[`<List /> should render large unordered List with icon 1`] = `
             display="flex"
             style={
               [
-                {
-                  "alignSelf": "flex-start",
-                  "display": "flex",
-                  "marginRight": 8,
-                  "marginTop": 5,
-                },
+                {},
               ]
             }
           >
@@ -2647,11 +2344,7 @@ exports[`<List /> should render large unordered List with icon 1`] = `
             flexWrap="wrap"
             style={
               [
-                {
-                  "display": "flex",
-                  "flexDirection": "row",
-                  "flexWrap": "wrap",
-                },
+                {},
               ]
             }
           >
@@ -2714,9 +2407,7 @@ exports[`<List /> should render large unordered List with icon 1`] = `
               level={2}
               style={
                 [
-                  {
-                    "marginLeft": 16,
-                  },
+                  {},
                 ]
               }
               variant="unordered"
@@ -2728,12 +2419,7 @@ exports[`<List /> should render large unordered List with icon 1`] = `
                 flexDirection="row"
                 style={
                   [
-                    {
-                      "alignItems": "center",
-                      "display": "flex",
-                      "flexDirection": "row",
-                      "marginBottom": 8,
-                    },
+                    {},
                   ]
                 }
               >
@@ -2743,12 +2429,7 @@ exports[`<List /> should render large unordered List with icon 1`] = `
                   display="flex"
                   style={
                     [
-                      {
-                        "alignSelf": "flex-start",
-                        "display": "flex",
-                        "marginRight": 8,
-                        "marginTop": 5,
-                      },
+                      {},
                     ]
                   }
                 >
@@ -2812,11 +2493,7 @@ exports[`<List /> should render large unordered List with icon 1`] = `
                   flexWrap="wrap"
                   style={
                     [
-                      {
-                        "display": "flex",
-                        "flexDirection": "row",
-                        "flexWrap": "wrap",
-                      },
+                      {},
                     ]
                   }
                 >
@@ -2879,9 +2556,7 @@ exports[`<List /> should render large unordered List with icon 1`] = `
                     level={3}
                     style={
                       [
-                        {
-                          "marginLeft": 16,
-                        },
+                        {},
                       ]
                     }
                     variant="unordered"
@@ -2893,12 +2568,7 @@ exports[`<List /> should render large unordered List with icon 1`] = `
                       flexDirection="row"
                       style={
                         [
-                          {
-                            "alignItems": "center",
-                            "display": "flex",
-                            "flexDirection": "row",
-                            "marginBottom": 8,
-                          },
+                          {},
                         ]
                       }
                     >
@@ -2908,12 +2578,7 @@ exports[`<List /> should render large unordered List with icon 1`] = `
                         display="flex"
                         style={
                           [
-                            {
-                              "alignSelf": "flex-start",
-                              "display": "flex",
-                              "marginRight": 8,
-                              "marginTop": 10,
-                            },
+                            {},
                           ]
                         }
                       >
@@ -2981,11 +2646,7 @@ exports[`<List /> should render large unordered List with icon 1`] = `
                         flexWrap="wrap"
                         style={
                           [
-                            {
-                              "display": "flex",
-                              "flexDirection": "row",
-                              "flexWrap": "wrap",
-                            },
+                            {},
                           ]
                         }
                       >
@@ -3059,9 +2720,7 @@ exports[`<List /> should render medium ordered List 1`] = `
       marginTop="spacing.3"
       style={
         [
-          {
-            "marginTop": 8,
-          },
+          {},
         ]
       }
     >
@@ -3071,9 +2730,7 @@ exports[`<List /> should render medium ordered List 1`] = `
         level={1}
         style={
           [
-            {
-              "marginLeft": 0,
-            },
+            {},
           ]
         }
         variant="ordered"
@@ -3085,12 +2742,7 @@ exports[`<List /> should render medium ordered List 1`] = `
           flexDirection="row"
           style={
             [
-              {
-                "alignItems": "center",
-                "display": "flex",
-                "flexDirection": "row",
-                "marginBottom": 8,
-              },
+              {},
             ]
           }
         >
@@ -3104,17 +2756,7 @@ exports[`<List /> should render medium ordered List 1`] = `
             justifyContent="center"
             style={
               [
-                {
-                  "alignItems": "center",
-                  "alignSelf": "flex-start",
-                  "display": "flex",
-                  "flexShrink": 0,
-                  "height": 24,
-                  "justifyContent": "center",
-                  "marginRight": 4,
-                  "marginTop": 0,
-                  "width": 24,
-                },
+                {},
               ]
             }
             width="24px"
@@ -3160,11 +2802,7 @@ exports[`<List /> should render medium ordered List 1`] = `
             flexWrap="wrap"
             style={
               [
-                {
-                  "display": "flex",
-                  "flexDirection": "row",
-                  "flexWrap": "wrap",
-                },
+                {},
               ]
             }
           >
@@ -3227,9 +2865,7 @@ exports[`<List /> should render medium ordered List 1`] = `
               level={2}
               style={
                 [
-                  {
-                    "marginLeft": 16,
-                  },
+                  {},
                 ]
               }
               variant="unordered"
@@ -3241,12 +2877,7 @@ exports[`<List /> should render medium ordered List 1`] = `
                 flexDirection="row"
                 style={
                   [
-                    {
-                      "alignItems": "center",
-                      "display": "flex",
-                      "flexDirection": "row",
-                      "marginBottom": 8,
-                    },
+                    {},
                   ]
                 }
               >
@@ -3256,12 +2887,7 @@ exports[`<List /> should render medium ordered List 1`] = `
                   display="flex"
                   style={
                     [
-                      {
-                        "alignSelf": "flex-start",
-                        "display": "flex",
-                        "marginRight": 8,
-                        "marginTop": 7,
-                      },
+                      {},
                     ]
                   }
                 >
@@ -3327,11 +2953,7 @@ exports[`<List /> should render medium ordered List 1`] = `
                   flexWrap="wrap"
                   style={
                     [
-                      {
-                        "display": "flex",
-                        "flexDirection": "row",
-                        "flexWrap": "wrap",
-                      },
+                      {},
                     ]
                   }
                 >
@@ -3394,9 +3016,7 @@ exports[`<List /> should render medium ordered List 1`] = `
                     level={3}
                     style={
                       [
-                        {
-                          "marginLeft": 16,
-                        },
+                        {},
                       ]
                     }
                     variant="unordered"
@@ -3408,12 +3028,7 @@ exports[`<List /> should render medium ordered List 1`] = `
                       flexDirection="row"
                       style={
                         [
-                          {
-                            "alignItems": "center",
-                            "display": "flex",
-                            "flexDirection": "row",
-                            "marginBottom": 8,
-                          },
+                          {},
                         ]
                       }
                     >
@@ -3423,12 +3038,7 @@ exports[`<List /> should render medium ordered List 1`] = `
                         display="flex"
                         style={
                           [
-                            {
-                              "alignSelf": "flex-start",
-                              "display": "flex",
-                              "marginRight": 8,
-                              "marginTop": 7,
-                            },
+                            {},
                           ]
                         }
                       >
@@ -3496,11 +3106,7 @@ exports[`<List /> should render medium ordered List 1`] = `
                         flexWrap="wrap"
                         style={
                           [
-                            {
-                              "display": "flex",
-                              "flexDirection": "row",
-                              "flexWrap": "wrap",
-                            },
+                            {},
                           ]
                         }
                       >
@@ -3574,9 +3180,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
       marginTop="spacing.3"
       style={
         [
-          {
-            "marginTop": 8,
-          },
+          {},
         ]
       }
     >
@@ -3586,9 +3190,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
         level={1}
         style={
           [
-            {
-              "marginLeft": 0,
-            },
+            {},
           ]
         }
         variant="ordered-filled"
@@ -3600,12 +3202,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
           flexDirection="row"
           style={
             [
-              {
-                "alignItems": "center",
-                "display": "flex",
-                "flexDirection": "row",
-                "marginBottom": 8,
-              },
+              {},
             ]
           }
         >
@@ -3621,19 +3218,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
             justifyContent="center"
             style={
               [
-                {
-                  "alignItems": "center",
-                  "alignSelf": "flex-start",
-                  "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
-                  "borderRadius": 9999,
-                  "display": "flex",
-                  "flexShrink": 0,
-                  "height": 20,
-                  "justifyContent": "center",
-                  "marginRight": 8,
-                  "marginTop": 0,
-                  "width": 20,
-                },
+                {},
               ]
             }
             width="20px"
@@ -3679,11 +3264,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
             flexWrap="wrap"
             style={
               [
-                {
-                  "display": "flex",
-                  "flexDirection": "row",
-                  "flexWrap": "wrap",
-                },
+                {},
               ]
             }
           >
@@ -3729,9 +3310,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
         level={1}
         style={
           [
-            {
-              "marginLeft": 0,
-            },
+            {},
           ]
         }
         variant="ordered-filled"
@@ -3743,12 +3322,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
           flexDirection="row"
           style={
             [
-              {
-                "alignItems": "center",
-                "display": "flex",
-                "flexDirection": "row",
-                "marginBottom": 8,
-              },
+              {},
             ]
           }
         >
@@ -3764,19 +3338,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
             justifyContent="center"
             style={
               [
-                {
-                  "alignItems": "center",
-                  "alignSelf": "flex-start",
-                  "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
-                  "borderRadius": 9999,
-                  "display": "flex",
-                  "flexShrink": 0,
-                  "height": 20,
-                  "justifyContent": "center",
-                  "marginRight": 8,
-                  "marginTop": 0,
-                  "width": 20,
-                },
+                {},
               ]
             }
             width="20px"
@@ -3822,11 +3384,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
             flexWrap="wrap"
             style={
               [
-                {
-                  "display": "flex",
-                  "flexDirection": "row",
-                  "flexWrap": "wrap",
-                },
+                {},
               ]
             }
           >
@@ -3872,9 +3430,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
         level={1}
         style={
           [
-            {
-              "marginLeft": 0,
-            },
+            {},
           ]
         }
         variant="ordered-filled"
@@ -3886,12 +3442,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
           flexDirection="row"
           style={
             [
-              {
-                "alignItems": "center",
-                "display": "flex",
-                "flexDirection": "row",
-                "marginBottom": 8,
-              },
+              {},
             ]
           }
         >
@@ -3907,19 +3458,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
             justifyContent="center"
             style={
               [
-                {
-                  "alignItems": "center",
-                  "alignSelf": "flex-start",
-                  "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
-                  "borderRadius": 9999,
-                  "display": "flex",
-                  "flexShrink": 0,
-                  "height": 20,
-                  "justifyContent": "center",
-                  "marginRight": 8,
-                  "marginTop": 0,
-                  "width": 20,
-                },
+                {},
               ]
             }
             width="20px"
@@ -3965,11 +3504,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
             flexWrap="wrap"
             style={
               [
-                {
-                  "display": "flex",
-                  "flexDirection": "row",
-                  "flexWrap": "wrap",
-                },
+                {},
               ]
             }
           >
@@ -4037,9 +3572,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
       marginTop="spacing.3"
       style={
         [
-          {
-            "marginTop": 8,
-          },
+          {},
         ]
       }
     >
@@ -4049,9 +3582,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
         level={1}
         style={
           [
-            {
-              "marginLeft": 0,
-            },
+            {},
           ]
         }
         variant="unordered"
@@ -4063,12 +3594,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
           flexDirection="row"
           style={
             [
-              {
-                "alignItems": "center",
-                "display": "flex",
-                "flexDirection": "row",
-                "marginBottom": 8,
-              },
+              {},
             ]
           }
         >
@@ -4078,12 +3604,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
             display="flex"
             style={
               [
-                {
-                  "alignSelf": "flex-start",
-                  "display": "flex",
-                  "marginRight": 8,
-                  "marginTop": 2,
-                },
+                {},
               ]
             }
           >
@@ -4147,11 +3668,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
             flexWrap="wrap"
             style={
               [
-                {
-                  "display": "flex",
-                  "flexDirection": "row",
-                  "flexWrap": "wrap",
-                },
+                {},
               ]
             }
           >
@@ -4214,9 +3731,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
               level={2}
               style={
                 [
-                  {
-                    "marginLeft": 16,
-                  },
+                  {},
                 ]
               }
               variant="unordered"
@@ -4228,12 +3743,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                 flexDirection="row"
                 style={
                   [
-                    {
-                      "alignItems": "center",
-                      "display": "flex",
-                      "flexDirection": "row",
-                      "marginBottom": 8,
-                    },
+                    {},
                   ]
                 }
               >
@@ -4243,12 +3753,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                   display="flex"
                   style={
                     [
-                      {
-                        "alignSelf": "flex-start",
-                        "display": "flex",
-                        "marginRight": 8,
-                        "marginTop": 2,
-                      },
+                      {},
                     ]
                   }
                 >
@@ -4312,11 +3817,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                   flexWrap="wrap"
                   style={
                     [
-                      {
-                        "display": "flex",
-                        "flexDirection": "row",
-                        "flexWrap": "wrap",
-                      },
+                      {},
                     ]
                   }
                 >
@@ -4379,9 +3880,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                     level={3}
                     style={
                       [
-                        {
-                          "marginLeft": 16,
-                        },
+                        {},
                       ]
                     }
                     variant="unordered"
@@ -4393,12 +3892,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                       flexDirection="row"
                       style={
                         [
-                          {
-                            "alignItems": "center",
-                            "display": "flex",
-                            "flexDirection": "row",
-                            "marginBottom": 8,
-                          },
+                          {},
                         ]
                       }
                     >
@@ -4408,12 +3902,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                         display="flex"
                         style={
                           [
-                            {
-                              "alignSelf": "flex-start",
-                              "display": "flex",
-                              "marginRight": 8,
-                              "marginTop": 7,
-                            },
+                            {},
                           ]
                         }
                       >
@@ -4481,11 +3970,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                         flexWrap="wrap"
                         style={
                           [
-                            {
-                              "display": "flex",
-                              "flexDirection": "row",
-                              "flexWrap": "wrap",
-                            },
+                            {},
                           ]
                         }
                       >
@@ -4559,9 +4044,7 @@ exports[`<List /> should render small ordered List 1`] = `
       marginTop="spacing.3"
       style={
         [
-          {
-            "marginTop": 8,
-          },
+          {},
         ]
       }
     >
@@ -4571,9 +4054,7 @@ exports[`<List /> should render small ordered List 1`] = `
         level={1}
         style={
           [
-            {
-              "marginLeft": 0,
-            },
+            {},
           ]
         }
         variant="ordered"
@@ -4585,12 +4066,7 @@ exports[`<List /> should render small ordered List 1`] = `
           flexDirection="row"
           style={
             [
-              {
-                "alignItems": "center",
-                "display": "flex",
-                "flexDirection": "row",
-                "marginBottom": 8,
-              },
+              {},
             ]
           }
         >
@@ -4604,17 +4080,7 @@ exports[`<List /> should render small ordered List 1`] = `
             justifyContent="center"
             style={
               [
-                {
-                  "alignItems": "center",
-                  "alignSelf": "flex-start",
-                  "display": "flex",
-                  "flexShrink": 0,
-                  "height": 16,
-                  "justifyContent": "center",
-                  "marginRight": 4,
-                  "marginTop": 0,
-                  "width": 16,
-                },
+                {},
               ]
             }
             width="16px"
@@ -4660,11 +4126,7 @@ exports[`<List /> should render small ordered List 1`] = `
             flexWrap="wrap"
             style={
               [
-                {
-                  "display": "flex",
-                  "flexDirection": "row",
-                  "flexWrap": "wrap",
-                },
+                {},
               ]
             }
           >
@@ -4727,9 +4189,7 @@ exports[`<List /> should render small ordered List 1`] = `
               level={2}
               style={
                 [
-                  {
-                    "marginLeft": 16,
-                  },
+                  {},
                 ]
               }
               variant="unordered"
@@ -4741,12 +4201,7 @@ exports[`<List /> should render small ordered List 1`] = `
                 flexDirection="row"
                 style={
                   [
-                    {
-                      "alignItems": "center",
-                      "display": "flex",
-                      "flexDirection": "row",
-                      "marginBottom": 8,
-                    },
+                    {},
                   ]
                 }
               >
@@ -4756,12 +4211,7 @@ exports[`<List /> should render small ordered List 1`] = `
                   display="flex"
                   style={
                     [
-                      {
-                        "alignSelf": "flex-start",
-                        "display": "flex",
-                        "marginRight": 8,
-                        "marginTop": 6,
-                      },
+                      {},
                     ]
                   }
                 >
@@ -4827,11 +4277,7 @@ exports[`<List /> should render small ordered List 1`] = `
                   flexWrap="wrap"
                   style={
                     [
-                      {
-                        "display": "flex",
-                        "flexDirection": "row",
-                        "flexWrap": "wrap",
-                      },
+                      {},
                     ]
                   }
                 >
@@ -4894,9 +4340,7 @@ exports[`<List /> should render small ordered List 1`] = `
                     level={3}
                     style={
                       [
-                        {
-                          "marginLeft": 16,
-                        },
+                        {},
                       ]
                     }
                     variant="unordered"
@@ -4908,12 +4352,7 @@ exports[`<List /> should render small ordered List 1`] = `
                       flexDirection="row"
                       style={
                         [
-                          {
-                            "alignItems": "center",
-                            "display": "flex",
-                            "flexDirection": "row",
-                            "marginBottom": 8,
-                          },
+                          {},
                         ]
                       }
                     >
@@ -4923,12 +4362,7 @@ exports[`<List /> should render small ordered List 1`] = `
                         display="flex"
                         style={
                           [
-                            {
-                              "alignSelf": "flex-start",
-                              "display": "flex",
-                              "marginRight": 8,
-                              "marginTop": 6,
-                            },
+                            {},
                           ]
                         }
                       >
@@ -4996,11 +4430,7 @@ exports[`<List /> should render small ordered List 1`] = `
                         flexWrap="wrap"
                         style={
                           [
-                            {
-                              "display": "flex",
-                              "flexDirection": "row",
-                              "flexWrap": "wrap",
-                            },
+                            {},
                           ]
                         }
                       >
@@ -5074,9 +4504,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
       marginTop="spacing.3"
       style={
         [
-          {
-            "marginTop": 8,
-          },
+          {},
         ]
       }
     >
@@ -5086,9 +4514,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
         level={1}
         style={
           [
-            {
-              "marginLeft": 0,
-            },
+            {},
           ]
         }
         variant="ordered-filled"
@@ -5100,12 +4526,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
           flexDirection="row"
           style={
             [
-              {
-                "alignItems": "center",
-                "display": "flex",
-                "flexDirection": "row",
-                "marginBottom": 8,
-              },
+              {},
             ]
           }
         >
@@ -5121,19 +4542,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
             justifyContent="center"
             style={
               [
-                {
-                  "alignItems": "center",
-                  "alignSelf": "flex-start",
-                  "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
-                  "borderRadius": 9999,
-                  "display": "flex",
-                  "flexShrink": 0,
-                  "height": 16,
-                  "justifyContent": "center",
-                  "marginRight": 8,
-                  "marginTop": 0,
-                  "width": 16,
-                },
+                {},
               ]
             }
             width="16px"
@@ -5179,11 +4588,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
             flexWrap="wrap"
             style={
               [
-                {
-                  "display": "flex",
-                  "flexDirection": "row",
-                  "flexWrap": "wrap",
-                },
+                {},
               ]
             }
           >
@@ -5229,9 +4634,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
         level={1}
         style={
           [
-            {
-              "marginLeft": 0,
-            },
+            {},
           ]
         }
         variant="ordered-filled"
@@ -5243,12 +4646,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
           flexDirection="row"
           style={
             [
-              {
-                "alignItems": "center",
-                "display": "flex",
-                "flexDirection": "row",
-                "marginBottom": 8,
-              },
+              {},
             ]
           }
         >
@@ -5264,19 +4662,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
             justifyContent="center"
             style={
               [
-                {
-                  "alignItems": "center",
-                  "alignSelf": "flex-start",
-                  "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
-                  "borderRadius": 9999,
-                  "display": "flex",
-                  "flexShrink": 0,
-                  "height": 16,
-                  "justifyContent": "center",
-                  "marginRight": 8,
-                  "marginTop": 0,
-                  "width": 16,
-                },
+                {},
               ]
             }
             width="16px"
@@ -5322,11 +4708,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
             flexWrap="wrap"
             style={
               [
-                {
-                  "display": "flex",
-                  "flexDirection": "row",
-                  "flexWrap": "wrap",
-                },
+                {},
               ]
             }
           >
@@ -5372,9 +4754,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
         level={1}
         style={
           [
-            {
-              "marginLeft": 0,
-            },
+            {},
           ]
         }
         variant="ordered-filled"
@@ -5386,12 +4766,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
           flexDirection="row"
           style={
             [
-              {
-                "alignItems": "center",
-                "display": "flex",
-                "flexDirection": "row",
-                "marginBottom": 8,
-              },
+              {},
             ]
           }
         >
@@ -5407,19 +4782,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
             justifyContent="center"
             style={
               [
-                {
-                  "alignItems": "center",
-                  "alignSelf": "flex-start",
-                  "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
-                  "borderRadius": 9999,
-                  "display": "flex",
-                  "flexShrink": 0,
-                  "height": 16,
-                  "justifyContent": "center",
-                  "marginRight": 8,
-                  "marginTop": 0,
-                  "width": 16,
-                },
+                {},
               ]
             }
             width="16px"
@@ -5465,11 +4828,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
             flexWrap="wrap"
             style={
               [
-                {
-                  "display": "flex",
-                  "flexDirection": "row",
-                  "flexWrap": "wrap",
-                },
+                {},
               ]
             }
           >
@@ -5537,9 +4896,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
       marginTop="spacing.3"
       style={
         [
-          {
-            "marginTop": 8,
-          },
+          {},
         ]
       }
     >
@@ -5549,9 +4906,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
         level={1}
         style={
           [
-            {
-              "marginLeft": 0,
-            },
+            {},
           ]
         }
         variant="unordered"
@@ -5563,12 +4918,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
           flexDirection="row"
           style={
             [
-              {
-                "alignItems": "center",
-                "display": "flex",
-                "flexDirection": "row",
-                "marginBottom": 8,
-              },
+              {},
             ]
           }
         >
@@ -5578,12 +4928,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
             display="flex"
             style={
               [
-                {
-                  "alignSelf": "flex-start",
-                  "display": "flex",
-                  "marginRight": 8,
-                  "marginTop": 4,
-                },
+                {},
               ]
             }
           >
@@ -5647,11 +4992,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
             flexWrap="wrap"
             style={
               [
-                {
-                  "display": "flex",
-                  "flexDirection": "row",
-                  "flexWrap": "wrap",
-                },
+                {},
               ]
             }
           >
@@ -5714,9 +5055,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
               level={2}
               style={
                 [
-                  {
-                    "marginLeft": 16,
-                  },
+                  {},
                 ]
               }
               variant="unordered"
@@ -5728,12 +5067,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                 flexDirection="row"
                 style={
                   [
-                    {
-                      "alignItems": "center",
-                      "display": "flex",
-                      "flexDirection": "row",
-                      "marginBottom": 8,
-                    },
+                    {},
                   ]
                 }
               >
@@ -5743,12 +5077,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                   display="flex"
                   style={
                     [
-                      {
-                        "alignSelf": "flex-start",
-                        "display": "flex",
-                        "marginRight": 8,
-                        "marginTop": 4,
-                      },
+                      {},
                     ]
                   }
                 >
@@ -5812,11 +5141,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                   flexWrap="wrap"
                   style={
                     [
-                      {
-                        "display": "flex",
-                        "flexDirection": "row",
-                        "flexWrap": "wrap",
-                      },
+                      {},
                     ]
                   }
                 >
@@ -5879,9 +5204,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                     level={3}
                     style={
                       [
-                        {
-                          "marginLeft": 16,
-                        },
+                        {},
                       ]
                     }
                     variant="unordered"
@@ -5893,12 +5216,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                       flexDirection="row"
                       style={
                         [
-                          {
-                            "alignItems": "center",
-                            "display": "flex",
-                            "flexDirection": "row",
-                            "marginBottom": 8,
-                          },
+                          {},
                         ]
                       }
                     >
@@ -5908,12 +5226,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                         display="flex"
                         style={
                           [
-                            {
-                              "alignSelf": "flex-start",
-                              "display": "flex",
-                              "marginRight": 8,
-                              "marginTop": 6,
-                            },
+                            {},
                           ]
                         }
                       >
@@ -5981,11 +5294,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                         flexWrap="wrap"
                         style={
                           [
-                            {
-                              "display": "flex",
-                              "flexDirection": "row",
-                              "flexWrap": "wrap",
-                            },
+                            {},
                           ]
                         }
                       >
@@ -6059,9 +5368,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
       marginTop="spacing.3"
       style={
         [
-          {
-            "marginTop": 8,
-          },
+          {},
         ]
       }
     >
@@ -6071,9 +5378,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
         level={1}
         style={
           [
-            {
-              "marginLeft": 4,
-            },
+            {},
           ]
         }
         variant="unordered"
@@ -6085,12 +5390,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
           flexDirection="row"
           style={
             [
-              {
-                "alignItems": "center",
-                "display": "flex",
-                "flexDirection": "row",
-                "marginBottom": 8,
-              },
+              {},
             ]
           }
         >
@@ -6100,12 +5400,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
             display="flex"
             style={
               [
-                {
-                  "alignSelf": "flex-start",
-                  "display": "flex",
-                  "marginRight": 8,
-                  "marginTop": 6,
-                },
+                {},
               ]
             }
           >
@@ -6171,11 +5466,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
             flexWrap="wrap"
             style={
               [
-                {
-                  "display": "flex",
-                  "flexDirection": "row",
-                  "flexWrap": "wrap",
-                },
+                {},
               ]
             }
           >
@@ -6238,9 +5529,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
               level={2}
               style={
                 [
-                  {
-                    "marginLeft": 16,
-                  },
+                  {},
                 ]
               }
               variant="unordered"
@@ -6252,12 +5541,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
                 flexDirection="row"
                 style={
                   [
-                    {
-                      "alignItems": "center",
-                      "display": "flex",
-                      "flexDirection": "row",
-                      "marginBottom": 8,
-                    },
+                    {},
                   ]
                 }
               >
@@ -6267,12 +5551,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
                   display="flex"
                   style={
                     [
-                      {
-                        "alignSelf": "flex-start",
-                        "display": "flex",
-                        "marginRight": 8,
-                        "marginTop": 6,
-                      },
+                      {},
                     ]
                   }
                 >
@@ -6338,11 +5617,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
                   flexWrap="wrap"
                   style={
                     [
-                      {
-                        "display": "flex",
-                        "flexDirection": "row",
-                        "flexWrap": "wrap",
-                      },
+                      {},
                     ]
                   }
                 >
@@ -6405,9 +5680,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
                     level={3}
                     style={
                       [
-                        {
-                          "marginLeft": 16,
-                        },
+                        {},
                       ]
                     }
                     variant="unordered"
@@ -6419,12 +5692,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
                       flexDirection="row"
                       style={
                         [
-                          {
-                            "alignItems": "center",
-                            "display": "flex",
-                            "flexDirection": "row",
-                            "marginBottom": 8,
-                          },
+                          {},
                         ]
                       }
                     >
@@ -6434,12 +5702,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
                         display="flex"
                         style={
                           [
-                            {
-                              "alignSelf": "flex-start",
-                              "display": "flex",
-                              "marginRight": 8,
-                              "marginTop": 6,
-                            },
+                            {},
                           ]
                         }
                       >
@@ -6507,11 +5770,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
                         flexWrap="wrap"
                         style={
                           [
-                            {
-                              "display": "flex",
-                              "flexDirection": "row",
-                              "flexWrap": "wrap",
-                            },
+                            {},
                           ]
                         }
                       >

@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   text-align: left;
   position: relative;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -25,9 +25,10 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  opacity: 1;
 }
 
-.c5 {
+.c4.c4.c4.c4.c4 {
   position: fixed;
   z-index: 101;
   top: 0px;
@@ -38,7 +39,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   opacity: 0;
 }
 
-.c8 {
+.c7.c7.c7.c7.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -49,7 +50,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   height: 100%;
 }
 
-.c10 {
+.c9.c9.c9.c9.c9 {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -59,21 +60,21 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   flex-shrink: 1;
 }
 
-.c12 {
+.c11.c11.c11.c11.c11 {
   overflow: visible;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
 }
 
-.c13 {
+.c12.c12.c12.c12.c12 {
   position: relative;
   height: 8px;
   right: 0px;
   touch-action: none;
 }
 
-.c14 {
+.c13.c13.c13.c13.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -99,7 +100,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   border-radius: 9999px;
 }
 
-.c18 {
+.c17.c17.c17.c17.c17 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -118,7 +119,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   max-height: 20px;
 }
 
-.c19 {
+.c18.c18.c18.c18.c18 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -133,7 +134,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   justify-content: center;
 }
 
-.c20 {
+.c19.c19.c19.c19.c19 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -149,11 +150,11 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   padding-left: 0px;
 }
 
-.c22 {
+.c21.c21.c21.c21.c21 {
   margin-left: auto;
 }
 
-.c11 {
+.c10.c10.c10.c10.c10 {
   overflow: auto;
   padding-top: 8px;
   padding-bottom: 8px;
@@ -161,7 +162,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   padding-left: 8px;
 }
 
-.c15 {
+.c14.c14.c14.c14.c14 {
   border: none;
   cursor: pointer;
   padding: 0;
@@ -188,21 +189,21 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c15:hover {
+.c14.c14.c14.c14.c14:hover {
   color: hsla(217,18%,45%,1);
 }
 
-.c15:focus-visible {
+.c14.c14.c14.c14.c14:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   color: hsla(217,18%,45%,1);
 }
 
-.c15:active {
+.c14.c14.c14.c14.c14:active {
   color: hsla(217,18%,45%,1);
 }
 
-.c4 {
+.c3.c3.c3.c3.c3 {
   color: hsla(216,33%,29%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -216,7 +217,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   padding: 0;
 }
 
-.c21 {
+.c20.c20.c20.c20.c20 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -234,7 +235,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   -webkit-box-orient: vertical;
 }
 
-.c24 {
+.c23.c23.c23.c23.c23 {
   color: hsla(8,73%,47%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -252,7 +253,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   -webkit-box-orient: vertical;
 }
 
-.c6 {
+.c5.c5.c5.c5.c5 {
   -webkit-transition-duration: 250ms;
   transition-duration: 250ms;
   -webkit-transition-timing-function: cubic-bezier(0.5,0,1,1);
@@ -262,7 +263,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   transition-property: opacity;
 }
 
-.c9 {
+.c8.c8.c8.c8.c8 {
   position: relative;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
@@ -289,7 +290,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   z-index: 100;
 }
 
-.c9:after {
+.c8.c8.c8.c8.c8:after.c8.c8.c8.c8.c8:after.c8.c8.c8.c8.c8:after.c8.c8.c8.c8.c8:after.c8.c8.c8.c8.c8:after {
   margin: auto;
   content: '';
   width: 56px;
@@ -298,7 +299,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   border-radius: 16px;
 }
 
-.c7 {
+.c6.c6.c6.c6.c6 {
   background: hsla(0,0%,100%,1);
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
@@ -332,29 +333,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   overflow: hidden;
 }
 
-.c1 {
-  min-height: 36px;
-  width: auto;
-  cursor: pointer;
-  background-color: hsla(216,15%,54%,0.09);
-  border-color: hsla(216,44%,23%,0);
-  border-width: 1px;
-  border-radius: 2px;
-  border-style: solid;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
+.c1.c1.c1.c1.c1 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -368,21 +347,21 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   position: relative;
 }
 
-.c1:hover {
+.c1.c1.c1.c1.c1:hover {
   background-color: hsla(216,15%,54%,0.18);
 }
 
-.c1:active {
+.c1.c1.c1.c1.c1:active {
   background-color: hsla(216,15%,54%,0.32);
 }
 
-.c1:focus-visible {
+.c1.c1.c1.c1.c1:focus-visible {
   background-color: hsla(216,15%,54%,0.32);
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c1 * {
+.c1.c1.c1.c1.c1 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -391,19 +370,19 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3 {
-  opacity: 1;
-}
-
-.c16 {
+.c15.c15.c15.c15.c15 {
   overflow-y: auto;
 }
 
-.c16 [role=group]:last-child > [role=separator]:last-child {
+.c15.c15.c15.c15.c15 [role=group]:last-child > [role=separator]:last-child {
   display: none;
 }
 
-.c17 {
+.c16.c16.c16.c16.c16 {
+  display: block;
+}
+
+.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16 {
   border-width: 4px;
   border-style: solid;
   border-color: transparent;
@@ -415,18 +394,21 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   text-decoration: none;
   cursor: pointer;
   width: 100%;
-  display: block;
 }
 
-.c17:hover:not([aria-disabled=true]) {
+.c16.c16.c16.c16.c16:hover:not([aria-disabled=true]) {
   background-color: hsla(216,15%,54%,0.09);
 }
 
-.c17[aria-selected=true] {
+.c16.c16.c16.c16.c16[aria-selected=true] {
   background-color: hsla(218,89%,51%,0.09);
 }
 
-.c23 {
+.c22.c22.c22.c22.c22 {
+  display: block;
+}
+
+.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22 {
   border-width: 4px;
   border-style: solid;
   border-color: transparent;
@@ -438,14 +420,13 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   text-decoration: none;
   cursor: pointer;
   width: 100%;
-  display: block;
 }
 
-.c23:hover:not([aria-disabled=true]) {
+.c22.c22.c22.c22.c22:hover:not([aria-disabled=true]) {
   background-color: hsla(9,91%,56%,0.09);
 }
 
-.c23[aria-selected=true] {
+.c22.c22.c22.c22.c22[aria-selected=true] {
   background-color: hsla(218,89%,51%,0.09);
 }
 
@@ -469,11 +450,12 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
           type="button"
         >
           <div
-            class="c2 c3"
+            class="c2"
             data-blade-component="base-box"
+            opacity="1"
           >
             <div
-              class="c4"
+              class="c3"
               data-blade-component="base-text"
             >
               Status: approve
@@ -481,58 +463,58 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
           </div>
         </button>
         <div
-          class="c5 c6"
+          class="c4 c5"
           data-blade-component="base-box"
           data-testid="bottomsheet-backdrop"
           opacity="0"
         />
         <div
           aria-modal="true"
-          class="c7"
+          class="c6"
           data-blade-component="bottom-sheet"
           data-testid="bottomsheet-surface"
           role="dialog"
           style="opacity: 0; pointer-events: none; height: 0px; bottom: 0px; z-index: 101;"
         >
           <div
-            class="c8"
+            class="c7"
             data-blade-component="base-box"
           >
             <div
-              class="c9"
+              class="c8"
               data-blade-component="BottomSheetGrabHandle"
             />
             <div
-              class="c10"
+              class="c9"
               data-blade-component="bottom-sheet-body"
               data-testid="bottomsheet-body"
               style="user-select: auto; overflow: auto;"
             >
               <div
-                class="c11"
+                class="c10"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c12"
+                  class="c11"
                   data-blade-component="bottom-sheet-header"
                 >
                   <div
-                    class="c13"
+                    class="c12"
                     data-blade-component="base-box"
                   >
                     <div
-                      class="c14"
+                      class="c13"
                       data-blade-component="base-box"
                     >
                       <button
                         aria-label="Close"
-                        class="c15"
+                        class="c14"
                         data-blade-component="icon-button"
                         type="button"
                       >
                         <svg
                           aria-hidden="true"
-                          class="Svgweb__StyledSvg-vcmjs8-0"
+                          class=""
                           data-blade-component="icon"
                           fill="none"
                           height="20px"
@@ -550,13 +532,13 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
                   </div>
                 </div>
                 <div
-                  class=" c16"
+                  class="c15"
                   data-blade-component="base-box"
                 >
                   <button
                     aria-current="true"
                     aria-selected="true"
-                    class=" c17"
+                    class="c16"
                     data-blade-component="action-list-item"
                     data-index="0"
                     data-value="approve"
@@ -566,26 +548,26 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
                     type="button"
                   >
                     <div
-                      class="c18"
+                      class="c17"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c19"
+                        class="c18"
                         data-blade-component="base-box"
                       />
                       <div
-                        class="c20"
+                        class="c19"
                         data-blade-component="base-box"
                       >
                         <p
-                          class="c21"
+                          class="c20"
                           data-blade-component="text"
                         >
                           Approve
                         </p>
                       </div>
                       <div
-                        class="c22"
+                        class="c21"
                         data-blade-component="base-box"
                       />
                     </div>
@@ -597,7 +579,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
                   <button
                     aria-current="false"
                     aria-selected="false"
-                    class=" c17"
+                    class="c16"
                     data-blade-component="action-list-item"
                     data-index="1"
                     data-value="in-progress"
@@ -607,26 +589,26 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
                     type="button"
                   >
                     <div
-                      class="c18"
+                      class="c17"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c19"
+                        class="c18"
                         data-blade-component="base-box"
                       />
                       <div
-                        class="c20"
+                        class="c19"
                         data-blade-component="base-box"
                       >
                         <p
-                          class="c21"
+                          class="c20"
                           data-blade-component="text"
                         >
                           In Progress
                         </p>
                       </div>
                       <div
-                        class="c22"
+                        class="c21"
                         data-blade-component="base-box"
                       />
                     </div>
@@ -638,7 +620,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
                   <button
                     aria-current="false"
                     aria-selected="false"
-                    class=" c23"
+                    class="c22"
                     data-blade-component="action-list-item"
                     data-index="2"
                     data-value="reject"
@@ -648,26 +630,26 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
                     type="button"
                   >
                     <div
-                      class="c18"
+                      class="c17"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c19"
+                        class="c18"
                         data-blade-component="base-box"
                       />
                       <div
-                        class="c20"
+                        class="c19"
                         data-blade-component="base-box"
                       >
                         <p
-                          class="c24"
+                          class="c23"
                           data-blade-component="text"
                         >
                           Reject
                         </p>
                       </div>
                       <div
-                        class="c22"
+                        class="c21"
                         data-blade-component="base-box"
                       />
                     </div>
@@ -694,7 +676,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on closed sta
 `;
 
 exports[`<BottomSheet /> should render Header/Footer/Body properly on opened state 1`] = `
-.c3 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -705,14 +687,14 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   height: 100%;
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   overflow: auto;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   padding-right: 16px;
   padding-left: 16px;
   margin-bottom: 16px;
@@ -720,7 +702,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   touch-action: none;
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -734,7 +716,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   user-select: none;
 }
 
-.c8 {
+.c8.c8.c8.c8.c8 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -753,13 +735,13 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   margin-right: auto;
 }
 
-.c9 {
+.c9.c9.c9.c9.c9 {
   -webkit-flex: auto;
   -ms-flex: auto;
   flex: auto;
 }
 
-.c10 {
+.c10.c10.c10.c10.c10 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -772,11 +754,11 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   flex-shrink: 0;
 }
 
-.c12 {
+.c12.c12.c12.c12.c12 {
   margin-left: 8px;
 }
 
-.c13 {
+.c13.c13.c13.c13.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -792,18 +774,18 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   height: 28px;
 }
 
-.c14 {
+.c14.c14.c14.c14.c14 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
-.c15 {
+.c15.c15.c15.c15.c15 {
   background-color: hsla(155,100%,31%,0.09);
 }
 
-.c17 {
+.c17.c17.c17.c17.c17 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -826,13 +808,13 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   padding-left: 8px;
 }
 
-.c25 {
+.c25.c25.c25.c25.c25 {
   border-width: 0px;
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-style: solid;
 }
 
-.c27 {
+.c27.c27.c27.c27.c27 {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -842,7 +824,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   flex-shrink: 1;
 }
 
-.c28 {
+.c28.c28.c28.c28.c28 {
   overflow: auto;
   padding-top: 16px;
   padding-bottom: 16px;
@@ -850,7 +832,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   padding-left: 16px;
 }
 
-.c30 {
+.c30.c30.c30.c30.c30 {
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -861,11 +843,11 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   touch-action: none;
 }
 
-.c31 {
+.c31.c31.c31.c31.c31 {
   padding: 16px;
 }
 
-.c33 {
+.c33.c33.c33.c33.c33 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -884,9 +866,10 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  opacity: 1;
 }
 
-.c0 {
+.c0.c0.c0.c0.c0 {
   position: fixed;
   z-index: 100;
   top: 0px;
@@ -897,16 +880,16 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   opacity: 1;
 }
 
-.c20 {
+.c20.c20.c20.c20.c20 {
   margin-right: 16px;
 }
 
-.c21 {
+.c21.c21.c21.c21.c21 {
   text-align: left;
   background-color: hsla(155,100%,31%,0.09);
 }
 
-.c24 {
+.c24.c24.c24.c24.c24 {
   border: none;
   cursor: pointer;
   padding: 0;
@@ -933,21 +916,21 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c24:hover {
+.c24.c24.c24.c24.c24:hover {
   color: hsla(217,18%,45%,1);
 }
 
-.c24:focus-visible {
+.c24.c24.c24.c24.c24:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   color: hsla(217,18%,45%,1);
 }
 
-.c24:active {
+.c24.c24.c24.c24.c24:active {
   color: hsla(217,18%,45%,1);
 }
 
-.c26 {
+.c26.c26.c26.c26.c26 {
   border-bottom-style: solid;
   border-bottom-width: 1px;
   -webkit-box-flex: 1;
@@ -956,7 +939,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   flex-grow: 1;
 }
 
-.c11 {
+.c11.c11.c11.c11.c11 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1rem;
@@ -969,7 +952,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   padding: 0;
 }
 
-.c18 {
+.c18.c18.c18.c18.c18 {
   color: hsla(160,100%,26%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -988,7 +971,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   -webkit-box-orient: vertical;
 }
 
-.c19 {
+.c19.c19.c19.c19.c19 {
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -1001,7 +984,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   padding: 0;
 }
 
-.c29 {
+.c29.c29.c29.c29.c29 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -1014,7 +997,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   padding: 0;
 }
 
-.c35 {
+.c34.c34.c34.c34.c34 {
   color: hsla(218,89%,51%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -1028,7 +1011,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   padding: 0;
 }
 
-.c23 {
+.c23.c23.c23.c23.c23 {
   color: hsla(160,100%,26%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -1046,7 +1029,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   -webkit-box-orient: vertical;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   -webkit-transition-duration: 250ms;
   transition-duration: 250ms;
   -webkit-transition-timing-function: cubic-bezier(0,0,0,1);
@@ -1056,7 +1039,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   transition-property: opacity;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   position: relative;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
@@ -1083,7 +1066,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   z-index: 100;
 }
 
-.c4:after {
+.c4.c4.c4.c4.c4:after.c4.c4.c4.c4.c4:after.c4.c4.c4.c4.c4:after.c4.c4.c4.c4.c4:after.c4.c4.c4.c4.c4:after {
   margin: auto;
   content: '';
   width: 56px;
@@ -1092,7 +1075,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   border-radius: 16px;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   background: hsla(0,0%,100%,1);
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
@@ -1126,7 +1109,13 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   overflow: hidden;
 }
 
-.c16 {
+.c16.c16.c16.c16.c16 {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16 {
   background-color: hsla(155,100%,31%,0.09);
   border-radius: 9999px;
   max-width: 120px;
@@ -1137,34 +1126,9 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
 }
 
-.c32 {
-  min-height: 36px;
-  width: 100%;
-  cursor: pointer;
-  background-color: hsla(218,89%,51%,0);
-  border-color: hsla(218,89%,51%,1);
-  border-width: 1px;
-  border-radius: 2px;
-  border-style: solid;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
+.c32.c32.c32.c32.c32 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1178,24 +1142,24 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   position: relative;
 }
 
-.c32:hover {
+.c32.c32.c32.c32.c32:hover {
   background-color: hsla(218,89%,51%,0.09);
   border-color: hsla(218,89%,51%,1);
 }
 
-.c32:active {
+.c32.c32.c32.c32.c32:active {
   background-color: hsla(218,89%,51%,0.32);
   border-color: hsla(218,89%,51%,1);
 }
 
-.c32:focus-visible {
+.c32.c32.c32.c32.c32:focus-visible {
   background-color: hsla(218,89%,51%,0.18);
   border-color: hsla(218,89%,51%,1);
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c32 * {
+.c32.c32.c32.c32.c32 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -1204,11 +1168,13 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c34 {
-  opacity: 1;
+.c22.c22.c22.c22.c22 {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
-.c22 {
+.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22 {
   background-color: hsla(155,100%,31%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
@@ -1218,13 +1184,10 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
 }
 
 @media screen and (min-width:768px) {
-  .c6 {
+  .c6.c6.c6.c6.c6 {
     padding-right: 20px;
     padding-left: 20px;
     margin-bottom: 20px;
@@ -1233,37 +1196,37 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
 }
 
 @media screen and (min-width:320px) {
-  .c25 {
+  .c25.c25.c25.c25.c25 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c25 {
+  .c25.c25.c25.c25.c25 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c25 {
+  .c25.c25.c25.c25.c25 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c25 {
+  .c25.c25.c25.c25.c25 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c25 {
+  .c25.c25.c25.c25.c25 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c31 {
+  .c31.c31.c31.c31.c31 {
     padding: 20px;
   }
 }
@@ -1409,7 +1372,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
                   >
                     <svg
                       aria-hidden="true"
-                      class="Svgweb__StyledSvg-vcmjs8-0"
+                      class=""
                       data-blade-component="icon"
                       fill="none"
                       height="20px"
@@ -1471,11 +1434,12 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
               type="button"
             >
               <div
-                class="c33 c34"
+                class="c33"
                 data-blade-component="base-box"
+                opacity="1"
               >
                 <div
-                  class="c35"
+                  class="c34"
                   data-blade-component="base-text"
                 >
                   Remove address
@@ -1491,7 +1455,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
 `;
 
 exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
-.c3 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1502,14 +1466,14 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
   height: 100%;
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   overflow: visible;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
 }
 
-.c9 {
+.c9.c9.c9.c9.c9 {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -1519,7 +1483,7 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
   flex-shrink: 1;
 }
 
-.c10 {
+.c10.c10.c10.c10.c10 {
   overflow: auto;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -1527,7 +1491,7 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
   padding-left: 0px;
 }
 
-.c0 {
+.c0.c0.c0.c0.c0 {
   position: fixed;
   z-index: 100;
   top: 0px;
@@ -1538,7 +1502,7 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
   opacity: 1;
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   position: absolute;
   height: 8px;
   top: 16px;
@@ -1546,7 +1510,7 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
   touch-action: none;
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1572,7 +1536,7 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
   border-radius: 9999px;
 }
 
-.c8 {
+.c8.c8.c8.c8.c8 {
   border: none;
   cursor: pointer;
   padding: 0;
@@ -1599,21 +1563,21 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c8:hover {
+.c8.c8.c8.c8.c8:hover {
   color: hsla(217,18%,45%,1);
 }
 
-.c8:focus-visible {
+.c8.c8.c8.c8.c8:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   color: hsla(217,18%,45%,1);
 }
 
-.c8:active {
+.c8.c8.c8.c8.c8:active {
   color: hsla(217,18%,45%,1);
 }
 
-.c11 {
+.c11.c11.c11.c11.c11 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -1626,7 +1590,7 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
   padding: 0;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   -webkit-transition-duration: 250ms;
   transition-duration: 250ms;
   -webkit-transition-timing-function: cubic-bezier(0,0,0,1);
@@ -1636,7 +1600,7 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
   transition-property: opacity;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   position: absolute;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
@@ -1663,7 +1627,7 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
   z-index: 100;
 }
 
-.c4:after {
+.c4.c4.c4.c4.c4:after.c4.c4.c4.c4.c4:after.c4.c4.c4.c4.c4:after.c4.c4.c4.c4.c4:after.c4.c4.c4.c4.c4:after {
   margin: auto;
   content: '';
   width: 56px;
@@ -1672,7 +1636,7 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
   border-radius: 16px;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   background: hsla(0,0%,100%,1);
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
@@ -1750,7 +1714,7 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  class="Svgweb__StyledSvg-vcmjs8-0"
+                  class=""
                   data-blade-component="icon"
                   fill="none"
                   height="20px"
