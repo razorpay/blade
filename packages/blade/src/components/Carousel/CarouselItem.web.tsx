@@ -24,18 +24,20 @@ const StyledCarouselItem = styled(BaseBox)<StyledCarouselItemProps>(
     const calculatedWidth = `calc(100% / ${visibleItems!} - ${gap}px * (${visibleItems} - 1) / ${visibleItems})`;
 
     return {
-      flexGrow: 0,
-      flexShrink: 0,
-      width: calculatedWidth,
-      minHeight: '100%',
-      scrollSnapAlign: 'start',
+      '&&&&&': {
+        flexGrow: 0,
+        flexShrink: 0,
+        width: calculatedWidth,
+        minHeight: '100%',
+        scrollSnapAlign: 'start',
 
-      // Responsive slider styles, a special case
-      ...(isResponsive && {
-        width: '100%',
-        scrollSnapAlign: isMobile || !shouldAddStartEndSpacing ? 'start' : 'center',
-        marginLeft: shouldHaveStartSpacing ? '100%' : 0,
-      }),
+        // Responsive slider styles, a special case
+        ...(isResponsive && {
+          width: '100%',
+          scrollSnapAlign: isMobile || !shouldAddStartEndSpacing ? 'start' : 'center',
+          marginLeft: shouldHaveStartSpacing ? '100%' : 0,
+        }),
+      },
     };
   },
 );

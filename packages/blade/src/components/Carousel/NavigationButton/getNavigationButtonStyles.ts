@@ -47,51 +47,53 @@ const getNavigationButtonStyles = (props: {
   const state = isPressed ? 'active' : 'default';
 
   return {
-    cursor: 'pointer',
-    background: 'transparent',
-    border: 'none',
-    borderStyle: 'solid',
-    borderWidth,
-    borderRadius,
-    borderColor: borderColorToken[state],
-    backgroundColor: backgroundColor[variant][state],
-    color: iconColor[variant][state],
+    '&&&&&': {
+      cursor: 'pointer',
+      background: 'transparent',
+      border: 'none',
+      borderStyle: 'solid',
+      borderWidth,
+      borderRadius,
+      borderColor: borderColorToken[state],
+      backgroundColor: backgroundColor[variant][state],
+      color: iconColor[variant][state],
 
-    padding: makeSpace(theme.spacing[3]),
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    alignSelf: 'center',
+      padding: makeSpace(theme.spacing[3]),
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      alignSelf: 'center',
 
-    ...(isReactNative()
-      ? {}
-      : {
-          transitionProperty: 'color, box-shadow',
-          transitionDuration: castWebType(makeMotionTime(motionToken.duration.xquick)),
-          transitionTimingFunction: castWebType(motionToken.easing.standard.effective),
-          boxShadow: variant === 'filled' ? castWebType(theme.elevation.midRaised) : undefined,
+      ...(isReactNative()
+        ? {}
+        : {
+            transitionProperty: 'color, box-shadow',
+            transitionDuration: castWebType(makeMotionTime(motionToken.duration.xquick)),
+            transitionTimingFunction: castWebType(motionToken.easing.standard.effective),
+            boxShadow: variant === 'filled' ? castWebType(theme.elevation.midRaised) : undefined,
 
-          '&:hover': {
-            color: iconColor[variant].hover,
-            borderColor: borderColorToken.hover,
-            backgroundColor: backgroundColor[variant].hover,
-          },
+            '&:hover': {
+              color: iconColor[variant].hover,
+              borderColor: borderColorToken.hover,
+              backgroundColor: backgroundColor[variant].hover,
+            },
 
-          '&:focus-visible': {
-            // TODO: refactor to use focus ring token
-            outline: 'none',
-            boxShadow: `0px 0px 0px 4px ${theme.colors.brand.primary[400]}`,
-            color: iconColor[variant].focus,
-            borderColor: borderColorToken.focus,
-            backgroundColor: backgroundColor[variant].focus,
-          },
+            '&:focus-visible': {
+              // TODO: refactor to use focus ring token
+              outline: 'none',
+              boxShadow: `0px 0px 0px 4px ${theme.colors.brand.primary[400]}`,
+              color: iconColor[variant].focus,
+              borderColor: borderColorToken.focus,
+              backgroundColor: backgroundColor[variant].focus,
+            },
 
-          '&:active': {
-            color: iconColor[variant].active,
-            borderColor: borderColorToken.active,
-            backgroundColor: backgroundColor[variant].active,
-          },
-        }),
+            '&:active': {
+              color: iconColor[variant].active,
+              borderColor: borderColorToken.active,
+              backgroundColor: backgroundColor[variant].active,
+            },
+          }),
+    },
   };
 };
 

@@ -62,9 +62,11 @@ const StyledDivider = styled(BaseBox)<{
   width: DividerProps['width'];
   isDividerHorizontal: boolean;
 }>(({ theme, borderPosition, dividerStyle, thickness, isDividerHorizontal, width, height }) => ({
-  [`${borderPosition}Style`]: dividerStyle,
-  [`${borderPosition}Width`]: makeBorderSize(theme.border.width[thickness]),
-  ...(isDividerHorizontal ? { flexGrow: 1, width } : { alignSelf: 'stretch', height }),
+  '&&&&&': {
+    [`${borderPosition}Style`]: dividerStyle,
+    [`${borderPosition}Width`]: makeBorderSize(theme.border.width[thickness]),
+    ...(isDividerHorizontal ? { flexGrow: 1, width } : { alignSelf: 'stretch', height }),
+  },
 }));
 
 const Divider = ({

@@ -14,37 +14,39 @@ const getWebInputStyles = (
     (React.InputHTMLAttributes<HTMLInputElement> | React.ButtonHTMLAttributes<HTMLButtonElement>),
 ): CSSObject => {
   return {
-    ...getBaseInputStyles({
-      isDisabled: props.disabled,
-      theme: props.theme,
-      validationState: props.validationState,
-      leadingIcon: props.leadingIcon,
-      prefix: props.prefix,
-      interactionElement: props.interactionElement,
-      suffix: props.suffix,
-      trailingIcon: props.trailingIcon,
-      textAlign: props.textAlign,
-      isTextArea: props.isTextArea,
-      hasTags: props.hasTags,
-      isDropdownTrigger: props.isDropdownTrigger,
-    }),
-    outline: 'none',
-    border: 'none',
-    '::placeholder': {
-      ...getTextStyles({
-        size: 'medium',
-        variant: 'body',
-        type: 'placeholder',
-        weight: 'regular',
-        contrast: 'low',
+    '&&&&&': {
+      ...getBaseInputStyles({
+        isDisabled: props.disabled,
         theme: props.theme,
+        validationState: props.validationState,
+        leadingIcon: props.leadingIcon,
+        prefix: props.prefix,
+        interactionElement: props.interactionElement,
+        suffix: props.suffix,
+        trailingIcon: props.trailingIcon,
+        textAlign: props.textAlign,
+        isTextArea: props.isTextArea,
+        hasTags: props.hasTags,
+        isDropdownTrigger: props.isDropdownTrigger,
       }),
-      textAlign: props.textAlign,
-    },
-    ':focus': {
       outline: 'none',
+      border: 'none',
+      '::placeholder': {
+        ...getTextStyles({
+          size: 'medium',
+          variant: 'body',
+          type: 'placeholder',
+          weight: 'regular',
+          contrast: 'low',
+          theme: props.theme,
+        }),
+        textAlign: props.textAlign,
+      },
+      ':focus': {
+        outline: 'none',
+      },
+      cursor: props.disabled ? 'not-allowed' : 'auto',
     },
-    cursor: props.disabled ? 'not-allowed' : 'auto',
   };
 };
 

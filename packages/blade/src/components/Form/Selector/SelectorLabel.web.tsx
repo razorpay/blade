@@ -7,9 +7,11 @@ import { makeSpace } from '~utils/makeSpace';
 
 const StyledSelectorLabel = styled.label(({ theme }) => {
   return {
-    display: 'flex',
-    marginTop: makeSpace(theme.spacing[1]),
-    marginBottom: makeSpace(theme.spacing[1]),
+    '&&&&&': {
+      display: 'flex',
+      marginTop: makeSpace(theme.spacing[1]),
+      marginBottom: makeSpace(theme.spacing[1]),
+    },
   };
 });
 

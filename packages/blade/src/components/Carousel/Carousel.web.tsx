@@ -110,38 +110,40 @@ const CarouselContainer = styled(BaseBox)<{
   };
 
   return {
-    width: '100%',
-    overflowX: 'scroll',
-    display: 'flex',
-    flexWrap: 'nowrap',
-    scrollSnapType: 'x mandatory',
-    scrollSnapPointsY: `repeat(100%)`,
-    msOverflowStyle: 'none' /* IE and Edge */,
-    scrollbarWidth: 'none' /* Firefox */,
-    /* Needed to work on iOS Safari */
-    webkitOverflowScrolling: 'touch',
-    msScrollSnapType: 'mandatory',
-    scrollSnapPointsX: 'repeat(100%)',
-    msScrollSnapPointsX: 'repeat(100%)',
-    '&::-webkit-scrollbar': {
-      display: 'none',
+    '&&&&&': {
+      width: '100%',
+      overflowX: 'scroll',
+      display: 'flex',
+      flexWrap: 'nowrap',
+      scrollSnapType: 'x mandatory',
+      scrollSnapPointsY: `repeat(100%)`,
+      msOverflowStyle: 'none' /* IE and Edge */,
+      scrollbarWidth: 'none' /* Firefox */,
+      /* Needed to work on iOS Safari */
+      webkitOverflowScrolling: 'touch',
+      msScrollSnapType: 'mandatory',
+      scrollSnapPointsX: 'repeat(100%)',
+      msScrollSnapPointsX: 'repeat(100%)',
+      '&::-webkit-scrollbar': {
+        display: 'none',
+      },
+      ...(showOverlay && {
+        '&::before': {
+          ...overlayCommonStyle,
+          background: `linear-gradient(to right, ${gradientStop1}, ${gradientStop2})`,
+          left: -1,
+          opacity: isScrollAtStart ? 0 : 1,
+          pointerEvents: 'none',
+        },
+        '&::after': {
+          ...overlayCommonStyle,
+          background: `linear-gradient(to left, ${gradientStop1}, ${gradientStop2})`,
+          right: -1,
+          opacity: isScrollAtEnd ? 0 : 1,
+          pointerEvents: 'none',
+        },
+      }),
     },
-    ...(showOverlay && {
-      '&::before': {
-        ...overlayCommonStyle,
-        background: `linear-gradient(to right, ${gradientStop1}, ${gradientStop2})`,
-        left: -1,
-        opacity: isScrollAtStart ? 0 : 1,
-        pointerEvents: 'none',
-      },
-      '&::after': {
-        ...overlayCommonStyle,
-        background: `linear-gradient(to left, ${gradientStop1}, ${gradientStop2})`,
-        right: -1,
-        opacity: isScrollAtEnd ? 0 : 1,
-        pointerEvents: 'none',
-      },
-    }),
   };
 });
 

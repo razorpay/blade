@@ -265,8 +265,10 @@ const getAllMediaQueries = (props: BaseBoxProps & { theme: Theme }): CSSObject =
 
 const getBaseBoxStyles = (props: BaseBoxProps & { theme: Theme }): CSSObject => {
   return {
-    ...getAllProps(props),
-    ...getAllMediaQueries(props),
+    '&&&&&': {
+      ...getAllProps(props),
+      ...getAllMediaQueries(props),
+    },
   };
 };
 

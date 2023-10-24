@@ -7,13 +7,15 @@ import { size } from '~tokens/global';
 
 const getHandlePartStyles = ({ theme }: { theme: Theme }): CSSObject => {
   return {
-    margin: 'auto',
-    content: "''",
-    width: makeSize(size[56]),
-    height: makeSize(size[4]),
-    backgroundColor: theme.colors.brand.gray.a100.lowContrast,
-    // TODO: we do not have 16px radius token
-    borderRadius: makeSpace(theme.spacing[5]),
+    '&&&&&': {
+      margin: 'auto',
+      content: "''",
+      width: makeSize(size[56]),
+      height: makeSize(size[4]),
+      backgroundColor: theme.colors.brand.gray.a100.lowContrast,
+      // TODO: we do not have 16px radius token
+      borderRadius: makeSpace(theme.spacing[5]),
+    },
   };
 };
 const getBottomSheetGrabHandleStyles = ({
@@ -24,18 +26,20 @@ const getBottomSheetGrabHandleStyles = ({
   isHeaderFloating?: boolean;
 }): CSSObject => {
   return {
-    position: isHeaderFloating ? 'absolute' : 'relative',
-    flexShrink: 0,
-    paddingTop: makeSpace(theme.spacing[4]),
-    marginBottom: makeSpace(theme.spacing[2]),
-    touchAction: 'none',
-    width: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    zIndex: 100,
-    ...(isReactNative() ? undefined : { ':after': getHandlePartStyles({ theme }) }),
+    '&&&&&': {
+      position: isHeaderFloating ? 'absolute' : 'relative',
+      flexShrink: 0,
+      paddingTop: makeSpace(theme.spacing[4]),
+      marginBottom: makeSpace(theme.spacing[2]),
+      touchAction: 'none',
+      width: '100%',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      zIndex: 100,
+      ...(isReactNative() ? undefined : { ':after': getHandlePartStyles({ theme }) }),
+    },
   };
 };
 

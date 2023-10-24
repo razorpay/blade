@@ -28,19 +28,21 @@ const getCheckboxIconWrapperStyles = ({
   const borderColor = border === 'transparent' ? border : getIn(theme, border);
 
   return {
-    position: 'relative',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexShrink: 0,
-    width: makeSpace(checkboxSizes.icon[size].width),
-    height: makeSpace(checkboxSizes.icon[size].height),
-    borderWidth: makeBorderSize(theme.border.width.thick),
-    borderStyle: 'solid',
-    margin: makeSpace(theme.spacing[1]),
-    borderRadius: makeSize(theme.border.radius.small),
-    backgroundColor,
-    borderColor,
+    '&&&&&': {
+      position: 'relative',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      flexShrink: 0,
+      width: makeSpace(checkboxSizes.icon[size].width),
+      height: makeSpace(checkboxSizes.icon[size].height),
+      borderWidth: makeBorderSize(theme.border.width.thick),
+      borderStyle: 'solid',
+      margin: makeSpace(theme.spacing[1]),
+      borderRadius: makeSize(theme.border.radius.small),
+      backgroundColor,
+      borderColor,
+    },
   };
 };
 

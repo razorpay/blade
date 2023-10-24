@@ -40,30 +40,32 @@ const BottomSheetSurface = styled.div<{
   isDragging: boolean;
 }>(({ theme, windowHeight, isDragging }) => {
   return {
-    background: theme.colors.surface.background.level2.lowContrast,
-    borderTopLeftRadius: makeSize(size[16]),
-    borderTopRightRadius: makeSize(size[16]),
-    borderColor: theme.colors.surface.border.normal.lowContrast,
-    // this is reverse top elevation of highRaised elevation token
-    boxShadow: '0px -24px 48px -12px hsla(217, 56%, 17%, 0.18)',
-    opacity: 0,
-    pointerEvents: 'none',
-    transitionDuration: isDragging
-      ? undefined
-      : `${makeMotionTime(theme.motion.duration.moderate)}`,
-    transitionTimingFunction: BOTTOM_SHEET_EASING,
-    willChange: 'transform, opacity, height',
-    transitionProperty: 'transform, opacity, height',
-    position: 'fixed',
-    left: 0,
-    right: 0,
-    bottom: 0,
-    top: windowHeight,
-    backgroundColor: theme.colors.surface.background.level2.lowContrast,
-    justifyContent: 'center',
-    alignItems: 'center',
-    touchAction: 'none',
-    overflow: 'hidden',
+    '&&&&&': {
+      background: theme.colors.surface.background.level2.lowContrast,
+      borderTopLeftRadius: makeSize(size[16]),
+      borderTopRightRadius: makeSize(size[16]),
+      borderColor: theme.colors.surface.border.normal.lowContrast,
+      // this is reverse top elevation of highRaised elevation token
+      boxShadow: '0px -24px 48px -12px hsla(217, 56%, 17%, 0.18)',
+      opacity: 0,
+      pointerEvents: 'none',
+      transitionDuration: isDragging
+        ? undefined
+        : `${makeMotionTime(theme.motion.duration.moderate)}`,
+      transitionTimingFunction: BOTTOM_SHEET_EASING,
+      willChange: 'transform, opacity, height',
+      transitionProperty: 'transform, opacity, height',
+      position: 'fixed',
+      left: 0,
+      right: 0,
+      bottom: 0,
+      top: windowHeight,
+      backgroundColor: theme.colors.surface.background.level2.lowContrast,
+      justifyContent: 'center',
+      alignItems: 'center',
+      touchAction: 'none',
+      overflow: 'hidden',
+    },
   };
 });
 

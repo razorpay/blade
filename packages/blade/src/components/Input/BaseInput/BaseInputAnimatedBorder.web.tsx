@@ -34,15 +34,17 @@ to {
 
 const BaseInputStyledAnimatedBorder = styled(BaseBox)(
   ({ theme, animation }: { theme: Theme; animation?: FlattenSimpleInterpolation }) => css`
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    opacity: 0;
-    background-color: ${theme.colors.brand.primary[500]};
-    border-width: ${makeBorderSize(theme.border.width.thin)};
-    height: ${makeBorderSize(theme.border.width.thin)};
-    ${animation}
+    &&&&& {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      opacity: 0;
+      background-color: ${theme.colors.brand.primary[500]};
+      border-width: ${makeBorderSize(theme.border.width.thin)};
+      height: ${makeBorderSize(theme.border.width.thin)};
+      ${animation}
+    }
   `,
 );
 

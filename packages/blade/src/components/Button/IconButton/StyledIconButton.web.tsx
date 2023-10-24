@@ -20,31 +20,33 @@ const StyledButton = styled.button<StyledButtonProps>((props) => {
   const motionToken = theme.motion;
 
   return {
-    border: 'none',
-    cursor: props.disabled ? 'not-allowed' : 'pointer',
-    padding: 0,
-    borderRadius: theme.border.radius.small,
-    background: 'transparent',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    color: iconColorToken.default[contrastToken],
-    transitionProperty: 'color, box-shadow',
-    transitionDuration: castWebType(makeMotionTime(motionToken.duration.xquick)),
-    transitionTimingFunction: motionToken.easing.standard.effective as string,
+    '&&&&&': {
+      border: 'none',
+      cursor: props.disabled ? 'not-allowed' : 'pointer',
+      padding: 0,
+      borderRadius: theme.border.radius.small,
+      background: 'transparent',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      color: iconColorToken.default[contrastToken],
+      transitionProperty: 'color, box-shadow',
+      transitionDuration: castWebType(makeMotionTime(motionToken.duration.xquick)),
+      transitionTimingFunction: motionToken.easing.standard.effective as string,
 
-    '&:hover': {
-      color: iconColorToken.hover[contrastToken],
-    },
+      '&:hover': {
+        color: iconColorToken.hover[contrastToken],
+      },
 
-    '&:focus-visible': {
-      outline: 'none',
-      boxShadow: `0px 0px 0px 4px ${theme.colors.brand.primary[400]}`,
-      color: iconColorToken.focus[contrastToken],
-    },
+      '&:focus-visible': {
+        outline: 'none',
+        boxShadow: `0px 0px 0px 4px ${theme.colors.brand.primary[400]}`,
+        color: iconColorToken.focus[contrastToken],
+      },
 
-    '&:active': {
-      color: iconColorToken.active[contrastToken],
+      '&:active': {
+        color: iconColorToken.active[contrastToken],
+      },
     },
   };
 });

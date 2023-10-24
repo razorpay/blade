@@ -11,11 +11,13 @@ const AnimatedChip = styled(BaseBox)<AnimatedChipProps>((props) => {
   const easing = getIn(props.theme, chipMotionTokens.easing);
   const duration = castWebType(makeMotionTime(getIn(props.theme, chipMotionTokens.duration)));
   return {
-    ...getAnimatedChipStyles(props),
-    width: 'fit-content',
-    transform: `scale(${props.isPressed ? '0.92' : '1'})`,
-    transitionDuration: duration,
-    transitionTimingFunction: easing,
+    '&&&&&': {
+      ...getAnimatedChipStyles(props),
+      width: 'fit-content',
+      transform: `scale(${props.isPressed ? '0.92' : '1'})`,
+      transitionDuration: duration,
+      transitionTimingFunction: easing,
+    },
   };
 });
 

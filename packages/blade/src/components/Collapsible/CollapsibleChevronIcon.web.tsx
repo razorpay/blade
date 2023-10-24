@@ -25,13 +25,17 @@ const StyledCollapsibleChevronIcon = styled(BaseBox)<StyledCollapsibleChevronIco
   const transitionTimingFunction = castWebType(getTransitionEasing(theme));
 
   return {
-    display: 'flex',
-    alignItems: 'center',
-    transform: isExpanded ? `rotate(${transformExpanded}deg)` : `rotate(${transformCollapsed}deg)`,
-    transformOrigin: 'center center',
-    transitionDuration,
-    transitionTimingFunction,
-    transitionProperty: 'transform',
+    '&&&&&': {
+      display: 'flex',
+      alignItems: 'center',
+      transform: isExpanded
+        ? `rotate(${transformExpanded}deg)`
+        : `rotate(${transformCollapsed}deg)`,
+      transformOrigin: 'center center',
+      transitionDuration,
+      transitionTimingFunction,
+      transitionProperty: 'transform',
+    },
   };
 });
 

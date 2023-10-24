@@ -10,11 +10,13 @@ const getStyledCounterStyles = ({
   platform,
   backgroundColor,
 }: StyledCounterProps): CSSObject => ({
-  backgroundColor: getIn(theme.colors, backgroundColor),
-  borderRadius: makeBorderSize(theme.border.radius.max),
-  maxWidth: makeSize(maxWidth[platform]),
-  display: 'flex',
-  flexWrap: 'nowrap',
+  '&&&&&': {
+    backgroundColor: getIn(theme.colors, backgroundColor),
+    borderRadius: makeBorderSize(theme.border.radius.max),
+    maxWidth: makeSize(maxWidth[platform]),
+    display: 'flex',
+    flexWrap: 'nowrap',
+  },
 });
 
 export { getStyledCounterStyles };

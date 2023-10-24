@@ -48,35 +48,37 @@ const StyledBaseInputWrapper = styled(BaseBox)<
     'currentInteraction' | 'isDisabled' | 'validationState' | 'isTextArea' | 'isDropdownTrigger'
   >
 >((props) => ({
-  ...getInputBackgroundAndBorderStyles({
-    theme: props.theme,
-    isFocused: props.currentInteraction === 'active',
-    isDisabled: props.isDisabled,
-    validationState: props.validationState,
-    isTextArea: props.isTextArea,
-    isDropdownTrigger: props.isDropdownTrigger,
-  }),
-  '&:hover': {
-    ...getInputBackgroundAndBorderStyles({
-      theme: props.theme,
-      isHovered: true,
-      isFocused: props.currentInteraction === 'active',
-      isDisabled: props.isDisabled,
-      validationState: props.validationState,
-      isDropdownTrigger: props.isDropdownTrigger,
-    }),
-    transitionProperty: 'background-color',
-    transitionDuration: castWebType(makeMotionTime(props.theme.motion.duration.xquick)),
-    transitionTimingFunction: castWebType(props.theme.motion.easing.standard.effective),
-  },
-  ':focus-within': {
+  '&&&&&': {
     ...getInputBackgroundAndBorderStyles({
       theme: props.theme,
       isFocused: props.currentInteraction === 'active',
       isDisabled: props.isDisabled,
       validationState: props.validationState,
+      isTextArea: props.isTextArea,
       isDropdownTrigger: props.isDropdownTrigger,
     }),
+    '&:hover': {
+      ...getInputBackgroundAndBorderStyles({
+        theme: props.theme,
+        isHovered: true,
+        isFocused: props.currentInteraction === 'active',
+        isDisabled: props.isDisabled,
+        validationState: props.validationState,
+        isDropdownTrigger: props.isDropdownTrigger,
+      }),
+      transitionProperty: 'background-color',
+      transitionDuration: castWebType(makeMotionTime(props.theme.motion.duration.xquick)),
+      transitionTimingFunction: castWebType(props.theme.motion.easing.standard.effective),
+    },
+    ':focus-within': {
+      ...getInputBackgroundAndBorderStyles({
+        theme: props.theme,
+        isFocused: props.currentInteraction === 'active',
+        isDisabled: props.isDisabled,
+        validationState: props.validationState,
+        isDropdownTrigger: props.isDropdownTrigger,
+      }),
+    },
   },
 }));
 
@@ -105,10 +107,12 @@ const StyledAnimatedBaseInputWrapper = styled(StyledBaseInputWrapper)<{
 }>((props) =>
   props.isDropdownTrigger
     ? css`
-        ${props.transition};
-        max-height: ${makeSize(
-          getMaxHeight({ maxTagRows: props.maxTagRows, showAllTags: props.showAllTags }),
-        )};
+        &&&&& {
+          ${props.transition};
+          max-height: ${makeSize(
+            getMaxHeight({ maxTagRows: props.maxTagRows, showAllTags: props.showAllTags }),
+          )};
+        }
       `
     : undefined,
 );

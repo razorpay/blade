@@ -6,16 +6,18 @@ const CardSurface = styled(BaseBox)<{ surfaceLevel: 2 | 3 }>(
     const backgroundColor = theme.colors.surface.background[`level${surfaceLevel}`].lowContrast;
 
     return {
-      width: '100%',
-      display: 'flex',
-      position: 'relative',
-      flexDirection: 'column',
-      borderWidth: elevation === 'none' ? `${theme.border.width.thin}` : undefined,
-      borderStyle: elevation === 'none' ? 'solid' : undefined,
-      borderColor:
-        elevation === 'none' ? `${theme.colors.surface.border.normal.lowContrast}` : undefined,
-      backgroundColor,
-      boxSizing: 'border-box',
+      '&&&&&': {
+        width: '100%',
+        display: 'flex',
+        position: 'relative',
+        flexDirection: 'column',
+        borderWidth: elevation === 'none' ? `${theme.border.width.thin}` : undefined,
+        borderStyle: elevation === 'none' ? 'solid' : undefined,
+        borderColor:
+          elevation === 'none' ? `${theme.colors.surface.border.normal.lowContrast}` : undefined,
+        backgroundColor,
+        boxSizing: 'border-box',
+      },
     };
   },
 );

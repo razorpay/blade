@@ -31,20 +31,22 @@ const StyledCollapsibleBodyContent = styled.div<StyledCollapsibleBodyContentProp
   const transitionTimingFunction = castWebType(getTransitionEasing(theme));
 
   return {
-    transitionDuration,
-    transitionTimingFunction,
-    transitionProperty: 'height, opacity',
-    opacity: getOpacity({ isExpanded }),
-    /**
-     * We need height explicitly here for initial styles because the component might be rendered on server,
-     * in which case for expanded items this should be `auto` because we don't know the actual pixel value.
-     *
-     * This is based on `defaultIsExpanded` rather than `isExpanded` because post initial render inline styles take over.
-     * Otherwise, changing `height` both here and in inline styles sometimes causes animation flickers due to styles mismatch.
-     */
-    height: defaultIsExpanded ? HEIGHT_EXPANDED : HEIGHT_COLLAPSED,
-    display: defaultIsExpanded ? 'block' : 'none',
-    overflowY: 'hidden',
+    '&&&&&': {
+      transitionDuration,
+      transitionTimingFunction,
+      transitionProperty: 'height, opacity',
+      opacity: getOpacity({ isExpanded }),
+      /**
+       * We need height explicitly here for initial styles because the component might be rendered on server,
+       * in which case for expanded items this should be `auto` because we don't know the actual pixel value.
+       *
+       * This is based on `defaultIsExpanded` rather than `isExpanded` because post initial render inline styles take over.
+       * Otherwise, changing `height` both here and in inline styles sometimes causes animation flickers due to styles mismatch.
+       */
+      height: defaultIsExpanded ? HEIGHT_EXPANDED : HEIGHT_COLLAPSED,
+      display: defaultIsExpanded ? 'block' : 'none',
+      overflowY: 'hidden',
+    },
   };
 });
 

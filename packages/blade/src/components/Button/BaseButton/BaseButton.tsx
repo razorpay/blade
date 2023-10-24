@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import getIn from 'lodash/get';
 import React from 'react';
-import styled from 'styled-components';
 import type { GestureResponderEvent } from 'react-native';
 import StyledBaseButton from './StyledBaseButton';
 import type { ButtonTypography, ButtonMinHeight } from './buttonTokens';
@@ -305,10 +304,6 @@ const getProps = ({
   return props;
 };
 
-const ButtonContent = styled(BaseBox)<{ isHidden: boolean }>(({ isHidden }) => ({
-  opacity: isHidden ? 0 : 1,
-}));
-
 const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonProps> = (
   {
     href,
@@ -469,13 +464,13 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
           <BaseSpinner accessibilityLabel="Loading" size={spinnerSize} color={color} />
         </BaseBox>
       ) : null}
-      <ButtonContent
+      <BaseBox
         display="flex"
         flexDirection="row"
         alignItems="center"
         justifyContent="center"
         flex={1}
-        isHidden={isLoading}
+        opacity={isLoading ? 0 : 1}
       >
         {Icon && iconPosition == 'left' ? (
           <BaseBox
@@ -508,7 +503,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
             <Icon size={iconSize} color={iconColor} />
           </BaseBox>
         ) : null}
-      </ButtonContent>
+      </BaseBox>
     </StyledBaseButton>
   );
 };

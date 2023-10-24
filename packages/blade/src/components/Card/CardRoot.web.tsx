@@ -15,35 +15,37 @@ const StyledCardRoot = styled(BaseBox)<CardRootProps & { isPressed: boolean; isM
     const focusRing = isFocused ? `, 0px 0px 0px 4px ${theme.colors.brand.primary[400]}` : '';
 
     return {
-      // Selected state
-      boxShadow: `${selectedBorder}${focusRing}`,
-      transitionDuration: castWebType(makeMotionTime(theme.motion.duration.xquick)),
-      transitionTimingFunction: castWebType(theme.motion.easing.standard.effective),
-      transitionProperty: 'transform, box-shadow',
+      '&&&&&': {
+        // Selected state
+        boxShadow: `${selectedBorder}${focusRing}`,
+        transitionDuration: castWebType(makeMotionTime(theme.motion.duration.xquick)),
+        transitionTimingFunction: castWebType(theme.motion.easing.standard.effective),
+        transitionProperty: 'transform, box-shadow',
 
-      // pressed state for mobile only
-      ...(isMobile &&
-        isPressed && {
-          transform: `scale(${CARD_SCALE_DOWN_VALUE})`,
-        }),
+        // pressed state for mobile only
+        ...(isMobile &&
+          isPressed && {
+            transform: `scale(${CARD_SCALE_DOWN_VALUE})`,
+          }),
 
-      // Hover state for desktop only
-      ...(!isMobile &&
-        shouldScaleOnHover && {
-          '&:hover': {
-            transform: `scale(${CARD_SCALE_UP_VALUE})`,
-          },
-        }),
+        // Hover state for desktop only
+        ...(!isMobile &&
+          shouldScaleOnHover && {
+            '&:hover': {
+              transform: `scale(${CARD_SCALE_UP_VALUE})`,
+            },
+          }),
 
-      // uplift all the nested links so they receive clicks and events (except the LinkOverlay)
-      // https://www.sarasoueidan.com/blog/nested-links
-      [`& a[href]:not(a[data-blade-component="${CARD_LINK_OVERLAY_ID}"])`]: {
-        zIndex: 2,
-        position: 'relative',
-      },
-      [`& button:not(button[data-blade-component="${CARD_LINK_OVERLAY_ID}"])`]: {
-        zIndex: 2,
-        position: 'relative',
+        // uplift all the nested links so they receive clicks and events (except the LinkOverlay)
+        // https://www.sarasoueidan.com/blog/nested-links
+        [`& a[href]:not(a[data-blade-component="${CARD_LINK_OVERLAY_ID}"])`]: {
+          zIndex: 2,
+          position: 'relative',
+        },
+        [`& button:not(button[data-blade-component="${CARD_LINK_OVERLAY_ID}"])`]: {
+          zIndex: 2,
+          position: 'relative',
+        },
       },
     };
   },

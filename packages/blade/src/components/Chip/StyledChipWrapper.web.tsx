@@ -12,19 +12,21 @@ const StyledChipWrapper = styled(BaseBox)<StyledChipWrapperProps>(
     const duration = castWebType(makeMotionTime(getIn(theme, chipMotionTokens.duration)));
 
     return {
-      display: 'flex',
-      borderColor: isChecked ? getIn(theme.colors, borderColor) : 'transparent',
+      '&&&&&': {
+        display: 'flex',
+        borderColor: isChecked ? getIn(theme.colors, borderColor) : 'transparent',
 
-      ...(!isDisabled && {
-        '&:hover': {
-          backgroundColor: getIn(
-            theme.colors,
-            chipColorTokens.background[isChecked && color ? color : 'unchecked'].hover,
-          ),
-          transitionTimingFunction: easing,
-          transitionDuration: duration,
-        },
-      }),
+        ...(!isDisabled && {
+          '&:hover': {
+            backgroundColor: getIn(
+              theme.colors,
+              chipColorTokens.background[isChecked && color ? color : 'unchecked'].hover,
+            ),
+            transitionTimingFunction: easing,
+            transitionDuration: duration,
+          },
+        }),
+      },
     };
   },
 );
