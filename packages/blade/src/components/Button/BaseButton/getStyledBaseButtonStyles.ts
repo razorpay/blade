@@ -17,23 +17,21 @@ const getBaseButtonStyles = ({
   StyledBaseButtonProps,
   'children' | 'onClick' | 'accessibilityProps' | 'accessibilityLabel'
 >): CSSObject => ({
-  '&&&&&': {
-    minHeight,
-    width: isFullWidth ? '100%' : 'auto',
-    cursor: disabled ? 'not-allowed' : 'pointer',
-    backgroundColor: defaultBackgroundColor,
-    borderColor: defaultBorderColor,
-    borderWidth,
-    borderRadius,
-    borderStyle: 'solid',
-    paddingTop: buttonPaddingTop,
-    paddingBottom: buttonPaddingBottom,
-    paddingLeft: buttonPaddingLeft,
-    paddingRight: buttonPaddingRight,
-    justifyContent: 'center',
-    alignItems: 'center',
-    textDecoration: 'none',
-  },
+  minHeight,
+  width: isFullWidth ? '100%' : 'auto',
+  cursor: disabled ? 'not-allowed' : 'pointer',
+  backgroundColor: defaultBackgroundColor,
+  borderColor: defaultBorderColor,
+  borderWidth,
+  borderRadius,
+  borderStyle: 'solid',
+  paddingTop: buttonPaddingTop,
+  paddingBottom: buttonPaddingBottom,
+  paddingLeft: buttonPaddingLeft,
+  paddingRight: buttonPaddingRight,
+  justifyContent: 'center',
+  alignItems: 'center',
+  textDecoration: 'none',
 });
 
 export default getBaseButtonStyles;
