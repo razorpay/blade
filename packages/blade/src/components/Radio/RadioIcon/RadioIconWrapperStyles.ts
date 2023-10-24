@@ -29,22 +29,24 @@ const getRadioIconWrapperStyles = ({
   const borderColor = border === 'transparent' ? border : getIn(theme, border);
 
   return {
-    position: 'relative',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: makeSpace(radioSizes.icon[size].width),
-    height: makeSpace(radioSizes.icon[size].height),
-    borderWidth: makeBorderSize(theme.border.width.thick),
-    borderStyle: 'solid',
-    margin: makeSpace(theme.spacing[1]),
-    borderRadius: makeSize(theme.border.radius.max),
-    backgroundColor,
-    borderColor,
-    ...(!isReactNative && {
-      transitionDuration: castWebType(makeMotionTime(theme.motion.duration.xquick)),
-      transitionTimingFunction: castWebType(theme.motion.easing.exit.attentive),
-    }),
+    '&&&&&': {
+      position: 'relative',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      width: makeSpace(radioSizes.icon[size].width),
+      height: makeSpace(radioSizes.icon[size].height),
+      borderWidth: makeBorderSize(theme.border.width.thick),
+      borderStyle: 'solid',
+      margin: makeSpace(theme.spacing[1]),
+      borderRadius: makeSize(theme.border.radius.max),
+      backgroundColor,
+      borderColor,
+      ...(!isReactNative && {
+        transitionDuration: castWebType(makeMotionTime(theme.motion.duration.xquick)),
+        transitionTimingFunction: castWebType(theme.motion.easing.exit.attentive),
+      }),
+    },
   };
 };
 

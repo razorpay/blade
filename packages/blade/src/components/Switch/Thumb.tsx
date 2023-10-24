@@ -22,13 +22,15 @@ const Thumb = styled(BaseBox)<ThumbProps>(({ theme, size = 'medium', deviceType 
   };
 
   return {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: finalWidth,
-    height: finalHeight,
-    position: isReactNative() ? 'absolute' : 'relative',
-    ...(isReactNative() && reactNativeStyles),
+    '&&&&&': {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      width: finalWidth,
+      height: finalHeight,
+      position: isReactNative() ? 'absolute' : 'relative',
+      ...(isReactNative() && reactNativeStyles),
+    },
   };
 });
 

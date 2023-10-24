@@ -10,13 +10,15 @@ const StyledModalBackdrop = styled(FloatingOverlay)(({ theme }) => {
   const { isVisible } = useModalContext();
 
   return {
-    transitionDuration: `${makeMotionTime(theme.motion.duration.xmoderate)}`,
-    transitionTimingFunction: isVisible
-      ? castWebType(theme.motion.easing.entrance.revealing)
-      : castWebType(theme.motion.easing.exit.revealing),
-    transitionProperty: 'opacity',
-    opacity: isVisible ? 1 : 0,
-    backgroundColor: theme.colors.overlay.background,
+    '&&&&&': {
+      transitionDuration: `${makeMotionTime(theme.motion.duration.xmoderate)}`,
+      transitionTimingFunction: isVisible
+        ? castWebType(theme.motion.easing.entrance.revealing)
+        : castWebType(theme.motion.easing.exit.revealing),
+      transitionProperty: 'opacity',
+      opacity: isVisible ? 1 : 0,
+      backgroundColor: theme.colors.overlay.background,
+    },
   };
 });
 

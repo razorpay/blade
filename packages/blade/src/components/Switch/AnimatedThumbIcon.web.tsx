@@ -9,10 +9,12 @@ const AnimatedThumbIcon = styled(Svg)<{ isChecked?: boolean }>(({ isChecked, the
   const duration = getIn(theme, switchMotion.duration.thumbIcon);
 
   return {
-    transitionDuration: `${makeMotionTime(duration)}`,
-    transitionTimingFunction: easing,
-    transitionDelay: isChecked ? `${makeMotionTime(theme.motion.delay['2xshort'])}` : `0ms`,
-    opacity: isChecked ? 1 : 0,
+    '&&&&&': {
+      transitionDuration: `${makeMotionTime(duration)}`,
+      transitionTimingFunction: easing,
+      transitionDelay: isChecked ? `${makeMotionTime(theme.motion.delay['2xshort'])}` : `0ms`,
+      opacity: isChecked ? 1 : 0,
+    },
   };
 });
 

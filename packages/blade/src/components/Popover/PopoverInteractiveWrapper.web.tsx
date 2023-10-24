@@ -10,15 +10,17 @@ const StyledPopoverInteractiveWrapper = styled.button((props) => {
   const cssObject = useMemoizedStyles(props as never);
 
   return {
-    all: 'unset',
-    ...cssObject,
-    appearance: 'none',
-    cursor: 'pointer',
-    lineHeight: 0,
-    '&:focus-visible': {
-      // TODO: refactor to use focus ring token
-      outline: 'none',
-      boxShadow: `0px 0px 0px 4px ${props.theme.colors.brand.primary[400]}`,
+    '&&&&&': {
+      all: 'unset',
+      ...cssObject,
+      appearance: 'none',
+      cursor: 'pointer',
+      lineHeight: 0,
+      '&:focus-visible': {
+        // TODO: refactor to use focus ring token
+        outline: 'none',
+        boxShadow: `0px 0px 0px 4px ${props.theme.colors.brand.primary[400]}`,
+      },
     },
   };
 });

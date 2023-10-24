@@ -17,10 +17,12 @@ const FocussableTag = styled(BaseBox)<{ _isVirtuallyFocused: TagProps['_isVirtua
   (props) => {
     if (props._isVirtuallyFocused && !isReactNative()) {
       return {
-        outline: `${makeSize(globalSizeTokens['1'])} solid ${
-          props.theme.colors.surface.background.level1.lowContrast
-        }`,
-        boxShadow: `0px 0px 0px 4px ${props.theme.colors.brand.primary[400]}`,
+        '&&&&&': {
+          outline: `${makeSize(globalSizeTokens['1'])} solid ${
+            props.theme.colors.surface.background.level1.lowContrast
+          }`,
+          boxShadow: `0px 0px 0px 4px ${props.theme.colors.brand.primary[400]}`,
+        },
       };
     }
 

@@ -44,12 +44,14 @@ const getPulseAnimationStyles = ({
   easing: string;
   delay: string;
 }): FlattenSimpleInterpolation => css`
-  height: 100%;
-  width: 100%;
-  opacity: ${pulseAnimation.opacityInitial};
-  background-color: ${pulseAnimation.backgroundColor};
-  animation: ${pulseKeyframes} ${duration} ${easing} infinite;
-  animation-delay: ${delay};
+  &&&&& {
+    height: 100%;
+    width: 100%;
+    opacity: ${pulseAnimation.opacityInitial};
+    background-color: ${pulseAnimation.backgroundColor};
+    animation: ${pulseKeyframes} ${duration} ${easing} infinite;
+    animation-delay: ${delay};
+  }
 `;
 
 const BoxWithIndeterminateAnimation = styled(BaseBox)<
@@ -59,10 +61,12 @@ const BoxWithIndeterminateAnimation = styled(BaseBox)<
   const easing = 'linear'; // TODO: Add this in motion tokens
 
   return css`
-    animation: ${slideAndScaleKeyframes} ${duration} ${easing} infinite;
-    position: absolute;
-    width: ${indeterminateAnimation.fillWidth};
-    height: 100%;
+    &&&&& {
+      animation: ${slideAndScaleKeyframes} ${duration} ${easing} infinite;
+      position: absolute;
+      width: ${indeterminateAnimation.fillWidth};
+      height: 100%;
+    }
   `;
 });
 
@@ -96,9 +100,11 @@ const BoxWithProgressFillTransition = styled(BaseBox)<
 const DeterminateFilledContainer = styled(BoxWithProgressFillTransition)<
   Pick<ProgressBarFilledProps, 'backgroundColor' | 'progress' | 'indeterminateMotionDuration'>
 >(({ backgroundColor, progress }) => ({
-  backgroundColor,
-  height: '100%',
-  width: `${progress}%`,
+  '&&&&&': {
+    backgroundColor,
+    height: '100%',
+    width: `${progress}%`,
+  },
 }));
 
 const DeterminatePulseAnimation = styled(BoxWithProgressFillTransition)<

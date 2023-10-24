@@ -47,16 +47,18 @@ const StyledListItem = styled(ListItemElement)<{
   variant: NonNullable<ListProps['variant']>;
   hasIcon: boolean;
 }>(({ level, theme, variant, hasIcon }) => ({
-  marginLeft: level
-    ? getIn(
-        theme,
-        listItemMarginLeft[
-          `${variant}${variant === 'unordered' && hasIcon ? 'WithIcon' : ''}` as NonNullable<
-            ListProps['variant'] | 'unorderedWithIcon'
-          >
-        ][level],
-      )
-    : 0,
+  '&&&&&': {
+    marginLeft: level
+      ? getIn(
+          theme,
+          listItemMarginLeft[
+            `${variant}${variant === 'unordered' && hasIcon ? 'WithIcon' : ''}` as NonNullable<
+              ListProps['variant'] | 'unorderedWithIcon'
+            >
+          ][level],
+        )
+      : 0,
+  },
 }));
 
 const ListItemContentChildren = ({

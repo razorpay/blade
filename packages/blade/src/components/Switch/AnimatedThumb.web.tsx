@@ -14,20 +14,22 @@ const AnimatedThumb = styled(BaseBox)<AnimatedThumbProps>(
     // offset the thumb x% left because we change the width and width changes from the center origin of thumb
     const offset = isChecked ? '-39%' : '12.5%';
     return css`
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      height: 100%;
-      position: relative;
-      will-change: transform, left;
-      width: ${isPressed ? '125%' : '100%'};
-      left: ${isPressed ? offset : '0%'};
-      transform: translateX(${isChecked ? '100%' : '0%'});
-      transition: ${duration};
-      border-radius: ${makeBorderSize(theme.border.radius.max)};
-      animation-duration: ${duration};
-      background-color: ${backgroundColor};
+      &&&&& {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        height: 100%;
+        position: relative;
+        will-change: transform, left;
+        width: ${isPressed ? '125%' : '100%'};
+        left: ${isPressed ? offset : '0%'};
+        transform: translateX(${isChecked ? '100%' : '0%'});
+        transition: ${duration};
+        border-radius: ${makeBorderSize(theme.border.radius.max)};
+        animation-duration: ${duration};
+        background-color: ${backgroundColor};
+      }
     `;
   },
 );

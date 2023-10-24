@@ -26,7 +26,7 @@ const StyledBaseText = styled.div.withConfig({
   }) => {
     const styledPropsCSSObject = useStyledProps(props);
     return {
-      '&&&': {
+      '&&&&&': {
         ...getBaseTextStyles({
           color,
           fontFamily,

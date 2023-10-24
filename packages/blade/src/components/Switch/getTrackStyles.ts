@@ -32,20 +32,22 @@ const getTrackStyles = ({
     : makeSpace(getIn(theme, heightToken));
 
   return {
-    pointerEvents: 'none',
-    position: 'relative',
-    display: 'flex',
-    alignItems: 'center',
-    margin: makeSpace(theme.spacing[1]),
-    padding: makeSpace(theme.spacing[1]),
-    width,
-    height,
-    borderRadius: makeSize(theme.border.radius.max),
-    backgroundColor,
-    transitionTimingFunction: `${theme.motion.easing.standard.effective}`,
-    transitionDuration: isReactNative()
-      ? undefined
-      : `${makeMotionTime(theme.motion.duration['2xquick'])}`,
+    '&&&&&': {
+      pointerEvents: 'none',
+      position: 'relative',
+      display: 'flex',
+      alignItems: 'center',
+      margin: makeSpace(theme.spacing[1]),
+      padding: makeSpace(theme.spacing[1]),
+      width,
+      height,
+      borderRadius: makeSize(theme.border.radius.max),
+      backgroundColor,
+      transitionTimingFunction: `${theme.motion.easing.standard.effective}`,
+      transitionDuration: isReactNative()
+        ? undefined
+        : `${makeMotionTime(theme.motion.duration['2xquick'])}`,
+    },
   };
 };
 

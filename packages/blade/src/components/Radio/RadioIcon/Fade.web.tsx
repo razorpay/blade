@@ -37,7 +37,9 @@ const AnimatedFade = styled.div<{ animationType: FlattenSimpleInterpolation | nu
     animationType === null
       ? ''
       : css`
-          ${animationType}
+          &&&&& {
+            ${animationType}
+          }
         `,
 );
 

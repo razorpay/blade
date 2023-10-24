@@ -88,15 +88,17 @@ const getCodeFontSizeAndLineHeight = (
 const CodeContainer = styled(BaseBox)<CodeContainerProps>((props) => {
   const padding = `${makeSpace(props.theme.spacing[0])} ${makeSpace(props.theme.spacing[2])}`;
   return {
-    padding,
-    backgroundColor: props.isHighlighted
-      ? props.theme.colors.brand.gray.a100.lowContrast
-      : undefined,
-    borderRadius: props.theme.border.radius.medium,
-    display: isPlatformWeb ? 'inline-block' : 'flex',
-    alignSelf: isPlatformWeb ? undefined : 'center',
-    verticalAlign: 'middle',
-    lineHeight: makeTypographySize(props.theme.typography.lineHeights[0]),
+    '&&&&&': {
+      padding,
+      backgroundColor: props.isHighlighted
+        ? props.theme.colors.brand.gray.a100.lowContrast
+        : undefined,
+      borderRadius: props.theme.border.radius.medium,
+      display: isPlatformWeb ? 'inline-block' : 'flex',
+      alignSelf: isPlatformWeb ? undefined : 'center',
+      verticalAlign: 'middle',
+      lineHeight: makeTypographySize(props.theme.typography.lineHeights[0]),
+    },
   };
 });
 

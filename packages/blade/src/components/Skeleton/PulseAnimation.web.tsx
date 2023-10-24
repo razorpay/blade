@@ -42,15 +42,17 @@ const PulseAnimation = styled(BaseBox)<{ contrast: 'low' | 'high' }>(({ theme, c
   const easing = castWebType(theme.motion.easing.standard.effective);
 
   return css`
-    opacity: 0;
-    background-color: ${theme.colors.brand.gray.a100[`${contrast}Contrast`]};
-    animation-name: ${fadeInKeyframes()}, ${pulseKeyframes({ contrast, theme })};
-    animation-duration: ${duration}, ${totalDuration};
-    animation-delay: 0ms, ${duration};
-    animation-timing-function: ${easing}, ${easing};
-    animation-iteration-count: 1, infinite;
-    animation-direction: normal, alternate;
-    animation-fill-mode: forwards;
+    &&&&& {
+      opacity: 0;
+      background-color: ${theme.colors.brand.gray.a100[`${contrast}Contrast`]};
+      animation-name: ${fadeInKeyframes()}, ${pulseKeyframes({ contrast, theme })};
+      animation-duration: ${duration}, ${totalDuration};
+      animation-delay: 0ms, ${duration};
+      animation-timing-function: ${easing}, ${easing};
+      animation-iteration-count: 1, infinite;
+      animation-direction: normal, alternate;
+      animation-fill-mode: forwards;
+    }
   `;
 });
 

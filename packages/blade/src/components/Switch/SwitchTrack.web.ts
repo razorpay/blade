@@ -6,7 +6,9 @@ import BaseBox from '~components/Box/BaseBox';
 const SwitchTrack = styled(BaseBox)<TrackProps>(
   ({ theme, size, deviceType, isDisabled, isChecked }) => {
     return {
-      ...getTrackStyles({ theme, size, deviceType, isDisabled, isChecked }),
+      '&&&&&': {
+        ...getTrackStyles({ theme, size, deviceType, isDisabled, isChecked }),
+      },
     };
   },
 );

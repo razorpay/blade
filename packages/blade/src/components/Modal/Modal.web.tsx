@@ -53,7 +53,7 @@ const exit = keyframes`
 
 const ModalContent = styled(BaseBox)<{ isVisible: boolean }>(({ isVisible, theme }) => {
   return css`
-    &&& {
+    &&&&& {
       box-shadow: ${theme.elevation.highRaised};
       position: fixed;
       transform: translate(-50%, -50%);

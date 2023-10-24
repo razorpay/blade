@@ -50,13 +50,17 @@ type ListProps = ListWithIconProps | ListWithoutIconProps;
 
 const StyledOrderedList = styled(OrderedList)<{ marginTop?: DotNotationSpacingStringToken }>(
   ({ marginTop, theme }) => ({
-    marginTop: marginTop ? makeSpace(getIn(theme, marginTop)) : undefined,
+    '&&&&&': {
+      marginTop: marginTop ? makeSpace(getIn(theme, marginTop)) : undefined,
+    },
   }),
 );
 
 const StyledUnorderedList = styled(UnorderedList)<{ marginTop?: DotNotationSpacingStringToken }>(
   ({ marginTop, theme }) => ({
-    marginTop: marginTop ? makeSpace(getIn(theme, marginTop)) : undefined,
+    '&&&&&': {
+      marginTop: marginTop ? makeSpace(getIn(theme, marginTop)) : undefined,
+    },
   }),
 );
 
