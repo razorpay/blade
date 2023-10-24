@@ -53,15 +53,17 @@ const exit = keyframes`
 
 const ModalContent = styled(BaseBox)<{ isVisible: boolean }>(({ isVisible, theme }) => {
   return css`
-    box-shadow: ${theme.elevation.highRaised};
-    position: fixed;
-    transform: translate(-50%, -50%);
-    opacity: ${isVisible ? 1 : 0};
-    animation: ${isVisible ? entry : exit}
-      ${castWebType(makeMotionTime(theme.motion.duration.xmoderate))}
-      ${isVisible
-        ? castWebType(theme.motion.easing.entrance.revealing)
-        : castWebType(theme.motion.easing.exit.revealing)};
+    &&& {
+      box-shadow: ${theme.elevation.highRaised};
+      position: fixed;
+      transform: translate(-50%, -50%);
+      opacity: ${isVisible ? 1 : 0};
+      animation: ${isVisible ? entry : exit}
+        ${castWebType(makeMotionTime(theme.motion.duration.xmoderate))}
+        ${isVisible
+          ? castWebType(theme.motion.easing.entrance.revealing)
+          : castWebType(theme.motion.easing.exit.revealing)};
+    }
   `;
 });
 

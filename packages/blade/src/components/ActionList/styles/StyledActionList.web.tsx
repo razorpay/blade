@@ -5,7 +5,9 @@ import BaseBox from '~components/Box/BaseBox';
 
 const StyledActionList = styled(BaseBox)<StyledActionListProps>((props) => {
   return {
-    ...getBaseActionListStyles(props),
+    '&&&&&': {
+      ...getBaseActionListStyles(props),
+    },
   };
 });
 

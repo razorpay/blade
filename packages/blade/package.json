@@ -135,7 +135,6 @@
     "@codesandbox/sandpack-react": "1.16.0",
     "@gorhom/bottom-sheet": "4.4.6",
     "@gorhom/portal": "1.0.14",
-    "@quickbaseoss/babel-plugin-styled-components-css-namespace": "1.0.1",
     "@react-native/metro-config": "0.72.9",
     "@react-native-async-storage/async-storage": "1.19.1",
     "@react-native-community/datetimepicker": "5.0.1",

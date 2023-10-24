@@ -8,8 +8,10 @@ const getBaseListBoxWrapperStyles = (props: {
   isInBottomSheet: boolean;
 }): CSSObject => {
   return {
-    maxHeight: props.isInBottomSheet ? undefined : makeSize(size[300]),
-    padding: props.isInBottomSheet ? undefined : makeSize(props.theme.spacing[3]),
+    '&&&&&': {
+      maxHeight: props.isInBottomSheet ? undefined : makeSize(size[300]),
+      padding: props.isInBottomSheet ? undefined : makeSize(props.theme.spacing[3]),
+    },
   };
 };
 

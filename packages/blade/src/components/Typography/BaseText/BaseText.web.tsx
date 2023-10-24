@@ -26,19 +26,21 @@ const StyledBaseText = styled.div.withConfig({
   }) => {
     const styledPropsCSSObject = useStyledProps(props);
     return {
-      ...getBaseTextStyles({
-        color,
-        fontFamily,
-        fontSize,
-        fontWeight,
-        fontStyle,
-        textDecorationLine,
-        numberOfLines,
-        lineHeight,
-        textAlign,
-        theme: props.theme,
-      }),
-      ...styledPropsCSSObject,
+      '&&&': {
+        ...getBaseTextStyles({
+          color,
+          fontFamily,
+          fontSize,
+          fontWeight,
+          fontStyle,
+          textDecorationLine,
+          numberOfLines,
+          lineHeight,
+          textAlign,
+          theme: props.theme,
+        }),
+        ...styledPropsCSSObject,
+      },
     };
   },
 );

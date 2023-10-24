@@ -41,11 +41,13 @@ const getCommonAccordionButtonStyles = (
   const { theme } = props;
 
   return {
-    padding: theme.spacing[5],
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    '&&&&&': {
+      padding: theme.spacing[5],
+      display: 'flex',
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+    },
   };
 };
 

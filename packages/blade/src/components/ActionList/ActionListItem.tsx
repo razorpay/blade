@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import React from 'react';
-import styled from 'styled-components';
 import { StyledActionListItem } from './styles/StyledActionListItem';
 import { componentIds } from './componentIds';
 import type { StyledActionListItemProps } from './styles/getBaseActionListItemStyles';
@@ -87,11 +86,6 @@ const ActionListItemContext = React.createContext<{
   isDisabled?: ActionListItemProps['isDisabled'];
 }>({});
 
-const StyledActionListSectionTitle = styled(BaseBox)((props) => ({
-  // @TODO: replace this styled-component with new layout box when we have padding shorthand
-  padding: makeSize(props.theme.spacing[3]),
-}));
-
 type ActionListSectionProps = {
   title: string;
   children: React.ReactNode[] | React.ReactNode;
@@ -151,11 +145,11 @@ const _ActionListSection = ({
     >
       {/* We're announcing title as group label so we can hide this */}
       {isSectionVisible ? (
-        <StyledActionListSectionTitle {...makeAccessible({ hidden: true })}>
+        <BaseBox padding="spacing.3" {...makeAccessible({ hidden: true })}>
           <Text color="surface.text.muted.lowContrast" size="small" weight="bold">
             {title}
           </Text>
-        </StyledActionListSectionTitle>
+        </BaseBox>
       ) : null}
       <BaseBox
         {...makeAccessible({
