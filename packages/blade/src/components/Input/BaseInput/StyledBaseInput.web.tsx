@@ -129,10 +129,6 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
       : undefined,
   };
 
-  // const handleInputClick = (event: React.MouseEvent<HTMLInputElement>): void => {
-  //   handleOnClick?.({ name, value: event });
-  // };
-
   return props.as === 'button' ? (
     <StyledBaseNativeButton
       // @ts-expect-error: TS doesnt understand that this will always be `button`
