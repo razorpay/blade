@@ -173,7 +173,6 @@ describe('<TextInput />', () => {
     const { getByLabelText } = renderWithTheme(<TextInput label={label} onClick={onClick} />);
 
     const input = getByLabelText(label);
-    console.log('input', input);
     await userEvent.click(input);
     //should be called for onClick
     expect(onClick).toHaveBeenCalledTimes(1);
