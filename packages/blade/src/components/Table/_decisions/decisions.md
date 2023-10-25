@@ -303,3 +303,44 @@ const pagination = {
 
 ##### Conclusion
 [To be concluded]
+
+## Table Library Evaluation
+### Why a library?
+- The primary reason for using a library is to use a battle-tested solution that has been used by a lot of people and has been proven to work well instead of figuring out all the edge cases ourselves
+- On a long term we could evaluate swapping it out and building our own solution when the bandwidth and requirements align but until then using an open source library would be the best option
+
+### What are we looking for in a library?
+We had a few requirements that we were looking for in a library:
+- Well maintained and has a good community around it
+- Reasonable bundle size
+- Supports all the features that we need today and in the future (including features marked out of scope)
+- Flexible styling to ensure we can match the Razorpay's design language
+- Flexible API to ensure we can build both the Composable & Compact APIs
+
+### Libraries evaluated
+While evaluating multiple libraries we identified 3 categories: 
+- Heavy sized libraries with every feature under the sun
+- Medium size libraries with all of the features we could need plus some more
+- Small size libraries with all the core features we could need
+
+#### Heavy sized libraries
+- [AG Grid](https://www.ag-grid.com/) is the best example of a heavy sized library. It has a lot of features and is very well maintained. However, it is also very heavy and has a lot of features that we don't need.
+- As of today, AG Grid's bundle size is 75kb (15kb gzipped) but along with this we also need to install some additional dependency libraries like ag-grid-community which would eventually increase the overall bundle size
+- Replicating the Composable API would be a challenging task with React Table since it internally uses API similar to the Compact API. We would have to build a lot of abstractions to ensure we can build the Composable API on top of the Compact API.
+- AG Grid is possibly the most battle-tested library but has a ton of features that we won't need and hence would be an overkill for us as of now
+
+#### Medium sized libraries
+- [Tanstack's React Table](https://react-table.tanstack.com/) is the best example of a medium sized library. It has all the features we need and is very well maintained. However, it is also relatively heavy and has a lot of features that we don't need.
+- As of today, React Table's bundle size is 60kb (14kb gzipped).
+- Tanstack's React  Table has been around for a longer duration and is extremely well maintained. It has relatively less features than AG Grid but also has a lot of features that we don't need.
+- Tanstack's React Table is built in a framework agnostic manner which meant they had to use a lot of abstractions to ensure it works well with all the frameworks. This makes it harder to understand, maintain and extend the library.
+- Replicating the Composable API would be a challenging task with React Table since it internally uses API similar to the Compact API. We would have to build a lot of abstractions to ensure we can build the Composable API on top of the Compact API.
+- React Table is possibly our 2nd best option if we ever need more complex tables in the future but as of now it would be an overkill for us
+
+#### Small sized libraries
+- [React Table Library (@table-library/react-table-library)](https://github.com/table-library/react-table-library) is the best example of a small sized library. It has all the features we need and is relatively well maintained.
+- It contains all the features we need today as well as the ones we can forsee needing in the future
+- As of today, React Table Library's bundle size is 23kb (7kb gzipped).
+- React Table Library has a Composable API using which we can build our Composable as well as Compact API
+- React Table Library also exposes a minimal Compact API but we cannot use that directly to build our Compact API since there isn't a parity between their own Composable & Compact APIs
+- React Table Library is our best option as of today since it has all the features we could need and is relatively lightweight
