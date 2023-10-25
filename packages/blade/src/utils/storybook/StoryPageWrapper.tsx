@@ -9,6 +9,8 @@ import { Alert } from '~components/Alert';
 import { BladeProvider } from '~components/BladeProvider';
 import { paymentTheme } from '~tokens/theme';
 import { Box } from '~components/Box';
+import { Link } from '~components/Link';
+import { Text } from '~components/Typography';
 
 type StoryPageWrapperTypes = {
   figmaURL?: {
@@ -22,6 +24,10 @@ type StoryPageWrapperTypes = {
   note?: React.ReactChild;
   showStorybookControls?: boolean;
   showArgsTable?: boolean;
+  /**
+   * Use this to override default API decision link generated from componentName
+   */
+  apiDecisionLink?: string | null;
   /**
    * Use this to override default imports
    */
@@ -116,6 +122,20 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
             <>
               <BaseBox id="properties-ref">
                 <Title>Properties</Title>
+                {props.apiDecisionLink === '' || props.apiDecisionLink === null ? null : (
+                  <Text marginY="spacing.5">
+                    Check out{' '}
+                    <Link
+                      target="_blank"
+                      href={
+                        props.apiDecisionLink ??
+                        `https://github.com/razorpay/blade/blob/master/packages/blade/src/components/${props.componentName}/_decisions/decisions.md`
+                      }
+                    >
+                      API Decisions for {props.componentName}
+                    </Link>
+                  </Text>
+                )}
                 {props.propsDescription ? (
                   // adding box with surface background so that when theme of storybook is changed, the alert doesn't become invisible
                   <Box backgroundColor="surface.background.level3.lowContrast">

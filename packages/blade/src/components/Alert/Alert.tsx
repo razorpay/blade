@@ -161,8 +161,9 @@ const Alert = ({
   const contrastType = `${contrast}Contrast` as const;
   const iconSize = isFullWidth ? 'large' : 'medium';
   const textSize = isFullWidth ? 'medium' : 'small';
+  const alertColor = color ?? intent;
 
-  const Icon = intentIconMap[intent];
+  const Icon = intentIconMap[alertColor];
   let iconOffset: DotNotationSpacingStringToken = 'spacing.1';
 
   // certain special cases below needs special care for near perfect alignment
@@ -186,7 +187,7 @@ const Alert = ({
 
   const icon = (
     <BaseBox marginTop={iconOffset} display="flex">
-      <Icon color={`feedback.icon.${intent}.${contrastType}`} size={iconSize} />
+      <Icon color={`feedback.icon.${alertColor}.${contrastType}`} size={iconSize} />
     </BaseBox>
   );
 
@@ -220,7 +221,7 @@ const Alert = ({
       <BaseButton
         size={textSize}
         onClick={actions.primary.onClick}
-        color={color || intent}
+        color={alertColor}
         variant={contrast === 'high' ? 'primary' : 'secondary'}
       >
         {actions.primary.text}
@@ -252,7 +253,7 @@ const Alert = ({
     >
       <BaseLink
         size={textSize}
-        color={contrast === 'high' ? 'white' : intent}
+        color={contrast === 'high' ? 'white' : alertColor}
         {...secondaryActionParams}
       >
         {actions.secondary.text}
@@ -299,9 +300,10 @@ const Alert = ({
 
   const a11yProps = makeAccessible({
     // React Native doesn't has status as role
-    role: isReactNative || intent === 'negative' || intent === 'notice' ? 'alert' : 'status',
+    role:
+      isReactNative || alertColor === 'negative' || alertColor === 'notice' ? 'alert' : 'status',
     // override the implicit live region of role `alert`
-    ...(intent === 'notice' && { liveRegion: 'polite' }),
+    ...(alertColor === 'notice' && { liveRegion: 'polite' }),
   });
 
   if (!isVisible) {
@@ -315,7 +317,7 @@ const Alert = ({
       {...getStyledProps(styledProps)}
     >
       <StyledAlert
-        intent={intent}
+        color={alertColor}
         contrastType={contrastType}
         isFullWidth={isFullWidth}
         isDesktop={isDesktop}

@@ -32,6 +32,7 @@ const getCheckboxIconWrapperStyles = ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    flexShrink: 0,
     width: makeSpace(checkboxSizes.icon[size].width),
     height: makeSpace(checkboxSizes.icon[size].height),
     borderWidth: makeBorderSize(theme.border.width.thick),

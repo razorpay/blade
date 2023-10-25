@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 10.15.1
+
+### Patch Changes
+
+- f9d16dc4: fix(Alert): correct color prop behavior
+
 ## 10.15.0
 
 ### Minor Changes
