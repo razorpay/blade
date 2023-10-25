@@ -1,5 +1,5 @@
 import debounce from 'lodash/debounce';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import styled from 'styled-components';
 import { Box } from '~components/Box';
 import { IconButton } from '~components/Button/IconButton';
