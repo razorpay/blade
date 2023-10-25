@@ -1,7 +1,6 @@
 import type { SelectChevronIconProps } from './types';
+import { Chevron } from './Chevron';
 import BaseBox from '~components/Box/BaseBox';
-import { ChevronDownIcon, ChevronUpIcon } from '~components/Icons';
-
 const InputChevronIcon = (props: SelectChevronIconProps): React.ReactElement => {
   return (
     <BaseBox
@@ -11,16 +10,7 @@ const InputChevronIcon = (props: SelectChevronIconProps): React.ReactElement => 
       alignItems="center"
       onClick={props.onClick}
     >
-      <ChevronDownIcon
-        display={props.isOpen ? 'none' : 'flex'}
-        color={`surface.text.${props.isDisabled ? 'placeholder' : 'normal'}.lowContrast`}
-        size="medium"
-      />
-      <ChevronUpIcon
-        display={props.isOpen ? 'flex' : 'none'}
-        color={`surface.text.${props.isDisabled ? 'placeholder' : 'normal'}.lowContrast`}
-        size="medium"
-      />
+      <Chevron isOpen={props.isOpen} isDisabled={props.isDisabled} />
     </BaseBox>
   );
 };
