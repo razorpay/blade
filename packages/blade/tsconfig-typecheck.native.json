@@ -9,7 +9,7 @@
     "**/**.web.tsx",
     "**/**.web.test.ts",
     "**/**.web.test.tsx",
-    "**/ThemePlayground/**.tsx"
+    "**/ThemePlayground/**/**.tsx"
   ],
   "compilerOptions": {
     "noEmit": true,
