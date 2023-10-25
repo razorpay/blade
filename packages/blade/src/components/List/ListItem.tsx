@@ -23,6 +23,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { getPlatformType } from '~utils/getPlatformType';
 import { throwBladeError } from '~utils/logger';
+import { isReactNative } from '~utils';
 
 type ListItemProps = {
   /**
@@ -46,18 +47,30 @@ const StyledListItem = styled(ListItemElement)<{
   level?: number;
   variant: NonNullable<ListProps['variant']>;
   hasIcon: boolean;
-}>(({ level, theme, variant, hasIcon }) => ({
-  marginLeft: level
-    ? getIn(
-        theme,
-        listItemMarginLeft[
-          `${variant}${variant === 'unordered' && hasIcon ? 'WithIcon' : ''}` as NonNullable<
-            ListProps['variant'] | 'unorderedWithIcon'
-          >
-        ][level],
-      )
-    : 0,
-}));
+}>(({ level, theme, variant, hasIcon }) => {
+  const listItemStyles = {
+    marginLeft: level
+      ? getIn(
+          theme,
+          listItemMarginLeft[
+            `${variant}${variant === 'unordered' && hasIcon ? 'WithIcon' : ''}` as NonNullable<
+              ListProps['variant'] | 'unorderedWithIcon'
+            >
+          ][level],
+        )
+      : 0,
+  };
+
+  if (isReactNative()) {
+    return listItemStyles;
+  }
+
+  return {
+    '&&&&&': {
+      ...listItemStyles,
+    },
+  };
+});
 
 const ListItemContentChildren = ({
   children,

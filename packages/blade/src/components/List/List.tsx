@@ -16,6 +16,7 @@ import { makeSpace } from '~utils/makeSpace';
 import { makeAccessible } from '~utils/makeAccessible';
 import { isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { throwBladeError } from '~utils/logger';
+import { isReactNative } from '~utils';
 
 type ListCommonProps = {
   /**
@@ -49,15 +50,39 @@ type ListWithoutIconProps = ListCommonProps & {
 type ListProps = ListWithIconProps | ListWithoutIconProps;
 
 const StyledOrderedList = styled(OrderedList)<{ marginTop?: DotNotationSpacingStringToken }>(
-  ({ marginTop, theme }) => ({
-    marginTop: marginTop ? makeSpace(getIn(theme, marginTop)) : undefined,
-  }),
+  ({ marginTop, theme }) => {
+    const orderedListStyles = {
+      marginTop: marginTop ? makeSpace(getIn(theme, marginTop)) : undefined,
+    };
+
+    if (isReactNative()) {
+      return orderedListStyles;
+    }
+
+    return {
+      '&&&&&': {
+        ...orderedListStyles,
+      },
+    };
+  },
 );
 
 const StyledUnorderedList = styled(UnorderedList)<{ marginTop?: DotNotationSpacingStringToken }>(
-  ({ marginTop, theme }) => ({
-    marginTop: marginTop ? makeSpace(getIn(theme, marginTop)) : undefined,
-  }),
+  ({ marginTop, theme }) => {
+    const unorderedListStyles = {
+      marginTop: marginTop ? makeSpace(getIn(theme, marginTop)) : undefined,
+    };
+
+    if (isReactNative()) {
+      return unorderedListStyles;
+    }
+
+    return {
+      '&&&&&': {
+        ...unorderedListStyles,
+      },
+    };
+  },
 );
 
 /**
