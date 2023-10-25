@@ -98,9 +98,11 @@ const Tabs = ({
   });
 
   const setIndex = React.useCallback(
-    (index: number) => {
+    (index: number, skipUpdate = false) => {
       const value = getRouteValueFromIndex({ index, routes });
-      setSelectedValue(() => value);
+      // If skipUpdate is true, useControlledState will not call the onChange callback
+      // This is useful when we want to set the initial value
+      setSelectedValue(() => value, skipUpdate);
     },
     [routes, setSelectedValue],
   );
@@ -115,13 +117,12 @@ const Tabs = ({
     size,
     variant,
     isFullWidthTabItem,
-    setSelectedValue: setIndex,
   };
 
   // Set initial value
   React.useLayoutEffect(() => {
     if (selectedValue) return;
-    setIndex(0);
+    setIndex(0, true);
   }, [selectedValue, setIndex]);
 
   const renderTabLabel = React.useCallback(

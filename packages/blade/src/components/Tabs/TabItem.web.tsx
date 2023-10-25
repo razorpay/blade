@@ -140,7 +140,7 @@ const TabItem = ({
           disabled={isDisabled}
           {...interactionProps}
           onClick={(e: React.MouseEvent) => {
-            setSelectedValue(() => value);
+            setSelectedValue?.(() => value);
             onClick?.(e);
           }}
           {...makeAccessible({
