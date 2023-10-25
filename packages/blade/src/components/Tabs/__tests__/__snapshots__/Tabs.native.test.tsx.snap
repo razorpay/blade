@@ -115,6 +115,8 @@ exports[`Tabs should render 1`] = `
                 "index": 0,
                 "key": "payments",
                 "leading": undefined,
+                "onClick": undefined,
+                "testID": undefined,
                 "title": "Payments",
                 "trailing": undefined,
                 "value": "payments",
@@ -123,6 +125,8 @@ exports[`Tabs should render 1`] = `
                 "index": 1,
                 "key": "refunds",
                 "leading": undefined,
+                "onClick": undefined,
+                "testID": undefined,
                 "title": "Refunds",
                 "trailing": undefined,
                 "value": "refunds",
@@ -254,7 +258,7 @@ exports[`Tabs should render 1`] = `
                       collapsable={false}
                       style={
                         {
-                          "opacity": -1,
+                          "opacity": 0,
                         }
                       }
                     >
@@ -338,7 +342,7 @@ exports[`Tabs should render 1`] = `
                         {
                           "bottom": 0,
                           "left": 0,
-                          "opacity": 2,
+                          "opacity": 1,
                           "position": "absolute",
                           "right": 0,
                           "top": 0,
@@ -510,7 +514,7 @@ exports[`Tabs should render 1`] = `
                       collapsable={false}
                       style={
                         {
-                          "opacity": 2,
+                          "opacity": 1,
                         }
                       }
                     >
@@ -594,7 +598,7 @@ exports[`Tabs should render 1`] = `
                         {
                           "bottom": 0,
                           "left": 0,
-                          "opacity": -1,
+                          "opacity": 0,
                           "position": "absolute",
                           "right": 0,
                           "top": 0,
@@ -931,6 +935,8 @@ exports[`Tabs should render with filled variant 1`] = `
                 "index": 0,
                 "key": "payments",
                 "leading": undefined,
+                "onClick": undefined,
+                "testID": undefined,
                 "title": "Payments",
                 "trailing": undefined,
                 "value": "payments",
@@ -939,6 +945,8 @@ exports[`Tabs should render with filled variant 1`] = `
                 "index": 1,
                 "key": "refunds",
                 "leading": undefined,
+                "onClick": undefined,
+                "testID": undefined,
                 "title": "Refunds",
                 "trailing": undefined,
                 "value": "refunds",
@@ -1070,7 +1078,7 @@ exports[`Tabs should render with filled variant 1`] = `
                       collapsable={false}
                       style={
                         {
-                          "opacity": -1,
+                          "opacity": 0,
                         }
                       }
                     >
@@ -1153,7 +1161,7 @@ exports[`Tabs should render with filled variant 1`] = `
                         {
                           "bottom": 0,
                           "left": 0,
-                          "opacity": 2,
+                          "opacity": 1,
                           "position": "absolute",
                           "right": 0,
                           "top": 0,
@@ -1364,7 +1372,7 @@ exports[`Tabs should render with filled variant 1`] = `
                       collapsable={false}
                       style={
                         {
-                          "opacity": 2,
+                          "opacity": 1,
                         }
                       }
                     >
@@ -1447,7 +1455,7 @@ exports[`Tabs should render with filled variant 1`] = `
                         {
                           "bottom": 0,
                           "left": 0,
-                          "opacity": -1,
+                          "opacity": 0,
                           "position": "absolute",
                           "right": 0,
                           "top": 0,
@@ -1821,6 +1829,8 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
                 "index": 0,
                 "key": "payments",
                 "leading": undefined,
+                "onClick": undefined,
+                "testID": undefined,
                 "title": "Payments",
                 "trailing": undefined,
                 "value": "payments",
@@ -1829,6 +1839,8 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
                 "index": 1,
                 "key": "refunds",
                 "leading": undefined,
+                "onClick": undefined,
+                "testID": undefined,
                 "title": "Refunds",
                 "trailing": undefined,
                 "value": "refunds",
@@ -1960,7 +1972,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
                       collapsable={false}
                       style={
                         {
-                          "opacity": -1,
+                          "opacity": 0,
                         }
                       }
                     >
@@ -2043,7 +2055,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
                         {
                           "bottom": 0,
                           "left": 0,
-                          "opacity": 2,
+                          "opacity": 1,
                           "position": "absolute",
                           "right": 0,
                           "top": 0,
@@ -2214,7 +2226,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
                       collapsable={false}
                       style={
                         {
-                          "opacity": 2,
+                          "opacity": 1,
                         }
                       }
                     >
@@ -2297,7 +2309,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
                         {
                           "bottom": 0,
                           "left": 0,
-                          "opacity": -1,
+                          "opacity": 0,
                           "position": "absolute",
                           "right": 0,
                           "top": 0,
@@ -2522,7 +2534,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
 </View>
 `;
 
-exports[`Tabs should render with size 1`] = `
+exports[`Tabs should render with large size 1`] = `
 <View
   style={
     {
@@ -2637,6 +2649,8 @@ exports[`Tabs should render with size 1`] = `
                 "index": 0,
                 "key": "payments",
                 "leading": undefined,
+                "onClick": undefined,
+                "testID": undefined,
                 "title": "Payments",
                 "trailing": undefined,
                 "value": "payments",
@@ -2645,6 +2659,8 @@ exports[`Tabs should render with size 1`] = `
                 "index": 1,
                 "key": "refunds",
                 "leading": undefined,
+                "onClick": undefined,
+                "testID": undefined,
                 "title": "Refunds",
                 "trailing": undefined,
                 "value": "refunds",
@@ -2776,7 +2792,7 @@ exports[`Tabs should render with size 1`] = `
                       collapsable={false}
                       style={
                         {
-                          "opacity": -1,
+                          "opacity": 0,
                         }
                       }
                     >
@@ -2860,7 +2876,7 @@ exports[`Tabs should render with size 1`] = `
                         {
                           "bottom": 0,
                           "left": 0,
-                          "opacity": 2,
+                          "opacity": 1,
                           "position": "absolute",
                           "right": 0,
                           "top": 0,
@@ -3032,7 +3048,7 @@ exports[`Tabs should render with size 1`] = `
                       collapsable={false}
                       style={
                         {
-                          "opacity": 2,
+                          "opacity": 1,
                         }
                       }
                     >
@@ -3116,7 +3132,7 @@ exports[`Tabs should render with size 1`] = `
                         {
                           "bottom": 0,
                           "left": 0,
-                          "opacity": -1,
+                          "opacity": 0,
                           "position": "absolute",
                           "right": 0,
                           "top": 0,
@@ -3193,6 +3209,832 @@ exports[`Tabs should render with size 1`] = `
                             }
                           >
                             Refunds
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </RCTScrollView>
+      </View>
+    </View>
+    <RNCViewPager
+      collapsable={false}
+      initialPage={0}
+      keyboardDismissMode="on-drag"
+      layout={
+        {
+          "height": 0,
+          "width": 750,
+        }
+      }
+      layoutDirection="ltr"
+      onMoveShouldSetResponderCapture={[Function]}
+      onPageScroll={[Function]}
+      onPageScrollStateChanged={[Function]}
+      onPageSelected={[Function]}
+      scrollEnabled={true}
+      style={
+        {
+          "flex": 1,
+        }
+      }
+    >
+      <View
+        collapsable={false}
+        style={
+          {
+            "bottom": 0,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          }
+        }
+      >
+        <View
+          accessibilityElementsHidden={false}
+          importantForAccessibility="auto"
+          style={
+            [
+              {
+                "flex": 1,
+                "overflow": "hidden",
+              },
+              {
+                "width": 750,
+              },
+              [
+                undefined,
+                {
+                  "bottom": 0,
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                },
+              ],
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            color="surface.text.normal.lowContrast"
+            data-blade-component="text"
+            fontFamily="text"
+            fontSize={100}
+            fontStyle="normal"
+            fontWeight="regular"
+            lineHeight={100}
+            style={
+              [
+                {
+                  "color": "hsla(217, 56%, 17%, 1)",
+                  "fontFamily": "Lato",
+                  "fontSize": 14,
+                  "fontStyle": "normal",
+                  "fontWeight": "400",
+                  "lineHeight": 20,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+          >
+            Payments Panel
+          </Text>
+        </View>
+      </View>
+      <View
+        collapsable={false}
+        style={
+          {
+            "bottom": 0,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          }
+        }
+      >
+        <View
+          accessibilityElementsHidden={true}
+          importantForAccessibility="no-hide-descendants"
+          style={
+            [
+              {
+                "flex": 1,
+                "overflow": "hidden",
+              },
+              {
+                "width": 750,
+              },
+              [
+                undefined,
+                {
+                  "bottom": 0,
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                },
+              ],
+            ]
+          }
+        />
+      </View>
+    </RNCViewPager>
+  </View>
+</View>
+`;
+
+exports[`Tabs should switch tabs 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    onLayout={[Function]}
+    style={
+      [
+        {
+          "flex": 1,
+          "overflow": "hidden",
+        },
+        undefined,
+      ]
+    }
+  >
+    <View
+      collapsable={false}
+      onLayout={[Function]}
+      style={
+        {
+          "backgroundColor": "transparent",
+          "elevation": 4,
+          "shadowColor": "transparent",
+          "shadowOffset": {
+            "height": 0.5,
+            "width": 0,
+          },
+          "shadowOpacity": 0,
+          "shadowRadius": 0.5,
+          "zIndex": 1,
+        }
+      }
+    >
+      <View
+        collapsable={false}
+        pointerEvents="none"
+        style={
+          {
+            "bottom": 0,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+            "transform": [
+              {
+                "translateX": -0,
+              },
+            ],
+            "width": "80%",
+          }
+        }
+      >
+        <View
+          collapsable={false}
+          style={
+            {
+              "backgroundColor": "hsla(218, 89%, 51%, 1)",
+              "bottom": 0,
+              "height": 1.5,
+              "left": "0%",
+              "opacity": 0,
+              "pointerEvents": "none",
+              "position": "absolute",
+              "right": 0,
+              "transform": [
+                {
+                  "scaleX": 0,
+                },
+                {
+                  "translateX": 0.5,
+                },
+              ],
+              "width": 1,
+            }
+          }
+        />
+      </View>
+      <View
+        style={
+          {
+            "overflow": "scroll",
+          }
+        }
+      >
+        <RCTScrollView
+          accessibilityRole="tablist"
+          alwaysBounceHorizontal={false}
+          automaticallyAdjustContentInsets={false}
+          collapsable={false}
+          contentContainerStyle={
+            [
+              {
+                "flexDirection": "row",
+                "flexWrap": "nowrap",
+              },
+              {
+                "width": "80%",
+              },
+              {
+                "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
+                "borderBottomWidth": 1.5,
+              },
+            ]
+          }
+          data={
+            [
+              {
+                "index": 0,
+                "key": "payments",
+                "leading": undefined,
+                "onClick": undefined,
+                "testID": "payments",
+                "title": "Payments Tab",
+                "trailing": undefined,
+                "value": "payments",
+              },
+              {
+                "index": 1,
+                "key": "refunds",
+                "leading": undefined,
+                "onClick": [Function],
+                "testID": "refunds",
+                "title": "Refunds Tab",
+                "trailing": undefined,
+                "value": "refunds",
+              },
+            ]
+          }
+          getItem={[Function]}
+          getItemCount={[Function]}
+          horizontal={true}
+          initialNumToRender={10}
+          keyExtractor={[Function]}
+          keyboardShouldPersistTaps="handled"
+          onContentSizeChange={[Function]}
+          onLayout={[Function]}
+          onMomentumScrollBegin={[Function]}
+          onMomentumScrollEnd={[Function]}
+          onScroll={[Function]}
+          onScrollBeginDrag={[Function]}
+          onScrollEndDrag={[Function]}
+          onViewableItemsChanged={[Function]}
+          overScrollMode="never"
+          removeClippedSubviews={false}
+          renderItem={[Function]}
+          scrollEnabled={true}
+          scrollEventThrottle={16}
+          scrollsToTop={false}
+          showsHorizontalScrollIndicator={false}
+          showsVerticalScrollIndicator={false}
+          stickyHeaderIndices={[]}
+          style={{}}
+          viewabilityConfigCallbackPairs={
+            [
+              {
+                "onViewableItemsChanged": [Function],
+                "viewabilityConfig": undefined,
+              },
+            ]
+          }
+        >
+          <View>
+            <View
+              onFocusCapture={[Function]}
+              onLayout={[Function]}
+              style={
+                [
+                  {
+                    "flexDirection": "row",
+                  },
+                  null,
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Payments Tab"
+                accessibilityRole="tab"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": true,
+                  }
+                }
+                accessibilityStates={
+                  [
+                    "selected",
+                  ]
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                delayPressIn={0}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onLayout={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    {
+                      "opacity": 1,
+                    },
+                    [
+                      {
+                        "backgroundColor": "transparent",
+                      },
+                      {
+                        "width": 0,
+                      },
+                    ],
+                  ]
+                }
+                testID="payments"
+              >
+                <View
+                  pointerEvents="none"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "flex": 1,
+                        "justifyContent": "center",
+                        "minHeight": 48,
+                        "padding": 10,
+                      },
+                      {
+                        "margin": 0,
+                        "minHeight": 0,
+                        "padding": 0,
+                      },
+                    ]
+                  }
+                >
+                  <View>
+                    <View
+                      collapsable={false}
+                      style={
+                        {
+                          "opacity": 1,
+                        }
+                      }
+                    >
+                      <View
+                        data-blade-component="base-box"
+                        isFullWidthTabItem={true}
+                        size="medium"
+                        style={
+                          [
+                            {},
+                            {
+                              "alignItems": "center",
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "paddingBottom": 8,
+                              "paddingLeft": 0,
+                              "paddingRight": 0,
+                              "paddingTop": 8,
+                              "width": "100%",
+                            },
+                          ]
+                        }
+                        variant="bordered"
+                      >
+                        <View
+                          alignItems="center"
+                          data-blade-component="box"
+                          display="flex"
+                          flexDirection="row"
+                          gap="spacing.3"
+                          style={
+                            [
+                              {
+                                "alignItems": "center",
+                                "display": "flex",
+                                "flexDirection": "row",
+                                "gap": 8,
+                              },
+                            ]
+                          }
+                        >
+                          <Text
+                            accessible={true}
+                            color="surface.text.muted.lowContrast"
+                            data-blade-component="text"
+                            fontFamily="text"
+                            fontSize={100}
+                            fontStyle="normal"
+                            fontWeight="bold"
+                            lineHeight={100}
+                            style={
+                              [
+                                {
+                                  "color": "hsla(216, 16%, 60%, 1)",
+                                  "fontFamily": "Lato",
+                                  "fontSize": 14,
+                                  "fontStyle": "normal",
+                                  "fontWeight": "700",
+                                  "lineHeight": 20,
+                                  "marginBottom": 0,
+                                  "marginLeft": 0,
+                                  "marginRight": 0,
+                                  "marginTop": 0,
+                                  "paddingBottom": 0,
+                                  "paddingLeft": 0,
+                                  "paddingRight": 0,
+                                  "paddingTop": 0,
+                                  "textDecorationLine": "none",
+                                },
+                              ]
+                            }
+                          >
+                            Payments Tab
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                    <View
+                      collapsable={false}
+                      style={
+                        {
+                          "bottom": 0,
+                          "left": 0,
+                          "opacity": 0,
+                          "position": "absolute",
+                          "right": 0,
+                          "top": 0,
+                        }
+                      }
+                    >
+                      <View
+                        data-blade-component="base-box"
+                        isFullWidthTabItem={true}
+                        size="medium"
+                        style={
+                          [
+                            {},
+                            {
+                              "alignItems": "center",
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "paddingBottom": 8,
+                              "paddingLeft": 0,
+                              "paddingRight": 0,
+                              "paddingTop": 8,
+                              "width": "100%",
+                            },
+                          ]
+                        }
+                        variant="bordered"
+                      >
+                        <View
+                          alignItems="center"
+                          data-blade-component="box"
+                          display="flex"
+                          flexDirection="row"
+                          gap="spacing.3"
+                          style={
+                            [
+                              {
+                                "alignItems": "center",
+                                "display": "flex",
+                                "flexDirection": "row",
+                                "gap": 8,
+                              },
+                            ]
+                          }
+                        >
+                          <Text
+                            accessible={true}
+                            color="brand.primary.500"
+                            data-blade-component="text"
+                            fontFamily="text"
+                            fontSize={100}
+                            fontStyle="normal"
+                            fontWeight="bold"
+                            lineHeight={100}
+                            style={
+                              [
+                                {
+                                  "color": "hsla(218, 89%, 51%, 1)",
+                                  "fontFamily": "Lato",
+                                  "fontSize": 14,
+                                  "fontStyle": "normal",
+                                  "fontWeight": "700",
+                                  "lineHeight": 20,
+                                  "marginBottom": 0,
+                                  "marginLeft": 0,
+                                  "marginRight": 0,
+                                  "marginTop": 0,
+                                  "paddingBottom": 0,
+                                  "paddingLeft": 0,
+                                  "paddingRight": 0,
+                                  "paddingTop": 0,
+                                  "textDecorationLine": "none",
+                                },
+                              ]
+                            }
+                          >
+                            Payments Tab
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <View
+              onFocusCapture={[Function]}
+              onLayout={[Function]}
+              style={
+                [
+                  {
+                    "flexDirection": "row",
+                  },
+                  null,
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Refunds Tab"
+                accessibilityRole="tab"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": false,
+                  }
+                }
+                accessibilityStates={[]}
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                delayPressIn={0}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onLayout={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    {
+                      "opacity": 1,
+                    },
+                    [
+                      {
+                        "backgroundColor": "transparent",
+                      },
+                      {
+                        "width": 0,
+                      },
+                    ],
+                  ]
+                }
+                testID="refunds"
+              >
+                <View
+                  pointerEvents="none"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "flex": 1,
+                        "justifyContent": "center",
+                        "minHeight": 48,
+                        "padding": 10,
+                      },
+                      {
+                        "margin": 0,
+                        "minHeight": 0,
+                        "padding": 0,
+                      },
+                    ]
+                  }
+                >
+                  <View>
+                    <View
+                      collapsable={false}
+                      style={
+                        {
+                          "opacity": 0,
+                        }
+                      }
+                    >
+                      <View
+                        data-blade-component="base-box"
+                        isFullWidthTabItem={true}
+                        size="medium"
+                        style={
+                          [
+                            {},
+                            {
+                              "alignItems": "center",
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "paddingBottom": 8,
+                              "paddingLeft": 0,
+                              "paddingRight": 0,
+                              "paddingTop": 8,
+                              "width": "100%",
+                            },
+                          ]
+                        }
+                        variant="bordered"
+                      >
+                        <View
+                          alignItems="center"
+                          data-blade-component="box"
+                          display="flex"
+                          flexDirection="row"
+                          gap="spacing.3"
+                          style={
+                            [
+                              {
+                                "alignItems": "center",
+                                "display": "flex",
+                                "flexDirection": "row",
+                                "gap": 8,
+                              },
+                            ]
+                          }
+                        >
+                          <Text
+                            accessible={true}
+                            color="surface.text.muted.lowContrast"
+                            data-blade-component="text"
+                            fontFamily="text"
+                            fontSize={100}
+                            fontStyle="normal"
+                            fontWeight="bold"
+                            lineHeight={100}
+                            style={
+                              [
+                                {
+                                  "color": "hsla(216, 16%, 60%, 1)",
+                                  "fontFamily": "Lato",
+                                  "fontSize": 14,
+                                  "fontStyle": "normal",
+                                  "fontWeight": "700",
+                                  "lineHeight": 20,
+                                  "marginBottom": 0,
+                                  "marginLeft": 0,
+                                  "marginRight": 0,
+                                  "marginTop": 0,
+                                  "paddingBottom": 0,
+                                  "paddingLeft": 0,
+                                  "paddingRight": 0,
+                                  "paddingTop": 0,
+                                  "textDecorationLine": "none",
+                                },
+                              ]
+                            }
+                          >
+                            Refunds Tab
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                    <View
+                      collapsable={false}
+                      style={
+                        {
+                          "bottom": 0,
+                          "left": 0,
+                          "opacity": 1,
+                          "position": "absolute",
+                          "right": 0,
+                          "top": 0,
+                        }
+                      }
+                    >
+                      <View
+                        data-blade-component="base-box"
+                        isFullWidthTabItem={true}
+                        size="medium"
+                        style={
+                          [
+                            {},
+                            {
+                              "alignItems": "center",
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "paddingBottom": 8,
+                              "paddingLeft": 0,
+                              "paddingRight": 0,
+                              "paddingTop": 8,
+                              "width": "100%",
+                            },
+                          ]
+                        }
+                        variant="bordered"
+                      >
+                        <View
+                          alignItems="center"
+                          data-blade-component="box"
+                          display="flex"
+                          flexDirection="row"
+                          gap="spacing.3"
+                          style={
+                            [
+                              {
+                                "alignItems": "center",
+                                "display": "flex",
+                                "flexDirection": "row",
+                                "gap": 8,
+                              },
+                            ]
+                          }
+                        >
+                          <Text
+                            accessible={true}
+                            color="brand.primary.500"
+                            data-blade-component="text"
+                            fontFamily="text"
+                            fontSize={100}
+                            fontStyle="normal"
+                            fontWeight="bold"
+                            lineHeight={100}
+                            style={
+                              [
+                                {
+                                  "color": "hsla(218, 89%, 51%, 1)",
+                                  "fontFamily": "Lato",
+                                  "fontSize": 14,
+                                  "fontStyle": "normal",
+                                  "fontWeight": "700",
+                                  "lineHeight": 20,
+                                  "marginBottom": 0,
+                                  "marginLeft": 0,
+                                  "marginRight": 0,
+                                  "marginTop": 0,
+                                  "paddingBottom": 0,
+                                  "paddingLeft": 0,
+                                  "paddingRight": 0,
+                                  "paddingTop": 0,
+                                  "textDecorationLine": "none",
+                                },
+                              ]
+                            }
+                          >
+                            Refunds Tab
                           </Text>
                         </View>
                       </View>

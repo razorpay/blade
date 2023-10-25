@@ -225,7 +225,6 @@ const Tabs = ({
   return (
     <TabsContext.Provider value={contextValue}>
       <TabView
-        animationEnabled={false}
         navigationState={{
           index,
           routes,
@@ -233,7 +232,6 @@ const Tabs = ({
         renderScene={SafeSceneMap(panels)}
         renderTabBar={renderTabBar}
         onIndexChange={(idx) => {
-          console.log('idx', idx);
           setIndex(idx);
         }}
         initialLayout={initialLayout}
