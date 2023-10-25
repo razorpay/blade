@@ -5,7 +5,7 @@ import type { BaseTextProps, BaseTextSizes } from '../BaseText/types';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import { getPlatformType } from '~utils';
+import { getPlatformType, isReactNative } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { FontSize, Typography } from '~tokens/global';
 import type { StringChildrenType, TestID } from '~utils/types';
@@ -87,7 +87,7 @@ const getCodeFontSizeAndLineHeight = (
 
 const CodeContainer = styled(BaseBox)<CodeContainerProps>((props) => {
   const padding = `${makeSpace(props.theme.spacing[0])} ${makeSpace(props.theme.spacing[2])}`;
-  return {
+  const codeContainerStyles = {
     padding,
     backgroundColor: props.isHighlighted
       ? props.theme.colors.brand.gray.a100.lowContrast
@@ -97,6 +97,16 @@ const CodeContainer = styled(BaseBox)<CodeContainerProps>((props) => {
     alignSelf: isPlatformWeb ? undefined : 'center',
     verticalAlign: 'middle',
     lineHeight: makeTypographySize(props.theme.typography.lineHeights[0]),
+  };
+
+  if (isReactNative()) {
+    return codeContainerStyles;
+  }
+
+  return {
+    '&&&&&': {
+      ...codeContainerStyles,
+    },
   };
 });
 

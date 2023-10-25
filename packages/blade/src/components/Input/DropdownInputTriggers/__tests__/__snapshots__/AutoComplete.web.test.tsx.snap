@@ -1017,7 +1017,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   z-index: 100;
 }
 
-.c27.c27.c27.c27.c27:after.c27.c27.c27.c27.c27:after.c27.c27.c27.c27.c27:after.c27.c27.c27.c27.c27:after.c27.c27.c27.c27.c27:after {
+.c27.c27.c27.c27.c27:after {
   margin: auto;
   content: '';
   width: 56px;
