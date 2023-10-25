@@ -26,6 +26,10 @@ const StyledTabButton = styled(BaseBox)<{
   };
 });
 
+// Internally we just loop over the TabItems and extract it's props.
+// This component itself doesn't need to render anything.
+// Check the Tabs.native.tsx file where we map over the TabItems and render them
+// via the `getTabs` utility
 const TabItem = (_props: TabItemProps): React.ReactElement => {
   return <></>;
 };

@@ -30,7 +30,7 @@ const TabList = ({
     const first = React.Children.toArray(children)[0];
     if (React.isValidElement(first)) {
       // We need to skip calling onChange on the first render when we set the initial value
-      setSelectedValue(() => first.props.value, true);
+      setSelectedValue?.(() => first.props.value, true);
     }
   }, [children, selectedValue, setSelectedValue]);
 
