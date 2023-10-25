@@ -29,7 +29,22 @@ exports[`<Alert /> should render 1`] = `
           {
             "textAlign": "left",
           },
-          {},
+          {
+            "alignItems": "flex-start",
+            "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+            "borderColor": "hsla(216, 15%, 54%, 0.32)",
+            "borderRadius": 4,
+            "borderStyle": "solid",
+            "borderWidth": 1,
+            "boxSizing": "border-box",
+            "display": "flex",
+            "flexDirection": "row",
+            "maxWidth": 584,
+            "paddingBottom": 12,
+            "paddingLeft": 8,
+            "paddingRight": 8,
+            "paddingTop": 8,
+          },
         ]
       }
       textAlign="left"
@@ -316,7 +331,23 @@ exports[`<Alert /> should render positive color and full width 1`] = `
           {
             "textAlign": "left",
           },
-          {},
+          {
+            "alignItems": "flex-start",
+            "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
+            "borderColor": "hsla(155, 100%, 31%, 0.32)",
+            "borderRadius": 0,
+            "borderStyle": "solid",
+            "borderWidth": 0,
+            "boxSizing": "border-box",
+            "display": "flex",
+            "flexDirection": "row",
+            "maxWidth": "auto",
+            "paddingBottom": 12,
+            "paddingLeft": 16,
+            "paddingRight": 16,
+            "paddingTop": 12,
+            "width": "100%",
+          },
         ]
       }
       textAlign="left"
@@ -613,7 +644,23 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
           {
             "textAlign": "left",
           },
-          {},
+          {
+            "alignItems": "flex-start",
+            "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
+            "borderColor": "hsla(155, 100%, 31%, 0.32)",
+            "borderRadius": 0,
+            "borderStyle": "solid",
+            "borderWidth": 0,
+            "boxSizing": "border-box",
+            "display": "flex",
+            "flexDirection": "row",
+            "maxWidth": "auto",
+            "paddingBottom": 12,
+            "paddingLeft": 16,
+            "paddingRight": 16,
+            "paddingTop": 12,
+            "width": "100%",
+          },
         ]
       }
       textAlign="left"

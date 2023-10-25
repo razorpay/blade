@@ -61,13 +61,23 @@ const StyledDivider = styled(BaseBox)<{
   height: DividerProps['height'];
   width: DividerProps['width'];
   isDividerHorizontal: boolean;
-}>(({ theme, borderPosition, dividerStyle, thickness, isDividerHorizontal, width, height }) => ({
-  '&&&&&': {
+}>(({ theme, borderPosition, dividerStyle, thickness, isDividerHorizontal, width, height }) => {
+  const dividerStyles = {
     [`${borderPosition}Style`]: dividerStyle,
     [`${borderPosition}Width`]: makeBorderSize(theme.border.width[thickness]),
     ...(isDividerHorizontal ? { flexGrow: 1, width } : { alignSelf: 'stretch', height }),
-  },
-}));
+  };
+
+  if (isReactNative()) {
+    return dividerStyles;
+  }
+
+  return {
+    '&&&&&': {
+      ...dividerStyles,
+    },
+  };
+});
 
 const Divider = ({
   orientation = 'horizontal',

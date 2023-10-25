@@ -25,7 +25,7 @@ exports[`<Alert /> should render 1`] = `
   margin-top: 2px;
 }
 
-.c1.c1.c1.c1.c1.c1 {
+.c1.c1.c1.c1.c1 {
   background: hsla(216,15%,54%,0.09);
   padding: 8px 8px 12px 8px;
   border-radius: 4px;
@@ -211,7 +211,7 @@ exports[`<Alert /> should render positive color and full width 1`] = `
   margin-top: 2px;
 }
 
-.c1.c1.c1.c1.c1.c1 {
+.c1.c1.c1.c1.c1 {
   background: hsla(155,100%,31%,0.09);
   padding: 12px 16px;
   border-radius: 0px;
@@ -411,7 +411,7 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
   margin-top: 2px;
 }
 
-.c1.c1.c1.c1.c1.c1 {
+.c1.c1.c1.c1.c1 {
   background: hsla(155,100%,31%,0.09);
   padding: 12px 16px;
   border-radius: 0px;

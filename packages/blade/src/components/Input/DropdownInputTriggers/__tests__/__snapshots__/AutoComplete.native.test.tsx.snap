@@ -1734,7 +1734,11 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                       "borderStyle": "solid",
                       "borderWidth": 0,
                     },
-                    {},
+                    {
+                      "borderBottomStyle": "solid",
+                      "borderBottomWidth": 1,
+                      "flexGrow": 1,
+                    },
                   ]
                 }
                 thickness="thin"

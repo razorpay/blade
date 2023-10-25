@@ -23,7 +23,9 @@ exports[`<List /> should render List with default properties 1`] = `
       marginTop="spacing.3"
       style={
         [
-          {},
+          {
+            "marginTop": 8,
+          },
         ]
       }
     >
@@ -33,7 +35,9 @@ exports[`<List /> should render List with default properties 1`] = `
         level={1}
         style={
           [
-            {},
+            {
+              "marginLeft": 4,
+            },
           ]
         }
         variant="unordered"
@@ -198,7 +202,9 @@ exports[`<List /> should render List with default properties 1`] = `
               level={2}
               style={
                 [
-                  {},
+                  {
+                    "marginLeft": 16,
+                  },
                 ]
               }
               variant="unordered"
@@ -363,7 +369,9 @@ exports[`<List /> should render List with default properties 1`] = `
                     level={3}
                     style={
                       [
-                        {},
+                        {
+                          "marginLeft": 16,
+                        },
                       ]
                     }
                     variant="unordered"
@@ -541,7 +549,9 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
       marginTop="spacing.3"
       style={
         [
-          {},
+          {
+            "marginTop": 8,
+          },
         ]
       }
     >
@@ -551,7 +561,9 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
         level={1}
         style={
           [
-            {},
+            {
+              "marginLeft": 4,
+            },
           ]
         }
         variant="unordered"
@@ -754,7 +766,9 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
         level={1}
         style={
           [
-            {},
+            {
+              "marginLeft": 4,
+            },
           ]
         }
         variant="unordered"
@@ -924,7 +938,9 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
       marginTop="spacing.3"
       style={
         [
-          {},
+          {
+            "marginTop": 8,
+          },
         ]
       }
     >
@@ -934,7 +950,9 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
         level={1}
         style={
           [
-            {},
+            {
+              "marginLeft": 4,
+            },
           ]
         }
         variant="unordered"
@@ -1185,7 +1203,9 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
         level={1}
         style={
           [
-            {},
+            {
+              "marginLeft": 4,
+            },
           ]
         }
         variant="unordered"
@@ -1355,7 +1375,9 @@ exports[`<List /> should render List with inline ListItemText 1`] = `
       marginTop="spacing.3"
       style={
         [
-          {},
+          {
+            "marginTop": 8,
+          },
         ]
       }
     >
@@ -1365,7 +1387,9 @@ exports[`<List /> should render List with inline ListItemText 1`] = `
         level={1}
         style={
           [
-            {},
+            {
+              "marginLeft": 4,
+            },
           ]
         }
         variant="unordered"
@@ -1535,7 +1559,9 @@ exports[`<List /> should render large ordered List 1`] = `
       marginTop="spacing.3"
       style={
         [
-          {},
+          {
+            "marginTop": 8,
+          },
         ]
       }
     >
@@ -1545,7 +1571,9 @@ exports[`<List /> should render large ordered List 1`] = `
         level={1}
         style={
           [
-            {},
+            {
+              "marginLeft": 0,
+            },
           ]
         }
         variant="ordered"
@@ -1699,7 +1727,9 @@ exports[`<List /> should render large ordered List 1`] = `
               level={2}
               style={
                 [
-                  {},
+                  {
+                    "marginLeft": 16,
+                  },
                 ]
               }
               variant="unordered"
@@ -1864,7 +1894,9 @@ exports[`<List /> should render large ordered List 1`] = `
                     level={3}
                     style={
                       [
-                        {},
+                        {
+                          "marginLeft": 16,
+                        },
                       ]
                     }
                     variant="unordered"
@@ -2042,7 +2074,9 @@ exports[`<List /> should render large ordered-filled List 1`] = `
       marginTop="spacing.3"
       style={
         [
-          {},
+          {
+            "marginTop": 8,
+          },
         ]
       }
     >
@@ -2052,7 +2086,9 @@ exports[`<List /> should render large ordered-filled List 1`] = `
         level={1}
         style={
           [
-            {},
+            {
+              "marginLeft": 0,
+            },
           ]
         }
         variant="ordered-filled"
@@ -2193,7 +2229,9 @@ exports[`<List /> should render large ordered-filled List 1`] = `
         level={1}
         style={
           [
-            {},
+            {
+              "marginLeft": 0,
+            },
           ]
         }
         variant="ordered-filled"
@@ -2334,7 +2372,9 @@ exports[`<List /> should render large ordered-filled List 1`] = `
         level={1}
         style={
           [
-            {},
+            {
+              "marginLeft": 0,
+            },
           ]
         }
         variant="ordered-filled"
@@ -2497,7 +2537,9 @@ exports[`<List /> should render large unordered List with icon 1`] = `
       marginTop="spacing.3"
       style={
         [
-          {},
+          {
+            "marginTop": 8,
+          },
         ]
       }
     >
@@ -2507,7 +2549,9 @@ exports[`<List /> should render large unordered List with icon 1`] = `
         level={1}
         style={
           [
-            {},
+            {
+              "marginLeft": 0,
+            },
           ]
         }
         variant="unordered"
@@ -2670,7 +2714,9 @@ exports[`<List /> should render large unordered List with icon 1`] = `
               level={2}
               style={
                 [
-                  {},
+                  {
+                    "marginLeft": 16,
+                  },
                 ]
               }
               variant="unordered"
@@ -2833,7 +2879,9 @@ exports[`<List /> should render large unordered List with icon 1`] = `
                     level={3}
                     style={
                       [
-                        {},
+                        {
+                          "marginLeft": 16,
+                        },
                       ]
                     }
                     variant="unordered"
@@ -3011,7 +3059,9 @@ exports[`<List /> should render medium ordered List 1`] = `
       marginTop="spacing.3"
       style={
         [
-          {},
+          {
+            "marginTop": 8,
+          },
         ]
       }
     >
@@ -3021,7 +3071,9 @@ exports[`<List /> should render medium ordered List 1`] = `
         level={1}
         style={
           [
-            {},
+            {
+              "marginLeft": 0,
+            },
           ]
         }
         variant="ordered"
@@ -3175,7 +3227,9 @@ exports[`<List /> should render medium ordered List 1`] = `
               level={2}
               style={
                 [
-                  {},
+                  {
+                    "marginLeft": 16,
+                  },
                 ]
               }
               variant="unordered"
@@ -3340,7 +3394,9 @@ exports[`<List /> should render medium ordered List 1`] = `
                     level={3}
                     style={
                       [
-                        {},
+                        {
+                          "marginLeft": 16,
+                        },
                       ]
                     }
                     variant="unordered"
@@ -3518,7 +3574,9 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
       marginTop="spacing.3"
       style={
         [
-          {},
+          {
+            "marginTop": 8,
+          },
         ]
       }
     >
@@ -3528,7 +3586,9 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
         level={1}
         style={
           [
-            {},
+            {
+              "marginLeft": 0,
+            },
           ]
         }
         variant="ordered-filled"
@@ -3669,7 +3729,9 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
         level={1}
         style={
           [
-            {},
+            {
+              "marginLeft": 0,
+            },
           ]
         }
         variant="ordered-filled"
@@ -3810,7 +3872,9 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
         level={1}
         style={
           [
-            {},
+            {
+              "marginLeft": 0,
+            },
           ]
         }
         variant="ordered-filled"
@@ -3973,7 +4037,9 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
       marginTop="spacing.3"
       style={
         [
-          {},
+          {
+            "marginTop": 8,
+          },
         ]
       }
     >
@@ -3983,7 +4049,9 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
         level={1}
         style={
           [
-            {},
+            {
+              "marginLeft": 0,
+            },
           ]
         }
         variant="unordered"
@@ -4146,7 +4214,9 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
               level={2}
               style={
                 [
-                  {},
+                  {
+                    "marginLeft": 16,
+                  },
                 ]
               }
               variant="unordered"
@@ -4309,7 +4379,9 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                     level={3}
                     style={
                       [
-                        {},
+                        {
+                          "marginLeft": 16,
+                        },
                       ]
                     }
                     variant="unordered"
@@ -4487,7 +4559,9 @@ exports[`<List /> should render small ordered List 1`] = `
       marginTop="spacing.3"
       style={
         [
-          {},
+          {
+            "marginTop": 8,
+          },
         ]
       }
     >
@@ -4497,7 +4571,9 @@ exports[`<List /> should render small ordered List 1`] = `
         level={1}
         style={
           [
-            {},
+            {
+              "marginLeft": 0,
+            },
           ]
         }
         variant="ordered"
@@ -4651,7 +4727,9 @@ exports[`<List /> should render small ordered List 1`] = `
               level={2}
               style={
                 [
-                  {},
+                  {
+                    "marginLeft": 16,
+                  },
                 ]
               }
               variant="unordered"
@@ -4816,7 +4894,9 @@ exports[`<List /> should render small ordered List 1`] = `
                     level={3}
                     style={
                       [
-                        {},
+                        {
+                          "marginLeft": 16,
+                        },
                       ]
                     }
                     variant="unordered"
@@ -4994,7 +5074,9 @@ exports[`<List /> should render small ordered-filled List 1`] = `
       marginTop="spacing.3"
       style={
         [
-          {},
+          {
+            "marginTop": 8,
+          },
         ]
       }
     >
@@ -5004,7 +5086,9 @@ exports[`<List /> should render small ordered-filled List 1`] = `
         level={1}
         style={
           [
-            {},
+            {
+              "marginLeft": 0,
+            },
           ]
         }
         variant="ordered-filled"
@@ -5145,7 +5229,9 @@ exports[`<List /> should render small ordered-filled List 1`] = `
         level={1}
         style={
           [
-            {},
+            {
+              "marginLeft": 0,
+            },
           ]
         }
         variant="ordered-filled"
@@ -5286,7 +5372,9 @@ exports[`<List /> should render small ordered-filled List 1`] = `
         level={1}
         style={
           [
-            {},
+            {
+              "marginLeft": 0,
+            },
           ]
         }
         variant="ordered-filled"
@@ -5449,7 +5537,9 @@ exports[`<List /> should render small unordered List with icon 1`] = `
       marginTop="spacing.3"
       style={
         [
-          {},
+          {
+            "marginTop": 8,
+          },
         ]
       }
     >
@@ -5459,7 +5549,9 @@ exports[`<List /> should render small unordered List with icon 1`] = `
         level={1}
         style={
           [
-            {},
+            {
+              "marginLeft": 0,
+            },
           ]
         }
         variant="unordered"
@@ -5622,7 +5714,9 @@ exports[`<List /> should render small unordered List with icon 1`] = `
               level={2}
               style={
                 [
-                  {},
+                  {
+                    "marginLeft": 16,
+                  },
                 ]
               }
               variant="unordered"
@@ -5785,7 +5879,9 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                     level={3}
                     style={
                       [
-                        {},
+                        {
+                          "marginLeft": 16,
+                        },
                       ]
                     }
                     variant="unordered"
@@ -5963,7 +6059,9 @@ exports[`<List /> should render unordered List of small size 1`] = `
       marginTop="spacing.3"
       style={
         [
-          {},
+          {
+            "marginTop": 8,
+          },
         ]
       }
     >
@@ -5973,7 +6071,9 @@ exports[`<List /> should render unordered List of small size 1`] = `
         level={1}
         style={
           [
-            {},
+            {
+              "marginLeft": 4,
+            },
           ]
         }
         variant="unordered"
@@ -6138,7 +6238,9 @@ exports[`<List /> should render unordered List of small size 1`] = `
               level={2}
               style={
                 [
-                  {},
+                  {
+                    "marginLeft": 16,
+                  },
                 ]
               }
               variant="unordered"
@@ -6303,7 +6405,9 @@ exports[`<List /> should render unordered List of small size 1`] = `
                     level={3}
                     style={
                       [
-                        {},
+                        {
+                          "marginLeft": 16,
+                        },
                       ]
                     }
                     variant="unordered"

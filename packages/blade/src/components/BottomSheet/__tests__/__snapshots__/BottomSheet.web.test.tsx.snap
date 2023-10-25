@@ -290,7 +290,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   z-index: 100;
 }
 
-.c8.c8.c8.c8.c8:after.c8.c8.c8.c8.c8:after.c8.c8.c8.c8.c8:after.c8.c8.c8.c8.c8:after.c8.c8.c8.c8.c8:after {
+.c8.c8.c8.c8.c8:after {
   margin: auto;
   content: '';
   width: 56px;
@@ -1082,7 +1082,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   z-index: 100;
 }
 
-.c4.c4.c4.c4.c4:after.c4.c4.c4.c4.c4:after.c4.c4.c4.c4.c4:after.c4.c4.c4.c4.c4:after.c4.c4.c4.c4.c4:after {
+.c4.c4.c4.c4.c4:after {
   margin: auto;
   content: '';
   width: 56px;
@@ -1659,7 +1659,7 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
   z-index: 100;
 }
 
-.c4.c4.c4.c4.c4:after.c4.c4.c4.c4.c4:after.c4.c4.c4.c4.c4:after.c4.c4.c4.c4.c4:after.c4.c4.c4.c4.c4:after {
+.c4.c4.c4.c4.c4:after {
   margin: auto;
   content: '';
   width: 56px;

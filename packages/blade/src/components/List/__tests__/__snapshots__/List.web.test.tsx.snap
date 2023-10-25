@@ -34,7 +34,7 @@ exports[`<List /> should render List with default properties 1`] = `
   margin-right: 8px;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   margin-top: 8px;
 }
 
@@ -51,11 +51,11 @@ exports[`<List /> should render List with default properties 1`] = `
   padding: 0;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   margin-left: 4px;
 }
 
-.c6.c6.c6.c6.c6 {
+.c6 {
   margin-left: 16px;
 }
 
@@ -111,7 +111,7 @@ exports[`<List /> should render List with default properties 1`] = `
           data-blade-component="base-box"
         >
           <ul
-            class="c0 "
+            class="c0"
             data-blade-component="list"
             role="list"
           >
@@ -157,7 +157,7 @@ exports[`<List /> should render List with default properties 1`] = `
                 data-blade-component="base-box"
               >
                 <ul
-                  class="c0 "
+                  class="c0"
                   data-blade-component="list"
                   role="list"
                 >
@@ -244,7 +244,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
   margin-right: 8px;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   margin-top: 8px;
 }
 
@@ -283,7 +283,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
   line-height: 0rem;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   margin-left: 4px;
 }
 
@@ -423,7 +423,7 @@ exports[`<List /> should render List with inline ListItemText 1`] = `
   margin-right: 8px;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   margin-top: 8px;
 }
 
@@ -453,7 +453,7 @@ exports[`<List /> should render List with inline ListItemText 1`] = `
   padding: 0;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   margin-left: 4px;
 }
 
@@ -580,7 +580,7 @@ exports[`<List /> should render large ordered List 1`] = `
   margin-right: 8px;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   margin-top: 8px;
 }
 
@@ -610,11 +610,11 @@ exports[`<List /> should render large ordered List 1`] = `
   padding: 0;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   margin-left: 0;
 }
 
-.c8.c8.c8.c8.c8 {
+.c8 {
   margin-left: 16px;
 }
 
@@ -659,7 +659,7 @@ exports[`<List /> should render large ordered List 1`] = `
           data-blade-component="base-box"
         >
           <ul
-            class="c7 "
+            class="List__StyledUnorderedList-bqf6r7-1 c7"
             data-blade-component="list"
             role="list"
           >
@@ -705,7 +705,7 @@ exports[`<List /> should render large ordered List 1`] = `
                 data-blade-component="base-box"
               >
                 <ul
-                  class="c7 "
+                  class="List__StyledUnorderedList-bqf6r7-1 c7"
                   data-blade-component="list"
                   role="list"
                 >
@@ -807,7 +807,7 @@ exports[`<List /> should render large ordered-filled List 1`] = `
   border-radius: 9999px;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   margin-top: 8px;
 }
 
@@ -837,7 +837,7 @@ exports[`<List /> should render large ordered-filled List 1`] = `
   padding: 0;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   margin-left: 0;
 }
 
@@ -983,7 +983,7 @@ exports[`<List /> should render large unordered List with icon 1`] = `
   margin-right: 8px;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   margin-top: 8px;
 }
 
@@ -1000,11 +1000,11 @@ exports[`<List /> should render large unordered List with icon 1`] = `
   padding: 0;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   margin-left: 0;
 }
 
-.c6.c6.c6.c6.c6 {
+.c6 {
   margin-left: 16px;
 }
 
@@ -1058,7 +1058,7 @@ exports[`<List /> should render large unordered List with icon 1`] = `
           data-blade-component="base-box"
         >
           <ul
-            class="c0 "
+            class="c0"
             data-blade-component="list"
             role="list"
           >
@@ -1102,7 +1102,7 @@ exports[`<List /> should render large unordered List with icon 1`] = `
                 data-blade-component="base-box"
               >
                 <ul
-                  class="c0 "
+                  class="c0"
                   data-blade-component="list"
                   role="list"
                 >
@@ -1220,7 +1220,7 @@ exports[`<List /> should render medium ordered List 1`] = `
   margin-right: 8px;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   margin-top: 8px;
 }
 
@@ -1250,11 +1250,11 @@ exports[`<List /> should render medium ordered List 1`] = `
   padding: 0;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   margin-left: 0;
 }
 
-.c8.c8.c8.c8.c8 {
+.c8 {
   margin-left: 16px;
 }
 
@@ -1299,7 +1299,7 @@ exports[`<List /> should render medium ordered List 1`] = `
           data-blade-component="base-box"
         >
           <ul
-            class="c7 "
+            class="List__StyledUnorderedList-bqf6r7-1 c7"
             data-blade-component="list"
             role="list"
           >
@@ -1345,7 +1345,7 @@ exports[`<List /> should render medium ordered List 1`] = `
                 data-blade-component="base-box"
               >
                 <ul
-                  class="c7 "
+                  class="List__StyledUnorderedList-bqf6r7-1 c7"
                   data-blade-component="list"
                   role="list"
                 >
@@ -1447,7 +1447,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
   border-radius: 9999px;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   margin-top: 8px;
 }
 
@@ -1477,7 +1477,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
   padding: 0;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   margin-left: 0;
 }
 
@@ -1623,7 +1623,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
   margin-right: 8px;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   margin-top: 8px;
 }
 
@@ -1640,11 +1640,11 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
   padding: 0;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   margin-left: 0;
 }
 
-.c6.c6.c6.c6.c6 {
+.c6 {
   margin-left: 16px;
 }
 
@@ -1698,7 +1698,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
           data-blade-component="base-box"
         >
           <ul
-            class="c0 "
+            class="c0"
             data-blade-component="list"
             role="list"
           >
@@ -1742,7 +1742,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                 data-blade-component="base-box"
               >
                 <ul
-                  class="c0 "
+                  class="c0"
                   data-blade-component="list"
                   role="list"
                 >
@@ -1860,7 +1860,7 @@ exports[`<List /> should render small ordered List 1`] = `
   margin-right: 8px;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   margin-top: 8px;
 }
 
@@ -1890,11 +1890,11 @@ exports[`<List /> should render small ordered List 1`] = `
   padding: 0;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   margin-left: 0;
 }
 
-.c8.c8.c8.c8.c8 {
+.c8 {
   margin-left: 16px;
 }
 
@@ -1939,7 +1939,7 @@ exports[`<List /> should render small ordered List 1`] = `
           data-blade-component="base-box"
         >
           <ul
-            class="c7 "
+            class="List__StyledUnorderedList-bqf6r7-1 c7"
             data-blade-component="list"
             role="list"
           >
@@ -1985,7 +1985,7 @@ exports[`<List /> should render small ordered List 1`] = `
                 data-blade-component="base-box"
               >
                 <ul
-                  class="c7 "
+                  class="List__StyledUnorderedList-bqf6r7-1 c7"
                   data-blade-component="list"
                   role="list"
                 >
@@ -2087,7 +2087,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
   border-radius: 9999px;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   margin-top: 8px;
 }
 
@@ -2117,7 +2117,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
   padding: 0;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   margin-left: 0;
 }
 
@@ -2263,7 +2263,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
   margin-right: 8px;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   margin-top: 8px;
 }
 
@@ -2280,11 +2280,11 @@ exports[`<List /> should render small unordered List with icon 1`] = `
   padding: 0;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   margin-left: 0;
 }
 
-.c6.c6.c6.c6.c6 {
+.c6 {
   margin-left: 16px;
 }
 
@@ -2338,7 +2338,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
           data-blade-component="base-box"
         >
           <ul
-            class="c0 "
+            class="c0"
             data-blade-component="list"
             role="list"
           >
@@ -2382,7 +2382,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                 data-blade-component="base-box"
               >
                 <ul
-                  class="c0 "
+                  class="c0"
                   data-blade-component="list"
                   role="list"
                 >
@@ -2469,7 +2469,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
   margin-right: 8px;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   margin-top: 8px;
 }
 
@@ -2486,11 +2486,11 @@ exports[`<List /> should render unordered List of small size 1`] = `
   padding: 0;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   margin-left: 4px;
 }
 
-.c6.c6.c6.c6.c6 {
+.c6 {
   margin-left: 16px;
 }
 
@@ -2546,7 +2546,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
           data-blade-component="base-box"
         >
           <ul
-            class="c0 "
+            class="c0"
             data-blade-component="list"
             role="list"
           >
@@ -2592,7 +2592,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
                 data-blade-component="base-box"
               >
                 <ul
-                  class="c0 "
+                  class="c0"
                   data-blade-component="list"
                   role="list"
                 >

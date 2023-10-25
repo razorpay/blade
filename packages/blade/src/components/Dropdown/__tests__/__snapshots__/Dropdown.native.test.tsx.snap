@@ -940,7 +940,11 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                         "borderStyle": "solid",
                         "borderWidth": 0,
                       },
-                      {},
+                      {
+                        "borderBottomStyle": "solid",
+                        "borderBottomWidth": 1,
+                        "flexGrow": 1,
+                      },
                     ]
                   }
                   thickness="thin"
@@ -1365,7 +1369,11 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                       "borderStyle": "solid",
                       "borderWidth": 0,
                     },
-                    {},
+                    {
+                      "borderBottomStyle": "solid",
+                      "borderBottomWidth": 1,
+                      "flexGrow": 1,
+                    },
                   ]
                 }
                 thickness="thin"

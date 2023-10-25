@@ -221,7 +221,11 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                         "borderStyle": "solid",
                         "borderWidth": 0,
                       },
-                      {},
+                      {
+                        "borderBottomStyle": "solid",
+                        "borderBottomWidth": 1,
+                        "flexGrow": 1,
+                      },
                     ]
                   }
                   thickness="thin"
@@ -453,7 +457,17 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                 style={
                   [
                     {},
-                    {},
+                    {
+                      "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
+                      "borderRadius": 16,
+                      "content": "''",
+                      "height": 4,
+                      "marginBottom": "auto",
+                      "marginLeft": "auto",
+                      "marginRight": "auto",
+                      "marginTop": "auto",
+                      "width": 56,
+                    },
                   ]
                 }
               />
@@ -999,7 +1013,11 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                       "borderStyle": "solid",
                       "borderWidth": 0,
                     },
-                    {},
+                    {
+                      "borderBottomStyle": "solid",
+                      "borderBottomWidth": 1,
+                      "flexGrow": 1,
+                    },
                   ]
                 }
                 thickness="thin"
@@ -1234,7 +1252,11 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                         "borderStyle": "solid",
                         "borderWidth": 0,
                       },
-                      {},
+                      {
+                        "borderBottomStyle": "solid",
+                        "borderBottomWidth": 1,
+                        "flexGrow": 1,
+                      },
                     ]
                   }
                   thickness="thin"
@@ -1466,7 +1488,17 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                 style={
                   [
                     {},
-                    {},
+                    {
+                      "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
+                      "borderRadius": 16,
+                      "content": "''",
+                      "height": 4,
+                      "marginBottom": "auto",
+                      "marginLeft": "auto",
+                      "marginRight": "auto",
+                      "marginTop": "auto",
+                      "width": 56,
+                    },
                   ]
                 }
               />

@@ -449,7 +449,11 @@ exports[`<Accordion /> should render 1`] = `
                 "borderStyle": "solid",
                 "borderWidth": 0,
               },
-              {},
+              {
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": 1,
+                "flexGrow": 1,
+              },
             ]
           }
           thickness="thin"
@@ -861,7 +865,11 @@ exports[`<Accordion /> should render 1`] = `
                 "borderStyle": "solid",
                 "borderWidth": 0,
               },
-              {},
+              {
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": 1,
+                "flexGrow": 1,
+              },
             ]
           }
           thickness="thin"
@@ -1273,7 +1281,11 @@ exports[`<Accordion /> should render 1`] = `
                 "borderStyle": "solid",
                 "borderWidth": 0,
               },
-              {},
+              {
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": 1,
+                "flexGrow": 1,
+              },
             ]
           }
           thickness="thin"

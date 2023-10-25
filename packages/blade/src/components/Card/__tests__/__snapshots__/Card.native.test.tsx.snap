@@ -141,7 +141,11 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                 "borderStyle": "solid",
                 "borderWidth": 0,
               },
-              {},
+              {
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": 1,
+                "flexGrow": 1,
+              },
             ]
           }
           thickness="thin"
@@ -1101,7 +1105,11 @@ exports[`<Card /> should render a Card with Header 1`] = `
                 "borderStyle": "solid",
                 "borderWidth": 0,
               },
-              {},
+              {
+                "borderBottomStyle": "solid",
+                "borderBottomWidth": 1,
+                "flexGrow": 1,
+              },
             ]
           }
           thickness="thin"
