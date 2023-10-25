@@ -28,6 +28,7 @@ A table component helps in displaying data in a grid format, through rows and co
     - [Heavy sized library - AG Grid](#heavy-sized-library---ag-grid)
     - [Medium sized library - Tanstack's React Table](#medium-sized-library---tanstacks-react-table)
     - [Small sized library - React Table Library](#small-sized-library---react-table-library)
+    - [Comparison](#comparison)
 
 
 ## Features
@@ -495,3 +496,10 @@ While evaluating multiple libraries we identified 3 categories:
 - React Table Library has a Composable API using which we can build our Composable as well as Compact API
 - React Table Library also exposes a minimal Compact API but we cannot use that directly to build our Compact API since there isn't a parity between their own Composable & Compact APIs
 - React Table Library is our best option as of today since it has all the features we could need and is relatively lightweight
+
+#### Comparison
+| Library                | Features                                                      | Bundle Size                                             | Composable API       | Compact API   | Maintenance                                             |
+| ---------------------- | ------------------------------------------------------------- | ------------------------------------------------------- | -------------------- | ------------- | ------------------------------------------------------- |
+| AG Grid                | Very heavy and has a lot of features we don't need            | 75kb (15kb gzipped) (+ additional supporting libraries) | Challenging to build | Easy to build | Extremely well maintained. Has paid Enterprise support. |
+| Tanstack's React Table | Relatively heavy and has a lot of features we don't need      | 60kb (14kb gzipped)                                     | Challenging to build | Easy to build | Very well maintained                                    |
+| React Table Library    | Relatively lightweight and has all the features we could need | 23kb (7kb gzipped)                                      | Easy to build        | Easy to build | Relatively well maintained                              |
