@@ -108,6 +108,7 @@ const BaseInputTagSlot = ({
   isDropdownTrigger,
   visibleTagsCountRef,
   labelPrefix,
+  isDisabled,
 }: BaseInputTagSlotProps): React.ReactElement => {
   const hasTags = tags && tags.length > 0;
   const slotRef = React.useRef<HTMLDivElement>(null);
@@ -187,7 +188,12 @@ const BaseInputTagSlot = ({
     >
       {visibleTags}
       {tags && !showAllTags && invisibleTagsCount ? (
-        <Text alignSelf="center" marginY="spacing.2" marginRight="spacing.4">
+        <Text
+          type={isDisabled ? 'placeholder' : 'normal'}
+          alignSelf="center"
+          marginY="spacing.2"
+          marginRight="spacing.4"
+        >
           <BaseBox as="span" whiteSpace="nowrap">
             {visibleTags?.length === 0
               ? getSelectedTextWithoutTags({

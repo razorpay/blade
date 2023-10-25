@@ -82,6 +82,31 @@ describe('<Dropdown />', () => {
     expect(selectInput.textContent).toBe('Orange');
   });
 
+  it('should not open dropdown when input is disabled', async () => {
+    const user = userEvent.setup();
+
+    const { getByRole, queryByRole } = renderWithTheme(
+      <Dropdown>
+        <SelectInput label="Fruits" isDisabled />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Banana" value="banana" />
+            <ActionListItem title="Orange" value="orange" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>,
+    );
+
+    const selectInput = getByRole('combobox', { name: 'Fruits' });
+
+    expect(selectInput).toBeInTheDocument();
+    expect(selectInput.textContent).toBe('Select Option');
+    expect(queryByRole('listbox')).toBeNull();
+
+    await user.click(selectInput);
+    expect(queryByRole('listbox')).toBeNull();
+  });
+
   it('should trigger focus and blur events for SelectInput', async () => {
     const user = userEvent.setup();
     const onFocus = jest.fn();

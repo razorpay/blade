@@ -262,10 +262,16 @@ const AutoCompleteTemplate: ComponentStory<typeof AutoComplete> = ({ icon, ...ar
 };
 
 export const Default = AutoCompleteTemplate.bind({});
-// Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
 Default.args = {
   label: 'City',
   placeholder: 'Select City',
+};
+
+export const Disabled = AutoCompleteTemplate.bind({});
+Disabled.args = {
+  label: 'City',
+  placeholder: 'Select City',
+  isDisabled: true,
 };
 
 export const InternalAutoCompleteUncontrolled = (): React.ReactElement => {
