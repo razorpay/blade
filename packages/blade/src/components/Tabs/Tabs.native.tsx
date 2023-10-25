@@ -24,17 +24,19 @@ const initialLayout = {
   width: Dimensions.get('window').width,
 };
 
-const getTabs = (children: React.ReactNode): React.ReactElement[] => {
-  const childs = React.Children.toArray(children);
-  const tabList = childs.find((child) => getComponentId(child) === 'TabList');
-  if (!tabList || !React.isValidElement(tabList)) throw new Error('TabList is required');
+const getTabs = (node: React.ReactNode): React.ReactElement[] => {
+  const children = React.Children.toArray(node);
+  const tabList = children.find((child) => getComponentId(child) === 'TabList');
+  if (!tabList || !React.isValidElement(tabList)) {
+    throw new Error('TabList is required');
+  }
 
   return tabList.props.children;
 };
 
-const getTabPanels = (children: React.ReactNode): Record<string, () => React.ReactElement> => {
-  const childs = React.Children.toArray(children) as React.ReactElement[];
-  return childs
+const getTabPanels = (node: React.ReactNode): Record<string, () => React.ReactElement> => {
+  const children = React.Children.toArray(node) as React.ReactElement[];
+  return children
     .filter((child) => getComponentId(child) === 'TabPanel')
     .reduce((prev, curr) => {
       return { ...prev, [curr.props.value]: () => curr.props.children };
@@ -87,7 +89,7 @@ const Tabs = ({
     },
   });
 
-  const index = getRouteIndexFromValue({
+  const routeIndex = getRouteIndexFromValue({
     value: selectedValue,
     routes,
   });
@@ -102,6 +104,8 @@ const Tabs = ({
     [routes, setSelectedValue],
   );
 
+  // In mobile we can't have vertical tabs because of the lack of screen space
+  // So we always set it to false
   const isVertical = false;
   const contextValue = {
     baseId: '',
@@ -110,7 +114,6 @@ const Tabs = ({
     size,
     variant,
     isFullWidthTabItem,
-    setSelectedValue: setIndex,
   };
 
   // Set initial value
@@ -146,7 +149,7 @@ const Tabs = ({
             <Text
               color={textColor[selectedState].default}
               size={size === 'medium' ? 'medium' : 'large'}
-              weight={size === 'medium' ? 'bold' : 'regular'}
+              weight="bold"
             >
               {title}
             </Text>
@@ -175,7 +178,7 @@ const Tabs = ({
             ? {}
             : {
                 borderBottomColor: theme.colors.surface.border.normal.lowContrast,
-                borderBottomWidth: 1.5,
+                borderBottomWidth: theme.border.width.thick,
               }
         }
         style={{
@@ -201,7 +204,7 @@ const Tabs = ({
         // Since there is no way to use tablist.map() to render the tabs
         renderBadge={() => {
           if (!isFilled) return null;
-          if (index === 0) {
+          if (routeIndex === 0) {
             return null;
           }
           return (
@@ -226,7 +229,7 @@ const Tabs = ({
     <TabsContext.Provider value={contextValue}>
       <TabView
         navigationState={{
-          index,
+          index: routeIndex,
           routes,
         }}
         renderScene={SafeSceneMap(panels)}
