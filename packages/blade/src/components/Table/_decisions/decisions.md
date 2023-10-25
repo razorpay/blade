@@ -4,6 +4,31 @@ A table component helps in displaying data in a grid format, through rows and co
 
 <img src="./table-thumbnail.png" width="760" alt="Table thumbnail" />
 
+- [Features](#features)
+- [Out of scope](#out-of-scope)
+- [Anatomy](#anatomy)
+- [API](#api)
+  - [API Design](#api-design)
+    - [1. Composable API](#1-composable-api)
+      - [Pros](#pros)
+      - [Cons](#cons)
+    - [2. Compact API](#2-compact-api)
+      - [Pros](#pros-1)
+      - [Cons](#cons-1)
+    - [Decision](#decision)
+      - [Only Composable API](#only-composable-api)
+      - [Only Compact API](#only-compact-api)
+      - [Both Composable \& Compact API](#both-composable--compact-api)
+      - [Conclusion](#conclusion)
+- [Table Library Evaluation](#table-library-evaluation)
+  - [Why a library?](#why-a-library)
+  - [What are we looking for in a library?](#what-are-we-looking-for-in-a-library)
+  - [Libraries evaluated](#libraries-evaluated)
+    - [Heavy sized libraries](#heavy-sized-libraries)
+    - [Medium sized libraries](#medium-sized-libraries)
+    - [Small sized libraries](#small-sized-libraries)
+
+
 ## Features
 - Column Sorting
 - Row Selection - Single & Multiple
