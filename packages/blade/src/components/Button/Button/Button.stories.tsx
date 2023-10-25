@@ -101,29 +101,36 @@ const ButtonTemplate: ComponentStory<typeof ButtonComponent> = ({
   return <ButtonComponent {...args}>{children}</ButtonComponent>;
 };
 
-const StyledBaseText = styled(BaseText)({ padding: '8px 0px' });
 const ButtonWithSizeTemplate: ComponentStory<typeof ButtonComponent> = ({
   children = 'Button',
   ...args
 }) => {
   return (
     <>
-      <StyledBaseText fontWeight="bold">xsmall</StyledBaseText>
+      <Text weight="bold" margin="8px 0px">
+        xsmall
+      </Text>
       <ButtonComponent {...args} size="xsmall">
         {children}
       </ButtonComponent>
 
-      <StyledBaseText fontWeight="bold">small</StyledBaseText>
+      <Text weight="bold" margin="8px 0px">
+        small
+      </Text>
       <ButtonComponent {...args} size="small">
         {children}
       </ButtonComponent>
 
-      <StyledBaseText fontWeight="bold">medium</StyledBaseText>
+      <Text weight="bold" margin="8px 0px">
+        medium
+      </Text>
       <ButtonComponent {...args} size="medium">
         {children}
       </ButtonComponent>
 
-      <StyledBaseText fontWeight="bold">large</StyledBaseText>
+      <Text weight="bold" margin="8px 0px">
+        large
+      </Text>
       <ButtonComponent {...args} size="large">
         {children}
       </ButtonComponent>
@@ -137,17 +144,23 @@ const ButtonWithVariantTemplate: ComponentStory<typeof ButtonComponent> = ({
 }) => {
   return (
     <>
-      <StyledBaseText fontWeight="bold">Primary</StyledBaseText>
+      <Text weight="bold" margin="8px 0px">
+        Primary
+      </Text>
       <ButtonComponent {...args} variant="primary">
         {children}
       </ButtonComponent>
 
-      <StyledBaseText fontWeight="bold">Secondary</StyledBaseText>
+      <Text weight="bold" margin="8px 0px">
+        Secondary
+      </Text>
       <ButtonComponent {...args} variant="secondary">
         {children}
       </ButtonComponent>
 
-      <StyledBaseText fontWeight="bold">Tertiary</StyledBaseText>
+      <Text weight="bold" margin="8px 0px">
+        Tertiary
+      </Text>
       <ButtonComponent {...args} variant="tertiary">
         {children}
       </ButtonComponent>
