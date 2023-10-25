@@ -39,6 +39,8 @@ While evaluating what kind of API we want for our table, we discovered 2 approac
 Composable API is a pattern where we have a set of components that can be composed together to create a table. This approach allows us to stitch together a table very similar to how you would do it with native HTML. However, it is also more verbose and requires more effort to create a table.
 
 ```jsx
+// Mock data & functions
+
 const data = [{
     firstName: 'John',
     lastName: 'Doe',
@@ -67,6 +69,8 @@ const onSortChange = ({ headerKey, sortType }) => {
 
 
 ```jsx
+// Composable Table
+
 <Table 
     data={data} // This contains the actual data to be rendered in the table which would be retrieved from some API
     selectionType='single' 
@@ -161,6 +165,7 @@ const onSortChange = ({ headerKey, sortType }) => {
 Compact API is a pattern where we have a single component that takes in all the data and renders a table. This approach is more concise and requires less effort to create a table. However, it is also less intuitive and does not resemble the native HTML structure of a table.
 
 ```jsx
+// Mock data & functions
 const data = [{
     firstName: 'John',
     lastName: 'Doe',
@@ -242,6 +247,8 @@ const pagination = {
 ```
 
 ```jsx
+// Compact Table
+
 <DataTable
     data={data} // This contains the actual data to be rendered in the table which would be retrieved from some API
     columns={columns} // This contains the column definition for the table
