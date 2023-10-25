@@ -1,33 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Card /> should render a Card with Footer 1`] = `
-.c0.c0.c0.c0.c0 {
+.c0 {
   display: block;
   border-radius: 4px;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   text-align: left;
   padding: 24px;
   border-radius: 4px;
   box-shadow: 0 4px 8px -2px hsla(217,56%,17%,0.1),0 2px 4px -2px hsla(217,56%,17%,0.06);
 }
 
-.c5.c5.c5.c5.c5 {
+.c5 {
   margin-top: auto;
 }
 
-.c6.c6.c6.c6.c6 {
+.c6 {
   margin-top: 24px;
 }
 
-.c7.c7.c7.c7.c7 {
+.c7 {
   border-width: 0px;
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-style: solid;
 }
 
-.c9.c9.c9.c9.c9 {
+.c9 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -46,11 +46,11 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   margin-top: 24px;
 }
 
-.c10.c10.c10.c10.c10 {
+.c10 {
   text-align: left;
 }
 
-.c13.c13.c13.c13.c13 {
+.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -65,14 +65,14 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   margin-left: 16px;
 }
 
-.c14.c14.c14.c14.c14 {
+.c14 {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
   flex-grow: 1;
 }
 
-.c16.c16.c16.c16.c16 {
+.c16 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -94,7 +94,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   opacity: 1;
 }
 
-.c18.c18.c18.c18.c18 {
+.c18 {
   margin-left: 16px;
 }
 
@@ -334,31 +334,31 @@ exports[`<Card /> should render a Card with Footer 1`] = `
 }
 
 @media screen and (min-width:320px) {
-  .c7.c7.c7.c7.c7 {
+  .c7 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c7.c7.c7.c7.c7 {
+  .c7 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c7.c7.c7.c7.c7 {
+  .c7 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c7.c7.c7.c7.c7 {
+  .c7 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c7.c7.c7.c7.c7 {
+  .c7 {
     border-style: solid;
   }
 }
@@ -483,23 +483,23 @@ exports[`<Card /> should render a Card with Footer 1`] = `
 `;
 
 exports[`<Card /> should render a Card with Header 1`] = `
-.c0.c0.c0.c0.c0 {
+.c0 {
   display: block;
   border-radius: 4px;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   text-align: left;
   padding: 24px;
   border-radius: 4px;
   box-shadow: 0 4px 8px -2px hsla(217,56%,17%,0.1),0 2px 4px -2px hsla(217,56%,17%,0.06);
 }
 
-.c4.c4.c4.c4.c4 {
+.c4 {
   margin-bottom: 24px;
 }
 
-.c5.c5.c5.c5.c5 {
+.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -514,7 +514,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
   margin-bottom: 24px;
 }
 
-.c6.c6.c6.c6.c6 {
+.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -527,7 +527,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
   flex-direction: row;
 }
 
-.c7.c7.c7.c7.c7 {
+.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -538,11 +538,11 @@ exports[`<Card /> should render a Card with Header 1`] = `
   margin-right: 8px;
 }
 
-.c8.c8.c8.c8.c8 {
+.c8 {
   margin-right: 16px;
 }
 
-.c9.c9.c9.c9.c9 {
+.c9 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -559,22 +559,22 @@ exports[`<Card /> should render a Card with Header 1`] = `
   align-items: center;
 }
 
-.c11.c11.c11.c11.c11 {
+.c11 {
   margin-left: 8px;
 }
 
-.c12.c12.c12.c12.c12 {
+.c12 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
-.c13.c13.c13.c13.c13 {
+.c13 {
   background-color: hsla(216,15%,54%,0.09);
 }
 
-.c15.c15.c15.c15.c15 {
+.c15 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -597,18 +597,18 @@ exports[`<Card /> should render a Card with Header 1`] = `
   padding-left: 8px;
 }
 
-.c18.c18.c18.c18.c18 {
+.c18 {
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   align-self: center;
 }
 
-.c19.c19.c19.c19.c19 {
+.c19 {
   text-align: left;
   background-color: hsla(216,15%,54%,0.09);
 }
 
-.c22.c22.c22.c22.c22 {
+.c22 {
   border-width: 0px;
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-style: solid;
@@ -767,31 +767,31 @@ exports[`<Card /> should render a Card with Header 1`] = `
 }
 
 @media screen and (min-width:320px) {
-  .c22.c22.c22.c22.c22 {
+  .c22 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c22.c22.c22.c22.c22 {
+  .c22 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c22.c22.c22.c22.c22 {
+  .c22 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c22.c22.c22.c22.c22 {
+  .c22 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c22.c22.c22.c22.c22 {
+  .c22 {
     border-style: solid;
   }
 }
@@ -824,7 +824,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class=""
+                class="Svgweb__StyledSvg-vcmjs8-0"
                 data-blade-component="icon"
                 fill="none"
                 height="24px"
@@ -949,12 +949,12 @@ exports[`<Card /> should render a Card with Header 1`] = `
 `;
 
 exports[`<Card /> should render a Card without 0 padding 1`] = `
-.c0.c0.c0.c0.c0 {
+.c0 {
   display: block;
   border-radius: 4px;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   text-align: left;
   padding: 0px;
   border-radius: 4px;
@@ -1018,12 +1018,12 @@ exports[`<Card /> should render a Card without 0 padding 1`] = `
 `;
 
 exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
-.c0.c0.c0.c0.c0 {
+.c0 {
   display: block;
   border-radius: 4px;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   text-align: left;
   padding: 24px;
   border-radius: 4px;
@@ -1090,12 +1090,12 @@ exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
 `;
 
 exports[`<Card /> should render a plain Card 1`] = `
-.c0.c0.c0.c0.c0 {
+.c0 {
   display: block;
   border-radius: 4px;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   text-align: left;
   padding: 24px;
   border-radius: 4px;

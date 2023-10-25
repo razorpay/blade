@@ -33,7 +33,7 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
   animation: gYwSSW 150ms cubic-bezier(0.17,0,1,1);
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -43,7 +43,7 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
   flex-direction: column;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -53,11 +53,11 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
   flex-direction: row;
 }
 
-.c6.c6.c6.c6.c6 {
+.c6 {
   margin-left: 4px;
 }
 
-.c9.c9.c9.c9.c9 {
+.c9 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -213,7 +213,7 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class=""
+                class="Svgweb__StyledSvg-vcmjs8-0"
                 data-blade-component="icon"
                 fill="none"
                 height="12px"
@@ -307,7 +307,7 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
   animation: gYwSSW 150ms cubic-bezier(0.17,0,1,1);
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -317,7 +317,7 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
   flex-direction: column;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -327,7 +327,7 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
   flex-direction: row;
 }
 
-.c6.c6.c6.c6.c6 {
+.c6 {
   margin-left: 4px;
 }
 
@@ -413,7 +413,7 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class=""
+                class="Svgweb__StyledSvg-vcmjs8-0"
                 data-blade-component="icon"
                 fill="none"
                 height="12px"
@@ -488,7 +488,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
   animation: gYwSSW 150ms cubic-bezier(0.17,0,1,1);
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -498,7 +498,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
   flex-direction: column;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -508,15 +508,15 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
   flex-direction: row;
 }
 
-.c6.c6.c6.c6.c6 {
+.c6 {
   margin-left: 4px;
 }
 
-.c8.c8.c8.c8.c8 {
+.c8 {
   margin-top: 4px;
 }
 
-.c9.c9.c9.c9.c9 {
+.c9 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -530,7 +530,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
   align-items: center;
 }
 
-.c10.c10.c10.c10.c10 {
+.c10 {
   margin-right: 4px;
 }
 
@@ -629,7 +629,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class=""
+                class="Svgweb__StyledSvg-vcmjs8-0"
                 data-blade-component="icon"
                 fill="none"
                 height="12px"
@@ -678,7 +678,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
       >
         <svg
           aria-hidden="true"
-          class=""
+          class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
           height="12px"
@@ -758,7 +758,7 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
   animation: gYwSSW 150ms cubic-bezier(0.17,0,1,1);
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -768,7 +768,7 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
   flex-direction: column;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -778,7 +778,7 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
   flex-direction: row;
 }
 
-.c7.c7.c7.c7.c7 {
+.c7 {
   margin-left: 4px;
 }
 
@@ -873,7 +873,7 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class=""
+                class="Svgweb__StyledSvg-vcmjs8-0"
                 data-blade-component="icon"
                 fill="none"
                 height="12px"
@@ -899,7 +899,7 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class=""
+                class="Svgweb__StyledSvg-vcmjs8-0"
                 data-blade-component="icon"
                 fill="none"
                 height="12px"

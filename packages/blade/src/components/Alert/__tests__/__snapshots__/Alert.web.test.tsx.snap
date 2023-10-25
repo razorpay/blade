@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Alert /> should render 1`] = `
-.c0.c0.c0.c0.c0 {
+.c0 {
   text-align: left;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -13,7 +13,7 @@ exports[`<Alert /> should render 1`] = `
   margin-top: 2px;
 }
 
-.c3.c3.c3.c3.c3 {
+.c3 {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -21,7 +21,7 @@ exports[`<Alert /> should render 1`] = `
   padding-left: 8px;
 }
 
-.c4.c4.c4.c4.c4 {
+.c4 {
   margin-top: 2px;
 }
 
@@ -117,7 +117,7 @@ exports[`<Alert /> should render 1`] = `
       >
         <svg
           aria-hidden="true"
-          class=""
+          class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
           height="16px"
@@ -167,7 +167,7 @@ exports[`<Alert /> should render 1`] = `
       >
         <svg
           aria-hidden="true"
-          class=""
+          class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
           height="16px"
@@ -187,11 +187,11 @@ exports[`<Alert /> should render 1`] = `
 `;
 
 exports[`<Alert /> should render positive color and full width 1`] = `
-.c0.c0.c0.c0.c0 {
+.c0 {
   text-align: left;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -199,7 +199,7 @@ exports[`<Alert /> should render positive color and full width 1`] = `
   margin-top: 0px;
 }
 
-.c3.c3.c3.c3.c3 {
+.c3 {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -207,7 +207,7 @@ exports[`<Alert /> should render positive color and full width 1`] = `
   padding-left: 12px;
 }
 
-.c4.c4.c4.c4.c4 {
+.c4 {
   margin-top: 2px;
 }
 
@@ -304,7 +304,7 @@ exports[`<Alert /> should render positive color and full width 1`] = `
       >
         <svg
           aria-hidden="true"
-          class=""
+          class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
           height="20px"
@@ -367,7 +367,7 @@ exports[`<Alert /> should render positive color and full width 1`] = `
       >
         <svg
           aria-hidden="true"
-          class=""
+          class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
           height="20px"
@@ -387,11 +387,11 @@ exports[`<Alert /> should render positive color and full width 1`] = `
 `;
 
 exports[`<Alert /> should render positive intent and full width 1`] = `
-.c0.c0.c0.c0.c0 {
+.c0 {
   text-align: left;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -399,7 +399,7 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
   margin-top: 0px;
 }
 
-.c3.c3.c3.c3.c3 {
+.c3 {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -407,7 +407,7 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
   padding-left: 12px;
 }
 
-.c4.c4.c4.c4.c4 {
+.c4 {
   margin-top: 2px;
 }
 
@@ -504,7 +504,7 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
       >
         <svg
           aria-hidden="true"
-          class=""
+          class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
           height="20px"
@@ -567,7 +567,7 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
       >
         <svg
           aria-hidden="true"
-          class=""
+          class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
           height="20px"

@@ -1,14 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Tag /> should render tag 1`] = `
-.c0.c0.c0.c0.c0 {
+.c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -24,7 +24,7 @@ exports[`<Tag /> should render tag 1`] = `
   border-radius: 9999px;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -39,7 +39,7 @@ exports[`<Tag /> should render tag 1`] = `
   max-width: 100px;
 }
 
-.c4.c4.c4.c4.c4 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -114,14 +114,11 @@ exports[`<Tag /> should render tag 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
-}
-
-.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3 {
   margin-right: 4px;
 }
 
 @media screen and (min-width:768px) {
-  .c1.c1.c1.c1.c1 {
+  .c1 {
     padding: 2px 4px 2px 8px;
   }
 }
@@ -158,7 +155,7 @@ exports[`<Tag /> should render tag 1`] = `
         >
           <svg
             aria-hidden="true"
-            class=""
+            class="Svgweb__StyledSvg-vcmjs8-0"
             data-blade-component="icon"
             fill="none"
             height="12px"

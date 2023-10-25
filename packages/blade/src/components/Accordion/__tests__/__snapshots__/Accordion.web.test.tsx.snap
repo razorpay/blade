@@ -48,11 +48,11 @@ exports[`<Accordion /> should render 1`] = `
   color: hsla(217,18%,45%,1);
 }
 
-.c0.c0.c0.c0.c0 {
+.c0 {
   width: 100%;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -68,11 +68,11 @@ exports[`<Accordion /> should render 1`] = `
   max-width: none;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   width: 100%;
 }
 
-.c4.c4.c4.c4.c4 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -87,12 +87,12 @@ exports[`<Accordion /> should render 1`] = `
   margin-right: 12px;
 }
 
-.c8.c8.c8.c8.c8 {
+.c8 {
   margin-bottom: 0px;
   margin-top: 16px;
 }
 
-.c9.c9.c9.c9.c9 {
+.c9 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -106,7 +106,7 @@ exports[`<Accordion /> should render 1`] = `
   gap: 16px;
 }
 
-.c11.c11.c11.c11.c11 {
+.c11 {
   border-width: 0px;
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-style: solid;
@@ -185,52 +185,52 @@ exports[`<Accordion /> should render 1`] = `
 }
 
 @media screen and (min-width:480px) {
-  .c0.c0.c0.c0.c0 {
+  .c0 {
     min-width: 200px;
     max-width: calc(100vw - 40px);
   }
 }
 
 @media screen and (min-width:768px) {
-  .c0.c0.c0.c0.c0 {
+  .c0 {
     min-width: 360px;
     max-width: 640px;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c0.c0.c0.c0.c0 {
+  .c0 {
     min-width: 360px;
     max-width: 800px;
   }
 }
 
 @media screen and (min-width:320px) {
-  .c11.c11.c11.c11.c11 {
+  .c11 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c11.c11.c11.c11.c11 {
+  .c11 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c11.c11.c11.c11.c11 {
+  .c11 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c11.c11.c11.c11.c11 {
+  .c11 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c11.c11.c11.c11.c11 {
+  .c11 {
     border-style: solid;
   }
 }
@@ -281,13 +281,13 @@ exports[`<Accordion /> should render 1`] = `
                 </div>
                 <div
                   aria-hidden="true"
-                  class="c6"
+                  class=" c6"
                   data-blade-component="base-box"
                   direction="bottom"
                 >
                   <svg
                     aria-hidden="true"
-                    class=""
+                    class="Svgweb__StyledSvg-vcmjs8-0"
                     data-blade-component="icon"
                     fill="none"
                     height="20px"
@@ -378,13 +378,13 @@ exports[`<Accordion /> should render 1`] = `
                 </div>
                 <div
                   aria-hidden="true"
-                  class="c6"
+                  class=" c6"
                   data-blade-component="base-box"
                   direction="bottom"
                 >
                   <svg
                     aria-hidden="true"
-                    class=""
+                    class="Svgweb__StyledSvg-vcmjs8-0"
                     data-blade-component="icon"
                     fill="none"
                     height="20px"
@@ -475,13 +475,13 @@ exports[`<Accordion /> should render 1`] = `
                 </div>
                 <div
                   aria-hidden="true"
-                  class="c6"
+                  class=" c6"
                   data-blade-component="base-box"
                   direction="bottom"
                 >
                   <svg
                     aria-hidden="true"
-                    class=""
+                    class="Svgweb__StyledSvg-vcmjs8-0"
                     data-blade-component="icon"
                     fill="none"
                     height="20px"

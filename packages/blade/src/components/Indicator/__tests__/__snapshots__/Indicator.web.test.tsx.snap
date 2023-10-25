@@ -1,14 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Indicator /> should render 1`] = `
-.c0.c0.c0.c0.c0 {
+.c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -22,7 +22,7 @@ exports[`<Indicator /> should render 1`] = `
   align-items: center;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   margin-left: 4px;
 }
 
@@ -53,7 +53,7 @@ exports[`<Indicator /> should render 1`] = `
     >
       <svg
         aria-hidden="true"
-        class=""
+        class="Svgweb__StyledSvg-vcmjs8-0"
         data-blade-component="icon"
         fill="none"
         height="8"
@@ -91,14 +91,14 @@ exports[`<Indicator /> should render 1`] = `
 `;
 
 exports[`<Indicator /> should render different variants for size and intent 1`] = `
-.c0.c0.c0.c0.c0 {
+.c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -112,7 +112,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
   align-items: center;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   margin-left: 4px;
 }
 
@@ -157,7 +157,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
     >
       <svg
         aria-hidden="true"
-        class=""
+        class="Svgweb__StyledSvg-vcmjs8-0"
         data-blade-component="icon"
         fill="none"
         height="6"
@@ -203,7 +203,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
     >
       <svg
         aria-hidden="true"
-        class=""
+        class="Svgweb__StyledSvg-vcmjs8-0"
         data-blade-component="icon"
         fill="none"
         height="8"
@@ -249,7 +249,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
     >
       <svg
         aria-hidden="true"
-        class=""
+        class="Svgweb__StyledSvg-vcmjs8-0"
         data-blade-component="icon"
         fill="none"
         height="10"
@@ -295,7 +295,7 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
     >
       <svg
         aria-hidden="true"
-        class=""
+        class="Svgweb__StyledSvg-vcmjs8-0"
         data-blade-component="icon"
         fill="none"
         height="8"

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Skeleton /> should render 1`] = `"<div id="root"><div aria-hidden="true" data-blade-component="skeleton" class="BaseBox-bmPWx PulseAnimationweb__PulseAnimation-sc-184soy3-0 Zha-dC hQFUui"></div></div>"`;
+exports[`<Skeleton /> should render 1`] = `"<div id="root"><div aria-hidden="true" data-blade-component="skeleton" class="BaseBox-bmPWx PulseAnimationweb__PulseAnimation-sc-184soy3-0 hdzzwq hQFUui"></div></div>"`;
 
 exports[`<Skeleton /> should render 2`] = `
 <div
@@ -8,7 +8,7 @@ exports[`<Skeleton /> should render 2`] = `
 >
   <div
     aria-hidden="true"
-    class="BaseBox-bmPWx PulseAnimationweb__PulseAnimation-sc-184soy3-0 Zha-dC hQFUui"
+    class="BaseBox-bmPWx PulseAnimationweb__PulseAnimation-sc-184soy3-0 hdzzwq hQFUui"
     data-blade-component="skeleton"
   />
 </div>

@@ -11,7 +11,7 @@ exports[`<Switch /> should render switch 1`] = `
   opacity: 0;
 }
 
-.c0.c0.c0.c0.c0 {
+.c0 {
   display: inline-block;
 }
 
@@ -150,20 +150,20 @@ exports[`<Switch /> should render switch 1`] = `
       />
       <div
         aria-hidden="true"
-        class="c3"
+        class=" c3"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
+          class=" c4"
           data-blade-component="base-box"
         >
           <div
-            class="c5"
+            class=" c5"
             data-blade-component="base-box"
           >
             <svg
               aria-hidden="true"
-              class="c6"
+              class="Svgweb__StyledSvg-vcmjs8-0 c6"
               data-blade-component="icon"
               fill="none"
               height="8px"
@@ -197,7 +197,7 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
   opacity: 0;
 }
 
-.c0.c0.c0.c0.c0 {
+.c0 {
   display: inline-block;
 }
 
@@ -329,20 +329,20 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
       />
       <div
         aria-hidden="true"
-        class="c3"
+        class=" c3"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
+          class=" c4"
           data-blade-component="base-box"
         >
           <div
-            class="c5"
+            class=" c5"
             data-blade-component="base-box"
           >
             <svg
               aria-hidden="true"
-              class="c6"
+              class="Svgweb__StyledSvg-vcmjs8-0 c6"
               data-blade-component="icon"
               fill="none"
               height="8px"

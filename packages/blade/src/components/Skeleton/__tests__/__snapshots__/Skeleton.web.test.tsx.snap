@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Skeleton /> should render skeleton 1`] = `
-.c0.c0.c0.c0.c0 {
+.c0 {
   height: 50px;
   width: 100%;
 }
@@ -35,14 +35,14 @@ exports[`<Skeleton /> should render skeleton 1`] = `
 `;
 
 exports[`<Skeleton /> should support margin and other layout props 1`] = `
-.c0.c0.c0.c0.c0 {
+.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   margin: 4px;
   height: 50px;
   width: 100%;

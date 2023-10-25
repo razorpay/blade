@@ -19,7 +19,7 @@ describe('<Box />', () => {
         id="root"
       >
         <div
-          class="BaseBox-bmPWx iANKZd"
+          class="BaseBox-bmPWx jBndhd"
           data-blade-component="box"
         >
           children test!
@@ -39,7 +39,7 @@ describe('<Box />', () => {
         id="root"
       >
         <footer
-          class="BaseBox-bmPWx klGTAr"
+          class="BaseBox-bmPWx zgBJD"
           data-blade-component="box"
         >
           Footer test!

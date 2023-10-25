@@ -38,7 +38,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
   margin-bottom: 2px;
 }
 
-.c0.c0.c0.c0.c0 {
+.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -48,11 +48,11 @@ exports[`<RadioGroup /> should render with help text 1`] = `
   flex-direction: column;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   margin-bottom: 4px;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -71,7 +71,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
   gap: 0px;
 }
 
-.c7.c7.c7.c7.c7 {
+.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -85,15 +85,15 @@ exports[`<RadioGroup /> should render with help text 1`] = `
   align-items: center;
 }
 
-.c10.c10.c10.c10.c10 {
+.c10 {
   margin-left: 4px;
 }
 
-.c12.c12.c12.c12.c12 {
+.c12 {
   margin-bottom: 0px;
 }
 
-.c13.c13.c13.c13.c13 {
+.c13 {
   margin-top: 4px;
 }
 
@@ -469,7 +469,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
   margin-bottom: 2px;
 }
 
-.c0.c0.c0.c0.c0 {
+.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -479,11 +479,11 @@ exports[`<RadioGroup /> should render with label 1`] = `
   flex-direction: column;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   margin-bottom: 4px;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -502,7 +502,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
   gap: 0px;
 }
 
-.c7.c7.c7.c7.c7 {
+.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -516,11 +516,11 @@ exports[`<RadioGroup /> should render with label 1`] = `
   align-items: center;
 }
 
-.c10.c10.c10.c10.c10 {
+.c10 {
   margin-left: 4px;
 }
 
-.c12.c12.c12.c12.c12 {
+.c12 {
   margin-bottom: 0px;
 }
 

@@ -1,39 +1,39 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Card /> should render a Card with Header & Footer 1`] = `"<div id="root"><div data-blade-component="card" class="BaseBox-bmPWx CardRootweb__StyledCardRoot-sc-1nb70ck-0 eHiLrj HaNCY"><div elevation="lowRaised" data-blade-component="base-box" class="BaseBox-bmPWx CardSurfaceweb__CardSurface-sc-1pgxikk-0 gUqrUG fXiyxY"><div data-blade-component="card-header" class="BaseBox-bmPWx bUrVm"><div data-blade-component="base-box" class="BaseBox-bmPWx jfuTEW"><div data-blade-component="base-box" class="BaseBox-bmPWx gfHtly"><div data-blade-component="base-box" class="BaseBox-bmPWx elboBh"><svg aria-hidden="true" data-blade-component="icon" height="24px" viewBox="0 0 24 24" width="24px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0 dhIfXO"><path d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z" fill="hsla(217, 56%, 17%, 1)" data-blade-component="svg-path"></path><path d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z" fill="hsla(217, 56%, 17%, 1)" data-blade-component="svg-path"></path><path d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z" clip-rule="evenodd" fill="hsla(217, 56%, 17%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></div><div data-blade-component="base-box" class="BaseBox-bmPWx diSXWw"><div data-blade-component="base-box" class="BaseBox-bmPWx dHddi"><h6 class="StyledBaseText-dVBfTO hYiPbA" data-blade-component="heading">Card Header</h6><div data-blade-component="base-box" class="BaseBox-bmPWx gdPaGc"><div data-blade-component="counter" class="BaseBox-bmPWx gqpWEB"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledCounterweb__StyledCounter-sc-1itt9w6-0 cfmnlm edcRpN"><div data-blade-component="base-box" class="BaseBox-bmPWx bvGbXd"><p class="StyledBaseText-dVBfTO jgInrd" data-blade-component="text">12</p></div></div></div></div></div><p class="StyledBaseText-dVBfTO hwHfuS" data-blade-component="text">Card subtitle</p></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx ijqnj"><div data-blade-component="badge" class="BaseBox-bmPWx gqpWEB"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledBadgeweb__StyledBadge-sc-1svn4tv-0 kYYYHR gMnWmA"><div data-blade-component="base-box" class="BaseBox-bmPWx bvGbXd"><p class="StyledBaseText-dVBfTO ghUfJK" data-blade-component="text">NEW</p></div></div></div></div></div><div data-blade-component="divider" role="separator" class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 gSXrEz hSwZSx"></div></div><div data-blade-component="card-body" class="BaseBox-bmPWx iutvIJ"><p class="StyledBaseText-dVBfTO kGtJcI" data-blade-component="text">Plain Card</p></div><div data-blade-component="card-footer" class="BaseBox-bmPWx mMnjj"><div data-blade-component="base-box" class="BaseBox-bmPWx icsKNG"></div><div data-blade-component="divider" role="separator" class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 gSXrEz hSwZSx"></div><div data-blade-component="base-box" class="BaseBox-bmPWx hQeIFe"><div data-blade-component="base-box" class="BaseBox-bmPWx cjYzGm"><p class="StyledBaseText-dVBfTO hRBMUb" data-blade-component="text">Card Footer</p><p class="StyledBaseText-dVBfTO hjHalV" data-blade-component="text">Card footer subtitle</p></div><div data-blade-component="base-box" class="BaseBox-bmPWx GfzUQ"><div data-blade-component="base-box" class="BaseBox-bmPWx hrdrUu"><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 eIDZkq"><div opacity="1" data-blade-component="base-box" class="BaseBox-bmPWx gRxylf"><div class="StyledBaseText-dVBfTO kKJmGb" data-blade-component="base-text">Delete</div></div></button></div><div data-blade-component="base-box" class="BaseBox-bmPWx cZcnnP"></div><div data-blade-component="base-box" class="BaseBox-bmPWx hrdrUu"><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 icFaIF"><div opacity="1" data-blade-component="base-box" class="BaseBox-bmPWx gRxylf"><div class="StyledBaseText-dVBfTO gEaGjA" data-blade-component="base-text">Save</div></div></button></div></div></div></div></div></div></div>"`;
+exports[`<Card /> should render a Card with Header & Footer 1`] = `"<div id="root"><div data-blade-component="card" class="BaseBox-bmPWx CardRootweb__StyledCardRoot-sc-1nb70ck-0 KuMcL HaNCY"><div elevation="lowRaised" data-blade-component="base-box" class="BaseBox-bmPWx CardSurfaceweb__CardSurface-sc-1pgxikk-0 dXrkKy fXiyxY"><div data-blade-component="card-header" class="BaseBox-bmPWx gvTYQa"><div data-blade-component="base-box" class="BaseBox-bmPWx cEYTaO"><div data-blade-component="base-box" class="BaseBox-bmPWx iOdcTa"><div data-blade-component="base-box" class="BaseBox-bmPWx eFvDfp"><svg aria-hidden="true" data-blade-component="icon" height="24px" viewBox="0 0 24 24" width="24px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z" fill="hsla(217, 56%, 17%, 1)" data-blade-component="svg-path"></path><path d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z" fill="hsla(217, 56%, 17%, 1)" data-blade-component="svg-path"></path><path d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z" clip-rule="evenodd" fill="hsla(217, 56%, 17%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></div><div data-blade-component="base-box" class="BaseBox-bmPWx kFTMWM"><div data-blade-component="base-box" class="BaseBox-bmPWx bdZEQS"><h6 class="StyledBaseText-dVBfTO hJqLGU" data-blade-component="heading">Card Header</h6><div data-blade-component="base-box" class="BaseBox-bmPWx ktWMhw"><div data-blade-component="counter" class="BaseBox-bmPWx bcSLaJ"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledCounterweb__StyledCounter-sc-1itt9w6-0 lldTHu edcRpN"><div data-blade-component="base-box" class="BaseBox-bmPWx dAmsUp"><p class="StyledBaseText-dVBfTO buCTvt" data-blade-component="text">12</p></div></div></div></div></div><p class="StyledBaseText-dVBfTO iDQsHy" data-blade-component="text">Card subtitle</p></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx cxaWQL"><div data-blade-component="badge" class="BaseBox-bmPWx bcSLaJ"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledBadgeweb__StyledBadge-sc-1svn4tv-0 cRtrfR gMnWmA"><div data-blade-component="base-box" class="BaseBox-bmPWx dAmsUp"><p class="StyledBaseText-dVBfTO kpBhSq" data-blade-component="text">NEW</p></div></div></div></div></div><div data-blade-component="divider" role="separator" class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 jfizlv hSwZSx"></div></div><div data-blade-component="card-body" class="BaseBox-bmPWx"><p class="StyledBaseText-dVBfTO dVvhng" data-blade-component="text">Plain Card</p></div><div data-blade-component="card-footer" class="BaseBox-bmPWx jWqAWn"><div data-blade-component="base-box" class="BaseBox-bmPWx ekWGYe"></div><div data-blade-component="divider" role="separator" class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 jfizlv hSwZSx"></div><div data-blade-component="base-box" class="BaseBox-bmPWx beNNrm"><div data-blade-component="base-box" class="BaseBox-bmPWx dUEwku"><p class="StyledBaseText-dVBfTO hFHRtn" data-blade-component="text">Card Footer</p><p class="StyledBaseText-dVBfTO XOyGl" data-blade-component="text">Card footer subtitle</p></div><div data-blade-component="base-box" class="BaseBox-bmPWx cgOfrU"><div data-blade-component="base-box" class="BaseBox-bmPWx lawERa"><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 oHzcW"><div opacity="1" data-blade-component="base-box" class="BaseBox-bmPWx bdXrIj"><div class="StyledBaseText-dVBfTO deCyLD" data-blade-component="base-text">Delete</div></div></button></div><div data-blade-component="base-box" class="BaseBox-bmPWx hFfAen"></div><div data-blade-component="base-box" class="BaseBox-bmPWx lawERa"><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 bgppYp"><div opacity="1" data-blade-component="base-box" class="BaseBox-bmPWx bdXrIj"><div class="StyledBaseText-dVBfTO yuflc" data-blade-component="base-text">Save</div></div></button></div></div></div></div></div></div></div>"`;
 
 exports[`<Card /> should render a Card with Header & Footer 2`] = `
 <div
   id="root"
 >
   <div
-    class="BaseBox-bmPWx CardRootweb__StyledCardRoot-sc-1nb70ck-0 eHiLrj HaNCY"
+    class="BaseBox-bmPWx CardRootweb__StyledCardRoot-sc-1nb70ck-0 KuMcL HaNCY"
     data-blade-component="card"
   >
     <div
-      class="BaseBox-bmPWx CardSurfaceweb__CardSurface-sc-1pgxikk-0 gUqrUG fXiyxY"
+      class="BaseBox-bmPWx CardSurfaceweb__CardSurface-sc-1pgxikk-0 dXrkKy fXiyxY"
       data-blade-component="base-box"
       elevation="lowRaised"
     >
       <div
-        class="BaseBox-bmPWx bUrVm"
+        class="BaseBox-bmPWx gvTYQa"
         data-blade-component="card-header"
       >
         <div
-          class="BaseBox-bmPWx jfuTEW"
+          class="BaseBox-bmPWx cEYTaO"
           data-blade-component="base-box"
         >
           <div
-            class="BaseBox-bmPWx gfHtly"
+            class="BaseBox-bmPWx iOdcTa"
             data-blade-component="base-box"
           >
             <div
-              class="BaseBox-bmPWx elboBh"
+              class="BaseBox-bmPWx eFvDfp"
               data-blade-component="base-box"
             >
               <svg
                 aria-hidden="true"
-                class="Svgweb__StyledSvg-vcmjs8-0 dhIfXO"
+                class="Svgweb__StyledSvg-vcmjs8-0"
                 data-blade-component="icon"
                 fill="none"
                 height="24px"
@@ -60,37 +60,37 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
               </svg>
             </div>
             <div
-              class="BaseBox-bmPWx diSXWw"
+              class="BaseBox-bmPWx kFTMWM"
               data-blade-component="base-box"
             >
               <div
-                class="BaseBox-bmPWx dHddi"
+                class="BaseBox-bmPWx bdZEQS"
                 data-blade-component="base-box"
               >
                 <h6
-                  class="StyledBaseText-dVBfTO hYiPbA"
+                  class="StyledBaseText-dVBfTO hJqLGU"
                   data-blade-component="heading"
                 >
                   Card Header
                 </h6>
                 <div
-                  class="BaseBox-bmPWx gdPaGc"
+                  class="BaseBox-bmPWx ktWMhw"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="BaseBox-bmPWx gqpWEB"
+                    class="BaseBox-bmPWx bcSLaJ"
                     data-blade-component="counter"
                   >
                     <div
-                      class="BaseBox-bmPWx StyledCounterweb__StyledCounter-sc-1itt9w6-0 cfmnlm edcRpN"
+                      class="BaseBox-bmPWx StyledCounterweb__StyledCounter-sc-1itt9w6-0 lldTHu edcRpN"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="BaseBox-bmPWx bvGbXd"
+                        class="BaseBox-bmPWx dAmsUp"
                         data-blade-component="base-box"
                       >
                         <p
-                          class="StyledBaseText-dVBfTO jgInrd"
+                          class="StyledBaseText-dVBfTO buCTvt"
                           data-blade-component="text"
                         >
                           12
@@ -101,7 +101,7 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
                 </div>
               </div>
               <p
-                class="StyledBaseText-dVBfTO hwHfuS"
+                class="StyledBaseText-dVBfTO iDQsHy"
                 data-blade-component="text"
               >
                 Card subtitle
@@ -109,23 +109,23 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
             </div>
           </div>
           <div
-            class="BaseBox-bmPWx ijqnj"
+            class="BaseBox-bmPWx cxaWQL"
             data-blade-component="base-box"
           >
             <div
-              class="BaseBox-bmPWx gqpWEB"
+              class="BaseBox-bmPWx bcSLaJ"
               data-blade-component="badge"
             >
               <div
-                class="BaseBox-bmPWx StyledBadgeweb__StyledBadge-sc-1svn4tv-0 kYYYHR gMnWmA"
+                class="BaseBox-bmPWx StyledBadgeweb__StyledBadge-sc-1svn4tv-0 cRtrfR gMnWmA"
                 data-blade-component="base-box"
               >
                 <div
-                  class="BaseBox-bmPWx bvGbXd"
+                  class="BaseBox-bmPWx dAmsUp"
                   data-blade-component="base-box"
                 >
                   <p
-                    class="StyledBaseText-dVBfTO ghUfJK"
+                    class="StyledBaseText-dVBfTO kpBhSq"
                     data-blade-component="text"
                   >
                     NEW
@@ -136,77 +136,77 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
           </div>
         </div>
         <div
-          class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 gSXrEz hSwZSx"
+          class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 jfizlv hSwZSx"
           data-blade-component="divider"
           role="separator"
         />
       </div>
       <div
-        class="BaseBox-bmPWx iutvIJ"
+        class="BaseBox-bmPWx"
         data-blade-component="card-body"
       >
         <p
-          class="StyledBaseText-dVBfTO kGtJcI"
+          class="StyledBaseText-dVBfTO dVvhng"
           data-blade-component="text"
         >
           Plain Card
         </p>
       </div>
       <div
-        class="BaseBox-bmPWx mMnjj"
+        class="BaseBox-bmPWx jWqAWn"
         data-blade-component="card-footer"
       >
         <div
-          class="BaseBox-bmPWx icsKNG"
+          class="BaseBox-bmPWx ekWGYe"
           data-blade-component="base-box"
         />
         <div
-          class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 gSXrEz hSwZSx"
+          class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 jfizlv hSwZSx"
           data-blade-component="divider"
           role="separator"
         />
         <div
-          class="BaseBox-bmPWx hQeIFe"
+          class="BaseBox-bmPWx beNNrm"
           data-blade-component="base-box"
         >
           <div
-            class="BaseBox-bmPWx cjYzGm"
+            class="BaseBox-bmPWx dUEwku"
             data-blade-component="base-box"
           >
             <p
-              class="StyledBaseText-dVBfTO hRBMUb"
+              class="StyledBaseText-dVBfTO hFHRtn"
               data-blade-component="text"
             >
               Card Footer
             </p>
             <p
-              class="StyledBaseText-dVBfTO hjHalV"
+              class="StyledBaseText-dVBfTO XOyGl"
               data-blade-component="text"
             >
               Card footer subtitle
             </p>
           </div>
           <div
-            class="BaseBox-bmPWx GfzUQ"
+            class="BaseBox-bmPWx cgOfrU"
             data-blade-component="base-box"
           >
             <div
-              class="BaseBox-bmPWx hrdrUu"
+              class="BaseBox-bmPWx lawERa"
               data-blade-component="base-box"
             >
               <button
-                class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 eIDZkq"
+                class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 oHzcW"
                 data-blade-component="button"
                 role="button"
                 type="button"
               >
                 <div
-                  class="BaseBox-bmPWx gRxylf"
+                  class="BaseBox-bmPWx bdXrIj"
                   data-blade-component="base-box"
                   opacity="1"
                 >
                   <div
-                    class="StyledBaseText-dVBfTO kKJmGb"
+                    class="StyledBaseText-dVBfTO deCyLD"
                     data-blade-component="base-text"
                   >
                     Delete
@@ -215,26 +215,26 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
               </button>
             </div>
             <div
-              class="BaseBox-bmPWx cZcnnP"
+              class="BaseBox-bmPWx hFfAen"
               data-blade-component="base-box"
             />
             <div
-              class="BaseBox-bmPWx hrdrUu"
+              class="BaseBox-bmPWx lawERa"
               data-blade-component="base-box"
             >
               <button
-                class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 icFaIF"
+                class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 bgppYp"
                 data-blade-component="button"
                 role="button"
                 type="button"
               >
                 <div
-                  class="BaseBox-bmPWx gRxylf"
+                  class="BaseBox-bmPWx bdXrIj"
                   data-blade-component="base-box"
                   opacity="1"
                 >
                   <div
-                    class="StyledBaseText-dVBfTO gEaGjA"
+                    class="StyledBaseText-dVBfTO yuflc"
                     data-blade-component="base-text"
                   >
                     Save
@@ -250,19 +250,19 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
 </div>
 `;
 
-exports[`<Card /> should render a Interactive Card with href 1`] = `"<div id="root"><div href="https://google.com" data-blade-component="card" class="BaseBox-bmPWx CardRootweb__StyledCardRoot-sc-1nb70ck-0 eHiLrj HaNCY"><div elevation="lowRaised" data-blade-component="base-box" class="BaseBox-bmPWx CardSurfaceweb__CardSurface-sc-1pgxikk-0 gUqrUG fXiyxY"><a href="https://google.com" data-blade-component="card-link-overlay" aria-pressed="false" class="LinkOverlayweb__LinkOverlay-ugib1o-0 ceIUru"></a><div data-blade-component="card-body" class="BaseBox-bmPWx iutvIJ"><p class="StyledBaseText-dVBfTO kGtJcI" data-blade-component="text">Plain Card</p></div></div></div></div>"`;
+exports[`<Card /> should render a Interactive Card with href 1`] = `"<div id="root"><div href="https://google.com" data-blade-component="card" class="BaseBox-bmPWx CardRootweb__StyledCardRoot-sc-1nb70ck-0 KuMcL HaNCY"><div elevation="lowRaised" data-blade-component="base-box" class="BaseBox-bmPWx CardSurfaceweb__CardSurface-sc-1pgxikk-0 dXrkKy fXiyxY"><a href="https://google.com" data-blade-component="card-link-overlay" aria-pressed="false" class="LinkOverlayweb__LinkOverlay-ugib1o-0 ceIUru"></a><div data-blade-component="card-body" class="BaseBox-bmPWx"><p class="StyledBaseText-dVBfTO dVvhng" data-blade-component="text">Plain Card</p></div></div></div></div>"`;
 
 exports[`<Card /> should render a Interactive Card with href 2`] = `
 <div
   id="root"
 >
   <div
-    class="BaseBox-bmPWx CardRootweb__StyledCardRoot-sc-1nb70ck-0 eHiLrj HaNCY"
+    class="BaseBox-bmPWx CardRootweb__StyledCardRoot-sc-1nb70ck-0 KuMcL HaNCY"
     data-blade-component="card"
     href="https://google.com"
   >
     <div
-      class="BaseBox-bmPWx CardSurfaceweb__CardSurface-sc-1pgxikk-0 gUqrUG fXiyxY"
+      class="BaseBox-bmPWx CardSurfaceweb__CardSurface-sc-1pgxikk-0 dXrkKy fXiyxY"
       data-blade-component="base-box"
       elevation="lowRaised"
     >
@@ -273,11 +273,11 @@ exports[`<Card /> should render a Interactive Card with href 2`] = `
         href="https://google.com"
       />
       <div
-        class="BaseBox-bmPWx iutvIJ"
+        class="BaseBox-bmPWx"
         data-blade-component="card-body"
       >
         <p
-          class="StyledBaseText-dVBfTO kGtJcI"
+          class="StyledBaseText-dVBfTO dVvhng"
           data-blade-component="text"
         >
           Plain Card
@@ -288,18 +288,18 @@ exports[`<Card /> should render a Interactive Card with href 2`] = `
 </div>
 `;
 
-exports[`<Card /> should render a Interactive Card with onClick 1`] = `"<div id="root"><div data-blade-component="card" class="BaseBox-bmPWx CardRootweb__StyledCardRoot-sc-1nb70ck-0 eHiLrj HaNCY"><div elevation="lowRaised" data-blade-component="base-box" class="BaseBox-bmPWx CardSurfaceweb__CardSurface-sc-1pgxikk-0 gUqrUG fXiyxY"><button data-blade-component="card-link-overlay" aria-pressed="false" class="LinkOverlayweb__LinkOverlay-ugib1o-0 ceIUru"></button><div data-blade-component="card-body" class="BaseBox-bmPWx iutvIJ"><p class="StyledBaseText-dVBfTO kGtJcI" data-blade-component="text">Plain Card</p></div></div></div></div>"`;
+exports[`<Card /> should render a Interactive Card with onClick 1`] = `"<div id="root"><div data-blade-component="card" class="BaseBox-bmPWx CardRootweb__StyledCardRoot-sc-1nb70ck-0 KuMcL HaNCY"><div elevation="lowRaised" data-blade-component="base-box" class="BaseBox-bmPWx CardSurfaceweb__CardSurface-sc-1pgxikk-0 dXrkKy fXiyxY"><button data-blade-component="card-link-overlay" aria-pressed="false" class="LinkOverlayweb__LinkOverlay-ugib1o-0 ceIUru"></button><div data-blade-component="card-body" class="BaseBox-bmPWx"><p class="StyledBaseText-dVBfTO dVvhng" data-blade-component="text">Plain Card</p></div></div></div></div>"`;
 
 exports[`<Card /> should render a Interactive Card with onClick 2`] = `
 <div
   id="root"
 >
   <div
-    class="BaseBox-bmPWx CardRootweb__StyledCardRoot-sc-1nb70ck-0 eHiLrj HaNCY"
+    class="BaseBox-bmPWx CardRootweb__StyledCardRoot-sc-1nb70ck-0 KuMcL HaNCY"
     data-blade-component="card"
   >
     <div
-      class="BaseBox-bmPWx CardSurfaceweb__CardSurface-sc-1pgxikk-0 gUqrUG fXiyxY"
+      class="BaseBox-bmPWx CardSurfaceweb__CardSurface-sc-1pgxikk-0 dXrkKy fXiyxY"
       data-blade-component="base-box"
       elevation="lowRaised"
     >
@@ -309,11 +309,11 @@ exports[`<Card /> should render a Interactive Card with onClick 2`] = `
         data-blade-component="card-link-overlay"
       />
       <div
-        class="BaseBox-bmPWx iutvIJ"
+        class="BaseBox-bmPWx"
         data-blade-component="card-body"
       >
         <p
-          class="StyledBaseText-dVBfTO kGtJcI"
+          class="StyledBaseText-dVBfTO dVvhng"
           data-blade-component="text"
         >
           Plain Card

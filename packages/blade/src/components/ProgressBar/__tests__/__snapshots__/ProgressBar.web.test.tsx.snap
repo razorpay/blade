@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
-.c0.c0.c0.c0.c0 {
+.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -12,7 +12,7 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
   width: 100%;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -26,11 +26,11 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
   justify-content: space-between;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   margin-bottom: 4px;
 }
 
-.c3.c3.c3.c3.c3 {
+.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -49,14 +49,14 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
   gap: 0px;
 }
 
-.c8.c8.c8.c8.c8 {
+.c8 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(216,15%,54%,0.18);
 }
 
-.c9.c9.c9.c9.c9 {
+.c9 {
   background-color: hsla(218,89%,51%,1);
 }
 
@@ -230,7 +230,7 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
             data-blade-component="base-box"
           >
             <div
-              class="c12 c13"
+              class=" c12 c13"
               data-blade-component="base-box"
             />
           </div>
@@ -242,7 +242,7 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
 `;
 
 exports[`<ProgressBar /> should render ProgressBar without label and percentage 1`] = `
-.c0.c0.c0.c0.c0 {
+.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -253,7 +253,7 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
   width: 100%;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -267,14 +267,14 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
   justify-content: flex-end;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(216,15%,54%,0.18);
 }
 
-.c3.c3.c3.c3.c3 {
+.c3 {
   background-color: hsla(218,89%,51%,1);
 }
 
@@ -343,7 +343,7 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
             data-blade-component="base-box"
           >
             <div
-              class="c6 c7"
+              class=" c6 c7"
               data-blade-component="base-box"
             />
           </div>
@@ -355,7 +355,7 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
 `;
 
 exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
-.c0.c0.c0.c0.c0 {
+.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -366,7 +366,7 @@ exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
   width: 100%;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -380,18 +380,18 @@ exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
   justify-content: flex-end;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   margin-bottom: 4px;
 }
 
-.c4.c4.c4.c4.c4 {
+.c4 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(214,21%,94%,0.18);
 }
 
-.c5.c5.c5.c5.c5 {
+.c5 {
   background-color: hsla(218,89%,51%,1);
 }
 
@@ -485,7 +485,7 @@ exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
             data-blade-component="base-box"
           >
             <div
-              class="c8 c9"
+              class=" c8 c9"
               data-blade-component="base-box"
             />
           </div>
@@ -497,7 +497,7 @@ exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
 `;
 
 exports[`<ProgressBar /> should render high contrast information intent ProgressBar 1`] = `
-.c0.c0.c0.c0.c0 {
+.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -508,7 +508,7 @@ exports[`<ProgressBar /> should render high contrast information intent Progress
   width: 100%;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -522,18 +522,18 @@ exports[`<ProgressBar /> should render high contrast information intent Progress
   justify-content: flex-end;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   margin-bottom: 4px;
 }
 
-.c4.c4.c4.c4.c4 {
+.c4 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(214,21%,94%,0.18);
 }
 
-.c5.c5.c5.c5.c5 {
+.c5 {
   background-color: hsla(193,100%,35%,1);
 }
 
@@ -627,7 +627,7 @@ exports[`<ProgressBar /> should render high contrast information intent Progress
             data-blade-component="base-box"
           >
             <div
-              class="c8 c9"
+              class=" c8 c9"
               data-blade-component="base-box"
             />
           </div>
@@ -639,7 +639,7 @@ exports[`<ProgressBar /> should render high contrast information intent Progress
 `;
 
 exports[`<ProgressBar /> should render high contrast negative intent ProgressBar 1`] = `
-.c0.c0.c0.c0.c0 {
+.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -650,7 +650,7 @@ exports[`<ProgressBar /> should render high contrast negative intent ProgressBar
   width: 100%;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -664,18 +664,18 @@ exports[`<ProgressBar /> should render high contrast negative intent ProgressBar
   justify-content: flex-end;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   margin-bottom: 4px;
 }
 
-.c4.c4.c4.c4.c4 {
+.c4 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(214,21%,94%,0.18);
 }
 
-.c5.c5.c5.c5.c5 {
+.c5 {
   background-color: hsla(8,73%,47%,1);
 }
 
@@ -769,7 +769,7 @@ exports[`<ProgressBar /> should render high contrast negative intent ProgressBar
             data-blade-component="base-box"
           >
             <div
-              class="c8 c9"
+              class=" c8 c9"
               data-blade-component="base-box"
             />
           </div>
@@ -781,7 +781,7 @@ exports[`<ProgressBar /> should render high contrast negative intent ProgressBar
 `;
 
 exports[`<ProgressBar /> should render high contrast neutral intent ProgressBar 1`] = `
-.c0.c0.c0.c0.c0 {
+.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -792,7 +792,7 @@ exports[`<ProgressBar /> should render high contrast neutral intent ProgressBar 
   width: 100%;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -806,18 +806,18 @@ exports[`<ProgressBar /> should render high contrast neutral intent ProgressBar 
   justify-content: flex-end;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   margin-bottom: 4px;
 }
 
-.c4.c4.c4.c4.c4 {
+.c4 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(214,21%,94%,0.18);
 }
 
-.c5.c5.c5.c5.c5 {
+.c5 {
   background-color: hsla(216,33%,29%,1);
 }
 
@@ -911,7 +911,7 @@ exports[`<ProgressBar /> should render high contrast neutral intent ProgressBar 
             data-blade-component="base-box"
           >
             <div
-              class="c8 c9"
+              class=" c8 c9"
               data-blade-component="base-box"
             />
           </div>
@@ -923,7 +923,7 @@ exports[`<ProgressBar /> should render high contrast neutral intent ProgressBar 
 `;
 
 exports[`<ProgressBar /> should render high contrast notice intent ProgressBar 1`] = `
-.c0.c0.c0.c0.c0 {
+.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -934,7 +934,7 @@ exports[`<ProgressBar /> should render high contrast notice intent ProgressBar 1
   width: 100%;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -948,18 +948,18 @@ exports[`<ProgressBar /> should render high contrast notice intent ProgressBar 1
   justify-content: flex-end;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   margin-bottom: 4px;
 }
 
-.c4.c4.c4.c4.c4 {
+.c4 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(214,21%,94%,0.18);
 }
 
-.c5.c5.c5.c5.c5 {
+.c5 {
   background-color: hsla(38,97%,38%,1);
 }
 
@@ -1053,7 +1053,7 @@ exports[`<ProgressBar /> should render high contrast notice intent ProgressBar 1
             data-blade-component="base-box"
           >
             <div
-              class="c8 c9"
+              class=" c8 c9"
               data-blade-component="base-box"
             />
           </div>
@@ -1065,7 +1065,7 @@ exports[`<ProgressBar /> should render high contrast notice intent ProgressBar 1
 `;
 
 exports[`<ProgressBar /> should render high contrast positive intent ProgressBar 1`] = `
-.c0.c0.c0.c0.c0 {
+.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1076,7 +1076,7 @@ exports[`<ProgressBar /> should render high contrast positive intent ProgressBar
   width: 100%;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1090,18 +1090,18 @@ exports[`<ProgressBar /> should render high contrast positive intent ProgressBar
   justify-content: flex-end;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   margin-bottom: 4px;
 }
 
-.c4.c4.c4.c4.c4 {
+.c4 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(214,21%,94%,0.18);
 }
 
-.c5.c5.c5.c5.c5 {
+.c5 {
   background-color: hsla(160,100%,26%,1);
 }
 
@@ -1195,7 +1195,7 @@ exports[`<ProgressBar /> should render high contrast positive intent ProgressBar
             data-blade-component="base-box"
           >
             <div
-              class="c8 c9"
+              class=" c8 c9"
               data-blade-component="base-box"
             />
           </div>
@@ -1207,7 +1207,7 @@ exports[`<ProgressBar /> should render high contrast positive intent ProgressBar
 `;
 
 exports[`<ProgressBar /> should render low contrast information intent ProgressBar 1`] = `
-.c0.c0.c0.c0.c0 {
+.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1218,7 +1218,7 @@ exports[`<ProgressBar /> should render low contrast information intent ProgressB
   width: 100%;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1232,18 +1232,18 @@ exports[`<ProgressBar /> should render low contrast information intent ProgressB
   justify-content: flex-end;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   margin-bottom: 4px;
 }
 
-.c4.c4.c4.c4.c4 {
+.c4 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(216,15%,54%,0.18);
 }
 
-.c5.c5.c5.c5.c5 {
+.c5 {
   background-color: hsla(193,100%,35%,1);
 }
 
@@ -1337,7 +1337,7 @@ exports[`<ProgressBar /> should render low contrast information intent ProgressB
             data-blade-component="base-box"
           >
             <div
-              class="c8 c9"
+              class=" c8 c9"
               data-blade-component="base-box"
             />
           </div>
@@ -1349,7 +1349,7 @@ exports[`<ProgressBar /> should render low contrast information intent ProgressB
 `;
 
 exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 1`] = `
-.c0.c0.c0.c0.c0 {
+.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1360,7 +1360,7 @@ exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 
   width: 100%;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1374,18 +1374,18 @@ exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 
   justify-content: flex-end;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   margin-bottom: 4px;
 }
 
-.c4.c4.c4.c4.c4 {
+.c4 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(216,15%,54%,0.18);
 }
 
-.c5.c5.c5.c5.c5 {
+.c5 {
   background-color: hsla(8,73%,47%,1);
 }
 
@@ -1479,7 +1479,7 @@ exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 
             data-blade-component="base-box"
           >
             <div
-              class="c8 c9"
+              class=" c8 c9"
               data-blade-component="base-box"
             />
           </div>
@@ -1491,7 +1491,7 @@ exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 
 `;
 
 exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1`] = `
-.c0.c0.c0.c0.c0 {
+.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1502,7 +1502,7 @@ exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1
   width: 100%;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1516,18 +1516,18 @@ exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1
   justify-content: flex-end;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   margin-bottom: 4px;
 }
 
-.c4.c4.c4.c4.c4 {
+.c4 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(216,15%,54%,0.18);
 }
 
-.c5.c5.c5.c5.c5 {
+.c5 {
   background-color: hsla(216,33%,29%,1);
 }
 
@@ -1621,7 +1621,7 @@ exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1
             data-blade-component="base-box"
           >
             <div
-              class="c8 c9"
+              class=" c8 c9"
               data-blade-component="base-box"
             />
           </div>
@@ -1633,7 +1633,7 @@ exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1
 `;
 
 exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`] = `
-.c0.c0.c0.c0.c0 {
+.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1644,7 +1644,7 @@ exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`
   width: 100%;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1658,18 +1658,18 @@ exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`
   justify-content: flex-end;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   margin-bottom: 4px;
 }
 
-.c4.c4.c4.c4.c4 {
+.c4 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(216,15%,54%,0.18);
 }
 
-.c5.c5.c5.c5.c5 {
+.c5 {
   background-color: hsla(38,97%,38%,1);
 }
 
@@ -1763,7 +1763,7 @@ exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`
             data-blade-component="base-box"
           >
             <div
-              class="c8 c9"
+              class=" c8 c9"
               data-blade-component="base-box"
             />
           </div>
@@ -1775,7 +1775,7 @@ exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`
 `;
 
 exports[`<ProgressBar /> should render low contrast positive intent ProgressBar 1`] = `
-.c0.c0.c0.c0.c0 {
+.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1786,7 +1786,7 @@ exports[`<ProgressBar /> should render low contrast positive intent ProgressBar 
   width: 100%;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1800,18 +1800,18 @@ exports[`<ProgressBar /> should render low contrast positive intent ProgressBar 
   justify-content: flex-end;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   margin-bottom: 4px;
 }
 
-.c4.c4.c4.c4.c4 {
+.c4 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(216,15%,54%,0.18);
 }
 
-.c5.c5.c5.c5.c5 {
+.c5 {
   background-color: hsla(160,100%,26%,1);
 }
 
@@ -1905,7 +1905,7 @@ exports[`<ProgressBar /> should render low contrast positive intent ProgressBar 
             data-blade-component="base-box"
           >
             <div
-              class="c8 c9"
+              class=" c8 c9"
               data-blade-component="base-box"
             />
           </div>
@@ -1917,7 +1917,7 @@ exports[`<ProgressBar /> should render low contrast positive intent ProgressBar 
 `;
 
 exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
-.c0.c0.c0.c0.c0 {
+.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1928,7 +1928,7 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
   width: 100%;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1942,11 +1942,11 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
   justify-content: space-between;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   margin-bottom: 4px;
 }
 
-.c3.c3.c3.c3.c3 {
+.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1965,14 +1965,14 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
   gap: 0px;
 }
 
-.c8.c8.c8.c8.c8 {
+.c8 {
   overflow: hidden;
   position: relative;
   height: 4px;
   background-color: hsla(216,15%,54%,0.18);
 }
 
-.c9.c9.c9.c9.c9 {
+.c9 {
   background-color: hsla(218,89%,51%,1);
 }
 
@@ -2146,7 +2146,7 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
             data-blade-component="base-box"
           >
             <div
-              class="c12 c13"
+              class=" c12 c13"
               data-blade-component="base-box"
             />
           </div>
@@ -2158,7 +2158,7 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
 `;
 
 exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
-.c0.c0.c0.c0.c0 {
+.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2169,7 +2169,7 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
   width: 100%;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2183,14 +2183,14 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
   justify-content: flex-end;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(216,15%,54%,0.18);
 }
 
-.c3.c3.c3.c3.c3 {
+.c3 {
   background-color: hsla(218,89%,51%,1);
 }
 
@@ -2248,7 +2248,7 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
             data-blade-component="base-box"
           >
             <div
-              class="c6"
+              class=" c6"
               data-blade-component="base-box"
             />
           </div>
@@ -2260,7 +2260,7 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
 `;
 
 exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
-.c0.c0.c0.c0.c0 {
+.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2271,7 +2271,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
   width: 100%;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2285,11 +2285,11 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
   justify-content: space-between;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   margin-bottom: 4px;
 }
 
-.c3.c3.c3.c3.c3 {
+.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2308,14 +2308,14 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
   gap: 0px;
 }
 
-.c8.c8.c8.c8.c8 {
+.c8 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(216,15%,54%,0.18);
 }
 
-.c9.c9.c9.c9.c9 {
+.c9 {
   background-color: hsla(218,89%,51%,1);
 }
 
@@ -2489,7 +2489,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
             data-blade-component="base-box"
           >
             <div
-              class="c12 c13"
+              class=" c12 c13"
               data-blade-component="base-box"
             />
           </div>
@@ -2501,7 +2501,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
 `;
 
 exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2523,7 +2523,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   opacity: 1;
 }
 
-.c3.c3.c3.c3.c3 {
+.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2534,7 +2534,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   width: 100%;
 }
 
-.c4.c4.c4.c4.c4 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2548,11 +2548,11 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   justify-content: space-between;
 }
 
-.c5.c5.c5.c5.c5 {
+.c5 {
   margin-bottom: 4px;
 }
 
-.c6.c6.c6.c6.c6 {
+.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2571,14 +2571,14 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   gap: 0px;
 }
 
-.c11.c11.c11.c11.c11 {
+.c11 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(216,15%,54%,0.18);
 }
 
-.c12.c12.c12.c12.c12 {
+.c12 {
   background-color: hsla(218,89%,51%,1);
 }
 
@@ -2847,7 +2847,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
             data-blade-component="base-box"
           >
             <div
-              class="c15 c16"
+              class=" c15 c16"
               data-blade-component="base-box"
             />
           </div>
@@ -2859,7 +2859,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
 `;
 
 exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2881,7 +2881,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   opacity: 1;
 }
 
-.c3.c3.c3.c3.c3 {
+.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2892,7 +2892,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   width: 100%;
 }
 
-.c4.c4.c4.c4.c4 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2906,11 +2906,11 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   justify-content: space-between;
 }
 
-.c5.c5.c5.c5.c5 {
+.c5 {
   margin-bottom: 4px;
 }
 
-.c6.c6.c6.c6.c6 {
+.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2929,14 +2929,14 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   gap: 0px;
 }
 
-.c11.c11.c11.c11.c11 {
+.c11 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(216,15%,54%,0.18);
 }
 
-.c12.c12.c12.c12.c12 {
+.c12 {
   background-color: hsla(218,89%,51%,1);
 }
 
@@ -3205,7 +3205,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
             data-blade-component="base-box"
           >
             <div
-              class="c15 c16"
+              class=" c15 c16"
               data-blade-component="base-box"
             />
           </div>

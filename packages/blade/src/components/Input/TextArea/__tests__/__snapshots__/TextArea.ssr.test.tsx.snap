@@ -1,21 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<TextArea /> should render TextArea on server and have autofocus on client 1`] = `"<div id="root"><div data-blade-component="textarea" class="BaseBox-bmPWx iutvIJ"><div data-blade-component="base-box" class="BaseBox-bmPWx jjVhDm"><div data-blade-component="base-box" class="BaseBox-bmPWx bNyHbK"><label for="textarea-undefined-input-undefined" style="width:auto;flex-shrink:0;margin-right:16px" data-blade-component="form-label"><div data-blade-component="base-box" class="BaseBox-bmPWx cWPgGA"><div data-blade-component="base-box" class="BaseBox-bmPWx cEagQj"><p class="StyledBaseText-dVBfTO caEKek" data-blade-component="text">Enter name</p><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 ijVANw"><p class="StyledBaseText-dVBfTO kGtJcI" data-blade-component="text"></p></div></div></div></label></div><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 iutvIJ ibWdDj"><textarea type="text" rows="2" id="textarea-undefined-input-undefined" autofocus="" data-blade-component="styled-base-input" aria-required="false" aria-disabled="false" aria-invalid="false" aria-describedby="" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 eWfcPA"></textarea><div data-blade-component="base-box" class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0 iutvIJ dCWMmg"></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx hVlzDw"><div data-blade-component="base-box" class="BaseBox-bmPWx euuYYv"></div></div></div></div>"`;
+exports[`<TextArea /> should render TextArea on server and have autofocus on client 1`] = `"<div id="root"><div data-blade-component="textarea" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx edjBu"><div data-blade-component="base-box" class="BaseBox-bmPWx grflbK"><label for="textarea-undefined-input-undefined" style="width:auto;flex-shrink:0;margin-right:16px" data-blade-component="form-label"><div data-blade-component="base-box" class="BaseBox-bmPWx bqWBik"><div data-blade-component="base-box" class="BaseBox-bmPWx eeqPab"><p class="StyledBaseText-dVBfTO dOyqEI" data-blade-component="text">Enter name</p><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 ijVANw"><p class="StyledBaseText-dVBfTO dVvhng" data-blade-component="text"></p></div></div></div></label></div><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  ibWdDj"><textarea type="text" rows="2" id="textarea-undefined-input-undefined" autofocus="" data-blade-component="styled-base-input" aria-required="false" aria-disabled="false" aria-invalid="false" aria-describedby="" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 eWfcPA"></textarea><div data-blade-component="base-box" class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  dCWMmg"></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx jgxKDg"><div data-blade-component="base-box" class="BaseBox-bmPWx ctznZr"></div></div></div></div>"`;
 
 exports[`<TextArea /> should render TextArea on server and have autofocus on client 2`] = `
 <div
   id="root"
 >
   <div
-    class="BaseBox-bmPWx iutvIJ"
+    class="BaseBox-bmPWx"
     data-blade-component="textarea"
   >
     <div
-      class="BaseBox-bmPWx jjVhDm"
+      class="BaseBox-bmPWx edjBu"
       data-blade-component="base-box"
     >
       <div
-        class="BaseBox-bmPWx bNyHbK"
+        class="BaseBox-bmPWx grflbK"
         data-blade-component="base-box"
       >
         <label
@@ -24,15 +24,15 @@ exports[`<TextArea /> should render TextArea on server and have autofocus on cli
           style="width:auto;flex-shrink:0;margin-right:16px"
         >
           <div
-            class="BaseBox-bmPWx cWPgGA"
+            class="BaseBox-bmPWx bqWBik"
             data-blade-component="base-box"
           >
             <div
-              class="BaseBox-bmPWx cEagQj"
+              class="BaseBox-bmPWx eeqPab"
               data-blade-component="base-box"
             >
               <p
-                class="StyledBaseText-dVBfTO caEKek"
+                class="StyledBaseText-dVBfTO dOyqEI"
                 data-blade-component="text"
               >
                 Enter name
@@ -42,7 +42,7 @@ exports[`<TextArea /> should render TextArea on server and have autofocus on cli
                 data-blade-component="visually-hidden"
               >
                 <p
-                  class="StyledBaseText-dVBfTO kGtJcI"
+                  class="StyledBaseText-dVBfTO dVvhng"
                   data-blade-component="text"
                 />
               </div>
@@ -51,7 +51,7 @@ exports[`<TextArea /> should render TextArea on server and have autofocus on cli
         </label>
       </div>
       <div
-        class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 iutvIJ ibWdDj"
+        class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  ibWdDj"
         data-blade-component="base-box"
       >
         <textarea
@@ -67,17 +67,17 @@ exports[`<TextArea /> should render TextArea on server and have autofocus on cli
           type="text"
         />
         <div
-          class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0 iutvIJ dCWMmg"
+          class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  dCWMmg"
           data-blade-component="base-box"
         />
       </div>
     </div>
     <div
-      class="BaseBox-bmPWx hVlzDw"
+      class="BaseBox-bmPWx jgxKDg"
       data-blade-component="base-box"
     >
       <div
-        class="BaseBox-bmPWx euuYYv"
+        class="BaseBox-bmPWx ctznZr"
         data-blade-component="base-box"
       />
     </div>

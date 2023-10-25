@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Spinner /> should render Spinner with default props 1`] = `
-.c0.c0.c0.c0.c0 {
+.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -40,12 +40,12 @@ exports[`<Spinner /> should render Spinner with default props 1`] = `
       role="progressbar"
     >
       <div
-        class="c1"
+        class=" c1"
         data-blade-component="base-box"
       >
         <svg
           aria-hidden="true"
-          class=""
+          class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
           height="16px"
@@ -76,7 +76,7 @@ exports[`<Spinner /> should render Spinner with default props 1`] = `
 `;
 
 exports[`<Spinner /> should render default color Spinner 1`] = `
-.c0.c0.c0.c0.c0 {
+.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -115,12 +115,12 @@ exports[`<Spinner /> should render default color Spinner 1`] = `
       role="progressbar"
     >
       <div
-        class="c1"
+        class=" c1"
         data-blade-component="base-box"
       >
         <svg
           aria-hidden="true"
-          class=""
+          class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
           height="16px"
@@ -151,7 +151,7 @@ exports[`<Spinner /> should render default color Spinner 1`] = `
 `;
 
 exports[`<Spinner /> should render large size Spinner 1`] = `
-.c0.c0.c0.c0.c0 {
+.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -190,12 +190,12 @@ exports[`<Spinner /> should render large size Spinner 1`] = `
       role="progressbar"
     >
       <div
-        class="c1"
+        class=" c1"
         data-blade-component="base-box"
       >
         <svg
           aria-hidden="true"
-          class=""
+          class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
           height="20px"
@@ -226,7 +226,7 @@ exports[`<Spinner /> should render large size Spinner 1`] = `
 `;
 
 exports[`<Spinner /> should render medium size Spinner 1`] = `
-.c0.c0.c0.c0.c0 {
+.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -265,12 +265,12 @@ exports[`<Spinner /> should render medium size Spinner 1`] = `
       role="progressbar"
     >
       <div
-        class="c1"
+        class=" c1"
         data-blade-component="base-box"
       >
         <svg
           aria-hidden="true"
-          class=""
+          class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
           height="16px"
@@ -301,7 +301,7 @@ exports[`<Spinner /> should render medium size Spinner 1`] = `
 `;
 
 exports[`<Spinner /> should render white color Spinner 1`] = `
-.c0.c0.c0.c0.c0 {
+.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -340,12 +340,12 @@ exports[`<Spinner /> should render white color Spinner 1`] = `
       role="progressbar"
     >
       <div
-        class="c1"
+        class=" c1"
         data-blade-component="base-box"
       >
         <svg
           aria-hidden="true"
-          class=""
+          class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
           height="16px"
@@ -376,7 +376,7 @@ exports[`<Spinner /> should render white color Spinner 1`] = `
 `;
 
 exports[`<Spinner /> should render xlarge size Spinner 1`] = `
-.c0.c0.c0.c0.c0 {
+.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -415,12 +415,12 @@ exports[`<Spinner /> should render xlarge size Spinner 1`] = `
       role="progressbar"
     >
       <div
-        class="c1"
+        class=" c1"
         data-blade-component="base-box"
       >
         <svg
           aria-hidden="true"
-          class=""
+          class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
           height="24px"

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<ChipGroup /> selectionType="multiple" should render with selectionType="multiple" 1`] = `
-.c0.c0.c0.c0.c0 {
+.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -11,7 +11,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
   flex-direction: row;
 }
 
-.c3.c3.c3.c3.c3 {
+.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -24,19 +24,19 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
   flex-direction: row;
 }
 
-.c4.c4.c4.c4.c4 {
+.c4 {
   margin-bottom: 8px;
   margin-right: 8px;
 }
 
-.c5.c5.c5.c5.c5 {
+.c5 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
-.c7.c7.c7.c7.c7 {
+.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -46,7 +46,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
   flex-direction: column;
 }
 
-.c8.c8.c8.c8.c8 {
+.c8 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -60,12 +60,12 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
   align-items: center;
 }
 
-.c10.c10.c10.c10.c10 {
+.c10 {
   border-color: hsla(216,19%,89%,1);
   border-style: solid;
 }
 
-.c12.c12.c12.c12.c12 {
+.c12 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -234,61 +234,61 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
 }
 
 @media screen and (min-width:320px) {
-  .c10.c10.c10.c10.c10 {
+  .c10 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c10.c10.c10.c10.c10 {
+  .c10 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c10.c10.c10.c10.c10 {
+  .c10 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c10.c10.c10.c10.c10 {
+  .c10 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c10.c10.c10.c10.c10 {
+  .c10 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:320px) {
-  .c12.c12.c12.c12.c12 {
+  .c12 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c12.c12.c12.c12.c12 {
+  .c12 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c12.c12.c12.c12.c12 {
+  .c12 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c12.c12.c12.c12.c12 {
+  .c12 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c12.c12.c12.c12.c12 {
+  .c12 {
     border-style: solid;
   }
 }
@@ -487,7 +487,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
 `;
 
 exports[`<ChipGroup /> selectionType="single" should render with selectionType="single" 1`] = `
-.c0.c0.c0.c0.c0 {
+.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -497,7 +497,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
   flex-direction: row;
 }
 
-.c3.c3.c3.c3.c3 {
+.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -510,19 +510,19 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
   flex-direction: row;
 }
 
-.c4.c4.c4.c4.c4 {
+.c4 {
   margin-bottom: 8px;
   margin-right: 8px;
 }
 
-.c5.c5.c5.c5.c5 {
+.c5 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
-.c7.c7.c7.c7.c7 {
+.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -532,7 +532,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
   flex-direction: column;
 }
 
-.c8.c8.c8.c8.c8 {
+.c8 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -546,12 +546,12 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
   align-items: center;
 }
 
-.c10.c10.c10.c10.c10 {
+.c10 {
   border-color: hsla(216,19%,89%,1);
   border-style: solid;
 }
 
-.c12.c12.c12.c12.c12 {
+.c12 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -720,61 +720,61 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
 }
 
 @media screen and (min-width:320px) {
-  .c10.c10.c10.c10.c10 {
+  .c10 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c10.c10.c10.c10.c10 {
+  .c10 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c10.c10.c10.c10.c10 {
+  .c10 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c10.c10.c10.c10.c10 {
+  .c10 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c10.c10.c10.c10.c10 {
+  .c10 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:320px) {
-  .c12.c12.c12.c12.c12 {
+  .c12 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c12.c12.c12.c12.c12 {
+  .c12 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c12.c12.c12.c12.c12 {
+  .c12 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c12.c12.c12.c12.c12 {
+  .c12 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c12.c12.c12.c12.c12 {
+  .c12 {
     border-style: solid;
   }
 }

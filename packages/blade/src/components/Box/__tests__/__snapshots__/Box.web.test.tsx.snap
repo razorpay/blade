@@ -1,37 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Box /> should apply borderBottomColor prop to border bottom only 1`] = `
-.c0.c0.c0.c0.c0 {
+.c0 {
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-bottom-style: solid;
 }
 
 @media screen and (min-width:320px) {
-  .c0.c0.c0.c0.c0 {
+  .c0 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c0.c0.c0.c0.c0 {
+  .c0 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c0.c0.c0.c0.c0 {
+  .c0 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c0.c0.c0.c0.c0 {
+  .c0 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c0.c0.c0.c0.c0 {
+  .c0 {
     border-bottom-style: solid;
   }
 }
@@ -47,37 +47,37 @@ exports[`<Box /> should apply borderBottomColor prop to border bottom only 1`] =
 `;
 
 exports[`<Box /> should apply borderColor prop to all borders 1`] = `
-.c0.c0.c0.c0.c0 {
+.c0 {
   border-color: hsla(216,15%,54%,0.18);
   border-style: solid;
 }
 
 @media screen and (min-width:320px) {
-  .c0.c0.c0.c0.c0 {
+  .c0 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c0.c0.c0.c0.c0 {
+  .c0 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c0.c0.c0.c0.c0 {
+  .c0 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c0.c0.c0.c0.c0 {
+  .c0 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c0.c0.c0.c0.c0 {
+  .c0 {
     border-style: solid;
   }
 }

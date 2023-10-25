@@ -29,7 +29,7 @@ describe('styledProps with getStyledProps', () => {
     );
 
     expect(container).toMatchInlineSnapshot(`
-      .c0.c0.c0.c0.c0 {
+      .c0 {
         margin: 0px 48px;
       }
 
@@ -55,12 +55,8 @@ describe('styledProps with useStyledProps', () => {
 
     expect(container).toMatchInlineSnapshot(`
       .c0 {
-        margin: 0px;
-        display: inline-block;
-      }
-
-      .c0.c0.c0.c0.c0 {
         margin: 0px 48px;
+        display: inline-block;
       }
 
       <div>

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Chip /> should render chip 1`] = `
-.c0.c0.c0.c0.c0 {
+.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -11,7 +11,7 @@ exports[`<Chip /> should render chip 1`] = `
   flex-direction: row;
 }
 
-.c3.c3.c3.c3.c3 {
+.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -24,19 +24,19 @@ exports[`<Chip /> should render chip 1`] = `
   flex-direction: row;
 }
 
-.c4.c4.c4.c4.c4 {
+.c4 {
   margin-bottom: 8px;
   margin-right: 8px;
 }
 
-.c5.c5.c5.c5.c5 {
+.c5 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
-.c7.c7.c7.c7.c7 {
+.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -46,7 +46,7 @@ exports[`<Chip /> should render chip 1`] = `
   flex-direction: column;
 }
 
-.c8.c8.c8.c8.c8 {
+.c8 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -60,12 +60,12 @@ exports[`<Chip /> should render chip 1`] = `
   align-items: center;
 }
 
-.c10.c10.c10.c10.c10 {
+.c10 {
   border-color: hsla(216,19%,89%,1);
   border-style: solid;
 }
 
-.c12.c12.c12.c12.c12 {
+.c12 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -234,61 +234,61 @@ exports[`<Chip /> should render chip 1`] = `
 }
 
 @media screen and (min-width:320px) {
-  .c10.c10.c10.c10.c10 {
+  .c10 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c10.c10.c10.c10.c10 {
+  .c10 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c10.c10.c10.c10.c10 {
+  .c10 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c10.c10.c10.c10.c10 {
+  .c10 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c10.c10.c10.c10.c10 {
+  .c10 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:320px) {
-  .c12.c12.c12.c12.c12 {
+  .c12 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c12.c12.c12.c12.c12 {
+  .c12 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c12.c12.c12.c12.c12 {
+  .c12 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c12.c12.c12.c12.c12 {
+  .c12 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c12.c12.c12.c12.c12 {
+  .c12 {
     border-style: solid;
   }
 }
@@ -437,7 +437,7 @@ exports[`<Chip /> should render chip 1`] = `
 `;
 
 exports[`<Chip /> should render chip with icon 1`] = `
-.c0.c0.c0.c0.c0 {
+.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -447,7 +447,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
   flex-direction: row;
 }
 
-.c3.c3.c3.c3.c3 {
+.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -460,19 +460,19 @@ exports[`<Chip /> should render chip with icon 1`] = `
   flex-direction: row;
 }
 
-.c4.c4.c4.c4.c4 {
+.c4 {
   margin-bottom: 8px;
   margin-right: 8px;
 }
 
-.c5.c5.c5.c5.c5 {
+.c5 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
-.c7.c7.c7.c7.c7 {
+.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -482,7 +482,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
   flex-direction: column;
 }
 
-.c8.c8.c8.c8.c8 {
+.c8 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -496,12 +496,12 @@ exports[`<Chip /> should render chip with icon 1`] = `
   align-items: center;
 }
 
-.c10.c10.c10.c10.c10 {
+.c10 {
   border-color: hsla(216,19%,89%,1);
   border-style: solid;
 }
 
-.c12.c12.c12.c12.c12 {
+.c12 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -528,7 +528,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
   border-style: solid;
 }
 
-.c14.c14.c14.c14.c14 {
+.c14 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -678,61 +678,61 @@ exports[`<Chip /> should render chip with icon 1`] = `
 }
 
 @media screen and (min-width:320px) {
-  .c10.c10.c10.c10.c10 {
+  .c10 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c10.c10.c10.c10.c10 {
+  .c10 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c10.c10.c10.c10.c10 {
+  .c10 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c10.c10.c10.c10.c10 {
+  .c10 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c10.c10.c10.c10.c10 {
+  .c10 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:320px) {
-  .c12.c12.c12.c12.c12 {
+  .c12 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c12.c12.c12.c12.c12 {
+  .c12 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c12.c12.c12.c12.c12 {
+  .c12 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c12.c12.c12.c12.c12 {
+  .c12 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c12.c12.c12.c12.c12 {
+  .c12 {
     border-style: solid;
   }
 }
@@ -813,7 +813,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
                         >
                           <svg
                             aria-hidden="true"
-                            class=""
+                            class="Svgweb__StyledSvg-vcmjs8-0"
                             data-blade-component="icon"
                             fill="none"
                             height="12px"
@@ -898,7 +898,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
                         >
                           <svg
                             aria-hidden="true"
-                            class=""
+                            class="Svgweb__StyledSvg-vcmjs8-0"
                             data-blade-component="icon"
                             fill="none"
                             height="12px"
@@ -945,7 +945,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
 `;
 
 exports[`<Chip /> should set disabled state with isDisabled 1`] = `
-.c0.c0.c0.c0.c0 {
+.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -955,7 +955,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   flex-direction: row;
 }
 
-.c3.c3.c3.c3.c3 {
+.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -968,19 +968,19 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   flex-direction: row;
 }
 
-.c4.c4.c4.c4.c4 {
+.c4 {
   margin-bottom: 8px;
   margin-right: 8px;
 }
 
-.c5.c5.c5.c5.c5 {
+.c5 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
-.c7.c7.c7.c7.c7 {
+.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -990,7 +990,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   flex-direction: column;
 }
 
-.c8.c8.c8.c8.c8 {
+.c8 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1004,12 +1004,12 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   align-items: center;
 }
 
-.c10.c10.c10.c10.c10 {
+.c10 {
   border-color: hsla(216,19%,89%,1);
   border-style: solid;
 }
 
-.c12.c12.c12.c12.c12 {
+.c12 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1264,61 +1264,61 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
 }
 
 @media screen and (min-width:320px) {
-  .c10.c10.c10.c10.c10 {
+  .c10 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c10.c10.c10.c10.c10 {
+  .c10 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c10.c10.c10.c10.c10 {
+  .c10 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c10.c10.c10.c10.c10 {
+  .c10 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c10.c10.c10.c10.c10 {
+  .c10 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:320px) {
-  .c12.c12.c12.c12.c12 {
+  .c12 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c12.c12.c12.c12.c12 {
+  .c12 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c12.c12.c12.c12.c12 {
+  .c12 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c12.c12.c12.c12.c12 {
+  .c12 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c12.c12.c12.c12.c12 {
+  .c12 {
     border-style: solid;
   }
 }

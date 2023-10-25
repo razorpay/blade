@@ -3345,7 +3345,7 @@ exports[`createTheme should create a theme with the correct brand colors 2`] = `
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -6733,7 +6733,7 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;

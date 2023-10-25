@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<BaseInput /> should render 1`] = `
-.c0.c0.c0.c0.c0 {
+.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -13,7 +13,7 @@ exports[`<BaseInput /> should render 1`] = `
   width: 100%;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -29,11 +29,11 @@ exports[`<BaseInput /> should render 1`] = `
   margin-top: 0px;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   margin-bottom: 4px;
 }
 
-.c3.c3.c3.c3.c3 {
+.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -52,11 +52,11 @@ exports[`<BaseInput /> should render 1`] = `
   gap: 0px;
 }
 
-.c10.c10.c10.c10.c10 {
+.c10 {
   margin-left: 0px;
 }
 
-.c11.c11.c11.c11.c11 {
+.c11 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -319,7 +319,7 @@ exports[`<BaseInput /> should render 1`] = `
         </label>
       </div>
       <div
-        class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 c7"
+        class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c7"
         data-blade-component="base-box"
       >
         <input
@@ -334,7 +334,7 @@ exports[`<BaseInput /> should render 1`] = `
           value=""
         />
         <div
-          class="c9"
+          class=" c9"
           data-blade-component="base-box"
         />
       </div>
@@ -353,7 +353,7 @@ exports[`<BaseInput /> should render 1`] = `
 `;
 
 exports[`<BaseInput /> should render with icons 1`] = `
-.c0.c0.c0.c0.c0 {
+.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -365,7 +365,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
   width: 100%;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -381,11 +381,11 @@ exports[`<BaseInput /> should render with icons 1`] = `
   margin-top: 0px;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   margin-bottom: 4px;
 }
 
-.c3.c3.c3.c3.c3 {
+.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -404,7 +404,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
   gap: 0px;
 }
 
-.c8.c8.c8.c8.c8 {
+.c8 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -421,7 +421,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
   align-self: center;
 }
 
-.c9.c9.c9.c9.c9 {
+.c9 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -429,7 +429,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
   padding-left: 12px;
 }
 
-.c11.c11.c11.c11.c11 {
+.c11 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -437,11 +437,11 @@ exports[`<BaseInput /> should render with icons 1`] = `
   padding-right: 12px;
 }
 
-.c13.c13.c13.c13.c13 {
+.c13 {
   margin-left: 0px;
 }
 
-.c14.c14.c14.c14.c14 {
+.c14 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -704,7 +704,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
         </label>
       </div>
       <div
-        class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 c7"
+        class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c7"
         data-blade-component="base-box"
       >
         <div
@@ -717,7 +717,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
           >
             <svg
               aria-hidden="true"
-              class=""
+              class="Svgweb__StyledSvg-vcmjs8-0"
               data-blade-component="icon"
               fill="none"
               height="16px"
@@ -763,7 +763,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
           >
             <svg
               aria-hidden="true"
-              class=""
+              class="Svgweb__StyledSvg-vcmjs8-0"
               data-blade-component="icon"
               fill="none"
               height="16px"
@@ -779,7 +779,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
           </div>
         </div>
         <div
-          class="c12"
+          class=" c12"
           data-blade-component="base-box"
         />
       </div>

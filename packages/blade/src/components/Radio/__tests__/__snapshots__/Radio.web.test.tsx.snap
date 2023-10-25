@@ -38,7 +38,7 @@ exports[`<Radio /> should render radio with label 1`] = `
   margin-bottom: 2px;
 }
 
-.c0.c0.c0.c0.c0 {
+.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -48,11 +48,11 @@ exports[`<Radio /> should render radio with label 1`] = `
   flex-direction: column;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   margin-bottom: 4px;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -71,11 +71,11 @@ exports[`<Radio /> should render radio with label 1`] = `
   gap: 0px;
 }
 
-.c6.c6.c6.c6.c6 {
+.c6 {
   margin-bottom: 0px;
 }
 
-.c8.c8.c8.c8.c8 {
+.c8 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -89,7 +89,7 @@ exports[`<Radio /> should render radio with label 1`] = `
   align-items: center;
 }
 
-.c11.c11.c11.c11.c11 {
+.c11 {
   margin-left: 4px;
 }
 
@@ -331,7 +331,7 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
   margin-bottom: 2px;
 }
 
-.c0.c0.c0.c0.c0 {
+.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -341,11 +341,11 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
   flex-direction: column;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   margin-bottom: 4px;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -364,11 +364,11 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
   gap: 0px;
 }
 
-.c6.c6.c6.c6.c6 {
+.c6 {
   margin-bottom: 0px;
 }
 
-.c8.c8.c8.c8.c8 {
+.c8 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -382,7 +382,7 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
   align-items: center;
 }
 
-.c11.c11.c11.c11.c11 {
+.c11 {
   margin-left: 4px;
 }
 

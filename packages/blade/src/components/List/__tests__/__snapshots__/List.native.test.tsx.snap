@@ -697,7 +697,18 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
               style={
                 [
                   {},
-                  {},
+                  {
+                    "alignSelf": "center",
+                    "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
+                    "borderRadius": 4,
+                    "display": "flex",
+                    "lineHeight": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 4,
+                    "paddingRight": 4,
+                    "paddingTop": 0,
+                    "verticalAlign": "middle",
+                  },
                 ]
               }
             >

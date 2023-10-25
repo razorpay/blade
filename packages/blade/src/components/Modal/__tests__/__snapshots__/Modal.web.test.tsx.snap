@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Modal renders a Modal with Header and Footer 1`] = `
-.c0.c0.c0.c0.c0 {
+.c0 {
   position: fixed;
   z-index: 1000;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -25,7 +25,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   border-radius: 8px;
 }
 
-.c4.c4.c4.c4.c4 {
+.c4 {
   padding-right: 16px;
   padding-left: 16px;
   margin-bottom: 16px;
@@ -33,7 +33,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   touch-action: none;
 }
 
-.c5.c5.c5.c5.c5 {
+.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -47,7 +47,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   user-select: none;
 }
 
-.c6.c6.c6.c6.c6 {
+.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -66,13 +66,13 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   margin-right: auto;
 }
 
-.c7.c7.c7.c7.c7 {
+.c7 {
   -webkit-flex: auto;
   -ms-flex: auto;
   flex: auto;
 }
 
-.c8.c8.c8.c8.c8 {
+.c8 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -85,11 +85,11 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   flex-shrink: 0;
 }
 
-.c10.c10.c10.c10.c10 {
+.c10 {
   margin-left: 8px;
 }
 
-.c11.c11.c11.c11.c11 {
+.c11 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -105,18 +105,18 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   height: 28px;
 }
 
-.c12.c12.c12.c12.c12 {
+.c12 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
-.c13.c13.c13.c13.c13 {
+.c13 {
   background-color: hsla(155,100%,31%,0.09);
 }
 
-.c15.c15.c15.c15.c15 {
+.c15 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -139,23 +139,23 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   padding-left: 8px;
 }
 
-.c23.c23.c23.c23.c23 {
+.c23 {
   border-width: 0px;
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-style: solid;
 }
 
-.c25.c25.c25.c25.c25 {
+.c25 {
   overflow-x: hidden;
   overflow-y: auto;
   padding: 20px;
 }
 
-.c27.c27.c27.c27.c27 {
+.c27 {
   padding: 16px;
 }
 
-.c29.c29.c29.c29.c29 {
+.c29 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -177,11 +177,11 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   opacity: 1;
 }
 
-.c18.c18.c18.c18.c18 {
+.c18 {
   margin-right: 16px;
 }
 
-.c19.c19.c19.c19.c19 {
+.c19 {
   text-align: left;
   background-color: hsla(36,100%,44%,0.09);
 }
@@ -442,7 +442,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 }
 
 @media screen and (min-width:768px) {
-  .c4.c4.c4.c4.c4 {
+  .c4 {
     padding-right: 20px;
     padding-left: 20px;
     margin-bottom: 20px;
@@ -451,37 +451,37 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 }
 
 @media screen and (min-width:320px) {
-  .c23.c23.c23.c23.c23 {
+  .c23 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c23.c23.c23.c23.c23 {
+  .c23 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c23.c23.c23.c23.c23 {
+  .c23 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c23.c23.c23.c23.c23 {
+  .c23 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c23.c23.c23.c23.c23 {
+  .c23 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c27.c27.c27.c27.c27 {
+  .c27 {
     padding: 20px;
   }
 }
@@ -620,7 +620,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class=""
+                class="Svgweb__StyledSvg-vcmjs8-0"
                 data-blade-component="icon"
                 fill="none"
                 height="20px"
@@ -693,12 +693,12 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 `;
 
 exports[`Modal renders a basic Modal 1`] = `
-.c0.c0.c0.c0.c0 {
+.c0 {
   position: fixed;
   z-index: 1000;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -717,7 +717,7 @@ exports[`Modal renders a basic Modal 1`] = `
   border-radius: 8px;
 }
 
-.c4.c4.c4.c4.c4 {
+.c4 {
   overflow-x: hidden;
   overflow-y: auto;
   padding: 20px;
@@ -795,12 +795,12 @@ exports[`Modal renders a basic Modal 1`] = `
 `;
 
 exports[`Modal renders a basic Modal of large size 1`] = `
-.c0.c0.c0.c0.c0 {
+.c0 {
   position: fixed;
   z-index: 1000;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -819,7 +819,7 @@ exports[`Modal renders a basic Modal of large size 1`] = `
   border-radius: 8px;
 }
 
-.c4.c4.c4.c4.c4 {
+.c4 {
   overflow-x: hidden;
   overflow-y: auto;
   padding: 20px;
@@ -897,12 +897,12 @@ exports[`Modal renders a basic Modal of large size 1`] = `
 `;
 
 exports[`Modal renders a basic Modal of medium size 1`] = `
-.c0.c0.c0.c0.c0 {
+.c0 {
   position: fixed;
   z-index: 1000;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -921,7 +921,7 @@ exports[`Modal renders a basic Modal of medium size 1`] = `
   border-radius: 8px;
 }
 
-.c4.c4.c4.c4.c4 {
+.c4 {
   overflow-x: hidden;
   overflow-y: auto;
   padding: 20px;

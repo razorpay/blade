@@ -153,7 +153,7 @@ exports[`<BaseButton /> should announce button loading accessibilityLabel 1`] = 
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -175,7 +175,7 @@ exports[`<BaseButton /> should announce button loading accessibilityLabel 1`] = 
   opacity: 1;
 }
 
-.c4.c4.c4.c4.c4 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -195,7 +195,7 @@ exports[`<BaseButton /> should announce button loading accessibilityLabel 1`] = 
   left: 0px;
 }
 
-.c5.c5.c5.c5.c5 {
+.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -209,7 +209,7 @@ exports[`<BaseButton /> should announce button loading accessibilityLabel 1`] = 
   align-items: center;
 }
 
-.c7.c7.c7.c7.c7 {
+.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -286,12 +286,12 @@ exports[`<BaseButton /> should announce button loading accessibilityLabel 1`] = 
           role="progressbar"
         >
           <div
-            class="c6"
+            class=" c6"
             data-blade-component="base-box"
           >
             <svg
               aria-hidden="true"
-              class=""
+              class="Svgweb__StyledSvg-vcmjs8-0"
               data-blade-component="icon"
               fill="none"
               height="20px"
@@ -412,7 +412,7 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -534,7 +534,7 @@ exports[`<BaseButton /> should render button with full width 1`] = `
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -656,7 +656,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -678,7 +678,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
   opacity: 1;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -712,7 +712,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
       >
         <svg
           aria-hidden="true"
-          class=""
+          class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
           height="16px"
@@ -816,7 +816,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -838,7 +838,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
   opacity: 1;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -872,7 +872,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
       >
         <svg
           aria-hidden="true"
-          class=""
+          class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
           height="16px"
@@ -976,7 +976,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -998,7 +998,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
   opacity: 1;
 }
 
-.c3.c3.c3.c3.c3 {
+.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1038,7 +1038,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
       >
         <svg
           aria-hidden="true"
-          class=""
+          class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
           height="16px"
@@ -1122,7 +1122,7 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1144,7 +1144,7 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
   opacity: 1;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1177,7 +1177,7 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
       >
         <svg
           aria-hidden="true"
-          class=""
+          class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
           height="16px"
@@ -1275,7 +1275,7 @@ exports[`<BaseButton /> should render default color primary button 1`] = `
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1397,7 +1397,7 @@ exports[`<BaseButton /> should render default color secondary button 1`] = `
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1516,7 +1516,7 @@ exports[`<BaseButton /> should render default color tertiary button 1`] = `
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1638,7 +1638,7 @@ exports[`<BaseButton /> should render disabled button 1`] = `
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1761,7 +1761,7 @@ exports[`<BaseButton /> should render disabled default color primary button 1`] 
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1884,7 +1884,7 @@ exports[`<BaseButton /> should render disabled default color secondary button 1`
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2004,7 +2004,7 @@ exports[`<BaseButton /> should render disabled default color tertiary button 1`]
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2127,7 +2127,7 @@ exports[`<BaseButton /> should render disabled information color primary button 
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2250,7 +2250,7 @@ exports[`<BaseButton /> should render disabled information color secondary butto
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2373,7 +2373,7 @@ exports[`<BaseButton /> should render disabled negative color primary button 1`]
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2496,7 +2496,7 @@ exports[`<BaseButton /> should render disabled negative color secondary button 1
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2619,7 +2619,7 @@ exports[`<BaseButton /> should render disabled neutral color primary button 1`] 
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2742,7 +2742,7 @@ exports[`<BaseButton /> should render disabled neutral color secondary button 1`
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2865,7 +2865,7 @@ exports[`<BaseButton /> should render disabled notice color primary button 1`] =
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2988,7 +2988,7 @@ exports[`<BaseButton /> should render disabled notice color secondary button 1`]
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3111,7 +3111,7 @@ exports[`<BaseButton /> should render disabled positive color primary button 1`]
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3234,7 +3234,7 @@ exports[`<BaseButton /> should render disabled positive color secondary button 1
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3357,7 +3357,7 @@ exports[`<BaseButton /> should render disabled white color primary button 1`] = 
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3480,7 +3480,7 @@ exports[`<BaseButton /> should render disabled white color secondary button 1`] 
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3600,7 +3600,7 @@ exports[`<BaseButton /> should render disabled white color tertiary button 1`] =
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3723,7 +3723,7 @@ exports[`<BaseButton /> should render information color primary button 1`] = `
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3845,7 +3845,7 @@ exports[`<BaseButton /> should render information color secondary button 1`] = `
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3967,7 +3967,7 @@ exports[`<BaseButton /> should render large size button 1`] = `
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -4089,7 +4089,7 @@ exports[`<BaseButton /> should render medium size button 1`] = `
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -4211,7 +4211,7 @@ exports[`<BaseButton /> should render negative color primary button 1`] = `
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -4333,7 +4333,7 @@ exports[`<BaseButton /> should render negative color secondary button 1`] = `
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -4455,7 +4455,7 @@ exports[`<BaseButton /> should render neutral color primary button 1`] = `
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -4577,7 +4577,7 @@ exports[`<BaseButton /> should render neutral color secondary button 1`] = `
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -4699,7 +4699,7 @@ exports[`<BaseButton /> should render notice color primary button 1`] = `
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -4821,7 +4821,7 @@ exports[`<BaseButton /> should render notice color secondary button 1`] = `
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -4943,7 +4943,7 @@ exports[`<BaseButton /> should render positive color primary button 1`] = `
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -5065,7 +5065,7 @@ exports[`<BaseButton /> should render positive color secondary button 1`] = `
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -5187,7 +5187,7 @@ exports[`<BaseButton /> should render small size button 1`] = `
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -5309,7 +5309,7 @@ exports[`<BaseButton /> should render white color primary button 1`] = `
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -5431,7 +5431,7 @@ exports[`<BaseButton /> should render white color secondary button 1`] = `
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -5550,7 +5550,7 @@ exports[`<BaseButton /> should render white color tertiary button 1`] = `
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -5672,7 +5672,7 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;

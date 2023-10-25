@@ -7,7 +7,7 @@ exports[`<List /> should render List with default properties 1`] = `
   margin: 0px;
 }
 
-.c3.c3.c3.c3.c3 {
+.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -22,7 +22,7 @@ exports[`<List /> should render List with default properties 1`] = `
   margin-bottom: 8px;
 }
 
-.c4.c4.c4.c4.c4 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -83,7 +83,7 @@ exports[`<List /> should render List with default properties 1`] = `
           >
             <svg
               aria-hidden="true"
-              class=""
+              class="Svgweb__StyledSvg-vcmjs8-0"
               data-blade-component="icon"
               fill="none"
               height="6px"
@@ -129,7 +129,7 @@ exports[`<List /> should render List with default properties 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class=""
+                    class="Svgweb__StyledSvg-vcmjs8-0"
                     data-blade-component="icon"
                     fill="none"
                     height="6px"
@@ -175,7 +175,7 @@ exports[`<List /> should render List with default properties 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class=""
+                          class="Svgweb__StyledSvg-vcmjs8-0"
                           data-blade-component="icon"
                           fill="none"
                           height="6px"
@@ -217,7 +217,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
   margin: 0px;
 }
 
-.c3.c3.c3.c3.c3 {
+.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -232,7 +232,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
   margin-bottom: 8px;
 }
 
-.c4.c4.c4.c4.c4 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -274,7 +274,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
   padding: 0;
 }
 
-.c6.c6.c6.c6.c6 {
+.c6 {
   padding: 0px 4px;
   background-color: hsla(216,15%,54%,0.18);
   border-radius: 4px;
@@ -311,7 +311,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
           >
             <svg
               aria-hidden="true"
-              class=""
+              class="Svgweb__StyledSvg-vcmjs8-0"
               data-blade-component="icon"
               fill="none"
               height="6px"
@@ -333,7 +333,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
           >
             Level 1 
             <span
-              class="c6"
+              class=" c6"
               data-blade-component="code"
             >
               <code
@@ -360,7 +360,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
           >
             <svg
               aria-hidden="true"
-              class=""
+              class="Svgweb__StyledSvg-vcmjs8-0"
               data-blade-component="icon"
               fill="none"
               height="6px"
@@ -396,7 +396,7 @@ exports[`<List /> should render List with inline ListItemText 1`] = `
   margin: 0px;
 }
 
-.c3.c3.c3.c3.c3 {
+.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -411,7 +411,7 @@ exports[`<List /> should render List with inline ListItemText 1`] = `
   margin-bottom: 8px;
 }
 
-.c4.c4.c4.c4.c4 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -481,7 +481,7 @@ exports[`<List /> should render List with inline ListItemText 1`] = `
           >
             <svg
               aria-hidden="true"
-              class=""
+              class="Svgweb__StyledSvg-vcmjs8-0"
               data-blade-component="icon"
               fill="none"
               height="6px"
@@ -528,7 +528,7 @@ exports[`<List /> should render large ordered List 1`] = `
   margin: 0px;
 }
 
-.c3.c3.c3.c3.c3 {
+.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -543,7 +543,7 @@ exports[`<List /> should render large ordered List 1`] = `
   margin-bottom: 8px;
 }
 
-.c4.c4.c4.c4.c4 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -568,7 +568,7 @@ exports[`<List /> should render large ordered List 1`] = `
   width: 24px;
 }
 
-.c9.c9.c9.c9.c9 {
+.c9 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -677,7 +677,7 @@ exports[`<List /> should render large ordered List 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class=""
+                    class="Svgweb__StyledSvg-vcmjs8-0"
                     data-blade-component="icon"
                     fill="none"
                     height="6px"
@@ -723,7 +723,7 @@ exports[`<List /> should render large ordered List 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class=""
+                          class="Svgweb__StyledSvg-vcmjs8-0"
                           data-blade-component="icon"
                           fill="none"
                           height="6px"
@@ -765,7 +765,7 @@ exports[`<List /> should render large ordered-filled List 1`] = `
   margin: 0px;
 }
 
-.c3.c3.c3.c3.c3 {
+.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -780,7 +780,7 @@ exports[`<List /> should render large ordered-filled List 1`] = `
   margin-bottom: 8px;
 }
 
-.c4.c4.c4.c4.c4 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -944,7 +944,7 @@ exports[`<List /> should render large unordered List with icon 1`] = `
   margin: 0px;
 }
 
-.c3.c3.c3.c3.c3 {
+.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -959,7 +959,7 @@ exports[`<List /> should render large unordered List with icon 1`] = `
   margin-bottom: 8px;
 }
 
-.c4.c4.c4.c4.c4 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -971,7 +971,7 @@ exports[`<List /> should render large unordered List with icon 1`] = `
   margin-right: 8px;
 }
 
-.c7.c7.c7.c7.c7 {
+.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1032,7 +1032,7 @@ exports[`<List /> should render large unordered List with icon 1`] = `
           >
             <svg
               aria-hidden="true"
-              class=""
+              class="Svgweb__StyledSvg-vcmjs8-0"
               data-blade-component="icon"
               fill="none"
               height="20px"
@@ -1076,7 +1076,7 @@ exports[`<List /> should render large unordered List with icon 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class=""
+                    class="Svgweb__StyledSvg-vcmjs8-0"
                     data-blade-component="icon"
                     fill="none"
                     height="20px"
@@ -1120,7 +1120,7 @@ exports[`<List /> should render large unordered List with icon 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class=""
+                          class="Svgweb__StyledSvg-vcmjs8-0"
                           data-blade-component="icon"
                           fill="none"
                           height="6px"
@@ -1168,7 +1168,7 @@ exports[`<List /> should render medium ordered List 1`] = `
   margin: 0px;
 }
 
-.c3.c3.c3.c3.c3 {
+.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1183,7 +1183,7 @@ exports[`<List /> should render medium ordered List 1`] = `
   margin-bottom: 8px;
 }
 
-.c4.c4.c4.c4.c4 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1208,7 +1208,7 @@ exports[`<List /> should render medium ordered List 1`] = `
   width: 20px;
 }
 
-.c9.c9.c9.c9.c9 {
+.c9 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1317,7 +1317,7 @@ exports[`<List /> should render medium ordered List 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class=""
+                    class="Svgweb__StyledSvg-vcmjs8-0"
                     data-blade-component="icon"
                     fill="none"
                     height="6px"
@@ -1363,7 +1363,7 @@ exports[`<List /> should render medium ordered List 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class=""
+                          class="Svgweb__StyledSvg-vcmjs8-0"
                           data-blade-component="icon"
                           fill="none"
                           height="6px"
@@ -1405,7 +1405,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
   margin: 0px;
 }
 
-.c3.c3.c3.c3.c3 {
+.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1420,7 +1420,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
   margin-bottom: 8px;
 }
 
-.c4.c4.c4.c4.c4 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1584,7 +1584,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
   margin: 0px;
 }
 
-.c3.c3.c3.c3.c3 {
+.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1599,7 +1599,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
   margin-bottom: 8px;
 }
 
-.c4.c4.c4.c4.c4 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1611,7 +1611,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
   margin-right: 8px;
 }
 
-.c7.c7.c7.c7.c7 {
+.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1672,7 +1672,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
           >
             <svg
               aria-hidden="true"
-              class=""
+              class="Svgweb__StyledSvg-vcmjs8-0"
               data-blade-component="icon"
               fill="none"
               height="16px"
@@ -1716,7 +1716,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class=""
+                    class="Svgweb__StyledSvg-vcmjs8-0"
                     data-blade-component="icon"
                     fill="none"
                     height="16px"
@@ -1760,7 +1760,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class=""
+                          class="Svgweb__StyledSvg-vcmjs8-0"
                           data-blade-component="icon"
                           fill="none"
                           height="6px"
@@ -1808,7 +1808,7 @@ exports[`<List /> should render small ordered List 1`] = `
   margin: 0px;
 }
 
-.c3.c3.c3.c3.c3 {
+.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1823,7 +1823,7 @@ exports[`<List /> should render small ordered List 1`] = `
   margin-bottom: 8px;
 }
 
-.c4.c4.c4.c4.c4 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1848,7 +1848,7 @@ exports[`<List /> should render small ordered List 1`] = `
   width: 16px;
 }
 
-.c9.c9.c9.c9.c9 {
+.c9 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1957,7 +1957,7 @@ exports[`<List /> should render small ordered List 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class=""
+                    class="Svgweb__StyledSvg-vcmjs8-0"
                     data-blade-component="icon"
                     fill="none"
                     height="6px"
@@ -2003,7 +2003,7 @@ exports[`<List /> should render small ordered List 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class=""
+                          class="Svgweb__StyledSvg-vcmjs8-0"
                           data-blade-component="icon"
                           fill="none"
                           height="6px"
@@ -2045,7 +2045,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
   margin: 0px;
 }
 
-.c3.c3.c3.c3.c3 {
+.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2060,7 +2060,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
   margin-bottom: 8px;
 }
 
-.c4.c4.c4.c4.c4 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2224,7 +2224,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
   margin: 0px;
 }
 
-.c3.c3.c3.c3.c3 {
+.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2239,7 +2239,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
   margin-bottom: 8px;
 }
 
-.c4.c4.c4.c4.c4 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2251,7 +2251,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
   margin-right: 8px;
 }
 
-.c7.c7.c7.c7.c7 {
+.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2312,7 +2312,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
           >
             <svg
               aria-hidden="true"
-              class=""
+              class="Svgweb__StyledSvg-vcmjs8-0"
               data-blade-component="icon"
               fill="none"
               height="12px"
@@ -2356,7 +2356,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class=""
+                    class="Svgweb__StyledSvg-vcmjs8-0"
                     data-blade-component="icon"
                     fill="none"
                     height="12px"
@@ -2400,7 +2400,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class=""
+                          class="Svgweb__StyledSvg-vcmjs8-0"
                           data-blade-component="icon"
                           fill="none"
                           height="6px"
@@ -2442,7 +2442,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
   margin: 0px;
 }
 
-.c3.c3.c3.c3.c3 {
+.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2457,7 +2457,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
   margin-bottom: 8px;
 }
 
-.c4.c4.c4.c4.c4 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2518,7 +2518,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
           >
             <svg
               aria-hidden="true"
-              class=""
+              class="Svgweb__StyledSvg-vcmjs8-0"
               data-blade-component="icon"
               fill="none"
               height="6px"
@@ -2564,7 +2564,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    class=""
+                    class="Svgweb__StyledSvg-vcmjs8-0"
                     data-blade-component="icon"
                     fill="none"
                     height="6px"
@@ -2610,7 +2610,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class=""
+                          class="Svgweb__StyledSvg-vcmjs8-0"
                           data-blade-component="icon"
                           fill="none"
                           height="6px"

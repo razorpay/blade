@@ -39,7 +39,7 @@ exports[`<BaseLink /> should change the link to a visited state after click 1`] 
   transition-duration: 70ms;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -131,7 +131,7 @@ exports[`<BaseLink /> should not change the button to a visited state after clic
   transition-duration: 70ms;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -221,7 +221,7 @@ exports[`<BaseLink /> should render button variant of link 1`] = `
   transition-duration: 70ms;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -311,7 +311,7 @@ exports[`<BaseLink /> should render default color link 1`] = `
   transition-duration: 70ms;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -400,7 +400,7 @@ exports[`<BaseLink /> should render disabled button variant of link 1`] = `
   transition-duration: 70ms;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -491,7 +491,7 @@ exports[`<BaseLink /> should render disabled default color link 1`] = `
   transition-duration: 70ms;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -580,7 +580,7 @@ exports[`<BaseLink /> should render disabled information color link 1`] = `
   transition-duration: 70ms;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -669,7 +669,7 @@ exports[`<BaseLink /> should render disabled negative color link 1`] = `
   transition-duration: 70ms;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -758,7 +758,7 @@ exports[`<BaseLink /> should render disabled neutral color link 1`] = `
   transition-duration: 70ms;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -847,7 +847,7 @@ exports[`<BaseLink /> should render disabled notice color link 1`] = `
   transition-duration: 70ms;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -936,7 +936,7 @@ exports[`<BaseLink /> should render disabled positive color link 1`] = `
   transition-duration: 70ms;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1025,7 +1025,7 @@ exports[`<BaseLink /> should render disabled white color link 1`] = `
   transition-duration: 70ms;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1114,7 +1114,7 @@ exports[`<BaseLink /> should render icon only link 1`] = `
   transition-duration: 70ms;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1128,7 +1128,7 @@ exports[`<BaseLink /> should render icon only link 1`] = `
   align-items: center;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1171,7 +1171,7 @@ exports[`<BaseLink /> should render icon only link 1`] = `
       >
         <svg
           aria-hidden="true"
-          class=""
+          class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
           height="16px"
@@ -1245,7 +1245,7 @@ exports[`<BaseLink /> should render information color link 1`] = `
   transition-duration: 70ms;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1334,7 +1334,7 @@ exports[`<BaseLink /> should render link with default properties 1`] = `
   transition-duration: 70ms;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1423,7 +1423,7 @@ exports[`<BaseLink /> should render link with icon with default iconPosition 1`]
   transition-duration: 70ms;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1437,7 +1437,7 @@ exports[`<BaseLink /> should render link with icon with default iconPosition 1`]
   align-items: center;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1480,7 +1480,7 @@ exports[`<BaseLink /> should render link with icon with default iconPosition 1`]
       >
         <svg
           aria-hidden="true"
-          class=""
+          class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
           height="16px"
@@ -1556,7 +1556,7 @@ exports[`<BaseLink /> should render link with icon with left iconPosition 1`] = 
   transition-duration: 70ms;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1570,7 +1570,7 @@ exports[`<BaseLink /> should render link with icon with left iconPosition 1`] = 
   align-items: center;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1613,7 +1613,7 @@ exports[`<BaseLink /> should render link with icon with left iconPosition 1`] = 
       >
         <svg
           aria-hidden="true"
-          class=""
+          class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
           height="16px"
@@ -1689,7 +1689,7 @@ exports[`<BaseLink /> should render link with icon with right iconPosition 1`] =
   transition-duration: 70ms;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1703,7 +1703,7 @@ exports[`<BaseLink /> should render link with icon with right iconPosition 1`] =
   align-items: center;
 }
 
-.c3.c3.c3.c3.c3 {
+.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1752,7 +1752,7 @@ exports[`<BaseLink /> should render link with icon with right iconPosition 1`] =
       >
         <svg
           aria-hidden="true"
-          class=""
+          class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
           height="16px"
@@ -1822,7 +1822,7 @@ exports[`<BaseLink /> should render negative color link 1`] = `
   transition-duration: 70ms;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1911,7 +1911,7 @@ exports[`<BaseLink /> should render neutral color link 1`] = `
   transition-duration: 70ms;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2000,7 +2000,7 @@ exports[`<BaseLink /> should render notice color link 1`] = `
   transition-duration: 70ms;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2089,7 +2089,7 @@ exports[`<BaseLink /> should render positive color link 1`] = `
   transition-duration: 70ms;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2178,7 +2178,7 @@ exports[`<BaseLink /> should render white color link 1`] = `
   transition-duration: 70ms;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
