@@ -51,7 +51,7 @@ exports[`<IconButton /> should render 1`] = `
   >
     <svg
       aria-hidden="true"
-      class=""
+      class="Svgweb__StyledSvg-vcmjs8-0"
       data-blade-component="icon"
       fill="none"
       height="16px"
