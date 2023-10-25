@@ -147,6 +147,16 @@ const onSortChange = ({ headerKey, sortType }) => {
 </Table>
 ```
 
+##### Pros
+- Composable API is more intuitive and resembles the native HTML structure of a table
+- It is easier to understand since the API design is similar to rest of the Blade components
+- It is easier to extend and add new feature to individual table components
+- We could leverage tree-shaking to only import the components that are being used in the consumer's table
+
+##### Cons
+- Composable API is more verbose and requires more effort to create a table by composing together multiple components
+- Most popular table libraries like AG Grid, React Table, etc. use a compact API which is battle tested and developers are more familiar with the same
+
 #### 2. Compact API
 Compact API is a pattern where we have a single component that takes in all the data and renders a table. This approach is more concise and requires less effort to create a table. However, it is also less intuitive and does not resemble the native HTML structure of a table.
 
@@ -250,3 +260,39 @@ const pagination = {
     isStickyFooter={true}
 />
 ```
+
+##### Pros
+- Compact API is more concise and requires less effort to create a table
+- Most popular table libraries like AG Grid, React Table, etc. use a compact API which is battle tested and developers are more familiar with the same
+- It would be relatively easier to swap out the table library in the future if we decide to do so since the API design is similar to other popular table libraries
+
+##### Cons
+- Compact API is less intuitive and does not resemble the native HTML structure of a table
+- It is harder to extend and add new feature to the table component since it is a single component
+- We would have to import the entire table component even if we are using only a few features of the table resulting in a higher bundle size for the consumer
+- Internally, we would have to use a composable API to create the compact API anyway since the library we have chosen has a composable API
+
+#### Decision
+##### Only Composable API
+- We could expose only the Composable API to the consumers 
+- This would take the least amount of implementation time and effort
+- Strong reasons to go with this approach would be the composability and tree-shaking benefits
+- Strong reasons to not go with this approach would be the verbosity and the fact that it is not the most popular approach within Table libraries ecosystem
+
+##### Only Compact API
+- We could expose only the Compact API to the consumers
+- This would take the relatively more time and effort since internally we will have to build individual components and stitch them together to create the compact API
+- Internally we might not need to put in heavy efforts to ensure composable API is very well structured since we will not be exposing it to the consumers. We would use the composable API internally only to derive the final outcome of a compact API.
+- Strong reasons to go with this approach would be the popularity of the compact API within the Table libraries ecosystem
+- Strong reasons to not go with this approach would be the lack of composability and tree-shaking benefits
+
+##### Both Composable & Compact API
+- We could expose both the Composable & Compact API to the consumers
+- This would take the most amount of implementation time and effort since we will have to build both the APIs
+- This will add a lot of complexity to the library and will make it harder to maintain. Any changes to the Table component, we will have to ensure both APIs are updated accordingly and always maintain parity
+- Swapping out the table library in the future would be challenging since any library we choose we will have to ensure that its feasible to build both kinds of APIs
+- Strong reasons to go with this approach would be to give our consumers complete flexibility to choose the API that they are most comfortable with
+- Strong reasons to not go with this approach would be the complexity and maintainability issues as well as education efforts required to educate the consumers about both the APIs
+
+##### Conclusion
+[To be concluded]
