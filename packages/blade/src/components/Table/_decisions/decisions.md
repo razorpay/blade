@@ -8,7 +8,7 @@ A table component helps in displaying data in a grid format, through rows and co
 - [Out of scope](#out-of-scope)
 - [Anatomy](#anatomy)
 - [API](#api)
-  - [API Design](#api-design)
+  - [API Design Approaches](#api-design-approaches)
     - [1. Composable API](#1-composable-api)
       - [Pros](#pros)
       - [Cons](#cons)
@@ -20,6 +20,7 @@ A table component helps in displaying data in a grid format, through rows and co
       - [Only Compact API](#only-compact-api)
       - [Both Composable \& Compact API](#both-composable--compact-api)
       - [Conclusion](#conclusion)
+  - [Final API](#final-api)
 - [Table Library Evaluation](#table-library-evaluation)
   - [Why a library?](#why-a-library)
   - [What are we looking for in a library?](#what-are-we-looking-for-in-a-library)
@@ -57,7 +58,7 @@ We don't have enough use-cases for the following features at Razorpay and hence 
 
 ## API
 
-### API Design
+### API Design Approaches
 While evaluating what kind of API we want for our table, we discovered 2 approaches:
 
 #### 1. Composable API
@@ -328,6 +329,9 @@ const pagination = {
 
 ##### Conclusion
 [To be concluded]
+
+### Final API
+- To be concluded. This section will change depending on whether we choose Composable or Compact API. Most things would remain the same as proposed in the above sections for both APIs but this section will contain a bit more detailed API design for the chosen API.
 
 ## Table Library Evaluation
 ### Why a library?
