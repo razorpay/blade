@@ -16,7 +16,10 @@ exports[`<Card /> should render a Card with Footer 1`] = `
     isSelected={false}
     style={
       [
-        {},
+        {
+          "borderRadius": 4,
+          "display": "block",
+        },
         {
           "borderColor": "transparent",
           "borderStyle": "solid",
@@ -31,7 +34,14 @@ exports[`<Card /> should render a Card with Footer 1`] = `
       elevation="lowRaised"
       style={
         [
-          {},
+          {
+            "borderRadius": 4,
+            "paddingBottom": 24,
+            "paddingLeft": 24,
+            "paddingRight": 24,
+            "paddingTop": 24,
+            "textAlign": "left",
+          },
           {
             "elevation": 4,
             "shadowColor": "hsla(217, 56%, 17%, 0.64)",
@@ -101,7 +111,9 @@ exports[`<Card /> should render a Card with Footer 1`] = `
         data-blade-component="card-footer"
         style={
           [
-            {},
+            {
+              "marginTop": "auto",
+            },
           ]
         }
       >
@@ -109,7 +121,9 @@ exports[`<Card /> should render a Card with Footer 1`] = `
           data-blade-component="base-box"
           style={
             [
-              {},
+              {
+                "marginTop": 24,
+              },
             ]
           }
         />
@@ -122,7 +136,11 @@ exports[`<Card /> should render a Card with Footer 1`] = `
           isDividerHorizontal={true}
           style={
             [
-              {},
+              {
+                "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
+                "borderStyle": "solid",
+                "borderWidth": 0,
+              },
               {},
             ]
           }
@@ -136,7 +154,13 @@ exports[`<Card /> should render a Card with Footer 1`] = `
           justifyContent="space-between"
           style={
             [
-              {},
+              {
+                "alignItems": "stretch",
+                "display": "flex",
+                "flexDirection": "column",
+                "justifyContent": "space-between",
+                "marginTop": 24,
+              },
             ]
           }
         >
@@ -144,7 +168,9 @@ exports[`<Card /> should render a Card with Footer 1`] = `
             data-blade-component="base-box"
             style={
               [
-                {},
+                {
+                  "textAlign": "left",
+                },
               ]
             }
             textAlign="left"
@@ -223,7 +249,13 @@ exports[`<Card /> should render a Card with Footer 1`] = `
             flexDirection="row"
             style={
               [
-                {},
+                {
+                  "alignSelf": "auto",
+                  "display": "flex",
+                  "flexDirection": "row",
+                  "marginLeft": 0,
+                  "marginTop": 16,
+                },
               ]
             }
           >
@@ -232,7 +264,9 @@ exports[`<Card /> should render a Card with Footer 1`] = `
               flexGrow={1}
               style={
                 [
-                  {},
+                  {
+                    "flexGrow": 1,
+                  },
                 ]
               }
             >
@@ -292,8 +326,25 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                 style={
                   [
                     {
+                      "alignItems": "center",
                       "alignSelf": "center",
+                      "backgroundColor": "hsla(218, 89%, 51%, 0)",
+                      "borderColor": "hsla(218, 89%, 51%, 1)",
+                      "borderRadius": 2,
+                      "borderStyle": "solid",
+                      "borderWidth": 1,
+                      "cursor": "pointer",
                       "display": "flex",
+                      "justifyContent": "center",
+                      "minHeight": 36,
+                      "paddingBottom": 0,
+                      "paddingLeft": 20,
+                      "paddingRight": 20,
+                      "paddingTop": 0,
+                      "textDecorationColor": "black",
+                      "textDecorationLine": "none",
+                      "textDecorationStyle": "solid",
+                      "width": "100%",
                     },
                     {
                       "backgroundColor": "hsla(218, 89%, 51%, 0)",
@@ -312,7 +363,16 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                   opacity={1}
                   style={
                     [
-                      {},
+                      {
+                        "alignItems": "center",
+                        "display": "flex",
+                        "flexBasis": 0,
+                        "flexDirection": "row",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "justifyContent": "center",
+                        "opacity": 1,
+                      },
                     ]
                   }
                 >
@@ -356,7 +416,9 @@ exports[`<Card /> should render a Card with Footer 1`] = `
               data-blade-component="base-box"
               style={
                 [
-                  {},
+                  {
+                    "marginLeft": 16,
+                  },
                 ]
               }
             />
@@ -365,7 +427,9 @@ exports[`<Card /> should render a Card with Footer 1`] = `
               flexGrow={1}
               style={
                 [
-                  {},
+                  {
+                    "flexGrow": 1,
+                  },
                 ]
               }
             >
@@ -425,8 +489,25 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                 style={
                   [
                     {
+                      "alignItems": "center",
                       "alignSelf": "center",
+                      "backgroundColor": "hsla(218, 89%, 51%, 1)",
+                      "borderColor": "hsla(218, 89%, 51%, 1)",
+                      "borderRadius": 2,
+                      "borderStyle": "solid",
+                      "borderWidth": 1,
+                      "cursor": "pointer",
                       "display": "flex",
+                      "justifyContent": "center",
+                      "minHeight": 36,
+                      "paddingBottom": 0,
+                      "paddingLeft": 20,
+                      "paddingRight": 20,
+                      "paddingTop": 0,
+                      "textDecorationColor": "black",
+                      "textDecorationLine": "none",
+                      "textDecorationStyle": "solid",
+                      "width": "100%",
                     },
                     {
                       "backgroundColor": "hsla(218, 89%, 51%, 1)",
@@ -445,7 +526,16 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                   opacity={1}
                   style={
                     [
-                      {},
+                      {
+                        "alignItems": "center",
+                        "display": "flex",
+                        "flexBasis": 0,
+                        "flexDirection": "row",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "justifyContent": "center",
+                        "opacity": 1,
+                      },
                     ]
                   }
                 >
@@ -509,7 +599,10 @@ exports[`<Card /> should render a Card with Header 1`] = `
     isSelected={false}
     style={
       [
-        {},
+        {
+          "borderRadius": 4,
+          "display": "block",
+        },
         {
           "borderColor": "transparent",
           "borderStyle": "solid",
@@ -524,7 +617,14 @@ exports[`<Card /> should render a Card with Header 1`] = `
       elevation="lowRaised"
       style={
         [
-          {},
+          {
+            "borderRadius": 4,
+            "paddingBottom": 24,
+            "paddingLeft": 24,
+            "paddingRight": 24,
+            "paddingTop": 24,
+            "textAlign": "left",
+          },
           {
             "elevation": 4,
             "shadowColor": "hsla(217, 56%, 17%, 0.64)",
@@ -552,7 +652,9 @@ exports[`<Card /> should render a Card with Header 1`] = `
         data-blade-component="card-header"
         style={
           [
-            {},
+            {
+              "marginBottom": 24,
+            },
           ]
         }
       >
@@ -563,7 +665,12 @@ exports[`<Card /> should render a Card with Header 1`] = `
           justifyContent="space-between"
           style={
             [
-              {},
+              {
+                "display": "flex",
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "marginBottom": 24,
+              },
             ]
           }
         >
@@ -573,7 +680,13 @@ exports[`<Card /> should render a Card with Header 1`] = `
             flexDirection="row"
             style={
               [
-                {},
+                {
+                  "display": "flex",
+                  "flexBasis": 0,
+                  "flexDirection": "row",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                },
               ]
             }
           >
@@ -583,7 +696,11 @@ exports[`<Card /> should render a Card with Header 1`] = `
               display="flex"
               style={
                 [
-                  {},
+                  {
+                    "alignSelf": "center",
+                    "display": "flex",
+                    "marginRight": 8,
+                  },
                 ]
               }
             >
@@ -665,7 +782,9 @@ exports[`<Card /> should render a Card with Header 1`] = `
               data-blade-component="base-box"
               style={
                 [
-                  {},
+                  {
+                    "marginRight": 16,
+                  },
                 ]
               }
             >
@@ -677,7 +796,12 @@ exports[`<Card /> should render a Card with Header 1`] = `
                 flexWrap="wrap"
                 style={
                   [
-                    {},
+                    {
+                      "alignItems": "center",
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "flexWrap": "wrap",
+                    },
                   ]
                 }
               >
@@ -719,7 +843,9 @@ exports[`<Card /> should render a Card with Header 1`] = `
                   data-blade-component="base-box"
                   style={
                     [
-                      {},
+                      {
+                        "marginLeft": 8,
+                      },
                     ]
                   }
                 >
@@ -728,7 +854,9 @@ exports[`<Card /> should render a Card with Header 1`] = `
                     display="flex"
                     style={
                       [
-                        {},
+                        {
+                          "display": "flex",
+                        },
                       ]
                     }
                   >
@@ -739,9 +867,16 @@ exports[`<Card /> should render a Card with Header 1`] = `
                       size="medium"
                       style={
                         [
-                          {},
+                          {
+                            "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+                          },
                           {
                             "alignSelf": "center",
+                            "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+                            "borderRadius": 9999,
+                            "display": "flex",
+                            "flexWrap": "nowrap",
+                            "maxWidth": 100,
                           },
                         ]
                       }
@@ -755,7 +890,17 @@ exports[`<Card /> should render a Card with Header 1`] = `
                         overflow="hidden"
                         style={
                           [
-                            {},
+                            {
+                              "alignItems": "center",
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "justifyContent": "center",
+                              "overflow": "hidden",
+                              "paddingBottom": 2,
+                              "paddingLeft": 8,
+                              "paddingRight": 8,
+                              "paddingTop": 2,
+                            },
                           ]
                         }
                       >
@@ -842,7 +987,9 @@ exports[`<Card /> should render a Card with Header 1`] = `
             data-blade-component="base-box"
             style={
               [
-                {},
+                {
+                  "alignSelf": "center",
+                },
               ]
             }
           >
@@ -851,7 +998,9 @@ exports[`<Card /> should render a Card with Header 1`] = `
               display="flex"
               style={
                 [
-                  {},
+                  {
+                    "display": "flex",
+                  },
                 ]
               }
             >
@@ -861,9 +1010,16 @@ exports[`<Card /> should render a Card with Header 1`] = `
                 size="medium"
                 style={
                   [
-                    {},
+                    {
+                      "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+                      "textAlign": "left",
+                    },
                     {
                       "alignSelf": "center",
+                      "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+                      "borderRadius": 9999,
+                      "display": "flex",
+                      "flexWrap": "nowrap",
                     },
                   ]
                 }
@@ -878,7 +1034,17 @@ exports[`<Card /> should render a Card with Header 1`] = `
                   overflow="hidden"
                   style={
                     [
-                      {},
+                      {
+                        "alignItems": "center",
+                        "display": "flex",
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "overflow": "hidden",
+                        "paddingBottom": 2,
+                        "paddingLeft": 8,
+                        "paddingRight": 8,
+                        "paddingTop": 2,
+                      },
                     ]
                   }
                 >
@@ -930,7 +1096,11 @@ exports[`<Card /> should render a Card with Header 1`] = `
           isDividerHorizontal={true}
           style={
             [
-              {},
+              {
+                "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
+                "borderStyle": "solid",
+                "borderWidth": 0,
+              },
               {},
             ]
           }
@@ -1000,7 +1170,10 @@ exports[`<Card /> should render a Card without 0 padding 1`] = `
     isSelected={false}
     style={
       [
-        {},
+        {
+          "borderRadius": 4,
+          "display": "block",
+        },
         {
           "borderColor": "transparent",
           "borderStyle": "solid",
@@ -1015,7 +1188,14 @@ exports[`<Card /> should render a Card without 0 padding 1`] = `
       elevation="lowRaised"
       style={
         [
-          {},
+          {
+            "borderRadius": 4,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textAlign": "left",
+          },
           {
             "elevation": 4,
             "shadowColor": "hsla(217, 56%, 17%, 0.64)",
@@ -1070,7 +1250,10 @@ exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
     isSelected={false}
     style={
       [
-        {},
+        {
+          "borderRadius": 4,
+          "display": "block",
+        },
         {
           "borderColor": "transparent",
           "borderStyle": "solid",
@@ -1085,7 +1268,14 @@ exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
       elevation="none"
       style={
         [
-          {},
+          {
+            "borderRadius": 4,
+            "paddingBottom": 24,
+            "paddingLeft": 24,
+            "paddingRight": 24,
+            "paddingTop": 24,
+            "textAlign": "left",
+          },
           {
             "elevation": 0,
             "shadowColor": "",
@@ -1175,7 +1365,10 @@ exports[`<Card /> should render a plain Card 1`] = `
     isSelected={false}
     style={
       [
-        {},
+        {
+          "borderRadius": 4,
+          "display": "block",
+        },
         {
           "borderColor": "transparent",
           "borderStyle": "solid",
@@ -1190,7 +1383,14 @@ exports[`<Card /> should render a plain Card 1`] = `
       elevation="highRaised"
       style={
         [
-          {},
+          {
+            "borderRadius": 4,
+            "paddingBottom": 24,
+            "paddingLeft": 24,
+            "paddingRight": 24,
+            "paddingTop": 24,
+            "textAlign": "left",
+          },
           {
             "elevation": 26,
             "shadowColor": "hsla(217, 56%, 17%, 0.64)",

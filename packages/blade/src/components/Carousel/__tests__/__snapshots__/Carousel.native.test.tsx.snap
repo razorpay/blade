@@ -15,7 +15,11 @@ exports[`Carousel Snapshots should render 1`] = `
     flexDirection="column"
     style={
       [
-        {},
+        {
+          "alignItems": "center",
+          "display": "flex",
+          "flexDirection": "column",
+        },
       ]
     }
   >
@@ -28,7 +32,14 @@ exports[`Carousel Snapshots should render 1`] = `
       position="relative"
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "gap": 12,
+            "position": "relative",
+            "width": "100%",
+          },
         ]
       }
       width="100%"
@@ -71,7 +82,15 @@ exports[`Carousel Snapshots should render 1`] = `
             data-blade-component="base-box"
             style={
               [
-                {},
+                {
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingLeft": 12,
+                  "paddingRight": 12,
+                  "width": 0,
+                },
               ]
             }
             width="0px"
@@ -124,7 +143,15 @@ exports[`Carousel Snapshots should render 1`] = `
             data-blade-component="base-box"
             style={
               [
-                {},
+                {
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingLeft": 12,
+                  "paddingRight": 12,
+                  "width": 0,
+                },
               ]
             }
             width="0px"
@@ -184,7 +211,13 @@ exports[`Carousel Snapshots should render 1`] = `
       gap="spacing.4"
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "gap": 12,
+            "marginTop": 24,
+          },
         ]
       }
     >
@@ -231,7 +264,23 @@ exports[`Carousel Snapshots should render 1`] = `
           onStartShouldSetResponder={[Function]}
           style={
             [
-              {},
+              {
+                "alignItems": "center",
+                "alignSelf": "center",
+                "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+                "borderColor": "hsla(216, 44%, 23%, 0)",
+                "borderRadius": 9999,
+                "borderStyle": "solid",
+                "borderWidth": 1,
+                "color": "hsla(216, 33%, 29%, 1)",
+                "cursor": "pointer",
+                "display": "flex",
+                "justifyContent": "center",
+                "paddingBottom": 8,
+                "paddingLeft": 8,
+                "paddingRight": 8,
+                "paddingTop": 8,
+              },
             ]
           }
           variant="filled"
@@ -303,7 +352,11 @@ exports[`Carousel Snapshots should render 1`] = `
         gap="spacing.2"
         style={
           [
-            {},
+            {
+              "display": "flex",
+              "flexDirection": "row",
+              "gap": 4,
+            },
           ]
         }
       >
@@ -473,7 +526,23 @@ exports[`Carousel Snapshots should render 1`] = `
           onStartShouldSetResponder={[Function]}
           style={
             [
-              {},
+              {
+                "alignItems": "center",
+                "alignSelf": "center",
+                "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+                "borderColor": "hsla(216, 44%, 23%, 0)",
+                "borderRadius": 9999,
+                "borderStyle": "solid",
+                "borderWidth": 1,
+                "color": "hsla(216, 33%, 29%, 1)",
+                "cursor": "pointer",
+                "display": "flex",
+                "justifyContent": "center",
+                "paddingBottom": 8,
+                "paddingLeft": 8,
+                "paddingRight": 8,
+                "paddingTop": 8,
+              },
             ]
           }
           variant="filled"
@@ -555,7 +624,11 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
     flexDirection="column"
     style={
       [
-        {},
+        {
+          "alignItems": "center",
+          "display": "flex",
+          "flexDirection": "column",
+        },
       ]
     }
   >
@@ -568,7 +641,14 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
       position="relative"
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "gap": 12,
+            "position": "relative",
+            "width": "100%",
+          },
         ]
       }
       width="100%"
@@ -611,7 +691,15 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
             data-blade-component="base-box"
             style={
               [
-                {},
+                {
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingLeft": 12,
+                  "paddingRight": 12,
+                  "width": 0,
+                },
               ]
             }
             width="0px"
@@ -664,7 +752,15 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
             data-blade-component="base-box"
             style={
               [
-                {},
+                {
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingLeft": 12,
+                  "paddingRight": 12,
+                  "width": 0,
+                },
               ]
             }
             width="0px"
@@ -717,7 +813,15 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
             data-blade-component="base-box"
             style={
               [
-                {},
+                {
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingLeft": 12,
+                  "paddingRight": 12,
+                  "width": 0,
+                },
               ]
             }
             width="0px"
@@ -777,7 +881,13 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
       gap="spacing.4"
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+            "gap": 12,
+            "marginTop": 24,
+          },
         ]
       }
     >
@@ -824,7 +934,23 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
           onStartShouldSetResponder={[Function]}
           style={
             [
-              {},
+              {
+                "alignItems": "center",
+                "alignSelf": "center",
+                "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+                "borderColor": "hsla(216, 44%, 23%, 0)",
+                "borderRadius": 9999,
+                "borderStyle": "solid",
+                "borderWidth": 1,
+                "color": "hsla(216, 33%, 29%, 1)",
+                "cursor": "pointer",
+                "display": "flex",
+                "justifyContent": "center",
+                "paddingBottom": 8,
+                "paddingLeft": 8,
+                "paddingRight": 8,
+                "paddingTop": 8,
+              },
             ]
           }
           variant="filled"
@@ -896,7 +1022,11 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
         gap="spacing.2"
         style={
           [
-            {},
+            {
+              "display": "flex",
+              "flexDirection": "row",
+              "gap": 4,
+            },
           ]
         }
       >
@@ -1127,7 +1257,23 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
           onStartShouldSetResponder={[Function]}
           style={
             [
-              {},
+              {
+                "alignItems": "center",
+                "alignSelf": "center",
+                "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+                "borderColor": "hsla(216, 44%, 23%, 0)",
+                "borderRadius": 9999,
+                "borderStyle": "solid",
+                "borderWidth": 1,
+                "color": "hsla(216, 33%, 29%, 1)",
+                "cursor": "pointer",
+                "display": "flex",
+                "justifyContent": "center",
+                "paddingBottom": 8,
+                "paddingLeft": 8,
+                "paddingRight": 8,
+                "paddingTop": 8,
+              },
             ]
           }
           variant="filled"

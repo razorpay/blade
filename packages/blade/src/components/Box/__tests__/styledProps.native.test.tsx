@@ -40,7 +40,12 @@ describe('styledProps with getStyledProps', () => {
           data-blade-component="base-box"
           style={
             [
-              {},
+              {
+                "marginBottom": 0,
+                "marginLeft": 48,
+                "marginRight": 48,
+                "marginTop": 0,
+              },
             ]
           }
         />
@@ -74,7 +79,10 @@ describe('styledProps with useStyledProps', () => {
             [
               {
                 "display": "flex",
-                "marginLeft": 0,
+                "marginBottom": 0,
+                "marginLeft": 48,
+                "marginRight": 48,
+                "marginTop": 0,
               },
             ]
           }

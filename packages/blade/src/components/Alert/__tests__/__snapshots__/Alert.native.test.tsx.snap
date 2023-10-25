@@ -26,7 +26,9 @@ exports[`<Alert /> should render 1`] = `
       isFullWidth={false}
       style={
         [
-          {},
+          {
+            "textAlign": "left",
+          },
           {},
         ]
       }
@@ -37,7 +39,10 @@ exports[`<Alert /> should render 1`] = `
         display="flex"
         style={
           [
-            {},
+            {
+              "display": "flex",
+              "marginTop": 0,
+            },
           ]
         }
       >
@@ -119,7 +124,13 @@ exports[`<Alert /> should render 1`] = `
         data-blade-component="base-box"
         style={
           [
-            {},
+            {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "paddingLeft": 8,
+              "paddingRight": 4,
+            },
           ]
         }
       >
@@ -127,7 +138,9 @@ exports[`<Alert /> should render 1`] = `
           data-blade-component="base-box"
           style={
             [
-              {},
+              {
+                "marginTop": 0,
+              },
             ]
           }
         >
@@ -300,7 +313,9 @@ exports[`<Alert /> should render positive color and full width 1`] = `
       isFullWidth={true}
       style={
         [
-          {},
+          {
+            "textAlign": "left",
+          },
           {},
         ]
       }
@@ -311,7 +326,10 @@ exports[`<Alert /> should render positive color and full width 1`] = `
         display="flex"
         style={
           [
-            {},
+            {
+              "display": "flex",
+              "marginTop": 2,
+            },
           ]
         }
       >
@@ -403,7 +421,13 @@ exports[`<Alert /> should render positive color and full width 1`] = `
         data-blade-component="base-box"
         style={
           [
-            {},
+            {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "paddingLeft": 12,
+              "paddingRight": 4,
+            },
           ]
         }
       >
@@ -411,7 +435,9 @@ exports[`<Alert /> should render positive color and full width 1`] = `
           data-blade-component="base-box"
           style={
             [
-              {},
+              {
+                "marginTop": 0,
+              },
             ]
           }
         >
@@ -584,7 +610,9 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
       isFullWidth={true}
       style={
         [
-          {},
+          {
+            "textAlign": "left",
+          },
           {},
         ]
       }
@@ -595,7 +623,10 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
         display="flex"
         style={
           [
-            {},
+            {
+              "display": "flex",
+              "marginTop": 2,
+            },
           ]
         }
       >
@@ -687,7 +718,13 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
         data-blade-component="base-box"
         style={
           [
-            {},
+            {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "paddingLeft": 12,
+              "paddingRight": 4,
+            },
           ]
         }
       >
@@ -695,7 +732,9 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
           data-blade-component="base-box"
           style={
             [
-              {},
+              {
+                "marginTop": 0,
+              },
             ]
           }
         >

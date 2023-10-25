@@ -24,7 +24,10 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
       flexDirection="column"
       style={
         [
-          {},
+          {
+            "display": "flex",
+            "flexDirection": "column",
+          },
         ]
       }
     >
@@ -32,7 +35,10 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
         data-blade-component="base-box"
         style={
           [
-            {},
+            {
+              "marginBottom": 4,
+              "marginRight": 16,
+            },
           ]
         }
       >
@@ -46,7 +52,14 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
           maxHeight="36px"
           style={
             [
-              {},
+              {
+                "alignItems": "center",
+                "display": "flex",
+                "flexDirection": "row",
+                "flexWrap": "wrap",
+                "gap": 0,
+                "maxHeight": 36,
+              },
             ]
           }
         >
@@ -88,7 +101,28 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
             data-blade-component="visually-hidden"
             style={
               [
-                {},
+                {
+                  "borderColor": "black",
+                  "borderStyle": "solid",
+                  "borderWidth": 0,
+                  "clip": "rect(0 0 0 0)",
+                  "clipPath": "inset(50%)",
+                  "height": 1,
+                  "left": -10000,
+                  "marginBottom": -1,
+                  "marginLeft": 0,
+                  "marginRight": -1,
+                  "marginTop": 0,
+                  "overflow": "hidden",
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "position": "absolute",
+                  "whiteSpace": "nowrap",
+                  "width": 1,
+                  "wordWrap": "normal",
+                },
               ]
             }
           >
@@ -142,7 +176,10 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
           flexDirection="column"
           style={
             [
-              {},
+              {
+                "display": "flex",
+                "flexDirection": "column",
+              },
             ]
           }
         >
@@ -150,7 +187,9 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
             data-blade-component="base-box"
             style={
               [
-                {},
+                {
+                  "marginBottom": 8,
+                },
               ]
             }
           >
@@ -213,7 +252,10 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                   flexDirection="column"
                   style={
                     [
-                      {},
+                      {
+                        "display": "flex",
+                        "flexDirection": "column",
+                      },
                     ]
                   }
                 >
@@ -223,7 +265,10 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                     flexDirection="row"
                     style={
                       [
-                        {},
+                        {
+                          "display": "flex",
+                          "flexDirection": "row",
+                        },
                       ]
                     }
                   >
@@ -235,7 +280,24 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                       size="medium"
                       style={
                         [
-                          {},
+                          {
+                            "alignItems": "center",
+                            "backgroundColor": "transparent",
+                            "borderColor": "hsla(214, 18%, 69%, 1)",
+                            "borderRadius": 2,
+                            "borderStyle": "solid",
+                            "borderWidth": 1.5,
+                            "display": "flex",
+                            "flexShrink": 0,
+                            "height": 16,
+                            "justifyContent": "center",
+                            "marginBottom": 2,
+                            "marginLeft": 2,
+                            "marginRight": 2,
+                            "marginTop": 2,
+                            "position": "relative",
+                            "width": 16,
+                          },
                         ]
                       }
                     />
@@ -243,7 +305,9 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                       data-blade-component="base-box"
                       style={
                         [
-                          {},
+                          {
+                            "marginLeft": 4,
+                          },
                         ]
                       }
                     />
@@ -288,7 +352,9 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
             data-blade-component="base-box"
             style={
               [
-                {},
+                {
+                  "marginBottom": 8,
+                },
               ]
             }
           >
@@ -351,7 +417,10 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                   flexDirection="column"
                   style={
                     [
-                      {},
+                      {
+                        "display": "flex",
+                        "flexDirection": "column",
+                      },
                     ]
                   }
                 >
@@ -361,7 +430,10 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                     flexDirection="row"
                     style={
                       [
-                        {},
+                        {
+                          "display": "flex",
+                          "flexDirection": "row",
+                        },
                       ]
                     }
                   >
@@ -373,7 +445,24 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                       size="medium"
                       style={
                         [
-                          {},
+                          {
+                            "alignItems": "center",
+                            "backgroundColor": "transparent",
+                            "borderColor": "hsla(214, 18%, 69%, 1)",
+                            "borderRadius": 2,
+                            "borderStyle": "solid",
+                            "borderWidth": 1.5,
+                            "display": "flex",
+                            "flexShrink": 0,
+                            "height": 16,
+                            "justifyContent": "center",
+                            "marginBottom": 2,
+                            "marginLeft": 2,
+                            "marginRight": 2,
+                            "marginTop": 2,
+                            "position": "relative",
+                            "width": 16,
+                          },
                         ]
                       }
                     />
@@ -381,7 +470,9 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                       data-blade-component="base-box"
                       style={
                         [
-                          {},
+                          {
+                            "marginLeft": 4,
+                          },
                         ]
                       }
                     />
@@ -426,7 +517,9 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
             data-blade-component="base-box"
             style={
               [
-                {},
+                {
+                  "marginBottom": 0,
+                },
               ]
             }
           >
@@ -489,7 +582,10 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                   flexDirection="column"
                   style={
                     [
-                      {},
+                      {
+                        "display": "flex",
+                        "flexDirection": "column",
+                      },
                     ]
                   }
                 >
@@ -499,7 +595,10 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                     flexDirection="row"
                     style={
                       [
-                        {},
+                        {
+                          "display": "flex",
+                          "flexDirection": "row",
+                        },
                       ]
                     }
                   >
@@ -511,7 +610,24 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                       size="medium"
                       style={
                         [
-                          {},
+                          {
+                            "alignItems": "center",
+                            "backgroundColor": "transparent",
+                            "borderColor": "hsla(214, 18%, 69%, 1)",
+                            "borderRadius": 2,
+                            "borderStyle": "solid",
+                            "borderWidth": 1.5,
+                            "display": "flex",
+                            "flexShrink": 0,
+                            "height": 16,
+                            "justifyContent": "center",
+                            "marginBottom": 2,
+                            "marginLeft": 2,
+                            "marginRight": 2,
+                            "marginTop": 2,
+                            "position": "relative",
+                            "width": 16,
+                          },
                         ]
                       }
                     />
@@ -519,7 +635,9 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                       data-blade-component="base-box"
                       style={
                         [
-                          {},
+                          {
+                            "marginLeft": 4,
+                          },
                         ]
                       }
                     />
@@ -591,7 +709,10 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
       flexDirection="column"
       style={
         [
-          {},
+          {
+            "display": "flex",
+            "flexDirection": "column",
+          },
         ]
       }
     >
@@ -599,7 +720,10 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
         data-blade-component="base-box"
         style={
           [
-            {},
+            {
+              "marginBottom": 4,
+              "marginRight": 16,
+            },
           ]
         }
       >
@@ -613,7 +737,14 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
           maxHeight="36px"
           style={
             [
-              {},
+              {
+                "alignItems": "center",
+                "display": "flex",
+                "flexDirection": "row",
+                "flexWrap": "wrap",
+                "gap": 0,
+                "maxHeight": 36,
+              },
             ]
           }
         >
@@ -655,7 +786,28 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
             data-blade-component="visually-hidden"
             style={
               [
-                {},
+                {
+                  "borderColor": "black",
+                  "borderStyle": "solid",
+                  "borderWidth": 0,
+                  "clip": "rect(0 0 0 0)",
+                  "clipPath": "inset(50%)",
+                  "height": 1,
+                  "left": -10000,
+                  "marginBottom": -1,
+                  "marginLeft": 0,
+                  "marginRight": -1,
+                  "marginTop": 0,
+                  "overflow": "hidden",
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "position": "absolute",
+                  "whiteSpace": "nowrap",
+                  "width": 1,
+                  "wordWrap": "normal",
+                },
               ]
             }
           >
@@ -709,7 +861,10 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
           flexDirection="column"
           style={
             [
-              {},
+              {
+                "display": "flex",
+                "flexDirection": "column",
+              },
             ]
           }
         >
@@ -717,7 +872,9 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
             data-blade-component="base-box"
             style={
               [
-                {},
+                {
+                  "marginBottom": 8,
+                },
               ]
             }
           >
@@ -780,7 +937,10 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                   flexDirection="column"
                   style={
                     [
-                      {},
+                      {
+                        "display": "flex",
+                        "flexDirection": "column",
+                      },
                     ]
                   }
                 >
@@ -790,7 +950,10 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                     flexDirection="row"
                     style={
                       [
-                        {},
+                        {
+                          "display": "flex",
+                          "flexDirection": "row",
+                        },
                       ]
                     }
                   >
@@ -802,7 +965,24 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                       size="medium"
                       style={
                         [
-                          {},
+                          {
+                            "alignItems": "center",
+                            "backgroundColor": "transparent",
+                            "borderColor": "hsla(214, 18%, 69%, 1)",
+                            "borderRadius": 2,
+                            "borderStyle": "solid",
+                            "borderWidth": 1.5,
+                            "display": "flex",
+                            "flexShrink": 0,
+                            "height": 16,
+                            "justifyContent": "center",
+                            "marginBottom": 2,
+                            "marginLeft": 2,
+                            "marginRight": 2,
+                            "marginTop": 2,
+                            "position": "relative",
+                            "width": 16,
+                          },
                         ]
                       }
                     />
@@ -810,7 +990,9 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                       data-blade-component="base-box"
                       style={
                         [
-                          {},
+                          {
+                            "marginLeft": 4,
+                          },
                         ]
                       }
                     />
@@ -855,7 +1037,9 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
             data-blade-component="base-box"
             style={
               [
-                {},
+                {
+                  "marginBottom": 8,
+                },
               ]
             }
           >
@@ -918,7 +1102,10 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                   flexDirection="column"
                   style={
                     [
-                      {},
+                      {
+                        "display": "flex",
+                        "flexDirection": "column",
+                      },
                     ]
                   }
                 >
@@ -928,7 +1115,10 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                     flexDirection="row"
                     style={
                       [
-                        {},
+                        {
+                          "display": "flex",
+                          "flexDirection": "row",
+                        },
                       ]
                     }
                   >
@@ -940,7 +1130,24 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                       size="medium"
                       style={
                         [
-                          {},
+                          {
+                            "alignItems": "center",
+                            "backgroundColor": "transparent",
+                            "borderColor": "hsla(214, 18%, 69%, 1)",
+                            "borderRadius": 2,
+                            "borderStyle": "solid",
+                            "borderWidth": 1.5,
+                            "display": "flex",
+                            "flexShrink": 0,
+                            "height": 16,
+                            "justifyContent": "center",
+                            "marginBottom": 2,
+                            "marginLeft": 2,
+                            "marginRight": 2,
+                            "marginTop": 2,
+                            "position": "relative",
+                            "width": 16,
+                          },
                         ]
                       }
                     />
@@ -948,7 +1155,9 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                       data-blade-component="base-box"
                       style={
                         [
-                          {},
+                          {
+                            "marginLeft": 4,
+                          },
                         ]
                       }
                     />
@@ -993,7 +1202,9 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
             data-blade-component="base-box"
             style={
               [
-                {},
+                {
+                  "marginBottom": 0,
+                },
               ]
             }
           >
@@ -1056,7 +1267,10 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                   flexDirection="column"
                   style={
                     [
-                      {},
+                      {
+                        "display": "flex",
+                        "flexDirection": "column",
+                      },
                     ]
                   }
                 >
@@ -1066,7 +1280,10 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                     flexDirection="row"
                     style={
                       [
-                        {},
+                        {
+                          "display": "flex",
+                          "flexDirection": "row",
+                        },
                       ]
                     }
                   >
@@ -1078,7 +1295,24 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                       size="medium"
                       style={
                         [
-                          {},
+                          {
+                            "alignItems": "center",
+                            "backgroundColor": "transparent",
+                            "borderColor": "hsla(214, 18%, 69%, 1)",
+                            "borderRadius": 2,
+                            "borderStyle": "solid",
+                            "borderWidth": 1.5,
+                            "display": "flex",
+                            "flexShrink": 0,
+                            "height": 16,
+                            "justifyContent": "center",
+                            "marginBottom": 2,
+                            "marginLeft": 2,
+                            "marginRight": 2,
+                            "marginTop": 2,
+                            "position": "relative",
+                            "width": 16,
+                          },
                         ]
                       }
                     />
@@ -1086,7 +1320,9 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
                       data-blade-component="base-box"
                       style={
                         [
-                          {},
+                          {
+                            "marginLeft": 4,
+                          },
                         ]
                       }
                     />
@@ -1132,7 +1368,9 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
           data-blade-component="base-box"
           style={
             [
-              {},
+              {
+                "marginTop": 4,
+              },
             ]
           }
         >
@@ -1143,7 +1381,11 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
             flexDirection="row"
             style={
               [
-                {},
+                {
+                  "alignItems": "center",
+                  "display": "flex",
+                  "flexDirection": "row",
+                },
               ]
             }
           >

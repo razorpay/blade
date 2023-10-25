@@ -13,7 +13,9 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
     display="flex"
     style={
       [
-        {},
+        {
+          "display": "flex",
+        },
       ]
     }
   >
@@ -24,7 +26,11 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
       flexDirection="row"
       style={
         [
-          {},
+          {
+            "alignItems": "baseline",
+            "display": "flex",
+            "flexDirection": "row",
+          },
         ]
       }
     >
@@ -46,7 +52,7 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
-              "marginRight": 0,
+              "marginRight": 2,
               "marginTop": 0,
               "paddingBottom": 0,
               "paddingLeft": 0,
@@ -133,7 +139,7 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
                 "fontWeight": "400",
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
+                "marginLeft": 2,
                 "marginRight": 0,
                 "marginTop": 0,
                 "paddingBottom": 0,
@@ -166,7 +172,9 @@ exports[`<Amount /> should render Amount with default props 1`] = `
     display="flex"
     style={
       [
-        {},
+        {
+          "display": "flex",
+        },
       ]
     }
   >
@@ -177,7 +185,11 @@ exports[`<Amount /> should render Amount with default props 1`] = `
       flexDirection="row"
       style={
         [
-          {},
+          {
+            "alignItems": "baseline",
+            "display": "flex",
+            "flexDirection": "row",
+          },
         ]
       }
     >
@@ -199,7 +211,7 @@ exports[`<Amount /> should render Amount with default props 1`] = `
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
-              "marginRight": 0,
+              "marginRight": 2,
               "marginTop": 0,
               "paddingBottom": 0,
               "paddingLeft": 0,
@@ -286,7 +298,7 @@ exports[`<Amount /> should render Amount with default props 1`] = `
                 "fontWeight": "400",
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
+                "marginLeft": 2,
                 "marginRight": 0,
                 "marginTop": 0,
                 "paddingBottom": 0,
@@ -319,7 +331,9 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
     display="flex"
     style={
       [
-        {},
+        {
+          "display": "flex",
+        },
       ]
     }
   >
@@ -330,7 +344,11 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
       flexDirection="row"
       style={
         [
-          {},
+          {
+            "alignItems": "baseline",
+            "display": "flex",
+            "flexDirection": "row",
+          },
         ]
       }
     >
@@ -352,7 +370,7 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
-              "marginRight": 0,
+              "marginRight": 2,
               "marginTop": 0,
               "paddingBottom": 0,
               "paddingLeft": 0,
@@ -439,7 +457,7 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
                 "fontWeight": "400",
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
+                "marginLeft": 2,
                 "marginRight": 0,
                 "marginTop": 0,
                 "paddingBottom": 0,
@@ -472,7 +490,9 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
     display="flex"
     style={
       [
-        {},
+        {
+          "display": "flex",
+        },
       ]
     }
   >
@@ -483,7 +503,11 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
       flexDirection="row"
       style={
         [
-          {},
+          {
+            "alignItems": "baseline",
+            "display": "flex",
+            "flexDirection": "row",
+          },
         ]
       }
     >
@@ -505,7 +529,7 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
-              "marginRight": 0,
+              "marginRight": 2,
               "marginTop": 0,
               "paddingBottom": 0,
               "paddingLeft": 0,
@@ -592,7 +616,7 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
                 "fontWeight": "400",
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
+                "marginLeft": 2,
                 "marginRight": 0,
                 "marginTop": 0,
                 "paddingBottom": 0,
@@ -625,7 +649,9 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
     display="flex"
     style={
       [
-        {},
+        {
+          "display": "flex",
+        },
       ]
     }
   >
@@ -636,7 +662,11 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       flexDirection="row"
       style={
         [
-          {},
+          {
+            "alignItems": "baseline",
+            "display": "flex",
+            "flexDirection": "row",
+          },
         ]
       }
     >
@@ -658,7 +688,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
-              "marginRight": 0,
+              "marginRight": 2,
               "marginTop": 0,
               "paddingBottom": 0,
               "paddingLeft": 0,
@@ -745,7 +775,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
                 "fontWeight": "400",
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
+                "marginLeft": 2,
                 "marginRight": 0,
                 "marginTop": 0,
                 "paddingBottom": 0,
@@ -767,7 +797,9 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
     display="flex"
     style={
       [
-        {},
+        {
+          "display": "flex",
+        },
       ]
     }
   >
@@ -778,7 +810,11 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       flexDirection="row"
       style={
         [
-          {},
+          {
+            "alignItems": "baseline",
+            "display": "flex",
+            "flexDirection": "row",
+          },
         ]
       }
     >
@@ -800,7 +836,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
-              "marginRight": 0,
+              "marginRight": 2,
               "marginTop": 0,
               "paddingBottom": 0,
               "paddingLeft": 0,
@@ -887,7 +923,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
                 "fontWeight": "400",
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
+                "marginLeft": 2,
                 "marginRight": 0,
                 "marginTop": 0,
                 "paddingBottom": 0,
@@ -909,7 +945,9 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
     display="flex"
     style={
       [
-        {},
+        {
+          "display": "flex",
+        },
       ]
     }
   >
@@ -920,7 +958,11 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       flexDirection="row"
       style={
         [
-          {},
+          {
+            "alignItems": "baseline",
+            "display": "flex",
+            "flexDirection": "row",
+          },
         ]
       }
     >
@@ -942,7 +984,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
-              "marginRight": 0,
+              "marginRight": 2,
               "marginTop": 0,
               "paddingBottom": 0,
               "paddingLeft": 0,
@@ -1029,7 +1071,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
                 "fontWeight": "400",
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
+                "marginLeft": 2,
                 "marginRight": 0,
                 "marginTop": 0,
                 "paddingBottom": 0,
@@ -1051,7 +1093,9 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
     display="flex"
     style={
       [
-        {},
+        {
+          "display": "flex",
+        },
       ]
     }
   >
@@ -1062,7 +1106,11 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       flexDirection="row"
       style={
         [
-          {},
+          {
+            "alignItems": "baseline",
+            "display": "flex",
+            "flexDirection": "row",
+          },
         ]
       }
     >
@@ -1084,7 +1132,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
-              "marginRight": 0,
+              "marginRight": 2,
               "marginTop": 0,
               "paddingBottom": 0,
               "paddingLeft": 0,
@@ -1171,7 +1219,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
                 "fontWeight": "400",
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
+                "marginLeft": 2,
                 "marginRight": 0,
                 "marginTop": 0,
                 "paddingBottom": 0,
@@ -1193,7 +1241,9 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
     display="flex"
     style={
       [
-        {},
+        {
+          "display": "flex",
+        },
       ]
     }
   >
@@ -1204,7 +1254,11 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       flexDirection="row"
       style={
         [
-          {},
+          {
+            "alignItems": "baseline",
+            "display": "flex",
+            "flexDirection": "row",
+          },
         ]
       }
     >
@@ -1226,7 +1280,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
-              "marginRight": 0,
+              "marginRight": 2,
               "marginTop": 0,
               "paddingBottom": 0,
               "paddingLeft": 0,
@@ -1313,7 +1367,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
                 "fontWeight": "400",
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
+                "marginLeft": 2,
                 "marginRight": 0,
                 "marginTop": 0,
                 "paddingBottom": 0,
@@ -1335,7 +1389,9 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
     display="flex"
     style={
       [
-        {},
+        {
+          "display": "flex",
+        },
       ]
     }
   >
@@ -1346,7 +1402,11 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       flexDirection="row"
       style={
         [
-          {},
+          {
+            "alignItems": "baseline",
+            "display": "flex",
+            "flexDirection": "row",
+          },
         ]
       }
     >
@@ -1368,7 +1428,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
-              "marginRight": 0,
+              "marginRight": 2,
               "marginTop": 0,
               "paddingBottom": 0,
               "paddingLeft": 0,
@@ -1455,7 +1515,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
                 "fontWeight": "400",
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
+                "marginLeft": 2,
                 "marginRight": 0,
                 "marginTop": 0,
                 "paddingBottom": 0,
@@ -1477,7 +1537,9 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
     display="flex"
     style={
       [
-        {},
+        {
+          "display": "flex",
+        },
       ]
     }
   >
@@ -1488,7 +1550,11 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       flexDirection="row"
       style={
         [
-          {},
+          {
+            "alignItems": "baseline",
+            "display": "flex",
+            "flexDirection": "row",
+          },
         ]
       }
     >
@@ -1510,7 +1576,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
-              "marginRight": 0,
+              "marginRight": 2,
               "marginTop": 0,
               "paddingBottom": 0,
               "paddingLeft": 0,
@@ -1597,7 +1663,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
                 "fontWeight": "400",
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
+                "marginLeft": 2,
                 "marginRight": 0,
                 "marginTop": 0,
                 "paddingBottom": 0,
@@ -1619,7 +1685,9 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
     display="flex"
     style={
       [
-        {},
+        {
+          "display": "flex",
+        },
       ]
     }
   >
@@ -1630,7 +1698,11 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       flexDirection="row"
       style={
         [
-          {},
+          {
+            "alignItems": "baseline",
+            "display": "flex",
+            "flexDirection": "row",
+          },
         ]
       }
     >
@@ -1652,7 +1724,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
-              "marginRight": 0,
+              "marginRight": 2,
               "marginTop": 0,
               "paddingBottom": 0,
               "paddingLeft": 0,
@@ -1739,7 +1811,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
                 "fontWeight": "400",
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
+                "marginLeft": 2,
                 "marginRight": 0,
                 "marginTop": 0,
                 "paddingBottom": 0,
@@ -1761,7 +1833,9 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
     display="flex"
     style={
       [
-        {},
+        {
+          "display": "flex",
+        },
       ]
     }
   >
@@ -1772,7 +1846,11 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       flexDirection="row"
       style={
         [
-          {},
+          {
+            "alignItems": "baseline",
+            "display": "flex",
+            "flexDirection": "row",
+          },
         ]
       }
     >
@@ -1794,7 +1872,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
-              "marginRight": 0,
+              "marginRight": 2,
               "marginTop": 0,
               "paddingBottom": 0,
               "paddingLeft": 0,
@@ -1881,7 +1959,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
                 "fontWeight": "400",
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
+                "marginLeft": 2,
                 "marginRight": 0,
                 "marginTop": 0,
                 "paddingBottom": 0,
@@ -1914,7 +1992,9 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
     display="flex"
     style={
       [
-        {},
+        {
+          "display": "flex",
+        },
       ]
     }
   >
@@ -1925,7 +2005,11 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
       flexDirection="row"
       style={
         [
-          {},
+          {
+            "alignItems": "baseline",
+            "display": "flex",
+            "flexDirection": "row",
+          },
         ]
       }
     >
@@ -1947,7 +2031,7 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
-              "marginRight": 0,
+              "marginRight": 2,
               "marginTop": 0,
               "paddingBottom": 0,
               "paddingLeft": 0,
@@ -2034,7 +2118,7 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
                 "fontWeight": "400",
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
+                "marginLeft": 2,
                 "marginRight": 0,
                 "marginTop": 0,
                 "paddingBottom": 0,
@@ -2067,7 +2151,9 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
     display="flex"
     style={
       [
-        {},
+        {
+          "display": "flex",
+        },
       ]
     }
   >
@@ -2078,7 +2164,11 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
       flexDirection="row"
       style={
         [
-          {},
+          {
+            "alignItems": "baseline",
+            "display": "flex",
+            "flexDirection": "row",
+          },
         ]
       }
     >
@@ -2100,7 +2190,7 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
-              "marginRight": 0,
+              "marginRight": 2,
               "marginTop": 0,
               "paddingBottom": 0,
               "paddingLeft": 0,
@@ -2162,7 +2252,9 @@ exports[`<Amount /> should render information intent Amount  1`] = `
     display="flex"
     style={
       [
-        {},
+        {
+          "display": "flex",
+        },
       ]
     }
   >
@@ -2173,7 +2265,11 @@ exports[`<Amount /> should render information intent Amount  1`] = `
       flexDirection="row"
       style={
         [
-          {},
+          {
+            "alignItems": "baseline",
+            "display": "flex",
+            "flexDirection": "row",
+          },
         ]
       }
     >
@@ -2195,7 +2291,7 @@ exports[`<Amount /> should render information intent Amount  1`] = `
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
-              "marginRight": 0,
+              "marginRight": 2,
               "marginTop": 0,
               "paddingBottom": 0,
               "paddingLeft": 0,
@@ -2257,7 +2353,9 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
     display="flex"
     style={
       [
-        {},
+        {
+          "display": "flex",
+        },
       ]
     }
   >
@@ -2268,7 +2366,11 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
       flexDirection="row"
       style={
         [
-          {},
+          {
+            "alignItems": "baseline",
+            "display": "flex",
+            "flexDirection": "row",
+          },
         ]
       }
     >
@@ -2290,7 +2392,7 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
-              "marginRight": 0,
+              "marginRight": 2,
               "marginTop": 0,
               "paddingBottom": 0,
               "paddingLeft": 0,
@@ -2377,7 +2479,7 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
                 "fontWeight": "400",
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 0,
+                "marginLeft": 2,
                 "marginRight": 0,
                 "marginTop": 0,
                 "paddingBottom": 0,

@@ -56,7 +56,10 @@ exports[`<Card /> should render a clickable Card 1`] = `
       isSelected={false}
       style={
         [
-          {},
+          {
+            "borderRadius": 4,
+            "display": "block",
+          },
           {
             "borderColor": "transparent",
             "borderStyle": "solid",
@@ -71,7 +74,14 @@ exports[`<Card /> should render a clickable Card 1`] = `
         elevation="lowRaised"
         style={
           [
-            {},
+            {
+              "borderRadius": 4,
+              "paddingBottom": 24,
+              "paddingLeft": 24,
+              "paddingRight": 24,
+              "paddingTop": 24,
+              "textAlign": "left",
+            },
             {
               "elevation": 4,
               "shadowColor": "hsla(217, 56%, 17%, 0.64)",
@@ -167,7 +177,10 @@ exports[`<Card /> should render a interactive Card 1`] = `
       isSelected={true}
       style={
         [
-          {},
+          {
+            "borderRadius": 4,
+            "display": "block",
+          },
           {
             "borderColor": "hsla(218, 89%, 51%, 1)",
             "borderStyle": "solid",
@@ -182,7 +195,14 @@ exports[`<Card /> should render a interactive Card 1`] = `
         elevation="lowRaised"
         style={
           [
-            {},
+            {
+              "borderRadius": 4,
+              "paddingBottom": 24,
+              "paddingLeft": 24,
+              "paddingRight": 24,
+              "paddingTop": 24,
+              "textAlign": "left",
+            },
             {
               "elevation": 4,
               "shadowColor": "hsla(217, 56%, 17%, 0.64)",
@@ -279,7 +299,10 @@ exports[`<Card /> should render a linkable Card 1`] = `
       isSelected={false}
       style={
         [
-          {},
+          {
+            "borderRadius": 4,
+            "display": "block",
+          },
           {
             "borderColor": "transparent",
             "borderStyle": "solid",
@@ -294,7 +317,14 @@ exports[`<Card /> should render a linkable Card 1`] = `
         elevation="lowRaised"
         style={
           [
-            {},
+            {
+              "borderRadius": 4,
+              "paddingBottom": 24,
+              "paddingLeft": 24,
+              "paddingRight": 24,
+              "paddingTop": 24,
+              "textAlign": "left",
+            },
             {
               "elevation": 4,
               "shadowColor": "hsla(217, 56%, 17%, 0.64)",
@@ -391,7 +421,10 @@ exports[`<Card /> should render a linkable Card with onClick 1`] = `
       isSelected={false}
       style={
         [
-          {},
+          {
+            "borderRadius": 4,
+            "display": "block",
+          },
           {
             "borderColor": "transparent",
             "borderStyle": "solid",
@@ -406,7 +439,14 @@ exports[`<Card /> should render a linkable Card with onClick 1`] = `
         elevation="lowRaised"
         style={
           [
-            {},
+            {
+              "borderRadius": 4,
+              "paddingBottom": 24,
+              "paddingLeft": 24,
+              "paddingRight": 24,
+              "paddingTop": 24,
+              "textAlign": "left",
+            },
             {
               "elevation": 4,
               "shadowColor": "hsla(217, 56%, 17%, 0.64)",

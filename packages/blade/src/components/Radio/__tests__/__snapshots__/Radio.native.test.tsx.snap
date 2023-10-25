@@ -25,7 +25,10 @@ exports[`<Radio /> should render radio with label 1`] = `
       flexDirection="column"
       style={
         [
-          {},
+          {
+            "display": "flex",
+            "flexDirection": "column",
+          },
         ]
       }
     >
@@ -33,7 +36,10 @@ exports[`<Radio /> should render radio with label 1`] = `
         data-blade-component="base-box"
         style={
           [
-            {},
+            {
+              "marginBottom": 4,
+              "marginRight": 16,
+            },
           ]
         }
       >
@@ -47,7 +53,14 @@ exports[`<Radio /> should render radio with label 1`] = `
           maxHeight="36px"
           style={
             [
-              {},
+              {
+                "alignItems": "center",
+                "display": "flex",
+                "flexDirection": "row",
+                "flexWrap": "wrap",
+                "gap": 0,
+                "maxHeight": 36,
+              },
             ]
           }
         >
@@ -89,7 +102,28 @@ exports[`<Radio /> should render radio with label 1`] = `
             data-blade-component="visually-hidden"
             style={
               [
-                {},
+                {
+                  "borderColor": "black",
+                  "borderStyle": "solid",
+                  "borderWidth": 0,
+                  "clip": "rect(0 0 0 0)",
+                  "clipPath": "inset(50%)",
+                  "height": 1,
+                  "left": -10000,
+                  "marginBottom": -1,
+                  "marginLeft": 0,
+                  "marginRight": -1,
+                  "marginTop": 0,
+                  "overflow": "hidden",
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "position": "absolute",
+                  "whiteSpace": "nowrap",
+                  "width": 1,
+                  "wordWrap": "normal",
+                },
               ]
             }
           >
@@ -141,7 +175,10 @@ exports[`<Radio /> should render radio with label 1`] = `
           flexDirection="column"
           style={
             [
-              {},
+              {
+                "display": "flex",
+                "flexDirection": "column",
+              },
             ]
           }
         >
@@ -149,7 +186,9 @@ exports[`<Radio /> should render radio with label 1`] = `
             data-blade-component="base-box"
             style={
               [
-                {},
+                {
+                  "marginBottom": 0,
+                },
               ]
             }
           >
@@ -214,7 +253,10 @@ exports[`<Radio /> should render radio with label 1`] = `
                   flexDirection="column"
                   style={
                     [
-                      {},
+                      {
+                        "display": "flex",
+                        "flexDirection": "column",
+                      },
                     ]
                   }
                 >
@@ -225,7 +267,11 @@ exports[`<Radio /> should render radio with label 1`] = `
                     flexDirection="row"
                     style={
                       [
-                        {},
+                        {
+                          "alignItems": "center",
+                          "display": "flex",
+                          "flexDirection": "row",
+                        },
                       ]
                     }
                   >
@@ -237,7 +283,23 @@ exports[`<Radio /> should render radio with label 1`] = `
                       size="medium"
                       style={
                         [
-                          {},
+                          {
+                            "alignItems": "center",
+                            "backgroundColor": "transparent",
+                            "borderColor": "hsla(214, 18%, 69%, 1)",
+                            "borderRadius": 9999,
+                            "borderStyle": "solid",
+                            "borderWidth": 1.5,
+                            "display": "flex",
+                            "height": 16,
+                            "justifyContent": "center",
+                            "marginBottom": 2,
+                            "marginLeft": 2,
+                            "marginRight": 2,
+                            "marginTop": 2,
+                            "position": "relative",
+                            "width": 16,
+                          },
                         ]
                       }
                     />
@@ -245,7 +307,9 @@ exports[`<Radio /> should render radio with label 1`] = `
                       data-blade-component="base-box"
                       style={
                         [
-                          {},
+                          {
+                            "marginLeft": 4,
+                          },
                         ]
                       }
                     />
@@ -318,7 +382,10 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
       flexDirection="column"
       style={
         [
-          {},
+          {
+            "display": "flex",
+            "flexDirection": "column",
+          },
         ]
       }
     >
@@ -326,7 +393,10 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
         data-blade-component="base-box"
         style={
           [
-            {},
+            {
+              "marginBottom": 4,
+              "marginRight": 16,
+            },
           ]
         }
       >
@@ -340,7 +410,14 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
           maxHeight="36px"
           style={
             [
-              {},
+              {
+                "alignItems": "center",
+                "display": "flex",
+                "flexDirection": "row",
+                "flexWrap": "wrap",
+                "gap": 0,
+                "maxHeight": 36,
+              },
             ]
           }
         >
@@ -382,7 +459,28 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
             data-blade-component="visually-hidden"
             style={
               [
-                {},
+                {
+                  "borderColor": "black",
+                  "borderStyle": "solid",
+                  "borderWidth": 0,
+                  "clip": "rect(0 0 0 0)",
+                  "clipPath": "inset(50%)",
+                  "height": 1,
+                  "left": -10000,
+                  "marginBottom": -1,
+                  "marginLeft": 0,
+                  "marginRight": -1,
+                  "marginTop": 0,
+                  "overflow": "hidden",
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "position": "absolute",
+                  "whiteSpace": "nowrap",
+                  "width": 1,
+                  "wordWrap": "normal",
+                },
               ]
             }
           >
@@ -434,7 +532,10 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
           flexDirection="column"
           style={
             [
-              {},
+              {
+                "display": "flex",
+                "flexDirection": "column",
+              },
             ]
           }
         >
@@ -442,7 +543,9 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
             data-blade-component="base-box"
             style={
               [
-                {},
+                {
+                  "marginBottom": 0,
+                },
               ]
             }
           >
@@ -507,7 +610,10 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
                   flexDirection="column"
                   style={
                     [
-                      {},
+                      {
+                        "display": "flex",
+                        "flexDirection": "column",
+                      },
                     ]
                   }
                 >
@@ -518,7 +624,11 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
                     flexDirection="row"
                     style={
                       [
-                        {},
+                        {
+                          "alignItems": "center",
+                          "display": "flex",
+                          "flexDirection": "row",
+                        },
                       ]
                     }
                   >
@@ -530,7 +640,23 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
                       size="medium"
                       style={
                         [
-                          {},
+                          {
+                            "alignItems": "center",
+                            "backgroundColor": "transparent",
+                            "borderColor": "hsla(216, 15%, 54%, 0.18)",
+                            "borderRadius": 9999,
+                            "borderStyle": "solid",
+                            "borderWidth": 1.5,
+                            "display": "flex",
+                            "height": 16,
+                            "justifyContent": "center",
+                            "marginBottom": 2,
+                            "marginLeft": 2,
+                            "marginRight": 2,
+                            "marginTop": 2,
+                            "position": "relative",
+                            "width": 16,
+                          },
                         ]
                       }
                     />
@@ -538,7 +664,9 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
                       data-blade-component="base-box"
                       style={
                         [
-                          {},
+                          {
+                            "marginLeft": 4,
+                          },
                         ]
                       }
                     />

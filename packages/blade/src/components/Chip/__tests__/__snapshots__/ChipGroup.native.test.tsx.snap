@@ -24,7 +24,10 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
       flexDirection="column"
       style={
         [
-          {},
+          {
+            "display": "flex",
+            "flexDirection": "column",
+          },
         ]
       }
     >
@@ -40,7 +43,28 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
           data-blade-component="visually-hidden"
           style={
             [
-              {},
+              {
+                "borderColor": "black",
+                "borderStyle": "solid",
+                "borderWidth": 0,
+                "clip": "rect(0 0 0 0)",
+                "clipPath": "inset(50%)",
+                "height": 1,
+                "left": -10000,
+                "marginBottom": -1,
+                "marginLeft": 0,
+                "marginRight": -1,
+                "marginTop": 0,
+                "overflow": "hidden",
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "position": "absolute",
+                "whiteSpace": "nowrap",
+                "width": 1,
+                "wordWrap": "normal",
+              },
             ]
           }
         >
@@ -85,7 +109,11 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
           flexWrap="wrap"
           style={
             [
-              {},
+              {
+                "display": "flex",
+                "flexDirection": "row",
+                "flexWrap": "wrap",
+              },
             ]
           }
         >
@@ -93,7 +121,10 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
             data-blade-component="base-box"
             style={
               [
-                {},
+                {
+                  "marginBottom": 8,
+                  "marginRight": 8,
+                },
               ]
             }
           >
@@ -102,7 +133,9 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
               display="flex"
               style={
                 [
-                  {},
+                  {
+                    "display": "flex",
+                  },
                 ]
               }
             >
@@ -157,7 +190,10 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                   flexDirection="column"
                   style={
                     [
-                      {},
+                      {
+                        "display": "flex",
+                        "flexDirection": "column",
+                      },
                     ]
                   }
                 >
@@ -168,7 +204,11 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                     flexDirection="row"
                     style={
                       [
-                        {},
+                        {
+                          "alignItems": "center",
+                          "display": "flex",
+                          "flexDirection": "row",
+                        },
                       ]
                     }
                   >
@@ -178,7 +218,19 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                       style={
                         [
                           {
+                            "alignItems": "center",
                             "alignSelf": "center",
+                            "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                            "borderColor": "hsla(216, 19%, 89%, 1)",
+                            "borderRadius": 9999,
+                            "borderWidth": 1,
+                            "display": "flex",
+                            "flexDirection": "row",
+                            "flexWrap": "nowrap",
+                            "justifyContent": "center",
+                            "maxWidth": 280,
+                            "textAlign": "left",
+                            "textOverflow": "ellipsis",
                           },
                           {
                             "transform": [
@@ -207,7 +259,21 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                         overflow="hidden"
                         style={
                           [
-                            {},
+                            {
+                              "alignItems": "center",
+                              "backgroundColor": "transparent",
+                              "borderColor": "hsla(216, 19%, 89%, 1)",
+                              "borderRadius": 9999,
+                              "borderStyle": "solid",
+                              "borderWidth": 0.5,
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "height": 28,
+                              "justifyContent": "center",
+                              "overflow": "hidden",
+                              "paddingLeft": 12,
+                              "paddingRight": 12,
+                            },
                             {
                               "borderColor": "transparent",
                               "display": "flex",
@@ -260,7 +326,10 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
             data-blade-component="base-box"
             style={
               [
-                {},
+                {
+                  "marginBottom": 8,
+                  "marginRight": 8,
+                },
               ]
             }
           >
@@ -269,7 +338,9 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
               display="flex"
               style={
                 [
-                  {},
+                  {
+                    "display": "flex",
+                  },
                 ]
               }
             >
@@ -324,7 +395,10 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                   flexDirection="column"
                   style={
                     [
-                      {},
+                      {
+                        "display": "flex",
+                        "flexDirection": "column",
+                      },
                     ]
                   }
                 >
@@ -335,7 +409,11 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                     flexDirection="row"
                     style={
                       [
-                        {},
+                        {
+                          "alignItems": "center",
+                          "display": "flex",
+                          "flexDirection": "row",
+                        },
                       ]
                     }
                   >
@@ -345,7 +423,19 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                       style={
                         [
                           {
+                            "alignItems": "center",
                             "alignSelf": "center",
+                            "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                            "borderColor": "hsla(216, 19%, 89%, 1)",
+                            "borderRadius": 9999,
+                            "borderWidth": 1,
+                            "display": "flex",
+                            "flexDirection": "row",
+                            "flexWrap": "nowrap",
+                            "justifyContent": "center",
+                            "maxWidth": 280,
+                            "textAlign": "left",
+                            "textOverflow": "ellipsis",
                           },
                           {
                             "transform": [
@@ -374,7 +464,21 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                         overflow="hidden"
                         style={
                           [
-                            {},
+                            {
+                              "alignItems": "center",
+                              "backgroundColor": "transparent",
+                              "borderColor": "hsla(216, 19%, 89%, 1)",
+                              "borderRadius": 9999,
+                              "borderStyle": "solid",
+                              "borderWidth": 0.5,
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "height": 28,
+                              "justifyContent": "center",
+                              "overflow": "hidden",
+                              "paddingLeft": 12,
+                              "paddingRight": 12,
+                            },
                             {
                               "borderColor": "transparent",
                               "display": "flex",
@@ -427,7 +531,10 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
             data-blade-component="base-box"
             style={
               [
-                {},
+                {
+                  "marginBottom": 8,
+                  "marginRight": 8,
+                },
               ]
             }
           >
@@ -436,7 +543,9 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
               display="flex"
               style={
                 [
-                  {},
+                  {
+                    "display": "flex",
+                  },
                 ]
               }
             >
@@ -491,7 +600,10 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                   flexDirection="column"
                   style={
                     [
-                      {},
+                      {
+                        "display": "flex",
+                        "flexDirection": "column",
+                      },
                     ]
                   }
                 >
@@ -502,7 +614,11 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                     flexDirection="row"
                     style={
                       [
-                        {},
+                        {
+                          "alignItems": "center",
+                          "display": "flex",
+                          "flexDirection": "row",
+                        },
                       ]
                     }
                   >
@@ -512,7 +628,19 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                       style={
                         [
                           {
+                            "alignItems": "center",
                             "alignSelf": "center",
+                            "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                            "borderColor": "hsla(216, 19%, 89%, 1)",
+                            "borderRadius": 9999,
+                            "borderWidth": 1,
+                            "display": "flex",
+                            "flexDirection": "row",
+                            "flexWrap": "nowrap",
+                            "justifyContent": "center",
+                            "maxWidth": 280,
+                            "textAlign": "left",
+                            "textOverflow": "ellipsis",
                           },
                           {
                             "transform": [
@@ -541,7 +669,21 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                         overflow="hidden"
                         style={
                           [
-                            {},
+                            {
+                              "alignItems": "center",
+                              "backgroundColor": "transparent",
+                              "borderColor": "hsla(216, 19%, 89%, 1)",
+                              "borderRadius": 9999,
+                              "borderStyle": "solid",
+                              "borderWidth": 0.5,
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "height": 28,
+                              "justifyContent": "center",
+                              "overflow": "hidden",
+                              "paddingLeft": 12,
+                              "paddingRight": 12,
+                            },
                             {
                               "borderColor": "transparent",
                               "display": "flex",
@@ -622,7 +764,10 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
       flexDirection="column"
       style={
         [
-          {},
+          {
+            "display": "flex",
+            "flexDirection": "column",
+          },
         ]
       }
     >
@@ -638,7 +783,28 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
           data-blade-component="visually-hidden"
           style={
             [
-              {},
+              {
+                "borderColor": "black",
+                "borderStyle": "solid",
+                "borderWidth": 0,
+                "clip": "rect(0 0 0 0)",
+                "clipPath": "inset(50%)",
+                "height": 1,
+                "left": -10000,
+                "marginBottom": -1,
+                "marginLeft": 0,
+                "marginRight": -1,
+                "marginTop": 0,
+                "overflow": "hidden",
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "position": "absolute",
+                "whiteSpace": "nowrap",
+                "width": 1,
+                "wordWrap": "normal",
+              },
             ]
           }
         >
@@ -683,7 +849,11 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
           flexWrap="wrap"
           style={
             [
-              {},
+              {
+                "display": "flex",
+                "flexDirection": "row",
+                "flexWrap": "wrap",
+              },
             ]
           }
         >
@@ -691,7 +861,10 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
             data-blade-component="base-box"
             style={
               [
-                {},
+                {
+                  "marginBottom": 8,
+                  "marginRight": 8,
+                },
               ]
             }
           >
@@ -700,7 +873,9 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
               display="flex"
               style={
                 [
-                  {},
+                  {
+                    "display": "flex",
+                  },
                 ]
               }
             >
@@ -756,7 +931,10 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                   flexDirection="column"
                   style={
                     [
-                      {},
+                      {
+                        "display": "flex",
+                        "flexDirection": "column",
+                      },
                     ]
                   }
                 >
@@ -767,7 +945,11 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                     flexDirection="row"
                     style={
                       [
-                        {},
+                        {
+                          "alignItems": "center",
+                          "display": "flex",
+                          "flexDirection": "row",
+                        },
                       ]
                     }
                   >
@@ -777,7 +959,19 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                       style={
                         [
                           {
+                            "alignItems": "center",
                             "alignSelf": "center",
+                            "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                            "borderColor": "hsla(216, 19%, 89%, 1)",
+                            "borderRadius": 9999,
+                            "borderWidth": 1,
+                            "display": "flex",
+                            "flexDirection": "row",
+                            "flexWrap": "nowrap",
+                            "justifyContent": "center",
+                            "maxWidth": 280,
+                            "textAlign": "left",
+                            "textOverflow": "ellipsis",
                           },
                           {
                             "transform": [
@@ -806,7 +1000,21 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                         overflow="hidden"
                         style={
                           [
-                            {},
+                            {
+                              "alignItems": "center",
+                              "backgroundColor": "transparent",
+                              "borderColor": "hsla(216, 19%, 89%, 1)",
+                              "borderRadius": 9999,
+                              "borderStyle": "solid",
+                              "borderWidth": 0.5,
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "height": 28,
+                              "justifyContent": "center",
+                              "overflow": "hidden",
+                              "paddingLeft": 12,
+                              "paddingRight": 12,
+                            },
                             {
                               "borderColor": "transparent",
                               "display": "flex",
@@ -859,7 +1067,10 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
             data-blade-component="base-box"
             style={
               [
-                {},
+                {
+                  "marginBottom": 8,
+                  "marginRight": 8,
+                },
               ]
             }
           >
@@ -868,7 +1079,9 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
               display="flex"
               style={
                 [
-                  {},
+                  {
+                    "display": "flex",
+                  },
                 ]
               }
             >
@@ -924,7 +1137,10 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                   flexDirection="column"
                   style={
                     [
-                      {},
+                      {
+                        "display": "flex",
+                        "flexDirection": "column",
+                      },
                     ]
                   }
                 >
@@ -935,7 +1151,11 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                     flexDirection="row"
                     style={
                       [
-                        {},
+                        {
+                          "alignItems": "center",
+                          "display": "flex",
+                          "flexDirection": "row",
+                        },
                       ]
                     }
                   >
@@ -945,7 +1165,19 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                       style={
                         [
                           {
+                            "alignItems": "center",
                             "alignSelf": "center",
+                            "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                            "borderColor": "hsla(216, 19%, 89%, 1)",
+                            "borderRadius": 9999,
+                            "borderWidth": 1,
+                            "display": "flex",
+                            "flexDirection": "row",
+                            "flexWrap": "nowrap",
+                            "justifyContent": "center",
+                            "maxWidth": 280,
+                            "textAlign": "left",
+                            "textOverflow": "ellipsis",
                           },
                           {
                             "transform": [
@@ -974,7 +1206,21 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                         overflow="hidden"
                         style={
                           [
-                            {},
+                            {
+                              "alignItems": "center",
+                              "backgroundColor": "transparent",
+                              "borderColor": "hsla(216, 19%, 89%, 1)",
+                              "borderRadius": 9999,
+                              "borderStyle": "solid",
+                              "borderWidth": 0.5,
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "height": 28,
+                              "justifyContent": "center",
+                              "overflow": "hidden",
+                              "paddingLeft": 12,
+                              "paddingRight": 12,
+                            },
                             {
                               "borderColor": "transparent",
                               "display": "flex",
@@ -1027,7 +1273,10 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
             data-blade-component="base-box"
             style={
               [
-                {},
+                {
+                  "marginBottom": 8,
+                  "marginRight": 8,
+                },
               ]
             }
           >
@@ -1036,7 +1285,9 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
               display="flex"
               style={
                 [
-                  {},
+                  {
+                    "display": "flex",
+                  },
                 ]
               }
             >
@@ -1092,7 +1343,10 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                   flexDirection="column"
                   style={
                     [
-                      {},
+                      {
+                        "display": "flex",
+                        "flexDirection": "column",
+                      },
                     ]
                   }
                 >
@@ -1103,7 +1357,11 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                     flexDirection="row"
                     style={
                       [
-                        {},
+                        {
+                          "alignItems": "center",
+                          "display": "flex",
+                          "flexDirection": "row",
+                        },
                       ]
                     }
                   >
@@ -1113,7 +1371,19 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                       style={
                         [
                           {
+                            "alignItems": "center",
                             "alignSelf": "center",
+                            "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                            "borderColor": "hsla(216, 19%, 89%, 1)",
+                            "borderRadius": 9999,
+                            "borderWidth": 1,
+                            "display": "flex",
+                            "flexDirection": "row",
+                            "flexWrap": "nowrap",
+                            "justifyContent": "center",
+                            "maxWidth": 280,
+                            "textAlign": "left",
+                            "textOverflow": "ellipsis",
                           },
                           {
                             "transform": [
@@ -1142,7 +1412,21 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                         overflow="hidden"
                         style={
                           [
-                            {},
+                            {
+                              "alignItems": "center",
+                              "backgroundColor": "transparent",
+                              "borderColor": "hsla(216, 19%, 89%, 1)",
+                              "borderRadius": 9999,
+                              "borderStyle": "solid",
+                              "borderWidth": 0.5,
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "height": 28,
+                              "justifyContent": "center",
+                              "overflow": "hidden",
+                              "paddingLeft": 12,
+                              "paddingRight": 12,
+                            },
                             {
                               "borderColor": "transparent",
                               "display": "flex",

@@ -26,7 +26,11 @@ exports[`<Spinner /> should render Spinner with default props 1`] = `
       flexDirection="row"
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+          },
         ]
       }
     >
@@ -35,7 +39,9 @@ exports[`<Spinner /> should render Spinner with default props 1`] = `
         data-blade-component="base-box"
         style={
           [
-            {},
+            {
+              "alignSelf": "center",
+            },
           ]
         }
       >
@@ -155,7 +161,11 @@ exports[`<Spinner /> should render default color Spinner 1`] = `
       flexDirection="row"
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+          },
         ]
       }
     >
@@ -164,7 +174,9 @@ exports[`<Spinner /> should render default color Spinner 1`] = `
         data-blade-component="base-box"
         style={
           [
-            {},
+            {
+              "alignSelf": "center",
+            },
           ]
         }
       >
@@ -284,7 +296,11 @@ exports[`<Spinner /> should render large size Spinner 1`] = `
       flexDirection="row"
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+          },
         ]
       }
     >
@@ -293,7 +309,9 @@ exports[`<Spinner /> should render large size Spinner 1`] = `
         data-blade-component="base-box"
         style={
           [
-            {},
+            {
+              "alignSelf": "center",
+            },
           ]
         }
       >
@@ -413,7 +431,11 @@ exports[`<Spinner /> should render medium size Spinner 1`] = `
       flexDirection="row"
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+          },
         ]
       }
     >
@@ -422,7 +444,9 @@ exports[`<Spinner /> should render medium size Spinner 1`] = `
         data-blade-component="base-box"
         style={
           [
-            {},
+            {
+              "alignSelf": "center",
+            },
           ]
         }
       >
@@ -542,7 +566,11 @@ exports[`<Spinner /> should render white color Spinner 1`] = `
       flexDirection="row"
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+          },
         ]
       }
     >
@@ -551,7 +579,9 @@ exports[`<Spinner /> should render white color Spinner 1`] = `
         data-blade-component="base-box"
         style={
           [
-            {},
+            {
+              "alignSelf": "center",
+            },
           ]
         }
       >
@@ -671,7 +701,11 @@ exports[`<Spinner /> should render xlarge size Spinner 1`] = `
       flexDirection="row"
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+          },
         ]
       }
     >
@@ -680,7 +714,9 @@ exports[`<Spinner /> should render xlarge size Spinner 1`] = `
         data-blade-component="base-box"
         style={
           [
-            {},
+            {
+              "alignSelf": "center",
+            },
           ]
         }
       >

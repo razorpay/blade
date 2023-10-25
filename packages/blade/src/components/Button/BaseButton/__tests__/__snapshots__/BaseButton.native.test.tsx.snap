@@ -64,8 +64,25 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
     style={
       [
         {
+          "alignItems": "center",
           "alignSelf": "center",
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "pointer",
           "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
         },
         {
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
@@ -84,7 +101,16 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
       opacity={1}
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "opacity": 1,
+          },
         ]
       }
     >
@@ -190,8 +216,25 @@ exports[`<BaseButton /> should render button with full width 1`] = `
     style={
       [
         {
+          "alignItems": "center",
           "alignSelf": "center",
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "pointer",
           "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "100%",
         },
         {
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
@@ -210,7 +253,16 @@ exports[`<BaseButton /> should render button with full width 1`] = `
       opacity={1}
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "opacity": 1,
+          },
         ]
       }
     >
@@ -316,8 +368,25 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
     style={
       [
         {
+          "alignItems": "center",
           "alignSelf": "center",
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "pointer",
           "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
         },
         {
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
@@ -336,7 +405,16 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
       opacity={1}
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "opacity": 1,
+          },
         ]
       }
     >
@@ -347,7 +425,12 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
         justifyContent="center"
         style={
           [
-            {},
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "justifyContent": "center",
+              "paddingRight": 4,
+            },
           ]
         }
       >
@@ -509,8 +592,25 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
     style={
       [
         {
+          "alignItems": "center",
           "alignSelf": "center",
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "pointer",
           "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
         },
         {
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
@@ -529,7 +629,16 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
       opacity={1}
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "opacity": 1,
+          },
         ]
       }
     >
@@ -540,7 +649,12 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
         justifyContent="center"
         style={
           [
-            {},
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "justifyContent": "center",
+              "paddingRight": 4,
+            },
           ]
         }
       >
@@ -702,8 +816,25 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
     style={
       [
         {
+          "alignItems": "center",
           "alignSelf": "center",
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "pointer",
           "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
         },
         {
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
@@ -722,7 +853,16 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
       opacity={1}
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "opacity": 1,
+          },
         ]
       }
     >
@@ -766,7 +906,12 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
         justifyContent="center"
         style={
           [
-            {},
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "justifyContent": "center",
+              "paddingLeft": 4,
+            },
           ]
         }
       >
@@ -895,8 +1040,25 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
     style={
       [
         {
+          "alignItems": "center",
           "alignSelf": "center",
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "pointer",
           "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 8,
+          "paddingRight": 8,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
         },
         {
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
@@ -915,7 +1077,16 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
       opacity={1}
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "opacity": 1,
+          },
         ]
       }
     >
@@ -926,7 +1097,11 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
         justifyContent="center"
         style={
           [
-            {},
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "justifyContent": "center",
+            },
           ]
         }
       >
@@ -1055,8 +1230,25 @@ exports[`<BaseButton /> should render default color primary button 1`] = `
     style={
       [
         {
+          "alignItems": "center",
           "alignSelf": "center",
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "pointer",
           "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
         },
         {
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
@@ -1075,7 +1267,16 @@ exports[`<BaseButton /> should render default color primary button 1`] = `
       opacity={1}
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "opacity": 1,
+          },
         ]
       }
     >
@@ -1181,8 +1382,25 @@ exports[`<BaseButton /> should render default color secondary button 1`] = `
     style={
       [
         {
+          "alignItems": "center",
           "alignSelf": "center",
+          "backgroundColor": "hsla(218, 89%, 51%, 0)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "pointer",
           "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
         },
         {
           "backgroundColor": "hsla(218, 89%, 51%, 0)",
@@ -1201,7 +1419,16 @@ exports[`<BaseButton /> should render default color secondary button 1`] = `
       opacity={1}
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "opacity": 1,
+          },
         ]
       }
     >
@@ -1307,8 +1534,25 @@ exports[`<BaseButton /> should render default color tertiary button 1`] = `
     style={
       [
         {
+          "alignItems": "center",
           "alignSelf": "center",
+          "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+          "borderColor": "hsla(216, 44%, 23%, 0)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "pointer",
           "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
         },
         {
           "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
@@ -1326,7 +1570,16 @@ exports[`<BaseButton /> should render default color tertiary button 1`] = `
       opacity={1}
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "opacity": 1,
+          },
         ]
       }
     >
@@ -1432,8 +1685,25 @@ exports[`<BaseButton /> should render disabled button 1`] = `
     style={
       [
         {
+          "alignItems": "center",
           "alignSelf": "center",
+          "backgroundColor": "hsla(216, 19%, 89%, 1)",
+          "borderColor": "hsla(216, 19%, 89%, 1)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "not-allowed",
           "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
         },
         {
           "backgroundColor": "hsla(216, 19%, 89%, 1)",
@@ -1452,7 +1722,16 @@ exports[`<BaseButton /> should render disabled button 1`] = `
       opacity={1}
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "opacity": 1,
+          },
         ]
       }
     >
@@ -1558,8 +1837,25 @@ exports[`<BaseButton /> should render disabled default color primary button 1`] 
     style={
       [
         {
+          "alignItems": "center",
           "alignSelf": "center",
+          "backgroundColor": "hsla(216, 19%, 89%, 1)",
+          "borderColor": "hsla(216, 19%, 89%, 1)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "not-allowed",
           "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
         },
         {
           "backgroundColor": "hsla(216, 19%, 89%, 1)",
@@ -1578,7 +1874,16 @@ exports[`<BaseButton /> should render disabled default color primary button 1`] 
       opacity={1}
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "opacity": 1,
+          },
         ]
       }
     >
@@ -1684,8 +1989,25 @@ exports[`<BaseButton /> should render disabled default color secondary button 1`
     style={
       [
         {
+          "alignItems": "center",
           "alignSelf": "center",
+          "backgroundColor": "hsla(216, 44%, 23%, 0)",
+          "borderColor": "hsla(218, 19%, 81%, 1)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "not-allowed",
           "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
         },
         {
           "backgroundColor": "hsla(216, 44%, 23%, 0)",
@@ -1704,7 +2026,16 @@ exports[`<BaseButton /> should render disabled default color secondary button 1`
       opacity={1}
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "opacity": 1,
+          },
         ]
       }
     >
@@ -1810,8 +2141,25 @@ exports[`<BaseButton /> should render disabled default color tertiary button 1`]
     style={
       [
         {
+          "alignItems": "center",
           "alignSelf": "center",
+          "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+          "borderColor": "hsla(216, 19%, 89%, 1)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "not-allowed",
           "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
         },
         {
           "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
@@ -1829,7 +2177,16 @@ exports[`<BaseButton /> should render disabled default color tertiary button 1`]
       opacity={1}
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "opacity": 1,
+          },
         ]
       }
     >
@@ -1935,8 +2292,25 @@ exports[`<BaseButton /> should render disabled information color primary button 
     style={
       [
         {
+          "alignItems": "center",
           "alignSelf": "center",
+          "backgroundColor": "hsla(193, 100%, 35%, 1)",
+          "borderColor": "hsla(187, 68%, 52%, 1)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "not-allowed",
           "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
         },
         {
           "backgroundColor": "hsla(193, 100%, 35%, 1)",
@@ -1955,7 +2329,16 @@ exports[`<BaseButton /> should render disabled information color primary button 
       opacity={1}
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "opacity": 1,
+          },
         ]
       }
     >
@@ -2061,8 +2444,25 @@ exports[`<BaseButton /> should render disabled information color secondary butto
     style={
       [
         {
+          "alignItems": "center",
           "alignSelf": "center",
+          "backgroundColor": "hsla(193, 100%, 35%, 0.09)",
+          "borderColor": "hsla(193, 100%, 35%, 0.32)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "not-allowed",
           "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
         },
         {
           "backgroundColor": "hsla(193, 100%, 35%, 0.09)",
@@ -2081,7 +2481,16 @@ exports[`<BaseButton /> should render disabled information color secondary butto
       opacity={1}
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "opacity": 1,
+          },
         ]
       }
     >
@@ -2187,8 +2596,25 @@ exports[`<BaseButton /> should render disabled negative color primary button 1`]
     style={
       [
         {
+          "alignItems": "center",
           "alignSelf": "center",
+          "backgroundColor": "hsla(8, 73%, 47%, 1)",
+          "borderColor": "hsla(8, 99%, 65%, 1)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "not-allowed",
           "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
         },
         {
           "backgroundColor": "hsla(8, 73%, 47%, 1)",
@@ -2207,7 +2633,16 @@ exports[`<BaseButton /> should render disabled negative color primary button 1`]
       opacity={1}
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "opacity": 1,
+          },
         ]
       }
     >
@@ -2313,8 +2748,25 @@ exports[`<BaseButton /> should render disabled negative color secondary button 1
     style={
       [
         {
+          "alignItems": "center",
           "alignSelf": "center",
+          "backgroundColor": "hsla(9, 91%, 56%, 0.09)",
+          "borderColor": "hsla(9, 91%, 56%, 0.32)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "not-allowed",
           "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
         },
         {
           "backgroundColor": "hsla(9, 91%, 56%, 0.09)",
@@ -2333,7 +2785,16 @@ exports[`<BaseButton /> should render disabled negative color secondary button 1
       opacity={1}
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "opacity": 1,
+          },
         ]
       }
     >
@@ -2439,8 +2900,25 @@ exports[`<BaseButton /> should render disabled neutral color primary button 1`] 
     style={
       [
         {
+          "alignItems": "center",
           "alignSelf": "center",
+          "backgroundColor": "hsla(216, 33%, 29%, 1)",
+          "borderColor": "hsla(216, 15%, 54%, 1)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "not-allowed",
           "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
         },
         {
           "backgroundColor": "hsla(216, 33%, 29%, 1)",
@@ -2459,7 +2937,16 @@ exports[`<BaseButton /> should render disabled neutral color primary button 1`] 
       opacity={1}
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "opacity": 1,
+          },
         ]
       }
     >
@@ -2565,8 +3052,25 @@ exports[`<BaseButton /> should render disabled neutral color secondary button 1`
     style={
       [
         {
+          "alignItems": "center",
           "alignSelf": "center",
+          "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+          "borderColor": "hsla(216, 15%, 54%, 0.32)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "not-allowed",
           "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
         },
         {
           "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
@@ -2585,7 +3089,16 @@ exports[`<BaseButton /> should render disabled neutral color secondary button 1`
       opacity={1}
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "opacity": 1,
+          },
         ]
       }
     >
@@ -2691,8 +3204,25 @@ exports[`<BaseButton /> should render disabled notice color primary button 1`] =
     style={
       [
         {
+          "alignItems": "center",
           "alignSelf": "center",
+          "backgroundColor": "hsla(38, 97%, 38%, 1)",
+          "borderColor": "hsla(35, 84%, 54%, 1)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "not-allowed",
           "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
         },
         {
           "backgroundColor": "hsla(38, 97%, 38%, 1)",
@@ -2711,7 +3241,16 @@ exports[`<BaseButton /> should render disabled notice color primary button 1`] =
       opacity={1}
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "opacity": 1,
+          },
         ]
       }
     >
@@ -2817,8 +3356,25 @@ exports[`<BaseButton /> should render disabled notice color secondary button 1`]
     style={
       [
         {
+          "alignItems": "center",
           "alignSelf": "center",
+          "backgroundColor": "hsla(36, 100%, 44%, 0.09)",
+          "borderColor": "hsla(36, 100%, 44%, 0.32)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "not-allowed",
           "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
         },
         {
           "backgroundColor": "hsla(36, 100%, 44%, 0.09)",
@@ -2837,7 +3393,16 @@ exports[`<BaseButton /> should render disabled notice color secondary button 1`]
       opacity={1}
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "opacity": 1,
+          },
         ]
       }
     >
@@ -2943,8 +3508,25 @@ exports[`<BaseButton /> should render disabled positive color primary button 1`]
     style={
       [
         {
+          "alignItems": "center",
           "alignSelf": "center",
+          "backgroundColor": "hsla(160, 100%, 26%, 1)",
+          "borderColor": "hsla(149, 99%, 35%, 1)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "not-allowed",
           "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
         },
         {
           "backgroundColor": "hsla(160, 100%, 26%, 1)",
@@ -2963,7 +3545,16 @@ exports[`<BaseButton /> should render disabled positive color primary button 1`]
       opacity={1}
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "opacity": 1,
+          },
         ]
       }
     >
@@ -3069,8 +3660,25 @@ exports[`<BaseButton /> should render disabled positive color secondary button 1
     style={
       [
         {
+          "alignItems": "center",
           "alignSelf": "center",
+          "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
+          "borderColor": "hsla(155, 100%, 31%, 0.32)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "not-allowed",
           "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
         },
         {
           "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
@@ -3089,7 +3697,16 @@ exports[`<BaseButton /> should render disabled positive color secondary button 1
       opacity={1}
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "opacity": 1,
+          },
         ]
       }
     >
@@ -3195,8 +3812,25 @@ exports[`<BaseButton /> should render disabled white color primary button 1`] = 
     style={
       [
         {
+          "alignItems": "center",
           "alignSelf": "center",
+          "backgroundColor": "hsla(210, 6%, 94%, 0.18)",
+          "borderColor": "hsla(210, 6%, 94%, 0.18)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "not-allowed",
           "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
         },
         {
           "backgroundColor": "hsla(210, 6%, 94%, 0.18)",
@@ -3215,7 +3849,16 @@ exports[`<BaseButton /> should render disabled white color primary button 1`] = 
       opacity={1}
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "opacity": 1,
+          },
         ]
       }
     >
@@ -3321,8 +3964,25 @@ exports[`<BaseButton /> should render disabled white color secondary button 1`] 
     style={
       [
         {
+          "alignItems": "center",
           "alignSelf": "center",
+          "backgroundColor": "hsla(214, 15%, 18%, 0)",
+          "borderColor": "hsla(210, 6%, 94%, 0.32)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "not-allowed",
           "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
         },
         {
           "backgroundColor": "hsla(214, 15%, 18%, 0)",
@@ -3341,7 +4001,16 @@ exports[`<BaseButton /> should render disabled white color secondary button 1`] 
       opacity={1}
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "opacity": 1,
+          },
         ]
       }
     >
@@ -3447,8 +4116,25 @@ exports[`<BaseButton /> should render disabled white color tertiary button 1`] =
     style={
       [
         {
+          "alignItems": "center",
           "alignSelf": "center",
+          "backgroundColor": "hsla(210, 6%, 94%, 0.09)",
+          "borderColor": "hsla(214, 15%, 18%, 0)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "not-allowed",
           "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
         },
         {
           "backgroundColor": "hsla(210, 6%, 94%, 0.09)",
@@ -3466,7 +4152,16 @@ exports[`<BaseButton /> should render disabled white color tertiary button 1`] =
       opacity={1}
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "opacity": 1,
+          },
         ]
       }
     >
@@ -3572,8 +4267,25 @@ exports[`<BaseButton /> should render information color primary button 1`] = `
     style={
       [
         {
+          "alignItems": "center",
           "alignSelf": "center",
+          "backgroundColor": "hsla(193, 100%, 35%, 1)",
+          "borderColor": "hsla(180, 100%, 97%, 1)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "pointer",
           "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
         },
         {
           "backgroundColor": "hsla(193, 100%, 35%, 1)",
@@ -3592,7 +4304,16 @@ exports[`<BaseButton /> should render information color primary button 1`] = `
       opacity={1}
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "opacity": 1,
+          },
         ]
       }
     >
@@ -3698,8 +4419,25 @@ exports[`<BaseButton /> should render information color secondary button 1`] = `
     style={
       [
         {
+          "alignItems": "center",
           "alignSelf": "center",
+          "backgroundColor": "hsla(193, 100%, 35%, 0.09)",
+          "borderColor": "hsla(193, 100%, 35%, 0.32)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "pointer",
           "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
         },
         {
           "backgroundColor": "hsla(193, 100%, 35%, 0.09)",
@@ -3718,7 +4456,16 @@ exports[`<BaseButton /> should render information color secondary button 1`] = `
       opacity={1}
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "opacity": 1,
+          },
         ]
       }
     >
@@ -3824,8 +4571,25 @@ exports[`<BaseButton /> should render large size button 1`] = `
     style={
       [
         {
+          "alignItems": "center",
           "alignSelf": "center",
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "pointer",
           "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 48,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
         },
         {
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
@@ -3844,7 +4608,16 @@ exports[`<BaseButton /> should render large size button 1`] = `
       opacity={1}
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "opacity": 1,
+          },
         ]
       }
     >
@@ -3950,8 +4723,25 @@ exports[`<BaseButton /> should render loading button 1`] = `
     style={
       [
         {
+          "alignItems": "center",
           "alignSelf": "center",
+          "backgroundColor": "hsla(216, 19%, 89%, 1)",
+          "borderColor": "hsla(216, 19%, 89%, 1)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "not-allowed",
           "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
         },
         {
           "backgroundColor": "hsla(216, 19%, 89%, 1)",
@@ -3972,7 +4762,16 @@ exports[`<BaseButton /> should render loading button 1`] = `
       right="0px"
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "bottom": 0,
+            "display": "flex",
+            "justifyContent": "center",
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          },
         ]
       }
       top="0px"
@@ -3995,7 +4794,11 @@ exports[`<BaseButton /> should render loading button 1`] = `
           flexDirection="row"
           style={
             [
-              {},
+              {
+                "alignItems": "center",
+                "display": "flex",
+                "flexDirection": "row",
+              },
             ]
           }
         >
@@ -4004,7 +4807,9 @@ exports[`<BaseButton /> should render loading button 1`] = `
             data-blade-component="base-box"
             style={
               [
-                {},
+                {
+                  "alignSelf": "center",
+                },
               ]
             }
           >
@@ -4105,7 +4910,16 @@ exports[`<BaseButton /> should render loading button 1`] = `
       opacity={0}
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "opacity": 0,
+          },
         ]
       }
     >
@@ -4211,8 +5025,25 @@ exports[`<BaseButton /> should render medium size button 1`] = `
     style={
       [
         {
+          "alignItems": "center",
           "alignSelf": "center",
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "pointer",
           "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
         },
         {
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
@@ -4231,7 +5062,16 @@ exports[`<BaseButton /> should render medium size button 1`] = `
       opacity={1}
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "opacity": 1,
+          },
         ]
       }
     >
@@ -4337,8 +5177,25 @@ exports[`<BaseButton /> should render negative color primary button 1`] = `
     style={
       [
         {
+          "alignItems": "center",
           "alignSelf": "center",
+          "backgroundColor": "hsla(8, 73%, 47%, 1)",
+          "borderColor": "hsla(0, 100%, 97%, 1)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "pointer",
           "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
         },
         {
           "backgroundColor": "hsla(8, 73%, 47%, 1)",
@@ -4357,7 +5214,16 @@ exports[`<BaseButton /> should render negative color primary button 1`] = `
       opacity={1}
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "opacity": 1,
+          },
         ]
       }
     >
@@ -4463,8 +5329,25 @@ exports[`<BaseButton /> should render negative color secondary button 1`] = `
     style={
       [
         {
+          "alignItems": "center",
           "alignSelf": "center",
+          "backgroundColor": "hsla(9, 91%, 56%, 0.09)",
+          "borderColor": "hsla(9, 91%, 56%, 0.32)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "pointer",
           "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
         },
         {
           "backgroundColor": "hsla(9, 91%, 56%, 0.09)",
@@ -4483,7 +5366,16 @@ exports[`<BaseButton /> should render negative color secondary button 1`] = `
       opacity={1}
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "opacity": 1,
+          },
         ]
       }
     >
@@ -4589,8 +5481,25 @@ exports[`<BaseButton /> should render neutral color primary button 1`] = `
     style={
       [
         {
+          "alignItems": "center",
           "alignSelf": "center",
+          "backgroundColor": "hsla(216, 33%, 29%, 1)",
+          "borderColor": "hsla(214, 18%, 69%, 1)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "pointer",
           "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
         },
         {
           "backgroundColor": "hsla(216, 33%, 29%, 1)",
@@ -4609,7 +5518,16 @@ exports[`<BaseButton /> should render neutral color primary button 1`] = `
       opacity={1}
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "opacity": 1,
+          },
         ]
       }
     >
@@ -4715,8 +5633,25 @@ exports[`<BaseButton /> should render neutral color secondary button 1`] = `
     style={
       [
         {
+          "alignItems": "center",
           "alignSelf": "center",
+          "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+          "borderColor": "hsla(216, 15%, 54%, 0.32)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "pointer",
           "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
         },
         {
           "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
@@ -4735,7 +5670,16 @@ exports[`<BaseButton /> should render neutral color secondary button 1`] = `
       opacity={1}
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "opacity": 1,
+          },
         ]
       }
     >
@@ -4841,8 +5785,25 @@ exports[`<BaseButton /> should render notice color primary button 1`] = `
     style={
       [
         {
+          "alignItems": "center",
           "alignSelf": "center",
+          "backgroundColor": "hsla(38, 97%, 38%, 1)",
+          "borderColor": "hsla(32, 100%, 94%, 1)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "pointer",
           "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
         },
         {
           "backgroundColor": "hsla(38, 97%, 38%, 1)",
@@ -4861,7 +5822,16 @@ exports[`<BaseButton /> should render notice color primary button 1`] = `
       opacity={1}
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "opacity": 1,
+          },
         ]
       }
     >
@@ -4967,8 +5937,25 @@ exports[`<BaseButton /> should render notice color secondary button 1`] = `
     style={
       [
         {
+          "alignItems": "center",
           "alignSelf": "center",
+          "backgroundColor": "hsla(36, 100%, 44%, 0.09)",
+          "borderColor": "hsla(36, 100%, 44%, 0.32)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "pointer",
           "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
         },
         {
           "backgroundColor": "hsla(36, 100%, 44%, 0.09)",
@@ -4987,7 +5974,16 @@ exports[`<BaseButton /> should render notice color secondary button 1`] = `
       opacity={1}
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "opacity": 1,
+          },
         ]
       }
     >
@@ -5093,8 +6089,25 @@ exports[`<BaseButton /> should render positive color primary button 1`] = `
     style={
       [
         {
+          "alignItems": "center",
           "alignSelf": "center",
+          "backgroundColor": "hsla(160, 100%, 26%, 1)",
+          "borderColor": "hsla(107, 100%, 96%, 1)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "pointer",
           "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
         },
         {
           "backgroundColor": "hsla(160, 100%, 26%, 1)",
@@ -5113,7 +6126,16 @@ exports[`<BaseButton /> should render positive color primary button 1`] = `
       opacity={1}
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "opacity": 1,
+          },
         ]
       }
     >
@@ -5219,8 +6241,25 @@ exports[`<BaseButton /> should render positive color secondary button 1`] = `
     style={
       [
         {
+          "alignItems": "center",
           "alignSelf": "center",
+          "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
+          "borderColor": "hsla(155, 100%, 31%, 0.32)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "pointer",
           "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
         },
         {
           "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
@@ -5239,7 +6278,16 @@ exports[`<BaseButton /> should render positive color secondary button 1`] = `
       opacity={1}
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "opacity": 1,
+          },
         ]
       }
     >
@@ -5345,8 +6393,25 @@ exports[`<BaseButton /> should render small size button 1`] = `
     style={
       [
         {
+          "alignItems": "center",
           "alignSelf": "center",
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "pointer",
           "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 32,
+          "paddingBottom": 0,
+          "paddingLeft": 12,
+          "paddingRight": 12,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
         },
         {
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
@@ -5365,7 +6430,16 @@ exports[`<BaseButton /> should render small size button 1`] = `
       opacity={1}
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "opacity": 1,
+          },
         ]
       }
     >
@@ -5471,8 +6545,25 @@ exports[`<BaseButton /> should render white color primary button 1`] = `
     style={
       [
         {
+          "alignItems": "center",
           "alignSelf": "center",
+          "backgroundColor": "hsla(0, 0%, 100%, 1)",
+          "borderColor": "hsla(0, 0%, 100%, 1)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "pointer",
           "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
         },
         {
           "backgroundColor": "hsla(0, 0%, 100%, 1)",
@@ -5491,7 +6582,16 @@ exports[`<BaseButton /> should render white color primary button 1`] = `
       opacity={1}
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "opacity": 1,
+          },
         ]
       }
     >
@@ -5597,8 +6697,25 @@ exports[`<BaseButton /> should render white color secondary button 1`] = `
     style={
       [
         {
+          "alignItems": "center",
           "alignSelf": "center",
+          "backgroundColor": "hsla(214, 15%, 18%, 0)",
+          "borderColor": "hsla(0, 0%, 100%, 1)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "pointer",
           "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
         },
         {
           "backgroundColor": "hsla(214, 15%, 18%, 0)",
@@ -5617,7 +6734,16 @@ exports[`<BaseButton /> should render white color secondary button 1`] = `
       opacity={1}
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "opacity": 1,
+          },
         ]
       }
     >
@@ -5723,8 +6849,25 @@ exports[`<BaseButton /> should render white color tertiary button 1`] = `
     style={
       [
         {
+          "alignItems": "center",
           "alignSelf": "center",
+          "backgroundColor": "hsla(210, 6%, 94%, 0.09)",
+          "borderColor": "hsla(214, 15%, 18%, 0)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "pointer",
           "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
         },
         {
           "backgroundColor": "hsla(210, 6%, 94%, 0.09)",
@@ -5742,7 +6885,16 @@ exports[`<BaseButton /> should render white color tertiary button 1`] = `
       opacity={1}
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "opacity": 1,
+          },
         ]
       }
     >
@@ -5848,8 +7000,25 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
     style={
       [
         {
+          "alignItems": "center",
           "alignSelf": "center",
+          "backgroundColor": "hsla(218, 89%, 51%, 1)",
+          "borderColor": "hsla(218, 89%, 51%, 1)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "pointer",
           "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 28,
+          "paddingBottom": 0,
+          "paddingLeft": 8,
+          "paddingRight": 8,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
         },
         {
           "backgroundColor": "hsla(218, 89%, 51%, 1)",
@@ -5868,7 +7037,16 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
       opacity={1}
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "opacity": 1,
+          },
         ]
       }
     >

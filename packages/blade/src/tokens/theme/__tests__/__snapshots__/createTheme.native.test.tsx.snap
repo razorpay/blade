@@ -3404,8 +3404,25 @@ exports[`createTheme should create a theme with the correct brand colors 2`] = `
     style={
       [
         {
+          "alignItems": "center",
           "alignSelf": "center",
+          "backgroundColor": "hsl(332, 100%, 26%)",
+          "borderColor": "hsl(332, 100%, 26%)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "pointer",
           "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
         },
         {
           "backgroundColor": "hsl(332, 100%, 26%)",
@@ -3424,7 +3441,16 @@ exports[`createTheme should create a theme with the correct brand colors 2`] = `
       opacity={1}
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "opacity": 1,
+          },
         ]
       }
     >
@@ -6870,8 +6896,25 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
     style={
       [
         {
+          "alignItems": "center",
           "alignSelf": "center",
+          "backgroundColor": "hsl(58, 100%, 54%)",
+          "borderColor": "hsl(58, 100%, 54%)",
+          "borderRadius": 2,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "pointer",
           "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
         },
         {
           "backgroundColor": "hsl(58, 100%, 54%)",
@@ -6890,7 +6933,16 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
       opacity={1}
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "opacity": 1,
+          },
         ]
       }
     >

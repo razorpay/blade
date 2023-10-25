@@ -15,7 +15,9 @@ exports[`<Indicator /> should render 1`] = `
     display="flex"
     style={
       [
-        {},
+        {
+          "display": "flex",
+        },
       ]
     }
   >
@@ -26,7 +28,11 @@ exports[`<Indicator /> should render 1`] = `
       flexDirection="row"
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+          },
         ]
       }
     >
@@ -101,7 +107,9 @@ exports[`<Indicator /> should render 1`] = `
         data-blade-component="base-box"
         style={
           [
-            {},
+            {
+              "marginLeft": 4,
+            },
           ]
         }
       >
@@ -159,7 +167,9 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
     display="flex"
     style={
       [
-        {},
+        {
+          "display": "flex",
+        },
       ]
     }
   >
@@ -170,7 +180,11 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
       flexDirection="row"
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+          },
         ]
       }
     >
@@ -245,7 +259,9 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
         data-blade-component="base-box"
         style={
           [
-            {},
+            {
+              "marginLeft": 4,
+            },
           ]
         }
       >
@@ -292,7 +308,9 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
     display="flex"
     style={
       [
-        {},
+        {
+          "display": "flex",
+        },
       ]
     }
   >
@@ -303,7 +321,11 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
       flexDirection="row"
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+          },
         ]
       }
     >
@@ -378,7 +400,9 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
         data-blade-component="base-box"
         style={
           [
-            {},
+            {
+              "marginLeft": 4,
+            },
           ]
         }
       >
@@ -425,7 +449,9 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
     display="flex"
     style={
       [
-        {},
+        {
+          "display": "flex",
+        },
       ]
     }
   >
@@ -436,7 +462,11 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
       flexDirection="row"
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+          },
         ]
       }
     >
@@ -511,7 +541,9 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
         data-blade-component="base-box"
         style={
           [
-            {},
+            {
+              "marginLeft": 4,
+            },
           ]
         }
       >
@@ -558,7 +590,9 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
     display="flex"
     style={
       [
-        {},
+        {
+          "display": "flex",
+        },
       ]
     }
   >
@@ -569,7 +603,11 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
       flexDirection="row"
       style={
         [
-          {},
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+          },
         ]
       }
     >
@@ -644,7 +682,9 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
         data-blade-component="base-box"
         style={
           [
-            {},
+            {
+              "marginLeft": 4,
+            },
           ]
         }
       >
