@@ -228,6 +228,7 @@ const SelectInputTemplate: ComponentStory<typeof SelectInput> = ({ icon, ...args
           <ActionList>
             <ActionListItem title="Item 1" value="item-1" />
             <ActionListItem title="Item 2" value="item-2" />
+            <ActionListItem title="Item 3" value="item-3" />
           </ActionList>
         </DropdownOverlay>
       </Dropdown>
@@ -236,3 +237,8 @@ const SelectInputTemplate: ComponentStory<typeof SelectInput> = ({ icon, ...args
 };
 
 export const Default = SelectInputTemplate.bind({});
+export const Disabled = SelectInputTemplate.bind({});
+Disabled.args = {
+  isDisabled: true,
+  defaultValue: ['item-1', 'item-2'],
+};
