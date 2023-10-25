@@ -42,6 +42,7 @@ export type BaseTextProps = {
   id?: string;
   color?:
     | BrandPrimaryColors
+    | 'brand.secondary.500'
     | ActionColors
     | FeedbackColors
     | SurfaceColors
