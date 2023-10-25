@@ -1,5 +1,5 @@
 ---
-'@razorpay/blade': minor
+"@razorpay/blade": patch
 ---
 
-feat(Typography): accept `brand.secondary.*` values for the `color` prop
+feat(Typography): accept `brand.secondary.500` as a valid `color` prop value

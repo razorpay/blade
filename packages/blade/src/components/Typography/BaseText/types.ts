@@ -22,7 +22,6 @@ type WhiteTextColors = `white.action.text.${DotNotationColorStringToken<
 >}`;
 
 type BrandPrimaryColors = `brand.primary.${keyof Theme['colors']['brand']['primary']}`;
-type BrandSecondaryColors = `brand.primary.${keyof Theme['colors']['brand']['secondary']}`;
 
 type As =
   | 'code'
@@ -43,7 +42,7 @@ export type BaseTextProps = {
   id?: string;
   color?:
     | BrandPrimaryColors
-    | BrandSecondaryColors
+    | 'brand.secondary.500'
     | ActionColors
     | FeedbackColors
     | SurfaceColors
