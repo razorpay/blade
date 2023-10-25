@@ -13,10 +13,10 @@
     "@fontsource/lato": "^4.5.10",
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.9",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "react-scripts": "^5.0.1",
-    "styled-components": "^5.3.6"
+    "styled-components": "5.3.5"
   },
   "devDependencies": {
     "source-map-explorer": "2.5.3"
