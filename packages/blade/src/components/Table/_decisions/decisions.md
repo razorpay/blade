@@ -2,7 +2,7 @@
 
 A table component helps in displaying data in a grid format, through rows and columns of cells. Table facilitates data organisation and allow users to: scan, sort, compare, and take action on large amounts of data.
 
-<img src="./table-thumbnail.png" width="380" alt="Table thumbnail" />
+<img src="./table-thumbnail.png" width="760" alt="Table thumbnail" />
 
 ## Features
 - Column Sorting
@@ -28,7 +28,7 @@ We don't have enough use-cases for the following features at Razorpay and hence 
 - Editable Rows
 
 ## Anatomy
-<img src="./table-anatomy.png" width="680" alt="Table thumbnail" />
+<img src="./table-anatomy.png" width="760" alt="Table thumbnail" />
 
 ## API
 
