@@ -194,7 +194,7 @@ const _BaseDropdownInputTrigger = (
       }
 
       return getTagsGroup({
-        tags: selectedIndices.map((selectedIndex) => options[selectedIndex].title),
+        tags: selectedIndices.map((selectedIndex) => options[selectedIndex]?.title),
         activeTagIndex,
         onDismiss: ({ tagIndex }) => {
           if (isTagDismissedRef.current) {

@@ -520,6 +520,81 @@ describe('<Dropdown />', () => {
     Object.defineProperty(HTMLElement.prototype, 'clientWidth', { configurable: true, value: 0 });
   });
 
+  // https://github.com/razorpay/blade/issues/1721
+  it('should handle controlled props & disabled options with multi select', async () => {
+    const ControlledDropdown = (): React.ReactElement => {
+      const [currentSelection, setCurrentSelection] = React.useState<string[]>([]);
+      const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
+
+      return (
+        <>
+          <Button
+            onClick={() => {
+              if (!currentSelection.includes('bangalore')) {
+                setCurrentSelection([...currentSelection, 'bangalore']);
+              }
+            }}
+          >
+            Select Bangalore
+          </Button>
+          <Button onClick={() => setIsDropdownOpen(!isDropdownOpen)}>Toggle Dropdown</Button>
+
+          <Dropdown
+            isOpen={isDropdownOpen}
+            onOpenChange={setIsDropdownOpen}
+            selectionType="multiple"
+          >
+            <SelectInput
+              label="Select City"
+              value={currentSelection}
+              onChange={(args) => {
+                if (args) {
+                  setCurrentSelection(args.values);
+                }
+              }}
+            />
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem title="Delhi" value="delhi" isDisabled />
+                <ActionListItem title="Bangalore" value="bangalore" />
+                <ActionListItem title="Pune" value="pune" />
+                <ActionListItem title="Chennai" value="chennai" />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        </>
+      );
+    };
+
+    // JSDOM doesn't calculate layouts so always return 0 https://github.com/testing-library/react-testing-library/issues/353#issuecomment-481248489
+    Object.defineProperty(HTMLElement.prototype, 'clientWidth', { configurable: true, value: 500 });
+
+    const user = userEvent.setup();
+    const { getByRole, queryAllByLabelText, queryByRole } = renderWithTheme(<ControlledDropdown />);
+
+    const selectInput = getByRole('combobox', { name: 'Select City' });
+    expect(selectInput).toHaveTextContent('Select Option');
+    expect(queryAllByLabelText('Close Bangalore tag')?.[0]).toBeFalsy();
+    await user.click(getByRole('button', { name: 'Select Bangalore' }));
+    expect(queryAllByLabelText('Close Bangalore tag')?.[0]).toBeInTheDocument();
+
+    await user.click(selectInput);
+
+    expect(getByRole('option', { name: 'Delhi' })).toHaveAttribute('aria-disabled', 'true');
+
+    await user.click(getByRole('option', { name: 'Pune' }));
+    expect(queryAllByLabelText('Close Pune tag')?.[0]).toBeInTheDocument();
+    expect(queryAllByLabelText('Close Bangalore tag')?.[0]).toBeInTheDocument();
+
+    await user.click(getByRole('button', { name: 'Select Bangalore' }));
+
+    await user.click(getByRole('button', { name: 'Toggle Dropdown' }));
+    await waitFor(() => expect(getByRole('listbox', { name: 'Select City' })).toBeVisible());
+    await user.click(getByRole('button', { name: 'Toggle Dropdown' }));
+    await waitFor(() => expect(queryByRole('listbox', { name: 'Select City' })).not.toBeVisible());
+    Object.defineProperty(HTMLElement.prototype, 'clientWidth', { configurable: true, value: 0 });
+  });
+
   it('should accept testID', async () => {
     const { getByTestId, getByRole } = renderWithTheme(
       <Dropdown>
