@@ -28,7 +28,7 @@ We don't have enough use-cases for the following features at Razorpay and hence 
 - Editable Rows
 
 ## Anatomy
-[To be added]
+<img src="./table-anatomy.png" width="680" alt="Table thumbnail" />
 
 ## API
 
