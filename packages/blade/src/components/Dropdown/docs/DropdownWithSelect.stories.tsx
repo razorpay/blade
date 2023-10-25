@@ -304,7 +304,7 @@ export const InternalDisabledSelect = (): React.ReactElement => {
   return (
     <Box padding="spacing.5" maxWidth="400px">
       <Button marginBottom="spacing.4" isFullWidth onClick={() => setIsDisabled(!isDisabled)}>
-        Toggle Input
+        Toggle Disabled State
       </Button>
       <Dropdown selectionType="multiple">
         <SelectInput label="Select fruits" isDisabled={isDisabled} />
