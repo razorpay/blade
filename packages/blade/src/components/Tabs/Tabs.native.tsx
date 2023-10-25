@@ -44,13 +44,11 @@ const getTabPanels = (children: React.ReactNode): Record<string, () => React.Rea
 const getRoutes = (tabs: React.ReactElement[]) => {
   return tabs.map((TabComponent, index) => ({
     index,
-    testID: TabComponent.props.testID,
     title: TabComponent.props.children,
     key: TabComponent.props.value,
     value: TabComponent.props.value,
     leading: TabComponent.props.leading,
     trailing: TabComponent.props.trailing,
-    onClick: TabComponent.props.onClick,
   }));
 };
 
@@ -97,6 +95,8 @@ const Tabs = ({
   const setIndex = React.useCallback(
     (index: number, skipUpdate = false) => {
       const value = getRouteValueFromIndex({ index, routes });
+      // If skipUpdate is true, useControlledState will not call the onChange callback
+      // This is useful when we want to set the initial value
       setSelectedValue(() => value, skipUpdate);
     },
     [routes, setSelectedValue],

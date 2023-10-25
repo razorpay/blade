@@ -115,8 +115,6 @@ exports[`Tabs should render 1`] = `
                 "index": 0,
                 "key": "payments",
                 "leading": undefined,
-                "onClick": undefined,
-                "testID": undefined,
                 "title": "Payments",
                 "trailing": undefined,
                 "value": "payments",
@@ -125,8 +123,6 @@ exports[`Tabs should render 1`] = `
                 "index": 1,
                 "key": "refunds",
                 "leading": undefined,
-                "onClick": undefined,
-                "testID": undefined,
                 "title": "Refunds",
                 "trailing": undefined,
                 "value": "refunds",
@@ -258,7 +254,7 @@ exports[`Tabs should render 1`] = `
                       collapsable={false}
                       style={
                         {
-                          "opacity": 0,
+                          "opacity": -1,
                         }
                       }
                     >
@@ -342,7 +338,7 @@ exports[`Tabs should render 1`] = `
                         {
                           "bottom": 0,
                           "left": 0,
-                          "opacity": 1,
+                          "opacity": 2,
                           "position": "absolute",
                           "right": 0,
                           "top": 0,
@@ -514,7 +510,7 @@ exports[`Tabs should render 1`] = `
                       collapsable={false}
                       style={
                         {
-                          "opacity": 1,
+                          "opacity": 2,
                         }
                       }
                     >
@@ -598,7 +594,7 @@ exports[`Tabs should render 1`] = `
                         {
                           "bottom": 0,
                           "left": 0,
-                          "opacity": 0,
+                          "opacity": -1,
                           "position": "absolute",
                           "right": 0,
                           "top": 0,
@@ -935,8 +931,6 @@ exports[`Tabs should render with filled variant 1`] = `
                 "index": 0,
                 "key": "payments",
                 "leading": undefined,
-                "onClick": undefined,
-                "testID": undefined,
                 "title": "Payments",
                 "trailing": undefined,
                 "value": "payments",
@@ -945,8 +939,6 @@ exports[`Tabs should render with filled variant 1`] = `
                 "index": 1,
                 "key": "refunds",
                 "leading": undefined,
-                "onClick": undefined,
-                "testID": undefined,
                 "title": "Refunds",
                 "trailing": undefined,
                 "value": "refunds",
@@ -1078,7 +1070,7 @@ exports[`Tabs should render with filled variant 1`] = `
                       collapsable={false}
                       style={
                         {
-                          "opacity": 0,
+                          "opacity": -1,
                         }
                       }
                     >
@@ -1161,7 +1153,7 @@ exports[`Tabs should render with filled variant 1`] = `
                         {
                           "bottom": 0,
                           "left": 0,
-                          "opacity": 1,
+                          "opacity": 2,
                           "position": "absolute",
                           "right": 0,
                           "top": 0,
@@ -1372,7 +1364,7 @@ exports[`Tabs should render with filled variant 1`] = `
                       collapsable={false}
                       style={
                         {
-                          "opacity": 1,
+                          "opacity": 2,
                         }
                       }
                     >
@@ -1455,7 +1447,7 @@ exports[`Tabs should render with filled variant 1`] = `
                         {
                           "bottom": 0,
                           "left": 0,
-                          "opacity": 0,
+                          "opacity": -1,
                           "position": "absolute",
                           "right": 0,
                           "top": 0,
@@ -1829,8 +1821,6 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
                 "index": 0,
                 "key": "payments",
                 "leading": undefined,
-                "onClick": undefined,
-                "testID": undefined,
                 "title": "Payments",
                 "trailing": undefined,
                 "value": "payments",
@@ -1839,8 +1829,6 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
                 "index": 1,
                 "key": "refunds",
                 "leading": undefined,
-                "onClick": undefined,
-                "testID": undefined,
                 "title": "Refunds",
                 "trailing": undefined,
                 "value": "refunds",
@@ -1972,7 +1960,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
                       collapsable={false}
                       style={
                         {
-                          "opacity": 0,
+                          "opacity": -1,
                         }
                       }
                     >
@@ -2055,7 +2043,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
                         {
                           "bottom": 0,
                           "left": 0,
-                          "opacity": 1,
+                          "opacity": 2,
                           "position": "absolute",
                           "right": 0,
                           "top": 0,
@@ -2226,7 +2214,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
                       collapsable={false}
                       style={
                         {
-                          "opacity": 1,
+                          "opacity": 2,
                         }
                       }
                     >
@@ -2309,7 +2297,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
                         {
                           "bottom": 0,
                           "left": 0,
-                          "opacity": 0,
+                          "opacity": -1,
                           "position": "absolute",
                           "right": 0,
                           "top": 0,
@@ -2649,8 +2637,6 @@ exports[`Tabs should render with large size 1`] = `
                 "index": 0,
                 "key": "payments",
                 "leading": undefined,
-                "onClick": undefined,
-                "testID": undefined,
                 "title": "Payments",
                 "trailing": undefined,
                 "value": "payments",
@@ -2659,8 +2645,6 @@ exports[`Tabs should render with large size 1`] = `
                 "index": 1,
                 "key": "refunds",
                 "leading": undefined,
-                "onClick": undefined,
-                "testID": undefined,
                 "title": "Refunds",
                 "trailing": undefined,
                 "value": "refunds",
@@ -2792,7 +2776,7 @@ exports[`Tabs should render with large size 1`] = `
                       collapsable={false}
                       style={
                         {
-                          "opacity": 0,
+                          "opacity": -1,
                         }
                       }
                     >
@@ -2876,7 +2860,7 @@ exports[`Tabs should render with large size 1`] = `
                         {
                           "bottom": 0,
                           "left": 0,
-                          "opacity": 1,
+                          "opacity": 2,
                           "position": "absolute",
                           "right": 0,
                           "top": 0,
@@ -3048,7 +3032,7 @@ exports[`Tabs should render with large size 1`] = `
                       collapsable={false}
                       style={
                         {
-                          "opacity": 1,
+                          "opacity": 2,
                         }
                       }
                     >
@@ -3132,7 +3116,7 @@ exports[`Tabs should render with large size 1`] = `
                         {
                           "bottom": 0,
                           "left": 0,
-                          "opacity": 0,
+                          "opacity": -1,
                           "position": "absolute",
                           "right": 0,
                           "top": 0,
