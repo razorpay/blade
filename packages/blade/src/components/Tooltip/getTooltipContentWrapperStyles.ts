@@ -11,15 +11,13 @@ const getTooltipContentWrapperStyles = ({
   styles: React.CSSProperties;
 }): CSSObject => {
   return {
-    '&&&&&': {
-      backgroundColor: theme.colors.brand.gray[200].highContrast,
-      borderWidth: makeBorderSize(theme.border.width.thin),
-      borderRadius: makeBorderSize(theme.border.radius.medium),
-      borderColor: theme.colors.brand.gray[300].highContrast,
-      borderStyle: 'solid',
-      boxShadow: isReactNative() ? undefined : castWebType(theme.elevation.lowRaised),
-      ...styles,
-    },
+    backgroundColor: theme.colors.brand.gray[200].highContrast,
+    borderWidth: makeBorderSize(theme.border.width.thin),
+    borderRadius: makeBorderSize(theme.border.radius.medium),
+    borderColor: theme.colors.brand.gray[300].highContrast,
+    borderStyle: 'solid',
+    boxShadow: isReactNative() ? undefined : castWebType(theme.elevation.lowRaised),
+    ...styles,
   };
 };
 

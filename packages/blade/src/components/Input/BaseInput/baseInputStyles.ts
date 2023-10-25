@@ -75,20 +75,18 @@ export const getInputBackgroundAndBorderStyles = ({
   }
 
   return {
-    '&&&&&': {
-      backgroundColor,
-      borderBottomColor,
-      borderTopLeftRadius: makeBorderSize(theme.border.radius.small),
-      borderTopRightRadius: makeBorderSize(theme.border.radius.small),
-      borderBottomWidth: makeBorderSize(theme.border.width.thin),
-      borderBottomStyle: 'solid',
-      display: 'flex',
-      flexDirection: 'row',
-      width: '100%',
-      alignItems: isTextArea ? 'flex-start' : undefined,
-      position: 'relative',
-      height: isDropdownTrigger ? 'auto' : undefined,
-    },
+    backgroundColor,
+    borderBottomColor,
+    borderTopLeftRadius: makeBorderSize(theme.border.radius.small),
+    borderTopRightRadius: makeBorderSize(theme.border.radius.small),
+    borderBottomWidth: makeBorderSize(theme.border.width.thin),
+    borderBottomStyle: 'solid',
+    display: 'flex',
+    flexDirection: 'row',
+    width: '100%',
+    alignItems: isTextArea ? 'flex-start' : undefined,
+    position: 'relative',
+    height: isDropdownTrigger ? 'auto' : undefined,
   };
 };
 
@@ -145,32 +143,28 @@ export const getBaseInputStyles = ({
   const isReactNative = getPlatformType() === 'react-native';
 
   return {
-    '&&&&&': {
-      ...getTextStyles({
-        size: 'medium',
-        variant: 'body',
-        type: isDisabled ? 'placeholder' : 'subtle',
-        weight: 'regular',
-        contrast: 'low',
-        theme,
-      }),
-      // take the full available width of parent container for input field
-      flex: 1,
-      backgroundColor: 'transparent',
-      paddingTop: makeSpace(theme.spacing[3]),
-      paddingBottom: makeSpace(theme.spacing[3]),
-      paddingLeft: makeSpace(
-        getLeftPadding({ theme, isDropdownTrigger, hasLeadingIcon, hasPrefix }),
-      ),
-      paddingRight:
-        hasInteractionElement || hasSuffix || hasTrailingIcon
-          ? makeSpace(theme.spacing[3])
-          : makeSpace(theme.spacing[4]),
-      textAlign,
-      width: '100%',
-      height: isTextArea || isDropdownWithTags ? undefined : makeSpace(BASEINPUT_DEFAULT_HEIGHT),
-      minHeight: isDropdownWithTags ? undefined : makeSpace(BASEINPUT_DEFAULT_HEIGHT),
-      ...(isReactNative ? {} : { resize: 'none' }),
-    },
+    ...getTextStyles({
+      size: 'medium',
+      variant: 'body',
+      type: isDisabled ? 'placeholder' : 'subtle',
+      weight: 'regular',
+      contrast: 'low',
+      theme,
+    }),
+    // take the full available width of parent container for input field
+    flex: 1,
+    backgroundColor: 'transparent',
+    paddingTop: makeSpace(theme.spacing[3]),
+    paddingBottom: makeSpace(theme.spacing[3]),
+    paddingLeft: makeSpace(getLeftPadding({ theme, isDropdownTrigger, hasLeadingIcon, hasPrefix })),
+    paddingRight:
+      hasInteractionElement || hasSuffix || hasTrailingIcon
+        ? makeSpace(theme.spacing[3])
+        : makeSpace(theme.spacing[4]),
+    textAlign,
+    width: '100%',
+    height: isTextArea || isDropdownWithTags ? undefined : makeSpace(BASEINPUT_DEFAULT_HEIGHT),
+    minHeight: isDropdownWithTags ? undefined : makeSpace(BASEINPUT_DEFAULT_HEIGHT),
+    ...(isReactNative ? {} : { resize: 'none' }),
   };
 };

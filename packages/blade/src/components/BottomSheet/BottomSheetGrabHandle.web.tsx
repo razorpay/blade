@@ -3,7 +3,11 @@ import { getBottomSheetGrabHandleStyles } from './getBottomSheetGrabHandleStyles
 
 const BottomSheetGrabHandle = styled.div<{ isHeaderFloating?: boolean }>(
   ({ theme, isHeaderFloating }) => {
-    return getBottomSheetGrabHandleStyles({ theme, isHeaderFloating });
+    return {
+      '&&&&&': {
+        ...getBottomSheetGrabHandleStyles({ theme, isHeaderFloating }),
+      },
+    };
   },
 );
 

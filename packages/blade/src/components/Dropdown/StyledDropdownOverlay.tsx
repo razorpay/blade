@@ -8,13 +8,11 @@ const StyledDropdownOverlay = styled(BaseBox)<{
   const { theme, isInBottomSheet } = props;
 
   return {
-    '&&&&&': {
-      backgroundColor: theme.colors.surface.background.level2.lowContrast,
-      borderWidth: isInBottomSheet ? undefined : theme.border.width.thin,
-      borderColor: theme.colors.surface.border.normal.lowContrast,
-      borderStyle: isInBottomSheet ? undefined : 'solid',
-      borderRadius: makeSize(theme.border.radius.medium),
-    },
+    backgroundColor: theme.colors.surface.background.level2.lowContrast,
+    borderWidth: isInBottomSheet ? undefined : theme.border.width.thin,
+    borderColor: theme.colors.surface.border.normal.lowContrast,
+    borderStyle: isInBottomSheet ? undefined : 'solid',
+    borderRadius: makeSize(theme.border.radius.medium),
   };
 });
 

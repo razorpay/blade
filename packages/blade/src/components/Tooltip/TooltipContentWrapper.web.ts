@@ -7,7 +7,11 @@ import BaseBox from '~components/Box/BaseBox';
 const TooltipContentWrapper = styled(BaseBox)<
   { styles: CSSProperties } & TooltipContentWrapperProps
 >(({ theme, styles }) => {
-  return getTooltipContentWrapperStyles({ theme, styles });
+  return {
+    '&&&&&': {
+      ...getTooltipContentWrapperStyles({ theme, styles }),
+    },
+  };
 });
 
 export { TooltipContentWrapper };

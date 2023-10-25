@@ -22,19 +22,17 @@ const getBaseActionListItemStyles = (
   props: StyledActionListItemProps & { theme: Theme },
 ): CSSObject => {
   return {
-    '&&&&&': {
-      // @TODO: replace this with outline token when we add
-      borderWidth: makeSize(props.theme.spacing[2]),
-      borderStyle: 'solid',
-      borderColor: 'transparent',
-      textAlign: isReactNative() ? undefined : 'left',
-      backgroundColor: 'transparent',
-      padding: makeSize(props.isMobile ? props.theme.spacing[3] : props.theme.spacing[2]),
-      borderRadius: makeSize(props.theme.border.radius.medium),
-      textDecoration: 'none',
-      cursor: 'pointer',
-      width: '100%',
-    },
+    // @TODO: replace this with outline token when we add
+    borderWidth: makeSize(props.theme.spacing[2]),
+    borderStyle: 'solid',
+    borderColor: 'transparent',
+    textAlign: isReactNative() ? undefined : 'left',
+    backgroundColor: 'transparent',
+    padding: makeSize(props.isMobile ? props.theme.spacing[3] : props.theme.spacing[2]),
+    borderRadius: makeSize(props.theme.border.radius.medium),
+    textDecoration: 'none',
+    cursor: 'pointer',
+    width: '100%',
   };
 };
 

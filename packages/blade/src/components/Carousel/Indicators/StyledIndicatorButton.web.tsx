@@ -4,7 +4,11 @@ import type { IndicatorButtonProps } from './types';
 
 const StyledIndicatorButton = styled.button<Omit<IndicatorButtonProps, 'accessibilityLabel'>>(
   ({ theme, variant, isActive }) => {
-    return getIndicatorButtonStyles({ theme, isActive, variant });
+    return {
+      '&&&&&': {
+        ...getIndicatorButtonStyles({ theme, isActive, variant }),
+      },
+    };
   },
 );
 

@@ -47,7 +47,13 @@ const useMemoizedStyles = (boxProps: BaseBoxProps & { theme: Theme }): CSSObject
   const { colorScheme } = useTheme();
   const boxPropsMemoDependency = getMemoDependency({ ...boxProps, colorScheme });
   const boxPropsCSSObject = React.useMemo(
-    () => getBaseBoxStyles({ ...boxProps, theme: boxProps.theme }),
+    () => {
+      return {
+        '&&&&&': {
+          ...getBaseBoxStyles({ ...boxProps, theme: boxProps.theme }),
+        },
+      };
+    },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [boxPropsMemoDependency],
   );

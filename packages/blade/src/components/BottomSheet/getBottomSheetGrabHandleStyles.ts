@@ -26,20 +26,18 @@ const getBottomSheetGrabHandleStyles = ({
   isHeaderFloating?: boolean;
 }): CSSObject => {
   return {
-    '&&&&&': {
-      position: isHeaderFloating ? 'absolute' : 'relative',
-      flexShrink: 0,
-      paddingTop: makeSpace(theme.spacing[4]),
-      marginBottom: makeSpace(theme.spacing[2]),
-      touchAction: 'none',
-      width: '100%',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-      zIndex: 100,
-      ...(isReactNative() ? undefined : { ':after': getHandlePartStyles({ theme }) }),
-    },
+    position: isHeaderFloating ? 'absolute' : 'relative',
+    flexShrink: 0,
+    paddingTop: makeSpace(theme.spacing[4]),
+    marginBottom: makeSpace(theme.spacing[2]),
+    touchAction: 'none',
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    zIndex: 100,
+    ...(isReactNative() ? undefined : { ':after': getHandlePartStyles({ theme }) }),
   };
 };
 
