@@ -93,19 +93,6 @@ exports[`<Chip /> should render chip 1`] = `
 }
 
 .c11.c11.c11.c11.c11 {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 9999px;
   border-color: hsla(216,19%,89%,1);
@@ -131,6 +118,16 @@ exports[`<Chip /> should render chip 1`] = `
   text-align: left;
   text-overflow: ellipsis;
   max-width: 420px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c13.c13.c13.c13.c13 {
@@ -158,7 +155,7 @@ exports[`<Chip /> should render chip 1`] = `
   margin-bottom: 2px;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -175,7 +172,7 @@ exports[`<Chip /> should render chip 1`] = `
   word-wrap: normal;
 }
 
-.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 {
+.c9.c9.c9.c9.c9 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -540,19 +537,6 @@ exports[`<Chip /> should render chip with icon 1`] = `
 }
 
 .c11.c11.c11.c11.c11 {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 9999px;
   border-color: hsla(216,19%,89%,1);
@@ -578,6 +562,16 @@ exports[`<Chip /> should render chip with icon 1`] = `
   text-align: left;
   text-overflow: ellipsis;
   max-width: 420px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c13.c13.c13.c13.c13 {
@@ -605,7 +599,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
   margin-bottom: 2px;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -622,7 +616,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
   word-wrap: normal;
 }
 
-.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 {
+.c9.c9.c9.c9.c9 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -1043,19 +1037,6 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
 }
 
 .c11.c11.c11.c11.c11 {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 {
   background-color: transparent;
   border-radius: 9999px;
   border-color: hsla(216,19%,89%,1);
@@ -1081,9 +1062,6 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   text-align: left;
   text-overflow: ellipsis;
   max-width: 420px;
-}
-
-.c16.c16.c16.c16.c16 {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -1096,7 +1074,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16 {
+.c16.c16.c16.c16.c16 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 9999px;
   border-color: hsla(216,19%,89%,1);
@@ -1122,6 +1100,16 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   text-align: left;
   text-overflow: ellipsis;
   max-width: 420px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c13.c13.c13.c13.c13 {
@@ -1157,7 +1145,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   margin-bottom: 2px;
 }
 
-.c1.c1.c1.c1.c1 {
+.c1 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -1174,7 +1162,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   word-wrap: normal;
 }
 
-.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 {
+.c9.c9.c9.c9.c9 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -1196,7 +1184,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15 {
+.c15.c15.c15.c15.c15 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);

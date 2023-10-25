@@ -2,6 +2,13 @@
 
 exports[`<Link /> should render button variant of link 1`] = `
 .c0.c0.c0.c0.c0 {
+  padding: 0;
+  background-color: transparent;
+  outline: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
   display: inline-block;
   border-radius: 2px;
   -webkit-transition-property: box-shadow;
@@ -85,6 +92,13 @@ exports[`<Link /> should render button variant of link 1`] = `
 
 exports[`<Link /> should render default color link 1`] = `
 .c0.c0.c0.c0.c0 {
+  padding: 0;
+  background-color: transparent;
+  outline: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
   display: inline-block;
   border-radius: 2px;
   -webkit-transition-property: box-shadow;
@@ -167,6 +181,13 @@ exports[`<Link /> should render default color link 1`] = `
 
 exports[`<Link /> should render disabled button variant of link 1`] = `
 .c0.c0.c0.c0.c0 {
+  padding: 0;
+  background-color: transparent;
+  outline: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  border: none;
+  cursor: not-allowed;
   display: inline-block;
   border-radius: 2px;
   -webkit-transition-property: box-shadow;
@@ -251,6 +272,13 @@ exports[`<Link /> should render disabled button variant of link 1`] = `
 
 exports[`<Link /> should render disabled default color link 1`] = `
 .c0.c0.c0.c0.c0 {
+  padding: 0;
+  background-color: transparent;
+  outline: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
   display: inline-block;
   border-radius: 2px;
   -webkit-transition-property: box-shadow;
@@ -333,6 +361,13 @@ exports[`<Link /> should render disabled default color link 1`] = `
 
 exports[`<Link /> should render disabled neutral color link 1`] = `
 .c0.c0.c0.c0.c0 {
+  padding: 0;
+  background-color: transparent;
+  outline: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
   display: inline-block;
   border-radius: 2px;
   -webkit-transition-property: box-shadow;
@@ -415,6 +450,13 @@ exports[`<Link /> should render disabled neutral color link 1`] = `
 
 exports[`<Link /> should render disabled white color link 1`] = `
 .c0.c0.c0.c0.c0 {
+  padding: 0;
+  background-color: transparent;
+  outline: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
   display: inline-block;
   border-radius: 2px;
   -webkit-transition-property: box-shadow;
@@ -497,6 +539,13 @@ exports[`<Link /> should render disabled white color link 1`] = `
 
 exports[`<Link /> should render link with default properties 1`] = `
 .c0.c0.c0.c0.c0 {
+  padding: 0;
+  background-color: transparent;
+  outline: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
   display: inline-block;
   border-radius: 2px;
   -webkit-transition-property: box-shadow;
@@ -579,6 +628,13 @@ exports[`<Link /> should render link with default properties 1`] = `
 
 exports[`<Link /> should render link with icon with default iconPosition 1`] = `
 .c0.c0.c0.c0.c0 {
+  padding: 0;
+  background-color: transparent;
+  outline: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
   display: inline-block;
   border-radius: 2px;
   -webkit-transition-property: box-shadow;
@@ -705,6 +761,13 @@ exports[`<Link /> should render link with icon with default iconPosition 1`] = `
 
 exports[`<Link /> should render link with icon with left iconPosition 1`] = `
 .c0.c0.c0.c0.c0 {
+  padding: 0;
+  background-color: transparent;
+  outline: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
   display: inline-block;
   border-radius: 2px;
   -webkit-transition-property: box-shadow;
@@ -831,6 +894,13 @@ exports[`<Link /> should render link with icon with left iconPosition 1`] = `
 
 exports[`<Link /> should render link with icon with right iconPosition 1`] = `
 .c0.c0.c0.c0.c0 {
+  padding: 0;
+  background-color: transparent;
+  outline: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
   display: inline-block;
   border-radius: 2px;
   -webkit-transition-property: box-shadow;
@@ -957,6 +1027,13 @@ exports[`<Link /> should render link with icon with right iconPosition 1`] = `
 
 exports[`<Link /> should render link with icon without text 1`] = `
 .c0.c0.c0.c0.c0 {
+  padding: 0;
+  background-color: transparent;
+  outline: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
   display: inline-block;
   border-radius: 2px;
   -webkit-transition-property: box-shadow;
@@ -1081,6 +1158,13 @@ exports[`<Link /> should render link with icon without text 1`] = `
 
 exports[`<Link /> should render neutral color link 1`] = `
 .c0.c0.c0.c0.c0 {
+  padding: 0;
+  background-color: transparent;
+  outline: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
   display: inline-block;
   border-radius: 2px;
   -webkit-transition-property: box-shadow;
@@ -1163,6 +1247,13 @@ exports[`<Link /> should render neutral color link 1`] = `
 
 exports[`<Link /> should render white color link 1`] = `
 .c0.c0.c0.c0.c0 {
+  padding: 0;
+  background-color: transparent;
+  outline: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
   display: inline-block;
   border-radius: 2px;
   -webkit-transition-property: box-shadow;
@@ -1245,6 +1336,13 @@ exports[`<Link /> should render white color link 1`] = `
 
 exports[`<Link /> should render with small size 1`] = `
 .c0.c0.c0.c0.c0 {
+  padding: 0;
+  background-color: transparent;
+  outline: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
   display: inline-block;
   border-radius: 2px;
   -webkit-transition-property: box-shadow;

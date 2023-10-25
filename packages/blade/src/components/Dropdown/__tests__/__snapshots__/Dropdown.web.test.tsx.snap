@@ -317,7 +317,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   min-height: 36px;
 }
 
-.c25.c25.c25.c25.c25 {
+.c25 {
   background-color: hsla(0,0%,100%,1);
   border-width: 1px;
   border-color: hsla(216,15%,54%,0.18);
@@ -326,6 +326,28 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
 }
 
 .c43.c43.c43.c43.c43 {
+  min-height: 36px;
+  width: 100%;
+  cursor: pointer;
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
+  border-width: 1px;
+  border-radius: 2px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -481,12 +503,6 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
 }
 
 .c13.c13.c13.c13.c13 {
-  outline: none;
-  border: none;
-  cursor: auto;
-}
-
-.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -510,6 +526,9 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   height: 36px;
   min-height: 36px;
   resize: none;
+  outline: none;
+  border: none;
+  cursor: auto;
 }
 
 .c13.c13.c13.c13.c13::-webkit-input-placeholder {
@@ -585,7 +604,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   animation: cAlpMa 250ms cubic-bezier(0.3,0,0.2,1) forwards;
 }
 
-.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 {
+.c9.c9.c9.c9.c9 {
   background-color: hsla(218,89%,51%,0.09);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
@@ -605,15 +624,6 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
 }
 
 .c9.c9.c9.c9.c9:hover {
-  -webkit-transition-property: background-color;
-  transition-property: background-color;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c9.c9.c9.c9.c9:hover.c9.c9.c9.c9.c9:hover.c9.c9.c9.c9.c9:hover.c9.c9.c9.c9.c9:hover.c9.c9.c9.c9.c9:hover {
   background-color: hsla(218,89%,51%,0.09);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
@@ -630,9 +640,15 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   width: 100%;
   position: relative;
   height: auto;
+  -webkit-transition-property: background-color;
+  transition-property: background-color;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c9.c9.c9.c9.c9:focus-within.c9.c9.c9.c9.c9:focus-within.c9.c9.c9.c9.c9:focus-within.c9.c9.c9.c9.c9:focus-within.c9.c9.c9.c9.c9:focus-within {
+.c9.c9.c9.c9.c9:focus-within {
   background-color: hsla(218,89%,51%,0.09);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
@@ -657,7 +673,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   max-height: 37px;
 }
 
-.c2.c2.c2.c2.c2 {
+.c2 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -676,22 +692,15 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
 
 .c35.c35.c35.c35.c35 {
   overflow-y: auto;
+  max-height: 300px;
+  padding: 8px;
 }
 
 .c35.c35.c35.c35.c35 [role=group]:last-child > [role=separator]:last-child {
   display: none;
 }
 
-.c35.c35.c35.c35.c35.c35.c35.c35.c35.c35.c35.c35.c35.c35.c35.c35.c35.c35.c35.c35.c35.c35.c35.c35.c35 {
-  max-height: 300px;
-  padding: 8px;
-}
-
 .c36.c36.c36.c36.c36 {
-  display: block;
-}
-
-.c36.c36.c36.c36.c36.c36.c36.c36.c36.c36.c36.c36.c36.c36.c36.c36.c36.c36.c36.c36.c36.c36.c36.c36.c36 {
   border-width: 4px;
   border-style: solid;
   border-color: transparent;
@@ -703,6 +712,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   text-decoration: none;
   cursor: pointer;
   width: 100%;
+  display: block;
 }
 
 .c36.c36.c36.c36.c36:hover:not([aria-disabled=true]) {

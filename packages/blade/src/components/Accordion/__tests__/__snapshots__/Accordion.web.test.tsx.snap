@@ -2,21 +2,6 @@
 
 exports[`<Accordion /> should render 1`] = `
 .c3.c3.c3.c3.c3 {
-  background-color: hsla(0,0%,100%,0);
-  -webkit-transition-property: background-color,box-shadow,border-radius,color;
-  transition-property: background-color,box-shadow,border-radius,color;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  cursor: pointer;
-  color: hsla(214,18%,69%,1);
-  width: 100%;
-  border: none;
-  text-align: left;
-}
-
-.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3 {
   padding: 16px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -33,6 +18,18 @@ exports[`<Accordion /> should render 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  background-color: hsla(0,0%,100%,0);
+  -webkit-transition-property: background-color,box-shadow,border-radius,color;
+  transition-property: background-color,box-shadow,border-radius,color;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  cursor: pointer;
+  color: hsla(214,18%,69%,1);
+  width: 100%;
+  border: none;
+  text-align: left;
 }
 
 .c3.c3.c3.c3.c3:hover,

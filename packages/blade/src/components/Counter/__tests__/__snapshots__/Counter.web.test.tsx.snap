@@ -36,12 +36,6 @@ exports[`<Counter /> should render Counter with default props 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-
-.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2 {
   background-color: hsla(216,15%,54%,0.09);
   border-radius: 9999px;
   max-width: 120px;
@@ -52,6 +46,9 @@ exports[`<Counter /> should render Counter with default props 1`] = `
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -134,12 +131,6 @@ exports[`<Counter /> should render high contrast blue variant Counter 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-
-.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2 {
   background-color: hsla(218,89%,51%,1);
   border-radius: 9999px;
   max-width: 120px;
@@ -150,6 +141,9 @@ exports[`<Counter /> should render high contrast blue variant Counter 1`] = `
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -232,12 +226,6 @@ exports[`<Counter /> should render high contrast default color Counter 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-
-.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2 {
   background-color: hsla(218,89%,51%,1);
   border-radius: 9999px;
   max-width: 120px;
@@ -248,6 +236,9 @@ exports[`<Counter /> should render high contrast default color Counter 1`] = `
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -330,12 +321,6 @@ exports[`<Counter /> should render high contrast information color Counter 1`] =
 }
 
 .c2.c2.c2.c2.c2 {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-
-.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2 {
   background-color: hsla(193,100%,35%,1);
   border-radius: 9999px;
   max-width: 120px;
@@ -346,6 +331,9 @@ exports[`<Counter /> should render high contrast information color Counter 1`] =
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -428,12 +416,6 @@ exports[`<Counter /> should render high contrast information variant Counter 1`]
 }
 
 .c2.c2.c2.c2.c2 {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-
-.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2 {
   background-color: hsla(193,100%,35%,1);
   border-radius: 9999px;
   max-width: 120px;
@@ -444,6 +426,9 @@ exports[`<Counter /> should render high contrast information variant Counter 1`]
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -526,12 +511,6 @@ exports[`<Counter /> should render high contrast negative color Counter 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-
-.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2 {
   background-color: hsla(8,73%,47%,1);
   border-radius: 9999px;
   max-width: 120px;
@@ -542,6 +521,9 @@ exports[`<Counter /> should render high contrast negative color Counter 1`] = `
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -624,12 +606,6 @@ exports[`<Counter /> should render high contrast negative variant Counter 1`] = 
 }
 
 .c2.c2.c2.c2.c2 {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-
-.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2 {
   background-color: hsla(8,73%,47%,1);
   border-radius: 9999px;
   max-width: 120px;
@@ -640,6 +616,9 @@ exports[`<Counter /> should render high contrast negative variant Counter 1`] = 
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -722,12 +701,6 @@ exports[`<Counter /> should render high contrast neutral color Counter 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-
-.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2 {
   background-color: hsla(216,33%,29%,1);
   border-radius: 9999px;
   max-width: 120px;
@@ -738,6 +711,9 @@ exports[`<Counter /> should render high contrast neutral color Counter 1`] = `
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -820,12 +796,6 @@ exports[`<Counter /> should render high contrast neutral variant Counter 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-
-.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2 {
   background-color: hsla(216,33%,29%,1);
   border-radius: 9999px;
   max-width: 120px;
@@ -836,6 +806,9 @@ exports[`<Counter /> should render high contrast neutral variant Counter 1`] = `
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -918,12 +891,6 @@ exports[`<Counter /> should render high contrast notice color Counter 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-
-.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2 {
   background-color: hsla(38,97%,38%,1);
   border-radius: 9999px;
   max-width: 120px;
@@ -934,6 +901,9 @@ exports[`<Counter /> should render high contrast notice color Counter 1`] = `
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -1016,12 +986,6 @@ exports[`<Counter /> should render high contrast notice variant Counter 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-
-.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2 {
   background-color: hsla(38,97%,38%,1);
   border-radius: 9999px;
   max-width: 120px;
@@ -1032,6 +996,9 @@ exports[`<Counter /> should render high contrast notice variant Counter 1`] = `
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -1114,12 +1081,6 @@ exports[`<Counter /> should render high contrast positive color Counter 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-
-.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2 {
   background-color: hsla(160,100%,26%,1);
   border-radius: 9999px;
   max-width: 120px;
@@ -1130,6 +1091,9 @@ exports[`<Counter /> should render high contrast positive color Counter 1`] = `
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -1212,12 +1176,6 @@ exports[`<Counter /> should render high contrast positive variant Counter 1`] = 
 }
 
 .c2.c2.c2.c2.c2 {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-
-.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2 {
   background-color: hsla(160,100%,26%,1);
   border-radius: 9999px;
   max-width: 120px;
@@ -1228,6 +1186,9 @@ exports[`<Counter /> should render high contrast positive variant Counter 1`] = 
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -1310,12 +1271,6 @@ exports[`<Counter /> should render large size Counter 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-
-.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2 {
   background-color: hsla(216,15%,54%,0.09);
   border-radius: 9999px;
   max-width: 120px;
@@ -1326,6 +1281,9 @@ exports[`<Counter /> should render large size Counter 1`] = `
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -1408,12 +1366,6 @@ exports[`<Counter /> should render low contrast blue variant Counter 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-
-.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2 {
   background-color: hsla(218,89%,51%,0.09);
   border-radius: 9999px;
   max-width: 120px;
@@ -1424,6 +1376,9 @@ exports[`<Counter /> should render low contrast blue variant Counter 1`] = `
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -1506,12 +1461,6 @@ exports[`<Counter /> should render low contrast default color Counter 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-
-.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2 {
   background-color: hsla(218,89%,51%,0.09);
   border-radius: 9999px;
   max-width: 120px;
@@ -1522,6 +1471,9 @@ exports[`<Counter /> should render low contrast default color Counter 1`] = `
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -1604,12 +1556,6 @@ exports[`<Counter /> should render low contrast information color Counter 1`] = 
 }
 
 .c2.c2.c2.c2.c2 {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-
-.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2 {
   background-color: hsla(193,100%,35%,0.09);
   border-radius: 9999px;
   max-width: 120px;
@@ -1620,6 +1566,9 @@ exports[`<Counter /> should render low contrast information color Counter 1`] = 
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -1702,12 +1651,6 @@ exports[`<Counter /> should render low contrast information variant Counter 1`] 
 }
 
 .c2.c2.c2.c2.c2 {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-
-.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2 {
   background-color: hsla(193,100%,35%,0.09);
   border-radius: 9999px;
   max-width: 120px;
@@ -1718,6 +1661,9 @@ exports[`<Counter /> should render low contrast information variant Counter 1`] 
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -1800,12 +1746,6 @@ exports[`<Counter /> should render low contrast negative color Counter 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-
-.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2 {
   background-color: hsla(9,91%,56%,0.09);
   border-radius: 9999px;
   max-width: 120px;
@@ -1816,6 +1756,9 @@ exports[`<Counter /> should render low contrast negative color Counter 1`] = `
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -1898,12 +1841,6 @@ exports[`<Counter /> should render low contrast negative variant Counter 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-
-.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2 {
   background-color: hsla(9,91%,56%,0.09);
   border-radius: 9999px;
   max-width: 120px;
@@ -1914,6 +1851,9 @@ exports[`<Counter /> should render low contrast negative variant Counter 1`] = `
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -1996,12 +1936,6 @@ exports[`<Counter /> should render low contrast neutral color Counter 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-
-.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2 {
   background-color: hsla(216,15%,54%,0.09);
   border-radius: 9999px;
   max-width: 120px;
@@ -2012,6 +1946,9 @@ exports[`<Counter /> should render low contrast neutral color Counter 1`] = `
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -2094,12 +2031,6 @@ exports[`<Counter /> should render low contrast neutral variant Counter 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-
-.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2 {
   background-color: hsla(216,15%,54%,0.09);
   border-radius: 9999px;
   max-width: 120px;
@@ -2110,6 +2041,9 @@ exports[`<Counter /> should render low contrast neutral variant Counter 1`] = `
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -2192,12 +2126,6 @@ exports[`<Counter /> should render low contrast notice color Counter 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-
-.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2 {
   background-color: hsla(36,100%,44%,0.09);
   border-radius: 9999px;
   max-width: 120px;
@@ -2208,6 +2136,9 @@ exports[`<Counter /> should render low contrast notice color Counter 1`] = `
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -2290,12 +2221,6 @@ exports[`<Counter /> should render low contrast notice variant Counter 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-
-.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2 {
   background-color: hsla(36,100%,44%,0.09);
   border-radius: 9999px;
   max-width: 120px;
@@ -2306,6 +2231,9 @@ exports[`<Counter /> should render low contrast notice variant Counter 1`] = `
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -2388,12 +2316,6 @@ exports[`<Counter /> should render low contrast positive color Counter 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-
-.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2 {
   background-color: hsla(155,100%,31%,0.09);
   border-radius: 9999px;
   max-width: 120px;
@@ -2404,6 +2326,9 @@ exports[`<Counter /> should render low contrast positive color Counter 1`] = `
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -2486,12 +2411,6 @@ exports[`<Counter /> should render low contrast positive variant Counter 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-
-.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2 {
   background-color: hsla(155,100%,31%,0.09);
   border-radius: 9999px;
   max-width: 120px;
@@ -2502,6 +2421,9 @@ exports[`<Counter /> should render low contrast positive variant Counter 1`] = `
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -2584,12 +2506,6 @@ exports[`<Counter /> should render medium size Counter 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-
-.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2 {
   background-color: hsla(216,15%,54%,0.09);
   border-radius: 9999px;
   max-width: 120px;
@@ -2600,6 +2516,9 @@ exports[`<Counter /> should render medium size Counter 1`] = `
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -2682,12 +2601,6 @@ exports[`<Counter /> should render small size Counter 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-
-.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2 {
   background-color: hsla(216,15%,54%,0.09);
   border-radius: 9999px;
   max-width: 120px;
@@ -2698,6 +2611,9 @@ exports[`<Counter /> should render small size Counter 1`] = `
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .c4.c4.c4.c4.c4 {

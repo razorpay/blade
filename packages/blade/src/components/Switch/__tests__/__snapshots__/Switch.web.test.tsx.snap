@@ -15,7 +15,7 @@ exports[`<Switch /> should render switch 1`] = `
   display: inline-block;
 }
 
-.c4.c4.c4.c4.c4 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -65,7 +65,7 @@ exports[`<Switch /> should render switch 1`] = `
   background-color: hsla(220,30%,96%,1);
 }
 
-.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3 {
+.c3.c3.c3.c3.c3 {
   pointer-events: none;
   position: relative;
   display: -webkit-box;
@@ -88,7 +88,7 @@ exports[`<Switch /> should render switch 1`] = `
   transition-duration: 70ms;
 }
 
-.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2 {
+.c2.c2.c2.c2.c2 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -201,7 +201,7 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
   display: inline-block;
 }
 
-.c4.c4.c4.c4.c4 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -251,7 +251,7 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
   background-color: hsla(220,27%,98%,1);
 }
 
-.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3 {
+.c3.c3.c3.c3.c3 {
   pointer-events: none;
   position: relative;
   display: -webkit-box;
@@ -274,7 +274,7 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
   transition-duration: 70ms;
 }
 
-.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2 {
+.c2.c2.c2.c2.c2 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);

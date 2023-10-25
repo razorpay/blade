@@ -137,7 +137,7 @@ exports[`<Radio /> should render radio with label 1`] = `
   padding: 0;
 }
 
-.c4.c4.c4.c4.c4 {
+.c4 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -154,7 +154,7 @@ exports[`<Radio /> should render radio with label 1`] = `
   word-wrap: normal;
 }
 
-.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 {
+.c9.c9.c9.c9.c9 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -430,7 +430,7 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
   padding: 0;
 }
 
-.c4.c4.c4.c4.c4 {
+.c4 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -447,7 +447,7 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
   word-wrap: normal;
 }
 
-.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 {
+.c9.c9.c9.c9.c9 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);

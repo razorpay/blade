@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
-.c9.c9.c9.c9.c9 {
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 {
   border: none;
   cursor: pointer;
   padding: 0px;
@@ -17,18 +17,18 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c9.c9.c9.c9.c9:before {
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9:before {
   content: "";
   padding: 10px;
   padding-top: 20px;
 }
 
-.c9.c9.c9.c9.c9:focus-visible {
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c10.c10.c10.c10.c10 {
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 {
   border: none;
   cursor: pointer;
   padding: 0px;
@@ -44,13 +44,13 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c10.c10.c10.c10.c10:before {
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10:before {
   content: "";
   padding: 10px;
   padding-top: 20px;
 }
 
-.c10.c10.c10.c10.c10:focus-visible {
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
@@ -406,7 +406,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
 `;
 
 exports[`Carousel Snapshots should render 1`] = `
-.c8.c8.c8.c8.c8 {
+.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8 {
   border: none;
   cursor: pointer;
   padding: 0px;
@@ -422,18 +422,18 @@ exports[`Carousel Snapshots should render 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c8.c8.c8.c8.c8:before {
+.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8:before {
   content: "";
   padding: 10px;
   padding-top: 20px;
 }
 
-.c8.c8.c8.c8.c8:focus-visible {
+.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c9.c9.c9.c9.c9 {
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 {
   border: none;
   cursor: pointer;
   padding: 0px;
@@ -449,13 +449,13 @@ exports[`Carousel Snapshots should render 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c9.c9.c9.c9.c9:before {
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9:before {
   content: "";
   padding: 10px;
   padding-top: 20px;
 }
 
-.c9.c9.c9.c9.c9:focus-visible {
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
@@ -767,7 +767,7 @@ exports[`Carousel Snapshots should render 1`] = `
 `;
 
 exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`] = `
-.c8.c8.c8.c8.c8 {
+.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8 {
   border: none;
   cursor: pointer;
   padding: 0px;
@@ -783,18 +783,18 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c8.c8.c8.c8.c8:before {
+.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8:before {
   content: "";
   padding: 10px;
   padding-top: 20px;
 }
 
-.c8.c8.c8.c8.c8:focus-visible {
+.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c9.c9.c9.c9.c9 {
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 {
   border: none;
   cursor: pointer;
   padding: 0px;
@@ -810,13 +810,13 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c9.c9.c9.c9.c9:before {
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9:before {
   content: "";
   padding: 10px;
   padding-top: 20px;
 }
 
-.c9.c9.c9.c9.c9:focus-visible {
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
@@ -1119,7 +1119,7 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
 `;
 
 exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
-.c10.c10.c10.c10.c10 {
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 {
   border: none;
   cursor: pointer;
   padding: 0px;
@@ -1135,18 +1135,18 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c10.c10.c10.c10.c10:before {
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10:before {
   content: "";
   padding: 10px;
   padding-top: 20px;
 }
 
-.c10.c10.c10.c10.c10:focus-visible {
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c11.c11.c11.c11.c11 {
+.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 {
   border: none;
   cursor: pointer;
   padding: 0px;
@@ -1162,13 +1162,13 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c11.c11.c11.c11.c11:before {
+.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11:before {
   content: "";
   padding: 10px;
   padding-top: 20px;
 }
 
-.c11.c11.c11.c11.c11:focus-visible {
+.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
@@ -1523,7 +1523,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
 `;
 
 exports[`Carousel Snapshots should render with showOverlay 1`] = `
-.c9.c9.c9.c9.c9 {
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 {
   border: none;
   cursor: pointer;
   padding: 0px;
@@ -1539,18 +1539,18 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c9.c9.c9.c9.c9:before {
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9:before {
   content: "";
   padding: 10px;
   padding-top: 20px;
 }
 
-.c9.c9.c9.c9.c9:focus-visible {
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c10.c10.c10.c10.c10 {
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 {
   border: none;
   cursor: pointer;
   padding: 0px;
@@ -1566,13 +1566,13 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c10.c10.c10.c10.c10:before {
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10:before {
   content: "";
   padding: 10px;
   padding-top: 20px;
 }
 
-.c10.c10.c10.c10.c10:focus-visible {
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
@@ -1953,7 +1953,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
 `;
 
 exports[`Carousel Snapshots should render with visibleItems 1`] = `
-.c8.c8.c8.c8.c8 {
+.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8 {
   border: none;
   cursor: pointer;
   padding: 0px;
@@ -1969,18 +1969,18 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c8.c8.c8.c8.c8:before {
+.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8:before {
   content: "";
   padding: 10px;
   padding-top: 20px;
 }
 
-.c8.c8.c8.c8.c8:focus-visible {
+.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c9.c9.c9.c9.c9 {
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 {
   border: none;
   cursor: pointer;
   padding: 0px;
@@ -1996,13 +1996,13 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c9.c9.c9.c9.c9:before {
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9:before {
   content: "";
   padding: 10px;
   padding-top: 20px;
 }
 
-.c9.c9.c9.c9.c9:focus-visible {
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }

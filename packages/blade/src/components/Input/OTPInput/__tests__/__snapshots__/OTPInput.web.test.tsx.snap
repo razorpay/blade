@@ -107,12 +107,6 @@ exports[`<OTPInput /> should render 1`] = `
 }
 
 .c10.c10.c10.c10.c10 {
-  outline: none;
-  border: none;
-  cursor: auto;
-}
-
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -136,6 +130,9 @@ exports[`<OTPInput /> should render 1`] = `
   height: 36px;
   min-height: 36px;
   resize: none;
+  outline: none;
+  border: none;
+  cursor: auto;
 }
 
 .c10.c10.c10.c10.c10::-webkit-input-placeholder {
@@ -209,7 +206,7 @@ exports[`<OTPInput /> should render 1`] = `
   height: 1px;
 }
 
-.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 {
+.c9.c9.c9.c9.c9 {
   background-color: hsla(216,15%,54%,0.09);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
@@ -228,15 +225,6 @@ exports[`<OTPInput /> should render 1`] = `
 }
 
 .c9.c9.c9.c9.c9:hover {
-  -webkit-transition-property: background-color;
-  transition-property: background-color;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c9.c9.c9.c9.c9:hover.c9.c9.c9.c9.c9:hover.c9.c9.c9.c9.c9:hover.c9.c9.c9.c9.c9:hover.c9.c9.c9.c9.c9:hover {
   background-color: hsla(216,15%,54%,0.18);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
@@ -252,9 +240,15 @@ exports[`<OTPInput /> should render 1`] = `
   flex-direction: row;
   width: 100%;
   position: relative;
+  -webkit-transition-property: background-color;
+  transition-property: background-color;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c9.c9.c9.c9.c9:focus-within.c9.c9.c9.c9.c9:focus-within.c9.c9.c9.c9.c9:focus-within.c9.c9.c9.c9.c9:focus-within.c9.c9.c9.c9.c9:focus-within {
+.c9.c9.c9.c9.c9:focus-within {
   background-color: hsla(216,15%,54%,0.09);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
@@ -272,7 +266,7 @@ exports[`<OTPInput /> should render 1`] = `
   position: relative;
 }
 
-.c4.c4.c4.c4.c4 {
+.c4 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);

@@ -81,18 +81,16 @@ describe('getBaseBoxStyles', () => {
     const boxStylesWithoutUndefined = JSON.parse(JSON.stringify(boxStyles));
     expect(boxStylesWithoutUndefined).toMatchInlineSnapshot(`
       {
-        "&&&&&": {
-          "@media screen and (min-width: 1200px)": {
-            "margin": "auto",
-          },
-          "@media screen and (min-width: 480px)": {
-            "margin": "2px 12px 100%",
-          },
-          "@media screen and (min-width: 768px)": {
-            "margin": "22px",
-          },
-          "margin": "2px",
+        "@media screen and (min-width: 1200px)": {
+          "margin": "auto",
         },
+        "@media screen and (min-width: 480px)": {
+          "margin": "2px 12px 100%",
+        },
+        "@media screen and (min-width: 768px)": {
+          "margin": "22px",
+        },
+        "margin": "2px",
       }
     `);
   });

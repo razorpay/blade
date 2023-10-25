@@ -334,6 +334,28 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
 }
 
 .c1.c1.c1.c1.c1 {
+  min-height: 36px;
+  width: auto;
+  cursor: pointer;
+  background-color: hsla(216,15%,54%,0.09);
+  border-color: hsla(216,44%,23%,0);
+  border-width: 1px;
+  border-radius: 2px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -379,10 +401,6 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
 }
 
 .c16.c16.c16.c16.c16 {
-  display: block;
-}
-
-.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16 {
   border-width: 4px;
   border-style: solid;
   border-color: transparent;
@@ -394,6 +412,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   text-decoration: none;
   cursor: pointer;
   width: 100%;
+  display: block;
 }
 
 .c16.c16.c16.c16.c16:hover:not([aria-disabled=true]) {
@@ -405,10 +424,6 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
 }
 
 .c22.c22.c22.c22.c22 {
-  display: block;
-}
-
-.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22 {
   border-width: 4px;
   border-style: solid;
   border-color: transparent;
@@ -420,6 +435,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   text-decoration: none;
   cursor: pointer;
   width: 100%;
+  display: block;
 }
 
 .c22.c22.c22.c22.c22:hover:not([aria-disabled=true]) {
@@ -1110,12 +1126,6 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
 }
 
 .c16.c16.c16.c16.c16 {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-
-.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16 {
   background-color: hsla(155,100%,31%,0.09);
   border-radius: 9999px;
   max-width: 120px;
@@ -1126,9 +1136,34 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .c32.c32.c32.c32.c32 {
+  min-height: 36px;
+  width: 100%;
+  cursor: pointer;
+  background-color: hsla(218,89%,51%,0);
+  border-color: hsla(218,89%,51%,1);
+  border-width: 1px;
+  border-radius: 2px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1169,12 +1204,6 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
 }
 
 .c22.c22.c22.c22.c22 {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-
-.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22.c22 {
   background-color: hsla(155,100%,31%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
@@ -1184,6 +1213,9 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 @media screen and (min-width:768px) {
