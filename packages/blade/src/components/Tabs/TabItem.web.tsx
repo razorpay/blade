@@ -152,7 +152,6 @@ const TabItem = ({
           {Leading ? (
             <Leading
               size={iconSizeMap[size!]}
-              // @ts-expect-error TODO: icons types don't support brand colors
               color={
                 isSelected
                   ? `brand.primary.500`
