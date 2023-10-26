@@ -151,7 +151,6 @@ describe('Tabs', () => {
 
     expect(getByRole('tab', { name: 'Payments' })).toHaveAttribute('aria-selected', 'true');
 
-    // TODO: change this after isLazy implementation
     expect(queryTabPanelByText('Payments')).toBeVisible();
     expect(queryTabPanelByText('Refunds')).not.toBeVisible();
     expect(queryTabPanelByText('Disputes')).not.toBeVisible();
@@ -193,7 +192,6 @@ describe('Tabs', () => {
 
     expect(getByRole('tab', { name: 'Payments' })).toHaveAttribute('aria-selected', 'true');
 
-    // TODO: change this after isLazy implementation
     expect(queryTabPanelByText('Payments')).toBeVisible();
     expect(queryTabPanelByText('Refunds')).not.toBeVisible();
     expect(queryTabPanelByText('Disputes')).not.toBeVisible();
@@ -258,7 +256,6 @@ describe('Tabs', () => {
     expect(onChange).not.toHaveBeenCalled();
     expect(getByRole('tab', { name: 'Payments' })).toHaveAttribute('aria-selected', 'true');
 
-    // TODO: change this after isLazy implementation
     expect(queryTabPanelByText('Payments')).toBeVisible();
     expect(queryTabPanelByText('Refunds')).not.toBeVisible();
     expect(queryTabPanelByText('Disputes')).not.toBeVisible();
@@ -317,7 +314,6 @@ describe('Tabs', () => {
     expect(getByTestId(selectedTabTestId)).toHaveTextContent('refunds');
     expect(getByRole('tab', { name: 'Refunds' })).toHaveAttribute('aria-selected', 'true');
 
-    // TODO: change this after isLazy implementation
     expect(queryTabPanelByText('Payments')).not.toBeVisible();
     expect(queryTabPanelByText('Refunds')).toBeVisible();
     expect(queryTabPanelByText('Disputes')).not.toBeVisible();
