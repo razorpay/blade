@@ -26,6 +26,7 @@ const BoxStoryMeta = {
       page: () => (
         <StoryPageWrapper
           componentName="Box"
+          apiDecisionLink="https://github.com/razorpay/blade/blob/master/rfcs/2023-01-06-layout.md"
           componentDescription="Box Component from Layout Primitives of Blade."
           propsDescription="All Box props support responsive objects. Props marked with 💅🏼 next to their names are the props that can also be used as styled-props on other blade components. Check out styled-props documentation for more details."
         >
@@ -202,6 +203,24 @@ export const WithId = (): React.ReactElement => {
           that we want to scroll to.
         </Text>
       </Box>
+    </Box>
+  );
+};
+
+export const Polygon = (): React.ReactElement => {
+  return (
+    <Box
+      backgroundColor="brand.primary.500"
+      padding="spacing.3"
+      margin="spacing.3"
+      height="300px"
+      clipPath="ellipse(130px 140px at 10% 20%)"
+      transformOrigin="top left"
+      transform="rotate(10deg) translate(100px, 20%)"
+    >
+      <Text as="span" weight="bold" contrast="high">
+        Custom Polygon
+      </Text>
     </Box>
   );
 };

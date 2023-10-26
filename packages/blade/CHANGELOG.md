@@ -1,5 +1,64 @@
 # @razorpay/blade
 
+## 10.15.2
+
+### Patch Changes
+
+- 360abe73: fix(Autocomplete): enhance input handling for controlled scenarios
+- 69098f16: fix(checkbox): fixed alignment
+- 71ea0ac5: fix(Dropdown): enhance tag selection handling
+- 44153ba4: feat(Typography): accept `brand.secondary.500` as a valid `color` prop value
+- 8fdef8a7: docs: improve documentation aesthetics
+- 277ba6fa: fix(AutoComplete, SelectInput): disable tags in input when `isDisabled` is set to true
+- 08c161b6: fix(ActionListItem): checkbox spacing
+
+## 10.15.1
+
+### Patch Changes
+
+- f9d16dc4: fix(Alert): correct color prop behavior
+
+## 10.15.0
+
+### Minor Changes
+
+- 87c5a6ee: feat(Box): add `transform`, `transformOrigin`, `clipPath`, `opacity`, & `visibility` props
+
+### Patch Changes
+
+- 76d80dc2: fix(Input): ensure correct value passing for trailingFooterSlot & trailingHeaderSlot
+
+## 10.14.7
+
+### Patch Changes
+
+- 59f0b92c: fix: carousel indicator sync bug
+
+## 10.14.6
+
+### Patch Changes
+
+- 7738f70b: fix(Tooltip): prevent overriding the `aria-label` attribute
+- f38f7c0a: fix: react native crash with reanimated
+
+## 10.14.5
+
+### Patch Changes
+
+- 47b8149d: feat(ListItemText): make span as default tag for ListItemText
+
+## 10.14.4
+
+### Patch Changes
+
+- 87f75b03: feat: support `brand*` colors on Icon and borderColor styled prop
+
+## 10.14.3
+
+### Patch Changes
+
+- 4d6e6aeb: fix(AutoComplete): hide ActionListSection when items are filtered out
+
 ## 10.14.2
 
 ### Patch Changes

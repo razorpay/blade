@@ -14,6 +14,7 @@ export type InputWrapperRef = React.MutableRefObject<ContainerElementType | null
 
 export type BaseInputTagSlotProps = {
   tags?: BaseInputProps['tags'];
+  isDisabled?: BaseInputProps['isDisabled'];
   renderAs?: BaseInputProps['as'];
   showAllTags: BaseInputProps['showAllTags'];
   setFocusOnInput: () => void;

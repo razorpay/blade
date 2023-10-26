@@ -4,7 +4,7 @@ import { Code } from '~components/Typography';
 import { ScrollLink } from '~utils/storybook/ScrollLink';
 
 type PropsTableType<T> = Record<
-  keyof Omit<T, 'testID' | '_hideDivider' | '_index'>,
+  keyof Omit<T, 'testID' | '_hideDivider' | '_sectionChildValues' | '_index'>,
   string | React.ReactElement | { note: string; type: string | React.ReactElement }
 >;
 const actionListPropsTables: {

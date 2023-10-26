@@ -5,6 +5,7 @@ import type { TagsGroupProps } from './types';
 const getTagsGroup = ({
   tags,
   activeTagIndex,
+  isDisabled,
   onDismiss,
 }: TagsGroupProps): React.ReactElement[] => {
   return tags.map((tagName, tagIndex) => (
@@ -14,6 +15,7 @@ const getTagsGroup = ({
       onDismiss={onDismiss}
       currentTagIndex={tagIndex}
       tagsLength={tags.length}
+      isDisabled={isDisabled}
     >
       {tagName}
     </AnimatedTag>
