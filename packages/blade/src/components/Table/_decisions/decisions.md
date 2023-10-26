@@ -260,14 +260,14 @@ const footerDefinition = [
 ];
 
 const pagination = {
-  showRowCountPicker?: boolean
-  onRowCountPickerChange?: ({ count }) => void
-  navigationType?: 'compact' | 'expanded'
-	label?: string
-	labelPosition?: 'left' | 'right'
-	limit: number
-	offset: number
-	onPaginationChange?: ({ offset }) => void
+  showRowCountPicker?: boolean,
+  onRowCountPickerChange?: ({ count }) => void,
+  navigationType?: 'compact' | 'expanded',
+  label?: string,
+  labelPosition?: 'left' | 'right',
+  limit: number,
+  offset: number,
+  onPaginationChange?: ({ offset }) => void,
 };
 ```
 
