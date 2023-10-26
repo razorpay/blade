@@ -16,9 +16,10 @@ A table component helps in displaying data in a grid format, through rows and co
       - [Pros](#pros-1)
       - [Cons](#cons-1)
     - [Decision](#decision)
-      - [Only Composable API](#only-composable-api)
-      - [Only Compact API](#only-compact-api)
-      - [Both Composable \& Compact API](#both-composable--compact-api)
+      - [1. Only Composable API](#1-only-composable-api)
+      - [2. Only Compact API](#2-only-compact-api)
+      - [3. Both Composable \& Compact API](#3-both-composable--compact-api)
+      - [Current API Usage Across Razorpay Projects](#current-api-usage-across-razorpay-projects)
       - [Conclusion](#conclusion)
   - [Final API](#final-api)
 - [Table Library Evaluation](#table-library-evaluation)
@@ -305,26 +306,35 @@ const pagination = {
 - Internally, we would have to use a composable API to create the compact API anyway since the library we have chosen has a composable API
 
 #### Decision
-##### Only Composable API
+##### 1. Only Composable API
 - We could expose only the Composable API to the consumers 
 - This would take the least amount of implementation time and effort
 - Strong reasons to go with this approach would be the composability and tree-shaking benefits
 - Strong reasons to not go with this approach would be the verbosity and the fact that it is not the most popular approach within Table libraries ecosystem
 
-##### Only Compact API
+##### 2. Only Compact API
 - We could expose only the Compact API to the consumers
 - This would take the relatively more time and effort since internally we will have to build individual components and stitch them together to create the compact API
 - Internally we might not need to put in heavy efforts to ensure composable API is very well structured since we will not be exposing it to the consumers. We would use the composable API internally only to derive the final outcome of a compact API.
 - Strong reasons to go with this approach would be the popularity of the compact API within the Table libraries ecosystem
 - Strong reasons to not go with this approach would be the lack of composability and tree-shaking benefits
 
-##### Both Composable & Compact API
+##### 3. Both Composable & Compact API
 - We could expose both the Composable & Compact API to the consumers
 - This would take the most amount of implementation time and effort since we will have to build both the APIs
 - This will add a lot of complexity to the library and will make it harder to maintain. Any changes to the Table component, we will have to ensure both APIs are updated accordingly and always maintain parity
 - Swapping out the table library in the future would be challenging since any library we choose we will have to ensure that its feasible to build both kinds of APIs
 - Strong reasons to go with this approach would be to give our consumers complete flexibility to choose the API that they are most comfortable with
 - Strong reasons to not go with this approach would be the complexity and maintainability issues as well as education efforts required to educate the consumers about both the APIs
+
+##### Current API Usage Across Razorpay Projects
+> This is an approximate usage count. We identified this by searching through the codebase. Actual numbers may vary slightly.
+ 
+| Project         | Composable API Table Instances | Compact API Table Instances |
+| --------------- | ------------------------------ | --------------------------- |
+| PG Dashboard    | 101                            | 81                          |
+| Admin Dashboard | 19                             | 196                         |
+| X Dashboard     | 6                              | 11                          |
 
 ##### Conclusion
 [To be concluded]
