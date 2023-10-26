@@ -23,6 +23,18 @@ describe('<Alert />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
+  it('should render positive color and full width', () => {
+    const { toJSON } = renderWithTheme(
+      <Alert
+        description="Currently you can only accept payments in international currencies using PayPal."
+        color="positive"
+        isFullWidth
+      />,
+    );
+
+    expect(toJSON()).toMatchSnapshot();
+  });
+
   it('should handle onClick on actions', () => {
     const onClickPrimary = jest.fn();
     const onClickSecondary = jest.fn();

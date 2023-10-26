@@ -15,6 +15,7 @@ const Page = (): ReactElement => {
   return (
     <StoryPageWrapper
       componentName="PasswordInput"
+      apiDecisionLink="https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Input/PasswordInput/_decisions/decisions.md"
       componentDescription="PasswordInput is an input field for entering passwords. The input is masked by default. On mobile devices the last typed letter is shown for a brief moment. The masking can be toggled using an optional reveal button."
       figmaURL={{
         paymentTheme:

@@ -20,7 +20,7 @@ const useTabsContext = (): NonNullable<TabsContextProps> => {
   if (!context) {
     throwBladeError({
       moduleName: 'Tabs',
-      message: 'Tabs compound components cannot be rendered outside the Tabs component',
+      message: 'useTabsContext must be used within Tabs',
     });
   }
 

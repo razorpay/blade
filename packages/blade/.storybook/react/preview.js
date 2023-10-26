@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { theme, toggleHiddenStoryStyle } from './manager';
 import { global } from '@storybook/design-system';
-import { BladeProvider } from '../../src/components/BladeProvider';
+import { BladeProvider } from '../../src/components';
 import { paymentTheme, bankingTheme } from '../../src/tokens/theme';
 import { createTheme } from '../../src/tokens/theme/createTheme';
 import ErrorBoundary from './ErrorBoundary';
@@ -19,6 +19,12 @@ export const parameters = {
   previewTabs: {
     'storybook/docs/panel': { index: 0 },
     canvas: { title: 'Stories', index: 1 },
+  },
+  backgrounds: {
+    disable: true,
+    grid: {
+      disable: true,
+    },
   },
   // on development setting it to undefined so that on 'live reload' it won't switch
   // to docs panel while developing the component
@@ -91,12 +97,11 @@ export const parameters = {
       `,
       li: styled.li`
         :not(:first-child) {
-          padding-top: 16px;
+          padding-top: 12px;
         }
         font-size: 14px;
 
         & :not(pre) > code {
-          line-height: 1;
           margin: 0 2px;
           padding: 3px 5px;
           white-space: nowrap;
