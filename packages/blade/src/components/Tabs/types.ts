@@ -8,7 +8,7 @@ type TabsProps = {
    */
   children: React.ReactNode;
   /**
-   * The value of the selected tab, If set the component will be controlled.
+   * The value of the tab panel same as the corresponding TabItem's value to match the selected TabItem.
    */
   value?: string;
   /**
@@ -65,12 +65,12 @@ type TabItemProps = {
   value: string;
   /**
    * Leading element of the tab item.
-   * Can be used to render an icon.
+   * Can be used to render an Icon.
    */
   leading?: IconComponent;
   /**
    * Trailing element of the tab item.
-   * Can be used to render an badge/counter.
+   * Can be used to render a Badge/Counter component.
    */
   trailing?: React.ReactNode;
   /**

@@ -55,10 +55,15 @@ const useSandpackSetup = ({
   
             import { BladeProvider, Box, Theme } from "@razorpay/blade/components";
             import { ${themeTokenName}, createTheme } from "@razorpay/blade/tokens";
-            import "@fontsource/lato/400.css";
-            import "@fontsource/lato/700.css";
             
             import App from "./App";
+
+            // Only way to load font correctly in sandbpack. Use @fontsource/lato in your actual projects
+            document.head.innerHTML += \`
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+            \`
   
             const GlobalStyles = createGlobalStyle\`
               * { 
@@ -67,6 +72,7 @@ const useSandpackSetup = ({
               body {
                 margin: 0;
                 padding: 0;
+                font-family: 'Lato', sans-serif;
               }
             \`;
             
@@ -111,7 +117,6 @@ const useSandpackSetup = ({
         'react-dom': packageJson.peerDependencies['react-dom'],
         'react-scripts': '4.0.3',
         '@razorpay/blade': bladeVersion,
-        '@fontsource/lato': '4.5.10',
         'styled-components': packageJson.peerDependencies['styled-components'],
       },
     },

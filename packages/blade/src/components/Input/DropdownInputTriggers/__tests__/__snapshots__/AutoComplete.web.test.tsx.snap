@@ -1146,8 +1146,8 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
             >
               <label
                 data-blade-component="form-label"
-                for="dropdown-1003-trigger-1004-input-1005"
-                id="dropdown-1003-label"
+                for="dropdown-123"
+                id="dropdown-123-label"
                 style="width: auto; flex-shrink: 0; margin-right: 16px;"
               >
                 <div
@@ -1190,8 +1190,8 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                   data-blade-component="base-box"
                 >
                   <button
-                    aria-activedescendant="dropdown-1003-0"
-                    aria-controls="dropdown-1003-actionlist"
+                    aria-activedescendant="dropdown-123-0"
+                    aria-controls="dropdown-123-actionlist"
                     aria-describedby=""
                     aria-disabled="false"
                     aria-expanded="true"
@@ -1201,7 +1201,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                     autocomplete="off"
                     class="c13"
                     data-blade-component="styled-base-input"
-                    id="dropdown-1003-trigger-1004-input-1005"
+                    id="dropdown-123"
                     placeholder="Select Option"
                     role="combobox"
                     type="button"
@@ -1369,6 +1369,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                   <div
                     class=""
                     data-blade-component="autocomplete"
+                    data-testid="fruits-autocomplete"
                   >
                     <div
                       class="c3"
@@ -1380,8 +1381,8 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                       >
                         <label
                           data-blade-component="form-label"
-                          for="dropdown-1003-trigger-1011-input-1012"
-                          id="dropdown-1003-label"
+                          for="dropdown-123"
+                          id="dropdown-123-label"
                           style="width: auto; flex-shrink: 0; margin-right: 16px;"
                         >
                           <div
@@ -1424,8 +1425,8 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                             data-blade-component="base-box"
                           >
                             <input
-                              aria-activedescendant="dropdown-1003-0"
-                              aria-controls="dropdown-1003-actionlist"
+                              aria-activedescendant="dropdown-123-0"
+                              aria-controls="dropdown-123-actionlist"
                               aria-describedby=""
                               aria-disabled="false"
                               aria-expanded="true"
@@ -1436,7 +1437,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                               autofocus=""
                               class="c38"
                               data-blade-component="styled-base-input"
-                              id="dropdown-1003-trigger-1011-input-1012"
+                              id="dropdown-123"
                               placeholder="Select Option"
                               role="combobox"
                               type="text"
@@ -1489,7 +1490,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                   data-blade-component="action-list-item"
                   data-index="0"
                   data-value="apple"
-                  id="dropdown-1003-0"
+                  id="dropdown-123-0"
                   role="option"
                   tabindex="-1"
                   type="button"
@@ -1529,7 +1530,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                   data-blade-component="action-list-item"
                   data-index="1"
                   data-value="mango"
-                  id="dropdown-1003-1"
+                  id="dropdown-123-1"
                   role="option"
                   tabindex="-1"
                   type="button"
@@ -2390,8 +2391,8 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
             >
               <label
                 data-blade-component="form-label"
-                for="dropdown-7-trigger-1-input-2"
-                id="dropdown-7-label"
+                for="dropdown-123"
+                id="dropdown-123-label"
                 style="width: auto; flex-shrink: 0; margin-right: 16px;"
               >
                 <div
@@ -2434,8 +2435,8 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
                   data-blade-component="base-box"
                 >
                   <input
-                    aria-activedescendant="dropdown-7-0"
-                    aria-controls="dropdown-7-actionlist"
+                    aria-activedescendant="dropdown-123-0"
+                    aria-controls="dropdown-123-actionlist"
                     aria-describedby=""
                     aria-disabled="false"
                     aria-expanded="true"
@@ -2445,7 +2446,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
                     autocomplete="off"
                     class="c13"
                     data-blade-component="styled-base-input"
-                    id="dropdown-7-trigger-1-input-2"
+                    id="dropdown-123"
                     placeholder="Select Option"
                     role="combobox"
                     type="text"
@@ -2577,10 +2578,10 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
             </div>
           </div>
           <div
-            aria-labelledby="dropdown-7-label"
+            aria-labelledby="dropdown-123-label"
             class=""
             data-blade-component="action-list"
-            id="dropdown-7-actionlist"
+            id="dropdown-123-actionlist"
             role="dialog"
           >
             <div
@@ -2595,7 +2596,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
                 data-blade-component="action-list-item"
                 data-index="0"
                 data-value="apple"
-                id="dropdown-7-0"
+                id="dropdown-123-0"
                 role="option"
                 tabindex="-1"
                 type="button"
@@ -2635,7 +2636,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
                 data-blade-component="action-list-item"
                 data-index="1"
                 data-value="mango"
-                id="dropdown-7-1"
+                id="dropdown-123-1"
                 role="option"
                 tabindex="-1"
                 type="button"

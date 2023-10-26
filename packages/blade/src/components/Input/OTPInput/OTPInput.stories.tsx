@@ -151,6 +151,7 @@ export default {
       page: () => (
         <StoryPageWrapper
           componentName="OTPInput"
+          apiDecisionLink="https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Input/OTPInput/_decisions/_decisions.md"
           componentDescription="A one-time password (OTP), also known as a one-time PIN, one-time authorization code (OTAC) or dynamic password, is a password that is valid for only one login session or a transaction. These are a group of inputs and can be either 4 or 6 characters long."
           figmaURL={{
             paymentTheme:
