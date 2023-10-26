@@ -24,7 +24,7 @@ Dropdown Menu displays a list of choices on temporary surfaces. They allow users
 
 - [Dropdown](#dropdown)
   - [SelectInput](#selectinput)
-  - [DropdownButton & DropdownLink](#dropdownbutton-&-dropdownlink)
+  - [DropdownButton & DropdownLink](#dropdownbutton--dropdownlink)
   - [DropdownOverlay](#dropdownoverlay)
 - [ActionList](#actionlist)
   - [ActionList Parent Component](#actionlist-parent-component)
@@ -98,10 +98,10 @@ Reference: https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attri
 
 ```diff
 <Dropdown>
-+	<DropdownButton /> // or <DropdownLink />
-	<DropdownOverlay>
-		<ActionList />
-	</DropdownOverlay>
++ <DropdownButton /> // or <DropdownLink />
+  <DropdownOverlay>
+    <ActionList />
+  </DropdownOverlay>
 </Dropdown>
 ```
 
