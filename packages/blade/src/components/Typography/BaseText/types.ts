@@ -62,6 +62,7 @@ export type BaseTextProps = {
   as?: As;
   textAlign?: 'center' | 'justify' | 'left' | 'right';
   truncateAfterLines?: number;
+  wordBreak?: 'normal' | 'break-all' | 'keep-all' | 'break-word';
   className?: string;
   style?: React.CSSProperties;
   children: React.ReactNode;
@@ -87,6 +88,7 @@ export type StyledBaseTextProps = Pick<
   | 'textAlign'
   | 'numberOfLines'
   | 'truncateAfterLines'
+  | 'wordBreak'
 > & { theme: Theme };
 
 export type BaseTextSizes = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';

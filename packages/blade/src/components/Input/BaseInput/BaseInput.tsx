@@ -281,6 +281,11 @@ type BaseInputCommonProps = FormInputLabelProps &
      * State setter for active tag index
      */
     setActiveTagIndex?: (activeTagIndex: number) => void;
+
+    /**
+     * word break label truncate
+     */
+    wordBreak?: 'normal' | 'break-all' | 'keep-all' | 'break-word';
   } & TestID &
   Platform.Select<{
     native: {
@@ -737,6 +742,7 @@ export const BaseInput = React.forwardRef<BladeElementRef, BaseInputProps>(
       testID,
       isDropdownTrigger,
       isLabelInsideInput,
+      wordBreak,
       ...styledProps
     },
     ref,
@@ -844,6 +850,7 @@ export const BaseInput = React.forwardRef<BladeElementRef, BaseInputProps>(
                 as="label"
                 necessityIndicator={necessityIndicator}
                 position={labelPosition}
+                wordBreak={wordBreak}
                 id={labelId}
                 htmlFor={inputId}
               >

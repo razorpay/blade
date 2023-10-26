@@ -19,6 +19,7 @@ type CommonProps = {
   children: string | undefined;
   id?: string;
   contrast?: ColorContrastTypes;
+  wordBreak?: 'normal' | 'break-all' | 'keep-all' | 'break-word';
 };
 
 type LabelProps = CommonProps & {
@@ -57,6 +58,7 @@ const FormLabel = ({
   id,
   htmlFor,
   contrast = 'low',
+  wordBreak,
 }: FormLabelProps): React.ReactElement => {
   const { theme } = useTheme();
   const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
@@ -112,6 +114,7 @@ const FormLabel = ({
         size={isLabelLeftPositioned ? 'medium' : 'small'}
         truncateAfterLines={2}
         weight="bold"
+        wordBreak={wordBreak}
       >
         {children}
       </Text>

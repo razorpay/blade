@@ -20,6 +20,7 @@ const StyledBaseText = styled.div.withConfig({
     fontStyle,
     textDecorationLine,
     numberOfLines,
+    wordBreak,
     lineHeight,
     textAlign,
     ...props
@@ -34,6 +35,7 @@ const StyledBaseText = styled.div.withConfig({
         fontStyle,
         textDecorationLine,
         numberOfLines,
+        wordBreak,
         lineHeight,
         textAlign,
         theme: props.theme,
@@ -56,6 +58,7 @@ export const BaseText = ({
   textAlign,
   children,
   truncateAfterLines,
+  wordBreak,
   className,
   style,
   accessibilityProps = {},
@@ -76,6 +79,7 @@ export const BaseText = ({
       as={as}
       textAlign={textAlign}
       numberOfLines={truncateAfterLines}
+      wordBreak={wordBreak}
       className={className}
       style={style}
       id={id}

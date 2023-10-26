@@ -28,6 +28,7 @@ type TextCommonProps = {
   color?: BaseTextProps['color'];
   textAlign?: BaseTextProps['textAlign'];
   textDecorationLine?: BaseTextProps['textDecorationLine'];
+  wordBreak?: 'normal' | 'break-all' | 'keep-all' | 'break-word';
 } & TestID &
   StyledPropsBlade;
 
@@ -137,6 +138,7 @@ const _Text = <T extends { variant: TextVariant }>({
   type = 'normal',
   contrast = 'low',
   truncateAfterLines,
+  wordBreak,
   children,
   color,
   testID,
@@ -147,6 +149,7 @@ const _Text = <T extends { variant: TextVariant }>({
   const props: Omit<BaseTextProps, 'children'> = {
     as,
     truncateAfterLines,
+    wordBreak,
     ...getTextProps({
       variant,
       type,

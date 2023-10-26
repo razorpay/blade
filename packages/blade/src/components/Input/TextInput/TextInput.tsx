@@ -48,6 +48,7 @@ type TextInputCommonProps = Pick<
   | 'onSubmit'
   | 'autoCapitalize'
   | 'testID'
+  | 'wordBreak'
 > & {
   /**
    * Decides whether to render a clear icon button
@@ -244,6 +245,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     autoCompleteSuggestionType,
     autoCapitalize,
     testID,
+    wordBreak,
     ...styledProps
   },
   ref,
@@ -304,6 +306,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       value={value}
       name={name}
       maxCharacters={maxCharacters}
+      wordBreak={wordBreak}
       onChange={({ name, value }) => {
         if (showClearButton && value?.length) {
           // show the clear button when the user starts typing in
