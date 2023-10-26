@@ -28,7 +28,7 @@ type TextCommonProps = {
   color?: BaseTextProps['color'];
   textAlign?: BaseTextProps['textAlign'];
   textDecorationLine?: BaseTextProps['textDecorationLine'];
-  wordBreak?: 'normal' | 'break-all' | 'keep-all' | 'break-word';
+  wordBreak?: BaseTextProps['wordBreak'];
 } & TestID &
   StyledPropsBlade;
 
