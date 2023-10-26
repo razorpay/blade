@@ -7,7 +7,7 @@ type ComponentStatuses =
   | 'to-be-decided'
   | `planned-Q${1 | 2 | 3 | 4}-${'dev' | 'design'}`;
 
-type ComponentStatusData = {
+type ComponentStatusDataType = {
   name: string;
   status: ComponentStatuses;
   description: string;
@@ -15,7 +15,7 @@ type ComponentStatusData = {
   storybookLink?: string;
 }[];
 
-const componentData: ComponentStatusData = [
+const componentData: ComponentStatusDataType = [
   {
     name: 'ActionList',
     status: 'released',
@@ -400,5 +400,5 @@ const componentData: ComponentStatusData = [
   },
 ];
 
-export type { ComponentStatuses, ComponentStatusData };
+export type { ComponentStatuses, ComponentStatusDataType };
 export { componentData };

@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { LinkToStorybook } from './LinkToStorybook';
 
-import type { ComponentStatuses } from './componentData';
-import { componentData } from './componentData';
+import type { ComponentStatuses } from './componentStatusData';
+import { componentData } from './componentStatusData';
 import type { IconComponent } from '~components/Icons';
 import {
   StampIcon,

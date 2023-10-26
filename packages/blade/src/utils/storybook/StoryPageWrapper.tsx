@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import useMakeFigmaURL from './useMakeFigmaURL';
 import FigmaEmbed from './FigmaEmbed';
 import { SandboxHighlighter } from './Sandbox';
-import { componentData } from './componentData';
+import { componentData } from './componentStatusData';
 import BaseBox from '~components/Box/BaseBox';
 import { Alert } from '~components/Alert';
 import { BladeProvider } from '~components/BladeProvider';
