@@ -48,8 +48,6 @@ const getBaseTextStyles = ({
     }
   }
 
-  console.log('wordBreak', wordBreak);
-
   return {
     color: textColor,
     fontFamily: themeFontFamily,
