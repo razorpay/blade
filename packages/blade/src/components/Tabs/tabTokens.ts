@@ -1,14 +1,14 @@
 import type { TabsProps } from './types';
 import type { DotNotationSpacingStringToken } from '~utils/types';
+import type { DeviceType } from '~utils';
 
-type Devices = 'desktop' | 'mobile';
 type TabSizes = NonNullable<TabsProps['size']>;
 type TabVariants = Exclude<NonNullable<TabsProps['variant']>, 'borderless'>;
 type TabOrientation = NonNullable<TabsProps['orientation']>;
 
 type TabItemPadding = Record<
   TabVariants,
-  Record<TabOrientation, Record<Devices, Record<TabSizes, DotNotationSpacingStringToken>>>
+  Record<TabOrientation, Record<DeviceType, Record<TabSizes, DotNotationSpacingStringToken>>>
 >;
 
 const paddingY: TabItemPadding = {
