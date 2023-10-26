@@ -6,8 +6,9 @@ import { TabIndicator } from './TabIndicator';
 import BaseBox from '~components/Box/BaseBox';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { Divider } from '~components/Divider';
-import type { BoxProps } from '~components/Box';
 import { Box } from '~components/Box';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
+import { getStyledProps } from '~components/Box/styledProps';
 
 const ScrollableArea = styled(BaseBox)(() => {
   return {
@@ -18,7 +19,7 @@ const ScrollableArea = styled(BaseBox)(() => {
 const TabList = ({
   children,
   ...props
-}: { children: React.ReactNode } & BoxProps): React.ReactElement => {
+}: { children: React.ReactNode } & StyledPropsBlade): React.ReactElement => {
   const { setSelectedValue, selectedValue, variant, isVertical } = useTabsContext();
   const tabListContainerRef = React.useRef<HTMLDivElement>(null);
   const isBordered = variant === 'bordered';
@@ -35,7 +36,12 @@ const TabList = ({
   }, [children, selectedValue, setSelectedValue]);
 
   return (
-    <Box {...props} display={isVertical ? 'flex' : 'block'} flexShrink={0} overflow="hidden">
+    <Box
+      {...getStyledProps(props)}
+      display={isVertical ? 'flex' : 'block'}
+      flexShrink={0}
+      overflow="hidden"
+    >
       <ScrollableArea
         position="relative"
         whiteSpace="nowrap"

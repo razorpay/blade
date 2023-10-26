@@ -659,7 +659,7 @@ const ProductUseCase1Template: ComponentStory<
       <Card marginTop="spacing.6" elevation="none" padding="spacing.0">
         <CardBody>
           <Tabs variant="borderless" defaultValue="subscriptions">
-            <TabList paddingX="spacing.6">
+            <TabList marginX="spacing.6">
               <TabItem value="subscriptions" leading={SubscriptionsIcon}>
                 Subscription
               </TabItem>
@@ -845,7 +845,7 @@ const ReactRouterExample = () => {
       <Card marginTop="spacing.6" elevation="none" padding="spacing.0">
         <CardBody>
           <Tabs variant="borderless" defaultValue="subscriptions">
-            <TabList paddingX="spacing.6">
+            <TabList marginX="spacing.6">
               <TabItem
                 value="subscriptions"
                 leading={SubscriptionsIcon}
