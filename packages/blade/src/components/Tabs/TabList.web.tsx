@@ -85,7 +85,7 @@ const TabList = ({
                       }
                     : {
                         padding: 'spacing.0',
-                        gap: isVertical ? 'spacing.1' : { base: 'spacing.7', m: 'spacing.8' },
+                        gap: isVertical ? 'spacing.0' : { base: 'spacing.7', m: 'spacing.8' },
                       })}
                 >
                   {variant === 'filled' && !isVertical
