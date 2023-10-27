@@ -15,6 +15,7 @@ A table component helps in displaying data in a grid format, through rows and co
     - [2. Compact API](#2-compact-api)
       - [Pros](#pros-1)
       - [Cons](#cons-1)
+    - [Comparison](#comparison)
     - [Decision](#decision)
       - [1. Only Composable API](#1-only-composable-api)
       - [2. Only Compact API](#2-only-compact-api)
@@ -30,7 +31,7 @@ A table component helps in displaying data in a grid format, through rows and co
     - [Heavy sized library - AG Grid](#heavy-sized-library---ag-grid)
     - [Medium sized library - Tanstack's React Table](#medium-sized-library---tanstacks-react-table)
     - [Small sized library - React Table Library](#small-sized-library---react-table-library)
-    - [Comparison](#comparison)
+    - [Comparison](#comparison-1)
 
 
 ## Features
@@ -307,6 +308,18 @@ const pagination = {
 - It is harder to extend and add new feature to the table component since it is a single component
 - We would have to import the entire table component even if we are using only a few features of the table resulting in a higher bundle size for the consumer
 - Internally, we would have to use a composable API to create the compact API anyway since the library we have chosen has a composable API
+
+#### Comparison
+| Aspect                  | Composable API                                                                                                                                     | Compact API                                                                                    |
+| ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| **API Design**          | Multipe components composed together                                                                                                               | Single component that takes all data                                                           |
+| **Ease of Use**         | Resembles native HTML table but requires more efforts to write                                                                                     | More concise and requires less effort                                                          |
+| **Learning Curve**      | Requires developers to learn about all available Table components & features to compose their own                                                  | Easier to understand what is feasible since its a single component along with TypeScript hints |
+| **Extensibility**       | Easier to extend and add new features on individual components                                                                                     | Harder to extend and add new features without making the prop list too large                   |
+| **Library Familiarity** | Different than most of the popular table libraries                                                                                                 | Similar to most of the popular table libraries                                                 |
+| **Bundle Size**         | Can leverage tree-shaking for smaller bundles (Only components like Pagination & Footer could be omitted, rest of it might still always be needed) | Bundle size would be unaffected regardless of features used within the table by consumer       |
+| **Future Library Swap** | May require reworking with different library                                                                                                       | Easier to swap out the library in the future                                                   |
+
 
 #### Decision
 ##### 1. Only Composable API
