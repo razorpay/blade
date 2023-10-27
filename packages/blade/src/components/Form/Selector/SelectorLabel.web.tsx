@@ -30,10 +30,7 @@ const SelectorLabel = ({
     <StyledSelectorLabel
       onTouchStart={onTouchStart}
       onTouchEnd={onTouchEnd}
-      onMouseDown={(e) => {
-        e.preventDefault();
-        onMouseDown?.(e);
-      }}
+      onMouseDown={onMouseDown}
       onMouseUp={onMouseUp}
       onMouseOut={onMouseOut}
       onKeyDown={onKeyDown}

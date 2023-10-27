@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 10.15.3
+
+### Patch Changes
+
+- f1ab23c8: fix(blade): remove preventDefault in selector label
+
 ## 10.15.2
 
 ### Patch Changes
