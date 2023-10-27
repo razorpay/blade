@@ -90,9 +90,6 @@ const colors: ColorsWithModes = {
       },
       popup: { background: globalColors.neutral.blueGrayLight[100] },
     },
-    overlay: {
-      background: globalColors.neutral.ashGrayLight.a1100,
-    },
     brand: {
       primary: {
         300: globalColors.chromatic.azure.a50,
@@ -1417,9 +1414,6 @@ const colors: ColorsWithModes = {
         },
       },
       popup: { background: globalColors.neutral.blueGrayDark[100] },
-    },
-    overlay: {
-      background: globalColors.neutral.ashGrayDark.a1100,
     },
     brand: {
       primary: {
