@@ -20,6 +20,7 @@ A table component helps in displaying data in a grid format, through rows and co
       - [2. Only Compact API](#2-only-compact-api)
       - [3. Both Composable \& Compact API](#3-both-composable--compact-api)
       - [Current API Usage Across Razorpay Projects](#current-api-usage-across-razorpay-projects)
+      - [Blade Team's Recommendation](#blade-teams-recommendation)
       - [Conclusion](#conclusion)
   - [Final API](#final-api)
 - [Table Library Evaluation](#table-library-evaluation)
@@ -335,6 +336,20 @@ const pagination = {
 | PG Dashboard    | 101                            | 81                          |
 | Admin Dashboard | 19                             | 196                         |
 | X Dashboard     | 6                              | 11                          |
+// 126
+// 288
+// 126+288 = 414
+// 126/414 = 30%
+// 288/414 = 70%
+
+##### Blade Team's Recommendation
+**We recommend** going ahead with the **Compact API** since it gives us the following advantages:
+
+- It is the most popular approach within the Table libraries ecosystem which makes it easier for us to swap out the table library in the future
+- It is easier to consume since it is more concise and requires less effort to create a table
+- TypeScript would be able to help us with type checking the API better since it is a single component
+- Learning curve is lesser since its a single component and not a set of components that need to be composed together
+- As per our findings, 70% of the tables at Razorpay are built using the Compact API which would make it relatively easier for us to migrate them to Blade's Table component as well
 
 ##### Conclusion
 [To be concluded]
