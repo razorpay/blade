@@ -1929,7 +1929,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
 }
 
 .c24 {
-  background-color: hsla(0,0%,100%,1);
+  background-color: hsla(220,30%,96%,1);
   border-width: 1px;
   border-color: hsla(216,15%,54%,0.18);
   border-style: solid;
