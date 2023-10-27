@@ -563,38 +563,44 @@ const TabsWithTooltipTemplate: ComponentStory<(props: StoryControlProps) => Reac
       <Text marginBottom="spacing.5" type="subdued">
         (Hover over the Settings tab to see it in action)
       </Text>
-      <Tabs key={invalidationKey}>
-        <TabList>
-          <TabItem value="subscriptions">Subscription</TabItem>
-          <TabItem
-            value="plans"
-            isDisabled={args.tabItemIsDisabled}
-            leading={args.tabItemLeading}
-            trailing={args.tabItemTrailing}
-          >
-            {args.tabItemChildren}
-          </TabItem>
-          <Tooltip
-            placement="right"
-            content="Change payment method settings and enable different payment methods."
-            title="Payment Settings"
-          >
-            <TooltipInteractiveWrapper>
-              <TabItem value="settings">Settings</TabItem>
-            </TooltipInteractiveWrapper>
-          </Tooltip>
-        </TabList>
+      <Card elevation="none" padding="spacing.0">
+        <CardBody>
+          <Box marginX="spacing.6" marginBottom="spacing.6" marginTop="spacing.2">
+            <Tabs key={invalidationKey}>
+              <TabList>
+                <TabItem value="subscriptions">Subscription</TabItem>
+                <TabItem
+                  value="plans"
+                  isDisabled={args.tabItemIsDisabled}
+                  leading={args.tabItemLeading}
+                  trailing={args.tabItemTrailing}
+                >
+                  {args.tabItemChildren}
+                </TabItem>
+                <Tooltip
+                  placement="right"
+                  content="Change payment method settings and enable different payment methods."
+                  title="Payment Settings"
+                >
+                  <TooltipInteractiveWrapper>
+                    <TabItem value="settings">Settings</TabItem>
+                  </TooltipInteractiveWrapper>
+                </Tooltip>
+              </TabList>
 
-        <TabPanel value="subscriptions">
-          <SubscriptionPanel isVertical={isVertical} />
-        </TabPanel>
-        <TabPanel value="plans">
-          <PlansPanel isVertical={isVertical} />
-        </TabPanel>
-        <TabPanel value="settings">
-          <SettingsPanel isVertical={isVertical} />
-        </TabPanel>
-      </Tabs>
+              <TabPanel value="subscriptions">
+                <SubscriptionPanel isVertical={isVertical} />
+              </TabPanel>
+              <TabPanel value="plans">
+                <PlansPanel isVertical={isVertical} />
+              </TabPanel>
+              <TabPanel value="settings">
+                <SettingsPanel isVertical={isVertical} />
+              </TabPanel>
+            </Tabs>
+          </Box>
+        </CardBody>
+      </Card>
     </Box>
   );
 };
