@@ -138,18 +138,20 @@ const onSortChange = ({ headerKey, sortType }) => {
      </TableHeader>
 
     <TableBody>
-      <TableRow onClick={console.log} isDisabled={false}>
-        <TableCell>
-          {tableData.firstName}
-        </TableCell>
-        <TableCell>
-          {tableData.lastName}
-        </TableCell>
-        <TableCell>
-          {tableData.balance}
-          <Badge>Low</Badge>
-        </TableCell>
-      <TableRow>
+      {tableData.map((row) => (
+        <TableRow onClick={console.log} isDisabled={false}>
+          <TableCell>
+            {tableData.firstName}
+          </TableCell>
+          <TableCell>
+            {tableData.lastName}
+          </TableCell>
+          <TableCell>
+            {tableData.balance}
+            <Badge>Low</Badge>
+          </TableCell>
+        <TableRow>
+      )}
     </TableBody>
 
     <TableFooter>
