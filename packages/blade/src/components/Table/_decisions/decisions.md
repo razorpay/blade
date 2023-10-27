@@ -142,13 +142,13 @@ const onSortChange = ({ headerKey, sortType }) => {
       {tableData.map((row) => (
         <TableRow onClick={console.log} isDisabled={false}>
           <TableCell>
-            {tableData.firstName}
+            {row.firstName}
           </TableCell>
           <TableCell>
-            {tableData.lastName}
+            {row.lastName}
           </TableCell>
           <TableCell>
-            {tableData.balance}
+            {row.balance}
             <Badge>Low</Badge>
           </TableCell>
         <TableRow>
