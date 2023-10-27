@@ -437,8 +437,9 @@ const TabsTemplate: ComponentStory<(props: StoryControlProps) => React.ReactElem
   return (
     <Box height={isReactNative() ? '100%' : undefined}>
       <Card elevation="none" padding="spacing.0">
-        <CardBody>
+        <CardBody height="100%">
           <Box
+            height="100%"
             marginX="spacing.6"
             marginBottom="spacing.6"
             marginTop={isFilled || isVertical ? 'spacing.6' : 'spacing.2'}
@@ -504,8 +505,8 @@ const ControlledTabsTemplate: ComponentStory<(props: StoryControlProps) => React
       </Box>
 
       <Card elevation="none" padding="spacing.0">
-        <CardBody>
-          <Box marginX="spacing.6" marginBottom="spacing.6" marginTop="spacing.2">
+        <CardBody height="100%">
+          <Box height="100%" marginX="spacing.6" marginBottom="spacing.6" marginTop="spacing.2">
             <Tabs
               key={invalidationKey}
               value={value}
@@ -665,7 +666,7 @@ const ProductUseCase1Template: ComponentStory<
       </Text>
 
       <Card marginTop="spacing.6" elevation="none" padding="spacing.0">
-        <CardBody>
+        <CardBody height="100%">
           <Tabs variant="borderless" defaultValue="subscriptions">
             <TabList marginX="spacing.6">
               <TabItem value="subscriptions" leading={SubscriptionsIcon}>
@@ -706,6 +707,10 @@ const ProductUseCase2Template: ComponentStory<
 > = () => {
   const isMobile = useIsMobile();
   const [value, setValue] = React.useState('subscriptions');
+
+  if (isReactNative()) {
+    return <Text>Story not supported in ReactNative</Text>;
+  }
 
   let actions: React.ReactElement = <></>;
 
@@ -815,6 +820,10 @@ const ReactRouterExample = () => {
     e.preventDefault();
     history.push(url);
   };
+
+  if (isReactNative()) {
+    return <Text>Story not supported in ReactNative</Text>;
+  }
 
   return (
     <Box height={isReactNative() ? '100%' : undefined}>

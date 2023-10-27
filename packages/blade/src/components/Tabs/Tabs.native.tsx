@@ -176,14 +176,6 @@ const Tabs = ({
           margin: 0,
           minHeight: 0,
         }}
-        contentContainerStyle={
-          isFilled
-            ? {}
-            : {
-                borderBottomColor: theme.colors.surface.border.normal.lowContrast,
-                borderBottomWidth: theme.border.width.thick,
-              }
-        }
         style={{
           ...(isFilled
             ? {
@@ -199,6 +191,10 @@ const Tabs = ({
                 shadowOpacity: 0,
                 shadowColor: 'transparent',
                 backgroundColor: 'transparent',
+                ...(variant !== 'borderless' && {
+                  borderBottomColor: theme.colors.surface.border.normal.lowContrast,
+                  borderBottomWidth: theme.border.width.thin,
+                }),
               }),
         }}
         renderIndicator={TabIndicator}
