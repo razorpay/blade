@@ -51,6 +51,12 @@ module.exports = {
     'react/display-name': 'off',
     'import/no-named-as-default': 'off',
     'import/no-cycle': ['error', { maxDepth: '∞' }],
+    'prettier/prettier': [
+      'error',
+      {
+        endOfLine: 'auto',
+      },
+    ],
   },
   env: {
     browser: true,
