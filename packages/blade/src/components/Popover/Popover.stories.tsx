@@ -158,11 +158,8 @@ const PopoverTemplate: ComponentStory<typeof Popover> = (args) => {
   const LeadingIcon = iconMap[args.titleLeading as string]!;
   return (
     <Center>
-      <Popover
-        {...args}
-        titleLeading={<LeadingIcon color="surface.text.normal.lowContrast" size="medium" />}
-      >
-        <Button>View Settlement</Button>
+      <Popover content="Hello world" placement="bottom">
+        <Button>Hover over me</Button>
       </Popover>
     </Center>
   );
