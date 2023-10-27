@@ -428,8 +428,10 @@ const SettingsPanel = ({ isVertical }: { isVertical: boolean }) => {
 };
 
 const TabsTemplate: ComponentStory<(props: StoryControlProps) => React.ReactElement> = (args) => {
+  const isMobile = useIsMobile();
   const invalidationKey = `${args.isFullWidthTabItem}-${args.orientation}-${args.size}-${args.tabItemIsDisabled}`;
-  const isVertical = args.orientation === 'vertical';
+  const orientation = isMobile ? 'horizontal' : args.orientation;
+  const isVertical = orientation === 'vertical';
   const isFilled = args.variant === 'filled';
 
   return (
@@ -441,7 +443,7 @@ const TabsTemplate: ComponentStory<(props: StoryControlProps) => React.ReactElem
             marginBottom="spacing.6"
             marginTop={isFilled || isVertical ? 'spacing.6' : 'spacing.2'}
           >
-            <Tabs key={invalidationKey} {...args}>
+            <Tabs key={invalidationKey} {...args} orientation={orientation}>
               <TabList>
                 <TabItem value="subscriptions">Subscription</TabItem>
                 <TabItem
