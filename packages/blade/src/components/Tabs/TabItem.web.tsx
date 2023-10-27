@@ -12,6 +12,7 @@ import { castWebType, getMediaQuery, makeBorderSize, makeMotionTime, makeSpace }
 import useInteraction from '~utils/useInteraction';
 import { makeAccessible } from '~utils/makeAccessible';
 import { breakpoints } from '~tokens/global';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
 const StyledTabButton = styled.button<{
   size: TabsProps['size'];
@@ -102,7 +103,7 @@ const StyledTabButton = styled.button<{
 const TabItem = ({
   children,
   value,
-  leading,
+  leading: Leading,
   trailing,
   isDisabled = false,
   href,
@@ -140,7 +141,7 @@ const TabItem = ({
           disabled={isDisabled}
           {...interactionProps}
           onClick={(e: React.MouseEvent) => {
-            setSelectedValue(() => value);
+            setSelectedValue?.(() => value);
             onClick?.(e);
           }}
           {...makeAccessible({
@@ -148,15 +149,18 @@ const TabItem = ({
             selected: isSelected,
             controls: panelId,
           })}
+          {...metaAttribute({ name: MetaConstants.TabItem })}
         >
-          {leading
-            ? React.cloneElement(leading as React.ReactElement, {
-                size: iconSizeMap[size!],
-                color: isSelected
+          {Leading ? (
+            <Leading
+              size={iconSizeMap[size!]}
+              color={
+                isSelected
                   ? `brand.primary.500`
-                  : `surface.action.icon.${currentInteraction}.lowContrast`,
-              })
-            : null}
+                  : `surface.action.icon.${currentInteraction}.lowContrast`
+              }
+            />
+          ) : null}
           <Text
             color={textColor[selectedState][isDisabled ? 'disabled' : currentInteraction]}
             size={size === 'medium' ? 'medium' : 'large'}

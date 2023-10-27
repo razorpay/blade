@@ -4,7 +4,7 @@ import type { DeviceType } from '~utils';
 
 type TabSizes = NonNullable<TabsProps['size']>;
 type TabVariants = Exclude<NonNullable<TabsProps['variant']>, 'borderless'>;
-type TabOrientation = NonNullable<TabsProps['orientation']>;
+type TabOrientation = 'horizontal' | 'vertical';
 
 type TabItemPadding = Record<
   TabVariants,

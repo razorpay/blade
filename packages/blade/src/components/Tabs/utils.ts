@@ -82,4 +82,9 @@ const useTabsItemPropRestriction = (
   return validatedTrailingComponent;
 };
 
-export { useTabsItemPropRestriction, iconSizeMap };
+const componentIds = {
+  TabList: 'TabList',
+  TabPanel: 'TabPanel',
+} as const;
+
+export { useTabsItemPropRestriction, iconSizeMap, componentIds };

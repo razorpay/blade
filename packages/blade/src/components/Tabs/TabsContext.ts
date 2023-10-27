@@ -8,7 +8,7 @@ type TabsContextProps =
       isVertical: boolean;
       baseId: string;
       selectedValue: string;
-      setSelectedValue: ControllableStateSetter<string>;
+      setSelectedValue?: ControllableStateSetter<string>;
     })
   | null;
 
