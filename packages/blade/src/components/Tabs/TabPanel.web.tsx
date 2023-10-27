@@ -4,6 +4,7 @@ import type { TabPanelProps } from './types';
 import { useTabsContext } from './TabsContext';
 import { makeAccessible } from '~utils/makeAccessible';
 import BaseBox from '~components/Box/BaseBox';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
 const TabPanel = ({ children, value }: TabPanelProps): React.ReactElement => {
   const { selectedValue, baseId, isLazy } = useTabsContext();
@@ -18,6 +19,7 @@ const TabPanel = ({ children, value }: TabPanelProps): React.ReactElement => {
           <BaseBox
             id={panelId}
             tabIndex={0}
+            {...metaAttribute({ name: MetaConstants.TabPanel })}
             {...makeAccessible({ role: 'tabpanel', labelledBy: tabItemId })}
           >
             {children}
@@ -32,6 +34,7 @@ const TabPanel = ({ children, value }: TabPanelProps): React.ReactElement => {
       id={panelId}
       tabIndex={0}
       display={isSelected ? 'block' : 'none'}
+      {...metaAttribute({ name: MetaConstants.TabPanel })}
       {...makeAccessible({ role: 'tabpanel', labelledBy: tabItemId, hidden: !isSelected })}
     >
       {children}

@@ -19,6 +19,7 @@ import { useTheme } from '~utils';
 import { useControllableState } from '~utils/useControllable';
 import { useFirstRender } from '~utils/useFirstRender';
 import { Divider } from '~components/Divider';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
 const initialLayout = {
   height: 0,
@@ -137,6 +138,7 @@ const Tabs = ({
           size={size}
           variant={variant}
           isFullWidthTabItem={!isFullWidthTabItem && !isFilled}
+          {...metaAttribute({ name: MetaConstants.TabItem })}
         >
           <Box display="flex" alignItems="center" flexDirection="row" gap="spacing.3">
             {Leading ? (
@@ -168,6 +170,7 @@ const Tabs = ({
     (props) => (
       <TabBar
         {...props}
+        {...metaAttribute({ name: MetaConstants.TabList })}
         gap={0}
         android_ripple={{ borderless: true, color: 'transparent' }}
         scrollEnabled={!isFullWidthTabItem && !isFilled}

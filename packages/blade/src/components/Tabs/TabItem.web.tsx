@@ -12,6 +12,7 @@ import { castWebType, getMediaQuery, makeBorderSize, makeMotionTime, makeSpace }
 import useInteraction from '~utils/useInteraction';
 import { makeAccessible } from '~utils/makeAccessible';
 import { breakpoints } from '~tokens/global';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
 const StyledTabButton = styled.button<{
   size: TabsProps['size'];
@@ -148,6 +149,7 @@ const TabItem = ({
             selected: isSelected,
             controls: panelId,
           })}
+          {...metaAttribute({ name: MetaConstants.TabItem })}
         >
           {Leading ? (
             <Leading

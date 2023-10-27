@@ -9,6 +9,7 @@ import { Divider } from '~components/Divider';
 import { Box } from '~components/Box';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getStyledProps } from '~components/Box/styledProps';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
 const ScrollableArea = styled(BaseBox)(() => {
   return {
@@ -38,6 +39,7 @@ const TabList = ({
   return (
     <Box
       {...getStyledProps(props)}
+      {...metaAttribute({ name: MetaConstants.TabList })}
       display={isVertical ? 'flex' : 'block'}
       flexShrink={0}
       overflow="hidden"
