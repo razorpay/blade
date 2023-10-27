@@ -338,11 +338,7 @@ const pagination = {
 | PG Dashboard    | 101                            | 81                          |
 | Admin Dashboard | 19                             | 196                         |
 | X Dashboard     | 6                              | 11                          |
-// 126
-// 288
-// 126+288 = 414
-// 126/414 = 30%
-// 288/414 = 70%
+
 
 ##### Blade Team's Recommendation
 **We recommend** going ahead with the **Compact API** since it gives us the following advantages:
