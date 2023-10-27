@@ -4,13 +4,16 @@ import styled from 'styled-components';
 import useMakeFigmaURL from './useMakeFigmaURL';
 import FigmaEmbed from './FigmaEmbed';
 import { SandboxHighlighter } from './Sandbox';
+import { componentData } from './componentStatusData';
 import BaseBox from '~components/Box/BaseBox';
 import { Alert } from '~components/Alert';
 import { BladeProvider } from '~components/BladeProvider';
 import { paymentTheme } from '~tokens/theme';
 import { Box } from '~components/Box';
 import { Link } from '~components/Link';
-import { Text } from '~components/Typography';
+import { Title as BladeTitle, Text, Heading } from '~components/Typography';
+import { Badge } from '~components/Badge';
+import { AnnouncementIcon } from '~components/Icons';
 
 type StoryPageWrapperTypes = {
   figmaURL?: {
@@ -80,12 +83,35 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
     }
   }, []);
 
+  const componentMetaInfo = componentData.find(
+    (componentInfo) => componentInfo.name === props.componentName,
+  );
+
   const { showStorybookControls = true, showArgsTable = true } = props;
 
   return (
     <WithGlobalStyles>
-      <Title>{props.componentName}</Title>
-      <Subtitle>{props.componentDescription}</Subtitle>
+      <BladeTitle size="xlarge" marginBottom="spacing.3">
+        {props.componentName}
+      </BladeTitle>
+      <Box marginBottom="spacing.4" paddingLeft="spacing.1">
+        <Heading type="subtle" size="large" weight="regular" as="span">
+          {props.componentDescription}
+        </Heading>
+      </Box>
+      {componentMetaInfo?.releasedIn ? (
+        <Box paddingBottom="spacing.6" paddingLeft="spacing.1">
+          <a
+            href={`https://github.com/razorpay/blade/releases/tag/%40razorpay%2Fblade%40${componentMetaInfo.releasedIn}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Badge color="default" fontWeight="bold" size="large" icon={AnnouncementIcon}>
+              Release: v{componentMetaInfo.releasedIn}
+            </Badge>
+          </a>
+        </Box>
+      ) : null}
       {props.note ? (
         <Alert
           description={props.note}
