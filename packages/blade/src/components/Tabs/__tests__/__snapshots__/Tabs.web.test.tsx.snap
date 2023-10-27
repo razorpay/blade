@@ -47,6 +47,10 @@ exports[`Tabs should render 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -273,11 +277,11 @@ exports[`Tabs should render 1`] = `
   <div>
     <div
       class="c0"
-      data-blade-component="base-box"
+      data-blade-component="tabs"
     >
       <div
         class="c1"
-        data-blade-component="base-box"
+        data-blade-component="box"
       >
         <div
           class="c2 c3"
@@ -297,6 +301,7 @@ exports[`Tabs should render 1`] = `
                 aria-selected="false"
                 class="c6"
                 data-active=""
+                data-blade-component="tab-item"
                 id="tabs-1-payments-tabitem"
                 role="tab"
                 tabindex="0"
@@ -312,6 +317,7 @@ exports[`Tabs should render 1`] = `
                 aria-controls="tabs-1-refunds-tabpanel"
                 aria-selected="true"
                 class="c6"
+                data-blade-component="tab-item"
                 id="tabs-1-refunds-tabitem"
                 role="tab"
                 tabindex="-1"
@@ -327,7 +333,7 @@ exports[`Tabs should render 1`] = `
           </div>
           <div
             class="c9 c10"
-            data-blade-component="base-box"
+            data-blade-component="tab-indicator"
             pointer-events="none"
             style="transition-property: transform, width, background-color; transition-duration: 0ms; transition-timing-function: cubic-bezier(0.3, 0, 0.2, 1); width: 0px; transform: translate(0px, -1.5px);"
           />
@@ -342,7 +348,7 @@ exports[`Tabs should render 1`] = `
         aria-hidden="true"
         aria-labelledby="tabs-1-payments-tabitem"
         class="c12"
-        data-blade-component="base-box"
+        data-blade-component="tab-panel"
         id="tabs-1-payments-tabpanel"
         role="tabpanel"
         tabindex="0"
@@ -358,7 +364,7 @@ exports[`Tabs should render 1`] = `
         aria-hidden="false"
         aria-labelledby="tabs-1-refunds-tabitem"
         class="c14"
-        data-blade-component="base-box"
+        data-blade-component="tab-panel"
         id="tabs-1-refunds-tabpanel"
         role="tabpanel"
         tabindex="0"
@@ -422,6 +428,10 @@ exports[`Tabs should render with filled variant 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -732,11 +742,11 @@ exports[`Tabs should render with filled variant 1`] = `
   <div>
     <div
       class="c0"
-      data-blade-component="base-box"
+      data-blade-component="tabs"
     >
       <div
         class="c1"
-        data-blade-component="base-box"
+        data-blade-component="box"
       >
         <div
           class="c2 c3"
@@ -756,6 +766,7 @@ exports[`Tabs should render with filled variant 1`] = `
                 aria-selected="false"
                 class="c6"
                 data-active=""
+                data-blade-component="tab-item"
                 id="tabs-4-payments-tabitem"
                 role="tab"
                 tabindex="0"
@@ -776,6 +787,7 @@ exports[`Tabs should render with filled variant 1`] = `
                 aria-controls="tabs-4-refunds-tabpanel"
                 aria-selected="true"
                 class="c10"
+                data-blade-component="tab-item"
                 id="tabs-4-refunds-tabitem"
                 role="tab"
                 tabindex="-1"
@@ -791,7 +803,7 @@ exports[`Tabs should render with filled variant 1`] = `
           </div>
           <div
             class="c12 c13"
-            data-blade-component="base-box"
+            data-blade-component="tab-indicator"
             style="transition-property: transform, width, background-color; transition-duration: 0ms; transition-timing-function: cubic-bezier(0.3, 0, 0.2, 1); width: 0px; height: 0px; transform: translate(0px, -1px);"
           />
         </div>
@@ -800,7 +812,7 @@ exports[`Tabs should render with filled variant 1`] = `
         aria-hidden="true"
         aria-labelledby="tabs-4-payments-tabitem"
         class="c14"
-        data-blade-component="base-box"
+        data-blade-component="tab-panel"
         id="tabs-4-payments-tabpanel"
         role="tabpanel"
         tabindex="0"
@@ -816,7 +828,7 @@ exports[`Tabs should render with filled variant 1`] = `
         aria-hidden="false"
         aria-labelledby="tabs-4-refunds-tabitem"
         class="c16"
-        data-blade-component="base-box"
+        data-blade-component="tab-panel"
         id="tabs-4-refunds-tabpanel"
         role="tabpanel"
         tabindex="0"
@@ -880,6 +892,10 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1107,11 +1123,11 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
   <div>
     <div
       class="c0"
-      data-blade-component="base-box"
+      data-blade-component="tabs"
     >
       <div
         class="c1"
-        data-blade-component="base-box"
+        data-blade-component="box"
       >
         <div
           class="c2 c3"
@@ -1131,6 +1147,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
                 aria-selected="false"
                 class="c6"
                 data-active=""
+                data-blade-component="tab-item"
                 id="tabs-5-payments-tabitem"
                 role="tab"
                 tabindex="0"
@@ -1146,6 +1163,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
                 aria-controls="tabs-5-refunds-tabpanel"
                 aria-selected="true"
                 class="c6"
+                data-blade-component="tab-item"
                 id="tabs-5-refunds-tabitem"
                 role="tab"
                 tabindex="-1"
@@ -1161,7 +1179,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
           </div>
           <div
             class="c9 c10"
-            data-blade-component="base-box"
+            data-blade-component="tab-indicator"
             pointer-events="none"
             style="transition-property: transform, width, background-color; transition-duration: 0ms; transition-timing-function: cubic-bezier(0.3, 0, 0.2, 1); width: 0px; transform: translate(0px, -1.5px);"
           />
@@ -1176,7 +1194,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
         aria-hidden="true"
         aria-labelledby="tabs-5-payments-tabitem"
         class="c12"
-        data-blade-component="base-box"
+        data-blade-component="tab-panel"
         id="tabs-5-payments-tabpanel"
         role="tabpanel"
         tabindex="0"
@@ -1192,7 +1210,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
         aria-hidden="false"
         aria-labelledby="tabs-5-refunds-tabitem"
         class="c14"
-        data-blade-component="base-box"
+        data-blade-component="tab-panel"
         id="tabs-5-refunds-tabpanel"
         role="tabpanel"
         tabindex="0"
@@ -1256,6 +1274,10 @@ exports[`Tabs should render with size 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1482,11 +1504,11 @@ exports[`Tabs should render with size 1`] = `
   <div>
     <div
       class="c0"
-      data-blade-component="base-box"
+      data-blade-component="tabs"
     >
       <div
         class="c1"
-        data-blade-component="base-box"
+        data-blade-component="box"
       >
         <div
           class="c2 c3"
@@ -1506,6 +1528,7 @@ exports[`Tabs should render with size 1`] = `
                 aria-selected="false"
                 class="c6"
                 data-active=""
+                data-blade-component="tab-item"
                 id="tabs-6-payments-tabitem"
                 role="tab"
                 tabindex="0"
@@ -1521,6 +1544,7 @@ exports[`Tabs should render with size 1`] = `
                 aria-controls="tabs-6-refunds-tabpanel"
                 aria-selected="true"
                 class="c6"
+                data-blade-component="tab-item"
                 id="tabs-6-refunds-tabitem"
                 role="tab"
                 tabindex="-1"
@@ -1536,7 +1560,7 @@ exports[`Tabs should render with size 1`] = `
           </div>
           <div
             class="c9 c10"
-            data-blade-component="base-box"
+            data-blade-component="tab-indicator"
             pointer-events="none"
             style="transition-property: transform, width, background-color; transition-duration: 0ms; transition-timing-function: cubic-bezier(0.3, 0, 0.2, 1); width: 0px; transform: translate(0px, -1.5px);"
           />
@@ -1551,7 +1575,7 @@ exports[`Tabs should render with size 1`] = `
         aria-hidden="true"
         aria-labelledby="tabs-6-payments-tabitem"
         class="c12"
-        data-blade-component="base-box"
+        data-blade-component="tab-panel"
         id="tabs-6-payments-tabpanel"
         role="tabpanel"
         tabindex="0"
@@ -1567,7 +1591,7 @@ exports[`Tabs should render with size 1`] = `
         aria-hidden="false"
         aria-labelledby="tabs-6-refunds-tabitem"
         class="c14"
-        data-blade-component="base-box"
+        data-blade-component="tab-panel"
         id="tabs-6-refunds-tabpanel"
         role="tabpanel"
         tabindex="0"
@@ -1617,6 +1641,14 @@ exports[`Tabs should render with vertical orientation 1`] = `
 }
 
 .c4 {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  height: auto;
   width: 1.5px;
   background-color: hsla(216,15%,54%,0.18);
 }
@@ -1630,13 +1662,17 @@ exports[`Tabs should render with vertical orientation 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
   -webkit-align-items: start;
   -webkit-box-align: start;
   -ms-flex-align: start;
   align-items: start;
   padding: 0px;
   width: 100%;
-  gap: 2px;
+  gap: 0px;
 }
 
 .c10 {
@@ -1840,11 +1876,11 @@ exports[`Tabs should render with vertical orientation 1`] = `
   <div>
     <div
       class="c0"
-      data-blade-component="base-box"
+      data-blade-component="tabs"
     >
       <div
         class="c1"
-        data-blade-component="base-box"
+        data-blade-component="box"
       >
         <div
           class="c2 c3"
@@ -1869,6 +1905,7 @@ exports[`Tabs should render with vertical orientation 1`] = `
                 aria-selected="false"
                 class="c6"
                 data-active=""
+                data-blade-component="tab-item"
                 id="tabs-3-payments-tabitem"
                 role="tab"
                 tabindex="0"
@@ -1884,6 +1921,7 @@ exports[`Tabs should render with vertical orientation 1`] = `
                 aria-controls="tabs-3-refunds-tabpanel"
                 aria-selected="true"
                 class="c8"
+                data-blade-component="tab-item"
                 id="tabs-3-refunds-tabitem"
                 role="tab"
                 tabindex="-1"
@@ -1903,7 +1941,7 @@ exports[`Tabs should render with vertical orientation 1`] = `
         aria-hidden="true"
         aria-labelledby="tabs-3-payments-tabitem"
         class="c10"
-        data-blade-component="base-box"
+        data-blade-component="tab-panel"
         id="tabs-3-payments-tabpanel"
         role="tabpanel"
         tabindex="0"
@@ -1919,7 +1957,7 @@ exports[`Tabs should render with vertical orientation 1`] = `
         aria-hidden="false"
         aria-labelledby="tabs-3-refunds-tabitem"
         class="c12"
-        data-blade-component="base-box"
+        data-blade-component="tab-panel"
         id="tabs-3-refunds-tabpanel"
         role="tabpanel"
         tabindex="0"
