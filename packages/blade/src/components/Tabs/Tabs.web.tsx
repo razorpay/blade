@@ -4,6 +4,7 @@ import { TabsContext } from './TabsContext';
 import { useControllableState } from '~utils/useControllable';
 import { useId } from '~utils/useId';
 import BaseBox from '~components/Box/BaseBox';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
 /**
  * ### Tabs
@@ -81,7 +82,11 @@ const Tabs = ({
 
   return (
     <TabsContext.Provider value={contextValue}>
-      <BaseBox display="flex" flexDirection={isVertical ? 'row' : 'column'}>
+      <BaseBox
+        display="flex"
+        flexDirection={isVertical ? 'row' : 'column'}
+        {...metaAttribute({ name: MetaConstants.Tabs })}
+      >
         {children}
       </BaseBox>
     </TabsContext.Provider>

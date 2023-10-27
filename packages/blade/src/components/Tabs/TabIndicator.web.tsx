@@ -7,6 +7,7 @@ import { useTabsContext } from './TabsContext';
 import { castWebType, makeMotionTime, useTheme } from '~utils';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import BaseBox from '~components/Box/BaseBox';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
 const StyledTabIndicator = styled(BaseBox)(({ theme }) => {
   return {
@@ -115,6 +116,7 @@ const TabIndicator = ({
           height: `${activeElementDimensions.height}px`,
           transform: `translate(${activeElementDimensions.x}px, ${activeElementDimensions.y}px)`,
         }}
+        {...metaAttribute({ name: MetaConstants.TabIndicator })}
       />
     );
   }
@@ -132,6 +134,7 @@ const TabIndicator = ({
         width: `${activeElementDimensions.width}px`,
         transform: `translate(${activeElementDimensions.x}px, ${activeElementDimensions.y}px)`,
       }}
+      {...metaAttribute({ name: MetaConstants.TabIndicator })}
     />
   );
 };

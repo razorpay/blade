@@ -6,6 +6,10 @@ import { TabIndicator } from './TabIndicator';
 import BaseBox from '~components/Box/BaseBox';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { Divider } from '~components/Divider';
+import { Box } from '~components/Box';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
+import { getStyledProps } from '~components/Box/styledProps';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
 const ScrollableArea = styled(BaseBox)(() => {
   return {
@@ -13,7 +17,10 @@ const ScrollableArea = styled(BaseBox)(() => {
   };
 });
 
-const TabList = ({ children }: { children: React.ReactNode }): React.ReactElement => {
+const TabList = ({
+  children,
+  ...props
+}: { children: React.ReactNode } & StyledPropsBlade): React.ReactElement => {
   const { setSelectedValue, selectedValue, variant, isVertical } = useTabsContext();
   const tabListContainerRef = React.useRef<HTMLDivElement>(null);
   const isBordered = variant === 'bordered';
@@ -30,7 +37,13 @@ const TabList = ({ children }: { children: React.ReactNode }): React.ReactElemen
   }, [children, selectedValue, setSelectedValue]);
 
   return (
-    <BaseBox display={isVertical ? 'flex' : 'block'} flexShrink={0} overflow="hidden">
+    <Box
+      {...getStyledProps(props)}
+      {...metaAttribute({ name: MetaConstants.TabList })}
+      display={isVertical ? 'flex' : 'block'}
+      flexShrink={0}
+      overflow="hidden"
+    >
       <ScrollableArea
         position="relative"
         whiteSpace="nowrap"
@@ -45,6 +58,9 @@ const TabList = ({ children }: { children: React.ReactNode }): React.ReactElemen
                 {isVertical && isBordered ? (
                   <BaseBox
                     width="1.5px"
+                    height="auto"
+                    flexGrow={1}
+                    flexShrink={0}
                     backgroundColor="surface.border.normal.lowContrast"
                     style={{ transform: 'translateX(1.5px)' }}
                   />
@@ -52,6 +68,7 @@ const TabList = ({ children }: { children: React.ReactNode }): React.ReactElemen
                 {/* @ts-expect-error spreading composite props */}
                 <BaseBox
                   {...htmlProps}
+                  flexGrow={1}
                   ref={tabListContainerRef}
                   role="tablist"
                   width="100%"
@@ -70,7 +87,7 @@ const TabList = ({ children }: { children: React.ReactNode }): React.ReactElemen
                       }
                     : {
                         padding: 'spacing.0',
-                        gap: isVertical ? 'spacing.1' : { base: 'spacing.7', m: 'spacing.8' },
+                        gap: isVertical ? 'spacing.0' : { base: 'spacing.7', m: 'spacing.8' },
                       })}
                 >
                   {variant === 'filled' && !isVertical
@@ -97,8 +114,8 @@ const TabList = ({ children }: { children: React.ReactNode }): React.ReactElemen
         />
         {!isVertical ? <TabIndicator tabListContainerRef={tabListContainerRef} /> : null}
       </ScrollableArea>
-      {/* 
-        Static border bottom, can't just put it on the outer Box of tablist because 
+      {/*
+        Adding border bottom with an div element, we can't put it on the outer Box of tablist because 
         it's not possible to offset or translate a border 
       */}
       {!isVertical && isBordered ? (
@@ -108,7 +125,7 @@ const TabList = ({ children }: { children: React.ReactNode }): React.ReactElemen
           borderBottomWidth="thin"
         />
       ) : null}
-    </BaseBox>
+    </Box>
   );
 };
 

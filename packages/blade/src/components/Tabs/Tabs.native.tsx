@@ -18,6 +18,7 @@ import { Box } from '~components/Box';
 import { useTheme } from '~utils';
 import { useControllableState } from '~utils/useControllable';
 import { Divider } from '~components/Divider';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
 const initialLayout = {
   height: 0,
@@ -134,6 +135,7 @@ const Tabs = ({
           size={size}
           variant={variant}
           isFullWidthTabItem={!isFullWidthTabItem && !isFilled}
+          {...metaAttribute({ name: MetaConstants.TabItem })}
         >
           <Box display="flex" alignItems="center" flexDirection="row" gap="spacing.3">
             {Leading ? (
@@ -165,6 +167,7 @@ const Tabs = ({
     (props) => (
       <TabBar
         {...props}
+        {...metaAttribute({ name: MetaConstants.TabList })}
         gap={0}
         android_ripple={{ borderless: true, color: 'transparent' }}
         scrollEnabled={!isFullWidthTabItem && !isFilled}
@@ -173,14 +176,6 @@ const Tabs = ({
           margin: 0,
           minHeight: 0,
         }}
-        contentContainerStyle={
-          isFilled
-            ? {}
-            : {
-                borderBottomColor: theme.colors.surface.border.normal.lowContrast,
-                borderBottomWidth: theme.border.width.thick,
-              }
-        }
         style={{
           ...(isFilled
             ? {
@@ -196,6 +191,10 @@ const Tabs = ({
                 shadowOpacity: 0,
                 shadowColor: 'transparent',
                 backgroundColor: 'transparent',
+                ...(variant !== 'borderless' && {
+                  borderBottomColor: theme.colors.surface.border.normal.lowContrast,
+                  borderBottomWidth: theme.border.width.thin,
+                }),
               }),
         }}
         renderIndicator={TabIndicator}

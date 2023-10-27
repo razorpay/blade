@@ -26,6 +26,8 @@ exports[`Tabs should render 1`] = `
       style={
         {
           "backgroundColor": "transparent",
+          "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
+          "borderBottomWidth": 1,
           "elevation": 4,
           "shadowColor": "transparent",
           "shadowOffset": {
@@ -103,10 +105,7 @@ exports[`Tabs should render 1`] = `
               {
                 "width": "80%",
               },
-              {
-                "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
-                "borderBottomWidth": 1.5,
-              },
+              undefined,
             ]
           }
           data={
@@ -259,7 +258,7 @@ exports[`Tabs should render 1`] = `
                       }
                     >
                       <View
-                        data-blade-component="base-box"
+                        data-blade-component="tab-item"
                         isFullWidthTabItem={true}
                         size="medium"
                         style={
@@ -346,7 +345,7 @@ exports[`Tabs should render 1`] = `
                       }
                     >
                       <View
-                        data-blade-component="base-box"
+                        data-blade-component="tab-item"
                         isFullWidthTabItem={true}
                         size="medium"
                         style={
@@ -515,7 +514,7 @@ exports[`Tabs should render 1`] = `
                       }
                     >
                       <View
-                        data-blade-component="base-box"
+                        data-blade-component="tab-item"
                         isFullWidthTabItem={true}
                         size="medium"
                         style={
@@ -602,7 +601,7 @@ exports[`Tabs should render 1`] = `
                       }
                     >
                       <View
-                        data-blade-component="base-box"
+                        data-blade-component="tab-item"
                         isFullWidthTabItem={true}
                         size="medium"
                         style={
@@ -922,7 +921,7 @@ exports[`Tabs should render with filled variant 1`] = `
               {
                 "flex": 1,
               },
-              {},
+              undefined,
             ]
           }
           data={
@@ -1075,7 +1074,7 @@ exports[`Tabs should render with filled variant 1`] = `
                       }
                     >
                       <View
-                        data-blade-component="base-box"
+                        data-blade-component="tab-item"
                         isFullWidthTabItem={false}
                         size="medium"
                         style={
@@ -1161,7 +1160,7 @@ exports[`Tabs should render with filled variant 1`] = `
                       }
                     >
                       <View
-                        data-blade-component="base-box"
+                        data-blade-component="tab-item"
                         isFullWidthTabItem={false}
                         size="medium"
                         style={
@@ -1369,7 +1368,7 @@ exports[`Tabs should render with filled variant 1`] = `
                       }
                     >
                       <View
-                        data-blade-component="base-box"
+                        data-blade-component="tab-item"
                         isFullWidthTabItem={false}
                         size="medium"
                         style={
@@ -1455,7 +1454,7 @@ exports[`Tabs should render with filled variant 1`] = `
                       }
                     >
                       <View
-                        data-blade-component="base-box"
+                        data-blade-component="tab-item"
                         isFullWidthTabItem={false}
                         size="medium"
                         style={
@@ -1738,6 +1737,8 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
       style={
         {
           "backgroundColor": "transparent",
+          "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
+          "borderBottomWidth": 1,
           "elevation": 4,
           "shadowColor": "transparent",
           "shadowOffset": {
@@ -1809,10 +1810,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
               {
                 "flex": 1,
               },
-              {
-                "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
-                "borderBottomWidth": 1.5,
-              },
+              undefined,
             ]
           }
           data={
@@ -1965,7 +1963,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
                       }
                     >
                       <View
-                        data-blade-component="base-box"
+                        data-blade-component="tab-item"
                         isFullWidthTabItem={false}
                         size="medium"
                         style={
@@ -2051,7 +2049,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
                       }
                     >
                       <View
-                        data-blade-component="base-box"
+                        data-blade-component="tab-item"
                         isFullWidthTabItem={false}
                         size="medium"
                         style={
@@ -2219,7 +2217,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
                       }
                     >
                       <View
-                        data-blade-component="base-box"
+                        data-blade-component="tab-item"
                         isFullWidthTabItem={false}
                         size="medium"
                         style={
@@ -2305,7 +2303,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
                       }
                     >
                       <View
-                        data-blade-component="base-box"
+                        data-blade-component="tab-item"
                         isFullWidthTabItem={false}
                         size="medium"
                         style={
@@ -2548,6 +2546,8 @@ exports[`Tabs should render with large size 1`] = `
       style={
         {
           "backgroundColor": "transparent",
+          "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
+          "borderBottomWidth": 1,
           "elevation": 4,
           "shadowColor": "transparent",
           "shadowOffset": {
@@ -2625,10 +2625,7 @@ exports[`Tabs should render with large size 1`] = `
               {
                 "width": "80%",
               },
-              {
-                "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
-                "borderBottomWidth": 1.5,
-              },
+              undefined,
             ]
           }
           data={
@@ -2781,7 +2778,7 @@ exports[`Tabs should render with large size 1`] = `
                       }
                     >
                       <View
-                        data-blade-component="base-box"
+                        data-blade-component="tab-item"
                         isFullWidthTabItem={true}
                         size="large"
                         style={
@@ -2825,7 +2822,7 @@ exports[`Tabs should render with large size 1`] = `
                             fontFamily="text"
                             fontSize={200}
                             fontStyle="normal"
-                            fontWeight="regular"
+                            fontWeight="bold"
                             lineHeight={300}
                             style={
                               [
@@ -2834,7 +2831,7 @@ exports[`Tabs should render with large size 1`] = `
                                   "fontFamily": "Lato",
                                   "fontSize": 16,
                                   "fontStyle": "normal",
-                                  "fontWeight": "400",
+                                  "fontWeight": "700",
                                   "lineHeight": 24,
                                   "marginBottom": 0,
                                   "marginLeft": 0,
@@ -2868,7 +2865,7 @@ exports[`Tabs should render with large size 1`] = `
                       }
                     >
                       <View
-                        data-blade-component="base-box"
+                        data-blade-component="tab-item"
                         isFullWidthTabItem={true}
                         size="large"
                         style={
@@ -2912,7 +2909,7 @@ exports[`Tabs should render with large size 1`] = `
                             fontFamily="text"
                             fontSize={200}
                             fontStyle="normal"
-                            fontWeight="regular"
+                            fontWeight="bold"
                             lineHeight={300}
                             style={
                               [
@@ -2921,7 +2918,7 @@ exports[`Tabs should render with large size 1`] = `
                                   "fontFamily": "Lato",
                                   "fontSize": 16,
                                   "fontStyle": "normal",
-                                  "fontWeight": "400",
+                                  "fontWeight": "700",
                                   "lineHeight": 24,
                                   "marginBottom": 0,
                                   "marginLeft": 0,
@@ -3037,7 +3034,7 @@ exports[`Tabs should render with large size 1`] = `
                       }
                     >
                       <View
-                        data-blade-component="base-box"
+                        data-blade-component="tab-item"
                         isFullWidthTabItem={true}
                         size="large"
                         style={
@@ -3081,7 +3078,7 @@ exports[`Tabs should render with large size 1`] = `
                             fontFamily="text"
                             fontSize={200}
                             fontStyle="normal"
-                            fontWeight="regular"
+                            fontWeight="bold"
                             lineHeight={300}
                             style={
                               [
@@ -3090,7 +3087,7 @@ exports[`Tabs should render with large size 1`] = `
                                   "fontFamily": "Lato",
                                   "fontSize": 16,
                                   "fontStyle": "normal",
-                                  "fontWeight": "400",
+                                  "fontWeight": "700",
                                   "lineHeight": 24,
                                   "marginBottom": 0,
                                   "marginLeft": 0,
@@ -3124,7 +3121,7 @@ exports[`Tabs should render with large size 1`] = `
                       }
                     >
                       <View
-                        data-blade-component="base-box"
+                        data-blade-component="tab-item"
                         isFullWidthTabItem={true}
                         size="large"
                         style={
@@ -3168,7 +3165,7 @@ exports[`Tabs should render with large size 1`] = `
                             fontFamily="text"
                             fontSize={200}
                             fontStyle="normal"
-                            fontWeight="regular"
+                            fontWeight="bold"
                             lineHeight={300}
                             style={
                               [
@@ -3177,7 +3174,7 @@ exports[`Tabs should render with large size 1`] = `
                                   "fontFamily": "Lato",
                                   "fontSize": 16,
                                   "fontStyle": "normal",
-                                  "fontWeight": "400",
+                                  "fontWeight": "700",
                                   "lineHeight": 24,
                                   "marginBottom": 0,
                                   "marginLeft": 0,
