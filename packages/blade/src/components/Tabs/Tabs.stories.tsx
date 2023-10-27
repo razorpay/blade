@@ -22,11 +22,12 @@ export default {
 const TabsTemplate: ComponentStory<typeof Tabs> = () => {
   return (
     <Box height="100%">
-      <Tabs variant="bordered" isFullWidthTabItem={false}>
+      <Tabs variant="bordered" isFullWidthTabItem={true}>
         <TabList>
           <TabItem value="payments">Payments</TabItem>
           <TabItem value="refunds">Refunds</TabItem>
           <TabItem value="disputes">Disputes</TabItem>
+          <TabItem value="settlements">Settlements</TabItem>
         </TabList>
 
         <TabPanel value="payments">
@@ -37,6 +38,9 @@ const TabsTemplate: ComponentStory<typeof Tabs> = () => {
         </TabPanel>
         <TabPanel value="disputes">
           <Text>Disputes</Text>
+        </TabPanel>
+        <TabPanel value="settlements">
+          <Text>Settlements</Text>
         </TabPanel>
       </Tabs>
     </Box>

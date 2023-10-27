@@ -17,7 +17,6 @@ import { Text } from '~components/Typography';
 import { Box } from '~components/Box';
 import { useTheme } from '~utils';
 import { useControllableState } from '~utils/useControllable';
-import { useFirstRender } from '~utils/useFirstRender';
 import { Divider } from '~components/Divider';
 
 const initialLayout = {
@@ -77,7 +76,6 @@ const Tabs = ({
   isLazy = false,
 }: TabsProps): React.ReactElement => {
   const { theme } = useTheme();
-  const isFirstRender = useFirstRender();
   const tabs = getTabs(children);
   const panels = getTabPanels(children);
   const routes = getRoutes(tabs);
@@ -87,7 +85,6 @@ const Tabs = ({
     defaultValue,
     value,
     onChange: (value) => {
-      if (isFirstRender) return;
       onChange?.(value);
     },
   });
@@ -237,7 +234,9 @@ const Tabs = ({
         }}
         renderScene={SafeSceneMap(panels)}
         renderTabBar={renderTabBar}
-        onIndexChange={setIndex}
+        onIndexChange={(idx) => {
+          setIndex(idx);
+        }}
         initialLayout={initialLayout}
         lazy={isLazy}
       />
