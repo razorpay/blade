@@ -132,6 +132,20 @@ describe('<TextInput />', () => {
     expect(onChange).toHaveBeenLastCalledWith({ name: 'name', value: userName });
   });
 
+  it('should handle onClick', () => {
+    const placeholder = 'First Last';
+    const onClick = jest.fn();
+
+    const { getByPlaceholderText } = renderWithTheme(
+      <TextInput label="Enter name" placeholder={placeholder} onClick={onClick} />,
+    );
+
+    const input = getByPlaceholderText(placeholder);
+    fireEvent.press(input);
+
+    expect(onClick).toHaveBeenCalledTimes(1);
+  });
+
   it('should handle onFocus', () => {
     const placeholder = 'First Last';
     const name = 'userName';
