@@ -47,120 +47,6 @@ exports[`<Popover /> should render 1`] = `
   border-radius: 9999px;
 }
 
-.c7 backgroundColor action background primary {
-  default: hsla(0,0%,100%,1);
-  hover: hsla(216,6%,94%,1);
-  focus: hsla(216,4%,89%,1);
-  active: hsla(216,4%,89%,1);
-  disabled: hsla(210,6%,94%,0.18);
-}
-
-.c7 backgroundColor action background secondary {
-  default: hsla(214,15%,18%,0);
-  hover: hsla(210,6%,94%,0.18);
-  focus: hsla(210,6%,94%,0.32);
-  active: hsla(210,6%,94%,0.32);
-  disabled: hsla(214,15%,18%,0);
-}
-
-.c7 backgroundColor action background tertiary {
-  default: hsla(210,6%,94%,0.09);
-  hover: hsla(210,6%,94%,0.18);
-  focus: hsla(210,6%,94%,0.32);
-  active: hsla(210,6%,94%,0.32);
-  disabled: hsla(210,6%,94%,0.09);
-}
-
-.c7 backgroundColor action border primary {
-  default: hsla(0,0%,100%,1);
-  hover: hsla(216,6%,94%,1);
-  focus: hsla(216,4%,89%,1);
-  active: hsla(216,4%,89%,1);
-  disabled: hsla(210,6%,94%,0.18);
-}
-
-.c7 backgroundColor action border secondary {
-  default: hsla(0,0%,100%,1);
-  hover: hsla(0,0%,100%,1);
-  focus: hsla(0,0%,100%,1);
-  active: hsla(0,0%,100%,1);
-  disabled: hsla(210,6%,94%,0.32);
-}
-
-.c7 backgroundColor action border tertiary {
-  default: hsla(214,15%,18%,0);
-  hover: hsla(214,15%,18%,0);
-  focus: hsla(214,15%,18%,0);
-  active: hsla(214,15%,18%,0);
-  disabled: hsla(214,15%,18%,0);
-}
-
-.c7 backgroundColor action text primary {
-  default: hsla(218,89%,51%,1);
-  hover: hsla(218,89%,51%,1);
-  focus: hsla(218,89%,51%,1);
-  active: hsla(218,89%,51%,1);
-  disabled: hsla(210,6%,94%,0.32);
-}
-
-.c7 backgroundColor action text secondary {
-  default: hsla(0,0%,100%,1);
-  hover: hsla(0,0%,100%,1);
-  focus: hsla(0,0%,100%,1);
-  active: hsla(0,0%,100%,1);
-  disabled: hsla(210,6%,94%,0.32);
-}
-
-.c7 backgroundColor action text tertiary {
-  default: hsla(0,0%,100%,1);
-  hover: hsla(0,0%,100%,1);
-  focus: hsla(0,0%,100%,1);
-  active: hsla(0,0%,100%,1);
-  disabled: hsla(210,6%,94%,0.32);
-}
-
-.c7 backgroundColor action text link {
-  default: hsla(0,0%,100%,1);
-  hover: hsla(216,4%,89%,1);
-  focus: hsla(214,7%,81%,1);
-  active: hsla(214,7%,81%,1);
-  disabled: hsla(210,6%,94%,0.32);
-  visited: hsla(268,100%,79%,1);
-}
-
-.c7 backgroundColor action icon primary {
-  default: hsla(218,89%,51%,1);
-  hover: hsla(218,89%,51%,1);
-  focus: hsla(218,89%,51%,1);
-  active: hsla(218,89%,51%,1);
-  disabled: hsla(210,6%,94%,0.32);
-}
-
-.c7 backgroundColor action icon secondary {
-  default: hsla(0,0%,100%,1);
-  hover: hsla(0,0%,100%,1);
-  focus: hsla(0,0%,100%,1);
-  active: hsla(0,0%,100%,1);
-  disabled: hsla(210,6%,94%,0.32);
-}
-
-.c7 backgroundColor action icon tertiary {
-  default: hsla(0,0%,100%,1);
-  hover: hsla(0,0%,100%,1);
-  focus: hsla(0,0%,100%,1);
-  active: hsla(0,0%,100%,1);
-  disabled: hsla(210,6%,94%,0.32);
-}
-
-.c7 backgroundColor action icon link {
-  default: hsla(0,0%,100%,1);
-  hover: hsla(216,4%,89%,1);
-  focus: hsla(214,7%,81%,1);
-  active: hsla(214,7%,81%,1);
-  disabled: hsla(210,6%,94%,0.32);
-  visited: hsla(268,100%,79%,1);
-}
-
 .c5 {
   width: 100%;
   max-width: 328px;
@@ -315,7 +201,7 @@ exports[`<Popover /> should render 1`] = `
 <body>
   <div
     aria-hidden="true"
-    data-aria-hidden="true"
+    data-floating-ui-inert=""
   >
     <button
       aria-controls=":r0:"
@@ -345,8 +231,8 @@ exports[`<Popover /> should render 1`] = `
   >
     <span
       aria-hidden="true"
-      data-aria-hidden="true"
       data-floating-ui-focus-guard=""
+      data-floating-ui-inert=""
       data-type="inside"
       role="button"
       style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: fixed; white-space: nowrap; width: 1px; top: 0px; left: 0px;"
@@ -412,7 +298,7 @@ exports[`<Popover /> should render 1`] = `
           aria-hidden="true"
           fill="#FFFFFF"
           height="14"
-          style="position: absolute; pointer-events: none; top: 100%; left: 14px;"
+          style="position: absolute; pointer-events: none; top: 100%; left: -1px;"
           viewBox="0 0 14 14"
           width="16"
         >
@@ -442,8 +328,8 @@ exports[`<Popover /> should render 1`] = `
     </div>
     <span
       aria-hidden="true"
-      data-aria-hidden="true"
       data-floating-ui-focus-guard=""
+      data-floating-ui-inert=""
       data-type="inside"
       role="button"
       style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: fixed; white-space: nowrap; width: 1px; top: 0px; left: 0px;"
@@ -498,120 +384,6 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
   top: 4px;
   right: 4px;
   border-radius: 9999px;
-}
-
-.c7 backgroundColor action background primary {
-  default: hsla(0,0%,100%,1);
-  hover: hsla(216,6%,94%,1);
-  focus: hsla(216,4%,89%,1);
-  active: hsla(216,4%,89%,1);
-  disabled: hsla(210,6%,94%,0.18);
-}
-
-.c7 backgroundColor action background secondary {
-  default: hsla(214,15%,18%,0);
-  hover: hsla(210,6%,94%,0.18);
-  focus: hsla(210,6%,94%,0.32);
-  active: hsla(210,6%,94%,0.32);
-  disabled: hsla(214,15%,18%,0);
-}
-
-.c7 backgroundColor action background tertiary {
-  default: hsla(210,6%,94%,0.09);
-  hover: hsla(210,6%,94%,0.18);
-  focus: hsla(210,6%,94%,0.32);
-  active: hsla(210,6%,94%,0.32);
-  disabled: hsla(210,6%,94%,0.09);
-}
-
-.c7 backgroundColor action border primary {
-  default: hsla(0,0%,100%,1);
-  hover: hsla(216,6%,94%,1);
-  focus: hsla(216,4%,89%,1);
-  active: hsla(216,4%,89%,1);
-  disabled: hsla(210,6%,94%,0.18);
-}
-
-.c7 backgroundColor action border secondary {
-  default: hsla(0,0%,100%,1);
-  hover: hsla(0,0%,100%,1);
-  focus: hsla(0,0%,100%,1);
-  active: hsla(0,0%,100%,1);
-  disabled: hsla(210,6%,94%,0.32);
-}
-
-.c7 backgroundColor action border tertiary {
-  default: hsla(214,15%,18%,0);
-  hover: hsla(214,15%,18%,0);
-  focus: hsla(214,15%,18%,0);
-  active: hsla(214,15%,18%,0);
-  disabled: hsla(214,15%,18%,0);
-}
-
-.c7 backgroundColor action text primary {
-  default: hsla(218,89%,51%,1);
-  hover: hsla(218,89%,51%,1);
-  focus: hsla(218,89%,51%,1);
-  active: hsla(218,89%,51%,1);
-  disabled: hsla(210,6%,94%,0.32);
-}
-
-.c7 backgroundColor action text secondary {
-  default: hsla(0,0%,100%,1);
-  hover: hsla(0,0%,100%,1);
-  focus: hsla(0,0%,100%,1);
-  active: hsla(0,0%,100%,1);
-  disabled: hsla(210,6%,94%,0.32);
-}
-
-.c7 backgroundColor action text tertiary {
-  default: hsla(0,0%,100%,1);
-  hover: hsla(0,0%,100%,1);
-  focus: hsla(0,0%,100%,1);
-  active: hsla(0,0%,100%,1);
-  disabled: hsla(210,6%,94%,0.32);
-}
-
-.c7 backgroundColor action text link {
-  default: hsla(0,0%,100%,1);
-  hover: hsla(216,4%,89%,1);
-  focus: hsla(214,7%,81%,1);
-  active: hsla(214,7%,81%,1);
-  disabled: hsla(210,6%,94%,0.32);
-  visited: hsla(268,100%,79%,1);
-}
-
-.c7 backgroundColor action icon primary {
-  default: hsla(218,89%,51%,1);
-  hover: hsla(218,89%,51%,1);
-  focus: hsla(218,89%,51%,1);
-  active: hsla(218,89%,51%,1);
-  disabled: hsla(210,6%,94%,0.32);
-}
-
-.c7 backgroundColor action icon secondary {
-  default: hsla(0,0%,100%,1);
-  hover: hsla(0,0%,100%,1);
-  focus: hsla(0,0%,100%,1);
-  active: hsla(0,0%,100%,1);
-  disabled: hsla(210,6%,94%,0.32);
-}
-
-.c7 backgroundColor action icon tertiary {
-  default: hsla(0,0%,100%,1);
-  hover: hsla(0,0%,100%,1);
-  focus: hsla(0,0%,100%,1);
-  active: hsla(0,0%,100%,1);
-  disabled: hsla(210,6%,94%,0.32);
-}
-
-.c7 backgroundColor action icon link {
-  default: hsla(0,0%,100%,1);
-  hover: hsla(216,4%,89%,1);
-  focus: hsla(214,7%,81%,1);
-  active: hsla(214,7%,81%,1);
-  disabled: hsla(210,6%,94%,0.32);
-  visited: hsla(268,100%,79%,1);
 }
 
 .c5 {
@@ -767,7 +539,7 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
 <body>
   <div
     aria-hidden="true"
-    data-aria-hidden="true"
+    data-floating-ui-inert=""
   >
     <button
       aria-controls=":r8:"
@@ -797,8 +569,8 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
   >
     <span
       aria-hidden="true"
-      data-aria-hidden="true"
       data-floating-ui-focus-guard=""
+      data-floating-ui-inert=""
       data-type="inside"
       role="button"
       style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: fixed; white-space: nowrap; width: 1px; top: 0px; left: 0px;"
@@ -894,8 +666,8 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
     </div>
     <span
       aria-hidden="true"
-      data-aria-hidden="true"
       data-floating-ui-focus-guard=""
+      data-floating-ui-inert=""
       data-type="inside"
       role="button"
       style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: fixed; white-space: nowrap; width: 1px; top: 0px; left: 0px;"
@@ -1135,7 +907,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
 <body>
   <div
     aria-hidden="true"
-    data-aria-hidden="true"
+    data-floating-ui-inert=""
   >
     <button
       aria-controls=":r4:"
@@ -1165,8 +937,8 @@ exports[`<Popover /> should render with title,footer 1`] = `
   >
     <span
       aria-hidden="true"
-      data-aria-hidden="true"
       data-floating-ui-focus-guard=""
+      data-floating-ui-inert=""
       data-type="inside"
       role="button"
       style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: fixed; white-space: nowrap; width: 1px; top: 0px; left: 0px;"
@@ -1290,8 +1062,8 @@ exports[`<Popover /> should render with title,footer 1`] = `
     </div>
     <span
       aria-hidden="true"
-      data-aria-hidden="true"
       data-floating-ui-focus-guard=""
+      data-floating-ui-inert=""
       data-type="inside"
       role="button"
       style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: fixed; white-space: nowrap; width: 1px; top: 0px; left: 0px;"

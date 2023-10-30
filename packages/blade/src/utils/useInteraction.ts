@@ -25,7 +25,14 @@ const useInteraction = (): {
     setCurrentInteraction('default');
   };
 
-  return { onMouseEnter, onMouseLeave, onFocus, onBlur, currentInteraction, setCurrentInteraction };
+  return {
+    onMouseEnter,
+    onMouseLeave,
+    onFocus,
+    onBlur,
+    currentInteraction,
+    setCurrentInteraction,
+  };
 };
 
 export default useInteraction;

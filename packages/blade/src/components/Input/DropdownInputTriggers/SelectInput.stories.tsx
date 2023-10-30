@@ -176,6 +176,7 @@ export default {
         <StoryPageWrapper
           componentDescription="The SelectInput component is a component that can be used inside Dropdown component to create a Select Menu"
           componentName="SelectInput"
+          apiDecisionLink="https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Dropdown/_decisions/decisions.md"
           note="SelectInput is meant to be used only inside the Dropdown component. Things will not work as expected if you are using this without Dropdown"
           figmaURL={{
             paymentTheme:
@@ -227,6 +228,7 @@ const SelectInputTemplate: ComponentStory<typeof SelectInput> = ({ icon, ...args
           <ActionList>
             <ActionListItem title="Item 1" value="item-1" />
             <ActionListItem title="Item 2" value="item-2" />
+            <ActionListItem title="Item 3" value="item-3" />
           </ActionList>
         </DropdownOverlay>
       </Dropdown>
@@ -235,3 +237,8 @@ const SelectInputTemplate: ComponentStory<typeof SelectInput> = ({ icon, ...args
 };
 
 export const Default = SelectInputTemplate.bind({});
+export const Disabled = SelectInputTemplate.bind({});
+Disabled.args = {
+  isDisabled: true,
+  defaultValue: ['item-1', 'item-2'],
+};

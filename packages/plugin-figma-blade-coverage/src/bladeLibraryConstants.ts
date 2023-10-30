@@ -97,6 +97,9 @@ export const paymentLightThemeData = {
     Spinner: {
       key: '8f7acd11dfa05673822adbeb67ab0672e7f7f07f',
     },
+    Tab: {
+      key: 'db55687e4a62879996753916ca392dc929879280',
+    },
     Tag: {
       key: '81164abfd2c6ffeae87ae0719cd52a1ce62d6473',
     },
@@ -4247,6 +4250,9 @@ export const bankingDarkThemeData = {
     },
     Spinner: {
       key: 'dd99c560705ce6335217785ce7f8efe5270c2856',
+    },
+    Tab: {
+      key: 'e3cdbde85ff121a7c049e504f695ab33b093e858',
     },
     Tag: {
       key: '2dcc0c0d31f0cc40b5b9c1e8a4b7866270511056',

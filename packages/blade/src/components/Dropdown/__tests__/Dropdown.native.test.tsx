@@ -48,6 +48,24 @@ describe('<Dropdown />', () => {
     expect(getByTestId('dropdown-overlay').props.display).toBe('flex');
   });
 
+  it('should not open the dropdown when disabled', () => {
+    const { getByRole, getByTestId } = renderWithTheme(
+      <Dropdown>
+        <SelectInput label="Select Fruit" isDisabled />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Mango" value="mango" />
+            <ActionListItem title="Apple" value="apple" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>,
+    );
+
+    expect(getByTestId('dropdown-overlay').props.display).toBe('none');
+    fireEvent.press(getByRole('combobox'));
+    expect(getByTestId('dropdown-overlay').props.display).toBe('none');
+  });
+
   it('should click and select item', () => {
     const selectOnChange = jest.fn();
 

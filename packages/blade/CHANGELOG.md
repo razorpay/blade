@@ -1,5 +1,23 @@
 # @razorpay/blade
 
+## 10.15.3
+
+### Patch Changes
+
+- f1ab23c8: fix(blade): remove preventDefault in selector label
+
+## 10.15.2
+
+### Patch Changes
+
+- 360abe73: fix(Autocomplete): enhance input handling for controlled scenarios
+- 69098f16: fix(checkbox): fixed alignment
+- 71ea0ac5: fix(Dropdown): enhance tag selection handling
+- 44153ba4: feat(Typography): accept `brand.secondary.500` as a valid `color` prop value
+- 8fdef8a7: docs: improve documentation aesthetics
+- 277ba6fa: fix(AutoComplete, SelectInput): disable tags in input when `isDisabled` is set to true
+- 08c161b6: fix(ActionListItem): checkbox spacing
+
 ## 10.15.1
 
 ### Patch Changes

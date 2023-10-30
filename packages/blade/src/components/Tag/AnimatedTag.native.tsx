@@ -78,6 +78,7 @@ const AnimatedTag = ({
   activeTagIndex,
   onDismiss,
   tagsLength,
+  isDisabled,
 }: AnimatedTagProps): React.ReactElement => {
   const onAnimationEnd = (): void => {
     onDismiss({ tagIndex: currentTagIndex, tagName: children });
@@ -100,6 +101,7 @@ const AnimatedTag = ({
         }}
         marginRight="spacing.3"
         marginY="spacing.2"
+        isDisabled={isDisabled}
       >
         {children}
       </Tag>
