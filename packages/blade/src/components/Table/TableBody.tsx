@@ -1,5 +1,8 @@
 import React from 'react';
 import { Body, Row, Cell } from '@table-library/react-table-library/table';
+import { tableRow } from './tokens';
+import BaseBox from '~components/Box/BaseBox';
+import { Text } from '~components/Typography';
 
 type TableBodyProps = {
   children: React.ReactNode;
@@ -25,7 +28,22 @@ type TableCellProps = {
 };
 
 const TableCell = ({ children }: TableCellProps): React.ReactElement => {
-  return <Cell>{children}</Cell>;
+  const isChildrenString = typeof children === 'string';
+
+  return (
+    <Cell>
+      <BaseBox
+        paddingTop={tableRow.paddingTop}
+        paddingBottom={tableRow.paddingBottom}
+        paddingLeft={tableRow.paddingLeft}
+        paddingRight={tableRow.paddingRight}
+        borderBottomWidth={tableRow.borderBottomWidth}
+        borderBottomColor={tableRow.borderBottomColor}
+      >
+        {isChildrenString ? <Text size="medium">{children}</Text> : children}
+      </BaseBox>
+    </Cell>
+  );
 };
 
 export { TableBody, TableRow, TableCell };

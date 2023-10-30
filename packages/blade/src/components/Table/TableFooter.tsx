@@ -1,5 +1,8 @@
 import React from 'react';
 import { Footer, FooterRow, FooterCell } from '@table-library/react-table-library/table';
+import { tableFooter } from './tokens';
+import BaseBox from '~components/Box/BaseBox';
+import { Text } from '~components/Typography';
 
 type TableFooterProps = {
   children: React.ReactNode;
@@ -22,7 +25,30 @@ type TableFooterCellProps = {
 };
 
 const TableFooterCell = ({ children }: TableFooterCellProps): React.ReactElement => {
-  return <FooterCell>{children}</FooterCell>;
+  const isChildrenString = typeof children === 'string';
+  return (
+    <FooterCell>
+      <BaseBox
+        paddingTop={tableFooter.paddingTop}
+        paddingBottom={tableFooter.paddingBottom}
+        paddingLeft={tableFooter.paddingLeft}
+        paddingRight={tableFooter.paddingRight}
+        backgroundColor={tableFooter.backgroundColor}
+        borderBottomWidth={tableFooter.borderBottomAndTopWidth}
+        borderTopWidth={tableFooter.borderBottomAndTopWidth}
+        borderBottomColor={tableFooter.borderBottomAndTopColor}
+        borderTopColor={tableFooter.borderBottomAndTopColor}
+      >
+        {isChildrenString ? (
+          <Text size="medium" weight="bold">
+            {children}
+          </Text>
+        ) : (
+          children
+        )}
+      </BaseBox>
+    </FooterCell>
+  );
 };
 
 export { TableFooter, TableFooterRow, TableFooterCell };

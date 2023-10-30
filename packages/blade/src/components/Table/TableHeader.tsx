@@ -1,5 +1,8 @@
 import React from 'react';
 import { Header, HeaderRow, HeaderCell } from '@table-library/react-table-library/table';
+import { tableHeader } from './tokens';
+import BaseBox from '~components/Box/BaseBox';
+import { Text } from '~components/Typography';
 
 type TableHeaderProps = {
   children: React.ReactNode;
@@ -18,11 +21,33 @@ const TableHeaderRow = ({ children }: TableHeaderRowProps): React.ReactElement =
 };
 
 type TableHeaderCellProps = {
-  children: string;
+  children: string | React.ReactNode;
 };
 
 const TableHeaderCell = ({ children }: TableHeaderCellProps): React.ReactElement => {
-  return <HeaderCell>{children}</HeaderCell>;
+  const isChildrenString = typeof children === 'string';
+
+  return (
+    <HeaderCell>
+      <BaseBox
+        paddingTop={tableHeader.paddingTop}
+        paddingBottom={tableHeader.paddingBottom}
+        paddingLeft={tableHeader.paddingLeft}
+        paddingRight={tableHeader.paddingRight}
+        backgroundColor={tableHeader.backgroundColor}
+        borderBottomWidth={tableHeader.borderBottomWidth}
+        borderBottomColor={tableHeader.borderBottomColor}
+      >
+        {isChildrenString ? (
+          <Text size="medium" weight="bold">
+            {children}
+          </Text>
+        ) : (
+          children
+        )}
+      </BaseBox>
+    </HeaderCell>
+  );
 };
 
 export { TableHeader, TableHeaderRow, TableHeaderCell };

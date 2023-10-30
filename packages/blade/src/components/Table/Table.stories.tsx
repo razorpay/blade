@@ -6,6 +6,7 @@ import { TableBody, TableRow, TableCell } from './TableBody';
 import { TableFooter, TableFooterRow, TableFooterCell } from './TableFooter';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+import { Box } from '~components/Box';
 
 export default {
   title: 'Components/Table',
@@ -29,7 +30,7 @@ const nodes = [
     type: 'SETUP',
     isComplete: true,
     _hasContent: false,
-    nodes: null,
+    nodes: [],
   },
   {
     id: '1',
@@ -309,49 +310,51 @@ const data = {
   },
 };
 
-const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
+const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...gp }) => {
   return (
-    <TableComponent data={data}>
-      {(tableList) => (
-        <>
-          <TableHeader>
-            <TableHeaderRow>
-              <TableHeaderCell>Task</TableHeaderCell>
-              <TableHeaderCell>Deadline</TableHeaderCell>
-              <TableHeaderCell>Type</TableHeaderCell>
-              <TableHeaderCell>Complete</TableHeaderCell>
-              <TableHeaderCell>Tasks</TableHeaderCell>
-            </TableHeaderRow>
-          </TableHeader>
-          <TableBody>
-            {tableList.map((tableItem, index) => (
-              <TableRow key={index} item={tableItem}>
-                <TableCell>{tableItem.name}</TableCell>
-                <TableCell>
-                  {tableItem.deadline.toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: '2-digit',
-                    day: '2-digit',
-                  })}
-                </TableCell>
-                <TableCell>{tableItem.type}</TableCell>
-                <TableCell>{tableItem.isComplete.toString()}</TableCell>
-                <TableCell>{tableItem.nodes?.length}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-          <TableFooter>
-            <TableFooterRow>
-              <TableFooterCell>-</TableFooterCell>
-              <TableFooterCell>-</TableFooterCell>
-              <TableFooterCell>-</TableFooterCell>
-              <TableFooterCell>-</TableFooterCell>
-              <TableFooterCell>-</TableFooterCell>
-            </TableFooterRow>
-          </TableFooter>
-        </>
-      )}
-    </TableComponent>
+    <Box backgroundColor="surface.background.level1.lowContrast" padding="spacing.5">
+      <TableComponent data={data}>
+        {(tableList) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Task</TableHeaderCell>
+                <TableHeaderCell>Deadline</TableHeaderCell>
+                <TableHeaderCell>Type</TableHeaderCell>
+                <TableHeaderCell>Complete</TableHeaderCell>
+                <TableHeaderCell>Tasks</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {tableList.map((tableItem, index) => (
+                <TableRow key={index} item={tableItem}>
+                  <TableCell>{tableItem.name}</TableCell>
+                  <TableCell>
+                    {tableItem.deadline.toLocaleDateString('en-US', {
+                      year: 'numeric',
+                      month: '2-digit',
+                      day: '2-digit',
+                    })}
+                  </TableCell>
+                  <TableCell>{tableItem.type}</TableCell>
+                  <TableCell>{tableItem.isComplete.toString()}</TableCell>
+                  <TableCell>{tableItem.nodes?.length.toString()}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+            <TableFooter>
+              <TableFooterRow>
+                <TableFooterCell>-</TableFooterCell>
+                <TableFooterCell>-</TableFooterCell>
+                <TableFooterCell>-</TableFooterCell>
+                <TableFooterCell>-</TableFooterCell>
+                <TableFooterCell>-</TableFooterCell>
+              </TableFooterRow>
+            </TableFooter>
+          </>
+        )}
+      </TableComponent>
+    </Box>
   );
 };
 
