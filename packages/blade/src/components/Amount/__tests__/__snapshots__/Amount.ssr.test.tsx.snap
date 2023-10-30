@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Amount /> should render Amount on server 1`] = `"<div id="root"><div data-blade-component="amount" class="BaseBox-bmPWx bcSLaJ"><div data-blade-component="base-box" class="BaseBox-bmPWx dVzpVF"><span class="StyledBaseText-dVBfTO cQGNSm" data-blade-component="base-text">₹</span><span class="StyledBaseText-dVBfTO eIdQFo" data-blade-component="base-text">10,000<!-- -->.</span><span class="StyledBaseText-dVBfTO ghBMue" data-blade-component="base-text">00</span></div></div></div>"`;
+exports[`<Amount /> should render Amount on server 1`] = `"<div id="root"><div data-blade-component="amount" class="BaseBox-bmPWx hGbNLG"><div data-blade-component="base-box" class="BaseBox-bmPWx klozWS"><span class="StyledBaseText-dVBfTO iHHrfx" data-blade-component="base-text">₹</span><span class="StyledBaseText-dVBfTO ekbJPz" data-blade-component="base-text">10,000<!-- -->.</span><span class="StyledBaseText-dVBfTO kBIHWd" data-blade-component="base-text">00</span></div></div></div>"`;
 
 exports[`<Amount /> should render Amount on server 2`] = `
 .c2 {
@@ -69,6 +69,7 @@ exports[`<Amount /> should render Amount on server 2`] = `
   id="root"
 >
   <div
+<<<<<<< HEAD
     class="c0"
     data-blade-component="amount"
   >
@@ -78,12 +79,27 @@ exports[`<Amount /> should render Amount on server 2`] = `
     >
       <span
         class="c2"
+=======
+    class="BaseBox-bmPWx hGbNLG"
+    data-blade-component="amount"
+  >
+    <div
+      class="BaseBox-bmPWx klozWS"
+      data-blade-component="base-box"
+    >
+      <span
+        class="StyledBaseText-dVBfTO iHHrfx"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
         data-blade-component="base-text"
       >
         ₹
       </span>
       <span
+<<<<<<< HEAD
         class="c3"
+=======
+        class="StyledBaseText-dVBfTO ekbJPz"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
         data-blade-component="base-text"
       >
         10,000
@@ -91,7 +107,11 @@ exports[`<Amount /> should render Amount on server 2`] = `
         .
       </span>
       <span
+<<<<<<< HEAD
         class="c4"
+=======
+        class="StyledBaseText-dVBfTO kBIHWd"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
         data-blade-component="base-text"
       >
         00

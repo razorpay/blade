@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<OTPInput /> should have hidden input for form submissions 1`] = `"<div id="root"><div data-blade-component="otp-input" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx etNGXF"><label for="otp-undefined-input-undefined" style="width:auto;flex-shrink:0;margin-right:16px" data-blade-component="form-label"><div data-blade-component="base-box" class="BaseBox-bmPWx bqWBik"><div data-blade-component="base-box" class="BaseBox-bmPWx eeqPab"><p class="StyledBaseText-dVBfTO gaMIEc" data-blade-component="text">Enter OTP</p><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 ijVANw"><p class="StyledBaseText-dVBfTO eIdQFo" data-blade-component="text"></p></div></div></div></label><div data-blade-component="base-box" class="BaseBox-bmPWx djEyfF"><input hidden="" id="otp-undefined-input-undefined" name="otpInput" readonly="" value=""/><div data-blade-component="base-box" class="BaseBox-bmPWx goISJX"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx edjBu"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  exvuoO"><input name="otpInput" type="text" required="" inputMode="decimal" autoComplete="one-time-code" id="otp-undefined-input-undefined-0-undefined-input-undefined" placeholder="" data-blade-component="styled-base-input" aria-required="true" aria-disabled="false" aria-invalid="false" aria-describedby="" aria-label="Enter OTP character 1" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 dTyYCn" value=""/><div data-blade-component="base-box" class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  dGtNgo"></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx kqrvPH"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx edjBu"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  exvuoO"><input name="otpInput" type="text" required="" inputMode="decimal" autoComplete="one-time-code" id="otp-undefined-input-undefined-1-undefined-input-undefined" placeholder="" data-blade-component="styled-base-input" aria-required="true" aria-disabled="false" aria-invalid="false" aria-describedby="" aria-label=" character 2" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 dTyYCn" value=""/><div data-blade-component="base-box" class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  dGtNgo"></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx kqrvPH"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx edjBu"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  exvuoO"><input name="otpInput" type="text" required="" inputMode="decimal" autoComplete="one-time-code" id="otp-undefined-input-undefined-2-undefined-input-undefined" placeholder="" data-blade-component="styled-base-input" aria-required="true" aria-disabled="false" aria-invalid="false" aria-describedby="" aria-label=" character 3" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 dTyYCn" value=""/><div data-blade-component="base-box" class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  dGtNgo"></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx kqrvPH"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx edjBu"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  exvuoO"><input name="otpInput" type="text" required="" inputMode="decimal" autoComplete="one-time-code" id="otp-undefined-input-undefined-3-undefined-input-undefined" placeholder="" data-blade-component="styled-base-input" aria-required="true" aria-disabled="false" aria-invalid="false" aria-describedby="" aria-label=" character 4" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 dTyYCn" value=""/><div data-blade-component="base-box" class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  dGtNgo"></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx kqrvPH"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx edjBu"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  exvuoO"><input name="otpInput" type="text" required="" inputMode="decimal" autoComplete="one-time-code" id="otp-undefined-input-undefined-4-undefined-input-undefined" placeholder="" data-blade-component="styled-base-input" aria-required="true" aria-disabled="false" aria-invalid="false" aria-describedby="" aria-label=" character 5" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 dTyYCn" value=""/><div data-blade-component="base-box" class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  dGtNgo"></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx kqrvPH"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx edjBu"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  exvuoO"><input name="otpInput" type="text" required="" inputMode="decimal" autoComplete="one-time-code" id="otp-undefined-input-undefined-5-undefined-input-undefined" placeholder="" data-blade-component="styled-base-input" aria-required="true" aria-disabled="false" aria-invalid="false" aria-describedby="" aria-label=" character 6" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 dTyYCn" value=""/><div data-blade-component="base-box" class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  dGtNgo"></div></div></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx jgxKDg"></div></div></div>"`;
+exports[`<OTPInput /> should have hidden input for form submissions 1`] = `"<div id="root"><div data-blade-component="otp-input" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx bcWprW"><label for="otp-undefined-input-undefined" style="width:auto;flex-shrink:0;margin-right:16px" data-blade-component="form-label"><div data-blade-component="base-box" class="BaseBox-bmPWx jwewzj"><div data-blade-component="base-box" class="BaseBox-bmPWx gSDcFQ"><p class="StyledBaseText-dVBfTO hzWZkf" data-blade-component="text">Enter OTP</p><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 jZYAhz"><p class="StyledBaseText-dVBfTO ekbJPz" data-blade-component="text"></p></div></div></div></label><div data-blade-component="base-box" class="BaseBox-bmPWx cRzqgS"><input hidden="" id="otp-undefined-input-undefined" name="otpInput" readonly="" value=""/><div data-blade-component="base-box" class="BaseBox-bmPWx etdoQc"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx kNqLmN"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  fJetzJ"><input name="otpInput" type="text" required="" inputMode="decimal" autoComplete="one-time-code" id="otp-undefined-input-undefined-0-undefined-input-undefined" placeholder="" data-blade-component="styled-base-input" aria-required="true" aria-disabled="false" aria-invalid="false" aria-describedby="" aria-label="Enter OTP character 1" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 iZqNKA" value=""/><div data-blade-component="base-box" class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  ekRFiH"></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx iuLRVM"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx kNqLmN"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  fJetzJ"><input name="otpInput" type="text" required="" inputMode="decimal" autoComplete="one-time-code" id="otp-undefined-input-undefined-1-undefined-input-undefined" placeholder="" data-blade-component="styled-base-input" aria-required="true" aria-disabled="false" aria-invalid="false" aria-describedby="" aria-label=" character 2" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 iZqNKA" value=""/><div data-blade-component="base-box" class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  ekRFiH"></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx iuLRVM"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx kNqLmN"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  fJetzJ"><input name="otpInput" type="text" required="" inputMode="decimal" autoComplete="one-time-code" id="otp-undefined-input-undefined-2-undefined-input-undefined" placeholder="" data-blade-component="styled-base-input" aria-required="true" aria-disabled="false" aria-invalid="false" aria-describedby="" aria-label=" character 3" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 iZqNKA" value=""/><div data-blade-component="base-box" class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  ekRFiH"></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx iuLRVM"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx kNqLmN"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  fJetzJ"><input name="otpInput" type="text" required="" inputMode="decimal" autoComplete="one-time-code" id="otp-undefined-input-undefined-3-undefined-input-undefined" placeholder="" data-blade-component="styled-base-input" aria-required="true" aria-disabled="false" aria-invalid="false" aria-describedby="" aria-label=" character 4" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 iZqNKA" value=""/><div data-blade-component="base-box" class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  ekRFiH"></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx iuLRVM"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx kNqLmN"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  fJetzJ"><input name="otpInput" type="text" required="" inputMode="decimal" autoComplete="one-time-code" id="otp-undefined-input-undefined-4-undefined-input-undefined" placeholder="" data-blade-component="styled-base-input" aria-required="true" aria-disabled="false" aria-invalid="false" aria-describedby="" aria-label=" character 5" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 iZqNKA" value=""/><div data-blade-component="base-box" class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  ekRFiH"></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx iuLRVM"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx kNqLmN"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  fJetzJ"><input name="otpInput" type="text" required="" inputMode="decimal" autoComplete="one-time-code" id="otp-undefined-input-undefined-5-undefined-input-undefined" placeholder="" data-blade-component="styled-base-input" aria-required="true" aria-disabled="false" aria-invalid="false" aria-describedby="" aria-label=" character 6" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 iZqNKA" value=""/><div data-blade-component="base-box" class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  ekRFiH"></div></div></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx tRsvP"></div></div></div>"`;
 
 exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
 .c0 {
@@ -293,7 +293,11 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
     data-blade-component="otp-input"
   >
     <div
+<<<<<<< HEAD
       class="c0"
+=======
+      class="BaseBox-bmPWx bcWprW"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
       data-blade-component="base-box"
     >
       <label
@@ -302,6 +306,7 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
         style="width:auto;flex-shrink:0;margin-right:16px"
       >
         <div
+<<<<<<< HEAD
           class="c1"
           data-blade-component="base-box"
         >
@@ -311,16 +316,35 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
           >
             <p
               class="c3"
+=======
+          class="BaseBox-bmPWx jwewzj"
+          data-blade-component="base-box"
+        >
+          <div
+            class="BaseBox-bmPWx gSDcFQ"
+            data-blade-component="base-box"
+          >
+            <p
+              class="StyledBaseText-dVBfTO hzWZkf"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
               data-blade-component="text"
             >
               Enter OTP
             </p>
             <div
+<<<<<<< HEAD
               class="c4"
               data-blade-component="visually-hidden"
             >
               <p
                 class="c5"
+=======
+              class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 jZYAhz"
+              data-blade-component="visually-hidden"
+            >
+              <p
+                class="StyledBaseText-dVBfTO ekbJPz"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
                 data-blade-component="text"
               />
             </div>
@@ -328,7 +352,11 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
         </div>
       </label>
       <div
+<<<<<<< HEAD
         class="c6"
+=======
+        class="BaseBox-bmPWx cRzqgS"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
         data-blade-component="base-box"
       >
         <input
@@ -339,7 +367,11 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
           value=""
         />
         <div
+<<<<<<< HEAD
           class="c7"
+=======
+          class="BaseBox-bmPWx etdoQc"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
           data-blade-component="base-box"
         >
           <div
@@ -347,11 +379,19 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
             data-blade-component="base-box"
           >
             <div
+<<<<<<< HEAD
               class="c8"
               data-blade-component="base-box"
             >
               <div
                 class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c9"
+=======
+              class="BaseBox-bmPWx kNqLmN"
+              data-blade-component="base-box"
+            >
+              <div
+                class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  fJetzJ"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
                 data-blade-component="base-box"
               >
                 <input
@@ -361,7 +401,11 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
                   aria-label="Enter OTP character 1"
                   aria-required="true"
                   autocomplete="one-time-code"
+<<<<<<< HEAD
                   class="c10"
+=======
+                  class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 iZqNKA"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
                   data-blade-component="styled-base-input"
                   id="otp-37-input-38-0-49-input-50"
                   inputmode="decimal"
@@ -372,7 +416,11 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
                   value=""
                 />
                 <div
+<<<<<<< HEAD
                   class=" c11"
+=======
+                  class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  ekRFiH"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
                   data-blade-component="base-box"
                 />
               </div>
@@ -380,7 +428,11 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
           </div>
         </div>
         <div
+<<<<<<< HEAD
           class="c12"
+=======
+          class="BaseBox-bmPWx iuLRVM"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
           data-blade-component="base-box"
         >
           <div
@@ -388,11 +440,19 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
             data-blade-component="base-box"
           >
             <div
+<<<<<<< HEAD
               class="c8"
               data-blade-component="base-box"
             >
               <div
                 class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c9"
+=======
+              class="BaseBox-bmPWx kNqLmN"
+              data-blade-component="base-box"
+            >
+              <div
+                class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  fJetzJ"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
                 data-blade-component="base-box"
               >
                 <input
@@ -402,7 +462,11 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
                   aria-label=" character 2"
                   aria-required="true"
                   autocomplete="one-time-code"
+<<<<<<< HEAD
                   class="c10"
+=======
+                  class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 iZqNKA"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
                   data-blade-component="styled-base-input"
                   id="otp-37-input-38-1-55-input-56"
                   inputmode="decimal"
@@ -413,7 +477,11 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
                   value=""
                 />
                 <div
+<<<<<<< HEAD
                   class=" c11"
+=======
+                  class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  ekRFiH"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
                   data-blade-component="base-box"
                 />
               </div>
@@ -421,7 +489,11 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
           </div>
         </div>
         <div
+<<<<<<< HEAD
           class="c12"
+=======
+          class="BaseBox-bmPWx iuLRVM"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
           data-blade-component="base-box"
         >
           <div
@@ -429,11 +501,19 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
             data-blade-component="base-box"
           >
             <div
+<<<<<<< HEAD
               class="c8"
               data-blade-component="base-box"
             >
               <div
                 class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c9"
+=======
+              class="BaseBox-bmPWx kNqLmN"
+              data-blade-component="base-box"
+            >
+              <div
+                class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  fJetzJ"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
                 data-blade-component="base-box"
               >
                 <input
@@ -443,7 +523,11 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
                   aria-label=" character 3"
                   aria-required="true"
                   autocomplete="one-time-code"
+<<<<<<< HEAD
                   class="c10"
+=======
+                  class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 iZqNKA"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
                   data-blade-component="styled-base-input"
                   id="otp-37-input-38-2-61-input-62"
                   inputmode="decimal"
@@ -454,7 +538,11 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
                   value=""
                 />
                 <div
+<<<<<<< HEAD
                   class=" c11"
+=======
+                  class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  ekRFiH"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
                   data-blade-component="base-box"
                 />
               </div>
@@ -462,7 +550,11 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
           </div>
         </div>
         <div
+<<<<<<< HEAD
           class="c12"
+=======
+          class="BaseBox-bmPWx iuLRVM"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
           data-blade-component="base-box"
         >
           <div
@@ -470,11 +562,19 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
             data-blade-component="base-box"
           >
             <div
+<<<<<<< HEAD
               class="c8"
               data-blade-component="base-box"
             >
               <div
                 class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c9"
+=======
+              class="BaseBox-bmPWx kNqLmN"
+              data-blade-component="base-box"
+            >
+              <div
+                class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  fJetzJ"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
                 data-blade-component="base-box"
               >
                 <input
@@ -484,7 +584,11 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
                   aria-label=" character 4"
                   aria-required="true"
                   autocomplete="one-time-code"
+<<<<<<< HEAD
                   class="c10"
+=======
+                  class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 iZqNKA"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
                   data-blade-component="styled-base-input"
                   id="otp-37-input-38-3-67-input-68"
                   inputmode="decimal"
@@ -495,7 +599,11 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
                   value=""
                 />
                 <div
+<<<<<<< HEAD
                   class=" c11"
+=======
+                  class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  ekRFiH"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
                   data-blade-component="base-box"
                 />
               </div>
@@ -503,7 +611,11 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
           </div>
         </div>
         <div
+<<<<<<< HEAD
           class="c12"
+=======
+          class="BaseBox-bmPWx iuLRVM"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
           data-blade-component="base-box"
         >
           <div
@@ -511,11 +623,19 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
             data-blade-component="base-box"
           >
             <div
+<<<<<<< HEAD
               class="c8"
               data-blade-component="base-box"
             >
               <div
                 class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c9"
+=======
+              class="BaseBox-bmPWx kNqLmN"
+              data-blade-component="base-box"
+            >
+              <div
+                class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  fJetzJ"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
                 data-blade-component="base-box"
               >
                 <input
@@ -525,7 +645,11 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
                   aria-label=" character 5"
                   aria-required="true"
                   autocomplete="one-time-code"
+<<<<<<< HEAD
                   class="c10"
+=======
+                  class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 iZqNKA"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
                   data-blade-component="styled-base-input"
                   id="otp-37-input-38-4-73-input-74"
                   inputmode="decimal"
@@ -536,7 +660,11 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
                   value=""
                 />
                 <div
+<<<<<<< HEAD
                   class=" c11"
+=======
+                  class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  ekRFiH"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
                   data-blade-component="base-box"
                 />
               </div>
@@ -544,7 +672,11 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
           </div>
         </div>
         <div
+<<<<<<< HEAD
           class="c12"
+=======
+          class="BaseBox-bmPWx iuLRVM"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
           data-blade-component="base-box"
         >
           <div
@@ -552,11 +684,19 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
             data-blade-component="base-box"
           >
             <div
+<<<<<<< HEAD
               class="c8"
               data-blade-component="base-box"
             >
               <div
                 class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c9"
+=======
+              class="BaseBox-bmPWx kNqLmN"
+              data-blade-component="base-box"
+            >
+              <div
+                class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  fJetzJ"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
                 data-blade-component="base-box"
               >
                 <input
@@ -566,7 +706,11 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
                   aria-label=" character 6"
                   aria-required="true"
                   autocomplete="one-time-code"
+<<<<<<< HEAD
                   class="c10"
+=======
+                  class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 iZqNKA"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
                   data-blade-component="styled-base-input"
                   id="otp-37-input-38-5-79-input-80"
                   inputmode="decimal"
@@ -577,7 +721,11 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
                   value=""
                 />
                 <div
+<<<<<<< HEAD
                   class=" c11"
+=======
+                  class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  ekRFiH"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
                   data-blade-component="base-box"
                 />
               </div>
@@ -587,7 +735,11 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
       </div>
     </div>
     <div
+<<<<<<< HEAD
       class="c13"
+=======
+      class="BaseBox-bmPWx tRsvP"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
       data-blade-component="base-box"
     />
   </div>

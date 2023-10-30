@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<RadioGroup /> should render with help text 1`] = `
-.c9 {
+#razorpay-blade .c5 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -29,7 +29,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
   transition-timing-function: cubic-bezier(0.7,0,0.5,1);
 }
 
-.c6 {
+#razorpay-blade .c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -38,7 +38,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
   margin-bottom: 2px;
 }
 
-.c0 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -48,11 +48,11 @@ exports[`<RadioGroup /> should render with help text 1`] = `
   flex-direction: column;
 }
 
-.c1 {
+#razorpay-blade .c0 {
   margin-bottom: 4px;
 }
 
-.c2 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -71,7 +71,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
   gap: 0px;
 }
 
-.c7 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -85,19 +85,19 @@ exports[`<RadioGroup /> should render with help text 1`] = `
   align-items: center;
 }
 
-.c10 {
+#razorpay-blade .c0 {
   margin-left: 4px;
 }
 
-.c12 {
+#razorpay-blade .c0 {
   margin-bottom: 0px;
 }
 
-.c13 {
+#razorpay-blade .c0 {
   margin-top: 4px;
 }
 
-.c3 {
+#razorpay-blade .c1 {
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -115,7 +115,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
   -webkit-box-orient: vertical;
 }
 
-.c5 {
+#razorpay-blade .c1 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -128,7 +128,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
   padding: 0;
 }
 
-.c11 {
+#razorpay-blade .c1 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -141,7 +141,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
   padding: 0;
 }
 
-.c14 {
+#razorpay-blade .c1 {
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.6875rem;
@@ -154,7 +154,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
   padding: 0;
 }
 
-.c4 {
+#razorpay-blade .c2 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -171,7 +171,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
   word-wrap: normal;
 }
 
-.c8 {
+#razorpay-blade .c4 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -188,12 +188,12 @@ exports[`<RadioGroup /> should render with help text 1`] = `
   word-wrap: normal;
 }
 
-.c8:focus-visible + div {
+#razorpay-blade .c4:focus-visible + div {
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c8:hover + div {
+#razorpay-blade .c4:hover + div {
   border-color: hsla(214,18%,69%,1);
   background-color: hsla(216,15%,54%,0.09);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -204,12 +204,12 @@ exports[`<RadioGroup /> should render with help text 1`] = `
 
 <div>
   <div
-    class=""
+    class="c0"
     data-blade-component="base-box"
   >
     <div
       aria-labelledby="radio-group-15-label"
-      class="c0"
+      class="c0 "
       data-blade-component="radio-group"
       role="radiogroup"
     >
@@ -219,25 +219,25 @@ exports[`<RadioGroup /> should render with help text 1`] = `
         style="width: auto; flex-shrink: 0; margin-right: 16px;"
       >
         <div
-          class="c1"
+          class="c0 "
           data-blade-component="base-box"
         >
           <div
-            class="c2"
+            class="c0 "
             data-blade-component="base-box"
           >
             <p
-              class="c3"
+              class="c1 "
               data-blade-component="text"
             >
               Select fruits
             </p>
             <div
-              class="c4"
+              class="c2 "
               data-blade-component="visually-hidden"
             >
               <p
-                class="c5"
+                class="c1 "
                 data-blade-component="text"
               >
                 ,Select one
@@ -247,31 +247,31 @@ exports[`<RadioGroup /> should render with help text 1`] = `
         </div>
       </span>
       <div
-        class=""
+        class="c0"
         data-blade-component="base-box"
       >
         <div
-          class="c0"
+          class="c0 "
           data-blade-component="base-box"
         >
           <div
-            class="c1"
+            class="c0 "
             data-blade-component="base-box"
           >
             <div
-              class=""
+              class="c0"
               data-blade-component="base-box"
             >
               <label
-                class="c6"
+                class="c3 "
                 data-blade-component="radio-label"
               >
                 <div
-                  class="c0"
+                  class="c0 "
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c7"
+                    class="c0 "
                     data-blade-component="base-box"
                   >
                     <input
@@ -280,22 +280,22 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                       aria-disabled="false"
                       aria-invalid="false"
                       aria-required="false"
-                      class="c8"
+                      class="c4 "
                       name="radio-group-15"
                       role="radio"
                       type="radio"
                       value="apple"
                     />
                     <div
-                      class="c9"
+                      class="c5 "
                       data-blade-component="radio-icon-wrapper"
                     />
                     <div
-                      class="c10"
+                      class="c0 "
                       data-blade-component="base-box"
                     />
                     <div
-                      class="c11"
+                      class="c1 "
                       data-blade-component="base-text"
                     >
                       Apple
@@ -306,23 +306,23 @@ exports[`<RadioGroup /> should render with help text 1`] = `
             </div>
           </div>
           <div
-            class="c1"
+            class="c0 "
             data-blade-component="base-box"
           >
             <div
-              class=""
+              class="c0"
               data-blade-component="base-box"
             >
               <label
-                class="c6"
+                class="c3 "
                 data-blade-component="radio-label"
               >
                 <div
-                  class="c0"
+                  class="c0 "
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c7"
+                    class="c0 "
                     data-blade-component="base-box"
                   >
                     <input
@@ -331,22 +331,22 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                       aria-disabled="false"
                       aria-invalid="false"
                       aria-required="false"
-                      class="c8"
+                      class="c4 "
                       name="radio-group-15"
                       role="radio"
                       type="radio"
                       value="mango"
                     />
                     <div
-                      class="c9"
+                      class="c5 "
                       data-blade-component="radio-icon-wrapper"
                     />
                     <div
-                      class="c10"
+                      class="c0 "
                       data-blade-component="base-box"
                     />
                     <div
-                      class="c11"
+                      class="c1 "
                       data-blade-component="base-text"
                     >
                       Mango
@@ -357,23 +357,23 @@ exports[`<RadioGroup /> should render with help text 1`] = `
             </div>
           </div>
           <div
-            class="c12"
+            class="c0 "
             data-blade-component="base-box"
           >
             <div
-              class=""
+              class="c0"
               data-blade-component="base-box"
             >
               <label
-                class="c6"
+                class="c3 "
                 data-blade-component="radio-label"
               >
                 <div
-                  class="c0"
+                  class="c0 "
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c7"
+                    class="c0 "
                     data-blade-component="base-box"
                   >
                     <input
@@ -382,22 +382,22 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                       aria-disabled="false"
                       aria-invalid="false"
                       aria-required="false"
-                      class="c8"
+                      class="c4 "
                       name="radio-group-15"
                       role="radio"
                       type="radio"
                       value="orange"
                     />
                     <div
-                      class="c9"
+                      class="c5 "
                       data-blade-component="radio-icon-wrapper"
                     />
                     <div
-                      class="c10"
+                      class="c0 "
                       data-blade-component="base-box"
                     />
                     <div
-                      class="c11"
+                      class="c1 "
                       data-blade-component="base-text"
                     >
                       Orange
@@ -409,16 +409,16 @@ exports[`<RadioGroup /> should render with help text 1`] = `
           </div>
         </div>
         <div
-          class="c13"
+          class="c0 "
           data-blade-component="base-box"
         >
           <span
-            class="c7"
+            class="c0 "
             data-blade-component="base-box"
             style="word-break: break-all;"
           >
             <span
-              class="c14"
+              class="c1 "
               data-blade-component="base-text"
             >
               Select one
@@ -432,7 +432,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
 `;
 
 exports[`<RadioGroup /> should render with label 1`] = `
-.c9 {
+#razorpay-blade .c5 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -460,7 +460,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
   transition-timing-function: cubic-bezier(0.7,0,0.5,1);
 }
 
-.c6 {
+#razorpay-blade .c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -469,7 +469,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
   margin-bottom: 2px;
 }
 
-.c0 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -479,11 +479,11 @@ exports[`<RadioGroup /> should render with label 1`] = `
   flex-direction: column;
 }
 
-.c1 {
+#razorpay-blade .c0 {
   margin-bottom: 4px;
 }
 
-.c2 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -502,7 +502,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
   gap: 0px;
 }
 
-.c7 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -516,15 +516,15 @@ exports[`<RadioGroup /> should render with label 1`] = `
   align-items: center;
 }
 
-.c10 {
+#razorpay-blade .c0 {
   margin-left: 4px;
 }
 
-.c12 {
+#razorpay-blade .c0 {
   margin-bottom: 0px;
 }
 
-.c3 {
+#razorpay-blade .c1 {
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -542,7 +542,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
   -webkit-box-orient: vertical;
 }
 
-.c5 {
+#razorpay-blade .c1 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -555,7 +555,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
   padding: 0;
 }
 
-.c11 {
+#razorpay-blade .c1 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -568,7 +568,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
   padding: 0;
 }
 
-.c4 {
+#razorpay-blade .c2 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -585,7 +585,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
   word-wrap: normal;
 }
 
-.c8 {
+#razorpay-blade .c4 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -602,12 +602,12 @@ exports[`<RadioGroup /> should render with label 1`] = `
   word-wrap: normal;
 }
 
-.c8:focus-visible + div {
+#razorpay-blade .c4:focus-visible + div {
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c8:hover + div {
+#razorpay-blade .c4:hover + div {
   border-color: hsla(214,18%,69%,1);
   background-color: hsla(216,15%,54%,0.09);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -618,12 +618,12 @@ exports[`<RadioGroup /> should render with label 1`] = `
 
 <div>
   <div
-    class=""
+    class="c0"
     data-blade-component="base-box"
   >
     <div
       aria-labelledby="radio-group-7-label"
-      class="c0"
+      class="c0 "
       data-blade-component="radio-group"
       role="radiogroup"
     >
@@ -633,25 +633,25 @@ exports[`<RadioGroup /> should render with label 1`] = `
         style="width: auto; flex-shrink: 0; margin-right: 16px;"
       >
         <div
-          class="c1"
+          class="c0 "
           data-blade-component="base-box"
         >
           <div
-            class="c2"
+            class="c0 "
             data-blade-component="base-box"
           >
             <p
-              class="c3"
+              class="c1 "
               data-blade-component="text"
             >
               Select fav fruit
             </p>
             <div
-              class="c4"
+              class="c2 "
               data-blade-component="visually-hidden"
             >
               <p
-                class="c5"
+                class="c1 "
                 data-blade-component="text"
               />
             </div>
@@ -659,31 +659,31 @@ exports[`<RadioGroup /> should render with label 1`] = `
         </div>
       </span>
       <div
-        class=""
+        class="c0"
         data-blade-component="base-box"
       >
         <div
-          class="c0"
+          class="c0 "
           data-blade-component="base-box"
         >
           <div
-            class="c1"
+            class="c0 "
             data-blade-component="base-box"
           >
             <div
-              class=""
+              class="c0"
               data-blade-component="base-box"
             >
               <label
-                class="c6"
+                class="c3 "
                 data-blade-component="radio-label"
               >
                 <div
-                  class="c0"
+                  class="c0 "
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c7"
+                    class="c0 "
                     data-blade-component="base-box"
                   >
                     <input
@@ -692,22 +692,22 @@ exports[`<RadioGroup /> should render with label 1`] = `
                       aria-disabled="false"
                       aria-invalid="false"
                       aria-required="false"
-                      class="c8"
+                      class="c4 "
                       name="radio-group-7"
                       role="radio"
                       type="radio"
                       value="apple"
                     />
                     <div
-                      class="c9"
+                      class="c5 "
                       data-blade-component="radio-icon-wrapper"
                     />
                     <div
-                      class="c10"
+                      class="c0 "
                       data-blade-component="base-box"
                     />
                     <div
-                      class="c11"
+                      class="c1 "
                       data-blade-component="base-text"
                     >
                       Apple
@@ -718,23 +718,23 @@ exports[`<RadioGroup /> should render with label 1`] = `
             </div>
           </div>
           <div
-            class="c1"
+            class="c0 "
             data-blade-component="base-box"
           >
             <div
-              class=""
+              class="c0"
               data-blade-component="base-box"
             >
               <label
-                class="c6"
+                class="c3 "
                 data-blade-component="radio-label"
               >
                 <div
-                  class="c0"
+                  class="c0 "
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c7"
+                    class="c0 "
                     data-blade-component="base-box"
                   >
                     <input
@@ -743,22 +743,22 @@ exports[`<RadioGroup /> should render with label 1`] = `
                       aria-disabled="false"
                       aria-invalid="false"
                       aria-required="false"
-                      class="c8"
+                      class="c4 "
                       name="radio-group-7"
                       role="radio"
                       type="radio"
                       value="mango"
                     />
                     <div
-                      class="c9"
+                      class="c5 "
                       data-blade-component="radio-icon-wrapper"
                     />
                     <div
-                      class="c10"
+                      class="c0 "
                       data-blade-component="base-box"
                     />
                     <div
-                      class="c11"
+                      class="c1 "
                       data-blade-component="base-text"
                     >
                       Mango
@@ -769,23 +769,23 @@ exports[`<RadioGroup /> should render with label 1`] = `
             </div>
           </div>
           <div
-            class="c12"
+            class="c0 "
             data-blade-component="base-box"
           >
             <div
-              class=""
+              class="c0"
               data-blade-component="base-box"
             >
               <label
-                class="c6"
+                class="c3 "
                 data-blade-component="radio-label"
               >
                 <div
-                  class="c0"
+                  class="c0 "
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c7"
+                    class="c0 "
                     data-blade-component="base-box"
                   >
                     <input
@@ -794,22 +794,22 @@ exports[`<RadioGroup /> should render with label 1`] = `
                       aria-disabled="false"
                       aria-invalid="false"
                       aria-required="false"
-                      class="c8"
+                      class="c4 "
                       name="radio-group-7"
                       role="radio"
                       type="radio"
                       value="orange"
                     />
                     <div
-                      class="c9"
+                      class="c5 "
                       data-blade-component="radio-icon-wrapper"
                     />
                     <div
-                      class="c10"
+                      class="c0 "
                       data-blade-component="base-box"
                     />
                     <div
-                      class="c11"
+                      class="c1 "
                       data-blade-component="base-text"
                     >
                       Orange

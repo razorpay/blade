@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Alert /> should render 1`] = `
-.c0 {
+#razorpay-blade .c0 {
   text-align: left;
 }
 
-.c2 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -13,7 +13,7 @@ exports[`<Alert /> should render 1`] = `
   margin-top: 2px;
 }
 
-.c3 {
+#razorpay-blade .c0 {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -21,11 +21,11 @@ exports[`<Alert /> should render 1`] = `
   padding-left: 8px;
 }
 
-.c4 {
+#razorpay-blade .c0 {
   margin-top: 2px;
 }
 
-.c1 {
+#razorpay-blade .c1 {
   background: hsla(216,15%,54%,0.09);
   padding: 8px 8px 12px 8px;
   border-radius: 4px;
@@ -47,7 +47,7 @@ exports[`<Alert /> should render 1`] = `
   box-sizing: border-box;
 }
 
-.c6 {
+#razorpay-blade .c3 {
   border: none;
   cursor: pointer;
   padding: 0;
@@ -74,21 +74,21 @@ exports[`<Alert /> should render 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c6:hover {
+#razorpay-blade .c3:hover {
   color: hsla(217,18%,45%,1);
 }
 
-.c6:focus-visible {
+#razorpay-blade .c3:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   color: hsla(217,18%,45%,1);
 }
 
-.c6:active {
+#razorpay-blade .c3:active {
   color: hsla(217,18%,45%,1);
 }
 
-.c5 {
+#razorpay-blade .c2 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -103,16 +103,16 @@ exports[`<Alert /> should render 1`] = `
 
 <div>
   <div
-    class=""
+    class="c0"
     data-blade-component="alert"
     role="status"
   >
     <div
-      class="c0 c1"
+      class="c0 c1 "
       data-blade-component="base-box"
     >
       <div
-        class="c2"
+        class="c0 "
         data-blade-component="base-box"
       >
         <svg
@@ -144,15 +144,15 @@ exports[`<Alert /> should render 1`] = `
         </svg>
       </div>
       <div
-        class="c3"
+        class="c0 "
         data-blade-component="base-box"
       >
         <div
-          class="c4"
+          class="c0 "
           data-blade-component="base-box"
         >
           <p
-            class="c5"
+            class="c2 "
             data-blade-component="text"
           >
             Currently you can only accept payments in international currencies using PayPal.
@@ -161,7 +161,7 @@ exports[`<Alert /> should render 1`] = `
       </div>
       <button
         aria-label="Dismiss alert"
-        class="c6"
+        class="c3 "
         data-blade-component="icon-button"
         type="button"
       >
@@ -187,11 +187,11 @@ exports[`<Alert /> should render 1`] = `
 `;
 
 exports[`<Alert /> should render positive color and full width 1`] = `
-.c0 {
+#razorpay-blade .c0 {
   text-align: left;
 }
 
-.c2 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -199,7 +199,7 @@ exports[`<Alert /> should render positive color and full width 1`] = `
   margin-top: 0px;
 }
 
-.c3 {
+#razorpay-blade .c0 {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -207,11 +207,11 @@ exports[`<Alert /> should render positive color and full width 1`] = `
   padding-left: 12px;
 }
 
-.c4 {
+#razorpay-blade .c0 {
   margin-top: 2px;
 }
 
-.c1 {
+#razorpay-blade .c1 {
   background: hsla(155,100%,31%,0.09);
   padding: 12px 16px;
   border-radius: 0px;
@@ -234,7 +234,7 @@ exports[`<Alert /> should render positive color and full width 1`] = `
   box-sizing: border-box;
 }
 
-.c6 {
+#razorpay-blade .c3 {
   border: none;
   cursor: pointer;
   padding: 0;
@@ -261,21 +261,21 @@ exports[`<Alert /> should render positive color and full width 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c6:hover {
+#razorpay-blade .c3:hover {
   color: hsla(217,18%,45%,1);
 }
 
-.c6:focus-visible {
+#razorpay-blade .c3:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   color: hsla(217,18%,45%,1);
 }
 
-.c6:active {
+#razorpay-blade .c3:active {
   color: hsla(217,18%,45%,1);
 }
 
-.c5 {
+#razorpay-blade .c2 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -290,16 +290,16 @@ exports[`<Alert /> should render positive color and full width 1`] = `
 
 <div>
   <div
-    class=""
+    class="c0"
     data-blade-component="alert"
     role="status"
   >
     <div
-      class="c0 c1"
+      class="c0 c1 "
       data-blade-component="base-box"
     >
       <div
-        class="c2"
+        class="c0 "
         data-blade-component="base-box"
       >
         <svg
@@ -344,15 +344,15 @@ exports[`<Alert /> should render positive color and full width 1`] = `
         </svg>
       </div>
       <div
-        class="c3"
+        class="c0 "
         data-blade-component="base-box"
       >
         <div
-          class="c4"
+          class="c0 "
           data-blade-component="base-box"
         >
           <p
-            class="c5"
+            class="c2 "
             data-blade-component="text"
           >
             Currently you can only accept payments in international currencies using PayPal.
@@ -361,7 +361,7 @@ exports[`<Alert /> should render positive color and full width 1`] = `
       </div>
       <button
         aria-label="Dismiss alert"
-        class="c6"
+        class="c3 "
         data-blade-component="icon-button"
         type="button"
       >
@@ -387,11 +387,11 @@ exports[`<Alert /> should render positive color and full width 1`] = `
 `;
 
 exports[`<Alert /> should render positive intent and full width 1`] = `
-.c0 {
+#razorpay-blade .c0 {
   text-align: left;
 }
 
-.c2 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -399,7 +399,7 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
   margin-top: 0px;
 }
 
-.c3 {
+#razorpay-blade .c0 {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -407,11 +407,11 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
   padding-left: 12px;
 }
 
-.c4 {
+#razorpay-blade .c0 {
   margin-top: 2px;
 }
 
-.c1 {
+#razorpay-blade .c1 {
   background: hsla(155,100%,31%,0.09);
   padding: 12px 16px;
   border-radius: 0px;
@@ -434,7 +434,7 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
   box-sizing: border-box;
 }
 
-.c6 {
+#razorpay-blade .c3 {
   border: none;
   cursor: pointer;
   padding: 0;
@@ -461,21 +461,21 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c6:hover {
+#razorpay-blade .c3:hover {
   color: hsla(217,18%,45%,1);
 }
 
-.c6:focus-visible {
+#razorpay-blade .c3:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   color: hsla(217,18%,45%,1);
 }
 
-.c6:active {
+#razorpay-blade .c3:active {
   color: hsla(217,18%,45%,1);
 }
 
-.c5 {
+#razorpay-blade .c2 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -490,16 +490,16 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
 
 <div>
   <div
-    class=""
+    class="c0"
     data-blade-component="alert"
     role="status"
   >
     <div
-      class="c0 c1"
+      class="c0 c1 "
       data-blade-component="base-box"
     >
       <div
-        class="c2"
+        class="c0 "
         data-blade-component="base-box"
       >
         <svg
@@ -544,15 +544,15 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
         </svg>
       </div>
       <div
-        class="c3"
+        class="c0 "
         data-blade-component="base-box"
       >
         <div
-          class="c4"
+          class="c0 "
           data-blade-component="base-box"
         >
           <p
-            class="c5"
+            class="c2 "
             data-blade-component="text"
           >
             Currently you can only accept payments in international currencies using PayPal.
@@ -561,7 +561,7 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
       </div>
       <button
         aria-label="Dismiss alert"
-        class="c6"
+        class="c3 "
         data-blade-component="icon-button"
         type="button"
       >

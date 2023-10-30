@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Spinner /> should render Spinner with default props 1`] = `
-.c0 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -15,7 +15,7 @@ exports[`<Spinner /> should render Spinner with default props 1`] = `
   align-items: center;
 }
 
-.c1 {
+#razorpay-blade .c1 {
   padding: 1px;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -24,23 +24,23 @@ exports[`<Spinner /> should render Spinner with default props 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
-  animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  -webkit-animation: eoUyJr-1780344755 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  animation: eoUyJr-1780344755 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
 }
 
 <div>
   <div
-    class=""
+    class="c0"
     data-blade-component="spinner"
   >
     <div
       aria-label="Loading"
-      class="c0"
+      class="c0 "
       data-blade-component="base-box"
       role="progressbar"
     >
       <div
-        class=" c1"
+        class="c0 c1  "
         data-blade-component="base-box"
       >
         <svg
@@ -76,7 +76,7 @@ exports[`<Spinner /> should render Spinner with default props 1`] = `
 `;
 
 exports[`<Spinner /> should render default color Spinner 1`] = `
-.c0 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -90,7 +90,7 @@ exports[`<Spinner /> should render default color Spinner 1`] = `
   align-items: center;
 }
 
-.c1 {
+#razorpay-blade .c1 {
   padding: 1px;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -99,23 +99,23 @@ exports[`<Spinner /> should render default color Spinner 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
-  animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  -webkit-animation: eoUyJr-1780344755 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  animation: eoUyJr-1780344755 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
 }
 
 <div>
   <div
-    class=""
+    class="c0"
     data-blade-component="spinner"
   >
     <div
       aria-label="Loading"
-      class="c0"
+      class="c0 "
       data-blade-component="base-box"
       role="progressbar"
     >
       <div
-        class=" c1"
+        class="c0 c1  "
         data-blade-component="base-box"
       >
         <svg
@@ -151,7 +151,7 @@ exports[`<Spinner /> should render default color Spinner 1`] = `
 `;
 
 exports[`<Spinner /> should render large size Spinner 1`] = `
-.c0 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -165,7 +165,7 @@ exports[`<Spinner /> should render large size Spinner 1`] = `
   align-items: center;
 }
 
-.c1 {
+#razorpay-blade .c1 {
   padding: 1px;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -174,23 +174,23 @@ exports[`<Spinner /> should render large size Spinner 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
-  animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  -webkit-animation: eoUyJr-1780344755 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  animation: eoUyJr-1780344755 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
 }
 
 <div>
   <div
-    class=""
+    class="c0"
     data-blade-component="spinner"
   >
     <div
       aria-label="Loading"
-      class="c0"
+      class="c0 "
       data-blade-component="base-box"
       role="progressbar"
     >
       <div
-        class=" c1"
+        class="c0 c1  "
         data-blade-component="base-box"
       >
         <svg
@@ -226,7 +226,7 @@ exports[`<Spinner /> should render large size Spinner 1`] = `
 `;
 
 exports[`<Spinner /> should render medium size Spinner 1`] = `
-.c0 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -240,7 +240,7 @@ exports[`<Spinner /> should render medium size Spinner 1`] = `
   align-items: center;
 }
 
-.c1 {
+#razorpay-blade .c1 {
   padding: 1px;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -249,23 +249,23 @@ exports[`<Spinner /> should render medium size Spinner 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
-  animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  -webkit-animation: eoUyJr-1780344755 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  animation: eoUyJr-1780344755 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
 }
 
 <div>
   <div
-    class=""
+    class="c0"
     data-blade-component="spinner"
   >
     <div
       aria-label="Loading"
-      class="c0"
+      class="c0 "
       data-blade-component="base-box"
       role="progressbar"
     >
       <div
-        class=" c1"
+        class="c0 c1  "
         data-blade-component="base-box"
       >
         <svg
@@ -301,7 +301,7 @@ exports[`<Spinner /> should render medium size Spinner 1`] = `
 `;
 
 exports[`<Spinner /> should render white color Spinner 1`] = `
-.c0 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -315,7 +315,7 @@ exports[`<Spinner /> should render white color Spinner 1`] = `
   align-items: center;
 }
 
-.c1 {
+#razorpay-blade .c1 {
   padding: 1px;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -324,23 +324,23 @@ exports[`<Spinner /> should render white color Spinner 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
-  animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  -webkit-animation: eoUyJr-1780344755 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  animation: eoUyJr-1780344755 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
 }
 
 <div>
   <div
-    class=""
+    class="c0"
     data-blade-component="spinner"
   >
     <div
       aria-label="Loading"
-      class="c0"
+      class="c0 "
       data-blade-component="base-box"
       role="progressbar"
     >
       <div
-        class=" c1"
+        class="c0 c1  "
         data-blade-component="base-box"
       >
         <svg
@@ -376,7 +376,7 @@ exports[`<Spinner /> should render white color Spinner 1`] = `
 `;
 
 exports[`<Spinner /> should render xlarge size Spinner 1`] = `
-.c0 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -390,7 +390,7 @@ exports[`<Spinner /> should render xlarge size Spinner 1`] = `
   align-items: center;
 }
 
-.c1 {
+#razorpay-blade .c1 {
   padding: 1px;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -399,23 +399,23 @@ exports[`<Spinner /> should render xlarge size Spinner 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
-  animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  -webkit-animation: eoUyJr-1780344755 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  animation: eoUyJr-1780344755 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
 }
 
 <div>
   <div
-    class=""
+    class="c0"
     data-blade-component="spinner"
   >
     <div
       aria-label="Loading"
-      class="c0"
+      class="c0 "
       data-blade-component="base-box"
       role="progressbar"
     >
       <div
-        class=" c1"
+        class="c0 c1  "
         data-blade-component="base-box"
       >
         <svg

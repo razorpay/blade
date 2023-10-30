@@ -1,16 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Skeleton /> should render skeleton 1`] = `
-.c0 {
+#razorpay-blade .c0 {
   height: 50px;
   width: 100%;
 }
 
-.c1 {
+#razorpay-blade .c1 {
   opacity: 0;
   background-color: hsla(216,15%,54%,0.18);
-  -webkit-animation-name: lbWRkT,fZZrNN;
-  animation-name: lbWRkT,fZZrNN;
+  -webkit-animation-name: lbWRkT-1780344755,fZZrNN-1780344755;
+  animation-name: lbWRkT-1780344755,fZZrNN-1780344755;
   -webkit-animation-duration: 900ms,1200ms;
   animation-duration: 900ms,1200ms;
   -webkit-animation-delay: 0ms,900ms;
@@ -28,31 +28,31 @@ exports[`<Skeleton /> should render skeleton 1`] = `
 <div>
   <div
     aria-hidden="true"
-    class="c0 c1"
+    class="c0 c1 "
     data-blade-component="skeleton"
   />
 </div>
 `;
 
 exports[`<Skeleton /> should support margin and other layout props 1`] = `
-.c0 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.c1 {
+#razorpay-blade .c0 {
   margin: 4px;
   height: 50px;
   width: 100%;
 }
 
-.c2 {
+#razorpay-blade .c1 {
   opacity: 0;
   background-color: hsla(216,15%,54%,0.18);
-  -webkit-animation-name: lbWRkT,fZZrNN;
-  animation-name: lbWRkT,fZZrNN;
+  -webkit-animation-name: lbWRkT-1780344755,fZZrNN-1780344755;
+  animation-name: lbWRkT-1780344755,fZZrNN-1780344755;
   -webkit-animation-duration: 900ms,1200ms;
   animation-duration: 900ms,1200ms;
   -webkit-animation-delay: 0ms,900ms;
@@ -69,18 +69,18 @@ exports[`<Skeleton /> should support margin and other layout props 1`] = `
 
 <div>
   <div
-    class="c0"
+    class="c0 "
     data-blade-component="box"
   >
     <div
       aria-hidden="true"
-      class="c1 c2"
+      class="c0 c1 "
       data-blade-component="skeleton"
     />
     ,
     <div
       aria-hidden="true"
-      class="c1 c2"
+      class="c0 c1 "
       data-blade-component="skeleton"
     />
     ,

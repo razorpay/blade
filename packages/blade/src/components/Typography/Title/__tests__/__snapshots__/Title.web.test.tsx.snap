@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Title /> should render Title with color 1`] = `
-#blade .c0 {
+#razorpay-blade .c0 {
   color: hsla(220,30%,96%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1.5rem;
@@ -16,7 +16,7 @@ exports[`<Title /> should render Title with color 1`] = `
 
 <div>
   <h3
-    class="c0"
+    class="c0 "
     data-blade-component="title"
   >
     Displaying Landing Page Title
@@ -25,7 +25,7 @@ exports[`<Title /> should render Title with color 1`] = `
 `;
 
 exports[`<Title /> should render Title with default properties 1`] = `
-#blade .c0 {
+#razorpay-blade .c0 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1.5rem;
@@ -40,7 +40,7 @@ exports[`<Title /> should render Title with default properties 1`] = `
 
 <div>
   <h3
-    class="c0"
+    class="c0 "
     data-blade-component="title"
   >
     Displaying Landing Page Title
@@ -49,7 +49,7 @@ exports[`<Title /> should render Title with default properties 1`] = `
 `;
 
 exports[`<Title /> should render Title with mixed color 1`] = `
-#blade .c0 {
+#razorpay-blade .c0 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1.5rem;
@@ -62,7 +62,7 @@ exports[`<Title /> should render Title with mixed color 1`] = `
   padding: 0;
 }
 
-#blade .c1 {
+#razorpay-blade .c0 {
   color: hsla(195,100%,31%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1.5rem;
@@ -77,13 +77,13 @@ exports[`<Title /> should render Title with mixed color 1`] = `
 
 <div>
   <h3
-    class="c0"
+    class="c0 "
     data-blade-component="title"
   >
     Supercharge your business with the all‑powerful
      
     <span
-      class="c1"
+      class="c0 "
       data-blade-component="title"
     >
       Payment Gateway
@@ -93,7 +93,7 @@ exports[`<Title /> should render Title with mixed color 1`] = `
 `;
 
 exports[`<Title /> should render Title with variant "large" 1`] = `
-#blade .c0 {
+#razorpay-blade .c0 {
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 2rem;
@@ -108,7 +108,7 @@ exports[`<Title /> should render Title with variant "large" 1`] = `
 
 <div>
   <h1
-    class="c0"
+    class="c0 "
     data-blade-component="title"
   >
     Displaying Landing Page Title
@@ -117,7 +117,7 @@ exports[`<Title /> should render Title with variant "large" 1`] = `
 `;
 
 exports[`<Title /> should render Title with variant "medium" 1`] = `
-#blade .c0 {
+#razorpay-blade .c0 {
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1.75rem;
@@ -132,7 +132,7 @@ exports[`<Title /> should render Title with variant "medium" 1`] = `
 
 <div>
   <h2
-    class="c0"
+    class="c0 "
     data-blade-component="title"
   >
     Displaying Landing Page Title
@@ -141,7 +141,7 @@ exports[`<Title /> should render Title with variant "medium" 1`] = `
 `;
 
 exports[`<Title /> should render Title with variant "small" 1`] = `
-#blade .c0 {
+#razorpay-blade .c0 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1.5rem;
@@ -156,7 +156,7 @@ exports[`<Title /> should render Title with variant "small" 1`] = `
 
 <div>
   <h3
-    class="c0"
+    class="c0 "
     data-blade-component="title"
   >
     Displaying Landing Page Title
@@ -165,7 +165,7 @@ exports[`<Title /> should render Title with variant "small" 1`] = `
 `;
 
 exports[`<Title /> should render Title with variant "small" and contrast "high" 1`] = `
-#blade .c0 {
+#razorpay-blade .c0 {
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1.5rem;
@@ -180,7 +180,7 @@ exports[`<Title /> should render Title with variant "small" and contrast "high" 
 
 <div>
   <h3
-    class="c0"
+    class="c0 "
     data-blade-component="title"
   >
     Displaying Landing Page Title

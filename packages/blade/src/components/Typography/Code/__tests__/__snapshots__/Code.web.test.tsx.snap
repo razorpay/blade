@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Code /> should render Code with color 1`] = `
-.c1 {
+#razorpay-blade .c1 {
   color: hsla(218,19%,81%,1);
   font-family: monospace;
   font-size: 0.625rem;
@@ -14,7 +14,7 @@ exports[`<Code /> should render Code with color 1`] = `
   padding: 0;
 }
 
-.c0 {
+#razorpay-blade .c0 {
   padding: 0px 4px;
   border-radius: 4px;
   display: inline-block;
@@ -24,11 +24,11 @@ exports[`<Code /> should render Code with color 1`] = `
 
 <div>
   <span
-    class="BaseBox-bmPWx  c0"
+    class="BaseBox-bmPWx c0  "
     data-blade-component="code"
   >
     <code
-      class="c1"
+      class="c1 "
       data-blade-component="base-text"
     >
       TEST_TOKEN
@@ -76,7 +76,7 @@ exports[`<Code /> should render Code with default properties 1`] = `
 `;
 
 exports[`<Code /> should render isHighlighted false Code 1`] = `
-.c1 {
+#razorpay-blade .c1 {
   color: hsla(217,56%,17%,1);
   font-family: monospace;
   font-size: 0.625rem;
@@ -89,7 +89,7 @@ exports[`<Code /> should render isHighlighted false Code 1`] = `
   padding: 0;
 }
 
-.c0 {
+#razorpay-blade .c0 {
   padding: 0px 4px;
   border-radius: 4px;
   display: inline-block;
@@ -99,11 +99,11 @@ exports[`<Code /> should render isHighlighted false Code 1`] = `
 
 <div>
   <span
-    class="BaseBox-bmPWx  c0"
+    class="BaseBox-bmPWx c0  "
     data-blade-component="code"
   >
     <code
-      class="c1"
+      class="c1 "
       data-blade-component="base-text"
     >
       NON-HIGHLIGHTED

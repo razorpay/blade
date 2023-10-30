@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Tooltip /> should render Tooltip ssr 1`] = `"<div id="root"><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 biOBim"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 kkGTK NIPoA"><div class="StyledBaseText-dVBfTO brGLEM" data-blade-component="base-text">Hello world</div></div></button></div>"`;
+exports[`<Tooltip /> should render Tooltip ssr 1`] = `"<div id="root"><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 dAITgZ"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 gDQkZt fKcvHH"><div class="StyledBaseText-dVBfTO bWCnhn" data-blade-component="base-text">Hello world</div></div></button></div>"`;
 
 exports[`<Tooltip /> should render Tooltip ssr 2`] = `
 .c1 {
@@ -108,17 +108,29 @@ exports[`<Tooltip /> should render Tooltip ssr 2`] = `
   id="root"
 >
   <button
+<<<<<<< HEAD
     class="c0"
+=======
+    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 dAITgZ"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
     data-blade-component="button"
     role="button"
     type="button"
   >
     <div
+<<<<<<< HEAD
       class="c1 c2"
       data-blade-component="base-box"
     >
       <div
         class="c3"
+=======
+      class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 gDQkZt fKcvHH"
+      data-blade-component="base-box"
+    >
+      <div
+        class="StyledBaseText-dVBfTO bWCnhn"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
         data-blade-component="base-text"
       >
         Hello world

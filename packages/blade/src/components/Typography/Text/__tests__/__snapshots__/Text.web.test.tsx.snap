@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Text /> should render Text with center textAlign 1`] = `
-.c0 {
+#razorpay-blade .c0 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -17,7 +17,7 @@ exports[`<Text /> should render Text with center textAlign 1`] = `
 
 <div>
   <p
-    class="c0"
+    class="c0 "
     data-blade-component="text"
   >
     Displaying some text
@@ -26,7 +26,7 @@ exports[`<Text /> should render Text with center textAlign 1`] = `
 `;
 
 exports[`<Text /> should render Text with color 1`] = `
-.c0 {
+#razorpay-blade .c0 {
   color: hsla(218,89%,51%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -41,7 +41,7 @@ exports[`<Text /> should render Text with color 1`] = `
 
 <div>
   <p
-    class="c0"
+    class="c0 "
     data-blade-component="text"
   >
     Displaying some text
@@ -50,7 +50,7 @@ exports[`<Text /> should render Text with color 1`] = `
 `;
 
 exports[`<Text /> should render Text with default properties 1`] = `
-.c0 {
+#razorpay-blade .c0 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -65,7 +65,7 @@ exports[`<Text /> should render Text with default properties 1`] = `
 
 <div>
   <p
-    class="c0"
+    class="c0 "
     data-blade-component="text"
   >
     Displaying some text
@@ -74,7 +74,7 @@ exports[`<Text /> should render Text with default properties 1`] = `
 `;
 
 exports[`<Text /> should render Text with variant "body" 1`] = `
-.c0 {
+#razorpay-blade .c0 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -94,7 +94,7 @@ exports[`<Text /> should render Text with variant "body" 1`] = `
 
 <div>
   <p
-    class="c0"
+    class="c0 "
     data-blade-component="text"
   >
     Displaying some text
@@ -103,7 +103,7 @@ exports[`<Text /> should render Text with variant "body" 1`] = `
 `;
 
 exports[`<Text /> should render Text with variant "body" and contrast "high" 1`] = `
-.c0 {
+#razorpay-blade .c0 {
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -123,7 +123,7 @@ exports[`<Text /> should render Text with variant "body" and contrast "high" 1`]
 
 <div>
   <p
-    class="c0"
+    class="c0 "
     data-blade-component="text"
   >
     Displaying some text
@@ -132,7 +132,7 @@ exports[`<Text /> should render Text with variant "body" and contrast "high" 1`]
 `;
 
 exports[`<Text /> should render Text with variant "body" and size "small" 1`] = `
-.c0 {
+#razorpay-blade .c0 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -152,7 +152,7 @@ exports[`<Text /> should render Text with variant "body" and size "small" 1`] = 
 
 <div>
   <p
-    class="c0"
+    class="c0 "
     data-blade-component="text"
   >
     Displaying some text
@@ -161,7 +161,7 @@ exports[`<Text /> should render Text with variant "body" and size "small" 1`] = 
 `;
 
 exports[`<Text /> should render Text with variant "caption" 1`] = `
-.c0 {
+#razorpay-blade .c0 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -176,7 +176,7 @@ exports[`<Text /> should render Text with variant "caption" 1`] = `
 
 <div>
   <p
-    class="c0"
+    class="c0 "
     data-blade-component="text"
   >
     Displaying some text

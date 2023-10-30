@@ -1,6 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+<<<<<<< HEAD
 exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it visible on click 1`] = `"<div id="root"><div data-blade-component="dropdown" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx eoXGsO"><div data-blade-component="base-box" class="BaseBox-bmPWx epXLnJ"><div data-blade-component="autocomplete" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx edjBu"><div data-blade-component="base-box" class="BaseBox-bmPWx fJyvvB"><label for="dropdown-undefined-trigger-undefined-input-undefined" style="width:auto;flex-shrink:0;margin-right:16px" id="dropdown-undefined-label" data-blade-component="form-label"><div data-blade-component="base-box" class="BaseBox-bmPWx bqWBik"><div data-blade-component="base-box" class="BaseBox-bmPWx eeqPab"><p class="StyledBaseText-dVBfTO gaMIEc" data-blade-component="text">Fruits</p><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 ijVANw"><p class="StyledBaseText-dVBfTO eIdQFo" data-blade-component="text"></p></div></div></div></label></div><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  fXDQuH wNqcQ"><div class="BaseBox-bmPWx cbxZCZ tags-slot" data-blade-component="base-box"><div data-blade-component="base-box" class="BaseBox-bmPWx ivjPKl"><input type="text" autoComplete="off" id="dropdown-undefined-trigger-undefined-input-undefined" placeholder="Select Option" data-blade-component="styled-base-input" aria-required="false" aria-disabled="false" aria-invalid="false" aria-describedby="" aria-haspopup="listbox" aria-expanded="false" aria-controls="dropdown-undefined-actionlist" role="combobox" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 gdWYxP" value=""/></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx bQSUVn"><div data-blade-component="base-box" class="BaseBox-bmPWx iqKjYJ"><div data-blade-component="base-box" class="BaseBox-bmPWx eZRnEP"><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0 knBhBu"><path d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z" clip-rule="evenodd" fill="hsla(217, 56%, 17%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0 jDmKOD"><path d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z" clip-rule="evenodd" fill="hsla(217, 56%, 17%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  dGtNgo"></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx jgxKDg"><div data-blade-component="base-box" class="BaseBox-bmPWx ctznZr"></div></div></div></div><div style="position:fixed;left:0;top:0" data-blade-component="base-box" class="BaseBox-bmPWx eRCNTT"><div elevation="midRaised" style="transform:translateY(-8px);opacity:0" data-blade-component="dropdown-overlay" class="BaseBox-bmPWx StyledDropdownOverlay-sc-1dik5mo-0 havWiW hsiFVr"><div data-blade-component="base-box" class="BaseBox-bmPWx cknGXH"><div data-blade-component="dropdown-header" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx HnFxS"><div data-blade-component="base-box" class="BaseBox-bmPWx isYLKC"><div data-blade-component="base-box" class="BaseBox-bmPWx jPnCFC"><div data-blade-component="base-box" class="BaseBox-bmPWx lhloZM"><div data-blade-component="base-box" class="BaseBox-bmPWx kGcQUv"><h6 class="StyledBaseText-dVBfTO dFejDk" data-blade-component="heading">Recent Searches</h6></div></div></div></div></div><div data-blade-component="divider" role="separator" class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 jfizlv jvaPlR"></div></div></div><div data-blade-component="box" class="BaseBox-bmPWx eaUCZq"><svg aria-hidden="true" data-blade-component="icon" height="24px" viewBox="0 0 24 24" width="24px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M16.618 18.032a9 9 0 1 1 1.414-1.414l3.675 3.675a1 1 0 0 1-1.414 1.414l-3.675-3.675ZM4 11a7 7 0 1 1 12.041 4.857 1.009 1.009 0 0 0-.185.184A7 7 0 0 1 4 11Z" clip-rule="evenodd" fill="hsla(217, 56%, 17%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg><p class="StyledBaseText-dVBfTO fKKfSp" data-blade-component="text">No Search Result Found</p><p class="StyledBaseText-dVBfTO hKVYDc" data-blade-component="text">Try searching for a different value</p></div><div role="group" data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="divider" role="separator" class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 jfizlv jvaPlR"></div><div data-blade-component="dropdown-footer" class="BaseBox-bmPWx kGtVIy"></div></div></div></div></div></div></div>"`;
+=======
+<<<<<<< HEAD
+exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it visible on click 1`] = `"<div id="root"><div data-blade-component="dropdown" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx eoXGsO"><div data-blade-component="base-box" class="BaseBox-bmPWx epXLnJ"><div data-blade-component="autocomplete" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx edjBu"><div data-blade-component="base-box" class="BaseBox-bmPWx fJyvvB"><label for="dropdown-undefined-trigger-undefined-input-undefined" style="width:auto;flex-shrink:0;margin-right:16px" id="dropdown-undefined-label" data-blade-component="form-label"><div data-blade-component="base-box" class="BaseBox-bmPWx bqWBik"><div data-blade-component="base-box" class="BaseBox-bmPWx eeqPab"><p class="StyledBaseText-dVBfTO gaMIEc" data-blade-component="text">Fruits</p><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 ijVANw"><p class="StyledBaseText-dVBfTO eIdQFo" data-blade-component="text"></p></div></div></div></label></div><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  fXDQuH wNqcQ"><div class="BaseBox-bmPWx cbxZCZ tags-slot" data-blade-component="base-box"><div data-blade-component="base-box" class="BaseBox-bmPWx ivjPKl"><input type="text" autoComplete="off" id="dropdown-undefined-trigger-undefined-input-undefined" placeholder="Select Option" data-blade-component="styled-base-input" aria-required="false" aria-disabled="false" aria-invalid="false" aria-describedby="" aria-haspopup="listbox" aria-expanded="false" aria-controls="dropdown-undefined-actionlist" role="combobox" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 gdWYxP" value=""/></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx bQSUVn"><div data-blade-component="base-box" class="BaseBox-bmPWx iqKjYJ"><div data-blade-component="base-box" class="BaseBox-bmPWx eZRnEP"><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0 knBhBu"><path d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z" clip-rule="evenodd" fill="hsla(217, 56%, 17%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0 jDmKOD"><path d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z" clip-rule="evenodd" fill="hsla(217, 56%, 17%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  dGtNgo"></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx jgxKDg"><div data-blade-component="base-box" class="BaseBox-bmPWx ctznZr"></div></div></div></div><div style="position:fixed;left:0;top:0" data-blade-component="base-box" class="BaseBox-bmPWx eRCNTT"><div elevation="midRaised" style="transform:translateY(-8px);opacity:0" data-blade-component="dropdown-overlay" class="BaseBox-bmPWx StyledDropdownOverlay-sc-1dik5mo-0 havWiW jMbGiG"><div data-blade-component="base-box" class="BaseBox-bmPWx cknGXH"><div data-blade-component="dropdown-header" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx HnFxS"><div data-blade-component="base-box" class="BaseBox-bmPWx isYLKC"><div data-blade-component="base-box" class="BaseBox-bmPWx jPnCFC"><div data-blade-component="base-box" class="BaseBox-bmPWx lhloZM"><div data-blade-component="base-box" class="BaseBox-bmPWx kGcQUv"><h6 class="StyledBaseText-dVBfTO dFejDk" data-blade-component="heading">Recent Searches</h6></div></div></div></div></div><div data-blade-component="divider" role="separator" class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 jfizlv jvaPlR"></div></div></div><div data-blade-component="box" class="BaseBox-bmPWx eaUCZq"><svg aria-hidden="true" data-blade-component="icon" height="24px" viewBox="0 0 24 24" width="24px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M16.618 18.032a9 9 0 1 1 1.414-1.414l3.675 3.675a1 1 0 0 1-1.414 1.414l-3.675-3.675ZM4 11a7 7 0 1 1 12.041 4.857 1.009 1.009 0 0 0-.185.184A7 7 0 0 1 4 11Z" clip-rule="evenodd" fill="hsla(217, 56%, 17%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg><p class="StyledBaseText-dVBfTO fKKfSp" data-blade-component="text">No Search Result Found</p><p class="StyledBaseText-dVBfTO hKVYDc" data-blade-component="text">Try searching for a different value</p></div><div role="group" data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="divider" role="separator" class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 jfizlv jvaPlR"></div><div data-blade-component="dropdown-footer" class="BaseBox-bmPWx kGtVIy"></div></div></div></div></div></div></div>"`;
+=======
+exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it visible on click 1`] = `"<div id="root"><div data-blade-component="dropdown" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx gCKmN"><div data-blade-component="base-box" class="BaseBox-bmPWx gmqcsO"><div data-blade-component="autocomplete" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx kNqLmN"><div data-blade-component="base-box" class="BaseBox-bmPWx eRfIlm"><label for="dropdown-undefined-trigger-undefined-input-undefined" style="width:auto;flex-shrink:0;margin-right:16px" id="dropdown-undefined-label" data-blade-component="form-label"><div data-blade-component="base-box" class="BaseBox-bmPWx jwewzj"><div data-blade-component="base-box" class="BaseBox-bmPWx gSDcFQ"><p class="StyledBaseText-dVBfTO hzWZkf" data-blade-component="text">Fruits</p><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 jZYAhz"><p class="StyledBaseText-dVBfTO ekbJPz" data-blade-component="text"></p></div></div></div></label></div><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  yNzsE cOuzUT"><div class="BaseBox-bmPWx jQSlgm tags-slot" data-blade-component="base-box"><div data-blade-component="base-box" class="BaseBox-bmPWx cluQce"><input type="text" autoComplete="off" id="dropdown-undefined-trigger-undefined-input-undefined" placeholder="Select Option" data-blade-component="styled-base-input" aria-required="false" aria-disabled="false" aria-invalid="false" aria-describedby="" aria-haspopup="listbox" aria-expanded="false" aria-controls="dropdown-undefined-actionlist" role="combobox" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 fIKMnU" value=""/></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx jGJOXQ"><div data-blade-component="base-box" class="BaseBox-bmPWx kkjqRa"><div data-blade-component="base-box" class="BaseBox-bmPWx kyEUrI"><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0 qwoLd"><path d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z" clip-rule="evenodd" fill="hsla(217, 56%, 17%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0 hAqNRU"><path d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z" clip-rule="evenodd" fill="hsla(217, 56%, 17%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  ekRFiH"></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx tRsvP"><div data-blade-component="base-box" class="BaseBox-bmPWx igWVLg"></div></div></div></div><div style="position:fixed;left:0;top:0" data-blade-component="base-box" class="BaseBox-bmPWx kzdBIU"><div elevation="midRaised" style="transform:translateY(-8px);opacity:0" data-blade-component="dropdown-overlay" class="BaseBox-bmPWx StyledDropdownOverlay-sc-1dik5mo-0 fTMxRl cTFdGA"><div data-blade-component="base-box" class="BaseBox-bmPWx eYxjzo"><div data-blade-component="dropdown-header" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx kemvtJ"><div data-blade-component="base-box" class="BaseBox-bmPWx dSZEVp"><div data-blade-component="base-box" class="BaseBox-bmPWx iORYap"><div data-blade-component="base-box" class="BaseBox-bmPWx lojRwD"><div data-blade-component="base-box" class="BaseBox-bmPWx gykMCA"><h6 class="StyledBaseText-dVBfTO yQIej" data-blade-component="heading">Recent Searches</h6></div></div></div></div></div><div data-blade-component="divider" role="separator" class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 hRoOJk bwynWa"></div></div></div><div data-blade-component="box" class="BaseBox-bmPWx flsBMJ"><svg aria-hidden="true" data-blade-component="icon" height="24px" viewBox="0 0 24 24" width="24px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M16.618 18.032a9 9 0 1 1 1.414-1.414l3.675 3.675a1 1 0 0 1-1.414 1.414l-3.675-3.675ZM4 11a7 7 0 1 1 12.041 4.857 1.009 1.009 0 0 0-.185.184A7 7 0 0 1 4 11Z" clip-rule="evenodd" fill="hsla(217, 56%, 17%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg><p class="StyledBaseText-dVBfTO jsLbCi" data-blade-component="text">No Search Result Found</p><p class="StyledBaseText-dVBfTO jIzfVf" data-blade-component="text">Try searching for a different value</p></div><div role="group" data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="divider" role="separator" class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 hRoOJk bwynWa"></div><div data-blade-component="dropdown-footer" class="BaseBox-bmPWx kbMJyh"></div></div></div></div></div></div></div>"`;
+>>>>>>> c7bac4c3 (feat: increase CSS specificity of components)
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
 
 exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it visible on click 2`] = `
 .c0 {
@@ -760,11 +768,19 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
     data-blade-component="dropdown"
   >
     <div
+<<<<<<< HEAD
       class="c0"
       data-blade-component="base-box"
     >
       <div
         class="c1"
+=======
+      class="BaseBox-bmPWx gCKmN"
+      data-blade-component="base-box"
+    >
+      <div
+        class="BaseBox-bmPWx gmqcsO"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
         data-blade-component="base-box"
       >
         <div
@@ -772,11 +788,19 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
           data-blade-component="autocomplete"
         >
           <div
+<<<<<<< HEAD
             class="c2"
             data-blade-component="base-box"
           >
             <div
               class="c3"
+=======
+            class="BaseBox-bmPWx kNqLmN"
+            data-blade-component="base-box"
+          >
+            <div
+              class="BaseBox-bmPWx eRfIlm"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
               data-blade-component="base-box"
             >
               <label
@@ -786,6 +810,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
                 style="width:auto;flex-shrink:0;margin-right:16px"
               >
                 <div
+<<<<<<< HEAD
                   class="c4"
                   data-blade-component="base-box"
                 >
@@ -795,16 +820,35 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
                   >
                     <p
                       class="c6"
+=======
+                  class="BaseBox-bmPWx jwewzj"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="BaseBox-bmPWx gSDcFQ"
+                    data-blade-component="base-box"
+                  >
+                    <p
+                      class="StyledBaseText-dVBfTO hzWZkf"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
                       data-blade-component="text"
                     >
                       Fruits
                     </p>
                     <div
+<<<<<<< HEAD
                       class="c7"
                       data-blade-component="visually-hidden"
                     >
                       <p
                         class="c8"
+=======
+                      class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 jZYAhz"
+                      data-blade-component="visually-hidden"
+                    >
+                      <p
+                        class="StyledBaseText-dVBfTO ekbJPz"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
                         data-blade-component="text"
                       />
                     </div>
@@ -813,6 +857,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
               </label>
             </div>
             <div
+<<<<<<< HEAD
               class=" c9 c10"
               data-blade-component="base-box"
             >
@@ -822,6 +867,17 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
               >
                 <div
                   class="c12"
+=======
+              class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  yNzsE cOuzUT"
+              data-blade-component="base-box"
+            >
+              <div
+                class="BaseBox-bmPWx dBvsbD tags-slot"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="BaseBox-bmPWx cluQce"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
                   data-blade-component="base-box"
                 >
                   <input
@@ -834,7 +890,11 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
                     aria-invalid="false"
                     aria-required="false"
                     autocomplete="off"
+<<<<<<< HEAD
                     class="c13"
+=======
+                    class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 fIKMnU"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
                     data-blade-component="styled-base-input"
                     id="dropdown-7-trigger-1-input-2"
                     placeholder="Select Option"
@@ -845,6 +905,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
                 </div>
               </div>
               <div
+<<<<<<< HEAD
                 class="c14"
                 data-blade-component="base-box"
               >
@@ -854,11 +915,26 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
                 >
                   <div
                     class="c16"
+=======
+                class="BaseBox-bmPWx jGJOXQ"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="BaseBox-bmPWx kkjqRa"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="BaseBox-bmPWx kyEUrI"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
                     data-blade-component="base-box"
                   >
                     <svg
                       aria-hidden="true"
+<<<<<<< HEAD
                       class="c17"
+=======
+                      class="Svgweb__StyledSvg-vcmjs8-0 hAqNRU"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
                       data-blade-component="icon"
                       fill="none"
                       height="16px"
@@ -875,7 +951,11 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
                     </svg>
                     <svg
                       aria-hidden="true"
+<<<<<<< HEAD
                       class="c18"
+=======
+                      class="Svgweb__StyledSvg-vcmjs8-0 qwoLd"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
                       data-blade-component="icon"
                       fill="none"
                       height="16px"
@@ -894,35 +974,59 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
                 </div>
               </div>
               <div
+<<<<<<< HEAD
                 class=" c19"
+=======
+                class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  ekRFiH"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
                 data-blade-component="base-box"
               />
             </div>
           </div>
           <div
+<<<<<<< HEAD
             class="c20"
             data-blade-component="base-box"
           >
             <div
               class="c21"
+=======
+            class="BaseBox-bmPWx tRsvP"
+            data-blade-component="base-box"
+          >
+            <div
+              class="BaseBox-bmPWx igWVLg"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
               data-blade-component="base-box"
             />
           </div>
         </div>
       </div>
       <div
+<<<<<<< HEAD
         class="c22"
+=======
+        class="BaseBox-bmPWx elLPRV"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
         data-blade-component="base-box"
         style="position: fixed; left: 0px; top: 0px; transform: translate(0px, 8px); width: 0px;"
       >
         <div
+<<<<<<< HEAD
           class="c23 c24"
+=======
+          class="BaseBox-bmPWx StyledDropdownOverlay-sc-1dik5mo-0 fTMxRl cTFdGA"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
           data-blade-component="dropdown-overlay"
           elevation="midRaised"
           style="transition-property: transform,opacity; transition-duration: 200ms;"
         >
           <div
+<<<<<<< HEAD
             class="c25"
+=======
+            class="BaseBox-bmPWx eYxjzo"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
             data-blade-component="base-box"
           >
             <div
@@ -930,6 +1034,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
               data-blade-component="dropdown-header"
             >
               <div
+<<<<<<< HEAD
                 class="c26"
                 data-blade-component="base-box"
               >
@@ -951,6 +1056,29 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
                       >
                         <h6
                           class="c31"
+=======
+                class="BaseBox-bmPWx kemvtJ"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="BaseBox-bmPWx dSZEVp"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="BaseBox-bmPWx iORYap"
+                    data-blade-component="base-box"
+                  >
+                    <div
+                      class="BaseBox-bmPWx lojRwD"
+                      data-blade-component="base-box"
+                    >
+                      <div
+                        class="BaseBox-bmPWx gykMCA"
+                        data-blade-component="base-box"
+                      >
+                        <h6
+                          class="StyledBaseText-dVBfTO yQIej"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
                           data-blade-component="heading"
                         >
                           Recent Searches
@@ -961,7 +1089,11 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
                 </div>
               </div>
               <div
+<<<<<<< HEAD
                 class="c32 c33"
+=======
+                class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 hRoOJk bwynWa"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
                 data-blade-component="divider"
                 role="separator"
               />
@@ -976,13 +1108,21 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
           >
             <div
               aria-multiselectable="false"
+<<<<<<< HEAD
               class=" c34"
+=======
+              class="BaseBox-bmPWx StyledListBoxWrapperweb__StyledListBoxWrapper-sc-1eo4pr6-0  kCdWWW"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
               data-blade-component="base-box"
               role="listbox"
             >
               <button
                 aria-selected="false"
+<<<<<<< HEAD
                 class=" c35 active-focus"
+=======
+                class="BaseBox-bmPWx StyledActionListItemweb__StyledActionListItem-sc-1okp9u4-0  kudjgQ active-focus"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
                 data-blade-component="action-list-item"
                 data-index="0"
                 data-value="apple"
@@ -992,6 +1132,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
                 type="button"
               >
                 <div
+<<<<<<< HEAD
                   class="c36"
                   data-blade-component="base-box"
                 >
@@ -1005,13 +1146,32 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
                   >
                     <p
                       class="c39"
+=======
+                  class="BaseBox-bmPWx llQsZj"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="BaseBox-bmPWx dtpcum"
+                    data-blade-component="base-box"
+                  />
+                  <div
+                    class="BaseBox-bmPWx jognGR"
+                    data-blade-component="base-box"
+                  >
+                    <p
+                      class="StyledBaseText-dVBfTO joYuXo"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
                       data-blade-component="text"
                     >
                       Apple
                     </p>
                   </div>
                   <div
+<<<<<<< HEAD
                     class="c40"
+=======
+                    class="BaseBox-bmPWx aTyNo"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
                     data-blade-component="base-box"
                   />
                 </div>
@@ -1022,7 +1182,11 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
               </button>
               <button
                 aria-selected="false"
+<<<<<<< HEAD
                 class=" c35"
+=======
+                class="BaseBox-bmPWx StyledActionListItemweb__StyledActionListItem-sc-1okp9u4-0  kudjgQ"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
                 data-blade-component="action-list-item"
                 data-index="1"
                 data-value="mango"
@@ -1032,6 +1196,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
                 type="button"
               >
                 <div
+<<<<<<< HEAD
                   class="c36"
                   data-blade-component="base-box"
                 >
@@ -1045,13 +1210,32 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
                   >
                     <p
                       class="c39"
+=======
+                  class="BaseBox-bmPWx llQsZj"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="BaseBox-bmPWx dtpcum"
+                    data-blade-component="base-box"
+                  />
+                  <div
+                    class="BaseBox-bmPWx jognGR"
+                    data-blade-component="base-box"
+                  >
+                    <p
+                      class="StyledBaseText-dVBfTO joYuXo"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
                       data-blade-component="text"
                     >
                       Mango
                     </p>
                   </div>
                   <div
+<<<<<<< HEAD
                     class="c40"
+=======
+                    class="BaseBox-bmPWx aTyNo"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
                     data-blade-component="base-box"
                   />
                 </div>
@@ -1068,12 +1252,20 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
             role="group"
           >
             <div
+<<<<<<< HEAD
               class="c32 c33"
+=======
+              class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 hRoOJk bwynWa"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
               data-blade-component="divider"
               role="separator"
             />
             <div
+<<<<<<< HEAD
               class="c41"
+=======
+              class="BaseBox-bmPWx kbMJyh"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
               data-blade-component="dropdown-footer"
             >
               <div
@@ -1081,17 +1273,29 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
                 data-blade-component="box"
               >
                 <button
+<<<<<<< HEAD
                   class="c42"
+=======
+                  class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 gJWwSW"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
                   data-blade-component="button"
                   role="button"
                   type="button"
                 >
                   <div
+<<<<<<< HEAD
                     class="c43 c44"
                     data-blade-component="base-box"
                   >
                     <div
                       class="c45"
+=======
+                    class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 gDQkZt fKcvHH"
+                    data-blade-component="base-box"
+                  >
+                    <div
+                      class="StyledBaseText-dVBfTO bWCnhn"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
                       data-blade-component="base-text"
                     >
                       Apply

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
-.c9 {
+#razorpay-blade .c4 {
   border: none;
   cursor: pointer;
   padding: 0px;
@@ -17,18 +17,18 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c9:before {
+#razorpay-blade .c4:before {
   content: "";
   padding: 10px;
   padding-top: 20px;
 }
 
-.c9:focus-visible {
+#razorpay-blade .c4:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c10 {
+#razorpay-blade .c4 {
   border: none;
   cursor: pointer;
   padding: 0px;
@@ -44,18 +44,18 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c10:before {
+#razorpay-blade .c4:before {
   content: "";
   padding: 10px;
   padding-top: 20px;
 }
 
-.c10:focus-visible {
+#razorpay-blade .c4:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c0 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -69,7 +69,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   align-items: center;
 }
 
-.c1 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -86,7 +86,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   gap: 12px;
 }
 
-.c2 {
+#razorpay-blade .c0 {
   -webkit-align-items: start;
   -webkit-box-align: start;
   -ms-flex-align: start;
@@ -94,11 +94,11 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   gap: 12px;
 }
 
-.c5 {
+#razorpay-blade .c0 {
   min-width: 0px;
 }
 
-.c6 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -111,7 +111,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   gap: 12px;
 }
 
-.c8 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -122,7 +122,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   gap: 4px;
 }
 
-.c7 {
+#razorpay-blade .c3 {
   cursor: pointer;
   background: transparent;
   border: none;
@@ -157,24 +157,38 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   box-shadow: 0 12px 16px -4px hsla(217,56%,17%,0.08),0 4px 6px -2px hsla(217,56%,17%,0.03);
 }
 
+<<<<<<< HEAD
 .c7:hover {
   color: hsla(218,89%,51%,1);
   background-color: hsla(216,6%,94%,1);
+=======
+#razorpay-blade .c3:hover {
+  color: hsla(216,33%,29%,1);
+  border-color: hsla(216,19%,89%,1);
+  background-color: hsla(216,15%,54%,0.18);
+>>>>>>> c7bac4c3 (feat: increase CSS specificity of components)
 }
 
-.c7:focus-visible {
+#razorpay-blade .c3:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   color: hsla(218,89%,51%,1);
   background-color: hsla(216,4%,89%,1);
 }
 
+<<<<<<< HEAD
 .c7:active {
   color: hsla(218,89%,51%,1);
   background-color: hsla(216,4%,89%,1);
+=======
+#razorpay-blade .c3:active {
+  color: hsla(216,33%,29%,1);
+  border-color: hsla(216,19%,89%,1);
+  background-color: hsla(216,15%,54%,0.32);
+>>>>>>> c7bac4c3 (feat: increase CSS specificity of components)
 }
 
-.c3 {
+#razorpay-blade .c1 {
   width: 100%;
   overflow-x: scroll;
   display: -webkit-box;
@@ -206,11 +220,11 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   -ms-scroll-snap-points-x: repeat(100%);
 }
 
-.c3::-webkit-scrollbar {
+#razorpay-blade .c1::-webkit-scrollbar {
   display: none;
 }
 
-.c3::before {
+#razorpay-blade .c1::before {
   content: '';
   position: absolute;
   top: 0;
@@ -228,7 +242,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   pointer-events: none;
 }
 
-.c3::after {
+#razorpay-blade .c1::after {
   content: '';
   position: absolute;
   top: 0;
@@ -246,7 +260,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   pointer-events: none;
 }
 
-.c4 {
+#razorpay-blade .c2 {
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
   -ms-flex-positive: 0;
@@ -263,23 +277,23 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
 }
 
 @media screen and (min-width:768px) {
-  .c2 {
+  #razorpay-blade .c0 {
     gap: 16px;
   }
 }
 
 <div>
   <div
-    class="c0"
+    class="c0 "
     data-blade-component="carousel"
   >
     <div
-      class="c1"
+      class="c0 "
       data-blade-component="base-box"
     >
       <div
         aria-roledescription="carousel"
-        class="c2 c3"
+        class="c0 c1 "
         data-blade-component="base-box"
         role="group"
         tabindex="0"
@@ -287,7 +301,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
         <div
           aria-label="1 of 2"
           aria-roledescription="slide"
-          class=" c4"
+          class="c0 c2  "
           data-blade-component="base-box"
           data-slide-index="0"
           id="carousel-52-carousel-item-0"
@@ -304,7 +318,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
         <div
           aria-label="2 of 2"
           aria-roledescription="slide"
-          class=" c4"
+          class="c0 c2  "
           data-blade-component="base-box"
           data-slide-index="1"
           id="carousel-52-carousel-item-1"
@@ -319,18 +333,18 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
           </div>
         </div>
         <div
-          class="c5"
+          class="c0 "
           data-blade-component="base-box"
         />
       </div>
     </div>
     <div
-      class="c6"
+      class="c0 "
       data-blade-component="box"
     >
       <button
         aria-label="Previous Slide"
-        class="c7"
+        class="c3 "
         data-blade-component="NavigationButton"
       >
         <svg
@@ -353,7 +367,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
       </button>
       <div
         aria-label="Slides"
-        class="c8"
+        class="c0 "
         data-blade-component="base-box"
         role="tablist"
       >
@@ -361,7 +375,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
           aria-controls="carousel-52-carousel-item-0"
           aria-label="Slide 1"
           aria-selected="true"
-          class="c9"
+          class="c4 "
           data-blade-component="carousel-indicator-button"
           role="tab"
         />
@@ -369,14 +383,14 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
           aria-controls="carousel-52-carousel-item-1"
           aria-label="Slide 2"
           aria-selected="false"
-          class="c10"
+          class="c4 "
           data-blade-component="carousel-indicator-button"
           role="tab"
         />
       </div>
       <button
         aria-label="Next Slide"
-        class="c7"
+        class="c3 "
         data-blade-component="NavigationButton"
       >
         <svg
@@ -403,7 +417,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
 `;
 
 exports[`Carousel Snapshots should render 1`] = `
-.c8 {
+#razorpay-blade .c4 {
   border: none;
   cursor: pointer;
   padding: 0px;
@@ -419,18 +433,18 @@ exports[`Carousel Snapshots should render 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c8:before {
+#razorpay-blade .c4:before {
   content: "";
   padding: 10px;
   padding-top: 20px;
 }
 
-.c8:focus-visible {
+#razorpay-blade .c4:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c9 {
+#razorpay-blade .c4 {
   border: none;
   cursor: pointer;
   padding: 0px;
@@ -446,18 +460,18 @@ exports[`Carousel Snapshots should render 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c9:before {
+#razorpay-blade .c4:before {
   content: "";
   padding: 10px;
   padding-top: 20px;
 }
 
-.c9:focus-visible {
+#razorpay-blade .c4:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c0 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -471,7 +485,7 @@ exports[`Carousel Snapshots should render 1`] = `
   align-items: center;
 }
 
-.c1 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -488,7 +502,7 @@ exports[`Carousel Snapshots should render 1`] = `
   gap: 12px;
 }
 
-.c2 {
+#razorpay-blade .c0 {
   -webkit-align-items: start;
   -webkit-box-align: start;
   -ms-flex-align: start;
@@ -496,7 +510,7 @@ exports[`Carousel Snapshots should render 1`] = `
   gap: 12px;
 }
 
-.c5 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -509,7 +523,7 @@ exports[`Carousel Snapshots should render 1`] = `
   gap: 12px;
 }
 
-.c7 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -520,7 +534,7 @@ exports[`Carousel Snapshots should render 1`] = `
   gap: 4px;
 }
 
-.c6 {
+#razorpay-blade .c3 {
   cursor: pointer;
   background: transparent;
   border: none;
@@ -555,24 +569,38 @@ exports[`Carousel Snapshots should render 1`] = `
   box-shadow: 0 12px 16px -4px hsla(217,56%,17%,0.08),0 4px 6px -2px hsla(217,56%,17%,0.03);
 }
 
+<<<<<<< HEAD
 .c6:hover {
   color: hsla(218,89%,51%,1);
   background-color: hsla(216,6%,94%,1);
+=======
+#razorpay-blade .c3:hover {
+  color: hsla(216,33%,29%,1);
+  border-color: hsla(216,19%,89%,1);
+  background-color: hsla(216,15%,54%,0.18);
+>>>>>>> c7bac4c3 (feat: increase CSS specificity of components)
 }
 
-.c6:focus-visible {
+#razorpay-blade .c3:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   color: hsla(218,89%,51%,1);
   background-color: hsla(216,4%,89%,1);
 }
 
+<<<<<<< HEAD
 .c6:active {
   color: hsla(218,89%,51%,1);
   background-color: hsla(216,4%,89%,1);
+=======
+#razorpay-blade .c3:active {
+  color: hsla(216,33%,29%,1);
+  border-color: hsla(216,19%,89%,1);
+  background-color: hsla(216,15%,54%,0.32);
+>>>>>>> c7bac4c3 (feat: increase CSS specificity of components)
 }
 
-.c3 {
+#razorpay-blade .c1 {
   width: 100%;
   overflow-x: scroll;
   display: -webkit-box;
@@ -604,11 +632,11 @@ exports[`Carousel Snapshots should render 1`] = `
   -ms-scroll-snap-points-x: repeat(100%);
 }
 
-.c3::-webkit-scrollbar {
+#razorpay-blade .c1::-webkit-scrollbar {
   display: none;
 }
 
-.c4 {
+#razorpay-blade .c2 {
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
   -ms-flex-positive: 0;
@@ -625,23 +653,23 @@ exports[`Carousel Snapshots should render 1`] = `
 }
 
 @media screen and (min-width:768px) {
-  .c2 {
+  #razorpay-blade .c0 {
     gap: 16px;
   }
 }
 
 <div>
   <div
-    class="c0"
+    class="c0 "
     data-blade-component="carousel"
   >
     <div
-      class="c1"
+      class="c0 "
       data-blade-component="base-box"
     >
       <div
         aria-roledescription="carousel"
-        class="c2 c3"
+        class="c0 c1 "
         data-blade-component="base-box"
         role="group"
         tabindex="0"
@@ -649,7 +677,7 @@ exports[`Carousel Snapshots should render 1`] = `
         <div
           aria-label="1 of 2"
           aria-roledescription="slide"
-          class=" c4"
+          class="c0 c2  "
           data-blade-component="base-box"
           data-slide-index="0"
           id="carousel-42-carousel-item-0"
@@ -666,7 +694,7 @@ exports[`Carousel Snapshots should render 1`] = `
         <div
           aria-label="2 of 2"
           aria-roledescription="slide"
-          class=" c4"
+          class="c0 c2  "
           data-blade-component="base-box"
           data-slide-index="1"
           id="carousel-42-carousel-item-1"
@@ -683,12 +711,12 @@ exports[`Carousel Snapshots should render 1`] = `
       </div>
     </div>
     <div
-      class="c5"
+      class="c0 "
       data-blade-component="box"
     >
       <button
         aria-label="Previous Slide"
-        class="c6"
+        class="c3 "
         data-blade-component="NavigationButton"
       >
         <svg
@@ -711,7 +739,7 @@ exports[`Carousel Snapshots should render 1`] = `
       </button>
       <div
         aria-label="Slides"
-        class="c7"
+        class="c0 "
         data-blade-component="base-box"
         role="tablist"
       >
@@ -719,7 +747,7 @@ exports[`Carousel Snapshots should render 1`] = `
           aria-controls="carousel-42-carousel-item-0"
           aria-label="Slide 1"
           aria-selected="true"
-          class="c8"
+          class="c4 "
           data-blade-component="carousel-indicator-button"
           role="tab"
         />
@@ -727,14 +755,14 @@ exports[`Carousel Snapshots should render 1`] = `
           aria-controls="carousel-42-carousel-item-1"
           aria-label="Slide 2"
           aria-selected="false"
-          class="c9"
+          class="c4 "
           data-blade-component="carousel-indicator-button"
           role="tab"
         />
       </div>
       <button
         aria-label="Next Slide"
-        class="c6"
+        class="c3 "
         data-blade-component="NavigationButton"
       >
         <svg
@@ -761,7 +789,7 @@ exports[`Carousel Snapshots should render 1`] = `
 `;
 
 exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`] = `
-.c8 {
+#razorpay-blade .c4 {
   border: none;
   cursor: pointer;
   padding: 0px;
@@ -777,18 +805,18 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c8:before {
+#razorpay-blade .c4:before {
   content: "";
   padding: 10px;
   padding-top: 20px;
 }
 
-.c8:focus-visible {
+#razorpay-blade .c4:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c9 {
+#razorpay-blade .c4 {
   border: none;
   cursor: pointer;
   padding: 0px;
@@ -804,18 +832,18 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c9:before {
+#razorpay-blade .c4:before {
   content: "";
   padding: 10px;
   padding-top: 20px;
 }
 
-.c9:focus-visible {
+#razorpay-blade .c4:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c0 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -829,7 +857,7 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
   align-items: center;
 }
 
-.c1 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -846,7 +874,7 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
   gap: 12px;
 }
 
-.c3 {
+#razorpay-blade .c0 {
   -webkit-align-items: start;
   -webkit-box-align: start;
   -ms-flex-align: start;
@@ -854,11 +882,11 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
   gap: 12px;
 }
 
-.c6 {
+#razorpay-blade .c0 {
   margin-top: 24px;
 }
 
-.c7 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -869,7 +897,7 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
   gap: 4px;
 }
 
-.c2 {
+#razorpay-blade .c1 {
   cursor: pointer;
   background: transparent;
   border: none;
@@ -904,24 +932,38 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
   box-shadow: 0 12px 16px -4px hsla(217,56%,17%,0.08),0 4px 6px -2px hsla(217,56%,17%,0.03);
 }
 
+<<<<<<< HEAD
 .c2:hover {
   color: hsla(218,89%,51%,1);
   background-color: hsla(216,6%,94%,1);
+=======
+#razorpay-blade .c1:hover {
+  color: hsla(216,33%,29%,1);
+  border-color: hsla(216,19%,89%,1);
+  background-color: hsla(216,15%,54%,0.18);
+>>>>>>> c7bac4c3 (feat: increase CSS specificity of components)
 }
 
-.c2:focus-visible {
+#razorpay-blade .c1:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   color: hsla(218,89%,51%,1);
   background-color: hsla(216,4%,89%,1);
 }
 
+<<<<<<< HEAD
 .c2:active {
   color: hsla(218,89%,51%,1);
   background-color: hsla(216,4%,89%,1);
+=======
+#razorpay-blade .c1:active {
+  color: hsla(216,33%,29%,1);
+  border-color: hsla(216,19%,89%,1);
+  background-color: hsla(216,15%,54%,0.32);
+>>>>>>> c7bac4c3 (feat: increase CSS specificity of components)
 }
 
-.c4 {
+#razorpay-blade .c2 {
   width: 100%;
   overflow-x: scroll;
   display: -webkit-box;
@@ -953,11 +995,11 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
   -ms-scroll-snap-points-x: repeat(100%);
 }
 
-.c4::-webkit-scrollbar {
+#razorpay-blade .c2::-webkit-scrollbar {
   display: none;
 }
 
-.c5 {
+#razorpay-blade .c3 {
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
   -ms-flex-positive: 0;
@@ -974,23 +1016,23 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
 }
 
 @media screen and (min-width:768px) {
-  .c3 {
+  #razorpay-blade .c0 {
     gap: 16px;
   }
 }
 
 <div>
   <div
-    class="c0"
+    class="c0 "
     data-blade-component="carousel"
   >
     <div
-      class="c1"
+      class="c0 "
       data-blade-component="base-box"
     >
       <button
         aria-label="Previous Slide"
-        class="c2"
+        class="c1 "
         data-blade-component="NavigationButton"
       >
         <svg
@@ -1013,7 +1055,7 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
       </button>
       <div
         aria-roledescription="carousel"
-        class="c3 c4"
+        class="c0 c2 "
         data-blade-component="base-box"
         role="group"
         tabindex="0"
@@ -1021,7 +1063,7 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
         <div
           aria-label="1 of 2"
           aria-roledescription="slide"
-          class=" c5"
+          class="c0 c3  "
           data-blade-component="base-box"
           data-slide-index="0"
           id="carousel-50-carousel-item-0"
@@ -1038,7 +1080,7 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
         <div
           aria-label="2 of 2"
           aria-roledescription="slide"
-          class=" c5"
+          class="c0 c3  "
           data-blade-component="base-box"
           data-slide-index="1"
           id="carousel-50-carousel-item-1"
@@ -1055,7 +1097,7 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
       </div>
       <button
         aria-label="Next Slide"
-        class="c2"
+        class="c1 "
         data-blade-component="NavigationButton"
       >
         <svg
@@ -1078,12 +1120,12 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
       </button>
     </div>
     <div
-      class="c6"
+      class="c0 "
       data-blade-component="box"
     >
       <div
         aria-label="Slides"
-        class="c7"
+        class="c0 "
         data-blade-component="base-box"
         role="tablist"
       >
@@ -1091,7 +1133,7 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
           aria-controls="carousel-50-carousel-item-0"
           aria-label="Slide 1"
           aria-selected="true"
-          class="c8"
+          class="c4 "
           data-blade-component="carousel-indicator-button"
           role="tab"
         />
@@ -1099,7 +1141,7 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
           aria-controls="carousel-50-carousel-item-1"
           aria-label="Slide 2"
           aria-selected="false"
-          class="c9"
+          class="c4 "
           data-blade-component="carousel-indicator-button"
           role="tab"
         />
@@ -1110,7 +1152,7 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
 `;
 
 exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
-.c10 {
+#razorpay-blade .c4 {
   border: none;
   cursor: pointer;
   padding: 0px;
@@ -1126,18 +1168,18 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c10:before {
+#razorpay-blade .c4:before {
   content: "";
   padding: 10px;
   padding-top: 20px;
 }
 
-.c10:focus-visible {
+#razorpay-blade .c4:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c11 {
+#razorpay-blade .c4 {
   border: none;
   cursor: pointer;
   padding: 0px;
@@ -1153,18 +1195,18 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c11:before {
+#razorpay-blade .c4:before {
   content: "";
   padding: 10px;
   padding-top: 20px;
 }
 
-.c11:focus-visible {
+#razorpay-blade .c4:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c0 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1178,7 +1220,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
   align-items: center;
 }
 
-.c1 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1195,7 +1237,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
   gap: 12px;
 }
 
-.c2 {
+#razorpay-blade .c0 {
   -webkit-align-items: start;
   -webkit-box-align: start;
   -ms-flex-align: start;
@@ -1203,15 +1245,15 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
   gap: 12px;
 }
 
-.c4 {
+#razorpay-blade .c0 {
   max-width: 90%;
 }
 
-.c6 {
+#razorpay-blade .c0 {
   min-width: 0px;
 }
 
-.c7 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1224,7 +1266,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
   gap: 12px;
 }
 
-.c9 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1235,7 +1277,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
   gap: 4px;
 }
 
-.c8 {
+#razorpay-blade .c3 {
   cursor: pointer;
   background: transparent;
   border: none;
@@ -1270,24 +1312,38 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
   box-shadow: 0 12px 16px -4px hsla(217,56%,17%,0.08),0 4px 6px -2px hsla(217,56%,17%,0.03);
 }
 
+<<<<<<< HEAD
 .c8:hover {
   color: hsla(218,89%,51%,1);
   background-color: hsla(216,6%,94%,1);
+=======
+#razorpay-blade .c3:hover {
+  color: hsla(216,33%,29%,1);
+  border-color: hsla(216,19%,89%,1);
+  background-color: hsla(216,15%,54%,0.18);
+>>>>>>> c7bac4c3 (feat: increase CSS specificity of components)
 }
 
-.c8:focus-visible {
+#razorpay-blade .c3:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   color: hsla(218,89%,51%,1);
   background-color: hsla(216,4%,89%,1);
 }
 
+<<<<<<< HEAD
 .c8:active {
   color: hsla(218,89%,51%,1);
   background-color: hsla(216,4%,89%,1);
+=======
+#razorpay-blade .c3:active {
+  color: hsla(216,33%,29%,1);
+  border-color: hsla(216,19%,89%,1);
+  background-color: hsla(216,15%,54%,0.32);
+>>>>>>> c7bac4c3 (feat: increase CSS specificity of components)
 }
 
-.c3 {
+#razorpay-blade .c1 {
   width: 100%;
   overflow-x: scroll;
   display: -webkit-box;
@@ -1319,11 +1375,11 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
   -ms-scroll-snap-points-x: repeat(100%);
 }
 
-.c3::-webkit-scrollbar {
+#razorpay-blade .c1::-webkit-scrollbar {
   display: none;
 }
 
-.c5 {
+#razorpay-blade .c2 {
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
   -ms-flex-positive: 0;
@@ -1340,29 +1396,29 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
 }
 
 @media screen and (min-width:768px) {
-  .c2 {
+  #razorpay-blade .c0 {
     gap: 16px;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c4 {
+  #razorpay-blade .c0 {
     max-width: 300px;
   }
 }
 
 <div>
   <div
-    class="c0"
+    class="c0 "
     data-blade-component="carousel"
   >
     <div
-      class="c1"
+      class="c0 "
       data-blade-component="base-box"
     >
       <div
         aria-roledescription="carousel"
-        class="c2 c3"
+        class="c0 c1 "
         data-blade-component="base-box"
         role="group"
         tabindex="0"
@@ -1370,7 +1426,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
         <div
           aria-label="1 of 3"
           aria-roledescription="slide"
-          class="c4 c5"
+          class="c0 c2 "
           data-blade-component="base-box"
           data-slide-index="0"
           id="carousel-46-carousel-item-0"
@@ -1387,7 +1443,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
         <div
           aria-label="2 of 3"
           aria-roledescription="slide"
-          class="c4 c5"
+          class="c0 c2 "
           data-blade-component="base-box"
           data-slide-index="1"
           id="carousel-46-carousel-item-1"
@@ -1404,7 +1460,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
         <div
           aria-label="3 of 3"
           aria-roledescription="slide"
-          class="c4 c5"
+          class="c0 c2 "
           data-blade-component="base-box"
           data-slide-index="2"
           id="carousel-46-carousel-item-2"
@@ -1419,18 +1475,18 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
           </div>
         </div>
         <div
-          class="c6"
+          class="c0 "
           data-blade-component="base-box"
         />
       </div>
     </div>
     <div
-      class="c7"
+      class="c0 "
       data-blade-component="box"
     >
       <button
         aria-label="Previous Slide"
-        class="c8"
+        class="c3 "
         data-blade-component="NavigationButton"
       >
         <svg
@@ -1453,7 +1509,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
       </button>
       <div
         aria-label="Slides"
-        class="c9"
+        class="c0 "
         data-blade-component="base-box"
         role="tablist"
       >
@@ -1461,7 +1517,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
           aria-controls="carousel-46-carousel-item-0"
           aria-label="Slide 1"
           aria-selected="true"
-          class="c10"
+          class="c4 "
           data-blade-component="carousel-indicator-button"
           role="tab"
         />
@@ -1469,7 +1525,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
           aria-controls="carousel-46-carousel-item-1"
           aria-label="Slide 2"
           aria-selected="false"
-          class="c11"
+          class="c4 "
           data-blade-component="carousel-indicator-button"
           role="tab"
         />
@@ -1477,14 +1533,14 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
           aria-controls="carousel-46-carousel-item-2"
           aria-label="Slide 3"
           aria-selected="false"
-          class="c11"
+          class="c4 "
           data-blade-component="carousel-indicator-button"
           role="tab"
         />
       </div>
       <button
         aria-label="Next Slide"
-        class="c8"
+        class="c3 "
         data-blade-component="NavigationButton"
       >
         <svg
@@ -1511,7 +1567,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
 `;
 
 exports[`Carousel Snapshots should render with showOverlay 1`] = `
-.c9 {
+#razorpay-blade .c4 {
   border: none;
   cursor: pointer;
   padding: 0px;
@@ -1527,18 +1583,18 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c9:before {
+#razorpay-blade .c4:before {
   content: "";
   padding: 10px;
   padding-top: 20px;
 }
 
-.c9:focus-visible {
+#razorpay-blade .c4:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c10 {
+#razorpay-blade .c4 {
   border: none;
   cursor: pointer;
   padding: 0px;
@@ -1554,18 +1610,18 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c10:before {
+#razorpay-blade .c4:before {
   content: "";
   padding: 10px;
   padding-top: 20px;
 }
 
-.c10:focus-visible {
+#razorpay-blade .c4:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c0 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1579,7 +1635,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   align-items: center;
 }
 
-.c1 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1596,7 +1652,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   gap: 12px;
 }
 
-.c2 {
+#razorpay-blade .c0 {
   -webkit-align-items: start;
   -webkit-box-align: start;
   -ms-flex-align: start;
@@ -1604,11 +1660,11 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   gap: 12px;
 }
 
-.c5 {
+#razorpay-blade .c0 {
   min-width: 0px;
 }
 
-.c6 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1621,7 +1677,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   gap: 12px;
 }
 
-.c8 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1632,7 +1688,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   gap: 4px;
 }
 
-.c7 {
+#razorpay-blade .c3 {
   cursor: pointer;
   background: transparent;
   border: none;
@@ -1667,24 +1723,38 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   box-shadow: 0 12px 16px -4px hsla(217,56%,17%,0.08),0 4px 6px -2px hsla(217,56%,17%,0.03);
 }
 
+<<<<<<< HEAD
 .c7:hover {
   color: hsla(218,89%,51%,1);
   background-color: hsla(216,6%,94%,1);
+=======
+#razorpay-blade .c3:hover {
+  color: hsla(216,33%,29%,1);
+  border-color: hsla(216,19%,89%,1);
+  background-color: hsla(216,15%,54%,0.18);
+>>>>>>> c7bac4c3 (feat: increase CSS specificity of components)
 }
 
-.c7:focus-visible {
+#razorpay-blade .c3:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   color: hsla(218,89%,51%,1);
   background-color: hsla(216,4%,89%,1);
 }
 
+<<<<<<< HEAD
 .c7:active {
   color: hsla(218,89%,51%,1);
   background-color: hsla(216,4%,89%,1);
+=======
+#razorpay-blade .c3:active {
+  color: hsla(216,33%,29%,1);
+  border-color: hsla(216,19%,89%,1);
+  background-color: hsla(216,15%,54%,0.32);
+>>>>>>> c7bac4c3 (feat: increase CSS specificity of components)
 }
 
-.c3 {
+#razorpay-blade .c1 {
   width: 100%;
   overflow-x: scroll;
   display: -webkit-box;
@@ -1716,11 +1786,11 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   -ms-scroll-snap-points-x: repeat(100%);
 }
 
-.c3::-webkit-scrollbar {
+#razorpay-blade .c1::-webkit-scrollbar {
   display: none;
 }
 
-.c3::before {
+#razorpay-blade .c1::before {
   content: '';
   position: absolute;
   top: 0;
@@ -1738,7 +1808,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   pointer-events: none;
 }
 
-.c3::after {
+#razorpay-blade .c1::after {
   content: '';
   position: absolute;
   top: 0;
@@ -1756,7 +1826,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   pointer-events: none;
 }
 
-.c4 {
+#razorpay-blade .c2 {
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
   -ms-flex-positive: 0;
@@ -1773,23 +1843,23 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
 }
 
 @media screen and (min-width:768px) {
-  .c2 {
+  #razorpay-blade .c0 {
     gap: 16px;
   }
 }
 
 <div>
   <div
-    class="c0"
+    class="c0 "
     data-blade-component="carousel"
   >
     <div
-      class="c1"
+      class="c0 "
       data-blade-component="base-box"
     >
       <div
         aria-roledescription="carousel"
-        class="c2 c3"
+        class="c0 c1 "
         data-blade-component="base-box"
         role="group"
         tabindex="0"
@@ -1797,7 +1867,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
         <div
           aria-label="1 of 3"
           aria-roledescription="slide"
-          class=" c4"
+          class="c0 c2  "
           data-blade-component="base-box"
           data-slide-index="0"
           id="carousel-48-carousel-item-0"
@@ -1814,7 +1884,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
         <div
           aria-label="2 of 3"
           aria-roledescription="slide"
-          class=" c4"
+          class="c0 c2  "
           data-blade-component="base-box"
           data-slide-index="1"
           id="carousel-48-carousel-item-1"
@@ -1831,7 +1901,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
         <div
           aria-label="3 of 3"
           aria-roledescription="slide"
-          class=" c4"
+          class="c0 c2  "
           data-blade-component="base-box"
           data-slide-index="2"
           id="carousel-48-carousel-item-2"
@@ -1846,18 +1916,18 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
           </div>
         </div>
         <div
-          class="c5"
+          class="c0 "
           data-blade-component="base-box"
         />
       </div>
     </div>
     <div
-      class="c6"
+      class="c0 "
       data-blade-component="box"
     >
       <button
         aria-label="Previous Slide"
-        class="c7"
+        class="c3 "
         data-blade-component="NavigationButton"
       >
         <svg
@@ -1880,7 +1950,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
       </button>
       <div
         aria-label="Slides"
-        class="c8"
+        class="c0 "
         data-blade-component="base-box"
         role="tablist"
       >
@@ -1888,7 +1958,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
           aria-controls="carousel-48-carousel-item-0"
           aria-label="Slide 1"
           aria-selected="true"
-          class="c9"
+          class="c4 "
           data-blade-component="carousel-indicator-button"
           role="tab"
         />
@@ -1896,7 +1966,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
           aria-controls="carousel-48-carousel-item-1"
           aria-label="Slide 2"
           aria-selected="false"
-          class="c10"
+          class="c4 "
           data-blade-component="carousel-indicator-button"
           role="tab"
         />
@@ -1904,14 +1974,14 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
           aria-controls="carousel-48-carousel-item-2"
           aria-label="Slide 3"
           aria-selected="false"
-          class="c10"
+          class="c4 "
           data-blade-component="carousel-indicator-button"
           role="tab"
         />
       </div>
       <button
         aria-label="Next Slide"
-        class="c7"
+        class="c3 "
         data-blade-component="NavigationButton"
       >
         <svg
@@ -1938,7 +2008,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
 `;
 
 exports[`Carousel Snapshots should render with visibleItems 1`] = `
-.c8 {
+#razorpay-blade .c4 {
   border: none;
   cursor: pointer;
   padding: 0px;
@@ -1954,18 +2024,18 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c8:before {
+#razorpay-blade .c4:before {
   content: "";
   padding: 10px;
   padding-top: 20px;
 }
 
-.c8:focus-visible {
+#razorpay-blade .c4:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c9 {
+#razorpay-blade .c4 {
   border: none;
   cursor: pointer;
   padding: 0px;
@@ -1981,18 +2051,18 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c9:before {
+#razorpay-blade .c4:before {
   content: "";
   padding: 10px;
   padding-top: 20px;
 }
 
-.c9:focus-visible {
+#razorpay-blade .c4:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c0 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2006,7 +2076,7 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
   align-items: center;
 }
 
-.c1 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2023,7 +2093,7 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
   gap: 12px;
 }
 
-.c2 {
+#razorpay-blade .c0 {
   -webkit-align-items: start;
   -webkit-box-align: start;
   -ms-flex-align: start;
@@ -2031,7 +2101,7 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
   gap: 12px;
 }
 
-.c5 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2044,7 +2114,7 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
   gap: 12px;
 }
 
-.c7 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2055,7 +2125,7 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
   gap: 4px;
 }
 
-.c6 {
+#razorpay-blade .c3 {
   cursor: pointer;
   background: transparent;
   border: none;
@@ -2090,24 +2160,38 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
   box-shadow: 0 12px 16px -4px hsla(217,56%,17%,0.08),0 4px 6px -2px hsla(217,56%,17%,0.03);
 }
 
+<<<<<<< HEAD
 .c6:hover {
   color: hsla(218,89%,51%,1);
   background-color: hsla(216,6%,94%,1);
+=======
+#razorpay-blade .c3:hover {
+  color: hsla(216,33%,29%,1);
+  border-color: hsla(216,19%,89%,1);
+  background-color: hsla(216,15%,54%,0.18);
+>>>>>>> c7bac4c3 (feat: increase CSS specificity of components)
 }
 
-.c6:focus-visible {
+#razorpay-blade .c3:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   color: hsla(218,89%,51%,1);
   background-color: hsla(216,4%,89%,1);
 }
 
+<<<<<<< HEAD
 .c6:active {
   color: hsla(218,89%,51%,1);
   background-color: hsla(216,4%,89%,1);
+=======
+#razorpay-blade .c3:active {
+  color: hsla(216,33%,29%,1);
+  border-color: hsla(216,19%,89%,1);
+  background-color: hsla(216,15%,54%,0.32);
+>>>>>>> c7bac4c3 (feat: increase CSS specificity of components)
 }
 
-.c3 {
+#razorpay-blade .c1 {
   width: 100%;
   overflow-x: scroll;
   display: -webkit-box;
@@ -2139,11 +2223,11 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
   -ms-scroll-snap-points-x: repeat(100%);
 }
 
-.c3::-webkit-scrollbar {
+#razorpay-blade .c1::-webkit-scrollbar {
   display: none;
 }
 
-.c4 {
+#razorpay-blade .c2 {
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
   -ms-flex-positive: 0;
@@ -2160,23 +2244,23 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
 }
 
 @media screen and (min-width:768px) {
-  .c2 {
+  #razorpay-blade .c0 {
     gap: 16px;
   }
 }
 
 <div>
   <div
-    class="c0"
+    class="c0 "
     data-blade-component="carousel"
   >
     <div
-      class="c1"
+      class="c0 "
       data-blade-component="base-box"
     >
       <div
         aria-roledescription="carousel"
-        class="c2 c3"
+        class="c0 c1 "
         data-blade-component="base-box"
         role="group"
         tabindex="0"
@@ -2184,7 +2268,7 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
         <div
           aria-label="1 of 3"
           aria-roledescription="slide"
-          class=" c4"
+          class="c0 c2  "
           data-blade-component="base-box"
           data-slide-index="0"
           id="carousel-44-carousel-item-0"
@@ -2201,7 +2285,7 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
         <div
           aria-label="2 of 3"
           aria-roledescription="slide"
-          class=" c4"
+          class="c0 c2  "
           data-blade-component="base-box"
           data-slide-index="1"
           id="carousel-44-carousel-item-1"
@@ -2218,7 +2302,7 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
         <div
           aria-label="3 of 3"
           aria-roledescription="slide"
-          class=" c4"
+          class="c0 c2  "
           data-blade-component="base-box"
           data-slide-index="2"
           id="carousel-44-carousel-item-2"
@@ -2235,12 +2319,12 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
       </div>
     </div>
     <div
-      class="c5"
+      class="c0 "
       data-blade-component="box"
     >
       <button
         aria-label="Previous Slide"
-        class="c6"
+        class="c3 "
         data-blade-component="NavigationButton"
       >
         <svg
@@ -2263,7 +2347,7 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
       </button>
       <div
         aria-label="Slides"
-        class="c7"
+        class="c0 "
         data-blade-component="base-box"
         role="tablist"
       >
@@ -2271,7 +2355,7 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
           aria-controls="carousel-44-carousel-item-0"
           aria-label="Slide 1"
           aria-selected="true"
-          class="c8"
+          class="c4 "
           data-blade-component="carousel-indicator-button"
           role="tab"
         />
@@ -2279,14 +2363,14 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
           aria-controls="carousel-44-carousel-item-2"
           aria-label="Slide 3"
           aria-selected="false"
-          class="c9"
+          class="c4 "
           data-blade-component="carousel-indicator-button"
           role="tab"
         />
       </div>
       <button
         aria-label="Next Slide"
-        class="c6"
+        class="c3 "
         data-blade-component="NavigationButton"
       >
         <svg

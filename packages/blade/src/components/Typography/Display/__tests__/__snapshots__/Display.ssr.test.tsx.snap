@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Display /> should render 1`] = `"<div id="root"><h1 class="StyledBaseText-dVBfTO jZhbyo" data-blade-component="display">Displaying Landing Page Display</h1></div>"`;
+exports[`<Display /> should render 1`] = `"<div id="root"><h1 class="StyledBaseText-dVBfTO hsYVgr" data-blade-component="display">Displaying Landing Page Display</h1></div>"`;
 
 exports[`<Display /> should render 2`] = `
 .c0 {
@@ -20,7 +20,11 @@ exports[`<Display /> should render 2`] = `
   id="root"
 >
   <h1
+<<<<<<< HEAD
     class="c0"
+=======
+    class="StyledBaseText-dVBfTO hsYVgr"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
     data-blade-component="display"
   >
     Displaying Landing Page Display

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<BaseLink /> should render link with a default rel set when target is _blank 1`] = `"<div id="root"><a data-blade-component="link" href="https://www.google.com/" target="_blank" rel="noreferrer noopener" class="StyledBaseLinkweb__StyledLink-sc-1yj1z8h-0 bVQhKA" role="link" aria-disabled="false"><span class="BaseBox-bmPWx fSbYvl content-container" data-blade-component="base-box"><span class="StyledBaseText-dVBfTO jSaisz" data-blade-component="base-text">Learn More</span></span></a></div>"`;
+exports[`<BaseLink /> should render link with a default rel set when target is _blank 1`] = `"<div id="root"><a data-blade-component="link" href="https://www.google.com/" target="_blank" rel="noreferrer noopener" class="StyledBaseLinkweb__StyledLink-sc-1yj1z8h-0 jCtsYv" role="link" aria-disabled="false"><span class="BaseBox-bmPWx bmQUTK content-container" data-blade-component="base-box"><span class="StyledBaseText-dVBfTO gQSrhk" data-blade-component="base-text">Learn More</span></span></a></div>"`;
 
 exports[`<BaseLink /> should render link with a default rel set when target is _blank 2`] = `
 .c0 {
@@ -74,7 +74,11 @@ exports[`<BaseLink /> should render link with a default rel set when target is _
 >
   <a
     aria-disabled="false"
+<<<<<<< HEAD
     class="c0"
+=======
+    class="StyledBaseLinkweb__StyledLink-sc-1yj1z8h-0 jCtsYv"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
     data-blade-component="link"
     href="https://www.google.com/"
     rel="noreferrer noopener"
@@ -82,11 +86,19 @@ exports[`<BaseLink /> should render link with a default rel set when target is _
     target="_blank"
   >
     <span
+<<<<<<< HEAD
       class="c1 content-container"
       data-blade-component="base-box"
     >
       <span
         class="c2"
+=======
+      class="BaseBox-bmPWx bmQUTK content-container"
+      data-blade-component="base-box"
+    >
+      <span
+        class="StyledBaseText-dVBfTO gQSrhk"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
         data-blade-component="base-text"
       >
         Learn More

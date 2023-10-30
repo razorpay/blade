@@ -29,13 +29,13 @@ describe('styledProps with getStyledProps', () => {
     );
 
     expect(container).toMatchInlineSnapshot(`
-      .c0 {
+      #razorpay-blade .c0 {
         margin: 0px 48px;
       }
 
       <div>
         <div
-          class="c0"
+          class="c0 "
           data-blade-component="base-box"
         >
           Hello!
@@ -54,14 +54,14 @@ describe('styledProps with useStyledProps', () => {
     );
 
     expect(container).toMatchInlineSnapshot(`
-      .c0 {
+      #razorpay-blade .c0 {
         margin: 0px 48px;
         display: inline-block;
       }
 
       <div>
         <button
-          class="c0"
+          class="c0 "
         >
           hi
         </button>

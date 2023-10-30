@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Collapsible /> should render Collapsible on server 1`] = `"<div id="root"><div data-blade-component="collapsible" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx iBXzln"><button type="button" data-blade-component="button" role="button" aria-controls="collapsible-body-undefined" aria-expanded="true" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 biOBim"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 kkGTK NIPoA"><div class="StyledBaseText-dVBfTO brGLEM" data-blade-component="base-text">View Price Breakdown</div></div></button><div id="collapsible-body-undefined" role="region" aria-hidden="false" data-blade-component="collapsible-body" class="BaseBox-bmPWx"><div class="CollapsibleBodyContentweb__StyledCollapsibleBodyContent-sc-1oi3ngc-0 gxKLCW"><div data-blade-component="box" class="BaseBox-bmPWx hgWdUa"><div data-blade-component="box" class="BaseBox-bmPWx lmtAaL"><div data-blade-component="box" class="BaseBox-bmPWx hfsNNB"><p class="StyledBaseText-dVBfTO eIdQFo" data-blade-component="text">Actual amount</p><div data-blade-component="amount" class="BaseBox-bmPWx bcSLaJ"><div data-blade-component="base-box" class="BaseBox-bmPWx dVzpVF"><span class="StyledBaseText-dVBfTO jKuOWA" data-blade-component="base-text">₹</span><span class="StyledBaseText-dVBfTO chIjgb" data-blade-component="base-text">1,000<!-- -->.</span><span class="StyledBaseText-dVBfTO eDQkPo" data-blade-component="base-text">00</span></div></div></div><div data-blade-component="box" class="BaseBox-bmPWx hfsNNB"><p class="StyledBaseText-dVBfTO ljwJlt" data-blade-component="text">Razorpay Platform Fees</p><p class="StyledBaseText-dVBfTO eIdQFo" data-blade-component="text">2%</p></div><div data-blade-component="box" class="BaseBox-bmPWx hfsNNB"><p class="StyledBaseText-dVBfTO ljwJlt" data-blade-component="text">GST</p><p class="StyledBaseText-dVBfTO eIdQFo" data-blade-component="text">18%</p></div></div></div></div></div></div></div></div>"`;
+exports[`<Collapsible /> should render Collapsible on server 1`] = `"<div id="root"><div data-blade-component="collapsible" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx jHUTts"><button type="button" data-blade-component="button" role="button" aria-controls="collapsible-body-undefined" aria-expanded="true" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 dAITgZ"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 gDQkZt fKcvHH"><div class="StyledBaseText-dVBfTO bWCnhn" data-blade-component="base-text">View Price Breakdown</div></div></button><div id="collapsible-body-undefined" role="region" aria-hidden="false" data-blade-component="collapsible-body" class="BaseBox-bmPWx"><div class="CollapsibleBodyContentweb__StyledCollapsibleBodyContent-sc-1oi3ngc-0 ia-DgAp"><div data-blade-component="box" class="BaseBox-bmPWx cnEoFJ"><div data-blade-component="box" class="BaseBox-bmPWx iYZHWY"><div data-blade-component="box" class="BaseBox-bmPWx kJZSOW"><p class="StyledBaseText-dVBfTO ekbJPz" data-blade-component="text">Actual amount</p><div data-blade-component="amount" class="BaseBox-bmPWx hGbNLG"><div data-blade-component="base-box" class="BaseBox-bmPWx klozWS"><span class="StyledBaseText-dVBfTO HeAxX" data-blade-component="base-text">₹</span><span class="StyledBaseText-dVBfTO rvtbQ" data-blade-component="base-text">1,000<!-- -->.</span><span class="StyledBaseText-dVBfTO jICGhz" data-blade-component="base-text">00</span></div></div></div><div data-blade-component="box" class="BaseBox-bmPWx kJZSOW"><p class="StyledBaseText-dVBfTO fLRfIG" data-blade-component="text">Razorpay Platform Fees</p><p class="StyledBaseText-dVBfTO ekbJPz" data-blade-component="text">2%</p></div><div data-blade-component="box" class="BaseBox-bmPWx kJZSOW"><p class="StyledBaseText-dVBfTO fLRfIG" data-blade-component="text">GST</p><p class="StyledBaseText-dVBfTO ekbJPz" data-blade-component="text">18%</p></div></div></div></div></div></div></div></div>"`;
 
 exports[`<Collapsible /> should render Collapsible on server 2`] = `
 .c0 {
@@ -281,23 +281,39 @@ exports[`<Collapsible /> should render Collapsible on server 2`] = `
     data-blade-component="collapsible"
   >
     <div
+<<<<<<< HEAD
       class="c0"
+=======
+      class="BaseBox-bmPWx jHUTts"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
       data-blade-component="base-box"
     >
       <button
         aria-controls="collapsible-body-1"
         aria-expanded="true"
+<<<<<<< HEAD
         class="c1"
+=======
+        class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 dAITgZ"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
         data-blade-component="button"
         role="button"
         type="button"
       >
         <div
+<<<<<<< HEAD
           class="c2 c3"
           data-blade-component="base-box"
         >
           <div
             class="c4"
+=======
+          class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 gDQkZt fKcvHH"
+          data-blade-component="base-box"
+        >
+          <div
+            class="StyledBaseText-dVBfTO bWCnhn"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
             data-blade-component="base-text"
           >
             View Price Breakdown
@@ -312,6 +328,7 @@ exports[`<Collapsible /> should render Collapsible on server 2`] = `
         role="region"
       >
         <div
+<<<<<<< HEAD
           class="c5"
         >
           <div
@@ -328,11 +345,30 @@ exports[`<Collapsible /> should render Collapsible on server 2`] = `
               >
                 <p
                   class="c9"
+=======
+          class="CollapsibleBodyContentweb__StyledCollapsibleBodyContent-sc-1oi3ngc-0 ia-DgAp"
+        >
+          <div
+            class="BaseBox-bmPWx cnEoFJ"
+            data-blade-component="box"
+          >
+            <div
+              class="BaseBox-bmPWx iYZHWY"
+              data-blade-component="box"
+            >
+              <div
+                class="BaseBox-bmPWx kJZSOW"
+                data-blade-component="box"
+              >
+                <p
+                  class="StyledBaseText-dVBfTO ekbJPz"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
                   data-blade-component="text"
                 >
                   Actual amount
                 </p>
                 <div
+<<<<<<< HEAD
                   class="c10"
                   data-blade-component="amount"
                 >
@@ -342,12 +378,27 @@ exports[`<Collapsible /> should render Collapsible on server 2`] = `
                   >
                     <span
                       class="c12"
+=======
+                  class="BaseBox-bmPWx hGbNLG"
+                  data-blade-component="amount"
+                >
+                  <div
+                    class="BaseBox-bmPWx klozWS"
+                    data-blade-component="base-box"
+                  >
+                    <span
+                      class="StyledBaseText-dVBfTO HeAxX"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
                       data-blade-component="base-text"
                     >
                       ₹
                     </span>
                     <span
+<<<<<<< HEAD
                       class="c13"
+=======
+                      class="StyledBaseText-dVBfTO rvtbQ"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
                       data-blade-component="base-text"
                     >
                       1,000
@@ -355,7 +406,11 @@ exports[`<Collapsible /> should render Collapsible on server 2`] = `
                       .
                     </span>
                     <span
+<<<<<<< HEAD
                       class="c14"
+=======
+                      class="StyledBaseText-dVBfTO jICGhz"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
                       data-blade-component="base-text"
                     >
                       00
@@ -364,34 +419,58 @@ exports[`<Collapsible /> should render Collapsible on server 2`] = `
                 </div>
               </div>
               <div
+<<<<<<< HEAD
                 class="c8"
                 data-blade-component="box"
               >
                 <p
                   class="c15"
+=======
+                class="BaseBox-bmPWx kJZSOW"
+                data-blade-component="box"
+              >
+                <p
+                  class="StyledBaseText-dVBfTO fLRfIG"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
                   data-blade-component="text"
                 >
                   Razorpay Platform Fees
                 </p>
                 <p
+<<<<<<< HEAD
                   class="c9"
+=======
+                  class="StyledBaseText-dVBfTO ekbJPz"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
                   data-blade-component="text"
                 >
                   2%
                 </p>
               </div>
               <div
+<<<<<<< HEAD
                 class="c8"
                 data-blade-component="box"
               >
                 <p
                   class="c15"
+=======
+                class="BaseBox-bmPWx kJZSOW"
+                data-blade-component="box"
+              >
+                <p
+                  class="StyledBaseText-dVBfTO fLRfIG"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
                   data-blade-component="text"
                 >
                   GST
                 </p>
                 <p
+<<<<<<< HEAD
                   class="c9"
+=======
+                  class="StyledBaseText-dVBfTO ekbJPz"
+>>>>>>> e424fbce (feat: increase CSS specificity of components)
                   data-blade-component="text"
                 >
                   18%

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
-.c0 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -16,7 +16,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   min-width: 200px;
 }
 
-.c2 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -37,12 +37,12 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   justify-content: center;
 }
 
-.c6 {
+#razorpay-blade .c0 {
   margin-bottom: 0px;
   margin-top: 16px;
 }
 
-.c7 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -53,14 +53,14 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   min-width: 200px;
 }
 
-.c9 {
+#razorpay-blade .c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
-.c10 {
+#razorpay-blade .c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -74,7 +74,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   align-items: baseline;
 }
 
-.c5 {
+#razorpay-blade .c4 {
   -webkit-transition-duration: 300ms;
   transition-duration: 300ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -87,7 +87,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   overflow-y: hidden;
 }
 
-.c1 {
+#razorpay-blade .c1 {
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -123,24 +123,24 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   position: relative;
 }
 
-.c1:hover {
+#razorpay-blade .c1:hover {
   background-color: hsla(223,95%,48%,1);
   border-color: hsla(223,95%,48%,1);
 }
 
-.c1:active {
+#razorpay-blade .c1:active {
   background-color: hsla(230,100%,42%,1);
   border-color: hsla(230,100%,42%,1);
 }
 
-.c1:focus-visible {
+#razorpay-blade .c1:focus-visible {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c1 * {
+#razorpay-blade .c1 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -149,7 +149,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c4 {
+#razorpay-blade .c3 {
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -163,7 +163,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   padding: 0;
 }
 
-.c8 {
+#razorpay-blade .c3 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -176,7 +176,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   padding: 0;
 }
 
-.c11 {
+#razorpay-blade .c3 {
   color: hsla(160,100%,26%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -190,7 +190,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   margin-right: 2px;
 }
 
-.c12 {
+#razorpay-blade .c3 {
   color: hsla(160,100%,26%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -203,7 +203,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   padding: 0;
 }
 
-.c13 {
+#razorpay-blade .c3 {
   color: hsla(160,100%,26%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -217,51 +217,51 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   margin-left: 2px;
 }
 
-.c3 {
+#razorpay-blade .c2 {
   opacity: 1;
 }
 
 @media screen and (min-width:480px) {
-  .c0 {
+  #razorpay-blade .c0 {
     max-width: calc(100vw - 40px);
   }
 }
 
 @media screen and (min-width:768px) {
-  .c0 {
+  #razorpay-blade .c0 {
     max-width: 640px;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c0 {
+  #razorpay-blade .c0 {
     max-width: 1136px;
   }
 }
 
 <div>
   <div
-    class=""
+    class="c0"
     data-blade-component="collapsible"
   >
     <div
-      class="c0"
+      class="c0 "
       data-blade-component="base-box"
     >
       <button
         aria-controls="collapsible-body-1"
         aria-expanded="false"
-        class="c1"
+        class="c1 "
         data-blade-component="button"
         role="button"
         type="button"
       >
         <div
-          class="c2 c3"
+          class="c0 c2 "
           data-blade-component="base-box"
         >
           <div
-            class="c4"
+            class="c3 "
             data-blade-component="base-text"
           >
             View Price Breakdown
@@ -270,51 +270,51 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
       </button>
       <div
         aria-hidden="true"
-        class=""
+        class="c0"
         data-blade-component="collapsible-body"
         id="collapsible-body-1"
         role="region"
       >
         <div
-          class="c5"
+          class="c4 "
         >
           <div
-            class="c6"
+            class="c0 "
             data-blade-component="box"
           >
             <div
-              class="c7"
+              class="c0 "
               data-blade-component="box"
             >
               <p
-                class="c8"
+                class="c3 "
                 data-blade-component="text"
               >
                 Actual amount
               </p>
               <div
-                class="c9"
+                class="c0 "
                 data-blade-component="amount"
               >
                 <div
-                  class="c10"
+                  class="c0 "
                   data-blade-component="base-box"
                 >
                   <span
-                    class="c11"
+                    class="c3 "
                     data-blade-component="base-text"
                   >
                     ₹
                   </span>
                   <span
-                    class="c12"
+                    class="c3 "
                     data-blade-component="base-text"
                   >
                     1,000
                     .
                   </span>
                   <span
-                    class="c13"
+                    class="c3 "
                     data-blade-component="base-text"
                   >
                     00
@@ -331,7 +331,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
 `;
 
 exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
-.c0 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -346,7 +346,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   min-width: 200px;
 }
 
-.c2 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -360,7 +360,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   align-items: center;
 }
 
-.c4 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -372,12 +372,12 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   padding-left: 4px;
 }
 
-.c7 {
+#razorpay-blade .c0 {
   margin-bottom: 0px;
   margin-top: 16px;
 }
 
-.c8 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -388,14 +388,14 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   min-width: 200px;
 }
 
-.c10 {
+#razorpay-blade .c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
-.c11 {
+#razorpay-blade .c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -409,7 +409,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   align-items: baseline;
 }
 
-.c6 {
+#razorpay-blade .c4 {
   -webkit-transition-duration: 300ms;
   transition-duration: 300ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -422,7 +422,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   overflow-y: hidden;
 }
 
-.c3 {
+#razorpay-blade .c2 {
   color: hsla(218,89%,51%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -436,7 +436,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   padding: 0;
 }
 
-.c9 {
+#razorpay-blade .c2 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -449,7 +449,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   padding: 0;
 }
 
-.c12 {
+#razorpay-blade .c2 {
   color: hsla(160,100%,26%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -463,7 +463,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   margin-right: 2px;
 }
 
-.c13 {
+#razorpay-blade .c2 {
   color: hsla(160,100%,26%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -476,7 +476,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   padding: 0;
 }
 
-.c14 {
+#razorpay-blade .c2 {
   color: hsla(160,100%,26%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -490,7 +490,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   margin-left: 2px;
 }
 
-.c5 {
+#razorpay-blade .c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -514,7 +514,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   transition-property: transform;
 }
 
-.c1 {
+#razorpay-blade .c1 {
   padding: 0;
   background-color: transparent;
   outline: none;
@@ -532,18 +532,18 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   transition-duration: 70ms;
 }
 
-.c1 .content-container {
+#razorpay-blade .c1 .content-container {
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
   border-radius: 2px;
 }
 
-.c1:focus-visible .content-container {
+#razorpay-blade .c1:focus-visible .content-container {
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c1 * {
+#razorpay-blade .c1 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -553,58 +553,58 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
 }
 
 @media screen and (min-width:480px) {
-  .c0 {
+  #razorpay-blade .c0 {
     max-width: calc(100vw - 40px);
   }
 }
 
 @media screen and (min-width:768px) {
-  .c0 {
+  #razorpay-blade .c0 {
     max-width: 640px;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c0 {
+  #razorpay-blade .c0 {
     max-width: 1136px;
   }
 }
 
 <div>
   <div
-    class=""
+    class="c0"
     data-blade-component="collapsible"
   >
     <div
-      class="c0"
+      class="c0 "
       data-blade-component="base-box"
     >
       <button
         aria-controls="collapsible-body-3"
         aria-disabled="false"
         aria-expanded="false"
-        class="c1"
+        class="c1 "
         data-blade-component="link"
         role="button"
         type="button"
       >
         <span
-          class="c2 content-container"
+          class="c0 content-container"
           data-blade-component="base-box"
         >
           <span
-            class="c3"
+            class="c2 "
             data-blade-component="base-text"
           >
             View Price Breakdown
           </span>
           <span
-            class="c4"
+            class="c0 "
             data-blade-component="base-box"
           >
             <div
               aria-hidden="true"
-              class=" c5"
+              class="c0 c3  "
               data-blade-component="base-box"
               direction="bottom"
             >
@@ -631,51 +631,51 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
       </button>
       <div
         aria-hidden="true"
-        class=""
+        class="c0"
         data-blade-component="collapsible-body"
         id="collapsible-body-3"
         role="region"
       >
         <div
-          class="c6"
+          class="c4 "
         >
           <div
-            class="c7"
+            class="c0 "
             data-blade-component="box"
           >
             <div
-              class="c8"
+              class="c0 "
               data-blade-component="box"
             >
               <p
-                class="c9"
+                class="c2 "
                 data-blade-component="text"
               >
                 Actual amount
               </p>
               <div
-                class="c10"
+                class="c0 "
                 data-blade-component="amount"
               >
                 <div
-                  class="c11"
+                  class="c0 "
                   data-blade-component="base-box"
                 >
                   <span
-                    class="c12"
+                    class="c2 "
                     data-blade-component="base-text"
                   >
                     ₹
                   </span>
                   <span
-                    class="c13"
+                    class="c2 "
                     data-blade-component="base-text"
                   >
                     1,000
                     .
                   </span>
                   <span
-                    class="c14"
+                    class="c2 "
                     data-blade-component="base-text"
                   >
                     00

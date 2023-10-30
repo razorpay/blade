@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
-.c0 {
+#razorpay-blade .c0 {
   text-align: left;
   position: relative;
 }
 
-.c2 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -27,7 +27,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   justify-content: center;
 }
 
-.c5 {
+#razorpay-blade .c0 {
   position: fixed;
   z-index: 101;
   top: 0px;
@@ -38,7 +38,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   opacity: 0;
 }
 
-.c8 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -49,7 +49,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   height: 100%;
 }
 
-.c10 {
+#razorpay-blade .c0 {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -59,21 +59,29 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   flex-shrink: 1;
 }
 
-.c12 {
+#razorpay-blade .c0 {
+  overflow: auto;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-right: 16px;
+  padding-left: 16px;
+}
+
+#razorpay-blade .c0 {
   overflow: visible;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
 }
 
-.c13 {
+#razorpay-blade .c0 {
   position: relative;
   height: 8px;
   right: 0px;
   touch-action: none;
 }
 
-.c14 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -99,7 +107,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   border-radius: 9999px;
 }
 
-.c18 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -118,7 +126,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   max-height: 20px;
 }
 
-.c19 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -133,7 +141,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   justify-content: center;
 }
 
-.c20 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -149,11 +157,11 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   padding-left: 0px;
 }
 
-.c22 {
+#razorpay-blade .c0 {
   margin-left: auto;
 }
 
-.c11 {
+#razorpay-blade .c0 {
   overflow: auto;
   padding-top: 8px;
   padding-bottom: 8px;
@@ -161,7 +169,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   padding-left: 8px;
 }
 
-.c15 {
+#razorpay-blade .c7 {
   border: none;
   cursor: pointer;
   padding: 0;
@@ -188,21 +196,21 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c15:hover {
+#razorpay-blade .c7:hover {
   color: hsla(217,18%,45%,1);
 }
 
-.c15:focus-visible {
+#razorpay-blade .c7:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   color: hsla(217,18%,45%,1);
 }
 
-.c15:active {
+#razorpay-blade .c7:active {
   color: hsla(217,18%,45%,1);
 }
 
-.c4 {
+#razorpay-blade .c3 {
   color: hsla(216,33%,29%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -216,7 +224,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   padding: 0;
 }
 
-.c21 {
+#razorpay-blade .c3 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -234,7 +242,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   -webkit-box-orient: vertical;
 }
 
-.c24 {
+#razorpay-blade .c3 {
   color: hsla(8,73%,47%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -252,7 +260,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   -webkit-box-orient: vertical;
 }
 
-.c6 {
+#razorpay-blade .c4 {
   -webkit-transition-duration: 250ms;
   transition-duration: 250ms;
   -webkit-transition-timing-function: cubic-bezier(0.5,0,1,1);
@@ -262,7 +270,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   transition-property: opacity;
 }
 
-.c9 {
+#razorpay-blade .c6 {
   position: relative;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
@@ -289,7 +297,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   z-index: 100;
 }
 
-.c9:after {
+#razorpay-blade .c6:after {
   margin: auto;
   content: '';
   width: 56px;
@@ -298,7 +306,41 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   border-radius: 16px;
 }
 
-.c7 {
+#razorpay-blade .c5 {
+  background: hsla(0,0%,100%,1);
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  border-color: hsla(216,15%,54%,0.18);
+  box-shadow: 0px -24px 48px -12px hsla(217,56%,17%,0.18);
+  opacity: 0;
+  pointer-events: none;
+  -webkit-transition-duration: 250ms;
+  transition-duration: 250ms;
+  -webkit-transition-timing-function: cubic-bezier(.15,0,.24,.97);
+  transition-timing-function: cubic-bezier(.15,0,.24,.97);
+  will-change: transform,opacity,height;
+  -webkit-transition-property: -webkit-transform,opacity,height;
+  -webkit-transition-property: transform,opacity,height;
+  transition-property: transform,opacity,height;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background-color: hsla(0,0%,100%,1);
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  touch-action: none;
+  overflow: hidden;
+}
+
+#razorpay-blade .c5 {
   background: hsla(0,0%,100%,1);
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
@@ -332,7 +374,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   overflow: hidden;
 }
 
-.c1 {
+#razorpay-blade .c1 {
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -368,21 +410,21 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   position: relative;
 }
 
-.c1:hover {
+#razorpay-blade .c1:hover {
   background-color: hsla(216,15%,54%,0.18);
 }
 
-.c1:active {
+#razorpay-blade .c1:active {
   background-color: hsla(216,15%,54%,0.32);
 }
 
-.c1:focus-visible {
+#razorpay-blade .c1:focus-visible {
   background-color: hsla(216,15%,54%,0.32);
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c1 * {
+#razorpay-blade .c1 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -391,19 +433,19 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3 {
+#razorpay-blade .c2 {
   opacity: 1;
 }
 
-.c16 {
+#razorpay-blade .c8 {
   overflow-y: auto;
 }
 
-.c16 [role=group]:last-child > [role=separator]:last-child {
+#razorpay-blade .c8 [role=group]:last-child > [role=separator]:last-child {
   display: none;
 }
 
-.c17 {
+#razorpay-blade .c9 {
   border-width: 4px;
   border-style: solid;
   border-color: transparent;
@@ -418,15 +460,15 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   display: block;
 }
 
-.c17:hover:not([aria-disabled=true]) {
+#razorpay-blade .c9:hover:not([aria-disabled=true]) {
   background-color: hsla(216,15%,54%,0.09);
 }
 
-.c17[aria-selected=true] {
+#razorpay-blade .c9[aria-selected=true] {
   background-color: hsla(218,89%,51%,0.09);
 }
 
-.c23 {
+#razorpay-blade .c9 {
   border-width: 4px;
   border-style: solid;
   border-color: transparent;
@@ -441,39 +483,39 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   display: block;
 }
 
-.c23:hover:not([aria-disabled=true]) {
+#razorpay-blade .c9:hover:not([aria-disabled=true]) {
   background-color: hsla(9,91%,56%,0.09);
 }
 
-.c23[aria-selected=true] {
+#razorpay-blade .c9[aria-selected=true] {
   background-color: hsla(218,89%,51%,0.09);
 }
 
 <body>
   <div>
     <div
-      class=""
+      class="c0"
       data-blade-component="dropdown"
     >
       <div
-        class="c0"
+        class="c0 "
         data-blade-component="base-box"
       >
         <button
           aria-controls="dropdown-456-actionlist"
           aria-expanded="false"
           aria-haspopup="menu"
-          class="c1"
+          class="c1 "
           data-blade-component="button"
           role="button"
           type="button"
         >
           <div
-            class="c2 c3"
+            class="c0 c2 "
             data-blade-component="base-box"
           >
             <div
-              class="c4"
+              class="c3 "
               data-blade-component="base-text"
             >
               Status: approve
@@ -481,52 +523,52 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
           </div>
         </button>
         <div
-          class="c5 c6"
+          class="c0 c4 "
           data-blade-component="base-box"
           data-testid="bottomsheet-backdrop"
           opacity="0"
         />
         <div
           aria-modal="true"
-          class="c7"
+          class="c5 "
           data-blade-component="bottom-sheet"
           data-testid="bottomsheet-surface"
           role="dialog"
           style="opacity: 0; pointer-events: none; height: 0px; bottom: 0px; z-index: 101;"
         >
           <div
-            class="c8"
+            class="c0 "
             data-blade-component="base-box"
           >
             <div
-              class="c9"
+              class="c6 "
               data-blade-component="BottomSheetGrabHandle"
             />
             <div
-              class="c10"
+              class="c0 "
               data-blade-component="bottom-sheet-body"
               data-testid="bottomsheet-body"
               style="user-select: auto; overflow: auto;"
             >
               <div
-                class="c11"
+                class="c0 "
                 data-blade-component="base-box"
               >
                 <div
-                  class="c12"
+                  class="c0 "
                   data-blade-component="bottom-sheet-header"
                 >
                   <div
-                    class="c13"
+                    class="c0 "
                     data-blade-component="base-box"
                   >
                     <div
-                      class="c14"
+                      class="c0 "
                       data-blade-component="base-box"
                     >
                       <button
                         aria-label="Close"
-                        class="c15"
+                        class="c7 "
                         data-blade-component="icon-button"
                         type="button"
                       >
@@ -550,13 +592,13 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
                   </div>
                 </div>
                 <div
-                  class=" c16"
+                  class="c0 c8  "
                   data-blade-component="base-box"
                 >
                   <button
                     aria-current="true"
                     aria-selected="true"
-                    class=" c17"
+                    class="c0 c9  "
                     data-blade-component="action-list-item"
                     data-index="0"
                     data-value="approve"
@@ -566,38 +608,38 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
                     type="button"
                   >
                     <div
-                      class="c18"
+                      class="c0 "
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c19"
+                        class="c0 "
                         data-blade-component="base-box"
                       />
                       <div
-                        class="c20"
+                        class="c0 "
                         data-blade-component="base-box"
                       >
                         <p
-                          class="c21"
+                          class="c3 "
                           data-blade-component="text"
                         >
                           Approve
                         </p>
                       </div>
                       <div
-                        class="c22"
+                        class="c0 "
                         data-blade-component="base-box"
                       />
                     </div>
                     <div
-                      class=""
+                      class="c0"
                       data-blade-component="base-box"
                     />
                   </button>
                   <button
                     aria-current="false"
                     aria-selected="false"
-                    class=" c17"
+                    class="c0 c9  "
                     data-blade-component="action-list-item"
                     data-index="1"
                     data-value="in-progress"
@@ -607,38 +649,38 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
                     type="button"
                   >
                     <div
-                      class="c18"
+                      class="c0 "
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c19"
+                        class="c0 "
                         data-blade-component="base-box"
                       />
                       <div
-                        class="c20"
+                        class="c0 "
                         data-blade-component="base-box"
                       >
                         <p
-                          class="c21"
+                          class="c3 "
                           data-blade-component="text"
                         >
                           In Progress
                         </p>
                       </div>
                       <div
-                        class="c22"
+                        class="c0 "
                         data-blade-component="base-box"
                       />
                     </div>
                     <div
-                      class=""
+                      class="c0"
                       data-blade-component="base-box"
                     />
                   </button>
                   <button
                     aria-current="false"
                     aria-selected="false"
-                    class=" c23"
+                    class="c0 c9  "
                     data-blade-component="action-list-item"
                     data-index="2"
                     data-value="reject"
@@ -648,31 +690,31 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
                     type="button"
                   >
                     <div
-                      class="c18"
+                      class="c0 "
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c19"
+                        class="c0 "
                         data-blade-component="base-box"
                       />
                       <div
-                        class="c20"
+                        class="c0 "
                         data-blade-component="base-box"
                       >
                         <p
-                          class="c24"
+                          class="c3 "
                           data-blade-component="text"
                         >
                           Reject
                         </p>
                       </div>
                       <div
-                        class="c22"
+                        class="c0 "
                         data-blade-component="base-box"
                       />
                     </div>
                     <div
-                      class=""
+                      class="c0"
                       data-blade-component="base-box"
                     />
                   </button>
@@ -694,7 +736,18 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on closed sta
 `;
 
 exports[`<BottomSheet /> should render Header/Footer/Body properly on opened state 1`] = `
-.c3 {
+#razorpay-blade .c0 {
+  position: fixed;
+  z-index: 101;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-color: hsla(214,15%,18%,0.64);
+  opacity: 1;
+}
+
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -705,14 +758,14 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   height: 100%;
 }
 
-.c5 {
+#razorpay-blade .c0 {
   overflow: auto;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
 }
 
-.c6 {
+#razorpay-blade .c0 {
   padding-right: 16px;
   padding-left: 16px;
   margin-bottom: 16px;
@@ -720,7 +773,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   touch-action: none;
 }
 
-.c7 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -734,7 +787,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   user-select: none;
 }
 
-.c8 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -753,13 +806,13 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   margin-right: auto;
 }
 
-.c9 {
+#razorpay-blade .c0 {
   -webkit-flex: auto;
   -ms-flex: auto;
   flex: auto;
 }
 
-.c10 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -772,11 +825,11 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   flex-shrink: 0;
 }
 
-.c12 {
+#razorpay-blade .c0 {
   margin-left: 8px;
 }
 
-.c13 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -792,18 +845,18 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   height: 28px;
 }
 
-.c14 {
+#razorpay-blade .c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
-.c15 {
+#razorpay-blade .c0 {
   background-color: hsla(155,100%,31%,0.09);
 }
 
-.c17 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -826,13 +879,13 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   padding-left: 8px;
 }
 
-.c25 {
+#razorpay-blade .c0 {
   border-width: 0px;
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-style: solid;
 }
 
-.c27 {
+#razorpay-blade .c0 {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -842,7 +895,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   flex-shrink: 1;
 }
 
-.c28 {
+#razorpay-blade .c0 {
   overflow: auto;
   padding-top: 16px;
   padding-bottom: 16px;
@@ -850,7 +903,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   padding-left: 16px;
 }
 
-.c30 {
+#razorpay-blade .c0 {
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -861,11 +914,11 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   touch-action: none;
 }
 
-.c31 {
+#razorpay-blade .c0 {
   padding: 16px;
 }
 
-.c33 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -886,7 +939,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   justify-content: center;
 }
 
-.c0 {
+#razorpay-blade .c0 {
   position: fixed;
   z-index: 100;
   top: 0px;
@@ -897,16 +950,16 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   opacity: 1;
 }
 
-.c20 {
+#razorpay-blade .c0 {
   margin-right: 16px;
 }
 
-.c21 {
+#razorpay-blade .c0 {
   text-align: left;
   background-color: hsla(155,100%,31%,0.09);
 }
 
-.c24 {
+#razorpay-blade .c7 {
   border: none;
   cursor: pointer;
   padding: 0;
@@ -933,21 +986,21 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c24:hover {
+#razorpay-blade .c7:hover {
   color: hsla(217,18%,45%,1);
 }
 
-.c24:focus-visible {
+#razorpay-blade .c7:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   color: hsla(217,18%,45%,1);
 }
 
-.c24:active {
+#razorpay-blade .c7:active {
   color: hsla(217,18%,45%,1);
 }
 
-.c26 {
+#razorpay-blade .c8 {
   border-bottom-style: solid;
   border-bottom-width: 1px;
   -webkit-box-flex: 1;
@@ -956,7 +1009,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   flex-grow: 1;
 }
 
-.c11 {
+#razorpay-blade .c4 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1rem;
@@ -969,7 +1022,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   padding: 0;
 }
 
-.c18 {
+#razorpay-blade .c4 {
   color: hsla(160,100%,26%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -988,7 +1041,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   -webkit-box-orient: vertical;
 }
 
-.c19 {
+#razorpay-blade .c4 {
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -1001,7 +1054,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   padding: 0;
 }
 
-.c29 {
+#razorpay-blade .c4 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -1014,7 +1067,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   padding: 0;
 }
 
-.c35 {
+#razorpay-blade .c4 {
   color: hsla(218,89%,51%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -1028,7 +1081,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   padding: 0;
 }
 
-.c23 {
+#razorpay-blade .c4 {
   color: hsla(160,100%,26%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -1046,7 +1099,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   -webkit-box-orient: vertical;
 }
 
-.c1 {
+#razorpay-blade .c1 {
   -webkit-transition-duration: 250ms;
   transition-duration: 250ms;
   -webkit-transition-timing-function: cubic-bezier(0,0,0,1);
@@ -1056,7 +1109,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   transition-property: opacity;
 }
 
-.c4 {
+#razorpay-blade .c3 {
   position: relative;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
@@ -1083,7 +1136,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   z-index: 100;
 }
 
-.c4:after {
+#razorpay-blade .c3:after {
   margin: auto;
   content: '';
   width: 56px;
@@ -1092,7 +1145,41 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   border-radius: 16px;
 }
 
-.c2 {
+#razorpay-blade .c2 {
+  background: hsla(0,0%,100%,1);
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  border-color: hsla(216,15%,54%,0.18);
+  box-shadow: 0px -24px 48px -12px hsla(217,56%,17%,0.18);
+  opacity: 0;
+  pointer-events: none;
+  -webkit-transition-duration: 250ms;
+  transition-duration: 250ms;
+  -webkit-transition-timing-function: cubic-bezier(.15,0,.24,.97);
+  transition-timing-function: cubic-bezier(.15,0,.24,.97);
+  will-change: transform,opacity,height;
+  -webkit-transition-property: -webkit-transform,opacity,height;
+  -webkit-transition-property: transform,opacity,height;
+  transition-property: transform,opacity,height;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background-color: hsla(0,0%,100%,1);
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  touch-action: none;
+  overflow: hidden;
+}
+
+#razorpay-blade .c2 {
   background: hsla(0,0%,100%,1);
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
@@ -1126,7 +1213,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   overflow: hidden;
 }
 
-.c16 {
+#razorpay-blade .c5 {
   background-color: hsla(155,100%,31%,0.09);
   border-radius: 9999px;
   max-width: 120px;
@@ -1142,7 +1229,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   width: fit-content;
 }
 
-.c32 {
+#razorpay-blade .c9 {
   min-height: 36px;
   width: 100%;
   cursor: pointer;
@@ -1178,24 +1265,24 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   position: relative;
 }
 
-.c32:hover {
+#razorpay-blade .c9:hover {
   background-color: hsla(218,89%,51%,0.09);
   border-color: hsla(218,89%,51%,1);
 }
 
-.c32:active {
+#razorpay-blade .c9:active {
   background-color: hsla(218,89%,51%,0.32);
   border-color: hsla(218,89%,51%,1);
 }
 
-.c32:focus-visible {
+#razorpay-blade .c9:focus-visible {
   background-color: hsla(218,89%,51%,0.18);
   border-color: hsla(218,89%,51%,1);
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c32 * {
+#razorpay-blade .c9 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -1204,11 +1291,11 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c34 {
+#razorpay-blade .c10 {
   opacity: 1;
 }
 
-.c22 {
+#razorpay-blade .c6 {
   background-color: hsla(155,100%,31%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
@@ -1224,7 +1311,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
 }
 
 @media screen and (min-width:768px) {
-  .c6 {
+  #razorpay-blade .c0 {
     padding-right: 20px;
     padding-left: 20px;
     margin-bottom: 20px;
@@ -1233,37 +1320,37 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
 }
 
 @media screen and (min-width:320px) {
-  .c25 {
+  #razorpay-blade .c0 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c25 {
+  #razorpay-blade .c0 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c25 {
+  #razorpay-blade .c0 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c25 {
+  #razorpay-blade .c0 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c25 {
+  #razorpay-blade .c0 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c31 {
+  #razorpay-blade .c0 {
     padding: 20px;
   }
 }
@@ -1271,83 +1358,83 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
 <body>
   <div>
     <div
-      class="c0 c1"
+      class="c0 c1 "
       data-blade-component="base-box"
       data-testid="bottomsheet-backdrop"
       opacity="1"
     />
     <div
       aria-modal="true"
-      class="c2"
+      class="c2 "
       data-blade-component="bottom-sheet"
       data-testid="bottomsheet-surface"
       role="dialog"
       style="opacity: 1; pointer-events: all; height: 0px; bottom: 0px; z-index: 100;"
     >
       <div
-        class="c3"
+        class="c0 "
         data-blade-component="base-box"
       >
         <div
-          class="c4"
+          class="c3 "
           data-blade-component="BottomSheetGrabHandle"
         />
         <div
-          class="c5"
+          class="c0 "
           data-blade-component="bottom-sheet-header"
         >
           <div
-            class=""
+            class="c0"
             data-blade-component="base-box"
           >
             <div
-              class="c6"
+              class="c0 "
               data-blade-component="base-box"
             >
               <div
-                class="c7"
+                class="c0 "
                 data-blade-component="base-box"
               >
                 <div
-                  class="c8"
+                  class="c0 "
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c9"
+                    class="c0 "
                     data-blade-component="base-box"
                   >
                     <div
-                      class="c10"
+                      class="c0 "
                       data-blade-component="base-box"
                     >
                       <h6
-                        class="c11"
+                        class="c4 "
                         data-blade-component="heading"
                       >
                         Address Details
                       </h6>
                       <div
-                        class="c12"
+                        class="c0 "
                         data-blade-component="base-box"
                       >
                         <div
-                          class="c13"
+                          class="c0 "
                           data-blade-component="box"
                         >
                           <div
-                            class="c14"
+                            class="c0 "
                             data-blade-component="counter"
                           >
                             <div
-                              class="c15 c16"
+                              class="c0 c5 "
                               data-blade-component="base-box"
                             >
                               <div
-                                class="c17"
+                                class="c0 "
                                 data-blade-component="base-box"
                               >
                                 <p
-                                  class="c18"
+                                  class="c4 "
                                   data-blade-component="text"
                                 >
                                   2
@@ -1359,7 +1446,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
                       </div>
                     </div>
                     <p
-                      class="c19"
+                      class="c4 "
                       data-blade-component="text"
                     >
                       Saving addresses will improve your checkout experience
@@ -1367,27 +1454,27 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
                   </div>
                 </div>
                 <div
-                  class="c20"
+                  class="c0 "
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c13"
+                    class="c0 "
                     data-blade-component="box"
                   >
                     <div
-                      class="c14"
+                      class="c0 "
                       data-blade-component="badge"
                     >
                       <div
-                        class="c21 c22"
+                        class="c0 c6 "
                         data-blade-component="base-box"
                       >
                         <div
-                          class="c17"
+                          class="c0 "
                           data-blade-component="base-box"
                         >
                           <p
-                            class="c23"
+                            class="c4 "
                             data-blade-component="text"
                           >
                             Action Needed
@@ -1398,12 +1485,12 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
                   </div>
                 </div>
                 <div
-                  class="c13"
+                  class="c0 "
                   data-blade-component="box"
                 >
                   <button
                     aria-label="Close"
-                    class="c24"
+                    class="c7 "
                     data-blade-component="icon-button"
                     type="button"
                   >
@@ -1427,24 +1514,24 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
               </div>
             </div>
             <div
-              class="c25 c26"
+              class="c0 c8 "
               data-blade-component="divider"
               role="separator"
             />
           </div>
         </div>
         <div
-          class="c27"
+          class="c0 "
           data-blade-component="bottom-sheet-body"
           data-testid="bottomsheet-body"
           style="user-select: auto; overflow: auto;"
         >
           <div
-            class="c28"
+            class="c0 "
             data-blade-component="base-box"
           >
             <p
-              class="c29"
+              class="c4 "
               data-blade-component="text"
             >
               BottomSheet body
@@ -1452,30 +1539,30 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
           </div>
         </div>
         <div
-          class="c30"
+          class="c0 "
           data-blade-component="bottom-sheet-footer"
         >
           <div
-            class="c25 c26"
+            class="c0 c8 "
             data-blade-component="divider"
             role="separator"
           />
           <div
-            class="c31"
+            class="c0 "
             data-blade-component="base-box"
           >
             <button
-              class="c32"
+              class="c9 "
               data-blade-component="button"
               role="button"
               type="button"
             >
               <div
-                class="c33 c34"
+                class="c0 c10 "
                 data-blade-component="base-box"
               >
                 <div
-                  class="c35"
+                  class="c4 "
                   data-blade-component="base-text"
                 >
                   Remove address
@@ -1491,7 +1578,18 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
 `;
 
 exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
-.c3 {
+#razorpay-blade .c0 {
+  position: fixed;
+  z-index: 101;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-color: hsla(214,15%,18%,0.64);
+  opacity: 1;
+}
+
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1502,14 +1600,47 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
   height: 100%;
 }
 
-.c5 {
+#razorpay-blade .c0 {
   overflow: visible;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
 }
 
-.c9 {
+#razorpay-blade .c0 {
+  position: relative;
+  height: 8px;
+  right: 0px;
+  touch-action: none;
+}
+
+#razorpay-blade .c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  position: absolute;
+  z-index: 100;
+  height: 28px;
+  width: 28px;
+  top: -4px;
+  right: 16px;
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 9999px;
+}
+
+#razorpay-blade .c0 {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -1519,7 +1650,7 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
   flex-shrink: 1;
 }
 
-.c10 {
+#razorpay-blade .c0 {
   overflow: auto;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -1527,7 +1658,7 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
   padding-left: 0px;
 }
 
-.c0 {
+#razorpay-blade .c0 {
   position: fixed;
   z-index: 100;
   top: 0px;
@@ -1538,7 +1669,7 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
   opacity: 1;
 }
 
-.c6 {
+#razorpay-blade .c0 {
   position: absolute;
   height: 8px;
   top: 16px;
@@ -1546,7 +1677,7 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
   touch-action: none;
 }
 
-.c7 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1572,7 +1703,7 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
   border-radius: 9999px;
 }
 
-.c8 {
+#razorpay-blade .c4 {
   border: none;
   cursor: pointer;
   padding: 0;
@@ -1599,21 +1730,21 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c8:hover {
+#razorpay-blade .c4:hover {
   color: hsla(217,18%,45%,1);
 }
 
-.c8:focus-visible {
+#razorpay-blade .c4:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   color: hsla(217,18%,45%,1);
 }
 
-.c8:active {
+#razorpay-blade .c4:active {
   color: hsla(217,18%,45%,1);
 }
 
-.c11 {
+#razorpay-blade .c5 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -1626,7 +1757,7 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
   padding: 0;
 }
 
-.c1 {
+#razorpay-blade .c1 {
   -webkit-transition-duration: 250ms;
   transition-duration: 250ms;
   -webkit-transition-timing-function: cubic-bezier(0,0,0,1);
@@ -1636,7 +1767,43 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
   transition-property: opacity;
 }
 
-.c4 {
+#razorpay-blade .c3 {
+  position: relative;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  padding-top: 12px;
+  margin-bottom: 4px;
+  touch-action: none;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+#razorpay-blade .c3:after {
+  margin: auto;
+  content: '';
+  width: 56px;
+  height: 4px;
+  background-color: hsla(216,15%,54%,0.18);
+  border-radius: 16px;
+}
+
+#razorpay-blade .c3 {
   position: absolute;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
@@ -1663,7 +1830,7 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
   z-index: 100;
 }
 
-.c4:after {
+#razorpay-blade .c3:after {
   margin: auto;
   content: '';
   width: 56px;
@@ -1672,7 +1839,41 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
   border-radius: 16px;
 }
 
-.c2 {
+#razorpay-blade .c2 {
+  background: hsla(0,0%,100%,1);
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  border-color: hsla(216,15%,54%,0.18);
+  box-shadow: 0px -24px 48px -12px hsla(217,56%,17%,0.18);
+  opacity: 0;
+  pointer-events: none;
+  -webkit-transition-duration: 250ms;
+  transition-duration: 250ms;
+  -webkit-transition-timing-function: cubic-bezier(.15,0,.24,.97);
+  transition-timing-function: cubic-bezier(.15,0,.24,.97);
+  will-change: transform,opacity,height;
+  -webkit-transition-property: -webkit-transform,opacity,height;
+  -webkit-transition-property: transform,opacity,height;
+  transition-property: transform,opacity,height;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background-color: hsla(0,0%,100%,1);
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  touch-action: none;
+  overflow: hidden;
+}
+
+#razorpay-blade .c2 {
   background: hsla(0,0%,100%,1);
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
@@ -1709,42 +1910,42 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
 <body>
   <div>
     <div
-      class="c0 c1"
+      class="c0 c1 "
       data-blade-component="base-box"
       data-testid="bottomsheet-backdrop"
       opacity="1"
     />
     <div
       aria-modal="true"
-      class="c2"
+      class="c2 "
       data-blade-component="bottom-sheet"
       data-testid="bottomsheet-surface"
       role="dialog"
       style="opacity: 1; pointer-events: all; height: 0px; bottom: 0px; z-index: 100;"
     >
       <div
-        class="c3"
+        class="c0 "
         data-blade-component="base-box"
       >
         <div
-          class="c4"
+          class="c3 "
           data-blade-component="BottomSheetGrabHandle"
         />
         <div
-          class="c5"
+          class="c0 "
           data-blade-component="bottom-sheet-header"
         >
           <div
-            class="c6"
+            class="c0 "
             data-blade-component="base-box"
           >
             <div
-              class="c7"
+              class="c0 "
               data-blade-component="base-box"
             >
               <button
                 aria-label="Close"
-                class="c8"
+                class="c4 "
                 data-blade-component="icon-button"
                 type="button"
               >
@@ -1768,17 +1969,17 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
           </div>
         </div>
         <div
-          class="c9"
+          class="c0 "
           data-blade-component="bottom-sheet-body"
           data-testid="bottomsheet-body"
           style="user-select: auto; overflow: auto;"
         >
           <div
-            class="c10"
+            class="c0 "
             data-blade-component="base-box"
           >
             <p
-              class="c11"
+              class="c5 "
               data-blade-component="text"
             >
               BottomSheet body

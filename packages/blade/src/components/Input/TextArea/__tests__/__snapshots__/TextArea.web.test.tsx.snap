@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<TextArea /> should render 1`] = `
-.c0 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -13,7 +13,7 @@ exports[`<TextArea /> should render 1`] = `
   width: 100%;
 }
 
-.c1 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -32,11 +32,11 @@ exports[`<TextArea /> should render 1`] = `
   margin-top: 0px;
 }
 
-.c2 {
+#razorpay-blade .c0 {
   margin-bottom: 4px;
 }
 
-.c3 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -55,11 +55,11 @@ exports[`<TextArea /> should render 1`] = `
   gap: 0px;
 }
 
-.c10 {
+#razorpay-blade .c0 {
   margin-left: 0px;
 }
 
-.c11 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -73,7 +73,7 @@ exports[`<TextArea /> should render 1`] = `
   justify-content: flex-end;
 }
 
-.c4 {
+#razorpay-blade .c1 {
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -91,7 +91,7 @@ exports[`<TextArea /> should render 1`] = `
   -webkit-box-orient: vertical;
 }
 
-.c6 {
+#razorpay-blade .c1 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -104,7 +104,7 @@ exports[`<TextArea /> should render 1`] = `
   padding: 0;
 }
 
-.c8 {
+#razorpay-blade .c4 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -131,7 +131,7 @@ exports[`<TextArea /> should render 1`] = `
   cursor: auto;
 }
 
-.c8::-webkit-input-placeholder {
+#razorpay-blade .c4::-webkit-input-placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -144,7 +144,7 @@ exports[`<TextArea /> should render 1`] = `
   padding: 0;
 }
 
-.c8::-moz-placeholder {
+#razorpay-blade .c4::-moz-placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -157,7 +157,7 @@ exports[`<TextArea /> should render 1`] = `
   padding: 0;
 }
 
-.c8:-ms-input-placeholder {
+#razorpay-blade .c4:-ms-input-placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -170,7 +170,7 @@ exports[`<TextArea /> should render 1`] = `
   padding: 0;
 }
 
-.c8::placeholder {
+#razorpay-blade .c4::placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -183,11 +183,11 @@ exports[`<TextArea /> should render 1`] = `
   padding: 0;
 }
 
-.c8:focus {
+#razorpay-blade .c4:focus {
   outline: none;
 }
 
-.c9 {
+#razorpay-blade .c5 {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -198,7 +198,7 @@ exports[`<TextArea /> should render 1`] = `
   height: 1px;
 }
 
-.c7 {
+#razorpay-blade .c3 {
   background-color: hsla(216,15%,54%,0.09);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
@@ -220,7 +220,7 @@ exports[`<TextArea /> should render 1`] = `
   position: relative;
 }
 
-.c7:hover {
+#razorpay-blade .c3:hover {
   background-color: hsla(216,15%,54%,0.18);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
@@ -244,7 +244,7 @@ exports[`<TextArea /> should render 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c7:focus-within {
+#razorpay-blade .c3:focus-within {
   background-color: hsla(216,15%,54%,0.09);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
@@ -262,7 +262,7 @@ exports[`<TextArea /> should render 1`] = `
   position: relative;
 }
 
-.c5 {
+#razorpay-blade .c2 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -281,15 +281,15 @@ exports[`<TextArea /> should render 1`] = `
 
 <div>
   <div
-    class=""
+    class="c0"
     data-blade-component="textarea"
   >
     <div
-      class="c0"
+      class="c0 "
       data-blade-component="base-box"
     >
       <div
-        class="c1"
+        class="c0 "
         data-blade-component="base-box"
       >
         <label
@@ -298,25 +298,25 @@ exports[`<TextArea /> should render 1`] = `
           style="width: auto; flex-shrink: 0; margin-right: 16px;"
         >
           <div
-            class="c2"
+            class="c0 "
             data-blade-component="base-box"
           >
             <div
-              class="c3"
+              class="c0 "
               data-blade-component="base-box"
             >
               <p
-                class="c4"
+                class="c1 "
                 data-blade-component="text"
               >
                 Enter name
               </p>
               <div
-                class="c5"
+                class="c2 "
                 data-blade-component="visually-hidden"
               >
                 <p
-                  class="c6"
+                  class="c1 "
                   data-blade-component="text"
                 />
               </div>
@@ -325,7 +325,7 @@ exports[`<TextArea /> should render 1`] = `
         </label>
       </div>
       <div
-        class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c7"
+        class="c0 c3 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  "
         data-blade-component="base-box"
       >
         <textarea
@@ -333,24 +333,24 @@ exports[`<TextArea /> should render 1`] = `
           aria-disabled="false"
           aria-invalid="false"
           aria-required="false"
-          class="c8"
+          class="c4 "
           data-blade-component="styled-base-input"
           id="textarea-1-input-2"
           rows="2"
           type="text"
         />
         <div
-          class=" c9"
+          class="c0 c5  "
           data-blade-component="base-box"
         />
       </div>
     </div>
     <div
-      class="c10"
+      class="c0 "
       data-blade-component="base-box"
     >
       <div
-        class="c11"
+        class="c0 "
         data-blade-component="base-box"
       />
     </div>
@@ -359,7 +359,7 @@ exports[`<TextArea /> should render 1`] = `
 `;
 
 exports[`<TextArea /> should set number of lines 1`] = `
-.c0 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -371,7 +371,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
   width: 100%;
 }
 
-.c1 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -390,11 +390,11 @@ exports[`<TextArea /> should set number of lines 1`] = `
   margin-top: 0px;
 }
 
-.c2 {
+#razorpay-blade .c0 {
   margin-bottom: 4px;
 }
 
-.c3 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -413,11 +413,11 @@ exports[`<TextArea /> should set number of lines 1`] = `
   gap: 0px;
 }
 
-.c10 {
+#razorpay-blade .c0 {
   margin-left: 0px;
 }
 
-.c11 {
+#razorpay-blade .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -431,7 +431,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
   justify-content: flex-end;
 }
 
-.c4 {
+#razorpay-blade .c1 {
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -449,7 +449,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
   -webkit-box-orient: vertical;
 }
 
-.c6 {
+#razorpay-blade .c1 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -462,7 +462,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
   padding: 0;
 }
 
-.c8 {
+#razorpay-blade .c4 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -489,7 +489,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
   cursor: auto;
 }
 
-.c8::-webkit-input-placeholder {
+#razorpay-blade .c4::-webkit-input-placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -502,7 +502,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
   padding: 0;
 }
 
-.c8::-moz-placeholder {
+#razorpay-blade .c4::-moz-placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -515,7 +515,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
   padding: 0;
 }
 
-.c8:-ms-input-placeholder {
+#razorpay-blade .c4:-ms-input-placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -528,7 +528,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
   padding: 0;
 }
 
-.c8::placeholder {
+#razorpay-blade .c4::placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -541,11 +541,11 @@ exports[`<TextArea /> should set number of lines 1`] = `
   padding: 0;
 }
 
-.c8:focus {
+#razorpay-blade .c4:focus {
   outline: none;
 }
 
-.c9 {
+#razorpay-blade .c5 {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -556,7 +556,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
   height: 1px;
 }
 
-.c7 {
+#razorpay-blade .c3 {
   background-color: hsla(216,15%,54%,0.09);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
@@ -578,7 +578,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
   position: relative;
 }
 
-.c7:hover {
+#razorpay-blade .c3:hover {
   background-color: hsla(216,15%,54%,0.18);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
@@ -602,7 +602,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c7:focus-within {
+#razorpay-blade .c3:focus-within {
   background-color: hsla(216,15%,54%,0.09);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
@@ -620,7 +620,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
   position: relative;
 }
 
-.c5 {
+#razorpay-blade .c2 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -639,15 +639,15 @@ exports[`<TextArea /> should set number of lines 1`] = `
 
 <div>
   <div
-    class=""
+    class="c0"
     data-blade-component="textarea"
   >
     <div
-      class="c0"
+      class="c0 "
       data-blade-component="base-box"
     >
       <div
-        class="c1"
+        class="c0 "
         data-blade-component="base-box"
       >
         <label
@@ -656,25 +656,25 @@ exports[`<TextArea /> should set number of lines 1`] = `
           style="width: auto; flex-shrink: 0; margin-right: 16px;"
         >
           <div
-            class="c2"
+            class="c0 "
             data-blade-component="base-box"
           >
             <div
-              class="c3"
+              class="c0 "
               data-blade-component="base-box"
             >
               <p
-                class="c4"
+                class="c1 "
                 data-blade-component="text"
               >
                 Enter name
               </p>
               <div
-                class="c5"
+                class="c2 "
                 data-blade-component="visually-hidden"
               >
                 <p
-                  class="c6"
+                  class="c1 "
                   data-blade-component="text"
                 />
               </div>
@@ -683,7 +683,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
         </label>
       </div>
       <div
-        class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c7"
+        class="c0 c3 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  "
         data-blade-component="base-box"
       >
         <textarea
@@ -691,24 +691,24 @@ exports[`<TextArea /> should set number of lines 1`] = `
           aria-disabled="false"
           aria-invalid="false"
           aria-required="false"
-          class="c8"
+          class="c4 "
           data-blade-component="styled-base-input"
           id="textarea-109-input-110"
           rows="3"
           type="text"
         />
         <div
-          class=" c9"
+          class="c0 c5  "
           data-blade-component="base-box"
         />
       </div>
     </div>
     <div
-      class="c10"
+      class="c0 "
       data-blade-component="base-box"
     >
       <div
-        class="c11"
+        class="c0 "
         data-blade-component="base-box"
       />
     </div>
