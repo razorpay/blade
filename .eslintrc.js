@@ -165,6 +165,7 @@ module.exports = {
         '@typescript-eslint/sort-type-union-intersection-members': 'off',
         '@typescript-eslint/no-non-null-assertion': 'off',
         '@typescript-eslint/consistent-type-exports': 'error',
+        '@typescript-eslint/ban-ts-comment': 'off',
         'react-native-a11y/has-valid-accessibility-live-region': 'off',
         '@typescript-eslint/no-shadow': ['off'],
         '@typescript-eslint/explicit-module-boundary-types': ['off'],
