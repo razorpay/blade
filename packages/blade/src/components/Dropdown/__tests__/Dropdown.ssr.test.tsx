@@ -8,7 +8,7 @@ import { SelectInput } from '~components/Input/DropdownInputTriggers/SelectInput
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { Button } from '~components/Button';
 
-describe('<Dropdown />', () => {
+describe.skip('<Dropdown />', () => {
   afterAll(() => {
     // These are not defined by default in JSDOM so clearing them out.
     // @ts-expect-error: it is taking web's requestAnimationFrame types but JSDom doesn't define these

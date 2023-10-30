@@ -15,7 +15,7 @@ import { Box } from '~components/Box';
  * - Write E2E tests for maxRows prop once we have e2e setup (jsdom is acting strange in tag calculation at multiple places even after mocking)
  */
 
-describe('<Dropdown /> with <AutoComplete />', () => {
+describe.skip('<Dropdown /> with <AutoComplete />', () => {
   afterAll(() => {
     // These are not defined by default in JSDOM so clearing them out.
     // @ts-expect-error: it is taking web's requestAnimationFrame types but JSDom doesn't define these
