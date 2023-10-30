@@ -56,6 +56,8 @@ We don't have enough use-cases for the following features at Razorpay and hence 
 - Nested Tables
 - Hiding Columns
 - Editable Rows
+- Table for React Native
+  - Mobile Apps will be using Lists instead of Tables to convey information
 
 ## Anatomy
 <img src="./table-anatomy.png" width="760" alt="Table thumbnail" />
