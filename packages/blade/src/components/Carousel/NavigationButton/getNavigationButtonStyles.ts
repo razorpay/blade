@@ -12,35 +12,40 @@ const getNavigationButtonStyles = (props: {
 
   const iconColor = {
     filled: {
-      default: theme.colors.action.icon.tertiary.default,
-      hover: theme.colors.action.icon.tertiary.hover,
-      focus: theme.colors.action.icon.tertiary.focus,
-      active: theme.colors.action.icon.tertiary.active,
+      default: theme.colors.white.action.icon.primary.default,
+      hover: theme.colors.white.action.icon.primary.hover,
+      focus: theme.colors.white.action.icon.primary.focus,
+      active: theme.colors.white.action.icon.primary.active,
     },
     stroked: {
       default: theme.colors.surface.action.icon.active.highContrast,
-      hover: theme.colors.surface.action.icon.active.highContrast,
-      focus: theme.colors.surface.action.icon.active.highContrast,
+      hover: theme.colors.surface.action.icon.hover.highContrast,
+      focus: theme.colors.surface.action.icon.focus.highContrast,
       active: theme.colors.surface.action.icon.active.highContrast,
     },
   };
 
   const backgroundColor = {
     filled: {
+      default: theme.colors.white.action.background.primary.default,
+      hover: theme.colors.white.action.background.primary.hover,
+      focus: theme.colors.white.action.background.primary.focus,
+      active: theme.colors.white.action.background.primary.active,
+    },
+    stroked: {
       default: theme.colors.action.background.tertiary.default,
       hover: theme.colors.action.background.tertiary.hover,
       focus: theme.colors.action.background.tertiary.focus,
       active: theme.colors.action.background.tertiary.active,
     },
-    stroked: {
-      default: 'transparent',
-      hover: theme.colors.brand.gray.a50.highContrast,
-      focus: theme.colors.brand.gray.a100.highContrast,
-      active: theme.colors.brand.gray.a100.highContrast,
-    },
   };
 
-  const borderColorToken = theme.colors.action.border.tertiary;
+  const borderColors = {
+    filled: theme.colors.surface.border.normal.lowContrast,
+    stroked: theme.colors.brand.gray[400].lowContrast,
+  } as const;
+
+  const borderColor = borderColors[variant];
   const borderWidth = theme.border.width.thin;
   const borderRadius = theme.border.radius.max;
   // on react-native isPressed will be passed
@@ -53,7 +58,7 @@ const getNavigationButtonStyles = (props: {
     borderStyle: 'solid',
     borderWidth,
     borderRadius,
-    borderColor: borderColorToken[state],
+    borderColor,
     backgroundColor: backgroundColor[variant][state],
     color: iconColor[variant][state],
 
@@ -73,7 +78,6 @@ const getNavigationButtonStyles = (props: {
 
           '&:hover': {
             color: iconColor[variant].hover,
-            borderColor: borderColorToken.hover,
             backgroundColor: backgroundColor[variant].hover,
           },
 
@@ -82,13 +86,11 @@ const getNavigationButtonStyles = (props: {
             outline: 'none',
             boxShadow: `0px 0px 0px 4px ${theme.colors.brand.primary[400]}`,
             color: iconColor[variant].focus,
-            borderColor: borderColorToken.focus,
             backgroundColor: backgroundColor[variant].focus,
           },
 
           '&:active': {
             color: iconColor[variant].active,
-            borderColor: borderColorToken.active,
             backgroundColor: backgroundColor[variant].active,
           },
         }),
