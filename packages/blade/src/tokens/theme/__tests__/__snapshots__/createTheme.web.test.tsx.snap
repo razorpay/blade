@@ -1419,7 +1419,7 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
         },
         "overlay": {
           "background": {
-            "400": "hsla(0, 0, 0, 0)",
+            "400": "hsla(221, 16%, 37%, 0.64)",
             "800": "hsla(231, 11%, 12%, 0.72)",
           },
         },
@@ -2953,7 +2953,7 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
         },
         "overlay": {
           "background": {
-            "400": "hsla(0, 0, 0, 0)",
+            "400": "hsla(214, 18%, 69%, 0.64)",
             "800": "hsla(214, 15%, 18%, 0.64)",
           },
         },
@@ -4809,7 +4809,7 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
         },
         "overlay": {
           "background": {
-            "400": "hsla(0, 0, 0, 0)",
+            "400": "hsla(221, 16%, 37%, 0.64)",
             "800": "hsla(231, 11%, 12%, 0.72)",
           },
         },
@@ -6343,7 +6343,7 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
         },
         "overlay": {
           "background": {
-            "400": "hsla(0, 0, 0, 0)",
+            "400": "hsla(214, 18%, 69%, 0.64)",
             "800": "hsla(214, 15%, 18%, 0.64)",
           },
         },
