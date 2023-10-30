@@ -1,5 +1,20 @@
 # @razorpay/blade
 
+## 10.16.0
+
+### Minor Changes
+
+- fc7c8408: feat(blade): tabs implementation
+
+  > [!NOTE]
+  > We've updated `@floating-ui/react` to version `0.25.4`
+  > Consumers may need to update their jest snapshots
+
+### Patch Changes
+
+- c6d1ad9b: fix: update carousel nav button tokens
+- a17076b8: chore: fix popover close button background
+
 ## 10.15.3
 
 ### Patch Changes
