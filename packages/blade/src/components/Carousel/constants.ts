@@ -1,3 +1,7 @@
 const CAROUSEL_AUTOPLAY_INTERVAL = 6000;
 
-export { CAROUSEL_AUTOPLAY_INTERVAL };
+const componentIds = {
+  CarouselItem: 'CarouselItem',
+};
+
+export { CAROUSEL_AUTOPLAY_INTERVAL, componentIds };

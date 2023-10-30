@@ -1,6 +1,6 @@
 import React from 'react';
 import { CardSurface } from './CardSurface';
-import { CardProvider, useVerifyInsideCard, useVerifyAllowedComponents } from './CardContext';
+import { CardProvider, useVerifyInsideCard } from './CardContext';
 import { LinkOverlay } from './LinkOverlay';
 import { CardRoot } from './CardRoot';
 import type { LinkOverlayProps } from './types';
@@ -16,6 +16,7 @@ import type { Elevation } from '~tokens/global';
 import type { SurfaceLevels } from '~tokens/theme/theme';
 import type { BoxProps } from '~components/Box';
 import { makeAccessible } from '~utils/makeAccessible';
+import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren';
 import { isReactNative } from '~utils';
 
 export const ComponentIds = {
@@ -157,11 +158,12 @@ const Card = ({
   ...styledProps
 }: CardProps): React.ReactElement => {
   const [isFocused, setIsFocused] = React.useState(false);
-  useVerifyAllowedComponents(children, 'Card', [
-    ComponentIds.CardHeader,
-    ComponentIds.CardBody,
-    ComponentIds.CardFooter,
-  ]);
+
+  useVerifyAllowedChildren({
+    children,
+    componentName: 'Card',
+    allowedComponents: [ComponentIds.CardHeader, ComponentIds.CardBody, ComponentIds.CardFooter],
+  });
 
   const linkOverlayProps: LinkOverlayProps = {
     ...metaAttribute({ name: CARD_LINK_OVERLAY_ID }),
