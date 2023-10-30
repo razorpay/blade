@@ -16,7 +16,7 @@ import type { Elevation } from '~tokens/global';
 import type { SurfaceLevels } from '~tokens/theme/theme';
 import type { BoxProps } from '~components/Box';
 import { makeAccessible } from '~utils/makeAccessible';
-import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren';
+import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren/useVerifyAllowedChildren';
 import { isReactNative } from '~utils';
 
 export const ComponentIds = {

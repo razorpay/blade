@@ -1,6 +1,6 @@
 import React from 'react';
-import { getComponentId } from './isValidAllowedChildren';
-import { throwBladeError } from './logger';
+import { getComponentId } from '../isValidAllowedChildren';
+import { throwBladeError } from '../logger';
 
 /**
  * Verify if the passed childrens are only of allowedComponents list

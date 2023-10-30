@@ -23,7 +23,7 @@ import { useId } from '~utils/useId';
 import { makeAccessible } from '~utils/makeAccessible';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useDidUpdate } from '~utils/useDidUpdate';
-import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren';
+import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren/useVerifyAllowedChildren';
 
 type ControlsProp = Required<
   Pick<

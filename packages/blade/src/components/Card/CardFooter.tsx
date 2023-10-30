@@ -13,7 +13,7 @@ import type { TestID } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { useIsMobile } from '~utils/useIsMobile';
 import { throwBladeError } from '~utils/logger';
-import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren';
+import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren/useVerifyAllowedChildren';
 
 export type CardFooterAction = Pick<
   ButtonProps,
