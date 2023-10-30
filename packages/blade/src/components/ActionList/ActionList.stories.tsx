@@ -1,9 +1,7 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
-import BaseBox from '~components/Box/BaseBox';
-import { Sandbox } from '~utils/storybook/Sandbox';
-import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
-import { ActionList as ActionListComponent, ActionListProps } from './ActionList';
+import type { ActionListProps } from './ActionList';
+import { ActionList as ActionListComponent } from './ActionList';
 import {
   ActionListItem,
   ActionListItemBadge,
@@ -12,7 +10,10 @@ import {
   ActionListItemText,
   ActionListSection,
 } from './ActionListItem';
-import { ActionListItemAsset } from './ActionListItemAsset.web';
+import { ActionListItemAsset } from './ActionListItemAsset';
+import BaseBox from '~components/Box/BaseBox';
+import { Sandbox } from '~utils/storybook/Sandbox';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
 import {
   DownloadIcon,
@@ -93,7 +94,7 @@ const Page = (): React.ReactElement => {
 };
 
 export default {
-  title: 'Components/ActionList',
+  title: 'Components/Dropdown/ActionList/Stories',
   component: ActionListComponent,
   parameters: {
     docs: {
@@ -254,6 +255,7 @@ const ActionListWithCustomItemsExample: ComponentStory<typeof ActionListComponen
             title="Alert user"
             value="alert_user"
             onClick={() => {
+              // eslint-disable-next-line no-alert
               alert('Alert user is clicked!');
             }}
           />
