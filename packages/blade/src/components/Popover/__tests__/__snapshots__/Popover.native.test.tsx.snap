@@ -274,7 +274,6 @@ exports[`<Popover /> should render 1`] = `
           }
         >
           <View
-            backgroundColor="white"
             borderRadius="max"
             data-blade-component="base-box"
             position="absolute"
@@ -790,7 +789,6 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
           }
         >
           <View
-            backgroundColor="white"
             borderRadius="max"
             data-blade-component="base-box"
             position="absolute"
