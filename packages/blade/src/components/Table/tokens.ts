@@ -4,8 +4,8 @@ const tableHeader = {
   paddingLeft: 'spacing.4',
   paddingRight: 'spacing.4',
   backgroundColor: 'brand.gray.a50.lowContrast',
-  borderBottomWidth: 'thin',
-  borderBottomColor: 'surface.border.normal.lowContrast',
+  borderBottomAndTopWidth: 'thin',
+  borderBottomAndTopColor: 'surface.border.normal.lowContrast',
 } as const;
 
 const tableFooter = {

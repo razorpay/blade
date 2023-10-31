@@ -16,6 +16,7 @@ const Table: React.FC<TableProps> = ({ children, data }) => {
     border: ${makeBorderSize(theme.border.width.thin)} solid ${
       theme.colors.surface.border.normal.lowContrast
     };
+    background-color: ${theme.colors.surface.background.level2.lowContrast};
     `,
   });
 
