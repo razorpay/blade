@@ -4,7 +4,6 @@ import type { CSSProperties } from 'react';
 import type React from 'react';
 import type { GestureResponderEvent } from 'react-native';
 import type { BaseBoxProps } from '~components/Box/BaseBox';
-import type { ColorSchemeNames } from '~tokens/theme';
 import type { Platform } from '~utils';
 
 type PopoverProps = {
@@ -81,7 +80,6 @@ type PopoverContentWrapperProps = {
   side?: Side;
   isVisible?: boolean;
   isMobile: boolean;
-  colorScheme: ColorSchemeNames;
 } & BaseBoxProps;
 
 /**
