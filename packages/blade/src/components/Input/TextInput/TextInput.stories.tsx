@@ -44,7 +44,6 @@ export default {
     },
     label: 'Enter Name',
     labelPosition: 'top',
-    wordBreak: undefined,
     necessityIndicator: undefined,
     isRequired: false,
     validationState: 'none',
@@ -132,11 +131,6 @@ export default {
       },
     },
     labelPosition: {
-      table: {
-        category: propsCategory.LABEL_PROPS,
-      },
-    },
-    wordBreak: {
       table: {
         category: propsCategory.LABEL_PROPS,
       },
