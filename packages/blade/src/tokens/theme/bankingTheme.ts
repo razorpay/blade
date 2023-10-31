@@ -88,10 +88,7 @@ const colors: ColorsWithModes = {
           800: globalColors.neutral.ashGrayLight.a1100,
         },
       },
-      popup: { background: globalColors.neutral.navyGrayLight[700] },
-    },
-    overlay: {
-      background: globalColors.neutral.ashGrayLight.a1100,
+      popup: { background: globalColors.neutral.navyGrayLight[0] },
     },
     brand: {
       primary: {
@@ -1417,9 +1414,6 @@ const colors: ColorsWithModes = {
         },
       },
       popup: { background: globalColors.neutral.navyGrayDark[700] },
-    },
-    overlay: {
-      background: globalColors.neutral.ashGrayDark.a1100,
     },
     brand: {
       primary: {
