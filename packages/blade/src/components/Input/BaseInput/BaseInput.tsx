@@ -844,7 +844,7 @@ export const BaseInput = React.forwardRef<BladeElementRef, BaseInputProps>(
                 as="label"
                 necessityIndicator={necessityIndicator}
                 position={labelPosition}
-                wordBreak="break-word"
+                wordBreak={isLabelLeftPositioned ? 'break-word' : undefined}
                 id={labelId}
                 htmlFor={inputId}
               >
