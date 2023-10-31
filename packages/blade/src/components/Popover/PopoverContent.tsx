@@ -21,7 +21,6 @@ const PopoverHeader = ({ title, titleLeading }: PopoverHeaderProps): React.React
   if (isFloating) {
     return (
       <BaseBox
-        backgroundColor="white"
         borderRadius="max"
         position="absolute"
         padding="spacing.2"

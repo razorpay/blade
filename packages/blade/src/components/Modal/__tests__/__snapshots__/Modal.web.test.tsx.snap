@@ -497,8 +497,8 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   <div
     aria-hidden="true"
     class="c1"
-    data-aria-hidden="true"
     data-blade-component="modal-backdrop"
+    data-floating-ui-inert=""
     data-testid="modal-backdrop"
     style="position: fixed; overflow: auto; top: 0px; right: 0px; bottom: 0px; left: 0px;"
   />
@@ -768,8 +768,8 @@ exports[`Modal renders a basic Modal 1`] = `
   <div
     aria-hidden="true"
     class="c1"
-    data-aria-hidden="true"
     data-blade-component="modal-backdrop"
+    data-floating-ui-inert=""
     data-testid="modal-backdrop"
     style="position: fixed; overflow: auto; top: 0px; right: 0px; bottom: 0px; left: 0px;"
   />
@@ -870,8 +870,8 @@ exports[`Modal renders a basic Modal of large size 1`] = `
   <div
     aria-hidden="true"
     class="c1"
-    data-aria-hidden="true"
     data-blade-component="modal-backdrop"
+    data-floating-ui-inert=""
     data-testid="modal-backdrop"
     style="position: fixed; overflow: auto; top: 0px; right: 0px; bottom: 0px; left: 0px;"
   />
@@ -972,8 +972,8 @@ exports[`Modal renders a basic Modal of medium size 1`] = `
   <div
     aria-hidden="true"
     class="c1"
-    data-aria-hidden="true"
     data-blade-component="modal-backdrop"
+    data-floating-ui-inert=""
     data-testid="modal-backdrop"
     style="position: fixed; overflow: auto; top: 0px; right: 0px; bottom: 0px; left: 0px;"
   />
