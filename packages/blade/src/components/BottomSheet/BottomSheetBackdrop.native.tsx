@@ -17,7 +17,7 @@ const BottomSheetBackdrop = (
       opacity={1}
       style={[
         props.style,
-        { backgroundColor: theme.colors.overlay.background, zIndex: props.zIndex },
+        { backgroundColor: theme.colors.surface.overlay.background[800], zIndex: props.zIndex },
       ]}
     />
   );

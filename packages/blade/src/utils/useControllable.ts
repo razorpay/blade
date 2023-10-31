@@ -3,6 +3,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import * as React from 'react';
 
+type ControllableStateSetter<T> = (
+  /**
+   * Sets the state to the given value
+   */
+  next: (prevState: T) => T,
+  /**
+   * If `true`, `onChange` won't be called
+   */
+  skipUpdate?: boolean,
+) => void;
+
 type UseControllableStateProps<T> = {
   /**
    * The value to used in controlled mode
@@ -35,14 +46,18 @@ export function useControllableState<T>(props: UseControllableStateProps<T>) {
   const { current: isControlled } = React.useRef(valueProp !== undefined);
   const value = isControlled && typeof valueProp !== 'undefined' ? valueProp : valueState;
 
-  const updateValue = React.useCallback(
-    (next: (prevState: T) => T) => {
+  const updateValue: ControllableStateSetter<T> = React.useCallback(
+    (next, skipUpdate = false) => {
       const nextValue = next(value);
       if (!isControlled) setValue(nextValue);
+      // We don't want to call onChange if skipUpdate is true
+      if (skipUpdate) return;
       onChange?.(nextValue);
     },
     [onChange, value],
   );
 
-  return [value, updateValue] as [T, (next: (prevState: T) => T) => void];
+  return [value, updateValue] as [T, ControllableStateSetter<T>];
 }
+
+export type { ControllableStateSetter };

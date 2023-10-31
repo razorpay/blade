@@ -141,3 +141,5 @@ export const useBreakpoint = ({
   // @TODO: handle SSR scenarios
   return breakpointAndDevice;
 };
+
+export type { DeviceType };

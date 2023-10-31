@@ -88,7 +88,7 @@ const colors: ColorsWithModes = {
           800: globalColors.neutral.ashGrayLight.a1100,
         },
       },
-      popup: { background: globalColors.neutral.navyGrayLight[700] },
+      popup: { background: globalColors.neutral.navyGrayLight[0] },
     },
     brand: {
       primary: {
