@@ -129,7 +129,7 @@ const getRNInputStyles = (
       isDropdownTrigger: props.isDropdownTrigger,
     }),
     lineHeight: RNPlatform.select({
-      android: makeSize(props.theme.typography.lineHeights[75]),
+      android: makeSize(props.theme.typography.lineHeights[100]),
       ios: undefined,
     }),
     textAlignVertical: 'top',
