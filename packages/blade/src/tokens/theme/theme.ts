@@ -146,7 +146,6 @@ export type Colors = {
     overlay: Record<'background', Record<400 | 800, string>>;
     popup: Record<'background', string>;
   };
-  overlay: Record<'background', string>;
   action: {
     background: Omit<ActionVariants, 'link'>;
     border: Omit<ActionVariants, 'link'>;
