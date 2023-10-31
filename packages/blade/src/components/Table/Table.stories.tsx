@@ -11,7 +11,9 @@ import { Box } from '~components/Box';
 export default {
   title: 'Components/Table',
   component: TableComponent,
-  args: {},
+  args: {
+    selectionType: undefined,
+  },
   argTypes: {
     ...getStyledPropsArgTypes(),
   },
@@ -30,7 +32,7 @@ const nodes = [
     type: 'SETUP',
     isComplete: true,
     _hasContent: false,
-    nodes: [],
+    nodes: null,
   },
   {
     id: '1',
@@ -310,10 +312,10 @@ const data = {
   },
 };
 
-const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...gp }) => {
+const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
   return (
     <Box backgroundColor="surface.background.level1.lowContrast" padding="spacing.5">
-      <TableComponent data={data}>
+      <TableComponent data={data} {...args}>
         {(tableList) => (
           <>
             <TableHeader>

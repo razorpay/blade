@@ -2,6 +2,7 @@ import React from 'react';
 import { Body, Row, Cell } from '@table-library/react-table-library/table';
 import styled from 'styled-components';
 import getIn from 'lodash/get';
+import { useTableContext } from './TableContext';
 import { tableRow } from './tokens';
 import { Text } from '~components/Typography';
 import { makeSpace } from '~utils';
@@ -10,14 +11,20 @@ type TableBodyProps = {
   children: React.ReactNode;
 };
 
-const StyledBody = styled(Body)({
+const StyledBody = styled(Body)(({ theme }) => ({
   '&&&': {
     border: 'none',
+    '& .row-select-single-selected, .row-select-selected': {
+      backgroundColor: getIn(theme.colors, tableRow.backgroundColorSelected),
+    },
+    '& .row-select-single-selected:hover, .row-select-selected:hover': {
+      backgroundColor: getIn(theme.colors, tableRow.backgroundColorSelectedHover),
+    },
     '& tr:last-child td': {
       borderBottom: 'none',
     },
   },
-});
+}));
 
 const TableBody = ({ children }: TableBodyProps): React.ReactElement => {
   return <StyledBody>{children}</StyledBody>;
@@ -30,15 +37,32 @@ type TableRowProps = {
   item: any; // TODO: Fix type
 };
 
+const StyledRow = styled(Row)<{ isSelectable: boolean }>(({ theme, isSelectable }) => ({
+  '&&&': {
+    '&:hover': isSelectable
+      ? {
+          backgroundColor: getIn(theme.colors, tableRow.backgroundColorHover),
+          cursor: 'pointer',
+        }
+      : undefined,
+  },
+}));
+
 const TableRow = ({ children, item }: TableRowProps): React.ReactElement => {
-  return <Row item={item}>{children}</Row>;
+  const { selectionType } = useTableContext();
+  const isSelectable = Boolean(selectionType);
+  return (
+    <StyledRow isSelectable={isSelectable} item={item}>
+      {children}
+    </StyledRow>
+  );
 };
 
 type TableCellProps = {
   children: React.ReactNode;
 };
 
-const StyledCell = styled(Cell)(({ theme }) => ({
+const StyledCell = styled(Cell)<{ isSelectable: boolean }>(({ theme, isSelectable }) => ({
   '&&&': {
     paddingTop: makeSpace(getIn(theme, tableRow.paddingTop)),
     paddingBottom: makeSpace(getIn(theme, tableRow.paddingBottom)),
@@ -47,14 +71,20 @@ const StyledCell = styled(Cell)(({ theme }) => ({
     borderBottomWidth: makeSpace(getIn(theme.border.width, tableRow.borderBottomWidth)),
     borderBottomColor: getIn(theme.colors, tableRow.borderBottomColor),
     borderBottomStyle: 'solid',
+    '& div:first-child': {
+      pointerEvents: isSelectable ? 'none' : 'auto',
+    },
   },
 }));
 
 const TableCell = ({ children }: TableCellProps): React.ReactElement => {
   const isChildrenString = typeof children === 'string';
-
+  const { selectionType } = useTableContext();
+  const isSelectable = Boolean(selectionType);
   return (
-    <StyledCell>{isChildrenString ? <Text size="medium">{children}</Text> : children}</StyledCell>
+    <StyledCell isSelectable={isSelectable}>
+      {isChildrenString ? <Text size="medium">{children}</Text> : children}
+    </StyledCell>
   );
 };
 

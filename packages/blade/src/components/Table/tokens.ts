@@ -24,6 +24,9 @@ const tableRow = {
   paddingLeft: 'spacing.4',
   paddingRight: 'spacing.4',
   backgroundColor: '', // TODO: Figure out
+  backgroundColorHover: 'brand.gray.a50.lowContrast',
+  backgroundColorSelected: 'brand.primary.300',
+  backgroundColorSelectedHover: 'brand.primary.400',
   borderBottomWidth: 'thin',
   borderBottomColor: 'surface.border.normal.lowContrast',
 } as const;
