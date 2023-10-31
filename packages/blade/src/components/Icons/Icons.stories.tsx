@@ -2,8 +2,8 @@ import type { ComponentType, ReactElement } from 'react';
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title, Description } from '@storybook/addon-docs';
 import iconMap from './iconMap';
+import PlusIcon from './PlusIcon';
 import type { IconProps } from '.';
-import { CreditCardIcon } from '.';
 import BaseBox from '~components/Box/BaseBox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
@@ -82,7 +82,7 @@ const Page = (): ReactElement => {
 
 export default {
   title: 'Components/Icons',
-  component: CreditCardIcon, // need to give it some icon component so that storybook can infer props & arg types
+  component: PlusIcon, // need to give it some icon component so that storybook can infer props & arg types
   args: {
     color: 'surface.text.normal.lowContrast',
     size: 'medium',
