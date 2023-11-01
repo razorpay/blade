@@ -1,3 +1,384 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Tabs /> should render tabs ssr 1`] = `"<div id="root"><div data-blade-component="base-box" class="BaseBox-bmPWx xrMLB"><div data-blade-component="base-box" class="BaseBox-bmPWx DMgWq"><div data-blade-component="base-box" class="BaseBox-bmPWx TabListweb__ScrollableArea-sc-1evjc5b-0 iQTrNd fmtJjf"><div data-blade-component="base-box" class="BaseBox-bmPWx djEyfF"><div role="tablist" data-blade-component="base-box" class="BaseBox-bmPWx dFSWcv"><button id="tabs-undefined-payments-tabitem" role="tab" aria-selected="false" aria-controls="tabs-undefined-payments-tabpanel" tabindex="-1" class="TabItemweb__StyledTabButton-ucns8k-0 emAsmH"><p class="StyledBaseText-dVBfTO eaqIRG" data-blade-component="text">Payments</p></button><button id="tabs-undefined-refunds-tabitem" role="tab" aria-selected="true" aria-controls="tabs-undefined-refunds-tabpanel" tabindex="-1" class="TabItemweb__StyledTabButton-ucns8k-0 emAsmH"><p class="StyledBaseText-dVBfTO gplEcU" data-blade-component="text">Refunds</p></button></div></div><div pointer-events="none" style="transition-property:transform, width, background-color;transition-duration:0ms;transition-timing-function:cubic-bezier(0.3, 0, 0.2, 1);width:0px;transform:translate(0px, 0px)" data-blade-component="base-box" class="BaseBox-bmPWx TabIndicatorweb__StyledTabIndicator-sc-1kc65o8-0 TkJEX jUOAXW"></div></div><div style="transform:translateY(-1px)" data-blade-component="base-box" class="BaseBox-bmPWx Nimro"></div></div><div id="tabs-undefined-payments-tabpanel" tabindex="0" role="tabpanel" aria-labelledby="tabs-undefined-payments-tabitem" aria-hidden="true" data-blade-component="base-box" class="BaseBox-bmPWx eayjyA"><p class="StyledBaseText-dVBfTO eIdQFo" data-blade-component="text">Payments</p></div><div id="tabs-undefined-refunds-tabpanel" tabindex="0" role="tabpanel" aria-labelledby="tabs-undefined-refunds-tabitem" aria-hidden="false" data-blade-component="base-box" class="BaseBox-bmPWx zgBJD"><p class="StyledBaseText-dVBfTO eIdQFo" data-blade-component="text">Refunds</p></div></div></div>"`;
+exports[`<Tabs /> should render tabs ssr 1`] = `"<div id="root"><div data-blade-component="tabs" class="BaseBox-bmPWx xrMLB"><div data-blade-component="box" class="BaseBox-bmPWx DMgWq"><div data-blade-component="base-box" class="BaseBox-bmPWx TabListweb__ScrollableArea-sc-1evjc5b-0 iQTrNd fmtJjf"><div data-blade-component="base-box" class="BaseBox-bmPWx djEyfF"><div role="tablist" data-blade-component="base-box" class="BaseBox-bmPWx kpeIYs"><button id="tabs-undefined-payments-tabitem" role="tab" aria-selected="false" aria-controls="tabs-undefined-payments-tabpanel" data-blade-component="tab-item" tabindex="-1" class="TabItemweb__StyledTabButton-ucns8k-0 emAsmH"><p class="StyledBaseText-dVBfTO eaqIRG" data-blade-component="text">Payments</p></button><button id="tabs-undefined-refunds-tabitem" role="tab" aria-selected="true" aria-controls="tabs-undefined-refunds-tabpanel" data-blade-component="tab-item" tabindex="-1" class="TabItemweb__StyledTabButton-ucns8k-0 emAsmH"><p class="StyledBaseText-dVBfTO gplEcU" data-blade-component="text">Refunds</p></button></div></div><div pointer-events="none" style="transition-property:transform, width, background-color;transition-duration:0ms;transition-timing-function:cubic-bezier(0.3, 0, 0.2, 1);width:0px;transform:translate(0px, 0px)" data-blade-component="tab-indicator" class="BaseBox-bmPWx TabIndicatorweb__StyledTabIndicator-sc-1kc65o8-0 TkJEX jUOAXW"></div></div><div style="transform:translateY(-1px)" data-blade-component="base-box" class="BaseBox-bmPWx Nimro"></div></div><div id="tabs-undefined-payments-tabpanel" tabindex="0" data-blade-component="tab-panel" role="tabpanel" aria-labelledby="tabs-undefined-payments-tabitem" aria-hidden="true" class="BaseBox-bmPWx eayjyA"><p class="StyledBaseText-dVBfTO eIdQFo" data-blade-component="text">Payments</p></div><div id="tabs-undefined-refunds-tabpanel" tabindex="0" data-blade-component="tab-panel" role="tabpanel" aria-labelledby="tabs-undefined-refunds-tabitem" aria-hidden="false" class="BaseBox-bmPWx zgBJD"><p class="StyledBaseText-dVBfTO eIdQFo" data-blade-component="text">Refunds</p></div></div></div>"`;
+
+exports[`<Tabs /> should render tabs ssr 2`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c1 {
+  display: block;
+  overflow: hidden;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c2 {
+  overflow: auto hidden;
+  white-space: nowrap;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  position: relative;
+  width: 100%;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0px;
+  width: 100%;
+  gap: 24px;
+}
+
+.c9 {
+  position: absolute;
+  height: 1.5px;
+  top: 0px;
+  left: 0%;
+  background-color: hsla(218,89%,51%,1);
+  pointer-events: none;
+}
+
+.c11 {
+  border-bottom-width: 1px;
+  border-bottom-color: hsla(216,15%,54%,0.18);
+  border-bottom-style: solid;
+}
+
+.c12 {
+  display: none;
+}
+
+.c14 {
+  display: block;
+}
+
+.c7 {
+  color: hsla(216,16%,60%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c8 {
+  color: hsla(218,89%,51%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c13 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c6 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  gap: 8px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-left: 0px;
+  padding-right: 0px;
+  background-color: transparent;
+  border-radius: 0;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: transparent;
+  -webkit-transition-property: all;
+  transition-property: all;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 400ms;
+  transition-duration: 400ms;
+}
+
+.c6:hover {
+  border-bottom-color: hsla(216,15%,54%,0.18);
+  background-color: transparent;
+}
+
+.c6:disabled {
+  cursor: not-allowed;
+  background-color: transparent;
+}
+
+.c6:focus-visible {
+  border-radius: 4px;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-color: transparent;
+}
+
+.c6 * {
+  -webkit-transition-property: color,fill;
+  transition-property: color,fill;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+}
+
+.c10 {
+  cursor: pointer;
+}
+
+.c10:hover {
+  background-color: hsla(218,89%,51%,0.18);
+}
+
+.c3::-webkit-scrollbar {
+  display: none;
+}
+
+@media screen and (min-width:768px) {
+  .c5 {
+    gap: 32px;
+  }
+}
+
+@media screen and (min-width:320px) {
+  .c9 {
+    pointer-events: none;
+  }
+}
+
+@media screen and (min-width:480px) {
+  .c9 {
+    pointer-events: none;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c9 {
+    pointer-events: none;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .c9 {
+    pointer-events: none;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c9 {
+    pointer-events: none;
+  }
+}
+
+@media screen and (min-width:320px) {
+  .c11 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:480px) {
+  .c11 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c11 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .c11 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c11 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:0px) and (max-width:768px) {
+  .c6 {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+
+<div
+  id="root"
+>
+  <div
+    class="c0"
+    data-blade-component="tabs"
+  >
+    <div
+      class="c1"
+      data-blade-component="box"
+    >
+      <div
+        class="c2 c3"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-box"
+            role="tablist"
+          >
+            <button
+              aria-controls="tabs-1-payments-tabpanel"
+              aria-selected="false"
+              class="c6"
+              data-active=""
+              data-blade-component="tab-item"
+              id="tabs-1-payments-tabitem"
+              role="tab"
+              tabindex="0"
+            >
+              <p
+                class="c7"
+                data-blade-component="text"
+              >
+                Payments
+              </p>
+            </button>
+            <button
+              aria-controls="tabs-1-refunds-tabpanel"
+              aria-selected="true"
+              class="c6"
+              data-blade-component="tab-item"
+              id="tabs-1-refunds-tabitem"
+              role="tab"
+              tabindex="-1"
+            >
+              <p
+                class="c8"
+                data-blade-component="text"
+              >
+                Refunds
+              </p>
+            </button>
+          </div>
+        </div>
+        <div
+          class="c9 c10"
+          data-blade-component="tab-indicator"
+          pointer-events="none"
+          style="transition-property: transform, width, background-color; transition-duration: 0ms; transition-timing-function: cubic-bezier(0.3, 0, 0.2, 1); width: 0px; transform: translate(0px, -1.5px);"
+        />
+      </div>
+      <div
+        class="c11"
+        data-blade-component="base-box"
+        style="transform:translateY(-1px)"
+      />
+    </div>
+    <div
+      aria-hidden="true"
+      aria-labelledby="tabs-1-payments-tabitem"
+      class="c12"
+      data-blade-component="tab-panel"
+      id="tabs-1-payments-tabpanel"
+      role="tabpanel"
+      tabindex="0"
+    >
+      <p
+        class="c13"
+        data-blade-component="text"
+      >
+        Payments
+      </p>
+    </div>
+    <div
+      aria-hidden="false"
+      aria-labelledby="tabs-1-refunds-tabitem"
+      class="c14"
+      data-blade-component="tab-panel"
+      id="tabs-1-refunds-tabpanel"
+      role="tabpanel"
+      tabindex="0"
+    >
+      <p
+        class="c13"
+        data-blade-component="text"
+      >
+        Refunds
+      </p>
+    </div>
+  </div>
+</div>
+`;
