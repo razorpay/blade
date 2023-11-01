@@ -20,15 +20,15 @@ const BladeProvider = ({
   const { theme, themeContextValue } = useBladeProvider({ initialColorScheme, themeTokens });
 
   return (
-    <StyleSheetManager stylisPlugins={[stylisCSSHigherSpecificity()]}>
-      <ThemeContext.Provider value={themeContextValue}>
-        <FloatingDelayGroup delay={tooltipDelays}>
-          <StyledComponentThemeProvider theme={theme}>
+    <ThemeContext.Provider value={themeContextValue}>
+      <FloatingDelayGroup delay={tooltipDelays}>
+        <StyledComponentThemeProvider theme={theme}>
+          <StyleSheetManager stylisPlugins={[stylisCSSHigherSpecificity()]}>
             <BottomSheetStackProvider>{children}</BottomSheetStackProvider>
-          </StyledComponentThemeProvider>
-        </FloatingDelayGroup>
-      </ThemeContext.Provider>
-    </StyleSheetManager>
+          </StyleSheetManager>
+        </StyledComponentThemeProvider>
+      </FloatingDelayGroup>
+    </ThemeContext.Provider>
   );
 };
 

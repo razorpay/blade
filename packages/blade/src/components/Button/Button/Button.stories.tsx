@@ -101,7 +101,7 @@ const ButtonTemplate: ComponentStory<typeof ButtonComponent> = ({
   return <ButtonComponent {...args}>{children}</ButtonComponent>;
 };
 
-const StyledBaseText = styled(BaseText)({ padding: '8px 0px' });
+const StyledBaseText = styled(BaseText)({ padding: '80px 0px', color: 'red' });
 const ButtonWithSizeTemplate: ComponentStory<typeof ButtonComponent> = ({
   children = 'Button',
   ...args
