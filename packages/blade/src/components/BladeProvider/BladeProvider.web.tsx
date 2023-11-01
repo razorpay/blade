@@ -4,7 +4,7 @@ import {
   StyleSheetManager,
 } from 'styled-components';
 import { FloatingDelayGroup } from '@floating-ui/react';
-import stylisCSSNamespacePlugin from './stylisCSSNamespacePlugin';
+import stylisCSSHigherSpecificity from './stylisCSSHigherSpecificity';
 import { ThemeContext } from './useTheme';
 import { useBladeProvider } from './useBladeProvider';
 import type { BladeProviderProps } from './types';
@@ -20,7 +20,7 @@ const BladeProvider = ({
   const { theme, themeContextValue } = useBladeProvider({ initialColorScheme, themeTokens });
 
   return (
-    <StyleSheetManager stylisPlugins={[stylisCSSNamespacePlugin({ namespace: '#razorpay-blade' })]}>
+    <StyleSheetManager stylisPlugins={[stylisCSSHigherSpecificity()]}>
       <ThemeContext.Provider value={themeContextValue}>
         <FloatingDelayGroup delay={tooltipDelays}>
           <StyledComponentThemeProvider theme={theme}>
