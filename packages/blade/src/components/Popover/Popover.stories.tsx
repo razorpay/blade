@@ -5,6 +5,8 @@ import React from 'react';
 import { Title } from '@storybook/addon-docs';
 import { action } from '@storybook/addon-actions';
 import type { PopoverTriggerProps } from './types';
+import { Mask } from './Mask';
+import type { RectResult } from './maskUtils';
 import type { PopoverProps } from '.';
 import { PopoverInteractiveWrapper, Popover } from '.';
 import { Button } from '~components/Button';
@@ -154,17 +156,206 @@ const FooterContent = React.forwardRef<HTMLButtonElement, { onClick?: () => void
   },
 );
 
-const PopoverTemplate: ComponentStory<typeof Popover> = (args) => {
-  const LeadingIcon = iconMap[args.titleLeading as string]!;
+type TourFooterProps = {
+  activeStep: number;
+  setActiveStep: React.Dispatch<React.SetStateAction<number>>;
+  totalSteps: number;
+};
+
+const TourFooter = ({ activeStep, setActiveStep, totalSteps }: TourFooterProps) => {
   return (
-    <Center>
+    <Box display="flex" gap="spacing.2">
+      {activeStep >= 1 ? (
+        <Button
+          onClick={() => {
+            setActiveStep((prev) => prev - 1);
+          }}
+        >
+          Prev
+        </Button>
+      ) : null}
+      {activeStep === totalSteps - 1 ? (
+        <Button
+          onClick={() => {
+            setActiveStep(-1);
+          }}
+        >
+          Done
+        </Button>
+      ) : (
+        <Button
+          onClick={() => {
+            setActiveStep((prev) => prev + 1);
+          }}
+        >
+          Next
+        </Button>
+      )}
+    </Box>
+  );
+};
+
+const Poc1 = () => {
+  const [activeStep, setActiveStep] = React.useState(0);
+  const domNodes = React.useRef<HTMLElement[]>([]);
+  const [maskSize, setMaskSize] = React.useState<RectResult>({
+    width: 0,
+    height: 0,
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
+    x: 0,
+    y: 0,
+  });
+
+  const handleClose = () => {
+    setActiveStep(-1);
+  };
+
+  const updateMask = React.useCallback(() => {
+    if (domNodes.current[activeStep]) {
+      const rect = domNodes.current[activeStep].getBoundingClientRect();
+      setMaskSize(rect);
+    }
+  }, [activeStep]);
+
+  React.useLayoutEffect(() => {
+    updateMask();
+  }, [updateMask]);
+
+  return (
+    <Box width="100%">
+      {activeStep !== -1 ? <Mask padding={2} sizes={maskSize} /> : null}
+
+      <Box display="flex" width="100%" gap="spacing.4">
+        <Popover
+          title="1st Popover"
+          placement="bottom"
+          isOpen={activeStep == 0}
+          onOpenChange={handleClose}
+          content={<Text>Hello World</Text>}
+          footer={
+            <TourFooter
+              activeStep={activeStep}
+              setActiveStep={setActiveStep}
+              totalSteps={domNodes.current.length}
+            />
+          }
+        >
+          <Button
+            ref={(ref) => {
+              domNodes.current[0] = ref as HTMLElement;
+            }}
+          >
+            Trigger Element 1
+          </Button>
+        </Popover>
+        <Popover
+          title="1st Popover"
+          placement="bottom"
+          isOpen={activeStep == 1}
+          onOpenChange={handleClose}
+          content={<Text>Hello World</Text>}
+          footer={
+            <TourFooter
+              activeStep={activeStep}
+              setActiveStep={setActiveStep}
+              totalSteps={domNodes.current.length}
+            />
+          }
+        >
+          <Box
+            ref={(ref) => {
+              domNodes.current[1] = ref as HTMLElement;
+            }}
+            padding="spacing.5"
+            backgroundColor="brand.secondary.500"
+          >
+            Trigger Element 2
+          </Box>
+        </Popover>
+      </Box>
+    </Box>
+  );
+};
+
+const Poc2 = () => {
+  const [currentIndex, setCurrentIndex] = React.useState(0);
+  const refs = React.useRef<HTMLElement[]>([]);
+  const [maskSize, setMaskSize] = React.useState<RectResult>({
+    width: 0,
+    height: 0,
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
+    x: 0,
+    y: 0,
+  });
+
+  const handleClose = () => {
+    setCurrentIndex(-1);
+  };
+
+  React.useLayoutEffect(() => {
+    if (refs.current[currentIndex]) {
+      const rect = refs.current[currentIndex].getBoundingClientRect();
+      setMaskSize(rect);
+    }
+  }, [currentIndex]);
+
+  return (
+    <Box width="100%">
+      {currentIndex !== -1 ? <Mask padding={2} sizes={maskSize} /> : null}
+
       <Popover
-        {...args}
-        titleLeading={<LeadingIcon color="surface.text.normal.lowContrast" size="medium" />}
-      >
-        <Button>View Settlement</Button>
-      </Popover>
-    </Center>
+        // isOpen={currentIndex == 0}
+        // onOpenChange={handleClose}
+        anchorRef={refs.current[0]}
+        title="1st Popover"
+        content={<Text>Hello World</Text>}
+        footer={
+          <Box display="flex" gap="spacing.2">
+            <Button
+              onClick={() => {
+                setCurrentIndex(1);
+              }}
+            >
+              Next
+            </Button>
+          </Box>
+        }
+        placement="bottom"
+      />
+
+      <Box display="flex" width="100%" gap="spacing.4">
+        <Button
+          ref={(ref) => {
+            refs.current[0] = ref as HTMLElement;
+          }}
+        >
+          Trigger Element 1
+        </Button>
+        <Box
+          ref={(ref) => {
+            refs.current[1] = ref as HTMLElement;
+          }}
+          padding="spacing.5"
+          backgroundColor="brand.secondary.500"
+        >
+          Trigger Element 2
+        </Box>
+      </Box>
+    </Box>
+  );
+};
+
+const PopoverTemplate: ComponentStory<typeof Popover> = () => {
+  return (
+    <Box>
+      <Poc1 />
+    </Box>
   );
 };
 

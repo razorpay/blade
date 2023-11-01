@@ -102,7 +102,7 @@ const Popover = ({
 
   const { getReferenceProps, getFloatingProps } = useInteractions([click, dismiss, role]);
   const triggerRef = React.useRef<HTMLButtonElement>(null);
-  const mergedRef = useMergeRefs(refs.setReference, triggerRef);
+  const mergedRef = useMergeRefs(refs.setReference, triggerRef, children.ref);
 
   const contextValue = React.useMemo(() => {
     return {
