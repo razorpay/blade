@@ -9,6 +9,10 @@ export default function createStylisCSSHigherSpecificityPlugin(): StylisPlugin {
     if (context !== -1) return;
 
     const [selector] = selectors;
+    console.log(
+      '🚀 ~ file: stylisCSSHigherSpecificity.ts:12 ~ createStylisCSSHigherSpecificityPlugin ~ selector:',
+      selector,
+    );
 
     selectors[0] = `${selector.repeat(5)}`;
   };
