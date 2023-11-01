@@ -4,7 +4,7 @@ import { Button } from '~components/Button';
 import renderWithSSR from '~utils/testing/renderWithSSR.web';
 
 describe('<Tooltip />', () => {
-  it.skip('should render Tooltip ssr', () => {
+  it('should render Tooltip ssr', () => {
     const name = 'Toggle Darkmode';
     const { container, queryByRole } = renderWithSSR(
       <Tooltip content="Hello world">

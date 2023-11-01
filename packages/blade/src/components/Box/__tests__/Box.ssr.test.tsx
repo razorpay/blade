@@ -15,11 +15,19 @@ describe('<Box />', () => {
       </Box>,
     );
     expect(container).toMatchInlineSnapshot(`
+      .c0 {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        padding: 0px;
+      }
+
       <div
         id="root"
       >
         <div
-          class="BaseBox-bmPWx jBndhd"
+          class="c0"
           data-blade-component="box"
         >
           children test!
@@ -35,11 +43,15 @@ describe('<Box />', () => {
       </Box>,
     );
     expect(container).toMatchInlineSnapshot(`
+      .c0 {
+        display: block;
+      }
+
       <div
         id="root"
       >
         <footer
-          class="BaseBox-bmPWx zgBJD"
+          class="c0"
           data-blade-component="box"
         >
           Footer test!
@@ -61,9 +73,17 @@ describe('<Box />', () => {
       );
     } catch (err: unknown) {
       expect(err).toMatchInlineSnapshot(`
-        [Error: [Blade: Box]: Oops! Currently you can only use \`transparent\`, \`surface.background.*\`, and \`brand.*\` tokens with backgroundColor property but we received \`red\` instead.
+        [Error: The above error occurred in the <Box> component:
 
-         Do you have a usecase of using other values? Create an issue on https://github.com/razorpay/blade repo to let us know and we can discuss ✨]
+            at backgroundColor (/Users/anurag.hazra/Documents/razorpay/projects/blade/packages/blade/src/components/Box/Box.tsx:222:13)
+            at children (/Users/anurag.hazra/Documents/razorpay/projects/blade/packages/blade/src/components/BottomSheet/BottomSheetStack.tsx:26:3)
+            at outerTheme (/Users/anurag.hazra/Documents/razorpay/projects/blade/packages/blade/node_modules/styled-components/src/models/ThemeProvider.js:25:31)
+            at FloatingDelayGroup (/Users/anurag.hazra/Documents/razorpay/projects/blade/packages/blade/node_modules/@floating-ui/react/dist/floating-ui.react.umd.js:1241:7)
+            at themeTokens (/Users/anurag.hazra/Documents/razorpay/projects/blade/packages/blade/src/components/BladeProvider/BladeProvider.web.tsx:12:3)
+            at App
+
+        Consider adding an error boundary to your tree to customize error handling behavior.
+        Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.]
       `);
     }
     console.error = tempConsoleError;
@@ -81,9 +101,19 @@ describe('<Box />', () => {
         />,
       );
     } catch (err: unknown) {
-      expect(err).toMatchInlineSnapshot(
-        `[Error: [Blade: Box]: Invalid \`as\` prop value - button. Only div, section, footer, header, main, aside, nav, span, label are valid values]`,
-      );
+      expect(err).toMatchInlineSnapshot(`
+        [Error: The above error occurred in the <Box> component:
+
+            at backgroundColor (/Users/anurag.hazra/Documents/razorpay/projects/blade/packages/blade/src/components/Box/Box.tsx:222:13)
+            at children (/Users/anurag.hazra/Documents/razorpay/projects/blade/packages/blade/src/components/BottomSheet/BottomSheetStack.tsx:26:3)
+            at outerTheme (/Users/anurag.hazra/Documents/razorpay/projects/blade/packages/blade/node_modules/styled-components/src/models/ThemeProvider.js:25:31)
+            at FloatingDelayGroup (/Users/anurag.hazra/Documents/razorpay/projects/blade/packages/blade/node_modules/@floating-ui/react/dist/floating-ui.react.umd.js:1241:7)
+            at themeTokens (/Users/anurag.hazra/Documents/razorpay/projects/blade/packages/blade/src/components/BladeProvider/BladeProvider.web.tsx:12:3)
+            at App
+
+        Consider adding an error boundary to your tree to customize error handling behavior.
+        Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.]
+      `);
     }
     console.error = tempConsoleError;
   });
