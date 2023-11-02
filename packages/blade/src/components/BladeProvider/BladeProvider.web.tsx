@@ -1,10 +1,6 @@
 import type { ReactElement } from 'react';
-import {
-  ThemeProvider as StyledComponentThemeProvider,
-  StyleSheetManager,
-} from 'styled-components';
+import { ThemeProvider as StyledComponentThemeProvider } from 'styled-components';
 import { FloatingDelayGroup } from '@floating-ui/react';
-import stylisCSSHigherSpecificity from './stylisCSSHigherSpecificity';
 import { ThemeContext } from './useTheme';
 import { useBladeProvider } from './useBladeProvider';
 import type { BladeProviderProps } from './types';
