@@ -41,6 +41,8 @@ const renderWithSSR = (ui: ReactElement): RenderResult => {
 
   let result: RenderResult;
   const errors = [];
+  const oldConsoleError = console.error;
+  const oldConsoleWarn = console.warn;
   // eslint-disable-next-line no-multi-assign
   console.error = console.warn = (...messages) => {
     errors.push(util.format(...messages));
@@ -59,6 +61,11 @@ const renderWithSSR = (ui: ReactElement): RenderResult => {
   if (errors.length > 0) {
     throw new Error(errors[0]);
   }
+
+  // reset console
+  console.error = oldConsoleError;
+  console.warn = oldConsoleWarn;
+  errors.length = 0;
 
   // @ts-expect-error
   return result;
