@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 10.17.2
+
+### Patch Changes
+
+- f0d4dce5: fix: react native text input alignment with prefix
+
 ## 10.17.1
 
 ### Patch Changes
