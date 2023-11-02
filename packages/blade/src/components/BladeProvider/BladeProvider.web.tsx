@@ -23,9 +23,9 @@ const BladeProvider = ({
     <ThemeContext.Provider value={themeContextValue}>
       <FloatingDelayGroup delay={tooltipDelays}>
         <StyledComponentThemeProvider theme={theme}>
-          <StyleSheetManager stylisPlugins={[stylisCSSHigherSpecificity()]}>
-            <BottomSheetStackProvider>{children}</BottomSheetStackProvider>
-          </StyleSheetManager>
+          {/* <StyleSheetManager stylisPlugins={[stylisCSSHigherSpecificity()]}> */}
+          <BottomSheetStackProvider>{children}</BottomSheetStackProvider>
+          {/* </StyleSheetManager> */}
         </StyledComponentThemeProvider>
       </FloatingDelayGroup>
     </ThemeContext.Provider>
