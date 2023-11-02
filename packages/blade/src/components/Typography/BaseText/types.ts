@@ -56,7 +56,7 @@ export type BaseTextProps = {
   fontStyle?: 'italic' | 'normal';
   textDecorationLine?: 'line-through' | 'none' | 'underline';
   lineHeight?: keyof Theme['typography']['lineHeights'];
-  wordBreak?: 'normal' | 'break-all' | 'keep-all' | 'break-word' | undefined;
+  wordBreak?: 'normal' | 'break-all' | 'keep-all' | 'break-word';
   /**
    * Web only
    */
