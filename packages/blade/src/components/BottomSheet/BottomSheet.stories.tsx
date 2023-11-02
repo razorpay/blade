@@ -14,6 +14,7 @@ import {
 } from './';
 
 import {
+  ArrowRightIcon,
   CheckIcon,
   ClockIcon,
   CloseIcon,
@@ -219,9 +220,7 @@ export default {
 } as Meta<StoryControlProps>;
 
 const BottomSheetTemplate: ComponentStory<typeof BottomSheetComponent> = ({ ...args }) => {
-  // `!!isChramatic` is not readable hence disabling the eslint rule
-  // eslint-disable-next-line no-unneeded-ternary
-  const [isOpen, setIsOpen] = React.useState(isChromatic() ? true : false);
+  const [isOpen, setIsOpen] = React.useState(isReactNative() ? false : isChromatic());
 
   return (
     <BaseBox>
@@ -996,3 +995,126 @@ const WithOTPInputTemplate: ComponentStory<typeof BottomSheetComponent> = () => 
 };
 
 export const WithOTPInput = WithOTPInputTemplate.bind({});
+
+type ValidationState = 'none' | 'success' | 'error';
+
+interface Props {
+  isOpen?: boolean;
+  onDismiss: () => void;
+  onCtaClick: (selectedPhoneNumber: string) => void;
+  isCtaLoading?: boolean;
+  phoneNumbers: Array<string>;
+}
+
+// Example by: https://github.com/razorpay/blade/issues/1777
+const SimSelectionBottomSheet: React.FC<Props> = ({
+  isOpen = false,
+  onCtaClick,
+  isCtaLoading = false,
+  phoneNumbers = [],
+  onDismiss,
+}) => {
+  const [isCtaDisabled, setIsCtaDisabled] = React.useState(true);
+  const [selectedPhoneNumber, setSelectedPhoneNumber] = React.useState<string | undefined>(
+    undefined,
+  );
+  const [simSelectionError, setSimSelectionError] = React.useState<string | undefined>(undefined);
+
+  // should be able to handle content changes inside bottomsheet
+  const handleSimChange = ({ value }: { value: string }): void => {
+    setSimSelectionError(undefined);
+    setSelectedPhoneNumber(value);
+    setIsCtaDisabled(false);
+  };
+
+  const handleCtaClick = (): void => {
+    if (selectedPhoneNumber !== undefined && selectedPhoneNumber.length > 0) {
+      setSimSelectionError(undefined);
+      setIsCtaDisabled(false);
+      onCtaClick(selectedPhoneNumber);
+    } else {
+      setSimSelectionError('Please select a SIM to verify mobile number');
+      setIsCtaDisabled(true);
+    }
+  };
+
+  const radioGroupValidationState: ValidationState = simSelectionError ? 'error' : 'none';
+  return (
+    <Box>
+      <BottomSheetComponent isOpen={isOpen} onDismiss={onDismiss}>
+        <BottomSheetHeader title="Select SIM" showBackButton onBackButtonClick={onDismiss} />
+        <BottomSheetBody>
+          <RadioGroup
+            name="select-sim"
+            label="Please select a SIM to verify your mobile number"
+            value={selectedPhoneNumber}
+            onChange={handleSimChange}
+            size="medium"
+            errorText={simSelectionError}
+            validationState={radioGroupValidationState}
+          >
+            {phoneNumbers.map((number, index) => {
+              return (
+                <Radio value={number} key={`sim-${index}`}>
+                  {number}
+                </Radio>
+              );
+            })}
+          </RadioGroup>
+        </BottomSheetBody>
+        <BottomSheetFooter>
+          <Box
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            justifyContent="space-between"
+            gap="spacing.4"
+          >
+            <Button
+              icon={ArrowRightIcon}
+              iconPosition="right"
+              isLoading={isCtaLoading}
+              isDisabled={isCtaDisabled}
+              isFullWidth
+              onClick={handleCtaClick}
+            >
+              Verify
+            </Button>
+            <Button
+              onClick={() => {
+                // should be able to close the bottom sheet
+                onDismiss();
+              }}
+              variant="secondary"
+              isFullWidth
+            >
+              Close
+            </Button>
+          </Box>
+        </BottomSheetFooter>
+      </BottomSheetComponent>
+    </Box>
+  );
+};
+
+const ProductUseCase1Example: ComponentStory<typeof BottomSheetComponent> = () => {
+  // should be initially opened
+  const [isOpen, setIsOpen] = React.useState(true);
+  return (
+    <>
+      <Button onClick={() => setIsOpen(true)}>{isOpen ? 'close' : 'open'}</Button>
+      <SimSelectionBottomSheet
+        isOpen={isOpen}
+        onDismiss={() => {
+          setIsOpen(false);
+        }}
+        phoneNumbers={['1234567890', '0987654321']}
+        onCtaClick={(selectedPhoneNumber) => {
+          console.log('selectedPhoneNumber', selectedPhoneNumber);
+        }}
+      />
+    </>
+  );
+};
+
+export const ProductUseCase1 = ProductUseCase1Example.bind({});

@@ -57,6 +57,7 @@ try {
 const getStories = () => {
   return {
     './src/components/Accordion/Accordion.stories.tsx': require('../../src/components/Accordion/Accordion.stories.tsx'),
+    './src/components/ActionList/ActionList.stories.tsx': require('../../src/components/ActionList/ActionList.stories.tsx'),
     './src/components/Alert/Alert.stories.tsx': require('../../src/components/Alert/Alert.stories.tsx'),
     './src/components/Amount/Amount.stories.tsx': require('../../src/components/Amount/Amount.stories.tsx'),
     './src/components/Badge/Badge.stories.tsx': require('../../src/components/Badge/Badge.stories.tsx'),
