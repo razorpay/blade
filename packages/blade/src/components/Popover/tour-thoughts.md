@@ -95,3 +95,7 @@ We will have to ask consumers to modify their code to use the new design, which 
 ### Conclusion
 
 Now with all the above points, I think it's better if we think of exposing a Tour component which will maintain the state/logic/steps/flows for consumers with a clean API. 
+
+Something similar to [`react/tour`](https://reactour.vercel.app/tour) API.
+
+This will also mean we can maintain a consistency between web & native API. Otherwise consumers will have vastly different abstraction for web & native. 
