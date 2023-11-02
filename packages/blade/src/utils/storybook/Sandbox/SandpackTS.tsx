@@ -1,6 +1,9 @@
 // @ts-nocheck
-
-import type { SandpackSetup, SandpackPredefinedTemplate } from '@codesandbox/sandpack-react';
+import type {
+  SandpackSetup,
+  SandpackPredefinedTemplate,
+  SandpackFiles,
+} from '@codesandbox/sandpack-react';
 import {
   SandpackConsumer,
   SandpackLayout,
@@ -11,16 +14,16 @@ import {
 import { CodeEditor } from './CodeEditor';
 
 export const SandpackTypescript: React.FC<{
-  customSetup: SandpackSetup;
-  files: Record<string, string>;
+  customSetup?: SandpackSetup;
   template: SandpackPredefinedTemplate;
-}> = ({ customSetup, files, template }) => {
+  files: SandpackFiles;
+}> = ({ customSetup, template, files }) => {
   return (
     <SandpackProvider template={template} files={files} customSetup={customSetup}>
       <SandpackThemeProvider>
         <SandpackLayout>
           <SandpackConsumer>
-            {(state) => <CodeEditor activePath={state?.activePath} />}
+            {(state) => <CodeEditor activeFile={state?.activeFile} />}
           </SandpackConsumer>
           <SandpackPreview />
         </SandpackLayout>

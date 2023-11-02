@@ -1,12 +1,16 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+// @ts-nocheck
+/* eslint-disable import/no-extraneous-dependencies */
 import { SandpackCodeEditor, useSandpack } from '@codesandbox/sandpack-react';
 
 import { EventEmitter } from '@okikio/emitter';
-import { memo, useEffect, useRef } from 'react';
+import { memo, useEffect, useMemo, useRef } from 'react';
 import { codemirrorTypescriptExtensions } from './codemirror-extensions';
 
-export const CodeEditor: React.FC<{ activePath?: string }> = memo(({ activePath }) => {
+export const CodeEditor: React.FC<{ activeFile?: string }> = memo(({ activeFile }) => {
   const tsServer = useRef(
-    new Worker(new URL('/workers/tsserver.js', window.location.origin), {
+    new Worker(new URL('/workers/tsserver.js', window.top?.location.origin), {
       name: 'ts-server',
     }),
   );
@@ -16,8 +20,7 @@ export const CodeEditor: React.FC<{ activePath?: string }> = memo(({ activePath 
   useEffect(function listener() {
     const serverMessageCallback = ({
       data: { event, details },
-    }: // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    MessageEvent<{ event: string; details: any }>): void => {
+    }: MessageEvent<{ event: string; details: any }>) => {
       emitter.current.emit(event, details);
     };
 
@@ -30,7 +33,7 @@ export const CodeEditor: React.FC<{ activePath?: string }> = memo(({ activePath 
 
   useEffect(function init() {
     emitter.current.on('ready', () => {
-      const getTypescriptCache = (): Map<string, string> => {
+      const getTypescriptCache = () => {
         const cache = new Map();
         const keys = Object.keys(localStorage);
 
@@ -47,8 +50,7 @@ export const CodeEditor: React.FC<{ activePath?: string }> = memo(({ activePath 
         event: 'create-system',
         details: {
           files: sandpack.files,
-          // @ts-expect-error: activePath does exist
-          entry: sandpack.activePath,
+          entry: sandpack.activeFile,
           fsMapCached: getTypescriptCache(),
         },
       });
@@ -65,7 +67,10 @@ export const CodeEditor: React.FC<{ activePath?: string }> = memo(({ activePath 
     );
   }, []);
 
-  const extensions = codemirrorTypescriptExtensions(tsServer.current, emitter.current, activePath);
+  const extensions = useMemo(
+    () => codemirrorTypescriptExtensions(tsServer.current, emitter.current, activeFile),
+    [tsServer, emitter, activeFile],
+  );
 
   return <SandpackCodeEditor showTabs extensions={extensions} />;
 });

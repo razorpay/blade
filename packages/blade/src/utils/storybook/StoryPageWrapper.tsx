@@ -134,19 +134,50 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
         ) : null}
         {props.children}
         <SandpackTypescript
-          template="vanilla-ts"
+          template="react-ts"
+          customSetup={{
+            dependencies: {
+              '@chakra-ui/react': 'latest',
+              '@emotion/react': 'latest',
+              '@emotion/styled': 'latest',
+              'framer-motion': 'latest',
+            },
+            devDependencies: {
+              '@types/react': 'latest',
+              '@types/react-dom': 'latest',
+            },
+          }}
           files={{
-            '/src/index.ts': dedent`import "./styles.css";
-                          
-              type List<R extends string> = R[]
-                          
-              const data: List<number> = [123, "foo"]
-              const selector = document.getElementById("app")
+            '/tsconfig.json': dedent`{
+              "include": [
+                "./**/*"
+              ],
+              "compilerOptions": {
+                "strict": true,
+                "esModuleInterop": true,
+                "lib": [ "dom", "es2020" ],
+                "jsx": "react-jsx"
+              }
+            }`,
+            '/App.tsx': {
+              code: dedent`
+              import React from "react"
+              import { Flex } from '@chakra-ui/react'
 
-              selector.innerHTML = \`
-              <h1>Hello Vanilla!</h1>
-              <p>\${data}</p>
-              \`;`,
+              export default function App(): JSX.Element {
+                return (
+                  <Flex 
+                    w="100vw" 
+                    h="100vh" 
+                    justifyContent="center" 
+                    alignItems
+                  >
+                    <h2>Hello world!</h2>
+                  </Flex>
+                )
+              }
+            `,
+            },
           }}
         />
         {props.imports === '' ? null : (

@@ -3198,17 +3198,17 @@
     w3c-keyname "^2.2.4"
 
 "@codesandbox/sandpack-client@^1.12.1":
-  version "1.12.1"
-  resolved "https://registry.yarnpkg.com/@codesandbox/sandpack-client/-/sandpack-client-1.12.1.tgz#fa3b66ecb08547c47e1cdf6248f5004bf5be68fb"
-  integrity sha512-p79Sk41hrp5ojeHbgTU/JWNS3UcRJKewq+oRD6O6g3MzlhUnE+xO94ui79Td4aeU4fq0jGHeLHIHCW04WMK4Yg==
+  version "1.20.9"
+  resolved "https://registry.yarnpkg.com/@codesandbox/sandpack-client/-/sandpack-client-1.20.9.tgz#206cb2226f23d0292ce67218186fd0b4f0b09cf1"
+  integrity sha512-Z/SXVRFzO8BOagLg6+6WQfBpAio3AZNjeposYPyoI7fxT8L9urS+G5uG/oG4vV/YkK5nmIuT7pKdTL66wMUsxA==
   dependencies:
     codesandbox-import-utils "^1.2.3"
     lodash.isequal "^4.5.0"
 
-"@codesandbox/sandpack-react@1.16.0":
-  version "1.16.0"
-  resolved "https://registry.yarnpkg.com/@codesandbox/sandpack-react/-/sandpack-react-1.16.0.tgz#ab9688c075ca330bddd56f9108c9b929ab3197b8"
-  integrity sha512-qTMquGjd1tbcRXNu8ZHGS90xWu0STuylNyrodGcELjicGoYqg5qvXDZtrS6sGj/wwBQvdRGPJbVlhWHw3o/6Zg==
+"@codesandbox/sandpack-react@1.17.0":
+  version "1.17.0"
+  resolved "https://registry.yarnpkg.com/@codesandbox/sandpack-react/-/sandpack-react-1.17.0.tgz#4d4f97319dc302388421d7df2639fa722c7f801a"
+  integrity sha512-8GzX/of2oOg22txbSApN6K3dPzwPs0n6ipoyXWRxS1cmXoxTId9Qzw/NmEx2seoXSvC0ItwrzzNIZPRFeZOJ3g==
   dependencies:
     "@code-hike/classer" "^0.0.0-aa6efee"
     "@codemirror/closebrackets" "^0.19.0"
@@ -5339,6 +5339,18 @@
   integrity sha512-s1zLBjWhdEI2zwaoSgyOFoKSl109CUcVBCc7biPJ3aAf6LGLU6szDvi31JPU7bxfla2lqfhjbbg/5DdFNxOwHw==
   dependencies:
     "@octokit/openapi-types" "^11.2.0"
+
+"@okikio/emitter@2.1.7":
+  version "2.1.7"
+  resolved "https://registry.yarnpkg.com/@okikio/emitter/-/emitter-2.1.7.tgz#38a3bf040353e7c2b725ec0bd44e32c7496357ae"
+  integrity sha512-Ta87D0uTN/RclDm3zNwzKaPm2jES58uh3MW3OlRBJ7MNn/c6jIz/I3i01HF3T4qKWjqjNj7OdyT6ndg5P972qw==
+  dependencies:
+    "@okikio/manager" "2.1.7"
+
+"@okikio/manager@2.1.7":
+  version "2.1.7"
+  resolved "https://registry.yarnpkg.com/@okikio/manager/-/manager-2.1.7.tgz#bd6c018f043ecbccbae4c3a269ff7d8a838f7740"
+  integrity sha512-fle8woS2vX4Im8wPekQOxYT00ITA5lABqEGoE12Tj7Mb6HdMsQBVxujMLVJ7OobMTmZHdT949A4yc35MC/uTEA==
 
 "@pkgjs/parseargs@^0.11.0":
   version "0.11.0"
@@ -7932,6 +7944,13 @@
   dependencies:
     "@typescript-eslint/types" "5.59.6"
     eslint-visitor-keys "^3.3.0"
+
+"@typescript/vfs@1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@typescript/vfs/-/vfs-1.5.0.tgz#ed942922724f9ace8c07c80b006c47e5e3833218"
+  integrity sha512-AJS307bPgbsZZ9ggCT3wwpg3VbTKMFNHfaY/uF0ahSkYYrPF2dSSKDNIDIQAHm9qJqbLvCsSJH7yN4Vs/CsMMg==
+  dependencies:
+    debug "^4.1.1"
 
 "@use-gesture/core@10.2.24":
   version "10.2.24"
@@ -11917,6 +11936,11 @@ dayjs@^1.8.15:
   version "1.10.7"
   resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.10.7.tgz#2cf5f91add28116748440866a0a1d26f3a6ce468"
   integrity sha512-P6twpd70BcPK34K26uJ1KT3wlhpuOAPoMwJzpsIWUxHZ7wpmbdZL/hQqBDfz7hGurYSa5PhzdhDHtt319hL3ig==
+
+debounce-async@0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/debounce-async/-/debounce-async-0.0.2.tgz#775783edeabff541e8104c96b4754eb42aee84e3"
+  integrity sha512-iSDXfVl3aVGmukEnBQshFAzooCsKdZb1KmdbivsY4zeFEzT9IfEQdys1/wHIZovXZskF6MQpstnMOxQojLVjsw==
 
 debug@2.6.9, debug@^2.2.0, debug@^2.3.3, debug@^2.6.0, debug@^2.6.9:
   version "2.6.9"
@@ -18893,7 +18917,7 @@ lodash.debounce@^4.0.8:
 lodash.isequal@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.isequal/-/lodash.isequal-4.5.0.tgz#415c4478f2bcc30120c22ce10ed3226f7d3e18e0"
-  integrity sha1-QVxEePK8wwEgwizhDtMib30+GOA=
+  integrity sha512-pDo3lu8Jhfjqls6GkMgpahsF9kCyayhgykjyLMNFTKWrpVdAQtYyB4muAMWozBB4ig/dtWAmsMxLEI8wuz+DYQ==
 
 lodash.ismatch@^4.4.0:
   version "4.4.0"

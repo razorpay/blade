@@ -106,8 +106,6 @@ const useSandpackSetup = ({
                 </BladeProvider>
               </StrictMode>
             );
-
-            console.clear(); // There could be some codesandbox warnings, clearing them here on init
             `,
       [`/App.${language}`]: dedent(code),
     },
