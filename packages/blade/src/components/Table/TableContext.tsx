@@ -3,10 +3,14 @@ import type { TableProps } from './Table';
 
 export type TableContextType = {
   selectionType?: TableProps['selectionType'];
+  selectedRows?: string[];
+  totalItems: number;
 };
 
 const TableContext = React.createContext<TableContextType>({
   selectionType: undefined,
+  selectedRows: undefined,
+  totalItems: 0,
 });
 const TableProvider = TableContext.Provider;
 

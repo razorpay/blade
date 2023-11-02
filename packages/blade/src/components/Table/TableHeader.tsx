@@ -5,6 +5,8 @@ import { Header, HeaderRow, HeaderCell } from '@table-library/react-table-librar
 import { tableHeader } from './tokens';
 import { Text } from '~components/Typography';
 import { makeSpace } from '~utils';
+import { Checkbox, CheckboxProps } from '~components/Checkbox';
+import { useTableContext } from './TableContext';
 
 type TableHeaderProps = {
   children: React.ReactNode;
@@ -21,14 +23,6 @@ const StyledHeader = styled(Header)(({ theme }) => ({
 
 const TableHeader = ({ children }: TableHeaderProps): React.ReactElement => {
   return <StyledHeader>{children}</StyledHeader>;
-};
-
-type TableHeaderRowProps = {
-  children: React.ReactNode;
-};
-
-const TableHeaderRow = ({ children }: TableHeaderRowProps): React.ReactElement => {
-  return <HeaderRow>{children}</HeaderRow>;
 };
 
 type TableHeaderCellProps = {
@@ -67,4 +61,36 @@ const TableHeaderCell = ({ children }: TableHeaderCellProps): React.ReactElement
   );
 };
 
-export { TableHeader, TableHeaderRow, TableHeaderCell };
+const TableHeaderCellCheckbox = ({
+  isChecked,
+  isIndeterminate,
+}: {
+  isChecked: CheckboxProps['isChecked'];
+  isIndeterminate?: CheckboxProps['isIndeterminate'];
+}): React.ReactElement => {
+  return (
+    <TableHeaderCell>
+      <Checkbox isChecked={isChecked} isIndeterminate={isIndeterminate} />
+    </TableHeaderCell>
+  );
+};
+type TableHeaderRowProps = {
+  children: React.ReactNode;
+};
+
+const TableHeaderRow = ({ children }: TableHeaderRowProps): React.ReactElement => {
+  const { selectionType, selectedRows, totalItems } = useTableContext();
+  const isMultiSelect = selectionType === 'multiple';
+  const isAllSelected = selectedRows && selectedRows.length === totalItems;
+  const isIndeterminate = selectedRows && selectedRows.length > 0 && !isAllSelected;
+  return (
+    <HeaderRow>
+      {isMultiSelect && (
+        <TableHeaderCellCheckbox isChecked={isAllSelected} isIndeterminate={isIndeterminate} />
+      )}
+      {children}
+    </HeaderRow>
+  );
+};
+
+export { TableHeader, TableHeaderRow, TableHeaderCell, TableHeaderCellCheckbox };

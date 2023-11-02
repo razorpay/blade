@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { Table as ReactTable } from '@table-library/react-table-library/table';
 import { useTheme as useTableTheme } from '@table-library/react-table-library/theme';
 import type { MiddlewareFunction } from '@table-library/react-table-library/types/common';
@@ -21,6 +21,8 @@ const rowSelectType: Record<NonNullable<TableProps['selectionType']>, SelectType
 
 const Table: React.FC<TableProps> = ({ children, data, selectionType }) => {
   const { theme } = useTheme();
+  const [selectedRows, setSelectedRows] = React.useState([]);
+  const [totalItems, setTotalItems] = React.useState(data.nodes.length || 0);
   const tableTheme = useTableTheme({
     Table: `
     border: ${makeBorderSize(theme.border.width.thin)} solid ${
@@ -30,15 +32,22 @@ const Table: React.FC<TableProps> = ({ children, data, selectionType }) => {
     `,
   });
 
+  useEffect(() => {
+    setTotalItems(data.nodes.length);
+  }, [data.nodes]);
+
   const tableContext: TableContextType = useMemo(
     () => ({
       selectionType,
+      selectedRows,
+      totalItems,
     }),
-    [selectionType],
+    [selectionType, selectedRows, totalItems],
   );
 
   const onSelectChange: MiddlewareFunction = (action, state, context): void => {
     console.log(action, state, context);
+    setSelectedRows(state.ids || [state.id] || []);
   };
 
   const rowSelectConfig = useRowSelect(

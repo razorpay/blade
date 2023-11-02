@@ -6,6 +6,7 @@ import { useTableContext } from './TableContext';
 import { tableRow } from './tokens';
 import { Text } from '~components/Typography';
 import { makeSpace } from '~utils';
+import { Checkbox, CheckboxProps } from '~components/Checkbox';
 
 type TableBodyProps = {
   children: React.ReactNode;
@@ -28,34 +29,6 @@ const StyledBody = styled(Body)(({ theme }) => ({
 
 const TableBody = ({ children }: TableBodyProps): React.ReactElement => {
   return <StyledBody>{children}</StyledBody>;
-};
-
-type TableRowProps = {
-  children: React.ReactNode;
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  item: any; // TODO: Fix type
-};
-
-const StyledRow = styled(Row)<{ isSelectable: boolean }>(({ theme, isSelectable }) => ({
-  '&&&': {
-    '&:hover': isSelectable
-      ? {
-          backgroundColor: getIn(theme.colors, tableRow.backgroundColorHover),
-          cursor: 'pointer',
-        }
-      : undefined,
-  },
-}));
-
-const TableRow = ({ children, item }: TableRowProps): React.ReactElement => {
-  const { selectionType } = useTableContext();
-  const isSelectable = Boolean(selectionType);
-  return (
-    <StyledRow isSelectable={isSelectable} item={item}>
-      {children}
-    </StyledRow>
-  );
 };
 
 type TableCellProps = {
@@ -88,4 +61,47 @@ const TableCell = ({ children }: TableCellProps): React.ReactElement => {
   );
 };
 
-export { TableBody, TableRow, TableCell };
+const TableCheckboxCell = ({
+  isChecked,
+}: {
+  isChecked: CheckboxProps['isChecked'];
+}): React.ReactElement => {
+  return (
+    <TableCell>
+      <Checkbox isChecked={isChecked} />
+    </TableCell>
+  );
+};
+
+type TableRowProps = {
+  children: React.ReactNode;
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  item: any; // TODO: Fix type
+};
+
+const StyledRow = styled(Row)<{ isSelectable: boolean }>(({ theme, isSelectable }) => ({
+  '&&&': {
+    '&:hover': isSelectable
+      ? {
+          backgroundColor: getIn(theme.colors, tableRow.backgroundColorHover),
+          cursor: 'pointer',
+        }
+      : undefined,
+  },
+}));
+
+const TableRow = ({ children, item }: TableRowProps): React.ReactElement => {
+  const { selectionType, selectedRows } = useTableContext();
+  const isSelectable = Boolean(selectionType);
+  const isMultiSelect = selectionType === 'multiple';
+  const isSelected = selectedRows?.includes(item.id);
+  return (
+    <StyledRow isSelectable={isSelectable} item={item}>
+      {isMultiSelect && <TableCheckboxCell isChecked={isSelected} />}
+      {children}
+    </StyledRow>
+  );
+};
+
+export { TableBody, TableRow, TableCell, TableCheckboxCell };
