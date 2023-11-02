@@ -26,7 +26,11 @@ const renderWithSSR = (ui: ReactElement): RenderResult => {
 
   const { JSDOM } = jsdom;
   const dom = new JSDOM(html, { pretendToBeVisual: true, url: 'http://localhost/' });
-  // Need to copy all JSDOM globals into node globals so that React can access them.
+  // Copy all JSDOM globals into node globals so that React can access them.
+  // This is need because just assigning JSDOM `window` object to the `global.window` isn't sufficient
+  // If we dont do this, for example:
+  // `window.requestAnimationFrame()` will work
+  //  but calling: `requestAnimationFrame()` without the window prefix will not work
   Object.getOwnPropertyNames(dom.window).forEach((key) => {
     if (!globalNames.has(key)) {
       Object.defineProperty(global, key, Object.getOwnPropertyDescriptor(dom.window, key)!);
