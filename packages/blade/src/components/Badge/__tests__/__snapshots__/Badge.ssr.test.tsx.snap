@@ -3,23 +3,99 @@
 exports[`<Badge /> should render Badge on server 1`] = `"<div id="root"><div data-blade-component="badge" class="BaseBox-bmPWx bcSLaJ"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledBadgeweb__StyledBadge-sc-1svn4tv-0 cRtrfR dnvyGQ"><div data-blade-component="base-box" class="BaseBox-bmPWx boWwvd"><div data-blade-component="base-box" class="BaseBox-bmPWx gOCFFA"><svg aria-hidden="true" data-blade-component="icon" height="12px" viewBox="0 0 24 24" width="12px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z" fill="hsla(216, 27%, 36%, 1)" data-blade-component="svg-path"></path><path d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z" fill="hsla(216, 27%, 36%, 1)" data-blade-component="svg-path"></path><path d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z" clip-rule="evenodd" fill="hsla(216, 27%, 36%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></div><p class="StyledBaseText-dVBfTO eIOpN" data-blade-component="text">Label</p></div></div></div></div>"`;
 
 exports[`<Badge /> should render Badge on server 2`] = `
+.c0 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c1 {
+  text-align: left;
+  background-color: hsla(216,15%,54%,0.09);
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-right: 12px;
+  padding-left: 12px;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding-right: 4px;
+}
+
+.c2 {
+  background-color: hsla(216,15%,54%,0.09);
+  border-radius: 9999px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c5 {
+  color: hsla(216,27%,36%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 <div
   id="root"
 >
   <div
-    class="BaseBox-bmPWx bcSLaJ"
+    class="c0"
     data-blade-component="badge"
   >
     <div
-      class="BaseBox-bmPWx StyledBadgeweb__StyledBadge-sc-1svn4tv-0 cRtrfR dnvyGQ"
+      class="c1 c2"
       data-blade-component="base-box"
     >
       <div
-        class="BaseBox-bmPWx boWwvd"
+        class="c3"
         data-blade-component="base-box"
       >
         <div
-          class="BaseBox-bmPWx gOCFFA"
+          class="c4"
           data-blade-component="base-box"
         >
           <svg
@@ -51,7 +127,7 @@ exports[`<Badge /> should render Badge on server 2`] = `
           </svg>
         </div>
         <p
-          class="StyledBaseText-dVBfTO eIOpN"
+          class="c5"
           data-blade-component="text"
         >
           Label

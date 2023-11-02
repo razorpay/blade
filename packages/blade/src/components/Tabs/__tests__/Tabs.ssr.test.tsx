@@ -3,13 +3,8 @@ import { Tabs, TabList, TabItem, TabPanel } from '../';
 import renderWithSSR from '~utils/testing/renderWithSSR.web';
 import { Text } from '~components/Typography';
 
-// Mock requestAnimationFrame
-global.requestAnimationFrame = (callback) => {
-  return setTimeout(callback, 0);
-};
-
 describe('<Tabs />', () => {
-  it.skip('should render tabs ssr', () => {
+  it('should render tabs ssr', () => {
     const { container, queryAllByRole } = renderWithSSR(
       <Tabs defaultValue="refunds">
         <TabList>

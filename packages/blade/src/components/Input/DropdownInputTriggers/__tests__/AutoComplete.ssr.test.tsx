@@ -15,15 +15,7 @@ import { Box } from '~components/Box';
  * - Write E2E tests for maxRows prop once we have e2e setup (jsdom is acting strange in tag calculation at multiple places even after mocking)
  */
 
-describe.skip('<Dropdown /> with <AutoComplete />', () => {
-  afterAll(() => {
-    // These are not defined by default in JSDOM so clearing them out.
-    // @ts-expect-error: it is taking web's requestAnimationFrame types but JSDom doesn't define these
-    global.requestAnimationFrame = null;
-    // @ts-expect-error: it is expecting web's requestAnimationFrame types but JSDom doesn't define these
-    global.cancelAnimationFrame = null;
-  });
-
+describe('<Dropdown /> with <AutoComplete />', () => {
   it('should render dropdown and make it visible on click', async () => {
     const { container, getByRole, queryByRole } = renderWithSSR(
       <Dropdown>
@@ -42,12 +34,6 @@ describe.skip('<Dropdown /> with <AutoComplete />', () => {
         </DropdownOverlay>
       </Dropdown>,
     );
-
-    // Cannot define this in beforeEach because we want it to be defined after renderToString call
-    // @ts-expect-error: too lazy to define accurate typescript mocks just for mocking
-    global.requestAnimationFrame = (cb) => cb();
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
-    global.cancelAnimationFrame = () => {};
 
     const selectInput = getByRole('combobox', { name: 'Fruits' });
 
