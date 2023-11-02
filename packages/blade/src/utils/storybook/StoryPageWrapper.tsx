@@ -15,6 +15,8 @@ import type { HeadingProps } from '~components/Typography';
 import { Title, Text, Heading } from '~components/Typography';
 import { Badge } from '~components/Badge';
 import { AnnouncementIcon } from '~components/Icons';
+import { SandpackTypescript } from './Sandbox/SandpackTS';
+import dedent from 'dedent';
 
 const Subtitle = (props: HeadingProps<{ variant: 'regular' }>): React.ReactElement => {
   return <Heading type="subtle" size="large" weight="regular" as="span" {...props} />;
@@ -131,6 +133,22 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
           <FigmaEmbed src={figmaURL} title={`${props.componentName} Figma Designs`} />
         ) : null}
         {props.children}
+        <SandpackTypescript
+          template="vanilla-ts"
+          files={{
+            '/src/index.ts': dedent`import "./styles.css";
+                          
+              type List<R extends string> = R[]
+                          
+              const data: List<number> = [123, "foo"]
+              const selector = document.getElementById("app")
+
+              selector.innerHTML = \`
+              <h1>Hello Vanilla!</h1>
+              <p>\${data}</p>
+              \`;`,
+          }}
+        />
         {props.imports === '' ? null : (
           <>
             <Title size="large">Imports</Title>
