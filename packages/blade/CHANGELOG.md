@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 10.17.3
+
+### Patch Changes
+
+- 49db8d7c: chore(blade): only allow CarouselItem in Carousel children
+- ab2b1800: fix(blade): fixed react-native bottomsheet state bugs
+
 ## 10.17.2
 
 ### Patch Changes
