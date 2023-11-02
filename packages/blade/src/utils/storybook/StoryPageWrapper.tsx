@@ -5,6 +5,7 @@ import useMakeFigmaURL from './useMakeFigmaURL';
 import FigmaEmbed from './FigmaEmbed';
 import { SandboxHighlighter } from './Sandbox';
 import { componentData } from './componentStatusData';
+import { SandboxMonaco } from './Sandbox/SandboxMonaco';
 import BaseBox from '~components/Box/BaseBox';
 import { Alert } from '~components/Alert';
 import { BladeProvider } from '~components/BladeProvider';
@@ -131,6 +132,7 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
           <FigmaEmbed src={figmaURL} title={`${props.componentName} Figma Designs`} />
         ) : null}
         {props.children}
+        <SandboxMonaco />
         {props.imports === '' ? null : (
           <>
             <Title size="large">Imports</Title>

@@ -57,6 +57,13 @@ module.exports = {
       }),
     ];
 
+    // config.module.rules[0].exclude = new RegExp('/node_modules/(?!(@monaco-editor)).*/');
+
+    // config.module.rules.push({
+    //   test: /@monaco-editor\/react[\\/].*\.m?js$/,
+    //   loader: 'babel-loader',
+    // });
+
     config.plugins = [
       ...(config.plugins || []),
       new DefinePlugin({
