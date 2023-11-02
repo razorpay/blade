@@ -3,10 +3,11 @@ import getIn from 'lodash/get';
 import styled from 'styled-components';
 import { Header, HeaderRow, HeaderCell } from '@table-library/react-table-library/table';
 import { tableHeader } from './tokens';
+import { useTableContext } from './TableContext';
+import type { CheckboxProps } from '~components/Checkbox';
+import { Checkbox } from '~components/Checkbox';
 import { Text } from '~components/Typography';
 import { makeSpace } from '~utils';
-import { Checkbox, CheckboxProps } from '~components/Checkbox';
-import { useTableContext } from './TableContext';
 
 type TableHeaderProps = {
   children: React.ReactNode;

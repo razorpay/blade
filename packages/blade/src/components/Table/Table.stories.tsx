@@ -315,7 +315,11 @@ const data = {
 const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
   return (
     <Box backgroundColor="surface.background.level1.lowContrast" padding="spacing.5">
-      <TableComponent {...args} data={data}>
+      <TableComponent
+        {...args}
+        data={data}
+        onSelectionChange={({ values }) => console.log('Selected Rows:', values)}
+      >
         {(tableList) => (
           <>
             <TableHeader>

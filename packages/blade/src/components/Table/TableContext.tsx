@@ -1,9 +1,10 @@
 import React from 'react';
+import type { TableNode } from '@table-library/react-table-library/table';
 import type { TableProps } from './Table';
 
 export type TableContextType = {
   selectionType?: TableProps['selectionType'];
-  selectedRows?: string[];
+  selectedRows?: TableNode['id'][];
   totalItems: number;
 };
 
