@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
-import { useVerifyInsideCard, useVerifyAllowedComponents } from './CardContext';
+import { useVerifyInsideCard } from './CardContext';
 import { ComponentIds } from './Card';
 import type { BadgeProps } from '~components/Badge';
 import { Badge } from '~components/Badge';
@@ -22,6 +22,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeSpace } from '~utils/makeSpace';
 import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { throwBladeError } from '~utils/logger';
+import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren/useVerifyAllowedChildren';
 
 const _CardHeaderIcon = ({ icon: Icon }: { icon: IconComponent }): React.ReactElement => {
   useVerifyInsideCard('CardHeaderIcon');
@@ -94,10 +95,11 @@ type CardHeaderProps = {
 
 const _CardHeader = ({ children, testID }: CardHeaderProps): React.ReactElement => {
   useVerifyInsideCard('CardHeader');
-  useVerifyAllowedComponents(children, 'CardHeader', [
-    ComponentIds.CardHeaderLeading,
-    ComponentIds.CardHeaderTrailing,
-  ]);
+  useVerifyAllowedChildren({
+    children,
+    componentName: 'CardHeader',
+    allowedComponents: [ComponentIds.CardHeaderLeading, ComponentIds.CardHeaderTrailing],
+  });
 
   return (
     <BaseBox

@@ -15,7 +15,7 @@ import type { CarouselProps } from './types';
 import type { CarouselContextProps } from './CarouselContext';
 import { CarouselContext } from './CarouselContext';
 import { getCarouselItemId } from './utils';
-import { CAROUSEL_AUTOPLAY_INTERVAL } from './constants';
+import { CAROUSEL_AUTOPLAY_INTERVAL, componentIds } from './constants';
 import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
 import { castWebType, makeMotionTime, useInterval, useTheme } from '~utils';
@@ -23,6 +23,7 @@ import { useId } from '~utils/useId';
 import { makeAccessible } from '~utils/makeAccessible';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useDidUpdate } from '~utils/useDidUpdate';
+import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren/useVerifyAllowedChildren';
 
 type ControlsProp = Required<
   Pick<
@@ -244,6 +245,12 @@ const Carousel = ({
   const containerRef = React.useRef<HTMLDivElement>(null);
   const isMobile = platform === 'onMobile';
   const id = useId('carousel');
+
+  useVerifyAllowedChildren({
+    componentName: 'Carousel',
+    allowedComponents: [componentIds.CarouselItem],
+    children,
+  });
 
   const [isScrollAtStart, setScrollStart] = React.useState(
     // on mobile we do not want to render the overlay
