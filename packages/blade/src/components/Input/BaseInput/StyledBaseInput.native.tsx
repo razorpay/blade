@@ -8,6 +8,7 @@ import type {
   TouchableHighlightProps,
   GestureResponderEvent,
 } from 'react-native';
+import { Platform as RNPlatform } from 'react-native';
 import type { BaseInputProps } from './BaseInput';
 import type { StyledBaseInputProps } from './types';
 import { getBaseInputStyles } from './baseInputStyles';
@@ -127,7 +128,10 @@ const getRNInputStyles = (
       hasTags: props.hasTags,
       isDropdownTrigger: props.isDropdownTrigger,
     }),
-    lineHeight: undefined,
+    lineHeight: RNPlatform.select({
+      android: makeSize(props.theme.typography.lineHeights[100]),
+      ios: undefined,
+    }),
     textAlignVertical: 'top',
     height: getInputHeight({
       isTextArea: props.isTextArea,
