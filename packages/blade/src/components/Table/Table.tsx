@@ -142,7 +142,7 @@ const Table: React.FC<TableProps> = ({
 
   return (
     <TableProvider value={tableContext}>
-      <BaseBox>
+      <>
         {toolbarComponent}
         <ReactTable
           layout={{ fixedHeader: isHeaderSticky, horizontalScroll: true }}
@@ -152,7 +152,7 @@ const Table: React.FC<TableProps> = ({
         >
           {() => filteredChildren}
         </ReactTable>
-      </BaseBox>
+      </>
     </TableProvider>
   );
 };
