@@ -38,7 +38,10 @@ const _TableToolbar = ({ children, title }: TableToolbarProps): React.ReactEleme
   const { selectedRows, toggleAllRowsSelection } = useTableContext();
   const isSelected = selectedRows && selectedRows.length > 0;
   const defaultTitle = 'Showing 1-10 Items'; // TODO: Use pagination data to show correct title
-  const selectedTitle = isSelected ? `${selectedRows.length} Items Selected` : null;
+  const selectedItemsCount = selectedRows ? selectedRows.length : 0;
+  const selectedTitle = isSelected
+    ? `${selectedRows.length} ${selectedItemsCount === 1 ? 'Item' : 'Items'} Selected`
+    : null;
 
   return (
     <ToolbarWrapper
