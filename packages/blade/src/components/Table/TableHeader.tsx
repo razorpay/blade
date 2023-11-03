@@ -65,13 +65,15 @@ const TableHeaderCell = ({ children }: TableHeaderCellProps): React.ReactElement
 const TableHeaderCellCheckbox = ({
   isChecked,
   isIndeterminate,
+  onChange,
 }: {
   isChecked: CheckboxProps['isChecked'];
   isIndeterminate?: CheckboxProps['isIndeterminate'];
+  onChange: CheckboxProps['onChange'];
 }): React.ReactElement => {
   return (
     <TableHeaderCell>
-      <Checkbox isChecked={isChecked} isIndeterminate={isIndeterminate} />
+      <Checkbox isChecked={isChecked} isIndeterminate={isIndeterminate} onChange={onChange} />
     </TableHeaderCell>
   );
 };
@@ -80,14 +82,18 @@ type TableHeaderRowProps = {
 };
 
 const TableHeaderRow = ({ children }: TableHeaderRowProps): React.ReactElement => {
-  const { selectionType, selectedRows, totalItems } = useTableContext();
+  const { selectionType, selectedRows, totalItems, toggleAllRowsSelection } = useTableContext();
   const isMultiSelect = selectionType === 'multiple';
   const isAllSelected = selectedRows && selectedRows.length === totalItems;
   const isIndeterminate = selectedRows && selectedRows.length > 0 && !isAllSelected;
   return (
     <HeaderRow>
       {isMultiSelect && (
-        <TableHeaderCellCheckbox isChecked={isAllSelected} isIndeterminate={isIndeterminate} />
+        <TableHeaderCellCheckbox
+          isChecked={isAllSelected}
+          isIndeterminate={isIndeterminate}
+          onChange={() => toggleAllRowsSelection()}
+        />
       )}
       {children}
     </HeaderRow>

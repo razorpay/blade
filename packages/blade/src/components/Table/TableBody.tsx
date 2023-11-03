@@ -5,8 +5,9 @@ import getIn from 'lodash/get';
 import { useTableContext } from './TableContext';
 import { tableRow } from './tokens';
 import { Text } from '~components/Typography';
+import type { CheckboxProps } from '~components/Checkbox';
+import { Checkbox } from '~components/Checkbox';
 import { makeSpace } from '~utils';
-import { Checkbox, CheckboxProps } from '~components/Checkbox';
 
 type TableBodyProps = {
   children: React.ReactNode;
@@ -63,12 +64,14 @@ const TableCell = ({ children }: TableCellProps): React.ReactElement => {
 
 const TableCheckboxCell = ({
   isChecked,
+  onChange,
 }: {
   isChecked: CheckboxProps['isChecked'];
+  onChange: CheckboxProps['onChange'];
 }): React.ReactElement => {
   return (
     <TableCell>
-      <Checkbox isChecked={isChecked} />
+      <Checkbox isChecked={isChecked} onChange={onChange} />
     </TableCell>
   );
 };
@@ -92,13 +95,18 @@ const StyledRow = styled(Row)<{ isSelectable: boolean }>(({ theme, isSelectable 
 }));
 
 const TableRow = ({ children, item }: TableRowProps): React.ReactElement => {
-  const { selectionType, selectedRows } = useTableContext();
+  const { selectionType, selectedRows, toggleRowSelectionById } = useTableContext();
   const isSelectable = Boolean(selectionType);
   const isMultiSelect = selectionType === 'multiple';
   const isSelected = selectedRows?.includes(item.id);
   return (
     <StyledRow isSelectable={isSelectable} item={item}>
-      {isMultiSelect && <TableCheckboxCell isChecked={isSelected} />}
+      {isMultiSelect && (
+        <TableCheckboxCell
+          isChecked={isSelected}
+          onChange={() => toggleRowSelectionById(item.id)}
+        />
+      )}
       {children}
     </StyledRow>
   );

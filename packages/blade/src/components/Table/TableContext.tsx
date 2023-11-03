@@ -6,12 +6,18 @@ export type TableContextType = {
   selectionType?: TableProps['selectionType'];
   selectedRows?: TableNode['id'][];
   totalItems: number;
+  toggleRowSelectionById: (id: TableNode['id']) => void;
+  toggleAllRowsSelection: () => void;
 };
 
 const TableContext = React.createContext<TableContextType>({
   selectionType: undefined,
   selectedRows: undefined,
   totalItems: 0,
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  toggleRowSelectionById: () => {},
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  toggleAllRowsSelection: () => {},
 });
 const TableProvider = TableContext.Provider;
 
