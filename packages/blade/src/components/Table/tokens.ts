@@ -19,10 +19,22 @@ const tableFooter = {
 } as const;
 
 const tableRow = {
-  paddingTop: 'spacing.5',
-  paddingBottom: 'spacing.5',
-  paddingLeft: 'spacing.4',
-  paddingRight: 'spacing.4',
+  paddingTop: {
+    normal: 'spacing.5',
+    comfortable: 'spacing.6',
+  },
+  paddingBottom: {
+    normal: 'spacing.5',
+    comfortable: 'spacing.6',
+  },
+  paddingLeft: {
+    normal: 'spacing.4',
+    comfortable: 'spacing.4',
+  },
+  paddingRight: {
+    normal: 'spacing.4',
+    comfortable: 'spacing.4',
+  },
   backgroundColor: '', // TODO: Figure out
   backgroundColorHover: 'brand.gray.a50.lowContrast',
   backgroundColorSelected: 'brand.primary.300',

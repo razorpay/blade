@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import getIn from 'lodash/get';
 import { useTableContext } from './TableContext';
 import { tableRow } from './tokens';
+import type { TableProps } from './Table';
 import { Text } from '~components/Typography';
 import type { CheckboxProps } from '~components/Checkbox';
 import { Checkbox } from '~components/Checkbox';
@@ -36,12 +37,15 @@ type TableCellProps = {
   children: React.ReactNode;
 };
 
-const StyledCell = styled(Cell)<{ isSelectable: boolean }>(({ theme, isSelectable }) => ({
+const StyledCell = styled(Cell)<{
+  isSelectable: boolean;
+  cellDensity: NonNullable<TableProps['cellDensity']>;
+}>(({ theme, isSelectable, cellDensity }) => ({
   '&&&': {
-    paddingTop: makeSpace(getIn(theme, tableRow.paddingTop)),
-    paddingBottom: makeSpace(getIn(theme, tableRow.paddingBottom)),
-    paddingLeft: makeSpace(getIn(theme, tableRow.paddingLeft)),
-    paddingRight: makeSpace(getIn(theme, tableRow.paddingRight)),
+    paddingTop: makeSpace(getIn(theme, tableRow.paddingTop[cellDensity])),
+    paddingBottom: makeSpace(getIn(theme, tableRow.paddingBottom[cellDensity])),
+    paddingLeft: makeSpace(getIn(theme, tableRow.paddingLeft[cellDensity])),
+    paddingRight: makeSpace(getIn(theme, tableRow.paddingRight[cellDensity])),
     borderBottomWidth: makeSpace(getIn(theme.border.width, tableRow.borderBottomWidth)),
     borderBottomColor: getIn(theme.colors, tableRow.borderBottomColor),
     borderBottomStyle: 'solid',
@@ -53,10 +57,10 @@ const StyledCell = styled(Cell)<{ isSelectable: boolean }>(({ theme, isSelectabl
 
 const TableCell = ({ children }: TableCellProps): React.ReactElement => {
   const isChildrenString = typeof children === 'string';
-  const { selectionType } = useTableContext();
+  const { selectionType, cellDensity } = useTableContext();
   const isSelectable = Boolean(selectionType);
   return (
-    <StyledCell isSelectable={isSelectable}>
+    <StyledCell isSelectable={isSelectable} cellDensity={cellDensity}>
       {isChildrenString ? <Text size="medium">{children}</Text> : children}
     </StyledCell>
   );

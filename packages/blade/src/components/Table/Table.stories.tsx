@@ -13,6 +13,7 @@ export default {
   component: TableComponent,
   args: {
     selectionType: 'multiple',
+    cellDensity: 'normal',
   },
   argTypes: {
     ...getStyledPropsArgTypes(),

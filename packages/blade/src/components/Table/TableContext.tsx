@@ -8,6 +8,7 @@ export type TableContextType = {
   totalItems: number;
   toggleRowSelectionById: (id: TableNode['id']) => void;
   toggleAllRowsSelection: () => void;
+  cellDensity: TableProps['cellDensity'];
 };
 
 const TableContext = React.createContext<TableContextType>({
@@ -18,6 +19,7 @@ const TableContext = React.createContext<TableContextType>({
   toggleRowSelectionById: () => {},
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   toggleAllRowsSelection: () => {},
+  cellDensity: 'normal',
 });
 const TableProvider = TableContext.Provider;
 

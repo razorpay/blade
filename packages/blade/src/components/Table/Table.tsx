@@ -22,6 +22,7 @@ export type TableProps = {
   onSelectionChange?: ({ values }: { values: TableNode[] }) => void;
   isHeaderSticky?: boolean;
   isFooterSticky?: boolean;
+  cellDensity?: 'normal' | 'comfortable';
 };
 
 const rowSelectType: Record<NonNullable<TableProps['selectionType']>, SelectTypes> = {
@@ -36,6 +37,7 @@ const Table: React.FC<TableProps> = ({
   onSelectionChange,
   isHeaderSticky,
   isFooterSticky,
+  cellDensity = 'normal',
 }) => {
   const { theme } = useTheme();
   const [selectedRows, setSelectedRows] = React.useState<TableNode['id'][]>([]);
@@ -102,8 +104,16 @@ const Table: React.FC<TableProps> = ({
       totalItems,
       toggleRowSelectionById,
       toggleAllRowsSelection,
+      cellDensity,
     }),
-    [selectionType, selectedRows, totalItems, toggleRowSelectionById, toggleAllRowsSelection],
+    [
+      selectionType,
+      selectedRows,
+      totalItems,
+      toggleRowSelectionById,
+      toggleAllRowsSelection,
+      cellDensity,
+    ],
   );
 
   return (
