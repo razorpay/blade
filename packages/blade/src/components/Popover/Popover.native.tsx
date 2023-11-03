@@ -1,11 +1,13 @@
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
 import { arrow, shift, useFloating, flip, offset } from '@floating-ui/react-native';
 import React from 'react';
+import type { LayoutRectangle } from 'react-native';
 import { Modal, TouchableOpacity } from 'react-native';
 import { PopoverContent } from './PopoverContent';
 import type { PopoverProps } from './types';
 import { ARROW_HEIGHT, ARROW_WIDTH, popoverZIndex } from './constants';
 import { PopoverContext } from './PopoverContext';
+import { TourMask } from './TourMask';
 import { useTheme } from '~components/BladeProvider';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { mergeProps } from '~utils/mergeProps';
@@ -31,6 +33,12 @@ const Popover = ({
     value: isOpen,
     defaultValue: defaultIsOpen,
     onChange: (isOpen) => onOpenChange?.({ isOpen }),
+  });
+  const [size, setSize] = React.useState<LayoutRectangle>({
+    height: 0,
+    width: 0,
+    x: 0,
+    y: 0,
   });
 
   const gap = theme.spacing[2];
@@ -87,6 +95,15 @@ const Popover = ({
     };
   }, [handleClose]);
 
+  React.useLayoutEffect(() => {
+    if (!refs.reference.current) return;
+    setTimeout(() => {
+      refs.reference.current.measureInWindow((x, y, width, height) => {
+        setSize({ x, y, width, height });
+      });
+    });
+  }, [refs.reference, controllableIsOpen]);
+
   return (
     <PopoverContext.Provider value={contextValue}>
       {/* Cloning the trigger children to enhance it with ref and event handler */}
@@ -105,7 +122,7 @@ const Popover = ({
         visible={Boolean(isVisible)}
         {...metaAttribute({ testID: 'popover-modal' })}
       >
-        <TouchableOpacity
+        {/* <TouchableOpacity
           style={{
             position: 'absolute',
             top: 0,
@@ -117,7 +134,8 @@ const Popover = ({
           activeOpacity={1}
           testID="popover-modal-backdrop"
           {...metaAttribute({ name: MetaConstants.Popover })}
-        />
+        /> */}
+        <TourMask size={size} />
         <PopoverContent
           titleLeading={titleLeading}
           title={title}

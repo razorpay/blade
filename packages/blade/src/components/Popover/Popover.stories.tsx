@@ -1,10 +1,15 @@
+/* eslint-disable consistent-return */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import type { ComponentStory, Meta } from '@storybook/react';
 import React from 'react';
 import { Title } from '@storybook/addon-docs';
 import { action } from '@storybook/addon-actions';
+import type { LayoutRectangle } from 'react-native';
+import { Modal } from 'react-native';
 import type { PopoverTriggerProps } from './types';
+import { TourMask } from './TourMask';
 import type { PopoverProps } from '.';
 import { PopoverInteractiveWrapper, Popover } from '.';
 import { Button } from '~components/Button';
@@ -27,6 +32,7 @@ import { isReactNative } from '~utils';
 import { Alert } from '~components/Alert';
 import BaseBox from '~components/Box/BaseBox';
 import { PopoverVsTooltip } from '~utils/storybook/PopoverVsTooltip';
+import { Accordion, AccordionItem } from '~components/Accordion';
 
 const Page = (): React.ReactElement => {
   return (
@@ -154,17 +160,245 @@ const FooterContent = React.forwardRef<HTMLButtonElement, { onClick?: () => void
   },
 );
 
-const PopoverTemplate: ComponentStory<typeof Popover> = (args) => {
-  const LeadingIcon = iconMap[args.titleLeading as string]!;
+const TourContext = React.createContext({
+  attachStep: (id: string, ref: any) => {},
+  removeStep: (id: string, ref: any) => {},
+});
+
+const TourStep = ({ id, children }: { id: string; children: React.ReactNode }) => {
+  const ref = React.useRef(null);
+  const { attachStep, removeStep } = React.useContext(TourContext);
+
+  React.useEffect(() => {
+    if (!ref) return;
+    attachStep(id, ref);
+
+    return () => {
+      removeStep(id, ref);
+    };
+  }, [ref, attachStep, id, removeStep]);
+
+  const child = children as any;
+  return React.cloneElement(child, { ...child.props, ref });
+};
+
+const steps = [
+  {
+    id: 'step-1',
+    content: 'Step 1',
+    placement: 'bottom',
+  },
+  {
+    id: 'step-2',
+    content: 'Step 2',
+    placement: 'bottom',
+  },
+  {
+    id: 'some-other-step',
+    content: 'Step 3',
+    placement: 'bottom',
+  },
+];
+
+const TourPoc = () => {
+  const [refIdMap, setRefIdMap] = React.useState(new Map<string, React.RefObject<any>>());
+  const [activeStep, setActiveStep] = React.useState(-1);
+  const [size, setSize] = React.useState<LayoutRectangle>({
+    height: 0,
+    width: 0,
+    x: 0,
+    y: 0,
+  });
+
+  const next = () => {
+    setActiveStep((prev) => {
+      if (prev === steps.length - 1) return prev;
+      return prev + 1;
+    });
+  };
+
+  const prev = () => {
+    setActiveStep((prev) => {
+      if (prev === 0) return prev;
+      return prev - 1;
+    });
+  };
+
+  const attachStep = React.useCallback((id: string, ref: React.RefObject<any>) => {
+    if (!ref) return;
+    setRefIdMap((prev) => {
+      return new Map(prev).set(id, ref);
+    });
+  }, []);
+
+  const removeStep = React.useCallback((id: string) => {
+    setRefIdMap((prev) => {
+      const newMap = new Map(prev);
+      newMap.delete(id);
+      return newMap;
+    });
+  }, []);
+
+  React.useLayoutEffect(() => {
+    if (activeStep === -1) return;
+    const ref = refIdMap.get(steps[activeStep]?.id);
+    if (!ref) return;
+    if (!ref.current) return;
+
+    setTimeout(() => {
+      // @ts-expect-error
+      ref.current.measureInWindow((x, y, width, height) => {
+        setSize({ x, y, width, height });
+      });
+    });
+  }, [activeStep, refIdMap]);
+
   return (
-    <Center>
-      <Popover
-        {...args}
-        titleLeading={<LeadingIcon color="surface.text.normal.lowContrast" size="medium" />}
+    <TourContext.Provider value={{ attachStep, removeStep }}>
+      <Button variant="tertiary" marginBottom="spacing.5" onClick={() => setActiveStep(0)}>
+        Start Tour
+      </Button>
+
+      <Box display="flex" gap="spacing.5">
+        <TourStep id="step-1">
+          <Button>Step 1</Button>
+        </TourStep>
+        <TourStep id="step-2">
+          <Box backgroundColor="brand.primary.600" paddingY="spacing.11" padding="spacing.5">
+            <Text color="surface.text.normal.highContrast">Step 2</Text>
+          </Box>
+        </TourStep>
+        <TourStep id="some-other-step">
+          <Button>Step 3</Button>
+        </TourStep>
+      </Box>
+
+      <Modal
+        style={{ pointerEvents: 'none' }}
+        collapsable={false}
+        transparent
+        visible={activeStep !== -1}
       >
-        <Button>View Settlement</Button>
-      </Popover>
-    </Center>
+        <TourMask size={size} />
+
+        <Box
+          padding="spacing.5"
+          top="300px"
+          backgroundColor="surface.background.level1.lowContrast"
+          display="flex"
+          gap="spacing.5"
+          marginTop="spacing.11"
+        >
+          <Button
+            variant="secondary"
+            onClick={() => {
+              prev();
+            }}
+          >
+            Prev
+          </Button>
+          {activeStep + 1 == refIdMap.size ? (
+            <Button
+              variant="secondary"
+              onClick={() => {
+                setActiveStep(-1);
+              }}
+            >
+              Done
+            </Button>
+          ) : (
+            <Button
+              variant="secondary"
+              onClick={() => {
+                next();
+              }}
+            >
+              Next
+            </Button>
+          )}
+
+          <Text>
+            {activeStep + 1} / {refIdMap.size}
+          </Text>
+        </Box>
+      </Modal>
+    </TourContext.Provider>
+  );
+};
+
+const PopoverTemplate: ComponentStory<typeof Popover> = () => {
+  return <TourPoc />;
+  return (
+    <Box width="100%" height="100%">
+      <Button
+        onClick={() => {
+          setActiveStep(1);
+        }}
+      >
+        1
+      </Button>
+      <Box
+        padding="spacing.5"
+        width="300px"
+        height="100vh"
+        display="flex"
+        flexDirection="column"
+        gap="spacing.4"
+        backgroundColor="surface.background.level2.lowContrast"
+      >
+        <Popover
+          placement="bottom"
+          isOpen={activeStep == 0}
+          onOpenChange={handleClose}
+          content={<Text>1st Popover</Text>}
+          footer={
+            <Box display="flex" gap="spacing.2">
+              <Button
+                ref={attachTourStep('step-1')}
+                onClick={() => {
+                  setActiveStep(1);
+                }}
+              >
+                Next
+              </Button>
+            </Box>
+          }
+        >
+          <Box padding="spacing.4" backgroundColor="surface.background.level1.lowContrast">
+            <Text>Click me 1</Text>
+          </Box>
+        </Popover>
+        <Popover
+          placement="bottom"
+          isOpen={activeStep == 1}
+          onOpenChange={handleClose}
+          content={<Text>2nd Popover</Text>}
+          footer={
+            <Box display="flex" gap="spacing.2">
+              <Button
+                onClick={() => {
+                  setActiveStep(0);
+                }}
+              >
+                Prev
+              </Button>
+              <Button
+                onClick={() => {
+                  setActiveStep(-1);
+                }}
+              >
+                Done
+              </Button>
+            </Box>
+          }
+        >
+          <Box padding="spacing.4" backgroundColor="surface.background.level1.lowContrast">
+            <Text>Click me 2</Text>
+          </Box>
+        </Popover>
+      </Box>
+      {/* <TourMask /> */}
+    </Box>
   );
 };
 
