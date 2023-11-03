@@ -20,6 +20,8 @@ export type TableProps = {
   data: { nodes: TableNode[] };
   selectionType?: 'single' | 'multiple';
   onSelectionChange?: ({ values }: { values: TableNode[] }) => void;
+  isHeaderSticky?: boolean;
+  isFooterSticky?: boolean;
 };
 
 const rowSelectType: Record<NonNullable<TableProps['selectionType']>, SelectTypes> = {
@@ -27,7 +29,14 @@ const rowSelectType: Record<NonNullable<TableProps['selectionType']>, SelectType
   multiple: SelectTypes.MultiSelect,
 };
 
-const Table: React.FC<TableProps> = ({ children, data, selectionType, onSelectionChange }) => {
+const Table: React.FC<TableProps> = ({
+  children,
+  data,
+  selectionType,
+  onSelectionChange,
+  isHeaderSticky,
+  isFooterSticky,
+}) => {
   const { theme } = useTheme();
   const [selectedRows, setSelectedRows] = React.useState<TableNode['id'][]>([]);
   const [totalItems, setTotalItems] = React.useState(data.nodes.length || 0);
@@ -35,11 +44,18 @@ const Table: React.FC<TableProps> = ({ children, data, selectionType, onSelectio
   // TODO: Dynamically set the grid-template-columns based on the number of columns
   const tableTheme = useTableTheme({
     Table: `
+    height:${isFooterSticky ? `100%` : undefined};
     border: ${makeBorderSize(theme.border.width.thin)} solid ${
       theme.colors.surface.border.normal.lowContrast
     };
     background-color: ${theme.colors.surface.background.level2.lowContrast};
     --data-table-library_grid-template-columns:  min-content repeat(4,minmax(0px, 1fr)) !important; 
+    `,
+    Footer: `
+    .tr-footer th {
+      position: ${isFooterSticky ? `sticky` : undefined};
+      bottom: ${isFooterSticky ? `0` : undefined};
+    };
     `,
   });
 
@@ -92,7 +108,12 @@ const Table: React.FC<TableProps> = ({ children, data, selectionType, onSelectio
 
   return (
     <TableProvider value={tableContext}>
-      <ReactTable data={data} theme={tableTheme} select={selectionType ? rowSelectConfig : null}>
+      <ReactTable
+        layout={{ fixedHeader: isHeaderSticky, horizontalScroll: true }}
+        data={data}
+        theme={tableTheme}
+        select={selectionType ? rowSelectConfig : null}
+      >
         {children}
       </ReactTable>
     </TableProvider>

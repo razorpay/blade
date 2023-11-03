@@ -3,7 +3,7 @@ const tableHeader = {
   paddingBottom: 'spacing.5',
   paddingLeft: 'spacing.4',
   paddingRight: 'spacing.4',
-  backgroundColor: 'brand.gray.a50.lowContrast',
+  backgroundColor: 'brand.gray.a50.lowContrast', // TODO: Figure out non-opaque color
   borderBottomAndTopWidth: 'thin',
   borderBottomAndTopColor: 'surface.border.normal.lowContrast',
 } as const;
@@ -13,7 +13,7 @@ const tableFooter = {
   paddingBottom: 'spacing.5',
   paddingLeft: 'spacing.4',
   paddingRight: 'spacing.4',
-  backgroundColor: 'brand.gray.a50.lowContrast',
+  backgroundColor: 'brand.gray.a50.lowContrast', // TODO: Figure out non-opaque color
   borderBottomAndTopWidth: 'thin',
   borderBottomAndTopColor: 'surface.border.normal.lowContrast',
 } as const;
