@@ -46,7 +46,7 @@ const tableRow = {
 } as const;
 
 const tableToolbar = {
-  backgroundColor: 'surface.background.level2.lowContrast',
+  backgroundColor: '',
   backgroundColorSelected: 'brand.primary.300',
   backgroundColorMotionEasing: 'easing.standard.effective',
   backgroundColorMotionDuration: 'duration.quick',
