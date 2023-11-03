@@ -41,6 +41,15 @@ const tableRow = {
   backgroundColorSelectedHover: 'brand.primary.400',
   borderBottomWidth: 'thin',
   borderBottomColor: 'surface.border.normal.lowContrast',
+  backgroundColorMotionEasing: 'easing.standard.effective',
+  backgroundColorMotionDuration: 'duration.quick',
 } as const;
 
-export { tableHeader, tableFooter, tableRow };
+const tableToolbar = {
+  backgroundColor: 'surface.background.level2.lowContrast',
+  backgroundColorSelected: 'brand.primary.300',
+  backgroundColorMotionEasing: 'easing.standard.effective',
+  backgroundColorMotionDuration: 'duration.quick',
+};
+
+export { tableHeader, tableFooter, tableRow, tableToolbar };

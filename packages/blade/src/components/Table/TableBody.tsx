@@ -8,7 +8,7 @@ import type { TableProps } from './Table';
 import { Text } from '~components/Typography';
 import type { CheckboxProps } from '~components/Checkbox';
 import { Checkbox } from '~components/Checkbox';
-import { makeSpace } from '~utils';
+import { makeMotionTime, makeSpace } from '~utils';
 
 type TableBodyProps = {
   children: React.ReactNode;
@@ -18,9 +18,15 @@ const StyledBody = styled(Body)(({ theme }) => ({
   '&&&': {
     border: 'none',
     '& .row-select-single-selected, .row-select-selected': {
+      transition: `background-color ${makeMotionTime(
+        getIn(theme.motion, tableRow.backgroundColorMotionDuration),
+      )} ${getIn(theme.motion, tableRow.backgroundColorMotionEasing)}`,
       backgroundColor: getIn(theme.colors, tableRow.backgroundColorSelected),
     },
     '& .row-select-single-selected:hover, .row-select-selected:hover': {
+      transition: `background-color ${makeMotionTime(
+        getIn(theme.motion, tableRow.backgroundColorMotionDuration),
+      )} ${getIn(theme.motion, tableRow.backgroundColorMotionEasing)}`,
       backgroundColor: getIn(theme.colors, tableRow.backgroundColorSelectedHover),
     },
     '& tr:last-child td': {
@@ -91,6 +97,9 @@ const StyledRow = styled(Row)<{ isSelectable: boolean }>(({ theme, isSelectable 
   '&&&': {
     '&:hover': isSelectable
       ? {
+          transition: `background-color ${makeMotionTime(
+            getIn(theme.motion, tableRow.backgroundColorMotionDuration),
+          )} ${getIn(theme.motion, tableRow.backgroundColorMotionEasing)}`,
           backgroundColor: getIn(theme.colors, tableRow.backgroundColorHover),
           cursor: 'pointer',
         }

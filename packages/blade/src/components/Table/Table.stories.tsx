@@ -4,9 +4,11 @@ import { Table as TableComponent } from './Table';
 import { TableHeader, TableHeaderRow, TableHeaderCell } from './TableHeader';
 import { TableBody, TableRow, TableCell } from './TableBody';
 import { TableFooter, TableFooterRow, TableFooterCell } from './TableFooter';
+import { TableToolbarActions, TableToolbar } from './TableToolbar';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Box } from '~components/Box';
+import { Button } from '~components/Button';
 
 export default {
   title: 'Components/Table',
@@ -103,43 +105,47 @@ const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
         data={data}
         onSelectionChange={({ values }) => console.log('Selected Rows:', values)}
       >
-        {(tableList) => (
-          <>
-            <TableHeader>
-              <TableHeaderRow>
-                <TableHeaderCell>Task</TableHeaderCell>
-                <TableHeaderCell>Deadline</TableHeaderCell>
-                <TableHeaderCell>Type</TableHeaderCell>
-                <TableHeaderCell>Complete</TableHeaderCell>
-              </TableHeaderRow>
-            </TableHeader>
-            <TableBody>
-              {tableList.map((tableItem, index) => (
-                <TableRow key={index} item={tableItem}>
-                  <TableCell>{tableItem.name}</TableCell>
-                  <TableCell>
-                    {tableItem.deadline.toLocaleDateString('en-US', {
-                      year: 'numeric',
-                      month: '2-digit',
-                      day: '2-digit',
-                    })}
-                  </TableCell>
-                  <TableCell>{tableItem.type}</TableCell>
-                  <TableCell>{tableItem.isComplete.toString()}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-            <TableFooter>
-              <TableFooterRow>
-                {args.selectionType === 'multiple' && <TableFooterCell>-</TableFooterCell>}
-                <TableFooterCell>-</TableFooterCell>
-                <TableFooterCell>-</TableFooterCell>
-                <TableFooterCell>-</TableFooterCell>
-                <TableFooterCell>-</TableFooterCell>
-              </TableFooterRow>
-            </TableFooter>
-          </>
-        )}
+        <TableToolbar>
+          <TableToolbarActions>
+            <Button variant="secondary" marginRight="spacing.2">
+              Export
+            </Button>
+            <Button>Payout</Button>
+          </TableToolbarActions>
+        </TableToolbar>
+        <TableHeader>
+          <TableHeaderRow>
+            <TableHeaderCell>Task</TableHeaderCell>
+            <TableHeaderCell>Deadline</TableHeaderCell>
+            <TableHeaderCell>Type</TableHeaderCell>
+            <TableHeaderCell>Complete</TableHeaderCell>
+          </TableHeaderRow>
+        </TableHeader>
+        <TableBody>
+          {data.nodes.map((tableItem, index) => (
+            <TableRow key={index} item={tableItem}>
+              <TableCell>{tableItem.name}</TableCell>
+              <TableCell>
+                {tableItem.deadline.toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: '2-digit',
+                  day: '2-digit',
+                })}
+              </TableCell>
+              <TableCell>{tableItem.type}</TableCell>
+              <TableCell>{tableItem.isComplete.toString()}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+        <TableFooter>
+          <TableFooterRow>
+            {args.selectionType === 'multiple' && <TableFooterCell>-</TableFooterCell>}
+            <TableFooterCell>-</TableFooterCell>
+            <TableFooterCell>-</TableFooterCell>
+            <TableFooterCell>-</TableFooterCell>
+            <TableFooterCell>-</TableFooterCell>
+          </TableFooterRow>
+        </TableFooter>
       </TableComponent>
     </Box>
   );

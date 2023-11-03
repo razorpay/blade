@@ -8,6 +8,10 @@ import { SelectTypes, useRowSelect } from '@table-library/react-table-library/se
 import type { TableContextType } from './TableContext';
 import { TableProvider } from './TableContext';
 import { makeBorderSize, useTheme } from '~utils';
+import { getComponentId } from '~utils/isValidAllowedChildren';
+import { ComponentIds } from './componentIds';
+import { get } from 'react-native/Libraries/TurboModule/TurboModuleRegistry';
+import BaseBox from '~components/Box/BaseBox';
 
 type TableNode = {
   id: Identifier;
@@ -28,6 +32,24 @@ export type TableProps = {
 const rowSelectType: Record<NonNullable<TableProps['selectionType']>, SelectTypes> = {
   single: SelectTypes.SingleSelect,
   multiple: SelectTypes.MultiSelect,
+};
+
+const filterToolbarFromChildren = (
+  children: React.ReactNode,
+): {
+  filteredChildren: (React.ReactChild | React.ReactFragment | React.ReactPortal)[];
+  toolbarComponent: (React.ReactChild | React.ReactFragment | React.ReactPortal)[];
+} => {
+  const filteredChildren = filter(
+    React.Children.toArray(children),
+    (child) => getComponentId(child) !== ComponentIds.TableToolbar,
+  );
+  const toolbarComponent = filter(
+    React.Children.toArray(children),
+    (child) => getComponentId(child) === ComponentIds.TableToolbar,
+  );
+
+  return { filteredChildren, toolbarComponent };
 };
 
 const Table: React.FC<TableProps> = ({
@@ -116,16 +138,21 @@ const Table: React.FC<TableProps> = ({
     ],
   );
 
+  const { filteredChildren, toolbarComponent } = filterToolbarFromChildren(children);
+
   return (
     <TableProvider value={tableContext}>
-      <ReactTable
-        layout={{ fixedHeader: isHeaderSticky, horizontalScroll: true }}
-        data={data}
-        theme={tableTheme}
-        select={selectionType ? rowSelectConfig : null}
-      >
-        {children}
-      </ReactTable>
+      <BaseBox>
+        {toolbarComponent}
+        <ReactTable
+          layout={{ fixedHeader: isHeaderSticky, horizontalScroll: true }}
+          data={data}
+          theme={tableTheme}
+          select={selectionType ? rowSelectConfig : null}
+        >
+          {() => filteredChildren}
+        </ReactTable>
+      </BaseBox>
     </TableProvider>
   );
 };
