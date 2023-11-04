@@ -124,7 +124,8 @@
     "patch-package": "7.0.0",
     "tinycolor2": "1.6.0",
     "react-native-tab-view": "3.5.2",
-    "react-native-pager-view": "6.2.1"
+    "react-native-pager-view": "6.2.1",
+    "i18nify": "file:/../../../i18nify"
   },
   "devDependencies": {
     "chromatic": "6.22.0",

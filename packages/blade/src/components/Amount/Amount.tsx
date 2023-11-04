@@ -4,15 +4,16 @@ import type { Currency } from './amountTokens';
 import {
   amountFontSizes,
   getCurrencyAbbreviations,
-  currencyPrefixMapping,
+  // currencyPrefixMapping,
   affixFontSizes,
   amountLineHeights,
 } from './amountTokens';
+import { formatAmountByParts, getCurrencySymbol } from './i18nify-utils';
 import { BaseText } from '~components/Typography/BaseText';
 import type { Feedback } from '~tokens/theme/theme';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import BaseBox from '~components/Box/BaseBox';
-import type { TestID } from '~utils/types';
+import type { TestID, Locale } from '~utils/types';
 import { getPlatformType } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
@@ -74,7 +75,8 @@ type AmountProps = {
    * @default 'INR'
    * */
   currency?: Currency;
-} & TestID &
+} & Locale &
+  TestID &
   StyledPropsBlade;
 
 type ColorProps = {
@@ -98,23 +100,31 @@ interface AmountValue extends Omit<AmountProps, 'value'> {
   amountValueColor: BaseTextProps['color'];
   value: string;
   size: Exclude<AmountProps['size'], undefined>;
+  currency: Currency;
 }
 
 const AmountValue = ({
   value,
+  locale,
   size,
   amountValueColor,
   isAffixSubtle,
   suffix,
   affixColor,
+  currency,
 }: AmountValue): ReactElement => {
   const affixFontWeight = isAffixSubtle ? 'regular' : 'bold';
   const isReactNative = getPlatformType() === 'react-native';
   const affixFontSize = isAffixSubtle ? affixFontSizes[size] : amountFontSizes[size];
   const valueForWeight = size.includes('bold') || size.startsWith('title') ? 'bold' : 'regular';
   if (suffix === 'decimals' && isAffixSubtle) {
-    const integer = value.split('.')[0];
-    const decimal = value.split('.')[1];
+    const { integerValue: integer, decimalValue: decimal, separator } = formatAmountByParts(
+      currency,
+      value,
+      locale,
+    );
+    // const integer = value.split('.')[0];
+    // const decimal = value.split('.')[1];
 
     // Native does not support alignItems of Text inside a div, insted we need to wrap is in a Text
     const AmountWrapper = getPlatformType() === 'react-native' ? BaseText : React.Fragment;
@@ -128,7 +138,8 @@ const AmountValue = ({
           color={amountValueColor}
           as={isReactNative ? undefined : 'span'}
         >
-          {integer}.
+          {integer}
+          {separator}
         </BaseText>
         <BaseText
           marginLeft="spacing.1"
@@ -223,13 +234,14 @@ const getCurrencyWeight = (
 
 const _Amount = ({
   value,
+  locale = 'de-DE',
   suffix = 'decimals',
   size = 'body-medium',
   isAffixSubtle = true,
   intent,
   prefix = 'currency-symbol',
   testID,
-  currency = 'INR',
+  currency = 'EUR',
   ...styledProps
 }: AmountProps): ReactElement => {
   if (__DEV__) {
@@ -248,8 +260,10 @@ const _Amount = ({
     }
   }
 
-  const currencyPrefix = currencyPrefixMapping[currency][prefix];
-  const renderedValue = formatAmountWithSuffix({ suffix, value, currency });
+  // const currencyPrefix = currencyPrefixMapping[currency][prefix];
+  const currencyPrefix = getCurrencySymbol(currency);
+  const { symbolAtFirst } = formatAmountByParts(currency, value, locale);
+  // const renderedValue = formatAmountWithSuffix({ suffix, value, currency });
   const { amountValueColor, affixColor } = getTextColorProps({
     intent,
   });
@@ -270,23 +284,40 @@ const _Amount = ({
         alignItems="baseline"
         flexDirection="row"
       >
-        <BaseText
-          marginRight="spacing.1"
-          fontWeight={currencyWeight}
-          fontSize={currencyFontSize}
-          color={currencyColor}
-          as={isReactNative ? undefined : 'span'}
-        >
-          {currencyPrefix}
-        </BaseText>
+        {symbolAtFirst && (
+          <BaseText
+            marginRight="spacing.1"
+            fontWeight={currencyWeight}
+            fontSize={currencyFontSize}
+            color={currencyColor}
+            as={isReactNative ? undefined : 'span'}
+          >
+            {currencyPrefix}
+          </BaseText>
+        )}
+
         <AmountValue
-          value={renderedValue}
+          value={value.toString()}
           amountValueColor={amountValueColor}
           size={size}
           isAffixSubtle={isAffixSubtle}
           suffix={suffix}
           affixColor={affixColor}
+          locale={locale}
+          currency={currency}
         />
+
+        {!symbolAtFirst && (
+          <BaseText
+            marginRight="spacing.1"
+            fontWeight={currencyWeight}
+            fontSize={currencyFontSize}
+            color={currencyColor}
+            as={isReactNative ? undefined : 'span'}
+          >
+            {currencyPrefix}
+          </BaseText>
+        )}
       </BaseBox>
     </BaseBox>
   );

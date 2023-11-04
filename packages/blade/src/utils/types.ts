@@ -89,6 +89,10 @@ type TestID = {
   testID?: string;
 };
 
+type Locale = {
+  locale?: string;
+};
+
 /**
  * Similar to `Pick` except this returns `never` when value doesn't exist (native `Pick` returns `unknown`).
  *
@@ -139,6 +143,7 @@ export type {
   StringChildrenType,
   StringWithAutocomplete,
   TestID,
+  Locale,
   PickIfExist,
   PickCSSByPlatform,
   BladeElementRef,
