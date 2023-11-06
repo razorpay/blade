@@ -8,7 +8,7 @@ The spotlight popover component is used to provide context as well as enable use
 - [Features](#features)
 - [API](#api)
   - [`Tour` API](#tour-api)
-  - [`TourStep` API (RN only)](#tourstep-api-rn-only)
+  - [`TourStep` API](#tourstep-api)
 - [Usage](#usage)
 - [Open Questions And Technical Challenges](#open-questions-and-technical-challenges)
 - [React Native Specifics](#react-native-specifics)
@@ -33,7 +33,7 @@ The spotlight popover component is used to provide context as well as enable use
 ## Features
 
 - [x] **Tour:** A guided tour with multiple steps
-- [x] **Mask:** Mask the rest of the page
+- [x] **Masking:** Mask the rest of the page except the highlighted element.
 
 ## API
 
@@ -103,20 +103,22 @@ type TourProps = {
 }
 ```
 
-### `TourStep` API (RN only)
+### `TourStep` API
 
-TourStep is a `react-native` only enhancer component, which is used to wrap the element that needs to be highlighted with a specific unique identifier.
+TourStep is an enhancer component which is used to wrap the element that needs to be highlighted with a specific unique identifier.
 
-This component is needed because in react-native there is no `id` prop or `getElementById` platform API like web which can be used to simply query the element and highlight it.
+This component is needed because in react-native there is no `id` prop or `getElementById` platform API, but to keep the API consistent between web & native, we will also expose this component for web.
+
+> Note: that on web, this component doesn't attach an `id` to the DOM element, instead it uses `ref` to collect the DOM element and save it to the state inside the `Tour` component, See below [discussions](#react-native-specifics) to know more about this approach.
 
 ```jsx
 type TourStepProps = {
   /**
-   * Unique identifier for the tour step
+   * Unique identifier/name for the tour step
    *
-   * This should be the same as the `id` prop of the element inside the `steps` array of the `Tour` component
+   * This should be the same as the `name` prop of the element inside the `steps` array of the `Tour` component
    */
-  id: string
+  name: string
   children: React.ReactNode;
 };
 ```
@@ -240,6 +242,14 @@ const DashboardPage = () => {
 };
 ```
 
+------
+------
+------
+
+> NOTE: The below sections are discussions, decisions & challenges we faced while designing the API for the `Tour` component.
+> If you are interested in diving deeper into the rabbit hole, you can read the below sections, or else you can skip them.
+
+
 ## Open Questions And Technical Challenges
 
 ## React Native Specifics
@@ -250,7 +260,7 @@ On react-native there is 2 differences in the API compared to web:
 2. `Tour` component needs to wrap the whole app
 
 **1. `TourStep` Component is needed:**
-   
+
 As highlighted earlier in the [API](#api) section, the `TourStep` component is a `react-native` only enhancer component, which is used to wrap the element that needs to be highlighted with a specific unique identifier.
 
 Another thing to note is that, the wrapped component needs to expose it's `ref` so that the `TourStep` component can collect the `ref` and save it to the state inside the `Tour` component.
@@ -310,7 +320,7 @@ const TourStep = ({ id, children }) => {
 };
 ```
 
-There's also a downside to this approach on web: 
+There's also a downside to this approach on web:
 
 - Imagine if consumer wraps the `TourStep` with an `id` to a component which doesn't even accept the `id` prop, consumer won't get any type errors and `id` won't get passed to the DOM.
 
@@ -325,19 +335,29 @@ There's also a downside to this approach on web:
 // ^ Property 'id' does not exist on type
 ```
 
-Conclusion:
+**Conclusion:**
 
-- Discuss and get to a conclusion on the API separation between web & native.
+After discussing about the API differences between RN & Web,
 
-My Opinion:
+Kamlesh suggested few ways to directly use the `ref` and letting consumer attach the ref to the components, but that had few issues concerning complexity & overhead for consumers.
 
-- Given that on web we can simply use the `id` prop to query the element, imo the TourStep component largely becomes useless on web, so we don't need to expose this component on web.
+And on the web, there was a problem that even though simply adding `id` could work, not all our components had `id` prop. That means consumers will have to wrap everything with a `Box`.
+
+- We decided to not go with the `id` approach on web, and instead go with the same implementation as the [react-native POC](https://github.com/razorpay/blade/compare/master...anu/tour-rn-poc#diff-4fe985a90d9ce955346ffc61e152a98272f4d02e044111d30241eb63c8fcf1b1R168-R183), where we keep track of refs of the elements via the `TourStep` component.
+  - Pros:
+    - API is now same on both RN & Web
+    - No need to wrap everything with Box, consumers can use the TourStep enhancer component.
+    - Simplified implementation, since now we don't need to maintain two types of implementation 1 for native (with refs) 1 for web (with ids).
 
 **2. Tour needs to wrap the whole app:**
 
 The `Tour` component needs to wrap the whole app, because the `TourStep` needs to collect the `ref` of the element that needs to be highlighted and save it to the state inside the `Tour` component.
 
 Check the POC implementation that we did for react-native [here](https://github.com/razorpay/blade/compare/master...anu/tour-rn-poc#diff-4fe985a90d9ce955346ffc61e152a98272f4d02e044111d30241eb63c8fcf1b1R168-R183)
+
+**Conclusion:**
+
+- Now that we decided to go with the `TourStep` approach on both web & native, we will have to wrap the whole app with the `Tour` component on both web & native.
 
 ## Multiple Tour Flows
 
@@ -467,15 +487,12 @@ Trying to solve this will create a complexities, and will make the API more comp
 
 [rn-tourguide](https://github.com/xcarpentier/rn-tourguide/blob/master/src/hooks/useTourGuideController.tsx) solves this by using custom event emitters and pushes events for each `tourKey` instead of relying solely on `React.Context`
 
-Conclusion: 
+**Conclusion:**
 
-- Discuss and decide if we want to support multiple tour flows in ReactNative.
+Given the complexity of solving this, we decided that: 
 
-My Opinion:
-
-- We should not support multiple tour flows in ReactNative, because it will make the API more complex and the code will be quite complex + there might not be a lot of use cases for multiple tour flows in ReactNative.
-- While RN has challenges, web doesn't have any challenges with multiple tour flows, so we can support multiple tour flows on web and go with the simpler approach of prefixing the `id` manually.
-
+- Consumers can wrap the `<Tour />` component closer to the module they need the tour for, instead of wrapping the whole `App` in a single tour. And we will also document this on the storybook.
+- There may not be that many cases for multiple tour flows in the same page
 
 ## API Design Challenges
 
@@ -601,16 +618,85 @@ Now with all the above points, We decided that it's better if we expose a `Tour`
 
 This will also mean we can maintain an optimal consistency between web & native API. Otherwise consumers will have vastly different abstraction for web & native.
 
+## MoMs
 
-## Discussions Needed
+**Tour Component MoM**
+**Participants:** @Anurag Hazra @kamlesh @chaitanya @Saurabh
+**Date:** 6th Nov, 2023
 
-- [ ] Should we have this API difference between web & native?
-- [ ] Should we support multiple tour flows in ReactNative?
-- [ ] Should we let consumers compose their own tour flows with the `Popover` component?
-- [ ] Should we use `tourKey` or prefix the `id` manually to avoid conflicts?
-- [ ] Currently if you see for the footer, we let the consumer create their own footer, but we can also do it on our end and have a more rigid API, should we go with flexibility here or rigidity?
+**Discussion Points**
+1. Letting consumers compose their own tour flows - Giving context to kamlesh
+2. API difference between web & native
+3. ReactNative Implementation challenges 
+4. Challenges with supporting multiple tour flows
+5. Tour footer component flexibility discussion
+6. Discussed about scoping out few things
+
+**1. Letting consumers compose their own tour flows - Giving context to kamlesh**
+
+Gave context to kamlesh on the discussion that me, abinash, chaitanya & saurabh already did on the challenges & issues with letting consumers compose Popover to create flows.
+
+**2. API difference between web & native**
+
+Discussed about the API differences between RN & Web (Check the API Doc for more info)
+On react-native we cannot have id so we approached a ref based solution which meant we needed to expose a react-native specific component TourStep to consumers so we can keep track of ids & refs.
+
+Kamlesh suggested few ways to directly use the ref and letting consumer attach the ref to the components, but that had few issues concerning complexity & overhead for consumers.
+
+Even on the web, there was a problem that even though simply adding id could work, not all our components had id prop. That means consumers will have to wrap everything with a Box.
+
+**Conclusion:**
+- We decided to not go with the id approach and instead go with the same implementation as the react-native POC, where we keep track of refs of the elements via the TourStep component.
+
+**Pros:** 
+- API is now same on both RN & Web
+- No need to wrap everything with Box, consumers can use the TourStep enhancer component. 
+- Simplified implementation, since now we don't need to maintain two types of implementation 1 for native (with refs) 1 for web (with ids). 
+
+
+**3. ReactNative Implementation challenges**
+
+Discussed few ReactNative specific challenges:
+- iOS not having support for [multiple modals](https://github.com/react-native-modal/react-native-modal/issues/30) thus consumers can't compose popovers
+- Can't use `id` on RN, even if we add a custom prop there is no way to query react-native elements like we do in web via `document.getElementById`
+
+**4. Challenges with supporting multiple tour flows**
+
+Discussed issues multiple tour flows:
+
+Gave some context on the issues with multiple tour flows, and now that even on web we are going ahead with TourStep component this will also be an issue on web also, so simply prefixing the id with some string wont work.
+
+Discussed the issues with React context API.
+
+**Conclusion:**
+- Consumers can wrap the `<Tour />` component closer to the module they need the tour for, instead of wrapping the whole App in a single tour. And we will also document this on the storybook.
+- There may not be that many cases for multiple tour flows in the same page
+
+**5. Tour footer component flexibility discussion**
+
+Discussed about if we should make the Footer a prop based more rigid API or keep it as JSX which will be more flexible.
+
+Also discussed how will we pass the necessary states or functions like activeStep, totalSteps, goToNext to the Footer / Content components.
+
+**Conclusion:**
+- Decided that it's best if we keep it as flexible, since even on design there are many variants and combinations of buttons which can be a bit tricky to do with a more rigid prop based API
+
+
+**6. Discussed about scoping out few things**
+
+Also discussed if we can cut scope for now, since I'm going OOO from 11th, it won't be possible to finish both web & native, reviews, re-iteration, tests, storybook, docs etc.
+
+**Conclusion:**
+- We are scoping out RN implementation for now
+- We will try to be a bit proactive and do early reviews of web implementation and see if we can atleast finalise major things before Friday. 
+
 
 ## References
 
+Our POCs: 
+- [Tour Web POC](https://github.com/razorpay/blade/compare/master...anu/tour-poc#diff-4fe985a90d9ce955346ffc61e152a98272f4d02e044111d30241eb63c8fcf1b1R198)
+- [Tour RN POC](https://github.com/razorpay/blade/compare/master...anu/tour-rn-poc#diff-4fe985a90d9ce955346ffc61e152a98272f4d02e044111d30241eb63c8fcf1b1R203)
+
+- Dashboard's [Tour](https://github.com/razorpay/dashboard/blob/44a954660b0d851cd5fedf48b44d85731e5c48ea/web/js/merchantLA/containers/MerchantTour/index.js) component
 - https://github.com/stackbuilders/react-native-spotlight-tour
 - https://github.com/elrumordelaluz/reactour
