@@ -85,8 +85,6 @@ type TourProps = {
   isOpen: boolean;
   /**
    * Callback when the tour is opened or closed
-   *
-   * This is also called when the tour is finished.
    */
   onOpenChange: ({ isOpen: boolean }) => void;
   /**
