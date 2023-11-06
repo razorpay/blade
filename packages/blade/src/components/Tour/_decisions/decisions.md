@@ -10,6 +10,7 @@ The spotlight popover component is used to provide context as well as enable use
   - [`Tour` API](#tour-api)
   - [`TourStep` API](#tourstep-api)
 - [Usage](#usage)
+- [Motion](#motion)
 - [Open Questions And Technical Challenges](#open-questions-and-technical-challenges)
 - [React Native Specifics](#react-native-specifics)
 - [Multiple Tour Flows](#multiple-tour-flows)
@@ -23,7 +24,7 @@ The spotlight popover component is used to provide context as well as enable use
     - [3. Segmentation / Lack of control](#3-segmentation--lack-of-control)
     - [4. Not possible to maintain a consistent API / Implementation between web \& native](#4-not-possible-to-maintain-a-consistent-api--implementation-between-web--native)
     - [Conclusion](#conclusion)
-- [Discussions Needed](#discussions-needed)
+- [MoMs](#moms)
 - [References](#references)
 
 ## Design
@@ -45,15 +46,15 @@ type Step = {
   /**
    * Unique identifier for the tour step
    */
-  id: string;
+  name: string;
   /**
    * Content of the Popover
    */
-  content: ({ next, previous, activeStep, totalSteps }) => React.ReactNode;
+  content: ({ gotToNext, goToPrev, stopTour, activeStep, totalSteps }) => React.ReactNode;
   /**
    * Footer content
    */
-  footer: ({ next, previous, activeStep, totalSteps }) => React.ReactNode;
+  footer?: ({ gotToNext, goToPrev, stopTour, activeStep, totalSteps }) => React.ReactNode;
   /**
    * Popover title
    */
@@ -89,7 +90,7 @@ type TourProps = {
    */
   onOpenChange: ({ isOpen: boolean }) => void;
   /**
-   * Callback which fires when the tour is has reached the last step.
+   * Callback which fires when the tour has reached the last step.
    */
   onFinish: () => void;
   /**
@@ -129,7 +130,7 @@ type TourStepProps = {
 import { Tour } from '@razorpay/blade/components';
 import type { TourSteps } from '@razorpay/blade/components';
 
-const Footer = ({ next, previous, stop, activeStep, totalStep }) => {
+const Footer = ({ gotToNext, goToPrev, stopTour, activeStep, totalStep }) => {
   const isLast = activeStep === totalStep;
   const isFirst = activeStep === 0;
   return (
@@ -137,40 +138,40 @@ const Footer = ({ next, previous, stop, activeStep, totalStep }) => {
       <Text>
         {activeStep} / {totalStep}
       </Text>
-      {!isFirst && <Button onPress={next}>Prev</Button>}
-      {isLast ? <Button onPress={stop}>Done</Button> : <Button onPress={next}>Next</Button>}
+      {!isFirst && <Button onClick={gotToNext}>Prev</Button>}
+      {isLast ? <Button onClick={stopTour}>Done</Button> : <Button onClick={goToPrev}>Next</Button>}
     </Box>
   );
 };
 
 const steps: TourSteps = [
   {
-    id: 'step-1',
+    name: 'step-1',
     title: 'Step 1',
-    content: ({ next, previous, activeStep }) => (
+    content: ({ activeStep }) => (
       <Box>
-        <Text>Some content</Text>
+        <Text>Some content {activeStep}</Text>
       </Box>
     ),
     footer: Footer,
   },
   {
-    id: 'step-2',
+    name: 'step-2',
     title: 'Step 2',
-    content: ({ next, previous, activeStep }) => (
+    content: ({ activeStep }) => (
       <Box>
-        <Text>Some content</Text>
+        <Text>Some content {activeStep}</Text>
       </Box>
     ),
     footer: Footer,
   },
   {
-    id: 'step-3',
+    name: 'step-3',
     title: 'Step 3',
-    content: ({ next, previous, activeStep }) => (
+    content: ({ gotToNext, activeStep }) => (
       <Box>
-        <Text>Some content</Text>
-        <Button onPress={next}>Next</Button>
+        <Text>Some content {activeStep}</Text>
+        <Button onClick={gotToNext}>Next</Button>
       </Box>
     ),
     footer: Footer,
@@ -203,7 +204,7 @@ const App = () => {
 
   return (
     <Box>
-      <Button onPress={() => setIsOpen(true)}>Show Tour</Button>
+      <Button onClick={() => setIsOpen(true)}>Show Tour</Button>
       <Tour
         steps={steps}
         isOpen={isOpen}
@@ -220,21 +221,25 @@ const App = () => {
 const DashboardPage = () => {
   return (
     <Box>
-      <Button id="step-1">Click me</Button>
+      <TourStep name="step-1">
+        <Button>Click me</Button>
+      </TourStep>
 
       <Box>
-        <Box id="step-2" padding="spacing.5">
+        <TourStep name="step-2">
           <Text>Some content</Text>
-        </Box>
+        </TourStep>
       </Box>
 
       <Card>
         <CardBody>
-          <Box id="step-3">
-            <Text>Some content</Text>
-            <Text>Some content</Text>
-            <Text>Some content</Text>
-          </Box>
+          <TourStep name="step-3">
+            <Box>
+              <Text>Some content</Text>
+              <Text>Some content</Text>
+              <Text>Some content</Text>
+            </Box>
+          </TourStep>
         </CardBody>
       </Card>
     </Box>
@@ -242,13 +247,18 @@ const DashboardPage = () => {
 };
 ```
 
-------
-------
-------
+## Motion
+
+Check/Provide feedback for the motion for Tour component [here](https://razorpay.slack.com/archives/C0274H7QRC1/p1697520879941439)
+
+https://github.com/razorpay/blade/assets/35374649/5830c059-fbd6-461e-915c-e3a98e930735
+
+---
+
+---
 
 > NOTE: The below sections are discussions, decisions & challenges we faced while designing the API for the `Tour` component.
 > If you are interested in diving deeper into the rabbit hole, you can read the below sections, or else you can skip them.
-
 
 ## Open Questions And Technical Challenges
 
@@ -343,7 +353,7 @@ Kamlesh suggested few ways to directly use the `ref` and letting consumer attach
 
 And on the web, there was a problem that even though simply adding `id` could work, not all our components had `id` prop. That means consumers will have to wrap everything with a `Box`.
 
-- We decided to not go with the `id` approach on web, and instead go with the same implementation as the [react-native POC](https://github.com/razorpay/blade/compare/master...anu/tour-rn-poc#diff-4fe985a90d9ce955346ffc61e152a98272f4d02e044111d30241eb63c8fcf1b1R168-R183), where we keep track of refs of the elements via the `TourStep` component.
+- We decided **not** to go with the `id` approach on web, and instead go with the same implementation as the [react-native POC](https://github.com/razorpay/blade/compare/master...anu/tour-rn-poc#diff-4fe985a90d9ce955346ffc61e152a98272f4d02e044111d30241eb63c8fcf1b1R168-R183), where we keep track of refs of the elements via the `TourStep` component.
   - Pros:
     - API is now same on both RN & Web
     - No need to wrap everything with Box, consumers can use the TourStep enhancer component.
@@ -489,7 +499,7 @@ Trying to solve this will create a complexities, and will make the API more comp
 
 **Conclusion:**
 
-Given the complexity of solving this, we decided that: 
+Given the complexity of solving this, we decided that:
 
 - Consumers can wrap the `<Tour />` component closer to the module they need the tour for, instead of wrapping the whole `App` in a single tour. And we will also document this on the storybook.
 - There may not be that many cases for multiple tour flows in the same page
@@ -625,9 +635,10 @@ This will also mean we can maintain an optimal consistency between web & native 
 **Date:** 6th Nov, 2023
 
 **Discussion Points**
+
 1. Letting consumers compose their own tour flows - Giving context to kamlesh
 2. API difference between web & native
-3. ReactNative Implementation challenges 
+3. ReactNative Implementation challenges
 4. Challenges with supporting multiple tour flows
 5. Tour footer component flexibility discussion
 6. Discussed about scoping out few things
@@ -646,17 +657,19 @@ Kamlesh suggested few ways to directly use the ref and letting consumer attach t
 Even on the web, there was a problem that even though simply adding id could work, not all our components had id prop. That means consumers will have to wrap everything with a Box.
 
 **Conclusion:**
+
 - We decided to not go with the id approach and instead go with the same implementation as the react-native POC, where we keep track of refs of the elements via the TourStep component.
 
-**Pros:** 
-- API is now same on both RN & Web
-- No need to wrap everything with Box, consumers can use the TourStep enhancer component. 
-- Simplified implementation, since now we don't need to maintain two types of implementation 1 for native (with refs) 1 for web (with ids). 
+**Pros:**
 
+- API is now same on both RN & Web
+- No need to wrap everything with Box, consumers can use the TourStep enhancer component.
+- Simplified implementation, since now we don't need to maintain two types of implementation 1 for native (with refs) 1 for web (with ids).
 
 **3. ReactNative Implementation challenges**
 
 Discussed few ReactNative specific challenges:
+
 - iOS not having support for [multiple modals](https://github.com/react-native-modal/react-native-modal/issues/30) thus consumers can't compose popovers
 - Can't use `id` on RN, even if we add a custom prop there is no way to query react-native elements like we do in web via `document.getElementById`
 
@@ -669,6 +682,7 @@ Gave some context on the issues with multiple tour flows, and now that even on w
 Discussed the issues with React context API.
 
 **Conclusion:**
+
 - Consumers can wrap the `<Tour />` component closer to the module they need the tour for, instead of wrapping the whole App in a single tour. And we will also document this on the storybook.
 - There may not be that many cases for multiple tour flows in the same page
 
@@ -679,24 +693,28 @@ Discussed about if we should make the Footer a prop based more rigid API or keep
 Also discussed how will we pass the necessary states or functions like activeStep, totalSteps, goToNext to the Footer / Content components.
 
 **Conclusion:**
-- Decided that it's best if we keep it as flexible, since even on design there are many variants and combinations of buttons which can be a bit tricky to do with a more rigid prop based API
 
+- Decided that it's best if we keep it as flexible, since even on design there are many variants and combinations of buttons which can be a bit tricky to do with a more rigid prop based API
 
 **6. Discussed about scoping out few things**
 
 Also discussed if we can cut scope for now, since I'm going OOO from 11th, it won't be possible to finish both web & native, reviews, re-iteration, tests, storybook, docs etc.
 
 **Conclusion:**
-- We are scoping out RN implementation for now
-- We will try to be a bit proactive and do early reviews of web implementation and see if we can atleast finalise major things before Friday. 
 
+- We are scoping out RN implementation for now
+- We will try to be a bit proactive and do early reviews of web implementation and see if we can atleast finalise major things before Friday.
 
 ## References
 
-Our POCs: 
+Our POCs:
+
 - [Tour Web POC](https://github.com/razorpay/blade/compare/master...anu/tour-poc#diff-4fe985a90d9ce955346ffc61e152a98272f4d02e044111d30241eb63c8fcf1b1R198)
 - [Tour RN POC](https://github.com/razorpay/blade/compare/master...anu/tour-rn-poc#diff-4fe985a90d9ce955346ffc61e152a98272f4d02e044111d30241eb63c8fcf1b1R203)
+
+References:
 
 - Dashboard's [Tour](https://github.com/razorpay/dashboard/blob/44a954660b0d851cd5fedf48b44d85731e5c48ea/web/js/merchantLA/containers/MerchantTour/index.js) component
 - https://github.com/stackbuilders/react-native-spotlight-tour
 - https://github.com/elrumordelaluz/reactour
+- https://github.com/xcarpentier/rn-tourguide
