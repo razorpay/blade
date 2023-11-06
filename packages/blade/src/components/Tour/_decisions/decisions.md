@@ -1,6 +1,6 @@
 # Tour API Decisions <!-- omit in toc -->
 
-The spotlight popover component is used to provide context as well as enable users to take certain actions on it. These are used to highlight a new feature or provide a guided tour to a new user.
+The Tour component is used to provide context as well as enable users to take certain actions on it. These are used to highlight a new feature or provide a guided tour to a new user.
 
 <img src="./assets/tour-thumbnail.png" width="380" alt="Tooltip Thumbnail" />
 
