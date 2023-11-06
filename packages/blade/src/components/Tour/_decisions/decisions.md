@@ -108,7 +108,7 @@ TourStep is an enhancer component which is used to wrap the element that needs t
 
 This component is needed because in react-native there is no `id` prop or `getElementById` platform API, but to keep the API consistent between web & native, we will also expose this component for web.
 
-> Note: that on web, this component doesn't attach an `id` to the DOM element, instead it uses `ref` to collect the DOM element and save it to the state inside the `Tour` component, See below [discussions](#react-native-specifics) to know more about this approach.
+> Note: on web, this component doesn't attach an `id` to the DOM element, instead it uses `ref` to collect the DOM element and save it to the state inside the `Tour` component, See below [discussions](#react-native-specifics) to know more about this approach.
 
 ```jsx
 type TourStepProps = {
