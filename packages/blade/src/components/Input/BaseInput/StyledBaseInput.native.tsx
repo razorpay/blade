@@ -16,7 +16,8 @@ import { Text } from '~components/Typography';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { size } from '~tokens/global';
 import { makeSize } from '~utils/makeSize';
-import { Platform, useTheme } from '~utils';
+import type { Platform } from '~utils';
+import { useTheme } from '~utils';
 
 type StyledComponentAutoCompleteAndroid =
   | 'off'
