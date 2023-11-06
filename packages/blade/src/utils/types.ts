@@ -90,6 +90,11 @@ type TestID = {
 };
 
 type Locale = {
+  /**
+   * Indicates locale information
+   *
+   * @default 'en-IN'
+   */
   locale?: string;
 };
 

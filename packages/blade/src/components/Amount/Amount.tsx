@@ -4,7 +4,6 @@ import type { Currency } from './amountTokens';
 import {
   amountFontSizes,
   getCurrencyAbbreviations,
-  // currencyPrefixMapping,
   affixFontSizes,
   amountLineHeights,
 } from './amountTokens';
@@ -118,13 +117,7 @@ const AmountValue = ({
   const affixFontSize = isAffixSubtle ? affixFontSizes[size] : amountFontSizes[size];
   const valueForWeight = size.includes('bold') || size.startsWith('title') ? 'bold' : 'regular';
   if (suffix === 'decimals' && isAffixSubtle) {
-    const { integerValue: integer, decimalValue: decimal, separator } = formatAmountByParts(
-      currency,
-      value,
-      locale,
-    );
-    // const integer = value.split('.')[0];
-    // const decimal = value.split('.')[1];
+    const formattedAmountByParts = formatAmountByParts(currency, value, locale);
 
     // Native does not support alignItems of Text inside a div, insted we need to wrap is in a Text
     const AmountWrapper = getPlatformType() === 'react-native' ? BaseText : React.Fragment;
@@ -138,8 +131,8 @@ const AmountValue = ({
           color={amountValueColor}
           as={isReactNative ? undefined : 'span'}
         >
-          {integer}
-          {separator}
+          {formattedAmountByParts?.integerValue}
+          {formattedAmountByParts?.separator}
         </BaseText>
         <BaseText
           marginLeft="spacing.1"
@@ -148,7 +141,7 @@ const AmountValue = ({
           color={affixColor}
           as={isReactNative ? undefined : 'span'}
         >
-          {decimal || '00'}
+          {formattedAmountByParts?.decimalValue || '00'}
         </BaseText>
       </AmountWrapper>
     );
@@ -234,14 +227,14 @@ const getCurrencyWeight = (
 
 const _Amount = ({
   value,
-  locale = 'de-DE',
+  locale = 'en-IN',
   suffix = 'decimals',
   size = 'body-medium',
   isAffixSubtle = true,
   intent,
   prefix = 'currency-symbol',
   testID,
-  currency = 'EUR',
+  currency = 'INR',
   ...styledProps
 }: AmountProps): ReactElement => {
   if (__DEV__) {
@@ -260,10 +253,10 @@ const _Amount = ({
     }
   }
 
-  // const currencyPrefix = currencyPrefixMapping[currency][prefix];
-  const currencyPrefix = getCurrencySymbol(currency);
-  const { symbolAtFirst } = formatAmountByParts(currency, value, locale);
-  // const renderedValue = formatAmountWithSuffix({ suffix, value, currency });
+  const currencyPrefix = prefix === 'currency-symbol' ? getCurrencySymbol(currency) : currency;
+  const formattedAmountByParts = formatAmountByParts(currency, value, locale);
+  const renderedValue =
+    suffix === 'decimals' ? value.toString() : formatAmountWithSuffix({ suffix, value, currency });
   const { amountValueColor, affixColor } = getTextColorProps({
     intent,
   });
@@ -284,7 +277,7 @@ const _Amount = ({
         alignItems="baseline"
         flexDirection="row"
       >
-        {symbolAtFirst && (
+        {formattedAmountByParts?.symbolAtFirst && (
           <BaseText
             marginRight="spacing.1"
             fontWeight={currencyWeight}
@@ -294,10 +287,9 @@ const _Amount = ({
           >
             {currencyPrefix}
           </BaseText>
-        )}
-
+        )}{' '}
         <AmountValue
-          value={value.toString()}
+          value={renderedValue}
           amountValueColor={amountValueColor}
           size={size}
           isAffixSubtle={isAffixSubtle}
@@ -306,8 +298,7 @@ const _Amount = ({
           locale={locale}
           currency={currency}
         />
-
-        {!symbolAtFirst && (
+        {!formattedAmountByParts?.symbolAtFirst && (
           <BaseText
             marginRight="spacing.1"
             fontWeight={currencyWeight}
