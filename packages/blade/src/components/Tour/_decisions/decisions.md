@@ -5,17 +5,35 @@ The spotlight popover component is used to provide context as well as enable use
 <img src="./assets/tooltip-thumbnail.png" width="380" alt="Tooltip Thumbnail" />
 
 - [Design](#design)
-- [Open Questions](#open-questions)
+- [Features](#features)
+- [API](#api)
+  - [`Tour` API](#tour-api)
+  - [`TourStep` API (RN only)](#tourstep-api-rn-only)
+- [Usage](#usage)
+- [Open Questions And Technical Challenges](#open-questions-and-technical-challenges)
+- [React Native Specifics](#react-native-specifics)
+- [Multiple Tour Flows](#multiple-tour-flows)
+  - [Approach-1: Prefix `id` to avoid conflicts](#approach-1-prefix-id-to-avoid-conflicts)
+  - [Approach-2: Use `TourStep` to avoid conflicts](#approach-2-use-tourstep-to-avoid-conflicts)
+  - [Technical Challenge in React Native](#technical-challenge-in-react-native)
+- [API Design Challenges](#api-design-challenges)
+  - [Approach: Let Consumer Compose `Popover`](#approach-let-consumer-compose-popover)
+    - [**1. Not possible to collocate the tour flows.**](#1-not-possible-to-collocate-the-tour-flows)
+    - [**2. How will we have two different tour flows in the same page?**](#2-how-will-we-have-two-different-tour-flows-in-the-same-page)
+    - [3. Segmentation / Lack of control](#3-segmentation--lack-of-control)
+    - [4. Not possible to maintain a consistent API / Implementation between web \& native](#4-not-possible-to-maintain-a-consistent-api--implementation-between-web--native)
+    - [Conclusion](#conclusion)
+- [Discussions Needed](#discussions-needed)
 - [References](#references)
 
 ## Design
 
 [Figma Link](https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?type=design&node-id=40540-559304&t=tmTrf3xJU6oj59fM-0) to all variants of the Popover component
 
-## Anatomy
+## Features
 
-- Tour
-- TourStep (react-native only)
+- [x] **Tour:** A guided tour with multiple steps
+- [x] **Mask:** Mask the rest of the page
 
 ## API
 
@@ -85,7 +103,7 @@ type TourProps = {
 }
 ```
 
-### `TourStep` API
+### `TourStep` API (RN only)
 
 TourStep is a `react-native` only enhancer component, which is used to wrap the element that needs to be highlighted with a specific unique identifier.
 
@@ -231,8 +249,7 @@ On react-native there is 2 differences in the API compared to web:
 1. `TourStep` component is needed.
 2. `Tour` component needs to wrap the whole app
 
-
-1. **TourStep Component:**
+**1. `TourStep` Component is needed:**
    
 As highlighted earlier in the [API](#api) section, the `TourStep` component is a `react-native` only enhancer component, which is used to wrap the element that needs to be highlighted with a specific unique identifier.
 
@@ -316,7 +333,7 @@ My Opinion:
 
 - Given that on web we can simply use the `id` prop to query the element, imo the TourStep component largely becomes useless on web, so we don't need to expose this component on web.
 
-1. **Tour needs to wrap the whole app:**
+**2. Tour needs to wrap the whole app:**
 
 The `Tour` component needs to wrap the whole app, because the `TourStep` needs to collect the `ref` of the element that needs to be highlighted and save it to the state inside the `Tour` component.
 
@@ -343,20 +360,6 @@ It will look like this:
 
 import { Tour } from '@razorpay/blade/components';
 import type { TourSteps } from '@razorpay/blade/components';
-
-const Footer = ({ next, previous, stop, activeStep, totalStep }) => {
-  const isLast = activeStep === totalStep;
-  const isFirst = activeStep === 0;
-  return (
-    <Box>
-      <Text>
-        {activeStep} / {totalStep}
-      </Text>
-      {!isFirst && <Button onPress={next}>Prev</Button>}
-      {isLast ? <Button onPress={stop}>Done</Button> : <Button onPress={next}>Next</Button>}
-    </Box>
-  );
-};
 
 const globalSteps: TourSteps = [
   {
@@ -460,7 +463,7 @@ As mentioned earlier in the [React Native Specifics](#react-native-specifics) se
 </Tour>
 ```
 
-Trying to solve this will cause a lot of technical challenges, and will make the API more complex.
+Trying to solve this will create a complexities, and will make the API more complex.
 
 [rn-tourguide](https://github.com/xcarpentier/rn-tourguide/blob/master/src/hooks/useTourGuideController.tsx) solves this by using custom event emitters and pushes events for each `tourKey` instead of relying solely on `React.Context`
 
@@ -583,7 +586,7 @@ Now, let's say in design, we made some changes to the `SpotlightPopover` how wil
 
 We will have to ask consumers to modify their code to use the new design, which is not ideal and will lead to further segmentation of the design system.
 
-#### 4. Not possible to maintain a consistent API between web & native
+#### 4. Not possible to maintain a consistent API / Implementation between web & native
 
 Finally, react-native projects will have to have a vastly different API for their tour flows.
 
@@ -605,6 +608,7 @@ This will also mean we can maintain an optimal consistency between web & native 
 - [ ] Should we support multiple tour flows in ReactNative?
 - [ ] Should we let consumers compose their own tour flows with the `Popover` component?
 - [ ] Should we use `tourKey` or prefix the `id` manually to avoid conflicts?
+- [ ] Currently if you see for the footer, we let the consumer create their own footer, but we can also do it on our end and have a more rigid API, should we go with flexibility here or rigidity?
 
 ## References
 
