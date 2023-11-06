@@ -195,6 +195,165 @@ const TourFooter = ({ activeStep, setActiveStep, totalSteps }: TourFooterProps) 
   );
 };
 
+const TourContext = React.createContext({
+  attachStep: (id: string, ref: any) => {},
+  removeStep: (id: string, ref: any) => {},
+});
+
+const TourStep = ({ id, children }: { id: string; children: React.ReactNode }) => {
+  const ref = React.useRef(null);
+  const { attachStep, removeStep } = React.useContext(TourContext);
+
+  React.useEffect(() => {
+    if (!ref) return;
+    attachStep(id, ref);
+
+    return () => {
+      removeStep(id, ref);
+    };
+  }, [ref, attachStep, id, removeStep]);
+
+  const child = children as any;
+  return React.cloneElement(child, { ...child.props, ref });
+};
+
+const steps = [
+  {
+    id: 'step-1',
+    content: 'Step 1',
+    placement: 'bottom',
+  },
+  {
+    id: 'step-2',
+    content: 'Step 2',
+    placement: 'bottom',
+  },
+  {
+    id: 'some-other-step',
+    content: 'Step 3',
+    placement: 'bottom',
+  },
+];
+
+// with TourStep
+const Poc3 = () => {
+  const [refIdMap, setRefIdMap] = React.useState(new Map<string, React.RefObject<any>>());
+  const [activeStep, setActiveStep] = React.useState(-1);
+  const [size, setSize] = React.useState<{
+    height: number;
+    width: number;
+    x: number;
+    y: number;
+  }>({ height: 0, width: 0, x: 0, y: 0 });
+
+  const next = () => {
+    setActiveStep((prev) => {
+      if (prev === steps.length - 1) return prev;
+      return prev + 1;
+    });
+  };
+
+  const prev = () => {
+    setActiveStep((prev) => {
+      if (prev === 0) return prev;
+      return prev - 1;
+    });
+  };
+
+  const attachStep = React.useCallback((id: string, ref: React.RefObject<any>) => {
+    if (!ref) return;
+    setRefIdMap((prev) => {
+      return new Map(prev).set(id, ref);
+    });
+  }, []);
+
+  const removeStep = React.useCallback((id: string) => {
+    setRefIdMap((prev) => {
+      const newMap = new Map(prev);
+      newMap.delete(id);
+      return newMap;
+    });
+  }, []);
+
+  const updateMask = React.useCallback(() => {
+    const currentStep = steps[activeStep];
+    if (!currentStep) return;
+    const ref = refIdMap.get(currentStep.id);
+    if (ref) {
+      const rect = ref?.current.getBoundingClientRect();
+      setSize(rect);
+    }
+  }, [activeStep, refIdMap]);
+
+  React.useLayoutEffect(() => {
+    updateMask();
+  }, [updateMask]);
+
+  return (
+    <TourContext.Provider value={{ attachStep, removeStep }}>
+      <Button variant="tertiary" marginBottom="spacing.5" onClick={() => setActiveStep(0)}>
+        Start Tour
+      </Button>
+
+      <Box display="flex" gap="spacing.5">
+        <TourStep id="step-1">
+          <Button>Step 1</Button>
+        </TourStep>
+        <TourStep id="step-2">
+          <Box backgroundColor="brand.primary.600" paddingY="spacing.11" padding="spacing.5">
+            <Text color="surface.text.normal.highContrast">Step 2</Text>
+          </Box>
+        </TourStep>
+        <TourStep id="some-other-step">
+          <Button>Step 3</Button>
+        </TourStep>
+      </Box>
+
+      <Box
+        padding="spacing.5"
+        top="300px"
+        backgroundColor="surface.background.level1.lowContrast"
+        display="flex"
+        gap="spacing.5"
+        marginTop="spacing.11"
+      >
+        <Button
+          variant="secondary"
+          onClick={() => {
+            prev();
+          }}
+        >
+          Prev
+        </Button>
+        {activeStep + 1 == refIdMap.size ? (
+          <Button
+            variant="secondary"
+            onClick={() => {
+              setActiveStep(-1);
+            }}
+          >
+            Done
+          </Button>
+        ) : (
+          <Button
+            variant="secondary"
+            onClick={() => {
+              next();
+            }}
+          >
+            Next
+          </Button>
+        )}
+
+        <Text>
+          {activeStep + 1} / {refIdMap.size}
+        </Text>
+      </Box>
+      {activeStep !== -1 ? <Mask padding={2} sizes={size} /> : null}
+    </TourContext.Provider>
+  );
+};
+
 const Poc1 = () => {
   const [activeStep, setActiveStep] = React.useState(0);
   const domNodes = React.useRef<HTMLElement[]>([]);
@@ -354,7 +513,7 @@ const Poc2 = () => {
 const PopoverTemplate: ComponentStory<typeof Popover> = () => {
   return (
     <Box>
-      <Poc1 />
+      <Poc3 />
     </Box>
   );
 };

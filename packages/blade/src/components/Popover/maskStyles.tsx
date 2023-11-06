@@ -39,6 +39,7 @@ export const defaultStyles: Styles = {
     left: Number(wpl),
     top: Number(wpt),
     position: 'fixed',
+    pointerEvents: 'none',
   }),
   maskArea: ({ x, y, width, height }) => ({
     x,
@@ -55,6 +56,7 @@ export const defaultStyles: Styles = {
     height: windowHeight,
     fill: 'currentColor',
     mask: `url(#${maskID})`,
+    pointerEvents: 'none',
   }),
   clickArea: ({ windowWidth, windowHeight, clipID }) => ({
     x: 0,
@@ -62,7 +64,7 @@ export const defaultStyles: Styles = {
     width: windowWidth,
     height: windowHeight,
     fill: 'currentcolor',
-    pointerEvents: 'auto',
+    pointerEvents: 'none',
     clipPath: `url(#${clipID})`,
   }),
   highlightedArea: ({ x, y, width, height }) => ({
