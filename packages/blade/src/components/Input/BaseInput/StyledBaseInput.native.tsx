@@ -16,7 +16,7 @@ import { Text } from '~components/Typography';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { size } from '~tokens/global';
 import { makeSize } from '~utils/makeSize';
-import type { Platform } from '~utils';
+import { Platform, useTheme } from '~utils';
 
 type StyledComponentAutoCompleteAndroid =
   | 'off'
@@ -244,6 +244,7 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
   ref,
 ) => {
   const buttonValue = props.value ? props.value : props.placeholder;
+  const { theme } = useTheme();
   const commonProps = {
     onBlur: (): void => {
       // In certain cases like SelectInput, we want to ignore the blur animation when option item is clicked.
@@ -289,6 +290,7 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
       numberOfLines={numberOfLines}
       editable={!isDisabled}
       maxLength={maxCharacters}
+      placeholderTextColor={theme.colors.surface.text.placeholder.lowContrast}
       onFocus={(event): void => {
         handleOnFocus?.({ name, value: event?.nativeEvent.text });
         setCurrentInteraction('active');
