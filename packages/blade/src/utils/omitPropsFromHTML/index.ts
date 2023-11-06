@@ -26,7 +26,7 @@ type shouldForwardProp = <O extends object>(
 ) => boolean;
 
 const omitPropsFromHTML: shouldForwardProp = (prop, defaultValidatorFn): boolean => {
-  return !filterProps.includes(prop as string) && defaultValidatorFn(prop);
+  return !filterProps.includes(prop as string) && defaultValidatorFn?.(prop);
 };
 
 export { omitPropsFromHTML };
