@@ -112,6 +112,25 @@ export const indexHTML = dedent`
   <body>
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
+    <script>
+      const customConsole = {
+        log: function(message) {
+          var logMessage = document.createElement('p');
+          logMessage.textContent = '> ' + JSON.stringify(message, null, 4);
+          
+          const newConsole = document.querySelector('#log-console');
+          newConsole.appendChild(logMessage);
+          newConsole.scrollTop = newConsole.scrollHeight;
+        }
+      };
+
+      const actualConsoleLog = console.log;
+      // Override the global console.log with the custom implementation
+      window.console.log = (...args) => {
+        customConsole.log(...args);
+        actualConsoleLog(...args);
+      };
+    </script>
   </body>
 </html>
 `;
@@ -130,7 +149,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createGlobalStyle } from "styled-components";
 
-import { BladeProvider, Box, Theme } from "@razorpay/blade/components";
+import { BladeProvider, Box, IconButton, CloseIcon, Theme } from "@razorpay/blade/components";
 import { ${themeTokenName}, createTheme } from "@razorpay/blade/tokens";
 
 import App from "./App";
@@ -177,8 +196,40 @@ root.render(
         backgroundColor="surface.background.level1.lowContrast"
         minHeight="100vh"
         padding={['spacing.4', 'spacing.7']}
+        display="flex"
+        flexDirection="column"
       >
         <App />
+        <Box
+          elevation="highRaised"
+          position="fixed"
+          bottom="spacing.0"
+          left="spacing.0"
+          width="100%"
+          backgroundColor="surface.background.level2.lowContrast"
+        >
+          <Box
+            position="absolute"
+            right="spacing.0"
+            display="inline-block"
+            padding="spacing.3"
+          >
+            <IconButton 
+              onClick={() => {
+                document.querySelector('#log-console').innerHTML = '';
+              }}
+              icon={CloseIcon}
+              size="large"
+              accessibilityLabel="Close Icon"
+            />
+          </Box>
+          <Box 
+            padding={['spacing.4', 'spacing.7']}
+            overflow="auto"
+            maxHeight="30vh"
+            id="log-console" 
+          />
+        </Box>
       </Box>
     </BladeProvider>
   </StrictMode>

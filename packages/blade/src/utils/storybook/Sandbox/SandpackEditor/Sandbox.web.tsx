@@ -10,10 +10,10 @@ import {
 } from '@codesandbox/sandpack-react';
 import { DocsContext } from '@storybook/addon-docs';
 import dedent from 'dedent';
-import type { RecipeSandboxProps, SandboxProps } from './types';
+import type { RecipeSandboxProps, SandboxProps } from '../types';
 // @ts-expect-error We don't resolve JSON files right now. didn't want to change TS config for single JSON
 import packageJson from '../../../../package.json'; // eslint-disable-line
-import { getIndexTSX, getReactScriptsJSDependencies } from './baseCode';
+import { getIndexTSX, getReactScriptsJSDependencies } from '../baseCode';
 import BaseBox from '~components/Box/BaseBox';
 import { castWebType } from '~utils';
 import { Box } from '~components/Box';

@@ -6,8 +6,8 @@ import { DocsContext } from '@storybook/addon-docs';
 
 import type { Project } from '@stackblitz/sdk';
 import styled from 'styled-components';
-import { getIndexTSX, indexHTML, tsConfigJSON, viteConfigTS, vitePackageJSON } from './baseCode';
-import type { SandboxStackBlitzProps } from './types';
+import { getIndexTSX, indexHTML, tsConfigJSON, viteConfigTS, vitePackageJSON } from '../baseCode';
+import type { SandboxStackBlitzProps } from '../types';
 import BaseBox from '~components/Box/BaseBox';
 
 const useStackblitzSetup = ({

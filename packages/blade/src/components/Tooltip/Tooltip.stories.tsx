@@ -32,7 +32,7 @@ const Page = (): React.ReactElement => {
       }}
     >
       <Title>Usage</Title>
-      <Sandbox showConsole>
+      <Sandbox>
         {`
         import { Tooltip, Button } from '@razorpay/blade/components'
         
