@@ -39,8 +39,8 @@ A table component helps in displaying data in a grid format, through rows and co
     - [TableFooterRow](#tablefooterrow)
     - [TableFooterCell](#tablefootercell)
     - [TablePagination](#tablepagination)
-      - [PaginationChangeEvent](#paginationchangeevent)
-      - [RowCountPickerChangeEvent](#rowcountpickerchangeevent)
+      - [`PaginationChangeEvent`](#paginationchangeevent)
+      - [`RowCountPickerChangeEvent`](#rowcountpickerchangeevent)
 - [Table Library Evaluation](#table-library-evaluation)
   - [Why a library?](#why-a-library)
   - [What are we looking for in a library?](#what-are-we-looking-for-in-a-library)
@@ -378,9 +378,9 @@ const pagination = {
 
 
 ##### Conclusion
-- We took inputs from Frontend Leads across the org and the majority of them were in favour of the Composable API for its composability and tree-shaking benefits
+- We took inputs from Frontend Leads across the org and the majority of them were in favour of the **Composable API** for its **composability** and **tree-shaking benefits**
 - Compact API can be built on top of composable API if needed in the future
-- We will be going ahead with the Composable API for now and will evaluate the need for Compact API in the future
+- We will be going ahead with the **Composable API** for now and will evaluate the need for Compact API in the future
 
 ### Final API
 > We will be using Composable API for Table
@@ -388,8 +388,7 @@ const pagination = {
 | Prop              | Type                                          | Default     | Description                                                                                                                                                                                                                                                                                                                     | Required |
 | ----------------- | --------------------------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | data              | TableData                                     | `undefined` | This contains the actual data to be rendered in the table which would be retrieved from some API                                                                                                                                                                                                                                | ✅        |
-| children          | `(tableData: TableData) => React.ReactNode[]` | undefined   | Expects a function that returns Table composition components like TableHeader, TableBody & TableFooter. The function provides the tableData as an argument which can be used to render the table. The provided tableData will update based on pagination and sort states.                                                       |
-| ✅                 |
+| children          | `(tableData: TableData) => React.ReactNode[]` | undefined   | Expects a function that returns Table composition components like TableHeader, TableBody & TableFooter. The function provides the tableData as an argument which can be used to render the table. The provided tableData will update based on pagination and sort states.                                                       | ✅        |
 | selectionType     | `single`, `multiple`                          | `single`    | This defines the type of selection that is allowed in the table. Possible values are 'single' & 'multiple'                                                                                                                                                                                                                      |
 | onSelectionChange | function                                      | `undefined` | This is a callback function that is called when the selection changes. It is called with the selected items as an array                                                                                                                                                                                                         |
 | sortFunctions     | SortFunctionsType                             | `undefined` | This is an object that contains the sort functions for each column. The key of the object is the headerKey of the column and the value is a function that takes in an array of items and returns a sorted array of items. A column will be made automatically sortable by adding its headerKey along with a sort function here. |
@@ -465,12 +464,10 @@ type SortChangeEvent = {
 | children | `React.ReactNode` | undefined | This defines the table body rows | ✅        |
 
 #### TableRow
-| Prop | Type | Default | Description | Required |
-| ---- | ---- | ------- | ----------- | -------- |
-
-| children   | `React.ReactNode`     | undefined | This defines the table body cells                                  | ✅        |
-| onClick    | function | undefined | This is a callback function that is called when the row is clicked |
-| isDisabled | boolean  | false     | This defines whether the row is disabled or not                    |
+| Prop       | Type              | Default   | Description                                     | Required |
+| ---------- | ----------------- | --------- | ----------------------------------------------- | -------- |
+| children   | `React.ReactNode` | undefined | This defines the table body cells               | ✅        |
+| isDisabled | boolean           | false     | This defines whether the row is disabled or not |
 
 #### TableCell
 | Prop     | Type                        | Default   | Description                                                    | Required |
@@ -508,12 +505,12 @@ type SortChangeEvent = {
 | onPaginationChange     | PaginationChangeEvent     | undefined | This is a callback function that is called when the pagination changes. It is called with the offset as an argument      |
 | onRowCountPickerChange | RowCountPickerChangeEvent | undefined | This is a callback function that is called when the row count picker changes. It is called with the count as an argument |
 
-##### PaginationChangeEvent
+##### `PaginationChangeEvent`
 ```ts
 type PaginationChangeEvent = ({offset: number}) => void;
 ```
 
-##### RowCountPickerChangeEvent
+##### `RowCountPickerChangeEvent`
 ```ts
 type RowCountPickerChangeEvent = ({count: number}) => void;
 ```
