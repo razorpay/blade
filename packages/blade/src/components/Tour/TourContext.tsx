@@ -3,8 +3,8 @@ import React from 'react';
 import { throwBladeError } from '~utils/logger';
 
 type TourContextProps = {
-  attachStep: (id: string, ref: React.RefObject<HTMLElement>) => void;
-  removeStep: (id: string, ref: React.RefObject<HTMLElement>) => void;
+  attachStep: (id: string, ref: React.MutableRefObject<HTMLElement>) => void;
+  removeStep: (id: string) => void;
 } | null;
 
 const TourContext = React.createContext<TourContextProps>(null);

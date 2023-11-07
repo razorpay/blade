@@ -1,7 +1,7 @@
 import type { UseFloatingOptions } from '@floating-ui/react';
 
 type StepRenderProps = {
-  gotToNext: () => void;
+  goToNext: () => void;
   goToPrevious: () => void;
   stopTour: () => void;
   activeStep: number;
@@ -17,17 +17,17 @@ type Step = {
    * Content of the Popover
    */
   content: ({
-    gotToNext,
+    goToNext,
     goToPrevious,
     stopTour,
     activeStep,
     totalSteps,
-  }: StepRenderProps) => React.ReactNode;
+  }: StepRenderProps) => React.ReactElement;
   /**
    * Footer content
    */
   footer?: ({
-    gotToNext,
+    goToNext,
     goToPrevious,
     stopTour,
     activeStep,
@@ -80,4 +80,4 @@ type TourProps = {
   children: React.ReactNode;
 };
 
-export type { TourProps, Step };
+export type { TourProps, Step, StepRenderProps };

@@ -1,9 +1,34 @@
+/* eslint-disable consistent-return */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React from 'react';
+import type { TourProps } from './types';
 import { TourContext } from './TourContext';
 import type { Rect } from './TourMask';
 import { TourMask } from './TourMask';
-import type { TourProps } from './types';
+import { TourPopover } from './TourPopover';
+import { usePrevious, useTheme } from '~utils';
+
+/**
+ * Hook to delay the state change
+ */
+function useDelayedState<T>(initialState: T, delay: number): T {
+  const [delayedState, setDelayedState] = React.useState(initialState);
+  const timeoutRef = React.useRef<number | undefined>(undefined);
+
+  // Delay the active step change to allow for transitions to finish
+  // This prevents the popover's footer from changing it's JSX while it's transitioning
+  React.useEffect(() => {
+    timeoutRef.current = window.setTimeout(() => {
+      setDelayedState(initialState);
+    }, delay);
+
+    return () => {
+      window.clearTimeout(timeoutRef.current);
+    };
+  }, [delay, initialState]);
+
+  return delayedState;
+}
 
 const Tour = ({
   steps,
@@ -14,30 +39,67 @@ const Tour = ({
   onStepChange,
   children,
 }: TourProps): React.ReactElement => {
-  const [refIdMap, setRefIdMap] = React.useState(new Map<string, React.RefObject<HTMLElement>>());
-  const [_activeStep, setActiveStep] = React.useState(-1);
+  const { theme } = useTheme();
+  const [refIdMap, setRefIdMap] = React.useState(
+    new Map<string, React.MutableRefObject<HTMLElement>>(),
+  );
   const [size, setSize] = React.useState<Rect>({
     height: 0,
     width: 0,
     x: 0,
     y: 0,
   });
+  const transitionDelay = theme.motion.duration.gentle;
+  // delayed state is used to let the transition finish before reacting to the state changes
+  const delayedAciveStep = useDelayedState(activeStep, transitionDelay);
+  const delayedSize = useDelayedState(size, transitionDelay);
 
-  const gotToNext = () => {
-    setActiveStep((prev) => {
-      if (prev === steps.length - 1) return prev;
-      return prev + 1;
-    });
+  const prevActiveStep = usePrevious(activeStep);
+  const [isTransitioning, setIsTransitioning] = React.useState(false);
+
+  // Keep track of when we are transitioning between steps
+  React.useEffect(() => {
+    if (prevActiveStep === undefined) return;
+    setIsTransitioning(true);
+    const timeout = window.setTimeout(() => {
+      setIsTransitioning(false);
+    }, transitionDelay);
+
+    return () => {
+      window.clearTimeout(timeout);
+    };
+  }, [prevActiveStep, transitionDelay]);
+
+  // main step logic
+  const getCurrentStep = React.useCallback(() => {
+    return steps[activeStep];
+  }, [activeStep, steps]);
+
+  const getCurrentStepRef = React.useCallback(() => {
+    return refIdMap.get(steps[activeStep]?.name);
+  }, [activeStep, refIdMap, steps]);
+
+  const goToNext = () => {
+    let next = activeStep + 1;
+    if (next >= steps.length) {
+      next = steps.length - 1;
+    }
+    onStepChange?.(next);
   };
 
   const goToPrevious = () => {
-    setActiveStep((prev) => {
-      if (prev === 0) return prev;
-      return prev - 1;
-    });
+    let next = activeStep - 1;
+    if (next < 0) {
+      next = 0;
+    }
+    onStepChange?.(next);
   };
 
-  const attachStep = React.useCallback((id: string, ref: React.RefObject<HTMLElement>) => {
+  const stopTour = () => {
+    onFinish?.();
+  };
+
+  const attachStep = React.useCallback((id: string, ref: React.MutableRefObject<HTMLElement>) => {
     if (!ref) return;
     setRefIdMap((prev) => {
       return new Map(prev).set(id, ref);
@@ -52,11 +114,11 @@ const Tour = ({
     });
   }, []);
 
+  // update the size of the mask when the active step changes
   React.useLayoutEffect(() => {
     if (activeStep === -1) return;
-    const ref = refIdMap.get(steps[activeStep]?.name);
-    if (!ref) return;
-    if (!ref.current) return;
+    const ref = getCurrentStepRef();
+    if (!ref?.current) return;
 
     const rect = ref.current.getBoundingClientRect();
     setSize({
@@ -65,15 +127,54 @@ const Tour = ({
       width: rect.width,
       height: rect.height,
     });
-  }, [activeStep, refIdMap, steps]);
+  }, [activeStep, getCurrentStepRef, refIdMap, steps]);
 
   const contextValue = React.useMemo(() => {
     return { attachStep, removeStep };
   }, [attachStep, removeStep]);
 
+  const currentStepData = React.useMemo(() => getCurrentStep(), [getCurrentStep]);
+  const totalSteps = steps.length;
+
   return (
     <TourContext.Provider value={contextValue}>
-      <TourMask padding={10} size={size} />
+      {isOpen ? (
+        <TourMask isTransitioning={isTransitioning} padding={10} size={delayedSize} />
+      ) : null}
+
+      {steps.map((step) => {
+        // 1. only show popover if the tour is opened
+        // 2. only show the popover if the step is active
+        // 3. do not show the popover if we are transitioning between steps
+        //    this ensures popover suddenly doesn't jump to the next step,
+        //    instead it waits for the transition to finish
+        const isPopoverVisible = isOpen && currentStepData.name === step.name && !isTransitioning;
+        return (
+          <TourPopover
+            key={step.name}
+            placement={step.placement}
+            isOpen={isPopoverVisible}
+            onOpenChange={onOpenChange}
+            title={step.title}
+            titleLeading={step.titleLeading}
+            content={step?.content?.({
+              activeStep: delayedAciveStep,
+              goToPrevious,
+              goToNext,
+              totalSteps,
+              stopTour,
+            })}
+            footer={step?.footer?.({
+              activeStep: delayedAciveStep,
+              goToPrevious,
+              goToNext,
+              totalSteps,
+              stopTour,
+            })}
+            attachTo={currentStepData.name === step.name ? getCurrentStepRef() : undefined}
+          />
+        );
+      })}
 
       {children}
     </TourContext.Provider>

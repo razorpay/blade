@@ -9,10 +9,10 @@ type TourStepProps = {
 };
 
 const TourStep = ({ name, children }: TourStepProps): React.ReactElement => {
-  const ref = React.useRef(null);
+  const ref = React.useRef<HTMLElement>(null);
   const { attachStep, removeStep } = useTourContext();
 
-  React.useEffect(() => {
+  React.useLayoutEffect(() => {
     if (!ref) return;
     attachStep(name, ref);
 
