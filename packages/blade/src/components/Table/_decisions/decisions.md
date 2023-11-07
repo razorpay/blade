@@ -49,6 +49,7 @@ A table component helps in displaying data in a grid format, through rows and co
     - [Medium sized library - Tanstack's React Table](#medium-sized-library---tanstacks-react-table)
     - [Small sized library - React Table Library](#small-sized-library---react-table-library)
     - [Comparison](#comparison-1)
+- [Accessibility](#accessibility)
 
 
 ## Features
@@ -562,3 +563,7 @@ While evaluating multiple libraries we identified 3 categories:
 | [AG Grid](https://www.ag-grid.com/)                                         | Very heavy and has a lot of features we don't need            | 75kb (15kb gzipped) (+ additional supporting libraries) | Challenging to build | Easy to build | Extremely well maintained. Has paid Enterprise support. |
 | [Tanstack's React Table](https://react-table.tanstack.com/)                 | Relatively heavy and has a lot of features we don't need      | 60kb (14kb gzipped)                                     | Challenging to build | Easy to build | Very well maintained                                    |
 | [React Table Library](https://github.com/table-library/react-table-library) | Relatively lightweight and has all the features we could need | 23kb (7kb gzipped)                                      | Easy to build        | Easy to build | Relatively well maintained                              | ✅          |
+
+
+## Accessibility
+- We will be following the [WAI-ARIA Table Practices](https://www.w3.org/WAI/ARIA/apg/patterns/table/) to ensure our table is accessible
