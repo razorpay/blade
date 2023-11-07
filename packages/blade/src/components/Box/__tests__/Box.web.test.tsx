@@ -17,7 +17,7 @@ describe('<Box />', () => {
       </Box>,
     );
     expect(container).toMatchInlineSnapshot(`
-      #razorpay-blade .c0 {
+      .c0.c0.c0.c0.c0 {
         display: -webkit-box;
         display: -webkit-flex;
         display: -ms-flexbox;
@@ -27,7 +27,7 @@ describe('<Box />', () => {
 
       <div>
         <div
-          class="c0 "
+          class="c0"
           data-blade-component="box"
         >
           children test!
@@ -43,13 +43,13 @@ describe('<Box />', () => {
       </Box>,
     );
     expect(container).toMatchInlineSnapshot(`
-      #razorpay-blade .c0 {
+      .c0.c0.c0.c0.c0 {
         display: block;
       }
 
       <div>
         <footer
-          class="c0 "
+          class="c0"
           data-blade-component="box"
         >
           Footer test!
@@ -104,13 +104,13 @@ describe('<Box />', () => {
       <Box backgroundColor={{ base: 'brand.primary.300', l: undefined }}>I am Visible</Box>,
     );
     expect(container).toMatchInlineSnapshot(`
-      #razorpay-blade .c0 {
+      .c0.c0.c0.c0.c0 {
         background-color: hsla(218,89%,51%,0.09);
       }
 
       <div>
         <div
-          class="c0 "
+          class="c0"
           data-blade-component="box"
         >
           I am Visible
@@ -124,19 +124,19 @@ describe('<Box />', () => {
       <Box backgroundColor={{ base: 'brand.primary.300', l: 'transparent' }}>I am Visible</Box>,
     );
     expect(container).toMatchInlineSnapshot(`
-      #razorpay-blade .c0 {
+      .c0.c0.c0.c0.c0 {
         background-color: hsla(218,89%,51%,0.09);
       }
 
       @media screen and (min-width:1024px) {
-        #razorpay-blade .c0 {
+        .c0.c0.c0.c0.c0 {
           background-color: transparent;
         }
       }
 
       <div>
         <div
-          class="c0 "
+          class="c0"
           data-blade-component="box"
         >
           I am Visible

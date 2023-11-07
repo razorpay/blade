@@ -1,44 +1,44 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Box /> should apply borderBottomColor prop to border bottom only 1`] = `
-#razorpay-blade .c0 {
+.c0.c0.c0.c0.c0 {
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-bottom-style: solid;
 }
 
 @media screen and (min-width:320px) {
-  #razorpay-blade .c0 {
+  .c0.c0.c0.c0.c0 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  #razorpay-blade .c0 {
+  .c0.c0.c0.c0.c0 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  #razorpay-blade .c0 {
+  .c0.c0.c0.c0.c0 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  #razorpay-blade .c0 {
+  .c0.c0.c0.c0.c0 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  #razorpay-blade .c0 {
+  .c0.c0.c0.c0.c0 {
     border-bottom-style: solid;
   }
 }
 
 <div>
   <div
-    class="c0 "
+    class="c0"
     data-blade-component="box"
   >
     I am Visible
@@ -47,44 +47,44 @@ exports[`<Box /> should apply borderBottomColor prop to border bottom only 1`] =
 `;
 
 exports[`<Box /> should apply borderColor prop to all borders 1`] = `
-#razorpay-blade .c0 {
+.c0.c0.c0.c0.c0 {
   border-color: hsla(216,15%,54%,0.18);
   border-style: solid;
 }
 
 @media screen and (min-width:320px) {
-  #razorpay-blade .c0 {
+  .c0.c0.c0.c0.c0 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  #razorpay-blade .c0 {
+  .c0.c0.c0.c0.c0 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  #razorpay-blade .c0 {
+  .c0.c0.c0.c0.c0 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  #razorpay-blade .c0 {
+  .c0.c0.c0.c0.c0 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  #razorpay-blade .c0 {
+  .c0.c0.c0.c0.c0 {
     border-style: solid;
   }
 }
 
 <div>
   <div
-    class="c0 "
+    class="c0"
     data-blade-component="box"
   >
     I am Visible

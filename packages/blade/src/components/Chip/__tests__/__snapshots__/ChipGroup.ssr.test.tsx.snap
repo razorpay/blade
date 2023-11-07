@@ -1,211 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-<<<<<<< HEAD
-exports[`<ChipGroup /> should render with selectionType="single" 1`] = `"<div id="root"><div data-blade-component="box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div role="radiogroup" aria-labelledby="chip-group-undefined-label" data-blade-component="chip-group" class="BaseBox-bmPWx djEyfF"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 ijVANw"><p class="StyledBaseText-dVBfTO eIdQFo" data-blade-component="text">Select fruits</p></div><div data-blade-component="base-box" class="BaseBox-bmPWx jjhFBS"><div data-blade-component="base-box" class="BaseBox-bmPWx geZScS"><div data-blade-component="chip" class="BaseBox-bmPWx bcSLaJ"><label style="cursor:pointer" data-blade-component="chip-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 bgSmPY"><div data-blade-component="base-box" class="BaseBox-bmPWx xrMLB"><div data-blade-component="base-box" class="BaseBox-bmPWx fSbYvl"><input type="radio" role="radio" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" aria-describedby="radio-undefined-helptext-undefined" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 jwCAeQ" value="apple"/><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedChipweb__AnimatedChip-sc-1xiynj1-0 dRscRB kDMGeD"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledChipWrapperweb__StyledChipWrapper-sc-1p3u1xx-0 jRMjox iQELOd"><p class="StyledBaseText-dVBfTO jICDGX" data-blade-component="text">Apple</p></div></div></div></div></label></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx geZScS"><div data-blade-component="chip" class="BaseBox-bmPWx bcSLaJ"><label style="cursor:pointer" data-blade-component="chip-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 bgSmPY"><div data-blade-component="base-box" class="BaseBox-bmPWx xrMLB"><div data-blade-component="base-box" class="BaseBox-bmPWx fSbYvl"><input type="radio" role="radio" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" aria-describedby="radio-undefined-helptext-undefined" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 jwCAeQ" value="mango"/><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedChipweb__AnimatedChip-sc-1xiynj1-0 dRscRB kDMGeD"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledChipWrapperweb__StyledChipWrapper-sc-1p3u1xx-0 jRMjox iQELOd"><p class="StyledBaseText-dVBfTO jICDGX" data-blade-component="text">Mango</p></div></div></div></div></label></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx geZScS"><div data-blade-component="chip" class="BaseBox-bmPWx bcSLaJ"><label style="cursor:pointer" data-blade-component="chip-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 bgSmPY"><div data-blade-component="base-box" class="BaseBox-bmPWx xrMLB"><div data-blade-component="base-box" class="BaseBox-bmPWx fSbYvl"><input type="radio" role="radio" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" aria-describedby="radio-undefined-helptext-undefined" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 jwCAeQ" value="orange"/><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedChipweb__AnimatedChip-sc-1xiynj1-0 dRscRB kDMGeD"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledChipWrapperweb__StyledChipWrapper-sc-1p3u1xx-0 jRMjox iQELOd"><p class="StyledBaseText-dVBfTO jICDGX" data-blade-component="text">Orange</p></div></div></div></div></label></div></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx"><div role="group" aria-labelledby="chip-group-undefined-label" data-blade-component="chip-group" class="BaseBox-bmPWx djEyfF"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 ijVANw"><p class="StyledBaseText-dVBfTO eIdQFo" data-blade-component="text">Select flowers</p></div><div data-blade-component="base-box" class="BaseBox-bmPWx jjhFBS"><div data-blade-component="base-box" class="BaseBox-bmPWx geZScS"><div data-blade-component="chip" class="BaseBox-bmPWx bcSLaJ"><label style="cursor:pointer" data-blade-component="chip-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 bgSmPY"><div data-blade-component="base-box" class="BaseBox-bmPWx xrMLB"><div data-blade-component="base-box" class="BaseBox-bmPWx fSbYvl"><input type="checkbox" role="checkbox" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 jwCAeQ" value="Rose"/><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedChipweb__AnimatedChip-sc-1xiynj1-0 dRscRB kDMGeD"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledChipWrapperweb__StyledChipWrapper-sc-1p3u1xx-0 jRMjox iQELOd"><p class="StyledBaseText-dVBfTO jICDGX" data-blade-component="text">Rose</p></div></div></div></div></label></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx geZScS"><div data-blade-component="chip" class="BaseBox-bmPWx bcSLaJ"><label style="cursor:pointer" data-blade-component="chip-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 bgSmPY"><div data-blade-component="base-box" class="BaseBox-bmPWx xrMLB"><div data-blade-component="base-box" class="BaseBox-bmPWx fSbYvl"><input type="checkbox" role="checkbox" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 jwCAeQ" value="Sunflower"/><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedChipweb__AnimatedChip-sc-1xiynj1-0 dRscRB kDMGeD"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledChipWrapperweb__StyledChipWrapper-sc-1p3u1xx-0 jRMjox iQELOd"><p class="StyledBaseText-dVBfTO jICDGX" data-blade-component="text">Sunflower</p></div></div></div></div></label></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx geZScS"><div data-blade-component="chip" class="BaseBox-bmPWx bcSLaJ"><label style="cursor:pointer" data-blade-component="chip-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 bgSmPY"><div data-blade-component="base-box" class="BaseBox-bmPWx xrMLB"><div data-blade-component="base-box" class="BaseBox-bmPWx fSbYvl"><input type="checkbox" role="checkbox" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 jwCAeQ" value="Lily"/><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedChipweb__AnimatedChip-sc-1xiynj1-0 dRscRB kDMGeD"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledChipWrapperweb__StyledChipWrapper-sc-1p3u1xx-0 jRMjox iQELOd"><p class="StyledBaseText-dVBfTO jICDGX" data-blade-component="text">Lily</p></div></div></div></div></label></div></div></div></div></div></div></div></div>"`;
-=======
-exports[`<ChipGroup /> should render with selectionType="multiple" 1`] = `"<div id="root"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div role="group" aria-labelledby="chip-group-15-label" data-blade-component="chip-group" class="BaseBox-bmPWx cRzqgS"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 jZYAhz"><p class="StyledBaseText-dVBfTO ekbJPz" data-blade-component="text">Select fruits</p></div><div data-blade-component="base-box" class="BaseBox-bmPWx hWlajl"><div data-blade-component="base-box" class="BaseBox-bmPWx knRmkR"><div data-blade-component="chip" class="BaseBox-bmPWx hGbNLG"><label style="cursor:pointer" data-blade-component="chip-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 cHPdOX"><div data-blade-component="base-box" class="BaseBox-bmPWx ezJsiy"><div data-blade-component="base-box" class="BaseBox-bmPWx bmQUTK"><input type="checkbox" role="checkbox" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 doyDzz" value="apple"/><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedChipweb__AnimatedChip-sc-1xiynj1-0 hRhKfS jZyeNE"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledChipWrapperweb__StyledChipWrapper-sc-1p3u1xx-0 liXXnK dXXpIC"><p class="StyledBaseText-dVBfTO lcTpfs" data-blade-component="text">Apple</p></div></div></div></div></label></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx knRmkR"><div data-blade-component="chip" class="BaseBox-bmPWx hGbNLG"><label style="cursor:pointer" data-blade-component="chip-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 cHPdOX"><div data-blade-component="base-box" class="BaseBox-bmPWx ezJsiy"><div data-blade-component="base-box" class="BaseBox-bmPWx bmQUTK"><input type="checkbox" role="checkbox" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 doyDzz" value="mango"/><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedChipweb__AnimatedChip-sc-1xiynj1-0 hRhKfS jZyeNE"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledChipWrapperweb__StyledChipWrapper-sc-1p3u1xx-0 liXXnK dXXpIC"><p class="StyledBaseText-dVBfTO lcTpfs" data-blade-component="text">Mango</p></div></div></div></div></label></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx knRmkR"><div data-blade-component="chip" class="BaseBox-bmPWx hGbNLG"><label style="cursor:pointer" data-blade-component="chip-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 cHPdOX"><div data-blade-component="base-box" class="BaseBox-bmPWx ezJsiy"><div data-blade-component="base-box" class="BaseBox-bmPWx bmQUTK"><input type="checkbox" role="checkbox" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 doyDzz" value="orange"/><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedChipweb__AnimatedChip-sc-1xiynj1-0 hRhKfS jZyeNE"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledChipWrapperweb__StyledChipWrapper-sc-1p3u1xx-0 liXXnK dXXpIC"><p class="StyledBaseText-dVBfTO lcTpfs" data-blade-component="text">Orange</p></div></div></div></div></label></div></div></div></div></div></div></div>"`;
-
-exports[`<ChipGroup /> should render with selectionType="multiple" 2`] = `
-<div
-  id="root"
->
-  <div
-    class="BaseBox-bmPWx"
-    data-blade-component="base-box"
-  >
-    <div
-      aria-labelledby="chip-group-15-label"
-      class="BaseBox-bmPWx cRzqgS"
-      data-blade-component="chip-group"
-      role="group"
-    >
-      <div
-        class="BaseBox-bmPWx"
-        data-blade-component="base-box"
-      >
-        <div
-          class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 jZYAhz"
-          data-blade-component="visually-hidden"
-        >
-          <p
-            class="StyledBaseText-dVBfTO ekbJPz"
-            data-blade-component="text"
-          >
-            Select fruits
-          </p>
-        </div>
-        <div
-          class="BaseBox-bmPWx hWlajl"
-          data-blade-component="base-box"
-        >
-          <div
-            class="BaseBox-bmPWx knRmkR"
-            data-blade-component="base-box"
-          >
-            <div
-              class="BaseBox-bmPWx hGbNLG"
-              data-blade-component="chip"
-            >
-              <label
-                class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 cHPdOX"
-                data-blade-component="chip-label"
-                style="cursor:pointer"
-              >
-                <div
-                  class="BaseBox-bmPWx ezJsiy"
-                  data-blade-component="base-box"
-                >
-                  <div
-                    class="BaseBox-bmPWx bmQUTK"
-                    data-blade-component="base-box"
-                  >
-                    <input
-                      aria-checked="false"
-                      aria-disabled="false"
-                      aria-invalid="false"
-                      aria-required="false"
-                      class="SelectorInputweb__StyledInput-sc-1bnkrae-0 doyDzz"
-                      role="checkbox"
-                      type="checkbox"
-                      value="apple"
-                    />
-                    <div
-                      class="BaseBox-bmPWx AnimatedChipweb__AnimatedChip-sc-1xiynj1-0 hRhKfS jZyeNE"
-                      data-blade-component="base-box"
-                    >
-                      <div
-                        class="BaseBox-bmPWx StyledChipWrapperweb__StyledChipWrapper-sc-1p3u1xx-0 liXXnK dXXpIC"
-                        data-blade-component="base-box"
-                      >
-                        <p
-                          class="StyledBaseText-dVBfTO lcTpfs"
-                          data-blade-component="text"
-                        >
-                          Apple
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </label>
-            </div>
-          </div>
-          <div
-            class="BaseBox-bmPWx knRmkR"
-            data-blade-component="base-box"
-          >
-            <div
-              class="BaseBox-bmPWx hGbNLG"
-              data-blade-component="chip"
-            >
-              <label
-                class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 cHPdOX"
-                data-blade-component="chip-label"
-                style="cursor:pointer"
-              >
-                <div
-                  class="BaseBox-bmPWx ezJsiy"
-                  data-blade-component="base-box"
-                >
-                  <div
-                    class="BaseBox-bmPWx bmQUTK"
-                    data-blade-component="base-box"
-                  >
-                    <input
-                      aria-checked="false"
-                      aria-disabled="false"
-                      aria-invalid="false"
-                      aria-required="false"
-                      class="SelectorInputweb__StyledInput-sc-1bnkrae-0 doyDzz"
-                      role="checkbox"
-                      type="checkbox"
-                      value="mango"
-                    />
-                    <div
-                      class="BaseBox-bmPWx AnimatedChipweb__AnimatedChip-sc-1xiynj1-0 hRhKfS jZyeNE"
-                      data-blade-component="base-box"
-                    >
-                      <div
-                        class="BaseBox-bmPWx StyledChipWrapperweb__StyledChipWrapper-sc-1p3u1xx-0 liXXnK dXXpIC"
-                        data-blade-component="base-box"
-                      >
-                        <p
-                          class="StyledBaseText-dVBfTO lcTpfs"
-                          data-blade-component="text"
-                        >
-                          Mango
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </label>
-            </div>
-          </div>
-          <div
-            class="BaseBox-bmPWx knRmkR"
-            data-blade-component="base-box"
-          >
-            <div
-              class="BaseBox-bmPWx hGbNLG"
-              data-blade-component="chip"
-            >
-              <label
-                class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 cHPdOX"
-                data-blade-component="chip-label"
-                style="cursor:pointer"
-              >
-                <div
-                  class="BaseBox-bmPWx ezJsiy"
-                  data-blade-component="base-box"
-                >
-                  <div
-                    class="BaseBox-bmPWx bmQUTK"
-                    data-blade-component="base-box"
-                  >
-                    <input
-                      aria-checked="false"
-                      aria-disabled="false"
-                      aria-invalid="false"
-                      aria-required="false"
-                      class="SelectorInputweb__StyledInput-sc-1bnkrae-0 doyDzz"
-                      role="checkbox"
-                      type="checkbox"
-                      value="orange"
-                    />
-                    <div
-                      class="BaseBox-bmPWx AnimatedChipweb__AnimatedChip-sc-1xiynj1-0 hRhKfS jZyeNE"
-                      data-blade-component="base-box"
-                    >
-                      <div
-                        class="BaseBox-bmPWx StyledChipWrapperweb__StyledChipWrapper-sc-1p3u1xx-0 liXXnK dXXpIC"
-                        data-blade-component="base-box"
-                      >
-                        <p
-                          class="StyledBaseText-dVBfTO lcTpfs"
-                          data-blade-component="text"
-                        >
-                          Orange
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </label>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`<ChipGroup /> should render with selectionType="single" 1`] = `"<div id="root"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div role="radiogroup" aria-labelledby="chip-group-undefined-label" data-blade-component="chip-group" class="BaseBox-bmPWx cRzqgS"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 jZYAhz"><p class="StyledBaseText-dVBfTO ekbJPz" data-blade-component="text">Select fruits</p></div><div data-blade-component="base-box" class="BaseBox-bmPWx hWlajl"><div data-blade-component="base-box" class="BaseBox-bmPWx knRmkR"><div data-blade-component="chip" class="BaseBox-bmPWx hGbNLG"><label style="cursor:pointer" data-blade-component="chip-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 cHPdOX"><div data-blade-component="base-box" class="BaseBox-bmPWx ezJsiy"><div data-blade-component="base-box" class="BaseBox-bmPWx bmQUTK"><input type="radio" role="radio" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" aria-describedby="radio-undefined-helptext-undefined" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 doyDzz" value="apple"/><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedChipweb__AnimatedChip-sc-1xiynj1-0 hRhKfS jZyeNE"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledChipWrapperweb__StyledChipWrapper-sc-1p3u1xx-0 liXXnK dXXpIC"><p class="StyledBaseText-dVBfTO lcTpfs" data-blade-component="text">Apple</p></div></div></div></div></label></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx knRmkR"><div data-blade-component="chip" class="BaseBox-bmPWx hGbNLG"><label style="cursor:pointer" data-blade-component="chip-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 cHPdOX"><div data-blade-component="base-box" class="BaseBox-bmPWx ezJsiy"><div data-blade-component="base-box" class="BaseBox-bmPWx bmQUTK"><input type="radio" role="radio" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" aria-describedby="radio-undefined-helptext-undefined" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 doyDzz" value="mango"/><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedChipweb__AnimatedChip-sc-1xiynj1-0 hRhKfS jZyeNE"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledChipWrapperweb__StyledChipWrapper-sc-1p3u1xx-0 liXXnK dXXpIC"><p class="StyledBaseText-dVBfTO lcTpfs" data-blade-component="text">Mango</p></div></div></div></div></label></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx knRmkR"><div data-blade-component="chip" class="BaseBox-bmPWx hGbNLG"><label style="cursor:pointer" data-blade-component="chip-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 cHPdOX"><div data-blade-component="base-box" class="BaseBox-bmPWx ezJsiy"><div data-blade-component="base-box" class="BaseBox-bmPWx bmQUTK"><input type="radio" role="radio" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" aria-describedby="radio-undefined-helptext-undefined" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 doyDzz" value="orange"/><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedChipweb__AnimatedChip-sc-1xiynj1-0 hRhKfS jZyeNE"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledChipWrapperweb__StyledChipWrapper-sc-1p3u1xx-0 liXXnK dXXpIC"><p class="StyledBaseText-dVBfTO lcTpfs" data-blade-component="text">Orange</p></div></div></div></div></label></div></div></div></div></div></div></div>"`;
->>>>>>> e424fbce (feat: increase CSS specificity of components)
+exports[`<ChipGroup /> should render with selectionType="single" 1`] = `"<div id="root"><div data-blade-component="box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div role="radiogroup" aria-labelledby="chip-group-undefined-label" data-blade-component="chip-group" class="BaseBox-bmPWx bFzCEy"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 Fuolv"><p class="StyledBaseText-dVBfTO hJVyJT" data-blade-component="text">Select fruits</p></div><div data-blade-component="base-box" class="BaseBox-bmPWx iuMdod"><div data-blade-component="base-box" class="BaseBox-bmPWx bjGCyh"><div data-blade-component="chip" class="BaseBox-bmPWx ePenKG"><label style="cursor:pointer" data-blade-component="chip-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 ehaOvX"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><input type="radio" role="radio" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" aria-describedby="radio-undefined-helptext-undefined" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 bVbDHL" value="apple"/><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedChipweb__AnimatedChip-sc-1xiynj1-0 dLUtUC dlRwcw"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledChipWrapperweb__StyledChipWrapper-sc-1p3u1xx-0 eifKyS kpMgoO"><p class="StyledBaseText-dVBfTO jcxqOY" data-blade-component="text">Apple</p></div></div></div></div></label></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx bjGCyh"><div data-blade-component="chip" class="BaseBox-bmPWx ePenKG"><label style="cursor:pointer" data-blade-component="chip-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 ehaOvX"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><input type="radio" role="radio" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" aria-describedby="radio-undefined-helptext-undefined" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 bVbDHL" value="mango"/><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedChipweb__AnimatedChip-sc-1xiynj1-0 dLUtUC dlRwcw"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledChipWrapperweb__StyledChipWrapper-sc-1p3u1xx-0 eifKyS kpMgoO"><p class="StyledBaseText-dVBfTO jcxqOY" data-blade-component="text">Mango</p></div></div></div></div></label></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx bjGCyh"><div data-blade-component="chip" class="BaseBox-bmPWx ePenKG"><label style="cursor:pointer" data-blade-component="chip-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 ehaOvX"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><input type="radio" role="radio" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" aria-describedby="radio-undefined-helptext-undefined" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 bVbDHL" value="orange"/><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedChipweb__AnimatedChip-sc-1xiynj1-0 dLUtUC dlRwcw"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledChipWrapperweb__StyledChipWrapper-sc-1p3u1xx-0 eifKyS kpMgoO"><p class="StyledBaseText-dVBfTO jcxqOY" data-blade-component="text">Orange</p></div></div></div></div></label></div></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx"><div role="group" aria-labelledby="chip-group-undefined-label" data-blade-component="chip-group" class="BaseBox-bmPWx bFzCEy"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 Fuolv"><p class="StyledBaseText-dVBfTO hJVyJT" data-blade-component="text">Select flowers</p></div><div data-blade-component="base-box" class="BaseBox-bmPWx iuMdod"><div data-blade-component="base-box" class="BaseBox-bmPWx bjGCyh"><div data-blade-component="chip" class="BaseBox-bmPWx ePenKG"><label style="cursor:pointer" data-blade-component="chip-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 ehaOvX"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><input type="checkbox" role="checkbox" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 bVbDHL" value="Rose"/><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedChipweb__AnimatedChip-sc-1xiynj1-0 dLUtUC dlRwcw"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledChipWrapperweb__StyledChipWrapper-sc-1p3u1xx-0 eifKyS kpMgoO"><p class="StyledBaseText-dVBfTO jcxqOY" data-blade-component="text">Rose</p></div></div></div></div></label></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx bjGCyh"><div data-blade-component="chip" class="BaseBox-bmPWx ePenKG"><label style="cursor:pointer" data-blade-component="chip-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 ehaOvX"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><input type="checkbox" role="checkbox" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 bVbDHL" value="Sunflower"/><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedChipweb__AnimatedChip-sc-1xiynj1-0 dLUtUC dlRwcw"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledChipWrapperweb__StyledChipWrapper-sc-1p3u1xx-0 eifKyS kpMgoO"><p class="StyledBaseText-dVBfTO jcxqOY" data-blade-component="text">Sunflower</p></div></div></div></div></label></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx bjGCyh"><div data-blade-component="chip" class="BaseBox-bmPWx ePenKG"><label style="cursor:pointer" data-blade-component="chip-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 ehaOvX"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><input type="checkbox" role="checkbox" aria-required="false" aria-invalid="false" aria-disabled="false" aria-checked="false" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 bVbDHL" value="Lily"/><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedChipweb__AnimatedChip-sc-1xiynj1-0 dLUtUC dlRwcw"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledChipWrapperweb__StyledChipWrapper-sc-1p3u1xx-0 eifKyS kpMgoO"><p class="StyledBaseText-dVBfTO jcxqOY" data-blade-component="text">Lily</p></div></div></div></div></label></div></div></div></div></div></div></div></div>"`;
 
 exports[`<ChipGroup /> should render with selectionType="single" 2`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -215,7 +13,7 @@ exports[`<ChipGroup /> should render with selectionType="single" 2`] = `
   flex-direction: row;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -228,19 +26,19 @@ exports[`<ChipGroup /> should render with selectionType="single" 2`] = `
   flex-direction: row;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   margin-bottom: 8px;
   margin-right: 8px;
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -250,7 +48,7 @@ exports[`<ChipGroup /> should render with selectionType="single" 2`] = `
   flex-direction: column;
 }
 
-.c8 {
+.c8.c8.c8.c8.c8 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -264,12 +62,12 @@ exports[`<ChipGroup /> should render with selectionType="single" 2`] = `
   align-items: center;
 }
 
-.c10 {
+.c10.c10.c10.c10.c10 {
   border-color: hsla(216,19%,89%,1);
   border-style: solid;
 }
 
-.c12 {
+.c12.c12.c12.c12.c12 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -296,7 +94,7 @@ exports[`<ChipGroup /> should render with selectionType="single" 2`] = `
   border-style: solid;
 }
 
-.c11 {
+.c11.c11.c11.c11.c11 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 9999px;
   border-color: hsla(216,19%,89%,1);
@@ -334,7 +132,7 @@ exports[`<ChipGroup /> should render with selectionType="single" 2`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c13 {
+.c13.c13.c13.c13.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -342,7 +140,7 @@ exports[`<ChipGroup /> should render with selectionType="single" 2`] = `
   border-color: transparent;
 }
 
-.c13:hover {
+.c13.c13.c13.c13.c13:hover {
   background-color: hsla(216,15%,54%,0.09);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -350,7 +148,7 @@ exports[`<ChipGroup /> should render with selectionType="single" 2`] = `
   transition-duration: 150ms;
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -359,7 +157,7 @@ exports[`<ChipGroup /> should render with selectionType="single" 2`] = `
   margin-bottom: 2px;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -376,7 +174,7 @@ exports[`<ChipGroup /> should render with selectionType="single" 2`] = `
   word-wrap: normal;
 }
 
-.c9 {
+.c9.c9.c9.c9.c9 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -393,12 +191,12 @@ exports[`<ChipGroup /> should render with selectionType="single" 2`] = `
   word-wrap: normal;
 }
 
-.c9:focus-visible + div {
+.c9.c9.c9.c9.c9:focus-visible + div {
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c9:hover + div {
+.c9.c9.c9.c9.c9:hover + div {
   border-color: hsla(214,18%,69%,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -406,7 +204,7 @@ exports[`<ChipGroup /> should render with selectionType="single" 2`] = `
   transition-duration: 70ms;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -419,7 +217,7 @@ exports[`<ChipGroup /> should render with selectionType="single" 2`] = `
   padding: 0;
 }
 
-.c14 {
+.c14.c14.c14.c14.c14 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -438,61 +236,61 @@ exports[`<ChipGroup /> should render with selectionType="single" 2`] = `
 }
 
 @media screen and (min-width:320px) {
-  .c10 {
+  .c10.c10.c10.c10.c10 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c10 {
+  .c10.c10.c10.c10.c10 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c10 {
+  .c10.c10.c10.c10.c10 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c10 {
+  .c10.c10.c10.c10.c10 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c10 {
+  .c10.c10.c10.c10.c10 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:320px) {
-  .c12 {
+  .c12.c12.c12.c12.c12 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c12 {
+  .c12.c12.c12.c12.c12 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c12 {
+  .c12.c12.c12.c12.c12 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c12 {
+  .c12.c12.c12.c12.c12 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c12 {
+  .c12.c12.c12.c12.c12 {
     border-style: solid;
   }
 }
@@ -505,15 +303,8 @@ exports[`<ChipGroup /> should render with selectionType="single" 2`] = `
     data-blade-component="box"
   >
     <div
-<<<<<<< HEAD
       class=""
       data-blade-component="base-box"
-=======
-      aria-labelledby="chip-group-7-label"
-      class="BaseBox-bmPWx cRzqgS"
-      data-blade-component="chip-group"
-      role="radiogroup"
->>>>>>> e424fbce (feat: increase CSS specificity of components)
     >
       <div
         aria-labelledby="chip-group-7-label"
@@ -522,7 +313,6 @@ exports[`<ChipGroup /> should render with selectionType="single" 2`] = `
         role="radiogroup"
       >
         <div
-<<<<<<< HEAD
           class=""
           data-blade-component="base-box"
         >
@@ -560,109 +350,6 @@ exports[`<ChipGroup /> should render with selectionType="single" 2`] = `
                   >
                     <div
                       class="c8"
-=======
-          class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 jZYAhz"
-          data-blade-component="visually-hidden"
-        >
-          <p
-            class="StyledBaseText-dVBfTO ekbJPz"
-            data-blade-component="text"
-          >
-            Select fruits
-          </p>
-        </div>
-        <div
-          class="BaseBox-bmPWx hWlajl"
-          data-blade-component="base-box"
-        >
-          <div
-            class="BaseBox-bmPWx knRmkR"
-            data-blade-component="base-box"
-          >
-            <div
-              class="BaseBox-bmPWx hGbNLG"
-              data-blade-component="chip"
-            >
-              <label
-                class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 cHPdOX"
-                data-blade-component="chip-label"
-                style="cursor:pointer"
-              >
-                <div
-                  class="BaseBox-bmPWx ezJsiy"
-                  data-blade-component="base-box"
-                >
-                  <div
-                    class="BaseBox-bmPWx bmQUTK"
-                    data-blade-component="base-box"
-                  >
-                    <input
-                      aria-checked="false"
-                      aria-describedby="radio-1-helptext-2"
-                      aria-disabled="false"
-                      aria-invalid="false"
-                      aria-required="false"
-                      class="SelectorInputweb__StyledInput-sc-1bnkrae-0 doyDzz"
-                      role="radio"
-                      type="radio"
-                      value="apple"
-                    />
-                    <div
-                      class="BaseBox-bmPWx AnimatedChipweb__AnimatedChip-sc-1xiynj1-0 hRhKfS jZyeNE"
-                      data-blade-component="base-box"
-                    >
-                      <div
-                        class="BaseBox-bmPWx StyledChipWrapperweb__StyledChipWrapper-sc-1p3u1xx-0 liXXnK dXXpIC"
-                        data-blade-component="base-box"
-                      >
-                        <p
-                          class="StyledBaseText-dVBfTO lcTpfs"
-                          data-blade-component="text"
-                        >
-                          Apple
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </label>
-            </div>
-          </div>
-          <div
-            class="BaseBox-bmPWx knRmkR"
-            data-blade-component="base-box"
-          >
-            <div
-              class="BaseBox-bmPWx hGbNLG"
-              data-blade-component="chip"
-            >
-              <label
-                class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 cHPdOX"
-                data-blade-component="chip-label"
-                style="cursor:pointer"
-              >
-                <div
-                  class="BaseBox-bmPWx ezJsiy"
-                  data-blade-component="base-box"
-                >
-                  <div
-                    class="BaseBox-bmPWx bmQUTK"
-                    data-blade-component="base-box"
-                  >
-                    <input
-                      aria-checked="false"
-                      aria-describedby="radio-3-helptext-4"
-                      aria-disabled="false"
-                      aria-invalid="false"
-                      aria-required="false"
-                      class="SelectorInputweb__StyledInput-sc-1bnkrae-0 doyDzz"
-                      role="radio"
-                      type="radio"
-                      value="mango"
-                    />
-                    <div
-                      class="BaseBox-bmPWx AnimatedChipweb__AnimatedChip-sc-1xiynj1-0 hRhKfS jZyeNE"
->>>>>>> e424fbce (feat: increase CSS specificity of components)
                       data-blade-component="base-box"
                     >
                       <input
@@ -677,21 +364,12 @@ exports[`<ChipGroup /> should render with selectionType="single" 2`] = `
                         value="apple"
                       />
                       <div
-<<<<<<< HEAD
                         class="c10 c11"
                         data-blade-component="base-box"
                       >
                         <div
                           class="c12 c13"
                           data-blade-component="base-box"
-=======
-                        class="BaseBox-bmPWx StyledChipWrapperweb__StyledChipWrapper-sc-1p3u1xx-0 liXXnK dXXpIC"
-                        data-blade-component="base-box"
-                      >
-                        <p
-                          class="StyledBaseText-dVBfTO lcTpfs"
-                          data-blade-component="text"
->>>>>>> e424fbce (feat: increase CSS specificity of components)
                         >
                           <p
                             class="c14"
@@ -831,7 +509,6 @@ exports[`<ChipGroup /> should render with selectionType="single" 2`] = `
           data-blade-component="base-box"
         >
           <div
-<<<<<<< HEAD
             class="c1"
             data-blade-component="visually-hidden"
           >
@@ -865,41 +542,6 @@ exports[`<ChipGroup /> should render with selectionType="single" 2`] = `
                   >
                     <div
                       class="c8"
-=======
-            class="BaseBox-bmPWx knRmkR"
-            data-blade-component="base-box"
-          >
-            <div
-              class="BaseBox-bmPWx hGbNLG"
-              data-blade-component="chip"
-            >
-              <label
-                class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 cHPdOX"
-                data-blade-component="chip-label"
-                style="cursor:pointer"
-              >
-                <div
-                  class="BaseBox-bmPWx ezJsiy"
-                  data-blade-component="base-box"
-                >
-                  <div
-                    class="BaseBox-bmPWx bmQUTK"
-                    data-blade-component="base-box"
-                  >
-                    <input
-                      aria-checked="false"
-                      aria-describedby="radio-5-helptext-6"
-                      aria-disabled="false"
-                      aria-invalid="false"
-                      aria-required="false"
-                      class="SelectorInputweb__StyledInput-sc-1bnkrae-0 doyDzz"
-                      role="radio"
-                      type="radio"
-                      value="orange"
-                    />
-                    <div
-                      class="BaseBox-bmPWx AnimatedChipweb__AnimatedChip-sc-1xiynj1-0 hRhKfS jZyeNE"
->>>>>>> e424fbce (feat: increase CSS specificity of components)
                       data-blade-component="base-box"
                     >
                       <input
@@ -913,21 +555,12 @@ exports[`<ChipGroup /> should render with selectionType="single" 2`] = `
                         value="Rose"
                       />
                       <div
-<<<<<<< HEAD
                         class="c10 c11"
                         data-blade-component="base-box"
                       >
                         <div
                           class="c12 c13"
                           data-blade-component="base-box"
-=======
-                        class="BaseBox-bmPWx StyledChipWrapperweb__StyledChipWrapper-sc-1p3u1xx-0 liXXnK dXXpIC"
-                        data-blade-component="base-box"
-                      >
-                        <p
-                          class="StyledBaseText-dVBfTO lcTpfs"
-                          data-blade-component="text"
->>>>>>> e424fbce (feat: increase CSS specificity of components)
                         >
                           <p
                             class="c14"

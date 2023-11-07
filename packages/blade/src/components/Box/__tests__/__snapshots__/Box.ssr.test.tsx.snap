@@ -1,13 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Box /> should render Box as footer tag 1`] = `"<div id="root"><footer data-blade-component="box" class="BaseBox-bmPWx iygCpc">Footer test!</footer></div>"`;
+exports[`<Box /> should render Box as footer tag 1`] = `"<div id="root"><footer data-blade-component="box" class="BaseBox-bmPWx eTTyBE">Footer test!</footer></div>"`;
 
-<<<<<<< HEAD
-exports[`<Box /> should render Box component with supported styles 1`] = `"<div id="root"><div data-blade-component="box" class="BaseBox-bmPWx jBndhd">children test!</div></div>"`;
-=======
-exports[`<Box /> should render Box component with supported styles 1`] = `"<div id="root"><div data-blade-component="box" class="BaseBox-bmPWx kSojPu">children test!</div></div>"`;
-
-exports[`<Box /> should throw error for unsupport as prop 1`] = `"<div id="root"><button data-blade-component="box" class="BaseBox-bmPWx"></button></div>"`;
-
-exports[`<Box /> should throw error for unsupport values 1`] = `"<div id="root"><div data-blade-component="box" class="BaseBox-bmPWx dfyvHS"></div></div>"`;
->>>>>>> e424fbce (feat: increase CSS specificity of components)
+exports[`<Box /> should render Box component with supported styles 1`] = `"<div id="root"><div data-blade-component="box" class="BaseBox-bmPWx caGAgu">children test!</div></div>"`;

@@ -1,16 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render BottomSheet and make it visible on click 1`] = `
-#razorpay-blade .c0 {
+.c0.c0.c0.c0.c0 {
   text-align: left;
   position: relative;
 }
 
-#razorpay-blade .c0 {
+.c1.c1.c1.c1.c1 {
   position: relative;
 }
 
-#razorpay-blade .c0 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -22,7 +22,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   width: 100%;
 }
 
-#razorpay-blade .c0 {
+.c4.c4.c4.c4.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -38,11 +38,11 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   margin-top: 0px;
 }
 
-#razorpay-blade .c0 {
+.c5.c5.c5.c5.c5 {
   margin-bottom: 4px;
 }
 
-#razorpay-blade .c0 {
+.c6.c6.c6.c6.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -61,7 +61,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   gap: 0px;
 }
 
-#razorpay-blade .c0 {
+.c11.c11.c11.c11.c11 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -80,13 +80,13 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   min-height: 36px;
 }
 
-#razorpay-blade .c0 {
+.c12.c12.c12.c12.c12 {
   margin-top: -4px;
   width: 100%;
   min-width: 30px;
 }
 
-#razorpay-blade .c0 {
+.c15.c15.c15.c15.c15 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -103,7 +103,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   align-self: center;
 }
 
-#razorpay-blade .c0 {
+.c16.c16.c16.c16.c16 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -118,7 +118,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   padding-right: 12px;
 }
 
-#razorpay-blade .c0 {
+.c17.c17.c17.c17.c17 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -134,11 +134,11 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   height: 100%;
 }
 
-#razorpay-blade .c0 {
+.c21.c21.c21.c21.c21 {
   margin-left: 0px;
 }
 
-#razorpay-blade .c0 {
+.c22.c22.c22.c22.c22 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -152,18 +152,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   justify-content: flex-end;
 }
 
-#razorpay-blade .c0 {
-  position: fixed;
-  z-index: 101;
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
-  background-color: hsla(214,15%,18%,0.64);
-  opacity: 0;
-}
-
-#razorpay-blade .c0 {
+.c26.c26.c26.c26.c26 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -174,14 +163,14 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   height: 100%;
 }
 
-#razorpay-blade .c0 {
+.c28.c28.c28.c28.c28 {
   overflow: auto;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
 }
 
-#razorpay-blade .c0 {
+.c29.c29.c29.c29.c29 {
   padding-right: 16px;
   padding-left: 16px;
   margin-bottom: 16px;
@@ -189,7 +178,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   touch-action: none;
 }
 
-#razorpay-blade .c0 {
+.c30.c30.c30.c30.c30 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -203,7 +192,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   user-select: none;
 }
 
-#razorpay-blade .c0 {
+.c31.c31.c31.c31.c31 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -222,13 +211,13 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   margin-right: auto;
 }
 
-#razorpay-blade .c0 {
+.c32.c32.c32.c32.c32 {
   -webkit-flex: auto;
   -ms-flex: auto;
   flex: auto;
 }
 
-#razorpay-blade .c0 {
+.c33.c33.c33.c33.c33 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -241,7 +230,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   flex-shrink: 0;
 }
 
-#razorpay-blade .c0 {
+.c34.c34.c34.c34.c34 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -257,13 +246,13 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   height: 28px;
 }
 
-#razorpay-blade .c0 {
+.c40.c40.c40.c40.c40 {
   border-width: 0px;
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-style: solid;
 }
 
-#razorpay-blade .c0 {
+.c42.c42.c42.c42.c42 {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -273,15 +262,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   flex-shrink: 1;
 }
 
-#razorpay-blade .c0 {
-  overflow: auto;
-  padding-top: 16px;
-  padding-bottom: 16px;
-  padding-right: 16px;
-  padding-left: 16px;
-}
-
-#razorpay-blade .c0 {
+.c46.c46.c46.c46.c46 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -300,7 +281,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   max-height: 20px;
 }
 
-#razorpay-blade .c0 {
+.c47.c47.c47.c47.c47 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -315,7 +296,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   justify-content: center;
 }
 
-#razorpay-blade .c0 {
+.c48.c48.c48.c48.c48 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -331,11 +312,11 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   padding-left: 0px;
 }
 
-#razorpay-blade .c0 {
+.c50.c50.c50.c50.c50 {
   margin-left: auto;
 }
 
-#razorpay-blade .c0 {
+.c51.c51.c51.c51.c51 {
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -346,11 +327,11 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   touch-action: none;
 }
 
-#razorpay-blade .c0 {
+.c52.c52.c52.c52.c52 {
   padding: 16px;
 }
 
-#razorpay-blade .c0 {
+.c54.c54.c54.c54.c54 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -371,7 +352,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   justify-content: center;
 }
 
-#razorpay-blade .c0 {
+.c43.c43.c43.c43.c43 {
   overflow: auto;
   padding-top: 8px;
   padding-bottom: 8px;
@@ -379,7 +360,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   padding-left: 8px;
 }
 
-#razorpay-blade .c0 {
+.c37.c37.c37.c37.c37 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -398,18 +379,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   min-height: 36px;
 }
 
-#razorpay-blade .c0 {
-  position: fixed;
-  z-index: 100;
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
-  background-color: hsla(214,15%,18%,0.64);
-  opacity: 0;
-}
-
-#razorpay-blade .c0 {
+.c23.c23.c23.c23.c23 {
   position: fixed;
   z-index: 100;
   top: 0px;
@@ -420,7 +390,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   opacity: 1;
 }
 
-#razorpay-blade .c16 {
+.c53.c53.c53.c53.c53 {
   min-height: 36px;
   width: 100%;
   cursor: pointer;
@@ -456,24 +426,24 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   position: relative;
 }
 
-#razorpay-blade .c16:hover {
+.c53.c53.c53.c53.c53:hover {
   background-color: hsla(223,95%,48%,1);
   border-color: hsla(223,95%,48%,1);
 }
 
-#razorpay-blade .c16:active {
+.c53.c53.c53.c53.c53:active {
   background-color: hsla(230,100%,42%,1);
   border-color: hsla(230,100%,42%,1);
 }
 
-#razorpay-blade .c16:focus-visible {
+.c53.c53.c53.c53.c53:focus-visible {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-#razorpay-blade .c16 * {
+.c53.c53.c53.c53.c53 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -482,7 +452,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-#razorpay-blade .c2 {
+.c7.c7.c7.c7.c7 {
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -500,7 +470,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   -webkit-box-orient: vertical;
 }
 
-#razorpay-blade .c2 {
+.c8.c8.c8.c8.c8 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -513,7 +483,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   padding: 0;
 }
 
-#razorpay-blade .c2 {
+.c14.c14.c14.c14.c14 {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -532,7 +502,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   -webkit-box-orient: vertical;
 }
 
-#razorpay-blade .c2 {
+.c49.c49.c49.c49.c49 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -550,7 +520,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   -webkit-box-orient: vertical;
 }
 
-#razorpay-blade .c2 {
+.c56.c56.c56.c56.c56 {
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -564,22 +534,22 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   padding: 0;
 }
 
-#razorpay-blade .c6 {
+.c19.c19.c19.c19.c19 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-#razorpay-blade .c6 {
+.c18.c18.c18.c18.c18 {
   display: none;
 }
 
-#razorpay-blade .c17 {
+.c55.c55.c55.c55.c55 {
   opacity: 1;
 }
 
-#razorpay-blade .c13 {
+.c41.c41.c41.c41.c41 {
   border-bottom-style: solid;
   border-bottom-width: 1px;
   -webkit-box-flex: 1;
@@ -588,7 +558,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   flex-grow: 1;
 }
 
-#razorpay-blade .c11 {
+.c35.c35.c35.c35.c35 {
   border: none;
   cursor: pointer;
   padding: 0;
@@ -615,110 +585,21 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-#razorpay-blade .c11:hover {
+.c35.c35.c35.c35.c35:hover {
   color: hsla(217,18%,45%,1);
 }
 
-#razorpay-blade .c11:focus-visible {
+.c35.c35.c35.c35.c35:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   color: hsla(217,18%,45%,1);
 }
 
-#razorpay-blade .c11:active {
+.c35.c35.c35.c35.c35:active {
   color: hsla(217,18%,45%,1);
 }
 
-#razorpay-blade .c12 {
-  color: hsla(216,27%,36%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: left;
-  margin: 0;
-  padding: 0;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  background-color: transparent;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 0px;
-  padding-right: 8px;
-  width: 100%;
-  height: 36px;
-  min-height: 36px;
-  resize: none;
-  outline: none;
-  border: none;
-  cursor: auto;
-}
-
-#razorpay-blade .c12::-webkit-input-placeholder {
-  color: hsla(214,18%,69%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: left;
-  margin: 0;
-  padding: 0;
-}
-
-#razorpay-blade .c12::-moz-placeholder {
-  color: hsla(214,18%,69%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: left;
-  margin: 0;
-  padding: 0;
-}
-
-#razorpay-blade .c12:-ms-input-placeholder {
-  color: hsla(214,18%,69%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: left;
-  margin: 0;
-  padding: 0;
-}
-
-#razorpay-blade .c12::placeholder {
-  color: hsla(214,18%,69%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  text-align: left;
-  margin: 0;
-  padding: 0;
-}
-
-#razorpay-blade .c12:focus {
-  outline: none;
-}
-
-#razorpay-blade .c12 {
+.c38.c38.c38.c38.c38 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -747,7 +628,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   cursor: auto;
 }
 
-#razorpay-blade .c12::-webkit-input-placeholder {
+.c38.c38.c38.c38.c38::-webkit-input-placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -761,7 +642,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   padding: 0;
 }
 
-#razorpay-blade .c12::-moz-placeholder {
+.c38.c38.c38.c38.c38::-moz-placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -775,7 +656,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   padding: 0;
 }
 
-#razorpay-blade .c12:-ms-input-placeholder {
+.c38.c38.c38.c38.c38:-ms-input-placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -789,7 +670,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   padding: 0;
 }
 
-#razorpay-blade .c12::placeholder {
+.c38.c38.c38.c38.c38::placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -803,11 +684,11 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   padding: 0;
 }
 
-#razorpay-blade .c12:focus {
+.c38.c38.c38.c38.c38:focus {
   outline: none;
 }
 
-#razorpay-blade .c5 {
+.c13.c13.c13.c13.c13 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -836,7 +717,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   cursor: auto;
 }
 
-#razorpay-blade .c5::-webkit-input-placeholder {
+.c13.c13.c13.c13.c13::-webkit-input-placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -850,7 +731,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   padding: 0;
 }
 
-#razorpay-blade .c5::-moz-placeholder {
+.c13.c13.c13.c13.c13::-moz-placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -864,7 +745,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   padding: 0;
 }
 
-#razorpay-blade .c5:-ms-input-placeholder {
+.c13.c13.c13.c13.c13:-ms-input-placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -878,7 +759,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   padding: 0;
 }
 
-#razorpay-blade .c5::placeholder {
+.c13.c13.c13.c13.c13::placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -892,11 +773,11 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   padding: 0;
 }
 
-#razorpay-blade .c5:focus {
+.c13.c13.c13.c13.c13:focus {
   outline: none;
 }
 
-#razorpay-blade .c7 {
+.c39.c39.c39.c39.c39 {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -905,9 +786,11 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   background-color: hsla(218,89%,51%,1);
   border-width: 1px;
   height: 1px;
+  -webkit-animation: cAlpMa-450290765 250ms cubic-bezier(0.3,0,0.2,1) forwards;
+  animation: cAlpMa-450290765 250ms cubic-bezier(0.3,0,0.2,1) forwards;
 }
 
-#razorpay-blade .c7 {
+.c20.c20.c20.c20.c20 {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -916,24 +799,11 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   background-color: hsla(218,89%,51%,1);
   border-width: 1px;
   height: 1px;
-  -webkit-animation: cAlpMa-1780344755 250ms cubic-bezier(0.3,0,0.2,1) forwards;
-  animation: cAlpMa-1780344755 250ms cubic-bezier(0.3,0,0.2,1) forwards;
+  -webkit-animation: iXkvNT-450290765 150ms cubic-bezier(0.3,0,0.2,1) forwards;
+  animation: iXkvNT-450290765 150ms cubic-bezier(0.3,0,0.2,1) forwards;
 }
 
-#razorpay-blade .c7 {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  opacity: 0;
-  background-color: hsla(218,89%,51%,1);
-  border-width: 1px;
-  height: 1px;
-  -webkit-animation: iXkvNT-1780344755 150ms cubic-bezier(0.3,0,0.2,1) forwards;
-  animation: iXkvNT-1780344755 150ms cubic-bezier(0.3,0,0.2,1) forwards;
-}
-
-#razorpay-blade .c3 {
+.c9.c9.c9.c9.c9 {
   background-color: hsla(216,15%,54%,0.09);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
@@ -952,7 +822,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   height: auto;
 }
 
-#razorpay-blade .c3:hover {
+.c9.c9.c9.c9.c9:hover {
   background-color: hsla(216,15%,54%,0.18);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
@@ -977,7 +847,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-#razorpay-blade .c3:focus-within {
+.c9.c9.c9.c9.c9:focus-within {
   background-color: hsla(216,15%,54%,0.09);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
@@ -996,7 +866,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   height: auto;
 }
 
-#razorpay-blade .c3 {
+.c36.c36.c36.c36.c36 {
   background-color: hsla(218,89%,51%,0.09);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
@@ -1015,7 +885,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   height: auto;
 }
 
-#razorpay-blade .c3:hover {
+.c36.c36.c36.c36.c36:hover {
   background-color: hsla(218,89%,51%,0.09);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
@@ -1040,7 +910,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-#razorpay-blade .c3:focus-within {
+.c36.c36.c36.c36.c36:focus-within {
   background-color: hsla(218,89%,51%,0.09);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
@@ -1059,13 +929,13 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   height: auto;
 }
 
-#razorpay-blade .c4 {
+.c10.c10.c10.c10.c10 {
   -webkit-animation: none;
   animation: none;
   max-height: 37px;
 }
 
-#razorpay-blade .c1 {
+.c2.c2.c2.c2.c2 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -1082,15 +952,15 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   word-wrap: normal;
 }
 
-#razorpay-blade .c14 {
+.c44.c44.c44.c44.c44 {
   overflow-y: auto;
 }
 
-#razorpay-blade .c14 [role=group]:last-child > [role=separator]:last-child {
+.c44.c44.c44.c44.c44 [role=group]:last-child > [role=separator]:last-child {
   display: none;
 }
 
-#razorpay-blade .c15 {
+.c45.c45.c45.c45.c45 {
   border-width: 4px;
   border-style: solid;
   border-color: transparent;
@@ -1105,48 +975,15 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   display: block;
 }
 
-#razorpay-blade .c15:hover:not([aria-disabled=true]) {
+.c45.c45.c45.c45.c45:hover:not([aria-disabled=true]) {
   background-color: hsla(216,15%,54%,0.09);
 }
 
-#razorpay-blade .c15[aria-selected=true] {
+.c45.c45.c45.c45.c45[aria-selected=true] {
   background-color: hsla(218,89%,51%,0.09);
 }
 
-#razorpay-blade .c15 {
-  border-width: 4px;
-  border-style: solid;
-  border-color: transparent;
-  text-align: left;
-  background-color: transparent;
-  padding: 4px;
-  border-radius: 4px;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  cursor: pointer;
-  width: 100%;
-  display: none;
-}
-
-#razorpay-blade .c15:hover:not([aria-disabled=true]) {
-  background-color: hsla(216,15%,54%,0.09);
-}
-
-#razorpay-blade .c15[aria-selected=true] {
-  background-color: hsla(218,89%,51%,0.09);
-}
-
-#razorpay-blade .c8 {
-  -webkit-transition-duration: 250ms;
-  transition-duration: 250ms;
-  -webkit-transition-timing-function: cubic-bezier(0.5,0,1,1);
-  transition-timing-function: cubic-bezier(0.5,0,1,1);
-  pointer-events: none;
-  -webkit-transition-property: opacity;
-  transition-property: opacity;
-}
-
-#razorpay-blade .c8 {
+.c24.c24.c24.c24.c24 {
   -webkit-transition-duration: 250ms;
   transition-duration: 250ms;
   -webkit-transition-timing-function: cubic-bezier(0,0,0,1);
@@ -1156,7 +993,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   transition-property: opacity;
 }
 
-#razorpay-blade .c10 {
+.c27.c27.c27.c27.c27 {
   position: relative;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
@@ -1183,7 +1020,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   z-index: 100;
 }
 
-#razorpay-blade .c10:after {
+.c27.c27.c27.c27.c27:after {
   margin: auto;
   content: '';
   width: 56px;
@@ -1192,41 +1029,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   border-radius: 16px;
 }
 
-#razorpay-blade .c9 {
-  background: hsla(0,0%,100%,1);
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
-  border-color: hsla(216,15%,54%,0.18);
-  box-shadow: 0px -24px 48px -12px hsla(217,56%,17%,0.18);
-  opacity: 0;
-  pointer-events: none;
-  -webkit-transition-duration: 250ms;
-  transition-duration: 250ms;
-  -webkit-transition-timing-function: cubic-bezier(.15,0,.24,.97);
-  transition-timing-function: cubic-bezier(.15,0,.24,.97);
-  will-change: transform,opacity,height;
-  -webkit-transition-property: -webkit-transform,opacity,height;
-  -webkit-transition-property: transform,opacity,height;
-  transition-property: transform,opacity,height;
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 0;
-  background-color: hsla(0,0%,100%,1);
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  touch-action: none;
-  overflow: hidden;
-}
-
-#razorpay-blade .c9 {
+.c25.c25.c25.c25.c25 {
   background: hsla(0,0%,100%,1);
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
@@ -1261,7 +1064,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 @media screen and (min-width:768px) {
-  #razorpay-blade .c0 {
+  .c29.c29.c29.c29.c29 {
     padding-right: 20px;
     padding-left: 20px;
     margin-bottom: 20px;
@@ -1270,56 +1073,56 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 @media screen and (min-width:320px) {
-  #razorpay-blade .c0 {
+  .c40.c40.c40.c40.c40 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  #razorpay-blade .c0 {
+  .c40.c40.c40.c40.c40 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  #razorpay-blade .c0 {
+  .c40.c40.c40.c40.c40 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  #razorpay-blade .c0 {
+  .c40.c40.c40.c40.c40 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  #razorpay-blade .c0 {
+  .c40.c40.c40.c40.c40 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  #razorpay-blade .c0 {
+  .c52.c52.c52.c52.c52 {
     padding: 20px;
   }
 }
 
 <div>
   <div
-    class="c0"
+    class=""
     data-blade-component="dropdown"
   >
     <div
-      class="c0 "
+      class="c0"
       data-blade-component="base-box"
     >
       <div
-        class="c0 "
+        class="c1"
         data-blade-component="base-box"
       >
         <div
-          class="c1 "
+          class="c2"
           data-blade-component="visually-hidden"
         >
           <input
@@ -1329,16 +1132,16 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
           />
         </div>
         <div
-          class="c0"
+          class=""
           data-blade-component="select-input"
           data-testid="select"
         >
           <div
-            class="c0 "
+            class="c3"
             data-blade-component="base-box"
           >
             <div
-              class="c0 "
+              class="c4"
               data-blade-component="base-box"
             >
               <label
@@ -1348,25 +1151,25 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                 style="width: auto; flex-shrink: 0; margin-right: 16px;"
               >
                 <div
-                  class="c0 "
+                  class="c5"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c0 "
+                    class="c6"
                     data-blade-component="base-box"
                   >
                     <p
-                      class="c2 "
+                      class="c7"
                       data-blade-component="text"
                     >
                       Fruits
                     </p>
                     <div
-                      class="c1 "
+                      class="c2"
                       data-blade-component="visually-hidden"
                     >
                       <p
-                        class="c2 "
+                        class="c8"
                         data-blade-component="text"
                       />
                     </div>
@@ -1375,15 +1178,15 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
               </label>
             </div>
             <div
-              class="c0 c3 c4  "
+              class=" c9 c10"
               data-blade-component="base-box"
             >
               <div
-                class="c0 tags-slot"
+                class="c11 tags-slot"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c0 "
+                  class="c12"
                   data-blade-component="base-box"
                 >
                   <button
@@ -1396,7 +1199,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                     aria-invalid="false"
                     aria-required="false"
                     autocomplete="off"
-                    class="c5 "
+                    class="c13"
                     data-blade-component="styled-base-input"
                     id="dropdown-123"
                     placeholder="Select Option"
@@ -1405,7 +1208,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                     value=""
                   >
                     <p
-                      class="c2 "
+                      class="c14"
                       data-blade-component="text"
                     >
                       Select Option
@@ -1414,20 +1217,20 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                 </div>
               </div>
               <div
-                class="c0 "
+                class="c15"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c0 "
+                  class="c16"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c0 "
+                    class="c17"
                     data-blade-component="base-box"
                   >
                     <svg
                       aria-hidden="true"
-                      class="c6 "
+                      class="c18"
                       data-blade-component="icon"
                       fill="none"
                       height="16px"
@@ -1444,7 +1247,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                     </svg>
                     <svg
                       aria-hidden="true"
-                      class="c6 "
+                      class="c19"
                       data-blade-component="icon"
                       fill="none"
                       height="16px"
@@ -1463,87 +1266,87 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                 </div>
               </div>
               <div
-                class="c0 c7  "
+                class=" c20"
                 data-blade-component="base-box"
               />
             </div>
           </div>
           <div
-            class="c0 "
+            class="c21"
             data-blade-component="base-box"
           >
             <div
-              class="c0 "
+              class="c22"
               data-blade-component="base-box"
             />
           </div>
         </div>
       </div>
       <div
-        class="c0 c8 "
+        class="c23 c24"
         data-blade-component="base-box"
         data-testid="bottomsheet-backdrop"
         opacity="1"
       />
       <div
         aria-modal="true"
-        class="c9 "
+        class="c25"
         data-blade-component="bottom-sheet"
         data-testid="bottomsheet-surface"
         role="dialog"
         style="opacity: 1; pointer-events: all; height: 652.8px; bottom: 0px; z-index: 100;"
       >
         <div
-          class="c0 "
+          class="c26"
           data-blade-component="base-box"
         >
           <div
-            class="c10 "
+            class="c27"
             data-blade-component="BottomSheetGrabHandle"
           />
           <div
-            class="c0 "
+            class="c28"
             data-blade-component="bottom-sheet-header"
           >
             <div
-              class="c0"
+              class=""
               data-blade-component="base-box"
             >
               <div
-                class="c0 "
+                class="c29"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c0 "
+                  class="c30"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c0 "
+                    class="c31"
                     data-blade-component="base-box"
                   >
                     <div
-                      class="c0 "
+                      class="c32"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c0 "
+                        class="c33"
                         data-blade-component="base-box"
                       />
                     </div>
                   </div>
                   <div
-                    class="c0 "
+                    class="c34"
                     data-blade-component="box"
                   >
                     <button
                       aria-label="Close"
-                      class="c11 "
+                      class="c35"
                       data-blade-component="icon-button"
                       type="button"
                     >
                       <svg
                         aria-hidden="true"
-                        class="c6"
+                        class=""
                         data-blade-component="icon"
                         fill="none"
                         height="20px"
@@ -1560,20 +1363,20 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                   </div>
                 </div>
                 <div
-                  class="c0 "
+                  class="c1"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c0"
+                    class=""
                     data-blade-component="autocomplete"
                     data-testid="fruits-autocomplete"
                   >
                     <div
-                      class="c0 "
+                      class="c3"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c0 "
+                        class="c4"
                         data-blade-component="base-box"
                       >
                         <label
@@ -1583,25 +1386,25 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                           style="width: auto; flex-shrink: 0; margin-right: 16px;"
                         >
                           <div
-                            class="c0 "
+                            class="c5"
                             data-blade-component="base-box"
                           >
                             <div
-                              class="c0 "
+                              class="c6"
                               data-blade-component="base-box"
                             >
                               <p
-                                class="c2 "
+                                class="c7"
                                 data-blade-component="text"
                               >
                                 Fruits
                               </p>
                               <div
-                                class="c1 "
+                                class="c2"
                                 data-blade-component="visually-hidden"
                               >
                                 <p
-                                  class="c2 "
+                                  class="c8"
                                   data-blade-component="text"
                                 />
                               </div>
@@ -1610,15 +1413,15 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                         </label>
                       </div>
                       <div
-                        class="c0 c3 c4  "
+                        class=" c36 c10"
                         data-blade-component="base-box"
                       >
                         <div
-                          class="c0 tags-slot"
+                          class="c37 tags-slot"
                           data-blade-component="base-box"
                         >
                           <div
-                            class="c0 "
+                            class="c12"
                             data-blade-component="base-box"
                           >
                             <input
@@ -1632,7 +1435,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                               aria-required="false"
                               autocomplete="off"
                               autofocus=""
-                              class="c12 "
+                              class="c38"
                               data-blade-component="styled-base-input"
                               id="dropdown-123"
                               placeholder="Select Option"
@@ -1643,17 +1446,17 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                           </div>
                         </div>
                         <div
-                          class="c0 c7  "
+                          class=" c39"
                           data-blade-component="base-box"
                         />
                       </div>
                     </div>
                     <div
-                      class="c0 "
+                      class="c21"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c0 "
+                        class="c22"
                         data-blade-component="base-box"
                       />
                     </div>
@@ -1661,29 +1464,29 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                 </div>
               </div>
               <div
-                class="c0 c13 "
+                class="c40 c41"
                 data-blade-component="divider"
                 role="separator"
               />
             </div>
           </div>
           <div
-            class="c0 "
+            class="c42"
             data-blade-component="bottom-sheet-body"
             data-testid="bottomsheet-body"
             style="user-select: auto; overflow: auto;"
           >
             <div
-              class="c0 "
+              class="c43"
               data-blade-component="base-box"
             >
               <div
-                class="c0 c14  "
+                class=" c44"
                 data-blade-component="base-box"
               >
                 <button
                   aria-selected="false"
-                  class="c0 c15  active-focus"
+                  class=" c45 active-focus"
                   data-blade-component="action-list-item"
                   data-index="0"
                   data-value="apple"
@@ -1693,37 +1496,37 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                   type="button"
                 >
                   <div
-                    class="c0 "
+                    class="c46"
                     data-blade-component="base-box"
                   >
                     <div
-                      class="c0 "
+                      class="c47"
                       data-blade-component="base-box"
                     />
                     <div
-                      class="c0 "
+                      class="c48"
                       data-blade-component="base-box"
                     >
                       <p
-                        class="c2 "
+                        class="c49"
                         data-blade-component="text"
                       >
                         Apple
                       </p>
                     </div>
                     <div
-                      class="c0 "
+                      class="c50"
                       data-blade-component="base-box"
                     />
                   </div>
                   <div
-                    class="c0"
+                    class=""
                     data-blade-component="base-box"
                   />
                 </button>
                 <button
                   aria-selected="false"
-                  class="c0 c15  "
+                  class=" c45"
                   data-blade-component="action-list-item"
                   data-index="1"
                   data-value="mango"
@@ -1733,31 +1536,31 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                   type="button"
                 >
                   <div
-                    class="c0 "
+                    class="c46"
                     data-blade-component="base-box"
                   >
                     <div
-                      class="c0 "
+                      class="c47"
                       data-blade-component="base-box"
                     />
                     <div
-                      class="c0 "
+                      class="c48"
                       data-blade-component="base-box"
                     >
                       <p
-                        class="c2 "
+                        class="c49"
                         data-blade-component="text"
                       >
                         Mango
                       </p>
                     </div>
                     <div
-                      class="c0 "
+                      class="c50"
                       data-blade-component="base-box"
                     />
                   </div>
                   <div
-                    class="c0"
+                    class=""
                     data-blade-component="base-box"
                   />
                 </button>
@@ -1765,34 +1568,34 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
             </div>
           </div>
           <div
-            class="c0 "
+            class="c51"
             data-blade-component="bottom-sheet-footer"
           >
             <div
-              class="c0 c13 "
+              class="c40 c41"
               data-blade-component="divider"
               role="separator"
             />
             <div
-              class="c0 "
+              class="c52"
               data-blade-component="base-box"
             >
               <div
-                class="c0"
+                class=""
                 data-blade-component="box"
               >
                 <button
-                  class="c16 "
+                  class="c53"
                   data-blade-component="button"
                   role="button"
                   type="button"
                 >
                   <div
-                    class="c0 c17 "
+                    class="c54 c55"
                     data-blade-component="base-box"
                   >
                     <div
-                      class="c2 "
+                      class="c56"
                       data-blade-component="base-text"
                     >
                       Apply
@@ -1810,16 +1613,16 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 `;
 
 exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it visible on click 1`] = `
-#razorpay-blade .c0 {
+.c0.c0.c0.c0.c0 {
   text-align: left;
   position: relative;
 }
 
-#razorpay-blade .c0 {
+.c1.c1.c1.c1.c1 {
   position: relative;
 }
 
-#razorpay-blade .c0 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1831,7 +1634,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   width: 100%;
 }
 
-#razorpay-blade .c0 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1847,11 +1650,11 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   margin-top: 0px;
 }
 
-#razorpay-blade .c0 {
+.c4.c4.c4.c4.c4 {
   margin-bottom: 4px;
 }
 
-#razorpay-blade .c0 {
+.c5.c5.c5.c5.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1870,32 +1673,13 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   gap: 0px;
 }
 
-#razorpay-blade .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  overflow-x: auto;
-  overflow-y: hidden;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 12px;
-  min-height: 36px;
-}
-
-#razorpay-blade .c0 {
+.c12.c12.c12.c12.c12 {
   margin-top: -4px;
   width: 100%;
   min-width: 30px;
 }
 
-#razorpay-blade .c0 {
+.c14.c14.c14.c14.c14 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1912,7 +1696,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   align-self: center;
 }
 
-#razorpay-blade .c0 {
+.c15.c15.c15.c15.c15 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1927,7 +1711,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   padding-right: 12px;
 }
 
-#razorpay-blade .c0 {
+.c16.c16.c16.c16.c16 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1943,11 +1727,11 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   height: 100%;
 }
 
-#razorpay-blade .c0 {
+.c20.c20.c20.c20.c20 {
   margin-left: 0px;
 }
 
-#razorpay-blade .c0 {
+.c21.c21.c21.c21.c21 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1961,23 +1745,18 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   justify-content: flex-end;
 }
 
-#razorpay-blade .c0 {
-  display: none;
-  z-index: 1002;
-}
-
-#razorpay-blade .c0 {
+.c23.c23.c23.c23.c23 {
   width: 100%;
   box-shadow: 0 12px 16px -4px hsla(217,56%,17%,0.08),0 4px 6px -2px hsla(217,56%,17%,0.03);
 }
 
-#razorpay-blade .c0 {
+.c25.c25.c25.c25.c25 {
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
 }
 
-#razorpay-blade .c0 {
+.c26.c26.c26.c26.c26 {
   padding-right: 16px;
   padding-left: 16px;
   margin-bottom: 16px;
@@ -1985,7 +1764,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   touch-action: none;
 }
 
-#razorpay-blade .c0 {
+.c27.c27.c27.c27.c27 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1999,7 +1778,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   user-select: none;
 }
 
-#razorpay-blade .c0 {
+.c28.c28.c28.c28.c28 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2018,13 +1797,13 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   margin-right: auto;
 }
 
-#razorpay-blade .c0 {
+.c29.c29.c29.c29.c29 {
   -webkit-flex: auto;
   -ms-flex: auto;
   flex: auto;
 }
 
-#razorpay-blade .c0 {
+.c30.c30.c30.c30.c30 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2037,36 +1816,17 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   flex-shrink: 0;
 }
 
-#razorpay-blade .c0 {
+.c32.c32.c32.c32.c32 {
   border-width: 0px;
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-style: solid;
 }
 
-#razorpay-blade .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+.c41.c41.c41.c41.c41 {
   padding: 16px;
 }
 
-#razorpay-blade .c0 {
-  padding: 16px;
-}
-
-#razorpay-blade .c0 {
+.c22.c22.c22.c22.c22 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2074,7 +1834,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   z-index: 1002;
 }
 
-#razorpay-blade .c0 {
+.c43.c43.c43.c43.c43 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2095,7 +1855,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   justify-content: center;
 }
 
-#razorpay-blade .c0 {
+.c11.c11.c11.c11.c11 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2114,7 +1874,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   min-height: 36px;
 }
 
-#razorpay-blade .c0 {
+.c36.c36.c36.c36.c36 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2133,7 +1893,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   max-height: 20px;
 }
 
-#razorpay-blade .c0 {
+.c37.c37.c37.c37.c37 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2148,7 +1908,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   justify-content: center;
 }
 
-#razorpay-blade .c0 {
+.c38.c38.c38.c38.c38 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2164,11 +1924,11 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   padding-left: 0px;
 }
 
-#razorpay-blade .c0 {
+.c40.c40.c40.c40.c40 {
   margin-left: auto;
 }
 
-#razorpay-blade .c8 {
+.c24.c24.c24.c24.c24 {
   background-color: hsla(0,0%,100%,1);
   border-width: 1px;
   border-color: hsla(216,15%,54%,0.18);
@@ -2176,7 +1936,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   border-radius: 4px;
 }
 
-#razorpay-blade .c12 {
+.c42.c42.c42.c42.c42 {
   min-height: 36px;
   width: 100%;
   cursor: pointer;
@@ -2212,24 +1972,24 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   position: relative;
 }
 
-#razorpay-blade .c12:hover {
+.c42.c42.c42.c42.c42:hover {
   background-color: hsla(223,95%,48%,1);
   border-color: hsla(223,95%,48%,1);
 }
 
-#razorpay-blade .c12:active {
+.c42.c42.c42.c42.c42:active {
   background-color: hsla(230,100%,42%,1);
   border-color: hsla(230,100%,42%,1);
 }
 
-#razorpay-blade .c12:focus-visible {
+.c42.c42.c42.c42.c42:focus-visible {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-#razorpay-blade .c12 * {
+.c42.c42.c42.c42.c42 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -2238,7 +1998,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-#razorpay-blade .c1 {
+.c6.c6.c6.c6.c6 {
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -2256,7 +2016,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   -webkit-box-orient: vertical;
 }
 
-#razorpay-blade .c1 {
+.c8.c8.c8.c8.c8 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -2269,7 +2029,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   padding: 0;
 }
 
-#razorpay-blade .c1 {
+.c31.c31.c31.c31.c31 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1rem;
@@ -2282,35 +2042,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   padding: 0;
 }
 
-#razorpay-blade .c1 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
-  margin-top: 16px;
-}
-
-#razorpay-blade .c1 {
-  color: hsla(216,27%,36%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.75rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1rem;
-  margin: 0;
-  padding: 0;
-  margin-top: 8px;
-}
-
-#razorpay-blade .c1 {
+.c45.c45.c45.c45.c45 {
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -2324,7 +2056,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   padding: 0;
 }
 
-#razorpay-blade .c1 {
+.c39.c39.c39.c39.c39 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -2342,22 +2074,22 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   -webkit-box-orient: vertical;
 }
 
-#razorpay-blade .c6 {
+.c18.c18.c18.c18.c18 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-#razorpay-blade .c6 {
+.c17.c17.c17.c17.c17 {
   display: none;
 }
 
-#razorpay-blade .c13 {
+.c44.c44.c44.c44.c44 {
   opacity: 1;
 }
 
-#razorpay-blade .c9 {
+.c33.c33.c33.c33.c33 {
   border-bottom-style: solid;
   border-bottom-width: 1px;
   -webkit-box-flex: 1;
@@ -2366,7 +2098,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   flex-grow: 1;
 }
 
-#razorpay-blade .c5 {
+.c13.c13.c13.c13.c13 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -2395,7 +2127,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   cursor: auto;
 }
 
-#razorpay-blade .c5::-webkit-input-placeholder {
+.c13.c13.c13.c13.c13::-webkit-input-placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -2409,7 +2141,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   padding: 0;
 }
 
-#razorpay-blade .c5::-moz-placeholder {
+.c13.c13.c13.c13.c13::-moz-placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -2423,7 +2155,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   padding: 0;
 }
 
-#razorpay-blade .c5:-ms-input-placeholder {
+.c13.c13.c13.c13.c13:-ms-input-placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -2437,7 +2169,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   padding: 0;
 }
 
-#razorpay-blade .c5::placeholder {
+.c13.c13.c13.c13.c13::placeholder {
   color: hsla(214,18%,69%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -2451,11 +2183,11 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   padding: 0;
 }
 
-#razorpay-blade .c5:focus {
+.c13.c13.c13.c13.c13:focus {
   outline: none;
 }
 
-#razorpay-blade .c7 {
+.c19.c19.c19.c19.c19 {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -2464,85 +2196,11 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   background-color: hsla(218,89%,51%,1);
   border-width: 1px;
   height: 1px;
+  -webkit-animation: cAlpMa-450290765 250ms cubic-bezier(0.3,0,0.2,1) forwards;
+  animation: cAlpMa-450290765 250ms cubic-bezier(0.3,0,0.2,1) forwards;
 }
 
-#razorpay-blade .c7 {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  opacity: 0;
-  background-color: hsla(218,89%,51%,1);
-  border-width: 1px;
-  height: 1px;
-  -webkit-animation: cAlpMa-1780344755 250ms cubic-bezier(0.3,0,0.2,1) forwards;
-  animation: cAlpMa-1780344755 250ms cubic-bezier(0.3,0,0.2,1) forwards;
-}
-
-#razorpay-blade .c3 {
-  background-color: hsla(216,15%,54%,0.09);
-  border-bottom-color: hsla(216,15%,54%,0.18);
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  width: 100%;
-  position: relative;
-  height: auto;
-}
-
-#razorpay-blade .c3:hover {
-  background-color: hsla(216,15%,54%,0.18);
-  border-bottom-color: hsla(216,15%,54%,0.18);
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  width: 100%;
-  position: relative;
-  height: auto;
-  -webkit-transition-property: background-color;
-  transition-property: background-color;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-#razorpay-blade .c3:focus-within {
-  background-color: hsla(216,15%,54%,0.09);
-  border-bottom-color: hsla(216,15%,54%,0.18);
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  width: 100%;
-  position: relative;
-  height: auto;
-}
-
-#razorpay-blade .c3 {
+.c9.c9.c9.c9.c9 {
   background-color: hsla(218,89%,51%,0.09);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
@@ -2561,7 +2219,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   height: auto;
 }
 
-#razorpay-blade .c3:hover {
+.c9.c9.c9.c9.c9:hover {
   background-color: hsla(218,89%,51%,0.09);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
@@ -2586,7 +2244,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-#razorpay-blade .c3:focus-within {
+.c9.c9.c9.c9.c9:focus-within {
   background-color: hsla(218,89%,51%,0.09);
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-top-left-radius: 2px;
@@ -2605,13 +2263,13 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   height: auto;
 }
 
-#razorpay-blade .c4 {
+.c10.c10.c10.c10.c10 {
   -webkit-animation: none;
   animation: none;
   max-height: 37px;
 }
 
-#razorpay-blade .c2 {
+.c7.c7.c7.c7.c7 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -2628,17 +2286,17 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   word-wrap: normal;
 }
 
-#razorpay-blade .c10 {
+.c34.c34.c34.c34.c34 {
   overflow-y: auto;
   max-height: 300px;
   padding: 8px;
 }
 
-#razorpay-blade .c10 [role=group]:last-child > [role=separator]:last-child {
+.c34.c34.c34.c34.c34 [role=group]:last-child > [role=separator]:last-child {
   display: none;
 }
 
-#razorpay-blade .c11 {
+.c35.c35.c35.c35.c35 {
   border-width: 4px;
   border-style: solid;
   border-color: transparent;
@@ -2653,16 +2311,16 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   display: block;
 }
 
-#razorpay-blade .c11:hover:not([aria-disabled=true]) {
+.c35.c35.c35.c35.c35:hover:not([aria-disabled=true]) {
   background-color: hsla(216,15%,54%,0.09);
 }
 
-#razorpay-blade .c11[aria-selected=true] {
+.c35.c35.c35.c35.c35[aria-selected=true] {
   background-color: hsla(218,89%,51%,0.09);
 }
 
 @media screen and (min-width:768px) {
-  #razorpay-blade .c0 {
+  .c26.c26.c26.c26.c26 {
     padding-right: 20px;
     padding-left: 20px;
     margin-bottom: 20px;
@@ -2671,64 +2329,64 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
 }
 
 @media screen and (min-width:320px) {
-  #razorpay-blade .c0 {
+  .c32.c32.c32.c32.c32 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  #razorpay-blade .c0 {
+  .c32.c32.c32.c32.c32 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  #razorpay-blade .c0 {
+  .c32.c32.c32.c32.c32 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  #razorpay-blade .c0 {
+  .c32.c32.c32.c32.c32 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  #razorpay-blade .c0 {
+  .c32.c32.c32.c32.c32 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  #razorpay-blade .c0 {
+  .c41.c41.c41.c41.c41 {
     padding: 20px;
   }
 }
 
 <div>
   <div
-    class="c0"
+    class=""
     data-blade-component="dropdown"
   >
     <div
-      class="c0 "
+      class="c0"
       data-blade-component="base-box"
     >
       <div
-        class="c0 "
+        class="c1"
         data-blade-component="base-box"
       >
         <div
-          class="c0"
+          class=""
           data-blade-component="autocomplete"
         >
           <div
-            class="c0 "
+            class="c2"
             data-blade-component="base-box"
           >
             <div
-              class="c0 "
+              class="c3"
               data-blade-component="base-box"
             >
               <label
@@ -2738,25 +2396,25 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
                 style="width: auto; flex-shrink: 0; margin-right: 16px;"
               >
                 <div
-                  class="c0 "
+                  class="c4"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c0 "
+                    class="c5"
                     data-blade-component="base-box"
                   >
                     <p
-                      class="c1 "
+                      class="c6"
                       data-blade-component="text"
                     >
                       Fruits
                     </p>
                     <div
-                      class="c2 "
+                      class="c7"
                       data-blade-component="visually-hidden"
                     >
                       <p
-                        class="c1 "
+                        class="c8"
                         data-blade-component="text"
                       />
                     </div>
@@ -2765,15 +2423,15 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
               </label>
             </div>
             <div
-              class="c0 c3 c4  "
+              class=" c9 c10"
               data-blade-component="base-box"
             >
               <div
-                class="c0 tags-slot"
+                class="c11 tags-slot"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c0 "
+                  class="c12"
                   data-blade-component="base-box"
                 >
                   <input
@@ -2786,7 +2444,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
                     aria-invalid="false"
                     aria-required="false"
                     autocomplete="off"
-                    class="c5 "
+                    class="c13"
                     data-blade-component="styled-base-input"
                     id="dropdown-123"
                     placeholder="Select Option"
@@ -2797,20 +2455,20 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
                 </div>
               </div>
               <div
-                class="c0 "
+                class="c14"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c0 "
+                  class="c15"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c0 "
+                    class="c16"
                     data-blade-component="base-box"
                   >
                     <svg
                       aria-hidden="true"
-                      class="c6 "
+                      class="c17"
                       data-blade-component="icon"
                       fill="none"
                       height="16px"
@@ -2827,7 +2485,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
                     </svg>
                     <svg
                       aria-hidden="true"
-                      class="c6 "
+                      class="c18"
                       data-blade-component="icon"
                       fill="none"
                       height="16px"
@@ -2846,63 +2504,63 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
                 </div>
               </div>
               <div
-                class="c0 c7  "
+                class=" c19"
                 data-blade-component="base-box"
               />
             </div>
           </div>
           <div
-            class="c0 "
+            class="c20"
             data-blade-component="base-box"
           >
             <div
-              class="c0 "
+              class="c21"
               data-blade-component="base-box"
             />
           </div>
         </div>
       </div>
       <div
-        class="c0 "
+        class="c22"
         data-blade-component="base-box"
         style="position: fixed; left: 0px; top: 0px; transform: translate(0px, 8px); width: 0px;"
       >
         <div
-          class="c0 c8 "
+          class="c23 c24"
           data-blade-component="dropdown-overlay"
           elevation="midRaised"
           style="transition-property: transform,opacity; transition-duration: 200ms;"
         >
           <div
-            class="c0 "
+            class="c25"
             data-blade-component="base-box"
           >
             <div
-              class="c0"
+              class=""
               data-blade-component="dropdown-header"
             >
               <div
-                class="c0 "
+                class="c26"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c0 "
+                  class="c27"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c0 "
+                    class="c28"
                     data-blade-component="base-box"
                   >
                     <div
-                      class="c0 "
+                      class="c29"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c0 "
+                        class="c30"
                         data-blade-component="base-box"
                       >
                         <h6
-                          class="c1 "
+                          class="c31"
                           data-blade-component="heading"
                         >
                           Recent Searches
@@ -2913,7 +2571,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
                 </div>
               </div>
               <div
-                class="c0 c9 "
+                class="c32 c33"
                 data-blade-component="divider"
                 role="separator"
               />
@@ -2921,20 +2579,20 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
           </div>
           <div
             aria-labelledby="dropdown-123-label"
-            class="c0"
+            class=""
             data-blade-component="action-list"
             id="dropdown-123-actionlist"
             role="dialog"
           >
             <div
               aria-multiselectable="false"
-              class="c0 c10  "
+              class=" c34"
               data-blade-component="base-box"
               role="listbox"
             >
               <button
                 aria-selected="false"
-                class="c0 c11  active-focus"
+                class=" c35 active-focus"
                 data-blade-component="action-list-item"
                 data-index="0"
                 data-value="apple"
@@ -2944,37 +2602,37 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
                 type="button"
               >
                 <div
-                  class="c0 "
+                  class="c36"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c0 "
+                    class="c37"
                     data-blade-component="base-box"
                   />
                   <div
-                    class="c0 "
+                    class="c38"
                     data-blade-component="base-box"
                   >
                     <p
-                      class="c1 "
+                      class="c39"
                       data-blade-component="text"
                     >
                       Apple
                     </p>
                   </div>
                   <div
-                    class="c0 "
+                    class="c40"
                     data-blade-component="base-box"
                   />
                 </div>
                 <div
-                  class="c0"
+                  class=""
                   data-blade-component="base-box"
                 />
               </button>
               <button
                 aria-selected="false"
-                class="c0 c11  "
+                class=" c35"
                 data-blade-component="action-list-item"
                 data-index="1"
                 data-value="mango"
@@ -2984,66 +2642,66 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
                 type="button"
               >
                 <div
-                  class="c0 "
+                  class="c36"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c0 "
+                    class="c37"
                     data-blade-component="base-box"
                   />
                   <div
-                    class="c0 "
+                    class="c38"
                     data-blade-component="base-box"
                   >
                     <p
-                      class="c1 "
+                      class="c39"
                       data-blade-component="text"
                     >
                       Mango
                     </p>
                   </div>
                   <div
-                    class="c0 "
+                    class="c40"
                     data-blade-component="base-box"
                   />
                 </div>
                 <div
-                  class="c0"
+                  class=""
                   data-blade-component="base-box"
                 />
               </button>
             </div>
           </div>
           <div
-            class="c0"
+            class=""
             data-blade-component="base-box"
             role="group"
           >
             <div
-              class="c0 c9 "
+              class="c32 c33"
               data-blade-component="divider"
               role="separator"
             />
             <div
-              class="c0 "
+              class="c41"
               data-blade-component="dropdown-footer"
             >
               <div
-                class="c0"
+                class=""
                 data-blade-component="box"
               >
                 <button
-                  class="c12 "
+                  class="c42"
                   data-blade-component="button"
                   role="button"
                   type="button"
                 >
                   <div
-                    class="c0 c13 "
+                    class="c43 c44"
                     data-blade-component="base-box"
                   >
                     <div
-                      class="c1 "
+                      class="c45"
                       data-blade-component="base-text"
                     >
                       Apply

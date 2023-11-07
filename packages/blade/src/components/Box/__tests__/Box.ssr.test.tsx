@@ -15,7 +15,7 @@ describe('<Box />', () => {
       </Box>,
     );
     expect(container).toMatchInlineSnapshot(`
-      .c0 {
+      .c0.c0.c0.c0.c0 {
         display: -webkit-box;
         display: -webkit-flex;
         display: -ms-flexbox;
@@ -27,11 +27,7 @@ describe('<Box />', () => {
         id="root"
       >
         <div
-<<<<<<< HEAD
           class="c0"
-=======
-          class="BaseBox-bmPWx kSojPu"
->>>>>>> e424fbce (feat: increase CSS specificity of components)
           data-blade-component="box"
         >
           children test!
@@ -47,7 +43,7 @@ describe('<Box />', () => {
       </Box>,
     );
     expect(container).toMatchInlineSnapshot(`
-      .c0 {
+      .c0.c0.c0.c0.c0 {
         display: block;
       }
 
@@ -55,11 +51,7 @@ describe('<Box />', () => {
         id="root"
       >
         <footer
-<<<<<<< HEAD
           class="c0"
-=======
-          class="BaseBox-bmPWx iygCpc"
->>>>>>> e424fbce (feat: increase CSS specificity of components)
           data-blade-component="box"
         >
           Footer test!

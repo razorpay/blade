@@ -1,19 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Skeleton /> should render 1`] = `"<div id="root"><div aria-hidden="true" data-blade-component="skeleton" class="BaseBox-bmPWx PulseAnimationweb__PulseAnimation-sc-184soy3-0 fcawSV gjTvZZ"></div></div>"`;
+exports[`<Skeleton /> should render 1`] = `"<div id="root"><div aria-hidden="true" data-blade-component="skeleton" class="BaseBox-bmPWx PulseAnimationweb__PulseAnimation-sc-184soy3-0 kTtuUt fBLkgZ"></div></div>"`;
 
 exports[`<Skeleton /> should render 2`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   margin: 4px;
   height: 50px;
   width: 100%;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   opacity: 0;
   background-color: hsla(216,15%,54%,0.18);
-  -webkit-animation-name: lbWRkT,fZZrNN;
-  animation-name: lbWRkT,fZZrNN;
+  -webkit-animation-name: lbWRkT-450290765,fZZrNN-450290765;
+  animation-name: lbWRkT-450290765,fZZrNN-450290765;
   -webkit-animation-duration: 900ms,1200ms;
   animation-duration: 900ms,1200ms;
   -webkit-animation-delay: 0ms,900ms;
@@ -33,11 +33,7 @@ exports[`<Skeleton /> should render 2`] = `
 >
   <div
     aria-hidden="true"
-<<<<<<< HEAD
     class="c0 c1"
-=======
-    class="BaseBox-bmPWx PulseAnimationweb__PulseAnimation-sc-184soy3-0 fcawSV gjTvZZ"
->>>>>>> e424fbce (feat: increase CSS specificity of components)
     data-blade-component="skeleton"
   />
 </div>

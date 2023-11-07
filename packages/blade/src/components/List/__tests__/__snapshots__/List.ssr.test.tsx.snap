@@ -1,15 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<List /> should render List with default properties 1`] = `"<div id="root"><div data-blade-component="base-box" class="BaseBox-bmPWx"><ul data-blade-component="list" role="list" class="UnorderedListweb__UnorderedList-sc-1tb6ajo-0 List__StyledUnorderedList-bqf6r7-1 crwGZN fzRSgG"><li data-blade-component="list-item" class="ListItemElementweb__ListItemElement-sc-2pr284-0 ListItem__StyledListItem-sc-6bxu4b-0  cIJdsT"><div data-blade-component="base-box" class="BaseBox-bmPWx iPbdED"><div data-blade-component="base-box" class="BaseBox-bmPWx fDUyVh"><svg aria-hidden="true" data-blade-component="icon" height="6px" viewBox="0 0 6 6" width="6px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><circle cx="3px" cy="3px" r="3px" fill="hsla(214, 18%, 69%, 1)" data-blade-component="svg-circle"></circle></svg></div><p class="StyledBaseText-dVBfTO ekbJPz" data-blade-component="text">Level 1</p></div><div data-blade-component="base-box" class="BaseBox-bmPWx"><ul data-blade-component="list" role="list" class="UnorderedListweb__UnorderedList-sc-1tb6ajo-0 List__StyledUnorderedList-bqf6r7-1 crwGZN"><li data-blade-component="list-item" class="ListItemElementweb__ListItemElement-sc-2pr284-0 ListItem__StyledListItem-sc-6bxu4b-0  cdMwPc"><div data-blade-component="base-box" class="BaseBox-bmPWx iPbdED"><div data-blade-component="base-box" class="BaseBox-bmPWx fDUyVh"><svg aria-hidden="true" data-blade-component="icon" height="6px" viewBox="0 0 6 6" width="6px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><circle cx="3px" cy="3px" r="2.5px" stroke="hsla(214, 18%, 69%, 1)" data-blade-component="svg-circle"></circle></svg></div><p class="StyledBaseText-dVBfTO ekbJPz" data-blade-component="text">Level 2</p></div><div data-blade-component="base-box" class="BaseBox-bmPWx"><ul data-blade-component="list" role="list" class="UnorderedListweb__UnorderedList-sc-1tb6ajo-0 List__StyledUnorderedList-bqf6r7-1 crwGZN"><li data-blade-component="list-item" class="ListItemElementweb__ListItemElement-sc-2pr284-0 ListItem__StyledListItem-sc-6bxu4b-0  cdMwPc"><div data-blade-component="base-box" class="BaseBox-bmPWx iPbdED"><div data-blade-component="base-box" class="BaseBox-bmPWx fDUyVh"><svg aria-hidden="true" data-blade-component="icon" height="6px" viewBox="0 0 6 6" width="6px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><rect data-blade-component="svg-rect" height="6px" width="6px" rx="1px" fill="hsla(214, 18%, 69%, 1)"></rect></svg></div><p class="StyledBaseText-dVBfTO ekbJPz" data-blade-component="text">Level 3</p></div></li></ul></div></li></ul></div></li></ul></div></div>"`;
+exports[`<List /> should render List with default properties 1`] = `"<div id="root"><div data-blade-component="base-box" class="BaseBox-bmPWx"><ul data-blade-component="list" role="list" class="UnorderedListweb__UnorderedList-sc-1tb6ajo-0 List__StyledUnorderedList-bqf6r7-1 hGsnBR kwyIsK"><li data-blade-component="list-item" class="ListItemElementweb__ListItemElement-sc-2pr284-0 ListItem__StyledListItem-sc-6bxu4b-0  hAjyyX"><div data-blade-component="base-box" class="BaseBox-bmPWx iJzciX"><div data-blade-component="base-box" class="BaseBox-bmPWx bRicqN"><svg aria-hidden="true" data-blade-component="icon" height="6px" viewBox="0 0 6 6" width="6px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><circle cx="3px" cy="3px" r="3px" fill="hsla(214, 18%, 69%, 1)" data-blade-component="svg-circle"></circle></svg></div><p class="StyledBaseText-dVBfTO hJVyJT" data-blade-component="text">Level 1</p></div><div data-blade-component="base-box" class="BaseBox-bmPWx"><ul data-blade-component="list" role="list" class="UnorderedListweb__UnorderedList-sc-1tb6ajo-0 List__StyledUnorderedList-bqf6r7-1 hGsnBR"><li data-blade-component="list-item" class="ListItemElementweb__ListItemElement-sc-2pr284-0 ListItem__StyledListItem-sc-6bxu4b-0  ddekhw"><div data-blade-component="base-box" class="BaseBox-bmPWx iJzciX"><div data-blade-component="base-box" class="BaseBox-bmPWx bRicqN"><svg aria-hidden="true" data-blade-component="icon" height="6px" viewBox="0 0 6 6" width="6px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><circle cx="3px" cy="3px" r="2.5px" stroke="hsla(214, 18%, 69%, 1)" data-blade-component="svg-circle"></circle></svg></div><p class="StyledBaseText-dVBfTO hJVyJT" data-blade-component="text">Level 2</p></div><div data-blade-component="base-box" class="BaseBox-bmPWx"><ul data-blade-component="list" role="list" class="UnorderedListweb__UnorderedList-sc-1tb6ajo-0 List__StyledUnorderedList-bqf6r7-1 hGsnBR"><li data-blade-component="list-item" class="ListItemElementweb__ListItemElement-sc-2pr284-0 ListItem__StyledListItem-sc-6bxu4b-0  ddekhw"><div data-blade-component="base-box" class="BaseBox-bmPWx iJzciX"><div data-blade-component="base-box" class="BaseBox-bmPWx bRicqN"><svg aria-hidden="true" data-blade-component="icon" height="6px" viewBox="0 0 6 6" width="6px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><rect data-blade-component="svg-rect" height="6px" width="6px" rx="1px" fill="hsla(214, 18%, 69%, 1)"></rect></svg></div><p class="StyledBaseText-dVBfTO hJVyJT" data-blade-component="text">Level 3</p></div></li></ul></div></li></ul></div></li></ul></div></div>"`;
 
 exports[`<List /> should render List with default properties 2`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   list-style-type: none;
   padding: 0px;
   margin: 0px;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -24,7 +24,7 @@ exports[`<List /> should render List with default properties 2`] = `
   margin-bottom: 8px;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -36,11 +36,11 @@ exports[`<List /> should render List with default properties 2`] = `
   margin-right: 8px;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   margin-top: 8px;
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -53,11 +53,11 @@ exports[`<List /> should render List with default properties 2`] = `
   padding: 0;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   margin-left: 4px;
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   margin-left: 16px;
 }
 
@@ -69,16 +69,11 @@ exports[`<List /> should render List with default properties 2`] = `
     data-blade-component="base-box"
   >
     <ul
-<<<<<<< HEAD
       class="c0 c1"
-=======
-      class="UnorderedListweb__UnorderedList-sc-1tb6ajo-0 List__StyledUnorderedList-bqf6r7-1 crwGZN fzRSgG"
->>>>>>> e424fbce (feat: increase CSS specificity of components)
       data-blade-component="list"
       role="list"
     >
       <li
-<<<<<<< HEAD
         class=" c2"
         data-blade-component="list-item"
       >
@@ -88,17 +83,6 @@ exports[`<List /> should render List with default properties 2`] = `
         >
           <div
             class="c4"
-=======
-        class="ListItemElementweb__ListItemElement-sc-2pr284-0 ListItem__StyledListItem-sc-6bxu4b-0  cIJdsT"
-        data-blade-component="list-item"
-      >
-        <div
-          class="BaseBox-bmPWx iPbdED"
-          data-blade-component="base-box"
-        >
-          <div
-            class="BaseBox-bmPWx fDUyVh"
->>>>>>> e424fbce (feat: increase CSS specificity of components)
             data-blade-component="base-box"
           >
             <svg
@@ -120,11 +104,7 @@ exports[`<List /> should render List with default properties 2`] = `
             </svg>
           </div>
           <p
-<<<<<<< HEAD
             class="c5"
-=======
-            class="StyledBaseText-dVBfTO ekbJPz"
->>>>>>> e424fbce (feat: increase CSS specificity of components)
             data-blade-component="text"
           >
             Level 1
@@ -135,16 +115,11 @@ exports[`<List /> should render List with default properties 2`] = `
           data-blade-component="base-box"
         >
           <ul
-<<<<<<< HEAD
             class="c0"
-=======
-            class="UnorderedListweb__UnorderedList-sc-1tb6ajo-0 List__StyledUnorderedList-bqf6r7-1 crwGZN"
->>>>>>> e424fbce (feat: increase CSS specificity of components)
             data-blade-component="list"
             role="list"
           >
             <li
-<<<<<<< HEAD
               class=" c6"
               data-blade-component="list-item"
             >
@@ -154,17 +129,6 @@ exports[`<List /> should render List with default properties 2`] = `
               >
                 <div
                   class="c4"
-=======
-              class="ListItemElementweb__ListItemElement-sc-2pr284-0 ListItem__StyledListItem-sc-6bxu4b-0  cdMwPc"
-              data-blade-component="list-item"
-            >
-              <div
-                class="BaseBox-bmPWx iPbdED"
-                data-blade-component="base-box"
-              >
-                <div
-                  class="BaseBox-bmPWx fDUyVh"
->>>>>>> e424fbce (feat: increase CSS specificity of components)
                   data-blade-component="base-box"
                 >
                   <svg
@@ -186,11 +150,7 @@ exports[`<List /> should render List with default properties 2`] = `
                   </svg>
                 </div>
                 <p
-<<<<<<< HEAD
                   class="c5"
-=======
-                  class="StyledBaseText-dVBfTO ekbJPz"
->>>>>>> e424fbce (feat: increase CSS specificity of components)
                   data-blade-component="text"
                 >
                   Level 2
@@ -201,16 +161,11 @@ exports[`<List /> should render List with default properties 2`] = `
                 data-blade-component="base-box"
               >
                 <ul
-<<<<<<< HEAD
                   class="c0"
-=======
-                  class="UnorderedListweb__UnorderedList-sc-1tb6ajo-0 List__StyledUnorderedList-bqf6r7-1 crwGZN"
->>>>>>> e424fbce (feat: increase CSS specificity of components)
                   data-blade-component="list"
                   role="list"
                 >
                   <li
-<<<<<<< HEAD
                     class=" c6"
                     data-blade-component="list-item"
                   >
@@ -220,17 +175,6 @@ exports[`<List /> should render List with default properties 2`] = `
                     >
                       <div
                         class="c4"
-=======
-                    class="ListItemElementweb__ListItemElement-sc-2pr284-0 ListItem__StyledListItem-sc-6bxu4b-0  cdMwPc"
-                    data-blade-component="list-item"
-                  >
-                    <div
-                      class="BaseBox-bmPWx iPbdED"
-                      data-blade-component="base-box"
-                    >
-                      <div
-                        class="BaseBox-bmPWx fDUyVh"
->>>>>>> e424fbce (feat: increase CSS specificity of components)
                         data-blade-component="base-box"
                       >
                         <svg
@@ -252,11 +196,7 @@ exports[`<List /> should render List with default properties 2`] = `
                         </svg>
                       </div>
                       <p
-<<<<<<< HEAD
                         class="c5"
-=======
-                        class="StyledBaseText-dVBfTO ekbJPz"
->>>>>>> e424fbce (feat: increase CSS specificity of components)
                         data-blade-component="text"
                       >
                         Level 3

@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<BaseBox /> should render BaseBox component with the correct styles 1`] = `"<div id="root"><div data-blade-component="base-box" class="BaseBox-bmPWx eKIvkD"></div></div>"`;
+exports[`<BaseBox /> should render BaseBox component with the correct styles 1`] = `"<div id="root"><div data-blade-component="base-box" class="BaseBox-bmPWx hBUrgz"></div></div>"`;
 
 exports[`<BaseBox /> should render BaseBox component with the correct styles 2`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -41,11 +41,7 @@ exports[`<BaseBox /> should render BaseBox component with the correct styles 2`]
   id="root"
 >
   <div
-<<<<<<< HEAD
     class="c0"
-=======
-    class="BaseBox-bmPWx eKIvkD"
->>>>>>> e424fbce (feat: increase CSS specificity of components)
     data-blade-component="base-box"
   />
 </div>

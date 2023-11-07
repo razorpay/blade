@@ -1,25 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Card /> should render a Card with Header & Footer 1`] = `"<div id="root"><div data-blade-component="card" class="BaseBox-bmPWx CardRootweb__StyledCardRoot-sc-1nb70ck-0 ePTaEs hsvHjX"><div elevation="lowRaised" data-blade-component="base-box" class="BaseBox-bmPWx CardSurfaceweb__CardSurface-sc-1pgxikk-0 NqxNZ ezWJlT"><div data-blade-component="card-header" class="BaseBox-bmPWx jdyvQx"><div data-blade-component="base-box" class="BaseBox-bmPWx eJLYeV"><div data-blade-component="base-box" class="BaseBox-bmPWx hhJMEl"><div data-blade-component="base-box" class="BaseBox-bmPWx kajqli"><svg aria-hidden="true" data-blade-component="icon" height="24px" viewBox="0 0 24 24" width="24px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z" fill="hsla(217, 56%, 17%, 1)" data-blade-component="svg-path"></path><path d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z" fill="hsla(217, 56%, 17%, 1)" data-blade-component="svg-path"></path><path d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z" clip-rule="evenodd" fill="hsla(217, 56%, 17%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></div><div data-blade-component="base-box" class="BaseBox-bmPWx heXoBf"><div data-blade-component="base-box" class="BaseBox-bmPWx hRnXdN"><h6 class="StyledBaseText-dVBfTO yQIej" data-blade-component="heading">Card Header</h6><div data-blade-component="base-box" class="BaseBox-bmPWx bHquaf"><div data-blade-component="counter" class="BaseBox-bmPWx hGbNLG"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledCounterweb__StyledCounter-sc-1itt9w6-0 KttaV kzQAKu"><div data-blade-component="base-box" class="BaseBox-bmPWx ZDhZu"><p class="StyledBaseText-dVBfTO hoBqle" data-blade-component="text">12</p></div></div></div></div></div><p class="StyledBaseText-dVBfTO isKCFF" data-blade-component="text">Card subtitle</p></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx jUKCiQ"><div data-blade-component="badge" class="BaseBox-bmPWx hGbNLG"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledBadgeweb__StyledBadge-sc-1svn4tv-0 boyGgG JzQhb"><div data-blade-component="base-box" class="BaseBox-bmPWx ZDhZu"><p class="StyledBaseText-dVBfTO lbroWx" data-blade-component="text">NEW</p></div></div></div></div></div><div data-blade-component="divider" role="separator" class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 hRoOJk bwynWa"></div></div><div data-blade-component="card-body" class="BaseBox-bmPWx"><p class="StyledBaseText-dVBfTO ekbJPz" data-blade-component="text">Plain Card</p></div><div data-blade-component="card-footer" class="BaseBox-bmPWx hvdzho"><div data-blade-component="base-box" class="BaseBox-bmPWx jgsLuR"></div><div data-blade-component="divider" role="separator" class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 hRoOJk bwynWa"></div><div data-blade-component="base-box" class="BaseBox-bmPWx MelGh"><div data-blade-component="base-box" class="BaseBox-bmPWx fPSMNp"><p class="StyledBaseText-dVBfTO jdLFGo" data-blade-component="text">Card Footer</p><p class="StyledBaseText-dVBfTO jmWhbi" data-blade-component="text">Card footer subtitle</p></div><div data-blade-component="base-box" class="BaseBox-bmPWx drkBwT"><div data-blade-component="base-box" class="BaseBox-bmPWx gMycIZ"><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 CNYwx"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 gDQkZt fKcvHH"><div class="StyledBaseText-dVBfTO gQSrhk" data-blade-component="base-text">Delete</div></div></button></div><div data-blade-component="base-box" class="BaseBox-bmPWx eDYsrM"></div><div data-blade-component="base-box" class="BaseBox-bmPWx gMycIZ"><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 gJWwSW"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 gDQkZt fKcvHH"><div class="StyledBaseText-dVBfTO bWCnhn" data-blade-component="base-text">Save</div></div></button></div></div></div></div></div></div></div>"`;
+exports[`<Card /> should render a Card with Header & Footer 1`] = `"<div id="root"><div data-blade-component="card" class="BaseBox-bmPWx CardRootweb__StyledCardRoot-sc-1nb70ck-0 iAbwvA tmnBv"><div elevation="lowRaised" data-blade-component="base-box" class="BaseBox-bmPWx CardSurfaceweb__CardSurface-sc-1pgxikk-0 hMUdcd dZToQf"><div data-blade-component="card-header" class="BaseBox-bmPWx hwEOtF"><div data-blade-component="base-box" class="BaseBox-bmPWx LwGxF"><div data-blade-component="base-box" class="BaseBox-bmPWx gTkVyh"><div data-blade-component="base-box" class="BaseBox-bmPWx zthMO"><svg aria-hidden="true" data-blade-component="icon" height="24px" viewBox="0 0 24 24" width="24px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z" fill="hsla(217, 56%, 17%, 1)" data-blade-component="svg-path"></path><path d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z" fill="hsla(217, 56%, 17%, 1)" data-blade-component="svg-path"></path><path d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z" clip-rule="evenodd" fill="hsla(217, 56%, 17%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></div><div data-blade-component="base-box" class="BaseBox-bmPWx ihuchP"><div data-blade-component="base-box" class="BaseBox-bmPWx mKtKh"><h6 class="StyledBaseText-dVBfTO iFUkNH" data-blade-component="heading">Card Header</h6><div data-blade-component="base-box" class="BaseBox-bmPWx jOqpMP"><div data-blade-component="counter" class="BaseBox-bmPWx ePenKG"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledCounterweb__StyledCounter-sc-1itt9w6-0 fCpzgd jxCTUO"><div data-blade-component="base-box" class="BaseBox-bmPWx dXvdMm"><p class="StyledBaseText-dVBfTO kSDYeK" data-blade-component="text">12</p></div></div></div></div></div><p class="StyledBaseText-dVBfTO bnhaMh" data-blade-component="text">Card subtitle</p></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx bLJxIg"><div data-blade-component="badge" class="BaseBox-bmPWx ePenKG"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledBadgeweb__StyledBadge-sc-1svn4tv-0 fxewIe fvgGAr"><div data-blade-component="base-box" class="BaseBox-bmPWx dXvdMm"><p class="StyledBaseText-dVBfTO hQvilN" data-blade-component="text">NEW</p></div></div></div></div></div><div data-blade-component="divider" role="separator" class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 fFIlDE kNKFQm"></div></div><div data-blade-component="card-body" class="BaseBox-bmPWx"><p class="StyledBaseText-dVBfTO hJVyJT" data-blade-component="text">Plain Card</p></div><div data-blade-component="card-footer" class="BaseBox-bmPWx hwKFeE"><div data-blade-component="base-box" class="BaseBox-bmPWx kCBqep"></div><div data-blade-component="divider" role="separator" class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 fFIlDE kNKFQm"></div><div data-blade-component="base-box" class="BaseBox-bmPWx kXKtUB"><div data-blade-component="base-box" class="BaseBox-bmPWx edNXIx"><p class="StyledBaseText-dVBfTO dKVmDg" data-blade-component="text">Card Footer</p><p class="StyledBaseText-dVBfTO frQdgq" data-blade-component="text">Card footer subtitle</p></div><div data-blade-component="base-box" class="BaseBox-bmPWx jwvbFL"><div data-blade-component="base-box" class="BaseBox-bmPWx brkcZZ"><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 cfBjBp"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 gTzyYZ esItiH"><div class="StyledBaseText-dVBfTO iPAIis" data-blade-component="base-text">Delete</div></div></button></div><div data-blade-component="base-box" class="BaseBox-bmPWx kVSNdI"></div><div data-blade-component="base-box" class="BaseBox-bmPWx brkcZZ"><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 cVxbWK"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 gTzyYZ esItiH"><div class="StyledBaseText-dVBfTO hcXerP" data-blade-component="base-text">Save</div></div></button></div></div></div></div></div></div></div>"`;
 
 exports[`<Card /> should render a Card with Header & Footer 2`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: block;
   border-radius: 4px;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   text-align: left;
   padding: 24px;
   border-radius: 4px;
   box-shadow: 0 4px 8px -2px hsla(217,56%,17%,0.1),0 2px 4px -2px hsla(217,56%,17%,0.06);
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   margin-bottom: 24px;
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -34,7 +34,7 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
   margin-bottom: 24px;
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -47,7 +47,7 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
   flex-direction: row;
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -58,11 +58,11 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
   margin-right: 8px;
 }
 
-.c8 {
+.c8.c8.c8.c8.c8 {
   margin-right: 16px;
 }
 
-.c9 {
+.c9.c9.c9.c9.c9 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -79,22 +79,22 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
   align-items: center;
 }
 
-.c11 {
+.c11.c11.c11.c11.c11 {
   margin-left: 8px;
 }
 
-.c12 {
+.c12.c12.c12.c12.c12 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
-.c13 {
+.c13.c13.c13.c13.c13 {
   background-color: hsla(216,15%,54%,0.09);
 }
 
-.c15 {
+.c15.c15.c15.c15.c15 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -117,32 +117,32 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
   padding-left: 8px;
 }
 
-.c18 {
+.c18.c18.c18.c18.c18 {
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   align-self: center;
 }
 
-.c19 {
+.c19.c19.c19.c19.c19 {
   text-align: left;
   background-color: hsla(216,15%,54%,0.09);
 }
 
-.c22 {
+.c22.c22.c22.c22.c22 {
   border-width: 0px;
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-style: solid;
 }
 
-.c25 {
+.c25.c25.c25.c25.c25 {
   margin-top: auto;
 }
 
-.c26 {
+.c26.c26.c26.c26.c26 {
   margin-top: 24px;
 }
 
-.c27 {
+.c27.c27.c27.c27.c27 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -161,11 +161,11 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
   margin-top: 24px;
 }
 
-.c28 {
+.c28.c28.c28.c28.c28 {
   text-align: left;
 }
 
-.c31 {
+.c31.c31.c31.c31.c31 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -180,14 +180,14 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
   margin-left: 16px;
 }
 
-.c32 {
+.c32.c32.c32.c32.c32 {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
   flex-grow: 1;
 }
 
-.c34 {
+.c34.c34.c34.c34.c34 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -208,11 +208,11 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
   justify-content: center;
 }
 
-.c37 {
+.c37.c37.c37.c37.c37 {
   margin-left: 16px;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -226,7 +226,7 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
   box-sizing: border-box;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   box-shadow: 0px 0px 0px 2px transparent;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
@@ -237,17 +237,17 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
   transition-property: transform,box-shadow;
 }
 
-.c1 a[href]:not(a[data-blade-component="card-link-overlay"]) {
+.c1.c1.c1.c1.c1 a[href]:not(a[data-blade-component="card-link-overlay"]) {
   z-index: 2;
   position: relative;
 }
 
-.c1 button:not(button[data-blade-component="card-link-overlay"]) {
+.c1.c1.c1.c1.c1 button:not(button[data-blade-component="card-link-overlay"]) {
   z-index: 2;
   position: relative;
 }
 
-.c20 {
+.c20.c20.c20.c20.c20 {
   background-color: hsla(216,15%,54%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
@@ -262,7 +262,7 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
   width: fit-content;
 }
 
-.c10 {
+.c10.c10.c10.c10.c10 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1rem;
@@ -275,7 +275,7 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
   padding: 0;
 }
 
-.c16 {
+.c16.c16.c16.c16.c16 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -294,7 +294,7 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
   -webkit-box-orient: vertical;
 }
 
-.c17 {
+.c17.c17.c17.c17.c17 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -308,7 +308,7 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
   padding: 0;
 }
 
-.c21 {
+.c21.c21.c21.c21.c21 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -326,7 +326,7 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
   -webkit-box-orient: vertical;
 }
 
-.c24 {
+.c24.c24.c24.c24.c24 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -339,7 +339,7 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
   padding: 0;
 }
 
-.c29 {
+.c29.c29.c29.c29.c29 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -352,7 +352,7 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
   padding: 0;
 }
 
-.c30 {
+.c30.c30.c30.c30.c30 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -365,7 +365,7 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
   padding: 0;
 }
 
-.c36 {
+.c36.c36.c36.c36.c36 {
   color: hsla(218,89%,51%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -379,7 +379,7 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
   padding: 0;
 }
 
-.c39 {
+.c39.c39.c39.c39.c39 {
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -393,7 +393,7 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
   padding: 0;
 }
 
-.c33 {
+.c33.c33.c33.c33.c33 {
   min-height: 36px;
   width: 100%;
   cursor: pointer;
@@ -429,24 +429,24 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
   position: relative;
 }
 
-.c33:hover {
+.c33.c33.c33.c33.c33:hover {
   background-color: hsla(218,89%,51%,0.09);
   border-color: hsla(218,89%,51%,1);
 }
 
-.c33:active {
+.c33.c33.c33.c33.c33:active {
   background-color: hsla(218,89%,51%,0.32);
   border-color: hsla(218,89%,51%,1);
 }
 
-.c33:focus-visible {
+.c33.c33.c33.c33.c33:focus-visible {
   background-color: hsla(218,89%,51%,0.18);
   border-color: hsla(218,89%,51%,1);
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c33 * {
+.c33.c33.c33.c33.c33 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -455,7 +455,7 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c38 {
+.c38.c38.c38.c38.c38 {
   min-height: 36px;
   width: 100%;
   cursor: pointer;
@@ -491,24 +491,24 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
   position: relative;
 }
 
-.c38:hover {
+.c38.c38.c38.c38.c38:hover {
   background-color: hsla(223,95%,48%,1);
   border-color: hsla(223,95%,48%,1);
 }
 
-.c38:active {
+.c38.c38.c38.c38.c38:active {
   background-color: hsla(230,100%,42%,1);
   border-color: hsla(230,100%,42%,1);
 }
 
-.c38:focus-visible {
+.c38.c38.c38.c38.c38:focus-visible {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c38 * {
+.c38.c38.c38.c38.c38 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -517,11 +517,11 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c35 {
+.c35.c35.c35.c35.c35 {
   opacity: 1;
 }
 
-.c14 {
+.c14.c14.c14.c14.c14 {
   background-color: hsla(216,15%,54%,0.09);
   border-radius: 9999px;
   max-width: 120px;
@@ -537,7 +537,7 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
   width: fit-content;
 }
 
-.c23 {
+.c23.c23.c23.c23.c23 {
   border-bottom-style: solid;
   border-bottom-width: 1px;
   -webkit-box-flex: 1;
@@ -547,31 +547,31 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
 }
 
 @media screen and (min-width:320px) {
-  .c22 {
+  .c22.c22.c22.c22.c22 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c22 {
+  .c22.c22.c22.c22.c22 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c22 {
+  .c22.c22.c22.c22.c22 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c22 {
+  .c22.c22.c22.c22.c22 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c22 {
+  .c22.c22.c22.c22.c22 {
     border-style: solid;
   }
 }
@@ -580,24 +580,15 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
   id="root"
 >
   <div
-<<<<<<< HEAD
     class="c0 c1"
     data-blade-component="card"
   >
     <div
       class="c2 c3"
-=======
-    class="BaseBox-bmPWx CardRootweb__StyledCardRoot-sc-1nb70ck-0 ePTaEs hsvHjX"
-    data-blade-component="card"
-  >
-    <div
-      class="BaseBox-bmPWx CardSurfaceweb__CardSurface-sc-1pgxikk-0 NqxNZ ezWJlT"
->>>>>>> e424fbce (feat: increase CSS specificity of components)
       data-blade-component="base-box"
       elevation="lowRaised"
     >
       <div
-<<<<<<< HEAD
         class="c4"
         data-blade-component="card-header"
       >
@@ -611,21 +602,6 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
           >
             <div
               class="c7"
-=======
-        class="BaseBox-bmPWx jdyvQx"
-        data-blade-component="card-header"
-      >
-        <div
-          class="BaseBox-bmPWx eJLYeV"
-          data-blade-component="base-box"
-        >
-          <div
-            class="BaseBox-bmPWx hhJMEl"
-            data-blade-component="base-box"
-          >
-            <div
-              class="BaseBox-bmPWx kajqli"
->>>>>>> e424fbce (feat: increase CSS specificity of components)
               data-blade-component="base-box"
             >
               <svg
@@ -657,7 +633,6 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
               </svg>
             </div>
             <div
-<<<<<<< HEAD
               class="c8"
               data-blade-component="base-box"
             >
@@ -667,23 +642,11 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
               >
                 <h6
                   class="c10"
-=======
-              class="BaseBox-bmPWx heXoBf"
-              data-blade-component="base-box"
-            >
-              <div
-                class="BaseBox-bmPWx hRnXdN"
-                data-blade-component="base-box"
-              >
-                <h6
-                  class="StyledBaseText-dVBfTO yQIej"
->>>>>>> e424fbce (feat: increase CSS specificity of components)
                   data-blade-component="heading"
                 >
                   Card Header
                 </h6>
                 <div
-<<<<<<< HEAD
                   class="c11"
                   data-blade-component="base-box"
                 >
@@ -701,25 +664,6 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
                       >
                         <p
                           class="c16"
-=======
-                  class="BaseBox-bmPWx bHquaf"
-                  data-blade-component="base-box"
-                >
-                  <div
-                    class="BaseBox-bmPWx hGbNLG"
-                    data-blade-component="counter"
-                  >
-                    <div
-                      class="BaseBox-bmPWx StyledCounterweb__StyledCounter-sc-1itt9w6-0 KttaV kzQAKu"
-                      data-blade-component="base-box"
-                    >
-                      <div
-                        class="BaseBox-bmPWx ZDhZu"
-                        data-blade-component="base-box"
-                      >
-                        <p
-                          class="StyledBaseText-dVBfTO hoBqle"
->>>>>>> e424fbce (feat: increase CSS specificity of components)
                           data-blade-component="text"
                         >
                           12
@@ -730,11 +674,7 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
                 </div>
               </div>
               <p
-<<<<<<< HEAD
                 class="c17"
-=======
-                class="StyledBaseText-dVBfTO isKCFF"
->>>>>>> e424fbce (feat: increase CSS specificity of components)
                 data-blade-component="text"
               >
                 Card subtitle
@@ -742,7 +682,6 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
             </div>
           </div>
           <div
-<<<<<<< HEAD
             class="c18"
             data-blade-component="base-box"
           >
@@ -760,25 +699,6 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
                 >
                   <p
                     class="c21"
-=======
-            class="BaseBox-bmPWx jUKCiQ"
-            data-blade-component="base-box"
-          >
-            <div
-              class="BaseBox-bmPWx hGbNLG"
-              data-blade-component="badge"
-            >
-              <div
-                class="BaseBox-bmPWx StyledBadgeweb__StyledBadge-sc-1svn4tv-0 boyGgG JzQhb"
-                data-blade-component="base-box"
-              >
-                <div
-                  class="BaseBox-bmPWx ZDhZu"
-                  data-blade-component="base-box"
-                >
-                  <p
-                    class="StyledBaseText-dVBfTO lbroWx"
->>>>>>> e424fbce (feat: increase CSS specificity of components)
                     data-blade-component="text"
                   >
                     NEW
@@ -789,11 +709,7 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
           </div>
         </div>
         <div
-<<<<<<< HEAD
           class="c22 c23"
-=======
-          class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 hRoOJk bwynWa"
->>>>>>> e424fbce (feat: increase CSS specificity of components)
           data-blade-component="divider"
           role="separator"
         />
@@ -803,18 +719,13 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
         data-blade-component="card-body"
       >
         <p
-<<<<<<< HEAD
           class="c24"
-=======
-          class="StyledBaseText-dVBfTO ekbJPz"
->>>>>>> e424fbce (feat: increase CSS specificity of components)
           data-blade-component="text"
         >
           Plain Card
         </p>
       </div>
       <div
-<<<<<<< HEAD
         class="c25"
         data-blade-component="card-footer"
       >
@@ -824,22 +735,10 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
         />
         <div
           class="c22 c23"
-=======
-        class="BaseBox-bmPWx hvdzho"
-        data-blade-component="card-footer"
-      >
-        <div
-          class="BaseBox-bmPWx jgsLuR"
-          data-blade-component="base-box"
-        />
-        <div
-          class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 hRoOJk bwynWa"
->>>>>>> e424fbce (feat: increase CSS specificity of components)
           data-blade-component="divider"
           role="separator"
         />
         <div
-<<<<<<< HEAD
           class="c27"
           data-blade-component="base-box"
         >
@@ -849,34 +748,18 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
           >
             <p
               class="c29"
-=======
-          class="BaseBox-bmPWx MelGh"
-          data-blade-component="base-box"
-        >
-          <div
-            class="BaseBox-bmPWx fPSMNp"
-            data-blade-component="base-box"
-          >
-            <p
-              class="StyledBaseText-dVBfTO jdLFGo"
->>>>>>> e424fbce (feat: increase CSS specificity of components)
               data-blade-component="text"
             >
               Card Footer
             </p>
             <p
-<<<<<<< HEAD
               class="c30"
-=======
-              class="StyledBaseText-dVBfTO jmWhbi"
->>>>>>> e424fbce (feat: increase CSS specificity of components)
               data-blade-component="text"
             >
               Card footer subtitle
             </p>
           </div>
           <div
-<<<<<<< HEAD
             class="c31"
             data-blade-component="base-box"
           >
@@ -886,35 +769,16 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
             >
               <button
                 class="c33"
-=======
-            class="BaseBox-bmPWx drkBwT"
-            data-blade-component="base-box"
-          >
-            <div
-              class="BaseBox-bmPWx gMycIZ"
-              data-blade-component="base-box"
-            >
-              <button
-                class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 CNYwx"
->>>>>>> e424fbce (feat: increase CSS specificity of components)
                 data-blade-component="button"
                 role="button"
                 type="button"
               >
                 <div
-<<<<<<< HEAD
                   class="c34 c35"
                   data-blade-component="base-box"
                 >
                   <div
                     class="c36"
-=======
-                  class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 gDQkZt fKcvHH"
-                  data-blade-component="base-box"
-                >
-                  <div
-                    class="StyledBaseText-dVBfTO gQSrhk"
->>>>>>> e424fbce (feat: increase CSS specificity of components)
                     data-blade-component="base-text"
                   >
                     Delete
@@ -923,7 +787,6 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
               </button>
             </div>
             <div
-<<<<<<< HEAD
               class="c37"
               data-blade-component="base-box"
             />
@@ -933,35 +796,16 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
             >
               <button
                 class="c38"
-=======
-              class="BaseBox-bmPWx eDYsrM"
-              data-blade-component="base-box"
-            />
-            <div
-              class="BaseBox-bmPWx gMycIZ"
-              data-blade-component="base-box"
-            >
-              <button
-                class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 gJWwSW"
->>>>>>> e424fbce (feat: increase CSS specificity of components)
                 data-blade-component="button"
                 role="button"
                 type="button"
               >
                 <div
-<<<<<<< HEAD
                   class="c34 c35"
                   data-blade-component="base-box"
                 >
                   <div
                     class="c39"
-=======
-                  class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 gDQkZt fKcvHH"
-                  data-blade-component="base-box"
-                >
-                  <div
-                    class="StyledBaseText-dVBfTO bWCnhn"
->>>>>>> e424fbce (feat: increase CSS specificity of components)
                     data-blade-component="base-text"
                   >
                     Save
@@ -977,22 +821,22 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
 </div>
 `;
 
-exports[`<Card /> should render a Interactive Card with href 1`] = `"<div id="root"><div href="https://google.com" data-blade-component="card" class="BaseBox-bmPWx CardRootweb__StyledCardRoot-sc-1nb70ck-0 ePTaEs hsvHjX"><div elevation="lowRaised" data-blade-component="base-box" class="BaseBox-bmPWx CardSurfaceweb__CardSurface-sc-1pgxikk-0 NqxNZ ezWJlT"><a href="https://google.com" data-blade-component="card-link-overlay" aria-pressed="false" class="LinkOverlayweb__LinkOverlay-ugib1o-0 jWphZJ"></a><div data-blade-component="card-body" class="BaseBox-bmPWx"><p class="StyledBaseText-dVBfTO ekbJPz" data-blade-component="text">Plain Card</p></div></div></div></div>"`;
+exports[`<Card /> should render a Interactive Card with href 1`] = `"<div id="root"><div href="https://google.com" data-blade-component="card" class="BaseBox-bmPWx CardRootweb__StyledCardRoot-sc-1nb70ck-0 iAbwvA tmnBv"><div elevation="lowRaised" data-blade-component="base-box" class="BaseBox-bmPWx CardSurfaceweb__CardSurface-sc-1pgxikk-0 hMUdcd dZToQf"><a href="https://google.com" data-blade-component="card-link-overlay" aria-pressed="false" class="LinkOverlayweb__LinkOverlay-ugib1o-0 cmIkCR"></a><div data-blade-component="card-body" class="BaseBox-bmPWx"><p class="StyledBaseText-dVBfTO hJVyJT" data-blade-component="text">Plain Card</p></div></div></div></div>"`;
 
 exports[`<Card /> should render a Interactive Card with href 2`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: block;
   border-radius: 4px;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   text-align: left;
   padding: 24px;
   border-radius: 4px;
   box-shadow: 0 4px 8px -2px hsla(217,56%,17%,0.1),0 2px 4px -2px hsla(217,56%,17%,0.06);
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1006,7 +850,7 @@ exports[`<Card /> should render a Interactive Card with href 2`] = `
   box-sizing: border-box;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   all: unset;
   cursor: pointer;
   -webkit-appearance: none;
@@ -1017,7 +861,7 @@ exports[`<Card /> should render a Interactive Card with href 2`] = `
   position: static;
 }
 
-.c4:before {
+.c4.c4.c4.c4.c4:before {
   content: '';
   cursor: inherit;
   display: block;
@@ -1029,7 +873,7 @@ exports[`<Card /> should render a Interactive Card with href 2`] = `
   height: 100%;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   box-shadow: 0px 0px 0px 2px transparent;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
@@ -1040,17 +884,17 @@ exports[`<Card /> should render a Interactive Card with href 2`] = `
   transition-property: transform,box-shadow;
 }
 
-.c1 a[href]:not(a[data-blade-component="card-link-overlay"]) {
+.c1.c1.c1.c1.c1 a[href]:not(a[data-blade-component="card-link-overlay"]) {
   z-index: 2;
   position: relative;
 }
 
-.c1 button:not(button[data-blade-component="card-link-overlay"]) {
+.c1.c1.c1.c1.c1 button:not(button[data-blade-component="card-link-overlay"]) {
   z-index: 2;
   position: relative;
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -1067,30 +911,18 @@ exports[`<Card /> should render a Interactive Card with href 2`] = `
   id="root"
 >
   <div
-<<<<<<< HEAD
     class="c0 c1"
-=======
-    class="BaseBox-bmPWx CardRootweb__StyledCardRoot-sc-1nb70ck-0 ePTaEs hsvHjX"
->>>>>>> e424fbce (feat: increase CSS specificity of components)
     data-blade-component="card"
     href="https://google.com"
   >
     <div
-<<<<<<< HEAD
       class="c2 c3"
-=======
-      class="BaseBox-bmPWx CardSurfaceweb__CardSurface-sc-1pgxikk-0 NqxNZ ezWJlT"
->>>>>>> e424fbce (feat: increase CSS specificity of components)
       data-blade-component="base-box"
       elevation="lowRaised"
     >
       <a
         aria-pressed="false"
-<<<<<<< HEAD
         class="c4"
-=======
-        class="LinkOverlayweb__LinkOverlay-ugib1o-0 jWphZJ"
->>>>>>> e424fbce (feat: increase CSS specificity of components)
         data-blade-component="card-link-overlay"
         href="https://google.com"
       />
@@ -1099,11 +931,7 @@ exports[`<Card /> should render a Interactive Card with href 2`] = `
         data-blade-component="card-body"
       >
         <p
-<<<<<<< HEAD
           class="c5"
-=======
-          class="StyledBaseText-dVBfTO ekbJPz"
->>>>>>> e424fbce (feat: increase CSS specificity of components)
           data-blade-component="text"
         >
           Plain Card
@@ -1114,22 +942,22 @@ exports[`<Card /> should render a Interactive Card with href 2`] = `
 </div>
 `;
 
-exports[`<Card /> should render a Interactive Card with onClick 1`] = `"<div id="root"><div data-blade-component="card" class="BaseBox-bmPWx CardRootweb__StyledCardRoot-sc-1nb70ck-0 ePTaEs hsvHjX"><div elevation="lowRaised" data-blade-component="base-box" class="BaseBox-bmPWx CardSurfaceweb__CardSurface-sc-1pgxikk-0 NqxNZ ezWJlT"><button data-blade-component="card-link-overlay" aria-pressed="false" class="LinkOverlayweb__LinkOverlay-ugib1o-0 jWphZJ"></button><div data-blade-component="card-body" class="BaseBox-bmPWx"><p class="StyledBaseText-dVBfTO ekbJPz" data-blade-component="text">Plain Card</p></div></div></div></div>"`;
+exports[`<Card /> should render a Interactive Card with onClick 1`] = `"<div id="root"><div data-blade-component="card" class="BaseBox-bmPWx CardRootweb__StyledCardRoot-sc-1nb70ck-0 iAbwvA tmnBv"><div elevation="lowRaised" data-blade-component="base-box" class="BaseBox-bmPWx CardSurfaceweb__CardSurface-sc-1pgxikk-0 hMUdcd dZToQf"><button data-blade-component="card-link-overlay" aria-pressed="false" class="LinkOverlayweb__LinkOverlay-ugib1o-0 cmIkCR"></button><div data-blade-component="card-body" class="BaseBox-bmPWx"><p class="StyledBaseText-dVBfTO hJVyJT" data-blade-component="text">Plain Card</p></div></div></div></div>"`;
 
 exports[`<Card /> should render a Interactive Card with onClick 2`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: block;
   border-radius: 4px;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   text-align: left;
   padding: 24px;
   border-radius: 4px;
   box-shadow: 0 4px 8px -2px hsla(217,56%,17%,0.1),0 2px 4px -2px hsla(217,56%,17%,0.06);
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1143,7 +971,7 @@ exports[`<Card /> should render a Interactive Card with onClick 2`] = `
   box-sizing: border-box;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   all: unset;
   cursor: pointer;
   -webkit-appearance: none;
@@ -1154,7 +982,7 @@ exports[`<Card /> should render a Interactive Card with onClick 2`] = `
   position: static;
 }
 
-.c4:before {
+.c4.c4.c4.c4.c4:before {
   content: '';
   cursor: inherit;
   display: block;
@@ -1166,7 +994,7 @@ exports[`<Card /> should render a Interactive Card with onClick 2`] = `
   height: 100%;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   box-shadow: 0px 0px 0px 2px transparent;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
@@ -1177,17 +1005,17 @@ exports[`<Card /> should render a Interactive Card with onClick 2`] = `
   transition-property: transform,box-shadow;
 }
 
-.c1 a[href]:not(a[data-blade-component="card-link-overlay"]) {
+.c1.c1.c1.c1.c1 a[href]:not(a[data-blade-component="card-link-overlay"]) {
   z-index: 2;
   position: relative;
 }
 
-.c1 button:not(button[data-blade-component="card-link-overlay"]) {
+.c1.c1.c1.c1.c1 button:not(button[data-blade-component="card-link-overlay"]) {
   z-index: 2;
   position: relative;
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -1204,29 +1032,17 @@ exports[`<Card /> should render a Interactive Card with onClick 2`] = `
   id="root"
 >
   <div
-<<<<<<< HEAD
     class="c0 c1"
     data-blade-component="card"
   >
     <div
       class="c2 c3"
-=======
-    class="BaseBox-bmPWx CardRootweb__StyledCardRoot-sc-1nb70ck-0 ePTaEs hsvHjX"
-    data-blade-component="card"
-  >
-    <div
-      class="BaseBox-bmPWx CardSurfaceweb__CardSurface-sc-1pgxikk-0 NqxNZ ezWJlT"
->>>>>>> e424fbce (feat: increase CSS specificity of components)
       data-blade-component="base-box"
       elevation="lowRaised"
     >
       <button
         aria-pressed="false"
-<<<<<<< HEAD
         class="c4"
-=======
-        class="LinkOverlayweb__LinkOverlay-ugib1o-0 jWphZJ"
->>>>>>> e424fbce (feat: increase CSS specificity of components)
         data-blade-component="card-link-overlay"
       />
       <div
@@ -1234,11 +1050,7 @@ exports[`<Card /> should render a Interactive Card with onClick 2`] = `
         data-blade-component="card-body"
       >
         <p
-<<<<<<< HEAD
           class="c5"
-=======
-          class="StyledBaseText-dVBfTO ekbJPz"
->>>>>>> e424fbce (feat: increase CSS specificity of components)
           data-blade-component="text"
         >
           Plain Card
