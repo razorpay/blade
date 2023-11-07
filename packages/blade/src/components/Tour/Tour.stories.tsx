@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import type { Meta } from '@storybook/react';
 import React from 'react';
-import type { Step, StepRenderProps, TourProps } from './types';
+import type { StepRenderProps, TourProps, TourSteps } from './types';
 import { TourStep } from './TourStep';
 import { Tour } from '.';
 import { Button } from '~components/Button';
@@ -65,7 +65,7 @@ const TourFooter = ({
   );
 };
 
-const steps: Step[] = [
+const steps: TourSteps = [
   {
     name: 'step-1',
     title: 'Overview of Payments',

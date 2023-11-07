@@ -30,7 +30,7 @@ import { useId } from '~utils/useId';
 import { getFloatingPlacementParts } from '~utils/getFloatingPlacementParts';
 import type { PopoverProps } from '~components/Popover';
 
-type TourPopoverProps = Omit<PopoverProps, 'children'> & {
+type TourPopoverProps = Omit<PopoverProps, 'children' | 'initialFocusRef'> & {
   attachTo: React.RefObject<HTMLElement> | undefined;
 };
 
@@ -46,7 +46,6 @@ const TourPopover = ({
   zIndex = popoverZIndex,
   isOpen,
   defaultIsOpen,
-  initialFocusRef,
 }: TourPopoverProps): React.ReactElement => {
   const { theme } = useTheme();
   const defaultInitialFocusRef = React.useRef<HTMLButtonElement>(null);
@@ -131,7 +130,7 @@ const TourPopover = ({
       {isMounted && (
         <FloatingPortal>
           <FloatingFocusManager
-            initialFocus={initialFocusRef ?? defaultInitialFocusRef}
+            initialFocus={defaultInitialFocusRef}
             context={context}
             modal={true}
             guards={true}
@@ -142,7 +141,7 @@ const TourPopover = ({
               // TODO: Tokenize zIndex values
               zIndex={zIndex}
               {...getFloatingProps()}
-              {...metaAttribute({ name: MetaConstants.Popover })}
+              {...metaAttribute({ name: MetaConstants.TourPopover })}
               {...makeAccessible({ labelledBy: titleId })}
             >
               <PopoverContent

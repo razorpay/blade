@@ -6,29 +6,8 @@ import type { TourMaskRect, TourProps } from './types';
 import { TourContext } from './TourContext';
 import { TourMask } from './TourMask';
 import { TourPopover } from './TourPopover';
+import { useDelayedState } from './utils';
 import { usePrevious, useTheme } from '~utils';
-
-/**
- * Hook to delay the state change
- */
-function useDelayedState<T>(initialState: T, delay: number): T {
-  const [delayedState, setDelayedState] = React.useState(initialState);
-  const timeoutRef = React.useRef<number | undefined>(undefined);
-
-  // Delay the active step change to allow for transitions to finish
-  // This prevents the popover's footer from changing it's JSX while it's transitioning
-  React.useEffect(() => {
-    timeoutRef.current = window.setTimeout(() => {
-      setDelayedState(initialState);
-    }, delay);
-
-    return () => {
-      window.clearTimeout(timeoutRef.current);
-    };
-  }, [delay, initialState]);
-
-  return delayedState;
-}
 
 const Tour = ({
   steps,
@@ -42,10 +21,10 @@ const Tour = ({
   const { theme } = useTheme();
   const [refIdMap, setRefIdMap] = React.useState(new Map<string, React.RefObject<HTMLElement>>());
   const [size, setSize] = React.useState<TourMaskRect>({
-    height: 0,
-    width: 0,
     x: 0,
     y: 0,
+    height: 0,
+    width: 0,
   });
   const transitionDelay = theme.motion.duration.gentle;
   // delayed state is used to let the transition finish before reacting to the state changes

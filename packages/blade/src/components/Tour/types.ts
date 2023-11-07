@@ -1,10 +1,27 @@
 import type { UseFloatingOptions } from '@floating-ui/react';
 
 type StepRenderProps = {
+  /**
+   * Go to the next step
+   */
   goToNext: () => void;
+  /**
+   * Go to the previous step
+   */
   goToPrevious: () => void;
+  /**
+   * Stop the tour
+   *
+   * This will call the `onFinish` callback
+   */
   stopTour: () => void;
+  /**
+   * Current active step (zero based index)
+   */
   activeStep: number;
+  /**
+   * Total number of steps
+   */
   totalSteps: number;
 };
 
@@ -50,13 +67,16 @@ type Step = {
   placement?: UseFloatingOptions['placement'];
 };
 
+// This will also be useful for consumers
+type TourSteps = Step[];
+
 type TourProps = {
   /**
    * Array of steps to be rendered
    *
    * The order of the steps will be the order in which they are rendered depending on the `activeStep` prop
    */
-  steps: Step[];
+  steps: TourSteps;
   /**
    * Whether the tour is visible or not
    */
@@ -92,4 +112,4 @@ type TourMaskRect = {
   y: number;
 };
 
-export type { TourProps, Step, TourStepProps, TourMaskRect, StepRenderProps };
+export type { TourProps, Step, TourStepProps, TourMaskRect, StepRenderProps, TourSteps };

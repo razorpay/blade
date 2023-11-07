@@ -7,6 +7,7 @@ import type { TourMaskRect } from './types';
 import { useWindowSize } from '~utils/useWindowSize';
 import { makeSpace, useTheme } from '~utils';
 import { makeMotionTime } from '~utils/makeMotionTime';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
 const scaleIn = keyframes`
   from {
@@ -102,6 +103,7 @@ const TourMask = ({ padding, size, isTransitioning }: TourMaskProps): React.Reac
       viewBox={`0 0 ${windowWidth} ${windowHeight}`}
       fill="none"
       stroke="none"
+      {...metaAttribute({ name: MetaConstants.TourMask })}
     >
       <rect
         x={x + borderWidth / 2}
