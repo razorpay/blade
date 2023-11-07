@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<ChipGroup /> selectionType="multiple" should render with selectionType="multiple" 1`] = `
-#razorpay-blade .c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -11,7 +11,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
   flex-direction: row;
 }
 
-#razorpay-blade .c0 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -24,19 +24,19 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
   flex-direction: row;
 }
 
-#razorpay-blade .c0 {
+.c4.c4.c4.c4.c4 {
   margin-bottom: 8px;
   margin-right: 8px;
 }
 
-#razorpay-blade .c0 {
+.c5.c5.c5.c5.c5 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
-#razorpay-blade .c0 {
+.c7.c7.c7.c7.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -46,7 +46,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
   flex-direction: column;
 }
 
-#razorpay-blade .c0 {
+.c8.c8.c8.c8.c8 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -60,12 +60,12 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
   align-items: center;
 }
 
-#razorpay-blade .c0 {
+.c10.c10.c10.c10.c10 {
   border-color: hsla(216,19%,89%,1);
   border-style: solid;
 }
 
-#razorpay-blade .c0 {
+.c12.c12.c12.c12.c12 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -92,7 +92,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
   border-style: solid;
 }
 
-#razorpay-blade .c5 {
+.c11.c11.c11.c11.c11 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 9999px;
   border-color: hsla(216,19%,89%,1);
@@ -130,7 +130,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-#razorpay-blade .c6 {
+.c13.c13.c13.c13.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -138,7 +138,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
   border-color: transparent;
 }
 
-#razorpay-blade .c6:hover {
+.c13.c13.c13.c13.c13:hover {
   background-color: hsla(216,15%,54%,0.09);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -146,7 +146,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
   transition-duration: 150ms;
 }
 
-#razorpay-blade .c3 {
+.c6.c6.c6.c6.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -155,7 +155,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
   margin-bottom: 2px;
 }
 
-#razorpay-blade .c1 {
+.c1.c1.c1.c1.c1 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -172,7 +172,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
   word-wrap: normal;
 }
 
-#razorpay-blade .c4 {
+.c9.c9.c9.c9.c9 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -189,12 +189,12 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
   word-wrap: normal;
 }
 
-#razorpay-blade .c4:focus-visible + div {
+.c9.c9.c9.c9.c9:focus-visible + div {
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-#razorpay-blade .c4:hover + div {
+.c9.c9.c9.c9.c9:hover + div {
   border-color: hsla(214,18%,69%,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -202,7 +202,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
   transition-duration: 70ms;
 }
 
-#razorpay-blade .c2 {
+.c2.c2.c2.c2.c2 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -215,7 +215,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
   padding: 0;
 }
 
-#razorpay-blade .c2 {
+.c14.c14.c14.c14.c14 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -234,114 +234,114 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
 }
 
 @media screen and (min-width:320px) {
-  #razorpay-blade .c0 {
+  .c10.c10.c10.c10.c10 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  #razorpay-blade .c0 {
+  .c10.c10.c10.c10.c10 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  #razorpay-blade .c0 {
+  .c10.c10.c10.c10.c10 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  #razorpay-blade .c0 {
+  .c10.c10.c10.c10.c10 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  #razorpay-blade .c0 {
+  .c10.c10.c10.c10.c10 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:320px) {
-  #razorpay-blade .c0 {
+  .c12.c12.c12.c12.c12 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  #razorpay-blade .c0 {
+  .c12.c12.c12.c12.c12 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  #razorpay-blade .c0 {
+  .c12.c12.c12.c12.c12 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  #razorpay-blade .c0 {
+  .c12.c12.c12.c12.c12 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  #razorpay-blade .c0 {
+  .c12.c12.c12.c12.c12 {
     border-style: solid;
   }
 }
 
 <div>
   <div
-    class="c0"
+    class=""
     data-blade-component="base-box"
   >
     <div
       aria-labelledby="chip-group-104-label"
-      class="c0 "
+      class="c0"
       data-blade-component="chip-group"
       role="group"
     >
       <div
-        class="c0"
+        class=""
         data-blade-component="base-box"
       >
         <div
-          class="c1 "
+          class="c1"
           data-blade-component="visually-hidden"
         >
           <p
-            class="c2 "
+            class="c2"
             data-blade-component="text"
           >
             Select fruits
           </p>
         </div>
         <div
-          class="c0 "
+          class="c3"
           data-blade-component="base-box"
         >
           <div
-            class="c0 "
+            class="c4"
             data-blade-component="base-box"
           >
             <div
-              class="c0 "
+              class="c5"
               data-blade-component="chip"
             >
               <label
-                class="c3 "
+                class="c6"
                 data-blade-component="chip-label"
                 style="cursor: pointer;"
               >
                 <div
-                  class="c0 "
+                  class="c7"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c0 "
+                    class="c8"
                     data-blade-component="base-box"
                   >
                     <input
@@ -349,21 +349,21 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                       aria-disabled="false"
                       aria-invalid="false"
                       aria-required="false"
-                      class="c4 "
+                      class="c9"
                       role="checkbox"
                       type="checkbox"
                       value="apple"
                     />
                     <div
-                      class="c0 c5 "
+                      class="c10 c11"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c0 c6 "
+                        class="c12 c13"
                         data-blade-component="base-box"
                       >
                         <p
-                          class="c2 "
+                          class="c14"
                           data-blade-component="text"
                         >
                           Apple
@@ -376,24 +376,24 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
             </div>
           </div>
           <div
-            class="c0 "
+            class="c4"
             data-blade-component="base-box"
           >
             <div
-              class="c0 "
+              class="c5"
               data-blade-component="chip"
             >
               <label
-                class="c3 "
+                class="c6"
                 data-blade-component="chip-label"
                 style="cursor: pointer;"
               >
                 <div
-                  class="c0 "
+                  class="c7"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c0 "
+                    class="c8"
                     data-blade-component="base-box"
                   >
                     <input
@@ -401,21 +401,21 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                       aria-disabled="false"
                       aria-invalid="false"
                       aria-required="false"
-                      class="c4 "
+                      class="c9"
                       role="checkbox"
                       type="checkbox"
                       value="mango"
                     />
                     <div
-                      class="c0 c5 "
+                      class="c10 c11"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c0 c6 "
+                        class="c12 c13"
                         data-blade-component="base-box"
                       >
                         <p
-                          class="c2 "
+                          class="c14"
                           data-blade-component="text"
                         >
                           Mango
@@ -428,24 +428,24 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
             </div>
           </div>
           <div
-            class="c0 "
+            class="c4"
             data-blade-component="base-box"
           >
             <div
-              class="c0 "
+              class="c5"
               data-blade-component="chip"
             >
               <label
-                class="c3 "
+                class="c6"
                 data-blade-component="chip-label"
                 style="cursor: pointer;"
               >
                 <div
-                  class="c0 "
+                  class="c7"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c0 "
+                    class="c8"
                     data-blade-component="base-box"
                   >
                     <input
@@ -453,21 +453,21 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                       aria-disabled="false"
                       aria-invalid="false"
                       aria-required="false"
-                      class="c4 "
+                      class="c9"
                       role="checkbox"
                       type="checkbox"
                       value="orange"
                     />
                     <div
-                      class="c0 c5 "
+                      class="c10 c11"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c0 c6 "
+                        class="c12 c13"
                         data-blade-component="base-box"
                       >
                         <p
-                          class="c2 "
+                          class="c14"
                           data-blade-component="text"
                         >
                           Orange
@@ -487,7 +487,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
 `;
 
 exports[`<ChipGroup /> selectionType="single" should render with selectionType="single" 1`] = `
-#razorpay-blade .c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -497,7 +497,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
   flex-direction: row;
 }
 
-#razorpay-blade .c0 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -510,19 +510,19 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
   flex-direction: row;
 }
 
-#razorpay-blade .c0 {
+.c4.c4.c4.c4.c4 {
   margin-bottom: 8px;
   margin-right: 8px;
 }
 
-#razorpay-blade .c0 {
+.c5.c5.c5.c5.c5 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
-#razorpay-blade .c0 {
+.c7.c7.c7.c7.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -532,7 +532,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
   flex-direction: column;
 }
 
-#razorpay-blade .c0 {
+.c8.c8.c8.c8.c8 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -546,12 +546,12 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
   align-items: center;
 }
 
-#razorpay-blade .c0 {
+.c10.c10.c10.c10.c10 {
   border-color: hsla(216,19%,89%,1);
   border-style: solid;
 }
 
-#razorpay-blade .c0 {
+.c12.c12.c12.c12.c12 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -578,7 +578,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
   border-style: solid;
 }
 
-#razorpay-blade .c5 {
+.c11.c11.c11.c11.c11 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 9999px;
   border-color: hsla(216,19%,89%,1);
@@ -616,7 +616,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-#razorpay-blade .c6 {
+.c13.c13.c13.c13.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -624,7 +624,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
   border-color: transparent;
 }
 
-#razorpay-blade .c6:hover {
+.c13.c13.c13.c13.c13:hover {
   background-color: hsla(216,15%,54%,0.09);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -632,7 +632,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
   transition-duration: 150ms;
 }
 
-#razorpay-blade .c3 {
+.c6.c6.c6.c6.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -641,7 +641,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
   margin-bottom: 2px;
 }
 
-#razorpay-blade .c1 {
+.c1.c1.c1.c1.c1 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -658,7 +658,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
   word-wrap: normal;
 }
 
-#razorpay-blade .c4 {
+.c9.c9.c9.c9.c9 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -675,12 +675,12 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
   word-wrap: normal;
 }
 
-#razorpay-blade .c4:focus-visible + div {
+.c9.c9.c9.c9.c9:focus-visible + div {
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-#razorpay-blade .c4:hover + div {
+.c9.c9.c9.c9.c9:hover + div {
   border-color: hsla(214,18%,69%,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -688,7 +688,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
   transition-duration: 70ms;
 }
 
-#razorpay-blade .c2 {
+.c2.c2.c2.c2.c2 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -701,7 +701,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
   padding: 0;
 }
 
-#razorpay-blade .c2 {
+.c14.c14.c14.c14.c14 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -720,114 +720,114 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
 }
 
 @media screen and (min-width:320px) {
-  #razorpay-blade .c0 {
+  .c10.c10.c10.c10.c10 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  #razorpay-blade .c0 {
+  .c10.c10.c10.c10.c10 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  #razorpay-blade .c0 {
+  .c10.c10.c10.c10.c10 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  #razorpay-blade .c0 {
+  .c10.c10.c10.c10.c10 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  #razorpay-blade .c0 {
+  .c10.c10.c10.c10.c10 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:320px) {
-  #razorpay-blade .c0 {
+  .c12.c12.c12.c12.c12 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  #razorpay-blade .c0 {
+  .c12.c12.c12.c12.c12 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  #razorpay-blade .c0 {
+  .c12.c12.c12.c12.c12 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  #razorpay-blade .c0 {
+  .c12.c12.c12.c12.c12 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  #razorpay-blade .c0 {
+  .c12.c12.c12.c12.c12 {
     border-style: solid;
   }
 }
 
 <div>
   <div
-    class="c0"
+    class=""
     data-blade-component="base-box"
   >
     <div
       aria-labelledby="chip-group-7-label"
-      class="c0 "
+      class="c0"
       data-blade-component="chip-group"
       role="radiogroup"
     >
       <div
-        class="c0"
+        class=""
         data-blade-component="base-box"
       >
         <div
-          class="c1 "
+          class="c1"
           data-blade-component="visually-hidden"
         >
           <p
-            class="c2 "
+            class="c2"
             data-blade-component="text"
           >
             Select fruits
           </p>
         </div>
         <div
-          class="c0 "
+          class="c3"
           data-blade-component="base-box"
         >
           <div
-            class="c0 "
+            class="c4"
             data-blade-component="base-box"
           >
             <div
-              class="c0 "
+              class="c5"
               data-blade-component="chip"
             >
               <label
-                class="c3 "
+                class="c6"
                 data-blade-component="chip-label"
                 style="cursor: pointer;"
               >
                 <div
-                  class="c0 "
+                  class="c7"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c0 "
+                    class="c8"
                     data-blade-component="base-box"
                   >
                     <input
@@ -836,21 +836,21 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                       aria-disabled="false"
                       aria-invalid="false"
                       aria-required="false"
-                      class="c4 "
+                      class="c9"
                       role="radio"
                       type="radio"
                       value="apple"
                     />
                     <div
-                      class="c0 c5 "
+                      class="c10 c11"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c0 c6 "
+                        class="c12 c13"
                         data-blade-component="base-box"
                       >
                         <p
-                          class="c2 "
+                          class="c14"
                           data-blade-component="text"
                         >
                           Apple
@@ -863,24 +863,24 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
             </div>
           </div>
           <div
-            class="c0 "
+            class="c4"
             data-blade-component="base-box"
           >
             <div
-              class="c0 "
+              class="c5"
               data-blade-component="chip"
             >
               <label
-                class="c3 "
+                class="c6"
                 data-blade-component="chip-label"
                 style="cursor: pointer;"
               >
                 <div
-                  class="c0 "
+                  class="c7"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c0 "
+                    class="c8"
                     data-blade-component="base-box"
                   >
                     <input
@@ -889,21 +889,21 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                       aria-disabled="false"
                       aria-invalid="false"
                       aria-required="false"
-                      class="c4 "
+                      class="c9"
                       role="radio"
                       type="radio"
                       value="mango"
                     />
                     <div
-                      class="c0 c5 "
+                      class="c10 c11"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c0 c6 "
+                        class="c12 c13"
                         data-blade-component="base-box"
                       >
                         <p
-                          class="c2 "
+                          class="c14"
                           data-blade-component="text"
                         >
                           Mango
@@ -916,24 +916,24 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
             </div>
           </div>
           <div
-            class="c0 "
+            class="c4"
             data-blade-component="base-box"
           >
             <div
-              class="c0 "
+              class="c5"
               data-blade-component="chip"
             >
               <label
-                class="c3 "
+                class="c6"
                 data-blade-component="chip-label"
                 style="cursor: pointer;"
               >
                 <div
-                  class="c0 "
+                  class="c7"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c0 "
+                    class="c8"
                     data-blade-component="base-box"
                   >
                     <input
@@ -942,21 +942,21 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                       aria-disabled="false"
                       aria-invalid="false"
                       aria-required="false"
-                      class="c4 "
+                      class="c9"
                       role="radio"
                       type="radio"
                       value="orange"
                     />
                     <div
-                      class="c0 c5 "
+                      class="c10 c11"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c0 c6 "
+                        class="c12 c13"
                         data-blade-component="base-box"
                       >
                         <p
-                          class="c2 "
+                          class="c14"
                           data-blade-component="text"
                         >
                           Orange

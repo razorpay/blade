@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Popover /> should render 1`] = `
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -22,11 +22,11 @@ exports[`<Popover /> should render 1`] = `
   justify-content: center;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   z-index: 1100;
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -38,7 +38,7 @@ exports[`<Popover /> should render 1`] = `
   gap: 12px;
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   position: absolute;
   z-index: 1;
   padding: 4px;
@@ -47,7 +47,7 @@ exports[`<Popover /> should render 1`] = `
   border-radius: 9999px;
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   width: 100%;
   max-width: 328px;
   position: relative;
@@ -64,7 +64,7 @@ exports[`<Popover /> should render 1`] = `
   transition-duration: 200ms;
 }
 
-.c8 {
+.c8.c8.c8.c8.c8 {
   border: none;
   cursor: pointer;
   padding: 0;
@@ -91,21 +91,21 @@ exports[`<Popover /> should render 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c8:hover {
+.c8.c8.c8.c8.c8:hover {
   color: hsla(217,18%,45%,1);
 }
 
-.c8:focus-visible {
+.c8.c8.c8.c8.c8:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   color: hsla(217,18%,45%,1);
 }
 
-.c8:active {
+.c8.c8.c8.c8.c8:active {
   color: hsla(217,18%,45%,1);
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -119,7 +119,7 @@ exports[`<Popover /> should render 1`] = `
   padding: 0;
 }
 
-.c9 {
+.c9.c9.c9.c9.c9 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -132,7 +132,7 @@ exports[`<Popover /> should render 1`] = `
   padding: 0;
 }
 
-.c0 {
+.c0.c0.c0.c0.c0 {
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -168,24 +168,24 @@ exports[`<Popover /> should render 1`] = `
   position: relative;
 }
 
-.c0:hover {
+.c0.c0.c0.c0.c0:hover {
   background-color: hsla(223,95%,48%,1);
   border-color: hsla(223,95%,48%,1);
 }
 
-.c0:active {
+.c0.c0.c0.c0.c0:active {
   background-color: hsla(230,100%,42%,1);
   border-color: hsla(230,100%,42%,1);
 }
 
-.c0:focus-visible {
+.c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c0 * {
+.c0.c0.c0.c0.c0 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -194,7 +194,7 @@ exports[`<Popover /> should render 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   opacity: 1;
 }
 
@@ -340,7 +340,7 @@ exports[`<Popover /> should render 1`] = `
 `;
 
 exports[`<Popover /> should render popover with custom zIndex 1`] = `
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -361,11 +361,11 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
   justify-content: center;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   z-index: 9999;
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -377,7 +377,7 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
   gap: 12px;
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   position: absolute;
   z-index: 1;
   padding: 4px;
@@ -386,7 +386,7 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
   border-radius: 9999px;
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   width: 100%;
   max-width: 328px;
   position: relative;
@@ -402,7 +402,7 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
   transform: translateY(4px);
 }
 
-.c8 {
+.c8.c8.c8.c8.c8 {
   border: none;
   cursor: pointer;
   padding: 0;
@@ -429,21 +429,21 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c8:hover {
+.c8.c8.c8.c8.c8:hover {
   color: hsla(217,18%,45%,1);
 }
 
-.c8:focus-visible {
+.c8.c8.c8.c8.c8:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   color: hsla(217,18%,45%,1);
 }
 
-.c8:active {
+.c8.c8.c8.c8.c8:active {
   color: hsla(217,18%,45%,1);
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -457,7 +457,7 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
   padding: 0;
 }
 
-.c9 {
+.c9.c9.c9.c9.c9 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -470,7 +470,7 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
   padding: 0;
 }
 
-.c0 {
+.c0.c0.c0.c0.c0 {
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -506,24 +506,24 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
   position: relative;
 }
 
-.c0:hover {
+.c0.c0.c0.c0.c0:hover {
   background-color: hsla(223,95%,48%,1);
   border-color: hsla(223,95%,48%,1);
 }
 
-.c0:active {
+.c0.c0.c0.c0.c0:active {
   background-color: hsla(230,100%,42%,1);
   border-color: hsla(230,100%,42%,1);
 }
 
-.c0:focus-visible {
+.c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c0 * {
+.c0.c0.c0.c0.c0 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -532,7 +532,7 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   opacity: 1;
 }
 
@@ -678,7 +678,7 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
 `;
 
 exports[`<Popover /> should render with title,footer 1`] = `
-#razorpay-blade .c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -699,11 +699,11 @@ exports[`<Popover /> should render with title,footer 1`] = `
   justify-content: center;
 }
 
-#razorpay-blade .c1 {
+.c4.c4.c4.c4.c4 {
   z-index: 1100;
 }
 
-#razorpay-blade .c1 {
+.c6.c6.c6.c6.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -715,7 +715,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
   gap: 12px;
 }
 
-#razorpay-blade .c1 {
+.c7.c7.c7.c7.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -733,15 +733,15 @@ exports[`<Popover /> should render with title,footer 1`] = `
   gap: 8px;
 }
 
-#razorpay-blade .c1 {
+.c8.c8.c8.c8.c8 {
   padding-right: 12px;
 }
 
-#razorpay-blade .c1 {
+.c10.c10.c10.c10.c10 {
   margin-left: auto;
 }
 
-#razorpay-blade .c4 {
+.c5.c5.c5.c5.c5 {
   width: 100%;
   max-width: 328px;
   position: relative;
@@ -757,7 +757,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
   transform: translateY(4px);
 }
 
-#razorpay-blade .c5 {
+.c11.c11.c11.c11.c11 {
   border: none;
   cursor: pointer;
   padding: 0;
@@ -784,21 +784,21 @@ exports[`<Popover /> should render with title,footer 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-#razorpay-blade .c5:hover {
+.c11.c11.c11.c11.c11:hover {
   color: hsla(217,18%,45%,1);
 }
 
-#razorpay-blade .c5:focus-visible {
+.c11.c11.c11.c11.c11:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   color: hsla(217,18%,45%,1);
 }
 
-#razorpay-blade .c5:active {
+.c11.c11.c11.c11.c11:active {
   color: hsla(217,18%,45%,1);
 }
 
-#razorpay-blade .c3 {
+.c3.c3.c3.c3.c3 {
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -812,7 +812,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
   padding: 0;
 }
 
-#razorpay-blade .c3 {
+.c9.c9.c9.c9.c9 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1rem;
@@ -825,7 +825,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
   padding: 0;
 }
 
-#razorpay-blade .c3 {
+.c12.c12.c12.c12.c12 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -838,7 +838,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
   padding: 0;
 }
 
-#razorpay-blade .c0 {
+.c0.c0.c0.c0.c0 {
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -874,24 +874,24 @@ exports[`<Popover /> should render with title,footer 1`] = `
   position: relative;
 }
 
-#razorpay-blade .c0:hover {
+.c0.c0.c0.c0.c0:hover {
   background-color: hsla(223,95%,48%,1);
   border-color: hsla(223,95%,48%,1);
 }
 
-#razorpay-blade .c0:active {
+.c0.c0.c0.c0.c0:active {
   background-color: hsla(230,100%,42%,1);
   border-color: hsla(230,100%,42%,1);
 }
 
-#razorpay-blade .c0:focus-visible {
+.c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-#razorpay-blade .c0 * {
+.c0.c0.c0.c0.c0 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -900,30 +900,30 @@ exports[`<Popover /> should render with title,footer 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-#razorpay-blade .c2 {
+.c2.c2.c2.c2.c2 {
   opacity: 1;
 }
 
 <body>
   <div
     aria-hidden="true"
-    data-aria-hidden="true"
+    data-floating-ui-inert=""
   >
     <button
       aria-controls=":r4:"
       aria-expanded="true"
       aria-haspopup="dialog"
-      class="c0 "
+      class="c0"
       data-blade-component="button"
       role="button"
       type="button"
     >
       <div
-        class="c1 c2 "
+        class="c1 c2"
         data-blade-component="base-box"
       >
         <div
-          class="c3 "
+          class="c3"
           data-blade-component="base-text"
         >
           Click me
@@ -937,8 +937,8 @@ exports[`<Popover /> should render with title,footer 1`] = `
   >
     <span
       aria-hidden="true"
-      data-aria-hidden="true"
       data-floating-ui-focus-guard=""
+      data-floating-ui-inert=""
       data-type="inside"
       role="button"
       style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: fixed; white-space: nowrap; width: 1px; top: 0px; left: 0px;"
@@ -946,7 +946,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
     />
     <div
       aria-labelledby="popover-title-11"
-      class="c1 "
+      class="c4"
       data-blade-component="popover"
       id=":r4:"
       role="dialog"
@@ -954,36 +954,36 @@ exports[`<Popover /> should render with title,footer 1`] = `
       tabindex="-1"
     >
       <div
-        class="c1 c4  "
+        class=" c5"
         data-blade-component="base-box"
       >
         <div
-          class="c1 "
+          class="c6"
           data-blade-component="base-box"
         >
           <div
-            class="c1 "
+            class="c7"
             data-blade-component="base-box"
           >
             <div
-              class="c1 "
+              class="c8"
               data-blade-component="base-box"
               id="popover-title-11"
             >
               <h6
-                class="c3 "
+                class="c9"
                 data-blade-component="heading"
               >
                 This is title
               </h6>
             </div>
             <div
-              class="c1 "
+              class="c10"
               data-blade-component="base-box"
             >
               <button
                 aria-label="Close"
-                class="c5 "
+                class="c11"
                 data-blade-component="icon-button"
                 type="button"
               >
@@ -1006,22 +1006,22 @@ exports[`<Popover /> should render with title,footer 1`] = `
             </div>
           </div>
           <div
-            class="c1"
+            class=""
             data-blade-component="base-box"
           >
             <p
-              class="c3 "
+              class="c12"
               data-blade-component="text"
             >
               Hello world
             </p>
           </div>
           <div
-            class="c1"
+            class=""
             data-blade-component="base-box"
           >
             <p
-              class="c3 "
+              class="c12"
               data-blade-component="text"
             >
               Footer
@@ -1062,8 +1062,8 @@ exports[`<Popover /> should render with title,footer 1`] = `
     </div>
     <span
       aria-hidden="true"
-      data-aria-hidden="true"
       data-floating-ui-focus-guard=""
+      data-floating-ui-inert=""
       data-type="inside"
       role="button"
       style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: fixed; white-space: nowrap; width: 1px; top: 0px; left: 0px;"

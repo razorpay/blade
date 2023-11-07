@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Modal renders a Modal with Header and Footer 1`] = `
-#razorpay-blade .c0 {
+.c0.c0.c0.c0.c0 {
   position: fixed;
   z-index: 1000;
 }
 
-#razorpay-blade .c0 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -25,7 +25,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   border-radius: 8px;
 }
 
-#razorpay-blade .c0 {
+.c4.c4.c4.c4.c4 {
   padding-right: 16px;
   padding-left: 16px;
   margin-bottom: 16px;
@@ -33,7 +33,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   touch-action: none;
 }
 
-#razorpay-blade .c0 {
+.c5.c5.c5.c5.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -47,7 +47,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   user-select: none;
 }
 
-#razorpay-blade .c0 {
+.c6.c6.c6.c6.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -66,13 +66,13 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   margin-right: auto;
 }
 
-#razorpay-blade .c0 {
+.c7.c7.c7.c7.c7 {
   -webkit-flex: auto;
   -ms-flex: auto;
   flex: auto;
 }
 
-#razorpay-blade .c0 {
+.c8.c8.c8.c8.c8 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -85,11 +85,11 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   flex-shrink: 0;
 }
 
-#razorpay-blade .c0 {
+.c10.c10.c10.c10.c10 {
   margin-left: 8px;
 }
 
-#razorpay-blade .c0 {
+.c11.c11.c11.c11.c11 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -105,18 +105,18 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   height: 28px;
 }
 
-#razorpay-blade .c0 {
+.c12.c12.c12.c12.c12 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
-#razorpay-blade .c0 {
+.c13.c13.c13.c13.c13 {
   background-color: hsla(155,100%,31%,0.09);
 }
 
-#razorpay-blade .c0 {
+.c15.c15.c15.c15.c15 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -139,23 +139,23 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   padding-left: 8px;
 }
 
-#razorpay-blade .c0 {
+.c23.c23.c23.c23.c23 {
   border-width: 0px;
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-style: solid;
 }
 
-#razorpay-blade .c0 {
+.c25.c25.c25.c25.c25 {
   overflow-x: hidden;
   overflow-y: auto;
   padding: 20px;
 }
 
-#razorpay-blade .c0 {
+.c27.c27.c27.c27.c27 {
   padding: 16px;
 }
 
-#razorpay-blade .c0 {
+.c29.c29.c29.c29.c29 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -176,16 +176,16 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   justify-content: center;
 }
 
-#razorpay-blade .c0 {
+.c18.c18.c18.c18.c18 {
   margin-right: 16px;
 }
 
-#razorpay-blade .c0 {
+.c19.c19.c19.c19.c19 {
   text-align: left;
   background-color: hsla(36,100%,44%,0.09);
 }
 
-#razorpay-blade .c7 {
+.c24.c24.c24.c24.c24 {
   border-bottom-style: solid;
   border-bottom-width: 1px;
   -webkit-box-flex: 1;
@@ -194,7 +194,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   flex-grow: 1;
 }
 
-#razorpay-blade .c3 {
+.c9.c9.c9.c9.c9 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1rem;
@@ -207,7 +207,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   padding: 0;
 }
 
-#razorpay-blade .c3 {
+.c16.c16.c16.c16.c16 {
   color: hsla(160,100%,26%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -226,7 +226,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   -webkit-box-orient: vertical;
 }
 
-#razorpay-blade .c3 {
+.c17.c17.c17.c17.c17 {
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -239,7 +239,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   padding: 0;
 }
 
-#razorpay-blade .c3 {
+.c26.c26.c26.c26.c26 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -252,7 +252,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   padding: 0;
 }
 
-#razorpay-blade .c3 {
+.c31.c31.c31.c31.c31 {
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -266,7 +266,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   padding: 0;
 }
 
-#razorpay-blade .c3 {
+.c21.c21.c21.c21.c21 {
   color: hsla(38,97%,38%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -284,7 +284,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   -webkit-box-orient: vertical;
 }
 
-#razorpay-blade .c6 {
+.c22.c22.c22.c22.c22 {
   border: none;
   cursor: pointer;
   padding: 0;
@@ -311,21 +311,21 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-#razorpay-blade .c6:hover {
+.c22.c22.c22.c22.c22:hover {
   color: hsla(217,18%,45%,1);
 }
 
-#razorpay-blade .c6:focus-visible {
+.c22.c22.c22.c22.c22:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   color: hsla(217,18%,45%,1);
 }
 
-#razorpay-blade .c6:active {
+.c22.c22.c22.c22.c22:active {
   color: hsla(217,18%,45%,1);
 }
 
-#razorpay-blade .c1 {
+.c1.c1.c1.c1.c1 {
   -webkit-transition-duration: 300ms;
   transition-duration: 300ms;
   -webkit-transition-timing-function: cubic-bezier(0.5,0,1,1);
@@ -336,18 +336,18 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   background-color: hsla(214,15%,18%,0.64);
 }
 
-#razorpay-blade .c2 {
+.c3.c3.c3.c3.c3 {
   box-shadow: 0 24px 48px -12px hsla(217,56%,17%,0.18);
   position: fixed;
   -webkit-transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
   opacity: 0;
-  -webkit-animation: hWDQRX-1780344755 300ms cubic-bezier(0.5,0,1,1);
-  animation: hWDQRX-1780344755 300ms cubic-bezier(0.5,0,1,1);
+  -webkit-animation: hWDQRX-450290765 300ms cubic-bezier(0.5,0,1,1);
+  animation: hWDQRX-450290765 300ms cubic-bezier(0.5,0,1,1);
 }
 
-#razorpay-blade .c5 {
+.c20.c20.c20.c20.c20 {
   background-color: hsla(36,100%,44%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
@@ -362,7 +362,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   width: fit-content;
 }
 
-#razorpay-blade .c4 {
+.c14.c14.c14.c14.c14 {
   background-color: hsla(155,100%,31%,0.09);
   border-radius: 9999px;
   max-width: 120px;
@@ -378,7 +378,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   width: fit-content;
 }
 
-#razorpay-blade .c8 {
+.c28.c28.c28.c28.c28 {
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -414,24 +414,24 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   position: relative;
 }
 
-#razorpay-blade .c8:hover {
+.c28.c28.c28.c28.c28:hover {
   background-color: hsla(223,95%,48%,1);
   border-color: hsla(223,95%,48%,1);
 }
 
-#razorpay-blade .c8:active {
+.c28.c28.c28.c28.c28:active {
   background-color: hsla(230,100%,42%,1);
   border-color: hsla(230,100%,42%,1);
 }
 
-#razorpay-blade .c8:focus-visible {
+.c28.c28.c28.c28.c28:focus-visible {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-#razorpay-blade .c8 * {
+.c28.c28.c28.c28.c28 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -440,12 +440,12 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-#razorpay-blade .c9 {
+.c30.c30.c30.c30.c30 {
   opacity: 1;
 }
 
 @media screen and (min-width:768px) {
-  #razorpay-blade .c0 {
+  .c4.c4.c4.c4.c4 {
     padding-right: 20px;
     padding-left: 20px;
     margin-bottom: 20px;
@@ -454,54 +454,49 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 }
 
 @media screen and (min-width:320px) {
-  #razorpay-blade .c0 {
+  .c23.c23.c23.c23.c23 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  #razorpay-blade .c0 {
+  .c23.c23.c23.c23.c23 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  #razorpay-blade .c0 {
+  .c23.c23.c23.c23.c23 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  #razorpay-blade .c0 {
+  .c23.c23.c23.c23.c23 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  #razorpay-blade .c0 {
+  .c23.c23.c23.c23.c23 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  #razorpay-blade .c0 {
+  .c27.c27.c27.c27.c27 {
     padding: 20px;
   }
 }
 
 <div
-  class="c0 "
+  class="c0"
   data-blade-component="box"
   data-testid="modal-wrapper"
 >
   <div
     aria-hidden="true"
-<<<<<<< HEAD
     class="c1"
-=======
-    class="c1 "
-    data-aria-hidden="true"
->>>>>>> c7bac4c3 (feat: increase CSS specificity of components)
     data-blade-component="modal-backdrop"
     data-floating-ui-inert=""
     data-testid="modal-backdrop"
@@ -510,63 +505,63 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   <div
     aria-label="Test Modal"
     aria-modal="true"
-    class="c0 c2 "
+    class="c2 c3"
     data-blade-component="modal"
     role="dialog"
     tabindex="-1"
   >
     <div
-      class="c0"
+      class=""
       data-blade-component="modal-header"
     >
       <div
-        class="c0 "
+        class="c4"
         data-blade-component="base-box"
       >
         <div
-          class="c0 "
+          class="c5"
           data-blade-component="base-box"
         >
           <div
-            class="c0 "
+            class="c6"
             data-blade-component="base-box"
           >
             <div
-              class="c0 "
+              class="c7"
               data-blade-component="base-box"
             >
               <div
-                class="c0 "
+                class="c8"
                 data-blade-component="base-box"
               >
                 <h6
-                  class="c3 "
+                  class="c9"
                   data-blade-component="heading"
                 >
                   Address Details
                 </h6>
                 <div
-                  class="c0 "
+                  class="c10"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c0 "
+                    class="c11"
                     data-blade-component="box"
                   >
                     <div
-                      class="c0 "
+                      class="c12"
                       data-blade-component="counter"
                     >
                       <div
-                        class="c0 c4 "
+                        class="c13 c14"
                         data-blade-component="base-box"
                       >
                         <div
-                          class="c0 "
+                          class="c15"
                           data-blade-component="base-box"
                         >
                           <p
-                            class="c3 "
+                            class="c16"
                             data-blade-component="text"
                           >
                             2
@@ -578,7 +573,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
                 </div>
               </div>
               <p
-                class="c3 "
+                class="c17"
                 data-blade-component="text"
               >
                 Saving addresses will improve your checkout experience
@@ -586,27 +581,27 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
             </div>
           </div>
           <div
-            class="c0 "
+            class="c18"
             data-blade-component="base-box"
           >
             <div
-              class="c0 "
+              class="c11"
               data-blade-component="box"
             >
               <div
-                class="c0 "
+                class="c12"
                 data-blade-component="badge"
               >
                 <div
-                  class="c0 c5 "
+                  class="c19 c20"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c0 "
+                    class="c15"
                     data-blade-component="base-box"
                   >
                     <p
-                      class="c3 "
+                      class="c21"
                       data-blade-component="text"
                     >
                       Action Needed
@@ -617,12 +612,12 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
             </div>
           </div>
           <div
-            class="c0 "
+            class="c11"
             data-blade-component="box"
           >
             <button
               aria-label="Close"
-              class="c6 "
+              class="c22"
               data-blade-component="icon-button"
               type="button"
             >
@@ -646,47 +641,47 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
         </div>
       </div>
       <div
-        class="c0 c7 "
+        class="c23 c24"
         data-blade-component="divider"
         role="separator"
       />
     </div>
     <div
-      class="c0 "
+      class="c25"
       data-blade-component="modal-body"
     >
       <p
-        class="c3 "
+        class="c26"
         data-blade-component="text"
       >
         Test Content
       </p>
     </div>
     <div
-      class="c0"
+      class=""
       data-blade-component="box"
     >
       <div
-        class="c0 c7 "
+        class="c23 c24"
         data-blade-component="divider"
         role="separator"
       />
       <div
-        class="c0 "
+        class="c27"
         data-blade-component="modal-footer"
       >
         <button
-          class="c8 "
+          class="c28"
           data-blade-component="button"
           role="button"
           type="button"
         >
           <div
-            class="c0 c9 "
+            class="c29 c30"
             data-blade-component="base-box"
           >
             <div
-              class="c3 "
+              class="c31"
               data-blade-component="base-text"
             >
               Save
@@ -700,12 +695,12 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 `;
 
 exports[`Modal renders a basic Modal 1`] = `
-#razorpay-blade .c0 {
+.c0.c0.c0.c0.c0 {
   position: fixed;
   z-index: 1000;
 }
 
-#razorpay-blade .c0 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -724,13 +719,13 @@ exports[`Modal renders a basic Modal 1`] = `
   border-radius: 8px;
 }
 
-#razorpay-blade .c0 {
+.c4.c4.c4.c4.c4 {
   overflow-x: hidden;
   overflow-y: auto;
   padding: 20px;
 }
 
-#razorpay-blade .c3 {
+.c5.c5.c5.c5.c5 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -743,7 +738,7 @@ exports[`Modal renders a basic Modal 1`] = `
   padding: 0;
 }
 
-#razorpay-blade .c1 {
+.c1.c1.c1.c1.c1 {
   -webkit-transition-duration: 300ms;
   transition-duration: 300ms;
   -webkit-transition-timing-function: cubic-bezier(0.5,0,1,1);
@@ -754,30 +749,25 @@ exports[`Modal renders a basic Modal 1`] = `
   background-color: hsla(214,15%,18%,0.64);
 }
 
-#razorpay-blade .c2 {
+.c3.c3.c3.c3.c3 {
   box-shadow: 0 24px 48px -12px hsla(217,56%,17%,0.18);
   position: fixed;
   -webkit-transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
   opacity: 0;
-  -webkit-animation: hWDQRX-1780344755 300ms cubic-bezier(0.5,0,1,1);
-  animation: hWDQRX-1780344755 300ms cubic-bezier(0.5,0,1,1);
+  -webkit-animation: hWDQRX-450290765 300ms cubic-bezier(0.5,0,1,1);
+  animation: hWDQRX-450290765 300ms cubic-bezier(0.5,0,1,1);
 }
 
 <div
-  class="c0 "
+  class="c0"
   data-blade-component="box"
   data-testid="modal-wrapper"
 >
   <div
     aria-hidden="true"
-<<<<<<< HEAD
     class="c1"
-=======
-    class="c1 "
-    data-aria-hidden="true"
->>>>>>> c7bac4c3 (feat: increase CSS specificity of components)
     data-blade-component="modal-backdrop"
     data-floating-ui-inert=""
     data-testid="modal-backdrop"
@@ -786,17 +776,17 @@ exports[`Modal renders a basic Modal 1`] = `
   <div
     aria-label="Test Modal"
     aria-modal="true"
-    class="c0 c2 "
+    class="c2 c3"
     data-blade-component="modal"
     role="dialog"
     tabindex="0"
   >
     <div
-      class="c0 "
+      class="c4"
       data-blade-component="modal-body"
     >
       <p
-        class="c3 "
+        class="c5"
         data-blade-component="text"
       >
         Test Content
@@ -807,12 +797,12 @@ exports[`Modal renders a basic Modal 1`] = `
 `;
 
 exports[`Modal renders a basic Modal of large size 1`] = `
-#razorpay-blade .c0 {
+.c0.c0.c0.c0.c0 {
   position: fixed;
   z-index: 1000;
 }
 
-#razorpay-blade .c0 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -831,13 +821,13 @@ exports[`Modal renders a basic Modal of large size 1`] = `
   border-radius: 8px;
 }
 
-#razorpay-blade .c0 {
+.c4.c4.c4.c4.c4 {
   overflow-x: hidden;
   overflow-y: auto;
   padding: 20px;
 }
 
-#razorpay-blade .c3 {
+.c5.c5.c5.c5.c5 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -850,7 +840,7 @@ exports[`Modal renders a basic Modal of large size 1`] = `
   padding: 0;
 }
 
-#razorpay-blade .c1 {
+.c1.c1.c1.c1.c1 {
   -webkit-transition-duration: 300ms;
   transition-duration: 300ms;
   -webkit-transition-timing-function: cubic-bezier(0.5,0,1,1);
@@ -861,30 +851,25 @@ exports[`Modal renders a basic Modal of large size 1`] = `
   background-color: hsla(214,15%,18%,0.64);
 }
 
-#razorpay-blade .c2 {
+.c3.c3.c3.c3.c3 {
   box-shadow: 0 24px 48px -12px hsla(217,56%,17%,0.18);
   position: fixed;
   -webkit-transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
   opacity: 0;
-  -webkit-animation: hWDQRX-1780344755 300ms cubic-bezier(0.5,0,1,1);
-  animation: hWDQRX-1780344755 300ms cubic-bezier(0.5,0,1,1);
+  -webkit-animation: hWDQRX-450290765 300ms cubic-bezier(0.5,0,1,1);
+  animation: hWDQRX-450290765 300ms cubic-bezier(0.5,0,1,1);
 }
 
 <div
-  class="c0 "
+  class="c0"
   data-blade-component="box"
   data-testid="modal-wrapper"
 >
   <div
     aria-hidden="true"
-<<<<<<< HEAD
     class="c1"
-=======
-    class="c1 "
-    data-aria-hidden="true"
->>>>>>> c7bac4c3 (feat: increase CSS specificity of components)
     data-blade-component="modal-backdrop"
     data-floating-ui-inert=""
     data-testid="modal-backdrop"
@@ -893,17 +878,17 @@ exports[`Modal renders a basic Modal of large size 1`] = `
   <div
     aria-label="Test Modal"
     aria-modal="true"
-    class="c0 c2 "
+    class="c2 c3"
     data-blade-component="modal"
     role="dialog"
     tabindex="0"
   >
     <div
-      class="c0 "
+      class="c4"
       data-blade-component="modal-body"
     >
       <p
-        class="c3 "
+        class="c5"
         data-blade-component="text"
       >
         Test Content
@@ -914,12 +899,12 @@ exports[`Modal renders a basic Modal of large size 1`] = `
 `;
 
 exports[`Modal renders a basic Modal of medium size 1`] = `
-#razorpay-blade .c0 {
+.c0.c0.c0.c0.c0 {
   position: fixed;
   z-index: 1000;
 }
 
-#razorpay-blade .c0 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -938,13 +923,13 @@ exports[`Modal renders a basic Modal of medium size 1`] = `
   border-radius: 8px;
 }
 
-#razorpay-blade .c0 {
+.c4.c4.c4.c4.c4 {
   overflow-x: hidden;
   overflow-y: auto;
   padding: 20px;
 }
 
-#razorpay-blade .c3 {
+.c5.c5.c5.c5.c5 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -957,7 +942,7 @@ exports[`Modal renders a basic Modal of medium size 1`] = `
   padding: 0;
 }
 
-#razorpay-blade .c1 {
+.c1.c1.c1.c1.c1 {
   -webkit-transition-duration: 300ms;
   transition-duration: 300ms;
   -webkit-transition-timing-function: cubic-bezier(0.5,0,1,1);
@@ -968,30 +953,25 @@ exports[`Modal renders a basic Modal of medium size 1`] = `
   background-color: hsla(214,15%,18%,0.64);
 }
 
-#razorpay-blade .c2 {
+.c3.c3.c3.c3.c3 {
   box-shadow: 0 24px 48px -12px hsla(217,56%,17%,0.18);
   position: fixed;
   -webkit-transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
   opacity: 0;
-  -webkit-animation: hWDQRX-1780344755 300ms cubic-bezier(0.5,0,1,1);
-  animation: hWDQRX-1780344755 300ms cubic-bezier(0.5,0,1,1);
+  -webkit-animation: hWDQRX-450290765 300ms cubic-bezier(0.5,0,1,1);
+  animation: hWDQRX-450290765 300ms cubic-bezier(0.5,0,1,1);
 }
 
 <div
-  class="c0 "
+  class="c0"
   data-blade-component="box"
   data-testid="modal-wrapper"
 >
   <div
     aria-hidden="true"
-<<<<<<< HEAD
     class="c1"
-=======
-    class="c1 "
-    data-aria-hidden="true"
->>>>>>> c7bac4c3 (feat: increase CSS specificity of components)
     data-blade-component="modal-backdrop"
     data-floating-ui-inert=""
     data-testid="modal-backdrop"
@@ -1000,17 +980,17 @@ exports[`Modal renders a basic Modal of medium size 1`] = `
   <div
     aria-label="Test Modal"
     aria-modal="true"
-    class="c0 c2 "
+    class="c2 c3"
     data-blade-component="modal"
     role="dialog"
     tabindex="0"
   >
     <div
-      class="c0 "
+      class="c4"
       data-blade-component="modal-body"
     >
       <p
-        class="c3 "
+        class="c5"
         data-blade-component="text"
       >
         Test Content

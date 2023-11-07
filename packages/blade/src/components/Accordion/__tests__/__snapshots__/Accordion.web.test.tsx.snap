@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Accordion /> should render 1`] = `
-#razorpay-blade .c1 {
+.c3.c3.c3.c3.c3 {
   padding: 16px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -32,27 +32,27 @@ exports[`<Accordion /> should render 1`] = `
   text-align: left;
 }
 
-#razorpay-blade .c1:hover,
-#razorpay-blade .c2:focus-visible {
+.c3.c3.c3.c3.c3:hover,
+.c3.c3.c3.c3.c3:focus-visible {
   background-color: hsla(216,15%,54%,0.09);
 }
 
-#razorpay-blade .c1:hover {
+.c3.c3.c3.c3.c3:hover {
   color: hsla(217,18%,45%,1);
 }
 
-#razorpay-blade .c1:focus-visible {
+.c3.c3.c3.c3.c3:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   border-radius: 2px;
   color: hsla(217,18%,45%,1);
 }
 
-#razorpay-blade .c0 {
+.c0.c0.c0.c0.c0 {
   width: 100%;
 }
 
-#razorpay-blade .c0 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -68,11 +68,11 @@ exports[`<Accordion /> should render 1`] = `
   max-width: none;
 }
 
-#razorpay-blade .c0 {
+.c2.c2.c2.c2.c2 {
   width: 100%;
 }
 
-#razorpay-blade .c0 {
+.c4.c4.c4.c4.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -87,12 +87,12 @@ exports[`<Accordion /> should render 1`] = `
   margin-right: 12px;
 }
 
-#razorpay-blade .c0 {
+.c8.c8.c8.c8.c8 {
   margin-bottom: 0px;
   margin-top: 16px;
 }
 
-#razorpay-blade .c0 {
+.c9.c9.c9.c9.c9 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -106,13 +106,13 @@ exports[`<Accordion /> should render 1`] = `
   gap: 16px;
 }
 
-#razorpay-blade .c0 {
+.c11.c11.c11.c11.c11 {
   border-width: 0px;
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-style: solid;
 }
 
-#razorpay-blade .c3 {
+.c5.c5.c5.c5.c5 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1rem;
@@ -125,7 +125,7 @@ exports[`<Accordion /> should render 1`] = `
   padding: 0;
 }
 
-#razorpay-blade .c3 {
+.c10.c10.c10.c10.c10 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -138,7 +138,7 @@ exports[`<Accordion /> should render 1`] = `
   padding: 0;
 }
 
-#razorpay-blade .c4 {
+.c6.c6.c6.c6.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -162,7 +162,7 @@ exports[`<Accordion /> should render 1`] = `
   transition-property: transform;
 }
 
-#razorpay-blade .c6 {
+.c12.c12.c12.c12.c12 {
   border-bottom-style: solid;
   border-bottom-width: 1px;
   -webkit-box-flex: 1;
@@ -171,7 +171,7 @@ exports[`<Accordion /> should render 1`] = `
   flex-grow: 1;
 }
 
-#razorpay-blade .c5 {
+.c7.c7.c7.c7.c7 {
   -webkit-transition-duration: 300ms;
   transition-duration: 300ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -185,95 +185,95 @@ exports[`<Accordion /> should render 1`] = `
 }
 
 @media screen and (min-width:480px) {
-  #razorpay-blade .c0 {
+  .c0.c0.c0.c0.c0 {
     min-width: 200px;
     max-width: calc(100vw - 40px);
   }
 }
 
 @media screen and (min-width:768px) {
-  #razorpay-blade .c0 {
+  .c0.c0.c0.c0.c0 {
     min-width: 360px;
     max-width: 640px;
   }
 }
 
 @media screen and (min-width:1024px) {
-  #razorpay-blade .c0 {
+  .c0.c0.c0.c0.c0 {
     min-width: 360px;
     max-width: 800px;
   }
 }
 
 @media screen and (min-width:320px) {
-  #razorpay-blade .c0 {
+  .c11.c11.c11.c11.c11 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  #razorpay-blade .c0 {
+  .c11.c11.c11.c11.c11 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  #razorpay-blade .c0 {
+  .c11.c11.c11.c11.c11 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  #razorpay-blade .c0 {
+  .c11.c11.c11.c11.c11 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  #razorpay-blade .c0 {
+  .c11.c11.c11.c11.c11 {
     border-style: solid;
   }
 }
 
 <div>
   <div
-    class="c0"
+    class=""
     data-blade-component="accordion"
   >
     <div
-      class="c0 "
+      class="c0"
       data-blade-component="base-box"
     >
       <div
-        class="c0"
+        class=""
         data-blade-component="accordion-item"
       >
         <div
-          class="c0"
+          class=""
           data-blade-component="collapsible"
         >
           <div
-            class="c0 "
+            class="c1"
             data-blade-component="base-box"
           >
             <div
               aria-level="3"
-              class="c0 "
+              class="c2"
               data-blade-component="base-box"
               role="heading"
             >
               <button
                 aria-controls="collapsible-body-1"
                 aria-expanded="false"
-                class="c1 c2"
+                class="c3"
                 data-blade-component="accordion-button"
               >
                 <div
-                  class="c0 "
+                  class="c4"
                   data-blade-component="base-box"
                 >
                   <span
-                    class="c3 "
+                    class="c5"
                     data-blade-component="heading"
                   >
                     How can I setup Route?
@@ -281,7 +281,7 @@ exports[`<Accordion /> should render 1`] = `
                 </div>
                 <div
                   aria-hidden="true"
-                  class="c0 c4  "
+                  class=" c6"
                   data-blade-component="base-box"
                   direction="bottom"
                 >
@@ -307,24 +307,24 @@ exports[`<Accordion /> should render 1`] = `
             </div>
             <div
               aria-hidden="true"
-              class="c0"
+              class=""
               data-blade-component="collapsible-body"
               id="collapsible-body-1"
               role="region"
             >
               <div
-                class="c5 "
+                class="c7"
               >
                 <div
-                  class="c0 "
+                  class="c8"
                   data-blade-component="box"
                 >
                   <div
-                    class="c0 "
+                    class="c9"
                     data-blade-component="base-box"
                   >
                     <p
-                      class="c3 "
+                      class="c10"
                       data-blade-component="text"
                     >
                       You can use Razorpay Route from the Dashboard or using APIs to transfer money to customers. You may also check our docs for detailed instructions.
@@ -336,41 +336,41 @@ exports[`<Accordion /> should render 1`] = `
           </div>
         </div>
         <div
-          class="c0 c6 "
+          class="c11 c12"
           data-blade-component="divider"
           role="separator"
         />
       </div>
       <div
-        class="c0"
+        class=""
         data-blade-component="accordion-item"
       >
         <div
-          class="c0"
+          class=""
           data-blade-component="collapsible"
         >
           <div
-            class="c0 "
+            class="c1"
             data-blade-component="base-box"
           >
             <div
               aria-level="3"
-              class="c0 "
+              class="c2"
               data-blade-component="base-box"
               role="heading"
             >
               <button
                 aria-controls="collapsible-body-2"
                 aria-expanded="false"
-                class="c1 c2"
+                class="c3"
                 data-blade-component="accordion-button"
               >
                 <div
-                  class="c0 "
+                  class="c4"
                   data-blade-component="base-box"
                 >
                   <span
-                    class="c3 "
+                    class="c5"
                     data-blade-component="heading"
                   >
                     How can I setup QR Codes?
@@ -378,7 +378,7 @@ exports[`<Accordion /> should render 1`] = `
                 </div>
                 <div
                   aria-hidden="true"
-                  class="c0 c4  "
+                  class=" c6"
                   data-blade-component="base-box"
                   direction="bottom"
                 >
@@ -404,24 +404,24 @@ exports[`<Accordion /> should render 1`] = `
             </div>
             <div
               aria-hidden="true"
-              class="c0"
+              class=""
               data-blade-component="collapsible-body"
               id="collapsible-body-2"
               role="region"
             >
               <div
-                class="c5 "
+                class="c7"
               >
                 <div
-                  class="c0 "
+                  class="c8"
                   data-blade-component="box"
                 >
                   <div
-                    class="c0 "
+                    class="c9"
                     data-blade-component="base-box"
                   >
                     <p
-                      class="c3 "
+                      class="c10"
                       data-blade-component="text"
                     >
                       Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries.
@@ -433,41 +433,41 @@ exports[`<Accordion /> should render 1`] = `
           </div>
         </div>
         <div
-          class="c0 c6 "
+          class="c11 c12"
           data-blade-component="divider"
           role="separator"
         />
       </div>
       <div
-        class="c0"
+        class=""
         data-blade-component="accordion-item"
       >
         <div
-          class="c0"
+          class=""
           data-blade-component="collapsible"
         >
           <div
-            class="c0 "
+            class="c1"
             data-blade-component="base-box"
           >
             <div
               aria-level="3"
-              class="c0 "
+              class="c2"
               data-blade-component="base-box"
               role="heading"
             >
               <button
                 aria-controls="collapsible-body-3"
                 aria-expanded="false"
-                class="c1 c2"
+                class="c3"
                 data-blade-component="accordion-button"
               >
                 <div
-                  class="c0 "
+                  class="c4"
                   data-blade-component="base-box"
                 >
                   <span
-                    class="c3 "
+                    class="c5"
                     data-blade-component="heading"
                   >
                     How can I setup Subscriptions?
@@ -475,7 +475,7 @@ exports[`<Accordion /> should render 1`] = `
                 </div>
                 <div
                   aria-hidden="true"
-                  class="c0 c4  "
+                  class=" c6"
                   data-blade-component="base-box"
                   direction="bottom"
                 >
@@ -501,24 +501,24 @@ exports[`<Accordion /> should render 1`] = `
             </div>
             <div
               aria-hidden="true"
-              class="c0"
+              class=""
               data-blade-component="collapsible-body"
               id="collapsible-body-3"
               role="region"
             >
               <div
-                class="c5 "
+                class="c7"
               >
                 <div
-                  class="c0 "
+                  class="c8"
                   data-blade-component="box"
                 >
                   <div
-                    class="c0 "
+                    class="c9"
                     data-blade-component="base-box"
                   >
                     <p
-                      class="c3 "
+                      class="c10"
                       data-blade-component="text"
                     >
                       Just use Razorpay.
@@ -530,7 +530,7 @@ exports[`<Accordion /> should render 1`] = `
           </div>
         </div>
         <div
-          class="c0 c6 "
+          class="c11 c12"
           data-blade-component="divider"
           role="separator"
         />
