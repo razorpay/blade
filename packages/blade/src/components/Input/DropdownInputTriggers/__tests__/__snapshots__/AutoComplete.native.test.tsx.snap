@@ -362,6 +362,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                         onKeyPress={[Function]}
                         onSubmitEditing={[Function]}
                         placeholder="Select Option"
+                        placeholderTextColor="hsla(214, 18%, 69%, 1)"
                         secureTextEntry={false}
                         style={
                           [
