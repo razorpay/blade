@@ -112,47 +112,126 @@ export const indexHTML = dedent`
   <body>
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
-    <script>
-      const customConsole = {
-        log: function(message) {
-          var logMessage = document.createElement('p');
-          logMessage.textContent = '> ' + JSON.stringify(message, null, 4);
-          
-          const newConsole = document.querySelector('#log-console');
-          newConsole.appendChild(logMessage);
-          newConsole.scrollTop = newConsole.scrollHeight;
-        }
-      };
-
-      const actualConsoleLog = console.log;
-      // Override the global console.log with the custom implementation
-      window.console.log = (...args) => {
-        customConsole.log(...args);
-        actualConsoleLog(...args);
-      };
-    </script>
   </body>
 </html>
+`;
+
+export const logger = dedent`
+import { Box, Button, IconButton, SlashIcon } from '@razorpay/blade/components';
+import React from 'react';
+
+const overrideConsoleLog = () => {
+  const actualConsoleLog = console.log;
+  const customConsole = {
+    log: function (message: any) {
+      const logMessage = document.createElement('p');
+      logMessage.style.fontSize = '14px';
+      logMessage.textContent = '> ' + JSON.stringify(message, null, 4);
+
+      const newConsole = document.querySelector('#log-console');
+      if (!newConsole) {
+        return;
+      }
+
+      newConsole.appendChild(logMessage);
+      newConsole.scrollTop = newConsole.scrollHeight;
+    },
+  };
+
+  // Override the global console.log with the custom implementation
+  window.console.log = (...args) => {
+    customConsole.log(...args);
+    actualConsoleLog(...args);
+  };
+};
+
+overrideConsoleLog();
+
+export const Logger = () => {
+  const [showLogger, setShowLogger] = React.useState(true);
+  const consoleRef = React.useRef();
+
+  return (
+    <>
+      <Box
+        position="fixed"
+        bottom="spacing.0"
+        left="spacing.0"
+        width="100%"
+        textAlign="right"
+      >
+        <Button
+          variant="tertiary"
+          size="small"
+          onClick={() => {
+            setShowLogger(!showLogger);
+          }}
+        >
+          Toggle Console
+        </Button>
+        <Box
+          position="absolute"
+          bottom="spacing.0"
+          right="spacing.0"
+          padding="spacing.3"
+          margin="spacing.4"
+          elevation="midRaised"
+          borderRadius="round"
+          backgroundColor="surface.background.level3.lowContrast"
+          borderColor="surface.border.normal.lowContrast"
+          display={showLogger ? 'inline-block' : 'none'}
+        >
+          <IconButton
+            onClick={() => {
+              if (consoleRef.current) {
+                consoleRef.current.innerHTML = '';
+              }
+            }}
+            icon={SlashIcon}
+            size="medium"
+            accessibilityLabel="Clear Console"
+          />
+        </Box>
+        <Box
+          padding={['spacing.4', 'spacing.7']}
+          overflow="auto"
+          height="30vh"
+          elevation="highRaised"
+          backgroundColor="surface.background.level2.lowContrast"
+          id="log-console"
+          ref={consoleRef}
+          display={showLogger ? 'block' : 'none'}
+          textAlign="left"
+          borderTopWidth="thin"
+          borderTopColor="surface.border.normal.lowContrast"
+        />
+      </Box>
+    </>
+  );
+};
 `;
 
 export const getIndexTSX = ({
   themeTokenName,
   brandColor,
   colorScheme,
+  showConsole,
 }: {
   // we read these values from storybook context where they are typed as any
   themeTokenName: any;
   brandColor: any;
   colorScheme: any;
+  showConsole?: boolean;
 }): string => dedent`
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createGlobalStyle } from "styled-components";
 
-import { BladeProvider, Box, IconButton, CloseIcon, Theme } from "@razorpay/blade/components";
+import { BladeProvider, Box } from "@razorpay/blade/components";
 import { ${themeTokenName}, createTheme } from "@razorpay/blade/tokens";
 
 import App from "./App";
+${showConsole ? 'import { Logger } from "./Logger";' : ''}
 
 // Only way to load font correctly in sandbpack. Use @fontsource/lato in your actual projects
 document.head.innerHTML += \`
@@ -200,36 +279,7 @@ root.render(
         flexDirection="column"
       >
         <App />
-        <Box
-          elevation="highRaised"
-          position="fixed"
-          bottom="spacing.0"
-          left="spacing.0"
-          width="100%"
-          backgroundColor="surface.background.level2.lowContrast"
-        >
-          <Box
-            position="absolute"
-            right="spacing.0"
-            display="inline-block"
-            padding="spacing.3"
-          >
-            <IconButton 
-              onClick={() => {
-                document.querySelector('#log-console').innerHTML = '';
-              }}
-              icon={CloseIcon}
-              size="large"
-              accessibilityLabel="Close Icon"
-            />
-          </Box>
-          <Box 
-            padding={['spacing.4', 'spacing.7']}
-            overflow="auto"
-            maxHeight="30vh"
-            id="log-console" 
-          />
-        </Box>
+        ${showConsole ? '<Logger />' : ''}
       </Box>
     </BladeProvider>
   </StrictMode>

@@ -5,6 +5,7 @@ type SandboxStackBlitzProps = {
   children: string;
   editorHeight?: number | string;
   padding?: BaseBoxProps['padding'];
+  showConsole?: boolean;
   /**
    * Renders link in react native stories to open storybook on web
    *
