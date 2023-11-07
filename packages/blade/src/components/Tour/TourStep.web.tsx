@@ -1,12 +1,8 @@
 /* eslint-disable consistent-return */
 import React from 'react';
 import { useTourContext } from './TourContext';
+import type { TourStepProps } from './types';
 import { mergeRefs } from '~utils/useMergeRefs';
-
-type TourStepProps = {
-  name: string;
-  children: React.ReactNode;
-};
 
 const TourStep = ({ name, children }: TourStepProps): React.ReactElement => {
   const ref = React.useRef<HTMLElement>(null);
@@ -17,7 +13,7 @@ const TourStep = ({ name, children }: TourStepProps): React.ReactElement => {
     attachStep(name, ref);
 
     return () => {
-      removeStep(name, ref);
+      removeStep(name);
     };
   }, [ref, attachStep, name, removeStep]);
 

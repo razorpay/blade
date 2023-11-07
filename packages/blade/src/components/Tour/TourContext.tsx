@@ -3,7 +3,7 @@ import React from 'react';
 import { throwBladeError } from '~utils/logger';
 
 type TourContextProps = {
-  attachStep: (id: string, ref: React.MutableRefObject<HTMLElement>) => void;
+  attachStep: (id: string, ref: React.RefObject<HTMLElement>) => void;
   removeStep: (id: string) => void;
 } | null;
 
@@ -14,8 +14,8 @@ const useTourContext = (): NonNullable<TourContextProps> => {
 
   if (!context) {
     throwBladeError({
-      message: 'useTourContext must be used within a TourProvider',
       moduleName: 'Tour',
+      message: 'useTourContext must be used within Tour',
     });
   }
 

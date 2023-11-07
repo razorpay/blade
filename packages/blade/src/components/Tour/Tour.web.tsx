@@ -1,9 +1,9 @@
 /* eslint-disable consistent-return */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React from 'react';
-import type { TourProps } from './types';
+import { FloatingPortal } from '@floating-ui/react';
+import type { TourMaskRect, TourProps } from './types';
 import { TourContext } from './TourContext';
-import type { Rect } from './TourMask';
 import { TourMask } from './TourMask';
 import { TourPopover } from './TourPopover';
 import { usePrevious, useTheme } from '~utils';
@@ -40,10 +40,8 @@ const Tour = ({
   children,
 }: TourProps): React.ReactElement => {
   const { theme } = useTheme();
-  const [refIdMap, setRefIdMap] = React.useState(
-    new Map<string, React.MutableRefObject<HTMLElement>>(),
-  );
-  const [size, setSize] = React.useState<Rect>({
+  const [refIdMap, setRefIdMap] = React.useState(new Map<string, React.RefObject<HTMLElement>>());
+  const [size, setSize] = React.useState<TourMaskRect>({
     height: 0,
     width: 0,
     x: 0,
@@ -79,27 +77,27 @@ const Tour = ({
     return refIdMap.get(steps[activeStep]?.name);
   }, [activeStep, refIdMap, steps]);
 
-  const goToNext = () => {
+  const goToNext = React.useCallback(() => {
     let next = activeStep + 1;
     if (next >= steps.length) {
       next = steps.length - 1;
     }
     onStepChange?.(next);
-  };
+  }, [activeStep, onStepChange, steps.length]);
 
-  const goToPrevious = () => {
+  const goToPrevious = React.useCallback(() => {
     let next = activeStep - 1;
     if (next < 0) {
       next = 0;
     }
     onStepChange?.(next);
-  };
+  }, [activeStep, onStepChange]);
 
-  const stopTour = () => {
+  const stopTour = React.useCallback(() => {
     onFinish?.();
-  };
+  }, [onFinish]);
 
-  const attachStep = React.useCallback((id: string, ref: React.MutableRefObject<HTMLElement>) => {
+  const attachStep = React.useCallback((id: string, ref: React.RefObject<HTMLElement>) => {
     if (!ref) return;
     setRefIdMap((prev) => {
       return new Map(prev).set(id, ref);
@@ -138,9 +136,15 @@ const Tour = ({
 
   return (
     <TourContext.Provider value={contextValue}>
-      {isOpen ? (
-        <TourMask isTransitioning={isTransitioning} padding={10} size={delayedSize} />
-      ) : null}
+      <FloatingPortal>
+        {isOpen ? (
+          <TourMask
+            isTransitioning={isTransitioning}
+            padding={theme.spacing[4]}
+            size={delayedSize}
+          />
+        ) : null}
+      </FloatingPortal>
 
       {steps.map((step) => {
         // 1. only show popover if the tour is opened

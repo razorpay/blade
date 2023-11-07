@@ -2,9 +2,7 @@
 import type { Meta } from '@storybook/react';
 import React from 'react';
 import type { Step, StepRenderProps, TourProps } from './types';
-import type { Rect } from './TourMask';
-import { TourMask } from './TourMask';
-import { TourStep } from './TourStep.web';
+import { TourStep } from './TourStep';
 import { Tour } from '.';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
@@ -33,6 +31,7 @@ const TourFooter = ({
       <Box display="flex" gap="spacing.4">
         {!isFirst ? (
           <Button
+            size="small"
             variant="secondary"
             onClick={() => {
               goToPrevious();
@@ -43,6 +42,7 @@ const TourFooter = ({
         ) : null}
         {isLast ? (
           <Button
+            size="small"
             onClick={() => {
               // done
               stopTour();
@@ -52,6 +52,7 @@ const TourFooter = ({
           </Button>
         ) : (
           <Button
+            size="small"
             onClick={() => {
               goToNext();
             }}
@@ -90,11 +91,11 @@ const steps: Step[] = [
   },
   {
     name: 'step-3',
+    title: 'Tour Complete!',
     content: () => {
       return <Text>This is the end of the tour</Text>;
     },
     placement: 'right',
-    title: 'Fin',
     titleLeading: <InfoIcon color="surface.text.normal.lowContrast" size="medium" />,
     footer: TourFooter,
   },
@@ -138,6 +139,21 @@ const TourTemplate = () => {
               <Heading>This is some heading text</Heading>
             </Box>
           </TourStep>
+
+          <Text>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisl eget
+            ultricies aliquam, augue nunc ultrices ipsum, sit amet tincidunt eros nunc vel tellus.
+            Morbi eget nunc auctor, sagittis dolor quis, ultricies libero. Nullam imperdiet, velit
+            non commodo ullamcorper, diam nisl faucibus nisi, eu ultrices libero quam a odio.
+            Quisque eget quam ut nisl ultrices aliquam. Sed auctor efficitur diam, vel aliquam nisl.
+            Nulla facilisi. Nulla facilisi. Nullam consectetur, enim vitae lacinia commodo, dolor
+            risus ultricies nisl, sed ullamcorper lorem nunc nec enim. Nullam euismod, nisl eget
+            ultricies aliquam, augue nunc ultrices ipsum, sit amet tincidunt eros nunc vel tellus.
+            Morbi eget nunc auctor, sagittis dolor quis, ultricies libero. Nullam imperdiet, velit
+            non commodo ullamcorper, diam nisl faucibus nisi, eu ultrices libero quam a odio.
+            Quisque eget quam ut nisl ultrices aliquam. Sed auctor efficitur diam, vel aliquam nisl.
+            Nulla facilisi. Nulla facilisi. Nullam consectetur, enim vitae
+          </Text>
 
           <TourStep name="step-2">
             <Box

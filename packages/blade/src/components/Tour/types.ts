@@ -80,4 +80,16 @@ type TourProps = {
   children: React.ReactNode;
 };
 
-export type { TourProps, Step, StepRenderProps };
+type TourStepProps = {
+  name: string;
+  children: React.ReactNode;
+};
+
+type TourMaskRect = {
+  width: number;
+  height: number;
+  x: number;
+  y: number;
+};
+
+export type { TourProps, Step, TourStepProps, TourMaskRect, StepRenderProps };

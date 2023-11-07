@@ -3,6 +3,7 @@ import React from 'react';
 import type { FlattenSimpleInterpolation } from 'styled-components';
 import styled, { css, keyframes } from 'styled-components';
 import usePresence from 'use-presence';
+import type { TourMaskRect } from './types';
 import { useWindowSize } from '~utils/useWindowSize';
 import { makeSpace, useTheme } from '~utils';
 import { makeMotionTime } from '~utils/makeMotionTime';
@@ -67,18 +68,22 @@ const FadeRect = ({ show, children, ...rest }: FadeRectProps): React.ReactElemen
   );
 };
 
-type Rect = {
-  width: number;
-  height: number;
-  x: number;
-  y: number;
-};
-
 type TourMaskProps = {
   padding: number;
-  size: Rect;
+  size: TourMaskRect;
   isTransitioning: boolean;
 };
+
+const absoluteFill = {
+  position: 'fixed',
+  top: 0,
+  left: 0,
+  bottom: 0,
+  right: 0,
+  // TODO: tokenize z-index values
+  zIndex: 100,
+} as const;
+
 const TourMask = ({ padding, size, isTransitioning }: TourMaskProps): React.ReactElement => {
   const { theme } = useTheme();
   const { width: windowWidth, height: windowHeight } = useWindowSize();
@@ -93,14 +98,7 @@ const TourMask = ({ padding, size, isTransitioning }: TourMaskProps): React.Reac
 
   return (
     <svg
-      style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        bottom: 0,
-        right: 0,
-        zIndex: 100,
-      }}
+      style={absoluteFill}
       viewBox={`0 0 ${windowWidth} ${windowHeight}`}
       fill="none"
       stroke="none"
@@ -110,11 +108,11 @@ const TourMask = ({ padding, size, isTransitioning }: TourMaskProps): React.Reac
         y={y + borderWidth / 2}
         width={width - borderWidth}
         height={height - borderWidth}
-        fill="transparent"
         stroke={theme.colors.brand.primary[500]}
         strokeWidth={makeSpace(borderWidth)}
         rx={borderRadius - 1}
         ry={borderRadius - 1}
+        fill="transparent"
       />
 
       <mask id="tour-mask" x={0} y={0} height="100%" width="100%" stroke="none">
@@ -125,21 +123,21 @@ const TourMask = ({ padding, size, isTransitioning }: TourMaskProps): React.Reac
           y={y}
           width={width}
           height={height}
-          fill="#000"
-          fillOpacity={1}
           rx={borderRadius}
           ry={borderRadius}
+          fill="#000"
+          fillOpacity={1}
         />
       </mask>
       <rect
         height="100%"
         width="100%"
-        fill={theme.colors.surface.overlay.background[800]}
         mask="url(#tour-mask)"
+        fill={theme.colors.surface.overlay.background[800]}
       />
     </svg>
   );
 };
 
 export { TourMask };
-export type { Rect };
+export type { TourMaskRect as Rect };

@@ -31,7 +31,7 @@ import { getFloatingPlacementParts } from '~utils/getFloatingPlacementParts';
 import type { PopoverProps } from '~components/Popover';
 
 type TourPopoverProps = Omit<PopoverProps, 'children'> & {
-  attachTo: React.MutableRefObject<HTMLElement> | undefined;
+  attachTo: React.RefObject<HTMLElement> | undefined;
 };
 
 // TODO: Refactor out Popover/FloatingUI logic to a reusable hook/component later on
