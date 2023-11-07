@@ -95,7 +95,7 @@ const data = {
 const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
   return (
     <Box
-      backgroundColor="surface.background.level1.lowContrast"
+      backgroundColor="surface.background.level2.lowContrast"
       padding="spacing.5"
       overflow="auto"
       height="400px"

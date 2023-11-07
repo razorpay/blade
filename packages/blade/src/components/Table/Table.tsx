@@ -102,7 +102,7 @@ const Table: React.FC<TableProps> = ({
     border: ${makeBorderSize(theme.border.width.thin)} solid ${
       theme.colors.surface.border.normal.lowContrast
     };
-    background-color: ${theme.colors.surface.background.level2.lowContrast};
+    background-color: transparent;
     --data-table-library_grid-template-columns:  ${
       selectionType === 'multiple' ? 'min-content' : ''
     } repeat(${columnCount},minmax(100px, 1fr)) !important; 

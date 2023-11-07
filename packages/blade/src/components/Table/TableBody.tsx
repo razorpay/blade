@@ -95,6 +95,7 @@ type TableRowProps = {
 
 const StyledRow = styled(Row)<{ isSelectable: boolean }>(({ theme, isSelectable }) => ({
   '&&&': {
+    backgroundColor: 'transparent',
     '&:hover': isSelectable
       ? {
           transition: `background-color ${makeMotionTime(
