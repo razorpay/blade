@@ -82,7 +82,10 @@ We don't have enough use-cases for the following features at Razorpay and hence 
 
 ## API
 
-### API Design Approaches
+### API Design Approaches 
+> You can skip this section if you are not interested in the API design process and want to directly jump to the [Final API](#final-api)
+> The decision was made to go ahead with Composable API after consulting with the frontend leads
+
 While evaluating what kind of API we want for our table, we discovered 2 approaches:
 
 #### 1. Composable API
@@ -380,8 +383,7 @@ const pagination = {
 - We will be going ahead with the Composable API for now and will evaluate the need for Compact API in the future
 
 ### Final API
-- To be concluded. This section will change depending on whether we choose Composable or Compact API. Most things would remain the same as proposed in the above sections for both APIs but this section will contain a bit more detailed API design for the chosen API.
-
+> We will be using Composable API for Table
 #### Table
 | Prop              | Type                                          | Default     | Description                                                                                                                                                                                                                                                                                                                     | Required |
 | ----------------- | --------------------------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
