@@ -105,7 +105,7 @@ const Table: React.FC<TableProps> = ({
     background-color: ${theme.colors.surface.background.level2.lowContrast};
     --data-table-library_grid-template-columns:  ${
       selectionType === 'multiple' ? 'min-content' : ''
-    } repeat(${columnCount},minmax(0px, 1fr)) !important; 
+    } repeat(${columnCount},minmax(100px, 1fr)) !important; 
     `,
     Footer: `
     .tr-footer th {
