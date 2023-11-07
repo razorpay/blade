@@ -8,8 +8,11 @@ import { useSort } from '@table-library/react-table-library/sort';
 import { SelectTypes, useRowSelect } from '@table-library/react-table-library/select';
 import type { TableContextType } from './TableContext';
 import { TableProvider } from './TableContext';
+import { ComponentIds } from './componentIds';
 import type { TableHeaderCellProps } from './TableHeader';
 import { makeBorderSize, useTheme } from '~utils';
+import { isValidAllowedChildren } from '~utils/isValidAllowedChildren';
+import { throwBladeError } from '~utils/logger';
 
 type TableNode = {
   id: Identifier;
@@ -24,7 +27,7 @@ export type TableProps = {
   onSelectionChange?: ({ values }: { values: TableNode[] }) => void;
   isHeaderSticky?: boolean;
   isFooterSticky?: boolean;
-  cellDensity?: 'normal' | 'comfortable';
+  rowDensity?: 'normal' | 'comfortable';
   onSortChange?: ({
     sortKey,
     isSortReversed,
@@ -33,6 +36,7 @@ export type TableProps = {
     isSortReversed: boolean;
   }) => void;
   sortFunctions?: Record<string, (array: TableNode[]) => TableNode[]>;
+  toolbar?: React.ReactElement;
 };
 
 const rowSelectType: Record<NonNullable<TableProps['selectionType']>, SelectTypes> = {
@@ -47,9 +51,10 @@ const Table: React.FC<TableProps> = ({
   onSelectionChange,
   isHeaderSticky,
   isFooterSticky,
-  cellDensity = 'normal',
+  rowDensity = 'normal',
   onSortChange,
   sortFunctions,
+  toolbar,
 }) => {
   const { theme } = useTheme();
   const [selectedRows, setSelectedRows] = React.useState<TableNode['id'][]>([]);
@@ -74,9 +79,11 @@ const Table: React.FC<TableProps> = ({
   });
 
   useEffect(() => {
+    // Get the total number of items
     setTotalItems(data.nodes.length);
   }, [data.nodes]);
 
+  // Selection Logic
   const onSelectChange: MiddlewareFunction = (action, state): void => {
     const selectedIDs: TableNode['id'][] = state.id ? [state.id] : state.ids ?? [];
     setSelectedRows(selectedIDs);
@@ -95,34 +102,6 @@ const Table: React.FC<TableProps> = ({
     },
   );
 
-  const handleSortChange: MiddlewareFunction = (action, state) => {
-    onSortChange?.({
-      sortKey: state.sortKey,
-      isSortReversed: state.reverse,
-    });
-  };
-
-  const sort = useSort(
-    data,
-    {
-      onChange: handleSortChange,
-    },
-    {
-      // @ts-expect-error ignore this, if sortFunctions is undefined, it will be ignored
-      sortFns: {
-        ...sortFunctions,
-      },
-    },
-  );
-
-  const currentSortedState: TableContextType['currentSortedState'] = useMemo(() => {
-    return {
-      sortKey: sort.state.sortKey,
-      isSortReversed: sort.state.reverse,
-      sortableColumns: Object.keys(sortFunctions ?? {}),
-    };
-  }, [sort.state, sortFunctions]);
-
   const toggleRowSelectionById = useMemo(
     () => (id: TableNode['id']): void => {
       rowSelectConfig.fns.onToggleById(id);
@@ -137,6 +116,33 @@ const Table: React.FC<TableProps> = ({
     [rowSelectConfig.fns],
   );
 
+  // Sort Logic
+  const handleSortChange: MiddlewareFunction = (action, state) => {
+    onSortChange?.({
+      sortKey: state.sortKey,
+      isSortReversed: state.reverse,
+    });
+  };
+
+  const sort = useSort(
+    data,
+    {
+      onChange: handleSortChange,
+    },
+    {
+      // @ts-expect-error ignore this, if sortFunctions is undefined, it will be ignored
+      sortFns: sortFunctions,
+    },
+  );
+
+  const currentSortedState: TableContextType['currentSortedState'] = useMemo(() => {
+    return {
+      sortKey: sort.state.sortKey,
+      isSortReversed: sort.state.reverse,
+      sortableColumns: Object.keys(sortFunctions ?? {}),
+    };
+  }, [sort.state, sortFunctions]);
+
   const toggleSort = useCallback(
     (sortKey: string): void => {
       sort.fns.onToggleSort({
@@ -146,6 +152,17 @@ const Table: React.FC<TableProps> = ({
     [sort.fns],
   );
 
+  // Toolbar Component
+  if (__DEV__) {
+    if (toolbar && !isValidAllowedChildren(toolbar, ComponentIds.TableToolbar)) {
+      throwBladeError({
+        message: 'Only TableToolbar component is allowed in the `toolbar` prop',
+        moduleName: 'Table',
+      });
+    }
+  }
+
+  // Table Context
   const tableContext: TableContextType = useMemo(
     () => ({
       selectionType,
@@ -153,7 +170,7 @@ const Table: React.FC<TableProps> = ({
       totalItems,
       toggleRowSelectionById,
       toggleAllRowsSelection,
-      cellDensity,
+      rowDensity,
       toggleSort,
       currentSortedState,
     }),
@@ -163,7 +180,7 @@ const Table: React.FC<TableProps> = ({
       totalItems,
       toggleRowSelectionById,
       toggleAllRowsSelection,
-      cellDensity,
+      rowDensity,
       toggleSort,
       currentSortedState,
     ],
@@ -172,7 +189,7 @@ const Table: React.FC<TableProps> = ({
   return (
     <TableProvider value={tableContext}>
       <>
-        {/* {toolbarComponent} */}
+        {toolbar}
         <ReactTable
           layout={{ fixedHeader: isHeaderSticky, horizontalScroll: true }}
           data={data}

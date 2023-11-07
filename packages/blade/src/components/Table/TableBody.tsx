@@ -45,13 +45,13 @@ type TableCellProps = {
 
 const StyledCell = styled(Cell)<{
   isSelectable: boolean;
-  cellDensity: NonNullable<TableProps['cellDensity']>;
-}>(({ theme, isSelectable, cellDensity }) => ({
+  rowDensity: NonNullable<TableProps['rowDensity']>;
+}>(({ theme, isSelectable, rowDensity }) => ({
   '&&&': {
-    paddingTop: makeSpace(getIn(theme, tableRow.paddingTop[cellDensity])),
-    paddingBottom: makeSpace(getIn(theme, tableRow.paddingBottom[cellDensity])),
-    paddingLeft: makeSpace(getIn(theme, tableRow.paddingLeft[cellDensity])),
-    paddingRight: makeSpace(getIn(theme, tableRow.paddingRight[cellDensity])),
+    paddingTop: makeSpace(getIn(theme, tableRow.paddingTop[rowDensity])),
+    paddingBottom: makeSpace(getIn(theme, tableRow.paddingBottom[rowDensity])),
+    paddingLeft: makeSpace(getIn(theme, tableRow.paddingLeft[rowDensity])),
+    paddingRight: makeSpace(getIn(theme, tableRow.paddingRight[rowDensity])),
     borderBottomWidth: makeSpace(getIn(theme.border.width, tableRow.borderBottomWidth)),
     borderBottomColor: getIn(theme.colors, tableRow.borderBottomColor),
     borderBottomStyle: 'solid',
@@ -63,10 +63,10 @@ const StyledCell = styled(Cell)<{
 
 const TableCell = ({ children }: TableCellProps): React.ReactElement => {
   const isChildrenString = typeof children === 'string';
-  const { selectionType, cellDensity } = useTableContext();
+  const { selectionType, rowDensity } = useTableContext();
   const isSelectable = Boolean(selectionType);
   return (
-    <StyledCell isSelectable={isSelectable} cellDensity={cellDensity}>
+    <StyledCell isSelectable={isSelectable} rowDensity={rowDensity}>
       {isChildrenString ? <Text size="medium">{children}</Text> : children}
     </StyledCell>
   );

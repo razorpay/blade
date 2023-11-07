@@ -15,7 +15,7 @@ export default {
   component: TableComponent,
   args: {
     selectionType: 'multiple',
-    cellDensity: 'normal',
+    rowDensity: 'normal',
   },
   argTypes: {
     ...getStyledPropsArgTypes(),
@@ -113,17 +113,19 @@ const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
         onSortChange={({ sortKey, isSortReversed }) =>
           console.log('Sort Key:', sortKey, 'Sort Reversed:', isSortReversed)
         }
+        toolbar={
+          <TableToolbar>
+            <TableToolbarActions>
+              <Button variant="secondary" marginRight="spacing.2">
+                Export
+              </Button>
+              <Button>Payout</Button>
+            </TableToolbarActions>
+          </TableToolbar>
+        }
       >
         {(tableData) => (
           <>
-            {/* <TableToolbar>
-              <TableToolbarActions>
-                <Button variant="secondary" marginRight="spacing.2">
-                  Export
-                </Button>
-                <Button>Payout</Button>
-              </TableToolbarActions>
-            </TableToolbar> */}
             <TableHeader>
               <TableHeaderRow>
                 <TableHeaderCell headerKey="TASK">Task</TableHeaderCell>
