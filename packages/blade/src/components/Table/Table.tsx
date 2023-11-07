@@ -11,7 +11,7 @@ import { TableProvider } from './TableContext';
 import { ComponentIds } from './componentIds';
 import type { TableHeaderCellProps } from './TableHeader';
 import { makeBorderSize, useTheme } from '~utils';
-import { isValidAllowedChildren } from '~utils/isValidAllowedChildren';
+import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { throwBladeError } from '~utils/logger';
 
 type TableNode = {
@@ -21,7 +21,7 @@ type TableNode = {
 };
 
 export type TableProps = {
-  children: React.ReactNode;
+  children: (tableData: TableNode[]) => React.ReactElement;
   data: { nodes: TableNode[] };
   selectionType?: 'single' | 'multiple';
   onSelectionChange?: ({ values }: { values: TableNode[] }) => void;
@@ -44,6 +44,40 @@ const rowSelectType: Record<NonNullable<TableProps['selectionType']>, SelectType
   multiple: SelectTypes.MultiSelect,
 };
 
+// Get the number of TableHeaderCell components.
+// This is very complicated but the only way to iterate through the structure and get number of header cells.
+// Assuming number of header cells is the same as number of columns
+const getTableHeaderCellCount = (children: (data: []) => React.ReactElement): number => {
+  const tableRootComponent = children([]);
+  if (tableRootComponent && React.isValidElement(tableRootComponent)) {
+    const tableComponentArray = React.Children.toArray(tableRootComponent);
+    if (React.isValidElement(tableComponentArray[0])) {
+      const tableComponentArrayChildren = React.Children.toArray(
+        tableComponentArray[0].props.children,
+      );
+      const tableHeader = tableComponentArrayChildren.find(
+        (child) => getComponentId(child) === ComponentIds.TableHeader,
+      );
+      const tableHeaderChildrenArray = React.isValidElement(tableHeader)
+        ? React.Children.toArray(tableHeader.props.children)
+        : null;
+      const tableHeaderRow = tableHeaderChildrenArray?.find(
+        (child) => getComponentId(child) === ComponentIds.TableHeaderRow,
+      );
+      const tableHeaderRowChildrenArray = React.isValidElement(tableHeaderRow)
+        ? React.Children.toArray(tableHeaderRow.props.children)
+        : null;
+      const tableHeaderCells = tableHeaderRowChildrenArray
+        ? tableHeaderRowChildrenArray.filter(
+            (child) => getComponentId(child) === ComponentIds.TableHeaderCell,
+          )
+        : null;
+      return tableHeaderCells?.length ?? 0;
+    }
+  }
+  return 0;
+};
+
 const Table: React.FC<TableProps> = ({
   children,
   data,
@@ -60,7 +94,8 @@ const Table: React.FC<TableProps> = ({
   const [selectedRows, setSelectedRows] = React.useState<TableNode['id'][]>([]);
   const [totalItems, setTotalItems] = React.useState(data.nodes.length || 0);
 
-  // TODO: Dynamically set the grid-template-columns based on the number of columns
+  // Table Theme
+  const columnCount = getTableHeaderCellCount(children);
   const tableTheme = useTableTheme({
     Table: `
     height:${isFooterSticky ? `100%` : undefined};
@@ -68,7 +103,9 @@ const Table: React.FC<TableProps> = ({
       theme.colors.surface.border.normal.lowContrast
     };
     background-color: ${theme.colors.surface.background.level2.lowContrast};
-    --data-table-library_grid-template-columns:  min-content repeat(4,minmax(0px, 1fr)) !important; 
+    --data-table-library_grid-template-columns:  ${
+      selectionType === 'multiple' ? 'min-content' : ''
+    } repeat(${columnCount},minmax(0px, 1fr)) !important; 
     `,
     Footer: `
     .tr-footer th {

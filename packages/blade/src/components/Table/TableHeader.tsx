@@ -4,11 +4,13 @@ import styled from 'styled-components';
 import { Header, HeaderRow, HeaderCell } from '@table-library/react-table-library/table';
 import { tableHeader } from './tokens';
 import { useTableContext } from './TableContext';
+import { ComponentIds } from './componentIds';
 import type { CheckboxProps } from '~components/Checkbox';
 import { Checkbox } from '~components/Checkbox';
 import { Text } from '~components/Typography';
 import { castWebType, makeMotionTime, makeSpace, useTheme } from '~utils';
 import { makeAccessible } from '~utils/makeAccessible';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 const SortButton = styled.button(({ theme }) => ({
   cursor: 'pointer',
@@ -76,9 +78,13 @@ const StyledHeader = styled(Header)(({ theme }) => ({
   },
 }));
 
-const TableHeader = ({ children }: TableHeaderProps): React.ReactElement => {
+const _TableHeader = ({ children }: TableHeaderProps): React.ReactElement => {
   return <StyledHeader>{children}</StyledHeader>;
 };
+
+const TableHeader = assignWithoutSideEffects(_TableHeader, {
+  componentId: ComponentIds.TableHeader,
+});
 
 export type TableHeaderCellProps = {
   children: string | React.ReactNode;
@@ -106,7 +112,7 @@ const StyledHeaderCell = styled(HeaderCell)(({ theme }) => ({
   },
 }));
 
-const TableHeaderCell = ({ children, headerKey }: TableHeaderCellProps): React.ReactElement => {
+const _TableHeaderCell = ({ children, headerKey }: TableHeaderCellProps): React.ReactElement => {
   const { toggleSort, currentSortedState } = useTableContext();
   const isChildrenString = typeof children === 'string';
   const isSortable = Boolean(currentSortedState.sortableColumns?.find((key) => key === headerKey));
@@ -130,6 +136,10 @@ const TableHeaderCell = ({ children, headerKey }: TableHeaderCellProps): React.R
   );
 };
 
+const TableHeaderCell = assignWithoutSideEffects(_TableHeaderCell, {
+  componentId: ComponentIds.TableHeaderCell,
+});
+
 const TableHeaderCellCheckbox = ({
   isChecked,
   isIndeterminate,
@@ -149,7 +159,7 @@ type TableHeaderRowProps = {
   children: React.ReactNode;
 };
 
-const TableHeaderRow = ({ children }: TableHeaderRowProps): React.ReactElement => {
+const _TableHeaderRow = ({ children }: TableHeaderRowProps): React.ReactElement => {
   const { selectionType, selectedRows, totalItems, toggleAllRowsSelection } = useTableContext();
   const isMultiSelect = selectionType === 'multiple';
   const isAllSelected = selectedRows && selectedRows.length === totalItems;
@@ -167,5 +177,9 @@ const TableHeaderRow = ({ children }: TableHeaderRowProps): React.ReactElement =
     </HeaderRow>
   );
 };
+
+const TableHeaderRow = assignWithoutSideEffects(_TableHeaderRow, {
+  componentId: ComponentIds.TableHeaderRow,
+});
 
 export { TableHeader, TableHeaderRow, TableHeaderCell, TableHeaderCellCheckbox };

@@ -139,14 +139,14 @@ const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
                 <TableRow key={index} item={tableItem}>
                   <TableCell>{tableItem.name}</TableCell>
                   <TableCell>
-                    {tableItem.deadline.toLocaleDateString('en-US', {
+                    {tableItem.deadline?.toLocaleDateString('en-US', {
                       year: 'numeric',
                       month: '2-digit',
                       day: '2-digit',
                     })}
                   </TableCell>
                   <TableCell>{tableItem.type}</TableCell>
-                  <TableCell>{tableItem.isComplete.toString()}</TableCell>
+                  <TableCell>{tableItem.isComplete?.toString()}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
