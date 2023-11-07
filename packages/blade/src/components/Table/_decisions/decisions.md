@@ -14,6 +14,7 @@ A table component helps in displaying data in a grid format, through rows and co
       - [`TableData`](#tabledata)
       - [`SortFunctionsType`](#sortfunctionstype)
       - [`SortChangeEvent`](#sortchangeevent)
+      - [`SelectionChangeEvent`](#selectionchangeevent)
     - [TableToolbar](#tabletoolbar)
     - [TableToolbarActions](#tabletoolbaractions)
     - [TableHeader](#tableheader)
@@ -93,7 +94,7 @@ We don't have enough use-cases for the following features at Razorpay and hence 
     sortFunctions={sortFunctions} 
     onSortChange={onSortChange}
     isLoading={false}
-    cellDensity='normal'
+    rowDensity='normal'
     showZebraStripes={true}
     pagination={()=>(
         <TablePagination
@@ -171,19 +172,19 @@ We don't have enough use-cases for the following features at Razorpay and hence 
 ### Detailed API
 > We will be using Composable API for Table
 #### Table
-| Prop              | Type                                          | Default     | Description                                                                                                                                                                                                                                                                                                                     | Required |
-| ----------------- | --------------------------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| data              | TableData                                     | `undefined` | This contains the actual data to be rendered in the table which would be retrieved from some API                                                                                                                                                                                                                                | ✅        |
-| children          | `(tableData: TableData) => React.ReactNode[]` | undefined   | Expects a function that returns Table composition components like TableHeader, TableBody & TableFooter. The function provides the tableData as an argument which can be used to render the table. The provided tableData will update based on pagination and sort states.                                                       | ✅        |
-| selectionType     | `single`, `multiple`                          | `single`    | This defines the type of selection that is allowed in the table. Possible values are 'single' & 'multiple'                                                                                                                                                                                                                      |
-| onSelectionChange | function                                      | `undefined` | This is a callback function that is called when the selection changes. It is called with the selected items as an array                                                                                                                                                                                                         |
-| sortFunctions     | SortFunctionsType                             | `undefined` | This is an object that contains the sort functions for each column. The key of the object is the headerKey of the column and the value is a function that takes in an array of items and returns a sorted array of items. A column will be made automatically sortable by adding its headerKey along with a sort function here. |
-| onSortChange      | SortChangeEvent                               | `undefined` | This is a callback function that is called when the sort changes. It is called with the headerKey & sortType as arguments                                                                                                                                                                                                       |
-| isLoading         | boolean                                       | `false`     | This defines whether the table is in a loading state or not                                                                                                                                                                                                                                                                     |
-| cellDensity       | `normal`, `comfortable`                       | `normal`    | This defines the density of the cells in the table. Possible values are 'normal' & 'comfortable'                                                                                                                                                                                                                                |
-| showZebraStripes  | boolean                                       | `false`     | This defines whether the table should show zebra stripes or not                                                                                                                                                                                                                                                                 |
-| pagination        | React.ReactElement                            | `undefined` | Expects the TablePagination Component                                                                                                                                                                                                                                                                                           |
-| toolbar           | React.ReactElement                            | `undefined` | Expects the TableToolbar Component                                                                                                                                                                                                                                                                                              |
+| Prop              | Type                                          | Default     | Description                                                                                                                                                                                                                                                                                                                              | Required |
+| ----------------- | --------------------------------------------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| data              | TableData                                     | `undefined` | This contains the actual data to be rendered in the table which would be retrieved from some API                                                                                                                                                                                                                                         | ✅        |
+| children          | `(tableData: TableData) => React.ReactNode[]` | undefined   | Expects a function that returns Table composition components like `TableHeader`, `TableBody` & `TableFooter`. The function provides the tableData as an argument which can be used to render the table. The provided tableData will update based on pagination and sort states.                                                          | ✅        |
+| selectionType     | `single`, `multiple`                          | `single`    | This defines the type of selection that is allowed in the table. Possible values are 'single' & 'multiple'                                                                                                                                                                                                                               |
+| onSelectionChange | `SelectionChangeEvent`                        | `undefined` | This is a callback function that is called when the selection changes. It is called with the selected items as an array                                                                                                                                                                                                                  |
+| sortFunctions     | `SortFunctionsType`                           | `undefined` | This is an object that contains the sort functions for each column. The key of the object should be the `headerKey` of the column and the value is a function that takes in an array of items and returns a sorted array of items. A column will be made automatically sortable by adding its headerKey along with a sort function here. |
+| onSortChange      | `SortChangeEvent`                             | `undefined` | This is a callback function that is called when the sort changes. It is called with the headerKey & sortType as arguments                                                                                                                                                                                                                |
+| isLoading         | `boolean`                                     | `false`     | This defines whether the table is in a loading state or not                                                                                                                                                                                                                                                                              |
+| rowDensity        | `normal`, `comfortable`                       | `normal`    | This defines the density of the cells in the table. Possible values are 'normal' & 'comfortable'                                                                                                                                                                                                                                         |
+| showZebraStripes  | `boolean`                                     | `false`     | This defines whether the table should show zebra stripes or not                                                                                                                                                                                                                                                                          |
+| pagination        | `React.ReactElement`                          | `undefined` | Expects the TablePagination Component                                                                                                                                                                                                                                                                                                    |
+| toolbar           | `React.ReactElement`                          | `undefined` | Expects the TableToolbar Component                                                                                                                                                                                                                                                                                                       |
 
 ##### `TableData`
 ```ts
@@ -214,12 +215,18 @@ type SortChangeEvent = {
 };
 ```
 
+##### `SelectionChangeEvent`
+```ts
+type SelectionChangeEvent = (selectedItems: TableNode[]) => void;
+```
+
+
 
 #### TableToolbar
 | Prop               | Type              | Default   | Description                                                         | Required |
 | ------------------ | ----------------- | --------- | ------------------------------------------------------------------- | -------- |
-| title              | string            | undefined | This defines the title of the table toolbar                         |          |
-| itemsSelectedTitle | string            | undefined | This defines the title of the table toolbar when items are selected |          |
+| title              | `string`          | undefined | This defines the title of the table toolbar                         |          |
+| itemsSelectedTitle | `string`          | undefined | This defines the title of the table toolbar when items are selected |          |
 | children           | `React.ReactNode` | undefined | This defines the actions to be shown in the table toolbar           |          |
 
 #### TableToolbarActions
@@ -231,7 +238,7 @@ type SortChangeEvent = {
 | Prop     | Type              | Default   | Description                                                   | Required |
 | -------- | ----------------- | --------- | ------------------------------------------------------------- | -------- |
 | children | `React.ReactNode` | undefined | This defines the table header rows                            | ✅        |
-| isSticky | boolean           | false     | This defines whether the table header should be sticky or not |
+| isSticky | `boolean`         | false     | This defines whether the table header should be sticky or not |
 
 
 #### TableHeaderRow
@@ -242,7 +249,7 @@ type SortChangeEvent = {
 #### TableHeaderCell
 | Prop      | Type                         | Default   | Description                                                                  | Required |
 | --------- | ---------------------------- | --------- | ---------------------------------------------------------------------------- | -------- |
-| headerKey | string                       | undefined | This defines the header key of the column                                    | ✅        |
+| headerKey | `string`                     | undefined | This defines the header key of the column                                    | ✅        |
 | children  | `React.ReactNode` , `string` | undefined | This defines the content of the table header cell. Can be a JSX or a string. | ✅        |
 
 #### TableBody
@@ -254,7 +261,7 @@ type SortChangeEvent = {
 | Prop       | Type              | Default   | Description                                     | Required |
 | ---------- | ----------------- | --------- | ----------------------------------------------- | -------- |
 | children   | `React.ReactNode` | undefined | This defines the table body cells               | ✅        |
-| isDisabled | boolean           | false     | This defines whether the row is disabled or not |
+| isDisabled | `boolean`         | false     | This defines whether the row is disabled or not |
 
 #### TableCell
 | Prop     | Type                        | Default   | Description                                                    | Required |
@@ -265,7 +272,7 @@ type SortChangeEvent = {
 | Prop     | Type              | Default   | Description                                                   | Required |
 | -------- | ----------------- | --------- | ------------------------------------------------------------- | -------- |
 | children | `React.ReactNode` | undefined | This defines the table footer rows                            | ✅        |
-| isSticky | boolean           | false     | This defines whether the table footer should be sticky or not |
+| isSticky | `boolean`         | false     | This defines whether the table footer should be sticky or not |
 
 #### TableFooterRow
 | Prop     | Type              | Default   | Description                         | Required |
@@ -276,21 +283,21 @@ type SortChangeEvent = {
 | Prop        | Type                        | Default   | Description                                                                  | Required |
 | ----------- | --------------------------- | --------- | ---------------------------------------------------------------------------- | -------- |
 | children    | `React.ReactNode`, `string` | undefined | This defines the content of the table footer cell. Can be a JSX or a string. | ✅        |
-| columnStart | number                      | undefined | This defines the start column of the table footer cell                       |          |
-| columnEnd   | number                      | undefined | This defines the end column of the table footer cell                         |          |
+| columnStart | `number`                    | undefined | This defines the start column of the table footer cell                       |          |
+| columnEnd   | `number`                    | undefined | This defines the end column of the table footer cell                         |          |
 
 #### TablePagination
-| Prop                   | Type                      | Default   | Description                                                                                                              | Required |
-| ---------------------- | ------------------------- | --------- | ------------------------------------------------------------------------------------------------------------------------ | -------- |
-| limit                  | number                    | undefined | This defines the number of items to be shown per page                                                                    | ✅        |
-| offset                 | number                    | undefined | This defines the offset of the items to be shown per page                                                                | ✅        |
-| navigationType         | `compact`, `expanded`     | `compact` | This defines the type of pagination to be shown. Possible values are 'compact' & 'expanded'                              |
-| label                  | string                    | undefined | This defines the label to be shown in the pagination                                                                     |
-| labelPosition          | `left`, `right`           | `right`   | This defines the position of the label. Possible values are 'left' & 'right'                                             |
-| showRowCountPicker     | boolean                   | `false`   | This defines whether the row count picker should be shown or not                                                         |
-| rowCount               | number                    | undefined | This defines the number of rows to be shown per page                                                                     |
-| onPaginationChange     | PaginationChangeEvent     | undefined | This is a callback function that is called when the pagination changes. It is called with the offset as an argument      |
-| onRowCountPickerChange | RowCountPickerChangeEvent | undefined | This is a callback function that is called when the row count picker changes. It is called with the count as an argument |
+| Prop                   | Type                        | Default   | Description                                                                                                              | Required |
+| ---------------------- | --------------------------- | --------- | ------------------------------------------------------------------------------------------------------------------------ | -------- |
+| limit                  | `number`                    | undefined | This defines the number of items to be shown per page                                                                    | ✅        |
+| offset                 | `number`                    | undefined | This defines the offset of the items to be shown per page                                                                | ✅        |
+| navigationType         | `compact`, `expanded`       | `compact` | This defines the type of pagination to be shown. Possible values are 'compact' & 'expanded'                              |
+| label                  | `string`                    | undefined | This defines the label to be shown in the pagination                                                                     |
+| labelPosition          | `left`, `right`             | `right`   | This defines the position of the label. Possible values are 'left' & 'right'                                             |
+| showRowCountPicker     | `boolean`                   | `false`   | This defines whether the row count picker should be shown or not                                                         |
+| rowCount               | `number`                    | undefined | This defines the number of rows to be shown per page                                                                     |
+| onPaginationChange     | `PaginationChangeEvent`     | undefined | This is a callback function that is called when the pagination changes. It is called with the offset as an argument      |
+| onRowCountPickerChange | `RowCountPickerChangeEvent` | undefined | This is a callback function that is called when the row count picker changes. It is called with the count as an argument |
 
 ##### `PaginationChangeEvent`
 ```ts
@@ -303,7 +310,7 @@ type RowCountPickerChangeEvent = ({count: number}) => void;
 ```
 
 ### API Design Decisions 
-> You can skip this section if you are not interested in the API design process and want to directly refer to the [Final API](#api)
+> You can skip this section and go to [Table Library Evaluation](#table-library-evaluation) if you are not interested in the API design process. The [Final API](#api) has already been documented above.
 > The decision was made to go ahead with Composable API after consulting with the frontend leads
 
 While evaluating what kind of API we want for our table, we discovered 2 approaches:
@@ -349,21 +356,31 @@ const onSortChange = ({ headerKey, sortType }) => {
     sortFunctions={sortFunctions} 
     onSortChange={onSortChange}
     isLoading={false}
-    cellDensity='normal'
+    rowDensity='normal'
     showZebraStripes={true}
-    pagination={{
-      limit: 10,
-      offset: 0,
-    }}
+    pagination={()=>(
+        <TablePagination
+          limit={10}
+          offset={0}
+          navigationType='compact'
+          label='1-10 of 100'
+          labelPosition='left'
+          showRowCountPicker
+          rowCount='25'
+          onPaginationChange={console.log}
+          onRowCountPickerChange={console.log}
+        />
+      )}
+   toolbar={()=>(
+        <TableToolbar title="Users" itemsSelectedTitle={`${selectedUsersCount} Users selected`}>
+            <ToolbarActions>
+                <Button>Export</Button>
+            </ToolbarActions>
+        </TableToolbar>
+      )}
 >
 {(tableData) => (
   <>
-    <TableToolbar title="Users" itemsSelectedTitle={`${selectedUsersCount} Users selected`}>
-        <ToolbarActions>
-            <Button>Export</Button>
-        </ToolbarActions>
-    </TableToolbar>
-
     <TableHeader isSticky={true}>
       <TableHeaderRow>
          <TableHeaderCell headerKey='firstName'>
@@ -408,16 +425,6 @@ const onSortChange = ({ headerKey, sortType }) => {
         </TableFooterCell>
       </TableFooterRow>
     </TableFooter>
-
-    <TablePagination 
-      navigationType='compact' 
-      label='1-10 of 100'
-      labelPosition='left'
-      showRowCountPicker
-      rowCount='25'
-      onPaginationChange={console.log}
-      onRowCountPickerChange={console.log}
-      /> 
    </>
   )
 }
@@ -531,7 +538,7 @@ const pagination = {
     sortFunctions={sortFunctions}
     onSortChange={onSortChange}
     isLoading={false}
-    cellDensity='normal'
+    rowDensity='normal'
     showZebraStripes={true}
     toolbarTitle="Users"
     toolbarItemsSelectedTitle={`${selectedUsersCount} Users selected`}
