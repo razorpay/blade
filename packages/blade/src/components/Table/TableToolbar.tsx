@@ -35,7 +35,7 @@ type TableToolbarProps = {
 };
 
 const _TableToolbar = ({ children, title }: TableToolbarProps): React.ReactElement => {
-  const { selectedRows, toggleAllRowsSelection } = useTableContext();
+  const { selectedRows, deselectAllRows } = useTableContext();
   const isSelected = selectedRows && selectedRows.length > 0;
   const defaultTitle = 'Showing 1-10 Items'; // TODO: Use pagination data to show correct title
   const selectedItemsCount = selectedRows ? selectedRows.length : 0;
@@ -58,7 +58,7 @@ const _TableToolbar = ({ children, title }: TableToolbarProps): React.ReactEleme
         {isSelected && (
           <BaseBox display="flex" marginLeft="spacing.5" flex={1} height="100%">
             <Divider orientation="vertical" thickness="thick" />
-            <Link marginLeft="spacing.5" variant="button" onClick={() => toggleAllRowsSelection()}>
+            <Link marginLeft="spacing.5" variant="button" onClick={() => deselectAllRows()}>
               Deselect
             </Link>
           </BaseBox>

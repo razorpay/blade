@@ -146,6 +146,13 @@ const Table: React.FC<TableProps> = ({
     [rowSelectConfig.fns],
   );
 
+  const deselectAllRows = useMemo(
+    () => (): void => {
+      rowSelectConfig.fns.onRemoveAll();
+    },
+    [rowSelectConfig.fns],
+  );
+
   const toggleAllRowsSelection = useMemo(
     () => (): void => {
       rowSelectConfig.fns.onToggleAll({});
@@ -207,6 +214,7 @@ const Table: React.FC<TableProps> = ({
       totalItems,
       toggleRowSelectionById,
       toggleAllRowsSelection,
+      deselectAllRows,
       rowDensity,
       toggleSort,
       currentSortedState,
@@ -217,6 +225,7 @@ const Table: React.FC<TableProps> = ({
       totalItems,
       toggleRowSelectionById,
       toggleAllRowsSelection,
+      deselectAllRows,
       rowDensity,
       toggleSort,
       currentSortedState,
