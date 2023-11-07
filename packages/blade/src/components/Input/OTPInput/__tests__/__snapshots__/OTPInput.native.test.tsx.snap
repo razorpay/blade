@@ -260,6 +260,7 @@ exports[`<OTPInput /> should render 1`] = `
                   onKeyPress={[Function]}
                   onSubmitEditing={[Function]}
                   placeholder=""
+                  placeholderTextColor="hsla(214, 18%, 69%, 1)"
                   secureTextEntry={false}
                   style={
                     [
@@ -403,6 +404,7 @@ exports[`<OTPInput /> should render 1`] = `
                   onKeyPress={[Function]}
                   onSubmitEditing={[Function]}
                   placeholder=""
+                  placeholderTextColor="hsla(214, 18%, 69%, 1)"
                   secureTextEntry={false}
                   style={
                     [
@@ -546,6 +548,7 @@ exports[`<OTPInput /> should render 1`] = `
                   onKeyPress={[Function]}
                   onSubmitEditing={[Function]}
                   placeholder=""
+                  placeholderTextColor="hsla(214, 18%, 69%, 1)"
                   secureTextEntry={false}
                   style={
                     [
@@ -689,6 +692,7 @@ exports[`<OTPInput /> should render 1`] = `
                   onKeyPress={[Function]}
                   onSubmitEditing={[Function]}
                   placeholder=""
+                  placeholderTextColor="hsla(214, 18%, 69%, 1)"
                   secureTextEntry={false}
                   style={
                     [
@@ -832,6 +836,7 @@ exports[`<OTPInput /> should render 1`] = `
                   onKeyPress={[Function]}
                   onSubmitEditing={[Function]}
                   placeholder=""
+                  placeholderTextColor="hsla(214, 18%, 69%, 1)"
                   secureTextEntry={false}
                   style={
                     [
@@ -975,6 +980,7 @@ exports[`<OTPInput /> should render 1`] = `
                   onKeyPress={[Function]}
                   onSubmitEditing={[Function]}
                   placeholder=""
+                  placeholderTextColor="hsla(214, 18%, 69%, 1)"
                   secureTextEntry={false}
                   style={
                     [
