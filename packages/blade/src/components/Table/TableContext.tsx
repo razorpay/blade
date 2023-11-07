@@ -9,6 +9,12 @@ export type TableContextType = {
   toggleRowSelectionById: (id: TableNode['id']) => void;
   toggleAllRowsSelection: () => void;
   cellDensity: TableProps['cellDensity'];
+  toggleSort: (sortKey: string) => void;
+  currentSortedState: {
+    sortKey: string;
+    isSortReversed: boolean;
+    sortableColumns?: string[];
+  };
 };
 
 const TableContext = React.createContext<TableContextType>({
@@ -20,6 +26,12 @@ const TableContext = React.createContext<TableContextType>({
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   toggleAllRowsSelection: () => {},
   cellDensity: 'normal',
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  toggleSort: () => {},
+  currentSortedState: {
+    sortKey: '',
+    isSortReversed: false,
+  },
 });
 const TableProvider = TableContext.Provider;
 

@@ -98,53 +98,67 @@ const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
       backgroundColor="surface.background.level1.lowContrast"
       padding="spacing.5"
       overflow="auto"
+      height="400px"
     >
       <TableComponent
         {...args}
         data={data}
         onSelectionChange={({ values }) => console.log('Selected Rows:', values)}
+        sortFunctions={{
+          TASK: (array) => array.sort((a, b) => a.name.localeCompare(b.name)),
+          DEADLINE: (array) => array.sort((a, b) => a.deadline.getTime() - b.deadline.getTime()),
+          TYPE: (array) => array.sort((a, b) => a.type.localeCompare(b.type)),
+          COMPLETE: (array) => array.sort((a, b) => a.isComplete - b.isComplete),
+        }}
+        onSortChange={({ sortKey, isSortReversed }) =>
+          console.log('Sort Key:', sortKey, 'Sort Reversed:', isSortReversed)
+        }
       >
-        <TableToolbar>
-          <TableToolbarActions>
-            <Button variant="secondary" marginRight="spacing.2">
-              Export
-            </Button>
-            <Button>Payout</Button>
-          </TableToolbarActions>
-        </TableToolbar>
-        <TableHeader>
-          <TableHeaderRow>
-            <TableHeaderCell>Task</TableHeaderCell>
-            <TableHeaderCell>Deadline</TableHeaderCell>
-            <TableHeaderCell>Type</TableHeaderCell>
-            <TableHeaderCell>Complete</TableHeaderCell>
-          </TableHeaderRow>
-        </TableHeader>
-        <TableBody>
-          {data.nodes.map((tableItem, index) => (
-            <TableRow key={index} item={tableItem}>
-              <TableCell>{tableItem.name}</TableCell>
-              <TableCell>
-                {tableItem.deadline.toLocaleDateString('en-US', {
-                  year: 'numeric',
-                  month: '2-digit',
-                  day: '2-digit',
-                })}
-              </TableCell>
-              <TableCell>{tableItem.type}</TableCell>
-              <TableCell>{tableItem.isComplete.toString()}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-        <TableFooter>
-          <TableFooterRow>
-            {args.selectionType === 'multiple' && <TableFooterCell>-</TableFooterCell>}
-            <TableFooterCell>-</TableFooterCell>
-            <TableFooterCell>-</TableFooterCell>
-            <TableFooterCell>-</TableFooterCell>
-            <TableFooterCell>-</TableFooterCell>
-          </TableFooterRow>
-        </TableFooter>
+        {(tableData) => (
+          <>
+            {/* <TableToolbar>
+              <TableToolbarActions>
+                <Button variant="secondary" marginRight="spacing.2">
+                  Export
+                </Button>
+                <Button>Payout</Button>
+              </TableToolbarActions>
+            </TableToolbar> */}
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell headerKey="TASK">Task</TableHeaderCell>
+                <TableHeaderCell headerKey="DEADLINE">Deadline</TableHeaderCell>
+                <TableHeaderCell headerKey="TYPE">Type</TableHeaderCell>
+                <TableHeaderCell headerKey="COMPLETE">Complete</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {tableData.map((tableItem, index) => (
+                <TableRow key={index} item={tableItem}>
+                  <TableCell>{tableItem.name}</TableCell>
+                  <TableCell>
+                    {tableItem.deadline.toLocaleDateString('en-US', {
+                      year: 'numeric',
+                      month: '2-digit',
+                      day: '2-digit',
+                    })}
+                  </TableCell>
+                  <TableCell>{tableItem.type}</TableCell>
+                  <TableCell>{tableItem.isComplete.toString()}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+            <TableFooter>
+              <TableFooterRow>
+                {args.selectionType === 'multiple' && <TableFooterCell>-</TableFooterCell>}
+                <TableFooterCell>-</TableFooterCell>
+                <TableFooterCell>-</TableFooterCell>
+                <TableFooterCell>-</TableFooterCell>
+                <TableFooterCell>-</TableFooterCell>
+              </TableFooterRow>
+            </TableFooter>
+          </>
+        )}
       </TableComponent>
     </Box>
   );
