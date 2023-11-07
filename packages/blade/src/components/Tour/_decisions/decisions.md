@@ -29,16 +29,52 @@ The Tour component is used to provide context as well as enable users to take ce
 
 ## Design
 
-[Figma Link](https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?type=design&node-id=40540-559304&t=tmTrf3xJU6oj59fM-0) to all variants of the Popover component
+[Figma Link](https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=63871%3A13263&mode=dev) to all variants of the Tour component
 
 ## Features
 
 - [x] **Tour:** A guided tour with multiple steps
 - [x] **Masking:** Mask the rest of the page except the highlighted element.
 
+## Basic Usage Structure
+
+With Tour component, you can specify an array of steps with a `name` prop for each step, and then use the `TourStep` component to wrap the element that needs to be highlighted with the same `name` prop.
+
+The Tour component internally handles everything for your
+
+- Masking of the highlighted component
+- Internal state management of `activeStep`
+- Navigation between steps
+
+> Check the full example on [Usage](#usage) section below
+
+```jsx
+const steps = [
+  {
+    name: 'step-1',
+    title: 'Step 1',
+    content: () => <Text>Some content for step 1</Text>,
+    footer: () => <Text>Footer for step 1</Text>,
+  },
+  // ...more steps
+];
+
+<Tour steps={steps}>
+  // ... more jsx
+  <TourStep name="step-1">
+    <Box>I'll be highlighted</Box>
+  </TourStep>
+</Tour>;
+```
+
 ## API
 
 ### `Tour` API
+
+The `Tour` component is used to render a guided tour with multiple steps.
+Each tour `step` will have a subset of props from the `Popover` component, with extra props for the tour related logic.
+
+> Check the Popover API Decisions [here](https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Popover/_decisions/decisions.md)
 
 ```jsx
 // Step will have similar props as the Popover component, With extra Tour related props.
@@ -106,10 +142,10 @@ type TourProps = {
 
 TourStep is an enhancer component which is used to wrap the element that needs to be highlighted with a specific unique identifier.
 
-This component is needed because 
+This component is needed because:
 
 - in react-native there is no `id` prop or `getElementById` platform API.
-- We don't expose `id` for every blade component, currently only Box does. 
+- We don't expose `id` for every blade component, currently only Box does.
 
 But to keep the API consistent between web & native, we will also expose this component for web.
 
@@ -123,9 +159,14 @@ type TourStepProps = {
    * This should be the same as the `name` prop of the element inside the `steps` array of the `Tour` component
    */
   name: string
+  /**
+   * React children with a single child which exposes a ref
+   */
   children: React.ReactNode;
 };
 ```
+
+Note that, in order for TourStep to work properly it needs access to it's children ref, so the children should expose a ref.
 
 ## Usage
 
@@ -215,7 +256,9 @@ const App = () => {
         onFinish={handleFinish}
         onStepChange={handleStepChange}
         activeStep={activeStep}
-      />
+      >
+        <DashboardPage />
+      </Tour>
     </Box>
   );
 };
