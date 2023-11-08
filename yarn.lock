@@ -15706,6 +15706,10 @@ husky@4.2.3:
     slash "^3.0.0"
     which-pm-runs "^1.0.0"
 
+"i18nify@github:razorpay/i18nify#currency-module-deploy":
+  version "1.0.0"
+  resolved "https://codeload.github.com/razorpay/i18nify/tar.gz/107007c3a5a619410fb11232fc5a735d1a96c9fe"
+
 iconv-lite@0.4.24, iconv-lite@^0.4.24:
   version "0.4.24"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.24.tgz#2022b4b25fbddc21d2f524974a474aafe733908b"

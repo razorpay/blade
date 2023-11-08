@@ -1,5 +1,6 @@
 import type { ReactElement } from 'react';
 import React from 'react';
+import { formatAmountByParts, getCurrencySymbol } from 'i18nify';
 import type { Currency } from './amountTokens';
 import {
   amountFontSizes,
@@ -7,7 +8,6 @@ import {
   affixFontSizes,
   amountLineHeights,
 } from './amountTokens';
-import { formatAmountByParts, getCurrencySymbol } from './i18nify-utils';
 import { BaseText } from '~components/Typography/BaseText';
 import type { Feedback } from '~tokens/theme/theme';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
