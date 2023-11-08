@@ -37,17 +37,22 @@ type TableFooterCellProps = {
 
 const StyledFooterCell = styled(FooterCell)(({ theme }) => ({
   '&&&': {
-    paddingTop: makeSpace(getIn(theme, tableFooter.paddingTop)),
-    paddingBottom: makeSpace(getIn(theme, tableFooter.paddingBottom)),
-    paddingLeft: makeSpace(getIn(theme, tableFooter.paddingLeft)),
-    paddingRight: makeSpace(getIn(theme, tableFooter.paddingRight)),
-    backgroundColor: getIn(theme.colors, tableFooter.backgroundColor),
+    backgroundColor: theme.colors.surface.background.level2.lowContrast,
     borderBottomWidth: makeSpace(getIn(theme.border.width, tableFooter.borderBottomAndTopWidth)),
     borderTopWidth: makeSpace(getIn(theme.border.width, tableFooter.borderBottomAndTopWidth)),
     borderBottomColor: getIn(theme.colors, tableFooter.borderBottomAndTopColor),
     borderTopColor: getIn(theme.colors, tableFooter.borderBottomAndTopColor),
     borderBottomStyle: 'solid',
     borderTopStyle: 'solid',
+    '> div': {
+      backgroundColor: getIn(theme.colors, tableFooter.backgroundColor),
+      display: 'flex',
+      flexDirection: 'row',
+      paddingTop: makeSpace(getIn(theme, tableFooter.paddingTop)),
+      paddingBottom: makeSpace(getIn(theme, tableFooter.paddingBottom)),
+      paddingLeft: makeSpace(getIn(theme, tableFooter.paddingLeft)),
+      paddingRight: makeSpace(getIn(theme, tableFooter.paddingRight)),
+    },
   },
 }));
 

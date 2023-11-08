@@ -93,7 +93,7 @@ export type TableHeaderCellProps = {
 
 const StyledHeaderCell = styled(HeaderCell)(({ theme }) => ({
   '&&&': {
-    backgroundColor: getIn(theme.colors, tableHeader.backgroundColor),
+    backgroundColor: theme.colors.surface.background.level2.lowContrast,
     borderBottomWidth: makeSpace(getIn(theme.border.width, tableHeader.borderBottomAndTopWidth)),
     borderTopWidth: makeSpace(getIn(theme.border.width, tableHeader.borderBottomAndTopWidth)),
     borderBottomColor: getIn(theme.colors, tableHeader.borderBottomAndTopColor),
@@ -101,6 +101,7 @@ const StyledHeaderCell = styled(HeaderCell)(({ theme }) => ({
     borderBottomStyle: 'solid',
     borderTopStyle: 'solid',
     '> div': {
+      backgroundColor: getIn(theme.colors, tableHeader.backgroundColor),
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'space-between',
