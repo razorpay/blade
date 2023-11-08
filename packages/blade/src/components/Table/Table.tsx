@@ -90,7 +90,11 @@ const StyledReactTable = styled(ReactTable)<{ styledProps?: { height?: BoxProps[
       height: styledProps?.height,
     });
 
-    return styledPropsCSSObject;
+    return {
+      '&&&': {
+        ...styledPropsCSSObject,
+      },
+    };
   },
 );
 
