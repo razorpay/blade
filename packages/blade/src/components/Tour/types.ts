@@ -2,6 +2,10 @@ import type { UseFloatingOptions } from '@floating-ui/react';
 
 type StepRenderProps = {
   /**
+   * Go to a specific step
+   */
+  goToStep: (step: number) => void;
+  /**
    * Go to the next step
    */
   goToNext: () => void;
@@ -84,11 +88,11 @@ type TourProps = {
   /**
    * Callback when the tour is opened or closed
    */
-  onOpenChange: ({ isOpen }: { isOpen: boolean }) => void;
+  onOpenChange?: ({ isOpen }: { isOpen: boolean }) => void;
   /**
    * Callback which fires when the tour has reached the last step.
    */
-  onFinish: () => void;
+  onFinish?: () => void;
   /**
    * Callback when the active step changes
    */

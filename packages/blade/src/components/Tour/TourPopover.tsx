@@ -120,9 +120,11 @@ const TourPopover = ({
 
   // https://github.com/floating-ui/floating-ui/discussions/2352#discussioncomment-6044834
   React.useLayoutEffect(() => {
-    if (!attachTo) return;
-    refs.setReference(attachTo.current);
-    refs.setPositionReference(attachTo.current);
+    setTimeout(() => {
+      if (!attachTo) return;
+      refs.setReference(attachTo.current);
+      refs.setPositionReference(attachTo.current);
+    });
   }, [attachTo, refs, isOpen]);
 
   return (

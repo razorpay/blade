@@ -23,7 +23,10 @@ const Tour = ({
   children,
 }: TourProps): React.ReactElement => {
   const { theme } = useTheme();
-  const [refIdMap, setRefIdMap] = React.useState(new Map<string, React.RefObject<HTMLElement>>());
+  // const [refIdMap, setRefIdMap] = React.useState(
+  //   () => new Map<string, React.RefObject<HTMLElement>>(),
+  // );
+  const refIdMap = React.useRef(new Map<string, React.RefObject<HTMLElement>>());
   const [size, setSize] = React.useState<TourMaskRect>({
     x: 0,
     y: 0,
@@ -57,8 +60,16 @@ const Tour = ({
   }, [activeStep, steps]);
 
   const getCurrentStepRef = React.useCallback(() => {
-    return refIdMap.get(steps[activeStep]?.name);
+    return refIdMap.current.get(steps[activeStep]?.name);
   }, [activeStep, refIdMap, steps]);
+
+  const goToStep = React.useCallback(
+    (step: number) => {
+      if (step < 0 || step >= steps.length) return;
+      onStepChange?.(step);
+    },
+    [onStepChange, steps.length],
+  );
 
   const goToNext = React.useCallback(() => {
     let next = activeStep + 1;
@@ -82,17 +93,19 @@ const Tour = ({
 
   const attachStep = React.useCallback((id: string, ref: React.RefObject<HTMLElement>) => {
     if (!ref) return;
-    setRefIdMap((prev) => {
-      return new Map(prev).set(id, ref);
-    });
+    // setRefIdMap((prev) => {
+    //   return new Map(prev).set(id, ref);
+    // });
+    refIdMap.current.set(id, ref);
   }, []);
 
   const removeStep = React.useCallback((id: string) => {
-    setRefIdMap((prev) => {
-      const newMap = new Map(prev);
-      newMap.delete(id);
-      return newMap;
-    });
+    // setRefIdMap((prev) => {
+    //   const newMap = new Map(prev);
+    //   newMap.delete(id);
+    //   return newMap;
+    // });
+    refIdMap.current.delete(id);
   }, []);
 
   const scrollLockRef = useScrollLock({
@@ -113,7 +126,7 @@ const Tour = ({
   }, [isOpen, scrollLockRef]);
 
   const updateMaskSize = React.useCallback(() => {
-    const ref = refIdMap.get(steps[activeStep]?.name);
+    const ref = refIdMap.current.get(steps[activeStep]?.name);
     if (!ref?.current) return;
 
     const rect = ref.current.getBoundingClientRect();
@@ -125,13 +138,25 @@ const Tour = ({
     });
   }, [activeStep, refIdMap, steps]);
 
+  // reset the size of the mask when the tour is closed
+  React.useEffect(() => {
+    if (!isOpen) {
+      setSize({
+        x: 0,
+        y: 0,
+        height: 0,
+        width: 0,
+      });
+    }
+  }, [isOpen]);
+
   // update the size of the mask when the active step changes
   React.useLayoutEffect(() => {
     updateMaskSize();
   }, [activeStep, refIdMap, steps, updateMaskSize]);
 
   const scrollToTarget = React.useCallback(() => {
-    const ref = refIdMap.get(steps[delayedActiveStep]?.name);
+    const ref = refIdMap.current.get(steps[delayedActiveStep]?.name);
     if (!ref?.current) return;
 
     const element = ref.current;
@@ -214,6 +239,7 @@ const Tour = ({
               activeStep: delayedActiveStep,
               goToPrevious,
               goToNext,
+              goToStep,
               totalSteps,
               stopTour,
             })}
@@ -221,6 +247,7 @@ const Tour = ({
               activeStep: delayedActiveStep,
               goToPrevious,
               goToNext,
+              goToStep,
               totalSteps,
               stopTour,
             })}
