@@ -17,6 +17,12 @@ type TableToolbarActionsProps = {
   children?: React.ReactNode;
 } & StyledPropsBlade;
 
+/**
+ * TableToolbarActions is a component that is used to render actions in the TableToolbar.
+ * It is a flex container that will render its children in a row on desktop and a column on mobile.
+ * @param children - any react element
+ * @param styledProps - accepts all of the styled props from Box
+ */
 const TableToolbarActions = ({
   children,
   ...styledProps
