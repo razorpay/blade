@@ -1,13 +1,17 @@
 /* eslint-disable consistent-return */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React from 'react';
+// import { FloatingPortal } from '@floating-ui/react';
+// import type { TourMaskRect, TourProps } from './types';
 import { FloatingPortal } from '@floating-ui/react';
-import type { TourMaskRect, TourProps } from './types';
 import { TourContext } from './TourContext';
-import { TourMask } from './TourMask';
+// import { TourMask } from './TourMask';
 import { TourPopover } from './TourPopover';
 import { useDelayedState } from './utils';
+import type { TourMaskRect, TourProps } from './types';
+import { TourMask } from './TourMask';
 import { usePrevious, useTheme } from '~utils';
+import { useScrollLock } from '~utils/useScrollLock';
 
 const Tour = ({
   steps,
@@ -28,7 +32,7 @@ const Tour = ({
   });
   const transitionDelay = theme.motion.duration.gentle;
   // delayed state is used to let the transition finish before reacting to the state changes
-  const delayedAciveStep = useDelayedState(activeStep, transitionDelay);
+  const delayedActiveStep = useDelayedState(activeStep, transitionDelay);
   const delayedSize = useDelayedState(size, transitionDelay);
 
   const prevActiveStep = usePrevious(activeStep);
@@ -91,10 +95,25 @@ const Tour = ({
     });
   }, []);
 
-  // update the size of the mask when the active step changes
-  React.useLayoutEffect(() => {
-    if (activeStep === -1) return;
-    const ref = getCurrentStepRef();
+  const scrollLockRef = useScrollLock({
+    enabled: true,
+    reserveScrollBarGap: true,
+  });
+
+  React.useEffect(() => {
+    const lockRef = scrollLockRef.current;
+    if (isOpen) {
+      lockRef.activate();
+    } else {
+      lockRef.deactivate();
+    }
+    return () => {
+      lockRef.deactivate();
+    };
+  }, [isOpen, scrollLockRef]);
+
+  const updateMaskSize = React.useCallback(() => {
+    const ref = refIdMap.get(steps[activeStep]?.name);
     if (!ref?.current) return;
 
     const rect = ref.current.getBoundingClientRect();
@@ -104,7 +123,54 @@ const Tour = ({
       width: rect.width,
       height: rect.height,
     });
-  }, [activeStep, getCurrentStepRef, refIdMap, steps]);
+  }, [activeStep, refIdMap, steps]);
+
+  // update the size of the mask when the active step changes
+  React.useLayoutEffect(() => {
+    updateMaskSize();
+  }, [activeStep, refIdMap, steps, updateMaskSize]);
+
+  const scrollToTarget = React.useCallback(() => {
+    const ref = refIdMap.get(steps[delayedActiveStep]?.name);
+    if (!ref?.current) return;
+
+    const element = ref.current;
+    window.setTimeout(() => {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+        inline: 'center',
+      });
+    }, transitionDelay);
+  }, [delayedActiveStep, refIdMap, steps, transitionDelay]);
+
+  // scroll into view when the active step changes
+  // What a time to hit a chrome bug: https://bugs.chromium.org/p/chromium/issues/detail?id=1043933
+  React.useEffect(() => {
+    scrollToTarget();
+    // if (!element) return;
+    // const offset = 100;
+    // const bodyRect = document.body.getBoundingClientRect().top;
+    // const targetRect = element.getBoundingClientRect().top;
+    // const targetPosition = targetRect - bodyRect;
+    // const offsetPosition = targetPosition - offset;
+    // console.log(offsetPosition);
+
+    // scrollTo(offsetPosition)
+    //   .then(() => {
+    //     console.log('DONE');
+    //     const rect = element.getBoundingClientRect();
+    //     setSize({
+    //       x: rect.x,
+    //       y: rect.y,
+    //       width: rect.width,
+    //       height: rect.height,
+    //     });
+    //   })
+    //   .catch((err) => {
+    //     console.log('scrollElementTo', err);
+    //   });
+  }, [scrollToTarget]);
 
   const contextValue = React.useMemo(() => {
     return { attachStep, removeStep };
@@ -131,7 +197,11 @@ const Tour = ({
         // 3. do not show the popover if we are transitioning between steps
         //    this ensures popover suddenly doesn't jump to the next step,
         //    instead it waits for the transition to finish
-        const isPopoverVisible = isOpen && currentStepData.name === step.name && !isTransitioning;
+        const isPopoverVisible =
+          activeStep === delayedActiveStep &&
+          isOpen &&
+          currentStepData.name === step.name &&
+          !isTransitioning;
         return (
           <TourPopover
             key={step.name}
@@ -141,14 +211,14 @@ const Tour = ({
             title={step.title}
             titleLeading={step.titleLeading}
             content={step?.content?.({
-              activeStep: delayedAciveStep,
+              activeStep: delayedActiveStep,
               goToPrevious,
               goToNext,
               totalSteps,
               stopTour,
             })}
             footer={step?.footer?.({
-              activeStep: delayedAciveStep,
+              activeStep: delayedActiveStep,
               goToPrevious,
               goToNext,
               totalSteps,

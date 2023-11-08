@@ -155,6 +155,96 @@ const TourTemplate = () => {
             Nulla facilisi. Nulla facilisi. Nullam consectetur, enim vitae
           </Text>
 
+          <Text>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisl eget
+            ultricies aliquam, augue nunc ultrices ipsum, sit amet tincidunt eros nunc vel tellus.
+            Morbi eget nunc auctor, sagittis dolor quis, ultricies libero. Nullam imperdiet, velit
+            non commodo ullamcorper, diam nisl faucibus nisi, eu ultrices libero quam a odio.
+            Quisque eget quam ut nisl ultrices aliquam. Sed auctor efficitur diam, vel aliquam nisl.
+            Nulla facilisi. Nulla facilisi. Nullam consectetur, enim vitae lacinia commodo, dolor
+            risus ultricies nisl, sed ullamcorper lorem nunc nec enim. Nullam euismod, nisl eget
+            ultricies aliquam, augue nunc ultrices ipsum, sit amet tincidunt eros nunc vel tellus.
+            Morbi eget nunc auctor, sagittis dolor quis, ultricies libero. Nullam imperdiet, velit
+            non commodo ullamcorper, diam nisl faucibus nisi, eu ultrices libero quam a odio.
+            Quisque eget quam ut nisl ultrices aliquam. Sed auctor efficitur diam, vel aliquam nisl.
+            Nulla facilisi. Nulla facilisi. Nullam consectetur, enim vitae
+          </Text>
+
+          <Text>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisl eget
+            ultricies aliquam, augue nunc ultrices ipsum, sit amet tincidunt eros nunc vel tellus.
+            Morbi eget nunc auctor, sagittis dolor quis, ultricies libero. Nullam imperdiet, velit
+            non commodo ullamcorper, diam nisl faucibus nisi, eu ultrices libero quam a odio.
+            Quisque eget quam ut nisl ultrices aliquam. Sed auctor efficitur diam, vel aliquam nisl.
+            Nulla facilisi. Nulla facilisi. Nullam consectetur, enim vitae lacinia commodo, dolor
+            risus ultricies nisl, sed ullamcorper lorem nunc nec enim. Nullam euismod, nisl eget
+            ultricies aliquam, augue nunc ultrices ipsum, sit amet tincidunt eros nunc vel tellus.
+            Morbi eget nunc auctor, sagittis dolor quis, ultricies libero. Nullam imperdiet, velit
+            non commodo ullamcorper, diam nisl faucibus nisi, eu ultrices libero quam a odio.
+            Quisque eget quam ut nisl ultrices aliquam. Sed auctor efficitur diam, vel aliquam nisl.
+            Nulla facilisi. Nulla facilisi. Nullam consectetur, enim vitae
+          </Text>
+
+          <Text>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisl eget
+            ultricies aliquam, augue nunc ultrices ipsum, sit amet tincidunt eros nunc vel tellus.
+            Morbi eget nunc auctor, sagittis dolor quis, ultricies libero. Nullam imperdiet, velit
+            non commodo ullamcorper, diam nisl faucibus nisi, eu ultrices libero quam a odio.
+            Quisque eget quam ut nisl ultrices aliquam. Sed auctor efficitur diam, vel aliquam nisl.
+            Nulla facilisi. Nulla facilisi. Nullam consectetur, enim vitae lacinia commodo, dolor
+            risus ultricies nisl, sed ullamcorper lorem nunc nec enim. Nullam euismod, nisl eget
+            ultricies aliquam, augue nunc ultrices ipsum, sit amet tincidunt eros nunc vel tellus.
+            Morbi eget nunc auctor, sagittis dolor quis, ultricies libero. Nullam imperdiet, velit
+            non commodo ullamcorper, diam nisl faucibus nisi, eu ultrices libero quam a odio.
+            Quisque eget quam ut nisl ultrices aliquam. Sed auctor efficitur diam, vel aliquam nisl.
+            Nulla facilisi. Nulla facilisi. Nullam consectetur, enim vitae
+          </Text>
+
+          <Text>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisl eget
+            ultricies aliquam, augue nunc ultrices ipsum, sit amet tincidunt eros nunc vel tellus.
+            Morbi eget nunc auctor, sagittis dolor quis, ultricies libero. Nullam imperdiet, velit
+            non commodo ullamcorper, diam nisl faucibus nisi, eu ultrices libero quam a odio.
+            Quisque eget quam ut nisl ultrices aliquam. Sed auctor efficitur diam, vel aliquam nisl.
+            Nulla facilisi. Nulla facilisi. Nullam consectetur, enim vitae lacinia commodo, dolor
+            risus ultricies nisl, sed ullamcorper lorem nunc nec enim. Nullam euismod, nisl eget
+            ultricies aliquam, augue nunc ultrices ipsum, sit amet tincidunt eros nunc vel tellus.
+            Morbi eget nunc auctor, sagittis dolor quis, ultricies libero. Nullam imperdiet, velit
+            non commodo ullamcorper, diam nisl faucibus nisi, eu ultrices libero quam a odio.
+            Quisque eget quam ut nisl ultrices aliquam. Sed auctor efficitur diam, vel aliquam nisl.
+            Nulla facilisi. Nulla facilisi. Nullam consectetur, enim vitae
+          </Text>
+
+          <Text>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisl eget
+            ultricies aliquam, augue nunc ultrices ipsum, sit amet tincidunt eros nunc vel tellus.
+            Morbi eget nunc auctor, sagittis dolor quis, ultricies libero. Nullam imperdiet, velit
+            non commodo ullamcorper, diam nisl faucibus nisi, eu ultrices libero quam a odio.
+            Quisque eget quam ut nisl ultrices aliquam. Sed auctor efficitur diam, vel aliquam nisl.
+            Nulla facilisi. Nulla facilisi. Nullam consectetur, enim vitae lacinia commodo, dolor
+            risus ultricies nisl, sed ullamcorper lorem nunc nec enim. Nullam euismod, nisl eget
+            ultricies aliquam, augue nunc ultrices ipsum, sit amet tincidunt eros nunc vel tellus.
+            Morbi eget nunc auctor, sagittis dolor quis, ultricies libero. Nullam imperdiet, velit
+            non commodo ullamcorper, diam nisl faucibus nisi, eu ultrices libero quam a odio.
+            Quisque eget quam ut nisl ultrices aliquam. Sed auctor efficitur diam, vel aliquam nisl.
+            Nulla facilisi. Nulla facilisi. Nullam consectetur, enim vitae
+          </Text>
+
+          <Text>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisl eget
+            ultricies aliquam, augue nunc ultrices ipsum, sit amet tincidunt eros nunc vel tellus.
+            Morbi eget nunc auctor, sagittis dolor quis, ultricies libero. Nullam imperdiet, velit
+            non commodo ullamcorper, diam nisl faucibus nisi, eu ultrices libero quam a odio.
+            Quisque eget quam ut nisl ultrices aliquam. Sed auctor efficitur diam, vel aliquam nisl.
+            Nulla facilisi. Nulla facilisi. Nullam consectetur, enim vitae lacinia commodo, dolor
+            risus ultricies nisl, sed ullamcorper lorem nunc nec enim. Nullam euismod, nisl eget
+            ultricies aliquam, augue nunc ultrices ipsum, sit amet tincidunt eros nunc vel tellus.
+            Morbi eget nunc auctor, sagittis dolor quis, ultricies libero. Nullam imperdiet, velit
+            non commodo ullamcorper, diam nisl faucibus nisi, eu ultrices libero quam a odio.
+            Quisque eget quam ut nisl ultrices aliquam. Sed auctor efficitur diam, vel aliquam nisl.
+            Nulla facilisi. Nulla facilisi. Nullam consectetur, enim vitae
+          </Text>
+
           <TourStep name="step-2">
             <Box
               height="fit-content"
@@ -168,6 +258,21 @@ const TourTemplate = () => {
           <TourStep name="step-3">
             <Button>Highlight me</Button>
           </TourStep>
+
+          <Text>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisl eget
+            ultricies aliquam, augue nunc ultrices ipsum, sit amet tincidunt eros nunc vel tellus.
+            Morbi eget nunc auctor, sagittis dolor quis, ultricies libero. Nullam imperdiet, velit
+            non commodo ullamcorper, diam nisl faucibus nisi, eu ultrices libero quam a odio.
+            Quisque eget quam ut nisl ultrices aliquam. Sed auctor efficitur diam, vel aliquam nisl.
+            Nulla facilisi. Nulla facilisi. Nullam consectetur, enim vitae lacinia commodo, dolor
+            risus ultricies nisl, sed ullamcorper lorem nunc nec enim. Nullam euismod, nisl eget
+            ultricies aliquam, augue nunc ultrices ipsum, sit amet tincidunt eros nunc vel tellus.
+            Morbi eget nunc auctor, sagittis dolor quis, ultricies libero. Nullam imperdiet, velit
+            non commodo ullamcorper, diam nisl faucibus nisi, eu ultrices libero quam a odio.
+            Quisque eget quam ut nisl ultrices aliquam. Sed auctor efficitur diam, vel aliquam nisl.
+            Nulla facilisi. Nulla facilisi. Nullam consectetur, enim vitae
+          </Text>
         </Box>
       </Tour>
     </Box>

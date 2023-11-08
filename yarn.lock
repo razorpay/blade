@@ -24851,6 +24851,11 @@ schema-utils@^3.2.0:
     ajv "^6.12.5"
     ajv-keywords "^3.5.2"
 
+scrollyfills@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/scrollyfills/-/scrollyfills-1.0.0.tgz#2990faeb80eea2071ee317b362dccd1d6d805f4c"
+  integrity sha512-2Wwwgx5KoAqhmix+q3/HzcJfZm42k5XOcXcXu5L6vsEDxeCcorbSMshZtwQQxqGeowWf3/8RSGVswmwqOB+utw==
+
 select-hose@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/select-hose/-/select-hose-2.0.0.tgz#625d8658f865af43ec962bfc376a37359a4994ca"
