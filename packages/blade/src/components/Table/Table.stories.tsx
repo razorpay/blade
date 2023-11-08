@@ -98,7 +98,6 @@ const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
       backgroundColor="surface.background.level2.lowContrast"
       padding="spacing.5"
       overflow="auto"
-      height="400px"
     >
       <TableComponent
         {...args}
@@ -123,6 +122,7 @@ const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
             </TableToolbarActions>
           </TableToolbar>
         }
+        height="400px"
       >
         {(tableData) => (
           <>

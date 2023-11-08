@@ -6,6 +6,7 @@ import type { MiddlewareFunction } from '@table-library/react-table-library/type
 import type { Identifier } from '@table-library/react-table-library/table';
 import { useSort } from '@table-library/react-table-library/sort';
 import { SelectTypes, useRowSelect } from '@table-library/react-table-library/select';
+import styled from 'styled-components';
 import type { TableContextType } from './TableContext';
 import { TableProvider } from './TableContext';
 import { ComponentIds } from './componentIds';
@@ -13,6 +14,8 @@ import type { TableHeaderCellProps } from './TableHeader';
 import { makeBorderSize, useTheme } from '~utils';
 import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { throwBladeError } from '~utils/logger';
+import type { BoxProps } from '~components/Box';
+import { getBaseBoxStyles } from '~components/Box/BaseBox/baseBoxStyles';
 
 type TableNode = {
   id: Identifier;
@@ -37,6 +40,7 @@ export type TableProps = {
   }) => void;
   sortFunctions?: Record<string, (array: TableNode[]) => TableNode[]>;
   toolbar?: React.ReactElement;
+  height?: BoxProps['height'];
 };
 
 const rowSelectType: Record<NonNullable<TableProps['selectionType']>, SelectTypes> = {
@@ -78,6 +82,18 @@ const getTableHeaderCellCount = (children: (data: []) => React.ReactElement): nu
   return 0;
 };
 
+const StyledReactTable = styled(ReactTable)<{ styledProps?: { height?: BoxProps['height'] } }>(
+  ({ styledProps }) => {
+    const { theme } = useTheme();
+    const styledPropsCSSObject = getBaseBoxStyles({
+      theme,
+      height: styledProps?.height,
+    });
+
+    return styledPropsCSSObject;
+  },
+);
+
 const Table: React.FC<TableProps> = ({
   children,
   data,
@@ -89,6 +105,7 @@ const Table: React.FC<TableProps> = ({
   onSortChange,
   sortFunctions,
   toolbar,
+  height,
 }) => {
   const { theme } = useTheme();
   const [selectedRows, setSelectedRows] = React.useState<TableNode['id'][]>([]);
@@ -109,10 +126,15 @@ const Table: React.FC<TableProps> = ({
     `,
     Footer: `
     .tr-footer th {
-      position: ${isFooterSticky ? `sticky` : undefined};
-      bottom: ${isFooterSticky ? `0` : undefined};
+      position: ${isFooterSticky ? 'sticky' : 'relative'};
+      bottom: ${isFooterSticky ? '0' : undefined};
     };
     `,
+    Header: `
+    .tr-header th {
+      position: ${isHeaderSticky ? 'sticky' : 'relative'};
+      top: ${isHeaderSticky ? '0' : undefined};
+    };`,
   });
 
   useEffect(() => {
@@ -236,15 +258,19 @@ const Table: React.FC<TableProps> = ({
     <TableProvider value={tableContext}>
       <>
         {toolbar}
-        <ReactTable
+        <StyledReactTable
           layout={{ fixedHeader: isHeaderSticky, horizontalScroll: true }}
           data={data}
+          // @ts-expect-error ignore this, theme clashes with styled-component's theme. We're using useTheme from blade to get actual theme
           theme={tableTheme}
           select={selectionType ? rowSelectConfig : null}
           sort={sort}
+          styledProps={{
+            height,
+          }}
         >
           {children}
-        </ReactTable>
+        </StyledReactTable>
       </>
     </TableProvider>
   );
