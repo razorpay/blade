@@ -57,6 +57,7 @@ const useStackblitzSetup = ({
         'vite.config.ts': viteConfigTS,
         'tsconfig.json': tsConfigJSON,
         'package.json': vitePackageJSON,
+        '.npmrc': `auto-install-peers = false`,
       },
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps

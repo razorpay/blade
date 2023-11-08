@@ -5,7 +5,7 @@ import type { ReactElement } from 'react';
 import type { AlertProps } from './Alert';
 import { Alert as AlertComponent } from './Alert';
 import BaseBox from '~components/Box/BaseBox';
-import { Sandbox } from '~utils/storybook/Sandbox/StackblitzEditor/Sandbox';
+import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
