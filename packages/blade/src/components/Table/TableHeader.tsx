@@ -105,6 +105,7 @@ const StyledHeaderCell = styled(HeaderCell)(({ theme }) => ({
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'space-between',
+      height: '100%',
       paddingTop: makeSpace(getIn(theme, tableHeader.paddingTop)),
       paddingBottom: makeSpace(getIn(theme, tableHeader.paddingBottom)),
       paddingLeft: makeSpace(getIn(theme, tableHeader.paddingLeft)),
