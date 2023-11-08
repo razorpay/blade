@@ -9,6 +9,7 @@ import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
+import { useTheme } from '~utils';
 
 export default {
   title: 'Components/Table',
@@ -93,6 +94,8 @@ const data = {
 };
 
 const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
+  const { platform } = useTheme();
+  const onMobile = platform === 'onMobile';
   return (
     <Box
       backgroundColor="surface.background.level2.lowContrast"
@@ -115,10 +118,10 @@ const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
         toolbar={
           <TableToolbar>
             <TableToolbarActions>
-              <Button variant="secondary" marginRight="spacing.2">
+              <Button variant="secondary" marginRight="spacing.2" isFullWidth={onMobile}>
                 Export
               </Button>
-              <Button>Payout</Button>
+              <Button isFullWidth={onMobile}>Payout</Button>
             </TableToolbarActions>
           </TableToolbar>
         }

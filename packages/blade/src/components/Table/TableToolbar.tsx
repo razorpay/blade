@@ -9,15 +9,27 @@ import { Text } from '~components/Typography';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { Divider } from '~components/Divider';
 import { Link } from '~components/Link';
-import { makeMotionTime } from '~utils';
+import { getStyledProps } from '~components/Box/styledProps';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
+import { makeMotionTime, useTheme } from '~utils';
 
 type TableToolbarActionsProps = {
   children?: React.ReactNode;
-};
+} & StyledPropsBlade;
 
-const TableToolbarActions = ({ children }: TableToolbarActionsProps): React.ReactElement => {
+const TableToolbarActions = ({
+  children,
+  ...styledProps
+}: TableToolbarActionsProps): React.ReactElement => {
+  const { platform } = useTheme();
+  const onMobile = platform === 'onMobile';
   return (
-    <BaseBox display="flex" flex={1} justifyContent="flex-end">
+    <BaseBox
+      display="flex"
+      flex={onMobile ? 1 : 0}
+      justifyContent={onMobile ? 'flex-start' : 'flex-end'}
+      {...getStyledProps(styledProps)}
+    >
       {children}
     </BaseBox>
   );
@@ -36,12 +48,21 @@ type TableToolbarProps = {
 
 const _TableToolbar = ({ children, title }: TableToolbarProps): React.ReactElement => {
   const { selectedRows, deselectAllRows } = useTableContext();
+  const { platform } = useTheme();
   const isSelected = selectedRows && selectedRows.length > 0;
   const defaultTitle = 'Showing 1-10 Items'; // TODO: Use pagination data to show correct title
   const selectedItemsCount = selectedRows ? selectedRows.length : 0;
   const selectedTitle = isSelected
     ? `${selectedRows.length} ${selectedItemsCount === 1 ? 'Item' : 'Items'} Selected`
     : null;
+
+  const onMobile = platform === 'onMobile';
+
+  const deselectButton = (
+    <Link marginLeft="spacing.5" variant="button" onClick={() => deselectAllRows()}>
+      Deselect
+    </Link>
+  );
 
   return (
     <ToolbarWrapper
@@ -50,17 +71,25 @@ const _TableToolbar = ({ children, title }: TableToolbarProps): React.ReactEleme
         isSelected ? tableToolbar.backgroundColorSelected : tableToolbar.backgroundColor
       }
       padding="spacing.4"
+      flexWrap="wrap"
+      flexDirection={onMobile ? 'column' : 'row'}
+      gap="spacing.5"
     >
-      <BaseBox display="flex" flex={1} alignItems="center">
-        <Text size="medium" weight="bold">
-          {selectedTitle ?? title ?? defaultTitle}
-        </Text>
-        {isSelected && (
-          <BaseBox display="flex" marginLeft="spacing.5" flex={1} height="100%">
+      <BaseBox display="flex" alignItems="center" flex={1}>
+        <BaseBox>
+          <Text size="medium" weight="bold">
+            {selectedTitle ?? title ?? defaultTitle}
+          </Text>
+        </BaseBox>
+        {isSelected && !onMobile && (
+          <BaseBox display="flex" marginLeft="spacing.5" height="100%">
             <Divider orientation="vertical" thickness="thick" />
-            <Link marginLeft="spacing.5" variant="button" onClick={() => deselectAllRows()}>
-              Deselect
-            </Link>
+            {deselectButton}
+          </BaseBox>
+        )}
+        {isSelected && onMobile && (
+          <BaseBox display="flex" flex={1} justifyContent="flex-end">
+            {deselectButton}
           </BaseBox>
         )}
       </BaseBox>
