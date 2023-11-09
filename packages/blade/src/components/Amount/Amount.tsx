@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react';
 import React from 'react';
-import { formatAmountByParts, getCurrencySymbol } from 'i18nify';
+import { formatNumberByParts, getCurrencySymbol } from 'i18nify';
 import type { Currency } from './amountTokens';
 import {
   amountFontSizes,
@@ -117,7 +117,7 @@ const AmountValue = ({
   const affixFontSize = isAffixSubtle ? affixFontSizes[size] : amountFontSizes[size];
   const valueForWeight = size.includes('bold') || size.startsWith('title') ? 'bold' : 'regular';
   if (suffix === 'decimals' && isAffixSubtle) {
-    const formattedAmountByParts = formatAmountByParts(currency, value, locale);
+    const formattedAmountByParts = formatNumberByParts(value, { locale, currency });
 
     // Native does not support alignItems of Text inside a div, insted we need to wrap is in a Text
     const AmountWrapper = getPlatformType() === 'react-native' ? BaseText : React.Fragment;
@@ -254,7 +254,7 @@ const _Amount = ({
   }
 
   const currencyPrefix = prefix === 'currency-symbol' ? getCurrencySymbol(currency) : currency;
-  const formattedAmountByParts = formatAmountByParts(currency, value, locale);
+  const formattedAmountByParts = formatNumberByParts(value, { locale, currency });
   const renderedValue =
     suffix === 'decimals' ? value.toString() : formatAmountWithSuffix({ suffix, value, currency });
   const { amountValueColor, affixColor } = getTextColorProps({

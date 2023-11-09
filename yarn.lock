@@ -15706,9 +15706,9 @@ husky@4.2.3:
     slash "^3.0.0"
     which-pm-runs "^1.0.0"
 
-"i18nify@github:razorpay/i18nify#currency-module-deploy":
+"i18nify@github:razorpay/i18nify#currency-module-deploy-09-nov-2023":
   version "1.0.0"
-  resolved "https://codeload.github.com/razorpay/i18nify/tar.gz/107007c3a5a619410fb11232fc5a735d1a96c9fe"
+  resolved "https://codeload.github.com/razorpay/i18nify/tar.gz/fbc9eed0906889e9e1da1ff9f935520ed72549c6"
 
 iconv-lite@0.4.24, iconv-lite@^0.4.24:
   version "0.4.24"
