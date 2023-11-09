@@ -4,6 +4,7 @@ import React from 'react';
 import { Title } from '@storybook/addon-docs';
 import type { StepRenderProps, TourProps, TourSteps } from './types';
 import { TourStep } from './TourStep';
+import { TourFooter } from './TourFooter';
 import { Tour } from '.';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
@@ -181,54 +182,37 @@ const Center = ({ children }: { children: React.ReactNode }): React.ReactElement
   );
 };
 
-const TourFooter = ({
+const CustomTourFooter = ({
   activeStep,
-  goToNext,
-  stopTour,
-  goToPrevious,
   totalSteps,
-}: StepRenderProps): React.ReactElement => {
+  goToNext,
+  goToPrevious,
+  stopTour,
+}: StepRenderProps) => {
   const isLast = activeStep === totalSteps - 1;
   const isFirst = activeStep === 0;
   return (
-    <Box display="flex" justifyContent="space-between" alignItems="center" gap="spacing.7">
-      <Text size="small" weight="bold">
-        {activeStep + 1} / {totalSteps}
-      </Text>
-      <Box display="flex" gap="spacing.4">
-        {!isFirst ? (
-          <Button
-            size="small"
-            variant="secondary"
-            onClick={() => {
-              goToPrevious();
-            }}
-          >
-            Prev
-          </Button>
-        ) : null}
-        {isLast ? (
-          <Button
-            size="small"
-            onClick={() => {
-              // done
-              stopTour();
-            }}
-          >
-            Done
-          </Button>
-        ) : (
-          <Button
-            size="small"
-            onClick={() => {
-              goToNext();
-            }}
-          >
-            Next
-          </Button>
-        )}
-      </Box>
-    </Box>
+    <TourFooter
+      activeStep={activeStep}
+      totalSteps={totalSteps}
+      actions={{
+        primary: isLast
+          ? {
+              text: 'Done',
+              onClick: stopTour,
+            }
+          : {
+              text: 'Next',
+              onClick: goToNext,
+            },
+        secondary: isFirst
+          ? undefined
+          : {
+              text: 'Prev',
+              onClick: goToPrevious,
+            },
+      }}
+    />
   );
 };
 
@@ -252,7 +236,7 @@ const TourTemplate: ComponentStory<(props: StoryControlProps) => React.ReactElem
           );
         },
         placement: args.tourStepsPlacement,
-        footer: TourFooter,
+        footer: CustomTourFooter,
       },
       {
         name: 'step-2',
@@ -267,7 +251,7 @@ const TourTemplate: ComponentStory<(props: StoryControlProps) => React.ReactElem
           );
         },
         placement: 'bottom',
-        footer: TourFooter,
+        footer: CustomTourFooter,
       },
       {
         name: 'step-3',
@@ -281,7 +265,7 @@ const TourTemplate: ComponentStory<(props: StoryControlProps) => React.ReactElem
           );
         },
         placement: 'bottom',
-        footer: TourFooter,
+        footer: CustomTourFooter,
       },
     ],
     [args.tourStepsContent, args.tourStepsPlacement, args.tourStepsTitle],
@@ -390,7 +374,7 @@ export const CustomPlacement = () => {
           );
         },
         placement: 'top',
-        footer: TourFooter,
+        footer: CustomTourFooter,
       },
       {
         name: 'bottom',
@@ -402,7 +386,7 @@ export const CustomPlacement = () => {
           );
         },
         placement: 'bottom',
-        footer: TourFooter,
+        footer: CustomTourFooter,
       },
       {
         name: 'left',
@@ -414,7 +398,7 @@ export const CustomPlacement = () => {
           );
         },
         placement: 'left',
-        footer: TourFooter,
+        footer: CustomTourFooter,
       },
       {
         name: 'right',
@@ -426,7 +410,7 @@ export const CustomPlacement = () => {
           );
         },
         placement: 'right',
-        footer: TourFooter,
+        footer: CustomTourFooter,
       },
     ],
     [],
@@ -515,7 +499,7 @@ export const WithScrollablePage = () => {
           );
         },
         placement: 'bottom',
-        footer: TourFooter,
+        footer: CustomTourFooter,
       },
       {
         name: 'amazon-aws',
@@ -531,7 +515,7 @@ export const WithScrollablePage = () => {
           );
         },
         placement: 'bottom',
-        footer: TourFooter,
+        footer: CustomTourFooter,
       },
       {
         name: 'razorpay-docs',
@@ -547,7 +531,7 @@ export const WithScrollablePage = () => {
           );
         },
         placement: 'left',
-        footer: TourFooter,
+        footer: CustomTourFooter,
       },
     ],
     [],
@@ -712,7 +696,7 @@ export const MultipleTourFlows = () => {
         content: () => {
           return <Text>Flow 1, Step 1</Text>;
         },
-        footer: TourFooter,
+        footer: CustomTourFooter,
       },
       {
         name: 'flow-1-step-2',
@@ -720,7 +704,7 @@ export const MultipleTourFlows = () => {
         content: () => {
           return <Text>Flow 1, Step 2</Text>;
         },
-        footer: TourFooter,
+        footer: CustomTourFooter,
       },
     ],
     [],
@@ -733,7 +717,7 @@ export const MultipleTourFlows = () => {
         content: () => {
           return <Text>Flow 2, Step 1</Text>;
         },
-        footer: TourFooter,
+        footer: CustomTourFooter,
       },
       {
         name: 'flow-2-step-2',
@@ -741,7 +725,7 @@ export const MultipleTourFlows = () => {
         content: () => {
           return <Text>Flow 2, Step 2</Text>;
         },
-        footer: TourFooter,
+        footer: CustomTourFooter,
       },
     ],
     [],

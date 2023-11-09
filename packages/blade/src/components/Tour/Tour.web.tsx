@@ -145,6 +145,18 @@ const Tour = ({
 
   useLockBodyScroll(isOpen);
 
+  // reset the mask size when the tour is closed
+  React.useEffect(() => {
+    if (!isOpen) {
+      setSize({
+        x: 0,
+        y: 0,
+        width: 0,
+        height: 0,
+      });
+    }
+  }, [isOpen]);
+
   const contextValue = useMemo(() => {
     return { attachStep, removeStep };
   }, [attachStep, removeStep]);
