@@ -5,6 +5,7 @@ import filter from 'lodash/filter';
 import type { MiddlewareFunction } from '@table-library/react-table-library/types/common';
 import type { Identifier } from '@table-library/react-table-library/table';
 import { useSort } from '@table-library/react-table-library/sort';
+import { usePagination } from '@table-library/react-table-library/pagination';
 import { SelectTypes, useRowSelect } from '@table-library/react-table-library/select';
 import styled from 'styled-components';
 import type { TableContextType } from './TableContext';
@@ -40,6 +41,7 @@ export type TableProps = {
   }) => void;
   sortFunctions?: Record<string, (array: TableNode[]) => TableNode[]>;
   toolbar?: React.ReactElement;
+  pagination?: React.ReactElement;
   height?: BoxProps['height'];
 };
 
@@ -109,6 +111,7 @@ const Table: React.FC<TableProps> = ({
   onSortChange,
   sortFunctions,
   toolbar,
+  pagination,
   height,
 }) => {
   const { theme } = useTheme();
@@ -222,6 +225,25 @@ const Table: React.FC<TableProps> = ({
     [sort.fns],
   );
 
+  // Pagination
+  const handlePaginationChange: MiddlewareFunction = (action, state) => {
+    console.log('pagination', state);
+  };
+
+  const paginationConfig = usePagination(
+    data,
+    {
+      state: {
+        page: 0,
+        size: 2,
+      },
+      onChange: handlePaginationChange,
+    },
+    {
+      isServer: false,
+    },
+  );
+
   // Toolbar Component
   if (__DEV__) {
     if (toolbar && !isValidAllowedChildren(toolbar, ComponentIds.TableToolbar)) {
@@ -272,9 +294,11 @@ const Table: React.FC<TableProps> = ({
           styledProps={{
             height,
           }}
+          pagination={paginationConfig}
         >
           {children}
         </StyledReactTable>
+        {pagination}
       </>
     </TableProvider>
   );

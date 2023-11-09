@@ -4,6 +4,7 @@ import { Table as TableComponent } from './Table';
 import { TableHeader, TableHeaderRow, TableHeaderCell } from './TableHeader';
 import { TableBody, TableRow, TableCell } from './TableBody';
 import { TableFooter, TableFooterRow, TableFooterCell } from './TableFooter';
+import { TablePagination } from './TablePagination';
 import { TableToolbarActions, TableToolbar } from './TableToolbar';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
@@ -125,7 +126,8 @@ const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
             </TableToolbarActions>
           </TableToolbar>
         }
-        height="400px"
+        pagination={<TablePagination />}
+        // height="400px"
       >
         {(tableData) => (
           <>
