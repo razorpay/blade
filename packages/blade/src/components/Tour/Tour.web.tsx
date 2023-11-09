@@ -132,7 +132,7 @@ const Tour = ({
   // Update the size of the mask when the active step changes
   useIsomorphicLayoutEffect(() => {
     updateMaskSize();
-  }, [activeStep, refIdMap, steps, updateMaskSize]);
+  }, [isOpen, activeStep, refIdMap, steps, updateMaskSize]);
 
   // scroll into view when the active step changes
   // What a time to hit a chrome bug: https://bugs.chromium.org/p/chromium/issues/detail?id=1043933
