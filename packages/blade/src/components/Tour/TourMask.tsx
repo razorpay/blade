@@ -97,6 +97,8 @@ const TourMask = ({ padding, size, isTransitioning }: TourMaskProps): React.Reac
   const borderWidth = theme.spacing[1];
   const borderRadius = theme.spacing[2];
 
+  const isSizeZero = size.width === 0 || size.height === 0;
+
   return (
     <svg
       style={absoluteFill}
@@ -115,21 +117,23 @@ const TourMask = ({ padding, size, isTransitioning }: TourMaskProps): React.Reac
         rx={borderRadius - 1}
         ry={borderRadius - 1}
         fill="transparent"
+        opacity={isSizeZero ? 0 : 1}
       />
 
       <mask id="tour-mask" x={0} y={0} height="100%" width="100%" stroke="none">
         <rect height="100%" width="100%" fill="#fff" />
-        <FadeRect
-          show={!isTransitioning}
-          x={x}
-          y={y}
-          width={width}
-          height={height}
-          rx={borderRadius}
-          ry={borderRadius}
-          fill="#000"
-          fillOpacity={1}
-        />
+        {!isSizeZero && (
+          <FadeRect
+            show={!isTransitioning}
+            x={x}
+            y={y}
+            width={width}
+            height={height}
+            rx={borderRadius}
+            ry={borderRadius}
+            fill="#000"
+          />
+        )}
       </mask>
       <rect
         height="100%"

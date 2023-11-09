@@ -168,9 +168,9 @@ export const decorators = [
           themeTokens={getThemeTokens()}
           colorScheme={context.globals.colorScheme}
         >
-          <StoryCanvas context={context}>
-            <Story />
-          </StoryCanvas>
+          {/* <StoryCanvas context={context}> */}
+          <Story />
+          {/* </StoryCanvas> */}
         </BladeProvider>
       </ErrorBoundary>
     );

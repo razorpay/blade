@@ -18,7 +18,7 @@ import React from 'react';
 import { PopoverContent } from '../Popover/PopoverContent';
 import { ARROW_HEIGHT, ARROW_WIDTH, popoverZIndex } from '../Popover/constants';
 import { PopoverContext } from '../Popover/PopoverContext';
-
+import { transitionDelay } from './tourTokens';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
@@ -93,7 +93,7 @@ const TourPopover = ({
 
   const { isMounted, styles } = useTransitionStyles(context, {
     duration: {
-      open: theme.motion.duration.gentle,
+      open: transitionDelay,
       close: theme.motion.duration.xquick,
     },
     initial: {
@@ -120,7 +120,7 @@ const TourPopover = ({
 
   // https://github.com/floating-ui/floating-ui/discussions/2352#discussioncomment-6044834
   React.useLayoutEffect(() => {
-    setTimeout(() => {
+    window.setTimeout(() => {
       if (!attachTo) return;
       refs.setReference(attachTo.current);
       refs.setPositionReference(attachTo.current);
@@ -129,17 +129,18 @@ const TourPopover = ({
 
   return (
     <PopoverContext.Provider value={contextValue}>
-      {isMounted && (
-        <FloatingPortal>
-          <FloatingFocusManager
-            initialFocus={defaultInitialFocusRef}
-            context={context}
-            modal={true}
-            guards={true}
-          >
+      <FloatingPortal>
+        <FloatingFocusManager
+          disabled={isOpen === false || !isMounted}
+          initialFocus={defaultInitialFocusRef}
+          context={context}
+          modal={true}
+          guards={true}
+        >
+          {isMounted ? (
             <BaseBox
               ref={refs.setFloating}
-              style={floatingStyles}
+              style={{ ...floatingStyles, pointerEvents: isMounted ? 'auto' : 'none' }}
               // TODO: Tokenize zIndex values
               zIndex={zIndex}
               {...getFloatingProps()}
@@ -165,9 +166,11 @@ const TourPopover = ({
                 {content}
               </PopoverContent>
             </BaseBox>
-          </FloatingFocusManager>
-        </FloatingPortal>
-      )}
+          ) : (
+            <></>
+          )}
+        </FloatingFocusManager>
+      </FloatingPortal>
     </PopoverContext.Provider>
   );
 };
