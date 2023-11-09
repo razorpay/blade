@@ -32,6 +32,7 @@ import type { PopoverProps } from '~components/Popover';
 
 type TourPopoverProps = Omit<PopoverProps, 'children' | 'initialFocusRef'> & {
   attachTo: React.RefObject<HTMLElement> | undefined;
+  isTransitioning: boolean;
 };
 
 // TODO: Refactor out Popover/FloatingUI logic to a reusable hook/component later on
@@ -46,6 +47,7 @@ const TourPopover = ({
   zIndex = popoverZIndex,
   isOpen,
   defaultIsOpen,
+  isTransitioning,
 }: TourPopoverProps): React.ReactElement => {
   const { theme } = useTheme();
   const defaultInitialFocusRef = React.useRef<HTMLButtonElement>(null);
@@ -131,7 +133,8 @@ const TourPopover = ({
     <PopoverContext.Provider value={contextValue}>
       <FloatingPortal>
         <FloatingFocusManager
-          disabled={isOpen === false || !isMounted}
+          // TODO: check if isTransitioning is enough since scrolling can take longer
+          disabled={isOpen === false || !isMounted || isTransitioning}
           initialFocus={defaultInitialFocusRef}
           context={context}
           modal={true}

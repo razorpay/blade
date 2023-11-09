@@ -42,7 +42,7 @@ const Tour = ({
   // keep track of when we are transitioning between steps
   const isTransitioning = useIsTransitioningBetweenSteps(activeStep, transitionDelay);
 
-  const currentStepRef = refIdMap.get(steps[delayedActiveStep]?.name);
+  const currentStepRef = refIdMap.get(steps[activeStep]?.name);
   const intersection = useIntersectionObserver(currentStepRef!, {
     threshold: 0.5,
   });
@@ -52,6 +52,14 @@ const Tour = ({
   const currentStepData = useMemo(() => {
     return steps[activeStep];
   }, [activeStep, steps]);
+
+  const goToStep = useCallback(
+    (step: number) => {
+      if (step < 0 || step >= steps.length) return;
+      onStepChange?.(step);
+    },
+    [onStepChange, steps.length],
+  );
 
   const goToNext = useCallback(() => {
     let nextState = activeStep + 1;
@@ -167,6 +175,7 @@ const Tour = ({
         return (
           <TourPopover
             key={step.name}
+            isTransitioning={delayedActiveStep !== activeStep}
             placement={step.placement}
             isOpen={isPopoverVisible}
             onOpenChange={onOpenChange}
@@ -176,6 +185,7 @@ const Tour = ({
               activeStep: delayedActiveStep,
               goToPrevious,
               goToNext,
+              goToStep,
               totalSteps,
               stopTour,
             })}
@@ -183,6 +193,7 @@ const Tour = ({
               activeStep: delayedActiveStep,
               goToPrevious,
               goToNext,
+              goToStep,
               totalSteps,
               stopTour,
             })}
