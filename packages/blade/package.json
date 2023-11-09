@@ -21,7 +21,9 @@
     "tokens.d.ts",
     "tokens.js",
     "utils.d.ts",
-    "utils.js"
+    "utils.js",
+    "fonts",
+    "fonts.css"
   ],
   "keywords": [
     "design system",
