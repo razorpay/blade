@@ -116,35 +116,40 @@ const AmountValue = ({
   const isReactNative = getPlatformType() === 'react-native';
   const affixFontSize = isAffixSubtle ? affixFontSizes[size] : amountFontSizes[size];
   const valueForWeight = size.includes('bold') || size.startsWith('title') ? 'bold' : 'regular';
-  if (suffix === 'decimals' && isAffixSubtle) {
-    const formattedAmountByParts = formatNumberByParts(value, { locale, currency });
+  let formattedAmountByParts = {};
+  try {
+    if (suffix === 'decimals' && isAffixSubtle) {
+      formattedAmountByParts = formatNumberByParts(value, { locale, currency });
 
-    // Native does not support alignItems of Text inside a div, insted we need to wrap is in a Text
-    const AmountWrapper = getPlatformType() === 'react-native' ? BaseText : React.Fragment;
+      // Native does not support alignItems of Text inside a div, insted we need to wrap is in a Text
+      const AmountWrapper = getPlatformType() === 'react-native' ? BaseText : React.Fragment;
 
-    return (
-      <AmountWrapper>
-        <BaseText
-          fontSize={amountFontSizes[size]}
-          fontWeight={valueForWeight}
-          lineHeight={amountLineHeights[size]}
-          color={amountValueColor}
-          as={isReactNative ? undefined : 'span'}
-        >
-          {formattedAmountByParts?.integerValue}
-          {formattedAmountByParts?.separator}
-        </BaseText>
-        <BaseText
-          marginLeft="spacing.1"
-          fontWeight={affixFontWeight}
-          fontSize={affixFontSize}
-          color={affixColor}
-          as={isReactNative ? undefined : 'span'}
-        >
-          {formattedAmountByParts?.decimalValue || '00'}
-        </BaseText>
-      </AmountWrapper>
-    );
+      return (
+        <AmountWrapper>
+          <BaseText
+            fontSize={amountFontSizes[size]}
+            fontWeight={valueForWeight}
+            lineHeight={amountLineHeights[size]}
+            color={amountValueColor}
+            as={isReactNative ? undefined : 'span'}
+          >
+            {formattedAmountByParts?.integerValue}
+            {formattedAmountByParts?.separator}
+          </BaseText>
+          <BaseText
+            marginLeft="spacing.1"
+            fontWeight={affixFontWeight}
+            fontSize={affixFontSize}
+            color={affixColor}
+            as={isReactNative ? undefined : 'span'}
+          >
+            {formattedAmountByParts?.decimalValue || '00'}
+          </BaseText>
+        </AmountWrapper>
+      );
+    }
+  } catch (error) {
+    console.log(error);
   }
   return (
     <BaseText
@@ -253,8 +258,15 @@ const _Amount = ({
     }
   }
 
-  const currencyPrefix = prefix === 'currency-symbol' ? getCurrencySymbol(currency) : currency;
-  const formattedAmountByParts = formatNumberByParts(value, { locale, currency });
+  let currencyPrefix = '';
+  let formattedAmountByParts = {};
+
+  try {
+    currencyPrefix = prefix === 'currency-symbol' ? getCurrencySymbol(currency) : currency;
+    formattedAmountByParts = formatNumberByParts(value, { locale, currency });
+  } catch (err) {
+    console.log(err);
+  }
   const renderedValue =
     suffix === 'decimals' ? value.toString() : formatAmountWithSuffix({ suffix, value, currency });
   const { amountValueColor, affixColor } = getTextColorProps({
