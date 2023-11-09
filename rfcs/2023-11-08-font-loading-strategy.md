@@ -96,6 +96,12 @@ CSR apps can also add preloads to fonts to load them faster
 
 Example: https://stackblitz.com/~/github.com/saurabhdaware/blade-self-hosted-font
 
+#### Difference between loading fonts without preload and with preload
+
+https://github.com/razorpay/blade/assets/30949385/b2b12cbe-2c93-4af9-bc7f-7b94ed36b90b
+
+https://github.com/razorpay/blade/assets/30949385/d468cfc1-c1a9-44ad-9d85-a3ea37320ce7
+
 ### 2. Host fonts on our CDN with css file
 
 Similar to how you install from google font, except we can have `https://cdn.razorpay.com/blade/fonts.css` kind of URL.
@@ -103,6 +109,26 @@ Similar to how you install from google font, except we can have `https://cdn.raz
 ### 3. Load from existing third-party CDN
 
 While Inter can be loaded from [Google Fonts](https://fonts.google.com/specimen/Inter), Tasa Orbiter can be loaded from [CDNFonts](https://www.cdnfonts.com/tasa-orbiter-display.font)
+
+## References
+
+- [Adobe Spectrum Typography](https://spectrum.adobe.com/page/fonts/#Downloading-Spectrum-font-families): They own the fonts and they can be downloaded from adobe console
+  - [Example](https://github.com/adobe/react-spectrum/blob/9ce2f674eab2cc8912800d3162dcf00a1ce94274/.storybook/preview-head.html#L13-L24)
+- [Reshaped](https://reshaped.so/content/docs/getting-started/react/installation#using-fonts): Just gives link to the official font site but does not give recommendation or download fonts
+- [Primer](https://primer.style/react/getting-started): says yolo and uses system fonts only
+
+## Fallbacks
+
+```css
+font-family: 'Tasa Orbiter', -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica
+    Neue, sans-serif;
+
+font-family: 'Inter', -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica
+    Neue, sans-serif;
+
+font-family: “Menlo”, -apple-system, BlinkMacSystemFont, San Francisco Mono, Courier New, Roboto
+    Mono, monospace;
+```
 
 <!--
 
