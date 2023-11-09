@@ -1,17 +1,22 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
 /* eslint-disable consistent-return */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import React from 'react';
-// import { FloatingPortal } from '@floating-ui/react';
-// import type { TourMaskRect, TourProps } from './types';
+import React, { useState, useCallback, useMemo } from 'react';
 import { FloatingPortal } from '@floating-ui/react';
 import { TourContext } from './TourContext';
-// import { TourMask } from './TourMask';
 import { TourPopover } from './TourPopover';
-import { useDelayedState } from './utils';
+import {
+  smoothScroll,
+  useDelayedState,
+  useIntersectionObserver,
+  useIsTransitioningBetweenSteps,
+  useLockBodyScroll,
+} from './utils';
 import type { TourMaskRect, TourProps } from './types';
 import { TourMask } from './TourMask';
-import { usePrevious, useTheme } from '~utils';
-import { useScrollLock } from '~utils/useScrollLock';
+import { transitionDelay } from './tourTokens';
+import { useTheme } from '~utils';
+import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 
 const Tour = ({
   steps,
@@ -23,71 +28,59 @@ const Tour = ({
   children,
 }: TourProps): React.ReactElement => {
   const { theme } = useTheme();
-  const [refIdMap, setRefIdMap] = React.useState(new Map<string, React.RefObject<HTMLElement>>());
-  const [size, setSize] = React.useState<TourMaskRect>({
+  const [refIdMap, setRefIdMap] = useState(new Map<string, React.RefObject<HTMLElement>>());
+  const [size, setSize] = useState<TourMaskRect>({
     x: 0,
     y: 0,
     height: 0,
     width: 0,
   });
-  const transitionDelay = theme.motion.duration.gentle;
+
   // delayed state is used to let the transition finish before reacting to the state changes
   const delayedActiveStep = useDelayedState(activeStep, transitionDelay);
   const delayedSize = useDelayedState(size, transitionDelay);
+  // keep track of when we are transitioning between steps
+  const isTransitioning = useIsTransitioningBetweenSteps(activeStep, transitionDelay);
 
-  const prevActiveStep = usePrevious(activeStep);
-  const [isTransitioning, setIsTransitioning] = React.useState(false);
-
-  // Keep track of when we are transitioning between steps
-  React.useEffect(() => {
-    if (prevActiveStep === undefined) return;
-    setIsTransitioning(true);
-    const timeout = window.setTimeout(() => {
-      setIsTransitioning(false);
-    }, transitionDelay);
-
-    return () => {
-      window.clearTimeout(timeout);
-    };
-  }, [prevActiveStep, transitionDelay]);
+  const currentStepRef = refIdMap.get(steps[delayedActiveStep]?.name);
+  const intersection = useIntersectionObserver(currentStepRef!, {
+    threshold: 0.5,
+  });
 
   // main step logic
-  const getCurrentStep = React.useCallback(() => {
+  const totalSteps = steps.length;
+  const currentStepData = useMemo(() => {
     return steps[activeStep];
   }, [activeStep, steps]);
 
-  const getCurrentStepRef = React.useCallback(() => {
-    return refIdMap.get(steps[activeStep]?.name);
-  }, [activeStep, refIdMap, steps]);
-
-  const goToNext = React.useCallback(() => {
-    let next = activeStep + 1;
-    if (next >= steps.length) {
-      next = steps.length - 1;
+  const goToNext = useCallback(() => {
+    let nextState = activeStep + 1;
+    if (nextState >= steps.length) {
+      nextState = steps.length - 1;
     }
-    onStepChange?.(next);
+    onStepChange?.(nextState);
   }, [activeStep, onStepChange, steps.length]);
 
-  const goToPrevious = React.useCallback(() => {
-    let next = activeStep - 1;
-    if (next < 0) {
-      next = 0;
+  const goToPrevious = useCallback(() => {
+    let nextState = activeStep - 1;
+    if (nextState < 0) {
+      nextState = 0;
     }
-    onStepChange?.(next);
+    onStepChange?.(nextState);
   }, [activeStep, onStepChange]);
 
-  const stopTour = React.useCallback(() => {
+  const stopTour = useCallback(() => {
     onFinish?.();
   }, [onFinish]);
 
-  const attachStep = React.useCallback((id: string, ref: React.RefObject<HTMLElement>) => {
+  const attachStep = useCallback((id: string, ref: React.RefObject<HTMLElement>) => {
     if (!ref) return;
     setRefIdMap((prev) => {
       return new Map(prev).set(id, ref);
     });
   }, []);
 
-  const removeStep = React.useCallback((id: string) => {
+  const removeStep = useCallback((id: string) => {
     setRefIdMap((prev) => {
       const newMap = new Map(prev);
       newMap.delete(id);
@@ -95,24 +88,7 @@ const Tour = ({
     });
   }, []);
 
-  const scrollLockRef = useScrollLock({
-    enabled: true,
-    reserveScrollBarGap: true,
-  });
-
-  React.useEffect(() => {
-    const lockRef = scrollLockRef.current;
-    if (isOpen) {
-      lockRef.activate();
-    } else {
-      lockRef.deactivate();
-    }
-    return () => {
-      lockRef.deactivate();
-    };
-  }, [isOpen, scrollLockRef]);
-
-  const updateMaskSize = React.useCallback(() => {
+  const updateMaskSize = useCallback(() => {
     const ref = refIdMap.get(steps[activeStep]?.name);
     if (!ref?.current) return;
 
@@ -125,59 +101,45 @@ const Tour = ({
     });
   }, [activeStep, refIdMap, steps]);
 
-  // update the size of the mask when the active step changes
-  React.useLayoutEffect(() => {
-    updateMaskSize();
-  }, [activeStep, refIdMap, steps, updateMaskSize]);
-
-  const scrollToTarget = React.useCallback(() => {
+  const scrollToStep = useCallback(() => {
     const ref = refIdMap.get(steps[delayedActiveStep]?.name);
     if (!ref?.current) return;
 
-    const element = ref.current;
-    window.setTimeout(() => {
-      element.scrollIntoView({
-        behavior: 'smooth',
-        block: 'center',
-        inline: 'center',
+    // If the element is already in view, don't scroll
+    if (intersection?.isIntersecting) return;
+
+    smoothScroll(ref.current, {
+      behavior: 'smooth',
+      block: 'center',
+      inline: 'center',
+    })
+      .then(() => {
+        updateMaskSize();
+      })
+      .finally(() => {
+        // do nothing
       });
-    }, transitionDelay);
-  }, [delayedActiveStep, refIdMap, steps, transitionDelay]);
+  }, [delayedActiveStep, refIdMap, steps, updateMaskSize, intersection?.isIntersecting]);
+
+  // Update the size of the mask when the active step changes
+  useIsomorphicLayoutEffect(() => {
+    updateMaskSize();
+  }, [activeStep, refIdMap, steps, updateMaskSize]);
 
   // scroll into view when the active step changes
   // What a time to hit a chrome bug: https://bugs.chromium.org/p/chromium/issues/detail?id=1043933
-  React.useEffect(() => {
-    scrollToTarget();
-    // if (!element) return;
-    // const offset = 100;
-    // const bodyRect = document.body.getBoundingClientRect().top;
-    // const targetRect = element.getBoundingClientRect().top;
-    // const targetPosition = targetRect - bodyRect;
-    // const offsetPosition = targetPosition - offset;
-    // console.log(offsetPosition);
+  useIsomorphicLayoutEffect(() => {
+    setTimeout(() => {
+      if (isTransitioning) return;
+      scrollToStep();
+    }, transitionDelay);
+  }, [isOpen, scrollToStep, isTransitioning]);
 
-    // scrollTo(offsetPosition)
-    //   .then(() => {
-    //     console.log('DONE');
-    //     const rect = element.getBoundingClientRect();
-    //     setSize({
-    //       x: rect.x,
-    //       y: rect.y,
-    //       width: rect.width,
-    //       height: rect.height,
-    //     });
-    //   })
-    //   .catch((err) => {
-    //     console.log('scrollElementTo', err);
-    //   });
-  }, [scrollToTarget]);
+  useLockBodyScroll(isOpen);
 
-  const contextValue = React.useMemo(() => {
+  const contextValue = useMemo(() => {
     return { attachStep, removeStep };
   }, [attachStep, removeStep]);
-
-  const currentStepData = React.useMemo(() => getCurrentStep(), [getCurrentStep]);
-  const totalSteps = steps.length;
 
   return (
     <TourContext.Provider value={contextValue}>
@@ -192,16 +154,15 @@ const Tour = ({
       </FloatingPortal>
 
       {steps.map((step) => {
+        const isStepActive = currentStepData.name === step.name;
+        const attachTo = isStepActive ? currentStepRef : undefined;
         // 1. only show popover if the tour is opened
         // 2. only show the popover if the step is active
         // 3. do not show the popover if we are transitioning between steps
         //    this ensures popover suddenly doesn't jump to the next step,
         //    instead it waits for the transition to finish
-        const isPopoverVisible =
-          activeStep === delayedActiveStep &&
-          isOpen &&
-          currentStepData.name === step.name &&
-          !isTransitioning;
+        const isPopoverVisible = isOpen && isStepActive && !isTransitioning;
+
         return (
           <TourPopover
             key={step.name}
@@ -224,7 +185,7 @@ const Tour = ({
               totalSteps,
               stopTour,
             })}
-            attachTo={currentStepData.name === step.name ? getCurrentStepRef() : undefined}
+            attachTo={attachTo}
           />
         );
       })}

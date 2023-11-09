@@ -254,7 +254,6 @@ const TourTemplate = () => {
               World
             </Box>
           </TourStep>
-
           <TourStep name="step-3">
             <Button>Highlight me</Button>
           </TourStep>
