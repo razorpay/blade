@@ -2,6 +2,7 @@
 import type { Meta, ComponentStory } from '@storybook/react';
 import React from 'react';
 import { Title } from '@storybook/addon-docs';
+import isChromatic from 'chromatic';
 import type { StepRenderProps, TourProps, TourSteps } from './types';
 import { TourStep } from './TourStep';
 import { TourFooter } from './TourFooter';
@@ -260,7 +261,8 @@ const CustomTourFooter = ({
 
 const TourTemplate: ComponentStory<(props: StoryControlProps) => React.ReactElement> = (args) => {
   const [activeStep, setActiveStep] = React.useState(0);
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = React.useState(!!isChromatic());
+
   const steps = React.useMemo<TourSteps>(
     () => [
       {
