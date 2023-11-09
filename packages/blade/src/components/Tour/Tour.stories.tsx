@@ -29,16 +29,58 @@ const Page = (): React.ReactElement => {
       }}
     >
       <Title>Usage</Title>
-      <Sandbox showConsole>
+      <Sandbox>
         {`
-        import { Tour, Button } from '@razorpay/blade/components'
+        import React from 'react';
+        import { Tour, TourStep, TourFooter, Box, Text, Button } from '@razorpay/blade/components';
         
         function App(): React.ReactElement {
+          const [activeStep, setActiveStep] = React.useState(0);
+          const [isOpen, setIsOpen] = React.useState(false);
+        
           return (
-            <Popover content="Hello world" placement="bottom">
-              <Button>Hover over me</Button>
-            </Popover>
-          )
+            <Box>
+              <Button
+                marginBottom="spacing.9"
+                onClick={() => {
+                  setIsOpen((prev) => !prev);
+                }}
+              >
+                {isOpen ? 'Tour In Progress' : 'Start Tour'}
+              </Button>
+              <Tour
+                steps={steps}
+                isOpen={isOpen}
+                activeStep={activeStep}
+                onFinish={() => {
+                  console.log('finished');
+                  setActiveStep(0);
+                  setIsOpen(false);
+                }}
+                onOpenChange={({ isOpen }) => {
+                  console.log('open change', isOpen);
+                  setIsOpen(isOpen);
+                }}
+                onStepChange={(step) => {
+                  console.log('step change', step);
+                  setActiveStep(step);
+                }}
+              >
+                <Box width="100%" display="flex" gap="spacing.4">
+                  <TourStep name="step-1">
+                    <Box padding="spacing.4" backgroundColor="brand.gray.400.lowContrast">
+                      <Text>Step 1 </Text>
+                    </Box>
+                  </TourStep>
+                  <TourStep name="step-2">
+                    <Box padding="spacing.4" backgroundColor="brand.gray.400.lowContrast">
+                      <Text>Step 2 </Text>
+                    </Box>
+                  </TourStep>
+                </Box>
+              </Tour>
+            </Box>
+          );
         }
 
         export default App;
