@@ -108,6 +108,7 @@ const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
         data={data}
         onSelectionChange={({ values }) => console.log('Selected Rows:', values)}
         sortFunctions={{
+          ID: (array) => array.sort((a, b) => a.id.localeCompare(b.id)),
           TASK: (array) => array.sort((a, b) => a.name.localeCompare(b.name)),
           DEADLINE: (array) => array.sort((a, b) => a.deadline.getTime() - b.deadline.getTime()),
           TYPE: (array) => array.sort((a, b) => a.type.localeCompare(b.type)),
@@ -126,13 +127,14 @@ const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
             </TableToolbarActions>
           </TableToolbar>
         }
-        pagination={<TablePagination />}
+        pagination={<TablePagination onPageChange={console.log} defaultPageSize={2} />}
         // height="400px"
       >
         {(tableData) => (
           <>
             <TableHeader>
               <TableHeaderRow>
+                <TableHeaderCell headerKey="ID">ID</TableHeaderCell>
                 <TableHeaderCell headerKey="TASK">Task</TableHeaderCell>
                 <TableHeaderCell headerKey="DEADLINE">Deadline</TableHeaderCell>
                 <TableHeaderCell headerKey="TYPE">Type</TableHeaderCell>
@@ -142,6 +144,7 @@ const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
             <TableBody>
               {tableData.map((tableItem, index) => (
                 <TableRow key={index} item={tableItem}>
+                  <TableCell>{tableItem.id}</TableCell>
                   <TableCell>{tableItem.name}</TableCell>
                   <TableCell>
                     {tableItem.deadline?.toLocaleDateString('en-US', {
@@ -158,6 +161,7 @@ const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
             <TableFooter>
               <TableFooterRow>
                 {args.selectionType === 'multiple' && <TableFooterCell>-</TableFooterCell>}
+                <TableFooterCell>-</TableFooterCell>
                 <TableFooterCell>-</TableFooterCell>
                 <TableFooterCell>-</TableFooterCell>
                 <TableFooterCell>-</TableFooterCell>

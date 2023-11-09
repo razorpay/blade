@@ -227,7 +227,7 @@ const Table: React.FC<TableProps> = ({
 
   // Pagination
   const handlePaginationChange: MiddlewareFunction = (action, state) => {
-    console.log('pagination', state);
+    console.log('pagination', action, state);
   };
 
   const paginationConfig = usePagination(
@@ -242,6 +242,26 @@ const Table: React.FC<TableProps> = ({
     {
       isServer: false,
     },
+  );
+  const currentPaginationState = useMemo(() => {
+    return {
+      page: paginationConfig.state.page,
+      size: paginationConfig.state.size,
+    };
+  }, [paginationConfig.state]);
+
+  const setPaginationPage = useCallback(
+    (page: number): void => {
+      paginationConfig.fns.onSetPage(page);
+    },
+    [paginationConfig.fns],
+  );
+
+  const setPaginationRowSize = useCallback(
+    (size: number): void => {
+      paginationConfig.fns.onSetSize(size);
+    },
+    [paginationConfig.fns],
   );
 
   // Toolbar Component
@@ -266,6 +286,9 @@ const Table: React.FC<TableProps> = ({
       rowDensity,
       toggleSort,
       currentSortedState,
+      setPaginationPage,
+      setPaginationRowSize,
+      currentPaginationState,
     }),
     [
       selectionType,
@@ -277,6 +300,9 @@ const Table: React.FC<TableProps> = ({
       rowDensity,
       toggleSort,
       currentSortedState,
+      setPaginationPage,
+      setPaginationRowSize,
+      currentPaginationState,
     ],
   );
 

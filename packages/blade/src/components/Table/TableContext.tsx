@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
+// eslint-disable-next-line @typescript-eslint/no-empty-function
 import React from 'react';
 import type { TableNode } from '@table-library/react-table-library/table';
 import type { TableProps } from './Table';
@@ -16,25 +18,29 @@ export type TableContextType = {
     isSortReversed: boolean;
     sortableColumns?: string[];
   };
+  setPaginationPage: (page: number) => void;
+  setPaginationRowSize: (size: number) => void;
+  currentPaginationState?: {
+    page: number;
+    size: number;
+  };
 };
 
 const TableContext = React.createContext<TableContextType>({
   selectionType: undefined,
   selectedRows: undefined,
   totalItems: 0,
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
   toggleRowSelectionById: () => {},
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
   toggleAllRowsSelection: () => {},
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
   deselectAllRows: () => {},
   rowDensity: 'normal',
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
   toggleSort: () => {},
   currentSortedState: {
     sortKey: '',
     isSortReversed: false,
   },
+  setPaginationPage: () => {},
+  setPaginationRowSize: () => {},
 });
 const TableProvider = TableContext.Provider;
 
