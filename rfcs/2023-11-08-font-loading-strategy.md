@@ -65,7 +65,7 @@ Ideally TasaOrbiter should be used as Variable Font (32kb compared to ~100kb of 
 ```css
 @font-face {
   font-family: 'TasaOrbiter';
-  src: url('/fonts/tasa-orbiter/TASAOrbiterVF.woff2') format('woff2-variations');
+  src: url('/fonts/TASAOrbiterVF.woff2') format('woff2-variations');
   font-weight: 125 950;
   font-stretch: 75% 125%;
   font-style: normal;
@@ -73,17 +73,25 @@ Ideally TasaOrbiter should be used as Variable Font (32kb compared to ~100kb of 
 
 @font-face {
   font-family: 'Inter';
-  src: url('/fonts/inter/Inter-Regular.ttf') format('truetype');
+  src: url('/fonts/Inter-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Inter';
-  src: url('/fonts/inter/Inter-SemiBold.ttf') format('truetype');
+  src: url('/fonts/Inter-SemiBold.ttf') format('truetype');
   font-weight: 600;
   font-style: normal;
 }
+```
+
+CSR apps can also add preloads to fonts to load them faster
+
+```html
+<link rel="preload" href="/fonts/TASAOrbiterVF.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/Inter-Regular.ttf" as="font" type="font/ttf" crossorigin />
+<link rel="preload" href="/fonts/Inter-SemiBold.ttf" as="font" type="font/ttf" crossorigin />
 ```
 
 Example: https://stackblitz.com/~/github.com/saurabhdaware/blade-self-hosted-font
