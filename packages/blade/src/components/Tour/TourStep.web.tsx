@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable consistent-return */
 import React from 'react';
 import { useTourContext } from './TourContext';
@@ -18,8 +19,10 @@ const _TourStep = ({ name, children }: TourStepProps): React.ReactElement => {
   }, [ref, attachStep, name, removeStep]);
 
   const child = children as React.ReactElement;
-  // TODO: check ref
-  return React.cloneElement(child, { ...child.props, ref: mergeRefs(ref, child.props?.ref) });
+  return React.cloneElement(child, {
+    ...child.props,
+    ref: mergeRefs(ref, (child as any)?.ref),
+  });
 };
 
 const TourStep = React.memo(_TourStep);
