@@ -37,23 +37,11 @@ type Step = {
   /**
    * Content of the Popover
    */
-  content: ({
-    goToNext,
-    goToPrevious,
-    stopTour,
-    activeStep,
-    totalSteps,
-  }: StepRenderProps) => React.ReactElement;
+  content: (props: StepRenderProps) => React.ReactElement;
   /**
    * Footer content
    */
-  footer?: ({
-    goToNext,
-    goToPrevious,
-    stopTour,
-    activeStep,
-    totalSteps,
-  }: StepRenderProps) => React.ReactNode;
+  footer?: (props: StepRenderProps) => React.ReactNode;
   /**
    * Popover title
    */

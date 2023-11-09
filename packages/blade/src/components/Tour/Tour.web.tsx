@@ -42,7 +42,7 @@ const Tour = ({
   // keep track of when we are transitioning between steps
   const isTransitioning = useIsTransitioningBetweenSteps(activeStep, transitionDelay);
 
-  const currentStepRef = refIdMap.get(steps[delayedActiveStep]?.name);
+  const currentStepRef = refIdMap.get(steps[activeStep]?.name);
   const intersection = useIntersectionObserver(currentStepRef!, {
     threshold: 0.5,
   });
@@ -175,6 +175,7 @@ const Tour = ({
         return (
           <TourPopover
             key={step.name}
+            isTransitioning={delayedActiveStep !== activeStep}
             placement={step.placement}
             isOpen={isPopoverVisible}
             onOpenChange={onOpenChange}
