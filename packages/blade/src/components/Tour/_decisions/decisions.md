@@ -36,6 +36,12 @@ The Tour component is used to provide context as well as enable users to take ce
 - [x] **Tour:** A guided tour with multiple steps
 - [x] **Masking:** Mask the rest of the page except the highlighted element.
 
+## Components
+
+- **Tour:** A guided tour with multiple steps
+- **TourStep:** An enhancer component which is used to wrap the element that needs to be highlighted with an unique identifier.
+- **TourFooter:** An opt in component which you can use to compose footer which has predefined button placements with consistent spacing as defined in figma.
+
 ## Basic Usage Structure
 
 With Tour component, you can specify an array of steps with a `name` prop for each step, and then use the `TourStep` component to wrap the element that needs to be highlighted with the same `name` prop.
@@ -54,7 +60,7 @@ const steps = [
     name: 'step-1',
     title: 'Step 1',
     content: () => <Text>Some content for step 1</Text>,
-    footer: () => <Text>Footer for step 1</Text>,
+    footer: (props) => <TourFooter {...props} actions={{}} />
   },
   // ...more steps
 ];
@@ -168,23 +174,57 @@ type TourStepProps = {
 
 Note that, in order for TourStep to work properly it needs access to it's children ref, so the children should expose a ref.
 
+### `TourFooter` API
+
+TourFooter is an opt in component which you can use to compose footer which has predefined button placements with consistent spacing as defined in figma. 
+
+You can either use this (recommended) or compose your own footer component as per your product usecase.
+
+It'll have similar API like Alert's `actions`, and will have subset of props from the `Button` component.
+
+```jsx
+type TourFooterAction = {
+  text?: string;
+  variant?: 'primary' | 'secondary' | 'tertiary';
+  icon?: IconComponent;
+  iconPosition?: 'left' | 'right';
+  isDisabled?: boolean;
+  isLoading?: boolean;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+};
+
+type TourFooterProps = {
+  activeStep: number;
+  totalSteps: number;
+  actions: {
+    primary?: TourFooterAction;
+    secondary?: TourFooterAction;
+  };
+};
+```
+
 ## Usage
 
 ```jsx
-import { Tour } from '@razorpay/blade/components';
+import { Tour, TourFooter } from '@razorpay/blade/components';
 import type { TourSteps } from '@razorpay/blade/components';
 
-const Footer = ({ gotToNext, goToPrev, stopTour, activeStep, totalStep }) => {
-  const isLast = activeStep === totalStep;
+const Footer = ({ activeStep, totalSteps, goToNext, goToPrevious, stopTour }) => {
+  const isLast = activeStep === totalSteps - 1;
   const isFirst = activeStep === 0;
   return (
-    <Box>
-      <Text>
-        {activeStep} / {totalStep}
-      </Text>
-      {!isFirst && <Button onClick={gotToNext}>Prev</Button>}
-      {isLast ? <Button onClick={stopTour}>Done</Button> : <Button onClick={goToPrev}>Next</Button>}
-    </Box>
+    <TourFooter
+      activeStep={activeStep}
+      totalSteps={totalSteps}
+      actions={{
+        primary: isLast
+          ? { text: 'Done', onClick: stopTour }
+          : { text: 'Next', onClick: goToNext },
+        secondary: isFirst
+          ? undefined
+          : { text: 'Prev', onClick: goToPrevious },
+      }}
+    />
   );
 };
 
