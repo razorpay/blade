@@ -130,6 +130,7 @@ const Tour = ({
   // What a time to hit a chrome bug: https://bugs.chromium.org/p/chromium/issues/detail?id=1043933
   useIsomorphicLayoutEffect(() => {
     setTimeout(() => {
+      if (!isOpen) return;
       if (isTransitioning) return;
       scrollToStep();
     }, transitionDelay);
