@@ -315,7 +315,12 @@ const TourTemplate: ComponentStory<(props: StoryControlProps) => React.ReactElem
           setActiveStep(step);
         }}
       >
-        <Box display="flex" gap="spacing.4" alignItems="stretch">
+        <Box
+          display="flex"
+          flexDirection={{ base: 'column', m: 'row' }}
+          gap="spacing.4"
+          alignItems="stretch"
+        >
           <TourStep name="step-1">
             <Box width="100%">
               <Card width="100%" height="100%">
