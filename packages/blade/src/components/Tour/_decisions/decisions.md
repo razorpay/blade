@@ -124,7 +124,7 @@ type TourProps = {
    */
   onOpenChange: ({ isOpen: boolean }) => void;
   /**
-   * Callback which fires when the tour has reached the last step.
+   * Callback which fires `stopTour` is called from `steps` render prop.
    */
   onFinish: () => void;
   /**
@@ -193,9 +193,7 @@ const steps: TourSteps = [
     name: 'step-1',
     title: 'Step 1',
     content: ({ activeStep }) => (
-      <Box>
-        <Text>Some content {activeStep}</Text>
-      </Box>
+      <Text>Some content {activeStep}</Text>
     ),
     footer: Footer,
   },
@@ -203,9 +201,7 @@ const steps: TourSteps = [
     name: 'step-2',
     title: 'Step 2',
     content: ({ activeStep }) => (
-      <Box>
-        <Text>Some content {activeStep}</Text>
-      </Box>
+      <Text>Some content {activeStep}</Text>
     ),
     footer: Footer,
   },
