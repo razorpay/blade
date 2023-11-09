@@ -3,6 +3,7 @@ import type { Meta } from '@storybook/react';
 import React from 'react';
 import type { StepRenderProps, TourProps, TourSteps } from './types';
 import { TourStep } from './TourStep';
+import { TourFooter } from './TourFooter';
 import { Tour } from '.';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
@@ -14,54 +15,37 @@ export default {
   component: Tour,
 } as Meta<TourProps>;
 
-const TourFooter = ({
+const CustomFooter = ({
   activeStep,
-  goToNext,
-  stopTour,
-  goToPrevious,
   totalSteps,
-}: StepRenderProps): React.ReactElement => {
+  goToNext,
+  goToPrevious,
+  stopTour,
+}: StepRenderProps) => {
   const isLast = activeStep === totalSteps - 1;
   const isFirst = activeStep === 0;
   return (
-    <Box display="flex" justifyContent="space-between" alignItems="center" gap="spacing.7">
-      <Text size="small" weight="bold">
-        {activeStep + 1} / {totalSteps}
-      </Text>
-      <Box display="flex" gap="spacing.4">
-        {!isFirst ? (
-          <Button
-            size="small"
-            variant="secondary"
-            onClick={() => {
-              goToPrevious();
-            }}
-          >
-            Prev
-          </Button>
-        ) : null}
-        {isLast ? (
-          <Button
-            size="small"
-            onClick={() => {
-              // done
-              stopTour();
-            }}
-          >
-            Done
-          </Button>
-        ) : (
-          <Button
-            size="small"
-            onClick={() => {
-              goToNext();
-            }}
-          >
-            Next
-          </Button>
-        )}
-      </Box>
-    </Box>
+    <TourFooter
+      activeStep={activeStep}
+      totalSteps={totalSteps}
+      actions={{
+        primary: isLast
+          ? {
+              text: 'Done',
+              onClick: stopTour,
+            }
+          : {
+              text: 'Next',
+              onClick: goToNext,
+            },
+        secondary: isFirst
+          ? undefined
+          : {
+              text: 'Prev',
+              onClick: goToPrevious,
+            },
+      }}
+    />
   );
 };
 
@@ -78,7 +62,7 @@ const steps: TourSteps = [
       );
     },
     placement: 'bottom',
-    footer: TourFooter,
+    footer: CustomFooter,
   },
   {
     name: 'step-2',
@@ -87,7 +71,7 @@ const steps: TourSteps = [
       return <Text>You can also group the charts by Payment Methods or Platforms.</Text>;
     },
     placement: 'bottom',
-    footer: TourFooter,
+    footer: CustomFooter,
   },
   {
     name: 'step-3',
@@ -97,7 +81,7 @@ const steps: TourSteps = [
     },
     placement: 'right',
     titleLeading: <InfoIcon color="surface.text.normal.lowContrast" size="medium" />,
-    footer: TourFooter,
+    footer: CustomFooter,
   },
 ];
 
