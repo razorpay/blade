@@ -4,6 +4,7 @@ import type { FlattenSimpleInterpolation } from 'styled-components';
 import styled, { css, keyframes } from 'styled-components';
 import usePresence from 'use-presence';
 import type { TourMaskRect } from './types';
+import { tourMaskZIndex } from './tourTokens';
 import { useWindowSize } from '~utils/useWindowSize';
 import { makeSpace, useTheme } from '~utils';
 import { makeMotionTime } from '~utils/makeMotionTime';
@@ -60,7 +61,7 @@ const FadeRect = ({ show, children, ...rest }: FadeRectProps): React.ReactElemen
   return (
     <>
       {isMounted && (
-        // @ts-expect-error
+        // @ts-expect-error styled compoennt types are different from react types
         <AnimatedFade animationType={isVisible ? enter : exit} {...rest}>
           {children}
         </AnimatedFade>
@@ -81,8 +82,7 @@ const absoluteFill = {
   left: 0,
   bottom: 0,
   right: 0,
-  // TODO: tokenize z-index values
-  zIndex: 100,
+  zIndex: tourMaskZIndex,
 } as const;
 
 const TourMask = ({ padding, size, isTransitioning }: TourMaskProps): React.ReactElement => {
