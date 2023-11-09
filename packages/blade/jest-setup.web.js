@@ -6,3 +6,5 @@ global.ResizeObserver = jest.fn().mockImplementation(() => ({
   unobserve: jest.fn(),
   disconnect: jest.fn(),
 }));
+
+window.HTMLElement.prototype.scrollIntoView = jest.fn();
