@@ -6,9 +6,12 @@ The Tour component is used to provide context as well as enable users to take ce
 
 - [Design](#design)
 - [Features](#features)
+- [Components](#components)
+- [Basic Usage Structure](#basic-usage-structure)
 - [API](#api)
   - [`Tour` API](#tour-api)
   - [`TourStep` API](#tourstep-api)
+  - [`TourFooter` API](#tourfooter-api)
 - [Usage](#usage)
 - [Motion](#motion)
 - [Open Questions And Technical Challenges](#open-questions-and-technical-challenges)
