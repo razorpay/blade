@@ -43,6 +43,7 @@ export type TableProps = {
   toolbar?: React.ReactElement;
   pagination?: React.ReactElement;
   height?: BoxProps['height'];
+  showStripes?: boolean;
 };
 
 const rowSelectType: Record<NonNullable<TableProps['selectionType']>, SelectTypes> = {
@@ -113,6 +114,7 @@ const Table: React.FC<TableProps> = ({
   toolbar,
   pagination,
   height,
+  showStripes,
 }) => {
   const { theme } = useTheme();
   const [selectedRows, setSelectedRows] = React.useState<TableNode['id'][]>([]);
@@ -142,6 +144,9 @@ const Table: React.FC<TableProps> = ({
       position: ${isHeaderSticky ? 'sticky' : 'relative'};
       top: ${isHeaderSticky ? '0' : undefined};
     };`,
+    Body: `
+  
+    `,
   });
 
   useEffect(() => {
@@ -289,6 +294,7 @@ const Table: React.FC<TableProps> = ({
       setPaginationPage,
       setPaginationRowSize,
       currentPaginationState,
+      showStripes,
     }),
     [
       selectionType,
@@ -303,6 +309,7 @@ const Table: React.FC<TableProps> = ({
       setPaginationPage,
       setPaginationRowSize,
       currentPaginationState,
+      showStripes,
     ],
   );
 

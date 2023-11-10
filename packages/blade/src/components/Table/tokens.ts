@@ -39,6 +39,7 @@ const tableRow = {
   backgroundColorHover: 'brand.gray.a50.lowContrast',
   backgroundColorSelected: 'brand.primary.300',
   backgroundColorSelectedHover: 'brand.primary.400',
+  backgroundColorStripesHover: 'brand.gray.a100.lowContrast', // Figure out
   borderBottomWidth: 'thin',
   borderBottomColor: 'surface.border.normal.lowContrast',
   backgroundColorMotionEasing: 'easing.standard.effective',

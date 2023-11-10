@@ -24,6 +24,7 @@ export type TableContextType = {
     page: number;
     size: number;
   };
+  showStripes?: boolean;
 };
 
 const TableContext = React.createContext<TableContextType>({

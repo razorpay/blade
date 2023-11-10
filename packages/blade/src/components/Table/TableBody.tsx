@@ -14,9 +14,18 @@ type TableBodyProps = {
   children: React.ReactNode;
 };
 
-const StyledBody = styled(Body)(({ theme }) => ({
+const StyledBody = styled(Body)(({ theme, showStripes }) => ({
+  '&&': {
+    '& tr:nth-child(even)': {
+      backgroundColor: showStripes ? theme.colors.brand.gray.a50.lowContrast : undefined,
+    },
+  },
   '&&&': {
     border: 'none',
+
+    '& tr:last-child td': {
+      borderBottom: 'none',
+    },
     '& .row-select-single-selected, .row-select-selected': {
       transition: `background-color ${makeMotionTime(
         getIn(theme.motion, tableRow.backgroundColorMotionDuration),
@@ -29,14 +38,12 @@ const StyledBody = styled(Body)(({ theme }) => ({
       )} ${getIn(theme.motion, tableRow.backgroundColorMotionEasing)}`,
       backgroundColor: getIn(theme.colors, tableRow.backgroundColorSelectedHover),
     },
-    '& tr:last-child td': {
-      borderBottom: 'none',
-    },
   },
 }));
 
 const TableBody = ({ children }: TableBodyProps): React.ReactElement => {
-  return <StyledBody>{children}</StyledBody>;
+  const { showStripes } = useTableContext();
+  return <StyledBody showStripes={showStripes}>{children}</StyledBody>;
 };
 
 type TableCellProps = {
@@ -93,28 +100,33 @@ type TableRowProps = {
   item: any; // TODO: Fix type
 };
 
-const StyledRow = styled(Row)<{ isSelectable: boolean }>(({ theme, isSelectable }) => ({
-  '&&&': {
-    backgroundColor: 'transparent',
-    '&:hover': isSelectable
-      ? {
-          transition: `background-color ${makeMotionTime(
-            getIn(theme.motion, tableRow.backgroundColorMotionDuration),
-          )} ${getIn(theme.motion, tableRow.backgroundColorMotionEasing)}`,
-          backgroundColor: getIn(theme.colors, tableRow.backgroundColorHover),
-          cursor: 'pointer',
-        }
-      : undefined,
-  },
-}));
+const StyledRow = styled(Row)<{ isSelectable: boolean; showStripes?: boolean }>(
+  ({ theme, isSelectable, showStripes }) => ({
+    '&&&': {
+      backgroundColor: 'transparent',
+      '&:hover': isSelectable
+        ? {
+            transition: `background-color ${makeMotionTime(
+              getIn(theme.motion, tableRow.backgroundColorMotionDuration),
+            )} ${getIn(theme.motion, tableRow.backgroundColorMotionEasing)}`,
+            backgroundColor: getIn(
+              theme.colors,
+              showStripes ? tableRow.backgroundColorStripesHover : tableRow.backgroundColorHover,
+            ),
+            cursor: 'pointer',
+          }
+        : undefined,
+    },
+  }),
+);
 
 const TableRow = ({ children, item }: TableRowProps): React.ReactElement => {
-  const { selectionType, selectedRows, toggleRowSelectionById } = useTableContext();
+  const { selectionType, selectedRows, toggleRowSelectionById, showStripes } = useTableContext();
   const isSelectable = Boolean(selectionType);
   const isMultiSelect = selectionType === 'multiple';
   const isSelected = selectedRows?.includes(item.id);
   return (
-    <StyledRow isSelectable={isSelectable} item={item}>
+    <StyledRow isSelectable={isSelectable} showStripes={showStripes} item={item}>
       {isMultiSelect && (
         <TableCheckboxCell
           isChecked={isSelected}
