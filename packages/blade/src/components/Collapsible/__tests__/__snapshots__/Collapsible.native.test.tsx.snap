@@ -194,9 +194,12 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
         importantForAccessibility="no-hide-descendants"
         style={
           [
-            {},
+            {
+              "width": "100%",
+            },
           ]
         }
+        width="100%"
       >
         <View
           isExpanded={false}
@@ -674,9 +677,12 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
         importantForAccessibility="no-hide-descendants"
         style={
           [
-            {},
+            {
+              "width": "100%",
+            },
           ]
         }
+        width="100%"
       >
         <View
           isExpanded={false}
