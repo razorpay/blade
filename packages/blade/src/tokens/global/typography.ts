@@ -125,61 +125,61 @@ export type Typography = {
     100: number;
     /** desktop: 24(px/rem/pt)
      *
-     * mobile: 20(px/rem/pt)
+     * mobile: 24(px/rem/pt)
      */
     200: number;
     /** desktop: 24(px/rem/pt)
      *
-     * mobile: 24(px/rem/pt)
+     * mobile: 22(px/rem/pt)
      */
     300: number;
-    /** desktop: 28(px/rem/pt)
+    /** desktop: 26(px/rem/pt)
      *
      * mobile: 24(px/rem/pt)
      */
     400: number;
     /** desktop: 32(px/rem/pt)
      *
-     * mobile: 28(px/rem/pt)
+     * mobile: 26(px/rem/pt)
      */
     500: number;
-    /** desktop: 40(px/rem/pt)
+    /** desktop: 38(px/rem/pt)
      *
      * mobile: 32(px/rem/pt)
      */
     600: number;
-    /** desktop: 40(px/rem/pt)
+    /** desktop: 46(px/rem/pt)
      *
-     * mobile: 40(px/rem/pt)
+     * mobile: 38(px/rem/pt)
      */
     700: number;
-    /** desktop: 48(px/rem/pt)
+    /** desktop: 56(px/rem/pt)
      *
      * mobile: 40(px/rem/pt)
      */
     800: number;
-    /** desktop: 56(px/rem/pt)
+    /** desktop: 64(px/rem/pt)
+     *
+     * mobile: 42(px/rem/pt)
+     */
+    900: number;
+    /** desktop: 70(px/rem/pt)
+     *
+     * mobile: 46(px/rem/pt)
+     */
+    1000: number;
+    /** desktop: 78(px/rem/pt)
      *
      * mobile: 48(px/rem/pt)
      */
-    900: number;
-    /** desktop: 64(px/rem/pt)
-     *
-     * mobile: 56(px/rem/pt)
-     */
-    1000: number;
-    /** desktop: 72(px/rem/pt)
-     *
-     * mobile: 64(px/rem/pt)
-     */
     1100: number;
-    /** desktop: 104(px/rem/pt)
-     *
-     * mobile: 72(px/rem/pt)
-     */
-    1500: number;
   };
-  // letterSpacings: {};
+  letterSpacings: {
+    /** -1% */
+    50: number;
+    /** 0% */
+    100: number;
+  };
 };
 
 export type TypographyPlatforms = 'onDesktop' | 'onMobile';
@@ -220,17 +220,19 @@ export const typography: TypographyWithPlatforms = {
       100: 20,
       200: 24,
       300: 24,
-      400: 28,
+      400: 26,
       500: 32,
-      600: 40,
-      700: 40,
-      800: 48,
-      900: 56,
-      1000: 64,
-      1100: 72,
-      1500: 104,
+      600: 38,
+      700: 46,
+      800: 56,
+      900: 64,
+      1000: 70,
+      1100: 78,
     },
-    // letterSpacings: {},
+    letterSpacings: {
+      50: -1,
+      100: 0,
+    },
   },
   onMobile: {
     fonts: {
@@ -263,65 +265,20 @@ export const typography: TypographyWithPlatforms = {
       50: 16,
       75: 18,
       100: 20,
-      200: 20,
-      300: 24,
+      200: 24,
+      300: 22,
       400: 24,
-      500: 28,
+      500: 26,
       600: 32,
-      700: 40,
+      700: 38,
       800: 40,
-      900: 48,
-      1000: 56,
-      1100: 64,
-      1500: 72,
+      900: 42,
+      1000: 46,
+      1100: 48,
     },
-    // letterSpacings: {},
+    letterSpacings: {
+      50: -1,
+      100: 0,
+    },
   },
 };
-
-// Font Size Scale
-// Token Name
-// Desktop Scale
-// Mobile Scale
-// font-size-10
-// global-fz-10
-// global-fz-10
-// font-size-25
-// global-fz-11
-// global-fz-11
-// font-size-50
-// global-fz-12
-// global-fz-12
-// font-size-100 [base]
-// global-fz-14
-// global-fz-14
-// font-size-200
-// global-fz-16
-// global-fz-16
-// font-size-300
-// global-fz-18
-// global-fz-16
-// font-size-400
-// global-fz-20
-// global-fz-18
-// font-size-500
-// global-fz-24
-// global-fz-20
-// font-size-600
-// global-fz-32
-// global-fz-24
-// font-size-700
-// global-fz-40
-// global-fz-32
-// font-size-800
-// global-fz-48
-// global-fz-34
-// font-size-900
-// global-fz-56
-// global-fz-36
-// font-size-1000
-// global-fz-64
-// global-fz-38
-// font-size-1100
-// global-fz-72
-// global-fz-40
