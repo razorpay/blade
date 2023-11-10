@@ -9,6 +9,7 @@ import { useWindowSize } from '~utils/useWindowSize';
 import { makeSpace, useTheme } from '~utils';
 import { makeMotionTime } from '~utils/makeMotionTime';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 const scaleIn = keyframes`
   from {
@@ -39,36 +40,36 @@ const AnimatedFade = styled.rect<{ animationType: FlattenSimpleInterpolation | n
 type FadeRectProps = React.ComponentProps<'rect'> & {
   show: boolean;
 };
-const FadeRect = ({ show, children, ...rest }: FadeRectProps): React.ReactElement => {
-  const { theme } = useTheme();
+const FadeRect = React.memo(
+  ({ show, children, ...rest }: FadeRectProps): React.ReactElement => {
+    const { theme } = useTheme();
 
-  const duration = theme.motion.duration.gentle;
-  const enter = css`
-    animation: ${scaleIn} ${makeMotionTime(duration)}
-      ${theme.motion.easing.entrance.effective as string};
-  `;
+    const duration = theme.motion.duration.gentle;
+    const enter = css`
+      animation: ${scaleIn} ${makeMotionTime(duration)}
+        ${theme.motion.easing.entrance.effective as string};
+      animation-fill-mode: forwards;
+    `;
 
-  const exit = css`
-    animation: ${fadeOut} ${makeMotionTime(duration)}
-      ${theme.motion.easing.exit.effective as string};
-  `;
+    const exit = css`
+      animation: ${fadeOut} ${makeMotionTime(duration)}
+        ${theme.motion.easing.exit.effective as string};
+      animation-fill-mode: forwards;
+    `;
 
-  const { isMounted, isVisible } = usePresence(Boolean(show), {
-    transitionDuration: duration,
-    initialEnter: false,
-  });
+    const { isVisible } = usePresence(Boolean(show), {
+      transitionDuration: duration,
+      initialEnter: false,
+    });
 
-  return (
-    <>
-      {isMounted && (
-        // @ts-expect-error styled compoennt types are different from react types
-        <AnimatedFade animationType={isVisible ? enter : exit} {...rest}>
-          {children}
-        </AnimatedFade>
-      )}
-    </>
-  );
-};
+    return (
+      // @ts-expect-error styled compoennt types are different from react types
+      <AnimatedFade animationType={isVisible ? enter : exit} {...rest}>
+        {children}
+      </AnimatedFade>
+    );
+  },
+);
 
 type TourMaskProps = {
   padding: number;
@@ -85,7 +86,7 @@ const absoluteFill = {
   zIndex: tourMaskZIndex,
 } as const;
 
-const TourMask = ({ padding, size, isTransitioning }: TourMaskProps): React.ReactElement => {
+const _TourMask = ({ padding, size, isTransitioning }: TourMaskProps): React.ReactElement => {
   const { theme } = useTheme();
   const { width: windowWidth, height: windowHeight } = useWindowSize();
 
@@ -145,5 +146,5 @@ const TourMask = ({ padding, size, isTransitioning }: TourMaskProps): React.Reac
   );
 };
 
+const TourMask = assignWithoutSideEffects(React.memo(_TourMask), { displayName: 'TourMask' });
 export { TourMask };
-export type { TourMaskRect as Rect };
