@@ -2,8 +2,10 @@ import { fontFamily } from './fontFamily';
 import type { FontFamily } from './fontFamily/types';
 
 type FontWeight = {
-  regular: 400;
-  bold: 700;
+  400: 400;
+  500: 500;
+  600: 600;
+  700: 700;
 };
 
 /**
@@ -87,8 +89,10 @@ export type FontSize = {
 };
 
 const fontWeight: FontWeight = {
-  regular: 400,
-  bold: 700,
+  400: 400,
+  500: 500,
+  600: 600,
+  700: 700,
 };
 
 export type Typography = {
