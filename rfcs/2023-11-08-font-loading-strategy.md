@@ -44,6 +44,8 @@ const GlobalStyles = createGlobalStyles`
 `;
 ```
 
+Live Example (POC): https://stackblitz.com/~/github.com/saurabhdaware/blade-self-hosted-font/tree/blade-import-css?file=index.tsx
+
 ### React Native
 
 In React Native, people will continue to load the font the way they do right now (Download font files, link them to android and ios projects)
