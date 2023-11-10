@@ -1,10 +1,10 @@
 ---
 Start Date: 08-11-2023
-RFC PR:
+RFC PR: https://github.com/razorpay/blade/pull/1803
 Blade Issue:
 ---
 
-# Blade - Font Loading Strategy [WIP ⚠️] <!-- omit in toc -->
+# Blade - Font Loading Strategy <!-- omit in toc -->
 
 ### Table Of Contents <!-- omit in toc -->
 
