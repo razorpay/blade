@@ -50,6 +50,25 @@ const tableToolbar = {
   backgroundColorSelected: 'brand.primary.300',
   backgroundColorMotionEasing: 'easing.standard.effective',
   backgroundColorMotionDuration: 'duration.quick',
-};
+} as const;
 
-export { tableHeader, tableFooter, tableRow, tableToolbar };
+const tablePagination = {
+  backgroundColor: ' surface.background.level2.lowContrast',
+  padding: 'spacing.4',
+  pageSelectionButton: {
+    backgroundColor: 'surface.background.level2.lowContrast',
+    backgroundColorHover: 'brand.gray.a50.lowContrast',
+    backgroundColorActive: 'brand.gray.a100.lowContrast',
+    backgroundColorSelected: 'brand.primary.300',
+    backgroundColorSelectedHover: 'brand.primary.400',
+    backgroundColorSelectedActive: 'brand.primary.400',
+    backgroundColorDisabled: 'surface.background.level2.lowContrast',
+    padding: 'spacing.2',
+    borderRadius: 'small',
+    focusRingColor: 'brand.primary.300',
+    textColor: 'surface.text.subtle.lowContrast',
+    textColorSelected: 'brand.primary.500',
+  },
+} as const;
+
+export { tableHeader, tableFooter, tableRow, tableToolbar, tablePagination };
