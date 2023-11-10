@@ -122,11 +122,13 @@ const TablePagination = ({
         justifyContent="flex-end"
         alignItems="center"
       >
-        <BaseBox width="64px">
+        <BaseBox width="65px">
           <Dropdown selectionType="single">
             <SelectInput
               accessibilityLabel="Page Size"
               name="page-size"
+              label=""
+              labelPosition="inside-input"
               placeholder=""
               onChange={({ values }) => {
                 handlePageSizeChange(Number(values[0]));
