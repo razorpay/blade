@@ -53,15 +53,18 @@ type TableCellProps = {
 const StyledCell = styled(Cell)<{
   isSelectable: boolean;
   rowDensity: NonNullable<TableProps['rowDensity']>;
-}>(({ theme, isSelectable, rowDensity }) => ({
+  showStripes?: boolean;
+}>(({ theme, isSelectable, rowDensity, showStripes }) => ({
   '&&&': {
     paddingTop: makeSpace(getIn(theme, tableRow.paddingTop[rowDensity])),
     paddingBottom: makeSpace(getIn(theme, tableRow.paddingBottom[rowDensity])),
     paddingLeft: makeSpace(getIn(theme, tableRow.paddingLeft[rowDensity])),
     paddingRight: makeSpace(getIn(theme, tableRow.paddingRight[rowDensity])),
-    borderBottomWidth: makeSpace(getIn(theme.border.width, tableRow.borderBottomWidth)),
-    borderBottomColor: getIn(theme.colors, tableRow.borderBottomColor),
-    borderBottomStyle: 'solid',
+    ...(!showStripes && {
+      borderBottomWidth: makeSpace(getIn(theme.border.width, tableRow.borderBottomWidth)),
+      borderBottomColor: getIn(theme.colors, tableRow.borderBottomColor),
+      borderBottomStyle: 'solid',
+    }),
     '& div:first-child': {
       pointerEvents: isSelectable ? 'none' : 'auto',
     },
@@ -70,10 +73,10 @@ const StyledCell = styled(Cell)<{
 
 const TableCell = ({ children }: TableCellProps): React.ReactElement => {
   const isChildrenString = typeof children === 'string';
-  const { selectionType, rowDensity } = useTableContext();
+  const { selectionType, rowDensity, showStripes } = useTableContext();
   const isSelectable = Boolean(selectionType);
   return (
-    <StyledCell isSelectable={isSelectable} rowDensity={rowDensity}>
+    <StyledCell isSelectable={isSelectable} rowDensity={rowDensity} showStripes={showStripes}>
       {isChildrenString ? <Text size="medium">{children}</Text> : children}
     </StyledCell>
   );
