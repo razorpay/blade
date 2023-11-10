@@ -1,6 +1,6 @@
 import type { UseFloatingOptions } from '@floating-ui/react';
 
-type StepRenderProps = {
+type SpotlightPopoverStepRenderProps = {
   /**
    * Go to a specific step
    */
@@ -37,11 +37,11 @@ type Step = {
   /**
    * Content of the Popover
    */
-  content: (props: StepRenderProps) => React.ReactElement;
+  content: (props: SpotlightPopoverStepRenderProps) => React.ReactElement;
   /**
    * Footer content
    */
-  footer?: (props: StepRenderProps) => React.ReactNode;
+  footer?: (props: SpotlightPopoverStepRenderProps) => React.ReactNode;
   /**
    * Popover title
    */
@@ -60,15 +60,15 @@ type Step = {
 };
 
 // This will also be useful for consumers
-type TourSteps = Step[];
+type SpotlightPopoverTourSteps = Step[];
 
-type TourProps = {
+type SpotlightPopoverTourProps = {
   /**
    * Array of steps to be rendered
    *
    * The order of the steps will be the order in which they are rendered depending on the `activeStep` prop
    */
-  steps: TourSteps;
+  steps: SpotlightPopoverTourSteps;
   /**
    * Whether the tour is visible or not
    */
@@ -92,16 +92,23 @@ type TourProps = {
   children: React.ReactNode;
 };
 
-type TourStepProps = {
+type SpotlightPopoverTourStepProps = {
   name: string;
   children: React.ReactNode;
 };
 
-type TourMaskRect = {
+type SpotlightPopoverTourMaskRect = {
   width: number;
   height: number;
   x: number;
   y: number;
 };
 
-export type { TourProps, Step, TourStepProps, TourMaskRect, StepRenderProps, TourSteps };
+export type {
+  SpotlightPopoverTourProps,
+  Step,
+  SpotlightPopoverTourStepProps,
+  SpotlightPopoverTourMaskRect,
+  SpotlightPopoverStepRenderProps,
+  SpotlightPopoverTourSteps,
+};

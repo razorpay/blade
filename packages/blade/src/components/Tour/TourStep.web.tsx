@@ -2,11 +2,14 @@
 /* eslint-disable consistent-return */
 import React from 'react';
 import { useTourContext } from './TourContext';
-import type { TourStepProps } from './types';
+import type { SpotlightPopoverTourStepProps } from './types';
 import { mergeRefs } from '~utils/useMergeRefs';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const _TourStep = ({ name, children }: TourStepProps): React.ReactElement => {
+const _SpotlightPopoverTourStep = ({
+  name,
+  children,
+}: SpotlightPopoverTourStepProps): React.ReactElement => {
   const ref = React.useRef<HTMLElement>(null);
   const { attachStep, removeStep } = useTourContext();
 
@@ -26,6 +29,8 @@ const _TourStep = ({ name, children }: TourStepProps): React.ReactElement => {
   });
 };
 
-const TourStep = assignWithoutSideEffects(React.memo(_TourStep), { displayName: 'TourStep' });
+const SpotlightPopoverTourStep = assignWithoutSideEffects(React.memo(_SpotlightPopoverTourStep), {
+  displayName: 'TourStep',
+});
 
-export { TourStep };
+export { SpotlightPopoverTourStep };

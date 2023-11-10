@@ -3,7 +3,7 @@ import React from 'react';
 import type { FlattenSimpleInterpolation } from 'styled-components';
 import styled, { css, keyframes } from 'styled-components';
 import usePresence from 'use-presence';
-import type { TourMaskRect } from './types';
+import type { SpotlightPopoverTourMaskRect } from './types';
 import { tourMaskZIndex } from './tourTokens';
 import { useWindowSize } from '~utils/useWindowSize';
 import { makeSpace, useTheme } from '~utils';
@@ -105,9 +105,9 @@ const PulsingRect = React.memo(
   },
 );
 
-type TourMaskProps = {
+type SpotlightPopoverTourMaskProps = {
   padding: number;
-  size: TourMaskRect;
+  size: SpotlightPopoverTourMaskRect;
   isTransitioning: boolean;
 };
 
@@ -120,7 +120,11 @@ const absoluteFill = {
   zIndex: tourMaskZIndex,
 } as const;
 
-const _TourMask = ({ padding, size, isTransitioning }: TourMaskProps): React.ReactElement => {
+const _SpotlightPopoverTourMask = ({
+  padding,
+  size,
+  isTransitioning,
+}: SpotlightPopoverTourMaskProps): React.ReactElement => {
   const { theme } = useTheme();
   const { width: windowWidth, height: windowHeight } = useWindowSize();
 
@@ -180,5 +184,7 @@ const _TourMask = ({ padding, size, isTransitioning }: TourMaskProps): React.Rea
   );
 };
 
-const TourMask = assignWithoutSideEffects(React.memo(_TourMask), { displayName: 'TourMask' });
-export { TourMask };
+const SpotlightPopoverTourMask = assignWithoutSideEffects(React.memo(_SpotlightPopoverTourMask), {
+  displayName: 'TourMask',
+});
+export { SpotlightPopoverTourMask };

@@ -1,26 +1,27 @@
 /* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
-import type { StepRenderProps } from './types';
+import type { SpotlightPopoverStepRenderProps } from './types';
 import type { ButtonProps } from '~components/Button';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
 
-type TourFooterAction = {
+type SpotlightPopoverFooterAction = {
   text?: string;
 } & Pick<ButtonProps, 'variant' | 'icon' | 'iconPosition' | 'isDisabled' | 'isLoading' | 'onClick'>;
 
-type TourFooterProps = {
+type SpotlightPopoverTourFooterProps = {
   actions: {
-    primary?: TourFooterAction;
-    secondary?: TourFooterAction;
+    primary?: SpotlightPopoverFooterAction;
+    secondary?: SpotlightPopoverFooterAction;
   };
 };
 
-const TourFooter = ({
+const SpotlightPopoverTourFooter = ({
   activeStep,
   totalSteps,
   actions,
-}: TourFooterProps & Pick<StepRenderProps, 'activeStep' | 'totalSteps'>): React.ReactElement => {
+}: SpotlightPopoverTourFooterProps &
+  Pick<SpotlightPopoverStepRenderProps, 'activeStep' | 'totalSteps'>): React.ReactElement => {
   const hasPrimaryAction = Boolean(actions?.primary);
   const hasSecondaryAction = Boolean(actions?.secondary);
 
@@ -52,4 +53,4 @@ const TourFooter = ({
   );
 };
 
-export { TourFooter };
+export { SpotlightPopoverTourFooter };

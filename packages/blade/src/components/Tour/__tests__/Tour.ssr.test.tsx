@@ -2,10 +2,10 @@
 /* eslint-disable @typescript-eslint/require-await */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React from 'react';
-import { Tour } from '../Tour';
-import { TourStep } from '../TourStep.web';
-import type { StepRenderProps, TourSteps } from '../types';
-import { TourFooter } from '../TourFooter.web';
+import { SpotlightPopoverTour } from '../Tour';
+import { SpotlightPopoverTourStep } from '../TourStep.web';
+import type { SpotlightPopoverStepRenderProps, SpotlightPopoverTourSteps } from '../types';
+import { SpotlightPopoverTourFooter } from '../TourFooter.web';
 import { Button } from '~components/Button';
 import renderWithSSR from '~utils/testing/renderWithSSR.web';
 import { Box } from '~components/Box';
@@ -21,11 +21,11 @@ const CustomFooter = ({
   goToNext,
   goToPrevious,
   stopTour,
-}: StepRenderProps) => {
+}: SpotlightPopoverStepRenderProps) => {
   const isLast = activeStep === totalSteps - 1;
   const isFirst = activeStep === 0;
   return (
-    <TourFooter
+    <SpotlightPopoverTourFooter
       activeStep={activeStep}
       totalSteps={totalSteps}
       actions={{
@@ -50,7 +50,7 @@ const CustomFooter = ({
 };
 
 const openTourButtonText = 'Open Tour';
-const steps: TourSteps = [
+const steps: SpotlightPopoverTourSteps = [
   {
     name: 'step-1',
     content: () => <Text>Step 1</Text>,
@@ -78,7 +78,7 @@ const BasicTourExample = () => {
       >
         {openTourButtonText}
       </Button>
-      <Tour
+      <SpotlightPopoverTour
         steps={steps}
         isOpen={isOpen}
         activeStep={activeStep}
@@ -94,17 +94,17 @@ const BasicTourExample = () => {
         }}
       >
         <Box>Some other content inside</Box>
-        <TourStep name="step-1">
+        <SpotlightPopoverTourStep name="step-1">
           <Box>
             <Text>Trigger 1</Text>
           </Box>
-        </TourStep>
-        <TourStep name="step-2">
+        </SpotlightPopoverTourStep>
+        <SpotlightPopoverTourStep name="step-2">
           <Box>
             <Text>Trigger 2</Text>
           </Box>
-        </TourStep>
-      </Tour>
+        </SpotlightPopoverTourStep>
+      </SpotlightPopoverTour>
     </Box>
   );
 };

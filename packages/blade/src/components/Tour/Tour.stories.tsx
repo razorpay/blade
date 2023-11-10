@@ -3,10 +3,14 @@ import type { Meta, ComponentStory } from '@storybook/react';
 import React from 'react';
 import { Title } from '@storybook/addon-docs';
 import isChromatic from 'chromatic';
-import type { StepRenderProps, TourProps, TourSteps } from './types';
-import { TourStep } from './TourStep';
-import { TourFooter } from './TourFooter';
-import { Tour } from '.';
+import type {
+  SpotlightPopoverStepRenderProps,
+  SpotlightPopoverTourProps,
+  SpotlightPopoverTourSteps,
+} from './types';
+import { SpotlightPopoverTourStep } from './TourStep';
+import { SpotlightPopoverTourFooter } from './TourFooter';
+import { SpotlightPopoverTour } from '.';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
 import { Code, Text } from '~components/Typography';
@@ -96,18 +100,18 @@ const propsCategory = {
   TOUR_STEPS: 'Single Tour Step Props',
 };
 
-type StoryControlProps = TourProps & {
-  tourStepsTitle: TourSteps[number]['title'];
-  tourStepsContent: TourSteps[number]['content'];
-  tourStepsPlacement: TourSteps[number]['placement'];
-  tourStepsFooter: TourSteps[number]['footer'];
-  tourStepsTitleLeading: TourSteps[number]['titleLeading'];
-  tourStepsName: TourSteps[number]['name'];
+type StoryControlProps = SpotlightPopoverTourProps & {
+  tourStepsTitle: SpotlightPopoverTourSteps[number]['title'];
+  tourStepsContent: SpotlightPopoverTourSteps[number]['content'];
+  tourStepsPlacement: SpotlightPopoverTourSteps[number]['placement'];
+  tourStepsFooter: SpotlightPopoverTourSteps[number]['footer'];
+  tourStepsTitleLeading: SpotlightPopoverTourSteps[number]['titleLeading'];
+  tourStepsName: SpotlightPopoverTourSteps[number]['name'];
 };
 
 export default {
-  title: 'Components/Tour',
-  component: Tour,
+  title: 'Components/SpotlightPopoverTour',
+  component: SpotlightPopoverTour,
   argTypes: {
     tourStepsTitle: {
       name: 'steps[0].title',
@@ -231,11 +235,11 @@ const CustomTourFooter = ({
   goToNext,
   goToPrevious,
   stopTour,
-}: StepRenderProps) => {
+}: SpotlightPopoverStepRenderProps) => {
   const isLast = activeStep === totalSteps - 1;
   const isFirst = activeStep === 0;
   return (
-    <TourFooter
+    <SpotlightPopoverTourFooter
       activeStep={activeStep}
       totalSteps={totalSteps}
       actions={{
@@ -263,7 +267,7 @@ const TourTemplate: ComponentStory<(props: StoryControlProps) => React.ReactElem
   const [activeStep, setActiveStep] = React.useState(0);
   const [isOpen, setIsOpen] = React.useState(!!isChromatic());
 
-  const steps = React.useMemo<TourSteps>(
+  const steps = React.useMemo<SpotlightPopoverTourSteps>(
     () => [
       {
         name: 'step-1',
@@ -325,7 +329,7 @@ const TourTemplate: ComponentStory<(props: StoryControlProps) => React.ReactElem
       >
         {isOpen ? 'Tour In Progress' : 'Start Tour'}
       </Button>
-      <Tour
+      <SpotlightPopoverTour
         steps={steps}
         isOpen={isOpen}
         activeStep={activeStep}
@@ -349,7 +353,7 @@ const TourTemplate: ComponentStory<(props: StoryControlProps) => React.ReactElem
           gap="spacing.4"
           alignItems="stretch"
         >
-          <TourStep name="step-1">
+          <SpotlightPopoverTourStep name="step-1">
             <Box width="100%">
               <Card width="100%" height="100%">
                 <CardBody>
@@ -364,8 +368,8 @@ const TourTemplate: ComponentStory<(props: StoryControlProps) => React.ReactElem
                 </CardBody>
               </Card>
             </Box>
-          </TourStep>
-          <TourStep name="step-2">
+          </SpotlightPopoverTourStep>
+          <SpotlightPopoverTourStep name="step-2">
             <Box width="100%">
               <Card width="100%" height="100%">
                 <CardBody>
@@ -375,7 +379,7 @@ const TourTemplate: ComponentStory<(props: StoryControlProps) => React.ReactElem
                       <InfoIcon color="surface.text.subdued.lowContrast" />
                     </Box>
                     <Amount value={0} size="title-small" />
-                    <TourStep name="step-3">
+                    <SpotlightPopoverTourStep name="step-3">
                       <Box
                         display="flex"
                         justifyContent="space-between"
@@ -387,14 +391,14 @@ const TourTemplate: ComponentStory<(props: StoryControlProps) => React.ReactElem
                           Review
                         </Button>
                       </Box>
-                    </TourStep>
+                    </SpotlightPopoverTourStep>
                   </Box>
                 </CardBody>
               </Card>
             </Box>
-          </TourStep>
+          </SpotlightPopoverTourStep>
         </Box>
-      </Tour>
+      </SpotlightPopoverTour>
     </Box>
   );
 };
@@ -405,7 +409,7 @@ Default.storyName = 'Default';
 export const CustomPlacement = () => {
   const [activeStep, setActiveStep] = React.useState(0);
   const [isOpen, setIsOpen] = React.useState(false);
-  const steps = React.useMemo<TourSteps>(
+  const steps = React.useMemo<SpotlightPopoverTourSteps>(
     () => [
       {
         name: 'top',
@@ -470,7 +474,7 @@ export const CustomPlacement = () => {
       >
         {isOpen ? 'Tour In Progress' : 'Start Tour'}
       </Button>
-      <Tour
+      <SpotlightPopoverTour
         steps={steps}
         isOpen={isOpen}
         activeStep={activeStep}
@@ -495,29 +499,29 @@ export const CustomPlacement = () => {
         </Text>
         <Center>
           <Box display="flex" gap="spacing.4" alignItems="stretch">
-            <TourStep name="top">
+            <SpotlightPopoverTourStep name="top">
               <Box padding="spacing.4" backgroundColor="surface.background.level2.lowContrast">
                 top
               </Box>
-            </TourStep>
-            <TourStep name="bottom">
+            </SpotlightPopoverTourStep>
+            <SpotlightPopoverTourStep name="bottom">
               <Box padding="spacing.4" backgroundColor="surface.background.level2.lowContrast">
                 bottom
               </Box>
-            </TourStep>
-            <TourStep name="left">
+            </SpotlightPopoverTourStep>
+            <SpotlightPopoverTourStep name="left">
               <Box padding="spacing.4" backgroundColor="surface.background.level2.lowContrast">
                 left
               </Box>
-            </TourStep>
-            <TourStep name="right">
+            </SpotlightPopoverTourStep>
+            <SpotlightPopoverTourStep name="right">
               <Box padding="spacing.4" backgroundColor="surface.background.level2.lowContrast">
                 right
               </Box>
-            </TourStep>
+            </SpotlightPopoverTourStep>
           </Box>
         </Center>
-      </Tour>
+      </SpotlightPopoverTour>
     </Box>
   );
 };
@@ -526,7 +530,7 @@ CustomPlacement.storyName = 'Custom Placement';
 export const WithScrollablePage = () => {
   const [activeStep, setActiveStep] = React.useState(0);
   const [isOpen, setIsOpen] = React.useState(false);
-  const steps = React.useMemo<TourSteps>(
+  const steps = React.useMemo<SpotlightPopoverTourSteps>(
     () => [
       {
         name: 'razorpay-dashboard',
@@ -591,7 +595,7 @@ export const WithScrollablePage = () => {
       >
         {isOpen ? 'Tour In Progress' : 'Start Tour'}
       </Button>
-      <Tour
+      <SpotlightPopoverTour
         steps={steps}
         isOpen={isOpen}
         activeStep={activeStep}
@@ -617,9 +621,9 @@ export const WithScrollablePage = () => {
         <Box>
           <Text marginY="spacing.9">
             A{' '}
-            <TourStep name="razorpay-dashboard">
+            <SpotlightPopoverTourStep name="razorpay-dashboard">
               <Link href="https://dashboard.razorpay.com">Powerful Dashboard</Link>
-            </TourStep>{' '}
+            </SpotlightPopoverTourStep>{' '}
             for you to get reports and detailed statistics on payments, settlements, refunds and
             much more for you to take better business decisions.
           </Text>
@@ -695,17 +699,17 @@ export const WithScrollablePage = () => {
           <Text marginY="spacing.9">
             Over the last couple of years, we have worked hard with our banking partners so you
             don’t have to. Razorpay's servers are completely hosted on
-            <TourStep name="amazon-aws">
+            <SpotlightPopoverTourStep name="amazon-aws">
               <Link href="https://aws.amazon.com/">&nbsp;Amazon AWS</Link>
-            </TourStep>{' '}
+            </SpotlightPopoverTourStep>{' '}
             with auto-scaling systems that scale up to handle any traffic that you throw at it today
             or in the future.
           </Text>
           <Text marginY="spacing.9">
             Built for Developers: Robust, clean,{' '}
-            <TourStep name="razorpay-docs">
+            <SpotlightPopoverTourStep name="razorpay-docs">
               <Link href="https://razorpay.com/docs/api/">developer friendly APIs</Link>
-            </TourStep>{' '}
+            </SpotlightPopoverTourStep>{' '}
             , plugins and libraries for all major languages and platforms that let you focus on
             building great products.
           </Text>
@@ -723,7 +727,7 @@ export const WithScrollablePage = () => {
             voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."
           </Text>
         </Box>
-      </Tour>
+      </SpotlightPopoverTour>
     </Box>
   );
 };
@@ -737,7 +741,7 @@ const InterruptibleTourFooter = ({
   goToPrevious,
   totalSteps,
   setIsTourSkipped,
-}: StepRenderProps & {
+}: SpotlightPopoverStepRenderProps & {
   setIsTourSkipped: React.Dispatch<React.SetStateAction<boolean>>;
 }): React.ReactElement => {
   const isLast = activeStep === totalSteps - 1;
@@ -798,7 +802,7 @@ export const InterruptibleTour = () => {
   const [activeStep, setActiveStep] = React.useState(0);
   const [isTourSkipped, setIsTourSkipped] = React.useState(false);
   const [isOpen, setIsOpen] = React.useState(false);
-  const steps = React.useMemo<TourSteps>(
+  const steps = React.useMemo<SpotlightPopoverTourSteps>(
     () => [
       {
         name: 'step-1',
@@ -884,7 +888,7 @@ export const InterruptibleTour = () => {
 
   return (
     <Box>
-      <Tour
+      <SpotlightPopoverTour
         steps={steps}
         isOpen={isOpen}
         activeStep={activeStep}
@@ -903,7 +907,7 @@ export const InterruptibleTour = () => {
           setActiveStep(step);
         }}
       >
-        <TourStep name="start-tour">
+        <SpotlightPopoverTourStep name="start-tour">
           <Button
             marginBottom="spacing.5"
             onClick={() => {
@@ -912,7 +916,7 @@ export const InterruptibleTour = () => {
           >
             {isOpen ? 'Tour In Progress' : 'Start Tour'}
           </Button>
-        </TourStep>
+        </SpotlightPopoverTourStep>
         <Text>
           You can create complex flows like interruptible tours by dynamically modifying the steps
           array, and changing it's contents.
@@ -924,19 +928,19 @@ export const InterruptibleTour = () => {
         </Text>
         <Center>
           <Box display="flex" gap="spacing.4" alignItems="stretch">
-            <TourStep name="step-1">
+            <SpotlightPopoverTourStep name="step-1">
               <Box padding="spacing.4" backgroundColor="surface.background.level2.lowContrast">
                 Step 1
               </Box>
-            </TourStep>
-            <TourStep name="step-2">
+            </SpotlightPopoverTourStep>
+            <SpotlightPopoverTourStep name="step-2">
               <Box padding="spacing.4" backgroundColor="surface.background.level2.lowContrast">
                 Step 2
               </Box>
-            </TourStep>
+            </SpotlightPopoverTourStep>
           </Box>
         </Center>
-      </Tour>
+      </SpotlightPopoverTour>
     </Box>
   );
 };

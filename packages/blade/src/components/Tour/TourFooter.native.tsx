@@ -1,7 +1,8 @@
+/* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
 import { throwBladeError } from '~utils/logger';
 
-const TourFooter = (): React.ReactElement => {
+const SpotlightPopoverTourFooter = (): React.ReactElement => {
   throwBladeError({
     message: 'Tour is not yet implemented for native',
     moduleName: 'Tour',
@@ -10,4 +11,4 @@ const TourFooter = (): React.ReactElement => {
   return <></>;
 };
 
-export { TourFooter };
+export { SpotlightPopoverTourFooter };

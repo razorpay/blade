@@ -12,13 +12,13 @@ import {
   useIsTransitioningBetweenSteps,
   useLockBodyScroll,
 } from './utils';
-import type { TourMaskRect, TourProps } from './types';
-import { TourMask } from './TourMask';
+import type { SpotlightPopoverTourMaskRect, SpotlightPopoverTourProps } from './types';
+import { SpotlightPopoverTourMask } from './TourMask';
 import { transitionDelay } from './tourTokens';
 import { useTheme } from '~utils';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 
-const Tour = ({
+const SpotlightPopoverTour = ({
   steps,
   activeStep,
   isOpen,
@@ -26,10 +26,10 @@ const Tour = ({
   onOpenChange,
   onStepChange,
   children,
-}: TourProps): React.ReactElement => {
+}: SpotlightPopoverTourProps): React.ReactElement => {
   const { theme } = useTheme();
   const [refIdMap, setRefIdMap] = useState(new Map<string, React.RefObject<HTMLElement>>());
-  const [size, setSize] = useState<TourMaskRect>({
+  const [size, setSize] = useState<SpotlightPopoverTourMaskRect>({
     x: 0,
     y: 0,
     height: 0,
@@ -170,7 +170,7 @@ const Tour = ({
     <TourContext.Provider value={contextValue}>
       <FloatingPortal>
         {isOpen ? (
-          <TourMask
+          <SpotlightPopoverTourMask
             isTransitioning={isTransitioning}
             padding={theme.spacing[4]}
             size={delayedSize}
@@ -223,4 +223,4 @@ const Tour = ({
   );
 };
 
-export { Tour };
+export { SpotlightPopoverTour };
