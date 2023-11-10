@@ -28,7 +28,7 @@ const PageSelectionButton = styled.button<{ isSelected?: boolean }>(({ theme, is
   cursor: 'pointer',
   height: '32px',
   width: '32px',
-  borderRadius: getIn(theme.border, tablePagination.pageSelectionButton.borderRadius),
+  borderRadius: getIn(theme.border.radius, tablePagination.pageSelectionButton.borderRadius),
   '&:hover': {
     backgroundColor: isSelected
       ? getIn(theme.colors, tablePagination.pageSelectionButton.backgroundColorSelectedHover)
@@ -39,6 +39,13 @@ const PageSelectionButton = styled.button<{ isSelected?: boolean }>(({ theme, is
       ? getIn(theme.colors, tablePagination.pageSelectionButton.backgroundColorSelectedActive)
       : getIn(theme.colors, tablePagination.pageSelectionButton.backgroundColorActive),
     outline: 'none',
+    '&:focus-visible': {
+      outline: `1px solid ${theme.colors.surface.background.level1.lowContrast}`,
+      boxShadow: `0px 0px 0px 4px ${getIn(
+        theme.colors,
+        tablePagination.pageSelectionButton.focusRingColor,
+      )}`,
+    },
   },
   '&:active': {
     backgroundColor: isSelected
@@ -62,7 +69,6 @@ const TablePagination = ({
   const [currentPageSize, setCurrentPageSize] = React.useState<number>(
     controlledPageSize ?? defaultPageSize ?? currentPaginationState?.size ?? 10,
   );
-  console.log('🚀 ~ file: TablePagination.tsx:34 ~ currentPageSize:', currentPageSize);
   const [currentPage, setCurrentPage] = React.useState<number>(
     controlledCurrentPage ?? currentPaginationState?.page ?? 0,
   );
