@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 10.17.4
+
+### Patch Changes
+
+- 97b9b4cc: fix(TextInput): white placeholder on autoFocus in android
+
 ## 10.17.3
 
 ### Patch Changes
