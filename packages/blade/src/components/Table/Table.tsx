@@ -17,6 +17,7 @@ import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChi
 import { throwBladeError } from '~utils/logger';
 import type { BoxProps } from '~components/Box';
 import { getBaseBoxStyles } from '~components/Box/BaseBox/baseBoxStyles';
+import { tablePagination } from './tokens';
 
 type TableNode = {
   id: Identifier;
@@ -232,19 +233,13 @@ const Table: React.FC<TableProps> = ({
     console.log('pagination', action, state);
   };
 
-  const paginationConfig = usePagination(
-    data,
-    {
-      state: {
-        page: 0,
-        size: 2,
-      },
-      onChange: handlePaginationChange,
+  const paginationConfig = usePagination(data, {
+    state: {
+      page: 0,
+      size: tablePagination.defaultPageSize,
     },
-    {
-      isServer: false,
-    },
-  );
+    onChange: handlePaginationChange,
+  });
   const currentPaginationState = useMemo(() => {
     return {
       page: paginationConfig.state.page,
@@ -320,11 +315,11 @@ const Table: React.FC<TableProps> = ({
           // @ts-expect-error ignore this, theme clashes with styled-component's theme. We're using useTheme from blade to get actual theme
           theme={tableTheme}
           select={selectionType ? rowSelectConfig : null}
-          sort={sort}
+          sort={sortFunctions ? sort : null}
           styledProps={{
             height,
           }}
-          pagination={paginationConfig}
+          pagination={pagination ? paginationConfig : null}
         >
           {children}
         </StyledReactTable>

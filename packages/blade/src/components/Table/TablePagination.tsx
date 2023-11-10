@@ -60,7 +60,7 @@ const TablePagination = ({
   currentPage: controlledCurrentPage,
   onPageChange,
   onPageSizeChange,
-  defaultPageSize,
+  defaultPageSize = tablePagination.defaultPageSize,
 }: TablePaginationProps): React.ReactElement => {
   const {
     setPaginationPage,
@@ -69,7 +69,7 @@ const TablePagination = ({
     setPaginationRowSize,
   } = useTableContext();
   const [currentPageSize, setCurrentPageSize] = React.useState<number>(
-    controlledPageSize ?? defaultPageSize ?? currentPaginationState?.size ?? 10,
+    controlledPageSize ?? defaultPageSize,
   );
   const [currentPage, setCurrentPage] = React.useState<number>(
     controlledCurrentPage ?? currentPaginationState?.page ?? 0,

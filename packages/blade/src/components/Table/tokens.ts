@@ -70,6 +70,7 @@ const tablePagination = {
     textColor: 'surface.text.subtle.lowContrast',
     textColorSelected: 'brand.primary.500',
   },
+  defaultPageSize: 10,
 } as const;
 
 export { tableHeader, tableFooter, tableRow, tableToolbar, tablePagination };
