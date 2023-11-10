@@ -231,6 +231,7 @@ exports[`<TextArea /> should render 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           onSubmitEditing={[Function]}
+          placeholderTextColor="hsla(214, 18%, 69%, 1)"
           secureTextEntry={false}
           style={
             [
