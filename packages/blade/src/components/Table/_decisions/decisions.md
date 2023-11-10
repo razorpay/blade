@@ -95,7 +95,7 @@ We don't have enough use-cases for the following features at Razorpay and hence 
     onSortChange={onSortChange}
     isLoading={false}
     rowDensity='normal'
-    showZebraStripes={true}
+    showStripes={true}
     pagination={()=>(
         <TablePagination
           defaultPageSize={10}
@@ -180,7 +180,7 @@ We don't have enough use-cases for the following features at Razorpay and hence 
 | onSortChange      | `SortChangeEvent`                             | `undefined` | This is a callback function that is called when the sort changes. It is called with the headerKey & sortType as arguments                                                                                                                                                                                                                |
 | isLoading         | `boolean`                                     | `false`     | This defines whether the table is in a loading state or not                                                                                                                                                                                                                                                                              |
 | rowDensity        | `normal`, `comfortable`                       | `normal`    | This defines the density of the cells in the table. Possible values are 'normal' & 'comfortable'                                                                                                                                                                                                                                         |
-| showZebraStripes  | `boolean`                                     | `false`     | This defines whether the table should show zebra stripes or not                                                                                                                                                                                                                                                                          |
+| showStripes       | `boolean`                                     | `false`     | This defines whether the table should show zebra stripes or not                                                                                                                                                                                                                                                                          |
 | pagination        | `React.ReactElement`                          | `undefined` | Expects the TablePagination Component                                                                                                                                                                                                                                                                                                    |
 | toolbar           | `React.ReactElement`                          | `undefined` | Expects the TableToolbar Component                                                                                                                                                                                                                                                                                                       |
 
@@ -355,7 +355,7 @@ const onSortChange = ({ headerKey, sortType }) => {
     onSortChange={onSortChange}
     isLoading={false}
     rowDensity='normal'
-    showZebraStripes={true}
+    showStripes={true}
     pagination={()=>(
         <TablePagination
           defaultPageSize={10}
@@ -535,7 +535,7 @@ const pagination = {
     onSortChange={onSortChange}
     isLoading={false}
     rowDensity='normal'
-    showZebraStripes={true}
+    showStripes={true}
     toolbarTitle="Users"
     toolbarItemsSelectedTitle={`${selectedUsersCount} Users selected`}
     toolbarActions={<Button>Export</Button>}
