@@ -226,6 +226,7 @@ exports[`<BaseInput /> should render 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           onSubmitEditing={[Function]}
+          placeholderTextColor="hsla(214, 18%, 69%, 1)"
           secureTextEntry={false}
           style={
             [
@@ -633,6 +634,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
           onKeyPress={[Function]}
           onSubmitEditing={[Function]}
           placeholder="First Last"
+          placeholderTextColor="hsla(214, 18%, 69%, 1)"
           secureTextEntry={false}
           style={
             [
