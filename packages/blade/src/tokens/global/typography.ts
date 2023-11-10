@@ -14,26 +14,21 @@ type FontWeight = {
  */
 
 export type FontSize = {
-  /** desktop: 9(px/rem/pt)
-   *
-   * mobile: 9(px/rem/pt)
-   */
-  10: number;
   /** desktop: 10(px/rem/pt)
    *
    * mobile: 10(px/rem/pt)
    */
-  25: number;
+  10: number;
   /** desktop: 11(px/rem/pt)
    *
    * mobile: 11(px/rem/pt)
    */
-  50: number;
+  25: number;
   /** desktop: 12(px/rem/pt)
    *
    * mobile: 12(px/rem/pt)
    */
-  75: number;
+  50: number;
   /** desktop: 14(px/rem/pt)
    *
    * mobile: 14(px/rem/pt)
@@ -54,56 +49,41 @@ export type FontSize = {
    * mobile: 18(px/rem/pt)
    */
   400: number;
-  /** desktop: 22(px/rem/pt)
-   *
-   * mobile: 20(px/rem/pt)
-   */
-  500: number;
   /** desktop: 24(px/rem/pt)
    *
    * mobile: 20(px/rem/pt)
    */
-  600: number;
-  /** desktop: 28(px/rem/pt)
+  500: number;
+  /** desktop: 32(px/rem/pt)
    *
    * mobile: 24(px/rem/pt)
    */
-  700: number;
-  /** desktop: 32(px/rem/pt)
-   *
-   * mobile: 28(px/rem/pt)
-   */
-  800: number;
-  /** desktop: 36(px/rem/pt)
-   *
-   * mobile: 32(px/rem/pt)
-   */
-  900: number;
+  600: number;
   /** desktop: 40(px/rem/pt)
    *
    * mobile: 32(px/rem/pt)
    */
-  1000: number;
+  700: number;
   /** desktop: 48(px/rem/pt)
+   *
+   * mobile: 34(px/rem/pt)
+   */
+  800: number;
+  /** desktop: 56(px/rem/pt)
+   *
+   * mobile: 36(px/rem/pt)
+   */
+  900: number;
+  /** desktop: 64(px/rem/pt)
+   *
+   * mobile: 38(px/rem/pt)
+   */
+  1000: number;
+  /** desktop: 72(px/rem/pt)
    *
    * mobile: 40(px/rem/pt)
    */
   1100: number;
-  /** desktop: 56(px/rem/pt)
-   *
-   * mobile: 48(px/rem/pt)
-   */
-  1200: number;
-  /** desktop: 64(px/rem/pt)
-   *
-   * mobile: 56(px/rem/pt)
-   */
-  1300: number;
-  /** desktop: 88(px/rem/pt)
-   *
-   * mobile: 64(px/rem/pt)
-   */
-  1600: number;
 };
 
 const fontWeight: FontWeight = {
@@ -213,24 +193,20 @@ export const typography: TypographyWithPlatforms = {
         ...fontFamily,
       },
       size: {
-        10: 9,
-        25: 10,
-        50: 11,
-        75: 12,
+        10: 10,
+        25: 11,
+        50: 12,
         100: 14,
         200: 16,
         300: 18,
         400: 20,
-        500: 22,
-        600: 24,
-        700: 28,
-        800: 32,
-        900: 36,
-        1000: 40,
-        1100: 48,
-        1200: 56,
-        1300: 64,
-        1600: 88,
+        500: 24,
+        600: 32,
+        700: 40,
+        800: 48,
+        900: 56,
+        1000: 64,
+        1100: 72,
       },
       weight: {
         ...fontWeight,
@@ -262,24 +238,20 @@ export const typography: TypographyWithPlatforms = {
         ...fontFamily,
       },
       size: {
-        10: 9,
-        25: 10,
-        50: 11,
-        75: 12,
+        10: 10,
+        25: 11,
+        50: 12,
         100: 14,
         200: 16,
         300: 16,
         400: 18,
         500: 20,
-        600: 20,
-        700: 24,
-        800: 28,
-        900: 32,
-        1000: 32,
+        600: 24,
+        700: 32,
+        800: 34,
+        900: 36,
+        1000: 38,
         1100: 40,
-        1200: 48,
-        1300: 56,
-        1600: 64,
       },
       weight: {
         ...fontWeight,
@@ -306,3 +278,50 @@ export const typography: TypographyWithPlatforms = {
     // letterSpacings: {},
   },
 };
+
+// Font Size Scale
+// Token Name
+// Desktop Scale
+// Mobile Scale
+// font-size-10
+// global-fz-10
+// global-fz-10
+// font-size-25
+// global-fz-11
+// global-fz-11
+// font-size-50
+// global-fz-12
+// global-fz-12
+// font-size-100 [base]
+// global-fz-14
+// global-fz-14
+// font-size-200
+// global-fz-16
+// global-fz-16
+// font-size-300
+// global-fz-18
+// global-fz-16
+// font-size-400
+// global-fz-20
+// global-fz-18
+// font-size-500
+// global-fz-24
+// global-fz-20
+// font-size-600
+// global-fz-32
+// global-fz-24
+// font-size-700
+// global-fz-40
+// global-fz-32
+// font-size-800
+// global-fz-48
+// global-fz-34
+// font-size-900
+// global-fz-56
+// global-fz-36
+// font-size-1000
+// global-fz-64
+// global-fz-38
+// font-size-1100
+// global-fz-72
+// global-fz-40
