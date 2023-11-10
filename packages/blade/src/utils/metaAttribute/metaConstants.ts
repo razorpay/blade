@@ -57,6 +57,8 @@ export const MetaConstants = {
   TabItem: 'tab-item',
   TabPanel: 'tab-panel',
   TabIndicator: 'tab-indicator',
+  TourPopover: 'tour-popover',
+  TourMask: 'tour-mask',
   Popover: 'popover',
   PopoverInteractiveWrapper: 'popover-interactive-wrapper',
   BottomSheet: 'bottom-sheet',
