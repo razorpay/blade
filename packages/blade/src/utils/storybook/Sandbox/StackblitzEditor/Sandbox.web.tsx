@@ -15,6 +15,7 @@ import {
   vitePackageJSON,
 } from '../baseCode';
 import type { SandboxStackBlitzProps } from '../types';
+import { pnpmLockCode } from './pnpmLockCode';
 import BaseBox from '~components/Box/BaseBox';
 
 const useStackblitzSetup = ({
@@ -56,6 +57,7 @@ const useStackblitzSetup = ({
         'Logger.tsx': logger,
         'vite.config.ts': viteConfigTS,
         'tsconfig.json': tsConfigJSON,
+        'pnpm-lock.yaml': pnpmLockCode,
         'package.json': vitePackageJSON,
         '.npmrc': `auto-install-peers = false`,
       },
