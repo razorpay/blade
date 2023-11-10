@@ -22,11 +22,11 @@ exports[`<Tour /> should render 1`] = `
   justify-content: center;
 }
 
-.c5 {
+.c6 {
   z-index: 1100;
 }
 
-.c7 {
+.c8 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -38,7 +38,7 @@ exports[`<Tour /> should render 1`] = `
   gap: 12px;
 }
 
-.c8 {
+.c9 {
   position: absolute;
   z-index: 1;
   padding: 4px;
@@ -47,7 +47,7 @@ exports[`<Tour /> should render 1`] = `
   border-radius: 9999px;
 }
 
-.c10 {
+.c11 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -63,7 +63,7 @@ exports[`<Tour /> should render 1`] = `
   gap: 24px;
 }
 
-.c12 {
+.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -71,7 +71,7 @@ exports[`<Tour /> should render 1`] = `
   gap: 12px;
 }
 
-.c6 {
+.c7 {
   width: 100%;
   max-width: 328px;
   position: relative;
@@ -87,7 +87,7 @@ exports[`<Tour /> should render 1`] = `
   transform: translateY(-4px);
 }
 
-.c9 {
+.c10 {
   border: none;
   cursor: pointer;
   padding: 0;
@@ -114,17 +114,17 @@ exports[`<Tour /> should render 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c9:hover {
+.c10:hover {
   color: hsla(217,18%,45%,1);
 }
 
-.c9:focus-visible {
+.c10:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   color: hsla(217,18%,45%,1);
 }
 
-.c9:active {
+.c10:active {
   color: hsla(217,18%,45%,1);
 }
 
@@ -155,7 +155,7 @@ exports[`<Tour /> should render 1`] = `
   padding: 0;
 }
 
-.c11 {
+.c12 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -168,7 +168,7 @@ exports[`<Tour /> should render 1`] = `
   padding: 0;
 }
 
-.c14 {
+.c15 {
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -180,6 +180,15 @@ exports[`<Tour /> should render 1`] = `
   text-align: center;
   margin: 0;
   padding: 0;
+}
+
+.c5 {
+  -webkit-animation: iNqBts 2s;
+  animation: iNqBts 2s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+  animation-direction: alternate;
 }
 
 .c0 {
@@ -245,7 +254,7 @@ exports[`<Tour /> should render 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c13 {
+.c14 {
   min-height: 32px;
   width: auto;
   cursor: pointer;
@@ -281,24 +290,24 @@ exports[`<Tour /> should render 1`] = `
   position: relative;
 }
 
-.c13:hover {
+.c14:hover {
   background-color: hsla(223,95%,48%,1);
   border-color: hsla(223,95%,48%,1);
 }
 
-.c13:active {
+.c14:active {
   background-color: hsla(230,100%,42%,1);
   border-color: hsla(230,100%,42%,1);
 }
 
-.c13:focus-visible {
+.c14:focus-visible {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c13 * {
+.c14 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -378,6 +387,7 @@ exports[`<Tour /> should render 1`] = `
       viewBox="0 0 1024 768"
     >
       <rect
+        class="c5"
         fill="transparent"
         height="10"
         opacity="0"
@@ -426,7 +436,7 @@ exports[`<Tour /> should render 1`] = `
     />
     <div
       aria-labelledby="popover-title-1"
-      class="c5"
+      class="c6"
       data-blade-component="tour-popover"
       id=":r1:"
       role="dialog"
@@ -434,20 +444,20 @@ exports[`<Tour /> should render 1`] = `
       tabindex="-1"
     >
       <div
-        class=" c6"
+        class=" c7"
         data-blade-component="base-box"
       >
         <div
-          class="c7"
+          class="c8"
           data-blade-component="base-box"
         >
           <div
-            class="c8"
+            class="c9"
             data-blade-component="base-box"
           >
             <button
               aria-label="Close"
-              class="c9"
+              class="c10"
               data-blade-component="icon-button"
               type="button"
             >
@@ -484,11 +494,11 @@ exports[`<Tour /> should render 1`] = `
             data-blade-component="base-box"
           >
             <div
-              class="c10"
+              class="c11"
               data-blade-component="box"
             >
               <p
-                class="c11"
+                class="c12"
                 data-blade-component="text"
               >
                 1
@@ -496,11 +506,11 @@ exports[`<Tour /> should render 1`] = `
                 2
               </p>
               <div
-                class="c12"
+                class="c13"
                 data-blade-component="box"
               >
                 <button
-                  class="c13"
+                  class="c14"
                   data-blade-component="button"
                   role="button"
                   type="button"
@@ -510,7 +520,7 @@ exports[`<Tour /> should render 1`] = `
                     data-blade-component="base-box"
                   >
                     <div
-                      class="c14"
+                      class="c15"
                       data-blade-component="base-text"
                     >
                       Next
