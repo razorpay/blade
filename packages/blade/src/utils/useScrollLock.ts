@@ -4,7 +4,7 @@ import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 import React from 'react';
 
 type UseScrollLockProps = {
-  targetRef: React.RefObject<Element>;
+  targetRef?: React.RefObject<Element>;
   enabled: boolean;
   reserveScrollBarGap: boolean;
 };
@@ -53,7 +53,7 @@ export function useScrollLock({
       return;
     }
 
-    const target = targetRef.current;
+    const target = targetRef ? targetRef.current : document.body;
     active.current = false;
 
     ref.current = {

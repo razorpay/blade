@@ -39,4 +39,5 @@ export * from './Accordion';
 export * from './Collapsible';
 export * from './Tooltip';
 export * from './Popover';
+export * from './SpotlightPopoverTour';
 export * from './types';
