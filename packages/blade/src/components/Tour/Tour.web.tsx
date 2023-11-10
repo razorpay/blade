@@ -148,6 +148,7 @@ const Tour = ({
   // reset the mask size when the tour is closed
   React.useEffect(() => {
     if (isOpen) {
+      updateMaskSize();
       onOpenChange?.({ isOpen });
     }
     if (!isOpen) {
