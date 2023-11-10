@@ -76,11 +76,11 @@ type TourProps = {
   /**
    * Callback when the tour is opened or closed
    */
-  onOpenChange: ({ isOpen }: { isOpen: boolean }) => void;
+  onOpenChange?: ({ isOpen }: { isOpen: boolean }) => void;
   /**
    * Callback which fires when the `stopTour` method is called from the `steps` array
    */
-  onFinish: () => void;
+  onFinish?: () => void;
   /**
    * Callback when the active step changes
    */

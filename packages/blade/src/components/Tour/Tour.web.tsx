@@ -132,7 +132,7 @@ const Tour = ({
   // Update the size of the mask when the active step changes
   useIsomorphicLayoutEffect(() => {
     updateMaskSize();
-  }, [activeStep, refIdMap, steps, updateMaskSize]);
+  }, [isOpen, activeStep, refIdMap, steps, updateMaskSize]);
 
   // Scroll into view when the active step changes
   useIsomorphicLayoutEffect(() => {

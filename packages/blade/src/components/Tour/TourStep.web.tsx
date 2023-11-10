@@ -4,6 +4,7 @@ import React from 'react';
 import { useTourContext } from './TourContext';
 import type { TourStepProps } from './types';
 import { mergeRefs } from '~utils/useMergeRefs';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 const _TourStep = ({ name, children }: TourStepProps): React.ReactElement => {
   const ref = React.useRef<HTMLElement>(null);
@@ -25,6 +26,6 @@ const _TourStep = ({ name, children }: TourStepProps): React.ReactElement => {
   });
 };
 
-const TourStep = React.memo(_TourStep);
+const TourStep = assignWithoutSideEffects(React.memo(_TourStep), { displayName: 'TourStep' });
 
 export { TourStep };
