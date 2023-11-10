@@ -21,6 +21,9 @@ const onStepChangeFn = jest.fn();
 const onOpenChangeFn = jest.fn();
 const onFinishFn = jest.fn();
 
+beforeAll(() => {
+  window.HTMLElement.prototype.scrollIntoView = jest.fn();
+});
 beforeEach(() => {
   onStepChangeFn.mockReset();
   onOpenChangeFn.mockReset();
