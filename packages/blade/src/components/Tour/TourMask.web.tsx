@@ -9,6 +9,7 @@ import { useWindowSize } from '~utils/useWindowSize';
 import { makeSpace, useTheme } from '~utils';
 import { makeMotionTime } from '~utils/makeMotionTime';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 const scaleIn = keyframes`
   from {
@@ -27,6 +28,15 @@ const fadeOut = keyframes`
   }
 `;
 
+const pulsingAnimation = keyframes`
+  0% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
+
 const AnimatedFade = styled.rect<{ animationType: FlattenSimpleInterpolation | null }>(
   ({ animationType }) =>
     animationType === null
@@ -36,39 +46,64 @@ const AnimatedFade = styled.rect<{ animationType: FlattenSimpleInterpolation | n
         `,
 );
 
+const StyledPlusing = styled.rect<{ animationType: FlattenSimpleInterpolation | null }>(
+  ({ animationType }) => {
+    return animationType === null
+      ? ''
+      : css`
+          ${animationType}
+        `;
+  },
+);
+
 type FadeRectProps = React.ComponentProps<'rect'> & {
   show: boolean;
 };
-const FadeRect = ({ show, children, ...rest }: FadeRectProps): React.ReactElement => {
-  const { theme } = useTheme();
+const FadeRect = React.memo(
+  ({ show, children, ...rest }: FadeRectProps): React.ReactElement => {
+    const { theme } = useTheme();
 
-  const duration = theme.motion.duration.gentle;
-  const enter = css`
-    animation: ${scaleIn} ${makeMotionTime(duration)}
-      ${theme.motion.easing.entrance.effective as string};
-  `;
+    const duration = theme.motion.duration.gentle;
+    const enter = css`
+      animation: ${scaleIn} ${makeMotionTime(duration)}
+        ${theme.motion.easing.entrance.effective as string};
+      animation-fill-mode: forwards;
+    `;
 
-  const exit = css`
-    animation: ${fadeOut} ${makeMotionTime(duration)}
-      ${theme.motion.easing.exit.effective as string};
-  `;
+    const exit = css`
+      animation: ${fadeOut} ${makeMotionTime(duration)}
+        ${theme.motion.easing.exit.effective as string};
+      animation-fill-mode: forwards;
+    `;
 
-  const { isMounted, isVisible } = usePresence(Boolean(show), {
-    transitionDuration: duration,
-    initialEnter: false,
-  });
+    const { isVisible } = usePresence(Boolean(show), {
+      transitionDuration: duration,
+      initialEnter: false,
+    });
 
-  return (
-    <>
-      {isMounted && (
-        // @ts-expect-error styled compoennt types are different from react types
-        <AnimatedFade animationType={isVisible ? enter : exit} {...rest}>
-          {children}
-        </AnimatedFade>
-      )}
-    </>
-  );
-};
+    return (
+      // @ts-expect-error styled compoennt types are different from react types
+      <AnimatedFade animationType={isVisible ? enter : exit} {...rest}>
+        {children}
+      </AnimatedFade>
+    );
+  },
+);
+
+const PulsingRect = React.memo(
+  (props: React.ComponentProps<'rect'>): React.ReactElement => {
+    const pulsing = css`
+      animation: ${pulsingAnimation} 2s;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+    `;
+
+    return (
+      // @ts-expect-error styled compoennt types are different from react types
+      <StyledPlusing animationType={pulsing} {...props} />
+    );
+  },
+);
 
 type TourMaskProps = {
   padding: number;
@@ -85,7 +120,7 @@ const absoluteFill = {
   zIndex: tourMaskZIndex,
 } as const;
 
-const TourMask = ({ padding, size, isTransitioning }: TourMaskProps): React.ReactElement => {
+const _TourMask = ({ padding, size, isTransitioning }: TourMaskProps): React.ReactElement => {
   const { theme } = useTheme();
   const { width: windowWidth, height: windowHeight } = useWindowSize();
 
@@ -107,7 +142,7 @@ const TourMask = ({ padding, size, isTransitioning }: TourMaskProps): React.Reac
       stroke="none"
       {...metaAttribute({ name: MetaConstants.TourMask })}
     >
-      <rect
+      <PulsingRect
         x={x + borderWidth / 2}
         y={y + borderWidth / 2}
         width={width - borderWidth}
@@ -145,5 +180,5 @@ const TourMask = ({ padding, size, isTransitioning }: TourMaskProps): React.Reac
   );
 };
 
+const TourMask = assignWithoutSideEffects(React.memo(_TourMask), { displayName: 'TourMask' });
 export { TourMask };
-export type { TourMaskRect as Rect };
