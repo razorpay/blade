@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/require-await */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React from 'react';
-import { SpotlightPopoverTour } from '../Tour';
+import { SpotlightPopoverTour } from '../Tour.web';
 import { SpotlightPopoverTourStep } from '../TourStep.web';
 import type { SpotlightPopoverStepRenderProps, SpotlightPopoverTourSteps } from '../types';
 import { SpotlightPopoverTourFooter } from '../TourFooter.web';
