@@ -78,7 +78,7 @@ type TourProps = {
    */
   onOpenChange: ({ isOpen }: { isOpen: boolean }) => void;
   /**
-   * Callback which fires when the tour has reached the last step.
+   * Callback which fires when the `stopTour` method is called from the `steps` array
    */
   onFinish: () => void;
   /**

@@ -147,6 +147,10 @@ const Tour = ({
 
   // reset the mask size when the tour is closed
   React.useEffect(() => {
+    if (isOpen) {
+      updateMaskSize();
+      onOpenChange?.({ isOpen });
+    }
     if (!isOpen) {
       setSize({
         x: 0,
@@ -155,6 +159,7 @@ const Tour = ({
         height: 0,
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
   const contextValue = useMemo(() => {
