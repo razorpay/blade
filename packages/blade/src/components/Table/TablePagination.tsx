@@ -15,10 +15,11 @@ type TablePaginationProps = {
   pageSize?: number;
   defaultPageSize?: number;
   currentPage?: number;
-  onPageChange?: (page: number) => void;
+  onPageChange?: ({ page }: { page: number }) => void;
+  onPageSizeChange?: ({ pageSize }: { pageSize: number }) => void;
 };
 
-const rowSizeOptions = [2, 3, 4, 5, 6, 7, 8, 9, 10];
+const rowSizeOptions = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50];
 
 const PageSelectionButton = styled.button<{ isSelected?: boolean }>(({ theme, isSelected }) => ({
   backgroundColor: isSelected
@@ -58,6 +59,7 @@ const TablePagination = ({
   pageSize: controlledPageSize,
   currentPage: controlledCurrentPage,
   onPageChange,
+  onPageSizeChange,
   defaultPageSize,
 }: TablePaginationProps): React.ReactElement => {
   const {
@@ -74,6 +76,10 @@ const TablePagination = ({
   );
 
   useEffect(() => {
+    setPaginationRowSize(currentPageSize);
+  }, []);
+
+  useEffect(() => {
     if (controlledPageSize && currentPaginationState?.size !== controlledPageSize) {
       setPaginationRowSize(controlledPageSize);
     }
@@ -88,7 +94,7 @@ const TablePagination = ({
   const totalPages = Math.ceil(totalItems / currentPageSize);
 
   const handlePageChange = (page: number): void => {
-    onPageChange?.(page);
+    onPageChange?.({ page });
     if (controlledCurrentPage) return;
     setPaginationPage(page);
     setCurrentPage(page);
@@ -98,10 +104,11 @@ const TablePagination = ({
     handlePageChange(totalPages - 1);
   }
 
-  const handlePageSizeChange = (size: number): void => {
+  const handlePageSizeChange = (pageSize: number): void => {
+    onPageSizeChange?.({ pageSize });
     if (controlledPageSize) return;
-    setPaginationRowSize(size);
-    setCurrentPageSize(size);
+    setPaginationRowSize(pageSize);
+    setCurrentPageSize(pageSize);
   };
 
   const shouldDisableNextPage = (): boolean => {
@@ -134,15 +141,12 @@ const TablePagination = ({
                 handlePageSizeChange(Number(values[0]));
               }}
               defaultValue={currentPageSize.toString()}
+              value={controlledPageSize?.toString()}
             />
             <DropdownOverlay>
               <ActionList>
                 {rowSizeOptions.map((item, index) => (
-                  <ActionListItem
-                    key={index}
-                    title={(index + 1).toString()}
-                    value={(index + 1).toString()}
-                  />
+                  <ActionListItem key={index} title={item.toString()} value={item.toString()} />
                 ))}
               </ActionList>
             </DropdownOverlay>
