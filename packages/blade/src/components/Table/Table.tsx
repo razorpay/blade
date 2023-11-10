@@ -144,9 +144,6 @@ const Table: React.FC<TableProps> = ({
       position: ${isHeaderSticky ? 'sticky' : 'relative'};
       top: ${isHeaderSticky ? '0' : undefined};
     };`,
-    Body: `
-  
-    `,
   });
 
   useEffect(() => {
