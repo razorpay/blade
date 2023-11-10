@@ -27,8 +27,8 @@ A table component helps in displaying data in a grid format, through rows and co
     - [TableFooterRow](#tablefooterrow)
     - [TableFooterCell](#tablefootercell)
     - [TablePagination](#tablepagination)
-      - [`PaginationChangeEvent`](#paginationchangeevent)
-      - [`RowCountPickerChangeEvent`](#rowcountpickerchangeevent)
+      - [`PageChangeEvent`](#pagechangeevent)
+      - [`onPageSizeChange`](#onpagesizechange)
   - [API Design Decisions](#api-design-decisions)
     - [1. Composable API](#1-composable-api)
       - [Pros](#pros)
@@ -98,15 +98,13 @@ We don't have enough use-cases for the following features at Razorpay and hence 
     showZebraStripes={true}
     pagination={()=>(
         <TablePagination
-          limit={10}
-          offset={0}
+          defaultPageSize={10}
           navigationType='compact'
           label='1-10 of 100'
           labelPosition='left'
-          showRowCountPicker
-          rowCount='25'
-          onPaginationChange={console.log}
-          onRowCountPickerChange={console.log}
+          showPageSizePicker
+          onPageChange={console.log}
+          onPageSizeChange={console.log}
         />
       )}
    toolbar={()=>(
@@ -287,26 +285,26 @@ type SelectionChangeEvent = (selectedItems: TableNode[]) => void;
 | columnEnd   | `number`                    | undefined | This defines the end column of the table footer cell                         |          |
 
 #### TablePagination
-| Prop                   | Type                        | Default   | Description                                                                                                              | Required |
-| ---------------------- | --------------------------- | --------- | ------------------------------------------------------------------------------------------------------------------------ | -------- |
-| limit                  | `number`                    | undefined | This defines the number of items to be shown per page                                                                    | ✅        |
-| offset                 | `number`                    | undefined | This defines the offset of the items to be shown per page                                                                | ✅        |
-| navigationType         | `compact`, `expanded`       | `compact` | This defines the type of pagination to be shown. Possible values are 'compact' & 'expanded'                              |
-| label                  | `string`                    | undefined | This defines the label to be shown in the pagination                                                                     |
-| labelPosition          | `left`, `right`             | `right`   | This defines the position of the label. Possible values are 'left' & 'right'                                             |
-| showRowCountPicker     | `boolean`                   | `false`   | This defines whether the row count picker should be shown or not                                                         |
-| rowCount               | `number`                    | undefined | This defines the number of rows to be shown per page                                                                     |
-| onPaginationChange     | `PaginationChangeEvent`     | undefined | This is a callback function that is called when the pagination changes. It is called with the offset as an argument      |
-| onRowCountPickerChange | `RowCountPickerChangeEvent` | undefined | This is a callback function that is called when the row count picker changes. It is called with the count as an argument |
+| Prop               | Type                  | Default                          | Description                                                                                                                                                                  | Required |
+| ------------------ | --------------------- | -------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| currentPage        | `number`              | undefined                        | This defines the current page of the table. If you pass currentPage, this becomes a controlled component and you will have to manage page selection state on your own        |          |
+| pageSize           | `number`              | undefined                        | This defines the number of items to be shown per page. If you pass pageSize, this becomes a controlled component and you will have to manage the page size state on your own |          |
+| defaultPageSize    | `number`              | 10 (to be confirmed with design) | This defines the default number of items to be shown per page                                                                                                                |          |
+| navigationType     | `compact`, `expanded` | `compact`                        | This defines the type of pagination to be shown. Possible values are 'compact' & 'expanded'                                                                                  |
+| label              | `string`              | undefined                        | This defines the label to be shown in the pagination                                                                                                                         |
+| labelPosition      | `left`, `right`       | `right`                          | This defines the position of the label. Possible values are 'left' & 'right'                                                                                                 |
+| showPageSizePicker | `boolean`             | `false`                          | This defines whether the page size picker should be shown or not                                                                                                             |
+| onPageChange       | `PageChangeEvent`     | undefined                        | This is a callback function that is called when the currentPage changes                                                                                                      |
+| onPageSizeChange   | `PageSizeChangeEvent` | undefined                        | This is a callback function that is called when the pageSize changes                                                                                                         |
 
-##### `PaginationChangeEvent`
+##### `PageChangeEvent`
 ```ts
-type PaginationChangeEvent = ({offset: number}) => void;
+type PageChangeEvent = ({page: number}) => void;
 ```
 
-##### `RowCountPickerChangeEvent`
+##### `onPageSizeChange`
 ```ts
-type RowCountPickerChangeEvent = ({count: number}) => void;
+type PageSizeChangeEvent = ({pageSize: number}) => void;
 ```
 
 ### API Design Decisions 
@@ -360,15 +358,13 @@ const onSortChange = ({ headerKey, sortType }) => {
     showZebraStripes={true}
     pagination={()=>(
         <TablePagination
-          limit={10}
-          offset={0}
+          defaultPageSize={10}
           navigationType='compact'
           label='1-10 of 100'
           labelPosition='left'
-          showRowCountPicker
-          rowCount='25'
-          onPaginationChange={console.log}
-          onRowCountPickerChange={console.log}
+          showPageSizePicker
+          onPageChange={console.log}
+          onPageSizeChange={console.log}
         />
       )}
    toolbar={()=>(
