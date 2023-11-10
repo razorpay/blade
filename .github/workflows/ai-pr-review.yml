@@ -1,0 +1,39 @@
+name: AI Code Review
+
+permissions:
+  contents: read
+  pull-requests: write
+
+on:
+  pull_request:
+  pull_request_review_comment:
+    types: [created]
+
+env:
+  GITHUB_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
+  OPENAI_API_KEY: ${{ secrets.OPENAI_CODEREVIEW_SECRET }}
+
+concurrency:
+  group: ${{ github.repository }}-${{ github.event.number || github.head_ref ||
+    github.sha }}-${{ github.workflow }}-${{ github.event_name ==
+    'pull_request_review_comment' && 'pr_comment' || 'pr' }}
+  cancel-in-progress: ${{ github.event_name != 'pull_request_review_comment' }}
+
+jobs:
+  review:
+    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
+    steps:
+      # - uses: razorpay/create-github-app-token@v1
+      #   name: Generate Github Token
+      #   id: app-token
+      #   with:
+      #     app-id: ${{ secrets.WORKFLOWGATEKEEPER_APP_ID }}
+      #     private-key: ${{ secrets.WORKFLOWGATEKEEPER_PRIVATEKEY }}
+      #     repositories: "goutils,error-mapping-module,proto,partnerships"
+      - uses: KUNAL13/ai-pr-reviewer@main
+        with:
+          debug: true
+          openai_base_url: https://devproductivity-codereview.openai.azure.com/openai/deployments/CodeReviewerGPT4
+          openai_light_model: gpt-4
+          openai_heavy_model: gpt-4
+          bot_icon: <img src="https://avatars.githubusercontent.com/u/7713209?s=41" alt="Image description" width="20" height="20">
