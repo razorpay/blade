@@ -23,7 +23,7 @@ const _CollapsibleBody = ({ children, testID, _width }: CollapsibleBodyProps): R
     <BaseBox
       id={collapsibleBodyId}
       // Just React Native things, need this 100% so collapsed content flows correctly inside Accordion
-      width={_width ?? "100%"}
+      width={_width ?? '100%'}
       {...makeAccessible({ role: 'region', hidden: !isExpanded })}
       {...metaAttribute({ name: MetaConstants.CollapsibleBody, testID })}
     >
