@@ -28,6 +28,15 @@ const fadeOut = keyframes`
   }
 `;
 
+const pulsingAnimation = keyframes`
+  0% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
+
 const AnimatedFade = styled.rect<{ animationType: FlattenSimpleInterpolation | null }>(
   ({ animationType }) =>
     animationType === null
@@ -35,6 +44,16 @@ const AnimatedFade = styled.rect<{ animationType: FlattenSimpleInterpolation | n
       : css`
           ${animationType}
         `,
+);
+
+const StyledPlusing = styled.rect<{ animationType: FlattenSimpleInterpolation | null }>(
+  ({ animationType }) => {
+    return animationType === null
+      ? ''
+      : css`
+          ${animationType}
+        `;
+  },
 );
 
 type FadeRectProps = React.ComponentProps<'rect'> & {
@@ -67,6 +86,21 @@ const FadeRect = React.memo(
       <AnimatedFade animationType={isVisible ? enter : exit} {...rest}>
         {children}
       </AnimatedFade>
+    );
+  },
+);
+
+const PulsingRect = React.memo(
+  (props: React.ComponentProps<'rect'>): React.ReactElement => {
+    const pulsing = css`
+      animation: ${pulsingAnimation} 2s;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+    `;
+
+    return (
+      // @ts-expect-error styled compoennt types are different from react types
+      <StyledPlusing animationType={pulsing} {...props} />
     );
   },
 );
@@ -108,7 +142,7 @@ const _TourMask = ({ padding, size, isTransitioning }: TourMaskProps): React.Rea
       stroke="none"
       {...metaAttribute({ name: MetaConstants.TourMask })}
     >
-      <rect
+      <PulsingRect
         x={x + borderWidth / 2}
         y={y + borderWidth / 2}
         width={width - borderWidth}
