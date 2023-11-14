@@ -53,10 +53,18 @@ type TableToolbarProps = {
 };
 
 const _TableToolbar = ({ children, title }: TableToolbarProps): React.ReactElement => {
-  const { selectedRows, deselectAllRows } = useTableContext();
+  const { selectedRows, deselectAllRows, currentPaginationState, totalItems } = useTableContext();
+  console.log('🚀 ~ file: TableToolbar.tsx:57 ~ currentPaginationState:', currentPaginationState);
   const { platform } = useTheme();
   const isSelected = selectedRows && selectedRows.length > 0;
-  const defaultTitle = 'Showing 1-10 Items'; // TODO: Use pagination data to show correct title
+  // currentPaginationState.page = 0
+  // currentPaginationState.pageSize = 10
+  // calculate Showing x-y items
+  const defaultTitle = currentPaginationState
+    ? `Showing ${currentPaginationState.page * currentPaginationState.size + 1}-${
+        currentPaginationState.page * currentPaginationState.size + currentPaginationState.size
+      } Items`
+    : `Showing 1 to ${totalItems} Items`;
   const selectedItemsCount = selectedRows ? selectedRows.length : 0;
   const selectedTitle = isSelected
     ? `${selectedRows.length} ${selectedItemsCount === 1 ? 'Item' : 'Items'} Selected`

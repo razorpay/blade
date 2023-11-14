@@ -233,6 +233,8 @@ const Table: React.FC<TableProps> = ({
     console.log('pagination', action, state);
   };
 
+  const hasPagination = Boolean(pagination);
+
   const paginationConfig = usePagination(data, {
     state: {
       page: 0,
@@ -240,12 +242,15 @@ const Table: React.FC<TableProps> = ({
     },
     onChange: handlePaginationChange,
   });
+
   const currentPaginationState = useMemo(() => {
-    return {
-      page: paginationConfig.state.page,
-      size: paginationConfig.state.size,
-    };
-  }, [paginationConfig.state]);
+    return hasPagination
+      ? {
+          page: paginationConfig.state.page,
+          size: paginationConfig.state.size,
+        }
+      : undefined;
+  }, [paginationConfig.state, hasPagination]);
 
   const setPaginationPage = useCallback(
     (page: number): void => {
@@ -319,7 +324,7 @@ const Table: React.FC<TableProps> = ({
           styledProps={{
             height,
           }}
-          pagination={pagination ? paginationConfig : null}
+          pagination={hasPagination ? paginationConfig : null}
         >
           {children}
         </StyledReactTable>
