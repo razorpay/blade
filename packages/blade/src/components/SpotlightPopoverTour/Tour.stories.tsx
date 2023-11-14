@@ -43,7 +43,7 @@ const Page = (): React.ReactElement => {
           SpotlightPopoverTourFooter,
           Box,
           Text,
-          Button]
+          Button
         } from '@razorpay/blade/components';
         
         function App(): React.ReactElement {
