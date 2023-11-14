@@ -435,7 +435,7 @@ const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
             onPageSizeChange={console.log}
           />
         }
-        height="400px"
+        // height="400px"
       >
         {(tableData) => (
           <>

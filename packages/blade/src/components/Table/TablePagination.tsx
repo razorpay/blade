@@ -19,7 +19,7 @@ type TablePaginationProps = {
   onPageSizeChange?: ({ pageSize }: { pageSize: number }) => void;
 };
 
-const rowSizeOptions = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50];
+const rowSizeOptions = [10, 15, 20, 25, 30, 35, 40, 45, 50];
 
 const PageSelectionButton = styled.button<{ isSelected?: boolean }>(({ theme, isSelected }) => ({
   backgroundColor: isSelected
@@ -129,7 +129,7 @@ const TablePagination = ({
         justifyContent="flex-end"
         alignItems="center"
       >
-        <BaseBox width="65px">
+        <BaseBox>
           <Dropdown selectionType="single">
             <SelectInput
               accessibilityLabel="Page Size"
@@ -146,7 +146,11 @@ const TablePagination = ({
             <DropdownOverlay>
               <ActionList>
                 {rowSizeOptions.map((item, index) => (
-                  <ActionListItem key={index} title={item.toString()} value={item.toString()} />
+                  <ActionListItem
+                    key={index}
+                    title={`${item.toString()} rows/page`}
+                    value={item.toString()}
+                  />
                 ))}
               </ActionList>
             </DropdownOverlay>
