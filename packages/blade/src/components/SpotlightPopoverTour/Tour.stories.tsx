@@ -24,8 +24,8 @@ import { Link } from '~components/Link';
 const Page = (): React.ReactElement => {
   return (
     <StoryPageWrapper
-      componentName="Tour"
-      componentDescription="The Tour component is used to provide context as well as enable users to take certain actions on it. These are used to highlight a new feature or provide a guided tour to a new user."
+      componentName="SpotlightPopoverTour"
+      componentDescription="The SpotlightPopoverTour component is used to provide context as well as enable users to take certain actions on it. These are used to highlight a new feature or provide a guided tour to a new user."
       figmaURL={{
         paymentTheme:
           'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=63871%3A13263&mode=dev',
@@ -37,7 +37,14 @@ const Page = (): React.ReactElement => {
       <Sandbox>
         {`
         import React from 'react';
-        import { Tour, TourStep, TourFooter, Box, Text, Button } from '@razorpay/blade/components';
+        import { 
+          SpotlightPopoverTour,
+          SpotlightPopoverTourStep,
+          SpotlightPopoverTourFooter,
+          Box,
+          Text,
+          Button]
+        } from '@razorpay/blade/components';
         
         function App(): React.ReactElement {
           const [activeStep, setActiveStep] = React.useState(0);
@@ -53,7 +60,7 @@ const Page = (): React.ReactElement => {
               >
                 {isOpen ? 'Tour In Progress' : 'Start Tour'}
               </Button>
-              <Tour
+              <SpotlightPopoverTour
                 steps={steps}
                 isOpen={isOpen}
                 activeStep={activeStep}
@@ -72,18 +79,18 @@ const Page = (): React.ReactElement => {
                 }}
               >
                 <Box width="100%" display="flex" gap="spacing.4">
-                  <TourStep name="step-1">
+                  <SpotlightPopoverTourStep name="step-1">
                     <Box padding="spacing.4" backgroundColor="brand.gray.400.lowContrast">
                       <Text>Step 1 </Text>
                     </Box>
-                  </TourStep>
-                  <TourStep name="step-2">
+                  </SpotlightPopoverTourStep>
+                  <SpotlightPopoverTourStep name="step-2">
                     <Box padding="spacing.4" backgroundColor="brand.gray.400.lowContrast">
                       <Text>Step 2 </Text>
                     </Box>
-                  </TourStep>
+                  </SpotlightPopoverTourStep>
                 </Box>
-              </Tour>
+              </SpotlightPopoverTour>
             </Box>
           );
         }
