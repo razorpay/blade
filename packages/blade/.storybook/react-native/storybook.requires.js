@@ -109,7 +109,6 @@ const getStories = () => {
     './src/components/Typography/Display/Display.stories.tsx': require('../../src/components/Typography/Display/Display.stories.tsx'),
     './src/components/Typography/Heading/Heading.stories.tsx': require('../../src/components/Typography/Heading/Heading.stories.tsx'),
     './src/components/Typography/Text/Text.stories.tsx': require('../../src/components/Typography/Text/Text.stories.tsx'),
-    './src/components/Typography/Title/Title.stories.tsx': require('../../src/components/Typography/Title/Title.stories.tsx'),
     './src/components/VisuallyHidden/VisuallyHidden.stories.tsx': require('../../src/components/VisuallyHidden/VisuallyHidden.stories.tsx'),
     './src/storybook-recipes/AccessibilityInterop/AccessibilityInteropDemo.stories.tsx': require('../../src/storybook-recipes/AccessibilityInterop/AccessibilityInteropDemo.stories.tsx'),
     './src/storybook-recipes/SimpleDashboard.stories.tsx': require('../../src/storybook-recipes/SimpleDashboard.stories.tsx'),

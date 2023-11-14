@@ -80,7 +80,7 @@ const getProps = <T extends { variant: HeadingVariant }>({
   const props: Omit<BaseTextProps, 'children'> = {
     color: color ?? `surface.text.${type ?? 'normal'}.${colorContrast}`,
     fontSize: 200,
-    fontWeight: weight ?? 'bold',
+    fontWeight: weight ?? 'semibold',
     fontStyle: 'normal',
     lineHeight: 300,
     fontFamily: 'text',
@@ -133,7 +133,7 @@ export const Heading = <T extends { variant: HeadingVariant }>({
   variant = 'regular',
   size, // Not setting default value since the `size` should be undefined with variant="subheading"
   type = 'normal',
-  weight = 'bold',
+  weight = 'semibold',
   contrast = 'low',
   color,
   children,
