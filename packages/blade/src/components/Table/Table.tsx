@@ -230,7 +230,7 @@ const Table: React.FC<TableProps> = ({
 
   // Pagination
   const handlePaginationChange: MiddlewareFunction = (action, state) => {
-    console.log('pagination', action, state);
+    // console.log('pagination', action, state);
   };
 
   const hasPagination = Boolean(pagination);

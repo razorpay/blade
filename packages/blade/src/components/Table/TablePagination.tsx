@@ -19,7 +19,7 @@ type TablePaginationProps = {
   onPageSizeChange?: ({ pageSize }: { pageSize: number }) => void;
 };
 
-const rowSizeOptions = [10, 15, 20, 25, 30, 35, 40, 45, 50, 60];
+const rowSizeOptions = [1, 10, 15, 20, 25, 30, 35, 40, 45, 50, 60];
 
 const PageSelectionButton = styled.button<{ isSelected?: boolean }>(({ theme, isSelected }) => ({
   backgroundColor: isSelected
@@ -54,6 +54,84 @@ const PageSelectionButton = styled.button<{ isSelected?: boolean }>(({ theme, is
       : getIn(theme.colors, tablePagination.pageSelectionButton.backgroundColorActive),
   },
 }));
+const getPaginationButtons = ({
+  currentSelection,
+  totalPages,
+}: {
+  currentSelection: number;
+  totalPages: number;
+}): {
+  middleItems: number[];
+  showStartEllipsis: boolean;
+  showEndEllipsis: boolean;
+  firstItem: number;
+  lastItem: number;
+} => {
+  const halfRange = 2;
+  const minMiddleItems = 5;
+
+  // return if totalPages is less than minMiddleItems
+  if (totalPages <= minMiddleItems) {
+    return {
+      middleItems: Array.from({ length: totalPages - 2 }, (_, index) => index + 2),
+      showStartEllipsis: false,
+      showEndEllipsis: false,
+      firstItem: 1,
+      lastItem: totalPages,
+    };
+  }
+
+  let start = Math.max(1, currentSelection - halfRange);
+  let end = Math.min(totalPages, start + 2 * halfRange);
+
+  // Ensure at least minMiddleItems items in middleItems
+  while (end - start + 1 < minMiddleItems && (start > 1 || end < totalPages)) {
+    if (start > 1) {
+      start--;
+    }
+    if (end < totalPages) {
+      end++;
+    }
+  }
+
+  let showStartEllipsis = false;
+  let showEndEllipsis = false;
+
+  const paginationButtons: number[] = [];
+  for (let i = start; i <= end; i++) {
+    paginationButtons.push(i);
+  }
+
+  // if paginationButtons contains 1, remove it
+  if (paginationButtons.includes(1)) {
+    paginationButtons.shift();
+    // add an extra item at the end if length of total pages is greater than minMiddleItems+1
+    if (totalPages > minMiddleItems + 1) paginationButtons.push(end + 1);
+  }
+
+  // if paginationButtons contains totalPages, remove it
+  if (paginationButtons.includes(totalPages)) {
+    paginationButtons.pop();
+    // add an extra item at the beginning if length of total pages is greater than minMiddleItems+1
+    if (totalPages > minMiddleItems + 1) paginationButtons.unshift(start - 1);
+  }
+
+  if (paginationButtons[0] > 2) {
+    showStartEllipsis = true;
+  }
+
+  if (paginationButtons[paginationButtons.length - 1] + 1 < totalPages) {
+    showEndEllipsis = true;
+  }
+
+  return {
+    middleItems: paginationButtons,
+    showStartEllipsis,
+    showEndEllipsis,
+    firstItem: 1,
+    lastItem: totalPages,
+  };
+};
 
 const TablePagination = ({
   pageSize: controlledPageSize,
@@ -114,6 +192,11 @@ const TablePagination = ({
   const shouldDisableNextPage = (): boolean => {
     return currentPage >= totalPages - 1;
   };
+  const paginationButtons = getPaginationButtons({
+    currentSelection: currentPage + 1,
+    totalPages,
+  });
+  console.log('🚀 ~ file: TablePagination.tsx:199 ~ paginationButtons:', paginationButtons);
 
   return (
     <BaseBox
@@ -170,53 +253,65 @@ const TablePagination = ({
           {totalPages > 1 && (
             <BaseBox gap="spacing.1" display="flex" flexDirection="row">
               <PageSelectionButton
-                onClick={() => handlePageChange(0)}
-                isSelected={currentPage === 0}
+                onClick={() => handlePageChange(paginationButtons.firstItem - 1)}
+                isSelected={currentPage === paginationButtons.firstItem - 1}
               >
                 <Text
                   size="medium"
                   color={
-                    currentPage === 0
+                    currentPage === paginationButtons.firstItem - 1
                       ? tablePagination.pageSelectionButton.textColorSelected
                       : tablePagination.pageSelectionButton.textColor
                   }
                 >
-                  1
+                  {paginationButtons.firstItem}
                 </Text>
               </PageSelectionButton>
-              {Array(totalPages - 2)
-                .fill('')
-                .map((_, index) => (
-                  <PageSelectionButton
-                    key={index + 1}
-                    onClick={() => handlePageChange(index + 1)}
-                    isSelected={currentPage === index + 1}
+              {paginationButtons.showStartEllipsis && (
+                <PageSelectionButton>
+                  <Text size="medium" color={tablePagination.pageSelectionButton.textColor}>
+                    {'...'}
+                  </Text>
+                </PageSelectionButton>
+              )}
+              {paginationButtons.middleItems.map((item) => (
+                <PageSelectionButton
+                  key={item - 1}
+                  onClick={() => handlePageChange(item - 1)}
+                  isSelected={currentPage === item - 1}
+                >
+                  <Text
+                    size="medium"
+                    color={
+                      currentPage === item - 1
+                        ? tablePagination.pageSelectionButton.textColorSelected
+                        : tablePagination.pageSelectionButton.textColor
+                    }
                   >
-                    <Text
-                      size="medium"
-                      color={
-                        currentPage === index + 1
-                          ? tablePagination.pageSelectionButton.textColorSelected
-                          : tablePagination.pageSelectionButton.textColor
-                      }
-                    >
-                      {index + 2}
-                    </Text>
-                  </PageSelectionButton>
-                ))}
+                    {item}
+                  </Text>
+                </PageSelectionButton>
+              ))}
+              {paginationButtons.showEndEllipsis && (
+                <PageSelectionButton>
+                  <Text size="medium" color={tablePagination.pageSelectionButton.textColor}>
+                    {'...'}
+                  </Text>
+                </PageSelectionButton>
+              )}
               <PageSelectionButton
-                onClick={() => handlePageChange(totalPages - 1)}
-                isSelected={currentPage === totalPages - 1}
+                onClick={() => handlePageChange(paginationButtons.lastItem - 1)}
+                isSelected={currentPage === paginationButtons.lastItem - 1}
               >
                 <Text
                   size="medium"
                   color={
-                    currentPage === totalPages - 1
+                    currentPage === paginationButtons.lastItem - 1
                       ? tablePagination.pageSelectionButton.textColorSelected
                       : tablePagination.pageSelectionButton.textColor
                   }
                 >
-                  {totalPages}
+                  {paginationButtons.lastItem}
                 </Text>
               </PageSelectionButton>
             </BaseBox>
