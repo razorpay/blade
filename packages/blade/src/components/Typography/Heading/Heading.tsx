@@ -23,6 +23,7 @@ type HeadingCommonProps = {
    */
   color?: BaseTextProps['color'];
   type?: TextTypes;
+  weight?: Extract<BaseTextProps['fontWeight'], 'regular' | 'semibold'>;
   contrast?: ColorContrastTypes;
   children: React.ReactNode;
   textAlign?: BaseTextProps['textAlign'];
@@ -36,8 +37,7 @@ type HeadingNormalVariant = HeadingCommonProps & {
    *
    * @default small
    */
-  size?: Extract<BaseTextSizes, 'small' | 'medium' | 'large'>;
-  weight?: keyof Theme['typography']['fonts']['weight'];
+  size?: Extract<BaseTextSizes, 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge'>;
 };
 
 type HeadingSubHeadingVariant = HeadingCommonProps & {
@@ -79,7 +79,7 @@ const getProps = <T extends { variant: HeadingVariant }>({
   const colorContrast: keyof ColorContrast = contrast ? `${contrast!}Contrast` : 'lowContrast';
   const props: Omit<BaseTextProps, 'children'> = {
     color: color ?? `surface.text.${type ?? 'normal'}.${colorContrast}`,
-    fontSize: 200,
+    fontSize: 300,
     fontWeight: weight ?? 'semibold',
     fontStyle: 'normal',
     lineHeight: 300,
@@ -91,17 +91,25 @@ const getProps = <T extends { variant: HeadingVariant }>({
 
   if (variant === 'regular') {
     if (!size || size === 'small') {
-      props.fontSize = 200;
+      props.fontSize = 300;
       props.lineHeight = 300;
       props.as = 'h6';
     } else if (size === 'medium') {
-      props.fontSize = 300;
-      props.lineHeight = 200;
-      props.as = 'h5';
-    } else if (size === 'large') {
       props.fontSize = 400;
       props.lineHeight = 400;
+      props.as = 'h5';
+    } else if (size === 'large') {
+      props.fontSize = 500;
+      props.lineHeight = 500;
       props.as = 'h4';
+    } else if (size === 'xlarge') {
+      props.fontSize = 600;
+      props.lineHeight = 600;
+      props.as = 'h3';
+    } else if (size === '2xlarge') {
+      props.fontSize = 700;
+      props.lineHeight = 700;
+      props.as = 'h2';
     }
   } else if (variant === 'subheading') {
     if (__DEV__) {
@@ -118,7 +126,8 @@ const getProps = <T extends { variant: HeadingVariant }>({
         });
       }
     }
-    props.fontSize = 75;
+    // @TODO: remove variant subheading
+    props.fontSize = 100;
     props.lineHeight = 50;
     props.as = 'p';
   }
