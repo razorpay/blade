@@ -19,7 +19,7 @@ type TablePaginationProps = {
   onPageSizeChange?: ({ pageSize }: { pageSize: number }) => void;
 };
 
-const rowSizeOptions = [10, 15, 20, 25, 30, 35, 40, 45, 50];
+const rowSizeOptions = [10, 15, 20, 25, 30, 35, 40, 45, 50, 60];
 
 const PageSelectionButton = styled.button<{ isSelected?: boolean }>(({ theme, isSelected }) => ({
   backgroundColor: isSelected
@@ -167,28 +167,60 @@ const TablePagination = ({
             }}
             isDisabled={currentPage <= 0}
           />
-          <BaseBox gap="spacing.1" display="flex" flexDirection="row">
-            {Array(totalPages)
-              .fill('')
-              .map((_, index) => (
-                <PageSelectionButton
-                  key={index}
-                  onClick={() => handlePageChange(index)}
-                  isSelected={currentPage === index}
+          {totalPages > 1 && (
+            <BaseBox gap="spacing.1" display="flex" flexDirection="row">
+              <PageSelectionButton
+                onClick={() => handlePageChange(0)}
+                isSelected={currentPage === 0}
+              >
+                <Text
+                  size="medium"
+                  color={
+                    currentPage === 0
+                      ? tablePagination.pageSelectionButton.textColorSelected
+                      : tablePagination.pageSelectionButton.textColor
+                  }
                 >
-                  <Text
-                    size="medium"
-                    color={
-                      currentPage === index
-                        ? tablePagination.pageSelectionButton.textColorSelected
-                        : tablePagination.pageSelectionButton.textColor
-                    }
+                  1
+                </Text>
+              </PageSelectionButton>
+              {Array(totalPages - 2)
+                .fill('')
+                .map((_, index) => (
+                  <PageSelectionButton
+                    key={index + 1}
+                    onClick={() => handlePageChange(index + 1)}
+                    isSelected={currentPage === index + 1}
                   >
-                    {index + 1}
-                  </Text>
-                </PageSelectionButton>
-              ))}
-          </BaseBox>
+                    <Text
+                      size="medium"
+                      color={
+                        currentPage === index + 1
+                          ? tablePagination.pageSelectionButton.textColorSelected
+                          : tablePagination.pageSelectionButton.textColor
+                      }
+                    >
+                      {index + 2}
+                    </Text>
+                  </PageSelectionButton>
+                ))}
+              <PageSelectionButton
+                onClick={() => handlePageChange(totalPages - 1)}
+                isSelected={currentPage === totalPages - 1}
+              >
+                <Text
+                  size="medium"
+                  color={
+                    currentPage === totalPages - 1
+                      ? tablePagination.pageSelectionButton.textColorSelected
+                      : tablePagination.pageSelectionButton.textColor
+                  }
+                >
+                  {totalPages}
+                </Text>
+              </PageSelectionButton>
+            </BaseBox>
+          )}
           <Button
             size="small"
             icon={ChevronRightIcon}
