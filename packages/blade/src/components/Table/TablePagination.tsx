@@ -172,10 +172,17 @@ const TablePagination = ({
   const totalPages = Math.ceil(totalItems / currentPageSize);
 
   const handlePageChange = (page: number): void => {
-    onPageChange?.({ page });
+    let pageToJumpTo = page;
+    if (pageToJumpTo < 0) {
+      pageToJumpTo = 0;
+    } else if (pageToJumpTo > totalPages - 1) {
+      pageToJumpTo = totalPages - 1;
+    }
+
+    onPageChange?.({ page: pageToJumpTo });
     if (controlledCurrentPage) return;
-    setPaginationPage(page);
-    setCurrentPage(page);
+    setPaginationPage(pageToJumpTo);
+    setCurrentPage(pageToJumpTo);
   };
 
   if (currentPage > totalPages - 1) {
@@ -268,7 +275,7 @@ const TablePagination = ({
                 </Text>
               </PageSelectionButton>
               {paginationButtons.showStartEllipsis && (
-                <PageSelectionButton>
+                <PageSelectionButton onClick={() => handlePageChange(currentPage - 5)}>
                   <Text size="medium" color={tablePagination.pageSelectionButton.textColor}>
                     {'...'}
                   </Text>
@@ -293,7 +300,7 @@ const TablePagination = ({
                 </PageSelectionButton>
               ))}
               {paginationButtons.showEndEllipsis && (
-                <PageSelectionButton>
+                <PageSelectionButton onClick={() => handlePageChange(currentPage + 5)}>
                   <Text size="medium" color={tablePagination.pageSelectionButton.textColor}>
                     {'...'}
                   </Text>
