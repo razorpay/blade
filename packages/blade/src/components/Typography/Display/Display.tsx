@@ -41,28 +41,28 @@ const getProps = ({
   const colorContrast: keyof ColorContrast = contrast ? `${contrast}Contrast` : 'lowContrast';
   const props: Omit<BaseTextProps, 'children'> = {
     color: color ?? `surface.text.${type ?? 'normal'}.${colorContrast}`,
-    fontSize: 1100,
-    fontWeight: 'bold',
+    fontSize: 800,
+    fontWeight: 'semibold',
     fontStyle: 'normal',
-    lineHeight: 900,
-    fontFamily: 'text',
+    lineHeight: 800,
+    fontFamily: 'heading',
     accessibilityProps: isPlatformWeb ? {} : { role: 'heading' },
     componentName: 'display',
     testID,
   };
 
   if (size === 'small') {
-    props.fontSize = 1100;
-    props.lineHeight = 900;
+    props.fontSize = 800;
+    props.lineHeight = 800;
   } else if (size === 'medium') {
-    props.fontSize = 1200;
-    props.lineHeight = 1000;
+    props.fontSize = 900;
+    props.lineHeight = 900;
   } else if (size === 'large') {
-    props.fontSize = 1300;
-    props.lineHeight = 1100;
+    props.fontSize = 1000;
+    props.lineHeight = 1000;
   } else if (size === 'xlarge') {
-    props.fontSize = 1600;
-    props.lineHeight = 1500;
+    props.fontSize = 1100;
+    props.lineHeight = 1100;
   }
 
   props.as = isPlatformWeb ? 'h1' : undefined;
