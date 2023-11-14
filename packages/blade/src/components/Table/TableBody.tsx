@@ -8,7 +8,7 @@ import type { TableProps } from './Table';
 import { Text } from '~components/Typography';
 import type { CheckboxProps } from '~components/Checkbox';
 import { Checkbox } from '~components/Checkbox';
-import { makeMotionTime, makeSpace } from '~utils';
+import { makeBorderSize, makeMotionTime, makeSpace } from '~utils';
 
 type TableBodyProps = {
   children: React.ReactNode;
@@ -60,6 +60,7 @@ const StyledCell = styled(Cell)<{
     paddingBottom: makeSpace(getIn(theme, tableRow.paddingBottom[rowDensity])),
     paddingLeft: makeSpace(getIn(theme, tableRow.paddingLeft[rowDensity])),
     paddingRight: makeSpace(getIn(theme, tableRow.paddingRight[rowDensity])),
+    borderRadius: makeBorderSize(theme.border.radius.small),
     ...(!showStripes && {
       borderBottomWidth: makeSpace(getIn(theme.border.width, tableRow.borderBottomWidth)),
       borderBottomColor: getIn(theme.colors, tableRow.borderBottomColor),
@@ -67,6 +68,10 @@ const StyledCell = styled(Cell)<{
     }),
     '& div:first-child': {
       pointerEvents: isSelectable ? 'none' : 'auto',
+    },
+    '&: focus-visible': {
+      outline: 'none',
+      boxShadow: `0px 0px 0px 4px ${getIn(theme.colors, tableRow.focusRingColor)} inset`,
     },
   },
 }));
@@ -76,7 +81,12 @@ const TableCell = ({ children }: TableCellProps): React.ReactElement => {
   const { selectionType, rowDensity, showStripes } = useTableContext();
   const isSelectable = Boolean(selectionType);
   return (
-    <StyledCell isSelectable={isSelectable} rowDensity={rowDensity} showStripes={showStripes}>
+    <StyledCell
+      tabIndex={0}
+      isSelectable={isSelectable}
+      rowDensity={rowDensity}
+      showStripes={showStripes}
+    >
       {isChildrenString ? <Text size="medium">{children}</Text> : children}
     </StyledCell>
   );
@@ -119,6 +129,10 @@ const StyledRow = styled(Row)<{ isSelectable: boolean; showStripes?: boolean }>(
             cursor: 'pointer',
           }
         : undefined,
+      '&:focus': {
+        outline: 'none',
+        boxShadow: `0 0 0 2px ${getIn(theme.colors, 'brand.primary.300')}`,
+      },
     },
   }),
 );

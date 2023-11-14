@@ -435,7 +435,7 @@ const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
             onPageSizeChange={console.log}
           />
         }
-        // height="400px"
+        height="400px"
       >
         {(tableData) => (
           <>
@@ -450,7 +450,7 @@ const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
             </TableHeader>
             <TableBody>
               {tableData.map((tableItem, index) => (
-                <TableRow key={index} item={tableItem}>
+                <TableRow key={index} item={tableItem} index={index}>
                   <TableCell>{tableItem.id}</TableCell>
                   <TableCell>{tableItem.name}</TableCell>
                   <TableCell>

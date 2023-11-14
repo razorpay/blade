@@ -96,16 +96,22 @@ const StyledHeaderCell = styled(HeaderCell)(({ theme }) => ({
     borderTopColor: getIn(theme.colors, tableHeader.borderBottomAndTopColor),
     borderBottomStyle: 'solid',
     borderTopStyle: 'solid',
+    borderRadius: theme.border.radius.small,
     '> div': {
       backgroundColor: getIn(theme.colors, tableHeader.backgroundColor),
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'space-between',
       height: '100%',
+      borderRadius: theme.border.radius.small,
       paddingTop: makeSpace(getIn(theme, tableHeader.paddingTop)),
       paddingBottom: makeSpace(getIn(theme, tableHeader.paddingBottom)),
       paddingLeft: makeSpace(getIn(theme, tableHeader.paddingLeft)),
       paddingRight: makeSpace(getIn(theme, tableHeader.paddingRight)),
+    },
+    '&:focus-visible': {
+      boxShadow: `0px 0px 0px 4px ${theme.colors.brand.primary[400]} inset`,
+      outline: 'none',
     },
   },
 }));
@@ -115,7 +121,7 @@ const _TableHeaderCell = ({ children, headerKey }: TableHeaderCellProps): React.
   const isChildrenString = typeof children === 'string';
   const isSortable = Boolean(currentSortedState.sortableColumns?.find((key) => key === headerKey));
   return (
-    <StyledHeaderCell>
+    <StyledHeaderCell tabIndex={0}>
       {isChildrenString ? (
         <Text size="medium" weight="bold">
           {children}

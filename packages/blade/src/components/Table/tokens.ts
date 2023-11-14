@@ -6,6 +6,7 @@ const tableHeader = {
   backgroundColor: 'brand.gray.a50.lowContrast', // TODO: Figure out non-opaque color
   borderBottomAndTopWidth: 'thin',
   borderBottomAndTopColor: 'surface.border.normal.lowContrast',
+  focusRingColor: 'brand.primary.400',
 } as const;
 
 const tableFooter = {
@@ -16,6 +17,7 @@ const tableFooter = {
   backgroundColor: 'brand.gray.a50.lowContrast', // TODO: Figure out non-opaque color
   borderBottomAndTopWidth: 'thin',
   borderBottomAndTopColor: 'surface.border.normal.lowContrast',
+  focusRingColor: 'brand.primary.400',
 } as const;
 
 const tableRow = {
@@ -44,6 +46,7 @@ const tableRow = {
   borderBottomColor: 'surface.border.normal.lowContrast',
   backgroundColorMotionEasing: 'easing.standard.effective',
   backgroundColorMotionDuration: 'duration.quick',
+  focusRingColor: 'brand.primary.400',
 } as const;
 
 const tableToolbar = {
@@ -66,7 +69,7 @@ const tablePagination = {
     backgroundColorDisabled: 'surface.background.level2.lowContrast',
     padding: 'spacing.2',
     borderRadius: 'small',
-    focusRingColor: 'brand.primary.300',
+    focusRingColor: 'brand.primary.400',
     textColor: 'surface.text.subtle.lowContrast',
     textColorSelected: 'brand.primary.500',
   },
