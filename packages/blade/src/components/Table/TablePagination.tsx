@@ -28,7 +28,7 @@ type TablePaginationProps = {
   showPageNumberSelector?: boolean;
 };
 
-const rowSizeOptions = [1, 10, 15, 20, 25, 30, 35, 40, 45, 50, 60];
+const rowSizeOptions = [1, 10, 15, 20, 25, 30, 35, 40, 45, 50, 60]; // TODO: Figure out default value
 
 const PageSelectionButton = styled.button<{ isSelected?: boolean }>(({ theme, isSelected }) => ({
   backgroundColor: isSelected
