@@ -16,6 +16,7 @@ import { Dropdown, DropdownOverlay } from '~components/Dropdown';
 import { SelectInput } from '~components/Input/DropdownInputTriggers';
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { Text } from '~components/Typography';
+import { useTheme } from '~utils';
 
 type TablePaginationProps = {
   pageSize?: number;
@@ -23,6 +24,8 @@ type TablePaginationProps = {
   currentPage?: number;
   onPageChange?: ({ page }: { page: number }) => void;
   onPageSizeChange?: ({ pageSize }: { pageSize: number }) => void;
+  showPageSizePicker?: boolean;
+  showPageNumberSelector?: boolean;
 };
 
 const rowSizeOptions = [1, 10, 15, 20, 25, 30, 35, 40, 45, 50, 60];
@@ -148,6 +151,8 @@ const TablePagination = ({
   onPageChange,
   onPageSizeChange,
   defaultPageSize = tablePagination.defaultPageSize,
+  showPageSizePicker, // TODO: Figure out default value
+  showPageNumberSelector, // TODO: Figure out default value
 }: TablePaginationProps): React.ReactElement => {
   const {
     setPaginationPage,
@@ -165,6 +170,8 @@ const TablePagination = ({
     undefined,
   );
 
+  const { platform } = useTheme();
+  const onMobile = platform === 'onMobile';
   useEffect(() => {
     setPaginationRowSize(currentPageSize);
   }, []);
@@ -230,34 +237,42 @@ const TablePagination = ({
         justifyContent="flex-end"
         alignItems="center"
       >
-        <BaseBox>
-          <Dropdown selectionType="single">
-            <SelectInput
-              accessibilityLabel="Page Size"
-              name="page-size"
-              label=""
-              labelPosition="inside-input"
-              placeholder=""
-              onChange={({ values }) => {
-                handlePageSizeChange(Number(values[0]));
-              }}
-              defaultValue={currentPageSize.toString()}
-              value={controlledPageSize?.toString()}
-            />
-            <DropdownOverlay>
-              <ActionList>
-                {rowSizeOptions.map((item, index) => (
-                  <ActionListItem
-                    key={index}
-                    title={`${item.toString()} rows/page`}
-                    value={item.toString()}
-                  />
-                ))}
-              </ActionList>
-            </DropdownOverlay>
-          </Dropdown>
-        </BaseBox>
-        <BaseBox display="flex" flexDirection="row" gap="spacing.2">
+        {showPageSizePicker && !onMobile && (
+          <BaseBox>
+            <Dropdown selectionType="single">
+              <SelectInput
+                accessibilityLabel="Page Size"
+                name="page-size"
+                label=""
+                labelPosition="inside-input"
+                placeholder=""
+                onChange={({ values }) => {
+                  handlePageSizeChange(Number(values[0]));
+                }}
+                defaultValue={currentPageSize.toString()}
+                value={controlledPageSize?.toString()}
+              />
+              <DropdownOverlay>
+                <ActionList>
+                  {rowSizeOptions.map((item, index) => (
+                    <ActionListItem
+                      key={index}
+                      title={`${item.toString()} rows/page`}
+                      value={item.toString()}
+                    />
+                  ))}
+                </ActionList>
+              </DropdownOverlay>
+            </Dropdown>
+          </BaseBox>
+        )}
+        <BaseBox
+          display="flex"
+          flexDirection="row"
+          gap="spacing.2"
+          flex={onMobile ? 1 : undefined}
+          alignItems="center"
+        >
           <Button
             size="small"
             icon={ChevronLeftIcon}
@@ -268,7 +283,12 @@ const TablePagination = ({
             }}
             isDisabled={currentPage <= 0}
           />
-          {totalPages > 1 && (
+          {onMobile && (
+            <BaseBox flex={1} alignItems="center" justifyContent="center">
+              <Text textAlign="center">{`Showing ${currentPage + 1} of ${totalPages} pages`}</Text>
+            </BaseBox>
+          )}
+          {totalPages > 1 && showPageNumberSelector && !onMobile && (
             <BaseBox gap="spacing.1" display="flex" flexDirection="row">
               <PageSelectionButton
                 onClick={() => handlePageChange(paginationButtons.firstItem - 1)}

@@ -433,6 +433,8 @@ const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
             onPageChange={console.log}
             defaultPageSize={10}
             onPageSizeChange={console.log}
+            showPageSizePicker
+            showPageNumberSelector
           />
         }
         // height="400px"
