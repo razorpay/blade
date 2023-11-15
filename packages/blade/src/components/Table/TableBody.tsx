@@ -60,7 +60,6 @@ const StyledCell = styled(Cell)<{
     paddingBottom: makeSpace(getIn(theme, tableRow.paddingBottom[rowDensity])),
     paddingLeft: makeSpace(getIn(theme, tableRow.paddingLeft[rowDensity])),
     paddingRight: makeSpace(getIn(theme, tableRow.paddingRight[rowDensity])),
-    borderRadius: makeBorderSize(theme.border.radius.small),
     ...(!showStripes && {
       borderBottomWidth: makeSpace(getIn(theme.border.width, tableRow.borderBottomWidth)),
       borderBottomColor: getIn(theme.colors, tableRow.borderBottomColor),
