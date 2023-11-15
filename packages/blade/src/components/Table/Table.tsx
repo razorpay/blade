@@ -11,13 +11,13 @@ import styled from 'styled-components';
 import type { TableContextType } from './TableContext';
 import { TableProvider } from './TableContext';
 import { ComponentIds } from './componentIds';
+import { tablePagination } from './tokens';
 import type { TableHeaderCellProps } from './TableHeader';
 import { makeBorderSize, useTheme } from '~utils';
 import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { throwBladeError } from '~utils/logger';
 import type { BoxProps } from '~components/Box';
 import { getBaseBoxStyles } from '~components/Box/BaseBox/baseBoxStyles';
-import { tablePagination } from './tokens';
 
 type TableNode = {
   id: Identifier;
@@ -229,9 +229,6 @@ const Table: React.FC<TableProps> = ({
   );
 
   // Pagination
-  const handlePaginationChange: MiddlewareFunction = (action, state) => {
-    // console.log('pagination', action, state);
-  };
 
   const hasPagination = Boolean(pagination);
 
@@ -240,7 +237,6 @@ const Table: React.FC<TableProps> = ({
       page: 0,
       size: tablePagination.defaultPageSize,
     },
-    onChange: handlePaginationChange,
   });
 
   const currentPaginationState = useMemo(() => {

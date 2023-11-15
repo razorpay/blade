@@ -5,7 +5,13 @@ import { useTableContext } from './TableContext';
 import { tablePagination } from './tokens';
 import BaseBox from '~components/Box/BaseBox';
 import { Button } from '~components/Button';
-import { ChevronLeftIcon, ChevronRightIcon } from '~components/Icons';
+import {
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  ChevronsLeftIcon,
+  ChevronsRightIcon,
+  MoreHorizontalIcon,
+} from '~components/Icons';
 import { Dropdown, DropdownOverlay } from '~components/Dropdown';
 import { SelectInput } from '~components/Input/DropdownInputTriggers';
 import { ActionList, ActionListItem } from '~components/ActionList';
@@ -29,6 +35,9 @@ const PageSelectionButton = styled.button<{ isSelected?: boolean }>(({ theme, is
   cursor: 'pointer',
   height: '32px',
   width: '32px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
   borderRadius: getIn(theme.border.radius, tablePagination.pageSelectionButton.borderRadius),
   '&:hover': {
     backgroundColor: isSelected
@@ -152,6 +161,9 @@ const TablePagination = ({
   const [currentPage, setCurrentPage] = React.useState<number>(
     controlledCurrentPage ?? currentPaginationState?.page ?? 0,
   );
+  const [currentEllipseHover, setCurrentEllipseHover] = React.useState<'start' | 'end' | undefined>(
+    undefined,
+  );
 
   useEffect(() => {
     setPaginationRowSize(currentPageSize);
@@ -203,7 +215,6 @@ const TablePagination = ({
     currentSelection: currentPage + 1,
     totalPages,
   });
-  console.log('🚀 ~ file: TablePagination.tsx:199 ~ paginationButtons:', paginationButtons);
 
   return (
     <BaseBox
@@ -275,10 +286,16 @@ const TablePagination = ({
                 </Text>
               </PageSelectionButton>
               {paginationButtons.showStartEllipsis && (
-                <PageSelectionButton onClick={() => handlePageChange(currentPage - 5)}>
-                  <Text size="medium" color={tablePagination.pageSelectionButton.textColor}>
-                    {'...'}
-                  </Text>
+                <PageSelectionButton
+                  onClick={() => handlePageChange(currentPage - 5)}
+                  onMouseOver={() => setCurrentEllipseHover('start')}
+                  onMouseLeave={() => setCurrentEllipseHover(undefined)}
+                >
+                  {currentEllipseHover === 'start' ? (
+                    <ChevronsLeftIcon size="medium" />
+                  ) : (
+                    <MoreHorizontalIcon size="medium" />
+                  )}
                 </PageSelectionButton>
               )}
               {paginationButtons.middleItems.map((item) => (
@@ -300,10 +317,16 @@ const TablePagination = ({
                 </PageSelectionButton>
               ))}
               {paginationButtons.showEndEllipsis && (
-                <PageSelectionButton onClick={() => handlePageChange(currentPage + 5)}>
-                  <Text size="medium" color={tablePagination.pageSelectionButton.textColor}>
-                    {'...'}
-                  </Text>
+                <PageSelectionButton
+                  onClick={() => handlePageChange(currentPage + 5)}
+                  onMouseOver={() => setCurrentEllipseHover('end')}
+                  onMouseLeave={() => setCurrentEllipseHover(undefined)}
+                >
+                  {currentEllipseHover === 'end' ? (
+                    <ChevronsRightIcon size="medium" />
+                  ) : (
+                    <MoreHorizontalIcon size="medium" />
+                  )}
                 </PageSelectionButton>
               )}
               <PageSelectionButton
