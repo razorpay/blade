@@ -78,7 +78,7 @@ Our recommended font loading strategy should find a good balance between followi
 **Pros:**
 
 - Since consumers know the final font URL, they can be preloaded
-- Self-hosted so does not require additional DNS connection and thus fonts load faster
+- Self-hosted so does not require additional DNS connection and thus fonts load faster (no preconnect required)
 
 **Cons:**
 
