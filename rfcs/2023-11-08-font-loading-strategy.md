@@ -22,7 +22,7 @@ Blade Issue:
 
 After Brand Refresh, we have 2 major fonts. `Inter` and `Tasa Orbiter`.
 
-So far when we had Lato, we could load it from `@fontsource/lato`. But Tasa Orbiter does not exist on Lato and we also selectively load weights from Inter and Lato.
+So far when we had Lato, we could load it from `@fontsource/lato`. But Tasa Orbiter does not exist on fontsource and we also selectively load weights from Inter and Lato.
 
 This document is created to explore and decide on what should be the font loading strategy after brand refresh
 
