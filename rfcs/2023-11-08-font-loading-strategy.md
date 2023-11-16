@@ -210,10 +210,10 @@ These are the weights and styles being used right now
 
 We'll use TASA Orbiter as variable font and Inter as static font based on which is the lightest version.
 
-|                  | **Static**                        | **Variable**   |
-| ---------------- | --------------------------------- | -------------- |
-| **Inter**        | 70kb \* 2 weights = ✅ **~140kb** | ~200kb         |
-| **TASA Orbiter** | 30kb \* 2 weights = ~90kb         | ✅ **~32kbkb** |
+|                  | **Static**                        | **Variable** |
+| ---------------- | --------------------------------- | ------------ |
+| **Inter**        | 70kb \* 2 weights = ✅ **~140kb** | ~200kb       |
+| **TASA Orbiter** | 30kb \* 3 weights = ~90kb         | ✅ **~32kb** |
 
 > **Note**
 >
