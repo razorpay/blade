@@ -32,6 +32,7 @@ export type TableProps = {
   onSelectionChange?: ({ values }: { values: TableNode[] }) => void;
   isHeaderSticky?: boolean;
   isFooterSticky?: boolean;
+  isFirstColumnSticky?: boolean;
   rowDensity?: 'normal' | 'comfortable';
   onSortChange?: ({
     sortKey,
@@ -110,6 +111,7 @@ const Table: React.FC<TableProps> = ({
   onSelectionChange,
   isHeaderSticky,
   isFooterSticky,
+  isFirstColumnSticky,
   rowDensity = 'normal',
   onSortChange,
   sortFunctions,
@@ -150,6 +152,57 @@ const Table: React.FC<TableProps> = ({
       position: ${isHeaderSticky ? 'sticky' : 'relative'};
       top: ${isHeaderSticky ? '0' : undefined};
     };`,
+    HeaderCell: isFirstColumnSticky
+      ? `
+    &:nth-of-type(1) {
+      left: 0 !important;
+      position: sticky !important;
+      z-index: 2 !important;;
+    }
+    ${
+      selectionType === 'multiple' &&
+      `&:nth-of-type(2) {
+      left: 44px !important;
+      position: sticky !important;
+      z-index: 2 !important;;
+    }
+    `
+    }`
+      : undefined,
+    Cell: isFirstColumnSticky
+      ? `
+    &:nth-of-type(1) {
+      left: 0 !important;
+      position: sticky !important;
+      z-index: 2 !important;;
+    }
+    ${
+      selectionType === 'multiple' &&
+      `&:nth-of-type(2) {
+      left: 44px !important;
+      position: sticky !important;
+      z-index: 2 !important;;
+    }
+    `
+    }`
+      : undefined,
+    FooterCell: isFirstColumnSticky
+      ? `
+    &:nth-of-type(1) {
+      left: 0 !important;
+      position: sticky !important;
+      z-index: 2 !important;;
+    }
+    ${
+      selectionType === 'multiple' &&
+      `&:nth-of-type(2) {
+      left: 44px !important;
+      position: sticky !important;
+      z-index: 2 !important;;
+    }
+    `
+    }`
+      : undefined,
   });
 
   useEffect(() => {
