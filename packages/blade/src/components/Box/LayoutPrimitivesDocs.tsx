@@ -3,7 +3,7 @@ import type { BaseBoxProps } from './BaseBox';
 import BaseBox from './BaseBox';
 import { Box } from '.';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
-import { Code, Heading, Text, Title } from '~components/Typography';
+import { Code, Heading, Text } from '~components/Typography';
 import { Sandbox, SandboxProvider, SandboxHighlighter } from '~utils/storybook/Sandbox';
 import { List, ListItem, ListItemCode, ListItemLink } from '~components/List';
 import { Link } from '~components/Link';
@@ -57,7 +57,7 @@ function LayoutPrimitivesDocs(): React.ReactElement {
       showStorybookControls={false}
     >
       <hr />
-      <Title size="small">Table of Content</Title>
+      <Heading size="large">Table of Content</Heading>
       <List marginY="spacing.6" marginBottom="spacing.8">
         <ListItem>
           <ScrollIntoViewLink href="#playground">Playground</ScrollIntoViewLink>
@@ -109,7 +109,7 @@ function LayoutPrimitivesDocs(): React.ReactElement {
       </List>
       <hr />
       <Section id="playground">
-        <Title size="small">Playground</Title>
+        <Heading size="large">Playground</Heading>
         <Sandbox padding="spacing.0">
           {`
             import { Box, Text } from '@razorpay/blade/components'
@@ -150,9 +150,9 @@ function LayoutPrimitivesDocs(): React.ReactElement {
         </Text>
       </Section>
       <Section id="box-usage">
-        <Title size="small" marginBottom="spacing.3">
+        <Heading size="large" marginBottom="spacing.3">
           📦 Box Usage
-        </Title>
+        </Heading>
         <Text>
           Box is a primitive Layout component which can be used for creating different responsive
           layouts in UI. You might have used <Code>Box</Code> in other component libraries as well
@@ -285,9 +285,9 @@ function LayoutPrimitivesDocs(): React.ReactElement {
       </Section>
 
       <Section id="styled-props" paddingBottom="spacing.0">
-        <Title size="small" marginBottom="spacing.3">
+        <Heading size="large" marginBottom="spacing.3">
           💅🏼 Styled Props for Blade Components
-        </Title>
+        </Heading>
         <Text>
           Want to add spacing between 2 elements? add layout props directly on the Blade components
           ✨
@@ -353,9 +353,9 @@ function LayoutPrimitivesDocs(): React.ReactElement {
       </Section>
 
       <Section id="questions-you-might-have" paddingTop="spacing.0">
-        <Title size="small" marginBottom="spacing.3" marginTop="spacing.6">
+        <Heading size="large" marginBottom="spacing.3" marginTop="spacing.6">
           🧐 Questions you might have
-        </Title>
+        </Heading>
         <Text>
           This is a summary and some questions you might have regarding API. You can check out
           complete API decisions at{' '}
@@ -469,7 +469,7 @@ function LayoutPrimitivesDocs(): React.ReactElement {
         </BaseBox>
       </Section>
       <Section id="references">
-        <Title size="small">References</Title>
+        <Heading size="large">References</Heading>
         <List marginTop="spacing.4">
           <ListItem>
             <ListItemLink href="/?path=/docs/components-layout-primitives-box-box--default&globals=measureEnabled:false">

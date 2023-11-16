@@ -8,7 +8,7 @@ import {
 } from './stories';
 import { getSimpleAutoComplete } from './autoCompleteStories';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
-import { Code, Heading, Text, Title } from '~components/Typography';
+import { Code, Heading, Text } from '~components/Typography';
 import { Sandbox, VerticalSandbox } from '~utils/storybook/Sandbox';
 import { Box } from '~components/Box';
 import { ArgsTable } from '~utils/storybook/ArgsTable';
@@ -31,13 +31,13 @@ const DropdownDocs = (): React.ReactElement => {
       }}
     >
       <Box as="section">
-        <Title size="medium">Playground</Title>
+        <Heading size="xlarge">Playground</Heading>
         <Sandbox editorHeight={400}>{Playground}</Sandbox>
       </Box>
       <BaseBox id="dropdown" as="section">
-        <Title size="medium" marginBottom="spacing.4">
+        <Heading size="xlarge" marginBottom="spacing.4">
           Dropdown
-        </Title>
+        </Heading>
         <Text>A Dropdown in Blade is usually a composite of 3 elements -</Text>
         <List variant="ordered-filled" marginY="spacing.5">
           <ListItem>
@@ -116,7 +116,7 @@ const DropdownDocs = (): React.ReactElement => {
         </List>
       </BaseBox>
       <BaseBox as="section" id="dropdownheader">
-        <Title size="medium">DropdownHeader</Title>
+        <Heading size="xlarge">DropdownHeader</Heading>
         <ArgsTable
           data={{
             title: 'string',
@@ -128,7 +128,7 @@ const DropdownDocs = (): React.ReactElement => {
         />
       </BaseBox>
       <BaseBox as="section" id="dropdownfooter">
-        <Title size="medium">DropdownFooter</Title>
+        <Heading size="xlarge">DropdownFooter</Heading>
         <ArgsTable
           data={{
             children: 'ReactNode',
@@ -136,7 +136,7 @@ const DropdownDocs = (): React.ReactElement => {
         />
       </BaseBox>
       <BaseBox as="section">
-        <Title size="small">With SelectInput</Title>
+        <Heading size="large">With SelectInput</Heading>
         <Text marginY="spacing.3">
           Check out more Select examples at{' '}
           <Link href="/?path=/docs/components-dropdown-with-select--with-single-select">
@@ -153,7 +153,7 @@ const DropdownDocs = (): React.ReactElement => {
         <VerticalSandbox minHeight="250px" code={WithControlledSelectStory} />
       </BaseBox>
       <BaseBox as="section">
-        <Title size="small">With AutoComplete</Title>
+        <Heading size="large">With AutoComplete</Heading>
         <Text marginY="spacing.3">
           Check out more AutoComplete examples at{' '}
           <Link href="/?path=/docs/components-dropdown-with-autocomplete--with-single-select">
@@ -170,9 +170,9 @@ const DropdownDocs = (): React.ReactElement => {
         <VerticalSandbox minHeight="250px" code={getSimpleAutoComplete('multiple')} />
       </BaseBox>
       <BaseBox as="section">
-        <Title size="small" marginBottom="spacing.3">
+        <Heading size="large" marginBottom="spacing.3">
           With Button
-        </Title>
+        </Heading>
         <Text marginY="spacing.3">
           Check out more Menu examples at{' '}
           <Link href="/?path=/docs/components-dropdown-with-button-and-link--default">

@@ -50,8 +50,8 @@ type KeysRequired<T> = AllowUndefinedValue<Required<T>>;
  *
  * This covers scenarios like
  * ```jsx
- * <Title>Hi</Title>
- * <Title>{dynamicVariable} something</Title>
+ * <Heading>Hi</Heading>
+ * <Heading>{dynamicVariable} something</Heading>
  * ```
  *
  *

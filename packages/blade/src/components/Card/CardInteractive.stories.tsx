@@ -17,7 +17,7 @@ import {
   CardHeaderCounter,
   CardHeaderBadge,
 } from '.';
-import { Code, Text, Title } from '~components/Typography';
+import { Code, Text, Heading } from '~components/Typography';
 import { RupeeIcon } from '~components/Icons';
 import { Link } from '~components/Link';
 import { Box } from '~components/Box';
@@ -43,7 +43,7 @@ const Page = (): React.ReactElement => {
           'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=12791%3A336279&t=ZCWT255jVK78xf1J-4',
       }}
     >
-      <Title>Usage</Title>
+      <Heading size="large">Usage</Heading>
       <Box marginY="spacing.6">
         <SandboxProvider
           code={`

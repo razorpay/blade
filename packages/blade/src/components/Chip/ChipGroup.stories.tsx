@@ -3,7 +3,7 @@ import React from 'react';
 import type { ChipGroupProps } from './ChipGroup';
 import { ChipGroup as ChipGroupComponent } from './ChipGroup';
 import { Chip as ChipComponent } from './Chip';
-import { Heading, Text, Title, Code } from '~components/Typography';
+import { Heading, Text, Code } from '~components/Typography';
 import {
   PaymentLinksIcon,
   TagIcon,
@@ -44,7 +44,7 @@ const Page = (): React.ReactElement => {
         </Text>
       }
     >
-      <Title>Usage</Title>
+      <Heading size="large">Usage</Heading>
       <Sandbox showConsole editorHeight={400} editorWidthPercentage={60}>
         {`
           import { Box, Chip, ChipGroup, Text } from '@razorpay/blade/components';
