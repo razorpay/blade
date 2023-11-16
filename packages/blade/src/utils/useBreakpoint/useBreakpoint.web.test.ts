@@ -4,15 +4,15 @@ import { useBreakpoint } from './';
 import { breakpoints } from '~tokens/global';
 
 describe('useBreakpoint', () => {
-  it('should detect mobile and return smallest breakpoint of mobile devices', () => {
+  it('should return default breakpoint and device', () => {
     setupMatchMediaMock({
       matches: true,
     });
 
     const { result } = renderHook(() => useBreakpoint({ breakpoints }));
 
-    expect(result.current.matchedBreakpoint).toBe('base');
-    expect(result.current.matchedDeviceType).toBe('mobile');
+    expect(result.current.matchedBreakpoint).toBe(undefined);
+    expect(result.current.matchedDeviceType).toBe('desktop');
   });
 
   it('should match a specific media query and return the device type accordingly', () => {

@@ -83,13 +83,9 @@ export const useBreakpoint = ({
     [breakpointsTokenAndQueryCollection],
   );
 
-  const [breakpointAndDevice, setBreakpointAndDevice] = useState(() => {
-    const matchedBreakpoint = getMatchedBreakpoint();
-    const matchedDeviceType = getMatchedDeviceType(matchedBreakpoint);
-    return {
-      matchedBreakpoint,
-      matchedDeviceType,
-    };
+  const [breakpointAndDevice, setBreakpointAndDevice] = useState<BreakpointAndDevice>({
+    matchedBreakpoint: undefined,
+    matchedDeviceType: deviceType.desktop,
   });
 
   useEffect(() => {
