@@ -145,12 +145,33 @@ import '@razorpay/blade/fonts.css';
 - Easy Implementation
 - Self-hosted so does not require additional DNS connection and thus fonts load faster
 - Font names, font files, fallbacks for browsers, definition of fonts, is taken care by Blade
+- We can change font-weights, styles, etc without any additional migration for consumers
 
 **Cons:**
 
 - Fonts cannot be preloaded with HTML preload in CSR apps (SSR apps can loop through their build manifest to know the font URLs and preload them if required)
 
-#### 3. Host fonts on Razorpay's CDN
+#### 3. Contribute Tasa Orbiter to fontsource
+
+TASA Orbiter is compatible with license requirements of fontsource. Thus we can contribute TASA Orbiter to fontsource open-source repo and then use fonts from fontsource.
+
+**Pros:**
+
+- We won't have to keep font files in Blade package
+- Pros of self hosting like no DNS connection etc
+- Easy Implementation
+
+**Cons:**
+
+- We cannot define fonts from Blade which means consumer has to make sure to load the correct font variants (e.g. using variable font in TASA Orbiter and using static fonts in Inter)
+- Changing font weights, font styles, variants will require consumer migration of imports
+- Dependency on fontsource reviews thus can take time to implement
+
+> **Note**
+>
+> We will be contributing TASA Orbiter to fontsouce although we'll go with method 2 due to the cons mentioned above.
+
+#### 4. Host fonts on Razorpay's CDN
 
 Similar to how you install from google font, except we can have `https://cdn.razorpay.com/blade/fonts.css` kind of URL.
 
@@ -166,7 +187,7 @@ Similar to how you install from google font, except we can have `https://cdn.raz
 - Requires additional DNS connection before fonts start to load
 - Unlike method 2, this cannot be versioned or easily be kept in-sync with Blade's version
 
-#### 4. Load from existing third-party CDN
+#### 5. Load from existing third-party CDN
 
 While Inter can be loaded from [Google Fonts](https://fonts.google.com/specimen/Inter), Tasa Orbiter can be loaded from [CDNFonts](https://www.cdnfonts.com/tasa-orbiter-display.font)
 
@@ -187,18 +208,28 @@ These are the weights and styles being used right now
 
 **Conclusion**
 
-- We use Tasa Orbiter as variable font since its 32kb in size compared to ~90kb (30kb x 3 weights) of static font
-- We use Inter as static font. We use lighter version of Inter from [@fontsource/inter](https://www.npmjs.com/package/@fontsource/inter?activeTab=code) as static fonts there are 70kb each compared to ~200kb on Google Fonts version. The variable font of Inter from Google Fonts is ~800kb.
+We'll use TASA Orbiter as variable font and Inter as static font based on which is the lightest version.
+
+|                  | **Static**                        | **Variable**   |
+| ---------------- | --------------------------------- | -------------- |
+| **Inter**        | 70kb \* 2 weights = ✅ **~140kb** | ~200kb         |
+| **TASA Orbiter** | 30kb \* 2 weights = ~90kb         | ✅ **~32kbkb** |
+
+> **Note**
+>
+> The sizes in the table of Inter are taken from font files of fontsource which has comparitively smaller font size than Google Fonts
 
 ### Font Fallbacks
 
 ```css
-{
-  font-family: 'Tasa Orbiter', -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif,
+ {
+  font-family: 'Tasa Orbiter', -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica
+      Neue, sans-serif;
 
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif,
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica
+      Neue, sans-serif;
 
-  font-family: “Menlo”, San Francisco Mono, Courier New, Roboto Mono, monospace,
+  font-family: “Menlo”, San Francisco Mono, Courier New, Roboto Mono, monospace;
 }
 ```
 
