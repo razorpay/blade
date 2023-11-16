@@ -16,7 +16,7 @@ import { Display, Text, Heading } from '~components/Typography';
 import { Badge } from '~components/Badge';
 import { AnnouncementIcon } from '~components/Icons';
 
-const Subtitle = (props: HeadingProps<{ variant: 'regular' }>): React.ReactElement => {
+const Subtitle = (props: HeadingProps): React.ReactElement => {
   return <Heading type="subtle" size="large" weight="regular" as="span" {...props} />;
 };
 
