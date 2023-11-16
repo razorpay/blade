@@ -11,6 +11,7 @@ import { Text } from '~components/Typography';
 import { castWebType, makeMotionTime, makeSpace, useTheme } from '~utils';
 import { makeAccessible } from '~utils/makeAccessible';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import BaseBox from '~components/Box/BaseBox';
 
 const SortButton = styled.button(({ theme }) => ({
   cursor: 'pointer',
@@ -130,11 +131,13 @@ const _TableHeaderCell = ({ children, headerKey }: TableHeaderCellProps): React.
         children
       )}
       {isSortable && (
-        <SortIcon
-          isSorted={currentSortedState.sortKey === headerKey}
-          isSortReversed={currentSortedState.isSortReversed}
-          onClick={() => toggleSort(headerKey)}
-        />
+        <BaseBox paddingLeft="spacing.2">
+          <SortIcon
+            isSorted={currentSortedState.sortKey === headerKey}
+            isSortReversed={currentSortedState.isSortReversed}
+            onClick={() => toggleSort(headerKey)}
+          />
+        </BaseBox>
       )}
     </StyledHeaderCell>
   );

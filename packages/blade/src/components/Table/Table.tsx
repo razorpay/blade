@@ -45,6 +45,7 @@ export type TableProps = {
   pagination?: React.ReactElement;
   height?: BoxProps['height'];
   showStripes?: boolean;
+  gridTemplateColumns?: string;
 };
 
 const rowSelectType: Record<NonNullable<TableProps['selectionType']>, SelectTypes> = {
@@ -116,6 +117,7 @@ const Table: React.FC<TableProps> = ({
   pagination,
   height,
   showStripes,
+  gridTemplateColumns,
 }) => {
   const { theme } = useTheme();
   const [selectedRows, setSelectedRows] = React.useState<TableNode['id'][]>([]);
@@ -130,9 +132,12 @@ const Table: React.FC<TableProps> = ({
       theme.colors.surface.border.normal.lowContrast
     };
     background-color: transparent;
-    --data-table-library_grid-template-columns:  ${
-      selectionType === 'multiple' ? 'min-content' : ''
-    } repeat(${columnCount},minmax(100px, 1fr)) !important; 
+    --data-table-library_grid-template-columns: ${
+      gridTemplateColumns ??
+      ` ${
+        selectionType === 'multiple' ? 'min-content' : ''
+      } repeat(${columnCount},minmax(100px, 1fr)) !important;`
+    } !important;
     `,
     Footer: `
     .tr-footer th {

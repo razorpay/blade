@@ -11,6 +11,9 @@ import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgType
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import { useTheme } from '~utils';
+import { Amount } from '~components/Amount';
+import { Code, Text } from '~components/Typography';
+import { Badge } from '~components/Badge';
 
 export default {
   title: 'Components/Table',
@@ -388,11 +391,33 @@ const nodes = [
     isComplete: false,
   },
 ];
+
+const nodes2 = [
+  ...Array.from({ length: 200 }, (_, i) => ({
+    id: (i + 1).toString(),
+    paymentId: `rzp${Math.floor(Math.random() * 1000000)}`,
+    amount: Number((Math.random() * 10000).toFixed(2)),
+    status: ['Completed', 'Pending', 'Failed'][Math.floor(Math.random() * 3)],
+    date: new Date(2021, Math.floor(Math.random() * 12), Math.floor(Math.random() * 28) + 1),
+    type: ['Payout', 'Refund'][Math.floor(Math.random() * 2)],
+    method: ['Bank Transfer', 'Credit Card', 'PayPal'][Math.floor(Math.random() * 3)],
+    bank: ['HDFC', 'ICICI', 'SBI'][Math.floor(Math.random() * 3)],
+    account: Math.floor(Math.random() * 1000000000).toString(),
+    name: [
+      'John Doe',
+      'Jane Doe',
+      'Bob Smith',
+      'Alice Smith',
+      'John Smith',
+      'Jane Smith',
+      'Bob Doe',
+      'Alice Doe',
+    ][Math.floor(Math.random() * 8)],
+  })),
+];
+
 const data = {
-  nodes,
-  pageInfo: {
-    totalPages: 4,
-  },
+  nodes: nodes2,
 };
 
 const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
@@ -410,10 +435,12 @@ const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
         onSelectionChange={({ values }) => console.log('Selected Rows:', values)}
         sortFunctions={{
           ID: (array) => array.sort((a, b) => a.id - b.id),
-          TASK: (array) => array.sort((a, b) => a.name.localeCompare(b.name)),
-          DEADLINE: (array) => array.sort((a, b) => a.deadline.getTime() - b.deadline.getTime()),
-          TYPE: (array) => array.sort((a, b) => a.type.localeCompare(b.type)),
-          COMPLETE: (array) => array.sort((a, b) => a.isComplete - b.isComplete),
+          AMOUNT: (array) => array.sort((a, b) => a.amount - b.amount),
+          ACCOUNT: (array) => array.sort((a, b) => a.account - b.account),
+          PAYMENT_ID: (array) => array.sort((a, b) => a.paymentId.localeCompare(b.paymentId)),
+          DATE: (array) => array.sort((a, b) => a.date.getTime() - b.date.getTime()),
+          METHOD: (array) => array.sort((a, b) => a.method.localeCompare(b.method)),
+          STATUS: (array) => array.sort((a, b) => a.status.localeCompare(b.status)),
         }}
         onSortChange={({ sortKey, isSortReversed }) =>
           console.log('Sort Key:', sortKey, 'Sort Reversed:', isSortReversed)
@@ -438,38 +465,61 @@ const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
           />
         }
         // height="400px"
+        // gridTemplateColumns="100px 1fr 1fr 1fr 1fr"
       >
         {(tableData) => (
           <>
             <TableHeader>
               <TableHeaderRow>
-                <TableHeaderCell headerKey="ID">ID</TableHeaderCell>
-                <TableHeaderCell headerKey="TASK">Task</TableHeaderCell>
-                <TableHeaderCell headerKey="DEADLINE">Deadline</TableHeaderCell>
-                <TableHeaderCell headerKey="TYPE">Type</TableHeaderCell>
-                <TableHeaderCell headerKey="COMPLETE">Complete</TableHeaderCell>
+                <TableHeaderCell headerKey="PAYMENT_ID">ID</TableHeaderCell>
+                <TableHeaderCell headerKey="AMOUNT">Amount</TableHeaderCell>
+                <TableHeaderCell headerKey="ACCOUNT">Account</TableHeaderCell>
+                <TableHeaderCell headerKey="DATE">Date</TableHeaderCell>
+                <TableHeaderCell headerKey="METHOD">Method</TableHeaderCell>
+                <TableHeaderCell headerKey="STATUS">Status</TableHeaderCell>
               </TableHeaderRow>
             </TableHeader>
             <TableBody>
               {tableData.map((tableItem, index) => (
                 <TableRow key={index} item={tableItem} index={index}>
-                  <TableCell>{tableItem.id}</TableCell>
-                  <TableCell>{tableItem.name}</TableCell>
                   <TableCell>
-                    {tableItem.deadline?.toLocaleDateString('en-US', {
+                    <Code size="medium">{tableItem.paymentId}</Code>
+                  </TableCell>
+                  <TableCell>
+                    <Amount value={tableItem.amount as number} />
+                  </TableCell>
+                  <TableCell>{tableItem.account}</TableCell>
+                  <TableCell>
+                    {tableItem.date?.toLocaleDateString('en-IN', {
                       year: 'numeric',
                       month: '2-digit',
                       day: '2-digit',
                     })}
                   </TableCell>
-                  <TableCell>{tableItem.type}</TableCell>
-                  <TableCell>{tableItem.isComplete?.toString()}</TableCell>
+                  <TableCell>{tableItem.method}</TableCell>
+                  <TableCell>
+                    <Badge
+                      size="medium"
+                      color={
+                        tableItem.status === 'Completed'
+                          ? 'positive'
+                          : tableItem.status === 'Pending'
+                          ? 'notice'
+                          : tableItem.status === 'Failed'
+                          ? 'negative'
+                          : 'default'
+                      }
+                    >
+                      {tableItem.status}
+                    </Badge>
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
             <TableFooter>
               <TableFooterRow>
                 {args.selectionType === 'multiple' && <TableFooterCell>-</TableFooterCell>}
+                <TableFooterCell>-</TableFooterCell>
                 <TableFooterCell>-</TableFooterCell>
                 <TableFooterCell>-</TableFooterCell>
                 <TableFooterCell>-</TableFooterCell>
