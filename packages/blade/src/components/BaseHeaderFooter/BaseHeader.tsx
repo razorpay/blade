@@ -3,7 +3,7 @@ import React from 'react';
 import type { ReactDOMAttributes } from '@use-gesture/react/dist/declarations/src/types';
 import { Divider } from '~components/Divider';
 import BaseBox from '~components/Box/BaseBox';
-import { Heading, Text } from '~components/Typography';
+import { Text } from '~components/Typography';
 import { IconButton } from '~components/Button/IconButton';
 import { ChevronLeftIcon, CloseIcon } from '~components/Icons';
 import type { TestID } from '~utils/types';
@@ -229,9 +229,9 @@ const _BaseHeader = ({
                 flexDirection="row"
               >
                 {title ? (
-                  <Heading size="small" type="normal">
+                  <Text size="large" weight="semibold" type="normal">
                     {title}
-                  </Heading>
+                  </Text>
                 ) : null}
                 {titleSuffix && (
                   <BaseBox marginLeft="spacing.3">

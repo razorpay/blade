@@ -59,7 +59,7 @@ describe('<Badge />', () => {
 
   it('should render Badge with bold font', () => {
     const label = 'LABEL';
-    const { container } = renderWithTheme(<Badge fontWeight="bold">{label}</Badge>);
+    const { container } = renderWithTheme(<Badge fontWeight="semibold">{label}</Badge>);
     expect(container).toMatchSnapshot();
   });
 

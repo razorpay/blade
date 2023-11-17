@@ -205,16 +205,16 @@ const getProps = ({
     lineHeight: Record<NonNullable<BaseLinkProps['size']>, keyof Typography['lineHeights']>;
   } = {
     fontSize: {
-      xsmall: 25,
-      small: 75,
+      xsmall: 10,
+      small: 50,
       medium: 100,
       large: 200,
     },
     lineHeight: {
-      xsmall: 50,
-      small: 50,
+      xsmall: 25,
+      small: 75,
       medium: 100,
-      large: 300,
+      large: 200,
     },
   };
 
