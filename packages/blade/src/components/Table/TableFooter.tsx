@@ -3,8 +3,10 @@ import { Footer, FooterRow, FooterCell } from '@table-library/react-table-librar
 import getIn from 'lodash/get';
 import styled from 'styled-components';
 import { tableFooter } from './tokens';
+import { useTableContext } from './TableContext';
 import { Text } from '~components/Typography';
 import { makeSpace } from '~utils';
+import BaseBox from '~components/Box/BaseBox';
 
 type TableFooterProps = {
   children: React.ReactNode;
@@ -37,7 +39,8 @@ type TableFooterCellProps = {
 
 const StyledFooterCell = styled(FooterCell)(({ theme }) => ({
   '&&&': {
-    backgroundColor: theme.colors.surface.background.level2.lowContrast,
+    height: '100%',
+    backgroundColor: getIn(theme.colors, tableFooter.backgroundColor),
     borderBottomWidth: makeSpace(getIn(theme.border.width, tableFooter.borderBottomAndTopWidth)),
     borderTopWidth: makeSpace(getIn(theme.border.width, tableFooter.borderBottomAndTopWidth)),
     borderBottomColor: getIn(theme.colors, tableFooter.borderBottomAndTopColor),
@@ -45,7 +48,6 @@ const StyledFooterCell = styled(FooterCell)(({ theme }) => ({
     borderBottomStyle: 'solid',
     borderTopStyle: 'solid',
     '> div': {
-      backgroundColor: getIn(theme.colors, tableFooter.backgroundColor),
       display: 'flex',
       flexDirection: 'row',
       paddingTop: makeSpace(getIn(theme, tableFooter.paddingTop)),
@@ -57,17 +59,20 @@ const StyledFooterCell = styled(FooterCell)(({ theme }) => ({
 }));
 
 const TableFooterCell = ({ children }: TableFooterCellProps): React.ReactElement => {
+  const { surfaceLevel } = useTableContext();
   const isChildrenString = typeof children === 'string';
   return (
-    <StyledFooterCell>
-      {isChildrenString ? (
-        <Text size="medium" weight="bold">
-          {children}
-        </Text>
-      ) : (
-        children
-      )}
-    </StyledFooterCell>
+    <BaseBox backgroundColor={`surface.background.level${surfaceLevel}.lowContrast`}>
+      <StyledFooterCell>
+        {isChildrenString ? (
+          <Text size="medium" weight="bold">
+            {children}
+          </Text>
+        ) : (
+          children
+        )}
+      </StyledFooterCell>
+    </BaseBox>
   );
 };
 

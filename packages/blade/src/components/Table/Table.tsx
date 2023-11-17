@@ -18,6 +18,7 @@ import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChi
 import { throwBladeError } from '~utils/logger';
 import type { BoxProps } from '~components/Box';
 import { getBaseBoxStyles } from '~components/Box/BaseBox/baseBoxStyles';
+import type { SurfaceLevels } from '~tokens/theme/theme';
 
 type TableNode = {
   id: Identifier;
@@ -47,6 +48,7 @@ export type TableProps = {
   height?: BoxProps['height'];
   showStripes?: boolean;
   gridTemplateColumns?: string;
+  surfaceLevel?: SurfaceLevels;
 };
 
 const rowSelectType: Record<NonNullable<TableProps['selectionType']>, SelectTypes> = {
@@ -120,6 +122,7 @@ const Table: React.FC<TableProps> = ({
   height,
   showStripes,
   gridTemplateColumns,
+  surfaceLevel = 1,
 }) => {
   const { theme } = useTheme();
   const [selectedRows, setSelectedRows] = React.useState<TableNode['id'][]>([]);
@@ -133,7 +136,6 @@ const Table: React.FC<TableProps> = ({
     border: ${makeBorderSize(theme.border.width.thin)} solid ${
       theme.colors.surface.border.normal.lowContrast
     };
-    background-color: transparent;
     --data-table-library_grid-template-columns: ${
       gridTemplateColumns ??
       ` ${
@@ -142,13 +144,13 @@ const Table: React.FC<TableProps> = ({
     } !important;
     `,
     Footer: `
-    .tr-footer th {
+    .tr-footer > div {
       position: ${isFooterSticky ? 'sticky' : 'relative'};
       bottom: ${isFooterSticky ? '0' : undefined};
     };
     `,
     Header: `
-    .tr-header th {
+    .tr-header > div {
       position: ${isHeaderSticky ? 'sticky' : 'relative'};
       top: ${isHeaderSticky ? '0' : undefined};
     };`,
@@ -346,6 +348,7 @@ const Table: React.FC<TableProps> = ({
       setPaginationRowSize,
       currentPaginationState,
       showStripes,
+      surfaceLevel,
     }),
     [
       selectionType,
@@ -361,6 +364,7 @@ const Table: React.FC<TableProps> = ({
       setPaginationRowSize,
       currentPaginationState,
       showStripes,
+      surfaceLevel,
     ],
   );
 

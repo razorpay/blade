@@ -53,13 +53,16 @@ type TableToolbarProps = {
 };
 
 const _TableToolbar = ({ children, title }: TableToolbarProps): React.ReactElement => {
-  const { selectedRows, deselectAllRows, currentPaginationState, totalItems } = useTableContext();
-  console.log('🚀 ~ file: TableToolbar.tsx:57 ~ currentPaginationState:', currentPaginationState);
+  const {
+    selectedRows,
+    deselectAllRows,
+    currentPaginationState,
+    totalItems,
+    surfaceLevel,
+  } = useTableContext();
   const { platform } = useTheme();
   const isSelected = selectedRows && selectedRows.length > 0;
-  // currentPaginationState.page = 0
-  // currentPaginationState.pageSize = 10
-  // calculate Showing x-y items
+
   const defaultTitle = currentPaginationState
     ? `Showing ${currentPaginationState.page * currentPaginationState.size + 1}-${
         currentPaginationState.page * currentPaginationState.size + currentPaginationState.size
@@ -79,36 +82,38 @@ const _TableToolbar = ({ children, title }: TableToolbarProps): React.ReactEleme
   );
 
   return (
-    <ToolbarWrapper
-      display="flex"
-      backgroundColor={
-        isSelected ? tableToolbar.backgroundColorSelected : tableToolbar.backgroundColor
-      }
-      padding="spacing.4"
-      flexWrap="wrap"
-      flexDirection={onMobile ? 'column' : 'row'}
-      gap="spacing.5"
-    >
-      <BaseBox display="flex" alignItems="center" flex={1}>
-        <BaseBox>
-          <Text size="medium" weight="bold">
-            {selectedTitle ?? title ?? defaultTitle}
-          </Text>
+    <BaseBox backgroundColor={`surface.background.level${surfaceLevel}.lowContrast`}>
+      <ToolbarWrapper
+        display="flex"
+        backgroundColor={
+          isSelected ? tableToolbar.backgroundColorSelected : tableToolbar.backgroundColor
+        }
+        padding="spacing.4"
+        flexWrap="wrap"
+        flexDirection={onMobile ? 'column' : 'row'}
+        gap="spacing.5"
+      >
+        <BaseBox display="flex" alignItems="center" flex={1}>
+          <BaseBox>
+            <Text size="medium" weight="bold">
+              {selectedTitle ?? title ?? defaultTitle}
+            </Text>
+          </BaseBox>
+          {isSelected && !onMobile && (
+            <BaseBox display="flex" marginLeft="spacing.5" height="100%">
+              <Divider orientation="vertical" thickness="thick" />
+              {deselectButton}
+            </BaseBox>
+          )}
+          {isSelected && onMobile && (
+            <BaseBox display="flex" flex={1} justifyContent="flex-end">
+              {deselectButton}
+            </BaseBox>
+          )}
         </BaseBox>
-        {isSelected && !onMobile && (
-          <BaseBox display="flex" marginLeft="spacing.5" height="100%">
-            <Divider orientation="vertical" thickness="thick" />
-            {deselectButton}
-          </BaseBox>
-        )}
-        {isSelected && onMobile && (
-          <BaseBox display="flex" flex={1} justifyContent="flex-end">
-            {deselectButton}
-          </BaseBox>
-        )}
-      </BaseBox>
-      {children}
-    </ToolbarWrapper>
+        {children}
+      </ToolbarWrapper>
+    </BaseBox>
   );
 };
 

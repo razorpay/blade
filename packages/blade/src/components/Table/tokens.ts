@@ -3,7 +3,7 @@ const tableHeader = {
   paddingBottom: 'spacing.5',
   paddingLeft: 'spacing.4',
   paddingRight: 'spacing.4',
-  backgroundColor: 'brand.gray.a50.lowContrast', // TODO: Figure out non-opaque color
+  backgroundColor: 'brand.gray.a50.lowContrast',
   borderBottomAndTopWidth: 'thin',
   borderBottomAndTopColor: 'surface.border.normal.lowContrast',
   focusRingColor: 'brand.primary.400',
@@ -14,9 +14,9 @@ const tableFooter = {
   paddingBottom: 'spacing.5',
   paddingLeft: 'spacing.4',
   paddingRight: 'spacing.4',
-  backgroundColor: 'brand.gray.a50.lowContrast', // TODO: Figure out non-opaque color
   borderBottomAndTopWidth: 'thin',
   borderBottomAndTopColor: 'surface.border.normal.lowContrast',
+  backgroundColor: 'brand.gray.a50.lowContrast',
   focusRingColor: 'brand.primary.400',
 } as const;
 
@@ -50,7 +50,7 @@ const tableRow = {
 } as const;
 
 const tableToolbar = {
-  backgroundColor: '',
+  backgroundColor: 'transparent',
   backgroundColorSelected: 'brand.primary.300',
   backgroundColorMotionEasing: 'easing.standard.effective',
   backgroundColorMotionDuration: 'duration.quick',

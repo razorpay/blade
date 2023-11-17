@@ -8,7 +8,8 @@ import type { TableProps } from './Table';
 import { Text } from '~components/Typography';
 import type { CheckboxProps } from '~components/Checkbox';
 import { Checkbox } from '~components/Checkbox';
-import { makeBorderSize, makeMotionTime, makeSpace } from '~utils';
+import { makeMotionTime, makeSpace } from '~utils';
+import BaseBox from '~components/Box/BaseBox';
 
 type TableBodyProps = {
   children: React.ReactNode;
@@ -16,7 +17,7 @@ type TableBodyProps = {
 
 const StyledBody = styled(Body)(({ theme, showStripes }) => ({
   '&&': {
-    '& tr:nth-child(even)': {
+    '& tr:nth-child(even) .cell-wrapper': {
       backgroundColor: showStripes ? theme.colors.brand.gray.a50.lowContrast : undefined,
     },
   },
@@ -26,13 +27,13 @@ const StyledBody = styled(Body)(({ theme, showStripes }) => ({
     '& tr:last-child td': {
       borderBottom: 'none',
     },
-    '& .row-select-single-selected, .row-select-selected': {
+    '& .row-select-single-selected td, .row-select-selected td': {
       transition: `background-color ${makeMotionTime(
         getIn(theme.motion, tableRow.backgroundColorMotionDuration),
       )} ${getIn(theme.motion, tableRow.backgroundColorMotionEasing)}`,
       backgroundColor: getIn(theme.colors, tableRow.backgroundColorSelected),
     },
-    '& .row-select-single-selected:hover, .row-select-selected:hover': {
+    '& .row-select-single-selected:hover td, .row-select-selected:hover td': {
       transition: `background-color ${makeMotionTime(
         getIn(theme.motion, tableRow.backgroundColorMotionDuration),
       )} ${getIn(theme.motion, tableRow.backgroundColorMotionEasing)}`,
@@ -56,6 +57,7 @@ const StyledCell = styled(Cell)<{
   showStripes?: boolean;
 }>(({ theme, isSelectable, rowDensity, showStripes }) => ({
   '&&&': {
+    height: '100%',
     paddingTop: makeSpace(getIn(theme, tableRow.paddingTop[rowDensity])),
     paddingBottom: makeSpace(getIn(theme, tableRow.paddingBottom[rowDensity])),
     paddingLeft: makeSpace(getIn(theme, tableRow.paddingLeft[rowDensity])),
@@ -77,17 +79,22 @@ const StyledCell = styled(Cell)<{
 
 const TableCell = ({ children }: TableCellProps): React.ReactElement => {
   const isChildrenString = typeof children === 'string';
-  const { selectionType, rowDensity, showStripes } = useTableContext();
+  const { selectionType, rowDensity, showStripes, surfaceLevel } = useTableContext();
   const isSelectable = Boolean(selectionType);
   return (
-    <StyledCell
-      tabIndex={0}
-      isSelectable={isSelectable}
-      rowDensity={rowDensity}
-      showStripes={showStripes}
+    <BaseBox
+      backgroundColor={`surface.background.level${surfaceLevel}.lowContrast`}
+      className="cell-wrapper"
     >
-      {isChildrenString ? <Text size="medium">{children}</Text> : children}
-    </StyledCell>
+      <StyledCell
+        tabIndex={0}
+        isSelectable={isSelectable}
+        rowDensity={rowDensity}
+        showStripes={showStripes}
+      >
+        {isChildrenString ? <Text size="medium">{children}</Text> : children}
+      </StyledCell>
+    </BaseBox>
   );
 };
 
@@ -116,7 +123,7 @@ const StyledRow = styled(Row)<{ isSelectable: boolean; showStripes?: boolean }>(
   ({ theme, isSelectable, showStripes }) => ({
     '&&&': {
       backgroundColor: 'transparent',
-      '&:hover': isSelectable
+      '&:hover td': isSelectable
         ? {
             transition: `background-color ${makeMotionTime(
               getIn(theme.motion, tableRow.backgroundColorMotionDuration),

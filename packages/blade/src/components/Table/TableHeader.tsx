@@ -66,14 +66,13 @@ type TableHeaderProps = {
   children: React.ReactNode;
 };
 
-const StyledHeader = styled(Header)(({ theme }) => ({
+const StyledHeader = styled(Header)({
   '&&&': {
-    backgroundColor: getIn(theme.colors, tableHeader.backgroundColor),
     '& tr:first-child th': {
       borderTop: 'none',
     },
   },
-}));
+});
 
 const _TableHeader = ({ children }: TableHeaderProps): React.ReactElement => {
   return <StyledHeader>{children}</StyledHeader>;
@@ -90,16 +89,16 @@ export type TableHeaderCellProps = {
 
 const StyledHeaderCell = styled(HeaderCell)(({ theme }) => ({
   '&&&': {
-    backgroundColor: theme.colors.surface.background.level2.lowContrast,
+    backgroundColor: getIn(theme.colors, tableHeader.backgroundColor),
+    height: '100%',
     borderBottomWidth: makeSpace(getIn(theme.border.width, tableHeader.borderBottomAndTopWidth)),
     borderTopWidth: makeSpace(getIn(theme.border.width, tableHeader.borderBottomAndTopWidth)),
     borderBottomColor: getIn(theme.colors, tableHeader.borderBottomAndTopColor),
     borderTopColor: getIn(theme.colors, tableHeader.borderBottomAndTopColor),
     borderBottomStyle: 'solid',
     borderTopStyle: 'solid',
-    borderRadius: theme.border.radius.small,
     '> div': {
-      backgroundColor: getIn(theme.colors, tableHeader.backgroundColor),
+      // backgroundColor: getIn(theme.colors, tableHeader.backgroundColor),
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'space-between',
@@ -118,28 +117,30 @@ const StyledHeaderCell = styled(HeaderCell)(({ theme }) => ({
 }));
 
 const _TableHeaderCell = ({ children, headerKey }: TableHeaderCellProps): React.ReactElement => {
-  const { toggleSort, currentSortedState } = useTableContext();
+  const { toggleSort, currentSortedState, surfaceLevel } = useTableContext();
   const isChildrenString = typeof children === 'string';
   const isSortable = Boolean(currentSortedState.sortableColumns?.find((key) => key === headerKey));
   return (
-    <StyledHeaderCell tabIndex={0}>
-      {isChildrenString ? (
-        <Text size="medium" weight="bold">
-          {children}
-        </Text>
-      ) : (
-        children
-      )}
-      {isSortable && (
-        <BaseBox paddingLeft="spacing.2">
-          <SortIcon
-            isSorted={currentSortedState.sortKey === headerKey}
-            isSortReversed={currentSortedState.isSortReversed}
-            onClick={() => toggleSort(headerKey)}
-          />
-        </BaseBox>
-      )}
-    </StyledHeaderCell>
+    <BaseBox backgroundColor={`surface.background.level${surfaceLevel}.lowContrast`} zIndex={2}>
+      <StyledHeaderCell tabIndex={0}>
+        {isChildrenString ? (
+          <Text size="medium" weight="bold">
+            {children}
+          </Text>
+        ) : (
+          children
+        )}
+        {isSortable && (
+          <BaseBox paddingLeft="spacing.2">
+            <SortIcon
+              isSorted={currentSortedState.sortKey === headerKey}
+              isSortReversed={currentSortedState.isSortReversed}
+              onClick={() => toggleSort(headerKey)}
+            />
+          </BaseBox>
+        )}
+      </StyledHeaderCell>
+    </BaseBox>
   );
 };
 

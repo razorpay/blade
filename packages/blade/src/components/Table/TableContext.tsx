@@ -3,6 +3,7 @@
 import React from 'react';
 import type { TableNode } from '@table-library/react-table-library/table';
 import type { TableProps } from './Table';
+import type { SurfaceLevels } from '~tokens/theme/theme';
 
 export type TableContextType = {
   selectionType?: TableProps['selectionType'];
@@ -25,6 +26,7 @@ export type TableContextType = {
     size: number;
   };
   showStripes?: boolean;
+  surfaceLevel: SurfaceLevels;
 };
 
 const TableContext = React.createContext<TableContextType>({
@@ -42,6 +44,7 @@ const TableContext = React.createContext<TableContextType>({
   },
   setPaginationPage: () => {},
   setPaginationRowSize: () => {},
+  surfaceLevel: 1,
 });
 const TableProvider = TableContext.Provider;
 
