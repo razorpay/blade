@@ -75,7 +75,7 @@ const Page = (): React.ReactElement => {
       }}
     >
       <Title>Usage</Title>
-      <Sandbox showConsole editorHeight={600}>
+      <Sandbox editorHeight={600}>
         {`
           import React from 'react';
           import { 
