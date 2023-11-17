@@ -39,6 +39,18 @@ const StyledBody = styled(Body)(({ theme, showStripes }) => ({
       )} ${getIn(theme.motion, tableRow.backgroundColorMotionEasing)}`,
       backgroundColor: getIn(theme.colors, tableRow.backgroundColorSelectedHover),
     },
+    '& .row-select-single-selected:nth-child(even) .cell-wrapper, .row-select-selected:nth-child(even) .cell-wrapper ': {
+      transition: `background-color ${makeMotionTime(
+        getIn(theme.motion, tableRow.backgroundColorMotionDuration),
+      )} ${getIn(theme.motion, tableRow.backgroundColorMotionEasing)}`,
+      backgroundColor: getIn(theme.colors, tableRow.wrapperBackgroundColorStripeSelected),
+    },
+    '& .row-select-single-selected:nth-child(even):hover .cell-wrapper, .row-select-selected:nth-child(even):hover .cell-wrapper ': {
+      transition: `background-color ${makeMotionTime(
+        getIn(theme.motion, tableRow.backgroundColorMotionDuration),
+      )} ${getIn(theme.motion, tableRow.backgroundColorMotionEasing)}`,
+      backgroundColor: getIn(theme.colors, tableRow.wrapperBackgroundColorStripeSelectedHover),
+    },
   },
 }));
 

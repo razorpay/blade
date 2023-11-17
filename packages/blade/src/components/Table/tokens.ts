@@ -42,6 +42,8 @@ const tableRow = {
   backgroundColorSelected: 'brand.primary.300',
   backgroundColorSelectedHover: 'brand.primary.400',
   backgroundColorStripesHover: 'brand.gray.a100.lowContrast', // Figure out
+  wrapperBackgroundColorStripeSelected: 'brand.primary.300',
+  wrapperBackgroundColorStripeSelectedHover: 'brand.primary.300',
   borderBottomWidth: 'thin',
   borderBottomColor: 'surface.border.normal.lowContrast',
   backgroundColorMotionEasing: 'easing.standard.effective',
