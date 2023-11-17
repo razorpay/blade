@@ -7,7 +7,6 @@ import { TableFooter, TableFooterRow, TableFooterCell } from './TableFooter';
 import { TablePagination } from './TablePagination';
 import { TableToolbarActions, TableToolbar } from './TableToolbar';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
-import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import { useTheme } from '~utils';
@@ -21,9 +20,6 @@ export default {
   args: {
     selectionType: undefined,
     rowDensity: 'normal',
-  },
-  argTypes: {
-    ...getStyledPropsArgTypes(),
   },
   parameters: {
     docs: {
