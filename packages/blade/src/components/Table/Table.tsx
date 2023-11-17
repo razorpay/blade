@@ -122,7 +122,7 @@ const Table: React.FC<TableProps> = ({
   height,
   showStripes,
   gridTemplateColumns,
-  surfaceLevel = 1,
+  surfaceLevel = 2,
 }) => {
   const { theme } = useTheme();
   const [selectedRows, setSelectedRows] = React.useState<TableNode['id'][]>([]);
