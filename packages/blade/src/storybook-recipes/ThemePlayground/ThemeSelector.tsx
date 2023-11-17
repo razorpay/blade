@@ -162,7 +162,7 @@ const ThemeSelector = ({
               <Text
                 size="small"
                 type="subdued"
-                weight="bold"
+                weight="semibold"
                 marginRight="spacing.8"
                 marginBottom="spacing.2"
               >
@@ -238,7 +238,7 @@ const ThemeSelector = ({
             ) : null}
 
             <Box marginTop="spacing.8" />
-            <Text type="subdued" weight="bold" marginRight="spacing.8" marginBottom="spacing.3">
+            <Text type="subdued" weight="semibold" marginRight="spacing.8" marginBottom="spacing.3">
               Code:
             </Text>
             <Box>

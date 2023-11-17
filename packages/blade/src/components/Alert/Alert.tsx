@@ -198,7 +198,7 @@ const Alert = ({
           {title}
         </Heading>
       ) : (
-        <Text type="subtle" weight="bold" contrast={contrast}>
+        <Text type="subtle" weight="semibold" contrast={contrast}>
           {title}
         </Text>
       )}

@@ -167,7 +167,7 @@ const _CardHeaderLeading = ({
       </BaseBox>
       <BaseBox marginRight="spacing.5">
         <BaseBox display="flex" flexDirection="row" alignItems="center" flexWrap="wrap">
-          <Heading size="small" variant="regular" type="normal">
+          <Heading size="small" type="normal">
             {title}
           </Heading>
           <BaseBox marginLeft="spacing.3">{suffix}</BaseBox>

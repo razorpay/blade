@@ -111,7 +111,7 @@ const FormLabel = ({
         contrast={contrast}
         size={isLabelLeftPositioned ? 'medium' : 'small'}
         truncateAfterLines={2}
-        weight="bold"
+        weight="semibold"
       >
         {children}
       </Text>

@@ -81,7 +81,7 @@ describe('<Heading />', () => {
   it('should render Heading with variant "subheading" and weight "bold"', () => {
     const displayText = 'Get Started With Payment Gateway';
     const { toJSON, getByText } = renderWithTheme(
-      <Heading type="subdued" variant="subheading" weight="bold">
+      <Heading type="subdued" weight="semibold">
         {displayText}
       </Heading>,
     );

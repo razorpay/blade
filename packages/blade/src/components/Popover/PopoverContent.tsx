@@ -46,7 +46,7 @@ const PopoverHeader = ({ title, titleLeading }: PopoverHeaderProps): React.React
         : null}
       {title ? (
         <BaseBox id={titleId} paddingRight="spacing.4">
-          <Heading size="small" weight="bold" type="normal">
+          <Heading size="small" weight="semibold" type="normal">
             {title}
           </Heading>
         </BaseBox>

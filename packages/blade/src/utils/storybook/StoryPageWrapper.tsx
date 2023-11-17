@@ -112,7 +112,7 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
               target="_blank"
               rel="noreferrer"
             >
-              <Badge color="default" fontWeight="bold" size="large" icon={AnnouncementIcon}>
+              <Badge color="default" fontWeight="semibold" size="large" icon={AnnouncementIcon}>
                 Release: v{componentMetaInfo.releasedIn}
               </Badge>
             </a>

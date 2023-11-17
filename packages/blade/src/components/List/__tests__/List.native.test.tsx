@@ -52,7 +52,7 @@ describe('<List />', () => {
     const { toJSON } = renderWithTheme(
       <List>
         <ListItem>
-          <ListItemText weight="bold" color="action.text.secondary.default">
+          <ListItemText weight="semibold" color="action.text.secondary.default">
             Level 1
           </ListItemText>
         </ListItem>

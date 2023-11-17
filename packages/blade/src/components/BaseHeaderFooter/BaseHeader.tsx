@@ -229,7 +229,7 @@ const _BaseHeader = ({
                 flexDirection="row"
               >
                 {title ? (
-                  <Heading size="small" variant="regular" type="normal">
+                  <Heading size="small" type="normal">
                     {title}
                   </Heading>
                 ) : null}

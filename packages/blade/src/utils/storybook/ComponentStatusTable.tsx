@@ -127,7 +127,7 @@ const ComponentStatusTable = (): React.ReactElement => {
 
   return (
     <>
-      <Heading variant="regular">Lifecycle of a component</Heading>
+      <Heading>Lifecycle of a component</Heading>
       <br />
       <BaseBox display="flex" flexDirection="row" marginBottom="spacing.7" gap="spacing.2">
         <Tooltip content="Not yet decided or planned" placement="bottom">
@@ -167,16 +167,16 @@ const ComponentStatusTable = (): React.ReactElement => {
           <thead>
             <tr>
               <th align="left">
-                <Text weight="bold">Component</Text>
+                <Text weight="semibold">Component</Text>
               </th>
               <th align="left">
-                <Text weight="bold">Status</Text>
+                <Text weight="semibold">Status</Text>
               </th>
               <th style={{ width: '50%' }} align="left">
-                <Text weight="bold">Description</Text>
+                <Text weight="semibold">Description</Text>
               </th>
               <th align="right">
-                <Text weight="bold">Released In</Text>
+                <Text weight="semibold">Released In</Text>
               </th>
             </tr>
           </thead>
