@@ -26,6 +26,8 @@ type TablePaginationProps = {
   onPageSizeChange?: ({ pageSize }: { pageSize: number }) => void;
   showPageSizePicker?: boolean;
   showPageNumberSelector?: boolean;
+  label?: string;
+  showLabel?: boolean;
 };
 
 const rowSizeOptions = [10, 25, 50];
@@ -153,6 +155,8 @@ const TablePagination = ({
   defaultPageSize = tablePagination.defaultPageSize,
   showPageSizePicker, // TODO: Figure out default value
   showPageNumberSelector, // TODO: Figure out default value
+  showLabel,
+  label,
 }: TablePaginationProps): React.ReactElement => {
   const {
     setPaginationPage,
@@ -169,6 +173,12 @@ const TablePagination = ({
   const [currentEllipseHover, setCurrentEllipseHover] = React.useState<'start' | 'end' | undefined>(
     undefined,
   );
+
+  const defaultLabel = currentPaginationState
+    ? `Showing ${currentPaginationState.page * currentPaginationState.size + 1}-${
+        currentPaginationState.page * currentPaginationState.size + currentPaginationState.size
+      } Items`
+    : `Showing 1 to ${totalItems} Items`;
 
   const { platform } = useTheme();
   const onMobile = platform === 'onMobile';
@@ -230,6 +240,13 @@ const TablePagination = ({
       padding={tablePagination.padding}
       backgroundColor={tablePagination.backgroundColor}
     >
+      {showLabel && !onMobile && (
+        <BaseBox display="flex" justifyContent="center" alignItems="center">
+          <Text size="medium" weight="bold">
+            {label ?? defaultLabel}
+          </Text>
+        </BaseBox>
+      )}
       <BaseBox
         display="flex"
         flex={1}
