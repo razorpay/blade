@@ -4,7 +4,6 @@ import getIn from 'lodash/get';
 import { useTableContext } from './TableContext';
 import { tablePagination } from './tokens';
 import BaseBox from '~components/Box/BaseBox';
-import { Button } from '~components/Button';
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
@@ -17,6 +16,7 @@ import { SelectInput } from '~components/Input/DropdownInputTriggers';
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { Text } from '~components/Typography';
 import { useTheme } from '~utils';
+import { Link } from '~components/Link';
 
 type TablePaginationProps = {
   pageSize?: number;
@@ -28,7 +28,7 @@ type TablePaginationProps = {
   showPageNumberSelector?: boolean;
 };
 
-const rowSizeOptions = [10, 15, 20, 25, 30, 35, 40, 45, 50, 60]; // TODO: Figure out default value
+const rowSizeOptions = [10, 25, 50];
 
 const PageSelectionButton = styled.button<{ isSelected?: boolean }>(({ theme, isSelected }) => ({
   backgroundColor: isSelected
@@ -273,11 +273,12 @@ const TablePagination = ({
           flex={onMobile ? 1 : undefined}
           alignItems="center"
         >
-          <Button
-            size="small"
+          <Link
+            size="large"
+            color="neutral"
             icon={ChevronLeftIcon}
             accessibilityLabel="Previous Page"
-            variant="tertiary"
+            variant="button"
             onClick={() => {
               handlePageChange(currentPage - 1);
             }}
@@ -366,11 +367,12 @@ const TablePagination = ({
               </PageSelectionButton>
             </BaseBox>
           )}
-          <Button
-            size="small"
+          <Link
+            variant="button"
+            size="large"
+            color="neutral"
             icon={ChevronRightIcon}
             accessibilityLabel="Next Page"
-            variant="tertiary"
             onClick={() => {
               handlePageChange(currentPage + 1);
               console.log('next page');

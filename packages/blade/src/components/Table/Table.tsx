@@ -142,6 +142,7 @@ const Table: React.FC<TableProps> = ({
         selectionType === 'multiple' ? 'min-content' : ''
       } repeat(${columnCount},minmax(100px, 1fr)) !important;`
     } !important;
+    background-color: ${theme.colors.surface.background[`level${surfaceLevel}`].lowContrast};
     `,
     Footer: `
     .tr-footer > div {
