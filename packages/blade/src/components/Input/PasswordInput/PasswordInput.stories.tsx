@@ -25,7 +25,7 @@ const Page = (): ReactElement => {
       }}
     >
       <Title>Usage</Title>
-      <Sandbox showConsole>
+      <Sandbox>
         {`
           import { PasswordInput } from '@razorpay/blade/components';
 
