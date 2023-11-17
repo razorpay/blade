@@ -310,8 +310,8 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
-  padding-top: 4px;
-  padding-bottom: 4px;
+  padding-top: 2px;
+  padding-bottom: 2px;
   padding-left: 12px;
   min-height: 36px;
 }
@@ -709,7 +709,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   border-color: transparent;
   text-align: left;
   background-color: transparent;
-  padding: 4px;
+  padding: 8px;
   border-radius: 4px;
   -webkit-text-decoration: none;
   text-decoration: none;

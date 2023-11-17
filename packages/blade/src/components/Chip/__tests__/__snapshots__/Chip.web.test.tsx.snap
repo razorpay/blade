@@ -117,7 +117,7 @@ exports[`<Chip /> should render chip 1`] = `
   justify-content: center;
   text-align: left;
   text-overflow: ellipsis;
-  max-width: 420px;
+  max-width: 280px;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -561,7 +561,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
   justify-content: center;
   text-align: left;
   text-overflow: ellipsis;
-  max-width: 420px;
+  max-width: 280px;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -1061,7 +1061,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   justify-content: center;
   text-align: left;
   text-overflow: ellipsis;
-  max-width: 420px;
+  max-width: 280px;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -1099,7 +1099,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   justify-content: center;
   text-align: left;
   text-overflow: ellipsis;
-  max-width: 420px;
+  max-width: 280px;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;

@@ -32,13 +32,13 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
@@ -58,11 +58,11 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
-  margin-top: 0px;
-  margin-left: 16px;
+  -webkit-align-self: auto;
+  -ms-flex-item-align: auto;
+  align-self: auto;
+  margin-top: 16px;
+  margin-left: 0px;
 }
 
 .c14 {
@@ -745,7 +745,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
 .c14 {
   background-color: hsla(216,15%,54%,0.09);
   border-radius: 9999px;
-  max-width: 120px;
+  max-width: 100px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;

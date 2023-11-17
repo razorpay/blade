@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<CheckboxGroup /> should render with help text 1`] = `
-.c9 {
+.c10 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -28,7 +28,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   border-color: hsla(214,18%,69%,1);
 }
 
-.c10 {
+.c11 {
   -webkit-animation: gYwSSW 150ms cubic-bezier(0.17,0,1,1);
   animation: gYwSSW 150ms cubic-bezier(0.17,0,1,1);
 }
@@ -66,7 +66,11 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   gap: 0px;
 }
 
-.c7 {
+.c6 {
+  margin-bottom: 8px;
+}
+
+.c8 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -76,19 +80,19 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   flex-direction: row;
 }
 
-.c11 {
+.c12 {
   margin-left: 4px;
 }
 
-.c13 {
+.c14 {
   margin-bottom: 0px;
 }
 
-.c14 {
+.c15 {
   margin-top: 4px;
 }
 
-.c15 {
+.c16 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -133,7 +137,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   padding: 0;
 }
 
-.c12 {
+.c13 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -146,7 +150,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   padding: 0;
 }
 
-.c16 {
+.c17 {
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.6875rem;
@@ -176,7 +180,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   word-wrap: normal;
 }
 
-.c6 {
+.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -185,7 +189,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   margin-bottom: 2px;
 }
 
-.c8 {
+.c9 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -202,12 +206,12 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   word-wrap: normal;
 }
 
-.c8:focus-visible + div {
+.c9:focus-visible + div {
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c8:hover + div {
+.c9:hover + div {
   border-color: hsla(214,18%,69%,1);
   background-color: hsla(216,15%,54%,0.09);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -269,7 +273,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
           data-blade-component="base-box"
         >
           <div
-            class="c1"
+            class="c6"
             data-blade-component="base-box"
           >
             <div
@@ -277,7 +281,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
               data-blade-component="checkbox"
             >
               <label
-                class="c6"
+                class="c7"
                 data-blade-component="checkbox-label"
               >
                 <div
@@ -285,7 +289,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c7"
+                    class="c8"
                     data-blade-component="base-box"
                   >
                     <input
@@ -293,13 +297,13 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                       aria-disabled="false"
                       aria-invalid="false"
                       aria-required="false"
-                      class="c8"
+                      class="c9"
                       role="checkbox"
                       type="checkbox"
                       value="apple"
                     />
                     <div
-                      class="c9"
+                      class="c10"
                       data-blade-component="checkbox-icon-wrapper"
                     >
                       <div
@@ -329,16 +333,16 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                         </svg>
                       </div>
                       <div
-                        class="c10"
+                        class="c11"
                         style="opacity: 0; position: absolute; display: flex;"
                       />
                     </div>
                     <div
-                      class="c11"
+                      class="c12"
                       data-blade-component="base-box"
                     />
                     <div
-                      class="c12"
+                      class="c13"
                       data-blade-component="base-text"
                     >
                       Apple
@@ -349,7 +353,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
             </div>
           </div>
           <div
-            class="c1"
+            class="c6"
             data-blade-component="base-box"
           >
             <div
@@ -357,7 +361,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
               data-blade-component="checkbox"
             >
               <label
-                class="c6"
+                class="c7"
                 data-blade-component="checkbox-label"
               >
                 <div
@@ -365,7 +369,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c7"
+                    class="c8"
                     data-blade-component="base-box"
                   >
                     <input
@@ -373,13 +377,13 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                       aria-disabled="false"
                       aria-invalid="false"
                       aria-required="false"
-                      class="c8"
+                      class="c9"
                       role="checkbox"
                       type="checkbox"
                       value="mango"
                     />
                     <div
-                      class="c9"
+                      class="c10"
                       data-blade-component="checkbox-icon-wrapper"
                     >
                       <div
@@ -409,16 +413,16 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                         </svg>
                       </div>
                       <div
-                        class="c10"
+                        class="c11"
                         style="opacity: 0; position: absolute; display: flex;"
                       />
                     </div>
                     <div
-                      class="c11"
+                      class="c12"
                       data-blade-component="base-box"
                     />
                     <div
-                      class="c12"
+                      class="c13"
                       data-blade-component="base-text"
                     >
                       Mango
@@ -429,7 +433,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
             </div>
           </div>
           <div
-            class="c13"
+            class="c14"
             data-blade-component="base-box"
           >
             <div
@@ -437,7 +441,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
               data-blade-component="checkbox"
             >
               <label
-                class="c6"
+                class="c7"
                 data-blade-component="checkbox-label"
               >
                 <div
@@ -445,7 +449,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c7"
+                    class="c8"
                     data-blade-component="base-box"
                   >
                     <input
@@ -453,13 +457,13 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                       aria-disabled="false"
                       aria-invalid="false"
                       aria-required="false"
-                      class="c8"
+                      class="c9"
                       role="checkbox"
                       type="checkbox"
                       value="orange"
                     />
                     <div
-                      class="c9"
+                      class="c10"
                       data-blade-component="checkbox-icon-wrapper"
                     >
                       <div
@@ -489,16 +493,16 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                         </svg>
                       </div>
                       <div
-                        class="c10"
+                        class="c11"
                         style="opacity: 0; position: absolute; display: flex;"
                       />
                     </div>
                     <div
-                      class="c11"
+                      class="c12"
                       data-blade-component="base-box"
                     />
                     <div
-                      class="c12"
+                      class="c13"
                       data-blade-component="base-text"
                     >
                       Orange
@@ -510,16 +514,16 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
           </div>
         </div>
         <div
-          class="c14"
+          class="c15"
           data-blade-component="base-box"
         >
           <span
-            class="c15"
+            class="c16"
             data-blade-component="base-box"
             style="word-break: break-all;"
           >
             <span
-              class="c16"
+              class="c17"
               data-blade-component="base-text"
             >
               Select one
@@ -533,7 +537,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
 `;
 
 exports[`<CheckboxGroup /> should render with label 1`] = `
-.c9 {
+.c10 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -560,7 +564,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   border-color: hsla(214,18%,69%,1);
 }
 
-.c10 {
+.c11 {
   -webkit-animation: gYwSSW 150ms cubic-bezier(0.17,0,1,1);
   animation: gYwSSW 150ms cubic-bezier(0.17,0,1,1);
 }
@@ -598,7 +602,11 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   gap: 0px;
 }
 
-.c7 {
+.c6 {
+  margin-bottom: 8px;
+}
+
+.c8 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -608,11 +616,11 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   flex-direction: row;
 }
 
-.c11 {
+.c12 {
   margin-left: 4px;
 }
 
-.c13 {
+.c14 {
   margin-bottom: 0px;
 }
 
@@ -647,7 +655,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   padding: 0;
 }
 
-.c12 {
+.c13 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -677,7 +685,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   word-wrap: normal;
 }
 
-.c6 {
+.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -686,7 +694,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   margin-bottom: 2px;
 }
 
-.c8 {
+.c9 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -703,12 +711,12 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   word-wrap: normal;
 }
 
-.c8:focus-visible + div {
+.c9:focus-visible + div {
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c8:hover + div {
+.c9:hover + div {
   border-color: hsla(214,18%,69%,1);
   background-color: hsla(216,15%,54%,0.09);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -770,7 +778,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
           data-blade-component="base-box"
         >
           <div
-            class="c1"
+            class="c6"
             data-blade-component="base-box"
           >
             <div
@@ -778,7 +786,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
               data-blade-component="checkbox"
             >
               <label
-                class="c6"
+                class="c7"
                 data-blade-component="checkbox-label"
               >
                 <div
@@ -786,7 +794,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c7"
+                    class="c8"
                     data-blade-component="base-box"
                   >
                     <input
@@ -794,13 +802,13 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                       aria-disabled="false"
                       aria-invalid="false"
                       aria-required="false"
-                      class="c8"
+                      class="c9"
                       role="checkbox"
                       type="checkbox"
                       value="apple"
                     />
                     <div
-                      class="c9"
+                      class="c10"
                       data-blade-component="checkbox-icon-wrapper"
                     >
                       <div
@@ -830,16 +838,16 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                         </svg>
                       </div>
                       <div
-                        class="c10"
+                        class="c11"
                         style="opacity: 0; position: absolute; display: flex;"
                       />
                     </div>
                     <div
-                      class="c11"
+                      class="c12"
                       data-blade-component="base-box"
                     />
                     <div
-                      class="c12"
+                      class="c13"
                       data-blade-component="base-text"
                     >
                       Apple
@@ -850,7 +858,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
             </div>
           </div>
           <div
-            class="c1"
+            class="c6"
             data-blade-component="base-box"
           >
             <div
@@ -858,7 +866,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
               data-blade-component="checkbox"
             >
               <label
-                class="c6"
+                class="c7"
                 data-blade-component="checkbox-label"
               >
                 <div
@@ -866,7 +874,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c7"
+                    class="c8"
                     data-blade-component="base-box"
                   >
                     <input
@@ -874,13 +882,13 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                       aria-disabled="false"
                       aria-invalid="false"
                       aria-required="false"
-                      class="c8"
+                      class="c9"
                       role="checkbox"
                       type="checkbox"
                       value="mango"
                     />
                     <div
-                      class="c9"
+                      class="c10"
                       data-blade-component="checkbox-icon-wrapper"
                     >
                       <div
@@ -910,16 +918,16 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                         </svg>
                       </div>
                       <div
-                        class="c10"
+                        class="c11"
                         style="opacity: 0; position: absolute; display: flex;"
                       />
                     </div>
                     <div
-                      class="c11"
+                      class="c12"
                       data-blade-component="base-box"
                     />
                     <div
-                      class="c12"
+                      class="c13"
                       data-blade-component="base-text"
                     >
                       Mango
@@ -930,7 +938,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
             </div>
           </div>
           <div
-            class="c13"
+            class="c14"
             data-blade-component="base-box"
           >
             <div
@@ -938,7 +946,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
               data-blade-component="checkbox"
             >
               <label
-                class="c6"
+                class="c7"
                 data-blade-component="checkbox-label"
               >
                 <div
@@ -946,7 +954,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c7"
+                    class="c8"
                     data-blade-component="base-box"
                   >
                     <input
@@ -954,13 +962,13 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                       aria-disabled="false"
                       aria-invalid="false"
                       aria-required="false"
-                      class="c8"
+                      class="c9"
                       role="checkbox"
                       type="checkbox"
                       value="orange"
                     />
                     <div
-                      class="c9"
+                      class="c10"
                       data-blade-component="checkbox-icon-wrapper"
                     >
                       <div
@@ -990,16 +998,16 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                         </svg>
                       </div>
                       <div
-                        class="c10"
+                        class="c11"
                         style="opacity: 0; position: absolute; display: flex;"
                       />
                     </div>
                     <div
-                      class="c11"
+                      class="c12"
                       data-blade-component="base-box"
                     />
                     <div
-                      class="c12"
+                      class="c13"
                       data-blade-component="base-text"
                     >
                       Orange

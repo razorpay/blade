@@ -28,8 +28,8 @@ exports[`<Switch /> should render switch 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
   position: relative;
 }
 
@@ -78,8 +78,8 @@ exports[`<Switch /> should render switch 1`] = `
   align-items: center;
   margin: 2px;
   padding: 2px;
-  width: 36px;
-  height: 20px;
+  width: 44px;
+  height: 24px;
   border-radius: 9999px;
   background-color: hsla(214,18%,69%,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -166,9 +166,9 @@ exports[`<Switch /> should render switch 1`] = `
               class="Svgweb__StyledSvg-vcmjs8-0 c6"
               data-blade-component="icon"
               fill="none"
-              height="8px"
+              height="10px"
               viewBox="0 0 11 8"
-              width="8px"
+              width="10px"
             >
               <path
                 clip-rule="evenodd"
@@ -214,8 +214,8 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
   position: relative;
 }
 
@@ -264,8 +264,8 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
   align-items: center;
   margin: 2px;
   padding: 2px;
-  width: 36px;
-  height: 20px;
+  width: 44px;
+  height: 24px;
   border-radius: 9999px;
   background-color: hsla(216,15%,54%,0.18);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -345,9 +345,9 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
               class="Svgweb__StyledSvg-vcmjs8-0 c6"
               data-blade-component="icon"
               fill="none"
-              height="8px"
+              height="10px"
               viewBox="0 0 11 8"
-              width="8px"
+              width="10px"
             >
               <path
                 clip-rule="evenodd"

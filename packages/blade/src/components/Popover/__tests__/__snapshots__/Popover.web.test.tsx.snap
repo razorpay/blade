@@ -49,7 +49,7 @@ exports[`<Popover /> should render 1`] = `
 
 .c5 {
   width: 100%;
-  max-width: 328px;
+  max-width: 288px;
   position: relative;
   background-color: hsla(0,0%,100%,1);
   border-width: 1px;
@@ -388,7 +388,7 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
 
 .c5 {
   width: 100%;
-  max-width: 328px;
+  max-width: 288px;
   position: relative;
   background-color: hsla(0,0%,100%,1);
   border-width: 1px;
@@ -743,7 +743,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
 
 .c5 {
   width: 100%;
-  max-width: 328px;
+  max-width: 288px;
   position: relative;
   background-color: hsla(0,0%,100%,1);
   border-width: 1px;

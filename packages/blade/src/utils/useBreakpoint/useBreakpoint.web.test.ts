@@ -12,7 +12,7 @@ describe('useBreakpoint', () => {
     const { result } = renderHook(() => useBreakpoint({ breakpoints }));
 
     expect(result.current.matchedBreakpoint).toBe(undefined);
-    expect(result.current.matchedDeviceType).toBe('desktop');
+    expect(result.current.matchedDeviceType).toBe('mobile');
   });
 
   it('should match a specific media query and return the device type accordingly', () => {

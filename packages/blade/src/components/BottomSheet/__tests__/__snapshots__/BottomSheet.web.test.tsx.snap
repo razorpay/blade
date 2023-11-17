@@ -409,7 +409,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   border-color: transparent;
   text-align: left;
   background-color: transparent;
-  padding: 4px;
+  padding: 8px;
   border-radius: 4px;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -432,7 +432,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   border-color: transparent;
   text-align: left;
   background-color: transparent;
-  padding: 4px;
+  padding: 8px;
   border-radius: 4px;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -1129,7 +1129,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
 .c16 {
   background-color: hsla(155,100%,31%,0.09);
   border-radius: 9999px;
-  max-width: 120px;
+  max-width: 100px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;

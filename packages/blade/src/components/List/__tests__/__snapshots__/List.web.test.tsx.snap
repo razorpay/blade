@@ -1204,8 +1204,8 @@ exports[`<List /> should render medium ordered List 1`] = `
   justify-content: center;
   margin-top: 0px;
   margin-right: 4px;
-  height: 20px;
-  width: 20px;
+  height: 24px;
+  width: 24px;
 }
 
 .c9 {
@@ -1960,9 +1960,9 @@ exports[`<List /> should render small ordered List 1`] = `
                     class="Svgweb__StyledSvg-vcmjs8-0"
                     data-blade-component="icon"
                     fill="none"
-                    height="6px"
+                    height="5px"
                     viewBox="0 0 6 6"
-                    width="6px"
+                    width="5px"
                   >
                     <circle
                       cx="3px"
@@ -2006,16 +2006,16 @@ exports[`<List /> should render small ordered List 1`] = `
                           class="Svgweb__StyledSvg-vcmjs8-0"
                           data-blade-component="icon"
                           fill="none"
-                          height="6px"
+                          height="5px"
                           viewBox="0 0 6 6"
-                          width="6px"
+                          width="5px"
                         >
                           <rect
                             data-blade-component="svg-rect"
                             fill="hsla(214, 18%, 69%, 1)"
-                            height="6px"
+                            height="5px"
                             rx="1px"
-                            width="6px"
+                            width="5px"
                           />
                         </svg>
                       </div>
@@ -2081,8 +2081,8 @@ exports[`<List /> should render small ordered-filled List 1`] = `
   justify-content: center;
   margin-top: 0px;
   margin-right: 8px;
-  height: 18px;
-  width: 18px;
+  height: 16px;
+  width: 16px;
   background-color: hsla(216,15%,54%,0.18);
   border-radius: 9999px;
 }
@@ -2403,16 +2403,16 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                           class="Svgweb__StyledSvg-vcmjs8-0"
                           data-blade-component="icon"
                           fill="none"
-                          height="6px"
+                          height="5px"
                           viewBox="0 0 6 6"
-                          width="6px"
+                          width="5px"
                         >
                           <rect
                             data-blade-component="svg-rect"
                             fill="hsla(214, 18%, 69%, 1)"
-                            height="6px"
+                            height="5px"
                             rx="1px"
-                            width="6px"
+                            width="5px"
                           />
                         </svg>
                       </div>
@@ -2521,9 +2521,9 @@ exports[`<List /> should render unordered List of small size 1`] = `
               class="Svgweb__StyledSvg-vcmjs8-0"
               data-blade-component="icon"
               fill="none"
-              height="6px"
+              height="5px"
               viewBox="0 0 6 6"
-              width="6px"
+              width="5px"
             >
               <circle
                 cx="3px"
@@ -2567,9 +2567,9 @@ exports[`<List /> should render unordered List of small size 1`] = `
                     class="Svgweb__StyledSvg-vcmjs8-0"
                     data-blade-component="icon"
                     fill="none"
-                    height="6px"
+                    height="5px"
                     viewBox="0 0 6 6"
-                    width="6px"
+                    width="5px"
                   >
                     <circle
                       cx="3px"
@@ -2613,16 +2613,16 @@ exports[`<List /> should render unordered List of small size 1`] = `
                           class="Svgweb__StyledSvg-vcmjs8-0"
                           data-blade-component="icon"
                           fill="none"
-                          height="6px"
+                          height="5px"
                           viewBox="0 0 6 6"
-                          width="6px"
+                          width="5px"
                         >
                           <rect
                             data-blade-component="svg-rect"
                             fill="hsla(214, 18%, 69%, 1)"
-                            height="6px"
+                            height="5px"
                             rx="1px"
-                            width="6px"
+                            width="5px"
                           />
                         </svg>
                       </div>

@@ -365,7 +365,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 .c14 {
   background-color: hsla(155,100%,31%,0.09);
   border-radius: 9999px;
-  max-width: 120px;
+  max-width: 100px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;

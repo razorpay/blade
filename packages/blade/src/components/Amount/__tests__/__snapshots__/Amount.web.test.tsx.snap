@@ -388,7 +388,7 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
 .c2 {
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   font-weight: 700;
   font-style: normal;
   -webkit-text-decoration-line: none;
@@ -402,12 +402,12 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
 .c3 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   font-weight: 700;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 2.5rem;
+  line-height: 2rem;
   margin: 0;
   padding: 0;
 }
@@ -653,12 +653,12 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 .c9 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.75rem;
+  line-height: 1.5rem;
   margin: 0;
   padding: 0;
 }
@@ -680,12 +680,12 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 .c11 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   font-weight: 700;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1.75rem;
+  line-height: 1.5rem;
   margin: 0;
   padding: 0;
 }
@@ -719,7 +719,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 .c14 {
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   font-weight: 700;
   font-style: normal;
   -webkit-text-decoration-line: none;
@@ -733,12 +733,12 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 .c15 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   font-weight: 700;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 2.5rem;
+  line-height: 2rem;
   margin: 0;
   padding: 0;
 }
@@ -746,7 +746,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 .c16 {
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;

@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
-import { useEffect, useState, useCallback, useMemo } from 'react';
+import { useState, useCallback, useMemo } from 'react';
 import { getPlatformType } from '../getPlatformType';
 import { getMediaQuery } from '../getMediaQuery';
 import type { Breakpoints } from '~tokens/global';
+import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 
 const deviceType = {
   desktop: 'desktop',
@@ -71,13 +72,8 @@ export const useBreakpoint = ({
           if (event?.media === mediaQuery) {
             return true;
           }
-          // this will run when the state is initialised for the first time and hence the event object will be empty so we'll fallback to browser's window object
-          if (window.matchMedia(mediaQuery).matches) {
-            return true;
-          }
           return false;
         })?.token ?? undefined;
-
       return matchedBreakpoint;
     },
     [breakpointsTokenAndQueryCollection],
@@ -85,10 +81,10 @@ export const useBreakpoint = ({
 
   const [breakpointAndDevice, setBreakpointAndDevice] = useState<BreakpointAndDevice>({
     matchedBreakpoint: undefined,
-    matchedDeviceType: deviceType.desktop,
+    matchedDeviceType: deviceType.mobile,
   });
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (!supportsMatchMedia) {
       return undefined;
     }
@@ -133,8 +129,6 @@ export const useBreakpoint = ({
     getMatchedDeviceType,
     supportsMatchMedia,
   ]);
-
-  // @TODO: handle SSR scenarios
   return breakpointAndDevice;
 };
 
