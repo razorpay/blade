@@ -5,6 +5,7 @@ type Collection =
   | Set<any>
   | Map<any, any>
   | string
+  | number
   | null
   | undefined;
 
