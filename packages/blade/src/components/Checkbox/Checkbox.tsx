@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 import React from 'react';
-import isUndefined from 'lodash/isUndefined';
-import isEmpty from 'lodash/isEmpty';
+import isUndefined from '~utils/lodashButBetter/isUndefined';
+import isEmpty from '~utils/lodashButBetter/isEmpty';
 import { useCheckboxGroupContext } from './CheckboxGroup/CheckboxGroupContext';
 import { CheckboxIcon } from './CheckboxIcon';
 import { useCheckbox } from './useCheckbox';

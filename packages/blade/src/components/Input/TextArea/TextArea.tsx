@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-autofocus */
 import React from 'react';
-import isEmpty from 'lodash/isEmpty';
+import isEmpty from '~utils/lodashButBetter/isEmpty';
 import type { TextInput as TextInputReactNative } from 'react-native';
 import type { BaseInputProps } from '../BaseInput';
 import { BaseInput } from '../BaseInput';

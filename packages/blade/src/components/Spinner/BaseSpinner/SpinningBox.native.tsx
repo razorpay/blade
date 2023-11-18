@@ -1,4 +1,4 @@
-import getIn from 'lodash/get';
+import getIn from '~utils/lodashButBetter/get';
 import React from 'react';
 import type { EasingFactoryFn } from 'react-native-reanimated';
 import Animated, {

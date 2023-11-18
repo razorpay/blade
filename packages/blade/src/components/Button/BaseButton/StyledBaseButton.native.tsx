@@ -1,4 +1,4 @@
-import getIn from 'lodash/get';
+import getIn from '~utils/lodashButBetter/get';
 import { Linking, Pressable } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import styled from 'styled-components/native';

@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import styled from 'styled-components/native';
-import getIn from 'lodash/get';
+import getIn from '~utils/lodashButBetter/get';
 import React from 'react';
-import isNumber from 'lodash/isNumber';
+import isNumber from '~utils/lodashButBetter/isNumber';
 import Animated, {
   interpolate,
   useAnimatedStyle,

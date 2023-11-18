@@ -1,4 +1,4 @@
-import getIn from 'lodash/get';
+import getIn from '~utils/lodashButBetter/get';
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import Animated, {

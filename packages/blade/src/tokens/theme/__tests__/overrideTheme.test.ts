@@ -1,4 +1,4 @@
-import cloneDeep from 'lodash/cloneDeep';
+import cloneDeep from '~utils/lodashButBetter/cloneDeep';
 import overrideTheme from '../overrideTheme';
 import { paymentTheme, bankingTheme } from '../';
 import type { ThemeTokens } from '../../theme';

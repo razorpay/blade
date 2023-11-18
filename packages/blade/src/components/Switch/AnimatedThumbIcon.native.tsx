@@ -1,5 +1,5 @@
 import React from 'react';
-import getIn from 'lodash/get';
+import getIn from '~utils/lodashButBetter/get';
 import Animated, {
   interpolate,
   useAnimatedStyle,

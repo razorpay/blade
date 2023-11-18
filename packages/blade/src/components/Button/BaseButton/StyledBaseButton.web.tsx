@@ -1,4 +1,4 @@
-import getIn from 'lodash/get';
+import getIn from '~utils/lodashButBetter/get';
 import styled from 'styled-components';
 import getStyledBaseButtonStyles from './getStyledBaseButtonStyles';
 import type { StyledBaseButtonProps } from './types';

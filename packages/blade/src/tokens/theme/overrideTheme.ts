@@ -1,5 +1,5 @@
-import cloneDeep from 'lodash/cloneDeep';
-import merge from 'lodash/merge';
+import cloneDeep from '~utils/lodashButBetter/cloneDeep';
+import merge from '~utils/lodashButBetter/merge';
 import paymentTheme from './paymentTheme';
 import type { ThemeTokens } from './theme';
 import { hasSameObjectStructure } from '~utils/hasSameObjectStructure';

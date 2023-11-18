@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 import styled from 'styled-components';
-import get from 'lodash/get';
+import get from '~utils/lodashButBetter/get';
 import React from 'react';
 import { CompositeItem } from '@floating-ui/react';
 import type { TabItemProps, TabsProps } from './types';

@@ -2,7 +2,7 @@
   "private": "true",
   "scripts": {
     "start": "DISABLE_ESLINT_PLUGIN=true react-scripts start",
-    "build": "yarn build && yarn build:app",
+    "build": "yarn build:blade && yarn build:app",
     "build:blade": "cd ../../blade && yarn build",
     "build:app": "DISABLE_ESLINT_PLUGIN=true react-scripts build",
     "analyze:only": "source-map-explorer 'build/static/js/*.js' --gzip",
