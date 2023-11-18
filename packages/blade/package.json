@@ -227,7 +227,7 @@
     "react-test-renderer": "18.2.0",
     "rollup": "3.28.1",
     "rollup-plugin-dts": "5.3.1",
-    "rollup-plugin-peer-deps-external": "2.2.4",
+    "@chrisneedham/rollup-plugin-peer-deps-external": "2.3.1",
     "size-limit": "8.2.4",
     "style-dictionary": "3.7.1",
     "styled-components": "5.3.5",

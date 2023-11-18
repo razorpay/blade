@@ -2,7 +2,6 @@
 import fs from 'fs';
 import { fileURLToPath } from 'node:url';
 import { babel as pluginBabel } from '@rollup/plugin-babel';
-import pluginPeerDepsExternal from 'rollup-plugin-peer-deps-external';
 import pluginResolve from '@rollup/plugin-node-resolve';
 import pluginCommonjs from '@rollup/plugin-commonjs';
 import pluginDeclarations from 'rollup-plugin-dts';
@@ -45,6 +44,22 @@ const nativeExtensions = [
   '.mjs',
 ];
 
+const externalDeeps = Object.keys({
+  '@gorhom/bottom-sheet': '^4',
+  '@gorhom/portal': '1.0.14',
+  '@floating-ui/react': '0.25.4',
+  '@floating-ui/react-native': '0.10.0',
+  react: '>=18',
+  'react-dom': '>=18',
+  'react-native': '^0.72',
+  'react-native-reanimated': '^3.4.1',
+  'react-native-tab-view': '3.5.2',
+  'react-native-pager-view': '6.2.1',
+  'react-native-svg': '^12.3.0',
+  'styled-components': '^5',
+  'react-native-gesture-handler': '^2.9.0',
+});
+
 const inputRootDirectory = 'src';
 const outputRootDirectory = 'build';
 const exportCategories = ['components', 'tokens', 'utils'];
@@ -79,13 +94,12 @@ const getWebConfig = ({ exportCategory }) => ({
       sourcemap: true,
     },
   ],
-  external: (id) => id.includes('@babel/runtime'),
+  external: (id) => id.includes('@babel/runtime') || externalDeeps.includes(id),
   plugins: [
     pluginReplace({
       __DEV__: process.env.NODE_ENV !== 'production',
       preventAssignment: true,
     }),
-    pluginPeerDepsExternal(),
     pluginResolve({ extensions: webExtensions }),
     pluginCommonjs(),
     pluginBabel({
@@ -107,9 +121,8 @@ const getNativeConfig = ({ exportCategory }) => ({
       sourcemap: true,
     },
   ],
-  external: (id) => id.includes('@babel/runtime'),
+  external: (id) => id.includes('@babel/runtime') || externalDeeps.includes(id),
   plugins: [
-    pluginPeerDepsExternal(),
     pluginResolve({ extensions: nativeExtensions }),
     pluginCommonjs(),
     pluginBabel({
@@ -163,8 +176,8 @@ const getCSSVariablesConfig = ({ exportCategory }) => ({
     file: `${outputRootDirectory}/js-bundle-for-css/${exportCategory}Bundle.js`,
     format: 'cjs',
   },
+  external: (id) => externalDeeps.includes(id),
   plugins: [
-    pluginPeerDepsExternal(),
     pluginResolve({ extensions: webExtensions }),
     pluginCommonjs(),
     pluginBabel({
