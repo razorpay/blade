@@ -6,6 +6,7 @@ type Collection =
   | Map<any, any>
   | string
   | number
+  | boolean
   | null
   | undefined;
 
@@ -23,6 +24,11 @@ export default function isEmpty(value: Collection): boolean {
 
   // Check if the value is a string and has zero length
   if (typeof value === 'string' && value.length === 0) {
+    return true;
+  }
+
+  // https://github.com/lodash/lodash/issues/496#issuecomment-37692727
+  if (typeof value === 'number' || typeof value === 'boolean') {
     return true;
   }
 
