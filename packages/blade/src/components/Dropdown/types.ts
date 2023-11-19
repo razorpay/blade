@@ -47,6 +47,7 @@ type DropdownOverlayProps = {
    * @default 1001
    */
   zIndex?: number;
+  width?: string;
 } & TestID;
 
 export type { DropdownProps, DropdownOverlayProps };
