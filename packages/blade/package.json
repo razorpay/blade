@@ -15,6 +15,7 @@
   },
   "files": [
     "build",
+    "webpack-build",
     "codemods",
     "components.d.ts",
     "components.js",
@@ -42,6 +43,12 @@
         "development": "./build/components/index.development.web.js",
         "production": "./build/components/index.production.web.js",
         "default": "./build/components/index.development.web.js"
+      }
+    },
+    "./webpack-components": {
+      "default": {
+        "types": "./build/components/index.d.ts",
+        "default": "./webpack-build/components/index.production.js"
       }
     },
     "./tokens": {
@@ -87,6 +94,7 @@
     "build:generate-root-imports": "rollup -c && node ./scripts/generateRootImports.js",
     "build:clean-declarations": "rm -rf build/types",
     "build:react-dev": "cross-env FRAMEWORK=REACT NODE_ENV=development rollup -c",
+    "build:webpack": "cross-env FRAMEWORK=REACT NODE_ENV=production webpack",
     "build:react-prod": "cross-env FRAMEWORK=REACT NODE_ENV=production rollup -c",
     "build:react-native": "cross-env FRAMEWORK=REACT_NATIVE rollup -c",
     "build:generate-css-variables": "cross-env GENERATE_CSS_VARIABLES=true FRAMEWORK=REACT rollup -c && node ./scripts/generateCssThemeVariables.js",
@@ -236,7 +244,10 @@
     "postinstall-postinstall": "2.1.0",
     "react-native-safe-area-context": "3.4.1",
     "ttypescript": "1.5.15",
-    "typescript-transform-paths": "3.4.6"
+    "typescript-transform-paths": "3.4.6",
+    "webpack": "5.89.0",
+    "webpack-cli": "5.1.4",
+    "ts-loader": "9.5.1"
   },
   "peerDependencies": {
     "@gorhom/bottom-sheet": "^4",
@@ -276,6 +287,10 @@
       {
         "friendlyName": "Web Components",
         "path": "./build/components/index.production.web.js"
+      },
+      {
+        "friendlyName": "Webpack Components",
+        "path": "./webpack-build/components/index.production.js"
       },
       {
         "friendlyName": "React Native Components",
