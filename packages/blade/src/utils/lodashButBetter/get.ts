@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-function getIn(obj: Record<string, any>, path: string): any {
+function getIn(obj: Record<string, any>, path: string, defaultValue?: any): any {
   if (!path) {
-    return undefined;
+    return defaultValue;
   }
 
   const keys = path.split('.');
@@ -10,11 +10,11 @@ function getIn(obj: Record<string, any>, path: string): any {
   for (const key of keys) {
     result = result?.[key];
     if (result === undefined) {
-      return undefined;
+      return defaultValue;
     }
   }
 
-  return result;
+  return result !== undefined ? result : defaultValue;
 }
 
 export default getIn;
