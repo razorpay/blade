@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import getIn from 'lodash/get';
+import getIn from '~utils/lodashButBetter/get';
 import { getAnimatedChipStyles } from './getAnimatedChipStyles';
 import type { AnimatedChipProps } from './types';
 import { chipMotionTokens } from './chipTokens';

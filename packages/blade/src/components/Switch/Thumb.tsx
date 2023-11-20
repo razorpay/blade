@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import isNumber from 'lodash/isNumber';
-import getIn from 'lodash/get';
+import isNumber from '~utils/lodashButBetter/isNumber';
+import getIn from '~utils/lodashButBetter/get';
 import styled from 'styled-components';
 import type { ThumbProps } from './types';
 import { switchSizes } from './switchTokens';

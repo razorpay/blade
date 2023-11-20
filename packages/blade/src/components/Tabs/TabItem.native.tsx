@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 import styled from 'styled-components';
-import get from 'lodash/get';
+import get from '~utils/lodashButBetter/get';
 import React from 'react';
 import type { TabItemProps, TabsProps } from './types';
 import { paddingX, paddingY } from './tabTokens';

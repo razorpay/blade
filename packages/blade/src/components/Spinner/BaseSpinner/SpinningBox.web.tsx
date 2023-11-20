@@ -1,4 +1,4 @@
-import getIn from 'lodash/get';
+import getIn from '~utils/lodashButBetter/get';
 import styled, { css, keyframes } from 'styled-components';
 import { motion as spinnerMotion } from './spinnerTokens';
 import BaseBox from '~components/Box/BaseBox';

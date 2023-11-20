@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import getIn from 'lodash/get';
+import getIn from '~utils/lodashButBetter/get';
 import React from 'react';
 import { radioIconColors, radioSizes } from '../radioTokens';
 import type { RadioProps } from '../Radio';

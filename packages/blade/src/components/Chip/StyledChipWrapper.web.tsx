@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import getIn from 'lodash/get';
+import getIn from '~utils/lodashButBetter/get';
 import type { StyledChipWrapperProps } from './types';
 import { chipMotionTokens, chipColorTokens } from './chipTokens';
 import BaseBox from '~components/Box/BaseBox';

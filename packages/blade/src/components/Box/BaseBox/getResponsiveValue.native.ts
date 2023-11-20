@@ -1,4 +1,4 @@
-import isEmpty from 'lodash/isEmpty';
+import isEmpty from '~utils/lodashButBetter/isEmpty';
 import { Animated } from 'react-native';
 import type { DimensionValue } from 'react-native';
 import type { MakeValueResponsive } from './types';

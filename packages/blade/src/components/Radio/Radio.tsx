@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 import React from 'react';
-import isEmpty from 'lodash/isEmpty';
+import isEmpty from '~utils/lodashButBetter/isEmpty';
 import type { OnChange } from './useRadio';
 import { useRadio } from './useRadio';
 import { RadioIcon } from './RadioIcon/RadioIcon';

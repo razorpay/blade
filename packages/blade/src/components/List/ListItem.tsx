@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import getIn from 'lodash/get';
+import getIn from '~utils/lodashButBetter/get';
 import React from 'react';
 import { useListContext } from './ListContext';
 import { UnorderedItemIcon } from './ListItemIcons';

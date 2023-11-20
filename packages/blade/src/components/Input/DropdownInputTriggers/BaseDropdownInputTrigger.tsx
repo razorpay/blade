@@ -1,5 +1,5 @@
 import React from 'react';
-import isEmpty from 'lodash/isEmpty';
+import isEmpty from '~utils/lodashButBetter/isEmpty';
 import { BaseInput } from '../BaseInput';
 import { InputChevronIcon } from './InputChevronIcon';
 import type { BaseDropdownInputTriggerProps } from './types';

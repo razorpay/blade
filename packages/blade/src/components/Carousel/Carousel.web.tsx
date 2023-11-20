@@ -6,9 +6,9 @@
 import type { CSSObject } from 'styled-components';
 import styled from 'styled-components';
 import React from 'react';
-import getIn from 'lodash/get';
-import throttle from 'lodash/throttle';
-import debounce from 'lodash/debounce';
+import getIn from '~utils/lodashButBetter/get';
+import throttle from '~utils/lodashButBetter/throttle';
+import debounce from '~utils/lodashButBetter/debounce';
 import { Indicators } from './Indicators/Indicators';
 import { NavigationButton } from './NavigationButton';
 import type { CarouselProps } from './types';

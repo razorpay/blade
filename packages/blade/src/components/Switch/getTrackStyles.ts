@@ -1,5 +1,5 @@
-import isNumber from 'lodash/isNumber';
-import getIn from 'lodash/get';
+import isNumber from '~utils/lodashButBetter/isNumber';
+import getIn from '~utils/lodashButBetter/get';
 import type { CSSObject } from 'styled-components';
 import type { TrackProps } from './types';
 import { switchColors, switchSizes } from './switchTokens';

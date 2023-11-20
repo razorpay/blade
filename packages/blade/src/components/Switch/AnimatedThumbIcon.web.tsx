@@ -1,4 +1,4 @@
-import getIn from 'lodash/get';
+import getIn from '~utils/lodashButBetter/get';
 import styled from 'styled-components';
 import { switchMotion } from './switchTokens';
 import Svg from '~components/Icons/_Svg';

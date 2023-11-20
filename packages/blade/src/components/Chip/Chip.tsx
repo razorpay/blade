@@ -1,5 +1,5 @@
 import React from 'react';
-import isEmpty from 'lodash/isEmpty';
+import isEmpty from '~utils/lodashButBetter/isEmpty';
 import { useChipGroupContext } from './ChipGroupContext';
 import {
   chipIconSizes,

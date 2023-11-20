@@ -1,5 +1,5 @@
 import React from 'react';
-import isUndefined from 'lodash/isUndefined';
+import isUndefined from '~utils/lodashButBetter/isUndefined';
 import type { RadioGroupProps } from './RadioGroup';
 import type { RadioGroupContextType } from './RadioContext';
 import { useControllableState } from '~utils/useControllable';

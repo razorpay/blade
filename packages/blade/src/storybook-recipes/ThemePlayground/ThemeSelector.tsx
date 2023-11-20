@@ -1,4 +1,4 @@
-import debounce from 'lodash/debounce';
+import debounce from '~utils/lodashButBetter/debounce';
 import { useEffect } from 'react';
 import styled from 'styled-components';
 import { Box } from '~components/Box';

@@ -1,4 +1,4 @@
-import getIn from 'lodash/get';
+import getIn from '~utils/lodashButBetter/get';
 import type { CSSObject } from 'styled-components';
 import type { StyledBaseTextProps } from './types';
 import { makeTypographySize } from '~utils/makeTypographySize';
