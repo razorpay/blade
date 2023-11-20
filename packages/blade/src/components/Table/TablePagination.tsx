@@ -153,8 +153,8 @@ const TablePagination = ({
   onPageChange,
   onPageSizeChange,
   defaultPageSize = tablePagination.defaultPageSize,
-  showPageSizePicker, // TODO: Figure out default value
-  showPageNumberSelector, // TODO: Figure out default value
+  showPageSizePicker = true,
+  showPageNumberSelector = false,
   showLabel,
   label,
 }: TablePaginationProps): React.ReactElement => {

@@ -37,17 +37,6 @@ const tableRow = {
     normal: 'spacing.4',
     comfortable: 'spacing.4',
   },
-  // backgroundColor: '', // TODO: Figure out
-  // backgroundColorHover: 'brand.gray.a50.lowContrast',
-  // backgroundColorActive: 'brand.gray.a100.lowContrast',
-  // backgroundColorSelected: 'brand.primary.300',
-  // backgroundColorSelectedHover: 'brand.primary.400',
-  // backgroundColorStripesHover: 'brand.gray.a50.lowContrast',
-  // backgroundColorStripesActive: 'brand.gray.a100.lowContrast', // Figure out
-  // wrapperBackgroundColorStripe: 'brand.gray.a50.lowContrast',
-  // wrapperBackgroundColorStripeActive: 'brand.gray.a100.lowContrast',
-  // wrapperBackgroundColorStripeSelected: 'brand.primary.300',
-  // wrapperBackgroundColorStripeSelectedHover: 'brand.primary.300',
   nonStripe: {
     backgroundColor: 'transparent',
     backgroundColorHover: 'brand.gray.a50.lowContrast',
