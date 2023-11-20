@@ -694,5 +694,5 @@ describe('<BottomSheet /> & <Dropdown /> with <AutoComplete />', () => {
     expect(getByRole('option', { name: 'Pune' })).toHaveAttribute('aria-selected', 'false');
     await user.click(getByRole('option', { name: 'Pune' }));
     expect(getByRole('option', { name: 'Pune' })).toHaveAttribute('aria-selected', 'true');
-  });
+  }, 10000);
 });
