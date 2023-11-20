@@ -7,7 +7,8 @@ import type { CarouselProps } from './types';
 import { useCarouselContext } from './CarouselContext';
 import { componentIds } from './constants';
 import BaseBox from '~components/Box/BaseBox';
-import { useBreakpoint, useTheme } from '~utils';
+import { useTheme } from '~components/BladeProvider';
+import { useBreakpoint } from '~utils';
 import { makeAccessible } from '~utils/makeAccessible';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 

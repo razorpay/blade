@@ -18,12 +18,13 @@ import { getCarouselItemId } from './utils';
 import { CAROUSEL_AUTOPLAY_INTERVAL, componentIds } from './constants';
 import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
-import { castWebType, makeMotionTime, useInterval, useTheme } from '~utils';
+import { castWebType, makeMotionTime, useInterval } from '~utils';
 import { useId } from '~utils/useId';
 import { makeAccessible } from '~utils/makeAccessible';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useDidUpdate } from '~utils/useDidUpdate';
 import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren/useVerifyAllowedChildren';
+import { useTheme } from '~components/BladeProvider';
 
 type ControlsProp = Required<
   Pick<
