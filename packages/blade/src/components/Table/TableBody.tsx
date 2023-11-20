@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import getIn from 'lodash/get';
 import { useTableContext } from './TableContext';
 import { tableRow } from './tokens';
-import type { TableProps } from './Table';
+import type { TableNode, TableProps } from './Table';
 import { Text } from '~components/Typography';
 import type { CheckboxProps } from '~components/Checkbox';
 import { Checkbox } from '~components/Checkbox';
@@ -118,7 +118,7 @@ type TableCellProps = {
 
 const StyledCell = styled(Cell)<{
   isSelectable: boolean;
-  rowDensity: NonNullable<TableProps['rowDensity']>;
+  rowDensity: NonNullable<TableProps<unknown>['rowDensity']>;
   showStripes?: boolean;
 }>(({ theme, isSelectable, rowDensity, showStripes }) => ({
   '&&&': {
@@ -186,11 +186,9 @@ const TableCheckboxCell = ({
   );
 };
 
-type TableRowProps = {
+type TableRowProps<Item> = {
   children: React.ReactNode;
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  item: any; // TODO: Fix type
+  item: TableNode<Item>;
   isDisabled?: boolean;
 };
 
@@ -229,7 +227,11 @@ const StyledRow = styled(Row)<{ isSelectable: boolean; showStripes?: boolean }>(
   }),
 );
 
-const TableRow = ({ children, item, isDisabled }: TableRowProps): React.ReactElement => {
+const TableRow = <Item,>({
+  children,
+  item,
+  isDisabled,
+}: TableRowProps<Item>): React.ReactElement => {
   const {
     selectionType,
     selectedRows,
