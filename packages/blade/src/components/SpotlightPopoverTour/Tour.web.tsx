@@ -136,11 +136,14 @@ const SpotlightPopoverTour = ({
 
   // Scroll into view when the active step changes
   useIsomorphicLayoutEffect(() => {
+    // We need to wait for the transition to finish before scrolling
+    // Otherwise the browser sometimes interrupts the scroll
+    const scrollDelay = 100;
     setTimeout(() => {
       if (!isOpen) return;
       if (isTransitioning) return;
       scrollToStep();
-    }, transitionDelay);
+    }, scrollDelay);
   }, [isOpen, scrollToStep, isTransitioning]);
 
   useLockBodyScroll(isOpen);
