@@ -477,7 +477,12 @@ const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
             </TableHeader>
             <TableBody>
               {tableData.map((tableItem, index) => (
-                <TableRow key={index} item={tableItem} index={index}>
+                <TableRow
+                  key={index}
+                  item={tableItem}
+                  index={index}
+                  isDisabled={tableItem.id === '1'}
+                >
                   <TableCell>
                     <Code size="medium">{tableItem.paymentId}</Code>
                   </TableCell>

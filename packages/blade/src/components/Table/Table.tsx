@@ -126,6 +126,7 @@ const Table: React.FC<TableProps> = ({
 }) => {
   const { theme } = useTheme();
   const [selectedRows, setSelectedRows] = React.useState<TableNode['id'][]>([]);
+  const [disabledRows, setDisabledRows] = React.useState<TableNode['id'][]>([]);
   const [totalItems, setTotalItems] = React.useState(data.nodes.length || 0);
 
   // Table Theme
@@ -248,9 +249,17 @@ const Table: React.FC<TableProps> = ({
 
   const toggleAllRowsSelection = useMemo(
     () => (): void => {
-      rowSelectConfig.fns.onToggleAll({});
+      if (selectedRows.length > 0) {
+        rowSelectConfig.fns.onRemoveAll();
+      } else {
+        const ids = data.nodes
+          .map((item: TableNode) => (disabledRows.includes(item.id) ? null : item.id))
+          .filter(Boolean) as Identifier[];
+
+        rowSelectConfig.fns.onAddAll(ids);
+      }
     },
-    [rowSelectConfig.fns],
+    [rowSelectConfig.fns, data.nodes, selectedRows, disabledRows],
   );
 
   // Sort Logic
@@ -350,6 +359,8 @@ const Table: React.FC<TableProps> = ({
       currentPaginationState,
       showStripes,
       surfaceLevel,
+      disabledRows,
+      setDisabledRows,
     }),
     [
       selectionType,
@@ -366,6 +377,8 @@ const Table: React.FC<TableProps> = ({
       currentPaginationState,
       showStripes,
       surfaceLevel,
+      disabledRows,
+      setDisabledRows,
     ],
   );
 

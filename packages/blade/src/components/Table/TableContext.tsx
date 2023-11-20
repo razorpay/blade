@@ -27,6 +27,8 @@ export type TableContextType = {
   };
   showStripes?: boolean;
   surfaceLevel: SurfaceLevels;
+  disabledRows: TableNode['id'][];
+  setDisabledRows: React.Dispatch<React.SetStateAction<TableNode['id'][]>>;
 };
 
 const TableContext = React.createContext<TableContextType>({
@@ -45,6 +47,8 @@ const TableContext = React.createContext<TableContextType>({
   setPaginationPage: () => {},
   setPaginationRowSize: () => {},
   surfaceLevel: 1,
+  disabledRows: [],
+  setDisabledRows: () => {},
 });
 const TableProvider = TableContext.Provider;
 
