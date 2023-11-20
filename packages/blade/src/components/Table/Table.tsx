@@ -20,17 +20,19 @@ import type { BoxProps } from '~components/Box';
 import { getBaseBoxStyles } from '~components/Box/BaseBox/baseBoxStyles';
 import type { SurfaceLevels } from '~tokens/theme/theme';
 
-type TableNode = {
-  id: Identifier;
-  nodes?: null;
-  [key: string]: unknown;
+export type TableNode<Item> = Item & {
+  id: string;
 };
 
-export type TableProps = {
-  children: (tableData: TableNode[]) => React.ReactElement;
-  data: { nodes: TableNode[] };
+export type TableData<Item> = {
+  nodes: TableNode<Item>[];
+};
+
+export type TableProps<Item> = {
+  children: (tableData: Item[]) => React.ReactElement;
+  data: TableData<Item>;
   selectionType?: 'single' | 'multiple';
-  onSelectionChange?: ({ values }: { values: TableNode[] }) => void;
+  onSelectionChange?: ({ values }: { values: TableNode<Item>[] }) => void;
   isHeaderSticky?: boolean;
   isFooterSticky?: boolean;
   isFirstColumnSticky?: boolean;
@@ -42,7 +44,7 @@ export type TableProps = {
     sortKey: TableHeaderCellProps['headerKey'];
     isSortReversed: boolean;
   }) => void;
-  sortFunctions?: Record<string, (array: TableNode[]) => TableNode[]>;
+  sortFunctions?: Record<string, (array: TableNode<Item>[]) => TableNode<Item>[]>;
   toolbar?: React.ReactElement;
   pagination?: React.ReactElement;
   height?: BoxProps['height'];
@@ -51,7 +53,7 @@ export type TableProps = {
   surfaceLevel?: SurfaceLevels;
 };
 
-const rowSelectType: Record<NonNullable<TableProps['selectionType']>, SelectTypes> = {
+const rowSelectType: Record<NonNullable<TableProps<unknown>['selectionType']>, SelectTypes> = {
   single: SelectTypes.SingleSelect,
   multiple: SelectTypes.MultiSelect,
 };
@@ -106,7 +108,7 @@ const StyledReactTable = styled(ReactTable)<{ styledProps?: { height?: BoxProps[
   },
 );
 
-const Table: React.FC<TableProps> = ({
+const Table: React.FC<TableProps<Item>> = ({
   children,
   data,
   selectionType,
@@ -125,8 +127,8 @@ const Table: React.FC<TableProps> = ({
   surfaceLevel = 2,
 }) => {
   const { theme } = useTheme();
-  const [selectedRows, setSelectedRows] = React.useState<TableNode['id'][]>([]);
-  const [disabledRows, setDisabledRows] = React.useState<TableNode['id'][]>([]);
+  const [selectedRows, setSelectedRows] = React.useState<TableNode<unknown>['id'][]>([]);
+  const [disabledRows, setDisabledRows] = React.useState<TableNode<unknown>['id'][]>([]);
   const [totalItems, setTotalItems] = React.useState(data.nodes.length || 0);
 
   // Table Theme
