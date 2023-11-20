@@ -122,7 +122,6 @@ const StyledCell = styled(Cell)<{
   '&&&': {
     height: '100%',
     backgroundColor: tableRow.nonStripe.backgroundColor,
-
     '& > div:first-child': {
       pointerEvents: isSelectable ? 'none' : 'auto',
       alignSelf: 'stretch',
@@ -162,7 +161,13 @@ const TableCell = ({ children }: TableCellProps): React.ReactElement => {
   const isSelectable = Boolean(selectionType);
   return (
     <StyledCell tabIndex={0} isSelectable={isSelectable}>
-      <CellWrapper className="cell-wrapper" rowDensity={rowDensity} showStripes={showStripes}>
+      <CellWrapper
+        className="cell-wrapper"
+        rowDensity={rowDensity}
+        showStripes={showStripes}
+        display="flex"
+        alignItems="center"
+      >
         {isChildrenString ? <Text size="medium">{children}</Text> : children}
       </CellWrapper>
     </StyledCell>
