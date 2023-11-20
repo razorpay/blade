@@ -118,23 +118,14 @@ type TableCellProps = {
 
 const StyledCell = styled(Cell)<{
   isSelectable: boolean;
-  rowDensity: NonNullable<TableProps<unknown>['rowDensity']>;
-  showStripes?: boolean;
-}>(({ theme, isSelectable, rowDensity, showStripes }) => ({
+}>(({ theme, isSelectable }) => ({
   '&&&': {
     height: '100%',
-    paddingTop: makeSpace(getIn(theme, tableRow.paddingTop[rowDensity])),
-    paddingBottom: makeSpace(getIn(theme, tableRow.paddingBottom[rowDensity])),
-    paddingLeft: makeSpace(getIn(theme, tableRow.paddingLeft[rowDensity])),
-    paddingRight: makeSpace(getIn(theme, tableRow.paddingRight[rowDensity])),
     backgroundColor: tableRow.nonStripe.backgroundColor,
-    ...(!showStripes && {
-      borderBottomWidth: makeSpace(getIn(theme.border.width, tableRow.borderBottomWidth)),
-      borderBottomColor: getIn(theme.colors, tableRow.borderBottomColor),
-      borderBottomStyle: 'solid',
-    }),
-    '& div:first-child': {
+
+    '& > div:first-child': {
       pointerEvents: isSelectable ? 'none' : 'auto',
+      alignSelf: 'stretch',
     },
     '&: focus-visible': {
       outline: 'none',
@@ -143,12 +134,25 @@ const StyledCell = styled(Cell)<{
   },
 }));
 
-const CellWrapper = styled(BaseBox)(({ theme }) => ({
+const CellWrapper = styled(BaseBox)<{
+  rowDensity: NonNullable<TableProps<unknown>['rowDensity']>;
+  showStripes?: boolean;
+}>(({ theme, rowDensity, showStripes }) => ({
   '&&&': {
     transition: `background-color ${makeMotionTime(
       getIn(theme.motion, tableRow.backgroundColorMotionDuration),
     )} ${getIn(theme.motion, tableRow.backgroundColorMotionEasing)}`,
     backgroundColor: tableRow.nonStripeWrapper.backgroundColor,
+    paddingTop: makeSpace(getIn(theme, tableRow.paddingTop[rowDensity])),
+    paddingBottom: makeSpace(getIn(theme, tableRow.paddingBottom[rowDensity])),
+    paddingLeft: makeSpace(getIn(theme, tableRow.paddingLeft[rowDensity])),
+    paddingRight: makeSpace(getIn(theme, tableRow.paddingRight[rowDensity])),
+    height: '100%',
+    ...(!showStripes && {
+      borderBottomWidth: makeSpace(getIn(theme.border.width, tableRow.borderBottomWidth)),
+      borderBottomColor: getIn(theme.colors, tableRow.borderBottomColor),
+      borderBottomStyle: 'solid',
+    }),
   },
 }));
 
@@ -157,16 +161,11 @@ const TableCell = ({ children }: TableCellProps): React.ReactElement => {
   const { selectionType, rowDensity, showStripes } = useTableContext();
   const isSelectable = Boolean(selectionType);
   return (
-    <CellWrapper className="cell-wrapper">
-      <StyledCell
-        tabIndex={0}
-        isSelectable={isSelectable}
-        rowDensity={rowDensity}
-        showStripes={showStripes}
-      >
+    <StyledCell tabIndex={0} isSelectable={isSelectable}>
+      <CellWrapper className="cell-wrapper" rowDensity={rowDensity} showStripes={showStripes}>
         {isChildrenString ? <Text size="medium">{children}</Text> : children}
-      </StyledCell>
-    </CellWrapper>
+      </CellWrapper>
+    </StyledCell>
   );
 };
 
