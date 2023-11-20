@@ -12,7 +12,6 @@ import {
   useTransitionStyles,
   autoUpdate,
   useClick,
-  useDismiss,
   FloatingFocusManager,
 } from '@floating-ui/react';
 import React from 'react';
@@ -108,10 +107,9 @@ const TourPopover = ({
   // remove click handler if popover is controlled
   const isControlled = isOpen !== undefined;
   const click = useClick(context, { enabled: !isControlled });
-  const dismiss = useDismiss(context);
   const role = useRole(context);
 
-  const { getFloatingProps } = useInteractions([click, dismiss, role]);
+  const { getFloatingProps } = useInteractions([click, role]);
 
   const contextValue = React.useMemo(() => {
     return {
