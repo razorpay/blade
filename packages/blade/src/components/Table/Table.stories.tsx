@@ -1,5 +1,5 @@
 import type { ComponentStory, Meta } from '@storybook/react';
-import type { TableData, TableNode, TableProps } from './Table';
+import type { TableData, TableProps } from './Table';
 import { Table as TableComponent } from './Table';
 import { TableHeader, TableHeaderRow, TableHeaderCell } from './TableHeader';
 import { TableBody, TableRow, TableCell } from './TableBody';
@@ -11,7 +11,7 @@ import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import { useTheme } from '~utils';
 import { Amount } from '~components/Amount';
-import { Code, Text } from '~components/Typography';
+import { Code } from '~components/Typography';
 import { Badge } from '~components/Badge';
 
 export default {
@@ -26,7 +26,7 @@ export default {
       page: () => <StoryPageWrapper componentDescription="" componentName="Table" />,
     },
   },
-} as Meta<TableProps>;
+} as Meta<TableProps<unknown>>;
 
 // const nodes = [
 //   {
@@ -388,7 +388,7 @@ export default {
 //   },
 // ];
 
-const nodes = [
+const nodes: Item[] = [
   ...Array.from({ length: 200 }, (_, i) => ({
     id: (i + 1).toString(),
     paymentId: `rzp${Math.floor(Math.random() * 1000000)}`,
@@ -412,7 +412,7 @@ const nodes = [
   })),
 ];
 
-type ItemType = {
+type Item = {
   id: string;
   paymentId: string;
   amount: number;
@@ -424,7 +424,7 @@ type ItemType = {
   account: string;
   name: string;
 };
-const data: TableData<ItemType> = {
+const data: TableData<Item> = {
   nodes,
 };
 
@@ -442,9 +442,9 @@ const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
         data={data}
         onSelectionChange={({ values }) => console.log('Selected Rows:', values)}
         sortFunctions={{
-          ID: (array) => array.sort((a, b) => a.id - b.id),
+          ID: (array) => array.sort((a, b) => Number(a.id) - Number(b.id)),
           AMOUNT: (array) => array.sort((a, b) => a.amount - b.amount),
-          ACCOUNT: (array) => array.sort((a, b) => a.account - b.account),
+          ACCOUNT: (array) => array.sort((a, b) => Number(a.account) - Number(b.account)),
           PAYMENT_ID: (array) => array.sort((a, b) => a.paymentId.localeCompare(b.paymentId)),
           DATE: (array) => array.sort((a, b) => a.date.getTime() - b.date.getTime()),
           METHOD: (array) => array.sort((a, b) => a.method.localeCompare(b.method)),
@@ -472,8 +472,6 @@ const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
             showPageNumberSelector
           />
         }
-        // height="400px"
-        // gridTemplateColumns="100px 1fr 1fr 1fr 1fr"
       >
         {(tableData) => (
           <>
@@ -494,7 +492,7 @@ const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
                     <Code size="medium">{tableItem.paymentId}</Code>
                   </TableCell>
                   <TableCell>
-                    <Amount value={tableItem.amount as number} />
+                    <Amount value={tableItem.amount} />
                   </TableCell>
                   <TableCell>{tableItem.account}</TableCell>
                   <TableCell>

@@ -21,7 +21,7 @@ import { getBaseBoxStyles } from '~components/Box/BaseBox/baseBoxStyles';
 import type { SurfaceLevels } from '~tokens/theme/theme';
 
 export type TableNode<Item> = Item & {
-  id: string;
+  id: Identifier;
 };
 
 export type TableData<Item> = {
@@ -29,7 +29,7 @@ export type TableData<Item> = {
 };
 
 export type TableProps<Item> = {
-  children: (tableData: Item[]) => React.ReactElement;
+  children: (tableData: TableNode<Item>[]) => React.ReactElement;
   data: TableData<Item>;
   selectionType?: 'single' | 'multiple';
   onSelectionChange?: ({ values }: { values: TableNode<Item>[] }) => void;
@@ -108,7 +108,7 @@ const StyledReactTable = styled(ReactTable)<{ styledProps?: { height?: BoxProps[
   },
 );
 
-const Table: React.FC<TableProps<Item>> = ({
+const Table = <Item,>({
   children,
   data,
   selectionType,
@@ -125,7 +125,7 @@ const Table: React.FC<TableProps<Item>> = ({
   showStripes,
   gridTemplateColumns,
   surfaceLevel = 2,
-}) => {
+}: TableProps<Item>): React.ReactElement => {
   const { theme } = useTheme();
   const [selectedRows, setSelectedRows] = React.useState<TableNode<unknown>['id'][]>([]);
   const [disabledRows, setDisabledRows] = React.useState<TableNode<unknown>['id'][]>([]);
@@ -218,7 +218,7 @@ const Table: React.FC<TableProps<Item>> = ({
 
   // Selection Logic
   const onSelectChange: MiddlewareFunction = (action, state): void => {
-    const selectedIDs: TableNode['id'][] = state.id ? [state.id] : state.ids ?? [];
+    const selectedIDs: Identifier[] = state.id ? [state.id] : state.ids ?? [];
     setSelectedRows(selectedIDs);
     onSelectionChange?.({
       values: filter(data.nodes, (node) => selectedIDs.includes(node.id)),
@@ -236,7 +236,7 @@ const Table: React.FC<TableProps<Item>> = ({
   );
 
   const toggleRowSelectionById = useMemo(
-    () => (id: TableNode['id']): void => {
+    () => (id: Identifier): void => {
       rowSelectConfig.fns.onToggleById(id);
     },
     [rowSelectConfig.fns],
@@ -255,7 +255,7 @@ const Table: React.FC<TableProps<Item>> = ({
         rowSelectConfig.fns.onRemoveAll();
       } else {
         const ids = data.nodes
-          .map((item: TableNode) => (disabledRows.includes(item.id) ? null : item.id))
+          .map((item: TableNode<Item>) => (disabledRows.includes(item.id) ? null : item.id))
           .filter(Boolean) as Identifier[];
 
         rowSelectConfig.fns.onAddAll(ids);
