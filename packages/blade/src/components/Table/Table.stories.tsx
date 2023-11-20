@@ -487,7 +487,7 @@ const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
             </TableHeader>
             <TableBody>
               {tableData.map((tableItem, index) => (
-                <TableRow key={index} item={tableItem} isDisabled={tableItem.id === '1'}>
+                <TableRow key={index} item={tableItem}>
                   <TableCell>
                     <Code size="medium">{tableItem.paymentId}</Code>
                   </TableCell>
