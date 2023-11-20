@@ -10,13 +10,13 @@ import {
   useDelayedState,
   useIntersectionObserver,
   useIsTransitioningBetweenSteps,
-  useLockBodyScroll,
 } from './utils';
 import type { SpotlightPopoverTourMaskRect, SpotlightPopoverTourProps } from './types';
 import { SpotlightPopoverTourMask } from './TourMask';
 import { transitionDelay } from './tourTokens';
 import { useTheme } from '~utils';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
+import { usePreventScroll } from '~utils/usePreventScroll';
 
 const SpotlightPopoverTour = ({
   steps,
@@ -146,7 +146,9 @@ const SpotlightPopoverTour = ({
     }, scrollDelay);
   }, [isOpen, scrollToStep, isTransitioning]);
 
-  useLockBodyScroll(isOpen);
+  usePreventScroll({
+    enabled: isOpen,
+  });
 
   // reset the mask size when the tour is closed
   React.useEffect(() => {
