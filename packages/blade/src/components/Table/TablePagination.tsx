@@ -16,7 +16,7 @@ import { SelectInput } from '~components/Input/DropdownInputTriggers';
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { Text } from '~components/Typography';
 import { useTheme } from '~utils';
-import { Link } from '~components/Link';
+import { Button } from '~components/Button';
 
 type TablePaginationProps = {
   pageSize?: number;
@@ -255,10 +255,10 @@ const TablePagination = ({
         alignItems="center"
       >
         {showPageSizePicker && !onMobile && (
-          <BaseBox>
+          <BaseBox display="flex" flexDirection="row" alignItems="center">
             <Dropdown selectionType="single">
               <SelectInput
-                accessibilityLabel="Page Size"
+                accessibilityLabel="Select pages per row"
                 name="page-size"
                 label=""
                 labelPosition="inside-input"
@@ -272,15 +272,14 @@ const TablePagination = ({
               <DropdownOverlay>
                 <ActionList>
                   {rowSizeOptions.map((item, index) => (
-                    <ActionListItem
-                      key={index}
-                      title={`${item.toString()} rows/page`}
-                      value={item.toString()}
-                    />
+                    <ActionListItem key={index} title={item.toString()} value={item.toString()} />
                   ))}
                 </ActionList>
               </DropdownOverlay>
             </Dropdown>
+            <BaseBox aria-hidden paddingLeft="spacing.3" paddingRight="spacing.3">
+              <Text>rows / page</Text>
+            </BaseBox>
           </BaseBox>
         )}
         <BaseBox
@@ -290,12 +289,10 @@ const TablePagination = ({
           flex={onMobile ? 1 : undefined}
           alignItems="center"
         >
-          <Link
-            size="large"
-            color="neutral"
+          <Button
             icon={ChevronLeftIcon}
             accessibilityLabel="Previous Page"
-            variant="button"
+            variant="tertiary"
             onClick={() => {
               handlePageChange(currentPage - 1);
             }}
@@ -384,10 +381,8 @@ const TablePagination = ({
               </PageSelectionButton>
             </BaseBox>
           )}
-          <Link
-            variant="button"
-            size="large"
-            color="neutral"
+          <Button
+            variant="tertiary"
             icon={ChevronRightIcon}
             accessibilityLabel="Next Page"
             onClick={() => {
