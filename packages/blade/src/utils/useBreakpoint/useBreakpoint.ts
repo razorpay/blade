@@ -92,16 +92,17 @@ export const useBreakpoint = ({
   });
 
   useIsomorphicLayoutEffect(() => {
-    if (!supportsMatchMedia) {
-      return undefined;
-    }
-
     // set the breakpoint and devicetype for the first time because eventlisteners will only trigger after the screen is actually changed
     setBreakpointAndDevice(() => {
       const matchedBreakpoint = getMatchedBreakpoint();
       const matchedDeviceType = getMatchedDeviceType(matchedBreakpoint);
       return { matchedBreakpoint, matchedDeviceType };
     });
+
+    // for react-native and SSR we don't need to register event listeners
+    if (!supportsMatchMedia) {
+      return undefined;
+    }
 
     const handleMediaQueryChange = (event: MediaQueryListEvent): void => {
       setBreakpointAndDevice(() => {
