@@ -17,6 +17,7 @@ import { ActionList, ActionListItem } from '~components/ActionList';
 import { Text } from '~components/Typography';
 import { useTheme } from '~utils';
 import { Button } from '~components/Button';
+import { makeAccessible } from '~utils/makeAccessible';
 
 type TablePaginationProps = {
   pageSize?: number;
@@ -325,6 +326,7 @@ const TablePagination = ({
                   onClick={() => handlePageChange(currentPage - 5)}
                   onMouseOver={() => setCurrentEllipseHover('start')}
                   onMouseLeave={() => setCurrentEllipseHover(undefined)}
+                  {...makeAccessible({ label: 'Go back 5 pages' })}
                 >
                   {currentEllipseHover === 'start' ? (
                     <ChevronsLeftIcon size="medium" />
@@ -338,6 +340,7 @@ const TablePagination = ({
                   key={item - 1}
                   onClick={() => handlePageChange(item - 1)}
                   isSelected={currentPage === item - 1}
+                  {...makeAccessible({ label: `Page ${item}` })}
                 >
                   <Text
                     size="medium"
@@ -356,6 +359,7 @@ const TablePagination = ({
                   onClick={() => handlePageChange(currentPage + 5)}
                   onMouseOver={() => setCurrentEllipseHover('end')}
                   onMouseLeave={() => setCurrentEllipseHover(undefined)}
+                  {...makeAccessible({ label: 'Go forward 5 pages' })}
                 >
                   {currentEllipseHover === 'end' ? (
                     <ChevronsRightIcon size="medium" />
