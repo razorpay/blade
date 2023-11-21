@@ -37,10 +37,11 @@ const SpotlightPopoverTour = ({
   });
 
   // delayed state is used to let the transition finish before reacting to the state changes
-  const delayedActiveStep = useDelayedState(activeStep, transitionDelay);
-  const delayedSize = useDelayedState(size, transitionDelay);
+  const [delayedActiveStep] = useDelayedState(activeStep, transitionDelay);
+  const [delayedSize, setDelayedSize] = useDelayedState(size, transitionDelay);
   // keep track of when we are transitioning between steps
   const isTransitioning = useIsTransitioningBetweenSteps(activeStep, transitionDelay);
+  const [isScrolling, setIsScrolling] = useState(false);
 
   const currentStepRef = refIdMap.get(steps[activeStep]?.name);
   const intersection = useIntersectionObserver(currentStepRef!, {
@@ -96,18 +97,29 @@ const SpotlightPopoverTour = ({
     });
   }, []);
 
-  const updateMaskSize = useCallback(() => {
-    const ref = refIdMap.get(steps[activeStep]?.name);
-    if (!ref?.current) return;
+  const updateMaskSize = useCallback(
+    (shouldSkipDelay = false) => {
+      const ref = refIdMap.get(steps[activeStep]?.name);
+      if (!ref?.current) return;
 
-    const rect = ref.current.getBoundingClientRect();
-    setSize({
-      x: rect.x,
-      y: rect.y,
-      width: rect.width,
-      height: rect.height,
-    });
-  }, [activeStep, refIdMap, steps]);
+      const rect = ref.current.getBoundingClientRect();
+      setSize({
+        x: rect.x,
+        y: rect.y,
+        width: rect.width,
+        height: rect.height,
+      });
+      if (shouldSkipDelay) {
+        setDelayedSize({
+          x: rect.x,
+          y: rect.y,
+          width: rect.width,
+          height: rect.height,
+        });
+      }
+    },
+    [activeStep, refIdMap, setDelayedSize, steps],
+  );
 
   const scrollToStep = useCallback(() => {
     const ref = refIdMap.get(steps[delayedActiveStep]?.name);
@@ -116,23 +128,26 @@ const SpotlightPopoverTour = ({
     // If the element is already in view, don't scroll
     if (intersection?.isIntersecting) return;
 
+    setIsScrolling(true);
     smoothScroll(ref.current, {
       behavior: 'smooth',
       block: 'center',
       inline: 'center',
     })
       .then(() => {
-        updateMaskSize();
+        // wait for the scroll to finish before updating the mask size
+        // We also don't want to delay the size update since its already delayed by the scroll
+        updateMaskSize(true);
       })
       .finally(() => {
-        // do nothing
+        setIsScrolling(false);
       });
   }, [delayedActiveStep, refIdMap, steps, updateMaskSize, intersection?.isIntersecting]);
 
   // Update the size of the mask when the active step changes
   useIsomorphicLayoutEffect(() => {
     updateMaskSize();
-  }, [isOpen, activeStep, refIdMap, steps, updateMaskSize]);
+  }, [activeStep, updateMaskSize]);
 
   // Scroll into view when the active step changes
   useIsomorphicLayoutEffect(() => {
@@ -146,12 +161,11 @@ const SpotlightPopoverTour = ({
     }, scrollDelay);
   }, [isOpen, scrollToStep, isTransitioning]);
 
-  useLockBodyScroll(isOpen);
-
   // reset the mask size when the tour is closed
-  React.useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (isOpen) {
-      updateMaskSize();
+      // on initial mount, we don't want to delay the size update
+      updateMaskSize(true);
       onOpenChange?.({ isOpen });
     }
     if (!isOpen) {
@@ -165,6 +179,8 @@ const SpotlightPopoverTour = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
+  useLockBodyScroll(isOpen);
+
   const contextValue = useMemo(() => {
     return { attachStep, removeStep };
   }, [attachStep, removeStep]);
@@ -174,7 +190,7 @@ const SpotlightPopoverTour = ({
       <FloatingPortal>
         {isOpen ? (
           <SpotlightPopoverTourMask
-            isTransitioning={isTransitioning}
+            isTransitioning={isTransitioning || isScrolling}
             padding={theme.spacing[4]}
             size={delayedSize}
           />
