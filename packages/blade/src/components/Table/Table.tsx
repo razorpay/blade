@@ -57,6 +57,7 @@ export type TableProps<Item> = {
   gridTemplateColumns?: string;
   surfaceLevel?: SurfaceLevels;
   isLoading?: boolean;
+  isRefreshing?: boolean;
 } & StyledPropsBlade;
 
 const rowSelectType: Record<NonNullable<TableProps<unknown>['selectionType']>, SelectTypes> = {
@@ -132,6 +133,7 @@ const Table = <Item,>({
   gridTemplateColumns,
   surfaceLevel = 2,
   isLoading = false,
+  isRefreshing = false,
   ...styledProps
 }: TableProps<Item>): React.ReactElement => {
   const { theme } = useTheme();
@@ -408,9 +410,24 @@ const Table = <Item,>({
       ) : (
         <BaseBox
           flex={1}
+          position="relative"
           {...getStyledProps(styledProps)}
           {...metaAttribute({ name: MetaConstants.Table })}
         >
+          {isRefreshing && (
+            <BaseBox
+              position="absolute"
+              width="100%"
+              height="100%"
+              zIndex="2"
+              backgroundColor={theme.colors.surface.overlay.background[800]}
+              justifyContent="center"
+              alignItems="center"
+              display="flex"
+            >
+              <Spinner color="white" accessibilityLabel="Refreshing Table" size="large" />
+            </BaseBox>
+          )}
           {toolbar}
           <StyledReactTable
             role="table"
