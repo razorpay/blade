@@ -389,6 +389,7 @@ const Table = <Item,>({
       <>
         {toolbar}
         <StyledReactTable
+          role="table"
           layout={{ fixedHeader: isHeaderSticky, horizontalScroll: true }}
           data={data}
           // @ts-expect-error ignore this, theme clashes with styled-component's theme. We're using useTheme from blade to get actual theme
