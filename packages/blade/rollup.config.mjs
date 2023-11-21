@@ -10,6 +10,7 @@ import pluginAlias from '@rollup/plugin-alias';
 import pluginReplace from '@rollup/plugin-replace';
 // eslint-disable-next-line import/no-extraneous-dependencies
 // import ts from 'typescript';
+import glob from 'glob';
 
 const webExtensions = [
   '.web.js',
@@ -47,7 +48,7 @@ const webExtensions = [
 
 const inputRootDirectory = 'src';
 const outputRootDirectory = 'build';
-// const exportCategories = ['components', 'tokens', 'utils'];
+const exportCategories = ['components', 'tokens', 'utils'];
 // const themeBundleCategories = ['tokens', 'utils'];
 
 const aliases = pluginAlias({
@@ -68,14 +69,16 @@ const aliases = pluginAlias({
   ],
 });
 
-const getWebConfig = () => ({
-  input: `${inputRootDirectory}/index.ts`,
+const getWebConfig = (inputs) => ({
+  input: inputs,
+  // input: `${inputRootDirectory}/index.ts`,
   output: [
     {
       dir: `${outputRootDirectory}/`,
       format: 'es',
       sourcemap: true,
       preserveModules: true,
+      preserveModulesRoot: 'src',
     },
   ],
   external: (id) => id.includes('@babel/runtime'),
@@ -186,7 +189,12 @@ const config = () => {
   //     .flat();
   // }
   if (framework === 'REACT') {
-    return [getWebConfig()];
+    // return [getWebConfig(glob.sync(`src/components/**/index.ts`))];
+    return [
+      getWebConfig(glob.sync(`src/components/**/index.ts`)),
+      getWebConfig(glob.sync(`src/tokens/index.ts`)),
+      getWebConfig(glob.sync(`src/utils/index.ts`)),
+    ];
     // return exportCategories.map((exportCategory) => [getWebConfig({ exportCategory })]).flat();
   }
 

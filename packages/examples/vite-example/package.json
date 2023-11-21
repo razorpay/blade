@@ -1,0 +1,27 @@
+{
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "analyze": "vite-bundle-visualizer --output stats/index.html && serve stats"
+  },
+  "stackblitz": {
+    "startCommand": "npm install && npm dev",
+    "installDependencies": false
+  },
+  "dependencies": {
+    "@preact/compat": "17.1.2",
+    "@razorpay/blade": "../../blade/build/",
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "preact": "^10.19.2",
+    "react-router-dom": "^6.19.0",
+    "styled-components": "^5"
+  },
+  "devDependencies": {
+    "@preact/preset-vite": "*",
+    "serve": "^14.2.1",
+    "vite": "4.5.0",
+    "vite-bundle-visualizer": "^0.11.0"
+  }
+}

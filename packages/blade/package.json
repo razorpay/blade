@@ -79,13 +79,13 @@
     "build:clean": "rm -rf build",
     "build:generate-types": "run-s types:generate-types:*",
     "build:copy-declarations": "run-s types:copy-declarations:*",
-    "types:generate-types:web": "ttsc -p ./tsconfig-generate-types.web.json",
-    "types:generate-types:native": "ttsc -p ./tsconfig-generate-types.native.json",
-    "types:typecheck:web": "tsc -p ./tsconfig-typecheck.web.json",
-    "types:typecheck:native": "tsc -p ./tsconfig-typecheck.native.json",
-    "types:copy-declarations:web": "copyfiles -u 1 \"src/**/*.d.ts\" build/types/web",
-    "types:copy-declarations:native": "copyfiles -u 1 \"src/**/*.d.ts\" build/types/native",
-    "build:generate-root-imports": "rollup -c && node ./scripts/generateRootImports.js",
+    "xtypes:generate-types:web": "ttsc -p ./tsconfig-generate-types.web.json",
+    "xtypes:generate-types:native": "ttsc -p ./tsconfig-generate-types.native.json",
+    "xtypes:typecheck:web": "tsc -p ./tsconfig-typecheck.web.json",
+    "xtypes:typecheck:native": "tsc -p ./tsconfig-typecheck.native.json",
+    "xtypes:copy-declarations:web": "copyfiles -u 1 \"src/**/*.d.ts\" build/types/web",
+    "xtypes:copy-declarations:native": "copyfiles -u 1 \"src/**/*.d.ts\" build/types/native",
+    "build:generate-root-imports": "rollup -c",
     "build:clean-declarations": "rm -rf build/types",
     "build:react-dev": "cross-env FRAMEWORK=REACT NODE_ENV=development rollup -c",
     "build:react-prod": "cross-env FRAMEWORK=REACT NODE_ENV=production rollup -c",
@@ -110,7 +110,9 @@
     "chromatic": "npx chromatic",
     "publish-npm": "node ./scripts/publishToNpm.js",
     "generate-github-npmrc": "node ./scripts/generateGitHubRegistryNpmrc.js",
-    "postinstall": "patch-package"
+    "postinstall": "patch-package",
+    "cruise": "depcruise src --output-type dot | dot -T svg > dependency-graph.svg",
+    "viz": "import-graph-visualizer --entry-points build/components/index.js --ts-config tsconfig.json"
   },
   "dependencies": {
     "@babel/runtime": "7.20.0",
@@ -126,6 +128,8 @@
     "react-native-pager-view": "6.2.1"
   },
   "devDependencies": {
+    "@rx-angular/import-graph-visualizer": "0.2.0",
+    "dependency-cruiser": "15.3.0",
     "chromatic": "6.22.0",
     "@babel/cli": "7.23.0",
     "@babel/core": "7.20.2",
