@@ -20,18 +20,46 @@ import { Button } from '~components/Button';
 import { makeAccessible } from '~utils/makeAccessible';
 
 type TablePaginationProps = {
-  pageSize?: number;
-  defaultPageSize?: number;
+  /**
+   * The default page size
+   * @default 10
+   **/
+  defaultPageSize?: 10 | 25 | 50;
+  /**
+   * The current page. Passing this prop will make the component controlled and will not update the page on its own.
+   **/
   currentPage?: number;
+  /**
+   * Callback function that is called when the page is changed
+   */
   onPageChange?: ({ page }: { page: number }) => void;
+  /**
+   * Callback function that is called when the page size is changed
+   */
   onPageSizeChange?: ({ pageSize }: { pageSize: number }) => void;
+  /**
+   * Whether to show the page size picker. It will be always be hidden on mobile.
+   * @default true
+   */
   showPageSizePicker?: boolean;
+  /**
+   * Whether to show the page number selector. It will be always be hidden on mobile.
+   * @default false
+   */
   showPageNumberSelector?: boolean;
+  /**
+   * Content of the label to be shown in the pagination component
+   * @default `Showing 1 to ${totalItems} Items`
+   */
   label?: string;
+  /**
+   * Whether to show the label. It will be always be hidden on mobile.
+   * @default false
+   */
   showLabel?: boolean;
 };
 
-const rowSizeOptions = [10, 25, 50];
+const pageSizeOptions: NonNullable<TablePaginationProps['defaultPageSize']>[] = [10, 25, 50];
 
 const PageSelectionButton = styled.button<{ isSelected?: boolean }>(({ theme, isSelected }) => ({
   backgroundColor: isSelected
@@ -149,7 +177,6 @@ const getPaginationButtons = ({
 };
 
 const TablePagination = ({
-  pageSize: controlledPageSize,
   currentPage: controlledCurrentPage,
   onPageChange,
   onPageSizeChange,
@@ -165,9 +192,7 @@ const TablePagination = ({
     totalItems,
     setPaginationRowSize,
   } = useTableContext();
-  const [currentPageSize, setCurrentPageSize] = React.useState<number>(
-    controlledPageSize ?? defaultPageSize,
-  );
+  const [currentPageSize, setCurrentPageSize] = React.useState<number>(defaultPageSize);
   const [currentPage, setCurrentPage] = React.useState<number>(
     controlledCurrentPage ?? currentPaginationState?.page ?? 0,
   );
@@ -186,12 +211,6 @@ const TablePagination = ({
   useEffect(() => {
     setPaginationRowSize(currentPageSize);
   }, []);
-
-  useEffect(() => {
-    if (controlledPageSize && currentPaginationState?.size !== controlledPageSize) {
-      setPaginationRowSize(controlledPageSize);
-    }
-  }, [controlledPageSize, currentPaginationState?.size, setPaginationRowSize]);
 
   useEffect(() => {
     if (currentPage && currentPaginationState?.page !== currentPage) {
@@ -221,7 +240,6 @@ const TablePagination = ({
 
   const handlePageSizeChange = (pageSize: number): void => {
     onPageSizeChange?.({ pageSize });
-    if (controlledPageSize) return;
     setPaginationRowSize(pageSize);
     setCurrentPageSize(pageSize);
   };
@@ -268,11 +286,10 @@ const TablePagination = ({
                   handlePageSizeChange(Number(values[0]));
                 }}
                 defaultValue={currentPageSize.toString()}
-                value={controlledPageSize?.toString()}
               />
               <DropdownOverlay>
                 <ActionList>
-                  {rowSizeOptions.map((item, index) => (
+                  {pageSizeOptions.map((item, index) => (
                     <ActionListItem key={index} title={item.toString()} value={item.toString()} />
                   ))}
                 </ActionList>
