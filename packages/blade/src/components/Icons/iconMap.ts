@@ -58,6 +58,7 @@ import EditComposeIconComponent from './EditComposeIcon';
 import FileIconComponent from './FileIcon';
 import FilePlusIconComponent from './FilePlusIcon';
 import FileMinusIconComponent from './FileMinusIcon';
+import FileZipIconComponent from './FileZipIcon';
 import FilterIconComponent from './FilterIcon';
 import FlagIconComponent from './FlagIcon';
 import FolderIconComponent from './FolderIcon';
@@ -299,6 +300,7 @@ const iconMap: Record<string, IconComponent> = {
   EyeIcon: EyeIconComponent,
   EyeOffIcon: EyeOffIconComponent,
   FileTextIcon: FileTextIconComponent,
+  FileZipIcon: FileZipIconComponent,
   HelpCircleIcon: HelpCircleIconComponent,
   HistoryIcon: HistoryIconComponent,
   HomeIcon: HomeIconComponent,

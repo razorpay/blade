@@ -15,11 +15,19 @@ describe('<Box />', () => {
       </Box>,
     );
     expect(container).toMatchInlineSnapshot(`
+      .c0 {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        padding: 0px;
+      }
+
       <div
         id="root"
       >
         <div
-          class="BaseBox-bmPWx jBndhd"
+          class="c0"
           data-blade-component="box"
         >
           children test!
@@ -35,56 +43,20 @@ describe('<Box />', () => {
       </Box>,
     );
     expect(container).toMatchInlineSnapshot(`
+      .c0 {
+        display: block;
+      }
+
       <div
         id="root"
       >
         <footer
-          class="BaseBox-bmPWx zgBJD"
+          class="c0"
           data-blade-component="box"
         >
           Footer test!
         </footer>
       </div>
     `);
-  });
-
-  it('should throw error for unsupport values', () => {
-    // Ignoring error from console to not show it while running tests
-    const tempConsoleError = console.error;
-    console.error = jest.fn();
-    try {
-      renderWithSSR(
-        <Box
-          // @ts-expect-error: Intentional to test bad flow
-          backgroundColor="red"
-        />,
-      );
-    } catch (err: unknown) {
-      expect(err).toMatchInlineSnapshot(`
-        [Error: [Blade: Box]: Oops! Currently you can only use \`transparent\`, \`surface.background.*\`, and \`brand.*\` tokens with backgroundColor property but we received \`red\` instead.
-
-         Do you have a usecase of using other values? Create an issue on https://github.com/razorpay/blade repo to let us know and we can discuss ✨]
-      `);
-    }
-    console.error = tempConsoleError;
-  });
-
-  it('should throw error for unsupport as prop', () => {
-    // Ignoring error from console to not show it while running tests
-    const tempConsoleError = console.error;
-    console.error = jest.fn();
-    try {
-      renderWithSSR(
-        <Box
-          // @ts-expect-error: Intentional to test bad flow
-          as="button"
-        />,
-      );
-    } catch (err: unknown) {
-      expect(err).toMatchInlineSnapshot(
-        `[Error: [Blade: Box]: Invalid \`as\` prop value - button. Only div, section, footer, header, main, aside, nav, span, label are valid values]`,
-      );
-    }
-    console.error = tempConsoleError;
   });
 });

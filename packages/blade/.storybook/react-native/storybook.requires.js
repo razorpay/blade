@@ -57,6 +57,7 @@ try {
 const getStories = () => {
   return {
     './src/components/Accordion/Accordion.stories.tsx': require('../../src/components/Accordion/Accordion.stories.tsx'),
+    './src/components/ActionList/ActionList.stories.tsx': require('../../src/components/ActionList/ActionList.stories.tsx'),
     './src/components/Alert/Alert.stories.tsx': require('../../src/components/Alert/Alert.stories.tsx'),
     './src/components/Amount/Amount.stories.tsx': require('../../src/components/Amount/Amount.stories.tsx'),
     './src/components/Badge/Badge.stories.tsx': require('../../src/components/Badge/Badge.stories.tsx'),
@@ -101,6 +102,7 @@ const getStories = () => {
     './src/components/Spinner/Spinner/Spinner.stories.tsx': require('../../src/components/Spinner/Spinner/Spinner.stories.tsx'),
     './src/components/Switch/Switch.stories.tsx': require('../../src/components/Switch/Switch.stories.tsx'),
     './src/components/Table/Table.stories.tsx': require('../../src/components/Table/Table.stories.tsx'),
+    './src/components/Tabs/Tabs.stories.tsx': require('../../src/components/Tabs/Tabs.stories.tsx'),
     './src/components/Tag/Tag.stories.tsx': require('../../src/components/Tag/Tag.stories.tsx'),
     './src/components/Tooltip/Tooltip.stories.tsx': require('../../src/components/Tooltip/Tooltip.stories.tsx'),
     './src/components/Typography/BaseText/BaseText.stories.tsx': require('../../src/components/Typography/BaseText/BaseText.stories.tsx'),

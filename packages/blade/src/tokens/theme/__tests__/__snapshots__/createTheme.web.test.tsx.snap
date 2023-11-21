@@ -1362,9 +1362,6 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
           },
         },
       },
-      "overlay": {
-        "background": "hsla(231, 11%, 12%, 0.72)",
-      },
       "static": {
         "white": "hsla(0, 0%, 100%, 1)",
       },
@@ -1419,12 +1416,12 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
         },
         "overlay": {
           "background": {
-            "400": "hsla(0, 0, 0, 0)",
+            "400": "hsla(221, 16%, 37%, 0.64)",
             "800": "hsla(231, 11%, 12%, 0.72)",
           },
         },
         "popup": {
-          "background": "hsla(218, 11%, 84%, 1)",
+          "background": "hsla(220, 35%, 22%, 1)",
         },
         "text": {
           "muted": {
@@ -2896,9 +2893,6 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
           },
         },
       },
-      "overlay": {
-        "background": "hsla(214, 15%, 18%, 0.64)",
-      },
       "static": {
         "white": "hsla(0, 0%, 100%, 1)",
       },
@@ -2953,12 +2947,12 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
         },
         "overlay": {
           "background": {
-            "400": "hsla(0, 0, 0, 0)",
+            "400": "hsla(214, 18%, 69%, 0.64)",
             "800": "hsla(214, 15%, 18%, 0.64)",
           },
         },
         "popup": {
-          "background": "hsla(220, 30%, 96%, 1)",
+          "background": "hsla(0, 0%, 100%, 1)",
         },
         "text": {
           "muted": {
@@ -4752,9 +4746,6 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
           },
         },
       },
-      "overlay": {
-        "background": "hsla(231, 11%, 12%, 0.72)",
-      },
       "static": {
         "white": "hsla(0, 0%, 100%, 1)",
       },
@@ -4809,12 +4800,12 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
         },
         "overlay": {
           "background": {
-            "400": "hsla(0, 0, 0, 0)",
+            "400": "hsla(221, 16%, 37%, 0.64)",
             "800": "hsla(231, 11%, 12%, 0.72)",
           },
         },
         "popup": {
-          "background": "hsla(218, 11%, 84%, 1)",
+          "background": "hsla(220, 35%, 22%, 1)",
         },
         "text": {
           "muted": {
@@ -6286,9 +6277,6 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
           },
         },
       },
-      "overlay": {
-        "background": "hsla(214, 15%, 18%, 0.64)",
-      },
       "static": {
         "white": "hsla(0, 0%, 100%, 1)",
       },
@@ -6343,12 +6331,12 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
         },
         "overlay": {
           "background": {
-            "400": "hsla(0, 0, 0, 0)",
+            "400": "hsla(214, 18%, 69%, 0.64)",
             "800": "hsla(214, 15%, 18%, 0.64)",
           },
         },
         "popup": {
-          "background": "hsla(220, 30%, 96%, 1)",
+          "background": "hsla(0, 0%, 100%, 1)",
         },
         "text": {
           "muted": {

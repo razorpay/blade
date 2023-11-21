@@ -1,5 +1,74 @@
 # @razorpay/blade
 
+## 10.18.0
+
+### Minor Changes
+
+- 88aba1d6: feat(blade): added SpotlightPopoverTour web implementation
+
+## 10.17.4
+
+### Patch Changes
+
+- 97b9b4cc: fix(TextInput): white placeholder on autoFocus in android
+
+## 10.17.3
+
+### Patch Changes
+
+- 49db8d7c: chore(blade): only allow CarouselItem in Carousel children
+- ab2b1800: fix(blade): fixed react-native bottomsheet state bugs
+
+## 10.17.2
+
+### Patch Changes
+
+- f0d4dce5: fix: react native text input alignment with prefix
+
+## 10.17.1
+
+### Patch Changes
+
+- a0d3b13d: chore(blade): add file zip icon
+- 66a16267: fix(Dropdown): use popup background color token in DropdownOverlay and Popover
+
+  > **Note**
+  >
+  > For consumers, this changes the color of Dropdown overlay to fainter version in dark mode. It shouldn't break anything and hence the snapshots can be safely updated.
+
+## 10.17.0
+
+### Minor Changes
+
+- a35f5dfc: feat: update popup token, migrate overlay tokens
+
+  > **Warning**
+  >
+  > `theme.colors.overlay.background` is moved to `theme.colors.surface.overlay.background[800]`.
+  >
+  > Based on our analytics data, its a rarely used token hence, its a non-breaking change for most consumers (1 instance in razorpay/x repo).
+  > Although it is recommended to search for `colors.overlay.background` in your repo and confirm once if its not being used. If it is used you can follow migration step below.
+
+  ```diff
+  - background={theme.colors.overlay.background}
+  + background={theme.colors.surface.overlay.background[800]}
+  ```
+
+## 10.16.0
+
+### Minor Changes
+
+- fc7c8408: feat(blade): tabs implementation
+
+  > [!NOTE]
+  > We've updated `@floating-ui/react` to version `0.25.4`
+  > Consumers may need to update their jest snapshots
+
+### Patch Changes
+
+- c6d1ad9b: fix: update carousel nav button tokens
+- a17076b8: chore: fix popover close button background
+
 ## 10.15.3
 
 ### Patch Changes
