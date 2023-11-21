@@ -189,7 +189,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
             style={
               [
                 {
-                  "marginBottom": 8,
+                  "marginBottom": 4,
                 },
               ]
             }
@@ -357,7 +357,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
             style={
               [
                 {
-                  "marginBottom": 8,
+                  "marginBottom": 4,
                 },
               ]
             }
@@ -941,7 +941,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
             style={
               [
                 {
-                  "marginBottom": 8,
+                  "marginBottom": 4,
                 },
               ]
             }
@@ -1109,7 +1109,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
             style={
               [
                 {
-                  "marginBottom": 8,
+                  "marginBottom": 4,
                 },
               ]
             }

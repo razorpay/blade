@@ -356,6 +356,12 @@ exports[`<Card /> should render an interactive Card 1`] = `
   transition-property: transform,box-shadow;
 }
 
+.c1:hover {
+  -webkit-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  transform: scale(1.05);
+}
+
 .c1 a[href]:not(a[data-blade-component="card-link-overlay"]) {
   z-index: 2;
   position: relative;

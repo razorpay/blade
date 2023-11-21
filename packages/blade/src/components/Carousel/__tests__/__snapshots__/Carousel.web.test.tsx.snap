@@ -224,7 +224,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   transition-property: opacity;
   background: linear-gradient(to right,hsla(220,30%,96%,1),hsla(0,0%,100%,0));
   left: -1px;
-  opacity: 0;
+  opacity: 1;
   pointer-events: none;
 }
 
@@ -242,7 +242,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   transition-property: opacity;
   background: linear-gradient(to left,hsla(220,30%,96%,1),hsla(0,0%,100%,0));
   right: -1px;
-  opacity: 0;
+  opacity: 1;
   pointer-events: none;
 }
 
@@ -254,7 +254,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  width: calc(100% / 1 - 12px * (1 - 1) / 1);
+  width: calc(100% / 1 - 16px * (1 - 1) / 1);
   min-height: 100%;
   -webkit-scroll-snap-align: start;
   -moz-scroll-snap-align: start;
@@ -290,7 +290,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
           class=" c4"
           data-blade-component="base-box"
           data-slide-index="0"
-          id="carousel-36-carousel-item-0"
+          id="carousel-39-carousel-item-0"
           role="tabpanel"
         >
           <div>
@@ -307,7 +307,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
           class=" c4"
           data-blade-component="base-box"
           data-slide-index="1"
-          id="carousel-36-carousel-item-1"
+          id="carousel-39-carousel-item-1"
           role="tabpanel"
         >
           <div>
@@ -338,9 +338,9 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
           class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
-          height="12px"
+          height="16px"
           viewBox="0 0 24 24"
-          width="12px"
+          width="16px"
         >
           <path
             clip-rule="evenodd"
@@ -358,7 +358,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
         role="tablist"
       >
         <button
-          aria-controls="carousel-36-carousel-item-0"
+          aria-controls="carousel-39-carousel-item-0"
           aria-label="Slide 1"
           aria-selected="true"
           class="c9"
@@ -366,7 +366,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
           role="tab"
         />
         <button
-          aria-controls="carousel-36-carousel-item-1"
+          aria-controls="carousel-39-carousel-item-1"
           aria-label="Slide 2"
           aria-selected="false"
           class="c10"
@@ -384,9 +384,9 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
           class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
-          height="12px"
+          height="16px"
           viewBox="0 0 24 24"
-          width="12px"
+          width="16px"
         >
           <path
             clip-rule="evenodd"
@@ -616,7 +616,7 @@ exports[`Carousel Snapshots should render 1`] = `
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  width: calc(100% / 1 - 12px * (1 - 1) / 1);
+  width: calc(100% / 1 - 16px * (1 - 1) / 1);
   min-height: 100%;
   -webkit-scroll-snap-align: start;
   -moz-scroll-snap-align: start;
@@ -652,7 +652,7 @@ exports[`Carousel Snapshots should render 1`] = `
           class=" c4"
           data-blade-component="base-box"
           data-slide-index="0"
-          id="carousel-31-carousel-item-0"
+          id="carousel-34-carousel-item-0"
           role="tabpanel"
         >
           <div>
@@ -669,7 +669,7 @@ exports[`Carousel Snapshots should render 1`] = `
           class=" c4"
           data-blade-component="base-box"
           data-slide-index="1"
-          id="carousel-31-carousel-item-1"
+          id="carousel-34-carousel-item-1"
           role="tabpanel"
         >
           <div>
@@ -696,9 +696,9 @@ exports[`Carousel Snapshots should render 1`] = `
           class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
-          height="12px"
+          height="16px"
           viewBox="0 0 24 24"
-          width="12px"
+          width="16px"
         >
           <path
             clip-rule="evenodd"
@@ -716,7 +716,7 @@ exports[`Carousel Snapshots should render 1`] = `
         role="tablist"
       >
         <button
-          aria-controls="carousel-31-carousel-item-0"
+          aria-controls="carousel-34-carousel-item-0"
           aria-label="Slide 1"
           aria-selected="true"
           class="c8"
@@ -724,7 +724,7 @@ exports[`Carousel Snapshots should render 1`] = `
           role="tab"
         />
         <button
-          aria-controls="carousel-31-carousel-item-1"
+          aria-controls="carousel-34-carousel-item-1"
           aria-label="Slide 2"
           aria-selected="false"
           class="c9"
@@ -742,9 +742,9 @@ exports[`Carousel Snapshots should render 1`] = `
           class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
-          height="12px"
+          height="16px"
           viewBox="0 0 24 24"
-          width="12px"
+          width="16px"
         >
           <path
             clip-rule="evenodd"
@@ -846,7 +846,7 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
   gap: 12px;
 }
 
-.c2 {
+.c3 {
   -webkit-align-items: start;
   -webkit-box-align: start;
   -ms-flex-align: start;
@@ -854,17 +854,8 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
   gap: 12px;
 }
 
-.c5 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+.c6 {
   margin-top: 24px;
-  gap: 12px;
 }
 
 .c7 {
@@ -878,7 +869,7 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
   gap: 4px;
 }
 
-.c6 {
+.c2 {
   cursor: pointer;
   background: transparent;
   border: none;
@@ -913,24 +904,24 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
   box-shadow: 0 12px 16px -4px hsla(217,56%,17%,0.08),0 4px 6px -2px hsla(217,56%,17%,0.03);
 }
 
-.c6:hover {
+.c2:hover {
   color: hsla(218,89%,51%,1);
   background-color: hsla(216,6%,94%,1);
 }
 
-.c6:focus-visible {
+.c2:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   color: hsla(218,89%,51%,1);
   background-color: hsla(216,4%,89%,1);
 }
 
-.c6:active {
+.c2:active {
   color: hsla(218,89%,51%,1);
   background-color: hsla(216,4%,89%,1);
 }
 
-.c3 {
+.c4 {
   width: 100%;
   overflow-x: scroll;
   display: -webkit-box;
@@ -962,11 +953,11 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
   -ms-scroll-snap-points-x: repeat(100%);
 }
 
-.c3::-webkit-scrollbar {
+.c4::-webkit-scrollbar {
   display: none;
 }
 
-.c4 {
+.c5 {
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
   -ms-flex-positive: 0;
@@ -974,7 +965,7 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  width: calc(100% / 1 - 12px * (1 - 1) / 1);
+  width: calc(100% / 1 - 16px * (1 - 1) / 1);
   min-height: 100%;
   -webkit-scroll-snap-align: start;
   -moz-scroll-snap-align: start;
@@ -983,7 +974,7 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
 }
 
 @media screen and (min-width:768px) {
-  .c2 {
+  .c3 {
     gap: 16px;
   }
 }
@@ -997,9 +988,32 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
       class="c1"
       data-blade-component="base-box"
     >
+      <button
+        aria-label="Previous Slide"
+        class="c2"
+        data-blade-component="NavigationButton"
+      >
+        <svg
+          aria-hidden="true"
+          class="Svgweb__StyledSvg-vcmjs8-0"
+          data-blade-component="icon"
+          fill="none"
+          height="16px"
+          viewBox="0 0 24 24"
+          width="16px"
+        >
+          <path
+            clip-rule="evenodd"
+            d="M15.7071 5.29289C16.0976 5.68342 16.0976 6.31658 15.7071 6.70711L10.4142 12L15.7071 17.2929C16.0976 17.6834 16.0976 18.3166 15.7071 18.7071C15.3166 19.0976 14.6834 19.0976 14.2929 18.7071L8.29289 12.7071C7.90237 12.3166 7.90237 11.6834 8.29289 11.2929L14.2929 5.29289C14.6834 4.90237 15.3166 4.90237 15.7071 5.29289Z"
+            data-blade-component="svg-path"
+            fill="currentColor"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </button>
       <div
         aria-roledescription="carousel"
-        class="c2 c3"
+        class="c3 c4"
         data-blade-component="base-box"
         role="group"
         tabindex="0"
@@ -1007,10 +1021,10 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
         <div
           aria-label="1 of 2"
           aria-roledescription="slide"
-          class=" c4"
+          class=" c5"
           data-blade-component="base-box"
           data-slide-index="0"
-          id="carousel-35-carousel-item-0"
+          id="carousel-38-carousel-item-0"
           role="tabpanel"
         >
           <div>
@@ -1024,10 +1038,10 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
         <div
           aria-label="2 of 2"
           aria-roledescription="slide"
-          class=" c4"
+          class=" c5"
           data-blade-component="base-box"
           data-slide-index="1"
-          id="carousel-35-carousel-item-1"
+          id="carousel-38-carousel-item-1"
           role="tabpanel"
         >
           <div>
@@ -1039,60 +1053,9 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
           </div>
         </div>
       </div>
-    </div>
-    <div
-      class="c5"
-      data-blade-component="box"
-    >
-      <button
-        aria-label="Previous Slide"
-        class="c6"
-        data-blade-component="NavigationButton"
-      >
-        <svg
-          aria-hidden="true"
-          class="Svgweb__StyledSvg-vcmjs8-0"
-          data-blade-component="icon"
-          fill="none"
-          height="12px"
-          viewBox="0 0 24 24"
-          width="12px"
-        >
-          <path
-            clip-rule="evenodd"
-            d="M15.7071 5.29289C16.0976 5.68342 16.0976 6.31658 15.7071 6.70711L10.4142 12L15.7071 17.2929C16.0976 17.6834 16.0976 18.3166 15.7071 18.7071C15.3166 19.0976 14.6834 19.0976 14.2929 18.7071L8.29289 12.7071C7.90237 12.3166 7.90237 11.6834 8.29289 11.2929L14.2929 5.29289C14.6834 4.90237 15.3166 4.90237 15.7071 5.29289Z"
-            data-blade-component="svg-path"
-            fill="currentColor"
-            fill-rule="evenodd"
-          />
-        </svg>
-      </button>
-      <div
-        aria-label="Slides"
-        class="c7"
-        data-blade-component="base-box"
-        role="tablist"
-      >
-        <button
-          aria-controls="carousel-35-carousel-item-0"
-          aria-label="Slide 1"
-          aria-selected="true"
-          class="c8"
-          data-blade-component="carousel-indicator-button"
-          role="tab"
-        />
-        <button
-          aria-controls="carousel-35-carousel-item-1"
-          aria-label="Slide 2"
-          aria-selected="false"
-          class="c9"
-          data-blade-component="carousel-indicator-button"
-          role="tab"
-        />
-      </div>
       <button
         aria-label="Next Slide"
-        class="c6"
+        class="c2"
         data-blade-component="NavigationButton"
       >
         <svg
@@ -1100,9 +1063,9 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
           class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
-          height="12px"
+          height="16px"
           viewBox="0 0 24 24"
-          width="12px"
+          width="16px"
         >
           <path
             clip-rule="evenodd"
@@ -1113,6 +1076,34 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
           />
         </svg>
       </button>
+    </div>
+    <div
+      class="c6"
+      data-blade-component="box"
+    >
+      <div
+        aria-label="Slides"
+        class="c7"
+        data-blade-component="base-box"
+        role="tablist"
+      >
+        <button
+          aria-controls="carousel-38-carousel-item-0"
+          aria-label="Slide 1"
+          aria-selected="true"
+          class="c8"
+          data-blade-component="carousel-indicator-button"
+          role="tab"
+        />
+        <button
+          aria-controls="carousel-38-carousel-item-1"
+          aria-label="Slide 2"
+          aria-selected="false"
+          class="c9"
+          data-blade-component="carousel-indicator-button"
+          role="tab"
+        />
+      </div>
     </div>
   </div>
 </div>
@@ -1340,7 +1331,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  width: calc(100% / 1 - 12px * (1 - 1) / 1);
+  width: calc(100% / 1 - 16px * (1 - 1) / 1);
   min-height: 100%;
   -webkit-scroll-snap-align: start;
   -moz-scroll-snap-align: start;
@@ -1382,7 +1373,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
           class="c4 c5"
           data-blade-component="base-box"
           data-slide-index="0"
-          id="carousel-33-carousel-item-0"
+          id="carousel-36-carousel-item-0"
           role="tabpanel"
         >
           <div>
@@ -1399,7 +1390,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
           class="c4 c5"
           data-blade-component="base-box"
           data-slide-index="1"
-          id="carousel-33-carousel-item-1"
+          id="carousel-36-carousel-item-1"
           role="tabpanel"
         >
           <div>
@@ -1416,7 +1407,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
           class="c4 c5"
           data-blade-component="base-box"
           data-slide-index="2"
-          id="carousel-33-carousel-item-2"
+          id="carousel-36-carousel-item-2"
           role="tabpanel"
         >
           <div>
@@ -1447,9 +1438,9 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
           class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
-          height="12px"
+          height="16px"
           viewBox="0 0 24 24"
-          width="12px"
+          width="16px"
         >
           <path
             clip-rule="evenodd"
@@ -1467,7 +1458,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
         role="tablist"
       >
         <button
-          aria-controls="carousel-33-carousel-item-0"
+          aria-controls="carousel-36-carousel-item-0"
           aria-label="Slide 1"
           aria-selected="true"
           class="c10"
@@ -1475,7 +1466,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
           role="tab"
         />
         <button
-          aria-controls="carousel-33-carousel-item-1"
+          aria-controls="carousel-36-carousel-item-1"
           aria-label="Slide 2"
           aria-selected="false"
           class="c11"
@@ -1483,7 +1474,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
           role="tab"
         />
         <button
-          aria-controls="carousel-33-carousel-item-2"
+          aria-controls="carousel-36-carousel-item-2"
           aria-label="Slide 3"
           aria-selected="false"
           class="c11"
@@ -1501,9 +1492,9 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
           class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
-          height="12px"
+          height="16px"
           viewBox="0 0 24 24"
-          width="12px"
+          width="16px"
         >
           <path
             clip-rule="evenodd"
@@ -1743,7 +1734,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   transition-property: opacity;
   background: linear-gradient(to right,hsla(220,30%,96%,1),hsla(0,0%,100%,0));
   left: -1px;
-  opacity: 0;
+  opacity: 1;
   pointer-events: none;
 }
 
@@ -1761,7 +1752,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   transition-property: opacity;
   background: linear-gradient(to left,hsla(220,30%,96%,1),hsla(0,0%,100%,0));
   right: -1px;
-  opacity: 0;
+  opacity: 1;
   pointer-events: none;
 }
 
@@ -1773,7 +1764,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  width: calc(100% / 1 - 12px * (1 - 1) / 1);
+  width: calc(100% / 1 - 16px * (1 - 1) / 1);
   min-height: 100%;
   -webkit-scroll-snap-align: start;
   -moz-scroll-snap-align: start;
@@ -1809,7 +1800,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
           class=" c4"
           data-blade-component="base-box"
           data-slide-index="0"
-          id="carousel-34-carousel-item-0"
+          id="carousel-37-carousel-item-0"
           role="tabpanel"
         >
           <div>
@@ -1826,7 +1817,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
           class=" c4"
           data-blade-component="base-box"
           data-slide-index="1"
-          id="carousel-34-carousel-item-1"
+          id="carousel-37-carousel-item-1"
           role="tabpanel"
         >
           <div>
@@ -1843,7 +1834,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
           class=" c4"
           data-blade-component="base-box"
           data-slide-index="2"
-          id="carousel-34-carousel-item-2"
+          id="carousel-37-carousel-item-2"
           role="tabpanel"
         >
           <div>
@@ -1874,9 +1865,9 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
           class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
-          height="12px"
+          height="16px"
           viewBox="0 0 24 24"
-          width="12px"
+          width="16px"
         >
           <path
             clip-rule="evenodd"
@@ -1894,7 +1885,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
         role="tablist"
       >
         <button
-          aria-controls="carousel-34-carousel-item-0"
+          aria-controls="carousel-37-carousel-item-0"
           aria-label="Slide 1"
           aria-selected="true"
           class="c9"
@@ -1902,7 +1893,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
           role="tab"
         />
         <button
-          aria-controls="carousel-34-carousel-item-1"
+          aria-controls="carousel-37-carousel-item-1"
           aria-label="Slide 2"
           aria-selected="false"
           class="c10"
@@ -1910,7 +1901,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
           role="tab"
         />
         <button
-          aria-controls="carousel-34-carousel-item-2"
+          aria-controls="carousel-37-carousel-item-2"
           aria-label="Slide 3"
           aria-selected="false"
           class="c10"
@@ -1928,9 +1919,9 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
           class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
-          height="12px"
+          height="16px"
           viewBox="0 0 24 24"
-          width="12px"
+          width="16px"
         >
           <path
             clip-rule="evenodd"
@@ -2160,7 +2151,7 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  width: calc(100% / 1 - 12px * (1 - 1) / 1);
+  width: calc(100% / 2 - 16px * (2 - 1) / 2);
   min-height: 100%;
   -webkit-scroll-snap-align: start;
   -moz-scroll-snap-align: start;
@@ -2196,7 +2187,7 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
           class=" c4"
           data-blade-component="base-box"
           data-slide-index="0"
-          id="carousel-32-carousel-item-0"
+          id="carousel-35-carousel-item-0"
           role="tabpanel"
         >
           <div>
@@ -2213,7 +2204,7 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
           class=" c4"
           data-blade-component="base-box"
           data-slide-index="1"
-          id="carousel-32-carousel-item-1"
+          id="carousel-35-carousel-item-1"
           role="tabpanel"
         >
           <div>
@@ -2230,7 +2221,7 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
           class=" c4"
           data-blade-component="base-box"
           data-slide-index="2"
-          id="carousel-32-carousel-item-2"
+          id="carousel-35-carousel-item-2"
           role="tabpanel"
         >
           <div>
@@ -2257,9 +2248,9 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
           class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
-          height="12px"
+          height="16px"
           viewBox="0 0 24 24"
-          width="12px"
+          width="16px"
         >
           <path
             clip-rule="evenodd"
@@ -2277,7 +2268,7 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
         role="tablist"
       >
         <button
-          aria-controls="carousel-32-carousel-item-0"
+          aria-controls="carousel-35-carousel-item-0"
           aria-label="Slide 1"
           aria-selected="true"
           class="c8"
@@ -2285,15 +2276,7 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
           role="tab"
         />
         <button
-          aria-controls="carousel-32-carousel-item-1"
-          aria-label="Slide 2"
-          aria-selected="false"
-          class="c9"
-          data-blade-component="carousel-indicator-button"
-          role="tab"
-        />
-        <button
-          aria-controls="carousel-32-carousel-item-2"
+          aria-controls="carousel-35-carousel-item-2"
           aria-label="Slide 3"
           aria-selected="false"
           class="c9"
@@ -2311,9 +2294,9 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
           class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
-          height="12px"
+          height="16px"
           viewBox="0 0 24 24"
-          width="12px"
+          width="16px"
         >
           <path
             clip-rule="evenodd"

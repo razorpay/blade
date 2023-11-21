@@ -74,8 +74,8 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
-  padding-top: 2px;
-  padding-bottom: 2px;
+  padding-top: 4px;
+  padding-bottom: 4px;
   padding-left: 12px;
   min-height: 36px;
 }
@@ -373,8 +373,8 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
-  padding-top: 2px;
-  padding-bottom: 2px;
+  padding-top: 4px;
+  padding-bottom: 4px;
   padding-left: 12px;
   min-height: 36px;
 }
@@ -966,7 +966,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   border-color: transparent;
   text-align: left;
   background-color: transparent;
-  padding: 8px;
+  padding: 4px;
   border-radius: 4px;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -1868,8 +1868,8 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
-  padding-top: 2px;
-  padding-bottom: 2px;
+  padding-top: 4px;
+  padding-bottom: 4px;
   padding-left: 12px;
   min-height: 36px;
 }
@@ -2302,7 +2302,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   border-color: transparent;
   text-align: left;
   background-color: transparent;
-  padding: 8px;
+  padding: 4px;
   border-radius: 4px;
   -webkit-text-decoration: none;
   text-decoration: none;

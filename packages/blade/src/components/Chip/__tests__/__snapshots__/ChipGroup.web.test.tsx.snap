@@ -117,7 +117,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
   justify-content: center;
   text-align: left;
   text-overflow: ellipsis;
-  max-width: 280px;
+  max-width: 420px;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -603,7 +603,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
   justify-content: center;
   text-align: left;
   text-overflow: ellipsis;
-  max-width: 280px;
+  max-width: 420px;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;

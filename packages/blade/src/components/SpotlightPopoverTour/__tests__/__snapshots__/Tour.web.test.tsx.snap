@@ -73,7 +73,7 @@ exports[`<Tour /> should render 1`] = `
 
 .c7 {
   width: 100%;
-  max-width: 288px;
+  max-width: 328px;
   position: relative;
   background-color: hsla(0,0%,100%,1);
   border-width: 1px;

@@ -151,17 +151,17 @@ exports[`<Card /> should render a Card with Footer 1`] = `
           thickness="thin"
         />
         <View
-          alignItems="stretch"
+          alignItems="center"
           data-blade-component="base-box"
           display="flex"
-          flexDirection="column"
+          flexDirection="row"
           justifyContent="space-between"
           style={
             [
               {
-                "alignItems": "stretch",
+                "alignItems": "center",
                 "display": "flex",
-                "flexDirection": "column",
+                "flexDirection": "row",
                 "justifyContent": "space-between",
                 "marginTop": 24,
               },
@@ -247,18 +247,18 @@ exports[`<Card /> should render a Card with Footer 1`] = `
             </Text>
           </View>
           <View
-            alignSelf="auto"
+            alignSelf="center"
             data-blade-component="base-box"
             display="flex"
             flexDirection="row"
             style={
               [
                 {
-                  "alignSelf": "auto",
+                  "alignSelf": "center",
                   "display": "flex",
                   "flexDirection": "row",
-                  "marginLeft": 0,
-                  "marginTop": 16,
+                  "marginLeft": 16,
+                  "marginTop": 0,
                 },
               ]
             }
@@ -871,7 +871,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
                     <View
                       backgroundColor="feedback.background.neutral.lowContrast"
                       data-blade-component="base-box"
-                      platform="onMobile"
+                      platform="onDesktop"
                       size="medium"
                       style={
                         [
@@ -884,7 +884,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
                             "borderRadius": 9999,
                             "display": "flex",
                             "flexWrap": "nowrap",
-                            "maxWidth": 100,
+                            "maxWidth": 120,
                           },
                         ]
                       }

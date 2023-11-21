@@ -11,7 +11,7 @@ describe('useBreakpoint', () => {
 
     const { result } = renderHook(() => useBreakpoint({ breakpoints }));
 
-    expect(result.current.matchedBreakpoint).toBe(undefined);
+    expect(result.current.matchedBreakpoint).toBe('base');
     expect(result.current.matchedDeviceType).toBe('mobile');
   });
 

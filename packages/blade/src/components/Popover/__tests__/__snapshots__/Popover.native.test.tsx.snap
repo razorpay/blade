@@ -215,7 +215,7 @@ exports[`<Popover /> should render 1`] = `
         collapse={false}
         data-blade-component="base-box"
         elevation={20}
-        isMobile={true}
+        isMobile={false}
         style={
           [
             {},
@@ -226,7 +226,7 @@ exports[`<Popover /> should render 1`] = `
               "borderStyle": "solid",
               "borderWidth": 1,
               "left": 0,
-              "maxWidth": 288,
+              "maxWidth": 328,
               "position": "absolute",
               "top": 0,
               "width": "100%",
@@ -729,7 +729,7 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
         collapse={false}
         data-blade-component="base-box"
         elevation={20}
-        isMobile={true}
+        isMobile={false}
         style={
           [
             {},
@@ -740,7 +740,7 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
               "borderStyle": "solid",
               "borderWidth": 1,
               "left": 0,
-              "maxWidth": 288,
+              "maxWidth": 328,
               "position": "absolute",
               "top": 0,
               "width": "100%",
@@ -1243,7 +1243,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
         collapse={false}
         data-blade-component="base-box"
         elevation={20}
-        isMobile={true}
+        isMobile={false}
         style={
           [
             {},
@@ -1254,7 +1254,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
               "borderStyle": "solid",
               "borderWidth": 1,
               "left": 0,
-              "maxWidth": 288,
+              "maxWidth": 328,
               "position": "absolute",
               "top": 0,
               "width": "100%",

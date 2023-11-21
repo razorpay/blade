@@ -72,8 +72,15 @@ export const useBreakpoint = ({
           if (event?.media === mediaQuery) {
             return true;
           }
+
+          // this will run when the state is initialised for the first time and hence the event object will be empty because the event listener wouldn't have triggered
+          if (window.matchMedia(mediaQuery).matches) {
+            return true;
+          }
+
           return false;
         })?.token ?? undefined;
+
       return matchedBreakpoint;
     },
     [breakpointsTokenAndQueryCollection],
@@ -81,7 +88,7 @@ export const useBreakpoint = ({
 
   const [breakpointAndDevice, setBreakpointAndDevice] = useState<BreakpointAndDevice>({
     matchedBreakpoint: undefined,
-    matchedDeviceType: deviceType.mobile,
+    matchedDeviceType: deviceType.desktop,
   });
 
   useIsomorphicLayoutEffect(() => {
@@ -89,11 +96,17 @@ export const useBreakpoint = ({
       return undefined;
     }
 
+    // set the breakpoint and devicetype for the first time because eventlisteners will only trigger after the screen is actually changed
+    setBreakpointAndDevice(() => {
+      const matchedBreakpoint = getMatchedBreakpoint();
+      const matchedDeviceType = getMatchedDeviceType(matchedBreakpoint);
+      return { matchedBreakpoint, matchedDeviceType };
+    });
+
     const handleMediaQueryChange = (event: MediaQueryListEvent): void => {
       setBreakpointAndDevice(() => {
         const matchedBreakpoint = getMatchedBreakpoint(event);
         const matchedDeviceType = getMatchedDeviceType(matchedBreakpoint);
-
         return { matchedBreakpoint, matchedDeviceType };
       });
     };

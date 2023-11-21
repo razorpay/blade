@@ -288,12 +288,12 @@ exports[`Carousel Snapshots should render 1`] = `
           <RNSVGSvgView
             accessibilityElementsHidden={true}
             align="xMidYMid"
-            bbHeight="12px"
-            bbWidth="12px"
+            bbHeight="16px"
+            bbWidth="16px"
             data-blade-component="icon"
             fill="none"
             focusable={false}
-            height="12px"
+            height="16px"
             importantForAccessibility="no-hide-descendants"
             meetOrSlice={0}
             minX={0}
@@ -309,14 +309,14 @@ exports[`Carousel Snapshots should render 1`] = `
                 ],
                 {
                   "flex": 0,
-                  "height": 12,
-                  "width": 12,
+                  "height": 16,
+                  "width": 16,
                 },
               ]
             }
             vbHeight={24}
             vbWidth={24}
-            width="12px"
+            width="16px"
           >
             <RNSVGGroup
               fill={null}
@@ -574,12 +574,12 @@ exports[`Carousel Snapshots should render 1`] = `
           <RNSVGSvgView
             accessibilityElementsHidden={true}
             align="xMidYMid"
-            bbHeight="12px"
-            bbWidth="12px"
+            bbHeight="16px"
+            bbWidth="16px"
             data-blade-component="icon"
             fill="none"
             focusable={false}
-            height="12px"
+            height="16px"
             importantForAccessibility="no-hide-descendants"
             meetOrSlice={0}
             minX={0}
@@ -595,14 +595,14 @@ exports[`Carousel Snapshots should render 1`] = `
                 ],
                 {
                   "flex": 0,
-                  "height": 12,
-                  "width": 12,
+                  "height": 16,
+                  "width": 16,
                 },
               ]
             }
             vbHeight={24}
             vbWidth={24}
-            width="12px"
+            width="16px"
           >
             <RNSVGGroup
               fill={null}
@@ -982,12 +982,12 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
           <RNSVGSvgView
             accessibilityElementsHidden={true}
             align="xMidYMid"
-            bbHeight="12px"
-            bbWidth="12px"
+            bbHeight="16px"
+            bbWidth="16px"
             data-blade-component="icon"
             fill="none"
             focusable={false}
-            height="12px"
+            height="16px"
             importantForAccessibility="no-hide-descendants"
             meetOrSlice={0}
             minX={0}
@@ -1003,14 +1003,14 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
                 ],
                 {
                   "flex": 0,
-                  "height": 12,
-                  "width": 12,
+                  "height": 16,
+                  "width": 16,
                 },
               ]
             }
             vbHeight={24}
             vbWidth={24}
-            width="12px"
+            width="16px"
           >
             <RNSVGGroup
               fill={null}
@@ -1341,12 +1341,12 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
           <RNSVGSvgView
             accessibilityElementsHidden={true}
             align="xMidYMid"
-            bbHeight="12px"
-            bbWidth="12px"
+            bbHeight="16px"
+            bbWidth="16px"
             data-blade-component="icon"
             fill="none"
             focusable={false}
-            height="12px"
+            height="16px"
             importantForAccessibility="no-hide-descendants"
             meetOrSlice={0}
             minX={0}
@@ -1362,14 +1362,14 @@ exports[`Carousel Snapshots should render with visibleItems but always renders 1
                 ],
                 {
                   "flex": 0,
-                  "height": 12,
-                  "width": 12,
+                  "height": 16,
+                  "width": 16,
                 },
               ]
             }
             vbHeight={24}
             vbWidth={24}
-            width="12px"
+            width="16px"
           >
             <RNSVGGroup
               fill={null}
