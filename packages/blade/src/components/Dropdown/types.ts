@@ -1,7 +1,7 @@
 import type React from 'react';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { TestID } from '~utils/types';
-
+import type { BoxProps } from '~components/Box';
 type DropdownProps = {
   /**
    * Control open / close state of the Dropdown component
@@ -47,7 +47,7 @@ type DropdownOverlayProps = {
    * @default 1001
    */
   zIndex?: number;
-  width?: string;
+  width?: BoxProps['width'];
 } & TestID;
 
 export type { DropdownProps, DropdownOverlayProps };

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   autoUpdate,
   offset,
@@ -37,7 +37,6 @@ const _DropdownOverlay = ({
 }: DropdownOverlayProps): React.ReactElement | null => {
   const { isOpen, triggererRef, triggererWrapperRef, dropdownTriggerer, setIsOpen } = useDropdown();
   const { theme } = useTheme();
-  const [widthValue, setwidthValue] = useState<string | undefined>(width);
   const bottomSheetAndDropdownGlue = useBottomSheetAndDropdownGlue();
 
   const isMenu =
@@ -93,11 +92,6 @@ const _DropdownOverlay = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
-  React.useEffect(() => {
-    if (width) {
-      setwidthValue(width);
-    }
-  }, [width]);
   return (
     <BaseBox
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -110,7 +104,7 @@ const _DropdownOverlay = ({
         isInBottomSheet={bottomSheetAndDropdownGlue?.dropdownHasBottomSheet}
         elevation={bottomSheetAndDropdownGlue?.dropdownHasBottomSheet ? undefined : 'midRaised'}
         style={{ ...styles }}
-        width={widthValue ? widthValue : '100%'}
+        width={width ? width : '100%'}
         {...metaAttribute({ name: MetaConstants.DropdownOverlay, testID })}
       >
         {children}

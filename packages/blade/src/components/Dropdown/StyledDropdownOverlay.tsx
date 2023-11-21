@@ -4,9 +4,8 @@ import { makeSize } from '~utils';
 
 const StyledDropdownOverlay = styled(BaseBox)<{
   isInBottomSheet?: boolean;
-  width?: string;
 }>((props) => {
-  const { theme, isInBottomSheet, width } = props;
+  const { theme, isInBottomSheet } = props;
 
   return {
     backgroundColor: theme.colors.surface.popup.background,
@@ -14,7 +13,6 @@ const StyledDropdownOverlay = styled(BaseBox)<{
     borderColor: theme.colors.surface.border.normal.lowContrast,
     borderStyle: isInBottomSheet ? undefined : 'solid',
     borderRadius: makeSize(theme.border.radius.medium),
-    width: width ? width : '100%',
   };
 });
 
