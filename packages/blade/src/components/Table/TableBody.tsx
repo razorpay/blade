@@ -13,6 +13,15 @@ import BaseBox from '~components/Box/BaseBox';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 
 type TableBodyProps = {
+  /**
+   * The children of the TableBody component should be TableRow components.
+   * @example
+   * <TableBody>
+   *   <TableRow>
+   *     <TableCell>...</TableCell>
+   *   </TableRow>
+   * </TableBody>
+   **/
   children: React.ReactNode;
 };
 
@@ -118,6 +127,17 @@ const TableBody = ({ children }: TableBodyProps): React.ReactElement => {
 };
 
 type TableCellProps = {
+  /**
+   * The children of the TableCell component should be a string or a ReactNode.
+   * @example
+   * <TableCell>{'Hello'}</TableCell>
+   * <TableCell>
+   *  <Text>...</Text>
+   * </TableCell>
+   * <TableCell>
+   * <Button>...</Button>
+   * </TableCell>
+   **/
   children: React.ReactNode;
 };
 
@@ -200,8 +220,31 @@ const TableCheckboxCell = ({
 };
 
 type TableRowProps<Item> = {
+  /**
+   * The children of the TableRow component should be TableCell components.
+   * @example
+   * <TableRow>
+   *   <TableCell>...</TableCell>
+   * </TableRow>
+   **/
   children: React.ReactNode;
+  /**
+   * The item prop is used to pass the item to the TableRow component.
+   * @example
+   * tableData.map((tableItem) => (
+   *   <TableRow item={item}>
+   *     <TableCell>...</TableCell>
+   *   </TableRow>
+   * ));
+   **/
   item: TableNode<Item>;
+  /**
+   * The isDisabled prop is used to disable the TableRow component.
+   * @example
+   * <TableRow isDisabled>
+   *   <TableCell>...</TableCell>
+   * </TableRow>
+   **/
   isDisabled?: boolean;
 };
 
@@ -282,4 +325,4 @@ const TableRow = <Item,>({
   );
 };
 
-export { TableBody, TableRow, TableCell, TableCheckboxCell };
+export { TableBody, TableRow, TableCell };

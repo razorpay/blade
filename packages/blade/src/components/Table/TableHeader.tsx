@@ -65,6 +65,15 @@ const SortIcon = ({
 };
 
 type TableHeaderProps = {
+  /**
+   * The children of TableHeader should be TableHeaderRow
+   * @example
+   * <TableHeader>
+   *   <TableHeaderRow>
+   *     <TableHeaderCell>Header Cell 1</TableHeaderCell>
+   *   </TableHeaderRow>
+   * </TableHeader>
+   **/
   children: React.ReactNode;
 };
 
@@ -87,7 +96,14 @@ const TableHeader = assignWithoutSideEffects(_TableHeader, {
 });
 
 export type TableHeaderCellProps = {
+  /**
+   * The children of TableHeaderCell can be a string or a ReactNode.
+   **/
   children: string | React.ReactNode;
+  /**
+   * The unique key of the column.
+   * This is used to identify the column for sorting in sortFunctions prop of Table.
+   **/
   headerKey: string;
 };
 
@@ -171,6 +187,15 @@ const TableHeaderCellCheckbox = ({
   );
 };
 type TableHeaderRowProps = {
+  /**
+   * The children of TableHeaderRow should be TableHeaderCell
+   * @example
+   * <TableHeader>
+   *   <TableHeaderRow>
+   *     <TableHeaderCell>Header Cell 1</TableHeaderCell>
+   *   </TableHeaderRow>
+   * </TableHeader>
+   **/
   children: React.ReactNode;
 };
 

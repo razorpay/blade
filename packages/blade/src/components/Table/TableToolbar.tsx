@@ -48,7 +48,14 @@ const ToolbarWrapper = styled(BaseBox)(({ theme }) => ({
 }));
 
 type TableToolbarProps = {
+  /**
+   * The children of TableToolbar should be TableToolbarActions
+   */
   children?: React.ReactNode;
+  /**
+   * The title of the TableToolbar. If not provided, it will show the default title.
+   * @default `Showing 1 to ${totalItems} Items`
+   */
   title?: string;
 };
 

@@ -34,14 +34,52 @@ export type TableData<Item> = {
 };
 
 export type TableProps<Item> = {
+  /**
+   * The children of the Table component should be a function that returns TableHeader, TableBody and TableFooter components.
+   * The function will be called with the tableData prop.
+   */
   children: (tableData: TableNode<Item>[]) => React.ReactElement;
+  /**
+   * The data prop is an object with a nodes property that is an array of objects.
+   * Each object in the array is a row in the table.
+   * The object should have an id property that is a unique identifier for the row.
+   */
   data: TableData<Item>;
+  /**
+   * The selectionType prop determines the type of selection that is allowed on the table.
+   * The selectionType prop can be 'single' or 'multiple'.
+   **/
   selectionType?: 'single' | 'multiple';
+  /**
+   * The onSelectionChange prop is a function that is called when the selection changes.
+   * The function is called with an object that has a values property that is an array of the selected rows.
+   **/
   onSelectionChange?: ({ values }: { values: TableNode<Item>[] }) => void;
+  /**
+   * The isHeaderSticky prop determines whether the table header is sticky or not.
+   * The default value is `false`.
+   **/
   isHeaderSticky?: boolean;
+  /**
+   * The isFooterSticky prop determines whether the table footer is sticky or not.
+   * The default value is `false`.
+   **/
   isFooterSticky?: boolean;
+  /**
+   * The isFirstColumnSticky prop determines whether the first column is sticky or not.
+   * The default value is `false`.
+   **/
   isFirstColumnSticky?: boolean;
+  /**
+   * The rowDensity prop determines the density of the table.
+   * The rowDensity prop can be 'normal' or 'comfortable'.
+   * The default value is `normal`.
+   **/
   rowDensity?: 'normal' | 'comfortable';
+  /**
+   * The onSortChange prop is a function that is called when the sort changes.
+   * The function is called with an object that has a sortKey property that is the key of the column that is sorted and a isSortReversed property that is a boolean that determines whether the sort is reversed or not.
+   **/
   onSortChange?: ({
     sortKey,
     isSortReversed,
@@ -49,14 +87,52 @@ export type TableProps<Item> = {
     sortKey: TableHeaderCellProps['headerKey'];
     isSortReversed: boolean;
   }) => void;
+  /**
+   * The sortFunctions prop is an object that has a key for each column that is sortable.
+   * The value of each key is a function that is called when the column is sorted.
+   * The function is called with an array of the rows in the table.
+   * The function should return an array of the rows in the table.
+   **/
   sortFunctions?: Record<string, (array: TableNode<Item>[]) => TableNode<Item>[]>;
+  /**
+   * The toolbar prop is a React element that is rendered above the table.
+   * The toolbar prop should be a `TableToolbar` component.
+   **/
   toolbar?: React.ReactElement;
+  /**
+   * The pagination prop is a React element that is rendered below the table.
+   * The pagination prop should be a `TablePagination` component.
+   **/
   pagination?: React.ReactElement;
+  /**
+   * The height prop is a responsive styled prop that determines the height of the table.
+   **/
   height?: BoxProps['height'];
+  /**
+   * The showStripes prop determines whether the table should have striped rows or not.
+   * The default value is `false`.
+   **/
   showStripes?: boolean;
+  /**
+   * The gridTemplateColumns prop determines the grid-template-columns CSS property of the table.
+   * The default value is `repeat(${columnCount},minmax(100px, 1fr))`.
+   **/
   gridTemplateColumns?: string;
+  /**
+   * The surfaceLevel prop determines the surface level of the table.
+   * The surfaceLevel prop can be 1, 2, 3, 4 or 5.
+   * The default value is `2`.
+   **/
   surfaceLevel?: SurfaceLevels;
+  /**
+   * The isLoading prop determines whether the table is loading or not.
+   * The default value is `false`.
+   **/
   isLoading?: boolean;
+  /**
+   * The isRefreshing prop determines whether the table is refreshing or not.
+   * The default value is `false`.
+   **/
   isRefreshing?: boolean;
 } & StyledPropsBlade;
 

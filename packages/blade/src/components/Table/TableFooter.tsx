@@ -6,11 +6,19 @@ import { tableFooter } from './tokens';
 import { useTableContext } from './TableContext';
 import { Text } from '~components/Typography';
 import { makeSpace } from '~utils';
-import BaseBox from '~components/Box/BaseBox';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
-import { SurfaceLevels } from '~tokens/theme/theme';
+import type { SurfaceLevels } from '~tokens/theme/theme';
 
 type TableFooterProps = {
+  /**
+   * The children of TableFooter should be TableFooterRow
+   * @example
+   * <TableFooter>
+   *   <TableFooterRow>
+   *     <TableFooterCell>Footer Cell 1</TableFooterCell>
+   *   </TableFooterRow>
+   * </TableFooter>
+   **/
   children: React.ReactNode;
 };
 
@@ -32,6 +40,15 @@ const TableFooter = ({ children }: TableFooterProps): React.ReactElement => {
 };
 
 type TableFooterRowProps = {
+  /**
+   * The children of TableFooterRow should be TableFooterCell
+   * @example
+   * <TableFooter>
+   *   <TableFooterRow>
+   *     <TableFooterCell>Footer Cell 1</TableFooterCell>
+   *   </TableFooterRow>
+   * </TableFooter>
+   **/
   children: React.ReactNode;
 };
 
@@ -42,6 +59,9 @@ const TableFooterRow = ({ children }: TableFooterRowProps): React.ReactElement =
 };
 
 type TableFooterCellProps = {
+  /**
+   * The children of TableFooterCell can be a string or a ReactNode
+   **/
   children?: string;
 };
 
