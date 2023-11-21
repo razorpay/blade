@@ -19,7 +19,7 @@ const App = (): ReactElement => {
       repoName: 'blade',
       workflowFileName: 'blade-tokens-upload.yml',
       personalAccessToken,
-      tokens: themeColorTokens,
+      colorTokens: themeColorTokens,
     });
   }, [themeColorTokens, personalAccessToken]);
 

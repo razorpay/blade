@@ -7,12 +7,12 @@ export const uploadTokens = async ({
   orgName = 'razorpay',
   repoName,
   workflowFileName,
-  tokens,
+  colorTokens,
   personalAccessToken,
 }: any): Promise<void> => {
   const API_URL = `${GITHUB_BASE_URL}/${orgName}/${repoName}/actions/workflows/${workflowFileName}/dispatches`;
 
-  const getFetchOptions = ({ themeKey, tokens }: any) => ({
+  const getFetchOptions = (colorTokens: any) => ({
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -22,23 +22,16 @@ export const uploadTokens = async ({
     body: JSON.stringify({
       ref: 'master',
       inputs: {
-        tokens: JSON.stringify({ [themeKey]: tokens }),
+        tokens: JSON.stringify(colorTokens),
       },
     }),
   });
 
   try {
-    const responses = await Promise.all([
-      fetch(
-        API_URL,
-        getFetchOptions({ themeKey: 'paymentThemeColors', tokens: tokens.paymentThemeColors }),
-      ),
-      fetch(
-        API_URL,
-        getFetchOptions({ themeKey: 'bankingThemeColors', tokens: tokens.bankingThemeColors }),
-      ),
-    ]);
-    const isRequestSuccess = responses.every((response) => response.status === 204);
+    console.log('colorTokens from api', colorTokens);
+    const response = await fetch(API_URL, getFetchOptions(colorTokens));
+
+    const isRequestSuccess = response.status === 204;
     if (isRequestSuccess) {
       // nosemgrep
       parent.postMessage(
@@ -51,19 +44,17 @@ export const uploadTokens = async ({
         '*',
       );
     } else {
-      responses.forEach(async (response) => {
-        const responseJson = await response.json();
-        // nosemgrep
-        parent.postMessage(
-          {
-            pluginMessage: {
-              type: 'error',
-              text: `⛔️ ${responseJson.message}`,
-            },
+      const responseJson = await response.json();
+      // nosemgrep
+      parent.postMessage(
+        {
+          pluginMessage: {
+            type: 'error',
+            text: `⛔️ ${responseJson.message}`,
           },
-          '*',
-        );
-      });
+        },
+        '*',
+      );
     }
   } catch (error: any) {
     throw new Error(error);

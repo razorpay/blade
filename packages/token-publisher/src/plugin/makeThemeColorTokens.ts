@@ -2,118 +2,95 @@
 /* eslint-disable @typescript-eslint/no-implicit-any-catch */
 import setValue from '../utils/setValue';
 import showNotification from './showNotification';
-/**
- * @TODO:
- * append globalColors key
- * convert the dot to square braces for values of object
- * here's the regex - console.log('chromatic.azure.a50'.replace(regex, (m,s)=> {console.log({m,s}); return `[${m.replace('.','')}]`; }));
- * 'chromatic.azure.50'.replace(/\.[0-9]+/, (matchedString)=> `[${matchedString.replace('.','')}]`)
- * commit to blade
- * create a UI to input GitHub PAT
- */
+
+// Figma to code sync
+// * filter by collection ✅
+// * identify modes light/dark ✅
+// * convert the / to . ✅
+// * convert the names to camelcase - keep it the same on design
+// * create code syntax variable ✅
+// * write to a file ✅
+// * write a subplugin to create the dev token names
+
+const COLLECTION_NAME = 'Colors';
+
+const makeTokenName = (variableName: string): string => {
+  return variableName.replace(/\//g, '.');
+};
+
+const generateDevFriendlyTokenNames = (figma: any): void => {
+  const variables = figma.variables.getLocalVariables();
+  variables.forEach((variable) => {
+    variable.setVariableCodeSyntax('WEB', makeTokenName(variable.name));
+  });
+};
 
 const makeThemeColorTokens = (figma: any): void => {
-  const paymentThemeColors = {};
-  const bankingThemeColors = {};
-  const makeColorObject = ({ node, themeName, themeKey }: any): void => {
-    try {
-      if (themeName && themeKey) {
-        // at this point we are sure that if we have themeKey and themeName then we are reaching towards our actual theme construction
-        if (node.children) {
-          node.children.forEach((child: any) => {
-            if (
-              child.type === 'TEXT' &&
-              (child.characters.includes('neutral') || child.characters.includes('chromatic'))
-            ) {
-              // we have finally got our value so set it
-              const tokenValue = `globalColors.${child.characters
-                // .replace(/\.(0)+?(0)*?/g, '.') // replace `00` with `0`
-                .replace('.0', '.')
-                .replace('.0', '.') // replace `00` with `0`
-                .replace(
-                  /\.[0-9]+/,
-                  (matchedString: any) => `[${matchedString.replace('.', '')}]`,
-                )}`;
-              if (themeName === 'payment') {
-                setValue(paymentThemeColors, themeKey.replace('theme.', ''), tokenValue);
-              } else if (themeName === 'banking') {
-                setValue(bankingThemeColors, themeKey.replace('theme.', ''), tokenValue);
-              }
-            } else if (
-              child.type === 'INSTANCE' &&
-              (child.name === 'onDark' || child.name === 'onLight')
-            ) {
-              makeColorObject({
-                node: child,
-                themeName,
-                themeKey: themeKey.replace('theme.colors', `theme.colors.${child.name}`),
-              });
-            } else {
-              makeColorObject({ node: child, themeName, themeKey });
-            }
-          });
+  try {
+    // filter colors collection
+    const colorsCollection = figma.variables
+      .getLocalVariableCollections()
+      .find((collection) => collection.name === COLLECTION_NAME);
+
+    // create modes set in the collection eg: onLight, onDark, etc.
+    const colorModes = colorsCollection.modes.reduce(
+      (acc, mode) => Object.assign(acc, { [mode.name]: mode.modeId }),
+      {},
+    );
+
+    const colorTokens = {
+      onLight: {},
+      onDark: {},
+    };
+
+    colorsCollection.variableIds.forEach((variableId) => {
+      // get all the variables by their ids in our collection
+      const variable = figma.variables.getVariableById(variableId);
+
+      // replace the "/" from token name with "." to store in json structure
+      const tokenName = makeTokenName(variable.name);
+
+      // prepare for storing variables in code in the format of dark and light modes
+      for (const [modeName, modeId] of Object.entries(colorModes)) {
+        const variableModeValue = variable.valuesByMode[modeId as string];
+        // if the variable references another variable then we take the name of the referenced variable
+        // eg: surface.background.neutral.subtle -> globalColors.gray.200
+        if (variableModeValue.id) {
+          setValue(
+            colorTokens[modeName],
+            tokenName,
+            makeTokenName(figma.variables.getVariableById(variableModeValue.id).name),
+          );
+        } else {
+          setValue(colorTokens[modeName], tokenName, variableModeValue);
         }
-      } else if (node.type === 'TEXT' && node.characters.includes('theme.colors')) {
-        // if we have reached a text node whose content starts with `theme.colors` then essentially we have got the theme key
-        // So based on the structure of our Figma we go to the parent node of `theme.colors` and then check it's `info` frame and then resume recursion there
-        // while doing so we also add 2 additional keys, themeName and themeKey because they are sibling nodes and we need `theme.colors` info and their theme name while creating the object
-        const themeKey = node.characters;
-        node.parent.children
-          .find((child: any) => child.type === 'FRAME')
-          .children.forEach((child: any) => {
-            if (child.name === 'banking') {
-              makeColorObject({ node: child, themeName: 'banking', themeKey });
-            } else if (child.name === 'payment') {
-              makeColorObject({ node: child, themeName: 'payment', themeKey });
-            }
-          });
-      } else if (
-        ['FRAME'].includes(node.type) &&
-        node.children &&
-        node.name !== 'title' &&
-        node.name !== 'info'
-      ) {
-        // the first iteration starts from here. We'll recurse until we have parsed the whole tree
-        node.children.forEach((child: any) => {
-          makeColorObject({ node: child });
-        });
       }
-    } catch (error: any) {
-      console.error('error', error);
+    });
+
+    if (Object.keys(colorTokens.onLight).length && Object.keys(colorTokens.onDark).length) {
       showNotification({
         figma,
-        type: 'error',
-        text: `⛔️ Something went wrong: ${error} `,
+        type: 'information',
+        text: '✅ Theme color tokens created!',
       });
+      figma.ui.postMessage({
+        type: 'export-theme-color-tokens',
+        data: colorTokens,
+      });
+      console.log({ colorTokens });
+      figma.ui.show();
     }
-  };
-
-  const colorTokenNodes = figma.currentPage.selection[0].children
-    .find((currentSelection: any) => currentSelection.name === 'content')
-    ?.children.find((content: any) => content.name === 'Body')
-    ?.children.find((body: any) => body.name === 'Table Body');
-
-  if (colorTokenNodes) {
-    makeColorObject({ node: colorTokenNodes });
-    showNotification({
-      figma,
-      type: 'information',
-      text: '✅ Theme color tokens created!',
-    });
-    figma.ui.postMessage({
-      type: 'export-theme-color-tokens',
-      data: { paymentThemeColors, bankingThemeColors },
-    });
-    console.log({ paymentThemeColors, bankingThemeColors });
-    figma.ui.show();
-  } else {
+  } catch (error) {
+    console.error('error', error);
     showNotification({
       figma,
       type: 'error',
-      text:
-        '⛔️ Oops no Color Tokens found in selection! Make sure to select a correct PAGE with Color Tokens!',
+      text: `⛔️ Something went wrong: ${error} `,
     });
   }
+
+  // set the code friendly token name to make it easier to copy-paste on Dev mode
+  generateDevFriendlyTokenNames(figma);
 };
 
 export default makeThemeColorTokens;
