@@ -648,7 +648,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                               <View
                                 backgroundColor="feedback.background.positive.lowContrast"
                                 data-blade-component="base-box"
-                                platform="onDesktop"
+                                platform="onMobile"
                                 size="medium"
                                 style={
                                   [
@@ -661,7 +661,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                                       "borderRadius": 9999,
                                       "display": "flex",
                                       "flexWrap": "nowrap",
-                                      "maxWidth": 120,
+                                      "maxWidth": 100,
                                     },
                                   ]
                                 }

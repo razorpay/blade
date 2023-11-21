@@ -3100,7 +3100,7 @@ exports[`<List /> should render medium ordered List 1`] = `
             data-blade-component="base-box"
             display="flex"
             flexShrink={0}
-            height="20px"
+            height="24px"
             justifyContent="center"
             style={
               [
@@ -3109,15 +3109,15 @@ exports[`<List /> should render medium ordered List 1`] = `
                   "alignSelf": "flex-start",
                   "display": "flex",
                   "flexShrink": 0,
-                  "height": 20,
+                  "height": 24,
                   "justifyContent": "center",
                   "marginRight": 4,
                   "marginTop": 0,
-                  "width": 20,
+                  "width": 24,
                 },
               ]
             }
-            width="20px"
+            width="24px"
           >
             <Text
               accessible={true}
@@ -4768,12 +4768,12 @@ exports[`<List /> should render small ordered List 1`] = `
                   <RNSVGSvgView
                     accessibilityElementsHidden={true}
                     align="xMidYMid"
-                    bbHeight="6px"
-                    bbWidth="6px"
+                    bbHeight="5px"
+                    bbWidth="5px"
                     data-blade-component="icon"
                     fill="none"
                     focusable={false}
-                    height="6px"
+                    height="5px"
                     importantForAccessibility="no-hide-descendants"
                     meetOrSlice={0}
                     minX={0}
@@ -4789,14 +4789,14 @@ exports[`<List /> should render small ordered List 1`] = `
                         ],
                         {
                           "flex": 0,
-                          "height": 6,
-                          "width": 6,
+                          "height": 5,
+                          "width": 5,
                         },
                       ]
                     }
                     vbHeight={6}
                     vbWidth={6}
-                    width="6px"
+                    width="5px"
                   >
                     <RNSVGGroup
                       fill={null}
@@ -4935,12 +4935,12 @@ exports[`<List /> should render small ordered List 1`] = `
                         <RNSVGSvgView
                           accessibilityElementsHidden={true}
                           align="xMidYMid"
-                          bbHeight="6px"
-                          bbWidth="6px"
+                          bbHeight="5px"
+                          bbWidth="5px"
                           data-blade-component="icon"
                           fill="none"
                           focusable={false}
-                          height="6px"
+                          height="5px"
                           importantForAccessibility="no-hide-descendants"
                           meetOrSlice={0}
                           minX={0}
@@ -4956,14 +4956,14 @@ exports[`<List /> should render small ordered List 1`] = `
                               ],
                               {
                                 "flex": 0,
-                                "height": 6,
-                                "width": 6,
+                                "height": 5,
+                                "width": 5,
                               },
                             ]
                           }
                           vbHeight={6}
                           vbWidth={6}
-                          width="6px"
+                          width="5px"
                         >
                           <RNSVGGroup
                             fill={null}
@@ -4975,14 +4975,14 @@ exports[`<List /> should render small ordered List 1`] = `
                           >
                             <RNSVGRect
                               fill={4288851646}
-                              height="6px"
+                              height="5px"
                               propList={
                                 [
                                   "fill",
                                 ]
                               }
                               rx="1px"
-                              width="6px"
+                              width="5px"
                               x={0}
                               y={0}
                             />
@@ -5117,7 +5117,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
             data-blade-component="base-box"
             display="flex"
             flexShrink={0}
-            height="18px"
+            height="16px"
             justifyContent="center"
             style={
               [
@@ -5128,15 +5128,15 @@ exports[`<List /> should render small ordered-filled List 1`] = `
                   "borderRadius": 9999,
                   "display": "flex",
                   "flexShrink": 0,
-                  "height": 18,
+                  "height": 16,
                   "justifyContent": "center",
                   "marginRight": 8,
                   "marginTop": 0,
-                  "width": 18,
+                  "width": 16,
                 },
               ]
             }
-            width="18px"
+            width="16px"
           >
             <Text
               accessible={true}
@@ -5260,7 +5260,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
             data-blade-component="base-box"
             display="flex"
             flexShrink={0}
-            height="18px"
+            height="16px"
             justifyContent="center"
             style={
               [
@@ -5271,15 +5271,15 @@ exports[`<List /> should render small ordered-filled List 1`] = `
                   "borderRadius": 9999,
                   "display": "flex",
                   "flexShrink": 0,
-                  "height": 18,
+                  "height": 16,
                   "justifyContent": "center",
                   "marginRight": 8,
                   "marginTop": 0,
-                  "width": 18,
+                  "width": 16,
                 },
               ]
             }
-            width="18px"
+            width="16px"
           >
             <Text
               accessible={true}
@@ -5403,7 +5403,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
             data-blade-component="base-box"
             display="flex"
             flexShrink={0}
-            height="18px"
+            height="16px"
             justifyContent="center"
             style={
               [
@@ -5414,15 +5414,15 @@ exports[`<List /> should render small ordered-filled List 1`] = `
                   "borderRadius": 9999,
                   "display": "flex",
                   "flexShrink": 0,
-                  "height": 18,
+                  "height": 16,
                   "justifyContent": "center",
                   "marginRight": 8,
                   "marginTop": 0,
-                  "width": 18,
+                  "width": 16,
                 },
               ]
             }
-            width="18px"
+            width="16px"
           >
             <Text
               accessible={true}
@@ -5920,12 +5920,12 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                         <RNSVGSvgView
                           accessibilityElementsHidden={true}
                           align="xMidYMid"
-                          bbHeight="6px"
-                          bbWidth="6px"
+                          bbHeight="5px"
+                          bbWidth="5px"
                           data-blade-component="icon"
                           fill="none"
                           focusable={false}
-                          height="6px"
+                          height="5px"
                           importantForAccessibility="no-hide-descendants"
                           meetOrSlice={0}
                           minX={0}
@@ -5941,14 +5941,14 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                               ],
                               {
                                 "flex": 0,
-                                "height": 6,
-                                "width": 6,
+                                "height": 5,
+                                "width": 5,
                               },
                             ]
                           }
                           vbHeight={6}
                           vbWidth={6}
-                          width="6px"
+                          width="5px"
                         >
                           <RNSVGGroup
                             fill={null}
@@ -5960,14 +5960,14 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                           >
                             <RNSVGRect
                               fill={4288851646}
-                              height="6px"
+                              height="5px"
                               propList={
                                 [
                                   "fill",
                                 ]
                               }
                               rx="1px"
-                              width="6px"
+                              width="5px"
                               x={0}
                               y={0}
                             />
@@ -6112,12 +6112,12 @@ exports[`<List /> should render unordered List of small size 1`] = `
             <RNSVGSvgView
               accessibilityElementsHidden={true}
               align="xMidYMid"
-              bbHeight="6px"
-              bbWidth="6px"
+              bbHeight="5px"
+              bbWidth="5px"
               data-blade-component="icon"
               fill="none"
               focusable={false}
-              height="6px"
+              height="5px"
               importantForAccessibility="no-hide-descendants"
               meetOrSlice={0}
               minX={0}
@@ -6133,14 +6133,14 @@ exports[`<List /> should render unordered List of small size 1`] = `
                   ],
                   {
                     "flex": 0,
-                    "height": 6,
-                    "width": 6,
+                    "height": 5,
+                    "width": 5,
                   },
                 ]
               }
               vbHeight={6}
               vbWidth={6}
-              width="6px"
+              width="5px"
             >
               <RNSVGGroup
                 fill={null}
@@ -6279,12 +6279,12 @@ exports[`<List /> should render unordered List of small size 1`] = `
                   <RNSVGSvgView
                     accessibilityElementsHidden={true}
                     align="xMidYMid"
-                    bbHeight="6px"
-                    bbWidth="6px"
+                    bbHeight="5px"
+                    bbWidth="5px"
                     data-blade-component="icon"
                     fill="none"
                     focusable={false}
-                    height="6px"
+                    height="5px"
                     importantForAccessibility="no-hide-descendants"
                     meetOrSlice={0}
                     minX={0}
@@ -6300,14 +6300,14 @@ exports[`<List /> should render unordered List of small size 1`] = `
                         ],
                         {
                           "flex": 0,
-                          "height": 6,
-                          "width": 6,
+                          "height": 5,
+                          "width": 5,
                         },
                       ]
                     }
                     vbHeight={6}
                     vbWidth={6}
-                    width="6px"
+                    width="5px"
                   >
                     <RNSVGGroup
                       fill={null}
@@ -6446,12 +6446,12 @@ exports[`<List /> should render unordered List of small size 1`] = `
                         <RNSVGSvgView
                           accessibilityElementsHidden={true}
                           align="xMidYMid"
-                          bbHeight="6px"
-                          bbWidth="6px"
+                          bbHeight="5px"
+                          bbWidth="5px"
                           data-blade-component="icon"
                           fill="none"
                           focusable={false}
-                          height="6px"
+                          height="5px"
                           importantForAccessibility="no-hide-descendants"
                           meetOrSlice={0}
                           minX={0}
@@ -6467,14 +6467,14 @@ exports[`<List /> should render unordered List of small size 1`] = `
                               ],
                               {
                                 "flex": 0,
-                                "height": 6,
-                                "width": 6,
+                                "height": 5,
+                                "width": 5,
                               },
                             ]
                           }
                           vbHeight={6}
                           vbWidth={6}
-                          width="6px"
+                          width="5px"
                         >
                           <RNSVGGroup
                             fill={null}
@@ -6486,14 +6486,14 @@ exports[`<List /> should render unordered List of small size 1`] = `
                           >
                             <RNSVGRect
                               fill={4288851646}
-                              height="6px"
+                              height="5px"
                               propList={
                                 [
                                   "fill",
                                 ]
                               }
                               rx="1px"
-                              width="6px"
+                              width="5px"
                               x={0}
                               y={0}
                             />

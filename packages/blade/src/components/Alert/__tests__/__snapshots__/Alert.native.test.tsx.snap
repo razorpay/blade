@@ -22,7 +22,7 @@ exports[`<Alert /> should render 1`] = `
       color="neutral"
       contrastType="lowContrast"
       data-blade-component="base-box"
-      isDesktop={true}
+      isDesktop={false}
       isFullWidth={false}
       style={
         [
@@ -324,7 +324,7 @@ exports[`<Alert /> should render positive color and full width 1`] = `
       color="positive"
       contrastType="lowContrast"
       data-blade-component="base-box"
-      isDesktop={true}
+      isDesktop={false}
       isFullWidth={true}
       style={
         [
@@ -332,7 +332,7 @@ exports[`<Alert /> should render positive color and full width 1`] = `
             "textAlign": "left",
           },
           {
-            "alignItems": "center",
+            "alignItems": "flex-start",
             "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
             "borderColor": "hsla(155, 100%, 31%, 0.32)",
             "borderRadius": 0,
@@ -457,7 +457,7 @@ exports[`<Alert /> should render positive color and full width 1`] = `
               "flexGrow": 1,
               "flexShrink": 1,
               "paddingLeft": 12,
-              "paddingRight": 12,
+              "paddingRight": 4,
             },
           ]
         }
@@ -637,7 +637,7 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
       color="positive"
       contrastType="lowContrast"
       data-blade-component="base-box"
-      isDesktop={true}
+      isDesktop={false}
       isFullWidth={true}
       style={
         [
@@ -645,7 +645,7 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
             "textAlign": "left",
           },
           {
-            "alignItems": "center",
+            "alignItems": "flex-start",
             "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
             "borderColor": "hsla(155, 100%, 31%, 0.32)",
             "borderRadius": 0,
@@ -770,7 +770,7 @@ exports[`<Alert /> should render positive intent and full width 1`] = `
               "flexGrow": 1,
               "flexShrink": 1,
               "paddingLeft": 12,
-              "paddingRight": 12,
+              "paddingRight": 4,
             },
           ]
         }

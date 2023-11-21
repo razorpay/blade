@@ -188,7 +188,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
             style={
               [
                 {
-                  "marginBottom": 4,
+                  "marginBottom": 8,
                 },
               ]
             }
@@ -353,7 +353,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
             style={
               [
                 {
-                  "marginBottom": 4,
+                  "marginBottom": 8,
                 },
               ]
             }
@@ -873,7 +873,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
             style={
               [
                 {
-                  "marginBottom": 4,
+                  "marginBottom": 8,
                 },
               ]
             }
@@ -1038,7 +1038,7 @@ exports[`<CheckboxGroup /> should render with label 2`] = `
             style={
               [
                 {
-                  "marginBottom": 4,
+                  "marginBottom": 8,
                 },
               ]
             }

@@ -17,7 +17,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
     }
   >
     <View
-      accessibilityLabelledBy="chip-group-104-label"
+      accessibilityLabelledBy="chip-group-180-label"
       accessible={true}
       data-blade-component="chip-group"
       display="flex"
