@@ -13,6 +13,7 @@ import { useTheme } from '~utils';
 import { Amount } from '~components/Amount';
 import { Code } from '~components/Typography';
 import { Badge } from '~components/Badge';
+import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 export default {
   title: 'Components/Table',
@@ -20,6 +21,9 @@ export default {
   args: {
     selectionType: undefined,
     rowDensity: 'normal',
+  },
+  argTypes: {
+    ...getStyledPropsArgTypes(),
   },
   parameters: {
     docs: {
@@ -436,6 +440,9 @@ const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
       backgroundColor="surface.background.level2.lowContrast"
       padding="spacing.5"
       overflow="auto"
+      minHeight="400px"
+      minWidth="100%"
+      display="flex"
     >
       <TableComponent
         {...args}

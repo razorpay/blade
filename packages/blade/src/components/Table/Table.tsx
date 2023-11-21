@@ -19,6 +19,11 @@ import { throwBladeError } from '~utils/logger';
 import type { BoxProps } from '~components/Box';
 import { getBaseBoxStyles } from '~components/Box/BaseBox/baseBoxStyles';
 import type { SurfaceLevels } from '~tokens/theme/theme';
+import BaseBox from '~components/Box/BaseBox';
+import { Spinner } from '~components/Spinner';
+import { getStyledProps } from '~components/Box/styledProps';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
+import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 
 export type TableNode<Item> = Item & {
   id: Identifier;
@@ -51,7 +56,8 @@ export type TableProps<Item> = {
   showStripes?: boolean;
   gridTemplateColumns?: string;
   surfaceLevel?: SurfaceLevels;
-};
+  isLoading?: boolean;
+} & StyledPropsBlade;
 
 const rowSelectType: Record<NonNullable<TableProps<unknown>['selectionType']>, SelectTypes> = {
   single: SelectTypes.SingleSelect,
@@ -125,6 +131,8 @@ const Table = <Item,>({
   showStripes,
   gridTemplateColumns,
   surfaceLevel = 2,
+  isLoading = false,
+  ...styledProps
 }: TableProps<Item>): React.ReactElement => {
   const { theme } = useTheme();
   const [selectedRows, setSelectedRows] = React.useState<TableNode<unknown>['id'][]>([]);
@@ -386,25 +394,42 @@ const Table = <Item,>({
 
   return (
     <TableProvider value={tableContext}>
-      <>
-        {toolbar}
-        <StyledReactTable
-          role="table"
-          layout={{ fixedHeader: isHeaderSticky, horizontalScroll: true }}
-          data={data}
-          // @ts-expect-error ignore this, theme clashes with styled-component's theme. We're using useTheme from blade to get actual theme
-          theme={tableTheme}
-          select={selectionType ? rowSelectConfig : null}
-          sort={sortFunctions ? sort : null}
-          styledProps={{
-            height,
-          }}
-          pagination={hasPagination ? paginationConfig : null}
+      {isLoading ? (
+        <BaseBox
+          display="flex"
+          flex={1}
+          alignItems="center"
+          justifyContent="center"
+          {...getStyledProps(styledProps)}
+          {...metaAttribute({ name: MetaConstants.Table })}
         >
-          {children}
-        </StyledReactTable>
-        {pagination}
-      </>
+          <Spinner accessibilityLabel="Loading Table" size="large" />
+        </BaseBox>
+      ) : (
+        <BaseBox
+          flex={1}
+          {...getStyledProps(styledProps)}
+          {...metaAttribute({ name: MetaConstants.Table })}
+        >
+          {toolbar}
+          <StyledReactTable
+            role="table"
+            layout={{ fixedHeader: isHeaderSticky, horizontalScroll: true }}
+            data={data}
+            // @ts-expect-error ignore this, theme clashes with styled-component's theme. We're using useTheme from blade to get actual theme
+            theme={tableTheme}
+            select={selectionType ? rowSelectConfig : null}
+            sort={sortFunctions ? sort : null}
+            styledProps={{
+              height,
+            }}
+            pagination={hasPagination ? paginationConfig : null}
+          >
+            {children}
+          </StyledReactTable>
+          {pagination}
+        </BaseBox>
+      )}
     </TableProvider>
   );
 };
