@@ -12,6 +12,7 @@ import { castWebType, makeMotionTime, makeSpace, useTheme } from '~utils';
 import { makeAccessible } from '~utils/makeAccessible';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import BaseBox from '~components/Box/BaseBox';
+import type { SurfaceLevels } from '~tokens/theme/theme';
 
 const SortButton = styled.button(({ theme }) => ({
   cursor: 'pointer',
@@ -87,9 +88,11 @@ export type TableHeaderCellProps = {
   headerKey: string;
 };
 
-const StyledHeaderCell = styled(HeaderCell)(({ theme }) => ({
+const StyledHeaderCell = styled(HeaderCell)<{
+  surfaceLevel: SurfaceLevels;
+}>(({ theme, surfaceLevel }) => ({
   '&&&': {
-    backgroundColor: getIn(theme.colors, tableHeader.backgroundColor),
+    backgroundColor: getIn(theme.colors, `surface.background.level${surfaceLevel}.lowContrast`),
     height: '100%',
     borderBottomWidth: makeSpace(getIn(theme.border.width, tableHeader.borderBottomAndTopWidth)),
     borderTopWidth: makeSpace(getIn(theme.border.width, tableHeader.borderBottomAndTopWidth)),
@@ -98,12 +101,11 @@ const StyledHeaderCell = styled(HeaderCell)(({ theme }) => ({
     borderBottomStyle: 'solid',
     borderTopStyle: 'solid',
     '> div': {
-      // backgroundColor: getIn(theme.colors, tableHeader.backgroundColor),
+      backgroundColor: getIn(theme.colors, tableHeader.backgroundColor),
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'space-between',
       height: '100%',
-      borderRadius: theme.border.radius.small,
       paddingTop: makeSpace(getIn(theme, tableHeader.paddingTop)),
       paddingBottom: makeSpace(getIn(theme, tableHeader.paddingBottom)),
       paddingLeft: makeSpace(getIn(theme, tableHeader.paddingLeft)),
@@ -121,26 +123,25 @@ const _TableHeaderCell = ({ children, headerKey }: TableHeaderCellProps): React.
   const isChildrenString = typeof children === 'string';
   const isSortable = Boolean(currentSortedState.sortableColumns?.find((key) => key === headerKey));
   return (
-    <BaseBox backgroundColor={`surface.background.level${surfaceLevel}.lowContrast`} zIndex={2}>
-      <StyledHeaderCell tabIndex={0}>
-        {isChildrenString ? (
-          <Text size="medium" weight="bold">
-            {children}
-          </Text>
-        ) : (
-          children
-        )}
-        {isSortable && (
-          <BaseBox paddingLeft="spacing.2">
-            <SortIcon
-              isSorted={currentSortedState.sortKey === headerKey}
-              isSortReversed={currentSortedState.isSortReversed}
-              onClick={() => toggleSort(headerKey)}
-            />
-          </BaseBox>
-        )}
-      </StyledHeaderCell>
-    </BaseBox>
+    <StyledHeaderCell tabIndex={0} surfaceLevel={surfaceLevel}>
+      {isChildrenString ? (
+        <Text size="medium" weight="bold">
+          {children}
+        </Text>
+      ) : (
+        children
+      )}
+
+      {isSortable && (
+        <BaseBox paddingLeft="spacing.2" backgroundColor="transparent">
+          <SortIcon
+            isSorted={currentSortedState.sortKey === headerKey}
+            isSortReversed={currentSortedState.isSortReversed}
+            onClick={() => toggleSort(headerKey)}
+          />
+        </BaseBox>
+      )}
+    </StyledHeaderCell>
   );
 };
 
