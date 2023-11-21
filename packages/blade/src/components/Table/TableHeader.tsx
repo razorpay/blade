@@ -13,6 +13,7 @@ import { makeAccessible } from '~utils/makeAccessible';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import BaseBox from '~components/Box/BaseBox';
 import type { SurfaceLevels } from '~tokens/theme/theme';
+import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 
 const SortButton = styled.button(({ theme }) => ({
   cursor: 'pointer',
@@ -76,7 +77,9 @@ const StyledHeader = styled(Header)({
 });
 
 const _TableHeader = ({ children }: TableHeaderProps): React.ReactElement => {
-  return <StyledHeader>{children}</StyledHeader>;
+  return (
+    <StyledHeader {...metaAttribute({ name: MetaConstants.TableHeader })}>{children}</StyledHeader>
+  );
 };
 
 const TableHeader = assignWithoutSideEffects(_TableHeader, {
@@ -123,7 +126,11 @@ const _TableHeaderCell = ({ children, headerKey }: TableHeaderCellProps): React.
   const isChildrenString = typeof children === 'string';
   const isSortable = Boolean(currentSortedState.sortableColumns?.find((key) => key === headerKey));
   return (
-    <StyledHeaderCell tabIndex={0} surfaceLevel={surfaceLevel}>
+    <StyledHeaderCell
+      tabIndex={0}
+      surfaceLevel={surfaceLevel}
+      {...metaAttribute({ name: MetaConstants.TableHeaderCell })}
+    >
       {isChildrenString ? (
         <Text size="medium" weight="bold">
           {children}
@@ -131,7 +138,6 @@ const _TableHeaderCell = ({ children, headerKey }: TableHeaderCellProps): React.
       ) : (
         children
       )}
-
       {isSortable && (
         <BaseBox paddingLeft="spacing.2" backgroundColor="transparent">
           <SortIcon
@@ -174,7 +180,7 @@ const _TableHeaderRow = ({ children }: TableHeaderRowProps): React.ReactElement 
   const isAllSelected = selectedRows && selectedRows.length === totalItems;
   const isIndeterminate = selectedRows && selectedRows.length > 0 && !isAllSelected;
   return (
-    <HeaderRow role="row">
+    <HeaderRow role="row" {...metaAttribute({ name: MetaConstants.TableHeaderRow })}>
       {isMultiSelect && (
         <TableHeaderCellCheckbox
           isChecked={isAllSelected}

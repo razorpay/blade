@@ -10,6 +10,7 @@ import type { CheckboxProps } from '~components/Checkbox';
 import { Checkbox } from '~components/Checkbox';
 import { makeMotionTime, makeSpace } from '~utils';
 import BaseBox from '~components/Box/BaseBox';
+import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 
 type TableBodyProps = {
   children: React.ReactNode;
@@ -106,7 +107,11 @@ const TableBody = ({ children }: TableBodyProps): React.ReactElement => {
   const isSelectable = Boolean(selectionType);
 
   return (
-    <StyledBody isSelectable={isSelectable} showStripes={showStripes}>
+    <StyledBody
+      isSelectable={isSelectable}
+      showStripes={showStripes}
+      {...metaAttribute({ name: MetaConstants.TableBody })}
+    >
       {children}
     </StyledBody>
   );
@@ -160,7 +165,11 @@ const TableCell = ({ children }: TableCellProps): React.ReactElement => {
   const { selectionType, rowDensity, showStripes } = useTableContext();
   const isSelectable = Boolean(selectionType);
   return (
-    <StyledCell tabIndex={0} isSelectable={isSelectable}>
+    <StyledCell
+      tabIndex={0}
+      isSelectable={isSelectable}
+      {...metaAttribute({ name: MetaConstants.TableCell })}
+    >
       <CellWrapper
         className="cell-wrapper"
         rowDensity={rowDensity}
@@ -259,6 +268,7 @@ const TableRow = <Item,>({
       showStripes={showStripes}
       item={item}
       className={isDisabled ? 'disabled-row' : ''}
+      {...metaAttribute({ name: MetaConstants.TableRow })}
     >
       {isMultiSelect && (
         <TableCheckboxCell

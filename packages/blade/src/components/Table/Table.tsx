@@ -424,6 +424,7 @@ const Table = <Item,>({
               height,
             }}
             pagination={hasPagination ? paginationConfig : null}
+            {...metaAttribute({ name: MetaConstants.Table })}
           >
             {children}
           </StyledReactTable>
