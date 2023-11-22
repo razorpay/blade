@@ -6,6 +6,7 @@ import {
   TableWithCustomCellComponentsStory,
   SortableTableStory,
   SingleSelectableTable,
+  MultiSelectableWithToolbarTable,
 } from './stories';
 import { Sandbox } from '~utils/storybook/Sandbox';
 
@@ -56,6 +57,14 @@ export const SingleSelectable = (): React.ReactElement => {
   return (
     <Sandbox padding="spacing.0" editorHeight="90vh">
       {SingleSelectableTable}
+    </Sandbox>
+  );
+};
+
+export const MultiSelectableWithToolbar = (): React.ReactElement => {
+  return (
+    <Sandbox padding="spacing.0" editorHeight="90vh">
+      {MultiSelectableWithToolbarTable}
     </Sandbox>
   );
 };
