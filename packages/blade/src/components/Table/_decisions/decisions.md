@@ -102,10 +102,10 @@ We don't have enough use-cases for the following features at Razorpay and hence 
     pagination={()=>(
         <TablePagination
           defaultPageSize={10}
-          navigationType='compact'
           label='1-10 of 100'
-          labelPosition='left'
+          showLabel='left'
           showPageSizePicker
+          showPageNumberSelector
           onPageChange={console.log}
           onPageSizeChange={console.log}
         />
@@ -156,7 +156,7 @@ We don't have enough use-cases for the following features at Razorpay and hence 
 
     <TableFooter>
       <TableFooterRow>
-        <TableFooterCell columnStart='1' columnEnd='4'>
+        <TableFooterCell>
           Total
         </TableFooterCell>
         <TableFooterCell>
@@ -182,6 +182,7 @@ We don't have enough use-cases for the following features at Razorpay and hence 
 | sortFunctions      | `SortFunctionsType`                           | `undefined` | This is an object that contains the sort functions for each column. The key of the object should be the `headerKey` of the column and the value is a function that takes in an array of items and returns a sorted array of items. A column will be made automatically sortable by adding its headerKey along with a sort function here. |
 | onSortChange       | `SortChangeEvent`                             | `undefined` | This is a callback function that is called when the sort changes. It is called with the headerKey & sortType as arguments                                                                                                                                                                                                                |
 | isLoading          | `boolean`                                     | `false`     | This defines whether the table is in a loading state or not                                                                                                                                                                                                                                                                              |
+| isRefreshing       | `boolean`                                     | `false`     | This defines whether the table is in a refreshing state or not                                                                                                                                                                                                                                                                           |
 | rowDensity         | `normal`, `comfortable`                       | `normal`    | This defines the density of the cells in the table. Possible values are 'normal' & 'comfortable'                                                                                                                                                                                                                                         |
 | showStripes        | `boolean`                                     | `false`     | This defines whether the table should show zebra stripes or not                                                                                                                                                                                                                                                                          |
 | pagination         | `React.ReactElement`                          | `undefined` | Expects the TablePagination Component                                                                                                                                                                                                                                                                                                    |
@@ -284,24 +285,20 @@ type SelectionChangeEvent = (selectedItems: TableNode[]) => void;
 | children | `React.ReactNode` | undefined | This defines the table footer cells | ✅        |
 
 #### TableFooterCell
-| Prop        | Type                        | Default   | Description                                                                  | Required |
-| ----------- | --------------------------- | --------- | ---------------------------------------------------------------------------- | -------- |
-| children    | `React.ReactNode`, `string` | undefined | This defines the content of the table footer cell. Can be a JSX or a string. | ✅        |
-| columnStart | `number`                    | undefined | This defines the start column of the table footer cell                       |          |
-| columnEnd   | `number`                    | undefined | This defines the end column of the table footer cell                         |          |
+| Prop     | Type                        | Default   | Description                                                                  | Required |
+| -------- | --------------------------- | --------- | ---------------------------------------------------------------------------- | -------- |
+| children | `React.ReactNode`, `string` | undefined | This defines the content of the table footer cell. Can be a JSX or a string. | ✅        |
 
 #### TablePagination
-| Prop               | Type                  | Default                          | Description                                                                                                                                                                  | Required |
-| ------------------ | --------------------- | -------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| currentPage        | `number`              | undefined                        | This defines the current page of the table. If you pass currentPage, this becomes a controlled component and you will have to manage page selection state on your own        |          |
-| pageSize           | `number`              | undefined                        | This defines the number of items to be shown per page. If you pass pageSize, this becomes a controlled component and you will have to manage the page size state on your own |          |
-| defaultPageSize    | `number`              | 10 (to be confirmed with design) | This defines the default number of items to be shown per page                                                                                                                |          |
-| navigationType     | `compact`, `expanded` | `compact`                        | This defines the type of pagination to be shown. Possible values are 'compact' & 'expanded'                                                                                  |
-| label              | `string`              | undefined                        | This defines the label to be shown in the pagination                                                                                                                         |
-| labelPosition      | `left`, `right`       | `right`                          | This defines the position of the label. Possible values are 'left' & 'right'                                                                                                 |
-| showPageSizePicker | `boolean`             | `false`                          | This defines whether the page size picker should be shown or not                                                                                                             |
-| onPageChange       | `PageChangeEvent`     | undefined                        | This is a callback function that is called when the currentPage changes                                                                                                      |
-| onPageSizeChange   | `PageSizeChangeEvent` | undefined                        | This is a callback function that is called when the pageSize changes                                                                                                         |
+| Prop               | Type                  | Default                          | Description                                                                                                                                                           | Required |
+| ------------------ | --------------------- | -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| currentPage        | `number`              | undefined                        | This defines the current page of the table. If you pass currentPage, this becomes a controlled component and you will have to manage page selection state on your own |          |
+| defaultPageSize    | `number`              | 10 (to be confirmed with design) | This defines the default number of items to be shown per page                                                                                                         |          |
+| label              | `string`              | undefined                        | This defines the label to be shown in the pagination                                                                                                                  |
+| showLabel          | `boolean`             | `false`                          | This defines whether the label should be shown or not                                                                                                                 |
+| showPageSizePicker | `boolean`             | `false`                          | This defines whether the page size picker should be shown or not                                                                                                      |
+| onPageChange       | `PageChangeEvent`     | undefined                        | This is a callback function that is called when the currentPage changes                                                                                               |
+| onPageSizeChange   | `PageSizeChangeEvent` | undefined                        | This is a callback function that is called when the pageSize changes                                                                                                  |
 
 ##### `PageChangeEvent`
 ```ts
@@ -365,10 +362,10 @@ const onSortChange = ({ headerKey, sortType }) => {
     pagination={()=>(
         <TablePagination
           defaultPageSize={10}
-          navigationType='compact'
           label='1-10 of 100'
-          labelPosition='left'
+          showLabel='left'
           showPageSizePicker
+          showPageNumberSelector
           onPageChange={console.log}
           onPageSizeChange={console.log}
         />
@@ -419,7 +416,7 @@ const onSortChange = ({ headerKey, sortType }) => {
 
     <TableFooter>
       <TableFooterRow>
-        <TableFooterCell columnStart='1' columnEnd='4'>
+        <TableFooterCell>
           Total
         </TableFooterCell>
         <TableFooterCell>
@@ -473,15 +470,11 @@ const columnDefinition = [
         header: 'First Name',
         headerKey: 'firstName',
         cell: (row) => row.firstName,
-        columnStart: undefined,
-        columnEnd: undefined,
     },
     {
         header: 'Last Name',
         headerKey: 'lastName',
         cell: (row) => row.lastName,
-        columnStart: undefined,
-        columnEnd: undefined,
     },
     {
         header: () => (
@@ -497,16 +490,12 @@ const columnDefinition = [
                 {row.balance}
                 <Badge>Low</Badge>
             </>),
-        columnStart: undefined,
-        columnEnd: undefined,
     }
 ];
 
 const footerDefinition = [
     {
         footer: 'Total',
-        columnStart: 1,
-        columnEnd: 4,
     },
     {
         footer: computedTotalBalance,
@@ -514,14 +503,14 @@ const footerDefinition = [
 ];
 
 const pagination = {
-  showRowCountPicker?: boolean,
-  onRowCountPickerChange?: ({ count }) => void,
-  navigationType?: 'compact' | 'expanded',
   label?: string,
-  labelPosition?: 'left' | 'right',
-  limit: number,
-  offset: number,
-  onPaginationChange?: ({ offset }) => void,
+  defaultPageSize?: number,
+  currentPage?: number,
+  showLabel?: boolean,
+  showPageNumberSelector?: boolean,
+  showPageSizePicker?: boolean,
+  onPageChange?: ({ page }) => void,
+  onPageSizeChange?: ({ pageSize }) => void,
 };
 ```
 
