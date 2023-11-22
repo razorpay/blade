@@ -1,7 +1,7 @@
 import React from 'react';
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Table } from '../Table';
-import { BasicTableStory, TableWithCustomCellComponentsStory } from './stories';
+import { BasicTableStory, TableWithCustomCellComponentsStory, SortableTableStory } from './stories';
 import { Sandbox } from '~utils/storybook/Sandbox';
 
 const TableMeta: Meta = {
@@ -35,6 +35,14 @@ export const TableWithCustomCellComponents = (): React.ReactElement => {
   return (
     <Sandbox padding="spacing.0" editorHeight="90vh">
       {TableWithCustomCellComponentsStory}
+    </Sandbox>
+  );
+};
+
+export const SortableTable = (): React.ReactElement => {
+  return (
+    <Sandbox padding="spacing.0" editorHeight="90vh">
+      {SortableTableStory}
     </Sandbox>
   );
 };
