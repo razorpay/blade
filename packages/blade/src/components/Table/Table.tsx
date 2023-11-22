@@ -11,7 +11,11 @@ import styled from 'styled-components';
 import type { TableContextType } from './TableContext';
 import { TableProvider } from './TableContext';
 import { ComponentIds } from './componentIds';
-import { tablePagination } from './tokens';
+import {
+  firstColumnStickyHeaderFooterZIndex,
+  refreshWrapperZIndex,
+  tablePagination,
+} from './tokens';
 import type { TableHeaderCellProps } from './TableHeader';
 import { makeBorderSize, useTheme } from '~utils';
 import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
@@ -225,14 +229,14 @@ const Table = <Item,>({
   &:nth-of-type(1) {
     left: 0 !important;
     position: sticky !important;
-    z-index: 2 !important;
+    z-index: ${firstColumnStickyHeaderFooterZIndex} !important;
   }
   ${
     selectionType === 'multiple' &&
     `&:nth-of-type(2) {
     left: 44px !important;
     position: sticky !important;
-    z-index: 2 !important;
+    z-index: ${firstColumnStickyHeaderFooterZIndex} !important;
   }
   `
   }`
@@ -242,14 +246,14 @@ const Table = <Item,>({
   &:nth-of-type(1) {
     left: 0 !important;
     position: sticky !important;
-    z-index: 2 !important;
+    z-index: ${firstColumnStickyHeaderFooterZIndex} !important;
   }
   ${
     selectionType === 'multiple' &&
     `&:nth-of-type(2) {
     left: 44px !important;
     position: sticky !important;
-    z-index: 2 !important;
+    z-index: ${firstColumnStickyHeaderFooterZIndex} !important;
   }
   `
   }`
@@ -498,7 +502,7 @@ const Table = <Item,>({
               position="absolute"
               width="100%"
               height="100%"
-              zIndex="2"
+              zIndex={refreshWrapperZIndex}
               backgroundColor={theme.colors.surface.overlay.background[800]}
               justifyContent="center"
               alignItems="center"

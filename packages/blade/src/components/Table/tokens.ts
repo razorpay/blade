@@ -1,3 +1,6 @@
+const firstColumnStickyHeaderFooterZIndex = 2;
+const refreshWrapperZIndex = 3;
+
 const tableHeader = {
   paddingTop: 'spacing.5',
   paddingBottom: 'spacing.5',
@@ -112,4 +115,12 @@ const tablePagination = {
   defaultPageSize: 10,
 } as const;
 
-export { tableHeader, tableFooter, tableRow, tableToolbar, tablePagination };
+export {
+  tableHeader,
+  tableFooter,
+  tableRow,
+  tableToolbar,
+  tablePagination,
+  refreshWrapperZIndex,
+  firstColumnStickyHeaderFooterZIndex,
+};
