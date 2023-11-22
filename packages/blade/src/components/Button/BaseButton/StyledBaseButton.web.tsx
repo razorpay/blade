@@ -17,6 +17,7 @@ const StyledBaseButton = styled.button
   }))<Omit<StyledBaseButtonProps, 'onClick'>>((props) => {
   const styledPropsCSSObject = useStyledProps(props);
   return {
+    all: 'unset',
     ...getStyledBaseButtonStyles(props),
     display: 'inline-flex',
     transitionProperty: 'background-color, border-color, box-shadow',

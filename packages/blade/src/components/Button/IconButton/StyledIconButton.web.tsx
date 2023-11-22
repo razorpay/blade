@@ -20,6 +20,7 @@ const StyledButton = styled.button<StyledButtonProps>((props) => {
   const motionToken = theme.motion;
 
   return {
+    all: 'unset',
     border: 'none',
     cursor: props.disabled ? 'not-allowed' : 'pointer',
     padding: 0,
