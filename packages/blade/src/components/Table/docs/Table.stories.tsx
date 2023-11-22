@@ -1,11 +1,11 @@
 import type { ComponentStory, Meta } from '@storybook/react';
-import type { TableData, TableProps } from './Table';
-import { Table as TableComponent } from './Table';
-import { TableHeader, TableHeaderRow, TableHeaderCell } from './TableHeader';
-import { TableBody, TableRow, TableCell } from './TableBody';
-import { TableFooter, TableFooterRow, TableFooterCell } from './TableFooter';
-import { TablePagination } from './TablePagination';
-import { TableToolbarActions, TableToolbar } from './TableToolbar';
+import type { TableData, TableProps } from '../Table';
+import { Table as TableComponent } from '../Table';
+import { TableHeader, TableHeaderRow, TableHeaderCell } from '../TableHeader';
+import { TableBody, TableRow, TableCell } from '../TableBody';
+import { TableFooter, TableFooterRow, TableFooterCell } from '../TableFooter';
+import { TablePagination } from '../TablePagination';
+import { TableToolbarActions, TableToolbar } from '../TableToolbar';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
