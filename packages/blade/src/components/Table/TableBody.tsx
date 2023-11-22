@@ -11,6 +11,7 @@ import { Checkbox } from '~components/Checkbox';
 import { makeMotionTime, makeSpace } from '~utils';
 import BaseBox from '~components/Box/BaseBox';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
+import type { SurfaceLevels } from '~tokens/theme/theme';
 
 type TableBodyProps = {
   /**
@@ -143,10 +144,11 @@ type TableCellProps = {
 
 const StyledCell = styled(Cell)<{
   isSelectable: boolean;
-}>(({ theme, isSelectable }) => ({
+  surfaceLevel: SurfaceLevels;
+}>(({ theme, isSelectable, surfaceLevel }) => ({
   '&&&': {
     height: '100%',
-    backgroundColor: tableRow.nonStripe.backgroundColor,
+    backgroundColor: getIn(theme.colors, `surface.background.level${surfaceLevel}.lowContrast`),
     '& > div:first-child': {
       pointerEvents: isSelectable ? 'none' : 'auto',
       alignSelf: 'stretch',
@@ -182,12 +184,13 @@ const CellWrapper = styled(BaseBox)<{
 
 const TableCell = ({ children }: TableCellProps): React.ReactElement => {
   const isChildrenString = typeof children === 'string';
-  const { selectionType, rowDensity, showStripes } = useTableContext();
+  const { selectionType, rowDensity, showStripes, surfaceLevel } = useTableContext();
   const isSelectable = Boolean(selectionType);
   return (
     <StyledCell
       tabIndex={0}
       isSelectable={isSelectable}
+      surfaceLevel={surfaceLevel}
       {...metaAttribute({ name: MetaConstants.TableCell })}
     >
       <CellWrapper

@@ -216,9 +216,60 @@ const Table = <Item,>({
   const [selectedRows, setSelectedRows] = React.useState<TableNode<unknown>['id'][]>([]);
   const [disabledRows, setDisabledRows] = React.useState<TableNode<unknown>['id'][]>([]);
   const [totalItems, setTotalItems] = React.useState(data.nodes.length || 0);
-
+  // Need to make header is sticky if first column is sticky otherwise the first header cell will not be sticky
+  const shouldHeaderBeSticky = isHeaderSticky || isFirstColumnSticky;
   // Table Theme
   const columnCount = getTableHeaderCellCount(children);
+  const firstColumnStickyHeaderCellCSS = isFirstColumnSticky
+    ? `
+  &:nth-of-type(1) {
+    left: 0 !important;
+    position: sticky !important;
+    z-index: 2 !important;
+  }
+  ${
+    selectionType === 'multiple' &&
+    `&:nth-of-type(2) {
+    left: 44px !important;
+    position: sticky !important;
+    z-index: 2 !important;
+  }
+  `
+  }`
+    : '';
+  const firstColumnStickyFooterCellCSS = isFirstColumnSticky
+    ? `
+  &:nth-of-type(1) {
+    left: 0 !important;
+    position: sticky !important;
+    z-index: 2 !important;
+  }
+  ${
+    selectionType === 'multiple' &&
+    `&:nth-of-type(2) {
+    left: 44px !important;
+    position: sticky !important;
+    z-index: 2 !important;
+  }
+  `
+  }`
+    : '';
+  const firstColumnStickyBodyCellCSS = isFirstColumnSticky
+    ? `
+  &:nth-of-type(1) {
+    left: 0 !important;
+    position: sticky !important;
+  }
+  ${
+    selectionType === 'multiple' &&
+    `&:nth-of-type(2) {
+    left: 44px !important;
+    position: sticky !important;
+  }
+  `
+  }`
+    : '';
+
   const tableTheme = useTableTheme({
     Table: `
     height:${isFooterSticky ? `100%` : undefined};
@@ -233,68 +284,19 @@ const Table = <Item,>({
     } !important;
     background-color: ${theme.colors.surface.background[`level${surfaceLevel}`].lowContrast};
     `,
-    Footer: `
-    .tr-footer > div {
-      position: ${isFooterSticky ? 'sticky' : 'relative'};
-      bottom: ${isFooterSticky ? '0' : undefined};
-    };
+    HeaderCell: `
+    position: ${shouldHeaderBeSticky ? 'sticky' : 'relative'};
+    top: ${shouldHeaderBeSticky ? '0' : undefined};
+    ${firstColumnStickyHeaderCellCSS}
     `,
-    Header: `
-    .tr-header > div {
-      position: ${isHeaderSticky ? 'sticky' : 'relative'};
-      top: ${isHeaderSticky ? '0' : undefined};
-    };`,
-    HeaderCell: isFirstColumnSticky
-      ? `
-    &:nth-of-type(1) {
-      left: 0 !important;
-      position: sticky !important;
-      z-index: 2 !important;;
-    }
-    ${
-      selectionType === 'multiple' &&
-      `&:nth-of-type(2) {
-      left: 44px !important;
-      position: sticky !important;
-      z-index: 2 !important;;
-    }
-    `
-    }`
-      : undefined,
-    Cell: isFirstColumnSticky
-      ? `
-    &:nth-of-type(1) {
-      left: 0 !important;
-      position: sticky !important;
-      z-index: 2 !important;;
-    }
-    ${
-      selectionType === 'multiple' &&
-      `&:nth-of-type(2) {
-      left: 44px !important;
-      position: sticky !important;
-      z-index: 2 !important;;
-    }
-    `
-    }`
-      : undefined,
-    FooterCell: isFirstColumnSticky
-      ? `
-    &:nth-of-type(1) {
-      left: 0 !important;
-      position: sticky !important;
-      z-index: 2 !important;;
-    }
-    ${
-      selectionType === 'multiple' &&
-      `&:nth-of-type(2) {
-      left: 44px !important;
-      position: sticky !important;
-      z-index: 2 !important;;
-    }
-    `
-    }`
-      : undefined,
+    Cell: `
+    ${firstColumnStickyBodyCellCSS}
+    `,
+    FooterCell: `
+    position: ${isFooterSticky ? 'sticky' : 'relative'};
+    bottom: ${isFooterSticky ? '0' : undefined};
+    ${firstColumnStickyFooterCellCSS}
+    `,
   });
 
   useEffect(() => {
@@ -478,6 +480,7 @@ const Table = <Item,>({
           flex={1}
           alignItems="center"
           justifyContent="center"
+          height="100%"
           {...getStyledProps(styledProps)}
           {...metaAttribute({ name: MetaConstants.Table })}
         >
@@ -507,7 +510,7 @@ const Table = <Item,>({
           {toolbar}
           <StyledReactTable
             role="table"
-            layout={{ fixedHeader: isHeaderSticky, horizontalScroll: true }}
+            layout={{ fixedHeader: shouldHeaderBeSticky, horizontalScroll: true }}
             data={data}
             // @ts-expect-error ignore this, theme clashes with styled-component's theme. We're using useTheme from blade to get actual theme
             theme={tableTheme}

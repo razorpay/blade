@@ -442,7 +442,6 @@ const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
       overflow="auto"
       minHeight="400px"
       minWidth="100%"
-      display="flex"
     >
       <TableComponent
         {...args}
@@ -479,6 +478,10 @@ const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
             showPageNumberSelector
           />
         }
+        height="400px"
+        // isFooterSticky
+        // isFirstColumnSticky
+        // isHeaderSticky
       >
         {(tableData) => (
           <>
