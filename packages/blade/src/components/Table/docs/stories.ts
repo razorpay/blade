@@ -123,7 +123,7 @@ type Item = {
 const nodes: Item[] = [
   ...Array.from({ length: 5 }, (_, i) => ({
     id: (i + 1).toString(),
-    paymentId: \`rzp${Math.floor(Math.random() * 1000000)}\`,
+    paymentId: \`rzp\${Math.floor(Math.random() * 1000000)}\`,
     amount: Number((Math.random() * 10000).toFixed(2)),
     date: new Date(
       2021,
@@ -303,7 +303,7 @@ type Item = {
 const nodes: Item[] = [
   ...Array.from({ length: 5 }, (_, i) => ({
     id: (i + 1).toString(),
-    paymentId: \`rzp${Math.floor(Math.random() * 1000000)}\`,
+    paymentId: \`rzp\${Math.floor(Math.random() * 1000000)}\`,
     amount: Number((Math.random() * 10000).toFixed(2)),
     date: new Date(
       2021,
@@ -398,7 +398,7 @@ function App(): React.ReactElement {
 export default App;
 `;
 
-const SingleSelectableTable = `
+const SingleSelectableTableStory = `
 import {
   Table,
   Code,
@@ -428,7 +428,7 @@ type Item = {
 const nodes: Item[] = [
   ...Array.from({ length: 5 }, (_, i) => ({
     id: (i + 1).toString(),
-    paymentId: \`rzp${Math.floor(Math.random() * 1000000)}\`,
+    paymentId: \`rzp\${Math.floor(Math.random() * 1000000)}\`,
     amount: Number((Math.random() * 10000).toFixed(2)),
     date: new Date(
       2021,
@@ -525,7 +525,7 @@ function App(): React.ReactElement {
 export default App;
 `;
 
-const MultiSelectableWithToolbarTable = `
+const MultiSelectableWithToolbarTableStory = `
 import {
   Table,
   Code,
@@ -559,7 +559,7 @@ type Item = {
 const nodes: Item[] = [
   ...Array.from({ length: 5 }, (_, i) => ({
     id: (i + 1).toString(),
-    paymentId: \`rzp${Math.floor(Math.random() * 1000000)}\`,
+    paymentId: \`rzp\${Math.floor(Math.random() * 1000000)}\`,
     amount: Number((Math.random() * 10000).toFixed(2)),
     date: new Date(
       2021,
@@ -579,6 +579,7 @@ function App(): React.ReactElement {
   const [selectedItems, setSelectedItems] = useState<Item[]>([]);
   const { platform } = useTheme();
   const onMobile = platform === 'onMobile';
+  const selectedItemsLength = selectedItems.length;
   return (
     <Box
       backgroundColor="surface.background.level2.lowContrast"
@@ -594,6 +595,148 @@ function App(): React.ReactElement {
         data={data}
         selectionType="multiple"
         onSelectionChange={({ values }) => setSelectedItems(values)}
+        toolbar={
+          <TableToolbar
+            title="Showing Recent Transactions"
+            selectedTitle={\`\${selectedItemsLength} Transaction\${
+              selectedItemsLength > 1 ? 's' : ''
+            } Selected\`}
+          >
+            <TableToolbarActions>
+              <Button
+                variant="secondary"
+                marginRight="spacing.2"
+                isFullWidth={onMobile}
+              >
+                Export
+              </Button>
+              <Button isFullWidth={onMobile}>Refund</Button>
+            </TableToolbarActions>
+          </TableToolbar>
+        }
+      >
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell headerKey="PAYMENT_ID">ID</TableHeaderCell>
+                <TableHeaderCell headerKey="AMOUNT">Amount</TableHeaderCell>
+                <TableHeaderCell headerKey="DATE">Date</TableHeaderCell>
+                <TableHeaderCell headerKey="METHOD">Method</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {tableData.map((tableItem, index) => (
+                <TableRow key={index} item={tableItem}>
+                  <TableCell>
+                    <Code size="medium">{tableItem.paymentId}</Code>
+                  </TableCell>
+                  <TableCell>
+                    <Amount value={tableItem.amount} />
+                  </TableCell>
+                  <TableCell>
+                    {tableItem.date?.toLocaleDateString('en-IN', {
+                      year: 'numeric',
+                      month: '2-digit',
+                      day: '2-digit',
+                    })}
+                  </TableCell>
+                  <TableCell>
+                    <Badge
+                      size="medium"
+                      color={
+                        tableItem.status === 'Completed'
+                          ? 'positive'
+                          : tableItem.status === 'Pending'
+                          ? 'notice'
+                          : tableItem.status === 'Failed'
+                          ? 'negative'
+                          : 'default'
+                      }
+                    >
+                      {tableItem.status}
+                    </Badge>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </>
+        )}
+      </Table>
+    </Box>
+  );
+}
+
+export default App;
+`;
+
+const MultiSelectableWithZebraStripesStory = `
+import {
+  Table,
+  Code,
+  Heading,
+  Box,
+  TableHeader,
+  TableHeaderRow,
+  TableHeaderCell,
+  TableBody,
+  TableRow,
+  TableCell,
+  Amount,
+  Badge,
+  TableToolbar,
+  TableToolbarActions,
+  Button,
+  useTheme,
+  Text,
+} from '@razorpay/blade/components';
+import type { TableData } from '@razorpay/blade/components';
+import React, { useState } from 'react';
+
+type Item = {
+  id: string;
+  paymentId: string;
+  amount: number;
+  date: Date;
+  status: string;
+};
+
+const nodes: Item[] = [
+  ...Array.from({ length: 5 }, (_, i) => ({
+    id: (i + 1).toString(),
+    paymentId: \`rzp\${Math.floor(Math.random() * 1000000)}\`,
+    amount: Number((Math.random() * 10000).toFixed(2)),
+    date: new Date(
+      2021,
+      Math.floor(Math.random() * 12),
+      Math.floor(Math.random() * 28) + 1
+    ),
+    status: ['Completed', 'Pending', 'Failed'][Math.floor(Math.random() * 3)],
+    account: Math.floor(Math.random() * 1000000000).toString(),
+  })),
+];
+
+const data: TableData<Item> = {
+  nodes,
+};
+
+function App(): React.ReactElement {
+  const { platform } = useTheme();
+  const onMobile = platform === 'onMobile';
+  return (
+    <Box
+      backgroundColor="surface.background.level2.lowContrast"
+      padding="spacing.5"
+      overflow="auto"
+      minHeight="400px"
+    >
+      <Box paddingBottom="spacing.4">
+        <Heading>Multi Selectable Table with Zebra Stripes</Heading>
+      </Box>
+      <Table
+        data={data}
+        selectionType="multiple"
+        showStripes={true}
         toolbar={
           <TableToolbar title="Showing Recent Transactions">
             <TableToolbarActions>
@@ -668,6 +811,7 @@ export {
   BasicTableStory,
   TableWithCustomCellComponentsStory,
   SortableTableStory,
-  SingleSelectableTable,
-  MultiSelectableWithToolbarTable,
+  SingleSelectableTableStory,
+  MultiSelectableWithToolbarTableStory,
+  MultiSelectableWithZebraStripesStory,
 };

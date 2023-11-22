@@ -5,8 +5,9 @@ import {
   BasicTableStory,
   TableWithCustomCellComponentsStory,
   SortableTableStory,
-  SingleSelectableTable,
-  MultiSelectableWithToolbarTable,
+  SingleSelectableTableStory,
+  MultiSelectableWithToolbarTableStory,
+  MultiSelectableWithZebraStripesStory,
 } from './stories';
 import { Sandbox } from '~utils/storybook/Sandbox';
 
@@ -56,7 +57,7 @@ export const SortableTable = (): React.ReactElement => {
 export const SingleSelectable = (): React.ReactElement => {
   return (
     <Sandbox padding="spacing.0" editorHeight="90vh">
-      {SingleSelectableTable}
+      {SingleSelectableTableStory}
     </Sandbox>
   );
 };
@@ -64,7 +65,15 @@ export const SingleSelectable = (): React.ReactElement => {
 export const MultiSelectableWithToolbar = (): React.ReactElement => {
   return (
     <Sandbox padding="spacing.0" editorHeight="90vh">
-      {MultiSelectableWithToolbarTable}
+      {MultiSelectableWithToolbarTableStory}
+    </Sandbox>
+  );
+};
+
+export const MultiSelectableWithZebraStripes = (): React.ReactElement => {
+  return (
+    <Sandbox padding="spacing.0" editorHeight="90vh">
+      {MultiSelectableWithZebraStripesStory}
     </Sandbox>
   );
 };
