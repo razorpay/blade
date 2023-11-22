@@ -1221,6 +1221,148 @@ function App(): React.ReactElement {
 export default App;
 `;
 
+const TableWithDisabledRowsStory = `
+import {
+  Table,
+  Code,
+  Heading,
+  Box,
+  TableHeader,
+  TableHeaderRow,
+  TableHeaderCell,
+  TableBody,
+  TableRow,
+  TableCell,
+  Amount,
+  TableToolbar,
+  TableToolbarActions,
+  Button,
+  useTheme,
+  Link,
+  TrashIcon,
+  CopyIcon,
+} from '@razorpay/blade/components';
+import type { TableData } from '@razorpay/blade/components';
+import React from 'react';
+
+type Item = {
+  id: string;
+  paymentId: string;
+  amount: number;
+  date: Date;
+  status: string;
+};
+
+const nodes: Item[] = [
+  ...Array.from({ length: 10 }, (_, i) => ({
+    id: (i + 1).toString(),
+    paymentId: \`rzp\${Math.floor(Math.random() * 1000000)}\`,
+    amount: Number((Math.random() * 10000).toFixed(2)),
+    date: new Date(
+      2021,
+      Math.floor(Math.random() * 12),
+      Math.floor(Math.random() * 28) + 1
+    ),
+    status: ['Completed', 'Pending', 'Failed'][Math.floor(Math.random() * 3)],
+    account: Math.floor(Math.random() * 1000000000).toString(),
+  })),
+];
+
+const data: TableData<Item> = {
+  nodes,
+};
+
+function App(): React.ReactElement {
+  const { platform } = useTheme();
+  const onMobile = platform === 'onMobile';
+
+  return (
+    <Box
+      backgroundColor="surface.background.level2.lowContrast"
+      padding="spacing.5"
+      overflow="auto"
+      minHeight="400px"
+    >
+      <Box paddingBottom="spacing.4">
+        <Heading>Table with Disabled Rows</Heading>
+      </Box>
+      <Table
+        data={data}
+        selectionType="multiple"
+        showStripes={true}
+        gridTemplateColumns="min-content min-content min-content fit-content(200px)"
+        toolbar={
+          <TableToolbar>
+            <TableToolbarActions>
+              <Button
+                variant="secondary"
+                marginRight="spacing.2"
+                isFullWidth={onMobile}
+              >
+                Export
+              </Button>
+              <Button isFullWidth={onMobile}>Refund</Button>
+            </TableToolbarActions>
+          </TableToolbar>
+        }
+      >
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+                <TableHeaderCell>Action</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {tableData.map((tableItem, index) => {
+                const isDisabled = ['0', '4', '10'].includes(tableItem.id);
+                return (
+                  <TableRow
+                    key={index}
+                    item={tableItem}
+                    isDisabled={isDisabled}
+                  >
+                    <TableCell>
+                      <Code size="medium">{tableItem.paymentId}</Code>
+                    </TableCell>
+                    <TableCell>
+                      <Amount value={tableItem.amount} />
+                    </TableCell>
+
+                    <TableCell>
+                      <Box display="flex" gap="spacing.3">
+                        <Link
+                          isDisabled={isDisabled}
+                          variant="button"
+                          icon={CopyIcon}
+                        >
+                          Copy
+                        </Link>
+                        <Link
+                          isDisabled={isDisabled}
+                          variant="button"
+                          icon={TrashIcon}
+                        >
+                          Delete
+                        </Link>
+                      </Box>
+                    </TableCell>
+                  </TableRow>
+                );
+              })}
+            </TableBody>
+          </>
+        )}
+      </Table>
+    </Box>
+  );
+}
+
+export default App;
+`;
+
 export {
   BasicTableStory,
   TableWithCustomCellComponentsStory,
@@ -1231,4 +1373,5 @@ export {
   TableWithStickyHeaderAndFooterStory,
   TableWithStickyFirstColumnStory,
   TableWithPaginationStory,
+  TableWithDisabledRowsStory,
 };
