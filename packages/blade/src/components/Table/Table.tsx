@@ -12,6 +12,7 @@ import type { TableContextType } from './TableContext';
 import { TableProvider } from './TableContext';
 import { ComponentIds } from './componentIds';
 import {
+  checkboxCellWidth,
   firstColumnStickyHeaderFooterZIndex,
   refreshWrapperZIndex,
   tablePagination,
@@ -234,7 +235,7 @@ const Table = <Item,>({
   ${
     selectionType === 'multiple' &&
     `&:nth-of-type(2) {
-    left: 44px !important;
+    left: ${checkboxCellWidth}px !important;
     position: sticky !important;
     z-index: ${firstColumnStickyHeaderFooterZIndex} !important;
   }
@@ -251,7 +252,7 @@ const Table = <Item,>({
   ${
     selectionType === 'multiple' &&
     `&:nth-of-type(2) {
-    left: 44px !important;
+    left: ${checkboxCellWidth}px !important;
     position: sticky !important;
     z-index: ${firstColumnStickyHeaderFooterZIndex} !important;
   }
@@ -267,7 +268,7 @@ const Table = <Item,>({
   ${
     selectionType === 'multiple' &&
     `&:nth-of-type(2) {
-    left: 44px !important;
+    left: ${checkboxCellWidth}px !important;
     position: sticky !important;
   }
   `

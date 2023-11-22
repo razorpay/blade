@@ -1,5 +1,10 @@
+import { size } from '~tokens/global';
+
 const firstColumnStickyHeaderFooterZIndex = 2;
+
 const refreshWrapperZIndex = 3;
+
+const checkboxCellWidth = size['44'];
 
 const tableHeader = {
   paddingTop: 'spacing.5',
@@ -123,4 +128,5 @@ export {
   tablePagination,
   refreshWrapperZIndex,
   firstColumnStickyHeaderFooterZIndex,
+  checkboxCellWidth,
 };

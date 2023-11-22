@@ -3,12 +3,12 @@ import { Body, Row, Cell } from '@table-library/react-table-library/table';
 import styled from 'styled-components';
 import getIn from 'lodash/get';
 import { useTableContext } from './TableContext';
-import { tableRow } from './tokens';
+import { checkboxCellWidth, tableRow } from './tokens';
 import type { TableNode, TableProps } from './Table';
 import { Text } from '~components/Typography';
 import type { CheckboxProps } from '~components/Checkbox';
 import { Checkbox } from '~components/Checkbox';
-import { makeMotionTime, makeSpace } from '~utils';
+import { makeMotionTime, makeSize, makeSpace } from '~utils';
 import BaseBox from '~components/Box/BaseBox';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import type { SurfaceLevels } from '~tokens/theme/theme';
@@ -217,7 +217,9 @@ const TableCheckboxCell = ({
 }): React.ReactElement => {
   return (
     <TableCell>
-      <Checkbox isDisabled={isDisabled} isChecked={isChecked} onChange={onChange} />
+      <BaseBox width={makeSize(checkboxCellWidth)}>
+        <Checkbox isDisabled={isDisabled} isChecked={isChecked} onChange={onChange} />
+      </BaseBox>
     </TableCell>
   );
 };
