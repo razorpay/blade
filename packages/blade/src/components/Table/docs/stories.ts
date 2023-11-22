@@ -604,7 +604,7 @@ function App(): React.ReactElement {
               >
                 Export
               </Button>
-              <Button isFullWidth={onMobile}>Payout</Button>
+              <Button isFullWidth={onMobile}>Refund</Button>
             </TableToolbarActions>
           </TableToolbar>
         }
