@@ -480,7 +480,7 @@ const Table = <Item,>({
           flex={1}
           alignItems="center"
           justifyContent="center"
-          height="100%"
+          height={height}
           {...getStyledProps(styledProps)}
           {...metaAttribute({ name: MetaConstants.Table })}
         >

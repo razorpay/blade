@@ -440,11 +440,11 @@ const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
       backgroundColor="surface.background.level2.lowContrast"
       padding="spacing.5"
       overflow="auto"
-      minHeight="400px"
-      minWidth="100%"
+      minHeight="800px"
     >
       <TableComponent
         {...args}
+        height="500px"
         data={data}
         onSelectionChange={({ values }) => console.log('Selected Rows:', values)}
         sortFunctions={{
@@ -478,10 +478,6 @@ const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
             showPageNumberSelector
           />
         }
-        height="400px"
-        // isFooterSticky
-        // isFirstColumnSticky
-        // isHeaderSticky
       >
         {(tableData) => (
           <>
