@@ -12,7 +12,7 @@ export type TableContextType = {
   toggleRowSelectionById: (id: TableNode['id']) => void;
   toggleAllRowsSelection: () => void;
   deselectAllRows: () => void;
-  rowDensity: TableProps<unknown>['rowDensity'];
+  rowDensity: NonNullable<TableProps<unknown>['rowDensity']>;
   toggleSort: (sortKey: string) => void;
   currentSortedState: {
     sortKey: string;
