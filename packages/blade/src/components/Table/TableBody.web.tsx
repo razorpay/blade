@@ -230,7 +230,13 @@ const TableCheckboxCell = ({
 }): React.ReactElement => {
   return (
     <TableCell>
-      <BaseBox width={makeSize(checkboxCellWidth)}>
+      <BaseBox
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        flex={1}
+        width={makeSize(checkboxCellWidth)}
+      >
         <Checkbox isDisabled={isDisabled} isChecked={isChecked} onChange={onChange} />
       </BaseBox>
     </TableCell>
