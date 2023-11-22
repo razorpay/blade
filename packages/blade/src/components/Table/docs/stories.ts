@@ -690,7 +690,7 @@ import {
   useTheme,
 } from '@razorpay/blade/components';
 import type { TableData } from '@razorpay/blade/components';
-import React, { useState } from 'react';
+import React from 'react';
 
 type Item = {
   id: string;
@@ -934,6 +934,293 @@ function App(): React.ReactElement {
 export default App;
 `;
 
+const TableWithStickyFirstColumnStory = `
+import {
+  Table,
+  Code,
+  Heading,
+  Box,
+  TableHeader,
+  TableHeaderRow,
+  TableHeaderCell,
+  TableBody,
+  TableRow,
+  TableCell,
+  Amount,
+  Badge,
+} from '@razorpay/blade/components';
+import type { TableData } from '@razorpay/blade/components';
+import React from 'react';
+
+type Item = {
+  id: string;
+  paymentId: string;
+  amount: number;
+  date: Date;
+  status: string;
+  account: string;
+  method: string;
+  name: string;
+};
+
+const nodes: Item[] = [
+  ...Array.from({ length: 20 }, (_, i) => ({
+    id: (i + 1).toString(),
+    paymentId: \`rzp\${Math.floor(Math.random() * 1000000)}\`,
+    amount: Number((Math.random() * 10000).toFixed(2)),
+    date: new Date(
+      2021,
+      Math.floor(Math.random() * 12),
+      Math.floor(Math.random() * 28) + 1
+    ),
+    status: ['Completed', 'Pending', 'Failed'][Math.floor(Math.random() * 3)],
+    account: Math.floor(Math.random() * 1000000000).toString(),
+    type: ['Payout', 'Refund'][Math.floor(Math.random() * 2)],
+    method: ['Bank Transfer', 'Credit Card', 'PayPal'][
+      Math.floor(Math.random() * 3)
+    ],
+    name: [
+      'John Doe',
+      'Jane Doe',
+      'Bob Smith',
+      'Alice Smith',
+      'John Smith',
+      'Jane Smith',
+      'Bob Doe',
+      'Alice Doe',
+    ][Math.floor(Math.random() * 8)],
+  })),
+];
+
+const data: TableData<Item> = {
+  nodes,
+};
+
+function App(): React.ReactElement {
+  return (
+    <Box
+      backgroundColor="surface.background.level2.lowContrast"
+      padding="spacing.5"
+      overflow="auto"
+      minHeight="400px"
+    >
+      <Box paddingBottom="spacing.4">
+        <Heading>Table with Sticky First Column</Heading>
+      </Box>
+      <Table data={data} isFirstColumnSticky height="500px">
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>ID</TableHeaderCell>
+                <TableHeaderCell>Name</TableHeaderCell>
+                <TableHeaderCell>Account</TableHeaderCell>
+                <TableHeaderCell>Method</TableHeaderCell>
+                <TableHeaderCell>Date</TableHeaderCell>
+                <TableHeaderCell>Method</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {tableData.map((tableItem, index) => (
+                <TableRow key={index} item={tableItem}>
+                  <TableCell>
+                    <Code size="medium">{tableItem.paymentId}</Code>
+                  </TableCell>
+                  <TableCell>{tableItem.name}</TableCell>
+                  <TableCell>{tableItem.account}</TableCell>
+                  <TableCell>{tableItem.method}</TableCell>
+                  <TableCell>
+                    {tableItem.date?.toLocaleDateString('en-IN', {
+                      year: 'numeric',
+                      month: '2-digit',
+                      day: '2-digit',
+                    })}
+                  </TableCell>
+                  <TableCell>
+                    <Badge
+                      size="medium"
+                      color={
+                        tableItem.status === 'Completed'
+                          ? 'positive'
+                          : tableItem.status === 'Pending'
+                          ? 'notice'
+                          : tableItem.status === 'Failed'
+                          ? 'negative'
+                          : 'default'
+                      }
+                    >
+                      {tableItem.status}
+                    </Badge>
+                  </TableCell>
+                  <TableCell>
+                    <Amount value={tableItem.amount} />
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </>
+        )}
+      </Table>
+    </Box>
+  );
+}
+
+export default App;
+`;
+
+const TableWithPaginationStory = `
+import {
+  Table,
+  Code,
+  Heading,
+  Box,
+  TableHeader,
+  TableHeaderRow,
+  TableHeaderCell,
+  TableBody,
+  TableRow,
+  TableCell,
+  Amount,
+  Badge,
+  TableToolbar,
+  TableToolbarActions,
+  Button,
+  useTheme,
+  TablePagination,
+  Text,
+} from '@razorpay/blade/components';
+import type { TableData } from '@razorpay/blade/components';
+import React from 'react';
+
+type Item = {
+  id: string;
+  paymentId: string;
+  amount: number;
+  date: Date;
+  status: string;
+};
+
+const nodes: Item[] = [
+  ...Array.from({ length: 100 }, (_, i) => ({
+    id: (i + 1).toString(),
+    paymentId: \`rzp\${Math.floor(Math.random() * 1000000)}\`,
+    amount: Number((Math.random() * 10000).toFixed(2)),
+    date: new Date(
+      2021,
+      Math.floor(Math.random() * 12),
+      Math.floor(Math.random() * 28) + 1
+    ),
+    status: ['Completed', 'Pending', 'Failed'][Math.floor(Math.random() * 3)],
+    account: Math.floor(Math.random() * 1000000000).toString(),
+  })),
+];
+
+const data: TableData<Item> = {
+  nodes,
+};
+
+function App(): React.ReactElement {
+  const { platform } = useTheme();
+  const onMobile = platform === 'onMobile';
+
+  return (
+    <Box
+      backgroundColor="surface.background.level2.lowContrast"
+      padding="spacing.5"
+      overflow="auto"
+      minHeight="400px"
+    >
+      <Box paddingBottom="spacing.4">
+        <Heading>Multi Selectable Table with Zebra Stripes</Heading>
+        <Text>
+          (Tip: Expand the window width. It shows a minimalistic version of
+          pagination on mWeb and a full fletched version on dWeb.)
+        </Text>
+      </Box>
+      <Table
+        data={data}
+        selectionType="multiple"
+        showStripes={true}
+        toolbar={
+          <TableToolbar>
+            <TableToolbarActions>
+              <Button
+                variant="secondary"
+                marginRight="spacing.2"
+                isFullWidth={onMobile}
+              >
+                Export
+              </Button>
+              <Button isFullWidth={onMobile}>Refund</Button>
+            </TableToolbarActions>
+          </TableToolbar>
+        }
+        pagination={
+          <TablePagination
+            onPageChange={console.log}
+            defaultPageSize={10}
+            onPageSizeChange={console.log}
+            showPageSizePicker
+            showPageNumberSelector
+          />
+        }
+      >
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell headerKey="PAYMENT_ID">ID</TableHeaderCell>
+                <TableHeaderCell headerKey="AMOUNT">Amount</TableHeaderCell>
+                <TableHeaderCell headerKey="DATE">Date</TableHeaderCell>
+                <TableHeaderCell headerKey="METHOD">Method</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {tableData.map((tableItem, index) => (
+                <TableRow key={index} item={tableItem}>
+                  <TableCell>
+                    <Code size="medium">{tableItem.paymentId}</Code>
+                  </TableCell>
+                  <TableCell>
+                    <Amount value={tableItem.amount} />
+                  </TableCell>
+                  <TableCell>
+                    {tableItem.date?.toLocaleDateString('en-IN', {
+                      year: 'numeric',
+                      month: '2-digit',
+                      day: '2-digit',
+                    })}
+                  </TableCell>
+                  <TableCell>
+                    <Badge
+                      size="medium"
+                      color={
+                        tableItem.status === 'Completed'
+                          ? 'positive'
+                          : tableItem.status === 'Pending'
+                          ? 'notice'
+                          : tableItem.status === 'Failed'
+                          ? 'negative'
+                          : 'default'
+                      }
+                    >
+                      {tableItem.status}
+                    </Badge>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </>
+        )}
+      </Table>
+    </Box>
+  );
+}
+
+export default App;
+`;
+
 export {
   BasicTableStory,
   TableWithCustomCellComponentsStory,
@@ -942,4 +1229,6 @@ export {
   MultiSelectableWithToolbarTableStory,
   MultiSelectableWithZebraStripesStory,
   TableWithStickyHeaderAndFooterStory,
+  TableWithStickyFirstColumnStory,
+  TableWithPaginationStory,
 };

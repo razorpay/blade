@@ -9,6 +9,8 @@ import {
   MultiSelectableWithToolbarTableStory,
   MultiSelectableWithZebraStripesStory,
   TableWithStickyHeaderAndFooterStory,
+  TableWithStickyFirstColumnStory,
+  TableWithPaginationStory,
 } from './stories';
 import { Sandbox } from '~utils/storybook/Sandbox';
 
@@ -55,7 +57,23 @@ export const SortableTable = (): React.ReactElement => {
   );
 };
 
-export const SingleSelectable = (): React.ReactElement => {
+export const TableWithStickyHeaderAndFooter = (): React.ReactElement => {
+  return (
+    <Sandbox padding="spacing.0" editorHeight="90vh">
+      {TableWithStickyHeaderAndFooterStory}
+    </Sandbox>
+  );
+};
+
+export const TableWithStickyFirstColumn = (): React.ReactElement => {
+  return (
+    <Sandbox padding="spacing.0" editorHeight="90vh">
+      {TableWithStickyFirstColumnStory}
+    </Sandbox>
+  );
+};
+
+export const SingleSelectableTable = (): React.ReactElement => {
   return (
     <Sandbox padding="spacing.0" editorHeight="90vh">
       {SingleSelectableTableStory}
@@ -63,7 +81,7 @@ export const SingleSelectable = (): React.ReactElement => {
   );
 };
 
-export const MultiSelectableWithToolbar = (): React.ReactElement => {
+export const MultiSelectableTableWithToolbar = (): React.ReactElement => {
   return (
     <Sandbox padding="spacing.0" editorHeight="90vh">
       {MultiSelectableWithToolbarTableStory}
@@ -79,10 +97,10 @@ export const MultiSelectableWithZebraStripes = (): React.ReactElement => {
   );
 };
 
-export const TableWithStickyHeaderAndFooter = (): React.ReactElement => {
+export const TableWithPagination = (): React.ReactElement => {
   return (
     <Sandbox padding="spacing.0" editorHeight="90vh">
-      {TableWithStickyHeaderAndFooterStory}
+      {TableWithPaginationStory}
     </Sandbox>
   );
 };
