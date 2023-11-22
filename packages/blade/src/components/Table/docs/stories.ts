@@ -398,4 +398,136 @@ function App(): React.ReactElement {
 export default App;
 `;
 
-export { BasicTableStory, TableWithCustomCellComponentsStory, SortableTableStory };
+const SingleSelectableTable = `
+import {
+  Table,
+  Code,
+  Heading,
+  Box,
+  TableHeader,
+  TableHeaderRow,
+  TableHeaderCell,
+  TableBody,
+  TableRow,
+  TableCell,
+  Amount,
+  Badge,
+  Text,
+} from '@razorpay/blade/components';
+import type { TableData } from '@razorpay/blade/components';
+import React, { useState } from 'react';
+
+type Item = {
+  id: string;
+  paymentId: string;
+  amount: number;
+  date: Date;
+  status: string;
+};
+
+const nodes: Item[] = [
+  ...Array.from({ length: 5 }, (_, i) => ({
+    id: (i + 1).toString(),
+    paymentId: \`rzp${Math.floor(Math.random() * 1000000)}\`,
+    amount: Number((Math.random() * 10000).toFixed(2)),
+    date: new Date(
+      2021,
+      Math.floor(Math.random() * 12),
+      Math.floor(Math.random() * 28) + 1
+    ),
+    status: ['Completed', 'Pending', 'Failed'][Math.floor(Math.random() * 3)],
+    account: Math.floor(Math.random() * 1000000000).toString(),
+  })),
+];
+
+const data: TableData<Item> = {
+  nodes,
+};
+
+function App(): React.ReactElement {
+  const [selectedItem, setSelectedItem] = useState<Item | undefined>(undefined);
+  return (
+    <Box
+      backgroundColor="surface.background.level2.lowContrast"
+      padding="spacing.5"
+      overflow="auto"
+      minHeight="400px"
+    >
+      <Box paddingBottom="spacing.4">
+        <Heading>Single Selectable Table</Heading>
+      </Box>
+      <Table
+        data={data}
+        selectionType="single"
+        onSelectionChange={({ values }) => setSelectedItem(values[0])}
+      >
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell headerKey="PAYMENT_ID">ID</TableHeaderCell>
+                <TableHeaderCell headerKey="AMOUNT">Amount</TableHeaderCell>
+                <TableHeaderCell headerKey="DATE">Date</TableHeaderCell>
+                <TableHeaderCell headerKey="METHOD">Method</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {tableData.map((tableItem, index) => (
+                <TableRow key={index} item={tableItem}>
+                  <TableCell>
+                    <Code size="medium">{tableItem.paymentId}</Code>
+                  </TableCell>
+                  <TableCell>
+                    <Amount value={tableItem.amount} />
+                  </TableCell>
+                  <TableCell>
+                    {tableItem.date?.toLocaleDateString('en-IN', {
+                      year: 'numeric',
+                      month: '2-digit',
+                      day: '2-digit',
+                    })}
+                  </TableCell>
+                  <TableCell>
+                    <Badge
+                      size="medium"
+                      color={
+                        tableItem.status === 'Completed'
+                          ? 'positive'
+                          : tableItem.status === 'Pending'
+                          ? 'notice'
+                          : tableItem.status === 'Failed'
+                          ? 'negative'
+                          : 'default'
+                      }
+                    >
+                      {tableItem.status}
+                    </Badge>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </>
+        )}
+      </Table>
+      <Box
+        marginTop="spacing.3"
+        display="flex"
+        flexDirection="row"
+        gap="spacing.2"
+      >
+        <Text weight="bold">Selected Row ID:</Text>
+        <Text>{selectedItem?.paymentId}</Text>
+      </Box>
+    </Box>
+  );
+}
+
+export default App;
+`;
+
+export {
+  BasicTableStory,
+  TableWithCustomCellComponentsStory,
+  SortableTableStory,
+  SingleSelectableTable,
+};
