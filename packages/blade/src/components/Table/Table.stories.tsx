@@ -440,11 +440,11 @@ const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
       backgroundColor="surface.background.level2.lowContrast"
       padding="spacing.5"
       overflow="auto"
-      minHeight="800px"
+      minHeight="400px"
     >
       <TableComponent
         {...args}
-        height="500px"
+        height="400px"
         data={data}
         onSelectionChange={({ values }) => console.log('Selected Rows:', values)}
         sortFunctions={{
