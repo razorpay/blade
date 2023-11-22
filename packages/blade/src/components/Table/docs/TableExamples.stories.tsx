@@ -8,6 +8,7 @@ import {
   SingleSelectableTableStory,
   MultiSelectableWithToolbarTableStory,
   MultiSelectableWithZebraStripesStory,
+  TableWithStickyHeaderAndFooterStory,
 } from './stories';
 import { Sandbox } from '~utils/storybook/Sandbox';
 
@@ -74,6 +75,14 @@ export const MultiSelectableWithZebraStripes = (): React.ReactElement => {
   return (
     <Sandbox padding="spacing.0" editorHeight="90vh">
       {MultiSelectableWithZebraStripesStory}
+    </Sandbox>
+  );
+};
+
+export const TableWithStickyHeaderAndFooter = (): React.ReactElement => {
+  return (
+    <Sandbox padding="spacing.0" editorHeight="90vh">
+      {TableWithStickyHeaderAndFooterStory}
     </Sandbox>
   );
 };
