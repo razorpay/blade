@@ -12,6 +12,7 @@ import {
   TableWithStickyFirstColumnStory,
   TableWithPaginationStory,
   TableWithDisabledRowsStory,
+  TableWithSurfaceLevelsStory,
 } from './stories';
 import { Sandbox } from '~utils/storybook/Sandbox';
 
@@ -110,6 +111,14 @@ export const TableWithDisabledRows = (): React.ReactElement => {
   return (
     <Sandbox padding="spacing.0" editorHeight="90vh">
       {TableWithDisabledRowsStory}
+    </Sandbox>
+  );
+};
+
+export const TableWithSurfaceLevels = (): React.ReactElement => {
+  return (
+    <Sandbox padding="spacing.0" editorHeight="90vh">
+      {TableWithSurfaceLevelsStory}
     </Sandbox>
   );
 };

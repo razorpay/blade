@@ -24,7 +24,7 @@ type Item = {
 const nodes: Item[] = [
   ...Array.from({ length: 5 }, (_, i) => ({
     id: (i + 1).toString(),
-    paymentId: \`rzp976693\`,
+    paymentId: \`rzp\${Math.floor(Math.random() * 1000000)}\`,
     amount: Number((Math.random() * 10000).toFixed(2)),
     date: new Date(
       2021,
@@ -58,10 +58,10 @@ function App(): React.ReactElement {
           <>
             <TableHeader>
               <TableHeaderRow>
-                <TableHeaderCell headerKey="PAYMENT_ID">ID</TableHeaderCell>
-                <TableHeaderCell headerKey="AMOUNT">Amount</TableHeaderCell>
-                <TableHeaderCell headerKey="DATE">Date</TableHeaderCell>
-                <TableHeaderCell headerKey="METHOD">Method</TableHeaderCell>
+                <TableHeaderCell>ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+                <TableHeaderCell>Date</TableHeaderCell>
+                <TableHeaderCell>Method</TableHeaderCell>
               </TableHeaderRow>
             </TableHeader>
             <TableBody>
@@ -155,7 +155,7 @@ function App(): React.ReactElement {
           <>
             <TableHeader>
               <TableHeaderRow>
-                <TableHeaderCell headerKey="PAYMENT_ID">
+                <TableHeaderCell>
                   <Box
                     display="flex"
                     flexDirection="row"
@@ -173,7 +173,7 @@ function App(): React.ReactElement {
                     </Tooltip>
                   </Box>
                 </TableHeaderCell>
-                <TableHeaderCell headerKey="AMOUNT">
+                <TableHeaderCell>
                   <Box
                     display="flex"
                     flexDirection="row"
@@ -191,7 +191,7 @@ function App(): React.ReactElement {
                     </Tooltip>
                   </Box>
                 </TableHeaderCell>
-                <TableHeaderCell headerKey="DATE">
+                <TableHeaderCell>
                   <Box
                     display="flex"
                     flexDirection="row"
@@ -209,7 +209,7 @@ function App(): React.ReactElement {
                     </Tooltip>
                   </Box>
                 </TableHeaderCell>
-                <TableHeaderCell headerKey="STATUS">
+                <TableHeaderCell>
                   <Box
                     display="flex"
                     flexDirection="row"
@@ -465,10 +465,10 @@ function App(): React.ReactElement {
           <>
             <TableHeader>
               <TableHeaderRow>
-                <TableHeaderCell headerKey="PAYMENT_ID">ID</TableHeaderCell>
-                <TableHeaderCell headerKey="AMOUNT">Amount</TableHeaderCell>
-                <TableHeaderCell headerKey="DATE">Date</TableHeaderCell>
-                <TableHeaderCell headerKey="METHOD">Method</TableHeaderCell>
+                <TableHeaderCell>ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+                <TableHeaderCell>Date</TableHeaderCell>
+                <TableHeaderCell>Method</TableHeaderCell>
               </TableHeaderRow>
             </TableHeader>
             <TableBody>
@@ -619,10 +619,10 @@ function App(): React.ReactElement {
           <>
             <TableHeader>
               <TableHeaderRow>
-                <TableHeaderCell headerKey="PAYMENT_ID">ID</TableHeaderCell>
-                <TableHeaderCell headerKey="AMOUNT">Amount</TableHeaderCell>
-                <TableHeaderCell headerKey="DATE">Date</TableHeaderCell>
-                <TableHeaderCell headerKey="METHOD">Method</TableHeaderCell>
+                <TableHeaderCell>ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+                <TableHeaderCell>Date</TableHeaderCell>
+                <TableHeaderCell>Method</TableHeaderCell>
               </TableHeaderRow>
             </TableHeader>
             <TableBody>
@@ -755,10 +755,10 @@ function App(): React.ReactElement {
           <>
             <TableHeader>
               <TableHeaderRow>
-                <TableHeaderCell headerKey="PAYMENT_ID">ID</TableHeaderCell>
-                <TableHeaderCell headerKey="AMOUNT">Amount</TableHeaderCell>
-                <TableHeaderCell headerKey="DATE">Date</TableHeaderCell>
-                <TableHeaderCell headerKey="METHOD">Method</TableHeaderCell>
+                <TableHeaderCell>ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+                <TableHeaderCell>Date</TableHeaderCell>
+                <TableHeaderCell>Method</TableHeaderCell>
               </TableHeaderRow>
             </TableHeader>
             <TableBody>
@@ -872,10 +872,10 @@ function App(): React.ReactElement {
           <>
             <TableHeader>
               <TableHeaderRow>
-                <TableHeaderCell headerKey="PAYMENT_ID">ID</TableHeaderCell>
-                <TableHeaderCell headerKey="DATE">Date</TableHeaderCell>
-                <TableHeaderCell headerKey="METHOD">Method</TableHeaderCell>
-                <TableHeaderCell headerKey="AMOUNT">Amount</TableHeaderCell>
+                <TableHeaderCell>ID</TableHeaderCell>
+                <TableHeaderCell>Date</TableHeaderCell>
+                <TableHeaderCell>Method</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
               </TableHeaderRow>
             </TableHeader>
             <TableBody>
@@ -1170,10 +1170,10 @@ function App(): React.ReactElement {
           <>
             <TableHeader>
               <TableHeaderRow>
-                <TableHeaderCell headerKey="PAYMENT_ID">ID</TableHeaderCell>
-                <TableHeaderCell headerKey="AMOUNT">Amount</TableHeaderCell>
-                <TableHeaderCell headerKey="DATE">Date</TableHeaderCell>
-                <TableHeaderCell headerKey="METHOD">Method</TableHeaderCell>
+                <TableHeaderCell>ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+                <TableHeaderCell>Date</TableHeaderCell>
+                <TableHeaderCell>Method</TableHeaderCell>
               </TableHeaderRow>
             </TableHeader>
             <TableBody>
@@ -1363,6 +1363,133 @@ function App(): React.ReactElement {
 export default App;
 `;
 
+const TableWithSurfaceLevelsStory = `
+import {
+  Table,
+  Heading,
+  Box,
+  TableHeader,
+  TableHeaderRow,
+  TableHeaderCell,
+  TableBody,
+  TableRow,
+  TableCell,
+  RadioGroup,
+  Radio,
+  TableFooter,
+  TableFooterRow,
+  TableFooterCell,
+} from '@razorpay/blade/components';
+import type { TableData } from '@razorpay/blade/components';
+import React, { useState } from 'react';
+
+type Item = {
+  id: string;
+  paymentId: string;
+  amount: number;
+  date: Date;
+  method: string;
+};
+
+const nodes: Item[] = [
+  ...Array.from({ length: 5 }, (_, i) => ({
+    id: (i + 1).toString(),
+    paymentId: \`rzp\${Math.floor(Math.random() * 1000000)}\`,
+    amount: Number((Math.random() * 10000).toFixed(2)),
+    date: new Date(
+      2021,
+      Math.floor(Math.random() * 12),
+      Math.floor(Math.random() * 28) + 1
+    ),
+    method: ['Bank Transfer', 'Credit Card', 'PayPal'][
+      Math.floor(Math.random() * 3)
+    ],
+    account: Math.floor(Math.random() * 1000000000).toString(),
+  })),
+];
+
+const data: TableData<Item> = {
+  nodes,
+};
+
+type SurfaceLevels = 1 | 2 | 3;
+
+function App(): React.ReactElement {
+  const [surfaceLevel, setSurfaceLevel] = useState<SurfaceLevels>(1);
+  return (
+    <Box
+      backgroundColor={\`surface.background.level\${surfaceLevel}.lowContrast\`}
+      padding="spacing.5"
+      overflow="auto"
+      minHeight="400px"
+    >
+      <Box marginBottom="spacing.4">
+        <Heading marginBottom="spacing.3">
+          Table on various Surface Levels
+        </Heading>
+        <RadioGroup
+          label="Select Surface Level"
+          onChange={({ value }) =>
+            setSurfaceLevel(Number(value) as SurfaceLevels)
+          }
+          value={\`\${surfaceLevel}\`}
+        >
+          <Radio value="1">1</Radio>
+          <Radio value="2">2</Radio>
+          <Radio value="3">3</Radio>
+        </RadioGroup>
+      </Box>
+      <Table
+        selectionType="multiple"
+        showStripes={true}
+        data={data}
+        surfaceLevel={surfaceLevel}
+      >
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+                <TableHeaderCell>Date</TableHeaderCell>
+                <TableHeaderCell>Method</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {tableData.map((tableItem, index) => (
+                <TableRow key={index} item={tableItem}>
+                  <TableCell>{tableItem.paymentId}</TableCell>
+                  <TableCell>{\`₹\${tableItem.amount.toString()}\`}</TableCell>
+                  <TableCell>
+                    {tableItem.date?.toLocaleDateString('en-IN', {
+                      year: 'numeric',
+                      month: '2-digit',
+                      day: '2-digit',
+                    })}
+                  </TableCell>
+                  <TableCell>{tableItem.method}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+            <TableFooter>
+              <TableFooterRow>
+                <TableFooterCell>-</TableFooterCell>
+                <TableFooterCell>-</TableFooterCell>
+                <TableFooterCell>-</TableFooterCell>
+                <TableFooterCell>-</TableFooterCell>
+                <TableFooterCell>-</TableFooterCell>
+              </TableFooterRow>
+            </TableFooter>
+          </>
+        )}
+      </Table>
+    </Box>
+  );
+}
+
+export default App;
+`;
+
 export {
   BasicTableStory,
   TableWithCustomCellComponentsStory,
@@ -1374,4 +1501,5 @@ export {
   TableWithStickyFirstColumnStory,
   TableWithPaginationStory,
   TableWithDisabledRowsStory,
+  TableWithSurfaceLevelsStory,
 };
