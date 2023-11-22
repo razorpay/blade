@@ -183,7 +183,9 @@ const TableHeaderCellCheckbox = ({
 }): React.ReactElement => {
   return (
     <TableHeaderCell headerKey="SELECT">
-      <Checkbox isChecked={isChecked} isIndeterminate={isIndeterminate} onChange={onChange} />
+      <BaseBox display="flex" alignItems="center" justifyContent="center" flex={1}>
+        <Checkbox isChecked={isChecked} isIndeterminate={isIndeterminate} onChange={onChange} />
+      </BaseBox>
     </TableHeaderCell>
   );
 };
