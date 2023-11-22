@@ -57,9 +57,18 @@ type TableToolbarProps = {
    * @default `Showing 1 to ${totalItems} Items`
    */
   title?: string;
+  /**
+   * The title to show when items are selected. If not provided, it will show the default title.
+   * @default `${selectedRows.length} 'Items'} Selected`
+   */
+  selectedTitle?: string;
 };
 
-const _TableToolbar = ({ children, title }: TableToolbarProps): React.ReactElement => {
+const _TableToolbar = ({
+  children,
+  title,
+  selectedTitle: controlledSelectedTitle,
+}: TableToolbarProps): React.ReactElement => {
   const {
     selectedRows,
     deselectAllRows,
@@ -77,7 +86,8 @@ const _TableToolbar = ({ children, title }: TableToolbarProps): React.ReactEleme
     : `Showing 1 to ${totalItems} Items`;
   const selectedItemsCount = selectedRows ? selectedRows.length : 0;
   const selectedTitle = isSelected
-    ? `${selectedRows.length} ${selectedItemsCount === 1 ? 'Item' : 'Items'} Selected`
+    ? controlledSelectedTitle ??
+      `${selectedRows.length} ${selectedItemsCount === 1 ? 'Item' : 'Items'} Selected`
     : null;
 
   const onMobile = platform === 'onMobile';
