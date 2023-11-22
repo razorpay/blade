@@ -6,13 +6,13 @@ import type { TableProps } from './Table';
 import type { SurfaceLevels } from '~tokens/theme/theme';
 
 export type TableContextType = {
-  selectionType?: TableProps['selectionType'];
+  selectionType?: TableProps<unknown>['selectionType'];
   selectedRows?: TableNode['id'][];
   totalItems: number;
   toggleRowSelectionById: (id: TableNode['id']) => void;
   toggleAllRowsSelection: () => void;
   deselectAllRows: () => void;
-  rowDensity: TableProps['rowDensity'];
+  rowDensity: TableProps<unknown>['rowDensity'];
   toggleSort: (sortKey: string) => void;
   currentSortedState: {
     sortKey: string;
