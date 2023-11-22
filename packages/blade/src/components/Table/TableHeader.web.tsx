@@ -103,8 +103,9 @@ export type TableHeaderCellProps = {
   /**
    * The unique key of the column.
    * This is used to identify the column for sorting in sortFunctions prop of Table.
+   * Sorting is enabled only for columns whose key is present in sortableColumns prop of Table.
    **/
-  headerKey: string;
+  headerKey?: string;
 };
 
 const StyledHeaderCell = styled(HeaderCell)<{

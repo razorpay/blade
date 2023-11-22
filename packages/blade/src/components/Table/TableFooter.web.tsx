@@ -60,9 +60,9 @@ const TableFooterRow = ({ children }: TableFooterRowProps): React.ReactElement =
 
 type TableFooterCellProps = {
   /**
-   * The children of TableFooterCell can be a string or a ReactNode
+   * The children of TableHeaderCell can be a string or a ReactNode.
    **/
-  children?: string;
+  children: string | React.ReactNode;
 };
 
 const StyledFooterCell = styled(FooterCell)<{
