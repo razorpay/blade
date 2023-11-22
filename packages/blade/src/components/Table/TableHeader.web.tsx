@@ -160,7 +160,7 @@ const _TableHeaderCell = ({ children, headerKey }: TableHeaderCellProps): React.
           <SortIcon
             isSorted={currentSortedState.sortKey === headerKey}
             isSortReversed={currentSortedState.isSortReversed}
-            onClick={() => toggleSort(headerKey)}
+            onClick={() => headerKey && toggleSort(headerKey)}
           />
         </BaseBox>
       )}

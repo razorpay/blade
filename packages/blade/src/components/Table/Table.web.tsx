@@ -222,7 +222,7 @@ const Table = <Item,>({
   const [disabledRows, setDisabledRows] = React.useState<TableNode<unknown>['id'][]>([]);
   const [totalItems, setTotalItems] = React.useState(data.nodes.length || 0);
   // Need to make header is sticky if first column is sticky otherwise the first header cell will not be sticky
-  const shouldHeaderBeSticky = isHeaderSticky || isFirstColumnSticky;
+  const shouldHeaderBeSticky = isHeaderSticky ?? isFirstColumnSticky;
   // Table Theme
   const columnCount = getTableHeaderCellCount(children);
   const firstColumnStickyHeaderCellCSS = isFirstColumnSticky
