@@ -18,7 +18,7 @@ import { Dropdown, DropdownOverlay } from '~components/Dropdown';
 import { SelectInput } from '~components/Input/DropdownInputTriggers';
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { Text } from '~components/Typography';
-import { useTheme } from '~utils';
+import { makeSize, useTheme } from '~utils';
 import { Button } from '~components/Button';
 import { makeAccessible } from '~utils/makeAccessible';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
@@ -31,8 +31,8 @@ const PageSelectionButton = styled.button<{ isSelected?: boolean }>(({ theme, is
     : 'transparent',
   border: 'none',
   cursor: 'pointer',
-  height: '32px',
-  width: '32px',
+  height: makeSize(tablePagination.pageSelectionButton.height),
+  width: makeSize(tablePagination.pageSelectionButton.width),
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',

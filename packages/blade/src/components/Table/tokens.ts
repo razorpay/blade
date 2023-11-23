@@ -116,6 +116,8 @@ const tablePagination = {
     focusRingColor: 'brand.primary.400',
     textColor: 'surface.text.subtle.lowContrast',
     textColorSelected: 'brand.primary.500',
+    height: size['32'],
+    width: size['32'],
   },
   defaultPageSize: 10,
 } as const;
