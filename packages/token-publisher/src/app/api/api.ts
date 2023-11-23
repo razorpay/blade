@@ -3,16 +3,27 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 const GITHUB_BASE_URL = 'https://api.github.com/repos';
 
+export type TokenType = 'themeColorTokens' | 'globalColorTokens';
+type ColorTokens = Record<string, any>;
+
 export const uploadTokens = async ({
   orgName = 'razorpay',
   repoName,
   workflowFileName,
-  colorTokens,
   personalAccessToken,
-}: any): Promise<void> => {
+  colorTokens,
+  tokenType,
+}: {
+  orgName: string;
+  repoName: string;
+  workflowFileName: string;
+  personalAccessToken: string;
+  colorTokens: ColorTokens;
+  tokenType?: TokenType;
+}): Promise<void> => {
   const API_URL = `${GITHUB_BASE_URL}/${orgName}/${repoName}/actions/workflows/${workflowFileName}/dispatches`;
 
-  const getFetchOptions = (colorTokens: any) => ({
+  const getFetchOptions = (colorTokens: ColorTokens, tokenType: TokenType) => ({
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -23,13 +34,13 @@ export const uploadTokens = async ({
       ref: 'master',
       inputs: {
         tokens: JSON.stringify(colorTokens),
+        tokenType,
       },
     }),
   });
 
   try {
-    console.log('colorTokens from api', colorTokens);
-    const response = await fetch(API_URL, getFetchOptions(colorTokens));
+    const response = await fetch(API_URL, getFetchOptions(colorTokens, tokenType));
 
     const isRequestSuccess = response.status === 204;
     if (isRequestSuccess) {
@@ -38,7 +49,7 @@ export const uploadTokens = async ({
         {
           pluginMessage: {
             type: 'success',
-            text: '🎉 Theme color tokens published to server',
+            text: '🎉 Color tokens published to server',
           },
         },
         '*',

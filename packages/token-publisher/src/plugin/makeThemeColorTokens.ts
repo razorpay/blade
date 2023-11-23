@@ -18,14 +18,7 @@ const makeTokenName = (variableName: string): string => {
   return variableName.replace(/\//g, '.');
 };
 
-const generateDevFriendlyTokenNames = (figma: any): void => {
-  const variables = figma.variables.getLocalVariables();
-  variables.forEach((variable) => {
-    variable.setVariableCodeSyntax('WEB', makeTokenName(variable.name));
-  });
-};
-
-const makeThemeColorTokens = (figma: any): void => {
+const makeThemeColorTokens = (): void => {
   try {
     // filter colors collection
     const colorsCollection = figma.variables
@@ -52,7 +45,7 @@ const makeThemeColorTokens = (figma: any): void => {
 
       // prepare for storing variables in code in the format of dark and light modes
       for (const [modeName, modeId] of Object.entries(colorModes)) {
-        const variableModeValue = variable.valuesByMode[modeId as string];
+        const variableModeValue: VariableValue = variable.valuesByMode[modeId as string];
         // if the variable references another variable then we take the name of the referenced variable
         // eg: surface.background.neutral.subtle -> globalColors.gray.200
         if (variableModeValue.id) {
@@ -88,9 +81,6 @@ const makeThemeColorTokens = (figma: any): void => {
       text: `⛔️ Something went wrong: ${error} `,
     });
   }
-
-  // set the code friendly token name to make it easier to copy-paste on Dev mode
-  generateDevFriendlyTokenNames(figma);
 };
 
 export default makeThemeColorTokens;
