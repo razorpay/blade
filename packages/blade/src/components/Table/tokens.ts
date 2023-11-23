@@ -89,7 +89,7 @@ const tableRow = {
   borderBottomWidth: 'thin',
   borderBottomColor: 'surface.border.normal.lowContrast',
   backgroundColorMotionEasing: 'easing.standard.effective',
-  backgroundColorMotionDuration: 'duration.quick',
+  backgroundColorMotionDuration: 'duration.xquick',
   focusRingColor: 'brand.primary.400',
 } as const;
 
@@ -97,7 +97,7 @@ const tableToolbar = {
   backgroundColor: 'transparent',
   backgroundColorSelected: 'brand.primary.300',
   backgroundColorMotionEasing: 'easing.standard.effective',
-  backgroundColorMotionDuration: 'duration.quick',
+  backgroundColorMotionDuration: 'duration.xquick',
 } as const;
 
 const tablePagination = {
