@@ -1,15 +1,17 @@
+/* eslint-disable consistent-return */
+// @ts-check
+/* eslint-disable prefer-template */
 /* eslint-disable import/extensions */
-// import fs from 'fs';
+import fs from 'fs';
 import { fileURLToPath } from 'node:url';
 import { babel as pluginBabel } from '@rollup/plugin-babel';
 import pluginPeerDepsExternal from 'rollup-plugin-peer-deps-external';
 import pluginResolve from '@rollup/plugin-node-resolve';
 import pluginCommonjs from '@rollup/plugin-commonjs';
-// import pluginDeclarations from 'rollup-plugin-dts';
+import pluginDeclarations from 'rollup-plugin-dts';
 import pluginAlias from '@rollup/plugin-alias';
 import pluginReplace from '@rollup/plugin-replace';
-// eslint-disable-next-line import/no-extraneous-dependencies
-// import ts from 'typescript';
+import ts from 'typescript';
 import glob from 'glob';
 
 const webExtensions = [
@@ -29,26 +31,26 @@ const webExtensions = [
   '.mjs',
 ];
 
-// const nativeExtensions = [
-//   '.native.js',
-//   '.native.ts',
-//   '.native.tsx',
-//   '.android.js',
-//   '.android.ts',
-//   '.android.tsx',
-//   '.ios.js',
-//   '.ios.ts',
-//   '.ios.tsx',
-//   '.js',
-//   '.ts',
-//   '.jsx',
-//   '.tsx',
-//   '.mjs',
-// ];
+const nativeExtensions = [
+  '.native.js',
+  '.native.ts',
+  '.native.tsx',
+  '.android.js',
+  '.android.ts',
+  '.android.tsx',
+  '.ios.js',
+  '.ios.ts',
+  '.ios.tsx',
+  '.js',
+  '.ts',
+  '.jsx',
+  '.tsx',
+  '.mjs',
+];
 
 const inputRootDirectory = 'src';
 const outputRootDirectory = 'build';
-const exportCategories = ['components', 'tokens', 'utils'];
+// const exportCategories = ['components', 'tokens', 'utils'];
 // const themeBundleCategories = ['tokens', 'utils'];
 
 const aliases = pluginAlias({
@@ -69,95 +71,125 @@ const aliases = pluginAlias({
   ],
 });
 
-const getWebConfig = (inputs) => ({
-  input: inputs,
-  // input: `${inputRootDirectory}/index.ts`,
-  output: [
-    {
-      dir: `${outputRootDirectory}/`,
-      format: 'es',
-      sourcemap: true,
-      preserveModules: true,
-      preserveModulesRoot: 'src',
-    },
-  ],
-  external: (id) => id.includes('@babel/runtime'),
-  plugins: [
-    pluginReplace({
-      __DEV__: process.env.NODE_ENV !== 'production',
-      preventAssignment: true,
-    }),
-    pluginPeerDepsExternal(),
-    pluginResolve({ extensions: webExtensions }),
-    pluginCommonjs(),
-    pluginBabel({
-      exclude: 'node_modules/**',
-      babelHelpers: 'runtime',
-      envName: 'production',
-      extensions: webExtensions,
-    }),
-    aliases,
-  ],
-});
+const getWebConfig = (inputs) => {
+  const platform = 'web';
 
-// const getNativeConfig = ({ exportCategory }) => ({
-//   input: `${inputRootDirectory}/${exportCategory}/index.ts`,
-//   output: [
-//     {
-//       file: `${outputRootDirectory}/${exportCategory}/index.native.js`,
-//       format: 'esm',
-//       sourcemap: true,
-//     },
-//   ],
-//   external: (id) => id.includes('@babel/runtime'),
-//   plugins: [
-//     pluginPeerDepsExternal(),
-//     pluginResolve({ extensions: nativeExtensions }),
-//     pluginCommonjs(),
-//     pluginBabel({
-//       exclude: 'node_modules/**',
-//       babelHelpers: 'runtime',
-//       envName: 'production',
-//       extensions: nativeExtensions,
-//     }),
-//     aliases,
-//   ],
-// });
+  return {
+    input: inputs,
+    output: [
+      {
+        dir: `${outputRootDirectory}/${platform}`,
+        format: 'es',
+        sourcemap: true,
+        preserveModules: true,
+        preserveModulesRoot: 'src',
+        // Because of preserveModules, rollup generates `node_module` directory inside the build folder
+        // for the external dependencies, which npm ignores when packing causing runtime error when the package is installed
+        // This renames the `node_module` directory to `external` and also updates the import paths
+        // https://github.com/rollup/rollup/issues/3684#issuecomment-1535836196
+        entryFileNames: (chunkInfo) => {
+          if (chunkInfo.name.includes('node_modules')) {
+            return chunkInfo.name.replace('node_modules', 'external') + '.js';
+          }
+          return '[name].js';
+        },
+      },
+    ],
+    external: (id) => id.includes('@babel/runtime'),
+    plugins: [
+      pluginReplace({
+        __DEV__: process.env.NODE_ENV !== 'production',
+        preventAssignment: true,
+      }),
+      pluginPeerDepsExternal(),
+      pluginResolve({ extensions: webExtensions }),
+      pluginCommonjs(),
+      pluginBabel({
+        exclude: 'node_modules/**',
+        babelHelpers: 'runtime',
+        envName: 'production',
+        extensions: webExtensions,
+      }),
+      aliases,
+    ],
+  };
+};
 
-// const getDeclarationsConfig = ({ exportCategory, isNative }) => {
-//   const platform = isNative ? 'native' : 'web';
+const getNativeConfig = (inputs) => {
+  const platform = 'native';
 
-//   // Need to resolve paths in d.ts files
-//   // https://github.com/Swatinem/rollup-plugin-dts/issues/169
-//   const currentTsConfig = ts.readConfigFile(
-//     fileURLToPath(new URL(`tsconfig.json`, import.meta.url)),
-//     (p) => fs.readFileSync(p, 'utf8'),
-//   ).config.compilerOptions;
-//   const compilerOptions = {
-//     ...currentTsConfig,
-//     moduleSuffixes: [`.${platform}`, ''],
-//   };
+  return {
+    input: inputs,
+    output: [
+      {
+        dir: `${outputRootDirectory}/${platform}`,
+        format: 'es',
+        sourcemap: true,
+        preserveModules: true,
+        preserveModulesRoot: 'src',
+        // Because of preserveModules, rollup generates `node_module` directory inside the build folder
+        // for the external dependencies, which npm ignores when packing causing runtime error when the package is installed
+        // This renames the `node_module` directory to `external` and also updates the import paths
+        // https://github.com/rollup/rollup/issues/3684#issuecomment-1535836196
+        entryFileNames: (chunkInfo) => {
+          if (chunkInfo.name.includes('node_modules')) {
+            return chunkInfo.name.replace('node_modules', 'external') + '.js';
+          }
+          return '[name].js';
+        },
+      },
+    ],
+    external: (id) => id.includes('@babel/runtime'),
+    plugins: [
+      pluginPeerDepsExternal(),
+      pluginResolve({ extensions: nativeExtensions }),
+      pluginCommonjs(),
+      pluginBabel({
+        exclude: 'node_modules/**',
+        babelHelpers: 'runtime',
+        envName: 'production',
+        extensions: nativeExtensions,
+      }),
+      aliases,
+    ],
+  };
+};
 
-//   return {
-//     // input will be the platform specific type which is generated by
-//     // `yarn build:generate-types`
-//     input: `${outputRootDirectory}/types/${platform}/${exportCategory}/index.d.ts`,
-//     output: [
-//       {
-//         // don't prefix web index export with .web, for backwards compatibility with TS<4.7
-//         file: `${outputRootDirectory}/${exportCategory}/${
-//           isNative ? 'index.native.d.ts' : 'index.d.ts'
-//         }`,
-//         format: 'esm',
-//       },
-//     ],
-//     plugins: [
-//       pluginDeclarations({
-//         compilerOptions,
-//       }),
-//     ],
-//   };
-// };
+const getDeclarationsConfig = ({ exportCategory, isNative }) => {
+  const platform = isNative ? 'native' : 'web';
+  console.log(platform);
+
+  // Need to resolve paths in d.ts files
+  // https://github.com/Swatinem/rollup-plugin-dts/issues/169
+  const currentTsConfig = ts.readConfigFile(
+    fileURLToPath(new URL(`tsconfig.json`, import.meta.url)),
+    (p) => fs.readFileSync(p, 'utf8'),
+  ).config.compilerOptions;
+  const compilerOptions = {
+    ...currentTsConfig,
+    moduleSuffixes: [`.${platform}`, ''],
+  };
+
+  return {
+    // input will be the platform specific type which is generated by
+    // `yarn build:generate-types`
+    input: `${outputRootDirectory}/types/${platform}/${exportCategory}/index.d.ts`,
+    output: [
+      {
+        // don't prefix web index export with .web, for backwards compatibility with TS<4.7
+        file: `${outputRootDirectory}/${platform}/types/${exportCategory}/${
+          isNative ? 'index.native.d.ts' : 'index.d.ts'
+        }`,
+        format: 'esm',
+      },
+    ],
+    plugins: [
+      pluginDeclarations({
+        compilerOptions,
+      }),
+    ],
+  };
+};
 
 // const getCSSVariablesConfig = ({ exportCategory }) => ({
 //   input: `src/${exportCategory}/index.ts`,
@@ -188,19 +220,36 @@ const config = () => {
   //     .map((exportCategory) => [getCSSVariablesConfig({ exportCategory })])
   //     .flat();
   // }
+
+  const components = glob.sync(`src/components/**/index.ts`);
+  const tokens = glob.sync(`src/tokens/index.ts`);
+  const utils = glob.sync(`src/utils/index.ts`);
   if (framework === 'REACT') {
-    // return [getWebConfig(glob.sync(`src/components/**/index.ts`))];
     return [
-      getWebConfig(glob.sync(`src/components/**/index.ts`)),
-      getWebConfig(glob.sync(`src/tokens/index.ts`)),
-      getWebConfig(glob.sync(`src/utils/index.ts`)),
-    ];
-    // return exportCategories.map((exportCategory) => [getWebConfig({ exportCategory })]).flat();
+      getWebConfig(components),
+      getWebConfig(tokens),
+      getWebConfig(utils),
+      // Unfortunately we cannot just simply copy the tsc emited declarations and put it on build dir,
+      // because moduleSuffixes will cause typescript to resolve the d.ts files based on the user's tsconfig.json
+      // which will cause the build to fail because the user's tsconfig.json does not have the moduleSuffixes
+      // So we opt for the older approach of bundling the d.ts files as index.d.ts and index.native.d.ts and place it on build dir.
+      getDeclarationsConfig({ exportCategory: 'components', isNative: false }),
+      getDeclarationsConfig({ exportCategory: 'tokens', isNative: false }),
+      getDeclarationsConfig({ exportCategory: 'utils', isNative: false }),
+    ].flat();
   }
 
-  // if (framework === 'REACT_NATIVE') {
-  //   return exportCategories.map((exportCategory) => [getNativeConfig({ exportCategory })]).flat();
-  // }
+  if (framework === 'REACT_NATIVE') {
+    return [
+      getNativeConfig(components),
+      getNativeConfig(tokens),
+      getNativeConfig(utils),
+      getDeclarationsConfig({ exportCategory: 'components', isNative: true }),
+      getDeclarationsConfig({ exportCategory: 'tokens', isNative: true }),
+      getDeclarationsConfig({ exportCategory: 'utils', isNative: true }),
+    ].flat();
+    // return exportCategories.map((exportCategory) => [getNativeConfig({ exportCategory })]).flat();
+  }
 
   // return exportCategories
   //   .map((exportCategory) => [

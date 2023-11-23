@@ -1,7 +1,7 @@
 {
   "name": "@razorpay/blade",
   "description": "The Design System that powers Razorpay",
-  "version": "10.18.0",
+  "version": "10.18.0-5",
   "license": "MIT",
   "engines": {
     "node": ">=18.12.1"
@@ -30,65 +30,67 @@
     "razorpay",
     "blade"
   ],
-  "main": "./build/components/index.web.js",
+  "main": "./build/web/components/index.js",
+  "types": "./build/web/types/components/index.d.ts",
   "exports": {
     "./components": {
       "react-native": {
-        "types": "./build/components/index.native.d.ts",
-        "default": "./build/components/index.native.js"
+        "types": "./build/types/native/components/index.d.ts",
+        "default": "./build/native/components/index.js"
       },
       "default": {
-        "types": "./build/components/index.d.ts",
-        "development": "./build/components/index.development.web.js",
-        "production": "./build/components/index.production.web.js",
-        "default": "./build/components/index.development.web.js"
+        "types": "./build/web/types/components/index.d.ts",
+        "development": "./build/web/components/index.js",
+        "production": "./build/web/components/index.js",
+        "default": "./build/web/components/index.js"
       }
     },
     "./tokens": {
       "react-native": {
-        "types": "./build/tokens/index.native.d.ts",
-        "default": "./build/tokens/index.native.js"
+        "types": "./build/types/native/tokens/index.d.ts",
+        "default": "./build/native/tokens/index.js"
       },
       "default": {
-        "types": "./build/tokens/index.d.ts",
-        "development": "./build/tokens/index.development.web.js",
-        "production": "./build/tokens/index.production.web.js",
-        "default": "./build/tokens/index.development.web.js"
+        "types": "./build/web/types/tokens/index.d.ts",
+        "development": "./build/web/tokens/index.js",
+        "production": "./build/web/tokens/index.js",
+        "default": "./build/web/tokens/index.js"
       }
     },
     "./utils": {
       "react-native": {
-        "types": "./build/utils/index.native.d.ts",
-        "default": "./build/utils/index.native.js"
+        "types": "./build/types/native/utils/index.d.ts",
+        "default": "./build/native/utils/index.js"
       },
       "default": {
-        "types": "./build/utils/index.d.ts",
-        "development": "./build/utils/index.development.web.js",
-        "production": "./build/utils/index.production.web.js",
-        "default": "./build/utils/index.development.web.js"
+        "types": "./build/web/types/utils/index.d.ts",
+        "development": "./build/web/utils/index.js",
+        "production": "./build/web/utils/index.js",
+        "default": "./build/web/utils/index.js"
       }
     }
   },
   "scripts": {
     "typecheck": "run-p types:typecheck:*",
     "test": "run-p test:*",
-    "prepare": "yarn build",
+    "prepare": "yarn build:clean && yarn quickbuild",
     "build": "run-s build:*",
     "clearCache": "jest --clearCache",
-    "quickbuild": "yarn build:clean && yarn build:react-prod",
+    "quickbuild": "yarn build:clean && yarn build:generate-types && yarn build:react-prod && yarn build:react-native",
     "build:clean": "rm -rf build",
     "build:generate-types": "run-s types:generate-types:*",
     "build:copy-declarations": "run-s types:copy-declarations:*",
-    "xtypes:generate-types:web": "ttsc -p ./tsconfig-generate-types.web.json",
-    "xtypes:generate-types:native": "ttsc -p ./tsconfig-generate-types.native.json",
-    "xtypes:typecheck:web": "tsc -p ./tsconfig-typecheck.web.json",
-    "xtypes:typecheck:native": "tsc -p ./tsconfig-typecheck.native.json",
-    "xtypes:copy-declarations:web": "copyfiles -u 1 \"src/**/*.d.ts\" build/types/web",
-    "xtypes:copy-declarations:native": "copyfiles -u 1 \"src/**/*.d.ts\" build/types/native",
-    "build:generate-root-imports": "rollup -c",
+    "types:generate-types:web": "ttsc -p ./tsconfig-generate-types.web.json",
+    "types:generate-types:native": "ttsc -p ./tsconfig-generate-types.native.json",
+    "types:typecheck:web": "tsc -p ./tsconfig-typecheck.web.json",
+    "types:typecheck:native": "tsc -p ./tsconfig-typecheck.native.json",
+    "types:copy-declarations:web": "copyfiles -u 1 build/types/web/components/**/*.d.ts build/components/**/*",
+    "types:copy-declarations:native": "copyfiles -u 1 build/types/native/components/**/*.d.ts build/components/**/*",
+    "build:generate-root-imports": "node ./scripts/generateRootImports.js",
     "build:clean-declarations": "rm -rf build/types",
-    "build:react-dev": "cross-env FRAMEWORK=REACT NODE_ENV=development rollup -c",
+    "xbuild:react-dev": "cross-env FRAMEWORK=REACT NODE_ENV=development rollup -c",
     "build:react-prod": "cross-env FRAMEWORK=REACT NODE_ENV=production rollup -c",
+    "build:react-native": "cross-env FRAMEWORK=REACT_NATIVE rollup -c",
     "build:clean-theme-bundle": "rm -rf build/js-bundle-for-css",
     "react-native:get-stories": "sb-rn-get-stories --config-path=./.storybook/react-native && yarn prettier --write ./.storybook/react-native/storybook.requires.js",
     "react-native:storybook:android": "yarn react-native:get-stories && cross-env FRAMEWORK=REACT_NATIVE react-native run-android",
@@ -111,25 +113,22 @@
     "publish-npm": "node ./scripts/publishToNpm.js",
     "generate-github-npmrc": "node ./scripts/generateGitHubRegistryNpmrc.js",
     "postinstall": "patch-package",
-    "cruise": "depcruise src --output-type dot | dot -T svg > dependency-graph.svg",
     "viz": "import-graph-visualizer --entry-points build/components/index.js --ts-config tsconfig.json"
   },
   "dependencies": {
     "@babel/runtime": "7.20.0",
     "@types/body-scroll-lock": "3.1.0",
-    "@use-gesture/react": "10.2.24",
     "body-scroll-lock": "4.0.0-beta.0",
     "use-presence": "1.1.0",
     "@floating-ui/react": "0.25.4",
     "@floating-ui/react-native": "0.10.1",
     "patch-package": "7.0.0",
-    "tinycolor2": "1.6.0",
+    "ts-deepmerge": "6.2.0",
     "react-native-tab-view": "3.5.2",
     "react-native-pager-view": "6.2.1"
   },
   "devDependencies": {
     "@rx-angular/import-graph-visualizer": "0.2.0",
-    "dependency-cruiser": "15.3.0",
     "chromatic": "6.22.0",
     "@babel/cli": "7.23.0",
     "@babel/core": "7.20.2",
@@ -245,8 +244,10 @@
   "peerDependencies": {
     "@gorhom/bottom-sheet": "^4",
     "@gorhom/portal": "1.0.14",
+    "@use-gesture/react": "10.2.24",
     "@floating-ui/react": "0.25.4",
     "@floating-ui/react-native": "0.10.0",
+    "tinycolor2": "1.6.0",
     "react": ">=18",
     "react-dom": ">=18",
     "react-native": "^0.72",

@@ -1,4 +1,6 @@
+/* eslint-disable @typescript-eslint/prefer-ts-expect-error */
 import styled from 'styled-components';
+// @ts-ignore
 import { makeMotionTime, makeSpace, useTheme } from '../../../utils';
 import { Heading, Text, Box, Card, CardBody, ChevronRightIcon } from '../../../components';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
