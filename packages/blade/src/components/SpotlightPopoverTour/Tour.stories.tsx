@@ -25,6 +25,7 @@ import { SandboxHighlighter } from '~utils/storybook/Sandbox/SandpackEditor';
 const Page = (): React.ReactElement => {
   return (
     <StoryPageWrapper
+      showDefaultExample={false}
       componentName="SpotlightPopoverTour"
       componentDescription="The SpotlightPopoverTour component is used to provide context as well as enable users to take certain actions on it. These are used to highlight a new feature or provide a guided tour to a new user."
       figmaURL={{
@@ -100,7 +101,7 @@ const Page = (): React.ReactElement => {
       `}
       </Sandbox>
       <Title>iOS Safari Specific Setup</Title>
-      <Text marginTop="spacing.4">
+      <Text marginTop="spacing.5">
         When using BottomSheet or SpotlightPopoverTour, Make sure to set a width/height to the
         `body` otherwise when they open, the page will get clipped. This happens due to a bug in iOS
         safari where it won't compute the height of the body correctly.
@@ -113,6 +114,13 @@ const Page = (): React.ReactElement => {
           }
         `}
       </SandboxHighlighter>
+      <Title>Examples</Title>
+      <Text marginY="spacing.5">
+        To see examples properly, switch to the{' '}
+        <Text as="span" weight="bold">
+          story view
+        </Text>
+      </Text>
     </StoryPageWrapper>
   );
 };
@@ -427,6 +435,9 @@ const TourTemplate: ComponentStory<(props: StoryControlProps) => React.ReactElem
 
 export const Default = TourTemplate.bind({});
 Default.storyName = 'Default';
+Default.parameters = {
+  docs: { disable: true },
+};
 
 export const CustomPlacement = () => {
   const [activeStep, setActiveStep] = React.useState(0);
@@ -548,6 +559,10 @@ export const CustomPlacement = () => {
   );
 };
 CustomPlacement.storyName = 'Custom Placement';
+CustomPlacement.parameters = {
+  docs: { disable: true },
+  viewMode: 'story',
+};
 
 export const WithScrollablePage = () => {
   const [activeStep, setActiveStep] = React.useState(0);
@@ -754,6 +769,10 @@ export const WithScrollablePage = () => {
   );
 };
 WithScrollablePage.storyName = 'With Scrollable Page';
+WithScrollablePage.parameters = {
+  docs: { disable: true },
+  viewMode: 'story',
+};
 
 const InterruptibleTourFooter = ({
   activeStep,
@@ -967,3 +986,7 @@ export const InterruptibleTour = () => {
   );
 };
 InterruptibleTour.storyName = 'Product Usecase: Interruptible Tour';
+InterruptibleTour.parameters = {
+  docs: { disable: true },
+  viewMode: 'story',
+};
