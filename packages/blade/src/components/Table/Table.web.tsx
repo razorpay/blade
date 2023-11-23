@@ -253,7 +253,7 @@ const Table = <Item,>({
     isExiting: isRefreshSpinnerExiting,
     isVisible: isRefreshSpinnerVisible,
   } = usePresence(isRefreshing, {
-    transitionDuration: 1000,
+    transitionDuration: theme.motion.duration.quick,
   });
 
   // Table Theme
