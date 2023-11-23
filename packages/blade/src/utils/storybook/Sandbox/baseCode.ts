@@ -55,7 +55,7 @@ export const getReactScriptsJSDependencies = (): Dependencies => {
       react: '^18',
       'react-dom': '^18',
       'react-scripts': '4.0.3',
-      '@razorpay/blade': getBladeVersion(),
+      '@razorpay/blade': 'https://pkg.csb.dev/razorpay/blade/commit/d02f2ab4/@razorpay/blade',
       'styled-components': packageJson.peerDependencies['styled-components'],
     },
   };
@@ -68,7 +68,7 @@ const getViteReactTSDependencies = (): Dependencies => {
       'react-dom': '^18',
       '@types/react': '^18',
       '@types/react-dom': '^18',
-      '@razorpay/blade': getBladeVersion(),
+      '@razorpay/blade': 'https://pkg.csb.dev/razorpay/blade/commit/d02f2ab4/@razorpay/blade',
       'styled-components': packageJson.peerDependencies['styled-components'],
     },
     devDependencies: {
@@ -85,7 +85,7 @@ export const vitePackageJSON = JSON.stringify(
       build: 'vite build',
     },
     stackblitz: {
-      startCommand: 'pnpm install && pnpm dev',
+      startCommand: 'yarn install && yarn dev',
       installDependencies: false,
     },
     ...getViteReactTSDependencies(),

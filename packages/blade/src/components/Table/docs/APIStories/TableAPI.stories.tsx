@@ -84,19 +84,8 @@ const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
       minHeight="400px"
     >
       <TableComponent
-        {...args}
         height="400px"
-        data={data}
         onSelectionChange={({ values }) => console.log('Selected Rows:', values)}
-        sortFunctions={{
-          ID: (array) => array.sort((a, b) => Number(a.id) - Number(b.id)),
-          AMOUNT: (array) => array.sort((a, b) => a.amount - b.amount),
-          ACCOUNT: (array) => array.sort((a, b) => Number(a.account) - Number(b.account)),
-          PAYMENT_ID: (array) => array.sort((a, b) => a.paymentId.localeCompare(b.paymentId)),
-          DATE: (array) => array.sort((a, b) => a.date.getTime() - b.date.getTime()),
-          METHOD: (array) => array.sort((a, b) => a.method.localeCompare(b.method)),
-          STATUS: (array) => array.sort((a, b) => a.status.localeCompare(b.status)),
-        }}
         onSortChange={({ sortKey, isSortReversed }) =>
           console.log('Sort Key:', sortKey, 'Sort Reversed:', isSortReversed)
         }
@@ -119,6 +108,17 @@ const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
             showPageNumberSelector
           />
         }
+        {...args}
+        data={data}
+        sortFunctions={{
+          ID: (array) => array.sort((a, b) => Number(a.id) - Number(b.id)),
+          AMOUNT: (array) => array.sort((a, b) => a.amount - b.amount),
+          ACCOUNT: (array) => array.sort((a, b) => Number(a.account) - Number(b.account)),
+          PAYMENT_ID: (array) => array.sort((a, b) => a.paymentId.localeCompare(b.paymentId)),
+          DATE: (array) => array.sort((a, b) => a.date.getTime() - b.date.getTime()),
+          METHOD: (array) => array.sort((a, b) => a.method.localeCompare(b.method)),
+          STATUS: (array) => array.sort((a, b) => a.status.localeCompare(b.status)),
+        }}
       >
         {(tableData) => (
           <>

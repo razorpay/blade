@@ -31,7 +31,7 @@ export default {
 } as Meta<typeof TablePagination>;
 
 const nodes: Item[] = [
-  ...Array.from({ length: 10 }, (_, i) => ({
+  ...Array.from({ length: 100 }, (_, i) => ({
     id: (i + 1).toString(),
     paymentId: `rzp${Math.floor(Math.random() * 1000000)}`,
     amount: Number((Math.random() * 10000).toFixed(2)),
@@ -109,12 +109,12 @@ const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
         }
         pagination={
           <TablePagination
-            {...args}
             onPageChange={console.log}
             defaultPageSize={10}
             onPageSizeChange={console.log}
             showPageSizePicker
             showPageNumberSelector
+            {...args}
           />
         }
       >
