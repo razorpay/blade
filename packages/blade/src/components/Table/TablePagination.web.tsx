@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import styled from 'styled-components';
+import isUndefined from 'lodash/isUndefined';
 import getIn from 'lodash/get';
 import { useTableContext } from './TableContext';
 import { tablePagination } from './tokens';
@@ -197,17 +198,11 @@ const TablePagination = ({
   } = useTableContext();
   const [currentPageSize, setCurrentPageSize] = React.useState<number>(defaultPageSize);
   const [currentPage, setCurrentPage] = React.useState<number>(
-    controlledCurrentPage ?? currentPaginationState?.page ?? 0,
+    !isUndefined(controlledCurrentPage) ? controlledCurrentPage : currentPaginationState?.page ?? 0,
   );
   const [currentEllipseHover, setCurrentEllipseHover] = React.useState<'start' | 'end' | undefined>(
     undefined,
   );
-
-  useEffect(() => {
-    if (controlledCurrentPage && controlledCurrentPage !== currentPage) {
-      setCurrentPage(controlledCurrentPage);
-    }
-  }, [controlledCurrentPage, currentPage]);
 
   const defaultLabel = currentPaginationState
     ? `Showing ${currentPaginationState.page * currentPaginationState.size + 1}-${
@@ -229,19 +224,31 @@ const TablePagination = ({
 
   const totalPages = Math.ceil(totalItems / currentPageSize);
 
-  const handlePageChange = (page: number): void => {
-    let pageToJumpTo = page;
-    if (pageToJumpTo < 0) {
-      pageToJumpTo = 0;
-    } else if (pageToJumpTo > totalPages - 1) {
-      pageToJumpTo = totalPages - 1;
-    }
+  const handlePageChange = useCallback(
+    (page: number): void => {
+      let pageToJumpTo = page;
+      if (pageToJumpTo < 0) {
+        pageToJumpTo = 0;
+      } else if (pageToJumpTo > totalPages - 1) {
+        pageToJumpTo = totalPages - 1;
+      }
 
-    onPageChange?.({ page: pageToJumpTo });
-    if (controlledCurrentPage) return;
-    setPaginationPage(pageToJumpTo);
-    setCurrentPage(pageToJumpTo);
-  };
+      onPageChange?.({ page: pageToJumpTo });
+
+      if (!isUndefined(controlledCurrentPage)) {
+        pageToJumpTo = controlledCurrentPage;
+      }
+      setPaginationPage(pageToJumpTo);
+      setCurrentPage(pageToJumpTo);
+    },
+    [controlledCurrentPage, onPageChange, setPaginationPage, totalPages],
+  );
+
+  useEffect(() => {
+    if (!isUndefined(controlledCurrentPage) && controlledCurrentPage !== currentPage) {
+      handlePageChange(controlledCurrentPage);
+    }
+  }, [controlledCurrentPage, currentPage, handlePageChange, onPageChange]);
 
   if (currentPage > totalPages - 1) {
     handlePageChange(totalPages - 1);
