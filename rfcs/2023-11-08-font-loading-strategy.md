@@ -204,16 +204,16 @@ The performance of variable font vs static font depends on how many weights and 
 These are the weights and styles being used right now
 
 **Tasa Orbiter:** 400, 500, 600
-**Inter:** 400, 600
+**Inter:** 400, 500, 600
 
 **Conclusion**
 
-We'll use TASA Orbiter as variable font and Inter as static font based on which is the lightest version.
+We'll be using variable fonts in both Tasa and Inter based on the size below-
 
-|                  | **Static**                        | **Variable** |
-| ---------------- | --------------------------------- | ------------ |
-| **Inter**        | 70kb \* 2 weights = ✅ **~140kb** | ~200kb       |
-| **TASA Orbiter** | 30kb \* 3 weights = ~90kb         | ✅ **~32kb** |
+|                  | **Static**                 | **Variable**  |
+| ---------------- | -------------------------- | ------------- |
+| **Inter**        | 70kb \* 3 weights = ~210kb | ✅ **~215kb** |
+| **TASA Orbiter** | 30kb \* 3 weights = ~90kb  | ✅ **~32kb**  |
 
 > **Note**
 >
@@ -239,4 +239,4 @@ We'll use TASA Orbiter as variable font and Inter as static font based on which 
   - [Example](https://github.com/adobe/react-spectrum/blob/9ce2f674eab2cc8912800d3162dcf00a1ce94274/.storybook/preview-head.html#L13-L24)
 - [Reshaped](https://reshaped.so/content/docs/getting-started/react/installation#using-fonts): Just gives link to the official font site but does not give recommendation or download fonts
 - [Primer](https://primer.style/react/getting-started) uses system fonts only
-- [@fontsource/inter](https://www.npmjs.com/package/@fontsource/inter?activeTab=code) was referred for lighter inter version
+- [@fontsource-variable/inter](https://www.npmjs.com/package/@fontsource-variable/inter?activeTab=code) was referred for lighter inter version
