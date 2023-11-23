@@ -735,7 +735,7 @@ function App(): React.ReactElement {
       <Table
         data={data}
         selectionType="multiple"
-        showStripes={true}
+        showStripedRows={true}
         toolbar={
           <TableToolbar title="Showing Recent Transactions">
             <TableToolbarActions>
@@ -1141,7 +1141,7 @@ function App(): React.ReactElement {
       <Table
         data={data}
         selectionType="multiple"
-        showStripes={true}
+        showStripedRows={true}
         toolbar={
           <TableToolbar>
             <TableToolbarActions>
@@ -1289,7 +1289,7 @@ function App(): React.ReactElement {
       <Table
         data={data}
         selectionType="multiple"
-        showStripes={true}
+        showStripedRows={true}
         gridTemplateColumns="min-content min-content min-content fit-content(200px)"
         toolbar={
           <TableToolbar>
@@ -1441,7 +1441,7 @@ function App(): React.ReactElement {
       </Box>
       <Table
         selectionType="multiple"
-        showStripes={true}
+        showStripedRows={true}
         data={data}
         surfaceLevel={surfaceLevel}
       >
@@ -1569,7 +1569,7 @@ function App(): React.ReactElement {
         <Table
           data={data}
           selectionType="multiple"
-          showStripes={true}
+          showStripedRows={true}
           height="400px"
           toolbar={
             <TableToolbar>
