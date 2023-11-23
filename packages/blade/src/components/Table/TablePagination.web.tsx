@@ -3,7 +3,9 @@ import styled from 'styled-components';
 import isUndefined from 'lodash/isUndefined';
 import getIn from 'lodash/get';
 import { useTableContext } from './TableContext';
+import { ComponentIds } from './componentIds';
 import { tablePagination } from './tokens';
+import type { TablePaginationProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
 import {
   ChevronLeftIcon,
@@ -16,52 +18,10 @@ import { Dropdown, DropdownOverlay } from '~components/Dropdown';
 import { SelectInput } from '~components/Input/DropdownInputTriggers';
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { Text } from '~components/Typography';
-import { useTheme } from '~utils';
+import { makeSize, useTheme } from '~utils';
 import { Button } from '~components/Button';
 import { makeAccessible } from '~utils/makeAccessible';
-
-type TablePaginationProps = {
-  /**
-   * The default page size.
-   * Page size controls how rows are shown per page.
-   * @default 10
-   **/
-  defaultPageSize?: 10 | 25 | 50;
-  /**
-   * The current page. Passing this prop will make the component controlled and will not update the page on its own.
-   **/
-  currentPage?: number;
-  /**
-   * Callback function that is called when the page is changed
-   */
-  onPageChange?: ({ page }: { page: number }) => void;
-  /**
-   * Callback function that is called when the page size is changed
-   */
-  onPageSizeChange?: ({ pageSize }: { pageSize: number }) => void;
-  /**
-   * Whether to show the page size picker. It will be always be hidden on mobile.
-   * Page size picker controls how rows are shown per page.
-   * @default true
-   */
-  showPageSizePicker?: boolean;
-  /**
-   * Whether to show the page number selector. It will be always be hidden on mobile.
-   * Page number selectors is a group of buttons that allows the user to jump to a specific page.
-   * @default false
-   */
-  showPageNumberSelector?: boolean;
-  /**
-   * Content of the label to be shown in the pagination component
-   * @default `Showing 1 to ${totalItems} Items`
-   */
-  label?: string;
-  /**
-   * Whether to show the label. It will be always be hidden on mobile.
-   * @default false
-   */
-  showLabel?: boolean;
-};
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 const pageSizeOptions: NonNullable<TablePaginationProps['defaultPageSize']>[] = [10, 25, 50];
 
@@ -71,8 +31,8 @@ const PageSelectionButton = styled.button<{ isSelected?: boolean }>(({ theme, is
     : 'transparent',
   border: 'none',
   cursor: 'pointer',
-  height: '32px',
-  width: '32px',
+  height: makeSize(tablePagination.pageSelectionButton.height),
+  width: makeSize(tablePagination.pageSelectionButton.width),
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
@@ -180,7 +140,7 @@ const getPaginationButtons = ({
   };
 };
 
-const TablePagination = ({
+const _TablePagination = ({
   currentPage: controlledCurrentPage,
   onPageChange,
   onPageSizeChange,
@@ -438,5 +398,8 @@ const TablePagination = ({
   );
 };
 
+const TablePagination = assignWithoutSideEffects(_TablePagination, {
+  componentId: ComponentIds.TablePagination,
+});
+
 export { TablePagination };
-export type { TablePaginationProps };
