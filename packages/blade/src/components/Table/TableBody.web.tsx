@@ -156,17 +156,15 @@ type TableCellProps = {
 };
 
 const StyledCell = styled(Cell)<{
-  isSelectable: boolean;
   surfaceLevel: SurfaceLevels;
-}>(({ theme, isSelectable, surfaceLevel }) => ({
+}>(({ theme, surfaceLevel }) => ({
   '&&&': {
     height: '100%',
     backgroundColor: getIn(theme.colors, `surface.background.level${surfaceLevel}.lowContrast`),
     '& > div:first-child': {
-      pointerEvents: isSelectable ? 'none' : 'auto',
       alignSelf: 'stretch',
     },
-    '&: focus-visible': {
+    '&:focus-visible': {
       outline: 'none',
       boxShadow: `0px 0px 0px 4px ${getIn(theme.colors, tableRow.focusRingColor)} inset`,
     },
@@ -202,7 +200,6 @@ const TableCell = ({ children }: TableCellProps): React.ReactElement => {
   return (
     <StyledCell
       tabIndex={0}
-      isSelectable={isSelectable}
       surfaceLevel={surfaceLevel}
       {...metaAttribute({ name: MetaConstants.TableCell })}
     >
@@ -212,6 +209,9 @@ const TableCell = ({ children }: TableCellProps): React.ReactElement => {
         showStripes={showStripes}
         display="flex"
         alignItems="center"
+        // when a direct string child is passed we want to disable pointer events
+        // for custom cells components, consumers can handle pointer events themselves
+        pointerEvents={isChildrenString && isSelectable ? 'none' : 'auto'}
       >
         {isChildrenString ? <Text size="medium">{children}</Text> : children}
       </CellWrapper>
