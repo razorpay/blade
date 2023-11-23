@@ -1651,6 +1651,172 @@ function App(): React.ReactElement {
 export default App;
 `;
 
+const TableWithIsRefreshingStory = `
+import {
+  Table,
+  Code,
+  Heading,
+  Box,
+  TableHeader,
+  TableHeaderRow,
+  TableHeaderCell,
+  TableBody,
+  TableRow,
+  TableCell,
+  Amount,
+  Badge,
+  TableToolbar,
+  TableToolbarActions,
+  Button,
+  useTheme,
+  TablePagination,
+  Text,
+  TableProps,
+} from '@razorpay/blade/components';
+import React, { useState } from 'react';
+
+type Item = {
+  id: string;
+  paymentId: string;
+  amount: number;
+  date: Date;
+  status: string;
+};
+
+const nodes: Item[] = [
+  ...Array.from({ length: 100 }, (_, i) => ({
+    id: (i + 1).toString(),
+    paymentId: \`rzp\${Math.floor(Math.random() * 1000000)}\`,
+    amount: Number((Math.random() * 10000).toFixed(2)),
+    date: new Date(
+      2021,
+      Math.floor(Math.random() * 12),
+      Math.floor(Math.random() * 28) + 1
+    ),
+    status: ['Completed', 'Pending', 'Failed'][Math.floor(Math.random() * 3)],
+    account: Math.floor(Math.random() * 1000000000).toString(),
+  })),
+];
+
+const data: TableProps<Item>['data'] = {
+  nodes,
+};
+
+function App(): React.ReactElement {
+  const { platform } = useTheme();
+  const [currentPage, setCurrentPage] = useState(0);
+  const [isRefreshing, setIsRefreshing] = useState(false);
+  const onMobile = platform === 'onMobile';
+
+  const handlePageChange = ({ page }: { page: number }) => {
+    if (currentPage !== page) {
+      setIsRefreshing(true);
+      setTimeout(() => {
+        setCurrentPage(page);
+        setIsRefreshing(false);
+      }, 2000);
+    }
+  };
+
+  return (
+    <Box
+      backgroundColor="surface.background.level2.lowContrast"
+      padding="spacing.5"
+      overflow="auto"
+      minHeight="400px"
+    >
+      <Box paddingBottom="spacing.4">
+        <Heading>Table with isRefreshing state</Heading>
+        <Text>
+          (Tip: Navigate to next page using the pagination buttons to see an
+          isRefreshing state.)
+        </Text>
+      </Box>
+      <Table
+        data={data}
+        isRefreshing={isRefreshing}
+        selectionType="multiple"
+        showStripedRows={true}
+        toolbar={
+          <TableToolbar>
+            <TableToolbarActions>
+              <Button
+                variant="secondary"
+                marginRight="spacing.2"
+                isFullWidth={onMobile}
+              >
+                Export
+              </Button>
+              <Button isFullWidth={onMobile}>Refund</Button>
+            </TableToolbarActions>
+          </TableToolbar>
+        }
+        pagination={
+          <TablePagination
+            onPageChange={handlePageChange}
+            defaultPageSize={10}
+            onPageSizeChange={console.log}
+            showPageSizePicker
+            showPageNumberSelector
+            currentPage={currentPage}
+          />
+        }
+      >
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+                <TableHeaderCell>Date</TableHeaderCell>
+                <TableHeaderCell>Method</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {tableData.map((tableItem, index) => (
+                <TableRow key={index} item={tableItem}>
+                  <TableCell>
+                    <Code size="medium">{tableItem.paymentId}</Code>
+                  </TableCell>
+                  <TableCell>
+                    <Amount value={tableItem.amount} />
+                  </TableCell>
+                  <TableCell>
+                    {tableItem.date?.toLocaleDateString('en-IN', {
+                      year: 'numeric',
+                      month: '2-digit',
+                      day: '2-digit',
+                    })}
+                  </TableCell>
+                  <TableCell>
+                    <Badge
+                      size="medium"
+                      color={
+                        tableItem.status === 'Completed'
+                          ? 'positive'
+                          : tableItem.status === 'Pending'
+                          ? 'notice'
+                          : tableItem.status === 'Failed'
+                          ? 'negative'
+                          : 'default'
+                      }
+                    >
+                      {tableItem.status}
+                    </Badge>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </>
+        )}
+      </Table>
+    </Box>
+  );
+}
+
+export default App;
+`;
+
 export {
   BasicTableStory,
   TableWithCustomCellComponentsStory,
@@ -1664,4 +1830,5 @@ export {
   TableWithDisabledRowsStory,
   TableWithSurfaceLevelsStory,
   TableWithIsLoadingStory,
+  TableWithIsRefreshingStory,
 };

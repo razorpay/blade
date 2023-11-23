@@ -14,6 +14,7 @@ import {
   TableWithDisabledRowsStory,
   TableWithSurfaceLevelsStory,
   TableWithIsLoadingStory,
+  TableWithIsRefreshingStory,
 } from './stories';
 import { Sandbox } from '~utils/storybook/Sandbox';
 
@@ -128,6 +129,14 @@ export const TableWithIsLoading = (): React.ReactElement => {
   return (
     <Sandbox padding="spacing.0" editorHeight="90vh">
       {TableWithIsLoadingStory}
+    </Sandbox>
+  );
+};
+
+export const TableWithIsRefreshing = (): React.ReactElement => {
+  return (
+    <Sandbox padding="spacing.0" editorHeight="90vh">
+      {TableWithIsRefreshingStory}
     </Sandbox>
   );
 };
