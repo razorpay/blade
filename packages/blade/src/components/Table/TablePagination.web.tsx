@@ -21,7 +21,8 @@ import { makeAccessible } from '~utils/makeAccessible';
 
 type TablePaginationProps = {
   /**
-   * The default page size
+   * The default page size.
+   * Page size controls how rows are shown per page.
    * @default 10
    **/
   defaultPageSize?: 10 | 25 | 50;
@@ -39,11 +40,13 @@ type TablePaginationProps = {
   onPageSizeChange?: ({ pageSize }: { pageSize: number }) => void;
   /**
    * Whether to show the page size picker. It will be always be hidden on mobile.
+   * Page size picker controls how rows are shown per page.
    * @default true
    */
   showPageSizePicker?: boolean;
   /**
    * Whether to show the page number selector. It will be always be hidden on mobile.
+   * Page number selectors is a group of buttons that allows the user to jump to a specific page.
    * @default false
    */
   showPageNumberSelector?: boolean;
