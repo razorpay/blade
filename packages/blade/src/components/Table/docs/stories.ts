@@ -1565,7 +1565,7 @@ function App(): React.ReactElement {
       >
         Refresh to show loader again
       </Link>
-      <Box minHeight="400px" display="flex">
+      <Box height="100vh" display="flex">
         <Table
           data={data}
           selectionType="multiple"
