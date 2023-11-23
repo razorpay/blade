@@ -88,6 +88,7 @@ const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
       <TableComponent
         height="400px"
         data={data}
+        selectionType="multiple"
         onSelectionChange={({ values }) => console.log('Selected Rows:', values)}
         sortFunctions={{
           ID: (array) => array.sort((a, b) => Number(a.id) - Number(b.id)),
