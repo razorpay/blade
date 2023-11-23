@@ -4,7 +4,7 @@ import { useBreakpoint } from './';
 import { breakpoints } from '~tokens/global';
 
 describe('useBreakpoint', () => {
-  it('should return default breakpoint and device', () => {
+  it('should detect mobile and return smallest breakpoint of mobile devices', () => {
     setupMatchMediaMock({
       matches: true,
     });
