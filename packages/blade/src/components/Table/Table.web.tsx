@@ -114,10 +114,10 @@ export type TableProps<Item> = {
    **/
   height?: BoxProps['height'];
   /**
-   * The showStripes prop determines whether the table should have striped rows or not.
+   * The showStripedRows prop determines whether the table should have striped rows or not.
    * The default value is `false`.
    **/
-  showStripes?: boolean;
+  showStripedRows?: boolean;
   /**
    * The gridTemplateColumns prop determines the grid-template-columns CSS property of the table.
    * The default value is `repeat(${columnCount},minmax(100px, 1fr))`.
@@ -210,7 +210,7 @@ const Table = <Item,>({
   toolbar,
   pagination,
   height,
-  showStripes,
+  showStripedRows,
   gridTemplateColumns,
   surfaceLevel = 2,
   isLoading = false,
@@ -452,7 +452,7 @@ const Table = <Item,>({
       setPaginationPage,
       setPaginationRowSize,
       currentPaginationState,
-      showStripes,
+      showStripedRows,
       surfaceLevel,
       disabledRows,
       setDisabledRows,
@@ -470,7 +470,7 @@ const Table = <Item,>({
       setPaginationPage,
       setPaginationRowSize,
       currentPaginationState,
-      showStripes,
+      showStripedRows,
       surfaceLevel,
       disabledRows,
       setDisabledRows,

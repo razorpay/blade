@@ -33,7 +33,7 @@ export type TableProps<Item> = {
   toolbar?: React.ReactElement;
   pagination?: React.ReactElement;
   height?: string;
-  showStripes?: boolean;
+  showStripedRows?: boolean;
   gridTemplateColumns?: string;
   surfaceLevel?: SurfaceLevels;
   isLoading?: boolean;

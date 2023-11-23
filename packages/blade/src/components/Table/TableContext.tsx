@@ -25,7 +25,7 @@ export type TableContextType = {
     page: number;
     size: number;
   };
-  showStripes?: boolean;
+  showStripedRows?: boolean;
   surfaceLevel: SurfaceLevels;
   disabledRows: TableNode['id'][];
   setDisabledRows: React.Dispatch<React.SetStateAction<TableNode['id'][]>>;

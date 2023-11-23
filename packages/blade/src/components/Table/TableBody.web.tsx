@@ -26,8 +26,8 @@ type TableBodyProps = {
   children: React.ReactNode;
 };
 
-const StyledBody = styled(Body)<{ isSelectable: boolean; showStripes: boolean }>(
-  ({ theme, showStripes, isSelectable }) => ({
+const StyledBody = styled(Body)<{ isSelectable: boolean; showStripedRows: boolean }>(
+  ({ theme, showStripedRows, isSelectable }) => ({
     '&&&': {
       border: 'none',
       transition: `background-color ${makeMotionTime(
@@ -56,7 +56,7 @@ const StyledBody = styled(Body)<{ isSelectable: boolean; showStripes: boolean }>
         },
       }),
 
-      ...(showStripes && {
+      ...(showStripedRows && {
         '& tr:nth-child(even) .cell-wrapper': {
           backgroundColor: getIn(theme.colors, tableRow.stripeWrapper.backgroundColor),
         },
@@ -65,7 +65,7 @@ const StyledBody = styled(Body)<{ isSelectable: boolean; showStripes: boolean }>
         },
       }),
 
-      ...(showStripes &&
+      ...(showStripedRows &&
         isSelectable && {
           '& tr:nth-child(even):hover:not(.disabled-row) .cell-wrapper': {
             backgroundColor: getIn(theme.colors, tableRow.stripeWrapper.backgroundColorHover),
@@ -126,13 +126,13 @@ const StyledBody = styled(Body)<{ isSelectable: boolean; showStripes: boolean }>
 );
 
 const TableBody = ({ children }: TableBodyProps): React.ReactElement => {
-  const { showStripes, selectionType } = useTableContext();
+  const { showStripedRows, selectionType } = useTableContext();
   const isSelectable = Boolean(selectionType);
 
   return (
     <StyledBody
       isSelectable={isSelectable}
-      showStripes={showStripes}
+      showStripedRows={showStripedRows}
       {...metaAttribute({ name: MetaConstants.TableBody })}
     >
       {children}
@@ -173,8 +173,8 @@ const StyledCell = styled(Cell)<{
 
 const CellWrapper = styled(BaseBox)<{
   rowDensity: NonNullable<TableProps<unknown>['rowDensity']>;
-  showStripes?: boolean;
-}>(({ theme, rowDensity, showStripes }) => ({
+  showStripedRows?: boolean;
+}>(({ theme, rowDensity, showStripedRows }) => ({
   '&&&': {
     transition: `background-color ${makeMotionTime(
       getIn(theme.motion, tableRow.backgroundColorMotionDuration),
@@ -185,7 +185,7 @@ const CellWrapper = styled(BaseBox)<{
     paddingLeft: makeSpace(getIn(theme, tableRow.paddingLeft[rowDensity])),
     paddingRight: makeSpace(getIn(theme, tableRow.paddingRight[rowDensity])),
     height: '100%',
-    ...(!showStripes && {
+    ...(!showStripedRows && {
       borderBottomWidth: makeSpace(getIn(theme.border.width, tableRow.borderBottomWidth)),
       borderBottomColor: getIn(theme.colors, tableRow.borderBottomColor),
       borderBottomStyle: 'solid',
@@ -195,7 +195,7 @@ const CellWrapper = styled(BaseBox)<{
 
 const TableCell = ({ children }: TableCellProps): React.ReactElement => {
   const isChildrenString = typeof children === 'string';
-  const { selectionType, rowDensity, showStripes, surfaceLevel } = useTableContext();
+  const { selectionType, rowDensity, showStripedRows, surfaceLevel } = useTableContext();
   const isSelectable = Boolean(selectionType);
   return (
     <StyledCell
@@ -206,7 +206,7 @@ const TableCell = ({ children }: TableCellProps): React.ReactElement => {
       <CellWrapper
         className="cell-wrapper"
         rowDensity={rowDensity}
-        showStripes={showStripes}
+        showStripedRows={showStripedRows}
         display="flex"
         alignItems="center"
         // when a direct string child is passed we want to disable pointer events
@@ -272,7 +272,7 @@ type TableRowProps<Item> = {
   isDisabled?: boolean;
 };
 
-const StyledRow = styled(Row)<{ isSelectable: boolean; showStripes?: boolean }>(
+const StyledRow = styled(Row)<{ isSelectable: boolean; showStripedRows?: boolean }>(
   ({ theme, isSelectable }) => ({
     '&&&': {
       backgroundColor: 'transparent',
@@ -316,7 +316,7 @@ const TableRow = <Item,>({
     selectionType,
     selectedRows,
     toggleRowSelectionById,
-    showStripes,
+    showStripedRows,
     setDisabledRows,
   } = useTableContext();
   const isSelectable = Boolean(selectionType);
@@ -332,7 +332,7 @@ const TableRow = <Item,>({
     <StyledRow
       disabled={isDisabled}
       isSelectable={isDisabled ? false : isSelectable}
-      showStripes={showStripes}
+      showStripedRows={showStripedRows}
       item={item}
       className={isDisabled ? 'disabled-row' : ''}
       {...metaAttribute({ name: MetaConstants.TableRow })}
