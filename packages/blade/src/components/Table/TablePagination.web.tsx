@@ -203,6 +203,12 @@ const TablePagination = ({
     undefined,
   );
 
+  useEffect(() => {
+    if (controlledCurrentPage && controlledCurrentPage !== currentPage) {
+      setCurrentPage(controlledCurrentPage);
+    }
+  }, [controlledCurrentPage, currentPage]);
+
   const defaultLabel = currentPaginationState
     ? `Showing ${currentPaginationState.page * currentPaginationState.size + 1}-${
         currentPaginationState.page * currentPaginationState.size + currentPaginationState.size
