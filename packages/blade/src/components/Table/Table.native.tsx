@@ -4,6 +4,7 @@ import React from 'react';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { Text } from '~components/Typography';
 import type { SurfaceLevels } from '~tokens/theme/theme';
+import { logger } from '~utils/logger';
 
 export type TableNode<Item> = Item & {
   id: string;
@@ -41,6 +42,14 @@ export type TableProps<Item> = {
 } & StyledPropsBlade;
 
 const Table = <Item,>(props: TableProps<Item>): React.ReactElement => {
+  if (__DEV__) {
+    logger({
+      type: 'warn',
+      moduleName: 'Table',
+      message: 'Table Component is not available for Native mobile apps.',
+    });
+  }
+
   return <Text>Table Component is not available for Native mobile apps.</Text>;
 };
 
