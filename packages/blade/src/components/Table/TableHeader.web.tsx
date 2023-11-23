@@ -110,7 +110,8 @@ export type TableHeaderCellProps = {
 
 const StyledHeaderCell = styled(HeaderCell)<{
   surfaceLevel: SurfaceLevels;
-}>(({ theme, surfaceLevel }) => ({
+  isSortable: boolean;
+}>(({ theme, surfaceLevel, isSortable }) => ({
   '&&&': {
     backgroundColor: getIn(theme.colors, `surface.background.level${surfaceLevel}.lowContrast`),
     height: '100%',
@@ -120,6 +121,7 @@ const StyledHeaderCell = styled(HeaderCell)<{
     borderTopColor: getIn(theme.colors, tableHeader.borderBottomAndTopColor),
     borderBottomStyle: 'solid',
     borderTopStyle: 'solid',
+    cursor: isSortable ? 'pointer' : 'auto',
     '> div': {
       backgroundColor: getIn(theme.colors, tableHeader.backgroundColor),
       display: 'flex',
@@ -142,11 +144,18 @@ const StyledHeaderCell = styled(HeaderCell)<{
 const _TableHeaderCell = ({ children, headerKey }: TableHeaderCellProps): React.ReactElement => {
   const { toggleSort, currentSortedState, surfaceLevel } = useTableContext();
   const isChildrenString = typeof children === 'string';
-  const isSortable = Boolean(currentSortedState.sortableColumns?.find((key) => key === headerKey));
+  const isSortable =
+    headerKey && Boolean(currentSortedState.sortableColumns?.find((key) => key === headerKey));
   return (
     <StyledHeaderCell
       tabIndex={0}
       surfaceLevel={surfaceLevel}
+      isSortable={isSortable}
+      onClick={() => {
+        if (isSortable) {
+          toggleSort(headerKey);
+        }
+      }}
       {...metaAttribute({ name: MetaConstants.TableHeaderCell })}
     >
       {isChildrenString ? (
