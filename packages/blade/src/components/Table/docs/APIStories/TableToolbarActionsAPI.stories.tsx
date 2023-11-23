@@ -35,7 +35,7 @@ export default {
 } as Meta<typeof TableToolbarActions>;
 
 const nodes: Item[] = [
-  ...Array.from({ length: 10 }, (_, i) => ({
+  ...Array.from({ length: 20 }, (_, i) => ({
     id: (i + 1).toString(),
     paymentId: `rzp${Math.floor(Math.random() * 1000000)}`,
     amount: Number((Math.random() * 10000).toFixed(2)),
@@ -86,7 +86,6 @@ const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
       minHeight="400px"
     >
       <TableComponent
-        height="400px"
         data={data}
         selectionType="multiple"
         onSelectionChange={({ values }) => console.log('Selected Rows:', values)}

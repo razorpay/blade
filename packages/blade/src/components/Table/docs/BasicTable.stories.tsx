@@ -75,7 +75,7 @@ const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
       overflow="auto"
       minHeight="400px"
     >
-      <TableComponent height="400px" {...args} data={data} sortFunctions={{}}>
+      <TableComponent {...args} data={data} sortFunctions={{}}>
         {(tableData) => (
           <>
             <TableHeader>
