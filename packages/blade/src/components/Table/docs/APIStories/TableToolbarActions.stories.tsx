@@ -13,10 +13,14 @@ import { useTheme } from '~utils';
 import { Amount } from '~components/Amount';
 import { Code } from '~components/Typography';
 import { Badge } from '~components/Badge';
+import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 export default {
   title: 'Components/Table/API',
   component: TableToolbarActions,
+  argTypes: {
+    ...getStyledPropsArgTypes(),
+  },
   parameters: {
     docs: {
       page: () => (
