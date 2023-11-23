@@ -8,6 +8,7 @@ import { useSort } from '@table-library/react-table-library/sort';
 import { usePagination } from '@table-library/react-table-library/pagination';
 import { SelectTypes, useRowSelect } from '@table-library/react-table-library/select';
 import styled from 'styled-components';
+import usePresence from 'use-presence';
 import type { TableContextType } from './TableContext';
 import { TableProvider } from './TableContext';
 import { ComponentIds } from './componentIds';
@@ -18,7 +19,7 @@ import {
   tablePagination,
 } from './tokens';
 import type { TableHeaderCellProps } from './TableHeader';
-import { makeBorderSize, useTheme } from '~utils';
+import { makeBorderSize, makeMotionTime, useTheme } from '~utils';
 import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { throwBladeError } from '~utils/logger';
 import type { BoxProps } from '~components/Box';
@@ -201,6 +202,23 @@ const StyledReactTable = styled(ReactTable)<{ styledProps?: { height?: BoxProps[
   },
 );
 
+const RefreshWrapper = styled(BaseBox)<{
+  isRefreshSpinnerVisible: boolean;
+  isRefreshSpinnerEntering: boolean;
+  isRefreshSpinnerExiting: boolean;
+}>(({ isRefreshSpinnerVisible, isRefreshSpinnerEntering, isRefreshSpinnerExiting, theme }) => {
+  return {
+    opacity: isRefreshSpinnerVisible ? 1 : 0,
+    transition: `opacity ${makeMotionTime(theme.motion.duration.quick)} ${
+      isRefreshSpinnerEntering
+        ? theme.motion.easing.entrance.effective
+        : isRefreshSpinnerExiting
+        ? theme.motion.easing.exit.effective
+        : ''
+    }`,
+  };
+});
+
 const Table = <Item,>({
   children,
   data,
@@ -228,6 +246,16 @@ const Table = <Item,>({
   const [totalItems, setTotalItems] = React.useState(data.nodes.length || 0);
   // Need to make header is sticky if first column is sticky otherwise the first header cell will not be sticky
   const shouldHeaderBeSticky = isHeaderSticky ?? isFirstColumnSticky;
+
+  const {
+    isEntering: isRefreshSpinnerEntering,
+    isMounted: isRefreshSpinnerMounted,
+    isExiting: isRefreshSpinnerExiting,
+    isVisible: isRefreshSpinnerVisible,
+  } = usePresence(isRefreshing, {
+    transitionDuration: theme.motion.duration.quick,
+  });
+
   // Table Theme
   const columnCount = getTableHeaderCellCount(children);
   const firstColumnStickyHeaderCellCSS = isFirstColumnSticky
@@ -503,8 +531,8 @@ const Table = <Item,>({
           {...getStyledProps(styledProps)}
           {...metaAttribute({ name: MetaConstants.Table })}
         >
-          {isRefreshing && (
-            <BaseBox
+          {isRefreshSpinnerMounted && (
+            <RefreshWrapper
               position="absolute"
               width="100%"
               height="100%"
@@ -513,9 +541,12 @@ const Table = <Item,>({
               justifyContent="center"
               alignItems="center"
               display="flex"
+              isRefreshSpinnerEntering={isRefreshSpinnerEntering}
+              isRefreshSpinnerExiting={isRefreshSpinnerExiting}
+              isRefreshSpinnerVisible={isRefreshSpinnerVisible}
             >
               <Spinner color="white" accessibilityLabel="Refreshing Table" size="large" />
-            </BaseBox>
+            </RefreshWrapper>
           )}
           {toolbar}
           <StyledReactTable
