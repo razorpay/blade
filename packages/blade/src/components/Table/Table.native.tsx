@@ -16,7 +16,7 @@ export type TableData<Item> = {
 export type TableProps<Item> = {
   children: (tableData: TableNode<Item>[]) => React.ReactElement;
   data: TableData<Item>;
-  selectionType?: 'single' | 'multiple';
+  selectionType?: 'none' | 'single' | 'multiple';
   onSelectionChange?: ({ values }: { values: TableNode<Item>[] }) => void;
   isHeaderSticky?: boolean;
   isFooterSticky?: boolean;
