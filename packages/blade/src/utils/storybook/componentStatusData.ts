@@ -367,7 +367,7 @@ const componentData: ComponentStatusDataType = [
   },
   {
     name: 'Data Table',
-    status: 'in-design',
+    status: 'in-development',
     description: 'DataTable will allow you to display your data in tabular manner',
   },
   {
