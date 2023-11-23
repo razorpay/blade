@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@preact/compat": "17.1.2",
-    "@razorpay/blade": "../../blade/build/",
+    "@razorpay/blade": "./razorpay-blade-v10.18.0-2.tgz",
     "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",
     "preact": "^10.19.2",

@@ -5,28 +5,26 @@
     "build": "yarn build:blade && yarn build:app",
     "build:blade": "cd ../../blade && yarn build",
     "build:app": "DISABLE_ESLINT_PLUGIN=true react-scripts build",
-    "analyze:only": "source-map-explorer 'build/static/js/*.js'",
-    "analyze": "yarn build && yarn analyze:only",
+    "analyze:only": "source-map-explorer 'build/static/js/*.js' --gzip",
+    "analyze": "yarn build:app && yarn analyze:only",
     "visualize": "npx import-graph-visualizer --entry-points src/index.tsx",
     "cruise": "npx depcruise src --output-type dot | dot -T svg > dependency-graph.svg"
   },
   "dependencies": {
-    "@floating-ui/react": "0.25.4",
-    "@fontsource/lato": "^4.5.10",
-    "@razorpay/blade": "../../blade/build/",
+    "@razorpay/blade": "/Users/anurag.hazra/Documents/razorpay/projects/blade/packages/blade/razorpay-blade-v10.18.0-2.tgz",
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.9",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-scripts": "^5.0.1",
-    "styled-components": "5.3.5"
+    "styled-components": "5.3.5",
+    "react-scripts": "^5.0.1"
   },
   "devDependencies": {
-    "@rx-angular/import-graph-visualizer": "^0.2.0",
-    "dependency-cruiser": "^15.3.0",
     "source-map-explorer": "2.5.3"
   },
   "browserslist": {
+    "@rx-angular/import-graph-visualizer": "^0.2.0",
+    "@floating-ui/react": "0.25.4",
     "production": [
       ">0.2%",
       "not dead",
