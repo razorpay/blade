@@ -4,11 +4,13 @@ import getIn from 'lodash/get';
 import styled from 'styled-components';
 import { tableFooter } from './tokens';
 import { useTableContext } from './TableContext';
+import { ComponentIds } from './componentIds';
 import type { TableFooterProps, TableFooterRowProps, TableFooterCellProps } from './types';
 import { Text } from '~components/Typography';
 import { makeSpace } from '~utils';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import type { SurfaceLevels } from '~tokens/theme/theme';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 const StyledFooter = styled(Footer)(({ theme }) => ({
   '&&&': {
@@ -19,7 +21,7 @@ const StyledFooter = styled(Footer)(({ theme }) => ({
   },
 }));
 
-const TableFooter = ({ children }: TableFooterProps): React.ReactElement => {
+const _TableFooter = ({ children }: TableFooterProps): React.ReactElement => {
   return (
     <StyledFooter isFooter {...metaAttribute({ name: MetaConstants.TableFooter })}>
       {children}
@@ -27,11 +29,19 @@ const TableFooter = ({ children }: TableFooterProps): React.ReactElement => {
   );
 };
 
-const TableFooterRow = ({ children }: TableFooterRowProps): React.ReactElement => {
+const TableFooter = assignWithoutSideEffects(_TableFooter, {
+  componentId: ComponentIds.TableFooter,
+});
+
+const _TableFooterRow = ({ children }: TableFooterRowProps): React.ReactElement => {
   return (
     <FooterRow {...metaAttribute({ name: MetaConstants.TableFooterRow })}>{children}</FooterRow>
   );
 };
+
+const TableFooterRow = assignWithoutSideEffects(_TableFooterRow, {
+  componentId: ComponentIds.TableFooterRow,
+});
 
 const StyledFooterCell = styled(FooterCell)<{
   surfaceLevel: SurfaceLevels;
@@ -58,7 +68,7 @@ const StyledFooterCell = styled(FooterCell)<{
   },
 }));
 
-const TableFooterCell = ({ children }: TableFooterCellProps): React.ReactElement => {
+const _TableFooterCell = ({ children }: TableFooterCellProps): React.ReactElement => {
   const { surfaceLevel } = useTableContext();
   const isChildrenString = typeof children === 'string';
   return (
@@ -76,5 +86,9 @@ const TableFooterCell = ({ children }: TableFooterCellProps): React.ReactElement
     </StyledFooterCell>
   );
 };
+
+const TableFooterCell = assignWithoutSideEffects(_TableFooterCell, {
+  componentId: ComponentIds.TableFooterCell,
+});
 
 export { TableFooter, TableFooterRow, TableFooterCell };

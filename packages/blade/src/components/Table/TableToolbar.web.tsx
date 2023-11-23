@@ -19,7 +19,7 @@ import { makeMotionTime, useTheme } from '~utils';
  * @param children - any react element
  * @param styledProps - accepts all of the styled props from Box
  */
-const TableToolbarActions = ({
+const _TableToolbarActions = ({
   children,
   ...styledProps
 }: TableToolbarActionsProps): React.ReactElement => {
@@ -36,6 +36,10 @@ const TableToolbarActions = ({
     </BaseBox>
   );
 };
+
+const TableToolbarActions = assignWithoutSideEffects(_TableToolbarActions, {
+  componentId: ComponentIds.TableToolbarActions,
+});
 
 const ToolbarWrapper = styled(BaseBox)(({ theme }) => ({
   transition: `background-color ${makeMotionTime(

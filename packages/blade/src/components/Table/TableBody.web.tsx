@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import getIn from 'lodash/get';
 import { useTableContext } from './TableContext';
 import { checkboxCellWidth, tableRow } from './tokens';
+import { ComponentIds } from './componentIds';
 import type { TableProps, TableBodyProps, TableRowProps, TableCellProps } from './types';
 import { Text } from '~components/Typography';
 import type { CheckboxProps } from '~components/Checkbox';
@@ -12,7 +13,6 @@ import { makeMotionTime, makeSize, makeSpace } from '~utils';
 import BaseBox from '~components/Box/BaseBox';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import type { SurfaceLevels } from '~tokens/theme/theme';
-import { ComponentIds } from './componentIds';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 const StyledBody = styled(Body)<{ isSelectable: boolean; showStripedRows: boolean }>(

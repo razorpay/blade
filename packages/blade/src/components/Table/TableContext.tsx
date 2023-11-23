@@ -2,7 +2,7 @@
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 import React from 'react';
 import type { TableNode } from '@table-library/react-table-library/table';
-import type { TableProps } from './Table';
+import type { TableProps } from './types';
 import type { SurfaceLevels } from '~tokens/theme/theme';
 
 export type TableContextType = {

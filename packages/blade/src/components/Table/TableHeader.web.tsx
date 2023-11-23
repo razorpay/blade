@@ -195,4 +195,4 @@ const TableHeaderRow = assignWithoutSideEffects(_TableHeaderRow, {
   componentId: ComponentIds.TableHeaderRow,
 });
 
-export { TableHeader, TableHeaderRow, TableHeaderCell, TableHeaderCellCheckbox };
+export { TableHeader, TableHeaderRow, TableHeaderCell };

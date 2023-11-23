@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import isUndefined from 'lodash/isUndefined';
 import getIn from 'lodash/get';
 import { useTableContext } from './TableContext';
+import { ComponentIds } from './componentIds';
 import { tablePagination } from './tokens';
 import type { TablePaginationProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
@@ -20,6 +21,7 @@ import { Text } from '~components/Typography';
 import { useTheme } from '~utils';
 import { Button } from '~components/Button';
 import { makeAccessible } from '~utils/makeAccessible';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 const pageSizeOptions: NonNullable<TablePaginationProps['defaultPageSize']>[] = [10, 25, 50];
 
@@ -138,7 +140,7 @@ const getPaginationButtons = ({
   };
 };
 
-const TablePagination = ({
+const _TablePagination = ({
   currentPage: controlledCurrentPage,
   onPageChange,
   onPageSizeChange,
@@ -395,5 +397,9 @@ const TablePagination = ({
     </BaseBox>
   );
 };
+
+const TablePagination = assignWithoutSideEffects(_TablePagination, {
+  componentId: ComponentIds.TablePagination,
+});
 
 export { TablePagination };
