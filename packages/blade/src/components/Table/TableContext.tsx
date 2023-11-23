@@ -32,7 +32,7 @@ export type TableContextType = {
 };
 
 const TableContext = React.createContext<TableContextType>({
-  selectionType: undefined,
+  selectionType: 'none',
   selectedRows: undefined,
   totalItems: 0,
   toggleRowSelectionById: () => {},
