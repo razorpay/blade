@@ -14,7 +14,13 @@ export default {
   title: 'Components/Table/API',
   component: TableFooterRow,
   args: {},
-  argTypes: {},
+  argTypes: {
+    children: {
+      control: {
+        disable: true,
+      },
+    },
+  },
   parameters: {
     docs: {
       page: () => (

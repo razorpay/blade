@@ -24,6 +24,26 @@ export default {
   },
   argTypes: {
     ...getStyledPropsArgTypes(),
+    data: {
+      control: {
+        disable: true,
+      },
+    },
+    sortFunctions: {
+      control: {
+        disable: true,
+      },
+    },
+    toolbar: {
+      control: {
+        disable: true,
+      },
+    },
+    pagination: {
+      control: {
+        disable: true,
+      },
+    },
   },
   parameters: {
     docs: {

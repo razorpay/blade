@@ -14,7 +14,18 @@ export default {
   title: 'Components/Table/API',
   component: TableRow,
   args: {},
-  argTypes: {},
+  argTypes: {
+    children: {
+      control: {
+        disable: true,
+      },
+    },
+    item: {
+      control: {
+        disable: true,
+      },
+    },
+  },
   parameters: {
     docs: {
       page: () => (

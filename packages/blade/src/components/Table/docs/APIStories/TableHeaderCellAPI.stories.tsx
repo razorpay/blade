@@ -14,7 +14,18 @@ export default {
   title: 'Components/Table/API',
   component: TableHeaderCell,
   args: {},
-  argTypes: {},
+  argTypes: {
+    children: {
+      control: {
+        disable: true,
+      },
+    },
+    headerKey: {
+      control: {
+        disable: true,
+      },
+    },
+  },
   parameters: {
     docs: {
       page: () => (

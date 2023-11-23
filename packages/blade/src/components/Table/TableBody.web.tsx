@@ -254,7 +254,7 @@ type TableRowProps<Item> = {
    **/
   children: React.ReactNode;
   /**
-   * The item prop is used to pass the item to the TableRow component.
+   * The item prop is used to pass the individual table item to the TableRow component.
    * @example
    * tableData.map((tableItem) => (
    *   <TableRow item={item}>
