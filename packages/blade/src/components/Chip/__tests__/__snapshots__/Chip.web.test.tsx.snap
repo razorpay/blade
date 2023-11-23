@@ -1329,7 +1329,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
     data-blade-component="base-box"
   >
     <div
-      aria-labelledby="chip-group-26-label"
+      aria-labelledby="chip-group-38-label"
       class="c0"
       data-blade-component="chip-group"
       role="radiogroup"
@@ -1376,7 +1376,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                   >
                     <input
                       aria-checked="false"
-                      aria-describedby="radio-27-helptext-28"
+                      aria-describedby="radio-39-helptext-40"
                       aria-disabled="true"
                       aria-invalid="false"
                       aria-required="false"
@@ -1430,7 +1430,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                   >
                     <input
                       aria-checked="false"
-                      aria-describedby="radio-29-helptext-30"
+                      aria-describedby="radio-41-helptext-42"
                       aria-disabled="false"
                       aria-invalid="false"
                       aria-required="false"

@@ -10,27 +10,14 @@ import {
 } from '@codesandbox/sandpack-react';
 import { DocsContext } from '@storybook/addon-docs';
 import dedent from 'dedent';
-import type { RecipeSandboxProps, SandboxProps } from './types';
+import type { RecipeSandboxProps, SandboxProps } from '../types';
 // @ts-expect-error We don't resolve JSON files right now. didn't want to change TS config for single JSON
 import packageJson from '../../../../package.json'; // eslint-disable-line
+import { getIndexTSX, getReactScriptsJSDependencies } from '../baseCode';
 import BaseBox from '~components/Box/BaseBox';
 import { castWebType } from '~utils';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
-
-const getBladeVersion = (): string => {
-  // We don't publish codesandbox ci on master so version is not present
-  const isMaster = process.env.GITHUB_REF === 'refs/heads/master';
-  const sha = process.env.GITHUB_SHA;
-  if (sha && !isMaster) {
-    const shortSha = sha.slice(0, 8);
-    return `https://pkg.csb.dev/razorpay/blade/commit/${shortSha}/@razorpay/blade`;
-  }
-
-  return '*';
-};
-
-const bladeVersion = getBladeVersion();
 
 const useSandpackSetup = ({
   code,
@@ -49,71 +36,10 @@ const useSandpackSetup = ({
   return {
     template: 'react-ts',
     files: {
-      '/index.tsx': dedent`import { StrictMode } from "react";
-            import { createRoot } from "react-dom/client";
-            import { createGlobalStyle } from "styled-components";
-  
-            import { BladeProvider, Box, Theme } from "@razorpay/blade/components";
-            import { ${themeTokenName}, createTheme } from "@razorpay/blade/tokens";
-            import '@razorpay/blade/fonts.css';
-            
-            import App from "./App";
-
-            const GlobalStyles = createGlobalStyle\`
-              * { 
-                box-sizing: border-box;
-              }
-              body {
-                margin: 0;
-                padding: 0;
-                font-family: \${(props) => props.theme.typography.fonts.family.text};
-              }
-            \`;
-            
-            const rootElement = document.getElementById("root");
-            
-            if (!rootElement) {
-              throw new Error("root is null");
-            }
-            const root = createRoot(rootElement);
-            
-            const getTheme = () => {
-              if(${Boolean(brandColor)}){
-                return createTheme({
-                  brandColor: "${brandColor}",
-                });
-              }
-              return ${themeTokenName};
-            }
-
-            root.render(
-              <StrictMode>
-                <BladeProvider themeTokens={getTheme()} colorScheme="${colorScheme}">
-                  <GlobalStyles />
-                  <Box 
-                    backgroundColor="surface.background.level1.lowContrast"
-                    minHeight="100vh"
-                    padding={['spacing.4', 'spacing.7']}
-                  >
-                    <App />
-                  </Box>
-                </BladeProvider>
-              </StrictMode>
-            );
-
-            console.clear(); // There could be some codesandbox warnings, clearing them here on init
-            `,
+      '/index.tsx': getIndexTSX({ themeTokenName, brandColor, colorScheme }),
       [`/App.${language}`]: dedent(code),
     },
-    customSetup: {
-      dependencies: {
-        react: packageJson.peerDependencies.react,
-        'react-dom': packageJson.peerDependencies['react-dom'],
-        'react-scripts': '4.0.3',
-        '@razorpay/blade': bladeVersion,
-        'styled-components': packageJson.peerDependencies['styled-components'],
-      },
-    },
+    customSetup: getReactScriptsJSDependencies(),
   };
 };
 

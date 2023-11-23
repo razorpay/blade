@@ -1,6 +1,6 @@
-# Tour API Decisions <!-- omit in toc -->
+# SpotlightPopover API Decisions <!-- omit in toc -->
 
-The Tour component is used to provide context as well as enable users to take certain actions on it. These are used to highlight a new feature or provide a guided tour to a new user.
+The SpotlightPopover component is used to provide context as well as enable users to take certain actions on it. These are used to highlight a new feature or provide a guided tour to a new user.
 
 <img src="./assets/tour-thumbnail.png" width="380" alt="Tooltip Thumbnail" />
 
@@ -9,16 +9,16 @@ The Tour component is used to provide context as well as enable users to take ce
 - [Components](#components)
 - [Basic Usage Structure](#basic-usage-structure)
 - [API](#api)
-  - [`Tour` API](#tour-api)
-  - [`TourStep` API](#tourstep-api)
-  - [`TourFooter` API](#tourfooter-api)
+  - [`SpotlightPopover` API](#tour-api)
+  - [`SpotlightPopoverStep` API](#tourstep-api)
+  - [`SpotlightPopoverFooter` API](#tourfooter-api)
 - [Usage](#usage)
 - [Motion](#motion)
 - [Open Questions And Technical Challenges](#open-questions-and-technical-challenges)
 - [React Native Specifics](#react-native-specifics)
-- [Multiple Tour Flows](#multiple-tour-flows)
+- [Multiple SpotlightPopover Flows](#multiple-tour-flows)
   - [Approach-1: Prefix `id` to avoid conflicts](#approach-1-prefix-id-to-avoid-conflicts)
-  - [Approach-2: Use `TourStep` to avoid conflicts](#approach-2-use-tourstep-to-avoid-conflicts)
+  - [Approach-2: Use `SpotlightPopoverStep` to avoid conflicts](#approach-2-use-tourstep-to-avoid-conflicts)
   - [Technical Challenge in React Native](#technical-challenge-in-react-native)
 - [API Design Challenges](#api-design-challenges)
   - [Approach: Let Consumer Compose `Popover`](#approach-let-consumer-compose-popover)
@@ -32,24 +32,24 @@ The Tour component is used to provide context as well as enable users to take ce
 
 ## Design
 
-[Figma Link](https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=63871%3A13263&mode=dev) to all variants of the Tour component
+[Figma Link](https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=63871%3A13263&mode=dev) to all variants of the SpotlightPopover component
 
 ## Features
 
-- [x] **Tour:** A guided tour with multiple steps
+- [x] **SpotlightPopover:** A guided tour with multiple steps
 - [x] **Masking:** Mask the rest of the page except the highlighted element.
 
 ## Components
 
-- **Tour:** A guided tour with multiple steps
-- **TourStep:** An enhancer component which is used to wrap the element that needs to be highlighted with an unique identifier.
-- **TourFooter:** An opt in component which you can use to compose footer which has predefined button placements with consistent spacing as defined in figma.
+- **SpotlightPopover:** A guided tour with multiple steps
+- **SpotlightPopoverStep:** An enhancer component which is used to wrap the element that needs to be highlighted with an unique identifier.
+- **SpotlightPopoverFooter:** An opt in component which you can use to compose footer which has predefined button placements with consistent spacing as defined in figma.
 
 ## Basic Usage Structure
 
-With Tour component, you can specify an array of steps with a `name` prop for each step, and then use the `TourStep` component to wrap the element that needs to be highlighted with the same `name` prop.
+With SpotlightPopover component, you can specify an array of steps with a `name` prop for each step, and then use the `SpotlightPopoverStep` component to wrap the element that needs to be highlighted with the same `name` prop.
 
-The Tour component internally handles everything for your
+The SpotlightPopover component internally handles everything for your
 
 - Masking of the highlighted component
 - Internal state management of `activeStep`
@@ -63,30 +63,30 @@ const steps = [
     name: 'step-1',
     title: 'Step 1',
     content: () => <Text>Some content for step 1</Text>,
-    footer: (props) => <TourFooter {...props} actions={{}} />
+    footer: (props) => <SpotlightPopoverFooter {...props} actions={{}} />
   },
   // ...more steps
 ];
 
-<Tour steps={steps}>
+<SpotlightPopover steps={steps}>
   // ... more jsx
-  <TourStep name="step-1">
+  <SpotlightPopoverStep name="step-1">
     <Box>I'll be highlighted</Box>
-  </TourStep>
-</Tour>;
+  </SpotlightPopoverStep>
+</SpotlightPopover>;
 ```
 
 ## API
 
-### `Tour` API
+### `SpotlightPopover` API
 
-The `Tour` component is used to render a guided tour with multiple steps.
+The `SpotlightPopover` component is used to render a guided tour with multiple steps.
 Each tour `step` will have a subset of props from the `Popover` component, with extra props for the tour related logic.
 
 > Check the Popover API Decisions [here](https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Popover/_decisions/decisions.md)
 
 ```jsx
-// Step will have similar props as the Popover component, With extra Tour related props.
+// Step will have similar props as the Popover component, With extra SpotlightPopover related props.
 type Step = {
   /**
    * Unique identifier for the tour step
@@ -117,7 +117,7 @@ type Step = {
   placement?: UseFloatingOptions['placement'];
 }
 
-type TourProps = {
+type SpotlightPopoverProps = {
   /**
    * Array of steps to be rendered
    *
@@ -147,9 +147,9 @@ type TourProps = {
 }
 ```
 
-### `TourStep` API
+### `SpotlightPopoverStep` API
 
-TourStep is an enhancer component which is used to wrap the element that needs to be highlighted with a specific unique identifier.
+SpotlightPopoverStep is an enhancer component which is used to wrap the element that needs to be highlighted with a specific unique identifier.
 
 This component is needed because:
 
@@ -158,14 +158,14 @@ This component is needed because:
 
 But to keep the API consistent between web & native, we will also expose this component for web.
 
-> Note: on web, this component doesn't attach an `id` to the DOM element, instead it uses `ref` to collect the DOM element and save it to the state inside the `Tour` component, See below [discussions](#react-native-specifics) to know more about this approach.
+> Note: on web, this component doesn't attach an `id` to the DOM element, instead it uses `ref` to collect the DOM element and save it to the state inside the `SpotlightPopover` component, See below [discussions](#react-native-specifics) to know more about this approach.
 
 ```jsx
-type TourStepProps = {
+type SpotlightPopoverStepProps = {
   /**
    * Unique identifier/name for the tour step
    *
-   * This should be the same as the `name` prop of the element inside the `steps` array of the `Tour` component
+   * This should be the same as the `name` prop of the element inside the `steps` array of the `SpotlightPopover` component
    */
   name: string
   /**
@@ -175,18 +175,18 @@ type TourStepProps = {
 };
 ```
 
-Note that, in order for TourStep to work properly it needs access to it's children ref, so the children should expose a ref.
+Note that, in order for SpotlightPopoverStep to work properly it needs access to it's children ref, so the children should expose a ref.
 
-### `TourFooter` API
+### `SpotlightPopoverFooter` API
 
-TourFooter is an opt in component which you can use to compose footer which has predefined button placements with consistent spacing as defined in figma. 
+SpotlightPopoverFooter is an opt in component which you can use to compose footer which has predefined button placements with consistent spacing as defined in figma. 
 
 You can either use this (recommended) or compose your own footer component as per your product usecase.
 
 It'll have similar API like Alert's `actions`, and will have subset of props from the `Button` component.
 
 ```jsx
-type TourFooterAction = {
+type SpotlightPopoverFooterAction = {
   text?: string;
   variant?: 'primary' | 'secondary' | 'tertiary';
   icon?: IconComponent;
@@ -196,12 +196,12 @@ type TourFooterAction = {
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
-type TourFooterProps = {
+type SpotlightPopoverFooterProps = {
   activeStep: number;
   totalSteps: number;
   actions: {
-    primary?: TourFooterAction;
-    secondary?: TourFooterAction;
+    primary?: SpotlightPopoverFooterAction;
+    secondary?: SpotlightPopoverFooterAction;
   };
 };
 ```
@@ -209,14 +209,14 @@ type TourFooterProps = {
 ## Usage
 
 ```jsx
-import { Tour, TourFooter } from '@razorpay/blade/components';
-import type { TourSteps } from '@razorpay/blade/components';
+import { SpotlightPopover, SpotlightPopoverFooter } from '@razorpay/blade/components';
+import type { SpotlightPopoverSteps } from '@razorpay/blade/components';
 
 const Footer = ({ activeStep, totalSteps, goToNext, goToPrevious, stopTour }) => {
   const isLast = activeStep === totalSteps - 1;
   const isFirst = activeStep === 0;
   return (
-    <TourFooter
+    <SpotlightPopoverFooter
       activeStep={activeStep}
       totalSteps={totalSteps}
       actions={{
@@ -231,7 +231,7 @@ const Footer = ({ activeStep, totalSteps, goToNext, goToPrevious, stopTour }) =>
   );
 };
 
-const steps: TourSteps = [
+const steps: SpotlightPopoverSteps = [
   {
     name: 'step-1',
     title: 'Step 1',
@@ -287,8 +287,8 @@ const App = () => {
 
   return (
     <Box>
-      <Button onClick={() => setIsOpen(true)}>Show Tour</Button>
-      <Tour
+      <Button onClick={() => setIsOpen(true)}>Show SpotlightPopover</Button>
+      <SpotlightPopover
         steps={steps}
         isOpen={isOpen}
         onOpenChange={handleOpenChange}
@@ -297,7 +297,7 @@ const App = () => {
         activeStep={activeStep}
       >
         <DashboardPage />
-      </Tour>
+      </SpotlightPopover>
     </Box>
   );
 };
@@ -306,25 +306,25 @@ const App = () => {
 const DashboardPage = () => {
   return (
     <Box>
-      <TourStep name="step-1">
+      <SpotlightPopoverStep name="step-1">
         <Button>Click me</Button>
-      </TourStep>
+      </SpotlightPopoverStep>
 
       <Box>
-        <TourStep name="step-2">
+        <SpotlightPopoverStep name="step-2">
           <Text>Some content</Text>
-        </TourStep>
+        </SpotlightPopoverStep>
       </Box>
 
       <Card>
         <CardBody>
-          <TourStep name="step-3">
+          <SpotlightPopoverStep name="step-3">
             <Box>
               <Text>Some content</Text>
               <Text>Some content</Text>
               <Text>Some content</Text>
             </Box>
-          </TourStep>
+          </SpotlightPopoverStep>
         </CardBody>
       </Card>
     </Box>
@@ -334,7 +334,7 @@ const DashboardPage = () => {
 
 ## Motion
 
-Check/Provide feedback for the motion for Tour component [here](https://razorpay.slack.com/archives/C0274H7QRC1/p1697520879941439)
+Check/Provide feedback for the motion for SpotlightPopover component [here](https://razorpay.slack.com/archives/C0274H7QRC1/p1697520879941439)
 
 https://github.com/razorpay/blade/assets/35374649/5830c059-fbd6-461e-915c-e3a98e930735
 
@@ -342,7 +342,7 @@ https://github.com/razorpay/blade/assets/35374649/5830c059-fbd6-461e-915c-e3a98e
 
 ---
 
-> NOTE: The below sections are discussions, decisions & challenges we faced while designing the API for the `Tour` component.
+> NOTE: The below sections are discussions, decisions & challenges we faced while designing the API for the `SpotlightPopover` component.
 > If you are interested in diving deeper into the rabbit hole, you can read the below sections, or else you can skip them.
 
 ## Open Questions And Technical Challenges
@@ -351,44 +351,44 @@ https://github.com/razorpay/blade/assets/35374649/5830c059-fbd6-461e-915c-e3a98e
 
 On react-native there is 2 differences in the API compared to web:
 
-1. `TourStep` component is needed.
-2. `Tour` component needs to wrap the whole app
+1. `SpotlightPopoverStep` component is needed.
+2. `SpotlightPopover` component needs to wrap the whole app
 
-**1. `TourStep` Component is needed:**
+**1. `SpotlightPopoverStep` Component is needed:**
 
-As highlighted earlier in the [API](#api) section, the `TourStep` component is a `react-native` only enhancer component, which is used to wrap the element that needs to be highlighted with a specific unique identifier.
+As highlighted earlier in the [API](#api) section, the `SpotlightPopoverStep` component is a `react-native` only enhancer component, which is used to wrap the element that needs to be highlighted with a specific unique identifier.
 
-Another thing to note is that, the wrapped component needs to expose it's `ref` so that the `TourStep` component can collect the `ref` and save it to the state inside the `Tour` component.
+Another thing to note is that, the wrapped component needs to expose it's `ref` so that the `SpotlightPopoverStep` component can collect the `ref` and save it to the state inside the `SpotlightPopover` component.
 
 The usage example will look something like this:
 
 ```jsx
-// ... Tour related components (their API stay mostly the same)
+// ... SpotlightPopover related components (their API stay mostly the same)
 
 // In some other file: DashboardPage.tsx
 const DashboardPage = () => {
   return (
     <Box>
-      <TourStep id="step-1">
+      <SpotlightPopoverStep id="step-1">
         <Button>Click me</Button>
-      </TourStep>
+      </SpotlightPopoverStep>
       <Box>
-        <TourStep id="step-2">
+        <SpotlightPopoverStep id="step-2">
           <Box padding="spacing.5">
             <Text>Some content</Text>
           </Box>
-        </TourStep>
+        </SpotlightPopoverStep>
       </Box>
 
       <Card>
         <CardBody>
-          <TourStep id="step-3">
+          <SpotlightPopoverStep id="step-3">
             <Box id="step-3">
               <Text>Some content</Text>
               <Text>Some content</Text>
               <Text>Some content</Text>
             </Box>
-          </TourStep>
+          </SpotlightPopoverStep>
         </CardBody>
       </Card>
     </Box>
@@ -410,20 +410,20 @@ Now the open question is:
 The `web` implementation will look like this:
 
 ```jsx
-const TourStep = ({ id, children }) => {
+const SpotlightPopoverStep = ({ id, children }) => {
   return React.cloneElement(child, { id });
 };
 ```
 
 There's also a downside to this approach on web:
 
-- Imagine if consumer wraps the `TourStep` with an `id` to a component which doesn't even accept the `id` prop, consumer won't get any type errors and `id` won't get passed to the DOM.
+- Imagine if consumer wraps the `SpotlightPopoverStep` with an `id` to a component which doesn't even accept the `id` prop, consumer won't get any type errors and `id` won't get passed to the DOM.
 
 ```jsx
 // No type error :( this is a footgun for consumers
-<TourStep id="step-1">
+<SpotlightPopoverStep id="step-1">
   <ThisComponentDoesntAccceptIdProp />
-</TourStep>
+</SpotlightPopoverStep>
 
 // Proper type error :)
 <ThisComponentDoesntAccceptIdProp id="step-1" />
@@ -438,23 +438,23 @@ Kamlesh suggested few ways to directly use the `ref` and letting consumer attach
 
 And on the web, there was a problem that even though simply adding `id` could work, not all our components had `id` prop. That means consumers will have to wrap everything with a `Box`.
 
-- We decided **not** to go with the `id` approach on web, and instead go with the same implementation as the [react-native POC](https://github.com/razorpay/blade/compare/master...anu/tour-rn-poc#diff-4fe985a90d9ce955346ffc61e152a98272f4d02e044111d30241eb63c8fcf1b1R168-R183), where we keep track of refs of the elements via the `TourStep` component.
+- We decided **not** to go with the `id` approach on web, and instead go with the same implementation as the [react-native POC](https://github.com/razorpay/blade/compare/master...anu/tour-rn-poc#diff-4fe985a90d9ce955346ffc61e152a98272f4d02e044111d30241eb63c8fcf1b1R168-R183), where we keep track of refs of the elements via the `SpotlightPopoverStep` component.
   - Pros:
     - API is now same on both RN & Web
-    - No need to wrap everything with Box, consumers can use the TourStep enhancer component.
+    - No need to wrap everything with Box, consumers can use the SpotlightPopoverStep enhancer component.
     - Simplified implementation, since now we don't need to maintain two types of implementation 1 for native (with refs) 1 for web (with ids).
 
-**2. Tour needs to wrap the whole app:**
+**2. SpotlightPopover needs to wrap the whole app:**
 
-The `Tour` component needs to wrap the whole app, because the `TourStep` needs to collect the `ref` of the element that needs to be highlighted and save it to the state inside the `Tour` component.
+The `SpotlightPopover` component needs to wrap the whole app, because the `SpotlightPopoverStep` needs to collect the `ref` of the element that needs to be highlighted and save it to the state inside the `SpotlightPopover` component.
 
 Check the POC implementation that we did for react-native [here](https://github.com/razorpay/blade/compare/master...anu/tour-rn-poc#diff-4fe985a90d9ce955346ffc61e152a98272f4d02e044111d30241eb63c8fcf1b1R168-R183)
 
 **Conclusion:**
 
-- Now that we decided to go with the `TourStep` approach on both web & native, we will have to wrap the whole app with the `Tour` component on both web & native.
+- Now that we decided to go with the `SpotlightPopoverStep` approach on both web & native, we will have to wrap the whole app with the `SpotlightPopover` component on both web & native.
 
-## Multiple Tour Flows
+## Multiple SpotlightPopover Flows
 
 In a given product, there can be multiple tour flows, for example:
 
@@ -473,10 +473,10 @@ It will look like this:
 
 ```jsx
 
-import { Tour } from '@razorpay/blade/components';
-import type { TourSteps } from '@razorpay/blade/components';
+import { SpotlightPopover } from '@razorpay/blade/components';
+import type { SpotlightPopoverSteps } from '@razorpay/blade/components';
 
-const globalSteps: TourSteps = [
+const globalSteps: SpotlightPopoverSteps = [
   {
     id: 'global-step-1',
     title: 'Step 1',
@@ -489,7 +489,7 @@ const globalSteps: TourSteps = [
   },
 ];
 
-const paymentLinkSteps: TourSteps = [
+const paymentLinkSteps: SpotlightPopoverSteps = [
   {
     id: 'paymentlink-step-1',
     title: 'Step 1',
@@ -505,10 +505,10 @@ const paymentLinkSteps: TourSteps = [
 const App = () => {
   return (
     <Box>
-      <Tour
+      <SpotlightPopover
         steps={globalSteps}
       />
-       <Tour
+       <SpotlightPopover
         steps={paymentLinksSteps}
       />
     </Box>
@@ -540,53 +540,53 @@ const PaymentLinksPage = () => {
 };
 ```
 
-### Approach-2: Use `TourStep` to avoid conflicts
+### Approach-2: Use `SpotlightPopoverStep` to avoid conflicts
 
-Now with this approach the `TourStep` component becomes a bit more useful on web too.
+Now with this approach the `SpotlightPopoverStep` component becomes a bit more useful on web too.
 
-What we can do is add a key prop to the `TourStep` component, and use that key to automatically prefix the `id` prop.
+What we can do is add a key prop to the `SpotlightPopoverStep` component, and use that key to automatically prefix the `id` prop.
 
 [rn-tourguide](https://github.com/xcarpentier/rn-tourguide?tab=readme-ov-file#using-multiple-tours) uses a similar approach.
 
 ```jsx
 // No need to prefix the ids manually in steps array.
 
-<Tour tourKey="global" steps={globalSteps} />;
-<Tour tourKey="paymentlinks" steps={paymentLinksSteps} />;
+<SpotlightPopover tourKey="global" steps={globalSteps} />;
+<SpotlightPopover tourKey="paymentlinks" steps={paymentLinksSteps} />;
 
 // file: DashboardPage.tsx
-<TourStep tourKey="global" id="step-1">
+<SpotlightPopoverStep tourKey="global" id="step-1">
   <Button>Click me</Button>
-</TourStep>;
+</SpotlightPopoverStep>;
 
 // file: PaymentLinks.tsx
-<TourStep tourKey="paymentlinks" id="step-1">
+<SpotlightPopoverStep tourKey="paymentlinks" id="step-1">
   <Button>Click me</Button>
-</TourStep>;
+</SpotlightPopoverStep>;
 ```
 
 ### Technical Challenge in React Native
 
-As mentioned earlier in the [React Native Specifics](#react-native-specifics) section, the `Tour` component needs to wrap the whole app. But this means that we can't have multiple `Tour` components in the same page because they will need to nest each other and the React.Context will only get the value from the nearest provider ([demo](https://codesandbox.io/s/multiple-react-context-nf7qjv?file=/src/App.tsx)).
+As mentioned earlier in the [React Native Specifics](#react-native-specifics) section, the `SpotlightPopover` component needs to wrap the whole app. But this means that we can't have multiple `SpotlightPopover` components in the same page because they will need to nest each other and the React.Context will only get the value from the nearest provider ([demo](https://codesandbox.io/s/multiple-react-context-nf7qjv?file=/src/App.tsx)).
 
 ```jsx
-<Tour tourKey="global">
-  <Tour tourKey="payments">
+<SpotlightPopover tourKey="global">
+  <SpotlightPopover tourKey="payments">
     <Example1 /> // this will get all the states from the `payments` tour
     <Example2 /> // this will also get all the states from the `payments` tour
-  </Tour>
-</Tour>
+  </SpotlightPopover>
+</SpotlightPopover>
 ```
 
 Trying to solve this will create a complexities, and will make the API more complex.
 
-[rn-tourguide](https://github.com/xcarpentier/rn-tourguide/blob/master/src/hooks/useTourGuideController.tsx) solves this by using custom event emitters and pushes events for each `tourKey` instead of relying solely on `React.Context`
+[rn-tourguide](https://github.com/xcarpentier/rn-tourguide/blob/master/src/hooks/useSpotlightPopoverGuideController.tsx) solves this by using custom event emitters and pushes events for each `tourKey` instead of relying solely on `React.Context`
 
 **Conclusion:**
 
 Given the complexity of solving this, we decided that:
 
-- Consumers can wrap the `<Tour />` component closer to the module they need the tour for, instead of wrapping the whole `App` in a single tour. And we will also document this on the storybook.
+- Consumers can wrap the `<SpotlightPopover />` component closer to the module they need the tour for, instead of wrapping the whole `App` in a single tour. And we will also document this on the storybook.
 - There may not be that many cases for multiple tour flows in the same page
 
 ## API Design Challenges
@@ -594,7 +594,7 @@ Given the complexity of solving this, we decided that:
 > You can skip this section if you are not interested in the API design challenges we faced.
 > This is just for the blade team's future reference.
 
-Initially we discussed if we can let consumers use the existing `Popover` to compose the own `Tour` component / flows.
+Initially we discussed if we can let consumers use the existing `Popover` to compose the own `SpotlightPopover` component / flows.
 
 ### Approach: Let Consumer Compose `Popover`
 
@@ -611,7 +611,7 @@ But, after thinking it through, We found it has a few major downsides:
 
 The tour flow & the popover's content for each flow will not always be in the same JSX tree nor will it be in the same file. This makes it hard to maintain and reason about the whole tour flow.
 
-For example, just taking an example of this [Tour flow in Dashboard](https://github.com/razorpay/dashboard/blob/44a954660b0d851cd5fedf48b44d85731e5c48ea/web/js/merchantLA/containers/MerchantTour/index.js):
+For example, just taking an example of this [SpotlightPopover flow in Dashboard](https://github.com/razorpay/dashboard/blob/44a954660b0d851cd5fedf48b44d85731e5c48ea/web/js/merchantLA/containers/MerchantSpotlightPopover/index.js):
 
 The content of the popover is in separate files:
 
@@ -629,14 +629,14 @@ Now imagine adding this much code in the middle of these files to make the tour 
 
 ```jsx
 <Popover
-  title="Tour title"
+  title="SpotlightPopover title"
   placement="bottom"
   // this is the first step in the tour flow
   isOpen={activeStep == 0}
   onOpenChange={handleClose}
   content={<Text>Hello World</Text>}
   footer={
-    <TourFooter
+    <SpotlightPopoverFooter
       activeStep={activeStep}
       setActiveStep={setActiveStep}
       totalSteps={domNodes.current.length}
@@ -658,7 +658,7 @@ And not just adding the JSX, the consumer will also have to ensure that:
 
 - The `activeStep === 0` logic is properly set and manually maintain the "which step count is this jsx for?" logic in different different files.
 - The `domNodes` array is updated with the correct ref for each step, with the correct **index** (domNodes.current[0])
-- Consumers will have to manually maintain the `totalSteps` count for the tour flow, they will have no idea how many steps are there in the tour flow, they will have to manually count the steps and update the `totalSteps` prop in the `TourFooter` component.
+- Consumers will have to manually maintain the `totalSteps` count for the tour flow, they will have no idea how many steps are there in the tour flow, they will have to manually count the steps and update the `totalSteps` prop in the `SpotlightPopoverFooter` component.
 
 This is a lot of code to add in the middle of the existing codebase, and it will be extremely hard to maintain and reason about the whole tour flow.
 And this is not something a product engineer should be maintaining or worry about.
@@ -674,16 +674,16 @@ To have two different tours, the consumer will have to maintain states for `acti
 
 ```jsx
 // In AppRoot.tsx
-const [appTourActiveState, setAppTourActiveState] = useState(0);
-const [appTourDomNodes, setAppTourDomNodes] = useState([]);
-const [appTourTotalSteps, setAppTourTotalSteps] = useState(0);
-const [appTourMask, setAppTourMask] = useState({ x, y, w, h });
+const [appSpotlightPopoverActiveState, setAppSpotlightPopoverActiveState] = useState(0);
+const [appSpotlightPopoverDomNodes, setAppSpotlightPopoverDomNodes] = useState([]);
+const [appSpotlightPopoverTotalSteps, setAppSpotlightPopoverTotalSteps] = useState(0);
+const [appSpotlightPopoverMask, setAppSpotlightPopoverMask] = useState({ x, y, w, h });
 
 // In PaymentLinks.tsx
-const [paymentTourActiveState, setPaymentTourActiveState] = useState(0);
-const [paymentTourDomNodes, setPaymentTourDomNodes] = useState([]);
-const [paymentTourTotalSteps, setPaymentTourTotalSteps] = useState(0);
-const [paymentTourMask, setpaymentTourMask] = useState({ x, y, w, h });
+const [paymentSpotlightPopoverActiveState, setPaymentSpotlightPopoverActiveState] = useState(0);
+const [paymentSpotlightPopoverDomNodes, setPaymentSpotlightPopoverDomNodes] = useState([]);
+const [paymentSpotlightPopoverTotalSteps, setPaymentSpotlightPopoverTotalSteps] = useState(0);
+const [paymentSpotlightPopoverMask, setpaymentSpotlightPopoverMask] = useState({ x, y, w, h });
 ```
 
 This will get extremely messy and tedious to maintain.
@@ -709,13 +709,13 @@ We did a [POC for react-native](https://github.com/razorpay/blade/compare/master
 
 #### Conclusion
 
-Now with all the above points, We decided that it's better if we expose a `Tour` component which will maintain the state/logic/steps/flows for consumers with a clean and simple API.
+Now with all the above points, We decided that it's better if we expose a `SpotlightPopover` component which will maintain the state/logic/steps/flows for consumers with a clean and simple API.
 
 This will also mean we can maintain an optimal consistency between web & native API. Otherwise consumers will have vastly different abstraction for web & native.
 
 ## MoMs
 
-**Tour Component MoM**
+**SpotlightPopover Component MoM**
 **Participants:** @Anurag Hazra @kamlesh @chaitanya @Saurabh
 **Date:** 6th Nov, 2023
 
@@ -725,7 +725,7 @@ This will also mean we can maintain an optimal consistency between web & native 
 2. API difference between web & native
 3. ReactNative Implementation challenges
 4. Challenges with supporting multiple tour flows
-5. Tour footer component flexibility discussion
+5. SpotlightPopover footer component flexibility discussion
 6. Discussed about scoping out few things
 
 **1. Letting consumers compose their own tour flows - Giving context to kamlesh**
@@ -735,7 +735,7 @@ Gave context to kamlesh on the discussion that me, abinash, chaitanya & saurabh 
 **2. API difference between web & native**
 
 Discussed about the API differences between RN & Web (Check the API Doc for more info)
-On react-native we cannot have id so we approached a ref based solution which meant we needed to expose a react-native specific component TourStep to consumers so we can keep track of ids & refs.
+On react-native we cannot have id so we approached a ref based solution which meant we needed to expose a react-native specific component SpotlightPopoverStep to consumers so we can keep track of ids & refs.
 
 Kamlesh suggested few ways to directly use the ref and letting consumer attach the ref to the components, but that had few issues concerning complexity & overhead for consumers.
 
@@ -743,12 +743,12 @@ Even on the web, there was a problem that even though simply adding id could wor
 
 **Conclusion:**
 
-- We decided to not go with the id approach and instead go with the same implementation as the react-native POC, where we keep track of refs of the elements via the TourStep component.
+- We decided to not go with the id approach and instead go with the same implementation as the react-native POC, where we keep track of refs of the elements via the SpotlightPopoverStep component.
 
 **Pros:**
 
 - API is now same on both RN & Web
-- No need to wrap everything with Box, consumers can use the TourStep enhancer component.
+- No need to wrap everything with Box, consumers can use the SpotlightPopoverStep enhancer component.
 - Simplified implementation, since now we don't need to maintain two types of implementation 1 for native (with refs) 1 for web (with ids).
 
 **3. ReactNative Implementation challenges**
@@ -762,16 +762,16 @@ Discussed few ReactNative specific challenges:
 
 Discussed issues multiple tour flows:
 
-Gave some context on the issues with multiple tour flows, and now that even on web we are going ahead with TourStep component this will also be an issue on web also, so simply prefixing the id with some string wont work.
+Gave some context on the issues with multiple tour flows, and now that even on web we are going ahead with SpotlightPopoverStep component this will also be an issue on web also, so simply prefixing the id with some string wont work.
 
 Discussed the issues with React context API.
 
 **Conclusion:**
 
-- Consumers can wrap the `<Tour />` component closer to the module they need the tour for, instead of wrapping the whole App in a single tour. And we will also document this on the storybook.
+- Consumers can wrap the `<SpotlightPopover />` component closer to the module they need the tour for, instead of wrapping the whole App in a single tour. And we will also document this on the storybook.
 - There may not be that many cases for multiple tour flows in the same page
 
-**5. Tour footer component flexibility discussion**
+**5. SpotlightPopover footer component flexibility discussion**
 
 Discussed about if we should make the Footer a prop based more rigid API or keep it as JSX which will be more flexible.
 
@@ -794,12 +794,12 @@ Also discussed if we can cut scope for now, since I'm going OOO from 11th, it wo
 
 Our POCs:
 
-- [Tour Web POC](https://github.com/razorpay/blade/compare/master...anu/tour-poc#diff-4fe985a90d9ce955346ffc61e152a98272f4d02e044111d30241eb63c8fcf1b1R198)
-- [Tour RN POC](https://github.com/razorpay/blade/compare/master...anu/tour-rn-poc#diff-4fe985a90d9ce955346ffc61e152a98272f4d02e044111d30241eb63c8fcf1b1R203)
+- [SpotlightPopover Web POC](https://github.com/razorpay/blade/compare/master...anu/tour-poc#diff-4fe985a90d9ce955346ffc61e152a98272f4d02e044111d30241eb63c8fcf1b1R198)
+- [SpotlightPopover RN POC](https://github.com/razorpay/blade/compare/master...anu/tour-rn-poc#diff-4fe985a90d9ce955346ffc61e152a98272f4d02e044111d30241eb63c8fcf1b1R203)
 
 References:
 
-- Dashboard's [Tour](https://github.com/razorpay/dashboard/blob/44a954660b0d851cd5fedf48b44d85731e5c48ea/web/js/merchantLA/containers/MerchantTour/index.js) component
+- Dashboard's [SpotlightPopover](https://github.com/razorpay/dashboard/blob/44a954660b0d851cd5fedf48b44d85731e5c48ea/web/js/merchantLA/containers/MerchantSpotlightPopover/index.js) component
 - https://github.com/stackbuilders/react-native-spotlight-tour
 - https://github.com/elrumordelaluz/reactour
 - https://github.com/xcarpentier/rn-tourguide

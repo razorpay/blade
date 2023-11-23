@@ -1,5 +1,17 @@
 # @razorpay/blade
 
+## 10.18.1
+
+### Patch Changes
+
+- 77b31aa1: fix(blade): remove extra margin left on carousel
+
+## 10.18.0
+
+### Minor Changes
+
+- 88aba1d6: feat(blade): added SpotlightPopoverTour web implementation
+
 ## 10.17.4
 
 ### Patch Changes
