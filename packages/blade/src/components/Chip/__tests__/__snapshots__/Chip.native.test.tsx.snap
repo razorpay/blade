@@ -17,7 +17,7 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
     }
   >
     <View
-      accessibilityLabelledBy="chip-group-31-label"
+      accessibilityLabelledBy="chip-group-47-label"
       accessibilityRole="radiogroup"
       accessible={true}
       data-blade-component="chip-group"
@@ -141,7 +141,7 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
               }
             >
               <View
-                accessibilityDescribedBy="radio-32-helptext-33"
+                accessibilityDescribedBy="radio-48-helptext-49"
                 accessibilityInvalid={false}
                 accessibilityRequired={false}
                 accessibilityRole="radio"
@@ -347,7 +347,7 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
               }
             >
               <View
-                accessibilityDescribedBy="radio-34-helptext-35"
+                accessibilityDescribedBy="radio-50-helptext-51"
                 accessibilityInvalid={false}
                 accessibilityRequired={false}
                 accessibilityRole="radio"
@@ -1800,7 +1800,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
     }
   >
     <View
-      accessibilityLabelledBy="chip-group-26-label"
+      accessibilityLabelledBy="chip-group-38-label"
       accessibilityRole="radiogroup"
       accessible={true}
       data-blade-component="chip-group"
@@ -1924,7 +1924,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
               }
             >
               <View
-                accessibilityDescribedBy="radio-27-helptext-28"
+                accessibilityDescribedBy="radio-39-helptext-40"
                 accessibilityInvalid={false}
                 accessibilityRequired={false}
                 accessibilityRole="radio"
@@ -2130,7 +2130,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
               }
             >
               <View
-                accessibilityDescribedBy="radio-29-helptext-30"
+                accessibilityDescribedBy="radio-41-helptext-42"
                 accessibilityInvalid={false}
                 accessibilityRequired={false}
                 accessibilityRole="radio"

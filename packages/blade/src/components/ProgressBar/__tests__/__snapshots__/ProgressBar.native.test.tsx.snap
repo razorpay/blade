@@ -354,7 +354,7 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
         }
         accessible={true}
         data-blade-component="base-box"
-        id="progress-7"
+        id="progress-10"
         style={
           [
             {},
@@ -520,7 +520,7 @@ exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
         }
         accessible={true}
         data-blade-component="base-box"
-        id="progress-9"
+        id="progress-14"
         style={
           [
             {},
@@ -686,7 +686,7 @@ exports[`<ProgressBar /> should render high contrast information intent Progress
         }
         accessible={true}
         data-blade-component="base-box"
-        id="progress-17"
+        id="progress-30"
         style={
           [
             {},
@@ -852,7 +852,7 @@ exports[`<ProgressBar /> should render high contrast negative intent ProgressBar
         }
         accessible={true}
         data-blade-component="base-box"
-        id="progress-13"
+        id="progress-22"
         style={
           [
             {},
@@ -1018,7 +1018,7 @@ exports[`<ProgressBar /> should render high contrast neutral intent ProgressBar 
         }
         accessible={true}
         data-blade-component="base-box"
-        id="progress-19"
+        id="progress-34"
         style={
           [
             {},
@@ -1184,7 +1184,7 @@ exports[`<ProgressBar /> should render high contrast notice intent ProgressBar 1
         }
         accessible={true}
         data-blade-component="base-box"
-        id="progress-15"
+        id="progress-26"
         style={
           [
             {},
@@ -1350,7 +1350,7 @@ exports[`<ProgressBar /> should render high contrast positive intent ProgressBar
         }
         accessible={true}
         data-blade-component="base-box"
-        id="progress-11"
+        id="progress-18"
         style={
           [
             {},
@@ -1516,7 +1516,7 @@ exports[`<ProgressBar /> should render low contrast information intent ProgressB
         }
         accessible={true}
         data-blade-component="base-box"
-        id="progress-16"
+        id="progress-28"
         style={
           [
             {},
@@ -1682,7 +1682,7 @@ exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 
         }
         accessible={true}
         data-blade-component="base-box"
-        id="progress-12"
+        id="progress-20"
         style={
           [
             {},
@@ -1848,7 +1848,7 @@ exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1
         }
         accessible={true}
         data-blade-component="base-box"
-        id="progress-18"
+        id="progress-32"
         style={
           [
             {},
@@ -2014,7 +2014,7 @@ exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`
         }
         accessible={true}
         data-blade-component="base-box"
-        id="progress-14"
+        id="progress-24"
         style={
           [
             {},
@@ -2180,7 +2180,7 @@ exports[`<ProgressBar /> should render low contrast positive intent ProgressBar 
         }
         accessible={true}
         data-blade-component="base-box"
-        id="progress-10"
+        id="progress-16"
         style={
           [
             {},
@@ -2476,7 +2476,7 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
         }
         accessible={true}
         data-blade-component="base-box"
-        id="progress-6"
+        id="progress-8"
         style={
           [
             {},
@@ -2597,7 +2597,7 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
         }
         accessible={true}
         data-blade-component="base-box"
-        id="meter-8"
+        id="meter-12"
         style={
           [
             {},
@@ -2893,7 +2893,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
         }
         accessible={true}
         data-blade-component="base-box"
-        id="progress-5"
+        id="progress-6"
         style={
           [
             {},
