@@ -19,7 +19,7 @@ export default {
   title: 'Components/Table',
   component: TableComponent,
   args: {
-    selectionType: undefined,
+    selectionType: 'none',
     rowDensity: 'normal',
   },
   argTypes: {

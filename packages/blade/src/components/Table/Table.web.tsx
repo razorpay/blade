@@ -52,9 +52,10 @@ export type TableProps<Item> = {
   data: TableData<Item>;
   /**
    * The selectionType prop determines the type of selection that is allowed on the table.
-   * The selectionType prop can be 'single' or 'multiple'.
+   * The selectionType prop can be 'none', 'single' or 'multiple'.
+   * @default 'none'
    **/
-  selectionType?: 'single' | 'multiple';
+  selectionType?: 'none' | 'single' | 'multiple';
   /**
    * The onSelectionChange prop is a function that is called when the selection changes.
    * The function is called with an object that has a values property that is an array of the selected rows.
@@ -141,9 +142,13 @@ export type TableProps<Item> = {
   isRefreshing?: boolean;
 } & StyledPropsBlade;
 
-const rowSelectType: Record<NonNullable<TableProps<unknown>['selectionType']>, SelectTypes> = {
+const rowSelectType: Record<
+  NonNullable<TableProps<unknown>['selectionType']>,
+  SelectTypes | undefined
+> = {
   single: SelectTypes.SingleSelect,
   multiple: SelectTypes.MultiSelect,
+  none: undefined,
 };
 
 // Get the number of TableHeaderCell components.
@@ -199,7 +204,7 @@ const StyledReactTable = styled(ReactTable)<{ styledProps?: { height?: BoxProps[
 const Table = <Item,>({
   children,
   data,
-  selectionType,
+  selectionType = 'none',
   onSelectionChange,
   isHeaderSticky,
   isFooterSticky,
@@ -324,7 +329,7 @@ const Table = <Item,>({
       onChange: onSelectChange,
     },
     {
-      rowSelect: selectionType ? rowSelectType[selectionType] : undefined,
+      rowSelect: selectionType !== 'none' ? rowSelectType[selectionType] : undefined,
     },
   );
 
@@ -519,7 +524,7 @@ const Table = <Item,>({
             data={data}
             // @ts-expect-error ignore this, theme clashes with styled-component's theme. We're using useTheme from blade to get actual theme
             theme={tableTheme}
-            select={selectionType ? rowSelectConfig : null}
+            select={selectionType !== 'none' ? rowSelectConfig : null}
             sort={sortFunctions ? sort : null}
             styledProps={{
               height,

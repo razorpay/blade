@@ -127,7 +127,7 @@ const StyledBody = styled(Body)<{ isSelectable: boolean; showStripedRows: boolea
 
 const TableBody = ({ children }: TableBodyProps): React.ReactElement => {
   const { showStripedRows, selectionType } = useTableContext();
-  const isSelectable = Boolean(selectionType);
+  const isSelectable = selectionType !== 'none';
 
   return (
     <StyledBody
@@ -196,7 +196,8 @@ const CellWrapper = styled(BaseBox)<{
 const TableCell = ({ children }: TableCellProps): React.ReactElement => {
   const isChildrenString = typeof children === 'string';
   const { selectionType, rowDensity, showStripedRows, surfaceLevel } = useTableContext();
-  const isSelectable = Boolean(selectionType);
+  const isSelectable = selectionType !== 'none';
+
   return (
     <StyledCell
       tabIndex={0}
@@ -319,7 +320,7 @@ const TableRow = <Item,>({
     showStripedRows,
     setDisabledRows,
   } = useTableContext();
-  const isSelectable = Boolean(selectionType);
+  const isSelectable = selectionType !== 'none';
   const isMultiSelect = selectionType === 'multiple';
   const isSelected = selectedRows?.includes(item.id);
   useEffect(() => {
