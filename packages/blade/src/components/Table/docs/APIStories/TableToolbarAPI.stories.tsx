@@ -166,17 +166,6 @@ const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
                 </TableRow>
               ))}
             </TableBody>
-            <TableFooter>
-              <TableFooterRow>
-                {args.selectionType === 'multiple' && <TableFooterCell>-</TableFooterCell>}
-                <TableFooterCell>-</TableFooterCell>
-                <TableFooterCell>-</TableFooterCell>
-                <TableFooterCell>-</TableFooterCell>
-                <TableFooterCell>-</TableFooterCell>
-                <TableFooterCell>-</TableFooterCell>
-                <TableFooterCell>-</TableFooterCell>
-              </TableFooterRow>
-            </TableFooter>
           </>
         )}
       </TableComponent>
