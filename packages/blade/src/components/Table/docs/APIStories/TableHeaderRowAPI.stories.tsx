@@ -29,7 +29,7 @@ export default {
 } as Meta<typeof TableHeaderRow>;
 
 const nodes: Item[] = [
-  ...Array.from({ length: 200 }, (_, i) => ({
+  ...Array.from({ length: 5 }, (_, i) => ({
     id: (i + 1).toString(),
     paymentId: `rzp${Math.floor(Math.random() * 1000000)}`,
     amount: Number((Math.random() * 10000).toFixed(2)),

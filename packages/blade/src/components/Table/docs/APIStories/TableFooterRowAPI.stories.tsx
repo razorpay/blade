@@ -12,21 +12,21 @@ import { Badge } from '~components/Badge';
 
 export default {
   title: 'Components/Table/API',
-  component: TableHeader,
+  component: TableFooterRow,
   args: {},
   argTypes: {},
   parameters: {
     docs: {
       page: () => (
         <StoryPageWrapper
-          componentDescription="You can find a complete list of TableHeader props here"
-          componentName="TableHeader"
+          componentDescription="You can find a complete list of TableFooterRow props here"
+          componentName="TableFooterRow"
           apiDecisionComponentName="Table"
         />
       ),
     },
   },
-} as Meta<typeof TableHeader>;
+} as Meta<typeof TableFooterRow>;
 
 const nodes: Item[] = [
   ...Array.from({ length: 5 }, (_, i) => ({
@@ -79,7 +79,7 @@ const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
       <TableComponent height="400px" data={data}>
         {(tableData) => (
           <>
-            <TableHeader {...args}>
+            <TableHeader>
               <TableHeaderRow>
                 <TableHeaderCell>ID</TableHeaderCell>
                 <TableHeaderCell>Amount</TableHeaderCell>
@@ -127,7 +127,7 @@ const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
               ))}
             </TableBody>
             <TableFooter>
-              <TableFooterRow>
+              <TableFooterRow {...args}>
                 <TableFooterCell>-</TableFooterCell>
                 <TableFooterCell>-</TableFooterCell>
                 <TableFooterCell>-</TableFooterCell>
@@ -143,6 +143,6 @@ const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
   );
 };
 
-export const TableHeaderStory = TableTemplate.bind({});
+export const TableFooterRowStory = TableTemplate.bind({});
 // Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
-TableHeaderStory.storyName = 'TableHeader';
+TableFooterRowStory.storyName = 'TableFooterRow';

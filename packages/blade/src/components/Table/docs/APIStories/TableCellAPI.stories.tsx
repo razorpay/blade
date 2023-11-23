@@ -12,24 +12,24 @@ import { Badge } from '~components/Badge';
 
 export default {
   title: 'Components/Table/API',
-  component: TableHeaderCell,
+  component: TableCell,
   args: {},
   argTypes: {},
   parameters: {
     docs: {
       page: () => (
         <StoryPageWrapper
-          componentDescription="You can find a complete list of TableHeaderCell props here"
-          componentName="TableHeaderCell"
+          componentDescription="You can find a complete list of TableCell props here"
+          componentName="TableCell"
           apiDecisionComponentName="Table"
         />
       ),
     },
   },
-} as Meta<typeof TableHeaderCell>;
+} as Meta<typeof TableCell>;
 
 const nodes: Item[] = [
-  ...Array.from({ length: 200 }, (_, i) => ({
+  ...Array.from({ length: 5 }, (_, i) => ({
     id: (i + 1).toString(),
     paymentId: `rzp${Math.floor(Math.random() * 1000000)}`,
     amount: Number((Math.random() * 10000).toFixed(2)),
@@ -143,6 +143,6 @@ const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
   );
 };
 
-export const TableHeaderCellStory = TableTemplate.bind({});
+export const TableCellStory = TableTemplate.bind({});
 // Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
-TableHeaderCellStory.storyName = 'TableHeaderCell';
+TableCellStory.storyName = 'TableCell';

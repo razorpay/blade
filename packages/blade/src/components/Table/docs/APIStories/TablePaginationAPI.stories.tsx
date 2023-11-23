@@ -4,32 +4,34 @@ import { Table as TableComponent } from '../../Table';
 import { TableHeader, TableHeaderRow, TableHeaderCell } from '../../TableHeader';
 import { TableBody, TableRow, TableCell } from '../../TableBody';
 import { TableFooter, TableFooterRow, TableFooterCell } from '../../TableFooter';
+import { TablePagination } from '../../TablePagination';
+import { TableToolbarActions, TableToolbar } from '../../TableToolbar';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
+import { Button } from '~components/Button';
+import { useTheme } from '~utils';
 import { Amount } from '~components/Amount';
 import { Code } from '~components/Typography';
 import { Badge } from '~components/Badge';
 
 export default {
   title: 'Components/Table/API',
-  component: TableHeader,
-  args: {},
-  argTypes: {},
+  component: TablePagination,
   parameters: {
     docs: {
       page: () => (
         <StoryPageWrapper
-          componentDescription="You can find a complete list of TableHeader props here"
-          componentName="TableHeader"
+          componentDescription="You can find a complete list of TablePagination props here"
+          componentName="TablePagination"
           apiDecisionComponentName="Table"
         />
       ),
     },
   },
-} as Meta<typeof TableHeader>;
+} as Meta<typeof TablePagination>;
 
 const nodes: Item[] = [
-  ...Array.from({ length: 5 }, (_, i) => ({
+  ...Array.from({ length: 10 }, (_, i) => ({
     id: (i + 1).toString(),
     paymentId: `rzp${Math.floor(Math.random() * 1000000)}`,
     amount: Number((Math.random() * 10000).toFixed(2)),
@@ -69,6 +71,9 @@ const data: TableData<Item> = {
 };
 
 const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
+  const { platform } = useTheme();
+  const onMobile = platform === 'onMobile';
+
   return (
     <Box
       backgroundColor="surface.background.level2.lowContrast"
@@ -76,17 +81,53 @@ const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
       overflow="auto"
       minHeight="400px"
     >
-      <TableComponent height="400px" data={data}>
+      <TableComponent
+        height="400px"
+        data={data}
+        onSelectionChange={({ values }) => console.log('Selected Rows:', values)}
+        sortFunctions={{
+          ID: (array) => array.sort((a, b) => Number(a.id) - Number(b.id)),
+          AMOUNT: (array) => array.sort((a, b) => a.amount - b.amount),
+          ACCOUNT: (array) => array.sort((a, b) => Number(a.account) - Number(b.account)),
+          PAYMENT_ID: (array) => array.sort((a, b) => a.paymentId.localeCompare(b.paymentId)),
+          DATE: (array) => array.sort((a, b) => a.date.getTime() - b.date.getTime()),
+          METHOD: (array) => array.sort((a, b) => a.method.localeCompare(b.method)),
+          STATUS: (array) => array.sort((a, b) => a.status.localeCompare(b.status)),
+        }}
+        onSortChange={({ sortKey, isSortReversed }) =>
+          console.log('Sort Key:', sortKey, 'Sort Reversed:', isSortReversed)
+        }
+        toolbar={
+          <TableToolbar>
+            <TableToolbarActions>
+              <Button variant="secondary" marginRight="spacing.2" isFullWidth={onMobile}>
+                Export
+              </Button>
+              <Button isFullWidth={onMobile}>Payout</Button>
+            </TableToolbarActions>
+          </TableToolbar>
+        }
+        pagination={
+          <TablePagination
+            {...args}
+            onPageChange={console.log}
+            defaultPageSize={10}
+            onPageSizeChange={console.log}
+            showPageSizePicker
+            showPageNumberSelector
+          />
+        }
+      >
         {(tableData) => (
           <>
-            <TableHeader {...args}>
+            <TableHeader>
               <TableHeaderRow>
-                <TableHeaderCell>ID</TableHeaderCell>
-                <TableHeaderCell>Amount</TableHeaderCell>
-                <TableHeaderCell>Account</TableHeaderCell>
-                <TableHeaderCell>Date</TableHeaderCell>
-                <TableHeaderCell>Method</TableHeaderCell>
-                <TableHeaderCell>Status</TableHeaderCell>
+                <TableHeaderCell headerKey="PAYMENT_ID">ID</TableHeaderCell>
+                <TableHeaderCell headerKey="AMOUNT">Amount</TableHeaderCell>
+                <TableHeaderCell headerKey="ACCOUNT">Account</TableHeaderCell>
+                <TableHeaderCell headerKey="DATE">Date</TableHeaderCell>
+                <TableHeaderCell headerKey="METHOD">Method</TableHeaderCell>
+                <TableHeaderCell headerKey="STATUS">Status</TableHeaderCell>
               </TableHeaderRow>
             </TableHeader>
             <TableBody>
@@ -128,6 +169,7 @@ const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
             </TableBody>
             <TableFooter>
               <TableFooterRow>
+                {args.selectionType === 'multiple' && <TableFooterCell>-</TableFooterCell>}
                 <TableFooterCell>-</TableFooterCell>
                 <TableFooterCell>-</TableFooterCell>
                 <TableFooterCell>-</TableFooterCell>
@@ -143,6 +185,6 @@ const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
   );
 };
 
-export const TableHeaderStory = TableTemplate.bind({});
+export const TablePaginationStory = TableTemplate.bind({});
 // Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
-TableHeaderStory.storyName = 'TableHeader';
+TablePaginationStory.storyName = 'TablePagination';
