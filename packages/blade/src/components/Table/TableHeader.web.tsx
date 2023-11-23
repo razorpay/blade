@@ -146,7 +146,7 @@ const _TableHeaderCell = ({ children, headerKey }: TableHeaderCellProps): React.
     headerKey && Boolean(currentSortedState.sortableColumns?.find((key) => key === headerKey));
   return (
     <StyledHeaderCell
-      // tabIndex={0}
+      tabIndex={0}
       surfaceLevel={surfaceLevel}
       isSortable={isSortable}
       onClick={() => {
