@@ -1290,7 +1290,6 @@ function App(): React.ReactElement {
         data={data}
         selectionType="multiple"
         showStripedRows={true}
-        gridTemplateColumns="min-content min-content min-content fit-content(200px)"
         toolbar={
           <TableToolbar>
             <TableToolbarActions>
