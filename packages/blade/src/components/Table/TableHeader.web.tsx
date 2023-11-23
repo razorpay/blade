@@ -93,7 +93,7 @@ const TableHeader = assignWithoutSideEffects(_TableHeader, {
   componentId: ComponentIds.TableHeader,
 });
 
-export type TableHeaderCellProps = {
+type TableHeaderCellProps = {
   /**
    * The children of TableHeaderCell can be a string or a ReactNode.
    **/
@@ -233,3 +233,4 @@ const TableHeaderRow = assignWithoutSideEffects(_TableHeaderRow, {
 });
 
 export { TableHeader, TableHeaderRow, TableHeaderCell, TableHeaderCellCheckbox };
+export type { TableHeaderProps, TableHeaderRowProps, TableHeaderCellProps };

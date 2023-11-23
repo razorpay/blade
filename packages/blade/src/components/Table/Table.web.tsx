@@ -31,15 +31,15 @@ import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 
-export type TableNode<Item> = Item & {
+type TableNode<Item> = Item & {
   id: Identifier;
 };
 
-export type TableData<Item> = {
+type TableData<Item> = {
   nodes: TableNode<Item>[];
 };
 
-export type TableProps<Item> = {
+type TableProps<Item> = {
   /**
    * The children of the Table component should be a function that returns TableHeader, TableBody and TableFooter components.
    * The function will be called with the tableData prop.
@@ -573,3 +573,4 @@ const Table = <Item,>({
 };
 
 export { Table };
+export type { TableProps, TableNode };

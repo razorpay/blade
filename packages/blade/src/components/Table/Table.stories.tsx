@@ -1,5 +1,5 @@
 import type { ComponentStory, Meta } from '@storybook/react';
-import type { TableData, TableProps } from './Table';
+import type { TableProps } from './Table';
 import { Table as TableComponent } from './Table';
 import { TableHeader, TableHeaderRow, TableHeaderCell } from './TableHeader';
 import { TableBody, TableRow, TableCell } from './TableBody';
@@ -428,7 +428,7 @@ type Item = {
   account: string;
   name: string;
 };
-const data: TableData<Item> = {
+const data: TableProps<Item>['data'] = {
   nodes,
 };
 

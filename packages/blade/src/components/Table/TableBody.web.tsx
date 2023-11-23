@@ -351,3 +351,4 @@ const TableRow = <Item,>({
 };
 
 export { TableBody, TableRow, TableCell };
+export type { TableBodyProps, TableRowProps, TableCellProps };

@@ -110,3 +110,4 @@ const TableFooterCell = ({ children }: TableFooterCellProps): React.ReactElement
 };
 
 export { TableFooter, TableFooterRow, TableFooterCell };
+export type { TableFooterProps, TableFooterRowProps, TableFooterCellProps };
