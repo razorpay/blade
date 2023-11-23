@@ -359,7 +359,9 @@ const componentData: ComponentStatusDataType = [
   },
   {
     name: 'Tabs',
-    status: 'in-design',
+    status: 'released',
+    releasedIn: '10.16.0',
+    storybookLink: 'Components/Tabs',
     description:
       'Tabs is a component which will allow you to show multiple clickable tabs in your UI',
   },
