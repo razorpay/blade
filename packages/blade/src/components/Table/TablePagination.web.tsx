@@ -4,6 +4,7 @@ import isUndefined from 'lodash/isUndefined';
 import getIn from 'lodash/get';
 import { useTableContext } from './TableContext';
 import { tablePagination } from './tokens';
+import type { TablePaginationProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
 import {
   ChevronLeftIcon,
@@ -19,49 +20,6 @@ import { Text } from '~components/Typography';
 import { useTheme } from '~utils';
 import { Button } from '~components/Button';
 import { makeAccessible } from '~utils/makeAccessible';
-
-type TablePaginationProps = {
-  /**
-   * The default page size.
-   * Page size controls how rows are shown per page.
-   * @default 10
-   **/
-  defaultPageSize?: 10 | 25 | 50;
-  /**
-   * The current page. Passing this prop will make the component controlled and will not update the page on its own.
-   **/
-  currentPage?: number;
-  /**
-   * Callback function that is called when the page is changed
-   */
-  onPageChange?: ({ page }: { page: number }) => void;
-  /**
-   * Callback function that is called when the page size is changed
-   */
-  onPageSizeChange?: ({ pageSize }: { pageSize: number }) => void;
-  /**
-   * Whether to show the page size picker. It will be always be hidden on mobile.
-   * Page size picker controls how rows are shown per page.
-   * @default true
-   */
-  showPageSizePicker?: boolean;
-  /**
-   * Whether to show the page number selector. It will be always be hidden on mobile.
-   * Page number selectors is a group of buttons that allows the user to jump to a specific page.
-   * @default false
-   */
-  showPageNumberSelector?: boolean;
-  /**
-   * Content of the label to be shown in the pagination component
-   * @default `Showing 1 to ${totalItems} Items`
-   */
-  label?: string;
-  /**
-   * Whether to show the label. It will be always be hidden on mobile.
-   * @default false
-   */
-  showLabel?: boolean;
-};
 
 const pageSizeOptions: NonNullable<TablePaginationProps['defaultPageSize']>[] = [10, 25, 50];
 
@@ -439,4 +397,3 @@ const TablePagination = ({
 };
 
 export { TablePagination };
-export type { TablePaginationProps };

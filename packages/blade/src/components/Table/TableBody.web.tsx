@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import getIn from 'lodash/get';
 import { useTableContext } from './TableContext';
 import { checkboxCellWidth, tableRow } from './tokens';
-import type { TableNode, TableProps } from './Table';
+import type { TableProps, TableBodyProps, TableRowProps, TableCellProps } from './types';
 import { Text } from '~components/Typography';
 import type { CheckboxProps } from '~components/Checkbox';
 import { Checkbox } from '~components/Checkbox';
@@ -12,19 +12,8 @@ import { makeMotionTime, makeSize, makeSpace } from '~utils';
 import BaseBox from '~components/Box/BaseBox';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import type { SurfaceLevels } from '~tokens/theme/theme';
-
-type TableBodyProps = {
-  /**
-   * The children of the TableBody component should be TableRow components.
-   * @example
-   * <TableBody>
-   *   <TableRow>
-   *     <TableCell>...</TableCell>
-   *   </TableRow>
-   * </TableBody>
-   **/
-  children: React.ReactNode;
-};
+import { ComponentIds } from './componentIds';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 const StyledBody = styled(Body)<{ isSelectable: boolean; showStripedRows: boolean }>(
   ({ theme, showStripedRows, isSelectable }) => ({
@@ -125,7 +114,7 @@ const StyledBody = styled(Body)<{ isSelectable: boolean; showStripedRows: boolea
   }),
 );
 
-const TableBody = ({ children }: TableBodyProps): React.ReactElement => {
+const _TableBody = ({ children }: TableBodyProps): React.ReactElement => {
   const { showStripedRows, selectionType } = useTableContext();
   const isSelectable = selectionType !== 'none';
 
@@ -140,20 +129,9 @@ const TableBody = ({ children }: TableBodyProps): React.ReactElement => {
   );
 };
 
-type TableCellProps = {
-  /**
-   * The children of the TableCell component should be a string or a ReactNode.
-   * @example
-   * <TableCell>{'Hello'}</TableCell>
-   * <TableCell>
-   *  <Text>...</Text>
-   * </TableCell>
-   * <TableCell>
-   * <Button>...</Button>
-   * </TableCell>
-   **/
-  children: React.ReactNode;
-};
+const TableBody = assignWithoutSideEffects(_TableBody, {
+  componentId: ComponentIds.TableBody,
+});
 
 const StyledCell = styled(Cell)<{
   surfaceLevel: SurfaceLevels;
@@ -193,7 +171,7 @@ const CellWrapper = styled(BaseBox)<{
   },
 }));
 
-const TableCell = ({ children }: TableCellProps): React.ReactElement => {
+const _TableCell = ({ children }: TableCellProps): React.ReactElement => {
   const isChildrenString = typeof children === 'string';
   const { selectionType, rowDensity, showStripedRows, surfaceLevel } = useTableContext();
   const isSelectable = selectionType !== 'none';
@@ -220,6 +198,10 @@ const TableCell = ({ children }: TableCellProps): React.ReactElement => {
   );
 };
 
+const TableCell = assignWithoutSideEffects(_TableCell, {
+  componentId: ComponentIds.TableCell,
+});
+
 const TableCheckboxCell = ({
   isChecked,
   onChange,
@@ -242,35 +224,6 @@ const TableCheckboxCell = ({
       </BaseBox>
     </TableCell>
   );
-};
-
-type TableRowProps<Item> = {
-  /**
-   * The children of the TableRow component should be TableCell components.
-   * @example
-   * <TableRow>
-   *   <TableCell>...</TableCell>
-   * </TableRow>
-   **/
-  children: React.ReactNode;
-  /**
-   * The item prop is used to pass the item to the TableRow component.
-   * @example
-   * tableData.map((tableItem) => (
-   *   <TableRow item={item}>
-   *     <TableCell>...</TableCell>
-   *   </TableRow>
-   * ));
-   **/
-  item: TableNode<Item>;
-  /**
-   * The isDisabled prop is used to disable the TableRow component.
-   * @example
-   * <TableRow isDisabled>
-   *   <TableCell>...</TableCell>
-   * </TableRow>
-   **/
-  isDisabled?: boolean;
 };
 
 const StyledRow = styled(Row)<{ isSelectable: boolean; showStripedRows?: boolean }>(
@@ -308,7 +261,7 @@ const StyledRow = styled(Row)<{ isSelectable: boolean; showStripedRows?: boolean
   }),
 );
 
-const TableRow = <Item,>({
+const _TableRow = <Item,>({
   children,
   item,
   isDisabled,
@@ -350,5 +303,8 @@ const TableRow = <Item,>({
   );
 };
 
+const TableRow = assignWithoutSideEffects(_TableRow, {
+  componentId: ComponentIds.TableRow,
+});
+
 export { TableBody, TableRow, TableCell };
-export type { TableBodyProps, TableRowProps, TableCellProps };

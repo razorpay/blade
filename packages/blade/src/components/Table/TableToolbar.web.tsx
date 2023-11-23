@@ -4,18 +4,14 @@ import styled from 'styled-components';
 import { ComponentIds } from './componentIds';
 import { tableToolbar } from './tokens';
 import { useTableContext } from './TableContext';
+import type { TableToolbarProps, TableToolbarActionsProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { Divider } from '~components/Divider';
 import { Link } from '~components/Link';
 import { getStyledProps } from '~components/Box/styledProps';
-import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { makeMotionTime, useTheme } from '~utils';
-
-type TableToolbarActionsProps = {
-  children?: React.ReactNode;
-} & StyledPropsBlade;
 
 /**
  * TableToolbarActions is a component that is used to render actions in the TableToolbar.
@@ -46,23 +42,6 @@ const ToolbarWrapper = styled(BaseBox)(({ theme }) => ({
     getIn(theme.motion, tableToolbar.backgroundColorMotionDuration),
   )} ${getIn(theme.motion, tableToolbar.backgroundColorMotionEasing)}`,
 }));
-
-type TableToolbarProps = {
-  /**
-   * The children of TableToolbar should be TableToolbarActions
-   */
-  children?: React.ReactNode;
-  /**
-   * The title of the TableToolbar. If not provided, it will show the default title.
-   * @default `Showing 1 to ${totalItems} Items`
-   */
-  title?: string;
-  /**
-   * The title to show when items are selected. If not provided, it will show the default title.
-   * @default `${selectedRows.length} 'Items'} Selected`
-   */
-  selectedTitle?: string;
-};
 
 const _TableToolbar = ({
   children,
@@ -139,4 +118,3 @@ const TableToolbar = assignWithoutSideEffects(_TableToolbar, {
 });
 
 export { TableToolbar, TableToolbarActions };
-export type { TableToolbarProps, TableToolbarActionsProps };

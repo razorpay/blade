@@ -4,23 +4,11 @@ import getIn from 'lodash/get';
 import styled from 'styled-components';
 import { tableFooter } from './tokens';
 import { useTableContext } from './TableContext';
+import type { TableFooterProps, TableFooterRowProps, TableFooterCellProps } from './types';
 import { Text } from '~components/Typography';
 import { makeSpace } from '~utils';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import type { SurfaceLevels } from '~tokens/theme/theme';
-
-type TableFooterProps = {
-  /**
-   * The children of TableFooter should be TableFooterRow
-   * @example
-   * <TableFooter>
-   *   <TableFooterRow>
-   *     <TableFooterCell>Footer Cell 1</TableFooterCell>
-   *   </TableFooterRow>
-   * </TableFooter>
-   **/
-  children: React.ReactNode;
-};
 
 const StyledFooter = styled(Footer)(({ theme }) => ({
   '&&&': {
@@ -39,30 +27,10 @@ const TableFooter = ({ children }: TableFooterProps): React.ReactElement => {
   );
 };
 
-type TableFooterRowProps = {
-  /**
-   * The children of TableFooterRow should be TableFooterCell
-   * @example
-   * <TableFooter>
-   *   <TableFooterRow>
-   *     <TableFooterCell>Footer Cell 1</TableFooterCell>
-   *   </TableFooterRow>
-   * </TableFooter>
-   **/
-  children: React.ReactNode;
-};
-
 const TableFooterRow = ({ children }: TableFooterRowProps): React.ReactElement => {
   return (
     <FooterRow {...metaAttribute({ name: MetaConstants.TableFooterRow })}>{children}</FooterRow>
   );
-};
-
-type TableFooterCellProps = {
-  /**
-   * The children of TableHeaderCell can be a string or a ReactNode.
-   **/
-  children: string | React.ReactNode;
 };
 
 const StyledFooterCell = styled(FooterCell)<{
@@ -110,4 +78,3 @@ const TableFooterCell = ({ children }: TableFooterCellProps): React.ReactElement
 };
 
 export { TableFooter, TableFooterRow, TableFooterCell };
-export type { TableFooterProps, TableFooterRowProps, TableFooterCellProps };
