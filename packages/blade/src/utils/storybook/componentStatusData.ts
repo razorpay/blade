@@ -326,12 +326,12 @@ const componentData: ComponentStatusDataType = [
   },
   {
     name: 'FileUpload',
-    status: 'planned-Q2-dev',
+    status: 'to-be-decided',
     description: 'FileUpload component allow users to select one or more files to upload.',
   },
   {
     name: 'Drawer',
-    status: 'planned-Q2-design',
+    status: 'to-be-decided',
     description: 'The Drawer component is a panel that slides out from the edge of the screen.',
   },
   {
@@ -385,12 +385,12 @@ const componentData: ComponentStatusDataType = [
   },
   {
     name: 'Toast',
-    status: 'planned-Q2-dev',
+    status: 'to-be-decided',
     description: 'Toast is a component to show a simple floating messages to your users',
   },
   {
     name: 'Button Group',
-    status: 'planned-Q2-dev',
+    status: 'to-be-decided',
     description: 'ButtonGroup component can be used to group related buttons.',
   },
   {
