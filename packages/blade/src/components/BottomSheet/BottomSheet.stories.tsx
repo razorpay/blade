@@ -47,6 +47,7 @@ import { Link } from '~components/Link';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { isReactNative } from '~utils';
+import { SandboxHighlighter } from '~utils/storybook/Sandbox/SandpackEditor';
 
 const Page = (): React.ReactElement => {
   return (
@@ -134,6 +135,20 @@ const Page = (): React.ReactElement => {
           export default App;
         `}
       </Sandbox>
+      <Title>iOS Safari Specific Setup</Title>
+      <Text marginTop="spacing.4">
+        When using BottomSheet or SpotlightPopoverTour, Make sure to set a width/height to the
+        `body` otherwise when they open, the page will get clipped. This happens due to a bug in iOS
+        safari where it won't compute the height of the body correctly.
+      </Text>
+      <SandboxHighlighter showLineNumbers={false} theme="light">
+        {`
+          body {
+            width: 100%;
+            height: 100%;
+          }
+        `}
+      </SandboxHighlighter>
     </StoryPageWrapper>
   );
 };
