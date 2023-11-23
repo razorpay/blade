@@ -3,12 +3,12 @@ import type { TableData } from '../../Table';
 import { Table as TableComponent } from '../../Table';
 import { TableHeader, TableHeaderRow, TableHeaderCell } from '../../TableHeader';
 import { TableBody, TableRow, TableCell } from '../../TableBody';
-import { TableFooter, TableFooterRow, TableFooterCell } from '../../TableFooter';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
 import { Amount } from '~components/Amount';
 import { Code } from '~components/Typography';
-import { Badge } from '~components/Badge';
+import { Link } from '~components/Link';
+import { CopyIcon, TrashIcon } from '~components/Icons';
 
 export default {
   title: 'Components/Table/API',
@@ -68,7 +68,7 @@ const data: TableData<Item> = {
   nodes,
 };
 
-const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
+const TableTemplate: ComponentStory<typeof TableRow> = ({ ...args }) => {
   return (
     <Box
       backgroundColor="surface.background.level2.lowContrast"
@@ -76,66 +76,51 @@ const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
       overflow="auto"
       minHeight="400px"
     >
-      <TableComponent data={data}>
+      <TableComponent data={data} selectionType="multiple">
         {(tableData) => (
           <>
             <TableHeader>
               <TableHeaderRow>
                 <TableHeaderCell>ID</TableHeaderCell>
                 <TableHeaderCell>Amount</TableHeaderCell>
-                <TableHeaderCell>Account</TableHeaderCell>
-                <TableHeaderCell>Date</TableHeaderCell>
-                <TableHeaderCell>Method</TableHeaderCell>
-                <TableHeaderCell>Status</TableHeaderCell>
+                <TableHeaderCell>Action</TableHeaderCell>
               </TableHeaderRow>
             </TableHeader>
             <TableBody>
-              {tableData.map((tableItem, index) => (
-                <TableRow key={index} item={tableItem} {...args}>
-                  <TableCell>
-                    <Code size="medium">{tableItem.paymentId}</Code>
-                  </TableCell>
-                  <TableCell>
-                    <Amount value={tableItem.amount} />
-                  </TableCell>
-                  <TableCell>{tableItem.account}</TableCell>
-                  <TableCell>
-                    {tableItem.date?.toLocaleDateString('en-IN', {
-                      year: 'numeric',
-                      month: '2-digit',
-                      day: '2-digit',
-                    })}
-                  </TableCell>
-                  <TableCell>{tableItem.method}</TableCell>
-                  <TableCell>
-                    <Badge
-                      size="medium"
-                      color={
-                        tableItem.status === 'Completed'
-                          ? 'positive'
-                          : tableItem.status === 'Pending'
-                          ? 'notice'
-                          : tableItem.status === 'Failed'
-                          ? 'negative'
-                          : 'default'
-                      }
-                    >
-                      {tableItem.status}
-                    </Badge>
-                  </TableCell>
-                </TableRow>
-              ))}
+              {tableData.map((tableItem, index) => {
+                return (
+                  <TableRow key={index} {...args} item={tableItem}>
+                    <TableCell>
+                      <Code size="medium">{tableItem.paymentId}</Code>
+                    </TableCell>
+                    <TableCell>
+                      <Amount value={tableItem.amount} />
+                    </TableCell>
+
+                    <TableCell>
+                      <Box display="flex" gap="spacing.3">
+                        <Link
+                          onClick={() => console.log('copy')}
+                          isDisabled={args.isDisabled}
+                          variant="button"
+                          icon={CopyIcon}
+                        >
+                          Copy
+                        </Link>
+                        <Link
+                          onClick={() => console.log('delete')}
+                          isDisabled={args.isDisabled}
+                          variant="button"
+                          icon={TrashIcon}
+                        >
+                          Delete
+                        </Link>
+                      </Box>
+                    </TableCell>
+                  </TableRow>
+                );
+              })}
             </TableBody>
-            <TableFooter>
-              <TableFooterRow>
-                <TableFooterCell>-</TableFooterCell>
-                <TableFooterCell>-</TableFooterCell>
-                <TableFooterCell>-</TableFooterCell>
-                <TableFooterCell>-</TableFooterCell>
-                <TableFooterCell>-</TableFooterCell>
-                <TableFooterCell>-</TableFooterCell>
-              </TableFooterRow>
-            </TableFooter>
           </>
         )}
       </TableComponent>
