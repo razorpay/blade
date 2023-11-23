@@ -37,11 +37,9 @@ const SortButton = styled.button(({ theme }) => ({
 const SortIcon = ({
   isSorted,
   isSortReversed,
-  onClick,
 }: {
   isSorted: boolean;
   isSortReversed: boolean;
-  onClick: () => void;
 }): React.ReactElement => {
   const { theme } = useTheme();
   const defaultColor = getIn(theme.colors, 'surface.action.icon.default.lowContrast');
@@ -49,7 +47,7 @@ const SortIcon = ({
   const upArrowColor = isSorted && isSortReversed ? activeColor : defaultColor;
   const downArrowColor = isSorted && !isSortReversed ? activeColor : defaultColor;
   return (
-    <SortButton {...makeAccessible({ label: 'Toggle Sort', role: 'button' })} onClick={onClick}>
+    <SortButton {...makeAccessible({ label: 'Toggle Sort', role: 'button' })}>
       <svg width={20} height={20} fill="none">
         <path
           fill={upArrowColor}
@@ -148,7 +146,7 @@ const _TableHeaderCell = ({ children, headerKey }: TableHeaderCellProps): React.
     headerKey && Boolean(currentSortedState.sortableColumns?.find((key) => key === headerKey));
   return (
     <StyledHeaderCell
-      tabIndex={0}
+      // tabIndex={0}
       surfaceLevel={surfaceLevel}
       isSortable={isSortable}
       onClick={() => {
@@ -170,7 +168,6 @@ const _TableHeaderCell = ({ children, headerKey }: TableHeaderCellProps): React.
           <SortIcon
             isSorted={currentSortedState.sortKey === headerKey}
             isSortReversed={currentSortedState.isSortReversed}
-            onClick={() => headerKey && toggleSort(headerKey)}
           />
         </BaseBox>
       )}
