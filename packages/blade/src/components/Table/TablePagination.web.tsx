@@ -346,6 +346,8 @@ const TablePagination = ({
                   onClick={() => handlePageChange(currentPage - 5)}
                   onMouseOver={() => setCurrentEllipseHover('start')}
                   onMouseLeave={() => setCurrentEllipseHover(undefined)}
+                  onFocus={() => setCurrentEllipseHover('start')}
+                  onBlur={() => setCurrentEllipseHover(undefined)}
                   {...makeAccessible({ label: 'Go back 5 pages' })}
                 >
                   {currentEllipseHover === 'start' ? (
@@ -379,6 +381,8 @@ const TablePagination = ({
                   onClick={() => handlePageChange(currentPage + 5)}
                   onMouseOver={() => setCurrentEllipseHover('end')}
                   onMouseLeave={() => setCurrentEllipseHover(undefined)}
+                  onFocus={() => setCurrentEllipseHover('end')}
+                  onBlur={() => setCurrentEllipseHover(undefined)}
                   {...makeAccessible({ label: 'Go forward 5 pages' })}
                 >
                   {currentEllipseHover === 'end' ? (
